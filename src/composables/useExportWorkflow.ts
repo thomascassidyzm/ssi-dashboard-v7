@@ -1,7 +1,7 @@
 // src/composables/useExportWorkflow.ts
 import { ref, computed, watch } from 'vue'
 import { io, Socket } from 'socket.io-client'
-import { getApiUrl } from '@/services/api'
+import { getApiBaseUrl } from '@/services/api'
 
 export interface ExportState {
   courseCode: string
@@ -48,6 +48,8 @@ export interface S3VerificationResult {
   durationErrors?: number
   durationCheckFailed?: boolean
   durationCheckError?: string
+  /** Why the length/format check did not run in full, or null (server: shared/export-audio-check.cjs) */
+  audioCheckGap?: string | null
   durationsFixed?: number
   durationFixErrors?: number
   durationMismatchDetails?: Array<{
@@ -123,10 +125,6 @@ export interface ValidationResult {
   emptyStrings: number
   invalidUUIDDetails: Array<{ path: string; value: string }>
   emptyStringDetails: string[]
-}
-
-function getApiBaseUrl(): string {
-  return getApiUrl()
 }
 
 // Get machine name from environment switcher settings
@@ -435,7 +433,8 @@ export function useExportWorkflow(courseCode: string) {
           state.value.s3Verification = freshState.s3Verification || null
         } catch (e) {
           // Fallback: use data from the event
-          state.value.s3Verified = (data.missing === 0 && data.durationMismatched === 0)
+          // Never infer a pass client-side: the server's verdict also covers a check that could not run (job #994)
+          state.value.s3Verified = false
         }
         isLoading.value = false
       }
@@ -795,7 +794,7 @@ export function useExportWorkflow(courseCode: string) {
     try {
       connectWebSocket()
 
-      // Use 20-minute timeout for verify-s3 (large courses need more time)
+      // The POST only starts the run now, so this timeout covers starting it, not the 30-40 min check.
       const apiBase = getApiBaseUrl()
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 1200000) // 20 minutes
@@ -825,6 +824,13 @@ export function useExportWorkflow(courseCode: string) {
         throw new Error(errorData.error || 'Request failed')
       }
 
+      // 202: Step 2 now runs in a background worker (it outlives API restarts, job #27). Progress
+      // arrives on s3Verify:progress and the result on s3Verify:completed, which refreshes state.
+      if (response.status === 202) {
+        alreadyRunning = true
+        return null
+      }
+
       const data = await response.json()
 
       // Update local state from HTTP response (Stage 1-2 results)
@@ -832,7 +838,7 @@ export function useExportWorkflow(courseCode: string) {
       // and s3Verify:completed will refresh the final state
       const hasMismatches = (data.durationMismatched || 0) > 0
       if (!hasMismatches) {
-        state.value.s3Verified = data.missing === 0
+        state.value.s3Verified = data.s3Verified === true // server verdict, incl. "check could not run" (job #994)
         state.value.s3VerifiedAt = new Date().toISOString()
         state.value.s3Verification = data
       }

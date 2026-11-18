@@ -57,7 +57,7 @@ beforeEach(() => {
 })
 afterEach(() => { if (restore) restore(); restore = null; castGate.useCastRows(null); guardMod.useSpendGuard(null) })
 
-const cfg = { apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', phonologyGate: false, door: { courseCode: 'eng_for_hin', job: 'replay-382' } }
+const cfg = { apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', door: { courseCode: 'eng_for_hin', job: 'replay-382' } }
 const LINES = ['her name', 'मैं ठीक हूँ', 'मुझे लगता है कि यह बेवकूफ़ी है']
 
 describe('a fill loop that keeps re-asking for lines it already holds', () => {

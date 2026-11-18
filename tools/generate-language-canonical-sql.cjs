@@ -27,6 +27,7 @@
 const fs = require('fs');
 const path = require('path');
 const { canonicalLanguage, tryCanonicalLanguage } = require('../services/shared/clip-identity.cjs');
+const langService = require('../services/language-code-service.cjs');
 
 const CSV = path.join(__dirname, 'sync', 'reference', 'language_codes.csv');
 
@@ -47,6 +48,14 @@ function candidates() {
   }
   // The estate's own codes, in case the CSV ever loses one.
   for (const c of ['eng', 'zho', 'cmn', 'zh', 'ell', 'el']) set.add(c);
+  // Every code canonicalLanguage() accepts as an estate code, including the
+  // hand-written block in services/language-code-service.cjs (LEGACY_TO_STANDARD)
+  // that the CSV's database_code column does not carry. Without these, Breton
+  // ('bre') and Cornish ('cor') resolved in JavaScript and were then refused by
+  // the database trigger — a course row says target_lang 'bre', so every take and
+  // render for bre_for_eng, bre_for_fra, sbx_for_eng and cor_for_eng hit
+  // "language bre is not in language_canonical" (job #57, 2026-11-02).
+  for (const c of Object.keys(langService.LEGACY_TO_STANDARD)) set.add(String(c).toLowerCase());
   return [...set].filter(Boolean).sort();
 }
 

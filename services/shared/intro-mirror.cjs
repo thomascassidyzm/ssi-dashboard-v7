@@ -207,8 +207,10 @@ async function checkCourse(pg, courseCode, opts = {}) {
   const seedSql = seedFilter ? ' AND x.seed_number = ANY($2)' : ''
   const params = seedFilter ? [courseCode, seedFilter] : [courseCode]
 
-  const { rows: marks } = await pg.query('SELECT lego_id, text FROM human_authored_presentations WHERE course_code = $1', [courseCode])
-  const markById = new Map(marks.map(m => [m.lego_id, m]))
+  // HARD marks only: a soft mark (job #247·AH) is a record for warnings, not a guard on the words.
+  // SELECT * so this reads the same before and after the soft-guard column exists.
+  const { rows: marks } = await pg.query('SELECT * FROM human_authored_presentations WHERE course_code = $1', [courseCode])
+  const markById = new Map(marks.filter(m => m.guard !== 'soft').map(m => [m.lego_id, m]))
 
   // Gendered known pairs (two-known-voice courses): the intro quotes 'F' or 'M'.
   let pairs = new Map()

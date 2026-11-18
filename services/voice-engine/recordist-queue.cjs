@@ -117,6 +117,7 @@ const phraseQueue = require('./phrase-queue.cjs')
 const { isReplaceableStandIn, isCloneStandInCourse } = require('../shared/aran-clone-standin.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
+const videoVoiceovers = require('./video-voiceover-lines.cjs')
 const podEnglish = require('./pod-english-lines.cjs')
 const podSplitCuts = require('./pod-english-split-cuts.cjs')
 const { linkClips } = require('../shared/link-clip.cjs')
@@ -667,6 +668,8 @@ function wantVoiceId(course, register, gender) {
  * route falls back to its language and course gates alone.
  */
 function clipVoiceId(clip, course, register) {
+  const named = wantNamedVoiceId(clip, register)
+  if (named) return named
   const stored = String(clip && clip.voice_id ? clip.voice_id : '').trim()
   if (tryCanonicalVoiceId(stored)) {
     const owner = register.aliasOwner.get(stored)
@@ -676,6 +679,20 @@ function clipVoiceId(clip, course, register) {
   const gender = String(want && want.voice_gender ? want.voice_gender : '').toLowerCase()
   if (gender !== 'm' && gender !== 'f' || !course) return null
   return wantVoiceId(course, register, gender)
+}
+
+/**
+ * A WANT THAT NAMES ITS READER (cs #207·AI, Kai 16 Nov: the cym_n angry-eyes English cues and intro
+ * "on Aran's booth"). rerecord_wanted.voice_id, when it is a spelling of one of THIS register's
+ * policy voices, is the owner, ahead of the clip's stored voice and the want's gender. It is how an
+ * English clip of a Welsh course reaches the English reader the course is cast on: neither the
+ * stored voice (a clone, legacy_import, or the Welsh artist's id) nor a gender can name a cast-on-only
+ * reader. A name another register does not know falls through, so nothing reaches anyone unnamed.
+ */
+function wantNamedVoiceId(clip, register) {
+  const want = clip && clip.rerecord_wanted && typeof clip.rerecord_wanted === 'object' ? clip.rerecord_wanted : null
+  const entry = want && typeof want.voice_id === 'string' ? register.aliasOwner.get(want.voice_id.trim()) : null
+  return entry ? entry.voiceId : null
 }
 
 function castEntryFor(podCast, speaker) {
@@ -693,6 +710,26 @@ function castEntryFor(podCast, speaker) {
  * by the CAST's gender, and a want written against an older spelling of the
  * same person's voice must not be lost to a string comparison.
  */
+/**
+ * A NAMED RE-QUEUE GRANT on a clip's want: {..., requeue_for: '<voiceId>', requeue_by: '<who>'}.
+ *
+ * Tom's rulings of 2026-09-02 and 2026-09-11 stand: a want is a MARK, hidden from the reader,
+ * and never moves a recorded line back onto a booth list. This is not a loosening of that; it is
+ * a separate, explicit act. Kai 2026-11-03 (job #646, edit event 15f50b4b, authority
+ * r-2026-10-30-kai-can-authorise-any-audio-work): seven of Eleri's cym_s Pod 1 takes are faulty
+ * and must go back on HER list. A grant names the reader and who granted it, sits on the one clip
+ * that serves the line, and retires itself: the reader's new take writes rerecord_wanted: null on
+ * that clip (propagate/swap below), so the line is recorded again the moment she records it.
+ * A want with no grant behaves exactly as before.
+ */
+function requeueGrant(want) {
+  if (!want || typeof want !== 'object') return null
+  const voiceId = typeof want.requeue_for === 'string' ? want.requeue_for.trim() : ''
+  const by = typeof want.requeue_by === 'string' ? want.requeue_by.trim() : ''
+  if (!voiceId || !by) return null
+  return { voiceId, by }
+}
+
 function targetRerecordWanted(sentence) {
   const wanted = sentence && sentence.rerecord_wanted
   if (!wanted || typeof wanted !== 'object') return false
@@ -752,8 +789,12 @@ function seedLineId(seedId, role) { return `${SEED_LINE_PREFIX}${seedId}:${role}
  * sandbox voices. The brief's rule — any live course gaining any, or any voice
  * gaining more than ~20 — gates the feature to the two Welsh sandboxes. A live
  * course's LEGO slots are never queued here.
+ *
+ * fry_for_eng joins (Kai, 2026-11-03, job #587): Auke records all of Frisian.
+ * Frisian is not served to learners and casts only Auke (target1), so its
+ * LEGO lines land in his queue alone.
  */
-const LEGO_QUEUE_COURSES = Object.freeze(['cym_sv2_for_eng', 'cym_nv2_for_eng'])
+const LEGO_QUEUE_COURSES = Object.freeze(['cym_sv2_for_eng', 'cym_nv2_for_eng', 'fry_for_eng'])
 function isLegoQueueCourse(courseCode) { return LEGO_QUEUE_COURSES.includes(String(courseCode || '')) }
 
 /** The synthetic line id a LEGO slot wears on the wire: `lego:<course_legos.id>:<role>`. */
@@ -1609,6 +1650,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   let quarryStats = null
   // ONE map for the whole language, keyed (voice, text) -- see voiceTextKey.
   const seen = new Map()   // voiceTextKey -> representative line
+  // serving clip id -> the pod line it fills, so a clip's named re-queue grant
+  // (requeueGrant, below) can find the one line it was written for.
+  const podLineByClip = new Map()
   let uncast = 0
   // POD LINES THAT HAVE NO TARGET TEXT YET, per (dialect, gender) bucket and
   // then per pod: bucket -> Map(podId -> {podId, podSlug, podTitle, courseCode,
@@ -1681,6 +1725,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       podSlug: pod.slug || null,
       podTitle: pod.title || null,
       order: s.global_order,
+      scene: s.scene_number == null ? null : s.scene_number,
       // Immediately after its own natural line: every other kind leaves
       // seedOrder at 0, so 1 puts the gapped read second and nothing else moves.
       seedOrder: 1,
@@ -1889,6 +1934,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // all — the collapse is by clip identity, so the flag has to collapse with
       // it or a want on cym_s's copy would be silently dropped.
       if (targetRerecordWanted(s)) rep.rerecordWanted = true
+      if (s.target_audio_id) podLineByClip.set(s.target_audio_id, rep)
       duplicatesCollapsed += 1
       // The natural read collapses; the gapped read never does. See pushTakeG.
       pushTakeG(s, pod, bucket, voiceId, castVoiceId)
@@ -1908,6 +1954,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       podSlug: pod.slug || null,
       podTitle: pod.title || null,
       order: s.global_order,
+      // Which scene it is in, so the booth home can say where an unfinished pod picks up
+      // ("starting scene 15": booth-home.cjs firstLeftOf, job #8·AA).
+      scene: s.scene_number == null ? null : s.scene_number,
       text,
       knownText: s.known_text || null,
       speaker: s.speaker,
@@ -1928,6 +1977,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       context: exchangeContext(s, pod),
     }
     seen.set(key, line)
+    if (s.target_audio_id) podLineByClip.set(s.target_audio_id, line)
     byBucket.get(bucket).push(line)
     pushTakeG(s, pod, bucket, voiceId, castVoiceId)
   }
@@ -1952,8 +2002,22 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // These deliberately share the dedupe map above: if a wanted re-record has the
   // same normalised text as a pod line, it is the same clip identity and one
   // take serves both.
-  const wanted = await fetchRerecordWanted(db, [...byCourse.keys()])
+  // The castOn courses' KNOWN side too (knownSideCourses), but there ONLY a want that names this
+  // register's reader (wantNamedVoiceId, cs #207·AI): an English clip of a Welsh course is offered to
+  // the cast-on English reader when somebody asked for that reader by name, and to nobody by gender.
+  const wantCourses = new Map([...knownSideCourses.entries(), ...byCourse.entries()])
+  const wanted = await fetchRerecordWanted(db, [...wantCourses.keys()])
   for (const w of wanted) {
+    if (!byCourse.has(w.course_code) && !wantNamedVoiceId(w, register)) continue
+    // A NAMED RE-QUEUE GRANT puts this one pod line back on one reader's list
+    // (see requeueGrant). Read before every filter below, because it is about
+    // the pod line this clip serves, not about the clip as a queue item.
+    const grant = requeueGrant(w.rerecord_wanted)
+    if (grant && podLineByClip.has(w.id)) {
+      const pl = podLineByClip.get(w.id)
+      pl.requeueFor = grant.voiceId
+      pl.requeueBy = grant.by
+    }
     const text = (w.text || '').trim()
     if (!text) continue
     // WHOSE CLIP IT IS, first (clipVoiceId): a clip stored under a real voice
@@ -1961,7 +2025,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     // flagged clip was queued to Bea because both are female and the want
     // said only 'f' (job #351). The want's gender is the rule for the untagged
     // narration bucket, where the clip itself names nobody.
-    const owner = clipVoiceId(w, byCourse.get(w.course_code), register)
+    const owner = clipVoiceId(w, wantCourses.get(w.course_code), register)
     const ownerGender = owner && register.aliasOwner.has(owner) ? String(register.aliasOwner.get(owner).gender || '').toLowerCase() : ''
     const gender = String(w.rerecord_wanted.voice_gender || ownerGender || '').toLowerCase()
     // AN OWNED CLIP IS ITS OWNER'S QUEUE LINE, GENDER OR NO GENDER -- the same
@@ -1993,7 +2057,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     // A clip belongs to a course, and the course states the dialect. Nothing is
     // read off the clip itself: a presentation clip is stored under the shared
     // untagged voice 'human', so it carries no dialect of its own to trust.
-    const course = byCourse.get(w.course_code)
+    const course = wantCourses.get(w.course_code)
     const bucket = bucketKey(courseDialect(course), gender)
     if (!byBucket.has(bucket)) byBucket.set(bucket, [])
     const voiceId = owner
@@ -2027,6 +2091,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       role: w.role,
       rerecordWanted: true,
       rerecordReason: w.rerecord_wanted.reason || null,
+      // The same NAMED RE-QUEUE GRANT a pod line takes (requeueGrant), for a clip that is already
+      // this reader's take: Kai 16 Nov (cs #207·AI) linked Aran's June angry-eyes takes as stopgaps
+      // and wants them read again, so they stay on his list until his new take clears the want.
+      ...(grant ? { requeueFor: grant.voiceId, requeueBy: grant.by } : {}),
     }
     seen.set(key, line)
     byBucket.get(bucket).push(line)
@@ -2448,11 +2516,37 @@ async function allPages(build) {
   const out = []
   for (let from = 0; ; from += 1000) {
     let { data, error } = await build(from, from + 999)
-    if (error) ({ data, error } = await build(from, from + 999))
+    // Three tries, not two (Eleri, 2026-10-29): on a slow database a page that timed out once
+    // often answers the second or third time, and one lost page throws the whole plan away.
+    for (let again = 0; error && again < 2; again += 1) ({ data, error } = await build(from, from + 999))
     if (error) throw new Error(error.message)
     out.push(...(data || []))
     if (!data || data.length < 1000) return out
   }
+}
+
+/**
+ * The voice of each named clip: primary-key lookups, 100 ids a read, six reads at a time, each
+ * retried twice. (audioVoicesById fires every chunk at once — fine for a few hundred ids, a flood
+ * for the thousands a course's filled phrase slots can name.)
+ */
+async function clipVoicesById(db, ids) {
+  const out = new Map()
+  const chunks = []
+  for (let i = 0; i < ids.length; i += 100) chunks.push(ids.slice(i, i + 100))
+  let next = 0
+  const read = (chunk) => db.from('course_audio').select('id, voice_id').in('id', chunk)
+  const worker = async () => {
+    while (next < chunks.length) {
+      const chunk = chunks[next++]
+      let { data, error } = await read(chunk)
+      for (let again = 0; error && again < 2; again += 1) ({ data, error } = await read(chunk))
+      if (error) throw new Error(error.message)
+      for (const row of data || []) out.set(row.id, row.voice_id)
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(6, chunks.length) }, worker))
+  return out
 }
 
 /**
@@ -2500,15 +2594,30 @@ async function phraseQueueLanguages(db) {
  * the course's voice_config, the known side from a castOn of the known
  * language's policy — so a phrase is read by exactly who reads its seed.
  */
-async function buildPhrasePlan(db) {
-  const policies = await loadPolicies(db)
+async function buildPhrasePlan(db, memo = new Map()) {
+  // A RETRY RESUMES (Eleri, 2026-10-29). On a database too slow to read the whole plan inside its
+  // 8 s statement cap, a build that throws away every read it made when one read fails never
+  // finishes — the booth then served `phrases: {unavailable}` to everyone for as long as that
+  // lasted, and a practice-phrase batch opened as an empty "all done". Each read is kept in `memo`
+  // (held by getPhrasePlan, dropped with the plan) so the next attempt only redoes what failed.
+  const stage = async (key, read) => {
+    if (memo.has(key)) return memo.get(key)
+    let got
+    try { got = await read() } catch (err) { throw new Error(`phrase plan read '${key}': ${err.message}`) }
+    memo.set(key, got)
+    return got
+  }
+  const policies = await stage('policies', () => loadPolicies(db))
   const voicesFor = (lang) => policyVoiceList(policies.find((row) => {
     try { return canonicalLanguage(row.language) === lang } catch { return false }
   }))
-  const { data: courses, error } = await db.from('courses')
-    .select('course_code, voice_config, target_lang, known_lang, dialect')
-    .in('course_code', Object.keys(phraseQueue.PHRASE_QUEUE_COURSES))
-  if (error) throw new Error(`phrase course read failed: ${error.message}`)
+  const courses = await stage('courses', async () => {
+    const { data, error } = await db.from('courses')
+      .select('course_code, voice_config, target_lang, known_lang, dialect')
+      .in('course_code', Object.keys(phraseQueue.PHRASE_QUEUE_COURSES))
+    if (error) throw new Error(`phrase course read failed: ${error.message}`)
+    return data
+  })
 
   const casts = []
   const allSpellings = new Set()
@@ -2528,15 +2637,12 @@ async function buildPhrasePlan(db) {
     if (Object.keys(roles).length) casts.push({ course, roles })
   }
 
-  // WHOSE TAKE A FILLED SLOT HOLDS, for the cast voices only: every clip by any
-  // spelling of them. A slot holding a clip not in this map is somebody else's
-  // (an imported original, a synthetic clip) and is never this queue's work.
-  const ownClips = new Map()
-  if (allSpellings.size) {
-    const rows = await allPages((a, b) => db.from('course_audio').select('id, voice_id')
-      .in('voice_id', [...allSpellings]).order('id').range(a, b))
-    for (const r of rows) ownClips.set(r.id, r.voice_id)
-  }
+  // WHOSE TAKE A FILLED SLOT HOLDS, for the cast voices only (ownClips, per course below): a slot
+  // holding a clip by any other voice (an imported original, a synthetic clip) is 'other' and is
+  // never this queue's work. Read by the id each phrase slot names — a primary-key lookup — and
+  // NOT by scanning course_audio for the cast voices' clips: nothing indexes voice_id, so that scan
+  // walked the table in id order and hit the 8 s statement cap the day the database turned slow
+  // (Eleri, 2026-10-29); the plan then never built and every practice-phrase batch opened empty.
 
   const byVoice = new Map()
   const knownByVoice = new Map()
@@ -2545,20 +2651,32 @@ async function buildPhrasePlan(db) {
   await Promise.all(casts.map(async ({ course, roles }) => {
     const code = course.course_code
     const [order, legos, flags] = await Promise.all([
-      allPages((a, b) => db.from('course_running_order').select('seed_number, position')
-        .eq('course_code', code).order('position').range(a, b)),
-      allPages((a, b) => db.from('course_legos').select('seed_number, lego_index, is_new, known_text, target_text')
-        .eq('course_code', code).order('seed_number').order('lego_index').range(a, b)),
-      allPages((a, b) => db.from('phrase_proof_flags').select('phrase_id, flagged')
-        .eq('course_code', code).order('phrase_id').range(a, b)),
+      stage(`order:${code}`, () => allPages((a, b) => db.from('course_running_order').select('seed_number, position')
+        .eq('course_code', code).order('position').range(a, b))),
+      stage(`legos:${code}`, () => allPages((a, b) => db.from('course_legos').select('seed_number, lego_index, is_new, known_text, target_text')
+        .eq('course_code', code).order('seed_number').order('lego_index').range(a, b))),
+      stage(`flags:${code}`, () => allPages((a, b) => db.from('phrase_proof_flags').select('phrase_id, flagged')
+        .eq('course_code', code).order('phrase_id').range(a, b))),
     ])
     const positions = new Map()
     for (const o of order) if (!positions.has(o.seed_number)) positions.set(o.seed_number, o.position)
-    const maxSeed = order.reduce((m, o) => Math.max(m, o.seed_number), 0)
-    const phrases = maxSeed ? await readCoursePhrases(db, code, maxSeed) : []
-    // Only a stand-in course's known slots can hold a stand-in (job #557): read those clips' voices by id.
-    const voiceOf = isCloneStandInCourse(code) && roles.known
-      ? await audioVoicesById(db, phrases.map((p) => p.known_audio_id)) : new Map()
+    // A COURSE WITH NO RUNNING ORDER plays its seeds by seed number (course_running_order's own
+    // rule: "No row for a course = order by seed_number"; seedPosition() does the same), and the
+    // seeds it serves are the recordable ones (RECORDABLE_SEED_STATUSES) — the seeds whose
+    // sentences and LEGOs the booth already queues. Frisian (job #587) is such a course. A course
+    // WITH a running order (both Welsh sandboxes) never makes this read, so its plan is unchanged.
+    if (!order.length) {
+      const seedRows = await stage(`seeds:${code}`, () => allPages((a, b) => db.from('course_seeds').select('seed_number, status')
+        .eq('course_code', code).order('seed_number').range(a, b)))
+      for (const s of seedRows) if (RECORDABLE_SEED_STATUSES.has(s.status)) positions.set(s.seed_number, s.seed_number)
+    }
+    const maxSeed = [...positions.keys()].reduce((m, n) => Math.max(m, n), 0)
+    const phrases = maxSeed ? await stage(`phrases:${code}`, () => readCoursePhrases(db, code, maxSeed)) : []
+    const slotIds = new Set()
+    for (const p of phrases) for (const col of ['known_audio_id', 'target1_audio_id', 'target2_audio_id']) if (p[col]) slotIds.add(p[col])
+    const voiceOf = await stage(`clips:${code}`, () => clipVoicesById(db, [...slotIds]))
+    const ownClips = new Map()
+    for (const [id, voice] of voiceOf) if (allSpellings.has(voice)) ownClips.set(id, voice)
     const planRoles = {}
     for (const [role, r] of Object.entries(roles)) {
       planRoles[role] = {
@@ -2603,23 +2721,43 @@ function getPhrasePlan(db) {
   if (!e) { e = {}; PHRASE_PLANS.set(db, e) }
   PHRASE_PLAN_DBS.add(db)
   if (e.plan && Date.now() - e.at < PHRASE_PLAN_TTL_MS) return Promise.resolve(e.plan)
+  // A COLD PLAN THAT JUST FAILED IS NOT REBUILT BY THE NEXT CALLER (Aran's slow booth, 2026-10-29, job #602): with no
+  // plan in hand, every caller waited out a full build that hit the statement timeout (~5 s, twice per take), and
+  // since nothing was cached the next take paid it again. Inside this window the failure is replayed at once.
+  if (!e.plan && !e.building && e.failedAt && Date.now() - e.failedAt < PHRASE_PLAN_FAIL_COOLDOWN_MS) return Promise.reject(e.failure)
   if (!e.building) {
-    e.building = buildPhrasePlan(db).then((plan) => {
+    // The reads of a failed attempt are kept for five minutes so the next attempt resumes (buildPhrasePlan).
+    if (!e.memo || Date.now() - e.memoAt > PHRASE_PLAN_TTL_MS) { e.memo = new Map(); e.memoAt = Date.now() }
+    e.building = buildPhrasePlan(db, e.memo).then((plan) => {
       // An edit that landed mid-build dropped this entry: hand the plan to its caller, keep nothing.
       if (PHRASE_PLANS.get(db) !== e) return plan
-      e.plan = plan; e.at = Date.now(); e.building = null
+      e.plan = plan; e.at = Date.now(); e.building = null; e.memo = null; e.failedAt = 0; e.failure = null
       return plan
-    }, (err) => { e.building = null; throw err })
+    }, (err) => { e.building = null; e.failedAt = Date.now(); e.failure = err; throw err })
     // A background refresh that fails must not become an unhandled rejection.
     if (e.plan) e.building.catch((err) => console.warn(`[Recordist] phrase plan refresh failed: ${err.message}`))
   }
   return e.plan ? Promise.resolve(e.plan) : e.building
 }
 
+const PHRASE_PLAN_FAIL_COOLDOWN_MS = 30_000
+
+/**
+ * The plan if one is cached (stale is fine), else null — never waits for a build. A cold plan is started in the
+ * background so the next reader finds it. For best-effort writes that run inside a booth take's reply: a take must
+ * not wait on (or be slowed by a failing) whole-estate plan build (job #602).
+ */
+function peekPhrasePlan(db) {
+  const e = PHRASE_PLANS.get(db)
+  const plan = e && e.plan ? e.plan : null
+  getPhrasePlan(db).catch(() => {})
+  return plan
+}
+
 /** Mark the plan stale (a phrase take landed): the next read refreshes it behind the stale copy. */
 function invalidatePhrasePlan(db) {
   const e = PHRASE_PLANS.get(db)
-  if (e) e.at = 0
+  if (e) { e.at = 0; e.memo = null } // reads kept from a failed build would carry the old slots
 }
 
 /**
@@ -2799,7 +2937,10 @@ async function linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logg
   if (!audioId || !key) return out
   const langs = await phraseQueueLanguages(db)
   if (!langs.has(recordist.language)) return out
-  const plan = await getPhrasePlan(db)
+  // No plan in hand: skip. This is a fill-empty-only extra on a take that is already stored; the same-words back-fill
+  // (sameWordsGaps / tools/recording/fill-same-words-gaps.cjs) picks up any slot missed here.
+  const plan = peekPhrasePlan(db)
+  if (!plan) { logger.warn('[Recordist] phrase plan not ready — same-words phrase fill skipped for this take (back-fill covers it)'); return out }
   const side = (r) => (r === 'known' ? 'known' : 'target')
   const lines = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
     .filter((l) => side(l.role) === side(role) && spokenWordsKey(l.text) === key)
@@ -3102,7 +3243,13 @@ async function fetchIntroSentenceInputs(db, recordist, { fresh = false } = {}) {
       if (error) throw new Error(`intro clip read failed: ${error.message}`)
       for (const r of data || []) introClips.set(String(r.id), { voice: r.voice_id, spliced: Array.isArray(r.spliced_from) ? r.spliced_from.length > 0 : !!r.spliced_from })
     }
-    const value = { legos, introClips }
+    // RUNNING ORDER, not seed number (job #587 follow-up): the v2 courses serve woven-in new seeds early, so seed
+    // numbers put S1036 after S0076 although a learner meets it far sooner. Same position the seed card uses.
+    const runningOrder = await fetchRunningOrder(db, courses)
+    const positionOf = (l) => seedPosition(l, runningOrder)
+    // A seed its course's running order leaves out is not served: its LEGOs are off the card (job #584).
+    const isServed = (l) => !runningOrder.courses.has(l.course_code) || runningOrder.positions.has(`${l.course_code}:${l.seed_number}`)
+    const value = { legos, introClips, positionOf, isServed }
     introSentenceInputCache.set(key, { at: Date.now(), value })
     return value
   } catch (err) {
@@ -3163,7 +3310,7 @@ function replaceSyntheticPodEnglish(args) {
 async function replaceSyntheticPodEnglishNow({ db, recordist, logger = console, link = linkClips }) {
   const out = { linked: [], refused: [] }
   const { voices } = await policyVoicesForLanguage(db, recordist.language)
-  // Every card pod (job #562): North's synthetic clips (POD_ENGLISH_REPLACE_PODS) and, on any card pod, a slot still holding
+  // Every card pod (job #562): the replace pods' synthetic clips (POD_ENGLISH_REPLACE_PODS: North #555; South on hold, #878) and, on any card pod, a slot still holding
   // a take of a reader of the other gender. Only copies of this reader's gender move (planPodEnglishReplacements).
   const podIds = podEnglish.podEnglishPodsFor(recordist, voices)
   if (!podIds.length) return out
@@ -3367,7 +3514,7 @@ async function podSwapLinesFor(db, recordist) {
  * words (pod-text-swaps swapWrite) — so the pod never holds new words without audio. A row that has moved on is left
  * alone and reported. Nothing is deleted: the old clip keeps its row and file. Returns {linked, skipped}.
  */
-async function applyPodTextSwaps({ db, recordist, role, text, audioId, logger = console }) {
+async function applyPodTextSwaps({ db, recordist, role, text, audioId, switched = null, logger = console }) {
   const out = { linked: [], skipped: [] }
   if (!audioId || !spokenWordsKey(text)) return out
   const side = role === 'known' ? 'known' : 'target'
@@ -3375,7 +3522,8 @@ async function applyPodTextSwaps({ db, recordist, role, text, audioId, logger = 
   if (!podTextSwaps.POD_TEXT_SWAPS.some((s) => s.side === side && podTextSwaps.isSwapVoice(s, spellings))) return out
   const { rows } = await fetchPodSwapInputs(db, { fresh: true })
   const rowsById = new Map(rows.map((r) => [r.id, r]))
-  for (const swap of podTextSwaps.swapsForTake({ spellings, side, text, rowsById })) {
+  // A booth take passes no `switched`, so a swap held for a switch (job #512) is not applied here; only the admin switch is.
+  for (const swap of podTextSwaps.swapsForTake({ spellings, side, text, rowsById, switched })) {
     const w = podTextSwaps.swapWrite(swap, audioId)
     let q = db.from('listening_pod_sentences').update(w.set).eq('id', w.id)
     for (const [col, val] of Object.entries(w.where)) q = q.eq(col, val)
@@ -3408,7 +3556,7 @@ async function applyPodTextSwaps({ db, recordist, role, text, audioId, logger = 
  * none, the swap stays pending and the pod is untouched. Applying goes through applyPodTextSwaps, the same one-statement
  * write a booth take triggers. Returns one entry per swap.
  */
-async function podTextSwapReport(db, { apply = false, logger = console } = {}) {
+async function podTextSwapReport(db, { apply = false, switched = null, logger = console } = {}) {
   const { rows } = await fetchPodSwapInputs(db, { fresh: true })
   const rowsById = new Map(rows.map((r) => [r.id, r]))
   const out = []
@@ -3417,7 +3565,8 @@ async function podTextSwapReport(db, { apply = false, logger = console } = {}) {
     const textCol = podTextSwaps.TEXT_COL[swap.side]
     const audioCol = podTextSwaps.AUDIO_COL[swap.side]
     const entry = { sentenceId: swap.sentenceId, side: swap.side, voiceId: swap.voiceId, from: swap.from, to: swap.to,
-      state: row ? podTextSwaps.swapState(swap, row) : 'missing', podText: row ? row[textCol] : null, podAudioId: row ? row[audioCol] : null, take: null }
+      state: row ? podTextSwaps.swapState(swap, row) : 'missing', podText: row ? row[textCol] : null, podAudioId: row ? row[audioCol] : null, take: null,
+      heldForSwitch: podTextSwaps.isHeldForSwitch(swap) }
     const { data: takes, error } = await db.from('course_audio').select('id, voice_id, origin, text, created_at')
       .eq('voice_id', swap.voiceId).eq('origin', 'human').in('text_normalized', audioKeyCandidates(swap.to))
       .order('created_at', { ascending: false }).limit(1)
@@ -3425,7 +3574,7 @@ async function podTextSwapReport(db, { apply = false, logger = console } = {}) {
     entry.take = takes && takes[0] ? takes[0] : null
     if (apply && entry.state === 'pending' && entry.take) {
       const r = await applyPodTextSwaps({ db, recordist: { voiceId: swap.voiceId, spellings: [swap.voiceId] },
-        role: swap.side === 'known' ? 'known' : 'target1', text: swap.to, audioId: entry.take.id, logger })
+        role: swap.side === 'known' ? 'known' : 'target1', text: swap.to, audioId: entry.take.id, switched, logger })
       entry.applied = r.linked.filter((l) => l.sentenceId === swap.sentenceId)
       entry.skipped = r.skipped.filter((l) => l.sentenceId === swap.sentenceId)
       if (r.linked.length) {
@@ -3456,13 +3605,14 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   // course's LEGO intros also reads that course's once-recorded intro pieces first (job #210, intro-piece-lines.cjs).
   // Their English LEGO cards follow (job #255, english-lego-lines.cjs): one English take per new LEGO still owed.
   const englishLegoLines = englishLegos.englishLegoLinesFor(recordist, await fetchEnglishLegoInputs(db, recordist))
+  // A video's narration (job #572, video-voiceover-lines.cjs) is its own card, read by the voice the script names.
   // The Pod 1 English card (job #537, pod-english-lines.cjs): North and South Pod 1's English, one line per spoken words.
   const podEnglishLines = podEnglish.podEnglishLinesFor(recordist, await fetchPodEnglishInputs(db, recordist))
   // Pod lines waiting on new words (job #551, pod-text-swaps.cjs): the new Welsh, read before the pod is changed.
   const podSwapLines = await podSwapLinesFor(db, recordist)
   // The Introductions card (job #587, intro-sentence-lines.cjs): every LEGO intro read whole, in course running order.
   const introSentenceLines = introSentences.introSentenceLinesFor(recordist, await fetchIntroSentenceInputs(db, recordist))
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines, ...introSentenceLines]
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...videoVoiceovers.voiceoverLinesFor(recordist), ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines, ...introSentenceLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
@@ -3511,8 +3661,11 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // 2026-09-11 — a confirmed upload IS a recording, regardless of any want,
     // verdict, re-cast or in-flight state — is enforced there, so nothing in
     // this loop may re-open a recorded line.
-    const isRecorded = isLineRecorded(line, { recordedKeys, spellings: recordist.spellings })
-    const hasTake = isRecorded
+    const hasTake = isLineRecorded(line, { recordedKeys, spellings: recordist.spellings })
+    // THE ONE EXCEPTION, PER LINE AND NAMED: a re-queue grant on the serving
+    // clip, for THIS reader (requeueGrant). Without one, a take is a recording.
+    const requeued = hasTake && !!line.requeueFor && recordist.spellings.includes(line.requeueFor)
+    const isRecorded = hasTake && !requeued
     // A WANT IS A MARK, NOT A STATE. `rerecordWanted` on a line that has a take
     // says our quality machinery would like a better read; it moves the line
     // neither in nor out of the outstanding set. The ARTIST's wire masks the
@@ -3521,7 +3674,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // `maskRejectedHistory: false` and sees the mark, the reason and the clip.
     // The deliberate second pass is the booth's own re-read switch, never a
     // queue entry.
-    const masked = maskRejectedHistory && !!line.rerecordWanted
+    const masked = maskRejectedHistory && (!!line.rerecordWanted || requeued)
     if (isRecorded) recorded += 1
     const tk = [line.courseCode, line.kind || 'pod', line.role || '', line.podSlug || '', line.podId || ''].join('|')
     let t = tallyOf.get(tk)
@@ -3564,6 +3717,10 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         podId: line.podId || null,
         podSlug: line.podSlug || null,
         podTitle: line.podTitle || null,
+        // The pod line's scene, carried through so the booth home can say where an unfinished
+        // pod picks up ("Starts at scene 15", booth-home.cjs firstLeftOf, job #8·AA). Dropped
+        // here until job #44·AA, so Dan's live card read "Starts at line 69 of 90" with no scene.
+        scene: line.scene == null ? null : line.scene,
         role: line.role || null,
         rerecordReason: masked ? null : (line.rerecordReason || null),
         // Which seed sentence this is, for the surface to say so in words. Null
@@ -3587,6 +3744,12 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
         // which piece of which seed it is. Null on every other kind.
         legoId: (line.kind === 'lego' || line.kind === introSentences.INTRO_SENTENCE_KIND) ? (line.legoId || null) : null,
+        // On an Introductions line: the OTHER course(s) whose card carries the same sentence (one take fills both).
+        sharedWith: line.kind === introSentences.INTRO_SENTENCE_KIND ? (line.sharedWith || []) : null,
+        // On an Introductions line: where it sits in its course — {legoN, seedPosition, belt} (job #584).
+        coursePlace: line.kind === introSentences.INTRO_SENTENCE_KIND ? (line.coursePlace || null) : null,
+        // A video voiceover line (job #572): which step of which video, and how long the take may run. Null elsewhere.
+        voiceover: line.kind === 'voiceover' ? (line.voiceover || null) : null,
         // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,
         // straight off the sentence's own atom_map_fine. On the wire because the
         // booth draws them as the pause marks, and because the aligner gates on
@@ -4428,6 +4591,9 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
 }
 
 module.exports = {
+  // Exported for the wire-shape test (recordist-queue-scene-wire.test.cjs).
+  finishQueue,
+  peekPhrasePlan,
   // The Introductions card's reads (job #587).
   fetchIntroSentenceInputs,
   invalidateIntroSentenceInputs,
@@ -4513,11 +4679,11 @@ module.exports = {
   audioOriginsById,
   SYNTHETIC_MODES,
   // Practice phrases (job #619).
-  buildPhrasePlan,
-  getPhrasePlan,
   invalidatePhrasePlan,
   afterCourseContentEdit,
   withPhraseBatch,
+  buildPhrasePlan,
+  getPhrasePlan,
   linkPhraseTake,
   phraseLineRecorded,
 }

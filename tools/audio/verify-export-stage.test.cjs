@@ -12,8 +12,15 @@ describe('verify-export-stage', () => {
     expect(collectManifestUuids(m)).toEqual(['I', 'E', 'A', 'B', 'E'])
   })
 
+  it('a sox-less run (every measure errored, no format check) does NOT pass (job #994)', () => {
+    const s = summarise({ total: 2, existing: 2, missing: 0, durationChecked: 2, durationErrors: 2, durationMismatched: 0, formatChecked: 0, formatFailed: 0,
+      durationErrorDetails: [{ uuid: 'A', error: 'spawn sox ENOENT' }] })
+    expect(s.wouldPass).toBe(false)
+    expect(s.audioCheckGap).toMatch(/2 of 2 files could not be measured/)
+  })
+
   it('missing or badly encoded blocks; duration mismatches alone do not', () => {
-    expect(summarise({ total: 3, existing: 3, missing: 0, formatFailed: 0, durationMismatched: 9 }).wouldPass).toBe(true)
+    expect(summarise({ total: 3, existing: 3, missing: 0, formatFailed: 0, durationMismatched: 9, durationChecked: 3, durationErrors: 0, formatChecked: 3 }).wouldPass).toBe(true)
     expect(summarise({ total: 3, existing: 2, missing: 1, formatFailed: 0 }).wouldPass).toBe(false)
     const s = summarise({ total: 3, existing: 3, missing: 0, formatFailed: 2, formatFailDetails: [{ uuid: 'x' }, { uuid: 'X' }] })
     expect(s.wouldPass).toBe(false)

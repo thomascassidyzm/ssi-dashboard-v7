@@ -1,0 +1,101 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0660L01B01",
+  "expect": {
+   "known_text": "to help",
+   "target_text": "helfen"
+  },
+  "set": {
+   "known_text": "yes, I can help you all",
+   "target_text": "ja, ich kann euch allen helfen"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B01",
+  "slot": "known",
+  "audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B01",
+  "slot": "target1",
+  "audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B01",
+  "slot": "target2",
+  "audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0660L01B02",
+  "expect": {
+   "known_text": "he also wants to help",
+   "target_text": "er will auch helfen"
+  },
+  "set": {
+   "known_text": "I think I can help you all",
+   "target_text": "ich denke, ich kann euch allen helfen"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B02",
+  "slot": "known",
+  "audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B02",
+  "slot": "target1",
+  "audio_id": "1f1b6947-1d3d-4bc3-89dc-ce5b1b7ea8d1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B02",
+  "slot": "target2",
+  "audio_id": "1bf6cc4e-c825-4bbb-84a4-69e79dee5856"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0660L01B03",
+  "expect": {
+   "known_text": "I also tried to help",
+   "target_text": "ich habe auch versucht zu helfen"
+  },
+  "set": {
+   "known_text": "I hope I can help you all",
+   "target_text": "ich hoffe, ich kann euch allen helfen"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B03",
+  "slot": "known",
+  "audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B03",
+  "slot": "target1",
+  "audio_id": "a0e2e152-e9c0-40cb-97e8-5feb6f7693a7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0660L01B03",
+  "slot": "target2",
+  "audio_id": "b114296c-c182-446a-b115-372a34d0b86e"
+ }
+]

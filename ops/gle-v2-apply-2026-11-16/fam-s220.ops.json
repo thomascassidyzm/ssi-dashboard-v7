@@ -1,0 +1,275 @@
+{
+"family": "s220",
+"seeds": [
+220
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 220,
+"set": {
+"known_text": "Do you watch much television?",
+"target_text": "An mbíonn tú ag féachaint ar an teilifís mórán?"
+},
+"expect": {
+"known_text": "Did you watch a bit of television?",
+"target_text": "ar fhéach tú ar bheagán teilifíse?"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 220,
+"lego_index": 3,
+"known_text": "do you watch",
+"target_text": "an mbíonn tú ag féachaint ar",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "do you watch",
+"target": "an mbíonn tú ag féachaint ar"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 220,
+"lego_index": 4,
+"known_text": "the television",
+"target_text": "an teilifís",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "the television",
+"target": "an teilifís"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 220,
+"lego_index": 5,
+"known_text": "much",
+"target_text": "mórán",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L04B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 4,
+"position": 101,
+"known_text": "watching television tonight",
+"target_text": "féachaint ar an teilifís anocht",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0288L02B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 31,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L04B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 4,
+"position": 102,
+"known_text": "watching television with them",
+"target_text": "féachaint ar an teilifís leo",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0288L02B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 28,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L04B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 4,
+"position": 103,
+"known_text": "I like watching television",
+"target_text": "is maith liom féachaint ar an teilifís",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0288L02B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 38,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 4,
+"position": 104,
+"known_text": "I enjoy watching television on Sunday",
+"target_text": "bainim taitneamh as féachaint ar an teilifís ar an Domhnach",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0288L02U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 59,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L04U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 4,
+"position": 105,
+"known_text": "it's unusual that you don't like watching television",
+"target_text": "tá sé neamhghnách nach maith leat féachaint ar an teilifís",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0288L02U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 58,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L04U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 4,
+"position": 106,
+"known_text": "I enjoy watching television with them",
+"target_text": "bainim taitneamh as féachaint ar an teilifís leo",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0288L02U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 48,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L04U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 4,
+"position": 107,
+"known_text": "do you know of many who like watching television",
+"target_text": "an bhfuil aithne agat ar mhórán ar maith leo féachaint ar an teilifís",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0297L02U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 69,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L03U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 220,
+"lego_index": 3,
+"position": 101,
+"known_text": "Do you watch much television?",
+"target_text": "An mbíonn tú ag féachaint ar an teilifís mórán?",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 47,
+"lego_count": 9
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0220L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "ar fhéach tú"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0220L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "ar bheagán teilifíse"
+}
+}
+]
+}

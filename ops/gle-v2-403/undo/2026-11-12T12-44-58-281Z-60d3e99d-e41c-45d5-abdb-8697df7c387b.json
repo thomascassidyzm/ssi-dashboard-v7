@@ -1,0 +1,429 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "60d3e99d-e41c-45d5-abdb-8697df7c387b",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:44:58.281Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-44-58-281Z-60d3e99d-e41c-45d5-abdb-8697df7c387b.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U07",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a bhfuil Gaeilge acu agus sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U08",
+      "set": {
+        "target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a bhfuil Gaeilge acu mar sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0122L01U02",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha mar tá sé ag éirí níos éasca"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0121L03U04",
+      "set": {
+        "target_text": "níor cheart duit do charr a úsáid anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0120L03U04",
+      "set": {
+        "target_text": "níor cheart duit dul ar an mbus ar a sé a chlog"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0119L04U04",
+      "set": {
+        "target_text": "ba cheart duit rud éigin a rá i nGaeilge sula n-imíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0119L03B02",
+      "set": {
+        "target_text": "ba cheart dom ceist a chur ort"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0117L02U05",
+      "set": {
+        "target_text": "ba cheart dom a dhéanamh níos fearr ná an uair dheireanach a labhair muid le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0117L01U05",
+      "set": {
+        "target_text": "ba cheart dom go cinnte Gaeilge a labhairt níos mó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0116L05U02",
+      "set": {
+        "target_text": "níor cheart duit botúin a dhéanamh mar seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0116L02U04",
+      "set": {
+        "target_text": "ba cheart duit an rogha a mhíniú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0115L04U03",
+      "set": {
+        "target_text": "ba cheart dom a bheith réidh le comhrá a bheith agam leo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L06U09",
+      "set": {
+        "target_text": "mothaím go bhfuil mé ábalta cuimhneamh ar níos mó ná inné ag labhairt Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L04U05",
+      "set": {
+        "target_text": "mothaím go bhfuil mé ag déanamh níos measa an tseachtain seo ach tá a fhios agam ba cheart dom leanúint ar aghaidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L03U10",
+      "set": {
+        "target_text": "dúirt sí go bhfuil mé ag déanamh go maith agus ba cheart dom leanúint ar aghaidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L02U15",
+      "set": {
+        "target_text": "mothaím go bhfuil mé ábalta cuimhneamh ar an rud a bhí mé ag iarraidh a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L02U05",
+      "set": {
+        "target_text": "mothaím go bhfuil mé ábalta rudaí a rá nach raibh mé ábalta a rá an tseachtain seo caite"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L02U03",
+      "set": {
+        "target_text": "mothaím go bhfuil mé ábalta cuimhneamh ar níos mó focal anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L02B07",
+      "set": {
+        "target_text": "mothaím go bhfuil mé ábalta tosú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L01U12",
+      "set": {
+        "target_text": "mothaím nach ceart dom a bheith buartha faoi bhotúin a dhéanamh anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L04U14",
+      "set": {
+        "target_text": "Ní raibh mé ábalta smaoineamh go tapa go leor le freagra a thabhairt in am"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L04U11",
+      "set": {
+        "target_text": "Ní raibh mé ábalta a rá cad ba mhian liom a rá mar ní raibh dóthain focal foghlamtha agam go fóill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L04U09",
+      "set": {
+        "target_text": "Ní raibh mé cinnte go raibh mé chun bheith ábalta críochnú gach rud ba mhian liom a dhéanamh inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L04U08",
+      "set": {
+        "target_text": "Ní raibh mé ábalta scíth a ligean mar bhí mé ag smaoineamh ar an iomarca rudaí ag an am céanna"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L04B05",
+      "set": {
+        "target_text": "ní raibh mé ábalta tuiscint a fháil air"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L01U12",
+      "set": {
+        "target_text": "ceapaim go bhfuil sé an-suimiúil go bhfuil tú ábalta a fhoghlaim a lán in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0111L02U10",
+      "set": {
+        "target_text": "dúirt mé go mbeadh níos mó ama de dhíth orm sula raibh mé ábalta rud nua a dhéanamh liom féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L05U06",
+      "set": {
+        "target_text": "Ní raibh sé ábalta scíth a ligean ar chor ar bith mar bhí an iomarca daoine timpeall"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L05U03",
+      "set": {
+        "target_text": "Ní raibh mé ábalta scíth a ligean aréir mar bhí mé ag smaoineamh ar an iomarca rudaí"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L05B05",
+      "set": {
+        "target_text": "ní raibh mé ábalta scíth a ligean"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L04U02",
+      "set": {
+        "target_text": "ba mhaith liom críochnú inniu ach ní raibh mé ábalta cuimhneamh ar gach rud a bhí mé ag iarraidh a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L04B05",
+      "set": {
+        "target_text": "Ní raibh mé ábalta críochnú in am"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L03U04",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta críochnú chomh tapa agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0109L01U05",
+      "set": {
+        "target_text": "ba cheart dom focail nua a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L01B03",
+      "set": {
+        "target_text": "Ní raibh muid ábalta é a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L05U02",
+      "set": {
+        "target_text": "níor cheart duit obair an lá ar fad"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L05U02",
+      "set": {
+        "target_text": "sin é an fáth nach raibh an freagra ar eolas aige"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U08",
+      "set": {
+        "target_text": "níl a fhios agam an fáth ach ceapaim nach bhfuil sé ar eolas go fóill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U05",
+      "set": {
+        "target_text": "má thuigeann tú nach bhfuil sé go fóill ar eolas ba cheart duit an fhírinne a fháil amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U04",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha nach bhfuil sé go fóill ar eolas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U01",
+      "set": {
+        "target_text": "sin é an fáth nach bhfuil sé ar eolas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U06",
+      "set": {
+        "target_text": "faraor sin é an fáth nach bhfuil a fhios agam an freagra"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U05",
+      "set": {
+        "target_text": "caithfidh muid athrú agus sin é an fáth a n-oibreoidh sé"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U04",
+      "set": {
+        "target_text": "bainim taitneamh as Gaeilge a fhoghlaim agus sin é an fáth nach bhfuil sé deacair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U03",
+      "set": {
+        "target_text": "sin é an fáth nach miste leat Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U02",
+      "set": {
+        "target_text": "sin é an fáth a dúirt tú go raibh míle maith agat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U01",
+      "set": {
+        "target_text": "sin é an fáth nach bhfuil sé éasca Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B04",
+      "set": {
+        "target_text": "sin é an fáth a n-oibreoidh sé anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B03",
+      "set": {
+        "target_text": "aontaím agus sin é an fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B02",
+      "set": {
+        "target_text": "ach sin é an fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B01",
+      "set": {
+        "target_text": "sin é an fáth nach bhfuil sé ag obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U07",
+      "set": {
+        "target_text": "ba cheart duit gach rud atá á dhéanamh againn a athrú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04U01",
+      "set": {
+        "target_text": "ba cheart duit an rud atá deacair a athrú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U06",
+      "set": {
+        "target_text": "go raibh maith agat ach ba cheart dom é a athrú anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02B03",
+      "set": {
+        "target_text": "ba cheart duit gach rud a athrú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L01U08",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha ach caithfidh muid feabhsú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L05U15",
+      "set": {
+        "target_text": "ceapaim gur cheart do dhuine éigin eile iarracht a dhéanamh é sin a thaispeáint duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L04U13",
+      "set": {
+        "target_text": "Tá focal eile de dhíth orm le bheith ábalta an freagra ceart a thabhairt duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L04U11",
+      "set": {
+        "target_text": "Tá focal eile de dhíth orm sula mbeidh mé ábalta a thaispeáint duit cad atá i gceist agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L04U10",
+      "set": {
+        "target_text": "Tá focal eile de dhíth uirthi sula mbeidh sí ábalta críochnú cad atá i gceist aici"
+      }
+    }
+  ]
+}

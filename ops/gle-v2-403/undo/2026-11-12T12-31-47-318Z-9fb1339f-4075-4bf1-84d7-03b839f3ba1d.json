@@ -1,0 +1,813 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "9fb1339f-4075-4bf1-84d7-03b839f3ba1d",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:31:47.318Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-31-47-318Z-9fb1339f-4075-4bf1-84d7-03b839f3ba1d.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0208L02U10",
+      "set": {
+        "decomposition": [
+          {
+            "known": "yes",
+            "legoId": "S0097L01",
+            "target": "tá",
+            "isGhost": false
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " fhios",
+            "isGhost": true
+          },
+          {
+            "known": "I have",
+            "legoId": "S0089L05",
+            "target": " agam",
+            "isGhost": false
+          },
+          {
+            "known": "how to say it",
+            "legoId": "S0208L02",
+            "target": " conas é a rá",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "now",
+            "legoId": "S0001L05",
+            "target": " anois",
+            "isGhost": false
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "I am",
+            "legoId": "S0038L01",
+            "target": " tá mé",
+            "isGhost": false
+          },
+          {
+            "known": "very happy",
+            "legoId": "S0076L02",
+            "target": " an-sásta",
+            "isGhost": false
+          },
+          {
+            "known": "because",
+            "legoId": "S0022L01",
+            "target": " mar",
+            "isGhost": false
+          },
+          {
+            "known": "he wasn't",
+            "legoId": "S0148L01",
+            "target": " ní raibh sé",
+            "isGhost": false
+          },
+          {
+            "known": "easy",
+            "legoId": "S0064L01",
+            "target": " éasca",
+            "isGhost": false
+          },
+          {
+            "known": "to learn it",
+            "legoId": "S0020L03",
+            "target": " a fhoghlaim",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0208L02U01",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I didn't want to ask you",
+            "legoId": "S0208L01",
+            "target": "Níor mhian liom ceist a chur ort",
+            "isGhost": false
+          },
+          {
+            "known": "how to say it",
+            "legoId": "S0208L02",
+            "target": " conas é a rá",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "but",
+            "legoId": "S0019L01",
+            "target": " ach",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhí",
+            "isGhost": true
+          },
+          {
+            "known": "of me",
+            "legoId": "S0169L02",
+            "target": " orm",
+            "isGhost": false
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " fhios",
+            "isGhost": true
+          },
+          {
+            "known": "to be",
+            "legoId": "S0026L02",
+            "target": " a bheith",
+            "isGhost": false
+          },
+          {
+            "known": "I have",
+            "legoId": "S0089L05",
+            "target": " agam",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L03U11",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I think that",
+            "legoId": "S0163L01",
+            "target": "ceapaim go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "it",
+            "legoId": "S0163L02",
+            "target": " sé",
+            "isGhost": false
+          },
+          {
+            "known": "important",
+            "legoId": "S0065L02",
+            "target": " tábhachtach",
+            "isGhost": false
+          },
+          {
+            "known": "to make sure",
+            "legoId": "S0200L03",
+            "target": " a chinntiú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that there is",
+            "legoId": "S0089L02",
+            "target": " go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " gach",
+            "isGhost": true
+          },
+          {
+            "known": "someone",
+            "legoId": "S0128L02",
+            "target": " duine",
+            "isGhost": false
+          },
+          {
+            "known": "happy",
+            "legoId": "S0106L03",
+            "target": " sásta",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sula",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " n-imíonn",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " muid",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L03U08",
+      "set": {
+        "decomposition": [
+          {
+            "known": "she wanted",
+            "legoId": "S0053L01",
+            "target": "ba mhian léi",
+            "isGhost": false
+          },
+          {
+            "known": "to make sure",
+            "legoId": "S0200L03",
+            "target": " a chinntiú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " go",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " raibh",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " mé",
+            "isGhost": true
+          },
+          {
+            "known": "happy",
+            "legoId": "S0106L03",
+            "target": " sásta",
+            "isGhost": false
+          },
+          {
+            "known": "with how much",
+            "legoId": "S0076L03",
+            "target": " leis an méid",
+            "isGhost": false
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhí",
+            "isGhost": true
+          },
+          {
+            "known": "done",
+            "legoId": "S0089L04",
+            "target": " déanta",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L02U09",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "dúirt",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "that they want",
+            "legoId": "S0200L02",
+            "target": " gur mian leo",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "to make sure",
+            "legoId": "S0200L03",
+            "target": " a chinntiú",
+            "isGhost": false
+          },
+          {
+            "known": "that there is",
+            "legoId": "S0089L02",
+            "target": " go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " muid",
+            "isGhost": true
+          },
+          {
+            "known": "happy",
+            "legoId": "S0106L03",
+            "target": " sásta",
+            "isGhost": false
+          },
+          {
+            "known": "for",
+            "legoId": "S0038L03",
+            "target": " le",
+            "isGhost": false
+          },
+          {
+            "known": "everything",
+            "legoId": "S0045L02",
+            "target": " gach rud",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L01U13",
+      "set": {
+        "decomposition": [
+          {
+            "known": "they say",
+            "legoId": "S0200L01",
+            "target": "deir siad",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that there is",
+            "legoId": "S0089L02",
+            "target": " go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " siad",
+            "isGhost": true
+          },
+          {
+            "known": "very happy",
+            "legoId": "S0076L02",
+            "target": " an-sásta",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " leis",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " an",
+            "isGhost": true
+          },
+          {
+            "known": "to work",
+            "legoId": "S0106L05",
+            "target": " obair",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " atá",
+            "isGhost": true
+          },
+          {
+            "known": "done",
+            "legoId": "S0089L04",
+            "target": " déanta",
+            "isGhost": false
+          },
+          {
+            "known": "so far",
+            "legoId": "S0187L03",
+            "target": " go dtí seo",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L01U09",
+      "set": {
+        "decomposition": [
+          {
+            "known": "they say",
+            "legoId": "S0200L01",
+            "target": "deir siad",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that there is",
+            "legoId": "S0089L02",
+            "target": " go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " an",
+            "isGhost": true
+          },
+          {
+            "known": "to work",
+            "legoId": "S0106L05",
+            "target": " obair",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dul",
+            "isGhost": true
+          },
+          {
+            "known": "well",
+            "legoId": "S0055L04",
+            "target": " go maith",
+            "isGhost": false
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "that there is",
+            "legoId": "S0089L02",
+            "target": " go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " muid",
+            "isGhost": true
+          },
+          {
+            "known": "very happy",
+            "legoId": "S0076L02",
+            "target": " an-sásta",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " leis",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L03U04",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "dúirt",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " gur",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " mhian",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " léi",
+            "isGhost": true
+          },
+          {
+            "known": "to work",
+            "legoId": "S0106L05",
+            "target": " obair",
+            "isGhost": false
+          },
+          {
+            "known": "for the council",
+            "legoId": "S0198L03",
+            "target": " don chomhairle",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "that there is",
+            "legoId": "S0089L02",
+            "target": " go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "very happy",
+            "legoId": "S0076L02",
+            "target": " an-sásta",
+            "isGhost": false
+          },
+          {
+            "known": "now",
+            "legoId": "S0001L05",
+            "target": " anois",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L03U01",
+      "set": {
+        "decomposition": [
+          {
+            "known": "works",
+            "legoId": "S0197L01",
+            "target": "oibríonn",
+            "isGhost": false
+          },
+          {
+            "known": "my daughter",
+            "legoId": "S0198L02",
+            "target": " m'iníon",
+            "isGhost": false
+          },
+          {
+            "known": "for the council",
+            "legoId": "S0198L03",
+            "target": " don chomhairle",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "yes",
+            "legoId": "S0097L01",
+            "target": " tá",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "very happy",
+            "legoId": "S0076L02",
+            "target": " an-sásta",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ansin",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L02U01",
+      "set": {
+        "decomposition": [
+          {
+            "known": "is",
+            "legoId": "S0141L02",
+            "target": "Tá",
+            "isGhost": false
+          },
+          {
+            "known": "my daughter",
+            "legoId": "S0198L02",
+            "target": " m'iníon",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "to work",
+            "legoId": "S0106L05",
+            "target": " obair",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ansin",
+            "isGhost": true
+          },
+          {
+            "known": "and",
+            "legoId": "S0112L02",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "is",
+            "legoId": "S0141L02",
+            "target": " tá",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "very happy",
+            "legoId": "S0076L02",
+            "target": " an-sásta",
+            "isGhost": false
+          },
+          {
+            "known": "about",
+            "legoId": "S0083L04",
+            "target": " faoi",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 1111
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0189L02U05",
+      "set": {
+        "decomposition": [
+          {
+            "known": "yes that's a good idea",
+            "legoId": "S0189L02",
+            "target": "Is ea, is smaoineamh maith é sin",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "it's time",
+            "legoId": "S0093L01",
+            "target": " tá sé in am",
+            "isGhost": false
+          },
+          {
+            "known": "to leave",
+            "legoId": "S0093L02",
+            "target": " imeacht",
+            "isGhost": false
+          },
+          {
+            "known": "now",
+            "legoId": "S0001L05",
+            "target": " anois",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0188L01U06",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I'm not ready yet",
+            "legoId": "S0096L02",
+            "target": "níl mé réidh fós",
+            "isGhost": false
+          },
+          {
+            "known": "so",
+            "legoId": "S0188L01",
+            "target": " mar sin",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "I can't",
+            "legoId": "S0057L01",
+            "target": " ní féidir liom",
+            "isGhost": false
+          },
+          {
+            "known": "to leave",
+            "legoId": "S0093L02",
+            "target": " imeacht",
+            "isGhost": false
+          },
+          {
+            "known": "now",
+            "legoId": "S0001L05",
+            "target": " anois",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    }
+  ]
+}

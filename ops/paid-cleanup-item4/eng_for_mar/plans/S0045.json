@@ -1,0 +1,59 @@
+{
+ "seed": 45,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "उत्तर काय आहे ते माहित",
+     "know what the answer is"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "उत्तर काय आहे ते तुम्हाला माहित आहे का?",
+     "do you know what the answer is?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "त्याबद्दल सगळं",
+     "everything about it"
+    ],
+    "B04": [
+     "सगळं आठवणे",
+     "to remember everything"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "मला सगळं समजावून सांगायचं होतं",
+     "I wanted to explain everything"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "माहित असायची गरज नाही",
+     "don't need to know"
+    ],
+    "B04": [
+     "सगळं आठवायची गरज नाही",
+     "don't need to remember everything"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "तुम्हाला सगळं समजावून सांगायची गरज नाही",
+     "you don't need to explain everything"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

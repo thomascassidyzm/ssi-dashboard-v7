@@ -4,6 +4,10 @@
   <div v-if="sandboxCode" class="sandbox-banner" role="status">
     <strong>Hidden / Sandbox</strong> — {{ courseName(sandboxCode) }} ({{ sandboxCode }}) is hidden from learners. It is not the live course.
   </div>
+  <!-- A new build is out but this page is holding the reload so nothing is lost (versionReload.js). -->
+  <div v-if="reloadWaiting" class="new-version-banner" role="status" data-testid="new-version-banner">
+    A new version of Popty is ready. It will load when you finish — keep going.
+  </div>
   <router-view />
 
   <!-- Theme toggle now lives in the account menu (AppNavbar) — see ThemeToggle item there. -->
@@ -21,6 +25,7 @@ import { useRoute } from 'vue-router'
 import AppNavbar from './components/AppNavbar.vue'
 import { courseName, isSandboxCourse } from './utils/languageNames'
 import { getServerCourseRow } from './services/supabase'
+import { reloadWaiting } from './router/versionReload'
 
 const route = useRoute()
 
@@ -40,6 +45,14 @@ const gitCommit = __GIT_COMMIT__
 </script>
 
 <style scoped>
+.new-version-banner {
+  padding: 6px 16px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--ink, #e5e7eb);
+  background: var(--surface-2, rgba(127, 127, 127, 0.15));
+  border-bottom: 1px solid var(--border, rgba(127, 127, 127, 0.3));
+}
 .sandbox-banner {
   padding: 8px 16px;
   font-size: 13px;

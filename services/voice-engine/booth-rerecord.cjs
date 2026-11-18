@@ -121,6 +121,36 @@ function similarity(a, b) {
 const MATCH_SAME_SEED = 0.34
 const MATCH_TEXT_ONLY = 0.75
 
+/**
+ * A SHARED TAKE MUST READ AS THIS LINE BEFORE ONE EDIT (Kai, 2026-11-11, job #234).
+ *
+ * Sharing (job #159, below) hands a line an old take on nothing firmer than "same seed, a third of
+ * the words alike". On Auke's fry_for_eng card it shared out 20 old takes, 19 of them to lines he had
+ * never read in those words: after #229 (takommende → takommend jier) the seed-176 sentence take and the LEGO take
+ * were shared out to eight unread seed-176 phrases ("miskien takommend jier" shown as once saying
+ * "takommende jier"; "sy wol witte oft er helpe kin" as once saying the whole seed sentence), and
+ * #121 (betinke → heuge) did the same across seed 57. The words the card showed as "old" were never
+ * that line's words.
+ *
+ * An edit changes one stretch of a line and leaves the words around it. So the take must keep the
+ * line's opening and closing words: the words the two share at the start plus those at the end
+ * must be at least SHARED_KEEP of the LONGER of the two. "ond sut wyt ti'n teimlo?" from "ond sut
+ * dach chi'n teimlo?" keeps 3 of 5; a phrase from its seed's sentence, or a LEGO take inside a
+ * longer phrase, keeps far less. Only the shared pairing is held to this: a line's own best take
+ * (the first pass) stays as it was, as a LEGO's whole text is often the one stretch edited.
+ */
+const SHARED_KEEP = 0.5
+function couldBeEditOf(lineText, takeText) {
+  const a = words(lineText)
+  const b = words(takeText)
+  const n = Math.min(a.length, b.length)
+  let head = 0
+  while (head < n && a[head] === b[head]) head += 1
+  let tail = 0
+  while (tail < n - head && a[a.length - 1 - tail] === b[b.length - 1 - tail]) tail += 1
+  return (head + tail) / Math.max(a.length, b.length, 1) >= SHARED_KEEP
+}
+
 /** course_audio role a line's take is filed under, when the line says. */
 function takeRoleOf(line) {
   const r = line && line.role
@@ -196,7 +226,8 @@ function pairTextChanges(lines, liveKeys, takes) {
   const seen = new Set()
   for (const p of pairs) {
     if (p.line.recorded || out.has(p.line.id) || seen.has(p.line.id)) continue
-    seen.add(p.line.id) // pairs are sorted best first: this is the line's best take
+    if (!couldBeEditOf(p.line.text, p.take.text)) continue // job #234: the take must read as this line before ONE edit
+    seen.add(p.line.id) // pairs are sorted best first: this is the line's best take that could be its old words
     if (!usedTakes.has(p.take.id) || claimedByRecorded.has(p.take.id) || p.s < 1 + MATCH_SAME_SEED) continue // sharing needs the seed to agree; a take a RECORDED line claimed (job #261) is never shared
     out.set(p.line.id, p.take)
     sharedTakes.add(p.line.id)
@@ -294,44 +325,6 @@ function buildRerecordList(queue, takes = [], idx = indexQueue(queue)) {
 }
 
 /**
- * THE FOURTH REASON, 'didnt_match' (job #842, Tom's condition on moving the script check after
- * the upload's reply): a take that was SAVED but whose background whisper check says it does not
- * say its line (services/take-text-check-queue.cjs failuresFor). Unlike the other three the line
- * IS recorded — that is the point: the take is stored, and still needs reading again. A failure
- * for a line no longer in the reader's lines is dropped (nothing to open).
- *
- * @param {{items, pool, firstIndex}} list buildRerecordList's result (not mutated)
- * @param {object[]} failures {lineId, takeId, heard, reason, checkedAt}
- * @returns {{items, pool, firstIndex}} the list with didnt_match items added, in course order
- */
-function withTextCheckFailures(list, failures = []) {
-  const byId = new Map(list.items.map((it) => [it.lineId, it]))
-  for (const f of failures || []) {
-    const p = f && list.pool.get(f.lineId)
-    if (!p) continue
-    const l = p.line
-    // The failed take is the line's newest news: it outranks a skip or a text change.
-    byId.set(l.id, {
-      lineId: l.id,
-      why: 'didnt_match',
-      text: l.text,
-      knownText: l.knownText || null,
-      oldText: null,
-      recordedAt: f.takenAt || null,
-      heard: f.heard || null,
-      takeId: f.takeId || null,
-      kind: l.kind || 'pod',
-      courseCode: l.courseCode || null,
-      seedNumber: l.seedNumber || null,
-      track: p.track,
-      batch: p.batch,
-    })
-  }
-  const order = courseOrder([...byId.keys()].map((id) => list.pool.get(id).line), list.firstIndex)
-  return { ...list, items: order.map((l) => byId.get(l.id)) }
-}
-
-/**
  * THE RE-RECORD BATCH's lines, for the record screen: every listed line plus the `also` ids the
  * page sends (its refused takes), unrecorded ones only, in course order. Each wire line carries
  * `rerecordWhy` (and `rerecordOldText` for a text change) so the screen can say why it is there.
@@ -349,8 +342,6 @@ function rerecordBatchLines(list, alsoIds = []) {
       ...l,
       rerecordWhy: w.why,
       rerecordOldText: w.oldText || null,
-      // a saved take that did not match its words: what whisper heard, and which take (job #842)
-      ...(w.why === 'didnt_match' ? { rerecordHeard: w.heard || null, rerecordTakeId: w.takeId || null } : {}),
     }
   })
 }
@@ -407,9 +398,9 @@ function withEditors(list, editors = new Map()) {
 }
 
 module.exports = {
-  editRowOf, withEditors,
+  editRowOf, withEditors, couldBeEditOf, SHARED_KEEP,
   goneAmong,
   RERECORD_TRACK, REACHED_DENSITY, MATCH_SAME_SEED, MATCH_TEXT_ONLY,
   batchesOf, skippedIn, similarity, pairTextChanges, courseOrder, indexQueue, isOrphanTake,
-  buildRerecordList, rerecordBatchLines, recordedAmong, withTextCheckFailures,
+  buildRerecordList, rerecordBatchLines, recordedAmong,
 }

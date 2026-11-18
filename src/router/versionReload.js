@@ -8,7 +8,18 @@
 // device) — any other page, an editor with words half typed, is left alone and gets the new
 // build on its next page move. Nothing reloads while a page HOLDS it because leaving would lose
 // work (the booth while the mic is live); then it reloads the moment that hold is let go.
+//
+// A HELD RELOAD IS SAID OUT LOUD (Auke, fry_for_eng, 2026-11-02, job #43). The Record Room's
+// script recorder never held the reload at all, so a deploy mid-session reloaded the tab and
+// every take still in its in-memory upload queue went with it. It holds now, and while a new
+// build is waiting on a hold `reloadWaiting` is true, so the page can show a quiet "a new version
+// is ready, it will load when you finish" instead of either reloading or saying nothing.
+import { ref } from 'vue'
+
 export const VERSION_POLL_MS = 5 * 60 * 1000
+
+/** True while a new build has been seen and its reload is waiting for a hold to be let go. */
+export const reloadWaiting = ref(false)
 
 const holds = new Set()
 const idleOk = new Set()
@@ -28,6 +39,7 @@ export function holdReload(key, on) {
   if (!holds.size && pendingReload) {
     const go = pendingReload
     pendingReload = null
+    reloadWaiting.value = false
     go()
   }
 }
@@ -54,7 +66,7 @@ export function installVersionReload({ current, fetchLatest, reload, router = nu
         newBuildSeen = true
       }
       if (timed && !idleOk.size) return
-      if (reloadHeld()) pendingReload = reload
+      if (reloadHeld()) { pendingReload = reload; reloadWaiting.value = true }
       else reload()
     } catch { /* offline, or no version.json yet */ } finally { checking = false }
   }
@@ -70,4 +82,4 @@ export function installVersionReload({ current, fetchLatest, reload, router = nu
 }
 
 /** Test seam: forget every hold and any reload waiting on one. */
-export function resetVersionReload() { holds.clear(); idleOk.clear(); pendingReload = null; newBuildSeen = false }
+export function resetVersionReload() { holds.clear(); idleOk.clear(); pendingReload = null; newBuildSeen = false; reloadWaiting.value = false }

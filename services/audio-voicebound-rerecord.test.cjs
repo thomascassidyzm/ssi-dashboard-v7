@@ -58,7 +58,7 @@ beforeEach(() => {
 afterEach(() => { if (restore) restore(); restore = null; castGate.useCastRows(null); clipLib.useClipLibrary(null); guardMod.useSpendGuard(null) })
 
 
-const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', phonologyGate: false, door: { courseCode: 'eng_for_hin', ...door } })
+const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', door: { courseCode: 'eng_for_hin', ...door } })
 
 /** The route's deps, with the provider and the DB in memory; `rows` is the library the course rows land in. */
 function deps(svc, rows, stored = []) {
@@ -85,7 +85,7 @@ const FEMALE_ID = `cartesia_${FEMALE}`
 const MALE = KRITI
 const MALE_ID = KRITI_ID
 const female = () => clip({ id: 'FEM1', course: 'deu_for_eng', text: 'guten tag', language: 'deu', voice: FEMALE_ID })
-const cfgMale = (d = {}) => ({ apiKey: 'k', voiceId: MALE, locale: 'de-DE', phonologyGate: false, door: { courseCode: 'deu_for_eng', language: 'deu', ...d } })
+const cfgMale = (d = {}) => ({ apiKey: 'k', voiceId: MALE, locale: 'de-DE', door: { courseCode: 'deu_for_eng', language: 'deu', ...d } })
 
 describe('regenerate-phrase asks for the requested voice only (job #741)', () => {
   it('REPRODUCTION: an any-voice door answers the male slot with the female clip (the 26 Sep swap)', async () => {
@@ -230,11 +230,11 @@ describe('the render route: voiceBound and re-record (job #741)', () => {
 
 describe('voice identity is the DEFAULT on the render route (job #944)', () => {
   const { providerForVoice } = require('./shared/render-voice-provider.cjs')
-  it('validate defaults voiceBound on; only an explicit false opts out', () => {
+  it('validate is voiceBound always; an explicit false no longer opts out (job #303)', () => {
     const { validate } = require('./shared/audio-render-entry.cjs')
     const b = { courseCode: 'c', role: 'target1', text: 't', purpose: 'p', requestedBy: 'x' }
     expect(validate(b).voiceBound).toBe(true)
-    expect(validate({ ...b, voiceBound: false }).voiceBound).toBe(false)
+    expect(validate({ ...b, voiceBound: false }).voiceBound).toBe(true)
   })
   it('the default reaches the door: a female clip of the same words does not answer an unflagged request', async () => {
     const { svc, paid } = door([female()])

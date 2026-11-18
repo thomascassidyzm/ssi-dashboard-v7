@@ -3,7 +3,9 @@
  * Run: npx vitest run services/shared/link-clip.test.cjs
  */
 import { describe, it, expect } from 'vitest'
-const { linkClips } = require('./link-clip.cjs')
+const linkLib = require('./link-clip.cjs')
+// These cases are about words, slots and races; the voice check has its own file (link-clip-voice.test.cjs).
+const linkClips = (a) => linkLib.linkClips({ checkVoice: async () => ({ ok: true }), ...a })
 
 const A = '11111111-1111-4111-8111-111111111111'
 const B = '22222222-2222-4222-8222-222222222222'
@@ -254,5 +256,40 @@ describe('pod sentence KNOWN segment with the wrong words (job #570)', () => {
     const out = await linkClips({ db, courseCode: 'cym_n_for_eng', bump, links: [{ podSentenceId: id, role: 'knownsegment', audioId: BUSY, replace: true, expectCurrent: BYE }] })
     expect(out.results[0].code).toBe('TEXT_MISMATCH')
     expect(t.listening_pod_sentences[0].sentence_known_audio_ids).toEqual([S1, S2, BYE])
+  })
+})
+
+describe('linkClips approval (kai:/tom: human-take grant)', () => {
+  const link = [{ seedNumber: 12, role: 'target1', audioId: B, replace: true, expectCurrent: C }]
+  // a pg-shaped client that records every statement; the trigger is simulated: refuse unless the setting was issued
+  const pgClient = (log) => {
+    let granted = null
+    return {
+      async query(sql, params) {
+        log.push([sql, params])
+        if (/set_config/.test(sql)) granted = params[0]
+        if (/^UPDATE/.test(sql)) { if (!/^tom:/.test(granted || '')) throw new Error('HUMAN TAKE LOCK'); return { rows: [{ id: 's1' }] } }
+        return { rows: [] }
+      },
+      async end() {},
+    }
+  }
+  const held = () => { const t = world(); t.course_seeds[0].target1_audio_id = C; return t }
+  it('a kai: approval relinks inside one transaction that sets the setting transaction-locally, bound not spliced', async () => {
+    const log = []
+    const out = await linkClips({ db: fakeDb(held()), courseCode: 'cym_nv2_for_eng', links: link, bump, connect: async () => pgClient(log), approval: 'kai:2026-10-30:relink to Milla clips' })
+    expect(out.ok).toBe(true); expect(out.linked).toBe(1)
+    const sqls = log.map((l) => l[0])
+    expect(sqls[0]).toBe('BEGIN'); expect(sqls[1]).toMatch(/set_config\('popty\.tom_human_take_approval', \$1, true\)/)
+    expect(log[1][1]).toEqual(['tom:2026-10-30:kai-authorised: relink to Milla clips'])
+    expect(sqls[sqls.length - 1]).toBe('COMMIT')
+  })
+  it('a malformed approval is BAD_APPROVAL and writes nothing', async () => {
+    const out = await linkClips({ db: fakeDb(held()), courseCode: 'cym_nv2_for_eng', links: link, bump, connect: async () => pgClient([]), approval: 'yes please' })
+    expect(out.code).toBe('BAD_APPROVAL')
+  })
+  it('no approval opens no transaction (the REST path, and the lock, stay as they were)', async () => {
+    const out = await linkClips({ db: fakeDb(held()), courseCode: 'cym_nv2_for_eng', links: link, bump, connect: async () => { throw new Error('must not connect') } })
+    expect(out.ok).toBe(true)
   })
 })

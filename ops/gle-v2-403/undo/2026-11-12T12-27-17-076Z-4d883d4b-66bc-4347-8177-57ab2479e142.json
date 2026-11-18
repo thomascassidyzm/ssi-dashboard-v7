@@ -1,0 +1,450 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "4d883d4b-66bc-4347-8177-57ab2479e142",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:27:17.076Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-27-17-076Z-4d883d4b-66bc-4347-8177-57ab2479e142.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0145L02B02",
+      "set": {
+        "known_text": "why are you not",
+        "target_text": "cén fáth nach bhfuil tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0145L02B01",
+      "set": {
+        "known_text": "are you not ready",
+        "target_text": "nach bhfuil tú réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L04U14",
+      "set": {
+        "target_text": "dúirt sí liom go bhfuil sé ar fad ceart go leor, tá sí sásta cabhrú liom Gaeilge a chleachtadh go minic"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L04U06",
+      "set": {
+        "target_text": "dúirt sí liom go bhfuil sé ar fad ceart go leor agus go bhfuil sí sásta bualadh linn go minic"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L04U04",
+      "set": {
+        "target_text": "dúirt sí go bhfuil sé ceart go leor más mian liom labhairt a chleachtadh go minic, tá sí sásta cabhrú liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L04U01",
+      "set": {
+        "target_text": "fadhb ar bith, tá gach rud ceart go leor agus tá mé sásta cabhrú leat labhairt a chleachtadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L02U07",
+      "set": {
+        "target_text": "tá do charr ciúin agus tá do chara sásta inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L01U01",
+      "set": {
+        "target_text": "fadhb ar bith tá gach rud ceart go leor agus tá mé sásta cabhrú leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U04",
+      "set": {
+        "target_text": "go raibh maith agat seo an áit ar mhian le mo chara agus tá mé an-sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0137L05U01",
+      "set": {
+        "target_text": "tá sé níos tábhachtaí a bheith sásta ná a bheith foirfe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0137L01U04",
+      "set": {
+        "target_text": "tá sé níos tábhachtaí obair go dian ná a bheith sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0137L01B04",
+      "set": {
+        "target_text": "tá sé níos tábhachtaí a bheith sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0136L03U07",
+      "set": {
+        "target_text": "Tá mé chomh sásta mar is cara liom í"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0133L02U04",
+      "set": {
+        "target_text": "Tá mé chomh sásta nuair a oibríonn sibh le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0133L01U07",
+      "set": {
+        "target_text": "cuireann tú aithne mhaith ar dhuine nuair atá tú sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U04",
+      "set": {
+        "target_text": "bhí mé an-sásta leis an méid a bhí á rá aici"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0131L05U06",
+      "set": {
+        "known_text": "i feel so happy in my head today",
+        "target_text": "mothaím chomh sásta i mo cheann inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U08",
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil mé go cinnte ag déanamh níos fearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U06",
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil sí ag déanamh go maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U05",
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil tú ag leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U04",
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil mé ábalta Gaeilge a labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U03",
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil mé ag feabhsú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U02",
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil mé ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U01",
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil tú ag déanamh chomh maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01C01",
+      "set": {
+        "target_text": "chomh sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01B04",
+      "set": {
+        "known_text": "so happy that you are",
+        "target_text": "chomh sásta go bhfuil tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01B01",
+      "set": {
+        "known_text": "so happy that",
+        "target_text": "chomh sásta go bhfuil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U03",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U12",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U07",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L02U03",
+      "set": {
+        "target_text": "creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L01U10",
+      "set": {
+        "target_text": "creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U09",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U10",
+      "set": {
+        "target_text": "ceapaim gur smaoineamh maith é sin agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L01U11",
+      "set": {
+        "target_text": "ceapaim go bhfuil go leor déanta agam in am gearr agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L01U09",
+      "set": {
+        "target_text": "ceapaim nach bhfuil mé réidh le comhrá a bheith agam leo fós ach tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0120L02U06",
+      "set": {
+        "target_text": "go raibh maith agat tá mé an-sásta gur maith leat an rogha"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0118L04U05",
+      "set": {
+        "target_text": "bhí mé an-sásta nuair a bhí muid ag obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L01U02",
+      "set": {
+        "target_text": "tá mé an-sásta mar is cairde muid"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L05U05",
+      "set": {
+        "known_text": "I don't enjoy waking in the middle of the night and I am not happy in the morning",
+        "target_text": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhím sásta ar maidin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L01U05",
+      "set": {
+        "known_text": "we were not happy but I think that it's a good thing",
+        "target_text": "ní raibh muid sásta ach ceapaim gur rud maith é"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L01B10",
+      "set": {
+        "known_text": "we were not happy yesterday",
+        "target_text": "ní raibh muid sásta inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03U08",
+      "set": {
+        "known_text": "thank you, I feel happy now",
+        "target_text": "go raibh maith agat, mothaím sásta anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03U07",
+      "set": {
+        "known_text": "I'm not going to be happy tomorrow",
+        "target_text": "ní bheidh mé sásta amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03U06",
+      "set": {
+        "known_text": "we are not happy at the moment",
+        "target_text": "níl muid sásta faoi láthair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03U05",
+      "set": {
+        "known_text": "I feel happy but tired",
+        "target_text": "mothaím sásta ach tuirseach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03U04",
+      "set": {
+        "known_text": "I'd like to be happy",
+        "target_text": "ba mhaith liom a bheith sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03U03",
+      "set": {
+        "known_text": "you should be happy now",
+        "target_text": "ba cheart duit a bheith sásta anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03U01",
+      "set": {
+        "known_text": "I wasn't happy last night",
+        "target_text": "ní raibh mé sásta aréir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03B04",
+      "set": {
+        "known_text": "we must be happy",
+        "target_text": "caithfidh muid a bheith sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03B03",
+      "set": {
+        "known_text": "I was happy yesterday",
+        "target_text": "bhí mé sásta inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03B02",
+      "set": {
+        "known_text": "I feel happy",
+        "target_text": "mothaím sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L03B01",
+      "set": {
+        "known_text": "happy and tired",
+        "target_text": "sásta agus tuirseach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0106L01U04",
+      "set": {
+        "target_text": "tá mé an-sásta mar ní chaithfidh muid dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L05U04",
+      "set": {
+        "target_text": "tá mé an-sásta go bhfuil an fhírinne ar eolas aige anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L05U09",
+      "set": {
+        "target_text": "Tá daoine eile ag iarraidh Gaeilge a fhoghlaim chomh maith agus tá mé sásta faoi sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L04U03",
+      "set": {
+        "known_text": "she's happy with how much is done so far and she thinks it's useful to carry on for a while before stopping",
+        "target_text": "Tá sí an-sásta leis an méid atá déanta go dtí seo agus ceapaim go bhfuil sé úsáideach leanúint ar aghaidh ar feadh tamaill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L04U02",
+      "set": {
+        "target_text": "Tá mé an-sásta leis an méid atá déanta inniu, agus tá mé chun leanúint ar aghaidh ar feadh tamaill sula gcaithfidh mé dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0088L01U01",
+      "set": {
+        "known_text": "I am not very happy at the moment",
+        "target_text": "níl mé an-sásta faoi láthair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0083L01U02",
+      "set": {
+        "target_text": "aontaím leat agus tá mé sásta é sin a chloisteáil uait"
+      }
+    }
+  ]
+}

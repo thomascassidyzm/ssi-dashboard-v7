@@ -74,10 +74,15 @@ async function fetchDashboardUser(email) {
     const token = await getAccessToken()
     if (token) {
       try {
-        const { getApiUrl } = await import('../services/api.js')
-        const resp = await fetch(`${getApiUrl()}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } })
-        if (resp.ok) { lastLookupAuthoritative = true; return await resp.json() }
-      } catch { /* machine unreachable — the row lookups below still answer */ }
+        // Dynamic import, as services/api below: adminApi imports useAuth, so a
+        // static import here would be a cycle. getAdminJson throws on any
+        // non-2xx, which lands in this catch and falls through exactly as the
+        // old `if (resp.ok)` did.
+        const { getAdminJson } = await import('./adminApi.js')
+        const me = await getAdminJson('/api/auth/me')
+        lastLookupAuthoritative = true
+        return me
+      } catch { /* machine unreachable or refused — the row lookups below still answer */ }
     }
 
     // Direct Supabase read — data here is authoritative, but an EMPTY
@@ -138,6 +143,28 @@ function accessLookupFailureMessage() {
 }
 
 /**
+ * Identity is proven (password or OTP) — now decide dashboard access.
+ * The dashboard_users row wins; when every access source is unreachable, a
+ * row cached from a previous successful lookup rescues the session, because
+ * locking admins out during an outage is worse than a stale role. The cached
+ * row is forgotten only on a definite "no row" — wiping it on a network
+ * failure destroys the one thing that keeps the user working while the
+ * machine is down (and invite-code-walls admins over a down tunnel).
+ */
+async function adoptDashboardAccess(email) {
+  const dbUser = await fetchDashboardUser(email)
+  const rescue = !dbUser && !lastLookupAuthoritative ? loadCachedUser(email) : null
+  if (dbUser || rescue) {
+    dashboardUser.value = dbUser || rescue
+    if (dbUser) cacheUser(dbUser)
+  } else {
+    error.value = accessLookupFailureMessage()
+    dashboardUser.value = null
+    if (lastLookupAuthoritative) clearCachedUser()
+  }
+}
+
+/**
  * Sign in with email + password
  */
 async function signInWithPassword(email, password) {
@@ -156,23 +183,7 @@ async function signInWithPassword(email, password) {
       user.value = data.user
       session.value = data.session
 
-      const dbUser = await fetchDashboardUser(email)
-      const rescue = !dbUser && !lastLookupAuthoritative ? loadCachedUser(email) : null
-      if (dbUser || rescue) {
-        // Identity is already proven (password verified); the cache only
-        // carries role/courses from a previous successful lookup. Using it
-        // when every access source is unreachable keeps admins working
-        // through an outage instead of locking them out.
-        dashboardUser.value = dbUser || rescue
-        if (dbUser) cacheUser(dbUser)
-      } else {
-        error.value = accessLookupFailureMessage()
-        dashboardUser.value = null
-        // Only forget the cached row on a definite "no row" — wiping it on
-        // a network failure destroys the one thing that keeps the user
-        // working while the machine is unreachable.
-        if (lastLookupAuthoritative) clearCachedUser()
-      }
+      await adoptDashboardAccess(email)
     }
 
     return data
@@ -262,22 +273,7 @@ async function verifyOTP(email, token) {
       user.value = data.user
       session.value = data.session
 
-      // Look up dashboard access by email
-      const dbUser = await fetchDashboardUser(email)
-      const rescue = !dbUser && !lastLookupAuthoritative ? loadCachedUser(email) : null
-      if (dbUser || rescue) {
-        // Cache rescue: identity proven by OTP; a previously-verified
-        // role/courses row beats locking the user out during an outage.
-        dashboardUser.value = dbUser || rescue
-        if (dbUser) cacheUser(dbUser)
-      } else {
-        // OTP verified but no usable answer — distinguish "no access"
-        // from "couldn't reach the machine" (never invite-code-wall admins
-        // over a down tunnel).
-        error.value = accessLookupFailureMessage()
-        dashboardUser.value = null
-        if (lastLookupAuthoritative) clearCachedUser()
-      }
+      await adoptDashboardAccess(email)
     }
 
     return data

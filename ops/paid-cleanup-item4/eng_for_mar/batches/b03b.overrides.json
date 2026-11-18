@@ -1,0 +1,292 @@
+[
+ {
+  "seed_number": 61,
+  "phrases": {
+   "61:1": [
+    {
+     "known_text": "सांगणे",
+     "target_text": "could",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "पुन्हा",
+     "target_text": "again",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही ते पुन्हा सांगाल का?",
+     "target_text": "could you say that again?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण तुम्ही ते पुन्हा सांगाल का?",
+     "target_text": "but could you say that again?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही ते पुन्हा अधिक हळू सांगाल का?",
+     "target_text": "could you say that again more slowly?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला समजत नाही, तुम्ही ते पुन्हा सांगाल का?",
+     "target_text": "I don't understand, could you say that again?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही ते पुन्हा इंग्रजीत सांगाल का?",
+     "target_text": "could you say that again in English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित नाही, तुम्ही ते पुन्हा सांगाल का?",
+     "target_text": "I don't know, could you say that again?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही, तुम्ही ते पुन्हा सांगाल का?",
+     "target_text": "I'm not sure, could you say that again?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आणि तुम्ही ते पुन्हा सांगाल का?",
+     "target_text": "and could you say that again?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला समजलं नाही, तुम्ही ते पुन्हा सांगाल का?",
+     "target_text": "I didn't understand, could you say that again?",
+     "phrase_role": "use"
+    }
+   ],
+   "61:2": [
+    {
+     "known_text": "हळू",
+     "target_text": "slowly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "थोडं अधिक हळू",
+     "target_text": "a little more slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडं अधिक हळू बोलणे",
+     "target_text": "to speak a little more slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थोडं अधिक हळू वाचणे",
+     "target_text": "to read a little more slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही ते पुन्हा थोडं अधिक हळू सांगाल का?",
+     "target_text": "could you say that again a little more slowly?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही थोडं अधिक हळू बोलाल का?",
+     "target_text": "could you speak a little more slowly?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला थोडं अधिक हळू बोलायची गरज आहे",
+     "target_text": "I need to speak a little more slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी थोडं अधिक हळू बोलतो",
+     "target_text": "I speak a little more slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ते थोडं अधिक हळू वाचायचं आहे",
+     "target_text": "I want to read it a little more slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते थोडं अधिक हळू सांगणे",
+     "target_text": "to say it a little more slowly",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 62,
+  "phrases": {
+   "62:1": [
+    {
+     "known_text": "त्या",
+     "target_text": "the",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "त्याच",
+     "target_text": "same",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "त्याच वेळी",
+     "target_text": "at the same time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याच वेळी सगळं करायला",
+     "target_text": "to do everything at the same time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्याच वेळी बोलणे",
+     "target_text": "to speak at the same time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला खात्री नाही की मी तुम्हाला त्याच वेळी मदत करू शकेन",
+     "target_text": "I'm not sure if I can help you at the same time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्हाला त्याच वेळी बोलायचं होतं",
+     "target_text": "we wanted to speak at the same time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याच वेळी सगळं आठवत नाही",
+     "target_text": "I can't remember everything at the same time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तुम्हाला त्याच वेळी मदत करू शकतो",
+     "target_text": "I can help you at the same time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याच वेळी सगळं करायचं नाही",
+     "target_text": "I don't want to do everything at the same time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याच वेळी शिकणे",
+     "target_text": "to learn at the same time",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 63,
+  "phrases": {
+   "63:1": [
+    {
+     "known_text": "आहेस",
+     "target_text": "are",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला त्याबद्दल खात्री आहे का?",
+     "target_text": "are you sure about it?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण तुम्हाला खात्री आहे का?",
+     "target_text": "but are you sure?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला परत यायचं आहे, याची तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure you want to come back?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला उत्तर माहित आहे, याची तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure you know the answer?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमच्याकडे वेळ आहे, याची तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure you have time?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते उपयोगी आहे, याची तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure it's useful?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला समजतं, याची तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure you understand?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला उत्तराबद्दल खात्री आहे का?",
+     "target_text": "are you sure about the answer?",
+     "phrase_role": "build"
+    }
+   ],
+   "63:2": [
+    {
+     "known_text": "हरकत",
+     "target_text": "mind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मदत करायला",
+     "target_text": "helping",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मदत करायला तुमची हरकत नाही",
+     "target_text": "don't mind helping me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला मदत करायला तुमची हरकत नाही",
+     "target_text": "you don't mind helping me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता मदत करायला तुमची हरकत नाही",
+     "target_text": "don't mind helping me now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला मदत करायला तुमची हरकत नाही याची तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure you don't mind helping me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला मदत करायला तुमची हरकत नाही, हे मला माहित आहे",
+     "target_text": "I know you don't mind helping me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की मला मदत करायला तुमची हरकत नाही",
+     "target_text": "I think that you don't mind helping me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या मला मदत करायला तुमची हरकत नाही, याची तुम्हाला खात्री आहे का?",
+     "target_text": "are you sure you don't mind helping me tomorrow?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला मदत करायला तुमची हरकत नसेल, तर मला जास्त सराव करायचा आहे",
+     "target_text": "if you don't mind helping me, I want to practise more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "उद्या मदत करायला तुमची हरकत नाही",
+     "target_text": "don't mind helping me tomorrow",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

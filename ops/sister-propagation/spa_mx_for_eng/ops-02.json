@@ -1,0 +1,110 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0056L01U04",
+   "expect": {
+    "known_text": "I enjoy remembering a few words with my friends",
+    "target_text": "disfruto recordar unas pocas palabras con mis amigos"
+   },
+   "set": {
+    "target_text": "disfruto recordando unas pocas palabras con mis amigos",
+    "target1_audio_id": "e823143c-61cc-4a04-8e72-01055488d480",
+    "target2_audio_id": "b9be988a-cce4-49db-b612-e60d3ef5fb5c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0058L01U05",
+   "expect": {
+    "known_text": "I enjoy speaking when you understand what I mean",
+    "target_text": "disfruto hablar cuando entiendes lo que quiero decir"
+   },
+   "set": {
+    "target_text": "disfruto hablando cuando entiendes lo que quiero decir",
+    "target1_audio_id": "ffbd5a5b-ddad-4c0d-a5de-9e0346db6a97",
+    "target2_audio_id": "0934d700-673d-4d1d-8ac3-06e3723e9341"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0058L04U06",
+   "expect": {
+    "known_text": "I enjoy waking up when there are enough words to learn",
+    "target_text": "disfruto despertarme cuando hay suficientes palabras para aprender"
+   },
+   "set": {
+    "known_text": "I like waking up when there are enough words to learn",
+    "known_audio_id": "707d1cb1-6250-4af9-b23e-14947a07212b",
+    "target_text": "me gusta despertarme cuando hay suficientes palabras para aprender",
+    "target1_audio_id": "fd3a7129-aaeb-4d15-9ea8-3fa7ac8e92b4",
+    "target2_audio_id": "50119e95-cfd2-4081-9c08-e1ea84f1bbae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0059L02U06",
+   "expect": {
+    "known_text": "I don't enjoy doing what I need to do when I didn't sleep well",
+    "target_text": "no disfruto hacer lo que necesito hacer cuando no dormí bien"
+   },
+   "set": {
+    "target_text": "no disfruto haciendo lo que necesito hacer cuando no dormí bien",
+    "target1_audio_id": "e192d58d-fb5b-43f2-8065-a740525c88e0",
+    "target2_audio_id": "1be28717-a1d1-4b93-a5ca-10989302747d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0061L03U04",
+   "expect": {
+    "known_text": "I enjoy doing different things again this morning",
+    "target_text": "disfruto hacer cosas diferentes otra vez esta mañana"
+   },
+   "set": {
+    "target_text": "disfruto haciendo cosas diferentes otra vez esta mañana",
+    "target1_audio_id": "ab7e17fa-fcc6-4128-b56e-149ae003a5a5",
+    "target2_audio_id": "ad543224-5f96-4b7d-b99b-942ca4e03887"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0065L02U04",
+   "expect": {
+    "known_text": "I enjoy testing you with different words again",
+    "target_text": "disfruto ponerte a prueba con palabras diferentes otra vez"
+   },
+   "set": {
+    "target_text": "disfruto poniéndote a prueba con palabras diferentes otra vez",
+    "target1_audio_id": "0cb95322-edce-45bb-b119-b9a082ced927",
+    "target2_audio_id": "b082924e-df35-4a0e-b878-5bc964ae2de7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0073L01U02",
+   "expect": {
+    "known_text": "thank you very much, I enjoy speaking Spanish",
+    "target_text": "muchas gracias, disfruto hablar español"
+   },
+   "set": {
+    "target_text": "muchas gracias, disfruto hablando español",
+    "target1_audio_id": "e00f03f5-69f5-4aa5-b5de-9d70a1805368",
+    "target2_audio_id": "4008fdd9-2dff-4f80-a4c5-318399b2897d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0101L01U04",
+   "expect": {
+    "known_text": "I am enjoying speaking with you",
+    "target_text": "estoy disfrutando hablar contigo"
+   },
+   "set": {
+    "target_text": "estoy disfrutando hablando contigo",
+    "target1_audio_id": "d6fa546c-8938-4823-a1fb-75cbd549356d",
+    "target2_audio_id": "047381de-a22a-4acb-9f47-a8ff76d8e63a"
+   }
+  }
+ ]
+}

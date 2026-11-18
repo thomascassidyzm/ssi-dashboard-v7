@@ -1,0 +1,34 @@
+[
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0614L04",
+  "slot": "known",
+  "audio_id": "f45ec77f-89ba-4cf1-8328-52e8ee38bb63",
+  "allow_text_mismatch": true
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0614L04B01",
+  "slot": "known",
+  "audio_id": "f45ec77f-89ba-4cf1-8328-52e8ee38bb63",
+  "allow_text_mismatch": true
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0626L02",
+  "slot": "known",
+  "audio_id": "0ecd95f4-4333-4d8b-9bc6-06f95f9362a8",
+  "allow_text_mismatch": true
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0626L02B01",
+  "slot": "known",
+  "audio_id": "0ecd95f4-4333-4d8b-9bc6-06f95f9362a8",
+  "allow_text_mismatch": true
+ }
+]

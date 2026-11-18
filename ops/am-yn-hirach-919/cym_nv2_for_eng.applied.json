@@ -1,0 +1,505 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "9fa45ef7-ef88-4f1d-a260-17b97a9178ab",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1275L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1275L01U03",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oes rhaid i ti aros am hirach?",
+    "decomposition": [
+     {
+      "known": "do you have to",
+      "legoId": "S1274L01",
+      "target": "oes rhaid i ti",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "do you have to wait for longer?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "fb380e2c-be80-4fd4-8728-eabce8db1b04",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1275L01U03",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oes rhaid i ti aros am yn hirach?",
+    "decomposition": [
+     {
+      "known": "do you have to",
+      "legoId": "S1274L01",
+      "target": "oes rhaid i ti",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " yn hirach",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "do you have to wait for longer?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1275L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1275L01U06",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oedd hi isio aros am hirach ond oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ],
+    "known_text": "she wanted to wait for longer but she was too busy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "242665c4-b7f8-47c4-b430-8506d2e73e7a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1275L01U06",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oedd hi isio aros am yn hirach ond oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " yn hirach",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ],
+    "known_text": "she wanted to wait for longer but she was too busy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1275L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1275L01U04",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim isio aros am hirach",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to wait for longer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "592c8a2e-f6bd-403c-b9a6-f55fd1310015",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1275L01U04",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim isio aros am yn hirach",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " yn hirach",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to wait for longer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1275L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1275L01U05",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "pam ti isio aros am hirach?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0282L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "you want",
+      "legoId": "S0048L01",
+      "target": " ti isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "why do you want to wait for longer?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0421b132-1720-4557-a2a6-bb3e334396d0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1275L01U05",
+    "seed_number": 1275,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "pam ti isio aros am yn hirach?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0282L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "you want",
+      "legoId": "S0048L01",
+      "target": " ti isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " yn hirach",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "why do you want to wait for longer?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1275L01U05",
+   "set": {
+    "target_text": "pam ti isio aros am hirach?",
+    "target2_audio_id": "0421b132-1720-4557-a2a6-bb3e334396d0",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0282L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "you want",
+      "legoId": "S0048L01",
+      "target": " ti isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1275L01U04",
+   "set": {
+    "target_text": "dw i ddim isio aros am hirach",
+    "target2_audio_id": "592c8a2e-f6bd-403c-b9a6-f55fd1310015",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1275L01U06",
+   "set": {
+    "target_text": "oedd hi isio aros am hirach ond oedd hi’n rhy brysur",
+    "target2_audio_id": "242665c4-b7f8-47c4-b430-8506d2e73e7a",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1275L01U03",
+   "set": {
+    "target_text": "oes rhaid i ti aros am hirach?",
+    "target2_audio_id": "fb380e2c-be80-4fd4-8728-eabce8db1b04",
+    "decomposition": [
+     {
+      "known": "do you have to",
+      "legoId": "S1274L01",
+      "target": "oes rhaid i ti",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "longer",
+      "legoId": "S1275L01",
+      "target": " hirach",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  }
+ ],
+ "undo_file": "2026-10-28T13-19-18-970Z-9fa45ef7-ef88-4f1d-a260-17b97a9178ab.json"
+}

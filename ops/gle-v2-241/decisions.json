@@ -1,0 +1,5613 @@
+{
+ "seeds": {
+  "25": {
+   "before": {
+    "known": "are you going to help me before I have to go?",
+    "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht?",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "are you going to help me before I have to go?",
+   "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul?",
+   "family": "go",
+   "why": "English says go; Eoghan's own 25 is a different sentence and is not taken here"
+  },
+  "26": {
+   "before": {
+    "known": "I like feeling as if I'm nearly ready to go",
+    "target": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le himeacht",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "I like feeling as if I'm nearly ready to go",
+   "target": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le dul",
+   "family": "go",
+   "why": "Eoghan's le dul; réidh kept (10 Nov keep-ours)"
+  },
+  "30": {
+   "before": {
+    "known": "I wanted to ask you something yesterday",
+    "target": "ba mhian liom rud éigin a fhiafraí díot inné",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "I wanted to ask you a question about something yesterday",
+   "target": "ba mhian liom ceist a chur ort inné faoi rud éigin",
+   "family": "ask",
+   "why": "Eoghan's line and his English, whole"
+  },
+  "46": {
+   "before": {
+    "known": "but I don't worry about making mistakes",
+    "target": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "but I don't worry about making mistakes",
+   "target": "ach ní bhím buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": "Eoghan's ní bhím buartha; 'a dhéanamh' kept because the English says 'making mistakes' and S0046L04 teaches it"
+  },
+  "93": {
+   "before": {
+    "known": "it's time to go now",
+    "target": "Tá sé in am imeacht anois",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "it's time to go now",
+   "target": "Tá sé in am dul anois",
+   "family": "go",
+   "why": "Eoghan: in am dul = time to go"
+  },
+  "97": {
+   "before": {
+    "known": "yes I'm ready to go as soon as you want",
+    "target": "Tá, tá mé réidh le himeacht chomh luath agus is mian leat",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "yes I'm ready to go as soon as you want",
+   "target": "Tá, tá mé réidh le dul chomh luath agus is mian leat",
+   "family": "go",
+   "why": "Eoghan's le dul; réidh kept"
+  },
+  "99": {
+   "before": {
+    "known": "you should ask yourself why it's not working",
+    "target": "ba cheart duit tú féin a cheistiú cén fáth nach bhfuil sé ag obair",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "you should ask yourself why it's not working",
+   "target": "ba cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair",
+   "family": "ask",
+   "why": "Eoghan's ceist a chur ort féin. His faoin bhfáth is NOT taken: 'why' is cén fáth everywhere else and S0099L03 teaches it; ba cheart kept (10 Nov keep-ours)"
+  },
+  "111": {
+   "before": {
+    "known": "when we learn something new it changes our brain",
+    "target": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "when we learn something new it changes our brain",
+   "target": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "119": {
+   "before": {
+    "known": "can I ask you something before you leave?",
+    "target": "an féidir liom rud éigin a fhiafraí díot sula n-imíonn tú?",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "can I ask you about something before you leave?",
+   "target": "an féidir liom ceist a chur ort faoi rud éigin sula n-imíonn tú?",
+   "family": "ask",
+   "why": "Eoghan's ceist a chur ort. His maidir le is NOT taken: he writes faoi for the same thing at 30 and 609, and one English 'about' with two Irish words would break one-prompt-one-answer. English gains 'about' so every Irish word is covered. sula n-imíonn tú (leave) kept: his fág is a separate, unruled question"
+  },
+  "142": {
+   "before": {
+    "known": "that's very kind of you and I'm grateful to you for helping",
+    "target": "Tá sé sin an-deas uait agus tá mé buíoch díot as cabhrú",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "that's very kind of you and I'm grateful to you for helping",
+   "target": "Tá sé sin an-chineálta uait agus tá mé buíoch díot as cabhrú",
+   "family": "kind",
+   "why": "Eoghan's adjective in the taught frame (his own line recasts the whole sentence)"
+  },
+  "147": {
+   "before": {
+    "known": "she was very kind when she saw me feeling nervous",
+    "target": "bhí sí an-deas nuair a chonaic sí go raibh mé neirbhíseach",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "she was very kind when she saw me feeling nervous",
+   "target": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach",
+   "family": "kind",
+   "why": "Eoghan's adjective in the taught frame"
+  },
+  "249": {
+   "before": {
+    "known": "I want you to help me before you go",
+    "target": "Is mian liom go gcabhrófá liom sula n-imíonn tú",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "I want you to help me before you go",
+   "target": "Is mian liom go gcabhrófá liom sula rachaidh tú",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú"
+  },
+  "270": {
+   "before": {
+    "known": "because I'm worried that I'm going to be late",
+    "target": "mar tá imní orm go mbeidh mé déanach",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "because I'm worried that I'm going to be late",
+   "target": "mar tá mé buartha go mbeidh mé déanach",
+   "family": "worried",
+   "why": ""
+  },
+  "343": {
+   "before": {
+    "known": "who said that she's worried about the economy",
+    "target": "a dúirt go bhfuil imní uirthi faoin ngeilleagar",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "who said that she's worried about the economy",
+   "target": "a dúirt go bhfuil sí buartha faoin ngeilleagar",
+   "family": "worried",
+   "why": ""
+  },
+  "353": {
+   "before": {
+    "known": "she needed to run around the field",
+    "target": "bhí uirthi rith timpeall na páirce",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "she needed to run around the field",
+   "target": "ba ghá di rith timpeall na páirce",
+   "family": "needed to",
+   "why": "Eoghan's line (his Bá ghá dí read as Ba ghá di)"
+  },
+  "354": {
+   "before": {
+    "known": "he didn't need to appear angry",
+    "target": "Ní raibh air a bheith feargach",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "he didn't need to appear angry",
+   "target": "níor ghá dó cuma fheargach a bheith air",
+   "family": "needed to",
+   "why": "Eoghan's line, whole: it also says 'appear angry', which the draft's a bheith feargach (be angry) did not"
+  },
+  "355": {
+   "before": {
+    "known": "Did she need to talk to that woman you know?",
+    "target": "an raibh uirthi labhairt leis an mbean sin a bhfuil aithne agat uirthi?",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "Did she need to talk to that woman you know?",
+   "target": "an raibh gá di labhairt leis an mbean sin a bhfuil aithne agat uirthi?",
+   "family": "needed to",
+   "why": "Eoghan's line (his dí read as di)"
+  },
+  "408": {
+   "before": {
+    "known": "yes that's the best way to make a happy family",
+    "target": "Ba cheart, sin an bealach is fearr chun clann shona a dhéanamh",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "yes that's the best way to make a happy family",
+   "target": "Ba cheart, sin an bealach is fearr chun teaghlach sona a dhéanamh",
+   "family": "family",
+   "why": "Eoghan: clann = children only, teaghlach = parents and children. sona unlenited after masculine teaghlach. bealach (the way) and Ba cheart left: unsettled / keep-ours"
+  },
+  "409": {
+   "before": {
+    "known": "no it doesn't matter what we do",
+    "target": "Níor cheart, is cuma cad a dhéanaimid",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "no it doesn't matter what we do",
+   "target": "Níor cheart, is cuma cad a dhéanann muid",
+   "family": "muid",
+   "why": ""
+  },
+  "412": {
+   "before": {
+    "known": "we couldn't allow them to win everything",
+    "target": "Ní fhéadfaimis ligean dóibh gach rud a bhuachan",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "we couldn't allow them to win everything",
+   "target": "Ní fhéadfadh muid ligean dóibh gach rud a bhuachan",
+   "family": "muid",
+   "why": ""
+  },
+  "413": {
+   "before": {
+    "known": "we could fall if we go too close to the edge",
+    "target": "d'fhéadfaimis titim dá rachaimis ró-ghar don imeall",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "we could fall if we go too close to the edge",
+   "target": "d'fhéadfadh muid titim dá rachadh muid ró-ghar don imeall",
+   "family": "muid",
+   "why": ""
+  },
+  "414": {
+   "before": {
+    "known": "could we have a bottle of red wine please?",
+    "target": "an bhféadfaimis buidéal fíona deirg a fháil le do thoil?",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "could we have a bottle of red wine please?",
+   "target": "an bhféadfadh muid buidéal fíona deirg a fháil le do thoil?",
+   "family": "muid",
+   "why": ""
+  },
+  "470": {
+   "before": {
+    "known": "how high do you want to climb before we stop?",
+    "target": "cé chomh hard is mian leat dreapadh sula stopaimid?",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "how high do you want to climb before we stop?",
+   "target": "cé chomh hard is mian leat dreapadh sula stopann muid?",
+   "family": "muid",
+   "why": ""
+  },
+  "520": {
+   "before": {
+    "known": "it might have happened to the whole family",
+    "target": "d'fhéadfadh sé a bheith tarlaithe don chlann ar fad",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "it might have happened to the whole family",
+   "target": "d'fhéadfadh sé a bheith tarlaithe don teaghlach ar fad",
+   "family": "family",
+   "why": "clann -> teaghlach"
+  },
+  "527": {
+   "before": {
+    "known": "guess who told me that funny story",
+    "target": "tomhais cé a d'inis an scéal greannmhar sin dom",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "guess who told me that funny story",
+   "target": "tabhair buille faoi thuairim faoi cé a d'inis an scéal greannmhar sin dom",
+   "family": "guess",
+   "why": "Eoghan's line; guess is now buille faoi thuairim at 12, 526 and 527"
+  },
+  "568": {
+   "before": {
+    "known": "I'm expecting to see an improvement next time we meet",
+    "target": "Tá mé ag súil le feabhas a fheiceáil an chéad uair eile a bhuailfimid le chéile",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "I'm expecting to see an improvement next time we meet",
+   "target": "Tá mé ag súil le feabhas a fheiceáil an chéad uair eile a bhuailfidh muid le chéile",
+   "family": "muid",
+   "why": ""
+  },
+  "569": {
+   "before": {
+    "known": "have you decided how much you are willing to pay?",
+    "target": "an bhfuil cinneadh déanta agat cé mhéad atá tú sásta a íoc?",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "have you decided how much you are willing to pay?",
+   "target": "an bhfuil cinneadh déanta agat cé mhéad atá tú toilteanach a íoc?",
+   "family": "willing",
+   "why": "Eoghan's toilteanach; rest of the draft line kept"
+  },
+  "570": {
+   "before": {
+    "known": "how much are you willing to pay for your ticket?",
+    "target": "cé mhéad atá tú sásta a íoc ar do thicéad?",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "how much are you willing to pay for your ticket?",
+   "target": "cé mhéad atá tú toilteanach a íoc ar do thicéad?",
+   "family": "willing",
+   "why": "Eoghan's toilteanach; his i leith do thicéid (pay for) is a separate item, not ruled"
+  },
+  "614": {
+   "before": {
+    "known": "it's near where your family live",
+    "target": "Tá sé in aice leis an áit a bhfuil do chlann ina gcónaí",
+    "status": "released",
+    "approved_at": null
+   },
+   "known": "it's near where your family live",
+   "target": "Tá sé in aice leis an áit a bhfuil do theaghlach ina chónaí",
+   "family": "family",
+   "why": "clann -> teaghlach; ina chónaí (singular, with teaghlach) as Eoghan wrote"
+  }
+ },
+ "legos": {
+  "S0025L03": {
+   "before": {
+    "known_text": "before I have to go",
+    "target_text": "sula gcaithfidh mé imeacht",
+    "components": [
+     {
+      "known": "before",
+      "target": "sula"
+     },
+     {
+      "known": "have to",
+      "target": "gcaithfidh"
+     },
+     {
+      "known": "I",
+      "target": "mé"
+     },
+     {
+      "known": "go",
+      "target": "imeacht"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "sula gcaithfidh mé dul",
+    "components": [
+     {
+      "known": "before",
+      "target": "sula"
+     },
+     {
+      "known": "have to",
+      "target": "gcaithfidh"
+     },
+     {
+      "known": "I",
+      "target": "mé"
+     },
+     {
+      "known": "go",
+      "target": "dul"
+     }
+    ]
+   },
+   "family": "go",
+   "why": ""
+  },
+  "S0026L05": {
+   "before": {
+    "known_text": "ready to go",
+    "target_text": "réidh le himeacht",
+    "components": [
+     {
+      "known": "ready",
+      "target": "réidh"
+     },
+     {
+      "known": "for leaving",
+      "target": "le himeacht"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "réidh le dul",
+    "components": [
+     {
+      "known": "ready",
+      "target": "réidh"
+     },
+     {
+      "known": "to go",
+      "target": "le dul"
+     }
+    ]
+   },
+   "family": "go",
+   "why": ""
+  },
+  "S0030L02": {
+   "before": {
+    "known_text": "to ask",
+    "target_text": "a fhiafraí",
+    "components": null,
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "known_text": "to ask you a question",
+    "target_text": "ceist a chur ort",
+    "type": "M",
+    "components": [
+     {
+      "known": "a question",
+      "target": "ceist"
+     },
+     {
+      "known": "to put",
+      "target": "a chur"
+     },
+     {
+      "known": "on you",
+      "target": "ort"
+     }
+    ]
+   },
+   "family": "ask",
+   "why": "was to ask | a fhiafraí"
+  },
+  "S0030L03": {
+   "before": {
+    "known_text": "from you",
+    "target_text": "díot",
+    "components": null,
+    "is_new": true,
+    "type": "A"
+   },
+   "set": {
+    "known_text": "about something",
+    "target_text": "faoi rud éigin",
+    "type": "M",
+    "components": [
+     {
+      "known": "about",
+      "target": "faoi"
+     },
+     {
+      "known": "something",
+      "target": "rud éigin"
+     }
+    ]
+   },
+   "family": "ask",
+   "why": "was from you | díot, which seed 30 no longer says"
+  },
+  "S0046L02": {
+   "before": {
+    "known_text": "I don't worry about",
+    "target_text": "ní bhíonn imní orm faoi",
+    "components": [
+     {
+      "known": "there isn't habitually",
+      "target": "ní bhíonn"
+     },
+     {
+      "known": "worry on me",
+      "target": "imní orm"
+     },
+     {
+      "known": "about",
+      "target": "faoi"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "ní bhím buartha faoi",
+    "components": [
+     {
+      "known": "I am not habitually",
+      "target": "ní bhím"
+     },
+     {
+      "known": "worried",
+      "target": "buartha"
+     },
+     {
+      "known": "about",
+      "target": "faoi"
+     }
+    ]
+   },
+   "family": "worried",
+   "why": ""
+  },
+  "S0093L02": {
+   "before": {
+    "known_text": "to leave",
+    "target_text": "imeacht",
+    "components": null,
+    "is_new": true,
+    "type": "A"
+   },
+   "set": {
+    "known_text": "to go",
+    "target_text": "dul"
+   },
+   "family": "go",
+   "why": "was to leave | imeacht; seed 93 says go"
+  },
+  "S0097L02": {
+   "before": {
+    "known_text": "I am ready to leave",
+    "target_text": "tá mé réidh le himeacht",
+    "components": [
+     {
+      "known": "I am",
+      "target": "tá mé"
+     },
+     {
+      "known": "ready",
+      "target": "réidh"
+     },
+     {
+      "known": "to",
+      "target": "le"
+     },
+     {
+      "known": "leave",
+      "target": "himeacht"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "known_text": "I am ready to go",
+    "target_text": "tá mé réidh le dul",
+    "components": [
+     {
+      "known": "I am",
+      "target": "tá mé"
+     },
+     {
+      "known": "ready",
+      "target": "réidh"
+     },
+     {
+      "known": "to",
+      "target": "le"
+     },
+     {
+      "known": "go",
+      "target": "dul"
+     }
+    ]
+   },
+   "family": "go",
+   "why": "seed 97 says go"
+  },
+  "S0099L02": {
+   "before": {
+    "known_text": "to ask yourself",
+    "target_text": "tú féin a cheistiú",
+    "components": [
+     {
+      "known": "yourself",
+      "target": "tú féin"
+     },
+     {
+      "known": "to question",
+      "target": "a cheistiú"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "ceist a chur ort féin",
+    "components": [
+     {
+      "known": "to ask a question",
+      "target": "ceist a chur"
+     },
+     {
+      "known": "yourself",
+      "target": "ort féin"
+     }
+    ]
+   },
+   "family": "ask",
+   "why": ""
+  },
+  "S0111L01": {
+   "before": {
+    "known_text": "when we learn",
+    "target_text": "nuair a fhoghlaimímid",
+    "components": [
+     {
+      "known": "when",
+      "target": "Nuair"
+     },
+     {
+      "known": "we learn",
+      "target": "a fhoghlaimímid"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "nuair a fhoghlaimíonn muid",
+    "components": [
+     {
+      "known": "when",
+      "target": "Nuair"
+     },
+     {
+      "known": "we learn",
+      "target": "a fhoghlaimíonn muid"
+     }
+    ]
+   },
+   "family": "muid",
+   "why": ""
+  },
+  "S0119L02": {
+   "before": {
+    "known_text": "something",
+    "target_text": "rud éigin",
+    "components": [
+     {
+      "known": "thing",
+      "target": "rud"
+     },
+     {
+      "known": "some",
+      "target": "éigin"
+     }
+    ],
+    "is_new": false,
+    "type": "M"
+   },
+   "set": {
+    "known_text": "about something",
+    "target_text": "faoi rud éigin",
+    "components": [
+     {
+      "known": "about",
+      "target": "faoi"
+     },
+     {
+      "known": "something",
+      "target": "rud éigin"
+     }
+    ]
+   },
+   "family": "ask",
+   "why": "stays not-new: same pair as S0030L03"
+  },
+  "S0119L03": {
+   "before": {
+    "known_text": "to ask you",
+    "target_text": "a fhiafraí díot",
+    "components": [
+     {
+      "known": "to ask",
+      "target": "a fhiafraí"
+     },
+     {
+      "known": "of you",
+      "target": "díot"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "ceist a chur ort",
+    "components": [
+     {
+      "known": "a question",
+      "target": "ceist"
+     },
+     {
+      "known": "to put",
+      "target": "a chur"
+     },
+     {
+      "known": "on you",
+      "target": "ort"
+     }
+    ]
+   },
+   "family": "ask",
+   "why": "known stays to ask you, as 208 and 223 already gloss ceist a chur ort"
+  },
+  "S0142L02": {
+   "before": {
+    "known_text": "very kind",
+    "target_text": "an-deas",
+    "components": [
+     {
+      "known": "very",
+      "target": "an-"
+     },
+     {
+      "known": "nice",
+      "target": "deas"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "an-chineálta",
+    "components": [
+     {
+      "known": "very",
+      "target": "an-"
+     },
+     {
+      "known": "kind",
+      "target": "chineálta"
+     }
+    ]
+   },
+   "family": "kind",
+   "why": ""
+  },
+  "S0249L04": {
+   "before": {
+    "known_text": "before you go",
+    "target_text": "sula n-imíonn tú",
+    "components": [
+     {
+      "known": "before",
+      "target": "sula"
+     },
+     {
+      "known": "goes",
+      "target": "n-imíonn"
+     },
+     {
+      "known": "you",
+      "target": "tú"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "sula rachaidh tú",
+    "components": [
+     {
+      "known": "before",
+      "target": "sula"
+     },
+     {
+      "known": "will go",
+      "target": "rachaidh"
+     },
+     {
+      "known": "you",
+      "target": "tú"
+     }
+    ]
+   },
+   "family": "go",
+   "why": ""
+  },
+  "S0270L02": {
+   "before": {
+    "known_text": "I'm worried",
+    "target_text": "tá imní orm",
+    "components": [
+     {
+      "known": "is",
+      "target": "tá"
+     },
+     {
+      "known": "worry",
+      "target": "imní"
+     },
+     {
+      "known": "on me",
+      "target": "orm"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "tá mé buartha",
+    "components": [
+     {
+      "known": "I am",
+      "target": "tá mé"
+     },
+     {
+      "known": "worried",
+      "target": "buartha"
+     }
+    ]
+   },
+   "family": "worried",
+   "why": ""
+  }
+ },
+ "lego_inserts": [
+  {
+   "seed_number": 139,
+   "lego_index": 2,
+   "known_text": "to leave",
+   "target_text": "imeacht",
+   "type": "A",
+   "is_new": true,
+   "status": "draft"
+  }
+ ],
+ "phrase_inserts": [
+  {
+   "id": "gle_v2_for_eng:S0139L02B01",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 1,
+   "known_text": "I want to leave",
+   "target_text": "is mian liom imeacht",
+   "phrase_role": "build",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 20,
+   "lego_count": 4
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02B02",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 2,
+   "known_text": "I'm sorry that I need to leave",
+   "target_text": "tá brón orm go gcaithfidh mé imeacht",
+   "phrase_role": "build",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 36,
+   "lego_count": 7
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02B03",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 3,
+   "known_text": "it is time to leave now",
+   "target_text": "tá sé in am imeacht anois",
+   "phrase_role": "build",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 25,
+   "lego_count": 6
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02B04",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 4,
+   "known_text": "he was trying to leave",
+   "target_text": "bhí sé ag iarraidh imeacht",
+   "phrase_role": "build",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 26,
+   "lego_count": 5
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U01",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 5,
+   "known_text": "I'm sorry that I need to leave so early",
+   "target_text": "Tá brón orm go gcaithfidh mé imeacht chomh luath sin",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 52,
+   "lego_count": 10
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U02",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 6,
+   "known_text": "I'm sorry that I need to leave now",
+   "target_text": "Tá brón orm go gcaithfidh mé imeacht anois",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 42,
+   "lego_count": 8
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U03",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 7,
+   "known_text": "I'm sorry that I need to leave so early today",
+   "target_text": "Tá brón orm go gcaithfidh mé imeacht chomh luath sin inniu",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 58,
+   "lego_count": 11
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U04",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 8,
+   "known_text": "he was trying to leave early",
+   "target_text": "bhí sé ag iarraidh imeacht go luath",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 35,
+   "lego_count": 7
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U05",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 9,
+   "known_text": "I am not sure I want to leave yet because there is still so much to learn here",
+   "target_text": "Níl mé cinnte gur mian liom imeacht fós mar tá go leor le foghlaim anseo",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 72,
+   "lego_count": 15
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U06",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 10,
+   "known_text": "he was not trying to leave and he wanted to stay for a while to keep learning",
+   "target_text": "Ní raibh sé ag iarraidh imeacht agus ba mhian leis fanacht ar feadh tamaill ag foghlaim",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 87,
+   "lego_count": 16
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U07",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 11,
+   "known_text": "I don't want to leave now",
+   "target_text": "ní mian liom imeacht anois",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 26,
+   "lego_count": 5
+  },
+  {
+   "id": "gle_v2_for_eng:S0139L02U08",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 139,
+   "lego_index": 2,
+   "position": 12,
+   "known_text": "we didn't want to stop and we didn't want to leave",
+   "target_text": "níor mhian linn stopadh agus níor mhian linn imeacht",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #241, 11 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 52,
+   "lego_count": 9
+  }
+ ],
+ "phrases": {
+  "S0025L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "before I have to go",
+    "target": "sula gcaithfidh mé imeacht"
+   },
+   "known": "before I have to go",
+   "target": "sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "are you going to help me before I have to go?",
+    "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht?"
+   },
+   "known": "are you going to help me before I have to go?",
+   "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul?",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I want to speak with you before I have to go",
+    "target": "is mian liom labhairt leat sula gcaithfidh mé imeacht"
+   },
+   "known": "I want to speak with you before I have to go",
+   "target": "is mian liom labhairt leat sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'd like to speak with you before I have to go",
+    "target": "ba mhaith liom labhairt leat sula gcaithfidh mé imeacht"
+   },
+   "known": "I'd like to speak with you before I have to go",
+   "target": "ba mhaith liom labhairt leat sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03C04": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "go",
+    "target": "imeacht"
+   },
+   "known": "go",
+   "target": "dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0025L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to help me before I have to go?",
+    "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht?"
+   },
+   "known": "are you going to help me before I have to go?",
+   "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul?",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to speak with you before I have to go",
+    "target": "is mian liom labhairt leat sula gcaithfidh mé imeacht"
+   },
+   "known": "I want to speak with you before I have to go",
+   "target": "is mian liom labhairt leat sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to speak with you before I have to go",
+    "target": "ba mhaith liom labhairt leat sula gcaithfidh mé imeacht"
+   },
+   "known": "I'd like to speak with you before I have to go",
+   "target": "ba mhaith liom labhairt leat sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to meet people before I have to go",
+    "target": "is mian liom bualadh le daoine sula gcaithfidh mé imeacht"
+   },
+   "known": "I want to meet people before I have to go",
+   "target": "is mian liom bualadh le daoine sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to speak with me before I have to go?",
+    "target": "an bhfuil tú chun labhairt liom sula gcaithfidh mé imeacht?"
+   },
+   "known": "are you going to speak with me before I have to go?",
+   "target": "an bhfuil tú chun labhairt liom sula gcaithfidh mé dul?",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to meet people who speak Irish before I have to go",
+    "target": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge sula gcaithfidh mé imeacht"
+   },
+   "known": "I'd like to meet people who speak Irish before I have to go",
+   "target": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm going to speak with you before I have to go",
+    "target": "tá mé chun labhairt leat sula gcaithfidh mé imeacht"
+   },
+   "known": "I'm going to speak with you before I have to go",
+   "target": "tá mé chun labhairt leat sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0025L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to start talking before I have to go?",
+    "target": "an bhfuil tú chun tosú ag caint sula gcaithfidh mé imeacht?"
+   },
+   "known": "are you going to start talking before I have to go?",
+   "target": "an bhfuil tú chun tosú ag caint sula gcaithfidh mé dul?",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "ready to go",
+    "target": "réidh le himeacht"
+   },
+   "known": "ready to go",
+   "target": "réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "nearly ready to go",
+    "target": "beagnach réidh le himeacht"
+   },
+   "known": "nearly ready to go",
+   "target": "beagnach réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'm ready to go now",
+    "target": "tá mé réidh le himeacht anois"
+   },
+   "known": "I'm ready to go now",
+   "target": "tá mé réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I like being ready to go",
+    "target": "is maith liom a bheith réidh le himeacht"
+   },
+   "known": "I like being ready to go",
+   "target": "is maith liom a bheith réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05C02": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "for leaving",
+    "target": "le himeacht"
+   },
+   "known": "to go",
+   "target": "le dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0026L05U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm nearly ready to go",
+    "target": "tá mé beagnach réidh le himeacht"
+   },
+   "known": "I'm nearly ready to go",
+   "target": "tá mé beagnach réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I like to be feeling as if I'm nearly ready to go",
+    "target": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le himeacht"
+   },
+   "known": "I like to be feeling as if I'm nearly ready to go",
+   "target": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I like being nearly ready to go",
+    "target": "is maith liom a bheith beagnach réidh le himeacht"
+   },
+   "known": "I like being nearly ready to go",
+   "target": "is maith liom a bheith beagnach réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm ready to go now",
+    "target": "tá mé réidh le himeacht anois"
+   },
+   "known": "I'm ready to go now",
+   "target": "tá mé réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I like being ready to go",
+    "target": "is maith liom a bheith réidh le himeacht"
+   },
+   "known": "I like being ready to go",
+   "target": "is maith liom a bheith réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm feeling as if I'm ready to go",
+    "target": "tá mé ag mothú go bhfuil mé réidh le himeacht"
+   },
+   "known": "I'm feeling as if I'm ready to go",
+   "target": "tá mé ag mothú go bhfuil mé réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0026L05U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to be ready to go now",
+    "target": "is mian liom a bheith réidh le himeacht anois"
+   },
+   "known": "I want to be ready to go now",
+   "target": "is mian liom a bheith réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0027L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't want to take all day before I have to go",
+    "target": "ní mian liom an lá ar fad a thógáil sula gcaithfidh mé imeacht"
+   },
+   "known": "I don't want to take all day before I have to go",
+   "target": "ní mian liom an lá ar fad a thógáil sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0030L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I wanted to ask something",
+    "target": "ba mhian liom rud éigin a fhiafraí"
+   },
+   "known": "I wanted to ask you a question",
+   "target": "ba mhian liom ceist a chur ort",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I was wanting to ask something",
+    "target": "ba mhian liom rud éigin a fhiafraí"
+   },
+   "known": "I want to ask you a question",
+   "target": "is mian liom ceist a chur ort",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I like to ask something in Irish",
+    "target": "is maith liom rud éigin a fhiafraí i nGaeilge"
+   },
+   "known": "I'd like to ask you a question in Irish",
+   "target": "ba mhaith liom ceist a chur ort i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was wanting to ask something in Irish",
+    "target": "ba mhian liom rud éigin a fhiafraí i nGaeilge"
+   },
+   "known": "I wanted to ask you a question in Irish",
+   "target": "ba mhian liom ceist a chur ort i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I like asking something",
+    "target": "is maith liom rud éigin a fhiafraí"
+   },
+   "known": "I'd like to ask you a question now",
+   "target": "ba mhaith liom ceist a chur ort anois",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm trying to ask something in Irish",
+    "target": "tá mé ag iarraidh rud éigin a fhiafraí i nGaeilge"
+   },
+   "known": "I'm trying to ask you a question in Irish",
+   "target": "tá mé ag iarraidh ceist a chur ort i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was wanting to ask something now",
+    "target": "ba mhian liom rud éigin a fhiafraí anois"
+   },
+   "known": "I wanted to ask you a question now",
+   "target": "ba mhian liom ceist a chur ort anois",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like asking something",
+    "target": "ní maith liom rud éigin a fhiafraí"
+   },
+   "known": "I don't want to ask you a question",
+   "target": "ní mian liom ceist a chur ort",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm looking forward to asking something in Irish",
+    "target": "tá mé ag tnúth le rud éigin a fhiafraí i nGaeilge"
+   },
+   "known": "I'm looking forward to asking you a question in Irish",
+   "target": "tá mé ag tnúth le ceist a chur ort i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to ask something in Irish",
+    "target": "is mian liom rud éigin a fhiafraí i nGaeilge"
+   },
+   "known": "I want to ask you a question in Irish",
+   "target": "is mian liom ceist a chur ort i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's useful to ask something",
+    "target": "tá sé úsáideach rud éigin a fhiafraí"
+   },
+   "known": "it's useful to ask you a question",
+   "target": "tá sé úsáideach ceist a chur ort",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to ask you something",
+    "target": "rud éigin a fhiafraí díot"
+   },
+   "known": "to ask you a question about something",
+   "target": "ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I was wanting to ask you something",
+    "target": "ba mhian liom rud éigin a fhiafraí díot"
+   },
+   "known": "I wanted to ask you a question about something",
+   "target": "ba mhian liom ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I want to ask you something in Irish",
+    "target": "is mian liom rud éigin a fhiafraí díot i nGaeilge"
+   },
+   "known": "I want to ask you a question about something in Irish",
+   "target": "is mian liom ceist a chur ort faoi rud éigin i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was wanting to ask you something in Irish",
+    "target": "ba mhian liom rud éigin a fhiafraí díot i nGaeilge"
+   },
+   "known": "I wanted to ask you a question about something in Irish",
+   "target": "ba mhian liom ceist a chur ort faoi rud éigin i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I like asking you something",
+    "target": "is maith liom rud éigin a fhiafraí díot"
+   },
+   "known": "I'd like to ask you a question about something",
+   "target": "ba mhaith liom ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm trying to ask you something in Irish",
+    "target": "tá mé ag iarraidh rud éigin a fhiafraí díot i nGaeilge"
+   },
+   "known": "I'm trying to ask you a question about something in Irish",
+   "target": "tá mé ag iarraidh ceist a chur ort faoi rud éigin i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was wanting to ask you something now",
+    "target": "ba mhian liom rud éigin a fhiafraí díot anois"
+   },
+   "known": "I wanted to ask you a question about something now",
+   "target": "ba mhian liom ceist a chur ort faoi rud éigin anois",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like asking you something",
+    "target": "ní maith liom rud éigin a fhiafraí díot"
+   },
+   "known": "I don't want to ask you a question about something",
+   "target": "ní mian liom ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm looking forward to asking you something in Irish",
+    "target": "tá mé ag tnúth le rud éigin a fhiafraí díot i nGaeilge"
+   },
+   "known": "I'm looking forward to asking you a question about something in Irish",
+   "target": "tá mé ag tnúth le ceist a chur ort faoi rud éigin i nGaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to ask you something",
+    "target": "is mian liom rud éigin a fhiafraí díot"
+   },
+   "known": "I want to ask you a question about something",
+   "target": "is mian liom ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's useful to ask you something",
+    "target": "tá sé úsáideach rud éigin a fhiafraí díot"
+   },
+   "known": "it's useful to ask you a question about something",
+   "target": "tá sé úsáideach ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L04B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I was wanting to ask you something yesterday",
+    "target": "ba mhian liom rud éigin a fhiafraí díot inné"
+   },
+   "known": "I wanted to ask you a question about something yesterday",
+   "target": "ba mhian liom ceist a chur ort inné faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was wanting to ask you something yesterday",
+    "target": "ba mhian liom rud éigin a fhiafraí díot inné"
+   },
+   "known": "I wanted to ask you a question about something yesterday",
+   "target": "ba mhian liom ceist a chur ort inné faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0030L04U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was looking forward to asking you something yesterday",
+    "target": "bhí mé ag tnúth le rud éigin a fhiafraí díot inné"
+   },
+   "known": "I was looking forward to asking you a question yesterday",
+   "target": "bhí mé ag tnúth le ceist a chur ort inné",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0036L03U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was trying to interrupt to ask something",
+    "target": "bhí sí ag iarraidh cur isteach le rud éigin a fhiafraí"
+   },
+   "known": "she was trying to interrupt to ask a question",
+   "target": "bhí sí ag iarraidh cur isteach le ceist a chur",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0036L03U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she doesn't want to interrupt, but she wants to ask something",
+    "target": "ní mian léi cur isteach, ach is mian léi rud éigin a fhiafraí"
+   },
+   "known": "she doesn't want to interrupt, but she wants to ask a question",
+   "target": "ní mian léi cur isteach, ach is mian léi ceist a chur",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0036L04U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was trying to interrupt the story because she wanted to ask something",
+    "target": "bhí sí ag iarraidh cur isteach ar an scéal mar ba mhian léi rud éigin a fhiafraí"
+   },
+   "known": "she was trying to interrupt the story because she wanted to ask a question",
+   "target": "bhí sí ag iarraidh cur isteach ar an scéal mar ba mhian léi ceist a chur",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0036L04U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she doesn't want to interrupt the story, but she wants to ask something",
+    "target": "ní mian léi cur isteach ar an scéal, ach is mian léi rud éigin a fhiafraí"
+   },
+   "known": "she doesn't want to interrupt the story, but she wants to ask a question",
+   "target": "ní mian léi cur isteach ar an scéal, ach is mian léi ceist a chur",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0038L01B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am ready to leave",
+    "target": "Tá mé réidh le himeacht"
+   },
+   "known": "I am ready to go",
+   "target": "Tá mé réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0040L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not ready to go at the moment",
+    "target": "níl mé réidh le himeacht faoi láthair"
+   },
+   "known": "I'm not ready to go at the moment",
+   "target": "níl mé réidh le dul faoi láthair",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0046L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't worry about",
+    "target": "ní bhíonn imní orm faoi"
+   },
+   "known": "I don't worry about",
+   "target": "ní bhím buartha faoi",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't worry about speaking",
+    "target": "ní bhíonn imní orm faoi labhairt"
+   },
+   "known": "I don't worry about speaking",
+   "target": "ní bhím buartha faoi labhairt",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't worry about learning",
+    "target": "ní bhíonn imní orm faoi foghlaim"
+   },
+   "known": "I don't worry about learning",
+   "target": "ní bhím buartha faoi foghlaim",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but I don't worry about speaking",
+    "target": "ach ní bhíonn imní orm faoi labhairt"
+   },
+   "known": "but I don't worry about speaking",
+   "target": "ach ní bhím buartha faoi labhairt",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02C01": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "there isn't habitually",
+    "target": "ní bhíonn"
+   },
+   "known": "I am not habitually",
+   "target": "ní bhím",
+   "family": "worried",
+   "why": "component row follows the LEGO"
+  },
+  "S0046L02C02": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "worry on me",
+    "target": "imní orm"
+   },
+   "known": "worried",
+   "target": "buartha",
+   "family": "worried",
+   "why": "component row follows the LEGO"
+  },
+  "S0046L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about speaking Irish",
+    "target": "ní bhíonn imní orm faoi Gaeilge a labhairt"
+   },
+   "known": "I don't worry about speaking Irish",
+   "target": "ní bhím buartha faoi Gaeilge a labhairt",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "but I don't worry about speaking",
+    "target": "ach ní bhíonn imní orm faoi labhairt"
+   },
+   "known": "but I don't worry about speaking",
+   "target": "ach ní bhím buartha faoi labhairt",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about saying something",
+    "target": "ní bhíonn imní orm faoi rud éigin a rá"
+   },
+   "known": "I don't worry about saying something",
+   "target": "ní bhím buartha faoi rud éigin a rá",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about learning now",
+    "target": "ní bhíonn imní orm faoi foghlaim anois"
+   },
+   "known": "I don't worry about learning now",
+   "target": "ní bhím buartha faoi foghlaim anois",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about speaking with someone else",
+    "target": "ní bhíonn imní orm faoi labhairt le duine éigin eile"
+   },
+   "known": "I don't worry about speaking with someone else",
+   "target": "ní bhím buartha faoi labhairt le duine éigin eile",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about practising speaking",
+    "target": "ní bhíonn imní orm faoi labhairt a chleachtadh"
+   },
+   "known": "I don't worry about practising speaking",
+   "target": "ní bhím buartha faoi labhairt a chleachtadh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "but I don't worry about learning",
+    "target": "ach ní bhíonn imní orm faoi foghlaim"
+   },
+   "known": "but I don't worry about learning",
+   "target": "ach ní bhím buartha faoi foghlaim",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about doing my best",
+    "target": "ní bhíonn imní orm faoi mo dhícheall a dhéanamh"
+   },
+   "known": "I don't worry about doing my best",
+   "target": "ní bhím buartha faoi mo dhícheall a dhéanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't worry about mistakes",
+    "target": "ní bhíonn imní orm faoi bhotúin"
+   },
+   "known": "I don't worry about mistakes",
+   "target": "ní bhím buartha faoi bhotúin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but I don't worry about mistakes",
+    "target": "ach ní bhíonn imní orm faoi bhotúin"
+   },
+   "known": "but I don't worry about mistakes",
+   "target": "ach ní bhím buartha faoi bhotúin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "but I don't worry about mistakes",
+    "target": "ach ní bhíonn imní orm faoi bhotúin"
+   },
+   "known": "but I don't worry about mistakes",
+   "target": "ach ní bhím buartha faoi bhotúin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about mistakes in Irish",
+    "target": "ní bhíonn imní orm faoi bhotúin i nGaeilge"
+   },
+   "known": "I don't worry about mistakes in Irish",
+   "target": "ní bhím buartha faoi bhotúin i nGaeilge",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about mistakes today",
+    "target": "ní bhíonn imní orm faoi bhotúin inniu"
+   },
+   "known": "I don't worry about mistakes today",
+   "target": "ní bhím buartha faoi bhotúin inniu",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about making mistakes with someone else",
+    "target": "ní bhíonn imní orm faoi bhotúin a dhéanamh le duine éigin eile"
+   },
+   "known": "I don't worry about making mistakes with someone else",
+   "target": "ní bhím buartha faoi bhotúin a dhéanamh le duine éigin eile",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about making mistakes in Irish",
+    "target": "ní bhíonn imní orm faoi bhotúin a dhéanamh i nGaeilge"
+   },
+   "known": "I don't worry about making mistakes in Irish",
+   "target": "ní bhím buartha faoi bhotúin a dhéanamh i nGaeilge",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L04B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't worry about making mistakes",
+    "target": "ní bhíonn imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "I don't worry about making mistakes",
+   "target": "ní bhím buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L04B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but I don't worry about making mistakes",
+    "target": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "but I don't worry about making mistakes",
+   "target": "ach ní bhím buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "but I don't worry about making mistakes",
+    "target": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "but I don't worry about making mistakes",
+   "target": "ach ní bhím buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L04U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about making mistakes in Irish",
+    "target": "ní bhíonn imní orm faoi bhotúin a dhéanamh i nGaeilge"
+   },
+   "known": "I don't worry about making mistakes in Irish",
+   "target": "ní bhím buartha faoi bhotúin a dhéanamh i nGaeilge",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about making mistakes now",
+    "target": "ní bhíonn imní orm faoi bhotúin a dhéanamh anois"
+   },
+   "known": "I don't worry about making mistakes now",
+   "target": "ní bhím buartha faoi bhotúin a dhéanamh anois",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about making mistakes today",
+    "target": "ní bhíonn imní orm faoi bhotúin a dhéanamh inniu"
+   },
+   "known": "I don't worry about making mistakes today",
+   "target": "ní bhím buartha faoi bhotúin a dhéanamh inniu",
+   "family": "worried",
+   "why": ""
+  },
+  "S0046L04U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about making mistakes with someone else",
+    "target": "ní bhíonn imní orm faoi bhotúin a dhéanamh le duine éigin eile"
+   },
+   "known": "I don't worry about making mistakes with someone else",
+   "target": "ní bhím buartha faoi bhotúin a dhéanamh le duine éigin eile",
+   "family": "worried",
+   "why": ""
+  },
+  "S0047L01B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "because I don't worry about mistakes",
+    "target": "mar ní bhíonn imní orm faoi bhotúin"
+   },
+   "known": "because I don't worry about mistakes",
+   "target": "mar ní bhím buartha faoi bhotúin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0047L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "because I don't worry about mistakes",
+    "target": "mar ní bhíonn imní orm faoi bhotúin"
+   },
+   "known": "because I don't worry about mistakes",
+   "target": "mar ní bhím buartha faoi bhotúin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0047L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "because I don't worry about making mistakes",
+    "target": "mar ní bhíonn imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "because I don't worry about making mistakes",
+   "target": "mar ní bhím buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0049L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "if you understand, I don't worry about making mistakes",
+    "target": "má thuigeann tú, ní bhíonn imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "if you understand, I don't worry about making mistakes",
+   "target": "má thuigeann tú, ní bhím buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0050L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about finishing",
+    "target": "ní bhíonn imní orm faoi críochnú"
+   },
+   "known": "I don't worry about finishing",
+   "target": "ní bhím buartha faoi críochnú",
+   "family": "worried",
+   "why": ""
+  },
+  "S0052L07B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "you wanted to ask last week",
+    "target": "ba mhian leat a fhiafraí an tseachtain seo caite"
+   },
+   "known": "you wanted to ask a question last week",
+   "target": "ba mhian leat ceist a chur an tseachtain seo caite",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0053L01B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "yesterday she wanted to ask",
+    "target": "inné ba mhian léi a fhiafraí"
+   },
+   "known": "yesterday she wanted to ask a question",
+   "target": "inné ba mhian léi ceist a chur",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0053L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to put everything back before I have to go",
+    "target": "ba mhaith liom gach rud a chur ar ais sula gcaithfidh mé imeacht"
+   },
+   "known": "I'd like to put everything back before I have to go",
+   "target": "ba mhaith liom gach rud a chur ar ais sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0055L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "waking up before I have to go",
+    "target": "dúiseacht sula gcaithfidh mé imeacht"
+   },
+   "known": "waking up before I have to go",
+   "target": "dúiseacht sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0055L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't ready to go when I did not sleep very well",
+    "target": "ní raibh mé réidh le himeacht nuair nár chodail mé go han-mhaith"
+   },
+   "known": "I wasn't ready to go when I did not sleep very well",
+   "target": "ní raibh mé réidh le dul nuair nár chodail mé go han-mhaith",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0055L04U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to meet people who speak Irish well before I have to go",
+    "target": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go maith sula gcaithfidh mé imeacht"
+   },
+   "known": "I'd like to meet people who speak Irish well before I have to go",
+   "target": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go maith sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0059L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know how to find out what the answer is before I have to go",
+    "target": "Tá a fhios agam conas fáil amach cad é an freagra sula gcaithfidh mé imeacht"
+   },
+   "known": "I know how to find out what the answer is before I have to go",
+   "target": "Tá a fhios agam conas fáil amach cad é an freagra sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0059L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she wanted to show me what I need to do before I have to go",
+    "target": "ba mhian léi a thaispeáint dom cad atá le déanamh agam sula gcaithfidh mé imeacht"
+   },
+   "known": "she wanted to show me what I need to do before I have to go",
+   "target": "ba mhian léi a thaispeáint dom cad atá le déanamh agam sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0059L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about what I need to do but I was tired last night",
+    "target": "ní bhíonn imní orm faoi cad atá le déanamh agam ach bhí mé tuirseach aréir"
+   },
+   "known": "I don't worry about what I need to do but I was tired last night",
+   "target": "ní bhím buartha faoi cad atá le déanamh agam ach bhí mé tuirseach aréir",
+   "family": "worried",
+   "why": ""
+  },
+  "S0065L02U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to say what you want to say without worrying about mistakes",
+    "target": "Tá sé tábhachtach rud éigin a rá cad atá i gceist agam ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "it is important to say what you want to say without worrying about mistakes",
+   "target": "Tá sé tábhachtach rud éigin a rá cad atá i gceist agam ach ní bhím buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0066L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she thinks it is not important to worry about making mistakes when learning",
+    "target": "ceapaim Níl sé tábhachtach imní orm faoi bhotúin a dhéanamh ag foghlaim Gaeilge"
+   },
+   "known": "she thinks it is not important to worry about making mistakes when learning",
+   "target": "ceapaim Níl sé tábhachtach a bheith buartha faoi bhotúin a dhéanamh ag foghlaim Gaeilge",
+   "family": "worried",
+   "why": "imní orm sat in a broken frame; a bheith buartha (to be worried). Row was already mismatched (she thinks / ceapaim): not repaired here"
+  },
+  "S0066L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to find the answer before I have to leave now",
+    "target": "is mian liom an freagra a fháil sula gcaithfidh mé imeacht anois"
+   },
+   "known": "I want to find the answer before I have to go now",
+   "target": "is mian liom an freagra a fháil sula gcaithfidh mé dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0067L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "why do you want to find the answer before you have to leave",
+    "target": "cén fáth ar mian leat an freagra a fháil sula gcaithfidh tú imeacht"
+   },
+   "known": "why do you want to find the answer before you have to go",
+   "target": "cén fáth ar mian leat an freagra a fháil sula gcaithfidh tú dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0068L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "what answer were you looking for before you had to leave",
+    "target": "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú imeacht anois"
+   },
+   "known": "what answer were you looking for before you had to go",
+   "target": "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0068L01U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "what were you trying to ask me when I was thinking about the story yesterday",
+    "target": "cad a bhí tú ag iarraidh a fhiafraí díot nuair a bhí mé ag smaoineamh ar an scéal inné"
+   },
+   "known": "what were you trying to say to me when I was thinking about the story yesterday",
+   "target": "cad a bhí tú ag iarraidh a rá liom nuair a bhí mé ag smaoineamh ar an scéal inné",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0068L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was looking for the answer before I had to leave but it was not easy to remember",
+    "target": "bhí mé ag lorg an freagra sula gcaithfidh mé imeacht ach níl sé éasca cuimhneamh"
+   },
+   "known": "I was looking for the answer before I had to go but it was not easy to remember",
+   "target": "bhí mé ag lorg an freagra sula gcaithfidh mé dul ach níl sé éasca cuimhneamh",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0068L03U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I would like to be looking for a good answer to the story before I have to leave",
+    "target": "ba mhaith liom a bheith ag lorg freagra ar an scéal sula gcaithfidh mé imeacht"
+   },
+   "known": "I would like to be looking for a good answer to the story before I have to go",
+   "target": "ba mhaith liom a bheith ag lorg freagra ar an scéal sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0069L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he didn't want to take time before he had to leave but it was important",
+    "target": "Níor mhian leis am a thógáil sula gcaithfidh sé imeacht ach bhí sé tábhachtach"
+   },
+   "known": "he didn't want to take time before he had to go but it was important",
+   "target": "Níor mhian leis am a thógáil sula gcaithfidh sé dul ach bhí sé tábhachtach",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0069L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to look after the young dog before I have to leave",
+    "target": "is mian liom aire a thabhairt don mhadra óg sula gcaithfidh mé imeacht"
+   },
+   "known": "I want to look after the young dog before I have to go",
+   "target": "is mian liom aire a thabhairt don mhadra óg sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0071L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we didn't want to stop and we didn't want to leave",
+    "target": "níor mhian linn stopadh agus níor mhian linn imeacht"
+   },
+   "known": "we didn't want to stop and we didn't want to go",
+   "target": "níor mhian linn stopadh agus níor mhian linn dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0072L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think you're ready to go",
+    "target": "ceapaim go bhfuil tú réidh le himeacht"
+   },
+   "known": "I think you're ready to go",
+   "target": "ceapaim go bhfuil tú réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0078L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I do not understand everything but I am not worried about that",
+    "target": "Ní thuigim gach rud ach ní bhíonn imní orm faoi sin"
+   },
+   "known": "I do not understand everything but I am not worried about that",
+   "target": "Ní thuigim gach rud ach níl mé buartha faoi sin",
+   "family": "worried",
+   "why": "English is 'I am not worried' = níl mé buartha"
+  },
+  "S0085L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about the mistakes",
+    "target": "ní bhíonn imní orm faoi na botúin"
+   },
+   "known": "I don't worry about the mistakes",
+   "target": "ní bhím buartha faoi na botúin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0085L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't worry about those mistakes now",
+    "target": "ní bhíonn imní orm faoi na botúin sin anois"
+   },
+   "known": "I don't worry about those mistakes now",
+   "target": "ní bhím buartha faoi na botúin sin anois",
+   "family": "worried",
+   "why": ""
+  },
+  "S0087L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you and they are ready to go",
+    "target": "go raibh maith agat agus iad réidh le himeacht"
+   },
+   "known": "thank you and they are ready to go",
+   "target": "go raibh maith agat agus iad réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0088L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am not ready to go because I am not tired",
+    "target": "níl mé réidh le himeacht mar níl mé tuirseach"
+   },
+   "known": "I am not ready to go because I am not tired",
+   "target": "níl mé réidh le dul mar níl mé tuirseach",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0088L05B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'm not ready to leave yet",
+    "target": "níl mé réidh le himeacht fós"
+   },
+   "known": "I'm not ready to go yet",
+   "target": "níl mé réidh le dul fós",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0089L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know that there is something important I want to say to you before you have to leave tonight",
+    "target": "Tá a fhios agam go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú imeacht anocht"
+   },
+   "known": "I know that there is something important I want to say to you before you have to go tonight",
+   "target": "Tá a fhios agam go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú dul anocht",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0089L02U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that there is still enough time left to practise before I have to go, so I'm going to keep trying",
+    "target": "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé imeacht, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+   },
+   "known": "I think that there is still enough time left to practise before I have to go, so I'm going to keep trying",
+   "target": "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé dul, mar sin tá mé chun leanúint ar aghaidh ag iarraidh",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0089L04U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm really happy with how much is done today, and I'm going to keep going for a while longer before I stop",
+    "target": "Tá mé an-sásta leis an méid atá déanta inniu, agus tá mé chun leanúint ar aghaidh ar feadh tamaill sula gcaithfidh mé imeacht"
+   },
+   "known": "I'm really happy with how much is done today, and I'm going to keep going for a while longer before I have to go",
+   "target": "Tá mé an-sásta leis an méid atá déanta inniu, agus tá mé chun leanúint ar aghaidh ar feadh tamaill sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0089L04U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know there is a lot done and I'm not worried, because I think it is a great thing that we've been learning together",
+    "target": "Tá a fhios agam go bhfuil go leor déanta agus ní bhíonn imní orm, mar ceapaim gur rud maith é sin go bhfuil muid ag foghlaim le chéile"
+   },
+   "known": "I know there is a lot done and I'm not worried, because I think it is a great thing that we've been learning together",
+   "target": "Tá a fhios agam go bhfuil go leor déanta agus níl mé buartha, mar ceapaim gur rud maith é sin go bhfuil muid ag foghlaim le chéile",
+   "family": "worried",
+   "why": "'I'm not worried' = níl mé buartha"
+  },
+  "S0089L05U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know there is something I have to say to you about the story before you leave, because it's very important",
+    "target": "Tá a fhios agam go bhfuil rud éigin le rá agam leat faoin scéal sula gcaithfidh tú imeacht, mar tá sé tábhachtach"
+   },
+   "known": "I know there is something I have to say to you about the story before you go, because it's very important",
+   "target": "Tá a fhios agam go bhfuil rud éigin le rá agam leat faoin scéal sula gcaithfidh tú dul, mar tá sé tábhachtach",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0089L05U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think there is something important I have to tell you before you go, but I'm not quite sure how to say it yet",
+    "target": "ceapaim go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú imeacht, ach níl mé cinnte fós conas é a rá"
+   },
+   "known": "I think there is something important I have to tell you before you have to go, but I'm not quite sure how to say it yet",
+   "target": "ceapaim go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú dul, ach níl mé cinnte fós conas é a rá",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0089L06U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I still don't know how to say a lot of different words yet, but I'm not worried about making mistakes",
+    "target": "Níl a fhios agam conas go leor focal éagsúil a rá fós, ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "I still don't know how to say a lot of different words yet, but I'm not worried about making mistakes",
+   "target": "Níl a fhios agam conas go leor focal éagsúil a rá fós, ach níl mé buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": "'I'm not worried' = níl mé buartha"
+  },
+  "S0089L06U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know there is a lot I still need to do today, but I want to practise speaking as much as possible before I leave",
+    "target": "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé imeacht"
+   },
+   "known": "I know there is a lot I still need to do today, but I want to practise speaking as much as possible before I go",
+   "target": "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I want to leave",
+    "target": "is mian liom imeacht"
+   },
+   "known": "I want to go",
+   "target": "is mian liom dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is time to leave now",
+    "target": "tá sé in am imeacht anois"
+   },
+   "known": "it is time to go now",
+   "target": "tá sé in am dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "ready to leave",
+    "target": "réidh le himeacht"
+   },
+   "known": "ready to go",
+   "target": "réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "before I have to leave",
+    "target": "sula gcaithfidh mé imeacht"
+   },
+   "known": "before I have to go",
+   "target": "sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "he was trying to leave",
+    "target": "bhí sé ag iarraidh imeacht"
+   },
+   "known": "he was trying to go",
+   "target": "bhí sé ag iarraidh dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02B07": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "she is not trying to leave",
+    "target": "níl sí ag iarraidh imeacht"
+   },
+   "known": "she is not trying to go",
+   "target": "níl sí ag iarraidh dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to leave now but I am not sure it is time to go",
+    "target": "Is mian liom imeacht anois ach níl mé cinnte an bhfuil sé in am"
+   },
+   "known": "I want to go now but I am not sure if it is time",
+   "target": "Is mian liom dul anois ach níl mé cinnte an bhfuil sé in am",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0093L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to help me before I have to leave this evening?",
+    "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht anocht?"
+   },
+   "known": "are you going to help me before I have to go this evening?",
+   "target": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul anocht?",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I love the feeling of being almost ready to leave when you have learned enough",
+    "target": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le himeacht"
+   },
+   "known": "I like feeling as if I'm nearly ready to go",
+   "target": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0093L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is time to leave now and she is not trying to go yet",
+    "target": "Tá sé in am imeacht anois agus níl sí ag iarraidh imeacht fós"
+   },
+   "known": "it is time to go now and she is not trying to go yet",
+   "target": "Tá sé in am dul anois agus níl sí ag iarraidh dul fós",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he was trying to leave early because he wanted to arrive before the others",
+    "target": "bhí sé ag iarraidh imeacht go luath mar ba mhian leis a bheith ann roimh na daoine eile"
+   },
+   "known": "he was trying to go early because he wanted to arrive before the others",
+   "target": "bhí sé ag iarraidh dul go luath mar ba mhian leis a bheith ann roimh na daoine eile",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was not ready to leave but it was already time to go",
+    "target": "Ní raibh mé réidh le himeacht ach bhí sé in am imeacht cheana féin"
+   },
+   "known": "I was not ready to go but it was already time to go",
+   "target": "Ní raibh mé réidh le dul ach bhí sé in am dul cheana féin",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am not sure I want to leave yet because there is still so much to learn here",
+    "target": "Níl mé cinnte gur mian liom imeacht fós mar tá go leor le foghlaim anseo"
+   },
+   "known": "I am not sure I want to go yet because there is still so much to learn here",
+   "target": "Níl mé cinnte gur mian liom dul fós mar tá go leor le foghlaim anseo",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was trying to leave without saying anything because she did not want anyone to hear",
+    "target": "bhí sí ag iarraidh imeacht gan aon rud a rá mar níor mhian léi go mbeadh a fhios ag aon duine"
+   },
+   "known": "she was trying to go without saying anything because she did not want anyone to hear",
+   "target": "bhí sí ag iarraidh dul gan aon rud a rá mar níor mhian léi go mbeadh a fhios ag aon duine",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to know when it is time to leave and not to take too much time",
+    "target": "Tá sé tábhachtach a fhios a bheith agam cathain a bhfuil sé in am imeacht agus gan an iomarca ama a thógáil"
+   },
+   "known": "it is important to know when it is time to go and not to take too much time",
+   "target": "Tá sé tábhachtach a fhios a bheith agam cathain a bhfuil sé in am dul agus gan an iomarca ama a thógáil",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "before I have to leave I want to ask you something I have been thinking about all day",
+    "target": "sula gcaithfidh mé imeacht is mian liom rud éigin a fhiafraí díot a bhí mé ag smaoineamh air ar fad"
+   },
+   "known": "before I have to go I want to ask you a question about something",
+   "target": "sula gcaithfidh mé dul is mian liom ceist a chur ort faoi rud éigin",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0093L02U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he was not trying to leave and he wanted to stay for a while to keep learning",
+    "target": "Ní raibh sé ag iarraidh imeacht agus ba mhian leis fanacht ar feadh tamaill ag foghlaim"
+   },
+   "known": "he was not trying to go and he wanted to stay for a while to keep learning",
+   "target": "Ní raibh sé ag iarraidh dul agus ba mhian leis fanacht ar feadh tamaill ag foghlaim",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was not ready to leave although everyone else was already trying to leave",
+    "target": "Ní raibh sí réidh le himeacht cé go raibh gach duine eile ag iarraidh imeacht cheana féin"
+   },
+   "known": "she was not ready to go although everyone else was already trying to go",
+   "target": "Ní raibh sí réidh le dul cé go raibh gach duine eile ag iarraidh dul cheana féin",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I do not want to leave without helping you finish what you were trying to say",
+    "target": "Ní mian liom imeacht gan cabhrú leat críochnú cad a bhí tú ag iarraidh a rá"
+   },
+   "known": "I do not want to go without helping you finish what you were trying to say",
+   "target": "Ní mian liom dul gan cabhrú leat críochnú cad a bhí tú ag iarraidh a rá",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0093L02U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to leave now because it is already time and I am completely ready",
+    "target": "Is mian liom imeacht anois mar tá sé in am cheana féin agus tá mé réidh le himeacht"
+   },
+   "known": "I want to go now because it is already time and I am ready to go",
+   "target": "Is mian liom dul anois mar tá sé in am cheana féin agus tá mé réidh le dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0096L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that a bag is needed by me before I have to go",
+    "target": "ceapaim go bhfuil mála de dhíth orm sula gcaithfidh mé imeacht"
+   },
+   "known": "I think that a bag is needed by me before I have to go",
+   "target": "ceapaim go bhfuil mála de dhíth orm sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "yes, it's time to leave now",
+    "target": "Tá, tá sé in am imeacht anois"
+   },
+   "known": "yes, it's time to go now",
+   "target": "Tá, tá sé in am dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am ready to leave now",
+    "target": "tá mé réidh le himeacht anois"
+   },
+   "known": "I am ready to go now",
+   "target": "tá mé réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but I am ready to leave",
+    "target": "ach tá mé réidh le himeacht"
+   },
+   "known": "but I am ready to go",
+   "target": "ach tá mé réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "and I am ready to leave tomorrow",
+    "target": "agus tá mé réidh le himeacht amárach"
+   },
+   "known": "and I am ready to go tomorrow",
+   "target": "agus tá mé réidh le dul amárach",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am ready to leave as soon as possible",
+    "target": "tá mé réidh le himeacht chomh luath agus is féidir"
+   },
+   "known": "I am ready to go as soon as possible",
+   "target": "tá mé réidh le dul chomh luath agus is féidir",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02C04": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "leave",
+    "target": "himeacht"
+   },
+   "known": "go",
+   "target": "dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0097L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am ready to leave on the next bus tonight",
+    "target": "tá mé réidh le himeacht ar an gcéad bhus eile anocht"
+   },
+   "known": "I am ready to go on the next bus tonight",
+   "target": "tá mé réidh le dul ar an gcéad bhus eile anocht",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am ready to leave so that I can go home",
+    "target": "tá mé réidh le himeacht mar sin is féidir liom dul abhaile"
+   },
+   "known": "I am ready to go so that I can go home",
+   "target": "tá mé réidh le dul mar sin is féidir liom dul abhaile",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not going to go home tonight but I am ready to leave tomorrow",
+    "target": "níl mé chun dul abhaile anocht ach tá mé réidh le himeacht amárach"
+   },
+   "known": "I'm not going to go home tonight but I am ready to go tomorrow",
+   "target": "níl mé chun dul abhaile anocht ach tá mé réidh le dul amárach",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I can't keep on and I am ready to leave now",
+    "target": "ní féidir liom leanúint ar aghaidh agus tá mé réidh le himeacht anois"
+   },
+   "known": "I can't keep on and I am ready to go now",
+   "target": "ní féidir liom leanúint ar aghaidh agus tá mé réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am ready to leave after you finish",
+    "target": "tá mé réidh le himeacht tar éis duit críochnú"
+   },
+   "known": "I am ready to go after you finish",
+   "target": "tá mé réidh le dul tar éis duit críochnú",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am ready to leave and thank you very much",
+    "target": "tá mé réidh le himeacht agus go raibh míle maith agat"
+   },
+   "known": "I am ready to go and thank you very much",
+   "target": "tá mé réidh le dul agus go raibh míle maith agat",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am ready to leave but I have a little more time",
+    "target": "tá mé réidh le himeacht ach tá beagán níos mó ama"
+   },
+   "known": "I am ready to go but I have a little more time",
+   "target": "tá mé réidh le dul ach tá beagán níos mó ama",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you want to meet people who speak Irish and I am ready to leave later on",
+    "target": "is mian leat bualadh le daoine a labhraíonn Gaeilge agus tá mé réidh le himeacht níos déanaí"
+   },
+   "known": "you want to meet people who speak Irish and I am ready to go later on",
+   "target": "is mian leat bualadh le daoine a labhraíonn Gaeilge agus tá mé réidh le dul níos déanaí",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't know what I need to do but I am ready to leave now",
+    "target": "níl a fhios agam cad atá le déanamh agam ach tá mé réidh le himeacht anois"
+   },
+   "known": "I don't know what I need to do but I am ready to go now",
+   "target": "níl a fhios agam cad atá le déanamh agam ach tá mé réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that it's a good thing and I am ready to leave today",
+    "target": "ceapaim gur rud maith é agus tá mé réidh le himeacht inniu"
+   },
+   "known": "I think that it's a good thing and I am ready to go today",
+   "target": "ceapaim gur rud maith é agus tá mé réidh le dul inniu",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L02U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "if you could go home now I am ready to leave",
+    "target": "dá bhféadfá dul abhaile anois tá mé réidh le himeacht"
+   },
+   "known": "if you could go home now I am ready to go",
+   "target": "dá bhféadfá dul abhaile anois tá mé réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "as soon as you want I am ready to leave but I have a little more time",
+    "target": "chomh luath agus is mian leat tá mé réidh le himeacht ach tá beagán níos mó ama"
+   },
+   "known": "as soon as you want I am ready to go but I have a little more time",
+   "target": "chomh luath agus is mian leat tá mé réidh le dul ach tá beagán níos mó ama",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0097L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to practise speaking as soon as you want before I have to go",
+    "target": "ba mhaith liom labhairt a chleachtadh chomh luath agus is mian leat sula gcaithfidh mé imeacht"
+   },
+   "known": "I'd like to practise speaking as soon as you want before I have to go",
+   "target": "ba mhaith liom labhairt a chleachtadh chomh luath agus is mian leat sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0099L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to ask yourself now",
+    "target": "tú féin a cheistiú anois"
+   },
+   "known": "to ask yourself now",
+   "target": "ceist a chur ort féin anois",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "you should ask yourself",
+    "target": "ba cheart duit tú féin a cheistiú"
+   },
+   "known": "you should ask yourself",
+   "target": "ba cheart duit ceist a chur ort féin",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it's time to ask yourself carefully",
+    "target": "tá sé in am tú féin a cheistiú go cúramach"
+   },
+   "known": "it's time to ask yourself carefully",
+   "target": "tá sé in am ceist a chur ort féin go cúramach",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "you want to ask yourself again",
+    "target": "is mian leat tú féin a cheistiú arís"
+   },
+   "known": "you want to ask yourself again",
+   "target": "is mian leat ceist a chur ort féin arís",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02C01": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "yourself",
+    "target": "tú féin"
+   },
+   "known": "to ask a question",
+   "target": "ceist a chur",
+   "family": "ask",
+   "why": "component row follows the LEGO"
+  },
+  "S0099L02C02": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "to question",
+    "target": "a cheistiú"
+   },
+   "known": "yourself",
+   "target": "ort féin",
+   "family": "ask",
+   "why": "component row follows the LEGO"
+  },
+  "S0099L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "if you could ask yourself that would be easy",
+    "target": "dá bhféadfá tú féin a cheistiú bheadh sé sin éasca"
+   },
+   "known": "if you could ask yourself that would be easy",
+   "target": "dá bhféadfá ceist a chur ort féin bheadh sé sin éasca",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to ask yourself today?",
+    "target": "an bhfuil tú chun tú féin a cheistiú inniu?"
+   },
+   "known": "are you going to ask yourself today?",
+   "target": "an bhfuil tú chun ceist a chur ort féin inniu?",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "did you want to ask yourself yesterday?",
+    "target": "ar mhian leat tú féin a cheistiú inné?"
+   },
+   "known": "did you want to ask yourself yesterday?",
+   "target": "ar mhian leat ceist a chur ort féin inné?",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's time to ask yourself but I can't help you",
+    "target": "tá sé in am tú féin a cheistiú ach ní féidir liom cabhrú leat"
+   },
+   "known": "it's time to ask yourself but I can't help you",
+   "target": "tá sé in am ceist a chur ort féin ach ní féidir liom cabhrú leat",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you very much but you should ask yourself as often as possible",
+    "target": "go raibh míle maith agat ach ba cheart duit tú féin a cheistiú chomh minic agus is féidir"
+   },
+   "known": "thank you very much but you should ask yourself as often as possible",
+   "target": "go raibh míle maith agat ach ba cheart duit ceist a chur ort féin chomh minic agus is féidir",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you want to ask yourself where it was",
+    "target": "is mian leat tú féin a cheistiú cá raibh sé"
+   },
+   "known": "you want to ask yourself where it was",
+   "target": "is mian leat ceist a chur ort féin cá raibh sé",
+   "family": "ask",
+   "why": ""
+  },
+  "S0099L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you wanted to ask yourself why it's not working",
+    "target": "ba mhian leat tú féin a cheistiú cén fáth nach bhfuil sé ag obair"
+   },
+   "known": "you wanted to ask yourself why it's not working",
+   "target": "ba mhian leat ceist a chur ort féin cén fáth nach bhfuil sé ag obair",
+   "family": "ask",
+   "why": ""
+  },
+  "S0100L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you shouldn't ask yourself why it's not working",
+    "target": "níor cheart duit tú féin a cheistiú cén fáth nach bhfuil sé ag obair"
+   },
+   "known": "you shouldn't ask yourself why it's not working",
+   "target": "níor cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair",
+   "family": "ask",
+   "why": ""
+  },
+  "S0100L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I can't help you but you shouldn't ask yourself",
+    "target": "ní féidir liom cabhrú leat ach níor cheart duit tú féin a cheistiú"
+   },
+   "known": "I can't help you but you shouldn't ask yourself",
+   "target": "ní féidir liom cabhrú leat ach níor cheart duit ceist a chur ort féin",
+   "family": "ask",
+   "why": ""
+  },
+  "S0102L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am trying to do my best today and not worry about mistakes",
+    "target": "Tá mé ag iarraidh mo dhícheall a dhéanamh inniu agus gan imní a bheith orm faoi bhotúin"
+   },
+   "known": "I am trying to do my best today and not worry about mistakes",
+   "target": "Tá mé ag iarraidh mo dhícheall a dhéanamh inniu agus gan a bheith buartha faoi bhotúin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0102L04U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he said that it is not important what I was trying to ask yesterday",
+    "target": "dúirt sé nach bhfuil sé tábhachtach cad a bhí mé ag iarraidh a fhiafraí inné"
+   },
+   "known": "he said that it is not important what I was trying to say yesterday",
+   "target": "dúirt sé nach bhfuil sé tábhachtach cad a bhí mé ag iarraidh a rá inné",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0102L05U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is like that when you are not sure if you are ready to leave",
+    "target": "Tá sé mar sin nuair nach bhfuil tú cinnte an bhfuil tú réidh le himeacht"
+   },
+   "known": "it is like that when you are not sure if you are ready to go",
+   "target": "Tá sé mar sin nuair nach bhfuil tú cinnte an bhfuil tú réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0103L01U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we are not sure if there is anything else we need to do before we go",
+    "target": "Níl muid cinnte an bhfuil rud éigin eile le déanamh againn sula gcaithfidh muid imeacht"
+   },
+   "known": "we are not sure if there is anything else we need to do before we go",
+   "target": "Níl muid cinnte an bhfuil rud éigin eile le déanamh againn sula gcaithfidh muid dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0103L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I need another word before I can ask you what I wanted to ask you",
+    "target": "Tá focal eile de dhíth orm sula mbeidh mé ábalta a fhiafraí díot cad ba mhian liom a fhiafraí"
+   },
+   "known": "I need another word before I can ask you a question",
+   "target": "Tá focal eile de dhíth orm sula mbeidh mé ábalta ceist a chur ort",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0103L05U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he told me something else today that I had been trying to ask about",
+    "target": "dúirt sé rud éigin eile liom inniu a bhí mé ag iarraidh a fhiafraí faoi"
+   },
+   "known": "he told me something else today that I had been trying to ask about",
+   "target": "dúirt sé rud éigin eile liom inniu a bhí mé ag iarraidh ceist a chur faoi",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0106L01B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "we do not need to leave",
+    "target": "ní chaithfidh muid imeacht"
+   },
+   "known": "we do not need to go",
+   "target": "ní chaithfidh muid dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0106L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we do not need to leave now",
+    "target": "ní chaithfidh muid imeacht anois"
+   },
+   "known": "we do not need to go now",
+   "target": "ní chaithfidh muid dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0106L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy because we do not need to leave",
+    "target": "tá mé an-sásta mar ní chaithfidh muid imeacht"
+   },
+   "known": "I am very happy because we do not need to go",
+   "target": "tá mé an-sásta mar ní chaithfidh muid dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0106L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's time to leave but we do not need to go home",
+    "target": "tá sé in am imeacht ach ní chaithfidh muid dul abhaile"
+   },
+   "known": "it's time to go but we do not need to go home",
+   "target": "tá sé in am dul ach ní chaithfidh muid dul abhaile",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0108L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "unfortunately we were not ready to go",
+    "target": "faraor ní raibh muid réidh le himeacht"
+   },
+   "known": "unfortunately we were not ready to go",
+   "target": "faraor ní raibh muid réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0108L05U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is not easy to feel well in the morning if you do not enjoy waking in the middle of the night",
+    "target": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhíonn mé sásta ar maidin"
+   },
+   "known": "it is not easy to feel well in the morning if you do not enjoy waking in the middle of the night",
+   "target": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhím sásta ar maidin",
+   "family": "muid",
+   "why": "one-word I form (report: ní bhím)"
+  },
+  "S0110L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "unfortunately I would like to leave now",
+    "target": "faraor ba mhaith liom imeacht anois"
+   },
+   "known": "unfortunately I would like to go now",
+   "target": "faraor ba mhaith liom dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0110L05U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to relax for a while before I have to leave this evening",
+    "target": "ba mhaith liom scíth a ligean ar feadh tamaill sula gcaithfidh mé imeacht tráthnóna"
+   },
+   "known": "I'd like to relax for a while before I have to go this evening",
+   "target": "ba mhaith liom scíth a ligean ar feadh tamaill sula gcaithfidh mé dul tráthnóna",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0111L01B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "when we learn",
+    "target": "nuair a fhoghlaimímid"
+   },
+   "known": "when we learn",
+   "target": "nuair a fhoghlaimíonn muid",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "when we learn something new",
+    "target": "nuair a fhoghlaimímid rud nua"
+   },
+   "known": "when we learn something new",
+   "target": "nuair a fhoghlaimíonn muid rud nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "when we learn something new it's interesting",
+    "target": "nuair a fhoghlaimímid rud nua tá sé suimiúil"
+   },
+   "known": "when we learn something new it's interesting",
+   "target": "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "when we learn something new it changes our brain",
+    "target": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "when we learn something new it changes our brain",
+   "target": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "when we learn something new it's good",
+    "target": "nuair a fhoghlaimímid rud nua tá sé maith"
+   },
+   "known": "when we learn something new it's good",
+   "target": "nuair a fhoghlaimíonn muid rud nua tá sé maith",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01C02": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "we learn",
+    "target": "a fhoghlaimímid"
+   },
+   "known": "we learn",
+   "target": "a fhoghlaimíonn muid",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it's interesting and it changes our brain",
+    "target": "nuair a fhoghlaimímid rud nua tá sé suimiúil agus athraíonn sé ár n-inchinn"
+   },
+   "known": "when we learn something new it's interesting and it changes our brain",
+   "target": "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil agus athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it changes our brain and I like that",
+    "target": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus is maith liom é sin"
+   },
+   "known": "when we learn something new it changes our brain and I like that",
+   "target": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus is maith liom é sin",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it's very interesting and I want to keep going",
+    "target": "nuair a fhoghlaimímid rud nua tá sé an-suimiúil agus is mian liom leanúint ar aghaidh"
+   },
+   "known": "when we learn something new it's very interesting and I want to keep going",
+   "target": "nuair a fhoghlaimíonn muid rud nua tá sé an-suimiúil agus is mian liom leanúint ar aghaidh",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said when we learn something new it changes our brain and that is interesting",
+    "target": "dúirt sí nuair a fhoghlaimímid rud nua go bhfuil sé ag athrú ár n-inchinn agus tá sé suimiúil"
+   },
+   "known": "she said when we learn something new it changes our brain and that is interesting",
+   "target": "dúirt sí nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú ár n-inchinn agus tá sé suimiúil",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it's not easy but I think it's good for us",
+    "target": "nuair a fhoghlaimímid rud nua níl sé éasca ach ceapaim go bhfuil sé maith dúinn"
+   },
+   "known": "when we learn something new it's not easy but I think it's good for us",
+   "target": "nuair a fhoghlaimíonn muid rud nua níl sé éasca ach ceapaim go bhfuil sé maith dúinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think when we learn something new it changes our brain and everything is more interesting",
+    "target": "ceapaim nuair a fhoghlaimímid rud nua go bhfuil sé ag athrú ár n-inchinn agus go bhfuil gach rud níos suimiúla"
+   },
+   "known": "I think when we learn something new it changes our brain and everything is more interesting",
+   "target": "ceapaim nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú ár n-inchinn agus go bhfuil gach rud níos suimiúla",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new I want to relax and let it sink in",
+    "target": "nuair a fhoghlaimímid rud nua is mian liom scíth a ligean"
+   },
+   "known": "when we learn something new I want to relax and let it sink in",
+   "target": "nuair a fhoghlaimíonn muid rud nua is mian liom scíth a ligean",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's very interesting when we learn something new and our brain changes",
+    "target": "Tá sé an-suimiúil nuair a fhoghlaimímid rud nua agus athraíonn ár n-inchinn"
+   },
+   "known": "it's very interesting when we learn something new and our brain changes",
+   "target": "Tá sé an-suimiúil nuair a fhoghlaimíonn muid rud nua agus athraíonn ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new our brain changes and it's important to keep going",
+    "target": "nuair a fhoghlaimímid rud nua athraíonn ár n-inchinn agus tá sé tábhachtach leanúint ar aghaidh"
+   },
+   "known": "when we learn something new our brain changes and it's important to keep going",
+   "target": "nuair a fhoghlaimíonn muid rud nua athraíonn ár n-inchinn agus tá sé tábhachtach leanúint ar aghaidh",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he said when we learn something new it's very interesting for everyone",
+    "target": "dúirt sé nuair a fhoghlaimímid rud nua go bhfuil sé an-suimiúil do gach duine"
+   },
+   "known": "he said when we learn something new it's very interesting for everyone",
+   "target": "dúirt sé nuair a fhoghlaimíonn muid rud nua go bhfuil sé an-suimiúil do gach duine",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it changes our brain and I think that's great",
+    "target": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus ceapaim gur rud maith é sin"
+   },
+   "known": "when we learn something new it changes our brain and I think that's great",
+   "target": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus ceapaim gur rud maith é sin",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's not easy when we learn something new but I think it's very important",
+    "target": "Níl sé éasca nuair a fhoghlaimímid rud nua ach ceapaim go bhfuil sé tábhachtach"
+   },
+   "known": "it's not easy when we learn something new but I think it's very important",
+   "target": "Níl sé éasca nuair a fhoghlaimíonn muid rud nua ach ceapaim go bhfuil sé tábhachtach",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new together our brain changes and it's very good for us",
+    "target": "nuair a fhoghlaimímid rud nua le chéile athraíonn ár n-inchinn agus tá sé maith dúinn"
+   },
+   "known": "when we learn something new together our brain changes and it's very good for us",
+   "target": "nuair a fhoghlaimíonn muid rud nua le chéile athraíonn ár n-inchinn agus tá sé maith dúinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it when we learn something new it changes so much",
+    "target": "Ní raibh mé ag súil leis nuair a fhoghlaimímid rud nua go bhfuil sé ag athrú gach rud"
+   },
+   "known": "I wasn't expecting it when we learn something new it changes so much",
+   "target": "Ní raibh mé ag súil leis nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú gach rud",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L01U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it's interesting and I always want to keep going",
+    "target": "nuair a fhoghlaimímid rud nua tá sé suimiúil agus is mian liom leanúint ar aghaidh"
+   },
+   "known": "when we learn something new it's interesting and I always want to keep going",
+   "target": "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil agus is mian liom leanúint ar aghaidh",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new together it's always very interesting and good",
+    "target": "nuair a fhoghlaimímid rud nua le chéile tá sé an-suimiúil agus maith"
+   },
+   "known": "when we learn something new together it's always very interesting and good",
+   "target": "nuair a fhoghlaimíonn muid rud nua le chéile tá sé an-suimiúil agus maith",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L03B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "learning something new changes everything",
+    "target": "athraíonn sé gach rud nuair a fhoghlaimímid rud nua"
+   },
+   "known": "learning something new changes everything",
+   "target": "athraíonn sé gach rud nuair a fhoghlaimíonn muid rud nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when you learn a new language it changes everything and that is very interesting",
+    "target": "nuair a fhoghlaimímid teanga nua athraíonn sé gach rud agus tá sé sin an-suimiúil"
+   },
+   "known": "when you learn a new language it changes everything and that is very interesting",
+   "target": "nuair a fhoghlaimíonn muid teanga nua athraíonn sé gach rud agus tá sé sin an-suimiúil",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it changes our brain when we learn something new and it is good to keep working",
+    "target": "ceapaim athraíonn sé ár n-inchinn nuair a fhoghlaimímid rud nua agus tá sé maith leanúint ag obair"
+   },
+   "known": "I think it changes our brain when we learn something new and it is good to keep working",
+   "target": "ceapaim athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua agus tá sé maith leanúint ag obair",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L03U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it and it changes everything when we learn a new language",
+    "target": "Ní raibh mé ag súil leis agus athraíonn sé gach rud nuair a fhoghlaimímid teanga nua"
+   },
+   "known": "I wasn't expecting it and it changes everything when we learn a new language",
+   "target": "Ní raibh mé ag súil leis agus athraíonn sé gach rud nuair a fhoghlaimíonn muid teanga nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L03U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it but it changes everything when we learn a new language",
+    "target": "Ní raibh mé ag súil leis ach athraíonn sé gach rud nuair a fhoghlaimímid teanga nua"
+   },
+   "known": "I wasn't expecting it but it changes everything when we learn a new language",
+   "target": "Ní raibh mé ag súil leis ach athraíonn sé gach rud nuair a fhoghlaimíonn muid teanga nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L03U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "learning something new together changes a lot and it's much better",
+    "target": "athraíonn sé go leor nuair a fhoghlaimímid rud nua le chéile agus tá sé níos fearr"
+   },
+   "known": "learning something new together changes a lot and it's much better",
+   "target": "athraíonn sé go leor nuair a fhoghlaimíonn muid rud nua le chéile agus tá sé níos fearr",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L04B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "learning something new changes our brain",
+    "target": "athraíonn sé ár n-inchinn nuair a fhoghlaimímid rud nua"
+   },
+   "known": "learning something new changes our brain",
+   "target": "athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0111L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it changes our brain and it is easier",
+    "target": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus tá sé níos éasca"
+   },
+   "known": "when we learn something new it changes our brain and it is easier",
+   "target": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus tá sé níos éasca",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said it was very interesting to find out how our brain changes when we learn",
+    "target": "dúirt sí go bhfuil sé an-suimiúil fáil amach conas a athraíonn sé ár n-inchinn nuair a fhoghlaimímid"
+   },
+   "known": "she said it was very interesting to find out how our brain changes when we learn",
+   "target": "dúirt sí go bhfuil sé an-suimiúil fáil amach conas a athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it's very interesting that our brain changes when we learn something new",
+    "target": "ceapaim go bhfuil sé an-suimiúil go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimímid rud nua"
+   },
+   "known": "I think it's very interesting that our brain changes when we learn something new",
+   "target": "ceapaim go bhfuil sé an-suimiúil go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimíonn muid rud nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L01U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting to find it so very interesting when we started learning together",
+    "target": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimímid le chéile"
+   },
+   "known": "I wasn't expecting to find it so very interesting when we started learning together",
+   "target": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimíonn muid le chéile",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it to be so interesting when we started learning Irish together",
+    "target": "Ní raibh mé ag súil leis go mbeadh sé chomh suimiúil sin nuair a fhoghlaimímid Gaeilge le chéile"
+   },
+   "known": "I wasn't expecting it to be so interesting when we started learning Irish together",
+   "target": "Ní raibh mé ag súil leis go mbeadh sé chomh suimiúil sin nuair a fhoghlaimíonn muid Gaeilge le chéile",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it but our brain changes every time we learn something new",
+    "target": "Ní raibh mé ag súil leis ach athraíonn sé ár n-inchinn nuair a fhoghlaimímid rud nua"
+   },
+   "known": "I wasn't expecting it but our brain changes every time we learn something new",
+   "target": "Ní raibh mé ag súil leis ach athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it to be so very interesting when we started learning together",
+    "target": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimímid le chéile"
+   },
+   "known": "I wasn't expecting it to be so very interesting when we started learning together",
+   "target": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimíonn muid le chéile",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting that our brain changes when we learn something new together",
+    "target": "Ní raibh mé ag súil leis go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimímid rud nua"
+   },
+   "known": "I wasn't expecting that our brain changes when we learn something new together",
+   "target": "Ní raibh mé ag súil leis go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimíonn muid rud nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't ready to leave but I had to because there was too much to do",
+    "target": "Ní raibh mé réidh le himeacht ach caithfidh mé imeacht mar bhí an iomarca le déanamh"
+   },
+   "known": "I wasn't ready to go but I had to because there was too much to do",
+   "target": "Ní raibh mé réidh le dul ach caithfidh mé dul mar bhí an iomarca le déanamh",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0112L04U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it to change our brain when we started learning this language",
+    "target": "Ní raibh mé ag súil leis go mbeadh sé ag athrú ár n-inchinn nuair a fhoghlaimímid an teanga seo"
+   },
+   "known": "I wasn't expecting it to change our brain when we started learning this language",
+   "target": "Ní raibh mé ag súil leis go mbeadh sé ag athrú ár n-inchinn nuair a fhoghlaimíonn muid an teanga seo",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L05U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That was the kind of thing I wasn't expecting when we started learning the language",
+    "target": "bhí sé sin rud nach raibh mé ag súil leis nuair a fhoghlaimímid an teanga"
+   },
+   "known": "That was the kind of thing I wasn't expecting when we started learning the language",
+   "target": "bhí sé sin rud nach raibh mé ag súil leis nuair a fhoghlaimíonn muid an teanga",
+   "family": "muid",
+   "why": ""
+  },
+  "S0112L05U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that was something very important to understand before we go any further",
+    "target": "ceapaim bhí sé sin rud tábhachtach a thuigeann tú sula gcaithfidh mé imeacht"
+   },
+   "known": "I think that was something very important to understand before we go any further",
+   "target": "ceapaim bhí sé sin rud tábhachtach a thuigeann tú sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0113L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "can't i leave",
+    "target": "nach féidir liom imeacht"
+   },
+   "known": "can't i go",
+   "target": "nach féidir liom dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0114L01U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I feel it's easier to speak when I don't worry about making mistakes",
+    "target": "mothaím go bhfuil sé níos éasca labhairt nuair nach bhfuil imní orm faoi bhotúin a dhéanamh"
+   },
+   "known": "I feel it's easier to speak when I'm not worried about making mistakes",
+   "target": "mothaím go bhfuil sé níos éasca labhairt nuair nach bhfuil mé buartha faoi bhotúin a dhéanamh",
+   "family": "worried",
+   "why": "nach bhfuil mé buartha uses only taught forms; English moved to 'I'm not worried' so it does not clash with 'I don't worry' = ní bhím buartha"
+  },
+  "S0114L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I feel as if I am almost ready to leave now",
+    "target": "mothaím go bhfuil mé beagnach réidh le himeacht anois"
+   },
+   "known": "I feel as if I am almost ready to go now",
+   "target": "mothaím go bhfuil mé beagnach réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0115L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not going to leave now because I don't feel ready",
+    "target": "níl mé chun imeacht anois mar ní mhothaím réidh"
+   },
+   "known": "I'm not going to go now because I don't feel ready",
+   "target": "níl mé chun dul anois mar ní mhothaím réidh",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0115L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "ready to leave now",
+    "target": "réidh le himeacht anois"
+   },
+   "known": "ready to go now",
+   "target": "réidh le dul anois",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0115L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was ready to leave last night",
+    "target": "bhí mé réidh le himeacht aréir"
+   },
+   "known": "I was ready to go last night",
+   "target": "bhí mé réidh le dul aréir",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0115L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was ready to leave on the next bus",
+    "target": "bhí sí réidh le himeacht ar an gcéad bhus eile"
+   },
+   "known": "she was ready to go on the next bus",
+   "target": "bhí sí réidh le dul ar an gcéad bhus eile",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0118L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't expecting it when we were ready to go",
+    "target": "ní raibh mé ag súil leis nuair a bhí muid réidh le himeacht"
+   },
+   "known": "I wasn't expecting it when we were ready to go",
+   "target": "ní raibh mé ag súil leis nuair a bhí muid réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0119L01B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "can I ask",
+    "target": "an féidir liom a fhiafraí"
+   },
+   "known": "can I ask a question",
+   "target": "an féidir liom ceist a chur",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "can I ask why it's not working",
+    "target": "an féidir liom a fhiafraí cén fáth nach bhfuil sé ag obair"
+   },
+   "known": "can I ask you why it's not working",
+   "target": "an féidir liom ceist a chur ort cén fáth nach bhfuil sé ag obair",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to ask you now",
+    "target": "a fhiafraí díot anois"
+   },
+   "known": "to ask you now",
+   "target": "ceist a chur ort anois",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I should ask you",
+    "target": "ba cheart dom a fhiafraí díot"
+   },
+   "known": "I should ask you",
+   "target": "ba cheart dom ceist a chur ort",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'd like to ask you something",
+    "target": "ba mhaith liom rud éigin a fhiafraí díot"
+   },
+   "known": "I'd like to ask you about something",
+   "target": "ba mhaith liom ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I wouldn't like to ask you again",
+    "target": "níor mhaith liom a fhiafraí díot arís"
+   },
+   "known": "I wouldn't like to ask you again",
+   "target": "níor mhaith liom ceist a chur ort arís",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not going to ask you tomorrow",
+    "target": "níl mé chun a fhiafraí díot amárach"
+   },
+   "known": "I'm not going to ask you tomorrow",
+   "target": "níl mé chun ceist a chur ort amárach",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we wanted to ask you something yesterday",
+    "target": "ba mhian linn rud éigin a fhiafraí díot inné"
+   },
+   "known": "we wanted to ask you about something yesterday",
+   "target": "ba mhian linn ceist a chur ort inné faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "why can't I ask you what you said",
+    "target": "cén fáth nach féidir liom a fhiafraí díot cad a dúirt tú"
+   },
+   "known": "why can't I ask you what you said",
+   "target": "cén fáth nach féidir liom ceist a chur ort cad a dúirt tú",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to ask you something before I have to go",
+    "target": "ba mhaith liom rud éigin a fhiafraí díot sula gcaithfidh mé imeacht"
+   },
+   "known": "I'd like to ask you about something before I have to go",
+   "target": "ba mhaith liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you, I'd like to ask you about my friend",
+    "target": "go raibh maith agat, ba mhaith liom a fhiafraí díot faoi mo chara"
+   },
+   "known": "thank you, I'd like to ask you about my friend",
+   "target": "go raibh maith agat, ba mhaith liom ceist a chur ort faoi mo chara",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I can't ask you now because I'm tired",
+    "target": "ní féidir liom a fhiafraí díot anois mar tá mé tuirseach"
+   },
+   "known": "I can't ask you now because I'm tired",
+   "target": "ní féidir liom ceist a chur ort anois mar tá mé tuirseach",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she wanted to ask you something new",
+    "target": "ba mhian léi rud nua a fhiafraí díot"
+   },
+   "known": "she wanted to ask you about something new",
+   "target": "ba mhian léi ceist a chur ort faoi rud nua",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0119L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "why can't I ask you something before you leave",
+    "target": "cén fáth nach féidir liom rud éigin a fhiafraí díot sula n-imíonn tú"
+   },
+   "known": "why can't I ask you about something before you leave",
+   "target": "cén fáth nach féidir liom ceist a chur ort faoi rud éigin sula n-imíonn tú",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0120L01B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it's interesting when we learn",
+    "target": "tá sé suimiúil nuair a fhoghlaimímid"
+   },
+   "known": "it's interesting when we learn",
+   "target": "tá sé suimiúil nuair a fhoghlaimíonn muid",
+   "family": "muid",
+   "why": ""
+  },
+  "S0120L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's interesting when we learn something new",
+    "target": "tá sé suimiúil nuair a fhoghlaimímid rud nua"
+   },
+   "known": "it's interesting when we learn something new",
+   "target": "tá sé suimiúil nuair a fhoghlaimíonn muid rud nua",
+   "family": "muid",
+   "why": ""
+  },
+  "S0123L01U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it's a good thing to take time to rest after we finish and before you have to leave",
+    "target": "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé imeacht"
+   },
+   "known": "I think it's a good thing to take time to rest after we finish and before you have to go",
+   "target": "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0123L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that it's a good idea to take time to rest after we finish so that our brain can change when we learn something new",
+    "target": "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "I think that it's a good idea to take time to rest after we finish so that our brain can change when we learn something new",
+   "target": "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0123L02U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that it's a good idea to read interesting things because every time we learn something new our brain changes in a wonderful way",
+    "target": "ceapaim gur smaoineamh maith é sin rudaí suimiúla a léamh mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn ar bhealach iontach"
+   },
+   "known": "I think that it's a good idea to read interesting things because every time we learn something new our brain changes in a wonderful way",
+   "target": "ceapaim gur smaoineamh maith é sin rudaí suimiúla a léamh mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn ar bhealach iontach",
+   "family": "muid",
+   "why": ""
+  },
+  "S0124L01U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought it was a good thing to keep going even when things felt difficult because every time we learn something new our brain changes",
+    "target": "cheap mé gur rud maith é leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "I thought it was a good thing to keep going even when things felt difficult because every time we learn something new our brain changes",
+   "target": "cheap mé gur rud maith é leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0124L01U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea to read interesting things and that every time we learn something new our brain changes in a wonderful way",
+    "target": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh agus nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn ar bhealach iontach"
+   },
+   "known": "I thought that it was a good idea to read interesting things and that every time we learn something new our brain changes in a wonderful way",
+   "target": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn ar bhealach iontach",
+   "family": "muid",
+   "why": ""
+  },
+  "S0124L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea to keep going when things were difficult because our brain changes every time we learn something new",
+    "target": "cheap mé gur smaoineamh maith é sin leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "I thought that it was a good idea to keep going when things were difficult because our brain changes every time we learn something new",
+   "target": "cheap mé gur smaoineamh maith é sin leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0124L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea and I wanted to ask you something before you left about finding people who speak Irish",
+    "target": "cheap mé gur smaoineamh maith é sin agus ba mhian liom rud éigin a fhiafraí díot sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+   },
+   "known": "I thought that it was a good idea and I wanted to ask you before you left about finding people who speak Irish",
+   "target": "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0124L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea to take time to rest after we finished and before I had to leave at the end",
+    "target": "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé imeacht"
+   },
+   "known": "I thought that it was a good idea to take time to rest after we finished and before I had to go at the end",
+   "target": "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0124L02U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea to read interesting things in Irish because every time we learn something new our brain changes",
+    "target": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh as Gaeilge mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "I thought that it was a good idea to read interesting things in Irish because every time we learn something new our brain changes",
+   "target": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh as Gaeilge mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0125L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and I want to find out more about it before I have to leave today after we finish",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé imeacht inniu tar éis dúinn críochnú"
+   },
+   "known": "I believe that your idea was very good and I want to find out more about it before I have to go today after we finish",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé dul inniu tar éis dúinn críochnú",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0125L01U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that it's a good thing to make mistakes because our brain changes when we learn and that is the only way it works",
+    "target": "creidim gur rud maith é botúin a dhéanamh mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus sin an t-aon bhealach a n-oibreoidh sé"
+   },
+   "known": "I believe that it's a good thing to make mistakes because our brain changes when we learn and that is the only way it works",
+   "target": "creidim gur rud maith é botúin a dhéanamh mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus sin an t-aon bhealach a n-oibreoidh sé",
+   "family": "muid",
+   "why": ""
+  },
+  "S0125L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and I want to find out more about it before I have to leave today",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé imeacht inniu"
+   },
+   "known": "I believe that your idea was very good and I want to find out more about it before I have to go today",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé dul inniu",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0125L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and it's useful to start speaking as soon as possible because our brain changes when we learn",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus tá sé úsáideach tosú ag caint chomh luath agus is féidir leat mar athraíonn sé ár n-inchinn nuair a fhoghlaimímid"
+   },
+   "known": "I believe that your idea was very good and it's useful to start speaking as soon as possible because our brain changes when we learn",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus tá sé úsáideach tosú ag caint chomh luath agus is féidir leat mar athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid",
+   "family": "muid",
+   "why": ""
+  },
+  "S0127L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason and I wanted to ask you something before you leave about what you wanted to do yesterday",
+    "target": "Ní hé sin an fáth agus ba mhian liom rud éigin a fhiafraí díot sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+   },
+   "known": "That isn't the reason and I wanted to ask you before you leave about what you wanted to do yesterday",
+   "target": "Ní hé sin an fáth agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0127L01U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason and I think it's a good idea to meet up this evening so that I can ask you something I wanted to ask you",
+    "target": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom rud éigin a fhiafraí díot"
+   },
+   "known": "That isn't the reason and I think it's a good idea to meet up this evening because I wanted to ask you about something",
+   "target": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0127L01U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes every time we learn something new",
+    "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes every time we learn something new",
+   "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0127L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you and I wanted to ask you something very important before you had to leave today",
+    "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ba mhian liom rud éigin a fhiafraí díot sula gcaithfidh mé imeacht inniu"
+   },
+   "known": "That isn't the reason why I wanted to see you and I wanted to ask you about something before I have to go today",
+   "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0127L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you because every time we learn something new our brain changes and that helps us speak better",
+    "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+   },
+   "known": "That isn't the reason why I wanted to see you because every time we learn something new our brain changes and that helps us speak better",
+   "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr",
+   "family": "muid",
+   "why": ""
+  },
+  "S0127L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you because I think it's a good idea to meet here and speak Irish before we have to leave",
+    "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid imeacht"
+   },
+   "known": "That isn't the reason why I wanted to see you because I think it's a good idea to meet here and speak Irish before we have to go",
+   "target": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0132L05U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "nobody wanted to hear what she was saying at that moment so we decided to leave",
+    "target": "níor mhian le haon duine an méid a bhí sise a rá a chloisteáil ag an am sin mar sin chinn muid imeacht"
+   },
+   "known": "nobody wanted to hear what she was saying at that moment so we decided to go",
+   "target": "níor mhian le haon duine an méid a bhí sise a rá a chloisteáil ag an am sin mar sin chinn muid dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0134L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is not a problem because I'm ready to leave",
+    "target": "ní fadhb é mar tá mé réidh le himeacht"
+   },
+   "known": "it is not a problem because I'm ready to go",
+   "target": "ní fadhb é mar tá mé réidh le dul",
+   "family": "go",
+   "why": "imeacht is not taught until seed 139 now; go = dul"
+  },
+  "S0137L05U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we do not need to be perfect when we learn",
+    "target": "ní chaithfidh muid a bheith foirfe nuair a fhoghlaimímid"
+   },
+   "known": "we do not need to be perfect when we learn",
+   "target": "ní chaithfidh muid a bheith foirfe nuair a fhoghlaimíonn muid",
+   "family": "muid",
+   "why": ""
+  },
+  "S0139L01B03": {
+   "action": "del",
+   "role": "build",
+   "before": {
+    "known": "I'm sorry that I need to leave",
+    "target": "tá brón orm go gcaithfidh mé imeacht"
+   },
+   "known": null,
+   "target": null,
+   "family": "go",
+   "why": "moved under the new LEGO S0139L02 to leave | imeacht"
+  },
+  "S0139L01U01": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I'm sorry that I need to leave so early",
+    "target": "Tá brón orm go gcaithfidh mé imeacht chomh luath"
+   },
+   "known": null,
+   "target": null,
+   "family": "go",
+   "why": "moved under the new LEGO S0139L02 to leave | imeacht"
+  },
+  "S0139L01U03": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I'm sorry that I need to leave now",
+    "target": "Tá brón orm go gcaithfidh mé imeacht anois"
+   },
+   "known": null,
+   "target": null,
+   "family": "go",
+   "why": "moved under the new LEGO S0139L02 to leave | imeacht"
+  },
+  "S0139L01U06": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I'm sorry that I need to leave so early today",
+    "target": "Tá brón orm go gcaithfidh mé imeacht chomh luath inniu"
+   },
+   "known": null,
+   "target": null,
+   "family": "go",
+   "why": "moved under the new LEGO S0139L02 to leave | imeacht"
+  },
+  "S0142L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "very kind and very interesting",
+    "target": "an-deas agus an-suimiúil"
+   },
+   "known": "very kind and very interesting",
+   "target": "an-chineálta agus an-suimiúil",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "someone very kind who speaks Irish",
+    "target": "duine an-deas a labhraíonn Gaeilge"
+   },
+   "known": "someone very kind who speaks Irish",
+   "target": "duine an-chineálta a labhraíonn Gaeilge",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "that was very kind",
+    "target": "bhí sé sin an-deas"
+   },
+   "known": "that was very kind",
+   "target": "bhí sé sin an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "you were very kind",
+    "target": "bhí tú an-deas"
+   },
+   "known": "you were very kind",
+   "target": "bhí tú an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "of course that was very kind",
+    "target": "ar ndóigh bhí sé sin an-deas"
+   },
+   "known": "of course that was very kind",
+   "target": "ar ndóigh bhí sé sin an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is not very kind to ask her",
+    "target": "níl sé an-deas ceist a chur uirthi"
+   },
+   "known": "it is not very kind to ask her",
+   "target": "níl sé an-chineálta ceist a chur uirthi",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you were very kind last night",
+    "target": "bhí tú an-deas aréir"
+   },
+   "known": "you were very kind last night",
+   "target": "bhí tú an-chineálta aréir",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that it's not very kind",
+    "target": "ceapaim nach bhfuil sé an-deas"
+   },
+   "known": "I think that it's not very kind",
+   "target": "ceapaim nach bhfuil sé an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "that would be very kind if you could come back later on",
+    "target": "bheadh sé sin an-deas dá bhféadfá teacht ar ais níos déanaí"
+   },
+   "known": "that would be very kind if you could come back later on",
+   "target": "bheadh sé sin an-chineálta dá bhféadfá teacht ar ais níos déanaí",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "that was very kind but I'm not ready yet",
+    "target": "bhí sé sin an-deas ach níl mé réidh fós"
+   },
+   "known": "that was very kind but I'm not ready yet",
+   "target": "bhí sé sin an-chineálta ach níl mé réidh fós",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you said that it's not very kind",
+    "target": "dúirt tú nach bhfuil sé an-deas"
+   },
+   "known": "you said that it's not very kind",
+   "target": "dúirt tú nach bhfuil sé an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "very kind of you",
+    "target": "an-deas uait"
+   },
+   "known": "very kind of you",
+   "target": "an-chineálta uait",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you very much very kind of you",
+    "target": "go raibh míle maith agat an-deas uait"
+   },
+   "known": "thank you very much very kind of you",
+   "target": "go raibh míle maith agat an-chineálta uait",
+   "family": "kind",
+   "why": ""
+  },
+  "S0142L05U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "of course I am grateful to you because you were very kind",
+    "target": "ar ndóigh tá mé buíoch díot mar bhí tú an-deas"
+   },
+   "known": "of course I am grateful to you because you were very kind",
+   "target": "ar ndóigh tá mé buíoch díot mar bhí tú an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0146L06U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "nothing seems to be getting any better for us no matter what we do",
+    "target": "Ní cosúil go bhfuil aon rud ag dul níos fearr dúinn is cuma cad a dhéanaimid"
+   },
+   "known": "nothing seems to be getting any better for us no matter what we do",
+   "target": "Ní cosúil go bhfuil aon rud ag dul níos fearr dúinn is cuma cad a dhéanann muid",
+   "family": "muid",
+   "why": ""
+  },
+  "S0147L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "she was kind when she saw that I was nervous",
+    "target": "bhí sí an-deas nuair a chonaic sí go raibh mé neirbhíseach"
+   },
+   "known": "she was kind when she saw that I was nervous",
+   "target": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach",
+   "family": "kind",
+   "why": ""
+  },
+  "S0147L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was very kind when she saw that I was nervous",
+    "target": "bhí sí an-deas nuair a chonaic sí go raibh mé neirbhíseach"
+   },
+   "known": "she was very kind when she saw that I was nervous",
+   "target": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach",
+   "family": "kind",
+   "why": ""
+  },
+  "S0147L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was glad she was kind when she saw that I was nervous",
+    "target": "bhí mé sásta go raibh sí an-deas nuair a chonaic sí go raibh mé neirbhíseach"
+   },
+   "known": "I was glad she was kind when she saw that I was nervous",
+   "target": "bhí mé sásta go raibh sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach",
+   "family": "kind",
+   "why": ""
+  },
+  "S0148L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but he wasn't very kind",
+    "target": "ach ní raibh sé an-deas"
+   },
+   "known": "but he wasn't very kind",
+   "target": "ach ní raibh sé an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0148L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you were very patient with me and very kind",
+    "target": "bhí tú an-fhoighneach liom agus an-deas"
+   },
+   "known": "you were very patient with me and very kind",
+   "target": "bhí tú an-fhoighneach liom agus an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0148L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you were very kind when I couldn't find the answer",
+    "target": "bhí tú an-deas nuair nach raibh mé ábalta an freagra a fháil"
+   },
+   "known": "you were very kind when I couldn't find the answer",
+   "target": "bhí tú an-chineálta nuair nach raibh mé ábalta an freagra a fháil",
+   "family": "kind",
+   "why": ""
+  },
+  "S0150L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to ask you what your name is again",
+    "target": "a fhiafraí díot cad is ainm duit arís"
+   },
+   "known": "to ask you what your name is again",
+   "target": "ceist a chur ort cad is ainm duit arís",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0150L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she wanted to ask you what your name is",
+    "target": "ba mhian léi a fhiafraí díot cad is ainm duit"
+   },
+   "known": "she wanted to ask you what your name is",
+   "target": "ba mhian léi ceist a chur ort cad is ainm duit",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0151L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "that was not it but you should ask yourself why",
+    "target": "ní hé sin ach ba cheart duit tú féin a cheistiú cén fáth"
+   },
+   "known": "that was not it but you should ask yourself why",
+   "target": "ní hé sin ach ba cheart duit ceist a chur ort féin cén fáth",
+   "family": "ask",
+   "why": ""
+  },
+  "S0155L01U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't mind, I am ready to leave as soon as you want to go",
+    "target": "Ní miste liom, tá mé réidh le himeacht chomh luath agus is mian leat"
+   },
+   "known": "I don't mind, I am ready to leave as soon as you want",
+   "target": "Ní miste liom, tá mé réidh le himeacht chomh luath agus is mian leat",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0156L04U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am not worried about making mistakes tonight and I think that is a good thing",
+    "target": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh anocht agus ceapaim gur rud maith é sin"
+   },
+   "known": "I am not worried about making mistakes tonight and I think that is a good thing",
+   "target": "níl mé buartha faoi bhotúin a dhéanamh anocht agus ceapaim gur rud maith é sin",
+   "family": "worried",
+   "why": "'I am not worried' = níl mé buartha; stray leading ach dropped (English has no but)"
+  },
+  "S0156L04U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is time to go home now but I want to meet again tonight next week",
+    "target": "tá sé in am imeacht anois ach ba mhaith liom bualadh le chéile arís anocht an tseachtain seo chugainn"
+   },
+   "known": "it is time to go home now but I want to meet again tonight next week",
+   "target": "tá sé in am dul abhaile anois ach ba mhaith liom bualadh le chéile arís anocht an tseachtain seo chugainn",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0163L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when we learn something new it changes our brain",
+    "target": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "when we learn something new it changes our brain",
+   "target": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "muid",
+   "why": ""
+  },
+  "S0172L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "yes that would be very kind",
+    "target": "Is mian, bheadh sé sin an-deas"
+   },
+   "known": "yes that would be very kind",
+   "target": "Is mian, bheadh sé sin an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0172L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "very helpful and very kind",
+    "target": "an-chabhrach agus an-deas"
+   },
+   "known": "very helpful and very kind",
+   "target": "an-chabhrach agus an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0172L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "that would be very helpful and very kind",
+    "target": "bheadh sé sin an-chabhrach agus an-deas"
+   },
+   "known": "that would be very helpful and very kind",
+   "target": "bheadh sé sin an-chabhrach agus an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0181L05B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I have to ask",
+    "target": "caithfidh mé a fhiafraí"
+   },
+   "known": "I have to ask a question",
+   "target": "caithfidh mé ceist a chur",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0181L05U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have to ask her what are you going to do before she leaves on Sunday",
+    "target": "caithfidh mé a fhiafraí di cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+   },
+   "known": "I have to ask her what are you going to do before she leaves on Sunday",
+   "target": "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0181L05U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have to ask if she can help me for a while this Sunday morning",
+    "target": "caithfidh mé a fhiafraí di an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+   },
+   "known": "I have to ask if she can help me for a while this Sunday morning",
+   "target": "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0200L03U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it is very important to make sure that everybody is happy before we go",
+    "target": "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil gach duine sásta sula n-imíonn muid"
+   },
+   "known": "I think it is very important to make sure that everybody is happy before we leave",
+   "target": "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil gach duine sásta sula n-imíonn muid",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0202L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "nobody was sure what was going to happen and everyone was worrying about it",
+    "target": "Ní raibh duine ar bith cinnte cad a bhí chun tarlú agus bhí imní ar gach duine faoi"
+   },
+   "known": "nobody was sure what was going to happen and everyone was worrying about it",
+   "target": "Ní raibh duine ar bith cinnte cad a bhí chun tarlú agus bhí gach duine buartha faoi",
+   "family": "worried",
+   "why": ""
+  },
+  "S0202L01U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "nobody was sure whether anyone was going to help and everyone was worried about what to do next",
+    "target": "Ní raibh duine ar bith cinnte an raibh duine ar bith chun cabhrú agus bhí imní ar gach duine faoi cad a bhí le déanamh"
+   },
+   "known": "nobody was sure whether anyone was going to help and everyone was worried about what to do next",
+   "target": "Ní raibh duine ar bith cinnte an raibh duine ar bith chun cabhrú agus bhí gach duine buartha faoi cad a bhí le déanamh",
+   "family": "worried",
+   "why": ""
+  },
+  "S0205L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i wanted to ask you something but i have forgotten",
+    "target": "ba mhian liom rud éigin a fhiafraí díot ach tá dearmad déanta agam"
+   },
+   "known": "i wanted to ask you about something but i have forgotten",
+   "target": "ba mhian liom ceist a chur ort faoi rud éigin ach tá dearmad déanta agam",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0222L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he is ready to go now",
+    "target": "tá sé réidh le himeacht anois"
+   },
+   "known": "he is ready to go now",
+   "target": "tá sé réidh le dul anois",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0228L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "that man is very kind",
+    "target": "tá an fear sin an-deas"
+   },
+   "known": "that man is very kind",
+   "target": "tá an fear sin an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0228L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "that man is ready to go now",
+    "target": "tá an fear sin réidh le himeacht anois"
+   },
+   "known": "that man is ready to go now",
+   "target": "tá an fear sin réidh le dul anois",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0231L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i am sorry but i know an old man who used to be very kind",
+    "target": "tá brón orm ach tá aithne agam ar sheanfhear a bhíodh an-deas"
+   },
+   "known": "i am sorry but i know an old man who used to be very kind",
+   "target": "tá brón orm ach tá aithne agam ar sheanfhear a bhíodh an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0234L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "that man who works in the office is very kind",
+    "target": "tá an fear sin a oibríonn san oifig an-deas"
+   },
+   "known": "that man who works in the office is very kind",
+   "target": "tá an fear sin a oibríonn san oifig an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0235L06U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I should have something to tell you before I have to go",
+    "target": "ba cheart dom rud éigin a insint duit sula gcaithfidh mé imeacht"
+   },
+   "known": "I should have something to tell you before I have to go",
+   "target": "ba cheart dom rud éigin a insint duit sula gcaithfidh mé dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0236L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "that she was ready to go",
+    "target": "go raibh sí réidh le himeacht"
+   },
+   "known": "that she was ready to go",
+   "target": "go raibh sí réidh le dul",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0246L04B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I wanted to ask her but she was too busy",
+    "target": "ba mhian liom a fhiafraí di ach bhí sí ró-ghnóthach"
+   },
+   "known": "I wanted to ask her but she was too busy",
+   "target": "ba mhian liom ceist a chur uirthi ach bhí sí ró-ghnóthach",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0246L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I tried to ask her but she was too busy to stop and talk to me",
+    "target": "bhí mé ag iarraidh a fhiafraí di ach bhí sí ró-ghnóthach le stopadh agus labhairt liom"
+   },
+   "known": "I tried to ask her but she was too busy to stop and talk to me",
+   "target": "bhí mé ag iarraidh ceist a chur uirthi ach bhí sí ró-ghnóthach le stopadh agus labhairt liom",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0249L04B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "before you go tomorrow morning",
+    "target": "sula n-imíonn tú maidin amárach"
+   },
+   "known": "before you go tomorrow morning",
+   "target": "sula rachaidh tú maidin amárach",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to see you before you go",
+    "target": "tú a fheiceáil sula n-imíonn tú"
+   },
+   "known": "to see you before you go",
+   "target": "tú a fheiceáil sula rachaidh tú",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "give it to him before you go",
+    "target": "é a thabhairt dó sula n-imíonn tú"
+   },
+   "known": "give it to him before you go",
+   "target": "é a thabhairt dó sula rachaidh tú",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "we must finish before you go tonight",
+    "target": "caithfidh muid críochnú sula n-imíonn tú anocht"
+   },
+   "known": "we must finish before you go tonight",
+   "target": "caithfidh muid críochnú sula rachaidh tú anocht",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "before you go thank you very much",
+    "target": "sula n-imíonn tú go raibh míle maith agat"
+   },
+   "known": "before you go thank you very much",
+   "target": "sula rachaidh tú go raibh míle maith agat",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "before you go can you give me that book",
+    "target": "sula n-imíonn tú an féidir leat an leabhar sin a thabhairt dom"
+   },
+   "known": "before you go can you give me that book",
+   "target": "sula rachaidh tú an féidir leat an leabhar sin a thabhairt dom",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to see you before you go tonight",
+    "target": "ba mhaith liom tú a fheiceáil sula n-imíonn tú anocht"
+   },
+   "known": "I'd like to see you before you go tonight",
+   "target": "ba mhaith liom tú a fheiceáil sula rachaidh tú anocht",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you shouldn't be worried before you go",
+    "target": "níor cheart duit a bheith buartha sula n-imíonn tú"
+   },
+   "known": "you shouldn't be worried before you go",
+   "target": "níor cheart duit a bheith buartha sula rachaidh tú",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "can you tell me what he wants before you go",
+    "target": "an féidir leat insint dom cad atá uaidh sula n-imíonn tú"
+   },
+   "known": "can you tell me what he wants before you go",
+   "target": "an féidir leat insint dom cad atá uaidh sula rachaidh tú",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I hope that you'll finish before you go",
+    "target": "tá súil agam go gcríochnóidh tú sula n-imíonn tú"
+   },
+   "known": "I hope that you'll finish before you go",
+   "target": "tá súil agam go gcríochnóidh tú sula rachaidh tú",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0249L04U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am going to give it to him before you go",
+    "target": "tá mé chun é a thabhairt dó sula n-imíonn tú"
+   },
+   "known": "I am going to give it to him before you go",
+   "target": "tá mé chun é a thabhairt dó sula rachaidh tú",
+   "family": "go",
+   "why": "Eoghan's sula rachaidh tú for before you go"
+  },
+  "S0270L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "because I'm worried",
+    "target": "mar tá imní orm"
+   },
+   "known": "because I'm worried",
+   "target": "mar tá mé buartha",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'm worried today",
+    "target": "tá imní orm inniu"
+   },
+   "known": "I'm worried today",
+   "target": "tá mé buartha inniu",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but I'm worried about that",
+    "target": "ach tá imní orm faoi sin"
+   },
+   "known": "but I'm worried about that",
+   "target": "ach tá mé buartha faoi sin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "and then I'm worried",
+    "target": "agus ansin tá imní orm"
+   },
+   "known": "and then I'm worried",
+   "target": "agus ansin tá mé buartha",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried because she sent two emails to me last week",
+    "target": "tá imní orm mar sheol sí dhá ríomhphost chugam an tseachtain seo caite"
+   },
+   "known": "I'm worried because she sent two emails to me last week",
+   "target": "tá mé buartha mar sheol sí dhá ríomhphost chugam an tseachtain seo caite",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't know why but I'm worried today",
+    "target": "níl a fhios agam cén fáth ach tá imní orm inniu"
+   },
+   "known": "I don't know why but I'm worried today",
+   "target": "níl a fhios agam cén fáth ach tá mé buartha inniu",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried about that and I don't know why",
+    "target": "tá imní orm faoi sin agus níl a fhios agam cén fáth"
+   },
+   "known": "I'm worried about that and I don't know why",
+   "target": "tá mé buartha faoi sin agus níl a fhios agam cén fáth",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm sorry but I'm worried",
+    "target": "tá brón orm ach tá imní orm"
+   },
+   "known": "I'm sorry but I'm worried",
+   "target": "tá brón orm ach tá mé buartha",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I've been worried since this morning",
+    "target": "tá imní orm ó mhaidin"
+   },
+   "known": "I've been worried since this morning",
+   "target": "tá mé buartha ó mhaidin",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried and I want my money back",
+    "target": "tá imní orm agus tá m'airgead ar ais uaim"
+   },
+   "known": "I'm worried and I want my money back",
+   "target": "tá mé buartha agus tá m'airgead ar ais uaim",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'm worried that I'm going to be",
+    "target": "tá imní orm go mbeidh mé"
+   },
+   "known": "I'm worried that I'm going to be",
+   "target": "tá mé buartha go mbeidh mé",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried that I'm going to be too busy tomorrow",
+    "target": "tá imní orm go mbeidh mé ró-ghnóthach amárach"
+   },
+   "known": "I'm worried that I'm going to be too busy tomorrow",
+   "target": "tá mé buartha go mbeidh mé ró-ghnóthach amárach",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't know why but I'm worried that I'm going to be nervous",
+    "target": "níl a fhios agam cén fáth ach tá imní orm go mbeidh mé neirbhíseach"
+   },
+   "known": "I don't know why but I'm worried that I'm going to be nervous",
+   "target": "níl a fhios agam cén fáth ach tá mé buartha go mbeidh mé neirbhíseach",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L04B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I was worried I would be late",
+    "target": "bhí imní orm go mbeidh mé déanach"
+   },
+   "known": "I was worried I would be late",
+   "target": "bhí mé buartha go mbeidh mé déanach",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was worried I would be late because I had too much work to do before I could leave",
+    "target": "bhí imní orm go mbeidh mé déanach mar bhí an iomarca oibre le déanamh agam roimh imeacht"
+   },
+   "known": "I was worried I would be late because I had too much work to do before I could leave",
+   "target": "bhí mé buartha go mbeidh mé déanach mar bhí an iomarca oibre le déanamh agam roimh imeacht",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L04U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she told me she was worried about being late because she had too much work to finish before leaving",
+    "target": "dúirt sí liom go raibh imní uirthi faoi a bheith déanach mar bhí an iomarca oibre le déanamh uirthi roimh imeacht"
+   },
+   "known": "she told me she was worried about being late because she had too much work to finish before leaving",
+   "target": "dúirt sí liom go raibh sí buartha faoi a bheith déanach mar bhí an iomarca oibre le déanamh uirthi roimh imeacht",
+   "family": "worried",
+   "why": ""
+  },
+  "S0270L04U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he was worried about being late because he knew it was hard to get everything done on time",
+    "target": "bhí imní air faoi a bheith déanach mar bhí a fhios aige go raibh sé deacair gach rud a dhéanamh in am"
+   },
+   "known": "he was worried about being late because he knew it was hard to get everything done on time",
+   "target": "bhí sé buartha faoi a bheith déanach mar bhí a fhios aige go raibh sé deacair gach rud a dhéanamh in am",
+   "family": "worried",
+   "why": ""
+  },
+  "S0271L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried because I am going to come next month",
+    "target": "tá imní orm mar tá mé chun teacht an mhí seo chugainn"
+   },
+   "known": "I'm worried because I am going to come next month",
+   "target": "tá mé buartha mar tá mé chun teacht an mhí seo chugainn",
+   "family": "worried",
+   "why": ""
+  },
+  "S0272L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "yes, that's very kind",
+    "target": "Ba mhaith, sin an-deas"
+   },
+   "known": "yes, that's very kind",
+   "target": "Ba mhaith, sin an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0272L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "yes, thank you, that's very kind",
+    "target": "Ba mhaith, go raibh maith agat, sin an-deas"
+   },
+   "known": "yes, thank you, that's very kind",
+   "target": "Ba mhaith, go raibh maith agat, sin an-chineálta",
+   "family": "kind",
+   "why": ""
+  },
+  "S0272L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "yes, that's very kind, I'd like to come",
+    "target": "Ba mhaith, sin an-deas, ba mhaith liom teacht"
+   },
+   "known": "yes, that's very kind, I'd like to come",
+   "target": "Ba mhaith, sin an-chineálta, ba mhaith liom teacht",
+   "family": "kind",
+   "why": ""
+  },
+  "S0272L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "a great idea but i'm worried",
+    "target": "smaoineamh iontach ach tá imní orm"
+   },
+   "known": "a great idea but i'm worried",
+   "target": "smaoineamh iontach ach tá mé buartha",
+   "family": "worried",
+   "why": ""
+  },
+  "S0273L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried because I have too much work",
+    "target": "tá imní orm mar tá an iomarca oibre agam"
+   },
+   "known": "I'm worried because I have too much work",
+   "target": "tá mé buartha mar tá an iomarca oibre agam",
+   "family": "worried",
+   "why": ""
+  },
+  "S0273L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have too much work and I'm worried",
+    "target": "tá an iomarca oibre agam agus tá imní orm"
+   },
+   "known": "I have too much work and I'm worried",
+   "target": "tá an iomarca oibre agam agus tá mé buartha",
+   "family": "worried",
+   "why": ""
+  },
+  "S0274L02U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to leave on time and that is why I wanted to talk to you before you go",
+    "target": "tá sé tábhachtach imeacht in am agus sin an fáth ar theastaigh uaim labhairt leat faoi sula n-imíonn tú"
+   },
+   "known": "it is important to leave on time and that is why I wanted to talk to you before you go",
+   "target": "tá sé tábhachtach imeacht in am agus sin an fáth ar theastaigh uaim labhairt leat faoi sula rachaidh tú",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0274L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am sorry that I have to leave in a few days and I did not want to go so soon",
+    "target": "tá brón orm go gcaithfidh mé imeacht i gceann cúpla lá agus níor theastaigh uaim imeacht chomh luath sin"
+   },
+   "known": "I am sorry that I have to leave in a few days and I did not want to go so soon",
+   "target": "tá brón orm go gcaithfidh mé imeacht i gceann cúpla lá agus níor theastaigh uaim dul chomh luath sin",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0276L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy to stay but I would like to talk to you about something before you go",
+    "target": "tá mé sásta fanacht ach ba mhaith liom labhairt leat faoi rud éigin sula n-imíonn tú"
+   },
+   "known": "I am happy to stay but I would like to talk to you about something before you go",
+   "target": "tá mé sásta fanacht ach ba mhaith liom labhairt leat faoi rud éigin sula rachaidh tú",
+   "family": "go",
+   "why": "go = dul"
+  },
+  "S0278L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried because I can't finish everything",
+    "target": "tá imní orm mar ní féidir liom gach rud a chríochnú"
+   },
+   "known": "I'm worried because I can't finish everything",
+   "target": "tá mé buartha mar ní féidir liom gach rud a chríochnú",
+   "family": "worried",
+   "why": ""
+  },
+  "S0279L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was worried because there wasn't much time left to fix everything before I had to leave",
+    "target": "bhí imní uirthi mar ní raibh mórán ama fágtha le gach rud a dheisiú sula gcaithfidh mé imeacht"
+   },
+   "known": "she was worried because there wasn't much time left to fix everything before I had to leave",
+   "target": "bhí sí buartha mar ní raibh mórán ama fágtha le gach rud a dheisiú sula gcaithfidh mé imeacht",
+   "family": "worried",
+   "why": ""
+  },
+  "S0280L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm worried but this is the most important job",
+    "target": "tá imní orm ach is é seo an jab is tábhachtaí"
+   },
+   "known": "I'm worried but this is the most important job",
+   "target": "tá mé buartha ach is é seo an jab is tábhachtaí",
+   "family": "worried",
+   "why": ""
+  },
+  "S0283L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wanted to ask you which of your ideas is best",
+    "target": "ba mhian liom a fhiafraí díot cé acu de do smaointe is fearr"
+   },
+   "known": "I wanted to ask you which of your ideas is best",
+   "target": "ba mhian liom ceist a chur ort cé acu de do smaointe is fearr",
+   "family": "ask",
+   "why": "a fhiafraí is no longer taught; ceist a chur ar"
+  },
+  "S0300L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she doesn't want to stop and I'm worried",
+    "target": "ní mian léi stopadh agus tá imní orm"
+   },
+   "known": "she doesn't want to stop and I'm worried",
+   "target": "ní mian léi stopadh agus tá mé buartha",
+   "family": "worried",
+   "why": ""
+  }
+ }
+}

@@ -1,0 +1,8 @@
+{"_why":"job #650: old intro clips whose course_audio.lego_id still names a LEGO that now says other words (seed 71 re-order, 311 L03 and 619 L02 re-gloss) — intro-mirror 'keyed_stale'. The two whose words moved with their LEGO are re-keyed to it; the three whose words are no longer taught are un-keyed. No clip is deleted (O11).",
+ "ops":[
+  {"op":"audio.update","audio_id":"12cbe327-1999-41ea-b42e-beb336ae9271","set":{"lego_id":"S0071L02"},"expect":{"lego_id":"S0071L03"}},
+  {"op":"audio.update","audio_id":"0c5d1dfd-1e7d-4d81-b308-3d3d0d60fcc0","set":{"lego_id":"S0071L03"},"expect":{"lego_id":"S0071L04"}},
+  {"op":"audio.update","audio_id":"a3cad95a-dfc1-438c-afc7-a6db1cc0dd57","set":{"lego_id":null},"expect":{"lego_id":"S0071L02"}},
+  {"op":"audio.update","audio_id":"25db1130-f887-4c2c-8fc5-b9a0db8c838a","set":{"lego_id":null},"expect":{"lego_id":"S0311L03"}},
+  {"op":"audio.update","audio_id":"3c3e44bb-2bbc-4be4-bb34-6dd2a8d06bee","set":{"lego_id":null},"expect":{"lego_id":"S0619L02"}}
+ ]}

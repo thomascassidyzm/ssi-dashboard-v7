@@ -1,7 +1,8 @@
 /**
  * WHERE A LIVE TTS KEY MAY LIVE (job #695).
  *
- * Tom, 2026-09-29 00:25Z: 50,000 audio characters a day TOTAL. That cap lives in
+ * The daily TOTAL audio cap (1,000,000 characters per UTC day across every
+ * provider, Tom 2026-10-07, job #147; first set at 50,000 on 2026-09-29). It lives in
  * the shared ledger, so it only binds code that reserves in the ledger first
  * (services/shared/tts-spend-guard.cjs). Code older than the guard calls the
  * providers with nothing in between, and the only thing it shares with the

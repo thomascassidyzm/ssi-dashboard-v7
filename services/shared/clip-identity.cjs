@@ -65,7 +65,7 @@ const langService = require('./../language-code-service.cjs');
 const SEP = '\u001f';
 
 /** Providers we accept as the prefix of a canonical voice id. */
-const PROVIDERS = ['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'human', 'cartesia'];
+const PROVIDERS = ['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'human', 'cartesia', 'abair'];
 
 /**
  * Spellings that appear in the live estate and mean a provider, plus the older
@@ -91,6 +91,9 @@ const PROVIDER_ALIASES = {
   // bare UUIDs, so they carry no shape of their own: the prefix is the only
   // thing that keeps a Cartesia clip from being read as somebody else's.
   cartesia: 'cartesia',
+  // ABAIR (job #525): Trinity's Irish TTS, Voice Lab trial lane only — trial clips have no course row, but the door
+  // still names every render (language + voice) before it may look it up, so the prefix must canonicalise.
+  abair: 'abair',
 };
 
 /**

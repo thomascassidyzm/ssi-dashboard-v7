@@ -1,0 +1,444 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 64,
+  "expect": {
+   "known_text": "Learning Arabic isn't easy but it is fun.",
+   "target_text": "تعلم العربي مش سهل بس مبسط."
+  },
+  "set": {
+   "target_text": "تعلم العربي مش سهل بس مسلّي.",
+   "target_text_roman": "ta'allam al-'arabi mish sahel bas msalli."
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 64,
+  "slot": "target1",
+  "audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 64,
+  "slot": "target2",
+  "audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0064L02",
+  "expect": {
+   "known_text": "fun",
+   "target_text": "مبسط"
+  },
+  "set": {
+   "target_text": "مسلّي",
+   "target_text_roman": "msalli"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0064L02",
+  "slot": "target1",
+  "audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0064L02",
+  "slot": "target2",
+  "audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02B01",
+  "expect": {
+   "known_text": "fun",
+   "target_text": "مبسط"
+  },
+  "set": {
+   "target_text": "مسلّي",
+   "target_text_roman": "msalli"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02B01",
+  "slot": "target1",
+  "audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02B01",
+  "slot": "target2",
+  "audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02B02",
+  "expect": {
+   "known_text": "it is fun",
+   "target_text": "مبسط كتير"
+  },
+  "set": {
+   "target_text": "مسلّي كتير",
+   "target_text_roman": "msalli ktiir"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02B02",
+  "slot": "target1",
+  "audio_id": "7cbaa532-7389-4bbd-8e43-6f9cb33220c7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02B02",
+  "slot": "target2",
+  "audio_id": "602e29fc-7943-4597-b052-bf6129981b43"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02B03",
+  "expect": {
+   "known_text": "fun now",
+   "target_text": "مبسط هلق"
+  },
+  "set": {
+   "target_text": "مسلّي هلق",
+   "target_text_roman": "msalli halla'"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02B03",
+  "slot": "target1",
+  "audio_id": "8934e562-3252-4bf9-b547-cc326f986c3f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02B03",
+  "slot": "target2",
+  "audio_id": "140131a5-983b-4c3c-ae54-55f89a476fe1"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02U01",
+  "expect": {
+   "known_text": "speaking Arabic is fun",
+   "target_text": "تحكي عربي مبسط"
+  },
+  "set": {
+   "target_text": "تحكي عربي مسلّي",
+   "target_text_roman": "tihki 'arabi msalli"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U01",
+  "slot": "target1",
+  "audio_id": "7f7ab2ce-d352-44ec-838a-dd1aea608859"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U01",
+  "slot": "target2",
+  "audio_id": "1a2d80eb-144b-4d8a-8878-64c1f77573fc"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02U02",
+  "expect": {
+   "known_text": "it's fun to speak more",
+   "target_text": "مبسط أحكي أكتر"
+  },
+  "set": {
+   "target_text": "مسلّي أحكي أكتر",
+   "target_text_roman": "msalli ahki aktar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U02",
+  "slot": "target1",
+  "audio_id": "e46030ed-8a5b-4943-bcac-4bf98c5760ca"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U02",
+  "slot": "target2",
+  "audio_id": "6765021f-2446-4f99-9a2e-358a3b607646"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02U03",
+  "expect": {
+   "known_text": "writing a letter is fun",
+   "target_text": "يكتب رسالة مبسط"
+  },
+  "set": {
+   "target_text": "يكتب رسالة مسلّي",
+   "target_text_roman": "yuktub risaala msalli"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U03",
+  "slot": "target1",
+  "audio_id": "1cf1b591-0513-4ca3-bb72-2db24bcd316a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U03",
+  "slot": "target2",
+  "audio_id": "bbfd810e-bdd7-4299-affd-1ae1957abb85"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02U04",
+  "expect": {
+   "known_text": "it's fun to feel better",
+   "target_text": "مبسط أحس أحسن"
+  },
+  "set": {
+   "target_text": "مسلّي أحس أحسن",
+   "target_text_roman": "msalli ahiss ahsan"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U04",
+  "slot": "target1",
+  "audio_id": "031fe607-40be-496e-b04d-30b311c8294a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U04",
+  "slot": "target2",
+  "audio_id": "8456d36d-8e98-4bf0-8203-21cc76b9936b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L02U05",
+  "expect": {
+   "known_text": "it's fun when you understand",
+   "target_text": "مبسط لما تفهم"
+  },
+  "set": {
+   "target_text": "مسلّي لما تفهم",
+   "target_text_roman": "msalli lamma tifham"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U05",
+  "slot": "target1",
+  "audio_id": "f705c7ba-0995-4826-8b45-8da7e415c4e4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L02U05",
+  "slot": "target2",
+  "audio_id": "6d78d4a2-6fa9-446c-b06d-fa9be11eab5c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L03B03",
+  "expect": {
+   "known_text": "learning is fun",
+   "target_text": "تعلم مبسط"
+  },
+  "set": {
+   "target_text": "تعلم مسلّي",
+   "target_text_roman": "ta'allam msalli"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L03B03",
+  "slot": "target1",
+  "audio_id": "25833d86-1276-420a-bd70-3c7a8ca1107f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L03B03",
+  "slot": "target2",
+  "audio_id": "3310afec-09eb-4a71-8407-d274eee17c51"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0064L03U01",
+  "expect": {
+   "known_text": "learning Arabic isn't easy but it is fun",
+   "target_text": "تعلم العربي مش سهل بس مبسط"
+  },
+  "set": {
+   "target_text": "تعلم العربي مش سهل بس مسلّي",
+   "target_text_roman": "ta'allam al-'arabi mish sahel bas msalli"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L03U01",
+  "slot": "target1",
+  "audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0064L03U01",
+  "slot": "target2",
+  "audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0065L03U05",
+  "expect": {
+   "known_text": "it's fun to test yourself",
+   "target_text": "مبسط تاختبر حالك"
+  },
+  "set": {
+   "target_text": "مسلّي تاختبر حالك",
+   "target_text_roman": "msalli tukhtabar haalak"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0065L03U05",
+  "slot": "target1",
+  "audio_id": "9fe3351c-9d15-4777-a5bf-10ca9ac40123"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0065L03U05",
+  "slot": "target2",
+  "audio_id": "136a2883-0f28-470f-a1ca-211dc2dbd8b8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0066L01U02",
+  "expect": {
+   "known_text": "learning is hard but fun",
+   "target_text": "تعلم صعب بس مبسط"
+  },
+  "set": {
+   "target_text": "تعلم صعب بس مسلّي",
+   "target_text_roman": "ta'allam sa'b bas msalli"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0066L01U02",
+  "slot": "target1",
+  "audio_id": "78f72bf1-30d5-42f3-ba48-8fa173ef11af"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0066L01U02",
+  "slot": "target2",
+  "audio_id": "4811dc85-97d3-41f7-b8eb-1bbead00fe85"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0066L02U05",
+  "expect": {
+   "known_text": "it's fun to find the answer",
+   "target_text": "مبسط تلاقي الجواب"
+  },
+  "set": {
+   "target_text": "مسلّي تلاقي الجواب",
+   "target_text_roman": "msalli tlaai al-jawaab"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0066L02U05",
+  "slot": "target1",
+  "audio_id": "fc3ea8b9-4a07-4e5f-b288-7febe5b109fc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0066L02U05",
+  "slot": "target2",
+  "audio_id": "c71f7576-6fa5-4bdf-a9f9-8f70306378e4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0068L01U05",
+  "expect": {
+   "known_text": "it's fun to look for it",
+   "target_text": "مبسط تدور عليه"
+  },
+  "set": {
+   "target_text": "مسلّي تدور عليه",
+   "target_text_roman": "msalli tdawwar 'aleeh"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0068L01U05",
+  "slot": "target1",
+  "audio_id": "ba8a4888-780a-4f51-b6a5-44a36c6144cd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0068L01U05",
+  "slot": "target2",
+  "audio_id": "2cddbf24-dd8a-4156-8685-fff39c9575e8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ara_lb_for_eng:S0074L03U03",
+  "expect": {
+   "known_text": "I'm glad because you helped me understand",
+   "target_text": "مبسط لأنك ساعدتني أفهم"
+  },
+  "set": {
+   "target_text": "مبسوط لأنك ساعدتني أفهم",
+   "target_text_roman": "mabsoot la'annak saa'adtni afham"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0074L03U03",
+  "slot": "target1",
+  "audio_id": "b4f2be79-f206-457c-ba25-8e62f12ccab1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "ara_lb_for_eng:S0074L03U03",
+  "slot": "target2",
+  "audio_id": "a72888aa-adac-4530-8595-633077395585"
+ }
+]

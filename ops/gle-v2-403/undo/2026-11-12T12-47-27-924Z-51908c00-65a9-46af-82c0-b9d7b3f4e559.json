@@ -1,0 +1,514 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "51908c00-65a9-46af-82c0-b9d7b3f4e559",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:47:27.925Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-47-27-924Z-51908c00-65a9-46af-82c0-b9d7b3f4e559.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03B05",
+      "set": {
+        "target_text": "is mian liom am a thógáil le freagra a thabhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03B04",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03B01",
+      "set": {
+        "target_text": "am a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L02U06",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun smaoineamh go cúramach ar an rud atá i gceist agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L02U01",
+      "set": {
+        "target_text": "Tá sé go han- tábhachtach am a thógáil chun tú féin a thástáil ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L02B03",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L01U10",
+      "set": {
+        "target_text": "Tá sé úsáideach am a thógáil chun dóthain focal a thuigeann tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L01U07",
+      "set": {
+        "target_text": "Tá sé úsáideach am a thógáil chun cuimhneamh conas rud éigin a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L01U01",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L01B07",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L05U07",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le freagra a thabhairt i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L05U04",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le freagra a thabhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L04U05",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le freagra a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U08",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le labhairt a chleachtadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U07",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le rud éigin a mhíniú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U06",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U05",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U04",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil leis an rud atá i gceist agam a mhíniú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U03",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le rud éigin a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U02",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le labhairt Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03U01",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03B04",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil le labhairt Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03B03",
+      "set": {
+        "target_text": "an iomarca ama a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L03B02",
+      "set": {
+        "target_text": "ní maith liom an iomarca ama a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U08",
+      "set": {
+        "target_text": "ní mian liom an lá ar fad a thógáil sula gcaithfidh mé dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U07",
+      "set": {
+        "target_text": "ní maith liom an lá ar fad a thógáil agus ní mian liom stopadh ag caint"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U06",
+      "set": {
+        "target_text": "cén fáth a bhfuil tú chun an lá ar fad a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U05",
+      "set": {
+        "target_text": "níl mé cinnte an féidir liom an lá ar fad a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U04",
+      "set": {
+        "target_text": "an bhfuil tú chun an lá ar fad a thógáil amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U03",
+      "set": {
+        "target_text": "ní mian liom an lá ar fad a thógáil inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U02",
+      "set": {
+        "target_text": "níor mhaith liom an lá ar fad a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02U01",
+      "set": {
+        "target_text": "ní maith liom an lá ar fad a thógáil anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02B03",
+      "set": {
+        "target_text": "ní mian liom an lá ar fad a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02B02",
+      "set": {
+        "target_text": "ní maith liom an lá ar fad a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0027L02B01",
+      "set": {
+        "target_text": "an lá ar fad a thógáil"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b21c5533-eae5-4f7c-a79d-0a3d151220bf",
+      "set": {
+        "target_text": "in am gearr",
+        "components": [
+          {
+            "known": "in time",
+            "target": "in am"
+          },
+          {
+            "known": "short",
+            "target": "gearr"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "e983c5f8-ffd2-498c-86dc-eb36514361b3",
+      "set": {
+        "type": "A",
+        "target_text": "deas",
+        "components": null
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "3e429f9d-a366-46e2-b5ae-47f1d321d885",
+      "set": {
+        "target_text": "Dé Domhnaigh",
+        "components": null
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "97787b73-a8c7-42eb-89b3-de0a28460207",
+      "set": {
+        "target_text": "a chaitheamh ag bualadh le chéile mar ghrúpa",
+        "components": [
+          {
+            "known": "to spend",
+            "target": "a chaitheamh"
+          },
+          {
+            "known": "meeting",
+            "target": "ag bualadh"
+          },
+          {
+            "known": "together",
+            "target": "le chéile"
+          },
+          {
+            "known": "as a group",
+            "target": "mar ghrúpa"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "3ec72352-9c75-4d35-a6ef-cac3682c2e2e",
+      "set": {
+        "target_text": "tráthnóna Dé Domhnaigh",
+        "components": [
+          {
+            "known": "afternoon",
+            "target": "tráthnóna"
+          },
+          {
+            "known": "Sunday",
+            "target": "Dé Domhnaigh"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "0e5fbc01-f8c6-4e73-bdc7-519bcc6c3ba8",
+      "set": {
+        "target_text": "maidin Dé Domhnaigh",
+        "components": [
+          {
+            "known": "morning",
+            "target": "maidin"
+          },
+          {
+            "known": "Sunday",
+            "target": "Dé Domhnaigh"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "4990e97f-ea1b-4914-91f7-5699f4fb55d5",
+      "set": {
+        "target_text": "maidin Dé Domhnaigh",
+        "components": [
+          {
+            "known": "morning",
+            "target": "maidin"
+          },
+          {
+            "known": "Sunday",
+            "target": "Dé Domhnaigh"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "c9314cf4-1109-4eff-be05-517178fd1eba",
+      "set": {
+        "target_text": "in am gearr",
+        "components": [
+          {
+            "known": "in",
+            "target": "in"
+          },
+          {
+            "known": "time",
+            "target": "am"
+          },
+          {
+            "known": "short",
+            "target": "gearr"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b2abc586-1540-4206-8ae9-969642b21941",
+      "set": {
+        "target_text": "am a thógáil",
+        "components": [
+          {
+            "known": "time",
+            "target": "am"
+          },
+          {
+            "known": "to take",
+            "target": "a thógáil"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "3e7bbcc6-c683-4fb8-aa67-611dc271c6d2",
+      "set": {
+        "target_text": "a thógáil"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 562,
+      "set": {
+        "target_text": "Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 402,
+      "set": {
+        "target_text": "Is mian, bheadh sé deas stopadh áit éigin le haghaidh bia"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 373,
+      "set": {
+        "target_text": "bhí sé álainn"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 358,
+      "set": {
+        "target_text": "dúirt do chara nach bhféadfadh sí an barr a bhaint amach"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 333,
+      "set": {
+        "target_text": "dúirt sí nach féidir léi mórán ama a chaitheamh leis an ngrúpa"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 245,
+      "set": {
+        "target_text": "Tá áthas orm as an méid atá déanta agam in am gearr"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 219,
+      "set": {
+        "target_text": "bhí sé deas scíth a ligean ar feadh tamaill"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 218,
+      "set": {
+        "target_text": "Ní dhearna mé mórán Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 209,
+      "set": {
+        "target_text": "Is mian leo níos mó ama a chaitheamh ag bualadh le chéile mar ghrúpa"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 179,
+      "set": {
+        "target_text": "cad atá tú chun a dhéanamh tráthnóna Dé Domhnaigh?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 175,
+      "set": {
+        "target_text": "cad is mian leat a dhéanamh maidin Dé Domhnaigh?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 161,
+      "set": {
+        "target_text": "an féidir leat an leabhar sin a thabhairt dom maidin Dé Domhnaigh?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 89,
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta agam in am gearr"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 65,
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 27,
+      "set": {
+        "target_text": "Ní maith liom an iomarca ama a thógáil le freagra a thabhairt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+"family": "s392",
+"seeds": [
+392,
+394,
+570
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 392,
+"set": {
+"known_text": "That child with the black hair who's standing opposite the post office",
+"target_text": "an páiste sin a bhfuil gruaig dhubh air agus atá ina sheasamh os comhair na hoifige poist"
+},
+"expect": {
+"known_text": "That child with the black hair opposite the post office",
+"target_text": "an páiste sin leis an ngruaig dhubh os comhair an phoist"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 394,
+"set": {
+"known_text": "That girl who is wearing a yellow dress",
+"target_text": "an cailín sin a bhfuil gúna buí á chaitheamh aici"
+},
+"expect": {
+"known_text": "That girl with the yellow dress",
+"target_text": "an cailín sin leis an ngúna buí"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 570,
+"set": {
+"target_text": "cé mhéad atá tú toilteanach a íoc as do thicéad?"
+},
+"expect": {
+"known_text": "how much are you willing to pay for your ticket?",
+"target_text": "cé mhéad atá tú toilteanach a íoc ar do thicéad?"
+}
+}
+]
+}

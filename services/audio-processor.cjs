@@ -256,6 +256,21 @@ async function timeStretchAudio(inputPath, outputPath, factor) {
 }
 
 /**
+ * Change a clip's TEMPO without changing its pitch, writing lossless WAV (the caller masters it next, so
+ * there is one lossy encode, not two). tempo > 1 = faster and SHORTER: 1.25 plays the same words in 80%
+ * of the time. Exists for the clone stand-in's pace by belt (services/shared/aran-clone-standin.cjs,
+ * job #590): Cartesia ignores generation_config.speed for Professional Voice Clones, so the pace is
+ * applied to the rendered bytes here instead.
+ */
+async function changeTempoToWav(inputPath, outputPath, tempo) {
+  const t = Number(tempo)
+  if (!(t > 0)) throw new Error('tempo must be positive')
+  // buildAtempoFilterChain takes a STRETCH factor (1.2 = slower), the inverse of a tempo.
+  const filter = buildAtempoFilterChain(1 / t)
+  await execFileAsync('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-i', inputPath, '-filter:a', filter, '-c:a', 'pcm_s16le', outputPath])
+}
+
+/**
  * Build atempo filter chain for ffmpeg
  * atempo is limited to 0.5-2.0, so we need to chain filters for larger changes
  *
@@ -1850,6 +1865,7 @@ module.exports = {
   getAudioDuration,
   checkMp3Format,
   timeStretchAudio,
+  changeTempoToWav,
   normalizeAudio,
   normalizeAudioClean,
   // Closed-loop variant (Tom 2026-08-24, "volume similarity"): measures its own

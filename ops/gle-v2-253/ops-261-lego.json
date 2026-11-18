@@ -1,0 +1,235 @@
+{
+ "why": "job #253: seed 261's closing 'é' gets its own piece so the whole seed is covered (S3)",
+ "ops": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 261,
+    "lego_index": 5,
+    "known_text": "that it's something important",
+    "target_text": "gur rud éigin tábhachtach é",
+    "type": "M",
+    "is_new": true,
+    "status": "draft",
+    "components": [
+     {
+      "known": "that is",
+      "target": "gur"
+     },
+     {
+      "known": "something",
+      "target": "rud éigin"
+     },
+     {
+      "known": "important",
+      "target": "tábhachtach"
+     },
+     {
+      "known": "it",
+      "target": "é"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05B01",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 1,
+    "known_text": "that it's something important",
+    "target_text": "gur rud éigin tábhachtach é",
+    "phrase_role": "build",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 27,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05B02",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 2,
+    "known_text": "I think that it's something important",
+    "target_text": "ceapaim gur rud éigin tábhachtach é",
+    "phrase_role": "build",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 35,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05B03",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 3,
+    "known_text": "you said that it's something important",
+    "target_text": "dúirt tú gur rud éigin tábhachtach é",
+    "phrase_role": "build",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 36,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05U01",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 4,
+    "known_text": "I know that it's something important",
+    "target_text": "tá a fhios agam gur rud éigin tábhachtach é",
+    "phrase_role": "use",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 43,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05U02",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 5,
+    "known_text": "I believe that it's something important",
+    "target_text": "creidim gur rud éigin tábhachtach é",
+    "phrase_role": "use",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 35,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05U03",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 6,
+    "known_text": "they say that it's something important",
+    "target_text": "deir siad gur rud éigin tábhachtach é",
+    "phrase_role": "use",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 37,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05U04",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 7,
+    "known_text": "it might be something important but I'm not sure",
+    "target_text": "b'fhéidir gur rud éigin tábhachtach é ach níl mé cinnte",
+    "phrase_role": "use",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 55,
+    "lego_count": 10
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0261L05U05",
+    "course_code": "gle_v2_for_eng",
+    "seed_number": 261,
+    "lego_index": 5,
+    "position": 8,
+    "known_text": "I'm sorry but I think that it's something important",
+    "target_text": "tá brón orm ach ceapaim gur rud éigin tábhachtach é",
+    "phrase_role": "use",
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2",
+     "authored": "job #253, 11 Nov 2026",
+     "family": "261 it might be"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "introduce": true,
+    "word_count": 51,
+    "lego_count": 10
+   }
+  }
+ ]
+}

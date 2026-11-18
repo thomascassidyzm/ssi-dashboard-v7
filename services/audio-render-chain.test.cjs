@@ -57,7 +57,7 @@ beforeEach(() => {
 afterEach(() => { if (restore) restore(); restore = null; castGate.useCastRows(null); clipLib.useClipLibrary(null); guardMod.useSpendGuard(null) })
 
 
-const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', phonologyGate: false, door: { courseCode: 'eng_for_hin', ...door } })
+const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', door: { courseCode: 'eng_for_hin', ...door } })
 
 /** The route's deps, with the provider and the DB in memory; `rows` is the library the course rows land in. */
 function deps(svc, rows, stored = []) {

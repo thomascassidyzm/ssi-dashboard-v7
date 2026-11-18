@@ -1,0 +1,654 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0034L01B04",
+    "seed_number": 34,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "त्याला आज गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet today",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0034L02B04",
+    "seed_number": 34,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "इतर लोक इथे असताना काहीतरी म्हणणे",
+    "target_text": "to say something when other people are here",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 43,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0038L01U07",
+    "seed_number": 38,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "मी दुसऱ्या कोणाशीतरी इंग्रजी शिकतोय",
+    "target_text": "I've been learning English with someone else",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 44,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0040L01U06",
+    "seed_number": 40,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "मी सध्या इंग्रजी बोलायचा प्रयत्न करतोय",
+    "target_text": "I'm trying to speak English at the moment",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 41,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0040L02U06",
+    "seed_number": 40,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "इतर लोक इथे असताना तुम्हाला कसं वाटतंय?",
+    "target_text": "how do you feel when other people are here?",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 43,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01B02",
+   "expect": {
+    "known_text": "त्याला लवकरच गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet soon"
+   },
+   "set": {
+    "known_text": "पण त्याला गप्प राहायचं नाही",
+    "target_text": "but he doesn't want to be quiet",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01B03",
+   "expect": {
+    "known_text": "त्याला अजूनही गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet even now"
+   },
+   "set": {
+    "known_text": "कारण त्याला गप्प राहायचं नाही",
+    "target_text": "because he doesn't want to be quiet",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01U01",
+   "expect": {
+    "known_text": "त्याला तुमच्याशी गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet with you"
+   },
+   "set": {
+    "known_text": "त्याला दिवसभर गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet all day",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01U02",
+   "expect": {
+    "known_text": "त्याला माझ्याशी गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet with me"
+   },
+   "set": {
+    "known_text": "त्याला गप्प राहायचं नाही कारण त्याला इंग्रजी बोलायचं आहे",
+    "target_text": "he doesn't want to be quiet because he wants to speak English",
+    "decomposition": null,
+    "word_count": 61,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L01U03",
+   "expect": {
+    "known_text": "त्याला इंग्रजीत गप्प राहायचं नाही",
+    "target_text": "he doesn't want to be quiet in English"
+   },
+   "set": {
+    "known_text": "त्याला गप्प राहायचं नाही, त्याला तुमच्याशी बोलायचं आहे",
+    "target_text": "he doesn't want to be quiet, he wants to speak with you",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L02B02",
+   "expect": {
+    "known_text": "बोलणे इतर लोक इथे असताना",
+    "target_text": "to speak when other people are here"
+   },
+   "set": {
+    "known_text": "इतर लोक इथे असताना बोलणे",
+    "target_text": "to speak when other people are here",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0034L02B03",
+   "expect": {
+    "known_text": "शिकणे इतर लोक इथे असताना",
+    "target_text": "to learn when other people are here"
+   },
+   "set": {
+    "known_text": "इतर लोक इथे असताना शिकणे",
+    "target_text": "to learn when other people are here",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0036L02B04",
+   "expect": {
+    "known_text": "इंग्रजीत व्यत्यय आणणे",
+    "target_text": "to interrupt in English"
+   },
+   "set": {
+    "known_text": "मला व्यत्यय आणायला आवडणार नाही",
+    "target_text": "I wouldn't like to interrupt",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0036L02U03",
+   "expect": {
+    "known_text": "व्यत्यय आणायला मला आवडत नाही",
+    "target_text": "I don't like to interrupt the story"
+   },
+   "set": {
+    "known_text": "मला गोष्टीत व्यत्यय आणायला आवडत नाही",
+    "target_text": "I don't like to interrupt the story",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0036L02U05",
+   "expect": {
+    "known_text": "काहीतरी व्यत्यय आणायला मला आवडत नाही",
+    "target_text": "I don't like to interrupt anything"
+   },
+   "set": {
+    "known_text": "मला तुमच्या बोलण्यात व्यत्यय आणायचा नाही",
+    "target_text": "I don't want to interrupt you",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L02B02",
+   "expect": {
+    "known_text": "गेल्या महिन्यात बोलणे",
+    "target_text": "last month to speak"
+   },
+   "set": {
+    "known_text": "गेल्या महिन्यात इंग्रजी शिकणे",
+    "target_text": "to learn English last month",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L02B03",
+   "expect": {
+    "known_text": "काळजीपूर्वक गेल्या महिन्यात",
+    "target_text": "carefully last month"
+   },
+   "set": {
+    "known_text": "गेल्या महिन्यात गोष्ट वाचणे",
+    "target_text": "to read the story last month",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L02B04",
+   "expect": {
+    "known_text": "गेल्या महिन्यात इंग्रजी",
+    "target_text": "last month in English"
+   },
+   "set": {
+    "known_text": "गेल्या महिन्यात माझ्याशी बोलणे",
+    "target_text": "to speak with me last month",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L03B02",
+   "expect": {
+    "known_text": "त्याबद्दल काळजीपूर्वक",
+    "target_text": "about it carefully"
+   },
+   "set": {
+    "known_text": "त्याबद्दल वाचणे",
+    "target_text": "to read about it",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L03B03",
+   "expect": {
+    "known_text": "त्याबद्दल इंग्रजीत",
+    "target_text": "about it in English"
+   },
+   "set": {
+    "known_text": "त्याबद्दल बोलणे",
+    "target_text": "to speak about it",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0037L03B04",
+   "expect": {
+    "known_text": "त्याबद्दल गेल्या महिन्यात",
+    "target_text": "about it last month"
+   },
+   "set": {
+    "known_text": "त्याबद्दल शिकणे",
+    "target_text": "to learn about it",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L01U06",
+   "expect": {
+    "known_text": "मी आज शिकतोय",
+    "target_text": "I've been learning today"
+   },
+   "set": {
+    "known_text": "मी दिवसभर इंग्रजी शिकतोय",
+    "target_text": "I've been learning English all day",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02B02",
+   "expect": {
+    "known_text": "साधारण आठवडाभरापासून शिकणे",
+    "target_text": "for about a week to learn"
+   },
+   "set": {
+    "known_text": "मी साधारण आठवडाभरापासून इंग्रजी शिकतोय",
+    "target_text": "I've been learning English for about a week",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02B03",
+   "expect": {
+    "known_text": "साधारण आठवडाभरापासून इंग्रजी",
+    "target_text": "for about a week in English"
+   },
+   "set": {
+    "known_text": "मी साधारण आठवडाभरापासून प्रयत्न करतोय",
+    "target_text": "I've been trying for about a week",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02B04",
+   "expect": {
+    "known_text": "काळजीपूर्वक साधारण आठवडाभरापासून",
+    "target_text": "carefully for about a week"
+   },
+   "set": {
+    "known_text": "पण मी साधारण आठवडाभरापासून शिकतोय",
+    "target_text": "but I've been learning for about a week",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0038L02U04",
+   "expect": {
+    "known_text": "साधारण आठवडाभरापासून शिकणे उपयोगी आहे",
+    "target_text": "it's useful to learn for about a week"
+   },
+   "set": {
+    "known_text": "मी साधारण आठवडाभरापासून इंग्रजी बोलायचा प्रयत्न करतोय",
+    "target_text": "I've been trying to speak English for about a week",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02B02",
+   "expect": {
+    "known_text": "आज सकाळी इंग्रजीत",
+    "target_text": "this morning in English"
+   },
+   "set": {
+    "known_text": "आज सकाळी इंग्रजी बोलणे",
+    "target_text": "to speak English this morning",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02B03",
+   "expect": {
+    "known_text": "आज सकाळी वाचणे",
+    "target_text": "read this morning"
+   },
+   "set": {
+    "known_text": "आज सकाळी गोष्ट वाचणे",
+    "target_text": "to read the story this morning",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02B04",
+   "expect": {
+    "known_text": "आज सकाळी गोष्टी",
+    "target_text": "the story this morning"
+   },
+   "set": {
+    "known_text": "आज सकाळी आणि संध्याकाळी",
+    "target_text": "this morning and this evening",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L02U05",
+   "expect": {
+    "known_text": "आज सकाळी इंग्रजीत बोलणे उपयोगी आहे",
+    "target_text": "it's useful to speak in English this morning"
+   },
+   "set": {
+    "known_text": "मला आज सकाळी तुमच्याशी बोलायचं आहे",
+    "target_text": "I want to speak with you this morning",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L03B03",
+   "expect": {
+    "known_text": "पण मी थोडा थकलोय लवकर",
+    "target_text": "but I'm a little tired quickly"
+   },
+   "set": {
+    "known_text": "पण मी आज थोडा थकलोय",
+    "target_text": "but I'm a little tired today",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L03B04",
+   "expect": {
+    "known_text": "पण मी थोडा थकलोय काळजीपूर्वक",
+    "target_text": "but I'm a little tired carefully"
+   },
+   "set": {
+    "known_text": "पण संध्याकाळी मी थोडा थकलोय",
+    "target_text": "but I'm a little tired this evening",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0039L03U05",
+   "expect": {
+    "known_text": "पण मी थोडा थकलोय जायच्या आधी",
+    "target_text": "but I'm a little tired before I have to go"
+   },
+   "set": {
+    "known_text": "मला इंग्रजी बोलायचं आहे, पण मी थोडा थकलोय",
+    "target_text": "I want to speak English, but I'm a little tired",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01B02",
+   "expect": {
+    "known_text": "सध्या इंग्रजीत",
+    "target_text": "at the moment in English"
+   },
+   "set": {
+    "known_text": "सध्या इथे",
+    "target_text": "here at the moment",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01B03",
+   "expect": {
+    "known_text": "सध्या बोलणे",
+    "target_text": "at the moment to speak"
+   },
+   "set": {
+    "known_text": "पण सध्या",
+    "target_text": "but at the moment",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01B04",
+   "expect": {
+    "known_text": "सध्या आज सकाळी",
+    "target_text": "at the moment this morning"
+   },
+   "set": {
+    "known_text": "मी सध्या थोडा थकलोय",
+    "target_text": "I'm a little tired at the moment",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01U02",
+   "expect": {
+    "known_text": "मी सध्या इंग्रजी शिकतोय",
+    "target_text": "I've been learning English at the moment"
+   },
+   "set": {
+    "known_text": "मी सध्या इंग्रजी शिकतोय",
+    "target_text": "I'm learning English at the moment",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L01U04",
+   "expect": {
+    "known_text": "सध्या इंग्रजीत बोलणे उपयोगी आहे",
+    "target_text": "it's useful to speak in English at the moment"
+   },
+   "set": {
+    "known_text": "मला सध्या काहीही वाचायचं नाही",
+    "target_text": "I don't want to read anything at the moment",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L02B02",
+   "expect": {
+    "known_text": "कसं वाटतंय इंग्रजीत?",
+    "target_text": "how do you feel in English?"
+   },
+   "set": {
+    "known_text": "आज कसं वाटतंय?",
+    "target_text": "how do you feel today?",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L02B03",
+   "expect": {
+    "known_text": "कसं वाटतंय काळजीपूर्वक?",
+    "target_text": "how do you feel carefully?"
+   },
+   "set": {
+    "known_text": "आत्ता कसं वाटतंय?",
+    "target_text": "how do you feel now?",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0040L02B04",
+   "expect": {
+    "known_text": "कसं वाटतंय थोडा?",
+    "target_text": "how do you feel a little?"
+   },
+   "set": {
+    "known_text": "आणि कसं वाटतंय?",
+    "target_text": "and how do you feel?",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

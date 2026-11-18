@@ -113,10 +113,21 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
   // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
+  // 2026-11-09: a human take re-credited to the voice that recorded it (services/shared/clip-voice-relabel.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/clip-voice-relabel', operation: 'audio-relabel' },
+  // Job #143: lego_introductions re-synced from the LEGO's own link (services/shared/sync-intro-links.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/sync-intro-links',   operation: 'audio-link' },
   // Job #374: a machine cut from a longer clip is stored (course_audio) and linked (services/shared/ingest-cut.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/ingest-cut',         operation: 'audio-link' },
+  // Job #628: existing trial clips filed as pod-only course_audio rows (services/shared/pod-audio.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/pod-audio/file',     operation: 'audio-file' },
   // A listening pod's solo readers (job #391): who reads it, not what it says.
   { method: 'PATCH',  path: '/api/production/:courseCode/pod/:podId/solo-readers', operation: 'pod-solo-readers' },
+  // The pod tools as routes (job #809, services/shared/pod-tool-routes.cjs): clone to a held
+  // slug, move staged lines into the language's pod text, switch over with progress migrated.
+  { method: 'POST',   path: '/api/admin/pods/:courseCode/clone',         operation: 'pod-clone' },
+  { method: 'POST',   path: '/api/admin/pods/:courseCode/language-text', operation: 'pod-language-text' },
+  { method: 'POST',   path: '/api/admin/pods/:courseCode/switchover',    operation: 'pod-switchover' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
 const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];

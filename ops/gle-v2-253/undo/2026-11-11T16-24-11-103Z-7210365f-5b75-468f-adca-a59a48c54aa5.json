@@ -1,0 +1,457 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "7210365f-5b75-468f-adca-a59a48c54aa5",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:24:11.103Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-24-11-103Z-7210365f-5b75-468f-adca-a59a48c54aa5.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U05",
+      "set": {
+        "known_text": "what she was saying was less interesting than I expected and I found it difficult to follow",
+        "target_text": "bhí an méid a bhí sise a rá níos lú suimiúil ná mar a bhí mé ag súil agus bhí sé deacair dom é a leanúint"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U04",
+      "set": {
+        "known_text": "nobody wanted to hear what she was saying at that moment so we decided to go",
+        "target_text": "níor mhian le haon duine an méid a bhí sise a rá a chloisteáil ag an am sin mar sin chinn muid dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U03",
+      "set": {
+        "known_text": "it was less upsetting than what she was saying at the start and I was glad about that",
+        "target_text": "bhí sé níos lú corraitheach ná an méid a bhí sise a rá ag tosú agus bhí mé sásta faoi sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U02",
+      "set": {
+        "known_text": "I didn't agree with what she was saying but I found it interesting to listen to",
+        "target_text": "ní aontaím leis an méid a bhí sise a rá ach bhí sé suimiúil é a chloisteáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U01",
+      "set": {
+        "known_text": "that was less upsetting than what she was saying and I didn't want to hear any more of it",
+        "target_text": "bhí sé sin níos lú corraitheach ná an méid a bhí sise a rá agus níor mhian liom a thuilleadh de a chloisteáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05B05",
+      "set": {
+        "known_text": "I don't want to listen to what she was saying",
+        "target_text": "ní mian liom an méid a bhí sise a rá a chloisteáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05B04",
+      "set": {
+        "known_text": "I didn't agree with what she was saying",
+        "target_text": "ní aontaím leis an méid a bhí sise a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05B03",
+      "set": {
+        "known_text": "that was less upsetting than what she was saying",
+        "target_text": "bhí sé sin níos lú corraitheach ná an méid a bhí sise a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05B01",
+      "set": {
+        "target_text": "an méid a bhí sise a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02U06",
+      "set": {
+        "known_text": "I would like a little less",
+        "target_text": "ba mhaith liom beagán níos lú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02U05",
+      "set": {
+        "known_text": "why do you feel less tired",
+        "target_text": "cén fáth a mhothaíonn tú níos lú tuirseach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02U04",
+      "set": {
+        "known_text": "that was less difficult than yesterday",
+        "target_text": "bhí sé sin níos lú deacair ná inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02U03",
+      "set": {
+        "known_text": "that would be less difficult",
+        "target_text": "bheadh sé sin níos lú deacair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02U02",
+      "set": {
+        "known_text": "I don't feel less tired than yesterday",
+        "target_text": "ní mhothaím níos lú tuirseach ná inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02U01",
+      "set": {
+        "known_text": "I feel less tired today",
+        "target_text": "mothaím níos lú tuirseach inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02B04",
+      "set": {
+        "known_text": "a little less",
+        "target_text": "beagán níos lú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02B03",
+      "set": {
+        "known_text": "I feel less tired",
+        "target_text": "mothaím níos lú tuirseach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02B02",
+      "set": {
+        "known_text": "less worried",
+        "target_text": "níos lú buartha"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L02B01",
+      "set": {
+        "known_text": "less than yesterday",
+        "target_text": "níos lú ná inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01U06",
+      "set": {
+        "known_text": "that is unusual in the middle of the night",
+        "target_text": "tá sé sin neamhghnách i lár na hoíche"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01U05",
+      "set": {
+        "known_text": "that is important because we must work hard",
+        "target_text": "tá sé sin tábhachtach mar caithfidh muid obair go dian"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01U04",
+      "set": {
+        "known_text": "that is similar to your idea",
+        "target_text": "tá sé sin cosúil le do smaoineamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01U03",
+      "set": {
+        "known_text": "if you understand that is great",
+        "target_text": "má thuigeann tú tá sé sin go hiontach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01U02",
+      "set": {
+        "known_text": "that is great thank you",
+        "target_text": "tá sé sin go hiontach go raibh maith agat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01U01",
+      "set": {
+        "known_text": "unfortunately that is difficult",
+        "target_text": "faraor tá sé sin deacair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01B04",
+      "set": {
+        "known_text": "that is important now",
+        "target_text": "tá sé sin tábhachtach anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01B03",
+      "set": {
+        "known_text": "but that is useful",
+        "target_text": "ach tá sé sin úsáideach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01B02",
+      "set": {
+        "known_text": "and that is very good",
+        "target_text": "agus tá sé sin an-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L01B01",
+      "set": {
+        "known_text": "that is very interesting",
+        "target_text": "tá sé sin an-suimiúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U09",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U08",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U07",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus thosaigh mé ag smaoineamh go cúramach agus creidim go raibh do smaoineamh an-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar bhí mé ag tnúth le níos mó a fháil amach faoin teanga iontach seo leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U05",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ceapaim gur rud maith é leanúint ar aghaidh nuair atá sé deacair duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus is mian liom bualadh le daoine a labhraíonn Gaeilge chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U03",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U02",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03B04",
+      "set": {
+        "target_text": "an fáth ar theastaigh uaim tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03B03",
+      "set": {
+        "target_text": "theastaigh uaim tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U15",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U13",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U12",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U11",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus cheap mé go raibh do smaoineamh an-mhaith nuair a chuala mé uait é an tráthnóna sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U10",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U09",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge fós mar is maith liom ag foghlaim na teanga seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U08",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar bhí mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo agus ba mhian liom labhairt leat faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U07",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ceapaim gur smaoineamh maith é sin bualadh le chéile ar a sé a chlog tráthnóna"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U05",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar thosaigh mé ag smaoineamh air go cúramach an mhí seo caite agus ba mhian liom labhairt faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U03",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus is mian liom a mhíniú cad atá i gceist agam mar ceapaim gur rud maith é botúin a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U02",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar creidim go raibh do smaoineamh an-mhaith agus ba mhian liom labhairt faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U01",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ní raibh mé ag súil leis nuair a dúirt tú liom cad a bhí tú ag smaoineamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil sula n-imíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B03",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B01",
+      "set": {
+        "target_text": "an fáth ar theastaigh uaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U15",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus tá mé ag baint taitnimh as an teanga seo gach lá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U14",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ba mhian liom a rá leat go raibh mé ag smaoineamh gur smaoineamh maith é sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U13",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus níl sé éasca Gaeilge a fhoghlaim ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir leat"
+      }
+    }
+  ]
+}

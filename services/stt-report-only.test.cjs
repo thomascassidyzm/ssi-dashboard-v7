@@ -37,12 +37,9 @@ describe('renderChecked renders once and ships, whatever Whisper hears', () => {
   const failing = async () => ({ checked: true, pass: false, reason: 'cer_above_threshold', cer: 0.9, decode: 'altro' })
 
   for (const [name, sampler] of [
-    ['a sampler that picks every clip', V.createSampler({ first: 1, trusted: 1, floor: 1 })],
-    ['SPOT_SAMPLER', V.SPOT_SAMPLER],
-    ['ALWAYS_SAMPLER (the old name ~40 scripts pass)', V.ALWAYS_SAMPLER],
+    ['a sampler that picks every clip', V.createSampler({ first: 1 })],
   ]) {
     it(`with ${name}: one render, published, even with attempts: 5`, async () => {
-      V._resetSpotSampler()
       let renders = 0
       const r = await V.renderChecked({
         sampler, attempts: 5, check: failing, logger: quiet,
@@ -55,13 +52,6 @@ describe('renderChecked renders once and ships, whatever Whisper hears', () => {
       expect(r.buffer).toBeTruthy()
     })
   }
-
-  it('single-clip work is sampled, not checked 100%', () => {
-    V._resetSpotSampler()
-    let n = 0
-    for (let i = 0; i < 50; i++) if (V.ALWAYS_SAMPLER.shouldCheck()) n++
-    expect(n).toBeLessThanOrEqual(5)
-  })
 })
 
 describe('the other places Whisper used to decide', () => {
@@ -74,27 +64,14 @@ describe('the other places Whisper used to decide', () => {
     expect(d.admit).toBe(true)
   })
 
-  it('reuse planner: a damaged verdict never promotes a clip to RENDER', async () => {
-    const { verifyPlanVeracity } = require('./audio-reuse-planner.cjs')
-    const plan = {
-      clips: [{ clipKey: 'k', text: 'hallo', language: 'deu', role: 'target1', decision: 'SATISFIED', reason: 'linked', reuseSource: { s3Key: 'mastered/A.mp3' } }],
-      summary: {}, byLayer: {},
-    }
-    await verifyPlanVeracity(plan, {
-      fetchObject: async () => Buffer.from('x'),
-      veracity: { checkAudioVeracity: async () => ({ checked: true, pass: false, reason: 'last_word_missing' }) },
-      logger: { info () {} },
-    })
-    expect(plan.clips[0].decision).toBe('SATISFIED')
-    expect(plan.clips[0].heard.pass).toBe(false)
-  })
-
-  it('tts-service: the xAI/Cartesia phonology check never throws or re-rolls', () => {
-    const src = fs.readFileSync(path.join(__dirname, 'tts-service.cjs'), 'utf8')
-    const start = src.indexOf('await detectSpokenLanguage(result.audioBuffer)')
-    expect(start).toBeGreaterThan(0)
-    const block = src.slice(start, src.indexOf('return result;', start))
-    expect(block).not.toMatch(/\bthrow\b/)
+  it('audio-veracity: the sample never hears a Welsh clip', async () => {
+    const V = require('./audio-veracity.cjs')
+    expect(V.isWelshClip('cym', {})).toBe(true)
+    expect(V.isWelshClip('deu', { courseCode: 'cym_n_for_eng' })).toBe(true)
+    let checks = 0
+    const r = await V.renderChecked({ check: async () => { checks++; return { checked: true, pass: true } }, sampler: { shouldCheck: () => true, recordVerdict: () => ({}) }, render: async () => ({ buffer: Buffer.from('x'), durationMs: 900 }), expectedText: 'shwmae', language: 'cym', meta: { courseCode: 'cym_s_for_eng' }, logger: { info () {}, warn () {} } })
+    expect(checks).toBe(0)
+    expect(r.verdict.checked).toBe(false)
   })
 })
 
@@ -109,14 +86,10 @@ describe('the other places Whisper used to decide', () => {
  *   infra           binary paths, wrappers, capability probes
  */
 const STT_CALLERS = {
-  'services/audio-veracity.cjs': 'engine',
-  'services/tts-service.cjs': 'advisory',            // phonology sample, 1 in 10, logs only
+  'services/audio-veracity.cjs': 'engine',           // checkAudioVeracity for human recordings; renderChecked hears 1 TTS clip in 100, never Welsh (job #626)
   'services/audio-intelligence/gate-stack.cjs': 'advisory', // words + phonology tiers never refuse
   'services/audio-intelligence/decode.cjs': 'infra',
   'services/audio-processor.cjs': 'infra',
-  'services/audio-repair.cjs': 'advisory',           // TTS candidates: verdict recorded; uploads: human-recording
-  'services/audio-reuse-planner.cjs': 'report',      // verifyPlanVeracity annotates, never re-decides
-  'services/take-text-check-queue.cjs': 'human-recording', // booth take's script check, after the reply (job #842); never refuses
   'services/voicelab-playground/server.cjs': 'infra',
   'services/voicelab/runner.cjs': 'infra',
   'tools/a108/isl-ell-est-render-verify.cjs': 'report',
@@ -129,7 +102,6 @@ const STT_CALLERS = {
   'tools/pods/pod1-tom-voice-render.cjs': 'advisory',
   'tools/pods/verify-pod-clips.cjs': 'report',
   'tools/pods/verify-spliced-sentences.cjs': 'report',
-  'tools/recording-optimizer/segment-audio.cjs': 'human-recording',
   'tools/regen-seed-clips-from-scratch.cjs': 'advisory',
   'tools/render-take-g.cjs': 'advisory',
   'tools/repair-presentation-clips.cjs': 'advisory',

@@ -1,0 +1,537 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "3a80c2f4-218e-4531-8fef-b5fa3db23c71",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:49:32.319Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-49-32-319Z-3a80c2f4-218e-4531-8fef-b5fa3db23c71.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0173L02U02",
+      "set": {
+        "decomposition": [
+          {
+            "known": "no thank you",
+            "legoId": "S0173L02",
+            "target": "Ní mian, go raibh maith agat",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": ",",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " caithfidh",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " mé",
+            "isGhost": true
+          },
+          {
+            "known": "to leave",
+            "legoId": "S0093L02",
+            "target": " imeacht",
+            "isGhost": false
+          },
+          {
+            "known": "now",
+            "legoId": "S0001L05",
+            "target": " anois",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L02U11",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I'm not sure",
+            "legoId": "S0010L01",
+            "target": "Níl mé cinnte",
+            "isGhost": false
+          },
+          {
+            "known": "that there is",
+            "legoId": "S0089L02",
+            "target": " go bhfuil",
+            "isGhost": false
+          },
+          {
+            "known": "this word",
+            "legoId": "S0160L02",
+            "target": " an focal seo",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "known",
+            "legoId": "S0105L04",
+            "target": " ar eolas",
+            "isGhost": false
+          },
+          {
+            "known": "I have",
+            "legoId": "S0089L05",
+            "target": " agam",
+            "isGhost": false
+          },
+          {
+            "known": "well",
+            "legoId": "S0055L04",
+            "target": " go maith",
+            "isGhost": false
+          },
+          {
+            "known": "yet",
+            "legoId": "S0088L05",
+            "target": " fós",
+            "isGhost": false
+          },
+          {
+            "known": "for",
+            "legoId": "S0038L03",
+            "target": " le",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " é",
+            "isGhost": true
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " úsáid",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " nuair",
+            "isGhost": true
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "I speak",
+            "legoId": "S0009L01",
+            "target": " labhraím",
+            "isGhost": false
+          },
+          {
+            "known": "Irish",
+            "legoId": "S0001L03",
+            "target": " Gaeilge",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L01U13",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "Ní",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " raibh",
+            "isGhost": true
+          },
+          {
+            "known": "to know",
+            "legoId": "S0045L03",
+            "target": " a fhios agam",
+            "isGhost": false
+          },
+          {
+            "known": "how do you say",
+            "legoId": "S0160L01",
+            "target": " conas a deir tú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "something",
+            "legoId": "S0004L01",
+            "target": " rud éigin",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " cosúil",
+            "isGhost": true
+          },
+          {
+            "known": "for",
+            "legoId": "S0038L03",
+            "target": " le",
+            "isGhost": false
+          },
+          {
+            "known": "those",
+            "legoId": "S0085L03",
+            "target": " sin",
+            "isGhost": false
+          },
+          {
+            "known": "in Irish",
+            "legoId": "S0004L03",
+            "target": " i nGaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "but",
+            "legoId": "S0019L01",
+            "target": " ach",
+            "isGhost": false
+          },
+          {
+            "known": "I was",
+            "legoId": "S0030L01",
+            "target": " bhí mé",
+            "isGhost": false
+          },
+          {
+            "known": "wanting",
+            "legoId": "S0069L02",
+            "target": " ag iarraidh",
+            "isGhost": false
+          },
+          {
+            "known": "to try as hard as I can",
+            "legoId": "S0007L03",
+            "target": " mo dhícheall a dhéanamh",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L01U09",
+      "set": {
+        "decomposition": [
+          {
+            "known": "how do you say",
+            "legoId": "S0160L01",
+            "target": "conas a deir tú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " é",
+            "isGhost": true
+          },
+          {
+            "known": "this",
+            "legoId": "S0101L07",
+            "target": " seo",
+            "isGhost": false
+          },
+          {
+            "known": "in Irish",
+            "legoId": "S0004L03",
+            "target": " i nGaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "because",
+            "legoId": "S0022L01",
+            "target": " mar",
+            "isGhost": false
+          },
+          {
+            "known": "I want",
+            "legoId": "S0015L02",
+            "target": " tá mé ag iarraidh",
+            "isGhost": false
+          },
+          {
+            "known": "finding out",
+            "legoId": "S0101L04",
+            "target": " a fháil amach",
+            "isGhost": false
+          },
+          {
+            "known": "how",
+            "legoId": "S0003L01",
+            "target": " conas",
+            "isGhost": false
+          },
+          {
+            "known": "something",
+            "legoId": "S0004L01",
+            "target": " rud éigin",
+            "isGhost": false
+          },
+          {
+            "known": "to say",
+            "legoId": "S0102L03",
+            "target": " a rá",
+            "isGhost": false
+          },
+          {
+            "known": "in Irish",
+            "legoId": "S0004L03",
+            "target": " i nGaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "for",
+            "legoId": "S0038L03",
+            "target": " le",
+            "isGhost": false
+          },
+          {
+            "known": "my",
+            "legoId": "S0051L05",
+            "target": " mo",
+            "isGhost": false
+          },
+          {
+            "known": "friend",
+            "legoId": "S0052L06",
+            "target": " chara",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L01U08",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "Ní",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " raibh",
+            "isGhost": true
+          },
+          {
+            "known": "to know",
+            "legoId": "S0045L03",
+            "target": " a fhios agam",
+            "isGhost": false
+          },
+          {
+            "known": "how do you say",
+            "legoId": "S0160L01",
+            "target": " conas a deir tú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " rud",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " chomh",
+            "isGhost": true
+          },
+          {
+            "known": "difficult",
+            "legoId": "S0066L02",
+            "target": " deacair",
+            "isGhost": false
+          },
+          {
+            "known": "those",
+            "legoId": "S0085L03",
+            "target": " sin",
+            "isGhost": false
+          },
+          {
+            "known": "in Irish",
+            "legoId": "S0004L03",
+            "target": " i nGaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " nuair",
+            "isGhost": true
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "I was",
+            "legoId": "S0030L01",
+            "target": " bhí mé",
+            "isGhost": false
+          },
+          {
+            "known": "learning",
+            "legoId": "S0079L03",
+            "target": " ag foghlaim",
+            "isGhost": false
+          },
+          {
+            "known": "last month",
+            "legoId": "S0037L05",
+            "target": " an mhí seo caite",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L01U06",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "ba",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " mhian",
+            "isGhost": true
+          },
+          {
+            "known": "for",
+            "legoId": "S0038L03",
+            "target": " le",
+            "isGhost": false
+          },
+          {
+            "known": "my",
+            "legoId": "S0051L05",
+            "target": " mo",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " chara",
+            "isGhost": true
+          },
+          {
+            "known": "to find out",
+            "legoId": "S0017L02",
+            "target": " fáil amach",
+            "isGhost": false
+          },
+          {
+            "known": "how do you say",
+            "legoId": "S0160L01",
+            "target": " conas a deir tú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "what your name is",
+            "legoId": "S0150L03",
+            "target": " cad is ainm duit",
+            "isGhost": false
+          },
+          {
+            "known": "in Irish",
+            "legoId": "S0004L03",
+            "target": " i nGaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ní",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " raibh",
+            "isGhost": true
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " fhios",
+            "isGhost": true
+          },
+          {
+            "known": "I have",
+            "legoId": "S0089L05",
+            "target": " agam",
+            "isGhost": false
+          },
+          {
+            "known": "the answer",
+            "legoId": "S0066L03",
+            "target": " an freagra",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    }
+  ]
+}

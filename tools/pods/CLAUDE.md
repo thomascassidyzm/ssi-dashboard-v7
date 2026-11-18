@@ -58,10 +58,12 @@ checked against the code on 2026-09-20 and agreed.
   221, 226), which the tool refuses to guess. **Caveat worth knowing:** not every live serving
   `pod-1` is 231 lines yet; some are shorter (a 142-line live pod-1 is named in that tool's
   header). Canonical length is not a safe assumption about a given course — count the rows.
-- **Stage 0 is retired; stages run 1..N** (2026-09-19). Confirmed: `src/lib/podEngine/index.ts`
-  says the vendored `stage0Sequence.ts` is gone and a sentence enters the ladder at Stage 1.
-- **The ladder is ten visits** — stages 1-8 once each, stage 9 twice, then the sentence retires.
-  In this repo that lives in `src/views/admin/PodLab.vue` (the stage → play-role table).
+- **Stage 0 is retired; stages run 1..N** (2026-09-19), in the learning app's composer.
+- **Popty plays no pod of its own** (job #628, Tom r-2026-11-07-ssi-pods-exactly-one-way-of: one way
+  of playing pods, the app's, surfaced in Popty embedded). The pods page (`src/components/pods/
+  PodBrowser.vue`, search in `services/pod-search-router.cjs`) frames the app's `/listening/preview`.
+  The vendored engine, the Pod Lab ladder, the Drill tab and the Listening Lab arc preview are gone;
+  do not rebuild a Popty player.
 - **Pod translations may run ahead; pod TTS is held until Tom picks each voice himself**
   (2026-09-19). The pick is `(language, gender) → one voice`, stored in the `pod_voice_picks`
   `app_config` row — see `services/pod-voice-picks.cjs`, whose header explains why none of the
@@ -69,9 +71,7 @@ checked against the code on 2026-09-20 and agreed.
 - **Pods are unbound from course position and always play from sentence 1 on their own ratchet**,
   with cadence Easy every 2 rounds / Fast every 4. ⚠️ **That logic is not in this repo.** The lap
   scheduler (`usePodLapScheduler`) and the cadence numbers live in `ssi-learning-app` /
-  `algorithm_config`. This repo only vendors the stage *composition* (`src/lib/podEngine/`,
-  a generated verbatim copy of `@ssi/core/pods`, re-synced with `tools/sync-pod-engine.sh` — do
-  not hand-edit it). Nothing in Popty was found that implements the 2/4-round cadence; if you need
+  `algorithm_config`. Nothing in Popty was found that implements the 2/4-round cadence; if you need
   to change it, change it in the learning app.
 
 ## Where the pods subsystem actually lives
@@ -82,9 +82,9 @@ services/pod-*.cjs              decision logic: visibility, text approval, gener
 services/voice-engine/pods-*    casting, coverage, planning, the pods router (recording side)
 services/shared/pod-*.cjs       shared rules: tiers/syllable ceiling, jump-in, solo readers
 api/pod-*.js                    Vercel functions the SPA calls (content, cast voices, fine map)
-src/views/admin/PodLab.vue      Pod Lab — the stage ladder / casting surface
+src/views/admin/PodLab.vue      Pod Lab — seam editor + casting surface (no playback)
+src/components/pods/PodBrowser  the pods page: search + the app's own player framed
 src/views/ScriptLab*.vue        Script Lab — where Tom edits the canonical script
-src/lib/podEngine/              vendored stage composition (GENERATED, do not edit)
 tools/pods/                     the operational tools — this directory
 docs/pods/                      curated markdown the SPA globs and serves, plus history
 database/changes/2026*pod*.sql  the guards that are enforced in the database itself

@@ -1,6 +1,5 @@
 import { ref } from 'vue'
-import { getApiUrl } from '@/services/api'
-import { useAuth } from '@/composables/useAuth'
+import { postAdminJson } from '@/composables/adminApi'
 
 /**
  * Generate + publish learner-facing app release notes from the always-on
@@ -11,7 +10,6 @@ import { useAuth } from '@/composables/useAuth'
  * /admin/release-notes surface reads published rows. requireAdmin.
  */
 export function useReleaseNotesGen() {
-  const { getAccessToken } = useAuth()
   const generating = ref(false)
   const publishing = ref(false)
   const error = ref(null)
@@ -22,17 +20,7 @@ export function useReleaseNotesGen() {
     generating.value = true
     error.value = null
     try {
-      const token = await getAccessToken()
-      const res = await fetch(`${getApiUrl()}/api/release-notes/generate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(version ? { version } : {}),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`)
+      const data = await postAdminJson('/api/release-notes/generate', version ? { version } : {})
       draft.value = data
       published.value = null
       return data
@@ -48,17 +36,7 @@ export function useReleaseNotesGen() {
     publishing.value = true
     error.value = null
     try {
-      const token = await getAccessToken()
-      const res = await fetch(`${getApiUrl()}/api/release-notes/publish`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`)
+      const data = await postAdminJson('/api/release-notes/publish', payload)
       published.value = data
       return data
     } catch (e) {

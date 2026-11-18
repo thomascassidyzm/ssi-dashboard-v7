@@ -1,0 +1,10 @@
+[Unit]
+Description=Popty weekly release, Mondays 06:00 UTC; a no-op when main has not moved (cs #948)
+
+[Timer]
+OnCalendar=Mon *-*-* 06:00:00 UTC
+Persistent=true
+Unit=popty-weekly-release.service
+
+[Install]
+WantedBy=timers.target

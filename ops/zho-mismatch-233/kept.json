@@ -1,0 +1,418 @@
+[
+ {
+  "id": "S0007L02U07",
+  "state": "not-a-defect",
+  "before": [
+   "I want to try as hard as I can today",
+   "今天我想尽可能努力"
+  ],
+  "cause": "missing-chunk",
+  "what195": "\"try\" has no counterpart in the target; 试试 is not used",
+  "why": "copy of seed 7; 'try as hard as I can' = 尽可能努力 is the idiom, and try rows stay as they are (Tom's 试试 ruling)"
+ },
+ {
+  "id": "S0051L04U09",
+  "state": "not-a-defect",
+  "before": [
+   "I enjoy doing interesting things with my friends",
+   "我喜欢和朋友做有趣的事"
+  ],
+  "cause": "missing-chunk",
+  "what195": "'my' in 'with my friends' has no counterpart (我的) in the target",
+  "why": "copy of seed 51; 和朋友 for 'with my friends' is natural Chinese (possessive left unsaid)"
+ },
+ {
+  "id": "S0057L01U06",
+  "state": "not-a-defect",
+  "before": [
+   "I want to speak with my friends",
+   "我想和朋友说话"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive \"my\" (我的) has no counterpart in the target",
+  "why": "和朋友 for 'with my friends' is natural Chinese (possessive left unsaid)"
+ },
+ {
+  "id": "S0121L01U08",
+  "state": "not-a-defect",
+  "before": [
+   "it's unusual that you don't like to use your car",
+   "你不喜欢用车，这很不寻常"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive 'your' before 'car' has no counterpart (用车)",
+  "why": "copy of seed 121; 用车 for 'use your car' is natural Chinese (possessive left unsaid)"
+ },
+ {
+  "id": "S0156L01U12",
+  "state": "already-fixed",
+  "before": [
+   "why didn't you ask?",
+   "你为什么不去问？"
+  ],
+  "live": [
+   "why don't you go and ask?",
+   "你为什么不去问？"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0161L03U09",
+  "state": "not-a-defect",
+  "before": [
+   "I'd like to read my book for a while",
+   "我想看一会儿书"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive 'my' (我的) has no counterpart in the target",
+  "why": "我想看一会儿书 for 'read my book' is natural Chinese (possessive left unsaid)"
+ },
+ {
+  "id": "S0221L01U07",
+  "state": "not-a-defect",
+  "before": [
+   "I watched football with my friend",
+   "我和朋友看了足球"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive 'my' before friend; target 和朋友 has no 我/我的",
+  "why": "和朋友 for 'with my friend' is natural Chinese (possessive left unsaid)"
+ },
+ {
+  "id": "S0272L01B03",
+  "state": "not-a-defect",
+  "before": [
+   "sure, I will go",
+   "好啊我去"
+  ],
+  "cause": "tense-modality",
+  "what195": "\"will\" (future) has no counterpart in 好啊我去",
+  "why": "好啊我去 is how Chinese says 'sure, I'll go'; Chinese does not mark the future here and 会 would make it a prediction"
+ },
+ {
+  "id": "S0272L01B05",
+  "state": "not-a-defect",
+  "before": [
+   "sure, I will go too",
+   "好啊我也去"
+  ],
+  "cause": "tense-modality",
+  "what195": "\"will\" (future) has no counterpart in 好啊我也去",
+  "why": "好啊我也去 is 'sure, I'll go too'; no 会 needed (as B03)"
+ },
+ {
+  "id": "S0272L01B06",
+  "state": "not-a-defect",
+  "before": [
+   "sure, I will go now",
+   "好啊我现在去"
+  ],
+  "cause": "tense-modality",
+  "what195": "\"will\" (future) has no counterpart in 好啊我现在去",
+  "why": "好啊我现在去 is 'sure, I'll go now'; no 会 needed (as B03)"
+ },
+ {
+  "id": "S0348L01U01",
+  "state": "not-a-defect",
+  "before": [
+   "I will leave soon",
+   "我将要离开了"
+  ],
+  "cause": "missing-chunk",
+  "what195": "soon (很快) has no counterpart in the target",
+  "why": "将要…了 is the imminent future, so 'soon' is in it; 很快将要 would be unnatural"
+ },
+ {
+  "id": "S0348L01U07",
+  "state": "not-a-defect",
+  "before": [
+   "we will start soon",
+   "我们将要开始了"
+  ],
+  "cause": "missing-chunk",
+  "what195": "soon (很快) has no counterpart in the target",
+  "why": "将要…了 carries 'soon' (as U01)"
+ },
+ {
+  "id": "S0378L01U01",
+  "state": "not-a-defect",
+  "before": [
+   "I didn't have enough money for holidays",
+   "我没钱去度假"
+  ],
+  "cause": "missing-chunk",
+  "what195": "\"enough\" (足够) missing in target; 没钱 means 'no money'",
+  "why": "没钱去度假 is how Chinese says 'didn't have enough money for holidays'"
+ },
+ {
+  "id": "S0378L01U07",
+  "state": "not-a-defect",
+  "before": [
+   "no I didn't have enough money for holidays.",
+   "不，我没钱去度假"
+  ],
+  "cause": "missing-chunk",
+  "what195": "\"enough\" (足够) missing in target; 没钱 means 'no money'",
+  "why": "copy of seed 378; 没钱 = 'not enough money' (as U01)"
+ },
+ {
+  "id": "S0407L02U02",
+  "state": "already-fixed",
+  "before": [
+   "she managed to establish good habits",
+   "她能树立好的东西"
+  ],
+  "live": [
+   "she wants to set a good example",
+   "她想树立好榜样"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0407L02U03",
+  "state": "already-fixed",
+  "before": [
+   "everyone should try to establish good habits",
+   "所有人都应该试着树立好的东西"
+  ],
+  "live": [
+   "everyone should try to set a good example",
+   "所有人都应该试着树立好榜样"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0407L02U05",
+  "state": "already-fixed",
+  "before": [
+   "let's try to establish good habits",
+   "让我们试着树立好的东西"
+  ],
+  "live": [
+   "let's try to set a good example",
+   "让我们试着树立好榜样"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0407L02U06",
+  "state": "already-fixed",
+  "before": [
+   "he wasn't able to establish good habits",
+   "他没能树立好的东西"
+  ],
+  "live": [
+   "it's important to set a good example",
+   "树立好榜样很重要"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0414L02U02",
+  "state": "not-a-defect",
+  "before": [
+   "I'd like some red wine",
+   "我想要红酒"
+  ],
+  "cause": "missing-chunk",
+  "what195": "'some' (一些) has no counterpart in the target",
+  "why": "我想要红酒 for 'I'd like some red wine' is natural Chinese; 一些 is not needed"
+ },
+ {
+  "id": "S0437L02U02",
+  "state": "not-a-defect",
+  "before": [
+   "let's try to raise as much as possible",
+   "让我们尽可能筹集"
+  ],
+  "cause": "missing-chunk",
+  "what195": "'try to' (试着) has no counterpart in the target",
+  "why": "'try to' row: left as it is (Tom's 试试 ruling)"
+ },
+ {
+  "id": "S0541L02U07",
+  "state": "not-a-defect",
+  "before": [
+   "it's a good idea to try and breathe slowly",
+   "慢慢呼吸是个好主意"
+  ],
+  "cause": "missing-chunk",
+  "what195": "\"try (and)\" has no counterpart in the target (试着/试)",
+  "why": "copy of seed 541 and a 'try' row: left as it is (Tom's 试试 ruling)"
+ },
+ {
+  "id": "S0556L03B03",
+  "state": "already-fixed",
+  "before": [
+   "late at night music",
+   "深夜放音乐"
+  ],
+  "live": [
+   "they play music",
+   "他们放音乐"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0560L02U05",
+  "state": "not-a-defect",
+  "before": [
+   "the path leads to the beach",
+   "小路通向海滩"
+  ],
+  "cause": "wrong-word",
+  "what195": "target 小路 means 'small path' but known says only 'the path'; 'small' has no counterpart on the known side",
+  "why": "小路 is the ordinary word for 'path'; 'small' is not a mismatch"
+ },
+ {
+  "id": "S0567L04U01",
+  "state": "not-a-defect",
+  "before": [
+   "it's been lovely spending time outdoors watching the children play",
+   "在户外看着孩子们玩真的很美好"
+  ],
+  "cause": "missing-chunk",
+  "what195": "'spending time' (花时间) has no counterpart in the target",
+  "why": "copy of seed 567; Chinese does not need 花时间 for 'spending time' — the seed reads naturally"
+ },
+ {
+  "id": "S0573L04U01",
+  "state": "not-a-defect",
+  "before": [
+   "it's the kind of thing that makes the holidays very special",
+   "这正是让假期变得特别的那种事情"
+  ],
+  "cause": "missing-chunk",
+  "what195": "\"very\" (很) is missing from the target",
+  "why": "copy of seed 573; 变得特别 reads naturally — not wrong enough for a seed edit (S15)"
+ },
+ {
+  "id": "S0576L01B03",
+  "state": "already-fixed",
+  "before": [
+   "really makes sad",
+   "真的很难过"
+  ],
+  "live": [
+   "really sad",
+   "真的很难过"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0614L02U02",
+  "state": "not-a-defect",
+  "before": [
+   "my family is important to me",
+   "家人对我很重要"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive \"my\" in \"my family\" has no counterpart (我的)",
+  "why": "家人 for 'my family' is natural Chinese (possessive left unsaid)"
+ },
+ {
+  "id": "S0614L02U03",
+  "state": "not-a-defect",
+  "before": [
+   "she's with her family",
+   "她和家人在一起"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive \"her\" in \"her family\" has no counterpart (她的)",
+  "why": "和家人 for 'with her family' is natural Chinese"
+ },
+ {
+  "id": "S0614L02U06",
+  "state": "not-a-defect",
+  "before": [
+   "she calls her family often",
+   "她常常给家人打电话"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive \"her\" in \"her family\" has no counterpart (她的)",
+  "why": "给家人打电话 for 'calls her family' is natural Chinese"
+ },
+ {
+  "id": "S0624L02U06",
+  "state": "already-fixed",
+  "before": [
+   "many thanks",
+   "谢谢你的帮助"
+  ],
+  "live": [
+   "thanks for your help",
+   "谢谢你的帮助"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0627L01U05",
+  "state": "not-a-defect",
+  "before": [
+   "is it ready yet?",
+   "好了吗？"
+  ],
+  "cause": "missing-chunk",
+  "what195": "\"yet\" (还) has no counterpart in 好了吗",
+  "why": "好了吗 is the natural 'is it ready yet?' — 了 carries 'yet'"
+ },
+ {
+  "id": "S0629L02U02",
+  "state": "not-a-defect",
+  "before": [
+   "do you want milk?",
+   "你要加牛奶吗？"
+  ],
+  "cause": "extra-chunk",
+  "what195": "加 ('add') in the target has no counterpart in 'do you want milk?'",
+  "why": "加牛奶 is how Chinese says milk in a drink — 'do you want milk?' is right"
+ },
+ {
+  "id": "S0629L02U06",
+  "state": "not-a-defect",
+  "before": [
+   "how much milk do you want?",
+   "你要加多少牛奶？"
+  ],
+  "cause": "extra-chunk",
+  "what195": "加 ('add') in the target has no counterpart in 'how much milk do you want?'",
+  "why": "加多少牛奶 is 'how much milk' in a drink (as U02)"
+ },
+ {
+  "id": "S0638L01B01",
+  "state": "already-fixed",
+  "before": [
+   "currently doing",
+   "在想"
+  ],
+  "live": [
+   "thinking",
+   "在想"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ },
+ {
+  "id": "S0639L01U05",
+  "state": "not-a-defect",
+  "before": [
+   "she was with her family",
+   "她和家人在一起"
+  ],
+  "cause": "missing-chunk",
+  "what195": "possessive 'her' (她的) missing before 家人",
+  "why": "和家人 for 'with her family' is natural Chinese"
+ },
+ {
+  "id": "S0643L01B02",
+  "state": "already-fixed",
+  "before": [
+   "do you want any?",
+   "您想要吗？"
+  ],
+  "live": [
+   "do you want it, sir?",
+   "先生，您想要它吗"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
+ }
+]

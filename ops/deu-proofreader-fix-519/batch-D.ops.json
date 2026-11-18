@@ -1,0 +1,45 @@
+[
+ {
+  "op": "lego.update",
+  "lego_id": "S0642L01",
+  "expect": {
+   "known_text": "gracious",
+   "target_text": "gnädige"
+  },
+  "set": {
+   "known_text": "dear"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0642L01",
+  "slot": "known",
+  "audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0642L01",
+  "slot": "presentation",
+  "audio_id": "f3f3a2b8-25b7-4a94-9832-6c23f11cce77"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0642L01B01",
+  "expect": {
+   "known_text": "gracious",
+   "target_text": "gnädige"
+  },
+  "set": {
+   "known_text": "dear"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0642L01B01",
+  "slot": "known",
+  "audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b"
+ }
+]

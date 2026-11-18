@@ -1,0 +1,178 @@
+{
+ "family": "seed126",
+ "event_id": "4dd089ae-2907-4e8d-b8cb-c948983f325e",
+ "undo_file_on_popty": "2026-11-16T12-34-47-643Z-4dd089ae-2907-4e8d-b8cb-c948983f325e.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "SEED126",
+  "LEGO:S0126L03",
+  "S0126L03B01",
+  "S0126L03B02",
+  "S0126L03B03",
+  "S0126L03B04",
+  "S0126L03U02",
+  "S0126L03U07",
+  "S0126L03U08"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U08",
+   "set": {
+    "known_text": "this work is changing the shape of my brain",
+    "target_text": "dit wurk feroaret de foarm fan myn harsens",
+    "target1_audio_id": "73d30dd7-79b3-45e3-8d3d-e20809bbf449"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U07",
+   "set": {
+    "known_text": "the shape of my brain is important",
+    "target_text": "de foarm fan myn harsens is wichtich",
+    "target1_audio_id": "a2c13f0d-7f27-409e-aaaf-8ddcde183bb9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U06",
+   "set": {
+    "known_text": "I'm happy because the shape of my brain changes",
+    "target_text": "ik bin bliid om't de foarm fan myn harsens feroaret"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U05",
+   "set": {
+    "known_text": "when we learn something new the shape of my brain changes very quickly",
+    "target_text": "as wy wat nijs leare feroaret de foarm fan myn harsens hiel fluch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U04",
+   "set": {
+    "known_text": "this language changes the shape of my brain",
+    "target_text": "dizze taal feroaret de foarm fan myn harsens"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U03",
+   "set": {
+    "known_text": "do you want to change the shape of my brain?",
+    "target_text": "wolstû de foarm fan myn harsens feroarje?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U02",
+   "set": {
+    "known_text": "I'm going to change the shape of my brain",
+    "target_text": "ik sil de foarm fan myn harsens feroarje",
+    "target1_audio_id": "b976e1f9-e994-4674-9eb8-aeff40d08116"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U01",
+   "set": {
+    "known_text": "I don't want to change the shape of my brain",
+    "target_text": "ik wol de foarm fan myn harsens net feroarje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B04",
+   "set": {
+    "known_text": "this is the shape of my brain",
+    "target_text": "dit is de foarm fan myn harsens",
+    "target1_audio_id": "004b169f-143c-4e48-abf4-8377de9ad543"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B03",
+   "set": {
+    "known_text": "I'm happy with the shape of my brain",
+    "target_text": "ik bin bliid mei de foarm fan myn harsens",
+    "target1_audio_id": "71261d2f-8628-44db-878d-e81e4fa778b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B02",
+   "set": {
+    "known_text": "the shape of my brain changes",
+    "target_text": "de foarm fan myn harsens feroaret",
+    "target1_audio_id": "b828b35e-bdc6-4acf-a67d-92b1a977ada4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B01",
+   "set": {
+    "known_text": "to change the shape of my brain",
+    "target_text": "de foarm fan myn harsens feroarje",
+    "target1_audio_id": "085bc440-6e1d-4209-a1b6-96b0a06bf20b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03C03",
+   "set": {
+    "known_text": "my brain",
+    "target_text": "myn harsens"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03C02",
+   "set": {
+    "known_text": "of",
+    "target_text": "fan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03C01",
+   "set": {
+    "known_text": "the shape",
+    "target_text": "de foarm"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2b51dd2e-db9a-43d0-8dad-6defe9c5790f",
+   "set": {
+    "known_text": "the shape of my brain",
+    "target_text": "de foarm fan myn harsens",
+    "components": [
+     {
+      "known": "the shape",
+      "target": "de foarm"
+     },
+     {
+      "known": "of",
+      "target": "fan"
+     },
+     {
+      "known": "my brain",
+      "target": "myn harsens"
+     }
+    ],
+    "target1_audio_id": "36411c59-98d8-44a3-8e09-f4d9001768f7"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 126,
+   "set": {
+    "known_text": "This work is changing the shape of my brain.",
+    "target_text": "Dit wurk feroaret de foarm fan myn harsens.",
+    "target1_audio_id": "73d30dd7-79b3-45e3-8d3d-e20809bbf449"
+   }
+  }
+ ]
+}

@@ -16,11 +16,6 @@ const { wordTimingsFromCartesia } = require('./shared/word-timings.cjs');
 const { withProviderSlot, providerConcurrencyStats } = require('./shared/provider-concurrency.cjs');
 const { stripSynthesisCues } = require('./shared/synthesis-cues.cjs');
 const https = require('https');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const crypto = require('crypto');
-const { execFile } = require('child_process');
 const { buildAzureSSMLBody } = require('./shared/ellipsis-ssml.cjs');
 const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs');
 const { assertSelectableProvider } = require('./shared/tts-provider-policy.cjs');
@@ -91,7 +86,7 @@ const TTS_MIN_AUDIO_MS = Number(process.env.TTS_MIN_AUDIO_MS || 250);
  *
  * Throws with a "(503)" marker so isRetriableTtsError classifies it as a
  * transient server-side failure: generateWithRetry then re-rolls it inside the
- * existing retry budget, exactly like the phonology gate, and the final failure
+ * existing retry budget, and the final failure
  * throws so the caller never persists a silent clip.
  *
  * @param {Buffer} buffer - the raw provider response
@@ -125,9 +120,10 @@ function assertAudibleResponse(buffer, { provider, bytesPerSecond, text, voiceId
  * is never retried. The "(422)" marker makes isRetriableTtsError treat it as a
  * client error; `code` lets a caller record it against the row.
  */
-function assertSpeakableExample(text) {
+function assertSpeakableExample(text, { audioTags = false } = {}) {
   // The curated cues ([pause], [break], <break/>) are stage directions, not labels.
-  const t = stripSynthesisCues(text);
+  // A TRIAL on an audio-tag model (eleven_v3/v4, job #23) may also carry [slowly]-style tags: the model acts on them.
+  const t = stripSynthesisCues(audioTags ? require('./shared/audio-trial-mode.cjs').stripAudioTags(text) : text);
   const label = /[\[\]{}]/.test(t);
   const markerOnly = !/[\p{L}\p{N}]/u.test(t);
   if (!label && !markerOnly) return;
@@ -325,14 +321,17 @@ async function generateElevenLabs(text, config) {
       'Content-Type': 'application/json',
       'xi-api-key': apiKey
     },
+    // A TRIAL render (job #23, services/shared/audio-trial-mode.cjs) may name the model and voice_settings, checked against
+    // the allow-list and ranges in the entry; a course render sends neither and stays on eleven_multilingual_v2 as before.
     body: JSON.stringify({
       text: text,
-      model_id: 'eleven_multilingual_v2',
+      model_id: config.modelId || 'eleven_multilingual_v2',
       voice_settings: {
         stability: stability,
         similarity_boost: similarityBoost,
         style: 0,
-        use_speaker_boost: true
+        use_speaker_boost: true,
+        ...(config.voiceSettings || {})
       }
     })
   });
@@ -537,6 +536,28 @@ const CARTESIA_BIT_RATE = 128000;
  * `wordTimings: null`. Timed calls where Cartesia sent no timestamps event
  * ALSO report null — the audio is still good, the row simply has no timings.
  */
+/**
+ * REGIONAL LOCALES CARTESIA REFUSES, and the base tag each is sent as instead.
+ *
+ * Course renders take their steer from ttsLocaleForRole
+ * (services/shared/tts-locale-steer.cjs), which spells a dialect course's
+ * target roles with its region — deu_ch_for_eng/target1 → 'de-CH'. Cartesia
+ * answers that with a 400 (found by job #998·AB, 2026-11-02, casting Vreni for
+ * deu_ch), so the Swiss voice could not render at all. The Swiss-ness lives in
+ * the cast voice; the steer can only say "German".
+ *
+ * An EXPLICIT map, not a blanket region strip: a region Cartesia does accept
+ * (and that therefore steers phonology) must keep reaching it, and we hold no
+ * authoritative accepted-locale list that would make a general rule safe. Add a
+ * row here only after seeing Cartesia refuse that tag.
+ */
+const CARTESIA_LOCALE_FALLBACK = Object.freeze({ 'de-CH': 'de' });
+
+/** The steer as Cartesia will accept it. */
+function cartesiaLocale(steer) {
+  return CARTESIA_LOCALE_FALLBACK[steer] || steer;
+}
+
 async function generateCartesia(text, config) {
   const {
     apiKey,
@@ -588,7 +609,7 @@ async function generateCartesia(text, config) {
       : { container: 'mp3', sample_rate: sampleRate, bit_rate: bitRate }
   };
   if (wordTimings) body.add_timestamps = true;
-  if (steer && steer !== 'auto') body.locale = steer;
+  if (steer && steer !== 'auto') body.locale = cartesiaLocale(steer);
 
   const endpoint = wordTimings ? 'https://api.cartesia.ai/tts/sse' : 'https://api.cartesia.ai/tts/bytes';
   const response = await fetch(endpoint, {
@@ -627,6 +648,80 @@ async function generateCartesia(text, config) {
   });
   const audioBuffer = pcm16ToWav(sse.pcm, sampleRate, 1);
   return { audioBuffer, wordBoundaries: null, wordTimings: wordTimingsFromCartesia(sse.wordTimestamps) };
+}
+
+/**
+ * ABAIR (Trinity College Dublin's Irish TTS, api.abair.ie/v4) — job #525, Kai 2026-11-09: an Irish voice audition.
+ *
+ * TRIAL LANE ONLY. ABAIR is reachable solely as a Voice Lab trial render (trial:true on POST /api/audio/render), so its
+ * clips are stored under trial/ and are never linkable to a course row (job #748). A non-trial call is refused here, at
+ * the provider, whatever the caller upstream decided — casting ABAIR into a course is a separate go, not this code.
+ *
+ * Their terms (api.abair.ie/v4/docs, Terms of Use) allow prototyping, forbid load testing and ask that the same synthesis
+ * request is never sent twice — reuse the output instead. So: one attempt (the route already passes maxRetries 1, and a
+ * 4xx is never retried), and the caller caches every clip it gets back. The key is ABAIR_API_KEY in the service env; it is
+ * sent only in the abair-api-key header and scrubbed from any error text before that text is thrown or logged.
+ *
+ * Billing: 8 tokens per character against the key's daily cap (basic tier 500,000 → 62,500 characters/day). The estate's
+ * spend guard counts ABAIR as an unnamed provider (UNKNOWN_PROVIDER_BUDGET, 20,000 chars/day) — tighter than their cap.
+ */
+const ABAIR_BASE = 'https://api.abair.ie/v4';
+const ABAIR_TRIAL_ONLY = 'ABAIR is a Voice Lab trial provider only (403): render it with trial:true — its clips are never linked to a course (job #525, #748)';
+
+const scrubKey = (text, key) => (key ? String(text).split(key).join('[key]') : String(text));
+
+/** The WAV byte rate from a RIFF header (offset 28), or a 16 kHz mono 16-bit default. Pure. */
+function wavByteRate(buf) {
+  if (buf && buf.length >= 32 && buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WAVE') {
+    const r = buf.readUInt32LE(28);
+    if (r > 0) return r;
+  }
+  return 32000;
+}
+
+async function generateAbair(text, config) {
+  const door = config.door || {};
+  if (!door.trial) throw new Error(ABAIR_TRIAL_ONLY);
+  const { apiKey, voiceId, speed } = config;
+  if (!apiKey) throw new Error('ABAIR API key is not configured (401): set ABAIR_API_KEY in the phase8 service environment');
+  if (!voiceId) throw new Error('ABAIR voice is required (400)');
+  const body = { input: text, voice: voiceId };
+  if (speed != null && speed !== 1) body.speed = speed;
+  // Lower-case 'wav': the live API's enum is 'wav' | 'MP3' (its 422 says so), whatever the OpenAPI document lists (job #525).
+  const response = await fetch(`${ABAIR_BASE}/synthesis?outputType=JSON&audioEncoding=wav`, {
+    method: 'POST',
+    agent: ttsKeepAliveAgent,
+    signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
+    headers: { 'abair-api-key': apiKey, 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    const errorText = scrubKey((await response.text()).slice(0, 400), apiKey);
+    throw new Error(`ABAIR TTS API error (${response.status}): ${errorText}`);
+  }
+  const json = await response.json();
+  if (!json || !json.audioContent) throw new Error('ABAIR TTS API error (502): no audioContent in the answer');
+  const audioBuffer = Buffer.from(json.audioContent, 'base64');
+  assertAudibleResponse(audioBuffer, { provider: 'abair', bytesPerSecond: wavByteRate(audioBuffer), text, voiceId });
+  return { audioBuffer, wordBoundaries: null, wordTimings: null };
+}
+
+/**
+ * ABAIR's voice list (GET /synthesis/voices: id, name, sex, province, location) — metadata, not synthesis, costs no
+ * tokens. Read once per process and kept, so a page of auditions asks once. The key never leaves this function.
+ */
+let abairVoicesCache = null;
+async function listAbairVoices({ apiKey = process.env.ABAIR_API_KEY, refresh = false } = {}) {
+  if (abairVoicesCache && !refresh) return abairVoicesCache;
+  if (!apiKey) throw new Error('ABAIR API key is not configured (401): set ABAIR_API_KEY in the phase8 service environment');
+  const response = await fetch(`${ABAIR_BASE}/synthesis/voices`, {
+    headers: { 'abair-api-key': apiKey, Accept: 'application/json' },
+    signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
+  });
+  if (!response.ok) throw new Error(`ABAIR voices error (${response.status}): ${scrubKey((await response.text()).slice(0, 300), apiKey)}`);
+  const list = await response.json();
+  abairVoicesCache = (Array.isArray(list) ? list : []).map(v => ({ id: v.id, name: v.name, sex: v.sex || null, province: v.province || null, location: v.location || null }));
+  return abairVoicesCache;
 }
 
 /**
@@ -727,6 +822,10 @@ async function renderOnce(text, provider, config) {
     case 'cartesia':
       return await generateCartesia(text, config);
 
+    case 'abair':
+      // Trial lane only — generateAbair refuses anything else (job #525).
+      return await generateAbair(text, config);
+
     default:
       throw new Error(`Unknown TTS provider: ${provider}`);
   }
@@ -775,101 +874,6 @@ function isRetriableTtsError(error) {
   return true;
 }
 
-// ---- xAI/Cartesia phonology SAMPLE (whisper language auto-detect) ---------
-// xAI's multilingual voices are English-dominant and can render a non-English
-// text with English phonology even with an explicit `language` sent
-// ('Come stai' → English 'come'; ita pilot 2026-07-10). From 2026-07-11 to
-// 2026-09-28 this was a gate that re-rolled and failed such renders. It is now
-// a sampled, report-only check (Tom, 2026-09-28: no automatic STT check may veto
-// or re-render TTS audio): one render in ten is listened to and a suspect
-// language (English or config.suspectLanguages) is logged, never acted on.
-// Skipped when whisper-cli/model are absent (logged once), when the steered
-// language is English/auto, or when XAI_PHONO_GATE=0.
-const WHISPER_BIN = process.env.WHISPER
-  || (fs.existsSync('/opt/homebrew/bin/whisper-cli') ? '/opt/homebrew/bin/whisper-cli' : 'whisper-cli');
-const WHISPER_MODEL = process.env.WHISPER_MODEL
-  || path.join(require('os').homedir(), '.local/share/whisper-models/ggml-small.bin');
-const FFMPEG_BIN = process.env.FFMPEG || (fs.existsSync('/opt/homebrew/bin/ffmpeg') ? '/opt/homebrew/bin/ffmpeg' : 'ffmpeg');
-const PHONO_GATE_ON = process.env.XAI_PHONO_GATE !== '0' && fs.existsSync(WHISPER_BIN) && fs.existsSync(WHISPER_MODEL);
-let phonoGateWarned = false;
-// One render in ten is listened to, report-only. See renderWithRetry.
-const PHONO_SAMPLE_EVERY = 10;
-let phonoSampleCounter = 0;
-function phonoShouldSample() { return (phonoSampleCounter++ % PHONO_SAMPLE_EVERY) === 0; }
-
-// Bounded whisper concurrency: each detection spawns a multi-threaded
-// process; an unbounded fan-out (TTS concurrency can be 20) would thrash the
-// box. Two at a time keeps detection off the critical path without stampeding.
-const PHONO_MAX_CONCURRENT = Number(process.env.XAI_PHONO_CONCURRENCY || 2);
-let phonoActive = 0;
-const phonoQueue = [];
-function phonoAcquire() {
-  if (phonoActive < PHONO_MAX_CONCURRENT) { phonoActive++; return Promise.resolve(); }
-  return new Promise(resolve => phonoQueue.push(resolve));
-}
-function phonoRelease() {
-  const next = phonoQueue.shift();
-  if (next) next(); else phonoActive--;
-}
-
-/**
- * Detect the spoken language of an audio buffer via whisper-cli auto-detect.
- * @returns {Promise<string|null>} ISO 639-1 code, or null when unmeasurable
- *   (ffmpeg/whisper error) — null is treated as a pass, matching take-g's
- *   'unmeasured' outcome: the gate only acts on positive suspect detections.
- */
-async function detectSpokenLanguage(audioBuffer) {
-  await phonoAcquire();
-  const base = path.join(os.tmpdir(), `phono-gate-${crypto.randomUUID()}`);
-  const mp3 = `${base}.mp3`;
-  const wav = `${base}.wav`;
-  try {
-    fs.writeFileSync(mp3, audioBuffer);
-    return await new Promise(resolve => {
-      execFile(FFMPEG_BIN, ['-y', '-i', mp3, '-ar', '16000', '-ac', '1', wav], err => {
-        if (err) return resolve(null);
-        execFile(WHISPER_BIN, ['-m', WHISPER_MODEL, '-l', 'auto', '-nt', '-t', String(process.env.WHISPER_THREADS || 4), '-f', wav],
-          { encoding: 'utf8', maxBuffer: 1 << 22 }, (e, _o, stderr) => {
-            const m = /auto-detected language: (\w+)/.exec(stderr || '');
-            resolve(m ? m[1] : null);
-          });
-      });
-    });
-  } catch {
-    return null;
-  } finally {
-    for (const f of [mp3, wav]) { try { fs.unlinkSync(f); } catch {} }
-    phonoRelease();
-  }
-}
-
-/**
- * Providers whose voices are English-dominant multilingual clones, and which
- * therefore read cross-language words with English phonology when the steer is
- * weak. A SET, not a string equality: this was `provider !== 'xai'`, and wiring
- * a second such provider in without touching it would have silently switched
- * the gate off for that provider — no error, no warning, just an unguarded
- * render path. Cartesia joined on 2026-08-27 with the same exposure that the
- * 2026-07-10 Italian pilot found on xAI ('come stai' read as English 'come').
- */
-const PHONOLOGY_GATED_PROVIDERS = new Set(['xai', 'cartesia']);
-
-/**
- * The suspect-language set for a render, or null when the gate doesn't apply.
- * Suspects = English (the voices' dominant language) + any explicit
- * config.suspectLanguages, minus the steered language itself.
- */
-function phonologySuspects(provider, config) {
-  if (!PHONOLOGY_GATED_PROVIDERS.has(provider) || config.phonologyGate === false) return null;
-  // `locale` first: that is the field the Cartesia path steers with, and a gate
-  // that read only `language` would find nothing to guard on a Cartesia render.
-  const steered = String(config.locale || config.language || '').toLowerCase().split('-')[0];
-  if (!steered || steered === 'auto' || steered === 'en') return null;
-  const suspects = new Set(['en', ...(config.suspectLanguages || []).map(l => String(l).toLowerCase().split('-')[0])]);
-  suspects.delete(steered);
-  return suspects.size ? suspects : null;
-}
-
 /**
  * Generate speech with retry logic and exponential backoff + jitter.
  *
@@ -883,10 +887,6 @@ function phonologySuspects(provider, config) {
  * and, if every attempt comes back silent, throws — the caller never persists a
  * stub. This is the fix for the 2026-08-03 French batch.
  *
- * xAI and Cartesia renders steered to a non-English language are SAMPLED by
- * the phonology check above — one in ten, report-only. It never re-rolls and
- * never throws (Tom, 2026-09-28).
- *
  * @param {string} text - Text to synthesize
  * @param {string} provider - TTS provider
  * @param {object} config - Provider configuration
@@ -895,11 +895,6 @@ function phonologySuspects(provider, config) {
  */
 async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = null) {
   let lastError = null;
-  const suspects = phonologySuspects(provider, config);
-  if (suspects && !PHONO_GATE_ON && !phonoGateWarned) {
-    phonoGateWarned = true;
-    console.warn(`[TTS] xAI phonology gate unavailable (${process.env.XAI_PHONO_GATE === '0' ? 'XAI_PHONO_GATE=0' : 'whisper-cli or model missing'}) — non-English xAI renders unchecked for language drift`);
-  }
 
   const door = config.door || {};
   const { language, voiceId } = identityFromConfig(provider, config);
@@ -918,7 +913,10 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
       // Proof that speak() asked the clip library and it had no clip (job #677).
       ticket,
       // A native speed is a different recording: the repeat limit counts it apart (trial renders, job #751).
-      speed: config.speed,
+      // A post-render tempo (clone stand-in pace, job #590) makes a different finished clip too, so it keys the same way.
+      speed: config.paceTempo != null ? config.paceTempo : config.speed,
+      // A trial's ElevenLabs model is a different recording too (job #23): counted apart from the house model.
+      model: config.modelId || null,
     });
     doorStats.providerCalls++;
     doorStats.providerChars += String(text).length;
@@ -928,17 +926,9 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
       const result = await withProviderSlot(provider, () => renderOnce(text, provider, config));
       sent = true;
       guard.afterProviderCall(reservation, { ok: true });
-      // REPORT ONLY, SAMPLED (Tom, 2026-09-28, r-2026-09-28-no-automatic-whisper-stt-check-may:
-      // no automatic STT check may veto or re-render TTS audio; STT on TTS is
-      // sampling, never 100%). Until job #678 this re-rolled every suspect take
-      // and threw after the budget. Now one render in PHONO_SAMPLE_EVERY is
-      // listened to, a suspect language is logged, and the render is returned.
-      if (suspects && PHONO_GATE_ON && phonoShouldSample()) {
-        const detected = await detectSpokenLanguage(result.audioBuffer);
-        if (detected && suspects.has(detected)) {
-          console.warn(`[TTS] REPORT ONLY — phonology sample: whisper heard '${detected}' for a '${config.locale || config.language}' render of "${String(text).slice(0, 40)}". Returned as rendered; a person listens before anything is re-rendered.`);
-        }
-      }
+      // The door does not listen to what it returns (Tom, 2026-11-07,
+      // r-2026-11-07-whisper-is-never-used-to-check: no voice checks on a render).
+      // Whisper's one use is the record-only sample in audio-veracity.cjs.
       return result;
     } catch (error) {
       if (!sent) guard.afterProviderCall(reservation, { ok: false, error });
@@ -1020,10 +1010,10 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   if (!text || String(text).trim() === '') {
     throw new Error('Text cannot be empty');
   }
-  assertSpeakableExample(text);
+  const door = config.door || {};
+  assertSpeakableExample(text, { audioTags: !!(door.trial && door.audioTags) });
   await assertMayRender(provider, config);
 
-  const door = config.door || {};
   const { language, voiceId } = identityFromConfig(provider, config);
   if (!language || !voiceId) {
     if (provider === 'cartesia' && !(config.locale || config.language) && !door.language) {
@@ -1032,11 +1022,18 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     throw new Error(`TTS door: cannot name this clip (${!language ? 'language' : 'voice id'} unknown; ${provider} ${config.voiceId || config.voiceName || '?'}, text: "${String(text).slice(0, 40)}") — a line the door cannot look up is never rendered. Pass config.door.language.`);
   }
 
+  // PRONUNCIATION OVERRIDE (services/shared/pronunciation-overrides.cjs, job #250·AD; English word rules, job #776): a listed
+  // line of this course, or a line of a language holding a listed word (Cartesia only), is SENT in its spoken form. The
+  // library is asked with the stored words; the ticket it issues also licenses this one spoken form (door-ticket spokenKey).
+  const pron = require('./shared/pronunciation-overrides.cjs');
+  const overrideCourse = door.courseCode || config.courseCode || null;
+  const sent = pron.spokenFor({ courseCode: overrideCourse, text, language, provider }) || text;
   // door.skipLibrary (trial render at a non-1.0 native speed, job #751): same words, different recording — the library cannot answer it.
   // The lookup still runs (the spend guard demands its ticket) but against an empty library, so it can only miss.
   const lib = door.skipLibrary ? require('./shared/clip-library.cjs').memoryClipLibrary([]) : clipLibrary();
   const { clip: existing, ticket } = await lookupForRender({
     text,
+    spokenText: sent === text ? null : sent,
     language,
     voiceId,
     ownCourseOnly: !!door.intro,
@@ -1065,7 +1062,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   if (door.trial) {
     require('./shared/audio-trial-mode.cjs').assertTrialOpen();
   } else {
-  await assertRenderAllowed({ text, language, voiceId, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro, role: door.slotRole || null, audition: !!door.audition });
+  await assertRenderAllowed({ text, language, voiceId, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro, role: door.slotRole || null, legoId: door.legoId || null, audition: !!door.audition, podLine: !!door.podLine });
   await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
   // AFTER the cast gate on purpose (lane review #232): assertMayRerecord RESERVES a use of a max_clips grant, so a render the cast gate
   // is about to refuse must never spend one. No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of
@@ -1076,7 +1073,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     text, language, voiceId,
     courseCode: door.courseCode || config.courseCode || null,
     replacing: door.replacing, slotRole: door.slotRole || null, voiceBound: !!door.voiceBound,
-    forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null,
+    forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null, approval: door.approval || null,
   });
   }
   if (door.dryRun) {
@@ -1084,7 +1081,10 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     doorStats.wouldSpendChars += chars;
     return { audioBuffer: null, wordBoundaries: null, wordTimings: null, existingClip: null, charsSpent: 0, wouldSpendChars: chars };
   }
-  const out = await renderWithRetry(text, provider, config, maxRetries, ticket);
+  // Sent in its spoken form (`sent`, worked out before the lookup above): zho 得 = děi as IPA; English Sarah / risotto
+  // (job #776). The stored text is never touched. Cartesia's word timings echo what was sent, so the stored words go back.
+  const rendered = await renderWithRetry(sent, provider, config, maxRetries, ticket);
+  const out = sent === text ? rendered : { ...rendered, wordTimings: pron.restoreWordTimings(rendered.wordTimings, overrideCourse, language), spokenText: sent };
   doorStats.rendered++;
   doorStats.charsSpent += chars;
   return { ...out, existingClip: null, charsSpent: chars };
@@ -1145,22 +1145,24 @@ module.exports = {
   providerConcurrencyStats,
   isRetriableTtsError,
   parseCartesiaSse,
+  cartesiaLocale,
+  CARTESIA_LOCALE_FALLBACK,
   pcm16ToWav,
   CARTESIA_DEFAULT_SPEED,
   CARTESIA_VERSION,
   CARTESIA_MODEL,
   CARTESIA_SAMPLE_RATE,
   CARTESIA_BIT_RATE,
-  PHONOLOGY_GATED_PROVIDERS,
   getCadenceSpeed,
   getVoiceForRole,
-  // phonology gate internals, exported for tests/tools
-  detectSpokenLanguage,
-  phonologySuspects,
-  PHONO_SAMPLE_EVERY,
   // empty-response gate + xAI pacing internals, exported for tests/tools
   assertAudibleResponse,
   TTS_MIN_AUDIO_MS,
   CHILD_VOICE_IDS,
-  assertNotHumanVoiceCourse
+  assertNotHumanVoiceCourse,
+  // ABAIR (job #525): the voice list (metadata), the trial-only refusal text and the pure helpers, for the route and tests.
+  listAbairVoices,
+  ABAIR_TRIAL_ONLY,
+  wavByteRate,
+  scrubKey
 };

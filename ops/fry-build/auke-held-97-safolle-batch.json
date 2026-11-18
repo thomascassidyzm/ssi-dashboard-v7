@@ -1,0 +1,685 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 3,
+   "expect": {
+    "known_text": "how to speak as often as possible.",
+    "target_text": "hoe't ik safolle mooglik prate kin."
+   },
+   "set": {
+    "known_text": "how to speak as much as possible."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0003L01",
+   "expect": {
+    "known_text": "as often as possible",
+    "target_text": "safolle mooglik"
+   },
+   "set": {
+    "known_text": "as much as possible",
+    "components": [
+     {
+      "known": "as much",
+      "target": "safolle"
+     },
+     {
+      "known": "possible",
+      "target": "mooglik"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L01C01",
+   "expect": {
+    "known_text": "as often",
+    "target_text": "safolle"
+   },
+   "set": {
+    "known_text": "as much"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L01B01",
+   "expect": {
+    "known_text": "to speak as often as possible",
+    "target_text": "safolle mooglik prate"
+   },
+   "set": {
+    "known_text": "to speak as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L01B02",
+   "expect": {
+    "known_text": "to speak Frisian as often as possible",
+    "target_text": "safolle mooglik Frysk prate"
+   },
+   "set": {
+    "known_text": "to speak Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L01U01",
+   "expect": {
+    "known_text": "I want to speak Frisian as often as possible",
+    "target_text": "ik wol safolle mooglik Frysk prate"
+   },
+   "set": {
+    "known_text": "I want to speak Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L01U02",
+   "expect": {
+    "known_text": "I want to speak with you as often as possible",
+    "target_text": "ik wol safolle mooglik mei dy prate"
+   },
+   "set": {
+    "known_text": "I want to speak with you as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L03U02",
+   "expect": {
+    "known_text": "how to speak Frisian as often as possible",
+    "target_text": "hoe't ik safolle mooglik Frysk prate kin"
+   },
+   "set": {
+    "known_text": "how to speak Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0004L01U02",
+   "expect": {
+    "known_text": "I'm trying to learn something as often as possible",
+    "target_text": "ik besykje safolle mooglik wat te learen"
+   },
+   "set": {
+    "known_text": "I'm trying to learn something as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0004L02U03",
+   "expect": {
+    "known_text": "I want to speak in Frisian as often as possible",
+    "target_text": "ik wol safolle mooglik yn it Frysk prate"
+   },
+   "set": {
+    "known_text": "I want to speak in Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0004L04U02",
+   "expect": {
+    "known_text": "I must speak as often as possible",
+    "target_text": "ik moat safolle mooglik prate"
+   },
+   "set": {
+    "known_text": "I must speak as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0005L01U02",
+   "expect": {
+    "known_text": "I'm trying to learn Frisian, I'm going to speak as often as possible",
+    "target_text": "ik besykje Frysk te learen, ik sil safolle mooglik prate"
+   },
+   "set": {
+    "known_text": "I'm trying to learn Frisian, I'm going to speak as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0005L01U06",
+   "expect": {
+    "known_text": "I'm going to speak Frisian with you as often as possible",
+    "target_text": "ik sil safolle mooglik mei dy Frysk prate"
+   },
+   "set": {
+    "known_text": "I'm going to speak Frisian with you as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0005L02U01",
+   "expect": {
+    "known_text": "I must practise as often as possible",
+    "target_text": "ik moat safolle mooglik oefenje"
+   },
+   "set": {
+    "known_text": "I must practise as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0005L03B04",
+   "expect": {
+    "known_text": "to practise speaking as often as possible",
+    "target_text": "safolle mooglik it praten oefenje"
+   },
+   "set": {
+    "known_text": "to practise speaking as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0005L03U03",
+   "expect": {
+    "known_text": "I must practise speaking as often as possible",
+    "target_text": "ik moat safolle mooglik it praten oefenje"
+   },
+   "set": {
+    "known_text": "I must practise speaking as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0005L04U04",
+   "expect": {
+    "known_text": "I want to speak with someone else as often as possible",
+    "target_text": "ik wol safolle mooglik mei in oar prate"
+   },
+   "set": {
+    "known_text": "I want to speak with someone else as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01U05",
+   "expect": {
+    "known_text": "I must practise a word as often as possible",
+    "target_text": "ik moat safolle mooglik in wurd oefenje"
+   },
+   "set": {
+    "known_text": "I must practise a word as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L02U03",
+   "expect": {
+    "known_text": "I'm trying as often as possible to think of a word",
+    "target_text": "ik besykje safolle mooglik op in wurd te kommen"
+   },
+   "set": {
+    "known_text": "I'm trying as much as possible to think of a word"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L01U05",
+   "expect": {
+    "known_text": "I want to practise speaking as often as possible today",
+    "target_text": "ik wol hjoed safolle mooglik it praten oefenje"
+   },
+   "set": {
+    "known_text": "I want to practise speaking as much as possible today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L02U04",
+   "expect": {
+    "known_text": "I must do my best as often as possible",
+    "target_text": "ik moat safolle mooglik myn bêst dwaan"
+   },
+   "set": {
+    "known_text": "I must do my best as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03B03",
+   "expect": {
+    "known_text": "to try as hard as I can as often as possible",
+    "target_text": "safolle mooglik hurd myn bêst dwaan"
+   },
+   "set": {
+    "known_text": "to try as hard as I can as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03U04",
+   "expect": {
+    "known_text": "I must try as hard as I can as often as possible",
+    "target_text": "ik moat safolle mooglik hurd myn bêst dwaan"
+   },
+   "set": {
+    "known_text": "I must try as hard as I can as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L01U05",
+   "expect": {
+    "known_text": "I'm going to try as often as possible",
+    "target_text": "ik sil safolle mooglik besykje"
+   },
+   "set": {
+    "known_text": "I'm going to try as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L02U03",
+   "expect": {
+    "known_text": "I want to try to explain as often as possible",
+    "target_text": "ik wol safolle mooglik besykje út te lizzen"
+   },
+   "set": {
+    "known_text": "I want to try to explain as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L03U04",
+   "expect": {
+    "known_text": "I want to say what I mean as often as possible",
+    "target_text": "ik wol safolle mooglik sizze wat ik bedoel"
+   },
+   "set": {
+    "known_text": "I want to say what I mean as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0009L01B04",
+   "expect": {
+    "known_text": "I speak as often as possible",
+    "target_text": "ik praat safolle mooglik"
+   },
+   "set": {
+    "known_text": "I speak as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0009L01U04",
+   "expect": {
+    "known_text": "I want to practise speaking, I speak with someone else as often as possible",
+    "target_text": "ik wol it praten oefenje, ik praat safolle mooglik mei in oar"
+   },
+   "set": {
+    "known_text": "I want to practise speaking, I speak with someone else as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L01U05",
+   "expect": {
+    "known_text": "I'm not sure how to practise as often as possible",
+    "target_text": "ik bin der net wis fan hoe't ik safolle mooglik oefenje kin"
+   },
+   "set": {
+    "known_text": "I'm not sure how to practise as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L02U05",
+   "expect": {
+    "known_text": "I must practise as often as possible, I'm not sure if I can speak a little Frisian now",
+    "target_text": "ik moat safolle mooglik oefenje, ik bin der net wis fan oft ik no in bytsje Frysk prate kin"
+   },
+   "set": {
+    "known_text": "I must practise as much as possible, I'm not sure if I can speak a little Frisian now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L03U07",
+   "expect": {
+    "known_text": "I want to practise the whole sentence as often as possible",
+    "target_text": "ik wol safolle mooglik de hiele sin oefenje"
+   },
+   "set": {
+    "known_text": "I want to practise the whole sentence as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L01U01",
+   "expect": {
+    "known_text": "I speak a little, I'd like to practise as often as possible",
+    "target_text": "ik praat in bytsje, ik wol graach safolle mooglik oefenje"
+   },
+   "set": {
+    "known_text": "I speak a little, I'd like to practise as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U05",
+   "expect": {
+    "known_text": "I'm going to practise speaking as often as possible after you finish",
+    "target_text": "ik sil safolle mooglik it praten oefenje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to practise speaking as much as possible after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L02U05",
+   "expect": {
+    "known_text": "I'm going to guess as often as possible",
+    "target_text": "ik sil safolle mooglik riede"
+   },
+   "set": {
+    "known_text": "I'm going to guess as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L03U06",
+   "expect": {
+    "known_text": "I wouldn't like to guess whether I can practise as often as possible",
+    "target_text": "ik soe net graach riede wolle oft ik safolle mooglik oefenje kin"
+   },
+   "set": {
+    "known_text": "I wouldn't like to guess whether I can practise as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0013L01B02",
+   "expect": {
+    "known_text": "you speak as often as possible",
+    "target_text": "dû praatst safolle mooglik"
+   },
+   "set": {
+    "known_text": "you speak as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0013L01U02",
+   "expect": {
+    "known_text": "you speak Frisian as often as possible",
+    "target_text": "dû praatst safolle mooglik Frysk"
+   },
+   "set": {
+    "known_text": "you speak Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0014L01U02",
+   "expect": {
+    "known_text": "do you speak Frisian as often as possible?",
+    "target_text": "praatstû safolle mooglik Frysk?"
+   },
+   "set": {
+    "known_text": "do you speak Frisian as much as possible?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L01U06",
+   "expect": {
+    "known_text": "I'm going to speak Frisian as often as possible and I'm going to do my best",
+    "target_text": "ik sil safolle mooglik Frysk prate en ik sil myn bêst dwaan"
+   },
+   "set": {
+    "known_text": "I'm going to speak Frisian as much as possible and I'm going to do my best"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L02U04",
+   "expect": {
+    "known_text": "I want you to speak Frisian as often as possible",
+    "target_text": "ik wol datstû safolle mooglik Frysk praatst"
+   },
+   "set": {
+    "known_text": "I want you to speak Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L03U05",
+   "expect": {
+    "known_text": "do you speak Frisian with me as often as possible?",
+    "target_text": "praatstû safolle mooglik Frysk mei my?"
+   },
+   "set": {
+    "known_text": "do you speak Frisian with me as much as possible?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L04U04",
+   "expect": {
+    "known_text": "I want you to speak with me in Frisian as often as possible",
+    "target_text": "ik wol datstû safolle mooglik yn it Frysk mei my praatst"
+   },
+   "set": {
+    "known_text": "I want you to speak with me in Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L01U05",
+   "expect": {
+    "known_text": "he wants to speak Frisian as often as possible",
+    "target_text": "hy wol safolle mooglik Frysk prate"
+   },
+   "set": {
+    "known_text": "he wants to speak Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L02U06",
+   "expect": {
+    "known_text": "I want to come back as often as possible",
+    "target_text": "ik wol safolle mooglik weromkomme"
+   },
+   "set": {
+    "known_text": "I want to come back as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U06",
+   "expect": {
+    "known_text": "I want to practise with everyone else as often as possible",
+    "target_text": "ik wol safolle mooglik mei eltsenien oefenje"
+   },
+   "set": {
+    "known_text": "I want to practise with everyone else as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L01U04",
+   "expect": {
+    "known_text": "she wants to practise speaking as often as possible",
+    "target_text": "sy wol safolle mooglik it praten oefenje"
+   },
+   "set": {
+    "known_text": "she wants to practise speaking as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L01U04",
+   "expect": {
+    "known_text": "we want to practise speaking with someone else as often as possible",
+    "target_text": "wy wolle safolle mooglik mei in oar it praten oefenje"
+   },
+   "set": {
+    "known_text": "we want to practise speaking with someone else as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L01U02",
+   "expect": {
+    "known_text": "he wants to come back later on but you want to practise as often as possible",
+    "target_text": "hy wol letter weromkomme mar dû wolst safolle mooglik oefenje"
+   },
+   "set": {
+    "known_text": "he wants to come back later on but you want to practise as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0021L02U02",
+   "expect": {
+    "known_text": "are you learning Frisian as often as possible?",
+    "target_text": "learstû safolle mooglik Frysk?"
+   },
+   "set": {
+    "known_text": "are you learning Frisian as much as possible?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L01U03",
+   "expect": {
+    "known_text": "we want to meet each other this evening because I must practise as often as possible",
+    "target_text": "wy wolle inoar fan 'e jûn moetsje om't ik safolle mooglik oefenje moat"
+   },
+   "set": {
+    "known_text": "we want to meet each other this evening because I must practise as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L02U06",
+   "expect": {
+    "known_text": "I want to meet people as often as possible",
+    "target_text": "ik wol safolle mooglik minsken moetsje"
+   },
+   "set": {
+    "known_text": "I want to meet people as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L03U03",
+   "expect": {
+    "known_text": "I must speak Frisian as often as possible because I want to meet people",
+    "target_text": "ik moat safolle mooglik Frysk prate om't ik minsken moetsje wol"
+   },
+   "set": {
+    "known_text": "I must speak Frisian as much as possible because I want to meet people"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L03U06",
+   "expect": {
+    "known_text": "I'm going to try to talk more as often as possible",
+    "target_text": "ik sil safolle mooglik besykje mear te praten"
+   },
+   "set": {
+    "known_text": "I'm going to try to talk more as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L01U06",
+   "expect": {
+    "known_text": "I like it when we practise speaking as often as possible",
+    "target_text": "ik fyn it noflik as wy safolle mooglik it praten oefenje"
+   },
+   "set": {
+    "known_text": "I like it when we practise speaking as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0028L01U04",
+   "expect": {
+    "known_text": "it's useful to talk as often as possible",
+    "target_text": "it is nuttich om safolle mooglik te praten"
+   },
+   "set": {
+    "known_text": "it's useful to talk as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0028L02U07",
+   "expect": {
+    "known_text": "it's useful to talk Frisian as often as possible",
+    "target_text": "it is nuttich om safolle mooglik Frysk te praten"
+   },
+   "set": {
+    "known_text": "it's useful to talk Frisian as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0034L01U04",
+   "expect": {
+    "known_text": "I want to practise as often as possible but he doesn't want to",
+    "target_text": "ik wol safolle mooglik oefenje mar hy wol net"
+   },
+   "set": {
+    "known_text": "I want to practise as much as possible but he doesn't want to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0034L03U08",
+   "expect": {
+    "known_text": "I'm going to practise speaking as often as possible because I want to meet other people",
+    "target_text": "ik sil safolle mooglik it praten oefenje om't ik oare minsken moetsje wol"
+   },
+   "set": {
+    "known_text": "I'm going to practise speaking as much as possible because I want to meet other people"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0037L01U03",
+   "expect": {
+    "known_text": "I started to talk as often as possible",
+    "target_text": "ik begûn safolle mooglik te praten"
+   },
+   "set": {
+    "known_text": "I started to talk as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0050L01U01",
+   "expect": {
+    "known_text": "I'm not trying to talk as often as possible",
+    "target_text": "ik besykje net safolle mooglik te praten"
+   },
+   "set": {
+    "known_text": "I'm not trying to talk as much as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0051L04U08",
+   "expect": {
+    "known_text": "I want to practise with my friends as often as possible",
+    "target_text": "ik wol safolle mooglik mei myn freonen oefenje"
+   },
+   "set": {
+    "known_text": "I want to practise with my friends as much as possible"
+   }
+  }
+ ]
+}

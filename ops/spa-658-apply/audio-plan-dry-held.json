@@ -1,0 +1,395 @@
+[
+ {
+  "role": "target1",
+  "text": "Ella me mandó correos la semana pasada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "target1",
+    "current": "ace0653a-bb8c-43a9-a136-4d6498d9de29"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ella me mandó correos la semana pasada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "target2",
+    "current": "5ee0c8c5-93d0-4a70-87db-0d37fcda2579"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "She sent me emails last week",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "known",
+    "current": "33c83020-aba5-4839-af9b-2ecaad53cc29"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B05",
+    "slot": "target1",
+    "current": "7987809c-cda2-40aa-8804-8c27185fd949"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B05",
+    "slot": "target2",
+    "current": "cb3e15f3-78fd-4245-9455-8450bed8e105"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U02",
+    "slot": "target1",
+    "current": "b49d36c1-d7fb-4c06-9038-529b70c6cfe3"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U02",
+    "slot": "target2",
+    "current": "0d3cb0eb-8baf-4352-9993-08b5cbb9c85a"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Tengo que decir que eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U05",
+    "slot": "target1",
+    "current": "939c0b58-cefa-468b-8414-4e75e304f661"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Tengo que decir que eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U05",
+    "slot": "target2",
+    "current": "a7eb991f-4d54-4d12-8d34-671387c23550"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "target1",
+    "current": "4c329d25-71ec-4502-9a73-a318aca6d4d7"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "target1",
+    "current": "4c329d25-71ec-4502-9a73-a318aca6d4d7"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "target2",
+    "current": "dde6c0e3-4d79-47d2-bb48-ba5f6b55922b"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "target2",
+    "current": "dde6c0e3-4d79-47d2-bb48-ba5f6b55922b"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "known",
+    "current": "d1e53e8f-5fa5-4ff9-8366-ea63b8b03146"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "known",
+    "current": "d1e53e8f-5fa5-4ff9-8366-ea63b8b03146"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hacer una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hacer una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "to ask such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "known",
+    "current": "7193a23a-3846-420c-82be-832a3b60f818"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "en mi opinión, es una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "en mi opinión, es una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "in my opinion, it's such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "known",
+    "current": "25070980-69fb-4e62-821b-9d4e9743fadd"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sabía que era una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sabía que era una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I knew it was such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "known",
+    "current": "ecea3326-e28b-44bf-9390-5cb33fed1f01"
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'such an obvious question', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "presentation",
+    "current": null
+   }
+  ],
+  "legoId": "S0423L01",
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-658-four-families (job #144): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ }
+]

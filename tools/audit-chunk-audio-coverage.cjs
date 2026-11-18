@@ -206,7 +206,7 @@ async function main() {
   lines.push('')
   lines.push('Source audio already exists for these chunks (a whole-sentence or Take-G take) —')
   lines.push('they already PLAY (via the whole-take fallback), just not at exact seam precision.')
-  lines.push('Re-running forced alignment against the existing take (no fresh TTS, no cost) would')
+  lines.push('Re-cutting from the take\'s stored Cartesia word timings (no fresh TTS, no cost; never a transcription, r-2026-11-03) would')
   lines.push('upgrade these from approx → exact. See `tools/course-optimization/*-STAGED.json` for the')
   lines.push('regen queue, which lists these separately from the paid TTS/recording candidates.')
   lines.push('')

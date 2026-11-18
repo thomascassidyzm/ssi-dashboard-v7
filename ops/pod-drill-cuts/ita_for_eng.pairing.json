@@ -1,0 +1,3899 @@
+{
+ "pair": {
+  "ita_for_eng:pod-1:SC01-S004:s0": {
+   "key": "Sì, oggi ho una giornata impegnativa.|Yes, I've got a busy day today.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC01-S004:s0",
+    "chunks": [
+     [
+      "Sì,",
+      "Yes,"
+     ],
+     [
+      "oggi ho una giornata impegnativa.",
+      "I've got a busy day today."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC01-S004:s1": {
+   "key": "Spero che tu abbia una buona giornata.|I hope you have a good day.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC01-S004:s1",
+    "chunks": [
+     [
+      "Spero che",
+      "I hope"
+     ],
+     [
+      "tu abbia una buona giornata.",
+      "you have a good day."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC02-S003": {
+   "key": "Quanto è lontano il centro?|How far is it into town?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC02-S003",
+    "chunks": [
+     [
+      "Quanto è lontano",
+      "How far is it"
+     ],
+     [
+      "il centro?",
+      "into town?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC02-S004": {
+   "key": "Puoi dirmi quanto è lontano il centro?|Can you tell me how far it is into town?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC02-S004",
+    "chunks": [
+     [
+      "Puoi dirmi",
+      "Can you tell me"
+     ],
+     [
+      "quanto è lontano il centro?",
+      "how far it is into town?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC02-S005": {
+   "key": "Non è molto lontano. Forse cinque o sei chilometri.|It's not very far. Maybe five or six kilometres.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC02-S005",
+    "chunks": [
+     [
+      "Non è molto lontano.",
+      "It's not very far."
+     ],
+     [
+      "Forse cinque o sei chilometri.",
+      "Maybe five or six kilometres."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC03-S005": {
+   "key": "Avete patatine, o noccioline, o qualcosa del genere?|Do you have crisps, or nuts, or something like that?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC03-S005",
+    "chunks": [
+     [
+      "Avete patatine,",
+      "Do you have crisps,"
+     ],
+     [
+      "o noccioline,",
+      "or nuts,"
+     ],
+     [
+      "o qualcosa del genere?",
+      "or something like that?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC03-S006": {
+   "key": "No, abbiamo solo da bere.|No, we've only got drinks.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC03-S006",
+    "chunks": [
+     [
+      "No,",
+      "No,"
+     ],
+     [
+      "abbiamo solo da bere.",
+      "we've only got drinks."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC04-S002:s2": {
+   "key": "Devo tornare a casa ora.|I need to go home now.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC04-S002:s2",
+    "chunks": [
+     [
+      "Devo tornare a casa",
+      "I need to go home"
+     ],
+     [
+      "ora.",
+      "now."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC05-S001:s1": {
+   "key": "Hai avuto una giornata lunga?|Did you have a long day?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC05-S001:s1",
+    "chunks": [
+     [
+      "Hai avuto",
+      "Did you have"
+     ],
+     [
+      "una giornata lunga?",
+      "a long day?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC05-S002:s1": {
+   "key": "Sono molto stanca adesso.|I'm very tired now.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC05-S002:s1",
+    "chunks": [
+     [
+      "Sono molto stanca",
+      "I'm very tired"
+     ],
+     [
+      "adesso.",
+      "now."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC06-S011:s3": {
+   "key": "Ci stiamo divertendo molto.|We're having a lovely time.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC06-S011:s3",
+    "chunks": [
+     [
+      "Ci stiamo divertendo",
+      "We're having a lovely time."
+     ],
+     [
+      "molto.",
+      ""
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC07-S006": {
+   "key": "Vorrei da asporto, grazie.|I'd like takeaway, please.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC07-S006",
+    "whole": "'grazie' and 'please' don't correspond, so no clean split exists"
+   }
+  },
+  "ita_for_eng:pod-1:SC07-S010": {
+   "key": "Fanno otto euro e quaranta in tutto.|That's eight euros forty altogether.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC07-S010",
+    "chunks": [
+     [
+      "Fanno otto euro e quaranta",
+      "That's eight euros forty"
+     ],
+     [
+      "in tutto.",
+      "altogether."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC07-S011:s0": {
+   "key": "Posso pagare con la carta?|Could I pay by card?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC07-S011:s0",
+    "chunks": [
+     [
+      "Posso pagare",
+      "Could I pay"
+     ],
+     [
+      "con la carta?",
+      "by card?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC08-S003": {
+   "key": "Abbiamo una chiara e una scura, e sono entrambe locali.|We've got a light one and a dark one, and they're both local.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC08-S003",
+    "chunks": [
+     [
+      "Abbiamo una chiara e una scura,",
+      "We've got a light one and a dark one,"
+     ],
+     [
+      "e sono entrambe locali.",
+      "and they're both local."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC08-S004": {
+   "key": "Vorrei una media della chiara, grazie.|I'd like a medium of the light one, please.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC08-S004",
+    "chunks": [
+     [
+      "Vorrei una media della chiara,",
+      "I'd like a medium of the light one,"
+     ],
+     [
+      "grazie.",
+      "please."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC08-S005": {
+   "key": "Posso avere una birra piccola?|Can I have a small beer?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC08-S005",
+    "chunks": [
+     [
+      "Posso avere",
+      "Can I have"
+     ],
+     [
+      "una birra piccola?",
+      "a small beer?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC08-S013": {
+   "key": "Sì, certo. Eccolo. La frittura di pesce è molto buona.|Yes, of course. Here it is. The fried fish is very good.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC08-S013",
+    "chunks": [
+     [
+      "Sì, certo.",
+      "Yes, of course."
+     ],
+     [
+      "Eccolo.",
+      "Here it is."
+     ],
+     [
+      "La frittura di pesce è molto buona.",
+      "The fried fish is very good."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC08-S014:s0": {
+   "key": "Possiamo avere del pane?|Can we have some bread?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC08-S014:s0",
+    "chunks": [
+     [
+      "Possiamo avere",
+      "Can we have"
+     ],
+     [
+      "del pane?",
+      "some bread?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC08-S015:s1": {
+   "key": "Vorrei un tramezzino al formaggio, per favore.|I'd like a cheese sandwich, please.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC08-S015:s1",
+    "chunks": [
+     [
+      "Vorrei un tramezzino al formaggio,",
+      "I'd like a cheese sandwich,"
+     ],
+     [
+      "per favore.",
+      "please."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S004": {
+   "key": "Vorremmo una bottiglia di acqua frizzante e una bottiglia di acqua naturale, per favore.|We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S004",
+    "chunks": [
+     [
+      "Vorremmo una bottiglia di acqua frizzante",
+      "We'd like one bottle of sparkling water"
+     ],
+     [
+      "e una bottiglia di acqua naturale,",
+      "and one bottle of still water,"
+     ],
+     [
+      "per favore.",
+      "please."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S005:s0": {
+   "key": "Scusi — avete qualcosa senza glutine?|Excuse me - do you have anything gluten-free?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S005:s0",
+    "chunks": [
+     [
+      "Scusi —",
+      "Excuse me -"
+     ],
+     [
+      "avete qualcosa senza glutine?",
+      "do you have anything gluten-free?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S006:s1": {
+   "key": "Abbiamo anche delle insalate.|We also have some salads.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S006:s1",
+    "chunks": [
+     [
+      "Abbiamo",
+      "We have"
+     ],
+     [
+      "anche delle insalate.",
+      "also some salads."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S009:s1": {
+   "key": "Con un contorno di verdure.|With a side of greens.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S009:s1",
+    "whole": "Short fragment; 'Con' / 'With' alone would be a stranded preposition and the remainder is too small."
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S010:s1": {
+   "key": "Con una piccola insalata verde per cominciare.|With a small green salad to start.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S010:s1",
+    "chunks": [
+     [
+      "Con una piccola insalata verde",
+      "With a small green salad"
+     ],
+     [
+      "per cominciare.",
+      "to start."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S013": {
+   "key": "Una bottiglia del vino rosso della casa sarebbe perfetta.|A bottle of the house red would be lovely.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S013",
+    "whole": "word order differs ('house red' vs 'vino rosso della casa') and the only split leaves a subjectless predicate"
+   }
+  },
+  "ita_for_eng:pod-1:SC10-S004": {
+   "key": "Credo di sì, ma deve controllare per essere sicura.|I think so, but you'll have to look to make sure.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC10-S004",
+    "chunks": [
+     [
+      "Credo di sì,",
+      "I think so,"
+     ],
+     [
+      "ma deve controllare",
+      "but you'll have to look"
+     ],
+     [
+      "per essere sicura.",
+      "to make sure."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC11-S005": {
+   "key": "La camera ha una vista?|Does the room have a view?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC11-S005",
+    "chunks": [
+     [
+      "La camera ha",
+      "Does the room have"
+     ],
+     [
+      "una vista?",
+      "a view?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC11-S007": {
+   "key": "A che ora viene servita la colazione?|What time is breakfast served?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC11-S007",
+    "whole": "'A che ora' / 'What time' leaves 'viene servita la colazione' / 'is breakfast served' with English order differing (breakfast inside 'is ... served'), so the second chunk would break the English stretch."
+   }
+  },
+  "ita_for_eng:pod-1:SC12-S006": {
+   "key": "Una ogni quattro o sei ore, non più di otto al giorno.|One every four to six hours, no more than eight in a day.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC12-S006",
+    "chunks": [
+     [
+      "Una ogni quattro o sei ore,",
+      "One every four to six hours,"
+     ],
+     [
+      "non più di otto al giorno.",
+      "no more than eight in a day."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC12-S007": {
+   "key": "Va bene prenderle con il cibo?|Are they all right to take with food?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC12-S007",
+    "chunks": [
+     [
+      "Va bene prenderle",
+      "Are they all right to take"
+     ],
+     [
+      "con il cibo?",
+      "with food?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC12-S008": {
+   "key": "Sì, meglio con o dopo i pasti.|Yes, with or after food is best.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC12-S008",
+    "chunks": [
+     [
+      "Sì,",
+      "Yes,"
+     ],
+     [
+      "meglio con o dopo i pasti.",
+      "with or after food is best."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC13-S002:s1": {
+   "key": "Vada dritto lungo questa strada.|Go straight along this road.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC13-S002:s1",
+    "chunks": [
+     [
+      "Vada dritto",
+      "Go straight"
+     ],
+     [
+      "lungo questa strada.",
+      "along this road."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC13-S003": {
+   "key": "Passando davanti a quella chiesa?|Past that church?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC13-S003",
+    "chunks": [
+     [
+      "Passando",
+      "Past"
+     ],
+     [
+      "davanti a quella chiesa?",
+      "that church?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC13-S010:s1": {
+   "key": "È stato molto gentile.|You've been very helpful.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC13-S010:s1",
+    "whole": "short sentence with no clean split; any cut leaves an incomplete fragment"
+   }
+  },
+  "ita_for_eng:pod-1:SC14-S007": {
+   "key": "Ecco qui. Fanno dodici euro e cinquanta.|Here we are. That's twelve euros fifty.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC14-S007",
+    "chunks": [
+     [
+      "Ecco qui.",
+      "Here we are."
+     ],
+     [
+      "Fanno dodici euro e cinquanta.",
+      "That's twelve euros fifty."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S003": {
+   "key": "Quanto costa un taxi per andare in centro?|How much does it cost to get a taxi into town?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S003",
+    "chunks": [
+     [
+      "Quanto costa",
+      "How much does it cost"
+     ],
+     [
+      "un taxi per andare in centro?",
+      "to get a taxi into town?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S004": {
+   "key": "Quanto costa un autobus per andare in centro?|How much does it cost to get a bus into town?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S004",
+    "chunks": [
+     [
+      "Quanto costa",
+      "How much does it cost"
+     ],
+     [
+      "un autobus per andare in centro?",
+      "to get a bus into town?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S005": {
+   "key": "Dove possiamo prendere l'autobus?|Where can we get a bus?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S005",
+    "chunks": [
+     [
+      "Dove possiamo prendere",
+      "Where can we get"
+     ],
+     [
+      "l'autobus?",
+      "a bus?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S006": {
+   "key": "Dove possiamo prendere un taxi?|Where can we get a taxi?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S006",
+    "chunks": [
+     [
+      "Dove possiamo prendere",
+      "Where can we get"
+     ],
+     [
+      "un taxi?",
+      "a taxi?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S007": {
+   "key": "Quattro biglietti di sola andata per il centro, grazie.|Four single tickets to town, please.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S007",
+    "chunks": [
+     [
+      "Quattro biglietti di sola andata",
+      "Four single tickets"
+     ],
+     [
+      "per il centro,",
+      "to town,"
+     ],
+     [
+      "grazie.",
+      "please."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S008": {
+   "key": "Due biglietti di andata e ritorno per il centro, grazie.|Two return tickets to town, please.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S008",
+    "chunks": [
+     [
+      "Due biglietti di andata e ritorno",
+      "Two return tickets"
+     ],
+     [
+      "per il centro,",
+      "to town,"
+     ],
+     [
+      "grazie.",
+      "please."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S009": {
+   "key": "Preferisco provare a parlare la tua lingua, penso sia educato.|I prefer to try to speak your language, I think it's polite.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S009",
+    "chunks": [
+     [
+      "Preferisco provare a parlare la tua lingua,",
+      "I prefer to try to speak your language,"
+     ],
+     [
+      "penso sia educato.",
+      "I think it's polite."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC15-S010": {
+   "key": "Mi dispiace, non riesco a parlare molto velocemente.|I'm sorry I can't speak very quickly.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC15-S010",
+    "chunks": [
+     [
+      "Mi dispiace,",
+      "I'm sorry"
+     ],
+     [
+      "non riesco a parlare molto velocemente.",
+      "I can't speak very quickly."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC16-S001": {
+   "key": "Ma se riesci a parlare lentamente penso che ce la faremo.|But if you can speak slowly I think we'll be able to manage.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC16-S001",
+    "chunks": [
+     [
+      "Ma se riesci a parlare lentamente",
+      "But if you can speak slowly"
+     ],
+     [
+      "penso che ce la faremo.",
+      "I think we'll be able to manage."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC16-S002": {
+   "key": "Hai parlato un po' troppo velocemente, quindi non sono sicura di aver capito.|You spoke a little too quickly, so I'm not sure if I understood.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC16-S002",
+    "chunks": [
+     [
+      "Hai parlato un po' troppo velocemente,",
+      "You spoke a little too quickly,"
+     ],
+     [
+      "quindi non sono sicura di aver capito.",
+      "so I'm not sure if I understood."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC16-S005": {
+   "key": "Possiamo vedere anche il menù dei dolci?|Can we see the dessert menu also?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC16-S005",
+    "chunks": [
+     [
+      "Possiamo vedere",
+      "Can we see"
+     ],
+     [
+      "anche il menù dei dolci?",
+      "the dessert menu also?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC16-S006": {
+   "key": "Avete qualcosa da mangiare?|Do you have anything to eat?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC16-S006",
+    "whole": "'qualcosa da mangiare' / 'anything to eat' is one unit and the question is too short to split cleanly"
+   }
+  },
+  "ita_for_eng:pod-1:SC16-S008": {
+   "key": "Possiamo pagare con la carta?|Can we pay by card?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC16-S008",
+    "chunks": [
+     [
+      "Possiamo pagare",
+      "Can we pay"
+     ],
+     [
+      "con la carta?",
+      "by card?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC16-S009": {
+   "key": "No, accettiamo solo contanti.|No, we only take cash.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC16-S009",
+    "chunks": [
+     [
+      "No,",
+      "No,"
+     ],
+     [
+      "accettiamo solo contanti.",
+      "we only take cash."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC16-S010": {
+   "key": "Mi dispiace, non ho contanti.|I'm sorry, I don't have any cash.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC16-S010",
+    "chunks": [
+     [
+      "Mi dispiace,",
+      "I'm sorry,"
+     ],
+     [
+      "non ho contanti.",
+      "I don't have any cash."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S001": {
+   "key": "C'è un bancomat qui vicino?|Is there a cash machine near here?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S001",
+    "chunks": [
+     [
+      "C'è un bancomat",
+      "Is there a cash machine"
+     ],
+     [
+      "qui vicino?",
+      "near here?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S002": {
+   "key": "Vuole pagare in contanti, con la carta, o metterlo sul conto della camera?|Do you want to pay by cash or card or put it on the room?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S002",
+    "chunks": [
+     [
+      "Vuole pagare",
+      "Do you want to pay"
+     ],
+     [
+      "in contanti, con la carta,",
+      "by cash or card"
+     ],
+     [
+      "o metterlo sul conto della camera?",
+      "or put it on the room?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S003": {
+   "key": "Possiamo metterlo sul conto della camera, per favore?|Can we put it on the room, please?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S003",
+    "chunks": [
+     [
+      "Possiamo metterlo sul conto della camera,",
+      "Can we put it on the room,"
+     ],
+     [
+      "per favore?",
+      "please?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S004": {
+   "key": "Vuole pagare in contanti, con la carta, o sulla camera?|Would you like to pay by cash or card or on the room?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S004",
+    "chunks": [
+     [
+      "Vuole pagare",
+      "Would you like to pay"
+     ],
+     [
+      "in contanti, con la carta,",
+      "by cash or card"
+     ],
+     [
+      "o sulla camera?",
+      "or on the room?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S005": {
+   "key": "Voleva pagare in contanti o con la carta?|Did you want to pay by cash or card?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S005",
+    "chunks": [
+     [
+      "Voleva pagare",
+      "Did you want to pay"
+     ],
+     [
+      "in contanti o con la carta?",
+      "by cash or card?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S006": {
+   "key": "Pagheremo di nuovo con la carta, grazie.|We'll pay by card again, please.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S006",
+    "chunks": [
+     [
+      "Pagheremo di nuovo con la carta,",
+      "We'll pay by card again,"
+     ],
+     [
+      "grazie.",
+      "please."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S007": {
+   "key": "Fa caldo oggi, di nuovo.|It's hot today, again.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S007",
+    "chunks": [
+     [
+      "Fa caldo oggi,",
+      "It's hot today,"
+     ],
+     [
+      "di nuovo.",
+      "again."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC17-S009": {
+   "key": "No, oggi fa un po' freddo.|No, it's a little cold today.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC17-S009",
+    "chunks": [
+     [
+      "No,",
+      "No,"
+     ],
+     [
+      "oggi fa un po' freddo.",
+      "it's a little cold today."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC18-S002": {
+   "key": "Avete del succo d'arancia?|Do you have any orange juice?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC18-S002",
+    "chunks": [
+     [
+      "Avete",
+      "Do you have"
+     ],
+     [
+      "del succo d'arancia?",
+      "any orange juice?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC18-S003": {
+   "key": "Avete del succo di mela?|Do you have any apple juice?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC18-S003",
+    "chunks": [
+     [
+      "Avete",
+      "Do you have"
+     ],
+     [
+      "del succo di mela?",
+      "any apple juice?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC18-S006": {
+   "key": "Da dove parte l'autobus?|Where does the bus leave from?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC18-S006",
+    "whole": "'Da dove ... parte' wraps around 'l'autobus' and English 'Where ... from' is split around it, so no clean contiguous split"
+   }
+  },
+  "ita_for_eng:pod-1:SC18-S009": {
+   "key": "Mi dispiace, mio figlio ha perso il suo biglietto.|I'm sorry, my son lost his ticket.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC18-S009",
+    "chunks": [
+     [
+      "Mi dispiace,",
+      "I'm sorry,"
+     ],
+     [
+      "mio figlio",
+      "my son"
+     ],
+     [
+      "ha perso il suo biglietto.",
+      "lost his ticket."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC18-S010": {
+   "key": "Abbiamo pagato, ma mia figlia ha perso il suo biglietto.|We have paid, but my daughter has lost her ticket.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC18-S010",
+    "chunks": [
+     [
+      "Abbiamo pagato,",
+      "We have paid,"
+     ],
+     [
+      "ma mia figlia",
+      "but my daughter"
+     ],
+     [
+      "ha perso il suo biglietto.",
+      "has lost her ticket."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S001": {
+   "key": "Questo mi rende felice.|That makes me happy.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S001",
+    "chunks": [
+     [
+      "Questo",
+      "That"
+     ],
+     [
+      "mi rende felice.",
+      "makes me happy."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S002": {
+   "key": "Questo mi preoccupa un po'.|That makes me feel a little worried.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S002",
+    "chunks": [
+     [
+      "Questo mi preoccupa",
+      "That makes me feel"
+     ],
+     [
+      "un po'.",
+      "a little worried."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S003": {
+   "key": "Quando parli velocemente, mi sento come se non capissi niente.|When you talk quickly, I feel as though I don't understand anything.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S003",
+    "chunks": [
+     [
+      "Quando parli velocemente,",
+      "When you talk quickly,"
+     ],
+     [
+      "mi sento come se non capissi niente.",
+      "I feel as though I don't understand anything."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S004": {
+   "key": "Va bene se mi siedo qui?|Is it okay if I sit here?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S004",
+    "chunks": [
+     [
+      "Va bene",
+      "Is it okay"
+     ],
+     [
+      "se mi siedo qui?",
+      "if I sit here?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S005": {
+   "key": "Va bene se mettiamo questo qui?|Is it okay if we put this here?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S005",
+    "chunks": [
+     [
+      "Va bene",
+      "Is it okay"
+     ],
+     [
+      "se mettiamo questo qui?",
+      "if we put this here?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S008": {
+   "key": "Prometto che non farò tardi.|I promise I won't be late.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S008",
+    "chunks": [
+     [
+      "Prometto",
+      "I promise"
+     ],
+     [
+      "che non farò tardi.",
+      "I won't be late."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S009": {
+   "key": "Prometto che non faremo tardi.|I promise we won't be late.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S009",
+    "chunks": [
+     [
+      "Prometto",
+      "I promise"
+     ],
+     [
+      "che non faremo tardi.",
+      "we won't be late."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC19-S010": {
+   "key": "Vorrei due palline di gelato, grazie.|I'd like two scoops of ice-cream, please.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC19-S010",
+    "chunks": [
+     [
+      "Vorrei due palline di gelato,",
+      "I'd like two scoops of ice-cream,"
+     ],
+     [
+      "grazie.",
+      "please."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC20-S001": {
+   "key": "Posso avere una pallina al cioccolato e una alla fragola?|Can I have one scoop of chocolate and one of strawberry?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC20-S001",
+    "chunks": [
+     [
+      "Posso avere",
+      "Can I have"
+     ],
+     [
+      "una pallina al cioccolato",
+      "one scoop of chocolate"
+     ],
+     [
+      "e una alla fragola?",
+      "and one of strawberry?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC20-S002": {
+   "key": "E poi un altro cono con una pallina al limone e una al mirtillo.|And then another cone with one scoop of lemon and one of blueberry.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC20-S002",
+    "chunks": [
+     [
+      "E poi un altro cono",
+      "And then another cone"
+     ],
+     [
+      "con una pallina al limone",
+      "with one scoop of lemon"
+     ],
+     [
+      "e una al mirtillo.",
+      "and one of blueberry."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC20-S004": {
+   "key": "Grazie per tutto il tuo lavoro.|Thank you for all your work.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC20-S004",
+    "chunks": [
+     [
+      "Grazie",
+      "Thank you"
+     ],
+     [
+      "per tutto il tuo lavoro.",
+      "for all your work."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC20-S005": {
+   "key": "Ti auguro buona fortuna per tutto.|I wish you good luck with everything.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC20-S005",
+    "chunks": [
+     [
+      "Ti auguro",
+      "I wish you"
+     ],
+     [
+      "buona fortuna",
+      "good luck"
+     ],
+     [
+      "per tutto.",
+      "with everything."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC20-S007": {
+   "key": "Buona fortuna con quello!|Good luck with that!",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC20-S007",
+    "chunks": [
+     [
+      "Buona fortuna",
+      "Good luck"
+     ],
+     [
+      "con quello!",
+      "with that!"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC20-S008": {
+   "key": "È molto gentile da parte tua.|That's very kind of you.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC20-S008",
+    "whole": "'È molto gentile' and 'da parte tua' map to 'That's very kind' / 'of you' but a lone 'of you' is not a sensible standalone piece."
+   }
+  },
+  "ita_for_eng:pod-1:SC20-S010": {
+   "key": "Grazie per essere così gentile.|Thank you for being so friendly.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC20-S010",
+    "chunks": [
+     [
+      "Grazie",
+      "Thank you"
+     ],
+     [
+      "per essere così gentile.",
+      "for being so friendly."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC21-S001": {
+   "key": "Sembra che dobbiamo andare via presto.|It sounds as though we need to leave soon.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC21-S001",
+    "chunks": [
+     [
+      "Sembra che dobbiamo andare via",
+      "It sounds as though we need to leave"
+     ],
+     [
+      "presto.",
+      "soon."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC21-S002": {
+   "key": "Sembra che tu non voglia che lo facciamo.|It sounds as though you want us not to do that.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC21-S002",
+    "whole": "English 'want us not to do that' reorders the Italian 'non voglia che lo facciamo', so no clean contiguous split"
+   }
+  },
+  "ita_for_eng:pod-1:SC21-S004": {
+   "key": "Puoi dirmi dov'è il bagno?|Can you tell me where the toilet is?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC21-S004",
+    "chunks": [
+     [
+      "Puoi dirmi",
+      "Can you tell me"
+     ],
+     [
+      "dov'è il bagno?",
+      "where the toilet is?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC21-S012": {
+   "key": "Vuoi ordinare da bere prima?|Do you want to order some drinks first?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC21-S012",
+    "chunks": [
+     [
+      "Vuoi ordinare",
+      "Do you want to order"
+     ],
+     [
+      "da bere prima?",
+      "some drinks first?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC21-S013": {
+   "key": "Volevi qualcosa da bere prima?|Did you want something to drink first?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC21-S013",
+    "chunks": [
+     [
+      "Volevi qualcosa",
+      "Did you want something"
+     ],
+     [
+      "da bere prima?",
+      "to drink first?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S001:s0": {
+   "key": "Ti dispiacerebbe se provassi a parlare italiano con te?|Would you mind if I tried to practise speaking Italian with you?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S001:s0",
+    "chunks": [
+     [
+      "Ti dispiacerebbe",
+      "Would you mind"
+     ],
+     [
+      "se provassi a parlare italiano",
+      "if I tried to practise speaking Italian"
+     ],
+     [
+      "con te?",
+      "with you?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S001:s1": {
+   "key": "Non lo studio da molto tempo, e mi sento ancora un po' nervosa a parlare con altre persone.|I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S001:s1",
+    "chunks": [
+     [
+      "Non lo studio da molto tempo,",
+      "I haven't been learning for very long,"
+     ],
+     [
+      "e mi sento ancora un po' nervosa",
+      "and I still feel a little nervous"
+     ],
+     [
+      "a parlare con altre persone.",
+      "about speaking with other people."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S003:s0": {
+   "key": "Grazie, fa piacere saperlo.|Thank you, that's good to know.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S003:s0",
+    "chunks": [
+     [
+      "Grazie,",
+      "Thank you,"
+     ],
+     [
+      "fa piacere saperlo.",
+      "that's good to know."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S003:s1": {
+   "key": "Ho bisogno di imparare più parole, e ho bisogno di praticare l'ascolto.|I need to learn more words, and I need to practise listening.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S003:s1",
+    "chunks": [
+     [
+      "Ho bisogno di imparare più parole,",
+      "I need to learn more words,"
+     ],
+     [
+      "e ho bisogno di praticare l'ascolto.",
+      "and I need to practise listening."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S003:s2": {
+   "key": "Non capisco le persone molto bene quando non parlano lentamente.|I don't understand people very well when they don't speak slowly.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S003:s2",
+    "chunks": [
+     [
+      "Non capisco le persone molto bene",
+      "I don't understand people very well"
+     ],
+     [
+      "quando non parlano lentamente.",
+      "when they don't speak slowly."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S004": {
+   "key": "Parlo abbastanza lentamente per te adesso?|Am I speaking slowly enough for you now?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S004",
+    "chunks": [
+     [
+      "Parlo abbastanza lentamente",
+      "Am I speaking slowly enough"
+     ],
+     [
+      "per te adesso?",
+      "for you now?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S005:s1": {
+   "key": "È più facile parlare con una sola persona.|It's easier talking to just one person.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S005:s1",
+    "chunks": [
+     [
+      "È più facile parlare",
+      "It's easier talking"
+     ],
+     [
+      "con una sola persona.",
+      "to just one person."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S005:s2": {
+   "key": "È un po' difficile pensare a cosa dire, però.|It's a bit difficult thinking of something to say, though.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S005:s2",
+    "chunks": [
+     [
+      "È un po' difficile",
+      "It's a bit difficult"
+     ],
+     [
+      "pensare a cosa dire,",
+      "thinking of something to say,"
+     ],
+     [
+      "però.",
+      "though."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S005:s3": {
+   "key": "Non sono sicura di cosa dire, ma mi sembra di poter parlare abbastanza per iniziare ad avere conversazioni.|I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S005:s3",
+    "chunks": [
+     [
+      "Non sono sicura di cosa dire,",
+      "I'm not sure what to say,"
+     ],
+     [
+      "ma mi sembra di poter parlare abbastanza",
+      "but I feel as if I can speak enough"
+     ],
+     [
+      "per iniziare ad avere conversazioni.",
+      "to start having conversations."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S006": {
+   "key": "Penso che tu stia andando molto bene. Sono impressionato. Penso che tu sia pronta a iniziare a parlare italiano con chiunque parli italiano.|I think you're doing very well. I'm impressed. I think you're ready to start speaking Italian to anyone who speaks Italian.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S006",
+    "chunks": [
+     [
+      "Penso che tu stia andando molto bene.",
+      "I think you're doing very well."
+     ],
+     [
+      "Sono impressionato.",
+      "I'm impressed."
+     ],
+     [
+      "Penso che tu sia pronta a iniziare a parlare italiano con chiunque parli italiano.",
+      "I think you're ready to start speaking Italian to anyone who speaks Italian."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S007:s0": {
+   "key": "È solo un po' frustrante quando non riesco a pensare abbastanza velocemente per esprimermi bene.|It's just a little frustrating when I can't think quickly enough to express myself properly.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S007:s0",
+    "chunks": [
+     [
+      "È solo un po' frustrante",
+      "It's just a little frustrating"
+     ],
+     [
+      "quando non riesco a pensare abbastanza velocemente",
+      "when I can't think quickly enough"
+     ],
+     [
+      "per esprimermi bene.",
+      "to express myself properly."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S007:s1": {
+   "key": "Ma so che ho bisogno di continuare a praticare se voglio parlare con più sicurezza.|But I know that I need to keep practising if I want to speak more confidently.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S007:s1",
+    "chunks": [
+     [
+      "Ma so che ho bisogno di continuare a praticare",
+      "But I know that I need to keep practising"
+     ],
+     [
+      "se voglio parlare con più sicurezza.",
+      "if I want to speak more confidently."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S008": {
+   "key": "Dovresti già essere sicura. Penso che tu stia andando molto meglio di quanto pensi. Mi sento a mio agio a parlare con te, e non sto parlando molto lentamente.|You should be confident already. I think you're doing much better than you think. I feel comfortable speaking with you, and I'm not talking very slowly.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S008",
+    "chunks": [
+     [
+      "Dovresti già essere sicura.",
+      "You should be confident already."
+     ],
+     [
+      "Penso che tu stia andando molto meglio di quanto pensi.",
+      "I think you're doing much better than you think."
+     ],
+     [
+      "Mi sento a mio agio a parlare con te, e non sto parlando molto lentamente.",
+      "I feel comfortable speaking with you, and I'm not talking very slowly."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S010:s1": {
+   "key": "Imparare una nuova lingua è difficile.|Learning a new language is difficult.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S010:s1",
+    "chunks": [
+     [
+      "Imparare una nuova lingua",
+      "Learning a new language"
+     ],
+     [
+      "è difficile.",
+      "is difficult."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S010:s2": {
+   "key": "Ma è così divertente quando si inizia ad avere conversazioni, vero?|But it's so much fun when you start to have conversations, isn't it?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S010:s2",
+    "chunks": [
+     [
+      "Ma è così divertente",
+      "But it's so much fun"
+     ],
+     [
+      "quando si inizia ad avere conversazioni, vero?",
+      "when you start to have conversations, isn't it?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S011:s1": {
+   "key": "Sono davvero felice di riuscire ad avere tanta conversazione.|I'm really happy that I can have this much of a conversation.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S011:s1",
+    "chunks": [
+     [
+      "Sono davvero felice",
+      "I'm really happy"
+     ],
+     [
+      "di riuscire ad avere tanta conversazione.",
+      "that I can have this much of a conversation."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC22-S011:s2": {
+   "key": "E spero che potremo avere più conversazioni in futuro, mentre continuo a migliorare.|And I hope we'll be able to have more conversations in the future as I keep on getting better.",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC22-S011:s2",
+    "chunks": [
+     [
+      "E spero che potremo avere più conversazioni in futuro,",
+      "And I hope we'll be able to have more conversations in the future"
+     ],
+     [
+      "mentre continuo a migliorare.",
+      "as I keep on getting better."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC08-S006:s1": {
+   "key": "Voglio un bicchiere di vino.|I want a glass of wine.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC08-S006:s1",
+    "chunks": [
+     [
+      "Voglio",
+      "I want"
+     ],
+     [
+      "un bicchiere di vino.",
+      "a glass of wine."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S003": {
+   "key": "Desiderano acqua naturale o frizzante per cominciare?|Would you like still or sparkling water to start?",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S003",
+    "chunks": [
+     [
+      "Desiderano",
+      "Would you like"
+     ],
+     [
+      "acqua naturale o frizzante",
+      "still or sparkling water"
+     ],
+     [
+      "per cominciare?",
+      "to start?"
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC09-S006:s0": {
+   "key": "Sì, il salmone e il risotto sono entrambi senza glutine.|Yes, the salmon and the risotto are both gluten-free.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC09-S006:s0",
+    "chunks": [
+     [
+      "Sì,",
+      "Yes,"
+     ],
+     [
+      "il salmone e il risotto sono entrambi senza glutine.",
+      "the salmon and the risotto are both gluten-free."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC13-S004": {
+   "key": "Sì, passando davanti alla chiesa e all'ufficio postale.|Yes, past the church and the post office.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC13-S004",
+    "chunks": [
+     [
+      "Sì,",
+      "Yes,"
+     ],
+     [
+      "passando davanti alla chiesa e all'ufficio postale.",
+      "past the church and the post office."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC13-S007": {
+   "key": "Vedrà il supermercato sulla sinistra, proprio di fronte alla fermata dell'autobus.|You'll see the supermarket on your left, just opposite the bus stop.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC13-S007",
+    "chunks": [
+     [
+      "Vedrà il supermercato sulla sinistra,",
+      "You'll see the supermarket on your left,"
+     ],
+     [
+      "proprio di fronte alla fermata dell'autobus.",
+      "just opposite the bus stop."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC14-S002:s1": {
+   "key": "Potrebbe volerci un po' di tempo, c'è molto traffico in questo momento.|It may take some time, there's a lot of traffic at the moment.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC14-S002:s1",
+    "chunks": [
+     [
+      "Potrebbe volerci un po' di tempo,",
+      "It may take some time,"
+     ],
+     [
+      "c'è molto traffico in questo momento.",
+      "there's a lot of traffic at the moment."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC14-S006": {
+   "key": "Sì, la lascio proprio davanti alla biglietteria.|Yes, I'll drop you right by the ticket office.",
+   "retry": true,
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC14-S006",
+    "chunks": [
+     [
+      "Sì,",
+      "Yes,"
+     ],
+     [
+      "la lascio proprio davanti alla biglietteria.",
+      "I'll drop you right by the ticket office."
+     ]
+    ]
+   }
+  },
+  "ita_for_eng:pod-1:SC12-S001:s1": {
+   "key": "Non mi sento molto bene - potrebbe consigliarmi qualcosa?|I'm not feeling great - could you recommend something?",
+   "answer": {
+    "id": "ita_for_eng:pod-1:SC12-S001:s1",
+    "chunks": [
+     [
+      "Non mi sento molto bene",
+      "I'm not feeling great"
+     ],
+     [
+      "- potrebbe consigliarmi qualcosa?",
+      "- could you recommend something?"
+     ]
+    ]
+   }
+  }
+ },
+ "check": {
+  "ita_for_eng:pod-1:SC01-S004:s0": {
+   "pieces": [
+    [
+     "Sì,",
+     "Yes,"
+    ],
+    [
+     "oggi ho una giornata impegnativa.",
+     "I've got a busy day today."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC01-S004:s1": {
+   "pieces": [
+    [
+     "Spero che",
+     "I hope"
+    ],
+    [
+     "tu abbia una buona giornata.",
+     "you have a good day."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC02-S001": {
+   "pieces": [
+    [
+     "Scusi",
+     "Excuse me,"
+    ],
+    [
+     "è occupato questo posto",
+     "is this seat taken?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC02-S004": {
+   "pieces": [
+    [
+     "Puoi dirmi",
+     "Can you tell me"
+    ],
+    [
+     "quanto è lontano il centro?",
+     "how far it is into town?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC03-S002:s2": {
+   "pieces": [
+    [
+     "Con latte",
+     "With milk"
+    ],
+    [
+     "ma senza zucchero",
+     "but with no sugar."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC03-S005": {
+   "pieces": [
+    [
+     "Avete patatine,",
+     "Do you have crisps,"
+    ],
+    [
+     "o noccioline,",
+     "or nuts,"
+    ],
+    [
+     "o qualcosa del genere?",
+     "or something like that?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC03-S006": {
+   "pieces": [
+    [
+     "No,",
+     "No,"
+    ],
+    [
+     "abbiamo solo da bere.",
+     "we've only got drinks."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC04-S002:s2": {
+   "pieces": [
+    [
+     "Devo tornare a casa",
+     "I need to go home"
+    ],
+    [
+     "ora.",
+     "now."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC04-S003:s0": {
+   "pieces": [
+    [
+     "No",
+     "No,"
+    ],
+    [
+     "mi dispiace",
+     "I'm sorry,"
+    ],
+    [
+     "sono occupato domani",
+     "I'm busy tomorrow."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC05-S002:s1": {
+   "pieces": [
+    [
+     "Sono molto stanca",
+     "I'm very tired"
+    ],
+    [
+     "adesso.",
+     "now."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC06-S011:s0": {
+   "pieces": [
+    [
+     "Insegno l'inglese",
+     "I teach English,"
+    ],
+    [
+     "ma non in una scuola",
+     "but not in a school."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC07-S003": {
+   "pieces": [
+    [
+     "Lo vuole normale",
+     "Do you want regular"
+    ],
+    [
+     "o grande",
+     "or large?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC07-S004:s1": {
+   "pieces": [
+    [
+     "Con latte d'avena",
+     "With oat milk"
+    ],
+    [
+     "se ce l'avete",
+     "if you have it."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC07-S006": {
+   "pieces": [
+    [
+     "Vorrei da asporto,",
+     "I'd like takeaway,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "ok": false,
+   "why": "'grazie' means 'thank you', not 'please'; the English piece 'please' doesn't match the Italian piece"
+  },
+  "ita_for_eng:pod-1:SC07-S007": {
+   "pieces": [
+    [
+     "Potrei avere due caffè macchiati",
+     "Could I have two white coffees"
+    ],
+    [
+     "e due caffè americani",
+     "and two black coffees"
+    ],
+    [
+     "e uno di quelli",
+     "and one of those,"
+    ],
+    [
+     "per favore",
+     "please?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC07-S009": {
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "posso avere",
+     "can I have"
+    ],
+    [
+     "anche un bicchiere d'acqua",
+     "a glass of water as well,"
+    ],
+    [
+     "per favore",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC07-S010": {
+   "pieces": [
+    [
+     "Fanno otto euro e quaranta",
+     "That's eight euros forty"
+    ],
+    [
+     "in tutto.",
+     "altogether."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC07-S014:s1": {
+   "pieces": [
+    [
+     "Il tavolo vicino alla finestra",
+     "The table by the window"
+    ],
+    [
+     "è libero",
+     "is free."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S003": {
+   "pieces": [
+    [
+     "Abbiamo una chiara e una scura,",
+     "We've got a light one and a dark one,"
+    ],
+    [
+     "e sono entrambe locali.",
+     "and they're both local."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S004": {
+   "pieces": [
+    [
+     "Vorrei una media della chiara,",
+     "I'd like a medium of the light one,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S005": {
+   "pieces": [
+    [
+     "Posso avere",
+     "Can I have"
+    ],
+    [
+     "una birra piccola?",
+     "a small beer?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S006:s0": {
+   "pieces": [
+    [
+     "Potrei vedere",
+     "Could I see"
+    ],
+    [
+     "la lista dei vini",
+     "the wine list?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S006:s1": {
+   "pieces": [
+    [
+     "Voglio un bicchiere",
+     "I want a glass"
+    ],
+    [
+     "di vino",
+     "of wine."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S007": {
+   "pieces": [
+    [
+     "Abbiamo un rosso della casa",
+     "We have a house red,"
+    ],
+    [
+     "un bianco della casa",
+     "a house white,"
+    ],
+    [
+     "oppure potrebbe scegliere",
+     "or you could have"
+    ],
+    [
+     "una delle nostre bottiglie",
+     "one of our bottles."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S008": {
+   "pieces": [
+    [
+     "Vorrei un bicchiere grande",
+     "I'd like a large glass"
+    ],
+    [
+     "di vino bianco",
+     "of white wine,"
+    ],
+    [
+     "per favore",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S009": {
+   "pieces": [
+    [
+     "Posso avere",
+     "Can I have"
+    ],
+    [
+     "un bicchiere piccolo",
+     "a small glass"
+    ],
+    [
+     "di vino rosso",
+     "of red wine?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S010": {
+   "pieces": [
+    [
+     "Vorrei altri due bicchieri",
+     "I'd like two more glasses"
+    ],
+    [
+     "di birra",
+     "of beer."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S014:s0": {
+   "pieces": [
+    [
+     "Possiamo avere",
+     "Can we have"
+    ],
+    [
+     "del pane?",
+     "some bread?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S014:s1": {
+   "pieces": [
+    [
+     "E una ciotola di patatine fritte",
+     "And a bowl of chips"
+    ],
+    [
+     "per il tavolo",
+     "for the table."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC08-S015:s1": {
+   "pieces": [
+    [
+     "Vorrei un tramezzino al formaggio,",
+     "I'd like a cheese sandwich,"
+    ],
+    [
+     "per favore.",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S003": {
+   "pieces": [
+    [
+     "Desiderano",
+     "Would you like"
+    ],
+    [
+     "acqua naturale o frizzante",
+     "still or sparkling water"
+    ],
+    [
+     "per cominciare?",
+     "to start?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S004": {
+   "pieces": [
+    [
+     "Vorremmo una bottiglia di acqua frizzante",
+     "We'd like one bottle of sparkling water"
+    ],
+    [
+     "e una bottiglia di acqua naturale,",
+     "and one bottle of still water,"
+    ],
+    [
+     "per favore.",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S005:s0": {
+   "pieces": [
+    [
+     "Scusi —",
+     "Excuse me -"
+    ],
+    [
+     "avete qualcosa senza glutine?",
+     "do you have anything gluten-free?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S006:s0": {
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "il salmone e il risotto",
+     "the salmon and the risotto"
+    ],
+    [
+     "sono entrambi senza glutine",
+     "are both gluten-free."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S007": {
+   "pieces": [
+    [
+     "E cosa ci consiglia",
+     "And what would you recommend"
+    ],
+    [
+     "stasera",
+     "tonight?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S010:s1": {
+   "pieces": [
+    [
+     "Con una piccola insalata verde",
+     "With a small green salad"
+    ],
+    [
+     "per cominciare.",
+     "to start."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S012": {
+   "pieces": [
+    [
+     "Potremmo vedere",
+     "Could we see"
+    ],
+    [
+     "la carta dei vini",
+     "the wine list?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S013": {
+   "pieces": [
+    [
+     "Una bottiglia del vino rosso della casa",
+     "A bottle of the house red"
+    ],
+    [
+     "sarebbe perfetta.",
+     "would be lovely."
+    ]
+   ],
+   "ok": false,
+   "why": "'would be lovely' / 'sarebbe perfetta' has no subject of its own; its meaning lives in the first piece"
+  },
+  "ita_for_eng:pod-1:SC09-S015:s1": {
+   "pieces": [
+    [
+     "Hanno ancora posto",
+     "Do you have any room"
+    ],
+    [
+     "per il dolce",
+     "for dessert?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC09-S017:s0": {
+   "pieces": [
+    [
+     "E il conto",
+     "And the bill,"
+    ],
+    [
+     "quando è pronto",
+     "when you're ready."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC10-S004": {
+   "pieces": [
+    [
+     "Credo di sì,",
+     "I think so,"
+    ],
+    [
+     "ma deve controllare",
+     "but you'll have to look"
+    ],
+    [
+     "per essere sicura.",
+     "to make sure."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC10-S005": {
+   "pieces": [
+    [
+     "Ho bisogno anche di prendere",
+     "I also need to get"
+    ],
+    [
+     "della crema solare",
+     "some sunscreen"
+    ],
+    [
+     "e del dentifricio",
+     "and some toothpaste."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC10-S006": {
+   "pieces": [
+    [
+     "La crema solare è laggiù",
+     "Sunscreen is down there"
+    ],
+    [
+     "sulla sua destra",
+     "on your right,"
+    ],
+    [
+     "e il dentifricio lo trova",
+     "and you'll find toothpaste"
+    ],
+    [
+     "appena dietro l'angolo",
+     "just round the corner."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC10-S007:s0": {
+   "pieces": [
+    [
+     "Grazie",
+     "Thank you,"
+    ],
+    [
+     "è stato molto gentile",
+     "you've been very helpful."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC10-S009:s1": {
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "sono in vacanza",
+     "I'm on holiday,"
+    ],
+    [
+     "e ho bisogno di praticare di più",
+     "and I need to practice more"
+    ],
+    [
+     "per parlare italiano meglio",
+     "to speak Italian better."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC11-S002:s2": {
+   "pieces": [
+    [
+     "Posso vedere un documento d'identità",
+     "Could I see some ID,"
+    ],
+    [
+     "per favore",
+     "please?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC11-S008:s0": {
+   "pieces": [
+    [
+     "Dalle sette e mezza",
+     "From half-past seven"
+    ],
+    [
+     "alle dieci",
+     "until ten o'clock."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC11-S008:s1": {
+   "pieces": [
+    [
+     "Abbiamo frutta e cereali",
+     "We have fruit and cereals"
+    ],
+    [
+     "oppure una colazione calda",
+     "or a cooked breakfast."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC11-S010": {
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "può restare",
+     "you can stay"
+    ],
+    [
+     "fino a mezzogiorno",
+     "until midday,"
+    ],
+    [
+     "senza costi aggiuntivi",
+     "no extra charge."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC11-S012:s0": {
+   "pieces": [
+    [
+     "È sulla card di benvenuto",
+     "It's on the welcome card"
+    ],
+    [
+     "nella sua stanza",
+     "in your room."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC12-S003": {
+   "pieces": [
+    [
+     "Ho mal di testa",
+     "I've had a headache"
+    ],
+    [
+     "e mal di gola",
+     "and a sore throat"
+    ],
+    [
+     "da ieri",
+     "since yesterday."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC12-S004": {
+   "pieces": [
+    [
+     "Provi il paracetamolo",
+     "Try paracetamol"
+    ],
+    [
+     "per il mal di testa",
+     "for the headache,"
+    ],
+    [
+     "e queste pastiglie",
+     "and these lozenges"
+    ],
+    [
+     "per la gola",
+     "for the throat."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC12-S005": {
+   "pieces": [
+    [
+     "Ogni quanto",
+     "How often"
+    ],
+    [
+     "devo prendere",
+     "should I take"
+    ],
+    [
+     "il paracetamolo",
+     "the paracetamol?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC12-S006": {
+   "pieces": [
+    [
+     "Una ogni quattro o sei ore,",
+     "One every four to six hours,"
+    ],
+    [
+     "non più di otto al giorno.",
+     "no more than eight in a day."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S001": {
+   "pieces": [
+    [
+     "Scusi",
+     "Excuse me,"
+    ],
+    [
+     "sa come si arriva",
+     "do you know how to get"
+    ],
+    [
+     "al supermercato più vicino",
+     "to the nearest supermarket?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S002:s0": {
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "è a circa dieci minuti a piedi",
+     "it's about a ten minute walk."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S002:s1": {
+   "pieces": [
+    [
+     "Vada dritto",
+     "Go straight"
+    ],
+    [
+     "lungo questa strada.",
+     "along this road."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S004": {
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "passando davanti alla chiesa",
+     "past the church"
+    ],
+    [
+     "e all'ufficio postale",
+     "and the post office."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S007": {
+   "pieces": [
+    [
+     "Vedrà il supermercato sulla sinistra,",
+     "You'll see the supermarket on your left,"
+    ],
+    [
+     "proprio di fronte alla fermata dell'autobus.",
+     "just opposite the bus stop."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S009": {
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "ce n'è uno",
+     "there's one"
+    ],
+    [
+     "sul corso principale",
+     "on the high street,"
+    ],
+    [
+     "accanto alla panetteria",
+     "next to the bakery."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S010:s1": {
+   "pieces": [
+    [
+     "È stato",
+     "You've been"
+    ],
+    [
+     "molto gentile.",
+     "very helpful."
+    ]
+   ],
+   "ok": false,
+   "why": "'È stato' / 'You've been' is an incomplete fragment; the predicate is in the next piece."
+  },
+  "ita_for_eng:pod-1:SC14-S002:s1": {
+   "pieces": [
+    [
+     "Potrebbe volerci",
+     "It may take"
+    ],
+    [
+     "un po' di tempo",
+     "some time,"
+    ],
+    [
+     "c'è molto traffico",
+     "there's a lot of traffic"
+    ],
+    [
+     "in questo momento",
+     "at the moment."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC14-S003": {
+   "pieces": [
+    [
+     "Più o meno quanto tempo",
+     "About how long"
+    ],
+    [
+     "pensa che ci vorrà",
+     "do you think it will take?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC14-S004": {
+   "pieces": [
+    [
+     "Forse una ventina di minuti",
+     "Perhaps about twenty minutes,"
+    ],
+    [
+     "se non siamo sfortunati",
+     "if we're not unlucky"
+    ],
+    [
+     "con i semafori",
+     "with the traffic lights."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC14-S005": {
+   "pieces": [
+    [
+     "Sa",
+     "Do you know"
+    ],
+    [
+     "dove posso prendere",
+     "where I can get"
+    ],
+    [
+     "un biglietto",
+     "a ticket"
+    ],
+    [
+     "in stazione",
+     "in the station?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC14-S006": {
+   "pieces": [
+    [
+     "Sì,",
+     "Yes,"
+    ],
+    [
+     "la lascio proprio davanti alla biglietteria.",
+     "I'll drop you right by the ticket office."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC14-S008": {
+   "pieces": [
+    [
+     "Posso pagare",
+     "Could I pay"
+    ],
+    [
+     "con la carta",
+     "by card?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S003": {
+   "pieces": [
+    [
+     "Quanto costa",
+     "How much does it cost"
+    ],
+    [
+     "un taxi per andare in centro?",
+     "to get a taxi into town?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S004": {
+   "pieces": [
+    [
+     "Quanto costa",
+     "How much does it cost"
+    ],
+    [
+     "un autobus per andare in centro?",
+     "to get a bus into town?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S005": {
+   "pieces": [
+    [
+     "Dove possiamo prendere",
+     "Where can we get"
+    ],
+    [
+     "l'autobus?",
+     "a bus?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S006": {
+   "pieces": [
+    [
+     "Dove possiamo prendere",
+     "Where can we get"
+    ],
+    [
+     "un taxi?",
+     "a taxi?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S007": {
+   "pieces": [
+    [
+     "Quattro biglietti di sola andata",
+     "Four single tickets"
+    ],
+    [
+     "per il centro,",
+     "to town,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S008": {
+   "pieces": [
+    [
+     "Due biglietti di andata e ritorno",
+     "Two return tickets"
+    ],
+    [
+     "per il centro,",
+     "to town,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S009": {
+   "pieces": [
+    [
+     "Preferisco provare a parlare la tua lingua,",
+     "I prefer to try to speak your language,"
+    ],
+    [
+     "penso sia educato.",
+     "I think it's polite."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC15-S010": {
+   "pieces": [
+    [
+     "Mi dispiace,",
+     "I'm sorry"
+    ],
+    [
+     "non riesco a parlare molto velocemente.",
+     "I can't speak very quickly."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC16-S001": {
+   "pieces": [
+    [
+     "Ma se riesci a parlare lentamente",
+     "But if you can speak slowly"
+    ],
+    [
+     "penso che ce la faremo.",
+     "I think we'll be able to manage."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC16-S002": {
+   "pieces": [
+    [
+     "Hai parlato un po' troppo velocemente,",
+     "You spoke a little too quickly,"
+    ],
+    [
+     "quindi non sono sicura di aver capito.",
+     "so I'm not sure if I understood."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC16-S006": {
+   "pieces": [
+    [
+     "Avete qualcosa",
+     "Do you have anything"
+    ],
+    [
+     "da mangiare?",
+     "to eat?"
+    ]
+   ],
+   "ok": false,
+   "why": "Splits 'anything to eat' / 'qualcosa da mangiare'; 'to eat?' and 'da mangiare?' only make sense with the other piece."
+  },
+  "ita_for_eng:pod-1:SC16-S008": {
+   "pieces": [
+    [
+     "Possiamo pagare",
+     "Can we pay"
+    ],
+    [
+     "con la carta?",
+     "by card?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC16-S009": {
+   "pieces": [
+    [
+     "No,",
+     "No,"
+    ],
+    [
+     "accettiamo solo contanti.",
+     "we only take cash."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC16-S010": {
+   "pieces": [
+    [
+     "Mi dispiace,",
+     "I'm sorry,"
+    ],
+    [
+     "non ho contanti.",
+     "I don't have any cash."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC17-S001": {
+   "pieces": [
+    [
+     "C'è un bancomat",
+     "Is there a cash machine"
+    ],
+    [
+     "qui vicino?",
+     "near here?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC17-S003": {
+   "pieces": [
+    [
+     "Possiamo metterlo sul conto della camera,",
+     "Can we put it on the room,"
+    ],
+    [
+     "per favore?",
+     "please?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC17-S006": {
+   "pieces": [
+    [
+     "Pagheremo di nuovo con la carta,",
+     "We'll pay by card again,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "ok": false,
+   "why": "'grazie' means 'thank you', but its English piece is 'please', so the pair does not match as a standalone unit"
+  },
+  "ita_for_eng:pod-1:SC17-S009": {
+   "pieces": [
+    [
+     "No,",
+     "No,"
+    ],
+    [
+     "oggi fa un po' freddo.",
+     "it's a little cold today."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC18-S002": {
+   "pieces": [
+    [
+     "Avete",
+     "Do you have"
+    ],
+    [
+     "del succo d'arancia?",
+     "any orange juice?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC18-S003": {
+   "pieces": [
+    [
+     "Avete",
+     "Do you have"
+    ],
+    [
+     "del succo di mela?",
+     "any apple juice?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC18-S006": {
+   "pieces": [
+    [
+     "Da dove",
+     "Where"
+    ],
+    [
+     "parte l'autobus?",
+     "does the bus leave from?"
+    ]
+   ],
+   "ok": false,
+   "why": "'Da dove' means 'Where from', but the English piece is only 'Where' and the stranded 'from' sits in the next piece, so neither English piece matches its Italian."
+  },
+  "ita_for_eng:pod-1:SC18-S009": {
+   "pieces": [
+    [
+     "Mi dispiace,",
+     "I'm sorry,"
+    ],
+    [
+     "mio figlio",
+     "my son"
+    ],
+    [
+     "ha perso il suo biglietto.",
+     "lost his ticket."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC18-S010": {
+   "pieces": [
+    [
+     "Abbiamo pagato,",
+     "We have paid,"
+    ],
+    [
+     "ma mia figlia",
+     "but my daughter"
+    ],
+    [
+     "ha perso il suo biglietto.",
+     "has lost her ticket."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S001": {
+   "pieces": [
+    [
+     "Questo",
+     "That"
+    ],
+    [
+     "mi rende felice.",
+     "makes me happy."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S003": {
+   "pieces": [
+    [
+     "Quando parli velocemente,",
+     "When you talk quickly,"
+    ],
+    [
+     "mi sento come se non capissi niente.",
+     "I feel as though I don't understand anything."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S004": {
+   "pieces": [
+    [
+     "Va bene",
+     "Is it okay"
+    ],
+    [
+     "se mi siedo qui?",
+     "if I sit here?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S005": {
+   "pieces": [
+    [
+     "Va bene",
+     "Is it okay"
+    ],
+    [
+     "se mettiamo questo qui?",
+     "if we put this here?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S008": {
+   "pieces": [
+    [
+     "Prometto",
+     "I promise"
+    ],
+    [
+     "che non farò tardi.",
+     "I won't be late."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S009": {
+   "pieces": [
+    [
+     "Prometto",
+     "I promise"
+    ],
+    [
+     "che non faremo tardi.",
+     "we won't be late."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S010": {
+   "pieces": [
+    [
+     "Vorrei due palline di gelato,",
+     "I'd like two scoops of ice-cream,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC20-S001": {
+   "pieces": [
+    [
+     "Posso avere",
+     "Can I have"
+    ],
+    [
+     "una pallina al cioccolato",
+     "one scoop of chocolate"
+    ],
+    [
+     "e una alla fragola?",
+     "and one of strawberry?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC20-S002": {
+   "pieces": [
+    [
+     "E poi un altro cono",
+     "And then another cone"
+    ],
+    [
+     "con una pallina al limone",
+     "with one scoop of lemon"
+    ],
+    [
+     "e una al mirtillo.",
+     "and one of blueberry."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC20-S004": {
+   "pieces": [
+    [
+     "Grazie",
+     "Thank you"
+    ],
+    [
+     "per tutto il tuo lavoro.",
+     "for all your work."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC20-S005": {
+   "pieces": [
+    [
+     "Ti auguro",
+     "I wish you"
+    ],
+    [
+     "buona fortuna",
+     "good luck"
+    ],
+    [
+     "per tutto.",
+     "with everything."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC20-S007": {
+   "pieces": [
+    [
+     "Buona fortuna",
+     "Good luck"
+    ],
+    [
+     "con quello!",
+     "with that!"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC20-S010": {
+   "pieces": [
+    [
+     "Grazie",
+     "Thank you"
+    ],
+    [
+     "per essere così gentile.",
+     "for being so friendly."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC21-S001": {
+   "pieces": [
+    [
+     "Sembra che dobbiamo andare via",
+     "It sounds as though we need to leave"
+    ],
+    [
+     "presto.",
+     "soon."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC21-S002": {
+   "pieces": [
+    [
+     "Sembra che",
+     "It sounds as though"
+    ],
+    [
+     "tu non voglia",
+     "you want"
+    ],
+    [
+     "che lo facciamo.",
+     "us not to do that."
+    ]
+   ],
+   "ok": false,
+   "why": "'non' sits in the Italian 'tu non voglia' but the English 'you want' lacks it; the 'not' ends up in 'us not to do that', so the meanings don't line up."
+  },
+  "ita_for_eng:pod-1:SC21-S004": {
+   "pieces": [
+    [
+     "Puoi dirmi",
+     "Can you tell me"
+    ],
+    [
+     "dov'è il bagno?",
+     "where the toilet is?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC21-S012": {
+   "pieces": [
+    [
+     "Vuoi ordinare",
+     "Do you want to order"
+    ],
+    [
+     "da bere prima?",
+     "some drinks first?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC21-S013": {
+   "pieces": [
+    [
+     "Volevi qualcosa",
+     "Did you want something"
+    ],
+    [
+     "da bere prima?",
+     "to drink first?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S001:s0": {
+   "pieces": [
+    [
+     "Ti dispiacerebbe",
+     "Would you mind"
+    ],
+    [
+     "se provassi a parlare italiano",
+     "if I tried to practise speaking Italian"
+    ],
+    [
+     "con te?",
+     "with you?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S001:s1": {
+   "pieces": [
+    [
+     "Non lo studio da molto tempo,",
+     "I haven't been learning for very long,"
+    ],
+    [
+     "e mi sento ancora un po' nervosa",
+     "and I still feel a little nervous"
+    ],
+    [
+     "a parlare con altre persone.",
+     "about speaking with other people."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S003:s0": {
+   "pieces": [
+    [
+     "Grazie,",
+     "Thank you,"
+    ],
+    [
+     "fa piacere saperlo.",
+     "that's good to know."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S003:s1": {
+   "pieces": [
+    [
+     "Ho bisogno di imparare più parole,",
+     "I need to learn more words,"
+    ],
+    [
+     "e ho bisogno di praticare l'ascolto.",
+     "and I need to practise listening."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S003:s2": {
+   "pieces": [
+    [
+     "Non capisco le persone molto bene",
+     "I don't understand people very well"
+    ],
+    [
+     "quando non parlano lentamente.",
+     "when they don't speak slowly."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S004": {
+   "pieces": [
+    [
+     "Parlo abbastanza lentamente",
+     "Am I speaking slowly enough"
+    ],
+    [
+     "per te adesso?",
+     "for you now?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S005:s1": {
+   "pieces": [
+    [
+     "È più facile parlare",
+     "It's easier talking"
+    ],
+    [
+     "con una sola persona.",
+     "to just one person."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S005:s2": {
+   "pieces": [
+    [
+     "È un po' difficile",
+     "It's a bit difficult"
+    ],
+    [
+     "pensare a cosa dire,",
+     "thinking of something to say,"
+    ],
+    [
+     "però.",
+     "though."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S005:s3": {
+   "pieces": [
+    [
+     "Non sono sicura di cosa dire,",
+     "I'm not sure what to say,"
+    ],
+    [
+     "ma mi sembra di poter parlare abbastanza",
+     "but I feel as if I can speak enough"
+    ],
+    [
+     "per iniziare ad avere conversazioni.",
+     "to start having conversations."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S007:s0": {
+   "pieces": [
+    [
+     "È solo un po' frustrante",
+     "It's just a little frustrating"
+    ],
+    [
+     "quando non riesco a pensare abbastanza velocemente",
+     "when I can't think quickly enough"
+    ],
+    [
+     "per esprimermi bene.",
+     "to express myself properly."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S007:s1": {
+   "pieces": [
+    [
+     "Ma so che ho bisogno di continuare a praticare",
+     "But I know that I need to keep practising"
+    ],
+    [
+     "se voglio parlare con più sicurezza.",
+     "if I want to speak more confidently."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S010:s1": {
+   "pieces": [
+    [
+     "Imparare una nuova lingua",
+     "Learning a new language"
+    ],
+    [
+     "è difficile.",
+     "is difficult."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S010:s2": {
+   "pieces": [
+    [
+     "Ma è così divertente",
+     "But it's so much fun"
+    ],
+    [
+     "quando si inizia ad avere conversazioni, vero?",
+     "when you start to have conversations, isn't it?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S011:s1": {
+   "pieces": [
+    [
+     "Sono davvero felice",
+     "I'm really happy"
+    ],
+    [
+     "di riuscire ad avere tanta conversazione.",
+     "that I can have this much of a conversation."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC22-S011:s2": {
+   "pieces": [
+    [
+     "E spero che potremo avere più conversazioni in futuro,",
+     "And I hope we'll be able to have more conversations in the future"
+    ],
+    [
+     "mentre continuo a migliorare.",
+     "as I keep on getting better."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC02-S003": {
+   "pieces": [
+    [
+     "Quanto è lontano",
+     "How far is it"
+    ],
+    [
+     "il centro?",
+     "into town?"
+    ]
+   ],
+   "ok": false,
+   "why": "'into town' carries a preposition with no Italian counterpart in 'il centro?' and only makes sense with 'How far is it'"
+  },
+  "ita_for_eng:pod-1:SC05-S001:s1": {
+   "pieces": [
+    [
+     "Hai avuto",
+     "Did you have"
+    ],
+    [
+     "una giornata lunga?",
+     "a long day?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC07-S011:s0": {
+   "pieces": [
+    [
+     "Posso pagare",
+     "Could I pay"
+    ],
+    [
+     "con la carta?",
+     "by card?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC11-S005": {
+   "pieces": [
+    [
+     "La camera ha",
+     "Does the room have"
+    ],
+    [
+     "una vista?",
+     "a view?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC12-S007": {
+   "pieces": [
+    [
+     "Va bene prenderle",
+     "Are they all right to take"
+    ],
+    [
+     "con il cibo?",
+     "with food?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC12-S008": {
+   "pieces": [
+    [
+     "Sì,",
+     "Yes,"
+    ],
+    [
+     "meglio con o dopo i pasti.",
+     "with or after food is best."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC13-S003": {
+   "pieces": [
+    [
+     "Passando",
+     "Past"
+    ],
+    [
+     "davanti a quella chiesa?",
+     "that church?"
+    ]
+   ],
+   "ok": false,
+   "why": "\"Passando\" / \"Past\" is a bare fragment, and \"that church?\" doesn't carry \"davanti a\" (in front of)."
+  },
+  "ita_for_eng:pod-1:SC16-S005": {
+   "pieces": [
+    [
+     "Possiamo vedere",
+     "Can we see"
+    ],
+    [
+     "anche il menù dei dolci?",
+     "the dessert menu also?"
+    ]
+   ],
+   "ok": false,
+   "why": "\"Possiamo vedere\" / \"Can we see\" is left without its object, and \"also\" is stranded after \"the dessert menu\" in the second English piece."
+  },
+  "ita_for_eng:pod-1:SC17-S002": {
+   "pieces": [
+    [
+     "Vuole pagare",
+     "Do you want to pay"
+    ],
+    [
+     "in contanti, con la carta,",
+     "by cash or card"
+    ],
+    [
+     "o metterlo sul conto della camera?",
+     "or put it on the room?"
+    ]
+   ],
+   "ok": false,
+   "why": "\"sul conto della camera\" is rendered \"on the room\", so \"bill\" is missing. \"or\" sits in the English of piece 2 but in the Italian of piece 3, and \"Vuole pagare\" / \"Do you want to pay\" has no object."
+  },
+  "ita_for_eng:pod-1:SC17-S004": {
+   "pieces": [
+    [
+     "Vuole pagare",
+     "Would you like to pay"
+    ],
+    [
+     "in contanti, con la carta,",
+     "by cash or card"
+    ],
+    [
+     "o sulla camera?",
+     "or on the room?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC17-S005": {
+   "pieces": [
+    [
+     "Voleva pagare",
+     "Did you want to pay"
+    ],
+    [
+     "in contanti o con la carta?",
+     "by cash or card?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC17-S007": {
+   "pieces": [
+    [
+     "Fa caldo oggi,",
+     "It's hot today,"
+    ],
+    [
+     "di nuovo.",
+     "again."
+    ]
+   ],
+   "ok": true,
+   "why": null
+  },
+  "ita_for_eng:pod-1:SC19-S002": {
+   "pieces": [
+    [
+     "Questo mi preoccupa",
+     "That makes me feel"
+    ],
+    [
+     "un po'.",
+     "a little worried."
+    ]
+   ],
+   "ok": false,
+   "why": "'That makes me feel' is incomplete without 'worried', which sits in the other English piece, while 'un po'' has no meaning of its own beyond 'a little'."
+  },
+  "ita_for_eng:pod-1:SC12-S001:s1": {
+   "pieces": [
+    [
+     "Non mi sento molto bene",
+     "I'm not feeling great"
+    ],
+    [
+     "- potrebbe consigliarmi qualcosa?",
+     "- could you recommend something?"
+    ]
+   ],
+   "ok": true,
+   "why": null
+  }
+ }
+}

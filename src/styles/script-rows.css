@@ -1,10 +1,8 @@
 /*
  * SHARED POD-LINE ROW TREATMENT
  *
- * Used by ScriptLabScriptView.vue (/canonical/scripts/:slug) and
- * CanonicalPodView.vue (/production/:courseCode/canonical/:slug) — the two
- * screens that edit canonical pod English. One stylesheet rather than two
- * copies, because they are the same table and must stay the same table.
+ * Used by ScriptLabScriptView.vue (/canonical/scripts/:slug), the one screen
+ * that edits canonical pod English since job #628 folded CanonicalPodView into it.
  */
 /* ── The row/table treatment, lifted from src/views/production/SeedEditor.vue ──
    Named column heads, 0.6rem/1rem cell padding, a per-row bottom border,

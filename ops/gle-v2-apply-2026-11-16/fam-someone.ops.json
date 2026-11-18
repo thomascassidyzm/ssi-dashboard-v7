@@ -1,0 +1,710 @@
+{
+"family": "someone",
+"seeds": [
+128,
+234,
+235,
+236,
+341
+],
+"ops": [
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 128,
+"lego_index": 4,
+"known_text": "you're like someone",
+"target_text": "tá tú cosúil le duine",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "you're like",
+"target": "tá tú cosúil le"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0128L01B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 128,
+"lego_index": 1,
+"position": 111,
+"known_text": "you're like someone",
+"target_text": "tá tú cosúil le duine",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0128L02B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 21,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0128L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 128,
+"lego_index": 4,
+"position": 101,
+"known_text": "you're like someone who speaks Irish very well",
+"target_text": "tá tú cosúil le duine a bhfuil Gaeilge an-mhaith aige",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0128L02U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 53,
+"lego_count": 10
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0128L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "duine"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 234,
+"set": {
+"target_text": "bhuail mé le duine éigin aréir a oibríonn le do dheartháir"
+},
+"expect": {
+"known_text": "I met someone last night who works with your brother",
+"target_text": "bhuail mé le duine aréir a oibríonn le do dheartháir"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0234L01",
+"set": {
+"target_text": "duine éigin",
+"is_new": true
+},
+"expect": {
+"known_text": "someone",
+"target_text": "duine",
+"is_new": false
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0234L05B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 234,
+"lego_index": 5,
+"position": 112,
+"known_text": "I met someone",
+"target_text": "bhuail mé le duine",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0234L01B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 18,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0234L04U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 234,
+"lego_index": 4,
+"position": 112,
+"known_text": "I met someone last night who works with your brother",
+"target_text": "bhuail mé le duine aréir a oibríonn le do dheartháir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0234L01U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 52,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0234L03U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 234,
+"lego_index": 3,
+"position": 110,
+"known_text": "someone who works here told me you are very good at learning Irish",
+"target_text": "dúirt duine a oibríonn anseo liom go bhfuil tú an-mhaith ag foghlaim Gaeilge",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0234L01U11"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 76,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0234L03B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 234,
+"lego_index": 3,
+"position": 111,
+"known_text": "who works for the council",
+"target_text": "cé a oibríonn don chomhairle",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0263L02B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 28,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0234L03U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 234,
+"lego_index": 3,
+"position": 112,
+"known_text": "I'd like you to tell me who works with your brother",
+"target_text": "ba mhaith liom go n-inseofá dom cé a oibríonn le do dheartháir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0263L02U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 62,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0234L01U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 234,
+"lego_index": 1,
+"position": 101,
+"known_text": "I met someone last night who works with your brother",
+"target_text": "bhuail mé le duine éigin aréir a oibríonn le do dheartháir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 58,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01B01",
+"expect": {
+"target_text": "duine"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01B02",
+"expect": {
+"target_text": "bhuail mé le duine"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01B03",
+"expect": {
+"target_text": "duine a bhfuil Gaeilge aige"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01B04",
+"expect": {
+"target_text": "duine a bhfuil an freagra ar eolas aige"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U01",
+"expect": {
+"target_text": "bhuail mé le duine aréir a oibríonn le do dheartháir"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U04",
+"expect": {
+"target_text": "bhuail mé le duine ag an obair inniu a bhíodh ar aithne agam"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U05",
+"expect": {
+"target_text": "Tá duine anseo a bhfuil gach rud a bhí muid ag caint faoi ar eolas aige"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U07",
+"expect": {
+"target_text": "dúirt duine liom go bhfuil tú ag iarraidh Gaeilge a fhoghlaim agus ceapaim go bhfuil sé sin go maith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U08",
+"expect": {
+"target_text": "bhí mé ag lorg duine a bhfuil an freagra ar eolas aige agus a d'fhéadfainn cabhrú linn inniu"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U09",
+"expect": {
+"target_text": "an bhfuil duine anseo a bhfuil aithne aige ar do dheirfiúr?"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U10",
+"expect": {
+"target_text": "Tá mé ag iarraidh labhairt le duine a oibríonn anseo agus a bhfuil Gaeilge aige"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U11",
+"expect": {
+"target_text": "dúirt duine a oibríonn anseo liom go bhfuil tú an-mhaith ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U12",
+"expect": {
+"target_text": "bhuail mé le duine ag an deireadh seachtaine a dúirt gur mhian leis Gaeilge a labhairt leat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U14",
+"expect": {
+"target_text": "Tá duine ansin a dúirt go bhfuil an freagra ar eolas aige agus gur mhian leis cabhrú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0234L01U15",
+"expect": {
+"target_text": "dúirt duine a bhuail mé leis an tseachtain seo caite liom go bhfuil tú ag foghlaim Gaeilge le tamall"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 235,
+"set": {
+"target_text": "bhuail mé le duine éigin a dúirt gur mhian leis rud éigin a insint duit"
+},
+"expect": {
+"known_text": "I met someone who said that he wanted to tell you something",
+"target_text": "bhuail mé le duine a dúirt gur mhian leis rud éigin a insint duit"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0235L02",
+"set": {
+"target_text": "duine éigin"
+},
+"expect": {
+"known_text": "someone",
+"target_text": "duine",
+"is_new": false
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0235L06",
+"set": {
+"known_text": "to tell you something"
+},
+"expect": {
+"known_text": "something to tell you",
+"target_text": "rud éigin a insint duit",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0235L03U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 235,
+"lego_index": 3,
+"position": 111,
+"known_text": "I know an old woman who said something very interesting yesterday",
+"target_text": "Tá aithne agam ar sheanbhean a dúirt rud an-suimiúil inné",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0232L02U08"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 57,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0235L03U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 235,
+"lego_index": 3,
+"position": 112,
+"known_text": "I know an old woman who said she wanted to help you learn Irish",
+"target_text": "Tá aithne agam ar sheanbhean a dúirt gur mhian léi cabhrú leat Gaeilge a fhoghlaim",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0232L02U13"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 82,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0235L04U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 235,
+"lego_index": 4,
+"position": 111,
+"known_text": "I met someone at the weekend who said they want to speak Irish with you",
+"target_text": "bhuail mé le duine ag an deireadh seachtaine a dúirt gur mhian leis Gaeilge a labhairt leat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0234L01U12"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 91,
+"lego_count": 17
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0235L04U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 235,
+"lego_index": 4,
+"position": 112,
+"known_text": "there is someone there who said they know the answer and want to help",
+"target_text": "Tá duine ansin a dúirt go bhfuil an freagra ar eolas aige agus gur mhian leis cabhrú",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0234L01U14"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 84,
+"lego_count": 17
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0235L03B03",
+"set": {
+"target_text": "tá aithne agam ar sheanbhean a dúirt"
+},
+"expect": {
+"target_text": "tá aithne agam ar sheanbean a dúirt",
+"known_text": "i know an old woman who said"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0235L03U02",
+"set": {
+"target_text": "tá aithne agam ar bhean óg a dúirt go raibh do smaoineamh go han-mhaith"
+},
+"expect": {
+"target_text": "tá aithne agam ar bhean óg a dúirt go raibh do smaoineamh an-mhaith",
+"known_text": "i know a young woman who said that your idea was very good"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0235L04U03",
+"set": {
+"target_text": "ar chuala tú gur mhian leis dul chuig an teach tábhairne aréir"
+},
+"expect": {
+"target_text": "an gcuala tú gur mhian leis dul chuig an teach tábhairne aréir",
+"known_text": "have you heard that he wanted to go to the pub last night"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 236,
+"set": {
+"target_text": "Tá aithne agam ar dhuine éigin a dúirt go raibh sí chun iarracht a dhéanamh cabhrú leat"
+},
+"expect": {
+"known_text": "I know someone who said that she was going to try to help you",
+"target_text": "Tá aithne agam ar dhuine a dúirt go raibh sí chun iarracht a dhéanamh cabhrú leat"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 236,
+"lego_index": 5,
+"known_text": "someone",
+"target_text": "duine éigin",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "someone",
+"target": "duine éigin"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 236,
+"lego_index": 6,
+"known_text": "to help you",
+"target_text": "cabhrú leat",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "with you",
+"target": "leat"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0236L01",
+"set": {
+"known_text": "I know",
+"target_text": "tá aithne agam ar",
+"is_new": false,
+"components": [
+{
+"known": "yes",
+"target": "tá"
+}
+]
+},
+"expect": {
+"known_text": "I know someone",
+"target_text": "Tá aithne agam ar dhuine",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0236L04",
+"set": {
+"known_text": "going to try to",
+"target_text": "chun iarracht a dhéanamh",
+"components": [
+{
+"known": "in order to",
+"target": "chun"
+},
+{
+"known": "to try to",
+"target": "iarracht a dhéanamh"
+}
+]
+},
+"expect": {
+"known_text": "going to try to help you",
+"target_text": "chun iarracht a dhéanamh cabhrú leat",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0236L03U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 236,
+"lego_index": 3,
+"position": 111,
+"known_text": "who said that she was too busy",
+"target_text": "cé a dúirt go raibh sí ró-ghnóthach",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0263L02U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 35,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0236L03U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 236,
+"lego_index": 3,
+"position": 112,
+"known_text": "last week I heard that she was very patient with them",
+"target_text": "an tseachtain seo caite chuala go raibh sí an-fhoighneach leo",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0268L01U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 61,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0236L03U03",
+"set": {
+"target_text": "ar chuala tú go raibh sí san oifig aréir"
+},
+"expect": {
+"target_text": "an gcuala tú go raibh sí san oifig aréir",
+"known_text": "have you heard that she was in the office last night"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0236L01B01",
+"expect": {
+"target_text": "tá aithne agam ar dhuine a dúirt"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0236L04C01",
+"expect": {
+"target_text": "chun"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0236L04C02",
+"expect": {
+"target_text": "iarracht a dhéanamh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0236L04C03",
+"expect": {
+"target_text": "cabhrú leat"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 341,
+"set": {
+"target_text": "bhuail mé le duine éigin cúpla lá ó shin"
+},
+"expect": {
+"known_text": "I met someone a few days ago",
+"target_text": "bhuail mé le duine cúpla lá ó shin"
+}
+}
+]
+}

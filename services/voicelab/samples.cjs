@@ -34,7 +34,7 @@
  */
 
 const crypto = require('crypto')
-const { targetCastKey, baseLanguageOfCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
+const { targetCastKey, knownCastKey, baseLanguageOfCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
 const fs = require('fs')
 const path = require('path')
 
@@ -173,7 +173,57 @@ async function pickLines (language, { count = JUDGING_SET } = {}) {
   }
 
   const guide = await guideLine(base)
-  return guide ? [guide] : []
+  if (guide) return [guide]
+  return knownSideLines(db, language, base, count)
+}
+
+/**
+ * LAST RESORT: a language nobody teaches and nobody has an instruction clip in
+ * (Bengali, Tamil, Russian, Indonesian … on 18 Nov 2026: known side only) still
+ * has real course text in it — the KNOWN side of every course its speakers learn
+ * from (eng_for_ben's known_text is Bengali). That is exactly what a known voice
+ * says, so it is a fair line to audition a known-side voice on. Without this the
+ * sample route answered "no course line" and native Cartesia voices in nine
+ * draft-only or uncast languages could not be heard at all (cs #716·AI, for
+ * Kai's all-languages casting page). Same picker, same determinism.
+ */
+async function knownSideLines (db, language, base, count) {
+  const { data: courses } = await db
+    .from('courses')
+    .select(`${COURSE_CAST_FIELDS}, display_name, seed_count`)
+    .eq('known_lang', base)
+    .order('seed_count', { ascending: false, nullsFirst: false })
+    .limit(40)
+  const mine = (courses || [])
+    .filter((c) => knownCastKey(c) === language && (c.seed_count || 0) > 0)
+    .sort((a, b) => ((b.target_lang === 'eng') - (a.target_lang === 'eng')) ||
+      ((b.seed_count || 0) - (a.seed_count || 0)) ||
+      String(a.course_code).localeCompare(String(b.course_code)))
+  for (const c of mine) {
+    const { data: seeds } = await db
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', c.course_code)
+      .order('seed_number', { ascending: true })
+      .limit(200)
+    const picked = chooseSet((seeds || []).map((s) => ({
+      text: String(s.known_text || '').trim(),
+      knownText: String(s.target_text || '').trim(),
+      order: s.seed_number,
+    })), count)
+    if (picked.length) {
+      return picked.map((line) => ({
+        language,
+        text: line.text,
+        knownText: line.knownText,
+        course: c.course_code,
+        courseName: c.display_name || c.course_code,
+        source: `${c.course_code} seed ${line.order} (known side)`,
+        kind: 'known',
+      }))
+    }
+  }
+  return []
 }
 
 /**

@@ -1,0 +1,2100 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 248
+},
+"before": {
+"id": "16082eee-0199-40c8-9ae3-98a1782007ce",
+"seed_number": 248,
+"known_text": "I thought the film was complete rubbish and I want my money back",
+"target_text": "cheap mé go raibh an scannán go hiomlán uafásach agus tá m'airgead ar ais uaim",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "16082eee-0199-40c8-9ae3-98a1782007ce",
+"seed_number": 248,
+"known_text": "I thought the film was complete rubbish and I want to get my money back",
+"target_text": "Cheap mé go raibh an scannán ina phraiseach iomlán agus is mian liom mo chuid airgid a fháil ar ais",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "lego.insert",
+"key": {
+"seed_number": 248,
+"lego_index": 7
+},
+"before": null,
+"after": {
+"id": "20f3c6d4-18f1-4d28-86f8-74a4cdd06b25",
+"seed_number": 248,
+"lego_index": 7,
+"lego_id": "S0248L07",
+"known_text": "I want",
+"target_text": "is mian liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "lego.insert",
+"key": {
+"seed_number": 248,
+"lego_index": 8
+},
+"before": null,
+"after": {
+"id": "acebdfdf-82ee-420e-b386-2160992f9819",
+"seed_number": 248,
+"lego_index": 8,
+"lego_id": "S0248L08",
+"known_text": "my money",
+"target_text": "mo chuid airgid",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0248L02"
+},
+"before": {
+"id": "8209db17-4a7d-4ec7-9c8b-8a7a9bc9fbab",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": "S0248L02",
+"known_text": "that it was",
+"target_text": "go raibh",
+"components": [
+{
+"known": "that",
+"target": "go"
+},
+{
+"known": "was",
+"target": "raibh"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "8209db17-4a7d-4ec7-9c8b-8a7a9bc9fbab",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": "S0248L02",
+"known_text": "that the film was",
+"target_text": "go raibh an scannán",
+"components": [
+{
+"known": "the film",
+"target": "an scannán"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0248L04"
+},
+"before": {
+"id": "89868d33-ad6e-44ac-89fa-09972082e7d4",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "go hiomlán uafásach",
+"known_text": "complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "89868d33-ad6e-44ac-89fa-09972082e7d4",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "ina phraiseach iomlán",
+"known_text": "complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0248L06"
+},
+"before": {
+"id": "dcd21bc8-a663-4d2d-8b11-0604436053bf",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"known_text": "I want my money back",
+"target_text": "tá m'airgead ar ais uaim",
+"components": [
+{
+"known": "my money",
+"target": "m'airgead"
+},
+{
+"known": "back",
+"target": "ar ais"
+},
+{
+"known": "from me",
+"target": "uaim"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "dcd21bc8-a663-4d2d-8b11-0604436053bf",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"known_text": "to get my money back",
+"target_text": "mo chuid airgid a fháil ar ais",
+"components": [
+{
+"known": "my money",
+"target": "mo chuid airgid"
+},
+{
+"known": "to find",
+"target": "a fháil"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0248L02U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0248L02U02",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I thought that the film you mean was complete rubbish",
+"target_text": "cheap mé go raibh an scannán atá i gceist agat ina phraiseach iomlán",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0248L08U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0248L08U01",
+"seed_number": 248,
+"lego_index": 8,
+"lego_id": null,
+"known_text": "I thought the film was complete rubbish and I want to get my money back",
+"target_text": "Cheap mé go raibh an scannán ina phraiseach iomlán agus is mian liom mo chuid airgid a fháil ar ais",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04B01",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "bhí sé go hiomlán uafásach ar an Domhnach",
+"known_text": "it was complete rubbish on Sunday",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04B01",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "bhí sé ina phraiseach iomlán ar an Domhnach",
+"known_text": "it was complete rubbish on Sunday",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04B02",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "níl sé go hiomlán uafásach",
+"known_text": "it is not complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04B02",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "níl sé ina phraiseach iomlán",
+"known_text": "it is not complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04B03",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "go raibh an leabhar go hiomlán uafásach inné",
+"known_text": "that the book was complete rubbish yesterday",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04B03",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "go raibh an leabhar ina phraiseach iomlán inné",
+"known_text": "that the book was complete rubbish yesterday",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04B04",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "go raibh an smaoineamh go hiomlán uafásach ach",
+"known_text": "that the idea was complete rubbish but",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04B04",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "go raibh an smaoineamh ina phraiseach iomlán ach",
+"known_text": "that the idea was complete rubbish but",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U01",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "cheap mé go raibh an scannán go hiomlán uafásach aréir",
+"known_text": "I thought that the film was complete rubbish last night",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U01",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "cheap mé go raibh an scannán ina phraiseach iomlán aréir",
+"known_text": "I thought that the film was complete rubbish last night",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 13,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U02",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "tá aithne agam ar dhuine a dúirt go raibh an leabhar go hiomlán uafásach",
+"known_text": "I know someone who said that the book was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U02",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "tá aithne agam ar dhuine a dúirt go raibh an leabhar ina phraiseach iomlán",
+"known_text": "I know someone who said that the book was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 14,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U03",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "tá brón orm ach bhí sé go hiomlán uafásach inniu",
+"known_text": "I am sorry but it was complete rubbish today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U03",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "tá brón orm ach bhí sé ina phraiseach iomlán inniu",
+"known_text": "I am sorry but it was complete rubbish today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 15,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U04",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "bhí sé go hiomlán uafásach ach bhí sé go deas scíth a ligean ar feadh tamaill",
+"known_text": "it was complete rubbish but it was nice to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U04",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "bhí sé ina phraiseach iomlán ach bhí sé go deas mo scíth a ligean ar feadh tamaill",
+"known_text": "it was complete rubbish but it was nice to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 16,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U05",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "bhí sé go hiomlán uafásach agus chuaigh mé amach oíche Shathairn",
+"known_text": "it was complete rubbish and I went out on Saturday night",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U05",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "bhí sé ina phraiseach iomlán agus chuaigh mé amach oíche Shathairn",
+"known_text": "it was complete rubbish and I went out on Saturday night",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 17,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U06",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "níl sé go hiomlán uafásach nach bhfuil?",
+"known_text": "it is not complete rubbish is that not so?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U06",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "níl sé ina phraiseach iomlán nach bhfuil?",
+"known_text": "it is not complete rubbish is that not so?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 18,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U07",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "creidim go raibh an smaoineamh go hiomlán uafásach",
+"known_text": "I believe that the idea was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U07",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "creidim go raibh an smaoineamh ina phraiseach iomlán",
+"known_text": "I believe that the idea was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 19,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06B01",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "tá m'airgead ar ais uaim anois",
+"known_text": "I want my money back now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06B01",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "is mian liom mo chuid airgid a fháil ar ais anois",
+"known_text": "I want to get my money back now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 20,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06B02",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "agus tá m'airgead ar ais uaim",
+"known_text": "and I want my money back",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06B02",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "agus is mian liom mo chuid airgid a fháil ar ais",
+"known_text": "and I want to get my money back",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 21,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06B03",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "ach tá m'airgead ar ais uaim inniu",
+"known_text": "but I want my money back today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06B03",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "ach is mian liom mo chuid airgid a fháil ar ais inniu",
+"known_text": "but I want to get my money back today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 22,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06B04",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "ar ndóigh tá m'airgead ar ais uaim",
+"known_text": "of course I want my money back",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06B04",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "ar ndóigh is mian liom mo chuid airgid a fháil ar ais",
+"known_text": "of course I want to get my money back",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 23,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06U01",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "tá brón orm ach tá m'airgead ar ais uaim anois",
+"known_text": "I am sorry but I want my money back now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06U01",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "tá brón orm ach is mian liom mo chuid airgid a fháil ar ais anois",
+"known_text": "I am sorry but I want to get my money back now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 24,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06U02",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "tá m'airgead ar ais uaim mar go raibh an scannán go hiomlán uafásach",
+"known_text": "I want my money back because the film was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06U02",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "is mian liom mo chuid airgid a fháil ar ais mar go raibh an scannán ina phraiseach iomlán",
+"known_text": "I want to get my money back because the film was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 25,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06U04",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "tá m'airgead ar ais uaim agus ansin beidh mé in ann dul abhaile",
+"known_text": "I want my money back and then I'll be able to go home",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06U04",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "is mian liom mo chuid airgid a fháil ar ais agus ansin beidh mé in ann dul abhaile",
+"known_text": "I want to get my money back and then I'll be able to go home",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 26,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06U05",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "tá m'airgead ar ais uaim chomh tapa agus is féidir",
+"known_text": "I want my money back as quickly as possible",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06U05",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "is mian liom mo chuid airgid a fháil ar ais chomh tapa agus is féidir",
+"known_text": "I want to get my money back as quickly as possible",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 27,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06U06",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "faraor tá m'airgead ar ais uaim inniu",
+"known_text": "unfortunately I want my money back today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L06U06",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"target_text": "faraor is mian liom mo chuid airgid a fháil ar ais inniu",
+"known_text": "unfortunately I want to get my money back today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 28,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02B02",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "that it was",
+"target_text": "go raibh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 29,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02B03",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I thought that it was good",
+"target_text": "cheap mé go raibh sé maith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 30,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02B04",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I believed that it was a good idea",
+"target_text": "creidim go raibh sé ina smaoineamh maith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 31,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02B05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02B05",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I told him that it was important to speak often",
+"target_text": "dúirt mé leis go raibh sé tábhachtach labhairt go minic",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 32,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02C01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02C01",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "that",
+"target_text": "go",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 33,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02C02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02C02",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "was",
+"target_text": "raibh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 34,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U01",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I thought that it was a very good idea to keep practising speaking together",
+"target_text": "cheap mé go raibh sé ina smaoineamh an-mhaith leanúint ar aghaidh ag cleachtadh labhartha le chéile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 35,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U03",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I believe that it was the right thing to try to practise as much as possible",
+"target_text": "creidim go raibh sé ceart iarracht a dhéanamh chomh minic agus is féidir",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 36,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U04",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "she said that it was too busy at the office today to stop and talk to us",
+"target_text": "dúirt sí go raibh sé ró-ghnóthach san oifig inniu le stopadh agus labhairt linn",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 37,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U05",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I thought that it was interesting that you already knew so much about this",
+"target_text": "cheap mé go raibh sé suimiúil go raibh a fhios agat faoi seo cheana féin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 38,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U07",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I told her that it was not easy to explain what I had been trying to do",
+"target_text": "dúirt mé léi go raibh sé deacair a mhíniú cad a bhí mé ag iarraidh a dhéanamh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 39,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U08",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "she told me that it was very unusual for him not to want to help",
+"target_text": "dúirt sí liom go raibh sé an-neamhghnách nár mhian leis cabhrú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 40,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U09"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U09",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I thought that it was better to wait and talk to her when she was less busy",
+"target_text": "cheap mé go raibh sé níos fearr fanacht agus labhairt léi nuair nach raibh sí chomh gnóthach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 41,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U10"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U10",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "he said that it was very helpful to have someone to practise speaking with",
+"target_text": "dúirt sé go raibh sé an-chabhrach duine a bheith agat le labhairt a chleachtadh leis",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 42,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U11"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U11",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I told him that it was a good decision to try to learn Irish together",
+"target_text": "dúirt mé leis go raibh sé ina smaoineamh maith Gaeilge a fhoghlaim le chéile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 43,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U13"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U13",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I believed that it was possible to achieve a lot in a short amount of time",
+"target_text": "creidim go raibh sé indéanta a lán a bhaint amach in achar gearr",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 44,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L02U15"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L02U15",
+"seed_number": 248,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I thought that it was great that you had been working so hard on this",
+"target_text": "cheap mé go raibh sé go hiontach go raibh tú ag obair chomh dian sin ar seo",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 45,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L06U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L06U03",
+"seed_number": 248,
+"lego_index": 6,
+"lego_id": "S0248L06",
+"known_text": "I thought the film was awful and I want my money back",
+"target_text": "cheap mé go raibh an scannán uafásach agus tá m'airgead ar ais uaim",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 46,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 299
+},
+"before": {
+"id": "4af03f5a-5717-4fc1-8dd6-f82fba67b128",
+"seed_number": 299,
+"target_text": "Is mian leis leath den chostas a íoc",
+"known_text": "he wants to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "4af03f5a-5717-4fc1-8dd6-f82fba67b128",
+"seed_number": 299,
+"target_text": "Is mian leis íoc as leath den chostas",
+"known_text": "he wants to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 47,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0299L01"
+},
+"before": {
+"id": "e26e804a-918b-4354-8e67-5ecdb448def3",
+"seed_number": 299,
+"lego_index": 1,
+"lego_id": "S0299L01",
+"known_text": "he wants to",
+"is_new": true,
+"target_text": "is mian leis",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "e26e804a-918b-4354-8e67-5ecdb448def3",
+"seed_number": 299,
+"lego_index": 1,
+"lego_id": "S0299L01",
+"known_text": "he wants",
+"is_new": false,
+"target_text": "is mian leis",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 48,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0299L03"
+},
+"before": {
+"id": "2802bf97-3df3-4d7b-ab78-dd65397074cd",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "to pay",
+"target_text": "a íoc",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "2802bf97-3df3-4d7b-ab78-dd65397074cd",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "to pay for",
+"target_text": "íoc as",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 49,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L02B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L02B02",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "is mian liom leath den chostas a íoc",
+"known_text": "I want to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L02B02",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "is mian liom íoc as leath den chostas",
+"known_text": "I want to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 50,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L02B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L02B03",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "is mian leis leath den chostas a íoc",
+"known_text": "he wants to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L02B03",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "is mian leis íoc as leath den chostas",
+"known_text": "he wants to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 51,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L02B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L02B04",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "ba mhaith liom leath den chostas a íoc",
+"known_text": "I'd like to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L02B04",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "ba mhaith liom íoc as leath den chostas",
+"known_text": "I'd like to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 52,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L02U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L02U01",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "tá mé chun leath den chostas a íoc amárach",
+"known_text": "I'm going to pay half of the cost tomorrow",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L02U01",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "tá mé chun íoc as leath den chostas amárach",
+"known_text": "I'm going to pay half of the cost tomorrow",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 53,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L02U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L02U03",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "go raibh maith agat, is féidir liom leath den chostas a íoc",
+"known_text": "thank you, I can pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L02U03",
+"seed_number": 299,
+"lego_index": 2,
+"lego_id": "S0299L02",
+"target_text": "go raibh maith agat, is féidir liom íoc as leath den chostas",
+"known_text": "thank you, I can pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 54,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03B03",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "tá mé chun leath den chostas a íoc",
+"known_text": "I am going to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L03B03",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "tá mé chun íoc as leath den chostas",
+"known_text": "I am going to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 55,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03U01",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "is mian leo leath den chostas a íoc",
+"known_text": "they want to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L03U01",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "is mian leo íoc as leath den chostas",
+"known_text": "they want to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 56,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03U03",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "ní dúirt mé gur mhian liom leath den chostas a íoc",
+"known_text": "I didn't say that I wanted to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L03U03",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "ní dúirt mé gur mhian liom íoc as leath den chostas",
+"known_text": "I didn't say that I wanted to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 57,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03U05",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "ar mhaith leat leath den chostas a íoc",
+"known_text": "would you like to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0299L03U05",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"target_text": "ar mhaith leat íoc as leath den chostas",
+"known_text": "would you like to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 58,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L01B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L01B01",
+"seed_number": 299,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "he wants to speak",
+"target_text": "is mian leis labhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 59,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03B01",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "to pay the money",
+"target_text": "an t-airgead a íoc",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 60,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03B02",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "to pay the money tonight",
+"target_text": "an t-airgead a íoc anocht",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 61,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03B04",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "we must pay the money",
+"target_text": "caithfidh muid an t-airgead a íoc",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 62,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03U02",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "do you want to pay the money tonight",
+"target_text": "an mian leat an t-airgead a íoc anocht",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 63,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03U04",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "did you have to pay the money last night",
+"target_text": "an raibh ort an t-airgead a íoc aréir",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 64,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03U06",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "you should pay the money next week",
+"target_text": "ba chóir duit an t-airgead a íoc an tseachtain seo chugainn",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 65,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0299L03U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0299L03U07",
+"seed_number": 299,
+"lego_index": 3,
+"lego_id": "S0299L03",
+"known_text": "thank you I can pay the money tomorrow",
+"target_text": "go raibh maith agat is féidir liom an t-airgead a íoc amárach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 66,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0300L01B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0300L01B03",
+"seed_number": 300,
+"lego_index": 1,
+"lego_id": "S0300L01",
+"target_text": "ní mian léi leath den chostas a íoc",
+"known_text": "she doesn't want to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0300L01B03",
+"seed_number": 300,
+"lego_index": 1,
+"lego_id": "S0300L01",
+"target_text": "ní mian léi íoc as leath den chostas",
+"known_text": "she doesn't want to pay half of the cost",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 67,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0300L01U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0300L01U01",
+"seed_number": 300,
+"lego_index": 1,
+"lego_id": "S0300L01",
+"target_text": "is mian leis leath den chostas a íoc ach ní mian léi",
+"known_text": "he wants to pay half of the cost but she doesn't want to",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0300L01U01",
+"seed_number": 300,
+"lego_index": 1,
+"lego_id": "S0300L01",
+"target_text": "is mian leis íoc as leath den chostas ach ní mian léi",
+"known_text": "he wants to pay half of the cost but she doesn't want to",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 68,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 339
+},
+"before": {
+"id": "3c2c5295-575c-4db0-a916-5ec12b536744",
+"seed_number": 339,
+"target_text": "Ní cheapaim, ceapaim go bhfuil sé gortaithe go dona",
+"known_text": "no I think he's hurt himself quite badly",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "3c2c5295-575c-4db0-a916-5ec12b536744",
+"seed_number": 339,
+"target_text": "Ní cheapaim, ceapaim gur ghortaigh sé é féin go dona",
+"known_text": "no I think he's hurt himself quite badly",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 69,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 531
+},
+"before": {
+"id": "4ba375ab-8968-412e-89a5-edec48ad80f8",
+"seed_number": 531,
+"target_text": "Níl sé fíor gur féidir le duine ar bith an cluiche a bhuachan",
+"known_text": "it isn't true that anyone can win the game",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "4ba375ab-8968-412e-89a5-edec48ad80f8",
+"seed_number": 531,
+"target_text": "Ní fíor gur féidir le haon duine an cluiche a bhuachan",
+"known_text": "it isn't true that anyone can win the game",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 70,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 548
+},
+"before": {
+"id": "088aaba7-6b89-4f07-a3e9-ae15eecb0d06",
+"seed_number": 548,
+"known_text": "I'm sad at the moment",
+"target_text": "Tá mé brónach faoi láthair",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "088aaba7-6b89-4f07-a3e9-ae15eecb0d06",
+"seed_number": 548,
+"known_text": "I am feeling sad at the moment",
+"target_text": "Tá mé ag mothú brónach faoi láthair",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 71,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 593
+},
+"before": {
+"id": "b2092b66-064b-47c0-82b4-d507b639edc2",
+"seed_number": 593,
+"known_text": "however much I argued I still had to share it with him",
+"target_text": "cibé méid a d'argóin mé bhí orm é a roinnt leis fós",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "b2092b66-064b-47c0-82b4-d507b639edc2",
+"seed_number": 593,
+"known_text": "however much I argued I still had to share",
+"target_text": "cibé méid a d'argóin mé bhí orm roinnt fós",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 72,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 613
+},
+"before": {
+"id": "3f5ea51a-d781-4391-9e7d-8be618854684",
+"seed_number": 613,
+"target_text": "is dócha go gceannódh muid teach ansin",
+"known_text": "we probably would have bought a house there",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "3f5ea51a-d781-4391-9e7d-8be618854684",
+"seed_number": 613,
+"target_text": "is dócha go mbeadh muid tar éis teach a cheannach ansin",
+"known_text": "we probably would have bought a house there",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 11.3,
+"_family": "eoghan",
+"_seeds": [
+248,
+299,
+300,
+339,
+531,
+548,
+593,
+613
+],
+"_ops": 73
+}

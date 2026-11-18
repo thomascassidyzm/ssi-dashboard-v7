@@ -1,0 +1,868 @@
+{
+ "family": "memorise",
+ "event_id": "2a0936b7-f42a-4b1f-8395-862ee13db6f9",
+ "undo_file_on_popty": "2026-11-16T12-38-59-828Z-2a0936b7-f42a-4b1f-8395-862ee13db6f9.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L01U05",
+   "set": {
+    "known_text": "I'm not going to be able to remember the word"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L01B03",
+   "set": {
+    "known_text": "to remember the word"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0204L02U06",
+   "set": {
+    "known_text": "I'm not going to be able to remember the arrangements"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0196L01U05",
+   "set": {
+    "known_text": "I'm not going to be able to remember the latest idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0191L01U02",
+   "set": {
+    "known_text": "I'm not going to be able to remember but I don't mind at all"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0172L01U01",
+   "set": {
+    "known_text": "that would help me a lot so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0168L01U04",
+   "set": {
+    "known_text": "I'm going to practise speaking and then I'll be able to remember that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0168L03U04",
+   "set": {
+    "known_text": "could you say that again a little more slowly and then I'll be able to remember?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0166L01B02",
+   "set": {
+    "known_text": "to remember my name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03B03",
+   "set": {
+    "known_text": "can you give me that book so I can remember?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0153L01U01",
+   "set": {
+    "known_text": "I'm not going to be able to remember the whole sentence in exactly the same way"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L01U07",
+   "set": {
+    "known_text": "I'm not going to be able to remember your name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L01U06",
+   "set": {
+    "known_text": "because I want to remember your name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L01B04",
+   "set": {
+    "known_text": "to remember your name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0131L02U05",
+   "set": {
+    "known_text": "I'm not going to be able to remember too many ideas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0117L03U05",
+   "set": {
+    "known_text": "I can remember more words than last time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0115L02B04",
+   "set": {
+    "known_text": "I can remember a conversation"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L03U03",
+   "set": {
+    "known_text": "I can remember more words than yesterday"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L01U04",
+   "set": {
+    "known_text": "I can remember new words easily"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L01B04",
+   "set": {
+    "known_text": "to be able to remember new words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L02U02",
+   "set": {
+    "known_text": "I'm not going to be able to remember a lot of new words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L02B01",
+   "set": {
+    "known_text": "to be able to remember a lot of new words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0103L02U06",
+   "set": {
+    "known_text": "I'm not sure if I can remember many more words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0103L02U03",
+   "set": {
+    "known_text": "I'm not going to be able to remember many more words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L02U01",
+   "set": {
+    "known_text": "I'm not going to be able to remember quickly enough"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L02B01",
+   "set": {
+    "known_text": "to be able to remember quickly enough"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0090L01U02",
+   "set": {
+    "known_text": "I speak a little Frisian but if you can speak more slowly I can remember the whole sentence"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0090L01B04",
+   "set": {
+    "known_text": "if you can speak more slowly I can remember everything"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0089L02U02",
+   "set": {
+    "known_text": "I'm not going to be able to remember everything in a short time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0089L02U04",
+   "set": {
+    "known_text": "could you remember a few words in a short time?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0086L01U03",
+   "set": {
+    "known_text": "I'm unfortunately not going to be able to remember the whole sentence"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L03U03",
+   "set": {
+    "known_text": "I'm not going to be able to remember the story about my friend"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0083L02U03",
+   "set": {
+    "known_text": "I'm not going to be able to remember the story about your friend"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L02U02",
+   "set": {
+    "known_text": "I'm not going to be able to remember what you said"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L02U01",
+   "set": {
+    "known_text": "I wanted to remember what you said but I'm a little tired"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L03U06",
+   "set": {
+    "known_text": "I like it when I can remember enough different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L03U04",
+   "set": {
+    "known_text": "I'm going to practise speaking so I can remember enough different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L03U02",
+   "set": {
+    "known_text": "I'm not going to be able to remember enough different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L03U01",
+   "set": {
+    "known_text": "I'm not sure if I can remember enough different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L03B04",
+   "set": {
+    "known_text": "I want to remember enough different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L03B02",
+   "set": {
+    "known_text": "to be able to remember enough different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L02U05",
+   "set": {
+    "known_text": "I'm not sure if I can remember different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L02B04",
+   "set": {
+    "known_text": "to be able to remember different words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0058L02U03",
+   "set": {
+    "known_text": "I like it when I can remember enough words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0058L02U01",
+   "set": {
+    "known_text": "I'm not going to be able to remember enough words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0058L02B02",
+   "set": {
+    "known_text": "I can remember enough words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L02U05",
+   "set": {
+    "known_text": "I'm not going to be able to remember what I wanted to say when other people are here"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L03U02",
+   "set": {
+    "known_text": "I'm not going to be able to remember how to say what I mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L03U04",
+   "set": {
+    "known_text": "I'd like to remember how to say what the answer is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L03U03",
+   "set": {
+    "known_text": "I'm going to remember how to say that it's a good thing to make mistakes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L03B04",
+   "set": {
+    "known_text": "I'm going to remember how to say"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U05",
+   "set": {
+    "known_text": "I want you to speak with me so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U07",
+   "set": {
+    "known_text": "I'm going to try as hard as I can so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U06",
+   "set": {
+    "known_text": "I'm going to write a letter today so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U04",
+   "set": {
+    "known_text": "I'm going to read the story so I can remember what the answer is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U03",
+   "set": {
+    "known_text": "I'd like a little more time so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U02",
+   "set": {
+    "known_text": "I'm not trying to finish as quickly as possible so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U01",
+   "set": {
+    "known_text": "are you going to help me so I can remember?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02C03",
+   "set": {
+    "known_text": "to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02B02",
+   "set": {
+    "known_text": "I'm trying to learn so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02B01",
+   "set": {
+    "known_text": "I'm going to practise so I can remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02B03",
+   "set": {
+    "known_text": "I'd like to practise so I can remember"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "28939483-49d0-41f4-8ecb-13f676998bb7",
+   "set": {
+    "known_text": "so I can remember",
+    "components": [
+     {
+      "known": "so that",
+      "target": "sadat"
+     },
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "to remember",
+      "target": "ûnthâlde"
+     },
+     {
+      "known": "can",
+      "target": "kin"
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 56,
+   "set": {
+    "known_text": "So I can remember how to say a few words."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0055L03B02",
+   "set": {
+    "known_text": "I'm not going to be able to remember when I didn't sleep very well"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0054L01U06",
+   "set": {
+    "known_text": "we wanted to be able to remember the whole sentence"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0053L02B02",
+   "set": {
+    "known_text": "to remember his letter"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0053L01U05",
+   "set": {
+    "known_text": "she wanted to remember his name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0053L03U06",
+   "set": {
+    "known_text": "I'd like to be able to remember everything in her bag"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0051L03U05",
+   "set": {
+    "known_text": "I'd like to be able to remember interesting things"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0049L03U07",
+   "set": {
+    "known_text": "I'm not going to be able to remember, if you know what I mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0046L02U05",
+   "set": {
+    "known_text": "I'm not going to be able to remember his mistakes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0045L01U04",
+   "set": {
+    "known_text": "I can remember everything"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0045L01U03",
+   "set": {
+    "known_text": "I'm not going to be able to remember everything"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0045L01B02",
+   "set": {
+    "known_text": "to remember everything"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0041L02U04",
+   "set": {
+    "known_text": "I'm starting to feel tired and I'm not going to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0036L01U02",
+   "set": {
+    "known_text": "I can remember the story easily"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0036L01U01",
+   "set": {
+    "known_text": "I'm not going to be able to remember the story"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0036L01B03",
+   "set": {
+    "known_text": "I'm going to remember the story"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0036L01B01",
+   "set": {
+    "known_text": "to be able to remember the story"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0031L01U05",
+   "set": {
+    "known_text": "you wanted to be able to remember the whole sentence"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0029L01U05",
+   "set": {
+    "known_text": "I'm looking forward to it but I'm not going to be able to remember it easily"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L04U05",
+   "set": {
+    "known_text": "he's nearly ready to answer because he can remember the whole sentence"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L01U06",
+   "set": {
+    "known_text": "I'm not going to remember it because the whole sentence is too long"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U05",
+   "set": {
+    "known_text": "I like it when I have the feeling that I can remember easily"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L01U02",
+   "set": {
+    "known_text": "are you going to remember the whole sentence?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U06",
+   "set": {
+    "known_text": "I'm not going to be able to remember this evening"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U05",
+   "set": {
+    "known_text": "I wouldn't like to guess, I'm not going to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U04",
+   "set": {
+    "known_text": "I'm not going to be able to remember very well"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U03",
+   "set": {
+    "known_text": "I'm going to practise speaking but I'm not going to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U02",
+   "set": {
+    "known_text": "she's going to say it but I'm not going to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U01",
+   "set": {
+    "known_text": "I'm trying to learn but I'm not going to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U07",
+   "set": {
+    "known_text": "I'm not going to be able to remember it easily"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B04",
+   "set": {
+    "known_text": "I'm not going to be able to remember quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B03",
+   "set": {
+    "known_text": "and I'm not going to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B02",
+   "set": {
+    "known_text": "I'm not going to be able to remember today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B01",
+   "set": {
+    "known_text": "but I'm not going to be able to remember"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "f017f115-c30b-4bd6-9432-8ae710f2b961",
+   "set": {
+    "known_text": "I'm not going to be able to remember",
+    "components": [
+     {
+      "known": "I'm going to",
+      "target": "ik sil"
+     },
+     {
+      "known": "it",
+      "target": "it"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     },
+     {
+      "known": "to be able to remember",
+      "target": "ûnthâlde kinne"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U04",
+   "set": {
+    "known_text": "why must I remember the answer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U05",
+   "set": {
+    "known_text": "I'm going to remember the answer after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U06",
+   "set": {
+    "known_text": "he wants to remember the answer tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U03",
+   "set": {
+    "known_text": "I'm going to practise because I want to remember the answer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U02",
+   "set": {
+    "known_text": "I'm going to remember what the answer is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02B03",
+   "set": {
+    "known_text": "to remember the answer all day"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "fd0a3532-b5a8-4485-89a6-aadde6328613",
+   "set": {
+    "known_text": "to remember",
+    "presentation_audio_id": "d592bc8d-0efd-4521-8d66-78cedfd92d86"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03U05",
+   "set": {
+    "known_text": "he wants to be able to remember her name tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03U04",
+   "set": {
+    "known_text": "I'm going to practise speaking because I want to be able to remember the whole sentence"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03U02",
+   "set": {
+    "known_text": "she wants to be able to remember what the answer is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03U01",
+   "set": {
+    "known_text": "I'm not going to be able to remember his name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03C01",
+   "set": {
+    "known_text": "to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03B04",
+   "set": {
+    "known_text": "we want to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03B03",
+   "set": {
+    "known_text": "I'm going to be able to remember"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03B02",
+   "set": {
+    "known_text": "to be able to remember her name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03B01",
+   "set": {
+    "known_text": "to be able to remember the answer"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "d7b2f5ee-5cb1-4a19-bb84-580f736fd534",
+   "set": {
+    "known_text": "to be able to remember",
+    "components": [
+     {
+      "known": "to remember",
+      "target": "ûnthâlde"
+     },
+     {
+      "known": "to be able to",
+      "target": "kinne"
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 24,
+   "set": {
+    "known_text": "I'm not going to be able to remember easily."
+   }
+  }
+ ]
+}

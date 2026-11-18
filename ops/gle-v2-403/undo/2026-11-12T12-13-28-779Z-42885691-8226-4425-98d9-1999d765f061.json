@@ -1,0 +1,484 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "42885691-8226-4425-98d9-1999d765f061",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:13:28.780Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-13-28-779Z-42885691-8226-4425-98d9-1999d765f061.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03U07",
+      "set": {
+        "target_text": "ceapaim gur fhág tú mo leabhar sa teach tábhairne oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03U05",
+      "set": {
+        "target_text": "an mian leat dul chuig bialann oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03U04",
+      "set": {
+        "target_text": "ní raibh am agam oíche Dé Sathairn ach beidh mé ábalta teacht agus cabhrú leat níos déanaí"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03U03",
+      "set": {
+        "target_text": "tá brón orm ach tá mé ró-ghnóthach oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03U02",
+      "set": {
+        "target_text": "chuaigh mé amach oíche Dé Sathairn agus tá mé tuirseach inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03U01",
+      "set": {
+        "target_text": "ar bhain tú sult as oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03B04",
+      "set": {
+        "target_text": "oíche Dé Sathairn sa teach tábhairne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03B03",
+      "set": {
+        "target_text": "ró-ghnóthach oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03B02",
+      "set": {
+        "target_text": "bialann oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03B01",
+      "set": {
+        "target_text": "oíche Dé Sathairn chuaigh mé amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0203L01U01",
+      "set": {
+        "target_text": "cad a dhéanfá oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L01U08",
+      "set": {
+        "target_text": "deir siad gur smaoineamh maith é a fheiceáil cad atá le déanamh sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0197L01U02",
+      "set": {
+        "target_text": "go raibh maith agat ach oibríonn mo mháthair oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0174L01U01",
+      "set": {
+        "target_text": "an dtuigeann tú cad atá mé a rá?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0170L02U01",
+      "set": {
+        "target_text": "ba mhaith liom go n-inseofá dom cad is ainm duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L02U05",
+      "set": {
+        "target_text": "ba mhian léi a litir a thabhairt dom oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0156L02U02",
+      "set": {
+        "target_text": "ní mian linn dul chuig a chara oíche dé sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0156L01U04",
+      "set": {
+        "target_text": "an mian leat insint dom cad is ainm duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0156L01U02",
+      "set": {
+        "target_text": "go hiontach an mian leat bualadh linn oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U08",
+      "set": {
+        "target_text": "Tá sé tábhachtach é a dhéanamh oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U07",
+      "set": {
+        "target_text": "Tá súil agam gur féidir liom dul oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U06",
+      "set": {
+        "target_text": "an bhfuil tú ag déanamh rud éigin oíche Dé Sathairn?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U05",
+      "set": {
+        "target_text": "ba cheart dom iarracht a dhéanamh é a dhéanamh oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U04",
+      "set": {
+        "target_text": "bhí mé ag súil le dul oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U03",
+      "set": {
+        "target_text": "Níl mé ábalta é a dhéanamh oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U02",
+      "set": {
+        "target_text": "Is mian liom bualadh le chéile oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02U01",
+      "set": {
+        "target_text": "cén áit ar mian leat bualadh le chéile oíche Dé Sathairn?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02C01",
+      "set": {
+        "target_text": "Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02B04",
+      "set": {
+        "target_text": "bualadh le chéile oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0154L02B01",
+      "set": {
+        "target_text": "oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03U06",
+      "set": {
+        "target_text": "go raibh maith agat an féidir leat insint dom cad is ainm duit arís"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03U05",
+      "set": {
+        "known_text": "can you say what your name is in Irish",
+        "target_text": "an féidir leat a rá cad is ainm duit i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03U04",
+      "set": {
+        "known_text": "she wanted to ask you what your name is",
+        "target_text": "ba mhian léi ceist a chur ort cad is ainm duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03U03",
+      "set": {
+        "known_text": "i'd like to find out what your name is",
+        "target_text": "ba mhaith liom fáil amach cad is ainm duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03U02",
+      "set": {
+        "known_text": "i'm not sure what your name is",
+        "target_text": "níl mé cinnte cad is ainm duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03U01",
+      "set": {
+        "known_text": "i don't know what your name is yet",
+        "target_text": "níl a fhios agam cad is ainm duit fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03B04",
+      "set": {
+        "known_text": "to ask you what your name is again",
+        "target_text": "ceist a chur ort cad is ainm duit arís"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03B03",
+      "set": {
+        "known_text": "to find out what your name is",
+        "target_text": "fáil amach cad is ainm duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03B02",
+      "set": {
+        "known_text": "tell me what your name is",
+        "target_text": "insint dom cad is ainm duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L03B01",
+      "set": {
+        "known_text": "what your name is in Irish",
+        "target_text": "cad is ainm duit i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0108L02B01",
+      "set": {
+        "target_text": "ag súil le feiceáil cad a bhí tú a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0107L02U07",
+      "set": {
+        "known_text": "we hoped to see what she was doing",
+        "target_text": "bhí muid ag súil le feiceáil cad a bhí sí a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0107L02U06",
+      "set": {
+        "target_text": "bhí sí ag súil le feiceáil cad a bhí mé a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0107L02U03",
+      "set": {
+        "target_text": "bhí mé ag súil le feiceáil cad a bhí sé a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0107L02U01",
+      "set": {
+        "target_text": "bhí muid ag súil le feiceáil cad a bhí tú a dhéanamh"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b7142fcb-8085-4613-99d6-f12ff5be35b7",
+      "set": {
+        "target_text": "sula dtosaíonn tú",
+        "components": [
+          {
+            "known": "before",
+            "target": "sula"
+          },
+          {
+            "known": "you start",
+            "target": "dtosaíonn tú"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "7eac6638-76d4-4386-9121-577cd9098430",
+      "set": {
+        "target_text": "oíche Dé Sathairn",
+        "components": [
+          {
+            "known": "night",
+            "target": "oíche"
+          },
+          {
+            "known": "Saturday",
+            "target": "Dé Sathairn"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "e7c58fc4-0b23-425f-97c2-81404a370bf0",
+      "set": {
+        "target_text": "oíche Dé Sathairn",
+        "components": [
+          {
+            "known": "Saturday",
+            "target": "Dé Sathairn"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "f4bfc7b3-d740-4930-a1a7-faf0faea4658",
+      "set": {
+        "known_text": "what your name is",
+        "target_text": "cad is ainm duit",
+        "components": [
+          {
+            "known": "what",
+            "target": "cad"
+          },
+          {
+            "known": "is",
+            "target": "is"
+          },
+          {
+            "known": "name",
+            "target": "ainm"
+          },
+          {
+            "known": "to you",
+            "target": "duit"
+          }
+        ]
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 533,
+      "set": {
+        "target_text": "Ní éistfidh sí le gach focal a deir tú"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 494,
+      "set": {
+        "target_text": "cad a tharlaíonn tar éis an chéad chuid den seó?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 399,
+      "set": {
+        "target_text": "Ní mian linn dóchas a chailleadh"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 390,
+      "set": {
+        "target_text": "an duine atá ina sheasamh in aice leis an mbealach isteach"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 384,
+      "set": {
+        "target_text": "Ní fhéadfainn aontú leis an méid a dúirt sé nóiméad ó shin"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 281,
+      "set": {
+        "target_text": "an miste leat má chríochnaím mo chaife sula dtosaíonn tú?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 215,
+      "set": {
+        "target_text": "chuaigh mé amach oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 174,
+      "set": {
+        "target_text": "an dtuigeann tú cad atá mé a rá?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 154,
+      "set": {
+        "target_text": "cén áit ar mian leat bualadh le chéile oíche Dé Sathairn?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 150,
+      "set": {
+        "target_text": "an féidir leat insint dom cad is ainm duit?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 107,
+      "set": {
+        "target_text": "bhí muid ag súil le feiceáil cad a bhí tú a dhéanamh"
+      }
+    }
+  ]
+}

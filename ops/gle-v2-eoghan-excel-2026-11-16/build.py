@@ -1,0 +1,248 @@
+# Builds the sheet for Eoghan (gle_v2_for_eng), mirroring his Bileog1 row for row (cs #251·AI, 16 Nov 2026).
+#   python3 -I build.py <live seeds: Popty GET /api/production/gle_v2_for_eng/seeds, or live-snapshot-2026-11-16.json>
+# Columns: A = our live Irish, B = our live English, C = our comment (blank where ours is his line), D = empty, for him.
+# Comment sources, in order: HAND (written for the live text quoted beside it; the build FAILS if live has moved on, so
+# a stale comment can never ship), then the notes already sent to him in ../gle-v2-eoghan-seedlist (the 12 Nov list),
+# tidied. PLANNED holds #250·AI's wording for rows the #107·AI plan will rewrite: used only once live equals it.
+import csv,json,re,sys,zipfile,os
+from xml.sax.saxutils import escape
+HERE=os.path.dirname(os.path.abspath(__file__))
+live={s['seed_number']:s for s in json.load(open(sys.argv[1]))['seeds']}
+his=[r for r in json.load(open(os.path.join(HERE,'his-bileog1.json')))[1:]]
+base={int(r['Seed']):r for r in csv.DictReader(open(os.path.join(HERE,'..','gle-v2-eoghan-seedlist','irish-seed-list-for-eoghan.csv')))}
+nrm=lambda s:' '.join(re.sub(r"[^\w ]",'',(s or '').lower().replace('’',"'")).split())
+def options(t):
+    t=re.sub(r'\[[^\]]*\]','',t or '')
+    t=re.sub(r'\((?=[^)]*\b(?:means|is|=|more|ne|on her|she and|sport|the person|buartha|sásta|nóiméad|Ní raibh)\b)[^)]*\)?','',t)   # his notes in brackets
+    return [nrm(x) for x in re.split(r'\s/\s|\s/(?=\S)',t) if nrm(x)]
+EN="We kept our English (the English sentences are shared by all our courses, so we only change them when the Irish can't follow)."
+TMIAN="'want' is 'is mian liom' throughout, as you suggested."
+LIKE="We use 'is maith liom' for 'I like (doing)', which learners have from early on, and 'bain taitneamh as' for 'enjoy'. Your 'taitníonn … liom' is lovely too, but we'd rather keep one way of saying 'like' for beginners."
+HAND={
+ 12:("níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach","We took your 'faoin rud'. We wrote 'a tharlóidh' ('that will happen') rather than 'a tharlófar', which is the impersonal form. Is that OK? (We may still change this early sentence; if we do, we will send you the new one.)"),
+ 27:("Ní maith liom an iomarca ama a chaitheamh le freagra a thabhairt",LIKE+" Is this OK?"),
+ 55:("Ní bhainim taitneamh as dúiseacht nuair nár chodail mé go maith","We kept our English. "+LIKE+" Is 'Ní bhainim taitneamh as dúiseacht' OK here?"),
+ 120:("Tá sé suimiúil gur maith leat dul ar an mbus","We took your 'gur maith leat' and kept 'Tá sé suimiúil'. "+LIKE+" Is this OK?"),
+ 121:("Tá sé neamhghnách nach maith leat do charr a úsáid",LIKE+" Is this OK?"),
+ 239:("is maith le mo mháthair léamh",LIKE+" Is this OK?"),
+ 240:("Ní maith le m'athair stopadh ag caint",LIKE+" Is this OK?"),
+ 64:("Níl sé éasca Gaeilge a fhoghlaim ach tá sé spraíúil","We kept 'tá sé spraíúil' for 'it is fun' (focloir.ie gives 'spraíúil' for 'fun', as in 'a fun way to learn'), and plain 'Gaeilge' as elsewhere in the course. Is this OK?"),
+ 109:("caithfidh muid obair go dian chun a lán focal nua a fhoghlaim","Thank you: we've taken your 'chun'. Is this OK?"),
+ 117:("Tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile","We have a shorter version for now, built from words learners already have, with 'tá mé' for 'táim' and 'labhair muid' for 'labhraíomar' (we use those two-word forms throughout). Is this OK?"),
+ 153:("Ní déarfainn é ar an mbealach céanna díreach","We took your 'Ní déarfainn'. We kept 'ar an mbealach céanna díreach', because learners already have 'bealach' for 'way'. Is this OK?"),
+ 219:("bhí sé go deas scíth a ligean ar feadh tamaill","We left out 'ár': learners first meet 'to relax' as plain 'scíth a ligean', and a few sentences later as 'mo scíth a ligean'. Is plain 'scíth a ligean' OK here?"),
+ 220:("ar fhéach tú ar bheagán teilifíse?","The English asks about one occasion ('did you watch a bit'), so we kept the past tense. Is 'ar fhéach tú ar bheagán teilifíse?' OK?"),
+ 248:("cheap mé go raibh an scannán go hiomlán uafásach agus tá m'airgead ar ais uaim",EN+" We use 'tá … uaim' for 'I want' + a thing. For 'complete rubbish' we wrote 'go hiomlán uafásach' ('completely awful'); the dictionary gives 'praiseach' as 'a mess', which felt further from 'rubbish'. Is ours OK, or what would you say?"),
+ 294:("Níl dóthain ama agam glaoch ort anocht","We read 'Níl bheidh' as a slip, and kept our shorter 'glaoch ort' ('to call you'). Is this OK?"),
+ 300:("Ní mian léi a bheith míchairdiúil","Ours says 'to be unfriendly'. We would like to take your 'cuma mhíchairdiúil' to get 'seem', but with 'go mbeadh': after 'want' we always use the conditional in the 'go' clause, so it would be 'Ní mian léi go mbeadh cuma mhíchairdiúil uirthi'. Does that sound right? (We also wrote 'ní mian' without the h.)"),
+ 318:("Ní cheapaim, i mo thuairim féin ní fhéadfadh sí é a thabhairt léi an uair seo",EN+" For 'in my opinion' we now use 'i mo thuairim féin' (as the dictionary at focloir.ie gives it, and as you wrote at 618), so all three sentences that say 'in my opinion' (318, 597, 618) match. We kept 'an uair seo' for 'this time'. Is this OK?"),
+ 392:("an páiste sin leis an ngruaig dhubh os comhair an phoist","We kept a shorter line that follows the English ('with the black hair'), using words learners already have, with 'sin' for 'that child' and 'an phoist' for 'the post office'. Is this OK?"),
+ 408:("Ba chóir, sin an bealach is fearr chun teaghlach sona a dhéanamh","We took your 'teaghlach'. 'Ba chóir' answers the question at 407. We kept 'a dhéanamh' because the English says 'make a happy family'; your 'a choinneáil sona' is 'keep happy'. Is this OK?"),
+ 414:("an bhféadfadh muid buidéal fíona dheirg a fháil le do thoil?",EN+" We use 'fíona dheirg': 'fíon' is masculine, so 'dearg' after it becomes 'dheirg'. Is this OK?"),
+ 433:("Ní fhéadfadh siad fáil amach cathain a thosaigh an scannán","We used 'ní fhéadfadh siad', the 'féad-' form you use for 'could' in most sentences (311 to 314, 358, 412 to 414, 435). Is this OK?"),
+ 434:("an bhféadfadh siad líon na mac léinn a ghlacann siad a laghdú?","We used 'an bhféadfadh siad', the 'féad-' form you use for 'could' in most sentences; 435 then answers it with 'd'fhéadfadh'. Is this OK?"),
+ 457:("cuid den fhadhb ná líon na réimsí éagsúla",EN+" We kept 'cuid den fhadhb ná …', the same 'ná' pattern you use at 609 ('an rud ciallmhar … ná ceist a chur'), and plain 'réimsí' for 'areas'. Is this OK?"),
+ 472:("cuid den fhadhb ná nach bhfuil na fíricí ar eolas againn","We kept 'cuid den fhadhb ná …' so this matches 457 and keeps the English order. Is this OK?"),
+ 552:("Tá cuma ghránna ar an séipéal atá ar an taobh eile den tsráidbhaile","This sentence already had your September correction, 'cuma ghránna ar an séipéal'; your sheet was written over the older text. We write 'den tsráidbhaile' with 't', the standard form after 'den'. Is this OK?"),
+ 570:("cé mhéad atá tú toilteanach a íoc ar do thicéad?","We took 'toilteanach' from your later notes. Is this OK?"),
+ 597:("I mo thuairim féin, tá na céadta scéal cloiste aige faoi",EN+" For 'in my opinion' we use 'i mo thuairim féin', as at 318 and 618. We took your 'na céadta scéal'. Is this OK?"),
+}
+HAND.update({
+ 43:("Ní raibh mé ag smaoineamh faoin bhfreagra a thabharfainn","Your line, with the fada on 'mé'."),
+ 65:("Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil","Your line, spelt 'chaitheamh'."),
+ 176:("fiafróidh mé de an mbeidh sé in ann cabhrú linn an bhliain seo chugainn","Your line, with 'an' added before 'bhliain'. Is this OK?"),
+ 353:("ba ghá di rith timpeall na páirce","Your line, spelt 'ba ghá di' (no fadas)."),
+ 355:("an raibh gá di labhairt leis an mbean sin a bhfuil aithne agat uirthi?","Your line, spelt 'di' (no fada)."),
+ 510:("D'imigh sí chun áit shábháilte a fháil agus an carr a phairceáil ann","We used the wording you sent us later for this one, spelt 'shábháilte'. Is this OK?"),
+ 577:("Tá muid ag fanacht leis an scéal ón ospidéal","We used the wording you sent us later ('an scéal', since 'nuacht' is the news on TV). Is this OK?"),
+})
+HAND.update({   # older open questions settled by us, and notes refreshed where the Irish has since changed
+ 99:("ba chóir duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair","We kept plain 'cén fáth' ('why'), which learners already have, rather than 'faoin bhfáth'. Is this OK?"),
+ 119:("an féidir liom ceist a chur ort faoi rud éigin sula n-imíonn tú?","We kept 'faoi' for 'about', which learners already have, and 'imeacht' for 'leave' (you mention 'fág' is also fine). Is this OK?"),
+ 127:("Ní hé sin an chúis ar mhian liom tú a fheiceáil",EN+" We took your 'an chúis'. 'wanted' is 'mian' throughout (here 'ar mhian'), and we kept 'tú a fheiceáil' for 'to see you'. Is this OK?"),
+ 137:("Tá sé níos tábhachtaí labhairt go minic ná a bheith foirfe","'than' is 'ná' in every other sentence (42, 87, 117), so we kept 'ná' here and keep 'seachas' for 'instead of' (502, 523). Is this OK?"),
+ 154:("cén áit ar mian leat bualadh le chéile oíche Shathairn?",EN+" We used 'mian' for 'want' ('would like' is 'ba mhaith liom', taught separately). We kept 'leat', for one person, and took your 'oíche Shathairn' without 'Dé'. Is this OK?"),
+ 394:("an cailín sin leis an ngúna buí",EN+" We kept the shorter 'leis an ngúna buí' ('with the yellow dress'), which follows the English and uses words learners already have, and 'sin' for 'that girl'. Is this OK?"),
+ 407:("nár chóir dúinn iarracht a dhéanamh dea-shampla a thabhairt?",EN+" 'trying' is 'ag iarraidh' and 'try' is 'iarracht a dhéanamh', as you suggested. We use 'ba chóir' for 'should' throughout. Is this OK?"),
+ 409:("Níor chóir, is cuma cad a dhéanann muid","The answer echoes 'nár chóir…?' at 407. Is this OK?"),
+ 542:("aon uair a bhíonn fearg ort",EN+" We took your 'bíonn fearg ort', with 'aon uair a bhíonn', as in 'an uair a bhí'. Is this OK?"),
+ 553:("ceapaim go bhfuil cuma an-ghránna ar an séipéal beag",EN+" This sentence already had your September correction, 'cuma an-ghránna ar an séipéal'; your sheet was written over the older text. Is this OK?"),
+ 593:("cibé méid a d'argóin mé bhí orm é a roinnt leis fós",EN+" For 'however much I argued' we wrote 'cibé méid a d'argóin mé', so that 'seachas' keeps the one meaning 'instead of' (502, 523). Is this OK?"),
+})
+# #250·AI's comments, for the text the #107·AI plan will put live (not live on 16 Nov).
+PLANNED={
+ 300:("Ní mian léi go mbeadh cuma mhíchairdiúil uirthi","You wrote 'go mbeidh'. After 'want' we always use the conditional in the 'go' clause, so we kept 'go mbeadh'. Does 'go mbeadh' sound right to you here?"),
+ 219:("bhí sé go deas mo scíth a ligean ar feadh tamaill","You wrote 'ár scíth'. 'To relax' is taught earlier (110) as 'mo scíth a ligean', and learners use it only about themselves for a long time, so we kept 'mo'. Is 'mo' OK here?"),
+ 117:("Cinnte dearfa, tá mé ag déanamh níos fearr anois ná mar a bhí á dhéanamh agam ar an uair dheireanach a labhair muid le chéile","Your sentence. Still right to your ear?"),
+ 12:("níor mhaith liom a rá cad a tharlóidh amárach","This one is our own new draft ('I wouldn't like to say what's going to happen tomorrow'). Is it natural?"),
+ 294:("Níl dóthain ama agam anocht chun glaoch a chur ort","Your line began 'Níl bheidh', which we took to be a slip. Is our reading right?"),
+ 392:("an páiste sin a bhfuil gruaig dhubh air agus atá ina sheasamh os comhair na hoifige poist","Your line gave 'uirthi / air' and 'ina seasamh / ina sheasamh'; we took the 'him' choices and extended the English to match. The only thing we added is 'sin' for 'that child'. Would you rather leave it out?"),
+ 220:("An mbíonn tú ag féachaint ar an teilifís mórán?","Just so you know: we've changed the English to 'Do you watch much television?' to match your sentence, and use your Irish."),
+ 260:("Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt","We made your sentence longer to teach 'guess' ('I don't have the faintest idea, but I can guess'). Is it natural?"),
+ 518:("Ní fhéadfainn mé féin a shamhlú leis an bhfadhb dhíreach chéanna","You wrote 'chéanna díreach' here and 'dhíreach chéanna' at 153. We'd like one pattern for 'exactly the same', and 153 comes first, so we used 'dhíreach chéanna'. Is that fine?"),
+}
+
+# cs #253·AI, 16 Nov (after the #107·AI plan went live): comments for rows whose live Irish changed, written for the live
+# text quoted beside each, so the same guard refuses them if live moves on.
+LATER="We used the wording you sent us later for this one."
+HAND.update({
+ 110:("is cairde muid, agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean",EN+" 'To relax' is taught here as 'mo scíth a ligean', and learners use it only about themselves for a long time; 'ár scíth' and the other forms come later in the course. Is this OK?"),
+ 143:("is é an rud céanna é a raibh muid ag caint faoi níos luaithe","We took your 'a raibh … faoi'. Is this OK?"),
+ 153:("Ní déarfainn é ar an mbealach díreach céanna","We took your 'díreach céanna' order (the same at 518). We kept 'ar an mbealach', because learners already have 'bealach' for 'way', and 'é' straight after the verb. Is this OK?"),
+ 196:("ar chuala tú an smaoineamh is déanaí?","We used 'ar chuala tú?', the form you gave us later for 'have you heard?' (also at 267 and 366). Is this OK?"),
+ 267:("ar chuala tú aon rud ó do chara?","We used 'ar chuala tú?', the form you gave us later for 'have you heard?' (also at 196 and 366). Is this OK?"),
+ 366:("ar chuala tú cad ba mhian leis a fhás?","We used 'ar chuala tú?', as you gave us later, and 'ba mhian leis' for 'he wanted' ('want' is 'is mian' throughout, as you suggested). Is this OK?"),
+ 232:("Tá aithne agam ar sheanbhean a bheidh in ann cuimhneamh ar an bhfreagra","We took your 'a bheidh' and wrote 'sheanbhean' with 'bh'. We kept 'cuimhneamh ar', the form the course teaches for 'remember'. Is this OK?"),
+ 235:("bhuail mé le duine éigin a dúirt gur mhian leis rud éigin a insint duit",EN+" So the Irish follows it with 'a dúirt' ('who said'), and we use 'mian' for 'want' ('gur mhian leis'). We took your 'duine éigin'. Is this OK?"),
+ 236:("Tá aithne agam ar dhuine éigin a dúirt go raibh sí chun iarracht a dhéanamh cabhrú leat",EN+" The English says 'who said that she was going to', which the course teaches as 'a dúirt go raibh sí chun'. We took your 'duine éigin'. Is this OK?"),
+ 256:("ceapaim go mbeidh mé réidh in achar níos lú ná uair","We took your 'in achar níos lú ná uair'. We kept 'réidh' for 'ready': both are standard, and 'réidh' is used throughout the course. Is this OK?"),
+ 287:("cé mhéad duine a bhfuil aithne agat orthu ar maith leo a bheith ag féachaint ar an teilifís?","Your line, with 'ar an teilifís': in the standard, 't' is not changed after 'ar an'. Is this OK?"),
+ 288:("is maith le formhór na ndaoine a bhfuil aithne agam orthu a bheith ag féachaint ar an teilifís","We kept 'is maith le formhór na ndaoine …', which keeps the English order and 'is maith le' as learners have it, and 'ar an teilifís' as at 287. Is this OK?"),
+ 489:("mura ndéanann tú cupán de chaife láidir dom anois díreach","We took your 'cupán de chaife láidir', with 'chaife' lenited after 'de', and kept 'anois díreach' for 'right now', which learners already have. Is this OK?"),
+ 549:("mar caithfidh mé a bheith ciúin",LATER+" Is this OK?"),
+ 610:("caithfidh sé obair a lorg",LATER+" Is this OK?"),
+ 510:("D'imigh sí chun áit shábháilte a fháil agus an carr a pháirceáil ann",LATER+" We spelt it 'shábháilte' and 'pháirceáil'. Is this OK?"),
+ 552:("Tá cuma ghránna ar an séipéal atá ag an gceann eile den tsráidbhaile","This sentence already had your September correction, 'cuma ghránna ar an séipéal'; your sheet was written over the older text. We took your 'ag an gceann eile', and write 'den tsráidbhaile' with 't', the standard form after 'den'. Is this OK?"),
+ 570:("cé mhéad atá tú toilteanach a íoc as do thicéad?","We took 'toilteanach' from your later notes, and 'íoc as' for 'pay for', the form you use at 508 and 509. Is this OK?"),
+ 613:("is dócha go mbeadh muid tar éis teach a cheannach ansin","Your line. You noted later that 'is dócha' is 'I suppose': is it all right for 'probably' here, or would you say 'b'fhéidir'?"),
+})
+# Rows that now carry his line with only a slip of his put right (Kai 16 Nov: 220 spelling and 394 fixed quietly): blank.
+QUIET={125,220,248,341,394,328,104}   # 328: his line differs from ours only by accents; 104: only by his slips ('caithfinid', 'ata') and 'muid'
+def tidy(t):
+    t=re.sub(r"Kai decided to keep '([Tt])á … uaim'","We use 'tá … uaim'",t)
+    t=re.sub(r'\bseeds\b','sentences',re.sub(r'\bseed\b','sentence',t))
+    return ' '.join(t.split())
+# cs #323·AI, Kai 16 Nov: the analytic choice ('tá mé' for 'táim', verb + 'muid' for '-imid/-amar/-imis') is explained
+# ONCE, at the first row in his sheet order where it applies, in Kai's words; he knows both forms, so never "both are
+# standard". Every later row whose only difference from his line is that choice is blank; other rows keep their other
+# notes with the analytic explanation taken out.
+ONCE="We've gone with tá mé throughout because it makes later patterns much easier to teach."
+FAMILY=[r"We use 'tá mé / níl mé' rather than 'táim / nílim'\. ",r"Both are standard; this matches 'tá tú, tá sé', which learners already have\. ",
+ r"We use 'muid' for 'we' \(e\.g\. 'bhí muid', 'caithfidh muid'\), to match 'tá mé'\. ",r"We use the verb \+ 'muid' for 'we' in every tense\. ",
+ r"The official standard gives it equal status with the one-word forms, and it means one new word for the learner instead of a new verb ending in each tense\. "]
+FAMILY_LEFT=re.compile(r"tá mé / níl mé|'muid' for 'we'|every tense|one-word forms|two-word|táim|nílim|labharaíomar|both forms are standard",re.I)
+SYN1={'táim':('tá','mé'),'nílim':('níl','mé'),'nílím':('níl','mé'),'atáim':('atá','mé'),'bhfuilim':('bhfuil','mé'),'táimid':('tá','muid'),'táímid':('tá','muid'),'nílimid':('níl','muid')}
+SYN=re.compile(r'(.+?)(aíomar|íomar|eamar|amar|omar|aímid|ímid|aimid|imid|aimis|imis)$')
+ANA=re.compile(r'(.+?)(idh|adh|eadh|dh|aíonn|íonn|ann|eann)$')
+fada=lambda t:t.translate(str.maketrans('áéíóú','aeiou'))
+skel=lambda t:re.sub(r'[aeiou]','',fada(t))
+def famonly(ours,histext):
+    """True when his line becomes ours by writing his synthetic verb forms analytically (fadas aside): (only, used)."""
+    a=nrm(ours).split(); b=nrm(histext).split(); i=j=0; used=False
+    while i<len(a) and j<len(b):
+        x,y=a[i],b[j]
+        if fada(x)==fada(y): i+=1; j+=1; continue
+        if y in SYN1 and i+1<len(a) and (x,a[i+1])==SYN1[y]: i+=2; j+=1; used=True; continue
+        m=SYN.match(y)
+        if m and i+1<len(a) and a[i+1]=='muid':
+            n=ANA.match(x); xs=n.group(1) if n else x
+            if skel(xs)==skel(m.group(1)): i+=2; j+=1; used=True; continue
+        return False,False
+    return (i==len(a) and j==len(b) and used),used
+def strip_family(c):
+    if not c: return c,False
+    c2=c
+    for f in FAMILY: c2=re.sub(f,'',c2+' ').strip()
+    hit=c2!=c
+    if hit and "Otherwise this is yours. " in c2+' ':   # it pointed past the removed sentence: move it to the end
+        c2=(c2+' ').replace("Otherwise this is yours. ",'').strip()
+        c2=re.sub(r'\s*(Is this OK\?)?$',lambda m:' Otherwise this is yours.'+(' '+m.group(1) if m.group(1) else ''),c2,count=1).strip()
+    return c2,hit
+KEEPQ={613}   # family-only, but the comment asks him something separate ('is dócha'): keep it
+HAND[405]=("ar chóir dúinn fiafraí de an gcaithfidh muid áirithint a dhéanamh?","We wrote 'fiafraí de' without 'a' before it. Is this OK?")
+HAND[568]=("Tá mé ag súil le feabhas a fheiceáil an chéad uair eile a bhuailfidh muid le chéile","We kept the future 'a bhuailfidh' for 'next time we meet', as in your earlier version of this sentence. Is this OK?")
+HAND[406]=("Níor chóir, tá mé cinnte go mbeidh sé ceart go leor","We left out 'de' after 'cinnte', as you do at 340. Is this OK?")
+once_at=None; fam_blank=[]
+rows=[];stale=[];counts={'blank':0,'hand':0,'planned':0,'later':0,'option':0,'base':0}
+for r in his:
+    n=int(r['A']); s=live[n]; ours=s['target_text']; b=base[n]
+    opts=options(r.get('F',''))
+    fo,fused=famonly(ours,opts[0] if opts else r.get('F',''))
+    first = once_at is None and fused
+    if first: once_at=n
+    if nrm(ours)==nrm(r.get('F','')) or (opts and nrm(ours)==opts[0]) or n in QUIET or (fo and not first and n not in KEEPQ):
+        c=''; counts['blank']+=1
+        if fo and not (nrm(ours)==nrm(r.get('F','')) or n in QUIET): fam_blank.append(n)
+    elif n in PLANNED and nrm(ours)==nrm(PLANNED[n][0]): c=PLANNED[n][1]; counts['planned']+=1
+    elif n in HAND:
+        if nrm(ours)!=nrm(HAND[n][0]): stale.append(n); c=''
+        else: c=HAND[n][1]; counts['hand']+=1
+    elif nrm(ours) in opts[1:]:
+        c='Ours is your %s option.'%['','second','third','fourth'][opts.index(nrm(ours))]; counts['option']+=1
+    else:
+        assert nrm(b['Irish now (our draft)'])==nrm(ours),('base note written for other text',n)
+        bh=options(b['Your Irish'])
+        later = bh and (nrm(ours)==bh[0] or famonly(ours,bh[0])[0]) and nrm(b['Your Irish'])!=nrm(r.get('F','')) and bh[0]!=(opts[0] if opts else nrm(r.get('F','')))
+        w,_=strip_family(tidy(b['Why we differ'])); w=w.replace('Otherwise this is yours.','').strip() if later else w; q=''   # the 12 Nov questions are settled by his own sheet (Kai, 16 Nov 18:45Z: "If he left it as it was, it's fine like that and if he changed it, we have an answer. Same for any other questions"); the comment keeps what and why, and asks if it is OK
+        if later:
+            c=('We used the wording you sent us later for this one.'+(' '+w if w and 'Same' not in b['Same as yours?'] else '')).strip(); counts['later']+=1
+        elif not w and not q:
+            c=''
+            if not first: stale.append(n)
+        else:
+            c=(w+' '+q).strip(); counts['base']+=1
+        if c and not c.rstrip(' )').endswith('?'): c+=' Is this OK?'
+    c,hit=strip_family(c)
+    if c in ('Is this OK?','Otherwise this is yours.','Otherwise this is yours. Is this OK?'): c=''
+    if first:
+        c=(ONCE+' '+c).strip() if c else ONCE
+    elif hit and not c and not fo: stale.append(n)   # it differs in more than the analytic forms but only that was said
+    assert not FAMILY_LEFT.search(c) or n==once_at,('analytic-form note left in a later row',n,c)
+    rows.append((n,ours,s['known_text'],c))
+assert not stale, ('rows needing a hand-written comment', stale)
+# cs #324·AI, Kai 16 Nov 19:49-19:53Z: column C is rewritten in Kai's style from comments-kai-style.txt (rules in its
+# header). The rules above still decide WHICH rows needed a comment; every such row must have an entry there, written for
+# the live Irish quoted beside it, or the build fails. Each 'quoted' piece must be in his line, our line, a sentence the
+# comment names by number, or the course's English; internal words are refused outright.
+def load_kai(p):
+    out={}; cur=None
+    for ln in open(p,encoding='utf-8').read().split('\n'):
+        if ln.startswith('#'): continue
+        m=re.match(r'@(\d+) \| (.*?)( #nr)?$',ln)
+        if m: cur=int(m.group(1)); out[cur]=[m.group(2),'',bool(m.group(3))]; continue
+        if cur is not None and ln.strip() and not out[cur][1]: out[cur][1]=ln.strip()
+    return out
+KAI=load_kai(os.path.join(HERE,'comments-kai-style.txt'))
+fnrm=lambda s:fada(nrm(s))
+ENGLISH=' '.join(fnrm(x['known_text']) for x in live.values())
+BANNED=re.compile(r'lego|frame|basket|syllab|\bboth\b|standard|word for word|the english is|seed part|\bzut\b|\btile|phrase role|\bseed',re.I)
+hisF={int(r['A']):r.get('F','') for r in his}
+missing=[];kstale=[];badq=[];banned=[];final=[]
+for n,ours,en,c in rows:
+    if c and n not in KAI: missing.append(n)
+    if n in KAI:
+        if nrm(KAI[n][0])!=nrm(ours): kstale.append(n)
+        c=KAI[n][1]
+        pool=[fnrm(hisF[n]),fnrm(ours)]+[fnrm(live[int(x)]['target_text']) for x in re.findall(r'\b(\d{1,3})\b',c) if int(x) in live]
+        for q in re.findall(r'‘([^’]*)’',c):
+            for frag in [fnrm(x) for x in q.split('…') if fnrm(x)]:
+                if not any(frag in p for p in pool) and frag not in ENGLISH: badq.append((n,frag))
+        if BANNED.search(c): banned.append((n,c))
+    final.append((n,ours,en,c))
+assert not missing,('rows with no Kai-style comment',missing)
+assert not kstale,('Kai-style comment written for other Irish',kstale)
+assert not badq,('quoted pieces not found',badq)
+assert not banned,('internal or banned words',banned)
+assert dict((n,c) for n,_,_,c in final)[once_at]==ONCE
+rows=final
+print('kai-style:',sum(1 for x in rows if x[3]),'commented,',sum(1 for x in rows if not x[3]),'blank; no reason found:',sorted(n for n in KAI if KAI[n][2] and KAI[n][1]))
+H=['Gaeilge (anois)','English','Ár nóta / Our comment','Do thuairimí / Your comments']
+with open(os.path.join(HERE,'gle-v2-sheet-for-eoghan.csv'),'w',newline='') as f:
+    w=csv.writer(f); w.writerow(['Seed']+H); [w.writerow([n,a,b,c,'']) for n,a,b,c in rows]
+print(counts, sum(1 for x in rows if x[3]), 'once at seed',once_at, 'family-only blanks',len(fam_blank),fam_blank)
+col=lambda i:chr(65+i)
+def cell(ci,ri,v,st): return f'<c r="{col(ci)}{ri}" t="inlineStr" s="{st}"><is><t xml:space="preserve">{escape(str(v))}</t></is></c>'
+sh=['<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><cols><col min="1" max="1" width="6" customWidth="1"/><col min="2" max="3" width="45" customWidth="1"/><col min="4" max="4" width="70" customWidth="1"/><col min="5" max="5" width="40" customWidth="1"/></cols><sheetData>']
+sh.append('<row r="1">'+''.join(cell(i,1,h,1) for i,h in enumerate(['Seed']+H))+'</row>')
+for ri,(n,a,b,c) in enumerate(rows,2):
+    st=2 if c else 3
+    sh.append(f'<row r="{ri}"><c r="A{ri}" s="{st}"><v>{n}</v></c>'+cell(1,ri,a,st)+cell(2,ri,b,st)+(cell(3,ri,c,st) if c else '')+f'<c r="E{ri}" s="4"/></row>')
+sh.append('</sheetData></worksheet>')
+styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="4"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FFFFF2A8"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFEAF4FF"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf/></cellStyleXfs><cellXfs count="5"><xf/><xf fontId="1" applyFont="1"><alignment wrapText="1" vertical="top"/></xf><xf fillId="2" applyFill="1"><alignment wrapText="1" vertical="top"/></xf><xf><alignment wrapText="1" vertical="top"/></xf><xf fillId="3" applyFill="1"><alignment wrapText="1" vertical="top"/></xf></cellXfs></styleSheet>'
+out=os.path.join(HERE,'gle-v2-sheet-for-eoghan.xlsx')
+z=zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED)
+z.writestr('[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>')
+z.writestr('_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>')
+z.writestr('xl/workbook.xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Bileog1" sheetId="1" r:id="rId1"/></sheets></workbook>')
+z.writestr('xl/_rels/workbook.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>')
+z.writestr('xl/styles.xml',styles); z.writestr('xl/worksheets/sheet1.xml',''.join(sh)); z.close()

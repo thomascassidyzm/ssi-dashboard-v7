@@ -1,0 +1,136 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02B01",
+   "set": {
+    "known_text": "really quiet today"
+   },
+   "expect": {
+    "known_text": "rather quiet today",
+    "target_text": "reit ddistaw heddiw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02B02",
+   "set": {
+    "known_text": "she was really quiet"
+   },
+   "expect": {
+    "known_text": "she was rather quiet",
+    "target_text": "oedd hi’n reit ddistaw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02B03",
+   "set": {
+    "known_text": "that man is really quiet"
+   },
+   "expect": {
+    "known_text": "that man is rather quiet",
+    "target_text": "mae’r dyn ’na’n reit ddistaw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02B04",
+   "set": {
+    "known_text": "she was really quiet last night"
+   },
+   "expect": {
+    "known_text": "she was rather quiet last night",
+    "target_text": "oedd hi’n reit ddistaw neithiwr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02U01",
+   "set": {
+    "known_text": "why was she really quiet?"
+   },
+   "expect": {
+    "known_text": "why was she rather quiet?",
+    "target_text": "pam oedd hi’n reit ddistaw?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02U02",
+   "set": {
+    "known_text": "yes that’s really quiet"
+   },
+   "expect": {
+    "known_text": "yes that’s rather quiet",
+    "target_text": "ia, mae hynna’n reit ddistaw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02U03",
+   "set": {
+    "known_text": "I’m worried because she was really quiet last night"
+   },
+   "expect": {
+    "known_text": "I’m worried because she was rather quiet last night",
+    "target_text": "dw i’n poeni achos oedd hi’n reit ddistaw neithiwr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02U04",
+   "set": {
+    "known_text": "he’s really quiet but he’s my friend"
+   },
+   "expect": {
+    "known_text": "he’s rather quiet but he’s my friend",
+    "target_text": "mae o’n reit ddistaw ond mae o’n ffrind i mi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02U05",
+   "set": {
+    "known_text": "she was really quiet but she was very kind"
+   },
+   "expect": {
+    "known_text": "she was rather quiet but she was very kind",
+    "target_text": "oedd hi’n reit ddistaw ond oedd hi’n garedig iawn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1362L02U06",
+   "set": {
+    "known_text": "we’re really quiet tonight"
+   },
+   "expect": {
+    "known_text": "we’re rather quiet tonight",
+    "target_text": "dan ni’n reit ddistaw heno"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1362,
+   "set": {
+    "known_text": "no he was really quiet after you left"
+   },
+   "expect": {
+    "known_text": "no he was rather quiet after you left",
+    "target_text": "naddo, oedd o’n reit ddistaw ar ôl i ti adael"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1362L02",
+   "set": {
+    "known_text": "really quiet"
+   },
+   "expect": {
+    "known_text": "rather quiet",
+    "target_text": "reit ddistaw"
+   }
+  }
+ ]
+}

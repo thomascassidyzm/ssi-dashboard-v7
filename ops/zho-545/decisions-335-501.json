@@ -1,0 +1,1253 @@
+{
+ "range": [
+  335,
+  501
+ ],
+ "snapshot": "zho-2026-11-03.json",
+ "coverage": {
+  "seeds": 167,
+  "legos": 284,
+  "build": 831,
+  "use": 1698,
+  "component": 359,
+  "read_in_full": true,
+  "note": "Every seed, LEGO, component, build and use row in 335-501 read in full by one reader; a regex pass for time words and the context verbs (坐/弹/穿/打/开/拿/玩…) was run afterwards as a cross-check only. Point B: no defect found — every time-when expression in range already precedes its verb. Point C: 坐 is used only for sitting/riding (坐火车, 坐在…), 玩/穿/开/拿 correctly; the C findings are 树立, 杀掉, 知道, 在乎 and the 做 'create' LEGO. #195 rows in range that are plain dropped-object / missing-chunk / mismatch were not worked (out of scope)."
+ },
+ "decisions": [
+  {
+   "id": "zho_for_eng:S0342L01U07",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "I have spoken with her several days ago",
+    "target": "我几天前和她说过话"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "I spoke with her several days ago",
+    "target": "我几天前和她说过话",
+    "roman": null
+   },
+   "why": "English is ungrammatical: present perfect ('I have spoken') cannot take a finished time like 'several days ago'. Simple past is the natural English; the Chinese (过 + 几天前) is already right and is unchanged.",
+   "gloss": "我 I / 几天前 several days ago / 和她 with her / 说过话 have spoken (words)"
+  },
+  {
+   "id": "zho_for_eng:S0420L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "he is how old?",
+    "target": "他多大年纪"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "how old is he?",
+    "target": "他多大年纪",
+    "roman": null
+   },
+   "why": "'he is how old?' is word-for-word Chinese order, not English. The English question is 'how old is he?'; Chinese unchanged.",
+   "gloss": "他 he / 多大年纪 how old (what age)"
+  },
+  {
+   "id": "zho_for_eng:S0420L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "nobody needs to ask how old",
+    "target": "没有人需要问多大年纪"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "nobody needs to ask how old he is",
+    "target": "没有人需要问他多大年纪",
+    "roman": "méiyǒu rén xūyào wèn tā duō dà niánjì"
+   },
+   "why": "'nobody needs to ask how old' is an unfinished English sentence in a USE phrase (replayed cold). Adding 'he is' / 他 makes a complete sentence matching the seed's own pattern (问他多大年纪).",
+   "taught": "没有人=S0367L01, 需要 (taught early, used in seed 420 itself), 问他多大年纪=seed 420 / S0420L01U01 chunk 问他多大年纪",
+   "gloss": "没有人 nobody / 需要 needs / 问 ask / 他 him / 多大年纪 how old"
+  },
+  {
+   "id": "zho_for_eng:S0441L02U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "this is a kind of way",
+    "target": "这是一种方式"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "this is one way",
+    "target": "这是一种方式",
+    "roman": null
+   },
+   "why": "'this is a kind of way' is not natural English. 'this is one way' says what 这是一种方式 says; the Chinese is fine and unchanged.",
+   "gloss": "这 this / 是 is / 一种 one kind of / 方式 way"
+  },
+  {
+   "id": "zho_for_eng:S0479L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "nobody can do at least this",
+    "target": "没有人至少能做这个"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "delete",
+   "after": null,
+   "why": "'nobody can do at least this' is not English, and 没有人至少能做这个 ('nobody at least can do this') is not sense in Chinese either. No reword from taught material says anything useful here; the LEGO keeps five other USE phrases.",
+   "gloss": "没有人 nobody / 至少 at least / 能 can / 做 do / 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0499L02B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "should close window",
+    "target": "应该关窗"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "should close the window",
+    "target": "应该关窗",
+    "roman": null
+   },
+   "why": "Missing article: 'should close window' is broken English even for a build. 'should close the window' — Chinese unchanged.",
+   "gloss": "应该 should / 关窗 close window"
+  },
+  {
+   "id": "seed:338",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "before": {
+    "known": "very terrible",
+    "target": "很糟糕"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "so terrible",
+    "target": "很糟糕",
+    "roman": null
+   },
+   "why": "'very terrible' is borderline English: 'terrible' is an extreme adjective and natives say 'really terrible' or 'so terrible', not 'very terrible'. But it is a SEED (course-wide blast radius) and 很糟糕 is exactly the normal Chinese, so this is Kai's call. If changed, the natural pick is 'so terrible' (keeping 很糟糕); 'really terrible' is already taken by S0338L01B04 真糟糕, so it would clash.",
+   "gloss": "很 very / 糟糕 terrible (hěn zāogāo)",
+   "knockOn": [
+    "zho_for_eng:S0338L01B02",
+    "zho_for_eng:S0338L01U01",
+    "zho_for_eng:S0338L01U03",
+    "zho_for_eng:S0338L01U04"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0338L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "very terrible",
+    "target": "很糟糕"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "so terrible",
+    "target": "很糟糕",
+    "roman": null
+   },
+   "why": "Build copy of the seed 'very terrible'; follows whatever Kai rules on seed 338.",
+   "gloss": "很 very / 糟糕 terrible"
+  },
+  {
+   "id": "zho_for_eng:S0338L01U08",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "I feel that this life is too terrible",
+    "target": "我觉得这个生活太糟糕了"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'I feel that this life is too terrible' is not something a native says (and 这个生活 'this life' is also odd Chinese). Options: delete (the LEGO has seven other USE phrases), or 'I feel that life is too hard' — but 'hard' is not this LEGO. Recommend delete.",
+   "gloss": "我觉得 I feel / 这个 this / 生活 life / 太糟糕了 too terrible (wǒ juéde zhège shēnghuó tài zāogāo le)"
+  },
+  {
+   "id": "zho_for_eng:S0440L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "she said we should go while it's good",
+    "target": "她说我们应该趁好的时候去"
+   },
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'she said we should go while it's good' is unnatural English, and 趁好的时候去 ('take advantage of the good time to go') is odd Chinese. Recommend delete; S0440L01 keeps five other USE phrases.",
+   "gloss": "她说 she said / 我们应该 we should / 趁 take the chance while / 好的时候 the good time / 去 go (tā shuō wǒmen yīnggāi chèn hǎo de shíhou qù)"
+  },
+  {
+   "id": "zho_for_eng:S0350L02U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "he knows some Chinese",
+    "target": "他知道一些中文"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "he can speak some Chinese",
+    "target": "他会说一些中文",
+    "roman": "tā huì shuō yīxiē zhōngwén"
+   },
+   "why": "知道 means 'to know a fact'; you cannot 知道 a language. 'He knows some Chinese' is 他会说一些中文 (he can speak some Chinese). The course already teaches 'can speak Chinese' = 会说中文 (seed 9), so this follows that rule and keeps the LEGO 一些.",
+   "taught": "他; 会说中文 = S0009L01 ('I can speak Chinese' 我会说中文); 一些 = S0350L02 (own LEGO)",
+   "gloss": "他 he / 会 can (knows how to) / 说 speak / 一些 some / 中文 Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0343L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "he wants to know about the economy",
+    "target": "他想知道经济"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "he wants to find out about the economy",
+    "target": "他想了解经济",
+    "roman": "tā xiǎng liǎojiě jīngjì"
+   },
+   "why": "知道 + a noun like 经济 ('know the economy') is wrong Chinese: 知道 takes a fact. 'Find out about / get to know' is 了解, which the course teaches at S0101L02 as 'finding out'. English moves to that taught gloss.",
+   "taught": "他想 (S0001L01 我想 pattern); 了解 = S0101L02 'finding out'; 经济 = S0343L01 (own LEGO)",
+   "gloss": "他 he / 想 wants / 了解 find out about / 经济 economy"
+  },
+  {
+   "id": "zho_for_eng:S0421L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "he needs to take care of his health",
+    "target": "他需要在乎自己的身体"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "he needs to care about his health",
+    "target": "他需要在乎自己的身体",
+    "roman": null
+   },
+   "why": "在乎 means 'care about' (mind, be bothered about), not 'take care of'. The Chinese says 'he needs to care about his own body/health', so the English is corrected to that; 'take care of' would need a different verb (照顾/注意) that is not taught.",
+   "gloss": "他 he / 需要 needs / 在乎 care about / 自己的 his own / 身体 body (health)"
+  },
+  {
+   "id": "zho_for_eng:S0417L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "get rid of those",
+    "target": "杀掉那些"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "kill those",
+    "target": "杀掉那些",
+    "roman": null
+   },
+   "why": "杀掉 means 'kill', not 'get rid of'. Glossing it 'get rid of' teaches an over-broad mapping and clashes with the 'kill' rows of the same LEGO. English moves to 'kill'.",
+   "gloss": "杀掉 kill (off) / 那些 those"
+  },
+  {
+   "id": "zho_for_eng:S0417L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "he thought we should get rid of them",
+    "target": "他觉得我们应该杀掉那些"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "he thought we should kill them",
+    "target": "他觉得我们应该杀掉那些",
+    "roman": null
+   },
+   "why": "Same over-broad 'get rid of' = 杀掉; the same LEGO already has 'I don't think we should kill them' = 我觉得我们不应该杀掉那些, so 'kill them' is the consistent English.",
+   "gloss": "他觉得 he thought / 我们应该 we should / 杀掉 kill / 那些 those"
+  },
+  {
+   "id": "zho_for_eng:S0417L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "let's get rid of all of those",
+    "target": "让我们杀掉所有那些"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "after": {
+    "known": "let's kill all of those",
+    "target": "让我们杀掉所有那些",
+    "roman": null
+   },
+   "why": "Same over-broad 'get rid of' = 杀掉. English moves to 'kill'.",
+   "gloss": "让我们 let's / 杀掉 kill / 所有 all / 那些 those"
+  },
+  {
+   "id": "zho_for_eng:S0407L02U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "she managed to establish good habits",
+    "target": "她能树立好的东西"
+   },
+   "point": "C",
+   "r195": true,
+   "action": "delete",
+   "after": null,
+   "why": "树立 is a context-bound verb: it goes with 榜样 'an example', 目标 'a goal', 形象 'an image' — never with 好的东西 'good things'. 树立好的东西 is not Chinese, and the English ('good habits') does not even match it. 'Habit' is not taught, and the right object (榜样) is the NEXT sibling LEGO, so no legal reword exists. Delete (also #195).",
+   "gloss": "…树立 set up / establish + 好的东西 good things (shùlì hǎo de dōngxi)"
+  },
+  {
+   "id": "zho_for_eng:S0407L02U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "everyone should try to establish good habits",
+    "target": "所有人都应该试着树立好的东西"
+   },
+   "point": "C",
+   "r195": true,
+   "action": "delete",
+   "after": null,
+   "why": "树立 is a context-bound verb: it goes with 榜样 'an example', 目标 'a goal', 形象 'an image' — never with 好的东西 'good things'. 树立好的东西 is not Chinese, and the English ('good habits') does not even match it. 'Habit' is not taught, and the right object (榜样) is the NEXT sibling LEGO, so no legal reword exists. Delete (also #195).",
+   "gloss": "…树立 set up / establish + 好的东西 good things (shùlì hǎo de dōngxi)"
+  },
+  {
+   "id": "zho_for_eng:S0407L02U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "let's try to establish good habits",
+    "target": "让我们试着树立好的东西"
+   },
+   "point": "C",
+   "r195": true,
+   "action": "delete",
+   "after": null,
+   "why": "树立 is a context-bound verb: it goes with 榜样 'an example', 目标 'a goal', 形象 'an image' — never with 好的东西 'good things'. 树立好的东西 is not Chinese, and the English ('good habits') does not even match it. 'Habit' is not taught, and the right object (榜样) is the NEXT sibling LEGO, so no legal reword exists. Delete (also #195).",
+   "gloss": "…树立 set up / establish + 好的东西 good things (shùlì hǎo de dōngxi)"
+  },
+  {
+   "id": "zho_for_eng:S0407L02U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "he wasn't able to establish good habits",
+    "target": "他没能树立好的东西"
+   },
+   "point": "C",
+   "r195": true,
+   "action": "delete",
+   "after": null,
+   "why": "树立 is a context-bound verb: it goes with 榜样 'an example', 目标 'a goal', 形象 'an image' — never with 好的东西 'good things'. 树立好的东西 is not Chinese, and the English ('good habits') does not even match it. 'Habit' is not taught, and the right object (榜样) is the NEXT sibling LEGO, so no legal reword exists. Delete (also #195).",
+   "gloss": "…树立 set up / establish + 好的东西 good things (shùlì hǎo de dōngxi)"
+  },
+  {
+   "id": "zho_for_eng:S0407L02U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "we can try to establish something better",
+    "target": "我们可以试着树立更好的东西"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "delete",
+   "after": null,
+   "why": "Same fault: 树立更好的东西 'establish better things' is not a Chinese collocation (树立 needs 榜样/目标). No legal reword before 榜样 is taught. Delete.",
+   "gloss": "我们 we / 可以 can / 试着 try to / 树立 establish / 更好的东西 better things"
+  },
+  {
+   "id": "S0407L02",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "before": {
+    "known": "to establish",
+    "target": "树立"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "to set an example",
+    "target": "树立榜样",
+    "roman": "shùlì bǎngyàng"
+   },
+   "why": "Root of the 树立 problem: 'to establish | 树立' taught bare lets the learner think 树立 means 'establish' in general; in fact it only works with 榜样 (example), 目标 (goal). The seed's chunk is 树立好榜样 'set a good example'. K40: carry the context inside the LEGO — re-cut S0407L02+S0407L03 into one LEGO 'set an example | 树立榜样' (never deleting a LEGO: L03 grows / merges per Kai). That is a re-cut, so it is Kai's call. With the four deletes above, L02 is left with U01 (also weak, see below) and its builds.",
+   "gloss": "树立 set up / 榜样 role model, example",
+   "knockOn": [
+    "zho_for_eng:S0407L02B01",
+    "zho_for_eng:S0407L02B02",
+    "zho_for_eng:S0407L02B03",
+    "zho_for_eng:S0407L02U01",
+    "zho_for_eng:S0407L03B02",
+    "zho_for_eng:S0407L03U01",
+    "zho_for_eng:S0407L03U06"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0407L02U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "it's important to establish this",
+    "target": "树立这个很重要"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "树立这个很重要 'establishing this is important' — 树立 + 这个 is vague and weak Chinese for the same reason (树立 wants 榜样/目标). Keep or delete depends on the LEGO re-cut above; if L02 stays as it is, deleting this leaves L02 with no USE phrase.",
+   "gloss": "树立 establish / 这个 this / 很重要 is important (shùlì zhège hěn zhòngyào)"
+  },
+  {
+   "id": "S0372L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "before": {
+    "known": "to create",
+    "target": "做"
+   },
+   "point": "C",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'to create | 做' over-maps: 做 is just 'do/make' (already taught as S0051L01 'to do | 做'); 'create' is 创造. The seed says 你看到她想做什么了吗 = 'did you see what she wanted to make/do', so the honest gloss is 'to make' — but that would make this LEGO a duplicate of a taught 做 and rewording the seed's English ('trying to create') is a seed decision. Its builds also use 试试做 'try doing' for 'trying to', and U02/U03 我在试试做点什么 (在 + 试试) is ungrammatical. Kai's call: re-gloss as 'to make' (not-new) and fix U02/U03, or keep.",
+   "gloss": "做 do / make (zuò)",
+   "knockOn": [
+    "seed:372",
+    "zho_for_eng:S0372L01B02",
+    "zho_for_eng:S0372L01U02",
+    "zho_for_eng:S0372L01U03"
+   ]
+  },
+  {
+   "id": "S0336L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "before": {
+    "known": "door",
+    "target": "扇"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "that door",
+    "target": "那扇门",
+    "roman": "nà shàn mén"
+   },
+   "why": "LEGO says 'door | 扇' but 扇 is only the measure word for doors/windows; 'door' is 门. The LEGO should be 'that door | 那扇门' (or the intro must say 扇 is the counter). L26-correct: 那扇门 is in the seed.",
+   "gloss": "扇 measure word for doors/windows; 门 door",
+   "knockOn": [
+    "zho_for_eng:S0336L01B01",
+    "zho_for_eng:S0336L01B02",
+    "zho_for_eng:S0336L01B03"
+   ]
+  },
+  {
+   "id": "S0411L02",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "before": {
+    "known": "a table",
+    "target": "一张"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "a table",
+    "target": "一张桌子",
+    "roman": "yī zhāng zhuōzi"
+   },
+   "why": "LEGO says 'a table | 一张' but 一张 is 'one + flat-thing counter'; 'table' is 桌子. Should be 'a table | 一张桌子' (in the seed) or the intro must explain 张.",
+   "gloss": "一 one / 张 counter for flat things / 桌子 table"
+  },
+  {
+   "id": "S0337L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "before": {
+    "known": "like to play",
+    "target": "喜欢玩"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "LEGO 'like to play | 喜欢玩' is not in its seed (你觉得他还能继续玩吗 'do you think he can keep playing?' has no 喜欢) — L26 breach; the seed's new material is 还能继续玩. Kai to decide the re-cut.",
+   "gloss": "喜欢 like / 玩 play"
+  },
+  {
+   "id": "seed:461",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "before": {
+    "known": "a shop where I can buy some postcards.",
+    "target": "我想买明信片的商店"
+   },
+   "point": "other",
+   "r195": true,
+   "action": "hold",
+   "after": {
+    "known": "a shop where I can buy some postcards",
+    "target": "我能买一些明信片的商店",
+    "roman": "wǒ néng mǎi yīxiē míngxìnpiàn de shāngdiàn"
+   },
+   "why": "Seed English 'a shop where I can buy some postcards' but Chinese 我想买明信片的商店 says 'a shop where I WANT to buy postcards' (想 = want). Should be 我能买一些明信片的商店 (能 can). Seed edit → Kai (#195 has the matching use row S0461L01U01).",
+   "gloss": "我 I / 想 want / 买 buy / 明信片 postcards / 的商店 shop that…",
+   "knockOn": [
+    "zho_for_eng:S0461L01U01"
+   ]
+  },
+  {
+   "id": "seed:464",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "before": {
+    "known": "I told her my room number once but she forgot it.",
+    "target": "我告诉过她我的房间号码一次，但是她忘了"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "I told her my room number once but she forgot it",
+    "target": "我告诉过她一次我的房间号码，但是她忘了",
+    "roman": "wǒ gàosu guo tā yī cì wǒ de fángjiān hàomǎ, dànshì tā wàng le"
+   },
+   "why": "一次 'once' sits after a long object: 我告诉过她我的房间号码一次 is awkward/wrong; with a noun object the frequency goes before it: 我告诉过她一次我的房间号码. Seed edit → Kai.",
+   "gloss": "我 I / 告诉过 have told / 她 her / 一次 once / 我的房间号码 my room number / 但是她忘了 but she forgot",
+   "knockOn": [
+    "zho_for_eng:S0464L02U02"
+   ]
+  },
+  {
+   "id": "seed:479",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "before": {
+    "known": "it's the least I could do.",
+    "target": "这是我至少能做的事"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "这是我至少能做的事 is a word-for-word calque of 'the least I could do' and reads as 'this is the thing I at least can do'. Natural Chinese is 这是我起码应该做的 / 这是我最起码能做的. Needs an untaught word, so Kai's call (keep, or re-cut).",
+   "gloss": "这是 this is / 我 I / 至少 at least / 能做的事 the thing (I) can do"
+  },
+  {
+   "id": "seed:483",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "before": {
+    "known": "life isn't easy but it's not meant to be easy.",
+    "target": "生活并不容易，但是也不是应该容易的"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "life isn't easy but it's not meant to be easy",
+    "target": "生活并不容易，但是本来就不应该容易",
+    "roman": "shēnghuó bìng bù róngyì, dànshì běnlái jiù bù yīnggāi róngyì"
+   },
+   "why": "生活并不容易，但是也不是应该容易的 ('but also isn't should-easy') is not grammatical Chinese. Natural: 生活并不容易，但是本来就不应该容易 (本来 is taught at S0484L01). Seed edit → Kai.",
+   "gloss": "生活 life / 并不容易 isn't easy / 但是 but / 也不是 also isn't / 应该容易的 should-easy",
+   "knockOn": [
+    "zho_for_eng:S0483L01U06",
+    "zho_for_eng:S0483L02U02"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0384L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "I just wanted to tell you something",
+    "target": "我刚才想告诉你一件事"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "I wanted to tell you something a moment ago",
+    "target": "我刚才想告诉你一件事",
+    "roman": null
+   },
+   "why": "ZUT clash: identical English 'I just wanted to tell you something' is already S0357L01U02 = 我只是想告诉你一件事. Here it means 刚才 'a moment ago'. Fix the English to 'I wanted to tell you something a moment ago'.",
+   "gloss": "我 I / 刚才 a moment ago / 想 wanted / 告诉你 tell you / 一件事 one thing"
+  },
+  {
+   "id": "zho_for_eng:S0478L02B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "a kind heart",
+    "target": "很好的心"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "a very good heart",
+    "target": "很好的心",
+    "roman": null
+   },
+   "why": "ZUT clash: 'a kind heart' is the next LEGO S0478L03 = 善良的心, but here = 很好的心 ('a very good heart').",
+   "gloss": "很好的 very good / 心 heart"
+  },
+  {
+   "id": "zho_for_eng:S0478L02U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "you have a very kind heart",
+    "target": "你有一颗很好的心"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "you have a very good heart",
+    "target": "你有一颗很好的心",
+    "roman": null
+   },
+   "why": "Same clash: 'kind heart' = 善良的心 (S0478L03) but this says 很好的心 ('very good heart').",
+   "gloss": "你有 you have / 一颗 one (counter) / 很好的心 very good heart"
+  },
+  {
+   "id": "zho_for_eng:S0459L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的衣服很好看"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的连衣裙很好看",
+    "roman": "nà jiàn lánsè de liányīqún hěn hǎokàn"
+   },
+   "why": "ZUT: 'dress' is taught as 连衣裙 (S0394L02); here 'dress' = 衣服 ('clothes').",
+   "gloss": "那件 that (counter) / 蓝色的 blue / 衣服 clothes / 很好看 very nice-looking"
+  },
+  {
+   "id": "zho_for_eng:S0339L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "very hurt",
+    "target": "很伤"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "很伤 is not Chinese for 'very hurt' (伤 alone after 很 is not used; 很伤心 = 'very sad', 伤得很重 = 'badly hurt').",
+   "gloss": "很 very / 伤 wound"
+  },
+  {
+   "id": "zho_for_eng:S0348L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "I will try",
+    "target": "我将要试试"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "我将要试试 — 将要 ('be about to', formal) with reduplicated 试试 ('have a try') is an ungrammatical mix. Recommend delete.",
+   "gloss": "我 I / 将要 am about to / 试试 have a little try"
+  },
+  {
+   "id": "zho_for_eng:S0351L01U08",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "stay quiet",
+    "target": "待着安静"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'stay quiet | 待着安静' — 待着安静 is not Chinese (would be 安静地待着). Also a bare imperative USE. Recommend delete.",
+   "gloss": "待着 stay / 安静 quiet"
+  },
+  {
+   "id": "zho_for_eng:S0381L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "come with",
+    "target": "跟一起走"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "come with me",
+    "target": "跟我一起走",
+    "roman": "gēn wǒ yīqǐ zǒu"
+   },
+   "why": "'come with | 跟一起走' — 跟…一起 needs a person between: 跟我一起走. As written it is not Chinese.",
+   "gloss": "跟 with/follow / 一起 together / 走 go"
+  },
+  {
+   "id": "zho_for_eng:S0393L02U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁在穿绿色吗？"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁穿了绿色吗？",
+    "roman": "nǐ zhīdào shéi chuān le lǜsè ma?"
+   },
+   "why": "谁在穿绿色 means 'who is in the act of putting on green'; 'who was wearing green' is 谁穿着绿色 / 谁穿了绿色 (cf. S0393L03U06 谁穿了绿色衬衫).",
+   "gloss": "你知道 do you know / 谁 who / 在穿 is putting on / 绿色 green"
+  },
+  {
+   "id": "zho_for_eng:S0376L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "went somewhere",
+    "target": "去了哪儿"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'went somewhere | 去了哪儿' — 去了哪儿 is the question 'where did (you) go?', not 'went somewhere'.",
+   "gloss": "去了 went / 哪儿 where"
+  },
+  {
+   "id": "zho_for_eng:S0411L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "I have four people in my family",
+    "target": "我家庭有四人"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "我家庭有四人 is not Chinese; 'there are four people in my family' is 我家有四口人.",
+   "gloss": "我 I / 家庭 family / 有 have / 四人 four people"
+  },
+  {
+   "id": "zho_for_eng:S0412L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "she worked hard to win",
+    "target": "她努力工作来赢得"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "她努力工作来赢得 — 赢得 needs an object ('win something'); as written it is an unfinished sentence. Recommend delete.",
+   "gloss": "她 she / 努力工作 worked hard / 来 in order to / 赢得 win (…)"
+  },
+  {
+   "id": "zho_for_eng:S0420L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "how old is that child?",
+    "target": "那个孩子多大年纪？"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "多大年纪 is the polite 'how old' for older people; for a child it is wrong register (几岁 / 多大).",
+   "gloss": "那个孩子 that child / 多大年纪 what age (for elders)"
+  },
+  {
+   "id": "zho_for_eng:S0441L02B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "one approach here",
+    "target": "一种方法在这里"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'one approach here | 一种方法在这里' — Chinese word order wrong (这里有一种方法).",
+   "gloss": "一种方法 one method / 在这里 is here"
+  },
+  {
+   "id": "zho_for_eng:S0443L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "I think the same",
+    "target": "我觉得同样"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'I think the same | 我觉得同样' — not Chinese (我也这么觉得). Recommend delete.",
+   "gloss": "我觉得 I think / 同样 same"
+  },
+  {
+   "id": "zho_for_eng:S0455L04U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "he was tired yet still went",
+    "target": "他累了而还是去了"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "他累了而还是去了 — 而 cannot be followed by 还是 here; Chinese is 他累了，但还是去了. Recommend delete (但 not taught as 'yet').",
+   "gloss": "他累了 he was tired / 而 and/yet / 还是 still / 去了 went"
+  },
+  {
+   "id": "zho_for_eng:S0455L04U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "they were tired so they left",
+    "target": "他们累了而离开了"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "他们累了而离开了 — 而 does not mean 'so'; the sentence is not natural Chinese. Recommend delete.",
+   "gloss": "他们累了 they were tired / 而 and/yet / 离开了 left"
+  },
+  {
+   "id": "zho_for_eng:S0457L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "part of this is right",
+    "target": "这的一部分是对的"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "part of this is right",
+    "target": "这个的一部分是对的",
+    "roman": "zhège de yībùfen shì duì de"
+   },
+   "why": "这的一部分 is ungrammatical (这 cannot take 的 here; needs 这个的一部分). Same fault in build S0457L01B03.",
+   "gloss": "这 this / 的 of / 一部分 a part / 是对的 is right",
+   "knockOn": [
+    "zho_for_eng:S0457L01B03"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0457L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "part of this",
+    "target": "这的一部分"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "part of this",
+    "target": "这个的一部分",
+    "roman": "zhège de yībùfen"
+   },
+   "why": "Build 'part of this | 这的一部分' — same 这的 fault.",
+   "gloss": "这 this / 的 of / 一部分 a part"
+  },
+  {
+   "id": "zho_for_eng:S0457L03U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "what's the number of people?",
+    "target": "人数量是多少？"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "人数量是多少 is not Chinese ('people-quantity'); 'number of people' is 人数 (taught S0434L04). Recommend delete (would not contain this LEGO anyway).",
+   "gloss": "人 people / 数量 quantity / 是多少 is how much"
+  },
+  {
+   "id": "zho_for_eng:S0457L02B01",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "field",
+    "target": "领域"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "area",
+    "target": "领域",
+    "roman": null
+   },
+   "why": "ZUT: bare 'field | 领域' (domain) clashes with 'field | 场地' (S0353L01, sports field). LEGO's own gloss is 'area'.",
+   "gloss": "领域 domain, field of knowledge"
+  },
+  {
+   "id": "zho_for_eng:S0464L02U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "he forgot even though I told him once",
+    "target": "他忘了即使我告诉过他一次"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "他忘了即使我告诉过他一次 — 即使 means 'even if' (hypothetical) and cannot follow the main clause like this; 'even though' is 虽然…还是. Recommend delete.",
+   "gloss": "他忘了 he forgot / 即使 even if / 我告诉过他一次 I told him once"
+  },
+  {
+   "id": "zho_for_eng:S0466L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "she can't see over the wall",
+    "target": "她看不过墙"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "她看不过墙 is not Chinese ('she can't see over the wall' = 她看不到墙那边).",
+   "gloss": "她 she / 看不过 can't see past / 墙 wall"
+  },
+  {
+   "id": "zho_for_eng:S0477L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "she's on vacation",
+    "target": "她在假期"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "她在假期 ('she is at holiday') is not Chinese; 'she's on vacation' = 她在度假 (度假 taught S0378) — but that drops this LEGO 假期. Recommend delete.",
+   "gloss": "她 she / 在 at / 假期 holiday period"
+  },
+  {
+   "id": "zho_for_eng:S0480L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "I will go no matter what",
+    "target": "不管什么我都会去"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "I will go no matter what happens",
+    "target": "不管发生什么我都会去",
+    "roman": "bùguǎn fāshēng shénme wǒ dōu huì qù"
+   },
+   "why": "不管什么我都会去 — 不管什么 needs a verb ('不管发生什么'); 'no matter what' is 不管怎样. U04/U05 use the correct 不管发生什么.",
+   "gloss": "不管 no matter / 什么 what / 我都会去 I will go"
+  },
+  {
+   "id": "zho_for_eng:S0480L01U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "she came no matter what",
+    "target": "不管什么她都来了"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "she came no matter what happened",
+    "target": "不管发生什么她都来了",
+    "roman": "bùguǎn fāshēng shénme tā dōu lái le"
+   },
+   "why": "不管什么她都来了 — same fault as U01.",
+   "gloss": "不管 no matter / 什么 what / 她都来了 she came"
+  },
+  {
+   "id": "zho_for_eng:S0481L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": false,
+   "before": {
+    "known": "nobody else can do this, only her",
+    "target": "没有人能做这个，唯一的是她"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "没有人能做这个，唯一的是她 ('the only one is her') is not natural Chinese ('只有她能'). Recommend delete.",
+   "gloss": "没有人能做这个 nobody can do this / 唯一的是她 the only (one) is her"
+  },
+  {
+   "id": "zho_for_eng:S0485L02B03",
+   "table": "phrase",
+   "role": "build",
+   "played": false,
+   "before": {
+    "known": "nothing makes me happier",
+    "target": "没有什么比让我更开心的"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "没有什么比让我更开心的 — 比 is left with no comparison; not Chinese. Seed has the right pattern (没有什么比离开更让我开心的了).",
+   "gloss": "没有什么 nothing / 比 than / 让我更开心的 makes me happier"
+  },
+  {
+   "id": "zho_for_eng:S0488L02B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "a yellow rope",
+    "target": "一条黄色的"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "a yellow one",
+    "target": "一条黄色的",
+    "roman": null
+   },
+   "why": "'a yellow rope | 一条黄色的' — there is no rope; it is 'a yellow (long thing)'. English invents a word.",
+   "gloss": "一条 one (long-thin counter) / 黄色的 yellow one"
+  },
+  {
+   "id": "zho_for_eng:S0488L02U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "don't cross that line",
+    "target": "不要过那条"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "don't cross that one",
+    "target": "不要过那条",
+    "roman": null
+   },
+   "why": "'don't cross that line | 不要过那条' — 'line' has no Chinese (线 is the next LEGO), and it nearly clashes with S0488L03U03 'don't cross the line | 不要过那条线'. Same for U01/U02 ('that line' = 那条). Fix English to 'that one'.",
+   "gloss": "不要 don't / 过 cross / 那条 that (long thing)",
+   "knockOn": [
+    "zho_for_eng:S0488L02U01",
+    "zho_for_eng:S0488L02U02",
+    "zho_for_eng:S0488L02B02"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0492L02B01",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "interesting",
+    "target": "意思"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'interesting | 意思' — 意思 alone means 'meaning', not 'interesting' (that is 有意思, B02). Teaches a false mapping. Recommend delete.",
+   "gloss": "意思 meaning"
+  },
+  {
+   "id": "zho_for_eng:S0493L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "what comes next",
+    "target": "接下来什么"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": {
+    "known": "what comes next",
+    "target": "接下来是什么",
+    "roman": "jiēxiàlái shì shénme"
+   },
+   "why": "'what comes next | 接下来什么' — not Chinese (needs 是: 接下来是什么, as in U01).",
+   "gloss": "接下来 next / 什么 what"
+  },
+  {
+   "id": "zho_for_eng:S0496L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "nobody planned for this",
+    "target": "没有人打算这个"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "没有人打算这个 — 打算 'plan to' needs a verb after it; 'plan for this' is not this word. Recommend delete.",
+   "gloss": "没有人 nobody / 打算 plans to / 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0497L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "before": {
+    "known": "that sounds like",
+    "target": "听起来那个"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "'that sounds like | 听起来那个' — 听起来那个 ('sounds-like that') is not Chinese.",
+   "gloss": "听起来 sounds / 那个 that"
+  },
+  {
+   "id": "zho_for_eng:S0436L02U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "before": {
+    "known": "she said the requirements are very clear",
+    "target": "她说要求很明显"
+   },
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "after": null,
+   "why": "明显 means 'obvious', not 'clear'; 'the requirements are very clear' is 要求很清楚. Either English 'obvious' (odd) or untaught 清楚 — Kai's call; delete is simplest.",
+   "gloss": "她说 she said / 要求 requirements / 很明显 very obvious"
+  }
+ ]
+}

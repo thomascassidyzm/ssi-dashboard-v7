@@ -1,0 +1,544 @@
+[
+ {
+  "seed_number": 119,
+  "phrases": {
+   "119:1": [
+    {
+     "known_text": "निघणे",
+     "target_text": "leave",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही निघणे",
+     "target_text": "you leave",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आत्ता निघणे",
+     "target_text": "leave now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही जाण्यापूर्वी मी तुम्हाला काहीतरी विचारू का?",
+     "target_text": "can I ask you something before you leave?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला सहा वाजता निघायला हवं",
+     "target_text": "I need to leave at six o'clock",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला कधी निघायचं आहे?",
+     "target_text": "when do you want to leave?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही निघण्यापूर्वी थोडं थांबाल का?",
+     "target_text": "could you wait before you leave?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अद्याप निघायचं नाही",
+     "target_text": "I don't want to leave yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही जाण्यापूर्वी",
+     "target_text": "before you leave",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 120,
+  "phrases": {
+   "120:1": [
+    {
+     "known_text": "हे रंजक आहे",
+     "target_text": "it's interesting that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला माहित नाही हे रंजक आहे",
+     "target_text": "it's interesting that I don't know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला समजतं हे रंजक आहे",
+     "target_text": "it's interesting that you understand",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला आठवत नाही हे रंजक आहे",
+     "target_text": "it's interesting that I can't remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे रंजक आहे की तुम्ही खूप छान करताय",
+     "target_text": "it's interesting that you're doing very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही माझ्याशी सहमत आहात हे रंजक आहे",
+     "target_text": "it's interesting that you agree with me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला उत्तर माहित नव्हतं हे रंजक आहे",
+     "target_text": "it's interesting that he didn't know the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला इंग्रजी शिकायचं आहे हे रंजक आहे",
+     "target_text": "it's interesting that you want to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला कुत्र्याशी खेळायला आवडतं हे रंजक आहे",
+     "target_text": "it's interesting that you like playing with the dog",
+     "phrase_role": "use"
+    }
+   ],
+   "120:2": [
+    {
+     "known_text": "बसने जायला आवडतं",
+     "target_text": "you like to go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला तुमच्या मित्रांबरोबर बसने जायला आवडतं",
+     "target_text": "you like to go by bus with your friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला रात्री बसने जायला आवडतं",
+     "target_text": "you like to go by bus at night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला बसने जायला आवडतं हे मला माहित आहे",
+     "target_text": "I know you like to go by bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही बसने जायला आवडतं हे रंजक आहे",
+     "target_text": "it's interesting that you like to go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला बसने जायला आवडतं हे मला माहित नव्हतं",
+     "target_text": "I didn't know you like to go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला बसने जायला आवडतं का?",
+     "target_text": "do you like to go by bus?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला बसने जायला आवडतं याचं मला आश्चर्य वाटतंय",
+     "target_text": "I'm surprised that you like to go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझा मित्र म्हणाला की तुम्हाला बसने जायला आवडतं",
+     "target_text": "my friend said you like to go by bus",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 121,
+  "phrases": {
+   "121:1": [
+    {
+     "known_text": "असामान्य आहे",
+     "target_text": "it's unusual that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला माहित नाही हे असामान्य आहे",
+     "target_text": "it's unusual that I don't know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला समजतं हे असामान्य आहे",
+     "target_text": "it's unusual that you understand",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला आठवत नाही हे असामान्य आहे",
+     "target_text": "it's unusual that I can't remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कुत्रा गप्प आहे हे असामान्य आहे",
+     "target_text": "it's unusual that the dog is quiet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला थांबायचं आहे हे असामान्य आहे",
+     "target_text": "it's unusual that she wants to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही सहमत नाही हे असामान्य आहे",
+     "target_text": "it's unusual that you don't agree",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला माहित नाही हे असामान्य आहे असं मला वाटतं",
+     "target_text": "I think that it's unusual that you don't know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही दुपारभर पबमध्ये होतो हे असामान्य आहे",
+     "target_text": "it's unusual that we were in the pub all afternoon",
+     "phrase_role": "use"
+    }
+   ],
+   "121:2": [
+    {
+     "known_text": "कार वापरायला आवडत नाही",
+     "target_text": "you don't like to use your car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला रात्री तुमची कार वापरायला आवडत नाही",
+     "target_text": "you don't like to use your car at night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही हे मला माहित आहे",
+     "target_text": "I know you don't like to use your car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पण तुम्हाला तुमची कार वापरायला आवडत नाही",
+     "target_text": "but you don't like to use your car",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही हे असामान्य आहे",
+     "target_text": "it's unusual that you don't like to use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला तुमची कार वापरायला का आवडत नाही ते मला समजतं",
+     "target_text": "I understand why you don't like to use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही हे असामान्य आहे असं मला वाटतं",
+     "target_text": "I think that it's unusual that you don't like to use your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही, म्हणून तुम्ही बसने जाता",
+     "target_text": "you don't like to use your car, so you go by bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला तुमची कार वापरायला आवडत नाही हे मला माहित नव्हतं",
+     "target_text": "I didn't know you don't like to use your car",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 122,
+  "phrases": {
+   "122:1": [
+    {
+     "known_text": "लागलंय",
+     "target_text": "it's starting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे चालायला लागलंय",
+     "target_text": "it's starting to work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे मजेशीर वाटायला लागलंय",
+     "target_text": "it's starting to be fun",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे पुन्हा लागलंय",
+     "target_text": "it's starting again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं हे चालायला लागलंय",
+     "target_text": "I think it's starting to work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हे रंजक वाटायला लागलंय",
+     "target_text": "it's starting to be interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हे चालायला लागलंय, मी खूप खूश आहे",
+     "target_text": "it's starting to work, I'm very happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हे बदलायला लागलंय",
+     "target_text": "it's starting to change",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे अवघड वाटायला लागलंय",
+     "target_text": "it's starting to be difficult",
+     "phrase_role": "use"
+    }
+   ],
+   "122:2": [
+    {
+     "known_text": "सोपं वाटायला",
+     "target_text": "to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सोपं वाटायला लागलंय",
+     "target_text": "starting to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सोपं वाटायला",
+     "target_text": "to feel easier today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे सोपं वाटायला लागलंय",
+     "target_text": "it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "इंग्रजी शिकणं सोपं वाटायला लागलंय",
+     "target_text": "learning English is starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "नवीन शब्द आठवणं सोपं वाटायला लागलंय",
+     "target_text": "it's starting to feel easier to remember new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की हे सोपं वाटायला लागलंय",
+     "target_text": "I think that it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आता सोपं वाटायला",
+     "target_text": "to feel easier now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "बोलणं सोपं वाटायला लागलंय",
+     "target_text": "speaking is starting to feel easier",
+     "phrase_role": "use"
+    }
+   ],
+   "122:3": [
+    {
+     "known_text": "उत्साहित आहे",
+     "target_text": "and I'm excited",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आणि मी त्याबद्दल उत्साहित आहे",
+     "target_text": "and I'm excited about it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आणि मी या भाषेबद्दल उत्साहित आहे",
+     "target_text": "and I'm excited about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे सोपं वाटायला लागलंय आणि मी उत्साहित आहे",
+     "target_text": "it's starting to feel easier and I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी बरंच काही शिकतोय, आणि मी उत्साहित आहे",
+     "target_text": "I'm learning a lot, and I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही पबमध्ये जाणार आहोत, आणि मी उत्साहित आहे",
+     "target_text": "we're going to the pub, and I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की हे सोपं वाटायला लागलंय आणि मी उत्साहित आहे",
+     "target_text": "I think that it's starting to feel easier and I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आणि मी उद्याबद्दल उत्साहित आहे",
+     "target_text": "and I'm excited about tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी इंग्रजीत संभाषण करणार आहे, आणि मी उत्साहित आहे",
+     "target_text": "I'm going to have a conversation in English, and I'm excited",
+     "phrase_role": "use"
+    }
+   ],
+   "122:4": [
+    {
+     "known_text": "कसं चाललंय",
+     "target_text": "about how it's going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते कसं चाललंय याबद्दल मी उत्साहित आहे",
+     "target_text": "I'm excited about how it's going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते कसं चाललंय याबद्दल खूश",
+     "target_text": "happy about how it's going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे आता सोपं वाटायला लागलंय आणि ते कसं चाललंय याबद्दल मी उत्साहित आहे",
+     "target_text": "it's starting to feel easier and I'm excited about how it's going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कसं चाललंय याबद्दल मी खूप खूश आहे",
+     "target_text": "I'm very happy about how it's going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कसं चाललंय याबद्दल मला खात्री नाही",
+     "target_text": "I'm not sure about how it's going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कसं चाललंय याबद्दल मला तुम्हाला सांगायचं आहे",
+     "target_text": "I want to tell you about how it's going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज ते कसं चाललंय याबद्दल",
+     "target_text": "about how it's going today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते कसं चाललंय याबद्दल आम्ही एकमेकांशी बोललो",
+     "target_text": "we talked to each other about how it's going",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 123,
+  "phrases": {
+   "123:1": [
+    {
+     "known_text": "मला वाटतं ती",
+     "target_text": "I think that's",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ते छान आहे",
+     "target_text": "I think that's great",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ती चांगली गोष्ट आहे",
+     "target_text": "I think that's a good thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ते शक्य आहे",
+     "target_text": "I think that's possible",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ती खूप चांगली कल्पना आहे",
+     "target_text": "I think that's a very good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही, पण मला वाटतं ती चांगली कल्पना आहे",
+     "target_text": "I'm not sure, but I think that's a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हो, मला वाटतं ती चांगली कल्पना आहे",
+     "target_text": "Yes, I think that's a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं तो सर्वात चांगला पर्याय आहे",
+     "target_text": "I think that's the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं ती त्याची बॅग आहे",
+     "target_text": "I think that's his bag",
+     "phrase_role": "use"
+    }
+   ],
+   "123:2": [
+    {
+     "known_text": "चांगली कल्पना",
+     "target_text": "a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आजसाठी चांगली कल्पना",
+     "target_text": "a good idea for today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चांगली कल्पना नाही",
+     "target_text": "not a good idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "उद्यासाठी चांगली कल्पना",
+     "target_text": "a good idea for tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की ती चांगली कल्पना आहे",
+     "target_text": "I think that's a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती चांगली कल्पना होती",
+     "target_text": "that was a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला एक चांगली कल्पना सुचली आहे",
+     "target_text": "I've got a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "शक्य तितक्या वेळा सराव करणं ही चांगली कल्पना आहे",
+     "target_text": "it's a good idea to practise as often as possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती चांगली कल्पना आहे याची मला खात्री नाही",
+     "target_text": "I'm not sure that's a good idea",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

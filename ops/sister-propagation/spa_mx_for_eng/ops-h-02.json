@@ -1,0 +1,110 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U06",
+   "expect": {
+    "known_text": "that is why it's starting to feel easier to use new words",
+    "target_text": "por eso está empezando a sentirse más fácil usar palabras nuevas"
+   },
+   "set": {
+    "known_text": "that is why it's starting to get easier to use new words",
+    "known_audio_id": "74714336-6ff7-4649-b6d6-0c7c9a7f2c04",
+    "target_text": "por eso está empezando a ser más fácil usar palabras nuevas",
+    "target1_audio_id": "11691c23-9c72-45d2-903e-564f34d518cf",
+    "target2_audio_id": "efeec192-e5ff-44ca-9d96-295935f051a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U07",
+   "expect": {
+    "known_text": "it's definitely starting to feel better when we speak Spanish",
+    "target_text": "definitivamente está empezando a sentirse mejor cuando hablamos español"
+   },
+   "set": {
+    "known_text": "it's definitely starting to get easier when we speak Spanish",
+    "known_audio_id": "aa3475be-9bd5-4ee9-a5b9-c2814f5463e4",
+    "target_text": "definitivamente está empezando a ser más fácil cuando hablamos español",
+    "target1_audio_id": "029053f2-906e-48e4-90f0-84ad88ff7dd5",
+    "target2_audio_id": "6d8cfecf-53f6-49d4-a4fe-65213f88d0b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L02U07",
+   "expect": {
+    "known_text": "it's starting to feel easier and I'm excited about how it's going",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va"
+   },
+   "set": {
+    "known_text": "it's starting to get easier and I'm excited about how it's going",
+    "known_audio_id": "b5a23ceb-6f37-430b-a0e0-5c23f4c6aa32",
+    "target_text": "está empezando a ser más fácil y estoy emocionado con cómo va",
+    "target1_audio_id": "977f5fcf-f6e1-465b-946e-4b86c7eec232",
+    "target2_audio_id": "461ecfb7-bae0-4158-a44d-8853c9257ec3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0123L01U04",
+   "expect": {
+    "known_text": "I think it's starting to feel easier",
+    "target_text": "pienso que está empezando a sentirse más fácil"
+   },
+   "set": {
+    "known_text": "I think it's starting to get easier",
+    "known_audio_id": "4717d783-f0a8-410b-9191-34cb9efa5270",
+    "target_text": "pienso que está empezando a ser más fácil",
+    "target1_audio_id": "bb045d8c-ce56-4654-bc1f-d7861dd6b1c8",
+    "target2_audio_id": "f598f861-4a17-43dc-a4b9-9bed5dbb6d93"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0123L02U06",
+   "expect": {
+    "known_text": "I reckon it's starting to feel easier now",
+    "target_text": "pienso que está empezando a sentirse más fácil ahora"
+   },
+   "set": {
+    "known_text": "I reckon it's starting to get easier now",
+    "known_audio_id": "f2376eb2-3ed9-4072-a90c-7d1a6a6372f3",
+    "target_text": "pienso que está empezando a ser más fácil ahora",
+    "target1_audio_id": "c5ef5a85-1721-42da-be1f-d00482fdccad",
+    "target2_audio_id": "fa8d6e6c-08a7-45ea-889a-313295c146f5"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 122,
+   "expect": {
+    "known_text": "It's starting to feel easier and I'm excited about how it's going",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va"
+   },
+   "set": {
+    "known_text": "It's starting to get easier and I'm excited about how it's going",
+    "known_audio_id": "b5a23ceb-6f37-430b-a0e0-5c23f4c6aa32",
+    "target_text": "está empezando a ser más fácil y estoy emocionado con cómo va",
+    "target1_audio_id": "977f5fcf-f6e1-465b-946e-4b86c7eec232",
+    "target2_audio_id": "461ecfb7-bae0-4158-a44d-8853c9257ec3"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0122L01",
+   "expect": {
+    "known_text": "to feel easier",
+    "target_text": "sentirse más fácil"
+   },
+   "set": {
+    "known_text": "to get easier",
+    "known_audio_id": "e832a04c-5b46-4f1f-ba5c-a74d6f4829f9",
+    "target_text": "ser más fácil",
+    "target1_audio_id": "92a3c718-3421-4fd9-ae97-9534cdbfd55d",
+    "target2_audio_id": "792a74b7-9ed3-4005-9ce8-0da713443b1a",
+    "presentation_audio_id": "448a2e0e-b24d-4d37-a608-cab3501f2da1"
+   }
+  }
+ ]
+}

@@ -55,5 +55,8 @@ async function call(method, path, body) {
 const linePath = (lineId) => `/line/${encodeURIComponent(lineId)}`
 export const readLine = (lineId) => call('GET', linePath(lineId))
 export const previewEdit = (lineId, edit) => call('POST', `${linePath(lineId)}/preview`, edit)
-export const applyEdit = (lineId, edit) => call('POST', `${linePath(lineId)}/apply`, edit)
+// `before` is the snapshot the preview answered with. The server REQUIRES it and the door refuses
+// the save (409, reason 'stale_preview') if the line changed since — someone else's edit is never
+// silently overwritten by an old preview (#573 P1).
+export const applyEdit = (lineId, edit, before) => call('POST', `${linePath(lineId)}/apply`, { ...edit, before })
 export const undoEdit = (courseCode, undoFile) => call('POST', '/undo', { courseCode, undoFile })

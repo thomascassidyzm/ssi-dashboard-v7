@@ -1,0 +1,1158 @@
+{
+ "seeds": {
+  "107": {
+   "before": {
+    "known": "we hoped to see what you were doing",
+    "target": "bhí muid ag súil le feiceáil cad a bhí tú a dhéanamh"
+   },
+   "known": "we hoped to see what you were doing",
+   "target": "bhí muid ag súil le feiceáil cad a bhí á dhéanamh agat",
+   "family": "Q1 á…agat",
+   "why": "Q1"
+  },
+  "150": {
+   "before": {
+    "known": "can you tell me what your name is?",
+    "target": "an féidir leat insint dom cad is ainm duit?"
+   },
+   "known": "can you tell me what your name is?",
+   "target": "an féidir leat d'ainm a insint dom?",
+   "family": "Q8 d'ainm",
+   "why": "Q8: Eoghan's sentence, our English"
+  },
+  "154": {
+   "before": {
+    "known": "where do you want to meet on Saturday night?",
+    "target": "cén áit ar mian leat bualadh le chéile oíche Dé Sathairn?"
+   },
+   "known": "where do you want to meet on Saturday night?",
+   "target": "cén áit ar mian leat bualadh le chéile oíche Shathairn?",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "174": {
+   "before": {
+    "known": "can you understand what I'm saying?",
+    "target": "an dtuigeann tú cad atá mé a rá?"
+   },
+   "known": "can you understand what I'm saying?",
+   "target": "an dtuigeann tú cad atá á rá agam?",
+   "family": "Q1 á…agat",
+   "why": "Q1: Eoghan's sentence"
+  },
+  "215": {
+   "before": {
+    "known": "I went out on Saturday night",
+    "target": "chuaigh mé amach oíche Dé Sathairn"
+   },
+   "known": "I went out on Saturday night",
+   "target": "chuaigh mé amach oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "281": {
+   "before": {
+    "known": "do you mind if I finish my coffee before you start?",
+    "target": "an miste leat má chríochnaím mo chaife sula dtosaíonn tú?"
+   },
+   "known": "do you mind if I finish my coffee before you start?",
+   "target": "an miste leat má chríochnaím mo chaife sula dtosóidh tú?",
+   "family": "Q2 future",
+   "why": "Q2: Eoghan's future"
+  },
+  "384": {
+   "before": {
+    "known": "I couldn't agree with what he said a moment ago",
+    "target": "Ní fhéadfainn aontú leis an méid a dúirt sé nóiméad ó shin"
+   },
+   "known": "I couldn't agree with what he said a moment ago",
+   "target": "Ní fhéadfainn aontú leis an méid a dúirt sé bomaite ó shin",
+   "family": "Q4 bomaite",
+   "why": "Q4"
+  },
+  "390": {
+   "before": {
+    "known": "the one who is standing near the entrance",
+    "target": "an duine atá ina sheasamh in aice leis an mbealach isteach"
+   },
+   "known": "the one who is standing near the entrance",
+   "target": "an té atá ina sheasamh in aice leis an mbealach isteach",
+   "family": "Q5 an té",
+   "why": "Q5"
+  },
+  "399": {
+   "before": {
+    "known": "we don't want to lose hope",
+    "target": "Ní mian linn dóchas a chailleadh"
+   },
+   "known": "we don't want to lose hope",
+   "target": "Ní mian linn ár misneach a chailleadh",
+   "family": "Q6 misneach",
+   "why": "Q6: his ár misneach, our Ní mian linn"
+  },
+  "494": {
+   "before": {
+    "known": "what happens after the first part of the show?",
+    "target": "cad a tharlaíonn tar éis an chéad chuid den seó?"
+   },
+   "known": "what happens after the first part of the show?",
+   "target": "cad a tharlóidh tar éis an chéad chuid den seó?",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "533": {
+   "before": {
+    "known": "she won't listen to every word you say",
+    "target": "Ní éistfidh sí le gach focal a deir tú"
+   },
+   "known": "she won't listen to every word you say",
+   "target": "Ní éistfidh sí le gach focal a déarfaidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  }
+ },
+ "legos": {
+  "S0150L03": {
+   "before": {
+    "known_text": "what your name is",
+    "target_text": "cad is ainm duit",
+    "components": [
+     {
+      "known": "what",
+      "target": "cad"
+     },
+     {
+      "known": "is",
+      "target": "is"
+     },
+     {
+      "known": "name",
+      "target": "ainm"
+     },
+     {
+      "known": "to you",
+      "target": "duit"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "known_text": "your name",
+    "target_text": "d'ainm",
+    "components": [
+     {
+      "known": "your",
+      "target": "d'"
+     },
+     {
+      "known": "name",
+      "target": "ainm"
+     }
+    ]
+   },
+   "family": "Q8 d'ainm",
+   "why": "Q8: the piece is now 'your name'"
+  },
+  "S0154L02": {
+   "before": {
+    "known_text": "Saturday night",
+    "target_text": "oíche Dé Sathairn",
+    "components": [
+     {
+      "known": "Saturday",
+      "target": "Dé Sathairn"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "oíche Shathairn",
+    "components": [
+     {
+      "known": "night",
+      "target": "oíche"
+     },
+     {
+      "known": "Saturday",
+      "target": "Shathairn"
+     }
+    ]
+   },
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03": {
+   "before": {
+    "known_text": "Saturday night",
+    "target_text": "oíche Dé Sathairn",
+    "components": [
+     {
+      "known": "night",
+      "target": "oíche"
+     },
+     {
+      "known": "Saturday",
+      "target": "Dé Sathairn"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "oíche Shathairn",
+    "components": [
+     {
+      "known": "night",
+      "target": "oíche"
+     },
+     {
+      "known": "Saturday",
+      "target": "Shathairn"
+     }
+    ]
+   },
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7: same LEGO taught again at 215"
+  },
+  "S0281L04": {
+   "before": {
+    "known_text": "before you start",
+    "target_text": "sula dtosaíonn tú",
+    "components": [
+     {
+      "known": "before",
+      "target": "sula"
+     },
+     {
+      "known": "you start",
+      "target": "dtosaíonn tú"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "sula dtosóidh tú",
+    "components": [
+     {
+      "known": "before",
+      "target": "sula"
+     },
+     {
+      "known": "you will start",
+      "target": "dtosóidh tú"
+     }
+    ]
+   },
+   "family": "Q2 future",
+   "why": "Q2"
+  }
+ },
+ "lego_inserts": [],
+ "lego_deletes": {},
+ "phrase_inserts": [],
+ "phrases": {
+  "S0107L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we hoped to see what you were doing",
+    "target": "bhí muid ag súil le feiceáil cad a bhí tú a dhéanamh"
+   },
+   "known": "we hoped to see what you were doing",
+   "target": "bhí muid ag súil le feiceáil cad a bhí á dhéanamh agat",
+   "family": "Q1 á…agat",
+   "why": "Q1"
+  },
+  "S0107L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was hoping to see what he was doing",
+    "target": "bhí mé ag súil le feiceáil cad a bhí sé a dhéanamh"
+   },
+   "known": "I was hoping to see what he was doing",
+   "target": "bhí mé ag súil le feiceáil cad a bhí á dhéanamh aige",
+   "family": "Q1 á…agat",
+   "why": "Q1"
+  },
+  "S0107L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was hoping to see what I was doing",
+    "target": "bhí sí ag súil le feiceáil cad a bhí mé a dhéanamh"
+   },
+   "known": "she was hoping to see what I was doing",
+   "target": "bhí sí ag súil le feiceáil cad a bhí á dhéanamh agam",
+   "family": "Q1 á…agat",
+   "why": "Q1"
+  },
+  "S0107L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we hoped to see what she was doing",
+    "target": "bhí muid ag súil le feiceáil cad a bhí sí a dhéanamh"
+   },
+   "known": "we hoped to see what he was doing",
+   "target": "bhí muid ag súil le feiceáil cad a bhí á dhéanamh aige",
+   "family": "Q1 á…agat",
+   "why": "Q1; 'she' made 'he' because aici is not taught until 132"
+  },
+  "S0108L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "hoping to see what you were doing",
+    "target": "ag súil le feiceáil cad a bhí tú a dhéanamh"
+   },
+   "known": "hoping to see what you were doing",
+   "target": "ag súil le feiceáil cad a bhí á dhéanamh agat",
+   "family": "Q1 á…agat",
+   "why": "Q1"
+  },
+  "S0150L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "what your name is in Irish",
+    "target": "cad is ainm duit i nGaeilge"
+   },
+   "known": "your name",
+   "target": "d'ainm",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "tell me what your name is",
+    "target": "insint dom cad is ainm duit"
+   },
+   "known": "your name in Irish",
+   "target": "d'ainm i nGaeilge",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to find out what your name is",
+    "target": "fáil amach cad is ainm duit"
+   },
+   "known": "to tell me what your name is",
+   "target": "d'ainm a insint dom",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to ask you what your name is again",
+    "target": "ceist a chur ort cad is ainm duit arís"
+   },
+   "known": "to say your name again",
+   "target": "d'ainm a rá arís",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i don't know what your name is yet",
+    "target": "níl a fhios agam cad is ainm duit fós"
+   },
+   "known": "I can't remember your name",
+   "target": "ní féidir liom cuimhneamh ar d'ainm",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i'm not sure what your name is",
+    "target": "níl mé cinnte cad is ainm duit"
+   },
+   "known": "I'd like to learn your name",
+   "target": "ba mhaith liom d'ainm a fhoghlaim",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i'd like to find out what your name is",
+    "target": "ba mhaith liom fáil amach cad is ainm duit"
+   },
+   "known": "she wanted to say your name in Irish",
+   "target": "ba mhian léi d'ainm a rá i nGaeilge",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she wanted to ask you what your name is",
+    "target": "ba mhian léi ceist a chur ort cad is ainm duit"
+   },
+   "known": "can you say your name in Irish",
+   "target": "an féidir leat d'ainm a rá i nGaeilge",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "can you say what your name is in Irish",
+    "target": "an féidir leat a rá cad is ainm duit i nGaeilge"
+   },
+   "known": "can you tell me what your name is?",
+   "target": "an féidir leat d'ainm a insint dom?",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0150L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you, can you tell me what your name is again",
+    "target": "go raibh maith agat an féidir leat insint dom cad is ainm duit arís"
+   },
+   "known": "thank you, can you tell me what your name is again",
+   "target": "go raibh maith agat, an féidir leat d'ainm a insint dom arís",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0154L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "Saturday night",
+    "target": "oíche Dé Sathairn"
+   },
+   "known": "Saturday night",
+   "target": "oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to meet on Saturday night",
+    "target": "bualadh le chéile oíche Dé Sathairn"
+   },
+   "known": "to meet on Saturday night",
+   "target": "bualadh le chéile oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02C01": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "Saturday",
+    "target": "Dé Sathairn"
+   },
+   "known": "Saturday",
+   "target": "Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7: word tile"
+  },
+  "S0154L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "where do you want to meet on Saturday night?",
+    "target": "cén áit ar mian leat bualadh le chéile oíche Dé Sathairn?"
+   },
+   "known": "where do you want to meet on Saturday night?",
+   "target": "cén áit ar mian leat bualadh le chéile oíche Shathairn?",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to meet on Saturday night",
+    "target": "Is mian liom bualadh le chéile oíche Dé Sathairn"
+   },
+   "known": "I want to meet on Saturday night",
+   "target": "Is mian liom bualadh le chéile oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not able to do it on Saturday night",
+    "target": "Níl mé ábalta é a dhéanamh oíche Dé Sathairn"
+   },
+   "known": "I'm not able to do it on Saturday night",
+   "target": "Níl mé ábalta é a dhéanamh oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was hoping to go on Saturday night",
+    "target": "bhí mé ag súil le dul oíche Dé Sathairn"
+   },
+   "known": "I was hoping to go on Saturday night",
+   "target": "bhí mé ag súil le dul oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I should try to do it on Saturday night",
+    "target": "ba cheart dom iarracht a dhéanamh é a dhéanamh oíche Dé Sathairn"
+   },
+   "known": "I should try to do it on Saturday night",
+   "target": "ba cheart dom iarracht a dhéanamh é a dhéanamh oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you doing something on Saturday night?",
+    "target": "an bhfuil tú ag déanamh rud éigin oíche Dé Sathairn?"
+   },
+   "known": "are you doing something on Saturday night?",
+   "target": "an bhfuil tú ag déanamh rud éigin oíche Shathairn?",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I hope that I can go on Saturday night",
+    "target": "Tá súil agam gur féidir liom dul oíche Dé Sathairn"
+   },
+   "known": "I hope that I can go on Saturday night",
+   "target": "Tá súil agam gur féidir liom dul oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0154L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's important to do it on Saturday night",
+    "target": "Tá sé tábhachtach é a dhéanamh oíche Dé Sathairn"
+   },
+   "known": "it's important to do it on Saturday night",
+   "target": "Tá sé tábhachtach é a dhéanamh oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0156L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "great do you want to meet us on Saturday night",
+    "target": "go hiontach an mian leat bualadh linn oíche Dé Sathairn"
+   },
+   "known": "great do you want to meet us on Saturday night",
+   "target": "go hiontach an mian leat bualadh linn oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0156L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you want to tell me what your name is",
+    "target": "an mian leat insint dom cad is ainm duit"
+   },
+   "known": "do you want to tell me what your name is",
+   "target": "an mian leat d'ainm a insint dom",
+   "family": "Q8 d'ainm",
+   "why": "Q8: same wording as the seed"
+  },
+  "S0156L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we don't want to go to his friend on Saturday night",
+    "target": "ní mian linn dul chuig a chara oíche dé sathairn"
+   },
+   "known": "we don't want to go to his friend on Saturday night",
+   "target": "ní mian linn dul chuig a chara oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0161L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she wanted to give me his letter on saturday night",
+    "target": "ba mhian léi a litir a thabhairt dom oíche Dé Sathairn"
+   },
+   "known": "she wanted to give me his letter on saturday night",
+   "target": "ba mhian léi a litir a thabhairt dom oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0170L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like you to tell me what your name is",
+    "target": "ba mhaith liom go n-inseofá dom cad is ainm duit"
+   },
+   "known": "I'd like you to tell me what your name is",
+   "target": "ba mhaith liom go n-inseofá dom d'ainm",
+   "family": "Q8 d'ainm",
+   "why": "Q8"
+  },
+  "S0174L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "can you understand what I'm saying?",
+    "target": "an dtuigeann tú cad atá mé a rá?"
+   },
+   "known": "can you understand what I'm saying?",
+   "target": "an dtuigeann tú cad atá á rá agam?",
+   "family": "Q1 á…agat",
+   "why": "Q1"
+  },
+  "S0197L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you but my mother works on Saturday night",
+    "target": "go raibh maith agat ach oibríonn mo mháthair oíche Dé Sathairn"
+   },
+   "known": "thank you but my mother works on Saturday night",
+   "target": "go raibh maith agat ach oibríonn mo mháthair oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0200L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "they say that it is a good idea to check what needs to be done before you start",
+    "target": "deir siad gur smaoineamh maith é a fheiceáil cad atá le déanamh sula dtosaíonn tú"
+   },
+   "known": "they say that it is a good idea to check what needs to be done before you start",
+   "target": "deir siad gur smaoineamh maith é a fheiceáil cad atá le déanamh sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0203L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "what would you do saturday night",
+    "target": "cad a dhéanfá oíche Dé Sathairn"
+   },
+   "known": "what would you do saturday night",
+   "target": "cad a dhéanfá oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "Saturday night I went out",
+    "target": "oíche Dé Sathairn chuaigh mé amach"
+   },
+   "known": "Saturday night I went out",
+   "target": "oíche Shathairn chuaigh mé amach",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "a restaurant Saturday night",
+    "target": "bialann oíche Dé Sathairn"
+   },
+   "known": "a restaurant Saturday night",
+   "target": "bialann oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "too busy Saturday night",
+    "target": "ró-ghnóthach oíche Dé Sathairn"
+   },
+   "known": "too busy Saturday night",
+   "target": "ró-ghnóthach oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "Saturday night in the pub",
+    "target": "oíche Dé Sathairn sa teach tábhairne"
+   },
+   "known": "Saturday night in the pub",
+   "target": "oíche Shathairn sa teach tábhairne",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "did you enjoy Saturday night",
+    "target": "ar bhain tú sult as oíche Dé Sathairn"
+   },
+   "known": "did you enjoy Saturday night",
+   "target": "ar bhain tú sult as oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out Saturday night and I am tired today",
+    "target": "chuaigh mé amach oíche Dé Sathairn agus tá mé tuirseach inniu"
+   },
+   "known": "I went out Saturday night and I am tired today",
+   "target": "chuaigh mé amach oíche Shathairn agus tá mé tuirseach inniu",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am sorry but I am too busy Saturday night",
+    "target": "tá brón orm ach tá mé ró-ghnóthach oíche Dé Sathairn"
+   },
+   "known": "I am sorry but I am too busy Saturday night",
+   "target": "tá brón orm ach tá mé ró-ghnóthach oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I did not have time Saturday night but I'll be able to come and help you later on",
+    "target": "ní raibh am agam oíche Dé Sathairn ach beidh mé ábalta teacht agus cabhrú leat níos déanaí"
+   },
+   "known": "I did not have time Saturday night but I'll be able to come and help you later on",
+   "target": "ní raibh am agam oíche Shathairn ach beidh mé ábalta teacht agus cabhrú leat níos déanaí",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you want to go to a restaurant Saturday night",
+    "target": "an mian leat dul chuig bialann oíche Dé Sathairn"
+   },
+   "known": "do you want to go to a restaurant Saturday night",
+   "target": "an mian leat dul chuig bialann oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0215L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that you left my book in the pub Saturday night",
+    "target": "ceapaim gur fhág tú mo leabhar sa teach tábhairne oíche Dé Sathairn"
+   },
+   "known": "I think that you left my book in the pub Saturday night",
+   "target": "ceapaim gur fhág tú mo leabhar sa teach tábhairne oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0217L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I drank Saturday night and I feel tired today",
+    "target": "d'ól mé oíche Dé Sathairn agus mothaím tuirseach inniu"
+   },
+   "known": "I drank Saturday night and I feel tired today",
+   "target": "d'ól mé oíche Shathairn agus mothaím tuirseach inniu",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0217L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out Saturday night and I drank in the pub",
+    "target": "chuaigh mé amach oíche Dé Sathairn agus d'ól mé sa teach tábhairne"
+   },
+   "known": "I went out Saturday night and I drank in the pub",
+   "target": "chuaigh mé amach oíche Shathairn agus d'ól mé sa teach tábhairne",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0217L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I drank a glass Saturday night",
+    "target": "d'ól mé gloine oíche Dé Sathairn"
+   },
+   "known": "I drank a glass Saturday night",
+   "target": "d'ól mé gloine oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0218L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out Saturday night and I did not do anything new",
+    "target": "chuaigh mé amach oíche Dé Sathairn agus ní dhearna mé aon rud nua"
+   },
+   "known": "I went out Saturday night and I did not do anything new",
+   "target": "chuaigh mé amach oíche Shathairn agus ní dhearna mé aon rud nua",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0219L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out on Saturday night and it was great",
+    "target": "chuaigh mé amach oíche Dé Sathairn agus bhí sé go hiontach"
+   },
+   "known": "I went out on Saturday night and it was great",
+   "target": "chuaigh mé amach oíche Shathairn agus bhí sé go hiontach",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0219L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out Saturday night and it was nice",
+    "target": "chuaigh mé amach oíche dé sathairn agus bhí sé deas"
+   },
+   "known": "I went out Saturday night and it was nice",
+   "target": "chuaigh mé amach oíche Shathairn agus bhí sé deas",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0220L01B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "Did you watch it together last Saturday?",
+    "target": "ar fhéach tú air le chéile oíche dé sathairn?"
+   },
+   "known": "Did you watch it together last Saturday?",
+   "target": "ar fhéach tú air le chéile oíche Shathairn?",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0234L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out with your brother on Saturday night",
+    "target": "chuaigh mé amach le do dheartháir oíche Dé Sathairn"
+   },
+   "known": "I went out with your brother on Saturday night",
+   "target": "chuaigh mé amach le do dheartháir oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0245L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am not satisfied with how much time I have been giving to this",
+    "target": "níl mé sásta leis an méid ama atá mé a thabhairt dó seo"
+   },
+   "known": "I am not satisfied with how much time I have been giving to this",
+   "target": "níl mé sásta leis an méid ama atá á thabhairt agam dó seo",
+   "family": "Q1 á…agat",
+   "why": "Q1: same construction"
+  },
+  "S0248L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it was complete rubbish and I went out on Saturday night",
+    "target": "bhí sé go hiomlán uafásach agus chuaigh mé amach oíche Dé Sathairn"
+   },
+   "known": "it was complete rubbish and I went out on Saturday night",
+   "target": "bhí sé go hiomlán uafásach agus chuaigh mé amach oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0265L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out Saturday night and I saw a friend",
+    "target": "chuaigh mé amach oíche Dé Sathairn agus chonaic mé cara"
+   },
+   "known": "I went out Saturday night and I saw a friend",
+   "target": "chuaigh mé amach oíche Shathairn agus chonaic mé cara",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0266L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out Saturday night and I saw an old friend",
+    "target": "chuaigh mé amach oíche Dé Sathairn agus chonaic mé seanchara"
+   },
+   "known": "I went out Saturday night and I saw an old friend",
+   "target": "chuaigh mé amach oíche Shathairn agus chonaic mé seanchara",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0269L05B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "for your father on saturday night",
+    "target": "le d'athair oíche dé sathairn"
+   },
+   "known": "for your father on saturday night",
+   "target": "le d'athair oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0269L05U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we hoped for your father on saturday night",
+    "target": "bhí muid ag súil le d'athair oíche dé sathairn"
+   },
+   "known": "we hoped for your father on saturday night",
+   "target": "bhí muid ag súil le d'athair oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0271L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "would you like to come with us saturday night",
+    "target": "ar mhaith leat teacht linn oíche dé sathairn"
+   },
+   "known": "would you like to come with us saturday night",
+   "target": "ar mhaith leat teacht linn oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0281L04B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'm ready before you start",
+    "target": "tá mé réidh sula dtosaíonn tú"
+   },
+   "known": "I'm ready before you start",
+   "target": "tá mé réidh sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "before you start here",
+    "target": "sula dtosaíonn tú anseo"
+   },
+   "known": "before you start here",
+   "target": "sula dtosóidh tú anseo",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "before you start next week",
+    "target": "sula dtosaíonn tú an tseachtain seo chugainn"
+   },
+   "known": "before you start next week",
+   "target": "sula dtosóidh tú an tseachtain seo chugainn",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'm ready before you start tomorrow morning",
+    "target": "tá mé réidh sula dtosaíonn tú maidin amárach"
+   },
+   "known": "I'm ready before you start tomorrow morning",
+   "target": "tá mé réidh sula dtosóidh tú maidin amárach",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "before you start here would you like to come with us",
+    "target": "sula dtosaíonn tú anseo ar mhaith leat teacht linn"
+   },
+   "known": "before you start here would you like to come with us",
+   "target": "sula dtosóidh tú anseo ar mhaith leat teacht linn",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you shouldn't be worried before you start",
+    "target": "níor cheart duit a bheith buartha sula dtosaíonn tú"
+   },
+   "known": "you shouldn't be worried before you start",
+   "target": "níor cheart duit a bheith buartha sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think I'll be ready before you start tomorrow morning",
+    "target": "ceapaim go mbeidh mé réidh sula dtosaíonn tú maidin amárach"
+   },
+   "known": "I think I'll be ready before you start tomorrow morning",
+   "target": "ceapaim go mbeidh mé réidh sula dtosóidh tú maidin amárach",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you have to finish everything before you start",
+    "target": "an gcaithfidh tú gach rud a chríochnú sula dtosaíonn tú"
+   },
+   "known": "do you have to finish everything before you start",
+   "target": "an gcaithfidh tú gach rud a chríochnú sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to relax for a while before you start",
+    "target": "is mian liom scíth a ligean ar feadh tamaill sula dtosaíonn tú"
+   },
+   "known": "I want to relax for a while before you start",
+   "target": "is mian liom scíth a ligean ar feadh tamaill sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you mind if I finish before you start",
+    "target": "an miste leat má chríochnaím sula dtosaíonn tú"
+   },
+   "known": "do you mind if I finish before you start",
+   "target": "an miste leat má chríochnaím sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0281L04U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it's time to relax before you start",
+    "target": "tá sé in am scíth a ligean sula dtosaíonn tú"
+   },
+   "known": "it's time to relax before you start",
+   "target": "tá sé in am scíth a ligean sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0282L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you mind if I finish my coffee before you start? no that's fine",
+    "target": "an miste leat má chríochnaím mo chaife sula dtosaíonn tú ní miste"
+   },
+   "known": "do you mind if I finish my coffee before you start? no that's fine",
+   "target": "an miste leat má chríochnaím mo chaife sula dtosóidh tú ní miste",
+   "family": "Q2 future",
+   "why": "Q2"
+  },
+  "S0288L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "on saturday night most people like to relax",
+    "target": "oíche dé sathairn is maith le formhór na ndaoine scíth a ligean"
+   },
+   "known": "on saturday night most people like to relax",
+   "target": "oíche Shathairn is maith le formhór na ndaoine scíth a ligean",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0288L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "most people like watching television on Saturday night",
+    "target": "is maith le formhór na ndaoine féachaint ar theilifís oíche dé sathairn"
+   },
+   "known": "most people like watching television on Saturday night",
+   "target": "is maith le formhór na ndaoine féachaint ar theilifís oíche Shathairn",
+   "family": "Q7 oíche Shathairn",
+   "why": "Q7"
+  },
+  "S0296L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think there is a little time before you start",
+    "target": "ceapaim go bhfuil beagán ama sula dtosaíonn tú"
+   },
+   "known": "I think there is a little time before you start",
+   "target": "ceapaim go bhfuil beagán ama sula dtosóidh tú",
+   "family": "Q2 future",
+   "why": "Q2"
+  }
+ }
+}

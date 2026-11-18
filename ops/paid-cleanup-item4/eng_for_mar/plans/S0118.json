@@ -1,0 +1,104 @@
+{
+ "seed": 118,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "चांगलं वाटलं",
+     "felt better"
+    ],
+    "B03": [
+     "ठीक वाटलं",
+     "felt okay"
+    ],
+    "U01": [
+     "मला काल खूश वाटलं",
+     "I felt happy yesterday"
+    ],
+    "U02": [
+     "त्यानंतर मला बरं वाटलं",
+     "I felt better after that"
+    ],
+    "U03": [
+     "मला बरं वाटलं",
+     "I felt better"
+    ],
+    "U04": [
+     "मला काल रात्री थोडं थकल्यासारखं वाटलं",
+     "I felt a little tired last night"
+    ],
+    "U05": [
+     "आम्ही एकमेकांशी बोललो तेव्हा मला खूप खूश वाटलं",
+     "I felt very happy when we talked to each other"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "थकल्यासारखं वाटलं",
+     "felt tired"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "U01": [
+     "आम्ही एका संभाषणाच्या मध्ये होतो",
+     "we were in the middle of a conversation"
+    ],
+    "U02": [
+     "ते शब्द पत्रात होते",
+     "the words were in the letter"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "पत्रात होते",
+     "were in the letter"
+    ],
+    [
+     "use",
+     "आम्ही गोष्टीच्या मध्ये होतो",
+     "we were in the middle of the story"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "पबमध्ये",
+     "in the pub"
+    ],
+    "B03": [
+     "पबमध्ये जायला",
+     "to go to the pub"
+    ],
+    "U02": [
+     "मला पबमध्ये जायला आवडेल",
+     "I'd like to go to the pub"
+    ],
+    "U03": [
+     "तुम्हाला आज रात्री पबमध्ये जायचं आहे का?",
+     "do you want to go to the pub tonight?"
+    ],
+    "U04": [
+     "मी पबमध्ये तुमची वाट पाहणार आहे",
+     "I'm going to wait for you in the pub"
+    ],
+    "U05": [
+     "आम्ही पबमध्ये एकमेकांशी बोललो",
+     "we talked to each other in the pub"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आज रात्री पब",
+     "the pub tonight"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -14,7 +14,8 @@
  * proportion to its words. Anything else leaves the line synthetic and names it for Aran.
  *
  * WHICH LINES (planSplitCuts): a line of a replace pod (pod-english-lines POD_ENGLISH_REPLACE_PODS), not owned by another
- * job, that the learner actually hears in sentences (known and target arrays the same length, two or more), whose speaker
+ * job, that carries two or more English sentence pieces (hasKnownPieces: heard in the overlay when the Welsh is split too,
+ * and in the Drill by their words either way — job #878), whose speaker
  * is a MAN by the course cast (pod-english-lines podSpeakerGender, job #562's rule; a speaker the cast does not name is
  * nobody's) and is the reader's own gender, whose whole English slot holds a HUMAN take of this reader's, and whose
  * text splits into exactly as many sentences as the array has clips. Only synthetic sentence clips move; a human one —
@@ -55,6 +56,19 @@ function playsInSentences(row) {
   const t = Array.isArray(row.sentence_audio_ids) ? row.sentence_audio_ids.filter(Boolean) : []
   const k = Array.isArray(row.sentence_known_audio_ids) ? row.sentence_known_audio_ids.filter(Boolean) : []
   return t.length >= 2 && k.length === t.length
+}
+
+/**
+ * Does this line carry English sentence pieces at all? (job #878, 2026-11-08.) The overlay plays pieces only when the
+ * Welsh is split too (playsInSentences), but the Drill finds a line's English by its WORDS (learning app fusionDrill
+ * knownClipsForText / lookupKnownClip), so pieces on a line whose Welsh is whole are still heard there — 16 of North's
+ * men's lines held his whole take with Tom's synthetic clone pieces under it, which the #570 cut never reached. Aran's
+ * ruling ("my voice replaces the computer voice everywhere", 2026-10-29) covers them, so the cut reaches every line with
+ * two or more English pieces. Same refusal rules (judgeCut); the pieces are only ever replaced, never added or removed.
+ */
+function hasKnownPieces(row) {
+  const k = Array.isArray(row.sentence_known_audio_ids) ? row.sentence_known_audio_ids.filter(Boolean) : []
+  return k.length >= 2 && k.length === row.sentence_known_audio_ids.length
 }
 
 const ONES = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
@@ -128,7 +142,7 @@ function planSplitCuts({ podIds = [], sentences = [], clipById = new Map(), gend
   for (const s of sentences) {
     if (!pods.has(s.pod_id)) continue
     if (POD_ENGLISH_REPLACE_LEFT_TO[s.id]) { skipped.leftToOtherJob++; continue }
-    if (!playsInSentences(s)) { skipped.notSplit++; continue }
+    if (!hasKnownPieces(s)) { skipped.notSplit++; continue }
     const g = genderOf(s)
     if (!g) { skipped.uncast++; continue }
     if (!gender || g !== gender || !genders.includes(g)) { skipped.otherGender++; continue }
@@ -172,4 +186,4 @@ function planWrongWordRepairs({ podIds = [], sentences = [], clipById = new Map(
   return { repairs }
 }
 
-module.exports = { SPLIT_CUT_GATES, SPLIT_CUT_SPEAKER_GENDERS, playsInSentences, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs }
+module.exports = { SPLIT_CUT_GATES, SPLIT_CUT_SPEAKER_GENDERS, playsInSentences, hasKnownPieces, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs }

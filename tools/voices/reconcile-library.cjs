@@ -5,11 +5,11 @@
  * named, then a nightly reconcile reporting drift (target 0)".)
  *
  *   node tools/voices/reconcile-library.cjs                  # report only, writes nothing
- *   node tools/voices/reconcile-library.cjs --apply          # refresh spoken-text evidence, fill missing, drop stale
+ *   node tools/voices/reconcile-library.cjs --apply          # fill missing, drop stale
  *   node tools/voices/reconcile-library.cjs --after <uuid>   # resume a pkey walk
  *   node tools/voices/reconcile-library.cjs --no-snapshot    # full walk, but probe clip_index per batch
- *   node tools/voices/reconcile-library.cjs --apply --only-evidenced --no-evidence
- *       # seconds, not an hour: only the clips a human or whisper has spoken for (attributions, spoken-text verdicts) —
+ *   node tools/voices/reconcile-library.cjs --apply --only-evidenced
+ *       # seconds, not an hour: only the clips something has spoken for (attributions, spoken-text verdicts) —
  *       # what to run right after naming a group
  *
  * Walks course_audio with ONE sequential-scan cursor on a read-only snapshot
@@ -38,14 +38,13 @@
  * stops it and prints the watermark — the live Supabase is shared by learners,
  * staging, Popty and red.
  *
- * SPOKEN-TEXT EVIDENCE. A gender-expanded take is stored under its unexpanded
- * label. Whether the clip SAYS the expansion is a fact about its audio, not its
- * row — see CANDIDATES_SQL for why an object date only nominates and whisper
- * decides. Verdicts are recorded in clip_spoken_text.
+ * NOT SCHEDULED, and no spoken-text check (Tom, 2026-11-07: "remove any nightly check on gendered
+ * clips"). Nothing listens to a gender-expanded clip any more, so one with no clip_spoken_text row
+ * stays filed under its label; verdicts already in that table still count. This is a hand-run sync
+ * of the clip index, and nothing runs it for you.
  */
 const path = require('path')
 const fs = require('fs')
-const { spawn } = require('child_process')
 const { Client } = require('pg')
 const { entriesFromRows, clipLanguageKey, indexEntryFor, COURSE_LANGUAGE_FIELDS } = require('../../services/shared/clip-index.cjs')
 const { buildVoiceResolver, whyUnnamed } = require('../../services/shared/named-voices.cjs')
@@ -104,135 +103,6 @@ async function loadContext(client) {
   const resolvers = buildVoiceResolver({ voices, policyRows, attributions, spoken })
   const map = new Map(courses.map(c => [c.course_code, c]))
   return { resolvers, courseOf: code => map.get(code) || null }
-}
-
-// ── spoken-text evidence ────────────────────────────────────────────────────
-
-function s3Head(key) {
-  const region = process.env.AWS_REGION || 'eu-west-1', bucket = process.env.S3_AUDIO_BUCKET || process.env.S3_BUCKET || 'ssi-audio-stage'
-  return new Promise(resolve => {
-    const c = spawn('curl', ['-sI', '--max-time', '20', '--aws-sigv4', `aws:amz:${region}:s3`, '--user', `${process.env.AWS_ACCESS_KEY_ID}:${process.env.AWS_SECRET_ACCESS_KEY}`,
-      `https://${bucket}.s3.${region}.amazonaws.com/${key}`])
-    let out = ''
-    c.stdout.on('data', d => { out += d }); c.stderr.on('data', () => {})
-    c.on('close', () => {
-      if (!/^HTTP\/[\d.]+ 200/.test(out)) return resolve(null)
-      const m = out.match(/^last-modified:\s*(.+)$/im)
-      resolve(m ? new Date(m[1].trim()) : null)
-    })
-  })
-}
-
-/**
- * The clip's row says its label; does its audio say the expansion? Candidates only.
- *
- * TWO STEPS, because one was not enough (whisper-checked, job #703):
- *   1. S3 HEAD. An object written BEFORE the expansion row existed cannot say the
- *      expansion: it says its label (18/18 whisper-verified, hrv/heb/pol/rus).
- *   2. An object written AFTER might — phase8 applies the expansion at render time
- *      — but not every writer does: Italian rows Kai re-rendered on 2026-09 carry
- *      revision 2 and a fresh object and still say the LABEL (4/4 whisper-heard),
- *      because the one render route (POST /api/audio/render) speaks the text it is
- *      given. So the object date only nominates; whisper decides, and a clip is
- *      re-filed under the expansion only when the decode is CLOSER to the expansion
- *      than to the label by at least one character. Anything else stays under its
- *      label — the status quo — and is counted as undecided.
- */
-const CANDIDATES_SQL = `
-  SELECT ca.id, ca.s3_key, ca.text, ca.language, ca.audio_revision, e.processed_at,
-         CASE WHEN ca.role = 'target1' THEN e.expanded_f ELSE e.expanded_m END AS spoken
-    FROM course_audio ca
-    JOIN course_gender_expansions e
-      ON e.course_code = ca.course_code AND e.original_text = ca.text AND e.language = ca.language AND e.text_side = 'target'
-    LEFT JOIN clip_spoken_text s ON s.audio_id = ca.id
-   WHERE ca.role IN ('target1', 'target2') AND ca.origin = 'tts' AND ca.s3_key NOT LIKE 'pending/%'
-     AND (CASE WHEN ca.role = 'target1' THEN e.expanded_f ELSE e.expanded_m END) IS NOT NULL
-     AND lower(CASE WHEN ca.role = 'target1' THEN e.expanded_f ELSE e.expanded_m END) <> lower(ca.text)
-     AND (ca.created_at >= e.processed_at OR ca.audio_revision > 1)
-     AND (s.audio_id IS NULL OR s.audio_revision < ca.audio_revision)`
-
-/** Whisper's verdict between two readings of one clip. Pure — tested. */
-function judgeHeard(heard, label, expansion, characterErrorRate, normalise) {
-  const len = t => normalise(t).length
-  const dLabel = characterErrorRate(label, heard) * len(label)
-  const dExp = characterErrorRate(expansion, heard) * len(expansion)
-  const cerExp = characterErrorRate(expansion, heard), cerLabel = characterErrorRate(label, heard)
-  if (dLabel - dExp >= 1 && cerExp <= 0.35) return 'says-expansion'
-  if (dExp - dLabel >= 1 && cerLabel <= 0.35) return 'says-label'
-  return 'undecided'
-}
-
-async function refreshSpokenEvidence(client, { apply, par = 2, limit = 0, headPar = 6, budgetMs = 0 } = {}) {
-  const deadline = budgetMs ? Date.now() + budgetMs : Infinity
-  const veracity = require('../../services/audio-veracity.cjs')
-  const evidenceLog = path.join(EVIDENCE_DIR, 'spoken-text-decodes.jsonl')
-  fs.mkdirSync(EVIDENCE_DIR, { recursive: true })
-  await client.query("SET statement_timeout = '120s'")
-  const { rows } = await client.query(CANDIDATES_SQL + (limit ? ` LIMIT ${limit}` : ''))
-  await client.query("SET statement_timeout = '15s'")
-  const tally = { candidates: rows.length, before_expansion: 0, says_expansion: 0, says_label: 0, undecided: 0, unreadable: 0, left_for_tomorrow: 0 }
-  const verdicts = []
-  const flush = async () => {
-    if (!apply || !verdicts.length) return
-    const b = verdicts.splice(0), col = f => b.map(v => v[f])
-    await client.query(
-      `INSERT INTO clip_spoken_text (audio_id, spoken_text, basis, audio_revision)
-       SELECT * FROM unnest($1::uuid[], $2::text[], $3::text[], $4::int[])
-       ON CONFLICT (audio_id) DO UPDATE SET spoken_text = excluded.spoken_text, basis = excluded.basis,
-         audio_revision = excluded.audio_revision, checked_at = now()`,
-      [col('audio_id'), col('spoken_text'), col('basis'), col('audio_revision')])
-  }
-  // step 1: S3 HEAD nominates
-  const nominated = []
-  let i = 0
-  await Promise.all(Array.from({ length: headPar }, async () => {
-    while (i < rows.length) {
-      const r = rows[i++]
-      const lm = await s3Head(r.s3_key)
-      if (!lm) { tally.unreadable++; continue }
-      if (lm < new Date(r.processed_at)) {
-        tally.before_expansion++
-        verdicts.push({ audio_id: r.id, spoken_text: r.text, audio_revision: r.audio_revision, basis: 's3-written-before-expansion' })
-      } else nominated.push(r)
-    }
-  }))
-  await flush()
-  // step 2: whisper decides
-  const iso1Of = lang => veracity.WHISPER_ISO1[lang] || null
-  let j = 0, done = 0
-  await Promise.all(Array.from({ length: par }, async () => {
-    while (j < nominated.length && Date.now() < deadline) {
-      const r = nominated[j++]
-      let verdict = 'undecided', heard = null
-      try {
-        const buf = await s3Get(r.s3_key)
-        heard = await veracity.decodeAudio(buf, iso1Of(r.language))
-        verdict = judgeHeard(heard, r.text, r.spoken, veracity.characterErrorRate, veracity.normalise)
-      } catch (e) { heard = `ERROR ${e.message}`.slice(0, 200); tally.unreadable++ }
-      if (verdict === 'says-expansion') tally.says_expansion++
-      else if (verdict === 'says-label') tally.says_label++
-      else tally.undecided++
-      fs.appendFileSync(evidenceLog, JSON.stringify({ audio_id: r.id, verdict, heard, label: r.text, expansion: r.spoken }) + '\n')
-      // undecided is filed under the label, exactly as before: only an affirmative hearing moves a clip
-      verdicts.push({ audio_id: r.id, spoken_text: verdict === 'says-expansion' ? r.spoken : r.text, audio_revision: r.audio_revision, basis: `whisper-small:${verdict}` })
-      if (verdicts.length >= 100) await flush()
-      if (++done % 200 === 0) log(`whisper ${done}/${nominated.length}`)
-    }
-  }))
-  await flush()
-  tally.left_for_tomorrow = Math.max(0, nominated.length - j)
-  return tally
-}
-
-function s3Get(key) {
-  const region = process.env.AWS_REGION || 'eu-west-1', bucket = process.env.S3_AUDIO_BUCKET || process.env.S3_BUCKET || 'ssi-audio-stage'
-  return new Promise((resolve, reject) => {
-    const c = spawn('curl', ['-sf', '--max-time', '60', '--aws-sigv4', `aws:amz:${region}:s3`, '--user', `${process.env.AWS_ACCESS_KEY_ID}:${process.env.AWS_SECRET_ACCESS_KEY}`,
-      `https://${bucket}.s3.${region}.amazonaws.com/${key}`])
-    const out = []
-    c.stdout.on('data', d => out.push(d)); c.stderr.on('data', () => {})
-    c.on('close', code => code === 0 ? resolve(Buffer.concat(out)) : reject(new Error(`s3 get ${key}: curl exit ${code}`)))
-  })
 }
 
 // ── what the index holds ────────────────────────────────────────────────────
@@ -496,12 +366,8 @@ async function main() {
   const apply = args.includes('--apply')
   const client = await connect()
   try {
-    const evidence = args.includes('--no-evidence') ? null : await refreshSpokenEvidence(client, { apply, par: Number(arg('--whisper-par', 2)) })
-    log('spoken-text evidence', JSON.stringify(evidence))
-    if (args.includes('--evidence-only')) { console.log(JSON.stringify({ apply, evidence }, null, 2)); return }
     const report = await reconcile(client, { apply, after: arg('--after', NIL), maxBatches: Number(arg('--max-batches', Infinity)), snapshot: !args.includes('--no-snapshot'), onlyEvidenced: args.includes('--only-evidenced') })
-    // A read-only run's `missing` after evidence-not-applied is honest: it counts what apply would fix.
-    console.log(JSON.stringify({ apply, evidence, ...report }, null, 2))
+    console.log(JSON.stringify({ apply, ...report }, null, 2))
   } catch (e) {
     log(`STOPPED: ${e.code === '57014' ? 'STATEMENT TIMEOUT' : 'ERROR'}: ${e.message}`)
     process.exit(2)
@@ -509,4 +375,4 @@ async function main() {
 }
 
 if (require.main === module) main()
-module.exports = { reconcile, readUrl, stillAsSeen, loadIndexSnapshot, indexFromSnapshot, refreshSpokenEvidence, loadContext, connect, CANDIDATES_SQL, judgeHeard }
+module.exports = { reconcile, readUrl, stillAsSeen, loadIndexSnapshot, indexFromSnapshot, loadContext, connect }

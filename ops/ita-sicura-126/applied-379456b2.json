@@ -1,0 +1,731 @@
+{
+ "event_id": "379456b2-d74e-4ef1-9f8b-1227b1e6f2ca",
+ "undo_file": "2026-11-16T13-34-03-846Z-379456b2-d74e-4ef1-9f8b-1227b1e6f2ca.json",
+ "undo_ops": [
+  {
+   "op": "gender.update",
+   "id": "91caf695-10a2-4a1e-a13d-63509445442c",
+   "set": {
+    "expanded_f": "pensavo che fossi coraggiosa"
+   }
+  },
+  {
+   "op": "gender.update",
+   "id": "fabccf24-8b7b-4ff0-9240-1ea7d2c0255b",
+   "set": {
+    "expanded_f": "sei disposta a pagare per tutto?"
+   }
+  },
+  {
+   "op": "gender.delete",
+   "id": "ef018e0b-9059-413a-9a85-9e6d54b73f79"
+  },
+  {
+   "op": "gender.delete",
+   "id": "e2e1e0bb-218d-4aa5-97e4-04065aba5e25"
+  },
+  {
+   "op": "gender.delete",
+   "id": "44b6a790-482a-4b39-b077-e2797f036418"
+  },
+  {
+   "op": "gender.delete",
+   "id": "3586476a-e62c-4225-8dcc-9da6bfc7b7c0"
+  },
+  {
+   "op": "gender.delete",
+   "id": "82742357-41b1-43b2-a88c-bd2f1f0c5902"
+  },
+  {
+   "op": "gender.delete",
+   "id": "ac8fca42-d676-4aa8-ace6-28581b5f29e5"
+  },
+  {
+   "op": "gender.delete",
+   "id": "07021424-47a5-4f99-87d3-68566b8e381d"
+  },
+  {
+   "op": "gender.delete",
+   "id": "aec87478-5f3a-43ce-ba60-e41adc6868e2"
+  },
+  {
+   "op": "gender.delete",
+   "id": "e274b44d-f1ba-476d-a777-d53a8b9474b7"
+  },
+  {
+   "op": "gender.delete",
+   "id": "c77438c5-2e3d-4e4c-879a-a90c9709926b"
+  },
+  {
+   "op": "gender.delete",
+   "id": "c6e4d9c3-160b-4e4a-9ec8-068b2f2cac62"
+  },
+  {
+   "op": "gender.delete",
+   "id": "8c382d6b-1d53-4a6f-8741-dbdddd5ba0ef"
+  },
+  {
+   "op": "gender.delete",
+   "id": "96d812a8-0ffc-4ceb-abe0-eb3a3945a269"
+  },
+  {
+   "op": "gender.delete",
+   "id": "fb6a6796-b302-4d08-b220-9be07a19b0a3"
+  },
+  {
+   "op": "gender.delete",
+   "id": "25e28074-9b58-4dff-9ca7-ebb48baa8ba9"
+  },
+  {
+   "op": "gender.delete",
+   "id": "07d0d35e-d059-4b2d-bbaa-9a1b061ca6fd"
+  },
+  {
+   "op": "gender.delete",
+   "id": "4a3148a1-9a6b-4ee5-bfdb-1a992c626261"
+  },
+  {
+   "op": "gender.delete",
+   "id": "891cb15b-8da8-44e1-879a-c169d8c00d5e"
+  },
+  {
+   "op": "gender.delete",
+   "id": "52124f2f-701c-483b-b52a-f6e0c820c6e9"
+  },
+  {
+   "op": "gender.delete",
+   "id": "9f6d9aae-e472-4255-b553-dcf6100cd8cd"
+  },
+  {
+   "op": "gender.delete",
+   "id": "3e23a203-6790-4b96-b584-6e61b50a24d3"
+  },
+  {
+   "op": "gender.delete",
+   "id": "fbc5fae1-c219-4e28-bd81-7e2308cfa6f1"
+  },
+  {
+   "op": "gender.delete",
+   "id": "8a0fbf9b-7841-4d4b-a8b4-02d2278c5f73"
+  },
+  {
+   "op": "gender.delete",
+   "id": "fa665885-ffc9-4b3c-84ae-d5ffed954757"
+  },
+  {
+   "op": "gender.delete",
+   "id": "757a05b0-2f00-4416-b85b-629c4958a99a"
+  },
+  {
+   "op": "gender.delete",
+   "id": "65a77c6e-d588-4c8e-a672-66385bfe6319"
+  },
+  {
+   "op": "gender.delete",
+   "id": "884bd7f2-77de-4e41-9746-c7cc5354352f"
+  },
+  {
+   "op": "gender.delete",
+   "id": "cf919573-655d-480f-baa0-9f74387280f8"
+  },
+  {
+   "op": "gender.delete",
+   "id": "4c3a5355-d081-409a-8302-361d63d752e7"
+  },
+  {
+   "op": "gender.delete",
+   "id": "25fe341b-c0a9-4b11-9087-c4fea9959d15"
+  },
+  {
+   "op": "gender.delete",
+   "id": "739921c3-1dc4-4289-bde9-48b7474bc542"
+  }
+ ],
+ "results": [
+  {
+   "index": 0,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "739921c3-1dc4-4289-bde9-48b7474bc542",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che non voleva sapere che cosa sarebbe successo",
+    "language": "ita",
+    "expanded_f": "sono sicura che non voleva sapere che cosa sarebbe successo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "25fe341b-c0a9-4b11-9087-c4fea9959d15",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che è preoccupata",
+    "language": "ita",
+    "expanded_f": "sono sicura che è preoccupata",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "4c3a5355-d081-409a-8302-361d63d752e7",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che voleva sapere che cosa stava succedendo",
+    "language": "ita",
+    "expanded_f": "sono sicura che voleva sapere che cosa stava succedendo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "cf919573-655d-480f-baa0-9f74387280f8",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che era tranquillo",
+    "language": "ita",
+    "expanded_f": "sono sicura che era tranquillo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "884bd7f2-77de-4e41-9746-c7cc5354352f",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che era piuttosto tranquillo",
+    "language": "ita",
+    "expanded_f": "sono sicura che era piuttosto tranquillo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "65a77c6e-d588-4c8e-a672-66385bfe6319",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che era piuttosto silenzioso",
+    "language": "ita",
+    "expanded_f": "sono sicura che era piuttosto silenzioso",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "757a05b0-2f00-4416-b85b-629c4958a99a",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che era tranquillo dopo che sei andato via",
+    "language": "ita",
+    "expanded_f": "sono sicura che era tranquillo dopo che sei andato via",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "fa665885-ffc9-4b3c-84ae-d5ffed954757",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che sono pronti",
+    "language": "ita",
+    "expanded_f": "sono sicura che sono pronti",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "8a0fbf9b-7841-4d4b-a8b4-02d2278c5f73",
+    "course_code": "ita_for_eng",
+    "original_text": "sono sicuro che erano quasi pronti",
+    "language": "ita",
+    "expanded_f": "sono sicura che erano quasi pronti",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "fbc5fae1-c219-4e28-bd81-7e2308cfa6f1",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono sicuro se è la borsa di Jane",
+    "language": "ita",
+    "expanded_f": "non sono sicura se è la borsa di Jane",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "3e23a203-6790-4b96-b584-6e61b50a24d3",
+    "course_code": "ita_for_eng",
+    "original_text": "penso che quella sia la sua borsa, ma non sono sicuro",
+    "language": "ita",
+    "expanded_f": "penso che quella sia la sua borsa, ma non sono sicura",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "9f6d9aae-e472-4255-b553-dcf6100cd8cd",
+    "course_code": "ita_for_eng",
+    "original_text": "penso di essere pronto in meno di un'ora",
+    "language": "ita",
+    "expanded_f": "penso di essere pronta in meno di un'ora",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "52124f2f-701c-483b-b52a-f6e0c820c6e9",
+    "course_code": "ita_for_eng",
+    "original_text": "sono molto contento di questo",
+    "language": "ita",
+    "expanded_f": "sono molto contenta di questo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "891cb15b-8da8-44e1-879a-c169d8c00d5e",
+    "course_code": "ita_for_eng",
+    "original_text": "non penso di essere troppo occupato domani",
+    "language": "ita",
+    "expanded_f": "non penso di essere troppo occupata domani",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "4a3148a1-9a6b-4ee5-bfdb-1a992c626261",
+    "course_code": "ita_for_eng",
+    "original_text": "sono uscito per trovarlo",
+    "language": "ita",
+    "expanded_f": "sono uscita per trovarlo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "07d0d35e-d059-4b2d-bbaa-9a1b061ca6fd",
+    "course_code": "ita_for_eng",
+    "original_text": "non voglio essere troppo occupato",
+    "language": "ita",
+    "expanded_f": "non voglio essere troppo occupata",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "25e28074-9b58-4dff-9ca7-ebb48baa8ba9",
+    "course_code": "ita_for_eng",
+    "original_text": "penso di essere pronto tra tre o quattro minuti",
+    "language": "ita",
+    "expanded_f": "penso di essere pronta tra tre o quattro minuti",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "fb6a6796-b302-4d08-b220-9be07a19b0a3",
+    "course_code": "ita_for_eng",
+    "original_text": "sarò pronto alle sei",
+    "language": "ita",
+    "expanded_f": "sarò pronta alle sei",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "96d812a8-0ffc-4ceb-abe0-eb3a3945a269",
+    "course_code": "ita_for_eng",
+    "original_text": "non capisco quello che avete detto perché sono un po' stanco",
+    "language": "ita",
+    "expanded_f": "non capisco quello che avete detto perché sono un po' stanca",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "8c382d6b-1d53-4a6f-8741-dbdddd5ba0ef",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato ieri",
+    "language": "ita",
+    "expanded_f": "non sono andata ieri",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "c6e4d9c3-160b-4e4a-9ec8-068b2f2cac62",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato il mese scorso",
+    "language": "ita",
+    "expanded_f": "non sono andata il mese scorso",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "c77438c5-2e3d-4e4c-879a-a90c9709926b",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato con te",
+    "language": "ita",
+    "expanded_f": "non sono andata con te",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "e274b44d-f1ba-476d-a777-d53a8b9474b7",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato la settimana scorsa",
+    "language": "ita",
+    "expanded_f": "non sono andata la settimana scorsa",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "aec87478-5f3a-43ce-ba60-e41adc6868e2",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato con i miei amici la settimana scorsa",
+    "language": "ita",
+    "expanded_f": "non sono andata con i miei amici la settimana scorsa",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "07021424-47a5-4f99-87d3-68566b8e381d",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato perché volevo parlare con te",
+    "language": "ita",
+    "expanded_f": "non sono andata perché volevo parlare con te",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "ac8fca42-d676-4aa8-ace6-28581b5f29e5",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato ieri perché non volevo",
+    "language": "ita",
+    "expanded_f": "non sono andata ieri perché non volevo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "82742357-41b1-43b2-a88c-bd2f1f0c5902",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato ieri sera perché volevo rilassarmi",
+    "language": "ita",
+    "expanded_f": "non sono andata ieri sera perché volevo rilassarmi",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "3586476a-e62c-4225-8dcc-9da6bfc7b7c0",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato dal medico con mia madre la settimana scorsa",
+    "language": "ita",
+    "expanded_f": "non sono andata dal medico con mia madre la settimana scorsa",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "44b6a790-482a-4b39-b077-e2797f036418",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato con te perché dovevo lavorare",
+    "language": "ita",
+    "expanded_f": "non sono andata con te perché dovevo lavorare",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "e2e1e0bb-218d-4aa5-97e4-04065aba5e25",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato il mese scorso perché non avevo tempo",
+    "language": "ita",
+    "expanded_f": "non sono andata il mese scorso perché non avevo tempo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "gender.insert",
+   "key": null,
+   "before": null,
+   "after": {
+    "id": "ef018e0b-9059-413a-9a85-9e6d54b73f79",
+    "course_code": "ita_for_eng",
+    "original_text": "non sono andato con lei perché non volevo",
+    "language": "ita",
+    "expanded_f": "non sono andata con lei perché non volevo",
+    "expanded_m": null,
+    "processed_at": "2026-11-16T13:34:01.667Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "gender.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "fabccf24-8b7b-4ff0-9240-1ea7d2c0255b"
+   },
+   "before": {
+    "id": "fabccf24-8b7b-4ff0-9240-1ea7d2c0255b",
+    "course_code": "ita_for_eng",
+    "original_text": "sei disposto a pagare per tutto?",
+    "language": "ita",
+    "expanded_f": "sei disposta a pagare per tutto?",
+    "expanded_m": null,
+    "processed_at": "2026-11-02T17:21:11.182Z",
+    "text_side": "target"
+   },
+   "after": {
+    "id": "fabccf24-8b7b-4ff0-9240-1ea7d2c0255b",
+    "course_code": "ita_for_eng",
+    "original_text": "sei disposto a pagare per tutto?",
+    "language": "ita",
+    "expanded_f": "sei disposto a pagare per tutto?",
+    "expanded_m": null,
+    "processed_at": "2026-11-02T17:21:11.182Z",
+    "text_side": "target"
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "gender.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "91caf695-10a2-4a1e-a13d-63509445442c"
+   },
+   "before": {
+    "id": "91caf695-10a2-4a1e-a13d-63509445442c",
+    "course_code": "ita_for_eng",
+    "original_text": "pensavo che fossi coraggioso",
+    "language": "ita",
+    "expanded_f": "pensavo che fossi coraggiosa",
+    "expanded_m": null,
+    "processed_at": "2026-10-19T16:30:52.298Z",
+    "text_side": "target"
+   },
+   "after": {
+    "id": "91caf695-10a2-4a1e-a13d-63509445442c",
+    "course_code": "ita_for_eng",
+    "original_text": "pensavo che fossi coraggioso",
+    "language": "ita",
+    "expanded_f": "pensavo che fossi coraggioso",
+    "expanded_m": null,
+    "processed_at": "2026-10-19T16:30:52.298Z",
+    "text_side": "target"
+   },
+   "changed": true
+  }
+ ]
+}

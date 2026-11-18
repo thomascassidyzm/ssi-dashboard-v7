@@ -1,0 +1,1191 @@
+{
+ "course": "eng_for_kor",
+ "plan": "item3.tsv",
+ "at": "2026-11-18T13:00:36.367Z",
+ "rows": [
+  {
+   "id": "S0012L03B01",
+   "role": "build",
+   "target": "what's going to happen?",
+   "old": "무슨 일이 일어날지",
+   "new": "무슨 일이 일어날까요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0012L03B03",
+   "role": "build",
+   "target": "what's going to happen?",
+   "old": "무슨 일이 일어날지 알고 싶지 않아요",
+   "new": "무슨 일이 일어날까요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0021L01B01",
+   "role": "build",
+   "target": "why do you want to meet?",
+   "old": "왜 만나고 싶어해요",
+   "new": "왜 만나고 싶어요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L01B02",
+   "role": "build",
+   "target": "why do you want to come back?",
+   "old": "왜 돌아오고 싶어해요",
+   "new": "왜 돌아오고 싶어요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L01B03",
+   "role": "build",
+   "target": "why do you want to learn?",
+   "old": "왜 배우고 싶어해요",
+   "new": "왜 배우고 싶어요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L03B01",
+   "role": "build",
+   "target": "are you learning?",
+   "old": "배우고 있어요",
+   "new": "배우고 있나요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0021L03B02",
+   "role": "build",
+   "target": "are you learning English?",
+   "old": "영어를 배우고 있어요",
+   "new": "영어를 배우고 있나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L03B03",
+   "role": "build",
+   "target": "are you learning now?",
+   "old": "지금 배우고 있어요",
+   "new": "지금 배우고 있나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L03B04",
+   "role": "build",
+   "target": "are you learning quickly?",
+   "old": "빨리 배우고 있어요",
+   "new": "빨리 배우고 있나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L02U04",
+   "role": "use",
+   "target": "you don't mind helping me again",
+   "old": "당신은 저를 도와주는 것을 괜찮아해요?",
+   "new": "당신은 저를 다시 도와주는 것이 괜찮아요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0067L01B01",
+   "role": "build",
+   "target": "why do you want to?",
+   "old": "왜 싶어요",
+   "new": "왜 하고 싶어요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0081L01B01",
+   "role": "build",
+   "target": "do you want to start?",
+   "old": "시작하고 싶어요",
+   "new": "시작하고 싶나요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0085L01B02",
+   "role": "build",
+   "target": "I don't know now",
+   "old": "저는 몰라요",
+   "new": "저는 지금 몰라요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0094L01B02",
+   "role": "build",
+   "target": "this is the only way to learn English",
+   "old": "이것이 유일한 방법이에요",
+   "new": "이것이 영어를 배우는 유일한 방법이에요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0099L01B03",
+   "role": "build",
+   "target": "you should ask me now",
+   "old": "지금 물어봐야 해요",
+   "new": "지금 저에게 물어봐야 해요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0100L02B02",
+   "role": "build",
+   "target": "you shouldn't worry about it this evening",
+   "old": "그것에 대해 걱정하지 않아도 돼요",
+   "new": "오늘 저녁에는 그것에 대해 걱정하지 않아도 돼요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0119L02B01",
+   "role": "build",
+   "target": "can I ask?",
+   "old": "물어봐도 돼요",
+   "new": "물어봐도 되나요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0135L01B03",
+   "role": "build",
+   "target": "can I ask why you think it's so good?",
+   "old": "왜 그렇게 좋다고 생각하는지 물어봐요",
+   "new": "왜 그렇게 좋다고 생각하는지 물어봐도 될까요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0140L01U01",
+   "role": "use",
+   "target": "I'm sorry that I can't see you tonight",
+   "old": "볼 수 없어서 죄송해요",
+   "new": "오늘 밤에 당신을 볼 수 없어서 죄송해요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0143L01U02",
+   "role": "use",
+   "target": "I said that earlier and I think it's important",
+   "old": "아까 말했어요",
+   "new": "아까 그렇게 말했어요, 그리고 그것이 중요하다고 생각해요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0145L01B03",
+   "role": "build",
+   "target": "I'm not happy any more now",
+   "old": "저는 더 이상 행복하지 않아요",
+   "new": "저는 이제 더 이상 행복하지 않아요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0145L01U03",
+   "role": "use",
+   "target": "I'm not happy any more and I don't know why",
+   "old": "저는 더 이상 행복하지 않아요",
+   "new": "저는 더 이상 행복하지 않은데, 왜 그런지 모르겠어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0146L02U01",
+   "role": "use",
+   "target": "nothing seems to be working and I don't know why",
+   "old": "아무것도 작동하지 않는 것 같아요",
+   "new": "아무것도 작동하지 않는 것 같은데, 왜 그런지 모르겠어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0148L01U01",
+   "role": "use",
+   "target": "I don't know why he wasn't very patient",
+   "old": "별로 인내심이 없었어요",
+   "new": "그가 왜 별로 인내심이 없었는지 모르겠어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0149L02U02",
+   "role": "use",
+   "target": "I hope you'll finish soon today",
+   "old": "곧 끝날 거라고 기대해요",
+   "new": "오늘 곧 끝날 거라고 기대해요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0150L01B01",
+   "role": "build",
+   "target": "can you tell me?",
+   "old": "말해줄 수 있어요",
+   "new": "말해줄 수 있나요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0150L01B02",
+   "role": "build",
+   "target": "can you tell me what?",
+   "old": "뭔지 말해줄 수 있어요",
+   "new": "뭔지 말해줄 수 있나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0150L01B03",
+   "role": "build",
+   "target": "can you tell me about it?",
+   "old": "그것에 대해 말해줄 수 있어요",
+   "new": "그것에 대해 말해줄 수 있나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0154L01U01",
+   "role": "use",
+   "target": "do you want to meet on saturday?",
+   "old": "토요일에 만나고 싶어요",
+   "new": "토요일에 만나고 싶나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0154L01U03",
+   "role": "use",
+   "target": "I hope we can meet on saturday",
+   "old": "토요일에 만나고 싶어요, 괜찮아요?",
+   "new": "토요일에 만날 수 있을 거라고 기대해요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0154L02B03",
+   "role": "build",
+   "target": "where on saturday night?",
+   "old": "토요일 밤에 어디서",
+   "new": "토요일 밤에 어디서요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L01U01",
+   "role": "use",
+   "target": "I don't mind waiting here for a while",
+   "old": "기다리는 것이 괜찮아요, 여기서",
+   "new": "여기서 잠시 기다리는 것이 괜찮아요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L01U03",
+   "role": "use",
+   "target": "I don't mind waiting for you tonight",
+   "old": "기다리는 것이 괜찮아요, 당신을 위해",
+   "new": "오늘 밤에 당신을 기다리는 것이 괜찮아요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L02U02",
+   "role": "use",
+   "target": "can you wait for a few minutes?",
+   "old": "몇 분만 기다려 주세요",
+   "new": "몇 분 기다려 줄 수 있나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L03U02",
+   "role": "use",
+   "target": "where do you want to meet tomorrow morning?",
+   "old": "내일 아침에 만나고 싶어요",
+   "new": "내일 아침에 어디서 만나고 싶어요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0157L01U05",
+   "role": "use",
+   "target": "do you want to go to a restaurant next month?",
+   "old": "다음 달에 식당에 가고 싶어요",
+   "new": "다음 달에 식당에 가고 싶나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0157L02U02",
+   "role": "use",
+   "target": "I'm sorry I won't be able to be there tomorrow morning",
+   "old": "거기에 있을 수 없을 거예요, 죄송해요",
+   "new": "죄송하지만 내일 아침에 거기에 있을 수 없을 거예요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0158L01U01",
+   "role": "use",
+   "target": "let's talk about something else today",
+   "old": "다른 것에 대해 이야기해요, 좋아요?",
+   "new": "오늘은 다른 것에 대해 이야기해요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0158L01U02",
+   "role": "use",
+   "target": "I don't mind but let's talk about something else",
+   "old": "다른 것에 대해 이야기해요, 괜찮아요?",
+   "new": "저는 괜찮지만, 다른 것에 대해 이야기해요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0162L01B01",
+   "role": "build",
+   "target": "what do you think about that?",
+   "old": "그것에 대해 어떻게 생각해요",
+   "new": "그것에 대해 어떻게 생각해요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0167L02B01",
+   "role": "build",
+   "target": "what do you need to do?",
+   "old": "무엇을 해야 해요",
+   "new": "무엇을 해야 해요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0167L02B03",
+   "role": "build",
+   "target": "what do you need to do now?",
+   "old": "지금 무엇을 해야 해요",
+   "new": "지금 무엇을 해야 해요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0169L01B01",
+   "role": "build",
+   "target": "what do you want me to do?",
+   "old": "제가 무엇을 하기를 원해요",
+   "new": "제가 무엇을 하기를 원해요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0169L01B02",
+   "role": "build",
+   "target": "what do you want me to do now?",
+   "old": "지금 제가 무엇을 하기를 원해요",
+   "new": "지금 제가 무엇을 하기를 원해요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0171L02B01",
+   "role": "build",
+   "target": "do you want me to help you?",
+   "old": "도와드릴까요",
+   "new": "도와드릴까요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0171L02B02",
+   "role": "build",
+   "target": "do you want me to help you now?",
+   "old": "지금 도와드릴까요",
+   "new": "지금 도와드릴까요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0175L01B01",
+   "role": "build",
+   "target": "what do you want to do?",
+   "old": "무엇을 하고 싶어요",
+   "new": "무엇을 하고 싶어요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0175L01B02",
+   "role": "build",
+   "target": "what do you want to do now?",
+   "old": "지금 무엇을 하고 싶어요",
+   "new": "지금 무엇을 하고 싶어요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0179L02B01",
+   "role": "build",
+   "target": "what are you going to do?",
+   "old": "무엇을 할 거예요",
+   "new": "무엇을 할 거예요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0179L02B02",
+   "role": "build",
+   "target": "what are you going to do now?",
+   "old": "지금 무엇을 할 거예요",
+   "new": "지금 무엇을 할 거예요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0182L02B02",
+   "role": "build",
+   "target": "have you seen my keys anywhere?",
+   "old": "제 열쇠를 어디선가 봤어요",
+   "new": "어디선가 제 열쇠를 봤나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0182L02B03",
+   "role": "build",
+   "target": "have you seen that book anywhere?",
+   "old": "그 책을 어디선가 봤어요",
+   "new": "어디선가 그 책을 봤나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0194L01B01",
+   "role": "build",
+   "target": "what are you looking for?",
+   "old": "무엇을 찾고 있어요",
+   "new": "무엇을 찾고 있어요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0194L01B03",
+   "role": "build",
+   "target": "what are you looking for now?",
+   "old": "지금 무엇을 찾고 있어요",
+   "new": "지금 무엇을 찾고 있어요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0196L01B01",
+   "role": "build",
+   "target": "have you heard the latest idea?",
+   "old": "최근 아이디어를 들었어요",
+   "new": "최근 아이디어를 들었나요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0196L01B03",
+   "role": "build",
+   "target": "have you heard the latest idea yet?",
+   "old": "아직 최근 아이디어를 들었어요",
+   "new": "최근 아이디어를 벌써 들었나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0201L02B01",
+   "role": "build",
+   "target": "what was going to happen?",
+   "old": "무슨 일이 일어났을지",
+   "new": "무슨 일이 일어날 거였나요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0201L02B02",
+   "role": "build",
+   "target": "we wanted to know what was going to happen",
+   "old": "알고 싶었어요 무슨 일이 일어났을지",
+   "new": "우리는 무슨 일이 일어날지 알고 싶었어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0202L03B02",
+   "role": "build",
+   "target": "nobody was sure how to answer the question",
+   "old": "아무도 질문에 확신하지 못했어요",
+   "new": "아무도 질문에 어떻게 대답할지 확신하지 못했어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0203L02B02",
+   "role": "build",
+   "target": "what would you do if I asked you to help me",
+   "old": "어떻게 할 거예요 도움을 요청하면",
+   "new": "제가 도움을 요청하면 어떻게 할 거예요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0205L02B02",
+   "role": "build",
+   "target": "I've forgotten the word I was trying to say",
+   "old": "잊어버렸어요 말하려던 단어를",
+   "new": "저는 말하려던 단어를 잊어버렸어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0211L02B02",
+   "role": "build",
+   "target": "they told us that they didn't want to explain",
+   "old": "우리에게 말했어요, 설명하고 싶지 않다고",
+   "new": "그들은 설명하고 싶지 않다고 우리에게 말했어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L01U05",
+   "role": "use",
+   "target": "do you know something about the man?",
+   "old": "그 남자에 대해 뭔가를 알아요",
+   "new": "그 남자에 대해 뭔가를 알고 있나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L01B04",
+   "role": "build",
+   "target": "I know a young man who wants to work with you",
+   "old": "저는 젊은 남자를 알아요, 일하고 싶은",
+   "new": "저는 당신과 함께 일하고 싶은 젊은 남자를 알아요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0232L02B04",
+   "role": "build",
+   "target": "I know an old woman who can remember the answer",
+   "old": "저는 나이 든 여자를 알아요, 기억할 수 있는",
+   "new": "저는 답을 기억할 수 있는 나이 든 여자를 알아요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0233L02B03",
+   "role": "build",
+   "target": "I know a young woman who knows your sister",
+   "old": "저는 젊은 여자를 알아요, 아는",
+   "new": "저는 당신의 여동생을 아는 젊은 여자를 알아요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0235L02B04",
+   "role": "build",
+   "target": "I met someone who said that he wanted to tell you something",
+   "old": "그렇다고 한 사람을 만났어요, 말하고 싶다고",
+   "new": "저는 당신에게 무언가 말하고 싶다고 한 사람을 만났어요",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0271L01B01",
+   "role": "build",
+   "target": "would you like to come?",
+   "old": "오고 싶어요",
+   "new": "오고 싶나요?",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0271L01B02",
+   "role": "build",
+   "target": "would you like to come with us?",
+   "old": "우리와 함께 오고 싶어요",
+   "new": "우리와 함께 오고 싶나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0271L01B03",
+   "role": "build",
+   "target": "would you like to come with me?",
+   "old": "저와 함께 오고 싶어요",
+   "new": "저와 함께 오고 싶나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0271L02B03",
+   "role": "build",
+   "target": "would you like to come next month?",
+   "old": "다음 달에 오고 싶어요",
+   "new": "다음 달에 오고 싶나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0281L01B03",
+   "role": "build",
+   "target": "do you mind if I finish my coffee before you start?",
+   "old": "시작하기 전에 커피를 다 마셔도 괜찮아요",
+   "new": "시작하기 전에 커피를 다 마셔도 괜찮을까요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0283L01B03",
+   "role": "build",
+   "target": "which of your friends speak English?",
+   "old": "당신 친구들 중 누가 영어를 해요",
+   "new": "당신 친구들 중 누가 영어를 하나요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0287L01B02",
+   "role": "build",
+   "target": "how many do you know?",
+   "old": "몇 명이나 알아요",
+   "new": "몇 명이나 알아요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0287L01B03",
+   "role": "build",
+   "target": "how many people do you know?",
+   "old": "사람을 몇 명이나 알아요",
+   "new": "사람을 몇 명이나 알아요?",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0287L02B03",
+   "role": "build",
+   "target": "how many people do you know who like watching television?",
+   "old": "텔레비전 보는 것을 좋아하는 사람을 몇 명이나 알아요",
+   "new": "텔레비전 보는 것을 좋아하는 사람을 몇 명이나 알아요?",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "12": {
+   "before": [
+    "L1: 3 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (3 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 3 phrase(s)",
+    "L3: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 3 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (3 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 3 phrase(s)",
+    "L3: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "21": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "63": {
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "67": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "81": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "85": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "94": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 4 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 4 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "99": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "100": {
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "119": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "135": {
+   "before": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "140": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "143": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "145": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "146": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "148": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "149": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "150": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "154": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "155": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "157": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "158": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "162": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "167": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "169": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "171": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "175": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "179": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "182": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 6 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 6 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "194": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "196": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "201": {
+   "before": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "202": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 1"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 1"
+   ],
+   "newFailures": []
+  },
+  "203": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "205": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "211": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "226": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "230": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "232": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "233": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "235": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "271": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "281": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "283": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "287": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  }
+ }
+}

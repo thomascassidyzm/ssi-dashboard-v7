@@ -42,6 +42,7 @@
 const { phraseFloor, isBareLegoPhrase } = require('../course-builder/lib/phrase-structure.cjs');
 const { normalizeForContainment } = require('../course-builder/lib/text-normalization.cjs');
 const { loadRunningOrder, orderKey } = require('./running-order.cjs');
+const { readAllPages } = require('./paged-read.cjs');
 
 const normPair = (s) => String(s || '').toLowerCase()
   .replace(/[’`]/g, "'")
@@ -160,16 +161,9 @@ function auditDebutPractice(legos, phrases, { order = null } = {}) {
   return { debuts, blocking, thin, dark, isNew: { repeatNew, firstNotNew, neverDebuted } };
 }
 
-async function pageAll(query) {
-  const out = [];
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await query().range(from, from + 999);
-    if (error) throw new Error(error.message);
-    out.push(...(data || []));
-    if (!data || data.length < 1000) break;
-  }
-  return out;
-}
+// Pages through services/shared/paged-read.cjs: empty-page stop, error wrapped
+// in a real Error, order on id appended behind the caller's own order clause.
+const pageAll = (query) => readAllPages(query, { pageSize: 1000 });
 
 /** Read one course (optionally only some seeds) and audit it. */
 async function checkCourseDebutPractice(supabase, courseCode, { seeds = null } = {}) {

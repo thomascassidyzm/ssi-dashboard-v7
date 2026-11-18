@@ -38,6 +38,11 @@ export function getLanguageName(code, fallback = '') {
 }
 
 
+// A course row's code, whichever field the source spelled it in
+// (Supabase rows: course_code; the API proxy: code).
+const codeOf = (c) => c.code || c.course_code || c.id
+const EMPTY_STATS = { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
+
 // Module-level singleton state — shared across all consumers
 const courses = ref([])
 const loading = ref(false)
@@ -64,23 +69,9 @@ async function runLoad() {
     let courseList
 
     if (isSupabaseConfigured()) {
-      // Direct Supabase — no ngrok round-trip
-      const coursesData = await getAllCourses()
-      courseList = coursesData.map(c => ({
-        code: c.course_code,
-        course_code: c.course_code,
-        display_name: c.display_name,
-        new_app_status: c.new_app_status,
-        legacy_app_status: c.legacy_app_status,
-        new_app_beta_started_at: c.new_app_beta_started_at,
-        legacy_app_beta_started_at: c.legacy_app_beta_started_at,
-        content_status: c.content_status,
-        pricing_tier: c.pricing_tier || 'premium',
-        seed_count: c.seed_count,
-        created_at: c.created_at,
-        updated_at: c.updated_at,
-        stats: { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
-      }))
+      // Direct Supabase — no ngrok round-trip. Rows carry `course_code`,
+      // which the shaping below reads.
+      courseList = await getAllCourses()
     } else {
       // Fallback: API proxy
       const baseUrl = getApiUrl()
@@ -94,8 +85,8 @@ async function runLoad() {
 
     nameVersion.value++
     courses.value = courseList.map(c => ({
-      code: c.code || c.course_code || c.id,
-      name: getCourseName(c.code || c.course_code || c.id),
+      code: codeOf(c),
+      name: getCourseName(codeOf(c)),
       new_app_status: c.new_app_status,
       legacy_app_status: c.legacy_app_status,
       new_app_beta_days: c.new_app_beta_days,
@@ -106,7 +97,7 @@ async function runLoad() {
       seed_count: c.seed_count,
       created_at: c.created_at || null,
       updated_at: c.updated_at || null,
-      stats: c.stats || { seeds: 0, completedSeeds: 0, legos: 0, phrases: 0, audio: 0 }
+      stats: c.stats || { ...EMPTY_STATS }
     }))
     loaded = true
   } catch (err) {

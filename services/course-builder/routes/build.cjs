@@ -10,9 +10,14 @@ const { getBuildProgress, stopBuild, getBuildStatus } = require('../lib/build-ma
 const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
-const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
+const { snapshotSeeds, listSnapshots, restoreSnapshot, withSeedLocks } = require('../lib/redo-snapshot.cjs');
+const { findStuckRedoSeeds } = require('../lib/redo-watchdog.cjs');
+const { liveBlocker, setHold, currentHold, loadOpenEntries, overlapping, enqueueRedo, queueStatus, cancelQueuedRedo, performRedo, drainNow } = require('../lib/redo-queue.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
+const { finalizeJob, isProcessAlive, ownsPid } = require('../lib/build-job-runtime.cjs');
+const { cancelScheduledResumes } = require('../lib/build-manager.cjs');
+const { alternativeAccount } = require('../../shared/claude-config.cjs');
 
 /**
  * Names the first seed-grid read that cannot be trusted (errored or no data
@@ -41,11 +46,40 @@ module.exports = function (ctx) {
   }
 
   // Helper: append a shell-level job completion curl to any claude command.
-  // Uses `;` so it fires regardless of how the Claude process exits.
+  // Uses `;` so it fires regardless of how the Claude process exits, and passes the exit
+  // code so /build/job-done can tell a crash from a clean exit (job #482).
   function withJobDone(cmd, jobId) {
     if (!jobId) return cmd;
-    return `${cmd} ; curl -s -X POST "http://localhost:${ctx.config.PORT || 3471}/api/build/job-done/${jobId}" > /dev/null 2>&1`;
+    return `${cmd} ; __cb_rc=$? ; curl -s -X POST "http://localhost:${ctx.config.PORT || 3471}/api/build/job-done/${jobId}?exit=$__cb_rc" > /dev/null 2>&1`;
   }
+
+  /**
+   * AUTO-RESUME DECISION for a usage-limit stop (job #482, Kai's brief: resume at the reset
+   * time from where it stopped; switch account only WITHIN the SSi pool). Returns the
+   * auto_resume block stored on the stopped job:
+   *   - another SSi account (claude@ / kai-gmail, from the course builder's tokens dir) has
+   *     room → restart in a minute on it, excluding the spent one;
+   *   - otherwise → restart at the printed reset time (+1 min slack), any account;
+   *   - reset time not printed → nothing scheduled; the page says "Press Start".
+   * A restart that itself made no progress before hitting the limit does not fast-switch
+   * again — it waits for the reset — so two spent accounts cannot ping-pong.
+   */
+  function decideBuildResume(job, outcome, now = new Date()) {
+    if (job.pass !== 'build-team') return null;
+    const meta = job.metadata || {};
+    const spent = meta.account || null;
+    const madeProgress = (meta.seeds_at_stop ?? 0) > (meta.seeds_at_start ?? -1);
+    const mayFastSwitch = meta.resumed_via !== 'account_switch' || madeProgress;
+    const alt = mayFastSwitch && spent ? alternativeAccount({ exclude: [spent] }) : null;
+    if (alt) {
+      return { state: 'scheduled', at: new Date(now.getTime() + 60e3).toISOString(), switch_account: true, exclude: [spent], to_account: alt, decided_at: now.toISOString() };
+    }
+    if (outcome.reset_at) {
+      return { state: 'scheduled', at: new Date(new Date(outcome.reset_at).getTime() + 60e3).toISOString(), switch_account: false, exclude: [], decided_at: now.toISOString() };
+    }
+    return null;
+  }
+  ctx.decideBuildResume = decideBuildResume;
 
   // POST /build/job-done/:jobId — Shell wrapper calls this when Claude process exits
   router.post('/build/job-done/:jobId', async (req, res) => {
@@ -53,17 +87,33 @@ module.exports = function (ctx) {
       const { jobId } = req.params;
       const { data: job } = await ctx.supabase
         .from('build_jobs')
-        .select('id, status, pass, course_code')
+        .select('*')
         .eq('id', jobId)
         .single();
 
       if (!job) return res.json({ ok: false, error: 'Job not found' });
-      if (job.status !== 'running') return res.json({ ok: true, already: job.status });
+      if (job.status !== 'running' && job.status !== 'stalled') return res.json({ ok: true, already: job.status });
 
-      await ctx.supabase.from('build_jobs').update({
-        status: 'complete',
-        completed_at: new Date().toISOString(),
-      }).eq('id', jobId);
+      // NEVER complete on exit alone (job #482): the fry_for_eng build exited at 294/300 on a
+      // usage limit and was marked complete. finalizeJob classifies from this run's log, the
+      // exit code and the seed count.
+      const exitCode = req.query.exit !== undefined && req.query.exit !== '' && Number.isFinite(Number(req.query.exit)) ? Number(req.query.exit) : null;
+      const result = await finalizeJob(ctx, job, { exitCode, decideResume: decideBuildResume });
+      const outcome = result.outcome || {};
+
+      if (outcome.stop_reason && outcome.stop_reason !== 'done') {
+        console.log(`[BUILD] JOB ENDED (shell wrapper): ${jobId} ${outcome.stop_reason} — ${result.message}`);
+        try {
+          await ctx.supabase.from('orchestrator_messages').insert({
+            course_code: job.course_code, direction: 'agent_to_human', status: 'pending',
+            message: result.message,
+            metadata: { action: 'build_stopped', stop_reason: outcome.stop_reason, jobId },
+          });
+        } catch (e) { /* non-critical */ }
+        emitProgress(ctx.supabase, job.course_code, result.message, { phase: 'build', action: 'job-stopped', pass: job.pass, jobId, stop_reason: outcome.stop_reason });
+        ctx.emitPipelineEvent?.(job.course_code, 'build:status', { active: false, stop_reason: outcome.stop_reason });
+        return res.json({ ok: true, stop_reason: outcome.stop_reason, message: result.message });
+      }
 
       // If this was a final-pass job, set the flag so wizard knows review is done
       if (job.pass === 'final-pass' && job.course_code) {
@@ -85,7 +135,10 @@ module.exports = function (ctx) {
 
   // POST /build/stop/:courseCode
   router.post('/build/stop/:courseCode', async (req, res) => {
-    const result = await stopBuild(ctx, req.params.courseCode);
+    // Who pressed Stop: production-api's proxy forwards the signed-in dashboard user as
+    // x-stopped-by; an agent names itself with x-agent-id. Unknown stays null, never guessed.
+    const by = req.get('x-stopped-by') || req.get('x-dashboard-user') || req.get('x-agent-id') || req.body?.by || null;
+    const result = await stopBuild(ctx, req.params.courseCode, { by });
     ctx.emitPipelineEvent(req.params.courseCode, 'build:status', { active: false });
     res.json(result);
   });
@@ -164,27 +217,33 @@ module.exports = function (ctx) {
       // row per seed, written first; if it throws, nothing is deleted.
       const rangeSeeds = [];
       for (let n = Number(from_seed); n <= Number(to_seed); n++) rangeSeeds.push(n);
-      const { batchId: rebuildBatchId } = await snapshotSeeds(ctx.supabase, courseCode, rangeSeeds, {
-        reason: 'rebuild-range',
-        notes: `rebuild ${from_seed}-${to_seed}`,
+      // Snapshot→wipe under the same seed locks as performRedo and the watchdog's guarded restore (cs #984): without
+      // them a restore that has just passed its newest-snapshot check could wipe and refill a seed in the middle of
+      // this rebuild, putting an older snapshot over the range being rebuilt.
+      let rebuildBatchId, phrasesDeleted, legosDeleted, seedsReset;
+      await withSeedLocks(courseCode, rangeSeeds, async () => {
+        ({ batchId: rebuildBatchId } = await snapshotSeeds(ctx.supabase, courseCode, rangeSeeds, {
+          reason: 'rebuild-range',
+          notes: `rebuild ${from_seed}-${to_seed}`,
+        }));
+        console.log(`[REBUILD] ${courseCode} snapshot batch ${rebuildBatchId}: ${rangeSeeds.length} seed(s) captured before delete`);
+
+        // One event for the wipe — the deleted rows leave nothing to stamp, so this is the record.
+        const eventId = req.contentEdit
+          ? await req.contentEdit.record({
+              scope: { seed_numbers: rangeSeeds, rows: totalItems },
+            })
+          : null;
+
+        // Execute the wipe — phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912)
+        ({ phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
+          await wipeSeedTeaching(ctx.supabase, courseCode, rangeSeeds));
+
+        ({ count: seedsReset } = await ctx.supabase
+          .from('course_seeds').update({ decomposed_at: null, approved_at: null, last_edit_event_id: eventId }, { count: 'exact' })
+          .eq('course_code', courseCode)
+          .gte('seed_number', from_seed).lte('seed_number', to_seed));
       });
-      console.log(`[REBUILD] ${courseCode} snapshot batch ${rebuildBatchId}: ${rangeSeeds.length} seed(s) captured before delete`);
-
-      // One event for the wipe — the deleted rows leave nothing to stamp, so this is the record.
-      const eventId = req.contentEdit
-        ? await req.contentEdit.record({
-            scope: { seed_numbers: rangeSeeds, rows: totalItems },
-          })
-        : null;
-
-      // Execute the wipe — phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912)
-      const { phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
-        await wipeSeedTeaching(ctx.supabase, courseCode, rangeSeeds);
-
-      const { count: seedsReset } = await ctx.supabase
-        .from('course_seeds').update({ decomposed_at: null, approved_at: null, last_edit_event_id: eventId }, { count: 'exact' })
-        .eq('course_code', courseCode)
-        .gte('seed_number', from_seed).lte('seed_number', to_seed);
 
       ctx.courseVocabCache.delete(courseCode);
 
@@ -209,7 +268,6 @@ module.exports = function (ctx) {
   router.post('/build/redo/:courseCode', async (req, res) => {
     const { courseCode } = req.params;
     const { seeds = [], notes = '' } = req.body || {};
-    const terminal = req.query.terminal || 'iTerm2';
 
     try {
       if (!Array.isArray(seeds) || seeds.length === 0) {
@@ -221,86 +279,79 @@ module.exports = function (ctx) {
         return res.status(400).json({ ok: false, error: 'No valid seed numbers provided' });
       }
 
-      // SNAPSHOT BEFORE DELETE. The old decomposition is the only record of what
-      // the human is asking to be changed — it feeds the undo (POST
-      // /build/redo-undo) and the "previous decomposition" section of the redo
-      // brief. If this throws, nothing is deleted.
-      const { batchId, snapshots } = await snapshotSeeds(ctx.supabase, courseCode, seedNumbers, {
-        reason: 'redo',
-        notes,
-      });
-      console.log(`[REDO] ${courseCode} snapshot batch ${batchId}: ${snapshots.length} seed(s) captured before delete`);
-
-      // One event for the whole redo wipe — the deleted rows leave nothing to stamp.
-      const eventId = req.contentEdit
-        ? await req.contentEdit.record({ scope: { seed_numbers: seedNumbers, rows: seedNumbers.length } })
-        : null;
-
-      // Wipe each seed (delete phrases + LEGOs, reset decomposed_at)
-      let totalPhrasesDeleted = 0;
-      let totalLegosDeleted = 0;
-      let totalSeedsReset = 0;
-
-      for (const seedNum of seedNumbers) {
-        const { phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
-          await wipeSeedTeaching(ctx.supabase, courseCode, [seedNum]);
-
-        const { count: seedsReset } = await ctx.supabase
-          .from('course_seeds').update({ decomposed_at: null, approved_at: null, flagged_at: null, last_edit_event_id: eventId }, { count: 'exact' })
-          .eq('course_code', courseCode).eq('seed_number', seedNum);
-
-        totalPhrasesDeleted += phrasesDeleted || 0;
-        totalLegosDeleted += legosDeleted || 0;
-        totalSeedsReset += seedsReset || 0;
+      // PREFLIGHT BEFORE ANYTHING IS DELETED (job #429), and QUEUE rather than refuse (job #457, Kai 9 Nov:
+      // "refusing is bad UX"). If no agent can run right now (agent cap full, or every SSi account at its
+      // weekly limit) — or other redos are already waiting, first come first served — the request is queued:
+      // nothing snapshotted, nothing deleted. lib/redo-queue.cjs runs it when capacity frees.
+      const open = await loadOpenEntries(ctx);
+      const dup = overlapping(open, courseCode, seedNumbers);
+      if (dup.length) {
+        req.contentEdit?.wroteNothing();
+        return res.status(409).json({ ok: false, code: 'REDO_ALREADY_QUEUED', error: `Seed${dup.length > 1 ? 's' : ''} ${dup.join(', ')} already ha${dup.length > 1 ? 've' : 's'} a redo queued — cancel it first to change it.` });
+      }
+      const blocker = liveBlocker();
+      if (blocker || open.length) {
+        req.contentEdit?.wroteNothing();
+        const q = await enqueueRedo(ctx, { courseCode, seeds: seedNumbers, notes, identity: req.contentEdit?.identity || req.editorIdentity || null, blocker });
+        const status = await queueStatus(ctx, { courseCode, blocker });
+        const mine = status.entries.find((e) => e.queue_id === q.queue_id) || {};
+        setImmediate(() => drainNow(ctx));
+        return res.status(202).json({
+          ok: true, queued: true, queue_id: q.queue_id, seeds: seedNumbers,
+          reason: mine.reason || q.reason, position: mine.position || null, of: mine.of || null, eta: mine.eta || null, eta_text: mine.eta_text || null,
+          message: `Redo queued — ${mine.reason || q.reason}. Nothing has been changed yet; it starts by itself${mine.eta_text ? ` ${mine.eta_text}` : ' when an agent can run'}.`,
+        });
       }
 
-      ctx.courseVocabCache.delete(courseCode);
-      await bumpCourseVersion(ctx.supabase, courseCode, 'minor');
-
-      // Clear final_pass_completed — rebuilt seeds need re-review
-      const { data: redoCourse } = await ctx.supabase.from('courses').select('quality_rules').eq('course_code', courseCode).single();
-      if (redoCourse?.quality_rules?.final_pass_completed) {
-        await ctx.supabase.from('courses').update({
-          quality_rules: { ...(redoCourse.quality_rules), final_pass_completed: false }
-        }).eq('course_code', courseCode);
+      try {
+        return res.json(await performRedo(ctx, { courseCode, seedNumbers, notes, recordEdit: req.contentEdit ? (o) => req.contentEdit.record(o) : null }));
+      } catch (e) {
+        if (e.restored) return res.status(500).json({ ok: false, error: e.message, restored: e.restored });
+        throw e;
       }
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
 
-      // Generate redo brief and spawn agent
-      const seedsParam = seedNumbers.join(',');
-      const notesParam = notes ? `&notes=${encodeURIComponent(notes)}` : '';
-      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/redo?seeds=${seedsParam}${notesParam}`);
+  // GET /build/redo-watchdog — READ-ONLY: seeds left empty by a redo that never submitted, every course
+  // (job #429). Lists; never fixes. ?days=N widens the look-back (default 120).
+  router.get('/build/redo-watchdog', async (req, res) => {
+    try {
+      const stuck = await findStuckRedoSeeds(ctx, { sinceDays: Math.min(Number(req.query.days) || 120, 400) });
+      res.json({ ok: true, count: stuck.length, stuck });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
 
-      const tmpFile = `/tmp/redo_${courseCode}_${Date.now()}.md`;
-      fs.writeFileSync(tmpFile, brief);
+  // GET /build/redo-queue[/:courseCode] — queued redos (job #457): place, plain-English reason, ETA if knowable.
+  router.get(['/build/redo-queue', '/build/redo-queue/:courseCode'], async (req, res) => {
+    try {
+      const s = await queueStatus(ctx, { courseCode: req.params.courseCode || null });
+      res.json({ ok: true, total: s.total, blocked: s.blocker ? s.blocker.reason : null, entries: s.entries });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
 
-      const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
+  // POST /build/redo-queue-hold {minutes (0-60, 0 lifts it), reason} — same-host only. Holds every redo in the
+  // queue (new presses queue too). In memory: a restart lifts it.
+  router.post('/build/redo-queue-hold', (req, res) => {
+    const { isTrustedLoopback } = require('../../shared/editor-identity.cjs');
+    if (!isTrustedLoopback(req)) return res.status(403).json({ ok: false, error: 'same-host callers only' });
+    const h = setHold({ minutes: req.body?.minutes, reason: req.body?.reason, by: req.headers['x-agent-id'] || null });
+    console.log(`[REDO-QUEUE] hold ${h ? `until ${new Date(h.until).toISOString()} (${h.reason}) by ${h.by}` : 'lifted'}`);
+    if (!h) setImmediate(() => drainNow(ctx));
+    res.json({ ok: true, hold: currentHold() });
+  });
 
-      // Opus (not sonnet): Indic/Sinhala scripts degrade under Sonnet (sonnet-indic-script-degradation).
-      // unset ANTHROPIC_API_KEY + CLAUDECODE so the spawned agent uses the Max subscription
-      // instead of hitting "Credit balance too low" and hanging (matches every other build route).
-      const claudeCmd = `cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
-      spawnInTerminal(ctx, claudeCmd, 'Redo', courseCode);
-
-      // Post status to chat
-      await ctx.supabase.from('orchestrator_messages').insert({
-        course_code: courseCode,
-        direction: 'agent_to_human',
-        message: `Redo agent spawned for seed${seedNumbers.length > 1 ? 's' : ''} ${seedNumbers.join(', ')}. Wiped ${totalLegosDeleted} LEGOs, ${totalPhrasesDeleted} phrases — the previous decomposition is snapshotted and can be restored (undo seed ${seedNumbers[0]}).`,
-        status: 'pending',
-        metadata: { action: 'redo_spawned', seeds: seedNumbers, snapshot_batch_id: batchId }
-      });
-
-      res.json({
-        ok: true,
-        seeds: seedNumbers,
-        phrases_deleted: totalPhrasesDeleted,
-        legos_deleted: totalLegosDeleted,
-        seeds_reset: totalSeedsReset,
-        snapshot_batch_id: batchId,
-        snapshots,
-        message: `Redo agent spawned for ${seedNumbers.length} seed(s). Previous decomposition snapshotted — undo with POST /api/build/redo-undo/${courseCode}.`
-      });
+  // POST /build/redo-queue/:courseCode/:queueId/cancel — drop a queued redo before it starts. Nothing was deleted.
+  router.post('/build/redo-queue/:courseCode/:queueId/cancel', async (req, res) => {
+    try {
+      const by = req.editorIdentity?.label || req.headers['x-agent-id'] || (req.body && req.body.by) || null;
+      const r = await cancelQueuedRedo(ctx, { courseCode: req.params.courseCode, queueId: req.params.queueId, by });
+      res.status(r.ok ? 200 : 404).json(r);
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }
@@ -331,7 +382,9 @@ module.exports = function (ctx) {
   // restores the seed's decomposed/approved/flagged stamps.
   router.post('/build/redo-undo/:courseCode', async (req, res) => {
     const { courseCode } = req.params;
-    const { seed, snapshot_id, dry_run = false } = req.body || {};
+    // require_newest / require_empty: sent by the redo watchdog (review 9dbf075d #1) so an automatic restore
+    // refuses when a later Redo owns the seed or content arrived. A human undo sends neither.
+    const { seed, snapshot_id, dry_run = false, require_newest = false, require_empty = false } = req.body || {};
 
     try {
       if (!seed && !snapshot_id) {
@@ -343,6 +396,8 @@ module.exports = function (ctx) {
         seedNumber: seed,
         snapshotId: snapshot_id,
         dryRun: !!dry_run,
+        requireNewest: !!require_newest,
+        requireEmpty: !!require_empty,
         restoredBy: req.get('x-agent-role') || 'dashboard',
       });
 
@@ -363,7 +418,11 @@ module.exports = function (ctx) {
 
       res.json({ ok: true, ...result });
     } catch (err) {
-      res.status(500).json({ ok: false, error: err.message });
+      // A guarded restore that stood down (a later Redo owns the seed, or content arrived) is a refusal, not a fault:
+      // 409 with the code, so a caller can tell it from a failed restore (cs #984). The message keeps its prefix,
+      // which is what the watchdog matches on.
+      const refused = /^(SUPERSEDED|NOT_EMPTY):/.exec(err.message || '');
+      res.status(refused ? 409 : 500).json({ ok: false, error: err.message, code: refused ? refused[1] : null });
     }
   });
 
@@ -661,19 +720,62 @@ module.exports = function (ctx) {
     }
   });
 
-  // POST /build/team-start/:courseCode
-  router.post('/build/team-start/:courseCode', async (req, res) => {
+  /**
+   * Start a build-team run (the page's Start button, and the usage-limit auto-resume).
+   *
+   * ONE BUILD PER COURSE (job #482): before #482 a second press — easy, because the page
+   * showed "Start Course Builder" until its first status poll landed — inserted a second
+   * running row and spawned a second orchestrator on the same seeds. Now a running/stalled
+   * row refuses the start with 409, unless its recorded process is gone (then it is settled
+   * as process_gone first). An in-process lock covers two presses inside the same second.
+   *
+   * Resuming needs nothing special: the orchestrator brief recomputes the undecomposed
+   * seeds every time, so a fresh start continues from where the last run stopped.
+   *
+   * Returns { status, body } — the route sends it, the scheduler logs it.
+   */
+  const teamStartLocks = new Set();
+  async function startBuildTeam(courseCode, { terminal = 'iTerm2', targetSeeds = null, dryRun = false, resumedFrom = null, resumedVia = null, excludeAccounts = [], requestedBy = 'dashboard' } = {}) {
+    if (teamStartLocks.has(courseCode)) {
+      return { status: 409, body: { ok: false, code: 'BUILD_STARTING', error: `A build for ${courseCode} is already being started. Wait a moment for the page to refresh.` } };
+    }
+    teamStartLocks.add(courseCode);
     try {
-      const { courseCode } = req.params;
-      const terminal = req.body?.terminal || req.query.terminal || 'iTerm2';
+      // Guard: one running build per course.
+      const { data: existing, error: existingErr } = await ctx.supabase
+        .from('build_jobs')
+        .select('*')
+        .eq('course_code', courseCode)
+        .in('status', ['running', 'stalled'])
+        .order('started_at', { ascending: false });
+      if (existingErr) {
+        return { status: 503, body: { ok: false, code: 'STATUS_UNKNOWN', error: `Could not check whether a build is already running for ${courseCode} (${existingErr.message}). Nothing was started.` } };
+      }
+      const live = [];
+      for (const job of existing || []) {
+        if (ownsPid(ctx, job) && !isProcessAlive(job.metadata.pid)) {
+          await finalizeJob(ctx, job, { reasonIfSilent: 'process_gone', decideResume: decideBuildResume });
+        } else live.push(job);
+      }
+      if (live.length) {
+        const j = live[0];
+        const since = j.started_at ? ` since ${new Date(j.started_at).toISOString().slice(11, 16)} UTC` : '';
+        return { status: 409, body: {
+          ok: false, code: 'BUILD_ALREADY_RUNNING', job_id: j.id, started_at: j.started_at,
+          error: `A build is already running for ${courseCode}${since} (${j.pass}). Stop it before starting another.`,
+        } };
+      }
+
+      // Starting by hand supersedes a paused build's scheduled restart.
+      if (!resumedFrom) await cancelScheduledResumes(ctx, courseCode, { by: requestedBy, reason: 'superseded' });
 
       // Resolve the build target.
-      // Priority: body.targetSeeds (the user's selection on the page) →
+      // Priority: targetSeeds (the user's selection on the page) →
       // current courses.seed_count → 300.
-      // If the body explicitly asked for a new size, persist it to courses.seed_count
+      // If the caller explicitly asked for a new size, persist it to courses.seed_count
       // so every downstream consumer (stats, briefs, phase8) stays in sync.
-      const requestedTarget = Number.isFinite(Number(req.body?.targetSeeds))
-        ? parseInt(req.body.targetSeeds, 10)
+      const requestedTarget = Number.isFinite(Number(targetSeeds)) && targetSeeds !== null
+        ? parseInt(targetSeeds, 10)
         : null;
 
       const { data: courseRow } = await ctx.supabase
@@ -704,16 +806,22 @@ module.exports = function (ctx) {
       const tmpFile = `/tmp/build-team_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
 
+      let seedsAtStart = null;
+      try { seedsAtStart = (await getBuildProgress(ctx, courseCode)).completed; } catch { /* unknown */ }
+
       let jobId;
-      try {
+      const baseMeta = { seeds_at_start: seedsAtStart, resumed_from: resumedFrom, resumed_via: resumedVia };
+      // A dry run starts nothing, so it records no 'running' row (one would now block Start).
+      if (!dryRun) try {
         const { data: jobData } = await ctx.supabase
           .from('build_jobs')
           .insert({
             course_code: courseCode, pass: 'build-team', status: 'running',
             current_seed: 0, seeds_completed: 0, total_seeds: effectiveTargetSeeds,
             started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
-            requested_by: 'dashboard', terminal: effectiveTerminal,
-            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'build-team'
+            requested_by: requestedBy, terminal: effectiveTerminal,
+            agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'build-team',
+            metadata: baseMeta,
           })
           .select('id').single();
         jobId = jobData?.id;
@@ -721,24 +829,39 @@ module.exports = function (ctx) {
         console.warn('[BuildTeam] build_jobs insert failed:', e.message);
       }
 
-      const dryRun = req.body?.dryRun === true;
-
       if (!dryRun) {
         const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
-        spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
+        let agent;
+        try {
+          agent = spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal, { excludeAccounts });
+        } catch (spawnErr) {
+          if (jobId) {
+            await ctx.supabase.from('build_jobs').update({
+              status: 'failed', completed_at: new Date().toISOString(), error_message: spawnErr.message,
+              metadata: { ...baseMeta, stop_reason: 'crashed', detail: spawnErr.message },
+            }).eq('id', jobId);
+          }
+          throw spawnErr;
+        }
+        if (jobId && agent) {
+          // What the stop/status/sweep code needs to supervise this run (see build-job-runtime.cjs).
+          await ctx.supabase.from('build_jobs').update({
+            metadata: { ...baseMeta, pid: agent.cbPid || null, log_file: agent.cbLogFile || null, log_offset: agent.cbLogOffset ?? null, account: agent.cbAccount || null },
+          }).eq('id', jobId);
+        }
 
         try {
           await ctx.supabase.from('orchestrator_messages').insert({
             course_code: courseCode,
             direction: 'agent_to_human',
-            message: `Build team spawned — building seeds`,
+            message: resumedFrom ? `Build team restarted automatically after the usage limit — continuing from seed ${(seedsAtStart || 0) + 1}` : `Build team spawned — building seeds`,
             status: 'pending',
-            metadata: { action: 'build_team_spawned' }
+            metadata: { action: resumedFrom ? 'build_team_auto_resumed' : 'build_team_spawned', resumed_from: resumedFrom }
           });
         } catch (e) { /* non-critical */ }
       }
 
-      res.json({
+      return { status: 200, body: {
         ok: true,
         course_code: courseCode,
         job_id: jobId,
@@ -746,11 +869,87 @@ module.exports = function (ctx) {
         target_seeds: effectiveTargetSeeds,
         brief_file: tmpFile,
         dry_run: dryRun
+      } };
+    } finally {
+      teamStartLocks.delete(courseCode);
+    }
+  }
+
+  // POST /build/team-start/:courseCode
+  router.post('/build/team-start/:courseCode', async (req, res) => {
+    try {
+      const r = await startBuildTeam(req.params.courseCode, {
+        terminal: req.body?.terminal || req.query.terminal || 'iTerm2',
+        targetSeeds: req.body?.targetSeeds ?? null,
+        dryRun: req.body?.dryRun === true,
+        requestedBy: req.get('x-dashboard-user') || req.get('x-agent-id') || 'dashboard',
       });
+      res.status(r.status).json(r.body);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
+
+  /**
+   * AUTO-RESUME SWEEP (job #482). Once a minute: restart any usage-limit stop whose
+   * auto_resume time has come, and settle running rows whose process has vanished.
+   * State lives in build_jobs.metadata.auto_resume, so a service restart loses nothing:
+   * the next tick picks it up. Off in tests (no timer under vitest) and when
+   * BUILD_AUTO_RESUME=0.
+   */
+  async function autoResumeTick(now = new Date()) {
+    const { data: stoppedJobs } = await ctx.supabase
+      .from('build_jobs')
+      .select('*')
+      .eq('pass', 'build-team')
+      .eq('status', 'stopped')
+      .order('completed_at', { ascending: false })
+      .limit(50);
+    const due = (stoppedJobs || []).filter((j) => j.metadata?.auto_resume?.state === 'scheduled' && Date.parse(j.metadata.auto_resume.at) <= now.getTime());
+    const results = [];
+    for (const job of due) {
+      const ar = job.metadata.auto_resume;
+      await ctx.supabase.from('build_jobs').update({ metadata: { ...job.metadata, auto_resume: { ...ar, state: 'starting' } } }).eq('id', job.id);
+      let r;
+      try {
+        r = await startBuildTeam(job.course_code, {
+          terminal: 'headless', targetSeeds: job.total_seeds, resumedFrom: job.id,
+          resumedVia: ar.switch_account ? 'account_switch' : 'reset_time',
+          excludeAccounts: ar.exclude || [], requestedBy: 'auto-resume',
+        });
+      } catch (e) {
+        r = { status: 500, body: { ok: false, error: e.message } };
+      }
+      const ok = r.status === 200;
+      // 409 = someone already restarted it by hand: that IS the resume.
+      const state = ok ? 'resumed' : (r.status === 409 ? 'superseded' : 'failed');
+      await ctx.supabase.from('build_jobs').update({
+        metadata: { ...job.metadata, auto_resume: { ...ar, state, resumed_at: now.toISOString(), resumed_job_id: r.body?.job_id || null, error: ok ? null : (r.body?.error || null) } },
+      }).eq('id', job.id);
+      console.log(`[BUILD] auto-resume ${job.course_code} (${job.id}): ${state}${ok ? '' : ` — ${r.body?.error}`}`);
+      results.push({ job_id: job.id, course_code: job.course_code, state });
+    }
+
+    // Liveness: running build-team rows whose recorded process is gone.
+    const { data: runningJobs } = await ctx.supabase
+      .from('build_jobs')
+      .select('*')
+      .eq('pass', 'build-team')
+      .in('status', ['running', 'stalled']);
+    for (const job of runningJobs || []) {
+      if (ownsPid(ctx, job) && !isProcessAlive(job.metadata.pid)) {
+        // Give the shell wrapper's own job-done call a moment to land first.
+        if (Date.now() - Date.parse(job.started_at || 0) < 60e3) continue;
+        await finalizeJob(ctx, job, { reasonIfSilent: 'process_gone', decideResume: decideBuildResume });
+      }
+    }
+    return results;
+  }
+  ctx.autoResumeTick = autoResumeTick;
+  if (!process.env.VITEST && process.env.BUILD_AUTO_RESUME !== '0') {
+    const t = setInterval(() => autoResumeTick().catch((e) => console.error('[BUILD] auto-resume tick failed:', e.message)), 60e3);
+    t.unref?.();
+  }
 
   // POST /build/final-pass/:courseCode
   router.post('/build/final-pass/:courseCode', async (req, res) => {

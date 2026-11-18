@@ -1,0 +1,204 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02C03",
+   "set": {
+    "target_text": "ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02B01",
+   "set": {
+    "target_text": "dod yn ôl mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "dod yn ôl mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02B02",
+   "set": {
+    "target_text": "ateb mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "ateb mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02B03",
+   "set": {
+    "target_text": "mewn ychydig o ddiwrnodiau dw i’n mynd i"
+   },
+   "expect": {
+    "target_text": "mewn ychydig o ddyddiau dw i’n mynd i"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02B04",
+   "set": {
+    "target_text": "cyfarfod fel grŵp mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "cyfarfod fel grŵp mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02U01",
+   "set": {
+    "target_text": "oes rhaid i ti ateb mewn ychydig o ddiwrnodiau?"
+   },
+   "expect": {
+    "target_text": "oes rhaid i ti ateb mewn ychydig o ddyddiau?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02U02",
+   "set": {
+    "target_text": "mewn ychydig o ddiwrnodiau dw i’n mynd i ymlacio"
+   },
+   "expect": {
+    "target_text": "mewn ychydig o ddyddiau dw i’n mynd i ymlacio"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02U03",
+   "set": {
+    "target_text": "dw i isio dod yn ôl mewn ychydig o ddiwrnodiau achos dw i’n brysur heddiw"
+   },
+   "expect": {
+    "target_text": "dw i isio dod yn ôl mewn ychydig o ddyddiau achos dw i’n brysur heddiw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02U04",
+   "set": {
+    "target_text": "maen nhw isio cyfarfod fel grŵp mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "maen nhw isio cyfarfod fel grŵp mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02U05",
+   "set": {
+    "target_text": "dw i ddim isio stopio mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "dw i ddim isio stopio mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02U06",
+   "set": {
+    "target_text": "mi wna i ofyn iddo fo mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "mi wna i ofyn iddo fo mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1274L02U07",
+   "set": {
+    "target_text": "fyddi di’n barod mewn ychydig o ddiwrnodiau?"
+   },
+   "expect": {
+    "target_text": "fyddi di’n barod mewn ychydig o ddyddiau?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1295L03B03",
+   "set": {
+    "target_text": "mewn diwrnod neu mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "mewn diwrnod neu mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1315L03U06",
+   "set": {
+    "target_text": "mi fyddai hi’n medru fforddio’r car mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "mi fyddai hi’n medru fforddio’r car mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1319L01U07",
+   "set": {
+    "target_text": "dw i’n gobeithio symud mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "dw i’n gobeithio symud mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1332L01U06",
+   "set": {
+    "target_text": "mi fedrith o ffeindio’r pres mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "mi fedrith o ffeindio’r pres mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1406L02U07",
+   "set": {
+    "target_text": "dw i’n siŵr y bydd o’n iawn mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "dw i’n siŵr y bydd o’n iawn mewn ychydig o ddyddiau"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1274,
+   "set": {
+    "target_text": "oes rhaid i ti adael mewn ychydig o ddiwrnodiau?"
+   },
+   "expect": {
+    "target_text": "oes rhaid i ti adael mewn ychydig o ddyddiau?"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1341,
+   "set": {
+    "target_text": "wnes i gyfarfod rhywun ychydig o ddiwrnodiau yn ôl"
+   },
+   "expect": {
+    "target_text": "wnes i gyfarfod rhywun ychydig o ddyddiau yn ôl"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1274L02",
+   "set": {
+    "target_text": "mewn ychydig o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "mewn ychydig o ddyddiau"
+   }
+  }
+ ]
+}

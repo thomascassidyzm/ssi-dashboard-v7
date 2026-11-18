@@ -74,6 +74,19 @@
       </div>
     </header>
 
+    <!-- Takes from an earlier visit that never reached Popty, being sent now. -->
+    <div v-if="recovery" class="recovery-bar" role="status" data-testid="recovery-bar">
+      <template v-if="recovery.running">
+        Sending {{ recovery.found }} recording{{ recovery.found === 1 ? '' : 's' }} from your last session that had not reached Popty yet…
+      </template>
+      <template v-else>
+        <span v-if="recovery.sent">{{ recovery.sent }} recording{{ recovery.sent === 1 ? '' : 's' }} from your last session {{ recovery.sent === 1 ? 'has' : 'have' }} now been saved.</span>
+        <span v-if="recovery.refused"> {{ recovery.refused }} could not be used (the server refused the audio) — those lines will come round again.</span>
+        <span v-if="recovery.kept"> {{ recovery.kept }} could not be sent yet; {{ recovery.kept === 1 ? 'it is' : 'they are' }} kept on this computer and will be tried again next time you open the Record Room.</span>
+        <button type="button" class="recovery-dismiss" @click="recovery = null">OK</button>
+      </template>
+    </div>
+
     <!-- Recording Status (Fixed) -->
     <RecordingStatus :is-recording="state.isRecording" />
 
@@ -341,6 +354,17 @@
            a full screen tall, and a line under it is a line nobody reads. -->
       <p v-if="backNote" class="back-note" role="status">{{ backNote }}</p>
 
+      <!-- The mic would not start. The session stays open on this line. -->
+      <div v-if="micError" class="mic-error" role="alert" data-testid="mic-error">
+        <strong>{{ micError.title }}</strong>
+        <p>{{ micError.action }}</p>
+        <p class="mic-error-detail">Nothing has been recorded or skipped — you are still on item {{ state.currentPhraseIndex + 1 }}. (Browser said: {{ micError.name }}{{ micError.detail ? ' — ' + micError.detail : '' }})</p>
+      </div>
+
+      <p v-if="shelf && !shelf.available && state.isRecording" class="shelf-note">
+        This browser cannot keep a backup copy of your takes, so please keep this tab open until "Uploading" has finished.
+      </p>
+
       <!-- Controls -->
       <RecordingControls
         :is-recording="state.isRecording"
@@ -481,7 +505,10 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
-import { useUploadQueue } from '@/composables/useAudioUpload'
+import { useUploadQueue, setUploadShelf, recoverShelved } from '@/composables/useAudioUpload'
+import { openAutocueShelf } from '@/services/autocueTakeShelf.js'
+import { holdReload } from '@/router/versionReload'
+import { describeMicError } from '@/utils/micError'
 import { useAuth } from '@/composables/useAuth'
 import { getApiUrl } from '@/services/api'
 import { legoChunkCount, resolvePhraseChunks } from '@/utils/phraseChunks'
@@ -560,6 +587,7 @@ const {
   toggleRecording,
   startRecording,
   stopRecording,
+  abortRecordingStart,
   togglePause,
   navigatePhrase,
   restartCurrentTake,
@@ -1006,7 +1034,7 @@ continuousRecorder.onSegmentCaptured((segment) => {
 // pauses can be filed later, byte for byte, if the recordist keeps it anyway.
 // Nothing about what gets uploaded changed — only when.
 function queueTakeUpload(segment, phrase, itemIndex) {
-  uploadQueue.queueUpload({
+  shelveThenQueue({
     blob: segment.blob,
     courseCode: state.courseCode,
     uuid: null,
@@ -1051,6 +1079,80 @@ function queueTakeUpload(segment, phrase, itemIndex) {
     itemIndex
   })
 }
+
+// ── The device shelf (autocueTakeShelf.js) ───────────────────────────────────
+// Every take goes onto IndexedDB BEFORE its upload is queued, and comes off only when the server
+// has answered for it. A reload, a crash or a closed tab therefore loses nothing: the next time
+// the Record Room opens it sends whatever it finds (recoverOrphans below). Auke, 2026-11-02.
+const shelf = ref(null)
+const shelfReady = openAutocueShelf()
+  .then((s) => { shelf.value = s; setUploadShelf(s); return s })
+  .catch((err) => { console.warn('[Autocue] device shelf unavailable', err); return null })
+// Puts happen one after another so takes reach the queue in the order they were read (the queue's
+// supersede rule depends on that order).
+let shelfChain = Promise.resolve()
+const shelving = ref(0)
+
+function shelveThenQueue(item) {
+  shelving.value++
+  shelfChain = shelfChain.then(async () => {
+    const s = await shelfReady
+    if (s) {
+      try {
+        const rec = await s.put({
+          courseCode: item.courseCode,
+          voiceId: item.metadata?.voiceId || null,
+          blob: item.blob,
+          metadata: item.metadata,
+          provenance: item.provenance,
+        })
+        item.shelfId = rec.id
+      } catch (err) {
+        // Never lose the take because the backup could not be written: it still uploads.
+        console.warn('[Autocue] could not keep a device copy of this take', err)
+      }
+    }
+    uploadQueue.queueUpload(item)
+  }).finally(() => { shelving.value-- })
+}
+
+// Takes an earlier page load recorded but never got onto the server. Sent by themselves on mount.
+const recovery = ref(null) // { found, sent, refused, kept, running }
+async function recoverOrphans(courseCode) {
+  const s = await shelfReady
+  if (!s || !courseCode) return
+  try {
+    const waiting = await s.list({ courseCode })
+    if (!waiting.length) return
+    recovery.value = { found: waiting.length, sent: 0, refused: 0, kept: 0, running: true }
+    const out = await recoverShelved(s, { courseCode })
+    recovery.value = { ...out, running: false }
+  } catch (err) {
+    console.warn('[Autocue] recovering earlier takes failed', err)
+    if (recovery.value) recovery.value = { ...recovery.value, running: false }
+  }
+}
+
+// ── Never reload under a recordist (versionReload.js) ───────────────────────
+// A deploy used to reload this page mid-session ("New version detected. Reloading..."), and every
+// take not yet uploaded went with it. While a session is open, a take is being shelved, or any
+// upload (live or recovered) is waiting, the reload is HELD and App.vue shows "a new version is
+// ready"; it happens the moment the session closes and the queue is empty.
+const SESSION_PHASES = new Set(['recording', 'summary', 'review'])
+const reloadUnsafe = computed(() =>
+  state.isRecording ||
+  SESSION_PHASES.has(state.currentPhase) ||
+  shelving.value > 0 ||
+  uploadQueue.pendingCount.value > 0 ||
+  uploadQueue.recoveringCount.value > 0
+)
+const RELOAD_KEY = 'autocue-session'
+watch(reloadUnsafe, (on) => holdReload(RELOAD_KEY, on), { immediate: true })
+
+// ── The microphone would not start ──────────────────────────────────────────
+// Said on screen, in words, and the session stays exactly where it was: no summary, no
+// "complete", no line skipped. Cleared the next time recording starts.
+const micError = ref(null)
 
 // Event handlers
 function onModeSelect(mode, opts = {}) {
@@ -1099,14 +1201,18 @@ async function onToggleRecording() {
     stopRecording()
   } else {
     // Start
+    micError.value = null
     startRecording()
     if (state.scriptMode) {
       try {
         await continuousRecorder.startFlow()
       } catch (err) {
         console.error('[Autocue] Failed to start continuous recorder:', err)
-        state.error = err.message
-        stopRecording()
+        // NOT stopRecording(): in script mode that ends the session and lands on "Session
+        // Complete" — which is how a missing mic read as a finished session (Auke, 2026-11-02).
+        // Undo the start and stay on the line.
+        abortRecordingStart()
+        micError.value = describeMicError(err)
       }
     }
   }
@@ -1190,6 +1296,7 @@ onMounted(() => {
   if (courseCode) {
     loadCourse(courseCode)
     loadVoiceIdentity(courseCode)
+    recoverOrphans(courseCode)
   } else {
     voiceConfigLoaded.value = true
   }
@@ -1205,6 +1312,7 @@ onUnmounted(() => {
   uploadQueue.resetQueue()
   stopPlayback()
   cleanup()
+  holdReload(RELOAD_KEY, false)
 })
 </script>
 
@@ -1362,6 +1470,27 @@ onUnmounted(() => {
 
 /* Surfaces a script-load failure above the mode buttons, which otherwise
    just look unresponsive. */
+.mic-error {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 2px solid var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  color: var(--ink);
+}
+.mic-error strong { display: block; font-size: 1.1rem; margin-bottom: 0.35rem; }
+.mic-error p { margin: 0.25rem 0; }
+.mic-error-detail { font-size: 0.8rem; color: var(--muted); }
+.shelf-note { font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0; }
+.recovery-bar {
+  margin: 0 0 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: var(--surface-2, rgba(127, 127, 127, 0.15));
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+.recovery-dismiss { margin-left: 0.75rem; font: inherit; cursor: pointer; }
 .mode-error {
   max-width: 600px;
   margin: 0 auto 1.5rem;

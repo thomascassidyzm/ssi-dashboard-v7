@@ -32,7 +32,6 @@
 'use strict'
 
 const express = require('express')
-const Busboy = require('busboy')
 const {
   resolveRecordist,
   voicesForEmail,
@@ -78,6 +77,7 @@ const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
+const videoVoiceovers = require('./video-voiceover-lines.cjs')
 const podEnglish = require('./pod-english-lines.cjs')
 const podTextSwaps = require('./pod-text-swaps.cjs')
 const introSentences = require('./intro-sentence-lines.cjs')
@@ -86,7 +86,7 @@ const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
 const boothRerecord = require('./booth-rerecord.cjs')
-const { isRetryableFilingFailure } = require('../script-take-filing.cjs')
+const { isRetryableFilingFailure, isUnknownLanguageFiling } = require('../script-take-filing.cjs')
 const { createLastGoodCache, rowOrThrow } = require('../shared/last-good-cache.cjs')
 
 /**
@@ -97,6 +97,18 @@ const { createLastGoodCache, rowOrThrow } = require('../shared/last-good-cache.c
  * upload at a time and sends it again until it files.
  */
 function refuseUnfiledTake(res, recordist, filing) {
+  // Popty does not know the course's language: no resend can ever file this take, so it
+  // is refused IN WORDS (4xx) — the phone keeps it on its shelf, marked refused, and
+  // shows this message — never as the "database was busy" 503 it used to get.
+  if (isUnknownLanguageFiling(filing)) {
+    return res.status(422).json({
+      error: filing.message,
+      reason: 'unknown_language',
+      retryable: false,
+      voiceId: recordist.voiceId,
+      filing,
+    })
+  }
   return res.status(503).json({
     error: "Popty got this take but couldn't file it just now (the database was busy). It is kept on this device and will be sent again by itself.",
     reason: 'take_not_filed',
@@ -111,6 +123,7 @@ const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = re
 const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const setupCheck = require('./recordist-setup-check.cjs')
+const sampleGate = require('./sample-gate.cjs')
 const rerecordAll = require('./recordist-rerecord-all.cjs')
 const {
   takeKey,
@@ -121,7 +134,7 @@ const {
   buildPackQueue,
 } = require('./clone-source-store.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
-const { patchVoiceSlot } = require('../shared/policy-voice-patch.cjs')
+const { patchVoiceSlot, addVoiceSlot } = require('../shared/policy-voice-patch.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
@@ -131,35 +144,9 @@ const boothLinks = require('./booth-link-keys.cjs')
 const { boothTabs, parseHeldKeys } = require('./booth-tabs.cjs')
 const boothUploadConcurrency = require('./booth-upload-concurrency.cjs')
 
-const MAX_TAKE_BYTES = 60 * 1024 * 1024
-
-/**
- * Parse a multipart take: one audio file part plus text fields.
- * Kept here rather than pulling in a middleware — this is the only multipart
- * route on the service, and a request-scoped parse cannot leak into others.
- */
-function parseMultipartTake(req) {
-  return new Promise((resolve, reject) => {
-    const busboy = Busboy({ headers: req.headers, limits: { files: 1, fileSize: MAX_TAKE_BYTES } })
-    const fields = {}
-    const chunks = []
-    let mimeType = null
-    let truncated = false
-
-    busboy.on('field', (name, value) => { fields[name] = value })
-    busboy.on('file', (_name, stream, info) => {
-      mimeType = info.mimeType || info.mimetype || null
-      stream.on('data', (d) => chunks.push(d))
-      stream.on('limit', () => { truncated = true })
-    })
-    busboy.on('error', reject)
-    busboy.on('close', () => {
-      if (truncated) return reject(new Error(`take exceeds ${MAX_TAKE_BYTES} bytes`))
-      resolve({ fields, buffer: chunks.length ? Buffer.concat(chunks) : null, mimeType })
-    })
-    req.pipe(busboy)
-  })
-}
+// How a take's bytes are received (size ceiling, multipart parse, default mime) is in
+// booth-take-upload.cjs, which the sample gate's recorder hash covers (job #575).
+const { parseMultipartTake, DEFAULT_TAKE_MIME } = require('./booth-take-upload.cjs')
 
 /**
  * Run the production upload handler and capture what it would have sent,
@@ -209,9 +196,6 @@ module.exports = function createRecordistRouter({
   // about the caller and cannot be answered without knowing who the caller is.
   requireDashboardUser,
   handleRecordingUpload,
-  // The booth take's background script check (job #842, services/take-text-check-queue.cjs):
-  // its per-voice failed-check list feeds the Re-record card. Absent in tests that do not use it.
-  textChecks = null,
   // Injectable only so the route's variant handling is testable without S3.
   s3 = require('../s3-production-service.cjs'),
   // Build the practice-phrase plan once shortly after boot (job #619), so the
@@ -229,6 +213,8 @@ module.exports = function createRecordistRouter({
   // on every take reply, and the per-line lock that keeps two takes of one line from racing.
   boothUpload = null,
   takeLineLock = null,
+  // THE SAMPLE GATE's per-voice approvals (job #428, sample-gate.cjs). Built over `s3` when left out.
+  sampleGateStore = null,
 }) {
   const router = express.Router()
   const uploadSetting = boothUpload || boothUploadConcurrency.createConcurrencySetting()
@@ -618,56 +604,6 @@ module.exports = function createRecordistRouter({
   }
   const idList = (v) => (typeof v === 'string' ? v.split(',').map((x) => x.trim()).filter(Boolean).slice(0, 500) : [])
 
-  // TAKES THAT SAVED BUT DID NOT MATCH THEIR WORDS (job #842). The script check runs after the
-  // upload has answered, so its failures arrive here, not on the take's response. Read fresh on
-  // every call (a small local file), never memoised with the queue: a check can land at any time.
-  const voiceIdsOf = (recordist) => [...new Set([recordist.voiceId, ...(recordist.spellings || [])].filter(Boolean))]
-  const textCheckFailures = (recordist) => {
-    if (!textChecks || !recordist) return []
-    try { return textChecks.failuresFor(voiceIdsOf(recordist)) } catch (e) {
-      logger.error(`[Recordist] text-check failures for ${recordist.voiceId}: ${e.message}`)
-      return []
-    }
-  }
-  const withTextChecks = (list, recordist) => boothRerecord.withTextCheckFailures(list, textCheckFailures(recordist))
-
-  // THE FAILED-CHECK LIST ON ITS OWN (job #842): cheap enough to poll while he records, so a take
-  // that did not match comes back to him within the session — on the slim bar in a batch, and on
-  // the Re-record card at home. `pending` is how many checks are still queued on this server.
-  router.get('/voice/:voiceId/text-check-failures', async (req, res) => {
-    try {
-      const pack = await resolveAnyPack(req.params.voiceId)
-      if (pack) return res.json({ voiceId: req.params.voiceId, items: [], pending: 0 })
-      const recordist = await recordistOr404(req, res)
-      if (!recordist) return
-      const items = textCheckFailures(recordist).map((f) => ({
-        lineId: f.lineId, takeId: f.takeId, heard: f.heard, reason: f.reason, checkedAt: f.checkedAt,
-      }))
-      res.json({ voiceId: recordist.voiceId, items, pending: textChecks ? textChecks.depth() : 0 })
-    } catch (err) {
-      logger.error(`[Recordist] text-check-failures: ${err.message}`)
-      res.status(err.status || 500).json({ error: err.message })
-    }
-  })
-
-  // "IT'S FINE — KEEP IT": he listened to a flagged take and it is right (whisper mishears
-  // dialect and elision: "goriadau" read as "goriada"). The take leaves the list; nothing else
-  // changes — the take was always saved.
-  router.post('/voice/:voiceId/text-check-failures/:takeId/keep', async (req, res) => {
-    try {
-      if (!textChecks) return res.status(503).json({ error: 'Script checks are not running on this server.' })
-      const recordist = await recordistOr404(req, res)
-      if (!recordist) return
-      const f = textCheckFailures(recordist).find((x) => x.takeId === req.params.takeId)
-      if (!f) return res.json({ ok: true, kept: false })
-      textChecks.keep({ voiceId: recordist.voiceId, lineId: f.lineId, takeId: f.takeId })
-      res.json({ ok: true, kept: true, lineId: f.lineId })
-    } catch (err) {
-      logger.error(`[Recordist] text-check keep: ${err.message}`)
-      res.status(err.status || 500).json({ error: err.message })
-    }
-  })
-
   // THE RE-RECORD CARD'S SUMMARY: the lines to read again, each with why. The page adds its own
   // refused takes (?also=<ids>) and is told which of them now have a good take (recordedAlso).
   // Read-only and not an arrival: it is fetched beside /summary, which already counts one.
@@ -677,7 +613,7 @@ module.exports = function createRecordistRouter({
       if (pack) return res.json({ voiceId: req.params.voiceId, total: 0, items: [], recordedAlso: [] })
       const cached = await homeQueueFor(req.params.voiceId, { allowStale: true })
       if (!cached) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
-      const list = withTextChecks(await rerecordListFor(cached.value), cached.value.recordist)
+      const list = await rerecordListFor(cached.value)
       res.json({
         voiceId: cached.value.recordist.voiceId,
         fresh: cached.fresh,
@@ -742,6 +678,8 @@ module.exports = function createRecordistRouter({
         notReady: queue.notReady || [],
         handedOn: queue.handedOn || [],
         partial,
+        // A controlled-queue actor's started pod is the only thing the home offers until it is done.
+        pinStartedPod: !!boothActorQueue.stepsFor(recordist.voiceId),
         tracks,
       })
     } catch (err) {
@@ -824,12 +762,18 @@ module.exports = function createRecordistRouter({
       // header then describes the batch opened, not the one the queue serves. Read-only.
       const phraseCtx = { phrases: queue.phrases, phraseBatches: queue.phraseBatches, openPhraseBatch: queue.openPhraseBatch }
       const batchN = parseInt(req.query.batch, 10)
+      // A PHRASE BATCH WHOSE PLAN COULD NOT BE READ IS NOT AN EMPTY BATCH (Eleri, 2026-10-29): the
+      // booth took the empty answer for "everything read" while the home screen still showed
+      // thousands owed. Say so, and let the booth tell her to try again in a minute.
+      if (trackScope && trackScope.startsWith('phrase.') && queue.phrases && queue.phrases.unavailable) {
+        return res.status(503).json({ error: 'The practice phrases are still loading. Please try again in a minute.', retryable: true, track: trackScope })
+      }
       const openedPhrase = trackScope && trackScope.startsWith('phrase.')
         ? boothHome.openPhraseBatch(inScope(queue.lines).filter((l) => boothHome.trackKeyOf(l) === trackScope), trackScope, Number.isFinite(batchN) && batchN >= 1 ? batchN : 1, phraseCtx)
         : null
       // THE RE-RECORD BATCH (job #788): the card's lines plus the page's refused ones, in course order.
       const rerecordLines = trackScope === boothRerecord.RERECORD_TRACK && cachedHome && cachedHome.value.queue === builtQueue
-        ? boothRerecord.rerecordBatchLines(withTextChecks(await rerecordListFor(cachedHome.value), cachedHome.value.recordist), idList(req.query.also))
+        ? boothRerecord.rerecordBatchLines(await rerecordListFor(cachedHome.value), idList(req.query.also))
         : null
       const lines = rerecordLines ? inScope(rerecordLines) : trackScope
         ? (openedPhrase ? openedPhrase.lines : boothHome.selectBatch(inScope(queue.lines), trackScope, batchN, phraseCtx))
@@ -1196,7 +1140,7 @@ module.exports = function createRecordistRouter({
     // verdict has to be READ rather than assumed -- an unfiled take is bytes in
     // S3 with nothing that can serve them, which is the 2026-08-19 silence.
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
@@ -1368,7 +1312,7 @@ module.exports = function createRecordistRouter({
     }
 
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = false
     if (audioId) {
@@ -1544,6 +1488,9 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // A minimal-set piece is always role target1, so the slot would name whoever the course casts there (Catrin on cym_n),
+      // not the person reading it — the 2026-11-09 pod-swap misfiling. The voice on a take is the recordist's.
+      libraryArtistVoiceId: recordist.voiceId,
       // which booth line this take is for: its script check reports back to that line (job #842)
       recordistLineId: parsed.raw,
       body: {
@@ -1576,7 +1523,7 @@ module.exports = function createRecordistRouter({
     }
 
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = 0
     if (audioId && resolved.lego) {
@@ -1623,6 +1570,21 @@ module.exports = function createRecordistRouter({
     const resolved = introPieces.resolveIntroPiece(parsed, recordist)
     if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
     return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'intro', metaKind: 'intro-piece', text, audioBase64, mimeType, device })
+  }
+
+  /**
+   * A VIDEO VOICEOVER LINE (job #572, video-voiceover-lines.cjs): one step of a video's narration in this voice. Filed
+   * as an English known take through the same seam, credited to THIS voice whatever the filing course casts on its
+   * known slot (libraryArtistVoiceId), with metadata kind 'known' so the speech gate and script check hear English.
+   * No afterFiled: a voiceover take fills no learner slot, ever.
+   */
+  async function recordVoiceoverTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = videoVoiceovers.resolveVoiceoverLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    // A target-side script (job #67) files a target1 take; metaKind 'voiceover' makes the speech gate hear the target
+    // language (recording-speech-gate languageForTake), where 'known' makes it hear English.
+    const target = resolved.role === 'target1'
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'voiceover', metaKind: target ? 'voiceover' : 'known', role: target ? 'target1' : 'known', text, audioBase64, mimeType, device })
   }
 
   /**
@@ -1708,7 +1670,7 @@ module.exports = function createRecordistRouter({
     const resolved = introSentences.resolveIntroSentence(lego, recordist)
     if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
     return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: introSentences.INTRO_SENTENCE_KIND, metaKind: 'intro-sentence', text, audioBase64, mimeType, device,
-      role: 'presentation', spokenText: plainIntroWords(resolved.text), ownVoice: true,
+      role: 'presentation', spokenText: plainIntroWords(resolved.text),
       afterFiled: (audioId) => linkIntroSentenceTake({ recordist, raw: parsed.raw, lego, audioId }) })
   }
 
@@ -1774,10 +1736,13 @@ module.exports = function createRecordistRouter({
    * One take of fixed words (an intro piece, an English LEGO: English known-side; an introduction: the presentation
    * role), through the seed upload seam.
    *   spokenText  what the speech/script checks listen for, when the filed text carries display markup
-   *   ownVoice    file under THIS recordist's voice whatever the course's slot casts (the presentation slot of the v2
-   *               Welsh courses is a TTS slot: resolveTakeVoiceId would otherwise leave the take unstamped)
+   * EVERY take filed here is stamped with THIS recordist's voice (libraryArtistVoiceId), whatever the course's slot casts.
+   * It was opt-in (ownVoice) until 2026-11-09: a pod swap take (role target1) without it fell to resolveTakeVoiceId,
+   * where a HUMAN target1 slot wins — so Aran's North "Siân" takes, read on his own link, were filed as Catrin
+   * (voice_config.target1), which flipped the Neighbour's sex and refused his English clone. The voice on a take is
+   * the person who recorded it; the slot only ever said who the course casts.
    */
-  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, role = 'known', spokenText = null, ownVoice = false }) {
+  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, role = 'known', spokenText = null }) {
     if (text && text.trim() && text.trim() !== resolved.text) {
       return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
     }
@@ -1788,7 +1753,7 @@ module.exports = function createRecordistRouter({
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
       recordistLineId: raw,
-      ...(ownVoice ? { libraryArtistVoiceId: recordist.voiceId } : {}),
+      libraryArtistVoiceId: recordist.voiceId,
       body: {
         audioData: audioBase64,
         mimeType,
@@ -1800,7 +1765,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     if (!audioId) logger.error(`[Recordist] ${metaKind} take ${raw} was NOT filed as a clip: ${filing && filing.reason}`)
     const after = audioId && afterFiled ? await afterFiled(audioId) : null
@@ -2058,7 +2023,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
@@ -2177,7 +2142,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
@@ -2298,7 +2263,7 @@ module.exports = function createRecordistRouter({
         advanceFields = parsed.fields
         text = parsed.fields.text
         device = parsed.fields.device || null
-        mimeType = parsed.fields.mimeType || parsed.mimeType || 'audio/webm'
+        mimeType = parsed.fields.mimeType || parsed.mimeType || DEFAULT_TAKE_MIME
         if (!parsed.buffer || !parsed.buffer.length) {
           return res.status(400).json({ error: 'no audio part in the upload' })
         }
@@ -2310,7 +2275,7 @@ module.exports = function createRecordistRouter({
         lineId = req.body.lineId
         advanceFields = req.body
         text = req.body.text
-        mimeType = req.body.mimeType || 'audio/webm'
+        mimeType = req.body.mimeType || DEFAULT_TAKE_MIME
         device = req.body.device || null
         audioBase64 = req.body.audioData
         if (!audioBase64) return res.status(400).json({ error: 'audioData (base64) or a multipart audio part required' })
@@ -2355,6 +2320,11 @@ module.exports = function createRecordistRouter({
       const introPieceLine = introPieces.parseIntroPieceLineId(lineId)
       if (introPieceLine) {
         return await recordIntroPieceTake({ req, res, recordist, parsed: { ...introPieceLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+      // A VIDEO VOICEOVER line (job #572). `voiceover:...` is not a uuid either.
+      const voiceoverLine = videoVoiceovers.parseVoiceoverLineId(lineId)
+      if (voiceoverLine) {
+        return await recordVoiceoverTake({ req, res, recordist, parsed: { ...voiceoverLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
       // An INTRODUCTION read whole (job #587). `introsentence:...` is not a uuid either.
       const introSentenceLine = introSentences.parseIntroSentenceLineId(lineId)
@@ -2625,6 +2595,12 @@ module.exports = function createRecordistRouter({
 
       const introPieceLine = introPieces.parseIntroPieceLineId(req.params.lineId)
       if (introPieceLine) return await introPieceClipResponse(req, res, recordist, { ...introPieceLine, raw: req.params.lineId })
+      const voiceoverLine = videoVoiceovers.parseVoiceoverLineId(req.params.lineId)
+      if (voiceoverLine) {
+        const resolved = videoVoiceovers.resolveVoiceoverLine(voiceoverLine, recordist)
+        if (!resolved) return res.status(404).json({ error: `No line ${req.params.lineId}` })
+        return await knownWordsClipResponse(req, res, recordist, resolved.text)
+      }
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(req.params.lineId)
       if (englishLegoLine) return await englishLegoClipResponse(req, res, recordist, { ...englishLegoLine, raw: req.params.lineId })
       const podEnglishLine = podEnglish.parsePodEnglishLineId(req.params.lineId)
@@ -2712,6 +2688,47 @@ module.exports = function createRecordistRouter({
   // recordings. The booth page never calls it — only /admin/recording does —
   // so it needs a signed-in caller who either reads this voice themselves
   // (voicesForEmail, the same resolution /mine uses) or is a God admin.
+  // Read-only: takes a voice stored per UTC day, newest day first. Same auth as latest-takes
+  // (latest-takes caps at 50, so "which days did they record" needs this).
+  router.get('/voice/:voiceId/take-days', async (req, res) => {
+    try {
+      if (typeof requireDashboardUser !== 'function') {
+        return res.status(501).json({ error: 'Sign-in is not wired up on this service.' })
+      }
+      const agent = req.headers['x-agent-admin'] ? await requireAdminOrAgent(req, res, 'takes:read') : null
+      if (req.headers['x-agent-admin'] && !agent) return
+      const user = agent || await requireDashboardUser(req, res)
+      if (!user) return
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      if (!agent && !isGodAdmin(user)) {
+        const mine = await voicesForEmail(db(), user.email)
+        const spellings = new Set([recordist.voiceId, ...(recordist.spellings || [])])
+        if (!mine.some((v) => spellings.has(v.voiceId))) {
+          return res.status(403).json({ error: 'You can only see your own recent takes.' })
+        }
+      }
+      const days = {}
+      let total = 0
+      for (let from = 0; from < 20000; from += 1000) {
+        const { data, error } = await db()
+          .from('course_audio')
+          .select('created_at')
+          .eq('language', recordist.language)
+          .in('voice_id', recordist.spellings)
+          .order('created_at', { ascending: false })
+          .range(from, from + 999)
+        if (error) throw new Error(`take days read failed: ${error.message}`)
+        for (const r of data || []) { const d = String(r.created_at).slice(0, 10); days[d] = (days[d] || 0) + 1; total++ }
+        if (!data || data.length < 1000) break
+      }
+      res.json({ voiceId: recordist.voiceId, total, days: Object.entries(days).map(([date, takes]) => ({ date, takes })) })
+    } catch (err) {
+      logger.error(`[Recordist] take-days: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   router.get('/voice/:voiceId/latest-takes', async (req, res) => {
     try {
       if (typeof requireDashboardUser !== 'function') {
@@ -3171,6 +3188,57 @@ module.exports = function createRecordistRouter({
     }
   })
 
+  // ── THE SAMPLE GATE (job #428, Tom r-2026-10-31) — OFF the recording chain ──
+  // GET answers which recorder build this voice is approved for; POST …/approve
+  // records an approval (the artist on their own link, or a reviewer / God admin —
+  // the booth key gate above already decided who may address this voice);
+  // POST …/measure is the advisory sound check on ONE saved take, run only from
+  // the sample review. None of these is on the take path, and none can lock it.
+  const gateStore = sampleGateStore || sampleGate.createSampleGateStore({ s3 })
+  router.get('/voice/:voiceId/sample-gate', async (req, res) => {
+    try {
+      const record = await gateStore.read(req.params.voiceId)
+      const build = typeof req.query.build === 'string' ? req.query.build : null
+      res.json({
+        sampleSize: sampleGate.SAMPLE_SIZE,
+        approvedBuild: record ? record.approvedBuild : null,
+        approvedAt: record ? record.approvedAt : null,
+        needsSample: build ? sampleGate.needsSample(record, build) : null,
+      })
+    } catch (err) {
+      logger.error(`[Recordist] sample-gate read: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/sample-gate/approve', async (req, res) => {
+    try {
+      const build = req.body && req.body.build
+      const by = req.boothAccess === 'signed_in' ? 'reviewer' : (req.body && req.body.by === 'artist' ? 'artist' : (req.boothAccess || 'link'))
+      const record = await gateStore.approve(req.params.voiceId, { build, by })
+      logger.log(`[SampleGate] voice=${req.params.voiceId} approved build=${record.approvedBuild} by=${record.approvedBy}`)
+      res.json({ approvedBuild: record.approvedBuild, approvedAt: record.approvedAt, approvedBy: record.approvedBy })
+    } catch (err) {
+      logger.error(`[Recordist] sample-gate approve: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/sample-gate/measure', async (req, res) => {
+    try {
+      const parsed = await parseMultipartTake(req)
+      if (!parsed.buffer || !parsed.buffer.length) return res.status(400).json({ error: 'no audio part in the upload' })
+      const measures = await setupCheck.measureTake(parsed.buffer, parsed.fields.mimeType || parsed.mimeType || DEFAULT_TAKE_MIME)
+      if (!measures) return res.json({ measured: false, flags: [], hints: [] })
+      const judged = setupCheck.judgeSetupCheck([{ id: 'take', ...measures }])
+      const flags = (judged.perTake[0] && judged.perTake[0].flags) || []
+      res.json({ measured: true, measures, flags, hints: flags.map((f) => setupCheck.SETUP_HINTS[f]).filter(Boolean) })
+    } catch (err) {
+      logger.error(`[Recordist] sample-gate measure: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   // The artist's own "I'm done" — link-is-identity, addressed by the pack voice id.
   router.post('/voice/:packVoiceId/submit', async (req, res) => {
     try {
@@ -3233,7 +3301,9 @@ module.exports = function createRecordistRouter({
 
   router.put('/languages/:language', async (req, res) => {
     try {
-      if (requireAdmin && !(await requireAdmin(req, res))) return
+      // Same gate as GET /languages and the per-slot PATCH/POST: an admin session
+      // or a signed agent key holding voice-slot:write (job #570, Kai 2026-11-03).
+      if (requireAdmin && !(await requireAdminOrAgent(req, res, 'voice-slot:write'))) return
 
       let language
       try {
@@ -3360,6 +3430,50 @@ module.exports = function createRecordistRouter({
       res.json({ ok: true, language, slot: out.slot, voiceId: req.params.voiceId, changed: out.changed, by: who.email })
     } catch (err) {
       logger.error(`[Recordist] voice slot patch: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── 5c. ADD one voice slot, without rewriting the list (job #562) ──────────
+  // POST /languages/:language/voice  { slot, entry }
+  // Every other reader is carried over untouched (policy-voice-patch addVoiceSlot); the voice id must be spellable and
+  // consented, as PUT requires; compare-and-swap on updated_at, like the PATCH above.
+  router.post('/languages/:language/voice', async (req, res) => {
+    try {
+      const who = await requireAdminOrAgent(req, res, 'voice-slot:write')
+      if (!who) return
+      let language
+      try { language = canonicalLanguage(req.params.language) } catch (e) {
+        if (e instanceof ClipIdentityError) return res.status(400).json({ error: e.message })
+        throw e
+      }
+      const { slot, entry } = req.body || {}
+      try { canonicalVoiceId(String((entry && entry.voiceId) || '')) } catch (e) {
+        return res.status(400).json({ error: `entry.voiceId: ${e.message}` })
+      }
+      const { data: row, error: readErr } = await db()
+        .from('language_recording_policy').select('*').eq('language', language).maybeSingle()
+      if (readErr) throw new Error(`policy read failed: ${readErr.message}`)
+      if (!row) return res.status(404).json({ error: `no recording policy for ${language}` })
+      const out = addVoiceSlot(row.voices, slot, entry, bucketKey)
+      if (!out.ok) return res.status(out.status).json({ error: out.error })
+      try {
+        await consentGate.assertConsented(out.entry.voiceId, { db: db(), context: `${language} recording policy ${out.slot}` })
+      } catch (err) {
+        return res.status(err.status || 409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT', slot: out.slot, voiceId: out.entry.voiceId })
+      }
+      const { data, error } = await db()
+        .from('language_recording_policy')
+        .update({ voices: out.voices })
+        .eq('language', language).eq('updated_at', row.updated_at)
+        .select('language').maybeSingle()
+      if (error) throw new Error(`policy write failed: ${error.message}`)
+      if (!data) return res.status(409).json({ error: 'the policy changed while this was applied — read it again and retry' })
+      invalidateLanguageQueueCache()
+      logger.log(`[Recordist] voice slot added ${language}/${out.slot} ${out.entry.voiceId} by ${who.email}`)
+      res.json({ ok: true, language, slot: out.slot, voiceId: out.entry.voiceId, entry: { ...out.entry, ...(out.entry.email ? { email: '(set)' } : {}) }, by: who.email })
+    } catch (err) {
+      logger.error(`[Recordist] voice slot add: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

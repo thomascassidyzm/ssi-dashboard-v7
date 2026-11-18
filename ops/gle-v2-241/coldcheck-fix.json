@@ -1,0 +1,48 @@
+{
+ "meta": {
+  "ok": true,
+  "dryRun": false,
+  "applied": true,
+  "event_id": "3a2e6264-7c87-4ef3-8301-26ae035dc579",
+  "undo_file": "2026-11-11T16-06-16-524Z-3a2e6264-7c87-4ef3-8301-26ae035dc579.json"
+ },
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0139L02U05",
+   "set": {
+    "known_text": "I am not sure I want to leave yet because there is a lot to learn here"
+   },
+   "expect": {
+    "target_text": "Níl mé cinnte gur mian liom imeacht fós mar tá go leor le foghlaim anseo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0139L02U06",
+   "set": {
+    "known_text": "he was not trying to leave and he wanted to stay for a while learning"
+   },
+   "expect": {
+    "target_text": "Ní raibh sé ag iarraidh imeacht agus ba mhian leis fanacht ar feadh tamaill ag foghlaim"
+   }
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0139L02U06",
+   "set": {
+    "known_text": "he was not trying to leave and he wanted to stay for a while to keep learning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0139L02U05",
+   "set": {
+    "known_text": "I am not sure I want to leave yet because there is still so much to learn here"
+   }
+  }
+ ],
+ "why": "Sol cold check #252: English of two new S0139L02 phrases said more than the Irish"
+}

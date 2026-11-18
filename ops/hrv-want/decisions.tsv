@@ -1,0 +1,948 @@
+kind	key	known	before	after	decision
+seed	1	I want to speak Croatian with you now.	Hoću govoriti hrvatski s tobom sada.	Želim govoriti hrvatski s tobom sada.	switch: Hoću -> Želim
+seed	7	I want to try as hard as I can today.	Hoću pokušati što više mogu danas.	Želim pokušati što više mogu danas.	switch: Hoću -> Želim
+seed	15	And I want you to speak Croatian with me tomorrow.	I hoću da govoriš hrvatski sa mnom sutra.	I želim da govoriš hrvatski sa mnom sutra.	switch: hoću -> želim
+seed	16	He wants to come back with everyone else later on.	Hoće se vratiti sa svima ostalima malo kasnije.	Želi se vratiti sa svima ostalima malo kasnije.	switch: Hoće -> Želi
+seed	17	She wants to find out what the answer is.	Hoće saznati koji je odgovor.	Želi saznati koji je odgovor.	switch: Hoće -> Želi
+seed	18	We want to meet at six o'clock this evening.	Hoćemo se naći u šest sati večeras.	Želimo se naći u šest sati večeras.	switch: Hoćemo -> Želimo
+seed	19	But I don't want to stop talking.	Ali neću prestati pričati.	Ali ne želim prestati pričati.	switch: neću -> ne želim
+seed	20	You want to learn his name quickly.	Hoćeš brzo naučiti njegovo ime.	Želiš brzo naučiti njegovo ime.	switch: Hoćeš -> Želiš
+seed	22	Because I want to meet people who speak Croatian.	Jer hoću upoznati ljude koji govore hrvatski.	Jer želim upoznati ljude koji govore hrvatski.	switch: hoću -> želim
+seed	24	I'm not going to be able to remember easily.	Neću moći lako se sjetiti.	Neću moći lako se sjetiti.	keep-future: Neću
+seed	25	Are you going to help me before I have to go?	Hoćeš li mi pomoći prije nego što moram ići?	Hoćeš li mi pomoći prije nego što moram ići?	keep-future: Hoćeš li
+seed	34	He doesn't want to be quiet when other people are here.	Neće biti tih kad su ovdje drugi.	Ne želi biti tih kad su ovdje drugi.	switch: Neće -> Ne želi
+seed	35	She doesn't want to read anything this afternoon.	Neće ništa čitati danas poslijepodne.	Ne želi ništa čitati danas poslijepodne.	switch: Neće -> Ne želi
+seed	36	We don't want to interrupt the story.	Nećemo prekinuti priču.	Ne želimo prekinuti priču.	switch: Nećemo -> Ne želimo
+seed	67	Why do you want to stop?	Zašto hoćeš prestati?	Zašto želiš prestati?	switch: hoćeš -> želiš
+seed	81	When do you want to start?	Kad hoćeš početi?	Kad želiš početi?	switch: hoćeš -> želiš
+seed	82	I'm not going to wait for you. Why not?	Neću čekati na tebe. Zašto ne?	Neću čekati na tebe. Zašto ne?	keep-future: Neću
+seed	97	Yes I'm ready to go as soon as you want.	Da, spreman sam ići čim hoćeš.	Da, spreman sam ići čim želiš.	switch: hoćeš -> želiš
+seed	152	I would have done it differently if I had known what you wanted.	Napravio bih to drugačije da sam znao što hoćeš.	Napravio bih to drugačije da sam znao što želiš.	switch: hoćeš -> želiš
+seed	154	Where do you want to meet on Saturday night?	Gdje se hoćeš naći u subotu navečer?	Gdje se želiš naći u subotu navečer?	switch: hoćeš -> želiš
+seed	156	Do you want to go to a restaurant tonight?	Hoćeš li ići u restoran večeras?	Želiš li ići u restoran večeras?	switch: Hoćeš li -> Želiš li
+seed	157	I won't be able to be there next month.	Neću moći biti tamo sljedećeg mjeseca.	Neću moći biti tamo sljedećeg mjeseca.	keep-future: Neću
+seed	169	What do you want me to do?	Što hoćeš da napravim?	Što želiš da napravim?	switch: hoćeš -> želiš
+seed	171	Do you want me to help you look for it?	Hoćeš li da ti pomognem tražiti to?	Želiš li da ti pomognem tražiti to?	switch: Hoćeš li -> Želiš li
+seed	175	What do you want to do on Sunday morning?	Što hoćeš raditi u nedjelju ujutro?	Što želiš raditi u nedjelju ujutro?	switch: hoćeš -> želiš
+seed	176	I'll ask him if he'll be able to help next year.	Pitat ću ga hoće li moći pomoći sljedeće godine.	Pitat ću ga hoće li moći pomoći sljedeće godine.	keep-future: hoće li
+seed	177	I'll ask her where she wants to go.	Pitat ću je gdje hoće ići.	Pitat ću je gdje želi ići.	switch: hoće -> želi
+seed	186	Do you want to talk about something different next week?	Hoćeš li pričati o nečemu drugačijem sljedeći tjedan?	Želiš li pričati o nečemu drugačijem sljedeći tjedan?	switch: Hoćeš li -> Želiš li
+seed	200	They say they want to make sure that we finish everything in time.	Kažu da hoće osigurati da završimo sve na vrijeme.	Kažu da žele osigurati da završimo sve na vrijeme.	switch: hoće -> žele
+seed	209	They want to spend more time meeting as a group.	Hoće provesti više vremena sastajući se kao grupa.	Žele provesti više vremena sastajući se kao grupa.	switch: Hoće -> Žele
+seed	222	He's trying to tell me what he wants	Pokušava mi reći što hoće.	Pokušava mi reći što želi.	switch: hoće -> želi
+seed	230	I know a young man who wants to work with you.	Poznajem mladog muškarca koji hoće raditi s tobom.	Poznajem mladog muškarca koji želi raditi s tobom.	switch: hoće -> želi
+seed	235	I met someone who said that he wanted to tell you something.	Sreo sam nekoga tko je rekao da ti hoće nešto reći.	Sreo sam nekoga tko je rekao da ti želi nešto reći.	switch: hoće -> želi
+seed	241	I don't want to give it to him.	Neću mu to dati.	Ne želim mu to dati.	switch: Neću -> Ne želim
+seed	242	I want to give her more time.	Hoću joj dati više vremena.	Želim joj dati više vremena.	switch: Hoću -> Želim
+seed	248	I thought the film was complete rubbish and I want my money back.	Mislio sam da je film bio potpuna glupost i hoću novac natrag.	Mislio sam da je film bio potpuna glupost i želim novac natrag.	switch: hoću -> želim
+seed	249	I want you to help me before you go.	Hoću da mi pomogneš prije nego odeš.	Želim da mi pomogneš prije nego odeš.	switch: Hoću -> Želim
+seed	251	I don't want to find out until after we finish.	Neću saznati do nakon što završimo.	Ne želim saznati do nakon što završimo.	switch: Neću -> Ne želim
+seed	269	Why don't you want to wait for your father?	Zašto nećeš čekati na svog oca?	Zašto ne želiš čekati na svog oca?	switch: nećeš -> ne želiš
+seed	289	I wonder if she's going to be there this afternoon.	Pitam se hoće li ona biti tamo danas poslijepodne.	Pitam se hoće li ona biti tamo danas poslijepodne.	keep-future: hoće li
+seed	295	I didn't say that I wanted to finish in a day.	Nisam rekao da hoću završiti za jedan dan.	Nisam rekao da želim završiti za jedan dan.	switch: hoću -> želim
+seed	299	He wants to pay half.	Hoće platiti polovicu.	Želi platiti polovicu.	switch: Hoće -> Želi
+seed	300	She doesn't want to seem unfriendly.	Neće izgledati nepristupačno.	Ne želi izgledati nepristupačno.	switch: Neće -> Ne želi
+seed	301	He said that he wants to show you something.	Rekao je da ti hoće nešto pokazati.	Rekao je da ti želi nešto pokazati.	switch: hoće -> želi
+seed	302	She said that she doesn't want to live in a city.	Rekla je da neće živjeti u gradu.	Rekla je da ne želi živjeti u gradu.	switch: neće -> ne želi
+seed	303	I think that he wants to sit down.	Mislim da hoće sjesti.	Mislim da želi sjesti.	switch: hoće -> želi
+seed	304	I think that she doesn't want to work from home.	Mislim da neće raditi od kuće.	Mislim da ne želi raditi od kuće.	switch: neće -> ne želi
+seed	381	I didn't ask if he wanted to follow us.	Nisam pitao hoće li nas pratiti.	Nisam pitao želi li nas pratiti.	switch: hoće li -> želi li
+seed	382	Did you ask where he wanted to put it?	Jesi li pitao gdje to hoće staviti?	Jesi li pitao gdje to želi staviti?	switch: hoće -> želi
+seed	383	Yes he said he wanted to put it in the garden.	Da, rekao je da to hoće staviti u vrt.	Da, rekao je da to želi staviti u vrt.	switch: hoće -> želi
+seed	398	We want to become more patient with our children.	Hoćemo biti strpljiviji prema svojoj djeci.	Želimo biti strpljiviji prema svojoj djeci.	switch: Hoćemo -> Želimo
+seed	399	We don't want to lose hope.	Nećemo izgubiti nadu.	Ne želimo izgubiti nadu.	switch: Nećemo -> Ne želimo
+seed	400	Do we want to eat something later on?	Hoćemo li pojesti nešto malo kasnije?	Želimo li pojesti nešto malo kasnije?	switch: Hoćemo li -> Želimo li
+seed	416	They want to lead the way next year.	Hoće preuzeti vodstvo sljedeće godine.	Žele preuzeti vodstvo sljedeće godine.	switch: Hoće -> Žele
+seed	417	Do they want to kill those ants?	Hoće li ubiti te mrave?	Žele li ubiti te mrave?	switch: Hoće li -> Žele li
+seed	419	If they want people to like them.	Ako hoće da ih ljudi vole.	Ako žele da ih ljudi vole.	switch: hoće -> žele
+seed	432	They could mean that they want you to ask.	Možda time misle da hoće da pitaš.	Možda time misle da žele da pitaš.	switch: hoće -> žele
+seed	439	They don't want to die.	Neće umrijeti.	Ne žele umrijeti.	switch: Neće -> Ne žele
+seed	440	They want to travel while they're still young.	Hoće putovati dok su još mladi.	Žele putovati dok su još mladi.	switch: Hoće -> Žele
+seed	446	They won't be able to break that window.	Neće moći razbiti taj prozor.	Neće moći razbiti taj prozor.	keep-future: Neće
+seed	447	Will they be able to drive us home after the meal?	Hoće li nas moći odvesti kući nakon obroka?	Hoće li nas moći odvesti kući nakon obroka?	keep-future: Hoće li
+seed	460	I want to find a shop near the hotel.	Hoću pronaći trgovinu blizu hotela.	Želim pronaći trgovinu blizu hotela.	switch: Hoću -> Želim
+seed	470	How high do you want to climb before we stop?	Koliko visoko hoćeš se popeti prije nego stanemo?	Koliko visoko se želiš popeti prije nego stanemo?	override: want switch, with the clitic se moved to second position (after the first constituent 'Koliko visoko')
+seed	471	Do you want to stop for a rest?	Hoćeš li stati na odmor?	Želiš li stati na odmor?	switch: Hoćeš li -> Želiš li
+seed	473	I don't want it.	Neću to.	Ne želim to.	switch: Neću -> Ne želim
+seed	474	I don't even want it as a free offer.	Neću to čak ni besplatno.	Ne želim to čak ni besplatno.	switch: Neću -> Ne želim
+seed	490	Then I will never trust anyone ever again.	Onda nikad više nikome neću vjerovati.	Onda nikad više nikome neću vjerovati.	keep-future: neću
+seed	500	Why don't you want to sit between the two girls?	Zašto nećeš sjediti između dvije djevojčice?	Zašto ne želiš sjediti između dvije djevojčice?	switch: nećeš -> ne želiš
+seed	533	She won't listen to every word you say.	Neće slušati svaku tvoju riječ.	Neće slušati svaku tvoju riječ.	keep-future: Neće
+seed	535	He made a promise that he wouldn't choose the wrong job.	Dao je obećanje da neće izabrati pogrešan posao.	Dao je obećanje da neće izabrati pogrešan posao.	keep-future: neće
+seed	538	I don't want to seem as though I don't care.	Neću izgledati kao da me nije briga.	Ne želim izgledati kao da me nije briga.	switch: Neću -> Ne želim
+seed	540	I don't mind if you want to leave without the car.	Ne smeta mi ako hoćeš otići bez auta.	Ne smeta mi ako želiš otići bez auta.	switch: hoćeš -> želiš
+seed	562	I just want to get there safely.	Samo hoću sigurno stići tamo.	Samo želim sigurno stići tamo.	switch: hoću -> želim
+seed	586	I want twenty boiled eggs.	Hoću dvadeset kuhanih jaja.	Želim dvadeset kuhanih jaja.	switch: Hoću -> Želim
+seed	623	Do you want a cup of coffee or tea?	Hoćeš li šalicu kave ili čaja?	Želiš li šalicu kave ili čaja?	switch: Hoćeš li -> Želiš li
+seed	625	Do you want something to drink?	Hoćeš li nešto popiti?	Želiš li nešto popiti?	switch: Hoćeš li -> Želiš li
+seed	643	Do you want sir?	Hoćete li, gospodine?	Želite li, gospodine?	switch: Hoćete li -> Želite li
+seed	650	Do you want to go madam?	Hoćete li ići, gospođo?	Želite li ići, gospođo?	switch: Hoćete li -> Želite li
+seed	658	Do you all want?	Hoćete li svi?	Želite li svi?	switch: Hoćete li -> Želite li
+seed	665	Do you all want to go?	Hoćete li svi ići?	Želite li svi ići?	switch: Hoćete li -> Želite li
+lego	S0001L01	I want	hoću	želim	switch: hoću -> želim
+lego	S0016L01	he wants	hoće	želi	switch: hoće -> želi
+lego	S0018L01	we want	hoćemo	želimo	switch: hoćemo -> želimo
+lego	S0019L02	I don't want	neću	ne želim	switch: neću -> ne želim
+lego	S0020L01	you want	hoćeš	želiš	switch: hoćeš -> želiš
+lego	S0024L01	I'm not going to	neću	neću	keep-future: neću
+lego	S0025L04	are you going to	hoćeš li	hoćeš li	keep-future: hoćeš li
+lego	S0034L01	he doesn't want	neće	ne želi	switch: neće -> ne želi
+lego	S0036L01	we don't want	nećemo	ne želimo	switch: nećemo -> ne želimo
+lego	S0067L02	you want	hoćeš	želiš	switch: hoćeš -> želiš
+lego	S0082L01	I won't wait	neću čekati	neću čekati	keep-future: neću
+lego	S0097L02	as soon as you want	čim hoćeš	čim želiš	switch: hoćeš -> želiš
+lego	S0154L02	do you want to meet up	se hoćeš naći	se želiš naći	switch: hoćeš -> želiš
+lego	S0157L01	I won't be able	neću moći	neću moći	keep-future: neću
+lego	S0176L03	he'll be able	hoće li moći	hoće li moći	keep-future: hoće li
+lego	S0209L01	they want	hoće	žele	switch: hoće -> žele
+lego	S0269L02	you want	hoćeš	želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0001L01U01	I want	hoću	želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L02B01	I want to speak	hoću govoriti	želim govoriti	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L03U01	I want to speak Croatian	hoću govoriti hrvatski	želim govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L04U01	I want to speak Croatian with you	hoću govoriti hrvatski s tobom	želim govoriti hrvatski s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L04U02	I want to speak with you	hoću govoriti s tobom	želim govoriti s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L05U01	I want to speak Croatian with you now	hoću govoriti hrvatski s tobom sada	želim govoriti hrvatski s tobom sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L05U05	I want Croatian now	hoću hrvatski sada	želim hrvatski sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L05U03	I want to speak Croatian now	hoću govoriti hrvatski sada	želim govoriti hrvatski sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L05U02	I want to speak with you now	hoću govoriti s tobom sada	želim govoriti s tobom sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0001L05U04	I want to speak now	hoću govoriti sada	želim govoriti sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0002L01U03	I want to learn with you	hoću učiti s tobom	želim učiti s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0002L01U02	I want to learn to speak Croatian	hoću učiti govoriti hrvatski	želim učiti govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0002L01U01	I want to learn Croatian	hoću učiti hrvatski	želim učiti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0002L01B01	I want to learn	hoću učiti	želim učiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0003L01U03	I want to learn how to speak with you	hoću učiti kako govoriti s tobom	želim učiti kako govoriti s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0003L01U01	I want to learn how to speak Croatian	hoću učiti kako govoriti hrvatski	želim učiti kako govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0003L02U01	I want to speak Croatian as often as possible	hoću govoriti hrvatski što češće	želim govoriti hrvatski što češće	switch: hoću -> želim
+phrase	hrv_for_eng:S0003L02U03	I want to learn how to speak as often as possible	hoću učiti kako govoriti što češće	želim učiti kako govoriti što češće	switch: hoću -> želim
+phrase	hrv_for_eng:S0003L02B03	I want to speak as often as possible	hoću govoriti što češće	želim govoriti što češće	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L01B02	I want to say	hoću reći	želim reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L01U01	I want to say how to speak Croatian	hoću reći kako govoriti hrvatski	želim reći kako govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L01U05	I want to say something with you	hoću reći s tobom	želim reći s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L01U03	I want to learn how to say	hoću učiti kako reći	želim učiti kako reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L02B03	I want something	hoću nešto	želim nešto	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L02U02	I want to learn something now	hoću učiti nešto sada	želim učiti nešto sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L02U05	I want to say something as often as possible	hoću reći nešto što češće	želim reći nešto što češće	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L02U01	I want to say something	hoću reći nešto	želim reći nešto	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L03U03	I want to learn how to say something in Croatian	hoću učiti kako reći nešto na hrvatskom	želim učiti kako reći nešto na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0004L03U01	I want to say something in Croatian	hoću reći nešto na hrvatskom	želim reći nešto na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0005L02B02	I want to converse	hoću razgovarati	želim razgovarati	switch: hoću -> želim
+phrase	hrv_for_eng:S0005L02U04	I want to learn how to converse in Croatian	hoću učiti kako razgovarati na hrvatskom	želim učiti kako razgovarati na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0005L02U01	I want to converse in Croatian	hoću razgovarati na hrvatskom	želim razgovarati na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0005L03U03	I want to learn how to converse with someone else	hoću učiti kako razgovarati s nekim drugim	želim učiti kako razgovarati s nekim drugim	switch: hoću -> želim
+phrase	hrv_for_eng:S0005L03U02	I want to speak Croatian with someone else	hoću govoriti hrvatski s nekim drugim	želim govoriti hrvatski s nekim drugim	switch: hoću -> želim
+phrase	hrv_for_eng:S0005L03B03	I want to converse with someone else	hoću razgovarati s nekim drugim	želim razgovarati s nekim drugim	switch: hoću -> želim
+phrase	hrv_for_eng:S0006L01B03	I want to remember	hoću se sjetiti	želim se sjetiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0006L01U03	I want to remember how to say something in Croatian	hoću se sjetiti kako reći nešto na hrvatskom	želim se sjetiti kako reći nešto na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0006L01U05	I want to remember how to converse	hoću se sjetiti kako razgovarati	želim se sjetiti kako razgovarati	switch: hoću -> želim
+phrase	hrv_for_eng:S0006L02U01	I want to remember a word in Croatian	hoću se sjetiti jedne riječi na hrvatskom	želim se sjetiti jedne riječi na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0006L02U04	I want to remember a word now	hoću se sjetiti jedne riječi sada	želim se sjetiti jedne riječi sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0006L02B02	I want to remember a word	hoću se sjetiti jedne riječi	želim se sjetiti jedne riječi	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01U01	I want to try to speak Croatian	hoću pokušati govoriti hrvatski	želim pokušati govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01U03	I want to try to converse with someone else	hoću pokušati razgovarati s nekim drugim	želim pokušati razgovarati s nekim drugim	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01U02	I want to try to say something in Croatian	hoću pokušati reći nešto na hrvatskom	želim pokušati reći nešto na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01U05	I want to try to converse in Croatian	hoću pokušati razgovarati na hrvatskom	želim pokušati razgovarati na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01B03	I want to try to learn	hoću pokušati učiti	želim pokušati učiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01B02	I want to try to speak	hoću pokušati govoriti	želim pokušati govoriti	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01U04	I want to try to remember a word	hoću se pokušati sjetiti jedne riječi	želim se pokušati sjetiti jedne riječi	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L01B01	I want to try	hoću pokušati	želim pokušati	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L02U04	I want to converse in Croatian as much as I can	hoću razgovarati na hrvatskom što više mogu	želim razgovarati na hrvatskom što više mogu	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L02U03	I want to practise speaking as much as I can	hoću vježbati govoriti što više mogu	želim vježbati govoriti što više mogu	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L02B02	I want to try as hard as I can	hoću pokušati što više mogu	želim pokušati što više mogu	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L02U01	I want to speak Croatian as much as I can	hoću govoriti hrvatski što više mogu	želim govoriti hrvatski što više mogu	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L03B01	I want to try today	hoću pokušati danas	želim pokušati danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L03U02	I want to practise speaking in Croatian today	hoću vježbati govoriti na hrvatskom danas	želim vježbati govoriti na hrvatskom danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L03U04	I want to try to remember a word today	hoću se pokušati sjetiti jedne riječi danas	želim se pokušati sjetiti jedne riječi danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L03U01	I want to try to speak Croatian as much as I can today	hoću pokušati govoriti hrvatski što više mogu danas	želim pokušati govoriti hrvatski što više mogu danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L03B02	I want to speak Croatian today	hoću govoriti hrvatski danas	želim govoriti hrvatski danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0007L03B03	I want to converse today	hoću razgovarati danas	želim razgovarati danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0008L02U04	I want to explain how to say something in Croatian	hoću objasniti kako reći nešto na hrvatskom	želim objasniti kako reći nešto na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0008L02U01	I want to explain something in Croatian	hoću objasniti nešto na hrvatskom	želim objasniti nešto na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0008L02B02	I want to explain	hoću objasniti	želim objasniti	switch: hoću -> želim
+phrase	hrv_for_eng:S0008L03U04	I want to learn how to explain what I mean	hoću učiti kako objasniti što mislim	želim učiti kako objasniti što mislim	switch: hoću -> želim
+phrase	hrv_for_eng:S0008L03U02	I want to explain what I mean in Croatian	hoću objasniti što mislim na hrvatskom	želim objasniti što mislim na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0008L03B03	I want to explain what I mean	hoću objasniti što mislim	želim objasniti što mislim	switch: hoću -> želim
+phrase	hrv_for_eng:S0009L02U02	I want to learn a little Croatian	hoću učiti malo hrvatski	želim učiti malo hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0009L02B03	I want to learn a little	hoću učiti malo	želim učiti malo	switch: hoću -> želim
+phrase	hrv_for_eng:S0010L03B03	I want to remember the whole sentence	hoću se sjetiti cijele rečenice	želim se sjetiti cijele rečenice	switch: hoću -> želim
+phrase	hrv_for_eng:S0010L03U02	I want to try to remember the whole sentence	hoću se pokušati sjetiti cijele rečenice	želim se pokušati sjetiti cijele rečenice	switch: hoću -> želim
+phrase	hrv_for_eng:S0010L03U05	I want to remember the whole sentence as much as I can	hoću se sjetiti cijele rečenice što više mogu	želim se sjetiti cijele rečenice što više mogu	switch: hoću -> želim
+phrase	hrv_for_eng:S0011L02B02	I want to be able to speak Croatian	hoću moći govoriti hrvatski	želim moći govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0011L02U01	I want to be able to speak Croatian with you	hoću moći govoriti hrvatski s tobom	želim moći govoriti hrvatski s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0011L02U05	I want to be able to explain what I mean	hoću moći objasniti što mislim	želim moći objasniti što mislim	switch: hoću -> želim
+phrase	hrv_for_eng:S0011L03U05	I want to converse with you after you finish	hoću razgovarati s tobom nakon što završiš	želim razgovarati s tobom nakon što završiš	switch: hoću -> želim
+phrase	hrv_for_eng:S0011L03U02	I want to say something after you finish	hoću reći nešto nakon što završiš	želim reći nešto nakon što završiš	switch: hoću -> želim
+phrase	hrv_for_eng:S0012L02U01	I want to try to guess what I mean	hoću pokušati pogađati što mislim	želim pokušati pogađati što mislim	switch: hoću -> želim
+phrase	hrv_for_eng:S0012L02B02	I want to guess	hoću pogađati	želim pogađati	switch: hoću -> želim
+phrase	hrv_for_eng:S0012L03U04	I want to say what's going to happen	hoću reći što će se dogoditi	želim reći što će se dogoditi	switch: hoću -> želim
+phrase	hrv_for_eng:S0012L03B04	I want to explain what's going to happen	hoću objasniti što će se dogoditi	želim objasniti što će se dogoditi	switch: hoću -> želim
+phrase	hrv_for_eng:S0012L04B02	I want to speak Croatian tomorrow	hoću govoriti hrvatski sutra	želim govoriti hrvatski sutra	switch: hoću -> želim
+phrase	hrv_for_eng:S0012L04U03	I want to try as hard as I can tomorrow	hoću pokušati što više mogu sutra	želim pokušati što više mogu sutra	switch: hoću -> želim
+phrase	hrv_for_eng:S0014L02U03	I want to be able to converse in Croatian all day	hoću moći razgovarati na hrvatskom cijeli dan	želim moći razgovarati na hrvatskom cijeli dan	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L01U01	and I want to speak Croatian with you	i hoću govoriti hrvatski s tobom	i želim govoriti hrvatski s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L01U02	and I want to try to speak Croatian	i hoću pokušati govoriti hrvatski	i želim pokušati govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L01B01	and I want	i hoću	i želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L02B02	I want you to speak Croatian	hoću da govoriš hrvatski	želim da govoriš hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L02U02	I want you to speak Croatian with someone else	hoću da govoriš hrvatski s nekim drugim	želim da govoriš hrvatski s nekim drugim	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L02U05	and I want you to speak Croatian today	i hoću da govoriš hrvatski danas	i želim da govoriš hrvatski danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L02B04	I want you to speak well	hoću da govoriš dobro	želim da govoriš dobro	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L03B03	I want you to speak Croatian with me	hoću da govoriš hrvatski sa mnom	želim da govoriš hrvatski sa mnom	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L03U01	I want you to speak Croatian with me tomorrow	hoću da govoriš hrvatski sa mnom sutra	želim da govoriš hrvatski sa mnom sutra	switch: hoću -> želim
+phrase	hrv_for_eng:S0015L03U04	and I want you to speak Croatian with me after you finish	i hoću da govoriš hrvatski sa mnom nakon što završiš	i želim da govoriš hrvatski sa mnom nakon što završiš	switch: hoću -> želim
+phrase	hrv_for_eng:S0016L01U05	he wants to explain something in Croatian	hoće objasniti nešto na hrvatskom	želi objasniti nešto na hrvatskom	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01U03	he wants to say something in Croatian	hoće reći nešto na hrvatskom	želi reći nešto na hrvatskom	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01B02	he wants to speak Croatian	hoće govoriti hrvatski	želi govoriti hrvatski	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01U01	he wants to speak Croatian with you	hoće govoriti hrvatski s tobom	želi govoriti hrvatski s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01U04	he wants to converse with someone else	hoće razgovarati s nekim drugim	želi razgovarati s nekim drugim	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01B01	he wants	hoće	želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01B03	he wants to learn	hoće učiti	želi učiti	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01B04	he wants to try	hoće pokušati	želi pokušati	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L01U02	he wants to try to speak Croatian as often as possible	hoće pokušati govoriti hrvatski što češće	želi pokušati govoriti hrvatski što češće	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L02U05	I want to come back and speak Croatian with you	hoću se vratiti i govoriti hrvatski s tobom	želim se vratiti i govoriti hrvatski s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0016L02B02	he wants to come back	hoće se vratiti	želi se vratiti	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L02U01	I want to come back and speak Croatian	hoću se vratiti i govoriti hrvatski	želim se vratiti i govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0016L02B03	I want to come back	hoću se vratiti	želim se vratiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0016L02U02	he wants to come back tomorrow	hoće se vratiti sutra	želi se vratiti sutra	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L03B02	he wants to come back with everyone else	hoće se vratiti sa svima ostalima	želi se vratiti sa svima ostalima	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L03U05	I want to come back and converse with everyone else	hoću se vratiti i razgovarati sa svima ostalima	želim se vratiti i razgovarati sa svima ostalima	switch: hoću -> želim
+phrase	hrv_for_eng:S0016L03U01	I want to speak Croatian with everyone else	hoću govoriti hrvatski sa svima ostalima	želim govoriti hrvatski sa svima ostalima	switch: hoću -> želim
+phrase	hrv_for_eng:S0016L03U03	he wants to speak Croatian with everyone else	hoće govoriti hrvatski sa svima ostalima	želi govoriti hrvatski sa svima ostalima	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L04U01	he wants to come back with everyone else a little later	hoće se vratiti sa svima ostalima malo kasnije	želi se vratiti sa svima ostalima malo kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L04U04	I want to come back and explain what I mean later	hoću se vratiti i objasniti što mislim kasnije	želim se vratiti i objasniti što mislim kasnije	switch: hoću -> želim
+phrase	hrv_for_eng:S0016L04B01	he wants to come back later	hoće se vratiti kasnije	želi se vratiti kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L04U05	he wants to try to speak Croatian with everyone else later	hoće pokušati govoriti hrvatski sa svima ostalima kasnije	želi pokušati govoriti hrvatski sa svima ostalima kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L04B03	he wants to come back a little later	hoće se vratiti malo kasnije	želi se vratiti malo kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0016L04B02	I want to speak Croatian later	hoću govoriti hrvatski kasnije	želim govoriti hrvatski kasnije	switch: hoću -> želim
+phrase	hrv_for_eng:S0017L01U05	he wants to find out how to speak Croatian well	hoće saznati kako dobro govoriti hrvatski	želi saznati kako dobro govoriti hrvatski	switch: hoće -> želi
+phrase	hrv_for_eng:S0017L01U04	I want to find out how to converse in Croatian	hoću saznati kako razgovarati na hrvatskom	želim saznati kako razgovarati na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0017L01U01	I want to find out how to speak Croatian	hoću saznati kako govoriti hrvatski	želim saznati kako govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0017L01B02	I want to find out	hoću saznati	želim saznati	switch: hoću -> želim
+phrase	hrv_for_eng:S0017L01B01	she wants to find out	hoće saznati	želi saznati	switch: hoće -> želi
+phrase	hrv_for_eng:S0017L02U04	he wants to come back and find out what the answer is	hoće se vratiti i saznati koji je odgovor	želi se vratiti i saznati koji je odgovor	switch: hoće -> želi
+phrase	hrv_for_eng:S0017L02U05	I want to explain what the answer is	hoću objasniti koji je odgovor	želim objasniti koji je odgovor	switch: hoću -> želim
+phrase	hrv_for_eng:S0017L02B03	I want to find out what the answer is	hoću saznati koji je odgovor	želim saznati koji je odgovor	switch: hoću -> želim
+phrase	hrv_for_eng:S0017L02B02	she wants to find out what the answer is	hoće saznati koji je odgovor	želi saznati koji je odgovor	switch: hoće -> želi
+phrase	hrv_for_eng:S0018L01U03	we want to converse with someone else	hoćemo razgovarati s nekim drugim	želimo razgovarati s nekim drugim	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01U04	we want to say something in Croatian	hoćemo reći nešto na hrvatskom	želimo reći nešto na hrvatskom	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01U02	we want to try to speak Croatian as often as possible	hoćemo pokušati govoriti hrvatski što češće	želimo pokušati govoriti hrvatski što češće	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01B02	we want to speak Croatian	hoćemo govoriti hrvatski	želimo govoriti hrvatski	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01B04	we want to try	hoćemo pokušati	želimo pokušati	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01U05	we want to come back and practise later	hoćemo se vratiti i vježbati kasnije	želimo se vratiti i vježbati kasnije	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01B03	we want to learn	hoćemo učiti	želimo učiti	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01U01	we want to speak Croatian with you	hoćemo govoriti hrvatski s tobom	želimo govoriti hrvatski s tobom	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L01B01	we want	hoćemo	želimo	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L02U03	he wants to meet with me later	hoće se naći sa mnom kasnije	želi se naći sa mnom kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0018L02U01	I want to meet with you tomorrow	hoću se naći s tobom sutra	želim se naći s tobom sutra	switch: hoću -> želim
+phrase	hrv_for_eng:S0018L02B02	we want to meet	hoćemo se naći	želimo se naći	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L02U04	we want to meet and speak Croatian	hoćemo se naći i govoriti hrvatski	želimo se naći i govoriti hrvatski	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L02B03	I want to meet with you	hoću se naći s tobom	želim se naći s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0018L03U03	I want to meet with you at six o'clock	hoću se naći s tobom u šest sati	želim se naći s tobom u šest sati	switch: hoću -> želim
+phrase	hrv_for_eng:S0018L03B03	I want to meet at six o'clock	hoću se naći u šest sati	želim se naći u šest sati	switch: hoću -> želim
+phrase	hrv_for_eng:S0018L03U05	we want to meet with everyone else at six o'clock	hoćemo se naći sa svima ostalima u šest sati	želimo se naći sa svima ostalima u šest sati	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L03B04	he wants to come back at six o'clock	hoće se vratiti u šest sati	želi se vratiti u šest sati	switch: hoće -> želi
+phrase	hrv_for_eng:S0018L03U01	we want to meet at six o'clock tomorrow	hoćemo se naći u šest sati sutra	želimo se naći u šest sati sutra	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L04U05	he wants to come back this evening	hoće se vratiti večeras	želi se vratiti večeras	switch: hoće -> želi
+phrase	hrv_for_eng:S0018L04B01	we want to meet this evening	hoćemo se naći večeras	želimo se naći večeras	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0018L04B02	I want to speak Croatian this evening	hoću govoriti hrvatski večeras	želim govoriti hrvatski večeras	switch: hoću -> želim
+phrase	hrv_for_eng:S0018L04U03	I want to try to converse with someone else this evening	hoću pokušati razgovarati s nekim drugim večeras	želim pokušati razgovarati s nekim drugim večeras	switch: hoću -> želim
+phrase	hrv_for_eng:S0018L04U01	we want to meet at six o'clock this evening	hoćemo se naći u šest sati večeras	želimo se naći u šest sati večeras	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0019L01U05	but we want to meet this evening	ali hoćemo se naći večeras	ali želimo se naći večeras	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0019L01B01	but I want	ali hoću	ali želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0019L01U04	but he wants to come back later	ali hoće se vratiti kasnije	ali želi se vratiti kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0019L01U01	but I want to speak Croatian with you	ali hoću govoriti hrvatski s tobom	ali želim govoriti hrvatski s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0019L01B03	but he wants	ali hoće	ali želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0019L01B02	but I don't want	ali neću	ali ne želim	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02B03	I don't want to learn	neću učiti	ne želim učiti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02B02	I don't want to speak	neću govoriti	ne želim govoriti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02U01	I don't want to converse with someone else	neću razgovarati s nekim drugim	ne želim razgovarati s nekim drugim	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02B04	I don't want to come back	neću se vratiti	ne želim se vratiti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02U04	I don't want to come back later	neću se vratiti kasnije	ne želim se vratiti kasnije	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02B01	I don't want	neću	ne želim	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02U05	I don't want to meet at six o'clock	neću se naći u šest sati	ne želim se naći u šest sati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02U03	I don't want to guess what's going to happen	neću pogađati što će se dogoditi	ne želim pogađati što će se dogoditi	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02U02	I don't want to say something in Croatian	neću reći nešto na hrvatskom	ne želim reći nešto na hrvatskom	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L02C02	I want	hoću	želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0019L03B01	I don't want to stop	neću prestati	ne želim prestati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L03U03	he doesn't want to stop speaking	neće prestati govoriti	ne želi prestati govoriti	switch: neće -> ne želi
+phrase	hrv_for_eng:S0019L03U05	but I don't want to stop now	ali neću prestati sada	ali ne želim prestati sada	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L03U01	I don't want to stop speaking Croatian	neću prestati govoriti hrvatski	ne želim prestati govoriti hrvatski	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L03B02	I want to stop	hoću prestati	želim prestati	switch: hoću -> želim
+phrase	hrv_for_eng:S0019L04U05	I want to talk in Croatian as much as I can	hoću pričati na hrvatskom što više mogu	želim pričati na hrvatskom što više mogu	switch: hoću -> želim
+phrase	hrv_for_eng:S0019L04U01	but I don't want to stop talking	ali neću prestati pričati	ali ne želim prestati pričati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0019L04U02	I want to talk with you as often as possible	hoću pričati s tobom što češće	želim pričati s tobom što češće	switch: hoću -> želim
+phrase	hrv_for_eng:S0019L04B02	I want to talk	hoću pričati	želim pričati	switch: hoću -> želim
+phrase	hrv_for_eng:S0019L04B01	I don't want to stop talking	neću prestati pričati	ne želim prestati pričati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0020L01U05	you want to meet with everyone else later	hoćeš se naći sa svima ostalima kasnije	želiš se naći sa svima ostalima kasnije	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01U03	you want to come back and converse	hoćeš se vratiti i razgovarati	želiš se vratiti i razgovarati	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01U02	you want to try to speak as often as possible	hoćeš pokušati govoriti što češće	želiš pokušati govoriti što češće	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01B03	you want to learn	hoćeš učiti	želiš učiti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01U04	you want to find out what the answer is	hoćeš saznati koji je odgovor	želiš saznati koji je odgovor	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01B01	you want	hoćeš	želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01B02	you want to speak Croatian	hoćeš govoriti hrvatski	želiš govoriti hrvatski	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01U01	you want to speak Croatian with me	hoćeš govoriti hrvatski sa mnom	želiš govoriti hrvatski sa mnom	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L01B04	you want to try	hoćeš pokušati	želiš pokušati	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L02U01	I want to speak Croatian quickly	hoću govoriti hrvatski brzo	želim govoriti hrvatski brzo	switch: hoću -> želim
+phrase	hrv_for_eng:S0020L02U04	you want to quickly find out what the answer is	hoćeš brzo saznati koji je odgovor	želiš brzo saznati koji je odgovor	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L02B02	you want it quickly	hoćeš brzo	želiš brzo	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L02U05	I want to quickly say something in Croatian	hoću brzo reći nešto na hrvatskom	želim brzo reći nešto na hrvatskom	switch: hoću -> želim
+phrase	hrv_for_eng:S0020L02U03	he wants to come back quickly	hoće se brzo vratiti	želi se brzo vratiti	switch: hoće -> želi
+phrase	hrv_for_eng:S0020L03B02	you want to master it quickly	hoćeš brzo naučiti	želiš brzo naučiti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L03U03	we want to master how to converse in Croatian	hoćemo naučiti kako razgovarati na hrvatskom	želimo naučiti kako razgovarati na hrvatskom	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0020L03U05	you want to master how to speak Croatian very well	hoćeš naučiti kako govoriti hrvatski jako dobro	želiš naučiti kako govoriti hrvatski jako dobro	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L03B01	I want to master Croatian	hoću naučiti hrvatski	želim naučiti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0020L03U01	I want to master Croatian well	hoću dobro naučiti hrvatski	želim dobro naučiti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0020L04B03	I want to master his name	hoću naučiti njegovo ime	želim naučiti njegovo ime	switch: hoću -> želim
+phrase	hrv_for_eng:S0020L04B02	you want to master his name	hoćeš naučiti njegovo ime	želiš naučiti njegovo ime	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L04U01	you want to master his name quickly	hoćeš brzo naučiti njegovo ime	želiš brzo naučiti njegovo ime	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0020L04U04	he wants to say his name in Croatian	hoće reći njegovo ime na hrvatskom	želi reći njegovo ime na hrvatskom	switch: hoće -> želi
+phrase	hrv_for_eng:S0020L04U03	I want to quickly find out his name	hoću brzo saznati njegovo ime	želim brzo saznati njegovo ime	switch: hoću -> želim
+phrase	hrv_for_eng:S0021L01U05	why does he want to come back later	zašto se hoće vratiti kasnije	zašto se želi vratiti kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0021L01U03	why don't you want to stop talking	zašto nećeš prestati pričati	zašto ne želiš prestati pričati	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0021L01B02	why do you want	zašto hoćeš	zašto želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0021L01B03	why do we want	zašto hoćemo	zašto želimo	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0021L01U01	why do you want to speak Croatian	zašto hoćeš govoriti hrvatski	zašto želiš govoriti hrvatski	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0021L01U02	why do you want to meet with me	zašto se hoćeš naći sa mnom	zašto se želiš naći sa mnom	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0021L03U04	he wants to find out her name	hoće saznati njezino ime	želi saznati njezino ime	switch: hoće -> želi
+phrase	hrv_for_eng:S0021L03U02	I want to find out her name	hoću saznati njezino ime	želim saznati njezino ime	switch: hoću -> želim
+phrase	hrv_for_eng:S0021L03B03	I want to master her name	hoću naučiti njezino ime	želim naučiti njezino ime	switch: hoću -> želim
+phrase	hrv_for_eng:S0021L03U03	I want to master her name quickly	hoću brzo naučiti njezino ime	želim brzo naučiti njezino ime	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L01U05	because he wants to come back later	jer se hoće vratiti kasnije	jer se želi vratiti kasnije	switch: hoće -> želi
+phrase	hrv_for_eng:S0022L01U03	because I don't want to stop talking	jer neću prestati pričati	jer ne želim prestati pričati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0022L01U01	because I want to speak Croatian	jer hoću govoriti hrvatski	jer želim govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L01B03	because he wants	jer hoće	jer želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0022L01B01	because I want	jer hoću	jer želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L02B01	I want to get to know	hoću upoznati	želim upoznati	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L02U03	he wants to get to know someone	hoće upoznati	želi upoznati	switch: hoće -> želi
+phrase	hrv_for_eng:S0022L02B03	because I want to get to know	jer hoću upoznati	jer želim upoznati	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L02U02	why do you want to get to know someone	zašto hoćeš upoznati	zašto želiš upoznati	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0022L02U01	I want to get to know someone and speak Croatian	hoću upoznati i govoriti hrvatski	želim upoznati i govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L03B04	I want to get to know people who speak Croatian	hoću upoznati ljude koji govore hrvatski	želim upoznati ljude koji govore hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L03U04	why do you want to get to know people who speak Croatian	zašto hoćeš upoznati ljude koji govore hrvatski	zašto želiš upoznati ljude koji govore hrvatski	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0022L03U01	because I want to get to know people who speak Croatian	jer hoću upoznati ljude koji govore hrvatski	jer želim upoznati ljude koji govore hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0022L03U05	we want to get to know people who speak Croatian	hoćemo upoznati ljude koji govore hrvatski	želimo upoznati ljude koji govore hrvatski	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0023L01B02	soon I want to meet someone	uskoro hoću upoznati	uskoro želim upoznati	switch: hoću -> želim
+phrase	hrv_for_eng:S0023L01U01	soon I want to speak Croatian with you	uskoro hoću govoriti hrvatski s tobom	uskoro želim govoriti hrvatski s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0023L01U03	I want to master Croatian soon	hoću uskoro naučiti hrvatski	želim uskoro naučiti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0023L01B03	soon he wants to come back	uskoro se hoće vratiti	uskoro se želi vratiti	switch: hoće -> želi
+phrase	hrv_for_eng:S0023L01U04	he wants to come back soon	hoće se uskoro vratiti	želi se uskoro vratiti	switch: hoće -> želi
+phrase	hrv_for_eng:S0023L02U03	why don't you want to start	zašto nećeš početi	zašto ne želiš početi	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0023L02B01	I want to start	hoću početi	želim početi	switch: hoću -> želim
+phrase	hrv_for_eng:S0023L02U02	we want to start conversing in Croatian	hoćemo početi razgovarati na hrvatskom	želimo početi razgovarati na hrvatskom	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0023L02U01	I want to start speaking Croatian	hoću početi govoriti hrvatski	želim početi govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0023L03U04	I want to start speaking more	hoću početi više govoriti	želim početi više govoriti	switch: hoću -> želim
+phrase	hrv_for_eng:S0023L03U05	why don't you want to talk more	zašto nećeš više pričati	zašto ne želiš više pričati	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0023L03U01	I want to speak Croatian more	hoću više govoriti hrvatski	želim više govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0023L03B01	I want to speak more	hoću više govoriti	želim više govoriti	switch: hoću -> želim
+phrase	hrv_for_eng:S0024L01U04	I'm not going to meet with everyone else	neću se naći sa svima ostalima	neću se naći sa svima ostalima	keep-future: neću
+phrase	hrv_for_eng:S0024L01U01	I'm not going to speak Croatian today	neću govoriti hrvatski danas	neću govoriti hrvatski danas	keep-future: neću
+phrase	hrv_for_eng:S0024L01U03	I'm not going to be able to explain	neću moći objasniti	neću moći objasniti	keep-future: neću
+phrase	hrv_for_eng:S0024L01U05	I'm not going to start learning soon	neću uskoro početi učiti	neću uskoro početi učiti	keep-future: neću
+phrase	hrv_for_eng:S0024L01B04	I'm not going to start	neću početi	neću početi	keep-future: neću
+phrase	hrv_for_eng:S0024L01U02	I'm not going to stop talking	neću prestati pričati	neću prestati pričati	keep-future: neću
+phrase	hrv_for_eng:S0024L01B01	I'm not going to	neću	neću	keep-future: neću
+phrase	hrv_for_eng:S0024L01B02	I'm not going to speak	neću govoriti	neću govoriti	keep-future: neću
+phrase	hrv_for_eng:S0024L01B03	I'm not going to try	neću pokušati	neću pokušati	keep-future: neću
+phrase	hrv_for_eng:S0024L02U01	I want to speak Croatian easily	hoću lako govoriti hrvatski	želim lako govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0024L02U05	I'm not going to be able to easily explain what I mean	neću moći lako objasniti što mislim	neću moći lako objasniti što mislim	keep-future: neću
+phrase	hrv_for_eng:S0024L02U03	I'm not going to be able to remember easily	neću moći lako se sjetiti	neću moći lako se sjetiti	keep-future: neću
+phrase	hrv_for_eng:S0025L01B01	are you going to help me	hoćeš li mi pomoći	hoćeš li mi pomoći	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L01U01	I want to help you speak Croatian	hoću ti pomoći govoriti hrvatski	želim ti pomoći govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L01U04	I'm not going to be able to help easily	neću moći lako pomoći	neću moći lako pomoći	keep-future: neću
+phrase	hrv_for_eng:S0025L01U03	he wants to help me converse	hoće mi pomoći razgovarati	želi mi pomoći razgovarati	switch: hoće -> želi
+phrase	hrv_for_eng:S0025L01B02	I want to help	hoću pomoći	želim pomoći	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L01U05	because I want to help	jer hoću pomoći	jer želim pomoći	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L02U02	I'm not going to go today	neću ići danas	neću ići danas	keep-future: neću
+phrase	hrv_for_eng:S0025L02U01	I want to go and speak Croatian	hoću ići i govoriti hrvatski	želim ići i govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L02U05	but I don't want to go now	ali neću ići sada	ali ne želim ići sada	switch: neću -> ne želim
+phrase	hrv_for_eng:S0025L02B03	I want to go and help	hoću ići i pomoći	želim ići i pomoći	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L02B02	I'm not going to go	neću ići	neću ići	keep-future: neću
+phrase	hrv_for_eng:S0025L02B01	I want to go	hoću ići	želim ići	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L02U03	why do you want to go	zašto hoćeš ići	zašto želiš ići	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0025L03U03	I want to meet with you before I have to go	hoću se naći s tobom prije nego što moram ići	želim se naći s tobom prije nego što moram ići	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L03B03	I want to speak before I have to go	hoću govoriti prije nego što moram ići	želim govoriti prije nego što moram ići	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L03U05	I want to help you before I have to go	hoću ti pomoći prije nego što moram ići	želim ti pomoći prije nego što moram ići	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L03U01	I want to speak Croatian before I have to go	hoću govoriti hrvatski prije nego što moram ići	želim govoriti hrvatski prije nego što moram ići	switch: hoću -> želim
+phrase	hrv_for_eng:S0025L04B03	are you going to go	hoćeš li ići	hoćeš li ići	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04U04	are you going to meet with everyone else	hoćeš li se naći sa svima ostalima	hoćeš li se naći sa svima ostalima	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04B02	are you going to help	hoćeš li pomoći	hoćeš li pomoći	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04B04	are you going to start	hoćeš li početi	hoćeš li početi	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04U03	are you going to come back soon	hoćeš li se uskoro vratiti	hoćeš li se uskoro vratiti	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04B01	are you going to	hoćeš li	hoćeš li	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04C01	you want	hoćeš	želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0025L04U01	are you going to help me before I have to go	hoćeš li mi pomoći prije nego što moram ići	hoćeš li mi pomoći prije nego što moram ići	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04U05	are you going to start speaking more	hoćeš li početi više govoriti	hoćeš li početi više govoriti	keep-future: hoćeš li
+phrase	hrv_for_eng:S0025L04U02	are you going to speak Croatian with me	hoćeš li govoriti hrvatski sa mnom	hoćeš li govoriti hrvatski sa mnom	keep-future: hoćeš li
+phrase	hrv_for_eng:S0026L02B04	I don't want to feel	neću se osjećati	ne želim se osjećati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0026L02U05	I want to feel that I can help	hoću se osjećati da mogu pomoći	želim se osjećati da mogu pomoći	switch: hoću -> želim
+phrase	hrv_for_eng:S0026L02B03	I want to feel	hoću se osjećati	želim se osjećati	switch: hoću -> želim
+phrase	hrv_for_eng:S0026L03B03	I want to feel as if I am well	hoću se osjećati kao da sam dobro	želim se osjećati kao da sam dobro	switch: hoću -> želim
+phrase	hrv_for_eng:S0026L04U04	I want to feel as if I am nearly well today	hoću se osjećati kao da sam skoro dobro danas	želim se osjećati kao da sam skoro dobro danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0026L05U03	I want to feel ready to converse	hoću se osjećati spreman razgovarati	želim se osjećati spreman razgovarati	switch: hoću -> želim
+phrase	hrv_for_eng:S0026L05U04	I don't want to feel as if I am not ready	neću se osjećati kao da nisam spreman	ne želim se osjećati kao da nisam spreman	switch: neću -> ne želim
+phrase	hrv_for_eng:S0026L06U04	I want to help you before I have to leave	hoću ti pomoći prije nego što moram otići	želim ti pomoći prije nego što moram otići	switch: hoću -> želim
+phrase	hrv_for_eng:S0026L06U03	I'm not going to leave today	neću otići danas	neću otići danas	keep-future: neću
+phrase	hrv_for_eng:S0026L06U02	I want to leave and speak Croatian more	hoću otići i više govoriti hrvatski	želim otići i više govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0026L06B02	I want to leave	hoću otići	želim otići	switch: hoću -> želim
+phrase	hrv_for_eng:S0027L02B03	I don't want to take	neću uzimati	ne želim uzimati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0027L02U01	I don't want to take more	neću uzimati više	ne želim uzimati više	switch: neću -> ne želim
+phrase	hrv_for_eng:S0027L02B02	I want to take	hoću uzimati	želim uzimati	switch: hoću -> želim
+phrase	hrv_for_eng:S0027L02U03	why do you want to take more	zašto hoćeš uzimati više	zašto želiš uzimati više	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0027L02U02	I'm not going to take more	neću uzimati više	neću uzimati više	keep-future: neću
+phrase	hrv_for_eng:S0027L03U01	we don't want to take too much time	nećemo uzimati previše vremena	ne želimo uzimati previše vremena	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0027L03B03	I don't want to take too much time	neću uzimati previše vremena	ne želim uzimati previše vremena	switch: neću -> ne želim
+phrase	hrv_for_eng:S0027L03U04	but I don't want to take too much time	ali neću uzimati previše vremena	ali ne želim uzimati previše vremena	switch: neću -> ne želim
+phrase	hrv_for_eng:S0027L03U02	I'm not going to take too much time	neću uzimati previše vremena	neću uzimati previše vremena	keep-future: neću
+phrase	hrv_for_eng:S0027L03U05	why do you want to take too much time	zašto hoćeš uzimati previše vremena	zašto želiš uzimati previše vremena	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0027L04U04	I want to feel ready to answer	hoću se osjećati spreman da odgovorim	želim se osjećati spreman da odgovorim	switch: hoću -> želim
+phrase	hrv_for_eng:S0027L04U02	I'm not going to take too much time to answer	neću uzimati previše vremena da odgovorim	neću uzimati previše vremena da odgovorim	keep-future: neću
+phrase	hrv_for_eng:S0027L04B03	I want time to answer	hoću vremena da odgovorim	želim vremena da odgovorim	switch: hoću -> želim
+phrase	hrv_for_eng:S0028L02U02	I think you want to start speaking Croatian as soon as you can	mislim da hoćeš početi govoriti hrvatski čim možeš	mislim da želiš početi govoriti hrvatski čim možeš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0029L02B03	I want to speak	hoću da govorim	želim da govorim	switch: hoću -> želim
+phrase	hrv_for_eng:S0029L03U04	I want to help you speak better	hoću ti pomoći govoriti bolje	želim ti pomoći govoriti bolje	switch: hoću -> želim
+phrase	hrv_for_eng:S0029L03B02	I want to speak better	hoću govoriti bolje	želim govoriti bolje	switch: hoću -> želim
+phrase	hrv_for_eng:S0029L04U02	I want to learn Croatian as soon as possible	hoću naučiti hrvatski što prije	želim naučiti hrvatski što prije	switch: hoću -> želim
+phrase	hrv_for_eng:S0029L04U04	I want to start practising as soon as possible	hoću početi vježbati što prije	želim početi vježbati što prije	switch: hoću -> želim
+phrase	hrv_for_eng:S0029L04B02	I want to speak better as soon as possible	hoću govoriti bolje što prije	želim govoriti bolje što prije	switch: hoću -> želim
+phrase	hrv_for_eng:S0030L02B02	I want to ask	hoću pitati	želim pitati	switch: hoću -> želim
+phrase	hrv_for_eng:S0030L02U02	why do you want to ask	zašto hoćeš pitati	zašto želiš pitati	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0030L03B02	I want to ask you	hoću te pitati	želim te pitati	switch: hoću -> želim
+phrase	hrv_for_eng:S0031L03B02	I want to practise tonight	hoću vježbati večeras	želim vježbati večeras	switch: hoću -> želim
+phrase	hrv_for_eng:S0031L03U05	I don't want to take too much time tonight	neću uzimati previše vremena večeras	ne želim uzimati previše vremena večeras	switch: neću -> ne želim
+phrase	hrv_for_eng:S0031L03B03	tonight I want to speak Croatian	večeras hoću govoriti hrvatski	večeras želim govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0032L03U01	I want to show you that I can speak Croatian	hoću ti pokazati da mogu govoriti hrvatski	želim ti pokazati da mogu govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0032L03B01	I want to show	hoću pokazati	želim pokazati	switch: hoću -> želim
+phrase	hrv_for_eng:S0033L01U02	how long do you want to practise speaking tonight	koliko dugo hoćeš vježbati govoriti večeras	koliko dugo želiš vježbati govoriti večeras	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0033L01U01	how long do you want to speak Croatian with me	koliko dugo hoćeš govoriti hrvatski sa mnom	koliko dugo želiš govoriti hrvatski sa mnom	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0033L01B03	how long do you want to practise	koliko dugo hoćeš vježbati	koliko dugo želiš vježbati	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0033L01B02	how long do you want to speak	koliko dugo hoćeš govoriti	koliko dugo želiš govoriti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0034L01B01	he doesn't want	neće	ne želi	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01B02	he doesn't want to speak Croatian	neće govoriti hrvatski	ne želi govoriti hrvatski	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01U01	he doesn't want to speak Croatian with you	neće govoriti hrvatski s tobom	ne želi govoriti hrvatski s tobom	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01U03	he doesn't want to explain what I mean	neće objasniti što mislim	ne želi objasniti što mislim	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01U05	he doesn't want to practise more as soon as possible	neće vježbati više što prije	ne želi vježbati više što prije	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01U04	he doesn't want to come back tomorrow	neće se vratiti sutra	ne želi se vratiti sutra	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01B03	he doesn't want to learn	neće učiti	ne želi učiti	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01C02	he wants	hoće	želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0034L01B04	he doesn't want to stop	neće prestati	ne želi prestati	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L01U02	he doesn't want to stop talking	neće prestati pričati	ne želi prestati pričati	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L02B01	I want to be ready	hoću biti spreman	želim biti spreman	switch: hoću -> želim
+phrase	hrv_for_eng:S0034L02B02	he doesn't want to be	neće biti	ne želi biti	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L02U03	he doesn't want to be with me tonight	neće biti sa mnom večeras	ne želi biti sa mnom večeras	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L03U02	why do you want to be quiet	zašto hoćeš biti tih	zašto želiš biti tih	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0034L03B02	I want to be quiet	hoću biti tih	želim biti tih	switch: hoću -> želim
+phrase	hrv_for_eng:S0034L03U01	I don't want to be quiet as soon as I can speak Croatian	neću biti tih čim mogu govoriti hrvatski	ne želim biti tih čim mogu govoriti hrvatski	switch: neću -> ne želim
+phrase	hrv_for_eng:S0034L03U05	I'm not going to be quiet as soon as I can speak	neću biti tih čim mogu govoriti	neću biti tih čim mogu govoriti	keep-future: neću
+phrase	hrv_for_eng:S0034L03U04	he doesn't want to be quiet tonight	neće biti tih večeras	ne želi biti tih večeras	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L03B01	he doesn't want to be quiet	neće biti tih	ne želi biti tih	switch: neće -> ne želi
+phrase	hrv_for_eng:S0034L04B02	I want to speak Croatian when other people are here	hoću govoriti hrvatski kad su ovdje drugi	želim govoriti hrvatski kad su ovdje drugi	switch: hoću -> želim
+phrase	hrv_for_eng:S0034L04U02	I want to try to converse when other people are here	hoću pokušati razgovarati kad su ovdje drugi	želim pokušati razgovarati kad su ovdje drugi	switch: hoću -> želim
+phrase	hrv_for_eng:S0034L04U03	I don't want to be quiet when other people are here	neću biti tih kad su ovdje drugi	ne želim biti tih kad su ovdje drugi	switch: neću -> ne želim
+phrase	hrv_for_eng:S0034L04B03	he doesn't want to be quiet when other people are here	neće biti tih kad su ovdje drugi	ne želi biti tih kad su ovdje drugi	switch: neće -> ne želi
+phrase	hrv_for_eng:S0035L01U03	he doesn't want to read when other people are here	neće čitati kad su ovdje drugi	ne želi čitati kad su ovdje drugi	switch: neće -> ne želi
+phrase	hrv_for_eng:S0035L01B02	I want to read	hoću čitati	želim čitati	switch: hoću -> želim
+phrase	hrv_for_eng:S0035L01B01	she doesn't want to read	neće čitati	ne želi čitati	switch: neće -> ne želi
+phrase	hrv_for_eng:S0035L02B02	I don't want anything	neću ništa	ne želim ništa	switch: neću -> ne želim
+phrase	hrv_for_eng:S0035L02U04	he doesn't want to explain anything to me	neće mi ništa objasniti	ne želi mi ništa objasniti	switch: neće -> ne želi
+phrase	hrv_for_eng:S0035L02U05	I don't want to practise anything tonight	neću ništa vježbati večeras	ne želim ništa vježbati večeras	switch: neću -> ne želim
+phrase	hrv_for_eng:S0035L02U03	I don't want to ask you anything	neću te ništa pitati	ne želim te ništa pitati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0035L02U01	he doesn't want to show me anything	neće mi ništa pokazati	ne želi mi ništa pokazati	switch: neće -> ne želi
+phrase	hrv_for_eng:S0035L02B03	I don't want to explain anything	neću ništa objasniti	ne želim ništa objasniti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0035L02B01	she doesn't want to read anything	neće ništa čitati	ne želi ništa čitati	switch: neće -> ne želi
+phrase	hrv_for_eng:S0035L03B03	I want to speak Croatian this afternoon	hoću govoriti hrvatski danas poslijepodne	želim govoriti hrvatski danas poslijepodne	switch: hoću -> želim
+phrase	hrv_for_eng:S0035L03B02	she doesn't want to read anything this afternoon	neće ništa čitati danas poslijepodne	ne želi ništa čitati danas poslijepodne	switch: neće -> ne želi
+phrase	hrv_for_eng:S0035L03U05	he doesn't want to be quiet this afternoon	neće biti tih danas poslijepodne	ne želi biti tih danas poslijepodne	switch: neće -> ne želi
+phrase	hrv_for_eng:S0036L01B02	we don't want to speak Croatian	nećemo govoriti hrvatski	ne želimo govoriti hrvatski	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01C02	we want	hoćemo	želimo	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0036L01U03	we don't want to be quiet when other people are here	nećemo biti tih kad su ovdje drugi	ne želimo biti tih kad su ovdje drugi	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01B04	we don't want to be quiet	nećemo biti tih	ne želimo biti tih	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01B03	we don't want to stop	nećemo prestati	ne želimo prestati	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01U04	we don't want to read anything this afternoon	nećemo ništa čitati danas poslijepodne	ne želimo ništa čitati danas poslijepodne	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01U05	we don't want to start speaking Croatian tonight	nećemo početi govoriti hrvatski večeras	ne želimo početi govoriti hrvatski večeras	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01U02	we don't want to take too much time	nećemo uzimati previše vremena	ne želimo uzimati previše vremena	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01B01	we don't want	nećemo	ne želimo	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L01U01	we don't want to stop talking	nećemo prestati pričati	ne želimo prestati pričati	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L02U04	I'm not going to interrupt this afternoon	neću prekinuti danas poslijepodne	neću prekinuti danas poslijepodne	keep-future: neću
+phrase	hrv_for_eng:S0036L02U02	he doesn't want to interrupt when I'm speaking	neće prekinuti kad govorim	ne želi prekinuti kad govorim	switch: neće -> ne želi
+phrase	hrv_for_eng:S0036L02B01	we don't want to interrupt	nećemo prekinuti	ne želimo prekinuti	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L02U03	I don't like to interrupt when you want to speak	ne volim prekinuti kad hoćeš govoriti	ne volim prekinuti kad želiš govoriti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0036L02B02	I don't want to interrupt	neću prekinuti	ne želim prekinuti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0036L03B03	I don't want to interrupt the story	neću prekinuti priču	ne želim prekinuti priču	switch: neću -> ne želim
+phrase	hrv_for_eng:S0036L03U04	he doesn't want to read the story tonight	neće čitati priču večeras	ne želi čitati priču večeras	switch: neće -> ne želi
+phrase	hrv_for_eng:S0036L03B02	I want to read the story	hoću čitati priču	želim čitati priču	switch: hoću -> želim
+phrase	hrv_for_eng:S0036L03B01	we don't want to interrupt the story	nećemo prekinuti priču	ne želimo prekinuti priču	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0036L03U03	I don't want to interrupt the story this afternoon	neću prekinuti priču danas poslijepodne	ne želim prekinuti priču danas poslijepodne	switch: neću -> ne želim
+phrase	hrv_for_eng:S0037L02U01	I don't want to say anything about it	neću ništa govoriti o tome	ne želim ništa govoriti o tome	switch: neću -> ne želim
+phrase	hrv_for_eng:S0037L02U05	he doesn't want to explain anything about it	neće ništa objasniti o tome	ne želi ništa objasniti o tome	switch: neće -> ne želi
+phrase	hrv_for_eng:S0037L02U04	we don't want to speak about it this afternoon	nećemo govoriti o tome danas poslijepodne	ne želimo govoriti o tome danas poslijepodne	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0037L02B02	I want to speak about it	hoću govoriti o tome	želim govoriti o tome	switch: hoću -> želim
+phrase	hrv_for_eng:S0037L03U01	I want to speak Croatian more carefully	hoću govoriti hrvatski pažljivo	želim govoriti hrvatski pažljivo	switch: hoću -> želim
+phrase	hrv_for_eng:S0037L03B01	I want to speak carefully	hoću govoriti pažljivo	želim govoriti pažljivo	switch: hoću -> želim
+phrase	hrv_for_eng:S0037L04U05	I don't want to think about it tonight	neću razmišljati o tome večeras	ne želim razmišljati o tome večeras	switch: neću -> ne želim
+phrase	hrv_for_eng:S0037L04B02	I want to think about it	hoću razmišljati o tome	želim razmišljati o tome	switch: hoću -> želim
+phrase	hrv_for_eng:S0038L02U05	I already want to speak Croatian better	hoću već govoriti hrvatski bolje	želim već govoriti hrvatski bolje	switch: hoću -> želim
+phrase	hrv_for_eng:S0039L01U03	I'm a little tired but I want to try	malo sam umoran ali hoću pokušati	malo sam umoran ali želim pokušati	switch: hoću -> želim
+phrase	hrv_for_eng:S0039L01U02	I don't want to be tired when I'm trying to speak	neću biti umoran kad pokušavam govoriti	ne želim biti umoran kad pokušavam govoriti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0039L01B03	I don't want to be tired	neću biti umoran	ne želim biti umoran	switch: neću -> ne želim
+phrase	hrv_for_eng:S0039L01U04	I'm not tired but I don't want to speak tonight	nisam umoran ali neću govoriti večeras	nisam umoran ali ne želim govoriti večeras	switch: neću -> ne želim
+phrase	hrv_for_eng:S0039L02B02	I want to speak Croatian this morning	hoću govoriti hrvatski jutros	želim govoriti hrvatski jutros	switch: hoću -> želim
+phrase	hrv_for_eng:S0040L02U02	I don't want to speak Croatian at the moment	neću govoriti hrvatski trenutno	ne želim govoriti hrvatski trenutno	switch: neću -> ne želim
+phrase	hrv_for_eng:S0040L02U05	I don't want to think about it at the moment	neću razmišljati o tome trenutno	ne želim razmišljati o tome trenutno	switch: neću -> ne želim
+phrase	hrv_for_eng:S0041L03U03	I don't want to feel tired when I learn with you	neću se osjećati umorno kad učim s tobom	ne želim se osjećati umorno kad učim s tobom	switch: neću -> ne želim
+phrase	hrv_for_eng:S0041L03U02	I'm starting to feel tired but I want to speak more	počinjem se osjećati umorno ali hoću govoriti više	počinjem se osjećati umorno ali želim govoriti više	switch: hoću -> želim
+phrase	hrv_for_eng:S0041L03U04	I'm starting to feel tired but I don't want to stop talking	počinjem se osjećati umorno ali neću prestati pričati	počinjem se osjećati umorno ali ne želim prestati pričati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0041L03B03	I don't want to feel tired now	neću se osjećati umorno sada	ne želim se osjećati umorno sada	switch: neću -> ne želim
+phrase	hrv_for_eng:S0042L02U03	I want to speak better than at the moment	hoću govoriti bolje nego trenutno	želim govoriti bolje nego trenutno	switch: hoću -> želim
+phrase	hrv_for_eng:S0043L02U04	I want to answer but I feel a little tired	hoću odgovoriti ali osjećam se malo umoran	želim odgovoriti ali osjećam se malo umoran	switch: hoću -> želim
+phrase	hrv_for_eng:S0043L02B02	I want to reply	hoću odgovoriti	želim odgovoriti	switch: hoću -> želim
+phrase	hrv_for_eng:S0044L01B01	or I want	ili hoću	ili želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0044L01U05	I want to practise or converse with you tonight	hoću vježbati ili razgovarati s tobom večeras	želim vježbati ili razgovarati s tobom večeras	switch: hoću -> želim
+phrase	hrv_for_eng:S0044L01U01	I want to speak or converse in Croatian	hoću govoriti ili razgovarati hrvatski	želim govoriti ili razgovarati hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0044L01U02	or I want to try to explain what I mean	ili hoću pokušati objasniti što mislim	ili želim pokušati objasniti što mislim	switch: hoću -> želim
+phrase	hrv_for_eng:S0044L03B03	I want to improve	hoću se poboljšati	želim se poboljšati	switch: hoću -> želim
+phrase	hrv_for_eng:S0044L03U01	I want to improve as soon as possible	hoću se poboljšati što prije	želim se poboljšati što prije	switch: hoću -> želim
+phrase	hrv_for_eng:S0045L01U01	I want to know how to speak Croatian better	hoću znati kako govoriti hrvatski bolje	želim znati kako govoriti hrvatski bolje	switch: hoću -> želim
+phrase	hrv_for_eng:S0045L01B02	I want to know	hoću znati	želim znati	switch: hoću -> želim
+phrase	hrv_for_eng:S0045L01U05	I want to know how to reply carefully	hoću znati kako pažljivo odgovoriti	želim znati kako pažljivo odgovoriti	switch: hoću -> želim
+phrase	hrv_for_eng:S0045L02B03	I want to know everything	hoću znati sve	želim znati sve	switch: hoću -> želim
+phrase	hrv_for_eng:S0045L02U01	I don't want to read everything this afternoon	neću čitati sve danas poslijepodne	ne želim čitati sve danas poslijepodne	switch: neću -> ne želim
+phrase	hrv_for_eng:S0045L02U05	I want to know everything about it	hoću znati sve o tome	želim znati sve o tome	switch: hoću -> želim
+phrase	hrv_for_eng:S0045L02B02	I want to explain everything	hoću objasniti sve	želim objasniti sve	switch: hoću -> želim
+phrase	hrv_for_eng:S0046L02U01	I'm not going to stop because of mistakes	neću prestati zbog grešaka	neću prestati zbog grešaka	keep-future: neću
+phrase	hrv_for_eng:S0046L02U02	I don't want to stop speaking Croatian because of mistakes	neću prestati govoriti hrvatski zbog grešaka	ne želim prestati govoriti hrvatski zbog grešaka	switch: neću -> ne želim
+phrase	hrv_for_eng:S0046L02U05	I don't want to be quiet because of mistakes	neću biti tih zbog grešaka	ne želim biti tih zbog grešaka	switch: neću -> ne želim
+phrase	hrv_for_eng:S0047L03B02	I don't want to make mistakes	neću griješiti	ne želim griješiti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0047L03U02	I'm not going to stop making mistakes	neću prestati griješiti	neću prestati griješiti	keep-future: neću
+phrase	hrv_for_eng:S0048L01U01	I don't care, I want to speak Croatian better	nije mi stalo, hoću govoriti hrvatski bolje	nije mi stalo, želim govoriti hrvatski bolje	switch: hoću -> želim
+phrase	hrv_for_eng:S0048L01B03	I don't care, I want to speak Croatian	nije mi stalo, hoću govoriti hrvatski	nije mi stalo, želim govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0048L02U04	I don't care about mistakes, I'm not going to stop	nije mi stalo do grešaka, neću prestati	nije mi stalo do grešaka, neću prestati	keep-future: neću
+phrase	hrv_for_eng:S0048L02U05	I don't care about mistakes, I want to know everything	nije mi stalo do grešaka, hoću znati sve	nije mi stalo do grešaka, želim znati sve	switch: hoću -> želim
+phrase	hrv_for_eng:S0049L01B03	it's like this because I don't want to make mistakes	ovako je jer neću griješiti	ovako je jer ne želim griješiti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0050L01U05	I want to finish but I feel a little tired	hoću završiti ali osjećam se malo umoran	želim završiti ali osjećam se malo umoran	switch: hoću -> želim
+phrase	hrv_for_eng:S0050L01B02	I want to finish	hoću završiti	želim završiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0050L02B03	I want to speak as quickly as possible	hoću govoriti što brže	želim govoriti što brže	switch: hoću -> želim
+phrase	hrv_for_eng:S0050L02U01	I want to learn Croatian as quickly as possible	hoću naučiti hrvatski što brže	želim naučiti hrvatski što brže	switch: hoću -> želim
+phrase	hrv_for_eng:S0050L02B02	I want to finish as quickly as possible	hoću završiti što brže	želim završiti što brže	switch: hoću -> želim
+phrase	hrv_for_eng:S0051L01U03	I don't want to do everything as quickly as possible	neću raditi sve što brže	ne želim raditi sve što brže	switch: neću -> ne želim
+phrase	hrv_for_eng:S0051L01U05	I want to do something better than yesterday	hoću raditi nešto bolje nego jučer	želim raditi nešto bolje nego jučer	switch: hoću -> želim
+phrase	hrv_for_eng:S0051L01B02	I want to do	hoću raditi	želim raditi	switch: hoću -> želim
+phrase	hrv_for_eng:S0051L02B03	I want to do interesting things	hoću raditi zanimljive stvari	želim raditi zanimljive stvari	switch: hoću -> želim
+phrase	hrv_for_eng:S0051L02U05	I don't want to finish doing interesting things	neću završiti raditi zanimljive stvari	ne želim završiti raditi zanimljive stvari	switch: neću -> ne želim
+phrase	hrv_for_eng:S0051L03U02	I want to speak Croatian with friends	hoću govoriti hrvatski s prijateljima	želim govoriti hrvatski s prijateljima	switch: hoću -> želim
+phrase	hrv_for_eng:S0052L02U05	I want to write something as quickly as possible	hoću napisati nešto što brže	želim napisati nešto što brže	switch: hoću -> želim
+phrase	hrv_for_eng:S0052L02B02	I want to write	hoću napisati	želim napisati	switch: hoću -> želim
+phrase	hrv_for_eng:S0052L03U05	I want to write a letter but I'm tired	hoću napisati pismo ali osjećam se umoran	želim napisati pismo ali osjećam se umoran	switch: hoću -> želim
+phrase	hrv_for_eng:S0052L03B02	I want to write a letter	hoću napisati pismo	želim napisati pismo	switch: hoću -> želim
+phrase	hrv_for_eng:S0053L02U04	I don't want to put everything here	neću staviti sve ovdje	ne želim staviti sve ovdje	switch: neću -> ne želim
+phrase	hrv_for_eng:S0053L02U01	I want to put something here	hoću staviti nešto ovdje	želim staviti nešto ovdje	switch: hoću -> želim
+phrase	hrv_for_eng:S0053L02B02	I want to put	hoću staviti	želim staviti	switch: hoću -> želim
+phrase	hrv_for_eng:S0053L03U03	I want to read his letter as soon as possible	hoću čitati njegovo pismo što prije	želim čitati njegovo pismo što prije	switch: hoću -> želim
+phrase	hrv_for_eng:S0053L03U05	I don't want to put his letter here	neću staviti njegovo pismo ovdje	ne želim staviti njegovo pismo ovdje	switch: neću -> ne želim
+phrase	hrv_for_eng:S0054L02U01	I want to give you a little more time	hoću ti dati malo više vremena	želim ti dati malo više vremena	switch: hoću -> želim
+phrase	hrv_for_eng:S0054L02B02	I want to give	hoću dati	želim dati	switch: hoću -> želim
+phrase	hrv_for_eng:S0054L03U03	I don't want to take a little more time	neću uzimati malo više vremena	ne želim uzimati malo više vremena	switch: neću -> ne želim
+phrase	hrv_for_eng:S0055L02B03	I want to wake up	hoću se buditi	želim se buditi	switch: hoću -> želim
+phrase	hrv_for_eng:S0055L02U05	I want to wake up and do interesting things	hoću se buditi i raditi zanimljive stvari	želim se buditi i raditi zanimljive stvari	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L01U01	I want to practise so that I can speak Croatian	hoću vježbati da mogu govoriti hrvatski	želim vježbati da mogu govoriti hrvatski	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L02B02	I want to recall	hoću se sjetiti	želim se sjetiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L02U04	I want to try to recall	hoću pokušati se sjetiti	želim pokušati se sjetiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L03B04	I want to learn how to say	hoću učiti kako reći	želim učiti kako reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L03U03	I want to recall how to say it	hoću se sjetiti kako reći	želim se sjetiti kako reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L04U01	I want to recall how to say a few words	hoću se sjetiti kako reći nekoliko riječi	želim se sjetiti kako reći nekoliko riječi	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L04U04	I can say a few words and I want to learn more	mogu reći nekoliko riječi i hoću učiti više	mogu reći nekoliko riječi i želim učiti više	switch: hoću -> želim
+phrase	hrv_for_eng:S0056L04U05	I want to recall a few words so that I can speak	hoću se sjetiti nekoliko riječi da mogu govoriti	želim se sjetiti nekoliko riječi da mogu govoriti	switch: hoću -> želim
+phrase	hrv_for_eng:S0058L02U03	I like it when you understand what I want to say	volim kad razumiješ što hoću reći	volim kad razumiješ što želim reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L01U02	I don't know how to say what I want to say	ne znam kako reći što hoću reći	ne znam kako reći što želim reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L02U04	I like to make what I want to make	volim napraviti što hoću napraviti	volim napraviti što želim napraviti	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L02U02	I want to make interesting things with my friends	hoću napraviti zanimljive stvari s prijateljima	želim napraviti zanimljive stvari s prijateljima	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L02B03	I want to make	hoću napraviti	želim napraviti	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L03U04	I want to write a letter to his friend next week	hoću napisati pismo svom prijatelju sljedećeg tjedna	želim napisati pismo svom prijatelju sljedećeg tjedna	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L03U02	I want to practise speaking Croatian next week	hoću vježbati govoriti hrvatski sljedećeg tjedna	želim vježbati govoriti hrvatski sljedećeg tjedna	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L03B03	I want to speak Croatian next week	hoću govoriti hrvatski sljedećeg tjedna	želim govoriti hrvatski sljedećeg tjedna	switch: hoću -> želim
+phrase	hrv_for_eng:S0059L03B04	next week I want to learn	sljedećeg tjedna hoću učiti	sljedećeg tjedna želim učiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0060L01U03	I still want to speak Croatian with you	još hoću govoriti hrvatski s tobom	još želim govoriti hrvatski s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0060L02U02	I want to learn enough different words	hoću učiti dovoljno različitih riječi	želim učiti dovoljno različitih riječi	switch: hoću -> želim
+phrase	hrv_for_eng:S0061L02B02	I want to make that	hoću to napraviti	želim to napraviti	switch: hoću -> želim
+phrase	hrv_for_eng:S0061L03U02	I want to try that once more	hoću to pokušati još jednom	želim to pokušati još jednom	switch: hoću -> želim
+phrase	hrv_for_eng:S0061L03U05	I want to say that once more	hoću to reći još jednom	želim to reći još jednom	switch: hoću -> želim
+phrase	hrv_for_eng:S0061L04U03	I like to think more slowly about what I want to say	volim razmišljati sporije o tome što hoću reći	volim razmišljati sporije o tome što želim reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0061L04U02	I want to speak Croatian more slowly	hoću govoriti hrvatski sporije	želim govoriti hrvatski sporije	switch: hoću -> želim
+phrase	hrv_for_eng:S0062L03U03	I want to learn a few words and make that at the same time	hoću učiti nekoliko riječi i to napraviti u isto vrijeme	želim učiti nekoliko riječi i to napraviti u isto vrijeme	switch: hoću -> želim
+phrase	hrv_for_eng:S0065L02U03	I want to take time to recall how to say it	hoću uzeti si vremena da se mogu sjetiti kako reći	želim uzeti si vremena da se mogu sjetiti kako reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0065L03U05	I want you to test yourself next week	hoću da se provjeriš sljedećeg tjedna	želim da se provjeriš sljedećeg tjedna	switch: hoću -> želim
+phrase	hrv_for_eng:S0065L03B04	I want you to test yourself	hoću da se provjeriš	želim da se provjeriš	switch: hoću -> želim
+phrase	hrv_for_eng:S0066L02U02	I want to find something interesting next week	hoću pronaći nešto zanimljivo sljedećeg tjedna	želim pronaći nešto zanimljivo sljedećeg tjedna	switch: hoću -> želim
+phrase	hrv_for_eng:S0066L02B02	I want to find	hoću pronaći	želim pronaći	switch: hoću -> želim
+phrase	hrv_for_eng:S0066L03U02	I want to find the answer but it isn't easy	hoću pronaći odgovor ali nije lako	želim pronaći odgovor ali nije lako	switch: hoću -> želim
+phrase	hrv_for_eng:S0069L02U04	why do you want to look after that	zašto hoćeš čuvati to	zašto želiš čuvati to	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0069L02B02	I want to look after	hoću čuvati	želim čuvati	switch: hoću -> želim
+phrase	hrv_for_eng:S0069L03B04	I want to look after the young dog	hoću čuvati mladog psa	želim čuvati mladog psa	switch: hoću -> želim
+phrase	hrv_for_eng:S0069L03U03	why doesn't he want to look after the young dog	zašto nije htio čuvati mladog psa	zašto ne želi čuvati mladog psa	override: cue is present 'why doesn't he want'; the row had past nije htio, present negative want = ne želi
+phrase	hrv_for_eng:S0069L04U02	I want to speak Croatian all afternoon	hoću govoriti hrvatski cijelo poslijepodne	želim govoriti hrvatski cijelo poslijepodne	switch: hoću -> želim
+phrase	hrv_for_eng:S0070L02U05	why don't you want to tell me where it is	zašto mi nećeš reći gdje je to	zašto mi ne želiš reći gdje je to	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0071L02B02	I don't want to let	neću pustiti	ne želim pustiti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0071L02U03	I don't want to let it go	neću to pustiti	ne želim to pustiti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0071L02U05	are you sure you want to let that go	jesi li siguran da hoćeš pustiti to	jesi li siguran da želiš pustiti to	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0071L03U05	why don't you want to let anyone help	zašto nećeš pustiti nikoga pomoći	zašto ne želiš pustiti nikoga pomoći	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0071L03U04	I don't want to let anyone make that	neću pustiti nikoga to napraviti	ne želim pustiti nikoga to napraviti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0071L03U02	I don't want to let anyone look after the young dog	neću pustiti nikoga čuvati mladog psa	ne želim pustiti nikoga čuvati mladog psa	switch: neću -> ne želim
+phrase	hrv_for_eng:S0071L04U02	I'm not sure if I want him to hear that	nisam siguran hoću li da čuje to	nisam siguran želim li da čuje to	switch: hoću li -> želim li
+phrase	hrv_for_eng:S0071L04U05	I don't want to let anyone hear that	neću pustiti nikoga da čuje to	ne želim pustiti nikoga da čuje to	switch: neću -> ne želim
+phrase	hrv_for_eng:S0073L01U05	thank you very much I don't want to stop learning	hvala lijepa neću prestati učiti	hvala lijepa ne želim prestati učiti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0073L02U03	I have the answer but I don't want to say it yet	imam odgovor ali još neću to reći	imam odgovor ali još ne želim to reći	switch: neću -> ne želim
+phrase	hrv_for_eng:S0074L02U02	I want to tell you thank you for helping me	hoću ti reći hvala što si mi pomogao	želim ti reći hvala što si mi pomogao	switch: hoću -> želim
+phrase	hrv_for_eng:S0074L03U04	I want to understand where it is	hoću razumjeti gdje je to	želim razumjeti gdje je to	switch: hoću -> želim
+phrase	hrv_for_eng:S0075L01U01	do you have something you want to tell me	imaš li nešto što mi hoćeš reći	imaš li nešto što mi želiš reći	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0078L02U02	I want to know what you said	hoću znati što si rekao	želim znati što si rekao	switch: hoću -> želim
+phrase	hrv_for_eng:S0079L01U04	I want to know when you started	hoću znati kad si počeo	želim znati kad si počeo	switch: hoću -> želim
+phrase	hrv_for_eng:S0080L03U02	I want to know when I'll be ready	hoću znati kad ću biti spreman	želim znati kad ću biti spreman	switch: hoću -> želim
+phrase	hrv_for_eng:S0082L01C01	I won't	neću	neću	keep-future: neću
+phrase	hrv_for_eng:S0082L01U01	I won't wait because I'm not sure when I'll be ready	neću čekati jer nisam siguran kad ću biti spreman	neću čekati jer nisam siguran kad ću biti spreman	keep-future: neću
+phrase	hrv_for_eng:S0082L01U04	I won't wait because it's not important	neću čekati jer nije važno	neću čekati jer nije važno	keep-future: neću
+phrase	hrv_for_eng:S0082L01U02	I think I won't wait anymore	mislim da neću čekati više	mislim da neću čekati više	keep-future: neću
+phrase	hrv_for_eng:S0082L01B01	I won't wait	neću čekati	neću čekati	keep-future: neću
+phrase	hrv_for_eng:S0082L01B02	I won't wait anymore	neću čekati više	neću čekati više	keep-future: neću
+phrase	hrv_for_eng:S0082L01U05	I know I won't wait very long	znam da neću čekati jako dugo	znam da neću čekati jako dugo	keep-future: neću
+phrase	hrv_for_eng:S0082L01U03	I'm surprised that I won't wait	iznenađen sam da neću čekati	iznenađen sam da neću čekati	keep-future: neću
+phrase	hrv_for_eng:S0082L01B03	I won't wait but I want to help	neću čekati ali hoću pomoći	neću čekati ali želim pomoći	keep-future: neću; switch: hoću -> želim
+phrase	hrv_for_eng:S0082L02B03	I won't wait for you	neću čekati na tebe	neću čekati na tebe	keep-future: neću
+phrase	hrv_for_eng:S0082L02B04	I don't want to wait for you	neću čekati na tebe	ne želim čekati na tebe	switch: neću -> ne želim
+phrase	hrv_for_eng:S0082L02U03	I'm not sure if I want to wait for you	nisam siguran hoću li čekati na tebe	nisam siguran želim li čekati na tebe	switch: hoću li -> želim li
+phrase	hrv_for_eng:S0082L02U02	I'm surprised I'm not going to wait for you	iznenađen sam da neću čekati na tebe	iznenađen sam da neću čekati na tebe	keep-future: neću
+phrase	hrv_for_eng:S0082L02U01	I'm not going to wait for you why not	neću čekati na tebe zašto ne	neću čekati na tebe zašto ne	keep-future: neću
+phrase	hrv_for_eng:S0083L03U05	I want to write a letter about your friend	hoću napisati pismo o svom prijatelju	želim napisati pismo o svom prijatelju	switch: hoću -> želim
+phrase	hrv_for_eng:S0083L03B04	I want to tell you about your friend	hoću ti reći o svom prijatelju	želim ti reći o svom prijatelju	switch: hoću -> želim
+phrase	hrv_for_eng:S0083L03U02	I want to know the truth about your friend	hoću znati istinu o svom prijatelju	želim znati istinu o svom prijatelju	switch: hoću -> želim
+phrase	hrv_for_eng:S0084L03U02	I want to know something about my friend	hoću znati nešto o mom prijatelju	želim znati nešto o mom prijatelju	switch: hoću -> želim
+phrase	hrv_for_eng:S0084L03B04	I want to know the truth about my friend	hoću znati istinu o mom prijatelju	želim znati istinu o mom prijatelju	switch: hoću -> želim
+phrase	hrv_for_eng:S0085L02U03	I don't know those people but I want to	ne poznajem te ljude ali hoću	ne poznajem te ljude ali želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0087L01U05	those are people who want to learn Croatian	to su ljudi koji hoće naučiti hrvatski	to su ljudi koji želi naučiti hrvatski	switch: hoće -> želi
+phrase	hrv_for_eng:S0087L01B03	people who want to speak	ljudi koji hoće govoriti	ljudi koji želi govoriti	switch: hoće -> želi
+phrase	hrv_for_eng:S0087L01U02	those are people who want to speak with you	to su ljudi koji hoće govoriti s tobom	to su ljudi koji želi govoriti s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0087L03B03	interesting things that you want to learn	zanimljive stvari koje hoćeš naučiti	zanimljive stvari koje želiš naučiti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0087L03U03	those are interesting things that you want to learn	to su zanimljive stvari koje hoćeš naučiti	to su zanimljive stvari koje želiš naučiti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0087L03U02	I want to meet people whom I don't know	hoću upoznati ljude koje ne poznajem	želim upoznati ljude koje ne poznajem	switch: hoću -> želim
+phrase	hrv_for_eng:S0087L04U02	those are interesting things that you want to learn	to su zanimljive stvari koje hoćeš naučiti	to su zanimljive stvari koje želiš naučiti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0087L04B04	those are people who want to speak	to su ljudi koji hoće govoriti	to su ljudi koji želi govoriti	switch: hoće -> želi
+phrase	hrv_for_eng:S0087L04U03	those are other people who want to speak with you	to su drugi ljudi koji hoće govoriti s tobom	to su drugi ljudi koji želi govoriti s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0088L02B03	I want to talk to people	hoću razgovarati s ljudima	želim razgovarati s ljudima	switch: hoću -> želim
+phrase	hrv_for_eng:S0088L02U02	I think I want to start to talk to people	mislim da hoću početi razgovarati s ljudima	mislim da želim početi razgovarati s ljudima	switch: hoću -> želim
+phrase	hrv_for_eng:S0088L03U02	I think I want to start to talk to people I don't know	mislim da hoću početi razgovarati s ljudima koje ne poznajem	mislim da želim početi razgovarati s ljudima koje ne poznajem	switch: hoću -> želim
+phrase	hrv_for_eng:S0091L03U02	I want to start to think more slowly	hoću početi razmišljati sporije	želim početi razmišljati sporije	switch: hoću -> želim
+phrase	hrv_for_eng:S0091L05U02	I want to be ready in time	hoću biti spreman na vrijeme	želim biti spreman na vrijeme	switch: hoću -> želim
+phrase	hrv_for_eng:S0092L02U05	I agree that I want to continue	slažem se da hoću nastaviti	slažem se da želim nastaviti	switch: hoću -> želim
+phrase	hrv_for_eng:S0092L02B03	I want to continue	hoću nastaviti	želim nastaviti	switch: hoću -> želim
+phrase	hrv_for_eng:S0092L02U02	I'm not sure if I want to continue	nisam siguran hoću li nastaviti	nisam siguran želim li nastaviti	switch: hoću li -> želim li
+phrase	hrv_for_eng:S0092L03U01	I want to continue doing a lot	hoću nastaviti raditi puno	želim nastaviti raditi puno	switch: hoću -> želim
+phrase	hrv_for_eng:S0092L05U02	I want to wait for a while	hoću čekati neko vrijeme	želim čekati neko vrijeme	switch: hoću -> želim
+phrase	hrv_for_eng:S0095L01U04	I want to know if you are ready	hoću znati jesi li spreman	želim znati jesi li spreman	switch: hoću -> želim
+phrase	hrv_for_eng:S0095L02B03	I want to go home	hoću ići kući	želim ići kući	switch: hoću -> želim
+phrase	hrv_for_eng:S0095L03U04	I want to go on the next bus now	hoću ići sljedećim autobusom sada	želim ići sljedećim autobusom sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0097L02B03	I'm ready as soon as you want	spreman sam čim hoćeš	spreman sam čim želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02C02	you want	hoćeš	želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02B01	as soon as you want	čim hoćeš	čim želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02U05	I can continue as soon as you want	mogu nastaviti čim hoćeš	mogu nastaviti čim želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02U01	I'm ready to go as soon as you want	spreman sam ići čim hoćeš	spreman sam ići čim želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02U03	I want to be ready as soon as you want	hoću biti spreman čim hoćeš	želim biti spreman čim želiš	switch: hoću -> želim; switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02U02	I can start as soon as you want	mogu početi čim hoćeš	mogu početi čim želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02U04	I can go home as soon as you want	mogu ići kući čim hoćeš	mogu ići kući čim želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0097L02B02	to go as soon as you want	ići čim hoćeš	ići čim želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0098L02B03	I want to consider	hoću razmisliti	želim razmisliti	switch: hoću -> želim
+phrase	hrv_for_eng:S0099L03U02	I want to ask myself what I've already learned	hoću pitati sebe što sam već naučio	želim pitati sebe što sam već naučio	switch: hoću -> želim
+phrase	hrv_for_eng:S0099L03U05	I should ask myself what I want	trebao bih pitati sebe što hoću	trebao bih pitati sebe što želim	switch: hoću -> želim
+phrase	hrv_for_eng:S0099L04B03	I want to know why it's not working	hoću znati zašto ne funkcionira	želim znati zašto ne funkcionira	switch: hoću -> želim
+phrase	hrv_for_eng:S0100L02B03	I don't want to worry about that	neću brinuti o tome	ne želim brinuti o tome	switch: neću -> ne želim
+phrase	hrv_for_eng:S0100L03B03	I want you to do something similar	hoću da napraviš nešto slično	želim da napraviš nešto slično	switch: hoću -> želim
+phrase	hrv_for_eng:S0102L02U02	I want to understand why it's like that	hoću razumjeti zašto je tako	želim razumjeti zašto je tako	switch: hoću -> želim
+phrase	hrv_for_eng:S0103L02U01	I want to hear what you said	hoću čuti što si rekao	želim čuti što si rekao	switch: hoću -> želim
+phrase	hrv_for_eng:S0103L02B03	I want to hear	hoću čuti	želim čuti	switch: hoću -> želim
+phrase	hrv_for_eng:S0104L02B03	I want to change	hoću promijeniti	želim promijeniti	switch: hoću -> želim
+phrase	hrv_for_eng:S0104L03U05	I want to understand what we're doing	hoću razumjeti što radimo	želim razumjeti što radimo	switch: hoću -> želim
+phrase	hrv_for_eng:S0105L01U02	that's why I want to continue learning	zato hoću nastaviti učiti	zato želim nastaviti učiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0106L01U03	I just want to learn more about this language	samo hoću saznati više o ovom jeziku	samo želim saznati više o ovom jeziku	switch: hoću -> želim
+phrase	hrv_for_eng:S0106L01U05	I just want to speak better	samo hoću govoriti bolje	samo želim govoriti bolje	switch: hoću -> želim
+phrase	hrv_for_eng:S0106L02U03	I just want to feel happy	samo hoću se osjećati sretno	samo želim se osjećati sretno	switch: hoću -> želim
+phrase	hrv_for_eng:S0106L02B02	I want to feel happy	hoću se osjećati sretno	želim se osjećati sretno	switch: hoću -> želim
+phrase	hrv_for_eng:S0106L03U05	I want to work hard and practise	hoću raditi marljivo i vježbati	želim raditi marljivo i vježbati	switch: hoću -> želim
+phrase	hrv_for_eng:S0106L03B03	I want to work hard	hoću raditi marljivo	želim raditi marljivo	switch: hoću -> želim
+phrase	hrv_for_eng:S0107L02U01	I want to see what you've learned	hoću vidjeti što si naučio	želim vidjeti što si naučio	switch: hoću -> želim
+phrase	hrv_for_eng:S0107L02B03	I want to see	hoću vidjeti	želim vidjeti	switch: hoću -> želim
+phrase	hrv_for_eng:S0107L03U04	I want to see what you're doing	hoću vidjeti što radiš	želim vidjeti što radiš	switch: hoću -> želim
+phrase	hrv_for_eng:S0107L03B03	I want to know what you're doing	hoću znati što radiš	želim znati što radiš	switch: hoću -> želim
+phrase	hrv_for_eng:S0108L02B03	I don't want to awaken	neću se probuditi	ne želim se probuditi	switch: neću -> ne želim
+phrase	hrv_for_eng:S0108L02U01	I'm not sure if I want to awaken now	nisam siguran hoću li se probuditi sada	nisam siguran želim li se probuditi sada	switch: hoću li -> želim li
+phrase	hrv_for_eng:S0108L03U02	I don't want to awaken mid-night	neću se probuditi usred noći	ne želim se probuditi usred noći	switch: neću -> ne želim
+phrase	hrv_for_eng:S0109L03U04	I want to learn a lot of new words now	hoću naučiti puno novih riječi sada	želim naučiti puno novih riječi sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0110L01U05	friends who speak Croatian want to meet today	prijatelji koji govore hrvatski hoće se naći danas	prijatelji koji govore hrvatski želi se naći danas	switch: hoće -> želi
+phrase	hrv_for_eng:S0110L01B03	we're friends and we want to meet tonight	prijatelji smo i hoćemo se naći večeras	prijatelji smo i želimo se naći večeras	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0110L01U04	we're friends and we want to meet at six	prijatelji smo i hoćemo se naći u šest sati	prijatelji smo i želimo se naći u šest sati	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0110L01U03	we're friends and I want you to speak with me more	prijatelji smo i hoću da govoriš sa mnom više	prijatelji smo i želim da govoriš sa mnom više	switch: hoću -> želim
+phrase	hrv_for_eng:S0110L02B03	we're friends and we want to talk after we finish	prijatelji smo i hoćemo razgovarati nakon što završimo	prijatelji smo i želimo razgovarati nakon što završimo	switch: hoćemo -> želimo
+phrase	hrv_for_eng:S0110L02U02	I want to meet with you after we finish	hoću se naći s tobom nakon što završimo	želim se naći s tobom nakon što završimo	switch: hoću -> želim
+phrase	hrv_for_eng:S0110L02U05	we're friends and I want to speak after we finish	prijatelji smo i hoću govoriti nakon što završimo	prijatelji smo i želim govoriti nakon što završimo	switch: hoću -> želim
+phrase	hrv_for_eng:S0110L03U05	I want to relax after we finish	hoću se opustiti nakon što završimo	želim se opustiti nakon što završimo	switch: hoću -> želim
+phrase	hrv_for_eng:S0110L03B03	I want to relax now	hoću se opustiti sada	želim se opustiti sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0110L03U02	I want to relax and talk with you	hoću se opustiti i razgovarati s tobom	želim se opustiti i razgovarati s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0111L01U01	I want to find out something new	hoću saznati nešto novo	želim saznati nešto novo	switch: hoću -> želim
+phrase	hrv_for_eng:S0112L02U02	that was interesting and I want to hear more	to je bilo zanimljivo i hoću čuti više	to je bilo zanimljivo i želim čuti više	switch: hoću -> želim
+phrase	hrv_for_eng:S0115L01U04	I want to practise for a conversation	hoću vježbati za razgovor	želim vježbati za razgovor	switch: hoću -> želim
+phrase	hrv_for_eng:S0152L03U01	I would have done it differently if I had known what you wanted	napravio bih to drugačije da sam znao što hoćeš	napravio bih to drugačije da sam znao što želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L01B02	where do you want	gdje se hoćeš	gdje se želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02B02	where do you want to meet up	gdje se hoćeš naći	gdje se želiš naći	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02B03	do you want to meet up with us	se hoćeš naći s nama	se želiš naći s nama	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02U02	can you tell me where you want to meet up?	možeš li mi reći gdje se hoćeš naći?	možeš li mi reći gdje se želiš naći?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02U04	it seems that you want to meet up earlier	Čini se da se hoćeš naći ranije	Čini se da se želiš naći ranije	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02U05	I hope you want to meet up	nadam se da se hoćeš naći	nadam se da se želiš naći	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02U03	I think I know where you want to meet up	mislim da znam gdje se hoćeš naći	mislim da znam gdje se želiš naći	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02C01	refl you want	se hoćeš	se želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02B01	do you want to meet up	se hoćeš naći	se želiš naći	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L02U01	I'm not sure where you want to meet up	nisam siguran gdje se hoćeš naći	nisam siguran gdje se želiš naći	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0154L03U01	where do you want to meet on Saturday night?	gdje se hoćeš naći u subotu navečer?	gdje se želiš naći u subotu navečer?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0155L03U02	where do you want to meet tomorrow morning?	gdje se hoćeš naći sutra ujutro?	gdje se želiš naći sutra ujutro?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0156L01U01	do you want to go to a restaurant tonight?	hoćeš li ići u restoran večeras?	želiš li ići u restoran večeras?	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0157L01U02	I won't be able to make it differently	neću moći to napraviti drugačije	neću moći to napraviti drugačije	keep-future: neću
+phrase	hrv_for_eng:S0157L01C01	I won't	neću	neću	keep-future: neću
+phrase	hrv_for_eng:S0157L01U01	I think I won't be able to finish	mislim da neću moći završiti	mislim da neću moći završiti	keep-future: neću
+phrase	hrv_for_eng:S0157L01U04	it seems that I won't be able to tell you	Čini se da ti neću moći reći	Čini se da ti neću moći reći	keep-future: neću
+phrase	hrv_for_eng:S0157L01U03	I'm sorry, I won't be able to wait	Žao mi je, neću moći čekati	Žao mi je, neću moći čekati	keep-future: neću
+phrase	hrv_for_eng:S0157L01B02	I won't be able to be	neću moći biti	neću moći biti	keep-future: neću
+phrase	hrv_for_eng:S0157L01B01	I won't be able	neću moći	neću moći	keep-future: neću
+phrase	hrv_for_eng:S0157L01B03	I won't be able to wait	neću moći čekati	neću moći čekati	keep-future: neću
+phrase	hrv_for_eng:S0157L02U05	I won't be able to be there on Saturday night	neću moći biti tamo u subotu navečer	neću moći biti tamo u subotu navečer	keep-future: neću
+phrase	hrv_for_eng:S0157L02B03	I won't be able to be there	neću moći biti tamo	neću moći biti tamo	keep-future: neću
+phrase	hrv_for_eng:S0157L03U01	I won't be able to be there next month	neću moći biti tamo sljedećeg mjeseca	neću moći biti tamo sljedećeg mjeseca	keep-future: neću
+phrase	hrv_for_eng:S0157L03U04	where do you want to meet next month?	gdje se hoćeš naći sljedećeg mjeseca?	gdje se želiš naći sljedećeg mjeseca?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0158L01U03	let's chat about what you want to learn	pričajmo o tome što hoćeš naučiti	pričajmo o tome što želiš naučiti	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0158L02U02	I want to chat about something else	hoću pričati o nečem drugom	želim pričati o nečem drugom	switch: hoću -> želim
+phrase	hrv_for_eng:S0160L02U03	I want to know how to say this word	hoću znati kako se kaže ova riječ	želim znati kako se kaže ova riječ	switch: hoću -> želim
+phrase	hrv_for_eng:S0161L03U02	where do you want to meet on Sunday morning?	gdje se hoćeš naći u nedjelju ujutro?	gdje se želiš naći u nedjelju ujutro?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0161L03U03	I won't be able to be there on Sunday morning	neću moći biti tamo u nedjelju ujutro	neću moći biti tamo u nedjelju ujutro	keep-future: neću
+phrase	hrv_for_eng:S0167L02U04	I won't be able to be there tomorrow afternoon	neću moći biti tamo sutra poslijepodne	neću moći biti tamo sutra poslijepodne	keep-future: neću
+phrase	hrv_for_eng:S0167L02U03	where do you want to meet tomorrow afternoon?	gdje se hoćeš naći sutra poslijepodne?	gdje se želiš naći sutra poslijepodne?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0168L01U05	then I won't be tired	onda neću biti umoran	onda neću biti umoran	keep-future: neću
+phrase	hrv_for_eng:S0168L01U03	then I want to try to converse	onda hoću pokušati razgovarati	onda želim pokušati razgovarati	switch: hoću -> želim
+phrase	hrv_for_eng:S0168L02U02	I want to come and talk with you	hoću doći i razgovarati s tobom	želim doći i razgovarati s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0168L02U03	I won't be able to come tonight	neću moći doći večeras	neću moći doći večeras	keep-future: neću
+phrase	hrv_for_eng:S0169L01B03	what you want me to do	što hoćeš da napravim	što želiš da napravim	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0169L01U01	what do you want me to do differently?	Što hoćeš da napravim drugačije?	Što želiš da napravim drugačije?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0169L01U04	I'm not sure what you want me to do	nisam siguran što hoćeš da napravim	nisam siguran što želiš da napravim	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0169L01B02	you want me to do	hoćeš da napravim	želiš da napravim	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0169L01U02	I think I know what you want me to do	mislim da znam što hoćeš da napravim	mislim da znam što želiš da napravim	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0169L01U03	can you tell me what you want me to do?	možeš li mi reći što hoćeš da napravim?	možeš li mi reći što želiš da napravim?	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0170L01U03	you need to tell me what you want	trebaš da mi kažeš što hoćeš	trebaš da mi kažeš što želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0170L01B04	you want to tell me	hoćeš da mi kažeš	želiš da mi kažeš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0170L01U02	I'm not sure if you want to tell me	nisam siguran hoćeš li da mi kažeš	nisam siguran želiš li da mi kažeš	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0171L01U01	do you want me to help you as you need?	hoćeš li da ti pomognem što trebaš?	želiš li da ti pomognem što trebaš?	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0171L01U05	you need to tell me if you want me to help you	trebaš da mi kažeš hoćeš li da ti pomognem	trebaš da mi kažeš želiš li da ti pomognem	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0171L01U03	I think I want to help you	mislim da hoću da ti pomognem	mislim da želim da ti pomognem	switch: hoću -> želim
+phrase	hrv_for_eng:S0171L01U02	I'm not sure if you want me to help you	nisam siguran hoćeš li da ti pomognem	nisam siguran želiš li da ti pomognem	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0171L01B02	do you want me to help you	hoćeš li da ti pomognem	želiš li da ti pomognem	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0171L02U02	I want to look for that now	hoću tražiti to sada	želim tražiti to sada	switch: hoću -> želim
+phrase	hrv_for_eng:S0171L02U01	do you want me to help you look for it?	hoćeš li da ti pomognem tražiti to?	želiš li da ti pomognem tražiti to?	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0171L02B03	I want to look for	hoću tražiti	želim tražiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0174L02U04	I want you to tell me if you understand what I'm saying	hoću da mi kažeš razumiješ li što govorim	želim da mi kažeš razumiješ li što govorim	switch: hoću -> želim
+phrase	hrv_for_eng:S0176L01U01	I'll ask what you want to do	pitat ću što hoćeš raditi	pitat ću što želiš raditi	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0176L02U01	I'll ask him what he wants	pitat ću ga što hoće	pitat ću ga što želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0176L02U04	I want to ask him about that	hoću ga pitat o tome	želim ga pitat o tome	switch: hoću -> želim
+phrase	hrv_for_eng:S0176L02U05	I'll ask him if he wants to help	pitat ću ga hoće li pomoći	pitat ću ga želi li pomoći	switch: hoće li -> želi li
+phrase	hrv_for_eng:S0176L03U02	I'm not sure if he'll be able to do that	nisam siguran hoće li moći to	nisam siguran hoće li moći to	keep-future: hoće li
+phrase	hrv_for_eng:S0176L03B01	will he be able	hoće li moći	hoće li moći	keep-future: hoće li
+phrase	hrv_for_eng:S0176L03U04	I'd like you to tell me if he'll be able to come	htio bih da mi kažeš hoće li moći doći	htio bih da mi kažeš hoće li moći doći	keep-future: hoće li
+phrase	hrv_for_eng:S0176L03C01	will he	hoće li	hoće li	keep-future: hoće li
+phrase	hrv_for_eng:S0176L03B04	I'll ask will he be able	pitat ću hoće li moći	pitat ću hoće li moći	keep-future: hoće li
+phrase	hrv_for_eng:S0176L03U01	I'll ask him if he'll be able to help	pitat ću ga hoće li moći pomoći	pitat ću ga hoće li moći pomoći	keep-future: hoće li
+phrase	hrv_for_eng:S0176L03B03	will he be able to help	hoće li moći pomoći	hoće li moći pomoći	keep-future: hoće li
+phrase	hrv_for_eng:S0176L03U05	I'll ask if he'll be able to come to help	pitat ću hoće li moći doći pomoći	pitat ću hoće li moći doći pomoći	keep-future: hoće li
+phrase	hrv_for_eng:S0176L04U03	I'll ask what you want to do next year	pitat ću što hoćeš raditi sljedeće godine	pitat ću što želiš raditi sljedeće godine	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0176L04U04	I'll ask him what he wants to do next year	pitat ću ga što hoće raditi sljedeće godine	pitat ću ga što želi raditi sljedeće godine	switch: hoće -> želi
+phrase	hrv_for_eng:S0176L04U01	I'll ask him if he'll be able to help next year	pitat ću ga hoće li moći pomoći sljedeće godine	pitat ću ga hoće li moći pomoći sljedeće godine	keep-future: hoće li
+phrase	hrv_for_eng:S0177L01U02	I'll ask her what she wants to do	pitat ću je što hoće raditi	pitat ću je što želi raditi	switch: hoće -> želi
+phrase	hrv_for_eng:S0177L01U01	I'll ask her where she wants to go	pitat ću je gdje hoće ići	pitat ću je gdje želi ići	switch: hoće -> želi
+phrase	hrv_for_eng:S0177L01U05	I'll ask her if she'll be able to help next year	pitat ću je hoće li moći pomoći sljedeće godine	pitat ću je hoće li moći pomoći sljedeće godine	keep-future: hoće li
+phrase	hrv_for_eng:S0181L02U04	I want to take mum with you	hoću odvesti mamu s tobom	želim odvesti mamu s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0181L03B04	I want to go to the doctor with you	hoću ići kod liječnika s tobom	želim ići kod liječnika s tobom	switch: hoću -> želim
+phrase	hrv_for_eng:S0182L01U04	I don't know if he saw what you want	ne znam je li vidio što hoćeš	ne znam je li vidio što želiš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0182L02U03	I want to find the keys before you leave	hoću pronaći ključeve prije nego odeš	želim pronaći ključeve prije nego odeš	switch: hoću -> želim
+phrase	hrv_for_eng:S0182L03U03	I want to go somewhere with you today	hoću ići negdje s tobom danas	želim ići negdje s tobom danas	switch: hoću -> želim
+phrase	hrv_for_eng:S0182L03U05	I think she wants to go somewhere this evening	mislim da hoće ići negdje večeras	mislim da želi ići negdje večeras	switch: hoće -> želi
+phrase	hrv_for_eng:S0184L02U01	I want to work in the office tomorrow	hoću raditi u uredu sutra	želim raditi u uredu sutra	switch: hoću -> želim
+phrase	hrv_for_eng:S0185L02U04	I want to read my book at work	hoću čitati moju knjigu na poslu	želim čitati moju knjigu na poslu	switch: hoću -> želim
+phrase	hrv_for_eng:S0186L02U04	I want to read about something different	hoću čitati o nečemu drugačijem	želim čitati o nečemu drugačijem	switch: hoću -> želim
+phrase	hrv_for_eng:S0186L03U01	do you want to talk about something different next week?	hoćeš li pričati o nečemu drugačijem sljedeći tjedan?	želiš li pričati o nečemu drugačijem sljedeći tjedan?	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0186L03U05	I'll ask him if he'll be able to help next week	pitat ću ga hoće li moći pomoći sljedeći tjedan	pitat ću ga hoće li moći pomoći sljedeći tjedan	keep-future: hoće li
+phrase	hrv_for_eng:S0187L01U05	so far I want to do that	zasad hoću raditi to	zasad želim raditi to	switch: hoću -> želim
+phrase	hrv_for_eng:S0188L01U02	I don't want to change now	neću se mijenjati sada	ne želim se mijenjati sada	switch: neću -> ne želim
+phrase	hrv_for_eng:S0188L01B03	I don't want to change	neću se mijenjati	ne želim se mijenjati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0198L02U04	my daughter wants to see that	moja kći hoće vidjeti to	moja kći želi vidjeti to	switch: hoće -> želi
+phrase	hrv_for_eng:S0200L01U01	they say that they want that	kažu da hoće to	kažu da žele to	switch: hoće -> žele
+phrase	hrv_for_eng:S0200L01B02	they say that they want	kažu da hoće	kažu da žele	switch: hoće -> žele
+phrase	hrv_for_eng:S0200L02U02	I want to make sure that is there	hoću osigurati da je to tamo	želim osigurati da je to tamo	switch: hoću -> želim
+phrase	hrv_for_eng:S0200L02U04	they say they want to make sure it is all fine	kažu da hoće osigurati da je sve u redu	kažu da žele osigurati da je sve u redu	switch: hoće -> žele
+phrase	hrv_for_eng:S0200L02B01	want to make sure	hoće osigurati	želi osigurati	switch: hoće -> želi
+phrase	hrv_for_eng:S0200L02U01	they say they want to make sure	kažu da hoće osigurati	kažu da žele osigurati	switch: hoće -> žele
+phrase	hrv_for_eng:S0200L03U01	they say they want to make sure that we finish everything	kažu da hoće osigurati da završimo sve	kažu da žele osigurati da završimo sve	switch: hoće -> žele
+phrase	hrv_for_eng:S0200L03B04	want that we finish everything	hoće da završimo sve	želi da završimo sve	switch: hoće -> želi
+phrase	hrv_for_eng:S0200L03U02	I want to make sure that we finish everything	hoću osigurati da završimo sve	želim osigurati da završimo sve	switch: hoću -> želim
+phrase	hrv_for_eng:S0200L04U01	they say they want to make sure that we finish everything in time	kažu da hoće osigurati da završimo sve na vrijeme	kažu da žele osigurati da završimo sve na vrijeme	switch: hoće -> žele
+phrase	hrv_for_eng:S0200L04U02	I want to make sure we finish everything in time	hoću osigurati da završimo sve na vrijeme	želim osigurati da završimo sve na vrijeme	switch: hoću -> želim
+phrase	hrv_for_eng:S0200L04U05	I want us to finish everything in time	hoću da završimo sve na vrijeme	želim da završimo sve na vrijeme	switch: hoću -> želim
+phrase	hrv_for_eng:S0201L03U05	they say they want to know what is going to happen	kažu da hoće znati što će se dogoditi	kažu da žele znati što će se dogoditi	switch: hoće -> žele
+phrase	hrv_for_eng:S0201L03U02	I want to know what is going to happen	hoću znati što će se dogoditi	želim znati što će se dogoditi	switch: hoću -> želim
+phrase	hrv_for_eng:S0202L01B02	nobody wants	nitko neće	nitko ne želi	switch: neće -> ne želi
+phrase	hrv_for_eng:S0202L02B03	wasn't sure what he wanted	nije bio siguran što hoće	nije bio siguran što želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0202L02U04	he wasn't sure if he wanted that	nije bio siguran hoće li to	nije bio siguran želi li to	switch: hoće li -> želi li
+phrase	hrv_for_eng:S0203L04U05	they say they want you to help me	kažu da hoće da mi pomogneš	kažu da žele da mi pomogneš	switch: hoće -> žele
+phrase	hrv_for_eng:S0203L04B03	want to help me	hoćeš da mi pomogneš	želiš da mi pomogneš	switch: hoćeš -> želiš
+phrase	hrv_for_eng:S0203L04U04	do you want to help me answer the question?	hoćeš li da mi pomogneš odgovoriti na pitanje?	želiš li da mi pomogneš odgovoriti na pitanje?	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0204L02U03	they say they want someone to help you	kažu da hoće da ti pomogne	kažu da žele da ti pomogne	switch: hoće -> žele
+phrase	hrv_for_eng:S0206L03B04	want to practise speaking	hoću vježbati govorenje	želim vježbati govorenje	switch: hoću -> želim
+phrase	hrv_for_eng:S0209L01U04	I forgot what they want	zaboravio sam što hoće	zaboravio sam što žele	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L01U01	they want to know what is going to happen	hoće znati što će se dogoditi	žele znati što će se dogoditi	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L01U05	nobody was sure what they want	nitko nije bio siguran što hoće	nitko nije bio siguran što žele	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L01B02	they want to know	hoće znati	žele znati	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L01B03	they want to make sure	hoće osigurati	žele osigurati	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L01B01	they want that	hoće to	žele to	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L01U02	they want to make sure of everything	hoće osigurati sve	žele osigurati sve	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L02B01	want to spend	hoće provesti	želi provesti	switch: hoće -> želi
+phrase	hrv_for_eng:S0209L02U01	they want to spend that there	hoće provesti to tamo	žele provesti to tamo	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L03B04	want more time	hoće više vremena	želi više vremena	switch: hoće -> želi
+phrase	hrv_for_eng:S0209L03U01	they want to spend more time there	hoće provesti više vremena tamo	žele provesti više vremena tamo	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L04U05	they say they want to spend more time meeting	kažu da hoće provesti više vremena sastajući se	kažu da žele provesti više vremena sastajući se	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L04U01	they want to spend more time meeting	hoće provesti više vremena sastajući se	žele provesti više vremena sastajući se	switch: hoće -> žele
+phrase	hrv_for_eng:S0209L05U01	they want to spend more time meeting as a group	hoće provesti više vremena sastajući se kao grupa	žele provesti više vremena sastajući se kao grupa	switch: hoće -> žele
+phrase	hrv_for_eng:S0210L03U04	they want to spend more time discussing	hoće provesti više vremena razgovarati	žele provesti više vremena razgovarati	switch: hoće -> žele
+phrase	hrv_for_eng:S0210L03B02	want to discuss	hoće razgovarati	želi razgovarati	switch: hoće -> želi
+phrase	hrv_for_eng:S0211L01U05	they said they want to spend more time meeting	rekli su da hoće provesti više vremena sastajući se	rekli su da žele provesti više vremena sastajući se	switch: hoće -> žele
+phrase	hrv_for_eng:S0211L02U04	they told us that they want to make sure	rekli su nam da hoće osigurati	rekli su nam da žele osigurati	switch: hoće -> žele
+phrase	hrv_for_eng:S0212L01U02	we don't want to ask them for that	nećemo ih zamoliti za to	ne želimo ih zamoliti za to	switch: nećemo -> ne želimo
+phrase	hrv_for_eng:S0212L01U05	I don't want to ask them for anything	neću ih zamoliti za ništa	ne želim ih zamoliti za ništa	switch: neću -> ne želim
+phrase	hrv_for_eng:S0212L02U05	will you look for help	hoćeš li tražiti pomoć	hoćeš li tražiti pomoć	keep-future: hoćeš li
+phrase	hrv_for_eng:S0212L02U03	I want to ask for help	hoću zamoliti za pomoć	želim zamoliti za pomoć	switch: hoću -> želim
+phrase	hrv_for_eng:S0213L01U01	we don't know what they want to make	ne znamo što hoće napraviti	ne znamo što žele napraviti	switch: hoće -> žele
+phrase	hrv_for_eng:S0213L03U02	they told us what they want to achieve	rekli su nam što hoće postići	rekli su nam što žele postići	switch: hoće -> žele
+phrase	hrv_for_eng:S0213L03B02	want to achieve	hoće postići	želi postići	switch: hoće -> želi
+phrase	hrv_for_eng:S0214L02U04	they want to discuss the problem at the weekend	hoće razgovarati o problemu vikendom	žele razgovarati o problemu vikendom	switch: hoće -> žele
+phrase	hrv_for_eng:S0217L01U02	I don't want to know what you drank	neću znati što si popio	ne želim znati što si popio	switch: neću -> ne želim
+phrase	hrv_for_eng:S0222L01U01	he's trying to tell me what he wants	pokušava mi reći što hoće	pokušava mi reći što želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0223L01U01	he's going to ask you what he wants	pitat će te što hoće	pitat će te što želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0226L01B03	that man wants	taj čovjek hoće	taj čovjek želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0226L01U02	I think that man wants to talk with you	mislim da taj čovjek hoće razgovarati s tobom	mislim da taj čovjek želi razgovarati s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0228L03U05	that man told me he wants to practise speaking	taj čovjek mi je rekao da hoće vježbati govorenje	taj čovjek mi je rekao da želi vježbati govorenje	switch: hoće -> želi
+phrase	hrv_for_eng:S0228L03U02	they told me he wants to practise speaking	rekli su mi da hoće vježbati govorenje	rekli su mi da želi vježbati govorenje	switch: hoće -> želi
+phrase	hrv_for_eng:S0229L01B03	that woman wants	ta žena hoće	ta žena želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0229L01U01	I think that woman wants to talk with you	mislim da ta žena hoće razgovarati s tobom	mislim da ta žena želi razgovarati s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0230L02U01	I know a young man who wants to help me	poznajem mladog muškarca koji mi hoće pomoći	poznajem mladog muškarca koji mi želi pomoći	switch: hoće -> želi
+phrase	hrv_for_eng:S0230L02B01	a young man who wants	mladog muškarca koji hoće	mladog muškarca koji želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0230L02B03	who wants to help	koji hoće pomoći	koji želi pomoći	switch: hoće -> želi
+phrase	hrv_for_eng:S0230L03B01	who wants to work	koji hoće raditi	koji želi raditi	switch: hoće -> želi
+phrase	hrv_for_eng:S0230L03U01	I know a young man who wants to work with you	poznajem mladog muškarca koji hoće raditi s tobom	poznajem mladog muškarca koji želi raditi s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0230L03U04	I think that man wants to work with you tomorrow	mislim da taj čovjek hoće raditi s tobom sutra	mislim da taj čovjek želi raditi s tobom sutra	switch: hoće -> želi
+phrase	hrv_for_eng:S0231L01U05	they told me I know an old man who wants to help	rekli su mi da poznajem starog muškarca koji hoće pomoći	rekli su mi da poznajem starog muškarca koji želi pomoći	switch: hoće -> želi
+phrase	hrv_for_eng:S0231L01U04	I know an old man who wants to work with you	poznajem starog muškarca koji hoće raditi s tobom	poznajem starog muškarca koji želi raditi s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0232L01U04	I know an old woman and she wants to work with you	poznajem staru ženu i hoće raditi s tobom	poznajem staru ženu i želi raditi s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0232L02U04	that woman who can remember wants to tell me something new	ta žena koja se može sjetiti mi hoće reći nešto novo	ta žena koja se može sjetiti mi želi reći nešto novo	switch: hoće -> želi
+phrase	hrv_for_eng:S0233L01U04	I know a young woman who wants to work with you	poznajem mladu ženu koja hoće raditi s tobom	poznajem mladu ženu koja želi raditi s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0233L02U01	I saw your sister and she wants to help	vidio sam tvoju sestru i hoće pomoći	vidio sam tvoju sestru i želi pomoći	switch: hoće -> želi
+phrase	hrv_for_eng:S0233L03U03	I think she knows a young man who wants to help	mislim da poznaje mladog muškarca koji hoće pomoći	mislim da poznaje mladog muškarca koji želi pomoći	switch: hoće -> želi
+phrase	hrv_for_eng:S0234L01U01	I met a young woman who wants to work with you	sreo sam mladu ženu koja hoće raditi s tobom	sreo sam mladu ženu koja želi raditi s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0234L02U01	I met someone who wants to help me	sreo sam nekoga koji mi hoće pomoći	sreo sam nekoga koji mi želi pomoći	switch: hoće -> želi
+phrase	hrv_for_eng:S0234L04U05	I met someone who wants to talk with your brother	sreo sam nekoga koji hoće razgovarati s tvojim bratom	sreo sam nekoga koji želi razgovarati s tvojim bratom	switch: hoće -> želi
+phrase	hrv_for_eng:S0234L04U03	I know a young woman who wants to work with your brother	poznajem mladu ženu koja hoće raditi s tvojim bratom	poznajem mladu ženu koja želi raditi s tvojim bratom	switch: hoće -> želi
+phrase	hrv_for_eng:S0235L02U03	I met someone who said he wants to work with your brother	sreo sam nekoga tko je rekao da hoće raditi s tvojim bratom	sreo sam nekoga tko je rekao da želi raditi s tvojim bratom	switch: hoće -> želi
+phrase	hrv_for_eng:S0235L02U02	I saw someone who said he wants to ask for help	vidio sam nekoga tko je rekao da hoće zamoliti za pomoć	vidio sam nekoga tko je rekao da želi zamoliti za pomoć	switch: hoće -> želi
+phrase	hrv_for_eng:S0235L02U01	I met someone who said that he wanted to tell you something	sreo sam nekoga tko je rekao da ti hoće nešto reći	sreo sam nekoga tko je rekao da ti želi nešto reći	switch: hoće -> želi
+phrase	hrv_for_eng:S0236L02U02	that woman wants to try to help with the arrangements	ta žena hoće pokušati pomoći s organizacijom	ta žena želi pokušati pomoći s organizacijom	switch: hoće -> želi
+phrase	hrv_for_eng:S0237L01U03	he wanted us to know what he wants	htio je da znamo što hoće	htio je da znamo što želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0237L03U04	that man wants to work with your brother before the weekend	taj čovjek hoće raditi s tvojim bratom prije vikenda	taj čovjek želi raditi s tvojim bratom prije vikenda	switch: hoće -> želi
+phrase	hrv_for_eng:S0237L03U03	he said he wants to make that before the weekend	rekao je da hoće napraviti to prije vikenda	rekao je da želi napraviti to prije vikenda	switch: hoće -> želi
+phrase	hrv_for_eng:S0239L01U01	my mother wants to talk with you	moja mama hoće razgovarati s tobom	moja mama želi razgovarati s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0239L01U04	my mother wants to learn something new	moja mama hoće učiti nešto novo	moja mama želi učiti nešto novo	switch: hoće -> želi
+phrase	hrv_for_eng:S0239L01B02	mum wants	mama hoće	mama želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0240L01U01	my father wants to talk with you	moj tata hoće razgovarati s tobom	moj tata želi razgovarati s tobom	switch: hoće -> želi
+phrase	hrv_for_eng:S0240L01U05	my father wants to work with your brother	moj tata hoće raditi s tvojim bratom	moj tata želi raditi s tvojim bratom	switch: hoće -> želi
+phrase	hrv_for_eng:S0240L01B02	dad wants	tata hoće	tata želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0241L01U01	I told him I want to talk	rekao sam mu da hoću razgovarati	rekao sam mu da želim razgovarati	switch: hoću -> želim
+phrase	hrv_for_eng:S0242L01U02	I told her I want to talk	rekao sam joj da hoću razgovarati	rekao sam joj da želim razgovarati	switch: hoću -> želim
+phrase	hrv_for_eng:S0242L01B01	I want to give her	hoću joj dati	želim joj dati	switch: hoću -> želim
+phrase	hrv_for_eng:S0242L01U01	I want to give her more time	hoću joj dati više vremena	želim joj dati više vremena	switch: hoću -> želim
+phrase	hrv_for_eng:S0243L02U01	I told him I want something to eat	rekao sam mu da hoću nešto za jesti	rekao sam mu da želim nešto za jesti	switch: hoću -> želim
+phrase	hrv_for_eng:S0243L02U05	I told her I want something to eat	rekao sam joj da hoću nešto za jesti	rekao sam joj da želim nešto za jesti	switch: hoću -> želim
+phrase	hrv_for_eng:S0243L03U02	I told him I want the same	rekao sam mu da hoću isto	rekao sam mu da želim isto	switch: hoću -> želim
+phrase	hrv_for_eng:S0244L02U05	I've learnt something new and I want to tell you	naučio sam nešto novo i hoću ti reći	naučio sam nešto novo i želim ti reći	switch: hoću -> želim
+phrase	hrv_for_eng:S0246L01U03	I wanted us to know what he wants	htio sam da znamo što hoće	htio sam da znamo što želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0248L04U01	I thought the film was complete rubbish and I want my money back	mislio sam da je film bio potpuna glupost i hoću novac natrag	mislio sam da je film bio potpuna glupost i želim novac natrag	switch: hoću -> želim
+phrase	hrv_for_eng:S0248L04U05	I want my money back but he doesn't want to give it	hoću novac natrag ali neće dati	želim novac natrag ali ne želi dati	switch: hoću -> želim; switch: neće -> ne želi
+phrase	hrv_for_eng:S0248L04B02	I want my money back	hoću novac natrag	želim novac natrag	switch: hoću -> želim
+phrase	hrv_for_eng:S0248L04U02	I told him I want my money back	rekao sam mu da hoću novac natrag	rekao sam mu da želim novac natrag	switch: hoću -> želim
+phrase	hrv_for_eng:S0249L01B01	I want you to help me	hoću da mi pomogneš	želim da mi pomogneš	switch: hoću -> želim
+phrase	hrv_for_eng:S0249L01U01	I want you to help me with the arrangements	hoću da mi pomogneš s organizacijom	želim da mi pomogneš s organizacijom	switch: hoću -> želim
+phrase	hrv_for_eng:S0249L02U04	I thought he wanted to tell me before you tell her	mislio sam da mi hoće reći prije nego joj kažeš	mislio sam da mi želi reći prije nego joj kažeš	switch: hoće -> želi
+phrase	hrv_for_eng:S0249L02U05	I want to give him the answer before you tell her	hoću mu dati odgovor prije nego joj kažeš	želim mu dati odgovor prije nego joj kažeš	switch: hoću -> želim
+phrase	hrv_for_eng:S0249L02U01	I want you to help me before you tell him	hoću da mi pomogneš prije nego mu kažeš	želim da mi pomogneš prije nego mu kažeš	switch: hoću -> želim
+phrase	hrv_for_eng:S0249L03U04	I want to give you the answer before you go	hoću ti dati odgovor prije nego odeš	želim ti dati odgovor prije nego odeš	switch: hoću -> želim
+phrase	hrv_for_eng:S0249L03U01	I want you to help me before you go	hoću da mi pomogneš prije nego odeš	želim da mi pomogneš prije nego odeš	switch: hoću -> želim
+phrase	hrv_for_eng:S0250L03U02	I want you to help me before I answer	hoću da mi pomogneš prije nego odgovorim	želim da mi pomogneš prije nego odgovorim	switch: hoću -> želim
+phrase	hrv_for_eng:S0251L02U05	I thought he didn't want to find out until after you tell him	mislio sam da neće saznati do nakon što mu kažeš	mislio sam da ne želi saznati do nakon što mu kažeš	switch: neće -> ne želi
+phrase	hrv_for_eng:S0251L02U02	I don't want to give the answer until after you help me	neću dati odgovor do nakon što mi pomogneš	ne želim dati odgovor do nakon što mi pomogneš	switch: neću -> ne želim
+phrase	hrv_for_eng:S0251L02U01	I don't want to find out until after you tell me	neću saznati do nakon što mi kažeš	ne želim saznati do nakon što mi kažeš	switch: neću -> ne želim
+phrase	hrv_for_eng:S0251L02U04	I don't want to tell him until after I answer	neću mu reći do nakon što odgovorim	ne želim mu reći do nakon što odgovorim	switch: neću -> ne želim
+phrase	hrv_for_eng:S0251L03U05	I want to give him the answer before we finish	hoću mu dati odgovor prije nego završimo	želim mu dati odgovor prije nego završimo	switch: hoću -> želim
+phrase	hrv_for_eng:S0251L03U01	I don't want to find out until after we finish	neću saznati do nakon što završimo	ne želim saznati do nakon što završimo	switch: neću -> ne želim
+phrase	hrv_for_eng:S0269L03U05	I think he doesn't want to wait	mislim da neće čekati	mislim da ne želi čekati	switch: neće -> ne želi
+phrase	hrv_for_eng:S0269L03U04	do you want to wait until after we finish?	hoćeš li čekati do nakon što završimo?	želiš li čekati do nakon što završimo?	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0269L03U01	why don't you want to wait for your father?	zašto nećeš čekati na svog oca?	zašto ne želiš čekati na svog oca?	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0269L03U02	I don't want to wait for that	neću čekati na to	ne želim čekati na to	switch: neću -> ne želim
+phrase	hrv_for_eng:S0269L03B02	I don't want to wait	neću čekati	ne želim čekati	switch: neću -> ne želim
+phrase	hrv_for_eng:S0270L01U01	I don't want to wait because I'm worried	neću čekati jer se bojim	ne želim čekati jer se bojim	switch: neću -> ne želim
+phrase	hrv_for_eng:S0270L01U03	because I'm worried, I want to start	jer se bojim, hoću početi	jer se bojim, želim početi	switch: hoću -> želim
+phrase	hrv_for_eng:S0270L02U03	he told me he doesn't want to be late	rekao mi je da neće zakasniti	rekao mi je da ne želi zakasniti	switch: neće -> ne želi
+phrase	hrv_for_eng:S0270L02U02	I told him I don't want to be late	rekao sam mu da neću zakasniti	rekao sam mu da ne želim zakasniti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0270L02B02	I don't want to be late	neću zakasniti	ne želim zakasniti	switch: neću -> ne želim
+phrase	hrv_for_eng:S0271L01U02	why don't you want to come?	zašto nećeš doći?	zašto ne želiš doći?	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0271L01U05	I'm worried he doesn't want to come	bojim se da neće doći	bojim se da ne želi doći	switch: neće -> ne želi
+phrase	hrv_for_eng:S0271L01B02	I want to come	hoću doći	želim doći	switch: hoću -> želim
+phrase	hrv_for_eng:S0271L01U01	I don't know if he wants to come	ne znam da li hoće doći	ne znam da li želi doći	switch: hoće -> želi
+phrase	hrv_for_eng:S0271L01U03	he told me he wants to come	rekao mi je da hoće doći	rekao mi je da želi doći	switch: hoće -> želi
+phrase	hrv_for_eng:S0274L02U03	he told me he's coming in two days	rekao mi je da hoće doći za dva dana	rekao mi je da će doći za dva dana	override: cue 'he's coming' is future; long hoće + infinitive reads 'wants to come', so the clitic će
+phrase	hrv_for_eng:S0275L01U01	I don't want to wait any longer	neću čekati dulje	ne želim čekati dulje	switch: neću -> ne želim
+phrase	hrv_for_eng:S0276L02U03	why don't you want to come here?	zašto nećeš doći ovdje?	zašto ne želiš doći ovdje?	switch: nećeš -> ne želiš
+phrase	hrv_for_eng:S0280L02U05	I think he only wants to help	mislim da hoće samo pomoći	mislim da želi samo pomoći	switch: hoće -> želi
+phrase	hrv_for_eng:S0281L02U04	I want to finish my coffee	hoću da završim kavu	želim da završim kavu	switch: hoću -> želim
+phrase	hrv_for_eng:S0281L03U04	I want to finish everything before you start	hoću da napravim sve prije nego počneš	želim da napravim sve prije nego počneš	switch: hoću -> želim
+phrase	hrv_for_eng:S0283L01U05	which of your friends wants to come with us?	koji od tvojih prijatelja hoće doći s nama?	koji od tvojih prijatelja želi doći s nama?	switch: hoće -> želi
+phrase	hrv_for_eng:S0284L02U05	I want to meet my sister's friend	hoću upoznati prijatelja moje sestre	želim upoznati prijatelja moje sestre	switch: hoću -> želim
+phrase	hrv_for_eng:S0285L01U02	I think she wants to come	mislim da ona hoće doći	mislim da ona želi doći	switch: hoće -> želi
+phrase	hrv_for_eng:S0287L01U05	I don't want to watch that	neću gledati to	ne želim gledati to	switch: neću -> ne želim
+phrase	hrv_for_eng:S0287L01U02	do you want to watch something with me?	hoćeš li gledati nešto sa mnom?	želiš li gledati nešto sa mnom?	switch: hoćeš li -> želiš li
+phrase	hrv_for_eng:S0287L01B02	I want to watch	hoću gledati	želim gledati	switch: hoću -> želim
+phrase	hrv_for_eng:S0287L01U01	I want to watch something	hoću gledati nešto	želim gledati nešto	switch: hoću -> želim
+phrase	hrv_for_eng:S0287L03U05	how many people do you know who want to come?	koliko ljudi poznaješ koji hoće doći?	koliko ljudi poznaješ koji želi doći?	switch: hoće -> želi
+phrase	hrv_for_eng:S0287L03B03	how many people do you know who want	koliko ljudi poznaješ koji hoće	koliko ljudi poznaješ koji želi	switch: hoće -> želi
+phrase	hrv_for_eng:S0288L01U05	most people want to stay here	većina ljudi hoće ostati ovdje	većina ljudi želi ostati ovdje	switch: hoće -> želi
+phrase	hrv_for_eng:S0288L01U01	most people want to come	većina ljudi hoće doći	većina ljudi želi doći	switch: hoće -> želi
+phrase	hrv_for_eng:S0288L02U04	most people I know want to learn Croatian	većina ljudi koje poznajem hoće naučiti hrvatski	većina ljudi koje poznajem želi naučiti hrvatski	switch: hoće -> želi
+phrase	hrv_for_eng:S0288L02U05	most friends I know want to come	većina prijatelja koje poznajem hoće doći	većina prijatelja koje poznajem želi doći	switch: hoće -> želi
+phrase	hrv_for_eng:S0289L01B02	I wonder if	pitam se hoće li	pitam se hoće li	keep: 'I wonder if' — hoće li here is 'whether ... will', no want in the cue
+phrase	hrv_for_eng:S0289L01U02	I wonder if she wants to come	pitam se hoće li ona doći	pitam se želi li ona doći	switch: hoće li -> želi li
+phrase	hrv_for_eng:S0289L01U01	I wonder if she's going to be there this afternoon	pitam se hoće li ona biti tamo danas poslijepodne	pitam se hoće li ona biti tamo danas poslijepodne	keep-future: hoće li
+phrase	hrv_for_eng:S0290L01U04	nobody knows if she wants to come	nitko ne zna hoće li ona doći	nitko ne zna želi li ona doći	switch: hoće li -> želi li
+phrase	hrv_for_eng:S0291L01U02	I hope she wants to come this afternoon	nadam se da ona hoće doći danas poslijepodne	nadam se da ona želi doći danas poslijepodne	switch: hoće -> želi
+phrase	hrv_for_eng:S0292L01U02	he said he wants to go to the party	rekao je da hoće ići na zabavu	rekao je da želi ići na zabavu	switch: hoće -> želi
+phrase	hrv_for_eng:S0292L01U05	he wants to go to the party this afternoon	on hoće ići na zabavu danas poslijepodne	on želi ići na zabavu danas poslijepodne	switch: hoće -> želi
+phrase	hrv_for_eng:S0292L01U03	most people want to go to the party	većina ljudi hoće ići na zabavu	većina ljudi želi ići na zabavu	switch: hoće -> želi
+phrase	hrv_for_eng:S0295L01U05	one friend told me he wants to come	jedan prijatelj mi je rekao da hoće doći	jedan prijatelj mi je rekao da želi doći	switch: hoće -> želi
+phrase	hrv_for_eng:S0295L01U01	I didn't say that I wanted to finish in a day	nisam rekao da hoću završiti za jedan dan	nisam rekao da želim završiti za jedan dan	switch: hoću -> želim
+phrase	hrv_for_eng:S0299L01U02	he told me he wants half	rekao mi je da hoće polovicu	rekao mi je da želi polovicu	switch: hoće -> želi
+phrase	hrv_for_eng:S0299L01U01	I want only half	hoću samo polovicu	želim samo polovicu	switch: hoću -> želim
+phrase	hrv_for_eng:S0299L01U05	I wonder if she wants half	pitam se hoće li ona polovicu	pitam se želi li ona polovicu	switch: hoće li -> želi li
+phrase	hrv_for_eng:S0299L01B03	wants half	hoće polovicu	želi polovicu	switch: hoće -> želi
+phrase	hrv_for_eng:S0299L01U04	I think he wants half	mislim da hoće polovicu	mislim da želi polovicu	switch: hoće -> želi
+phrase	hrv_for_eng:S0299L02U02	I don't want to pay for that	neću platiti za to	ne želim platiti za to	switch: neću -> ne želim
+phrase	hrv_for_eng:S0299L02U01	he wants to pay half	hoće platiti polovicu	želi platiti polovicu	switch: hoće -> želi
+phrase	hrv_for_eng:S0299L02U05	most people want to pay only half	većina ljudi hoće platiti samo polovicu	većina ljudi želi platiti samo polovicu	switch: hoće -> želi
+phrase	hrv_for_eng:S0299L02B02	I want to pay	hoću platiti	želim platiti	switch: hoću -> želim
+phrase	hrv_for_eng:S0300L01U05	I don't want to seem like I don't know the answer	neću izgledati kao da ne znam odgovor	ne želim izgledati kao da ne znam odgovor	switch: neću -> ne želim
+phrase	hrv_for_eng:S0300L01U01	I don't want to seem like a problem	neću izgledati kao problem	ne želim izgledati kao problem	switch: neću -> ne želim
+phrase	hrv_for_eng:S0300L01B01	doesn't want to seem	neće izgledati	ne želi izgledati	switch: neće -> ne želi
+phrase	hrv_for_eng:S0300L01U04	he said he doesn't want to seem like that	rekao je da neće izgledati tako	rekao je da ne želi izgledati tako	switch: neće -> ne želi
+phrase	hrv_for_eng:S0300L02U02	I don't want to seem unfriendly	neću izgledati nepristupačno	ne želim izgledati nepristupačno	switch: neću -> ne želim
+phrase	hrv_for_eng:S0300L02U01	she doesn't want to seem unfriendly	neće izgledati nepristupačno	ne želi izgledati nepristupačno	switch: neće -> ne želi
+phrase	hrv_for_eng:S0300L02U04	I hope I don't seem unfriendly	nadam se da neću izgledati nepristupačno	nadam se da neću izgledati nepristupačno	keep-future: neću

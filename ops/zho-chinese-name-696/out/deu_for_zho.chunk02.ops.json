@@ -1,0 +1,442 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L01B01",
+  "set": {
+   "known_text": "明天想说德语",
+   "known_audio_id": "6ec16b60-86dd-455c-8264-a054dbb1fdb2"
+  },
+  "expect": {
+   "known_text": "明天想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L01B03",
+  "set": {
+   "known_text": "明天想能说德语",
+   "known_audio_id": "598b982b-3c8d-4c69-8e12-e37e86edb849"
+  },
+  "expect": {
+   "known_text": "明天想能说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L01U04",
+  "set": {
+   "known_text": "我明天想练习说德语。",
+   "known_audio_id": "05bcfd85-88e6-4909-96e8-f3c215644450"
+  },
+  "expect": {
+   "known_text": "我明天想练习说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L01U01",
+  "set": {
+   "known_text": "我明天想说德语。",
+   "known_audio_id": "bbe07793-cb90-4dad-91fe-156ccc770929"
+  },
+  "expect": {
+   "known_text": "我明天想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L02B02",
+  "set": {
+   "known_text": "不想说德语",
+   "known_audio_id": "bc17f034-baf0-4ed4-8203-72b0ecf5bc10"
+  },
+  "expect": {
+   "known_text": "不想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L02B04",
+  "set": {
+   "known_text": "不想和你说德语",
+   "known_audio_id": "1c063147-ce5e-4c68-8b03-d4938896bcf1"
+  },
+  "expect": {
+   "known_text": "不想和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L02U03",
+  "set": {
+   "known_text": "我不想和你说德语。",
+   "known_audio_id": "974aab25-ae83-483c-9b55-2a984a704f36"
+  },
+  "expect": {
+   "known_text": "我不想和你说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0012L02U01",
+  "set": {
+   "known_text": "我不想说德语。",
+   "known_audio_id": "9b797548-015c-4ff7-8bab-6e8988e176b8"
+  },
+  "expect": {
+   "known_text": "我不想说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 13,
+  "set": {
+   "known_text": "你德语说得很好。",
+   "known_audio_id": "f1dbe426-f13b-4a14-b855-281ad6912622"
+  },
+  "expect": {
+   "known_text": "你中文说得很好。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0013L01B04",
+  "set": {
+   "known_text": "你说一点德语",
+   "known_audio_id": "65372e56-d521-4d08-8e0b-e37f25ff1e37"
+  },
+  "expect": {
+   "known_text": "你说一点中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0013L01B02",
+  "set": {
+   "known_text": "你说德语",
+   "known_audio_id": "48a61d71-32d1-48da-9b04-07750967d04c"
+  },
+  "expect": {
+   "known_text": "你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0013L01U02",
+  "set": {
+   "known_text": "你明天说一点德语。",
+   "known_audio_id": "07b4a6fc-19c0-4950-91f8-77971baa81e5"
+  },
+  "expect": {
+   "known_text": "你明天说一点中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0013L01U01",
+  "set": {
+   "known_text": "你现在说德语。",
+   "known_audio_id": "d59ea98e-f5c6-4166-9608-5fa0353e9a88"
+  },
+  "expect": {
+   "known_text": "你现在说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0013L01U03",
+  "set": {
+   "known_text": "你今天说一点德语。",
+   "known_audio_id": "4afcfbe6-8896-492e-a331-b9c4bdf0970f"
+  },
+  "expect": {
+   "known_text": "你今天说一点中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0013L02U01",
+  "set": {
+   "known_text": "你说德语说得很好。",
+   "known_audio_id": "ac860234-cfbb-41aa-b0f3-c4e0ce75dca0"
+  },
+  "expect": {
+   "known_text": "你说中文说得很好。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 14,
+  "set": {
+   "known_text": "你整天说德语吗？",
+   "known_audio_id": "f60c2f01-ffc3-4da1-bd98-98cc08c8d11c"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L01B02",
+  "set": {
+   "known_text": "想整天说德语",
+   "known_audio_id": "ca54cb3e-efda-437c-ad7b-ba58734c1b68"
+  },
+  "expect": {
+   "known_text": "想整天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L01B01",
+  "set": {
+   "known_text": "整天说德语",
+   "known_audio_id": "d1a33b14-5d26-44bc-8aa6-42cf89d36ece"
+  },
+  "expect": {
+   "known_text": "整天说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L01U01",
+  "set": {
+   "known_text": "你整天说德语。",
+   "known_audio_id": "42b470fb-aae3-4c85-895c-9e30c159220f"
+  },
+  "expect": {
+   "known_text": "你整天说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L01U03",
+  "set": {
+   "known_text": "我不想整天说德语。",
+   "known_audio_id": "84ca1e96-7f22-4ad6-974a-cdd92a1efd8a"
+  },
+  "expect": {
+   "known_text": "我不想整天说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L02B03",
+  "set": {
+   "known_text": "你整天说德语吗？",
+   "known_audio_id": "f60c2f01-ffc3-4da1-bd98-98cc08c8d11c"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L02B02",
+  "set": {
+   "known_text": "你说德语吗？",
+   "known_audio_id": "d50c5dc8-a6b4-49c4-b744-bd0c1baa8788"
+  },
+  "expect": {
+   "known_text": "你说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L02B04",
+  "set": {
+   "known_text": "你今天说德语吗？",
+   "known_audio_id": "1a4b8efc-1211-4f03-b42c-3fbd9ed7c4f5"
+  },
+  "expect": {
+   "known_text": "你今天说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L02U01",
+  "set": {
+   "known_text": "你现在说德语吗？",
+   "known_audio_id": "275e419f-95d7-49ea-9db4-aa903a1d16f7"
+  },
+  "expect": {
+   "known_text": "你现在说中文吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0014L02U03",
+  "set": {
+   "known_text": "你明天说德语吗？",
+   "known_audio_id": "855b92ac-db25-4299-bf9c-c69a14e06037"
+  },
+  "expect": {
+   "known_text": "你明天说中文吗？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 15,
+  "set": {
+   "known_text": "而且我想让你明天和我说德语。",
+   "known_audio_id": "61b2bf45-ee18-49ec-ab5e-8562d05b7c15"
+  },
+  "expect": {
+   "known_text": "而且我想让你明天和我说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L02B01",
+  "set": {
+   "known_text": "以后说德语",
+   "known_audio_id": "f0791002-c628-46bc-96f0-7ce1252216eb"
+  },
+  "expect": {
+   "known_text": "以后说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L02U05",
+  "set": {
+   "known_text": "他以后整天说德语。",
+   "known_audio_id": "42713b7f-fad5-4c65-912c-5738b7a8654f"
+  },
+  "expect": {
+   "known_text": "他以后整天说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L02U01",
+  "set": {
+   "known_text": "他以后想说德语。",
+   "known_audio_id": "70a43f0d-99cf-423e-8094-f0b52bb3cbe9"
+  },
+  "expect": {
+   "known_text": "他以后想说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L03B02",
+  "set": {
+   "known_text": "和别人一起说德语",
+   "known_audio_id": "4ac7f24e-54ce-417a-8e6d-669ac38e3afa"
+  },
+  "expect": {
+   "known_text": "和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L03U05",
+  "set": {
+   "known_text": "我以后想和别人一起练习说德语。",
+   "known_audio_id": "93ec5b57-630a-4008-8a81-e4a6d2184ad6"
+  },
+  "expect": {
+   "known_text": "我以后想和别人一起练习说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L03U01",
+  "set": {
+   "known_text": "他想和别人一起说德语。",
+   "known_audio_id": "69124680-9f16-4955-9db1-9da29935145f"
+  },
+  "expect": {
+   "known_text": "他想和别人一起说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L01B03",
+  "set": {
+   "known_text": "他和我说德语",
+   "known_audio_id": "1b1457d8-b9c8-41aa-b4a0-fb74ede52fc4"
+  },
+  "expect": {
+   "known_text": "他和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L01B01",
+  "set": {
+   "known_text": "他想说德语",
+   "known_audio_id": "8f7a9318-9fe7-4a19-81bc-eceeeef82787"
+  },
+  "expect": {
+   "known_text": "他想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L01U04",
+  "set": {
+   "known_text": "他整天说德语。",
+   "known_audio_id": "c0c89efb-afda-4f81-9d15-01d8643a8a31"
+  },
+  "expect": {
+   "known_text": "他整天说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L01U02",
+  "set": {
+   "known_text": "他今天想练习说德语。",
+   "known_audio_id": "30e512d3-a2ac-47f1-adcc-2c22a142409e"
+  },
+  "expect": {
+   "known_text": "他今天想练习说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0016L01U01",
+  "set": {
+   "known_text": "他想和我说德语。",
+   "known_audio_id": "95c14d52-49f0-458d-a302-5f926dcffd22"
+  },
+  "expect": {
+   "known_text": "他想和我说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0017L01B01",
+  "set": {
+   "known_text": "她想说德语",
+   "known_audio_id": "880350ca-579f-4bfc-83d6-4ef60e040847"
+  },
+  "expect": {
+   "known_text": "她想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0017L01U01",
+  "set": {
+   "known_text": "她想和我说德语。",
+   "known_audio_id": "351b08db-20b2-4096-94b6-6b68d46e1d2e"
+  },
+  "expect": {
+   "known_text": "她想和我说中文。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_zho:S0017L01U03",
+  "set": {
+   "known_text": "她整天说德语。",
+   "known_audio_id": "d5320596-3e8e-467b-9a6c-515a50fabe08"
+  },
+  "expect": {
+   "known_text": "她整天说中文。"
+  }
+ }
+]

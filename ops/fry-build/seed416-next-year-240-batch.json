@@ -1,0 +1,11 @@
+{"ops":[
+ {"op":"seed.update","seed_number":416,
+  "expect":{"known_text":"They want to take the lead next year.","target_text":"Sy wolle folgjend jier de lieding nimme."},
+  "set":{"target_text":"Sy wolle takommend jier de lieding nimme."}},
+ {"op":"phrase.update","phrase_id":"fry_for_eng:S0416L03U09",
+  "expect":{"known_text":"they want to take the lead next year","target_text":"sy wolle folgjend jier de lieding nimme"},
+  "set":{"target_text":"sy wolle takommend jier de lieding nimme"}},
+ {"op":"lego.insert","row":{"seed_number":416,"lego_index":4,"type":"M","is_new":false,"status":"draft",
+  "known_text":"next year","target_text":"takommend jier",
+  "components":[{"known":"next","target":"takommend"},{"known":"year","target":"jier"}]}}
+]}

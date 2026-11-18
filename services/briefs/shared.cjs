@@ -105,9 +105,10 @@ function getKnownLanguageName(courseCode) {
   return LANG_MAP[knownLang] || knownLang;
 }
 
-function getGoldenSeedCount(courseInfo) {
-  return courseInfo?.quality_rules?.golden_seed_count || 10;
-}
+// The golden-seed default is decided ONCE, in course-builder/lib/language-config.cjs.
+// This module used to restate `|| 10`; the brief served to an agent and the
+// validator that judges its seeds must agree on where the golden zone ends.
+const { getGoldenSeedCount } = require('../course-builder/lib/language-config.cjs');
 
 /**
  * Fetch golden seed examples with full LEGO + phrase data.
@@ -293,7 +294,7 @@ async function buildCrossCourseSummaries(maxSeed = 5) {
 
     const comparisons = [];
     for (const course of courses) {
-      const goldenCount = course.quality_rules?.golden_seed_count || 10;
+      const goldenCount = getGoldenSeedCount(course);
       if (goldenCount < 1) continue; // skip courses with no golden seeds configured
 
       const golden = course.quality_rules?.golden_decompositions || [];

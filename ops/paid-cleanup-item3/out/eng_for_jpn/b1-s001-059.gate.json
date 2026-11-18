@@ -1,0 +1,2133 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "b1-s001-059.tsv",
+ "at": "2026-11-18T13:25:54.826Z",
+ "rows": [
+  {
+   "id": "S0008L03U05",
+   "role": "use",
+   "target": "I'm going to try to explain as often as possible",
+   "old": "できるだけ説明しようとします",
+   "new": "できるだけたくさん説明してみるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0018L04B03",
+   "role": "build",
+   "target": "I'm trying to guess this evening",
+   "old": "今晩試そうとしている",
+   "new": "今晩当てようとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0020L03U03",
+   "role": "use",
+   "target": "we want to learn quickly today",
+   "old": "私たちは早く学びたい、今日",
+   "new": "私たちは今日早く学びたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L03B02",
+   "role": "build",
+   "target": "are you learning now?",
+   "old": "今学んでいる",
+   "new": "今学んでいますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L03B03",
+   "role": "build",
+   "target": "are you learning her name?",
+   "old": "彼女の名前を学んでいる",
+   "new": "彼女の名前を学んでいますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0021L03B04",
+   "role": "build",
+   "target": "are you learning this evening?",
+   "old": "今晩学んでいる",
+   "new": "今晩学んでいますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0022L03U02",
+   "role": "use",
+   "target": "because I want to meet people who speak English",
+   "old": "から私は英語を話す人に会いたい",
+   "new": "英語を話す人に会いたいからです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0025L01U06",
+   "role": "use",
+   "target": "I'm going to go easily",
+   "old": "簡単に行けるつもりです",
+   "new": "簡単に行くつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0025L03U02",
+   "role": "use",
+   "target": "Are you going to help me today?",
+   "old": "今日私を手伝ってくれますか？",
+   "new": "今日私を手伝うつもりですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0025L04U01",
+   "role": "use",
+   "target": "Are you going to help me before I have to go?",
+   "old": "行かなければならない前に手伝ってくれますか？",
+   "new": "私が行かなければならない前に、手伝うつもりですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0032L03U07",
+   "role": "use",
+   "target": "did you want to show me something before I have to go?",
+   "old": "行く前に私に何か見せたかったですか？",
+   "new": "私が行かなければならない前に、何か見せたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0033L01U08",
+   "role": "use",
+   "target": "how long are you going to try to remember?",
+   "old": "どのくらい覚えようとしますか？",
+   "new": "どのくらい覚えようとするつもりですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0034L01U01",
+   "role": "use",
+   "target": "I want to try to speak when you speak English",
+   "old": "あなたが英語を話す時に、私は話そうとします",
+   "new": "あなたが英語を話す時に、私は話してみたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0035L03U04",
+   "role": "use",
+   "target": "can you remember anything?",
+   "old": "何か覚えていますか？",
+   "new": "何か思い出せますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0037L02B02",
+   "role": "build",
+   "target": "I started to think about it",
+   "old": "それについて考え始める",
+   "new": "それについて考え始めました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0041L01B04",
+   "role": "build",
+   "target": "I feel okay at the moment",
+   "old": "体調は大丈夫です",
+   "new": "今は大丈夫です",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "ZUT whole course: \"今は大丈夫です\" is \"I feel okay now\" at seed 41"
+   ]
+  },
+  {
+   "id": "S0041L01U03",
+   "role": "use",
+   "target": "I feel okay but I want to sleep a little more",
+   "old": "今は大丈夫ですが、もう少し休みたいです",
+   "new": "大丈夫ですが、もう少し寝たいです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I feel okay but I want to sleep a little more\",\"unknown\":\"sleep\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0041L01U06",
+   "role": "use",
+   "target": "I feel okay but I want to practise speaking",
+   "old": "大丈夫ですが、もっと練習したいです",
+   "new": "大丈夫ですが、話す練習をしたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0041L01U11",
+   "role": "use",
+   "target": "I feel okay but I'm not going to be able to remember everything",
+   "old": "大丈夫ですが、全部覚えられません",
+   "new": "大丈夫ですが、全部は覚えられないでしょう",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I feel okay but I'm not going to be able to remember everything\",\"unknown\":\"everything\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0044L01U04",
+   "role": "use",
+   "target": "I can remember something or try to answer",
+   "old": "何かを覚えるか答えてみます",
+   "new": "何かを思い出せるか、答えてみることができます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0044L01U05",
+   "role": "use",
+   "target": "I'd like to speak English or learn something now",
+   "old": "英語を話すか何か学びたいです",
+   "new": "今、英語を話すか、何かを学びたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0044L02U07",
+   "role": "use",
+   "target": "I can try to explain if you want to learn",
+   "old": "あなたが学びたいなら説明してみます",
+   "new": "あなたが学びたいなら、説明してみることができます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0044L03U06",
+   "role": "use",
+   "target": "I can try to improve if I speak English all day",
+   "old": "一日中英語を話せるなら改善してみます",
+   "new": "一日中英語を話せば、改善してみることができます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0045L01U07",
+   "role": "use",
+   "target": "we want to know if you speak English all day",
+   "old": "あなたが一日中英語を話すか知りたいです",
+   "new": "あなたが一日中英語を話すかどうか、私たちは知りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0045L02U07",
+   "role": "use",
+   "target": "we want to learn everything about English this evening",
+   "old": "今晩英語についてすべてを学びたいです",
+   "new": "私たちは今晩英語についてすべてを学びたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0051L01B06",
+   "role": "build",
+   "target": "I enjoy doing things today",
+   "old": "今日も楽しんでいます",
+   "new": "今日はいろいろなことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing things today\",\"unknown\":\"doing things\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L01B07",
+   "role": "build",
+   "target": "I enjoy doing everything",
+   "old": "全部を楽しんでいます",
+   "new": "全部するのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing everything\",\"unknown\":\"doing\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L02U09",
+   "role": "use",
+   "target": "I enjoy doing something interesting today",
+   "old": "何か面白いことをするのを楽しんでいます",
+   "new": "今日は何か面白いことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing something interesting today\",\"unknown\":\"interesting\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L02U11",
+   "role": "use",
+   "target": "I enjoy doing interesting things in English with my friends",
+   "old": "英語を使いながら面白いことをするのを楽しんでいます",
+   "new": "友達と英語で面白いことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing interesting things in English with my friends\",\"unknown\":\"interesting things my friends\"}],\"total\":1}",
+    "ZUT whole course: \"友達と英語で面白いことをするのを楽しんでいます\" is \"I enjoy doing interesting things with my friends today\" at seed 51"
+   ]
+  },
+  {
+   "id": "S0051L02U12",
+   "role": "use",
+   "target": "I enjoy doing everything with my friends",
+   "old": "全部をするのを楽しんでいます",
+   "new": "友達と全部するのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing everything with my friends\",\"unknown\":\"my friends\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L03U04",
+   "role": "use",
+   "target": "I enjoy doing interesting things with interesting people",
+   "old": "面白い人たちと話すことをとても楽しんでいます",
+   "new": "面白い人たちと面白いことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing interesting things with interesting people\",\"unknown\":\"things\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L03U08",
+   "role": "use",
+   "target": "I enjoy talking about interesting things in English",
+   "old": "英語で面白いことを楽しんでいます",
+   "new": "英語で面白いことについて話すのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy talking about interesting things in English\",\"unknown\":\"things\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L03U10",
+   "role": "use",
+   "target": "I enjoy doing interesting things in English with my friends",
+   "old": "英語で面白い話をするのを楽しんでいます",
+   "new": "友達と英語で面白いことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing interesting things in English with my friends\",\"unknown\":\"things my friends\"}],\"total\":1}",
+    "ZUT whole course: \"友達と英語で面白いことをするのを楽しんでいます\" is \"I enjoy doing interesting things with my friends today\" at seed 51"
+   ]
+  },
+  {
+   "id": "S0051L04B06",
+   "role": "build",
+   "target": "doing things with my friends",
+   "old": "友達と こと を 楽しむ",
+   "new": "友達といろいろなことをする",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"doing things with my friends\",\"unknown\":\"my friends\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L04U10",
+   "role": "use",
+   "target": "I enjoy doing interesting things with my friends today",
+   "old": "友達と英語で面白いことをするのを楽しんでいます",
+   "new": "今日は友達と面白いことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I enjoy doing interesting things with my friends today\",\"unknown\":\"my friends\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0051L04U11",
+   "role": "use",
+   "target": "I want to be able to say things in English",
+   "old": "全部のことを英語で言えるようになりたいです",
+   "new": "英語でいろいろなことを言えるようになりたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0051L04U12",
+   "role": "use",
+   "target": "doing interesting things in English is very good",
+   "old": "英語で面白いことをすることが大切です",
+   "new": "英語で面白いことをするのはとてもいいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0051L05U12",
+   "role": "use",
+   "target": "I enjoy doing interesting things with my friends today",
+   "old": "友達と英語で全部のことをするのを楽しんでいます",
+   "new": "今日は友達と面白いことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L01B06",
+   "role": "build",
+   "target": "he wants to speak",
+   "old": "彼 話す",
+   "new": "彼は話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L01U01",
+   "role": "use",
+   "target": "he wanted to write a letter to his friend",
+   "old": "彼は手紙を書きたかったです",
+   "new": "彼は友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he wanted to write a letter to his friend\",\"unknown\":\"write letter friend\"}],\"total\":1}",
+    "ZUT whole course: \"彼は友達に手紙を書きたかったです\" is \"he wanted to write a letter to his friend today\" at seed 52"
+   ]
+  },
+  {
+   "id": "S0052L01U09",
+   "role": "use",
+   "target": "he wanted to write a letter to his friend today",
+   "old": "彼は友達に手紙を書きたかったです",
+   "new": "彼は今日友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he wanted to write a letter to his friend today\",\"unknown\":\"write letter friend\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0052L01U12",
+   "role": "use",
+   "target": "he wanted to speak with you in English today",
+   "old": "彼は今日英語で話したかったです",
+   "new": "彼は今日あなたと英語で話したかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L02U01",
+   "role": "use",
+   "target": "he wanted to write a letter to his friend",
+   "old": "彼は手紙を書きたかったです",
+   "new": "彼は友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he wanted to write a letter to his friend\",\"unknown\":\"write letter friend\"}],\"total\":1}",
+    "ZUT whole course: \"彼は友達に手紙を書きたかったです\" is \"he wanted to write a letter to his friend today\" at seed 52"
+   ]
+  },
+  {
+   "id": "S0052L02U07",
+   "role": "use",
+   "target": "he wanted to write a letter to his friend today",
+   "old": "彼は友達に手紙を書きたかったです",
+   "new": "彼は今日友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he wanted to write a letter to his friend today\",\"unknown\":\"write letter friend\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0052L02U09",
+   "role": "use",
+   "target": "I wanted to speak with you today",
+   "old": "私はあなたと話したかったです",
+   "new": "私は今日あなたと話したかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L02U12",
+   "role": "use",
+   "target": "he wanted to do interesting things today",
+   "old": "彼は面白いことをしたかったです",
+   "new": "彼は今日面白いことをしたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L03U06",
+   "role": "use",
+   "target": "you can write something in English",
+   "old": "あなたはそれを英語で書くことができます",
+   "new": "あなたは英語で何か書くことができます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L03U09",
+   "role": "use",
+   "target": "I wanted to write a letter to his friend",
+   "old": "私は友達に手紙を書きたかったです",
+   "new": "私は彼の友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I wanted to write a letter to his friend\",\"unknown\":\"letter friend\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0052L03U10",
+   "role": "use",
+   "target": "he wanted to write as often as possible",
+   "old": "彼はできるだけ多く書きたかったです",
+   "new": "彼はできるだけたくさん書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L03U12",
+   "role": "use",
+   "target": "I wanted to write something interesting today",
+   "old": "私は面白いことを書きたかったです",
+   "new": "私は今日何か面白いことを書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L04U04",
+   "role": "use",
+   "target": "he wanted to write a letter to his friend today",
+   "old": "彼は友達に手紙を書きたかったです",
+   "new": "彼は今日友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he wanted to write a letter to his friend today\",\"unknown\":\"friend\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0052L04U05",
+   "role": "use",
+   "target": "I wanted to write a letter to his friend",
+   "old": "私は友達に手紙を書きたかったです",
+   "new": "私は彼の友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I wanted to write a letter to his friend\",\"unknown\":\"friend\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0052L04U06",
+   "role": "use",
+   "target": "he wanted to write a letter in English today",
+   "old": "彼は英語で手紙を書きたかったです",
+   "new": "彼は今日英語で手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L04U08",
+   "role": "use",
+   "target": "he wanted to write a letter about interesting things",
+   "old": "彼は面白い手紙を書きたかったです",
+   "new": "彼は面白いことについて手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L04U09",
+   "role": "use",
+   "target": "he wanted to write a letter to his friend now",
+   "old": "彼は今すぐ手紙を書きたかったです",
+   "new": "彼は今、友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he wanted to write a letter to his friend now\",\"unknown\":\"friend\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0052L04U10",
+   "role": "use",
+   "target": "I wanted to write a letter in English to his friend",
+   "old": "私は友達に英語で手紙を書きたかったです",
+   "new": "私は彼の友達に英語で手紙を書きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I wanted to write a letter in English to his friend\",\"unknown\":\"friend\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0052L04U11",
+   "role": "use",
+   "target": "he wanted to write a letter as often as possible",
+   "old": "彼はできるだけ多く手紙を書きたかったです",
+   "new": "彼はできるだけたくさん手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L04U12",
+   "role": "use",
+   "target": "I wanted to write a letter about something interesting",
+   "old": "私は何か面白い手紙を書きたかったです",
+   "new": "私は何か面白いことについて手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L05U07",
+   "role": "use",
+   "target": "I wanted to write a letter to his friend",
+   "old": "私は友達に手紙を書きたかったです",
+   "new": "私は彼の友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L05U09",
+   "role": "use",
+   "target": "he wanted to write a letter to his friend as often as possible",
+   "old": "彼はできるだけ多く友達に手紙を書きたかったです",
+   "new": "彼はできるだけたくさん友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L05U10",
+   "role": "use",
+   "target": "I wanted to write a letter in English to his friend",
+   "old": "私は友達に英語で手紙を書きたかったです",
+   "new": "私は彼の友達に英語で手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L05U12",
+   "role": "use",
+   "target": "he wanted to write a letter about interesting things to his friend",
+   "old": "彼は友達に面白い手紙を書きたかったです",
+   "new": "彼は友達に面白いことについて手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06B03",
+   "role": "build",
+   "target": "I can remember last week",
+   "old": "先週のことを覚えている",
+   "new": "先週のことを思い出せます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06B05",
+   "role": "build",
+   "target": "I started last week",
+   "old": "先週英語の勉強を始めた",
+   "new": "先週始めました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06B06",
+   "role": "build",
+   "target": "today and last week",
+   "old": "先週と今日の違い",
+   "new": "今日と先週",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06U01",
+   "role": "use",
+   "target": "I started to think about it carefully last week",
+   "old": "先週のことをよく考えた",
+   "new": "先週それについてよく考え始めました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06U02",
+   "role": "use",
+   "target": "I was trying to practise speaking with someone else last week",
+   "old": "先週英語を練習しようとした",
+   "new": "先週他の人と話す練習をしようとしていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06U04",
+   "role": "use",
+   "target": "I don't worry about making mistakes and I started last week",
+   "old": "先週から間違いを気にしないようにした",
+   "new": "間違いを気にしません。先週始めました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06U05",
+   "role": "use",
+   "target": "did you want to practise speaking last week?",
+   "old": "先週英語を練習した",
+   "new": "先週話す練習をしたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06U06",
+   "role": "use",
+   "target": "did you want to show me something last week?",
+   "old": "先週何かを見せてほしかった",
+   "new": "先週私に何か見せたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06U10",
+   "role": "use",
+   "target": "I was starting to feel better than last week",
+   "old": "先週は今より気分が良くなってきた",
+   "new": "先週より気分が良くなり始めていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L06U12",
+   "role": "use",
+   "target": "I want to try as hard as I can today and it was like this last week",
+   "old": "先週は英語をできるだけよく話そうとした",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L01B05",
+   "role": "build",
+   "target": "she wants to come back",
+   "old": "彼女は来る",
+   "new": "彼女は戻りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L01U05",
+   "role": "use",
+   "target": "she doesn't want to be quiet when other people are here",
+   "old": "彼女は静かにしたくない",
+   "new": "他の人がここにいるとき、彼女は静かにしたくないです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L01U06",
+   "role": "use",
+   "target": "she wanted to write a letter to his friend last week",
+   "old": "彼女は友達に手紙を書きたかった",
+   "new": "彼女は先週彼の友達に手紙を書きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L01U08",
+   "role": "use",
+   "target": "she wanted to show me something yesterday",
+   "old": "彼女は何かを見せたかった",
+   "new": "彼女は昨日私に何か見せたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L01U11",
+   "role": "use",
+   "target": "she wants to learn his name quickly",
+   "old": "彼女は彼の名前を覚えたい",
+   "new": "彼女は彼の名前を早く学びたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L02B04",
+   "role": "build",
+   "target": "she wanted to put his letter",
+   "old": "彼女は手紙を入れた",
+   "new": "彼女は彼の手紙を入れたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L02U05",
+   "role": "use",
+   "target": "she wanted to put a letter to his friend in her bag",
+   "old": "彼女は友達への手紙をかばんに入れた",
+   "new": "彼女は彼の友達への手紙をかばんに入れたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"she wanted to put a letter to his friend in her bag\",\"unknown\":\"bag\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0053L02U06",
+   "role": "use",
+   "target": "she wanted to put the letter in her bag last week",
+   "old": "彼女は先週のかばんに手紙を入れたかった",
+   "new": "彼女は先週手紙をかばんに入れたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"she wanted to put the letter in her bag last week\",\"unknown\":\"bag\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0053L02U07",
+   "role": "use",
+   "target": "he wanted to put his letter in her bag",
+   "old": "彼は手紙をかばんに入れてほしかった",
+   "new": "彼は自分の手紙を彼女のかばんに入れたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he wanted to put his letter in her bag\",\"unknown\":\"bag\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0053L02U10",
+   "role": "use",
+   "target": "she doesn't want to put anything in her bag",
+   "old": "彼女は何もかばんに入れたくなかった",
+   "new": "彼女はかばんに何も入れたくないです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"she doesn't want to put anything in her bag\",\"unknown\":\"bag\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0053L03B06",
+   "role": "build",
+   "target": "put it in her bag",
+   "old": "彼女のかばんに",
+   "new": "それをかばんに入れる",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L03U04",
+   "role": "use",
+   "target": "did you want to put something in her bag?",
+   "old": "あなたはかばんに手紙を入れたかったですか",
+   "new": "彼女のかばんに何か入れたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L03U05",
+   "role": "use",
+   "target": "she wanted to put that letter in her bag today",
+   "old": "彼女はかばんにその手紙を入れたかった",
+   "new": "彼女は今日その手紙をかばんに入れたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L03U07",
+   "role": "use",
+   "target": "she doesn't want to put anything in her bag",
+   "old": "彼女はかばんに何も入れたくなかった",
+   "new": "彼女はかばんに何も入れたくないです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L03U10",
+   "role": "use",
+   "target": "she wants to put the letter in her bag today",
+   "old": "彼女は今日かばんに手紙を入れた",
+   "new": "彼女は今日手紙をかばんに入れたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L03U11",
+   "role": "use",
+   "target": "he wanted to put his letter in her bag last week",
+   "old": "彼は先週手紙をかばんに入れてほしかった",
+   "new": "彼は先週自分の手紙を彼女のかばんに入れたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0053L03U12",
+   "role": "use",
+   "target": "did you want to show me what she put in her bag?",
+   "old": "彼女は何かかばんに入れたいか見せてほしい",
+   "new": "彼女がかばんに入れたものを私に見せたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02B04",
+   "role": "build",
+   "target": "give him a letter",
+   "old": "彼にあげた",
+   "new": "彼に手紙をあげる",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"give him a letter\",\"unknown\":\"him\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0054L02U01",
+   "role": "use",
+   "target": "she wanted to give a letter to his friend last week",
+   "old": "彼女は友達に手紙をあげたかった",
+   "new": "彼女は先週彼の友達に手紙をあげたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02U02",
+   "role": "use",
+   "target": "I'd like to give you something interesting",
+   "old": "あなたに何かあげたいと思っている",
+   "new": "あなたに何か面白いものをあげたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02U03",
+   "role": "use",
+   "target": "he wanted to give her the story last week",
+   "old": "彼は彼女にその話をあげたかった",
+   "new": "彼は先週彼女にその話をあげたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02U05",
+   "role": "use",
+   "target": "I wanted to give you something to put in her bag",
+   "old": "あなたにかばんの中の何かをあげたかった",
+   "new": "彼女のかばんに入れるものをあなたにあげたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02U07",
+   "role": "use",
+   "target": "I want to give you the time to speak English with me",
+   "old": "あなたに英語を話す機会をあげたい",
+   "new": "私と英語で話す時間をあなたにあげたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02U10",
+   "role": "use",
+   "target": "I wanted to think about it carefully before I give you something",
+   "old": "あなたに何かあげる前に考えたかった",
+   "new": "あなたに何かあげる前に、よく考えたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02U11",
+   "role": "use",
+   "target": "he wants to give the story to his friend",
+   "old": "彼は友達にその話をあげたかった",
+   "new": "彼は友達にその話をあげたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L02U12",
+   "role": "use",
+   "target": "I wanted to give you the time to practise speaking with me",
+   "old": "私はあなたに英語を話す機会をあげたかった",
+   "new": "私と話す練習をする時間をあなたにあげたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L03B04",
+   "role": "build",
+   "target": "you speak English very well",
+   "old": "あなたは上手に話す",
+   "new": "あなたはとても上手に英語を話します",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L03U07",
+   "role": "use",
+   "target": "I want you to speak English with me tomorrow",
+   "old": "あなたは一生懸命やろうとしている",
+   "new": "明日、私と英語で話してほしいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L03U11",
+   "role": "use",
+   "target": "why are you learning her name?",
+   "old": "あなたは彼女の名前を学ぼうとしている",
+   "new": "なぜ彼女の名前を学んでいるのですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L03U12",
+   "role": "use",
+   "target": "are you going to help me before I have to go?",
+   "old": "あなたはできるだけ英語を話そうとしている",
+   "new": "私が行かなければならない前に、手伝うつもりですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04B05",
+   "role": "build",
+   "target": "speak English a little more",
+   "old": "もう少しうまく話したい",
+   "new": "もう少し英語を話す",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U01",
+   "role": "use",
+   "target": "I think I need a little more time to speak better",
+   "old": "もう少し時間があれば英語がうまくなれる",
+   "new": "もっと上手に話すには、もう少し時間が必要だと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U02",
+   "role": "use",
+   "target": "I'd like to speak a little more with you now",
+   "old": "もう少しだけ話してもいいですか",
+   "new": "今、あなたともう少し話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U04",
+   "role": "use",
+   "target": "I need to learn English a little more today",
+   "old": "英語の勉強にはもう少し時間が必要だ",
+   "new": "今日はもう少し英語を学ぶ必要があります",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U05",
+   "role": "use",
+   "target": "she wants a little more time to find out what the answer is",
+   "old": "彼女はもう少し時間が欲しいと思う",
+   "new": "彼女は答えが何かを知るために、もう少し時間が欲しいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U08",
+   "role": "use",
+   "target": "I'm not sure if I can remember everything with a little more time",
+   "old": "もう少し時間があれば全部覚えられた",
+   "new": "もう少し時間があっても、全部覚えられるかどうかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U09",
+   "role": "use",
+   "target": "he wants a little more time to remember the whole sentence",
+   "old": "彼はもう少しで答えを思い出しそうだ",
+   "new": "彼は文全体を覚えるために、もう少し時間が欲しいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U10",
+   "role": "use",
+   "target": "I want to know the story a little more today",
+   "old": "もう少し英語の話を聞きたかった",
+   "new": "今日はその話をもう少し知りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0054L04U12",
+   "role": "use",
+   "target": "speak English a little more before I have to go",
+   "old": "もう少し英語を勉強する前に話しましょう",
+   "new": "私が行かなければならない前に、もう少し英語を話して",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L01B03",
+   "role": "build",
+   "target": "I don't enjoy it",
+   "old": "楽しくありませんそれを",
+   "new": "それは楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L01B05",
+   "role": "build",
+   "target": "I don't enjoy taking too much time",
+   "old": "楽しくありません時間がかかりすぎるのが",
+   "new": "時間をかけすぎるのは楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L01B06",
+   "role": "build",
+   "target": "I don't enjoy it today",
+   "old": "楽しくありませんそれを今",
+   "new": "今日はそれが楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L01U03",
+   "role": "use",
+   "target": "I don't enjoy it when I want to stop talking",
+   "old": "英語を話すのを止めることは楽しくない",
+   "new": "話すのをやめたいとき、楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L01U04",
+   "role": "use",
+   "target": "I don't enjoy trying to improve when I don't worry about making mistakes",
+   "old": "間違いを気にすることは楽しくない",
+   "new": "間違いを気にしないとき、上達しようとするのは楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L01U07",
+   "role": "use",
+   "target": "I don't enjoy trying to guess what to say in English",
+   "old": "何を言えばいいか当てようとするのが楽しくない",
+   "new": "英語で何を言えばいいか当てようとするのは楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L01U09",
+   "role": "use",
+   "target": "I don't enjoy it when I can't remember the whole sentence",
+   "old": "英語を話せないことが楽しくない",
+   "new": "文全体を思い出せないとき、楽しくありません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I don't enjoy it when I can't remember the whole sentence\",\"unknown\":\"can't\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0055L01U11",
+   "role": "use",
+   "target": "I don't enjoy it when I'm not going to be able to speak better",
+   "old": "英語で話すことは楽しいがもっと上手くなりたい",
+   "new": "もっと上手に話せないとき、楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L02B06",
+   "role": "build",
+   "target": "waking up today",
+   "old": "起きるのが楽しくないとき",
+   "new": "今日起きること",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L02U11",
+   "role": "use",
+   "target": "I don't enjoy waking up to speak English this morning",
+   "old": "起きた後に英語を話すのが楽しくない",
+   "new": "今朝、英語を話すために起きるのは楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L04B05",
+   "role": "build",
+   "target": "I didn't sleep well",
+   "old": "眠れなかったから疲れている",
+   "new": "よく眠れませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L04B06",
+   "role": "build",
+   "target": "I didn't sleep very well last night",
+   "old": "うまく眠れなかった",
+   "new": "昨夜はあまりよく眠れませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L04U04",
+   "role": "use",
+   "target": "I didn't sleep last night and I'm a little tired this morning",
+   "old": "昨夜眠れなかったので今日は少し疲れている",
+   "new": "昨夜は眠れませんでした。今朝は少し疲れています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L04U05",
+   "role": "use",
+   "target": "I don't enjoy it when I didn't sleep very well",
+   "old": "よく眠れなかったとき話すのが楽しくない",
+   "new": "あまりよく眠れなかったとき、楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L04U07",
+   "role": "use",
+   "target": "I didn't sleep last night and I'm feeling very well",
+   "old": "昨夜眠れなかったのでとても疲れている",
+   "new": "昨夜は眠れませんでした。そして、とても元気です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L04U08",
+   "role": "use",
+   "target": "I don't enjoy trying to speak when I didn't sleep",
+   "old": "眠れなかったので英語を話そうとするのが楽しくない",
+   "new": "眠れなかったとき、話そうとするのは楽しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0055L04U11",
+   "role": "use",
+   "target": "everything is not very well when I didn't sleep very well",
+   "old": "眠れなかった夜の翌日は大変に感じる",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U01",
+   "role": "use",
+   "target": "I want to speak English so I can speak with you now",
+   "old": "あなたと今すぐ英語で話したいです",
+   "new": "今あなたと話せるように、英語を話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U02",
+   "role": "use",
+   "target": "I want to speak English so I can start talking",
+   "old": "話し始められるように、英語を学んでいます",
+   "new": "話し始められるように、英語を話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U03",
+   "role": "use",
+   "target": "I want to speak so I can speak with people who speak English",
+   "old": "英語を話す人々と話せるように、練習しています",
+   "new": "英語を話す人と話せるように、話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U04",
+   "role": "use",
+   "target": "I'm looking forward to speaking better as soon as I can so I can start talking more soon",
+   "old": "できるだけ早くうまく話せるようになりたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U06",
+   "role": "use",
+   "target": "I've been learning for about a week so I can speak with you",
+   "old": "約一週間学んでいて、あなたと話せるようになりたいです",
+   "new": "あなたと話せるように、約一週間学んでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U07",
+   "role": "use",
+   "target": "It's useful to start talking as soon as you can so I can speak better",
+   "old": "できるだけ早く話し始めるのが大切だと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U08",
+   "role": "use",
+   "target": "I'm not sure if I can remember the whole sentence so I want to speak better",
+   "old": "文全体を覚えられるかわからないので、話し始めたいです",
+   "new": "文全体を覚えられるかどうかわからないので、もっと上手に話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U10",
+   "role": "use",
+   "target": "I'm going to start talking more soon so I can speak with everyone else",
+   "old": "もうすぐ話し始めて、みんなと話せるようになります",
+   "new": "他のみんなと話せるように、もうすぐもっと話し始めるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U11",
+   "role": "use",
+   "target": "I want to speak English today so I can speak better",
+   "old": "英語を話せるようになりたいので、今日頑張っています",
+   "new": "もっと上手に話せるように、今日英語を話したいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U12",
+   "role": "use",
+   "target": "I'm going to practise speaking with someone else so I can speak better",
+   "old": "誰かと話せるようになりたいので、練習しています",
+   "new": "もっと上手に話せるように、他の人と話す練習をするつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U13",
+   "role": "use",
+   "target": "I'm trying to learn so I can speak English better",
+   "old": "今すぐ英語で話せるようになりたいので、学んでいます",
+   "new": "もっと上手に英語を話せるように、学ぼうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U14",
+   "role": "use",
+   "target": "I'd like to be able to speak after you finish so I can speak better",
+   "old": "あなたが終わったら話せるように、準備しています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L01U15",
+   "role": "use",
+   "target": "I'm going to practise speaking with someone else so I can speak with everyone else",
+   "old": "みんなと話せるようになりたいので、できるだけ練習しています",
+   "new": "他のみんなと話せるように、他の人と話す練習をするつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U04",
+   "role": "use",
+   "target": "I'd like to be able to speak after you finish so I can speak better",
+   "old": "あなたが終わったら話せるようになりたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U05",
+   "role": "use",
+   "target": "I don't care about making mistakes because I can start talking",
+   "old": "間違いをしてもいいと思います",
+   "new": "話し始められるので、間違いは気にしません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U06",
+   "role": "use",
+   "target": "I speak a little English now and I can start talking more soon",
+   "old": "英語が少し話せるので、今すぐ話し始めたいです",
+   "new": "今は英語を少し話します。そして、もうすぐもっと話し始められます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U07",
+   "role": "use",
+   "target": "I'm looking forward to speaking better as soon as I can",
+   "old": "できるだけよく話せるようになりたいです",
+   "new": "できるだけ早く、もっと上手に話せるのを楽しみにしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U08",
+   "role": "use",
+   "target": "I want to speak English with you now and I can start talking",
+   "old": "今すぐあなたと英語で話したいです",
+   "new": "今あなたと英語で話したいです。そして、話し始められます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U09",
+   "role": "use",
+   "target": "I can speak with people who speak English so I can speak better",
+   "old": "英語を話す人々に会えれば、うまく話せるようになると思います",
+   "new": "英語を話す人と話せるので、もっと上手に話せます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U10",
+   "role": "use",
+   "target": "I think that I can start talking and I don't like taking too much time to answer",
+   "old": "時間をかけすぎずに答えられるようになりたいです",
+   "new": "話し始められると思います。そして、答えるのに時間をかけすぎるのは好きではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U11",
+   "role": "use",
+   "target": "I want to try as hard as I can today so I can speak better",
+   "old": "今日できるだけ多く練習するので、うまく話せると思います",
+   "new": "もっと上手に話せるように、今日はできるだけ頑張りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U12",
+   "role": "use",
+   "target": "I speak a little English now and I can speak better soon",
+   "old": "今は英語が少し話せて、もっとうまくなりたいです",
+   "new": "今は英語を少し話しますが、もうすぐもっと上手に話せます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U13",
+   "role": "use",
+   "target": "It's useful to start talking as soon as you can so I can speak with my friends",
+   "old": "できるだけ早く話し始められるようになりたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U14",
+   "role": "use",
+   "target": "I'm going to practise speaking with someone else so I can speak with my friends",
+   "old": "友達と英語で話せるようになりたいので、練習しています",
+   "new": "友達と話せるように、他の人と話す練習をするつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L02U15",
+   "role": "use",
+   "target": "I can speak English today so I want to try as hard as I can",
+   "old": "今日英語で話せるように、できるだけ頑張ります",
+   "new": "今日は英語を話せるので、できるだけ頑張りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U02",
+   "role": "use",
+   "target": "I think that it's a good thing to start with a few words in English",
+   "old": "最初はいくつかの言葉から始めればいいと思います",
+   "new": "英語のいくつかの言葉から始めるのはいいことだと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U03",
+   "role": "use",
+   "target": "I'm trying to remember a few words in English so I can speak better",
+   "old": "英語でいくつかの言葉を覚えようとしています",
+   "new": "もっと上手に話せるように、英語でいくつかの言葉を覚えようとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U06",
+   "role": "use",
+   "target": "I speak a little English now and I want to say a few words",
+   "old": "今は英語でいくつかの言葉が言えます",
+   "new": "今は英語を少し話します。いくつかの言葉を言いたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U07",
+   "role": "use",
+   "target": "I'd like to say a few words in English today",
+   "old": "今日は英語でいくつかの言葉を練習したいです",
+   "new": "今日は英語でいくつかの言葉を言いたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U08",
+   "role": "use",
+   "target": "I'm trying to remember a few words in English and it's taking too much time",
+   "old": "英語でいくつかの言葉を覚えるのに少し時間がかかります",
+   "new": "英語でいくつかの言葉を覚えようとしていますが、時間がかかりすぎています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U09",
+   "role": "use",
+   "target": "I want to say a few words in English with my friends",
+   "old": "友達と英語でいくつかの言葉を練習したいです",
+   "new": "友達と英語でいくつかの言葉を言いたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U10",
+   "role": "use",
+   "target": "I want to try as hard as I can today to remember a few words in English",
+   "old": "英語でいくつかの言葉を覚えるために、できるだけ頑張ります",
+   "new": "英語でいくつかの言葉を覚えるために、今日はできるだけ頑張りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U12",
+   "role": "use",
+   "target": "It's a good thing to start with a few words in English",
+   "old": "いくつかの言葉から始めれば、もっとうまくなれます",
+   "new": "英語のいくつかの言葉から始めるのはいいことです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U14",
+   "role": "use",
+   "target": "I want to say a few words in English so I can speak better",
+   "old": "英語でいくつかの言葉が言えるので、うまく話せるようになります",
+   "new": "もっと上手に話せるように、英語でいくつかの言葉を言いたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0056L03U15",
+   "role": "use",
+   "target": "I'm going to practise speaking with someone else so I can say a few words in English",
+   "old": "英語でいくつかの言葉を言えるように、毎日練習しています",
+   "new": "英語でいくつかの言葉を言えるように、他の人と話す練習をするつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01B06",
+   "role": "build",
+   "target": "I can't remember how to say something",
+   "old": "英語でどう言うか思い出せません",
+   "new": "何かをどう言うか思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01B07",
+   "role": "build",
+   "target": "I can't remember a few words",
+   "old": "英語でいくつかの言葉が思い出せません",
+   "new": "いくつかの言葉が思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U02",
+   "role": "use",
+   "target": "I can't remember what I wanted to say so I need to start talking more",
+   "old": "今は言いたいことが思い出せないので、もっと話したいです",
+   "new": "言いたかったことが思い出せないので、もっと話し始める必要があります",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U03",
+   "role": "use",
+   "target": "I can't remember the whole sentence in English",
+   "old": "文全体が思い出せないことがあります",
+   "new": "英語で文全体が思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U04",
+   "role": "use",
+   "target": "I don't worry about making mistakes when I can't remember what to say",
+   "old": "間違いを気にせずに、思い出せないときでも話し続けたいです",
+   "new": "何を言えばいいか思い出せないとき、間違いを気にしません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U05",
+   "role": "use",
+   "target": "I can't remember a few words in English",
+   "old": "英語でいくつかの言葉が思い出せないことがあります",
+   "new": "英語でいくつかの言葉が思い出せません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "ZUT whole course: \"英語でいくつかの言葉が思い出せません\" is \"I can't remember a few words\" at seed 57"
+   ]
+  },
+  {
+   "id": "S0057L01U06",
+   "role": "use",
+   "target": "I can't remember how to say something in English",
+   "old": "英語でどう言うか思い出せないことがあります",
+   "new": "英語で何かをどう言うか思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U08",
+   "role": "use",
+   "target": "I think that when I can't remember, taking too much time is not what I want",
+   "old": "思い出せないと、時間をかけすぎてしまいます",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U09",
+   "role": "use",
+   "target": "I can't remember how to say a word in English and it's taking too much time",
+   "old": "英語でどう言うか思い出せなくて、時間がかかっています",
+   "new": "英語である言葉をどう言うか思い出せなくて、時間がかかりすぎています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U10",
+   "role": "use",
+   "target": "I can't remember what to say when I want to speak with my friends",
+   "old": "友達と話しているとき、思い出せないことがあります",
+   "new": "友達と話したいとき、何を言えばいいか思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U11",
+   "role": "use",
+   "target": "I don't like taking too much time when I can't remember what I wanted to say",
+   "old": "思い出せないときでも、間違えても大丈夫だと思います",
+   "new": "言いたかったことが思い出せないとき、時間をかけすぎるのは好きではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U12",
+   "role": "use",
+   "target": "I can't remember and I don't like taking too much time to answer",
+   "old": "思い出せないとき、もっと練習したいと思います",
+   "new": "思い出せません。そして、答えるのに時間をかけすぎるのは好きではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U13",
+   "role": "use",
+   "target": "I'm not going to be able to remember easily when I can't remember a word",
+   "old": "簡単に思い出せないことがよくあります",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0057L01U15",
+   "role": "use",
+   "target": "I don't worry about making mistakes when I can't remember what I wanted to say",
+   "old": "間違えても、思い出せないときも話し続けたいです",
+   "new": "言いたかったことが思い出せないとき、間違いを気にしません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01B02",
+   "role": "build",
+   "target": "know a few words in English",
+   "old": "英語の言葉を知っている",
+   "new": "英語でいくつかの言葉を知っている",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01B03",
+   "role": "build",
+   "target": "know what you wanted to say",
+   "old": "あなたが言いたいことを知っている",
+   "new": "あなたが言いたかったことを知っている",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U02",
+   "role": "use",
+   "target": "I know what I wanted to say but I can't remember how to say something in English",
+   "old": "何を言うか知っていても、英語でどう言えるか思い出せません",
+   "new": "言いたかったことは知っていますが、英語で何かをどう言うか思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U03",
+   "role": "use",
+   "target": "you know what it's interesting when you understand enough words",
+   "old": "英語で話す人々のことを知っています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U04",
+   "role": "use",
+   "target": "I know what you wanted to say in English",
+   "old": "あなたが言いたかったことを知っています",
+   "new": "あなたが英語で言いたかったことを知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U06",
+   "role": "use",
+   "target": "I know what I wanted to say but I can't remember the whole sentence",
+   "old": "言いたかったことを知っていても、英語で言えないことがあります",
+   "new": "言いたかったことは知っていますが、文全体が思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U07",
+   "role": "use",
+   "target": "you know what the answer is when you understand enough words",
+   "old": "答えが何かを知っています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U08",
+   "role": "use",
+   "target": "you know how to speak as often as possible in English",
+   "old": "英語を話す方法を知っています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U09",
+   "role": "use",
+   "target": "I know what I wanted to say in English with you now",
+   "old": "今すぐ英語で何を言うか知っています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U10",
+   "role": "use",
+   "target": "I know a few words in English but I want to start talking",
+   "old": "英語の言葉が少ししかわからないけど、話し続けたいです",
+   "new": "英語でいくつかの言葉を知っていますが、話し始めたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U13",
+   "role": "use",
+   "target": "I know what I wanted to say but it's taking too much time",
+   "old": "何を言うか知っていても、難しいことがあります",
+   "new": "言いたかったことは知っていますが、時間がかかりすぎています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L01U15",
+   "role": "use",
+   "target": "I know what I wanted to say but I can't remember a word",
+   "old": "言いたかったことは知っているけど、思い出せないことがあります",
+   "new": "言いたかったことは知っていますが、ある言葉が思い出せません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U01",
+   "role": "use",
+   "target": "I know what I need to do to speak English with people",
+   "old": "英語で話せるようになるためにやるべきことを知っています",
+   "new": "人と英語で話すために何をする必要があるか知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U02",
+   "role": "use",
+   "target": "I'm not sure if I know what I need to do today",
+   "old": "今日やるべきことができるかどうかわかりません",
+   "new": "今日何をする必要があるか知っているかどうかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U03",
+   "role": "use",
+   "target": "I know what I need to do today and I want to start talking",
+   "old": "今日やるべきことがあります",
+   "new": "今日何をする必要があるか知っています。そして、話し始めたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U04",
+   "role": "use",
+   "target": "You know what I need to do to speak English better soon",
+   "old": "英語を上達させるためにやるべきことを知っています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U05",
+   "role": "use",
+   "target": "I think I know what I need to do to start talking now",
+   "old": "今すぐやるべきことができると思います",
+   "new": "今話し始めるために何をする必要があるか知っていると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U07",
+   "role": "use",
+   "target": "I know what I need to do this morning to start talking",
+   "old": "今朝やるべきことはわかっています",
+   "new": "話し始めるために今朝何をする必要があるか知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U09",
+   "role": "use",
+   "target": "I know what I need to do tonight to practise speaking",
+   "old": "今夜やるべきことがあります",
+   "new": "話す練習をするために今夜何をする必要があるか知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U10",
+   "role": "use",
+   "target": "you know what I need to do to speak English as often as possible",
+   "old": "英語でうまく話せるようになるためにやるべきことを知っています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U11",
+   "role": "use",
+   "target": "I know what I need to do this afternoon to speak better",
+   "old": "今日の午後やるべきことがあります",
+   "new": "もっと上手に話すために今日の午後何をする必要があるか知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U13",
+   "role": "use",
+   "target": "I know what I need to do today so I can speak English very well",
+   "old": "英語を上達させるためにやるべきことを今日始めます",
+   "new": "英語をとても上手に話せるように、今日何をする必要があるか知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U14",
+   "role": "use",
+   "target": "I know what I need to do this evening to practise speaking English",
+   "old": "今日の夕方やるべきことがあります",
+   "new": "英語を話す練習をするために今晩何をする必要があるか知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0059L02U15",
+   "role": "use",
+   "target": "I want to do what I need to do to speak English more soon",
+   "old": "やるべきことをすぐにやりたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "8": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I want to explain\"",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I want to explain\"",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "18": {
+   "before": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"we want to meet\""
+   ],
+   "after": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"we want to meet\""
+   ],
+   "newFailures": []
+  },
+  "20": {
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "21": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "22": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "25": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I'm not going to go\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I'm not going to go\""
+   ],
+   "newFailures": []
+  },
+  "32": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I want to show you something\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I want you to show me\", \"I want you to show me something\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I want to show you something\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I want you to show me\", \"I want you to show me something\""
+   ],
+   "newFailures": []
+  },
+  "33": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "34": {
+   "before": [
+    "L2: vocab violations in 2 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"he doesn't want to speak when other people are here\""
+   ],
+   "after": [
+    "L2: vocab violations in 2 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"he doesn't want to speak when other people are here\""
+   ],
+   "newFailures": []
+  },
+  "35": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "37": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I started to read\", \"I started to learn\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I started to read\", \"I started to learn\""
+   ],
+   "newFailures": []
+  },
+  "41": {
+   "before": [
+    "L1: vocab violations in 4 phrase(s)",
+    "L2: 1 phrase(s) fail containment"
+   ],
+   "after": [
+    "L1: vocab violations in 4 phrase(s)",
+    "L2: 1 phrase(s) fail containment"
+   ],
+   "newFailures": []
+  },
+  "44": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "45": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "51": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I enjoy\", \"I enjoy doing interesting things with my friends\", \"I enjoy doing interesting things\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I enjoy doing interesting things\", \"I enjoy doing interesting things with my friends\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I enjoy doing interesting things\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I enjoy doing interesting things\"",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: 2 duplicate phrase(s) within this LEGO: \"with my friends\", \"I enjoy doing interesting things with my friends\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I enjoy\", \"I enjoy doing interesting things with my friends\", \"I enjoy doing interesting things\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I enjoy doing interesting things\", \"I enjoy doing interesting things with my friends\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I enjoy doing interesting things\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I enjoy doing interesting things\"",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: 2 duplicate phrase(s) within this LEGO: \"with my friends\", \"I enjoy doing interesting things with my friends\""
+   ],
+   "newFailures": []
+  },
+  "52": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"he wanted to write a letter to his friend\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"wanted to\", \"he wanted to write a letter to his friend\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"he wanted to write a letter to his friend\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"a letter\", \"he wanted to write a letter to his friend\"",
+    "L5: 2 duplicate phrase(s) within this LEGO: \"to his friend\", \"he wanted to write a letter to his friend\"",
+    "L6: 1 duplicate phrase(s) within this LEGO: \"last week\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"he wanted to write a letter to his friend\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"wanted to\", \"he wanted to write a letter to his friend\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"he wanted to write a letter to his friend\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"a letter\", \"he wanted to write a letter to his friend\"",
+    "L5: 2 duplicate phrase(s) within this LEGO: \"to his friend\", \"he wanted to write a letter to his friend\"",
+    "L6: 1 duplicate phrase(s) within this LEGO: \"last week\""
+   ],
+   "newFailures": []
+  },
+  "53": {
+   "before": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"in her bag\""
+   ],
+   "after": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"in her bag\""
+   ],
+   "newFailures": []
+  },
+  "54": {
+   "before": [
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"you speak English very well\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"a little more\""
+   ],
+   "after": [
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"you speak English very well\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"a little more\""
+   ],
+   "newFailures": []
+  },
+  "55": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I don't enjoy\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"waking up\"",
+    "L2: vocab violations in 3 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I didn't sleep\"",
+    "L4: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I don't enjoy\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"waking up\"",
+    "L2: vocab violations in 3 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I didn't sleep\"",
+    "L4: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "56": {
+   "before": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"a few words\""
+   ],
+   "after": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"a few words\""
+   ],
+   "newFailures": []
+  },
+  "57": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I can't remember\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I can't remember\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "59": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"you know that it's interesting when you understand enough words\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what I need to do\"",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"you know that it's interesting when you understand enough words\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what I need to do\"",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  }
+ }
+}

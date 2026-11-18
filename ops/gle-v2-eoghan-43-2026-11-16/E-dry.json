@@ -1,0 +1,856 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 304
+},
+"before": {
+"id": "7c941163-04ad-46cc-9519-b7b36270ea0b",
+"seed_number": 304,
+"target_text": "ceapaim nach mian léi obair ón mbaile",
+"known_text": "I think that she doesn't want to work from home",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "7c941163-04ad-46cc-9519-b7b36270ea0b",
+"seed_number": 304,
+"target_text": "ceapaim nach mian léi go mbeadh sí ag obair ón mbaile",
+"known_text": "I think that she doesn't want to work from home",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 332
+},
+"before": {
+"id": "0df2b082-9ad3-4339-bb63-ee3ea992e6b6",
+"seed_number": 332,
+"target_text": "is féidir leis saol nua a thógáil dá dheirfiúr",
+"known_text": "he can build a new life for his sister",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "0df2b082-9ad3-4339-bb63-ee3ea992e6b6",
+"seed_number": 332,
+"target_text": "is féidir leis saol nua a chur ar bun dá dheirfiúr",
+"known_text": "he can build a new life for his sister",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 335
+},
+"before": {
+"id": "fbdcc253-42b7-42cc-9ef1-51c9693a15b7",
+"seed_number": 335,
+"target_text": "ceapaim gur féidir leis smaointe luachmhara a chur leis",
+"known_text": "I think that he can add some valuable ideas",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "fbdcc253-42b7-42cc-9ef1-51c9693a15b7",
+"seed_number": 335,
+"target_text": "ceapaim gur féidir leis smaointe tairbheacha a chur leis",
+"known_text": "I think that he can add some valuable ideas",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 356
+},
+"before": {
+"id": "7d239546-9c72-48bf-b1d1-ce6f82e5691a",
+"seed_number": 356,
+"target_text": "bhí, bhí rud tábhachtach le plé acu",
+"known_text": "yes they had something important to discuss",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "7d239546-9c72-48bf-b1d1-ce6f82e5691a",
+"seed_number": 356,
+"target_text": "bhí, bhí rud éigin tábhachtach le plé acu",
+"known_text": "yes they had something important to discuss",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 357
+},
+"before": {
+"id": "7b38f3fb-dccc-44f2-b929-d9f5f25f0d13",
+"seed_number": 357,
+"target_text": "Ní raibh, níor mhian léi ach teachtaireacht a sheoladh chuici",
+"known_text": "no she just wanted to send her a message",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "7b38f3fb-dccc-44f2-b929-d9f5f25f0d13",
+"seed_number": 357,
+"target_text": "Ní raibh, ní raibh ann ach gur mhian léi teachtaireacht a sheoladh chuici",
+"known_text": "no she just wanted to send her a message",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 374
+},
+"before": {
+"id": "e82b2b17-4efd-4aa3-b876-7a55de0318fb",
+"seed_number": 374,
+"target_text": "Chonaic, cheap mé go raibh sé an-álainn",
+"known_text": "yes I thought it was very beautiful",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "e82b2b17-4efd-4aa3-b876-7a55de0318fb",
+"seed_number": 374,
+"target_text": "Chonaic, cheap mé go raibh sé go hálainn",
+"known_text": "yes I thought it was very beautiful",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 378
+},
+"before": {
+"id": "16731dd6-8c89-4f8e-92c9-661c7e5d6b3c",
+"seed_number": 378,
+"target_text": "Ní dheachaigh, ní raibh dóthain airgid agam do laethanta saoire",
+"known_text": "no I didn't have enough money for holidays",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "16731dd6-8c89-4f8e-92c9-661c7e5d6b3c",
+"seed_number": 378,
+"target_text": "Ní dheachaigh, ní raibh dóthain airgid agam i leith laethanta saoire",
+"known_text": "no I didn't have enough money for holidays",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 411
+},
+"before": {
+"id": "b0df3910-c45b-4a14-aba5-990844d8b55a",
+"seed_number": 411,
+"target_text": "ba mhaith linn bord a chur in áirithe do cheathrar anocht",
+"known_text": "we would like to reserve a table for four tonight",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "b0df3910-c45b-4a14-aba5-990844d8b55a",
+"seed_number": 411,
+"target_text": "ba mhaith linn bord i leith ceathrar a chur in áirithe don oíche anocht",
+"known_text": "we would like to reserve a table for four tonight",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 415
+},
+"before": {
+"id": "30f1b70d-14a2-4fa0-b6ec-6872e74f2a56",
+"seed_number": 415,
+"target_text": "Ní bheadh sé sin ina fhadhb dar liom",
+"known_text": "That wouldn't be a problem if you ask me",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "30f1b70d-14a2-4fa0-b6ec-6872e74f2a56",
+"seed_number": 415,
+"target_text": "Ní bheadh fadhb ar bith leis sin, dar liom",
+"known_text": "That wouldn't be a problem if you ask me",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 423
+},
+"before": {
+"id": "3f9a2b0c-a81c-4346-b183-bed4d6a376c9",
+"seed_number": 423,
+"target_text": "an gcaithfidh siad ceist chomh soiléir sin a chur?",
+"known_text": "do they need to ask such an obvious question?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "3f9a2b0c-a81c-4346-b183-bed4d6a376c9",
+"seed_number": 423,
+"target_text": "an gcaithfidh siad ceist atá chomh ríshoiléir sin a chur?",
+"known_text": "do they need to ask such an obvious question?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 454
+},
+"before": {
+"id": "12f94751-d71b-4c3c-ba9c-7d4c22698d3b",
+"seed_number": 454,
+"target_text": "tháinig ár gcairde thart timpeall a sé a chlog",
+"known_text": "our friends came round at about six o'clock",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "12f94751-d71b-4c3c-ba9c-7d4c22698d3b",
+"seed_number": 454,
+"target_text": "tháinig ár gcairde anseo thart ar a sé a chlog",
+"known_text": "our friends came round at about six o'clock",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 460
+},
+"before": {
+"id": "ec5e2105-a75e-4507-bf46-e173d35b5172",
+"seed_number": 460,
+"target_text": "Is mian liom siopa a fháil in aice leis an óstán",
+"known_text": "I want to find a shop near the hotel",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "ec5e2105-a75e-4507-bf46-e173d35b5172",
+"seed_number": 460,
+"target_text": "Is mian liom siopa atá gar don teach ósta a fháil",
+"known_text": "I want to find a shop near the hotel",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 461
+},
+"before": {
+"id": "23d267d2-3758-4d00-898c-7adba3fd32c0",
+"seed_number": 461,
+"target_text": "siopa inar féidir liom cártaí poist a cheannach",
+"known_text": "a shop where I can buy some postcards",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "23d267d2-3758-4d00-898c-7adba3fd32c0",
+"seed_number": 461,
+"target_text": "siopa inar féidir liom roinnt cártaí poist a cheannach",
+"known_text": "a shop where I can buy some postcards",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 13,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 481
+},
+"before": {
+"id": "26f0475d-1259-4f7b-8cd0-d38ff694df83",
+"seed_number": 481,
+"target_text": "is é an t-aon dóchas fíor atá fágtha againn",
+"known_text": "it's the only real hope we have left",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "26f0475d-1259-4f7b-8cd0-d38ff694df83",
+"seed_number": 481,
+"target_text": "Is é an fíordhóchas amháin atá fágtha againn",
+"known_text": "it's the only real hope we have left",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 14,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 483
+},
+"before": {
+"id": "e61accb1-17da-41a4-9162-1f8971fad1ce",
+"seed_number": 483,
+"target_text": "Níl an saol éasca ach níl sé ceaptha a bheith éasca",
+"known_text": "life isn't easy but it's not meant to be easy",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "e61accb1-17da-41a4-9162-1f8971fad1ce",
+"seed_number": 483,
+"target_text": "Níl an saol éasca ach níl sé amuigh air go bhfuil sé éasca",
+"known_text": "life isn't easy but it's not meant to be easy",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 15,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 489
+},
+"before": {
+"id": "2f8e7266-604c-43c9-85d8-2545f39b4d9f",
+"seed_number": 489,
+"target_text": "mura ndéanann tú cupán de chaife láidir dom anois díreach",
+"known_text": "if you don't make me a strong cup of coffee right now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "2f8e7266-604c-43c9-85d8-2545f39b4d9f",
+"seed_number": 489,
+"target_text": "mura ndéanann tú cupán de chaife láidir dom láithreach bonn",
+"known_text": "if you don't make me a strong cup of coffee right now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 16,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 490
+},
+"before": {
+"id": "f4797c4d-8511-42fa-8338-34b8c00bd6ae",
+"seed_number": 490,
+"target_text": "Ní bheidh muinín agam as aon duine go deo arís",
+"known_text": "then I will never trust anyone ever again",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "f4797c4d-8511-42fa-8338-34b8c00bd6ae",
+"seed_number": 490,
+"target_text": "Dá bharr sin, ní bheidh muinín agam as aon duine go deo arís",
+"known_text": "then I will never trust anyone ever again",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 17,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 492
+},
+"before": {
+"id": "40aac957-001d-464b-aa94-445fb28adf9d",
+"seed_number": 492,
+"target_text": "cé acu de na háiteanna sin a cheapann tú is suimiúla?",
+"known_text": "which of those places do you think is the most interesting?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "40aac957-001d-464b-aa94-445fb28adf9d",
+"seed_number": 492,
+"target_text": "cé acu de na háiteanna sin atá ina áit is suimiúla duit?",
+"known_text": "which of those places do you think is the most interesting?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 18,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 496
+},
+"before": {
+"id": "1ae48a54-1cf6-4d32-a302-62bd7fc7916d",
+"seed_number": 496,
+"target_text": "níl mé ag pleanáil cailleadh nuair a bhíonn sé fíorthábhachtach",
+"known_text": "I'm not planning to lose when it really matters",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "1ae48a54-1cf6-4d32-a302-62bd7fc7916d",
+"seed_number": 496,
+"target_text": "Níl mé ag beartú go gcailleoidh mé nuair atá fíorthábhacht ag baint leis",
+"known_text": "I'm not planning to lose when it really matters",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 19,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 498
+},
+"before": {
+"id": "7deacfa8-ffd3-4294-afac-7eefee4dc7d0",
+"seed_number": 498,
+"target_text": "Tá sé ina sheasamh leis féin thall ansin laistigh den bhealach isteach",
+"known_text": "he's standing alone over there inside the entrance",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "7deacfa8-ffd3-4294-afac-7eefee4dc7d0",
+"seed_number": 498,
+"target_text": "Tá sé ina sheasamh thall ansin ina aonar laistigh den tslí isteach",
+"known_text": "he's standing alone over there inside the entrance",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 20,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 501
+},
+"before": {
+"id": "584b1c41-4c49-49e3-ae0f-187b1422af81",
+"seed_number": 501,
+"target_text": "dá bhféadfainn muinín a bheith agam asaibh imirt le chéile gan argóint",
+"known_text": "if only I could trust you to play together without arguing",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "584b1c41-4c49-49e3-ae0f-187b1422af81",
+"seed_number": 501,
+"target_text": "Mura mbeadh ann ach go bhféadfainn muinín a bheith as sibh a bheith in ann imirt le chéile gan argóint",
+"known_text": "if only I could trust you to play together without arguing",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 21,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 542
+},
+"before": {
+"id": "16d0d1c3-d8b3-4888-90bd-ea2e2a8c8730",
+"seed_number": 542,
+"target_text": "aon uair a bhíonn fearg ort",
+"known_text": "whenever you feel angry",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "16d0d1c3-d8b3-4888-90bd-ea2e2a8c8730",
+"seed_number": 542,
+"target_text": "gach uair a mhothaíonn tú feargach",
+"known_text": "whenever you feel angry",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 22,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 601
+},
+"before": {
+"id": "377c1bd9-65b3-4ac1-aac9-73a890202753",
+"seed_number": 601,
+"target_text": "bhí muid ag caint faoin gcaoi ar thosaigh an rud ar fad",
+"known_text": "we were talking about how it all started",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "377c1bd9-65b3-4ac1-aac9-73a890202753",
+"seed_number": 601,
+"target_text": "bhí muid ag caint faoi conas a thosaigh an rud ar fad",
+"known_text": "we were talking about how it all started",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 23,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 614
+},
+"before": {
+"id": "125c746a-b17e-4fb4-95b5-06e358cad74c",
+"seed_number": 614,
+"target_text": "Tá sé in aice leis an áit a bhfuil do theaghlach ina chónaí",
+"known_text": "it's near where your family live",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "125c746a-b17e-4fb4-95b5-06e358cad74c",
+"seed_number": 614,
+"target_text": "Tá sé in aice le cá bhfuil do chlann ina gcónaí",
+"known_text": "it's near where your family live",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+}
+],
+"undo_ops": [
+{
+"op": "seed.update",
+"seed_number": 614,
+"set": {
+"target_text": "Tá sé in aice leis an áit a bhfuil do theaghlach ina chónaí"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 601,
+"set": {
+"target_text": "bhí muid ag caint faoin gcaoi ar thosaigh an rud ar fad"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 542,
+"set": {
+"target_text": "aon uair a bhíonn fearg ort"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 501,
+"set": {
+"target_text": "dá bhféadfainn muinín a bheith agam asaibh imirt le chéile gan argóint"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 498,
+"set": {
+"target_text": "Tá sé ina sheasamh leis féin thall ansin laistigh den bhealach isteach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 496,
+"set": {
+"target_text": "níl mé ag pleanáil cailleadh nuair a bhíonn sé fíorthábhachtach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 492,
+"set": {
+"target_text": "cé acu de na háiteanna sin a cheapann tú is suimiúla?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 490,
+"set": {
+"target_text": "Ní bheidh muinín agam as aon duine go deo arís"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 489,
+"set": {
+"target_text": "mura ndéanann tú cupán de chaife láidir dom anois díreach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 483,
+"set": {
+"target_text": "Níl an saol éasca ach níl sé ceaptha a bheith éasca"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 481,
+"set": {
+"target_text": "is é an t-aon dóchas fíor atá fágtha againn"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 461,
+"set": {
+"target_text": "siopa inar féidir liom cártaí poist a cheannach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 460,
+"set": {
+"target_text": "Is mian liom siopa a fháil in aice leis an óstán"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 454,
+"set": {
+"target_text": "tháinig ár gcairde thart timpeall a sé a chlog"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 423,
+"set": {
+"target_text": "an gcaithfidh siad ceist chomh soiléir sin a chur?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 415,
+"set": {
+"target_text": "Ní bheadh sé sin ina fhadhb dar liom"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 411,
+"set": {
+"target_text": "ba mhaith linn bord a chur in áirithe do cheathrar anocht"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 378,
+"set": {
+"target_text": "Ní dheachaigh, ní raibh dóthain airgid agam do laethanta saoire"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 374,
+"set": {
+"target_text": "Chonaic, cheap mé go raibh sé an-álainn"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 357,
+"set": {
+"target_text": "Ní raibh, níor mhian léi ach teachtaireacht a sheoladh chuici"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 356,
+"set": {
+"target_text": "bhí, bhí rud tábhachtach le plé acu"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 335,
+"set": {
+"target_text": "ceapaim gur féidir leis smaointe luachmhara a chur leis"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 332,
+"set": {
+"target_text": "is féidir leis saol nua a thógáil dá dheirfiúr"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 304,
+"set": {
+"target_text": "ceapaim nach mian léi obair ón mbaile"
+}
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 3.5,
+"_seeds": [
+304,
+332,
+335,
+356,
+357,
+374,
+378,
+411,
+415,
+423,
+454,
+460,
+461,
+481,
+483,
+489,
+490,
+492,
+496,
+498,
+501,
+542,
+601,
+614
+],
+"_ops": 24
+}

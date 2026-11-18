@@ -1,0 +1,3584 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "88e8cdee-e942-4b97-96a9-8c3648ee6574",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "seed_number": 57
+   },
+   "before": {
+    "id": "539d8fdc-2417-4fb8-8864-b58cc45f1fb8",
+    "seed_number": 57,
+    "target_text": "Ik kin net mear betinke hoe't ik sizze moat wat ik sizze woe.",
+    "known_text": "I can't remember how to say what I wanted to say.",
+    "known_audio_id": null,
+    "target1_audio_id": "7c278371-bc9e-4e15-a317-846f4248d134",
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "539d8fdc-2417-4fb8-8864-b58cc45f1fb8",
+    "seed_number": 57,
+    "target_text": "Ik kin my net heuge hoe't ik sizze moat wat ik sizze woe.",
+    "known_text": "I can't remember how to say what I wanted to say.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "lego_id": "S0057L01"
+   },
+   "before": {
+    "id": "ac8c86ba-170e-4a1d-95c0-537b6f2734fe",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": "S0057L01",
+    "target_text": "ik kin net mear betinke",
+    "components": [
+     {
+      "known": "I can",
+      "target": "ik kin"
+     },
+     {
+      "known": "not any more",
+      "target": "net mear"
+     },
+     {
+      "known": "to recall",
+      "target": "betinke"
+     }
+    ],
+    "known_text": "I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": "7058cf06-4bdd-453a-b1a1-cc941032381a",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ac8c86ba-170e-4a1d-95c0-537b6f2734fe",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": "S0057L01",
+    "target_text": "ik kin my net heuge",
+    "components": [
+     {
+      "known": "I can",
+      "target": "ik kin"
+     },
+     {
+      "known": "myself",
+      "target": "my"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     },
+     {
+      "known": "to recall",
+      "target": "heuge"
+     }
+    ],
+    "known_text": "I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01C02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01C02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "not any more",
+    "target_text": "net mear",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01C02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "not",
+    "target_text": "net",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01C03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01C03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "betinke",
+    "known_text": "to recall",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01C03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "heuge",
+    "known_text": "to recall",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01B01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01B01",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke hoe't ik antwurdzje soe",
+    "known_text": "I can't remember how to answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01B01",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge hoe't ik antwurdzje soe",
+    "known_text": "I can't remember how to answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01B02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01B02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat it antwurd is",
+    "known_text": "I can't remember what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": "f3e3e83e-dc42-4664-ace7-0889c0f5d467",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01B02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat it antwurd is",
+    "known_text": "I can't remember what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01B03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke hoe lang ik al lear",
+    "known_text": "I can't remember how long I've been learning",
+    "known_audio_id": null,
+    "target1_audio_id": "415f6dc0-f71a-4075-84e5-1df3677e4ecf",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01B03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge hoe lang ik al lear",
+    "known_text": "I can't remember how long I've been learning",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01B04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01B04",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin wurch en ik kin net mear betinke",
+    "known_text": "I'm tired and I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": "f8701b57-d7fe-4bee-a586-91ac0996c47d",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01B04",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin wurch en ik kin my net heuge",
+    "known_text": "I'm tired and I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01U01",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin fan 'e moarn in bytsje wurch en ik kin net mear betinke hoe't ik antwurdzje soe",
+    "known_text": "I'm a little tired this morning and I can't remember how to answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01U01",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin fan 'e moarn in bytsje wurch en ik kin my net heuge hoe't ik antwurdzje soe",
+    "known_text": "I'm a little tired this morning and I can't remember how to answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01U02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "it sit sa, ik kin net mear betinke wat it antwurd is",
+    "known_text": "it's like this I can't remember what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01U02",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "it sit sa, ik kin my net heuge wat it antwurd is",
+    "known_text": "it's like this I can't remember what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01U03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik besykje te learen mar ik kin net mear betinke hoe't ik sizze moat wat ik bedoel",
+    "known_text": "I'm trying to learn but I can't remember how to say what I mean",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01U03",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik besykje te learen mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel",
+    "known_text": "I'm trying to learn but I can't remember how to say what I mean",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01U04",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke hoe lang ik al Frysk lear",
+    "known_text": "I can't remember how long I've been learning Frisian",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01U04",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge hoe lang ik al Frysk lear",
+    "known_text": "I can't remember how long I've been learning Frisian",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01U05",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik hoech net alles te witten mar ik kin net mear betinke wat it antwurd is",
+    "known_text": "I don't need to know everything but I can't remember what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01U05",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik hoech net alles te witten mar ik kin my net heuge wat it antwurd is",
+    "known_text": "I don't need to know everything but I can't remember what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01U06"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01U06",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke hoe't ik antwurdzje soe om't ik in bytsje wurch bin",
+    "known_text": "I can't remember how to answer because I'm a little tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01U06",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge hoe't ik antwurdzje soe om't ik in bytsje wurch bin",
+    "known_text": "I can't remember how to answer because I'm a little tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L01U07"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L01U07",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik wol graach Frysk prate mar ik kin net mear betinke hoe't ik sizze moat wat ik bedoel",
+    "known_text": "I'd like to be able to speak Frisian but I can't remember how to say what I mean",
+    "known_audio_id": null,
+    "target1_audio_id": "b7679bfb-8c19-4572-84fb-2a997893837e",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L01U07",
+    "seed_number": 57,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik wol graach Frysk prate mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel",
+    "known_text": "I'd like to be able to speak Frisian but I can't remember how to say what I mean",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0057L02U07"
+   },
+   "before": {
+    "id": "fry_for_eng:S0057L02U07",
+    "seed_number": 57,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke hoe't ik sizze moat wat ik sizze woe",
+    "known_text": "I can't remember how to say what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": "7c278371-bc9e-4e15-a317-846f4248d134",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0057L02U07",
+    "seed_number": 57,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge hoe't ik sizze moat wat ik sizze woe",
+    "known_text": "I can't remember how to say what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0059L03B01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0059L03B01",
+    "seed_number": 59,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik dwaan moat",
+    "known_text": "I can't remember what I need to do",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0059L03B01",
+    "seed_number": 59,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik dwaan moat",
+    "known_text": "I can't remember what I need to do",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0059L03U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0059L03U01",
+    "seed_number": 59,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik dwaan moat as ik net goed slept haw",
+    "known_text": "I can't remember what I need to do when I didn't sleep very well",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0059L03U01",
+    "seed_number": 59,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik dwaan moat as ik net goed slept haw",
+    "known_text": "I can't remember what I need to do when I didn't sleep very well",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0059L04U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0059L04U01",
+    "seed_number": 59,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke hoe't ik dat doch",
+    "known_text": "I can't remember how I do that",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0059L04U01",
+    "seed_number": 59,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge hoe't ik dat doch",
+    "known_text": "I can't remember how I do that",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0060L01U06"
+   },
+   "before": {
+    "id": "fry_for_eng:S0060L01U06",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke en ik wit noch net wat it antwurd is",
+    "known_text": "I can't remember and I don't know yet what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0060L01U06",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge en ik wit noch net wat it antwurd is",
+    "known_text": "I can't remember and I don't know yet what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0063L01B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0063L01B03",
+    "seed_number": 63,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke, bistû der wis fan?",
+    "known_text": "I can't remember, are you sure?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0063L01B03",
+    "seed_number": 63,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge, bistû der wis fan?",
+    "known_text": "I can't remember, are you sure?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0064L03U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0064L03U02",
+    "seed_number": 64,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar it is wol moai om te dwaan",
+    "known_text": "I can't remember what I wanted to say but it is fun",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0064L03U02",
+    "seed_number": 64,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe mar it is wol moai om te dwaan",
+    "known_text": "I can't remember what I wanted to say but it is fun",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0066L02U06"
+   },
+   "before": {
+    "id": "fry_for_eng:S0066L02U06",
+    "seed_number": 66,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik besykje om it antwurd te finen mar ik kin net mear betinke",
+    "known_text": "I'm trying to find the answer but I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0066L02U06",
+    "seed_number": 66,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik besykje om it antwurd te finen mar ik kin my net heuge",
+    "known_text": "I'm trying to find the answer but I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0070L03U07"
+   },
+   "before": {
+    "id": "fry_for_eng:S0070L03U07",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wêr't it wie",
+    "known_text": "I can't remember where it was",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0070L03U07",
+    "seed_number": 70,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wêr't it wie",
+    "known_text": "I can't remember where it was",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0078L01B02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0078L01B02",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik besykje mar ik begryp net",
+    "known_text": "I'm trying but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": "c0d47008-8f8d-45e9-9667-145cd565ac6a",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0078L01B02",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik besykje mar ik begryp it net",
+    "known_text": "I'm trying but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0078L01U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0078L01U01",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hy wol letter weromkomme mar ik begryp net",
+    "known_text": "he wants to come back later on but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0078L01U01",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hy wol letter weromkomme mar ik begryp it net",
+    "known_text": "he wants to come back later on but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0078L01U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0078L01U04",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dû praatst hiel goed mar ik begryp net",
+    "known_text": "you speak very well but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": "0419c929-c5e9-4b4a-99ae-91fe310f9578",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0078L01U04",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dû praatst hiel goed mar ik begryp it net",
+    "known_text": "you speak very well but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0078L01U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0078L01U05",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin der net wis fan oft ik de hiele sin noch wit en ik begryp net",
+    "known_text": "I'm not sure if I can remember the whole sentence and I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0078L01U05",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin der net wis fan oft ik de hiele sin noch wit en ik begryp it net",
+    "known_text": "I'm not sure if I can remember the whole sentence and I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0078L01U06"
+   },
+   "before": {
+    "id": "fry_for_eng:S0078L01U06",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin fan 'e middei in bytsje wurch en ik begryp net",
+    "known_text": "I'm a little tired this afternoon and I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0078L01U06",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin fan 'e middei in bytsje wurch en ik begryp it net",
+    "known_text": "I'm a little tired this afternoon and I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0078L01U07"
+   },
+   "before": {
+    "id": "fry_for_eng:S0078L01U07",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp net en it makket my neat út",
+    "known_text": "I don't understand and I don't care",
+    "known_audio_id": null,
+    "target1_audio_id": "ff84f5de-4540-4731-8632-aa42b5098dae",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0078L01U07",
+    "seed_number": 78,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp it net en it makket my neat út",
+    "known_text": "I don't understand and I don't care",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0082L03U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0082L03U04",
+    "seed_number": 82,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wêrom net",
+    "known_text": "I can't remember why not",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0082L03U04",
+    "seed_number": 82,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wêrom net",
+    "known_text": "I can't remember why not",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0083L01U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0083L01U01",
+    "seed_number": 83,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik bin it iens mei dy",
+    "known_text": "I can't remember what I wanted to say but I agree with you",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0083L01U01",
+    "seed_number": 83,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik bin it iens mei dy",
+    "known_text": "I can't remember what I wanted to say but I agree with you",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0084L01U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0084L01U03",
+    "seed_number": 84,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin it net iens mar ik kin net mear betinke wat ik sizze woe",
+    "known_text": "I don't agree but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0084L01U03",
+    "seed_number": 84,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik bin it net iens mar ik kin my net heuge wat ik sizze woe",
+    "known_text": "I don't agree but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0084L02B01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0084L02B01",
+    "seed_number": 84,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat er sein hat",
+    "known_text": "I can't remember what he said",
+    "known_audio_id": null,
+    "target1_audio_id": "78c061dd-402a-4328-8428-867f439eee49",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0084L02B01",
+    "seed_number": 84,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat er sein hat",
+    "known_text": "I can't remember what he said",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0084L03U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0084L03U05",
+    "seed_number": 84,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik woe in brief oer myn freon skriuwe mar ik kin net mear betinke wat ik sizze woe",
+    "known_text": "I wanted to write a letter about my friend but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0084L03U05",
+    "seed_number": 84,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik woe in brief oer myn freon skriuwe mar ik kin my net heuge wat ik sizze woe",
+    "known_text": "I wanted to write a letter about my friend but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0085L02U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0085L02U03",
+    "seed_number": 85,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin syn namme net mear betinke en ik ken dy minsken net",
+    "known_text": "I can't remember his name and I don't know those people",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0085L02U03",
+    "seed_number": 85,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my syn namme net heuge en ik ken dy minsken net",
+    "known_text": "I can't remember his name and I don't know those people",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0086L01U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0086L01U01",
+    "seed_number": 86,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "spitigernôch kin ik net mear betinke wat ik sizze woe",
+    "known_text": "I can't remember what I wanted to say unfortunately",
+    "known_audio_id": null,
+    "target1_audio_id": "df170886-31a6-4c46-b950-4b5f003ff94a",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0086L01U01",
+    "seed_number": 86,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "spitigernôch kin ik my net heuge wat ik sizze woe",
+    "known_text": "I can't remember what I wanted to say unfortunately",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0091L01U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0091L01U03",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe en it is dreech",
+    "known_text": "I can't remember what I wanted to say and it's difficult",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0091L01U03",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe en it is dreech",
+    "known_text": "I can't remember what I wanted to say and it's difficult",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0096L02U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0096L02U05",
+    "seed_number": 96,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik haw mear tiid nedich, ik kin net mear betinke wat ik sizze woe",
+    "known_text": "I need more time, I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0096L02U05",
+    "seed_number": 96,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik haw mear tiid nedich, ik kin my net heuge wat ik sizze woe",
+    "known_text": "I need more time, I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0104L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0104L01U02",
+    "seed_number": 104,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp net mar wy moatte freegje",
+    "known_text": "I don't understand but we need to ask",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0104L01U02",
+    "seed_number": 104,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp it net mar wy moatte freegje",
+    "known_text": "I don't understand but we need to ask",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0105L01U06"
+   },
+   "before": {
+    "id": "fry_for_eng:S0105L01U06",
+    "seed_number": 105,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dêrom kin ik net mear betinke wat ik sizze woe",
+    "known_text": "that is why I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0105L01U06",
+    "seed_number": 105,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dêrom kin ik my net heuge wat ik sizze woe",
+    "known_text": "that is why I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0110L01U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0110L01U01",
+    "seed_number": 110,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin har namme net mear betinke mar wy binne freonen",
+    "known_text": "I can't remember her name but we're friends",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0110L01U01",
+    "seed_number": 110,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my har namme net heuge mar wy binne freonen",
+    "known_text": "I can't remember her name but we're friends",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0112L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0112L01U02",
+    "seed_number": 112,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dat wie hiel nijsgjirrich, mar ik kin net mear betinke wat ik sizze woe",
+    "known_text": "that was very interesting, but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0112L01U02",
+    "seed_number": 112,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dat wie hiel nijsgjirrich, mar ik kin my net heuge wat ik sizze woe",
+    "known_text": "that was very interesting, but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0117L04U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0117L04U04",
+    "seed_number": 117,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke dat wy inoar sprutsen",
+    "known_text": "I can't remember that we talked",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0117L04U04",
+    "seed_number": 117,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge dat wy inoar sprutsen",
+    "known_text": "I can't remember that we talked",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0122L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0122L01U02",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar it begjint makliker te wurden",
+    "known_text": "I can't remember what I wanted to say but it's getting easier",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0122L01U02",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe mar it begjint makliker te wurden",
+    "known_text": "I can't remember what I wanted to say but it's getting easier",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0122L02U07"
+   },
+   "before": {
+    "id": "fry_for_eng:S0122L02U07",
+    "seed_number": 122,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik bin bliid mei watstû sein hast",
+    "known_text": "I can't remember what I wanted to say but I'm happy with what you said",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0122L02U07",
+    "seed_number": 122,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik bin bliid mei watstû sein hast",
+    "known_text": "I can't remember what I wanted to say but I'm happy with what you said",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0127L01U06"
+   },
+   "before": {
+    "id": "fry_for_eng:S0127L01U06",
+    "seed_number": 127,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar dat is net wichtich",
+    "known_text": "I can't remember what I wanted to say but that isn't important",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0127L01U06",
+    "seed_number": 127,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe mar dat is net wichtich",
+    "known_text": "I can't remember what I wanted to say but that isn't important",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 47,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0127L02B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0127L02B03",
+    "seed_number": 127,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wêrom't ik dy sjen woe",
+    "known_text": "I can't remember why I wanted to see you",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0127L02B03",
+    "seed_number": 127,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wêrom't ik dy sjen woe",
+    "known_text": "I can't remember why I wanted to see you",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 48,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0131L03U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0131L03U05",
+    "seed_number": 131,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "der geane tefolle ideeën om yn myn harsens en ik kin net mear betinke wat ik sizze woe",
+    "known_text": "there are too many ideas going around in my brain and I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0131L03U05",
+    "seed_number": 131,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "der geane tefolle ideeën om yn myn harsens en ik kin my net heuge wat ik sizze woe",
+    "known_text": "there are too many ideas going around in my brain and I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 49,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0136L02B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0136L02B03",
+    "seed_number": 136,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke, mar fansels kinstû har freegje",
+    "known_text": "I can't remember but of course you can ask her",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0136L02B03",
+    "seed_number": 136,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge, mar fansels kinstû har freegje",
+    "known_text": "I can't remember but of course you can ask her",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 50,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0136L03U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0136L03U05",
+    "seed_number": 136,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin har namme net mear betinke, mar se is myn freon",
+    "known_text": "I can't remember her name but she's my friend",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0136L03U05",
+    "seed_number": 136,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my har namme net heuge, mar se is myn freon",
+    "known_text": "I can't remember her name but she's my friend",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 51,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0138L02U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0138L02U03",
+    "seed_number": 138,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wêr't myn freon ús moetsje woe",
+    "known_text": "I can't remember where my friend wanted to meet us",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0138L02U03",
+    "seed_number": 138,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wêr't myn freon ús moetsje woe",
+    "known_text": "I can't remember where my friend wanted to meet us",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 52,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0139L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0139L01U02",
+    "seed_number": 139,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "it spyt my, ik kin net mear betinke wat ik sizze woe",
+    "known_text": "I'm sorry I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0139L01U02",
+    "seed_number": 139,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "it spyt my, ik kin my net heuge wat ik sizze woe",
+    "known_text": "I'm sorry I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 53,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0145L01U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0145L01U04",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp net, wêrom bistû net mear bliid?",
+    "known_text": "I don't understand, why are you not happy any more?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0145L01U04",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp it net, wêrom bistû net mear bliid?",
+    "known_text": "I don't understand, why are you not happy any more?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 54,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0146L01U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0146L01U05",
+    "seed_number": 146,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp net, neat liket te wurkjen",
+    "known_text": "I don't understand, nothing seems to be working",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0146L01U05",
+    "seed_number": 146,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp it net, neat liket te wurkjen",
+    "known_text": "I don't understand, nothing seems to be working",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 55,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0148L01U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0148L01U03",
+    "seed_number": 148,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hy wie net hiel geduldich en ik koe net mear betinke wat ik sizze woe",
+    "known_text": "he wasn't very patient and I couldn't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0148L01U03",
+    "seed_number": 148,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hy wie net hiel geduldich en ik koe my net heuge wat ik sizze woe",
+    "known_text": "he wasn't very patient and I couldn't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 56,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0150L01U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0150L01U03",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin dyn namme net mear betinke",
+    "known_text": "I can't remember your name",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0150L01U03",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my dyn namme net heuge",
+    "known_text": "I can't remember your name",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 57,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0150L02B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0150L02B03",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik begryp net mar kinstû my fertelle",
+    "known_text": "I don't understand but can you tell me",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0150L02B03",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik begryp it net mar kinstû my fertelle",
+    "known_text": "I don't understand but can you tell me",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 58,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0150L03U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0150L03U02",
+    "seed_number": 150,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat dyn namme is om't ik wurch wie",
+    "known_text": "I can't remember what your name is because I was tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0150L03U02",
+    "seed_number": 150,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat dyn namme is om't ik wurch wie",
+    "known_text": "I can't remember what your name is because I was tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 59,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0151L01U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0151L01U05",
+    "seed_number": 151,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp net, dat wie net watstû sein hast",
+    "known_text": "I don't understand, that wasn't what you said",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0151L01U05",
+    "seed_number": 151,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp it net, dat wie net watstû sein hast",
+    "known_text": "I don't understand, that wasn't what you said",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 60,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0151L02U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0151L02U05",
+    "seed_number": 151,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik hope",
+    "known_text": "I can't remember what I was hoping",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0151L02U05",
+    "seed_number": 151,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik hope",
+    "known_text": "I can't remember what I was hoping",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 61,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0152L03U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0152L03U03",
+    "seed_number": 152,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke watstû woest",
+    "known_text": "I can't remember what you wanted",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0152L03U03",
+    "seed_number": 152,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge watstû woest",
+    "known_text": "I can't remember what you wanted",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 62,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0158L03U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0158L03U05",
+    "seed_number": 158,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe, litte wy oer wat oars prate",
+    "known_text": "I can't remember what I wanted to say, let's talk about something else",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0158L03U05",
+    "seed_number": 158,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe, litte wy oer wat oars prate",
+    "known_text": "I can't remember what I wanted to say, let's talk about something else",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 63,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0169L03U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0169L03U02",
+    "seed_number": 169,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik begryp net, wat wolstû dat ik doch?",
+    "known_text": "I don't understand, what do you want that I do?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0169L03U02",
+    "seed_number": 169,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik begryp it net, wat wolstû dat ik doch?",
+    "known_text": "I don't understand, what do you want that I do?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 64,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0170L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0170L01U02",
+    "seed_number": 170,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp net, ik woe graach datstû in bytsje stadiger praatst",
+    "known_text": "I don't understand, I would like that you speak a little more slowly",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0170L01U02",
+    "seed_number": 170,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik begryp it net, ik woe graach datstû in bytsje stadiger praatst",
+    "known_text": "I don't understand, I would like that you speak a little more slowly",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 65,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0176L02U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0176L02U02",
+    "seed_number": 176,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke mar ik sil him freegje wêr't it wie",
+    "known_text": "I can't remember but I'll ask him where it was",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0176L02U02",
+    "seed_number": 176,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge mar ik sil him freegje wêr't it wie",
+    "known_text": "I can't remember but I'll ask him where it was",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 66,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0176L02U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0176L02U03",
+    "seed_number": 176,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik begryp net mar ik sil him freegje wat it antwurd is",
+    "known_text": "I don't understand but I'll ask him what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0176L02U03",
+    "seed_number": 176,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik begryp it net mar ik sil him freegje wat it antwurd is",
+    "known_text": "I don't understand but I'll ask him what the answer is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 67,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0176L02U06"
+   },
+   "before": {
+    "id": "fry_for_eng:S0176L02U06",
+    "seed_number": 176,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik sil him freegje om't ik net begryp",
+    "known_text": "I'll ask him because I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0176L02U06",
+    "seed_number": 176,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik sil him freegje om't ik it net begryp",
+    "known_text": "I'll ask him because I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 68,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0177L02U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0177L02U02",
+    "seed_number": 177,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wêr't se hinne gean wol",
+    "known_text": "I can't remember where she wants to go",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0177L02U02",
+    "seed_number": 177,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wêr't se hinne gean wol",
+    "known_text": "I can't remember where she wants to go",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 69,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0182L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0182L01U02",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wêr't myn kaaien binne",
+    "known_text": "I can't remember where my keys are",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0182L01U02",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wêr't myn kaaien binne",
+    "known_text": "I can't remember where my keys are",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 70,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0182L02U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0182L02U03",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wêr't it wie, hastû myn kaaien earne sjoen?",
+    "known_text": "I can't remember where it was, have you seen my keys anywhere?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0182L02U03",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wêr't it wie, hastû myn kaaien earne sjoen?",
+    "known_text": "I can't remember where it was, have you seen my keys anywhere?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 71,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0183L01B01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0183L01B01",
+    "seed_number": 183,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin spitigernôch net mear betinke",
+    "known_text": "I'm afraid I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0183L01B01",
+    "seed_number": 183,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my spitigernôch net heuge",
+    "known_text": "I'm afraid I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 72,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0184L03U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0184L03U03",
+    "seed_number": 184,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ja, ik haw se sjoen, mar ik kin net mear betinke wêr't it wie",
+    "known_text": "yes, I saw them, but I can't remember where it was",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0184L03U03",
+    "seed_number": 184,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ja, ik haw se sjoen, mar ik kin my net heuge wêr't it wie",
+    "known_text": "yes, I saw them, but I can't remember where it was",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 73,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0191L01U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0191L01U04",
+    "seed_number": 191,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik fyn it hielendal net slim",
+    "known_text": "I can't remember what I wanted to say but I don't mind at all",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0191L01U04",
+    "seed_number": 191,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik fyn it hielendal net slim",
+    "known_text": "I can't remember what I wanted to say but I don't mind at all",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 74,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0201L02U07"
+   },
+   "before": {
+    "id": "fry_for_eng:S0201L02U07",
+    "seed_number": 201,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat der barre soe",
+    "known_text": "I can't remember what was going to happen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0201L02U07",
+    "seed_number": 201,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat der barre soe",
+    "known_text": "I can't remember what was going to happen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 75,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0202L03B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0202L03B03",
+    "seed_number": 202,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke hoe't er antwurdzje moast",
+    "known_text": "I can't remember how he had to answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0202L03B03",
+    "seed_number": 202,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge hoe't er antwurdzje moast",
+    "known_text": "I can't remember how he had to answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 76,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0205L01U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0205L01U01",
+    "seed_number": 205,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin it wurd net mear betinke",
+    "known_text": "I can't remember the word",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0205L01U01",
+    "seed_number": 205,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my it wurd net heuge",
+    "known_text": "I can't remember the word",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 77,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0205L03U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0205L03U02",
+    "seed_number": 205,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin in wurd dat ik sizze woe net mear betinke",
+    "known_text": "I can't remember a word that I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0205L03U02",
+    "seed_number": 205,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my in wurd dat ik sizze woe net heuge",
+    "known_text": "I can't remember a word that I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 78,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0206L01U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0206L01U02",
+    "seed_number": 206,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik fyn it moai datstû my holpen hast",
+    "known_text": "I can't remember what I wanted to say but I like that you helped me",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0206L01U02",
+    "seed_number": 206,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik fyn it moai datstû my holpen hast",
+    "known_text": "I can't remember what I wanted to say but I like that you helped me",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 79,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0207L02U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0207L02U01",
+    "seed_number": 207,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke watstû dwaan moast",
+    "known_text": "I can't remember what you needed to do",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0207L02U01",
+    "seed_number": 207,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge watstû dwaan moast",
+    "known_text": "I can't remember what you needed to do",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 80,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0234L02U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0234L02U03",
+    "seed_number": 234,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik haw ien moete mar ik kin har namme net mear betinke",
+    "known_text": "I met someone but I can't remember her name",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0234L02U03",
+    "seed_number": 234,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ik haw ien moete mar ik kin my har namme net heuge",
+    "known_text": "I met someone but I can't remember her name",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 81,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0262L01U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0262L01U01",
+    "seed_number": 262,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke, wa wie dy man juster?",
+    "known_text": "I can't remember, who was that man yesterday?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0262L01U01",
+    "seed_number": 262,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge, wa wie dy man juster?",
+    "known_text": "I can't remember, who was that man yesterday?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 82,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0266L03U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0266L03U03",
+    "seed_number": 266,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin net mear betinke wat er sein hat mar hy wie in âlde freon",
+    "known_text": "I can't remember what he said but he was an old friend",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0266L03U03",
+    "seed_number": 266,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik kin my net heuge wat er sein hat mar hy wie in âlde freon",
+    "known_text": "I can't remember what he said but he was an old friend",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 83,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0268L02U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0268L02U04",
+    "seed_number": 268,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sy hat my twa e-mails stjoerd mar ik kin net mear betinke wat ik sizze woe",
+    "known_text": "she sent me two emails but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0268L02U04",
+    "seed_number": 268,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sy hat my twa e-mails stjoerd mar ik kin my net heuge wat ik sizze woe",
+    "known_text": "she sent me two emails but I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 84,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0268L02U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0268L02U05",
+    "seed_number": 268,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sy hat my twa e-mails stjoerd mar ik begryp net",
+    "known_text": "she sent me two emails but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0268L02U05",
+    "seed_number": 268,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sy hat my twa e-mails stjoerd mar ik begryp it net",
+    "known_text": "she sent me two emails but I don't understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 85,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0269L03B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0269L03B03",
+    "seed_number": 269,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik begryp net, wêrom wolstû net feroarje?",
+    "known_text": "I don't understand, why don't you want to change?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0269L03B03",
+    "seed_number": 269,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ik begryp it net, wêrom wolstû net feroarje?",
+    "known_text": "I don't understand, why don't you want to change?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 86,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0270L01B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0270L01B03",
+    "seed_number": 270,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "om't ik der oer ynsit, kin ik net mear betinke",
+    "known_text": "because I'm worried I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0270L01B03",
+    "seed_number": 270,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "om't ik der oer ynsit, kin ik my net heuge",
+    "known_text": "because I'm worried I can't remember",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 87,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0270L01U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0270L01U03",
+    "seed_number": 270,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "om't ik der oer ynsit, kin ik net mear betinke wat ik sizze woe",
+    "known_text": "because I'm worried I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0270L01U03",
+    "seed_number": 270,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "om't ik der oer ynsit, kin ik my net heuge wat ik sizze woe",
+    "known_text": "because I'm worried I can't remember what I wanted to say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0270L01U03",
+   "set": {
+    "target_text": "om't ik der oer ynsit, kin ik net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0270L01B03",
+   "set": {
+    "target_text": "om't ik der oer ynsit, kin ik net mear betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0269L03B03",
+   "set": {
+    "target_text": "ik begryp net, wêrom wolstû net feroarje?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02U05",
+   "set": {
+    "target_text": "sy hat my twa e-mails stjoerd mar ik begryp net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02U04",
+   "set": {
+    "target_text": "sy hat my twa e-mails stjoerd mar ik kin net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0266L03U03",
+   "set": {
+    "target_text": "ik kin net mear betinke wat er sein hat mar hy wie in âlde freon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0262L01U01",
+   "set": {
+    "target_text": "ik kin net mear betinke, wa wie dy man juster?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0234L02U03",
+   "set": {
+    "target_text": "ik haw ien moete mar ik kin har namme net mear betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0207L02U01",
+   "set": {
+    "target_text": "ik kin net mear betinke watstû dwaan moast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0206L01U02",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik fyn it moai datstû my holpen hast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L03U02",
+   "set": {
+    "target_text": "ik kin in wurd dat ik sizze woe net mear betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L01U01",
+   "set": {
+    "target_text": "ik kin it wurd net mear betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0202L03B03",
+   "set": {
+    "target_text": "ik kin net mear betinke hoe't er antwurdzje moast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0201L02U07",
+   "set": {
+    "target_text": "ik kin net mear betinke wat der barre soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0191L01U04",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik fyn it hielendal net slim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0184L03U03",
+   "set": {
+    "target_text": "ja, ik haw se sjoen, mar ik kin net mear betinke wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0183L01B01",
+   "set": {
+    "target_text": "ik kin spitigernôch net mear betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0182L02U03",
+   "set": {
+    "target_text": "ik kin net mear betinke wêr't it wie, hastû myn kaaien earne sjoen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0182L01U02",
+   "set": {
+    "target_text": "ik kin net mear betinke wêr't myn kaaien binne"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L02U02",
+   "set": {
+    "target_text": "ik kin net mear betinke wêr't se hinne gean wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U06",
+   "set": {
+    "target_text": "ik sil him freegje om't ik net begryp"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U03",
+   "set": {
+    "target_text": "ik begryp net mar ik sil him freegje wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U02",
+   "set": {
+    "target_text": "ik kin net mear betinke mar ik sil him freegje wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0170L01U02",
+   "set": {
+    "target_text": "ik begryp net, ik woe graach datstû in bytsje stadiger praatst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0169L03U02",
+   "set": {
+    "target_text": "ik begryp net, wat wolstû dat ik doch?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0158L03U05",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe, litte wy oer wat oars prate"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L03U03",
+   "set": {
+    "target_text": "ik kin net mear betinke watstû woest"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0151L02U05",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0151L01U05",
+   "set": {
+    "target_text": "ik begryp net, dat wie net watstû sein hast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L03U02",
+   "set": {
+    "target_text": "ik kin net mear betinke wat dyn namme is om't ik wurch wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L02B03",
+   "set": {
+    "target_text": "ik begryp net mar kinstû my fertelle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L01U03",
+   "set": {
+    "target_text": "ik kin dyn namme net mear betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0148L01U03",
+   "set": {
+    "target_text": "hy wie net hiel geduldich en ik koe net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L01U05",
+   "set": {
+    "target_text": "ik begryp net, neat liket te wurkjen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0145L01U04",
+   "set": {
+    "target_text": "ik begryp net, wêrom bistû net mear bliid?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0139L01U02",
+   "set": {
+    "target_text": "it spyt my, ik kin net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0138L02U03",
+   "set": {
+    "target_text": "ik kin net mear betinke wêr't myn freon ús moetsje woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L03U05",
+   "set": {
+    "target_text": "ik kin har namme net mear betinke, mar se is myn freon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L02B03",
+   "set": {
+    "target_text": "ik kin net mear betinke, mar fansels kinstû har freegje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0131L03U05",
+   "set": {
+    "target_text": "der geane tefolle ideeën om yn myn harsens en ik kin net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0127L02B03",
+   "set": {
+    "target_text": "ik kin net mear betinke wêrom't ik dy sjen woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0127L01U06",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar dat is net wichtich"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0122L02U07",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik bin bliid mei watstû sein hast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0122L01U02",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar it begjint makliker te wurden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0117L04U04",
+   "set": {
+    "target_text": "ik kin net mear betinke dat wy inoar sprutsen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0112L01U02",
+   "set": {
+    "target_text": "dat wie hiel nijsgjirrich, mar ik kin net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0110L01U01",
+   "set": {
+    "target_text": "ik kin har namme net mear betinke mar wy binne freonen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0105L01U06",
+   "set": {
+    "target_text": "dêrom kin ik net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0104L01U02",
+   "set": {
+    "target_text": "ik begryp net mar wy moatte freegje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0096L02U05",
+   "set": {
+    "target_text": "ik haw mear tiid nedich, ik kin net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01U03",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe en it is dreech"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0086L01U01",
+   "set": {
+    "target_text": "spitigernôch kin ik net mear betinke wat ik sizze woe",
+    "target1_audio_id": "df170886-31a6-4c46-b950-4b5f003ff94a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0085L02U03",
+   "set": {
+    "target_text": "ik kin syn namme net mear betinke en ik ken dy minsken net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L03U05",
+   "set": {
+    "target_text": "ik woe in brief oer myn freon skriuwe mar ik kin net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L02B01",
+   "set": {
+    "target_text": "ik kin net mear betinke wat er sein hat",
+    "target1_audio_id": "78c061dd-402a-4328-8428-867f439eee49"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L01U03",
+   "set": {
+    "target_text": "ik bin it net iens mar ik kin net mear betinke wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0083L01U01",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar ik bin it iens mei dy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0082L03U04",
+   "set": {
+    "target_text": "ik kin net mear betinke wêrom net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U07",
+   "set": {
+    "target_text": "ik begryp net en it makket my neat út",
+    "target1_audio_id": "ff84f5de-4540-4731-8632-aa42b5098dae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U06",
+   "set": {
+    "target_text": "ik bin fan 'e middei in bytsje wurch en ik begryp net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U05",
+   "set": {
+    "target_text": "ik bin der net wis fan oft ik de hiele sin noch wit en ik begryp net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U04",
+   "set": {
+    "target_text": "dû praatst hiel goed mar ik begryp net",
+    "target1_audio_id": "0419c929-c5e9-4b4a-99ae-91fe310f9578"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U01",
+   "set": {
+    "target_text": "hy wol letter weromkomme mar ik begryp net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01B02",
+   "set": {
+    "target_text": "ik besykje mar ik begryp net",
+    "target1_audio_id": "c0d47008-8f8d-45e9-9667-145cd565ac6a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0070L03U07",
+   "set": {
+    "target_text": "ik kin net mear betinke wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0066L02U06",
+   "set": {
+    "target_text": "ik besykje om it antwurd te finen mar ik kin net mear betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U02",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik sizze woe mar it is wol moai om te dwaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0063L01B03",
+   "set": {
+    "target_text": "ik kin net mear betinke, bistû der wis fan?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U06",
+   "set": {
+    "target_text": "ik kin net mear betinke en ik wit noch net wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L04U01",
+   "set": {
+    "target_text": "ik kin net mear betinke hoe't ik dat doch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L03U01",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik dwaan moat as ik net goed slept haw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L03B01",
+   "set": {
+    "target_text": "ik kin net mear betinke wat ik dwaan moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L02U07",
+   "set": {
+    "target_text": "ik kin net mear betinke hoe't ik sizze moat wat ik sizze woe",
+    "target1_audio_id": "7c278371-bc9e-4e15-a317-846f4248d134"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U07",
+   "set": {
+    "target_text": "ik wol graach Frysk prate mar ik kin net mear betinke hoe't ik sizze moat wat ik bedoel",
+    "target1_audio_id": "b7679bfb-8c19-4572-84fb-2a997893837e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U06",
+   "set": {
+    "target_text": "ik kin net mear betinke hoe't ik antwurdzje soe om't ik in bytsje wurch bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U05",
+   "set": {
+    "target_text": "ik hoech net alles te witten mar ik kin net mear betinke wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U04",
+   "set": {
+    "target_text": "ik kin net mear betinke hoe lang ik al Frysk lear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U03",
+   "set": {
+    "target_text": "ik besykje te learen mar ik kin net mear betinke hoe't ik sizze moat wat ik bedoel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U02",
+   "set": {
+    "target_text": "it sit sa, ik kin net mear betinke wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U01",
+   "set": {
+    "target_text": "ik bin fan 'e moarn in bytsje wurch en ik kin net mear betinke hoe't ik antwurdzje soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B04",
+   "set": {
+    "target_text": "ik bin wurch en ik kin net mear betinke",
+    "target1_audio_id": "f8701b57-d7fe-4bee-a586-91ac0996c47d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B03",
+   "set": {
+    "target_text": "ik kin net mear betinke hoe lang ik al lear",
+    "target1_audio_id": "415f6dc0-f71a-4075-84e5-1df3677e4ecf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B02",
+   "set": {
+    "target_text": "ik kin net mear betinke wat it antwurd is",
+    "target1_audio_id": "f3e3e83e-dc42-4664-ace7-0889c0f5d467"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B01",
+   "set": {
+    "target_text": "ik kin net mear betinke hoe't ik antwurdzje soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01C03",
+   "set": {
+    "target_text": "betinke"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01C02",
+   "set": {
+    "known_text": "not any more",
+    "target_text": "net mear"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ac8c86ba-170e-4a1d-95c0-537b6f2734fe",
+   "set": {
+    "target_text": "ik kin net mear betinke",
+    "components": [
+     {
+      "known": "I can",
+      "target": "ik kin"
+     },
+     {
+      "known": "not any more",
+      "target": "net mear"
+     },
+     {
+      "known": "to recall",
+      "target": "betinke"
+     }
+    ],
+    "target1_audio_id": "7058cf06-4bdd-453a-b1a1-cc941032381a"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 57,
+   "set": {
+    "target_text": "Ik kin net mear betinke hoe't ik sizze moat wat ik sizze woe.",
+    "target1_audio_id": "7c278371-bc9e-4e15-a317-846f4248d134"
+   }
+  }
+ ],
+ "undo_file": "2026-11-11T12-10-06-312Z-88e8cdee-e942-4b97-96a9-8c3648ee6574.json"
+}

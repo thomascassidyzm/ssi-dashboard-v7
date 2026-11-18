@@ -1,0 +1,3419 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "lego.insert",
+"key": {
+"seed_number": 37,
+"lego_index": 6
+},
+"before": null,
+"after": {
+"id": "97427837-b83e-41a6-a8c9-729fffd47d2f",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": "S0037L06",
+"known_text": "to think about it",
+"target_text": "ag smaoineamh air",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06B01",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I started thinking about it",
+"target_text": "thosaigh mé ag smaoineamh air",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06B02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06B02",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "thinking about it carefully",
+"target_text": "ag smaoineamh air go cúramach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06B03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06B03",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I started thinking about it carefully last month",
+"target_text": "thosaigh mé ag smaoineamh air go cúramach an mhí seo caite",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06U01",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I started thinking about it after you finished talking",
+"target_text": "thosaigh mé ag smaoineamh air tar éis duit críochnú ag caint",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06U02",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "he started thinking about it last month",
+"target_text": "thosaigh sé ag smaoineamh air an mhí seo caite",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06U03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06U03",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I started thinking about it as soon as possible",
+"target_text": "thosaigh mé ag smaoineamh air chomh luath agus is féidir",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06U04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06U04",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I started thinking about it because I want to get better",
+"target_text": "thosaigh mé ag smaoineamh air mar is mian liom labhairt níos fearr",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0037L06B04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0037L06B04",
+"seed_number": 37,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "you started to think about it",
+"target_text": "thosaigh tú ag smaoineamh air",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0037L04U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0037L04U04",
+"seed_number": 37,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "thosaigh sé ag smaoineamh go cúramach faoin rud a tharlóidh amárach",
+"known_text": "he started thinking carefully about what is going to happen tomorrow",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0037L04U04",
+"seed_number": 37,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "thosaigh sé ag smaoineamh go cúramach faoi cad a tharlóidh amárach",
+"known_text": "he started thinking carefully about what is going to happen tomorrow",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0037L03"
+},
+"before": {
+"id": "48cc72fe-1389-4619-9fa5-252f587dd45d",
+"seed_number": 37,
+"lego_index": 3,
+"lego_id": "S0037L03",
+"known_text": "about it",
+"target_text": "air",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 11,
+"op": "lego.insert",
+"key": {
+"seed_number": 38,
+"lego_index": 5
+},
+"before": null,
+"after": {
+"id": "facb5ef6-1578-49f3-b97a-d6960d1ad26a",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": "S0038L05",
+"known_text": "for about a week",
+"target_text": "le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0038L01"
+},
+"before": {
+"id": "b6cd23a2-6a2b-4f50-af9c-4c42a220bf81",
+"seed_number": 38,
+"lego_index": 1,
+"lego_id": "S0038L01",
+"is_new": true,
+"known_text": "I am",
+"target_text": "tá mé",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "b6cd23a2-6a2b-4f50-af9c-4c42a220bf81",
+"seed_number": 38,
+"lego_index": 1,
+"lego_id": "S0038L01",
+"is_new": false,
+"known_text": "I am",
+"target_text": "tá mé",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 13,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05B01",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I am trying for about a week",
+"target_text": "Tá mé ag iarraidh le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 14,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05B02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05B02",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been learning for about a week",
+"target_text": "Tá mé ag foghlaim le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 15,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05B03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05B03",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been thinking carefully for about a week",
+"target_text": "Tá mé ag smaoineamh go cúramach le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 16,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U01",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been learning Irish for about a week now",
+"target_text": "Tá mé ag foghlaim Gaeilge le timpeall seachtaine anois",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 17,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U02",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been thinking about it carefully for about a week",
+"target_text": "Tá mé ag smaoineamh air go cúramach le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 18,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U03",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been trying to talk to people here for about a week",
+"target_text": "Tá mé ag iarraidh labhairt le daoine anseo le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 19,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U04",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been trying to remember the full sentence for about a week",
+"target_text": "Tá mé ag iarraidh cuimhneamh ar an abairt iomlán le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 20,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U05"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U05",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been looking forward to talking to you for about a week",
+"target_text": "Tá mé ag tnúth le labhairt leat le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 21,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U06"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U06",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "he has been thinking carefully about what he wants to say for about a week",
+"target_text": "Tá sé ag smaoineamh go cúramach le timpeall seachtaine mar ba mhian leis rud éigin a rá",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 22,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U07"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U07",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been trying to find out the answer for about a week",
+"target_text": "Tá mé ag iarraidh fáil amach cad é an freagra le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 23,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U08"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U08",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I have been trying to explain what I mean for about a week",
+"target_text": "Tá mé ag iarraidh cad atá i gceist agam a mhíniú le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 24,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0038L05U09"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0038L05U09",
+"seed_number": 38,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "he has been trying to meet people who speak Irish for about a week",
+"target_text": "Tá sé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu le timpeall seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 25,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0038L01B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0038L01B01",
+"seed_number": 38,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "I am",
+"target_text": "tá mé",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 26,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0038L01B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0038L01B02",
+"seed_number": 38,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "I am trying",
+"target_text": "Tá mé ag iarraidh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 27,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0038L01B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0038L01B03",
+"seed_number": 38,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "I am learning",
+"target_text": "Tá mé ag foghlaim",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 28,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0038L03"
+},
+"before": {
+"id": "75655a35-77b1-4582-b2ca-77f2b9425b5c",
+"seed_number": 38,
+"lego_index": 3,
+"lego_id": "S0038L03",
+"known_text": "for",
+"target_text": "le",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 29,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0074L03"
+},
+"before": {
+"id": "cdd44f4a-8a91-4bea-a740-c06659bea777",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "helping me",
+"target_text": "cabhrú liom",
+"components": [
+{
+"known": "helping",
+"target": "cabhrú"
+},
+{
+"known": "with me",
+"target": "liom"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "cdd44f4a-8a91-4bea-a740-c06659bea777",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "for helping me",
+"target_text": "as cabhrú liom",
+"components": [
+{
+"known": "for helping",
+"target": "as cabhrú"
+},
+{
+"known": "with me",
+"target": "liom"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 30,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0074L03U07"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0074L03U07",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "thank you very much for helping me to understand it",
+"target_text": "go raibh míle maith agat as cabhrú liom tuiscint a fháil air",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 31,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03B01",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "helping me again",
+"target_text": "cabhrú liom arís",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 32,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03B02",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "it is not difficult helping me",
+"target_text": "níl sé deacair cabhrú liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 33,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03B03",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "you don't mind helping me",
+"target_text": "nach miste leat cabhrú liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 34,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03B04",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "helping me at the moment",
+"target_text": "cabhrú liom faoi láthair",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 35,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03U01",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "are you sure you don't mind helping me",
+"target_text": "an bhfuil tú cinnte nach miste leat cabhrú liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 36,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03U02",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "it is not easy helping me at the moment",
+"target_text": "níl sé éasca cabhrú liom faoi láthair",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 37,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03U03",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "thank you very much because it is not easy helping me",
+"target_text": "go raibh míle maith agat mar níl sé éasca cabhrú liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 38,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03U04",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "it is not difficult helping me but it is not enjoyable",
+"target_text": "níl sé deacair cabhrú liom ach níl sé spraíúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 39,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03U05",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "it is interesting helping me when you understand",
+"target_text": "tá sé suimiúil cabhrú liom nuair a thuigeann tú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 40,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0074L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0074L03U06",
+"seed_number": 74,
+"lego_index": 3,
+"lego_id": "S0074L03",
+"known_text": "are you sure you don't mind helping me again tomorrow",
+"target_text": "an bhfuil tú cinnte nach miste leat cabhrú liom arís amárach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 41,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0074L02"
+},
+"before": {
+"id": "94a27ce6-70e2-4d2a-a7c2-32b478753e49",
+"seed_number": 74,
+"lego_index": 2,
+"lego_id": "S0074L02",
+"known_text": "for",
+"target_text": "as",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 42,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0078L02"
+},
+"before": {
+"id": "5be781ae-463b-4624-8a0a-fa6581542b76",
+"seed_number": 78,
+"lego_index": 2,
+"lego_id": "S0078L02",
+"known_text": "what",
+"target_text": "cad a",
+"components": [
+{
+"known": "what",
+"target": "cad"
+},
+{
+"known": "that",
+"target": "a"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "5be781ae-463b-4624-8a0a-fa6581542b76",
+"seed_number": 78,
+"lego_index": 2,
+"lego_id": "S0078L02",
+"known_text": "what you said",
+"target_text": "cad a dúirt tú",
+"components": [
+{
+"known": "that you said",
+"target": "a dúirt tú"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 43,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0078L02B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0078L02B03",
+"seed_number": 78,
+"lego_index": 2,
+"lego_id": "S0078L02",
+"known_text": "to explain what you understand",
+"target_text": "a mhíniú cad a thuigeann tú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 44,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0078L02U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0078L02U03",
+"seed_number": 78,
+"lego_index": 2,
+"lego_id": "S0078L02",
+"known_text": "I'm not sure what you understand",
+"target_text": "níl mé cinnte cad a thuigeann tú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 45,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0078L02U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0078L02U06",
+"seed_number": 78,
+"lego_index": 2,
+"lego_id": "S0078L02",
+"known_text": "what do you understand now",
+"target_text": "cad a thuigeann tú anois",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 46,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0078L02U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0078L02U07",
+"seed_number": 78,
+"lego_index": 2,
+"lego_id": "S0078L02",
+"known_text": "I don't know yet what you understand",
+"target_text": "níl a fhios agam go fóill cad a thuigeann tú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 47,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0079L01"
+},
+"before": {
+"id": "1eb15374-9d5f-4a75-a6f7-9e3f0f1604a4",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": "S0079L01",
+"known_text": "when",
+"target_text": "cathain a",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "1eb15374-9d5f-4a75-a6f7-9e3f0f1604a4",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": "S0079L01",
+"known_text": "when did you start",
+"target_text": "cathain a thosaigh tú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 48,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01B01",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when",
+"target_text": "cathain a",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 49,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01B05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01B05",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when are you trying to start",
+"target_text": "cathain a bhfuil tú ag iarraidh tosú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 50,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01B06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01B06",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "I am not sure when I will be ready",
+"target_text": "níl mé cinnte cathain a bheidh mé réidh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 51,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01C01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01C01",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when",
+"target_text": "cathain",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 52,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01C02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01C02",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "that",
+"target_text": "a",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 53,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01U02",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "I am not sure when I will be ready but I think it will be soon",
+"target_text": "níl mé cinnte cathain a bheidh mé réidh ach ceapaim go mbeidh sé go luath",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 54,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01U03",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when are you trying to start speaking more in the language",
+"target_text": "cathain a bhfuil tú ag iarraidh tosú ag caint níos mó sa teanga",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 55,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01U06",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when are you trying to meet me this week",
+"target_text": "cathain a bhfuil tú ag iarraidh bualadh liom an tseachtain seo",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 56,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01U08",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when will you be ready to come back and speak more with everyone",
+"target_text": "cathain a bheidh tú réidh le teacht ar ais agus labhairt níos mó le gach duine eile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 57,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01U09"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01U09",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "I am not sure when I started learning but I want to speak better soon",
+"target_text": "níl mé cinnte cathain a thosaigh mé ag foghlaim ach is mian liom labhairt níos fearr go luath",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 58,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01U10"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01U10",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when are you trying to start practising speaking with someone else",
+"target_text": "cathain a bhfuil tú ag iarraidh tosú ag cleachtadh labhairt le duine éigin eile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 59,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0079L01U13"
+},
+"before": {
+"id": "gle_v2_for_eng:S0079L01U13",
+"seed_number": 79,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "when are you trying to go back to speaking as often as possible",
+"target_text": "cathain a bhfuil tú ag iarraidh dul ar ais ag caint chomh minic agus is féidir",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 60,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0079L02"
+},
+"before": {
+"id": "16f3a76e-90be-4169-ab78-66ee0a972c3e",
+"seed_number": 79,
+"lego_index": 2,
+"lego_id": "S0079L02",
+"known_text": "you started",
+"target_text": "thosaigh tú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 61,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0104L04"
+},
+"before": {
+"id": "161bbbe3-4ec6-4474-b94c-52567cba7e32",
+"seed_number": 104,
+"lego_index": 4,
+"lego_id": "S0104L04",
+"known_text": "what",
+"target_text": "an rud atá",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "161bbbe3-4ec6-4474-b94c-52567cba7e32",
+"seed_number": 104,
+"lego_index": 4,
+"lego_id": "S0104L04",
+"known_text": "the thing that is",
+"target_text": "an rud atá",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 62,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0104L04U07"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0104L04U07",
+"seed_number": 104,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "I know it is difficult but I am thinking about what you are talking about",
+"target_text": "tá a fhios agam go bhfuil sé deacair ach tá mé ag smaoineamh ar an rud atá tú ag caint faoi",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 63,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0104L04B05"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0104L04B05",
+"seed_number": 104,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "the thing you mean",
+"target_text": "an rud atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 64,
+"op": "lego.insert",
+"key": {
+"seed_number": 130,
+"lego_index": 4
+},
+"before": null,
+"after": {
+"id": "28b2f498-1ad9-4f8d-800a-f9cc8a8b45be",
+"seed_number": 130,
+"lego_index": 4,
+"lego_id": "S0130L04",
+"known_text": "because",
+"target_text": "mar",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 65,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0130L01"
+},
+"before": {
+"id": "a894c126-81b3-4fb7-9c01-7dd9131b16a6",
+"seed_number": 130,
+"lego_index": 1,
+"lego_id": "S0130L01",
+"known_text": "surprise",
+"target_text": "iontas",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "a894c126-81b3-4fb7-9c01-7dd9131b16a6",
+"seed_number": 130,
+"lego_index": 1,
+"lego_id": "S0130L01",
+"known_text": "a surprise",
+"target_text": "iontas",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 66,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0130L02"
+},
+"before": {
+"id": "4dd8b632-92dc-4cf3-be6e-d1b438466877",
+"seed_number": 130,
+"lego_index": 2,
+"lego_id": "S0130L02",
+"known_text": "that was there",
+"target_text": "a bhí ann",
+"components": [
+{
+"known": "that was",
+"target": "a bhí"
+},
+{
+"known": "there",
+"target": "ann"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "4dd8b632-92dc-4cf3-be6e-d1b438466877",
+"seed_number": 130,
+"lego_index": 2,
+"lego_id": "S0130L02",
+"known_text": "that was a surprise",
+"target_text": "iontas a bhí ann",
+"components": [
+{
+"known": "a surprise",
+"target": "iontas"
+},
+{
+"known": "who was there",
+"target": "a bhí ann"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 67,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0130L03"
+},
+"before": {
+"id": "de62f7ac-9125-4fe9-a268-b38aeb2461d0",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": "S0130L03",
+"known_text": "my friend",
+"target_text": "cara liom",
+"components": [
+{
+"known": "friend",
+"target": "cara"
+},
+{
+"known": "to me",
+"target": "liom"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "de62f7ac-9125-4fe9-a268-b38aeb2461d0",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": "S0130L03",
+"known_text": "he's my friend",
+"target_text": "is cara liom é",
+"components": [
+{
+"known": "a friend",
+"target": "cara"
+},
+{
+"known": "with me",
+"target": "liom"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 68,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0130L01U09"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0130L01U09",
+"seed_number": 130,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "That was a good surprise",
+"target_text": "iontas maith a bhí ann",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 69,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L02B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L02B01",
+"seed_number": 130,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "that was there",
+"target_text": "a bhí ann",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 70,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L02C01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L02C01",
+"seed_number": 130,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "that was",
+"target_text": "a bhí",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 71,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L02C02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L02C02",
+"seed_number": 130,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "there",
+"target_text": "ann",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 72,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L02U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L02U02",
+"seed_number": 130,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "That was a good surprise",
+"target_text": "iontas maith a bhí ann",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 73,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L02U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L02U04",
+"seed_number": 130,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "what was it that was there?",
+"target_text": "cad a bhí ann?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 74,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03B01",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "my friend",
+"target_text": "cara liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 75,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03C01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03C01",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "friend",
+"target_text": "cara",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 76,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03C02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03C02",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "to me",
+"target_text": "liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 77,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03U03",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "he's not my friend",
+"target_text": "Ní cara liom é",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 78,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03U04",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "my friend was speaking Irish",
+"target_text": "bhí cara liom ag caint i nGaeilge",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 79,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03U05",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "my friend wants to learn",
+"target_text": "Is mian le cara liom foghlaim",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 80,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03U06",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "my friend tried to speak Irish with me",
+"target_text": "bhí cara liom ag iarraidh Gaeilge a labhairt liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 81,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0130L03U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0130L03U08",
+"seed_number": 130,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "my friend was learning Irish",
+"target_text": "bhí cara liom ag foghlaim Gaeilge",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 82,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0155L02"
+},
+"before": {
+"id": "6376d682-c2a0-4496-8652-471a6cb8f627",
+"seed_number": 155,
+"lego_index": 2,
+"lego_id": "S0155L02",
+"is_new": true,
+"known_text": "to wait",
+"target_text": "fanacht",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "6376d682-c2a0-4496-8652-471a6cb8f627",
+"seed_number": 155,
+"lego_index": 2,
+"lego_id": "S0155L02",
+"is_new": false,
+"known_text": "to wait",
+"target_text": "fanacht",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 83,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0155L03"
+},
+"before": {
+"id": "aeeb7540-07e9-46f8-a0ff-df5765f164f7",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": "S0155L03",
+"known_text": "for",
+"target_text": "ar feadh",
+"components": [
+{
+"known": "on",
+"target": "ar"
+},
+{
+"known": "extent",
+"target": "feadh"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "aeeb7540-07e9-46f8-a0ff-df5765f164f7",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": "S0155L03",
+"known_text": "for a few minutes",
+"target_text": "ar feadh cúpla nóiméad",
+"components": [
+{
+"known": "a few minutes",
+"target": "cúpla nóiméad"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 84,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0155L03U04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0155L03U04",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I don't mind waiting for a few minutes tomorrow morning",
+"target_text": "Ní miste liom fanacht ar feadh cúpla nóiméad maidin amárach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 85,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03B01",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "for",
+"target_text": "ar feadh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 86,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03B03",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "for a while",
+"target_text": "ar feadh tamaill",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 87,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03B04",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I waited for a while",
+"target_text": "bhí mé ag fanacht ar feadh tamaill",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 88,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03B05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03B05",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I don't mind waiting for a while",
+"target_text": "Ní miste liom fanacht ar feadh tamaill",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 89,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03B06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03B06",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I want to continue doing this for a while longer",
+"target_text": "is mian liom leanúint ar aghaidh ag déanamh seo ar feadh tamaill eile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 90,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03B07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03B07",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I would like to keep going with this for a while",
+"target_text": "ba mhaith liom leanúint ar aghaidh leis seo ar feadh tamaill",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 91,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03C01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03C01",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "on",
+"target_text": "ar",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 92,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03C02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03C02",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "extent",
+"target_text": "feadh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 93,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U01",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I would like to keep going with this for a while, because I think we are doing very well",
+"target_text": "ba mhaith liom leanúint ar aghaidh leis seo ar feadh tamaill, mar ceapaim go bhfuil muid ag déanamh go han-mhaith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 94,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U02",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "he was waiting here for a while before he decided to leave and go home",
+"target_text": "bhí sé ag fanacht anseo ar feadh tamaill sula raibh sé réidh le himeacht agus dul abhaile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 95,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U03",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I don't mind waiting for a while, because I know you need a little more time to think",
+"target_text": "Ní miste liom fanacht ar feadh tamaill, mar tá a fhios agam go bhfuil beagán níos mó ama de dhíth ort le smaoineamh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 96,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U05",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "she was talking to us for a while, and then she said she had to leave to go home",
+"target_text": "bhí sí ag caint linn ar feadh tamaill, agus ansin dúirt sí go gcaithfidh sí imeacht le dul abhaile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 97,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U06",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I was not able to stop thinking about it for a while, because there was too much on my mind",
+"target_text": "Ní raibh mé in ann stopadh ag smaoineamh faoi ar feadh tamaill, mar bhí an iomarca smaointe agam",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 98,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U07",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I think it is a good idea to practise speaking for a while every day if you want to improve",
+"target_text": "ceapaim gur smaoineamh maith é labhairt a chleachtadh ar feadh tamaill gach lá más mian leat feabhsú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 99,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U08",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "we were working on this together for a while, and I think we have done very well",
+"target_text": "bhí muid ag obair ar seo le chéile ar feadh tamaill, agus ceapaim go bhfuil muid tar éis déanamh go han-mhaith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 100,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U10"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U10",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I don't mind helping you for a while, because I am not going anywhere for the moment",
+"target_text": "Ní miste liom cabhrú leat ar feadh tamaill, mar níl mé chun dul áit ar bith faoi láthair",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 101,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U11"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U11",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "she said she would stay and talk with us for a while before she needed to leave",
+"target_text": "dúirt sí go bhfuil sí chun fanacht agus caint linn ar feadh tamaill sula gcaithfidh sí imeacht",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 102,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U12"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U12",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I knew I was going to have to wait for a while, so I started thinking about something else",
+"target_text": "bhí a fhios agam go raibh mé chun fanacht ar feadh tamaill, mar sin thosaigh mé ag smaoineamh ar rud éigin eile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 103,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U13"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U13",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "he has been trying to learn the language for a while, and he is already doing very well",
+"target_text": "Tá sé ag iarraidh an teanga a fhoghlaim ar feadh tamaill, agus tá sé ag déanamh go han-mhaith cheana féin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 104,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L03U15"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L03U15",
+"seed_number": 155,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I told her that I had been waiting for a while, but I said I did not mind at all",
+"target_text": "dúirt mé léi go raibh mé ag fanacht ar feadh tamaill, ach dúirt mé nach miste liom ar chor ar bith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 105,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0181L03"
+},
+"before": {
+"id": "3d16c3f2-db42-4611-a140-fd1a03d8607f",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "to take",
+"target_text": "a thabhairt",
+"components": [
+{
+"known": "to",
+"target": "a"
+},
+{
+"known": "take",
+"target": "thabhairt"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "3d16c3f2-db42-4611-a140-fd1a03d8607f",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "to take my mother",
+"target_text": "mo mháthair a thabhairt",
+"components": [
+{
+"known": "my mother",
+"target": "mo mháthair"
+},
+{
+"known": "to give",
+"target": "a thabhairt"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 106,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0181L03B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0181L03B03",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "I would like to take my book",
+"target_text": "ba mhaith liom mo leabhar a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 107,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0181L03B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0181L03B04",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "we must take your car home",
+"target_text": "caithfidh muid do charr a thabhairt abhaile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 108,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0181L03U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0181L03U02",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "what are you going to take tomorrow",
+"target_text": "cad atá tú chun a thabhairt amárach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 109,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0181L03U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0181L03U03",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "but I'm not going to take my book",
+"target_text": "ach níl mé chun mo leabhar a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 110,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0181L03U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0181L03U04",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "you should take your friend home",
+"target_text": "ba chóir duit do chara a thabhairt abhaile",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 111,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0181L03U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0181L03U07",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "do you want to take your car tomorrow morning",
+"target_text": "an mian leat do charr a thabhairt maidin amárach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 112,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0181L03U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0181L03U08",
+"seed_number": 181,
+"lego_index": 3,
+"lego_id": "S0181L03",
+"known_text": "thank you I can take my book home now",
+"target_text": "go raibh maith agat is féidir liom mo leabhar a thabhairt abhaile anois",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 113,
+"op": "lego.insert",
+"key": {
+"seed_number": 188,
+"lego_index": 4
+},
+"before": null,
+"after": {
+"id": "0f5d2495-2cb1-4052-bfad-c5a76f1c8330",
+"seed_number": 188,
+"lego_index": 4,
+"lego_id": "S0188L04",
+"known_text": "I don't need to change",
+"target_text": "ní chaithfidh mé athrú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 114,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0188L01"
+},
+"before": {
+"id": "0d560fb4-4744-4b88-a18f-019528f39231",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"is_new": true,
+"known_text": "so",
+"target_text": "mar sin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "0d560fb4-4744-4b88-a18f-019528f39231",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"is_new": false,
+"known_text": "so",
+"target_text": "mar sin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 115,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0188L02"
+},
+"before": {
+"id": "94c14446-f33d-4f3c-847e-d21fbe23b489",
+"seed_number": 188,
+"lego_index": 2,
+"lego_id": "S0188L02",
+"known_text": "I do not have to",
+"is_new": true,
+"target_text": "ní chaithfidh mé",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "94c14446-f33d-4f3c-847e-d21fbe23b489",
+"seed_number": 188,
+"lego_index": 2,
+"lego_id": "S0188L02",
+"known_text": "I don't need to",
+"is_new": false,
+"target_text": "ní chaithfidh mé",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 116,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0188L04U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0188L04U01",
+"seed_number": 188,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "so I don't need to change",
+"target_text": "mar sin ní chaithfidh mé athrú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 117,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01B01",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "so now",
+"target_text": "mar sin anois",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 118,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01B02",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "so later on",
+"target_text": "mar sin níos déanaí",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 119,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01B03",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "so I would like",
+"target_text": "mar sin ba mhaith liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 120,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01B04",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "I did not have time so",
+"target_text": "ní raibh am agam mar sin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 121,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01U01",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "I am tired so I would like to leave now",
+"target_text": "tá mé tuirseach mar sin ba mhaith liom imeacht anois",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 122,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01U04",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "so I don't know where she is",
+"target_text": "mar sin níl a fhios agam cá bhfuil sí",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 123,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01U05",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "so thank you for helping",
+"target_text": "mar sin go raibh maith agat as cabhrú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 124,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0188L01U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0188L01U06",
+"seed_number": 188,
+"lego_index": 1,
+"lego_id": "S0188L01",
+"known_text": "I'm not ready yet so I can't leave now",
+"target_text": "níl mé réidh go fóill mar sin ní féidir liom imeacht anois",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 125,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0188L03"
+},
+"before": {
+"id": "22c5486a-937d-4d75-b7e1-8c9b9bf1b4a2",
+"seed_number": 188,
+"lego_index": 3,
+"lego_id": "S0188L03",
+"known_text": "to change",
+"target_text": "athrú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 126,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0214L01"
+},
+"before": {
+"id": "62b6599f-6521-4b90-8341-6fb3f6f7727c",
+"seed_number": 214,
+"lego_index": 1,
+"lego_id": "S0214L01",
+"known_text": "did you enjoy",
+"target_text": "ar bhain tú sult as",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "62b6599f-6521-4b90-8341-6fb3f6f7727c",
+"seed_number": 214,
+"lego_index": 1,
+"lego_id": "S0214L01",
+"known_text": "did you have a good time at",
+"target_text": "ar bhain tú sult as",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 127,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0214L04U08"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0214L04U08",
+"seed_number": 214,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "are you going to go home at the weekend",
+"target_text": "an bhfuil tú chun dul abhaile ag an deireadh seachtaine",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 128,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0263L03"
+},
+"before": {
+"id": "8dcb32bc-1b83-4478-b938-7d6d8b39bf12",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "you mean",
+"target_text": "atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "8dcb32bc-1b83-4478-b938-7d6d8b39bf12",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "who you mean",
+"target_text": "cé atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 129,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0263L03U08"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0263L03U08",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I don't know who you mean",
+"target_text": "Níl a fhios agam cé atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 130,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03B01",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "the thing you mean",
+"target_text": "an rud atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 131,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03B02",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "that man you mean",
+"target_text": "an fear sin atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 132,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03B03",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "that blue thing you mean over there",
+"target_text": "an rud gorm sin atá i gceist agat thall ansin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 133,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03B04",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "the idea you mean",
+"target_text": "an smaoineamh atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 134,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03U01",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "I saw that man you mean",
+"target_text": "chonaic mé an fear sin atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 135,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03U02",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "I did not see that man you mean",
+"target_text": "ní fhaca mé an fear sin atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 136,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03U03",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "I thought that the film you mean was complete rubbish",
+"target_text": "cheap mé go raibh an scannán atá i gceist agat go hiomlán uafásach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 137,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03U04",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "can you give me that book you mean",
+"target_text": "an féidir leat an leabhar sin atá i gceist agat a thabhairt dom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 138,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03U05",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "I like the idea you mean",
+"target_text": "is maith liom an smaoineamh atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 139,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03U06",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "I think that the thing you mean is very interesting",
+"target_text": "ceapaim go bhfuil an rud atá i gceist agat an-suimiúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 140,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0263L03U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0263L03U07",
+"seed_number": 263,
+"lego_index": 3,
+"lego_id": "S0263L03",
+"known_text": "I am sorry but I did not see that book you mean",
+"target_text": "tá brón orm ach ní fhaca mé an leabhar sin atá i gceist agat",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 141,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0263L02"
+},
+"before": {
+"id": "2768ee54-86d8-48bc-a39c-9735a8a78beb",
+"seed_number": 263,
+"lego_index": 2,
+"lego_id": "S0263L02",
+"known_text": "who",
+"target_text": "cé",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 30.5,
+"_family": "sets",
+"_seeds": [
+37,
+38,
+74,
+78,
+79,
+104,
+130,
+155,
+181,
+188,
+214,
+263
+],
+"_ops": 142
+}

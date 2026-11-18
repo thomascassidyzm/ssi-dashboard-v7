@@ -92,6 +92,10 @@ curl -s -X POST "http://localhost:3471/api/phrases/v4/generate/${courseCode}" \\
 Pass the LEGO you have just decided on — it is not in the database yet, because
 the seed submission writes LEGOs and phrases in one call.
 
+**If it answers \`"code": "WEEKLY_PACE"\`** the SSi accounts are ahead of their weekly pace: stop the build where
+it is, post the \`resume_at\` time to the course chat, and end. Never loop on it; the build resumes from the
+resume endpoint after that time.
+
 It returns \`{ "model": "opus", "build": [...], "use": [...] }\`. Each phrase has
 \`known\`, \`target\` and \`tiles\` — the tiles are the phrase showing its work.
 Put the \`known\` → \`target\` pairs straight into your markdown submission.
@@ -105,16 +109,23 @@ that passes ZUT and one that looks like it does. You cannot compute it from a
 brief, and neither could the builders before you — which is why every one of the
 120 LEGOs measured across six live courses on 2026-08-27 failed.
 
-**The call takes several minutes per LEGO. That is expected — let it run.**
+**The call takes several minutes per LEGO, longer when other builds are busy. That is expected — let it run.**
 It is a single generation call, and it is doing the work you would otherwise be
-doing badly. Do not shorten it by writing the phrases yourself.
+doing badly. Popty runs at most a fixed number of these at once across every
+course build; past that your call waits its turn rather than failing, so a slow
+answer is a queue, not an outage. Do not shorten it by writing the phrases
+yourself, and do not abandon and re-send it — a re-send joins the back of the queue.
 
 **If a call fails**, retry it once. If it fails twice — or the answer is
 \`WELSH_EXCLUDED\` — send the SAME body to \`/api/phrases/v3/generate/${courseCode}\`
 (the v3 door; Welsh builders stay there). If that fails twice too, write that LEGO's set
 yourself to the standard below, say so in chat, and keep going — a stalled build
 helps nobody. A v4 answer with \`"ok": false\` is a refusal, not a failure: it carries the
-reasons; do not submit its phrases.
+reasons; do not submit its phrases. **A refusal is HELD for review** (\`"held": true\`,
+\`"code": "HELD_FOR_REVIEW"\`): the door already retried it once with the gate's reasons.
+Do not ask again for that LEGO and do not write its set by hand — leave that seed
+unsubmitted, say in chat which seed and LEGO is held, and move on to the next seed.
+Never send \`retry_held\`; that is for the person who reviews the hold.
 
 Standard for a hand-written fallback set (and the bar the door writes to):
 - ≥4 BUILD, ≥5 USE. Fewer phrases is a fail; variety never substitutes for volume.

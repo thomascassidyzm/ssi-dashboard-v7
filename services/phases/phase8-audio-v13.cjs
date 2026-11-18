@@ -19,6 +19,9 @@
  */
 
 require('dotenv').config()
+// Every live DB call from this process goes through the adaptive load governor (cs #835; Tom's ruling
+// r-2026-11-18-no-watson-or-worker-any-owner). Must stay above anything that builds a Supabase or pg client.
+require('../shared/db-load-gate.cjs').install('popty-phase8-audio')
 
 const express = require('express')
 const cors = require('cors')
@@ -33,11 +36,13 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
+const pronunciationReuseGuard = require('../shared/pronunciation-reuse-guard.cjs')
 const voicingPolicy = require('../shared/voicing-policy.cjs')
 const trialMode = require('../shared/audio-trial-mode.cjs')
 const introSplice = require('../shared/intro-splice.cjs')
 const humanIntro = require('../shared/human-intro-splice.cjs')
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
+const auditWriteLog = require('../shared/audio-write-log.cjs') // an edit-log entry for every course write the render route and the bulk filler make
 const { renderClip, rerecordPatch, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
 const drillCutGuard = require('../shared/drill-cut-guard.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
@@ -86,6 +91,7 @@ const { planPresentationRefresh, newestRenderedPresentation } = require('./prese
 // the LEGO, never template-overwritten, never silently skipped, maintained by an
 // agent when the LEGO moves, escalated to Kai only on a concept break.
 const humanAuthored = require('../shared/human-authored-presentations.cjs')
+const introAuthorship = require('../shared/intro-authorship.cjs')  // the SOFT guard on hand-written intros (job #247·AH)
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pass-queue.cjs')
 // Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
@@ -144,6 +150,38 @@ async function knownGenderContextFor(courseCode, voices) {
 }
 const knownVoiceEntryForClip = knownVoiceGender.knownVoiceEntryForClip
 const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
+const { knownGenderVoiceId } = require('../shared/render-known-gender-voice.cjs')
+const { podLineVoice, clipColumnFor, castFor, englishPodKnownVoice } = require('../shared/pod-line-voice.cjs')
+const { EXPECTED_ENGLISH_TARGET } = require('../shared/resolve-voice.cjs')
+const { characterSex } = require('../shared/pod-character-voice.cjs')
+const { isWelshCourse } = require('../shared/welsh-no-tom-clone.cjs')
+
+/**
+ * THE CHARACTER A POD LINE BELONGS TO (job #932, shared/pod-character-voice.cjs): its speaker within the pod and that speaker's
+ * sex, read from the human Welsh voices of ALL the speaker's lines (the cast map only when none is known). Reads by id and by
+ * (pod_id, speaker) — one pod's handful of rows. null when the line does not exist.
+ */
+async function loadPodCharacter(supabase, podSentenceId) {
+  const { data: line, error } = await supabase.from('listening_pod_sentences').select('id, pod_id, speaker, target_audio_id').eq('id', podSentenceId).maybeSingle()
+  if (error) throw new Error(`listening_pod_sentences unreadable: ${error.message}`)
+  if (!line) return null
+  const [{ data: pod, error: podErr }, { data: sibs, error: sibErr }] = await Promise.all([
+    supabase.from('listening_pods').select('id, course_code, speakers').eq('id', line.pod_id).maybeSingle(),
+    supabase.from('listening_pod_sentences').select('id, target_audio_id').eq('pod_id', line.pod_id).eq('speaker', line.speaker),
+  ])
+  if (podErr) throw new Error(`listening_pods unreadable: ${podErr.message}`)
+  if (sibErr) throw new Error(`listening_pod_sentences unreadable: ${sibErr.message}`)
+  const ids = [...new Set((sibs || []).map((r) => r.target_audio_id).filter(Boolean))]
+  const { data: clips, error: clipErr } = ids.length ? await supabase.from('course_audio').select('id, voice_id').in('id', ids) : { data: [], error: null }
+  if (clipErr) throw new Error(`course_audio unreadable: ${clipErr.message}`)
+  const voiceOf = new Map((clips || []).map((c) => [c.id, c.voice_id]))
+  const cs = characterSex({
+    lineWelshVoice: voiceOf.get(line.target_audio_id) || null,
+    characterWelshVoices: (sibs || []).map((r) => voiceOf.get(r.target_audio_id)).filter(Boolean),
+    castGender: (castFor(pod && pod.speakers, line.speaker) || {}).gender || null,
+  })
+  return { podId: line.pod_id, courseCode: pod && pod.course_code, speaker: line.speaker, ...cs }
+}
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
 /**
@@ -203,8 +241,7 @@ function decideProvider(voiceSettings = {}, { courseCode, language, role, explic
   }
   return decision.provider
 }
-const { isHumanVoiceCourse, isHumanVoiceSlotBlocked, HUMAN_VOICE_TARGET_LANGS } = require('../shared/human-voice-courses.cjs')
-const { isCloneStandInCourse } = require('../shared/aran-clone-standin.cjs')
+const { isHumanVoiceCourse, isHumanVoiceSlotBlocked, hasRenderableSlot, HUMAN_VOICE_TARGET_LANGS } = require('../shared/human-voice-courses.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
@@ -218,7 +255,8 @@ const {
 const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
 const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
-const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast } = require('../shared/resolve-voice.cjs')
+const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast, COURSE_FIELDS: COURSE_FIELDS_FOR_CAST } = require('../shared/resolve-voice.cjs')
+const { slotVoiceException } = require('../shared/slot-voice-exceptions.cjs')
 const { mayReplace: mayReplaceHumanTake } = require('../shared/human-take-guard.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
@@ -271,7 +309,9 @@ const s3KeepAliveAgent = new https.Agent({
   maxSockets: Number(process.env.S3_MAX_SOCKETS) > 0 ? Math.floor(Number(process.env.S3_MAX_SOCKETS)) : 16,
   maxFreeSockets: 8,
 })
-const s3 = new S3Client({
+// Every audio write here (renders, replace, repair via p8.s3, the render route) obeys AUDIO_STORE:
+// R2 `ssi-audio` first, then S3, while dual — services/shared/audio-store.cjs (r-2026-11-06).
+const s3 = require('../shared/audio-store.cjs').wrapAudioClient(new S3Client({
   region: process.env.AWS_REGION || 'eu-west-1',
   maxAttempts: Number(process.env.S3_MAX_ATTEMPTS) > 0 ? Math.floor(Number(process.env.S3_MAX_ATTEMPTS)) : 6,
   requestHandler: new NodeHttpHandler({
@@ -279,7 +319,7 @@ const s3 = new S3Client({
     connectionTimeout: 6000,
     requestTimeout: 60000,
   }),
-})
+}))
 
 /**
  * Get the effective release target for a course.
@@ -583,7 +623,12 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  * voice, in ANY other course, whose S3 object we can point a new row at instead
  * of paying to render it again.
  *
- * ── ANY VOICE (Tom, 2026-09-26 21:31Z, r-2026-09-26-a-recast-applies-to-new-content)
+ * ── VOICE-BOUND NOW (Tom, 2026-10-31; 9 Oct: Alessandra's female clips filled Lorenzo's male Italian slots, ~3,400 slots).
+ * The paragraph below is the 2026-09-26 any-voice rule, SUPERSEDED: this lookup answers a slot only with a clip whose voice
+ * IS the slot's voice, and callers label the new row with the slot's voice, never the clip's. No clip in that voice = a miss,
+ * and a miss falls through to rendering via the single route. The veracity_pass filter below is unchanged.
+ *
+ * ── ANY VOICE (SUPERSEDED, Tom, 2026-09-26 21:31Z, r-2026-09-26-a-recast-applies-to-new-content)
  * A recast applies to NEW content only: if these words exist in this language
  * in any voice anywhere, that clip answers; the cast voice (`voiceId`) is only
  * a preference among hits and the voice of a render when nothing exists. This
@@ -620,7 +665,8 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  *                                         very clip it was asked to replace.
  */
 async function findSiblingCourseClip(courseCode, text, language, voiceId, opts = {}) {
-  const { excludeS3Keys = [], includeOwnCourse = false, ownCourseOnly = false, voiceBound = false, readOnly = false } = opts
+  const { excludeS3Keys = [], includeOwnCourse = false, ownCourseOnly = false, readOnly = false } = opts
+  // VOICE-BOUND, ALWAYS (Tom, 2026-10-31). There is no opts.voiceBound: a clip answers a slot only when its voice IS the slot's voice.
   // Normalise ONCE. `audioKeyCandidates(normalizeForAudio(text))` collapsed
   // internal whitespace before handing the text to normalizeForDb, whose whole
   // job is to be byte-identical to SQL normalize_text() — which does NOT
@@ -657,7 +703,7 @@ async function findSiblingCourseClip(courseCode, text, language, voiceId, opts =
       (ownCourseOnly ? row.course_code === courseCode : (includeOwnCourse || row.course_code !== courseCode)) &&
       row.text != null && normalizeForAudio(row.text) === want &&
       sameLanguage(language, row.language) &&
-      (!voiceBound || sameVoice(voiceId, row.voice_id)))
+      sameVoice(voiceId, row.voice_id))
     // The preferred voice first; then this course's own row (it IS the slot's
     // clip, pointing at it writes nothing); then id, so the answer is stable.
     const rank = row => [sameVoice(voiceId, row.voice_id) ? 0 : 1, row.course_code === courseCode ? 0 : 1]
@@ -738,6 +784,9 @@ function runSpendCap(plannedItems, { ceilingChars = Infinity, ratio = RENDER_ATT
     cap.spent += chars
     cap.renders++
   }
+  // Whether checkProgress(attached) would trip. The route asks this first so it
+  // can confirm against a measured count before stopping a pass (job #221·AH).
+  cap.wouldTrip = (attached) => !cap.tripped && cap.renders >= warmup && cap.renders > ratio * Math.max(0, attached || 0)
   // Call after each batch with every slot the pass has filled so far.
   cap.checkProgress = (attached) => {
     if (cap.tripped || cap.renders < warmup) return
@@ -782,6 +831,39 @@ const TEXT_SLOT_COLUMNS = {
   known:   [['course_practice_phrases', 'known_text', 'known_audio_id'], ['course_legos', 'known_text', 'known_audio_id'], ['course_seeds', 'known_text', 'known_audio_id']],
   target1: [['course_practice_phrases', 'target_text', 'target1_audio_id'], ['course_legos', 'target_text', 'target1_audio_id'], ['course_seeds', 'target_text', 'target1_audio_id']],
   target2: [['course_practice_phrases', 'target_text', 'target2_audio_id'], ['course_legos', 'target_text', 'target2_audio_id'], ['course_seeds', 'target_text', 'target2_audio_id']],
+}
+
+/**
+ * MEASURED FILLS (job #221·AH, 2026-11-11). The render/attach breaker's own
+ * tally is attributed: each render counts the slots attachClipToNullSlots can
+ * tie to its clip by EXACT text. Slots filled any other way — the
+ * audio_autolink trigger matching on normalize_text (a spelling variant of the
+ * line), a sibling clip of the same normalised words, the paged linker — are
+ * filled but not attributed. On ara_eg/ara_lb (prod warm-up 400) every pass
+ * stopped at exactly 400 calls with 68–88 slots attributed while the course
+ * really was filling. So before the breaker stops a pass it MEASURES: the
+ * course's empty text slots in the pass's roles, now vs at pass start. The
+ * count is course-wide, so a concurrent edit that ADDS empty rows (or nulls
+ * links) can only make it read low (the safe direction). The UNSAFE direction
+ * is another writer FILLING or DELETING empty slots on the same course
+ * mid-pass (a second /generate on that course — the route has no busy guard —
+ * a link-clip, a phrase batch-delete): those read as this pass's fills and can
+ * hold the breaker open on a pass that attaches nothing. In that case only the
+ * run budget (runSpendCap.charge) stops the pass. It is only taken when the
+ * breaker is about to trip, so a healthy pass pays nothing for it. Returns
+ * null if any count fails — the breaker then falls back to its attributed
+ * tally, unchanged (it trips as before).
+ */
+async function countEmptyTextSlots(courseCode, roles) {
+  let total = 0
+  for (const role of new Set(roles || [])) {
+    for (const [table, , audioCol] of (TEXT_SLOT_COLUMNS[role] || [])) {
+      const { count, error } = await supabase.from(table).select(audioCol, { count: 'exact', head: true }).eq('course_code', courseCode).is(audioCol, null)
+      if (error || typeof count !== 'number') return null
+      total += count
+    }
+  }
+  return total
 }
 
 /**
@@ -907,13 +989,12 @@ async function reuseSiblingIntoCourse({
   // there is nothing to write. readOnly (a dry run) never writes either.
   const isOwnSlot = sibling.course_code === courseCode && sibling.role === role && sibling.id
   if (readOnly || isOwnSlot) {
-    return { audioId: sibling.id || null, s3Key: sibling.s3_key, durationMs: sibling.duration_ms, wordBoundaries: sibling.word_boundaries || null, fromRole: sibling.role, crossedRole: sibling.role !== role, voiceId: sibling.voice_id || voiceId, written: false }
+    return { audioId: sibling.id || null, s3Key: sibling.s3_key, durationMs: sibling.duration_ms, wordBoundaries: sibling.word_boundaries || null, fromRole: sibling.role, crossedRole: sibling.role !== role, voiceId, written: false }
   }
 
   const payload = {
-    // The row names the voice that SPEAKS the clip — under any-voice reuse
-    // that may not be the voice the caller would have rendered in.
-    voice_id: sibling.voice_id || voiceId,
+    // The slot's voice. Reuse is voice-bound, so the clip's voice IS this voice; never copy a label off the clip.
+    voice_id: tryCanonicalClipVoiceId(voiceId) || voiceId,
     origin: 'tts',
     s3_key: sibling.s3_key,
     duration_ms: sibling.duration_ms,
@@ -1824,6 +1905,26 @@ async function processInParallel(items, processor, concurrency = CONCURRENCY) {
  *   other is what would be allowed into the store.
  * @returns {Promise<{buffer: Buffer, durationMs: number}>} Mastered audio and duration
  */
+/**
+ * POST-RENDER PACE (job #590): play a freshly rendered clip at `tempo` (1.25 = 25% faster, ~20% shorter, pitch kept)
+ * before it is mastered. Only the clone stand-in's pace by belt asks for this (services/shared/aran-clone-standin.cjs),
+ * because Cartesia ignores request-time speed on a Professional Voice Clone. No tempo, or 1, returns the input untouched.
+ * Word timings are rescaled to the new clock so the word-by-word display still lands on the words.
+ */
+async function applyPaceTempo(audioBuffer, wordTimings, tempo) {
+  const t = Number(tempo)
+  if (!tempo || !Number.isFinite(t) || t === 1) return { audioBuffer, wordTimings }
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'pace-tempo-'))
+  try {
+    const inF = path.join(dir, 'in.bin'), outF = path.join(dir, 'out.wav')
+    await fs.writeFile(inF, audioBuffer)
+    await audioProcessor.changeTempoToWav(inF, outF, t)
+    const scale = (xs) => (Array.isArray(xs) ? xs.map((x) => Math.round((x / t) * 1000) / 1000) : xs)
+    const wt = wordTimings && typeof wordTimings === 'object' ? { ...wordTimings, starts: scale(wordTimings.starts), ends: scale(wordTimings.ends) } : wordTimings
+    return { audioBuffer: await fs.readFile(outF), wordTimings: wt }
+  } finally { await fs.remove(dir) }
+}
+
 async function masterAudio(audioBuffer, ttsText, opts = {}) {
   const targetLufs = Number.isFinite(Number(opts.targetLufs)) ? Number(opts.targetLufs) : -16.0
   // A PER-VOICE OFFSET (Kai, 2026-09-23: Charlotte +5 dB) arrives here as
@@ -2282,7 +2383,7 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
     audioRows = await readAllPages(() => {
       let q = supabase
         .from('course_audio')
-        .select('id, text, language, role, s3_key, origin, created_at, voice_id, lego_id')
+        .select('id, text, language, role, s3_key, origin, created_at, voice_id, lego_id, audio_revision')
         .eq('course_code', courseCode)
         .not('s3_key', 'like', 'pending/%')
       if (humanOnly) q = q.eq('origin', 'human')
@@ -2293,6 +2394,10 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   }
 
   if (humanOnly && !(audioRows || []).length) return result
+  // A line this course renders through a pronunciation override links only a clip rendered WITH it (job #262·AD).
+  audioRows = await pronunciationReuseGuard.filterRowsByOwnText(audioRows, courseCode)
+  // A clip that SAYS other words than its text (clip_spoken_text, cs #160·AI) is never filled into a slot by its text.
+  audioRows = await require('../shared/clip-spoken-words.cjs').withoutMislabelled(supabase, audioRows)
 
   // Two maps. `audioMap` holds only clips whose voice matches the config — the
   // only ones eligible to be linked. `rejectedMap` holds the text-matching clips
@@ -2793,20 +2898,6 @@ app.get('/inventory/:courseCode', async (req, res) => {
 // POST GENERATE - Generate missing audio (requires approval)
 // =============================================================================
 
-// Ledger of clips /generate published with the phonology gate deferred
-// (phonologyGate:false). One JSON line per clip, outside the repo tree. The
-// check-after pass reads it; nothing else writes it.
-function phonologyDeferredLedgerPath (courseCode) {
-  return require('../../tools/lib/evidence-path.cjs').evidencePath(`phonology-deferred/${courseCode}.jsonl`)
-}
-function recordPhonologyDeferred (courseCode, row) {
-  try {
-    fs.appendFileSync(phonologyDeferredLedgerPath(courseCode), JSON.stringify({ at: new Date().toISOString(), ...row }) + '\n')
-  } catch (e) {
-    logger.error(`[/generate] could not record phonology-deferred clip ${row.audio_id}: ${e.message}`)
-  }
-}
-
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -2824,17 +2915,6 @@ app.post('/generate/:courseCode', async (req, res) => {
     const runStartedAt = new Date().toISOString()
 
     const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds, authorScope: requestedAuthorScope } = req.body  // High default for bulk generation
-    // `phonologyGate: false` DEFERS the inline whisper language check to a
-    // check-after pass; it never drops it. Same opt-out, same default (ON) as
-    // /regenerate-role — see the long comment there for why the gate is a ~7
-    // clips/min ceiling on this box. Asked for by name, per request, so every
-    // other caller of this shared service is unchanged. Every clip a deferred
-    // run publishes is written to a ledger (phonologyDeferredLedgerPath) so the
-    // check-after has an exact list to verify, rather than a created_at guess.
-    // The pre-publish VERACITY sampler still runs. Kai 2026-09-25 22:28Z,
-    // eng_for_hin "voice now, check after" (job #283).
-    const phonologyGate = req.body.phonologyGate !== false
-    if (!phonologyGate) logger.warn(`[/generate] ${courseCode}: phonology gate DEFERRED by request — every published clip goes to ${phonologyDeferredLedgerPath(courseCode)} for the check-after pass`)
     const authorScope = ['all', 'lego', 'none'].includes(requestedAuthorScope) ? requestedAuthorScope : 'all'
     // Optional incremental scope: restrict generation to specific seed numbers.
     const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
@@ -2973,6 +3053,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // spend); it reports what WOULD be authored.
     let authoredIntros = []
     let authorFlags = []
+    let authorIntroWarnings = []
     // authorScope narrows which intros may be authored, so a spend approval
     // can be expressed at the call instead of by editing content. 'all'
     // (default) is today's behaviour; 'lego' authors LEGO intros only and
@@ -3016,6 +3097,27 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
       const bCount = authoredIntros.filter(a => a.frame === 'B').length
       emitProgress(supabase, courseCode, `Authored ${authoredIntros.length} introductions (${bCount} with context, ${authoredIntros.length - bCount} bare)`, { phase: 'audio', action: 'authored', total: authoredIntros.length })
+
+      // THE SOFT GUARD (job #247·AH). An intro is authored here only when the
+      // LEGO has no intro row left at all, so the old words survive only in a
+      // SOFT mark (a hard-marked LEGO never reaches the author). Warn, show the
+      // marked words beside the authored ones, suggest carrying the example —
+      // never block, never substitute.
+      try {
+        const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
+        if (introCtx.softMarks.size) {
+          authorIntroWarnings = introAuthorship.warningsFor(introCtx, authoredIntros.filter(a => a.lego_id).map(a => ({
+            lego_id: a.lego_id, oldText: null, newText: a.text, knownText: a.chunk,
+          })))
+          const summary = introAuthorship.summariseWarnings(authorIntroWarnings)
+          if (summary) {
+            for (const w of authorIntroWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+            logger.warn(`[IntroSoftGuard] ${courseCode}: ${summary}`)
+          }
+        }
+      } catch (guardErr) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}: could not check authored intros against soft marks (${guardErr.message}) — authoring carries on`)
+      }
     }
 
     // Step B2: If items are "linkable" but nothing actually linked (link step ran
@@ -3230,7 +3332,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (per-course ladder, relaxes every ${sampleRate.step_clips} clean sampled clips)`)
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(sampleRate.rate)} TTS clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`); void sampleRate
 
     // Bind presentation audio to its consumers: the course_legos FK AND the
     // lego_introductions projection (both read live by the learning app —
@@ -3337,7 +3439,7 @@ app.post('/generate/:courseCode', async (req, res) => {
                 text_normalized: normalizeForAudio(item.text),
                 language: item.language,
                 role: item.role,
-                voice_id: clip.voice_id || item.voiceId, // the voice that speaks the clip (any-voice reuse)
+                voice_id: tryCanonicalClipVoiceId(item.voiceId) || item.voiceId, // the slot's cast voice; the lookup is voice-bound, so the clip speaks it
                 origin: 'tts',
                 s3_key: clip.s3_key,
                 duration_ms: clip.duration_ms,
@@ -3416,7 +3518,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         // #430); a door answer from the clip library is not charged at all.
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceName,
@@ -3424,17 +3526,20 @@ app.post('/generate/:courseCode', async (req, res) => {
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            // An ElevenLabs config carries no locale, so the door cannot name the clip without the line's language and
+            // refused every ElevenLabs fill item (job #28: deu_ch target2, "cannot name this clip (language unknown)").
+            door: { courseCode, language: item.language, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
-            speed
+            speed,
+            // The cast's model + stability (job #28): without them a fill renders multilingual_v2 at 0.5.
+            ...courseVoiceConfig.elevenLabsSlotSettings(voices[item.role], voiceName)
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             voiceId: voiceName,
             language: toBcp47(item.language),
-            phonologyGate,
           }))
         } else if (provider === 'cartesia') {
           // `locale`, not `language` — Cartesia's docs prefer it, and the BCP-47
@@ -3442,12 +3547,11 @@ app.post('/generate/:courseCode', async (req, res) => {
           // honours it and pinning it halves the take-to-take duration wander on
           // short text; the tts-service defaults it to 1.0 if a caller omits it.
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
             speed,
-            phonologyGate,
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${provider}`)
@@ -3544,13 +3648,6 @@ app.post('/generate/:courseCode', async (req, res) => {
         }], 'phase8:render', logger)
       }
 
-      if (!phonologyGate && (provider === 'cartesia' || provider === 'xai')) {
-        recordPhonologyDeferred(courseCode, {
-          audio_id: insertedAudio?.id || null, s3_key: s3Key, role: item.role, voice_id: item.voiceId,
-          language: item.language, text: item.text, tts_text: textForTTS, run_started_at: runStartedAt,
-        })
-      }
-
       // For presentation audio, immediately bind to its consumers using the
       // ID we just got (course_legos FK + lego_introductions, or phrase FK)
       if (item.role === 'presentation' && insertedAudio?.id) {
@@ -3567,6 +3664,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
       return { success: true, item }
     }
+
+    // Baseline for the breaker's measured-fill check (countEmptyTextSlots).
+    const textRolesInPass = [...new Set(uniqueNeeded.map(n => n.role).filter(r => TEXT_SLOT_COLUMNS[r]))]
+    const emptyTextSlotsAtStart = textRolesInPass.length ? await countEmptyTextSlots(courseCode, textRolesInPass) : null
 
     // Process in parallel batches
     for (let i = 0; i < uniqueNeeded.length; i += concurrencyToUse) {
@@ -3589,7 +3690,17 @@ app.post('/generate/:courseCode', async (req, res) => {
       ])
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
       for (const r of batchResults) if (r.status === 'rejected' && isSpendGuardRefusal(r.reason)) spendCap.noteGuardRefusal(r.reason.message)
-      spendCap.checkProgress(results.attached + results.midLinked)
+      let filledSoFar = results.attached + results.midLinked
+      if (spendCap.wouldTrip(filledSoFar) && emptyTextSlotsAtStart !== null) {
+        const emptyNow = await countEmptyTextSlots(courseCode, textRolesInPass)
+        if (emptyNow !== null) {
+          const measured = emptyTextSlotsAtStart - emptyNow
+          if (measured > filledSoFar) logger.info(`[SpendCap] ${courseCode}: attributed ${filledSoFar} filled slot(s), measured ${measured} (empty ${emptyTextSlotsAtStart} → ${emptyNow}) — breaker judges on the measured count`)
+          filledSoFar = Math.max(filledSoFar, measured)
+        }
+      }
+      results.filledMeasured = filledSoFar
+      spendCap.checkProgress(filledSoFar)
       if (spendCap.tripped && !currentWork.cancelled) {
         logger.error(`[SpendCap] ${courseCode}: ${spendCap.tripped} — stopping this pass`)
         currentWork.cancelled = true
@@ -3713,7 +3824,9 @@ app.post('/generate/:courseCode', async (req, res) => {
     const statusWord = wasCancelled ? 'Audio generation cancelled' : 'Audio generation complete'
     emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? `, ${results.failed} failed` : ''}${linked > 0 ? `, ${linked} audio IDs linked` : ''} — ${vLine}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, linked, veracity: results.veracity })
 
+    const fillLog = await auditWriteLog.recordFillPass({ supabase, courseCode, surface: 'phase8:POST /generate', results, linked, logger })
     res.json({
+      editEventId: fillLog.eventId, ...(fillLog.editLogError ? { editLogError: fillLog.editLogError } : {}),
       status: spendCap.tripped ? 'spend-capped' : wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
@@ -3724,7 +3837,6 @@ app.post('/generate/:courseCode', async (req, res) => {
       uncast: castPlan.summary,
       cancelled: wasCancelled,
       veracity: results.veracity,
-      phonologyGate,
       errors: results.errors.slice(0, 10),
       // Rows whose TEXT is not an example (labels/markers): fix in the row. Uncapped.
       dataErrors: results.dataErrors,
@@ -3746,7 +3858,9 @@ app.post('/generate/:courseCode', async (req, res) => {
         issue: f.issue
       })),
       // What happened to every human-authored presentation line (job #506).
-      humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])]
+      humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])],
+      // Hand-written intros (soft-marked) that authoring replaced — warned, not blocked (job #247·AH).
+      introWarnings: authorIntroWarnings
     })
 
   } catch (error) {
@@ -3766,28 +3880,6 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       logger.info(`[/regenerate-role] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
       return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
     }
-    // `phonologyGate` is an OPT-OUT A CALLER HAS TO ASK FOR BY NAME, and it
-    // defaults to on, so every existing caller is unchanged.
-    //
-    // The gate (services/tts-service.cjs) runs whisper over EVERY Cartesia and
-    // xAI clip and re-rolls one whose detected spoken language is English. It
-    // exists for English-dominant multilingual CLONES handed a cross-language
-    // line — the 2026-07-10 Italian pilot, where xAI read 'come stai' as
-    // English 'come'. That is a real defect and this is not a way to stop
-    // caring about it.
-    //
-    // It is also, measured on watson-1 (4 cores) on 2026-09-10, a hard ceiling
-    // of about SEVEN CLIPS A MINUTE: whisper-small at 4 threads, two at a time,
-    // is ~8s of two cores per clip. A role-wide re-voice of a 12,000-clip
-    // course is 30 hours of a shared box for it alone, and the box is shared.
-    //
-    // So a caller re-voicing a whole role onto a vendor's OWN catalogue voice
-    // for that language — a German voice reading German, not a clone reading a
-    // stranger's language — can say so. What it does NOT switch off is the
-    // pre-publish VERACITY gate below, which samples the run and checks what
-    // was actually SPOKEN against the text that was asked for. That is the
-    // stronger of the two checks and the one that would catch an
-    // English-phonology render anyway.
     // `onlyOtherVoices` MAKES A RE-VOICE RESUMABLE, and it is opt-in.
     //
     // A role-wide re-voice is a long job and this box does not let long jobs
@@ -3809,7 +3901,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // that already hold that voice would skip the entire job.
     const {
       role, dryRun = false, limit, flaggedOnly = false,
-      phonologyGate = true, onlyOtherVoices = false,
+      onlyOtherVoices = false,
     } = req.body
 
     if (!role) {
@@ -4054,7 +4146,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (per-course ladder, relaxes every ${sampleRate.step_clips} clean sampled clips)`)
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(sampleRate.rate)} TTS clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`); void sampleRate
     // Use speed from voice config (everything is a parameter!)
     const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, role) // 1.0 on app-played speed (course-voice-config.cjs)
 
@@ -4126,7 +4218,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             door: { courseCode, intro: role === 'presentation', replacing: [item.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceId,
-            speed
+            speed,
+            ...courseVoiceConfig.elevenLabsSlotSettings(voiceSettings, voiceId) // the cast's model + stability (job #28)
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
@@ -4140,8 +4233,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceId,
             locale: ttsLocaleForRole(course, role, language),
-            speed,
-            phonologyGate
+            speed
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -4363,9 +4455,6 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       courseCode,
       role,
       voiceId,
-      // A run that switched the phonology gate off SAYS SO in its own result,
-      // rather than leaving it to be reconstructed from the request later.
-      phonologyGate,
       onlyOtherVoices,
       excludedAlreadyInVoice,
       total: audioToRegenerate.length,
@@ -4498,10 +4587,8 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
     const voiceConfig = course.voice_config || {}
     // Match the generator's voice_id format exactly (provider_voiceId), else the
     // pending row's voice_id won't reconcile with the generated row → duplicate.
-    const presVoice = voiceConfig.voices?.presentation
-    const presentationVoiceId = canonicalClipVoiceId(
-      presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural',
-      presVoice?.voiceId ? presVoice?.provider : undefined)
+    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
+    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
 
     // Existing presentation rows — so we ONLY add what's genuinely missing.
     const existingPres = await readAllPages(() => supabase.from('course_audio')
@@ -4858,30 +4945,6 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // =========================================================================
     const componentPresentations = []
 
-    if (dryRun) {
-      return res.json({
-        success: true,
-        dryRun: true,
-        courseCode,
-        template,
-        shortTemplate,
-        targetLangName,
-        count: presentations.length,
-        componentCount: componentPresentations.length,
-        contextStats,
-        humanAuthored: humanAuthoredReport,
-        sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
-        componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
-      })
-    }
-
-    // Bulk upsert presentation text to course_audio
-    const voiceConfig = course.voice_config || {}
-    const presVoice = voiceConfig.voices?.presentation
-    const presentationVoiceId = canonicalClipVoiceId(
-      presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural',
-      presVoice?.voiceId ? presVoice?.provider : undefined)
-
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
 
@@ -4890,12 +4953,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // presentation-refresh-plan.cjs): a superseded clip and its replacement.
     // The row we compare the new text against is the one the LEARNER CURRENTLY
     // HEARS — the newest rendered candidate — never a pending placeholder.
+    // Read before the dry-run return (job #247·AH) so a preview can warn too;
+    // `text` is read for the same reason.
     const existingByLegoId = new Map()
     for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: existing } = await supabase
         .from('course_audio')
-        .select('id, lego_id, text_normalized, s3_key, origin, created_at')
+        .select('id, lego_id, text, text_normalized, s3_key, origin, created_at')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .in('lego_id', batch)
@@ -4910,6 +4975,60 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         }
       }
     }
+
+    // THE SOFT GUARD (Kai, 2026-11-11, job #247·AH). An intro carrying
+    // hand-authored wording — an "as in" example, a line no template produces,
+    // or a soft mark — that this run would replace is WARNED about, old vs new,
+    // with a suggestion to carry the old example where it still contains the
+    // LEGO. Nothing is blocked and nothing is substituted: the run writes what
+    // it always wrote. Hard-marked LEGOs are left to the hard guard above.
+    // Warn-only means it can never take the rebuild down: any failure here
+    // leaves no warnings and the run carries on exactly as it did before (#254).
+    let introWarnings = []
+    let introWarningSummary = null
+    try {
+      const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
+      introWarnings = introAuthorship.warningsFor(introCtx, presentations.map(p => ({
+        lego_id: p.lego_id,
+        oldText: existingByLegoId.get(p.lego_id)?.text || null,
+        newText: p.presentation_text,
+        knownText: p.known,
+      })), { hardMarkedIds: new Set(presentations.filter(p => p.human_authored).map(p => p.lego_id)) })
+      introWarningSummary = introAuthorship.summariseWarnings(introWarnings)
+      if (introWarningSummary) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarningSummary}`)
+        for (const w of introWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+      }
+      for (const p of introCtx.problems) logger.warn(`[IntroSoftGuard] ${courseCode}: ${p} — warnings made from what could be read`)
+    } catch (guardErr) {
+      introWarnings = []
+      introWarningSummary = null
+      logger.warn(`[IntroSoftGuard] ${courseCode}: could not check intros for hand-authored wording (${guardErr.message}) — rebuild carries on`)
+    }
+
+    if (dryRun) {
+      return res.json({
+        success: true,
+        dryRun: true,
+        courseCode,
+        template,
+        shortTemplate,
+        targetLangName,
+        count: presentations.length,
+        componentCount: componentPresentations.length,
+        contextStats,
+        humanAuthored: humanAuthoredReport,
+        introWarnings,
+        introWarningSummary,
+        sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
+        componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
+      })
+    }
+
+    // Bulk upsert presentation text to course_audio
+    const voiceConfig = course.voice_config || {}
+    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
+    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
 
     // MAKE-BEFORE-BREAK (Kai's C0 ruling, 2026-08-27; canon clash C23).
     //
@@ -5315,6 +5434,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       componentUnchanged: compTextUnchanged,
       contextStats,
       humanAuthored: humanAuthoredReport,
+      introWarnings,
+      introWarningSummary,
       message: `${humanAuthoredReport.length ? `${humanAuthoredReport.length} human-authored line(s): ${humanAuthoredReport.map(o => `${o.lego_id} ${o.outcome}`).join(', ')}. ` : ''}${presentations.length} LEGO presentations processed (${supersededLegoIds.length} text changed — replacements queued alongside the existing clips, nothing deleted, no slot silenced — ${unchangedLegoIds.size} unchanged, ${presentations.length - supersededLegoIds.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
     })
 
@@ -5461,7 +5582,7 @@ async function linkClipForRender({ courseCode, text, language, role, voiceId, le
 // duplicate-stop (services/shared/drill-cut-guard.cjs). Served = core pod on slug pod-1 (tools/pods/serving-slug.cjs).
 // Fails OPEN with a warning: a missed lookup costs one duplicate take; a thrown one would stop every render.
 let servedPodCache = { at: 0, pods: null }
-async function immersionTurnForRender({ language, text }) {
+async function immersionTurnForRender({ language, text, voice }) {
   try {
     const term = drillCutGuard.searchSegment(text)
     if (!term) return null
@@ -5484,7 +5605,7 @@ async function immersionTurnForRender({ language, text }) {
     const { data: clips, error: ce } = await supabase.from('course_audio').select('id, language, voice_id').in('id', [...new Set(rows.map((r) => r.target_audio_id))])
     if (ce) throw new Error(`course_audio unreadable: ${ce.message}`)
     const clipOf = new Map((clips || []).map((c) => [c.id, c]))
-    return drillCutGuard.findImmersionTurn(rows.map((r) => ({ ...r, course_code: courseOf.get(r.pod_id), clip: clipOf.get(r.target_audio_id) || null })), { language, text })
+    return drillCutGuard.findImmersionTurn(rows.map((r) => ({ ...r, course_code: courseOf.get(r.pod_id), clip: clipOf.get(r.target_audio_id) || null })), { language, text, voice })
   } catch (e) {
     logger.warn(`[render] drill-cut lookup skipped (fails open): ${e.message}`)
     return null
@@ -5498,18 +5619,40 @@ async function immersionTurnForRender({ language, text }) {
  * A lock wait behind another transaction on the same course is retried (services/shared/paid-write.cjs) rather
  * than lost; if it still fails, the clip is written to the paid-unsaved ledger so adoptS3Key can file it free.
  */
+// VERSIONED, NOT UPSERTED (job #74·AA, 2026-10-28). This used to be a plain upsert on the clip identity, so a write that
+// landed on an EXISTING row (the #63·AA re-adopt of the 732 Tamara clips at natural speed) moved s3_key under an unchanged
+// audio_revision: the learner address <uuid>.v<rev> stayed the same, and a device that had already played the clip kept the
+// old bytes (immutable HTTP cache, IndexedDB AudioCache keyed on the ref). writeOrSwapClip inserts a new identity and, for an
+// existing one, swaps through swapClipInPlace — revision + 1 and a course_audio_revisions history row.
 async function writePaidClipRow({ courseCode, text, language, role, voiceId, legoId, s3Key, durationMs, wordBoundaries, wordTimings, adopted = false }) {
-  const { data: row, error } = await paidWrite.writeAfterPaid(() => supabase.from('course_audio').upsert({
-    course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId,
-    lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: wordBoundaries || null,
-    word_timings: toWordTimingsColumn(wordTimings), // NULL for non-Cartesia; replaces stale timings on an upsert over new bytes
-  }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single(), { log: logger, label: `course_audio ${courseCode} ${role} ${s3Key}` })
+  const cols = {
+    lego_id: legoId, origin: 'tts', duration_ms: durationMs, word_boundaries: wordBoundaries || null,
+    word_timings: toWordTimingsColumn(wordTimings), // NULL for non-Cartesia; replaces stale timings on a write over new bytes
+  }
+  const attempt = async () => {
+    try {
+      const out = await writeOrSwapClip({
+        supabase,
+        identity: { course_code: courseCode, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId, text },
+        insertRow: { course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId, s3_key: s3Key, ...cols },
+        swapPatch: { text, ...cols },
+        newS3Key: s3Key, durationMs,
+        source: adopted ? 'phase8:adopt' : 'phase8:render',
+        acceptedBy: adopted ? 'phase8 /api/audio/render adoptS3Key' : 'phase8 /api/audio/render',
+        reason: adopted ? `adopted ${s3Key}` : 'render over an existing clip identity',
+        logger,
+      })
+      return { data: { id: out.audioId, revision: out.revision }, error: null }
+    } catch (e) { return { data: null, error: e } }
+  }
+  const { data: row, error } = await paidWrite.writeAfterPaid(attempt, { log: logger, label: `course_audio ${courseCode} ${role} ${s3Key}` })
   if (error) {
     if (!adopted) paidWrite.recordPaidUnsaved({ courseCode, role, text, language, voiceId, legoId, s3Key, durationMs, wordBoundaries: wordBoundaries || null, wordTimings: wordTimings || null, error: error.message }, { log: logger })
     throw new Error(`course_audio write failed after the render was paid for: ${error.message} (object ${s3Key} is in S3 — file it with adoptS3Key, never re-render)`)
   }
   await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], adopted ? 'phase8:adopt' : 'phase8:render', logger)
-  return { audioId: row.id, s3Key, durationMs }
+  // revision: the new audio_revision when this swapped onto an existing row (the learner ref is now <uuid>.v<revision>); null for a new row.
+  return { audioId: row.id, s3Key, durationMs, revision: row.revision ?? null }
 }
 
 /** Length of an S3 object in ms (the same metadata read masterAudio uses — sox is not installed on watson-1), for an adopted clip the paid-unsaved ledger never recorded. */
@@ -5574,36 +5717,138 @@ function sharedAudioDeps() {
   }
 }
 
-function buildRenderDeps() {
+function buildRenderDeps({ verifiedApproval = null } = {}) {
   const deps = {
+      // The approval string /render verified the ORIGIN of (approval-origin.cjs), or null. Set only by the handler, never from
+      // the request body: audio-render-entry approvedCastMove (cs #243·AI) moves a re-record onto the cast voice only under it.
+      verifiedApproval,
+      // The course's CURRENT cast voice for a slot role, from the cast itself (resolveVoice status 'voice'), or null.
+      castVoice: async ({ courseCode, role, language }) => {
+        const { data: course, error } = await supabase.from('courses').select(COURSE_FIELDS_FOR_CAST).eq('course_code', courseCode).maybeSingle()
+        if (error) throw new Error(`courses unreadable: ${error.message}`)
+        if (!course) return null
+        const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
+        return rv.status === 'voice' ? rv.voiceId : null
+      },
+      // Does another row already hold this clip's identity in `voiceId`? (unique_course_audio_per_voice — checked before spend.)
+      identityTaken: async ({ row, voiceId }) => {
+        const { data, error } = await supabase.from('course_audio').select('id')
+          .eq('course_code', row.course_code).eq('language', row.language).eq('role', row.role).eq('voice_id', voiceId)
+          .eq('text_normalized', row.text_normalized != null ? row.text_normalized : normalizeForAudio(row.text)).neq('id', row.id).limit(1)
+        if (error) throw new Error(`course_audio unreadable: ${error.message}`)
+        return !!(data && data.length)
+      },
       immersionTurn: immersionTurnForRender,
-      resolve: async ({ courseCode, role, language, voiceId, trial }) => {
-        // A human-voice course is refused whole, except the one slot aran-clone-standin.cjs opens (Aran 2026-10-29, job #557:
-        // the nv2/sv2 English known side, in his own clone). The slot's language is the one stated, else the role's own side,
-        // which needs the course row — so a human-voice course outside the stand-in list is refused before it is even read.
-        if (isHumanVoiceCourse(courseCode) && !isCloneStandInCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
+      // Per-language stop (job #352): every recording of these words in this language, any course / side / voice, and the
+      // route's existing re-record authority that may let a second performance past it.
+      clipsInLanguage: (want) => require('../shared/clip-library.cjs').existingClipsInLanguage(want),
+      rerecordGranted: (want) => require('../shared/rerecord-gate.cjs').rerecordGranted(want),
+      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId, podSentenceId, podRecast, podSide }) => {
+        // A human-voice course is refused whole, except its English known slot: Tom 2026-11-08 (r-2026-11-08-welsh-courses-
+        // the-welsh-stays-human) for every cym_* course, and before it Aran 2026-10-29 (job #557) for nv2/sv2 in his own clone.
+        // The slot's language is the one stated, else the role's own side, which needs the course row — so Breton and pdc are
+        // refused before the row is even read; cym_* goes on to the slot check, which keeps every Welsh slot shut.
+        if (!hasRenderableSlot(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
         const { data: course } = await supabase.from('courses')
           .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
           .eq('course_code', courseCode).single()
         if (!course) throw new RenderRequestError(`Course not found: ${courseCode}`, 404, 'NO_COURSE')
-        if (isHumanVoiceSlotBlocked({ courseCode, role, language: language || roleNativeLanguage(role, course) })) throw new RenderRequestError(`${courseCode} ${role} is human-voice only — no TTS (Tom's ruling 2026-07-25); only its English known side may stand in, in Aran's own clone (Aran 2026-10-29, job #557)`, 409, 'HUMAN_VOICE_COURSE')
+        if (isHumanVoiceSlotBlocked({ courseCode, role, language: language || roleNativeLanguage(role, course) })) throw new RenderRequestError(`${courseCode} ${role} is human-voice only — no TTS (Tom's ruling 2026-07-25); only its English known side may be synthesised (Tom 2026-11-08; Aran 2026-10-29, job #557)`, 409, 'HUMAN_VOICE_COURSE')
         course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
         const vc = course.voice_config || {}
         const settings = vc.voices?.[role] || {}
+        // A gendered known line speaks in its own gender's voice, as phase8 /generate does (job #710; services/shared/render-known-gender-voice.cjs).
+        // A POD LINE speaks in the pod's cast voice for its speaker, never the course slot's (job #799, shared/pod-line-voice.cjs):
+        // the voice comes from listening_pods.speakers, a caller-named voice that differs is refused, and neither the gendered
+        // known-voice rule nor resolveVoice — both govern course slots, not pods — is asked.
+        let podVoice = null
+        if (podSentenceId && !trial) {
+          const { data: podLine, error: lineErr } = await supabase.from('listening_pod_sentences').select('id, pod_id, speaker, target_audio_id, known_audio_id').eq('id', podSentenceId).maybeSingle()
+          if (lineErr) throw new Error(`listening_pod_sentences unreadable: ${lineErr.message}`)
+          const { data: podRow, error: podErr } = podLine ? await supabase.from('listening_pods').select('id, course_code, speakers').eq('id', podLine.pod_id).maybeSingle() : { data: null, error: null }
+          if (podErr) throw new Error(`listening_pods unreadable: ${podErr.message}`)
+          const col = clipColumnFor(role)
+          const { data: nowClip, error: clipErr } = podLine && col && podLine[col] ? await supabase.from('course_audio').select('voice_id').eq('id', podLine[col]).maybeSingle() : { data: null, error: null }
+          if (clipErr) throw new Error(`course_audio unreadable: ${clipErr.message}`)
+          podVoice = podLineVoice({ pod: podRow, sentence: podLine || null, role, courseCode, currentClipVoice: (nowClip && nowClip.voice_id) || null })
+          // RECAST (job #799, Watson for Tom under r-2026-10-29 / r-2026-11-02 "re-voicing a course with its new cast … just do it"):
+          // a scene whose clips are in retired or uncast voices is re-voiced WHOLE in the course's CURRENT cast, at the speaker's
+          // gender — target side: resolveVoice for target1 (f) / target2 (m), the very answer the door enforces for slots; known
+          // side: English → Charlotte (f) / Tom-006 (m) (resolve-voice EXPECTED_ENGLISH_TARGET, what live pods speak), any other
+          // known language → its Voice Lab cast at that gender. No answer refuses; it never falls back to the old clip's voice.
+          if (!podVoice.error && podRecast) {
+            const cast = castFor(podRow.speakers, podLine.speaker)
+            const g = cast && (cast.gender === 'f' || cast.gender === 'm') ? cast.gender : null
+            if (!g) throw new RenderRequestError(`${podSentenceId}: speaker "${podLine.speaker}" has no gender in the pod cast — cannot recast`, 409, 'POD_UNCAST')
+            let recast = null
+            if (role === 'known') {
+              if (toIso3(course.known_lang) === 'eng') recast = EXPECTED_ENGLISH_TARGET[g]
+              else { const c = castVoiceForLanguage(await voiceConfigService.loadCast(), toIso3(course.known_lang), g); recast = c ? `${c.provider || 'cartesia'}_${String(c.voiceId).replace(/^(azure|elevenlabs|xai|cartesia|google)_/, '')}` : null }
+            } else {
+              const rv = resolveVoice({ course, role: g === 'f' ? 'target1' : 'target2', language: roleNativeLanguage('target1', course) }, await loadResolvedCast())
+              recast = rv.status === 'voice' ? rv.voiceId : null
+              if (!recast) throw new RenderRequestError(`${podSentenceId}: no current ${g} target cast for ${courseCode} (${rv.message || rv.rule})`, 403, 'VOICE_POLICY')
+            }
+            if (!recast) throw new RenderRequestError(`${podSentenceId}: no current ${g} ${role} cast voice for ${courseCode}`, 403, 'VOICE_POLICY')
+            podVoice = { ...podVoice, voiceId: /^(azure|elevenlabs|xai|cartesia|google)_/.test(recast) ? recast : `cartesia_${recast}`, source: 'recast' }
+          }
+          if (podVoice.error) throw new RenderRequestError(podVoice.error, podVoice.code === 'NO_POD_SENTENCE' ? 404 : 409, podVoice.code)
+          // ENGLISH POD VOICES (job #905, r-2026-11-08): a pod line's English is Charlotte (f) / Tom-006 (m) or a human take. A line
+          // whose current clip is any other synthetic voice (Gemma, Olivia, an old Tom clone) is re-voiced in the pair voice of its
+          // speaker's gender, not kept in that voice — "the voice the line already speaks in" must not carry a wrong voice forward.
+          if (role === 'known' && toIso3(course.known_lang) === 'eng' && !/^human_/i.test(String(podVoice.voiceId))) {
+            // The speaker's sex is the CHARACTER's (job #932): its human Welsh voices first, the cast map only when none is known.
+            const ch = await loadPodCharacter(supabase, podSentenceId)
+            const castG = ch && ch.sex ? ch.sex : (castFor(podRow && podRow.speakers, podLine && podLine.speaker) || {}).gender
+            const g = castG === 'f' || castG === 'm' ? castG : null
+            if (englishPodKnownVoice({ courseCode, voiceId: podVoice.voiceId, gender: g }).refuse && g) {
+              const pair = englishPodKnownVoice({ courseCode, voiceId: null, gender: g })
+              if (pair.voiceId) podVoice = { ...podVoice, voiceId: pair.voiceId, source: 'english-pod-pair' }
+            }
+          }
+          if (voiceId && !sameResolvedVoice(voiceId, podVoice.voiceId)) throw new RenderRequestError(`${podSentenceId} ${role} is ${podVoice.voiceId} (the pod cast for ${podVoice.speaker}); ${voiceId} refused — voices are never hand-picked`, 403, 'VOICE_POLICY')
+          voiceId = podVoice.voiceId
+        }
+        // ONE CHARACTER, ONE ENGLISH VOICE (job #932): every English known-side clip of a WELSH pod — whole line, Listen piece or
+        // Drill piece (trial + podSide 'known') — names its line (podSentenceId), and the voice follows that line's CHARACTER:
+        // Charlotte for a woman, Aran's take or his PRO clone for a man. A piece that cannot say whose line it is is refused, so no
+        // per-line or men-only pass can split a character again. Outside Welsh courses nothing changes here.
+        let podCharacter = null
+        const welshPodEnglish = role === 'known' && isWelshCourse(courseCode) && toIso3(course.known_lang) === 'eng' && (podSide === 'known' || (podSentenceId && !trial))
+        if (welshPodEnglish) {
+          if (!podSentenceId) throw new RenderRequestError(`${courseCode} pod English: name the line this piece belongs to (podSentenceId) — a Welsh pod's English voice follows the character, never the piece (job #932)`, 400, 'POD_CHARACTER_UNKNOWN')
+          podCharacter = await loadPodCharacter(supabase, podSentenceId)
+          if (!podCharacter || podCharacter.courseCode !== courseCode) throw new RenderRequestError(`${podSentenceId} is not a pod line of ${courseCode}`, 404, 'NO_POD_SENTENCE')
+          if (!podCharacter.sex) throw new RenderRequestError(`${podSentenceId}: speaker "${podCharacter.speaker}" has no known sex (no human Welsh voice on record, no cast gender) — cannot cast its English`, 409, 'POD_UNCAST')
+          if (trial && !voiceId) {
+            const pick = englishPodKnownVoice({ courseCode, voiceId: null, gender: podCharacter.sex })
+            if (pick.refuse) throw new RenderRequestError(pick.message, 403, pick.code)
+            voiceId = pick.voiceId
+          }
+        }
+        if (!podVoice) voiceId = await knownGenderVoiceId({ courseCode, voices: vc.voices, role, text, legoId, voiceId, trial, loadCtx: knownGenderContextFor })
         // ONE VOICE PER SLOT (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): where the coded policy answers, the voice is
         // resolveVoice's — never the caller's pick, the course's habit (courseEnglishVoice) or the stored config. A named voice that
         // differs is refused HERE, before the library is asked, so no wrong-voice clip is ever linked; an uncast target refuses.
         // A trial render (job #748) links nothing and is exempt.
-        if (!trial) {
+        if (!trial && !podVoice) {
           const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
           if (rv.status === 'refuse') throw new RenderRequestError(`${rv.message} (resolveVoice ${rv.rule})`, 403, 'VOICE_POLICY')
           if (rv.status === 'voice') {
-            if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
-            voiceId = rv.voiceId
+            // ONE-SLOT EXCEPTION (shared/slot-voice-exceptions.cjs): a named voice for a slot listed there by a person's
+            // ruling (Kai 2026-11-11, swe_for_eng S0059L02 intro → Tom-006) is kept; every other slot is checked as before.
+            const slotException = voiceId && legoId ? slotVoiceException({ courseCode, legoId, role, voiceId }) : null
+            if (!slotException) {
+              if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
+              voiceId = rv.voiceId
+            }
           }
         }
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
-        const named = /^(azure|elevenlabs|xai|cartesia)_(.+)$/.exec(voiceId || '')
+        const named = /^(azure|elevenlabs|xai|cartesia|abair)_(.+)$/.exec(voiceId || '')
+        // ABAIR (job #525): Trinity's Irish TTS is a Voice Lab TRIAL voice only — named as abair_<voice>, never cast, never
+        // linked. Refused here for any non-trial render, before a library lookup or a gate; tts-service refuses it again.
+        if (named && named[1] === 'abair' && !trial) throw new RenderRequestError(ttsService.ABAIR_TRIAL_ONLY, 403, 'ABAIR_TRIAL_ONLY')
         // Presentation clips are known-language audio (the intro is spoken to the learner in their own language),
         // so the presentation role resolves to the known side like 'known' — never target1/target2 (job #483).
         const lang = language || roleNativeLanguage(role, course)
@@ -5620,27 +5865,56 @@ function buildRenderDeps() {
           : foreignCast ? foreignCast.voiceId.replace(POD_PROVIDER_PREFIX, '')
           : named ? named[2] : String(voiceId || settings.voiceId || vc[role] || '').replace(/^(azure|elevenlabs|xai|cartesia)_/, '') // a cast-resolved course voice is stored provider-prefixed; the provider wants the bare id (job #651)
         if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
-        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: courseVoice ? courseVoice.provider : (foreignCast ? undefined : providerForVoice(held, settings)) })
+        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: named && named[1] === 'abair' ? 'abair' /* job #525: an abair_ voice is ABAIR, never laddered */ : courseVoice ? courseVoice.provider : (foreignCast ? undefined : providerForVoice(held, settings)) })
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
-          : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed }
+          // The slot's cast settings (model, stability) ride along only when the voice rendering IS the slot's cast voice (job #76·AA).
+          : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed, ...(String(settings.voiceId || '').replace(/^elevenlabs_/, '') === held ? courseVoiceConfig.elevenLabsCastSettings(settings) : {}) }
           : provider === 'xai' ? { voiceId: held, language: toBcp47(lang) }
           : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed, wordTimings: true /* #643: word-by-word display needs timings on every Cartesia clip */ }
+          // ABAIR (job #525): its own voice's natural speed — the course slot's speed setting belongs to the cast voice, not an audition.
+          : provider === 'abair' && trial ? { apiKey: process.env.ABAIR_API_KEY, voiceId: held, language: lang }
           : null
         if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
+        // THE ENGLISH POD VOICE GATE (job #905; shared/pod-line-voice.cjs englishPodKnownVoice, r-2026-11-08 "Charlotte is the female
+        // English pod, not Gemma"). Every English known-side POD clip — a pod line (podSentenceId) or a pod-only Drill/Listen piece
+        // (trial + podSide 'known') — is Charlotte, Tom-006 or a human take; in a Welsh course a man's line is Aran's take or his PRO
+        // clone, never Tom-006 (#913, Tom 2026-11-08: "we have Aran's pro clone for any English needed"). A trial is exempt from the slot rules above, which is how
+        // #891 named Gemma and got her; the pod gate is not exempt for trials. A refusal is the answer: never retry in another voice.
+        const podEnglish = toIso3(lang) === 'eng' && toIso3(course.known_lang) === 'eng' && (podSide === 'known' || (podVoice && role === 'known'))
+        if (podEnglish) {
+          const gate = englishPodKnownVoice({ courseCode, voiceId: canonicalClipVoiceId(held, provider), gender: podCharacter ? podCharacter.sex : null })
+          if (gate.refuse) throw new RenderRequestError(gate.message, 403, gate.code)
+        }
         return { language: canonicalLanguage(lang), voiceId: canonicalClipVoiceId(held, provider), provider, providerConfig }
       },
       link: linkClipForRender,
       linkLego: linkLegoPresentation,
-      speak: (text, provider, cfg, tries) => ttsService.speak(text, provider, cfg, tries),
+      speak: async (text, provider, cfg, tries) => {
+        const out = await ttsService.speak(text, provider, cfg, tries)
+        // This route's clips never pass through renderChecked, so they reach the one sampler
+        // here, drawn once per fresh clip, in the background: a sample costs the caller nothing.
+        const door = cfg.door || {}
+        if (out.audioBuffer && !out.existingClip && !door.dryRun) {
+          veracity.sampleRendered({ buffer: out.audioBuffer, expectedText: text, language: door.language, meta: { courseCode: door.courseCode, role: door.slotRole || null }, logger })
+        }
+        return out
+      },
       loadClip: async (audioId) => {
-        const { data, error } = await supabase.from('course_audio').select('id, course_code, role, language, voice_id, s3_key, origin, text').eq('id', audioId).maybeSingle()
+        const { data, error } = await supabase.from('course_audio').select('id, course_code, role, language, voice_id, s3_key, origin, text, text_normalized').eq('id', audioId).maybeSingle()
         if (error) throw new Error(`course_audio unreadable: ${error.message}`)
         return data
       },
+      // The row's newest revision (job #749): lets a repeated re-record answer with the take already made. Read by id.
+      lastRerecord: async (audioId) => {
+        const { data, error } = await supabase.from('course_audio_revisions').select('revision, new_s3_key, source, accepted_by, reason, created_at')
+          .eq('audio_id', audioId).order('revision', { ascending: false }).limit(1).maybeSingle()
+        if (error) throw new Error(`course_audio_revisions unreadable: ${error.message}`)
+        return data
+      },
       // Make before break: new object uploaded and HEADed alive BEFORE the row points at it; the old object is retained.
-      replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, wordTimings, requestedBy, purpose }) => {
+      replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, wordTimings, requestedBy, purpose, spokenVerdict }) => {
         trialMode.assertNotTrial(replaceAudioId, s3Key)
         let newKey = s3Key, durationMs = null
         const said = spokenText || text
@@ -5657,26 +5931,70 @@ function buildRenderDeps() {
           verifyObject: async (k) => { try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: k })); return true } catch { return false } },
           logger,
         })
+        // The words this revision SAYS, when they are not its label (cs #160·AI, shared/clip-spoken-words.cjs), keyed to the
+        // new revision. A failed write is LOUD: the clip is live and unmarked, so it must be marked (edit op audio.spoken).
+        if (spokenVerdict && out.revision != null) {
+          const { error: vErr } = await supabase.from('clip_spoken_text').upsert({ audio_id: replaceAudioId, spoken_text: spokenVerdict.spoken_text,
+            basis: `audio-render-rerecord spokenText (${requestedBy})`, audio_revision: out.revision, checked_at: new Date().toISOString() }, { onConflict: 'audio_id' })
+          if (vErr) throw new RenderRequestError(`re-recorded ${replaceAudioId} (revision ${out.revision}) but its spoken words were NOT recorded (${vErr.message}) — mark it with edit op audio.spoken before reuse`, 500, 'SPOKEN_TEXT_UNRECORDED')
+        }
         // clip_index points at the row by audio_id, and the id never moves — nothing to re-index.
         return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
       },
       // TRIAL (job #748): mastered like any clip, kept under trial/ with NO course_audio row and NO clip_index entry.
-      storeTrial: async ({ text, voiceId, audioBuffer, speed }) => {
+      // The render's Cartesia word timings are KEPT (job #577, Watson for Tom 2026-11-07): returned in the answer, and
+      // written beside the clip as trial/<UUID>.timings.json, so a trial clip can be lit word by word. Before this they
+      // were dropped here, and a trial clip had no timings anywhere (no course_audio row to hold them).
+      storeTrial: async ({ text, voiceId, audioBuffer, speed, tempo, wordTimings }) => {
+        const paced = await applyPaceTempo(audioBuffer, wordTimings || null, tempo)
+        audioBuffer = paced.audioBuffer
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = trialMode.trialKey(uuidv4(), speed)
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: 'no-store' }))
         const audioId = trialMode.trialIdFromKey(s3Key)
-        return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}` }
+        const timings = toWordTimingsColumn(paced.wordTimings)
+        if (timings) await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key.replace(/\.mp3$/, '.timings.json'), Body: JSON.stringify(timings), ContentType: 'application/json', CacheControl: 'no-store' }))
+        return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}`, wordTimings: timings }
       },
-      store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings }) => {
+      // A POD CLIP (job #628, shared/pod-audio.cjs): the trial take just stored, filed as a pod-only course_audio row.
+      filePodClip: async ({ courseCode, trialId, text, voiceId, side }) => {
+        const podAudio = require('../shared/pod-audio.cjs')
+        const out = await podAudio.fileTrialClips({ courseCode, clips: [{ trialId, text, voiceId, side }], dryRun: false }, podAudio.liveDeps({ sb: supabase, s3, bucket: S3_BUCKET }))
+        const r = out.results[0]
+        if (r.status === 'refused') throw new RenderRequestError(`rendered and stored as ${trialId}, but not filed: ${r.error}`, 409, r.code)
+        return r
+      },
+      store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings, tempo }) => {
+        ;({ audioBuffer, wordTimings } = await applyPaceTempo(audioBuffer, wordTimings, tempo))
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
         return writePaidClipRow({ courseCode, text, language, role, voiceId, legoId, s3Key, durationMs, wordBoundaries, wordTimings })
       },
       // ADOPT (job #140): a paid render whose row never landed — file the S3 object as it is. No provider, no mastering.
-      adopt: async ({ courseCode, text, language, role, voiceId, legoId, s3Key, dryRun }) => {
+      adopt: async ({ courseCode, text, language, role, voiceId, legoId, s3Key, dryRun, exception }) => {
         try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: s3Key })) } catch { throw new RenderRequestError(`${s3Key} is not in S3 — nothing to adopt`, 404, 'NO_OBJECT') }
+        // ONE-OFF EXCEPTION (r-2026-10-28 deu_at Tamara 732, shared/adopt-exception.cjs): the listed trial object is copied to a
+        // NEW mastered/<UUID>.mp3 and that key is what the course_audio row names; the trial object is left as it is, and no row
+        // ever points under trial/. At the exception's speed 1 (NATURAL, the ruling) the bytes are stored unchanged: the app
+        // applies speed at run-time (Easy 0.8, Fast 0.9), so a baked slow-down would compound with it. A speed other than 1
+        // would be applied with audioProcessor.timeStretchAudio.
+        if (exception) {
+          if (dryRun) return { s3Key: null, fromTrialKey: s3Key, speed: exception.speed, wouldStore: 'mastered/<new UUID>.mp3' }
+          const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
+          const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'adopt-ex-'))
+          try {
+            const inF = path.join(dir, 'in.mp3'), outF = path.join(dir, 'out.mp3')
+            await fs.writeFile(inF, Buffer.from(await r.Body.transformToByteArray()))
+            if (exception.speed === 1) await fs.copyFile(inF, outF)
+            else await audioProcessor.timeStretchAudio(inF, outF, 1 / exception.speed) // factor > 1 = slower
+            const durationMs = Math.round((await audioProcessor.getAudioMetadata(outF)).duration * 1000)
+            const newKey = `mastered/${uuidv4().toUpperCase()}.mp3`
+            await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: newKey, Body: await fs.readFile(outF), ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
+            const row = await writePaidClipRow({ courseCode, text, language, role, voiceId, legoId, s3Key: newKey, durationMs, wordBoundaries: null, wordTimings: null, adopted: true })
+            return { ...row, fromTrialKey: s3Key, speed: exception.speed }
+          } finally { await fs.remove(dir) }
+        }
         const rec = paidWrite.findPaidUnsaved(s3Key)
         if (rec && (rec.courseCode !== courseCode || rec.role !== role || rec.text !== text || rec.voiceId !== voiceId)) {
           throw new RenderRequestError(`${s3Key} was paid for as ${rec.courseCode} ${rec.role} ${rec.voiceId} "${rec.text}" — not this request`, 409, 'ADOPT_MISMATCH')
@@ -5805,6 +6123,12 @@ async function spliceIntroForRoute(req, deps) {
 }
 
 // A trial clip's bytes (job #748). Read-only, by id; the id is an unguessable UUID and the object lives under trial/.
+// ABAIR's voice list (job #525): metadata only, no tokens. The key stays in this process; the answer is id/name/sex/province.
+app.get('/abair-voices', async (req, res) => {
+  try { res.json({ ok: true, voices: await ttsService.listAbairVoices() }) }
+  catch (e) { const m = /\((\d{3})\)/.exec(e.message); res.status(m ? Number(m[1]) : 502).json({ ok: false, error: e.message }) }
+})
+
 app.get('/trial-audio/:id', async (req, res) => {
   try {
     if (!/^trial_[0-9A-F-]{36}(_x\d+)?$/i.test(req.params.id)) return res.status(400).json({ ok: false, error: 'not a trial clip id' })
@@ -5814,14 +6138,43 @@ app.get('/trial-audio/:id', async (req, res) => {
   } catch (e) { res.status(e.name === 'NoSuchKey' ? 404 : 500).json({ ok: false, error: e.message }) }
 })
 
+// RATE CAP ON THIS PORT TOO (job #706): production-api's POST /api/audio/render is capped (#699), but this
+// port is reachable directly on loopback and one committed tool posted here — so the same limiter
+// (services/shared/agent-rate-cap.cjs, one instance per process) guards it. Identity: x-agent-id /
+// x-service-name, else the body's requestedBy (what production-api forwards), else 'anonymous'.
+// Calls proxied from the capped API keep the same identity, so they pass within the same budget.
+// Every refusal and every hold over 1 s goes to ops_events (source agent-rate-cap).
+const phase8RenderRateCap = require('../shared/agent-rate-cap.cjs').createAgentRateCap()
+const approvalOrigin = require('../shared/approval-origin.cjs')
+const { opsEvent: phase8OpsEvent } = require('../shared/ops-event.cjs')
 app.post('/render', async (req, res) => {
   try {
-    const out = await renderClip(req.body || {}, buildRenderDeps())
+    const who = String(req.get('x-agent-id') || req.get('x-service-name') || (req.body && req.body.requestedBy) || 'anonymous').trim().slice(0, 120)
+    const dryRun = !!(req.body && req.body.dryRun)
+    const cap = phase8RenderRateCap.admit(who, { dryRun })
+    if (!cap.ok) {
+      logger.warn(`[agent-rate-cap] phase8 /render refused ${cap.code} who=${who} dryRun=${dryRun}`)
+      phase8OpsEvent('agent-rate-cap', 'refuse', `phase8 /render ${cap.code} who=${who} dryRun=${dryRun}`)
+      return res.status(cap.status).json({ ok: false, code: cap.code, error: cap.error })
+    }
+    if (cap.waitMs > 1000) { logger.warn(`[agent-rate-cap] phase8 /render held ${cap.waitMs}ms who=${who}`); phase8OpsEvent('agent-rate-cap', 'held', `phase8 /render ${cap.waitMs}ms who=${who}`) }
+    if (cap.waitMs > 0) await new Promise(r => setTimeout(r, cap.waitMs))
+    // APPROVAL ORIGIN (job #116·AI): a kai:/tom: approval counts only if the sending conversation is on that seat — the
+    // surface says so from the caller's x-cs-conv token (services/shared/approval-origin.cjs). Checked on this port because it
+    // is reachable directly on loopback; production-api forwards the header. A request with no approval is untouched.
+    let verifiedApproval = null
+    if (req.body && req.body.approval) {
+      const v = await approvalOrigin.verifyApprovalOrigin(String(req.body.approval), req.get('x-cs-conv'))
+      logger.info(`[approval-origin] ${v.approver}: approval verified (seat ${v.seat}) who=${who}`)
+      verifiedApproval = String(req.body.approval)
+    }
+    const out = await auditWriteLog.renderWithEditLog({ renderFn: renderClip, input: req.body || {}, deps: buildRenderDeps({ verifiedApproval }), supabase, logger })
     res.json(out)
   } catch (error) {
-    if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}) })
+    if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}), ...(error.existing ? { existing: error.existing } : {}) })
     if (error && error.name === 'TrialRefusal') return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
     if (error && error.code === 'RERECORD_NOT_PERMITTED') return res.status(403).json({ ok: false, code: error.code, error: error.message })
+    if (error && error.code === 'APPROVAL_UNVERIFIED') { logger.warn(`[approval-origin] REFUSED: ${error.message.slice(0, 200)}`); return res.status(403).json({ ok: false, code: error.code, error: error.message }) }
     // A spend-guard refusal is a 402 carrying its own code; anything else is a 500.
     const refused = /\(402\)/.test(error.message)
     logger.error('Render error:', error)
@@ -6021,13 +6374,12 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 
     // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
     // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-    // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-    // single-clip render in ten and records what it heard on the row.
+    // automatic STT check may veto TTS audio). The course's reducing sample
+    // decides whether Whisper listens, and only what it heard is recorded.
     const gated = await veracity.renderChecked({
       render: renderAndMaster,
       expectedText: textForTTS,
       language: lang,
-      sampler: veracity.SPOT_SAMPLER,
       logger,
       meta: { courseCode, role, voiceId, audio_uuid: audioUuid, originalText: text },
     })
@@ -6305,6 +6657,25 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       })
     }
 
+    // THE SOFT GUARD (job #247·AH): new words over an intro that carried
+    // hand-authored wording (an "as in" example, a free line, a soft mark) are
+    // reported in the answer — old vs new, plus a suggestion — never refused.
+    // A hard-marked line is the hard guard's business above.
+    let introWarning = null
+    if (!presentationMark) {
+      try {
+        const { data: legoNow } = await supabase.from('course_legos').select('known_text')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber).eq('lego_index', legoIndex).maybeSingle()
+        const introCtx = await introAuthorship.loadIntroContext(supabase, course)
+        ;[introWarning = null] = introAuthorship.warningsFor(introCtx, [{
+          lego_id: legoId, oldText: existingRow?.text || null, newText: presentationText, knownText: legoNow?.known_text || '',
+        }])
+        if (introWarning) logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarning.message}`)
+      } catch (guardErr) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}/${legoId}: could not check the old wording (${guardErr.message}) — carrying on`)
+      }
+    }
+
     // ── A-137 REUSE ────────────────────────────────────────────────────────
     // Presentation lines NAME the target language ("The Romanian for: …"), so a
     // sibling match can only ever come from another course teaching the same
@@ -6359,7 +6730,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       let rawAudioBuffer, wordBoundaries
       if (voiceProvider === 'azure') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'azure', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -6367,20 +6738,20 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
         }))
       } else if (voiceProvider === 'elevenlabs') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'elevenlabs', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
         }))
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           voiceId: voiceId,
           language: toBcp47(knownLang)
         }))
       } else if (voiceProvider === 'cartesia') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'cartesia', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           apiKey: process.env.CARTESIA_API_KEY,
           voiceId: voiceId,
           locale: toBcp47(knownLang),
@@ -6397,13 +6768,12 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
 
     // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
     // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-    // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-    // single-clip render in ten and records what it heard on the row.
+    // automatic STT check may veto TTS audio). The course's reducing sample
+    // decides whether Whisper listens, and only what it heard is recorded.
     const gated = await veracity.renderChecked({
       render: renderAndMaster,
       expectedText: presentationText,
       language: knownLang,
-      sampler: veracity.SPOT_SAMPLER,
       logger,
       meta: { courseCode, role: 'presentation', voiceId, lego_id: legoId, originalText: presentationText },
     })
@@ -6528,7 +6898,8 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       duration_ms: durationMs,
       text: presentationText,
       created: !existingRow,
-      ...(humanAuthoredNote ? { humanAuthored: humanAuthoredNote } : {})
+      ...(humanAuthoredNote ? { humanAuthored: humanAuthoredNote } : {}),
+      ...(introWarning ? { introWarning } : {})
     })
 
   } catch (error) {
@@ -6844,13 +7215,12 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
 
       // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
       // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-      // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-      // single-clip render in ten and records what it heard on the row.
+      // automatic STT check may veto TTS audio). The course's reducing sample
+      // decides whether Whisper listens, and only what it heard is recorded.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
         language: language,
-        sampler: veracity.SPOT_SAMPLER,
         logger,
         meta: { courseCode, role, voiceId: voiceName, phrase_id: phraseId, originalText: text },
       })
@@ -7247,13 +7617,12 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
 
       // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
       // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-      // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-      // single-clip render in ten and records what it heard on the row.
+      // automatic STT check may veto TTS audio). The course's reducing sample
+      // decides whether Whisper listens, and only what it heard is recorded.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
         language: language,
-        sampler: veracity.SPOT_SAMPLER,
         logger,
         meta: { courseCode, role, voiceId: voiceName, lego_id: legoId, originalText: text },
       })
@@ -7620,7 +7989,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (per-course ladder, relaxes every ${sampleRate.step_clips} clean sampled clips)`)
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(sampleRate.rate)} TTS clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`); void sampleRate
 
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {
@@ -7664,7 +8033,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
               text_normalized: normalizeForAudio(item.text),
               language: item.language,
               role: item.role,
-              voice_id: siblingAudio.voice_id || item.voiceId, // the voice that speaks the clip (any-voice reuse)
+              voice_id: tryCanonicalClipVoiceId(item.voiceId) || item.voiceId, // the slot's cast voice; the lookup is voice-bound, so the clip speaks it
               origin: 'tts',
               s3_key: siblingAudio.s3_key,
               duration_ms: siblingAudio.duration_ms,
@@ -7707,26 +8076,26 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName, speed
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName, speed
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             voiceId: voiceName,
             language: toBcp47(item.language),
           }))
         } else if (provider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
@@ -7849,7 +8218,9 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     if (results.veracity.quarantined > 0 || results.veracity.unchecked > 0) logger.error(`[audio-veracity] ${courseCode}: ${vLine}`)
     else logger.info(`[audio-veracity] ${courseCode}: ${vLine}`)
 
+    const compLog = await auditWriteLog.recordFillPass({ supabase, courseCode, surface: 'phase8:POST /generate-components', results, logger })
     res.json({
+      editEventId: compLog.eventId, ...(compLog.editLogError ? { editLogError: compLog.editLogError } : {}),
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
@@ -8744,18 +9115,9 @@ async function siblingPodClipIds(courseCode, slug, track) {
  * @param {string} text
  * @returns {string[]} trimmed, non-empty sentences
  */
-/** The text a pod TURN is synthesised (and stored) as: sentences joined by the pause cue. */
-function podTtsText (text) {
-  const sents = splitPodTurnSentences(text)
-  return sents.length > 1 ? sents.join(' … ') : String(text)
-}
-
-function splitPodTurnSentences (text) {
-  return String(text || '')
-    .split(/(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/)
-    .map(s => s.trim())
-    .filter(Boolean)
-}
+// The text a pod TURN is synthesised (and stored) as: sentences joined by the pause cue. One definition, in
+// services/shared/text-normalize.cjs, because the clip lookup (existingClipsInLanguage, job #352) must find a turn by it too.
+const { podTtsText, splitPodTurnSentences } = require('../shared/text-normalize.cjs')
 
 /**
  * Generate one audio clip and insert into course_audio. Returns the audio_id.
@@ -9353,7 +9715,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     podVeracityStats = veracity.newStats()
     veracity.announceStatus(logger)
     const podSampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(podSampleRate.rate * 100).toFixed(1)}% of pod clips (per-course ladder, relaxes every ${podSampleRate.step_clips} clean sampled clips)`)
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(podSampleRate.rate)} pod clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`)
 
     // Optional per-run voice overrides. Useful when you want pod audio to use
     // a different provider (e.g. xAI) than the course's canonical voice_config.
@@ -9670,53 +10032,6 @@ const reusePlanner = require('../audio-reuse-planner.cjs')
 
 const REUSE_ARTIFACT_DIR = path.join(__dirname, '..', '..', 'docs', 'audio-repair-2026-08-07')
 
-// A persistent veracity-verdict store, so a band never re-decodes a question an
-// earlier band already answered. Bands are disjoint in ROUNDS but not in CLIPS —
-// review offsets reach back as far as 2584 rounds, and 35.7% of a rounds-201-210
-// plan is clips that rounds 1-200 also plays (measured 2026-08-07). Whisper is the
-// dominant cost of the whole exercise, so that overlap is the single cheapest hour
-// to buy back.
-//
-// Safe to keep forever, and deliberately never invalidated: mastered/<uuid>.mp3 is
-// WRITE-ONCE (a re-master mints a new key), so the key names the same bytes for all
-// time. It is keyed across courses on purpose — the same object answers the same
-// question whoever is asking.
-//
-// Set AUDIO_VERACITY_CACHE=0 to turn it off; it is on by default because a cache
-// that cannot go stale has no failure mode worth a flag.
-const VERDICT_CACHE_PATH = process.env.AUDIO_VERACITY_CACHE_PATH
-  || path.join(os.homedir(), '.audio-veracity-verdicts.json')
-
-function loadVerdictCache() {
-  if (process.env.AUDIO_VERACITY_CACHE === '0') return null
-  let m = new Map()
-  try {
-    if (fs.existsSync(VERDICT_CACHE_PATH)) {
-      m = new Map(Object.entries(fs.readJsonSync(VERDICT_CACHE_PATH)))
-      logger.info(`[ReuseFirst] verdict cache: ${m.size} remembered decodes from ${VERDICT_CACHE_PATH}`)
-    }
-  } catch (e) {
-    // A corrupt cache is a cost problem, never a correctness one — start empty.
-    logger.warn(`[ReuseFirst] verdict cache unreadable (${e.message}) — starting empty`)
-    m = new Map()
-  }
-  let dirty = 0
-  const flush = () => {
-    if (!dirty) return
-    try {
-      fs.outputJsonSync(VERDICT_CACHE_PATH, Object.fromEntries(m))
-      dirty = 0
-    } catch (e) { logger.warn(`[ReuseFirst] verdict cache write failed: ${e.message}`) }
-  }
-  return {
-    get: (k) => m.get(k),
-    // Flushed every 200 new verdicts so a killed run keeps most of its listening,
-    // which is the whole point: the in-memory listen result dies with the process.
-    set: (k, v) => { m.set(k, v); if (++dirty >= 200) flush() },
-    flush,
-    get size() { return m.size },
-  }
-}
 const reuseRuns = new Map()   // runId -> run record (in-process; artifact on disk is durable)
 
 // A full course is one round per is_new LEGO — fra_for_eng alone is 1,529 — so
@@ -9746,14 +10061,6 @@ async function reuseHeadObject(s3Key) {
   }
 }
 
-/** The bytes at an S3 key, as a Buffer — for the incumbent veracity pass. */
-async function reuseFetchObject(s3Key) {
-  const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
-  const chunks = []
-  for await (const chunk of r.Body) chunks.push(chunk)
-  return Buffer.concat(chunks)
-}
-
 /**
  * Render ONE clip from the plan. Deliberately the same recipe /generate uses —
  * gender expansion, master, sampled report-only STT, S3, course_audio upsert —
@@ -9781,24 +10088,24 @@ async function reuseRenderClip(courseCode, clip, stats) {
     let rawAudioBuffer, wordBoundaries
     if (provider === 'azure') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         subscriptionKey: process.env.AZURE_SPEECH_KEY,
         region: process.env.AZURE_SPEECH_REGION || 'westeurope',
         voiceName, speed: 1.0,
       }))
     } else if (provider === 'elevenlabs') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         apiKey: process.env.ELEVENLABS_API_KEY, voiceId: voiceName, speed: 1.0,
       }))
     } else if (provider === 'xai') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         voiceId: voiceName, language: toBcp47(clip.language),
       }))
     } else if (provider === 'cartesia') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         apiKey: process.env.CARTESIA_API_KEY, voiceId: voiceName, locale: toBcp47(clip.language), speed: 1.0,
       }))
     } else {
@@ -10060,18 +10367,6 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
       })
       await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
-      // Optional: LISTEN to the clips the plan means to keep and REPORT what was
-      // heard on run.plan.heard. It never promotes a clip to RENDER (Tom,
-      // 2026-09-28: no automatic STT check may trigger a re-render).
-      if (req.body?.verifyIncumbents === true) {
-        const verdictCache = loadVerdictCache()
-        const heard = await reusePlanner.verifyPlanVeracity(plan, {
-          fetchObject: reuseFetchObject, veracity, logger, verdictCache,
-          concurrency: Number(process.env.AUDIO_VERACITY_CONCURRENCY || 4),
-        })
-        verdictCache?.flush()
-        logger.info(`[ReuseFirst] listened to ${heard.checked} incumbent clips — ${heard.failed} damaged, ${heard.unknown} unknown, ${heard.cached || 0} from cache, reasons ${JSON.stringify(heard.byReason)}`)
-      }
       run.plan = { shape: plan.shape, summary: plan.summary, byLayer: plan.byLayer, estimate: plan.estimate, voices: plan.voices, bytes: plan.bytes, heard: plan.heard || null }
 
       const actionable = plan.clips.filter(c => c.decision !== 'SATISFIED' && c.decision !== 'BLOCKED').length
@@ -10165,6 +10460,7 @@ module.exports = app
 // Named exports for reuse from other audio-generation paths.
 module.exports.masterAudio = masterAudio
 module.exports.attachClipToNullSlots = attachClipToNullSlots
+module.exports.countEmptyTextSlots = countEmptyTextSlots
 module.exports.findExistingAudio = findExistingAudio
 module.exports.findAudioRowForClip = findAudioRowForClip
 module.exports.siblingPodClipIds = siblingPodClipIds

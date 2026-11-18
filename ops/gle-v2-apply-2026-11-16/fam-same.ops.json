@@ -1,0 +1,64 @@
+{
+"family": "same",
+"seeds": [
+153,
+518
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 153,
+"set": {
+"target_text": "Ní déarfainn é ar an mbealach díreach céanna"
+},
+"expect": {
+"known_text": "I wouldn't have said it in exactly the same way",
+"target_text": "Ní déarfainn é ar an mbealach céanna díreach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0153L03B05",
+"set": {
+"target_text": "is mian liom an rud díreach céanna a dhéanamh"
+},
+"expect": {
+"target_text": "is mian liom an rud céanna díreach a dhéanamh",
+"known_text": "I want to do exactly the same thing"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0153L03B06",
+"set": {
+"target_text": "is é sin an rud díreach céanna"
+},
+"expect": {
+"target_text": "is é sin an rud céanna díreach",
+"known_text": "that is exactly the same thing"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0153L03U04",
+"set": {
+"target_text": "Is mian liom iarracht a dhéanamh an rud díreach céanna a dhéanamh agus an uair dheireanach a bhuail muid le chéile"
+},
+"expect": {
+"target_text": "Is mian liom iarracht a dhéanamh an rud céanna díreach a dhéanamh agus an uair dheireanach a bhuail muid le chéile",
+"known_text": "I want to try to do exactly the same thing as the last time we met together"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 518,
+"set": {
+"target_text": "Ní fhéadfainn mé féin a shamhlú leis an bhfadhb dhíreach chéanna"
+},
+"expect": {
+"known_text": "I couldn't imagine myself having exactly the same problem",
+"target_text": "Ní fhéadfainn mé féin a shamhlú leis an bhfadhb chéanna díreach"
+}
+}
+]
+}

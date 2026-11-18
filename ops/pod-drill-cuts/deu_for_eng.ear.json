@@ -1,0 +1,185 @@
+{
+ "course": "deu_for_eng",
+ "tool": "tools/pods/pod-drill/ear.mjs (#750)",
+ "by": "Kai",
+ "page": "d/15149e60",
+ "submitted": 1793726518748,
+ "totals": {
+  "marked": 33,
+  "accept": 16,
+  "borderline": 5,
+  "reject": 12
+ },
+ "marks": {
+  "deu_for_eng:pod-1:SC01-S003:s0|0|0": {
+   "label": "D01",
+   "known": "I'm very well,",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC01-S003:s0|0|1": {
+   "label": "D02",
+   "known": "thank you.",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC03-S002:s1|0|0": {
+   "label": "D03",
+   "known": "I'd like a coffee,",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC03-S002:s1|0|1": {
+   "label": "D04",
+   "known": "please.",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC03-S002:s2|0|0": {
+   "label": "D05",
+   "known": "with milk,",
+   "mark": "borderline",
+   "note": "A bit abrupt but fine"
+  },
+  "deu_for_eng:pod-1:SC03-S002:s2|0|1": {
+   "label": "D06",
+   "known": "but with no sugar.",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC09-S008:s1|0|0": {
+   "label": "D07",
+   "known": "it's been slow-cooked",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC09-S008:s1|0|1": {
+   "label": "D08",
+   "known": "with rosemary",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC09-S010:s1|0|0": {
+   "label": "D09",
+   "known": "With a small green salad",
+   "mark": "borderline",
+   "note": "Slightly abrupt, but fine"
+  },
+  "deu_for_eng:pod-1:SC09-S010:s1|0|1": {
+   "label": "D10",
+   "known": "to start",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC14-S002:s1|0|0": {
+   "label": "D11",
+   "known": "It may take some time,",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC14-S002:s1|0|1": {
+   "label": "D12",
+   "known": "there's a lot of traffic at the moment.",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC02-S001|0|0": {
+   "label": "D13",
+   "known": "Excuse me,",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC02-S001|0|1": {
+   "label": "D14",
+   "known": "is this seat taken?",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC04-S002:s1|0|0": {
+   "label": "D15",
+   "known": "I'm sorry",
+   "mark": "borderline",
+   "note": "You can almost start to hear the b but not quite, it's probably fine"
+  },
+  "deu_for_eng:pod-1:SC04-S002:s1|0|1": {
+   "label": "D16",
+   "known": "but I can't talk at the moment.",
+   "mark": "borderline",
+   "note": "Starts a little softly but it's probably fine"
+  },
+  "deu_for_eng:pod-1:SC04-S003:s1|0|0": {
+   "label": "D17",
+   "known": "But let's",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC04-S003:s1|0|1": {
+   "label": "D18",
+   "known": "talk on Saturday.",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC06-S009:s0|0|0": {
+   "label": "D19",
+   "known": "I'm sorry,",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC06-S009:s0|0|1": {
+   "label": "D20",
+   "known": "I didn't understand you.",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC07-S002|0|0": {
+   "label": "D21",
+   "known": "I'd like",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC07-S002|0|1": {
+   "label": "D22",
+   "known": "a black coffee,",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC07-S002|0|2": {
+   "label": "D23",
+   "known": "please.",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC08-S008|0|0": {
+   "label": "D24",
+   "known": "I'd like",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC08-S008|0|1": {
+   "label": "D25",
+   "known": "a large glass",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC08-S008|0|2": {
+   "label": "D26",
+   "known": "of white wine,",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC08-S008|0|3": {
+   "label": "D27",
+   "known": "please.",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC11-S008:s1|0|0": {
+   "label": "D28",
+   "known": "We have fruit",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC11-S008:s1|0|1": {
+   "label": "D29",
+   "known": "and cereals",
+   "mark": "borderline",
+   "note": "Abrupt ending but probably fine"
+  },
+  "deu_for_eng:pod-1:SC11-S008:s1|0|2": {
+   "label": "D30",
+   "known": "or a cooked breakfast.",
+   "mark": "accept"
+  },
+  "deu_for_eng:pod-1:SC12-S005|0|0": {
+   "label": "D31",
+   "known": "How often",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC12-S005|0|1": {
+   "label": "D32",
+   "known": "should I",
+   "mark": "reject"
+  },
+  "deu_for_eng:pod-1:SC12-S005|0|2": {
+   "label": "D33",
+   "known": "take the paracetamol?",
+   "mark": "accept"
+  }
+ }
+}

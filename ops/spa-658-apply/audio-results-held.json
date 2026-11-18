@@ -1,0 +1,483 @@
+[
+ {
+  "role": "target1",
+  "text": "Ella me mandó correos la semana pasada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "target1",
+    "current": "ace0653a-bb8c-43a9-a136-4d6498d9de29"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e0574b8b-98f9-4988-8e4a-ec4b96d9897a",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ella me mandó correos la semana pasada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "target2",
+    "current": "5ee0c8c5-93d0-4a70-87db-0d37fcda2579"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3d3820fa-fff8-4b0b-ae59-2af4b01c8719",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "She sent me emails last week",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "known",
+    "current": "33c83020-aba5-4839-af9b-2ecaad53cc29"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "33c83020-aba5-4839-af9b-2ecaad53cc29",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B05",
+    "slot": "target1",
+    "current": "7987809c-cda2-40aa-8804-8c27185fd949"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4ba392b6-7516-42a6-92f2-5e08d16519c4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B05",
+    "slot": "target2",
+    "current": "cb3e15f3-78fd-4245-9455-8450bed8e105"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "80b05682-e5c0-4067-8e33-48c02cbbc1ce",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U02",
+    "slot": "target1",
+    "current": "b49d36c1-d7fb-4c06-9038-529b70c6cfe3"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "bce4c589-096d-4a22-9784-00fc6921c631",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U02",
+    "slot": "target2",
+    "current": "0d3cb0eb-8baf-4352-9993-08b5cbb9c85a"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "31b8993c-805a-43ff-b994-1156aeda27eb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Tengo que decir que eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U05",
+    "slot": "target1",
+    "current": "939c0b58-cefa-468b-8414-4e75e304f661"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a399bff8-7364-4633-988f-63cea653f9f2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Tengo que decir que eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U05",
+    "slot": "target2",
+    "current": "a7eb991f-4d54-4d12-8d34-671387c23550"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a304beb3-ffa4-4251-934a-43848571833d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "target1",
+    "current": "4c329d25-71ec-4502-9a73-a318aca6d4d7"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "target1",
+    "current": "4c329d25-71ec-4502-9a73-a318aca6d4d7"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f3d54be8-d5ef-46a6-adcb-bdf452c181ff",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "target2",
+    "current": "dde6c0e3-4d79-47d2-bb48-ba5f6b55922b"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "target2",
+    "current": "dde6c0e3-4d79-47d2-bb48-ba5f6b55922b"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8e6ca2d5-92c2-4e41-93a1-53ca84b764fc",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "known",
+    "current": "d1e53e8f-5fa5-4ff9-8366-ea63b8b03146"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "known",
+    "current": "d1e53e8f-5fa5-4ff9-8366-ea63b8b03146"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d1e53e8f-5fa5-4ff9-8366-ea63b8b03146",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hacer una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ab57c09c-bca2-4c04-b16b-4b187a41958a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hacer una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "07aaa2ca-6ff0-40c8-886c-51f548fa2dcb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "to ask such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "known",
+    "current": "7193a23a-3846-420c-82be-832a3b60f818"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7193a23a-3846-420c-82be-832a3b60f818",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "en mi opinión, es una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "344ae969-949b-407c-8c5e-0d75d42f2ee1",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "en mi opinión, es una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c8fb4ea5-e13b-467d-b30a-1b3c006cecf1",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "in my opinion, it's such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "known",
+    "current": "25070980-69fb-4e62-821b-9d4e9743fadd"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "25070980-69fb-4e62-821b-9d4e9743fadd",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sabía que era una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "15453f07-4846-4006-b452-83de309155c8",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sabía que era una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "339c69c1-5041-4e91-878c-73f1f03e2e5c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I knew it was such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "known",
+    "current": "ecea3326-e28b-44bf-9390-5cb33fed1f01"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ecea3326-e28b-44bf-9390-5cb33fed1f01",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'such an obvious question', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "presentation",
+    "current": null
+   }
+  ],
+  "legoId": "S0423L01",
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "347fab38-1b15-4de7-bcd8-7d0551f2ad68",
+   "charsSpent": 0
+  }
+ }
+]

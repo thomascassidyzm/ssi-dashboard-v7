@@ -25,7 +25,31 @@
  * by the phase-8 linkers and the other writers listed in that test's HUMAN_GUARD_CALLERS.
  */
 
-const APPROVAL_TOKEN = /^tom:\d{4}-\d{2}-\d{2}:\S.{6,}$/
+// Kai may authorise any audio work up to the daily cap (Tom 2026-10-30, r-2026-10-30-kai-can-authorise-any-audio-work), so his
+// `kai:YYYY-MM-DD:<reason>` is a grant like Tom's. On POST /api/audio/render its ORIGIN is verified (services/shared/approval-origin.cjs, #116·AI: the
+// caller's x-cs-conv must be on the named seat). link-clip and edit-batch still check its shape only here.
+const APPROVAL_TOKEN = /^(tom|kai):\d{4}-\d{2}-\d{2}:\S.{6,}$/
+
+/** Who a valid approval token speaks for: 'tom' | 'kai' | null. */
+function approverOf(token) {
+  const m = typeof token === 'string' && APPROVAL_TOKEN.test(token) ? /^(tom|kai):/.exec(token) : null
+  return m ? m[1] : null
+}
+
+/**
+ * The string for the DB trigger's approval setting (popty.tom_human_take_approval) for a valid approval token, or null.
+ * The trigger (refuse_human_take_replacement) matches only `^tom:`; migrations need Tom's go, so Kai's grant
+ * (r-2026-10-30-kai-can-authorise-any-audio-work) is carried as `tom:<date>:kai-authorised: <reason>` — the real
+ * approver stays readable in the trigger's own NOTICE. Throws on a malformed token: BAD_APPROVAL, the render route's style.
+ */
+function triggerApprovalFor(token) {
+  if (token == null || token === '') return null
+  const who = approverOf(token)
+  if (!who) { const e = new Error('approval must look like kai:YYYY-MM-DD:<reason> (or tom:YYYY-MM-DD:<reason>)'); e.status = 400; e.code = 'BAD_APPROVAL'; throw e }
+  if (who === 'tom') return token
+  const m = /^kai:(\d{4}-\d{2}-\d{2}):(.*)$/.exec(token)
+  return `tom:${m[1]}:kai-authorised: ${m[2]}`
+}
 
 /** Is this course_audio row a human recording? */
 function isHumanClip(clip) {
@@ -58,7 +82,7 @@ function checkReplacement({ current, next, tomApproval } = {}) {
   return {
     ok: false, reason: 'human-take-protected',
     message: `slot holds a HUMAN take (${current.id}, voice ${current.voice_id}); clip ${next.id} is synthetic (${next.voice_id}). A human take is never replaced by a synthetic voice `
-      + `(Tom's HARD RULE 2026-10-13) — pass tomApproval 'tom:YYYY-MM-DD:<what he approved>' only with his explicit go.`,
+      + `(Tom's HARD RULE 2026-10-13) — pass tomApproval 'tom:YYYY-MM-DD:<what he approved>' (or Kai's 'kai:YYYY-MM-DD:<reason>') only with that explicit go.`,
   }
 }
 
@@ -96,7 +120,7 @@ async function assertNotReplacingHuman(db, { tbl, key, match, col, from, to, tom
     next = next || await readClip(db, to)
     const v = checkReplacement({ current, next, tomApproval })
     if (!v.ok) throw new HumanTakeRefusal(v.message, v.reason)
-    if (v.approvedBy) console.log(`HUMAN TAKE REPLACED under Tom's approval (${v.approvedBy}): ${tbl || ''}#${key ?? JSON.stringify(match)} ${col} ${currentId} -> ${to}`)
+    if (v.approvedBy) console.log(`HUMAN TAKE REPLACED under ${approverOf(v.approvedBy) === 'kai' ? "Kai's" : "Tom's"} approval (${v.approvedBy}): ${tbl || ''}#${key ?? JSON.stringify(match)} ${col} ${currentId} -> ${to}`)
   }
 }
 
@@ -108,4 +132,4 @@ async function mayReplace(db, args, log = console.log) {
   }
 }
 
-module.exports = { isHumanClip, checkReplacement, assertNotReplacingHuman, mayReplace, HumanTakeRefusal, APPROVAL_TOKEN }
+module.exports = { isHumanClip, checkReplacement, assertNotReplacingHuman, mayReplace, HumanTakeRefusal, APPROVAL_TOKEN, approverOf, triggerApprovalFor }

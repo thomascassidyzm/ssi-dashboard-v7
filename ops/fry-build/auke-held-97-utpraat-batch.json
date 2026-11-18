@@ -1,0 +1,675 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 11,
+   "expect": {
+    "known_text": "I'd like to be able to speak after you finish.",
+    "target_text": "Ik wol graach prate astû útpraat bist."
+   },
+   "set": {
+    "known_text": "I'd like to be able to speak after you finish talking."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0011L03",
+   "expect": {
+    "known_text": "after you finish",
+    "target_text": "astû útpraat bist"
+   },
+   "set": {
+    "known_text": "after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B01",
+   "expect": {
+    "known_text": "to practise after you finish",
+    "target_text": "oefenje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "to practise after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B02",
+   "expect": {
+    "known_text": "today after you finish",
+    "target_text": "hjoed astû útpraat bist"
+   },
+   "set": {
+    "known_text": "today after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B03",
+   "expect": {
+    "known_text": "I'm going to practise after you finish",
+    "target_text": "ik sil oefenje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to practise after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B04",
+   "expect": {
+    "known_text": "after you finish I'm going to try",
+    "target_text": "astû útpraat bist sil ik besykje"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to try"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U01",
+   "expect": {
+    "known_text": "after you finish I'm going to try to explain what I mean",
+    "target_text": "astû útpraat bist sil ik besykje út te lizzen wat ik bedoel"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to try to explain what I mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U02",
+   "expect": {
+    "known_text": "I want to practise speaking with someone else after you finish",
+    "target_text": "ik wol mei in oar it praten oefenje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I want to practise speaking with someone else after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U03",
+   "expect": {
+    "known_text": "I can speak a little after you finish",
+    "target_text": "ik kin in bytsje prate astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I can speak a little after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U04",
+   "expect": {
+    "known_text": "I'm going to try as hard as I can after you finish",
+    "target_text": "ik sil hurd myn bêst dwaan astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to try as hard as I can after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U05",
+   "expect": {
+    "known_text": "I'm going to practise speaking as often as possible after you finish",
+    "target_text": "ik sil safolle mooglik it praten oefenje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to practise speaking as often as possible after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L02U02",
+   "expect": {
+    "known_text": "I want to guess after you finish",
+    "target_text": "ik wol riede astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I want to guess after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L04U03",
+   "expect": {
+    "known_text": "after you finish I'm going to say what's going to happen tomorrow",
+    "target_text": "astû útpraat bist sil ik sizze wat der moarn bart"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to say what's going to happen tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0014L02U04",
+   "expect": {
+    "known_text": "after you finish I'm going to practise all day",
+    "target_text": "astû útpraat bist sil ik de hiele dei oefenje"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to practise all day"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L03U04",
+   "expect": {
+    "known_text": "you speak Frisian with me after you finish",
+    "target_text": "dû praatst Frysk mei my astû útpraat bist"
+   },
+   "set": {
+    "known_text": "you speak Frisian with me after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L02U04",
+   "expect": {
+    "known_text": "I'm going to come back after you finish",
+    "target_text": "ik sil weromkomme astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to come back after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L03U05",
+   "expect": {
+    "known_text": "I'm going to speak with you later on after you finish",
+    "target_text": "ik sil letter mei dy prate astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to speak with you later on after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U05",
+   "expect": {
+    "known_text": "I'd like to speak with everyone else after you finish",
+    "target_text": "ik wol graach mei eltsenien prate astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'd like to speak with everyone else after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L03U06",
+   "expect": {
+    "known_text": "I'm going to say the answer after you finish",
+    "target_text": "ik sil it antwurd sizze astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to say the answer after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L04U03",
+   "expect": {
+    "known_text": "I'm going to say what the answer is after you finish",
+    "target_text": "ik sil sizze wat it antwurd is astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to say what the answer is after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L02U04",
+   "expect": {
+    "known_text": "I want to meet everyone else after you finish",
+    "target_text": "ik wol eltsenien moetsje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I want to meet everyone else after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L03U03",
+   "expect": {
+    "known_text": "after you finish, he and I practise with each other in Frisian",
+    "target_text": "astû útpraat bist, oefenje hy en ik mei inoar yn it Frysk"
+   },
+   "set": {
+    "known_text": "after you finish talking, he and I practise with each other in Frisian"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L03U05",
+   "expect": {
+    "known_text": "after you finish I'm going to stop talking",
+    "target_text": "astû útpraat bist sil ik ophâlde mei praten"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to stop talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L02U08",
+   "expect": {
+    "known_text": "I'm going to say his name after you finish",
+    "target_text": "ik sil syn namme sizze astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to say his name after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L03U03",
+   "expect": {
+    "known_text": "I'd like to come back quickly after you finish",
+    "target_text": "ik wol graach fluch weromkomme astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'd like to come back quickly after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L04U04",
+   "expect": {
+    "known_text": "after you finish I'm going to learn quickly",
+    "target_text": "astû útpraat bist sil ik fluch leare"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to learn quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0021L03U03",
+   "expect": {
+    "known_text": "after you finish I'm going to say her name",
+    "target_text": "astû útpraat bist, sil ik har namme sizze"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to say her name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L02U05",
+   "expect": {
+    "known_text": "after you finish I'm going to meet people",
+    "target_text": "astû útpraat bist sil ik minsken moetsje"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to meet people"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L01U06",
+   "expect": {
+    "known_text": "we want to meet each other soon after you finish",
+    "target_text": "wy wolle inoar aanst moetsje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "we want to meet each other soon after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L02U04",
+   "expect": {
+    "known_text": "I'm going to start talking after you finish",
+    "target_text": "ik begjin te praten astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to start talking after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U05",
+   "expect": {
+    "known_text": "I'm going to remember the answer after you finish",
+    "target_text": "ik sil it antwurd ûnthâlde astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to remember the answer after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L02U05",
+   "expect": {
+    "known_text": "after you finish someone else is going to help me",
+    "target_text": "astû útpraat bist sil in oar my helpe"
+   },
+   "set": {
+    "known_text": "after you finish talking someone else is going to help me"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L03U08",
+   "expect": {
+    "known_text": "after you finish I must go",
+    "target_text": "astû útpraat bist moat ik gean"
+   },
+   "set": {
+    "known_text": "after you finish talking I must go"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L03U05",
+   "expect": {
+    "known_text": "after you finish I don't like taking too much time",
+    "target_text": "astû útpraat bist doch ik der net graach te lang oer"
+   },
+   "set": {
+    "known_text": "after you finish talking I don't like taking too much time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L04U03",
+   "expect": {
+    "known_text": "after you finish I'm ready to answer",
+    "target_text": "astû útpraat bist bin ik klear om te antwurdzjen"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm ready to answer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0030L03U04",
+   "expect": {
+    "known_text": "I'm going to ask after you finish",
+    "target_text": "ik sil freegje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to ask after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0037L04U04",
+   "expect": {
+    "known_text": "after you finish I'm going to try to think about it carefully",
+    "target_text": "astû útpraat bist sil ik besykje der goed oer nei te tinken"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to try to think about it carefully"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0040L02U04",
+   "expect": {
+    "known_text": "how do you feel after you finish?",
+    "target_text": "hoe fielstû dy astû útpraat bist?"
+   },
+   "set": {
+    "known_text": "how do you feel after you finish talking?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0045L02U02",
+   "expect": {
+    "known_text": "I don't need to talk after you finish",
+    "target_text": "ik hoech net te praten astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I don't need to talk after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0051L04U07",
+   "expect": {
+    "known_text": "after you finish I'm going to practise with my friends",
+    "target_text": "astû útpraat bist sil ik mei myn freonen oefenje"
+   },
+   "set": {
+    "known_text": "after you finish talking I'm going to practise with my friends"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L02U07",
+   "expect": {
+    "known_text": "I'm going to read the story next week after you finish",
+    "target_text": "ik sil takommende wike it ferhaal lêze astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm going to read the story next week after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0061L01U01",
+   "expect": {
+    "known_text": "after you finish could you show me something?",
+    "target_text": "astû útpraat bist, kinstû my wat sjen litte?"
+   },
+   "set": {
+    "known_text": "after you finish talking could you show me something?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0063L01U01",
+   "expect": {
+    "known_text": "after you finish, are you sure that you want to help me?",
+    "target_text": "astû útpraat bist, bistû der wis fan datstû my helpe wolst?"
+   },
+   "set": {
+    "known_text": "after you finish talking, are you sure that you want to help me?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0067L01U02",
+   "expect": {
+    "known_text": "after you finish, do you want to show me something?",
+    "target_text": "astû útpraat bist, wolstû my wat sjen litte?"
+   },
+   "set": {
+    "known_text": "after you finish talking, do you want to show me something?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0070L01U05",
+   "expect": {
+    "known_text": "I'd like to tell the story after you finish",
+    "target_text": "ik wol it ferhaal graach fertelle astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'd like to tell the story after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U06",
+   "expect": {
+    "known_text": "are you going to help me to understand after you finish?",
+    "target_text": "silstû my helpe om it te begripen astû útpraat bist?"
+   },
+   "set": {
+    "known_text": "are you going to help me to understand after you finish talking?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0075L01U03",
+   "expect": {
+    "known_text": "after you finish have you got the answer?",
+    "target_text": "astû útpraat bist, hastû it antwurd?"
+   },
+   "set": {
+    "known_text": "after you finish talking have you got the answer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0075L02U05",
+   "expect": {
+    "known_text": "after you finish, have you got more to learn?",
+    "target_text": "astû útpraat bist, hastû noch mear te learen?"
+   },
+   "set": {
+    "known_text": "after you finish talking, have you got more to learn?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0081L01U04",
+   "expect": {
+    "known_text": "we want to start after you finish",
+    "target_text": "wy wolle begjinne astû útpraat bist"
+   },
+   "set": {
+    "known_text": "we want to start after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0081L02U05",
+   "expect": {
+    "known_text": "after you finish, when do you want to start?",
+    "target_text": "astû útpraat bist, wannear wolstû begjinne?"
+   },
+   "set": {
+    "known_text": "after you finish talking, when do you want to start?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0088L02U04",
+   "expect": {
+    "known_text": "I'm ready to talk after you finish",
+    "target_text": "ik bin klear om te praten astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'm ready to talk after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0090L02B01",
+   "expect": {
+    "known_text": "after you finish, that would be great",
+    "target_text": "astû útpraat bist, soe dat noflik wêze"
+   },
+   "set": {
+    "known_text": "after you finish talking, that would be great"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0092L02U03",
+   "expect": {
+    "known_text": "we want to keep on doing this after you finish",
+    "target_text": "wy wolle hjir mei trochgean astû útpraat bist"
+   },
+   "set": {
+    "known_text": "we want to keep on doing this after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L03U04",
+   "expect": {
+    "known_text": "we just need to work hard after you finish",
+    "target_text": "wy moatte gewoan hurd wurkje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "we just need to work hard after you finish talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0154L02B03",
+   "expect": {
+    "known_text": "where do you want to meet after you finish?",
+    "target_text": "wêr wolstû moetsje astû útpraat bist?"
+   },
+   "set": {
+    "known_text": "where do you want to meet after you finish talking?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0158L03U02",
+   "expect": {
+    "known_text": "after you finish, let's talk about something else",
+    "target_text": "astû útpraat bist, litte wy oer wat oars prate"
+   },
+   "set": {
+    "known_text": "after you finish talking, let's talk about something else"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03B04",
+   "expect": {
+    "known_text": "after you finish can you give me that book?",
+    "target_text": "astû útpraat bist, kinstû my dat boek jaan?"
+   },
+   "set": {
+    "known_text": "after you finish talking can you give me that book?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03U02",
+   "expect": {
+    "known_text": "after you finish can you give me that book before I have to go?",
+    "target_text": "astû útpraat bist, kinstû my dat boek jaan foar't ik gean moat?"
+   },
+   "set": {
+    "known_text": "after you finish talking can you give me that book before I have to go?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0167L02B03",
+   "expect": {
+    "known_text": "what do you need to do after you finish?",
+    "target_text": "wat moatstû dwaan astû útpraat bist?"
+   },
+   "set": {
+    "known_text": "what do you need to do after you finish talking?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0174L01U01",
+   "expect": {
+    "known_text": "after you finish can you understand what I wanted to say?",
+    "target_text": "astû útpraat bist, kinstû begripe wat ik sizze woe?"
+   },
+   "set": {
+    "known_text": "after you finish talking can you understand what I wanted to say?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L01U03",
+   "expect": {
+    "known_text": "I'll ask her after you finish",
+    "target_text": "ik sil har freegje astû útpraat bist"
+   },
+   "set": {
+    "known_text": "I'll ask her after you finish talking"
+   }
+  }
+ ]
+}

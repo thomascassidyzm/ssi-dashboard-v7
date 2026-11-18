@@ -1,0 +1,840 @@
+{
+ "course": "ita_for_eng",
+ "note": "trial_ clips: stored apart in S3 under trial/, no course_audio row, cannot be linked to a course",
+ "turns": [
+  {
+   "id": "SC01-S001",
+   "scene": 1,
+   "speaker": "Neighbour",
+   "target": "Buongiorno, Sarah!",
+   "known": "Good morning, Sarah!",
+   "whole": "greeting, right size",
+   "targetAudio": "7c994196-1757-4275-9f39-83a1725a10bb.v2",
+   "knownAudio": "69e4969a-18b4-4f4e-959b-bf7c50db92af",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  {
+   "id": "SC01-S002",
+   "scene": 1,
+   "speaker": "Sarah",
+   "target": "Buongiorno. Come stai?",
+   "known": "Good morning. How are you?",
+   "whole": "short, right size",
+   "targetAudio": "614cd6f5-5f70-4165-ad57-c03cc556c985.v2",
+   "knownAudio": "b6561299-5e65-4695-986e-5868dbe6f668.v2",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121"
+  },
+  {
+   "id": "SC01-S003",
+   "scene": 1,
+   "speaker": "Neighbour",
+   "target": "Sto molto bene, grazie. Vai a lavorare?",
+   "known": "I'm very well, thank you. Are you going to work?",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "pieces": [
+    {
+     "it": {
+      "text": "Sto molto bene, grazie.",
+      "trialClip": "trial_BFD8E041-45BC-43A5-9448-A109721FA048",
+      "source": "rendered",
+      "chars": 23,
+      "durationMs": 1840
+     },
+     "en": {
+      "text": "I'm very well, thank you.",
+      "trialClip": "trial_F2C23725-FC28-431C-AD76-1665FAE6A063",
+      "source": "rendered",
+      "chars": 25,
+      "durationMs": 1840
+     }
+    },
+    {
+     "it": {
+      "text": "Vai a lavorare?",
+      "trialClip": "trial_D3E407B0-6911-46AD-A3B9-3F991B371CBA",
+      "source": "rendered",
+      "chars": 15,
+      "durationMs": 960
+     },
+     "en": {
+      "text": "Are you going to work?",
+      "trialClip": "trial_693B71CE-8CEF-4646-92B2-AF94F1B01D19",
+      "source": "rendered",
+      "chars": 22,
+      "durationMs": 1280
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC01-S004",
+   "scene": 1,
+   "speaker": "Sarah",
+   "target": "Sì, oggi ho una giornata impegnativa. Spero che tu abbia una buona giornata. Ci vediamo dopo.",
+   "known": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "pieces": [
+    {
+     "it": {
+      "text": "Sì, oggi ho",
+      "trialClip": "trial_F7CF48EF-2496-4265-AAF4-B70D34F10022",
+      "source": "rendered",
+      "chars": 11,
+      "durationMs": 1360
+     },
+     "en": {
+      "text": "Yes, today I have",
+      "trialClip": "trial_BDE48015-36FB-4212-A0B8-157FE83B6BD9",
+      "source": "rendered",
+      "chars": 17,
+      "durationMs": 1680
+     }
+    },
+    {
+     "it": {
+      "text": "una giornata impegnativa.",
+      "trialClip": "trial_3938D3FF-F2FD-4636-AF1A-25F0FBC87ABE",
+      "source": "rendered",
+      "chars": 25,
+      "durationMs": 1680
+     },
+     "en": {
+      "text": "a busy day.",
+      "trialClip": "trial_010B7997-7D9E-43B1-A210-F33FCEF10265",
+      "source": "rendered",
+      "chars": 11,
+      "durationMs": 1040
+     }
+    },
+    {
+     "it": {
+      "text": "Spero che tu abbia",
+      "trialClip": "trial_E431C44D-AC83-4825-A677-450879325EA8",
+      "source": "rendered",
+      "chars": 18,
+      "durationMs": 1280
+     },
+     "en": {
+      "text": "I hope you have",
+      "trialClip": "trial_268999D9-A29C-44D5-9492-221F7B1F43E7",
+      "source": "rendered",
+      "chars": 15,
+      "durationMs": 960
+     }
+    },
+    {
+     "it": {
+      "text": "una buona giornata.",
+      "trialClip": "trial_C5331748-7D2C-4874-9AF3-5E8C1F583302",
+      "source": "rendered",
+      "chars": 19,
+      "durationMs": 1280
+     },
+     "en": {
+      "text": "a good day.",
+      "trialClip": "trial_D49156F1-E148-4AB6-A17A-9BC10178C40B",
+      "source": "rendered",
+      "chars": 11,
+      "durationMs": 880
+     }
+    },
+    {
+     "it": {
+      "text": "Ci vediamo dopo.",
+      "trialClip": "trial_C5DE0E53-7A04-40D7-86C6-0B780A020A2F",
+      "source": "rendered",
+      "chars": 16,
+      "durationMs": 1200
+     },
+     "en": {
+      "text": "See you later.",
+      "trialClip": "trial_A67E0195-BCBC-4DCD-843B-99948F4AA2A4",
+      "source": "rendered",
+      "chars": 14,
+      "durationMs": 880
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC02-S001",
+   "scene": 2,
+   "speaker": "Sarah",
+   "target": "Scusi, è occupato questo posto?",
+   "known": "Excuse me, is this seat taken?",
+   "whole": "one question, right size",
+   "targetAudio": "c6569686-5d3b-4171-871d-f345e8b1f5e3.v2",
+   "knownAudio": "d4eefdd0-5443-4360-9157-ca98c1d60c32.v2",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121"
+  },
+  {
+   "id": "SC02-S002",
+   "scene": 2,
+   "speaker": "Passenger",
+   "target": "No, è libero. Prego, vada pure.",
+   "known": "No, it's free. Please, go ahead.",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "pieces": [
+    {
+     "it": {
+      "text": "No, è libero.",
+      "trialClip": "trial_BF70BD34-EF05-46D8-B4FD-B931EAE8B5E4",
+      "source": "rendered",
+      "chars": 13,
+      "durationMs": 1360
+     },
+     "en": {
+      "text": "No, it's free.",
+      "trialClip": "trial_ABAD8409-EEE6-45FA-9EFA-2C1E17C3CBE0",
+      "source": "rendered",
+      "chars": 14,
+      "durationMs": 1600
+     }
+    },
+    {
+     "it": {
+      "text": "Prego, vada pure.",
+      "trialClip": "trial_694C9AC4-77C4-4AE2-A25E-A6CCFE093B86",
+      "source": "rendered",
+      "chars": 17,
+      "durationMs": 1360
+     },
+     "en": {
+      "text": "Please, go ahead.",
+      "trialClip": "trial_A4F6EC5D-548D-4682-8CC6-DC8230E831A5",
+      "source": "rendered",
+      "chars": 17,
+      "durationMs": 1520
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC02-S003",
+   "scene": 2,
+   "speaker": "Sarah",
+   "target": "Quanto è lontano il centro?",
+   "known": "How far is it into town?",
+   "whole": "one question, right size",
+   "targetAudio": "bb98fe78-4c17-47b8-8ae9-e981fcfd4caa.v2",
+   "knownAudio": "99b79d9b-c949-4240-b38e-2c66d7b413ff.v2",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121"
+  },
+  {
+   "id": "SC02-S004",
+   "scene": 2,
+   "speaker": "Sarah",
+   "target": "Puoi dirmi quanto è lontano il centro?",
+   "known": "Can you tell me how far it is into town?",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "pieces": [
+    {
+     "it": {
+      "text": "Puoi dirmi",
+      "trialClip": "trial_810BBF17-93D2-4396-A3F5-F56A27D47A73",
+      "source": "library",
+      "chars": 0,
+      "durationMs": 1107
+     },
+     "en": {
+      "text": "Can you tell me",
+      "trialClip": "trial_4953B482-5D73-4B46-9C52-817A24FF95AC",
+      "source": "library",
+      "chars": 0,
+      "durationMs": 1008
+     }
+    },
+    {
+     "it": {
+      "text": "quanto è lontano il centro?",
+      "reuseWholeTake": "bb98fe78-4c17-47b8-8ae9-e981fcfd4caa.v2"
+     },
+     "en": {
+      "text": "how far it is into town?",
+      "trialClip": "trial_E5DA80B4-0BD6-439D-A216-3E76662CCBF4",
+      "source": "library",
+      "chars": 0,
+      "durationMs": 1680
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC02-S005",
+   "scene": 2,
+   "speaker": "Passenger",
+   "target": "Non è molto lontano. Forse cinque o sei chilometri.",
+   "known": "It's not very far. Maybe five or six kilometres.",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "pieces": [
+    {
+     "it": {
+      "text": "Non è molto lontano.",
+      "trialClip": "trial_1EFEB1D1-28E2-48C0-97E3-7EBF9427D49D",
+      "source": "rendered",
+      "chars": 20,
+      "durationMs": 1440
+     },
+     "en": {
+      "text": "It's not very far.",
+      "trialClip": "trial_61C973AC-3618-4A14-AD86-E18D07BE0768",
+      "source": "rendered",
+      "chars": 18,
+      "durationMs": 1440
+     }
+    },
+    {
+     "it": {
+      "text": "Forse cinque o sei chilometri.",
+      "trialClip": "trial_D0DC3A4E-58FE-45D0-9644-5A4C277CC072",
+      "source": "rendered",
+      "chars": 30,
+      "durationMs": 2240
+     },
+     "en": {
+      "text": "Maybe five or six kilometres.",
+      "trialClip": "trial_9763C61F-B850-4CBB-A583-1736B5D7FF1C",
+      "source": "rendered",
+      "chars": 29,
+      "durationMs": 2560
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC03-S001",
+   "scene": 3,
+   "speaker": "Barista",
+   "target": "Buonasera. Cosa prendo?",
+   "known": "Good afternoon. What can I get you?",
+   "whole": "short, right size",
+   "targetAudio": "effdd6c0-5f87-4d75-8e67-e490bc32beb3.v2",
+   "knownAudio": "852cdd83-e713-4424-8e0f-180826511af9",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  {
+   "id": "SC03-S002",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Buonasera. Vorrei un caffè, per favore. Con latte ma senza zucchero. Per asporto.",
+   "known": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "pieces": [
+    {
+     "it": {
+      "text": "Buonasera.",
+      "trialClip": "trial_E842C9A7-0A7E-4530-98F9-D990738AFB2C",
+      "source": "rendered",
+      "chars": 10,
+      "durationMs": 880
+     },
+     "en": {
+      "text": "Good afternoon.",
+      "trialClip": "trial_D1CD81F0-A3EA-445A-9449-136741B6A307",
+      "source": "rendered",
+      "chars": 15,
+      "durationMs": 960
+     }
+    },
+    {
+     "it": {
+      "text": "Vorrei un caffè, per favore.",
+      "trialClip": "trial_FDB339B5-F99B-4617-8C7B-7239AE8DD3AC",
+      "source": "rendered",
+      "chars": 28,
+      "durationMs": 1920
+     },
+     "en": {
+      "text": "I'd like a coffee, please.",
+      "trialClip": "trial_F0B7B343-9BB7-4D74-A653-450E2D89AFD3",
+      "source": "rendered",
+      "chars": 26,
+      "durationMs": 1600
+     }
+    },
+    {
+     "it": {
+      "text": "Con latte ma senza zucchero.",
+      "trialClip": "trial_CFC88581-9922-4D69-BD99-4B2046A03403",
+      "source": "rendered",
+      "chars": 28,
+      "durationMs": 2160
+     },
+     "en": {
+      "text": "With milk but with no sugar.",
+      "trialClip": "trial_7427BC8F-0032-4839-8A4D-AC6D07E92ADA",
+      "source": "rendered",
+      "chars": 28,
+      "durationMs": 1760
+     }
+    },
+    {
+     "it": {
+      "text": "Per asporto.",
+      "trialClip": "trial_22AEE675-2896-4C05-B87C-076632F48FCA",
+      "source": "rendered",
+      "chars": 12,
+      "durationMs": 1040
+     },
+     "en": {
+      "text": "To take away.",
+      "trialClip": "trial_C362078E-EBE5-4045-A657-2CADE4B5F41E",
+      "source": "rendered",
+      "chars": 13,
+      "durationMs": 960
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC03-S003",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Avete da mangiare?",
+   "known": "Do you have any food?",
+   "whole": "short, right size",
+   "targetAudio": "342879b4-f8bf-46f6-b040-adeef3507a0f.v2",
+   "knownAudio": "3f8d6d5b-d59c-459a-b490-0c5ca3ce810d.v2",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121"
+  },
+  {
+   "id": "SC03-S004",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Avete qualche snack?",
+   "known": "Do you have any snacks?",
+   "whole": "short, right size",
+   "targetAudio": "9c008f04-f3d1-49af-b0df-48c1b9a6d9d8.v2",
+   "knownAudio": "77147601-a9e4-4fdc-b48d-a9fc748d75b3.v2",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121"
+  },
+  {
+   "id": "SC03-S005",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Avete patatine, o noccioline, o qualcosa del genere?",
+   "known": "Do you have crisps, or nuts, or something like that?",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "pieces": [
+    {
+     "it": {
+      "text": "Avete patatine",
+      "trialClip": "trial_FCF77580-835E-4C2F-8645-4F3C8CBE952F",
+      "source": "rendered",
+      "chars": 14,
+      "durationMs": 1200
+     },
+     "en": {
+      "text": "Do you have crisps",
+      "trialClip": "trial_0F9E70D6-F839-4C72-B448-0FC756F8A38A",
+      "source": "rendered",
+      "chars": 18,
+      "durationMs": 1200
+     }
+    },
+    {
+     "it": {
+      "text": "o noccioline",
+      "trialClip": "trial_133F28B3-F2B6-46B5-81A7-CE9D74E02166",
+      "source": "rendered",
+      "chars": 12,
+      "durationMs": 1120
+     },
+     "en": {
+      "text": "or nuts",
+      "trialClip": "trial_542A7F64-DA75-42DD-BEEF-17594FC05A3D",
+      "source": "library",
+      "chars": 0,
+      "durationMs": 960
+     }
+    },
+    {
+     "it": {
+      "text": "o qualcosa del genere?",
+      "trialClip": "trial_094C69EC-0885-47F4-A8BD-8B6FEEC4BE99",
+      "source": "rendered",
+      "chars": 22,
+      "durationMs": 1360
+     },
+     "en": {
+      "text": "or something like that?",
+      "trialClip": "trial_7101ED61-08FE-4725-99C5-7732C8AE2E87",
+      "source": "library",
+      "chars": 0,
+      "durationMs": 1280
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC03-S006",
+   "scene": 3,
+   "speaker": "Barista",
+   "target": "No, abbiamo solo da bere.",
+   "known": "No, we've only got drinks.",
+   "whole": "short, right size",
+   "targetAudio": "9fed7d4a-47b8-4747-8672-79524963b72d.v2",
+   "knownAudio": "e59604ea-86fb-49be-af4c-a50e258c86e3",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  {
+   "id": "SC03-S007",
+   "scene": 3,
+   "speaker": "Barista",
+   "target": "Sì, vuole il menù?",
+   "known": "Yes, would you like the menu?",
+   "whole": "short, right size",
+   "targetAudio": "e6ecc86c-cafa-40d3-8a8a-b5dfe405604f.v2",
+   "knownAudio": "c40cbf5f-9903-4068-8456-b75cb39e8c0d",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  {
+   "id": "SC03-S008",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Sì, grazie.",
+   "known": "Yes, please.",
+   "whole": "set phrase, right size",
+   "targetAudio": "5031a129-4767-4eca-b957-c00cd30c13d5.v2",
+   "knownAudio": "4fb06c81-58ad-410d-8fc5-dddde649783e.v2",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121"
+  },
+  {
+   "id": "SC03-S009",
+   "scene": 3,
+   "speaker": "Barista",
+   "target": "Ecco il suo caffè.",
+   "known": "Here's your coffee.",
+   "whole": "short, right size",
+   "targetAudio": "bc9efd75-dd83-435c-889c-56fe8812ed32.v2",
+   "knownAudio": "28820380-2adf-459e-b139-455021b1220b",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  {
+   "id": "SC03-S010",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Grazie mille. Arrivederci.",
+   "known": "Thank you very much. Goodbye.",
+   "whole": "set phrases, right size",
+   "targetAudio": "09a6c15c-76ae-48ec-9a0c-f4568890dd98",
+   "knownAudio": "1d5eb01d-e0e6-4543-90c2-5d86126b76e3.v2",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121"
+  },
+  {
+   "id": "SC04-S001",
+   "scene": 4,
+   "speaker": "Friend",
+   "target": "Ciao, buonasera!",
+   "known": "Hello, good evening!",
+   "whole": "greeting, right size",
+   "targetAudio": "6a58ace2-74aa-43fb-89dd-f463c992e009.v2",
+   "knownAudio": "583f54a9-9d29-457e-9f30-4dc3badfae89",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  {
+   "id": "SC04-S002",
+   "scene": 4,
+   "speaker": "Sarah",
+   "target": "Ciao! Mi dispiace ma non posso parlare adesso. Devo tornare a casa ora. Andiamo a prendere un caffè domani?",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "pieces": [
+    {
+     "it": {
+      "text": "Ciao! Mi dispiace",
+      "trialClip": "trial_68D9EBB8-B461-4D79-84F5-5A112311586F",
+      "source": "rendered",
+      "chars": 17,
+      "durationMs": 1760
+     },
+     "en": {
+      "text": "Hello! I'm sorry",
+      "trialClip": "trial_02D2AD17-84FC-4214-8A09-07E7690798A4",
+      "source": "rendered",
+      "chars": 16,
+      "durationMs": 1760
+     }
+    },
+    {
+     "it": {
+      "text": "ma non posso parlare adesso.",
+      "trialClip": "trial_9E207268-1817-49B5-A1D8-3F694538421F",
+      "source": "rendered",
+      "chars": 28,
+      "durationMs": 1760
+     },
+     "en": {
+      "text": "but I can't talk at the moment.",
+      "trialClip": "trial_F600FDF0-9F15-48A5-9274-9AAEEB38D2D4",
+      "source": "rendered",
+      "chars": 31,
+      "durationMs": 1680
+     }
+    },
+    {
+     "it": {
+      "text": "Devo tornare a casa ora.",
+      "trialClip": "trial_1201A9A9-F19F-4186-8074-EB2D95460D51",
+      "source": "rendered",
+      "chars": 24,
+      "durationMs": 1760
+     },
+     "en": {
+      "text": "I need to go home now.",
+      "trialClip": "trial_8C665437-42DC-42B2-9AAE-C43EE045FF05",
+      "source": "rendered",
+      "chars": 22,
+      "durationMs": 1440
+     }
+    },
+    {
+     "it": {
+      "text": "Andiamo a prendere",
+      "trialClip": "trial_AC0969A7-E1ED-4231-A86C-3C1B276F5B1E",
+      "source": "rendered",
+      "chars": 18,
+      "durationMs": 1120
+     },
+     "en": {
+      "text": "Shall we go for",
+      "trialClip": "trial_DB4DE93E-65B6-43D3-ABFA-FBA8AC7C9E81",
+      "source": "rendered",
+      "chars": 15,
+      "durationMs": 1200
+     }
+    },
+    {
+     "it": {
+      "text": "un caffè domani?",
+      "trialClip": "trial_D36E6874-7E0D-4A32-93CE-E0B7C0944319",
+      "source": "rendered",
+      "chars": 16,
+      "durationMs": 1280
+     },
+     "en": {
+      "text": "a coffee tomorrow?",
+      "trialClip": "trial_ED8D6C70-5149-4D33-8597-61646C635655",
+      "source": "rendered",
+      "chars": 18,
+      "durationMs": 1040
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC04-S003",
+   "scene": 4,
+   "speaker": "Friend",
+   "target": "No, mi dispiace, sono occupato domani. Ma andiamo sabato. A presto.",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "pieces": [
+    {
+     "it": {
+      "text": "No, mi dispiace",
+      "trialClip": "trial_074E8211-B09A-44A8-85FE-ECF14C1B6D76",
+      "source": "rendered",
+      "chars": 15,
+      "durationMs": 1360
+     },
+     "en": {
+      "text": "No, I'm sorry",
+      "trialClip": "trial_A16575AB-5ADC-422D-8140-35830B09A3D2",
+      "source": "rendered",
+      "chars": 13,
+      "durationMs": 1600
+     }
+    },
+    {
+     "it": {
+      "text": "sono occupato domani.",
+      "trialClip": "trial_8E8ADF31-E27F-40CE-ABD4-8E277E2EE988",
+      "source": "rendered",
+      "chars": 21,
+      "durationMs": 1200
+     },
+     "en": {
+      "text": "I'm busy tomorrow.",
+      "trialClip": "trial_1DA4238C-2FC9-4EBC-8031-320A1F48B6E3",
+      "source": "library",
+      "chars": 0,
+      "durationMs": 1280
+     }
+    },
+    {
+     "it": {
+      "text": "Ma andiamo sabato.",
+      "trialClip": "trial_8AE954E5-2361-40F6-A581-E88097DBBC82",
+      "source": "rendered",
+      "chars": 18,
+      "durationMs": 1200
+     },
+     "en": {
+      "text": "But let's go on Saturday.",
+      "trialClip": "trial_C72FA993-3D24-49FE-815D-016858F210AB",
+      "source": "rendered",
+      "chars": 25,
+      "durationMs": 1840
+     }
+    },
+    {
+     "it": {
+      "text": "A presto.",
+      "trialClip": "trial_4FB76B4C-3B5C-48D1-8E9D-3698CB29EBB2",
+      "source": "rendered",
+      "chars": 9,
+      "durationMs": 880
+     },
+     "en": {
+      "text": "See you soon.",
+      "trialClip": "trial_822A1E78-24C4-461E-AF6C-3123ACA90685",
+      "source": "rendered",
+      "chars": 13,
+      "durationMs": 1040
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC05-S001",
+   "scene": 5,
+   "speaker": "Neighbour",
+   "target": "Buonasera, Sarah. Hai avuto una giornata lunga?",
+   "known": "Good evening, Sarah. Did you have a long day?",
+   "targetVoice": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "knownVoice": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "pieces": [
+    {
+     "it": {
+      "text": "Buonasera, Sarah.",
+      "trialClip": "trial_6DB68EE4-E327-489E-9734-9B6F298BEE1D",
+      "source": "rendered",
+      "chars": 17,
+      "durationMs": 1200
+     },
+     "en": {
+      "text": "Good evening, Sarah.",
+      "trialClip": "trial_A74A6049-51B6-4151-B180-555F6E633C01",
+      "source": "rendered",
+      "chars": 20,
+      "durationMs": 1520
+     }
+    },
+    {
+     "it": {
+      "text": "Hai avuto una giornata lunga?",
+      "trialClip": "trial_EA8433FA-0F33-43FC-9E5C-23E726D8228B",
+      "source": "rendered",
+      "chars": 29,
+      "durationMs": 1680
+     },
+     "en": {
+      "text": "Did you have a long day?",
+      "trialClip": "trial_4411F541-20DF-40C5-82C7-2F642725EB3B",
+      "source": "rendered",
+      "chars": 24,
+      "durationMs": 1440
+     }
+    }
+   ]
+  },
+  {
+   "id": "SC05-S002",
+   "scene": 5,
+   "speaker": "Sarah",
+   "target": "Sì, molto. Sono molto stanca adesso. Buonanotte. A domani.",
+   "known": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+   "targetVoice": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "knownVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "pieces": [
+    {
+     "it": {
+      "text": "Sì, molto.",
+      "trialClip": "trial_0372548C-10AC-4C3F-ADA5-562F5525277B",
+      "source": "rendered",
+      "chars": 10,
+      "durationMs": 1280
+     },
+     "en": {
+      "text": "Yes, very.",
+      "trialClip": "trial_0202197E-D806-4343-8A48-D0DA7107AD71",
+      "source": "rendered",
+      "chars": 10,
+      "durationMs": 1280
+     }
+    },
+    {
+     "it": {
+      "text": "Sono molto stanca adesso.",
+      "trialClip": "trial_BB08CC7D-2F5A-4EAC-B895-AE97F6854F1A",
+      "source": "rendered",
+      "chars": 25,
+      "durationMs": 2000
+     },
+     "en": {
+      "text": "I'm very tired now.",
+      "trialClip": "trial_4F82B3DD-05C7-44CE-9FBC-424D7ACB5E40",
+      "source": "rendered",
+      "chars": 19,
+      "durationMs": 1440
+     }
+    },
+    {
+     "it": {
+      "text": "Buonanotte.",
+      "trialClip": "trial_FFD0C123-E4C8-4EE2-93E4-345F888ED174",
+      "source": "rendered",
+      "chars": 11,
+      "durationMs": 1040
+     },
+     "en": {
+      "text": "Good night.",
+      "trialClip": "trial_EB2F203C-39A9-467C-825A-8AC1C48CFA1A",
+      "source": "rendered",
+      "chars": 11,
+      "durationMs": 880
+     }
+    },
+    {
+     "it": {
+      "text": "A domani.",
+      "trialClip": "trial_99E323D9-18DC-49F7-BAE7-6773B6D68CC7",
+      "source": "rendered",
+      "chars": 9,
+      "durationMs": 880
+     },
+     "en": {
+      "text": "See you tomorrow.",
+      "trialClip": "trial_09251624-0017-4336-8169-2B8025C9511D",
+      "source": "rendered",
+      "chars": 17,
+      "durationMs": 1120
+     }
+    }
+   ]
+  }
+ ]
+}

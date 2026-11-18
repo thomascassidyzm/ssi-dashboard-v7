@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Intro tuning playground</title>
+<style>
+:root{color-scheme:dark light;--bg:#14161a;--fg:#e8eaed;--mut:#8b9199;--card:#1d2026;--acc:#6aa9ff;--ok:#5fd08a}
+@media(prefers-color-scheme:light){:root{--bg:#f3f1ee;--fg:#1c1e22;--mut:#6a6f76;--card:#fff;--acc:#1a5fd0;--ok:#1f8a4c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,sans-serif;padding:calc(12px + env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));max-width:640px;margin:auto}
+h1{font-size:19px;margin:6px 0 2px}.sub{color:var(--mut);font-size:13px;margin-bottom:12px}
+.card{background:var(--card);border-radius:12px;padding:12px 14px;margin:10px 0}
+label{display:flex;justify-content:space-between;font-size:14px}label b{color:var(--acc);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:36px;margin:2px 0 8px}
+button,select{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--mut);border-radius:10px;padding:10px 14px}
+button.p{background:var(--acc);border-color:var(--acc);color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.legos button{padding:8px 10px;font-size:14px}.legos button.on{outline:2px solid var(--acc)}
+#line{width:100%;font:13px ui-monospace,monospace;background:transparent;color:var(--fg);border:1px dashed var(--mut);border-radius:8px;padding:8px;resize:none}
+.note{font-size:12.5px;color:var(--mut)}#st{font-size:13px;color:var(--ok);min-height:18px}
+</style></head><body>
+<h1>Intro tuning playground</h1>
+<div class="sub">German trial: “The German for” · LEGO · “is”. Drag, and it re-plays on release.</div>
+
+<div class="card">
+  <div class="row"><select id="voice"></select>
+  <select id="mode"><option value="wsola">LEGO speed: pitch kept (WSOLA)</option><option value="plain">LEGO speed: plain (pitch drops)</option></select>
+  <select id="src"><option value="str">LEGO: normal clip, stretched by slider</option><option value="a">LEGO: native Cartesia 0.8×, take A</option><option value="b">LEGO: native Cartesia 0.8×, take B</option></select></div>
+  <div class="note" style="margin-top:6px">Native 0.8× exists for tom_001 only, LEGOs 2, 7 and 10 (“to speak”, “to learn”, “as often as possible”); the speed slider is ignored for them, other LEGOs stay stretched.</div>
+</div>
+
+<div class="card">
+  <label>Gap before LEGO <b id="v_gap1"></b></label><input id="gap1" type="range" min="0" max="600" step="10" value="80">
+  <label>LEGO gain over frame <b id="v_gain"></b></label><input id="gain" type="range" min="-3" max="6" step="0.5" value="0">
+  <label>LEGO speed <b id="v_rate"></b></label><input id="rate" type="range" min="0.7" max="1" step="0.01" value="0.85">
+  <label>Gap after LEGO, before “is” <b id="v_gap2"></b></label><input id="gap2" type="range" min="0" max="800" step="10" value="400">
+  <div class="row"><button id="shipped">Shipped (120 / +3 dB / 1.0× / 120)</button><button id="mine">My start (80 / 0 / 0.85 / 400)</button></div>
+</div>
+
+<div class="card">
+  <div class="row legos" id="legos"></div>
+  <div class="row" style="margin-top:10px"><button class="p" id="one">▶ Play one</button><button class="p" id="all">▶▶ Play all 10</button><button id="stop">■ Stop</button></div>
+  <label style="margin-top:8px"><span>Re-play on release <input type="checkbox" id="auto" checked></span></label>
+  <div id="st"></div>
+</div>
+
+<div class="card">
+  <div class="note">Current values — copy and send:</div>
+  <textarea id="line" rows="3" readonly></textarea>
+  <div class="row"><button id="copy">Copy</button></div>
+</div>
+<p class="note">Levelling is the shipped introAssembly.ts: frame pieces matched to one level, LEGO set above them by the gain slider, then the whole intro brought to −14 dBFS (voiced RMS) with a local peak limiter at 0.97. Gain 0 = LEGO at the same level as the frame (shipped is +3). Speed: WSOLA time-stretch (30 ms windows, ±10 ms search), so pitch is kept; “plain” just resamples (slower = lower pitch) for comparison. Native 0.8× is Cartesia’s own slow read (generation speed 0.8, trial render), not a stretch.</p>
+
+<script>
+/* ===== DSP: port of introAssembly.ts levelling (voicedRms, matchLoudnessGains, limitPeaks, normaliseIntro) ===== */
+const TARGET_DB=-14, CEIL=0.97, MAX_GAIN=6;
+const toDb=x=>20*Math.log10(Math.max(x,1e-9));
+function voicedRms(x,sr){const f=Math.max(1,Math.round(sr*0.02)),n=x.length,ms=[];
+  for(let i=0;i+f<=n||(i<n&&ms.length===0);i+=f){const e=Math.min(n,i+f);let s=0;for(let j=i;j<e;j++)s+=x[j]*x[j];ms.push(s/(e-i))}
+  let mx=0;for(const m of ms)if(m>mx)mx=m;const g=mx*0.01;let sum=0,c=0;for(const m of ms)if(m>=g&&m>0){sum+=m;c++}
+  return c?Math.sqrt(sum/c):0}
+const scale=(x,g)=>{const o=new Float32Array(x.length);for(let i=0;i<x.length;i++)o[i]=x[i]*g;return o};
+function limitPeaks(x,sr){const n=x.length,L=Math.max(1,Math.round(sr*0.004)),need=new Float32Array(n).fill(1);let any=false;
+  for(let i=0;i<n;i++){const a=Math.abs(x[i]);if(a>CEIL){need[i]=CEIL/a;any=true}}if(!any)return x;
+  const low=new Float32Array(n).fill(1);
+  for(let i=0;i<n;i++){if(need[i]>=1)continue;for(let j=Math.max(0,i-L);j<=Math.min(n-1,i+L);j++)if(need[i]<low[j])low[j]=need[i]}
+  const gain=new Float32Array(n),w=2*L+1;let acc=0;for(let j=0;j<Math.min(n,L);j++)acc+=low[j];
+  for(let i=0;i<n;i++){if(i+L<n)acc+=low[i+L];if(i-L-1>=0)acc-=low[i-L-1];gain[i]=acc/w}
+  for(let i=0;i<n;i++){const lo=Math.max(0,i-L),hi=Math.min(n-1,i+L),miss=w-(hi-lo+1);if(miss)gain[i]=(gain[i]*w+miss)/w}
+  for(let i=0;i<n;i++)if(gain[i]>need[i])gain[i]=need[i];
+  const o=new Float32Array(n);for(let i=0;i<n;i++)o[i]=x[i]*gain[i];return o}
+function normaliseIntro(x,sr){const lv=voicedRms(x,sr);if(lv<=0)return x;let g=10**(TARGET_DB/20)/lv,out=limitPeaks(scale(x,g),sr);
+  for(let k=0;k<4;k++){const l=voicedRms(out,sr);if(Math.abs(toDb(l)-TARGET_DB)<0.05)break;g*=10**(TARGET_DB/20)/l;out=limitPeaks(scale(x,g),sr)}return out}
+/* frame pieces to one fixed level; the LEGO emphasisDb above it (same formula as matchLoudnessGains) */
+function matchGains(levels,emDb,legoIdx){const ft=10**((TARGET_DB-emDb*0.5)/20),lift=10**(emDb/20);
+  return levels.map((l,i)=>l<=0?1:Math.min(MAX_GAIN,(i===legoIdx?ft*lift:ft)/l))}
+/* WSOLA time-stretch: speed<1 slows, pitch kept. 30 ms Hann windows, 50% overlap, +-10 ms similarity search. */
+function wsola(x,sr,speed){if(Math.abs(speed-1)<1e-3)return x;
+  const N=Math.round(sr*0.03)&~1,H=N/2,D=Math.round(sr*0.01),n=x.length,outLen=Math.round(n/speed)+N,out=new Float32Array(outLen),wsum=new Float32Array(outLen);
+  const win=new Float32Array(N);for(let i=0;i<N;i++)win[i]=0.5-0.5*Math.cos(2*Math.PI*(i+0.5)/N);
+  let prev=0,pos=0; // prev = input start of the previously placed frame
+  for(let k=0;;k++){const o=k*H;if(o>=outLen-N)break;
+    let a=Math.round(k*H*speed);if(a>=n)break;
+    if(k>0){const t=prev+H;let best=a,bs=-Infinity;
+      for(let c=Math.max(0,a-D);c<=a+D&&c+N<=n+N;c+=2){let s=0;for(let i=0;i<H;i+=4){const u=t+i,v=c+i;s+=(u<n?x[u]:0)*(v<n?x[v]:0)}if(s>bs){bs=s;best=c}}a=best}
+    for(let i=0;i<N;i++){const v=a+i<n?x[a+i]:0;out[o+i]+=v*win[i];wsum[o+i]+=win[i]}
+    prev=a}
+  const len=Math.round(n/speed);const r=new Float32Array(len);for(let i=0;i<len;i++)r[i]=wsum[i]>1e-3?out[i]/wsum[i]:0;return r}
+function resamplePlain(x,speed){const len=Math.round(x.length/speed),r=new Float32Array(len);
+  for(let i=0;i<len;i++){const p=i*speed,j=Math.floor(p),f=p-j;r[i]=(x[j]||0)*(1-f)+(x[j+1]||0)*f}return r}
+/* assemble: frame, gap1, LEGO(stretched), gap2, is -> levelled to -14 dBFS */
+function assemble(sr,frame,lego,is,p){
+  const lg=p.mode==='plain'?resamplePlain(lego,p.rate):wsola(lego,sr,p.rate);
+  const gains=matchGains([voicedRms(frame,sr),voicedRms(lg,sr),voicedRms(is,sr)],p.gain,1);
+  const parts=[scale(frame,gains[0]),new Float32Array(Math.round(sr*p.gap1/1000)),scale(lg,gains[1]),new Float32Array(Math.round(sr*p.gap2/1000)),scale(is,gains[2])];
+  let tot=0;for(const q of parts)tot+=q.length;const j=new Float32Array(tot);let at=0;for(const q of parts){j.set(q,at);at+=q.length}
+  return normaliseIntro(j,sr)}
+/* ===== /DSP ===== */
+
+const $=id=>document.getElementById(id);
+let ctx,man,buf={},cur=0,src=null,runId=0;
+const P=()=>({src:$('src').value,gap1:+$('gap1').value,gain:+$('gain').value,rate:+$('rate').value,gap2:+$('gap2').value,mode:$('mode').value});
+function show(){const p=P();$('v_gap1').textContent=p.gap1+' ms';$('v_gain').textContent=(p.gain>0?'+':'')+p.gain+' dB';$('v_rate').textContent=p.rate.toFixed(2)+'×';$('v_gap2').textContent=p.gap2+' ms';
+  $('line').value=`gapBeforeLego=${p.gap1}ms legoGain=${p.gain>0?'+':''}${p.gain}dB legoRate=${p.rate.toFixed(2)} gapAfterLego=${p.gap2}ms stretch=${p.mode} voice=${$('voice').value} (overall -14 dBFS)${p.src!=='str'?' lego=native0.8-take'+p.src.toUpperCase()+' (tom_001 LEGOs 2,7,10 only; others stretched)':''}`}
+async function load(v){if(buf[v])return buf[v];const f=man.voices[v].files,o={};
+  await Promise.all(Object.entries(f).map(async([k,u])=>{const ab=await (await fetch(u)).arrayBuffer();const d=await ctx.decodeAudioData(ab);o[k]=d.getChannelData(0)}));return buf[v]=o}
+const cache={};
+async function render(i){const v=$('voice').value,b=await load(v),p=P(),sr=ctx.sampleRate;
+  // stretched LEGO is cached inside assemble only by recompute; WSOLA is ~tens of ms per clip
+  const nk='native'+i+p.src,nat=p.src!=='str'&&b[nk],x=nat?assemble(sr,b.frame,b[nk],b.is,{...p,rate:1}):assemble(sr,b.frame,b['lego'+i],b.is,p),ab=ctx.createBuffer(1,x.length,sr);ab.copyToChannel(x,0);return ab}
+function stopNow(){runId++;if(src){try{src.stop()}catch(e){}src=null}}
+function playBuf(ab){return new Promise(r=>{const s=ctx.createBufferSource();s.buffer=ab;s.connect(ctx.destination);s.onended=r;src=s;s.start()})}
+async function playOne(){stopNow();const id=runId;await ctx.resume();$('st').textContent='…';const ab=await render(cur);if(id!==runId)return;$('st').textContent=`▶ ${man.legos[cur]}  (${ab.duration.toFixed(2)} s)`;await playBuf(ab);if(id===runId)$('st').textContent=''}
+async function playAll(){stopNow();const id=runId;await ctx.resume();
+  for(let i=0;i<man.legos.length&&id===runId;i++){setCur(i);$('st').textContent=`▶ ${i+1}/10  ${man.legos[i]}`;const ab=await render(i);if(id!==runId)return;await playBuf(ab);if(id!==runId)return;await new Promise(r=>setTimeout(r,900))}
+  if(id===runId)$('st').textContent='done'}
+function setCur(i){cur=i;[...$('legos').children].forEach((b,j)=>b.classList.toggle('on',j===i))}
+function setP(p){$('gap1').value=p[0];$('gain').value=p[1];$('rate').value=p[2];$('gap2').value=p[3];show()}
+(async()=>{
+  const AC=window.AudioContext||window.webkitAudioContext;ctx=new AC();
+  man=await (await fetch('manifest.json')).json();
+  Object.entries(man.voices).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label;$('voice').appendChild(o)});
+  man.legos.forEach((t,i)=>{const b=document.createElement('button');b.textContent=(i+1)+' '+t;b.onclick=()=>{setCur(i);playOne()};$('legos').appendChild(b)});
+  setCur(0);show();
+  for(const id of['gap1','gain','rate','gap2'])$(id).addEventListener('input',show);
+  const rep=()=>{if($('auto').checked)playOne()};
+  for(const id of['gap1','gain','rate','gap2','mode','voice','src'])$(id).addEventListener('change',()=>{show();rep()});
+  $('shipped').onclick=()=>{setP([120,3,1,120]);rep()};$('mine').onclick=()=>{setP([80,0,0.85,400]);rep()};
+  $('one').onclick=playOne;$('all').onclick=playAll;$('stop').onclick=()=>{stopNow();$('st').textContent=''};
+  $('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('line').value)}catch(e){$('line').select();document.execCommand('copy')}$('st').textContent='copied'};
+  $('line').addEventListener('focus',e=>e.target.select());
+})();
+</script></body></html>

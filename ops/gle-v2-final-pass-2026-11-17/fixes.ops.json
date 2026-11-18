@@ -1,0 +1,167 @@
+{
+"batch": "fixes",
+"ops": [
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L01U14",
+"set": {
+"target_text": "Tá sé úsáideach teacht ar ais arís chun labhairt a chleachtadh gach seachtain"
+},
+"expect": {
+"known_text": "it is useful to come back again and practise speaking every week",
+"target_text": "Tá sé úsáideach teacht ar ais arís chun labhairt a chleachtadh gach seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U01",
+"set": {
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtain ag foghlaim Gaeilge"
+},
+"expect": {
+"known_text": "it is important to take time to test yourself every week when learning Irish",
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U13",
+"set": {
+"target_text": "is mian liom am a chaitheamh chun mo dhícheall a dhéanamh inniu agus gach seachtain"
+},
+"expect": {
+"known_text": "I want to take time to do my best today and every week",
+"target_text": "is mian liom am a chaitheamh chun mo dhícheall a dhéanamh inniu agus gach seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L05U01",
+"set": {
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtain ag foghlaim Gaeilge"
+},
+"expect": {
+"known_text": "it is important to take time to test yourself every week when learning Irish",
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L05U12",
+"set": {
+"target_text": "ceapaim go bhfuil sé spraíúil tú féin a thástáil gach seachtain ag foghlaim Gaeilge"
+},
+"expect": {
+"known_text": "I think it is fun to test yourself every week when learning Irish",
+"target_text": "ceapaim Tá sé spraíúil tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L06U03",
+"set": {
+"target_text": "Tá sé spraíúil tú féin a thástáil gach seachtain nuair a thuigeann tú feabhsú"
+},
+"expect": {
+"known_text": "it is fun to test yourself every week when you can see how much you have improved",
+"target_text": "Tá sé spraíúil tú féin a thástáil gach seachtaine nuair a thuigeann tú feabhsú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0111L04U15",
+"expect": {
+"target_text": "Tá rud nua a fhoghlaim le chéile go maith do ár n-inchinn agus athraíonn sé gach rud"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07B03",
+"set": {
+"target_text": "an-bhuíoch as do chabhair",
+"known_text": "very grateful for your help"
+},
+"expect": {
+"known_text": "grateful for your help",
+"target_text": "buíoch as do chabhair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0199L02U04",
+"set": {
+"target_text": "ba mhian leis rud éigin ó mo chara a fháil agus dúirt sé go raibh sé an-bhuíoch",
+"known_text": "he wanted to get something from my friend and he said he was very grateful"
+},
+"expect": {
+"known_text": "he wanted to get something from my friend and he said he was grateful for the help",
+"target_text": "ba mhian leis rud éigin ó mo chara a fháil agus dúirt sé go raibh sé buíoch"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L02U08",
+"expect": {
+"target_text": "Ní miste liom fanacht, ach bhí mé buíoch dá bhféadfá insint dom cé chomh fada is atá sé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0202L01U01",
+"set": {
+"target_text": "Ní raibh duine ar bith cinnte cad a bhí muid ag iarraidh a rá agus bhí sé sin neamhghnách dúinn ar fad",
+"known_text": "nobody was sure what we were trying to say and that was unusual for all of us"
+},
+"expect": {
+"known_text": "nobody was sure what we were trying to say and that was very strange for all of us",
+"target_text": "Ní raibh duine ar bith cinnte cad a bhí muid ag iarraidh a rá agus bhí sé sin an-neamhghnách dúinn ar fad"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0252L01B03",
+"set": {
+"target_text": "cathain a bheidh tú réidh le tosú ar labhairt a chleachtadh"
+},
+"expect": {
+"known_text": "when will you be ready to start practising speaking",
+"target_text": "cathain a bheidh tú réidh le tosú ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0252L01U02",
+"set": {
+"target_text": "níl a fhios agam cathain a bheidh tú réidh le tosú ar labhairt a chleachtadh"
+},
+"expect": {
+"known_text": "I don't know when you will be ready to start practising speaking",
+"target_text": "níl a fhios agam cathain a bheidh tú réidh le tosú ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0242L02U06",
+"set": {
+"target_text": "dá bhféadfá níos mó ama a chaitheamh ag caint bheadh sé sin go hiontach",
+"known_text": "if you could spend more time speaking that would be great"
+},
+"expect": {
+"known_text": "if you could spend more time practising speaking that would be great",
+"target_text": "dá bhféadfá níos mó ama a chaitheamh ag cleachtadh labhartha bheadh sé sin go hiontach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U01",
+"set": {
+"target_text": "ba chóir duit dóthain ama a chaitheamh ag caint",
+"known_text": "you should spend enough time speaking"
+},
+"expect": {
+"known_text": "you should spend enough time practising speaking",
+"target_text": "ba chóir duit dóthain ama a chaitheamh ag cleachtadh labhartha"
+}
+}
+]
+}

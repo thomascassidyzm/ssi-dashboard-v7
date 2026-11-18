@@ -1,0 +1,873 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 57,
+   "expect": {
+    "known_text": "I can't remember how to say what I wanted to say.",
+    "target_text": "Ik kin my net heuge hoe't ik sizze moat wat ik sizze woe."
+   },
+   "set": {
+    "known_text": "I don't know any more how to say what I wanted to say.",
+    "target_text": "Ik wit net mear hoe't ik sizze moat wat ik sizze woe."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0057L01",
+   "expect": {
+    "known_text": "I can't remember",
+    "target_text": "ik kin my net heuge"
+   },
+   "set": {
+    "known_text": "I don't know any more",
+    "target_text": "ik wit net mear",
+    "components": [
+     {
+      "known": "I know",
+      "target": "ik wit"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     },
+     {
+      "known": "any more",
+      "target": "mear"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01C01",
+   "expect": {
+    "known_text": "I can",
+    "target_text": "ik kin"
+   },
+   "set": {
+    "known_text": "I know",
+    "target_text": "ik wit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01C03",
+   "expect": {
+    "known_text": "to recall",
+    "target_text": "heuge"
+   },
+   "set": {
+    "known_text": "any more",
+    "target_text": "mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B01",
+   "expect": {
+    "known_text": "I can't remember how to answer",
+    "target_text": "ik kin my net heuge hoe't ik antwurdzje soe"
+   },
+   "set": {
+    "known_text": "I don't know how to answer any more",
+    "target_text": "ik wit net mear hoe't ik antwurdzje soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B02",
+   "expect": {
+    "known_text": "I can't remember what the answer is",
+    "target_text": "ik kin my net heuge wat it antwurd is"
+   },
+   "set": {
+    "known_text": "I don't know what the answer is any more",
+    "target_text": "ik wit net mear wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B03",
+   "expect": {
+    "known_text": "I can't remember how long I've been learning",
+    "target_text": "ik kin my net heuge hoe lang ik al lear"
+   },
+   "set": {
+    "known_text": "I don't know how long I've been learning any more",
+    "target_text": "ik wit net mear hoe lang ik al lear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B04",
+   "expect": {
+    "known_text": "I'm tired and I can't remember",
+    "target_text": "ik bin wurch en ik kin my net heuge"
+   },
+   "set": {
+    "known_text": "I'm tired and I don't know any more",
+    "target_text": "ik bin wurch en ik wit it net mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U01",
+   "expect": {
+    "known_text": "I'm a little tired this morning and I can't remember how to answer",
+    "target_text": "ik bin fan 'e moarn in bytsje wurch en ik kin my net heuge hoe't ik antwurdzje soe"
+   },
+   "set": {
+    "known_text": "I'm a little tired this morning and I don't know how to answer any more",
+    "target_text": "ik bin fan 'e moarn in bytsje wurch en ik wit net mear hoe't ik antwurdzje soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U02",
+   "expect": {
+    "known_text": "it's like this I can't remember what the answer is",
+    "target_text": "it sit sa, ik kin my net heuge wat it antwurd is"
+   },
+   "set": {
+    "known_text": "it's like this I don't know what the answer is any more",
+    "target_text": "it sit sa, ik wit net mear wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U03",
+   "expect": {
+    "known_text": "I'm trying to learn but I can't remember how to say what I mean",
+    "target_text": "ik besykje te learen mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel"
+   },
+   "set": {
+    "known_text": "I'm trying to learn but I don't know how to say what I mean any more",
+    "target_text": "ik besykje te learen mar ik wit net mear hoe't ik sizze moat wat ik bedoel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U04",
+   "expect": {
+    "known_text": "I can't remember how long I've been learning Frisian",
+    "target_text": "ik kin my net heuge hoe lang ik al Frysk lear"
+   },
+   "set": {
+    "known_text": "I don't know how long I've been learning Frisian any more",
+    "target_text": "ik wit net mear hoe lang ik al Frysk lear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U05",
+   "expect": {
+    "known_text": "I don't need to know everything but I can't remember what the answer is",
+    "target_text": "ik hoech net alles te witten mar ik kin my net heuge wat it antwurd is"
+   },
+   "set": {
+    "known_text": "I don't need to know everything but I don't know what the answer is any more",
+    "target_text": "ik hoech net alles te witten mar ik wit net mear wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U06",
+   "expect": {
+    "known_text": "I can't remember how to answer because I'm a little tired",
+    "target_text": "ik kin my net heuge hoe't ik antwurdzje soe om't ik in bytsje wurch bin"
+   },
+   "set": {
+    "known_text": "I don't know how to answer any more because I'm a little tired",
+    "target_text": "ik wit net mear hoe't ik antwurdzje soe om't ik in bytsje wurch bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U07",
+   "expect": {
+    "known_text": "I'd like to be able to speak Frisian but I can't remember how to say what I mean",
+    "target_text": "ik wol graach Frysk prate mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel"
+   },
+   "set": {
+    "known_text": "I'd like to be able to speak Frisian but I don't know how to say what I mean any more",
+    "target_text": "ik wol graach Frysk prate mar ik wit net mear hoe't ik sizze moat wat ik bedoel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L02U07",
+   "expect": {
+    "known_text": "I can't remember how to say what I wanted to say",
+    "target_text": "ik kin my net heuge hoe't ik sizze moat wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "I don't know how to say what I wanted to say any more",
+    "target_text": "ik wit net mear hoe't ik sizze moat wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L03B01",
+   "expect": {
+    "known_text": "I can't remember what I need to do",
+    "target_text": "ik kin my net heuge wat ik dwaan moat"
+   },
+   "set": {
+    "known_text": "I don't know what I need to do any more",
+    "target_text": "ik wit net mear wat ik dwaan moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L03U01",
+   "expect": {
+    "known_text": "I can't remember what I need to do when I didn't sleep very well",
+    "target_text": "ik kin my net heuge wat ik dwaan moat as ik net goed slept haw"
+   },
+   "set": {
+    "known_text": "I don't know what I need to do any more when I didn't sleep very well",
+    "target_text": "ik wit net mear wat ik dwaan moat as ik net goed slept haw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L04U01",
+   "expect": {
+    "known_text": "I can't remember how I do that",
+    "target_text": "ik kin my net heuge hoe't ik dat doch"
+   },
+   "set": {
+    "known_text": "I don't know how I do that any more",
+    "target_text": "ik wit net mear hoe't ik dat doch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U06",
+   "expect": {
+    "known_text": "I can't remember and I don't know yet what the answer is",
+    "target_text": "ik kin my net heuge en ik wit noch net wat it antwurd is"
+   },
+   "set": {
+    "known_text": "I don't know any more and I don't know yet what the answer is",
+    "target_text": "ik wit it net mear en ik wit noch net wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0063L01B03",
+   "expect": {
+    "known_text": "I can't remember, are you sure?",
+    "target_text": "ik kin my net heuge, bistû der wis fan?"
+   },
+   "set": {
+    "known_text": "I don't know any more, are you sure?",
+    "target_text": "ik wit it net mear, bistû der wis fan?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U02",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say but it is fun",
+    "target_text": "ik kin my net heuge wat ik sizze woe mar it is wol moai om te dwaan"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more but it is fun",
+    "target_text": "ik wit net mear wat ik sizze woe mar it is wol moai om te dwaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0066L02U06",
+   "expect": {
+    "known_text": "I'm trying to find the answer but I can't remember",
+    "target_text": "ik besykje om it antwurd te finen mar ik kin my net heuge"
+   },
+   "set": {
+    "known_text": "I'm trying to find the answer but I don't know any more",
+    "target_text": "ik besykje om it antwurd te finen mar ik wit it net mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0070L03U07",
+   "expect": {
+    "known_text": "I can't remember where it was",
+    "target_text": "ik kin my net heuge wêr't it wie"
+   },
+   "set": {
+    "known_text": "I don't know where it was any more",
+    "target_text": "ik wit net mear wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0082L03U04",
+   "expect": {
+    "known_text": "I can't remember why not",
+    "target_text": "ik kin my net heuge wêrom net"
+   },
+   "set": {
+    "known_text": "I don't know why not any more",
+    "target_text": "ik wit net mear wêrom net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0083L01U01",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say but I agree with you",
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik bin it iens mei dy"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more but I agree with you",
+    "target_text": "ik wit net mear wat ik sizze woe mar ik bin it iens mei dy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L01U03",
+   "expect": {
+    "known_text": "I don't agree but I can't remember what I wanted to say",
+    "target_text": "ik bin it net iens mar ik kin my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "I don't agree but I don't know what I wanted to say any more",
+    "target_text": "ik bin it net iens mar ik wit net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L02B01",
+   "expect": {
+    "known_text": "I can't remember what he said",
+    "target_text": "ik kin my net heuge wat er sein hat"
+   },
+   "set": {
+    "known_text": "I don't know what he said any more",
+    "target_text": "ik wit net mear wat er sein hat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L03U05",
+   "expect": {
+    "known_text": "I wanted to write a letter about my friend but I can't remember what I wanted to say",
+    "target_text": "ik woe in brief oer myn freon skriuwe mar ik kin my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "I wanted to write a letter about my friend but I don't know what I wanted to say any more",
+    "target_text": "ik woe in brief oer myn freon skriuwe mar ik wit net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0085L02U03",
+   "expect": {
+    "known_text": "I can't remember his name and I don't know those people",
+    "target_text": "ik kin my syn namme net heuge en ik ken dy minsken net"
+   },
+   "set": {
+    "known_text": "I don't know his name any more and I don't know those people",
+    "target_text": "ik wit syn namme net mear en ik ken dy minsken net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0086L01U01",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say unfortunately",
+    "target_text": "spitigernôch kin ik my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more unfortunately",
+    "target_text": "spitigernôch wit ik net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01U03",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say and it's difficult",
+    "target_text": "ik kin my net heuge wat ik sizze woe en it is dreech"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more and it's difficult",
+    "target_text": "ik wit net mear wat ik sizze woe en it is dreech"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0096L02U05",
+   "expect": {
+    "known_text": "I need more time, I can't remember what I wanted to say",
+    "target_text": "ik haw mear tiid nedich, ik kin my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "I need more time, I don't know what I wanted to say any more",
+    "target_text": "ik haw mear tiid nedich, ik wit net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0105L01U06",
+   "expect": {
+    "known_text": "that is why I can't remember what I wanted to say",
+    "target_text": "dêrom kin ik my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "that is why I don't know what I wanted to say any more",
+    "target_text": "dêrom wit ik net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0110L01U01",
+   "expect": {
+    "known_text": "I can't remember her name but we're friends",
+    "target_text": "ik kin my har namme net heuge mar wy binne freonen"
+   },
+   "set": {
+    "known_text": "I don't know her name any more but we're friends",
+    "target_text": "ik wit har namme net mear mar wy binne freonen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0112L01U02",
+   "expect": {
+    "known_text": "that was very interesting, but I can't remember what I wanted to say",
+    "target_text": "dat wie hiel nijsgjirrich, mar ik kin my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "that was very interesting, but I don't know what I wanted to say any more",
+    "target_text": "dat wie hiel nijsgjirrich, mar ik wit net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0117L04U04",
+   "expect": {
+    "known_text": "I can't remember that we talked",
+    "target_text": "ik kin my net heuge dat wy inoar sprutsen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0122L01U02",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say but it's getting easier",
+    "target_text": "ik kin my net heuge wat ik sizze woe mar it begjint makliker te wurden"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more but it's getting easier",
+    "target_text": "ik wit net mear wat ik sizze woe mar it begjint makliker te wurden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0122L02U07",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say but I'm happy with what you said",
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik bin bliid mei watstû sein hast"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more but I'm happy with what you said",
+    "target_text": "ik wit net mear wat ik sizze woe mar ik bin bliid mei watstû sein hast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0127L01U06",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say but that isn't important",
+    "target_text": "ik kin my net heuge wat ik sizze woe mar dat is net wichtich"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more but that isn't important",
+    "target_text": "ik wit net mear wat ik sizze woe mar dat is net wichtich"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0127L02B03",
+   "expect": {
+    "known_text": "I can't remember why I wanted to see you",
+    "target_text": "ik kin my net heuge wêrom't ik dy sjen woe"
+   },
+   "set": {
+    "known_text": "I don't know why I wanted to see you any more",
+    "target_text": "ik wit net mear wêrom't ik dy sjen woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0131L03U05",
+   "expect": {
+    "known_text": "there are too many ideas going around in my head and I can't remember what I wanted to say",
+    "target_text": "der geane tefolle ideeën om yn myn holle en ik kin my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "there are too many ideas going around in my head and I don't know what I wanted to say any more",
+    "target_text": "der geane tefolle ideeën om yn myn holle en ik wit net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L02B03",
+   "expect": {
+    "known_text": "I can't remember but of course you can ask her",
+    "target_text": "ik kin my net heuge, mar fansels kinstû har freegje"
+   },
+   "set": {
+    "known_text": "I don't know any more but of course you can ask her",
+    "target_text": "ik wit it net mear, mar fansels kinstû har freegje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L03U05",
+   "expect": {
+    "known_text": "I can't remember her name but she's my friend",
+    "target_text": "ik kin my har namme net heuge, mar se is myn freon"
+   },
+   "set": {
+    "known_text": "I don't know her name any more, but she's my friend",
+    "target_text": "ik wit har namme net mear, mar se is myn freon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0138L02U03",
+   "expect": {
+    "known_text": "I can't remember where my friend wanted to meet us",
+    "target_text": "ik kin my net heuge wêr't myn freon ús moetsje woe"
+   },
+   "set": {
+    "known_text": "I don't know where my friend wanted to meet us any more",
+    "target_text": "ik wit net mear wêr't myn freon ús moetsje woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0139L01U02",
+   "expect": {
+    "known_text": "I'm sorry I can't remember what I wanted to say",
+    "target_text": "it spyt my, ik kin my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "I'm sorry I don't know what I wanted to say any more",
+    "target_text": "it spyt my, ik wit net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0148L01U03",
+   "expect": {
+    "known_text": "he wasn't very patient and I couldn't remember what I wanted to say",
+    "target_text": "hy wie net hiel geduldich en ik koe my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "he wasn't very patient and I didn't know what I wanted to say any more",
+    "target_text": "hy wie net hiel geduldich en ik wist net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L01U03",
+   "expect": {
+    "known_text": "I can't remember your name",
+    "target_text": "ik kin my dyn namme net heuge"
+   },
+   "set": {
+    "known_text": "I don't know your name any more",
+    "target_text": "ik wit dyn namme net mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L03U02",
+   "expect": {
+    "known_text": "I can't remember what your name is because I was tired",
+    "target_text": "ik kin my net heuge wat dyn namme is om't ik wurch wie"
+   },
+   "set": {
+    "known_text": "I don't know what your name is any more because I was tired",
+    "target_text": "ik wit net mear wat dyn namme is om't ik wurch wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0151L02U05",
+   "expect": {
+    "known_text": "I can't remember what I was hoping",
+    "target_text": "ik kin my net heuge wat ik hope"
+   },
+   "set": {
+    "known_text": "I don't know what I was hoping any more",
+    "target_text": "ik wit net mear wat ik hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L03U03",
+   "expect": {
+    "known_text": "I can't remember what you wanted",
+    "target_text": "ik kin my net heuge watstû woest"
+   },
+   "set": {
+    "known_text": "I don't know what you wanted any more",
+    "target_text": "ik wit net mear watstû woest"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0158L03U05",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say, let's talk about something else",
+    "target_text": "ik kin my net heuge wat ik sizze woe, litte wy oer wat oars prate"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more, let's talk about something else",
+    "target_text": "ik wit net mear wat ik sizze woe, litte wy oer wat oars prate"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U02",
+   "expect": {
+    "known_text": "I can't remember but I'll ask him where it was",
+    "target_text": "ik kin my net heuge mar ik sil him freegje wêr't it wie"
+   },
+   "set": {
+    "known_text": "I don't know any more but I'll ask him where it was",
+    "target_text": "ik wit it net mear mar ik sil him freegje wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L02U02",
+   "expect": {
+    "known_text": "I can't remember where she wants to go",
+    "target_text": "ik kin my net heuge wêr't se hinne gean wol"
+   },
+   "set": {
+    "known_text": "I don't know where she wants to go any more",
+    "target_text": "ik wit net mear wêr't se hinne gean wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0182L01U02",
+   "expect": {
+    "known_text": "I can't remember where my keys are",
+    "target_text": "ik kin my net heuge wêr't myn kaaien binne"
+   },
+   "set": {
+    "known_text": "I don't know where my keys are any more",
+    "target_text": "ik wit net mear wêr't myn kaaien binne"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0182L02U03",
+   "expect": {
+    "known_text": "I can't remember where it was, have you seen my keys anywhere?",
+    "target_text": "ik kin my net heuge wêr't it wie, hastû myn kaaien earne sjoen?"
+   },
+   "set": {
+    "known_text": "I don't know where it was any more, have you seen my keys anywhere?",
+    "target_text": "ik wit net mear wêr't it wie, hastû myn kaaien earne sjoen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0183L01B01",
+   "expect": {
+    "known_text": "I'm afraid I can't remember",
+    "target_text": "ik kin my spitigernôch net heuge"
+   },
+   "set": {
+    "known_text": "I'm afraid I don't know any more",
+    "target_text": "ik wit it spitigernôch net mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0184L03U03",
+   "expect": {
+    "known_text": "yes, I saw them, but I can't remember where it was",
+    "target_text": "ja, ik haw se sjoen, mar ik kin my net heuge wêr't it wie"
+   },
+   "set": {
+    "known_text": "yes, I saw them, but I don't know where it was any more",
+    "target_text": "ja, ik haw se sjoen, mar ik wit net mear wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0191L01U04",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say but I don't mind at all",
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik fyn it hielendal net slim"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more but I don't mind at all",
+    "target_text": "ik wit net mear wat ik sizze woe mar ik fyn it hielendal net slim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0201L02U07",
+   "expect": {
+    "known_text": "I can't remember what was going to happen",
+    "target_text": "ik kin my net heuge wat der barre soe"
+   },
+   "set": {
+    "known_text": "I don't know what was going to happen any more",
+    "target_text": "ik wit net mear wat der barre soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0202L03B03",
+   "expect": {
+    "known_text": "I can't remember how he had to answer",
+    "target_text": "ik kin my net heuge hoe't er antwurdzje moast"
+   },
+   "set": {
+    "known_text": "I don't know how he had to answer any more",
+    "target_text": "ik wit net mear hoe't er antwurdzje moast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L01U01",
+   "expect": {
+    "known_text": "I can't remember the word",
+    "target_text": "ik kin my it wurd net heuge"
+   },
+   "set": {
+    "known_text": "I don't know the word any more",
+    "target_text": "ik wit it wurd net mear"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0205L03U02",
+   "expect": {
+    "known_text": "I can't remember a word that I wanted to say",
+    "target_text": "ik kin my in wurd dat ik sizze woe net heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0206L01U02",
+   "expect": {
+    "known_text": "I can't remember what I wanted to say but I like that you helped me",
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik fyn it moai datstû my holpen hast"
+   },
+   "set": {
+    "known_text": "I don't know what I wanted to say any more but I like that you helped me",
+    "target_text": "ik wit net mear wat ik sizze woe mar ik fyn it moai datstû my holpen hast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0207L02U01",
+   "expect": {
+    "known_text": "I can't remember what you needed to do",
+    "target_text": "ik kin my net heuge watstû dwaan moast"
+   },
+   "set": {
+    "known_text": "I don't know what you needed to do any more",
+    "target_text": "ik wit net mear watstû dwaan moast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0234L02U03",
+   "expect": {
+    "known_text": "I met someone but I can't remember her name",
+    "target_text": "ik haw ien moete mar ik kin my har namme net heuge"
+   },
+   "set": {
+    "known_text": "I met someone but I don't know her name any more",
+    "target_text": "ik haw ien moete mar ik wit har namme net mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0262L01U01",
+   "expect": {
+    "known_text": "I can't remember, who was that man yesterday?",
+    "target_text": "ik kin my net heuge, wa wie dy man juster?"
+   },
+   "set": {
+    "known_text": "I don't know any more, who was that man yesterday?",
+    "target_text": "ik wit it net mear, wa wie dy man juster?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0266L03U03",
+   "expect": {
+    "known_text": "I can't remember what he said but he was an old friend",
+    "target_text": "ik kin my net heuge wat er sein hat mar hy wie in âlde freon"
+   },
+   "set": {
+    "known_text": "I don't know what he said any more but he was an old friend",
+    "target_text": "ik wit net mear wat er sein hat mar hy wie in âlde freon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02U04",
+   "expect": {
+    "known_text": "she sent me two emails but I can't remember what I wanted to say",
+    "target_text": "sy hat my twa e-mails stjoerd mar ik kin my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "she sent me two emails but I don't know what I wanted to say any more",
+    "target_text": "sy hat my twa e-mails stjoerd mar ik wit net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0270L01B03",
+   "expect": {
+    "known_text": "because I'm worried I can't remember",
+    "target_text": "om't ik der oer ynsit, kin ik my net heuge"
+   },
+   "set": {
+    "known_text": "because I'm worried I don't know any more",
+    "target_text": "om't ik der oer ynsit, wit ik it net mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0270L01U03",
+   "expect": {
+    "known_text": "because I'm worried I can't remember what I wanted to say",
+    "target_text": "om't ik der oer ynsit, kin ik my net heuge wat ik sizze woe"
+   },
+   "set": {
+    "known_text": "because I'm worried I don't know what I wanted to say any more",
+    "target_text": "om't ik der oer ynsit, wit ik net mear wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0077L02U05",
+   "expect": {
+    "known_text": "I'm surprised at how quickly I can remember the whole sentence",
+    "target_text": "ik bin fernuvere oer hoe fluch ik de hiele sin noch wit"
+   },
+   "set": {
+    "known_text": "I'm surprised at how quickly I still know the whole sentence"
+   }
+  }
+ ]
+}

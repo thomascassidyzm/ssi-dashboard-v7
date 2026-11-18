@@ -16,9 +16,17 @@ function groupByVoice(ids, rows) {
     const r = byId.get(id);
     if (!r) { missing.push(id); continue; }
     const v = r.voice_id || '(none)';
-    (voices[v] ||= []).push({ id, origin: r.origin, role: r.role, course: r.course_code, language: r.language, text: r.text, s3_key: r.s3_key, created_at: r.created_at });
+    (voices[v] ||= []).push({ id, origin: r.origin, role: r.role, course: r.course_code, language: r.language, text: r.text, s3_key: r.s3_key, duration_ms: r.duration_ms, created_at: r.created_at });
   }
   return { voices, missing };
+}
+
+/** Mean characters per second over the clips that carry text and a duration (job #563: compare new clips with the old ones of the same voice). */
+function paceNote(list) {
+  const ok = list.filter((c) => c.text && c.duration_ms > 0)
+  if (!ok.length) return ''
+  const cps = ok.map((c) => [...c.text].length / (c.duration_ms / 1000))
+  return `| cps mean ${(cps.reduce((a, b) => a + b, 0) / cps.length).toFixed(2)} min ${Math.min(...cps).toFixed(2)} max ${Math.max(...cps).toFixed(2)} (n=${ok.length})`
 }
 
 async function main() {
@@ -32,7 +40,7 @@ async function main() {
   let rows;
   try { rows = await clipsById(pg, ids); } finally { await pg.end(); }
   const res = groupByVoice(ids, rows);
-  for (const [v, list] of Object.entries(res.voices)) console.log(v, list.length, 'origins:', [...new Set(list.map((c) => c.origin))].join(','));
+  for (const [v, list] of Object.entries(res.voices)) console.log(v, list.length, 'origins:', [...new Set(list.map((c) => c.origin))].join(','), paceNote(list));
   if (res.missing.length) console.log('missing rows:', res.missing.length);
   if (outPath) fs.writeFileSync(outPath, JSON.stringify(res, null, 1));
 }

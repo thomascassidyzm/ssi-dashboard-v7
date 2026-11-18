@@ -107,7 +107,9 @@ const { buildExchangeWeights, norm } = require('./pod1-percall-recast.cjs')
  * the other, so both prefixes come off before any comparison — stripping only
  * `xai_` made the repair tool's gate call 155 correct Spanish clips off-cast.
  */
-const bareVoice = (v) => norm(String(v || '')).replace(/^(xai_|azure_)/, '')
+// Every provider prefix (job #799): clips store "cartesia_<uuid>" while pod casts often hold the bare uuid, and stripping only
+// xai_/azure_ made every Cartesia clip read as off-cast ("cartesia_0e21… is not in the pod's target cast [0e21…]").
+const bareVoice = (v) => norm(String(v || '')).replace(/^(xai_|azure_|cartesia_|elevenlabs_|google_)/, '')
 
 /**
  * A composite clip stores its voice as `comp:<chunk voice>+<gloss voice>`.

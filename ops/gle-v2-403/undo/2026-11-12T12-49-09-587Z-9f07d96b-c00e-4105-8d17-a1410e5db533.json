@@ -1,0 +1,42 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "9f07d96b-c00e-4105-8d17-a1410e5db533",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:49:09.587Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-49-09-587Z-9f07d96b-c00e-4105-8d17-a1410e5db533.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0077L01U01",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I don't know",
+            "legoId": "S0060L01",
+            "target": "níl a fhios agam",
+            "isGhost": false
+          },
+          {
+            "known": "why",
+            "legoId": "S0067L01",
+            "target": " cén fáth",
+            "isGhost": false
+          },
+          {
+            "known": "but",
+            "legoId": "S0019L01",
+            "target": " ach",
+            "isGhost": false
+          },
+          {
+            "known": "I am surprised",
+            "legoId": "S0077L01",
+            "target": " tá ionadh orm",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 220
+      }
+    }
+  ]
+}

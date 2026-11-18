@@ -1,0 +1,189 @@
+{
+ "family": "wordorder",
+ "event_id": "6c844e03-f5a5-45a2-897d-37e7b500ddf9",
+ "undo_file_on_popty": "2026-11-17T11-44-04-473Z-6c844e03-f5a5-45a2-897d-37e7b500ddf9.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0072L01B01",
+  "S0106L01B03",
+  "S0122L01B01",
+  "S0152L01U02",
+  "S0222L01B04",
+  "S0223L01U02",
+  "S0224L02B01",
+  "S0224L02B02",
+  "S0225L02U01",
+  "S0246L01B03",
+  "S0285L01U01",
+  "S0222L01B03"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0222L01U02",
+   "set": {
+    "target_text": "ik ha net it gefoel dat hy besiket my te fertellen dat dat in goed idee is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0222L01U01",
+   "set": {
+    "target_text": "ik ha it gefoel dat hy besiket my te fertellen dat it net sa is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0222L01B03",
+   "set": {
+    "target_text": "ik ha it gefoel dat hy besiket my te fertellen",
+    "target1_audio_id": "f449496e-51a6-4744-b76a-ea788eb9fd49"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0517L01U01",
+   "set": {
+    "target_text": "hat dyn freon sein sy giene fuort nei it iten?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L02B04",
+   "set": {
+    "target_text": "tinkstû sy kamen beide allinne?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0513L01U04",
+   "set": {
+    "target_text": "seine se it docht it measte sear nei it iten?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0503L02U05",
+   "set": {
+    "target_text": "ik tink, dy is fan my"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0352L01U01",
+   "set": {
+    "known_text": "she said even if he wanted to he couldn't",
+    "target_text": "sy sei sels as er woe koe er net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0285L01U02",
+   "set": {
+    "target_text": "ik leau sy praat Frysk better as de lêste kear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0285L01U01",
+   "set": {
+    "target_text": "tinkstû sy praat Frysk?",
+    "target1_audio_id": "ef114a52-a66e-4588-88a7-b3361333ba3e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0246L01B03",
+   "set": {
+    "target_text": "tinkstû se hie it te drok?",
+    "target1_audio_id": "241d6e4b-faa5-4885-a792-9fb4600a99a0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U01",
+   "set": {
+    "target_text": "tinkstû hy soe dy in antwurd jaan?",
+    "target1_audio_id": "edd9b159-b8df-4441-8807-7737115d17f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0224L02U03",
+   "set": {
+    "target_text": "sy sizze hy is krekt begûn te learen en ik bin fernuvere"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0224L02B02",
+   "set": {
+    "target_text": "ik leau hy is krekt begûn te learen",
+    "target1_audio_id": "8da637b3-8654-4f1d-bdab-cdea5af8ca14"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0224L02B01",
+   "set": {
+    "target_text": "sy sizze hy is krekt begûn te learen",
+    "target1_audio_id": "54f873ef-a3a4-48d9-8a07-1e11da207ed1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01U02",
+   "set": {
+    "target_text": "tinkstû hy sil dy freegje oft it wier is?",
+    "target1_audio_id": "17d44c54-9c88-44fc-8fd4-3c560279487a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0222L01B04",
+   "set": {
+    "target_text": "ik tink hy besiket my te fertellen",
+    "target1_audio_id": "67c88514-c364-464b-b9d6-47dd611a48f0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L01U02",
+   "set": {
+    "target_text": "ik tink ik hie it oars dien mei myn freonen",
+    "target1_audio_id": "ed42f625-ab73-47f1-87f9-0ba40fb5bf58"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0122L01B01",
+   "set": {
+    "target_text": "ik tink it begjint makliker te wurden",
+    "target1_audio_id": "9c72b57b-b428-4b99-acd5-5f6eddf9521c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L01U04",
+   "set": {
+    "target_text": "ik wit wy hoege net út te lizzen wat wy dogge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L01B03",
+   "set": {
+    "target_text": "ik tink wy hoege net te praten",
+    "target1_audio_id": "548ee37e-868c-4219-a831-db6961152ae6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01B01",
+   "set": {
+    "target_text": "ik tink hy wol",
+    "target1_audio_id": "e7870c25-a5c4-40a5-8de2-a84b4174c8cc"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5184 @@
+{
+"ops": [
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 139,
+"lego_index": 2,
+"known_text": "to leave",
+"target_text": "imeacht",
+"type": "A",
+"is_new": true,
+"status": "draft"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 25,
+"set": {
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul?"
+},
+"expect": {
+"known_text": "are you going to help me before I have to go?",
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 26,
+"set": {
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le dul"
+},
+"expect": {
+"known_text": "I like feeling as if I'm nearly ready to go",
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le himeacht"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 30,
+"set": {
+"known_text": "I wanted to ask you a question about something yesterday",
+"target_text": "ba mhian liom ceist a chur ort inné faoi rud éigin"
+},
+"expect": {
+"known_text": "I wanted to ask you something yesterday",
+"target_text": "ba mhian liom rud éigin a fhiafraí díot inné"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 46,
+"set": {
+"target_text": "ach ní bhím buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "but I don't worry about making mistakes",
+"target_text": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 93,
+"set": {
+"target_text": "Tá sé in am dul anois"
+},
+"expect": {
+"known_text": "it's time to go now",
+"target_text": "Tá sé in am imeacht anois"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 97,
+"set": {
+"target_text": "Tá, tá mé réidh le dul chomh luath agus is mian leat"
+},
+"expect": {
+"known_text": "yes I'm ready to go as soon as you want",
+"target_text": "Tá, tá mé réidh le himeacht chomh luath agus is mian leat"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 99,
+"set": {
+"target_text": "ba cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair"
+},
+"expect": {
+"known_text": "you should ask yourself why it's not working",
+"target_text": "ba cheart duit tú féin a cheistiú cén fáth nach bhfuil sé ag obair"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 111,
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "when we learn something new it changes our brain",
+"target_text": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 119,
+"set": {
+"known_text": "can I ask you about something before you leave?",
+"target_text": "an féidir liom ceist a chur ort faoi rud éigin sula n-imíonn tú?"
+},
+"expect": {
+"known_text": "can I ask you something before you leave?",
+"target_text": "an féidir liom rud éigin a fhiafraí díot sula n-imíonn tú?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 142,
+"set": {
+"target_text": "Tá sé sin an-chineálta uait agus tá mé buíoch díot as cabhrú"
+},
+"expect": {
+"known_text": "that's very kind of you and I'm grateful to you for helping",
+"target_text": "Tá sé sin an-deas uait agus tá mé buíoch díot as cabhrú"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 147,
+"set": {
+"target_text": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+},
+"expect": {
+"known_text": "she was very kind when she saw me feeling nervous",
+"target_text": "bhí sí an-deas nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 249,
+"set": {
+"target_text": "Is mian liom go gcabhrófá liom sula rachaidh tú"
+},
+"expect": {
+"known_text": "I want you to help me before you go",
+"target_text": "Is mian liom go gcabhrófá liom sula n-imíonn tú"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 270,
+"set": {
+"target_text": "mar tá mé buartha go mbeidh mé déanach"
+},
+"expect": {
+"known_text": "because I'm worried that I'm going to be late",
+"target_text": "mar tá imní orm go mbeidh mé déanach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 343,
+"set": {
+"target_text": "a dúirt go bhfuil sí buartha faoin ngeilleagar"
+},
+"expect": {
+"known_text": "who said that she's worried about the economy",
+"target_text": "a dúirt go bhfuil imní uirthi faoin ngeilleagar"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 353,
+"set": {
+"target_text": "ba ghá di rith timpeall na páirce"
+},
+"expect": {
+"known_text": "she needed to run around the field",
+"target_text": "bhí uirthi rith timpeall na páirce"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 354,
+"set": {
+"target_text": "níor ghá dó cuma fheargach a bheith air"
+},
+"expect": {
+"known_text": "he didn't need to appear angry",
+"target_text": "Ní raibh air a bheith feargach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 355,
+"set": {
+"target_text": "an raibh gá di labhairt leis an mbean sin a bhfuil aithne agat uirthi?"
+},
+"expect": {
+"known_text": "Did she need to talk to that woman you know?",
+"target_text": "an raibh uirthi labhairt leis an mbean sin a bhfuil aithne agat uirthi?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 408,
+"set": {
+"target_text": "Ba cheart, sin an bealach is fearr chun teaghlach sona a dhéanamh"
+},
+"expect": {
+"known_text": "yes that's the best way to make a happy family",
+"target_text": "Ba cheart, sin an bealach is fearr chun clann shona a dhéanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 409,
+"set": {
+"target_text": "Níor cheart, is cuma cad a dhéanann muid"
+},
+"expect": {
+"known_text": "no it doesn't matter what we do",
+"target_text": "Níor cheart, is cuma cad a dhéanaimid"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 412,
+"set": {
+"target_text": "Ní fhéadfadh muid ligean dóibh gach rud a bhuachan"
+},
+"expect": {
+"known_text": "we couldn't allow them to win everything",
+"target_text": "Ní fhéadfaimis ligean dóibh gach rud a bhuachan"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 413,
+"set": {
+"target_text": "d'fhéadfadh muid titim dá rachadh muid ró-ghar don imeall"
+},
+"expect": {
+"known_text": "we could fall if we go too close to the edge",
+"target_text": "d'fhéadfaimis titim dá rachaimis ró-ghar don imeall"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 414,
+"set": {
+"target_text": "an bhféadfadh muid buidéal fíona deirg a fháil le do thoil?"
+},
+"expect": {
+"known_text": "could we have a bottle of red wine please?",
+"target_text": "an bhféadfaimis buidéal fíona deirg a fháil le do thoil?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 470,
+"set": {
+"target_text": "cé chomh hard is mian leat dreapadh sula stopann muid?"
+},
+"expect": {
+"known_text": "how high do you want to climb before we stop?",
+"target_text": "cé chomh hard is mian leat dreapadh sula stopaimid?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 520,
+"set": {
+"target_text": "d'fhéadfadh sé a bheith tarlaithe don teaghlach ar fad"
+},
+"expect": {
+"known_text": "it might have happened to the whole family",
+"target_text": "d'fhéadfadh sé a bheith tarlaithe don chlann ar fad"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 527,
+"set": {
+"target_text": "tabhair buille faoi thuairim faoi cé a d'inis an scéal greannmhar sin dom"
+},
+"expect": {
+"known_text": "guess who told me that funny story",
+"target_text": "tomhais cé a d'inis an scéal greannmhar sin dom"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 568,
+"set": {
+"target_text": "Tá mé ag súil le feabhas a fheiceáil an chéad uair eile a bhuailfidh muid le chéile"
+},
+"expect": {
+"known_text": "I'm expecting to see an improvement next time we meet",
+"target_text": "Tá mé ag súil le feabhas a fheiceáil an chéad uair eile a bhuailfimid le chéile"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 569,
+"set": {
+"target_text": "an bhfuil cinneadh déanta agat cé mhéad atá tú toilteanach a íoc?"
+},
+"expect": {
+"known_text": "have you decided how much you are willing to pay?",
+"target_text": "an bhfuil cinneadh déanta agat cé mhéad atá tú sásta a íoc?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 570,
+"set": {
+"target_text": "cé mhéad atá tú toilteanach a íoc ar do thicéad?"
+},
+"expect": {
+"known_text": "how much are you willing to pay for your ticket?",
+"target_text": "cé mhéad atá tú sásta a íoc ar do thicéad?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 614,
+"set": {
+"target_text": "Tá sé in aice leis an áit a bhfuil do theaghlach ina chónaí"
+},
+"expect": {
+"known_text": "it's near where your family live",
+"target_text": "Tá sé in aice leis an áit a bhfuil do chlann ina gcónaí"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0025L03",
+"set": {
+"target_text": "sula gcaithfidh mé dul",
+"components": [
+{
+"known": "before",
+"target": "sula"
+},
+{
+"known": "have to",
+"target": "gcaithfidh"
+},
+{
+"known": "I",
+"target": "mé"
+},
+{
+"known": "go",
+"target": "dul"
+}
+]
+},
+"expect": {
+"known_text": "before I have to go",
+"target_text": "sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0026L05",
+"set": {
+"target_text": "réidh le dul",
+"components": [
+{
+"known": "ready",
+"target": "réidh"
+},
+{
+"known": "to go",
+"target": "le dul"
+}
+]
+},
+"expect": {
+"known_text": "ready to go",
+"target_text": "réidh le himeacht"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0030L02",
+"set": {
+"known_text": "to ask you a question",
+"target_text": "ceist a chur ort",
+"type": "M",
+"components": [
+{
+"known": "a question",
+"target": "ceist"
+},
+{
+"known": "to put",
+"target": "a chur"
+},
+{
+"known": "on you",
+"target": "ort"
+}
+]
+},
+"expect": {
+"known_text": "to ask",
+"target_text": "a fhiafraí"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0030L03",
+"set": {
+"known_text": "about something",
+"target_text": "faoi rud éigin",
+"type": "M",
+"components": [
+{
+"known": "about",
+"target": "faoi"
+},
+{
+"known": "something",
+"target": "rud éigin"
+}
+]
+},
+"expect": {
+"known_text": "from you",
+"target_text": "díot"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0046L02",
+"set": {
+"target_text": "ní bhím buartha faoi",
+"components": [
+{
+"known": "I am not habitually",
+"target": "ní bhím"
+},
+{
+"known": "worried",
+"target": "buartha"
+},
+{
+"known": "about",
+"target": "faoi"
+}
+]
+},
+"expect": {
+"known_text": "I don't worry about",
+"target_text": "ní bhíonn imní orm faoi"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0093L02",
+"set": {
+"known_text": "to go",
+"target_text": "dul"
+},
+"expect": {
+"known_text": "to leave",
+"target_text": "imeacht"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0097L02",
+"set": {
+"known_text": "I am ready to go",
+"target_text": "tá mé réidh le dul",
+"components": [
+{
+"known": "I am",
+"target": "tá mé"
+},
+{
+"known": "ready",
+"target": "réidh"
+},
+{
+"known": "to",
+"target": "le"
+},
+{
+"known": "go",
+"target": "dul"
+}
+]
+},
+"expect": {
+"known_text": "I am ready to leave",
+"target_text": "tá mé réidh le himeacht"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0099L02",
+"set": {
+"target_text": "ceist a chur ort féin",
+"components": [
+{
+"known": "to ask a question",
+"target": "ceist a chur"
+},
+{
+"known": "yourself",
+"target": "ort féin"
+}
+]
+},
+"expect": {
+"known_text": "to ask yourself",
+"target_text": "tú féin a cheistiú"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0111L01",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid",
+"components": [
+{
+"known": "when",
+"target": "Nuair"
+},
+{
+"known": "we learn",
+"target": "a fhoghlaimíonn muid"
+}
+]
+},
+"expect": {
+"known_text": "when we learn",
+"target_text": "nuair a fhoghlaimímid"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0119L02",
+"set": {
+"known_text": "about something",
+"target_text": "faoi rud éigin",
+"components": [
+{
+"known": "about",
+"target": "faoi"
+},
+{
+"known": "something",
+"target": "rud éigin"
+}
+]
+},
+"expect": {
+"known_text": "something",
+"target_text": "rud éigin"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0119L03",
+"set": {
+"target_text": "ceist a chur ort",
+"components": [
+{
+"known": "a question",
+"target": "ceist"
+},
+{
+"known": "to put",
+"target": "a chur"
+},
+{
+"known": "on you",
+"target": "ort"
+}
+]
+},
+"expect": {
+"known_text": "to ask you",
+"target_text": "a fhiafraí díot"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0142L02",
+"set": {
+"target_text": "an-chineálta",
+"components": [
+{
+"known": "very",
+"target": "an-"
+},
+{
+"known": "kind",
+"target": "chineálta"
+}
+]
+},
+"expect": {
+"known_text": "very kind",
+"target_text": "an-deas"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0249L04",
+"set": {
+"target_text": "sula rachaidh tú",
+"components": [
+{
+"known": "before",
+"target": "sula"
+},
+{
+"known": "will go",
+"target": "rachaidh"
+},
+{
+"known": "you",
+"target": "tú"
+}
+]
+},
+"expect": {
+"known_text": "before you go",
+"target_text": "sula n-imíonn tú"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0270L02",
+"set": {
+"target_text": "tá mé buartha",
+"components": [
+{
+"known": "I am",
+"target": "tá mé"
+},
+{
+"known": "worried",
+"target": "buartha"
+}
+]
+},
+"expect": {
+"known_text": "I'm worried",
+"target_text": "tá imní orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03B01",
+"set": {
+"target_text": "sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "before I have to go",
+"target_text": "sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03B02",
+"set": {
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul?"
+},
+"expect": {
+"known_text": "are you going to help me before I have to go?",
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03B03",
+"set": {
+"target_text": "is mian liom labhairt leat sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I want to speak with you before I have to go",
+"target_text": "is mian liom labhairt leat sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03B04",
+"set": {
+"target_text": "ba mhaith liom labhairt leat sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to speak with you before I have to go",
+"target_text": "ba mhaith liom labhairt leat sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03C04",
+"set": {
+"target_text": "dul"
+},
+"expect": {
+"known_text": "go",
+"target_text": "imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U01",
+"set": {
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul?"
+},
+"expect": {
+"known_text": "are you going to help me before I have to go?",
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U02",
+"set": {
+"target_text": "is mian liom labhairt leat sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I want to speak with you before I have to go",
+"target_text": "is mian liom labhairt leat sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U03",
+"set": {
+"target_text": "ba mhaith liom labhairt leat sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to speak with you before I have to go",
+"target_text": "ba mhaith liom labhairt leat sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U04",
+"set": {
+"target_text": "is mian liom bualadh le daoine sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I want to meet people before I have to go",
+"target_text": "is mian liom bualadh le daoine sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U05",
+"set": {
+"target_text": "an bhfuil tú chun labhairt liom sula gcaithfidh mé dul?"
+},
+"expect": {
+"known_text": "are you going to speak with me before I have to go?",
+"target_text": "an bhfuil tú chun labhairt liom sula gcaithfidh mé imeacht?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U06",
+"set": {
+"target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to meet people who speak Irish before I have to go",
+"target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U07",
+"set": {
+"target_text": "tá mé chun labhairt leat sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'm going to speak with you before I have to go",
+"target_text": "tá mé chun labhairt leat sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U08",
+"set": {
+"target_text": "an bhfuil tú chun tosú ag caint sula gcaithfidh mé dul?"
+},
+"expect": {
+"known_text": "are you going to start talking before I have to go?",
+"target_text": "an bhfuil tú chun tosú ag caint sula gcaithfidh mé imeacht?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05B01",
+"set": {
+"target_text": "réidh le dul"
+},
+"expect": {
+"known_text": "ready to go",
+"target_text": "réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05B02",
+"set": {
+"target_text": "beagnach réidh le dul"
+},
+"expect": {
+"known_text": "nearly ready to go",
+"target_text": "beagnach réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05B03",
+"set": {
+"target_text": "tá mé réidh le dul anois"
+},
+"expect": {
+"known_text": "I'm ready to go now",
+"target_text": "tá mé réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05B04",
+"set": {
+"target_text": "is maith liom a bheith réidh le dul"
+},
+"expect": {
+"known_text": "I like being ready to go",
+"target_text": "is maith liom a bheith réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05C02",
+"set": {
+"known_text": "to go",
+"target_text": "le dul"
+},
+"expect": {
+"known_text": "for leaving",
+"target_text": "le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05U01",
+"set": {
+"target_text": "tá mé beagnach réidh le dul"
+},
+"expect": {
+"known_text": "I'm nearly ready to go",
+"target_text": "tá mé beagnach réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05U02",
+"set": {
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le dul"
+},
+"expect": {
+"known_text": "I like to be feeling as if I'm nearly ready to go",
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05U03",
+"set": {
+"target_text": "is maith liom a bheith beagnach réidh le dul"
+},
+"expect": {
+"known_text": "I like being nearly ready to go",
+"target_text": "is maith liom a bheith beagnach réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05U04",
+"set": {
+"target_text": "tá mé réidh le dul anois"
+},
+"expect": {
+"known_text": "I'm ready to go now",
+"target_text": "tá mé réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05U05",
+"set": {
+"target_text": "is maith liom a bheith réidh le dul"
+},
+"expect": {
+"known_text": "I like being ready to go",
+"target_text": "is maith liom a bheith réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05U06",
+"set": {
+"target_text": "tá mé ag mothú go bhfuil mé réidh le dul"
+},
+"expect": {
+"known_text": "I'm feeling as if I'm ready to go",
+"target_text": "tá mé ag mothú go bhfuil mé réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L05U08",
+"set": {
+"target_text": "is mian liom a bheith réidh le dul anois"
+},
+"expect": {
+"known_text": "I want to be ready to go now",
+"target_text": "is mian liom a bheith réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0027L02U08",
+"set": {
+"target_text": "ní mian liom an lá ar fad a thógáil sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I don't want to take all day before I have to go",
+"target_text": "ní mian liom an lá ar fad a thógáil sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02B01",
+"set": {
+"known_text": "I wanted to ask you a question",
+"target_text": "ba mhian liom ceist a chur ort"
+},
+"expect": {
+"known_text": "I wanted to ask something",
+"target_text": "ba mhian liom rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02B02",
+"set": {
+"known_text": "I want to ask you a question",
+"target_text": "is mian liom ceist a chur ort"
+},
+"expect": {
+"known_text": "I was wanting to ask something",
+"target_text": "ba mhian liom rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02B03",
+"set": {
+"known_text": "I'd like to ask you a question in Irish",
+"target_text": "ba mhaith liom ceist a chur ort i nGaeilge"
+},
+"expect": {
+"known_text": "I like to ask something in Irish",
+"target_text": "is maith liom rud éigin a fhiafraí i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U01",
+"set": {
+"known_text": "I wanted to ask you a question in Irish",
+"target_text": "ba mhian liom ceist a chur ort i nGaeilge"
+},
+"expect": {
+"known_text": "I was wanting to ask something in Irish",
+"target_text": "ba mhian liom rud éigin a fhiafraí i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U02",
+"set": {
+"known_text": "I'd like to ask you a question now",
+"target_text": "ba mhaith liom ceist a chur ort anois"
+},
+"expect": {
+"known_text": "I like asking something",
+"target_text": "is maith liom rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U03",
+"set": {
+"known_text": "I'm trying to ask you a question in Irish",
+"target_text": "tá mé ag iarraidh ceist a chur ort i nGaeilge"
+},
+"expect": {
+"known_text": "I'm trying to ask something in Irish",
+"target_text": "tá mé ag iarraidh rud éigin a fhiafraí i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U04",
+"set": {
+"known_text": "I wanted to ask you a question now",
+"target_text": "ba mhian liom ceist a chur ort anois"
+},
+"expect": {
+"known_text": "I was wanting to ask something now",
+"target_text": "ba mhian liom rud éigin a fhiafraí anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U05",
+"set": {
+"known_text": "I don't want to ask you a question",
+"target_text": "ní mian liom ceist a chur ort"
+},
+"expect": {
+"known_text": "I don't like asking something",
+"target_text": "ní maith liom rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U06",
+"set": {
+"known_text": "I'm looking forward to asking you a question in Irish",
+"target_text": "tá mé ag tnúth le ceist a chur ort i nGaeilge"
+},
+"expect": {
+"known_text": "I'm looking forward to asking something in Irish",
+"target_text": "tá mé ag tnúth le rud éigin a fhiafraí i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U07",
+"set": {
+"known_text": "I want to ask you a question in Irish",
+"target_text": "is mian liom ceist a chur ort i nGaeilge"
+},
+"expect": {
+"known_text": "I want to ask something in Irish",
+"target_text": "is mian liom rud éigin a fhiafraí i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L02U08",
+"set": {
+"known_text": "it's useful to ask you a question",
+"target_text": "tá sé úsáideach ceist a chur ort"
+},
+"expect": {
+"known_text": "it's useful to ask something",
+"target_text": "tá sé úsáideach rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03B01",
+"set": {
+"known_text": "to ask you a question about something",
+"target_text": "ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "to ask you something",
+"target_text": "rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03B02",
+"set": {
+"known_text": "I wanted to ask you a question about something",
+"target_text": "ba mhian liom ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "I was wanting to ask you something",
+"target_text": "ba mhian liom rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03B03",
+"set": {
+"known_text": "I want to ask you a question about something in Irish",
+"target_text": "is mian liom ceist a chur ort faoi rud éigin i nGaeilge"
+},
+"expect": {
+"known_text": "I want to ask you something in Irish",
+"target_text": "is mian liom rud éigin a fhiafraí díot i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U01",
+"set": {
+"known_text": "I wanted to ask you a question about something in Irish",
+"target_text": "ba mhian liom ceist a chur ort faoi rud éigin i nGaeilge"
+},
+"expect": {
+"known_text": "I was wanting to ask you something in Irish",
+"target_text": "ba mhian liom rud éigin a fhiafraí díot i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U02",
+"set": {
+"known_text": "I'd like to ask you a question about something",
+"target_text": "ba mhaith liom ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "I like asking you something",
+"target_text": "is maith liom rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U03",
+"set": {
+"known_text": "I'm trying to ask you a question about something in Irish",
+"target_text": "tá mé ag iarraidh ceist a chur ort faoi rud éigin i nGaeilge"
+},
+"expect": {
+"known_text": "I'm trying to ask you something in Irish",
+"target_text": "tá mé ag iarraidh rud éigin a fhiafraí díot i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U04",
+"set": {
+"known_text": "I wanted to ask you a question about something now",
+"target_text": "ba mhian liom ceist a chur ort faoi rud éigin anois"
+},
+"expect": {
+"known_text": "I was wanting to ask you something now",
+"target_text": "ba mhian liom rud éigin a fhiafraí díot anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U05",
+"set": {
+"known_text": "I don't want to ask you a question about something",
+"target_text": "ní mian liom ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "I don't like asking you something",
+"target_text": "ní maith liom rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U06",
+"set": {
+"known_text": "I'm looking forward to asking you a question about something in Irish",
+"target_text": "tá mé ag tnúth le ceist a chur ort faoi rud éigin i nGaeilge"
+},
+"expect": {
+"known_text": "I'm looking forward to asking you something in Irish",
+"target_text": "tá mé ag tnúth le rud éigin a fhiafraí díot i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U07",
+"set": {
+"known_text": "I want to ask you a question about something",
+"target_text": "is mian liom ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "I want to ask you something",
+"target_text": "is mian liom rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L03U08",
+"set": {
+"known_text": "it's useful to ask you a question about something",
+"target_text": "tá sé úsáideach ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "it's useful to ask you something",
+"target_text": "tá sé úsáideach rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L04B03",
+"set": {
+"known_text": "I wanted to ask you a question about something yesterday",
+"target_text": "ba mhian liom ceist a chur ort inné faoi rud éigin"
+},
+"expect": {
+"known_text": "I was wanting to ask you something yesterday",
+"target_text": "ba mhian liom rud éigin a fhiafraí díot inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L04U01",
+"set": {
+"known_text": "I wanted to ask you a question about something yesterday",
+"target_text": "ba mhian liom ceist a chur ort inné faoi rud éigin"
+},
+"expect": {
+"known_text": "I was wanting to ask you something yesterday",
+"target_text": "ba mhian liom rud éigin a fhiafraí díot inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0030L04U08",
+"set": {
+"known_text": "I was looking forward to asking you a question yesterday",
+"target_text": "bhí mé ag tnúth le ceist a chur ort inné"
+},
+"expect": {
+"known_text": "I was looking forward to asking you something yesterday",
+"target_text": "bhí mé ag tnúth le rud éigin a fhiafraí díot inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U09",
+"set": {
+"known_text": "she was trying to interrupt to ask a question",
+"target_text": "bhí sí ag iarraidh cur isteach le ceist a chur"
+},
+"expect": {
+"known_text": "she was trying to interrupt to ask something",
+"target_text": "bhí sí ag iarraidh cur isteach le rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U13",
+"set": {
+"known_text": "she doesn't want to interrupt, but she wants to ask a question",
+"target_text": "ní mian léi cur isteach, ach is mian léi ceist a chur"
+},
+"expect": {
+"known_text": "she doesn't want to interrupt, but she wants to ask something",
+"target_text": "ní mian léi cur isteach, ach is mian léi rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L04U06",
+"set": {
+"known_text": "she was trying to interrupt the story because she wanted to ask a question",
+"target_text": "bhí sí ag iarraidh cur isteach ar an scéal mar ba mhian léi ceist a chur"
+},
+"expect": {
+"known_text": "she was trying to interrupt the story because she wanted to ask something",
+"target_text": "bhí sí ag iarraidh cur isteach ar an scéal mar ba mhian léi rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L04U14",
+"set": {
+"known_text": "she doesn't want to interrupt the story, but she wants to ask a question",
+"target_text": "ní mian léi cur isteach ar an scéal, ach is mian léi ceist a chur"
+},
+"expect": {
+"known_text": "she doesn't want to interrupt the story, but she wants to ask something",
+"target_text": "ní mian léi cur isteach ar an scéal, ach is mian léi rud éigin a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L01B05",
+"set": {
+"known_text": "I am ready to go",
+"target_text": "Tá mé réidh le dul"
+},
+"expect": {
+"known_text": "I am ready to leave",
+"target_text": "Tá mé réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0040L02U08",
+"set": {
+"target_text": "níl mé réidh le dul faoi láthair"
+},
+"expect": {
+"known_text": "I'm not ready to go at the moment",
+"target_text": "níl mé réidh le himeacht faoi láthair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02B01",
+"set": {
+"target_text": "ní bhím buartha faoi"
+},
+"expect": {
+"known_text": "I don't worry about",
+"target_text": "ní bhíonn imní orm faoi"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02B02",
+"set": {
+"target_text": "ní bhím buartha faoi labhairt"
+},
+"expect": {
+"known_text": "I don't worry about speaking",
+"target_text": "ní bhíonn imní orm faoi labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02B03",
+"set": {
+"target_text": "ní bhím buartha faoi foghlaim"
+},
+"expect": {
+"known_text": "I don't worry about learning",
+"target_text": "ní bhíonn imní orm faoi foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02B04",
+"set": {
+"target_text": "ach ní bhím buartha faoi labhairt"
+},
+"expect": {
+"known_text": "but I don't worry about speaking",
+"target_text": "ach ní bhíonn imní orm faoi labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02C01",
+"set": {
+"known_text": "I am not habitually",
+"target_text": "ní bhím"
+},
+"expect": {
+"known_text": "there isn't habitually",
+"target_text": "ní bhíonn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02C02",
+"set": {
+"known_text": "worried",
+"target_text": "buartha"
+},
+"expect": {
+"known_text": "worry on me",
+"target_text": "imní orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U01",
+"set": {
+"target_text": "ní bhím buartha faoi Gaeilge a labhairt"
+},
+"expect": {
+"known_text": "I don't worry about speaking Irish",
+"target_text": "ní bhíonn imní orm faoi Gaeilge a labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U02",
+"set": {
+"target_text": "ach ní bhím buartha faoi labhairt"
+},
+"expect": {
+"known_text": "but I don't worry about speaking",
+"target_text": "ach ní bhíonn imní orm faoi labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U03",
+"set": {
+"target_text": "ní bhím buartha faoi rud éigin a rá"
+},
+"expect": {
+"known_text": "I don't worry about saying something",
+"target_text": "ní bhíonn imní orm faoi rud éigin a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U04",
+"set": {
+"target_text": "ní bhím buartha faoi foghlaim anois"
+},
+"expect": {
+"known_text": "I don't worry about learning now",
+"target_text": "ní bhíonn imní orm faoi foghlaim anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U05",
+"set": {
+"target_text": "ní bhím buartha faoi labhairt le duine éigin eile"
+},
+"expect": {
+"known_text": "I don't worry about speaking with someone else",
+"target_text": "ní bhíonn imní orm faoi labhairt le duine éigin eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U06",
+"set": {
+"target_text": "ní bhím buartha faoi labhairt a chleachtadh"
+},
+"expect": {
+"known_text": "I don't worry about practising speaking",
+"target_text": "ní bhíonn imní orm faoi labhairt a chleachtadh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U07",
+"set": {
+"target_text": "ach ní bhím buartha faoi foghlaim"
+},
+"expect": {
+"known_text": "but I don't worry about learning",
+"target_text": "ach ní bhíonn imní orm faoi foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U08",
+"set": {
+"target_text": "ní bhím buartha faoi mo dhícheall a dhéanamh"
+},
+"expect": {
+"known_text": "I don't worry about doing my best",
+"target_text": "ní bhíonn imní orm faoi mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L03B01",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin"
+},
+"expect": {
+"known_text": "I don't worry about mistakes",
+"target_text": "ní bhíonn imní orm faoi bhotúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L03B03",
+"set": {
+"target_text": "ach ní bhím buartha faoi bhotúin"
+},
+"expect": {
+"known_text": "but I don't worry about mistakes",
+"target_text": "ach ní bhíonn imní orm faoi bhotúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L03U01",
+"set": {
+"target_text": "ach ní bhím buartha faoi bhotúin"
+},
+"expect": {
+"known_text": "but I don't worry about mistakes",
+"target_text": "ach ní bhíonn imní orm faoi bhotúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L03U02",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin i nGaeilge"
+},
+"expect": {
+"known_text": "I don't worry about mistakes in Irish",
+"target_text": "ní bhíonn imní orm faoi bhotúin i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L03U04",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin inniu"
+},
+"expect": {
+"known_text": "I don't worry about mistakes today",
+"target_text": "ní bhíonn imní orm faoi bhotúin inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L03U06",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin a dhéanamh le duine éigin eile"
+},
+"expect": {
+"known_text": "I don't worry about making mistakes with someone else",
+"target_text": "ní bhíonn imní orm faoi bhotúin a dhéanamh le duine éigin eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L03U08",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin a dhéanamh i nGaeilge"
+},
+"expect": {
+"known_text": "I don't worry about making mistakes in Irish",
+"target_text": "ní bhíonn imní orm faoi bhotúin a dhéanamh i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L04B02",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "I don't worry about making mistakes",
+"target_text": "ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L04B03",
+"set": {
+"target_text": "ach ní bhím buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "but I don't worry about making mistakes",
+"target_text": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L04U01",
+"set": {
+"target_text": "ach ní bhím buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "but I don't worry about making mistakes",
+"target_text": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L04U02",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin a dhéanamh i nGaeilge"
+},
+"expect": {
+"known_text": "I don't worry about making mistakes in Irish",
+"target_text": "ní bhíonn imní orm faoi bhotúin a dhéanamh i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L04U03",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin a dhéanamh anois"
+},
+"expect": {
+"known_text": "I don't worry about making mistakes now",
+"target_text": "ní bhíonn imní orm faoi bhotúin a dhéanamh anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L04U05",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I don't worry about making mistakes today",
+"target_text": "ní bhíonn imní orm faoi bhotúin a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L04U07",
+"set": {
+"target_text": "ní bhím buartha faoi bhotúin a dhéanamh le duine éigin eile"
+},
+"expect": {
+"known_text": "I don't worry about making mistakes with someone else",
+"target_text": "ní bhíonn imní orm faoi bhotúin a dhéanamh le duine éigin eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0047L01B03",
+"set": {
+"target_text": "mar ní bhím buartha faoi bhotúin"
+},
+"expect": {
+"known_text": "because I don't worry about mistakes",
+"target_text": "mar ní bhíonn imní orm faoi bhotúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0047L01U03",
+"set": {
+"target_text": "mar ní bhím buartha faoi bhotúin"
+},
+"expect": {
+"known_text": "because I don't worry about mistakes",
+"target_text": "mar ní bhíonn imní orm faoi bhotúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0047L01U07",
+"set": {
+"target_text": "mar ní bhím buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "because I don't worry about making mistakes",
+"target_text": "mar ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0049L03U07",
+"set": {
+"target_text": "má thuigeann tú, ní bhím buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "if you understand, I don't worry about making mistakes",
+"target_text": "má thuigeann tú, ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0050L02U05",
+"set": {
+"target_text": "ní bhím buartha faoi críochnú"
+},
+"expect": {
+"known_text": "I don't worry about finishing",
+"target_text": "ní bhíonn imní orm faoi críochnú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0052L07B02",
+"set": {
+"known_text": "you wanted to ask a question last week",
+"target_text": "ba mhian leat ceist a chur an tseachtain seo caite"
+},
+"expect": {
+"known_text": "you wanted to ask last week",
+"target_text": "ba mhian leat a fhiafraí an tseachtain seo caite"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0053L01B03",
+"set": {
+"known_text": "yesterday she wanted to ask a question",
+"target_text": "inné ba mhian léi ceist a chur"
+},
+"expect": {
+"known_text": "yesterday she wanted to ask",
+"target_text": "inné ba mhian léi a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0053L02U06",
+"set": {
+"target_text": "ba mhaith liom gach rud a chur ar ais sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to put everything back before I have to go",
+"target_text": "ba mhaith liom gach rud a chur ar ais sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0055L02B02",
+"set": {
+"target_text": "dúiseacht sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "waking up before I have to go",
+"target_text": "dúiseacht sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0055L03U02",
+"set": {
+"target_text": "ní raibh mé réidh le dul nuair nár chodail mé go han-mhaith"
+},
+"expect": {
+"known_text": "I wasn't ready to go when I did not sleep very well",
+"target_text": "ní raibh mé réidh le himeacht nuair nár chodail mé go han-mhaith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0055L04U06",
+"set": {
+"target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go maith sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to meet people who speak Irish well before I have to go",
+"target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go maith sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0059L01U07",
+"set": {
+"target_text": "Tá a fhios agam conas fáil amach cad é an freagra sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I know how to find out what the answer is before I have to go",
+"target_text": "Tá a fhios agam conas fáil amach cad é an freagra sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0059L03U01",
+"set": {
+"target_text": "ba mhian léi a thaispeáint dom cad atá le déanamh agam sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "she wanted to show me what I need to do before I have to go",
+"target_text": "ba mhian léi a thaispeáint dom cad atá le déanamh agam sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0059L03U03",
+"set": {
+"target_text": "ní bhím buartha faoi cad atá le déanamh agam ach bhí mé tuirseach aréir"
+},
+"expect": {
+"known_text": "I don't worry about what I need to do but I was tired last night",
+"target_text": "ní bhíonn imní orm faoi cad atá le déanamh agam ach bhí mé tuirseach aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L02U14",
+"set": {
+"target_text": "Tá sé tábhachtach rud éigin a rá cad atá i gceist agam ach ní bhím buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "it is important to say what you want to say without worrying about mistakes",
+"target_text": "Tá sé tábhachtach rud éigin a rá cad atá i gceist agam ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L01U08",
+"set": {
+"target_text": "ceapaim Níl sé tábhachtach a bheith buartha faoi bhotúin a dhéanamh ag foghlaim Gaeilge"
+},
+"expect": {
+"known_text": "she thinks it is not important to worry about making mistakes when learning",
+"target_text": "ceapaim Níl sé tábhachtach imní orm faoi bhotúin a dhéanamh ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L04U01",
+"set": {
+"known_text": "I want to find the answer before I have to go now",
+"target_text": "is mian liom an freagra a fháil sula gcaithfidh mé dul anois"
+},
+"expect": {
+"known_text": "I want to find the answer before I have to leave now",
+"target_text": "is mian liom an freagra a fháil sula gcaithfidh mé imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0067L02U06",
+"set": {
+"known_text": "why do you want to find the answer before you have to go",
+"target_text": "cén fáth ar mian leat an freagra a fháil sula gcaithfidh tú dul"
+},
+"expect": {
+"known_text": "why do you want to find the answer before you have to leave",
+"target_text": "cén fáth ar mian leat an freagra a fháil sula gcaithfidh tú imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0068L01U03",
+"set": {
+"known_text": "what answer were you looking for before you had to go",
+"target_text": "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú dul anois"
+},
+"expect": {
+"known_text": "what answer were you looking for before you had to leave",
+"target_text": "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0068L01U15",
+"set": {
+"known_text": "what were you trying to say to me when I was thinking about the story yesterday",
+"target_text": "cad a bhí tú ag iarraidh a rá liom nuair a bhí mé ag smaoineamh ar an scéal inné"
+},
+"expect": {
+"known_text": "what were you trying to ask me when I was thinking about the story yesterday",
+"target_text": "cad a bhí tú ag iarraidh a fhiafraí díot nuair a bhí mé ag smaoineamh ar an scéal inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0068L03U07",
+"set": {
+"known_text": "I was looking for the answer before I had to go but it was not easy to remember",
+"target_text": "bhí mé ag lorg an freagra sula gcaithfidh mé dul ach níl sé éasca cuimhneamh"
+},
+"expect": {
+"known_text": "I was looking for the answer before I had to leave but it was not easy to remember",
+"target_text": "bhí mé ag lorg an freagra sula gcaithfidh mé imeacht ach níl sé éasca cuimhneamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0068L03U13",
+"set": {
+"known_text": "I would like to be looking for a good answer to the story before I have to go",
+"target_text": "ba mhaith liom a bheith ag lorg freagra ar an scéal sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I would like to be looking for a good answer to the story before I have to leave",
+"target_text": "ba mhaith liom a bheith ag lorg freagra ar an scéal sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L01U08",
+"set": {
+"known_text": "he didn't want to take time before he had to go but it was important",
+"target_text": "Níor mhian leis am a thógáil sula gcaithfidh sé dul ach bhí sé tábhachtach"
+},
+"expect": {
+"known_text": "he didn't want to take time before he had to leave but it was important",
+"target_text": "Níor mhian leis am a thógáil sula gcaithfidh sé imeacht ach bhí sé tábhachtach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L03U04",
+"set": {
+"known_text": "I want to look after the young dog before I have to go",
+"target_text": "is mian liom aire a thabhairt don mhadra óg sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I want to look after the young dog before I have to leave",
+"target_text": "is mian liom aire a thabhairt don mhadra óg sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L01U04",
+"set": {
+"known_text": "we didn't want to stop and we didn't want to go",
+"target_text": "níor mhian linn stopadh agus níor mhian linn dul"
+},
+"expect": {
+"known_text": "we didn't want to stop and we didn't want to leave",
+"target_text": "níor mhian linn stopadh agus níor mhian linn imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0072L02U04",
+"set": {
+"target_text": "ceapaim go bhfuil tú réidh le dul"
+},
+"expect": {
+"known_text": "I think you're ready to go",
+"target_text": "ceapaim go bhfuil tú réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L03U03",
+"set": {
+"target_text": "Ní thuigim gach rud ach níl mé buartha faoi sin"
+},
+"expect": {
+"known_text": "I do not understand everything but I am not worried about that",
+"target_text": "Ní thuigim gach rud ach ní bhíonn imní orm faoi sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L02U01",
+"set": {
+"target_text": "ní bhím buartha faoi na botúin"
+},
+"expect": {
+"known_text": "I don't worry about the mistakes",
+"target_text": "ní bhíonn imní orm faoi na botúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L03U05",
+"set": {
+"target_text": "ní bhím buartha faoi na botúin sin anois"
+},
+"expect": {
+"known_text": "I don't worry about those mistakes now",
+"target_text": "ní bhíonn imní orm faoi na botúin sin anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0087L03U05",
+"set": {
+"target_text": "go raibh maith agat agus iad réidh le dul"
+},
+"expect": {
+"known_text": "thank you and they are ready to go",
+"target_text": "go raibh maith agat agus iad réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L01U05",
+"set": {
+"target_text": "níl mé réidh le dul mar níl mé tuirseach"
+},
+"expect": {
+"known_text": "I am not ready to go because I am not tired",
+"target_text": "níl mé réidh le himeacht mar níl mé tuirseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05B03",
+"set": {
+"known_text": "I'm not ready to go yet",
+"target_text": "níl mé réidh le dul fós"
+},
+"expect": {
+"known_text": "I'm not ready to leave yet",
+"target_text": "níl mé réidh le himeacht fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02U02",
+"set": {
+"known_text": "I know that there is something important I want to say to you before you have to go tonight",
+"target_text": "Tá a fhios agam go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú dul anocht"
+},
+"expect": {
+"known_text": "I know that there is something important I want to say to you before you have to leave tonight",
+"target_text": "Tá a fhios agam go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú imeacht anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02U14",
+"set": {
+"target_text": "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé dul, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+},
+"expect": {
+"known_text": "I think that there is still enough time left to practise before I have to go, so I'm going to keep trying",
+"target_text": "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé imeacht, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U02",
+"set": {
+"known_text": "I'm really happy with how much is done today, and I'm going to keep going for a while longer before I have to go",
+"target_text": "Tá mé an-sásta leis an méid atá déanta inniu, agus tá mé chun leanúint ar aghaidh ar feadh tamaill sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'm really happy with how much is done today, and I'm going to keep going for a while longer before I stop",
+"target_text": "Tá mé an-sásta leis an méid atá déanta inniu, agus tá mé chun leanúint ar aghaidh ar feadh tamaill sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U07",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil go leor déanta agus níl mé buartha, mar ceapaim gur rud maith é sin go bhfuil muid ag foghlaim le chéile"
+},
+"expect": {
+"known_text": "I know there is a lot done and I'm not worried, because I think it is a great thing that we've been learning together",
+"target_text": "Tá a fhios agam go bhfuil go leor déanta agus ní bhíonn imní orm, mar ceapaim gur rud maith é sin go bhfuil muid ag foghlaim le chéile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U07",
+"set": {
+"known_text": "I know there is something I have to say to you about the story before you go, because it's very important",
+"target_text": "Tá a fhios agam go bhfuil rud éigin le rá agam leat faoin scéal sula gcaithfidh tú dul, mar tá sé tábhachtach"
+},
+"expect": {
+"known_text": "I know there is something I have to say to you about the story before you leave, because it's very important",
+"target_text": "Tá a fhios agam go bhfuil rud éigin le rá agam leat faoin scéal sula gcaithfidh tú imeacht, mar tá sé tábhachtach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U09",
+"set": {
+"known_text": "I think there is something important I have to tell you before you have to go, but I'm not quite sure how to say it yet",
+"target_text": "ceapaim go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú dul, ach níl mé cinnte fós conas é a rá"
+},
+"expect": {
+"known_text": "I think there is something important I have to tell you before you go, but I'm not quite sure how to say it yet",
+"target_text": "ceapaim go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú imeacht, ach níl mé cinnte fós conas é a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U02",
+"set": {
+"target_text": "Níl a fhios agam conas go leor focal éagsúil a rá fós, ach níl mé buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "I still don't know how to say a lot of different words yet, but I'm not worried about making mistakes",
+"target_text": "Níl a fhios agam conas go leor focal éagsúil a rá fós, ach ní bhíonn imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U12",
+"set": {
+"known_text": "I know there is a lot I still need to do today, but I want to practise speaking as much as possible before I go",
+"target_text": "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I know there is a lot I still need to do today, but I want to practise speaking as much as possible before I leave",
+"target_text": "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02B02",
+"set": {
+"known_text": "I want to go",
+"target_text": "is mian liom dul"
+},
+"expect": {
+"known_text": "I want to leave",
+"target_text": "is mian liom imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02B03",
+"set": {
+"known_text": "it is time to go now",
+"target_text": "tá sé in am dul anois"
+},
+"expect": {
+"known_text": "it is time to leave now",
+"target_text": "tá sé in am imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02B04",
+"set": {
+"known_text": "ready to go",
+"target_text": "réidh le dul"
+},
+"expect": {
+"known_text": "ready to leave",
+"target_text": "réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02B05",
+"set": {
+"known_text": "before I have to go",
+"target_text": "sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "before I have to leave",
+"target_text": "sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02B06",
+"set": {
+"known_text": "he was trying to go",
+"target_text": "bhí sé ag iarraidh dul"
+},
+"expect": {
+"known_text": "he was trying to leave",
+"target_text": "bhí sé ag iarraidh imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02B07",
+"set": {
+"known_text": "she is not trying to go",
+"target_text": "níl sí ag iarraidh dul"
+},
+"expect": {
+"known_text": "she is not trying to leave",
+"target_text": "níl sí ag iarraidh imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U01",
+"set": {
+"known_text": "I want to go now but I am not sure if it is time",
+"target_text": "Is mian liom dul anois ach níl mé cinnte an bhfuil sé in am"
+},
+"expect": {
+"known_text": "I want to leave now but I am not sure it is time to go",
+"target_text": "Is mian liom imeacht anois ach níl mé cinnte an bhfuil sé in am"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U02",
+"set": {
+"known_text": "are you going to help me before I have to go this evening?",
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul anocht?"
+},
+"expect": {
+"known_text": "are you going to help me before I have to leave this evening?",
+"target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé imeacht anocht?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U03",
+"set": {
+"known_text": "I like feeling as if I'm nearly ready to go",
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le dul"
+},
+"expect": {
+"known_text": "I love the feeling of being almost ready to leave when you have learned enough",
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé beagnach réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U04",
+"set": {
+"known_text": "it is time to go now and she is not trying to go yet",
+"target_text": "Tá sé in am dul anois agus níl sí ag iarraidh dul fós"
+},
+"expect": {
+"known_text": "it is time to leave now and she is not trying to go yet",
+"target_text": "Tá sé in am imeacht anois agus níl sí ag iarraidh imeacht fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U05",
+"set": {
+"known_text": "he was trying to go early because he wanted to arrive before the others",
+"target_text": "bhí sé ag iarraidh dul go luath mar ba mhian leis a bheith ann roimh na daoine eile"
+},
+"expect": {
+"known_text": "he was trying to leave early because he wanted to arrive before the others",
+"target_text": "bhí sé ag iarraidh imeacht go luath mar ba mhian leis a bheith ann roimh na daoine eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U06",
+"set": {
+"known_text": "I was not ready to go but it was already time to go",
+"target_text": "Ní raibh mé réidh le dul ach bhí sé in am dul cheana féin"
+},
+"expect": {
+"known_text": "I was not ready to leave but it was already time to go",
+"target_text": "Ní raibh mé réidh le himeacht ach bhí sé in am imeacht cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U07",
+"set": {
+"known_text": "I am not sure I want to go yet because there is still so much to learn here",
+"target_text": "Níl mé cinnte gur mian liom dul fós mar tá go leor le foghlaim anseo"
+},
+"expect": {
+"known_text": "I am not sure I want to leave yet because there is still so much to learn here",
+"target_text": "Níl mé cinnte gur mian liom imeacht fós mar tá go leor le foghlaim anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U08",
+"set": {
+"known_text": "she was trying to go without saying anything because she did not want anyone to hear",
+"target_text": "bhí sí ag iarraidh dul gan aon rud a rá mar níor mhian léi go mbeadh a fhios ag aon duine"
+},
+"expect": {
+"known_text": "she was trying to leave without saying anything because she did not want anyone to hear",
+"target_text": "bhí sí ag iarraidh imeacht gan aon rud a rá mar níor mhian léi go mbeadh a fhios ag aon duine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U09",
+"set": {
+"known_text": "it is important to know when it is time to go and not to take too much time",
+"target_text": "Tá sé tábhachtach a fhios a bheith agam cathain a bhfuil sé in am dul agus gan an iomarca ama a thógáil"
+},
+"expect": {
+"known_text": "it is important to know when it is time to leave and not to take too much time",
+"target_text": "Tá sé tábhachtach a fhios a bheith agam cathain a bhfuil sé in am imeacht agus gan an iomarca ama a thógáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U10",
+"set": {
+"known_text": "before I have to go I want to ask you a question about something",
+"target_text": "sula gcaithfidh mé dul is mian liom ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "before I have to leave I want to ask you something I have been thinking about all day",
+"target_text": "sula gcaithfidh mé imeacht is mian liom rud éigin a fhiafraí díot a bhí mé ag smaoineamh air ar fad"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U11",
+"set": {
+"known_text": "he was not trying to go and he wanted to stay for a while to keep learning",
+"target_text": "Ní raibh sé ag iarraidh dul agus ba mhian leis fanacht ar feadh tamaill ag foghlaim"
+},
+"expect": {
+"known_text": "he was not trying to leave and he wanted to stay for a while to keep learning",
+"target_text": "Ní raibh sé ag iarraidh imeacht agus ba mhian leis fanacht ar feadh tamaill ag foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U12",
+"set": {
+"known_text": "she was not ready to go although everyone else was already trying to go",
+"target_text": "Ní raibh sí réidh le dul cé go raibh gach duine eile ag iarraidh dul cheana féin"
+},
+"expect": {
+"known_text": "she was not ready to leave although everyone else was already trying to leave",
+"target_text": "Ní raibh sí réidh le himeacht cé go raibh gach duine eile ag iarraidh imeacht cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U13",
+"set": {
+"known_text": "I do not want to go without helping you finish what you were trying to say",
+"target_text": "Ní mian liom dul gan cabhrú leat críochnú cad a bhí tú ag iarraidh a rá"
+},
+"expect": {
+"known_text": "I do not want to leave without helping you finish what you were trying to say",
+"target_text": "Ní mian liom imeacht gan cabhrú leat críochnú cad a bhí tú ag iarraidh a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U15",
+"set": {
+"known_text": "I want to go now because it is already time and I am ready to go",
+"target_text": "Is mian liom dul anois mar tá sé in am cheana féin agus tá mé réidh le dul"
+},
+"expect": {
+"known_text": "I want to leave now because it is already time and I am completely ready",
+"target_text": "Is mian liom imeacht anois mar tá sé in am cheana féin agus tá mé réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L04U03",
+"set": {
+"target_text": "ceapaim go bhfuil mála de dhíth orm sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I think that a bag is needed by me before I have to go",
+"target_text": "ceapaim go bhfuil mála de dhíth orm sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L01U03",
+"set": {
+"known_text": "yes, it's time to go now",
+"target_text": "Tá, tá sé in am dul anois"
+},
+"expect": {
+"known_text": "yes, it's time to leave now",
+"target_text": "Tá, tá sé in am imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02B01",
+"set": {
+"known_text": "I am ready to go now",
+"target_text": "tá mé réidh le dul anois"
+},
+"expect": {
+"known_text": "I am ready to leave now",
+"target_text": "tá mé réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02B02",
+"set": {
+"known_text": "but I am ready to go",
+"target_text": "ach tá mé réidh le dul"
+},
+"expect": {
+"known_text": "but I am ready to leave",
+"target_text": "ach tá mé réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02B03",
+"set": {
+"known_text": "and I am ready to go tomorrow",
+"target_text": "agus tá mé réidh le dul amárach"
+},
+"expect": {
+"known_text": "and I am ready to leave tomorrow",
+"target_text": "agus tá mé réidh le himeacht amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02B04",
+"set": {
+"known_text": "I am ready to go as soon as possible",
+"target_text": "tá mé réidh le dul chomh luath agus is féidir"
+},
+"expect": {
+"known_text": "I am ready to leave as soon as possible",
+"target_text": "tá mé réidh le himeacht chomh luath agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02C04",
+"set": {
+"known_text": "go",
+"target_text": "dul"
+},
+"expect": {
+"known_text": "leave",
+"target_text": "himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U01",
+"set": {
+"known_text": "I am ready to go on the next bus tonight",
+"target_text": "tá mé réidh le dul ar an gcéad bhus eile anocht"
+},
+"expect": {
+"known_text": "I am ready to leave on the next bus tonight",
+"target_text": "tá mé réidh le himeacht ar an gcéad bhus eile anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U02",
+"set": {
+"known_text": "I am ready to go so that I can go home",
+"target_text": "tá mé réidh le dul mar sin is féidir liom dul abhaile"
+},
+"expect": {
+"known_text": "I am ready to leave so that I can go home",
+"target_text": "tá mé réidh le himeacht mar sin is féidir liom dul abhaile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U03",
+"set": {
+"known_text": "I'm not going to go home tonight but I am ready to go tomorrow",
+"target_text": "níl mé chun dul abhaile anocht ach tá mé réidh le dul amárach"
+},
+"expect": {
+"known_text": "I'm not going to go home tonight but I am ready to leave tomorrow",
+"target_text": "níl mé chun dul abhaile anocht ach tá mé réidh le himeacht amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U04",
+"set": {
+"known_text": "I can't keep on and I am ready to go now",
+"target_text": "ní féidir liom leanúint ar aghaidh agus tá mé réidh le dul anois"
+},
+"expect": {
+"known_text": "I can't keep on and I am ready to leave now",
+"target_text": "ní féidir liom leanúint ar aghaidh agus tá mé réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U05",
+"set": {
+"known_text": "I am ready to go after you finish",
+"target_text": "tá mé réidh le dul tar éis duit críochnú"
+},
+"expect": {
+"known_text": "I am ready to leave after you finish",
+"target_text": "tá mé réidh le himeacht tar éis duit críochnú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U06",
+"set": {
+"known_text": "I am ready to go and thank you very much",
+"target_text": "tá mé réidh le dul agus go raibh míle maith agat"
+},
+"expect": {
+"known_text": "I am ready to leave and thank you very much",
+"target_text": "tá mé réidh le himeacht agus go raibh míle maith agat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U07",
+"set": {
+"known_text": "I am ready to go but I have a little more time",
+"target_text": "tá mé réidh le dul ach tá beagán níos mó ama"
+},
+"expect": {
+"known_text": "I am ready to leave but I have a little more time",
+"target_text": "tá mé réidh le himeacht ach tá beagán níos mó ama"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U08",
+"set": {
+"known_text": "you want to meet people who speak Irish and I am ready to go later on",
+"target_text": "is mian leat bualadh le daoine a labhraíonn Gaeilge agus tá mé réidh le dul níos déanaí"
+},
+"expect": {
+"known_text": "you want to meet people who speak Irish and I am ready to leave later on",
+"target_text": "is mian leat bualadh le daoine a labhraíonn Gaeilge agus tá mé réidh le himeacht níos déanaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U09",
+"set": {
+"known_text": "I don't know what I need to do but I am ready to go now",
+"target_text": "níl a fhios agam cad atá le déanamh agam ach tá mé réidh le dul anois"
+},
+"expect": {
+"known_text": "I don't know what I need to do but I am ready to leave now",
+"target_text": "níl a fhios agam cad atá le déanamh agam ach tá mé réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U10",
+"set": {
+"known_text": "I think that it's a good thing and I am ready to go today",
+"target_text": "ceapaim gur rud maith é agus tá mé réidh le dul inniu"
+},
+"expect": {
+"known_text": "I think that it's a good thing and I am ready to leave today",
+"target_text": "ceapaim gur rud maith é agus tá mé réidh le himeacht inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U11",
+"set": {
+"known_text": "if you could go home now I am ready to go",
+"target_text": "dá bhféadfá dul abhaile anois tá mé réidh le dul"
+},
+"expect": {
+"known_text": "if you could go home now I am ready to leave",
+"target_text": "dá bhféadfá dul abhaile anois tá mé réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L03U05",
+"set": {
+"known_text": "as soon as you want I am ready to go but I have a little more time",
+"target_text": "chomh luath agus is mian leat tá mé réidh le dul ach tá beagán níos mó ama"
+},
+"expect": {
+"known_text": "as soon as you want I am ready to leave but I have a little more time",
+"target_text": "chomh luath agus is mian leat tá mé réidh le himeacht ach tá beagán níos mó ama"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L03U06",
+"set": {
+"target_text": "ba mhaith liom labhairt a chleachtadh chomh luath agus is mian leat sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to practise speaking as soon as you want before I have to go",
+"target_text": "ba mhaith liom labhairt a chleachtadh chomh luath agus is mian leat sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02B01",
+"set": {
+"target_text": "ceist a chur ort féin anois"
+},
+"expect": {
+"known_text": "to ask yourself now",
+"target_text": "tú féin a cheistiú anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02B02",
+"set": {
+"target_text": "ba cheart duit ceist a chur ort féin"
+},
+"expect": {
+"known_text": "you should ask yourself",
+"target_text": "ba cheart duit tú féin a cheistiú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02B03",
+"set": {
+"target_text": "tá sé in am ceist a chur ort féin go cúramach"
+},
+"expect": {
+"known_text": "it's time to ask yourself carefully",
+"target_text": "tá sé in am tú féin a cheistiú go cúramach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02B04",
+"set": {
+"target_text": "is mian leat ceist a chur ort féin arís"
+},
+"expect": {
+"known_text": "you want to ask yourself again",
+"target_text": "is mian leat tú féin a cheistiú arís"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02C01",
+"set": {
+"known_text": "to ask a question",
+"target_text": "ceist a chur"
+},
+"expect": {
+"known_text": "yourself",
+"target_text": "tú féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02C02",
+"set": {
+"known_text": "yourself",
+"target_text": "ort féin"
+},
+"expect": {
+"known_text": "to question",
+"target_text": "a cheistiú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02U01",
+"set": {
+"target_text": "dá bhféadfá ceist a chur ort féin bheadh sé sin éasca"
+},
+"expect": {
+"known_text": "if you could ask yourself that would be easy",
+"target_text": "dá bhféadfá tú féin a cheistiú bheadh sé sin éasca"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02U02",
+"set": {
+"target_text": "an bhfuil tú chun ceist a chur ort féin inniu?"
+},
+"expect": {
+"known_text": "are you going to ask yourself today?",
+"target_text": "an bhfuil tú chun tú féin a cheistiú inniu?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02U03",
+"set": {
+"target_text": "ar mhian leat ceist a chur ort féin inné?"
+},
+"expect": {
+"known_text": "did you want to ask yourself yesterday?",
+"target_text": "ar mhian leat tú féin a cheistiú inné?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02U04",
+"set": {
+"target_text": "tá sé in am ceist a chur ort féin ach ní féidir liom cabhrú leat"
+},
+"expect": {
+"known_text": "it's time to ask yourself but I can't help you",
+"target_text": "tá sé in am tú féin a cheistiú ach ní féidir liom cabhrú leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02U05",
+"set": {
+"target_text": "go raibh míle maith agat ach ba cheart duit ceist a chur ort féin chomh minic agus is féidir"
+},
+"expect": {
+"known_text": "thank you very much but you should ask yourself as often as possible",
+"target_text": "go raibh míle maith agat ach ba cheart duit tú féin a cheistiú chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L02U06",
+"set": {
+"target_text": "is mian leat ceist a chur ort féin cá raibh sé"
+},
+"expect": {
+"known_text": "you want to ask yourself where it was",
+"target_text": "is mian leat tú féin a cheistiú cá raibh sé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L04U04",
+"set": {
+"target_text": "ba mhian leat ceist a chur ort féin cén fáth nach bhfuil sé ag obair"
+},
+"expect": {
+"known_text": "you wanted to ask yourself why it's not working",
+"target_text": "ba mhian leat tú féin a cheistiú cén fáth nach bhfuil sé ag obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0100L01U01",
+"set": {
+"target_text": "níor cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair"
+},
+"expect": {
+"known_text": "you shouldn't ask yourself why it's not working",
+"target_text": "níor cheart duit tú féin a cheistiú cén fáth nach bhfuil sé ag obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0100L01U07",
+"set": {
+"target_text": "ní féidir liom cabhrú leat ach níor cheart duit ceist a chur ort féin"
+},
+"expect": {
+"known_text": "I can't help you but you shouldn't ask yourself",
+"target_text": "ní féidir liom cabhrú leat ach níor cheart duit tú féin a cheistiú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L02U06",
+"set": {
+"target_text": "Tá mé ag iarraidh mo dhícheall a dhéanamh inniu agus gan a bheith buartha faoi bhotúin"
+},
+"expect": {
+"known_text": "I am trying to do my best today and not worry about mistakes",
+"target_text": "Tá mé ag iarraidh mo dhícheall a dhéanamh inniu agus gan imní a bheith orm faoi bhotúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L04U10",
+"set": {
+"known_text": "he said that it is not important what I was trying to say yesterday",
+"target_text": "dúirt sé nach bhfuil sé tábhachtach cad a bhí mé ag iarraidh a rá inné"
+},
+"expect": {
+"known_text": "he said that it is not important what I was trying to ask yesterday",
+"target_text": "dúirt sé nach bhfuil sé tábhachtach cad a bhí mé ag iarraidh a fhiafraí inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L05U07",
+"set": {
+"known_text": "it is like that when you are not sure if you are ready to go",
+"target_text": "Tá sé mar sin nuair nach bhfuil tú cinnte an bhfuil tú réidh le dul"
+},
+"expect": {
+"known_text": "it is like that when you are not sure if you are ready to leave",
+"target_text": "Tá sé mar sin nuair nach bhfuil tú cinnte an bhfuil tú réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L01U12",
+"set": {
+"target_text": "Níl muid cinnte an bhfuil rud éigin eile le déanamh againn sula gcaithfidh muid dul"
+},
+"expect": {
+"known_text": "we are not sure if there is anything else we need to do before we go",
+"target_text": "Níl muid cinnte an bhfuil rud éigin eile le déanamh againn sula gcaithfidh muid imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L04U03",
+"set": {
+"known_text": "I need another word before I can ask you a question",
+"target_text": "Tá focal eile de dhíth orm sula mbeidh mé ábalta ceist a chur ort"
+},
+"expect": {
+"known_text": "I need another word before I can ask you what I wanted to ask you",
+"target_text": "Tá focal eile de dhíth orm sula mbeidh mé ábalta a fhiafraí díot cad ba mhian liom a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L05U03",
+"set": {
+"target_text": "dúirt sé rud éigin eile liom inniu a bhí mé ag iarraidh ceist a chur faoi"
+},
+"expect": {
+"known_text": "he told me something else today that I had been trying to ask about",
+"target_text": "dúirt sé rud éigin eile liom inniu a bhí mé ag iarraidh a fhiafraí faoi"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0106L01B01",
+"set": {
+"known_text": "we do not need to go",
+"target_text": "ní chaithfidh muid dul"
+},
+"expect": {
+"known_text": "we do not need to leave",
+"target_text": "ní chaithfidh muid imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0106L01U01",
+"set": {
+"known_text": "we do not need to go now",
+"target_text": "ní chaithfidh muid dul anois"
+},
+"expect": {
+"known_text": "we do not need to leave now",
+"target_text": "ní chaithfidh muid imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0106L01U04",
+"set": {
+"known_text": "I am very happy because we do not need to go",
+"target_text": "tá mé an-sásta mar ní chaithfidh muid dul"
+},
+"expect": {
+"known_text": "I am very happy because we do not need to leave",
+"target_text": "tá mé an-sásta mar ní chaithfidh muid imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0106L01U06",
+"set": {
+"known_text": "it's time to go but we do not need to go home",
+"target_text": "tá sé in am dul ach ní chaithfidh muid dul abhaile"
+},
+"expect": {
+"known_text": "it's time to leave but we do not need to go home",
+"target_text": "tá sé in am imeacht ach ní chaithfidh muid dul abhaile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0108L01U01",
+"set": {
+"target_text": "faraor ní raibh muid réidh le dul"
+},
+"expect": {
+"known_text": "unfortunately we were not ready to go",
+"target_text": "faraor ní raibh muid réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0108L05U05",
+"set": {
+"target_text": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhím sásta ar maidin"
+},
+"expect": {
+"known_text": "it is not easy to feel well in the morning if you do not enjoy waking in the middle of the night",
+"target_text": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhíonn mé sásta ar maidin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L03U06",
+"set": {
+"known_text": "unfortunately I would like to go now",
+"target_text": "faraor ba mhaith liom dul anois"
+},
+"expect": {
+"known_text": "unfortunately I would like to leave now",
+"target_text": "faraor ba mhaith liom imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05U07",
+"set": {
+"known_text": "I'd like to relax for a while before I have to go this evening",
+"target_text": "ba mhaith liom scíth a ligean ar feadh tamaill sula gcaithfidh mé dul tráthnóna"
+},
+"expect": {
+"known_text": "I'd like to relax for a while before I have to leave this evening",
+"target_text": "ba mhaith liom scíth a ligean ar feadh tamaill sula gcaithfidh mé imeacht tráthnóna"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01B01",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid"
+},
+"expect": {
+"known_text": "when we learn",
+"target_text": "nuair a fhoghlaimímid"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01B03",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua"
+},
+"expect": {
+"known_text": "when we learn something new",
+"target_text": "nuair a fhoghlaimímid rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01B04",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil"
+},
+"expect": {
+"known_text": "when we learn something new it's interesting",
+"target_text": "nuair a fhoghlaimímid rud nua tá sé suimiúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01B05",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "when we learn something new it changes our brain",
+"target_text": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01B06",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua tá sé maith"
+},
+"expect": {
+"known_text": "when we learn something new it's good",
+"target_text": "nuair a fhoghlaimímid rud nua tá sé maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01C02",
+"set": {
+"target_text": "a fhoghlaimíonn muid"
+},
+"expect": {
+"known_text": "we learn",
+"target_text": "a fhoghlaimímid"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U01",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil agus athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "when we learn something new it's interesting and it changes our brain",
+"target_text": "nuair a fhoghlaimímid rud nua tá sé suimiúil agus athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U02",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus is maith liom é sin"
+},
+"expect": {
+"known_text": "when we learn something new it changes our brain and I like that",
+"target_text": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus is maith liom é sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U03",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua tá sé an-suimiúil agus is mian liom leanúint ar aghaidh"
+},
+"expect": {
+"known_text": "when we learn something new it's very interesting and I want to keep going",
+"target_text": "nuair a fhoghlaimímid rud nua tá sé an-suimiúil agus is mian liom leanúint ar aghaidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U04",
+"set": {
+"target_text": "dúirt sí nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú ár n-inchinn agus tá sé suimiúil"
+},
+"expect": {
+"known_text": "she said when we learn something new it changes our brain and that is interesting",
+"target_text": "dúirt sí nuair a fhoghlaimímid rud nua go bhfuil sé ag athrú ár n-inchinn agus tá sé suimiúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U05",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua níl sé éasca ach ceapaim go bhfuil sé maith dúinn"
+},
+"expect": {
+"known_text": "when we learn something new it's not easy but I think it's good for us",
+"target_text": "nuair a fhoghlaimímid rud nua níl sé éasca ach ceapaim go bhfuil sé maith dúinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U06",
+"set": {
+"target_text": "ceapaim nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú ár n-inchinn agus go bhfuil gach rud níos suimiúla"
+},
+"expect": {
+"known_text": "I think when we learn something new it changes our brain and everything is more interesting",
+"target_text": "ceapaim nuair a fhoghlaimímid rud nua go bhfuil sé ag athrú ár n-inchinn agus go bhfuil gach rud níos suimiúla"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U07",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua is mian liom scíth a ligean"
+},
+"expect": {
+"known_text": "when we learn something new I want to relax and let it sink in",
+"target_text": "nuair a fhoghlaimímid rud nua is mian liom scíth a ligean"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U08",
+"set": {
+"target_text": "Tá sé an-suimiúil nuair a fhoghlaimíonn muid rud nua agus athraíonn ár n-inchinn"
+},
+"expect": {
+"known_text": "it's very interesting when we learn something new and our brain changes",
+"target_text": "Tá sé an-suimiúil nuair a fhoghlaimímid rud nua agus athraíonn ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U09",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn ár n-inchinn agus tá sé tábhachtach leanúint ar aghaidh"
+},
+"expect": {
+"known_text": "when we learn something new our brain changes and it's important to keep going",
+"target_text": "nuair a fhoghlaimímid rud nua athraíonn ár n-inchinn agus tá sé tábhachtach leanúint ar aghaidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U10",
+"set": {
+"target_text": "dúirt sé nuair a fhoghlaimíonn muid rud nua go bhfuil sé an-suimiúil do gach duine"
+},
+"expect": {
+"known_text": "he said when we learn something new it's very interesting for everyone",
+"target_text": "dúirt sé nuair a fhoghlaimímid rud nua go bhfuil sé an-suimiúil do gach duine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U11",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus ceapaim gur rud maith é sin"
+},
+"expect": {
+"known_text": "when we learn something new it changes our brain and I think that's great",
+"target_text": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus ceapaim gur rud maith é sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U12",
+"set": {
+"target_text": "Níl sé éasca nuair a fhoghlaimíonn muid rud nua ach ceapaim go bhfuil sé tábhachtach"
+},
+"expect": {
+"known_text": "it's not easy when we learn something new but I think it's very important",
+"target_text": "Níl sé éasca nuair a fhoghlaimímid rud nua ach ceapaim go bhfuil sé tábhachtach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U13",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua le chéile athraíonn ár n-inchinn agus tá sé maith dúinn"
+},
+"expect": {
+"known_text": "when we learn something new together our brain changes and it's very good for us",
+"target_text": "nuair a fhoghlaimímid rud nua le chéile athraíonn ár n-inchinn agus tá sé maith dúinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U14",
+"set": {
+"target_text": "Ní raibh mé ag súil leis nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú gach rud"
+},
+"expect": {
+"known_text": "I wasn't expecting it when we learn something new it changes so much",
+"target_text": "Ní raibh mé ag súil leis nuair a fhoghlaimímid rud nua go bhfuil sé ag athrú gach rud"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L01U15",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil agus is mian liom leanúint ar aghaidh"
+},
+"expect": {
+"known_text": "when we learn something new it's interesting and I always want to keep going",
+"target_text": "nuair a fhoghlaimímid rud nua tá sé suimiúil agus is mian liom leanúint ar aghaidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L02U09",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua le chéile tá sé an-suimiúil agus maith"
+},
+"expect": {
+"known_text": "when we learn something new together it's always very interesting and good",
+"target_text": "nuair a fhoghlaimímid rud nua le chéile tá sé an-suimiúil agus maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03B05",
+"set": {
+"target_text": "athraíonn sé gach rud nuair a fhoghlaimíonn muid rud nua"
+},
+"expect": {
+"known_text": "learning something new changes everything",
+"target_text": "athraíonn sé gach rud nuair a fhoghlaimímid rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03U01",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid teanga nua athraíonn sé gach rud agus tá sé sin an-suimiúil"
+},
+"expect": {
+"known_text": "when you learn a new language it changes everything and that is very interesting",
+"target_text": "nuair a fhoghlaimímid teanga nua athraíonn sé gach rud agus tá sé sin an-suimiúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03U06",
+"set": {
+"target_text": "ceapaim athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua agus tá sé maith leanúint ag obair"
+},
+"expect": {
+"known_text": "I think it changes our brain when we learn something new and it is good to keep working",
+"target_text": "ceapaim athraíonn sé ár n-inchinn nuair a fhoghlaimímid rud nua agus tá sé maith leanúint ag obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03U11",
+"set": {
+"target_text": "Ní raibh mé ag súil leis agus athraíonn sé gach rud nuair a fhoghlaimíonn muid teanga nua"
+},
+"expect": {
+"known_text": "I wasn't expecting it and it changes everything when we learn a new language",
+"target_text": "Ní raibh mé ag súil leis agus athraíonn sé gach rud nuair a fhoghlaimímid teanga nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03U14",
+"set": {
+"target_text": "Ní raibh mé ag súil leis ach athraíonn sé gach rud nuair a fhoghlaimíonn muid teanga nua"
+},
+"expect": {
+"known_text": "I wasn't expecting it but it changes everything when we learn a new language",
+"target_text": "Ní raibh mé ag súil leis ach athraíonn sé gach rud nuair a fhoghlaimímid teanga nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03U15",
+"set": {
+"target_text": "athraíonn sé go leor nuair a fhoghlaimíonn muid rud nua le chéile agus tá sé níos fearr"
+},
+"expect": {
+"known_text": "learning something new together changes a lot and it's much better",
+"target_text": "athraíonn sé go leor nuair a fhoghlaimímid rud nua le chéile agus tá sé níos fearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L04B06",
+"set": {
+"target_text": "athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua"
+},
+"expect": {
+"known_text": "learning something new changes our brain",
+"target_text": "athraíonn sé ár n-inchinn nuair a fhoghlaimímid rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L04U01",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus tá sé níos éasca"
+},
+"expect": {
+"known_text": "when we learn something new it changes our brain and it is easier",
+"target_text": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus tá sé níos éasca"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L01U02",
+"set": {
+"target_text": "dúirt sí go bhfuil sé an-suimiúil fáil amach conas a athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid"
+},
+"expect": {
+"known_text": "she said it was very interesting to find out how our brain changes when we learn",
+"target_text": "dúirt sí go bhfuil sé an-suimiúil fáil amach conas a athraíonn sé ár n-inchinn nuair a fhoghlaimímid"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L01U06",
+"set": {
+"target_text": "ceapaim go bhfuil sé an-suimiúil go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimíonn muid rud nua"
+},
+"expect": {
+"known_text": "I think it's very interesting that our brain changes when we learn something new",
+"target_text": "ceapaim go bhfuil sé an-suimiúil go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimímid rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L01U09",
+"set": {
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimíonn muid le chéile"
+},
+"expect": {
+"known_text": "I wasn't expecting to find it so very interesting when we started learning together",
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimímid le chéile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L03U01",
+"set": {
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé chomh suimiúil sin nuair a fhoghlaimíonn muid Gaeilge le chéile"
+},
+"expect": {
+"known_text": "I wasn't expecting it to be so interesting when we started learning Irish together",
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé chomh suimiúil sin nuair a fhoghlaimímid Gaeilge le chéile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L03U06",
+"set": {
+"target_text": "Ní raibh mé ag súil leis ach athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua"
+},
+"expect": {
+"known_text": "I wasn't expecting it but our brain changes every time we learn something new",
+"target_text": "Ní raibh mé ag súil leis ach athraíonn sé ár n-inchinn nuair a fhoghlaimímid rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L04U01",
+"set": {
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimíonn muid le chéile"
+},
+"expect": {
+"known_text": "I wasn't expecting it to be so very interesting when we started learning together",
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé chomh an-suimiúil sin nuair a fhoghlaimímid le chéile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L04U04",
+"set": {
+"target_text": "Ní raibh mé ag súil leis go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimíonn muid rud nua"
+},
+"expect": {
+"known_text": "I wasn't expecting that our brain changes when we learn something new together",
+"target_text": "Ní raibh mé ag súil leis go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimímid rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L04U05",
+"set": {
+"known_text": "I wasn't ready to go but I had to because there was too much to do",
+"target_text": "Ní raibh mé réidh le dul ach caithfidh mé dul mar bhí an iomarca le déanamh"
+},
+"expect": {
+"known_text": "I wasn't ready to leave but I had to because there was too much to do",
+"target_text": "Ní raibh mé réidh le himeacht ach caithfidh mé imeacht mar bhí an iomarca le déanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L04U10",
+"set": {
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé ag athrú ár n-inchinn nuair a fhoghlaimíonn muid an teanga seo"
+},
+"expect": {
+"known_text": "I wasn't expecting it to change our brain when we started learning this language",
+"target_text": "Ní raibh mé ag súil leis go mbeadh sé ag athrú ár n-inchinn nuair a fhoghlaimímid an teanga seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L05U06",
+"set": {
+"target_text": "bhí sé sin rud nach raibh mé ag súil leis nuair a fhoghlaimíonn muid an teanga"
+},
+"expect": {
+"known_text": "That was the kind of thing I wasn't expecting when we started learning the language",
+"target_text": "bhí sé sin rud nach raibh mé ag súil leis nuair a fhoghlaimímid an teanga"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L05U09",
+"set": {
+"target_text": "ceapaim bhí sé sin rud tábhachtach a thuigeann tú sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I think that was something very important to understand before we go any further",
+"target_text": "ceapaim bhí sé sin rud tábhachtach a thuigeann tú sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0113L02B02",
+"set": {
+"known_text": "can't i go",
+"target_text": "nach féidir liom dul"
+},
+"expect": {
+"known_text": "can't i leave",
+"target_text": "nach féidir liom imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0114L01U11",
+"set": {
+"known_text": "I feel it's easier to speak when I'm not worried about making mistakes",
+"target_text": "mothaím go bhfuil sé níos éasca labhairt nuair nach bhfuil mé buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "I feel it's easier to speak when I don't worry about making mistakes",
+"target_text": "mothaím go bhfuil sé níos éasca labhairt nuair nach bhfuil imní orm faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0114L02U04",
+"set": {
+"known_text": "I feel as if I am almost ready to go now",
+"target_text": "mothaím go bhfuil mé beagnach réidh le dul anois"
+},
+"expect": {
+"known_text": "I feel as if I am almost ready to leave now",
+"target_text": "mothaím go bhfuil mé beagnach réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L01U05",
+"set": {
+"known_text": "I'm not going to go now because I don't feel ready",
+"target_text": "níl mé chun dul anois mar ní mhothaím réidh"
+},
+"expect": {
+"known_text": "I'm not going to leave now because I don't feel ready",
+"target_text": "níl mé chun imeacht anois mar ní mhothaím réidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L03B03",
+"set": {
+"known_text": "ready to go now",
+"target_text": "réidh le dul anois"
+},
+"expect": {
+"known_text": "ready to leave now",
+"target_text": "réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L03U06",
+"set": {
+"known_text": "I was ready to go last night",
+"target_text": "bhí mé réidh le dul aréir"
+},
+"expect": {
+"known_text": "I was ready to leave last night",
+"target_text": "bhí mé réidh le himeacht aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L03U07",
+"set": {
+"known_text": "she was ready to go on the next bus",
+"target_text": "bhí sí réidh le dul ar an gcéad bhus eile"
+},
+"expect": {
+"known_text": "she was ready to leave on the next bus",
+"target_text": "bhí sí réidh le himeacht ar an gcéad bhus eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0118L04U04",
+"set": {
+"target_text": "ní raibh mé ag súil leis nuair a bhí muid réidh le dul"
+},
+"expect": {
+"known_text": "I wasn't expecting it when we were ready to go",
+"target_text": "ní raibh mé ag súil leis nuair a bhí muid réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L01B02",
+"set": {
+"known_text": "can I ask a question",
+"target_text": "an féidir liom ceist a chur"
+},
+"expect": {
+"known_text": "can I ask",
+"target_text": "an féidir liom a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L01U03",
+"set": {
+"known_text": "can I ask you why it's not working",
+"target_text": "an féidir liom ceist a chur ort cén fáth nach bhfuil sé ag obair"
+},
+"expect": {
+"known_text": "can I ask why it's not working",
+"target_text": "an féidir liom a fhiafraí cén fáth nach bhfuil sé ag obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03B01",
+"set": {
+"target_text": "ceist a chur ort anois"
+},
+"expect": {
+"known_text": "to ask you now",
+"target_text": "a fhiafraí díot anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03B02",
+"set": {
+"target_text": "ba cheart dom ceist a chur ort"
+},
+"expect": {
+"known_text": "I should ask you",
+"target_text": "ba cheart dom a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03B03",
+"set": {
+"known_text": "I'd like to ask you about something",
+"target_text": "ba mhaith liom ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "I'd like to ask you something",
+"target_text": "ba mhaith liom rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03B04",
+"set": {
+"target_text": "níor mhaith liom ceist a chur ort arís"
+},
+"expect": {
+"known_text": "I wouldn't like to ask you again",
+"target_text": "níor mhaith liom a fhiafraí díot arís"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03U01",
+"set": {
+"target_text": "níl mé chun ceist a chur ort amárach"
+},
+"expect": {
+"known_text": "I'm not going to ask you tomorrow",
+"target_text": "níl mé chun a fhiafraí díot amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03U02",
+"set": {
+"known_text": "we wanted to ask you about something yesterday",
+"target_text": "ba mhian linn ceist a chur ort inné faoi rud éigin"
+},
+"expect": {
+"known_text": "we wanted to ask you something yesterday",
+"target_text": "ba mhian linn rud éigin a fhiafraí díot inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03U03",
+"set": {
+"target_text": "cén fáth nach féidir liom ceist a chur ort cad a dúirt tú"
+},
+"expect": {
+"known_text": "why can't I ask you what you said",
+"target_text": "cén fáth nach féidir liom a fhiafraí díot cad a dúirt tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03U04",
+"set": {
+"known_text": "I'd like to ask you about something before I have to go",
+"target_text": "ba mhaith liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to ask you something before I have to go",
+"target_text": "ba mhaith liom rud éigin a fhiafraí díot sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03U05",
+"set": {
+"target_text": "go raibh maith agat, ba mhaith liom ceist a chur ort faoi mo chara"
+},
+"expect": {
+"known_text": "thank you, I'd like to ask you about my friend",
+"target_text": "go raibh maith agat, ba mhaith liom a fhiafraí díot faoi mo chara"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03U06",
+"set": {
+"target_text": "ní féidir liom ceist a chur ort anois mar tá mé tuirseach"
+},
+"expect": {
+"known_text": "I can't ask you now because I'm tired",
+"target_text": "ní féidir liom a fhiafraí díot anois mar tá mé tuirseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L03U07",
+"set": {
+"known_text": "she wanted to ask you about something new",
+"target_text": "ba mhian léi ceist a chur ort faoi rud nua"
+},
+"expect": {
+"known_text": "she wanted to ask you something new",
+"target_text": "ba mhian léi rud nua a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L04U03",
+"set": {
+"known_text": "why can't I ask you about something before you leave",
+"target_text": "cén fáth nach féidir liom ceist a chur ort faoi rud éigin sula n-imíonn tú"
+},
+"expect": {
+"known_text": "why can't I ask you something before you leave",
+"target_text": "cén fáth nach féidir liom rud éigin a fhiafraí díot sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0120L01B03",
+"set": {
+"target_text": "tá sé suimiúil nuair a fhoghlaimíonn muid"
+},
+"expect": {
+"known_text": "it's interesting when we learn",
+"target_text": "tá sé suimiúil nuair a fhoghlaimímid"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0120L01U01",
+"set": {
+"target_text": "tá sé suimiúil nuair a fhoghlaimíonn muid rud nua"
+},
+"expect": {
+"known_text": "it's interesting when we learn something new",
+"target_text": "tá sé suimiúil nuair a fhoghlaimímid rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L01U15",
+"set": {
+"known_text": "I think it's a good thing to take time to rest after we finish and before you have to go",
+"target_text": "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I think it's a good thing to take time to rest after we finish and before you have to leave",
+"target_text": "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L02U02",
+"set": {
+"target_text": "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "I think that it's a good idea to take time to rest after we finish so that our brain can change when we learn something new",
+"target_text": "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L02U11",
+"set": {
+"target_text": "ceapaim gur smaoineamh maith é sin rudaí suimiúla a léamh mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn ar bhealach iontach"
+},
+"expect": {
+"known_text": "I think that it's a good idea to read interesting things because every time we learn something new our brain changes in a wonderful way",
+"target_text": "ceapaim gur smaoineamh maith é sin rudaí suimiúla a léamh mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn ar bhealach iontach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L01U12",
+"set": {
+"target_text": "cheap mé gur rud maith é leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "I thought it was a good thing to keep going even when things felt difficult because every time we learn something new our brain changes",
+"target_text": "cheap mé gur rud maith é leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L01U15",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn ar bhealach iontach"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to read interesting things and that every time we learn something new our brain changes in a wonderful way",
+"target_text": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh agus nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn ar bhealach iontach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U03",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to keep going when things were difficult because our brain changes every time we learn something new",
+"target_text": "cheap mé gur smaoineamh maith é sin leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U05",
+"set": {
+"known_text": "I thought that it was a good idea and I wanted to ask you before you left about finding people who speak Irish",
+"target_text": "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+},
+"expect": {
+"known_text": "I thought that it was a good idea and I wanted to ask you something before you left about finding people who speak Irish",
+"target_text": "cheap mé gur smaoineamh maith é sin agus ba mhian liom rud éigin a fhiafraí díot sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U10",
+"set": {
+"known_text": "I thought that it was a good idea to take time to rest after we finished and before I had to go at the end",
+"target_text": "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to take time to rest after we finished and before I had to leave at the end",
+"target_text": "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U14",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh as Gaeilge mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to read interesting things in Irish because every time we learn something new our brain changes",
+"target_text": "cheap mé gur smaoineamh maith é sin rudaí suimiúla a léamh as Gaeilge mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L01U08",
+"set": {
+"known_text": "I believe that your idea was very good and I want to find out more about it before I have to go today after we finish",
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé dul inniu tar éis dúinn críochnú"
+},
+"expect": {
+"known_text": "I believe that your idea was very good and I want to find out more about it before I have to leave today after we finish",
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé imeacht inniu tar éis dúinn críochnú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L01U12",
+"set": {
+"target_text": "creidim gur rud maith é botúin a dhéanamh mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus sin an t-aon bhealach a n-oibreoidh sé"
+},
+"expect": {
+"known_text": "I believe that it's a good thing to make mistakes because our brain changes when we learn and that is the only way it works",
+"target_text": "creidim gur rud maith é botúin a dhéanamh mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus sin an t-aon bhealach a n-oibreoidh sé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L02U06",
+"set": {
+"known_text": "I believe that your idea was very good and I want to find out more about it before I have to go today",
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé dul inniu"
+},
+"expect": {
+"known_text": "I believe that your idea was very good and I want to find out more about it before I have to leave today",
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus is mian liom níos mó a fháil amach faoi sula gcaithfidh mé imeacht inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L02U09",
+"set": {
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus tá sé úsáideach tosú ag caint chomh luath agus is féidir leat mar athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid"
+},
+"expect": {
+"known_text": "I believe that your idea was very good and it's useful to start speaking as soon as possible because our brain changes when we learn",
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus tá sé úsáideach tosú ag caint chomh luath agus is féidir leat mar athraíonn sé ár n-inchinn nuair a fhoghlaimímid"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L01U05",
+"set": {
+"known_text": "That isn't the reason and I wanted to ask you before you leave about what you wanted to do yesterday",
+"target_text": "Ní hé sin an fáth agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+},
+"expect": {
+"known_text": "That isn't the reason and I wanted to ask you something before you leave about what you wanted to do yesterday",
+"target_text": "Ní hé sin an fáth agus ba mhian liom rud éigin a fhiafraí díot sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L01U09",
+"set": {
+"known_text": "That isn't the reason and I think it's a good idea to meet up this evening because I wanted to ask you about something",
+"target_text": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+},
+"expect": {
+"known_text": "That isn't the reason and I think it's a good idea to meet up this evening so that I can ask you something I wanted to ask you",
+"target_text": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom rud éigin a fhiafraí díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L01U10",
+"set": {
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes every time we learn something new",
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L02U05",
+"set": {
+"known_text": "That isn't the reason why I wanted to see you and I wanted to ask you about something before I have to go today",
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu"
+},
+"expect": {
+"known_text": "That isn't the reason why I wanted to see you and I wanted to ask you something very important before you had to leave today",
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ba mhian liom rud éigin a fhiafraí díot sula gcaithfidh mé imeacht inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L02U10",
+"set": {
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+},
+"expect": {
+"known_text": "That isn't the reason why I wanted to see you because every time we learn something new our brain changes and that helps us speak better",
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L03U08",
+"set": {
+"known_text": "That isn't the reason why I wanted to see you because I think it's a good idea to meet here and speak Irish before we have to go",
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul"
+},
+"expect": {
+"known_text": "That isn't the reason why I wanted to see you because I think it's a good idea to meet here and speak Irish before we have to leave",
+"target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0132L05U04",
+"set": {
+"known_text": "nobody wanted to hear what she was saying at that moment so we decided to go",
+"target_text": "níor mhian le haon duine an méid a bhí sise a rá a chloisteáil ag an am sin mar sin chinn muid dul"
+},
+"expect": {
+"known_text": "nobody wanted to hear what she was saying at that moment so we decided to leave",
+"target_text": "níor mhian le haon duine an méid a bhí sise a rá a chloisteáil ag an am sin mar sin chinn muid imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0134L01U04",
+"set": {
+"known_text": "it is not a problem because I'm ready to go",
+"target_text": "ní fadhb é mar tá mé réidh le dul"
+},
+"expect": {
+"known_text": "it is not a problem because I'm ready to leave",
+"target_text": "ní fadhb é mar tá mé réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0137L05U02",
+"set": {
+"target_text": "ní chaithfidh muid a bheith foirfe nuair a fhoghlaimíonn muid"
+},
+"expect": {
+"known_text": "we do not need to be perfect when we learn",
+"target_text": "ní chaithfidh muid a bheith foirfe nuair a fhoghlaimímid"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0139L01B03",
+"expect": {
+"target_text": "tá brón orm go gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0139L01U01",
+"expect": {
+"target_text": "Tá brón orm go gcaithfidh mé imeacht chomh luath"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0139L01U03",
+"expect": {
+"target_text": "Tá brón orm go gcaithfidh mé imeacht anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0139L01U06",
+"expect": {
+"target_text": "Tá brón orm go gcaithfidh mé imeacht chomh luath inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02B01",
+"set": {
+"target_text": "an-chineálta agus an-suimiúil"
+},
+"expect": {
+"known_text": "very kind and very interesting",
+"target_text": "an-deas agus an-suimiúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02B02",
+"set": {
+"target_text": "duine an-chineálta a labhraíonn Gaeilge"
+},
+"expect": {
+"known_text": "someone very kind who speaks Irish",
+"target_text": "duine an-deas a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02B03",
+"set": {
+"target_text": "bhí sé sin an-chineálta"
+},
+"expect": {
+"known_text": "that was very kind",
+"target_text": "bhí sé sin an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02B04",
+"set": {
+"target_text": "bhí tú an-chineálta"
+},
+"expect": {
+"known_text": "you were very kind",
+"target_text": "bhí tú an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U01",
+"set": {
+"target_text": "ar ndóigh bhí sé sin an-chineálta"
+},
+"expect": {
+"known_text": "of course that was very kind",
+"target_text": "ar ndóigh bhí sé sin an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U02",
+"set": {
+"target_text": "níl sé an-chineálta ceist a chur uirthi"
+},
+"expect": {
+"known_text": "it is not very kind to ask her",
+"target_text": "níl sé an-deas ceist a chur uirthi"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U03",
+"set": {
+"target_text": "bhí tú an-chineálta aréir"
+},
+"expect": {
+"known_text": "you were very kind last night",
+"target_text": "bhí tú an-deas aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U04",
+"set": {
+"target_text": "ceapaim nach bhfuil sé an-chineálta"
+},
+"expect": {
+"known_text": "I think that it's not very kind",
+"target_text": "ceapaim nach bhfuil sé an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U05",
+"set": {
+"target_text": "bheadh sé sin an-chineálta dá bhféadfá teacht ar ais níos déanaí"
+},
+"expect": {
+"known_text": "that would be very kind if you could come back later on",
+"target_text": "bheadh sé sin an-deas dá bhféadfá teacht ar ais níos déanaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U06",
+"set": {
+"target_text": "bhí sé sin an-chineálta ach níl mé réidh fós"
+},
+"expect": {
+"known_text": "that was very kind but I'm not ready yet",
+"target_text": "bhí sé sin an-deas ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U07",
+"set": {
+"target_text": "dúirt tú nach bhfuil sé an-chineálta"
+},
+"expect": {
+"known_text": "you said that it's not very kind",
+"target_text": "dúirt tú nach bhfuil sé an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L03B01",
+"set": {
+"target_text": "an-chineálta uait"
+},
+"expect": {
+"known_text": "very kind of you",
+"target_text": "an-deas uait"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L03U07",
+"set": {
+"target_text": "go raibh míle maith agat an-chineálta uait"
+},
+"expect": {
+"known_text": "thank you very much very kind of you",
+"target_text": "go raibh míle maith agat an-deas uait"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U01",
+"set": {
+"target_text": "ar ndóigh tá mé buíoch díot mar bhí tú an-chineálta"
+},
+"expect": {
+"known_text": "of course I am grateful to you because you were very kind",
+"target_text": "ar ndóigh tá mé buíoch díot mar bhí tú an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0146L06U12",
+"set": {
+"target_text": "Ní cosúil go bhfuil aon rud ag dul níos fearr dúinn is cuma cad a dhéanann muid"
+},
+"expect": {
+"known_text": "nothing seems to be getting any better for us no matter what we do",
+"target_text": "Ní cosúil go bhfuil aon rud ag dul níos fearr dúinn is cuma cad a dhéanaimid"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L02B03",
+"set": {
+"target_text": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+},
+"expect": {
+"known_text": "she was kind when she saw that I was nervous",
+"target_text": "bhí sí an-deas nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L02U01",
+"set": {
+"target_text": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+},
+"expect": {
+"known_text": "she was very kind when she saw that I was nervous",
+"target_text": "bhí sí an-deas nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L02U05",
+"set": {
+"target_text": "bhí mé sásta go raibh sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+},
+"expect": {
+"known_text": "I was glad she was kind when she saw that I was nervous",
+"target_text": "bhí mé sásta go raibh sí an-deas nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L01B04",
+"set": {
+"target_text": "ach ní raibh sé an-chineálta"
+},
+"expect": {
+"known_text": "but he wasn't very kind",
+"target_text": "ach ní raibh sé an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L02U02",
+"set": {
+"target_text": "bhí tú an-fhoighneach liom agus an-chineálta"
+},
+"expect": {
+"known_text": "you were very patient with me and very kind",
+"target_text": "bhí tú an-fhoighneach liom agus an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03U06",
+"set": {
+"target_text": "bhí tú an-chineálta nuair nach raibh mé ábalta an freagra a fháil"
+},
+"expect": {
+"known_text": "you were very kind when I couldn't find the answer",
+"target_text": "bhí tú an-deas nuair nach raibh mé ábalta an freagra a fháil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03B04",
+"set": {
+"target_text": "ceist a chur ort cad is ainm duit arís"
+},
+"expect": {
+"known_text": "to ask you what your name is again",
+"target_text": "a fhiafraí díot cad is ainm duit arís"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03U04",
+"set": {
+"target_text": "ba mhian léi ceist a chur ort cad is ainm duit"
+},
+"expect": {
+"known_text": "she wanted to ask you what your name is",
+"target_text": "ba mhian léi a fhiafraí díot cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0151L01U05",
+"set": {
+"target_text": "ní hé sin ach ba cheart duit ceist a chur ort féin cén fáth"
+},
+"expect": {
+"known_text": "that was not it but you should ask yourself why",
+"target_text": "ní hé sin ach ba cheart duit tú féin a cheistiú cén fáth"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0155L01U10",
+"set": {
+"known_text": "I don't mind, I am ready to leave as soon as you want"
+},
+"expect": {
+"known_text": "I don't mind, I am ready to leave as soon as you want to go",
+"target_text": "Ní miste liom, tá mé réidh le himeacht chomh luath agus is mian leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0156L04U09",
+"set": {
+"target_text": "níl mé buartha faoi bhotúin a dhéanamh anocht agus ceapaim gur rud maith é sin"
+},
+"expect": {
+"known_text": "I am not worried about making mistakes tonight and I think that is a good thing",
+"target_text": "ach ní bhíonn imní orm faoi bhotúin a dhéanamh anocht agus ceapaim gur rud maith é sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0156L04U10",
+"set": {
+"target_text": "tá sé in am dul abhaile anois ach ba mhaith liom bualadh le chéile arís anocht an tseachtain seo chugainn"
+},
+"expect": {
+"known_text": "it is time to go home now but I want to meet again tonight next week",
+"target_text": "tá sé in am imeacht anois ach ba mhaith liom bualadh le chéile arís anocht an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0163L02U01",
+"set": {
+"target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+},
+"expect": {
+"known_text": "when we learn something new it changes our brain",
+"target_text": "nuair a fhoghlaimímid rud nua athraíonn sé ár n-inchinn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0172L02U02",
+"set": {
+"target_text": "Is mian, bheadh sé sin an-chineálta"
+},
+"expect": {
+"known_text": "yes that would be very kind",
+"target_text": "Is mian, bheadh sé sin an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0172L03B02",
+"set": {
+"target_text": "an-chabhrach agus an-chineálta"
+},
+"expect": {
+"known_text": "very helpful and very kind",
+"target_text": "an-chabhrach agus an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0172L03U06",
+"set": {
+"target_text": "bheadh sé sin an-chabhrach agus an-chineálta"
+},
+"expect": {
+"known_text": "that would be very helpful and very kind",
+"target_text": "bheadh sé sin an-chabhrach agus an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0181L05B06",
+"set": {
+"known_text": "I have to ask a question",
+"target_text": "caithfidh mé ceist a chur"
+},
+"expect": {
+"known_text": "I have to ask",
+"target_text": "caithfidh mé a fhiafraí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0181L05U04",
+"set": {
+"target_text": "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+},
+"expect": {
+"known_text": "I have to ask her what are you going to do before she leaves on Sunday",
+"target_text": "caithfidh mé a fhiafraí di cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0181L05U15",
+"set": {
+"target_text": "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+},
+"expect": {
+"known_text": "I have to ask if she can help me for a while this Sunday morning",
+"target_text": "caithfidh mé a fhiafraí di an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0200L03U11",
+"set": {
+"known_text": "I think it is very important to make sure that everybody is happy before we leave"
+},
+"expect": {
+"known_text": "I think it is very important to make sure that everybody is happy before we go",
+"target_text": "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil gach duine sásta sula n-imíonn muid"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0202L01U03",
+"set": {
+"target_text": "Ní raibh duine ar bith cinnte cad a bhí chun tarlú agus bhí gach duine buartha faoi"
+},
+"expect": {
+"known_text": "nobody was sure what was going to happen and everyone was worrying about it",
+"target_text": "Ní raibh duine ar bith cinnte cad a bhí chun tarlú agus bhí imní ar gach duine faoi"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0202L01U12",
+"set": {
+"target_text": "Ní raibh duine ar bith cinnte an raibh duine ar bith chun cabhrú agus bhí gach duine buartha faoi cad a bhí le déanamh"
+},
+"expect": {
+"known_text": "nobody was sure whether anyone was going to help and everyone was worried about what to do next",
+"target_text": "Ní raibh duine ar bith cinnte an raibh duine ar bith chun cabhrú agus bhí imní ar gach duine faoi cad a bhí le déanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0205L01U01",
+"set": {
+"known_text": "i wanted to ask you about something but i have forgotten",
+"target_text": "ba mhian liom ceist a chur ort faoi rud éigin ach tá dearmad déanta agam"
+},
+"expect": {
+"known_text": "i wanted to ask you something but i have forgotten",
+"target_text": "ba mhian liom rud éigin a fhiafraí díot ach tá dearmad déanta agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0222L01U04",
+"set": {
+"target_text": "tá sé réidh le dul anois"
+},
+"expect": {
+"known_text": "he is ready to go now",
+"target_text": "tá sé réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0228L01U01",
+"set": {
+"target_text": "tá an fear sin an-chineálta"
+},
+"expect": {
+"known_text": "that man is very kind",
+"target_text": "tá an fear sin an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0228L01U06",
+"set": {
+"target_text": "tá an fear sin réidh le dul anois"
+},
+"expect": {
+"known_text": "that man is ready to go now",
+"target_text": "tá an fear sin réidh le himeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0231L02U06",
+"set": {
+"target_text": "tá brón orm ach tá aithne agam ar sheanfhear a bhíodh an-chineálta"
+},
+"expect": {
+"known_text": "i am sorry but i know an old man who used to be very kind",
+"target_text": "tá brón orm ach tá aithne agam ar sheanfhear a bhíodh an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0234L03U02",
+"set": {
+"target_text": "tá an fear sin a oibríonn san oifig an-chineálta"
+},
+"expect": {
+"known_text": "that man who works in the office is very kind",
+"target_text": "tá an fear sin a oibríonn san oifig an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0235L06U03",
+"set": {
+"target_text": "ba cheart dom rud éigin a insint duit sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I should have something to tell you before I have to go",
+"target_text": "ba cheart dom rud éigin a insint duit sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0236L03B02",
+"set": {
+"target_text": "go raibh sí réidh le dul"
+},
+"expect": {
+"known_text": "that she was ready to go",
+"target_text": "go raibh sí réidh le himeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0246L04B04",
+"set": {
+"target_text": "ba mhian liom ceist a chur uirthi ach bhí sí ró-ghnóthach"
+},
+"expect": {
+"known_text": "I wanted to ask her but she was too busy",
+"target_text": "ba mhian liom a fhiafraí di ach bhí sí ró-ghnóthach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0246L04U03",
+"set": {
+"target_text": "bhí mé ag iarraidh ceist a chur uirthi ach bhí sí ró-ghnóthach le stopadh agus labhairt liom"
+},
+"expect": {
+"known_text": "I tried to ask her but she was too busy to stop and talk to me",
+"target_text": "bhí mé ag iarraidh a fhiafraí di ach bhí sí ró-ghnóthach le stopadh agus labhairt liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04B01",
+"set": {
+"target_text": "sula rachaidh tú maidin amárach"
+},
+"expect": {
+"known_text": "before you go tomorrow morning",
+"target_text": "sula n-imíonn tú maidin amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04B02",
+"set": {
+"target_text": "tú a fheiceáil sula rachaidh tú"
+},
+"expect": {
+"known_text": "to see you before you go",
+"target_text": "tú a fheiceáil sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04B03",
+"set": {
+"target_text": "é a thabhairt dó sula rachaidh tú"
+},
+"expect": {
+"known_text": "give it to him before you go",
+"target_text": "é a thabhairt dó sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04B04",
+"set": {
+"target_text": "caithfidh muid críochnú sula rachaidh tú anocht"
+},
+"expect": {
+"known_text": "we must finish before you go tonight",
+"target_text": "caithfidh muid críochnú sula n-imíonn tú anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04U01",
+"set": {
+"target_text": "sula rachaidh tú go raibh míle maith agat"
+},
+"expect": {
+"known_text": "before you go thank you very much",
+"target_text": "sula n-imíonn tú go raibh míle maith agat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04U02",
+"set": {
+"target_text": "sula rachaidh tú an féidir leat an leabhar sin a thabhairt dom"
+},
+"expect": {
+"known_text": "before you go can you give me that book",
+"target_text": "sula n-imíonn tú an féidir leat an leabhar sin a thabhairt dom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04U03",
+"set": {
+"target_text": "ba mhaith liom tú a fheiceáil sula rachaidh tú anocht"
+},
+"expect": {
+"known_text": "I'd like to see you before you go tonight",
+"target_text": "ba mhaith liom tú a fheiceáil sula n-imíonn tú anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04U04",
+"set": {
+"target_text": "níor cheart duit a bheith buartha sula rachaidh tú"
+},
+"expect": {
+"known_text": "you shouldn't be worried before you go",
+"target_text": "níor cheart duit a bheith buartha sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04U05",
+"set": {
+"target_text": "an féidir leat insint dom cad atá uaidh sula rachaidh tú"
+},
+"expect": {
+"known_text": "can you tell me what he wants before you go",
+"target_text": "an féidir leat insint dom cad atá uaidh sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04U06",
+"set": {
+"target_text": "tá súil agam go gcríochnóidh tú sula rachaidh tú"
+},
+"expect": {
+"known_text": "I hope that you'll finish before you go",
+"target_text": "tá súil agam go gcríochnóidh tú sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0249L04U07",
+"set": {
+"target_text": "tá mé chun é a thabhairt dó sula rachaidh tú"
+},
+"expect": {
+"known_text": "I am going to give it to him before you go",
+"target_text": "tá mé chun é a thabhairt dó sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02B01",
+"set": {
+"target_text": "mar tá mé buartha"
+},
+"expect": {
+"known_text": "because I'm worried",
+"target_text": "mar tá imní orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02B02",
+"set": {
+"target_text": "tá mé buartha inniu"
+},
+"expect": {
+"known_text": "I'm worried today",
+"target_text": "tá imní orm inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02B03",
+"set": {
+"target_text": "ach tá mé buartha faoi sin"
+},
+"expect": {
+"known_text": "but I'm worried about that",
+"target_text": "ach tá imní orm faoi sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02B04",
+"set": {
+"target_text": "agus ansin tá mé buartha"
+},
+"expect": {
+"known_text": "and then I'm worried",
+"target_text": "agus ansin tá imní orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02U01",
+"set": {
+"target_text": "tá mé buartha mar sheol sí dhá ríomhphost chugam an tseachtain seo caite"
+},
+"expect": {
+"known_text": "I'm worried because she sent two emails to me last week",
+"target_text": "tá imní orm mar sheol sí dhá ríomhphost chugam an tseachtain seo caite"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02U02",
+"set": {
+"target_text": "níl a fhios agam cén fáth ach tá mé buartha inniu"
+},
+"expect": {
+"known_text": "I don't know why but I'm worried today",
+"target_text": "níl a fhios agam cén fáth ach tá imní orm inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02U03",
+"set": {
+"target_text": "tá mé buartha faoi sin agus níl a fhios agam cén fáth"
+},
+"expect": {
+"known_text": "I'm worried about that and I don't know why",
+"target_text": "tá imní orm faoi sin agus níl a fhios agam cén fáth"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02U04",
+"set": {
+"target_text": "tá brón orm ach tá mé buartha"
+},
+"expect": {
+"known_text": "I'm sorry but I'm worried",
+"target_text": "tá brón orm ach tá imní orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02U05",
+"set": {
+"target_text": "tá mé buartha ó mhaidin"
+},
+"expect": {
+"known_text": "I've been worried since this morning",
+"target_text": "tá imní orm ó mhaidin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L02U06",
+"set": {
+"target_text": "tá mé buartha agus tá m'airgead ar ais uaim"
+},
+"expect": {
+"known_text": "I'm worried and I want my money back",
+"target_text": "tá imní orm agus tá m'airgead ar ais uaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L03B03",
+"set": {
+"target_text": "tá mé buartha go mbeidh mé"
+},
+"expect": {
+"known_text": "I'm worried that I'm going to be",
+"target_text": "tá imní orm go mbeidh mé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L03U01",
+"set": {
+"target_text": "tá mé buartha go mbeidh mé ró-ghnóthach amárach"
+},
+"expect": {
+"known_text": "I'm worried that I'm going to be too busy tomorrow",
+"target_text": "tá imní orm go mbeidh mé ró-ghnóthach amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L03U06",
+"set": {
+"target_text": "níl a fhios agam cén fáth ach tá mé buartha go mbeidh mé neirbhíseach"
+},
+"expect": {
+"known_text": "I don't know why but I'm worried that I'm going to be nervous",
+"target_text": "níl a fhios agam cén fáth ach tá imní orm go mbeidh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L04B01",
+"set": {
+"target_text": "bhí mé buartha go mbeidh mé déanach"
+},
+"expect": {
+"known_text": "I was worried I would be late",
+"target_text": "bhí imní orm go mbeidh mé déanach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L04U01",
+"set": {
+"target_text": "bhí mé buartha go mbeidh mé déanach mar bhí an iomarca oibre le déanamh agam roimh imeacht"
+},
+"expect": {
+"known_text": "I was worried I would be late because I had too much work to do before I could leave",
+"target_text": "bhí imní orm go mbeidh mé déanach mar bhí an iomarca oibre le déanamh agam roimh imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L04U06",
+"set": {
+"target_text": "dúirt sí liom go raibh sí buartha faoi a bheith déanach mar bhí an iomarca oibre le déanamh uirthi roimh imeacht"
+},
+"expect": {
+"known_text": "she told me she was worried about being late because she had too much work to finish before leaving",
+"target_text": "dúirt sí liom go raibh imní uirthi faoi a bheith déanach mar bhí an iomarca oibre le déanamh uirthi roimh imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L04U08",
+"set": {
+"target_text": "bhí sé buartha faoi a bheith déanach mar bhí a fhios aige go raibh sé deacair gach rud a dhéanamh in am"
+},
+"expect": {
+"known_text": "he was worried about being late because he knew it was hard to get everything done on time",
+"target_text": "bhí imní air faoi a bheith déanach mar bhí a fhios aige go raibh sé deacair gach rud a dhéanamh in am"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0271L03U06",
+"set": {
+"target_text": "tá mé buartha mar tá mé chun teacht an mhí seo chugainn"
+},
+"expect": {
+"known_text": "I'm worried because I am going to come next month",
+"target_text": "tá imní orm mar tá mé chun teacht an mhí seo chugainn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0272L02B01",
+"set": {
+"target_text": "Ba mhaith, sin an-chineálta"
+},
+"expect": {
+"known_text": "yes, that's very kind",
+"target_text": "Ba mhaith, sin an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0272L02U01",
+"set": {
+"target_text": "Ba mhaith, go raibh maith agat, sin an-chineálta"
+},
+"expect": {
+"known_text": "yes, thank you, that's very kind",
+"target_text": "Ba mhaith, go raibh maith agat, sin an-deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0272L02U02",
+"set": {
+"target_text": "Ba mhaith, sin an-chineálta, ba mhaith liom teacht"
+},
+"expect": {
+"known_text": "yes, that's very kind, I'd like to come",
+"target_text": "Ba mhaith, sin an-deas, ba mhaith liom teacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0272L03U01",
+"set": {
+"target_text": "smaoineamh iontach ach tá mé buartha"
+},
+"expect": {
+"known_text": "a great idea but i'm worried",
+"target_text": "smaoineamh iontach ach tá imní orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0273L03U01",
+"set": {
+"target_text": "tá mé buartha mar tá an iomarca oibre agam"
+},
+"expect": {
+"known_text": "I'm worried because I have too much work",
+"target_text": "tá imní orm mar tá an iomarca oibre agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0273L03U07",
+"set": {
+"target_text": "tá an iomarca oibre agam agus tá mé buartha"
+},
+"expect": {
+"known_text": "I have too much work and I'm worried",
+"target_text": "tá an iomarca oibre agam agus tá imní orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0274L02U15",
+"set": {
+"target_text": "tá sé tábhachtach imeacht in am agus sin an fáth ar theastaigh uaim labhairt leat faoi sula rachaidh tú"
+},
+"expect": {
+"known_text": "it is important to leave on time and that is why I wanted to talk to you before you go",
+"target_text": "tá sé tábhachtach imeacht in am agus sin an fáth ar theastaigh uaim labhairt leat faoi sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0274L03U06",
+"set": {
+"target_text": "tá brón orm go gcaithfidh mé imeacht i gceann cúpla lá agus níor theastaigh uaim dul chomh luath sin"
+},
+"expect": {
+"known_text": "I am sorry that I have to leave in a few days and I did not want to go so soon",
+"target_text": "tá brón orm go gcaithfidh mé imeacht i gceann cúpla lá agus níor theastaigh uaim imeacht chomh luath sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0276L03U07",
+"set": {
+"target_text": "tá mé sásta fanacht ach ba mhaith liom labhairt leat faoi rud éigin sula rachaidh tú"
+},
+"expect": {
+"known_text": "I am happy to stay but I would like to talk to you about something before you go",
+"target_text": "tá mé sásta fanacht ach ba mhaith liom labhairt leat faoi rud éigin sula n-imíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0278L02U03",
+"set": {
+"target_text": "tá mé buartha mar ní féidir liom gach rud a chríochnú"
+},
+"expect": {
+"known_text": "I'm worried because I can't finish everything",
+"target_text": "tá imní orm mar ní féidir liom gach rud a chríochnú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0279L01U05",
+"set": {
+"target_text": "bhí sí buartha mar ní raibh mórán ama fágtha le gach rud a dheisiú sula gcaithfidh mé imeacht"
+},
+"expect": {
+"known_text": "she was worried because there wasn't much time left to fix everything before I had to leave",
+"target_text": "bhí imní uirthi mar ní raibh mórán ama fágtha le gach rud a dheisiú sula gcaithfidh mé imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0280L02U06",
+"set": {
+"target_text": "tá mé buartha ach is é seo an jab is tábhachtaí"
+},
+"expect": {
+"known_text": "I'm worried but this is the most important job",
+"target_text": "tá imní orm ach is é seo an jab is tábhachtaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L01U05",
+"set": {
+"target_text": "ba mhian liom ceist a chur ort cé acu de do smaointe is fearr"
+},
+"expect": {
+"known_text": "I wanted to ask you which of your ideas is best",
+"target_text": "ba mhian liom a fhiafraí díot cé acu de do smaointe is fearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0300L01U06",
+"set": {
+"target_text": "ní mian léi stopadh agus tá mé buartha"
+},
+"expect": {
+"known_text": "she doesn't want to stop and I'm worried",
+"target_text": "ní mian léi stopadh agus tá imní orm"
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 1,
+"known_text": "I want to leave",
+"target_text": "is mian liom imeacht",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 20,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 2,
+"known_text": "I'm sorry that I need to leave",
+"target_text": "tá brón orm go gcaithfidh mé imeacht",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 36,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 3,
+"known_text": "it is time to leave now",
+"target_text": "tá sé in am imeacht anois",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 25,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 4,
+"known_text": "he was trying to leave",
+"target_text": "bhí sé ag iarraidh imeacht",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 26,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 5,
+"known_text": "I'm sorry that I need to leave so early",
+"target_text": "Tá brón orm go gcaithfidh mé imeacht chomh luath sin",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 52,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 6,
+"known_text": "I'm sorry that I need to leave now",
+"target_text": "Tá brón orm go gcaithfidh mé imeacht anois",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 42,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 7,
+"known_text": "I'm sorry that I need to leave so early today",
+"target_text": "Tá brón orm go gcaithfidh mé imeacht chomh luath sin inniu",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 58,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 8,
+"known_text": "he was trying to leave early",
+"target_text": "bhí sé ag iarraidh imeacht go luath",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 35,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 9,
+"known_text": "I am not sure I want to leave yet because there is still so much to learn here",
+"target_text": "Níl mé cinnte gur mian liom imeacht fós mar tá go leor le foghlaim anseo",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 72,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 10,
+"known_text": "he was not trying to leave and he wanted to stay for a while to keep learning",
+"target_text": "Ní raibh sé ag iarraidh imeacht agus ba mhian leis fanacht ar feadh tamaill ag foghlaim",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 87,
+"lego_count": 16
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 11,
+"known_text": "I don't want to leave now",
+"target_text": "ní mian liom imeacht anois",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 26,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0139L02U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 139,
+"lego_index": 2,
+"position": 12,
+"known_text": "we didn't want to stop and we didn't want to leave",
+"target_text": "níor mhian linn stopadh agus níor mhian linn imeacht",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #241, 11 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 52,
+"lego_count": 9
+}
+}
+]
+}

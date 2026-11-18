@@ -1,0 +1,963 @@
+{
+"family": "reorders",
+"seeds": [
+1,
+2,
+3,
+4,
+5,
+6,
+12,
+27,
+28,
+29,
+34,
+37,
+39,
+41,
+42,
+52,
+53,
+54,
+56,
+70,
+72,
+75,
+80,
+82,
+84,
+85,
+86,
+87,
+89,
+92,
+95,
+98,
+109,
+110,
+122,
+125,
+128,
+130,
+131,
+133,
+136,
+146,
+147,
+149,
+150,
+153,
+154,
+155,
+157,
+165,
+166,
+181,
+184,
+190,
+192,
+209,
+211,
+217,
+221,
+223,
+225,
+232,
+233,
+234,
+236,
+237,
+239,
+241,
+247,
+248,
+250,
+253,
+256,
+262,
+267,
+277,
+287,
+288,
+290,
+292,
+293,
+294,
+298,
+299
+],
+"ops": [
+{
+"op": "lego.reorder",
+"seed_number": 1,
+"order": [
+"S0001L01",
+"S0001L02",
+"S0001L06",
+"S0001L04",
+"S0001L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 2,
+"order": [
+"S0002L03",
+"S0002L01",
+"S0002L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 3,
+"order": [
+"S0003L01",
+"S0003L03",
+"S0003L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 4,
+"order": [
+"S0004L01",
+"S0004L02",
+"S0004L04",
+"S0004L03",
+"S0004L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 5,
+"order": [
+"S0005L04",
+"S0005L05",
+"S0005L02",
+"S0005L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 6,
+"order": [
+"S0006L03",
+"S0006L01",
+"S0006L02",
+"S0006L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 12,
+"order": [
+"S0012L01",
+"S0012L04",
+"S0012L02",
+"S0012L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 28,
+"order": [
+"S0028L03",
+"S0028L01",
+"S0028L04",
+"S0028L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 29,
+"order": [
+"S0029L03",
+"S0029L01",
+"S0029L04",
+"S0029L02",
+"S0029L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 34,
+"order": [
+"S0034L01",
+"S0034L04",
+"S0034L02",
+"S0034L05",
+"S0034L06",
+"S0034L07",
+"S0034L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 37,
+"order": [
+"S0037L01",
+"S0037L02",
+"S0037L06",
+"S0037L04",
+"S0037L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 39,
+"order": [
+"S0039L03",
+"S0039L04",
+"S0039L05",
+"S0039L01",
+"S0039L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 41,
+"order": [
+"S0041L02",
+"S0041L01",
+"S0041L03",
+"S0041L05",
+"S0041L07"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 42,
+"order": [
+"S0042L03",
+"S0042L05",
+"S0042L06",
+"S0042L01",
+"S0042L02",
+"S0042L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 52,
+"order": [
+"S0052L01",
+"S0052L02",
+"S0052L03",
+"S0052L06",
+"S0052L08",
+"S0052L07"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 53,
+"order": [
+"S0053L01",
+"S0053L02",
+"S0053L05",
+"S0053L03",
+"S0053L04"
+],
+"phrases": {
+"gle_v2_for_eng:S0053L05B04": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 54,
+"order": [
+"S0054L01",
+"S0054L03",
+"S0054L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 56,
+"order": [
+"S0056L01",
+"S0056L03",
+"S0056L02",
+"S0056L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 70,
+"order": [
+"S0070L03",
+"S0070L01",
+"S0070L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 72,
+"order": [
+"S0072L03",
+"S0072L02",
+"S0072L01",
+"S0072L04"
+],
+"phrases": {
+"gle_v2_for_eng:S0072L02B02": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 75,
+"order": [
+"S0075L02",
+"S0075L03",
+"S0075L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 80,
+"order": [
+"S0080L02",
+"S0080L01",
+"S0080L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 82,
+"order": [
+"S0082L01",
+"S0082L02",
+"S0082L04",
+"S0082L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 84,
+"order": [
+"S0084L02",
+"S0084L03",
+"S0084L04",
+"S0084L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 85,
+"order": [
+"S0085L01",
+"S0085L05",
+"S0085L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 86,
+"order": [
+"S0086L03",
+"S0086L01",
+"S0086L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 87,
+"order": [
+"S0087L02",
+"S0087L05",
+"S0087L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 89,
+"order": [
+"S0089L01",
+"S0089L06",
+"S0089L04",
+"S0089L07",
+"S0089L03"
+],
+"phrases": {
+"gle_v2_for_eng:S0089L06B03": "move",
+"gle_v2_for_eng:S0089L06U01": "move",
+"gle_v2_for_eng:S0089L06U06": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 92,
+"order": [
+"S0092L03",
+"S0092L01",
+"S0092L04",
+"S0092L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 95,
+"order": [
+"S0095L03",
+"S0095L04",
+"S0095L01",
+"S0095L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 98,
+"order": [
+"S0098L01",
+"S0098L03",
+"S0098L04",
+"S0098L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 109,
+"order": [
+"S0109L02",
+"S0109L03",
+"S0109L04",
+"S0109L05",
+"S0109L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 110,
+"order": [
+"S0110L01",
+"S0110L02",
+"S0110L06",
+"S0110L03",
+"S0110L05"
+],
+"phrases": {
+"gle_v2_for_eng:S0110L06B06": "move",
+"gle_v2_for_eng:S0110L06U01": "move",
+"gle_v2_for_eng:S0110L06U04": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 122,
+"order": [
+"S0122L01",
+"S0122L02",
+"S0122L04",
+"S0122L03",
+"S0122L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 125,
+"order": [
+"S0125L01",
+"S0125L03",
+"S0125L04",
+"S0125L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 128,
+"order": [
+"S0128L01",
+"S0128L04",
+"S0128L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 130,
+"order": [
+"S0130L01",
+"S0130L02",
+"S0130L04",
+"S0130L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 131,
+"order": [
+"S0131L02",
+"S0131L03",
+"S0131L06",
+"S0131L04",
+"S0131L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 133,
+"order": [
+"S0133L03",
+"S0133L01",
+"S0133L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 136,
+"order": [
+"S0136L01",
+"S0136L04",
+"S0136L02",
+"S0136L05",
+"S0136L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 146,
+"order": [
+"S0146L06",
+"S0146L01",
+"S0146L04",
+"S0146L07",
+"S0146L05"
+],
+"phrases": {
+"gle_v2_for_eng:S0146L06B03": "move",
+"gle_v2_for_eng:S0146L06U02": "move",
+"gle_v2_for_eng:S0146L06U07": "move",
+"gle_v2_for_eng:S0146L06U08": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 147,
+"order": [
+"S0147L03",
+"S0147L04",
+"S0147L01",
+"S0147L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 149,
+"order": [
+"S0149L01",
+"S0149L04",
+"S0149L05",
+"S0149L02",
+"S0149L03",
+"S0149L06"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 150,
+"order": [
+"S0150L01",
+"S0150L03",
+"S0150L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 153,
+"order": [
+"S0153L01",
+"S0153L03",
+"S0153L02"
+],
+"phrases": {
+"gle_v2_for_eng:S0153L03U08": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 154,
+"order": [
+"S0154L03",
+"S0154L04",
+"S0154L01",
+"S0154L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 155,
+"order": [
+"S0155L01",
+"S0155L02",
+"S0155L04",
+"S0155L03",
+"S0155L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 157,
+"order": [
+"S0157L02",
+"S0157L03",
+"S0157L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 165,
+"order": [
+"S0165L02",
+"S0165L03",
+"S0165L04",
+"S0165L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 166,
+"order": [
+"S0166L01",
+"S0166L03",
+"S0166L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 181,
+"order": [
+"S0181L01",
+"S0181L05",
+"S0181L02",
+"S0181L03",
+"S0181L04"
+],
+"phrases": {
+"gle_v2_for_eng:S0181L05U01": "move",
+"gle_v2_for_eng:S0181L05U08": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 184,
+"order": [
+"S0184L03",
+"S0184L01",
+"S0184L04",
+"S0184L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 190,
+"order": [
+"S0190L04",
+"S0190L02",
+"S0190L05"
+],
+"phrases": {
+"gle_v2_for_eng:S0190L04B04": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 192,
+"order": [
+"S0192L02",
+"S0192L01",
+"S0192L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 209,
+"order": [
+"S0209L01",
+"S0209L02",
+"S0209L04",
+"S0209L03",
+"S0209L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 211,
+"order": [
+"S0211L02",
+"S0211L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 217,
+"order": [
+"S0217L02",
+"S0217L04",
+"S0217L03",
+"S0217L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 221,
+"order": [
+"S0221L01",
+"S0221L02",
+"S0221L04",
+"S0221L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 223,
+"order": [
+"S0223L02",
+"S0223L01",
+"S0223L03"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 225,
+"order": [
+"S0225L01",
+"S0225L02",
+"S0225L05",
+"S0225L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 232,
+"order": [
+"S0232L01",
+"S0232L06",
+"S0232L03",
+"S0232L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 233,
+"order": [
+"S0233L01",
+"S0233L02",
+"S0233L06",
+"S0233L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 234,
+"order": [
+"S0234L05",
+"S0234L01",
+"S0234L02",
+"S0234L03",
+"S0234L04"
+],
+"phrases": {
+"gle_v2_for_eng:S0234L05B03": "move",
+"gle_v2_for_eng:S0234L05B06": "move",
+"gle_v2_for_eng:S0234L05U01": "move",
+"gle_v2_for_eng:S0234L05U08": "move",
+"gle_v2_for_eng:S0234L05U09": "move"
+}
+},
+{
+"op": "lego.reorder",
+"seed_number": 236,
+"order": [
+"S0236L01",
+"S0236L05",
+"S0236L02",
+"S0236L03",
+"S0236L04",
+"S0236L06"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 237,
+"order": [
+"S0237L01",
+"S0237L03",
+"S0237L05",
+"S0237L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 239,
+"order": [
+"S0239L02",
+"S0239L03",
+"S0239L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 241,
+"order": [
+"S0241L02",
+"S0241L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 247,
+"order": [
+"S0247L02",
+"S0247L03",
+"S0247L04",
+"S0247L01",
+"S0247L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 248,
+"order": [
+"S0248L01",
+"S0248L03",
+"S0248L02",
+"S0248L04",
+"S0248L05",
+"S0248L07",
+"S0248L08",
+"S0248L06"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 250,
+"order": [
+"S0250L01",
+"S0250L02",
+"S0250L04",
+"S0250L03",
+"S0250L05",
+"S0250L06"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 253,
+"order": [
+"S0253L01",
+"S0253L03",
+"S0253L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 256,
+"order": [
+"S0256L03",
+"S0256L01",
+"S0256L04",
+"S0256L05"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 262,
+"order": [
+"S0262L02",
+"S0262L03",
+"S0262L01",
+"S0262L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 267,
+"order": [
+"S0267L04",
+"S0267L05",
+"S0267L03",
+"S0267L06"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 277,
+"order": [
+"S0277L05",
+"S0277L02",
+"S0277L03",
+"S0277L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 287,
+"order": [
+"S0287L01",
+"S0287L02",
+"S0287L03",
+"S0287L05",
+"S0287L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 288,
+"order": [
+"S0288L01",
+"S0288L03",
+"S0288L04",
+"S0288L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 290,
+"order": [
+"S0290L01",
+"S0290L03",
+"S0290L02"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 292,
+"order": [
+"S0292L02",
+"S0292L03",
+"S0292L01",
+"S0292L04"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 293,
+"order": [
+"S0293L02",
+"S0293L03",
+"S0293L04",
+"S0293L01"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 294,
+"order": [
+"S0294L02",
+"S0294L07",
+"S0294L06",
+"S0294L08"
+]
+},
+{
+"op": "lego.reorder",
+"seed_number": 298,
+"order": [
+"S0298L02",
+"S0298L04",
+"S0298L03"
+]
+}
+],
+"decisions_why": "every newly_reaches_forward phrase is MOVED to the first basket where all its pieces are taught (the op's own proposal; canon P1 no phrase uses a later piece, P25 drill phrases live under a new LEGO)",
+"swaps_why": "27, 147, 299: the piece every phrase uses comes first, so the following LEGO keeps practice (DEBUT_WITHOUT_PRACTICE guard refused the first apply); small pieces still first"
+}

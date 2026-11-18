@@ -32,7 +32,9 @@ const DURATION_TOLERANCE = 0
  * @param {string} bucket - S3 bucket name
  * @param {number} expectedDuration - Expected duration from manifest
  * @param {number} tolerance - Tolerance in seconds (default: 0.001)
- * @returns {Promise<Object|null>} { uuid, expectedDuration, actualDuration, difference, matched } or null on failure
+ * @returns {Promise<Object>} { uuid, expectedDuration, actualDuration, difference, matched, format }, or
+ *   { uuid, error } when the file could not be downloaded or measured — the reason is kept so Step 2
+ *   can say WHY the check could not run (job #994: a missing sox used to vanish into a bare count)
  */
 async function extractS3Duration(uuid, bucket, expectedDuration, tolerance = DURATION_TOLERANCE) {
   const workerId = Math.random().toString(36).substring(7)
@@ -73,7 +75,7 @@ async function extractS3Duration(uuid, bucket, expectedDuration, tolerance = DUR
     }
   } catch (error) {
     logger.error(`Failed to extract duration for ${uuid}: ${error.message}`)
-    return null
+    return { uuid, error: error.message }
   } finally {
     // Clean up temp file and directory
     try {
@@ -129,12 +131,12 @@ async function batchVerifyDurations(samples, bucket, concurrency = 20, onProgres
 
       results.checked++
 
-      if (result === null) {
-        // Failed to extract duration
+      if (result.error) {
+        // Failed to download or measure — counted, and Step 2 fails closed on any (job #994)
         results.errors++
         results.errorDetails.push({
           uuid: sample.uuid,
-          error: 'Failed to extract duration',
+          error: result.error,
           stage: 'download_or_extract'
         })
       } else {

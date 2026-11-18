@@ -9,6 +9,8 @@
 // /api/voicelab route, read and write (Kai's agents; e.g. POST /api/admin/unapprove-seeds,
 // POST /api/admin/recompute-decompositions — both dry-run unless "apply":true).
 // Kai's agents: add  --key kai --agent kai-<id>  to sign with the Kai-only admin:all key (agent ids must start kai-).
+// Pod jobs (job #809): add  --key pods --agent pods-<job>-<what>  — the standing pod:write key: held pod lines,
+// stage-draft, audio-plan, POST /api/admin/pods/:course/{clone,language-text,switchover}; nothing else.
 // Popty is http://localhost:3470.
 'use strict';
 const { execFileSync } = require('child_process');

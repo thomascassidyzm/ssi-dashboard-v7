@@ -160,7 +160,7 @@ async function save() {
   const sent = edit()
   state.value = 'saving'
   try {
-    const out = await applyEdit(props.line.id, sent)
+    const out = await applyEdit(props.line.id, sent, preview.value.before)
     saved.value = out
     state.value = 'saved'
     emit('applied', {
@@ -171,8 +171,18 @@ async function save() {
     })
   } catch (e) {
     error.value = e.message
+    if (e.data && e.data.reason === 'stale_preview') await linePreviewWentStale()
     state.value = 'ready'
   }
+}
+
+// SOMEONE ELSE CHANGED THE LINE after the check: nothing was saved. Read the line as it is now and
+// take Save away, so the recordist checks again and sees what they would be changing — the words
+// in the boxes are theirs and stay.
+async function linePreviewWentStale() {
+  error.value = 'Someone changed this line after you checked it, so nothing was saved. Check the change again before saving.'
+  preview.value = null
+  try { row.value = await readLine(props.line.id) } catch { /* the message above still stands */ }
 }
 
 async function undo() {

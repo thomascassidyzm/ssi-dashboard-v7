@@ -91,7 +91,21 @@ describe('planSplitCuts — which lines are cut from his take', () => {
     const { cuts: planned, skipped } = cuts.planSplitCuts({ podIds: [N], sentences: t.listening_pod_sentences, clipById,
       genderOf, recordist: { voiceId: ARAN, spellings: [ARAN], gender: 'm' } })
     expect(planned.map((c) => [c.sentenceId.slice(-9), c.replace.map((r) => r.index)])).toEqual([['SC06-S003', [0]], ['SC06-S013', [0, 1, 2, 3, 4]]])
-    expect(skipped).toMatchObject({ otherGender: 1, leftToOtherJob: 1, notSplit: 1 })
+    // SC01-S004 (Sarah, Welsh whole) carries English pieces, so it reaches the gender gate now (job #878) and stops there.
+    expect(skipped).toMatchObject({ otherGender: 2, leftToOtherJob: 1, notSplit: 0 })
+  })
+  it('a man\'s line whose Welsh is whole but whose English has pieces is cut too: the Drill plays them by their words (job #878)', () => {
+    const t = fixture()
+    const waiter = row('SC09-S002', 'James', 'Welcome. Please follow me.', U['take-james'], [U.s7, U.s8], 0)
+    const single = row('SC09-S003', 'James', "I'm James.", U['take-james'], [U.s1], 0)
+    const whole = row('SC09-S004', 'James', "I'm James. Pleased to meet you.", U['take-james'], [], 0)
+    const clipById = new Map(t.course_audio.map((c) => [c.id, c]))
+    const { cuts: planned, skipped } = cuts.planSplitCuts({ podIds: [N], sentences: [waiter, single, whole], clipById,
+      genderOf, recordist: { voiceId: ARAN, spellings: [ARAN], gender: 'm' } })
+    expect(planned.map((c) => [c.sentenceId.slice(-9), c.replace.map((r) => r.index)])).toEqual([['SC09-S002', [0, 1]]])
+    expect(skipped.notSplit).toBe(2) // one piece, or none, is not a line in pieces
+    expect(cuts.playsInSentences(waiter)).toBe(false)
+    expect(cuts.hasKnownPieces(waiter)).toBe(true)
   })
   it('a woman\'s line is not cut even from a woman reader\'s take: only the men\'s lines are ruled on', () => {
     const t = fixture()

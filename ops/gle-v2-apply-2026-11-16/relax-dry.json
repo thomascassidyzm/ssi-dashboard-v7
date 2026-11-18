@@ -1,0 +1,1456 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 110
+},
+"before": {
+"id": "351c0726-4809-41c3-b4f4-dcf884aa8261",
+"seed_number": 110,
+"target_text": "is cairde muid, agus tar éis dúinn críochnú ba mhaith liom scíth a ligean",
+"known_text": "we're friends, and after we finish I'd like to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "351c0726-4809-41c3-b4f4-dcf884aa8261",
+"seed_number": 110,
+"target_text": "is cairde muid, agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean",
+"known_text": "we're friends, and after we finish I'd like to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0110L06"
+},
+"before": {
+"id": "56f1b6a3-62ba-43ee-ad9e-606a0ff002cf",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": "S0110L06",
+"known_text": "after we",
+"target_text": "tar éis dúinn",
+"components": [
+{
+"known": "after",
+"target": "tar éis"
+},
+{
+"known": "to us",
+"target": "dúinn"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "56f1b6a3-62ba-43ee-ad9e-606a0ff002cf",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": "S0110L06",
+"known_text": "after we finish",
+"target_text": "tar éis dúinn críochnú",
+"components": [
+{
+"known": "to finish",
+"target": "críochnú"
+}
+],
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0110L03"
+},
+"before": {
+"id": "685df7de-76b2-4fda-acc8-36ea4930199b",
+"seed_number": 110,
+"lego_index": 3,
+"lego_id": "S0110L03",
+"known_text": "I would like",
+"is_new": true,
+"target_text": "ba mhaith liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "685df7de-76b2-4fda-acc8-36ea4930199b",
+"seed_number": 110,
+"lego_index": 3,
+"lego_id": "S0110L03",
+"known_text": "I'd like",
+"is_new": false,
+"target_text": "ba mhaith liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0110L05"
+},
+"before": {
+"id": "7ddc9e5d-c6f9-4da6-a974-609b996048b3",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": "S0110L05",
+"target_text": "scíth a ligean",
+"components": [
+{
+"known": "rest",
+"target": "scíth"
+},
+{
+"known": "to let",
+"target": "a ligean"
+}
+],
+"known_text": "to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "7ddc9e5d-c6f9-4da6-a974-609b996048b3",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": "S0110L05",
+"target_text": "mo scíth a ligean",
+"components": [
+{
+"known": "to let",
+"target": "ligean"
+}
+],
+"known_text": "to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0110L06U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0110L06U02",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "we are friends and after we finish I would like to relax for a while",
+"target_text": "is cairde muid agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean ar feadh tamaill",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0110L06U05"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0110L06U05",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "after we finish today I would like to go home and try to learn more tomorrow",
+"target_text": "tar éis dúinn críochnú inniu ba mhaith liom dul abhaile agus iarracht a dhéanamh níos mó a fhoghlaim amárach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0110L01U08"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0110L01U08",
+"seed_number": 110,
+"lego_index": 1,
+"lego_id": null,
+"known_text": "I know you because we are friends",
+"target_text": "tá aithne agam ort mar is cairde muid",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05B01",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "scíth a ligean",
+"known_text": "to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05B01",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "mo scíth a ligean",
+"known_text": "to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05B03",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "is mian liom scíth a ligean",
+"known_text": "I want to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05B03",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "is mian liom mo scíth a ligean",
+"known_text": "I want to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05B04",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "tá sé tábhachtach scíth a ligean",
+"known_text": "it's important to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05B04",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "tá sé tábhachtach mo scíth a ligean",
+"known_text": "it's important to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05B05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05B05",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ní raibh mé in ann scíth a ligean",
+"known_text": "I wasn't able to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05B05",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ní raibh mé in ann mo scíth a ligean",
+"known_text": "I wasn't able to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05B06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05B06",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ba mhaith liom scíth a ligean ar feadh tamaill",
+"known_text": "I'd like to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05B06",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ba mhaith liom mo scíth a ligean ar feadh tamaill",
+"known_text": "I'd like to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U01",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Is mian liom scíth a ligean agus stopadh ag smaoineamh ar obair ar feadh tamaill",
+"known_text": "I want to relax and stop thinking about work for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05U01",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Is mian liom mo scíth a ligean agus stopadh ag smaoineamh ar obair ar feadh tamaill",
+"known_text": "I want to relax and stop thinking about work for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 13,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U03",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Ní raibh mé in ann scíth a ligean aréir mar bhí mé ag smaoineamh ar an iomarca rudaí",
+"known_text": "I wasn't able to relax last night because I was thinking about too many things",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05U03",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Ní raibh mé in ann mo scíth a ligean aréir mar bhí mé ag smaoineamh ar an iomarca rudaí",
+"known_text": "I wasn't able to relax last night because I was thinking about too many things",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 14,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U07",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ba mhaith liom scíth a ligean ar feadh tamaill sula gcaithfidh mé dul tráthnóna",
+"known_text": "I'd like to relax for a while before I have to go this evening",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05U07",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ba mhaith liom mo scíth a ligean ar feadh tamaill sula gcaithfidh mé dul tráthnóna",
+"known_text": "I'd like to relax for a while before I have to go this evening",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 15,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U11"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U11",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Tá a fhios agam go bhfuil sé tábhachtach scíth a ligean agus am a chaitheamh le smaoineamh go cúramach",
+"known_text": "I know that it's important to relax and take some time to think carefully",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05U11",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Tá a fhios agam go bhfuil sé tábhachtach mo scíth a ligean agus am a chaitheamh le smaoineamh go cúramach",
+"known_text": "I know that it's important to relax and take some time to think carefully",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 16,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U15"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U15",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bainim taitneamh as iarracht a dhéanamh scíth a ligean tráthnóna tar éis lá ag foghlaim rudaí nua",
+"known_text": "I always enjoy trying to relax in the evening after spending a day learning",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L05U15",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bainim taitneamh as iarracht a dhéanamh mo scíth a ligean tráthnóna tar éis lá ag foghlaim rudaí nua",
+"known_text": "I always enjoy trying to relax in the evening after spending a day learning",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 17,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06B06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06B06",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "is cairde muid agus tar éis dúinn críochnú ba mhaith liom scíth a ligean",
+"known_text": "we are friends and after we finish I would like to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L06B06",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "is cairde muid agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean",
+"known_text": "we are friends and after we finish I would like to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 18,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06U04",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "tar éis dúinn críochnú ba mhaith liom scíth a ligean ar feadh tamaill mar bhí mé ag obair go dian an lá ar fad",
+"known_text": "after we finish I would like to relax for a while because I was working hard all day",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0110L06U04",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "tar éis dúinn críochnú ba mhaith liom mo scíth a ligean ar feadh tamaill mar bhí mé ag obair go dian an lá ar fad",
+"known_text": "after we finish I would like to relax for a while because I was working hard all day",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 19,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05C01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05C01",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "rest",
+"target_text": "scíth",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 20,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05C02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05C02",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "to let",
+"target_text": "a ligean",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 21,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U02",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "it's important to relax when you're learning something new every day",
+"target_text": "Tá sé tábhachtach scíth a ligean nuair atá tú ag foghlaim rud nua gach lá",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 22,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U05",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I think it's good to relax and enjoy interesting things with your friends",
+"target_text": "ceapaim gur rud maith é scíth a ligean agus baint taitnimh as rudaí suimiúla le do chairde",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 23,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U06",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "he wasn't able to relax at all because there were too many people around",
+"target_text": "Ní raibh sé in ann scíth a ligean ar chor ar bith mar bhí an iomarca daoine timpeall",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 24,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U08",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "do you think it's easy to relax when you have a lot to learn and do?",
+"target_text": "an ceapaim go bhfuil sé éasca scíth a ligean nuair atá a lán le foghlaim agus le déanamh agat?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 25,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U10"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U10",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "we wanted to relax together but there was too much work we still had to do",
+"target_text": "ba mhian linn scíth a ligean le chéile ach bhí an iomarca oibre fós le déanamh againn",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 26,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U12"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U12",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "she wasn't going to relax until she had finished everything she wanted to do",
+"target_text": "Níor mhian léi scíth a ligean go dtí go raibh gach rud ar fad déanta aici",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 27,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L05U13"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L05U13",
+"seed_number": 110,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "it's not easy to relax when you're not sure what's going to happen next",
+"target_text": "Níl sé éasca scíth a ligean nuair nach bhfuil tú cinnte cad a tharlóidh anois",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 28,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06B01",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "after we",
+"target_text": "tar éis dúinn",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 29,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06B03",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "after we speak",
+"target_text": "tar éis dúinn labhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 30,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06B04",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "after we do this",
+"target_text": "tar éis dúinn é seo a dhéanamh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 31,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06C01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06C01",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "after",
+"target_text": "tar éis",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 32,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06C02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06C02",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "to us",
+"target_text": "dúinn",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 33,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06U03",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "after we speak today I will know what I need to do next week",
+"target_text": "tar éis dúinn labhairt inniu tá a fhios agam cad atá le déanamh agam an tseachtain seo chugainn",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 34,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0110L06U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0110L06U07",
+"seed_number": 110,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "after we do this together I would like to go home and think about what I learned",
+"target_text": "tar éis dúinn é seo a dhéanamh ba mhaith liom dul abhaile agus smaoineamh faoin rud atá foghlamtha agam",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 35,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0110L04"
+},
+"before": {
+"id": "57c18440-8bac-4a24-a5c4-597ebfd9cdf0",
+"seed_number": 110,
+"lego_index": 4,
+"lego_id": "S0110L04",
+"known_text": "finish",
+"target_text": "críochnú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 36,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0113L02B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0113L02B04",
+"seed_number": 113,
+"lego_index": 2,
+"lego_id": "S0113L02",
+"target_text": "ach cén fáth nach féidir liom scíth a ligean",
+"known_text": "but why can't i relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0113L02B04",
+"seed_number": 113,
+"lego_index": 2,
+"lego_id": "S0113L02",
+"target_text": "ach cén fáth nach féidir liom mo scíth a ligean",
+"known_text": "but why can't i relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 37,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0113L02U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0113L02U06",
+"seed_number": 113,
+"lego_index": 2,
+"lego_id": "S0113L02",
+"target_text": "caithfidh muid obair go dian ach nach féidir liom scíth a ligean anocht",
+"known_text": "we must work hard but can't i relax tonight",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0113L02U06",
+"seed_number": 113,
+"lego_index": 2,
+"lego_id": "S0113L02",
+"target_text": "caithfidh muid obair go dian ach nach féidir liom mo scíth a ligean anocht",
+"known_text": "we must work hard but can't i relax tonight",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 38,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0119L01U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0119L01U04",
+"seed_number": 119,
+"lego_index": 1,
+"lego_id": "S0119L01",
+"target_text": "an féidir liom scíth a ligean tar éis dúinn críochnú",
+"known_text": "can I relax after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0119L01U04",
+"seed_number": 119,
+"lego_index": 1,
+"lego_id": "S0119L01",
+"target_text": "an féidir liom mo scíth a ligean tar éis dúinn críochnú",
+"known_text": "can I relax after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 39,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0124L02U10"
+},
+"before": {
+"id": "gle_v2_for_eng:S0124L02U10",
+"seed_number": 124,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "cheap mé gur smaoineamh maith é sin am a chaitheamh chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul",
+"known_text": "I thought that it was a good idea to take time to rest after we finish before I have to go",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0124L02U10",
+"seed_number": 124,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "cheap mé gur smaoineamh maith é sin am a chaitheamh chun mo scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul",
+"known_text": "I thought that it was a good idea to take time to rest after we finish before I have to go",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 40,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0134L03B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0134L03B03",
+"seed_number": 134,
+"lego_index": 3,
+"lego_id": "S0134L03",
+"target_text": "scíth a ligean leo anois",
+"known_text": "to relax with them now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0134L03B03",
+"seed_number": 134,
+"lego_index": 3,
+"lego_id": "S0134L03",
+"target_text": "mo scíth a ligean leo anois",
+"known_text": "to relax with them now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 41,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0134L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0134L03U06",
+"seed_number": 134,
+"lego_index": 3,
+"lego_id": "S0134L03",
+"target_text": "ba mhaith liom scíth a ligean leo tar éis dúinn críochnú",
+"known_text": "I would like to relax with them after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0134L03U06",
+"seed_number": 134,
+"lego_index": 3,
+"lego_id": "S0134L03",
+"target_text": "ba mhaith liom mo scíth a ligean leo tar éis dúinn críochnú",
+"known_text": "I would like to relax with them after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 42,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 219
+},
+"before": {
+"id": "bf6f2e4b-d9f1-4b39-a478-6ba101f7d6d0",
+"seed_number": 219,
+"target_text": "bhí sé go deas scíth a ligean ar feadh tamaill",
+"known_text": "it was nice to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "bf6f2e4b-d9f1-4b39-a478-6ba101f7d6d0",
+"seed_number": 219,
+"target_text": "bhí sé go deas mo scíth a ligean ar feadh tamaill",
+"known_text": "it was nice to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 43,
+"op": "lego.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0219L03"
+},
+"before": {
+"id": "5e5ba87f-a0e1-4b4e-93fe-f65f91d6fd68",
+"seed_number": 219,
+"lego_index": 3,
+"lego_id": "S0219L03",
+"target_text": "scíth a ligean",
+"components": [
+{
+"known": "rest",
+"target": "scíth"
+},
+{
+"known": "to release",
+"target": "a ligean"
+}
+],
+"known_text": "to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "5e5ba87f-a0e1-4b4e-93fe-f65f91d6fd68",
+"seed_number": 219,
+"lego_index": 3,
+"lego_id": "S0219L03",
+"target_text": "mo scíth a ligean",
+"components": [
+{
+"known": "to let",
+"target": "ligean"
+}
+],
+"known_text": "to relax",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 44,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0224L02B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0224L02B04",
+"seed_number": 224,
+"lego_index": 2,
+"lego_id": "S0224L02",
+"target_text": "scíth a ligean díreach tar éis duit críochnú",
+"known_text": "to relax just after you finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0224L02B04",
+"seed_number": 224,
+"lego_index": 2,
+"lego_id": "S0224L02",
+"target_text": "mo scíth a ligean díreach tar éis duit críochnú",
+"known_text": "to relax just after you finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 45,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0224L02U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0224L02U01",
+"seed_number": 224,
+"lego_index": 2,
+"lego_id": "S0224L02",
+"target_text": "ba mhaith liom scíth a ligean díreach tar éis dúinn críochnú",
+"known_text": "I'd like to relax just after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0224L02U01",
+"seed_number": 224,
+"lego_index": 2,
+"lego_id": "S0224L02",
+"target_text": "ba mhaith liom mo scíth a ligean díreach tar éis dúinn críochnú",
+"known_text": "I'd like to relax just after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 46,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0251L02B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0251L02B03",
+"seed_number": 251,
+"lego_index": 2,
+"lego_id": "S0251L02",
+"target_text": "scíth a ligean go dtí tar éis dúinn críochnú inniu",
+"known_text": "to relax until after we finish today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0251L02B03",
+"seed_number": 251,
+"lego_index": 2,
+"lego_id": "S0251L02",
+"target_text": "mo scíth a ligean go dtí tar éis dúinn críochnú inniu",
+"known_text": "to relax until after we finish today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 47,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0251L02U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0251L02U04",
+"seed_number": 251,
+"lego_index": 2,
+"lego_id": "S0251L02",
+"target_text": "go raibh maith agat ach níl mé chun scíth a ligean go dtí tar éis dúinn críochnú",
+"known_text": "thank you but i'm not going to relax until after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0251L02U04",
+"seed_number": 251,
+"lego_index": 2,
+"lego_id": "S0251L02",
+"target_text": "go raibh maith agat ach níl mé chun mo scíth a ligean go dtí tar éis dúinn críochnú",
+"known_text": "thank you but i'm not going to relax until after we finish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 48,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0280L01U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0280L01U05",
+"seed_number": 280,
+"lego_index": 1,
+"lego_id": "S0280L01",
+"target_text": "Ní raibh, ní raibh orm ach scíth a ligean ar feadh tamaill",
+"known_text": "no I only had to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0280L01U05",
+"seed_number": 280,
+"lego_index": 1,
+"lego_id": "S0280L01",
+"target_text": "Ní raibh, ní raibh orm ach mo scíth a ligean ar feadh tamaill",
+"known_text": "no I only had to relax for a while",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 8.2,
+"_family": "relax",
+"_seeds": [
+110,
+113,
+119,
+124,
+134,
+219,
+224,
+251,
+280
+],
+"_ops": 49
+}

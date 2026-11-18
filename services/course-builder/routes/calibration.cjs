@@ -353,7 +353,7 @@ module.exports = function(ctx) {
       next_steps: [
         'Build agents spawned via /api/spawn will receive golden examples in initial brief',
         'GET /api/resume will include golden_decompositions for context recovery',
-        `Seeds ${(updatedRules.golden_seed_count || 10) + 1}+ should follow the patterns established in seeds 1-${updatedRules.golden_seed_count || 10}`
+        `Seeds ${getGoldenSeedCount({ quality_rules: updatedRules }) + 1}+ should follow the patterns established in seeds 1-${getGoldenSeedCount({ quality_rules: updatedRules })}`
       ]
     });
   });

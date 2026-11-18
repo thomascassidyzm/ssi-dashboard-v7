@@ -1,0 +1,599 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "s227.tsv",
+ "at": "2026-11-18T12:40:04.948Z",
+ "rows": [
+  {
+   "id": "S0227L01B01",
+   "role": "build",
+   "target": "the man",
+   "old": "男性",
+   "new": "その男性",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01B02",
+   "role": "build",
+   "target": "a man",
+   "old": "男性",
+   "new": "ある男性",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01B03",
+   "role": "build",
+   "target": "young man",
+   "old": "男性",
+   "new": "若い男性",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01B05",
+   "role": "build",
+   "target": "a young man",
+   "old": "男性",
+   "new": "ある若い男性",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01B06",
+   "role": "build",
+   "target": "the man is very kind",
+   "old": "男性",
+   "new": "その男性はとても親切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01B07",
+   "role": "build",
+   "target": "I used to know a man",
+   "old": "男性",
+   "new": "私は前にある男性を知っていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U01",
+   "role": "use",
+   "target": "the man is trying to help me understand what you said",
+   "old": "男性",
+   "new": "その男性は、あなたが言ったことを私が理解するのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U02",
+   "role": "use",
+   "target": "I used to know a man who wanted to work with my friend",
+   "old": "男性",
+   "new": "私の友達と一緒に働きたかった男性を、前に知っていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U03",
+   "role": "use",
+   "target": "a young man wanted to ask for help with something difficult",
+   "old": "男性",
+   "new": "ある若い男性が、何か難しいことで助けを求めたがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U04",
+   "role": "use",
+   "target": "the man is very kind and patient with you",
+   "old": "男性",
+   "new": "その男性はあなたにとても親切で辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U05",
+   "role": "use",
+   "target": "I saw a man who wanted to speak with you today",
+   "old": "男性",
+   "new": "今日あなたと話したがっていた男性を見ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U06",
+   "role": "use",
+   "target": "the man works very hard and isn't going to stop",
+   "old": "男性",
+   "new": "その男性はとても一生懸命働いていて、やめるつもりはありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U07",
+   "role": "use",
+   "target": "a young man wanted to ask you something before you leave",
+   "old": "男性",
+   "new": "ある若い男性が、あなたが帰る前に何か聞きたがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U08",
+   "role": "use",
+   "target": "the man is trying to help me remember what you need",
+   "old": "男性",
+   "new": "その男性は、あなたに必要なものを私が覚えるのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U09",
+   "role": "use",
+   "target": "I know a man who works for the council with my friend",
+   "old": "男性",
+   "new": "私の友達と一緒に市役所で働いている男性を知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U10",
+   "role": "use",
+   "target": "a young man came to ask for help this morning",
+   "old": "男性",
+   "new": "今朝、ある若い男性が助けを求めに来ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U11",
+   "role": "use",
+   "target": "the man is very patient when you don't understand",
+   "old": "男性",
+   "new": "あなたがわからないとき、その男性はとても辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U12",
+   "role": "use",
+   "target": "I saw a man who wanted to tell you something new",
+   "old": "男性",
+   "new": "あなたに何か新しいことを教えたがっていた男性を見ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U13",
+   "role": "use",
+   "target": "a man came to ask for help but I'm not sure what he wanted",
+   "old": "男性",
+   "new": "ある男性が助けを求めに来ましたが、彼が何を欲しかったのかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U14",
+   "role": "use",
+   "target": "the man is a teacher and works with my son",
+   "old": "男性",
+   "new": "その男性は先生で、私の息子と一緒に働いています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L01U15",
+   "role": "use",
+   "target": "I'm not sure if the man is going to be there next week",
+   "old": "男性",
+   "new": "その男性が来週そこにいるかどうかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02B02",
+   "role": "build",
+   "target": "that man is very kind",
+   "old": "あの男性は",
+   "new": "あの男性はとても親切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02B03",
+   "role": "build",
+   "target": "that man is a teacher",
+   "old": "あの男性は",
+   "new": "あの男性は先生です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02B04",
+   "role": "build",
+   "target": "that man is going to help you",
+   "old": "あの男性は",
+   "new": "あの男性はあなたを手伝うつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02B05",
+   "role": "build",
+   "target": "that man is trying to help me",
+   "old": "あの男性は",
+   "new": "あの男性は私を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02B06",
+   "role": "build",
+   "target": "that man wanted to ask you something",
+   "old": "あの男性は",
+   "new": "あの男性はあなたに何か聞きたがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02B07",
+   "role": "build",
+   "target": "that man is very patient",
+   "old": "あの男性は",
+   "new": "あの男性はとても辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02B08",
+   "role": "build",
+   "target": "that man works very hard",
+   "old": "あの男性は",
+   "new": "あの男性はとても一生懸命働いています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U01",
+   "role": "use",
+   "target": "that man is trying to help me understand what you said",
+   "old": "あの男性は",
+   "new": "あの男性は、あなたが言ったことを私が理解するのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U02",
+   "role": "use",
+   "target": "that man is very kind and patient with you",
+   "old": "あの男性は",
+   "new": "あの男性はあなたにとても親切で辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U03",
+   "role": "use",
+   "target": "I'm not sure if that man is going to come back next week",
+   "old": "あの男性は",
+   "new": "あの男性が来週戻ってくるつもりかどうかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U04",
+   "role": "use",
+   "target": "that man is a teacher who wanted to help my son",
+   "old": "あの男性は",
+   "new": "あの男性は、私の息子を手伝いたかった先生です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U05",
+   "role": "use",
+   "target": "that man came to ask for help this morning",
+   "old": "あの男性は",
+   "new": "あの男性は今朝、助けを求めに来ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U06",
+   "role": "use",
+   "target": "do you know if that man is going to be there today?",
+   "old": "あの男性は",
+   "new": "あの男性が今日そこにいるつもりかどうか知っていますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U08",
+   "role": "use",
+   "target": "I saw that man and he wanted to speak with you",
+   "old": "あの男性は",
+   "new": "あの男性を見ました。彼はあなたと話したがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U09",
+   "role": "use",
+   "target": "that man is going to speak with you about something important",
+   "old": "あの男性は",
+   "new": "あの男性は、何か大切なことについてあなたと話すつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U10",
+   "role": "use",
+   "target": "I think that man wanted to ask for help but wasn't sure",
+   "old": "あの男性は",
+   "new": "あの男性は助けを求めたかったけれど、確かではなかったと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U11",
+   "role": "use",
+   "target": "that man is very patient when you don't know the answer",
+   "old": "あの男性は",
+   "new": "あなたが答えを知らないとき、あの男性はとても辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U12",
+   "role": "use",
+   "target": "do you think that man is going to tell us something new?",
+   "old": "あの男性は",
+   "new": "あの男性は私たちに何か新しいことを教えるつもりだと思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U13",
+   "role": "use",
+   "target": "that man wanted to explain something to us before you leave",
+   "old": "あの男性は",
+   "new": "あの男性は、あなたが帰る前に私たちに何かを説明したがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U14",
+   "role": "use",
+   "target": "I know that man and he's trying to help me",
+   "old": "あの男性は",
+   "new": "あの男性を知っています。彼は私を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L02U15",
+   "role": "use",
+   "target": "that man is going to come and help you later on",
+   "old": "あの男性は",
+   "new": "あの男性は後で来て、あなたを手伝うつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03B01",
+   "role": "build",
+   "target": "is going to tell",
+   "old": "教えるつもりです",
+   "new": "教えるつもりです",
+   "del": false,
+   "verdict": "NOOP"
+  },
+  {
+   "id": "S0227L03B02",
+   "role": "build",
+   "target": "he is going to tell you something",
+   "old": "教えるつもりです",
+   "new": "彼はあなたに何かを教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03B03",
+   "role": "build",
+   "target": "she is going to tell me something",
+   "old": "教えるつもりです",
+   "new": "彼女は私に何かを教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03B04",
+   "role": "build",
+   "target": "that man is going to tell us something new",
+   "old": "教えるつもりです",
+   "new": "あの男性は私たちに何か新しいことを教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03B05",
+   "role": "build",
+   "target": "he is going to tell you what you need to do",
+   "old": "教えるつもりです",
+   "new": "彼はあなたが何をする必要があるか教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03B06",
+   "role": "build",
+   "target": "she is going to tell me what you said",
+   "old": "教えるつもりです",
+   "new": "彼女はあなたが言ったことを私に教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03B07",
+   "role": "build",
+   "target": "he is going to tell you something different",
+   "old": "教えるつもりです",
+   "new": "彼はあなたに何か違うことを教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03B08",
+   "role": "build",
+   "target": "she is going to tell us something important",
+   "old": "教えるつもりです",
+   "new": "彼女は私たちに何か大切なことを教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U01",
+   "role": "use",
+   "target": "he is going to tell you something important before you leave",
+   "old": "教えるつもりです",
+   "new": "彼は、あなたが帰る前に何か大切なことを教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U02",
+   "role": "use",
+   "target": "she is going to tell me what you wanted to know",
+   "old": "教えるつもりです",
+   "new": "彼女は、あなたが知りたかったことを私に教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U03",
+   "role": "use",
+   "target": "that man is going to tell us something new about the council",
+   "old": "教えるつもりです",
+   "new": "あの男性は、市役所について何か新しいことを私たちに教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U04",
+   "role": "use",
+   "target": "he is going to tell you what you need to do this morning",
+   "old": "教えるつもりです",
+   "new": "彼は今朝、あなたが何をする必要があるか教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U05",
+   "role": "use",
+   "target": "that man is going to tell me something I think is important",
+   "old": "教えるつもりです",
+   "new": "あの男性は、私が大切だと思うことを私に教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U06",
+   "role": "use",
+   "target": "she is going to tell me something that I didn't want to hear",
+   "old": "教えるつもりです",
+   "new": "彼女は、私が聞きたくなかったことを私に教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U07",
+   "role": "use",
+   "target": "he is going to tell you what the answer is tomorrow morning",
+   "old": "教えるつもりです",
+   "new": "彼は明日の朝、答えが何かあなたに教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U08",
+   "role": "use",
+   "target": "I think he is going to tell you something different today",
+   "old": "教えるつもりです",
+   "new": "彼は今日、あなたに何か違うことを教えるつもりだと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U09",
+   "role": "use",
+   "target": "she is going to tell me where you wanted to meet last week",
+   "old": "教えるつもりです",
+   "new": "彼女は、先週あなたがどこで会いたかったか私に教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U10",
+   "role": "use",
+   "target": "do you think he is going to tell you something new?",
+   "old": "教えるつもりです",
+   "new": "彼はあなたに何か新しいことを教えるつもりだと思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U11",
+   "role": "use",
+   "target": "he is going to tell you something important and you should ask him",
+   "old": "教えるつもりです",
+   "new": "彼はあなたに何か大切なことを教えるつもりです。そして、あなたは彼に聞いた方がいいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U12",
+   "role": "use",
+   "target": "that man is going to tell us something about my friend",
+   "old": "教えるつもりです",
+   "new": "あの男性は、私の友達について私たちに何かを教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U13",
+   "role": "use",
+   "target": "she is going to tell me what she wanted to say this morning",
+   "old": "教えるつもりです",
+   "new": "彼女は、今朝言いたかったことを私に教えるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U14",
+   "role": "use",
+   "target": "he is going to tell you something important so you should ask him",
+   "old": "教えるつもりです",
+   "new": "彼はあなたに何か大切なことを教えるつもりなので、彼に聞いた方がいいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0227L03U15",
+   "role": "use",
+   "target": "I think she is going to tell me what I need to do next week",
+   "old": "教えるつもりです",
+   "new": "彼女は、来週私が何をする必要があるか教えるつもりだと思います",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "227": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  }
+ }
+}

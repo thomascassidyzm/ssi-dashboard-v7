@@ -1,0 +1,309 @@
+[
+ {
+  "role": "target1",
+  "text": "para que no me quede más tiempo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b70379cf-e6dc-447f-9e29-c3d2f0e27c73",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "para que no me quede más tiempo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "574cf625-56de-420f-8bd1-e32aea3698c2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "so that I don't stay longer",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "91b0ce52-de1b-476d-a6c7-a2d914fb428c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "stay",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02C02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "32b8ea1c-32c7-4a45-b48d-929bb5aee885",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "mi amigo va a venir a las seis para que no me quede aquí solo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e9146a90-1872-4885-9794-0425bdceb8ef",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "mi amigo va a venir a las seis para que no me quede aquí solo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "87bca41e-eba4-4ad8-807e-01234f934c9a",
+   "charsSpent": 61
+  }
+ },
+ {
+  "role": "known",
+  "text": "my friend is going to come at six so that I don't stay here alone",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "953b023e-7ebb-4f28-9107-a614c9781585",
+   "charsSpent": 65
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quieren salir conmigo para que no me quede en casa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fdaea856-d300-48b9-a18d-a2bb3840bd00",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quieren salir conmigo para que no me quede en casa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d6eee745-6a75-4f00-a55f-1c174bc605e3",
+   "charsSpent": 50
+  }
+ },
+ {
+  "role": "known",
+  "text": "they want to go out with me so that I don't stay at home",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1edcca7a-f2b1-4efd-92af-662e44f0f072",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hoy ella va a ayudarme para que no me quede más tiempo en el trabajo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b5da5b47-97da-4af9-84a7-3b55e6fe56a6",
+   "charsSpent": 68
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hoy ella va a ayudarme para que no me quede más tiempo en el trabajo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "59ebfe34-e641-4796-a7c2-50fbe38c91d9",
+   "charsSpent": 68
+  }
+ },
+ {
+  "role": "known",
+  "text": "today she's going to help me so that I don't stay at work longer",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "61149584-d472-4406-ba05-b8f50af50ed2",
+   "charsSpent": 64
+  }
+ },
+ {
+  "role": "target1",
+  "text": "esta vez él va a ayudarme para que no me quede en la oficina toda la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "08f93cfd-7686-432f-a482-57513c09b5be",
+   "charsSpent": 74
+  }
+ },
+ {
+  "role": "target2",
+  "text": "esta vez él va a ayudarme para que no me quede en la oficina toda la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c72bf1cf-13e6-4277-b3c0-40f4f79d5e0d",
+   "charsSpent": 74
+  }
+ },
+ {
+  "role": "known",
+  "text": "this time he's going to help me so that I don't stay in the office all night",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3d6a8d32-d1f5-45be-99f9-7afd27932ea1",
+   "charsSpent": 76
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'I don't stay', as in — 'so that I don't stay here', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0505L02",
+    "slot": "presentation",
+    "current": "f1054152-fd06-4b54-98d6-c3966ac5b27e"
+   }
+  ],
+  "legoId": "S0505L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "69dd6e8d-a1bd-4f4b-92c9-646e1889a602",
+   "charsSpent": 73
+  }
+ }
+]

@@ -1,0 +1,113 @@
+{
+ "event_id": "e4aa846c-c406-46fd-985d-e7b02fbcda06",
+ "undo_file": "2026-11-11T16-03-01-266Z-e4aa846c-c406-46fd-985d-e7b02fbcda06.json",
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0145L01B07"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0145L01B08"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0182L01B05",
+   "set": {
+    "known_text": "I want to take my things",
+    "target_text": "Quiero llevar mis cosas",
+    "known_audio_id": "c3adaebc-e45a-43e5-9733-789cdf41ce1f",
+    "target1_audio_id": "31f1c215-c2ee-4e2c-9b8c-7f38964b9b55",
+    "target2_audio_id": "229b9df9-4429-4ee9-8150-ffbbcc173c47",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "Quiero",
+      "isGhost": false
+     },
+     {
+      "known": "to take",
+      "legoId": "S0181L01",
+      "target": " llevar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mis",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " cosas",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0126L01B03",
+   "set": {
+    "known_text": "This language",
+    "target_text": "Este idioma",
+    "known_audio_id": "6970fd47-46e2-45ac-baf1-223a79a810b2",
+    "target1_audio_id": "132c0fa9-55bc-4e56-89ce-77206f296322",
+    "target2_audio_id": "96f928de-500e-4ad9-9f5c-6d3a1758b2cb",
+    "decomposition": [
+     {
+      "known": "this language",
+      "legoId": "S0101L03",
+      "target": "Este idioma",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0281L04B01",
+   "set": {
+    "known_text": "I hope you start soon",
+    "target_text": "Espero que empieces pronto",
+    "lego_position": "middle",
+    "known_audio_id": "e47ad12d-48c2-4951-8da2-49426ea9f04e",
+    "target1_audio_id": "93cc37e2-8398-4b31-ba68-ae193e0b7d72",
+    "target2_audio_id": "fcaab1fa-55cf-46da-a129-7a2e2f85be18",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Espero",
+      "isGhost": true
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "you start",
+      "legoId": "S0281L04",
+      "target": " empieces",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "soon",
+      "legoId": "S0023L02",
+      "target": " pronto",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0231L02B06"
+  }
+ ]
+}

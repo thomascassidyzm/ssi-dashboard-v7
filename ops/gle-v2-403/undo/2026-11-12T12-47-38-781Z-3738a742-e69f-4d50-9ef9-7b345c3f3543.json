@@ -1,0 +1,429 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "3738a742-e69f-4d50-9ef9-7b345c3f3543",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:47:38.781Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-47-38-781Z-3738a742-e69f-4d50-9ef9-7b345c3f3543.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L04U06",
+      "set": {
+        "target_text": "ba mhian linn an fhírinne a fháil amach in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0094L03B04",
+      "set": {
+        "target_text": "a n-oibreoidh sé in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0093L02U09",
+      "set": {
+        "target_text": "Tá sé tábhachtach a fhios a bheith agam cathain a bhfuil sé in am dul agus gan an iomarca ama a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U01",
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U01",
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta agam in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L04U01",
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L04B01",
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U08",
+      "set": {
+        "target_text": "níl a fhios agam conas Gaeilge a fhoghlaim in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U07",
+      "set": {
+        "target_text": "ba mhaith liom a bheith in ann Gaeilge a fhoghlaim in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U06",
+      "set": {
+        "target_text": "go raibh maith agat is féidir liom críochnú in am gearr inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U04",
+      "set": {
+        "target_text": "an bhfuil tú chun críochnú in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U03",
+      "set": {
+        "target_text": "níl sé éasca Gaeilge a fhoghlaim in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U02",
+      "set": {
+        "target_text": "faraor ní bheidh mé réidh in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U01",
+      "set": {
+        "target_text": "faraor ní féidir liom críochnú in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03B04",
+      "set": {
+        "target_text": "críochnú in am gearr anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03B03",
+      "set": {
+        "target_text": "réidh in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03B02",
+      "set": {
+        "target_text": "críochnú in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03B01",
+      "set": {
+        "target_text": "in am gearr inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L02U01",
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0088L05U15",
+      "set": {
+        "target_text": "Níl mé cinnte cathain a bheidh mé réidh críochnú go fóill, ach tá a fhios agam go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L04U12",
+      "set": {
+        "target_text": "Níl aithne agam ar na daoine sin, agus ní maith liom an iomarca ama a thógáil le freagra a thabhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L05U08",
+      "set": {
+        "target_text": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus tá mé chun é sin a dhéanamh an tráthnóna seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L05U02",
+      "set": {
+        "target_text": "ní raibh sí cinnte an féidir léi cabhrú liom an tráthnóna seo agus ní maith liom an iomarca ama a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L04U10",
+      "set": {
+        "target_text": "tá sé tábhachtach am a thógáil chun aire a thabhairt don mhadra óg gach lá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L03U08",
+      "set": {
+        "target_text": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus aire a thabhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L03B06",
+      "set": {
+        "target_text": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus aire a thabhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L01U08",
+      "set": {
+        "target_text": "Níor mhian leis am a thógáil sula gcaithfidh sé dul ach bhí sé tábhachtach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0068L03U10",
+      "set": {
+        "target_text": "tá muid ag lorg freagra maith ar an scéal ach tá sé deacair am a thógáil inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0068L02U08",
+      "set": {
+        "target_text": "tá sé tábhachtach am a thógáil chun a fhios a bheith agam cad atá tú ag caint faoi inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L04U08",
+      "set": {
+        "target_text": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus an freagra a fháil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L04U02",
+      "set": {
+        "target_text": "tá sé tábhachtach am a thógáil an freagra a fháil go cúramach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L02U13",
+      "set": {
+        "target_text": "tá sé deacair ach tá sé tábhachtach am a thógáil chun tú féin a thástáil ag an am céanna"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L01U13",
+      "set": {
+        "target_text": "Níl sé úsáideach an iomarca ama a thógáil roimh tosú ag caint Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L06U01",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L06B06",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L06B04",
+      "set": {
+        "target_text": "am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L05U01",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L05B06",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L04U05",
+      "set": {
+        "target_text": "ba mhian leis am a thógáil chun cuimhneamh conas dóthain focal a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L04U01",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L04B06",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L04B04",
+      "set": {
+        "target_text": "chun am a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U15",
+      "set": {
+        "target_text": "thosaigh mé ag smaoineamh air go cúramach an mhí seo caite chun am a thógáil ag labhairt a chleachtadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U14",
+      "set": {
+        "target_text": "níl sé tábhachtach am a thógáil an iomarca ach Tá sé tábhachtach mo dhícheall a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U13",
+      "set": {
+        "target_text": "is mian liom am a thógáil chun mo dhícheall a dhéanamh inniu agus gach seachtaine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U12",
+      "set": {
+        "target_text": "ba mhian léi am a thógáil chun dóthain focal a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U11",
+      "set": {
+        "target_text": "Tá sé úsáideach am a thógáil chun rud éigin a rá níos moille"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U10",
+      "set": {
+        "target_text": "ní mian liom am a thógáil ó labhairt a chleachtadh i nGaeilge le daoine eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U09",
+      "set": {
+        "target_text": "is mian liom am a thógáil chun bualadh le daoine a bhfuil Gaeilge an-mhaith acu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U08",
+      "set": {
+        "target_text": "ní mian leis am a thógáil chun cuimhneamh conas dóthain focal a rá anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U07",
+      "set": {
+        "target_text": "tá mé chun am a thógáil teacht ar ais chun labhairt a chleachtadh an tseachtain seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U06",
+      "set": {
+        "target_text": "ní mian léi am a thógáil ó labhairt le gach duine eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U05",
+      "set": {
+        "target_text": "is mian liom am a thógáil chun labhairt a chleachtadh i nGaeilge chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U04",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun smaoineamh go cúramach ar an rud atá i gceist agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U03",
+      "set": {
+        "target_text": "ba mhian linn am a thógáil beagán níos mó chun rud éigin a thabhairt duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U02",
+      "set": {
+        "target_text": "ní maith liom am a thógáil le freagra a thabhairt nuair atá daoine eile anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U01",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03C02",
+      "set": {
+        "target_text": "a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03B07",
+      "set": {
+        "target_text": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03B06",
+      "set": {
+        "target_text": "ba mhian linn am a thógáil beagán níos mó"
+      }
+    }
+  ]
+}

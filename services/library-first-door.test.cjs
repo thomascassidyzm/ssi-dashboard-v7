@@ -71,7 +71,7 @@ beforeEach(() => {
 })
 afterEach(() => { if (restore) restore(); restore = null; castGate.useCastRows(null); clipLib.useClipLibrary(null); guardMod.useSpendGuard(null) })
 
-const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', phonologyGate: false, door: { courseCode: 'eng_for_hin', ...door } })
+const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', door: { courseCode: 'eng_for_hin', ...door } })
 const elsa = (door = {}) => ({ subscriptionKey: 'k', region: 'westeurope', voiceName: 'it-IT-ElsaNeural', speed: 1, door: { courseCode: 'ita_for_eng', language: 'ita', ...door } })
 
 describe('1. every caller path asks the library first — a clip that is there costs nothing', () => {
@@ -227,7 +227,7 @@ describe('the night\'s specimen: #626·I re-rolled one line six times', () => {
   it('a rejected take never reaches the library, so a second slot with the same words asks again — and the 4th paid take is refused', async () => {
     const { svc, paid } = door([])   // every take quarantined: nothing is ever filed
     const line = "ha detto qualcos'altro?"
-    const cfg = { apiKey: 'k', voiceId: KRITI, locale: 'it-IT', phonologyGate: false, door: { courseCode: 'ita_for_eng', job: '#626·I replay' } }
+    const cfg = { apiKey: 'k', voiceId: KRITI, locale: 'it-IT', door: { courseCode: 'ita_for_eng', job: '#626·I replay' } }
     let refused = 0
     for (let slot = 0; slot < 2; slot++) {          // S0360L01 then S0360L01B01
       for (let attempt = 0; attempt < 3; attempt++) { // renderChecked: 3 attempts per slot

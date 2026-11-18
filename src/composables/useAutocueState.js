@@ -375,6 +375,19 @@ export function useAutocueState() {
     }
   }
 
+  // The mic would not start (getUserMedia refused, no device...). Undo startRecording() and
+  // nothing else: the phase, the line and every take stay exactly as they were. stopRecording()
+  // is the wrong tool here — in script mode it ENDS the session on the summary screen, which is
+  // how "no microphone" read as "Session Complete" (Auke, fry_for_eng, 2026-11-02).
+  function abortRecordingStart() {
+    state.isRecording = false
+    state.isPaused = false
+    if (timerInterval) {
+      clearInterval(timerInterval)
+      timerInterval = null
+    }
+  }
+
   function toggleRecording() {
     if (state.isRecording) {
       stopRecording()
@@ -1317,6 +1330,7 @@ export function useAutocueState() {
     initializeMicrophone,
     startRecording,
     stopRecording,
+    abortRecordingStart,
     toggleRecording,
     togglePause,
     navigatePhrase,

@@ -1,0 +1,214 @@
+{
+ "event_id": "28e373dd-e313-40c7-a940-0c6479c637ef",
+ "undo_file": "2026-11-11T17-18-37-094Z-28e373dd-e313-40c7-a940-0c6479c637ef.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0643L01U07",
+   "set": {
+    "known_text": "the kind of thing that she wants",
+    "target_text": "el tipo de cosa que quiere",
+    "known_audio_id": "7aaa3fe9-9985-46a8-9a5f-8c4780263d87",
+    "target1_audio_id": "0bd6148b-98a3-4d55-be22-8305d09ab041",
+    "target2_audio_id": "29b86781-6ead-448d-ac29-66cd5ccf03e1",
+    "decomposition": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0643L01U06",
+   "set": {
+    "known_text": "guess what she wants",
+    "target_text": "adivina qué quiere",
+    "known_audio_id": "a3483a77-5283-47a7-bc0f-6f52e0cdd7ae",
+    "target1_audio_id": "4e80382f-cdbd-4d60-b04c-f41ed2a1d94b",
+    "target2_audio_id": "bbe49029-31c2-42f5-97b4-8a626791ca95",
+    "decomposition": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0643L01U05",
+   "set": {
+    "known_text": "I wonder what she wants",
+    "target_text": "me pregunto qué quiere",
+    "known_audio_id": "9192f0a0-8a2f-454f-9771-7a9a9ebaa1f5",
+    "target1_audio_id": "2fb1c784-f389-46db-99fe-7d5de9716260",
+    "target2_audio_id": "3c84aff6-2f09-49f5-a133-d84be1c2e906",
+    "decomposition": [
+     {
+      "known": "I wonder",
+      "legoId": "S0290L01",
+      "target": "me pregunto",
+      "isGhost": false
+     },
+     {
+      "known": "what's",
+      "legoId": "S0493L01",
+      "target": " qué",
+      "isGhost": false
+     },
+     {
+      "known": "want",
+      "legoId": "S0643L01",
+      "target": " quiere",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0274L01U08",
+   "set": {
+    "target_text": "¿Tienes que ir al trabajo esta tarde?",
+    "target1_audio_id": "1978b74e-4226-4c81-ae69-2f18e7120f79",
+    "target2_audio_id": "fafb3233-584b-4981-b6a6-3aeea7542ac4",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "¿",
+      "isGhost": true
+     },
+     {
+      "known": "do you have to",
+      "legoId": "S0274L01",
+      "target": "Tienes que",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to go",
+      "legoId": "S0120L01",
+      "target": " ir",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " al",
+      "isGhost": true
+     },
+     {
+      "known": "Work",
+      "legoId": "S0126L02",
+      "target": " trabajo",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S0035L04",
+      "target": " esta tarde",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0182L01U04",
+   "set": {
+    "known_text": "I need to take my keys to work today",
+    "target_text": "Necesito llevar mis llaves al trabajo hoy",
+    "known_audio_id": "a29dec5e-f4ea-4ff8-b1a2-2b0f8f2e1c6e",
+    "target1_audio_id": "1b4c6413-e133-44f0-89ef-f1352fe023f8",
+    "target2_audio_id": "e950e6f1-3f1f-4eaa-8301-22c8240efdce",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0044L02",
+      "target": "Necesito",
+      "isGhost": false
+     },
+     {
+      "known": "to take",
+      "legoId": "S0181L01",
+      "target": " llevar",
+      "isGhost": false
+     },
+     {
+      "known": "my keys",
+      "legoId": "S0182L01",
+      "target": " mis llaves",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " al",
+      "isGhost": true
+     },
+     {
+      "known": "Work",
+      "legoId": "S0126L02",
+      "target": " trabajo",
+      "isGhost": false
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L02",
+      "target": " hoy",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0181L04U04",
+   "set": {
+    "target_text": "Tengo que llevar a mi madre al médico antes de ir al trabajo",
+    "target1_audio_id": "09aef501-801c-4542-a138-892fa10f55f9",
+    "target2_audio_id": "53c8721c-711e-4e45-b7f7-bbde1d910318",
+    "decomposition": [
+     {
+      "known": "I have to take my mother to the doctor",
+      "legoId": "S0181L04",
+      "target": "Tengo que llevar a mi madre al médico",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "before",
+      "legoId": "S0128L05",
+      "target": " antes",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "to go",
+      "legoId": "S0120L01",
+      "target": " ir",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " al",
+      "isGhost": true
+     },
+     {
+      "known": "Work",
+      "legoId": "S0126L02",
+      "target": " trabajo",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -45,10 +45,26 @@
       <div class="bh-cols">
         <div class="bh-main">
           <!-- ABOVE UP NEXT: the re-record card (job #788), handed in by the room. -->
-          <slot name="top" />
+          <!-- PINNED (Kai, job #843): while a controlled-queue actor's started pod has lines left,
+               the re-record card and every other card wait behind "After <pod>" below. -->
+          <slot v-if="!pinned || laterOpen" name="top" />
           <!-- UP NEXT (Option B): the first ticked batch with lines still to read, new
                sentences before practice phrases. -->
-          <div v-if="next" class="bh-hero" data-test="up-next">
+          <!-- A POD HE HAS STARTED (Kai, 2026-10-28, job #8·AA) is Up next before anything else, and
+               says so: how many lines are left and the scene they start at. Still a card, not a
+               modal: nothing stops him opening any other batch below. -->
+          <div v-if="next && priorityPod" class="bh-hero bh-hero-pri" data-test="up-next">
+            <span class="bh-kind bh-pri" data-test="up-next-priority">Priority · you've started this</span>
+            <h2 class="bh-h2">{{ next.track.title }}</h2>
+            <p class="bh-big" data-test="priority-left">{{ n(next.batch.total - doneN(next.batch)) }}<small> {{ next.track.title }} {{ next.batch.total - doneN(next.batch) === 1 ? 'line' : 'lines' }} left</small></p>
+            <p v-if="resumeWords" class="bh-sub" data-test="priority-resume">{{ resumeWords }}</p>
+            <div class="bh-bar"><i :style="{ width: pct(next.batch) }"></i><i class="up" :style="{ width: pctUp(next.batch) }"></i></div>
+            <p class="bh-sub">{{ batchWords(next.track, next.batch) }}</p>
+            <button type="button" class="bh-go" data-test="up-next-start" @click="$emit('open', next.track.key, next.batch.n)">
+              Continue {{ next.track.title }} ›
+            </button>
+          </div>
+          <div v-else-if="next" class="bh-hero" data-test="up-next">
             <span class="bh-kind" :class="next.track.cls">Up next</span>
             <h2 class="bh-h2">{{ next.track.title }}</h2>
             <p class="bh-sub">{{ next.track.what }}</p>
@@ -78,11 +94,15 @@
             <BoothTicks :tickables="tickables" :ticked="ticked" :batch-name="batchName" @tick="(id, on) => $emit('tick', id, on)" @open="(key, bn) => $emit('open', key, bn)" />
           </div>
 
-          <template v-if="groups.main.length">
+          <button v-if="pinned" type="button" class="bh-plan-toggle" data-test="later-toggle" :aria-expanded="laterOpen ? 'true' : 'false'" @click="laterOpen = !laterOpen">
+            {{ laterOpen ? '▾' : '▸' }} After {{ next.track.title }} — everything else waits here
+          </button>
+
+          <template v-if="(!pinned || laterOpen) && groups.main.length">
             <h3 class="bh-sec">{{ mainHeading }}</h3>
             <div class="bh-grid">
               <button v-for="t in groups.main" :key="t.key" type="button" class="bh-card" :class="{ lock: t.locked }" :disabled="t.locked" :data-test="`card-${t.key}`" @click="$emit('card', t.key)">
-                <span class="bh-kind" :class="t.cls">{{ t.short }}</span>
+                <span class="bh-kind" :class="t.cls">{{ t.short }}</span><span v-if="isStartedPod(t)" class="bh-kind bh-pri" :data-test="`card-priority-${t.key}`">Priority</span>
                 <span class="bh-h3">{{ t.title }}</span>
                 <span class="bh-sub">{{ t.what }}</span>
                 <span class="bh-bar"><i :style="{ width: pct(t) }"></i><i class="up" :style="{ width: pctUp(t) }"></i></span>
@@ -91,11 +111,11 @@
             </div>
           </template>
 
-          <template v-if="groups.other.length">
+          <template v-if="(!pinned || laterOpen) && groups.other.length">
             <h3 class="bh-sec">Other scripts</h3>
             <div class="bh-grid">
               <button v-for="t in groups.other" :key="t.key" type="button" class="bh-card" :data-test="`card-${t.key}`" @click="$emit('card', t.key)">
-                <span class="bh-kind" :class="t.cls">{{ t.short }}</span>
+                <span class="bh-kind" :class="t.cls">{{ t.short }}</span><span v-if="isStartedPod(t)" class="bh-kind bh-pri" :data-test="`card-priority-${t.key}`">Priority</span>
                 <span class="bh-h3">{{ t.title }}</span>
                 <span class="bh-sub">{{ t.what }}</span>
                 <span class="bh-bar"><i :style="{ width: pct(t) }"></i><i class="up" :style="{ width: pctUp(t) }"></i></span>
@@ -137,7 +157,7 @@
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import BoothTicks from './BoothTicks.vue'
 import BoothTeamStats from './BoothTeamStats.vue'
-import { homeLayout, batchOpenable, trackLocked, shownBatches } from './booth-home.js'
+import { homeLayout, batchOpenable, trackLocked, shownBatches, isStartedPod } from './booth-home.js'
 
 const props = defineProps({
   displayName: { type: String, default: '' },
@@ -147,6 +167,9 @@ const props = defineProps({
   trackKey: { type: String, default: null },  // a card opened to its batch list
   mainHeading: { type: String, default: 'New work' },
   notes: { type: Array, default: () => [] },
+  // The server marks a voice with a controlled queue (booth-actor-queue.cjs). For such a voice a
+  // pod he has started is the ONLY thing offered until it is finished (Kai, job #843: Dan's last 22).
+  pinStartedPod: { type: Boolean, default: false },
 })
 defineEmits(['open', 'card', 'home', 'tick'])
 
@@ -164,6 +187,16 @@ const withLock = (t) => ({ ...t, locked: false })
 // card, #708), a card, or a finished row. Unticked ones are hidden (job #378) and named below.
 const layout = computed(() => homeLayout(props.tracks, props.unticked))
 const next = computed(() => layout.value.hero)
+const priorityPod = computed(() => !!next.value && isStartedPod(next.value.track))
+// "Starts at scene 15, line 69 of 91": where an unfinished pod picks up (booth-home.cjs firstLeftOf).
+const resumeWords = computed(() => {
+  const f = next.value && next.value.batch && next.value.batch.firstLeft
+  if (!f) return ''
+  const where = f.scene != null ? `scene ${f.scene}, ` : ''
+  return `Starts at ${where}line ${n(f.at)} of ${n(next.value.batch.total)}.`
+})
+const pinned = computed(() => props.pinStartedPod && priorityPod.value)
+const laterOpen = ref(false)
 const groups = computed(() => ({
   main: layout.value.main.map(withLock),
   other: layout.value.other.map(withLock),
@@ -237,6 +270,9 @@ function cardPill(t) {
 .bh-grow small { color: var(--color-paper-dim, #c1c1bb); font-size: 0.82rem; }
 .bh-pill { font-size: 0.82rem; color: var(--color-paper-dim, #c1c1bb); white-space: nowrap; }
 .bh-hero { background: linear-gradient(160deg, #1e3a5f, var(--color-shadow, #1e293b) 60%); border: 1px solid #34507a; border-radius: 18px; padding: 1.1rem; margin: 1rem 0 0.5rem; }
+.bh-hero-pri { background: linear-gradient(160deg, #5b3a0a, var(--color-shadow, #1e293b) 60%); border-color: #d97706; }
+.bh-kind.bh-pri { background: #78350f; color: #fde68a; margin-left: 0.35rem; }
+.bh-hero-pri .bh-kind.bh-pri { margin-left: 0; }
 .bh-hero-done { background: var(--color-shadow, #1e293b); border-color: var(--color-graphite, #475569); }
 .bh-big { font-size: 2rem; font-weight: 800; line-height: 1.1; margin: 0.6rem 0 0; color: var(--color-paper, #f7f7f2); }
 .bh-big small { font-size: 0.95rem; font-weight: 500; color: var(--color-paper-dim, #c1c1bb); }
@@ -271,6 +307,8 @@ function cardPill(t) {
 :root[data-theme="light"] .bh-card, :root[data-theme="light"] .bh-side, :root[data-theme="light"] .bh-list,
 :root[data-theme="light"] .bh-done, :root[data-theme="light"] .bh-plan-toggle { border-color: var(--line); }
 :root[data-theme="light"] .bh-hero { background: #e6eefb; border-color: #93b4e6; }
+:root[data-theme="light"] .bh-hero-pri { background: #fef3c7; border-color: #d97706; }
+:root[data-theme="light"] .bh-kind.bh-pri { background: #fde68a; color: #78350f; }
 :root[data-theme="light"] .bh-kind.k-lego { background: #fce7f3; color: #9d174d; }
 
 /* WHITE ON EVERY GREEN BUTTON in light mode (Aran, 2026-10-14, job #411: dark text on the green

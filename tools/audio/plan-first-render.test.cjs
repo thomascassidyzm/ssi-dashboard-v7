@@ -23,3 +23,8 @@ test('checker refuses a join-allowing plan and a self-sourcing plan', () => {
   const self = { render: ['a b c d', 'a d'], cut: { 'a d': { source: 'a d', a: 0, b: 2 } } }
   assert.ok(P.verifyPlan(clips, self).some((e) => /own text|both/.test(e)))
 })
+
+test('a question is not merged with its statement (the ? is kept)', () => {
+  const p = P.plan([{ id: 'q', text: 'Wyt ti yma?' }, { id: 's', text: 'Wyt ti yma.' }], { spaced: true });
+  assert.deepStrictEqual([...p.render].sort(), ['q', 's']);
+});

@@ -1,0 +1,174 @@
+{
+ "event_id": "9337d851-496d-4003-8d3b-a36593b09eea",
+ "undo_file": "2026-11-11T14-52-40-646Z-9337d851-496d-4003-8d3b-a36593b09eea.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0505L02U05",
+   "set": {
+    "known_text": "so that I don't stay this time",
+    "target_text": "para que no me quede esta vez",
+    "known_audio_id": "415cabbd-9401-4004-b00b-c44431923a2c",
+    "target1_audio_id": "f623fea3-d121-4827-b460-3ed008a21007",
+    "target2_audio_id": "cf4e5514-e318-44fb-bd64-5659381700d7",
+    "decomposition": [
+     {
+      "known": "so that",
+      "legoId": "S0505L01",
+      "target": "para que",
+      "isGhost": false
+     },
+     {
+      "known": "I don't stay",
+      "legoId": "S0505L02",
+      "target": " no me quede",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " esta",
+      "isGhost": true
+     },
+     {
+      "known": "time",
+      "legoId": "S0318L02",
+      "target": " vez",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0505L02U04",
+   "set": {
+    "known_text": "so that I don't stay today",
+    "target_text": "para que no me quede hoy",
+    "known_audio_id": "26f4838d-f164-41a9-b978-1ac7b4f4629e",
+    "target1_audio_id": "df4f05b8-7c59-4ad9-b64b-81acd9079603",
+    "target2_audio_id": "d7f3d001-c264-409b-bbf6-a6ddb0e07018",
+    "decomposition": [
+     {
+      "known": "so that",
+      "legoId": "S0505L01",
+      "target": "para que",
+      "isGhost": false
+     },
+     {
+      "known": "I don't stay",
+      "legoId": "S0505L02",
+      "target": " no me quede",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L02",
+      "target": " hoy",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0505L02U03",
+   "set": {
+    "known_text": "it is good so that I don't stay",
+    "target_text": "es bueno para que no me quede",
+    "known_audio_id": "5e3848a5-79c9-4c29-81e8-ad126c22e246",
+    "target1_audio_id": "73978d04-8e39-46a5-8e80-d2e2ee6b51cd",
+    "target2_audio_id": "f2f356d7-a2dc-4d50-b5df-6d87239e7c3f",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "es",
+      "isGhost": true
+     },
+     {
+      "known": "good",
+      "legoId": "S0047L02",
+      "target": " bueno",
+      "isGhost": false
+     },
+     {
+      "known": "so that",
+      "legoId": "S0505L01",
+      "target": " para que",
+      "isGhost": false
+     },
+     {
+      "known": "I don't stay",
+      "legoId": "S0505L02",
+      "target": " no me quede",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0505L02U01",
+   "set": {
+    "known_text": "so that I don't stay here",
+    "target_text": "para que no me quede aquí",
+    "known_audio_id": "637e4eb8-b9a3-45bc-b798-92e2802a1eec",
+    "target1_audio_id": "edd26390-456c-42a4-8c92-0d4331f75302",
+    "target2_audio_id": "2dbc4243-c157-4ab3-8a79-fb09595d8157",
+    "decomposition": [
+     {
+      "known": "so that",
+      "legoId": "S0505L01",
+      "target": "para que",
+      "isGhost": false
+     },
+     {
+      "known": "I don't stay",
+      "legoId": "S0505L02",
+      "target": " no me quede",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aquí",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0505L02C02",
+   "set": {
+    "known_text": "get",
+    "known_audio_id": "23b70fad-13db-464f-819f-c34f9f61c113"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0505L02B01",
+   "set": {
+    "known_text": "I don't stay",
+    "target_text": "no me quede",
+    "known_audio_id": "817d8393-b456-4a9d-8e0e-9750aa6f0749",
+    "target1_audio_id": "938ac247-cd97-4956-af56-00fe33692c5f",
+    "target2_audio_id": "e0a55291-c0dd-4acc-b912-3e933a970766",
+    "decomposition": [
+     {
+      "known": "I don't stay",
+      "legoId": "S0505L02",
+      "target": "no me quede",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  }
+ ]
+}

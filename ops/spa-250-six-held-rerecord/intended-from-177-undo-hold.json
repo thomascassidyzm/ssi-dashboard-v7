@@ -1,0 +1,292 @@
+{
+ "event_id": "5adef027-eee5-45b9-a5d5-6a77159014e0",
+ "undo_file": "2026-11-11T15-45-10-840Z-5adef027-eee5-45b9-a5d5-6a77159014e0.json",
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0231L02B06",
+    "seed_number": 231,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "I know an old man",
+    "target_text": "Conozco a un hombre mayor",
+    "word_count": 10,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "added_by": "job #177 missing-LEGO family (v4 d/11d06f02)",
+     "pipeline": "v2"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-11-11T15:09:10.330Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I know",
+      "legoId": "S0085L01",
+      "target": "Conozco",
+      "isGhost": false
+     },
+     {
+      "known": "to",
+      "legoId": "S0216L02",
+      "target": " a",
+      "isGhost": false
+     },
+     {
+      "known": "an old man",
+      "legoId": "S0231L02",
+      "target": " un hombre mayor",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0281L04B01",
+   "set": {
+    "known_text": "I want to finish before you start",
+    "target_text": "Quiero terminar antes de que empieces",
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "Quiero",
+      "isGhost": false
+     },
+     {
+      "known": "to finish",
+      "legoId": "S0050L01",
+      "target": " terminar",
+      "isGhost": false
+     },
+     {
+      "known": "before you start",
+      "legoId": "S0281L04",
+      "target": " antes de que empieces",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0126L01B03",
+   "set": {
+    "known_text": "This work is interesting",
+    "target_text": "Este trabajo es interesante",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "decomposition": [
+     {
+      "known": "this work",
+      "legoId": "S0126L01",
+      "target": "Este trabajo",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " es",
+      "isGhost": true
+     },
+     {
+      "known": "interesting",
+      "legoId": "S0058L01",
+      "target": " interesante",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0182L01B05",
+   "set": {
+    "known_text": "I want to take my keys",
+    "target_text": "Quiero llevar mis llaves",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "Quiero",
+      "isGhost": false
+     },
+     {
+      "known": "to take",
+      "legoId": "S0181L01",
+      "target": " llevar",
+      "isGhost": false
+     },
+     {
+      "known": "my keys",
+      "legoId": "S0182L01",
+      "target": " mis llaves",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0145L01B08",
+    "seed_number": 145,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "You're not happy any more",
+    "target_text": "Ya no estás contento",
+    "word_count": 9,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "added_by": "job #177 missing-LEGO family (v4 d/11d06f02)",
+     "pipeline": "v2"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-11-11T15:00:30.275Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "already",
+      "legoId": "S0145L01",
+      "target": "Ya",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " no",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " estás",
+      "isGhost": true
+     },
+     {
+      "known": "happy",
+      "legoId": "S0076L01",
+      "target": " contento",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0145L01B07",
+    "seed_number": 145,
+    "lego_index": 1,
+    "position": 3,
+    "known_text": "I don't want to any more",
+    "target_text": "Ya no quiero",
+    "word_count": 9,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "added_by": "job #177 missing-LEGO family (v4 d/11d06f02)",
+     "pipeline": "v2"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-11-11T15:00:30.275Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "already",
+      "legoId": "S0145L01",
+      "target": "Ya",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "I don't want",
+      "legoId": "S0019L02",
+      "target": " no quiero",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  }
+ ]
+}

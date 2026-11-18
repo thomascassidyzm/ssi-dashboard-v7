@@ -1,0 +1,545 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "fe43c64b-8f90-4af1-8ac6-3f7de1aad7a6",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:44:26.630Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-44-26-630Z-fe43c64b-8f90-4af1-8ac6-3f7de1aad7a6.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L02U12",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L02U05",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta buille faoi thuairim a thabhairt faoin rud a tharlóidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L02B06",
+      "set": {
+        "target_text": "a bheith ábalta buille faoi thuairim a thabhairt faoin rud a tharlóidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L01U15",
+      "set": {
+        "target_text": "níor mhaith liom a bheith ábalta a mhíniú cad atá i gceist agam inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L01U08",
+      "set": {
+        "target_text": "níor mhaith liom a bheith ábalta labhairt le duine éigin eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L03U12",
+      "set": {
+        "target_text": "tar éis duit críochnú, ba mhaith liom a bheith ábalta a mhíniú cad atá i gceist agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L03U04",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta labhairt tar éis duit críochnú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02U08",
+      "set": {
+        "target_text": "is mian liom a bheith ábalta cuimhneamh conas rud éigin a rá i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02U07",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta labhairt chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02U06",
+      "set": {
+        "target_text": "is mian liom a bheith ábalta a mhíniú cad atá i gceist agam inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02U05",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta labhairt a chleachtadh inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02U04",
+      "set": {
+        "target_text": "tá mé ag iarraidh a bheith ábalta an abairt iomlán a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02U03",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta mo dhícheall a dhéanamh Gaeilge a labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02U02",
+      "set": {
+        "target_text": "is mian liom a bheith ábalta Gaeilge a labhairt leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02C02",
+      "set": {
+        "target_text": "ábalta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02B02",
+      "set": {
+        "target_text": "a bheith ábalta labhairt anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0011L02B01",
+      "set": {
+        "target_text": "a bheith ábalta"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "a1044c1a-893a-45b2-8eaf-735d987479e9",
+      "set": {
+        "target_text": "a bheidh ábalta",
+        "components": [
+          {
+            "known": "who will be",
+            "target": "a bheidh"
+          },
+          {
+            "known": "able",
+            "target": "ábalta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "c7e577bd-b974-4441-a818-11a193b93742",
+      "set": {
+        "target_text": "an mbeidh sé ábalta",
+        "components": [
+          {
+            "known": "if",
+            "target": "an mbeidh"
+          },
+          {
+            "known": "he",
+            "target": "sé"
+          },
+          {
+            "known": "able",
+            "target": "ábalta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "e38cfb71-6cdb-4685-b9fc-45372d09686c",
+      "set": {
+        "target_text": "beidh mé ábalta",
+        "components": [
+          {
+            "known": "will be",
+            "target": "beidh"
+          },
+          {
+            "known": "I",
+            "target": "mé"
+          },
+          {
+            "known": "able to",
+            "target": "ábalta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "8a1e8422-be9d-4dc3-8170-f6694b2bdf3f",
+      "set": {
+        "target_text": "nuair nach raibh mé ábalta",
+        "components": [
+          {
+            "known": "when",
+            "target": "nuair"
+          },
+          {
+            "known": "that not was",
+            "target": "nach raibh"
+          },
+          {
+            "known": "I",
+            "target": "mé"
+          },
+          {
+            "known": "able",
+            "target": "ábalta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b7163fd2-4c0d-4599-96fd-f2eb21707f02",
+      "set": {
+        "target_text": "an fáth ar mhian liom",
+        "components": [
+          {
+            "known": "the reason",
+            "target": "an fáth"
+          },
+          {
+            "known": "that I wanted",
+            "target": "ar mhian liom"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b13deab8-139c-413b-85e1-b8a34bd942ba",
+      "set": {
+        "target_text": "sin é an fáth",
+        "components": [
+          {
+            "known": "that",
+            "target": "Sin"
+          },
+          {
+            "known": "it",
+            "target": "é"
+          },
+          {
+            "known": "the reason",
+            "target": "an fáth"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "97f07d94-33f9-4e77-a50c-9fbf490af736",
+      "set": {
+        "target_text": "níor cheart duit",
+        "components": [
+          {
+            "known": "not right",
+            "target": "Níor cheart"
+          },
+          {
+            "known": "for you",
+            "target": "duit"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "cdbf0a38-60e9-4b72-ac95-bfe7d1d0405a",
+      "set": {
+        "target_text": "ba cheart duit",
+        "components": [
+          {
+            "known": "it would be right",
+            "target": "Ba cheart"
+          },
+          {
+            "known": "for you",
+            "target": "duit"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "aeecc6f1-a1c7-47e7-93d3-2ec086dbb51c",
+      "set": {
+        "target_text": "ba cheart dom",
+        "components": [
+          {
+            "known": "should",
+            "target": "ba cheart"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "6c175c9f-c207-4bb1-95c5-22cbbe360f43",
+      "set": {
+        "target_text": "a bheith ábalta",
+        "components": [
+          {
+            "known": "to be",
+            "target": "a bheith"
+          },
+          {
+            "known": "able",
+            "target": "ábalta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 668,
+      "set": {
+        "target_text": "Tá súil agam go mbeidh sibh ar fad ábalta dul"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 564,
+      "set": {
+        "target_text": "Ní bheinn ábalta é a dhéanamh gan an chabhair a thug tú dom"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 563,
+      "set": {
+        "target_text": "Ní bheinn ábalta leanúint ar aghaidh níos faide"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 528,
+      "set": {
+        "target_text": "is dócha gur cheart dom na rudaí sin a choinneáil i seomra eile"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 525,
+      "set": {
+        "target_text": "le seiceáil an raibh tú ábalta críochnú"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 499,
+      "set": {
+        "target_text": "b'fhéidir gur cheart dúinn an doras a oscailt agus an fhuinneog a dhúnadh"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 447,
+      "set": {
+        "target_text": "an mbeidh siad ábalta muid a thiomáint abhaile tar éis an bhéile?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 446,
+      "set": {
+        "target_text": "Ní bheidh siad ábalta an fhuinneog sin a bhriseadh"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 445,
+      "set": {
+        "target_text": "beidh siad ábalta an mála taistil sin a iompar"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 438,
+      "set": {
+        "target_text": "Níor mhian leo cinneadh a dhéanamh faoi cad ba cheart dó a dhéanamh"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 409,
+      "set": {
+        "target_text": "Níor cheart, is cuma cad a dhéanann muid"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 408,
+      "set": {
+        "target_text": "Ba cheart, sin an bealach is fearr chun teaghlach sona a dhéanamh"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 407,
+      "set": {
+        "target_text": "nár cheart dúinn iarracht a dhéanamh dea-shampla a thabhairt?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 406,
+      "set": {
+        "target_text": "Níor cheart, tá mé cinnte go mbeidh sé ceart go leor"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 405,
+      "set": {
+        "target_text": "ar cheart dúinn fiafraí de an gcaithfidh muid áirithint a dhéanamh?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 404,
+      "set": {
+        "target_text": "níor cheart dúinn a bheith ag súil le críochnú roimh Dhéardaoin"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 403,
+      "set": {
+        "target_text": "ba cheart dúinn fanacht ciúin chomh fada agus is féidir"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 328,
+      "set": {
+        "target_text": "Ceapaim, ceapaim gur cheart di sin a aimsiú"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 292,
+      "set": {
+        "target_text": "Tá súil agam go mbeidh tú ábalta teacht chuig an gcóisir"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 291,
+      "set": {
+        "target_text": "Tá súil agam go mbeidh mé ábalta labhairt níos fearr go luath"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 253,
+      "set": {
+        "target_text": "ba cheart go mbeidh mé réidh i gceann cúpla nóiméad"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 232,
+      "set": {
+        "target_text": "Tá aithne agam ar sheanbean a bheidh ábalta cuimhneamh ar an bhfreagra"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 176,
+      "set": {
+        "target_text": "fiafróidh mé de an mbeidh sé ábalta cabhrú linn an bhliain seo chugainn"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 168,
+      "set": {
+        "target_text": "agus ansin beidh mé ábalta teacht agus cabhrú leat níos déanaí"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 157,
+      "set": {
+        "target_text": "Ní bheidh mé ábalta a bheith ann an mhí seo chugainn"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 148,
+      "set": {
+        "target_text": "Ní raibh sé an-fhoighneach liom nuair nach raibh mé ábalta freagra a thabhairt dó"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 127,
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 105,
+      "set": {
+        "target_text": "sin é an fáth nach raibh an freagra ar eolas aige"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 100,
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha faoi agus rud éigin cosúil leis á dhéanamh agat"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 99,
+      "set": {
+        "target_text": "ba cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 98,
+      "set": {
+        "target_text": "ba cheart dom smaoineamh ar rud éigin eile a imirt"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 24,
+      "set": {
+        "target_text": "Ní bheidh mé ábalta cuimhneamh air sin go héasca"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 11,
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta labhairt tar éis duit críochnú"
+      }
+    }
+  ]
+}

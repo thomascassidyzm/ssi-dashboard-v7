@@ -1,0 +1,965 @@
+{
+"batch": "B",
+"seeds": [
+61,
+69,
+77,
+102
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 61,
+"set": {
+"target_text": "an bhféadfá é sin a rá arís, ach beagán níos moille?"
+},
+"expect": {
+"known_text": "could you say that again a little more slowly?",
+"target_text": "an bhféadfá é sin a rá arís beagán níos moille?"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 61,
+"lego_index": 7,
+"known_text": "again a little more slowly",
+"target_text": "arís, ach beagán níos moille",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "again",
+"target": "arís"
+},
+{
+"known": "but",
+"target": "ach"
+},
+{
+"known": "a little more slowly",
+"target": "beagán níos moille"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0061L07U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 61,
+"lego_index": 7,
+"position": 101,
+"known_text": "could you say that again a little more slowly please",
+"target_text": "an bhféadfá é sin a rá arís, ach beagán níos moille",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0061L04U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 11,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0061L07U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 61,
+"lego_index": 7,
+"position": 102,
+"known_text": "I want to try to say it again a little more slowly",
+"target_text": "is mian liom iarracht a dhéanamh rud éigin a rá arís, ach beagán níos moille",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0061L04U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 15,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0061L07U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 61,
+"lego_index": 7,
+"position": 103,
+"known_text": "I want to say all of this to you again a little more slowly",
+"target_text": "is mian liom rud éigin a rá leat arís, ach beagán níos moille",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0061L06U15"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 13,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0061L07U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 61,
+"lego_index": 7,
+"position": 104,
+"known_text": "could you say that again a little more slowly so I can understand you",
+"target_text": "an bhféadfá é sin a rá arís, ach beagán níos moille chun a thuigeann tú mé",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0061L06U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 16,
+"lego_count": 16
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0061L07B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 61,
+"lego_index": 7,
+"position": 105,
+"known_text": "again a little more slowly",
+"target_text": "arís, ach beagán níos moille",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0061L04U01",
+"expect": {
+"target_text": "an bhféadfá é sin a rá arís beagán níos moille"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0061L04U06",
+"expect": {
+"target_text": "is mian liom iarracht a dhéanamh rud éigin a rá arís beagán níos moille"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0061L06U15",
+"expect": {
+"target_text": "is mian liom rud éigin a rá leat arís beagán níos moille"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0061L06U01",
+"expect": {
+"target_text": "an bhféadfá é sin a rá arís beagán níos moille chun a thuigeann tú mé"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0061L04B03",
+"expect": {
+"target_text": "an bhféadfá é sin a rá arís beagán níos moille"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0061L06B04",
+"expect": {
+"target_text": "an bhféadfá é sin a rá arís beagán níos moille"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 69,
+"set": {
+"target_text": "Níor mhian leis aire a thabhairt don mhadra óg um thráthnóna ar fad"
+},
+"expect": {
+"known_text": "he didn't want to look after the young dog all afternoon",
+"target_text": "Níor mhian leis aire a thabhairt don mhadra óg an tráthnóna ar fad"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 69,
+"lego_index": 7,
+"known_text": "all afternoon",
+"target_text": "um thráthnóna ar fad",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "in the afternoon",
+"target": "um thráthnóna"
+},
+{
+"known": "all",
+"target": "ar fad"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0069L07B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 69,
+"lego_index": 7,
+"position": 101,
+"known_text": "all afternoon",
+"target_text": "um thráthnóna ar fad",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0069L07B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 69,
+"lego_index": 7,
+"position": 102,
+"known_text": "all afternoon yesterday",
+"target_text": "um thráthnóna ar fad inné",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0069L06B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0069L07U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 69,
+"lego_index": 7,
+"position": 103,
+"known_text": "I was tired all afternoon but it doesn't matter",
+"target_text": "bhí mé tuirseach um thráthnóna ar fad ach is cuma",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0069L06U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 10,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0069L07U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 69,
+"lego_index": 7,
+"position": 104,
+"known_text": "I was learning Irish all afternoon",
+"target_text": "bhí mé ag foghlaim Gaeilge um thráthnóna ar fad",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0069L06U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 9,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0069L07U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 69,
+"lego_index": 7,
+"position": 105,
+"known_text": "she doesn't want to practise speaking all afternoon",
+"target_text": "ní mian léi labhairt a chleachtadh um thráthnóna ar fad",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0069L06U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 10,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0069L07U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 69,
+"lego_index": 7,
+"position": 106,
+"known_text": "he was not trying to look after the young dog all afternoon",
+"target_text": "Ní raibh sé ag iarraidh aire a thabhairt don mhadra óg um thráthnóna ar fad",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0069L04U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 15,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0069L07U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 69,
+"lego_index": 7,
+"position": 107,
+"known_text": "he didn't want to look after the young dog all afternoon",
+"target_text": "Níor mhian leis aire a thabhairt don mhadra óg um thráthnóna ar fad",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 13,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0069L06B02",
+"expect": {
+"target_text": "an tráthnóna ar fad inné"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0069L06U01",
+"expect": {
+"target_text": "bhí mé tuirseach an tráthnóna ar fad ach is cuma"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0069L06U02",
+"expect": {
+"target_text": "bhí mé ag foghlaim Gaeilge an tráthnóna ar fad"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0069L06U03",
+"expect": {
+"target_text": "ní mian léi labhairt a chleachtadh an tráthnóna ar fad"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0069L04U01",
+"expect": {
+"target_text": "Ní raibh sé ag iarraidh aire a thabhairt don mhadra óg an tráthnóna ar fad"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0069L06B01",
+"expect": {
+"target_text": "an tráthnóna ar fad"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0069L05",
+"cascade_phrases": true,
+"expect": {
+"target_text": "an tráthnóna"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 77,
+"set": {
+"target_text": "Cuireann sé ionadh orm cé chomh tapa is atá tuiscint á fáil agam air"
+},
+"expect": {
+"known_text": "I'm surprised at how quickly I'm understanding it",
+"target_text": "Tá ionadh orm cé chomh tapa is atá tuiscint á fáil agam air"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0077L01",
+"set": {
+"known_text": "I'm surprised",
+"target_text": "Cuireann sé ionadh orm",
+"components": [
+{
+"known": "it puts",
+"target": "cuireann sé"
+},
+{
+"known": "surprise",
+"target": "ionadh"
+},
+{
+"known": "on me",
+"target": "orm"
+}
+]
+},
+"expect": {
+"known_text": "I am surprised",
+"target_text": "Tá ionadh orm",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01B01",
+"set": {
+"target_text": "cuireann sé ionadh orm arís"
+},
+"expect": {
+"known_text": "I am surprised again",
+"target_text": "tá ionadh orm arís"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01B02",
+"set": {
+"target_text": "ach cuireann sé ionadh orm faoi láthair"
+},
+"expect": {
+"known_text": "but I am surprised at the moment",
+"target_text": "ach tá ionadh orm faoi láthair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01B03",
+"set": {
+"target_text": "nuair a thuigeann tú cuireann sé ionadh orm"
+},
+"expect": {
+"known_text": "when you understand I am surprised",
+"target_text": "nuair a thuigeann tú tá ionadh orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01B04",
+"set": {
+"target_text": "cuireann sé ionadh orm ach tá sé suimiúil"
+},
+"expect": {
+"known_text": "I am surprised but it is interesting",
+"target_text": "tá ionadh orm ach tá sé suimiúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01U02",
+"set": {
+"target_text": "cuireann sé ionadh orm agus go raibh míle maith agat"
+},
+"expect": {
+"known_text": "I am surprised and thank you very much",
+"target_text": "tá ionadh orm agus go raibh míle maith agat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01U03",
+"set": {
+"target_text": "má thuigeann tú gach rud cuireann sé ionadh orm"
+},
+"expect": {
+"known_text": "if you understand everything I am surprised",
+"target_text": "má thuigeann tú gach rud tá ionadh orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01U04",
+"set": {
+"target_text": "is maith liom gach rud atá foghlamtha agam agus cuireann sé ionadh orm"
+},
+"expect": {
+"known_text": "I like everything that I have learned and I am surprised",
+"target_text": "is maith liom gach rud atá foghlamtha agam agus tá ionadh orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01U05",
+"set": {
+"target_text": "cuireann sé ionadh orm inniu agus ba mhaith liom Gaeilge a fhoghlaim"
+},
+"expect": {
+"known_text": "I am surprised today and I'd like to learn Irish",
+"target_text": "tá ionadh orm inniu agus ba mhaith liom Gaeilge a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01U06",
+"set": {
+"target_text": "ní féidir liom stopadh ach cuireann sé ionadh orm arís"
+},
+"expect": {
+"known_text": "I can't stop but I am surprised again",
+"target_text": "ní féidir liom stopadh ach tá ionadh orm arís"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L01U01",
+"set": {
+"target_text": "níl a fhios agam cén fáth ach cuireann sé ionadh orm"
+},
+"expect": {
+"known_text": "I don't know why but I am surprised",
+"target_text": "níl a fhios agam cén fáth ach tá ionadh orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L03B02",
+"set": {
+"target_text": "cuireann sé ionadh orm cé chomh tapa is atá tuiscint á fáil agam air"
+},
+"expect": {
+"known_text": "I'm surprised at how quickly I'm understanding it",
+"target_text": "tá ionadh orm cé chomh tapa is atá tuiscint á fáil agam air"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L03U01",
+"set": {
+"target_text": "go raibh míle maith agat, cuireann sé ionadh orm cé chomh tapa is atá tuiscint á fáil agam air"
+},
+"expect": {
+"known_text": "thank you very much, I'm surprised at how quickly I'm understanding it",
+"target_text": "go raibh míle maith agat, tá ionadh orm cé chomh tapa is atá tuiscint á fáil agam air"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L03U03",
+"set": {
+"target_text": "cuireann sé ionadh orm arís cé chomh tapa is atá tuiscint á fáil agam air"
+},
+"expect": {
+"known_text": "I'm surprised again at how quickly I'm understanding it",
+"target_text": "tá ionadh orm arís cé chomh tapa is atá tuiscint á fáil agam air"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0077L01C01",
+"expect": {
+"target_text": "Tá"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0077L01C02",
+"expect": {
+"target_text": "ionadh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0077L01C03",
+"expect": {
+"target_text": "orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L01U01",
+"set": {
+"target_text": "cuireann sé ionadh orm mar dúirt tú é sin"
+},
+"expect": {
+"known_text": "I am surprised because you said that",
+"target_text": "tá ionadh orm mar dúirt tú é sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L03U08",
+"set": {
+"target_text": "an bhféadfá é a mhíniú arís, ach beagán níos moille mar ní thuigim"
+},
+"expect": {
+"known_text": "could you explain it again a little more slowly because I do not understand",
+"target_text": "an bhféadfá é a mhíniú arís beagán níos moille mar ní thuigim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0079L01U12",
+"set": {
+"target_text": "cuireann sé ionadh orm cathain a thosaigh tú mar labhraíonn tú go han-mhaith anois"
+},
+"expect": {
+"known_text": "I wonder when you started because you speak very well now",
+"target_text": "tá ionadh orm cathain a thosaigh tú mar labhraíonn tú go han-mhaith anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0101L06U06",
+"set": {
+"target_text": "cuireann sé ionadh orm faoin teanga ach tá sé suimiúil"
+},
+"expect": {
+"known_text": "I am surprised about the language but it is interesting",
+"target_text": "tá ionadh orm faoin teanga ach tá sé suimiúil"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 102,
+"set": {
+"target_text": "Tá muid ag iarraidh a rá nach mar sin atá sé"
+},
+"expect": {
+"known_text": "we're trying to say that it's not like that",
+"target_text": "Tá muid ag iarraidh a rá nach bhfuil sé mar sin"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 102,
+"lego_index": 6,
+"known_text": "that it's not like that",
+"target_text": "nach mar sin atá sé",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "that not",
+"target": "nach"
+},
+{
+"known": "like that",
+"target": "mar sin"
+},
+{
+"known": "it is",
+"target": "atá sé"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0102L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 102,
+"lego_index": 6,
+"position": 101,
+"known_text": "that it's not like that",
+"target_text": "nach mar sin atá sé",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0102L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 102,
+"lego_index": 6,
+"position": 102,
+"known_text": "I think that it's not like that",
+"target_text": "ceapaim nach mar sin atá sé",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0102L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 102,
+"lego_index": 6,
+"position": 103,
+"known_text": "I know that it's not like that",
+"target_text": "Tá a fhios agam nach mar sin atá sé",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 9,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0102L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 102,
+"lego_index": 6,
+"position": 104,
+"known_text": "he said that it's not like that",
+"target_text": "dúirt sé nach mar sin atá sé",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 7,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0102L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 102,
+"lego_index": 6,
+"position": 105,
+"known_text": "we're trying to say that it's not like that",
+"target_text": "Tá muid ag iarraidh a rá nach mar sin atá sé",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 11,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L02U12",
+"set": {
+"target_text": "bhí sé ag iarraidh aire a thabhairt don mhadra óg um thráthnóna ar fad"
+},
+"expect": {
+"known_text": "he was trying to take care of the young dog all evening",
+"target_text": "bhí sé ag iarraidh aire a thabhairt don mhadra óg an tráthnóna ar fad"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0102L04",
+"cascade_phrases": true,
+"expect": {
+"target_text": "nach bhfuil sé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0121L01U01",
+"set": {
+"target_text": "cuireann sé ionadh orm mar tá sé neamhghnách"
+},
+"expect": {
+"known_text": "I'm surprised because it's unusual",
+"target_text": "tá ionadh orm mar tá sé neamhghnách"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0121L02U05",
+"set": {
+"target_text": "cuireann sé ionadh orm nach maith leat gaeilge a fhoghlaim"
+},
+"expect": {
+"known_text": "I am surprised that you don't like to learn Irish",
+"target_text": "tá ionadh orm nach maith leat gaeilge a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0128L01U02",
+"set": {
+"target_text": "cuireann sé ionadh orm mar tá tú cosúil le do chara"
+},
+"expect": {
+"known_text": "I'm surprised because you're like your friend",
+"target_text": "tá ionadh orm mar tá tú cosúil le do chara"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0146L04U03",
+"set": {
+"target_text": "cuireann sé ionadh orm nach bhfuil rud ar bith ag obair go fóill"
+},
+"expect": {
+"known_text": "I'm surprised that nothing is working yet",
+"target_text": "tá ionadh orm nach bhfuil rud ar bith ag obair go fóill"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L01U04",
+"set": {
+"target_text": "an féidir leat é sin a rá arís, ach beagán níos moille"
+},
+"expect": {
+"known_text": "can you say that again a little more slowly",
+"target_text": "an féidir leat é sin a rá arís beagán níos moille"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L01U05",
+"set": {
+"target_text": "an féidir leat aire a thabhairt don mhadra óg um thráthnóna ar fad"
+},
+"expect": {
+"known_text": "can you look after the young dog all afternoon",
+"target_text": "an féidir leat aire a thabhairt don mhadra óg an tráthnóna ar fad"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L01U02",
+"set": {
+"target_text": "conas a deir tú é seo i nGaeilge agus an bhféadfá é sin a rá arís, ach beagán níos moille"
+},
+"expect": {
+"known_text": "how do you say this in Irish and could you say it again a little more slowly please",
+"target_text": "conas a deir tú é seo i nGaeilge agus an bhféadfá é sin a rá arís beagán níos moille"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L02U04",
+"set": {
+"target_text": "an bhféadfá an focal seo a rá arís, ach beagán níos moille mar ní raibh mé in ann é a chloisteáil"
+},
+"expect": {
+"known_text": "could you say this word again a little more slowly because I was not able to hear it clearly",
+"target_text": "an bhféadfá an focal seo a rá arís beagán níos moille mar ní raibh mé in ann é a chloisteáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0185L02U04",
+"set": {
+"target_text": "cuireann sé ionadh orm gur fhág tú an leabhar sin sa teach tábhairne"
+},
+"expect": {
+"known_text": "I am surprised that you left that book in the pub",
+"target_text": "tá ionadh orm gur fhág tú an leabhar sin sa teach tábhairne"
+}
+}
+]
+}

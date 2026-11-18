@@ -270,7 +270,9 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
  * obliged to tell the artist that takes are not being persisted on this device.
  * Never fail the capture itself; a degraded take is still a take.
  */
-export function createIndexedDbBackend(idbFactory) {
+export function createIndexedDbBackend(idbFactory, { dbName = DB_NAME } = {}) {
+  // dbName: the Record Room's script recorder keeps its own shelf (autocueTakeShelf.js) in a
+  // separate database, so the booth's queue — which drains everything on its shelf — never sees it.
   const idb = idbFactory || (typeof indexedDB !== 'undefined' ? indexedDB : null)
   if (!idb) return { ...createMemoryBackend(), available: false, reason: 'no-indexeddb' }
 
@@ -279,7 +281,7 @@ export function createIndexedDbBackend(idbFactory) {
     if (dbPromise) return dbPromise
     dbPromise = new Promise((resolve, reject) => {
       let req
-      try { req = idb.open(DB_NAME, DB_VERSION) } catch (err) { reject(err); return }
+      try { req = idb.open(dbName, DB_VERSION) } catch (err) { reject(err); return }
       req.onupgradeneeded = () => upgrade(req.result, req.transaction)
       req.onsuccess = () => {
         const db = req.result

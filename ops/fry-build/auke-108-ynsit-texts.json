@@ -1,0 +1,179 @@
+{
+ "family": "ynsit-der-oer",
+ "note": "Kai 16 Nov ruling 8 on Auke's 17 lines: bare 'ynsit' -> 'der oer ynsit' on LEGO S0343L03, its tile, its 9 phrases and S0365L01B03 (none recorded). HELD: the four S0243L01 'te iten -> ite' lines ('ite' is first taught at seed 400; the LEGO teaches 'te iten'). The two S0270 lines went with the heuge family.",
+ "held": [
+  {
+   "key": "S0243L01B01",
+   "known": "do you want the same thing to eat?",
+   "target": "wolstû itselde te iten?",
+   "auke_fix": "wolstû itselde ite?",
+   "has_take": true
+  },
+  {
+   "key": "S0243L01U03",
+   "known": "do you want the same thing to eat as yesterday?",
+   "target": "wolstû itselde te iten as juster?",
+   "auke_fix": "wolstû itselde ite as juster?",
+   "has_take": false
+  },
+  {
+   "key": "S0243L01U01",
+   "known": "they want the same thing to eat",
+   "target": "sy wolle itselde te iten",
+   "auke_fix": "sy wolle itselde ite",
+   "has_take": true
+  },
+  {
+   "key": "S0243L01U02",
+   "known": "he didn't want the same thing to eat",
+   "target": "hy woe net itselde te iten",
+   "auke_fix": "hy woe net itselde ite",
+   "has_take": true
+  }
+ ],
+ "rows": [
+  {
+   "key": "LEGO:S0343L03",
+   "old": [
+    "that she's worried",
+    "dat se ynsit"
+   ],
+   "new": [
+    "that she's worried",
+    "dat se der oer ynsit"
+   ],
+   "components": [
+    {
+     "known": "that she",
+     "target": "dat se"
+    },
+    {
+     "known": "is worried",
+     "target": "der oer ynsit"
+    }
+   ]
+  },
+  {
+   "key": "S0343L03B01",
+   "old": [
+    "I think that she's worried",
+    "ik tink dat se ynsit"
+   ],
+   "new": [
+    "I think that she's worried",
+    "ik tink dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0343L03B02",
+   "old": [
+    "do you think that she's worried?",
+    "tinkstû dat se ynsit?"
+   ],
+   "new": [
+    "do you think that she's worried?",
+    "tinkstû dat se der oer ynsit?"
+   ]
+  },
+  {
+   "key": "S0343L03B03",
+   "old": [
+    "who said that she's worried",
+    "dy't sei dat se ynsit"
+   ],
+   "new": [
+    "who said that she's worried",
+    "dy't sei dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0343L03B04",
+   "old": [
+    "we know that she's worried",
+    "wy witte dat se ynsit"
+   ],
+   "new": [
+    "we know that she's worried",
+    "wy witte dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0343L03U01",
+   "old": [
+    "I don't think that she's worried",
+    "ik tink net dat se ynsit"
+   ],
+   "new": [
+    "I don't think that she's worried",
+    "ik tink net dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0343L03U02",
+   "old": [
+    "she said that she's worried and that she doesn't want to work from home",
+    "sy sei dat se ynsit en dat se net thús wurkje wol"
+   ],
+   "new": [
+    "she said that she's worried and that she doesn't want to work from home",
+    "sy sei dat se der oer ynsit en dat se net thús wurkje wol"
+   ]
+  },
+  {
+   "key": "S0343L03U03",
+   "old": [
+    "I know that young woman who said that she's worried",
+    "ik ken dy jonge frou dy't sei dat se ynsit"
+   ],
+   "new": [
+    "I know that young woman who said that she's worried",
+    "ik ken dy jonge frou dy't sei dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0343L03U04",
+   "old": [
+    "they told us that she's worried",
+    "sy hawwe ús ferteld dat se ynsit"
+   ],
+   "new": [
+    "they told us that she's worried",
+    "sy hawwe ús ferteld dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0343L03U05",
+   "old": [
+    "he said this morning that she's worried",
+    "hy sei fan 'e moarn dat se ynsit"
+   ],
+   "new": [
+    "he said this morning that she's worried",
+    "hy sei fan 'e moarn dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0365L01B03",
+   "old": [
+    "I didn't hear that she's worried",
+    "ik haw net heard dat se ynsit"
+   ],
+   "new": [
+    "I didn't hear that she's worried",
+    "ik haw net heard dat se der oer ynsit"
+   ]
+  },
+  {
+   "key": "S0343L03C02",
+   "old": [
+    "is worried",
+    "ynsit"
+   ],
+   "new": [
+    "is worried",
+    "der oer ynsit"
+   ],
+   "why": "the tile moves with its LEGO (O12); same gloss as S0270L01 because I'm worried | om't ik der oer ynsit"
+  }
+ ]
+}

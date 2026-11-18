@@ -60,9 +60,9 @@ function planIntro(text, course) {
   const parsed = plan && parseIntro(text)
   if (!parsed) return null
   const pieces = [{ kind: 'fragment', text: plan.fragmentText, role: 'presentation', gapAfterMs: GAPS_MS.afterFragment },
-    { kind: 'x', text: parsed.x, role: 'known', gapAfterMs: parsed.context ? GAPS_MS.afterX : GAPS_MS.afterX }]
-  if (parsed.context) pieces.push({ kind: 'asin', text: 'as in', role: 'known', gapAfterMs: GAPS_MS.afterAsIn }, { kind: 'context', text: parsed.context, role: 'known', gapAfterMs: GAPS_MS.afterContext })
-  pieces.push({ kind: 'is', text: 'is', role: 'known', gapAfterMs: 0 })
+    { kind: 'x', text: parsed.x, role: 'presentation', gapAfterMs: parsed.context ? GAPS_MS.afterX : GAPS_MS.afterX }]
+  if (parsed.context) pieces.push({ kind: 'asin', text: 'as in', role: 'presentation', gapAfterMs: GAPS_MS.afterAsIn }, { kind: 'context', text: parsed.context, role: 'presentation', gapAfterMs: GAPS_MS.afterContext })
+  pieces.push({ kind: 'is', text: 'is', role: 'presentation', gapAfterMs: 0 })
   return { voiceId: plan.voiceId, pieces }
 }
 

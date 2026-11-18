@@ -1,6 +1,11 @@
 // services/production-api.cjs
 require('dotenv').config()
+// Every live DB call from this process goes through the adaptive load governor (cs #835; Tom's ruling
+// r-2026-11-18-no-watson-or-worker-any-owner). Must stay above anything that builds a Supabase or pg client.
+require('./shared/db-load-gate.cjs').install('popty-production-api')
 const express = require('express')
+const { buildCourseConfigsId } = require('./shared/legacy-manifest-id.cjs')
+const { isStageEventLine, parseStageEventLine } = require('./shared/stage-event-line.cjs')
 const compression = require('compression')
 const cors = require('cors')
 const path = require('path')
@@ -8,18 +13,21 @@ const fs = require('fs-extra')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
+const { readAllPages } = require('./shared/paged-read.cjs')
 const speakabilityGrid = require('./shared/speakability-grid.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+// Every key lookup below is a free-text .in(); this makes supabase-js quote it correctly process-wide (cs #460).
+require('./shared/postgrest-in-quote.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 const { identity: buildIdentity } = require('./shared/build-identity.cjs')
 const { fetchAuditStats } = require('./shared/audit-stats.cjs')
 const { releaseGate, describeBlocking } = require('./shared/debut-practice.cjs')
 
 const logger = createLogger('ProductionAPI')
+const serverError = require('./shared/server-error.cjs').serverErrorResponder(logger)
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
-const { canonicalLanguage } = require('./shared/clip-identity.cjs')
 const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const podVisibility = require('./pod-visibility.cjs')
@@ -34,13 +42,8 @@ const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
-const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
+const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake, MIN_TAKE_MS, DEFAULT_UPLOAD_MIME, readStyleForTake, takeGateText, refuseProcessedTake } = require('./recording-upload-helpers.cjs')
 const speechGate = require('./recording-speech-gate.cjs')
-// The booth take's script check runs AFTER the upload answers (job #842): see the header of
-// take-text-check-queue.cjs. Created here so the upload seam queues into it and the recordist
-// router serves its per-voice failed-check list.
-const takeTextCheck = require('./take-text-check-queue.cjs')
-const textChecks = takeTextCheck.createTextCheckQueue({ logger })
 const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
 const { createLastGoodCache, rowOrThrow } = require('./shared/last-good-cache.cjs')
 // Course rows read by the upload seam, kept as last-good for a read blip (job #917).
@@ -54,6 +57,7 @@ const { coursesVisibleTo } = require('./shared/library-courses.cjs')
 const castingRights = require('./voice-engine/casting-rights.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
 const humanAuthoredPresentations = require('./shared/human-authored-presentations.cjs')
+const introAuthorship = require('./shared/intro-authorship.cjs')  // soft guard on hand-written intros (job #247·AH)
 
 // =============================================================================
 // MANIFEST CACHING
@@ -104,41 +108,6 @@ async function getCachedManifest(courseCode) {
 }
 
 // Clear cache for a specific course (call after data updates)
-/**
- * Build the courseConfigsId (file name + manifest id) with dialect-aware suffix
- * on either the known or target side (or both, in theory).
- * E.g.:
- *   spa_for_eng        → "en-es"        (no suffix)
- *   spa_mx_for_eng     → "en-es-mx"     (target suffix)
- *   fra_ca_for_eng     → "en-fr-ca"
- *   eng_for_fra_ca     → "fr-ca-en"     (known suffix — hypothetical, no such course today)
- *   cym_anthem_for_jpn → "ja-cy-anthem"
- *
- * Mirrors the logic in services/phases/generate-legacy-manifest.cjs (build manifest section)
- * so the dashboard's UI/publish path agrees with the manifest's internal id.
- *
- * Also exported indirectly via parseCourseCodeSuffixes() so other modules can
- * reuse the same parsing.
- *
- * @param {string} courseCode      e.g. "fra_ca_for_eng"
- * @param {string} knownDbLang     e.g. "eng" (course.known_lang)
- * @param {string} targetDbLang    e.g. "fra" (course.target_lang)
- * @param {string} knownLegacyCode e.g. "en"  (after languageCodeService conversion)
- * @param {string} targetLegacyCode e.g. "fr"
- */
-function parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang) {
-  const re = new RegExp(`^${targetDbLang}(?:_(.+?))?_for_${knownDbLang}(?:_(.+))?$`)
-  const m = courseCode.match(re)
-  return { targetSuffix: m?.[1] || '', knownSuffix: m?.[2] || '' }
-}
-
-function buildCourseConfigsId(courseCode, knownDbLang, targetDbLang, knownLegacyCode, targetLegacyCode) {
-  const { targetSuffix, knownSuffix } = parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang)
-  const knownPart = knownSuffix ? `${knownLegacyCode}-${knownSuffix}` : knownLegacyCode
-  const targetPart = targetSuffix ? `${targetLegacyCode}-${targetSuffix}` : targetLegacyCode
-  return `${knownPart}-${targetPart}`
-}
-
 function invalidateManifestCache(courseCode) {
   if (manifestCache.has(courseCode)) {
     manifestCache.delete(courseCode)
@@ -387,6 +356,8 @@ async function requireAdmin(req, res) {
   // door (agentFrontDoor below) — attributed, logged, same-host only.
   const agent = agentAdminIdentity.agentFromRequest(req)
   if (agent) return agent
+  // A narrower agent key (pod:write, voice-slot:write…) never reaches an admin:all route.
+  if (agentAdminIdentity.agentWithoutAdminAll(req)) { res.status(403).json({ error: 'the agent key does not carry scope admin:all', code: 'AGENT_IDENTITY_REFUSED' }); return null }
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -402,6 +373,8 @@ async function requireAdmin(req, res) {
 async function requireDashboardUser(req, res) {
   const agent = agentAdminIdentity.agentFromRequest(req)
   if (agent) return agent
+  // A narrower agent key (pod:write, voice-slot:write…) never reaches an admin:all route.
+  if (agentAdminIdentity.agentWithoutAdminAll(req)) { res.status(403).json({ error: 'the agent key does not carry scope admin:all', code: 'AGENT_IDENTITY_REFUSED' }); return null }
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -606,6 +579,21 @@ app.get('/api/production/:courseCode/pods/coverage', async (req, res) => {
   }
 })
 
+// THE pods page's search and its app-preview pass (job #628, Tom
+// r-2026-11-07-ssi-pods-exactly-one-way-of): one in-memory index over every pod,
+// scene and language; the pass frames the APP's own pod display, so Popty plays
+// nothing of its own. The pass route sits under :courseCode for the scope gate.
+{
+  const podSearch = require('./pod-search-router.cjs')({
+    getDb: () => supabaseClient.getClient(),
+    resolveUser: resolveDashboardUserCached,
+    canAccessCourse: (user, course) => castingRights.courseAccessVerdict(user, course).ok,
+    logger,
+  })
+  app.use(podSearch.router)
+  app.use('/api/production/:courseCode/pod-preview', podSearch.preview)
+}
+
 // Pod casting + per-voice recording plans (human pod recording keystone).
 // Same gate coverage as the voice-engine mounts above. Writes touch ONLY
 // courses.voice_config.podCast — an additive key TTS serving never reads —
@@ -627,6 +615,11 @@ app.use('/api/production/:courseCode/audio-preview',
     getDb: () => supabaseClient.getClient(),
     logger,
   }))
+
+// Pod Drill preview (job #692): every cut card as the Drill plays it, plus the known-side
+// re-record list, read from the stage's own run files in ops/pod-drill-cuts/. READ-ONLY, no DB.
+app.use('/api/production/:courseCode/pod-drill',
+  require('./pod-drill-router.cjs')({ logger }))
 
 // The ONE recordist surface. Top-level /api/recording/* on purpose: this queue
 // is derived BY LANGUAGE across every course (language_recording_policy), so it
@@ -697,7 +690,6 @@ app.use('/api/recording',
     requireAdminOrAgent,
     requireDashboardUser,
     handleRecordingUpload,
-    textChecks,
     warmPhrasePlan: true,
     boothKeys,
     boothKeyGate,
@@ -1189,8 +1181,7 @@ app.get('/api/production/schema/validate', async (req, res) => {
 
     res.json(results)
   } catch (err) {
-    logger.error('Schema validation failed:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Schema validation failed:', err)
   }
 })
 
@@ -1206,8 +1197,7 @@ app.get('/api/library/courses', async (req, res) => {
     if (error) throw error
     res.json({ courses: coursesVisibleTo(user, data) })
   } catch (err) {
-    logger.error('Failed to get library courses:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get library courses:', err)
   }
 })
 
@@ -1220,8 +1210,7 @@ app.get('/api/library/course/:courseCode', async (req, res) => {
     if (!data) return res.status(404).json({ error: 'Course not found' })
     res.json({ course: { ...data, is_hidden: data.visibility === 'hidden' } })
   } catch (err) {
-    logger.error('Failed to get library course:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get library course:', err)
   }
 })
 
@@ -1276,8 +1265,7 @@ app.get('/api/courses', async (req, res) => {
     logger.info(`Returning ${result.length} courses from database${req.query.stats === 'true' ? ' (with stats)' : ''}`)
     res.json({ courses: result })
   } catch (err) {
-    logger.error('Failed to get courses:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get courses:', err)
   }
 })
 
@@ -1289,7 +1277,7 @@ app.get('/api/courses', async (req, res) => {
 // basically moved to deprecate doctrine docs as much as possible because of our
 // speed of iteration. It's too difficult to keep docs up to date." So this is a
 // query, not a document: no cache, no snapshot, no materialised view, no cron.
-// Every field below is recomputed per request (public.estate_map(), see
+// Fields are recomputed from the DB (cached ≤5 min, see estateMapCache) (public.estate_map(), see
 // database/migrations/20260813_estate_map.sql).
 //
 // The SEMANTICS block below is the one human-authored part, and it is here rather
@@ -1315,19 +1303,17 @@ const ESTATE_MAP_SEMANTICS = {
     + 'Every value is about AUDIO PRODUCTION, never about release state.',
   veracity_checked:
     'Clips that have been through the veracity QA process. NOT a quality signal, and NOT a coverage target: '
-    + 'blanket per-clip whisper checking was deliberately removed from phase8, and the standing model is '
-    + 'graduated sampling (see `render_qa_policy`). A low figure here is the policy working as intended — it '
+    + 'blanket per-clip whisper checking was deliberately removed, and the standing model is one reducing '
+    + 'sample (see `render_qa_policy`). A low figure here is the policy working as intended — it '
     + 'does NOT mean the audio is bad, unchecked in any meaningful sense, or in need of repair, and it is not '
     + 'a backlog to burn down.',
   render_qa_policy:
-    'STANDING MODEL for render/QA, Tom 2026-08-13: GRADUATED SAMPLING. Veracity-check ~10% of the FIRST '
-    + 'job/course in a render run; if that sample comes back clean, drop to ~1% across the remaining 90%; keep '
-    + 'relaxing the rate as trust accumulates course by course through the run. Neither blanket per-clip '
-    + 'whisper on everything (removed from phase8 last week) nor zero checking. Trust is earned within a run '
-    + 'and spent on the run — a clean first sample buys the cheaper rate for what follows it, and a FAILURE '
-    + 'snaps the rate straight back. Implemented in services/audio-veracity.cjs (createSampler); phase8 marks '
-    + 'the course boundaries. What it catches is a bad RUN — a voice gone silent, a truncating provider — not '
-    + 'one bad clip among healthy ones; do not sell it as the latter.',
+    'STANDING MODEL for render/QA, Tom 2026-11-07 (r-2026-11-07-whisper-is-never-used-to-check): ONE REDUCING '
+    + 'SAMPLE, and Popty\'s only use of Whisper. 1 clip in 10 per course; 1 in 100 if no issues; and on by tens, '
+    + 'with no floor. A sampled clip recorded as failing snaps that course back to 1 in 10. Record-only, never '
+    + 'Welsh, never on a human recording, and it never vetoes or re-renders. Implemented in '
+    + 'services/audio-veracity.cjs (createSampler). What it catches is a bad RUN — a voice gone silent, a '
+    + 'truncating provider — not one bad clip among healthy ones; do not sell it as the latter.',
   voice_mode:
     'tts | human | mixed | unknown, derived from course_audio.origin. "unknown" means the course has no audio '
     + 'rows at all — it is not a guess at TTS. "mixed" is a real and common state on this estate, not a defect.',
@@ -1392,98 +1378,16 @@ const ESTATE_MAP_SEMANTICS = {
     + 'the doc is stale. This endpoint being derived rather than written is that principle applied to the estate map itself.',
 }
 
-/**
- * Decide what a course is blocked on, from its already-derived row plus the live
- * voice-approval verdict on the pod it serves. Pure — no I/O — so the ordering is
- * readable and testable.
- *
- * Returns EVERY applicable blocker, not just the first. Reporting only the highest
- * would be the bug this endpoint exists to prevent: every one of the 67 courses with
- * a pod is awaiting voice approval, which would mask the fact that the Welsh pod's
- * English track is separately silent. `blocked_reason` is the one to act on;
- * `blocked_reasons` is the truth.
- *
- * READS `serving_pod`, NOT A SLUG. The reason strings are an API contract other
- * readers key on; `pod_*` names the served pod, whatever its slug.
- */
-function estateMapBlockers(course, approval) {
-  const servedPod = course.serving_pod || { exists: false }
-  const out = []
-  if ((course.audio?.clips || 0) === 0) {
-    out.push({ reason: 'no_audio', detail: 'No audio rows exist for this course at all.' })
-  }
-  if (servedPod.exists && approval && !approval.ok) {
-    out.push({
-      reason: approval.reason === 'stale_approval' ? 'pod_stale_voice_approval' : 'pod_awaiting_voice_approval',
-      detail: approval.message,
-    })
-  }
-  if (servedPod.exists && (servedPod.known_empty > 0 || servedPod.known_dead_stubs > 0)) {
-    out.push({
-      reason: 'pod_known_track_incomplete',
-      detail: `The ${servedPod.slug || 'serving'} known-language track has ${servedPod.known_empty} empty slots and `
-        + `${servedPod.known_dead_stubs} linked-but-dead clips out of ${servedPod.slots}.`,
-    })
-  }
-  if (servedPod.exists && servedPod.target_empty > 0) {
-    out.push({
-      reason: 'pod_target_track_incomplete',
-      detail: `The ${servedPod.slug || 'serving'} target-language track has ${servedPod.target_empty} empty slots out of ${servedPod.slots}.`,
-    })
-  }
-  return out
-}
+const { estateMapBlockers, estateMapAsText } = require('./shared/estate-map-view.cjs')
 
-/** Skimmable text rendering, so a worker can eyeball the map without jq. */
-function estateMapAsText(payload) {
-  const t = payload.totals
-  const lines = [
-    `ESTATE MAP — computed ${payload.generated_at} (fresh per read, never cached)`,
-    '',
-    `courses ${t.courses} | released ${t.released} (live ${t.new_app_live} + beta ${t.new_app_beta}) | `
-      + `unreleased ${t.courses - t.released} (drafts/never-shipped) | `
-      + `tts ${t.voice_mode.tts} human ${t.voice_mode.human} mixed ${t.voice_mode.mixed} unknown ${t.voice_mode.unknown}`,
-    `serving pod: ${t.with_serving_pod} courses have one (${t.serving_pod_slugs}) | blocked: ${t.blocked}`,
-    ...Object.entries(t.blocked_by_reason).map(([r, n]) => `    ${n}  ${r}`),
-    '',
-    `pod lines, per-course counting ${t.serving_pod_lines.per_course_counting} -> per-LANGUAGE `
-      + `${t.serving_pod_lines.distinct_per_language} distinct. Pods are per language, not per course.`,
-    ...payload.pods_by_language.slice(0, 8).map(l =>
-      `    ${l.lang.padEnd(5)} ${String(l.slots_per_course_counting).padStart(6)} slots -> `
-      + `${String(l.distinct_lines).padStart(5)} lines  (${l.collapse_factor}x)  across `
-      + `${l.courses_with_serving_pod} courses`),
-    '',
-    'COURSE                          REL  VOICE   CLIPS    SERVING POD (tgt/known of slots)  BLOCKED ON',
-  ]
-  for (const c of payload.courses) {
-    // The slug is ON the line, because "which pod is this?" stopped having one
-    // answer for the whole estate on 2026-08-22 and a column that hides it lies.
-    const pod = c.serving_pod.exists
-      ? `${c.serving_pod.slug} ${c.serving_pod.target_linked}/${c.serving_pod.known_linked} of ${c.serving_pod.slots}`.padEnd(32)
-      : '—'.padEnd(32)
-    lines.push(
-      c.course_code.padEnd(32)
-      + (c.released ? 'yes' : 'no ').padEnd(5)
-      + c.audio.voice_mode.padEnd(8)
-      + String(c.audio.clips).padEnd(9)
-      + pod
-      + c.blocked_reasons.join(', '),
-    )
-  }
-  lines.push('', 'SEMANTICS — what these words mean here', '')
-  for (const [k, v] of Object.entries(payload.semantics)) lines.push(`${k}:`, `  ${v}`, '')
-  return lines.join('\n')
-}
-
-// GET /api/estate-map — the derived map. No auth, by design: any worker with a curl
-// must be able to read it, or they will go back to inferring estate facts instead.
-app.get('/api/estate-map', async (req, res) => {
-  try {
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Supabase not initialized' })
-    }
-    const supabase = supabaseClient.getClient()
-
+// The request-independent part of the estate map: estate_map() re-totals ~2.5M course_audio rows
+// and hit the 8 s DB statement limit (job #981), so it is cached with stale-while-revalidate.
+// TTL 5 min: no tool exists to measure recordings-added-per-hour (see job #981 report), so this
+// is the conservative default; ?fresh=1 forces a refresh. Request params stay outside the cache.
+const ESTATE_MAP_TTL_MS = 5 * 60 * 1000
+async function loadEstateMapBase() {
+  if (!supabaseClient.isInitialized()) throw new Error('Supabase not initialized')
+  const supabase = supabaseClient.getClient()
     // 1. The derived rows — one round trip, aggregated in SQL (~1.8s over ~2.5M audio rows).
     //    Returns { courses, pods_by_language }: pods are counted per LANGUAGE as well
     //    as per course, because per-language is the unit a render is actually costed in.
@@ -1507,7 +1411,7 @@ app.get('/api/estate-map', async (req, res) => {
       podsByCourse.get(p.course_code).push(p)
     }
 
-    let courses = (rows || []).map(c => {
+    const courses = (rows || []).map(c => {
       const coursePods = podsByCourse.get(c.course_code) || []
       const approval = coursePods.length
         ? podVoiceApprovals.evaluateApproval(
@@ -1526,6 +1430,51 @@ app.get('/api/estate-map', async (req, res) => {
         blockers,
       }
     })
+  return { courses, podsByLanguage }
+}
+// The audio totals estate_map() reads are precomputed per course (database/changes/20261030_estate_map_*),
+// refreshed here one course per rpc so no statement can reach the 8 s DB limit. 30 min: a cycle
+// re-reads every course's index once, so shorter costs more DB than the freshness is worth;
+// estate_audio_refresh_log records when totals really moved so the interval can be tuned.
+const ESTATE_AUDIO_REFRESH_MS = 30 * 60 * 1000
+function refreshEstateAudioSummaryNow() {
+  const supabase = supabaseClient.getClient()
+  return require('./shared/estate-audio-summary.cjs').refreshEstateAudioSummary({
+    rpc: (fn, args) => supabase.rpc(fn, args),
+    listCourses: async () => {
+      const { data, error } = await supabase.from('courses').select('course_code').order('course_code')
+      if (error) throw new Error(`list courses: ${error.message}`)
+      return data.map(r => r.course_code)
+    },
+    log: m => logger.info(m),
+  })
+}
+if (!process.env.VITEST) {
+  require('./shared/estate-audio-summary.cjs').scheduleEstateAudioSummary({
+    run: () => supabaseClient.isInitialized() ? refreshEstateAudioSummaryNow() : Promise.resolve(),
+    intervalMs: ESTATE_AUDIO_REFRESH_MS,
+    onError: err => logger.error('estate audio summary refresh failed:', err.message),
+  })
+}
+const estateMapCache = require('./shared/swr-cache.cjs').createSwrCache({
+  load: loadEstateMapBase,
+  ttlMs: ESTATE_MAP_TTL_MS,
+  onError: err => logger.error('estate map refresh failed (serving last good):', err.message),
+})
+
+// GET /api/estate-map — the derived map. No auth, by design: any worker with a curl
+// must be able to read it, or they will go back to inferring estate facts instead.
+app.get('/api/estate-map', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // 1+2. The expensive, request-independent part is cached (stale-while-revalidate, single-flight).
+    const hit = await estateMapCache.get({ fresh: req.query.fresh === '1' })
+    const { podsByLanguage } = hit.value
+    let courses = hit.value.courses
 
     // 3. Cheap conveniences. The unfiltered read stays the default.
     if (req.query.released === 'true') courses = courses.filter(c => c.released)
@@ -1533,8 +1482,15 @@ app.get('/api/estate-map', async (req, res) => {
 
     const payload = {
       generated_at: new Date().toISOString(),
-      derived: 'Computed from the database on every read. Never cached, never a snapshot. '
-        + 'If this disagrees with a document, the document is stale.',
+      cache: {
+        cachedAt: new Date(hit.cachedAt).toISOString(),
+        ageSeconds: Math.round(hit.ageMs / 1000),
+        ttlSeconds: ESTATE_MAP_TTL_MS / 1000,
+        stale: hit.stale,
+        lastRefreshError: hit.lastError ? hit.lastError.message : null,
+      },
+      derived: 'Computed from the database, cached up to ttlSeconds (stale-while-revalidate; ?fresh=1 forces). '
+        + 'See cache.ageSeconds. If this disagrees with a document, the document is stale.',
       totals: {
         courses: courses.length,
         released: courses.filter(c => c.released).length,
@@ -1584,8 +1540,7 @@ app.get('/api/estate-map', async (req, res) => {
     }
     res.json(payload)
   } catch (err) {
-    logger.error('Failed to build estate map:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to build estate map:', err)
   }
 })
 
@@ -1598,8 +1553,7 @@ app.get('/api/courses/:courseCode/stats', async (req, res) => {
     const stats = await supabaseClient.getCourseContentStats(req.params.courseCode)
     res.json({ course_code: req.params.courseCode, stats })
   } catch (err) {
-    logger.error(`Failed to get stats for ${req.params.courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get stats for ${req.params.courseCode}:`, err)
   }
 })
 
@@ -1766,8 +1720,7 @@ app.get('/api/stats/:courseCode', async (req, res) => {
       scored_phrases: scoredPhrases.length
     })
   } catch (err) {
-    logger.error(`Failed to get stats for ${req.params.courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get stats for ${req.params.courseCode}:`, err)
   }
 })
 
@@ -1874,7 +1827,10 @@ async function proxyCourseBuilder(req, res) {
         }),
         ...(req.headers['x-agent-id'] ? { 'x-agent-id': req.headers['x-agent-id'] } : {}),
         ...(req.headers['x-agent-role'] ? { 'x-agent-role': req.headers['x-agent-role'] } : {}),
-        ...(req.headers['x-service-name'] ? { 'x-service-name': req.headers['x-service-name'] } : {})
+        ...(req.headers['x-service-name'] ? { 'x-service-name': req.headers['x-service-name'] } : {}),
+        // Who is at the keyboard, as THIS gate verified it (never the client's own claim): the
+        // course builder records it on build starts/stops so "Stopped by …" names a person (job #482).
+        ...(req.dashboardUser?.email ? { 'x-dashboard-user': String(req.dashboardUser.email) } : {})
       },
       body
     }
@@ -1953,6 +1909,8 @@ app.get('/health', (req, res) => {
     port: PORT || 3470,
     timestamp: new Date().toISOString(),
     supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized',
+    // The live DB load gate (cs #835): governed?, the level it reads (green/amber/red), its current rate.
+    dbLoadGate: require('./shared/db-load-gate.cjs').status(),
     // Which commit is THIS PROCESS running? Frozen at start, never re-read —
     // see services/shared/build-identity.cjs. This is what the staleness
     // watchdog compares against origin/main.
@@ -2110,8 +2068,7 @@ app.get('/api/courses', async (req, res) => {
 
     res.json(courses)
   } catch (error) {
-    logger.error('Error fetching courses:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching courses:', error)
   }
 })
 
@@ -2411,16 +2368,6 @@ app.post('/api/voices/preview', async (req, res) => {
   }
 })
 
-// Helper: Escape special XML characters for SSML
-function escapeXml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
-}
-
 // =============================================================================
 // MISSION CONTROL - Active Jobs from build_jobs table
 // =============================================================================
@@ -2594,9 +2541,12 @@ app.post('/api/mission-control/jobs/:jobId/stop', requireDashboardUserOrLoopback
   if (jobType === 'build') {
     // Proxy to course-builder
     try {
+      // Say who stopped it (job #482): the build row and the page show "Stopped by …".
+      const u = req.dashboardUser || null
+      const by = (u && (u.email || u.name || u.display_name)) || req.get('x-agent-id') || null
       const response = await fetch(`${COURSE_BUILDER_URL}/api/build/stop/${courseCode}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json', ...(by ? { 'x-stopped-by': String(by) } : {}) }
       })
       const data = await response.json()
       return res.json({ success: data.ok, ...data })
@@ -2733,8 +2683,7 @@ app.get('/api/production/course-stats', async (req, res) => {
       stats
     })
   } catch (err) {
-    logger.error('Failed to get course content stats:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get course content stats:', err)
   }
 })
 
@@ -2756,8 +2705,7 @@ app.get('/api/production/:courseCode/stats', async (req, res) => {
       stats
     })
   } catch (err) {
-    logger.error(`Failed to get stats for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get stats for ${courseCode}:`, err)
   }
 })
 
@@ -2815,8 +2763,7 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
       }
     })
   } catch (err) {
-    logger.error(`Failed to get info for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get info for ${courseCode}:`, err)
   }
 })
 
@@ -2992,8 +2939,7 @@ app.get('/api/production/:courseCode/introductions', async (req, res) => {
       ...introductions
     })
   } catch (err) {
-    logger.error(`Failed to get introductions for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get introductions for ${courseCode}:`, err)
   }
 })
 
@@ -3009,14 +2955,8 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
     const db = supabaseClient.getClient()
-    const { data, error } = await db
-      .from('course_audio')
-      .select('id, text, s3_key, duration_ms')
-      .eq('course_code', courseCode)
-      .eq('role', 'presentation')
-      .eq('lego_id', legoId)
-      .maybeSingle()
-    if (error) throw error
+    // The clip the LEGO links to (a re-render leaves the old row keyed to the same LEGO) — job #978.
+    const data = await require('./shared/presentation-read.cjs').loadPresentationClip(db, courseCode, legoId)
 
     // No row yet — most LEGOs on a course that has never had its intros authored.
     // Hand back the line this LEGO WOULD get, rendered off its OWN course's
@@ -3063,6 +3003,27 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       logger.warn(`human-authored mark unreadable for ${courseCode}/${legoId}: ${markErr.message}`)
     }
 
+    // THE SOFT GUARD (Kai, 2026-11-11, job #247·AH): what in this line is
+    // hand-authored wording — its "as in" example, a line no template makes, a
+    // soft mark — so an agent about to rewrite this intro can see it first.
+    let authorship = null
+    if (!humanAuthoredMark && data?.text) {
+      try {
+        const { data: courseRow } = await db.from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
+        if (courseRow) {
+          const ctx = await introAuthorship.loadIntroContext(db, courseRow)
+          const softMark = ctx.softMarks.get(legoId) || null
+          const sig = introAuthorship.authorshipSignals(data.text, { compiled: ctx.compiled, mark: softMark })
+          authorship = {
+            as_in: sig.asIn, free_form: sig.freeForm, hand_authored: sig.handAuthored,
+            soft_mark: softMark ? { author: softMark.author, authored_on: softMark.authored_on, source: softMark.source, text: softMark.text } : null,
+          }
+        }
+      } catch (sigErr) {
+        logger.warn(`intro authorship unreadable for ${courseCode}/${legoId}: ${sigErr.message}`)
+      }
+    }
+
     const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
     res.json({
       success: true,
@@ -3073,13 +3034,118 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       human_authored: humanAuthoredMark
         ? { author: humanAuthoredMark.author, authored_on: humanAuthoredMark.authored_on, source: humanAuthoredMark.source, reconciled_at: humanAuthoredMark.reconciled_at, decisions: humanAuthoredMark.decisions }
         : null,
+      authorship,
       audio_id: data?.id || null,
       duration_ms: data?.duration_ms || null,
       hasAudio: !!data && !isPending
     })
   } catch (err) {
-    logger.error(`Failed to get presentation for ${courseCode}/${legoId}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get presentation for ${courseCode}/${legoId}:`, err)
+  }
+})
+
+// ─── Intro authorship marks, any course (Kai, 2026-11-11, job #247·AH) ──────────
+// Until this route, the only thing that ever marked an intro as human-written was a
+// tool hard-wired to two German lines (tools/course-optimization/
+// mark-human-authored-presentations.cjs). These two routes make the mark general.
+// A SOFT mark (the default) only makes rebuilds warn and suggest; a HARD mark is
+// Kai's 2026-09-21 guard and has to be asked for by name. Both need the soft-guard
+// column (database/changes/20261111_human_authored_presentations_soft_guard.sql)
+// for a soft write; until it is applied the answer names that file.
+function markerIdentity(req) {
+  const u = req.dashboardUser || null
+  return (u && (u.email || u.name || u.display_name)) || req.get('x-agent-id') || req.get('x-service-name') || null
+}
+
+// POST /api/production/:courseCode/presentation/:legoId/authorship
+// Body: { author, guard?: 'soft'|'hard' (default soft), text? (default: the clip the
+// LEGO links to), why?, authored_on? }. Header x-agent-id (or a dashboard session).
+app.post('/api/production/:courseCode/presentation/:legoId/authorship', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  const by = markerIdentity(req)
+  if (!by) return res.status(401).json({ error: 'say who you are (x-agent-id, or a dashboard session) — a mark records who placed it', code: 'EDITOR_IDENTITY_REQUIRED' })
+  const { author, guard = 'soft', why = null, authored_on: authoredOn = null } = req.body || {}
+  if (!author) return res.status(400).json({ error: 'author is required — who wrote the words (write "unattributed" if nobody recorded it; never guess)' })
+  try {
+    const db = supabaseClient.getClient()
+    const { data: lego, error: legoErr } = await db.from('course_legos').select('lego_id, seed_number, known_text, target_text')
+      .eq('course_code', courseCode).eq('lego_id', legoId).maybeSingle()
+    if (legoErr) throw legoErr
+    if (!lego) return res.status(404).json({ error: `no LEGO ${courseCode}/${legoId}` })
+    let text = (req.body && typeof req.body.text === 'string' && req.body.text.trim()) || null
+    if (!text) {
+      const clip = await require('./shared/presentation-read.cjs').loadPresentationClip(db, courseCode, legoId)
+      text = clip?.text || null
+    }
+    if (!text) return res.status(400).json({ error: `${legoId} has no intro to mark and no text was given` })
+    const mark = await humanAuthoredPresentations.markHumanAuthored(db, {
+      courseCode, legoId, text, author, authoredOn, guard, lego, by,
+      source: `marked via /presentation/:legoId/authorship by ${by}`, why,
+    })
+    res.json({ success: true, lego_id: legoId, guard: humanAuthoredPresentations.markGuard(mark), author: mark.author, text: mark.text })
+  } catch (err) {
+    const soft = /SOFT|guard|already carries a HARD/.test(err.message)
+    res.status(soft ? 409 : 500).json({ error: err.message })
+  }
+})
+
+// POST /api/production/:courseCode/intro-authorship/backfill
+// Body: { apply?: false }. Every LEGO whose linked intro carries an "as in" example and
+// has no mark yet gets a SOFT mark of those words — author "unattributed" (who wrote a
+// pre-existing line was never recorded, and is never inferred: Tom, 2026-09-01). Dry run
+// by default: the count and a sample, nothing written. No TTS, no course_audio write.
+app.post('/api/production/:courseCode/intro-authorship/backfill', async (req, res) => {
+  const { courseCode } = req.params
+  const apply = req.body && req.body.apply === true
+  const by = markerIdentity(req)
+  if (apply && !by) return res.status(401).json({ error: 'say who you are (x-agent-id, or a dashboard session) before writing marks', code: 'EDITOR_IDENTITY_REQUIRED' })
+  try {
+    const db = supabaseClient.getClient()
+    const { data: courseRow } = await db.from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
+    if (!courseRow) return res.status(404).json({ error: `no course ${courseCode}` })
+    const ctx = await introAuthorship.loadIntroContext(db, courseRow)
+    const existing = await humanAuthoredPresentations.loadMarks(db, courseCode, null, { soft: 'both' })
+    const legos = await readAllPages(() => db.from('course_legos')
+      .select('lego_id, seed_number, known_text, target_text, presentation_audio_id')
+      .eq('course_code', courseCode).not('presentation_audio_id', 'is', null), { orderCol: 'lego_id' })
+    const clipById = new Map()
+    const ids = [...new Set(legos.map(l => l.presentation_audio_id))]
+    for (let i = 0; i < ids.length; i += 200) {
+      const { data, error } = await db.from('course_audio').select('id, text').in('id', ids.slice(i, i + 200))
+      if (error) throw error
+      for (const c of data || []) clipById.set(String(c.id), c)
+    }
+    const candidates = []
+    let alreadyMarked = 0
+    for (const l of legos) {
+      const clip = clipById.get(String(l.presentation_audio_id))
+      if (!clip || !clip.text) continue
+      const asIn = introAuthorship.parseAsIn(clip.text, ctx.compiled)
+      if (!asIn) continue
+      if (existing.has(l.lego_id)) { alreadyMarked++; continue }
+      candidates.push({ lego: l, clip, asIn })
+    }
+    const out = { success: true, courseCode, dryRun: !apply, legos_with_intro: legos.length, as_in_intros: candidates.length + alreadyMarked, already_marked: alreadyMarked, to_mark: candidates.length, problems: ctx.problems,
+      sample: candidates.slice(0, 20).map(c => ({ lego_id: c.lego.lego_id, text: introAuthorship.stripMarkup(c.clip.text), example: c.asIn })) }
+    if (!apply) return res.json(out)
+    let marked = 0
+    const failed = []
+    for (const c of candidates) {
+      try {
+        await humanAuthoredPresentations.markHumanAuthored(db, {
+          courseCode, legoId: c.lego.lego_id, text: c.clip.text, author: 'unattributed', guard: 'soft', lego: c.lego, by, mirror: false,
+          source: `as-in backfill (job #247·AH): the linked intro clip ${c.clip.id} carried an "as in" example; who wrote it was not recorded`,
+          why: 'soft mark so a rebuild warns before replacing this as-in wording',
+        })
+        marked++
+      } catch (e) {
+        failed.push({ lego_id: c.lego.lego_id, error: e.message })
+        if (failed.length === 1 && /guard/.test(e.message)) break  // the soft-guard column is not there: every write would fail the same way
+      }
+    }
+    res.json({ ...out, marked, failed: failed.slice(0, 20), failed_count: failed.length })
+  } catch (err) {
+    serverError(res, `intro-authorship backfill failed for ${courseCode}:`, err)
   }
 })
 
@@ -3138,8 +3204,7 @@ app.get('/api/production/:courseCode/manifest', async (req, res) => {
 
     return res.status(404).json({ error: 'Course not found' })
   } catch (error) {
-    logger.error('Error fetching manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching manifest:', error)
   }
 })
 
@@ -3178,8 +3243,7 @@ app.post('/api/production/:courseCode/manifest/generate', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('Error generating manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error generating manifest:', error)
   }
 })
 
@@ -3197,8 +3261,7 @@ app.get('/api/production/:courseCode/manifest/validate', async (req, res) => {
 
     res.json(validation)
   } catch (error) {
-    logger.error('Error validating manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error validating manifest:', error)
   }
 })
 
@@ -3274,8 +3337,7 @@ app.get('/api/production/:courseCode/export-legacy', async (req, res) => {
       audioJobId
     })
   } catch (error) {
-    logger.error('Error generating legacy manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error generating legacy manifest:', error)
   }
 })
 
@@ -3342,7 +3404,7 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
 
     // Load audio records
     // PAGED: a bare select stops at PostgREST's 60,000 rows (job #383).
-    const dbAudio = await require('./shared/paged-read.cjs').readAllPages(() => client
+    const dbAudio = await readAllPages(() => client
       .from('course_audio')
       .select('id, text, text_normalized, language, role, duration_ms, lego_id, s3_key')
       .eq('course_code', courseCode))
@@ -3479,8 +3541,7 @@ app.get('/api/production/:courseCode/flags', async (req, res) => {
 
     res.json(flags)
   } catch (error) {
-    logger.error('Error fetching flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching flags:', error)
   }
 })
 
@@ -3531,8 +3592,7 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('Error updating flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error updating flag:', error)
   }
 })
 
@@ -3554,8 +3614,7 @@ app.get('/api/production/:courseCode/audio-flags', async (req, res) => {
 
     res.json({ flags, stats })
   } catch (error) {
-    logger.error('Error getting audio flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting audio flags:', error)
   }
 })
 
@@ -3674,8 +3733,7 @@ app.get('/api/production/:courseCode/flagged-items', async (req, res) => {
     logger.info(`[FlaggedItems] ${courseCode}: ${items.length} items returned`)
     res.json({ items, total: items.length })
   } catch (error) {
-    logger.error('Error getting flagged items:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting flagged items:', error)
   }
 })
 
@@ -3710,8 +3768,7 @@ app.post('/api/production/:courseCode/audio-flags', async (req, res) => {
 
     res.json({ success: true, flag })
   } catch (error) {
-    logger.error('Error creating audio flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error creating audio flag:', error)
   }
 })
 
@@ -3736,8 +3793,7 @@ app.post('/api/production/:courseCode/audio-flags/:audioUuid/resolve', async (re
 
     res.json({ success: true, flag })
   } catch (error) {
-    logger.error('Error resolving audio flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error resolving audio flag:', error)
   }
 })
 
@@ -3761,8 +3817,7 @@ app.delete('/api/production/:courseCode/audio-flags/:audioUuid', async (req, res
 
     res.json({ success: true })
   } catch (error) {
-    logger.error('Error deleting audio flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error deleting audio flag:', error)
   }
 })
 
@@ -3797,8 +3852,7 @@ app.post('/api/production/:courseCode/audio-flags/bulk-delete', async (req, res)
     logger.info(`Bulk deleted ${deleted} audio flags for ${courseCode}`)
     res.json({ success: true, deleted })
   } catch (error) {
-    logger.error('Error bulk deleting audio flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error bulk deleting audio flags:', error)
   }
 })
 
@@ -3951,10 +4005,53 @@ app.post('/api/production/:courseCode/link-clip', async (req, res) => {
       links: req.body && req.body.links,
       dryRun: !!(req.body && req.body.dryRun),
       recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+      approval: (req.body && req.body.approval) || null,
+      connect: courseEditConnect,
     })
-    res.status(out.code === 'NO_LINKS' || out.code === 'TOO_MANY' ? 400 : out.ok ? 200 : 409).json(out)
+    res.status(out.code === 'NO_LINKS' || out.code === 'BAD_APPROVAL' || out.code === 'TOO_MANY' ? 400 : out.ok ? 200 : 409).json(out)
   } catch (error) {
     logger.error('link-clip failed:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Re-credit a HUMAN take filed under the wrong person's voice id (2026-11-09: Aran's North "Siân" takes filed as Catrin).
+// Only course_audio.voice_id changes, conditionally on the old value; the clip index is re-keyed. Rules: shared/clip-voice-relabel.cjs.
+// Body: { clips: [{ audioId, from, to }], reason, dryRun? }
+app.post('/api/production/:courseCode/clip-voice-relabel', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const body = req.body || {}
+    const sb = supabaseClient.getClient()
+    if (body.dryRun && req.contentEdit) req.contentEdit.wroteNothing()
+    const source = require('./shared/clip-index.cjs').supabaseClipSource(sb, { log: logger, indexedBy: 'clip-voice-relabel' })
+    const out = await require('./shared/clip-voice-relabel.cjs').relabelClipVoices({
+      db: sb, courseCode: req.params.courseCode, clips: body.clips, reason: body.reason, dryRun: !!body.dryRun,
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+      reindex: (rows) => source.write(rows), logger,
+    })
+    if (!body.dryRun && !out.relabelled && req.contentEdit) req.contentEdit.wroteNothing()
+    res.status(['NO_CLIPS', 'TOO_MANY', 'NO_REASON', 'NO_COURSE'].includes(out.code) ? 400 : out.ok ? 200 : 409).json(out)
+  } catch (error) {
+    logger.error('clip-voice-relabel failed:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
+// Re-sync lego_introductions.presentation_audio_id from course_legos.presentation_audio_id (job #143).
+// DRY RUN unless body.apply === true; ':courseCode' may be 'all' for a dry-run count only. Rules: services/shared/sync-intro-links.cjs.
+app.post('/api/production/:courseCode/sync-intro-links', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const out = await require('./shared/sync-intro-links.cjs').syncIntroLinks({
+      db: supabaseClient.getClient(),
+      courseCode: req.params.courseCode,
+      apply: !!(req.body && req.body.apply === true),
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+    })
+    res.status(out.code === 'ALL_IS_DRY_RUN_ONLY' || out.code === 'NO_COURSE' ? 400 : out.ok ? 200 : 409).json(out)
+  } catch (error) {
+    logger.error('sync-intro-links failed:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -3973,7 +4070,8 @@ app.post('/api/production/:courseCode/ingest-cut', async (req, res) => {
     if (body.dryRun !== false && req.contentEdit) req.contentEdit.wroteNothing()
     const deps = cutDoor.liveDeps({
       sb: supabaseClient.getClient(),
-      s3: new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' }),
+      // R2 `ssi-audio` + S3 while dual — services/shared/audio-store.cjs (r-2026-11-06)
+      s3: require('./shared/audio-store.cjs').wrapAudioClient(new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })),
       bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
       logger,
       // the line also rides in every answer, so a store this user cannot write to costs the file, never the rollback
@@ -3984,6 +4082,35 @@ app.post('/api/production/:courseCode/ingest-cut', async (req, res) => {
     res.status(out.ok ? 200 : out.code === 'IDENTITY_REQUIRED' ? 401 : 409).json(out)
   } catch (error) {
     logger.error('ingest-cut failed:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
+// FILE POD AUDIO (job #628, r-2026-11-07-ssi-pods-exactly-one-way-of): existing trial clips (Pod Drill pieces, Talk Bollocks
+// lines) become pod-only course_audio rows — bytes copied unchanged to mastered/<same UUID>.mp3 in both stores, timings from
+// trial/<UUID>.timings.json, role pod_atom (target) / pod_fine_known (known), never linked into a slot. Renders nothing.
+// DRY RUN unless dryRun:false. Body: { clips: [{ trialId, text, voiceId, side: 'target'|'known' }], dryRun? }.
+// Rules: services/shared/pod-audio.cjs.
+app.post('/api/production/:courseCode/pod-audio/file', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const podAudio = require('./shared/pod-audio.cjs')
+    const { S3Client } = require('@aws-sdk/client-s3')
+    const body = req.body || {}
+    const dryRun = body.dryRun !== false
+    if (dryRun && req.contentEdit) req.contentEdit.wroteNothing()
+    const deps = podAudio.liveDeps({
+      sb: supabaseClient.getClient(),
+      // R2 `ssi-audio` + S3 while dual — services/shared/audio-store.cjs
+      s3: require('./shared/audio-store.cjs').wrapAudioClient(new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })),
+      bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
+    })
+    const out = await podAudio.fileTrialClips({ courseCode: req.params.courseCode, clips: body.clips, dryRun }, deps)
+    if (!dryRun && !out.filed && req.contentEdit) req.contentEdit.wroteNothing()
+    res.json(out)
+  } catch (error) {
+    if (error instanceof require('./shared/pod-audio.cjs').PodAudioRefusal) return res.status(400).json({ ok: false, code: error.code, error: error.message })
+    logger.error('pod-audio/file failed:', error)
     res.status(500).json({ ok: false, error: error.message })
   }
 })
@@ -4088,8 +4215,7 @@ app.post('/api/production/:courseCode/flags/delete', async (req, res) => {
 
     res.json({ success: true })
   } catch (error) {
-    logger.error('Error deleting flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error deleting flag:', error)
   }
 })
 
@@ -4128,8 +4254,7 @@ app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
 
     res.json({ success: true, updated: updates.length })
   } catch (error) {
-    logger.error('Error bulk updating flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error bulk updating flags:', error)
   }
 })
 
@@ -4189,8 +4314,7 @@ app.post('/api/production/:courseCode/feedback', async (req, res) => {
 
     res.json({ success: true, feedback: data })
   } catch (error) {
-    logger.error('Error submitting feedback:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error submitting feedback:', error)
   }
 })
 
@@ -4292,8 +4416,7 @@ app.get('/api/production/:courseCode/feedback/aggregated', async (req, res) => {
       issues: enrichedIssues
     })
   } catch (error) {
-    logger.error('Error getting aggregated feedback:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting aggregated feedback:', error)
   }
 })
 
@@ -4350,8 +4473,7 @@ app.post('/api/production/:courseCode/feedback/resolve', async (req, res) => {
       resolved: data?.length || 0
     })
   } catch (error) {
-    logger.error('Error resolving feedback:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error resolving feedback:', error)
   }
 })
 
@@ -4392,8 +4514,7 @@ app.get('/api/production/:courseCode/feedback/stats', async (req, res) => {
 
     res.json({ success: true, stats })
   } catch (error) {
-    logger.error('Error getting feedback stats:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting feedback stats:', error)
   }
 })
 
@@ -4404,8 +4525,7 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
     const metadata = await s3Service.getAudioMetadata(courseCode)
     res.json(metadata)
   } catch (error) {
-    logger.error('Error fetching audio metadata:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching audio metadata:', error)
   }
 })
 
@@ -4431,26 +4551,6 @@ function invalidateAudioStatsCache(courseCode) {
   } else {
     _audioStatsCache.clear()
   }
-}
-
-// Paginated Supabase fetch — prevents silent row truncation on large tables
-async function fetchAllRows(supabase, table, selectCols, filters) {
-  const PAGE_SIZE = 50000
-  let allData = []
-  let offset = 0
-  while (true) {
-    let query = supabase.from(table).select(selectCols)
-    for (const [method, ...args] of filters) {
-      query = query[method](...args)
-    }
-    query = query.range(offset, offset + PAGE_SIZE - 1)
-    const { data, error } = await query
-    if (error) throw error
-    allData = allData.concat(data)
-    if (data.length < PAGE_SIZE) break
-    offset += PAGE_SIZE
-  }
-  return allData
 }
 
 async function getDirectAudioStats(courseCode) {
@@ -4633,8 +4733,7 @@ app.get('/api/production/:courseCode/shared-audio-status', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('shared-audio-status error:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'shared-audio-status error:', error)
   }
 })
 
@@ -4679,8 +4778,7 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('Error fetching audio stats:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching audio stats:', error)
   }
 })
 
@@ -4831,7 +4929,12 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
         // here is a snapshot merged onto whatever this request read — without
         // this the WHERE would still hit and silently overwrite a concurrent
         // metadata write with that stale snapshot.
-        q = expected.metadata === null ? q.is('metadata', null) : q.eq('metadata', expected.metadata)
+        // The value MUST be JSON text: supabase-js puts a filter value into the
+        // query string as-is, so a JS object arrives as "[object Object]" and
+        // Postgres refuses it ("invalid input syntax for type json") — which
+        // broke every release/hold from 16 Sept to job #701 (3 Nov). PostgREST
+        // casts the text to jsonb, and jsonb equality ignores key order.
+        q = expected.metadata === null ? q.is('metadata', null) : q.eq('metadata', JSON.stringify(expected.metadata))
         const { data, error } = await q.select('id, visibility, required_role, metadata').maybeSingle()
         if (error) throw error
         return data
@@ -4910,20 +5013,13 @@ async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false
   const cols = 'id, pod_id, scene_number, sentence_number, global_order, beat_label, speaker, ' +
     'target_text, known_text, target_audio_id, known_audio_id' +
     (withSplitArrays ? ', sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids' : '')
-  const out = []
-  const PAGE = 1000
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await supabase
-      .from('listening_pod_sentences')
-      .select(cols)
-      .in('pod_id', podIds)
-      .order('pod_id').order('global_order')
-      .range(from, from + PAGE - 1)
-    if (error) throw error
-    out.push(...(data || []))
-    if (!data || data.length < PAGE) break
-  }
-  return out
+  // The pod script order (pod_id, global_order) is the product; readAllPages
+  // appends its own order on id only as a tiebreak behind it.
+  return readAllPages(() => supabase
+    .from('listening_pod_sentences')
+    .select(cols)
+    .in('pod_id', podIds)
+    .order('pod_id').order('global_order'), { pageSize: 1000 })
 }
 
 // GET /api/pod-scripts — the fleet index: every course that has a live SERVING
@@ -5122,7 +5218,8 @@ app.post('/api/admin/pods/generate', async (req, res) => {
 // services/pod-stage-draft.cjs. DRY RUN unless "apply": true.
 // Body: { mirror: "<course>:<slug>", lines: [{ id, target_text, known_text }], title?, apply? }
 app.post('/api/admin/pods/:courseCode/:slug/stage-draft', async (req, res) => {
-  const admin = await requireAdmin(req, res)
+  // Pod work: an admin, or a signed agent key carrying pod:write (job #809).
+  const admin = await requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE)
   if (!admin) return
   const { parseStageDraftRequest, planStageDraft } = require('./pod-stage-draft.cjs')
   const parsed = parseStageDraftRequest(req.params.courseCode, req.params.slug, req.body)
@@ -5174,17 +5271,25 @@ app.post('/api/admin/pods/:courseCode/:slug/stage-draft', async (req, res) => {
 // Editing target/known text nulls its audio (the recorded audio no longer
 // matches), same convention as the course-content tables — Phase 8 regenerates.
 app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
-  if (!await requireAdmin(req, res)) return
+  // Pod work: an admin, or a signed agent key carrying pod:write (job #809). The
+  // agent id is logged with the line it changed, below.
+  const who = await requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE)
+  if (!who) return
   const id = String(req.params.id || '')
   const patch = {}
-  if (typeof req.body?.target_text === 'string') { patch.target_text = req.body.target_text.trim(); patch.target_audio_id = null }
-  if (typeof req.body?.known_text === 'string') { patch.known_text = req.body.known_text.trim(); patch.known_audio_id = null }
+  // A side's SPLIT clips go with its text too (tools/pods/split-audio-inheritance.cjs: "Split audio belongs to a row's TEXT,
+  // never to its SLOT … where it cannot be carried, the correct value is NULL — the player then falls back to the whole-turn
+  // clip"). Job #799: this route used to null only the whole-turn pointer, so an edited line kept its old per-sentence clips,
+  // which the player prefers — the learner would have heard the OLD words under the new text.
+  if (typeof req.body?.target_text === 'string') { patch.target_text = req.body.target_text.trim(); patch.target_audio_id = null; patch.sentence_audio_ids = null; patch.takeg_audio_ids = null }
+  if (typeof req.body?.known_text === 'string') { patch.known_text = req.body.known_text.trim(); patch.known_audio_id = null; patch.sentence_known_audio_ids = null }
   if (Object.keys(patch).length === 0) return res.status(400).json({ error: 'target_text or known_text required' })
   try {
     const sb = supabaseClient.getClient()
     const { data, error } = await sb.from('listening_pod_sentences').update(patch).eq('id', id).select('id, target_text, known_text').maybeSingle()
     if (error) throw error
     if (!data) return res.status(404).json({ error: `sentence not found: ${id}` })
+    logger.info(`[PodSentence] ${id} edited by ${(req.agentAdmin && req.agentAdmin.agent) || who.email || who.id || '?'}: ${Object.keys(patch).filter((k) => k.endsWith('_text')).join(', ')}`)
     speakabilityGrid.invalidate()
     res.json({ ok: true, sentence: data })
   } catch (e) {
@@ -5198,12 +5303,19 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
 // exists. POST {"apply":true}: apply every pending swap whose take already exists
 // (the same one-statement text+audio write a booth take triggers); without apply,
 // a dry run that is the GET. The booth applies them by itself; this is the fallback.
+// A swap HELD FOR A SWITCH (waitForSwitch, job #512) is never applied by its take nor by a bare apply: it needs
+// {"apply":true,"switch":["<sentenceId>", …]} naming it (or "switch":true for every held swap whose take exists).
 async function podTextSwapsRoute(req, res) {
   const who = await requireAdmin(req, res)
   if (!who) return
   const apply = req.method === 'POST' && req.body && req.body.apply === true
+  const sw = req.method === 'POST' && req.body ? req.body.switch : undefined
+  if (sw !== undefined && sw !== true && !(Array.isArray(sw) && sw.every((x) => typeof x === 'string'))) {
+    return res.status(400).json({ error: 'switch must be true or a list of sentence ids' })
+  }
+  const switched = sw === true ? true : Array.isArray(sw) ? new Set(sw) : null
   try {
-    const swaps = await require('./voice-engine/recordist-queue.cjs').podTextSwapReport(supabaseClient.getClient(), { apply, logger })
+    const swaps = await require('./voice-engine/recordist-queue.cjs').podTextSwapReport(supabaseClient.getClient(), { apply, switched, logger })
     if (apply) logger.info(`[PodSwap] admin apply by ${who.email || who.agentId || who.id || '?'}: ${swaps.filter((s) => s.applied && s.applied.length).length} applied`)
     res.json({ ok: true, apply, swaps })
   } catch (e) {
@@ -5220,7 +5332,7 @@ app.post('/api/admin/pod-text-swaps', podTextSwapsRoute)
 // where a pod id is `${courseCode}:${slug}`). Returns Phase 8's shape so the UI
 // reads total_clips_to_generate + per-pod missing counts directly.
 app.get('/api/admin/pods/:courseCode/audio-plan', async (req, res) => {
-  if (!await requireAdmin(req, res)) return
+  if (!await requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE)) return
   const { courseCode } = req.params
   const slug = req.query.slug ? String(req.query.slug).trim() : null
   try {
@@ -5234,6 +5346,26 @@ app.get('/api/admin/pods/:courseCode/audio-plan', async (req, res) => {
     res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
+
+// POST /api/admin/pods/:courseCode/clone | language-text | switchover — the
+// committed pod tools (tools/pods/clone-pod.cjs, language-text-for-staged-pod.cjs,
+// pod-switchover.cjs), run unchanged by Popty with Popty's database login, so an
+// agent changes a pod through the API and never through a DB login of its own
+// (job #809, r-2026-11-03-agents-act-on-popty-only-thr). DRY RUN unless
+// "apply": true; body keys map to the tool's own flags, allow-listed, with every
+// human-only escape hatch left out — services/shared/pod-tool-routes.cjs.
+// Gate: an admin, or a signed agent key carrying pod:write.
+{
+  const { podToolRoute } = require('./shared/pod-tool-routes.cjs')
+  const podToolDeps = {
+    gate: (req, res) => requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE),
+    databaseUrl: () => require('./shared/round-index-refresh.cjs').databaseUrl(), // owner login via ROUND_INDEX_ENV_PSQL on the unit
+    logger,
+  }
+  for (const tool of ['clone', 'language-text', 'switchover']) {
+    app.post(`/api/admin/pods/:courseCode/${tool}`, podToolRoute(tool, podToolDeps))
+  }
+}
 
 // POST /api/admin/pods/:courseCode/generate-audio — fill MISSING pod audio.
 // Thin passthrough to Phase 8's /generate-pods (port 3465). Body may carry
@@ -5262,19 +5394,13 @@ app.get('/api/admin/canonical-pods', async (req, res) => {
   try {
     const sb = supabaseClient.getClient()
     const byslug = new Map()
-    let from = 0
-    while (true) {
-      const { data, error } = await sb.from('canonical_pod_scenarios')
-        .select('pod_slug, scene_number').range(from, from + 999)
-      if (error) throw error
-      for (const r of data) {
-        if (!byslug.has(r.pod_slug)) byslug.set(r.pod_slug, { slug: r.pod_slug, lines: 0, scenes: new Set() })
-        const e = byslug.get(r.pod_slug)
-        e.lines++
-        e.scenes.add(r.scene_number)
-      }
-      if (data.length < 1000) break
-      from += 1000
+    const rows = await readAllPages(() => sb.from('canonical_pod_scenarios')
+      .select('pod_slug, scene_number'), { pageSize: 1000 })
+    for (const r of rows) {
+      if (!byslug.has(r.pod_slug)) byslug.set(r.pod_slug, { slug: r.pod_slug, lines: 0, scenes: new Set() })
+      const e = byslug.get(r.pod_slug)
+      e.lines++
+      e.scenes.add(r.scene_number)
     }
     const pods = [...byslug.values()]
       .map(e => ({ slug: e.slug, lines: e.lines, scenes: e.scenes.size }))
@@ -5395,50 +5521,9 @@ app.patch('/api/admin/canonical-seeds/:id', async (req, res) => {
   }
 })
 
-// =============================================================================
-// DOCUMENTATION API
-// -----------------------------------------------------------------------------
-// Live docs are served from Supabase (documentation_content / _sections).
-// These endpoints used to live only on the orchestrator (3456), which is now
-// optional — but the frontend talks to 3470, so getDocumentation() calls 404'd
-// and every /docs page silently fell back to hardcoded content. Serving them
-// here reconnects the live-from-DB pipe. supabase-client.cjs is already required
-// above and exports both helpers (with RPC + manual-query fallbacks).
-//
-// Order matters: /list is registered before /:slug so the catch-all param route
-// does not shadow it.
-// =============================================================================
-
-// GET /api/docs/list — document list for docs navigation. Query: ?category=...
-app.get('/api/docs/list', async (req, res) => {
-  try {
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Database not initialized' })
-    }
-    const { category } = req.query
-    const docs = await supabaseClient.getDocumentationList(category || null)
-    res.json({ success: true, count: docs.length, documents: docs })
-  } catch (e) {
-    logger.error('[Docs API] list error:', e?.message || e)
-    res.status(500).json({ error: e?.message || 'unknown error' })
-  }
-})
-
-// GET /api/docs/:slug — a single document with all its sections.
-app.get('/api/docs/:slug', async (req, res) => {
-  try {
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Database not initialized' })
-    }
-    const { slug } = req.params
-    const doc = await supabaseClient.getDocumentation(slug)
-    if (!doc) return res.status(404).json({ error: 'Document not found', slug })
-    res.json({ success: true, document: doc })
-  } catch (e) {
-    logger.error(`[Docs API] get error for ${req.params.slug}:`, e?.message || e)
-    res.status(500).json({ error: e?.message || 'unknown error' })
-  }
-})
+// Documentation API — lifted to services/docs-router.cjs (job #101), URLs
+// unchanged; mounted here, at the same point in the chain it always sat.
+app.use('/api/docs', require('./docs-router.cjs')({ supabaseClient, logger }))
 
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
@@ -5495,8 +5580,7 @@ app.get('/api/production/audio/:uuid/stream', async (req, res) => {
     res.set('Cache-Control', 'no-store')
     res.redirect(302, url)
   } catch (error) {
-    logger.error('Error streaming audio by id:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error streaming audio by id:', error)
   }
 })
 
@@ -5535,8 +5619,7 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
     const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
     res.json({ url })
   } catch (error) {
-    logger.error('Error generating signed URL:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error generating signed URL:', error)
   }
 })
 
@@ -5547,8 +5630,7 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
     const exists = await s3Service.audioFileExists(uuid)
     res.json({ exists })
   } catch (error) {
-    logger.error('Error checking audio existence:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error checking audio existence:', error)
   }
 })
 
@@ -5636,8 +5718,7 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
     const url = await s3Service.getAudioSignedUrl(audioData.id, 3600, { s3Key: audioData.s3_key })
     res.json({ url, uuid: audioData.id })
   } catch (error) {
-    logger.error('Error fetching audio by text:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching audio by text:', error)
   }
 })
 
@@ -5659,7 +5740,7 @@ async function handleRecordingUpload(req, res) {
       audioData,
       metadata = {},
       provenance = {},
-      mimeType = 'audio/webm'
+      mimeType = DEFAULT_UPLOAD_MIME
     } = req.body
 
     // Script-mode takes (new-course autocue) have no pre-existing audio identity;
@@ -5730,27 +5811,8 @@ async function handleRecordingUpload(req, res) {
     const rawBuffer = Buffer.from(audioData, 'base64')
     logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${audioId}${isScriptMode ? ' (script mode, server-minted)' : ''}`)
 
-    // The silent-take floor, enforced inside retainAndProcessTake below.
-    //
-    // A take that processed "successfully" into no audio is refused: the trim
-    // filter (silenceremove at -40dB) strips a silent or muted-mic take down to
-    // nothing — ffmpeg exits 0, lame writes an 834-byte header-only MP3 that
-    // ffprobe cannot even decode ("Failed to find two consecutive MPEG audio
-    // frames"), and the recorder got a 200 with success:true. That is the
-    // 2026-08-06 Welsh bug — bookkeeping said recorded, the learner got silence.
-    // In regeneration/pod mode it repoints a real phrase row at an unplayable
-    // stub. Refused BEFORE the S3 PUT (same principle as the uuid lookup above —
-    // a bad take must never orphan bytes) so the client's upload queue marks it
-    // failed and the take stays visible as missing. Threshold is deliberately low
-    // so that it only catches silence, muted mics and stray clicks, never a word.
-    //
-    // The old note here read "the trim is aggressive — a synthesised 350ms tone
-    // comes out the far side at 150ms". That was the T-20 bug being observed and
-    // worked around rather than fixed: the trim was destroying 100ms at each end
-    // (start_duration, since corrected to start_silence — see audio-processor.cjs).
-    // A 350ms tone now survives as ~350ms, so this guard has MORE headroom than
-    // when it was written, not less. It stays as the silent-take backstop.
-    const MIN_TAKE_MS = 100
+    // The silent-take floor (MIN_TAKE_MS, recording-upload-helpers.cjs), enforced inside
+    // retainAndProcessTake below.
 
     // RETAIN THE RAW TAKE, THEN PROCESS — the order is deliberate and load-bearing.
     //
@@ -5790,12 +5852,8 @@ async function handleRecordingUpload(req, res) {
           via: 'recording'
         }
       }),
-      // A GAPPED take is protected in the middle. Tom, 2026-09-02: on the
-      // minimal phrase set "we want... to keep the silence between the words,
-      // so that we can dice and splice more easily". The processor reads this
-      // and lowers its minimum-word length so a short first word is not
-      // discarded and amputated; it never touches the gaps either way.
-      readStyle: metadata.cadence === 'gapped' ? 'gapped' : 'natural',
+      // A GAPPED take is protected in the middle (readStyleForTake, recording-upload-helpers.cjs).
+      readStyle: readStyleForTake(metadata),
       processRecording: (buffer, options) => audioProcessor.processRecordingBuffer(buffer, options)
     })
 
@@ -5811,119 +5869,27 @@ async function handleRecordingUpload(req, res) {
     }
     const processedBuffer = take.processedBuffer
 
-    // SPEECH-CONTENT GATE. Every check above this line is a LEVEL check, and a
-    // level check cannot see the 2026-08-23 defect: three of Catrin's four
-    // cym_n pod takes were 31-97 seconds of an empty room, recorded through
-    // Apple/Chrome's voice profile whose automatic gain control lifts a quiet
-    // room to voice level. They measured healthy — -18 to -21 dBFS RMS — and
-    // Tom's ear found a sheep in one of them. See services/recording-speech-gate.cjs
-    // for the measurement and for why neither the veracity check nor the VAD
-    // can referee this on their own.
-    //
-    // Server-side deliberately: a stale client bundle cannot bypass it, which
-    // matters because the capture path that produced those takes shipped the
-    // day before and the recordist's browser version was itself in question.
-    //
-    // Refuses BEFORE the S3 PUT, same as every check above — a refused take
-    // orphans no bytes, and retainAndProcessTake has already archived the raw
-    // original, so nothing said into the microphone is lost to this branch.
-    // An UNCHECKED result (no script text, no decoder) is logged and let
-    // through: an infrastructure absence must never cost a recordist a read.
-    // metadata.spokenText: the words as SAID, when the filed text carries display markup (a whole-sentence
-    // LEGO intro, "The Welsh for <src>X</src> is <tgt>Y</tgt>.", job #587) — the gates listen for words, not tags.
-    const gateText = metadata.spokenText || metadata.text || (podContext && podContext.text) || null
-    const speech = await speechGate.checkTakeHasSpeech({
-      buffer: processedBuffer,
-      expectedText: gateText,
-      language: speechGate.languageForTake(courseCode, metadata.kind),
-      durationMs: audioMeta.durationMs,
-    })
-    if (speech.checked === false) {
-      logger.warn(`[Upload] Speech gate NOT RUN for ${audioId}: ${speech.reason} — this take was saved UNCHECKED for speech content. ${JSON.stringify(speech.detail)}`)
-    } else if (speech.pass === false) {
-      logger.error(`[Upload] REFUSED speechless take ${audioId}: ${speech.reason} ${JSON.stringify(speech.detail)}`)
-      return res.status(422).json({
-        error: speech.message,
-        processed: true,
-        noSpeech: true,
-        reason: speech.reason,
-        detail: speech.detail,
-        // Same as the two refusals above: the raw original is already archived,
-        // so a refused take is recoverable rather than lost.
-        rawKey: rawKey || null,
-      })
+    // THE THREE REFUSAL GATES on the processed take — speech content, steady noise, boundaries —
+    // in refuseProcessedTake (recording-upload-helpers.cjs), where the sample gate's recorder hash
+    // covers them. Same order, same outcomes: refuse BEFORE the S3 PUT, raw already archived,
+    // an UNCHECKED result logged and let through.
+    const gateText = takeGateText(metadata, podContext)
+    let gateRefusal = await refuseProcessedTake({ speechGate, processedBuffer, audioMeta, gateText, courseCode, kind: metadata.kind, audioId, rawKey, logger })
+    // A CUT-OFF SOMEBODY HAS ALREADY HEARD AND ACCEPTED (cs #207·AI, Kai 16 Nov on the June angry-eyes
+    // takes: "They mostly cut off at the end. I think you can use them for now"). Only the in-tray
+    // (add-recording) can set req.acceptBoundaryCut, in-process, with a named person and basis; the
+    // booth cannot. It waives the BOUNDARY verdict alone: speech and steady-noise run first and still refuse.
+    if (gateRefusal && gateRefusal.body && gateRefusal.body.truncated && req.acceptBoundaryCut) {
+      logger.warn(`[Upload] boundary refusal WAIVED for ${audioId} (${gateRefusal.body.reason}) by ${req.acceptBoundaryCut.by}: ${req.acceptBoundaryCut.basis} ${JSON.stringify(gateRefusal.body.detail)}`)
+      gateRefusal = null
+    }
+    if (gateRefusal) {
+      return res.status(gateRefusal.status).json(gateRefusal.body)
     }
 
-    // STEADY-NOISE GATE (2026-10-07, Dan's 14:53 take of "Bore da, Sarah!"). The
-    // length ceiling above only fires on a take far longer than its line; a
-    // short take of pure rumble and hiss sails under it and, on an iPhone, reads
-    // as voice on the recorder's own meter. Needs no script text. Same placement
-    // and same three outcomes: refuse BEFORE the S3 PUT / slot swap, raw already
-    // archived, UNCHECKED logged and let through.
-    const noise = await speechGate.checkTakeIsNotSteadyNoise({ buffer: processedBuffer })
-    if (noise.checked === false) {
-      logger.warn(`[Upload] Steady-noise gate NOT RUN for ${audioId}: ${noise.reason} — saved UNCHECKED. ${JSON.stringify(noise.detail)}`)
-    } else if (noise.pass === false) {
-      logger.error(`[Upload] REFUSED steady-noise take ${audioId}: ${noise.reason} ${JSON.stringify(noise.detail)}`)
-      return res.status(422).json({
-        error: noise.message,
-        processed: true,
-        noSpeech: true,
-        reason: noise.reason,
-        detail: noise.detail,
-        rawKey: rawKey || null,
-      })
-    }
-
-    // BOUNDARY GATE. The gate above asks whether there is a read in the take;
-    // this one asks whether the read runs off the edge of the file. They are
-    // different defects and neither check sees the other's: a truncated take
-    // has a perfectly respectable speech span, healthy levels and a clean
-    // decode, which is why the 2026-08-14 technical QC pass declared all 111
-    // of Aran's Welsh takes clean and Tom's ear, nine days later, called them
-    // "all junk. All clipped badly at either or both ends".
-    //
-    // Same three outcomes and the same placement: BEFORE the S3 PUT, so a
-    // refused take orphans no bytes and the raw original is already archived.
-    // An UNCHECKED result is logged and let through.
-    const bounds = await speechGate.checkTakeBoundaries({ buffer: processedBuffer })
-    if (bounds.checked === false) {
-      logger.warn(`[Upload] Boundary gate NOT RUN for ${audioId}: ${bounds.reason} — this take was saved UNCHECKED for truncation. ${JSON.stringify(bounds.detail)}`)
-    } else if (bounds.pass === false) {
-      logger.error(`[Upload] REFUSED truncated take ${audioId}: ${bounds.reason} ${JSON.stringify(bounds.detail)}`)
-      return res.status(422).json({
-        error: bounds.message,
-        processed: true,
-        truncated: true,
-        reason: bounds.reason,
-        detail: bounds.detail,
-        rawKey: rawKey || null,
-      })
-    }
-
-    // VERIFY AGAINST KNOWN TEXT. Tom's ruling, 2026-08-24: human recordings get
-    // the full check, always — "post-AGC level metering lies", and the gate
-    // above it answers "is this a read?" without ever asking "is it a read of
-    // THIS LINE?". A recordist who reads the previous line twice, or reads the
-    // right words into the wrong slot, passes every check before this one.
-    //
-    // ADVISORY, NEVER A REFUSAL — same ruling: "STT is never a hard course veto;
-    // voice-match and VAD stay the hard gates." The speech gate above refuses;
-    // this one records. The reason is measured, not cautious: on the four real
-    // cym takes whisper-small free-decoded a perfect read at CER 0.50
-    // (services/recording-speech-gate.cjs). Verify mode fixes that case — all 11
-    // good Welsh takes verified on 2026-08-24 — but a text score has no business
-    // costing a recordist a read it cannot itself listen to.
-    //
-    // AFTER THE REPLY, NOT BEFORE IT (Aran, 2026-10-15, plan #715, job #842, Tom's yes with two
-    // conditions). This check was ~7.7 s of every ~10 s a booth take spent here, and it never
-    // refuses. So it is queued (durably, see take-text-check-queue.cjs) once the take is filed,
-    // below, and runs after the response has gone. Every take with a script text is still
-    // checked. A take that does not verify is no longer just a log line: it goes on the artist's
-    // re-record list (GET /api/recording/voice/:voiceId/text-check-failures), which the booth
-    // merges into the one Re-record card and the slim refused bar.
-    // The refusal gates above stay inline, so "didn't save" is still instant.
-    const textCheckLanguage = speechGate.languageForTake(courseCode, metadata.kind)
+    // No speech-to-text on a human recording, ever (Tom, 2026-11-07,
+    // r-2026-11-07-whisper-is-never-used-to-check). The gates above measure the take and refuse it
+    // instantly; whether it says the right words is a person's ear.
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
@@ -6232,29 +6198,6 @@ async function handleRecordingUpload(req, res) {
       ? podResult.audioRow.id
       : (isScriptMode && scriptFiling?.courseAudioId) ? scriptFiling.courseAudioId : audioId
 
-    // THE SCRIPT CHECK, QUEUED (job #842). The take is stored, mastered, through every refusal
-    // gate and filed, so it is safe to answer now; the check runs after. Persisted to disk
-    // before the reply, so a restart re-runs it rather than losing it. A booth take with no
-    // script text is still NOTED, because a new take of a line is what takes an earlier failed
-    // check of that line off the re-record list.
-    const boothTake = req.recordistVoiceId && req.recordistLineId
-      ? { voiceId: req.recordistVoiceId, lineId: String(req.recordistLineId) }
-      : {}
-    let textCheckQueued = null
-    if (gateText) {
-      textCheckQueued = textChecks.enqueue({
-        takeId: s3KeyUuid,
-        audioId: responseUuid,
-        ...boothTake,
-        courseCode,
-        text: String(gateText),
-        language: textCheckLanguage,
-        kind: metadata.kind || null,
-      }, processedBuffer)
-    } else if (boothTake.voiceId) {
-      textChecks.noteTake({ ...boothTake, takeId: s3KeyUuid })
-    }
-
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {
       courseCode,
@@ -6294,14 +6237,6 @@ async function handleRecordingUpload(req, res) {
         durationMs: audioMeta.durationMs,
         format: audioMeta.format,
         sizeReduction: audioMeta.inputSize - audioMeta.outputSize
-      } : null,
-      // ADVISORY, and now DEFERRED (job #842): the check runs after this reply, so
-      // the response can only say that it was queued. `checked: false` means the
-      // question has not been answered yet, which is not the same as a pass.
-      textVerification: gateText ? {
-        checked: false,
-        reason: textCheckQueued && textCheckQueued.queued ? 'deferred' : 'unchecked_not_queued',
-        advisory: true
       } : null
     })
   } catch (error) {
@@ -6313,7 +6248,7 @@ async function handleRecordingUpload(req, res) {
 app.post('/api/production/:courseCode/recording/upload', handleRecordingUpload)
 
 // Helper function to proxy requests to Phase 8 Audio Generator (port 3465)
-async function proxyToPhase8(method, path, body = null) {
+async function proxyToPhase8(method, path, body = null, extraHeaders = {}) {
   const http = require('http')
 
   return new Promise((resolve, reject) => {
@@ -6324,7 +6259,8 @@ async function proxyToPhase8(method, path, body = null) {
       path,
       method,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        ...extraHeaders
       }
     }
 
@@ -6532,8 +6468,7 @@ app.get('/api/production/:courseCode/regeneration/queue', async (req, res) => {
       byRole
     })
   } catch (error) {
-    logger.error('Error fetching regeneration queue:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching regeneration queue:', error)
   }
 })
 
@@ -6913,11 +6848,26 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 // back (services/shared/audio-render-entry.cjs). The caller must say who it is:
 // x-agent-id / x-service-name, which lands in the ledger as requestedBy.
 // POST /api/audio/render  { courseCode, role, text, purpose, language?, voiceId?, legoId?, dryRun? }
+// Rate cap + daytime dry-run budget per caller (job #699): every bulk audio job passes here, so the
+// cap that protects the shared DB lives here — header and override env in services/shared/agent-rate-cap.cjs.
+const audioRenderRateCap = require('./shared/agent-rate-cap.cjs').createAgentRateCap()
+const { opsEvent: audioRenderOpsEvent } = require('./shared/ops-event.cjs') // firings → ops_events too (job #706)
 app.post('/api/audio/render', async (req, res) => {
   try {
     const who = String(req.headers['x-agent-id'] || req.headers['x-service-name'] || '').trim()
     if (!who) return res.status(401).json({ ok: false, code: 'IDENTITY_REQUIRED', error: 'say who is asking: send x-agent-id (or x-service-name)' })
-    const response = await proxyToPhase8('POST', '/render', { ...(req.body || {}), requestedBy: who })
+    const cap = audioRenderRateCap.admit(who, { dryRun: !!(req.body && req.body.dryRun) })
+    if (!cap.ok) {
+      logger.warn(`[agent-rate-cap] refused ${cap.code} who=${who} dryRun=${!!(req.body && req.body.dryRun)}`)
+      audioRenderOpsEvent('agent-rate-cap', 'refuse', `/api/audio/render ${cap.code} who=${who} dryRun=${!!(req.body && req.body.dryRun)}`)
+      return res.status(cap.status).json({ ok: false, code: cap.code, error: cap.error })
+    }
+    if (cap.waitMs > 1000) { logger.warn(`[agent-rate-cap] held ${cap.waitMs}ms who=${who}`); audioRenderOpsEvent('agent-rate-cap', 'held', `/api/audio/render ${cap.waitMs}ms who=${who}`) }
+    if (cap.waitMs > 0) await new Promise(r => setTimeout(r, cap.waitMs))
+    // The caller's conversation token rides through ONLY when it carries an approval, so phase8 can ask the surface which seat
+    // issued it (job #116·AI, services/shared/approval-origin.cjs). Never logged.
+    const conv = req.body && req.body.approval && req.headers['x-cs-conv'] ? { 'x-cs-conv': String(req.headers['x-cs-conv']) } : {}
+    const response = await proxyToPhase8('POST', '/render', { ...(req.body || {}), requestedBy: who }, conv)
     res.status(response.status).json(response.data)
   } catch (error) {
     logger.error('Render proxy error:', error)
@@ -6925,6 +6875,28 @@ app.post('/api/audio/render', async (req, res) => {
     const status = require('./shared/phase8-transport-error.cjs').isPhase8TransportError(error) ? 503 : 500
     res.status(status).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
   }
+})
+
+// THE ATTESTED RE-RECORD GRANT DOOR (job #772): inserts one tts_rerecord_permissions row, and only for a
+// nonce the Command Surface attests (Tom's own message, quoted by Tom's Watson). The body is never trusted
+// beyond the nonce — see services/shared/rerecord-grant-door.cjs for why and how.
+app.post('/api/rerecord-permission/attested', async (req, res) => {
+  try {
+    const out = await require('./shared/rerecord-grant-door.cjs').handleAttestedGrant(req.body || {})
+    if (!out.json.ok) logger.warn(`[rerecord-grant-door] refused: ${out.json.error}`)
+    res.status(out.status).json(out.json)
+  } catch (error) {
+    logger.error('rerecord-grant-door error:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
+// ABAIR voices for a trial audition (job #525): which abair_<voice> ids POST /api/audio/render (trial:true) can name.
+app.get('/api/audio/abair/voices', async (req, res) => {
+  try {
+    const r = await fetch(`${process.env.PHASE8_URL || 'http://localhost:3465'}/abair-voices`)
+    res.status(r.status).json(await r.json())
+  } catch (e) { res.status(503).json({ ok: false, error: e.message }) }
 })
 
 // Listen to a TRIAL clip (job #748): the render answer's playPath. phase8 reads it from S3 trial/; nothing here knows a course.
@@ -6956,6 +6928,10 @@ app.post('/api/audio/add-recording', async (req, res) => {
       if (error) throw new Error(`voices registry unreadable: ${error.message}`)
       return data || []
     }
+    const cut = req.body && req.body.acceptBoundaryCut
+    const boundaryCut = cut && typeof cut.by === 'string' && cut.by.trim() && typeof cut.basis === 'string' && cut.basis.trim()
+      ? { by: `${cut.by.trim()} (via ${who})`, basis: cut.basis.trim() } : null
+    if (cut && !boundaryCut) return res.status(400).json({ ok: false, code: 'BOUNDARY_CUT_UNNAMED', error: 'acceptBoundaryCut needs { by: who heard it, basis: what they said }' })
     const out = await intake.addRecording({ ...(req.body || {}), requestedBy: who }, {
       findArtist: async q => {
         const all = await humanVoices(), k = q.toLowerCase()
@@ -7000,6 +6976,8 @@ app.post('/api/audio/add-recording', async (req, res) => {
           const fakeRes = { code: 200, status(c) { this.code = c; return this }, json(b) { resolve({ status: this.code, body: b }) } }
           handleRecordingUpload({
             params: { courseCode }, headers: {}, libraryArtistVoiceId: voiceId,
+            // body.acceptBoundaryCut: { by, basis } — the person who heard the cut-off and accepted it (see the waiver in handleRecordingUpload)
+            acceptBoundaryCut: boundaryCut,
             body: { audioData: audio, mimeType,
               metadata: { mode: 'script', role, text, cadence: 'natural', voiceId, recordedBy: requestedBy, kind: role },
               provenance: { recorded_by: requestedBy, speaker_dialect: artist.dialect || null } },
@@ -7293,8 +7271,7 @@ app.get('/api/production/voices', async (req, res) => {
       voices
     })
   } catch (error) {
-    logger.error('Error listing voices:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error listing voices:', error)
   }
 })
 
@@ -7319,8 +7296,7 @@ app.get('/api/production/voices/:voiceId', async (req, res) => {
       voice
     })
   } catch (error) {
-    logger.error('Error getting voice:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting voice:', error)
   }
 })
 
@@ -8374,6 +8350,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       courseCode,
       plans,
       apply,
+      approval: req.body?.approval || null,
       eventId: () => req.contentEdit.record({
         scope: {
           seed_numbers: [...new Set(ops.map(o => Number(o.seed_number || o.row?.seed_number)).filter(Number.isFinite))],
@@ -8428,7 +8405,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
     // A database refusal (a guard trigger such as #912's debut-practice guard, a
     // constraint) is the answer, not a crash: 409 with Postgres's own words.
     const refusedByDb = !!err.severity && /^[0-9A-Z]{5}$/.test(String(err.code || ''))
-    const status = err.code === 'NOT_FOUND' ? 404 : ((err instanceof courseEditOps.EditOpError || refusedByDb) ? 409 : 500)
+    const status = err.code === 'BAD_APPROVAL' ? 400 : err.code === 'NOT_FOUND' ? 404 : ((err instanceof courseEditOps.EditOpError || refusedByDb) ? 409 : 500)
     if (status !== 500) req.contentEdit?.wroteNothing()
     logger.warn(`[course-edit] ${courseCode}: refused/failed — ${err.message}`)
     res.status(status).json({ error: err.message, code: err.code || 'EDIT_FAILED', index: err.index, applied: false })
@@ -8478,15 +8455,7 @@ app.post('/api/admin/course-edit/:courseCode/edit-batch', async (req, res) => {
 // a derived undo (undo_file, replayed through edit-batch), a before-state assertion.
 // They live under /api/admin so a signed agent holding admin:all reaches them
 // (agentFrontDoor); an admin session reaches them as before.
-async function pageAll(build) {
-  const out = []
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await build().range(from, from + 999)
-    if (error) throw error
-    out.push(...(data || []))
-    if (!data || data.length < 1000) return out
-  }
-}
+const pageAll = (build) => readAllPages(build, { pageSize: 1000 })
 
 // Dialect/version parts are allowed (cym_nv2_for_eng, cym_s_for_eng): the bare
 // shape refused every Welsh dialect course (lanes review of 3fb3cbf). The route's
@@ -9199,8 +9168,7 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       }
     })
   } catch (err) {
-    logger.error(`Failed to get script view for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get script view for ${courseCode}:`, err)
   }
 })
 
@@ -9491,8 +9459,7 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       }
     })
   } catch (err) {
-    logger.error(`Failed to generate learning journey for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to generate learning journey for ${courseCode}:`, err)
   }
 })
 
@@ -9584,8 +9551,7 @@ app.get('/api/production/:courseCode/learning-journey/search', async (req, res) 
       query: q
     })
   } catch (err) {
-    logger.error(`Failed to search learning journey for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to search learning journey for ${courseCode}:`, err)
   }
 })
 
@@ -9656,6 +9622,12 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
     if (target_text !== undefined) {
       updateData.target_text = target_text
     }
+    if (req.body.target_text_roman !== undefined) {
+      updateData.target_text_roman = req.body.target_text_roman || null
+    }
+    // A target edit without its new romanisation clears the old one (shared/roman-sync.cjs, job #252).
+    const romanSync = require('./shared/roman-sync.cjs').clearStaleRoman(existingPhrase, updateData)
+    Object.assign(updateData, romanSync.patch)
 
     if (introduce !== undefined) {
       updateData.introduce = !!introduce
@@ -10029,6 +10001,18 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 // =============================================================================
 
 const s3DeployService = require('./s3-deploy-service.cjs')
+const exportAudioCheck = require('./shared/export-audio-check.cjs')
+
+// Kai 2026-10-28 (job #994): no legacy export unless Step 2's length/format check ran in full.
+function legacyExportAudioGate (courseCode) {
+  return exportAudioCheck.legacyExportAudioGate(async () => {
+    if (!supabaseClient.isInitialized()) throw new Error('Supabase not initialized')
+    const { data, error } = await supabaseClient.getClient()
+      .from('course_export_states').select('s3_verification').eq('course_code', courseCode).maybeSingle()
+    if (error) throw error
+    return data?.s3_verification || null
+  })
+}
 
 // GET /api/production/:courseCode/export-state
 // Get current export workflow state for a course
@@ -10084,8 +10068,7 @@ app.get('/api/production/:courseCode/export-state', async (req, res) => {
       generatedOnMachine: data.generated_on_machine
     })
   } catch (error) {
-    logger.error('Error getting export state:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting export state:', error)
   }
 })
 
@@ -10138,8 +10121,7 @@ app.post('/api/production/:courseCode/export-state', async (req, res) => {
     logger.info(`Export state updated for ${courseCode}`)
     res.json({ success: true, state: data })
   } catch (error) {
-    logger.error('Error updating export state:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error updating export state:', error)
   }
 })
 
@@ -10377,8 +10359,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
       audioJobId: audioJobId // Will be null if withAudio=false
     })
   } catch (error) {
-    logger.error(`Error generating legacy manifest for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Error generating legacy manifest for ${courseCode}:`, error)
   }
 })
 
@@ -10421,8 +10402,7 @@ app.delete('/api/production/:courseCode/export-state', async (req, res) => {
     logger.info(`Export state reset for ${courseCode}`)
     res.json({ success: true, message: 'Export state reset successfully' })
   } catch (error) {
-    logger.error('Error resetting export state:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error resetting export state:', error)
   }
 })
 
@@ -10441,8 +10421,7 @@ app.get('/api/production/:courseCode/pending-manifest', async (req, res) => {
     const manifest = await fs.readJson(manifestPath)
     res.json(manifest)
   } catch (error) {
-    logger.error(`Get pending manifest error for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Get pending manifest error for ${courseCode}:`, error)
   }
 })
 
@@ -10478,8 +10457,7 @@ app.get('/api/production/:courseCode/export-state/manifest', async (req, res) =>
       res.json({ manifest })
     }
   } catch (error) {
-    logger.error('Error getting cached manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting cached manifest:', error)
   }
 })
 
@@ -10506,6 +10484,13 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
     }
 
     const manifest = await fs.readJson(manifestPath)
+
+    // Refuse to publish a manifest whose audio length/format check did not run (job #994).
+    const audioGate = await legacyExportAudioGate(courseCode)
+    if (audioGate) {
+      logger.warn(`[PUBLISH] Refused for ${courseCode}: ${audioGate.error}`)
+      return res.status(412).json(audioGate)
+    }
 
     // Block publishing if any samples have duration 0 (combined presentations not yet fixed)
     const zeroDurationSamples = []
@@ -10649,8 +10634,7 @@ app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
     logger.info(`[ManifestDiff] ${courseCode}: ${diff.suggestedBump} bump (${diff.major.length} major, ${diff.minor.length} minor, ${diff.patch.length} patch)`)
     res.json(diff)
   } catch (error) {
-    logger.error('Error computing manifest diff:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error computing manifest diff:', error)
   }
 })
 
@@ -10735,6 +10719,13 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
 
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Refuse to deploy to the legacy app when the audio length/format check did not run (job #994).
+    const audioGate = await legacyExportAudioGate(courseCode)
+    if (audioGate) {
+      logger.warn(`[StageDeploy] Refused for ${courseCode}: ${audioGate.error}`)
+      return res.status(412).json(audioGate)
     }
 
     // Derive the courseConfigsId (e.g. fra_ca_for_eng -> en-fr-ca)
@@ -10861,14 +10852,10 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
 function handleStderrLine(job, line) {
   if (!line) return
   const { jobId, courseCode } = job
-  if (line.startsWith('__SD__:')) {
-    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
-    if (!m) return
-    const event = m[1]
-    let payload = {}
-    if (m[2]) {
-      try { payload = JSON.parse(m[2]) } catch (e) { /* malformed, ignore */ }
-    }
+  if (isStageEventLine(line)) {
+    const parsed = parseStageEventLine(line)
+    if (!parsed) return
+    const { event, payload } = parsed
     switch (event) {
       case 'start':       io.emit('stageDeploy:start', { jobId, courseCode, ...payload }); break
       case 'newCourse':   job.sawNewCourse = true
@@ -11047,14 +11034,10 @@ app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
 function handleRestartStderrLine(job, line) {
   if (!line) return
   const { jobId, courseCode } = job
-  if (line.startsWith('__SD__:')) {
-    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
-    if (!m) return
-    const event = m[1]
-    let payload = {}
-    if (m[2]) {
-      try { payload = JSON.parse(m[2]) } catch (e) { /* ignore */ }
-    }
+  if (isStageEventLine(line)) {
+    const parsed = parseStageEventLine(line)
+    if (!parsed) return
+    const { event, payload } = parsed
     switch (event) {
       case 'start':            io.emit('stageDeploy:restartStarted', { jobId, courseCode, ...payload }); break
       case 'restartSucceeded': job.phase = 'succeeded'
@@ -11102,7 +11085,47 @@ app.post('/api/production/:courseCode/stage-restart/cancel', async (req, res) =>
 
 
 // POST /api/production/:courseCode/verify-s3
-// Step 2: Verify stage audio exists and durations match manifest
+// Step 2: Verify stage audio exists and durations match manifest.
+// The run takes 30-40 min and every main push restarts this API, so it is NOT done here (job #27): a
+// detached worker (tools/audio/export-step2-worker.cjs; unit has KillMode=process, so it survives a
+// restart) does the whole of Step 2 and this process only starts it and relays its progress file.
+const EXPORT_STATE_DIR = path.join(__dirname, '../temp/course_export_states')
+const step2State = require('./shared/export-step2-state.cjs')
+
+// Relay the worker's progress file to the dashboard sockets until the run ends. Also called at boot
+// for runs that were already going when the API restarted.
+function watchStep2Run(courseCode) {
+  if (runningVerifications.get(courseCode)?.watching) return
+  const entry = runningVerifications.get(courseCode) || { startedAt: Date.now() }
+  entry.watching = true
+  runningVerifications.set(courseCode, entry)
+  let lastSent = ''
+  const tick = () => {
+    const run = step2State.readRun(EXPORT_STATE_DIR, courseCode)
+    if (!run) { runningVerifications.delete(courseCode); return clearInterval(timer) }
+    entry.startedAt = run.startedAt || entry.startedAt
+    entry.pid = run.pid
+    if (run.status === 'running') {
+      const msg = JSON.stringify(run.progress)
+      if (msg !== lastSent) { lastSent = msg; io.emit('s3Verify:progress', { courseCode, ...run.progress }) }
+      return
+    }
+    clearInterval(timer)
+    runningVerifications.delete(courseCode)
+    if (run.status === 'completed') {
+      logger.info(`[VERIFY-S3] All stages complete for ${courseCode}`)
+      io.emit('s3Verify:completed', { courseCode, ...run.results, s3Verified: run.s3Verified })
+    } else if (run.status === 'cancelled') {
+      io.emit('s3Verify:cancelled', { courseCode })
+    } else {
+      logger.error(`[VERIFY-S3] ${courseCode} failed: ${run.error}`)
+      io.emit('s3Verify:error', { courseCode, error: run.error })
+    }
+  }
+  const timer = setInterval(tick, 2000)
+  tick()
+}
+
 app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -11111,269 +11134,66 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    // Check if verification is already running for this course
-    const running = runningVerifications.get(courseCode)
-    if (running) {
-      const elapsed = Math.round((Date.now() - running.startedAt) / 1000)
+    // One run per course: a live worker (ours, or one that outlived an API restart) wins.
+    const existing = step2State.readRun(EXPORT_STATE_DIR, courseCode)
+    if (existing?.status === 'running') {
+      const elapsed = Math.round((Date.now() - existing.startedAt) / 1000)
       logger.info(`[VERIFY-S3] Verification already running for ${courseCode} (${elapsed}s elapsed), skipping duplicate request`)
-      return res.status(409).json({
-        error: 'Verification already in progress',
-        alreadyRunning: true,
-        elapsedSeconds: elapsed
-      })
+      watchStep2Run(courseCode)
+      return res.status(409).json({ error: 'Verification already in progress', alreadyRunning: true, elapsedSeconds: elapsed })
     }
 
-    // Mark verification as running with abort controller
-    const abortController = new AbortController()
-    runningVerifications.set(courseCode, { startedAt: Date.now(), abortController })
-
-    // Load manifest from temp/course_export_states
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    const manifestPath = path.join(EXPORT_STATE_DIR, `${courseCode}_pending_manifest.json`)
     if (!fs.existsSync(manifestPath)) {
-      runningVerifications.delete(courseCode)
       return res.status(404).json({ error: 'No pending manifest found. Generate manifest first.' })
     }
 
-    const pendingManifest = await fs.readJson(manifestPath)
-
-    const uuids = collectManifestUuids(pendingManifest)
-    logger.info(`Verifying ${uuids.length} audio files for ${courseCode}`)
-
-    // Stage 1: Existence check + Stage 2: Duration verification
-    const verifyResults = await s3DeployService.verifyStageAudio(
-      uuids,
-      pendingManifest,
-      (phase, checked, total, ...phaseData) => {
-        if (phase === 'existence') {
-          io.emit('s3Verify:progress', { courseCode, phase: 'existence', checked, total })
-        } else if (phase === 'duration') {
-          const [matched, mismatched, errors] = phaseData
-          io.emit('s3Verify:progress', {
-            courseCode, phase: 'duration', checked, total, matched, mismatched, errors
-          })
-        }
-      },
-      { checkDurations: true, durationTolerance: 0, signal: abortController.signal }
-    )
-
-    // Check if cancelled
-    if (verifyResults.cancelled) {
-      runningVerifications.delete(courseCode)
-      return res.json({ cancelled: true, message: 'Verification cancelled' })
-    }
-
-    const results = { ...verifyResults }
-
-    // Save state after Stage 2 (database-first)
-    const supabase = supabaseClient.getClient()
-    await supabase
-      .from('course_export_states')
-      .upsert({
-        course_code: courseCode,
-        s3_verification: results,
-        s3_verified: false, // Not verified yet until auto-fix completes
-        updated_at: new Date().toISOString()
-      }, { onConflict: 'course_code' })
-
-    // Send immediate response after Stage 2 - don't block the UI
-    logger.info(`[VERIFY-S3] Stages 1-2 complete, starting auto-fix in background`)
-    res.json(results)
-
-    // Stage 3 & 4: Auto-fix and verify in BACKGROUND (async, non-blocking)
-    if (results.durationMismatched > 0) {
-      setImmediate(async () => {
-        try {
-          if (abortController.signal.aborted) {
-            logger.info(`[AUTO-FIX] Skipped - verification was cancelled`)
-            runningVerifications.delete(courseCode)
-            return
-          }
-          logger.info(`[AUTO-FIX] Starting background auto-fix for ${results.durationMismatched} duration mismatches`)
-          io.emit('s3Verify:progress', { courseCode, phase: 'fixing', checked: 0, total: results.durationMismatched })
-
-          // Save extracted S3 durations to temp file
-          const durationsPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_extracted_durations.json`)
-          const durationsObj = Object.fromEntries(verifyResults.extractedDurations || new Map())
-          await fs.writeJson(durationsPath, durationsObj, { spaces: 2 })
-          logger.info(`[AUTO-FIX] Saved ${Object.keys(durationsObj).length} extracted durations`)
-
-          // Run auto-fix with pre-extracted durations (should be instant).
-          // Pass courseCode so course_audio.duration_ms is also synced — prevents
-          // a subsequent Step 1 run from re-introducing the stale values.
-          const fixResults = await s3DeployService.autoFixDurations(
-            uuids,
-            pendingManifest,
-            (phase, checked, total, fixed, errors) => {
-              io.emit('s3Verify:progress', {
-                courseCode, phase: 'fixing', checked, total, fixed, errors
-              })
-            },
-            verifyResults.extractedDurations,
-            { courseCode }
-          )
-
-          logger.info(`[AUTO-FIX] Fixed ${fixResults.fixed} manifest durations, ${fixResults.errors} errors. DB sync: ${fixResults.dbRowsUpdated} rows updated, ${fixResults.dbAlreadyCorrect} already correct, ${fixResults.dbErrors} errors`)
-
-          // Save updated manifest
-          await fs.writeJson(manifestPath, fixResults.updatedManifest, { spaces: 2 })
-          results.durationsFixed = fixResults.fixed
-          results.durationFixErrors = fixResults.errors
-          results.dbRowsUpdated = fixResults.dbRowsUpdated
-          results.dbAlreadyCorrect = fixResults.dbAlreadyCorrect
-          results.dbErrors = fixResults.dbErrors
-
-          // Stage 4: Verify fixed durations
-          logger.info(`[VERIFY-FIX] Verifying ${fixResults.fixed} fixed durations`)
-          io.emit('s3Verify:progress', { courseCode, phase: 'verifying', checked: 0, total: fixResults.fixed })
-
-          const fixedManifest = fixResults.updatedManifest
-          const extractedDurations = await fs.readJson(durationsPath)
-
-          let verifyChecked = 0
-          let verifyMatched = 0
-          let verifyMismatched = 0
-          const verifyMismatchDetails = []
-          let progressCounter = 0
-
-          // Check all fixed durations with progress updates
-          const checkSample = (uuid, manifestDuration) => {
-            verifyChecked++
-            progressCounter++
-            const s3Duration = extractedDurations[uuid]
-
-            if (s3Duration !== undefined) {
-              const diff = Math.abs(manifestDuration - s3Duration)
-              if (diff < 0.001) {
-                verifyMatched++
-              } else {
-                verifyMismatched++
-                verifyMismatchDetails.push({
-                  uuid,
-                  manifestDuration,
-                  s3Duration,
-                  difference: diff
-                })
-              }
-            }
-
-            // Send progress update every 100 samples
-            if (progressCounter % 100 === 0) {
-              io.emit('s3Verify:progress', {
-                courseCode, phase: 'verifying', checked: verifyChecked, total: fixResults.fixed,
-                matched: verifyMatched, mismatched: verifyMismatched
-              })
-            }
-          }
-
-          // Check introduction
-          if (fixedManifest.introduction?.id && fixedManifest.introduction?.duration) {
-            checkSample(fixedManifest.introduction.id, fixedManifest.introduction.duration)
-          }
-
-          // Check encouragements
-          for (const enc of fixedManifest.slices[0]?.orderedEncouragements || []) {
-            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
-          }
-          for (const enc of fixedManifest.slices[0]?.pooledEncouragements || []) {
-            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
-          }
-          for (const enc of fixedManifest.slices[0]?.paywallEncouragements || []) {
-            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
-          }
-
-          // Check samples
-          for (const audioArray of Object.values(fixedManifest.slices[0]?.samples || {})) {
-            for (const audio of audioArray) {
-              if (audio.id && audio.duration) checkSample(audio.id, audio.duration)
-            }
-          }
-
-          // Final progress update
-          io.emit('s3Verify:progress', {
-            courseCode, phase: 'verifying', checked: verifyChecked, total: verifyChecked,
-            matched: verifyMatched, mismatched: verifyMismatched
-          })
-
-          logger.info(`[VERIFY-FIX] Verification complete: ${verifyMatched} matched, ${verifyMismatched} mismatched`)
-
-          results.verifyFixed = {
-            checked: verifyChecked,
-            matched: verifyMatched,
-            mismatched: verifyMismatched,
-            mismatchDetails: verifyMismatchDetails
-          }
-
-          // Clean up temp durations file
-          await fs.remove(durationsPath)
-
-          // Update final state (database-first)
-          // Format failures (ID3v2 / non-LAME encoding) block verification — they're
-          // the iOS-playback bug and must be fixed before publishing.
-          const s3Verified = results.missing === 0 && verifyMismatched === 0 && (results.formatFailed || 0) === 0
-          await supabase
-            .from('course_export_states')
-            .update({
-              s3_verification: results,
-              s3_verified: s3Verified,
-              s3_verified_at: s3Verified ? new Date().toISOString() : null,
-              updated_at: new Date().toISOString()
-            })
-            .eq('course_code', courseCode)
-
-          // Notify completion
-          logger.info(`[VERIFY-S3] All stages complete for ${courseCode}`)
-          io.emit('s3Verify:completed', { courseCode, ...results })
-          runningVerifications.delete(courseCode)
-
-        } catch (err) {
-          logger.error(`[AUTO-FIX] Background error for ${courseCode}:`, err)
-          io.emit('s3Verify:error', { courseCode, error: err.message })
-          runningVerifications.delete(courseCode)
-        }
-      })
-    } else {
-      // No duration mismatches — but format failures (ID3v2 / non-LAME) still block.
-      const s3Verified = results.missing === 0 && (results.formatFailed || 0) === 0
-      await supabase
-        .from('course_export_states')
-        .update({
-          s3_verification: results,
-          s3_verified: s3Verified,
-          s3_verified_at: s3Verified ? new Date().toISOString() : null,
-          updated_at: new Date().toISOString()
-        })
-        .eq('course_code', courseCode)
-
-      io.emit('s3Verify:completed', { courseCode, ...results })
-      runningVerifications.delete(courseCode)
-    }
-
+    const startedAt = Date.now()
+    step2State.writeRun(EXPORT_STATE_DIR, courseCode, { courseCode, status: 'running', startedAt, pid: null, progress: { phase: 'existence', checked: 0, total: 0 } })
+    const logFile = path.join(EXPORT_STATE_DIR, `${courseCode}_step2_worker.log`)
+    const out = fs.openSync(logFile, 'a')
+    const child = require('child_process').spawn(process.execPath, [path.join(__dirname, '../tools/audio/export-step2-worker.cjs'), courseCode, EXPORT_STATE_DIR], {
+      detached: true, stdio: ['ignore', out, out], env: process.env, cwd: path.join(__dirname, '..')
+    })
+    fs.closeSync(out)
+    child.unref()
+    step2State.writeRun(EXPORT_STATE_DIR, courseCode, { courseCode, status: 'running', startedAt, pid: child.pid, progress: { phase: 'existence', checked: 0, total: 0 } })
+    logger.info(`[VERIFY-S3] ${courseCode}: Step 2 worker started (pid ${child.pid}), log ${logFile}`)
+    watchStep2Run(courseCode)
+    res.status(202).json({ started: true, pid: child.pid, message: 'Verification running in the background; progress arrives on s3Verify:progress, the result on s3Verify:completed' })
   } catch (error) {
-    if (abortController.signal.aborted) {
-      logger.info(`[VERIFY-S3] Cancelled for ${courseCode}`)
-      runningVerifications.delete(courseCode)
-      return res.json({ cancelled: true, message: 'Verification cancelled' })
-    }
-    logger.error(`Verify S3 error for ${courseCode}:`, error)
-    runningVerifications.delete(courseCode)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Verify S3 start error for ${req.params.courseCode}:`, error)
   }
 })
+
+// GET /api/production/:courseCode/verify-s3 — where the run stands (survives API restarts)
+app.get('/api/production/:courseCode/verify-s3', (req, res) => {
+  const run = step2State.readRun(EXPORT_STATE_DIR, req.params.courseCode)
+  if (!run) return res.status(404).json({ error: 'No Step 2 run recorded for this course' })
+  const { results, ...rest } = run
+  res.json(rest)
+})
+
+// After an API restart, pick up runs whose worker is still going.
+try {
+  for (const f of fs.readdirSync(EXPORT_STATE_DIR)) {
+    const m = f.match(/^(.+)_step2_run\.json$/)
+    if (m && step2State.readRun(EXPORT_STATE_DIR, m[1])?.status === 'running') watchStep2Run(m[1])
+  }
+} catch (e) { /* no state dir yet */ }
 
 // DELETE /api/production/:courseCode/verify-s3
 // Cancel a running S3 verification
 app.delete('/api/production/:courseCode/verify-s3', (req, res) => {
   const { courseCode } = req.params
-  const running = runningVerifications.get(courseCode)
+  const run = step2State.readRun(EXPORT_STATE_DIR, courseCode)
 
-  if (!running) {
+  if (run?.status !== 'running') {
     return res.status(404).json({ error: 'No verification running for this course' })
   }
 
   logger.info(`[VERIFY-S3] Cancelling verification for ${courseCode}`)
-  running.abortController.abort()
-  runningVerifications.delete(courseCode)
-  io.emit('s3Verify:cancelled', { courseCode })
+  try { if (run.pid) process.kill(run.pid, 'SIGTERM') } catch (e) { logger.warn(`[VERIFY-S3] kill ${run.pid}: ${e.message}`) }
   res.json({ cancelled: true, message: `Verification cancelled for ${courseCode}` })
 })
 
@@ -11450,19 +11270,7 @@ function buildVerifyProgressCallback(io, courseCode, totalUuids, runningDeploysM
   }
 }
 
-/**
- * Build human-readable deploy result message
- */
-function buildDeployMessage(deployResult, verificationResult, verificationPassed) {
-  const parts = []
-  parts.push(`Copied ${deployResult.deployed} files`)
-  if (deployResult.failed > 0) parts.push(`${deployResult.failed} copy failures`)
-  if (verificationResult.missing > 0) parts.push(`${verificationResult.missing} missing from production`)
-  if (verificationResult.durationMismatched > 0) parts.push(`${verificationResult.durationMismatched} duration mismatches`)
-  if (verificationResult.durationErrors > 0) parts.push(`${verificationResult.durationErrors} verification errors`)
-  if (verificationPassed) parts.push('All production audio verified')
-  return parts.join('. ') + '.'
-}
+const { buildDeployMessage } = require('./shared/deploy-audio-message.cjs')
 
 // POST /api/production/:courseCode/deploy-audio/plan
 // Get deployment plan with automatic duration checking for overwrites
@@ -11914,8 +11722,7 @@ app.post('/api/production/:courseCode/verify-production-durations', async (req, 
 
     res.json(verificationResult)
   } catch (error) {
-    logger.error(`Verify production error for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Verify production error for ${courseCode}:`, error)
   }
 })
 
@@ -13825,58 +13632,7 @@ app.get('/api/admin/uptime-summary', async (req, res) => {
   }
 })
 
-// Parse Prometheus exposition format into a flat map keyed by metric name +
-// optional sorted-label string. Values are numbers. Helper kept local — no
-// need for prom-client just to read 8 metrics off a scrape.
-function parsePrometheusText(text) {
-  const samples = []
-  const lines = text.split('\n')
-  for (const line of lines) {
-    if (!line || line.startsWith('#')) continue
-    // Metric line: name{label="v",label="v"} 123 [timestamp]
-    // Or: name 123
-    const m = line.match(/^([a-zA-Z_:][a-zA-Z0-9_:]*)(\{[^}]*\})?\s+([-+0-9.eEnNaIfF]+)/)
-    if (!m) continue
-    const name = m[1]
-    const labelBlock = m[2] || ''
-    const valueStr = m[3]
-    const value = Number(valueStr)
-    if (!Number.isFinite(value)) continue
-    const labels = {}
-    if (labelBlock) {
-      const re = /([a-zA-Z_][a-zA-Z0-9_]*)="((?:[^"\\]|\\.)*)"/g
-      let lm
-      while ((lm = re.exec(labelBlock)) !== null) {
-        labels[lm[1]] = lm[2].replace(/\\"/g, '"').replace(/\\\\/g, '\\')
-      }
-    }
-    samples.push({ name, labels, value })
-  }
-  return samples
-}
-
-// Sum samples for a metric, optionally filtered by label predicate.
-function sumMetric(samples, name, labelPredicate = null) {
-  let total = 0
-  let matched = 0
-  for (const s of samples) {
-    if (s.name !== name) continue
-    if (labelPredicate && !labelPredicate(s.labels)) continue
-    total += s.value
-    matched++
-  }
-  return matched > 0 ? { value: total, count: matched } : null
-}
-
-// First-sample lookup — for gauge metrics where there's typically one series.
-function firstMetric(samples, name, labelPredicate = null) {
-  for (const s of samples) {
-    if (s.name !== name) continue
-    if (labelPredicate && !labelPredicate(s.labels)) continue
-    return s.value
-  }
-  return null
-}
+const { parsePrometheusText, sumMetric, firstMetric } = require('./shared/prometheus-text.cjs')
 
 // GET /api/admin/db-health — scrape Supabase Metrics API, extract 6-8 metrics
 // that tell the "is the DB healthy right now?" story. Resilient to missing
@@ -14114,65 +13870,9 @@ app.get('/api/insight-discovery/latest', async (req, res) => {
   }
 })
 
-// ============================================================
-// RELEASE NOTES — generate a LEARNER-FACING release note from the
-// learning-app's main..staging delta, then publish it. Mirrors the insight-
-// discovery flow: the service (services/release-notes.cjs) reads main..staging
-// via local git (machine SSH creds, no token), filters engineering noise, runs `claude --print` on the Max
-// subscription (billed key + CLAUDECODE scrubbed — done inside the service),
-// and writes to the shared release_notes table. Unlike insight-discovery
-// (fire-and-forget), generation is SYNCHRONOUS so the draft can be returned to
-// the UI for review/edit before publishing. requireAdmin.
-// ============================================================
-const releaseNotesSvc = require('./release-notes.cjs')
-
-// POST /api/release-notes/generate — build a draft from main..staging.
-// Optional body { version } overrides the version SHA. Returns the draft.
-app.post('/api/release-notes/generate', async (req, res) => {
-  const admin = await requireAdmin(req, res)
-  if (!admin) return
-  const version = req.body && typeof req.body.version === 'string' ? req.body.version.trim() : undefined
-  try {
-    const draft = await releaseNotesSvc.generateDraft(version ? { version } : {})
-    logger.log(`[ReleaseNotes] draft generated (id=${draft.id}, version=${draft.version}, ${draft.commitCount} commits) by ${admin.email || admin.id}`)
-    res.json(draft)
-  } catch (e) {
-    logger.error(`[ReleaseNotes] generate failed: ${e.message}`)
-    res.status(500).json({ error: e.message })
-  }
-})
-
-// POST /api/release-notes/publish — flip a draft to published, saving any edits.
-// Body { id, headline?, bullets? }. Returns the updated row.
-app.post('/api/release-notes/publish', async (req, res) => {
-  const admin = await requireAdmin(req, res)
-  if (!admin) return
-  const { id, headline, bullets } = req.body || {}
-  if (id === undefined || id === null || id === '') {
-    return res.status(400).json({ error: 'id required' })
-  }
-  try {
-    const row = await releaseNotesSvc.publishNote({ id, headline, bullets })
-    logger.log(`[ReleaseNotes] published id=${id} (version=${row.version}) by ${admin.email || admin.id}`)
-    res.json(row)
-  } catch (e) {
-    logger.error(`[ReleaseNotes] publish failed: ${e.message}`)
-    res.status(500).json({ error: e.message })
-  }
-})
-
-// GET /api/release-notes/drafts — unpublished rows, newest-first (for the UI).
-app.get('/api/release-notes/drafts', async (req, res) => {
-  const admin = await requireAdmin(req, res)
-  if (!admin) return
-  try {
-    const drafts = await releaseNotesSvc.listDrafts()
-    res.json({ drafts: Array.isArray(drafts) ? drafts : [] })
-  } catch (e) {
-    logger.error(`[ReleaseNotes] drafts read failed: ${e.message}`)
-    res.status(500).json({ error: e.message })
-  }
-})
+// Release notes — lifted to services/release-notes-router.cjs (job #101), URLs
+// unchanged; every route stays behind requireAdmin, passed in.
+app.use('/api/release-notes', require('./release-notes-router.cjs')({ requireAdmin, logger }))
 
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 // Bind loopback-only by default. watson-1 has a public IP; public access to this
@@ -14183,11 +13883,15 @@ const HOST = process.env.BIND_HOST || '127.0.0.1'
 
 httpServer.listen(PORT, HOST, () => {
   logger.log(`Production API server running on ${HOST}:${PORT}`)
-  // Booth script checks a restart interrupted (job #842): kill the decoders the old process
-  // left running (KillMode=process leaves them holding whisper slots), then re-queue the checks.
-  takeTextCheck.recoverAtBoot(textChecks, { logger })
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
+  estateMapCache.get().catch(err => logger.error('estate map warm-up failed:', err.message))
+  // Export Step 2 needs sox (with MP3) + ffprobe. Say so at boot; every Step 2 run re-checks and
+  // fails closed without them (job #994) — the API itself still starts, it serves far more than export.
+  exportAudioCheck.audioToolsPreflight().then(({ ok, reason }) => {
+    if (ok) logger.log('Export audio check tools present (sox with MP3, ffprobe)')
+    else logger.error(`EXPORT STEP 2 WILL FAIL: ${reason} — no course can be verified or exported to the legacy app until this is fixed`)
+  })
 })
 
 module.exports = { app, io, emitToRoom }

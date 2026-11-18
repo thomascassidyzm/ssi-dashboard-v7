@@ -1,0 +1,1445 @@
+{
+"batch": "D",
+"seeds": [
+159,
+166,
+178,
+228
+],
+"ops": [
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L04U07",
+"set": {
+"target_text": "is mian liom aire a thabhairt don mhadra óg ach níl an t-am agam inniu"
+},
+"expect": {
+"known_text": "I want to look after the young dog but I do not have time today",
+"target_text": "is mian liom aire a thabhairt don mhadra óg ach níl am agam inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U12",
+"set": {
+"target_text": "Ní raibh sí réidh le dul cé go raibh gach duine eile ag iarraidh dul cheana féin",
+"known_text": "she was not ready to go even though everyone else was already trying to go"
+},
+"expect": {
+"known_text": "she was not ready to go although everyone else was already trying to go",
+"target_text": "Ní raibh sí réidh le dul cé go raibh gach duine eile ag iarraidh dul cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0149L03B04",
+"set": {
+"target_text": "ní raibh an t-am agam mar sin"
+},
+"expect": {
+"known_text": "I did not have time so",
+"target_text": "ní raibh am agam mar sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L04U09",
+"set": {
+"target_text": "ní raibh an t-am agam oíche Shathairn ach beidh mé in ann teacht agus cabhrú leat níos déanaí"
+},
+"expect": {
+"known_text": "I did not have time Saturday night but I'll be able to come and help you later on",
+"target_text": "ní raibh am agam oíche Shathairn ach beidh mé in ann teacht agus cabhrú leat níos déanaí"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 159,
+"set": {
+"target_text": "Ní hé sin an rud atá mé ag iarraidh a rá leat"
+},
+"expect": {
+"known_text": "That isn't what I'm trying to say to you",
+"target_text": "Ní hé sin atá mé ag iarraidh a rá leat"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 159,
+"lego_index": 4,
+"known_text": "that isn't what",
+"target_text": "Ní hé sin an rud",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "that isn't",
+"target": "Ní hé sin"
+},
+{
+"known": "the thing",
+"target": "an rud"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 101,
+"known_text": "That is not what you were looking for when you started learning Irish and I am happy to help you",
+"target_text": "Ní hé sin an rud a bhí tú ag lorg nuair a thosaigh tú ag foghlaim Gaeilge agus tá áthas orm cabhrú leat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0159L01U14"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 23,
+"lego_count": 23
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 102,
+"known_text": "That is not what I am trying to say",
+"target_text": "Ní hé sin an rud atá mé ag iarraidh a rá",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0159L02B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 11,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 103,
+"known_text": "That is not what I am trying to do here and I think it is the same thing we talked about before",
+"target_text": "Ní hé sin an rud atá mé ag iarraidh a dhéanamh anseo agus is é an rud céanna é agus a bhí muid ag caint faoi",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0159L02U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 26,
+"lego_count": 26
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 104,
+"known_text": "That is not what I am trying to hear right now but I know why you wanted to say that to me",
+"target_text": "Ní hé sin an rud atá mé ag iarraidh a chloisteáil faoi láthair ach tá a fhios agam cén fáth ar mhian leat é sin a rá liom",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0159L02U12"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 28,
+"lego_count": 28
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 105,
+"known_text": "That is not what I am trying to write at all because I want to say something completely different here",
+"target_text": "Ní hé sin an rud atá mé ag iarraidh a scríobh ar fad mar is mian liom rud éigin éagsúil ar fad a rá anseo",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0159L02U08"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 25,
+"lego_count": 25
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 106,
+"known_text": "That isn't what I'm trying to say to you",
+"target_text": "Ní hé sin an rud atá mé ag iarraidh a rá leat",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0159L03B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 12,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 107,
+"known_text": "that isn't what she's trying to say to you",
+"target_text": "Ní hé sin an rud atá sí ag iarraidh a rá leat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0159L03U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 12,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0159L04B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 159,
+"lego_index": 4,
+"position": 108,
+"known_text": "that isn't what",
+"target_text": "Ní hé sin an rud",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0159L01U14",
+"expect": {
+"target_text": "Ní hé sin cad a bhí tú ag lorg nuair a thosaigh tú ag foghlaim Gaeilge agus tá áthas orm cabhrú leat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0159L02B03",
+"expect": {
+"target_text": "Ní hé sin atá mé ag iarraidh a rá"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0159L02U04",
+"expect": {
+"target_text": "Ní hé sin atá mé ag iarraidh a dhéanamh anseo agus is é an rud céanna é agus a bhí muid ag caint faoi"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0159L02U12",
+"expect": {
+"target_text": "Ní hé sin atá mé ag iarraidh a chloisteáil faoi láthair ach tá a fhios agam cén fáth ar mhian leat é sin a rá liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0159L02U08",
+"expect": {
+"target_text": "Ní hé sin atá mé ag iarraidh a scríobh ar fad mar is mian liom rud éigin éagsúil ar fad a rá anseo"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0159L03B04",
+"expect": {
+"target_text": "Ní hé sin atá mé ag iarraidh a rá leat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0159L03U03",
+"expect": {
+"target_text": "ní hé sin atá sí ag iarraidh a rá leat"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 166,
+"set": {
+"target_text": "Níl ainm an-neamhghnách orm"
+},
+"expect": {
+"known_text": "my name is not very unusual",
+"target_text": "Níl m'ainm an-neamhghnách"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 166,
+"lego_index": 4,
+"known_text": "my name is not very unusual",
+"target_text": "níl ainm an-neamhghnách orm",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "is not",
+"target": "níl"
+},
+{
+"known": "name",
+"target": "ainm"
+},
+{
+"known": "very unusual",
+"target": "an-neamhghnách"
+},
+{
+"known": "on me",
+"target": "orm"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L04B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 4,
+"position": 101,
+"known_text": "my name is not very unusual",
+"target_text": "níl ainm an-neamhghnách orm",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L04B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 4,
+"position": 102,
+"known_text": "of course my name is not very unusual",
+"target_text": "ar ndóigh níl ainm an-neamhghnách orm",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 4,
+"position": 103,
+"known_text": "thank you but my name is not very unusual",
+"target_text": "go raibh maith agat ach níl ainm an-neamhghnách orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 9,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L04U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 4,
+"position": 104,
+"known_text": "unfortunately my name is not very unusual",
+"target_text": "faraor níl ainm an-neamhghnách orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L03B04",
+"expect": {
+"target_text": "níl m'ainm an-neamhghnách"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0166L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "m'ainm"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0166L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "níl m'ainm"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 178,
+"set": {
+"target_text": "Ní raibh an t-am agam, in ainneoin gur mhian liom tú a fheiceáil"
+},
+"expect": {
+"known_text": "I didn't have time, although I wanted to see you",
+"target_text": "Ní raibh am agam, cé gur mhian liom tú a fheiceáil"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0178L01",
+"set": {
+"target_text": "ní raibh an t-am agam",
+"components": [
+{
+"known": "not was",
+"target": "ní raibh"
+},
+{
+"known": "the time",
+"target": "an t-am"
+},
+{
+"known": "at me",
+"target": "agam"
+}
+]
+},
+"expect": {
+"known_text": "I did not have time",
+"target_text": "ní raibh am agam",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0178L02",
+"set": {
+"target_text": "in ainneoin gur mhian liom",
+"components": [
+{
+"known": "in spite",
+"target": "in ainneoin"
+},
+{
+"known": "that I wanted",
+"target": "gur mhian liom"
+}
+]
+},
+"expect": {
+"known_text": "although I wanted",
+"target_text": "cé gur mhian liom",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01B02",
+"set": {
+"target_text": "ní raibh an t-am agam é a lorg"
+},
+"expect": {
+"known_text": "I did not have time to look for it",
+"target_text": "ní raibh am agam é a lorg"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01B03",
+"set": {
+"target_text": "ach ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "but I did not have time",
+"target_text": "ach ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01B04",
+"set": {
+"target_text": "faraor ní raibh an t-am agam inné"
+},
+"expect": {
+"known_text": "unfortunately I did not have time yesterday",
+"target_text": "faraor ní raibh am agam inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01B01",
+"set": {
+"target_text": "ní raibh an t-am agam mo scíth a ligean"
+},
+"expect": {
+"known_text": "I did not have time to relax",
+"target_text": "ní raibh am agam mo scíth a ligean"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U01",
+"set": {
+"target_text": "ní raibh an t-am agam agus fiafróidh mé di amárach"
+},
+"expect": {
+"known_text": "I did not have time and I will ask her tomorrow",
+"target_text": "ní raibh am agam agus fiafróidh mé di amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U04",
+"set": {
+"target_text": "go raibh maith agat ach ní raibh an t-am agam inné"
+},
+"expect": {
+"known_text": "thank you but I did not have time yesterday",
+"target_text": "go raibh maith agat ach ní raibh am agam inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U02",
+"set": {
+"target_text": "ní raibh an t-am agam ach beidh mé in ann teacht agus cabhrú leat níos déanaí"
+},
+"expect": {
+"known_text": "I did not have time but I'll be able to come and help you later on",
+"target_text": "ní raibh am agam ach beidh mé in ann teacht agus cabhrú leat níos déanaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U06",
+"set": {
+"target_text": "dhúisigh mé níos luaithe ach ní raibh an t-am agam mo scíth a ligean"
+},
+"expect": {
+"known_text": "I woke earlier but I did not have time to relax",
+"target_text": "dhúisigh mé níos luaithe ach ní raibh am agam mo scíth a ligean"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U07",
+"set": {
+"target_text": "faraor ní raibh an t-am agam an leabhar a léamh an tseachtain seo caite"
+},
+"expect": {
+"known_text": "unfortunately I did not have time to read the book last week",
+"target_text": "faraor ní raibh am agam an leabhar a léamh an tseachtain seo caite"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U05",
+"set": {
+"target_text": "níl mé réidh go fóill mar ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I'm not ready yet because I did not have time",
+"target_text": "níl mé réidh go fóill mar ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U03",
+"set": {
+"target_text": "ní raibh an t-am agam ach is féidir liom déileáil leis liom féin"
+},
+"expect": {
+"known_text": "I did not have time but I can manage it on my own",
+"target_text": "ní raibh am agam ach is féidir liom déileáil leis liom féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U08",
+"set": {
+"target_text": "ní raibh an t-am agam athrú"
+},
+"expect": {
+"known_text": "I did not have time to change",
+"target_text": "ní raibh am agam athrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02B01",
+"set": {
+"target_text": "in ainneoin gur mhian liom tú a fheiceáil"
+},
+"expect": {
+"known_text": "although I wanted to see you",
+"target_text": "cé gur mhian liom tú a fheiceáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02B02",
+"set": {
+"target_text": "in ainneoin gur mhian liom Gaeilge a fhoghlaim"
+},
+"expect": {
+"known_text": "although I wanted to learn Irish",
+"target_text": "cé gur mhian liom Gaeilge a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02B03",
+"set": {
+"target_text": "in ainneoin gur mhian liom tú a fheiceáil anocht"
+},
+"expect": {
+"known_text": "although I wanted to see you tonight",
+"target_text": "cé gur mhian liom tú a fheiceáil anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02B04",
+"set": {
+"target_text": "ní raibh an t-am agam in ainneoin gur mhian liom cabhrú leat"
+},
+"expect": {
+"known_text": "I did not have time although I wanted to help you",
+"target_text": "ní raibh am agam cé gur mhian liom cabhrú leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02U01",
+"set": {
+"target_text": "in ainneoin gur mhian liom tú a fheiceáil ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "although I wanted to see you I did not have time",
+"target_text": "cé gur mhian liom tú a fheiceáil ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02U03",
+"set": {
+"target_text": "ní raibh an t-am agam inné in ainneoin gur mhian liom dul chuig bialann"
+},
+"expect": {
+"known_text": "I did not have time yesterday although I wanted to go to a restaurant",
+"target_text": "ní raibh am agam inné cé gur mhian liom dul chuig bialann"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02U05",
+"set": {
+"target_text": "in ainneoin gur mhian liom teacht ar ais ní raibh mé réidh"
+},
+"expect": {
+"known_text": "although I wanted to come back I wasn't ready",
+"target_text": "cé gur mhian liom teacht ar ais ní raibh mé réidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02U06",
+"set": {
+"target_text": "bhí an-áthas orm in ainneoin gur mhian liom dul abhaile"
+},
+"expect": {
+"known_text": "I was very happy although I wanted to go home",
+"target_text": "bhí an-áthas orm cé gur mhian liom dul abhaile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02U02",
+"set": {
+"target_text": "ní raibh mé in ann teacht níos déanaí in ainneoin gur mhian liom cabhrú"
+},
+"expect": {
+"known_text": "I wasn't able to come later on although I wanted to help",
+"target_text": "ní raibh mé in ann teacht níos déanaí cé gur mhian liom cabhrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L02U04",
+"set": {
+"target_text": "in ainneoin gur mhian liom déileáil leis liom féin ní raibh mé in ann"
+},
+"expect": {
+"known_text": "although I wanted to manage it on my own I wasn't able",
+"target_text": "cé gur mhian liom déileáil leis liom féin ní raibh mé in ann"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0179L03B04",
+"set": {
+"target_text": "ní raibh an t-am agam tráthnóna Domhnaigh"
+},
+"expect": {
+"known_text": "I did not have time Sunday afternoon",
+"target_text": "ní raibh am agam tráthnóna Domhnaigh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0179L03U06",
+"set": {
+"target_text": "ní raibh an t-am agam tráthnóna Domhnaigh in ainneoin gur mhian liom tú a fheiceáil"
+},
+"expect": {
+"known_text": "I did not have time Sunday afternoon although I wanted to see you",
+"target_text": "ní raibh am agam tráthnóna Domhnaigh cé gur mhian liom tú a fheiceáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0180L02U04",
+"set": {
+"target_text": "in ainneoin gur mhian liom mo leabhar a léamh ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "although I wanted to read my book I did not have time",
+"target_text": "cé gur mhian liom mo leabhar a léamh ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0180L04U04",
+"set": {
+"target_text": "ní raibh an t-am agam mo leabhar a léamh ar feadh tamaill"
+},
+"expect": {
+"known_text": "I did not have time to read my book for a while",
+"target_text": "ní raibh am agam mo leabhar a léamh ar feadh tamaill"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0181L02U05",
+"set": {
+"target_text": "caithfidh mé dul chuig an dochtúir ar maidin ach ní raibh an t-am agam a bheith réidh"
+},
+"expect": {
+"known_text": "I have to go to the doctor this morning but I did not have time to get ready",
+"target_text": "caithfidh mé dul chuig an dochtúir ar maidin ach ní raibh am agam a bheith réidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0181L02U03",
+"set": {
+"target_text": "in ainneoin gur mhian liom fanacht ar feadh tamaill eile caithfidh mé imeacht anois le dul abhaile"
+},
+"expect": {
+"known_text": "although I wanted to stay for a while longer I have to leave now to go home",
+"target_text": "cé gur mhian liom fanacht ar feadh tamaill eile caithfidh mé imeacht anois le dul abhaile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0183L03U03",
+"set": {
+"target_text": "ní raibh an t-am agam agus ní fhaca mé mo mháthair"
+},
+"expect": {
+"known_text": "I did not have time and I did not see my mother",
+"target_text": "ní raibh am agam agus ní fhaca mé mo mháthair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0185L03U04",
+"set": {
+"target_text": "faraor ní raibh an t-am agam ag an obair"
+},
+"expect": {
+"known_text": "unfortunately I didn't have time at work",
+"target_text": "faraor ní raibh am agam ag an obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0188L01U02",
+"set": {
+"target_text": "ní raibh an t-am agam mar sin fiafróidh mé di amárach"
+},
+"expect": {
+"known_text": "I did not have time so I will ask her tomorrow",
+"target_text": "ní raibh am agam mar sin fiafróidh mé di amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0190L02U15",
+"set": {
+"target_text": "an miste leat má chuirim rud éigin ort anois mar ní raibh an t-am agam inné"
+},
+"expect": {
+"known_text": "do you mind if I ask you something now because I did not have time yesterday",
+"target_text": "an miste leat má chuirim rud éigin ort anois mar ní raibh am agam inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0190L04U03",
+"set": {
+"target_text": "ní raibh an t-am agam cúpla ceist a chur uirthi"
+},
+"expect": {
+"known_text": "I did not have time to ask her a few questions",
+"target_text": "ní raibh am agam cúpla ceist a chur uirthi"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0191L02B04",
+"set": {
+"target_text": "ní raibh an t-am agam ar chor ar bith inniu"
+},
+"expect": {
+"known_text": "I did not have time at all today",
+"target_text": "ní raibh am agam ar chor ar bith inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0193L01U01",
+"set": {
+"target_text": "Tá brón orm, ní raibh an t-am agam cabhrú leat leis sin anocht"
+},
+"expect": {
+"known_text": "I am sorry, I did not have time to help you with that this evening",
+"target_text": "Tá brón orm, ní raibh am agam cabhrú leat leis sin anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0193L04U03",
+"set": {
+"target_text": "ní raibh an t-am agam mar bhí mé ró-ghnóthach"
+},
+"expect": {
+"known_text": "I did not have time because I was too busy",
+"target_text": "ní raibh am agam mar bhí mé ró-ghnóthach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0195L03U04",
+"set": {
+"target_text": "ní raibh an t-am agam an leabhar a d'fhág mé san oifig a léamh"
+},
+"expect": {
+"known_text": "I did not have time to read the book that I left in the office",
+"target_text": "ní raibh am agam an leabhar a d'fhág mé san oifig a léamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0196L02U04",
+"set": {
+"target_text": "ní raibh an t-am agam an smaoineamh a chloisteáil"
+},
+"expect": {
+"known_text": "I did not have time to hear the idea",
+"target_text": "ní raibh am agam an smaoineamh a chloisteáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0210L03U06",
+"set": {
+"target_text": "ba mhian liom an fhadhb a phlé ach ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I wanted to discuss the problem but I did not have time",
+"target_text": "ba mhian liom an fhadhb a phlé ach ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0214L04U05",
+"set": {
+"target_text": "tá brón orm ach ní raibh an t-am agam an deireadh seachtaine seo caite"
+},
+"expect": {
+"known_text": "I am sorry but I did not have time last weekend",
+"target_text": "tá brón orm ach ní raibh am agam an deireadh seachtaine seo caite"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L01U04",
+"set": {
+"target_text": "ní raibh an t-am agam ach chuaigh mé"
+},
+"expect": {
+"known_text": "i did not have time but i went",
+"target_text": "ní raibh am agam ach chuaigh mé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L01U07",
+"set": {
+"target_text": "in ainneoin gur mhian liom tú a fheiceáil chuaigh mé abhaile"
+},
+"expect": {
+"known_text": "although i wanted to see you i went home",
+"target_text": "cé gur mhian liom tú a fheiceáil chuaigh mé abhaile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0216L01U07",
+"set": {
+"target_text": "chonaic mé rudaí suimiúla ach ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I saw interesting things but I did not have time",
+"target_text": "chonaic mé rudaí suimiúla ach ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0218L02U03",
+"set": {
+"target_text": "ní dhearna mé mórán mar ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I did not do much because I did not have time",
+"target_text": "ní dhearna mé mórán mar ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0218L03U02",
+"set": {
+"target_text": "ní raibh an t-am agam ar an Domhnach in ainneoin gur mhian liom tú a fheiceáil"
+},
+"expect": {
+"known_text": "i didn't have time on Sunday although i wanted to see you",
+"target_text": "ní raibh am agam ar an Domhnach cé gur mhian liom tú a fheiceáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0219L02U02",
+"set": {
+"target_text": "ní raibh an t-am agam ach bhí sé go deas tú a fheiceáil"
+},
+"expect": {
+"known_text": "I did not have time but it was nice to see you",
+"target_text": "ní raibh am agam ach bhí sé go deas tú a fheiceáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0225L02U04",
+"set": {
+"target_text": "tá brón orm ach ní raibh an t-am agam freagra a thabhairt duit"
+},
+"expect": {
+"known_text": "I am sorry but I did not have time to give you an answer",
+"target_text": "tá brón orm ach ní raibh am agam freagra a thabhairt duit"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 228,
+"set": {
+"target_text": "Tá an fear sin díreach tar éis tosú ar labhairt a chleachtadh"
+},
+"expect": {
+"known_text": "That man has just started to practise speaking",
+"target_text": "Tá an fear sin díreach tar éis tosú ag cleachtadh labhartha"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0228L04",
+"set": {
+"known_text": "to start to practise speaking",
+"target_text": "tosú ar labhairt a chleachtadh",
+"components": [
+{
+"known": "to start",
+"target": "tosú"
+},
+{
+"known": "on",
+"target": "ar"
+},
+{
+"known": "to practise speaking",
+"target": "labhairt a chleachtadh"
+}
+]
+},
+"expect": {
+"known_text": "practising speaking",
+"target_text": "ag cleachtadh labhartha",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0228L04B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 228,
+"lego_index": 4,
+"position": 113,
+"known_text": "to start to practise speaking",
+"target_text": "tosú ar labhairt a chleachtadh",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0228L04B06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 228,
+"lego_index": 4,
+"position": 114,
+"known_text": "I'd like to start to practise speaking",
+"target_text": "ba mhaith liom tosú ar labhairt a chleachtadh",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 8,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0228L04U09",
+"course_code": "gle_v2_for_eng",
+"seed_number": 228,
+"lego_index": 4,
+"position": 115,
+"known_text": "I'd like to be able to start to practise speaking",
+"target_text": "ba mhaith liom a bheith in ann tosú ar labhairt a chleachtadh",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 12,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0228L04U10",
+"course_code": "gle_v2_for_eng",
+"seed_number": 228,
+"lego_index": 4,
+"position": 116,
+"known_text": "I'm going to start to practise speaking",
+"target_text": "tá mé chun tosú ar labhairt a chleachtadh",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 8,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0228L04U11",
+"course_code": "gle_v2_for_eng",
+"seed_number": 228,
+"lego_index": 4,
+"position": 117,
+"known_text": "That man has just started to practise speaking",
+"target_text": "Tá an fear sin díreach tar éis tosú ar labhairt a chleachtadh",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 12,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04B01",
+"expect": {
+"target_text": "tá an fear sin ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04B02",
+"expect": {
+"target_text": "ag cleachtadh labhartha le duine éigin eile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04B03",
+"expect": {
+"target_text": "bhí siad ag cleachtadh labhartha i nGaeilge"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04B04",
+"expect": {
+"target_text": "ag cleachtadh labhartha ar feadh tamaill"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U01",
+"expect": {
+"target_text": "ní raibh mé ag cleachtadh labhartha inné"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U02",
+"expect": {
+"target_text": "cén fáth a bhfuil tú ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U03",
+"expect": {
+"target_text": "ceapaim go bhfuil an fear sin ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U04",
+"expect": {
+"target_text": "thosaigh mé ag cleachtadh labhartha an mhí seo caite"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U05",
+"expect": {
+"target_text": "tá brón orm ach bhí mé ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U06",
+"expect": {
+"target_text": "bhí muid ag cleachtadh labhartha sa teach tábhairne"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U07",
+"expect": {
+"target_text": "ba mhaith liom a bheith in ann tosú ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0228L04U08",
+"expect": {
+"target_text": "cheap mé go raibh sé ina smaoineamh an-mhaith leanúint ar aghaidh ag cleachtadh labhartha le chéile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0235L06U07",
+"set": {
+"target_text": "tá brón orm ach ní raibh an t-am agam rud éigin a insint duit"
+},
+"expect": {
+"known_text": "I am sorry but I did not have time for something to tell you",
+"target_text": "tá brón orm ach ní raibh am agam rud éigin a insint duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0236L05U06",
+"set": {
+"target_text": "tá brón orm bhí mé chun iarracht a dhéanamh cabhrú leat ach ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I am sorry I was going to try to help you but I did not have time",
+"target_text": "tá brón orm bhí mé chun iarracht a dhéanamh cabhrú leat ach ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0243L03U05",
+"set": {
+"target_text": "ní raibh an t-am agam aon rud le hithe a lorg"
+},
+"expect": {
+"known_text": "i didn't have time to look for anything to eat",
+"target_text": "ní raibh am agam aon rud le hithe a lorg"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0250L06U02",
+"set": {
+"target_text": "ní raibh an t-am agam an leabhar sin a thaispeáint duit"
+},
+"expect": {
+"known_text": "I did not have time to show that book to you",
+"target_text": "ní raibh am agam an leabhar sin a thaispeáint duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0266L01U03",
+"set": {
+"target_text": "tá brón orm ach bhuail mé le seanchara agus ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I'm sorry but I met an old friend and I didn't have time",
+"target_text": "tá brón orm ach bhuail mé le seanchara agus ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0268L03U03",
+"set": {
+"target_text": "sheol do chara dhá ríomhphost chugam ach ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "your friend sent two emails to me but I did not have time",
+"target_text": "sheol do chara dhá ríomhphost chugam ach ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0269L04U04",
+"set": {
+"target_text": "ba mhian liom fanacht ach ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I wanted to wait but I did not have time",
+"target_text": "ba mhian liom fanacht ach ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0275L01U02",
+"set": {
+"target_text": "ba mhian leis labhairt liom níos faide ach ní raibh an t-am agam fanacht"
+},
+"expect": {
+"known_text": "he wanted to talk to me longer but I did not have time to stay",
+"target_text": "ba mhian leis labhairt liom níos faide ach ní raibh am agam fanacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0276L03U11",
+"set": {
+"target_text": "ceapaim go gcaithfidh mé fanacht ach níl mé cinnte go bhfuil an t-am agam le gach rud a dhéanamh"
+},
+"expect": {
+"known_text": "I think I have to stay but I am not sure I have time to get everything done",
+"target_text": "ceapaim go gcaithfidh mé fanacht ach níl mé cinnte go bhfuil am agam le gach rud a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0276L05U14",
+"set": {
+"target_text": "ba mhian liom fanacht beagán níos faide ach ní raibh an t-am agam leis sin a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I wanted to stay a little longer but I did not have time to do that today",
+"target_text": "ba mhian liom fanacht beagán níos faide ach ní raibh am agam leis sin a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0278L02U06",
+"set": {
+"target_text": "ní raibh an t-am agam gach rud a chríochnú"
+},
+"expect": {
+"known_text": "I did not have time to finish everything",
+"target_text": "ní raibh am agam gach rud a chríochnú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L02U01",
+"set": {
+"target_text": "ní raibh an t-am agam aréir ach an miste leat má chríochnaím gach rud anois"
+},
+"expect": {
+"known_text": "I did not have time last night but do you mind if I finish everything now",
+"target_text": "ní raibh am agam aréir ach an miste leat má chríochnaím gach rud anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0282L01U06",
+"set": {
+"target_text": "ní miste ní raibh an t-am agam aréir"
+},
+"expect": {
+"known_text": "no that's fine, I did not have time last night",
+"target_text": "ní miste ní raibh am agam aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0295L02U03",
+"set": {
+"target_text": "cheap mé gur mhian liom gach rud a chríochnú ach ní raibh an t-am agam"
+},
+"expect": {
+"known_text": "I thought that I wanted to finish everything but I did not have time",
+"target_text": "cheap mé gur mhian liom gach rud a chríochnú ach ní raibh am agam"
+}
+}
+]
+}

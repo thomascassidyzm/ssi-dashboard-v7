@@ -1,0 +1,76 @@
+{
+ "seed": 79,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुम्हाला माहित होतं का?",
+     "did you know?"
+    ],
+    "B03": [
+     "तुम्हाला झोप लागली का?",
+     "did you sleep?"
+    ],
+    "U01": [
+     "तुम्ही ते कधी शिकलात?",
+     "when did you learn it?"
+    ],
+    "U02": [
+     "तुम्हाला समजलं का?",
+     "did you understand?"
+    ],
+    "U03": [
+     "मी काय म्हणालो ते तुम्हाला समजलं का?",
+     "did you understand what I said?"
+    ],
+    "U04": [
+     "तुम्हाला नीट झोप लागली का?",
+     "did you sleep very well?"
+    ],
+    "U05": [
+     "तुम्हाला त्याचं नाव सापडलं का?",
+     "did you find his name?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही ते म्हणालात का?",
+     "did you say that?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "पुढच्या आठवड्यात सुरुवात",
+     "start next week"
+    ],
+    "U02": [
+     "मला आज सुरुवात करायची आहे",
+     "I want to start today"
+    ],
+    "U03": [
+     "तुम्हाला कधी सुरुवात करायची आहे?",
+     "when do you want to start?"
+    ],
+    "U04": [
+     "तुम्ही सुरुवात केली का?",
+     "did you start?"
+    ],
+    "U05": [
+     "तुम्हाला समजायला सुरुवात झाली का?",
+     "did you start to understand?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "शिकायला सुरुवात",
+     "start to learn"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

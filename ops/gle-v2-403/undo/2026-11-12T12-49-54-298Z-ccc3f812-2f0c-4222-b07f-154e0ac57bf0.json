@@ -1,0 +1,235 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "ccc3f812-2f0c-4222-b07f-154e0ac57bf0",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:49:54.298Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-49-54-298Z-ccc3f812-2f0c-4222-b07f-154e0ac57bf0.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L02U10",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhfuil",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " aithne",
+            "isGhost": true
+          },
+          {
+            "known": "you",
+            "legoId": "S0214L03",
+            "target": " agat",
+            "isGhost": false
+          },
+          {
+            "known": "an old woman",
+            "legoId": "S0232L02",
+            "target": " ar sheanbean",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "who speak Irish",
+            "legoId": "S0022L03",
+            "target": " a labhraíonn Gaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "all day",
+            "legoId": "S0014L01",
+            "target": " an lá ar fad",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": "?",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L02U09",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I was",
+            "legoId": "S0030L01",
+            "target": "bhí mé",
+            "isGhost": false
+          },
+          {
+            "known": "to think",
+            "legoId": "S0037L02",
+            "target": " ag smaoineamh",
+            "isGhost": false
+          },
+          {
+            "known": "an old woman",
+            "legoId": "S0232L02",
+            "target": " ar sheanbean",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhíodh",
+            "isGhost": true
+          },
+          {
+            "known": "working",
+            "legoId": "S0146L02",
+            "target": " ag obair",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " anseo",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L02U07",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I know",
+            "legoId": "S0232L01",
+            "target": "Tá aithne agam",
+            "isGhost": false
+          },
+          {
+            "known": "an old woman",
+            "legoId": "S0232L02",
+            "target": " ar sheanbean",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " atá",
+            "isGhost": true
+          },
+          {
+            "known": "wanting",
+            "legoId": "S0069L02",
+            "target": " ag iarraidh",
+            "isGhost": false
+          },
+          {
+            "known": "to learn Irish",
+            "legoId": "S0064L02",
+            "target": " Gaeilge a fhoghlaim",
+            "isGhost": false
+          },
+          {
+            "known": "for",
+            "legoId": "S0038L03",
+            "target": " le",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " tamall",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L02U02",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhfuil",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " aithne",
+            "isGhost": true
+          },
+          {
+            "known": "you",
+            "legoId": "S0214L03",
+            "target": " agat",
+            "isGhost": false
+          },
+          {
+            "known": "an old woman",
+            "legoId": "S0232L02",
+            "target": " ar sheanbean",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhíodh",
+            "isGhost": true
+          },
+          {
+            "known": "working",
+            "legoId": "S0146L02",
+            "target": " ag obair",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " anseo?",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    }
+  ]
+}

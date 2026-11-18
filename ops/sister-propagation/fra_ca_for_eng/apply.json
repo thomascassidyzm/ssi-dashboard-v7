@@ -1,0 +1,1752 @@
+[
+ {
+  "batch": 0,
+  "status": 200,
+  "n": 11,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "0ca0a023-a630-460a-9cf3-c3649453bf2a",
+   "results": [
+    {
+     "index": 0,
+     "op": "lego.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "lego_id": "S0605L02"
+     },
+     "before": {
+      "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": "S0605L02",
+      "known_text": "need for help",
+      "target_text": "besoin d'aide",
+      "known_audio_id": "5c1d371e-13e9-48d3-8c6d-ca5b0566f566",
+      "target1_audio_id": "768ef44d-59f8-4c0d-9fe8-844c97e5779d",
+      "target2_audio_id": "9eb369e1-cce4-4599-9777-98d8e64522e9",
+      "presentation_audio_id": "0431ee71-0a0c-4727-a2c5-4473536671eb"
+     },
+     "after": {
+      "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": "S0605L02",
+      "known_text": "need help",
+      "target_text": "besoin d'aide",
+      "known_audio_id": null,
+      "target1_audio_id": "768ef44d-59f8-4c0d-9fe8-844c97e5779d",
+      "target2_audio_id": "9eb369e1-cce4-4599-9777-98d8e64522e9",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "lego_id": "S0605L02"
+     },
+     "before": {
+      "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": "S0605L02",
+      "known_audio_id": null,
+      "known_text": "need help",
+      "target_text": "besoin d'aide",
+      "target1_audio_id": "768ef44d-59f8-4c0d-9fe8-844c97e5779d",
+      "target2_audio_id": "9eb369e1-cce4-4599-9777-98d8e64522e9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": "S0605L02",
+      "known_audio_id": "197626d7-6e70-41f9-af2d-d08dc5d452ed",
+      "known_text": "need help",
+      "target_text": "besoin d'aide",
+      "target1_audio_id": "768ef44d-59f8-4c0d-9fe8-844c97e5779d",
+      "target2_audio_id": "9eb369e1-cce4-4599-9777-98d8e64522e9",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "lego_id": "S0605L02"
+     },
+     "before": {
+      "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": "S0605L02",
+      "presentation_audio_id": null,
+      "known_text": "need help",
+      "target_text": "besoin d'aide",
+      "known_audio_id": "197626d7-6e70-41f9-af2d-d08dc5d452ed",
+      "target1_audio_id": "768ef44d-59f8-4c0d-9fe8-844c97e5779d",
+      "target2_audio_id": "9eb369e1-cce4-4599-9777-98d8e64522e9"
+     },
+     "after": {
+      "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": "S0605L02",
+      "presentation_audio_id": "5bd46d97-ae31-4272-a327-3aee1ef211aa",
+      "known_text": "need help",
+      "target_text": "besoin d'aide",
+      "known_audio_id": "197626d7-6e70-41f9-af2d-d08dc5d452ed",
+      "target1_audio_id": "768ef44d-59f8-4c0d-9fe8-844c97e5779d",
+      "target2_audio_id": "9eb369e1-cce4-4599-9777-98d8e64522e9"
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U01"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "he wants to meet tomorrow",
+      "target_text": "y veut se voir demain",
+      "known_audio_id": "f86ca79d-9393-4a6b-a82d-a261fa30664a",
+      "target1_audio_id": "24d58feb-10f8-4212-b580-ac2c177fa96f",
+      "target2_audio_id": "a27e06b8-6d12-438b-b172-4ff26e79f7de",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "we want to meet tomorrow",
+      "target_text": "on veut se voir demain",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U01"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "we want to meet tomorrow",
+      "target_text": "on veut se voir demain",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "341159a2-dd05-4805-8b8c-cedd8e71a4e2",
+      "known_text": "we want to meet tomorrow",
+      "target_text": "on veut se voir demain",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U01"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "we want to meet tomorrow",
+      "target_text": "on veut se voir demain",
+      "known_audio_id": "341159a2-dd05-4805-8b8c-cedd8e71a4e2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "7e2472a5-07ed-40fb-80c9-85579c7e44dd",
+      "known_text": "we want to meet tomorrow",
+      "target_text": "on veut se voir demain",
+      "known_audio_id": "341159a2-dd05-4805-8b8c-cedd8e71a4e2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U01"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "we want to meet tomorrow",
+      "target_text": "on veut se voir demain",
+      "known_audio_id": "341159a2-dd05-4805-8b8c-cedd8e71a4e2",
+      "target1_audio_id": "7e2472a5-07ed-40fb-80c9-85579c7e44dd",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U01",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "403c8f94-ad68-4f50-a578-911e0273e793",
+      "known_text": "we want to meet tomorrow",
+      "target_text": "on veut se voir demain",
+      "known_audio_id": "341159a2-dd05-4805-8b8c-cedd8e71a4e2",
+      "target1_audio_id": "7e2472a5-07ed-40fb-80c9-85579c7e44dd",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "she wants to meet with everyone else",
+      "target_text": "a veut se voir avec tout le monde",
+      "known_audio_id": "99a51ff9-14f1-444d-bc6d-0fc0f41c3b2f",
+      "target1_audio_id": "4953d2c9-60b7-4ad2-81b4-7fd126a52571",
+      "target2_audio_id": "4199d027-6477-470b-a87a-882fcce658eb",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "we want to meet with everyone",
+      "target_text": "on veut se voir avec tout le monde",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "we want to meet with everyone",
+      "target_text": "on veut se voir avec tout le monde",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "1a52c87d-4f3e-4aef-ad60-36e3d6d47dd2",
+      "known_text": "we want to meet with everyone",
+      "target_text": "on veut se voir avec tout le monde",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "we want to meet with everyone",
+      "target_text": "on veut se voir avec tout le monde",
+      "known_audio_id": "1a52c87d-4f3e-4aef-ad60-36e3d6d47dd2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "57b08f14-313f-4b5b-a6c1-0fd173c6337c",
+      "known_text": "we want to meet with everyone",
+      "target_text": "on veut se voir avec tout le monde",
+      "known_audio_id": "1a52c87d-4f3e-4aef-ad60-36e3d6d47dd2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "we want to meet with everyone",
+      "target_text": "on veut se voir avec tout le monde",
+      "known_audio_id": "1a52c87d-4f3e-4aef-ad60-36e3d6d47dd2",
+      "target1_audio_id": "57b08f14-313f-4b5b-a6c1-0fd173c6337c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "e692e41c-c8f2-4384-a9c6-27cafa80184e",
+      "known_text": "we want to meet with everyone",
+      "target_text": "on veut se voir avec tout le monde",
+      "known_audio_id": "1a52c87d-4f3e-4aef-ad60-36e3d6d47dd2",
+      "target1_audio_id": "57b08f14-313f-4b5b-a6c1-0fd173c6337c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U02",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U02",
+     "set": {
+      "known_text": "she wants to meet with everyone else",
+      "target_text": "a veut se voir avec tout le monde",
+      "known_audio_id": "99a51ff9-14f1-444d-bc6d-0fc0f41c3b2f",
+      "target1_audio_id": "4953d2c9-60b7-4ad2-81b4-7fd126a52571",
+      "target2_audio_id": "4199d027-6477-470b-a87a-882fcce658eb"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U01",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U01",
+     "set": {
+      "known_text": "he wants to meet tomorrow",
+      "target_text": "y veut se voir demain",
+      "known_audio_id": "f86ca79d-9393-4a6b-a82d-a261fa30664a",
+      "target1_audio_id": "24d58feb-10f8-4212-b580-ac2c177fa96f",
+      "target2_audio_id": "a27e06b8-6d12-438b-b172-4ff26e79f7de"
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+     "set": {
+      "presentation_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "e6c1aaac-a37c-4068-bedf-c7a89106f998",
+     "set": {
+      "known_text": "need for help",
+      "known_audio_id": "5c1d371e-13e9-48d3-8c6d-ca5b0566f566",
+      "presentation_audio_id": "0431ee71-0a0c-4727-a2c5-4473536671eb"
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-17-34-409Z-0ca0a023-a630-460a-9cf3-c3649453bf2a.json"
+  }
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "c94915e4-a943-4af5-987d-6ab6b61122e9",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U04"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "he wants to meet later on",
+      "target_text": "y veut se voir tantôt",
+      "known_audio_id": "401b4068-27c4-4cab-9603-85ce5a6c3645",
+      "target1_audio_id": "33e92ac4-450c-44eb-b34a-31427a754e28",
+      "target2_audio_id": "739d1ec2-e377-42f9-9786-18bda566ad41",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "we want to meet later on",
+      "target_text": "on veut se voir tantôt",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U04"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "we want to meet later on",
+      "target_text": "on veut se voir tantôt",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "4cdaaecf-a90f-4172-af22-7b48c773005a",
+      "known_text": "we want to meet later on",
+      "target_text": "on veut se voir tantôt",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U04"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "we want to meet later on",
+      "target_text": "on veut se voir tantôt",
+      "known_audio_id": "4cdaaecf-a90f-4172-af22-7b48c773005a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "76320271-e6e7-4797-b712-7ecbf28a7a96",
+      "known_text": "we want to meet later on",
+      "target_text": "on veut se voir tantôt",
+      "known_audio_id": "4cdaaecf-a90f-4172-af22-7b48c773005a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02U04"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "we want to meet later on",
+      "target_text": "on veut se voir tantôt",
+      "known_audio_id": "4cdaaecf-a90f-4172-af22-7b48c773005a",
+      "target1_audio_id": "76320271-e6e7-4797-b712-7ecbf28a7a96",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L02U04",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "361ff83e-8994-4f7b-8173-32aa85c3d137",
+      "known_text": "we want to meet later on",
+      "target_text": "on veut se voir tantôt",
+      "known_audio_id": "4cdaaecf-a90f-4172-af22-7b48c773005a",
+      "target1_audio_id": "76320271-e6e7-4797-b712-7ecbf28a7a96",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L03U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "he wants to meet at six o'clock tomorrow",
+      "target_text": "y veut se voir à six heures demain",
+      "known_audio_id": "3b1de7c5-7789-4a8c-899f-2ed130a765b6",
+      "target1_audio_id": "dee2beb7-b0d6-493f-83ef-f3312b91b750",
+      "target2_audio_id": "a509e737-b910-439a-9b32-b2182734702f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "we want to meet at six o'clock tomorrow",
+      "target_text": "on veut se voir à six heures demain",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L03U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "we want to meet at six o'clock tomorrow",
+      "target_text": "on veut se voir à six heures demain",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "08097921-ce8d-4b25-a055-fa18538fa28b",
+      "known_text": "we want to meet at six o'clock tomorrow",
+      "target_text": "on veut se voir à six heures demain",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L03U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "we want to meet at six o'clock tomorrow",
+      "target_text": "on veut se voir à six heures demain",
+      "known_audio_id": "08097921-ce8d-4b25-a055-fa18538fa28b",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "1504966d-8e6d-46af-998c-d3086d7cc11f",
+      "known_text": "we want to meet at six o'clock tomorrow",
+      "target_text": "on veut se voir à six heures demain",
+      "known_audio_id": "08097921-ce8d-4b25-a055-fa18538fa28b",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L03U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "we want to meet at six o'clock tomorrow",
+      "target_text": "on veut se voir à six heures demain",
+      "known_audio_id": "08097921-ce8d-4b25-a055-fa18538fa28b",
+      "target1_audio_id": "1504966d-8e6d-46af-998c-d3086d7cc11f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0018L03U02",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "b3279d3c-714c-4b1d-aae0-720839553c81",
+      "known_text": "we want to meet at six o'clock tomorrow",
+      "target_text": "on veut se voir à six heures demain",
+      "known_audio_id": "08097921-ce8d-4b25-a055-fa18538fa28b",
+      "target1_audio_id": "1504966d-8e6d-46af-998c-d3086d7cc11f",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0039L03U03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "he wants to meet this morning",
+      "target_text": "y veut se voir à matin",
+      "known_audio_id": "18a7d724-0063-4254-afa5-53365a1c476c",
+      "target1_audio_id": "c2d4b7df-d933-4565-a2a1-1278e5ca8b86",
+      "target2_audio_id": "015d99ed-7f54-4e0d-964b-af6f6b7c4749",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "we want to meet this morning",
+      "target_text": "on veut se voir à matin",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0039L03U03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "we want to meet this morning",
+      "target_text": "on veut se voir à matin",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "57eec56a-a6e1-4887-9c1f-b186a05b43a1",
+      "known_text": "we want to meet this morning",
+      "target_text": "on veut se voir à matin",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0039L03U03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "we want to meet this morning",
+      "target_text": "on veut se voir à matin",
+      "known_audio_id": "57eec56a-a6e1-4887-9c1f-b186a05b43a1",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "1eeec365-9fb6-4bf1-91ea-1f9bec4d2b6b",
+      "known_text": "we want to meet this morning",
+      "target_text": "on veut se voir à matin",
+      "known_audio_id": "57eec56a-a6e1-4887-9c1f-b186a05b43a1",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0039L03U03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "we want to meet this morning",
+      "target_text": "on veut se voir à matin",
+      "known_audio_id": "57eec56a-a6e1-4887-9c1f-b186a05b43a1",
+      "target1_audio_id": "1eeec365-9fb6-4bf1-91ea-1f9bec4d2b6b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0039L03U03",
+      "seed_number": 39,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "334514cf-a737-4b21-be31-b3568bebd584",
+      "known_text": "we want to meet this morning",
+      "target_text": "on veut se voir à matin",
+      "known_audio_id": "57eec56a-a6e1-4887-9c1f-b186a05b43a1",
+      "target1_audio_id": "1eeec365-9fb6-4bf1-91ea-1f9bec4d2b6b",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0039L03U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0039L03U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0039L03U03",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0039L03U03",
+     "set": {
+      "known_text": "he wants to meet this morning",
+      "target_text": "y veut se voir à matin",
+      "known_audio_id": "18a7d724-0063-4254-afa5-53365a1c476c",
+      "target1_audio_id": "c2d4b7df-d933-4565-a2a1-1278e5ca8b86",
+      "target2_audio_id": "015d99ed-7f54-4e0d-964b-af6f6b7c4749"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L03U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L03U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L03U02",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L03U02",
+     "set": {
+      "known_text": "he wants to meet at six o'clock tomorrow",
+      "target_text": "y veut se voir à six heures demain",
+      "known_audio_id": "3b1de7c5-7789-4a8c-899f-2ed130a765b6",
+      "target1_audio_id": "dee2beb7-b0d6-493f-83ef-f3312b91b750",
+      "target2_audio_id": "a509e737-b910-439a-9b32-b2182734702f"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U04",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0018L02U04",
+     "set": {
+      "known_text": "he wants to meet later on",
+      "target_text": "y veut se voir tantôt",
+      "known_audio_id": "401b4068-27c4-4cab-9603-85ce5a6c3645",
+      "target1_audio_id": "33e92ac4-450c-44eb-b34a-31427a754e28",
+      "target2_audio_id": "739d1ec2-e377-42f9-9786-18bda566ad41"
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-17-40-303Z-c94915e4-a943-4af5-987d-6ab6b61122e9.json"
+  }
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "b87c744d-f6e5-44c6-8311-1dd6c0451daa",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02B01"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02B01",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I have need for help",
+      "target_text": "j'ai besoin d'aide",
+      "known_audio_id": "416b574d-bfb1-4a5b-b457-e67807e536c9",
+      "target1_audio_id": "65675dee-bc34-4ac9-ad47-35cc5e4bcaef",
+      "target2_audio_id": "3bf6d2ed-5811-4ceb-af9d-2de56c1c18a4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02B01",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I need help",
+      "target_text": "j'ai besoin d'aide",
+      "known_audio_id": null,
+      "target1_audio_id": "65675dee-bc34-4ac9-ad47-35cc5e4bcaef",
+      "target2_audio_id": "3bf6d2ed-5811-4ceb-af9d-2de56c1c18a4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02B01"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02B01",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "I need help",
+      "target_text": "j'ai besoin d'aide",
+      "target1_audio_id": "65675dee-bc34-4ac9-ad47-35cc5e4bcaef",
+      "target2_audio_id": "3bf6d2ed-5811-4ceb-af9d-2de56c1c18a4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02B01",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "006dfbc8-0fab-417f-aa72-ff79e53de14a",
+      "known_text": "I need help",
+      "target_text": "j'ai besoin d'aide",
+      "target1_audio_id": "65675dee-bc34-4ac9-ad47-35cc5e4bcaef",
+      "target2_audio_id": "3bf6d2ed-5811-4ceb-af9d-2de56c1c18a4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02B02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02B02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "she has need for help",
+      "target_text": "a besoin d'aide",
+      "known_audio_id": "c5bde1da-c94b-463e-8301-39f6e0802781",
+      "target1_audio_id": "7d16c9e0-d0e3-4af3-9fb7-552d48660c90",
+      "target2_audio_id": "d81ced7c-bb51-486c-a739-696cf7b15ef3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02B02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "she needs help",
+      "target_text": "a besoin d'aide",
+      "known_audio_id": null,
+      "target1_audio_id": "7d16c9e0-d0e3-4af3-9fb7-552d48660c90",
+      "target2_audio_id": "d81ced7c-bb51-486c-a739-696cf7b15ef3",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02B02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02B02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "she needs help",
+      "target_text": "a besoin d'aide",
+      "target1_audio_id": "7d16c9e0-d0e3-4af3-9fb7-552d48660c90",
+      "target2_audio_id": "d81ced7c-bb51-486c-a739-696cf7b15ef3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02B02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "cb3e5621-02a8-4e82-994e-a72ba96d8db7",
+      "known_text": "she needs help",
+      "target_text": "a besoin d'aide",
+      "target1_audio_id": "7d16c9e0-d0e3-4af3-9fb7-552d48660c90",
+      "target2_audio_id": "d81ced7c-bb51-486c-a739-696cf7b15ef3",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I have need for help right now",
+      "target_text": "j'ai besoin d'aide tout de suite",
+      "known_audio_id": "f999f19c-b6a2-4007-b640-cda5309aab21",
+      "target1_audio_id": "746cc553-f680-41a3-9128-7c6de06f0692",
+      "target2_audio_id": "0d543cfc-8859-4077-9281-e5a2c7fd3bd7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I need help right now",
+      "target_text": "j'ai besoin d'aide tout de suite",
+      "known_audio_id": null,
+      "target1_audio_id": "746cc553-f680-41a3-9128-7c6de06f0692",
+      "target2_audio_id": "0d543cfc-8859-4077-9281-e5a2c7fd3bd7",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "I need help right now",
+      "target_text": "j'ai besoin d'aide tout de suite",
+      "target1_audio_id": "746cc553-f680-41a3-9128-7c6de06f0692",
+      "target2_audio_id": "0d543cfc-8859-4077-9281-e5a2c7fd3bd7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U02",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "fe3c9f1a-23c4-4c40-9218-51f37d4098b1",
+      "known_text": "I need help right now",
+      "target_text": "j'ai besoin d'aide tout de suite",
+      "target1_audio_id": "746cc553-f680-41a3-9128-7c6de06f0692",
+      "target2_audio_id": "0d543cfc-8859-4077-9281-e5a2c7fd3bd7",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U03",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "maybe she has need for help",
+      "target_text": "peut-être qu'a besoin d'aide",
+      "known_audio_id": "798116bb-57b6-4517-977c-e0578c4bc32c",
+      "target1_audio_id": "c75f2414-fc66-456c-94e0-b5a366880c0e",
+      "target2_audio_id": "1065ebd8-002f-4ed7-b1b3-4668a8b3c765",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U03",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "maybe she needs help",
+      "target_text": "peut-être qu'a besoin d'aide",
+      "known_audio_id": null,
+      "target1_audio_id": "c75f2414-fc66-456c-94e0-b5a366880c0e",
+      "target2_audio_id": "1065ebd8-002f-4ed7-b1b3-4668a8b3c765",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U03",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "maybe she needs help",
+      "target_text": "peut-être qu'a besoin d'aide",
+      "target1_audio_id": "c75f2414-fc66-456c-94e0-b5a366880c0e",
+      "target2_audio_id": "1065ebd8-002f-4ed7-b1b3-4668a8b3c765",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U03",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "ff659a3f-1fe4-4200-900c-ca8e854b6e1e",
+      "known_text": "maybe she needs help",
+      "target_text": "peut-être qu'a besoin d'aide",
+      "target1_audio_id": "c75f2414-fc66-456c-94e0-b5a366880c0e",
+      "target2_audio_id": "1065ebd8-002f-4ed7-b1b3-4668a8b3c765",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U04"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U04",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I heard that she has need for help",
+      "target_text": "j'ai entendu qu'a besoin d'aide",
+      "known_audio_id": "23939bc3-2f68-4866-bb1a-246128be4053",
+      "target1_audio_id": "8c5d7b78-5b43-4ea6-a931-fd9ffb262dfe",
+      "target2_audio_id": "41753d5f-841b-492c-9ca3-15f812317d7c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U04",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I heard that she needs help",
+      "target_text": "j'ai entendu qu'a besoin d'aide",
+      "known_audio_id": null,
+      "target1_audio_id": "8c5d7b78-5b43-4ea6-a931-fd9ffb262dfe",
+      "target2_audio_id": "41753d5f-841b-492c-9ca3-15f812317d7c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U04"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U04",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "I heard that she needs help",
+      "target_text": "j'ai entendu qu'a besoin d'aide",
+      "target1_audio_id": "8c5d7b78-5b43-4ea6-a931-fd9ffb262dfe",
+      "target2_audio_id": "41753d5f-841b-492c-9ca3-15f812317d7c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U04",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "e486f38f-1ee4-45b4-b7cd-c8a35c597de5",
+      "known_text": "I heard that she needs help",
+      "target_text": "j'ai entendu qu'a besoin d'aide",
+      "target1_audio_id": "8c5d7b78-5b43-4ea6-a931-fd9ffb262dfe",
+      "target2_audio_id": "41753d5f-841b-492c-9ca3-15f812317d7c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U05"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U05",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I have need for help again",
+      "target_text": "j'ai besoin d'aide encore",
+      "known_audio_id": "c8da5c83-be41-4853-b43f-94cda6d7169f",
+      "target1_audio_id": "3d9601ce-e001-42cc-b322-3741da5f8a35",
+      "target2_audio_id": "cea27e58-27e1-48b5-ba53-25338044ea4e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U05",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I need help again",
+      "target_text": "j'ai besoin d'aide encore",
+      "known_audio_id": null,
+      "target1_audio_id": "3d9601ce-e001-42cc-b322-3741da5f8a35",
+      "target2_audio_id": "cea27e58-27e1-48b5-ba53-25338044ea4e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0605L02U05"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0605L02U05",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "I need help again",
+      "target_text": "j'ai besoin d'aide encore",
+      "target1_audio_id": "3d9601ce-e001-42cc-b322-3741da5f8a35",
+      "target2_audio_id": "cea27e58-27e1-48b5-ba53-25338044ea4e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "fra_ca_for_eng:S0605L02U05",
+      "seed_number": 605,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "a5e642d8-a252-47e9-a039-2831bf2ce9e4",
+      "known_text": "I need help again",
+      "target_text": "j'ai besoin d'aide encore",
+      "target1_audio_id": "3d9601ce-e001-42cc-b322-3741da5f8a35",
+      "target2_audio_id": "cea27e58-27e1-48b5-ba53-25338044ea4e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U05",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U05",
+     "set": {
+      "known_text": "I have need for help again",
+      "known_audio_id": "c8da5c83-be41-4853-b43f-94cda6d7169f"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U04",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U04",
+     "set": {
+      "known_text": "I heard that she has need for help",
+      "known_audio_id": "23939bc3-2f68-4866-bb1a-246128be4053"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U03",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U03",
+     "set": {
+      "known_text": "maybe she has need for help",
+      "known_audio_id": "798116bb-57b6-4517-977c-e0578c4bc32c"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U02",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02U02",
+     "set": {
+      "known_text": "I have need for help right now",
+      "known_audio_id": "f999f19c-b6a2-4007-b640-cda5309aab21"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02B02",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02B02",
+     "set": {
+      "known_text": "she has need for help",
+      "known_audio_id": "c5bde1da-c94b-463e-8301-39f6e0802781"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02B01",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "fra_ca_for_eng:S0605L02B01",
+     "set": {
+      "known_text": "I have need for help",
+      "known_audio_id": "416b574d-bfb1-4a5b-b457-e67807e536c9"
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-17-45-298Z-b87c744d-f6e5-44c6-8311-1dd6c0451daa.json"
+  }
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "n": 4,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "303cd44e-ef7e-493d-b674-bfacb138c580",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.delete",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02B02"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02B02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "he wants to meet",
+      "target_text": "y veut se voir",
+      "known_audio_id": "754f7d16-56fb-4837-98f0-8bae04962815",
+      "target1_audio_id": "ca755d40-fe3c-4b40-9d55-85202a66faf1",
+      "target2_audio_id": "b63739c5-050a-4bb4-b519-a972d008eb9b",
+      "presentation_audio_id": null
+     },
+     "after": null,
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "phrase.delete",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L02B03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L02B03",
+      "seed_number": 18,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "she wants to meet",
+      "target_text": "a veut se voir",
+      "known_audio_id": "717d6278-bbdc-4842-a57f-5decd2ef3fb1",
+      "target1_audio_id": "b60da82f-da65-484c-9cdd-64b5c691d73c",
+      "target2_audio_id": "d98a6a27-38ac-4116-8ed6-96424d06ca31",
+      "presentation_audio_id": null
+     },
+     "after": null,
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "phrase.delete",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0018L03B03"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0018L03B03",
+      "seed_number": 18,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "he wants to meet at six o'clock",
+      "target_text": "y veut se voir à six heures",
+      "known_audio_id": "c820b1f2-725f-4893-b57a-c8198aa704a8",
+      "target1_audio_id": "4084dd0b-2518-4625-a814-6bd50b5bbee7",
+      "target2_audio_id": "8cb59a41-7ea8-446d-ba6f-9786d0332e70",
+      "presentation_audio_id": null
+     },
+     "after": null,
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.delete",
+     "key": {
+      "course_code": "fra_ca_for_eng",
+      "id": "fra_ca_for_eng:S0040L02U04"
+     },
+     "before": {
+      "id": "fra_ca_for_eng:S0040L02U04",
+      "seed_number": 40,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "he wants to meet at the moment",
+      "target_text": "y veut se voir asteure",
+      "known_audio_id": "879b833c-a71a-4fe4-ac1f-18af991a5fba",
+      "target1_audio_id": "879f9ded-7a1f-4b8d-ab05-9b95f3ac1be4",
+      "target2_audio_id": "3959ad14-ded1-4530-881f-bfe82631e256",
+      "presentation_audio_id": null
+     },
+     "after": null,
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_ca_for_eng:S0040L02U04",
+      "seed_number": 40,
+      "lego_index": 2,
+      "position": 7,
+      "known_text": "he wants to meet at the moment",
+      "target_text": "y veut se voir asteure",
+      "word_count": 22,
+      "lego_count": 7,
+      "difficulty": null,
+      "register": null,
+      "metadata": {
+       "score": 7,
+       "format": "build_use",
+       "scored_at": "2026-07-16T12:37:02.175Z"
+      },
+      "status": "draft",
+      "release_batch": null,
+      "created_at": "2026-07-16T12:37:02.300Z",
+      "target_syllable_count": null,
+      "phrase_role": "use",
+      "connected_lego_ids": [],
+      "lego_position": "end",
+      "known_audio_id": "879b833c-a71a-4fe4-ac1f-18af991a5fba",
+      "target1_audio_id": "879f9ded-7a1f-4b8d-ab05-9b95f3ac1be4",
+      "target2_audio_id": "3959ad14-ded1-4530-881f-bfe82631e256",
+      "qa_checked": null,
+      "target1_duration_ms": 2664,
+      "target2_duration_ms": 2736,
+      "lego_id": null,
+      "target_text_roman": null,
+      "target_phrase_id": null,
+      "presentation_audio_id": null,
+      "introduce": true,
+      "decomposition": null,
+      "decomposition_course_version": null,
+      "display_tiling": null,
+      "display_tiling_version": null,
+      "known_gloss_segments": null,
+      "frame_mask": null
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_ca_for_eng:S0018L03B03",
+      "seed_number": 18,
+      "lego_index": 3,
+      "position": 6,
+      "known_text": "he wants to meet at six o'clock",
+      "target_text": "y veut se voir à six heures",
+      "word_count": 27,
+      "lego_count": 7,
+      "difficulty": null,
+      "register": null,
+      "metadata": {
+       "format": "build_use"
+      },
+      "status": "draft",
+      "release_batch": null,
+      "created_at": "2026-07-16T12:15:38.766Z",
+      "target_syllable_count": null,
+      "phrase_role": "build",
+      "connected_lego_ids": [],
+      "lego_position": "end",
+      "known_audio_id": "c820b1f2-725f-4893-b57a-c8198aa704a8",
+      "target1_audio_id": "4084dd0b-2518-4625-a814-6bd50b5bbee7",
+      "target2_audio_id": "8cb59a41-7ea8-446d-ba6f-9786d0332e70",
+      "qa_checked": null,
+      "target1_duration_ms": 2880,
+      "target2_duration_ms": 2952,
+      "lego_id": null,
+      "target_text_roman": null,
+      "target_phrase_id": null,
+      "presentation_audio_id": null,
+      "introduce": true,
+      "decomposition": null,
+      "decomposition_course_version": null,
+      "display_tiling": null,
+      "display_tiling_version": null,
+      "known_gloss_segments": null,
+      "frame_mask": null
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_ca_for_eng:S0018L02B03",
+      "seed_number": 18,
+      "lego_index": 2,
+      "position": 3,
+      "known_text": "she wants to meet",
+      "target_text": "a veut se voir",
+      "word_count": 14,
+      "lego_count": 4,
+      "difficulty": null,
+      "register": null,
+      "metadata": {
+       "format": "build_use"
+      },
+      "status": "draft",
+      "release_batch": null,
+      "created_at": "2026-07-16T12:15:38.663Z",
+      "target_syllable_count": null,
+      "phrase_role": "build",
+      "connected_lego_ids": [],
+      "lego_position": "end",
+      "known_audio_id": "717d6278-bbdc-4842-a57f-5decd2ef3fb1",
+      "target1_audio_id": "b60da82f-da65-484c-9cdd-64b5c691d73c",
+      "target2_audio_id": "d98a6a27-38ac-4116-8ed6-96424d06ca31",
+      "qa_checked": null,
+      "target1_duration_ms": 2328,
+      "target2_duration_ms": 2304,
+      "lego_id": null,
+      "target_text_roman": null,
+      "target_phrase_id": null,
+      "presentation_audio_id": null,
+      "introduce": true,
+      "decomposition": null,
+      "decomposition_course_version": null,
+      "display_tiling": null,
+      "display_tiling_version": null,
+      "known_gloss_segments": null,
+      "frame_mask": null
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "fra_ca_for_eng:S0018L02B02",
+      "seed_number": 18,
+      "lego_index": 2,
+      "position": 2,
+      "known_text": "he wants to meet",
+      "target_text": "y veut se voir",
+      "word_count": 14,
+      "lego_count": 4,
+      "difficulty": null,
+      "register": null,
+      "metadata": {
+       "format": "build_use"
+      },
+      "status": "draft",
+      "release_batch": null,
+      "created_at": "2026-07-16T12:15:38.663Z",
+      "target_syllable_count": null,
+      "phrase_role": "build",
+      "connected_lego_ids": [],
+      "lego_position": "end",
+      "known_audio_id": "754f7d16-56fb-4837-98f0-8bae04962815",
+      "target1_audio_id": "ca755d40-fe3c-4b40-9d55-85202a66faf1",
+      "target2_audio_id": "b63739c5-050a-4bb4-b519-a972d008eb9b",
+      "qa_checked": null,
+      "target1_duration_ms": 2304,
+      "target2_duration_ms": 2328,
+      "lego_id": null,
+      "target_text_roman": null,
+      "target_phrase_id": null,
+      "presentation_audio_id": null,
+      "introduce": true,
+      "decomposition": null,
+      "decomposition_course_version": null,
+      "display_tiling": null,
+      "display_tiling_version": null,
+      "known_gloss_segments": null,
+      "frame_mask": null
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-17-46-621Z-303cd44e-ef7e-493d-b674-bfacb138c580.json"
+  }
+ }
+]

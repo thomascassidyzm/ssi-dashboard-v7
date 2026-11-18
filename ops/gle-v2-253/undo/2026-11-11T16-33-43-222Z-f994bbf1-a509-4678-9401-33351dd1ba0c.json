@@ -1,0 +1,467 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "f994bbf1-a509-4678-9401-33351dd1ba0c",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:33:43.222Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-33-43-222Z-f994bbf1-a509-4678-9401-33351dd1ba0c.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U15",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U13",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U12",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U11",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus cheap mé go raibh do smaoineamh an-mhaith nuair a chuala mé uait é an tráthnóna sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U10",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U09",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge fós mar is maith liom ag foghlaim na teanga seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U08",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo agus ba mhian liom labhairt leat faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U07",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim gur smaoineamh maith é sin bualadh le chéile ar a sé a chlog tráthnóna"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U06",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U05",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U04",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar thosaigh mé ag smaoineamh air go cúramach an mhí seo caite agus ba mhian liom labhairt faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U03",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus is mian liom a mhíniú cad atá i gceist agam mar ceapaim gur rud maith é botúin a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U02",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar creidim go raibh do smaoineamh an-mhaith agus ba mhian liom labhairt faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U01",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a dúirt tú liom cad a bhí tú ag smaoineamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B06",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil sula n-imíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B04",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B03",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B01",
+      "set": {
+        "target_text": "an chúis ar mhian liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U15",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus tá mé ag baint taitnimh as an teanga seo gach lá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U14",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ba mhian liom a rá leat go raibh mé ag smaoineamh gur smaoineamh maith é sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U13",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus níl sé éasca Gaeilge a fhoghlaim ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U11",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U10",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U09",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U08",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo atá muid ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U07",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U06",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U05",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U04",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus ceapaim gur rud maith é mar sin é an chúis nach raibh an freagra ar eolas aige agus tá sé an-suimiúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U02",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U01",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a chuala mé cad a dúirt tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B06",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B05",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom labhairt leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B04",
+      "set": {
+        "target_text": "Ní hé sin an chúis"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U07",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an chúis ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U08",
+      "set": {
+        "target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an chúis ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L05U02",
+      "set": {
+        "target_text": "sin é an chúis nach raibh an freagra ar eolas aige"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U08",
+      "set": {
+        "target_text": "níl a fhios agam an chúis ach ceapaim nach bhfuil sé ar eolas fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U01",
+      "set": {
+        "target_text": "sin é an chúis nach bhfuil sé ar eolas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U06",
+      "set": {
+        "target_text": "faraor sin é an chúis nach bhfuil a fhios agam an freagra"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U05",
+      "set": {
+        "target_text": "caithfidh muid athrú agus sin é an chúis a n-oibreoidh sé"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U04",
+      "set": {
+        "target_text": "bainim taitneamh as Gaeilge a fhoghlaim agus sin é an chúis nach bhfuil sé deacair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U03",
+      "set": {
+        "target_text": "sin é an chúis nach miste leat Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U02",
+      "set": {
+        "target_text": "sin é an chúis a dúirt tú go raibh míle maith agat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U01",
+      "set": {
+        "target_text": "sin é an chúis nach bhfuil sé éasca Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B04",
+      "set": {
+        "target_text": "sin é an chúis a n-oibreoidh sé anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B03",
+      "set": {
+        "target_text": "aontaím agus sin é an chúis"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B02",
+      "set": {
+        "target_text": "ach sin é an chúis"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B01",
+      "set": {
+        "target_text": "sin é an chúis nach bhfuil sé ag obair"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "122061f0-b6d2-4a8c-b815-76cfa51c970b",
+      "set": {
+        "target_text": "nach bhfuil rud ar bith ag feidhmiú",
+        "components": [
+          {
+            "known": "that is not",
+            "target": "nach bhfuil"
+          },
+          {
+            "known": "anything",
+            "target": "rud ar bith"
+          },
+          {
+            "known": "working",
+            "target": "ag feidhmiú"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b7163fd2-4c0d-4599-96fd-f2eb21707f02",
+      "set": {
+        "target_text": "an chúis ar mhian liom",
+        "components": [
+          {
+            "known": "the reason",
+            "target": "an chúis"
+          },
+          {
+            "known": "that I wanted",
+            "target": "ar mhian liom"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b13deab8-139c-413b-85e1-b8a34bd942ba",
+      "set": {
+        "target_text": "sin é an chúis",
+        "components": [
+          {
+            "known": "that",
+            "target": "Sin"
+          },
+          {
+            "known": "it",
+            "target": "é"
+          },
+          {
+            "known": "the reason",
+            "target": "an chúis"
+          }
+        ]
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 659,
+      "set": {
+        "target_text": "Arbh fhéidir libh ar fad é sin a rá?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 562,
+      "set": {
+        "target_text": "Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 434,
+      "set": {
+        "target_text": "Arbh fhéidir leo líon na mac léinn a ghlacann siad leo a laghdú?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 433,
+      "set": {
+        "target_text": "Níorbh fhéidir leo a fháil amach cathain a thosaigh an scannán"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 371,
+      "set": {
+        "target_text": "chuaigh mé chun scannán a fheiceáil ar an gCéadaoin"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 146,
+      "set": {
+        "target_text": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú ó rinne muid iarracht é a dheisiú"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 127,
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 105,
+      "set": {
+        "target_text": "sin é an chúis nach raibh an freagra ar eolas aige"
+      }
+    }
+  ]
+}

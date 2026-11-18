@@ -803,12 +803,15 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles, opts = {}) {
   const effectiveSpeed = getEffectiveSpeed(voiceConfig, cadence, cadenceProfiles);
 
   if (provider === 'elevenlabs') {
+    // The cast voice's model + stability (job #76·AA). `??`-style: a stability of 0 the config names is honoured.
+    const cast = require('./shared/course-voice-config.cjs').elevenLabsCastSettings(voiceConfig);
     return {
       provider: 'elevenlabs',
       apiKey: process.env.ELEVENLABS_API_KEY,
       voiceId: voiceConfig.voiceId,
-      stability: voiceConfig.settings?.stability || 0.5,
-      similarityBoost: voiceConfig.settings?.similarityBoost || 0.75,
+      stability: cast.stability ?? 0.5,
+      similarityBoost: cast.similarityBoost ?? 0.75,
+      ...(cast.modelId ? { modelId: cast.modelId } : {}),
       speed: effectiveSpeed
     };
   }

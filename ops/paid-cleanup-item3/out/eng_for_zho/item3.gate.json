@@ -1,0 +1,449 @@
+{
+ "course": "eng_for_zho",
+ "plan": "item3.tsv",
+ "at": "2026-11-18T13:14:23.891Z",
+ "rows": [
+  {
+   "id": "S0028L03U03",
+   "role": "use",
+   "target": "It's useful to start talking as soon as you can",
+   "old": "是有用的尽快开始说话",
+   "new": "尽快开始说话是有用的",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0034L05U02",
+   "role": "use",
+   "target": "He doesn't want to be quiet when other people are here",
+   "old": "他不想安静的时候其他人在这里",
+   "new": "他不想在别人在的时候保持安静",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"He doesn't want to be quiet when other people are here\",\"unknown\":\"when\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0044L01U06",
+   "role": "use",
+   "target": "Do you want to start now or later on?",
+   "old": "你想现在开始或者晚一点",
+   "new": "你想现在开始还是晚一点开始？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0052L01U05",
+   "role": "use",
+   "target": "Do you want to write or do you want to say something?",
+   "old": "你想写吗或者你想说一些东西",
+   "new": "你想写，还是想说一些东西？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0064L02B04",
+   "role": "build",
+   "target": "Isn't easy but it is fun to try",
+   "old": "学起来不容易但很有趣",
+   "new": "不容易，但是试一试很有趣",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L01U01",
+   "role": "use",
+   "target": "It's not difficult to speak a little English",
+   "old": "同时做所有事情很难",
+   "new": "说一点英语不难",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L02B04",
+   "role": "build",
+   "target": "Not difficult to find the answer quickly",
+   "old": "今天找到答案不难",
+   "new": "很快找到答案不难",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0067L01U02",
+   "role": "use",
+   "target": "Why do you want to stop learning English?",
+   "old": "你为什么现在想停下来",
+   "new": "你为什么想停止学英语？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0067L01U03",
+   "role": "use",
+   "target": "Why do you want to stop speaking with me?",
+   "old": "你为什么想停止学习",
+   "new": "你为什么想停止和我说话？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0068L01U01",
+   "role": "use",
+   "target": "I'm looking for something",
+   "old": "我在找有趣的事情做",
+   "new": "我在找一些东西",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L01U01",
+   "role": "use",
+   "target": "She wants to look after you",
+   "old": "我不确定我是否想照顾你",
+   "new": "她想照顾你",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L02U03",
+   "role": "use",
+   "target": "I don't want to look after the young dog all afternoon",
+   "old": "想整个下午都照看那只小狗",
+   "new": "我不要整个下午都照顾那只小狗",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0069L02U04",
+   "role": "use",
+   "target": "I didn't want to look after the young dog all afternoon",
+   "old": "需要整个下午都照看那只小狗",
+   "new": "我不想整个下午都照顾那只小狗",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L01U01",
+   "role": "use",
+   "target": "I want to tell you something",
+   "old": "我不确定我想告诉你什么",
+   "new": "我想告诉你一些事",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L02B04",
+   "role": "build",
+   "target": "Need to tell me where it was",
+   "old": "想告诉我它在哪里",
+   "new": "需要告诉我它在哪里",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L01U01",
+   "role": "use",
+   "target": "I want to hear the answer",
+   "old": "我不确定我是否想听这个故事",
+   "new": "我想听答案",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L02U01",
+   "role": "use",
+   "target": "We didn't want to let anyone hear the truth",
+   "old": "现在让任何人听到这个真相",
+   "new": "我们不想让任何人听到真相",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L02U04",
+   "role": "use",
+   "target": "Do you want to let anyone hear the truth?",
+   "old": "想让任何人听到这个真相",
+   "new": "你想让任何人听到真相吗？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L02U05",
+   "role": "use",
+   "target": "I'm not sure if we want to let anyone hear the truth",
+   "old": "现在让任何人听到这个真相",
+   "new": "我不确定我们想不想让任何人听到真相",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0072L01B04",
+   "role": "build",
+   "target": "You're doing very well with English",
+   "old": "你现在表现得很好",
+   "new": "你的英语做得很好",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U02",
+   "role": "use",
+   "target": "I know I've got more to learn",
+   "old": "我今天还有更多要学",
+   "new": "我知道我还有更多要学的",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U03",
+   "role": "use",
+   "target": "I've got more to learn and it's not easy",
+   "old": "在明天之前我还有更多要学",
+   "new": "我还有更多要学的，而且不容易",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U04",
+   "role": "use",
+   "target": "I've got more to learn and it's important",
+   "old": "下周我还有更多要学",
+   "new": "我还有更多要学的，而且这很重要",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0075L01B01",
+   "role": "build",
+   "target": "Have you got more to learn?",
+   "old": "你还有更多要学的",
+   "new": "你还有更多要学的吗？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0075L01U05",
+   "role": "use",
+   "target": "Have you got more to learn or are you ready?",
+   "old": "你还有更多要学，还是已经准备好了",
+   "new": "你还有更多要学的，还是准备好了？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0119L01B01",
+   "role": "build",
+   "target": "Can I ask you?",
+   "old": "我能问你",
+   "new": "我能问你吗？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0150L01B01",
+   "role": "build",
+   "target": "Can you tell me?",
+   "old": "你能告诉我",
+   "new": "你能告诉我吗？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0150L02B02",
+   "role": "build",
+   "target": "What your name is now?",
+   "old": "你的名字是什么现在",
+   "new": "你现在叫什么名字？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0150L02B03",
+   "role": "build",
+   "target": "What your name is here?",
+   "old": "你叫什么名字在这里",
+   "new": "你在这里叫什么名字？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0161L01B01",
+   "role": "build",
+   "target": "Can you give me that book?",
+   "old": "能把那本书给我",
+   "new": "你能把那本书给我吗？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0182L01B01",
+   "role": "build",
+   "target": "Have you seen?",
+   "old": "看到过",
+   "new": "你有没有看到过？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0196L01B01",
+   "role": "build",
+   "target": "Have you heard?",
+   "old": "听说",
+   "new": "你有没有听说？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  }
+ ],
+ "seeds": {
+  "28": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "34": {
+   "before": [
+    "Tiling: Seed target contains vocabulary not covered by LEGOs: [when]",
+    "L2: 4 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 1 (4 component phrases excluded)",
+    "L2: vocab violations in 8 phrase(s)",
+    "L3: vocab violations in 3 phrase(s)",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: vocab violations in 2 phrase(s)"
+   ],
+   "after": [
+    "Tiling: Seed target contains vocabulary not covered by LEGOs: [when]",
+    "L2: 4 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 1 (4 component phrases excluded)",
+    "L2: vocab violations in 8 phrase(s)",
+    "L3: vocab violations in 3 phrase(s)",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: vocab violations in 2 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "44": {
+   "before": [
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "52": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "64": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "66": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "67": {
+   "before": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: USE: need 5+, got 4 (1 component phrases excluded)",
+    "L1: vocab violations in 2 phrase(s)"
+   ],
+   "after": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: USE: need 5+, got 4 (1 component phrases excluded)",
+    "L1: vocab violations in 2 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "68": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "69": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "70": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "71": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "72": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "73": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "75": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "119": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "150": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "161": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "182": {
+   "before": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "newFailures": []
+  },
+  "196": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  }
+ }
+}

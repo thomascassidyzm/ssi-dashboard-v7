@@ -1,0 +1,1380 @@
+{
+ "phr": [
+  {
+   "id": "S0633L01B02",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "with a large cup",
+    "target": "교회가 큰 컵으로"
+   }
+  },
+  {
+   "id": "S0633L01B03",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "in a large glass",
+    "target": "큰 컵으로"
+   }
+  },
+  {
+   "id": "S0633L01U02",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "together they used a large cup",
+    "target": "같이 큰 컵으로 있었어요"
+   }
+  },
+  {
+   "id": "S0633L01U04",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "still she wants a large cup of water",
+    "target": "아직도 큰 컵으로 물 있었어요"
+   }
+  },
+  {
+   "id": "S0633L01U03",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "the family had a large cup",
+    "target": "가족이 큰 컵으로 있었어요"
+   }
+  },
+  {
+   "id": "S0633L01U06",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "we each had a large cup",
+    "target": "우리는 큰 컵으로 있었어요"
+   }
+  },
+  {
+   "id": "S0633L01U05",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "he offered a large cup",
+    "target": "그는 큰 컵으로 있었어요"
+   }
+  },
+  {
+   "id": "S0633L01U01",
+   "op": "delete",
+   "lego": "S0633L01",
+   "before": {
+    "known": "she wants a large cup",
+    "target": "큰 컵으로 있어요"
+   }
+  },
+  {
+   "id": "S0633L02B01",
+   "op": "update",
+   "lego": "S0633L02",
+   "known": "a glass of water would be fine",
+   "target": "물 한 잔이면 괜찮아요",
+   "decomposition": [
+    {
+     "legoId": "S0633L02",
+     "target": "물 한 잔이면 괜찮아요",
+     "known": "a glass of water would be fine",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "if one glass",
+    "target": "한 잔이면"
+   }
+  },
+  {
+   "id": "S0633L02B03",
+   "op": "delete",
+   "lego": "S0633L02",
+   "before": {
+    "known": "a large cup one glass",
+    "target": "큰 컵으로 물 한 잔이면"
+   }
+  },
+  {
+   "id": "S0633L02B02",
+   "op": "update",
+   "lego": "S0633L02",
+   "known": "a large glass of water would be fine",
+   "target": "큰 컵으로 물 한 잔이면 괜찮아요",
+   "decomposition": [
+    {
+     "legoId": "S0633L01",
+     "target": "큰 컵으로",
+     "known": "a large glass",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0633L02",
+     "target": " 물 한 잔이면 괜찮아요",
+     "known": "a glass of water would be fine",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "if a glass of water",
+    "target": "물 한 잔이면"
+   }
+  },
+  {
+   "id": "S0633L02U06",
+   "op": "delete",
+   "lego": "S0633L02",
+   "before": {
+    "known": "if a large glass of water would be fine",
+    "target": "큰 컵으로 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L02U02",
+   "op": "update",
+   "lego": "S0633L02",
+   "known": "so a glass of water would be fine",
+   "target": "그래서 물 한 잔이면 괜찮아요",
+   "decomposition": [
+    {
+     "legoId": "S0056L01",
+     "target": "그래서",
+     "known": "so",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0633L02",
+     "target": " 물 한 잔이면 괜찮아요",
+     "known": "a glass of water would be fine",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "so if a large glass would be fine",
+    "target": "그래서 큰 컵으로 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L02U03",
+   "op": "delete",
+   "lego": "S0633L02",
+   "before": {
+    "known": "together if a glass of water",
+    "target": "같이 물 한 잔이면 있었어요"
+   }
+  },
+  {
+   "id": "S0633L02U05",
+   "op": "delete",
+   "lego": "S0633L02",
+   "before": {
+    "known": "if the family had a glass of water",
+    "target": "가족이 물 한 잔이면 있었어요"
+   }
+  },
+  {
+   "id": "S0633L02U04",
+   "op": "update",
+   "lego": "S0633L02",
+   "known": "yes, a glass of water would be fine",
+   "target": "네 물 한 잔이면 괜찮아요",
+   "decomposition": [
+    {
+     "legoId": "S0097L01",
+     "target": "네",
+     "known": "yes",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0633L02",
+     "target": " 물 한 잔이면 괜찮아요",
+     "known": "a glass of water would be fine",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "still a glass of water would be fine",
+    "target": "아직도 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L02U01",
+   "op": "update",
+   "lego": "S0633L02",
+   "known": "a large glass of water would be fine",
+   "target": "큰 컵으로 물 한 잔이면 괜찮아요",
+   "decomposition": [
+    {
+     "legoId": "S0633L01",
+     "target": "큰 컵으로",
+     "known": "a large glass",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0633L02",
+     "target": " 물 한 잔이면 괜찮아요",
+     "known": "a glass of water would be fine",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "if a glass of water would be fine",
+    "target": "물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03B01",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "would be great",
+    "target": "좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03B03",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "she said it would be fine",
+    "target": "그녀가 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03B02",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "a glass of water would be fine",
+    "target": "물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03U05",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "the family thinks a glass of water would be fine",
+    "target": "가족이 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03U01",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "a large glass of water would be fine",
+    "target": "큰 컵으로 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03U02",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "so a glass of water would be fine",
+    "target": "그래서 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03U06",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "he thinks a large cup of water would be fine",
+    "target": "그는 큰 컵으로 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03U04",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "still a large cup of water would be fine",
+    "target": "아직도 큰 컵으로 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0633L03U03",
+   "op": "cascade",
+   "lego": "S0633L03",
+   "before": {
+    "known": "together a glass of water would be fine",
+    "target": "같이 물 한 잔이면 좋겠어요"
+   }
+  },
+  {
+   "id": "S0656L01B02",
+   "op": "update",
+   "lego": "S0656L01",
+   "known": "with you all",
+   "target": "여러분과 같이",
+   "decomposition": [
+    {
+     "legoId": "S0656L01",
+     "target": "여러분과",
+     "known": "you all",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0001L03",
+     "target": " 같이",
+     "known": "together",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "with everyone",
+    "target": "여러분과 함께"
+   }
+  },
+  {
+   "id": "S0656L01U23",
+   "op": "update",
+   "lego": "S0656L01",
+   "known": "we should discuss the problem with you all",
+   "target": "우리는 여러분과 그 문제를 논의해야 해요",
+   "decomposition": [
+    {
+     "legoId": "S0018L01",
+     "target": "우리는",
+     "known": "we",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0656L01",
+     "target": " 여러분과",
+     "known": "you all",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " 그",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0325L01",
+     "target": " 문제를",
+     "known": "problems",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " 논의해야",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0002L01",
+     "target": " 해요",
+     "known": "do",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "we should discuss the problem with you all",
+    "target": "우리는 여러분과 그 문제를 의논해야 해요"
+   }
+  },
+  {
+   "id": "S0662L02B02",
+   "op": "update",
+   "lego": "S0662L02",
+   "known": "you all speak it",
+   "target": "여러분 다 그거 말해요",
+   "decomposition": [
+    {
+     "legoId": "S0662L01",
+     "target": "여러분 다",
+     "known": "you all",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0662L02",
+     "target": " 그거 말해요",
+     "known": "speak it",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "sir said it",
+    "target": "교회가 선생님을 그걸 말해요"
+   }
+  },
+  {
+   "id": "S0662L02B03",
+   "op": "delete",
+   "lego": "S0662L02",
+   "before": {
+    "known": "the madam said it",
+    "target": "교회가 여사님이 그걸 말해요"
+   }
+  },
+  {
+   "id": "S0662L02B01",
+   "op": "update",
+   "lego": "S0662L02",
+   "known": "speak it",
+   "target": "그거 말해요",
+   "decomposition": [
+    {
+     "legoId": "S0662L02",
+     "target": "그거 말해요",
+     "known": "speak it",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "it",
+    "target": "그걸"
+   }
+  },
+  {
+   "id": "S0662L02B04",
+   "op": "delete",
+   "lego": "S0662L02",
+   "before": {
+    "known": "I need to look for it",
+    "target": "그걸 찾아야 해요"
+   }
+  },
+  {
+   "id": "S0662L02U06",
+   "op": "delete",
+   "lego": "S0662L02",
+   "before": {
+    "known": "the madam said it",
+    "target": "여사님이 그걸 말해요"
+   }
+  },
+  {
+   "id": "S0662L02U04",
+   "op": "delete",
+   "lego": "S0662L02",
+   "before": {
+    "known": "still she wants it",
+    "target": "아직도 그걸 원하세요"
+   }
+  },
+  {
+   "id": "S0662L02U02",
+   "op": "update",
+   "lego": "S0662L02",
+   "known": "she speaks it",
+   "target": "그녀는 그거 말해요",
+   "decomposition": [
+    {
+     "legoId": "S0017L01",
+     "target": "그녀는",
+     "known": "she",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0662L02",
+     "target": " 그거 말해요",
+     "known": "speak it",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "sir knows it",
+    "target": "선생님을 그걸 알아요"
+   }
+  },
+  {
+   "id": "S0662L02U01",
+   "op": "update",
+   "lego": "S0662L02",
+   "known": "you all speak it",
+   "target": "여러분 다 그거 말해요",
+   "decomposition": [
+    {
+     "legoId": "S0662L01",
+     "target": "여러분 다",
+     "known": "you all",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0662L02",
+     "target": " 그거 말해요",
+     "known": "speak it",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "everyone speaks it",
+    "target": "여러분 그걸 말해요"
+   }
+  },
+  {
+   "id": "S0662L02U03",
+   "op": "delete",
+   "lego": "S0662L02",
+   "before": {
+    "known": "now she found it",
+    "target": "지금 그걸 있어요"
+   }
+  },
+  {
+   "id": "S0662L02U05",
+   "op": "delete",
+   "lego": "S0662L02",
+   "before": {
+    "known": "she thinks about it",
+    "target": "그걸 생각하려고 해요"
+   }
+  },
+  {
+   "id": "S0664L02U01",
+   "op": "update",
+   "lego": "S0664L02",
+   "known": "are you all ready?",
+   "target": "여러분 다 준비됐어요?",
+   "decomposition": [
+    {
+     "legoId": "S0662L01",
+     "target": "여러분 다",
+     "known": "you all",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0664L02",
+     "target": " 준비됐어요?",
+     "known": "ready?",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "are you all ready?",
+    "target": "여러분 준비됐어요?"
+   }
+  },
+  {
+   "id": "S0662L01B01",
+   "op": "insert",
+   "lego": "S0662L01",
+   "role": "build",
+   "known": "you all",
+   "target": "여러분 다",
+   "position": 1,
+   "decomposition": [
+    {
+     "legoId": "S0662L01",
+     "target": "여러분 다",
+     "known": "you all",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact"
+  },
+  {
+   "id": "S0662L01U01",
+   "op": "insert",
+   "lego": "S0662L01",
+   "role": "use",
+   "known": "you all know",
+   "target": "여러분 다 알아요",
+   "position": 2,
+   "decomposition": [
+    {
+     "legoId": "S0662L01",
+     "target": "여러분 다",
+     "known": "you all",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " 알아요",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact"
+  },
+  {
+   "id": "S0662L01U02",
+   "op": "insert",
+   "lego": "S0662L01",
+   "role": "use",
+   "known": "do you all want to learn?",
+   "target": "여러분 다 배우고 싶어요?",
+   "position": 3,
+   "decomposition": [
+    {
+     "legoId": "S0662L01",
+     "target": "여러분 다",
+     "known": "you all",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0020L03",
+     "target": " 배우고 싶어요",
+     "known": "want to learn",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "?",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact"
+  },
+  {
+   "id": "S0633L01U07",
+   "op": "insert",
+   "lego": "S0633L01",
+   "role": "use",
+   "known": "would you like a large glass?",
+   "target": "큰 컵으로 드릴까요?",
+   "position": 12,
+   "decomposition": [
+    {
+     "legoId": "S0633L01",
+     "target": "큰 컵으로",
+     "known": "a large glass",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0623L04",
+     "target": " 드릴까요?",
+     "known": "shall I get you?",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact"
+  },
+  {
+   "id": "S0633L01U08",
+   "op": "insert",
+   "lego": "S0633L01",
+   "role": "use",
+   "known": "so would you like a large glass?",
+   "target": "그래서 큰 컵으로 드릴까요?",
+   "position": 13,
+   "decomposition": [
+    {
+     "legoId": "S0056L01",
+     "target": "그래서",
+     "known": "so",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0633L01",
+     "target": " 큰 컵으로",
+     "known": "a large glass",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0623L04",
+     "target": " 드릴까요?",
+     "known": "shall I get you?",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact"
+  }
+ ],
+ "notes": [
+  "untiled S0656L01U23 [S0656L01] \"우리는 여러분과 그 문제를 논의해야 해요\": 그 | 논의해야",
+  "untiled S0662L01U01 [S0662L01] \"여러분 다 알아요\": 알아요"
+ ],
+ "problems": [],
+ "outside": [],
+ "zut": [
+  {
+   "known": "you all",
+   "rows": [
+    "S0656L01=여러분과",
+    "S0658L01=여러분",
+    "S0659L01=여러분",
+    "S0661L01=여러분",
+    "S0662L01=여러분다",
+    "S0664L01=여러분",
+    "S0665L01=여러분",
+    "S0657L01B01=여러분",
+    "S0660L01B01=여러분을",
+    "S0663L01B01=여러분이",
+    "S0666L01B01=여러분은",
+    "S0667L01B01=여러분",
+    "S0662L01B01=여러분다"
+   ]
+  }
+ ],
+ "touched": [
+  633,
+  656,
+  662,
+  664
+ ],
+ "asks": [
+  {
+   "role": "target1",
+   "text": "큰 컵으로 물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 633,
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02B02",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target2",
+   "text": "큰 컵으로 물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 633,
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02B02",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target1",
+   "text": "물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0633L02",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02B01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target2",
+   "text": "물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0633L02",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02B01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "known",
+   "text": "a glass of water would be fine",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0633L02",
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02B01",
+     "slot": "known"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "presentation",
+   "text": "The Korean for: 'a glass of water would be fine', is:",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0633L02",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "known",
+   "text": "a large glass of water would be fine",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L02B02",
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0633L02U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target1",
+   "text": "그래서 물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L02U02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target2",
+   "text": "그래서 물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L02U02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "known",
+   "text": "so a glass of water would be fine",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L02U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target1",
+   "text": "네 물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L02U04",
+     "slot": "target1"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target2",
+   "text": "네 물 한 잔이면 괜찮아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L02U04",
+     "slot": "target2"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "known",
+   "text": "yes, a glass of water would be fine",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L02U04",
+     "slot": "known"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target1",
+   "text": "큰 컵으로 드릴까요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L01U07",
+     "slot": "target1"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target2",
+   "text": "큰 컵으로 드릴까요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L01U07",
+     "slot": "target2"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "known",
+   "text": "would you like a large glass?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L01U07",
+     "slot": "known"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target1",
+   "text": "그래서 큰 컵으로 드릴까요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L01U08",
+     "slot": "target1"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target2",
+   "text": "그래서 큰 컵으로 드릴까요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L01U08",
+     "slot": "target2"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "known",
+   "text": "so would you like a large glass?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0633L01U08",
+     "slot": "known"
+    }
+   ],
+   "seed": 633
+  },
+  {
+   "role": "target1",
+   "text": "여러분과 같이",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0656L01B02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 656
+  },
+  {
+   "role": "target2",
+   "text": "여러분과 같이",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0656L01B02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 656
+  },
+  {
+   "role": "known",
+   "text": "with you all",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0656L01B02",
+     "slot": "known"
+    }
+   ],
+   "seed": 656
+  },
+  {
+   "role": "target1",
+   "text": "우리는 여러분과 그 문제를 논의해야 해요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0656L01U23",
+     "slot": "target1"
+    }
+   ],
+   "seed": 656
+  },
+  {
+   "role": "target2",
+   "text": "우리는 여러분과 그 문제를 논의해야 해요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0656L01U23",
+     "slot": "target2"
+    }
+   ],
+   "seed": 656
+  },
+  {
+   "role": "target1",
+   "text": "그거 말해요",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0662L02",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L02B01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target2",
+   "text": "그거 말해요",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0662L02",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L02B01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "known",
+   "text": "speak it",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0662L02",
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L02B01",
+     "slot": "known"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "presentation",
+   "text": "The Korean for: 'speak it', is:",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0662L02",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target1",
+   "text": "여러분 다",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0662L01",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L01B01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target2",
+   "text": "여러분 다",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0662L01",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L01B01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "presentation",
+   "text": "The Korean for: 'you all', is:",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0662L01",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target1",
+   "text": "여러분 다 그거 말해요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L02B02",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L02U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target2",
+   "text": "여러분 다 그거 말해요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L02B02",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L02U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "known",
+   "text": "you all speak it",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L02B02",
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0662L02U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target1",
+   "text": "그녀는 그거 말해요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L02U02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target2",
+   "text": "그녀는 그거 말해요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L02U02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "known",
+   "text": "she speaks it",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L02U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "known",
+   "text": "you all",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L01B01",
+     "slot": "known"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target1",
+   "text": "여러분 다 알아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L01U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target2",
+   "text": "여러분 다 알아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L01U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "known",
+   "text": "you all know",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L01U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target1",
+   "text": "여러분 다 배우고 싶어요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L01U02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target2",
+   "text": "여러분 다 배우고 싶어요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L01U02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "known",
+   "text": "do you all want to learn?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0662L01U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 662
+  },
+  {
+   "role": "target1",
+   "text": "여러분 다 준비됐어요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0664L02U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 664
+  },
+  {
+   "role": "target2",
+   "text": "여러분 다 준비됐어요?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0664L02U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 664
+  }
+ ]
+}

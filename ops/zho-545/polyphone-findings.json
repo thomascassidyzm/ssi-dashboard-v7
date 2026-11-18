@@ -1,0 +1,434 @@
+{
+ "method": "facebook/wav2vec2-xlsr-53-espeak-cv-ft (local, CPU) phone recognition of the live clips fetched via GET /api/production/audio/:id/stream; no renders",
+ "scope": {
+  "clips_decoded": 600,
+  "by_class": {
+   "liao": 172,
+   "dei": 104,
+   "yue": 34,
+   "jiao": 24,
+   "zhang": 34,
+   "C-le": 50,
+   "C-de": 50,
+   "C-le4": 54,
+   "C-jue": 50,
+   "C-chang": 28
+  }
+ },
+ "strong": [
+  {
+   "audio": "ef43bbda-70c3-4460-a7d1-9dda22eff7a7",
+   "slot": "target1",
+   "text": "我得弄清楚他要在哪里见我",
+   "heard": "de (as in 做得)",
+   "correct": "děi (must)",
+   "phones": "w u5 t əɜ n u5 tɕh i5 ŋ s. u5 th ai5 ts ai5 n ɑ5 l i5 tɕ iɛ5 n w uo5",
+   "rows": [
+    "seed:293",
+    "S0293L01U08"
+   ]
+  },
+  {
+   "audio": "a481335e-d0e3-4b06-87da-4c8e2acc4c5e",
+   "slot": "target1",
+   "text": "得带",
+   "heard": "de (as in 做得)",
+   "correct": "děi (must)",
+   "phones": "t o5 t ai5",
+   "rows": [
+    "S0181L01",
+    "S0181L01B01"
+   ]
+  },
+  {
+   "audio": "f5566376-80fb-4464-9813-01dc4253de2e",
+   "slot": "target2",
+   "text": "得带",
+   "heard": "de (as in 做得)",
+   "correct": "děi (must)",
+   "phones": "t o5 t",
+   "rows": [
+    "S0181L01",
+    "S0181L01B01"
+   ]
+  },
+  {
+   "audio": "754388a0-161b-495b-bf28-c0f130b0f74e",
+   "slot": "target1",
+   "text": "你几天后就得走吗",
+   "heard": "de (as in 做得)",
+   "correct": "děi (must)",
+   "phones": "n i5 tɕ i5 th iɛ5 n x u5 tɕ t əɜ ts ɑu5 m ɑ5",
+   "rows": [
+    "S0274L01U05"
+   ]
+  },
+  {
+   "audio": "0ee4495c-22e9-4503-aaea-34bd7be81b5c",
+   "slot": "target1",
+   "text": "她得来",
+   "heard": "de (as in 做得)",
+   "correct": "děi (must)",
+   "phones": "th ɑ5 t o5 l ai5",
+   "rows": [
+    "S0549L01U05"
+   ]
+  },
+  {
+   "audio": "654b73bb-02c9-49ed-8995-d3a808652455",
+   "slot": "target2",
+   "text": "她得来",
+   "heard": "de (as in 做得)",
+   "correct": "děi (must)",
+   "phones": "p ɑ5 t o5 l ai5",
+   "rows": [
+    "S0549L01U05"
+   ]
+  }
+ ],
+ "uncertain": [
+  {
+   "audio": "005e6fa4-b2b6-4cfe-a2b7-597ac911987a",
+   "slot": "target1",
+   "text": "到不了",
+   "heard": "unclear: vowel swallowed / lie",
+   "correct": "liǎo (不了 = cannot)",
+   "phones": "t aʊ b l iɛ5",
+   "rows": [
+    "S0358L02",
+    "S0358L02B01"
+   ]
+  },
+  {
+   "audio": "89ec586c-2bb8-4402-b977-bd1196075e70",
+   "slot": "target1",
+   "text": "不行我做不了",
+   "heard": "unclear: le",
+   "correct": "liǎo (不了 = cannot)",
+   "phones": "p u s j eɪ ŋ w ɔ ts oː b l ɛ",
+   "rows": [
+    "S0273L01U02"
+   ]
+  },
+  {
+   "audio": "45cb37b2-803c-4f20-b5ad-533972ee4a0b",
+   "slot": "target1",
+   "text": "她说她到不了顶端",
+   "heard": "unclear: vowel swallowed / lie",
+   "correct": "liǎo (不了 = cannot)",
+   "phones": "t ɑ5 s. u5 t ɑ5 t ɑu5 p l t i5 ŋ t w əɜ n",
+   "rows": [
+    "S0358L02U03"
+   ]
+  },
+  {
+   "audio": "613ffb25-34eb-42ef-889c-82b544e41572",
+   "slot": "target2",
+   "text": "你几天后就得走吗？",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "m i5 tɕ i5 th iɛ5 n x u5 tɕ u5 t iɛ5 ts ou5 m a5",
+   "rows": [
+    "seed:274"
+   ]
+  },
+  {
+   "audio": "f629889c-84d7-4349-b4ec-ec37ca4f213e",
+   "slot": "target2",
+   "text": "我得弄清楚他要在哪里见我",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 n onɡ5 ɕ i5 ŋ ts. u5 x ai5 j ɑu5 ts ai5 n ɑ5 l i5 tɕ iɛ5 n w əɜ",
+   "rows": [
+    "seed:293",
+    "S0293L01U08"
+   ]
+  },
+  {
+   "audio": "7ceaadf9-7b7c-4c25-aaab-39217122b5c7",
+   "slot": "target1",
+   "text": "我得带你去那儿",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 t ai5 n i5 tɕh i.5 n ɑ5",
+   "rows": [
+    "S0181L01U01"
+   ]
+  },
+  {
+   "audio": "4c99a49e-77b6-4afe-8ec7-b505ed21f613",
+   "slot": "target1",
+   "text": "我得带你回家",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w t iɛ5 t a5 n i5 x ei5 tɕ aː",
+   "rows": [
+    "S0181L01U03"
+   ]
+  },
+  {
+   "audio": "1b6070ba-5a2f-4d55-98c4-da07e4374103",
+   "slot": "target2",
+   "text": "我得带你回家",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w uo5 t iɛ5 t ai5 n i5 x w ei5 tɕ ɑ5",
+   "rows": [
+    "S0181L01U03"
+   ]
+  },
+  {
+   "audio": "1512104a-a16a-43b1-ab1d-31b66dca7ec7",
+   "slot": "target2",
+   "text": "我得带你去看",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w uo5 t iɛ5 t a5 n i5 tɕ i.5 kh ɑ5",
+   "rows": [
+    "S0181L01U04"
+   ]
+  },
+  {
+   "audio": "ffd353d3-f554-448b-9a5e-9551ad17b85e",
+   "slot": "target2",
+   "text": "我得帮我妈",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w uoɜ t iɛ5 p a5 ŋ w uoɜ m ɑ5",
+   "rows": [
+    "S0181L02U04"
+   ]
+  },
+  {
+   "audio": "977859e9-ffb0-4f82-93ea-17f00c24549c",
+   "slot": "target1",
+   "text": "我得去看医生",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w ɑu5 t iɛ5 tɕ i.5 k a5 n j i5 s. ə5 ŋ",
+   "rows": [
+    "S0181L03U01"
+   ]
+  },
+  {
+   "audio": "a8e3c68c-0c53-4ce0-8224-e0913ff0c7d6",
+   "slot": "target1",
+   "text": "我得带我妈去看医生",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 t a5 w ɑu5 m ɑ5 tɕ i.5 k a5 n j i5 s. ə5 ŋ",
+   "rows": [
+    "S0181L03U04"
+   ]
+  },
+  {
+   "audio": "656db03c-1aed-4352-9439-1395b5a5dc89",
+   "slot": "target2",
+   "text": "我不能来，因为我得带我妈去看医生",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 p u5 n əɜ ŋ l ai5 j i5 n w ei5 w uoɜ t iɛ5 t ai5 w əɜ m ɑ5 tɕ i.5 kh a5 n j i5 s. əɜ ŋ",
+   "rows": [
+    "S0181L03U11"
+   ]
+  },
+  {
+   "audio": "c34b3973-9f8e-4b21-838a-51379676f27b",
+   "slot": "target1",
+   "text": "我得弄清楚他在哪里",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 n u5 tɕ i5 ŋ ts. u5 t ɑ5 ts ai5 n ɑ5 l i5",
+   "rows": [
+    "S0293L01U01"
+   ]
+  },
+  {
+   "audio": "637da87c-5136-4328-9634-734a0faff84c",
+   "slot": "target2",
+   "text": "我得弄清楚他在哪里",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 n onɡ5 ɕ i5 ŋ ts. u5 th ɑ5 ts ai5 n ɑ5 l i5",
+   "rows": [
+    "S0293L01U01"
+   ]
+  },
+  {
+   "audio": "2b42faa8-bd56-4564-98dd-002b4e1a0665",
+   "slot": "target1",
+   "text": "我得弄清楚怎么做这个更好",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 n n u5 tɕ i5 ŋ ts. u5 ts əɜ m əɜ ts u5 tɕ iɛ5 k əɜ k əɜ ŋ x ɑu5",
+   "rows": [
+    "S0293L01U07"
+   ]
+  },
+  {
+   "audio": "3fe3c9f7-fda4-4f0f-af23-d8dc89e245b6",
+   "slot": "target2",
+   "text": "我得弄清楚怎么做这个更好",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w o5 t iɛ5 n onɡ5 ɕ i5 ŋ s. u5 ts əɜ m əɜ ts u5 ts. iɛ5 k k ə5 ŋ x ɑu5",
+   "rows": [
+    "S0293L01U07"
+   ]
+  },
+  {
+   "audio": "79f81d7a-6d70-46d9-8d67-675deebe05ab",
+   "slot": "target1",
+   "text": "我得弄清楚她想在哪里见你",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 n u5 ɕ i5 ŋ s. u5 th ai5 ɕ a5 ŋ ts ai5 n ɑ5 l i5 tɕ iɛ5 n i5",
+   "rows": [
+    "S0293L02U06"
+   ]
+  },
+  {
+   "audio": "b4aac938-134b-4240-aa83-5227b56a120f",
+   "slot": "target2",
+   "text": "我得弄清楚她想在哪里见你",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 n onɡ5 tɕ ɕ i5 ŋ ts. u5 th ɑ5 ɕ a5 ŋ ts ai5 n ɑ5 l i5 tɕ iɛ5 n n i5",
+   "rows": [
+    "S0293L02U06"
+   ]
+  },
+  {
+   "audio": "c6f831dc-79ec-4060-abe1-8021f36abf2d",
+   "slot": "target1",
+   "text": "得赶",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "t e k a",
+   "rows": [
+    "S0450L02B03"
+   ]
+  },
+  {
+   "audio": "6d2ad14b-1b28-4c67-b49e-5dd03cbddbce",
+   "slot": "target1",
+   "text": "他说他得赶火车",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "t ɑ5 s. u5 t ɑ5 t iɛ5 k a5 n x u5 ts. u5",
+   "rows": [
+    "S0450L02U05"
+   ]
+  },
+  {
+   "audio": "8d4e5264-3bee-41f5-a3ca-63b2fcd79709",
+   "slot": "target2",
+   "text": "他们都得赶火车",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "th ɑ5 m əɜ n t ou5 t iɛ5 k a5 n x u5 ts. o5",
+   "rows": [
+    "S0450L02U06"
+   ]
+  },
+  {
+   "audio": "f81d78cc-7c84-4e29-ae65-aba404174682",
+   "slot": "target2",
+   "text": "得保持安静",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "p ei5 p ɑu5 s. a5 n tɕ i5 ŋ",
+   "rows": [
+    "S0549L01B03"
+   ]
+  },
+  {
+   "audio": "f70f1c30-f499-432f-92ae-56fda9191a2f",
+   "slot": "target2",
+   "text": "我得安静",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 a5 n tɕ i5 ŋ",
+   "rows": [
+    "S0549L01U06"
+   ]
+  },
+  {
+   "audio": "e43b1a41-747f-48b4-8f2d-bcd4240a61db",
+   "slot": "target1",
+   "text": "你得帮她",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "n i5 t iɛ5 p a5 ŋ th ɑ5",
+   "rows": [
+    "S0549L01U10"
+   ]
+  },
+  {
+   "audio": "6641ca7f-0776-4e82-83a8-f897b73086d0",
+   "slot": "target2",
+   "text": "我得保持安静",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 p ɑu5 ts. i.5 a5 n tɕ i5 ŋ",
+   "rows": [
+    "S0549L02U01"
+   ]
+  },
+  {
+   "audio": "05d0f10e-6a96-47bb-b35c-12af705e2dfa",
+   "slot": "target2",
+   "text": "还是得分享",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "x ai5 s. i.5 t iɛ5 f əɜ n ɕ a5 ŋ",
+   "rows": [
+    "S0593L04B02"
+   ]
+  },
+  {
+   "audio": "ef1ca10b-829d-4e47-978d-0521dde20ea5",
+   "slot": "target1",
+   "text": "我得把它分享了",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w o5 t iɛ5 p ɑ5 t əɜ f əɜ n ɕ a5 ŋ l əɜ",
+   "rows": [
+    "S0593L04U03"
+   ]
+  },
+  {
+   "audio": "df00dddd-618b-4b86-a3a3-570cf7165e25",
+   "slot": "target2",
+   "text": "我得把它分享了",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 t iɛ5 p ɑ5 t h a5 f əɜ n ɕ a5 ŋ l əɜ",
+   "rows": [
+    "S0593L04U03"
+   ]
+  },
+  {
+   "audio": "bb179296-034e-4e03-b2a3-79cb5f3e1f12",
+   "slot": "target1",
+   "text": "我觉得我们得带孩子",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 tɕ iɛ5 t t iɛ5 t ai5 x ai5 ts ə5",
+   "rows": [
+    "S0636L01U12"
+   ]
+  },
+  {
+   "audio": "1af88c01-6ce6-49ed-b890-014a2a92f13e",
+   "slot": "target2",
+   "text": "我觉得我们得带孩子",
+   "heard": "unclear (t iɛ)",
+   "correct": "děi (must)",
+   "phones": "w u5 tɕ iɛ5 t əɜ w əɜ n t iɛ5 t ɑ5 x ts əɜ",
+   "rows": [
+    "S0636L01U12"
+   ]
+  }
+ ]
+}

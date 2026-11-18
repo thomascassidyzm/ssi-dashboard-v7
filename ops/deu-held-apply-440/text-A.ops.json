@@ -1,0 +1,681 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 339,
+   "expect": {
+    "known_text": "no I think he's hurt himself quite badly",
+    "target_text": "nein, ich denke, er hat sich ziemlich schlecht verletzt"
+   },
+   "set": {
+    "target_text": "nein, ich denke, er hat sich ziemlich schwer verletzt"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0339L02",
+   "expect": {
+    "known_text": "hurt himself",
+    "target_text": "sich verletzt"
+   },
+   "set": {
+    "known_text": "hurt himself quite badly",
+    "target_text": "sich ziemlich schwer verletzt",
+    "components": [
+     {
+      "known": "himself",
+      "target": "sich"
+     },
+     {
+      "known": "quite",
+      "target": "ziemlich"
+     },
+     {
+      "known": "badly hurt",
+      "target": "schwer verletzt"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0339L02C02",
+   "expect": {
+    "known_text": "hurt",
+    "target_text": "verletzt"
+   },
+   "set": {
+    "known_text": "quite",
+    "target_text": "ziemlich"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0339L02C03",
+    "course_code": "deu_for_eng",
+    "seed_number": 339,
+    "lego_index": 2,
+    "position": 0,
+    "known_text": "badly hurt",
+    "target_text": "schwer verletzt",
+    "phrase_role": "component",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 2,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0339L02U01",
+   "expect": {
+    "known_text": "no I think he has hurt himself quite badly",
+    "target_text": "nein, ich denke, er hat sich ziemlich schwer verletzt"
+   },
+   "set": {
+    "known_text": "no I think he's hurt himself quite badly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0339L02U03",
+   "expect": {
+    "known_text": "do you think he has hurt himself?",
+    "target_text": "denkst du, dass er sich verletzt hat?"
+   },
+   "set": {
+    "known_text": "do you think he has hurt himself quite badly?",
+    "target_text": "denkst du, dass er sich ziemlich schwer verletzt hat?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0339L02U05",
+   "expect": {
+    "known_text": "I think it is important to know if he has hurt himself",
+    "target_text": "ich denke, dass es wichtig ist zu wissen, ob er sich verletzt hat"
+   },
+   "set": {
+    "known_text": "I think it is important to know if he has hurt himself quite badly",
+    "target_text": "ich denke, dass es wichtig ist zu wissen, ob er sich ziemlich schwer verletzt hat"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 151,
+   "expect": {
+    "known_text": "that wasn't what I was hoping would happen",
+    "target_text": "das war nicht das, was ich gehofft hatte, dass passieren würde"
+   },
+   "set": {
+    "target_text": "das war nicht das, was ich mir erhofft hatte"
+   }
+  },
+  {
+   "op": "lego.delete",
+   "lego_id": "S0151L03",
+   "cascade_phrases": true,
+   "expect": {
+    "known_text": "would happen",
+    "target_text": "passiert"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 151,
+    "lego_index": 3,
+    "known_text": "what I was hoping would happen",
+    "target_text": "das, was ich mir erhofft hatte",
+    "type": "A",
+    "is_new": true,
+    "status": "draft",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0151L02U01",
+   "expect": {
+    "known_text": "that wasn't what I was hoping would happen",
+    "target_text": "das war nicht das, was ich gehofft hatte, dass passieren würde"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0151L03B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 151,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "what I was hoping would happen",
+    "target_text": "das, was ich mir erhofft hatte",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0151L03B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 151,
+    "lego_index": 3,
+    "position": 102,
+    "known_text": "that was what I was hoping would happen",
+    "target_text": "das war das, was ich mir erhofft hatte",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0151L03U02",
+    "course_code": "deu_for_eng",
+    "seed_number": 151,
+    "lego_index": 3,
+    "position": 103,
+    "known_text": "it wasn't what I was hoping would happen",
+    "target_text": "es war nicht das, was ich mir erhofft hatte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0151L03U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 151,
+    "lego_index": 3,
+    "position": 104,
+    "known_text": "that wasn't what I was hoping would happen",
+    "target_text": "das war nicht das, was ich mir erhofft hatte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 522,
+   "expect": {
+    "known_text": "let's agree that it was stupid to tell the truth",
+    "target_text": "lass uns einigen, dass es dumm war, die Wahrheit zu sagen"
+   },
+   "set": {
+    "target_text": "einigen wir uns darauf, dass es dumm war, die Wahrheit zu sagen"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0522L05",
+   "expect": {
+    "known_text": "to agree",
+    "target_text": "einigen"
+   },
+   "set": {
+    "known_text": "let's agree that",
+    "target_text": "einigen wir uns darauf, dass"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05B01",
+   "expect": {
+    "known_text": "to agree",
+    "target_text": "einigen"
+   },
+   "set": {
+    "known_text": "let's agree that",
+    "target_text": "einigen wir uns darauf, dass"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05B02",
+   "expect": {
+    "known_text": "they agreed",
+    "target_text": "sie haben einigen"
+   },
+   "set": {
+    "target_text": "sie haben sich geeinigt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05B03",
+   "expect": {
+    "known_text": "we can agree",
+    "target_text": "wir können einigen"
+   },
+   "set": {
+    "target_text": "wir können uns einigen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05U01",
+   "expect": {
+    "known_text": "let's agree that it was stupid to tell the truth",
+    "target_text": "lass uns einigen, dass es dumm war, die Wahrheit zu sagen"
+   },
+   "set": {
+    "target_text": "einigen wir uns darauf, dass es dumm war, die Wahrheit zu sagen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05U02",
+   "expect": {
+    "known_text": "let's agree",
+    "target_text": "lass uns einigen"
+   },
+   "set": {
+    "target_text": "einigen wir uns"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05U03",
+   "expect": {
+    "known_text": "she wants us to agree",
+    "target_text": "sie will, dass wir einigen"
+   },
+   "set": {
+    "target_text": "sie will, dass wir uns einigen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05U04",
+   "expect": {
+    "known_text": "can we agree?",
+    "target_text": "können wir einigen?"
+   },
+   "set": {
+    "target_text": "können wir uns einigen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05U05",
+   "expect": {
+    "known_text": "let's agree that it was stupid",
+    "target_text": "lass uns einigen, dass es dumm war"
+   },
+   "set": {
+    "target_text": "einigen wir uns darauf, dass es dumm war"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05U06",
+   "expect": {
+    "known_text": "she wants to agree",
+    "target_text": "sie will einigen"
+   },
+   "set": {
+    "target_text": "sie will sich einigen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0522L05U07",
+   "expect": {
+    "known_text": "can we agree that that was stupid?",
+    "target_text": "können wir einigen, dass das dumm war?"
+   },
+   "set": {
+    "target_text": "können wir uns darauf einigen, dass das dumm war?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0270L01",
+   "expect": {
+    "known_text": "too late",
+    "target_text": "zu spät"
+   },
+   "set": {
+    "known_text": "to be late",
+    "target_text": "zu spät kommen",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0270L01C01",
+   "expect": {
+    "known_text": "Too",
+    "target_text": "Zu"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0270L01C02",
+   "expect": {
+    "known_text": "Late",
+    "target_text": "Spät"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01B01",
+   "expect": {
+    "known_text": "Too late",
+    "target_text": "Zu spät"
+   },
+   "set": {
+    "known_text": "to be late",
+    "target_text": "zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01B02",
+   "expect": {
+    "known_text": "It's too late",
+    "target_text": "Es ist zu spät"
+   },
+   "set": {
+    "known_text": "I don't want to be late",
+    "target_text": "ich will nicht zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01B03",
+   "expect": {
+    "known_text": "I think it's too late",
+    "target_text": "Ich denke es ist zu spät"
+   },
+   "set": {
+    "known_text": "I'm going to be late",
+    "target_text": "ich werde zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01B04",
+   "expect": {
+    "known_text": "It was too late",
+    "target_text": "Es war zu spät"
+   },
+   "set": {
+    "known_text": "he's going to be late",
+    "target_text": "er wird zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01U01",
+   "expect": {
+    "known_text": "I wanted to help you yesterday but it was too late",
+    "target_text": "Ich wollte dir gestern helfen aber es war zu spät"
+   },
+   "set": {
+    "known_text": "you're going to be late",
+    "target_text": "du wirst zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01U03",
+   "expect": {
+    "known_text": "When I was at the restaurant it was already too late",
+    "target_text": "Als ich beim Restaurant war war es schon zu spät"
+   },
+   "set": {
+    "known_text": "she doesn't want to be late",
+    "target_text": "sie will nicht zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01U04",
+   "expect": {
+    "known_text": "I'm sorry but I think it's too late to change that",
+    "target_text": "Es tut mir leid aber ich denke es ist zu spät das zu ändern"
+   },
+   "set": {
+    "known_text": "I think I'm going to be late",
+    "target_text": "ich denke, ich werde zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0270L01U05",
+   "expect": {
+    "known_text": "You wanted to tell me something but it was too late",
+    "target_text": "Du wolltest mir etwas sagen aber es war zu spät"
+   },
+   "set": {
+    "known_text": "we don't want to be late",
+    "target_text": "wir wollen nicht zu spät kommen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0270L01U06",
+   "expect": {
+    "known_text": "I thought it was too late to finish the work yesterday",
+    "target_text": "Ich dachte es war zu spät die Arbeit gestern fertig zu machen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0270L01U07",
+   "expect": {
+    "known_text": "I thought it was too late to talk to them now",
+    "target_text": "Ich dachte es war zu spät jetzt mit ihnen zu reden"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0270L01U08",
+   "expect": {
+    "known_text": "I know it's too late but I wanted to ask you something",
+    "target_text": "Ich weiß es ist zu spät aber ich wollte dich etwas fragen"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 270,
+    "lego_index": 2,
+    "known_text": "that I'm going to do it",
+    "target_text": "dass ich es machen werde",
+    "type": "M",
+    "is_new": true,
+    "status": "draft",
+    "components": [
+     {
+      "known": "that",
+      "target": "dass"
+     },
+     {
+      "known": "I'm going to",
+      "target": "ich werde"
+     },
+     {
+      "known": "do it",
+      "target": "es machen"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0270L02B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 270,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "that I'm going to do it",
+    "target_text": "dass ich es machen werde",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0270L02B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 270,
+    "lego_index": 2,
+    "position": 102,
+    "known_text": "I think that I'm going to do it",
+    "target_text": "ich denke, dass ich es machen werde",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0270L02B03",
+    "course_code": "deu_for_eng",
+    "seed_number": 270,
+    "lego_index": 2,
+    "position": 103,
+    "known_text": "that I'm going to be late",
+    "target_text": "dass ich zu spät kommen werde",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0270L02U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 270,
+    "lego_index": 2,
+    "position": 104,
+    "known_text": "I know that I'm going to be late",
+    "target_text": "ich weiß, dass ich zu spät kommen werde",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0270L02U02",
+    "course_code": "deu_for_eng",
+    "seed_number": 270,
+    "lego_index": 2,
+    "position": 105,
+    "known_text": "she knows that I'm going to try it",
+    "target_text": "sie weiß, dass ich es versuchen werde",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0270L02U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 270,
+    "lego_index": 2,
+    "position": 106,
+    "known_text": "because I'm worried that I'm going to be late",
+    "target_text": "weil ich mir Sorgen mache, dass ich zu spät kommen werde",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 11,
+    "lego_count": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+# cs #948: the weekly [release] commit that is the only thing (besides [hotfix]) that builds popty.app on Vercel.
+# Install: cp ops/systemd/popty-weekly-release.{service,timer} ~/.config/systemd/user/ && systemctl --user daemon-reload &&
+#          systemctl --user enable --now popty-weekly-release.timer
+# The script runs from its own clone (~/.cs-builds/popty-release), reset to origin/main each run.
+[Unit]
+Description=Popty weekly release: one [release] commit on main when it changed, so Vercel builds popty.app (cs #948)
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sh -c '[ -d %h/.cs-builds/popty-release/.git ] || git clone -q --depth 300 --branch main https://github.com/thomascassidyzm/ssi-dashboard-v7.git %h/.cs-builds/popty-release'
+ExecStart=/bin/sh %h/.cs-builds/popty-release/tools/release/weekly-release.sh
+Slice=cs-workers.slice
+Nice=10
+TimeoutStartSec=10min

@@ -130,9 +130,24 @@ export function batchRecommendable(t, b, tracks) {
 /** Can the reader open this batch from the home cards or the tick panel? Every batch can be. */
 export function batchOpenable() { return true }
 
-/** Up next's order: new sentences, then LEGOs, then practice phrases (pass 1, pass 2), then the rest. */
+/**
+ * A POD HE HAS STARTED AND NOT FINISHED COMES FIRST (Kai, 2026-10-28, job #8·AA): "Pod 1 (and any
+ * pod-type batch a recorder has started) should come up as the priority." Dan read 68 of his 91
+ * Pod 1 lines, then Up next sent him on to new sentences (which rank above scripts) and the 22
+ * left from scene 15 sat unremarked under "Other scripts". A script with at least one line
+ * recorded (or uploading from this device) and lines still left is offered before anything else.
+ * A pod nobody has started keeps its old place; nothing is locked and the ticks still win.
+ */
+export const isStartedPod = (t) =>
+  !!t && t.kind === 'pod' && !!t.podSlug && ((t.recorded || 0) + (t.uploading || 0)) > 0 && !isFinished(t)
+
+/**
+ * Up next's order: a started pod, then new sentences, LEGOs and the LEGO Introductions, practice phrases (pass 1,
+ * pass 2), then the rest. The Introductions sit with the LEGOs, ahead of the phrases (Aran, 2026-11-02: he could
+ * not find them under four phrase cards and wants to concentrate on them this week).
+ */
 export function orderedTracks(tracks) {
-  const rank = (t) => (t.kind === 'podswap' ? -1 : t.kind === 'seed' && isNewWork(t) ? 0 : t.kind === 'lego' && isNewWork(t) ? 1 : t.kind === 'phrase' ? 2 : 3)
+  const rank = (t) => (isStartedPod(t) || t.kind === 'podswap' ? -1 : t.kind === 'seed' && isNewWork(t) ? 0 : (t.kind === 'lego' && isNewWork(t)) || t.kind === 'introsentence' ? 1 : t.kind === 'phrase' ? 2 : 3)
   return tracks.map((t, i) => ({ t, i })).sort((a, b) => (rank(a.t) - rank(b.t)) || (a.i - b.i)).map((x) => x.t)
 }
 
@@ -248,6 +263,7 @@ export function upNext(tracks, off = new Set()) {
  * THE NEXT BATCH WHEN ONE IS FINISHED (Aran, 2026-10-16, job #203: phrase.1 batch 2 done, and the
  * end screen's only way on was Home). `scope` is the batch just finished, {track, batch}. Returns
  * {track, batch} or null when nothing he has ticked is left anywhere.
+ *   0. a pod he has started and not finished (isStartedPod), whatever section he has just left;
  *   1. a later batch of the same section with lines left — practice phrases too: the next batch
  *      is opened by hand, not waited for (job #697: "open the current batch or future batches");
  *   2. else the next section in Up next's order (orderedTracks), first the batch Up next would
@@ -263,6 +279,11 @@ export function nextBatchAfter(tracks, scope, off = new Set()) {
   const at = ordered.findIndex((t) => t.key === scope.track)
   if (at === -1) return null
   const cur = ordered[at]
+  // 0. A POD HE HAS STARTED, before the next batch of anything else (Kai, 2026-10-28, job #8·AA):
+  //    the end screen's "next batch" is how Dan drifted from Pod 1 into 502 new sentences.
+  const pod = ordered.find((t) => t.key !== scope.track && isStartedPod(t) && isTicked(off, t.key))
+  const podBatch = pod && (pod.batches || []).find((b) => usable(pod, b))
+  if (podBatch) return { track: pod, batch: podBatch }
   // An unticked section offers none of its own batches (it falls through to the next ticked one).
   const later = !isTicked(off, cur.key) ? null : (cur.batches || []).find((b) => b.n > scope.batch && usable(cur, b))
   if (later) return { track: cur, batch: later }

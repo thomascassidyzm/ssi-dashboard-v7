@@ -1,0 +1,37 @@
+[
+ {
+  "role": "known",
+  "text": "so that I don't stay",
+  "slot": "known",
+  "status": 200,
+  "source": "library",
+  "audioId": "498934d2-fea3-456d-82d7-6153eb5429f2",
+  "chars": 0
+ },
+ {
+  "role": "target1",
+  "text": "para que no me quede",
+  "slot": "target1",
+  "status": 409,
+  "chars": 0,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"para que no me quede\" is already recorded in spa — 1 clip(s): ac5baa96-8095-437e-8711-8e23bb35f3c7 (voice azure_es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+ },
+ {
+  "role": "target2",
+  "text": "para que no me quede",
+  "slot": "target2",
+  "status": 409,
+  "chars": 0,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"para que no me quede\" is already recorded in spa — 1 clip(s): 900a8d1f-de06-4d7f-b817-ebe0368157dd (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'so that I don't stay', is:",
+  "slot": "presentation",
+  "status": 200,
+  "source": "would-render",
+  "chars": 44
+ }
+]

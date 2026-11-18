@@ -41,6 +41,10 @@
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=unrecorded --apply
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-1 --serve-now --apply
  *
+ * VISIBILITY: the copy is born 'held' whatever the source's visibility (2026-11-13,
+ * after nine live working copies on 2026-11-03); only an explicit --visibility=live or
+ * --visibility=draft changes that.
+ *
  * ACROSS COURSES (2026-09-14): the same pod on a second course of the same language is
  * POINTER rows to the same clips — recordings are per language, never per course.
  *   node tools/pods/clone-pod.cjs --course=cym_n_for_eng --from=senedd-s4c-steve \
@@ -187,10 +191,15 @@ async function main () {
   await db.connect()
   try {
     const src = (await db.query(`select * from listening_pods where id=$1`, [srcPodId])).rows[0]
-    // The effective visibility of the clone. An explicit --visibility wins; otherwise
-    // the source's own visibility is copied, so copying a held pod can never release it
-    // and copying a live pod gives a live copy; with neither, 'held'.
-    const VISIBILITY = VISIBILITY_FLAG || (src && src.visibility) || 'held'
+    // The effective visibility of the clone. A clone is a WORKING COPY, so it is born
+    // 'held' whatever the source's visibility; only an explicit --visibility releases
+    // it (the Senedd/S4C cross-course copy passes --visibility=live on purpose).
+    // This reverses the 2026-08-23 "copy the source's visibility" half: on 2026-11-03
+    // the Pod 1 Scene 4 driver (ops/pod1-scene4/run-course.cjs) cloned live pod-1 with
+    // no flag, the copy was born live, and nine courses (cat, dan, fin, hrv, nld, pol,
+    // swe, tur, ukr _for_eng) showed learners a second "Pod 1" titled "UNRECORDED
+    // working copy, not learner-facing".
+    const VISIBILITY = VISIBILITY_FLAG || 'held'
     if (!src) throw new Error(`${srcPodId}: no such pod`)
 
     const dstExisting = (await db.query(`select id, visibility, pod_type, required_role from listening_pods where id=$1`, [dstPodId])).rows[0]
@@ -294,11 +303,11 @@ async function main () {
     try {
       if (!dstExisting) {
         await db.query(
-          // `visibility` is COPIED from the source unless --visibility says otherwise
-          // (Tom, 2026-08-23, both halves): the DB default is 'live', so an insert that
-          // omits the column would make a clone of a HELD pod live — an automatic-live
-          // path. A clone of a live pod stays live, which is what a clone means; an
-          // explicit --visibility still wins, and with neither the answer is 'held'.
+          // `visibility` is written explicitly: the DB default is 'live', so an insert
+          // that omits the column is an automatic-live path. It is 'held' unless
+          // --visibility says otherwise — never copied from the source, since a copy of
+          // a live pod born live is how nine courses got a learner-visible working copy
+          // on 2026-11-03 (see VISIBILITY above).
           podInsert().sql,
           podInsert().values({ dstPodId, dstCourse: TO_COURSE, slug: TO, src, title: `${src.title}${TITLE_SUFFIX}`, visibility: VISIBILITY, requiredRole: REQUIRED_ROLE, enc: (col, v) => enc(podJson, col, v) }))
       }

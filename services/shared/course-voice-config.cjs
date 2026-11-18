@@ -118,7 +118,57 @@ function withPlaybackSpeed(voiceConfig, slot, speed) {
   return vc
 }
 
+/**
+ * THE CAST VOICE'S OWN ELEVENLABS SETTINGS (Kai 2026-10-28, job #76·AA): deu_at target1 is cast as Tamara on
+ * ElevenLabs v4 Turbo at stability 1.0 — the settings of the 737 clips Kai approved by ear (trial jobs #23/#47·AA).
+ * Until this, a COURSE render dropped them: phase8's render route sent no model and no stability, so every course
+ * clip came out eleven_multilingual_v2 at 0.5 whatever the cast said.
+ *
+ * Read from the slot's own `settings` in voice_config: `model` (an ElevenLabs model id from the same allow-list the
+ * trial lane uses), `stability`, `similarityBoost` (0..1). Only what the config SAYS comes back, so a course whose
+ * config names none of them renders exactly as before (generateElevenLabs' own defaults: multilingual_v2, 0.5, 0.75).
+ * A model off the allow-list throws: a typo in a cast must not quietly fall back to another model.
+ *
+ * @param {object} voice  one slot of voice_config.voices (e.g. voices.target1)
+ * @returns {{ modelId?: string, stability?: number, similarityBoost?: number }}
+ */
+function elevenLabsCastSettings(voice) {
+  const s = (voice && typeof voice === 'object' && voice.settings) || {}
+  const out = {}
+  if (s.model != null) {
+    const { ELEVENLABS_TRIAL_MODELS } = require('./audio-trial-mode.cjs')
+    const m = String(s.model)
+    if (!ELEVENLABS_TRIAL_MODELS.includes(m)) throw new Error(`voice_config names ElevenLabs model "${m}" — not one of ${ELEVENLABS_TRIAL_MODELS.join(', ')}; fix the cast, nothing is rendered on a guessed model`)
+    out.modelId = m
+  }
+  for (const [key, to] of [['stability', 'stability'], ['similarityBoost', 'similarityBoost']]) {
+    if (s[key] == null) continue
+    const n = Number(s[key])
+    if (!Number.isFinite(n) || n < 0 || n > 1) throw new Error(`voice_config settings.${key} must be between 0 and 1, got ${s[key]}`)
+    out[to] = n
+  }
+  return out
+}
+
+/**
+ * The cast settings for ONE item of a role fill pass (job #28, deu_ch target2, Kai 2026-11-02): phase8 /generate's
+ * ElevenLabs arm sent no model and no stability, so a whole-course fill rendered the cast voice on
+ * eleven_multilingual_v2 at 0.5 — the wrong sound AND ~2x the credits of the eleven_v4_turbo the cast names.
+ * The settings apply only when the voice being rendered IS the slot's cast voice; any other voice keeps the house defaults.
+ *
+ * @param {object} slotVoice  voice_config.voices[role]
+ * @param {string} renderingVoiceId  the voice the item renders in, bare or provider-prefixed
+ */
+function elevenLabsSlotSettings(slotVoice, renderingVoiceId) {
+  const bare = (v) => String(v || '').replace(/^elevenlabs_/, '')
+  if (!slotVoice || typeof slotVoice !== 'object' || !renderingVoiceId) return {}
+  if (bare(slotVoice.voiceId) !== bare(renderingVoiceId)) return {}
+  return elevenLabsCastSettings(slotVoice)
+}
+
 module.exports = {
+  elevenLabsCastSettings,
+  elevenLabsSlotSettings,
   TARGET_SLOTS,
   KNOWN_SPEED,
   MIN_PLAYBACK_SPEED,

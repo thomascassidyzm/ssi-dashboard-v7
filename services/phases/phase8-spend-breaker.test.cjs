@@ -189,3 +189,49 @@ describe('attachClipToNullSlots counts slots the audio_autolink trigger already 
     expect(await phase8.attachClipToNullSlots(COURSE_CODE, 'fresh line number 1', 'target1', 'clip-1')).toBe(1)
   })
 })
+
+// ─── Job #221·AH: the breaker judges on MEASURED fills, not only attributed ones ───
+
+describe('the render/attach breaker confirms against the course\'s measured empty slots (job #221·AH)', () => {
+  // ara_eg/ara_lb, 11 Nov: every prod pass (warm-up 400) stopped at exactly 400
+  // calls with 68–88 slots attributed, while the course really was filling —
+  // slots the trigger or linker filled under another spelling of the line are
+  // filled but never tied to the render by exact text.
+  function fillsElsewhereTts(tables) {
+    return {
+      calls: 0,
+      async generateWithRetry(text, provider, cfg) {
+        cfg.door?.onAttempt?.(text, 1)
+        this.calls++
+        // the slot gets filled, but by a clip id the render's attach cannot see
+        for (const p of tables.course_practice_phrases) if (p.target_text === text && p.target1_audio_id === null) p.target1_audio_id = `filled-elsewhere-${p.id}`
+        return { audioBuffer: Buffer.from('x'), wordBoundaries: null }
+      },
+    }
+  }
+
+  it('a pass whose renders really fill slots is NOT stopped when attribution reads zero', async () => {
+    process.env.PHASE8_RATIO_WARMUP = '4'
+    try {
+      const t = freshCourse(40)
+      const tts = fillsElsewhereTts(t)
+      const { phase8 } = loadPhase8({ tables: t, tts, doubles: { '/audio-veracity.cjs': veracityDouble() } })
+      expect(await phase8.countEmptyTextSlots(COURSE_CODE, ['target1'])).toBe(40)
+      const r = await postGenerate(phase8, { ...FILL, budgetChars: 100000 })
+      expect(r.body.status).not.toBe('spend-capped')
+      expect(tts.calls).toBe(40)
+      expect(t.course_practice_phrases.every(p => p.target1_audio_id)).toBe(true)
+    } finally { delete process.env.PHASE8_RATIO_WARMUP }
+  })
+
+  it('wouldTrip agrees with checkProgress, so a measured count can only spare a pass that is really filling', () => {
+    const { runSpendCap } = loadPhase8({ tables: freshCourse(1) }).phase8
+    const cap = runSpendCap([{ text: 'x'.repeat(1000) }], { warmup: 4 })
+    for (let i = 0; i < 8; i++) cap.charge('x')
+    expect(cap.wouldTrip(7)).toBe(false)      // 8 calls, 7 slots: within 1.2x
+    expect(cap.wouldTrip(2)).toBe(true)       // 8 calls, 2 slots: 4x
+    cap.checkProgress(2)
+    expect(cap.tripKind).toBe('render-attach')
+    expect(cap.wouldTrip(100)).toBe(false)    // already tripped: nothing more to decide
+  })
+})

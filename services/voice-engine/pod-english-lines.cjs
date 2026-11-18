@@ -199,8 +199,12 @@ function resolvePodEnglish(sentence, recordist, policyVoices, podCastByCourse = 
 
 /**
  * NORTH'S SYNTHETIC POD 1 ENGLISH IS REPLACED BY HIS TAKES (Aran, 2026-10-29 14:39Z, job #555: "Replace North's computer
- * English with your Pod 1 takes as they land? Y"). The approved act the fill-only rule above waited for, for these pods
- * only. South is not here: its slots were empty and fill.
+ * English with your Pod 1 takes as they land? Y"). The approved act the fill-only rule above waited for, for these pods.
+ *
+ * SOUTH IS ON HOLD (job #878, 2026-11-08). 65 of South's women's lines (Learner 63, Sarah 2) that held his take were moved
+ * onto the female synthetic clip of the same words (xai_bedd6226; undo ops/878-pod1-voice-fix). Whether South's casting
+ * of those speakers is intended is being checked with Aran, so South is NOT a replace pod: nobody's take replaces its
+ * synthetic clips until that is ruled. Adding it here is the one-line change if it is.
  */
 const POD_ENGLISH_REPLACE_PODS = Object.freeze(['cym_n_for_eng:pod-1'])
 

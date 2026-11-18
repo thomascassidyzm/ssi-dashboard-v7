@@ -1,0 +1,390 @@
+{
+ "course": "spa_for_eng",
+ "job": "#472",
+ "rulings": "Kai 12 Nov 2026 on Deborah answers, items 1-5",
+ "rows": [
+  {
+   "kind": "seed",
+   "id": "S0414",
+   "target": "¿Podríamos pedir una botella de vino tinto, por favor?",
+   "known": "could we order a bottle of red wine, please?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0414L02U01",
+   "target": "¿podríamos pedir una botella de vino tinto, por favor?",
+   "known": "could we order a bottle of red wine, please?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0414L01U06",
+   "known": "could we book a table, please?",
+   "target": "¿podríamos reservar una mesa, por favor?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0414L01U01",
+   "known": "can I ask for some water, please?",
+   "target": "¿puedo pedir agua, por favor?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0414L02U04",
+   "delete": true,
+   "why": "can I have ... = puedo tener calque; a pedir rewrite duplicates S0414L02U05 word for word. L02 keeps 3 BUILD + 5 USE"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0414L01U03",
+   "known": "could we eat something, please?"
+  },
+  {
+   "kind": "seed",
+   "id": "S0416",
+   "known": "they want to lead the project next year",
+   "target": "quieren liderar el proyecto el año que viene"
+  },
+  {
+   "kind": "lego",
+   "id": "S0416L02",
+   "known": "the project",
+   "target": "el proyecto",
+   "components": [
+    {
+     "known": "the",
+     "target": "el"
+    },
+    {
+     "known": "project",
+     "target": "proyecto"
+    }
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02C02",
+   "known": "project",
+   "target": "proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02B01",
+   "known": "the project",
+   "target": "el proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02B02",
+   "known": "to lead the project",
+   "target": "liderar el proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02B03",
+   "known": "the new project",
+   "target": "el nuevo proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02U01",
+   "known": "they want to lead the project next year",
+   "target": "quieren liderar el proyecto el año que viene"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02U02",
+   "known": "she wanted to lead the project",
+   "target": "quería liderar el proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02U03",
+   "known": "I thought she was going to lead the project",
+   "target": "pensé que iba a liderar el proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02U04",
+   "known": "she needed to lead the project",
+   "target": "necesitaba liderar el proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02U05",
+   "known": "I told her she should lead the project",
+   "target": "le dije que debería liderar el proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0416L02U06",
+   "known": "in my opinion, she should lead the project",
+   "target": "en mi opinión, debería liderar el proyecto"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0432L02U05",
+   "known": "they already know they could lead the project",
+   "target": "ya saben que podrían liderar el proyecto"
+  },
+  {
+   "kind": "seed",
+   "id": "S0437",
+   "target": "querían recaudar lo máximo posible para una causa benéfica"
+  },
+  {
+   "kind": "lego",
+   "id": "S0437L01",
+   "target": "una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01B01",
+   "target": "una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01B02",
+   "target": "para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01B03",
+   "target": "es para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01B04",
+   "target": "quiero hacerlo para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01U01",
+   "target": "quiero hacer algo para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01U02",
+   "target": "sé que es para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01U03",
+   "target": "necesito hacerlo para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01U04",
+   "target": "¿puedes hacerlo para una causa benéfica?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01U05",
+   "target": "quiero dar algo a una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L01U06",
+   "delete": true,
+   "why": "\"una buena causa benéfica\" is clumsy and \"una buena causa\" drops the LEGO; delete (L01 keeps 4 BUILD + 5 USE)"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L02B03",
+   "target": "hacer lo máximo posible para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L02U02",
+   "target": "¿puedes hacer lo máximo posible para una causa benéfica?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L02U04",
+   "target": "necesito hacer lo máximo posible para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L02U05",
+   "target": "quieren hacer lo máximo posible para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L02U06",
+   "target": "dar lo máximo posible a una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L03B03",
+   "target": "querían recaudar dinero para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L03U01",
+   "target": "querían recaudar lo máximo posible para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L03U02",
+   "target": "sabía que querían recaudar dinero para una causa benéfica"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0437L03U04",
+   "delete": true,
+   "why": "\"for a good charity\" -> would duplicate L03U01 once \"good\" goes; L03 keeps 4 BUILD + 5 USE"
+  },
+  {
+   "kind": "seed",
+   "id": "S0567",
+   "target": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar"
+  },
+  {
+   "kind": "lego",
+   "id": "S0567L01",
+   "target": "ha sido estupendo",
+   "components": [
+    {
+     "known": "it's been",
+     "target": "ha sido"
+    },
+    {
+     "known": "lovely",
+     "target": "estupendo"
+    }
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01C02",
+   "target": "estupendo"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01B01",
+   "target": "ha sido estupendo"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01B02",
+   "target": "ha sido estupendo, estoy seguro de que"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01B03",
+   "target": "ha sido estupendo, pero se está haciendo tarde"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01B04",
+   "target": "ha sido estupendo porque necesitábamos quedarnos"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01U01",
+   "target": "ha sido estupendo ver la iglesia pequeña al final del pueblo"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01U02",
+   "target": "ha sido estupendo ver que puedes seguir adelante sin mi ayuda"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01U03",
+   "target": "ha sido estupendo, pero estoy demasiado cansado para seguir adelante por más tiempo"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01U04",
+   "target": "ha sido estupendo estar aquí desde que nos mudamos a la ciudad"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L01U05",
+   "target": "ha sido estupendo con todo",
+   "delete": true,
+   "why": "Kai 12 Nov: delete (odd on both sides)"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L02U01",
+   "target": "ha sido estupendo pasar tiempo al aire libre"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L03U01",
+   "target": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0567L03U03",
+   "target": "ha sido estupendo viendo a los niños jugar"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0584L02U05",
+   "known": "it's been lovely waking up every morning during the holidays",
+   "target": "ha sido estupendo despertarse cada mañana durante las vacaciones"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0584L03U03",
+   "known": "it's been lovely to wake up and see the mountains",
+   "target": "ha sido estupendo despertarse y ver las montañas"
+  },
+  {
+   "kind": "seed",
+   "id": "S0604",
+   "known": "she offered to let us stay at her house",
+   "target": "ella se ofreció a acogernos en su casa"
+  },
+  {
+   "kind": "lego",
+   "id": "S0604L02",
+   "known": "to let us stay",
+   "target": "acogernos"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0604L02B01",
+   "known": "to let us stay",
+   "target": "acogernos"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0604L02B02",
+   "known": "to let us stay at her house",
+   "target": "acogernos en su casa"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0604L02B03",
+   "known": "to let us stay for a week",
+   "target": "acogernos una semana"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0604L02U01",
+   "known": "she offered to let us stay at her house",
+   "target": "ella se ofreció a acogernos en su casa"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0604L02U02",
+   "known": "she offered to let us stay",
+   "target": "se ofreció a acogernos"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0604L02U03",
+   "known": "she wanted to let us stay",
+   "target": "quería acogernos"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0604L02U04",
+   "known": "she offered to let us stay for a week",
+   "target": "se ofreció a acogernos una semana"
+  }
+ ]
+}

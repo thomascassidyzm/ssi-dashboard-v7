@@ -1,0 +1,442 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0015L03U02",
+  "set": {
+   "known_text": "而且我想让你和我说意大利语",
+   "known_audio_id": "453b9e08-ea05-446e-9adb-19c734457bea"
+  },
+  "expect": {
+   "known_text": "而且我想让你和我说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L03B02",
+  "set": {
+   "known_text": "和别人一起说意大利语",
+   "known_audio_id": "090e9ec3-2609-4828-8ff8-a21c30918264"
+  },
+  "expect": {
+   "known_text": "和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L03U04",
+  "set": {
+   "known_text": "我在试着和别人一起说意大利语",
+   "known_audio_id": "ab295af8-e960-431a-ad32-d0ee1343e4de"
+  },
+  "expect": {
+   "known_text": "我在试着和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L03U01",
+  "set": {
+   "known_text": "他想和别人一起说意大利语",
+   "known_audio_id": "42c6f93d-91cc-4864-b301-4d819badb012"
+  },
+  "expect": {
+   "known_text": "他想和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L03U03",
+  "set": {
+   "known_text": "我想和别人一起说意大利语",
+   "known_audio_id": "abc1120e-2660-43fc-a22e-fb8f484bf104"
+  },
+  "expect": {
+   "known_text": "我想和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L01B01",
+  "set": {
+   "known_text": "他想说意大利语",
+   "known_audio_id": "b273626f-9d90-40e9-89b7-0a7b470236d6"
+  },
+  "expect": {
+   "known_text": "他想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L01U01",
+  "set": {
+   "known_text": "他想说意大利语说得很好",
+   "known_audio_id": "1dedc8e5-5627-4a05-98a7-f79880740b91"
+  },
+  "expect": {
+   "known_text": "他想说中文说得很好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L01U03",
+  "set": {
+   "known_text": "他想明天和你说意大利语",
+   "known_audio_id": "10d32d98-32d6-4d25-a783-ace6a3245555"
+  },
+  "expect": {
+   "known_text": "他想明天和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L01U05",
+  "set": {
+   "known_text": "他想和别人说意大利语",
+   "known_audio_id": "6ccec3cc-e2f2-422b-af2d-553bb6515dee"
+  },
+  "expect": {
+   "known_text": "他想和别人说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L04B01",
+  "set": {
+   "known_text": "以后说意大利语",
+   "known_audio_id": "996bcac5-7b2f-4fed-a051-6ba92d3b1525"
+  },
+  "expect": {
+   "known_text": "以后说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L04U03",
+  "set": {
+   "known_text": "我想以后和你说意大利语",
+   "known_audio_id": "373f20b8-acef-4be1-b941-4ed2eb21bc39"
+  },
+  "expect": {
+   "known_text": "我想以后和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L04U02",
+  "set": {
+   "known_text": "我想以后说意大利语",
+   "known_audio_id": "16d15b17-c69f-4bae-839d-774d6f1dddfd"
+  },
+  "expect": {
+   "known_text": "我想以后说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L04U04",
+  "set": {
+   "known_text": "我想以后和别人一起说意大利语",
+   "known_audio_id": "241dfdd1-44cb-4356-b622-a78ab1653e08"
+  },
+  "expect": {
+   "known_text": "我想以后和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L02B02",
+  "set": {
+   "known_text": "回来说意大利语",
+   "known_audio_id": "22186bd5-00ff-466b-961f-126203b1083b"
+  },
+  "expect": {
+   "known_text": "回来说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0016L02U01",
+  "set": {
+   "known_text": "他想回来说意大利语",
+   "known_audio_id": "27484ef0-a65e-4d0f-bd43-e992b194bf2f"
+  },
+  "expect": {
+   "known_text": "他想回来说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0018L01B01",
+  "set": {
+   "known_text": "我们想说意大利语",
+   "known_audio_id": "d39356c0-5c24-4752-a59c-f56160cd0912"
+  },
+  "expect": {
+   "known_text": "我们想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0018L01U05",
+  "set": {
+   "known_text": "我们想和别人一起说意大利语",
+   "known_audio_id": "58920ccc-dda9-427c-a4de-987c1655d2ac"
+  },
+  "expect": {
+   "known_text": "我们想和别人一起说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0018L01U04",
+  "set": {
+   "known_text": "我们想明天和你说意大利语",
+   "known_audio_id": "1558834e-95f1-43aa-9bfb-4ebd91cca685"
+  },
+  "expect": {
+   "known_text": "我们想明天和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0018L01U01",
+  "set": {
+   "known_text": "我们想说意大利语说得很好",
+   "known_audio_id": "db453a1f-b1b2-4ed3-ad5e-ab0a3c7cd410"
+  },
+  "expect": {
+   "known_text": "我们想说中文说得很好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0018L03B02",
+  "set": {
+   "known_text": "今天晚上六点说意大利语",
+   "known_audio_id": "81d3bb70-ee37-403d-8c36-993934c1beee"
+  },
+  "expect": {
+   "known_text": "今天晚上六点说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0018L03U02",
+  "set": {
+   "known_text": "我想今天晚上六点和你说意大利语",
+   "known_audio_id": "1576333d-9c9f-4a94-bba8-fe688a6e6796"
+  },
+  "expect": {
+   "known_text": "我想今天晚上六点和你说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0018L02B02",
+  "set": {
+   "known_text": "见面说意大利语",
+   "known_audio_id": "db085055-532c-41c0-8152-2e68c888cb53"
+  },
+  "expect": {
+   "known_text": "见面说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0019L01B01",
+  "set": {
+   "known_text": "但是我想说意大利语",
+   "known_audio_id": "3c8e3375-e4cd-4137-867a-1d6eac533d8e"
+  },
+  "expect": {
+   "known_text": "但是我想说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0019L01U01",
+  "set": {
+   "known_text": "但是我想说意大利语说得很好",
+   "known_audio_id": "48d1aa6b-8dde-443f-a43b-abc1e94d0895"
+  },
+  "expect": {
+   "known_text": "但是我想说中文说得很好"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0019L02B02",
+  "set": {
+   "known_text": "停止学意大利语",
+   "known_audio_id": "0d3bf0fe-d84a-4c7c-9f48-7c8869245dc0"
+  },
+  "expect": {
+   "known_text": "停止学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0019L02U01",
+  "set": {
+   "known_text": "我不想停止说意大利语",
+   "known_audio_id": "0b262e26-b6d3-4417-86a0-f09908c82666"
+  },
+  "expect": {
+   "known_text": "我不想停止说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0019L02U02",
+  "set": {
+   "known_text": "他不想停止说意大利语",
+   "known_audio_id": "6cbf6235-9a13-4f4f-9263-2cffbef365f3"
+  },
+  "expect": {
+   "known_text": "他不想停止说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0020L03B02",
+  "set": {
+   "known_text": "快点说意大利语",
+   "known_audio_id": "5accc088-b021-4f3f-9682-5b9b1d000c8a"
+  },
+  "expect": {
+   "known_text": "快点说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0020L03U03",
+  "set": {
+   "known_text": "我在试着快点说意大利语",
+   "known_audio_id": "3825a0fb-68cc-4056-87e0-ef1a0d58ab0d"
+  },
+  "expect": {
+   "known_text": "我在试着快点说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0020L01B01",
+  "set": {
+   "known_text": "你想说意大利语？",
+   "known_audio_id": "801dbc51-4799-41f9-ad65-821aaa7fb573"
+  },
+  "expect": {
+   "known_text": "你想说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0020L01U01",
+  "set": {
+   "known_text": "你想说意大利语说得很好？",
+   "known_audio_id": "e7efe35c-8dcd-4d1e-80ce-8ca9a9839256"
+  },
+  "expect": {
+   "known_text": "你想说中文说得很好？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0021L01B01",
+  "set": {
+   "known_text": "为什么说意大利语？",
+   "known_audio_id": "98e85ed9-03e0-4bc9-8ea4-9862153c5257"
+  },
+  "expect": {
+   "known_text": "为什么说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0021L01U02",
+  "set": {
+   "known_text": "你为什么想学意大利语？",
+   "known_audio_id": "50fcc7ea-2841-41f5-a0b1-081c78e43fef"
+  },
+  "expect": {
+   "known_text": "你为什么想学中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0021L01U01",
+  "set": {
+   "known_text": "你为什么说意大利语？",
+   "known_audio_id": "aa379133-fffa-4b27-938a-6f3c6f859af9"
+  },
+  "expect": {
+   "known_text": "你为什么说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0021L01U03",
+  "set": {
+   "known_text": "你为什么想和别人说意大利语？",
+   "known_audio_id": "52d9af3c-31a3-4c62-9f0c-4301c12d005d"
+  },
+  "expect": {
+   "known_text": "你为什么想和别人说中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0021L02B02",
+  "set": {
+   "known_text": "在学意大利语",
+   "known_audio_id": "fb763767-d45c-4bbf-8a19-0f0cc2b9df49"
+  },
+  "expect": {
+   "known_text": "在学中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0021L02U05",
+  "set": {
+   "known_text": "你现在在学意大利语？",
+   "known_audio_id": "3fe69842-ca46-4e29-9d45-e9d8408948a8"
+  },
+  "expect": {
+   "known_text": "你现在在学中文？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0021L02U02",
+  "set": {
+   "known_text": "你在学意大利语和别人一起？",
+   "known_audio_id": "52e6cead-33c5-4ef8-9051-37044e7772bc"
+  },
+  "expect": {
+   "known_text": "你在学中文和别人一起？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 22,
+  "set": {
+   "known_text": "因为我想见说意大利语的人。",
+   "known_audio_id": "acc34e1d-4dc8-4a2f-ab28-66214262dd41"
+  },
+  "expect": {
+   "known_text": "因为我想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "ita_for_zho:S0022L01B01",
+  "set": {
+   "known_text": "因为我想说意大利语",
+   "known_audio_id": "a0d9d951-110e-46e9-8c2d-719b1d545ad6"
+  },
+  "expect": {
+   "known_text": "因为我想说中文"
+  }
+ }
+]

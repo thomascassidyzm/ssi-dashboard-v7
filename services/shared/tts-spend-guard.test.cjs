@@ -321,21 +321,27 @@ describe('(h) the standing hold: 1,000,000 chars a day across all providers (Tom
   })
 })
 
-describe('(i) a retired provider is refused outright (Tom 2026-09-28: "We don\'t use Eleven Labs any more", job #575)', () => {
+describe('(i) a retired provider is refused outright; ElevenLabs is available again (Tom 2026-10-27, r-2026-10-27-elevenlabs-is-available-again-kai-may)', () => {
   const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
 
-  it('ElevenLabs: even a one-character call is refused, saying it is retired', async () => {
+  it('ElevenLabs: the committed file no longer retires it, and a call through the guard renders', async () => {
     const g = guard({ budgetPath: committed })
-    const err = await call(g, 'a', { provider: 'elevenlabs', voiceId: 'el_x' }).catch(e => e)
-    expect(err.code).toBe('RETIRED')
-    expect(err.message).toMatch(/ElevenLabs retired \(Tom 2026-09-28\)/)
-    expect(fs.existsSync(path.join(dir, 'ledger.jsonl')) ? ledger() : []).toHaveLength(0)
+    await expect(call(g, 'a', { provider: 'elevenlabs', voiceId: 'el_x' })).resolves.toBeTruthy()
   })
 
-  it('the committed file carries no ElevenLabs alert line above the baseline (none the guard would ignore)', async () => {
+  it('ElevenLabs keeps its spend caps: no retired flag, no zero cap, and the baseline daily cap still refuses a runaway', async () => {
     const f = JSON.parse(fs.readFileSync(committed, 'utf8'))
-    expect(f.providers.elevenlabs.dailyCapChars).toBe(0)
-    expect(f.providers.elevenlabs.alertDailyChars).toBeUndefined()
+    expect(f.providers.elevenlabs.retired).toBeUndefined()
+    expect(f.providers.elevenlabs.dailyCapChars).toBeUndefined()
+    const g = guard({ budgetPath: committed })
+    await expect(call(g, 'a'.repeat(250000), { provider: 'elevenlabs', voiceId: 'el_x' })).rejects.toBeTruthy()
+  })
+
+  it('a budget file that names a provider retired still refuses it (the mechanism stays)', async () => {
+    const g = guard({ budgetPath: budgets({ providers: { elevenlabs: { retired: 'test retirement' } } }) })
+    const err = await call(g, 'a', { provider: 'elevenlabs', voiceId: 'el_x' }).catch(e => e)
+    expect(err.code).toBe('RETIRED')
+    expect(fs.existsSync(path.join(dir, 'ledger.jsonl')) ? ledger() : []).toHaveLength(0)
   })
 
   it('other providers still render', async () => {

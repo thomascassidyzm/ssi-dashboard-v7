@@ -182,4 +182,8 @@ describe('Pod 1 English by speaker gender — the take', () => {
     expect(slot(tables, `${N}:SC09-S001`)).toBe(U['tts-neighbour']) // a man's line is not hers
     expect(tables.course_audio.map((c) => c.id)).toEqual(expect.arrayContaining([U['aran-sarah'], U['tts-sarah']]))
   })
+
+  it('South is not a replace pod while its casting is checked with Aran (job #878 hold)', () => {
+    expect(pe.POD_ENGLISH_REPLACE_PODS).toEqual([N])
+  })
 })

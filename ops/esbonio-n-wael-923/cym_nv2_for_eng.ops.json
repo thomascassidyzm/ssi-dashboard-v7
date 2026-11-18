@@ -1,0 +1,302 @@
+{
+ "ops": [
+  {
+   "op": "audio.update",
+   "audio_id": "0d3e0c99-7a71-4187-95a1-2ef0c31d2751",
+   "set": {
+    "text": "mae o’n trio esbonio’n wael"
+   },
+   "expect": {
+    "text": "mae o’n trio esbonio yn wael"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "f852265b-ecfe-41c0-b850-4560fd205c4e",
+   "set": {
+    "text": "ddylet ti ddim esbonio’n wael"
+   },
+   "expect": {
+    "text": "ddylet ti ddim esbonio yn wael"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "2f181a3b-d6f1-4a8e-ab0e-3e710993f289",
+   "set": {
+    "text": "diolch yn fawr ond dw i ddim isio esbonio’n wael"
+   },
+   "expect": {
+    "text": "diolch yn fawr ond dw i ddim isio esbonio yn wael"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "6c6a7cc2-ddfc-470d-b4c0-20fcbb50ece7",
+   "set": {
+    "text": "do’n i ddim isio esbonio’n wael neithiwr"
+   },
+   "expect": {
+    "text": "do’n i ddim isio esbonio yn wael neithiwr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1338L01B04",
+   "set": {
+    "target_text": "mae o’n trio esbonio’n wael",
+    "decomposition": [
+     {
+      "known": "he’s trying",
+      "legoId": "S0062L01",
+      "target": "mae o’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": "’n wael",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae o’n trio esbonio yn wael",
+    "decomposition": [
+     {
+      "known": "he’s trying",
+      "legoId": "S0062L01",
+      "target": "mae o’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": " yn wael",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1338L01U02",
+   "set": {
+    "target_text": "ddylet ti ddim esbonio’n wael",
+    "decomposition": [
+     {
+      "known": "you shouldn’t",
+      "legoId": "S1100L01",
+      "target": "ddylet ti ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": "’n wael",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddylet ti ddim esbonio yn wael",
+    "decomposition": [
+     {
+      "known": "you shouldn’t",
+      "legoId": "S1100L01",
+      "target": "ddylet ti ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": " yn wael",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1338L01U07",
+   "set": {
+    "target_text": "diolch yn fawr ond dw i ddim isio esbonio’n wael",
+    "decomposition": [
+     {
+      "known": "thank you",
+      "legoId": "S0057L01",
+      "target": "diolch yn fawr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": " dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": "’n wael",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "diolch yn fawr ond dw i ddim isio esbonio yn wael",
+    "decomposition": [
+     {
+      "known": "thank you",
+      "legoId": "S0057L01",
+      "target": "diolch yn fawr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": " dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": " yn wael",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1338L01U03",
+   "set": {
+    "target_text": "do’n i ddim isio esbonio’n wael neithiwr",
+    "decomposition": [
+     {
+      "known": "I didn’t want",
+      "legoId": "S0059L01",
+      "target": "do’n i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": "’n wael",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "do’n i ddim isio esbonio yn wael neithiwr",
+    "decomposition": [
+     {
+      "known": "I didn’t want",
+      "legoId": "S0059L01",
+      "target": "do’n i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "badly",
+      "legoId": "S1338L01",
+      "target": " yn wael",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "clips": [
+  {
+   "phrase": "cym_nv2_for_eng:S1338L01B04",
+   "slot": "target2_audio_id",
+   "audio": "0d3e0c99-7a71-4187-95a1-2ef0c31d2751"
+  },
+  {
+   "phrase": "cym_nv2_for_eng:S1338L01U02",
+   "slot": "target2_audio_id",
+   "audio": "f852265b-ecfe-41c0-b850-4560fd205c4e"
+  },
+  {
+   "phrase": "cym_nv2_for_eng:S1338L01U07",
+   "slot": "target2_audio_id",
+   "audio": "2f181a3b-d6f1-4a8e-ab0e-3e710993f289"
+  },
+  {
+   "phrase": "cym_nv2_for_eng:S1338L01U03",
+   "slot": "target2_audio_id",
+   "audio": "6c6a7cc2-ddfc-470d-b4c0-20fcbb50ece7"
+  }
+ ]
+}

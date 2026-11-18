@@ -10,7 +10,6 @@
 # managers; only the one whose timer is armed matters, but both get the switch so re-arming either is safe.
 # HOW a job is switched (the third column):
 #   env    EnvironmentFile=-<copy env>: DATABASE_URL points at the copy. Pure readers; absent file = live as before.
-#   read   Environment=QA_COPY_ENV=<copy env>: the job's READS go to the copy, its WRITES stay live (voices-reconcile).
 #   fresh  EnvironmentFile=-<fresh env>: as env, but only while the copy is tonight's (jobs that judge a recent day).
 #   pulse  Environment=SSI_PULSE_COPY_ENV=<fresh env>: the pulse/POI's own switch, same freshness rule.
 # A fourth column re-times the job's timer to run after the 03:38 UTC refresh (so it reads a copy minutes old).
@@ -35,7 +34,6 @@ system  ssi-voice-variety       env    -
 system  ssi-voice-audit         env    -
 system  ssi-debut-practice      env    -
 system  ssi-voice-coverage      env    04:05
-user    ssi-voices-reconcile    read   -
 user    ssi-intel-nightly       fresh  04:00
 user    cs-ssi-telemetry-pulse  pulse  -
 user    cs-ssi-poi-nightly      pulse  -
@@ -45,7 +43,6 @@ run_as() { if [ "$1" = system ]; then shift; $SUDO "$@"; else shift; "$@"; fi; }
 conf_for() {
   case "$1" in
     env)   printf '[Service]\nEnvironmentFile=-%s\n' "$COPY_ENV" ;;
-    read)  printf '[Service]\nEnvironment=QA_COPY_ENV=%s\n' "$COPY_ENV" ;;
     fresh) printf '[Service]\nEnvironmentFile=-%s\n' "$FRESH_ENV" ;;
     pulse) printf '[Service]\nEnvironment=SSI_PULSE_COPY_ENV=%s\n' "$FRESH_ENV" ;;
     *) echo "unknown switch $1" >&2; return 1 ;;

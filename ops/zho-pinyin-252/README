@@ -1,0 +1,5 @@
+zho_for_eng pinyin sync (job #252, 4 Nov 2026).
+check_pinyin.py <course-dump.json> <seeds.json> <out.json> — offline checker (pypinyin, pip --target), reads
+  the dump from tools/course-optimization/course-dump-readonly-2026-10-14.cjs and
+  GET :3470/api/production/zho_for_eng/seeds?status=all ; flags rows whose pinyin cannot spell their characters.
+fixes.py — the hand-read pinyin applied via edit-batch (66 rows). Re-run the checker after #233 applies.

@@ -1,0 +1,173 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "lego_id": "S0614L04"
+   },
+   "before": {
+    "id": "1e05f94e-8bd7-41fe-8c88-02c6133a3375",
+    "seed_number": 614,
+    "lego_index": 4,
+    "lego_id": "S0614L04",
+    "known_audio_id": "ecfbdba6-ade6-4f48-9852-5d3642e0a0af",
+    "known_text": "lives",
+    "target_text": "lebt",
+    "target1_audio_id": "eeef43d5-3a0f-4750-9b38-844c7a5b923c",
+    "target2_audio_id": "95ef6775-f0ce-48d5-b958-ee84ef117291",
+    "presentation_audio_id": "973d49cc-3716-4e87-9964-ff8c72f98f34"
+   },
+   "after": {
+    "id": "1e05f94e-8bd7-41fe-8c88-02c6133a3375",
+    "seed_number": 614,
+    "lego_index": 4,
+    "lego_id": "S0614L04",
+    "known_audio_id": "f45ec77f-89ba-4cf1-8328-52e8ee38bb63",
+    "known_text": "lives",
+    "target_text": "lebt",
+    "target1_audio_id": "eeef43d5-3a0f-4750-9b38-844c7a5b923c",
+    "target2_audio_id": "95ef6775-f0ce-48d5-b958-ee84ef117291",
+    "presentation_audio_id": "973d49cc-3716-4e87-9964-ff8c72f98f34"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0614L04B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0614L04B01",
+    "seed_number": 614,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "ecfbdba6-ade6-4f48-9852-5d3642e0a0af",
+    "known_text": "lives",
+    "target_text": "lebt",
+    "target1_audio_id": "eeef43d5-3a0f-4750-9b38-844c7a5b923c",
+    "target2_audio_id": "95ef6775-f0ce-48d5-b958-ee84ef117291",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0614L04B01",
+    "seed_number": 614,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_audio_id": "f45ec77f-89ba-4cf1-8328-52e8ee38bb63",
+    "known_text": "lives",
+    "target_text": "lebt",
+    "target1_audio_id": "eeef43d5-3a0f-4750-9b38-844c7a5b923c",
+    "target2_audio_id": "95ef6775-f0ce-48d5-b958-ee84ef117291",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "lego_id": "S0626L02"
+   },
+   "before": {
+    "id": "b47579fe-c556-4134-85d5-f37fa2f33a07",
+    "seed_number": 626,
+    "lego_index": 2,
+    "lego_id": "S0626L02",
+    "known_audio_id": "e21f6326-e222-481c-bff7-18cadc885d19",
+    "known_text": "am",
+    "target_text": "bin",
+    "target1_audio_id": "60d53025-90be-47af-8a54-fd9eeffc4f99",
+    "target2_audio_id": "5964a931-f883-4b59-80bb-27a7aee865de",
+    "presentation_audio_id": "56b848f9-6cbd-41fd-989e-5efb9bea6d1a"
+   },
+   "after": {
+    "id": "b47579fe-c556-4134-85d5-f37fa2f33a07",
+    "seed_number": 626,
+    "lego_index": 2,
+    "lego_id": "S0626L02",
+    "known_audio_id": "0ecd95f4-4333-4d8b-9bc6-06f95f9362a8",
+    "known_text": "am",
+    "target_text": "bin",
+    "target1_audio_id": "60d53025-90be-47af-8a54-fd9eeffc4f99",
+    "target2_audio_id": "5964a931-f883-4b59-80bb-27a7aee865de",
+    "presentation_audio_id": "56b848f9-6cbd-41fd-989e-5efb9bea6d1a"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0626L02B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0626L02B01",
+    "seed_number": 626,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "e21f6326-e222-481c-bff7-18cadc885d19",
+    "known_text": "am",
+    "target_text": "bin",
+    "target1_audio_id": "60d53025-90be-47af-8a54-fd9eeffc4f99",
+    "target2_audio_id": "5964a931-f883-4b59-80bb-27a7aee865de",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0626L02B01",
+    "seed_number": 626,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "0ecd95f4-4333-4d8b-9bc6-06f95f9362a8",
+    "known_text": "am",
+    "target_text": "bin",
+    "target1_audio_id": "60d53025-90be-47af-8a54-fd9eeffc4f99",
+    "target2_audio_id": "5964a931-f883-4b59-80bb-27a7aee865de",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0626L02B01",
+   "set": {
+    "known_audio_id": "e21f6326-e222-481c-bff7-18cadc885d19"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "b47579fe-c556-4134-85d5-f37fa2f33a07",
+   "set": {
+    "known_audio_id": "e21f6326-e222-481c-bff7-18cadc885d19"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0614L04B01",
+   "set": {
+    "known_audio_id": "ecfbdba6-ade6-4f48-9852-5d3642e0a0af"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "1e05f94e-8bd7-41fe-8c88-02c6133a3375",
+   "set": {
+    "known_audio_id": "ecfbdba6-ade6-4f48-9852-5d3642e0a0af"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

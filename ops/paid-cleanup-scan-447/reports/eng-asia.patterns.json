@@ -1,0 +1,160 @@
+{
+ "_readme": "eng-asia slice (#447 worker #474): TARGET-side English patterns for eng_for_* courses. kp = a known positive the regex must match (detect.cjs exits 3 otherwise). Sources: deu_for_eng #435 English fixes (ops/deu-435 shards; English was the KNOWN side there, the same English defects apply when English is the TARGET) and live eng_for_jpn/zho rows found in this scan. A hit is a candidate to READ.",
+ "eng": [
+  {
+   "id": "en_feel_myself",
+   "side": "target",
+   "re": "\\bfeel(s|ing)? myself\\b|\\bfeel (better|worse) myself\\b",
+   "kp": "I feel myself much better when I am at work with my friends",
+   "src": "deu #435 S0185L01U11/S0056L02B06 en-calque (reflexive calque)"
+  },
+  {
+   "id": "en_want_gerund",
+   "side": "target",
+   "re": "\\b(want|wants|wanted) (learning|speaking|going|doing|talking|practising|trying)\\b",
+   "kp": "I want learning German",
+   "src": "deu #435 S0064L01U07 en-calque"
+  },
+  {
+   "id": "en_go_with_bus",
+   "side": "target",
+   "re": "\\bgo(ing)? with the (next )?(bus|train)\\b",
+   "kp": "I would like to go with the next bus",
+   "src": "deu #435 S0095L01U09 en-calque"
+  },
+  {
+   "id": "en_simple_for_progressive",
+   "side": "target",
+   "re": "\\b(at the moment|right now) (I|you|we|they) (learn|speak|try|work|read|go|think|practise|practice|do)\\b",
+   "kp": "At the moment I learn German",
+   "src": "deu #435 S0040L02B05 en-calque"
+  },
+  {
+   "id": "en_backshift",
+   "side": "target",
+   "re": "\\bI (thought|knew|said|didn't know|wasn't sure) (that )?(you're|he's|she's|they're|we're|it's|you are|he is|she is) (going|coming|doing)\\b",
+   "kp": "I thought you're going home",
+   "src": "deu #435 S0124L01U13 en-calque"
+  },
+  {
+   "id": "en_adverb_after_verb",
+   "side": "target",
+   "re": "\\b(know|knew|want|wanted) (definitely|really|certainly)\\b",
+   "kp": "I know definitely I want to learn more German",
+   "src": "deu #435 S0117L01U08 en-calque"
+  },
+  {
+   "id": "en_how_long_already",
+   "side": "target",
+   "re": "\\bhow long have (you|we|they) already\\b",
+   "kp": "How long have you already been learning German, and is it useful?",
+   "src": "deu #435 S0033L02U01 en-calque"
+  },
+  {
+   "id": "en_need_time",
+   "side": "target",
+   "re": "\\bneed(s|ed)? too much time\\b",
+   "kp": "I don't want to need too much time",
+   "src": "deu #435 S0027L05B01 en-calque-lego"
+  },
+  {
+   "id": "en_missing_apostrophe",
+   "side": "target",
+   "re": "\\b(dont|doesnt|didnt|cant|wont|isnt|arent|wasnt|theyre|youre|wouldnt|couldnt|havent)\\b",
+   "kp": "we dont know what theyre trying to achieve",
+   "src": "eng_for_jpn S0213L02U01 (live, this scan)"
+  },
+  {
+   "id": "en_time_word_clash",
+   "side": "target",
+   "re": "\\bnext (month|week|year) (now|soon|here|today)\\b|\\b(last|this) (week|month|night) (tomorrow|next)\\b",
+   "kp": "Would you like to come with us next month now?",
+   "src": "eng_for_zho S0271L01B02 (live, this scan)"
+  },
+  {
+   "id": "en_bare_aux_question",
+   "side": "target",
+   "re": "^(have you (seen|heard)|can you tell me|can I ask( you)?|could you( say| explain)?|do you mind if|what your name is)( (now|here|today|anywhere))?\\?$",
+   "kp": "Have you seen here?",
+   "src": "eng_for_zho S0182L01B03, eng_for_kor S0061L02B02 (live, this scan): a BUILD fragment that is not a sayable English question"
+  },
+  {
+   "id": "en_runon_answer",
+   "side": "target",
+   "re": "\\?? (no|yes),? I('m| am) afraid\\b|\\b(seen|heard) (them|it|him|her|anyone|anywhere|my \\w+)( \\w+)? no\\b",
+   "kp": "have you seen my keys anywhere no I'm afraid I haven't seen them?",
+   "src": "eng_for_jpn S0183L01U01 (live, this scan): question and answer run together with no punctuation"
+  },
+  {
+   "id": "en_didnt_hope_to",
+   "side": "target",
+   "re": "\\bdidn't hope to\\b",
+   "kp": "we didn't hope to wake in the middle of the night",
+   "src": "canonical English seed 108 (all four courses): calque, 'we were hoping not to wake' is the English"
+  }
+ ],
+ "known:kor": [
+  {
+   "id": "known_has_english",
+   "side": "known",
+   "re": "[A-Za-z]{2,}",
+   "kp": "저는 English를 배우고 싶어요",
+   "src": "a135 (17 Aug, commits a508054d7/b5b0cd8d4): 39 eng_for_kor rows had English where the Korean prompt belongs. kp is a planted shape; live count after the fix is 0 in all four courses (this scan)."
+  },
+  {
+   "id": "brackets",
+   "side": "known",
+   "re": "[()（）\\[\\]]",
+   "kp": "(丁寧) 話したいです",
+   "src": "#973·P unbracket0 (14 Oct) stripped brackets from eng_for_jpn; kp planted; live 0 in all four courses"
+  }
+ ],
+ "known:jpn": [
+  {
+   "id": "known_has_english",
+   "side": "known",
+   "re": "[A-Za-z]{2,}",
+   "kp": "私は English を話したいです",
+   "src": "a135 (17 Aug, commits a508054d7/b5b0cd8d4): 39 eng_for_kor rows had English where the Korean prompt belongs. kp is a planted shape; live count after the fix is 0 in all four courses (this scan)."
+  },
+  {
+   "id": "brackets",
+   "side": "known",
+   "re": "[()（）\\[\\]]",
+   "kp": "(丁寧) 話したいです",
+   "src": "#973·P unbracket0 (14 Oct) stripped brackets from eng_for_jpn; kp planted; live 0 in all four courses"
+  }
+ ],
+ "known:zho": [
+  {
+   "id": "known_has_english",
+   "side": "known",
+   "re": "[A-Za-z]{2,}",
+   "kp": "我想说 English",
+   "src": "a135 (17 Aug, commits a508054d7/b5b0cd8d4): 39 eng_for_kor rows had English where the Korean prompt belongs. kp is a planted shape; live count after the fix is 0 in all four courses (this scan)."
+  },
+  {
+   "id": "brackets",
+   "side": "known",
+   "re": "[()（）\\[\\]]",
+   "kp": "(丁寧) 話したいです",
+   "src": "#973·P unbracket0 (14 Oct) stripped brackets from eng_for_jpn; kp planted; live 0 in all four courses"
+  }
+ ],
+ "known:ara": [
+  {
+   "id": "known_has_english",
+   "side": "known",
+   "re": "[A-Za-z]{2,}",
+   "kp": "أريد أن أتكلم English",
+   "src": "a135 (17 Aug, commits a508054d7/b5b0cd8d4): 39 eng_for_kor rows had English where the Korean prompt belongs. kp is a planted shape; live count after the fix is 0 in all four courses (this scan)."
+  },
+  {
+   "id": "brackets",
+   "side": "known",
+   "re": "[()（）\\[\\]]",
+   "kp": "(丁寧) 話したいです",
+   "src": "#973·P unbracket0 (14 Oct) stripped brackets from eng_for_jpn; kp planted; live 0 in all four courses"
+  }
+ ]
+}

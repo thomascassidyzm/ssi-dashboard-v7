@@ -27,8 +27,10 @@
  *     are not distinguished AT ALL — a voice's phrase is matched to the voice
  *     and the text and the language and NO ROLE; the app plays the voices at
  *     different speeds." A clip recorded as known in one course answers a
- *     target slot in another, and vice versa. Nothing here reads a row's role;
- *     tts-door.test.cjs fails if anything starts to.
+ *     target slot in another, and vice versa. Known and target are never told
+ *     apart here (tts-door.test.cjs). The ONE role read is the pod-only roles
+ *     (pod_atom, pod_fine_known — shared/pod-audio.cjs, job #628): a Pod Drill
+ *     piece or Talk Bollocks line answers no slot at all, on either side.
  *
  * What it refuses:
  *   - pending/ placeholders (no audio behind them);
@@ -44,10 +46,15 @@
  * text_normalized is written by the SQL trigger's convention (see text-normalize.cjs).
  */
 
-const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
+const { podTtsText, sameRecordedWords, recordingTextKeys } = require('./text-normalize.cjs')
+// Every key lookup below is a free-text .in(); this makes supabase-js quote it correctly process-wide (cs #460).
+require('./postgrest-in-quote.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const clipIndex = require('./clip-index.cjs')
+const { isPodOnlyClip } = require('./pod-audio.cjs')
 const { issueTicket } = require('./door-ticket.cjs')
+const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
+const { wordsOf, withSpokenText } = require('./clip-spoken-words.cjs')
 
 const PAGE = 1000
 const MAX_PAGES = 20
@@ -100,21 +107,24 @@ function pickExistingClip(rows, want) {
 
 /** Every candidate row that may answer this request — the rule pickExistingClip ranks. */
 function usableClips(rows, want) {
-  const words = normalizeForAudio(want.text)
   const excluded = new Set((want.replacing || []).filter(Boolean).map(String))
   return (rows || []).filter(row =>
     row && row.s3_key &&
     !String(row.s3_key).startsWith('pending/') &&
+    // A pod-only clip (job #628, shared/pod-audio.cjs) never answers a slot.
+    !isPodOnlyClip(row) &&
     !excluded.has(String(row.s3_key)) && !excluded.has(String(row.id)) &&
     row.veracity_pass !== false &&
-    row.text != null && normalizeForAudio(row.text) === words &&
+    // One recording, two spellings (job #813): a clip stored with phase 8's pod pause cue answers the plain words and back.
+    // Matched on the words the clip SAYS (cs #160·AI): a clip_spoken_text verdict, when the row carries one, replaces its label.
+    wordsOf(row) != null && sameRecordedWords(wordsOf(row), want.text) &&
     tryCanonicalLanguage(row.language) === want.language &&
     (!want.voiceBound || tryCanonicalVoiceId(row.voice_id) === want.voiceId) &&
     // An intro slot is answered only by its own course (Tom, 2026-08-07).
     (!want.ownCourseOnly || (want.courseCode != null && row.course_code === want.courseCode)))
 }
 
-const COLUMNS = 'id, course_code, text, language, voice_id, s3_key, origin, duration_ms, word_boundaries, word_timings, veracity_pass'
+const COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, audio_revision, duration_ms, word_boundaries, word_timings, veracity_pass'
 
 /**
  * The live library: course_audio in Supabase, bytes from S3. Created lazily so
@@ -145,7 +155,7 @@ function supabaseClipLibrary({ supabase, s3, bucket } = {}) {
       return clipIndex.resolveClip(source, { ...want, includeOwnCourse: true }, pick)
     },
     async candidates(text) {
-      const keys = audioKeyCandidates(text)
+      const keys = recordingTextKeys(text)
       if (!keys.length) return []
       const out = []
       for (let page = 0; page < MAX_PAGES; page++) {
@@ -160,14 +170,15 @@ function supabaseClipLibrary({ supabase, s3, bucket } = {}) {
         // a library outage turns into a render bill. Refuse instead.
         if (error) throw new Error(`TTS door: clip lookup failed (${error.message}) — refusing to render blind`)
         out.push(...(data || []))
-        if (!data || data.length < PAGE) return out
+        // With the clip_spoken_text verdicts attached (cs #160·AI), so usableClips matches on the words each clip says.
+        if (!data || data.length < PAGE) return withSpokenText(db(), out)
       }
       throw new Error(`TTS door: more than ${PAGE * MAX_PAGES} clips share the words "${String(text).slice(0, 40)}" — refusing to render on a truncated lookup`)
     },
     async bytes(row) {
       if (!s3Client) {
         const { S3Client } = require('@aws-sdk/client-s3')
-        s3Client = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
+        s3Client = require('./audio-store.cjs').wrapAudioClient(new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' }))
       }
       const { GetObjectCommand } = require('@aws-sdk/client-s3')
       const r = await s3Client.send(new GetObjectCommand({ Bucket, Key: row.s3_key }))
@@ -199,9 +210,8 @@ function memoryClipLibrary(rows = [], bytesFor = () => Buffer.from('existing-cli
     name: 'memory',
     rows,
     async candidates(text) {
-      const keys = new Set(audioKeyCandidates(text))
-      const words = normalizeForAudio(text)
-      return rows.filter(r => keys.has(r.text_normalized) || normalizeForAudio(r.text || '') === words)
+      const keys = new Set(recordingTextKeys(text))
+      return rows.filter(r => keys.has(r.text_normalized) || sameRecordedWords(r.text || '', text))
     },
     async bytes(row) { return bytesFor(row) },
   }
@@ -244,16 +254,83 @@ async function lookupForRender(want, lib = clipLibrary()) {
   const pickSeen = rows => { seen.push(...(rows || [])); return pickExistingClip(rows, want) }
   let clip
   if (typeof lib.resolve === 'function') clip = await lib.resolve(want, pickSeen)
-  else clip = pickSeen(await lib.candidates(want.text))
+  // No index: the same pronunciation-override guard resolveClip applies (job #262·AD) — a misread clip of a listed line is never seen.
+  else clip = pickSeen(await allowedForOverride(await lib.candidates(want.text), want))
   if (clip) return { clip, ticket: null }
   const byId = new Map()
   for (const r of usableClips(seen, { ...want, voiceBound: true })) if (r && !byId.has(r.id)) byId.set(r.id, r)
-  const ticket = issueTicket({ language: want.language, voiceId: want.voiceId, text: want.text, inLibrary: [...byId.values()], replacing: want.replacing })
+  const ticket = issueTicket({ language: want.language, voiceId: want.voiceId, text: want.text, spokenText: want.spokenText || null, inLibrary: [...byId.values()], replacing: want.replacing })
   return { clip: null, ticket }
+}
+
+/**
+ * EVERY RECORDING OF THESE WORDS IN THIS LANGUAGE (job #352, 2026-11-02) — any course, either side, any voice.
+ *
+ * Recordings are per LANGUAGE (Tom, 2026-09-13: "We have all recordings already. We just create IDs per course so
+ * that the per course IDs point to the same recordings"; 2026-11-02: "pods are done by language, not by course —
+ * once we have Japanese, we have it as both target and known languages"). Voice identity still keys a TAKE, so
+ * the route links only a same-voice clip (job #303) — but a clip in ANOTHER voice still means the line exists, and
+ * a render of it is a second performance, never a "hole". This is the one question every caller that is about to
+ * report or pay for a render asks first: the render route (audio-render-entry.cjs, EXISTS_IN_LANGUAGE) and the pod
+ * link tool (tools/pods/link-pod-from-siblings.cjs).
+ *
+ *   - language: one language whatever the spelling — the door's canonical code, OR the reuse planner's alias groups
+ *     (Basque eus/eu/baq, #340), because 'baq' has no canonical form and a stored 'eu' row must still count;
+ *   - text: normalizeForAudio, and also the pod-joined " … " form (podTtsText) a multi-sentence turn is stored as;
+ *   - real audio only: an s3_key that is not pending/. No role and no course are read — a known-side clip of course
+ *     A is a recording of a target-side line of course B in the same language.
+ *
+ * Pure: `rows` are candidate course_audio rows from any source.
+ */
+function clipsInLanguage(rows, { language, text }) {
+  if (!language || !text) return []
+  const out = new Map()
+  for (const row of rows || []) {
+    if (!row || !row.s3_key || String(row.s3_key).startsWith('pending/')) continue
+    if (isPodOnlyClip(row)) continue // a pod piece is not "the recording of these words" for a slot (job #628)
+    if (wordsOf(row) == null || !sameRecordedWords(wordsOf(row), text)) continue // the words it SAYS (cs #160·AI)
+    if (!oneLanguage(language, row.language)) continue
+    if (!out.has(String(row.id))) out.set(String(row.id), row)
+  }
+  return [...out.values()]
+}
+
+/** Are these two language spellings one language? Canonical code, else the reuse planner's alias groups. */
+function oneLanguage(a, b) {
+  if (!a || !b) return false
+  const ca = tryCanonicalLanguage(a), cb = tryCanonicalLanguage(b)
+  if (ca && cb) return ca === cb
+  // Lazy: the planner is a heavy module and requires the shared helpers this file sits beside.
+  const { sameLanguage } = require('../audio-reuse-planner.cjs')
+  return sameLanguage(a, b)
+}
+
+/**
+ * The live question behind clipsInLanguage: asks the library exactly as the door does (clip_index keyed on
+ * (language, text_key), then course_audio on idx_course_audio_text (text_normalized, language) — both indexed;
+ * never a scan), read-only, for the words and their pod-joined form, and returns every recording found.
+ * A failed lookup THROWS (the library's own rule): an outage must never read as "nothing exists".
+ *
+ * @param {{ language: string, text: string, courseCode?: string }} want
+ * @returns {Promise<object[]>} course_audio rows, any course / voice / role
+ */
+async function existingClipsInLanguage({ language, text, courseCode = null }, lib = clipLibrary()) {
+  if (!language || !text) return []
+  const seen = []
+  const collect = rows => { seen.push(...(rows || [])); return null }
+  for (const t of new Set([String(text), podTtsText(text)])) {
+    const canonical = tryCanonicalLanguage(language)
+    // A spelling with no canonical code (Basque 'baq') cannot key the index: ask by words alone, filter by language below.
+    if (canonical && typeof lib.resolve === 'function') await lib.resolve({ text: t, language: canonical, courseCode, readOnly: true }, collect)
+    else collect(await lib.candidates(t))
+  }
+  return clipsInLanguage(seen, { language, text })
 }
 
 module.exports = {
   identityFromConfig,
+  clipsInLanguage,
+  existingClipsInLanguage,
   pickExistingClip,
   usableClips,
   findExistingClip,

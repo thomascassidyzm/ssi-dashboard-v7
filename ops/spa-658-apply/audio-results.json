@@ -1,0 +1,3619 @@
+[
+ {
+  "role": "target1",
+  "text": "No estoy seguro de por qué no está funcionando desde que lo intentamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0146L04U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7653beb7-4a30-4207-a70e-a8cd108c41bf",
+   "charsSpent": 70
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No estoy seguro de por qué no está funcionando desde que lo intentamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0146L04U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4d68837f-f941-42aa-a021-7378bb0bb084",
+   "charsSpent": 70
+  }
+ },
+ {
+  "role": "known",
+  "text": "I am not sure why it is not working since we tried it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0146L04U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "717655ff-7224-40aa-8ccb-6a984a84d50e",
+   "charsSpent": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Cuál es la última cosa que has oído de tu amigo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0196L02U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a7cf0dcf-ac21-445b-a810-80b4f48c7d5c",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuál es la última cosa que has oído de tu amigo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0196L02U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "527693cb-b3fc-4756-b6ef-7fff3934d92c",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "known",
+  "text": "What is the latest thing you have heard from your friend?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0196L02U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "43b3f939-6d63-4aed-bf63-47ba3b79d17c",
+   "charsSpent": 57
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Vi a mis amigos el fin de semana y fue muy bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0216L04U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "98806b87-b4e9-4a80-aa7c-5f7df2d8152c",
+   "charsSpent": 48
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Vi a mis amigos el fin de semana y fue muy bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0216L04U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "88027fdc-bba8-45e1-940f-29a756e2d160",
+   "charsSpent": 48
+  }
+ },
+ {
+  "role": "known",
+  "text": "I saw my friends at the weekend and it was very good",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0216L04U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b9d0c57e-f1fb-4678-b30b-9f2e7ea8cfbb",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No sé a quién te refieres con lo que dijiste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0263L01U01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "977aae34-3611-4c36-aa8a-6bf90d5816bb",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No sé a quién te refieres con lo que dijiste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0263L01U01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "019b81bd-afef-4da0-be9a-1f9f0af027b7",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't know who you mean by what you said",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0263L01U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c2a50dcc-84a8-48b6-9e7a-80691d9916f2",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No sé si has tenido noticias de tu amigo esta semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d6a0ce85-f5b7-4d5c-8302-a780f0a4467b",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No sé si has tenido noticias de tu amigo esta semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fe6f38fc-62da-4785-8708-f05182fb70d4",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't know if you've had news from your friend this week",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0ef7e1ec-7c1e-4d03-868f-766f396eb0f2",
+   "charsSpent": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Has tenido noticias de tu amigo hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b7d2e4ea-a767-45d4-a891-d4908fdff2f8",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Has tenido noticias de tu amigo hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a6a295a7-d0fd-446c-8bee-56c2ed2863be",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "known",
+  "text": "Have you had news from your friend today?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c8c7d1b5-37ed-4af3-b258-af408c83f8c8",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No has tenido noticias de él esta semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U12",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "26d06179-69be-422c-9855-cb04dd2f9069",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No has tenido noticias de él esta semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U12",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "242e586c-d4a1-4e3d-b082-3ec96502a0a2",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "You haven't had news from him this week",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0267L01U12",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "45107490-2b7a-434e-bb11-fcda53a22c9a",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Ella me mandó correos la semana pasada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "target1",
+    "current": "ace0653a-bb8c-43a9-a136-4d6498d9de29"
+   }
+  ],
+  "dry": {
+   "status": 409
+  },
+  "real": {
+   "skipped": "refused by a guard in the dry run — held for a person"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ella me mandó correos la semana pasada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "target2",
+    "current": "5ee0c8c5-93d0-4a70-87db-0d37fcda2579"
+   }
+  ],
+  "dry": {
+   "status": 409
+  },
+  "real": {
+   "skipped": "refused by a guard in the dry run — held for a person"
+  }
+ },
+ {
+  "role": "known",
+  "text": "She sent me emails last week",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0268L02U12",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "33c83020-aba5-4839-af9b-2ecaad53cc29",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "antes pensaba que era un problema",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0536L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "60a345a9-88ce-4ab6-8a1e-db4e74d1ddba",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "antes pensaba que era un problema",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0536L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "028d7444-11c3-41f3-a37a-c9df78efd39b",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "antes pensaba que todo iba bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0536L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6ce9b374-96bc-47e3-be30-3d5d3d73eb86",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "antes pensaba que todo iba bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0536L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d5a1c7b5-bb30-4e03-b795-d4b3c7885008",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si termino temprano me gustaría leer mi libro por un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c295ad4a-f549-4139-a2d3-33bcc58ac0ab",
+   "charsSpent": 57
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si termino temprano me gustaría leer mi libro por un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "20e1a774-d55d-44e2-bdf0-2afc25ed7be9",
+   "charsSpent": 57
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I finish early I would like to read my book for a while",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "539d2962-5f6f-4e38-9167-2097513d50e7",
+   "charsSpent": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si termino hoy voy a intentar relajarme un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4f2687c5-5ec8-407b-9609-982f611ab944",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si termino hoy voy a intentar relajarme un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e3511250-bc18-475c-a068-1ee6438e8cfb",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I finish today I am going to try to relax for a while",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6d2090f3-01f9-4446-bcc9-89cea657d18b",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si termino a tiempo me gustaría ir a casa a relajarme un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7e59acb1-caf7-4ccd-a0f8-8e2cc4f2a3ff",
+   "charsSpent": 61
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si termino a tiempo me gustaría ir a casa a relajarme un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d49913b4-92a1-4e76-8a2e-f5b2430d1fe0",
+   "charsSpent": 61
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I finish on time I would like to go home and relax for a while",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e08f5d60-d1a3-40ba-a765-933de3baedc4",
+   "charsSpent": 65
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si termino pronto me gustaría hablar un poco más contigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8542ef1e-6eae-40f4-b8ad-d59d59eccc8b",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si termino pronto me gustaría hablar un poco más contigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c3494334-9663-44b3-b00b-188293f4341e",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I finish soon I would like to speak a little more with you",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0aad9958-29f1-41aa-9122-482530bd1407",
+   "charsSpent": 61
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si termino esto quiero practicar hablando español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5e9227aa-ffc5-4661-913c-cff94731ae1c",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si termino esto quiero practicar hablando español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1a6b9b6d-5e12-471a-ac70-b600e5a32f63",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I finish this I want to practise speaking Spanish",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5662a84f-06dc-4ec1-9b5e-4072edf1b6e6",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Sé que eres alguien que quiere entender esto antes de que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L05U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ce01050c-dddc-4ebe-8947-f370b23ca152",
+   "charsSpent": 66
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Sé que eres alguien que quiere entender esto antes de que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L05U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3e12af4a-650c-480b-aed1-c64eb1beabc8",
+   "charsSpent": 66
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know you are someone who wants to understand this before you leave",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L05U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e6e33888-9bf8-4920-b048-e56209ad560d",
+   "charsSpent": 68
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me gustaría ir pero todavía no me siento listo para hablar con personas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L01U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e3c61fe7-9c55-40b9-92b2-dbfc77b27e1d",
+   "charsSpent": 71
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gustaría ir pero todavía no me siento listo para hablar con personas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L01U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4781b7a7-b2aa-421b-9e25-05e4a55669e8",
+   "charsSpent": 71
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like to go but I don't feel ready to talk to people yet",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L01U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1477dda6-1c86-4b5d-8832-3f14e27f397a",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Creo que podré ayudar más mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0168L03U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "740fd8eb-ba61-4d69-8bf7-5d0b75355645",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Creo que podré ayudar más mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0168L03U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "204eddd4-43f8-4642-8506-263f5478369c",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think that I will be able to help more tomorrow",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0168L03U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0566cb86-33e6-4b42-b266-b2fe413c8a44",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Así que voy a intentar hablar todo lo que pueda contigo hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d7712ffe-3533-4f9e-822c-e3a6e1e23f17",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Así que voy a intentar hablar todo lo que pueda contigo hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "15887f26-86b0-4386-8019-5751b3ba9562",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "known",
+  "text": "So I am going to try to speak as much as I can with you today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bf2c20f5-677d-4034-bb9f-59a81f10fdb9",
+   "charsSpent": 61
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Creo que mi coche es la mejor opción cuando tengo que ir a casa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0121L05U12",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "51cb2d51-1449-454c-8269-aa6580fe4f44",
+   "charsSpent": 63
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Creo que mi coche es la mejor opción cuando tengo que ir a casa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0121L05U12",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a21eae29-39bf-46f6-b3c7-632c7f7cc789",
+   "charsSpent": 63
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think my car is the best option when I have to go home",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0121L05U12",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d03b044b-6565-447e-9859-8a10abae1c0a",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que no importa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bcbf5d90-6af0-433c-bcb6-323a0e123f95",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que no importa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "36549cff-c237-41c9-ae98-aea29d90fd6b",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know it doesn't matter",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L01U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5f22a963-71ff-41c5-9d55-edf98d75d5bc",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que todavía se pelean",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0410L02U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e5f23c4f-287a-4ece-ab9b-a00164a6268a",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que todavía se pelean",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0410L02U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b5024b09-d1ac-4020-8915-13d3aa4f059a",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know they still fight",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0410L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "12580091-c57d-4f3d-b8b2-331a7409914c",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que tiene todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0420L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "879187f9-268a-4fa7-987b-8e35fa9cde1a",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que tiene todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0420L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d1e1375f-f7ea-45e8-98a6-b70f708a2f85",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know he has everything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0420L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b387af5e-605b-4bd4-9f0e-555f2a88f8e1",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que tiene más",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0420L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f90a830f-28f7-47d5-90aa-92d3d98fcf58",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que tiene más",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0420L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b683165d-fb6f-4d5f-b629-09acc3b530ee",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know he has more",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0420L01U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0c6dc1a0-cc4f-44c8-999d-f9f33bcf3954",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target1",
+  "text": "estoy seguro de que saben",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0421L03U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a2d68f06-24c6-4998-adea-3dce446e018f",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "estoy seguro de que saben",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0421L03U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9309dbd5-4d20-4039-8050-eea970e9e4e5",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm sure they know",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0421L03U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3fe3008f-b25b-42d2-890b-5a6fbe6e348c",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que ya entienden",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0425L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0cdafbe3-80ad-4e59-9b53-1015976a3eb6",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que ya entienden",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0425L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8710a23e-4ef0-426a-b7ac-38ec9aca5ac6",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know they already understand",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0425L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8bc46487-c272-4a34-b820-576679e0eb8d",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que están aburridos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0427L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "18bde03c-0b37-446c-b292-445cf7fb39ec",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que están aburridos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0427L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1ecd7c10-fcc9-4db5-859a-5baa5b12f6f5",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know they are bored",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0427L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "62d965a4-2a92-47bf-964f-7cd1bc840698",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "target1",
+  "text": "estoy seguro de que estarán listos pronto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0431L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e3288313-4cd4-4b3b-9862-fb7968991539",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "target2",
+  "text": "estoy seguro de que estarán listos pronto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0431L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cf846ea3-afcc-4771-a9a6-234d003c7e0e",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm sure they'll be ready soon",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0431L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d3fb8e83-927a-42aa-99e7-17691d416939",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que quieren que preguntes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0432L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "56a565dd-e1f4-4e70-a5f0-5a879e5f9913",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que quieren que preguntes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0432L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e2bfcdbe-04cb-4777-b846-d4a8e6cd5621",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know they want you to ask",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0432L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9b57a5b6-9982-4966-b5a3-456d750ef906",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que puede que esté allí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0456L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "76c43d75-290e-439a-a7da-30c596320f5d",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que puede que esté allí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0456L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "715c28c2-6eab-478d-80a2-218d64af81cd",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know he might be there",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0456L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "343c37e7-7a9b-494a-9c9b-f4423cb8ea4a",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que quieren que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fe5e0be8-a342-46a4-b9f0-59e874432f46",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que quieren que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "aea1a96d-8074-4c11-a71a-7aaff54725f1",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know they want people to appreciate them",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7e2248c3-b4c7-4025-906f-72d7f97ae606",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que tuvimos que irnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0455L03U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6d146fa3-a4f4-4f09-8f9e-2755650119aa",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que tuvimos que irnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0455L03U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "333777ee-24b6-45eb-b3fa-1e111ad8f535",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know we had to leave",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0455L03U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dff539ca-eac5-4e89-bbc4-747ea44da205",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que no dijeron nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0452L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7a544699-8773-4b2a-a352-01ceecb7858c",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que no dijeron nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0452L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5c241ecc-3e8f-4201-9037-43d85d6c03a5",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know they didn't say anything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0452L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9f13da0d-c64f-4dce-ad35-50e56b579317",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que se le olvidó",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0464L03U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d6ab5910-088c-4093-8305-ce5dca29374f",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que se le olvidó",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0464L03U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a814532f-fba4-485b-b965-7d4bfda65644",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know she forgot it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0464L03U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4fcfbe12-557a-4b48-9f97-5b5d57c17061",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target1",
+  "text": "creo que le dije una vez",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0464L02U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7a58a56c-aee6-4896-9c29-eb9bac044912",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "creo que le dije una vez",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0464L02U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d8bb6f10-e0e5-4dda-ad94-ad7ade6abe8f",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think I told her once",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0464L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "59b91460-23ec-40a3-99b7-c93de538b552",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que se está debilitando",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0421L04U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f55bacff-e9ae-4bc5-8743-72a294c7ab25",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que se está debilitando",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0421L04U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "49abb29c-bc78-4532-8b59-b4399fc7cb63",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know she is getting weak",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0421L04U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1a0cae5e-0cc6-4086-9620-a94dbbf32f5a",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sería lo menos que podría hacer",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0479L02U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5ad3ddcd-a7ae-45e5-97fe-693a82d4a33f",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sería lo menos que podría hacer",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0479L02U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d949fcb6-f5e7-43e0-bbce-e84bc32250d8",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "it would be the least I could do",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0479L02U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "44acbe9d-dd69-460b-837a-a4d6137ce8d1",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "known",
+  "text": "Nobody said we have to finish in a day",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0295L02U10",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1ca42ead-7aef-4a00-be32-9d0787ca1aa5",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B05",
+    "slot": "target1",
+    "current": "7987809c-cda2-40aa-8804-8c27185fd949"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Eso suena como una gran idea\" is already recorded in spa — 1 clip(s): 7987809c-cda2-40aa-8804-8c27185fd949 (voice es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B05",
+    "slot": "target2",
+    "current": "cb3e15f3-78fd-4245-9455-8450bed8e105"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Eso suena como una gran idea\" is already recorded in spa — 1 clip(s): cb3e15f3-78fd-4245-9455-8450bed8e105 (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Creo que eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2ea0a6de-aa14-4302-a96d-77898cf32f63",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Creo que eso suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03B06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4d22ad04-f83e-4a5f-885e-49d5aa855518",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U02",
+    "slot": "target1",
+    "current": "b49d36c1-d7fb-4c06-9038-529b70c6cfe3"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Eso me suena como una gran idea\" is already recorded in spa — 1 clip(s): b49d36c1-d7fb-4c06-9038-529b70c6cfe3 (voice es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U02",
+    "slot": "target2",
+    "current": "0d3cb0eb-8baf-4352-9993-08b5cbb9c85a"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Eso me suena como una gran idea\" is already recorded in spa — 1 clip(s): 0d3cb0eb-8baf-4352-9993-08b5cbb9c85a (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Tengo que decir que eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U05",
+    "slot": "target1",
+    "current": "939c0b58-cefa-468b-8414-4e75e304f661"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Tengo que decir que eso me suena como una gran idea\" is already recorded in spa — 1 clip(s): 939c0b58-cefa-468b-8414-4e75e304f661 (voice es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Tengo que decir que eso me suena como una gran idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U05",
+    "slot": "target2",
+    "current": "a7eb991f-4d54-4d12-8d34-671387c23550"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Tengo que decir que eso me suena como una gran idea\" is already recorded in spa — 1 clip(s): a7eb991f-4d54-4d12-8d34-671387c23550 (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿cuál es el mejor?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8aca6361-3423-49d9-ad3e-a72fc380186f",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿cuál es el mejor?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1053459e-a48b-459d-aaad-86f265a8f647",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "which one is the best?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "75923429-e8fe-4fc5-9b34-73dd9d3b33e5",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿cuál de esos lugares es el mejor?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bd0e7c39-4910-4b3b-b234-603eac7bb845",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿cuál de esos lugares es el mejor?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "40ea7218-86f7-4ef0-9a73-45944e1dfc79",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "target1",
+  "text": "creo que este es el más interesante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L04U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2886e363-9dff-4440-8c06-e2e1bedbce30",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "creo que este es el más interesante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L04U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bb04c19a-1a25-44eb-b84c-b6b6a5b5158c",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think this one is the most interesting",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L04U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3ab37944-3625-4596-bd99-a51b43fa0b9f",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target1",
+  "text": "creo que ese es el que quería",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0636L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "82448795-16c1-4c89-a67a-61eeda6876a3",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "creo que ese es el que quería",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0636L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b24b0d5c-acaa-48ea-ae3d-b953b273357f",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think that that is the one she wanted",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0636L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "14f545fe-c40d-4b67-9c7a-068745863e0d",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "creo que ese es el mejor",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0636L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d6492368-180b-4e64-bc60-4cb1f57cd743",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "creo que ese es el mejor",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0636L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5ec854f7-905d-4018-baf2-017d9422ac72",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think that that is the best one",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0636L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3a1f7e05-f6dc-4295-a1d2-2df8b8efe36d",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "known",
+  "text": "When she saw me I was very happy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0147L03U15",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c12b1f68-c81f-4ecf-ae9c-02e805ef37a3",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Él quería ir pero no estaba seguro de cuándo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L01U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "45d376d1-31c9-4612-931f-b235bb7bff12",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Él quería ir pero no estaba seguro de cuándo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L01U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c6af1d30-0d9c-40f2-9bf8-bb50509ffdab",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "He wanted to go but wasn't sure when",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L01U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "72c4e07a-f130-4dcf-9c4d-e830af650f71",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "known",
+  "text": "They told us that he was very happy to finish everything with us",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0211L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b125d629-d39e-4f79-a11d-d86523ce5a38",
+   "charsSpent": 64
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm sure he'll be ready soon",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5bd74446-d931-47e8-9aee-88302d1df1d0",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Vi a tu amiga en la oficina esta mañana y me dijo que te estaba buscando",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0184L03U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "167c046b-5e4b-46fe-abc6-47773a2a9966",
+   "charsSpent": 72
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Vi a tu amiga en la oficina esta mañana y me dijo que te estaba buscando",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0184L03U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "64fe6f01-39bf-42d9-95b3-f863a56e4696",
+   "charsSpent": 72
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No estoy seguro de si unos minutos son suficientes para explicar esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0155L02U15",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c59402b7-c025-4c4b-a235-8d07e37c04dc",
+   "charsSpent": 69
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No estoy seguro de si unos minutos son suficientes para explicar esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0155L02U15",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6040decc-cf41-495f-bfa8-983cccc310cd",
+   "charsSpent": 69
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Las personas que hablan español a menudo son muy interesantes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0283L03U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d2b9a4aa-7749-4ae2-ab14-c8c2074e901c",
+   "charsSpent": 61
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Las personas que hablan español a menudo son muy interesantes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0283L03U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fc249687-fed7-4617-ba29-351eef5ce7b0",
+   "charsSpent": 61
+  }
+ },
+ {
+  "role": "known",
+  "text": "People who speak Spanish often are very interesting",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0283L03U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "400ead0a-c316-4411-9b12-dfe41eef1e06",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Estoy intentando saber cuáles son los más importantes para hablar español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0283L01U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8c427ca2-6f1c-4710-a232-cc3d019ebb87",
+   "charsSpent": 73
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Estoy intentando saber cuáles son los más importantes para hablar español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0283L01U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bee9d3ca-fbba-46f9-992a-043f46a03486",
+   "charsSpent": 73
+  }
+ },
+ {
+  "role": "known",
+  "text": "I am trying to find out which ones are the most important for speaking Spanish",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0283L01U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9c63233e-9a66-4add-b76c-f9e83ef67bcd",
+   "charsSpent": 78
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No conozco a muchas personas que hablen español pero los que conozco hablan muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0297L04U12",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9801c7c1-77a9-41ab-b929-20d9b8edb142",
+   "charsSpent": 84
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No conozco a muchas personas que hablen español pero los que conozco hablan muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0297L04U12",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bc6d42ff-c698-468b-97e9-725a16bff62f",
+   "charsSpent": 84
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't know many people who speak Spanish but the ones I know speak very well",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0297L04U12",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ff817946-82d7-40ed-ba97-d9b72b6899a8",
+   "charsSpent": 78
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Ella no quiere parecer antipática con la persona que trabaja con ella",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0300L03U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "68ad35a7-8f17-4499-b08e-9cafdc99e206",
+   "charsSpent": 69
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ella no quiere parecer antipática con la persona que trabaja con ella",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0300L03U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f9622ac6-aa85-4d9c-b226-353f772e6e6a",
+   "charsSpent": 69
+  }
+ },
+ {
+  "role": "known",
+  "text": "She does not want to seem unfriendly with the person who works with her",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0300L03U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "542b5081-60aa-4245-84ec-4a01cd3f2faa",
+   "charsSpent": 71
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me pregunto si la reunión va a estar lista para empezar a tiempo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0289L02U12",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "99a228e7-e657-4bfa-9a7d-aa04b5f7dd0c",
+   "charsSpent": 64
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me pregunto si la reunión va a estar lista para empezar a tiempo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0289L02U12",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f543d1b5-00a3-4437-a473-4871c6cb012c",
+   "charsSpent": 64
+  }
+ },
+ {
+  "role": "target1",
+  "text": "una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "target1",
+    "current": "4c329d25-71ec-4502-9a73-a318aca6d4d7"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "target1",
+    "current": "4c329d25-71ec-4502-9a73-a318aca6d4d7"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"una pregunta tan obvia\" is already recorded in spa — 1 clip(s): 4c329d25-71ec-4502-9a73-a318aca6d4d7 (voice azure_es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "target2",
+    "current": "dde6c0e3-4d79-47d2-bb48-ba5f6b55922b"
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "target2",
+    "current": "dde6c0e3-4d79-47d2-bb48-ba5f6b55922b"
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"una pregunta tan obvia\" is already recorded in spa — 1 clip(s): dde6c0e3-4d79-47d2-bb48-ba5f6b55922b (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B01",
+    "slot": "known",
+    "current": null
+   },
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d1e53e8f-5fa5-4ff9-8366-ea63b8b03146",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hacer una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ab57c09c-bca2-4c04-b16b-4b187a41958a",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hacer una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "07aaa2ca-6ff0-40c8-886c-51f548fa2dcb",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "to ask such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7193a23a-3846-420c-82be-832a3b60f818",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "en mi opinión, es una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "344ae969-949b-407c-8c5e-0d75d42f2ee1",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "en mi opinión, es una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c8fb4ea5-e13b-467d-b30a-1b3c006cecf1",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "in my opinion, it's such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "25070980-69fb-4e62-821b-9d4e9743fadd",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sabía que era una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "15453f07-4846-4006-b452-83de309155c8",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sabía que era una pregunta tan obvia",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "339c69c1-5041-4e91-878c-73f1f03e2e5c",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "known",
+  "text": "I knew it was such an obvious question",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0423L01U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ecea3326-e28b-44bf-9390-5cb33fed1f01",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Estás ocupado el sábado por la noche o quieres reunirte conmigo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0192L01U12",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e7740900-8286-40d2-8427-a97cb93a96c5",
+   "charsSpent": 65
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Estás ocupado el sábado por la noche o quieres reunirte conmigo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0192L01U12",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9190a624-8b06-48e8-b2ae-5ce282a796bf",
+   "charsSpent": 65
+  }
+ },
+ {
+  "role": "known",
+  "text": "Are you busy on Saturday night or do you want to meet up with me?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0192L01U12",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "115a2288-2c6e-40c2-8efd-b060361077cd",
+   "charsSpent": 65
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'such an obvious question', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0423L01",
+    "slot": "presentation",
+    "current": null
+   }
+  ],
+  "legoId": "S0423L01",
+  "dry": {
+   "status": 200
+  },
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "347fab38-1b15-4de7-bcd8-7d0551f2ad68",
+   "charsSpent": 48
+  }
+ }
+]

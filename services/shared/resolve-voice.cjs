@@ -59,10 +59,16 @@ const EXPECTED_ENGLISH_TARGET = Object.freeze({ f: CHARLOTTE, m: TOM_006 })
 const POLICY = Object.freeze([
   { rule: 'welsh-no-tom-clone', when: 'ANY slot of a Welsh course (cym in the code or either language) whose answer would be a Tom clone', voice: 'REFUSE — never a Tom clone, never a guess',
     ruling: 'r-2026-10-13-hard-rule-tom-s-voice-clone ("my clone should never have been used for anything in the WELSH courses")' },
-  { rule: 'aran-clone-standin', when: `known, English, on ${aranStandIn.ARAN_CLONE_STANDIN_COURSES.join(' / ')} only`, voice: "Aran's clone aran_english_003 (a stand-in his real take replaces)",
+  { rule: 'aran-clone-standin', when: `known, English, on ${aranStandIn.ARAN_CLONE_STANDIN_COURSES.join(' / ')} only`, voice: "Aran's PRO clone (STANDIN_VOICE; a stand-in his real take replaces)",
     ruling: aranStandIn.RULING },
-  { rule: 'english-known', when: 'English is the KNOWN language, any course, any gender', voice: 'Tom-006',
-    ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always")' },
+  { rule: 'aran-pro-known', when: `known, English, on ${aranStandIn.ARAN_PRO_KNOWN_COURSES.join(' / ')} only (course slots, not pod lines)`, voice: "Aran's PRO clone (STANDIN_VOICE)",
+    ruling: aranStandIn.ARAN_PRO_KNOWN_RULING },
+  // COURSE SLOTS ONLY, NOT POD LINES (Tom 2026-11-08 10:16Z: pods use "Tom-006 and Charlotte ... which is how we did all the other
+  // pods"). A pod line's English is its speaker's: female → Charlotte, male → Tom-006 (EXPECTED_ENGLISH_TARGET; the pod cast,
+  // shared/pod-line-voice.cjs). Pods never reach this function: voicing-policy assertRenderAllowed skips it for door.podLine, which
+  // the render route sets for a fresh pod render and, since job #776, for a pod line's re-record too.
+  { rule: 'english-known', when: 'English is the KNOWN language of a course SLOT (not a pod line), any course, any gender', voice: 'Tom-006',
+    ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always"); pods excluded, Tom 2026-11-08 10:16Z' },
   { rule: 'english-target', when: 'English is the TARGET (eng_for_X), target1/target2', voice: 'English cast at the slot gender: Charlotte (f) / Tom-006 (m)',
     ruling: 'r-2026-10-12-in-the-premium-x-for-eng ("Gender variance for English … applies to the eng_for_X courses")' },
   { rule: 'target-cast', when: 'any other TARGET language (its variety is its own language)', voice: "Tom's Voice Lab cast for the variety at the slot gender, rank 0, else rank 1",
@@ -141,6 +147,9 @@ function resolveVoiceUnguarded({ course, role, language = null, gender = null } 
   if (role === 'known') {
     // Before english-known: on the two stand-in courses the English known side is Aran's clone, never Tom-006 (which the Welsh rule refuses).
     if (lang === 'eng' && aranStandIn.isCloneStandInSlot({ course, role, language: lang })) return voice(aranStandIn.STANDIN_VOICE, 'aran-clone-standin')
+    // Tom 2026-11-16 11:40Z, Kai 12:38Z (aran-clone-standin.cjs isAranProKnownSlot): the live Welsh courses' English known slots are
+    // Aran's PRO clone — before english-known, whose Tom-006 the Welsh rule refuses. The Welsh and presentation slots never reach here.
+    if (lang === 'eng' && aranStandIn.isAranProKnownSlot({ course, role, language: lang })) return voice(aranStandIn.STANDIN_VOICE, 'aran-pro-known')
     if (lang === 'eng') return voice(TOM_006, 'english-known')
     return noRuling(`known side in ${lang} — no ruling covers a non-English known voice`)
   }
@@ -257,7 +266,7 @@ async function loadCourse(db, courseCode) {
  * Throws VoicePointerRefusal unless `to` (a course_audio id) may fill `col` on a row of `courseCode`.
  * Reads the clip, the course and the cast; a failed read refuses.
  */
-async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false }) {
+async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false, sameGenderRepair = false }) {
   const role = roleOfColumn(col)
   if (!role || !to) return
   // FIRST, whatever the voice policy says: a HUMAN take is never replaced by a synthetic clip (Tom's HARD RULE 2026-10-13, human-take-guard.cjs).
@@ -265,7 +274,23 @@ async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomAppro
   const { data: clip, error } = await db.from('course_audio').select('id, voice_id, language, origin').eq('id', to).maybeSingle()
   if (error) throw new VoicePointerRefusal(`resolveVoice: cannot read clip ${to} (${error.message})`, 'clip-unreadable')
   const v = checkPointer({ course: await loadCourse(db, courseCode), role, clip }, await loadCast(db))
+  if (!v.ok && v.reason === 'disagrees' && sameGenderRepair && SLOT_GENDER[role] && await voiceGender(db, clip.voice_id) === SLOT_GENDER[role]) return
   if (!v.ok) throw new VoicePointerRefusal(v.message, v.reason)
+}
+
+const normGender = (g) => (/^m/i.test(String(g || '')) ? 'm' : /^f/i.test(String(g || '')) ? 'f' : null)
+/**
+ * The gender the voices table records for a clip's voice ('m' | 'f'), or null when it records none — null never passes.
+ * Job #312 (Tom 2026-11-02, r-2026-11-02-ssi-voices-a-slot-cast-for, Watson's relink-before-render amendment): a twin repair may
+ * relink a male slot to an OLDER male voice of the language, so the slot's gender is right at zero cost while the cast upgrade
+ * continues gradually (r-2026-10-29). A female clip on a male slot is never allowed by this, whatever the caller asks.
+ */
+async function voiceGender(db, voiceId) {
+  if (!voiceId) return null
+  const ids = [...new Set([voiceId, canonVoice(voiceId), `cartesia_${voiceId}`, `azure_${voiceId}`, `xai_${voiceId}`])]
+  const { data, error } = await db.from('voices').select('voice_id, gender').in('voice_id', ids)
+  if (error) throw new VoicePointerRefusal(`resolveVoice: cannot read voices (${error.message})`, 'cast-unreadable')
+  return normGender((data || []).map((r) => r.gender).find(Boolean))
 }
 
 /**
@@ -284,9 +309,9 @@ async function mayPoint(db, { courseCode, col, to, tbl, key, from, tomApproval, 
  * THE guarded pointer write: check, then `update … set col=to where id=key and col=from` (before-state asserted).
  * Returns true when exactly one row moved. Tools that repoint audio call this instead of writing the column themselves.
  */
-async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null, tomApproval }) {
+async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null, tomApproval, sameGenderRepair = false }) {
   if (!['course_seeds', 'course_legos', 'course_practice_phrases'].includes(tbl)) throw new Error(`setSlotPointer: not a slot table: ${tbl}`)
-  await assertPointer(db, { courseCode, col, to, tbl, key, from: from === undefined ? null : from, tomApproval })
+  await assertPointer(db, { courseCode, col, to, tbl, key, from: from === undefined ? null : from, tomApproval, sameGenderRepair })
   const patch = { [col]: to, ...(editEventId ? { last_edit_event_id: editEventId } : {}) }
   let q = db.from(tbl).update(patch).eq('id', key)
   q = from == null ? q.is(col, null) : q.eq(col, from)
@@ -297,6 +322,6 @@ async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEve
 
 module.exports = {
   resolveVoice, applyResolvedVoices, checkPointer, assertPointer, mayPoint, setSlotPointer, loadCast, loadCourse, useCast, pickCast,
-  canonVoice, sameVoice, roleOfColumn, VoicePointerRefusal,
+  canonVoice, sameVoice, roleOfColumn, VoicePointerRefusal, voiceGender, normGender,
   POLICY, SLOT_ROLES, SLOT_GENDER, TOM_006, CHARLOTTE, TOM006_INTRO_COURSES, EXPECTED_ENGLISH_TARGET, COURSE_FIELDS,
 }

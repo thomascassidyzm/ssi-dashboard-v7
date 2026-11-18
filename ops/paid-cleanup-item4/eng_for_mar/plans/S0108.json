@@ -1,0 +1,57 @@
+{
+ "seed": 108,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "मध्यरात्री उठणे",
+     "waking up in the middle of the night"
+    ],
+    "B04": [
+     "मध्यरात्री वाचणे",
+     "to read in the middle of the night"
+    ],
+    "U02": [
+     "मला मध्यरात्री उठायला आवडत नाही",
+     "I don't enjoy waking up in the middle of the night"
+    ],
+    "U03": [
+     "तिला मध्यरात्री घरी जायचं होतं",
+     "she wanted to go home in the middle of the night"
+    ],
+    "U04": [
+     "मध्यरात्री मी त्याबद्दल विचार करत नव्हतो",
+     "I wasn't thinking about it in the middle of the night"
+    ],
+    "U05": [
+     "तुम्ही मध्यरात्री ते का शोधताय?",
+     "why are you looking for it in the middle of the night?"
+    ]
+   }
+  },
+  "L02": {
+   "insert": [
+    [
+     "build",
+     "पण आम्हाला जाग यायची आशा नव्हती",
+     "but we didn't hope to wake"
+    ]
+   ],
+   "update": {
+    "U02": [
+     "आम्हाला सहा वाजता जाग यायची आशा नव्हती",
+     "we didn't hope to wake at six o'clock"
+    ],
+    "U04": [
+     "आम्हाला सहा वाजण्यापूर्वी जाग यायची आशा नव्हती",
+     "we didn't hope to wake before six o'clock"
+    ],
+    "U05": [
+     "आम्हाला जाग यायची आशा नव्हती, आम्हाला झोपायचं होतं",
+     "we didn't hope to wake, we wanted to sleep"
+    ]
+   }
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

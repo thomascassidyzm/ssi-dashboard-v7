@@ -1,0 +1,113 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "4687c1c7-dd94-498e-812e-9dbc0c355a7b",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:32:18.305Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-32-18-305Z-4687c1c7-dd94-498e-812e-9dbc0c355a7b.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0296L02B06",
+      "set": {
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "bhí",
+            "isGhost": true
+          },
+          {
+            "known": "to know",
+            "legoId": "S0045L03",
+            "target": " a fhios agam",
+            "isGhost": false
+          },
+          {
+            "known": "that a little more",
+            "legoId": "S0296L02",
+            "target": " go raibh beagán níos mó",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "needed",
+            "legoId": "S0296L04",
+            "target": " de dhíth",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0288L03U03",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I think",
+            "legoId": "S0261L01",
+            "target": "ceapaim",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " go",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " mbeadh",
+            "isGhost": true
+          },
+          {
+            "known": "the",
+            "legoId": "S0085L02",
+            "target": " na",
+            "isGhost": false
+          },
+          {
+            "known": "people",
+            "legoId": "S0085L01",
+            "target": " daoine",
+            "isGhost": false
+          },
+          {
+            "known": "I know them",
+            "legoId": "S0288L03",
+            "target": " a bhfuil aithne agam orthu",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "happy",
+            "legoId": "S0106L03",
+            "target": " sásta",
+            "isGhost": false
+          },
+          {
+            "known": "help you",
+            "legoId": "S0062L01",
+            "target": " cabhrú leat",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " leis",
+            "isGhost": true
+          },
+          {
+            "known": "those",
+            "legoId": "S0085L03",
+            "target": " sin",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    }
+  ]
+}

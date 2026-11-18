@@ -11,6 +11,9 @@
  *   briefs/*.cjs       — Agent brief generation (already separate)
  */
 
+// Every live DB call from this process goes through the adaptive load governor (cs #835; Tom's ruling
+// r-2026-11-18-no-watson-or-worker-any-owner). Must stay above anything that builds a Supabase or pg client.
+require('./shared/db-load-gate.cjs').install('popty-course-builder-api')
 const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
@@ -18,6 +21,8 @@ require('dotenv').config();
 
 const createContext = require('./course-builder/context.cjs');
 const { startBuildManager } = require('./course-builder/lib/build-manager.cjs');
+const { startRedoWatchdog } = require('./course-builder/lib/redo-watchdog.cjs');
+const { startRedoQueue } = require('./course-builder/lib/redo-queue.cjs');
 const { setSupabase } = require('./briefs/shared.cjs');
 
 // ─── Express app setup ────────────────────────────────────────────────
@@ -108,6 +113,10 @@ app.listen(PORT, HOST, () => {
     console.log('[BUILD] Build manager DISABLED (BUILD_MANAGER=off) — pure validate+insert API, no job orchestration');
   } else {
     startBuildManager(ctx);
+    // A redo whose agent never submits is retried once, then restored + alerted (job #429).
+    startRedoWatchdog(ctx);
+    // A redo pressed while no agent can run waits in a queue and starts by itself (job #457).
+    startRedoQueue(ctx);
     console.log('[BUILD] Build manager started - monitoring running jobs from DB');
   }
 });

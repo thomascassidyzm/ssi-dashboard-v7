@@ -1,0 +1,354 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 161,
+  "expect": {
+   "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+   "target_text": "你能周日早上把那本书给我吗？"
+  },
+  "set": {
+   "target_text": "你周日早上能把那本书给我吗？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 316,
+  "expect": {
+   "known_text": "அவள் தன் அண்ணனைத் திங்கட்கிழமை கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+   "target_text": "你觉得她能周一带她哥哥来吗？"
+  },
+  "set": {
+   "target_text": "你觉得她周一能带她哥哥来吗？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 625,
+  "expect": {
+   "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+   "target_text": "你想要喝点什么吗？"
+  },
+  "set": {
+   "target_text": "你想喝点什么吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0005L01U03",
+  "expect": {
+   "known_text": "நான் இப்போது கற்றுக்கொள்ளப் போகிறேன்",
+   "target_text": "我要现在学习"
+  },
+  "set": {
+   "target_text": "我现在要学习"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0005L02U04",
+  "expect": {
+   "known_text": "நான் இப்போது சீன மொழி பயிற்சி செய்யப் போகிறேன்",
+   "target_text": "我要现在练习中文"
+  },
+  "set": {
+   "target_text": "我现在要练习中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0005L03U03",
+  "expect": {
+   "known_text": "நான் இப்போது வேறு ஒருவருடன் பேசப் போகிறேன்",
+   "target_text": "我要现在和别人说"
+  },
+  "set": {
+   "target_text": "我现在要和别人说"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0011L01U04",
+  "expect": {
+   "known_text": "நீங்கள் இப்போது பேசி முடிக்க முடியுமா இல்லையா?",
+   "target_text": "你能不能现在说完？"
+  },
+  "set": {
+   "target_text": "你现在能不能说完？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0012L02U05",
+  "expect": {
+   "known_text": "நீங்கள் நாளை பேச முடியுமா இல்லையா?",
+   "target_text": "你能不能明天说？"
+  },
+  "set": {
+   "target_text": "你明天能不能说？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0015L02U04",
+  "expect": {
+   "known_text": "நீங்கள் நாளை என்னோடு பேச முடியுமா இல்லையா?",
+   "target_text": "你能不能明天跟我说？"
+  },
+  "set": {
+   "target_text": "你明天能不能跟我说？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0023L01U05",
+  "expect": {
+   "known_text": "நான் இப்போது பேச ஆரம்பிக்க முடியுமா இல்லையா என்று நிச்சயமாகத் தெரியவில்லை",
+   "target_text": "我不确定我能不能现在开始说话"
+  },
+  "set": {
+   "target_text": "我不确定我现在能不能开始说话"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0098L01U01",
+  "expect": {
+   "known_text": "நான் இப்போது போக வேண்டும்",
+   "target_text": "我应该现在走"
+  },
+  "set": {
+   "target_text": "我现在应该走"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0098L01U05",
+  "expect": {
+   "known_text": "நான் இன்று கடினமாக உழைக்க வேண்டும்",
+   "target_text": "我应该今天努力"
+  },
+  "set": {
+   "target_text": "我今天应该努力"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0139L02U01",
+  "expect": {
+   "known_text": "நான் இப்போது கிளம்ப வேண்டும்",
+   "target_text": "我需要现在离开"
+  },
+  "set": {
+   "target_text": "我现在需要离开"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0156L01U02",
+  "expect": {
+   "known_text": "நான் இப்போது செல்ல வேண்டும்",
+   "target_text": "我需要现在去"
+  },
+  "set": {
+   "target_text": "我现在需要去"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0161L03U01",
+  "expect": {
+   "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+   "target_text": "你能周日早上把那本书给我吗？"
+  },
+  "set": {
+   "target_text": "你周日早上能把那本书给我吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0316L02U01",
+  "expect": {
+   "known_text": "அவள் தன் அண்ணனைத் திங்கள் கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+   "target_text": "你觉得她能周一带她哥哥来吗？"
+  },
+  "set": {
+   "target_text": "你觉得她周一能带她哥哥来吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0328L01U05",
+  "expect": {
+   "known_text": "அவள் இன்று அதைச் செய்ய வேண்டும்",
+   "target_text": "她应该今天做"
+  },
+  "set": {
+   "target_text": "她今天应该做"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0349L01U05",
+  "expect": {
+   "known_text": "அவர்கள் வெள்ளிக்கிழமை அங்கே போக வேண்டும்",
+   "target_text": "他们需要周五去那里"
+  },
+  "set": {
+   "target_text": "他们周五需要去那里"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0405L02U02",
+  "expect": {
+   "known_text": "நாம் இன்று முன்பதிவு செய்ய வேண்டும்",
+   "target_text": "我们应该今天预订"
+  },
+  "set": {
+   "target_text": "我们今天应该预订"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0415L01U03",
+  "expect": {
+   "known_text": "என்னைக் கேட்டால் நாம் இப்போது போக வேண்டும்",
+   "target_text": "依我看我们应该现在走"
+  },
+  "set": {
+   "target_text": "依我看我们现在应该走"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0438L01U02",
+  "expect": {
+   "known_text": "நாம் இப்போது முடிவு செய்ய வேண்டும்",
+   "target_text": "我们应该现在决定"
+  },
+  "set": {
+   "target_text": "我们现在应该决定"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0248L03B03",
+  "expect": {
+   "known_text": "பணம் திரும்பக் கேட்க",
+   "target_text": "想要退钱"
+  },
+  "set": {
+   "target_text": "想退钱"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0625L01U01",
+  "expect": {
+   "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+   "target_text": "你想要喝点什么吗？"
+  },
+  "set": {
+   "target_text": "你想喝点什么吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0643L01U05",
+  "expect": {
+   "known_text": "தாங்கள் இப்போது தேநீர் குடிக்க விரும்புகிறீர்களா?",
+   "target_text": "您想要现在喝茶吗？"
+  },
+  "set": {
+   "target_text": "您现在想喝茶吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0658L01U04",
+  "expect": {
+   "known_text": "நீங்கள் எல்லோரும் ஏதாவது குடிக்க விரும்புகிறீர்களா?",
+   "target_text": "你们想要喝点什么吗？"
+  },
+  "set": {
+   "target_text": "你们想喝点什么吗？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0476L01U03",
+  "expect": {
+   "known_text": "அது முடிந்தது என்று நினைக்கிறேன்",
+   "target_text": "我想它结束了"
+  },
+  "set": {
+   "target_text": "我觉得它结束了"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0478L01U05",
+  "expect": {
+   "known_text": "அவள் ரொம்ப கருணையானவள் என்று நினைக்கிறேன்",
+   "target_text": "我想她很善良"
+  },
+  "set": {
+   "target_text": "我觉得她很善良"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0479L01U05",
+  "expect": {
+   "known_text": "இது மிகக் குறைந்தது என்று நினைக்கிறேன்",
+   "target_text": "我想这是最少的了"
+  },
+  "set": {
+   "target_text": "我觉得这是最少的了"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0659L01B03",
+  "expect": {
+   "known_text": "நீங்கள் எல்லோரும் கொஞ்சம் சொல்ல முடியும் என்று நினைக்கிறேன்",
+   "target_text": "我想你们能说一下"
+  },
+  "set": {
+   "target_text": "我觉得你们能说一下"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0662L01B02",
+  "expect": {
+   "known_text": "நீங்கள் எல்லோரும் சீன மொழி பேசுகிறீர்கள் என்று நினைக்கிறேன்",
+   "target_text": "我想你们说中文"
+  },
+  "set": {
+   "target_text": "我觉得你们说中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0664L01B03",
+  "expect": {
+   "known_text": "நீங்கள் எல்லோரும் தயாராக இருக்கிறீர்கள் என்று நினைக்கிறேன்",
+   "target_text": "我想你们都准备好了"
+  },
+  "set": {
+   "target_text": "我觉得你们都准备好了"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_tam:S0667L01B04",
+  "expect": {
+   "known_text": "நீங்கள் எல்லோரும் ஆட்சேபிக்கிறீர்கள் என்று நினைக்கிறேன்",
+   "target_text": "我想你们介意"
+  },
+  "set": {
+   "target_text": "我觉得你们介意"
+  }
+ }
+]

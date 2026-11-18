@@ -1,0 +1,305 @@
+{
+ "course": "spa_for_eng",
+ "tool": "tools/pods/pod-drill/ear.mjs (#750)",
+ "by": "Kai",
+ "page": "d/15149e60",
+ "submitted": 1793726518748,
+ "totals": {
+  "marked": 57,
+  "accept": 31,
+  "borderline": 5,
+  "reject": 21
+ },
+ "marks": {
+  "spa_for_eng:pod-1:SC03-S002:s2|0|0": {
+   "label": "S01",
+   "known": "with milk",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC03-S002:s2|0|1": {
+   "label": "S02",
+   "known": "but with no sugar",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC06-S009:s0|0|0": {
+   "label": "S03",
+   "known": "I'm sorry",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC06-S009:s0|0|1": {
+   "label": "S04",
+   "known": "I didn't understand you",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S005:s0|0|0": {
+   "label": "S05",
+   "known": "Excuse me,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S005:s0|0|1": {
+   "label": "S06",
+   "known": "do you have anything gluten-free?",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S016:s0|0|0": {
+   "label": "S07",
+   "known": "just two coffees,",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC09-S016:s0|0|1": {
+   "label": "S08",
+   "known": "please.",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC10-S003:s1|0|0": {
+   "label": "S09",
+   "known": "and do you have any painkillers",
+   "mark": "borderline",
+   "note": "Endings a little abrupt but might be fine"
+  },
+  "spa_for_eng:pod-1:SC10-S003:s1|0|1": {
+   "label": "S10",
+   "known": "for children?",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC10-S004|0|0": {
+   "label": "S11",
+   "known": "I think so,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC10-S004|0|1": {
+   "label": "S12",
+   "known": "but you'll have to look",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC10-S004|0|2": {
+   "label": "S13",
+   "known": "to make sure.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC10-S009:s2|0|0": {
+   "label": "S14",
+   "known": "thank you very much,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC10-S009:s2|0|1": {
+   "label": "S15",
+   "known": "and goodbye.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC11-S008:s1|0|0": {
+   "label": "S16",
+   "known": "We have fruit and cereals",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC11-S008:s1|0|1": {
+   "label": "S17",
+   "known": "or a cooked breakfast.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC02-S001|0|0": {
+   "label": "S18",
+   "known": "Excuse me,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC02-S001|0|1": {
+   "label": "S19",
+   "known": "is this seat taken?",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC06-S011:s0|0|0": {
+   "label": "S20",
+   "known": "I teach English,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC06-S011:s0|0|1": {
+   "label": "S21",
+   "known": "but not in a school.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC07-S004:s1|0|0": {
+   "label": "S22",
+   "known": "With oat milk",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC07-S004:s1|0|1": {
+   "label": "S23",
+   "known": "if you have it.",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC07-S007|0|0": {
+   "label": "S24",
+   "known": "Could I have two white coffees",
+   "mark": "borderline",
+   "note": "Ends abruptly but might be fine"
+  },
+  "spa_for_eng:pod-1:SC07-S007|0|1": {
+   "label": "S25",
+   "known": "and two black coffees",
+   "mark": "borderline",
+   "note": "Also abrupt but maybe fine"
+  },
+  "spa_for_eng:pod-1:SC07-S007|0|2": {
+   "label": "S26",
+   "known": "and one of those,",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC07-S007|0|3": {
+   "label": "S27",
+   "known": "please?",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC07-S014:s1|0|0": {
+   "label": "S28",
+   "known": "The table by the window",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC07-S014:s1|0|1": {
+   "label": "S29",
+   "known": "is free.",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S003|0|0": {
+   "label": "S30",
+   "known": "We've got a bitter",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC08-S003|0|1": {
+   "label": "S31",
+   "known": "and a stout,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC08-S003|0|2": {
+   "label": "S32",
+   "known": "and they're both local.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC08-S008|0|0": {
+   "label": "S33",
+   "known": "I'd like a large glass",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S008|0|1": {
+   "label": "S34",
+   "known": "of white wine,",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S008|0|2": {
+   "label": "S35",
+   "known": "please.",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S009|0|0": {
+   "label": "S36",
+   "known": "Can I have a small glass",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S009|0|1": {
+   "label": "S37",
+   "known": "of red wine?",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S010|0|0": {
+   "label": "S38",
+   "known": "I'd like",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S010|0|1": {
+   "label": "S39",
+   "known": "two more glasses",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC08-S010|0|2": {
+   "label": "S40",
+   "known": "of beer.",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC09-S004|0|0": {
+   "label": "S41",
+   "known": "We'd like",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC09-S004|0|1": {
+   "label": "S42",
+   "known": "one bottle of sparkling water",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S004|0|2": {
+   "label": "S43",
+   "known": "and one bottle of still water,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S004|0|3": {
+   "label": "S44",
+   "known": "please.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S006:s0|0|0": {
+   "label": "S45",
+   "known": "Yes,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S006:s0|0|1": {
+   "label": "S46",
+   "known": "the salmon and the risotto",
+   "mark": "borderline",
+   "note": "Ends awkwardly but might be fine"
+  },
+  "spa_for_eng:pod-1:SC09-S006:s0|0|2": {
+   "label": "S47",
+   "known": "are both gluten-free.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S008:s1|0|0": {
+   "label": "S48",
+   "known": "It's been slow-cooked,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC09-S008:s1|0|1": {
+   "label": "S49",
+   "known": "with rosemary.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC10-S007:s0|0|0": {
+   "label": "S50",
+   "known": "Thank you,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC10-S007:s0|0|1": {
+   "label": "S51",
+   "known": "you've been very helpful.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC11-S010|0|0": {
+   "label": "S52",
+   "known": "Yes,",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC11-S010|0|1": {
+   "label": "S53",
+   "known": "you can stay",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC11-S010|0|2": {
+   "label": "S54",
+   "known": "until midday,",
+   "mark": "borderline",
+   "note": "It sounds like \"til midday\" Which as it happens is correct for English - depends on whether you want it to actually say \"until\" clearly. I assume it's fine like this"
+  },
+  "spa_for_eng:pod-1:SC11-S010|0|3": {
+   "label": "S55",
+   "known": "no extra charge.",
+   "mark": "accept"
+  },
+  "spa_for_eng:pod-1:SC12-S005|0|0": {
+   "label": "S56",
+   "known": "How often",
+   "mark": "reject"
+  },
+  "spa_for_eng:pod-1:SC12-S005|0|1": {
+   "label": "S57",
+   "known": "should I take the paracetamol?",
+   "mark": "reject"
+  }
+ }
+}

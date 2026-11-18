@@ -1,0 +1,16 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "ba1845de-3ce8-4ec0-9d9f-b3fa5c099864",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:33:27.304Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-33-27-304Z-ba1845de-3ce8-4ec0-9d9f-b3fa5c099864.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U11",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    }
+  ]
+}

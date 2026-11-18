@@ -1,0 +1,1751 @@
+[
+ {
+  "batch": 1,
+  "status": 200,
+  "event_id": "9a5fbbee-f0b3-4fe8-8e96-4bde44f2cd12",
+  "undo_file": "2026-11-17T14-59-59-654Z-9a5fbbee-f0b3-4fe8-8e96-4bde44f2cd12.json",
+  "undo": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01B02",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "with a large cup",
+     "target_text": "교회가 큰 컵으로",
+     "word_count": 9,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "75c4a904-f37f-46bc-9bfd-e07b1c116a79",
+     "target1_audio_id": "3f72e621-c003-4629-a984-a409ad1c484c",
+     "target2_audio_id": "e9f213e4-132b-414b-b6ed-8c31e4575e1d",
+     "qa_checked": null,
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "41798d44-cc06-4dc5-a1e3-9d3d592e9c4e",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "41798d44-cc06-4dc5-a1e3-9d3d592e9c4e",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0662L02C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0662L02C01"
+   },
+   {
+    "op": "lego.update",
+    "id": "41798d44-cc06-4dc5-a1e3-9d3d592e9c4e",
+    "set": {
+     "type": "A",
+     "is_new": false,
+     "known_text": "it",
+     "target_text": "그걸",
+     "components": [],
+     "known_audio_id": "11b9f532-1f84-485d-b343-4927f34df7ff",
+     "target1_audio_id": "3338f4c2-fa63-46d4-9aa3-0794ffdb1c18",
+     "target2_audio_id": "a5a0afa5-7c72-4d5a-82d5-23678f56a043",
+     "presentation_audio_id": "dfe4d88b-eaf0-46e6-9d0a-d5759eabdd1c"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0662L01U02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0662L01U01"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0662L01B01"
+   },
+   {
+    "op": "lego.update",
+    "id": "ee361f39-5ba9-4d6f-a4a4-a78abed879a0",
+    "set": {
+     "target2_audio_id": "70861037-6a3b-49de-afde-6a6ad5c0278c"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "ee361f39-5ba9-4d6f-a4a4-a78abed879a0",
+    "set": {
+     "target1_audio_id": "92daac46-e312-46cd-b9cb-fed5b2f2ce82"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0662L01C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0662L01C01"
+   },
+   {
+    "op": "lego.update",
+    "id": "ee361f39-5ba9-4d6f-a4a4-a78abed879a0",
+    "set": {
+     "type": "A",
+     "is_new": false,
+     "target_text": "여러분",
+     "components": [],
+     "target1_audio_id": "4bc5287d-bcdd-4706-b5c4-a0a60ecfc4b0",
+     "target2_audio_id": "e4f6d02e-e238-4173-af12-e5ef6ad4dbab"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "b7e94122-53e8-45e9-b5ec-9f78bc0cc7f7",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "b7e94122-53e8-45e9-b5ec-9f78bc0cc7f7",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0633L02C04"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0633L02C03"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0633L02C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0633L02C01"
+   },
+   {
+    "op": "lego.update",
+    "id": "b7e94122-53e8-45e9-b5ec-9f78bc0cc7f7",
+    "set": {
+     "known_text": "if one glass",
+     "target_text": "한 잔이면",
+     "components": [
+      {
+       "known": "one glass if",
+       "target": "한 잔이면"
+      }
+     ],
+     "known_audio_id": "1024d739-5677-4a8c-86ae-61b4a74e56aa",
+     "target1_audio_id": "b7fc4094-3bc8-40f7-b00f-94964cbe3d28",
+     "target2_audio_id": "6dbdb083-01a2-4f7d-8a63-3791ead4e6b9",
+     "presentation_audio_id": "47b2df47-d1d5-4ff0-8dcd-3dcf7ffb47ad"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 633,
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 633,
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 633,
+    "set": {
+     "target_text": "큰 물 한 잔이면 괜찮아요",
+     "target1_audio_id": "4565c16c-a426-4b6f-93a1-067f9dd82ee3",
+     "target2_audio_id": "4f4a8ad9-be67-4af2-84bc-e8bc4abaccec"
+    }
+   },
+   {
+    "op": "lego.insert",
+    "row": {
+     "id": "76d845d3-2fed-4126-8ad7-30b813dded07",
+     "seed_number": 633,
+     "lego_index": 3,
+     "type": "M",
+     "is_new": true,
+     "known_text": "would be great",
+     "target_text": "좋겠어요",
+     "components": [
+      {
+       "known": "would be great",
+       "target": "좋겠어요"
+      }
+     ],
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.830Z",
+     "known_audio_id": "bd9eaf7a-9130-45b3-a142-8db2098993f3",
+     "target1_audio_id": "a9d52bee-5854-483a-9338-a9514281eb11",
+     "target2_audio_id": "7283e4b0-7c4f-4b02-ac32-40042c3274d1",
+     "presentation_audio_id": "0772f77e-2c9b-495e-afa5-58f144ab5e75",
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2688,
+     "target_text_roman": null,
+     "target_lego_id": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03B01",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "would be great",
+     "target_text": "좋겠어요",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bd9eaf7a-9130-45b3-a142-8db2098993f3",
+     "target1_audio_id": "a9d52bee-5854-483a-9338-a9514281eb11",
+     "target2_audio_id": "7283e4b0-7c4f-4b02-ac32-40042c3274d1",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03B03",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "she said it would be fine",
+     "target_text": "그녀가 물 한 잔이면 좋겠어요",
+     "word_count": 16,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a523ea35-6b10-4753-a1a6-3730555059d7",
+     "target1_audio_id": "977807c7-f4ee-4ca0-b68b-080fc5e7a361",
+     "target2_audio_id": "8da8c52a-74b6-4922-a72c-d9b16ae5364e",
+     "qa_checked": null,
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03B02",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "a glass of water would be fine",
+     "target_text": "물 한 잔이면 좋겠어요",
+     "word_count": 12,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b4d93d60-c830-47bf-8738-25c61788308b",
+     "target1_audio_id": "755cbe50-1fd5-4b09-8834-41c0fb3ee544",
+     "target2_audio_id": "9044e5cd-5f0f-4ff0-b55b-7586347d59dc",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03U05",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "the family thinks a glass of water would be fine",
+     "target_text": "가족이 물 한 잔이면 좋겠어요",
+     "word_count": 16,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.835Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0a6881fa-3814-431c-94be-86f9b24853ea",
+     "target1_audio_id": "a150936b-0779-4d59-9cdb-f1373ba81433",
+     "target2_audio_id": "1c1166c1-d4a4-4466-b68f-4cc79523668e",
+     "qa_checked": null,
+     "target1_duration_ms": 3960,
+     "target2_duration_ms": 4128,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03U01",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "a large glass of water would be fine",
+     "target_text": "큰 컵으로 물 한 잔이면 좋겠어요",
+     "word_count": 18,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.835Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2ee459f8-55e3-4800-8594-aebe68388ed9",
+     "target1_audio_id": "5a3b3f43-6e9d-4c2b-a7a9-a616fa28dea3",
+     "target2_audio_id": "950b1dc7-2373-43fd-90ec-7b0895b18cb0",
+     "qa_checked": null,
+     "target1_duration_ms": 4128,
+     "target2_duration_ms": 4272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03U02",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "so a glass of water would be fine",
+     "target_text": "그래서 물 한 잔이면 좋겠어요",
+     "word_count": 16,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.835Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7cf38e72-fc94-43ab-953e-f17f23be2925",
+     "target1_audio_id": "64ec7cc1-599a-4e60-8296-c37a8b72a145",
+     "target2_audio_id": "0cca9810-6b11-4d9c-901d-56e1dc63d8b0",
+     "qa_checked": null,
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 4056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03U06",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "he thinks a large cup of water would be fine",
+     "target_text": "그는 큰 컵으로 물 한 잔이면 좋겠어요",
+     "word_count": 21,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.835Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "acdcfbf0-8fdf-4989-a569-c96205112607",
+     "target1_audio_id": "056fb274-9635-4f45-b100-ef12297b449d",
+     "target2_audio_id": "0ceb9f25-477f-4210-b239-9bdbd4e30195",
+     "qa_checked": null,
+     "target1_duration_ms": 4608,
+     "target2_duration_ms": 4752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03U04",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "still a large cup of water would be fine",
+     "target_text": "아직도 큰 컵으로 한 잔이면 좋겠어요",
+     "word_count": 20,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.835Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "fa098566-f28b-4e88-be98-4bf1a3523566",
+     "target1_audio_id": "ef5b4264-3bbb-4078-beed-867742fbc495",
+     "target2_audio_id": "438dc583-713a-40f7-b572-1642c4ddac03",
+     "qa_checked": null,
+     "target1_duration_ms": 4464,
+     "target2_duration_ms": 4752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L03U03",
+     "seed_number": 633,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "together a glass of water would be fine",
+     "target_text": "같이 물 한 잔이면 좋겠어요",
+     "word_count": 15,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.835Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.878Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "69b1d93f-4f2b-4346-8e3c-8e52ff638f2b",
+     "target1_audio_id": "51b53283-6aec-46a5-ae95-34df0c5d92e4",
+     "target2_audio_id": "b882bd6e-2cc7-4c22-8446-9e45a97bad48",
+     "qa_checked": null,
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 3984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "lego.insert",
+    "row": {
+     "id": "880e65a4-dc9a-4617-838e-1ada2542611b",
+     "seed_number": 656,
+     "lego_index": 2,
+     "type": "A",
+     "is_new": false,
+     "known_text": "with",
+     "target_text": "함께",
+     "components": [],
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:19:21.597Z",
+     "known_audio_id": "1510ccc9-d82b-46d2-9801-108ce159179b",
+     "target1_audio_id": "36419b6a-1659-4270-9b59-07750462b138",
+     "target2_audio_id": "cddc3c1e-45f6-495f-81ba-bc2f975d0551",
+     "presentation_audio_id": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 2184,
+     "target_text_roman": null,
+     "target_lego_id": null,
+     "known_gloss_segments": null
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 2,
+  "status": 409,
+  "error": "DEBUT_WITHOUT_PRACTICE: kor_for_eng S0633L01 \"a large glass\" → \"큰 컵으로\" would be left with no practice phrase (delete of phrase kor_for_eng:S0633L01U02)",
+  "code": "23514",
+  "ops": 27
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "event_id": "72041e7e-2cdb-43fa-b014-3f3fc9add0ac",
+  "undo_file": "2026-11-17T15-02-55-424Z-72041e7e-2cdb-43fa-b014-3f3fc9add0ac.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U04",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U04",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U04",
+    "set": {
+     "known_text": "still a glass of water would be fine",
+     "target_text": "아직도 물 한 잔이면 좋겠어요",
+     "word_count": 16,
+     "known_audio_id": "989060ff-8266-49cf-9210-39481335e8e7",
+     "target1_audio_id": "55a10dd2-13bf-4c67-b556-304138f42542",
+     "target2_audio_id": "9d876299-6586-47d3-91b8-b4b76d92c5e0",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L02U05",
+     "seed_number": 633,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "if the family had a glass of water",
+     "target_text": "가족이 물 한 잔이면 있었어요",
+     "word_count": 16,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.746Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.786Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3a95b4f0-6015-4ef9-ae1b-bd9cb2570062",
+     "target1_audio_id": "8e4ea580-70d9-4e8e-8122-8ef43d5e579c",
+     "target2_audio_id": "35ff8210-e3c7-4cb5-81c6-dd204383ab9b",
+     "qa_checked": null,
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 4104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L02U03",
+     "seed_number": 633,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "together if a glass of water",
+     "target_text": "같이 물 한 잔이면 있었어요",
+     "word_count": 15,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.746Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.786Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5f4b12fe-32c8-43fd-b9b9-4ee642539380",
+     "target1_audio_id": "a14959e4-9e07-4ba6-8920-9bdffef9be70",
+     "target2_audio_id": "68711eeb-660f-459e-a84d-759de4fe703c",
+     "qa_checked": null,
+     "target1_duration_ms": 3840,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U02",
+    "set": {
+     "known_text": "so if a large glass would be fine",
+     "target_text": "그래서 큰 컵으로 한 잔이면 좋겠어요",
+     "word_count": 20,
+     "known_audio_id": "33a889ba-65e8-4831-bd92-953b07366660",
+     "target1_audio_id": "305f6e31-c9a3-4af1-aa73-da5f84ca0ae3",
+     "target2_audio_id": "d007c599-7e49-4663-a433-7e81efc29584",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L02U06",
+     "seed_number": 633,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "if a large glass of water would be fine",
+     "target_text": "큰 컵으로 물 한 잔이면 좋겠어요",
+     "word_count": 18,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.746Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.786Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3ee4cd3b-1a97-47aa-9f41-08a8696d114f",
+     "target1_audio_id": "5a3b3f43-6e9d-4c2b-a7a9-a616fa28dea3",
+     "target2_audio_id": "950b1dc7-2373-43fd-90ec-7b0895b18cb0",
+     "qa_checked": null,
+     "target1_duration_ms": 4128,
+     "target2_duration_ms": 4272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02B02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02B02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02B02",
+    "set": {
+     "known_text": "if a glass of water",
+     "target_text": "물 한 잔이면",
+     "word_count": 7,
+     "known_audio_id": "16febfc8-5450-4809-b355-77b9641aaef2",
+     "target1_audio_id": "ba10b0b9-7017-45ac-957a-2ae42eebe7d1",
+     "target2_audio_id": "27a4fbd4-ed8a-4f9e-af67-9d925d7e23f5",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L02B03",
+     "seed_number": 633,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "a large cup one glass",
+     "target_text": "큰 컵으로 물 한 잔이면",
+     "word_count": 13,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.786Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b0edd633-7f80-4404-8d0c-eb58c5be7968",
+     "target1_audio_id": "ad4b533a-64a9-4eb4-8103-ea4fe7db6c89",
+     "target2_audio_id": "87f83994-6492-4e63-b740-53ac11267663",
+     "qa_checked": null,
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3480,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02B01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02B01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02B01",
+    "set": {
+     "known_text": "if one glass",
+     "target_text": "한 잔이면",
+     "word_count": 5,
+     "known_audio_id": "1024d739-5677-4a8c-86ae-61b4a74e56aa",
+     "target1_audio_id": "b7fc4094-3bc8-40f7-b00f-94964cbe3d28",
+     "target2_audio_id": "6dbdb083-01a2-4f7d-8a63-3791ead4e6b9",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01U01",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "she wants a large cup",
+     "target_text": "큰 컵으로 있어요",
+     "word_count": 9,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 5,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.565Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "14bf0f44-e016-4f53-b685-8c530a331ae4",
+     "target1_audio_id": "ce4c9903-acf7-45a2-bab7-d8ce6c0a0480",
+     "target2_audio_id": "412e3b26-12f7-47b6-b468-68f139128e3e",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01U05",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "he offered a large cup",
+     "target_text": "그는 큰 컵으로 있었어요",
+     "word_count": 13,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.565Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b3ba86e7-a2c4-41f3-aeec-f6c9104261ef",
+     "target1_audio_id": "4dff4761-a80a-4fc5-a978-e21f2f8c2f15",
+     "target2_audio_id": "585b2060-f900-4525-8ac7-d40dbfa4eb2e",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01U06",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "we each had a large cup",
+     "target_text": "우리는 큰 컵으로 있었어요",
+     "word_count": 14,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.565Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7eec6d9a-2af8-4546-9720-5ec7a637fc77",
+     "target1_audio_id": "d9b03e78-071e-4e69-baaf-782fc590ec7e",
+     "target2_audio_id": "f2938ea8-24ce-4856-8ea4-f32d37b7b09a",
+     "qa_checked": null,
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3888,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01U03",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "the family had a large cup",
+     "target_text": "가족이 큰 컵으로 있었어요",
+     "word_count": 14,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.565Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c5356f7e-5ad1-4cd6-9543-400188696360",
+     "target1_audio_id": "0f22f66a-ce7c-4aed-a726-963eaf51626d",
+     "target2_audio_id": "c5076571-d716-48d2-accd-43eaedcc225a",
+     "qa_checked": null,
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01U04",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "still she wants a large cup of water",
+     "target_text": "아직도 큰 컵으로 물 있었어요",
+     "word_count": 16,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.565Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5cf80b4e-a512-4468-8034-6628721aff83",
+     "target1_audio_id": "cc5ad9e1-fc2b-4cb4-9b7c-19a77af4af7f",
+     "target2_audio_id": "0223e713-4155-46bc-bab1-cb7f6fb79fc3",
+     "qa_checked": null,
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 4176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01U02",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "together they used a large cup",
+     "target_text": "같이 큰 컵으로 있었어요",
+     "word_count": 13,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:02:43.565Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e6bdab19-2125-4b1b-ace5-409d40d58fd9",
+     "target1_audio_id": "34e06510-7fee-4a14-9b74-5171cdbbd944",
+     "target2_audio_id": "884187b6-2163-4f2a-9b3d-08f145c77cfe",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3816,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0633L01B03",
+     "seed_number": 633,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "in a large glass",
+     "target_text": "큰 컵으로",
+     "word_count": 12,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:02:43.692Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "41c6f74f-6093-4e7b-879d-037859fe7986",
+     "target1_audio_id": "9168cf52-774a-423a-ad3d-faab5ffdc29d",
+     "target2_audio_id": "84c3152b-e15d-4e58-8ebd-8709c2d24bf1",
+     "qa_checked": null,
+     "target1_duration_ms": 3552,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0633L01U08"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "kor_for_eng:S0633L01U07"
+   }
+  ],
+  "ops": 29
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "event_id": "3a7719b2-759a-4551-867b-5df190fa6166",
+  "undo_file": "2026-11-17T15-03-19-137Z-3a7719b2-759a-4551-867b-5df190fa6166.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02U02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02U02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02U02",
+    "set": {
+     "known_text": "sir knows it",
+     "target_text": "선생님을 그걸 알아요",
+     "word_count": 11,
+     "known_audio_id": "60f02288-4d5a-4b6b-b959-3e7aceca3f9c",
+     "target1_audio_id": "a1cca10d-c79d-4912-9334-71cbe5a77c17",
+     "target2_audio_id": "afc7708d-173a-4fa4-9331-c3a012f8bd99",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0662L02U04",
+     "seed_number": 662,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "still she wants it",
+     "target_text": "아직도 그걸 원하세요",
+     "word_count": 11,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:22:25.353Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:22:25.396Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "803f3304-e2e0-45bc-abf8-6996ba33f303",
+     "target1_audio_id": "f15225f8-3295-4eee-ac6b-bdf5a8a1488c",
+     "target2_audio_id": "57568276-3d50-4b28-af3e-a0a6993e6399",
+     "qa_checked": null,
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0662L02U06",
+     "seed_number": 662,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "the madam said it",
+     "target_text": "여사님이 그걸 말해요",
+     "word_count": 11,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:22:25.353Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:22:25.396Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0f8a4720-597c-4228-aa64-8853950d64df",
+     "target1_audio_id": "1b11540d-8e84-4e67-af55-1b08716cd277",
+     "target2_audio_id": "d9d6a8aa-183d-46ad-89ba-ce74eeb72522",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3480,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0662L02B04",
+     "seed_number": 662,
+     "lego_index": 2,
+     "position": 13,
+     "known_text": "I need to look for it",
+     "target_text": "그걸 찾아야 해요",
+     "word_count": 9,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "job": "924",
+      "format": "build_use",
+      "frames": [
+       "P6"
+      ],
+      "window": "661-668",
+      "pipeline": "v4-gap"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-10-09T14:10:09.286Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8d5eb355-6f12-4336-aeca-1c923cab0d4d",
+     "target1_audio_id": "2062df6c-4b2f-484c-9df5-b61792b600e3",
+     "target2_audio_id": "99477062-67a4-4de3-aec7-43e06adb379d",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02B01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02B01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02B01",
+    "set": {
+     "known_text": "it",
+     "target_text": "그걸",
+     "word_count": 2,
+     "known_audio_id": "11b9f532-1f84-485d-b343-4927f34df7ff",
+     "target1_audio_id": "3338f4c2-fa63-46d4-9aa3-0794ffdb1c18",
+     "target2_audio_id": "a5a0afa5-7c72-4d5a-82d5-23678f56a043",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0662L02B03",
+     "seed_number": 662,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "the madam said it",
+     "target_text": "교회가 여사님이 그걸 말해요",
+     "word_count": 15,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:22:25.396Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0f8a4720-597c-4228-aa64-8853950d64df",
+     "target1_audio_id": "40fdae65-128e-45e8-8ffc-d5d9ed909e8e",
+     "target2_audio_id": "04a101d5-c1dc-4fde-9aff-401d9c3ce690",
+     "qa_checked": null,
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02B02",
+    "set": {
+     "target2_audio_id": "05430687-5e05-4e3f-86e3-656c623cb5ea"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02B02",
+    "set": {
+     "target1_audio_id": "3a368462-a7ed-428d-a073-4d3d03aa9659"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02B02",
+    "set": {
+     "known_text": "sir said it",
+     "target_text": "교회가 선생님을 그걸 말해요",
+     "word_count": 15,
+     "known_audio_id": "38c841b2-b560-48d8-a764-365db7720229",
+     "target1_audio_id": "cc487e90-a739-4ba4-a360-385d3a96ecb6",
+     "target2_audio_id": "e917d315-8df6-42ae-9465-0107397eecf8",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0656L01U23",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0656L01U23",
+    "set": {
+     "target_text": "우리는 여러분과 그 문제를 의논해야 해요",
+     "target1_audio_id": "72320290-f10a-44b8-ab8c-1121d12dd2bb",
+     "target2_audio_id": "ded6e273-caa1-470d-af87-fc1cbdf98fbe",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0656L01B02",
+    "set": {
+     "target2_audio_id": "47d2b464-5321-4622-b670-1f5c9a9f42a8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0656L01B02",
+    "set": {
+     "target1_audio_id": "9356dd99-92a9-43bf-9f10-7db39d2d27f7"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0656L01B02",
+    "set": {
+     "known_text": "with everyone",
+     "target_text": "여러분과 함께",
+     "known_audio_id": "7db5928b-3b06-4d4d-9a56-7ac2f0e916b8",
+     "target1_audio_id": "142123da-160e-43c5-bbce-73eb6517d94f",
+     "target2_audio_id": "81fac300-8175-4472-9c0f-5f8ed10ab45e",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0633L02U01",
+    "set": {
+     "known_text": "if a glass of water would be fine",
+     "target_text": "물 한 잔이면 좋겠어요",
+     "word_count": 12,
+     "known_audio_id": "f2d06621-3c94-43ec-8a63-84c8ab78e17f",
+     "target1_audio_id": "755cbe50-1fd5-4b09-8834-41c0fb3ee544",
+     "target2_audio_id": "9044e5cd-5f0f-4ff0-b55b-7586347d59dc",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "event_id": "7a0b0218-c5fe-4712-9332-64310a9cd75a",
+  "undo_file": "2026-11-17T15-03-27-384Z-7a0b0218-c5fe-4712-9332-64310a9cd75a.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0664L02U01",
+    "set": {
+     "target2_audio_id": "29b24cf8-4ccc-4813-9e7a-6e07cf8ef379"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0664L02U01",
+    "set": {
+     "target1_audio_id": "9394f09f-7840-494d-bef8-4a0de0b2efdc"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0664L02U01",
+    "set": {
+     "target_text": "여러분 준비됐어요?",
+     "word_count": 10,
+     "target1_audio_id": "89c6bd94-7fea-4a19-8006-a2d2ff92b09e",
+     "target2_audio_id": "5f4a2129-327e-4d38-b290-1061be9c10b6",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0662L02U05",
+     "seed_number": 662,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "she thinks about it",
+     "target_text": "그걸 생각하려고 해요",
+     "word_count": 11,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:22:25.353Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:22:25.396Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b9c52f24-cb44-45c1-9294-64aec06d6c5d",
+     "target1_audio_id": "59cb2557-7e63-4494-879e-b5454f3b89f2",
+     "target2_audio_id": "b91908e7-ba8a-4971-bbdb-625b719c15e4",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0662L02U03",
+     "seed_number": 662,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "now she found it",
+     "target_text": "지금 그걸 있어요",
+     "word_count": 9,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-06-10T23:22:25.353Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-10T23:22:25.396Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3d0c08ea-00f0-490a-bfc5-9de53ad0c028",
+     "target1_audio_id": "c204b28e-1bcc-4a8c-8ed7-5741db68f74b",
+     "target2_audio_id": "ed019c95-ee33-47a4-932b-097d13de2e7e",
+     "qa_checked": null,
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02U01",
+    "set": {
+     "target2_audio_id": "05430687-5e05-4e3f-86e3-656c623cb5ea"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02U01",
+    "set": {
+     "target1_audio_id": "3a368462-a7ed-428d-a073-4d3d03aa9659"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "kor_for_eng:S0662L02U01",
+    "set": {
+     "known_text": "everyone speaks it",
+     "target_text": "여러분 그걸 말해요",
+     "word_count": 10,
+     "known_audio_id": "5fa96dd6-d148-4d48-8b55-cbde3d0686b6",
+     "target1_audio_id": "c9460288-4064-4073-b696-232f46cb35b2",
+     "target2_audio_id": "90ba1b9f-d193-4d25-9845-88c519c4d5a8",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 10
+ }
+]

@@ -277,3 +277,51 @@ describe('ara_eg/ara_lb/ara_sy: a Kai-cast Azure row is the cast (job #424)', ()
     expect(gate.castAllowsVoice('ara', 'azure_ar-SA-ZariyahNeural', ara)).toMatchObject({ allowed: false, reason: 'uncast' })
   })
 })
+
+describe('deu_at: a Kai-cast ElevenLabs row is the cast (job #57·AA)', () => {
+  const TAMARA = 'elevenlabs_Zq8xdM7UEWBINjdZQdBE'
+  const rows = [{ language: 'deu_at', voice_id: TAMARA, assigned_by: 'kai-key:kai-57-cast', notes: '' }]
+  it('allows the cast ElevenLabs voice for deu_at', () => {
+    expect(gate.castAllowsVoice('deu_at', TAMARA, rows)).toMatchObject({ allowed: true, cast: [TAMARA] })
+  })
+  it('an uncast ElevenLabs voice is still refused for deu_at', () => {
+    expect(gate.castAllowsVoice('deu_at', 'elevenlabs_someoneElse', rows)).toMatchObject({ allowed: false, reason: 'not-in-cast' })
+  })
+  it('does not widen plain deu: an ElevenLabs row there is still not the cast', () => {
+    const deu = [{ language: 'deu', voice_id: TAMARA, assigned_by: 'kai-key:kai-57-cast', notes: '' }]
+    expect(gate.castAllowsVoice('deu', TAMARA, deu)).toMatchObject({ allowed: false, reason: 'uncast' })
+  })
+})
+
+describe('deu_ch: a Kai-cast ElevenLabs male beside a Cartesia female is the cast (job #998·AB)', () => {
+  const MALE = 'elevenlabs_vTifwvQGTZT1q7epCu2b'
+  const ELENI = 'cartesia_c0c52199-e35f-4681-b68a-949ee499617e'
+  const rows = [
+    { language: 'deu_ch', gender: 'm', voice_id: MALE, assigned_by: 'kai-key:kai-998-deu-ch-cast', notes: 'Kai 2026-11-02' },
+    { language: 'deu_ch', gender: 'f', voice_id: ELENI, assigned_by: 'kai-key:kai-424', notes: '' },
+  ]
+  it('allows the cast ElevenLabs male for deu_ch', () => {
+    expect(gate.castAllowsVoice('deu_ch', MALE, rows)).toMatchObject({ allowed: true })
+  })
+  it('still allows the cast Cartesia female', () => {
+    expect(gate.castAllowsVoice('deu_ch', ELENI, rows)).toMatchObject({ allowed: true })
+  })
+  it('an uncast ElevenLabs voice is still refused for deu_ch', () => {
+    expect(gate.castAllowsVoice('deu_ch', 'elevenlabs_someoneElse', rows)).toMatchObject({ allowed: false, reason: 'not-in-cast' })
+  })
+})
+
+describe('hin: a Kai-cast Azure row is the cast (job #563)', () => {
+  const AARTI = 'azure_hi-IN-AartiNeural'
+  const DRAFT = 'cartesia_4459a9a5-69d6-4680-b970-e13dc51845b6'
+  const rows = [
+    { language: 'hin', voice_id: AARTI, assigned_by: 'kai-key:kai-563', notes: 'Kai 2026-10-29: the voices of record' },
+    { language: 'hin', voice_id: DRAFT, assigned_by: 'e2e@ssi-test.invalid', notes: 'draft casting 2026-09-04 — mechanical fill' },
+  ]
+  it('allows the cast Azure voice for hin', () => {
+    expect(gate.castAllowsVoice('hin', AARTI, rows)).toMatchObject({ allowed: true })
+  })
+  it('still refuses the draft Cartesia voice', () => {
+    expect(gate.castAllowsVoice('hin', DRAFT, rows)).toMatchObject({ allowed: false, reason: 'not-in-cast' })
+  })
+})

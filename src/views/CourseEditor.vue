@@ -1039,6 +1039,7 @@ import { GITHUB_CONFIG } from '../config/github'
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
 import LearningCyclePlayer from '../components/LearningCyclePlayer.vue'
+import { shapeTranslations, shapeLegoBreakdowns } from '@/utils/courseEditorRows'
 
 const route = useRoute()
 const router = useRouter()
@@ -1252,12 +1253,7 @@ async function loadCourse() {
     const response = await api.course.get(courseCode)
     course.value = response.course
     // Map API response to component format
-    translations.value = (response.translations || []).map(t => ({
-      ...t,
-      source: t.known_phrase || t.source,
-      target: t.target_phrase || t.target,
-      uuid: t.uuid || t.seed_id
-    }))
+    translations.value = shapeTranslations(response.translations)
     baskets.value = response.baskets || []
 
     // Check if data came from database (has real-time data, no need to fetch from S3)
@@ -1265,22 +1261,7 @@ async function loadCourse() {
 
     if (isFromDatabase && response.lego_breakdowns?.length > 0) {
       // Use database data - transform to component format
-      legoBreakdowns.value = response.lego_breakdowns.map(seed => ({
-        seed_id: seed.seed_id,
-        original_target: seed.seed_pair?.target || '',
-        original_known: seed.seed_pair?.known || '',
-        lego_pairs: (seed.legos || []).map(lego => ({
-          lego_id: lego.id,
-          target_chunk: lego.target,
-          known_chunk: lego.known,
-          lego_type: lego.type === 'M' ? 'COMPOSITE' : 'ATOMIC',
-          is_new: lego.new !== false,
-          ref: lego.ref || null,
-          componentization: lego.components ?
-            lego.components.map(c => `${c.known} = ${c.target}`).join(', ') :
-            null
-        }))
-      }))
+      legoBreakdowns.value = shapeLegoBreakdowns(response.lego_breakdowns)
 
       legos.value = response.legos || []
     } else {

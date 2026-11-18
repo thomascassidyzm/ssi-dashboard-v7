@@ -1,0 +1,2522 @@
+{
+ "course": "spa_for_eng",
+ "tool": "tools/pods/pod-drill/score.mjs (#707, #750)",
+ "boundary": {
+  "SILENT_BELOW_DB": 30,
+  "INSIDE_MS": 20
+ },
+ "totals": {
+  "pieces": 57,
+  "clean": 31,
+  "tight": 26,
+  "unscored": 0,
+  "heard": 57,
+  "heardRejectScoredClean": 0
+ },
+ "pieces": [
+  {
+   "id": "spa_for_eng:pod-1:SC03-S002:s2",
+   "knownClip": "8560c18a-3cbf-4978-aca4-c3138052cbea.v2",
+   "knownSentence": "With milk but with no sugar.",
+   "line": 0,
+   "chunk": 0,
+   "known": "with milk",
+   "target": "Con leche",
+   "startMs": 57,
+   "endMs": 700,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 700,
+     "aWord": "milk",
+     "bWord": "but",
+     "gapMs": 80,
+     "marginMs": 20,
+     "belowDb": 39.4,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S01); the score said clean: end: silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S01",
+    "known": "with milk",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC03-S002:s2",
+   "knownClip": "8560c18a-3cbf-4978-aca4-c3138052cbea.v2",
+   "knownSentence": "With milk but with no sugar.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but with no sugar",
+   "target": "pero sin azúcar",
+   "startMs": 700,
+   "endMs": 1480,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 700,
+     "aWord": "milk",
+     "bWord": "but",
+     "gapMs": 80,
+     "marginMs": 20,
+     "belowDb": 39.4,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S02); the score said clean: start: silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S02",
+    "known": "but with no sugar",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S009:s0",
+   "knownClip": "f67dca68-8025-4438-9f23-bb543fee5ddb",
+   "knownSentence": "I'm sorry, I didn't understand you.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'm sorry",
+   "target": "Lo siento",
+   "startMs": 57,
+   "endMs": 900,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 900,
+     "aWord": "sorry,",
+     "bWord": "I",
+     "gapMs": 250,
+     "marginMs": 60,
+     "belowDb": 16.2,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S03); the score said tight: end: not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S03",
+    "known": "I'm sorry",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S009:s0",
+   "knownClip": "f67dca68-8025-4438-9f23-bb543fee5ddb",
+   "knownSentence": "I'm sorry, I didn't understand you.",
+   "line": 0,
+   "chunk": 1,
+   "known": "I didn't understand you",
+   "target": "no te he entendido",
+   "startMs": 900,
+   "endMs": 2520,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 900,
+     "aWord": "sorry,",
+     "bWord": "I",
+     "gapMs": 250,
+     "marginMs": 60,
+     "belowDb": 16.2,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S04); the score said tight: start: not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S04",
+    "known": "I didn't understand you",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S005:s0",
+   "knownClip": "50f9f135-eb3f-440f-bd71-dd7902a519c7.v2",
+   "knownSentence": "Excuse me - do you have anything gluten-free?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Excuse me,",
+   "target": "Perdón",
+   "startMs": 59,
+   "endMs": 820,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 820,
+     "aWord": "me",
+     "bWord": "-",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 33.4,
+     "inside": "b",
+     "tight": true,
+     "why": "silent at the cut: 33.4 dB under speech; cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S05); the score said tight: end: silent at the cut: 33.4 dB under speech; cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S05",
+    "known": "Excuse me,",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:41.308Z",
+    "text": "Excuse me",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "7650b719-f92d-494c-8e96-00cc75f3b028",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 936,
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S005:s0",
+   "knownClip": "50f9f135-eb3f-440f-bd71-dd7902a519c7.v2",
+   "knownSentence": "Excuse me - do you have anything gluten-free?",
+   "line": 0,
+   "chunk": 1,
+   "known": "do you have anything gluten-free?",
+   "target": "tienen algo sin gluten",
+   "startMs": 820,
+   "endMs": 2520,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 820,
+     "aWord": "me",
+     "bWord": "-",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 33.4,
+     "inside": "b",
+     "tight": true,
+     "why": "silent at the cut: 33.4 dB under speech; cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S06); the score said tight: start: silent at the cut: 33.4 dB under speech; cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S06",
+    "known": "do you have anything gluten-free?",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:41.538Z",
+    "text": "do you have anything gluten-free?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"do you have anything gluten-free?\" is already recorded in eng — 19 clip(s): 02e7a97a-b48f-43a0-83cf-890eb1960e0c (voice xai_gfzdpspr5fdp, spa_for_eng pod_fine_known); 0bda3702-8d38-4c6f-9e11-276cb1e8bd40 (voice xai_gfzdpspr5fdp, est_for_eng pod_fine_known); 2f3cd381-df7d-4d71-86df-160c0e5f3fce (voi",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S016:s0",
+   "knownClip": "423696a0-c25e-40cc-8949-69fede69efab.v2",
+   "knownSentence": "Just two coffees, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "just two coffees,",
+   "target": "Solo dos cafés",
+   "startMs": 59,
+   "endMs": 1120,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1120,
+     "aWord": "coffees,",
+     "bWord": "please.",
+     "gapMs": 292,
+     "marginMs": 92,
+     "belowDb": 9.8,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 9.8 dB under speech; \"please.\" starts 92 ms after the cut (292 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S07); the score said tight: end: not silent at the cut: 9.8 dB under speech; \"please.\" starts 92 ms after the cut (292 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S07",
+    "known": "just two coffees,",
+    "mark": "reject"
+   },
+   "standalone": "400ea064-6f11-495d-bf40-09a4a0e8a48c",
+   "render": {
+    "at": "2026-11-03T17:59:42.522Z",
+    "text": "just two coffees",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "400ea064-6f11-495d-bf40-09a4a0e8a48c",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1280,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S016:s0",
+   "knownClip": "423696a0-c25e-40cc-8949-69fede69efab.v2",
+   "knownSentence": "Just two coffees, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "please.",
+   "target": "por favor",
+   "startMs": 1120,
+   "endMs": 2200,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1120,
+     "aWord": "coffees,",
+     "bWord": "please.",
+     "gapMs": 292,
+     "marginMs": 92,
+     "belowDb": 9.8,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 9.8 dB under speech; \"please.\" starts 92 ms after the cut (292 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S08); the score said tight: start: not silent at the cut: 9.8 dB under speech; \"please.\" starts 92 ms after the cut (292 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S08",
+    "known": "please.",
+    "mark": "reject"
+   },
+   "standalone": "92b5b661-94ae-4af1-a69b-0d3304989df6",
+   "render": {
+    "at": "2026-11-03T17:59:42.889Z",
+    "text": "please.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "92b5b661-94ae-4af1-a69b-0d3304989df6",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S003:s1",
+   "knownClip": "66afe793-1458-45e6-86e6-ca0b0a63608e.v2",
+   "knownSentence": "And do you have any painkillers for children?",
+   "line": 0,
+   "chunk": 0,
+   "known": "and do you have any painkillers",
+   "target": "Y tiene analgésicos",
+   "startMs": 60,
+   "endMs": 1320,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1320,
+     "aWord": "painkillers",
+     "bWord": "for",
+     "gapMs": 0,
+     "marginMs": 0,
+     "belowDb": 26.6,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 26.6 dB under speech; \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it borderline (\"Endings a little abrupt but might be fine\") (S09); the score said tight: end: not silent at the cut: 26.6 dB under speech; \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S09",
+    "known": "and do you have any painkillers",
+    "mark": "borderline",
+    "note": "Endings a little abrupt but might be fine"
+   },
+   "render": {
+    "at": "2026-11-03T17:59:43.104Z",
+    "text": "and do you have any painkillers",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "53bb97cf-38b9-45a0-9ced-339d48251ba0",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1600,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S003:s1",
+   "knownClip": "66afe793-1458-45e6-86e6-ca0b0a63608e.v2",
+   "knownSentence": "And do you have any painkillers for children?",
+   "line": 0,
+   "chunk": 1,
+   "known": "for children?",
+   "target": "para niños",
+   "startMs": 1320,
+   "endMs": 1960,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1320,
+     "aWord": "painkillers",
+     "bWord": "for",
+     "gapMs": 0,
+     "marginMs": 0,
+     "belowDb": 26.6,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 26.6 dB under speech; \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S10); the score said tight: start: not silent at the cut: 26.6 dB under speech; \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S10",
+    "known": "for children?",
+    "mark": "reject"
+   },
+   "standalone": "5ac19f63-1d64-4c47-9cf4-2b784faa3b54",
+   "render": {
+    "at": "2026-11-03T17:59:43.357Z",
+    "text": "for children?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "5ac19f63-1d64-4c47-9cf4-2b784faa3b54",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 800,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S004",
+   "knownClip": "f1bdc4ef-e131-4bf3-adac-c6162a0742f2",
+   "knownSentence": "I think so, but you'll have to look to make sure.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I think so,",
+   "target": "Creo que sí",
+   "startMs": 60,
+   "endMs": 1310,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1310,
+     "aWord": "so,",
+     "bWord": "but",
+     "gapMs": 509,
+     "marginMs": 199,
+     "belowDb": 29.3,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 29.3 dB under speech; \"but\" starts 199 ms after the cut (509 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S11); the score said tight: end: not silent at the cut: 29.3 dB under speech; \"but\" starts 199 ms after the cut (509 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S11",
+    "known": "I think so,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S004",
+   "knownClip": "f1bdc4ef-e131-4bf3-adac-c6162a0742f2",
+   "knownSentence": "I think so, but you'll have to look to make sure.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but you'll have to look",
+   "target": "pero tendrá que mirar",
+   "startMs": 1310,
+   "endMs": 2360,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1310,
+     "aWord": "so,",
+     "bWord": "but",
+     "gapMs": 509,
+     "marginMs": 199,
+     "belowDb": 29.3,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 29.3 dB under speech; \"but\" starts 199 ms after the cut (509 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2360,
+     "aWord": "look",
+     "bWord": "to",
+     "gapMs": 80,
+     "marginMs": 0,
+     "belowDb": 45,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 45.0 dB under speech; \"look\" ends 0 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S12); the score said tight: start: not silent at the cut: 29.3 dB under speech; \"but\" starts 199 ms after the cut (509 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S12",
+    "known": "but you'll have to look",
+    "mark": "reject"
+   },
+   "standalone": "ee7e6fbf-f380-49ab-b8e9-48a5898def11",
+   "render": {
+    "at": "2026-11-03T17:59:43.570Z",
+    "text": "but you'll have to look",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "ee7e6fbf-f380-49ab-b8e9-48a5898def11",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1360,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S004",
+   "knownClip": "f1bdc4ef-e131-4bf3-adac-c6162a0742f2",
+   "knownSentence": "I think so, but you'll have to look to make sure.",
+   "line": 0,
+   "chunk": 2,
+   "known": "to make sure.",
+   "target": "para asegurarse",
+   "startMs": 2360,
+   "endMs": 3320,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2360,
+     "aWord": "look",
+     "bWord": "to",
+     "gapMs": 80,
+     "marginMs": 0,
+     "belowDb": 45,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 45.0 dB under speech; \"look\" ends 0 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S13); the score said clean: start: silent at the cut: 45.0 dB under speech; \"look\" ends 0 ms before the cut (80 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S13",
+    "known": "to make sure.",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:41.538Z",
+    "text": "to make sure.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "490514cb-8453-4b7e-af08-7e064dc5225c",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1120,
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S009:s2",
+   "knownClip": "ef31eb55-7955-4644-96b9-ef713ce26261.v2",
+   "knownSentence": "Thank you very much, and goodbye.",
+   "line": 0,
+   "chunk": 0,
+   "known": "thank you very much,",
+   "target": "Muchas gracias",
+   "startMs": 60,
+   "endMs": 1210,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1210,
+     "aWord": "much,",
+     "bWord": "and",
+     "gapMs": 125,
+     "marginMs": -5,
+     "belowDb": 64.1,
+     "inside": "b",
+     "tight": false,
+     "why": "silent at the cut: 64.1 dB under speech; cut 5 ms inside \"and\" (125 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S14); the score said clean: end: silent at the cut: 64.1 dB under speech; cut 5 ms inside \"and\" (125 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S14",
+    "known": "thank you very much,",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:41.979Z",
+    "text": "thank you very much",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "286d6287-9e39-42b2-bc81-dcb824ff7ba8",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1248,
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S009:s2",
+   "knownClip": "ef31eb55-7955-4644-96b9-ef713ce26261.v2",
+   "knownSentence": "Thank you very much, and goodbye.",
+   "line": 0,
+   "chunk": 1,
+   "known": "and goodbye.",
+   "target": "y hasta luego",
+   "startMs": 1210,
+   "endMs": 1880,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1210,
+     "aWord": "much,",
+     "bWord": "and",
+     "gapMs": 125,
+     "marginMs": -5,
+     "belowDb": 64.1,
+     "inside": "b",
+     "tight": false,
+     "why": "silent at the cut: 64.1 dB under speech; cut 5 ms inside \"and\" (125 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S15); the score said clean: start: silent at the cut: 64.1 dB under speech; cut 5 ms inside \"and\" (125 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S15",
+    "known": "and goodbye.",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "and goodbye.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and goodbye.\" is already recorded in eng — 29 clip(s): 8b56d152-9764-4d82-a6d9-e7434b087c04 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 1877ea75-6ea3-4357-b402-b2ac04e62d6c (voice xai_gfzdpspr5fdp, cat_for_eng pod_fine_known); 1978b3c2-0020-49e0-bb76-19498e3d23ff (voice xai_gfzdpspr5fdp, nld_",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S008:s1",
+   "knownClip": "e1f2a326-cb8a-4822-ab52-65fa90a4d908.v2",
+   "knownSentence": "We have fruit and cereals or a cooked breakfast.",
+   "line": 0,
+   "chunk": 0,
+   "known": "We have fruit and cereals",
+   "target": "Tenemos fruta y cereales",
+   "startMs": 60,
+   "endMs": 1770,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1770,
+     "aWord": "cereals",
+     "bWord": "or",
+     "gapMs": 80,
+     "marginMs": -30,
+     "belowDb": 14.5,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S16); the score said tight: end: not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S16",
+    "known": "We have fruit and cereals",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "We have fruit and cereals",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"We have fruit and cereals\" is already recorded in eng — 33 clip(s): 44e67508-ea13-422a-9225-f8375fe0e1ab (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 03cd6c76-d8cb-4882-b96e-a21cbbb302e4 (voice xai_gfzdpspr5fdp, nor_for_eng pod_fine_known); 0827b7e1-0433-4f30-b351-81ab45987e14 (voice xai_gfzdp",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S008:s1",
+   "knownClip": "e1f2a326-cb8a-4822-ab52-65fa90a4d908.v2",
+   "knownSentence": "We have fruit and cereals or a cooked breakfast.",
+   "line": 0,
+   "chunk": 1,
+   "known": "or a cooked breakfast.",
+   "target": "o un desayuno caliente",
+   "startMs": 1770,
+   "endMs": 3000,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1770,
+     "aWord": "cereals",
+     "bWord": "or",
+     "gapMs": 80,
+     "marginMs": -30,
+     "belowDb": 14.5,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S17); the score said tight: start: not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S17",
+    "known": "or a cooked breakfast.",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "or a cooked breakfast.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"or a cooked breakfast.\" is already recorded in eng — 33 clip(s): df2d358d-3323-46eb-9d42-387edf70a246 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0d0b0b8e-f3b7-404d-b0be-a2b638b7692b (voice xai_gfzdpspr5fdp, nld_for_eng pod_fine_known); 157ed761-ceec-45a5-b27a-ded324589468 (voice xai_gfzdpspr",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC02-S001",
+   "knownClip": "d4eefdd0-5443-4360-9157-ca98c1d60c32.v2",
+   "knownSentence": "Excuse me, is this seat taken?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Excuse me,",
+   "target": "Perdón",
+   "startMs": 56,
+   "endMs": 1020,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1020,
+     "aWord": "me,",
+     "bWord": "is",
+     "gapMs": 123,
+     "marginMs": 23,
+     "belowDb": 60.5,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S18); the score said clean: end: silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S18",
+    "known": "Excuse me,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC02-S001",
+   "knownClip": "d4eefdd0-5443-4360-9157-ca98c1d60c32.v2",
+   "knownSentence": "Excuse me, is this seat taken?",
+   "line": 0,
+   "chunk": 1,
+   "known": "is this seat taken?",
+   "target": "está ocupado este asiento",
+   "startMs": 1020,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1020,
+     "aWord": "me,",
+     "bWord": "is",
+     "gapMs": 123,
+     "marginMs": 23,
+     "belowDb": 60.5,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S19); the score said clean: start: silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S19",
+    "known": "is this seat taken?",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S011:s0",
+   "knownClip": "c149318c-c8fa-48c8-b8b4-a80450b36cc0",
+   "knownSentence": "I teach English, but not in a school.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I teach English,",
+   "target": "Enseño inglés",
+   "startMs": 60,
+   "endMs": 1320,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1320,
+     "aWord": "English,",
+     "bWord": "but",
+     "gapMs": 213,
+     "marginMs": 80,
+     "belowDb": 55.2,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 55.2 dB under speech; \"English,\" ends 80 ms before the cut (213 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S20); the score said clean: end: silent at the cut: 55.2 dB under speech; \"English,\" ends 80 ms before the cut (213 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S20",
+    "known": "I teach English,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S011:s0",
+   "knownClip": "c149318c-c8fa-48c8-b8b4-a80450b36cc0",
+   "knownSentence": "I teach English, but not in a school.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but not in a school.",
+   "target": "pero no en un colegio",
+   "startMs": 1320,
+   "endMs": 2520,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1320,
+     "aWord": "English,",
+     "bWord": "but",
+     "gapMs": 213,
+     "marginMs": 80,
+     "belowDb": 55.2,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 55.2 dB under speech; \"English,\" ends 80 ms before the cut (213 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S21); the score said clean: start: silent at the cut: 55.2 dB under speech; \"English,\" ends 80 ms before the cut (213 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S21",
+    "known": "but not in a school.",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S004:s1",
+   "knownClip": "81f83f7f-72e0-425f-a3f9-f06842bf59aa",
+   "knownSentence": "With oat milk if you have it.",
+   "line": 0,
+   "chunk": 0,
+   "known": "With oat milk",
+   "target": "Con leche de avena",
+   "startMs": 62,
+   "endMs": 860,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 860,
+     "aWord": "milk",
+     "bWord": "if",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 27.2,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 27.2 dB under speech; cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S22); the score said tight: end: not silent at the cut: 27.2 dB under speech; cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S22",
+    "known": "With oat milk",
+    "mark": "reject"
+   },
+   "standalone": "29a40c7c-d86d-49eb-b4b7-879ee69dd4af",
+   "render": {
+    "at": "2026-11-03T17:59:43.861Z",
+    "text": "With oat milk",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "29a40c7c-d86d-49eb-b4b7-879ee69dd4af",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1280,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S004:s1",
+   "knownClip": "81f83f7f-72e0-425f-a3f9-f06842bf59aa",
+   "knownSentence": "With oat milk if you have it.",
+   "line": 0,
+   "chunk": 1,
+   "known": "if you have it.",
+   "target": "si tiene",
+   "startMs": 860,
+   "endMs": 1720,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 860,
+     "aWord": "milk",
+     "bWord": "if",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 27.2,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 27.2 dB under speech; cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S23); the score said tight: start: not silent at the cut: 27.2 dB under speech; cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S23",
+    "known": "if you have it.",
+    "mark": "reject"
+   },
+   "standalone": "41dbb0f9-b27c-47fb-886f-835dd4c69032",
+   "render": {
+    "at": "2026-11-03T17:59:44.106Z",
+    "text": "if you have it.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "41dbb0f9-b27c-47fb-886f-835dd4c69032",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Could I have two white coffees",
+   "target": "Me pone dos cafés con leche",
+   "startMs": 60,
+   "endMs": 2040,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 2040,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 0,
+     "marginMs": 0,
+     "belowDb": 18,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 18.0 dB under speech; \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it borderline (\"Ends abruptly but might be fine\") (S24); the score said tight: end: not silent at the cut: 18.0 dB under speech; \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S24",
+    "known": "Could I have two white coffees",
+    "mark": "borderline",
+    "note": "Ends abruptly but might be fine"
+   },
+   "render": {
+    "at": "2026-11-03T17:59:44.390Z",
+    "text": "Could I have two white coffees",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "9cb94082-55c1-4909-a98f-d000ffd3d4f5",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 2400,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 1,
+   "known": "and two black coffees",
+   "target": "y dos cafés solos",
+   "startMs": 2040,
+   "endMs": 3380,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2040,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 0,
+     "marginMs": 0,
+     "belowDb": 18,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 18.0 dB under speech; \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")"
+    },
+    {
+     "edge": "end",
+     "seam": 3380,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 80,
+     "marginMs": -20,
+     "belowDb": 15,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 15.0 dB under speech; cut 20 ms inside \"coffees\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it borderline (\"Also abrupt but maybe fine\") (S25); the score said tight: start: not silent at the cut: 18.0 dB under speech; \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\"); end: not silent at the cut: 15.0 dB under speech; cut 20 ms inside \"coffees\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S25",
+    "known": "and two black coffees",
+    "mark": "borderline",
+    "note": "Also abrupt but maybe fine"
+   },
+   "render": {
+    "at": "2026-11-03T17:59:44.630Z",
+    "text": "and two black coffees",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "2a7f32d5-82d7-4200-b684-43f2be4717cb",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1760,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 2,
+   "known": "and one of those,",
+   "target": "y uno de esos",
+   "startMs": 3380,
+   "endMs": 4180,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 3380,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 80,
+     "marginMs": -20,
+     "belowDb": 15,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 15.0 dB under speech; cut 20 ms inside \"coffees\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 4180,
+     "aWord": "those,",
+     "bWord": "please?",
+     "gapMs": 1,
+     "marginMs": -20,
+     "belowDb": 42.4,
+     "inside": "a",
+     "tight": false,
+     "why": "silent at the cut: 42.4 dB under speech; cut 20 ms inside \"those,\" (1 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S26); the score said tight: start: not silent at the cut: 15.0 dB under speech; cut 20 ms inside \"coffees\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S26",
+    "known": "and one of those,",
+    "mark": "reject"
+   },
+   "standalone": "a5b93f33-a9da-46d7-a34c-c1cfe15e9b50",
+   "render": {
+    "at": "2026-11-03T17:59:44.914Z",
+    "text": "and one of those",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "a5b93f33-a9da-46d7-a34c-c1cfe15e9b50",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1200,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 3,
+   "known": "please?",
+   "target": "por favor",
+   "startMs": 4180,
+   "endMs": 4760,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 4180,
+     "aWord": "those,",
+     "bWord": "please?",
+     "gapMs": 1,
+     "marginMs": -20,
+     "belowDb": 42.4,
+     "inside": "a",
+     "tight": false,
+     "why": "silent at the cut: 42.4 dB under speech; cut 20 ms inside \"those,\" (1 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S27); the score said clean: start: silent at the cut: 42.4 dB under speech; cut 20 ms inside \"those,\" (1 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S27",
+    "known": "please?",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "please?",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"please?\" is already recorded in eng — 29 clip(s): 6be0b88f-30f1-4688-ae17-afb6feb3ccaf (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); d74001da-c3b9-46b3-b243-2e8b5ca3d575 (voice bedd6226, hrv_for_eng known); 084af382-7e5e-4a67-8af2-86012f0116a9 (voice xai_gfzdpspr5fdp, deu_for_eng pod_fine_known",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S014:s1",
+   "knownClip": "bd53199f-04f6-484a-9152-d5b301ee5e68.v2",
+   "knownSentence": "The table by the window is free.",
+   "line": 0,
+   "chunk": 0,
+   "known": "The table by the window",
+   "target": "La mesa junto a la ventana",
+   "startMs": 59,
+   "endMs": 1150,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1150,
+     "aWord": "window",
+     "bWord": "is",
+     "gapMs": 80,
+     "marginMs": 10,
+     "belowDb": 16.6,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 16.6 dB under speech; \"is\" starts 10 ms after the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S28); the score said tight: end: not silent at the cut: 16.6 dB under speech; \"is\" starts 10 ms after the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S28",
+    "known": "The table by the window",
+    "mark": "reject"
+   },
+   "standalone": "d229edb3-74a5-45c9-b7f2-68fa6a3b6d6b",
+   "render": {
+    "at": "2026-11-03T17:59:45.226Z",
+    "text": "The table by the window",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "d229edb3-74a5-45c9-b7f2-68fa6a3b6d6b",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1520,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S014:s1",
+   "knownClip": "bd53199f-04f6-484a-9152-d5b301ee5e68.v2",
+   "knownSentence": "The table by the window is free.",
+   "line": 0,
+   "chunk": 1,
+   "known": "is free.",
+   "target": "está libre",
+   "startMs": 1150,
+   "endMs": 1720,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1150,
+     "aWord": "window",
+     "bWord": "is",
+     "gapMs": 80,
+     "marginMs": 10,
+     "belowDb": 16.6,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 16.6 dB under speech; \"is\" starts 10 ms after the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S29); the score said tight: start: not silent at the cut: 16.6 dB under speech; \"is\" starts 10 ms after the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S29",
+    "known": "is free.",
+    "mark": "reject"
+   },
+   "standalone": "2847445a-bbfc-4a9d-ad77-7fe6585e748f",
+   "render": {
+    "at": "2026-11-03T17:59:45.569Z",
+    "text": "is free.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "2847445a-bbfc-4a9d-ad77-7fe6585e748f",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 960,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S003",
+   "knownClip": "59823ed9-a5b3-4ed5-8879-3dfac324ce65",
+   "knownSentence": "We've got a bitter and a stout, and they're both local.",
+   "line": 0,
+   "chunk": 0,
+   "known": "We've got a bitter",
+   "target": "Tenemos una amarga",
+   "startMs": 60,
+   "endMs": 1190,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1190,
+     "aWord": "bitter",
+     "bWord": "and",
+     "gapMs": 96,
+     "marginMs": 30,
+     "belowDb": 25.2,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 25.2 dB under speech; \"bitter\" ends 30 ms before the cut (96 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S30); the score said tight: end: not silent at the cut: 25.2 dB under speech; \"bitter\" ends 30 ms before the cut (96 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S30",
+    "known": "We've got a bitter",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S003",
+   "knownClip": "59823ed9-a5b3-4ed5-8879-3dfac324ce65",
+   "knownSentence": "We've got a bitter and a stout, and they're both local.",
+   "line": 0,
+   "chunk": 1,
+   "known": "and a stout,",
+   "target": "y una negra",
+   "startMs": 1190,
+   "endMs": 2300,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1190,
+     "aWord": "bitter",
+     "bWord": "and",
+     "gapMs": 96,
+     "marginMs": 30,
+     "belowDb": 25.2,
+     "inside": null,
+     "tight": true,
+     "why": "not silent at the cut: 25.2 dB under speech; \"bitter\" ends 30 ms before the cut (96 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2300,
+     "aWord": "stout,",
+     "bWord": "and",
+     "gapMs": 293,
+     "marginMs": 113,
+     "belowDb": 53,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 53.0 dB under speech; \"and\" starts 113 ms after the cut (293 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S31); the score said tight: start: not silent at the cut: 25.2 dB under speech; \"bitter\" ends 30 ms before the cut (96 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S31",
+    "known": "and a stout,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S003",
+   "knownClip": "59823ed9-a5b3-4ed5-8879-3dfac324ce65",
+   "knownSentence": "We've got a bitter and a stout, and they're both local.",
+   "line": 0,
+   "chunk": 2,
+   "known": "and they're both local.",
+   "target": "y las dos son locales",
+   "startMs": 2300,
+   "endMs": 3640,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2300,
+     "aWord": "stout,",
+     "bWord": "and",
+     "gapMs": 293,
+     "marginMs": 113,
+     "belowDb": 53,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 53.0 dB under speech; \"and\" starts 113 ms after the cut (293 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S32); the score said clean: start: silent at the cut: 53.0 dB under speech; \"and\" starts 113 ms after the cut (293 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S32",
+    "known": "and they're both local.",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'd like a large glass",
+   "target": "Me gustaría una copa grande",
+   "startMs": 60,
+   "endMs": 1220,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -20,
+     "belowDb": 13.5,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S33); the score said tight: end: not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S33",
+    "known": "I'd like a large glass",
+    "mark": "reject"
+   },
+   "standalone": "401a697d-8b17-470e-9eef-33c5dfdd142a",
+   "render": {
+    "at": "2026-11-03T17:59:45.826Z",
+    "text": "I'd like a large glass",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "401a697d-8b17-470e-9eef-33c5dfdd142a",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1600,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "of white wine,",
+   "target": "de vino blanco",
+   "startMs": 1220,
+   "endMs": 2030,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -20,
+     "belowDb": 13.5,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+    },
+    {
+     "edge": "end",
+     "seam": 2030,
+     "aWord": "wine,",
+     "bWord": "please.",
+     "gapMs": 3,
+     "marginMs": -67,
+     "belowDb": 28.6,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S34); the score said tight: start: not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\"); end: not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S34",
+    "known": "of white wine,",
+    "mark": "reject"
+   },
+   "standalone": "f928040b-2043-4797-8780-179b919269b4",
+   "render": {
+    "at": "2026-11-03T17:59:46.070Z",
+    "text": "of white wine",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "f928040b-2043-4797-8780-179b919269b4",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 2,
+   "known": "please.",
+   "target": "por favor",
+   "startMs": 2030,
+   "endMs": 2600,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2030,
+     "aWord": "wine,",
+     "bWord": "please.",
+     "gapMs": 3,
+     "marginMs": -67,
+     "belowDb": 28.6,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S35); the score said tight: start: not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S35",
+    "known": "please.",
+    "mark": "reject"
+   },
+   "standalone": "92b5b661-94ae-4af1-a69b-0d3304989df6",
+   "render": {
+    "at": "2026-11-03T17:59:46.267Z",
+    "text": "please.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "92b5b661-94ae-4af1-a69b-0d3304989df6",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S009",
+   "knownClip": "508b7e94-5d7a-4cd8-b045-ccc2acedfa46.v2",
+   "knownSentence": "Can I have a small glass of red wine?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Can I have a small glass",
+   "target": "Me pone una copa pequeña",
+   "startMs": 60,
+   "endMs": 1220,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 11.6,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 11.6 dB under speech; cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S36); the score said tight: end: not silent at the cut: 11.6 dB under speech; cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S36",
+    "known": "Can I have a small glass",
+    "mark": "reject"
+   },
+   "standalone": "e6ed493a-6e9c-48b7-bdc0-171b8be36f80",
+   "render": {
+    "at": "2026-11-03T17:59:46.267Z",
+    "text": "Can I have a small glass",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "e6ed493a-6e9c-48b7-bdc0-171b8be36f80",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1600,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S009",
+   "knownClip": "508b7e94-5d7a-4cd8-b045-ccc2acedfa46.v2",
+   "knownSentence": "Can I have a small glass of red wine?",
+   "line": 0,
+   "chunk": 1,
+   "known": "of red wine?",
+   "target": "de vino tinto",
+   "startMs": 1220,
+   "endMs": 1880,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 11.6,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 11.6 dB under speech; cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S37); the score said tight: start: not silent at the cut: 11.6 dB under speech; cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S37",
+    "known": "of red wine?",
+    "mark": "reject"
+   },
+   "standalone": "51e6424d-4924-4600-9da6-ac19c675e313",
+   "render": {
+    "at": "2026-11-03T17:59:46.514Z",
+    "text": "of red wine?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "51e6424d-4924-4600-9da6-ac19c675e313",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S010",
+   "knownClip": "513c9fa8-ce7a-4ad7-881c-2119da865374.v2",
+   "knownSentence": "I'd like two more glasses of beer.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'd like",
+   "target": "Me gustaría",
+   "startMs": 60,
+   "endMs": 410,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 410,
+     "aWord": "like",
+     "bWord": "two",
+     "gapMs": 0,
+     "marginMs": -30,
+     "belowDb": 44.6,
+     "inside": "a",
+     "tight": true,
+     "why": "silent at the cut: 44.6 dB under speech; cut 30 ms inside \"like\" (no silence between \"like\" and \"two\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S38); the score said tight: end: silent at the cut: 44.6 dB under speech; cut 30 ms inside \"like\" (no silence between \"like\" and \"two\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S38",
+    "known": "I'd like",
+    "mark": "reject"
+   },
+   "standalone": "9cf8a0c3-deb2-4031-9787-5a5033d5c444",
+   "render": {
+    "at": "2026-11-03T17:59:46.812Z",
+    "text": "I'd like",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "9cf8a0c3-deb2-4031-9787-5a5033d5c444",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1007,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S010",
+   "knownClip": "513c9fa8-ce7a-4ad7-881c-2119da865374.v2",
+   "knownSentence": "I'd like two more glasses of beer.",
+   "line": 0,
+   "chunk": 1,
+   "known": "two more glasses",
+   "target": "dos copas más",
+   "startMs": 410,
+   "endMs": 1220,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 410,
+     "aWord": "like",
+     "bWord": "two",
+     "gapMs": 0,
+     "marginMs": -30,
+     "belowDb": 44.6,
+     "inside": "a",
+     "tight": true,
+     "why": "silent at the cut: 44.6 dB under speech; cut 30 ms inside \"like\" (no silence between \"like\" and \"two\")"
+    },
+    {
+     "edge": "end",
+     "seam": 1220,
+     "aWord": "glasses",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 11.3,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 11.3 dB under speech; cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S39); the score said tight: start: silent at the cut: 44.6 dB under speech; cut 30 ms inside \"like\" (no silence between \"like\" and \"two\"); end: not silent at the cut: 11.3 dB under speech; cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S39",
+    "known": "two more glasses",
+    "mark": "reject"
+   },
+   "standalone": "5180143c-8d79-4e4e-8b62-35eacf8965b5",
+   "render": {
+    "at": "2026-11-03T17:59:47.039Z",
+    "text": "two more glasses",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "5180143c-8d79-4e4e-8b62-35eacf8965b5",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1280,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S010",
+   "knownClip": "513c9fa8-ce7a-4ad7-881c-2119da865374.v2",
+   "knownSentence": "I'd like two more glasses of beer.",
+   "line": 0,
+   "chunk": 2,
+   "known": "of beer.",
+   "target": "de cerveza",
+   "startMs": 1220,
+   "endMs": 1640,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1220,
+     "aWord": "glasses",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 11.3,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 11.3 dB under speech; cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S40); the score said tight: start: not silent at the cut: 11.3 dB under speech; cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S40",
+    "known": "of beer.",
+    "mark": "reject"
+   },
+   "standalone": "f06661a9-57fb-41b6-9786-839e5826a96c",
+   "render": {
+    "at": "2026-11-03T17:59:47.325Z",
+    "text": "of beer.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "f06661a9-57fb-41b6-9786-839e5826a96c",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 800,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "We'd like",
+   "target": "Nos gustaría",
+   "startMs": 60,
+   "endMs": 500,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 500,
+     "aWord": "like",
+     "bWord": "one",
+     "gapMs": 80,
+     "marginMs": -20,
+     "belowDb": 21.4,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 21.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S41); the score said tight: end: not silent at the cut: 21.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S41",
+    "known": "We'd like",
+    "mark": "reject"
+   },
+   "standalone": "a6aff90a-258f-4d4b-9261-ca62930019a2",
+   "render": {
+    "at": "2026-11-03T17:59:47.555Z",
+    "text": "We'd like",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "a6aff90a-258f-4d4b-9261-ca62930019a2",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 880,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "one bottle of sparkling water",
+   "target": "una botella de agua con gas",
+   "startMs": 500,
+   "endMs": 2090,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 500,
+     "aWord": "like",
+     "bWord": "one",
+     "gapMs": 80,
+     "marginMs": -20,
+     "belowDb": 21.4,
+     "inside": "a",
+     "tight": true,
+     "why": "not silent at the cut: 21.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2090,
+     "aWord": "water",
+     "bWord": "and",
+     "gapMs": 8,
+     "marginMs": -42,
+     "belowDb": 40.3,
+     "inside": "b",
+     "tight": true,
+     "why": "silent at the cut: 40.3 dB under speech; cut 42 ms inside \"and\" (8 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S42); the score said tight: start: not silent at the cut: 21.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words); end: silent at the cut: 40.3 dB under speech; cut 42 ms inside \"and\" (8 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S42",
+    "known": "one bottle of sparkling water",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "one bottle of sparkling water",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"one bottle of sparkling water\" is already recorded in eng — 25 clip(s): 5a2e4e53-f5ed-4fef-86dc-d2397a6f1309 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 020a5101-902a-4c93-8db8-1addc6e386f5 (voice xai_gfzdpspr5fdp, isl_for_eng pod_fine_known); 0db5d285-279e-477b-8222-06993a0f32ec (voice xai_g",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 2,
+   "known": "and one bottle of still water,",
+   "target": "y una botella de agua sin gas",
+   "startMs": 2090,
+   "endMs": 3510,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2090,
+     "aWord": "water",
+     "bWord": "and",
+     "gapMs": 8,
+     "marginMs": -42,
+     "belowDb": 40.3,
+     "inside": "b",
+     "tight": true,
+     "why": "silent at the cut: 40.3 dB under speech; cut 42 ms inside \"and\" (8 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 3510,
+     "aWord": "water,",
+     "bWord": "please.",
+     "gapMs": 71,
+     "marginMs": 30,
+     "belowDb": 43.4,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 43.4 dB under speech; \"water,\" ends 30 ms before the cut (71 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S43); the score said tight: start: silent at the cut: 40.3 dB under speech; cut 42 ms inside \"and\" (8 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S43",
+    "known": "and one bottle of still water,",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "and one bottle of still water",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and one bottle of still water\" is already recorded in eng — 26 clip(s): c73dedff-031f-4b8b-8123-89486f7ed635 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 178ff91f-e0d6-490d-9474-94860f2ce84a (voice xai_gfzdpspr5fdp, tur_for_eng pod_fine_known); 1792afd4-1454-493c-9dff-07337492e450 (voice xai_g",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 3,
+   "known": "please.",
+   "target": "por favor",
+   "startMs": 3510,
+   "endMs": 4040,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 3510,
+     "aWord": "water,",
+     "bWord": "please.",
+     "gapMs": 71,
+     "marginMs": 30,
+     "belowDb": 43.4,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 43.4 dB under speech; \"water,\" ends 30 ms before the cut (71 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S44); the score said clean: start: silent at the cut: 43.4 dB under speech; \"water,\" ends 30 ms before the cut (71 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S44",
+    "known": "please.",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S006:s0",
+   "knownClip": "29549934-5f53-44e3-9ab9-7a6a34423e40",
+   "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+   "line": 0,
+   "chunk": 0,
+   "known": "Yes,",
+   "target": "Sí",
+   "startMs": 60,
+   "endMs": 830,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 830,
+     "aWord": "Yes,",
+     "bWord": "the",
+     "gapMs": 169,
+     "marginMs": 19,
+     "belowDb": 32,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 32.0 dB under speech; \"the\" starts 19 ms after the cut (169 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S45); the score said clean: end: silent at the cut: 32.0 dB under speech; \"the\" starts 19 ms after the cut (169 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S45",
+    "known": "Yes,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S006:s0",
+   "knownClip": "29549934-5f53-44e3-9ab9-7a6a34423e40",
+   "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+   "line": 0,
+   "chunk": 1,
+   "known": "the salmon and the risotto",
+   "target": "el salmón y el risotto",
+   "startMs": 830,
+   "endMs": 2370,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 830,
+     "aWord": "Yes,",
+     "bWord": "the",
+     "gapMs": 169,
+     "marginMs": 19,
+     "belowDb": 32,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 32.0 dB under speech; \"the\" starts 19 ms after the cut (169 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2370,
+     "aWord": "risotto",
+     "bWord": "are",
+     "gapMs": 0,
+     "marginMs": -10,
+     "belowDb": 11.5,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 11.5 dB under speech; cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it borderline (\"Ends awkwardly but might be fine\") (S46); the score said tight: end: not silent at the cut: 11.5 dB under speech; cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S46",
+    "known": "the salmon and the risotto",
+    "mark": "borderline",
+    "note": "Ends awkwardly but might be fine"
+   },
+   "render": {
+    "at": "2026-11-03T17:59:47.788Z",
+    "text": "the salmon and the risotto",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "e47a3aef-3e7d-42c5-ad3e-1c1a823a7c98",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 2240,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S006:s0",
+   "knownClip": "29549934-5f53-44e3-9ab9-7a6a34423e40",
+   "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+   "line": 0,
+   "chunk": 2,
+   "known": "are both gluten-free.",
+   "target": "son los dos sin gluten",
+   "startMs": 2370,
+   "endMs": 3800,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2370,
+     "aWord": "risotto",
+     "bWord": "are",
+     "gapMs": 0,
+     "marginMs": -10,
+     "belowDb": 11.5,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 11.5 dB under speech; cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S47); the score said tight: start: not silent at the cut: 11.5 dB under speech; cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S47",
+    "known": "are both gluten-free.",
+    "mark": "accept"
+   },
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "are both gluten-free.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"are both gluten-free.\" is already recorded in eng — 29 clip(s): 66279131-089b-488d-8e52-01207592705b (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 023a0d7a-7175-4add-9f01-3b5c4a400203 (voice xai_gfzdpspr5fdp, fas_for_eng pod_fine_known); 1d899d5d-0fc9-45f8-b6e1-6f0d0dcfed81 (voice gfzdpspr5fdp,",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S008:s1",
+   "knownClip": "d46b25a8-a910-4a6b-9fe5-1ff1db636066",
+   "knownSentence": "It's been slow-cooked, with rosemary.",
+   "line": 0,
+   "chunk": 0,
+   "known": "It's been slow-cooked,",
+   "target": "Se ha cocinado a fuego lento",
+   "startMs": 60,
+   "endMs": 1650,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1650,
+     "aWord": "slow-cooked,",
+     "bWord": "with",
+     "gapMs": 205,
+     "marginMs": 35,
+     "belowDb": 52.1,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S48); the score said clean: end: silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S48",
+    "known": "It's been slow-cooked,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S008:s1",
+   "knownClip": "d46b25a8-a910-4a6b-9fe5-1ff1db636066",
+   "knownSentence": "It's been slow-cooked, with rosemary.",
+   "line": 0,
+   "chunk": 1,
+   "known": "with rosemary.",
+   "target": "con romero",
+   "startMs": 1650,
+   "endMs": 2760,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1650,
+     "aWord": "slow-cooked,",
+     "bWord": "with",
+     "gapMs": 205,
+     "marginMs": 35,
+     "belowDb": 52.1,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S49); the score said clean: start: silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S49",
+    "known": "with rosemary.",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S007:s0",
+   "knownClip": "e6ec6290-0aab-420c-8841-15411bd454b2.v2",
+   "knownSentence": "Thank you, you've been very helpful.",
+   "line": 0,
+   "chunk": 0,
+   "known": "Thank you,",
+   "target": "Gracias",
+   "startMs": 60,
+   "endMs": 820,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 820,
+     "aWord": "you,",
+     "bWord": "you've",
+     "gapMs": 81,
+     "marginMs": 21,
+     "belowDb": 49.3,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 49.3 dB under speech; \"you've\" starts 21 ms after the cut (81 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S50); the score said clean: end: silent at the cut: 49.3 dB under speech; \"you've\" starts 21 ms after the cut (81 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S50",
+    "known": "Thank you,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S007:s0",
+   "knownClip": "e6ec6290-0aab-420c-8841-15411bd454b2.v2",
+   "knownSentence": "Thank you, you've been very helpful.",
+   "line": 0,
+   "chunk": 1,
+   "known": "you've been very helpful.",
+   "target": "ha sido usted muy amable",
+   "startMs": 820,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 820,
+     "aWord": "you,",
+     "bWord": "you've",
+     "gapMs": 81,
+     "marginMs": 21,
+     "belowDb": 49.3,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 49.3 dB under speech; \"you've\" starts 21 ms after the cut (81 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S51); the score said clean: start: silent at the cut: 49.3 dB under speech; \"you've\" starts 21 ms after the cut (81 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S51",
+    "known": "you've been very helpful.",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 0,
+   "known": "Yes,",
+   "target": "Sí",
+   "startMs": 60,
+   "endMs": 660,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 660,
+     "aWord": "Yes,",
+     "bWord": "you",
+     "gapMs": 159,
+     "marginMs": 19,
+     "belowDb": 53.9,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 53.9 dB under speech; \"you\" starts 19 ms after the cut (159 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S52); the score said clean: end: silent at the cut: 53.9 dB under speech; \"you\" starts 19 ms after the cut (159 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S52",
+    "known": "Yes,",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 1,
+   "known": "you can stay",
+   "target": "puede quedarse",
+   "startMs": 660,
+   "endMs": 1260,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 660,
+     "aWord": "Yes,",
+     "bWord": "you",
+     "gapMs": 159,
+     "marginMs": 19,
+     "belowDb": 53.9,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 53.9 dB under speech; \"you\" starts 19 ms after the cut (159 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 1260,
+     "aWord": "stay",
+     "bWord": "until",
+     "gapMs": 80,
+     "marginMs": -20,
+     "belowDb": 10.4,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 10.4 dB under speech; cut 20 ms inside \"until\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S53); the score said tight: end: not silent at the cut: 10.4 dB under speech; cut 20 ms inside \"until\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S53",
+    "known": "you can stay",
+    "mark": "reject"
+   },
+   "standalone": "772c5fa4-bf47-458f-b569-2775d251ccc4",
+   "render": {
+    "at": "2026-11-03T17:59:48.064Z",
+    "text": "you can stay",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "772c5fa4-bf47-458f-b569-2775d251ccc4",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 2,
+   "known": "until midday,",
+   "target": "hasta el mediodía",
+   "startMs": 1260,
+   "endMs": 2090,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1260,
+     "aWord": "stay",
+     "bWord": "until",
+     "gapMs": 80,
+     "marginMs": -20,
+     "belowDb": 10.4,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 10.4 dB under speech; cut 20 ms inside \"until\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2090,
+     "aWord": "midday,",
+     "bWord": "no",
+     "gapMs": 226,
+     "marginMs": 96,
+     "belowDb": 58.7,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 58.7 dB under speech; \"no\" starts 96 ms after the cut (226 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it borderline (\"It sounds like \"til midday\" Which as it happens is correct for English - depends on whether you want it to actually say \"until\" clearly. I assume it's fine like this\") (S54); the score said tight: start: not silent at the cut: 10.4 dB under speech; cut 20 ms inside \"until\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "S54",
+    "known": "until midday,",
+    "mark": "borderline",
+    "note": "It sounds like \"til midday\" Which as it happens is correct for English - depends on whether you want it to actually say \"until\" clearly. I assume it's fine like this"
+   },
+   "render": {
+    "at": "2026-11-03T17:59:48.322Z",
+    "text": "until midday",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "22983ae5-74b5-494b-9546-a839c3af941e",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1120,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 3,
+   "known": "no extra charge.",
+   "target": "sin cargo adicional",
+   "startMs": 2090,
+   "endMs": 3160,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2090,
+     "aWord": "midday,",
+     "bWord": "no",
+     "gapMs": 226,
+     "marginMs": 96,
+     "belowDb": 58.7,
+     "inside": null,
+     "tight": false,
+     "why": "silent at the cut: 58.7 dB under speech; \"no\" starts 96 ms after the cut (226 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "Kai marked it accept (S55); the score said clean: start: silent at the cut: 58.7 dB under speech; \"no\" starts 96 ms after the cut (226 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "S55",
+    "known": "no extra charge.",
+    "mark": "accept"
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC12-S005",
+   "knownClip": "7a291fc1-ee23-41e5-a1db-f95715531a7e.v2",
+   "knownSentence": "How often should I take the paracetamol?",
+   "line": 0,
+   "chunk": 0,
+   "known": "How often",
+   "target": "Con qué frecuencia",
+   "startMs": 60,
+   "endMs": 740,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 740,
+     "aWord": "often",
+     "bWord": "should",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 10.6,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S56); the score said tight: end: not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S56",
+    "known": "How often",
+    "mark": "reject"
+   },
+   "standalone": "da12ba17-3e77-4a60-bd98-5c6e580228bd",
+   "render": {
+    "at": "2026-11-03T17:59:48.604Z",
+    "text": "How often",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "da12ba17-3e77-4a60-bd98-5c6e580228bd",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC12-S005",
+   "knownClip": "7a291fc1-ee23-41e5-a1db-f95715531a7e.v2",
+   "knownSentence": "How often should I take the paracetamol?",
+   "line": 0,
+   "chunk": 1,
+   "known": "should I take the paracetamol?",
+   "target": "debo tomar el paracetamol",
+   "startMs": 740,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 740,
+     "aWord": "often",
+     "bWord": "should",
+     "gapMs": 0,
+     "marginMs": -60,
+     "belowDb": 10.6,
+     "inside": "b",
+     "tight": true,
+     "why": "not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "Kai marked it reject (S57); the score said tight: start: not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "scored": "tight",
+   "ear": {
+    "label": "S57",
+    "known": "should I take the paracetamol?",
+    "mark": "reject"
+   },
+   "standalone": "53090614-4058-4072-9cef-751cb9bc2399",
+   "render": {
+    "at": "2026-11-03T17:59:48.869Z",
+    "text": "should I take the paracetamol?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "53090614-4058-4072-9cef-751cb9bc2399",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1600,
+    "wired": true
+   }
+  }
+ ]
+}

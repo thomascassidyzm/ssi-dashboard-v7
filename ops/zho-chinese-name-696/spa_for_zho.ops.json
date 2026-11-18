@@ -1,0 +1,292 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 1,
+  "set": {
+   "known_text": "我现在想和你说西班牙语。"
+  },
+  "expect": {
+   "known_text": "我现在想和你说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 4,
+  "set": {
+   "known_text": "怎么用西班牙语说一些东西"
+  },
+  "expect": {
+   "known_text": "怎么用中文说一些东西"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0004L02",
+  "set": {
+   "known_text": "用西班牙语"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B01",
+  "set": {
+   "known_text": "用西班牙语"
+  },
+  "expect": {
+   "known_text": "用中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B04",
+  "set": {
+   "known_text": "怎么用西班牙语说？"
+  },
+  "expect": {
+   "known_text": "怎么用中文说？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B03",
+  "set": {
+   "known_text": "用西班牙语说"
+  },
+  "expect": {
+   "known_text": "用中文说"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02B02",
+  "set": {
+   "known_text": "用西班牙语说一些东西"
+  },
+  "expect": {
+   "known_text": "用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02C02",
+  "set": {
+   "known_text": "西班牙语"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U03",
+  "set": {
+   "known_text": "我在试着用西班牙语说一些东西"
+  },
+  "expect": {
+   "known_text": "我在试着用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U01",
+  "set": {
+   "known_text": "怎么用西班牙语说一些东西？"
+  },
+  "expect": {
+   "known_text": "怎么用中文说一些东西？"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U05",
+  "set": {
+   "known_text": "我现在想用西班牙语说一些东西"
+  },
+  "expect": {
+   "known_text": "我现在想用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U04",
+  "set": {
+   "known_text": "我想和你用西班牙语说一些东西"
+  },
+  "expect": {
+   "known_text": "我想和你用中文说一些东西"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0004L02U02",
+  "set": {
+   "known_text": "我想用西班牙语说一些东西"
+  },
+  "expect": {
+   "known_text": "我想用中文说一些东西"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 9,
+  "set": {
+   "known_text": "我现在说一点西班牙语。"
+  },
+  "expect": {
+   "known_text": "我现在说一点中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 14,
+  "set": {
+   "known_text": "你整天说西班牙语吗？"
+  },
+  "expect": {
+   "known_text": "你整天说中文吗？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 15,
+  "set": {
+   "known_text": "而且我想让你明天和我说西班牙语。"
+  },
+  "expect": {
+   "known_text": "而且我想让你明天和我说中文。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 22,
+  "set": {
+   "known_text": "因为我想见说西班牙语的人。"
+  },
+  "expect": {
+   "known_text": "因为我想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03B02",
+  "set": {
+   "known_text": "我想见说西班牙语的人。"
+  },
+  "expect": {
+   "known_text": "我想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03B03",
+  "set": {
+   "known_text": "因为我想见说西班牙语的人。"
+  },
+  "expect": {
+   "known_text": "因为我想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03B04",
+  "set": {
+   "known_text": "我今天想见说西班牙语的人。"
+  },
+  "expect": {
+   "known_text": "我今天想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03C02",
+  "set": {
+   "known_text": "西班牙语"
+  },
+  "expect": {
+   "known_text": "中文"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U01",
+  "set": {
+   "known_text": "我想认识更多说西班牙语的人。"
+  },
+  "expect": {
+   "known_text": "我想认识更多说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U03",
+  "set": {
+   "known_text": "我在试着见说西班牙语的人。"
+  },
+  "expect": {
+   "known_text": "我在试着见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U02",
+  "set": {
+   "known_text": "因为我想练习和说西班牙语的人说话。"
+  },
+  "expect": {
+   "known_text": "因为我想练习和说中文的人说话。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U05",
+  "set": {
+   "known_text": "我快点想见说西班牙语的人。"
+  },
+  "expect": {
+   "known_text": "我快点想见说中文的人。"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_zho:S0022L03U04",
+  "set": {
+   "known_text": "我为什么想见说西班牙语的人？"
+  },
+  "expect": {
+   "known_text": "我为什么想见说中文的人？"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 33,
+  "set": {
+   "known_text": "你学西班牙语学了多久了?"
+  },
+  "expect": {
+   "known_text": "你学中文学了多久了?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 64,
+  "set": {
+   "known_text": "学西班牙语不容易但是很有趣。"
+  },
+  "expect": {
+   "known_text": "学中文不容易但是很有趣。"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 159,
+  "set": {
+   "known_text": "这个词用西班牙语怎么说？"
+  },
+  "expect": {
+   "known_text": "这个词用中文怎么说？"
+  }
+ }
+]

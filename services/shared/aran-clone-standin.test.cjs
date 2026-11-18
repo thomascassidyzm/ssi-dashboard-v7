@@ -39,6 +39,31 @@ describe('allowed: the English known slot of cym_nv2_for_eng / cym_sv2_for_eng, 
   })
 })
 
+describe('allowed: the English known slot of the live cym_n_for_eng / cym_s_for_eng, in Aran\'s PRO clone (Tom 2026-11-16 11:40Z, Kai 12:38Z)', () => {
+  it('resolveVoice casts the PRO clone, the door and the pointer check accept it, at the known-side pace', () => {
+    for (const c of LIVE) {
+      expect(standIn.isAranProKnownSlot({ courseCode: c.course_code, role: 'known', language: 'eng' })).toBe(true)
+      expect(isHumanVoiceSlotBlocked({ courseCode: c.course_code, role: 'known', language: 'eng' })).toBe(false)
+      expect(resolveVoice({ course: c, role: 'known' }, null)).toMatchObject({ status: 'voice', voiceId: standIn.ARAN_ENGLISH_PRO_CLONE, rule: 'aran-pro-known' })
+      expect(checkRender({ text: 'I find it', language: 'eng', voiceId: standIn.ARAN_ENGLISH_PRO_CLONE, course: c, role: 'known' })).toMatchObject({ allowed: true })
+      expect(checkPointer({ course: c, role: 'known', clip: { voice_id: standIn.ARAN_ENGLISH_PRO_CLONE, language: 'eng', origin: 'tts' } }, null)).toMatchObject({ ok: true })
+    }
+    expect(standIn.ARAN_PRO_KNOWN_PACE).toBeGreaterThan(1.0) // "speed it up a bit"
+    expect(standIn.ARAN_PRO_KNOWN_PACE).toBeLessThanOrEqual(1.2)
+  })
+  it('only the PRO clone: Charlotte or the retired instant clone on that slot is refused by the door', () => {
+    for (const c of LIVE) {
+      expect(checkRender({ text: 'I find it', language: 'eng', voiceId: 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121', course: c, role: 'known' }).allowed).toBe(false)
+      expect(checkRender({ text: 'I find it', language: 'eng', voiceId: standIn.ARAN_ENGLISH_CLONE, course: c, role: 'known' }).allowed).toBe(false)
+    }
+  })
+  it('no other Welsh course gains it', () => {
+    for (const code of ['cym_for_yor', 'cym_anthem_for_eng', 'cym_nv2_for_eng', 'bre_for_fra', 'pdc_for_eng']) {
+      expect(standIn.isAranProKnownSlot({ courseCode: code, role: 'known', language: 'eng' })).toBe(false)
+    }
+  })
+})
+
 describe('refused: everything else stays human-only', () => {
   it('the Welsh side of the stand-in courses (target1/target2) and their intros', () => {
     for (const c of [NV2, SV2]) {
@@ -56,14 +81,19 @@ describe('refused: everything else stays human-only', () => {
     expect(isHumanVoiceSlotBlocked({ courseCode: 'cym_nv2_for_eng', role: 'known', language: 'cy' })).toBe(true)
     expect(isHumanVoiceSlotBlocked({ courseCode: 'cym_nv2_for_eng', role: 'known', language: null })).toBe(true)
   })
-  it('the live courses cym_n_for_eng / cym_s_for_eng: no clone, every slot blocked, the Tom-clone refusal unchanged', () => {
+  it('the live courses cym_n_for_eng / cym_s_for_eng: the Welsh and intros stay blocked, Tom\'s clone stays refused', () => {
     for (const c of LIVE) {
-      for (const role of ['known', 'target1', 'target2', 'presentation']) {
-        expect(isHumanVoiceSlotBlocked({ courseCode: c.course_code, role, language: role === 'known' ? 'eng' : 'cym' })).toBe(true)
+      for (const role of ['target1', 'target2']) {
+        expect(isHumanVoiceSlotBlocked({ courseCode: c.course_code, role, language: 'cym' })).toBe(true)
+        expect(() => selectProvider({ courseCode: c.course_code, role, language: 'cym', voiceId: BARE_CLONE, explicitProvider: 'cartesia' })).toThrow(/Human-voice/)
+        expect(resolveVoice({ course: c, role }, null).voiceId).not.toBe(ARAN_ENGLISH_CLONE)
       }
-      expect(resolveVoice({ course: c, role: 'known' }, null)).toMatchObject({ status: 'refuse', rule: 'welsh-no-tom-clone' })
-      expect(checkRender({ text: 'I want to speak', language: 'eng', voiceId: ARAN_ENGLISH_CLONE, course: c, role: 'known' }).allowed).toBe(false)
-      expect(() => selectProvider({ courseCode: c.course_code, role: 'known', language: 'eng', voiceId: BARE_CLONE, explicitProvider: 'cartesia' })).toThrow(/Human-voice/)
+      expect(isHumanVoiceSlotBlocked({ courseCode: c.course_code, role: 'presentation', language: 'eng' })).toBe(true)
+      expect(standIn.isAranProKnownSlot({ courseCode: c.course_code, role: 'known', language: 'cym' })).toBe(false)
+      expect(standIn.isAranProKnownSlot({ courseCode: c.course_code, role: 'known', language: null })).toBe(false)
+      expect(standIn.isAranProKnownSlot({ courseCode: c.course_code, role: 'presentation', language: 'eng' })).toBe(false)
+      expect(checkRender({ text: 'I want to speak', language: 'eng', voiceId: TOM_006, course: c, role: 'known' }).allowed).toBe(false)
+      expect(checkPointer({ course: c, role: 'known', clip: { voice_id: TOM_006, language: 'eng', origin: 'tts' } }, null)).toMatchObject({ ok: false, reason: 'tom-clone-welsh' })
       expect(isReplaceableStandIn({ courseCode: c.course_code, role: 'known', voiceId: ARAN_ENGLISH_CLONE })).toBe(false)
     }
   })
@@ -78,5 +108,28 @@ describe('refused: everything else stays human-only', () => {
       expect(isHumanVoiceSlotBlocked({ courseCode: code, role: 'known', language: 'eng' })).toBe(true)
     }
     expect(isHumanVoiceSlotBlocked({ courseCode: 'fra_for_eng', role: 'known', language: 'eng' })).toBe(false) // not a human-voice course at all
+  })
+})
+
+describe('pace by belt (Aran 2026-11-03, job #579)', () => {
+  const { beltOf, standInSpeed, seedPositionOfSlot, STANDIN_PACE } = standIn
+  it('belt thresholds are the course belts', () => {
+    expect([1, 7, 8, 19, 20, 39, 40, 79, 80, 149, 150, 279, 280, 399, 400].map(beltOf)).toEqual(
+      ['white', 'white', 'yellow', 'yellow', 'orange', 'orange', 'green', 'green', 'blue', 'blue', 'purple', 'purple', 'brown', 'brown', 'black'])
+  })
+  it('white/yellow keep today\'s pace, orange/green a bit quicker, blue and up quicker still', () => {
+    expect(standInSpeed(1)).toBe(1.0); expect(standInSpeed(19)).toBe(1.0)
+    expect(standInSpeed(20)).toBeGreaterThan(1.0); expect(standInSpeed(79)).toBe(standInSpeed(20))
+    expect(standInSpeed(80)).toBeGreaterThan(standInSpeed(79)); expect(standInSpeed(500)).toBe(standInSpeed(80))
+    for (const v of Object.values(STANDIN_PACE)) expect(v).toBeLessThanOrEqual(1.5) // Cartesia's ceiling
+  })
+  it('an unplaceable line is never sped up', () => {
+    expect(standInSpeed(null)).toBe(1.0); expect(standInSpeed(0)).toBe(1.0)
+  })
+  it('a slot\'s position: seed number, or the seed of its LEGO', () => {
+    expect(seedPositionOfSlot({ seedNumber: 55 })).toBe(55)
+    expect(seedPositionOfSlot({ phraseId: 'cym_sv2_for_eng:S0014L01B08' })).toBe(14)
+    expect(seedPositionOfSlot({ legoId: 'S0123L02' })).toBe(123)
+    expect(seedPositionOfSlot({ phraseId: 'nonsense' })).toBe(null)
   })
 })

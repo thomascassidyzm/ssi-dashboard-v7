@@ -9,11 +9,12 @@
 const { Router } = require('express');
 
 // Lib imports
-const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
+const { isChinese, getGoldenSeedCount, getLanguageName, checkLegoSyllables } = require('../lib/language-config.cjs');
 const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, normalizeSubmissionCasing } = require('../lib/text-normalization.cjs');
 // deu_for_eng separable verbs (Kai's ruling 2026-09-21): containment asks this
 // module; the exact-match baseline is passed in and decides everywhere else.
 const { phraseContainsLego } = require('../lib/separable-verbs.cjs');
+const { checkLegosFromSeed, HINT: LEGO_FROM_SEED_HINT } = require('../lib/lego-from-seed.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
   extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
@@ -35,7 +36,7 @@ const { loadRunningOrder, filterSeedsBefore, orderKey } = require('../../shared/
 // Script-aware segmentation + UNCHECKED reason codes, so the known-side gate can report that it
 // could not check rather than reporting a pass it never earned (2026-08-18).
 const { REASON: KS_REASON, segmentKnown } = require('../lib/known-side-script.cjs');
-const { loadCourseVocab, addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
+const { addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
 const { escalateBuildPhrases } = require('../lib/build-escalation.cjs');
 
 // Build a SEED-indexed known-side context (mirror of the round-indexed CLI ctx):
@@ -93,7 +94,6 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
   const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
   return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos, atSeed };
 }
-const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
 const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
@@ -103,7 +103,7 @@ const {
   isCheckpointRequired, approveCheckpoint, isQAPending,
   CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD,
 } = require('../lib/checkpoint.cjs');
-const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
+const { emitProgressThrottled } = require('../../shared/emit-progress.cjs');
 
 // ─── Local helpers (only used by these routes) ────────────────────────
 
@@ -1271,6 +1271,25 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       } // end tiling check
 
+      // 2a. LEGO FROM SEED (canon L26; Kai 9 Nov 2026, job #486). Tiling above only proves the
+      // seed is covered; this proves each LEGO is made of the seed's own words in the seed's
+      // order — the half nothing checked, which let the fry builder put pronouns in for the
+      // seed's nouns. Blocks on the courses in BLOCKING_COURSES, warns everywhere else.
+      {
+        const fromSeed = checkLegosFromSeed(course_code, target_text, legos, seedId);
+        if (fromSeed.findings.length > 0) {
+          const entry = {
+            type: 'lego_not_from_seed',
+            message: `${fromSeed.findings.length} LEGO(s) use words their seed does not say, or say them in a different order`,
+            offenders: fromSeed.findings,
+            seed_target: target_text,
+            hint: LEGO_FROM_SEED_HINT,
+          };
+          (fromSeed.blocking ? errors : warnings).push(entry);
+          console.log(`${fromSeed.blocking ? '✗' : '⚠'} ${seedId}: LEGO NOT FROM SEED - ${fromSeed.findings.map(f => `${f.lego_id} "${f.target}" [${f.not_from_seed.join(', ')}]`).join('; ')}`);
+        }
+      }
+
       // 3. VOCAB VALIDATION
       // Sort LEGOs by idx so vocab accumulates in correct order —
       // prevents forward references (L2 phrase using L3's vocab)
@@ -2253,12 +2272,12 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       // Recency hints for next iteration
       let recencyHints = null;
-      let goldenCountForRecency = 10;
+      let goldenCountForRecency = getGoldenSeedCount(undefined); // the lib default until the course row says otherwise
       try {
         const { data: courseForRecency } = await ctx.supabase
           .from('courses').select('quality_rules').eq('course_code', course_code).single();
         goldenCountForRecency = getGoldenSeedCount(courseForRecency);
-      } catch (e) { /* default to 10 */ }
+      } catch (e) { /* keep the lib default */ }
       if (nextSeed && seed_number > goldenCountForRecency) {
         try {
           const { overusedPatterns } = await analyzePatternRecency(ctx, course_code, 30);

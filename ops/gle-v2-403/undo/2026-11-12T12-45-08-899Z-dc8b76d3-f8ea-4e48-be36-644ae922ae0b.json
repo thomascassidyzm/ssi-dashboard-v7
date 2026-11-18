@@ -1,0 +1,429 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "dc8b76d3-f8ea-4e48-be36-644ae922ae0b",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:45:08.899Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-45-08-899Z-dc8b76d3-f8ea-4e48-be36-644ae922ae0b.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0137L03U03",
+      "set": {
+        "target_text": "ba cheart duit labhairt a chleachtadh go minic"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0137L02U04",
+      "set": {
+        "target_text": "ba cheart duit labhairt le duine éigin eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0136L03U05",
+      "set": {
+        "target_text": "ba cheart dom ceist a chur uirthi mar is cara liom í"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0136L02U07",
+      "set": {
+        "target_text": "ar ndóigh ba cheart duit ceist a chur uirthi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0136L02U03",
+      "set": {
+        "target_text": "ba cheart dom ceist a chur uirthi faoi seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0136L01U07",
+      "set": {
+        "target_text": "ar ndóigh ba cheart dom dul abhaile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0136L01U03",
+      "set": {
+        "target_text": "ar ndóigh ba cheart dom iarracht a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0136L01B03",
+      "set": {
+        "target_text": "ar ndóigh ba cheart dom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0135L03B02",
+      "set": {
+        "target_text": "sin é an fáth a gceapann tú anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0135L01U08",
+      "set": {
+        "target_text": "níl a fhios agam an fáth ar mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0134L03U04",
+      "set": {
+        "target_text": "ba cheart duit labhairt a chleachtadh leo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0134L02U06",
+      "set": {
+        "target_text": "ba cheart duit obair ar rud deacair ar feadh tamaill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0131L02U04",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha go bhfuil an iomarca daoine eile anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0130L01U06",
+      "set": {
+        "target_text": "Cén iontas go bhfuil tú ábalta cuimhneamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0129L01U04",
+      "set": {
+        "target_text": "Tá an-áthas orm go bhfuil mé ábalta Gaeilge a labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U09",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U08",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U07",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus thosaigh mé ag smaoineamh go cúramach agus creidim go raibh do smaoineamh an-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le níos mó a fháil amach faoin teanga iontach seo leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U05",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim gur rud maith é leanúint ar aghaidh nuair atá sé deacair duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a bhfuil Gaeilge acu chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U03",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U02",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U01",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03B04",
+      "set": {
+        "target_text": "an fáth ar mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U15",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U13",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U12",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U11",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus cheap mé go raibh do smaoineamh an-mhaith nuair a chuala mé uait é an tráthnóna sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U10",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U09",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge go fóill mar is maith liom ag foghlaim na teanga seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U08",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo agus ba mhian liom labhairt leat faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U07",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim gur smaoineamh maith é sin bualadh le chéile ar a sé a chlog tráthnóna"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U05",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar thosaigh mé ag smaoineamh air go cúramach an mhí seo caite agus ba mhian liom labhairt faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U03",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom a mhíniú cad atá i gceist agam mar ceapaim gur rud maith é botúin a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U02",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar creidim go raibh do smaoineamh an-mhaith agus ba mhian liom labhairt faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02U01",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a dúirt tú liom cad a bhí tú ag smaoineamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil sula n-imíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B03",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L02B01",
+      "set": {
+        "target_text": "an fáth ar mhian liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U15",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus tá mé ag baint taitnimh as an teanga seo gach lá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U14",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhian liom a rá leat go raibh mé ag smaoineamh gur smaoineamh maith é sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U13",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus níl sé éasca Gaeilge a fhoghlaim ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U11",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ceapaim go bhfuil a lán déanta agam in am gearr agus ba cheart duit an-áthas a bheith ort as an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U10",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U09",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U08",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo atá muid ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U07",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U05",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U04",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ceapaim gur rud maith é mar sin é an fáth nach raibh an freagra ar eolas aige agus tá sé an-suimiúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U02",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U01",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a chuala mé cad a dúirt tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B05",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom labhairt leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B04",
+      "set": {
+        "target_text": "Ní hé sin an fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0126L01U08",
+      "set": {
+        "target_text": "ba cheart dom leanúint ar aghaidh ag athrú cruth mo chinn"
+      }
+    }
+  ]
+}

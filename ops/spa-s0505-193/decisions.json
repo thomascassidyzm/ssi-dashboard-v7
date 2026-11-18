@@ -1,0 +1,51 @@
+{
+ "note": "spa_for_eng S0505L02 'I don't stay | no me quede' (job #193, Kai's approval 11 Nov 2026). Seed 505 'so that I don't get left behind | para que no me quede atrás' tiles para que | no me quede | atrás; the LEGO stays 'I don't stay' as Kai asked. Every BUILD/USE row carries the trigger 'para que' (P31; the only taught trigger that fits 'no me quede' contiguously); USE rows get a main clause whose subject is not 'I'. Bare BUILD fragments without a main clause are kept (the seed itself is one).",
+ "lego": "S0505L02",
+ "intro": {
+  "text": "The Spanish for: 'I don't stay', as in — 'so that I don't stay here', is:",
+  "was": "The Spanish for: 'I don't get', is:",
+  "why": "intro quoted the stale gloss 'get'; now quotes the LEGO verbatim with an as-in example carrying the trigger (P31, PR3/L24 shape, English only)"
+ },
+ "phrases": {
+  "S0505L02B01": {
+   "action": "upd",
+   "known": "so that I don't stay longer",
+   "target": "para que no me quede más tiempo",
+   "why": "was the bare LEGO 'I don't stay | no me quede' (P31: no bare row); más tiempo = longer (S0275L01)"
+  },
+  "S0505L02C02": {
+   "action": "upd",
+   "known": "stay",
+   "why": "component tile still said 'get'; the LEGO's own components JSON already says 'stay'"
+  },
+  "S0505L02U01": {
+   "action": "upd",
+   "known": "my friend is going to come at six so that I don't stay here alone",
+   "target": "mi amigo va a venir a las seis para que no me quede aquí solo",
+   "why": "was a fragment; main clause with a different subject (my friend); va a venir S0493L02, a las seis S0018L03, solo=alone S0498L02"
+  },
+  "S0505L02U03": {
+   "action": "upd",
+   "known": "they want to go out with me so that I don't stay at home",
+   "target": "quieren salir conmigo para que no me quede en casa",
+   "why": "'es bueno para que no me quede' was unnatural; rebuilt with subject 'they' (quieren S0200L02, salir S0349L01, conmigo S0015L02)"
+  },
+  "S0505L02U04": {
+   "action": "upd",
+   "known": "today she's going to help me so that I don't stay at work longer",
+   "target": "hoy ella va a ayudarme para que no me quede más tiempo en el trabajo",
+   "why": "was a fragment ('so that I don't stay today'); subject 'she' (va a S0223L01, ayudarme S0025L02)"
+  },
+  "S0505L02U05": {
+   "action": "upd",
+   "known": "this time he's going to help me so that I don't stay in the office all night",
+   "target": "esta vez él va a ayudarme para que no me quede en la oficina toda la noche",
+   "why": "was a fragment ('so that I don't stay this time'); subject 'he'; oficina S0184L03"
+  }
+ },
+ "kept": {
+  "S0505L02B02": "so that I don't stay | para que no me quede — the LEGO with its trigger (position swap with B01 dropped: positions are unique per LEGO and edit-batch applies ops one by one)",
+  "S0505L02B03": "so that I don't stay right here | para que no me quede aquí mismo — fragment with trigger",
+  "S0505L02C01": "I don't | no — component"
+ }
+}

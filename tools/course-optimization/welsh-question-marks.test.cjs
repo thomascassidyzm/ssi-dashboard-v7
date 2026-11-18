@@ -50,3 +50,8 @@ test('the question mark: exactly one, at the end, no space before it', () => {
   assert.equal(withQuestionMark('do you need?'), 'do you need?');
   assert.equal(withQuestionMark('are you ready.'), 'are you ready?');
 });
+
+test('a question after a pan clause is not left a statement', () => {
+  const { welshSignal } = require('./welsh-question-marks.cjs');
+  assert.notStrictEqual(welshSignal('pan wyt ti yma, ydy hi yma?').form, 'relative');
+});

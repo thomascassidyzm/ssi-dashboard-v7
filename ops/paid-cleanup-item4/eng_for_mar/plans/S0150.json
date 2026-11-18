@@ -1,0 +1,77 @@
+{
+ "seed": 150,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुमचं नाव काय आहे ते मला माहित आहे",
+     "I know what your name is"
+    ],
+    "B03": [
+     "आणि तुमचं नाव काय आहे",
+     "and what your name is"
+    ],
+    "B04": [
+     "तुमचं नाव काय आहे ते मला जाणून घ्यायचं आहे",
+     "I want to know what your name is"
+    ],
+    "U01": [
+     "तुमचं नाव काय आहे ते मला माहित नाही",
+     "I don't know what your name is"
+    ],
+    "U02": [
+     "तुमचं नाव काय आहे ते मला आठवत नाही",
+     "I can't remember what your name is"
+    ],
+    "U03": [
+     "माफ करा, तुमचं नाव काय आहे ते मला आठवत नाही",
+     "I'm sorry, I can't remember what your name is"
+    ],
+    "U04": [
+     "तुमचं नाव काय आहे ते तुम्ही पुन्हा सांगाल का?",
+     "could you say again what your name is?"
+    ],
+    "U05": [
+     "तुमचं नाव काय आहे याची मला खात्री नाही",
+     "I'm not sure what your name is"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "का ते तुम्ही मला सांगाल का?",
+     "can you tell me why?"
+    ],
+    "B03": [
+     "तुम्ही मला पुन्हा सांगाल का?",
+     "can you tell me again?"
+    ],
+    "U02": [
+     "बस कुठे आहे ते तुम्ही मला सांगाल का?",
+     "can you tell me where the bus is?"
+    ],
+    "U03": [
+     "ती काय म्हणाली ते तुम्ही मला सांगाल का?",
+     "can you tell me what she said?"
+    ],
+    "U04": [
+     "ते कसं म्हणायचं ते तुम्ही मला सांगाल का?",
+     "can you tell me how to say it?"
+    ],
+    "U05": [
+     "तुम्ही काय करत होतात ते तुम्ही मला सांगाल का?",
+     "can you tell me what you were doing?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "कुठे ते तुम्ही मला सांगाल का?",
+     "can you tell me where?"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

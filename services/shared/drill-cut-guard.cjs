@@ -58,14 +58,15 @@ const voiceKey = (v) => String(v || '').trim().replace(/^(xai|azure|cartesia|ele
 
 /**
  * Pure. Of these candidate pod rows, the turn that holds `text` as ONE of two or more sentences and whose turn clip
- * is in `language` — or null.
+ * is in `language` (and, when `voice` is given, in that voice) — or null.
  * @param rows [{ id, global_order, course_code, target_text, target_audio_id, clip: { language, voice_id } | null }]
  */
-function findImmersionTurn(rows, { language, text }) {
+function findImmersionTurn(rows, { language, text, voice }) {
   const want = normalizeForAudio(text)
   if (!want) return null
   for (const r of rows || []) {
     if (!r || !r.target_audio_id || !r.clip || r.clip.language !== language) continue
+    if (voice && voiceKey(r.clip.voice_id) !== voiceKey(voice)) continue // another voice's turn must not shadow a same-voice one
     const sents = sentencesOf(r.target_text)
     if (sents.length < 2) continue
     if (sents.some((s) => normalizeForAudio(s) === want)) {

@@ -1,0 +1,430 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "e18b9516-6096-4bf7-b30e-7ad2b6f65e45",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:40:43.510Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-40-43-510Z-e18b9516-6096-4bf7-b30e-7ad2b6f65e45.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L03B02",
+      "set": {
+        "target_text": "go leor botúin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L03B01",
+      "set": {
+        "target_text": "go leor rudaí"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L01U13",
+      "set": {
+        "target_text": "Níl muid ag iarraidh gach rud a mhíniú anois mar níl go leor ama ann"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L01U08",
+      "set": {
+        "target_text": "Níl muid cinnte an bhfuil sé éasca cuimhneamh ar go leor focal éagsúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L01U05",
+      "set": {
+        "target_text": "Níl muid réidh le dul abhaile ar an gcéad bhus eile fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L01U01",
+      "set": {
+        "target_text": "Níl muid réidh le stopadh ag caint fós mar tá muid ag baint taitnimh as"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0102L04U13",
+      "set": {
+        "target_text": "Tá a fhios agam nach bhfuil sé go leor smaoineamh agus gan labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0102L04U08",
+      "set": {
+        "known_text": "I know that it is not easy to remember so many different words",
+        "target_text": "Tá a fhios agam nach bhfuil sé éasca cuimhneamh ar go leor focal éagsúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L07U07",
+      "set": {
+        "target_text": "ní féidir liom an abairt iomlán seo a léamh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L06U08",
+      "set": {
+        "target_text": "níl mé cinnte faoin teanga fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L05B03",
+      "set": {
+        "target_text": "níl a fhios agam faoin mála fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U06",
+      "set": {
+        "target_text": "níl mé cinnte ach níor cheart duit dul abhaile fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L04B02",
+      "set": {
+        "target_text": "nach bhfuil sé ag obair fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U08",
+      "set": {
+        "target_text": "níl mé réidh fós ach ba cheart duit tosú ag caint anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0097L03B03",
+      "set": {
+        "target_text": "dúirt tú chomh luath agus is mian leat ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L04U02",
+      "set": {
+        "target_text": "níl mé réidh fós mar tá beagán níos mó ama de dhíth orm"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L03U01",
+      "set": {
+        "target_text": "níl mé réidh fós ach tá beagán níos mó ama"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L03B02",
+      "set": {
+        "target_text": "tá beagán níos mó ama fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U07",
+      "set": {
+        "target_text": "faraor níl mé réidh fós agus níl a fhios agam cathain a bheidh mé réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U06",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta dul abhaile ach níl mé réidh fós anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U05",
+      "set": {
+        "target_text": "níl mé cinnte agus níl mé réidh fós inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U04",
+      "set": {
+        "target_text": "níl mé réidh fós agus níl mé chun dul abhaile ar an gcéad bhus eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U03",
+      "set": {
+        "target_text": "má chaithfidh mé is féidir liom leanúint ar aghaidh ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U02",
+      "set": {
+        "target_text": "faoi láthair níl mé réidh fós ach is féidir liom leanúint ar aghaidh ar feadh tamaill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U01",
+      "set": {
+        "target_text": "go raibh maith agat ach níl mé réidh fós faoi láthair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02C03",
+      "set": {
+        "target_text": "fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02B04",
+      "set": {
+        "target_text": "níl mé réidh fós ach ba mhaith liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02B03",
+      "set": {
+        "target_text": "mothaím tuirseach agus níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02B02",
+      "set": {
+        "target_text": "níl mé réidh fós anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02B01",
+      "set": {
+        "target_text": "faraor níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0093L02U07",
+      "set": {
+        "target_text": "Níl mé cinnte gur mian liom dul fós mar tá go leor le foghlaim anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0093L02U04",
+      "set": {
+        "target_text": "Tá sé in am dul anois agus níl sí ag iarraidh dul fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0090L05U04",
+      "set": {
+        "target_text": "bheadh sé sin go hiontach ach níl mé cinnte fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0090L02U06",
+      "set": {
+        "target_text": "faraor ní féidir liom labhairt fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0090L01U06",
+      "set": {
+        "target_text": "ní thuigim fós ach ba mhaith liom dá bhféadfá tosú ag caint níos moille"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U13",
+      "set": {
+        "target_text": "Tá a fhios aici go bhfuil go leor fós le foghlaim, ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U12",
+      "set": {
+        "target_text": "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U10",
+      "set": {
+        "target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú go leor den rud a dúirt duine, agus mothaím go bhfuil sé an-tábhachtach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U08",
+      "set": {
+        "target_text": "mothaím go bhfuil go leor fós nár dúirt mé, agus níl mé réidh stopadh ag caint fós mar tá níos mó le rá agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U07",
+      "set": {
+        "target_text": "ceapaim go bhfuil go leor níos mó le fáil amach faoin scéal seo, agus is mian liom an fhírinne a chloisteáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U06",
+      "set": {
+        "target_text": "Tá go leor déanta cheana féin, agus mothaím go bhfuil go leor foghlamtha agam ó thosaigh mé an mhí seo caite"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U05",
+      "set": {
+        "target_text": "Tá a fhios agam go bhfuil go leor rudaí suimiúla le déanamh le mo chairde, agus tá mé ag tnúth le tosú go luath"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U04",
+      "set": {
+        "target_text": "Tá go leor le foghlaim agus tá a fhios agam nach bhfuil sé éasca, ach is cuma liom mar bainim taitneamh as labhairt a chleachtadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U02",
+      "set": {
+        "target_text": "Níl a fhios agam conas go leor focal éagsúil a rá fós, ach níl mé buartha faoi bhotúin a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U01",
+      "set": {
+        "target_text": "ceapaim go bhfuil go leor déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06B04",
+      "set": {
+        "target_text": "Tá go leor le foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06B03",
+      "set": {
+        "target_text": "Tá go leor déanta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06B02",
+      "set": {
+        "target_text": "Tá a fhios agam conas go leor focal éagsúil a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06B01",
+      "set": {
+        "target_text": "go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U13",
+      "set": {
+        "target_text": "Tá a fhios agam go bhfuil fós go leor le déanamh agam sula mbeidh mé réidh, ach tá mé chun mo dhícheall a dhéanamh agus bainim taitneamh as"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U10",
+      "set": {
+        "target_text": "Tá a fhios agam go bhfuil go leor rudaí suimiúla le fáil amach agam faoin scéal seo, agus is mian liom an fhírinne a chloisteáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U09",
+      "set": {
+        "target_text": "ceapaim go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú dul, ach níl mé cinnte fós conas é a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U03",
+      "set": {
+        "target_text": "mothaím go bhfuil go leor fós le rá agam, agus níl mé réidh stopadh ag caint fós mar tá níos mó le rá agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U02",
+      "set": {
+        "target_text": "Tá a fhios agam go bhfuil go leor le foghlaim agam, ach is cuma liom faoi bhotúin a dhéanamh mar ceapaim gur rud maith é"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U01",
+      "set": {
+        "target_text": "ceapaim go bhfuil go leor déanta agam in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05B03",
+      "set": {
+        "target_text": "Tá go leor agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05B02",
+      "set": {
+        "target_text": "Tá a fhios agam go bhfuil go leor le foghlaim agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05B01",
+      "set": {
+        "target_text": "ceapaim go bhfuil go leor déanta agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L04U10",
+      "set": {
+        "target_text": "Níl mé cinnte fós cé mhéad atá déanta, ach tá a fhios agam go bhfuil mé ag foghlaim Gaeilge le timpeall seachtaine anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L04U09",
+      "set": {
+        "target_text": "dúirt sé go bhfuil go leor déanta, ach ní raibh mé cinnte faoi sin mar ceapaim go bhfuil fós go leor le déanamh"
+      }
+    }
+  ]
+}

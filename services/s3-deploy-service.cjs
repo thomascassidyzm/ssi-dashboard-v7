@@ -13,6 +13,7 @@
 const { S3Client, HeadObjectCommand, CopyObjectCommand, ListObjectsV2Command } = require('@aws-sdk/client-s3')
 const createLogger = require('./shared/logger.cjs')
 const audioDurationService = require('./audio-duration-service.cjs')
+const { audioToolsPreflight } = require('./shared/export-audio-check.cjs')
 const supabaseClient = require('./supabase-client.cjs')
 
 const logger = createLogger('S3Deploy')
@@ -246,7 +247,7 @@ function collectManifestUuids(manifest) {
  * @returns {Promise<Object>} { total, existing, missing, missingUuids, durationChecked?, durationMatched?, ... }
  */
 async function verifyStageAudio(uuids, manifest = null, onProgress = null, options = {}) {
-  const { checkDurations = true, durationTolerance = 0.001, signal = null } = options
+  const { checkDurations = true, durationTolerance = 0.001, signal = null, preflight = audioToolsPreflight } = options
 
   const results = {
     total: uuids.length,
@@ -288,8 +289,16 @@ async function verifyStageAudio(uuids, manifest = null, onProgress = null, optio
 
   logger.info(`[VERIFY] Phase 1 complete: ${results.existing} exist, ${results.missing} missing`)
 
-  // Phase 2: Duration verification (REQUIRED - verification fails if this doesn't run)
-  if (checkDurations !== false && manifest && results.existing > 0) {
+  // Phase 2 needs sox (with MP3) and ffprobe. Without them every measure throws, and on 2026-10-27
+  // twelve courses passed Step 2 on file presence alone (job #550). No tools = the check did not run (#994).
+  const tools = checkDurations !== false ? await preflight() : { ok: true }
+  if (!tools.ok) {
+    logger.error(`[VERIFY] Phase 2 FAILED: ${tools.reason}`)
+    results.durationCheckFailed = true
+    results.durationCheckError = tools.reason
+    results.durationChecked = 0
+  } else if (checkDurations !== false && manifest && results.existing > 0) {
+    // Phase 2: Duration verification (REQUIRED - verification fails if this doesn't run)
     logger.info(`[VERIFY] Phase 2: Starting duration verification (checkDurations=${checkDurations})`)
     logger.info(`[VERIFY] Phase 2: ${results.existing} files exist in S3, ${results.missing} missing`)
 
@@ -886,9 +895,9 @@ async function autoFixDurations(uuids, manifest, onProgress = null, extractedDur
         // Extract actual duration from S3
         const result = await audioDurationService.extractS3Duration(uuid, STAGE_BUCKET, 0, 0)
 
-        if (result === null) {
+        if (result.error) {
           results.errors++
-          results.errorDetails.push({ uuid, error: 'Failed to extract duration' })
+          results.errorDetails.push({ uuid, error: result.error })
         } else {
           // Update ALL manifest instances with EXACT duration from sox
           for (const location of locations) {

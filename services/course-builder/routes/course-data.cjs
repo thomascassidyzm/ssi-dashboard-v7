@@ -8,7 +8,6 @@
 const { Router } = require('express');
 const { isChinese, getLanguageName } = require('../lib/language-config.cjs');
 const { loadCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
-const { getCheckpointStatus, CHECKPOINT_SEEDS } = require('../lib/checkpoint.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { calculateLegoBalanceScores, hasNonExampleText } = require('../lib/validation.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
@@ -945,10 +944,13 @@ USE:
     // event carries the before/after text as well as the seed it belongs to.
     const { data: before } = await ctx.supabase
       .from('course_seeds')
-      .select('known_text, target_text')
+      .select('known_text, target_text, target_text_roman')
       .eq('course_code', courseCode)
       .eq('seed_number', seedNum)
       .maybeSingle();
+    if (req.body.target_text_roman !== undefined && target_text) updateFields.target_text_roman = req.body.target_text_roman || null;
+    // A target edit without its new romanisation clears the old one (shared/roman-sync.cjs, job #252).
+    Object.assign(updateFields, require('../../shared/roman-sync.cjs').clearStaleRoman(before, updateFields).patch);
 
     let eventId = null;
     try {

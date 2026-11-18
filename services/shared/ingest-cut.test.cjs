@@ -66,6 +66,7 @@ function deps(t, over = {}) {
     servedCheck: async () => null,
     appendRollback: async (line) => { rollback.push(line); return '/evidence/rollback.jsonl' },
     recordEdit: async (e) => { events.push(e); return 'ev1' },
+    checkVoice: async () => ({ ok: true }), // link-clip's voice check has its own tests (link-clip-voice.test.cjs)
     bump: async () => '1.0.1',
     now: () => '2026-10-24T12:00:00.000Z',
     ...over,

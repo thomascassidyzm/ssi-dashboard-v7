@@ -1,0 +1,62 @@
+{
+ "family": "graach",
+ "event_id": "b6759e67-e30a-4bb2-81d9-9483f213a0d9",
+ "undo_file_on_popty": "2026-11-17T11-50-28-511Z-b6759e67-e30a-4bb2-81d9-9483f213a0d9.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0011L01B04",
+  "S0015L01U03",
+  "S0019L02U04",
+  "S0071L03U05",
+  "S0032L03B03"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0032L03B03",
+   "set": {
+    "target_text": "jûn my wat sjen litte",
+    "target1_audio_id": "3a55bc48-ac88-45f8-9d05-2179de1dee58"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0092L03U06",
+   "set": {
+    "target_text": "wy woene om seis oere moetsje mar ik woe graach jûn moetsje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0071L03U05",
+   "set": {
+    "target_text": "ik wol graach hjoed de wierheid hearre",
+    "target1_audio_id": "c9735842-883c-4901-b4d8-0606f997bdb3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L02U04",
+   "set": {
+    "target_text": "ik wol graach moarn it praten oefenje, ik wol net hjoed oefenje",
+    "target1_audio_id": "8e36cc5f-4da8-4680-bc58-f55df9c61e2a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L01U03",
+   "set": {
+    "target_text": "ik wol graach hjoed en moarn Frysk prate",
+    "target1_audio_id": "34513d28-1403-432c-b287-81aa6d0ce3a3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L01B04",
+   "set": {
+    "target_text": "ik wol graach hjoed myn bêst dwaan",
+    "target1_audio_id": "347efa1e-063b-42bf-88e7-ad0bc3fdbfbe"
+   }
+  }
+ ]
+}

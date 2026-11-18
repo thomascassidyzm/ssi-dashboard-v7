@@ -1,0 +1,457 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "a40dcccc-d2ef-4d71-89f5-86df8e7af07a",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:24:32.306Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-24-32-306Z-a40dcccc-d2ef-4d71-89f5-86df8e7af07a.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0274L02U10",
+      "set": {
+        "target_text": "sula gcaithfidh mé imeacht ba mhaith liom labhairt leat faoi rud éigin tábhachtach a theastaigh uaim a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0274L02U05",
+      "set": {
+        "target_text": "níor theastaigh uaim imeacht chomh luath sin ach bhí mé déanach cheana agus ní raibh rogha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0272L02B02",
+      "set": {
+        "target_text": "Ba mhaith, sin an fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0269L05U05",
+      "set": {
+        "target_text": "sin é an fáth a raibh mé ag súil le d'athair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0269L02U03",
+      "set": {
+        "target_text": "tá brón orm ach cén fáth nach mian leat labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0268L01U02",
+      "set": {
+        "target_text": "chuala go bhféadfadh sé a bheith rud éigin tábhachtach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02U07",
+      "set": {
+        "known_text": "I agree that it might be very interesting",
+        "target_text": "aontaím go bhféadfadh sé a bheith an-suimiúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02U06",
+      "set": {
+        "known_text": "you said that it might be fairly easy",
+        "target_text": "dúirt tú go bhféadfadh sé a bheith réasúnta éasca"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02U05",
+      "set": {
+        "known_text": "are you sure that it might be true",
+        "target_text": "an bhfuil tú cinnte go bhféadfadh sé a bheith fíor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02U04",
+      "set": {
+        "known_text": "they say that it might be difficult but I think that it is not",
+        "target_text": "deir siad go bhféadfadh sé a bheith deacair ach ceapaim nach bhfuil sé"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02U03",
+      "set": {
+        "known_text": "I am sorry but I think that it might be very difficult",
+        "target_text": "tá brón orm ach ceapaim go bhféadfadh sé a bheith an-deacair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02U02",
+      "set": {
+        "known_text": "they think that it might be ready in less than an hour",
+        "target_text": "ceapann siad go bhféadfadh sé a bheith réidh i níos lú ná uair an chloig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02U01",
+      "set": {
+        "known_text": "I think that it might be that blue thing",
+        "target_text": "ceapaim go bhféadfadh sé a bheith an rud gorm sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02B04",
+      "set": {
+        "known_text": "I thought that it might be awful",
+        "target_text": "cheap mé go bhféadfadh sé a bheith uafásach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02B03",
+      "set": {
+        "known_text": "I think that it might be",
+        "target_text": "ceapaim go bhféadfadh sé a bheith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02B02",
+      "set": {
+        "known_text": "that it might be the same thing",
+        "target_text": "go bhféadfadh sé a bheith an rud céanna"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0261L02B01",
+      "set": {
+        "known_text": "that it might be ready",
+        "target_text": "go bhféadfadh sé a bheith réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L02U09",
+      "set": {
+        "target_text": "ba mhian léi fáil amach an raibh mé sásta leis an méid oibre a bhí muid a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L02U03",
+      "set": {
+        "target_text": "dúirt sí liom nach raibh sí sásta leis an méid oibre a bhí muid a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0240L02U04",
+      "set": {
+        "known_text": "my father worked as a teacher long ago",
+        "target_text": "d'oibrigh m'athair mar mhúinteoir fadó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0240L02B03",
+      "set": {
+        "known_text": "my father worked",
+        "target_text": "d'oibrigh m'athair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0231L03U05",
+      "set": {
+        "known_text": "that man who wanted to ask for help worked for the council long ago",
+        "target_text": "d'oibrigh an fear sin ar mhian leis cabhair a iarraidh don chomhairle fadó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0227L01U04",
+      "set": {
+        "known_text": "That man worked with me",
+        "target_text": "d'oibrigh an fear sin liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L02U05",
+      "set": {
+        "target_text": "ba mhian linn dul amach agus labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0213L03U14",
+      "set": {
+        "known_text": "he told us that he wants to achieve more with less time",
+        "target_text": "dúirt sé linn gur mian leis níos mó a bhaint amach le níos lú ama"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0213L03U12",
+      "set": {
+        "target_text": "dúirt sí go bhfuil sí ag iarraidh rud éigin difriúil a bhaint amach inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0212L01U01",
+      "set": {
+        "target_text": "ba mhian leo labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0206L02U06",
+      "set": {
+        "target_text": "bainim taitneamh as an deis labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0206L02U02",
+      "set": {
+        "target_text": "ní hé seo an deis ar theastaigh uaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0203L01U06",
+      "set": {
+        "target_text": "cad a dhéanfá dá bhféadfá labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0202L02U03",
+      "set": {
+        "target_text": "Ní raibh sé cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh sé ag iarraidh labhairt ar chor ar bith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0202L01U09",
+      "set": {
+        "target_text": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh duine ar bith ag iarraidh labhairt ar chor ar bith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0201L01U02",
+      "set": {
+        "target_text": "nuair a bhí muid sa teach tábhairne ba mhian linn labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L04U04",
+      "set": {
+        "target_text": "dúirt sé go bhfuil súil aige go gcríochnóidh muid cad atá muid a dhéanamh go luath"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L03U14",
+      "set": {
+        "target_text": "Is mian liom a chinntiú go bhfuil cad atá muid a dhéanamh anseo ar an mbealach ceart"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L02U06",
+      "set": {
+        "target_text": "ceapaim gur mian leo a fhios a bheith acu cad atá muid a dhéanamh agus conas atá muid ag dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U08",
+      "set": {
+        "known_text": "my friend worked in the office yesterday",
+        "target_text": "d'oibrigh mo chara san oifig inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U07",
+      "set": {
+        "known_text": "my friend worked hard",
+        "target_text": "d'oibrigh mo chara go dian"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U06",
+      "set": {
+        "known_text": "he worked hard",
+        "target_text": "d'oibrigh sé go dian"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U05",
+      "set": {
+        "known_text": "she worked very hard",
+        "target_text": "d'oibrigh sí go dian"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U04",
+      "set": {
+        "known_text": "he worked in the office a while ago",
+        "target_text": "d'oibrigh sé san oifig tamall ó shin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U03",
+      "set": {
+        "known_text": "my friend worked in the office",
+        "target_text": "d'oibrigh mo chara san oifig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U02",
+      "set": {
+        "known_text": "she worked in an office",
+        "target_text": "d'oibrigh sí in oifig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01U01",
+      "set": {
+        "known_text": "he worked in an office",
+        "target_text": "d'oibrigh sé in oifig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01B03",
+      "set": {
+        "known_text": "my friend worked in an office",
+        "target_text": "d'oibrigh mo chara in oifig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01B02",
+      "set": {
+        "known_text": "my friend worked",
+        "target_text": "d'oibrigh mo chara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0199L01B01",
+      "set": {
+        "known_text": "worked",
+        "target_text": "d'oibrigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L02U06",
+      "set": {
+        "known_text": "I know that my daughter wanted to learn Irish and she worked very hard at it",
+        "target_text": "Tá a fhios agam gur mhian le m'iníon Gaeilge a fhoghlaim agus d'oibrigh sí go dian air"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0196L01U01",
+      "set": {
+        "target_text": "an gcuala tú an méid a bhí sise a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0195L01U03",
+      "set": {
+        "target_text": "inniu tá mé ag iarraidh labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0193L01U07",
+      "set": {
+        "target_text": "Tá brón orm, níor theastaigh uaim stopadh tú nuair a bhí tú ag caint liom ansin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0191L01U08",
+      "set": {
+        "target_text": "ní miste liom labhairt faoi rud éigin difriúil anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0191L01B04",
+      "set": {
+        "target_text": "ní miste liom labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0190L04U06",
+      "set": {
+        "target_text": "an miste leat labhairt faoi rud éigin difriúil an tseachtain seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01U08",
+      "set": {
+        "target_text": "Níl mé cinnte gur mian liom labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01U06",
+      "set": {
+        "target_text": "is féidir liom labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01U05",
+      "set": {
+        "target_text": "ba cheart dúinn labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01U03",
+      "set": {
+        "target_text": "Is mian liom labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01U02",
+      "set": {
+        "target_text": "an mian leat labhairt faoi rud éigin difriúil an tseachtain seo chugainn?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01U01",
+      "set": {
+        "target_text": "an mian leat labhairt faoi rud éigin difriúil?"
+      }
+    }
+  ]
+}

@@ -213,62 +213,157 @@ function stopBuildManager() {
   }
 }
 
-async function stopBuild(ctx, courseCode) {
+/**
+ * Stop every running/stalled job for a course — and actually end it (job #482).
+ * Before #482 this only flipped build_jobs.status: the orchestrator kept building, and a
+ * course with two running rows (a double Start) made `.single()` fail, so Stop said "No
+ * active build" while two orchestrators ran. Now each row's recorded process tree is killed,
+ * the row records stop_reason 'human' and who stopped it, and a usage-limit pause waiting
+ * to auto-resume is cancelled (Stop on a paused build means "don't restart it").
+ */
+async function stopBuild(ctx, courseCode, { by = null } = {}) {
+  const { killProcessTree, ownsPid } = require('./build-job-runtime.cjs');
+  const now = new Date().toISOString();
   try {
-    const { data: job, error: findError } = await ctx.supabase
+    const { data: jobs, error } = await ctx.supabase
       .from('build_jobs')
-      .select('id, status')
+      .select('id, status, metadata, machine_name')
       .eq('course_code', courseCode)
-      .in('status', ['running', 'stalled'])
-      .single();
+      .in('status', ['running', 'stalled']);
+    if (error) return { ok: false, error: error.message };
 
-    if (findError || !job) {
-      return { ok: false, error: 'No active build for this course' };
+    const stopped = [];
+    for (const job of jobs || []) {
+      let kill = { wasAlive: false, killed: [], survivors: [] };
+      if (ownsPid(ctx, job)) kill = await killProcessTree(job.metadata.pid);
+      await ctx.supabase.from('build_jobs').update({
+        status: 'stopped',
+        completed_at: now,
+        stop_requested: true,
+        metadata: { ...(job.metadata || {}), stop_reason: 'human', stopped_by: by, process_killed: kill.wasAlive, kill_survivors: kill.survivors },
+      }).eq('id', job.id);
+      stopped.push({ job_id: job.id, process_killed: kill.wasAlive, survivors: kill.survivors, pid_known: ownsPid(ctx, job) });
     }
 
-    await ctx.supabase.from('build_jobs').update({
-      status: 'stopped',
-      completed_at: new Date().toISOString(),
-    }).eq('id', job.id);
+    // A paused build waiting on its usage-limit reset: Stop cancels the automatic restart.
+    const cancelled = await cancelScheduledResumes(ctx, courseCode, { by });
 
     ctx.activeBuilds.delete(courseCode);
     ctx.courseActivity.delete(courseCode);
     ctx.agentHeartbeats.delete(courseCode);
-
     if (ctx.activeBuilds.size === 0) stopBuildManager();
 
-    return { ok: true, success: true, course_code: courseCode, job_id: job.id, message: 'Build stopped' };
+    if (!stopped.length && !cancelled.length) return { ok: false, error: 'No active build for this course' };
+    const legacy = stopped.filter((s) => !s.pid_known).length;
+    const message = [
+      stopped.length ? `Build stopped${stopped.some((s) => s.process_killed) ? ' and its builder process ended' : ''}` : null,
+      cancelled.length ? 'automatic resume cancelled' : null,
+      legacy ? `${legacy} job(s) started before process tracking: marked stopped, but no process was recorded to end` : null,
+    ].filter(Boolean).join('; ');
+    return { ok: true, success: true, course_code: courseCode, job_id: stopped[0]?.job_id || null, stopped, cancelled_resumes: cancelled, message };
   } catch (err) {
     return { ok: false, error: err.message };
   }
 }
 
+/** Usage-limit stops for this course still waiting to restart. */
+async function scheduledResumes(ctx, courseCode) {
+  const { data } = await ctx.supabase
+    .from('build_jobs')
+    .select('id, status, metadata, total_seeds, completed_at, course_code, pass')
+    .eq('course_code', courseCode)
+    .eq('status', 'stopped')
+    .order('completed_at', { ascending: false })
+    .limit(10);
+  return (data || []).filter((j) => j.metadata?.auto_resume?.state === 'scheduled');
+}
+
+async function cancelScheduledResumes(ctx, courseCode, { by = null, reason = 'cancelled' } = {}) {
+  const pending = await scheduledResumes(ctx, courseCode);
+  for (const j of pending) {
+    await ctx.supabase.from('build_jobs').update({
+      metadata: { ...j.metadata, auto_resume: { ...j.metadata.auto_resume, state: reason, cancelled_by: by, cancelled_at: new Date().toISOString() } },
+    }).eq('id', j.id);
+  }
+  return pending.map((j) => j.id);
+}
+
+/**
+ * Status for the Course Manager page. Besides the running job (as before), `last_stop`
+ * says how the most recent finished job ended, in plain English (job #482) — so a paused,
+ * crashed or limit-stopped build is visible instead of looking like "never started".
+ * A running row whose recorded process has vanished is finalized here (process_gone), so a
+ * builder that died without calling /build/job-done does not show as running forever.
+ */
 async function getBuildStatus(ctx, courseCode) {
+  const { describeStop } = require('./build-stop-reason.cjs');
+  const { isProcessAlive, ownsPid, finalizeJob } = require('./build-job-runtime.cjs');
   const progress = await getBuildProgress(ctx, courseCode);
 
-  let dbJob = null;
+  let running = [];
   try {
     const { data } = await ctx.supabase
       .from('build_jobs')
       .select('*')
       .eq('course_code', courseCode)
       .in('status', ['running', 'stalled'])
-      .order('started_at', { ascending: false })
-      .limit(1)
-      .single();
-    dbJob = data;
+      .order('started_at', { ascending: false });
+    running = data || [];
   } catch (e) { /* no active job */ }
+
+  // Lazily settle rows whose process is gone.
+  const alive = [];
+  for (const job of running) {
+    if (ownsPid(ctx, job) && !isProcessAlive(job.metadata.pid)) {
+      await finalizeJob(ctx, job, { reasonIfSilent: 'process_gone', decideResume: ctx.decideBuildResume });
+    } else alive.push(job);
+  }
+  const dbJob = alive[0] || null;
+
+  let lastStop = null;
+  if (!dbJob) {
+    try {
+      const { data } = await ctx.supabase
+        .from('build_jobs')
+        .select('*')
+        .eq('course_code', courseCode)
+        .in('status', ['stopped', 'complete', 'failed'])
+        .order('completed_at', { ascending: false, nullsFirst: false })
+        .limit(1);
+      const j = data && data[0];
+      if (j) {
+        const completed = j.metadata?.seeds_at_stop ?? null;
+        lastStop = {
+          job_id: j.id,
+          pass: j.pass,
+          status: j.status,
+          stop_reason: j.metadata?.stop_reason || (j.status === 'complete' ? 'done' : null),
+          stopped_at: j.completed_at,
+          seeds_at_stop: completed,
+          total_seeds: j.total_seeds,
+          reset_at: j.metadata?.reset_at || null,
+          auto_resume: j.metadata?.auto_resume || null,
+          message: describeStop(j, { completed }),
+        };
+      }
+    } catch (e) { /* no history */ }
+  }
 
   return {
     course_code: courseCode,
     active: !!dbJob,
+    running_jobs: alive.length,
     progress,
     build: dbJob ? {
       status: dbJob.status,
       pass: dbJob.pass,
       job_id: dbJob.id,
+      started_at: dbJob.started_at,
       total_seeds: dbJob.total_seeds || progress.total,
+      account: dbJob.metadata?.account || null,
     } : null,
+    last_stop: lastStop,
+    paused: !!(lastStop && lastStop.auto_resume && ['scheduled', 'starting'].includes(lastStop.auto_resume.state)),
   };
 }
 
@@ -280,4 +375,6 @@ module.exports = {
   stopBuildManager,
   stopBuild,
   getBuildStatus,
+  scheduledResumes,
+  cancelScheduledResumes,
 };

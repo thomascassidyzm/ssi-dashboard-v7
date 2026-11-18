@@ -1,0 +1,1952 @@
+[
+ {
+  "batch": 0,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "4d94e7b8-d223-407a-8407-6bdb250eb54a",
+   "results": [
+    {
+     "index": 0,
+     "op": "seed.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "seed_number": 64
+     },
+     "before": {
+      "id": "a7b6f1d3-e039-40cc-a418-7e32759590ba",
+      "seed_number": 64,
+      "target_text": "تعلم العربي مش سهل بس مبسط.",
+      "target_text_roman": "ta'allam al-'arabi mish sahel bas mbassat.",
+      "known_text": "Learning Arabic isn't easy but it is fun.",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "43623408-6fbd-4740-8b79-18477f9276ca",
+      "target2_audio_id": "76eb4b94-1a7c-479e-9757-de619a077494"
+     },
+     "after": {
+      "id": "a7b6f1d3-e039-40cc-a418-7e32759590ba",
+      "seed_number": 64,
+      "target_text": "تعلم العربي مش سهل بس مسلّي.",
+      "target_text_roman": "ta'allam al-'arabi mish sahel bas msalli.",
+      "known_text": "Learning Arabic isn't easy but it is fun.",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1"
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "seed_number": 64
+     },
+     "before": {
+      "id": "a7b6f1d3-e039-40cc-a418-7e32759590ba",
+      "seed_number": 64,
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "known_text": "Learning Arabic isn't easy but it is fun.",
+      "target_text": "تعلم العربي مش سهل بس مسلّي.",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1"
+     },
+     "after": {
+      "id": "a7b6f1d3-e039-40cc-a418-7e32759590ba",
+      "seed_number": 64,
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "known_text": "Learning Arabic isn't easy but it is fun.",
+      "target_text": "تعلم العربي مش سهل بس مسلّي.",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1"
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "seed_number": 64
+     },
+     "before": {
+      "id": "a7b6f1d3-e039-40cc-a418-7e32759590ba",
+      "seed_number": 64,
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1",
+      "known_text": "Learning Arabic isn't easy but it is fun.",
+      "target_text": "تعلم العربي مش سهل بس مسلّي.",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537"
+     },
+     "after": {
+      "id": "a7b6f1d3-e039-40cc-a418-7e32759590ba",
+      "seed_number": 64,
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1",
+      "known_text": "Learning Arabic isn't easy but it is fun.",
+      "target_text": "تعلم العربي مش سهل بس مسلّي.",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537"
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "lego.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "lego_id": "S0064L02"
+     },
+     "before": {
+      "id": "deed25a9-f4a7-43e8-aa0a-da1e834e07f0",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": "S0064L02",
+      "target_text": "مبسط",
+      "target_text_roman": "mbassat",
+      "known_text": "fun",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "5dc87954-72f6-4526-ab96-1bef853ffeec",
+      "target2_audio_id": "c3a26703-8be4-49ee-90a1-9ad5f0845577",
+      "presentation_audio_id": "ddecd474-6edf-494a-9813-da3e0a33132d"
+     },
+     "after": {
+      "id": "deed25a9-f4a7-43e8-aa0a-da1e834e07f0",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": "S0064L02",
+      "target_text": "مسلّي",
+      "target_text_roman": "msalli",
+      "known_text": "fun",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "lego_id": "S0064L02"
+     },
+     "before": {
+      "id": "deed25a9-f4a7-43e8-aa0a-da1e834e07f0",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": "S0064L02",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deed25a9-f4a7-43e8-aa0a-da1e834e07f0",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": "S0064L02",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "lego_id": "S0064L02"
+     },
+     "before": {
+      "id": "deed25a9-f4a7-43e8-aa0a-da1e834e07f0",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": "S0064L02",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deed25a9-f4a7-43e8-aa0a-da1e834e07f0",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": "S0064L02",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مبسط",
+      "target_text_roman": "mbassat",
+      "known_text": "fun",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "5dc87954-72f6-4526-ab96-1bef853ffeec",
+      "target2_audio_id": "c3a26703-8be4-49ee-90a1-9ad5f0845577",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مسلّي",
+      "target_text_roman": "msalli",
+      "known_text": "fun",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "888f9bbc-eda6-46b9-9758-2d903656d213",
+      "known_text": "fun",
+      "target_text": "مسلّي",
+      "known_audio_id": "a5ae112c-3292-4dd8-b363-b6ef89b00650",
+      "target1_audio_id": "f0345fc9-95a8-47b5-8445-bc329189b1f6",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مبسط كتير",
+      "target_text_roman": "mbassat ktiir",
+      "known_text": "it is fun",
+      "known_audio_id": "1eb1510f-be4e-4759-a6be-21763067a8cd",
+      "target1_audio_id": "3ea37484-4050-4ece-ba78-ce846becbc65",
+      "target2_audio_id": "ec26e60a-6a92-44ec-848a-8776b64f1e3a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مسلّي كتير",
+      "target_text_roman": "msalli ktiir",
+      "known_text": "it is fun",
+      "known_audio_id": "1eb1510f-be4e-4759-a6be-21763067a8cd",
+      "target1_audio_id": "7cbaa532-7389-4bbd-8e43-6f9cb33220c7",
+      "target2_audio_id": "602e29fc-7943-4597-b052-bf6129981b43",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "7cbaa532-7389-4bbd-8e43-6f9cb33220c7",
+      "known_text": "it is fun",
+      "target_text": "مسلّي كتير",
+      "known_audio_id": "1eb1510f-be4e-4759-a6be-21763067a8cd",
+      "target2_audio_id": "602e29fc-7943-4597-b052-bf6129981b43",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "7cbaa532-7389-4bbd-8e43-6f9cb33220c7",
+      "known_text": "it is fun",
+      "target_text": "مسلّي كتير",
+      "known_audio_id": "1eb1510f-be4e-4759-a6be-21763067a8cd",
+      "target2_audio_id": "602e29fc-7943-4597-b052-bf6129981b43",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "602e29fc-7943-4597-b052-bf6129981b43",
+      "known_text": "it is fun",
+      "target_text": "مسلّي كتير",
+      "known_audio_id": "1eb1510f-be4e-4759-a6be-21763067a8cd",
+      "target1_audio_id": "7cbaa532-7389-4bbd-8e43-6f9cb33220c7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "602e29fc-7943-4597-b052-bf6129981b43",
+      "known_text": "it is fun",
+      "target_text": "مسلّي كتير",
+      "known_audio_id": "1eb1510f-be4e-4759-a6be-21763067a8cd",
+      "target1_audio_id": "7cbaa532-7389-4bbd-8e43-6f9cb33220c7",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02B02",
+     "set": {
+      "target_text": "مبسط كتير",
+      "target1_audio_id": "3ea37484-4050-4ece-ba78-ce846becbc65",
+      "target2_audio_id": "ec26e60a-6a92-44ec-848a-8776b64f1e3a",
+      "target_text_roman": "mbassat ktiir"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02B01",
+     "set": {
+      "target_text": "مبسط",
+      "target1_audio_id": "5dc87954-72f6-4526-ab96-1bef853ffeec",
+      "target2_audio_id": "c3a26703-8be4-49ee-90a1-9ad5f0845577",
+      "target_text_roman": "mbassat"
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "deed25a9-f4a7-43e8-aa0a-da1e834e07f0",
+     "set": {
+      "target_text": "مبسط",
+      "target1_audio_id": "5dc87954-72f6-4526-ab96-1bef853ffeec",
+      "target2_audio_id": "c3a26703-8be4-49ee-90a1-9ad5f0845577",
+      "presentation_audio_id": "ddecd474-6edf-494a-9813-da3e0a33132d",
+      "target_text_roman": "mbassat"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 64,
+     "set": {
+      "target_text": "تعلم العربي مش سهل بس مبسط.",
+      "target1_audio_id": "43623408-6fbd-4740-8b79-18477f9276ca",
+      "target2_audio_id": "76eb4b94-1a7c-479e-9757-de619a077494",
+      "target_text_roman": "ta'allam al-'arabi mish sahel bas mbassat."
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-22-21-187Z-4d94e7b8-d223-407a-8407-6bdb250eb54a.json"
+  }
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "d9ecbb94-50fb-4472-9128-a62c40a74a4c",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مبسط هلق",
+      "target_text_roman": "mbassat halla'",
+      "known_text": "fun now",
+      "known_audio_id": "29c9ef93-7215-4763-ad43-41ca31d76a44",
+      "target1_audio_id": "f8b2d71c-04f9-4cfb-89d2-ec7637761d26",
+      "target2_audio_id": "090a33e8-316a-486e-8a0f-e7527b97904a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مسلّي هلق",
+      "target_text_roman": "msalli halla'",
+      "known_text": "fun now",
+      "known_audio_id": "29c9ef93-7215-4763-ad43-41ca31d76a44",
+      "target1_audio_id": "8934e562-3252-4bf9-b547-cc326f986c3f",
+      "target2_audio_id": "140131a5-983b-4c3c-ae54-55f89a476fe1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "8934e562-3252-4bf9-b547-cc326f986c3f",
+      "known_text": "fun now",
+      "target_text": "مسلّي هلق",
+      "known_audio_id": "29c9ef93-7215-4763-ad43-41ca31d76a44",
+      "target2_audio_id": "140131a5-983b-4c3c-ae54-55f89a476fe1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "8934e562-3252-4bf9-b547-cc326f986c3f",
+      "known_text": "fun now",
+      "target_text": "مسلّي هلق",
+      "known_audio_id": "29c9ef93-7215-4763-ad43-41ca31d76a44",
+      "target2_audio_id": "140131a5-983b-4c3c-ae54-55f89a476fe1",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02B03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02B03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "140131a5-983b-4c3c-ae54-55f89a476fe1",
+      "known_text": "fun now",
+      "target_text": "مسلّي هلق",
+      "known_audio_id": "29c9ef93-7215-4763-ad43-41ca31d76a44",
+      "target1_audio_id": "8934e562-3252-4bf9-b547-cc326f986c3f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02B03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "140131a5-983b-4c3c-ae54-55f89a476fe1",
+      "known_text": "fun now",
+      "target_text": "مسلّي هلق",
+      "known_audio_id": "29c9ef93-7215-4763-ad43-41ca31d76a44",
+      "target1_audio_id": "8934e562-3252-4bf9-b547-cc326f986c3f",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "تحكي عربي مبسط",
+      "target_text_roman": "tihki 'arabi mbassat",
+      "known_text": "speaking Arabic is fun",
+      "known_audio_id": "98fd5162-631b-4537-998e-2145dc761084",
+      "target1_audio_id": "8a883145-9a84-4c51-8672-a18ea92d9151",
+      "target2_audio_id": "d8f037a8-34a9-4fb6-a820-c077b9ae1fd3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "تحكي عربي مسلّي",
+      "target_text_roman": "tihki 'arabi msalli",
+      "known_text": "speaking Arabic is fun",
+      "known_audio_id": "98fd5162-631b-4537-998e-2145dc761084",
+      "target1_audio_id": "7f7ab2ce-d352-44ec-838a-dd1aea608859",
+      "target2_audio_id": "1a2d80eb-144b-4d8a-8878-64c1f77573fc",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "7f7ab2ce-d352-44ec-838a-dd1aea608859",
+      "known_text": "speaking Arabic is fun",
+      "target_text": "تحكي عربي مسلّي",
+      "known_audio_id": "98fd5162-631b-4537-998e-2145dc761084",
+      "target2_audio_id": "1a2d80eb-144b-4d8a-8878-64c1f77573fc",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "7f7ab2ce-d352-44ec-838a-dd1aea608859",
+      "known_text": "speaking Arabic is fun",
+      "target_text": "تحكي عربي مسلّي",
+      "known_audio_id": "98fd5162-631b-4537-998e-2145dc761084",
+      "target2_audio_id": "1a2d80eb-144b-4d8a-8878-64c1f77573fc",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "1a2d80eb-144b-4d8a-8878-64c1f77573fc",
+      "known_text": "speaking Arabic is fun",
+      "target_text": "تحكي عربي مسلّي",
+      "known_audio_id": "98fd5162-631b-4537-998e-2145dc761084",
+      "target1_audio_id": "7f7ab2ce-d352-44ec-838a-dd1aea608859",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U01",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "1a2d80eb-144b-4d8a-8878-64c1f77573fc",
+      "known_text": "speaking Arabic is fun",
+      "target_text": "تحكي عربي مسلّي",
+      "known_audio_id": "98fd5162-631b-4537-998e-2145dc761084",
+      "target1_audio_id": "7f7ab2ce-d352-44ec-838a-dd1aea608859",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مبسط أحكي أكتر",
+      "target_text_roman": "mbassat ahki aktar",
+      "known_text": "it's fun to speak more",
+      "known_audio_id": "e0245c8d-5ad7-4b93-b377-fa0787da08c1",
+      "target1_audio_id": "7ba91b1f-075d-444b-9051-81b8b2233ca9",
+      "target2_audio_id": "2982a1ec-4c0a-4dc1-8ab0-ffc643a76726",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مسلّي أحكي أكتر",
+      "target_text_roman": "msalli ahki aktar",
+      "known_text": "it's fun to speak more",
+      "known_audio_id": "e0245c8d-5ad7-4b93-b377-fa0787da08c1",
+      "target1_audio_id": "e46030ed-8a5b-4943-bcac-4bf98c5760ca",
+      "target2_audio_id": "6765021f-2446-4f99-9a2e-358a3b607646",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "e46030ed-8a5b-4943-bcac-4bf98c5760ca",
+      "known_text": "it's fun to speak more",
+      "target_text": "مسلّي أحكي أكتر",
+      "known_audio_id": "e0245c8d-5ad7-4b93-b377-fa0787da08c1",
+      "target2_audio_id": "6765021f-2446-4f99-9a2e-358a3b607646",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "e46030ed-8a5b-4943-bcac-4bf98c5760ca",
+      "known_text": "it's fun to speak more",
+      "target_text": "مسلّي أحكي أكتر",
+      "known_audio_id": "e0245c8d-5ad7-4b93-b377-fa0787da08c1",
+      "target2_audio_id": "6765021f-2446-4f99-9a2e-358a3b607646",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "6765021f-2446-4f99-9a2e-358a3b607646",
+      "known_text": "it's fun to speak more",
+      "target_text": "مسلّي أحكي أكتر",
+      "known_audio_id": "e0245c8d-5ad7-4b93-b377-fa0787da08c1",
+      "target1_audio_id": "e46030ed-8a5b-4943-bcac-4bf98c5760ca",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U02",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "6765021f-2446-4f99-9a2e-358a3b607646",
+      "known_text": "it's fun to speak more",
+      "target_text": "مسلّي أحكي أكتر",
+      "known_audio_id": "e0245c8d-5ad7-4b93-b377-fa0787da08c1",
+      "target1_audio_id": "e46030ed-8a5b-4943-bcac-4bf98c5760ca",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "يكتب رسالة مبسط",
+      "target_text_roman": "yuktub risaala mbassat",
+      "known_text": "writing a letter is fun",
+      "known_audio_id": "068660db-dd56-4a2a-a5c5-78672f785a58",
+      "target1_audio_id": "105cb952-129f-438d-94d1-dc9e54ee5015",
+      "target2_audio_id": "c025acfe-339d-44a1-a7bb-78a51581daba",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "يكتب رسالة مسلّي",
+      "target_text_roman": "yuktub risaala msalli",
+      "known_text": "writing a letter is fun",
+      "known_audio_id": "068660db-dd56-4a2a-a5c5-78672f785a58",
+      "target1_audio_id": "1cf1b591-0513-4ca3-bb72-2db24bcd316a",
+      "target2_audio_id": "bbfd810e-bdd7-4299-affd-1ae1957abb85",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "1cf1b591-0513-4ca3-bb72-2db24bcd316a",
+      "known_text": "writing a letter is fun",
+      "target_text": "يكتب رسالة مسلّي",
+      "known_audio_id": "068660db-dd56-4a2a-a5c5-78672f785a58",
+      "target2_audio_id": "bbfd810e-bdd7-4299-affd-1ae1957abb85",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "1cf1b591-0513-4ca3-bb72-2db24bcd316a",
+      "known_text": "writing a letter is fun",
+      "target_text": "يكتب رسالة مسلّي",
+      "known_audio_id": "068660db-dd56-4a2a-a5c5-78672f785a58",
+      "target2_audio_id": "bbfd810e-bdd7-4299-affd-1ae1957abb85",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "bbfd810e-bdd7-4299-affd-1ae1957abb85",
+      "known_text": "writing a letter is fun",
+      "target_text": "يكتب رسالة مسلّي",
+      "known_audio_id": "068660db-dd56-4a2a-a5c5-78672f785a58",
+      "target1_audio_id": "1cf1b591-0513-4ca3-bb72-2db24bcd316a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U03",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "bbfd810e-bdd7-4299-affd-1ae1957abb85",
+      "known_text": "writing a letter is fun",
+      "target_text": "يكتب رسالة مسلّي",
+      "known_audio_id": "068660db-dd56-4a2a-a5c5-78672f785a58",
+      "target1_audio_id": "1cf1b591-0513-4ca3-bb72-2db24bcd316a",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02U03",
+     "set": {
+      "target_text": "يكتب رسالة مبسط",
+      "target1_audio_id": "105cb952-129f-438d-94d1-dc9e54ee5015",
+      "target2_audio_id": "c025acfe-339d-44a1-a7bb-78a51581daba",
+      "target_text_roman": "yuktub risaala mbassat"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02U02",
+     "set": {
+      "target_text": "مبسط أحكي أكتر",
+      "target1_audio_id": "7ba91b1f-075d-444b-9051-81b8b2233ca9",
+      "target2_audio_id": "2982a1ec-4c0a-4dc1-8ab0-ffc643a76726",
+      "target_text_roman": "mbassat ahki aktar"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02U01",
+     "set": {
+      "target_text": "تحكي عربي مبسط",
+      "target1_audio_id": "8a883145-9a84-4c51-8672-a18ea92d9151",
+      "target2_audio_id": "d8f037a8-34a9-4fb6-a820-c077b9ae1fd3",
+      "target_text_roman": "tihki 'arabi mbassat"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02B03",
+     "set": {
+      "target_text": "مبسط هلق",
+      "target1_audio_id": "f8b2d71c-04f9-4cfb-89d2-ec7637761d26",
+      "target2_audio_id": "090a33e8-316a-486e-8a0f-e7527b97904a",
+      "target_text_roman": "mbassat halla'"
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-22-26-207Z-d9ecbb94-50fb-4472-9128-a62c40a74a4c.json"
+  }
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "2582c78d-d097-4df5-a31c-9c612ef73835",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U04"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U04",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مبسط أحس أحسن",
+      "target_text_roman": "mbassat ahiss ahsan",
+      "known_text": "it's fun to feel better",
+      "known_audio_id": "cf5c2663-dd52-41b6-863e-81fe1c27066b",
+      "target1_audio_id": "1b81cc1d-4a72-47fb-b835-93331fd0a0c2",
+      "target2_audio_id": "53836535-661f-4962-ba3b-b753cad601d4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U04",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مسلّي أحس أحسن",
+      "target_text_roman": "msalli ahiss ahsan",
+      "known_text": "it's fun to feel better",
+      "known_audio_id": "cf5c2663-dd52-41b6-863e-81fe1c27066b",
+      "target1_audio_id": "031fe607-40be-496e-b04d-30b311c8294a",
+      "target2_audio_id": "8456d36d-8e98-4bf0-8203-21cc76b9936b",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U04"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U04",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "031fe607-40be-496e-b04d-30b311c8294a",
+      "known_text": "it's fun to feel better",
+      "target_text": "مسلّي أحس أحسن",
+      "known_audio_id": "cf5c2663-dd52-41b6-863e-81fe1c27066b",
+      "target2_audio_id": "8456d36d-8e98-4bf0-8203-21cc76b9936b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U04",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "031fe607-40be-496e-b04d-30b311c8294a",
+      "known_text": "it's fun to feel better",
+      "target_text": "مسلّي أحس أحسن",
+      "known_audio_id": "cf5c2663-dd52-41b6-863e-81fe1c27066b",
+      "target2_audio_id": "8456d36d-8e98-4bf0-8203-21cc76b9936b",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U04"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U04",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "8456d36d-8e98-4bf0-8203-21cc76b9936b",
+      "known_text": "it's fun to feel better",
+      "target_text": "مسلّي أحس أحسن",
+      "known_audio_id": "cf5c2663-dd52-41b6-863e-81fe1c27066b",
+      "target1_audio_id": "031fe607-40be-496e-b04d-30b311c8294a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U04",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "8456d36d-8e98-4bf0-8203-21cc76b9936b",
+      "known_text": "it's fun to feel better",
+      "target_text": "مسلّي أحس أحسن",
+      "known_audio_id": "cf5c2663-dd52-41b6-863e-81fe1c27066b",
+      "target1_audio_id": "031fe607-40be-496e-b04d-30b311c8294a",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U05",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مبسط لما تفهم",
+      "target_text_roman": "mbassat lamma tifham",
+      "known_text": "it's fun when you understand",
+      "known_audio_id": "033ee622-0ed1-4439-b3e0-e3de73c4c6c1",
+      "target1_audio_id": "33a5e917-abb9-4f39-93d7-58d3d32bf47a",
+      "target2_audio_id": "c1cece3e-0eca-4d36-91bd-1aa103a403e4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U05",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مسلّي لما تفهم",
+      "target_text_roman": "msalli lamma tifham",
+      "known_text": "it's fun when you understand",
+      "known_audio_id": "033ee622-0ed1-4439-b3e0-e3de73c4c6c1",
+      "target1_audio_id": "f705c7ba-0995-4826-8b45-8da7e415c4e4",
+      "target2_audio_id": "6d78d4a2-6fa9-446c-b06d-fa9be11eab5c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U05",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "f705c7ba-0995-4826-8b45-8da7e415c4e4",
+      "known_text": "it's fun when you understand",
+      "target_text": "مسلّي لما تفهم",
+      "known_audio_id": "033ee622-0ed1-4439-b3e0-e3de73c4c6c1",
+      "target2_audio_id": "6d78d4a2-6fa9-446c-b06d-fa9be11eab5c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U05",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "f705c7ba-0995-4826-8b45-8da7e415c4e4",
+      "known_text": "it's fun when you understand",
+      "target_text": "مسلّي لما تفهم",
+      "known_audio_id": "033ee622-0ed1-4439-b3e0-e3de73c4c6c1",
+      "target2_audio_id": "6d78d4a2-6fa9-446c-b06d-fa9be11eab5c",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L02U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L02U05",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "6d78d4a2-6fa9-446c-b06d-fa9be11eab5c",
+      "known_text": "it's fun when you understand",
+      "target_text": "مسلّي لما تفهم",
+      "known_audio_id": "033ee622-0ed1-4439-b3e0-e3de73c4c6c1",
+      "target1_audio_id": "f705c7ba-0995-4826-8b45-8da7e415c4e4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L02U05",
+      "seed_number": 64,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "6d78d4a2-6fa9-446c-b06d-fa9be11eab5c",
+      "known_text": "it's fun when you understand",
+      "target_text": "مسلّي لما تفهم",
+      "known_audio_id": "033ee622-0ed1-4439-b3e0-e3de73c4c6c1",
+      "target1_audio_id": "f705c7ba-0995-4826-8b45-8da7e415c4e4",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L03B03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L03B03",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "تعلم مبسط",
+      "target_text_roman": "ta'allam mbassat",
+      "known_text": "learning is fun",
+      "known_audio_id": "5353b70c-2815-449d-9a16-4616f8b9df83",
+      "target1_audio_id": "e5198874-135b-4225-8884-97fcbe92e38b",
+      "target2_audio_id": "3a14735a-97a7-48b1-8963-966a8c09314b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L03B03",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "تعلم مسلّي",
+      "target_text_roman": "ta'allam msalli",
+      "known_text": "learning is fun",
+      "known_audio_id": "5353b70c-2815-449d-9a16-4616f8b9df83",
+      "target1_audio_id": "25833d86-1276-420a-bd70-3c7a8ca1107f",
+      "target2_audio_id": "3310afec-09eb-4a71-8407-d274eee17c51",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L03B03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L03B03",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "25833d86-1276-420a-bd70-3c7a8ca1107f",
+      "known_text": "learning is fun",
+      "target_text": "تعلم مسلّي",
+      "known_audio_id": "5353b70c-2815-449d-9a16-4616f8b9df83",
+      "target2_audio_id": "3310afec-09eb-4a71-8407-d274eee17c51",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L03B03",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "25833d86-1276-420a-bd70-3c7a8ca1107f",
+      "known_text": "learning is fun",
+      "target_text": "تعلم مسلّي",
+      "known_audio_id": "5353b70c-2815-449d-9a16-4616f8b9df83",
+      "target2_audio_id": "3310afec-09eb-4a71-8407-d274eee17c51",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L03B03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L03B03",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "3310afec-09eb-4a71-8407-d274eee17c51",
+      "known_text": "learning is fun",
+      "target_text": "تعلم مسلّي",
+      "known_audio_id": "5353b70c-2815-449d-9a16-4616f8b9df83",
+      "target1_audio_id": "25833d86-1276-420a-bd70-3c7a8ca1107f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L03B03",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "3310afec-09eb-4a71-8407-d274eee17c51",
+      "known_text": "learning is fun",
+      "target_text": "تعلم مسلّي",
+      "known_audio_id": "5353b70c-2815-449d-9a16-4616f8b9df83",
+      "target1_audio_id": "25833d86-1276-420a-bd70-3c7a8ca1107f",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L03U01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L03U01",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "تعلم العربي مش سهل بس مبسط",
+      "target_text_roman": "ta'allam al-'arabi mish sahel bas mbassat",
+      "known_text": "learning Arabic isn't easy but it is fun",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "43623408-6fbd-4740-8b79-18477f9276ca",
+      "target2_audio_id": "76eb4b94-1a7c-479e-9757-de619a077494",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L03U01",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "تعلم العربي مش سهل بس مسلّي",
+      "target_text_roman": "ta'allam al-'arabi mish sahel bas msalli",
+      "known_text": "learning Arabic isn't easy but it is fun",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L03U01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L03U01",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "known_text": "learning Arabic isn't easy but it is fun",
+      "target_text": "تعلم العربي مش سهل بس مسلّي",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L03U01",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "known_text": "learning Arabic isn't easy but it is fun",
+      "target_text": "تعلم العربي مش سهل بس مسلّي",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0064L03U01"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0064L03U01",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1",
+      "known_text": "learning Arabic isn't easy but it is fun",
+      "target_text": "تعلم العربي مش سهل بس مسلّي",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0064L03U01",
+      "seed_number": 64,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "d2cfaf63-6f41-4323-8334-a515db6443c1",
+      "known_text": "learning Arabic isn't easy but it is fun",
+      "target_text": "تعلم العربي مش سهل بس مسلّي",
+      "known_audio_id": "3a31b775-db06-4180-839d-7f8397e53afd",
+      "target1_audio_id": "d05cc043-1191-4969-b3ee-1d4c84adc537",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L03U01",
+     "set": {
+      "target_text": "تعلم العربي مش سهل بس مبسط",
+      "target1_audio_id": "43623408-6fbd-4740-8b79-18477f9276ca",
+      "target2_audio_id": "76eb4b94-1a7c-479e-9757-de619a077494",
+      "target_text_roman": "ta'allam al-'arabi mish sahel bas mbassat"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L03B03",
+     "set": {
+      "target_text": "تعلم مبسط",
+      "target1_audio_id": "e5198874-135b-4225-8884-97fcbe92e38b",
+      "target2_audio_id": "3a14735a-97a7-48b1-8963-966a8c09314b",
+      "target_text_roman": "ta'allam mbassat"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02U05",
+     "set": {
+      "target_text": "مبسط لما تفهم",
+      "target1_audio_id": "33a5e917-abb9-4f39-93d7-58d3d32bf47a",
+      "target2_audio_id": "c1cece3e-0eca-4d36-91bd-1aa103a403e4",
+      "target_text_roman": "mbassat lamma tifham"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0064L02U04",
+     "set": {
+      "target_text": "مبسط أحس أحسن",
+      "target1_audio_id": "1b81cc1d-4a72-47fb-b835-93331fd0a0c2",
+      "target2_audio_id": "53836535-661f-4962-ba3b-b753cad601d4",
+      "target_text_roman": "mbassat ahiss ahsan"
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-22-31-688Z-2582c78d-d097-4df5-a31c-9c612ef73835.json"
+  }
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "9143c0f1-266b-471d-ba85-486777244577",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0065L03U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0065L03U05",
+      "seed_number": 65,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "مبسط تاختبر حالك",
+      "target_text_roman": "mbassat tukhtabar haalak",
+      "known_text": "it's fun to test yourself",
+      "known_audio_id": "887c5172-8530-4105-a51a-71e9026af6b3",
+      "target1_audio_id": "d8dc3788-30fb-4349-86ae-3e6edeb037a9",
+      "target2_audio_id": "d7244f32-f1de-494c-95cf-275c14c52875",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0065L03U05",
+      "seed_number": 65,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "مسلّي تاختبر حالك",
+      "target_text_roman": "msalli tukhtabar haalak",
+      "known_text": "it's fun to test yourself",
+      "known_audio_id": "887c5172-8530-4105-a51a-71e9026af6b3",
+      "target1_audio_id": "9fe3351c-9d15-4777-a5bf-10ca9ac40123",
+      "target2_audio_id": "136a2883-0f28-470f-a1ca-211dc2dbd8b8",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0065L03U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0065L03U05",
+      "seed_number": 65,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "9fe3351c-9d15-4777-a5bf-10ca9ac40123",
+      "known_text": "it's fun to test yourself",
+      "target_text": "مسلّي تاختبر حالك",
+      "known_audio_id": "887c5172-8530-4105-a51a-71e9026af6b3",
+      "target2_audio_id": "136a2883-0f28-470f-a1ca-211dc2dbd8b8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0065L03U05",
+      "seed_number": 65,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "9fe3351c-9d15-4777-a5bf-10ca9ac40123",
+      "known_text": "it's fun to test yourself",
+      "target_text": "مسلّي تاختبر حالك",
+      "known_audio_id": "887c5172-8530-4105-a51a-71e9026af6b3",
+      "target2_audio_id": "136a2883-0f28-470f-a1ca-211dc2dbd8b8",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0065L03U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0065L03U05",
+      "seed_number": 65,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "136a2883-0f28-470f-a1ca-211dc2dbd8b8",
+      "known_text": "it's fun to test yourself",
+      "target_text": "مسلّي تاختبر حالك",
+      "known_audio_id": "887c5172-8530-4105-a51a-71e9026af6b3",
+      "target1_audio_id": "9fe3351c-9d15-4777-a5bf-10ca9ac40123",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0065L03U05",
+      "seed_number": 65,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "136a2883-0f28-470f-a1ca-211dc2dbd8b8",
+      "known_text": "it's fun to test yourself",
+      "target_text": "مسلّي تاختبر حالك",
+      "known_audio_id": "887c5172-8530-4105-a51a-71e9026af6b3",
+      "target1_audio_id": "9fe3351c-9d15-4777-a5bf-10ca9ac40123",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0066L01U02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0066L01U02",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "تعلم صعب بس مبسط",
+      "target_text_roman": "ta'allam sa'b bas mbassat",
+      "known_text": "learning is hard but fun",
+      "known_audio_id": "e844b391-3859-45ef-a88d-cab55fd83236",
+      "target1_audio_id": "47a73448-ec9a-4170-a760-65feb52da7fd",
+      "target2_audio_id": "a42651a2-26b0-45b5-92c3-e2c5ab91c945",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0066L01U02",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "تعلم صعب بس مسلّي",
+      "target_text_roman": "ta'allam sa'b bas msalli",
+      "known_text": "learning is hard but fun",
+      "known_audio_id": "e844b391-3859-45ef-a88d-cab55fd83236",
+      "target1_audio_id": "78f72bf1-30d5-42f3-ba48-8fa173ef11af",
+      "target2_audio_id": "4811dc85-97d3-41f7-b8eb-1bbead00fe85",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0066L01U02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0066L01U02",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "78f72bf1-30d5-42f3-ba48-8fa173ef11af",
+      "known_text": "learning is hard but fun",
+      "target_text": "تعلم صعب بس مسلّي",
+      "known_audio_id": "e844b391-3859-45ef-a88d-cab55fd83236",
+      "target2_audio_id": "4811dc85-97d3-41f7-b8eb-1bbead00fe85",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0066L01U02",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "78f72bf1-30d5-42f3-ba48-8fa173ef11af",
+      "known_text": "learning is hard but fun",
+      "target_text": "تعلم صعب بس مسلّي",
+      "known_audio_id": "e844b391-3859-45ef-a88d-cab55fd83236",
+      "target2_audio_id": "4811dc85-97d3-41f7-b8eb-1bbead00fe85",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0066L01U02"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0066L01U02",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "4811dc85-97d3-41f7-b8eb-1bbead00fe85",
+      "known_text": "learning is hard but fun",
+      "target_text": "تعلم صعب بس مسلّي",
+      "known_audio_id": "e844b391-3859-45ef-a88d-cab55fd83236",
+      "target1_audio_id": "78f72bf1-30d5-42f3-ba48-8fa173ef11af",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0066L01U02",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "4811dc85-97d3-41f7-b8eb-1bbead00fe85",
+      "known_text": "learning is hard but fun",
+      "target_text": "تعلم صعب بس مسلّي",
+      "known_audio_id": "e844b391-3859-45ef-a88d-cab55fd83236",
+      "target1_audio_id": "78f72bf1-30d5-42f3-ba48-8fa173ef11af",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0066L02U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0066L02U05",
+      "seed_number": 66,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مبسط تلاقي الجواب",
+      "target_text_roman": "mbassat tlaai al-jawaab",
+      "known_text": "it's fun to find the answer",
+      "known_audio_id": "0e52f8c5-c68d-4cfe-bae2-1542afc57b97",
+      "target1_audio_id": "38bd0bfb-44d8-4086-96b3-882ccb424fb6",
+      "target2_audio_id": "0c9cd72d-3551-4972-8b77-e363091e2b35",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0066L02U05",
+      "seed_number": 66,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "مسلّي تلاقي الجواب",
+      "target_text_roman": "msalli tlaai al-jawaab",
+      "known_text": "it's fun to find the answer",
+      "known_audio_id": "0e52f8c5-c68d-4cfe-bae2-1542afc57b97",
+      "target1_audio_id": "fc3ea8b9-4a07-4e5f-b288-7febe5b109fc",
+      "target2_audio_id": "c71f7576-6fa5-4bdf-a9f9-8f70306378e4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0066L02U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0066L02U05",
+      "seed_number": 66,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "fc3ea8b9-4a07-4e5f-b288-7febe5b109fc",
+      "known_text": "it's fun to find the answer",
+      "target_text": "مسلّي تلاقي الجواب",
+      "known_audio_id": "0e52f8c5-c68d-4cfe-bae2-1542afc57b97",
+      "target2_audio_id": "c71f7576-6fa5-4bdf-a9f9-8f70306378e4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0066L02U05",
+      "seed_number": 66,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "fc3ea8b9-4a07-4e5f-b288-7febe5b109fc",
+      "known_text": "it's fun to find the answer",
+      "target_text": "مسلّي تلاقي الجواب",
+      "known_audio_id": "0e52f8c5-c68d-4cfe-bae2-1542afc57b97",
+      "target2_audio_id": "c71f7576-6fa5-4bdf-a9f9-8f70306378e4",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0066L02U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0066L02U05",
+      "seed_number": 66,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "c71f7576-6fa5-4bdf-a9f9-8f70306378e4",
+      "known_text": "it's fun to find the answer",
+      "target_text": "مسلّي تلاقي الجواب",
+      "known_audio_id": "0e52f8c5-c68d-4cfe-bae2-1542afc57b97",
+      "target1_audio_id": "fc3ea8b9-4a07-4e5f-b288-7febe5b109fc",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0066L02U05",
+      "seed_number": 66,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "c71f7576-6fa5-4bdf-a9f9-8f70306378e4",
+      "known_text": "it's fun to find the answer",
+      "target_text": "مسلّي تلاقي الجواب",
+      "known_audio_id": "0e52f8c5-c68d-4cfe-bae2-1542afc57b97",
+      "target1_audio_id": "fc3ea8b9-4a07-4e5f-b288-7febe5b109fc",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0068L01U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0068L01U05",
+      "seed_number": 68,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "مبسط تدور عليه",
+      "target_text_roman": "mbassat tdawwar 'aleeh",
+      "known_text": "it's fun to look for it",
+      "known_audio_id": "de72e7e6-854d-4aab-a545-4f69a3608bd8",
+      "target1_audio_id": "17335efc-5aec-485e-8cd5-cada2c1d7a2f",
+      "target2_audio_id": "365293a6-4436-4000-b8c3-ba830ed5fe20",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0068L01U05",
+      "seed_number": 68,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "مسلّي تدور عليه",
+      "target_text_roman": "msalli tdawwar 'aleeh",
+      "known_text": "it's fun to look for it",
+      "known_audio_id": "de72e7e6-854d-4aab-a545-4f69a3608bd8",
+      "target1_audio_id": "ba8a4888-780a-4f51-b6a5-44a36c6144cd",
+      "target2_audio_id": "2cddbf24-dd8a-4156-8685-fff39c9575e8",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0068L01U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0068L01U05",
+      "seed_number": 68,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "ba8a4888-780a-4f51-b6a5-44a36c6144cd",
+      "known_text": "it's fun to look for it",
+      "target_text": "مسلّي تدور عليه",
+      "known_audio_id": "de72e7e6-854d-4aab-a545-4f69a3608bd8",
+      "target2_audio_id": "2cddbf24-dd8a-4156-8685-fff39c9575e8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0068L01U05",
+      "seed_number": 68,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "ba8a4888-780a-4f51-b6a5-44a36c6144cd",
+      "known_text": "it's fun to look for it",
+      "target_text": "مسلّي تدور عليه",
+      "known_audio_id": "de72e7e6-854d-4aab-a545-4f69a3608bd8",
+      "target2_audio_id": "2cddbf24-dd8a-4156-8685-fff39c9575e8",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0068L01U05"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0068L01U05",
+      "seed_number": 68,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "2cddbf24-dd8a-4156-8685-fff39c9575e8",
+      "known_text": "it's fun to look for it",
+      "target_text": "مسلّي تدور عليه",
+      "known_audio_id": "de72e7e6-854d-4aab-a545-4f69a3608bd8",
+      "target1_audio_id": "ba8a4888-780a-4f51-b6a5-44a36c6144cd",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0068L01U05",
+      "seed_number": 68,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "2cddbf24-dd8a-4156-8685-fff39c9575e8",
+      "known_text": "it's fun to look for it",
+      "target_text": "مسلّي تدور عليه",
+      "known_audio_id": "de72e7e6-854d-4aab-a545-4f69a3608bd8",
+      "target1_audio_id": "ba8a4888-780a-4f51-b6a5-44a36c6144cd",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0068L01U05",
+     "set": {
+      "target_text": "مبسط تدور عليه",
+      "target1_audio_id": "17335efc-5aec-485e-8cd5-cada2c1d7a2f",
+      "target2_audio_id": "365293a6-4436-4000-b8c3-ba830ed5fe20",
+      "target_text_roman": "mbassat tdawwar 'aleeh"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0066L02U05",
+     "set": {
+      "target_text": "مبسط تلاقي الجواب",
+      "target1_audio_id": "38bd0bfb-44d8-4086-96b3-882ccb424fb6",
+      "target2_audio_id": "0c9cd72d-3551-4972-8b77-e363091e2b35",
+      "target_text_roman": "mbassat tlaai al-jawaab"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0066L01U02",
+     "set": {
+      "target_text": "تعلم صعب بس مبسط",
+      "target1_audio_id": "47a73448-ec9a-4170-a760-65feb52da7fd",
+      "target2_audio_id": "a42651a2-26b0-45b5-92c3-e2c5ab91c945",
+      "target_text_roman": "ta'allam sa'b bas mbassat"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0065L03U05",
+     "set": {
+      "target_text": "مبسط تاختبر حالك",
+      "target1_audio_id": "d8dc3788-30fb-4349-86ae-3e6edeb037a9",
+      "target2_audio_id": "d7244f32-f1de-494c-95cf-275c14c52875",
+      "target_text_roman": "mbassat tukhtabar haalak"
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-22-36-985Z-9143c0f1-266b-471d-ba85-486777244577.json"
+  }
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "n": 3,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "4bf7c802-3f37-426f-8ff5-a975d973d7cd",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0074L03U03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0074L03U03",
+      "seed_number": 74,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "مبسط لأنك ساعدتني أفهم",
+      "target_text_roman": "mbassat la'annak saa'adtni afham",
+      "known_text": "I'm glad because you helped me understand",
+      "known_audio_id": "cc90fd63-760f-4410-b333-2fd97e905482",
+      "target1_audio_id": "40f102b0-d774-45e8-b5dc-2a349b801e63",
+      "target2_audio_id": "83d1bf5b-0832-42d9-9668-6b3969d6bfba",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0074L03U03",
+      "seed_number": 74,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "مبسوط لأنك ساعدتني أفهم",
+      "target_text_roman": "mabsoot la'annak saa'adtni afham",
+      "known_text": "I'm glad because you helped me understand",
+      "known_audio_id": "cc90fd63-760f-4410-b333-2fd97e905482",
+      "target1_audio_id": "b4f2be79-f206-457c-ba25-8e62f12ccab1",
+      "target2_audio_id": "a72888aa-adac-4530-8595-633077395585",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0074L03U03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0074L03U03",
+      "seed_number": 74,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "b4f2be79-f206-457c-ba25-8e62f12ccab1",
+      "known_text": "I'm glad because you helped me understand",
+      "target_text": "مبسوط لأنك ساعدتني أفهم",
+      "known_audio_id": "cc90fd63-760f-4410-b333-2fd97e905482",
+      "target2_audio_id": "a72888aa-adac-4530-8595-633077395585",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0074L03U03",
+      "seed_number": 74,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "b4f2be79-f206-457c-ba25-8e62f12ccab1",
+      "known_text": "I'm glad because you helped me understand",
+      "target_text": "مبسوط لأنك ساعدتني أفهم",
+      "known_audio_id": "cc90fd63-760f-4410-b333-2fd97e905482",
+      "target2_audio_id": "a72888aa-adac-4530-8595-633077395585",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "ara_lb_for_eng",
+      "id": "ara_lb_for_eng:S0074L03U03"
+     },
+     "before": {
+      "id": "ara_lb_for_eng:S0074L03U03",
+      "seed_number": 74,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "a72888aa-adac-4530-8595-633077395585",
+      "known_text": "I'm glad because you helped me understand",
+      "target_text": "مبسوط لأنك ساعدتني أفهم",
+      "known_audio_id": "cc90fd63-760f-4410-b333-2fd97e905482",
+      "target1_audio_id": "b4f2be79-f206-457c-ba25-8e62f12ccab1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "ara_lb_for_eng:S0074L03U03",
+      "seed_number": 74,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "a72888aa-adac-4530-8595-633077395585",
+      "known_text": "I'm glad because you helped me understand",
+      "target_text": "مبسوط لأنك ساعدتني أفهم",
+      "known_audio_id": "cc90fd63-760f-4410-b333-2fd97e905482",
+      "target1_audio_id": "b4f2be79-f206-457c-ba25-8e62f12ccab1",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "ara_lb_for_eng:S0074L03U03",
+     "set": {
+      "target_text": "مبسط لأنك ساعدتني أفهم",
+      "target1_audio_id": "40f102b0-d774-45e8-b5dc-2a349b801e63",
+      "target2_audio_id": "83d1bf5b-0832-42d9-9668-6b3969d6bfba",
+      "target_text_roman": "mbassat la'annak saa'adtni afham"
+     }
+    }
+   ],
+   "undo_file": "2026-11-18T12-22-38-631Z-4bf7c802-3f37-426f-8ff5-a975d973d7cd.json"
+  }
+ }
+]

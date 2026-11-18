@@ -4,7 +4,7 @@
  * The core is dependency-injected so its tests can drive the whole
  * accept/rollback path against fakes with no network and no spend. This module
  * is the other half: the real Supabase client, the real S3 bucket, the real
- * TTS chain and the real veracity checker, assembled once and lazily — phase8
+ * TTS chain, assembled once and lazily — phase8
  * is a large module and requiring it at import time would cost every caller,
  * including the ones that only ever read.
  *
@@ -22,7 +22,6 @@ const { PutObjectCommand, GetObjectCommand, HeadObjectCommand } = require('@aws-
 const { cacheControlFor } = require('./shared/audio-cache-control.cjs')
 
 const { createRepairCore, decodeVoiceId, RepairError } = require('./audio-repair-core.cjs')
-const veracity = require('./audio-veracity.cjs')
 
 const FFMPEG = process.env.FFMPEG || 'ffmpeg'
 
@@ -161,7 +160,6 @@ const render = {
 const verify = {
   measure: measureLevel,
   pcm,
-  veracity: (buffer, text, language) => veracity.checkAudioVeracity(buffer, text, language),
 }
 
 /** The live core. Built once, on first use. */

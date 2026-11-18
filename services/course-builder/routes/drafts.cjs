@@ -5,7 +5,7 @@
 
 const { Router } = require('express');
 const { isChinese } = require('../lib/language-config.cjs');
-const { normalizePhrase, normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
+const { normalizePhrase, normalizeForZUT, normalizeForStorage, extractVocab } = require('../lib/text-normalization.cjs');
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, generateBuildupPhrases, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadTranslationVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');

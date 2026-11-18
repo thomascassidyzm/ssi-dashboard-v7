@@ -1,0 +1,1045 @@
+{
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 107,
+"set": {
+"target_text": "bhí muid ag súil le feiceáil cad a bhí á dhéanamh agat"
+},
+"expect": {
+"known_text": "we hoped to see what you were doing",
+"target_text": "bhí muid ag súil le feiceáil cad a bhí tú a dhéanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 150,
+"set": {
+"target_text": "an féidir leat d'ainm a insint dom?"
+},
+"expect": {
+"known_text": "can you tell me what your name is?",
+"target_text": "an féidir leat insint dom cad is ainm duit?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 154,
+"set": {
+"target_text": "cén áit ar mian leat bualadh le chéile oíche Shathairn?"
+},
+"expect": {
+"known_text": "where do you want to meet on Saturday night?",
+"target_text": "cén áit ar mian leat bualadh le chéile oíche Dé Sathairn?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 174,
+"set": {
+"target_text": "an dtuigeann tú cad atá á rá agam?"
+},
+"expect": {
+"known_text": "can you understand what I'm saying?",
+"target_text": "an dtuigeann tú cad atá mé a rá?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 215,
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn"
+},
+"expect": {
+"known_text": "I went out on Saturday night",
+"target_text": "chuaigh mé amach oíche Dé Sathairn"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 281,
+"set": {
+"target_text": "an miste leat má chríochnaím mo chaife sula dtosóidh tú?"
+},
+"expect": {
+"known_text": "do you mind if I finish my coffee before you start?",
+"target_text": "an miste leat má chríochnaím mo chaife sula dtosaíonn tú?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 384,
+"set": {
+"target_text": "Ní fhéadfainn aontú leis an méid a dúirt sé bomaite ó shin"
+},
+"expect": {
+"known_text": "I couldn't agree with what he said a moment ago",
+"target_text": "Ní fhéadfainn aontú leis an méid a dúirt sé nóiméad ó shin"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 390,
+"set": {
+"target_text": "an té atá ina sheasamh in aice leis an mbealach isteach"
+},
+"expect": {
+"known_text": "the one who is standing near the entrance",
+"target_text": "an duine atá ina sheasamh in aice leis an mbealach isteach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 399,
+"set": {
+"target_text": "Ní mian linn ár misneach a chailleadh"
+},
+"expect": {
+"known_text": "we don't want to lose hope",
+"target_text": "Ní mian linn dóchas a chailleadh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 494,
+"set": {
+"target_text": "cad a tharlóidh tar éis an chéad chuid den seó?"
+},
+"expect": {
+"known_text": "what happens after the first part of the show?",
+"target_text": "cad a tharlaíonn tar éis an chéad chuid den seó?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 533,
+"set": {
+"target_text": "Ní éistfidh sí le gach focal a déarfaidh tú"
+},
+"expect": {
+"known_text": "she won't listen to every word you say",
+"target_text": "Ní éistfidh sí le gach focal a deir tú"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0150L03",
+"set": {
+"known_text": "your name",
+"target_text": "d'ainm",
+"components": [
+{
+"known": "your",
+"target": "d'"
+},
+{
+"known": "name",
+"target": "ainm"
+}
+]
+},
+"expect": {
+"known_text": "what your name is",
+"target_text": "cad is ainm duit"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0154L02",
+"set": {
+"target_text": "oíche Shathairn",
+"components": [
+{
+"known": "night",
+"target": "oíche"
+},
+{
+"known": "Saturday",
+"target": "Shathairn"
+}
+]
+},
+"expect": {
+"known_text": "Saturday night",
+"target_text": "oíche Dé Sathairn"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0215L03",
+"set": {
+"target_text": "oíche Shathairn",
+"components": [
+{
+"known": "night",
+"target": "oíche"
+},
+{
+"known": "Saturday",
+"target": "Shathairn"
+}
+]
+},
+"expect": {
+"known_text": "Saturday night",
+"target_text": "oíche Dé Sathairn"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0281L04",
+"set": {
+"target_text": "sula dtosóidh tú",
+"components": [
+{
+"known": "before",
+"target": "sula"
+},
+{
+"known": "you will start",
+"target": "dtosóidh tú"
+}
+]
+},
+"expect": {
+"known_text": "before you start",
+"target_text": "sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0107L02U01",
+"set": {
+"target_text": "bhí muid ag súil le feiceáil cad a bhí á dhéanamh agat"
+},
+"expect": {
+"known_text": "we hoped to see what you were doing",
+"target_text": "bhí muid ag súil le feiceáil cad a bhí tú a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0107L02U03",
+"set": {
+"target_text": "bhí mé ag súil le feiceáil cad a bhí á dhéanamh aige"
+},
+"expect": {
+"known_text": "I was hoping to see what he was doing",
+"target_text": "bhí mé ag súil le feiceáil cad a bhí sé a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0107L02U06",
+"set": {
+"target_text": "bhí sí ag súil le feiceáil cad a bhí á dhéanamh agam"
+},
+"expect": {
+"known_text": "she was hoping to see what I was doing",
+"target_text": "bhí sí ag súil le feiceáil cad a bhí mé a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0107L02U07",
+"set": {
+"known_text": "we hoped to see what he was doing",
+"target_text": "bhí muid ag súil le feiceáil cad a bhí á dhéanamh aige"
+},
+"expect": {
+"known_text": "we hoped to see what she was doing",
+"target_text": "bhí muid ag súil le feiceáil cad a bhí sí a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0108L02B01",
+"set": {
+"target_text": "ag súil le feiceáil cad a bhí á dhéanamh agat"
+},
+"expect": {
+"known_text": "hoping to see what you were doing",
+"target_text": "ag súil le feiceáil cad a bhí tú a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03B01",
+"set": {
+"known_text": "your name",
+"target_text": "d'ainm"
+},
+"expect": {
+"known_text": "what your name is in Irish",
+"target_text": "cad is ainm duit i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03B02",
+"set": {
+"known_text": "your name in Irish",
+"target_text": "d'ainm i nGaeilge"
+},
+"expect": {
+"known_text": "tell me what your name is",
+"target_text": "insint dom cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03B03",
+"set": {
+"known_text": "to tell me what your name is",
+"target_text": "d'ainm a insint dom"
+},
+"expect": {
+"known_text": "to find out what your name is",
+"target_text": "fáil amach cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03B04",
+"set": {
+"known_text": "to say your name again",
+"target_text": "d'ainm a rá arís"
+},
+"expect": {
+"known_text": "to ask you what your name is again",
+"target_text": "ceist a chur ort cad is ainm duit arís"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03U01",
+"set": {
+"known_text": "I can't remember your name",
+"target_text": "ní féidir liom cuimhneamh ar d'ainm"
+},
+"expect": {
+"known_text": "i don't know what your name is yet",
+"target_text": "níl a fhios agam cad is ainm duit fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03U02",
+"set": {
+"known_text": "I'd like to learn your name",
+"target_text": "ba mhaith liom d'ainm a fhoghlaim"
+},
+"expect": {
+"known_text": "i'm not sure what your name is",
+"target_text": "níl mé cinnte cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03U03",
+"set": {
+"known_text": "she wanted to say your name in Irish",
+"target_text": "ba mhian léi d'ainm a rá i nGaeilge"
+},
+"expect": {
+"known_text": "i'd like to find out what your name is",
+"target_text": "ba mhaith liom fáil amach cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03U04",
+"set": {
+"known_text": "can you say your name in Irish",
+"target_text": "an féidir leat d'ainm a rá i nGaeilge"
+},
+"expect": {
+"known_text": "she wanted to ask you what your name is",
+"target_text": "ba mhian léi ceist a chur ort cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03U05",
+"set": {
+"known_text": "can you tell me what your name is?",
+"target_text": "an féidir leat d'ainm a insint dom?"
+},
+"expect": {
+"known_text": "can you say what your name is in Irish",
+"target_text": "an féidir leat a rá cad is ainm duit i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0150L03U06",
+"set": {
+"target_text": "go raibh maith agat, an féidir leat d'ainm a insint dom arís"
+},
+"expect": {
+"known_text": "thank you, can you tell me what your name is again",
+"target_text": "go raibh maith agat an féidir leat insint dom cad is ainm duit arís"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02B01",
+"set": {
+"target_text": "oíche Shathairn"
+},
+"expect": {
+"known_text": "Saturday night",
+"target_text": "oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02B04",
+"set": {
+"target_text": "bualadh le chéile oíche Shathairn"
+},
+"expect": {
+"known_text": "to meet on Saturday night",
+"target_text": "bualadh le chéile oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02C01",
+"set": {
+"target_text": "Shathairn"
+},
+"expect": {
+"known_text": "Saturday",
+"target_text": "Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U01",
+"set": {
+"target_text": "cén áit ar mian leat bualadh le chéile oíche Shathairn?"
+},
+"expect": {
+"known_text": "where do you want to meet on Saturday night?",
+"target_text": "cén áit ar mian leat bualadh le chéile oíche Dé Sathairn?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U02",
+"set": {
+"target_text": "Is mian liom bualadh le chéile oíche Shathairn"
+},
+"expect": {
+"known_text": "I want to meet on Saturday night",
+"target_text": "Is mian liom bualadh le chéile oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U03",
+"set": {
+"target_text": "Níl mé ábalta é a dhéanamh oíche Shathairn"
+},
+"expect": {
+"known_text": "I'm not able to do it on Saturday night",
+"target_text": "Níl mé ábalta é a dhéanamh oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U04",
+"set": {
+"target_text": "bhí mé ag súil le dul oíche Shathairn"
+},
+"expect": {
+"known_text": "I was hoping to go on Saturday night",
+"target_text": "bhí mé ag súil le dul oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U05",
+"set": {
+"target_text": "ba cheart dom iarracht a dhéanamh é a dhéanamh oíche Shathairn"
+},
+"expect": {
+"known_text": "I should try to do it on Saturday night",
+"target_text": "ba cheart dom iarracht a dhéanamh é a dhéanamh oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U06",
+"set": {
+"target_text": "an bhfuil tú ag déanamh rud éigin oíche Shathairn?"
+},
+"expect": {
+"known_text": "are you doing something on Saturday night?",
+"target_text": "an bhfuil tú ag déanamh rud éigin oíche Dé Sathairn?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U07",
+"set": {
+"target_text": "Tá súil agam gur féidir liom dul oíche Shathairn"
+},
+"expect": {
+"known_text": "I hope that I can go on Saturday night",
+"target_text": "Tá súil agam gur féidir liom dul oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0154L02U08",
+"set": {
+"target_text": "Tá sé tábhachtach é a dhéanamh oíche Shathairn"
+},
+"expect": {
+"known_text": "it's important to do it on Saturday night",
+"target_text": "Tá sé tábhachtach é a dhéanamh oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0156L01U02",
+"set": {
+"target_text": "go hiontach an mian leat bualadh linn oíche Shathairn"
+},
+"expect": {
+"known_text": "great do you want to meet us on Saturday night",
+"target_text": "go hiontach an mian leat bualadh linn oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0156L01U04",
+"set": {
+"target_text": "an mian leat d'ainm a insint dom"
+},
+"expect": {
+"known_text": "do you want to tell me what your name is",
+"target_text": "an mian leat insint dom cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0156L02U02",
+"set": {
+"target_text": "ní mian linn dul chuig a chara oíche Shathairn"
+},
+"expect": {
+"known_text": "we don't want to go to his friend on Saturday night",
+"target_text": "ní mian linn dul chuig a chara oíche dé sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0161L02U05",
+"set": {
+"target_text": "ba mhian léi a litir a thabhairt dom oíche Shathairn"
+},
+"expect": {
+"known_text": "she wanted to give me his letter on saturday night",
+"target_text": "ba mhian léi a litir a thabhairt dom oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0170L02U01",
+"set": {
+"target_text": "ba mhaith liom go n-inseofá dom d'ainm"
+},
+"expect": {
+"known_text": "I'd like you to tell me what your name is",
+"target_text": "ba mhaith liom go n-inseofá dom cad is ainm duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0174L01U01",
+"set": {
+"target_text": "an dtuigeann tú cad atá á rá agam?"
+},
+"expect": {
+"known_text": "can you understand what I'm saying?",
+"target_text": "an dtuigeann tú cad atá mé a rá?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0197L01U02",
+"set": {
+"target_text": "go raibh maith agat ach oibríonn mo mháthair oíche Shathairn"
+},
+"expect": {
+"known_text": "thank you but my mother works on Saturday night",
+"target_text": "go raibh maith agat ach oibríonn mo mháthair oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0200L01U08",
+"set": {
+"target_text": "deir siad gur smaoineamh maith é a fheiceáil cad atá le déanamh sula dtosóidh tú"
+},
+"expect": {
+"known_text": "they say that it is a good idea to check what needs to be done before you start",
+"target_text": "deir siad gur smaoineamh maith é a fheiceáil cad atá le déanamh sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0203L01U01",
+"set": {
+"target_text": "cad a dhéanfá oíche Shathairn"
+},
+"expect": {
+"known_text": "what would you do saturday night",
+"target_text": "cad a dhéanfá oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03B01",
+"set": {
+"target_text": "oíche Shathairn chuaigh mé amach"
+},
+"expect": {
+"known_text": "Saturday night I went out",
+"target_text": "oíche Dé Sathairn chuaigh mé amach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03B02",
+"set": {
+"target_text": "bialann oíche Shathairn"
+},
+"expect": {
+"known_text": "a restaurant Saturday night",
+"target_text": "bialann oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03B03",
+"set": {
+"target_text": "ró-ghnóthach oíche Shathairn"
+},
+"expect": {
+"known_text": "too busy Saturday night",
+"target_text": "ró-ghnóthach oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03B04",
+"set": {
+"target_text": "oíche Shathairn sa teach tábhairne"
+},
+"expect": {
+"known_text": "Saturday night in the pub",
+"target_text": "oíche Dé Sathairn sa teach tábhairne"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03U01",
+"set": {
+"target_text": "ar bhain tú sult as oíche Shathairn"
+},
+"expect": {
+"known_text": "did you enjoy Saturday night",
+"target_text": "ar bhain tú sult as oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03U02",
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn agus tá mé tuirseach inniu"
+},
+"expect": {
+"known_text": "I went out Saturday night and I am tired today",
+"target_text": "chuaigh mé amach oíche Dé Sathairn agus tá mé tuirseach inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03U03",
+"set": {
+"target_text": "tá brón orm ach tá mé ró-ghnóthach oíche Shathairn"
+},
+"expect": {
+"known_text": "I am sorry but I am too busy Saturday night",
+"target_text": "tá brón orm ach tá mé ró-ghnóthach oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03U04",
+"set": {
+"target_text": "ní raibh am agam oíche Shathairn ach beidh mé ábalta teacht agus cabhrú leat níos déanaí"
+},
+"expect": {
+"known_text": "I did not have time Saturday night but I'll be able to come and help you later on",
+"target_text": "ní raibh am agam oíche Dé Sathairn ach beidh mé ábalta teacht agus cabhrú leat níos déanaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03U05",
+"set": {
+"target_text": "an mian leat dul chuig bialann oíche Shathairn"
+},
+"expect": {
+"known_text": "do you want to go to a restaurant Saturday night",
+"target_text": "an mian leat dul chuig bialann oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0215L03U07",
+"set": {
+"target_text": "ceapaim gur fhág tú mo leabhar sa teach tábhairne oíche Shathairn"
+},
+"expect": {
+"known_text": "I think that you left my book in the pub Saturday night",
+"target_text": "ceapaim gur fhág tú mo leabhar sa teach tábhairne oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0217L01U03",
+"set": {
+"target_text": "d'ól mé oíche Shathairn agus mothaím tuirseach inniu"
+},
+"expect": {
+"known_text": "I drank Saturday night and I feel tired today",
+"target_text": "d'ól mé oíche Dé Sathairn agus mothaím tuirseach inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0217L01U05",
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn agus d'ól mé sa teach tábhairne"
+},
+"expect": {
+"known_text": "I went out Saturday night and I drank in the pub",
+"target_text": "chuaigh mé amach oíche Dé Sathairn agus d'ól mé sa teach tábhairne"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0217L02U03",
+"set": {
+"target_text": "d'ól mé gloine oíche Shathairn"
+},
+"expect": {
+"known_text": "I drank a glass Saturday night",
+"target_text": "d'ól mé gloine oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0218L01U04",
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn agus ní dhearna mé aon rud nua"
+},
+"expect": {
+"known_text": "I went out Saturday night and I did not do anything new",
+"target_text": "chuaigh mé amach oíche Dé Sathairn agus ní dhearna mé aon rud nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0219L01U03",
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn agus bhí sé go hiontach"
+},
+"expect": {
+"known_text": "I went out on Saturday night and it was great",
+"target_text": "chuaigh mé amach oíche Dé Sathairn agus bhí sé go hiontach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0219L02U06",
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn agus bhí sé deas"
+},
+"expect": {
+"known_text": "I went out Saturday night and it was nice",
+"target_text": "chuaigh mé amach oíche dé sathairn agus bhí sé deas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0220L01B05",
+"set": {
+"target_text": "ar fhéach tú air le chéile oíche Shathairn?"
+},
+"expect": {
+"known_text": "Did you watch it together last Saturday?",
+"target_text": "ar fhéach tú air le chéile oíche dé sathairn?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0234L04U01",
+"set": {
+"target_text": "chuaigh mé amach le do dheartháir oíche Shathairn"
+},
+"expect": {
+"known_text": "I went out with your brother on Saturday night",
+"target_text": "chuaigh mé amach le do dheartháir oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0245L02U04",
+"set": {
+"target_text": "níl mé sásta leis an méid ama atá á thabhairt agam dó seo"
+},
+"expect": {
+"known_text": "I am not satisfied with how much time I have been giving to this",
+"target_text": "níl mé sásta leis an méid ama atá mé a thabhairt dó seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U05",
+"set": {
+"target_text": "bhí sé go hiomlán uafásach agus chuaigh mé amach oíche Shathairn"
+},
+"expect": {
+"known_text": "it was complete rubbish and I went out on Saturday night",
+"target_text": "bhí sé go hiomlán uafásach agus chuaigh mé amach oíche Dé Sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0265L01U06",
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn agus chonaic mé cara"
+},
+"expect": {
+"known_text": "I went out Saturday night and I saw a friend",
+"target_text": "chuaigh mé amach oíche Dé Sathairn agus chonaic mé cara"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0266L01U06",
+"set": {
+"target_text": "chuaigh mé amach oíche Shathairn agus chonaic mé seanchara"
+},
+"expect": {
+"known_text": "I went out Saturday night and I saw an old friend",
+"target_text": "chuaigh mé amach oíche Dé Sathairn agus chonaic mé seanchara"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0269L05B03",
+"set": {
+"target_text": "le d'athair oíche Shathairn"
+},
+"expect": {
+"known_text": "for your father on saturday night",
+"target_text": "le d'athair oíche dé sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0269L05U06",
+"set": {
+"target_text": "bhí muid ag súil le d'athair oíche Shathairn"
+},
+"expect": {
+"known_text": "we hoped for your father on saturday night",
+"target_text": "bhí muid ag súil le d'athair oíche dé sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0271L02U06",
+"set": {
+"target_text": "ar mhaith leat teacht linn oíche Shathairn"
+},
+"expect": {
+"known_text": "would you like to come with us saturday night",
+"target_text": "ar mhaith leat teacht linn oíche dé sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04B01",
+"set": {
+"target_text": "tá mé réidh sula dtosóidh tú"
+},
+"expect": {
+"known_text": "I'm ready before you start",
+"target_text": "tá mé réidh sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04B02",
+"set": {
+"target_text": "sula dtosóidh tú anseo"
+},
+"expect": {
+"known_text": "before you start here",
+"target_text": "sula dtosaíonn tú anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04B03",
+"set": {
+"target_text": "sula dtosóidh tú an tseachtain seo chugainn"
+},
+"expect": {
+"known_text": "before you start next week",
+"target_text": "sula dtosaíonn tú an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04B04",
+"set": {
+"target_text": "tá mé réidh sula dtosóidh tú maidin amárach"
+},
+"expect": {
+"known_text": "I'm ready before you start tomorrow morning",
+"target_text": "tá mé réidh sula dtosaíonn tú maidin amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04U01",
+"set": {
+"target_text": "sula dtosóidh tú anseo ar mhaith leat teacht linn"
+},
+"expect": {
+"known_text": "before you start here would you like to come with us",
+"target_text": "sula dtosaíonn tú anseo ar mhaith leat teacht linn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04U02",
+"set": {
+"target_text": "níor cheart duit a bheith buartha sula dtosóidh tú"
+},
+"expect": {
+"known_text": "you shouldn't be worried before you start",
+"target_text": "níor cheart duit a bheith buartha sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04U03",
+"set": {
+"target_text": "ceapaim go mbeidh mé réidh sula dtosóidh tú maidin amárach"
+},
+"expect": {
+"known_text": "I think I'll be ready before you start tomorrow morning",
+"target_text": "ceapaim go mbeidh mé réidh sula dtosaíonn tú maidin amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04U04",
+"set": {
+"target_text": "an gcaithfidh tú gach rud a chríochnú sula dtosóidh tú"
+},
+"expect": {
+"known_text": "do you have to finish everything before you start",
+"target_text": "an gcaithfidh tú gach rud a chríochnú sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04U05",
+"set": {
+"target_text": "is mian liom scíth a ligean ar feadh tamaill sula dtosóidh tú"
+},
+"expect": {
+"known_text": "I want to relax for a while before you start",
+"target_text": "is mian liom scíth a ligean ar feadh tamaill sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04U07",
+"set": {
+"target_text": "an miste leat má chríochnaím sula dtosóidh tú"
+},
+"expect": {
+"known_text": "do you mind if I finish before you start",
+"target_text": "an miste leat má chríochnaím sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0281L04U08",
+"set": {
+"target_text": "tá sé in am scíth a ligean sula dtosóidh tú"
+},
+"expect": {
+"known_text": "it's time to relax before you start",
+"target_text": "tá sé in am scíth a ligean sula dtosaíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0282L01U07",
+"set": {
+"target_text": "an miste leat má chríochnaím mo chaife sula dtosóidh tú ní miste"
+},
+"expect": {
+"known_text": "do you mind if I finish my coffee before you start? no that's fine",
+"target_text": "an miste leat má chríochnaím mo chaife sula dtosaíonn tú ní miste"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0288L01B04",
+"set": {
+"target_text": "oíche Shathairn is maith le formhór na ndaoine scíth a ligean"
+},
+"expect": {
+"known_text": "on saturday night most people like to relax",
+"target_text": "oíche dé sathairn is maith le formhór na ndaoine scíth a ligean"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0288L02U05",
+"set": {
+"target_text": "is maith le formhór na ndaoine féachaint ar theilifís oíche Shathairn"
+},
+"expect": {
+"known_text": "most people like watching television on Saturday night",
+"target_text": "is maith le formhór na ndaoine féachaint ar theilifís oíche dé sathairn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0296L03U05",
+"set": {
+"target_text": "ceapaim go bhfuil beagán ama sula dtosóidh tú"
+},
+"expect": {
+"known_text": "I think there is a little time before you start",
+"target_text": "ceapaim go bhfuil beagán ama sula dtosaíonn tú"
+}
+}
+]
+}

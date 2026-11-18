@@ -23,9 +23,14 @@
  * an error or a truncated page throws; it never reads as "no clip exists".
  */
 
-const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
+const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
+const spokenWords = require('./clip-spoken-words.cjs')
+const { normalizeForAudio, recordingTextKeys } = require('./text-normalize.cjs')
+// Every key lookup below is a free-text .in(); this makes supabase-js quote it correctly process-wide (cs #460).
+require('./postgrest-in-quote.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const { supabaseResolversFor } = require('./named-voices.cjs')
+const { isPodOnlyClip, withoutPodOnly } = require('./pod-audio.cjs')
 /**
  * THE LANGUAGE OF A CLIP IS ITS COURSE'S LANGUAGE CODE. Tom, 2026-09-26/27:
  * "region is a different language - north/south welsh have very different
@@ -107,6 +112,8 @@ function indexEntryFor(row, indexedBy, courseOf = noCourses, resolvers = null) {
   if (!row || !row.id) return { skip: 'no-row' }
   if (!row.s3_key || String(row.s3_key).startsWith('pending/')) return { skip: 'pending' }
   if (row.veracity_pass === false) return { skip: 'veracity-failed' }
+  // A POD-ONLY clip (pod_atom / pod_fine_known, shared/pod-audio.cjs, job #628) is never a library answer, so never indexed.
+  if (isPodOnlyClip(row)) return { skip: 'pod-only' }
   // `resolvers` (services/shared/named-voices.cjs) is how a clip whose voice or words are
   // not what course_audio stores gets its true identity; absent, nothing changes.
   const text_key = clipTextKey(resolvers && resolvers.spokenText ? resolvers.spokenText(row) : row.text)
@@ -157,7 +164,7 @@ function entriesFromRows(rows, indexedBy, courseOf = noCourses, resolvers = null
   return { entries: [...best.values()].map(v => v.e), collisions, skipped }
 }
 
-const ROW_COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, duration_ms, word_boundaries, word_timings, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker'
+const ROW_COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, audio_revision, duration_ms, word_boundaries, word_timings, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker'
 
 const FALLBACK_PAGE = 1000
 const FALLBACK_MAX_PAGES = 20
@@ -168,7 +175,8 @@ async function lookupIndexed(supabase, language, text) {
     .from('clip_index')
     .select(`voice_id, course_audio!inner(${ROW_COLUMNS})`)
     .eq('language', language)
-    .eq('text_key', clipTextKey(text))
+    // Both spellings of one recording (plain and the pod " … " cue form, job #813): an index row keyed under either answers.
+    .in('text_key', [...new Set(recordingTextKeys(text).map(clipTextKey))])
   if (error) throw new Error(`clip index lookup failed (${error.message}) — refusing to decide blind`)
   return (data || []).map(r => r.course_audio).filter(Boolean)
 }
@@ -179,7 +187,7 @@ async function ownCourseRows(supabase, courseCode, text) {
     .from('course_audio')
     .select(ROW_COLUMNS)
     .eq('course_code', courseCode)
-    .in('text_normalized', audioKeyCandidates(text))
+    .in('text_normalized', recordingTextKeys(text))
     .not('s3_key', 'like', 'pending/%')
   if (error) throw new Error(`own-course clip lookup failed (${error.message}) — refusing to decide blind`)
   return data || []
@@ -191,7 +199,7 @@ async function ownCourseRows(supabase, courseCode, text) {
  * Paged; a group larger than the pages allow THROWS rather than truncating.
  */
 async function fallbackRows(supabase, text, { courseCode = null, ownCourseOnly = false } = {}) {
-  const keys = audioKeyCandidates(text)
+  const keys = recordingTextKeys(text) // plain + pod-cue spellings of one recording (job #813)
   if (!keys.length) return []
   const out = []
   for (let page = 0; page < FALLBACK_MAX_PAGES; page++) {
@@ -267,6 +275,7 @@ function supabaseClipSource(supabase, { log = console, indexedBy = 'write-throug
     indexed: (language, text) => lookupIndexed(supabase, language, text),
     own: (courseCode, text) => ownCourseRows(supabase, courseCode, text),
     fallback: (text, opts) => fallbackRows(supabase, text, opts),
+    spoken: ids => spokenWords.readVerdicts(supabase, ids),
     write: async rows => writeThrough(supabase, rows, indexedBy, log, await courses(rows.map(r => r.course_code)), await resolversFor(rows)),
   }
 }
@@ -276,25 +285,26 @@ function supabaseClipSource(supabase, { log = console, indexedBy = 'write-throug
  * clip_index entries ({ language, text_key, voice_id, audio_id }); `rows` is
  * course_audio. Written-through entries land in `index`, so a test can see them.
  */
-function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
+function memoryClipSource({ index = [], rows = [], courses = [], spoken = [] } = {}) {
   const byId = new Map(rows.map(r => [r.id, r]))
   const courseMap = new Map(courses.map(c => [c.course_code, c]))
   const courseOf = code => (code && courseMap.get(code)) || null
   const calls = { indexed: 0, own: 0, fallback: 0 }
   const matches = (r, text) => {
-    const keys = new Set(audioKeyCandidates(text))
+    const keys = new Set(recordingTextKeys(text))
     return r.s3_key && !String(r.s3_key).startsWith('pending/') &&
-      (keys.has(r.text_normalized) || clipTextKey(r.text) === clipTextKey(text))
+      (keys.has(r.text_normalized) || keys.has(clipTextKey(r.text)))
   }
   return {
     name: 'memory',
     index,
     calls,
     async courses() { return courseOf },
+    async spoken(ids) { const want = new Set(ids.map(String)); return new Map(spoken.filter(v => want.has(String(v.audio_id))).map(v => [String(v.audio_id), v])) },
     async indexed(language, text) {
       calls.indexed++
-      const key = clipTextKey(text)
-      return index.filter(e => e.language === language && e.text_key === key).map(e => byId.get(e.audio_id)).filter(Boolean)
+      const keys = new Set(recordingTextKeys(text).map(clipTextKey))
+      return index.filter(e => e.language === language && keys.has(e.text_key)).map(e => byId.get(e.audio_id)).filter(Boolean)
     },
     async own(courseCode, text) { calls.own++; return rows.filter(r => r.course_code === courseCode && matches(r, text)) },
     async fallback(text, { courseCode = null, ownCourseOnly = false } = {}) {
@@ -330,11 +340,24 @@ function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
  * @param {object} want    { text, language (any spelling), voiceId?, courseCode?, includeOwnCourse?, ownCourseOnly?, readOnly? }
  * @param {(rows: object[]) => object|null} pick
  */
-async function resolveClip(source, want, pick) {
-  if (!tryCanonicalLanguage(want.language)) return pick([])
+async function resolveClip(source, want, rawPick) {
+  // A line the asking course renders through a pronunciation override is answered only by a clip rendered WITH it
+  // (shared/pronunciation-reuse-guard.cjs, job #262·AD): the misread clips share its words exactly. Every reuse path
+  // that goes through here — the TTS door, the render route's library-first link, the phase8 fill pass — gets it.
+  // POD-ONLY clips (shared/pod-audio.cjs, job #628) are dropped before every pick: a Pod Drill piece or Talk Bollocks line
+  // is never linked into a seed, LEGO or phrase slot, and never cited as "already recorded in this language".
+  // A clip known to SAY other words than these (clip_spoken_text: the in-place female-form re-records, cs #160·AI,
+  // shared/clip-spoken-words.cjs) is dropped before every pick too, so no reuse path can answer "sono sicuro" with "sono sicura".
+  const spoken = source.spoken || (() => new Map())
+  const pick = async rows => {
+    const live = withoutPodOnly(rows)
+    const marked = spokenWords.attachVerdicts(live, live.length ? await spoken(live.map(r => r && r.id)) : new Map())
+    return rawPick(await allowedForOverride(marked.filter(r => !spokenWords.saysOtherWords(r, want.text)), want))
+  }
+  if (!tryCanonicalLanguage(want.language)) return await pick([])
   const courseOf = source.courses ? await source.courses([want.courseCode]) : noCourses
   const language = clipLanguageKey(want.language, courseOf(want.courseCode))
-  if (!language) return pick([])
+  if (!language) return await pick([])
   // EVERY candidate, from every path, must be in the asked language INCLUDING
   // ITS REGION — the pick rules compare base languages only, so this filter is
   // what keeps a Castilian row from answering a Mexican slot.
@@ -343,12 +366,12 @@ async function resolveClip(source, want, pick) {
     return rows.filter(r => r && clipLanguageKey(r.language, of(r.course_code)) === language)
   }
   if (want.ownCourseOnly) {
-    return pick(await inLanguage(await source.fallback(want.text, { courseCode: want.courseCode, ownCourseOnly: true })))
+    return await pick(await inLanguage(await source.fallback(want.text, { courseCode: want.courseCode, ownCourseOnly: true })))
   }
   const voice = want.voiceId ? tryCanonicalVoiceId(want.voiceId) : null
   const indexed = await inLanguage(await source.indexed(language, want.text))
   const own = (want.includeOwnCourse && want.courseCode) ? await inLanguage(await source.own(want.courseCode, want.text)) : []
-  const first = pick(dedupeById([...own, ...indexed]))
+  const first = await pick(dedupeById([...own, ...indexed]))
   if (first && (!voice || tryCanonicalVoiceId(first.voice_id) === voice)) {
     stats.indexHits++
     return first
@@ -357,7 +380,7 @@ async function resolveClip(source, want, pick) {
   const rows = await source.fallback(want.text, {})
   // readOnly (a dry run): answer from what was read, write nothing anywhere.
   if (!want.readOnly) await source.write(rows)
-  return pick(dedupeById([...own, ...indexed, ...await inLanguage(rows)])) || first
+  return (await pick(dedupeById([...own, ...indexed, ...await inLanguage(rows)]))) || first
 }
 
 function dedupeById(rows) {

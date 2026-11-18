@@ -1,0 +1,45 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "eventId": "4d003361-4d23-437c-91c0-17e0206b1d9c",
+ "contentVersion": "0.0.241",
+ "linked": 3,
+ "results": [
+  {
+   "slot": "cym_n_for_eng:pod-1:SC07-S001",
+   "role": "known",
+   "audioId": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+   "before": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC07-S001",
+   "role": "knownsegment",
+   "audioId": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+   "before": "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+    "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC07-S001",
+   "role": "knownsegment",
+   "audioId": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4",
+   "before": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+    "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d"
+   ]
+  }
+ ]
+}

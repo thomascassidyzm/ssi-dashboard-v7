@@ -28,9 +28,16 @@
  * end to end without a provider. Nothing here spends a character on its own.
  */
 const chain = require('./chain-context.cjs')
+const spokenWords = require('./clip-spoken-words.cjs')
+const { approverOf } = require('./human-take-guard.cjs')
+const adoptException = require('./adopt-exception.cjs')
 const trialMode = require('./audio-trial-mode.cjs')
 const drillCut = require('./drill-cut-guard.cjs')
+const existsInLanguage = require('./exists-in-language-guard.cjs')
 const paidWrite = require('./paid-write.cjs')
+const standIn = require('./aran-clone-standin.cjs')
+const pronunciation = require('./pronunciation-overrides.cjs')
+const { sameVoice } = require('./resolve-voice.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
 
@@ -74,42 +81,96 @@ function validate(input) {
     language: input.language ? String(input.language) : null,
     voiceId: input.voiceId ? String(input.voiceId) : null,
     legoId: input.legoId ? String(input.legoId) : null,
+    // A POD LINE (job #799, shared/pod-line-voice.cjs): the voice is the pod's cast for this line's speaker, read from the DB.
+    podSentenceId: input.podSentenceId ? String(input.podSentenceId) : null,
+    // …and podRecast:true takes the course's CURRENT cast for that side at the speaker's gender instead of the line's old clip voice.
+    podRecast: input.podSentenceId ? input.podRecast === true : false,
     dryRun: !!input.dryRun,
     // TRIAL (job #748, services/shared/audio-trial-mode.cjs): skip the voice gates, store apart from every course, link nothing.
     trial: input.trial === true,
+    // A POD CLIP (job #628): 'target' | 'known'. With trial:true the render is filed as a pod-only course_audio row
+    // (pod_atom / pod_fine_known, shared/pod-audio.cjs) — never linked into a course slot. Pod Drill pieces and Talk
+    // Bollocks lines are rendered this way; a trial WITHOUT podSide is an audition and stays a trial clip.
+    podSide: input.podSide == null ? null : String(input.podSide),
     // TRIAL ONLY (job #751): a native speed for the provider (Cartesia generation_config.speed) instead of a time-stretch. Null = the voice's own speed.
     speed: input.speed == null ? null : Number(input.speed),
+    // TRIAL ONLY, POST-RENDER-PACED VOICE (job #590): ONE take, stored once per pace in this list, so a pace comparison
+    // hears the same performance at each tempo. Separate takes cannot compare paces: the clone wanders more take to take
+    // than the 10-25% between belts (job #590 measured a 1.1 take 44% LONGER than a 1.0 take of the same line).
+    paces: input.paces == null ? null : (Array.isArray(input.paces) ? input.paces.map(Number) : [NaN]),
+    // TRIAL ONLY (job #23): who started this trial — a person; the lane never runs unattended (r-2026-10-13).
+    startedBy: input.startedBy ? String(input.startedBy).slice(0, 100) : null,
+    // TRIAL ONLY, ELEVENLABS (job #23): the model (allow-list) and voice_settings passed through to the provider.
+    model: input.model == null || input.model === '' ? null : String(input.model),
+    voiceSettings: input.voiceSettings == null ? null : input.voiceSettings,
     // Answer only with a clip in THIS voice. A two-voice phrase's male and female
     // slots are told apart by voice alone; any-voice reuse files one in the other.
-    // DEFAULT ON (job #944): reuse matches voice identity; only an explicit voiceBound:false opts out.
-    voiceBound: input.voiceBound !== false,
+    // ALWAYS ON (job #303, Tom 2026-11-02: no slot may play another slot's voice). There is no opt-out: an any-voice answer
+    // handed store() the other voice's BYTES, filed under this slot's voice label (services/audio-render-voicebound-always.test.cjs).
+    voiceBound: true,
     // RE-RECORD: replace this course_audio row's bytes in place (same id, next
     // audio_revision). The library is never asked to answer it.
     replaceAudioId: input.replaceAudioId ? String(input.replaceAudioId) : null,
+    // RE-RECORD ONLY (job #749): a deliberate second take of a row this same requester already re-recorded for this same
+    // purpose within the day. Without it such a request is answered with the take already made (rerecord's idempotency).
+    retake: input.retake === true,
     // What to SAY when it differs from the stored text (qualcos'altro-style
     // pronunciation fixes). The stored text is never changed by it.
     spokenText: input.spokenText ? String(input.spokenText) : null,
     // The job this render belongs to ("#913"). It rides into the spend ledger, and a
     // job Tom has approved (tools/tts-cap.cjs approve) spends from its own
-    // allowance up to the 300k ceiling instead of the automatic 100k (job #913).
+    // allowance up to the 3M ceiling instead of the automatic 1M cap (job #913; figures since 2026-10-07/12).
     job: input.job ? String(input.job).slice(0, 100) : null,
     // ADOPT (job #140): file an object a paid render already put in S3 but could not save a row for. No provider call.
     adoptS3Key: input.adoptS3Key ? String(input.adoptS3Key) : null,
     // INSTRUCTION ONLY (job #464): its place in the ordered sequence the player plays (shared_audio.sequence).
     sequence: input.sequence == null ? null : Number(input.sequence),
+    // KAI'S (or Tom's) APPROVAL TOKEN `kai:YYYY-MM-DD:<reason>` (Tom 2026-10-30): lets a re-record past the permission gate. Shape-checked here;
+    // its ORIGIN is verified before this runs — phase8 /render refuses APPROVAL_UNVERIFIED unless the caller's x-cs-conv is on the named seat (approval-origin.cjs, #116·AI).
+    approval: input.approval ? String(input.approval) : null,
+    // COURSE POSITION of the line (its seed number; a phrase's LEGO S0014L01 → 14). Read only by the clone stand-in's
+    // pace-by-belt rule (aran-clone-standin.cjs, Aran 2026-11-03, job #579); every other slot ignores it.
+    seedPosition: input.seedPosition == null ? null : Number(input.seedPosition),
   }
+  if (out.seedPosition != null && !(Number.isInteger(out.seedPosition) && out.seedPosition > 0)) throw new RenderRequestError('seedPosition is the line\'s seed number, a positive integer', 400, 'BAD_SEED_POSITION')
+  if (out.approval && !approverOf(out.approval)) throw new RenderRequestError('approval must look like kai:YYYY-MM-DD:<reason> (or tom:YYYY-MM-DD:<reason>)', 400, 'BAD_APPROVAL')
   if (out.sequence != null && (out.role !== 'instruction' || !Number.isInteger(out.sequence) || out.sequence < 0)) throw new RenderRequestError('sequence is a non-negative integer, for an instruction only', 400, 'BAD_SEQUENCE')
   if (out.text == null && (out.trial || out.adoptS3Key || out.replaceAudioId)) throw new RenderRequestError('trial, adoptS3Key and replaceAudioId name the words — send text', 400, 'TEXT_REQUIRED')
   if (isSharedRole(out.role) && (out.trial || out.legoId)) throw new RenderRequestError(`a ${out.role} is no LEGO's and no trial's — legoId and trial do not apply`, 400, 'SHARED_ROLE_ALONE')
   if (LANGUAGE_SHARED_ROLES.includes(out.role) && (out.replaceAudioId || out.adoptS3Key)) throw new RenderRequestError(`a ${out.role} lives in shared_audio — replaceAudioId and adoptS3Key file course_audio rows`, 400, 'SHARED_ROLE_ALONE')
   if (out.adoptS3Key) {
-    if (!paidWrite.isAdoptableKey(out.adoptS3Key)) throw new RenderRequestError('adoptS3Key must be a mastered/<UUID>.mp3 key phase8 wrote', 400, 'BAD_ADOPT_KEY')
+    // ONE-OFF EXCEPTION (r-2026-10-28 deu_at Tamara 732, services/shared/adopt-exception.cjs): a listed trial key, for its
+    // exact course/role/words only. Anything not on that list is still refused here.
+    const ex = adoptException.exceptionFor(out.adoptS3Key)
+    if (!paidWrite.isAdoptableKey(out.adoptS3Key) && !ex) throw new RenderRequestError('adoptS3Key must be a mastered/<UUID>.mp3 key phase8 wrote', 400, 'BAD_ADOPT_KEY')
+    if (ex) {
+      const why = adoptException.mismatch(ex, out)
+      if (why) throw new RenderRequestError(`${out.adoptS3Key} is adoptable only under ${ex.ruling}: ${why}`, 400, 'ADOPT_EXCEPTION_MISMATCH')
+    }
     if (out.trial || out.replaceAudioId || out.spokenText) throw new RenderRequestError('adoptS3Key files one paid-but-unsaved clip — trial, replaceAudioId and spokenText do not apply', 400, 'ADOPT_ALONE')
   }
   if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
+  if ((out.model || out.voiceSettings || out.startedBy) && !out.trial) throw new RenderRequestError('model, voiceSettings and startedBy are trial-only — a course render speaks the course voice as cast', 400, 'TRIAL_ONLY_OPTION')
+  if (out.podSide != null) {
+    if (out.podSide !== 'target' && out.podSide !== 'known') throw new RenderRequestError('podSide is target or known', 400, 'BAD_POD_SIDE')
+    if (!out.trial || out.paces) throw new RenderRequestError('a pod clip is one trial take (trial:true, no paces) filed as a pod-only row', 400, 'POD_SIDE_TRIAL_ONLY')
+  }
+  if (out.trial) {
+    // STARTED, NEVER UNATTENDED (job #23, r-2026-10-13): a trial names a person or a job, and keeps to one-off clips.
+    if (!out.startedBy && !out.job) throw new RenderRequestError('a trial render names who started it — startedBy (a person) or job ("#23")', 400, 'TRIAL_NEEDS_STARTER')
+    const cap = trialMode.maxCharsPerCall()
+    if (out.text && out.text.length > cap) throw new RenderRequestError(`a trial render is one short clip — ${out.text.length} characters is over the ${cap}-character per-call trial cap; bulk work needs Tom`, 400, 'TRIAL_CALL_CAP')
+    try { out.model = trialMode.checkModel(out.model); out.voiceSettings = trialMode.checkVoiceSettings(out.voiceSettings) } catch (e) { throw new RenderRequestError(e.message, e.status || 400, e.code || 'BAD_REQUEST') }
+  }
   if (out.speed != null) {
     if (!out.trial) throw new RenderRequestError('speed is a trial-only option — a course render speaks at the course voice\'s own speed', 400, 'SPEED_TRIAL_ONLY')
-    if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= TRIAL_SPEED_MAX)) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX}`, 400, 'BAD_SPEED')
+    // Above 1.0 only for the clone stand-in voice, up to its fastest belt pace (checked against the resolved voice in trialRender).
+    if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= Math.max(TRIAL_SPEED_MAX, standIn.STANDIN_MAX_PACE))) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX} (up to ${standIn.STANDIN_MAX_PACE} for the clone stand-in voice)`, 400, 'BAD_SPEED')
+  }
+  if (out.paces != null) {
+    if (!out.trial) throw new RenderRequestError('paces is a trial-only option', 400, 'PACES_TRIAL_ONLY')
+    if (out.speed != null) throw new RenderRequestError('send speed or paces, not both', 400, 'BAD_PACES')
+    if (!(out.paces.length >= 1 && out.paces.length <= 4) || !out.paces.every((x) => x >= TRIAL_SPEED_MIN && x <= standIn.STANDIN_MAX_PACE)) throw new RenderRequestError(`paces is a list of 1-4 numbers between ${TRIAL_SPEED_MIN} and ${standIn.STANDIN_MAX_PACE}`, 400, 'BAD_PACES')
   }
   if (out.job && !/#\d+/.test(out.job)) throw new RenderRequestError('job names the job the way the estate writes it, e.g. "#913"')
   if (out.spokenText && !out.replaceAudioId) throw new RenderRequestError('spokenText only applies to a re-record — name replaceAudioId')
@@ -147,6 +208,30 @@ async function bindPresentation(req, result, deps) {
   return { ...result, legoLinked: !!linked }
 }
 
+/**
+ * PACE BY BELT for the clone stand-in (Aran 2026-11-03, job #579; the rule lives in aran-clone-standin.cjs): a NEW render
+ * of the stand-in voice in its slot is played at its belt's tempo. Every other slot keeps the resolved speed. A library
+ * answer is never re-paced: library-first runs before this and links whatever clip of these words the voice has.
+ * Cartesia IGNORES request-time speed for this Professional clone (job #590 measured 1.25 coming out slower than 1.0), so
+ * Cartesia gets its default 1.0 and the tempo rides as paceTempo to the store step, which time-stretches before mastering.
+ */
+function standInPace(req, r) {
+  if (r.provider !== 'cartesia' || !standIn.isStandInVoice(r.voiceId)) return {}
+  // A Welsh pod line's English in the stand-in voice: the one pod pace (aran-clone-standin.cjs STANDIN_POD_PACE, Tom 2026-11-08).
+  if (req.podSentenceId && req.role === 'known') {
+    const podPace = standIn.standInPodPace({ courseCode: req.courseCode, voiceId: r.voiceId })
+    return podPace === 1 ? {} : { speed: 1, paceTempo: podPace }
+  }
+  // The live Welsh courses' English known slots (Tom 2026-11-16, "speed it up a bit"): one known-side pace, ARAN_PRO_KNOWN_PACE.
+  if (standIn.isAranProKnownSlot({ courseCode: req.courseCode, role: req.role, language: r.language })) {
+    const t = standIn.ARAN_PRO_KNOWN_PACE
+    return t === 1 ? { speed: 1 } : { speed: 1, paceTempo: t }
+  }
+  if (!standIn.isCloneStandInSlot({ courseCode: req.courseCode, role: req.role, language: r.language })) return {}
+  const tempo = standIn.standInSpeed(req.seedPosition)
+  return tempo === 1 ? { speed: 1 } : { speed: 1, paceTempo: tempo }
+}
+
 async function renderClip(input, deps) {
   const req = validate(input)
   return chain.run(`render:${req.requestedBy}`, async () => {
@@ -177,7 +262,7 @@ async function renderClip(input, deps) {
     // is cut from that take — never paid for twice. Library first already linked any cut that exists; this stops the
     // second performance when nobody has cut it yet. Another voice (a main-flow second seat) is not refused here.
     if (deps.immersionTurn && (req.role === 'target1' || req.role === 'target2')) {
-      const turn = await deps.immersionTurn({ language: r.language, text: req.text })
+      const turn = await deps.immersionTurn({ language: r.language, text: req.text, voice: r.voiceId })
       const refusal = drillCut.drillCutRefusal(turn, { voiceId: r.voiceId, text: req.text })
       if (refusal) throw new RenderRequestError(refusal.message, refusal.status, refusal.code)
     }
@@ -190,8 +275,22 @@ async function renderClip(input, deps) {
       if (spliced) return bindPresentation(req, { purpose: req.purpose, requestedBy: req.requestedBy, ...spliced }, deps)
     }
 
+    // ALREADY RECORDED IN THIS LANGUAGE (job #352, services/shared/exists-in-language-guard.cjs): recordings are per language,
+    // not per course. Library-first above linked a clip in THIS voice; a clip of these words in this language in ANY other
+    // voice, any course, either side, makes this a second performance — refused (409 EXISTS_IN_LANGUAGE, dry run too) naming
+    // the clips, unless the route's existing re-record authority covers it (Tom's permission row, Kai's token). Trial renders
+    // returned above and never reach this; intros (presentation) are rendered fresh per course and are not guarded.
+    if (deps.clipsInLanguage && existsInLanguage.guardsSlot(req.role)) {
+      const found = await deps.clipsInLanguage({ language: r.language, text: req.text, courseCode: req.courseCode })
+      const refusal = existsInLanguage.existsInLanguageRefusal(found, { voiceId: r.voiceId, courseCode: req.courseCode, role: req.role, language: r.language, text: req.text })
+      if (refusal) {
+        const grant = deps.rerecordGranted ? await deps.rerecordGranted({ courseCode: req.courseCode, role: req.role, approval: req.approval }) : null
+        if (!grant) throw Object.assign(new RenderRequestError(refusal.message, refusal.status, refusal.code), { existing: refusal.existing })
+      }
+    }
+
     // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).
-    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job } }
+    const cfg = { ...r.providerConfig, ...standInPace(req, r), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, legoId: req.legoId || null, job: req.job, approval: req.approval, podLine: !!req.podSentenceId } }
     // 2 + 3. the door → guard → one provider attempt
     const out = await deps.speak(req.text, r.provider, cfg, 1)
     if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
@@ -201,8 +300,8 @@ async function renderClip(input, deps) {
       if (again) return bindPresentation(req, { ok: true, source: 'library', charsSpent: 0, ...again, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
     }
     // 4. write back
-    const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
-    return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
+    const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null, ...(cfg.paceTempo ? { tempo: cfg.paceTempo } : {}) })
+    return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, ...(cfg.paceTempo ? { tempo: cfg.paceTempo } : {}), purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
 }
 
@@ -238,7 +337,7 @@ async function renderShared(req, deps) {
   if (linked) return { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, ...echo(), ...said }
 
   // 2 + 3. the door → guard → one provider attempt. slotRole is the shared role itself: the voicing policy governs slots only.
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job } }
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job, approval: req.approval } }
   const out = await deps.speak(req.text, r.provider, cfg, 1)
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, voiceId: r.voiceId, language: r.language, ...echo(), ...said }
   if (out.existingClip && !shared) {
@@ -262,6 +361,16 @@ async function adoptPaid(req, deps) {
   const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role) })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, adoptS3Key: req.adoptS3Key, charsSpent: 0 }
+  // An exception adopt files THE clip Kai picked: the resolved voice must be the listed one, and the library is not asked
+  // (it would answer with some other clip of the words). phase8 slows it and files it under a fresh mastered/ key.
+  const ex = adoptException.exceptionFor(req.adoptS3Key)
+  if (ex) {
+    const why = adoptException.mismatch(ex, { ...req, voiceId: r.voiceId })
+    if (why) throw new RenderRequestError(`${req.adoptS3Key} is adoptable only under ${ex.ruling}: ${why}`, 400, 'ADOPT_EXCEPTION_MISMATCH')
+    const adopted = await deps.adopt({ ...ident, s3Key: req.adoptS3Key, dryRun: req.dryRun, exception: ex })
+    if (req.dryRun) return { ok: true, source: 'would-adopt', dryRun: true, exception: ex.ruling, ...adopted, ...echo }
+    return bindPresentation(req, { ok: true, source: 'adopted', exception: ex.ruling, ...adopted, ...echo }, deps)
+  }
   const linked = await deps.link(ident)
   if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), ...linked, ...echo }, deps)
   const adopted = await deps.adopt({ ...ident, s3Key: req.adoptS3Key, dryRun: req.dryRun })
@@ -276,18 +385,70 @@ async function adoptPaid(req, deps) {
 async function trialRender(req, deps) {
   trialMode.assertTrialOpen(deps.now ? deps.now() : new Date())
   const r = await deps.resolve(req)
+  // A WELSH POD ENGLISH PIECE in the stand-in voice (podSide 'known', no speed asked) is played at the pod pace — Tom
+  // 2026-11-08, "which needs speeding up" (aran-clone-standin.cjs STANDIN_POD_PACE). It rides the explicit-speed path below,
+  // so the library (keyed on text + voice, not tempo) does not answer it with an unpaced clip.
+  if (req.podSide === 'known' && req.speed == null && !req.paces) {
+    const podPace = standIn.standInPodPace({ courseCode: req.courseCode, voiceId: r.voiceId })
+    if (podPace !== 1) req = { ...req, speed: podPace }
+  }
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // An EXPLICIT speed (1 included: the voice's own settings.speed may be 0.8) is a different recording of the same words, so the
   // library (keyed on text+voice) must not answer it: door.skipLibrary. Unset keeps the normal trial path, library hit and all.
   const slowed = req.speed != null
   // Only Cartesia takes a native speed; tts-service never sends it to ElevenLabs, so honouring it would echo a speed we did not buy.
-  if (slowed && r.provider !== 'cartesia') throw new RenderRequestError(`native trial speed is Cartesia-only — ${r.provider} voices cannot take speed ${req.speed}`, 400, 'SPEED_PROVIDER_UNSUPPORTED')
-  const cfg = { ...r.providerConfig, ...(slowed ? { speed: req.speed } : {}), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed, job: req.job } }
+  if (slowed && r.provider !== 'cartesia') throw new RenderRequestError(`native trial speed is Cartesia-only — ${r.provider} voices take voiceSettings.speed instead`, 400, 'SPEED_PROVIDER_UNSUPPORTED')
+  if (slowed && req.speed > TRIAL_SPEED_MAX && !standIn.isStandInVoice(r.voiceId)) throw new RenderRequestError(`a trial faster than ${TRIAL_SPEED_MAX} is only for the clone stand-in voice's belt pace (job #579) — ${r.voiceId} is not it`, 400, 'BAD_SPEED')
+  // ELEVENLABS PASS-THROUGH (job #23): model + voice_settings reach the provider only on a trial. Either one makes a different
+  // recording of the same words, so — like an explicit speed — the library (keyed on text+voice) must not answer it.
+  const tuned = !!(req.model || req.voiceSettings)
+  if (tuned && r.provider !== 'elevenlabs') throw new RenderRequestError(`model and voiceSettings are ElevenLabs-only — ${r.voiceId} is a ${r.provider} voice`, 400, 'MODEL_PROVIDER_UNSUPPORTED')
+  const elSpeed = req.voiceSettings && req.voiceSettings.speed != null ? req.voiceSettings.speed : null
+  // MAX STABILITY BY DEFAULT (Kai 2026-10-28): every ElevenLabs trial that reaches the provider sends stability 1.0 unless it names
+  // one. Only an EXPLICIT model/voiceSettings skips the library: a plain trial is still answered by an existing clip of the words.
+  const elSettings = r.provider === 'elevenlabs' ? { stability: trialMode.TRIAL_DEFAULT_STABILITY, ...(req.voiceSettings || {}) } : null
+  // A Professional clone ignores Cartesia's native speed (job #590): it is rendered at 1.0 and the asked speed is applied
+  // afterwards as a tempo (storeTrial). paceTempo also keys the spend guard's repeat count, as speed does for native speeds.
+  const postPace = slowed && standIn.paceIsPostRender(r.voiceId)
+  if (req.paces) return trialPaces(req, r, ident, deps)
+  const cfg = {
+    ...r.providerConfig,
+    ...(slowed ? (postPace ? { speed: 1, paceTempo: req.speed } : { speed: req.speed }) : {}),
+    ...(elSettings ? { voiceSettings: elSettings } : {}),
+    // speed on the config is what the spend guard's repeat key reads: a 0.85 read is counted apart from a 1.0 one.
+    ...(tuned ? { modelId: req.model || undefined, speed: elSpeed != null ? elSpeed : 1 } : {}),
+    door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed || tuned, audioTags: trialMode.audioTagsAllowed(req.model), job: req.job },
+  }
   const out = await deps.speak(req.text, r.provider, cfg, 1)
-  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), purpose: req.purpose, requestedBy: req.requestedBy, voiceId: r.voiceId, language: r.language }
+  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), ...(req.model ? { model: req.model } : {}), ...(elSettings ? { voiceSettings: elSettings } : {}), purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
-  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : null, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : (elSpeed != null && elSpeed !== 1 ? elSpeed : null), ...(postPace && req.speed !== 1 ? { tempo: req.speed } : {}), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  if (req.podSide) {
+    // A POD CLIP (job #628): rendered with a trial's free voice choice, then filed at once as a pod-only course_audio row
+    // (shared/pod-audio.cjs) — the answer's audioId is the ROW, which is what the app plays; the trial object stays behind it.
+    if (!deps.filePodClip) throw new RenderRequestError('this service cannot file pod clips', 501, 'NO_POD_FILE')
+    const filed = await deps.filePodClip({ courseCode: req.courseCode, trialId: stored.audioId, text: req.text, voiceId: r.voiceId, side: req.podSide })
+    return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, trialAudioId: stored.audioId, audioId: filed.audioId, s3Key: filed.s3Key, podRole: filed.role, ...echo }
+  }
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
+}
+
+/**
+ * ONE take of a post-render-paced voice (the clone stand-in), stored once per asked pace (job #590). One provider call at
+ * Cartesia's default speed; each stored copy is the same bytes time-stretched to its pace before mastering.
+ */
+async function trialPaces(req, r, ident, deps) {
+  if (!standIn.paceIsPostRender(r.voiceId)) throw new RenderRequestError(`paces is for a voice whose pace is applied after the render (the clone stand-in) — ${r.voiceId} is not one`, 400, 'PACES_VOICE_UNSUPPORTED')
+  const cfg = { ...r.providerConfig, speed: 1, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: true, job: req.job } }
+  const out = await deps.speak(req.text, r.provider, cfg, 1)
+  const echo = { trial: true, paces: req.paces, purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
+  if (req.dryRun) return { ok: true, source: 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
+  const takes = []
+  for (const pace of req.paces) {
+    const stored = await deps.storeTrial({ ...ident, speed: pace === 1 ? null : pace, ...(pace !== 1 ? { tempo: pace } : {}), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+    takes.push({ pace, ...stored })
+  }
+  return { ok: true, source: 'rendered', charsSpent: out.charsSpent, takes, ...echo }
 }
 
 /**
@@ -302,19 +463,104 @@ async function rerecord(req, deps) {
   if (row.origin === 'human') throw new RenderRequestError(`${req.replaceAudioId} is a human recording — never re-rendered over`, 409, 'HUMAN_CLIP')
   if (req.role !== row.role) throw new RenderRequestError(`${req.replaceAudioId} is a ${row.role} clip, request said ${req.role}`, 409, 'WRONG_ROLE')
   if (req.voiceId && req.voiceId !== row.voice_id) throw new RenderRequestError(`a re-record keeps the clip's own voice (${row.voice_id}); voiceId ${req.voiceId} differs`, 409, 'VOICE_MISMATCH')
-  const said = req.spokenText || req.text
-  const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role), language: row.language, voiceId: row.voice_id })
+  // A line on the course's pronunciation-override list (shared/pronunciation-overrides.cjs) is re-recorded in its spoken
+  // form: sent as the words, the door cannot answer with another (misread) clip of the same characters in its place.
+  const overrideSpoken = pronunciation.spokenFor({ courseCode: req.courseCode, text: req.text }) || null
+  // DIFFERENT WORDS, SAME LABEL (cs #160·AI): a re-record told to say other words than its stored text (the female-form
+  // re-records) leaves a clip_spoken_text verdict, so no reuse path ever answers the stored text with it. A pronunciation
+  // override's respelling is the SAME words and leaves none (shared/clip-spoken-words.cjs spokenVerdictFor).
+  const spokenVerdict = spokenWords.spokenVerdictFor({ text: req.text, explicitSpoken: req.spokenText, overrideSpoken })
+  const said = req.spokenText || overrideSpoken || req.text
+  if (said !== req.text && !req.spokenText) req.spokenText = said
+  // A RE-RECORD IS IDEMPOTENT (job #749). The door below is told to EXCLUDE the row's current clip (`replacing`), so a
+  // repeat of a re-record that already landed can never be answered from the library: it pays for a fresh take every time.
+  // That is what looped on ara_lb_for_eng 2026-11-05: Popty's proxy answered 503 "socket hang up" while phase8 went on to
+  // render and swap, the caller (#641's runner) re-sent the same ask, and one 5-character word was paid for five times
+  // (revisions 2-6) before the spend guard's REPEAT refused it. So when the row's current clip IS the take this requester
+  // made for this purpose within the day, answer with it and render nothing. A deliberate new take says retake: true.
+  if (!req.retake && deps.lastRerecord) {
+    const last = await deps.lastRerecord(row.id)
+    if (sameRerecordAsk(last, row, req)) {
+      return { ok: true, source: 'already-rerecorded', charsSpent: 0, ...(req.dryRun ? { dryRun: true, wouldSpendChars: 0 } : {}),
+        audioId: row.id, s3Key: row.s3_key, revision: last.revision, rerecordedAt: last.created_at,
+        purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
+    }
+  }
+  let r
+  try {
+    r = await deps.resolve({ ...req, role: voiceSlotFor(req.role), language: row.language, voiceId: row.voice_id })
+  } catch (e) {
+    if (!e || e.code !== 'VOICE_POLICY') throw e
+    r = await approvedCastMove(req, row, deps, e)   // throws `e` itself unless every condition below holds
+  }
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
+  // ident.voiceId is what deps.replace writes into the row's voice_id (rerecordPatch), so a cast move leaves the clip
+  // recorded as the cast voice, and later passes never treat it as the old one.
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
   // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — one named clip is an INDIVIDUAL re-record, always allowed (Tom 2026-10-16); the permission gate is for batch runs.
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job } }
-  const out = await deps.speak(said, r.provider, cfg, 1)
-  const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job, podLine: !!req.podSentenceId } }
+  // podLine (job #776): a re-record of a POD line is voiced by the pod's cast for its speaker (deps.resolve checked it against the
+  // line, podSentenceId), exactly as a fresh pod render is (podLine above) — never by the course-slot english-known rule. Without
+  // it, Charlotte's female pod lines could not be re-recorded at all (Tom 2026-11-08 10:16Z: pods are Tom-006 and Charlotte).
+  const spoke = await deps.speak(said, r.provider, cfg, 1)
+  // Timings echo the words SENT: a spoken-form token goes back to the stored character (null if it cannot).
+  const out = said === req.text ? spoke : { ...spoke, wordTimings: pronunciation.restoreWordTimings(spoke.wordTimings || null, req.courseCode, row.language) }
+  const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said, voiceId: r.voiceId, ...(r.castMoveFrom ? { castMoveFrom: r.castMoveFrom } : {}), ...(spokenVerdict ? { spokenVerdict: spokenVerdict.spoken_text } : {}) }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const swapped = out.existingClip
-    ? await deps.replace({ ...ident, replaceAudioId: row.id, s3Key: out.existingClip.s3_key, wordBoundaries: out.wordBoundaries || null, wordTimings: out.wordTimings || null })   // the row now points at the library clip's bytes, so it takes that clip's timings with it
-    : await deps.replace({ ...ident, replaceAudioId: row.id, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+    ? await deps.replace({ ...ident, replaceAudioId: row.id, spokenVerdict, s3Key: out.existingClip.s3_key, wordBoundaries: out.wordBoundaries || null, wordTimings: out.wordTimings || null })   // the row now points at the library clip's bytes, so it takes that clip's timings with it
+    : await deps.replace({ ...ident, replaceAudioId: row.id, spokenVerdict, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...swapped, ...echo }
+}
+
+/**
+ * AN APPROVED RE-RECORD MAY MOVE A CLIP ONTO THE CAST (cs #243·AI; Kai 2026-11-16 17:37Z, "Sure, rerecord the French. With
+ * cartesia, yes?"). A re-record keeps the clip's own voice, and resolveVoice refuses VOICE_POLICY when that voice is no longer
+ * the course's cast for the role (fra_for_eng's female clips in retired xAI eve). Re-recording such a clip in its old voice
+ * would pay for the wrong voice, and the only other way was a fresh cast render plus a relink (#155·AI's two-step, twice the
+ * characters). So the refusal is lifted for ONE shape of request, and only when ALL of these hold:
+ *   1. it is a re-record of an existing clip (we are inside rerecord(), the row was loaded and passed its checks);
+ *   2. it carries an approval whose ORIGIN the /render handler verified (deps.verifiedApproval is that very string — set by
+ *      the handler after approval-origin.cjs passed, never by the caller) AND the re-record gate grants it (rerecordGranted);
+ *   3. the caller named no voice of their own (a named voice already had to equal the row's — VOICE_MISMATCH above);
+ *   4. the voice rendered is EXACTLY the course's current cast voice for the slot, read from the cast by deps.castVoice
+ *      (resolveVoice status 'voice'), and deps.resolve without a named voice answers that same voice;
+ *   5. no other row of this course already holds the clip's identity in the cast voice (unique_course_audio_per_voice):
+ *      the swap would fail AFTER the render was paid for, so it is refused here, before any spend (CAST_IDENTITY_TAKEN).
+ * Anything else re-throws the original VOICE_POLICY refusal unchanged. Library-first, the spend guard, one render, the
+ * swap (make-before-break: new object uploaded and HEADed before the row moves; old object kept) are untouched.
+ */
+async function approvedCastMove(req, row, deps, refusal) {
+  if (!req.approval || !deps.verifiedApproval || deps.verifiedApproval !== req.approval) throw refusal
+  if (req.voiceId) throw refusal
+  if (!deps.castVoice || !deps.rerecordGranted) throw refusal
+  const grant = await deps.rerecordGranted({ courseCode: req.courseCode, role: req.role, approval: req.approval })
+  if (!grant) throw refusal
+  const role = voiceSlotFor(req.role)
+  const cast = await deps.castVoice({ courseCode: req.courseCode, role, language: row.language })
+  if (!cast) throw refusal
+  const r = await deps.resolve({ ...req, role, language: row.language, voiceId: null })
+  if (!sameVoice(r.voiceId, cast)) throw refusal
+  if (deps.identityTaken && await deps.identityTaken({ row, voiceId: r.voiceId })) {
+    throw new RenderRequestError(`${row.id}: ${req.courseCode} already has a ${row.role} row for these words in the cast voice ${r.voiceId} — the move would collide (unique_course_audio_per_voice); link that clip instead`, 409, 'CAST_IDENTITY_TAKEN')
+  }
+  return { ...r, castMoveFrom: row.voice_id }
+}
+
+const RERECORD_IDEMPOTENT_MS = 24 * 3600 * 1000 // the spend guard's REPEAT window: a day
+
+/**
+ * Is `last` (the row's newest course_audio_revisions entry) this very ask, already done? Same route, same requester, same
+ * purpose, its new object still the row's current one, within the day. Anything else (a later swap, another caller,
+ * another purpose) is a new ask and renders.
+ */
+function sameRerecordAsk(last, row, req, now = Date.now()) {
+  if (!last || last.source !== 'audio-render-rerecord') return false
+  if (!last.new_s3_key || last.new_s3_key !== row.s3_key) return false
+  if (last.accepted_by !== `${req.requestedBy} via /api/audio/render`) return false
+  if ((last.reason || null) !== (req.purpose || null)) return false
+  const at = Date.parse(last.created_at)
+  return Number.isFinite(at) && now - at < RERECORD_IDEMPOTENT_MS
 }
 
 /**
@@ -331,4 +577,4 @@ function rerecordPatch({ voiceId, wordBoundaries, wordTimings }) {
   return { origin: 'tts', voice_id: voiceId, ...(wordBoundaries !== undefined && { word_boundaries: wordBoundaries || null }), ...(wordTimings !== undefined && { word_timings: wordTimings || null }) }
 }
 
-module.exports = { rerecordPatch, roleNativeLanguage, renderClip, validate, RenderRequestError, SHARED_ROLES, isSharedRole, voiceSlotFor }
+module.exports = { sameRerecordAsk, rerecordPatch, roleNativeLanguage, renderClip, validate, RenderRequestError, SHARED_ROLES, isSharedRole, voiceSlotFor }

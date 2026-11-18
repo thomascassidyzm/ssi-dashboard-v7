@@ -2,8 +2,8 @@
  * ARAN'S CLONE AS A STAND-IN FOR HIS OWN ENGLISH, on the two new Welsh courses only.
  *
  * RULING, Aran (Welsh methodology lead), 2026-10-29 14:41Z, job #557: fill every English KNOWN slot of
- * cym_nv2_for_eng and cym_sv2_for_eng that has no real Aran take with his own Cartesia clone,
- * aran_english_003 (cartesia_33890587-a29f-4416-ba61-2615c74f92fe, an owned clone of his voice), and let
+ * cym_nv2_for_eng and cym_sv2_for_eng that has no real Aran take with his own Cartesia clone (STANDIN_VOICE —
+ * since 2026-11-03 his PRO clone; first the instant clone aran_english_003), and let
  * each real booth take REPLACE the clone clip as it lands, make-before-break.
  *
  * Why this does not reopen the human-voice rule (services/shared/human-voice-courses.cjs): every reason
@@ -20,10 +20,18 @@
  *   - English only: a known-role call that names any other language is refused (silence is resolved to
  *     the role's own side, English, by the caller — never treated as permission here);
  *   - one voice: STANDIN_VOICE below. Nothing else may be cast there by this rule.
- * Pod lines are not course slots and never reach this (the render route takes course slots only).
+ * Pod lines are not course slots and never reach these slot checks. The English known side of a WELSH course's POD (men's
+ * lines) has its own rule that reads STANDIN_VOICE from here (shared/pod-line-voice.cjs englishPodKnownVoice; Tom 2026-11-08,
+ * job #913: "we have Aran's pro clone for any English needed") — it does not widen isCloneStandInCourse, which stays nv2/sv2.
  */
 
 const ARAN_ENGLISH_CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe' // aran_english_003 (instant clone)
+/**
+ * Aran's Cartesia PROFESSIONAL clone, "Aran PRO (cym_n archive) 2026-10-29 - V0": fine-tuned on his archive English
+ * takes by Tom's job #560 (branch cs/560-aran-pvc, ops/pvc-560/pvc.json — every PVC render on the comparison page is
+ * this id). Tom judged it on that page "much more authentic, sounds like Aran"; Aran picked it 2026-11-03 (job #568).
+ */
+const ARAN_ENGLISH_PRO_CLONE = 'cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef'
 
 /**
  * THE SWITCH — the one voice that stands in. Aran 2026-10-29 14:46Z: HOLD the fill; Tom is having a Cartesia PRO
@@ -32,7 +40,13 @@ const ARAN_ENGLISH_CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe' // ar
  * a consented, registered owned clone (the TTS consent gate refuses anything else), and nothing else changes —
  * resolveVoice, the render door and the booth's take-replaces-stand-in rule all read this value.
  */
-const STANDIN_VOICE = ARAN_ENGLISH_CLONE
+const STANDIN_VOICE = ARAN_ENGLISH_PRO_CLONE // switched from the instant clone 2026-11-03, job #568 (Aran's pick)
+/**
+ * Voices that STOOD IN before and may still sit in a slot. They can no longer be rendered by this rule (only
+ * STANDIN_VOICE can — tts-provider-policy asks isStandInVoice), but a real take must still be able to replace
+ * one, so isReplaceableStandIn accepts them too.
+ */
+const RETIRED_STANDIN_VOICES = Object.freeze([ARAN_ENGLISH_CLONE])
 const ARAN_CLONE_STANDIN_COURSES = Object.freeze(['cym_nv2_for_eng', 'cym_sv2_for_eng'])
 const RULING = 'Aran 2026-10-29 14:41Z (job #557): his own clone (STANDIN_VOICE) stands in on the nv2/sv2 English known side until his real take replaces it'
 
@@ -63,12 +77,136 @@ function isStandInVoice(voiceId) {
  * known slot. Anything else — a human take, another synthetic voice, any other course — is not.
  */
 function isReplaceableStandIn({ courseCode, role, voiceId }) {
-  return isCloneStandInCourse(courseCode) && role === 'known' && isStandInVoice(voiceId)
+  return isCloneStandInCourse(courseCode) && role === 'known' &&
+    (isStandInVoice(voiceId) || (!!voiceId && RETIRED_STANDIN_VOICES.some((v) => bare(v) === bare(voiceId))))
+}
+
+/**
+ * PACE BY BELT — Aran's ruling 2026-11-03 (job #579), after the 20-line PRO-clone probe: the clone's pace is
+ * right for white and yellow belt but "frustratingly slow" from orange on. So the stand-in speaks faster as the
+ * course goes on: white/yellow at today's pace (1.0, the course's own known speed), orange/green a bit quicker,
+ * blue and up close to natural conversational speed.
+ *
+ * The value is a TEMPO applied to the rendered clip (1.0 = the clone's own pace; 1.25 = the same take played
+ * 25% faster, i.e. ~20% shorter, pitch unchanged) — NOT Cartesia's generation_config.speed. Job #579 sent it as
+ * that native speed and Aran heard 1.25 come out SLOWER than 1.0 (job #590 measured all four pairs on the probe
+ * page: every "faster" clip was 13-41% longer). Cause: this voice is a Cartesia PROFESSIONAL clone, and Cartesia's
+ * docs say "Professional Voice Clones take their pacing from their source recordings and don't support
+ * request-time speed adjustments" — the speed was ignored and the differences were take-to-take wander. So the
+ * render route sends Cartesia its default speed and the pace is applied after the render, by ffmpeg atempo
+ * (audio-processor changeTempoToWav), before mastering. A line's belt is the course position of the seed or LEGO it belongs to (seed number; a
+ * phrase's LEGO id S0014L01 → seed 14). A clip shared by several slots takes its EARLIEST position — the first
+ * time a learner hears it decides its pace.
+ *
+ * Belt thresholds are the course's own (seed position): White 1-7, Yellow 8-19, Orange 20-39, Green 40-79,
+ * Blue 80-149, Purple 150-279, Brown 280-399, Black 400+.
+ */
+const BELTS = Object.freeze([
+  { belt: 'white', from: 1 }, { belt: 'yellow', from: 8 }, { belt: 'orange', from: 20 }, { belt: 'green', from: 40 },
+  { belt: 'blue', from: 80 }, { belt: 'purple', from: 150 }, { belt: 'brown', from: 280 }, { belt: 'black', from: 400 },
+])
+const STANDIN_PACE = Object.freeze({ white: 1.0, yellow: 1.0, orange: 1.1, green: 1.1, blue: 1.25, purple: 1.25, brown: 1.25, black: 1.25 })
+/** No position known → today's pace: never faster than the ruling allows for a line we cannot place. */
+const STANDIN_DEFAULT_PACE = 1.0
+
+/** The belt of a seed position (1-based), or null when there is no usable position. */
+function beltOf(seedPosition) {
+  const n = Number(seedPosition)
+  if (!Number.isInteger(n) || n < 1) return null
+  let b = null
+  for (const x of BELTS) if (n >= x.from) b = x.belt
+  return b
+}
+
+/** The tempo the stand-in speaks a line at, from the line's seed position (applied after the render — see above). */
+function standInSpeed(seedPosition) {
+  const b = beltOf(seedPosition)
+  return b ? STANDIN_PACE[b] : STANDIN_DEFAULT_PACE
+}
+
+/** True for a voice whose pace Cartesia ignores at request time (a Professional Voice Clone), so pace is a post-render tempo. */
+function paceIsPostRender(voiceId) { return isStandInVoice(voiceId) }
+
+/** The fastest speed the stand-in may be asked for (the trial lane lets this voice go up to it, no further). */
+const STANDIN_MAX_PACE = Math.max(...Object.values(STANDIN_PACE))
+
+/**
+ * THE POD PACE (Tom 2026-11-08, r-2026-11-08-welsh-pod-1-cym-n: "Aran's Pro Clone does any voices in English that are needed
+ * for males in Pod-1 ... which needs speeding up btw"). A Welsh course's pod English rendered in the stand-in voice — a pod
+ * line or a Listen/Drill piece — is played at this tempo, applied after the render like the belt paces above (Cartesia
+ * ignores request-time speed on this Professional clone). Pod lines have no belt: one pace for the whole pod. 1.0 until Tom
+ * picks from the ear sample (1.0 / 1.1 / 1.15 / 1.2, job #913); set his number here and every new clone pod render follows.
+ */
+const STANDIN_POD_PACE = 1.0
+/** The tempo for a pod clip in this voice and course: STANDIN_POD_PACE for the stand-in voice in a Welsh course, else 1. */
+function standInPodPace({ courseCode, voiceId } = {}) {
+  const { isWelshCourse } = require('./welsh-no-tom-clone.cjs')
+  return isStandInVoice(voiceId) && isWelshCourse(courseCode) ? STANDIN_POD_PACE : 1
+}
+
+/**
+ * ARAN'S PRO CLONE IS THE ENGLISH KNOWN VOICE OF THE LIVE WELSH COURSES cym_n_for_eng / cym_s_for_eng.
+ *
+ * RULING, Tom 2026-11-16 11:40Z, verbatim: "We have Aran's Pro clone which is all we need for the English. We need to speed it
+ * up a bit for the known language English". Tom's Watson read it (thread ww-03084ac1, msg 496) as covering Aran's PRO clone for
+ * the cym_n_for_eng and cym_s_for_eng known-side English — "the VOICE_POLICY refusal is the policy lagging his words" — and Tom
+ * at 11:42Z: "Just tell Kai's Watson this". Kai approved the build 2026-11-16 12:38Z: "yes make the rule change and render the 11
+ * cues" — the ENGLISH (known) side of the Welsh courses only; the Welsh stays human (r-2026-11-08-welsh-courses-the-welsh-stays-human).
+ *
+ * Before this, resolveVoice answered english-known (Tom-006) for these slots, and welsh-no-tom-clone refused it, so every course-slot
+ * English cue on cym_n/cym_s was refused VOICE_POLICY (job #111·AI). Now resolveVoice answers STANDIN_VOICE here, and its one-voice
+ * check (the render route refuses any named voice that differs) makes it the ONLY voice for these slots.
+ *
+ * NARROW BY CONSTRUCTION, like the nv2/sv2 rule above it — but a SIBLING list, not that one: the nv2/sv2 rule also carries the
+ * belt paces, the take-replaces-stand-in rule and a one-voice provider ladder (tts-provider-policy), and the live courses' POD
+ * English must keep Charlotte for women (pod-line-voice.cjs englishPodKnownVoice), which that ladder rule would refuse.
+ *   - two course codes, listed here; every other cym_* course, Breton and pdc are not in it;
+ *   - role 'known' and a stated English language only; target1/target2 (Welsh) and presentation never match;
+ *   - one voice, STANDIN_VOICE; Tom's clone stays refused on every Welsh course (welsh-no-tom-clone.cjs, untouched);
+ *   - course SLOTS only: pod lines never reach resolveVoice. Bulk queues still skip Welsh courses whole (human-voice-courses.cjs).
+ */
+const ARAN_PRO_KNOWN_COURSES = Object.freeze(['cym_n_for_eng', 'cym_s_for_eng'])
+const ARAN_PRO_KNOWN_RULING = 'Tom 2026-11-16 11:40Z ("We have Aran\'s Pro clone which is all we need for the English"), ww-03084ac1 msg 496; Kai approved 12:38Z (job #112·AI)'
+
+/** May Aran's PRO clone speak this live-Welsh-course slot? course ∈ cym_n/cym_s, role 'known', language English (stated). */
+function isAranProKnownSlot({ courseCode, course, role, language } = {}) {
+  return ARAN_PRO_KNOWN_COURSES.includes(String(codeOf(courseCode || course) || '')) && role === 'known' && isEnglish(language)
+}
+
+/**
+ * THE KNOWN-SIDE PACE for those slots (Tom 2026-11-16: "We need to speed it up a bit"). A post-render tempo like the belt paces
+ * (Cartesia ignores request-time speed on this Professional clone). 1.1 is a DEFAULT, the smallest speed-up step on Tom's pod
+ * ear sample (1.0 / 1.1 / 1.15 / 1.2, job #913), set by job #112·AI pending Kai's ear on the listening page — change it here.
+ * A sibling of STANDIN_POD_PACE, not that dial: the pod pace was never picked and stays as it is.
+ */
+const ARAN_PRO_KNOWN_PACE = 1.1
+
+/** The seed position of a slot: { seedNumber } or { phraseId: 'course:S0014L01B08' } or { legoId: 'S0014L01' }. */
+function seedPositionOfSlot(slot = {}) {
+  if (Number.isInteger(slot.seedNumber) && slot.seedNumber > 0) return slot.seedNumber
+  const m = /(?:^|:)S(\d{3,5})L\d+/.exec(String(slot.phraseId || slot.legoId || ''))
+  return m ? Number(m[1]) : null
 }
 
 module.exports = {
+  BELTS,
+  STANDIN_PACE,
+  STANDIN_DEFAULT_PACE,
+  STANDIN_MAX_PACE,
+  beltOf,
+  standInSpeed,
+  STANDIN_POD_PACE,
+  standInPodPace,
+  paceIsPostRender,
+  seedPositionOfSlot,
   ARAN_ENGLISH_CLONE,
+  ARAN_ENGLISH_PRO_CLONE,
+  RETIRED_STANDIN_VOICES,
   ARAN_CLONE_STANDIN_COURSES,
+  ARAN_PRO_KNOWN_COURSES,
+  ARAN_PRO_KNOWN_RULING,
+  ARAN_PRO_KNOWN_PACE,
+  isAranProKnownSlot,
   RULING,
   isCloneStandInCourse,
   isCloneStandInSlot,

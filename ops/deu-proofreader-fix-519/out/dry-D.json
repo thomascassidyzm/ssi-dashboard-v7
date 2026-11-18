@@ -1,0 +1,202 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "lego_id": "S0642L01"
+   },
+   "before": {
+    "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": "S0642L01",
+    "known_text": "gracious",
+    "target_text": "gnädige",
+    "known_audio_id": "1f672ecd-dea4-48b8-88b9-b8e479e7369a",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": "127e0495-4db0-4ee7-af7c-d62da7dd1b18"
+   },
+   "after": {
+    "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": "S0642L01",
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "lego_id": "S0642L01"
+   },
+   "before": {
+    "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": "S0642L01",
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": "S0642L01",
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "lego_id": "S0642L01"
+   },
+   "before": {
+    "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": "S0642L01",
+    "presentation_audio_id": null,
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e"
+   },
+   "after": {
+    "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": "S0642L01",
+    "presentation_audio_id": "f3f3a2b8-25b7-4a94-9832-6c23f11cce77",
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0642L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0642L01B01",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "gracious",
+    "target_text": "gnädige",
+    "known_audio_id": "1f672ecd-dea4-48b8-88b9-b8e479e7369a",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0642L01B01",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0642L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0642L01B01",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0642L01B01",
+    "seed_number": 642,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "12f82381-b881-430c-a5a7-0a82f6fb299b",
+    "known_text": "dear",
+    "target_text": "gnädige",
+    "target1_audio_id": "962375c6-cdfd-4390-8a4d-047ed445c829",
+    "target2_audio_id": "b7f4216b-6bdc-4503-a07f-0fcf83ba441e",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0642L01B01",
+   "set": {
+    "known_text": "gracious",
+    "known_audio_id": "1f672ecd-dea4-48b8-88b9-b8e479e7369a"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "0aec0d87-6aaa-42d7-9b0a-42190fa7ac58",
+   "set": {
+    "known_text": "gracious",
+    "known_audio_id": "1f672ecd-dea4-48b8-88b9-b8e479e7369a",
+    "presentation_audio_id": "127e0495-4db0-4ee7-af7c-d62da7dd1b18"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

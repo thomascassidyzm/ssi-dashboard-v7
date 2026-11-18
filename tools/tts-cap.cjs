@@ -2,16 +2,19 @@
 /**
  * THE DAILY TOTAL CAP — status, Tom's raise, and Tom's approval of one run (jobs #692, #913).
  *
- * Tom, 2026-09-29 00:25Z: "limit it to 50,000 characters per day TOTAL without my
- * express approval." The cap lives in tts_spend_reserve (ops/sql/20260930-tts-spend-tom-approved-run.sql):
- * 1,000,000 chars per UTC day (Tom 2026-10-07, was 260,000) summed over every provider.
+ * The cap IN FORCE: 1,000,000 chars per UTC day summed over every provider (Tom 2026-10-07,
+ * job #147, r-2026-10-07-tts-daily-cap-is-a-runaway), enforced in tts_spend_reserve (last
+ * defined in ops/sql/20261025-tts-spend-daily-rollup.sql); hard ceiling 3,000,000 over a
+ * Tom-signed run. History: 50,000 (Tom 2026-09-29 00:25Z, "limit it to 50,000 characters per
+ * day TOTAL without my express approval") → 100,000 → 260,000 → 1,000,000.
  *
  * Tom, 2026-09-30 11:38Z (job #913): "If other people want to generate audio, we still
  * have 100,000 character cap. But if I am approving a run, we can just go ahead and do
  * it. It would probably be sensible to have a cap at something like maybe 300,000."
  * So an APPROVAL names one job; that job's renders (POST /api/audio/render with
  * job "#NNN", or tools/audio/render.cjs --job) spend from their own allowance, the
- * automatic 100k is counted without them, and nothing takes a day past 300,000.
+ * automatic cap (1,000,000 since 2026-10-07) is counted without them, and nothing takes a day
+ * past the 3,000,000 ceiling.
  * Pair it with a jobRaises entry for the same job in ops/tts-spend-budgets.json, which
  * lifts the per-provider daily caps for that job alone.
  *
@@ -20,6 +23,7 @@
  *   TOM_SAID_APPROVE=yes node tools/tts-cap.cjs approve "#NNN" <capChars<=3000000> <days<=31> "<why, in Tom's words>"
  */
 const db = require('../services/shared/agent-db.cjs')
+const { DEFAULT_BUDGETS } = require('../services/shared/tts-spend-guard.cjs')
 
 const CEILING = 3000000
 const signed = (t = '') => `${t}by ~* '^\\s*tom\\M' and nullif(btrim(${t}why), '') is not null and ${t}until > now() and ${t}until <= ${t}at + interval '31 days'`
@@ -37,6 +41,10 @@ async function main() {
       console.log(await queryScalar(`select 'UTC day ' || to_char(now() at time zone 'UTC','YYYY-MM-DD') || ': ' || coalesce(sum(chars),0) || ' chars spent across all providers; automatic cap ' || least(${CEILING}, greatest(1000000, (select coalesce(max(cap_chars),0) from tts_spend_total_cap_raises where job is null and ${signed()}))) || ', hard ceiling ${CEILING}' from tts_spend_ledger where kind='call' and at >= ${DAY}`))
       console.log(await queryScalar(`select coalesce(string_agg(provider || ' ' || chars_sum, ', ' order by provider), 'nothing rendered yet') from (select provider, sum(chars) chars_sum from tts_spend_ledger where kind='call' and at >= ${DAY} group by 1) x`))
       console.log(await queryScalar(`select coalesce(string_agg('Tom-approved run ' || r.job || ': ' || coalesce((select sum(chars) from tts_spend_ledger l where l.kind='call' and l.at >= ${DAY} and l.job ~ (r.job || '(?![0-9])')),0) || ' of ' || least(r.cap_chars, ${CEILING}) || ' chars today, until ' || to_char(r.until at time zone 'UTC','YYYY-MM-DD HH24:MI') || 'Z (' || r.why || ')', E'\\n'), 'no Tom-approved run in force') from tts_spend_total_cap_raises r where r.job is not null and ${signed('r.')}`))
+      // The Cartesia billing cycle, summed as tts_spend_totals sums it (the rollup, 'seed' rows included): the guard never stops at the plan (overageAllowed), so this is the only figure.
+      const { cycleStartDay, monthlyPoolChars } = DEFAULT_BUDGETS.cartesia
+      const CYCLE = `(public.tts_spend_cycle_start(now(), ${cycleStartDay}) at time zone 'UTC')::date`
+      console.log(await queryScalar(`select 'cartesia cycle from ' || ${CYCLE} || ': ' || coalesce(sum(chars),0) || ' chars of the ${monthlyPoolChars} plan, ' || (${monthlyPoolChars} - coalesce(sum(chars),0)) || ' left; ledger as of ' || (select to_char(max(at) at time zone 'UTC','YYYY-MM-DD HH24:MI') from tts_spend_ledger) || 'Z' from tts_spend_daily where provider='cartesia' and day >= ${CYCLE}`))
     }
     const cmd = process.argv[2] || 'status'
     if (cmd === 'raise') {

@@ -1,0 +1,168 @@
+[
+ {
+  "round": 1,
+  "seeds": [
+   104,
+   105,
+   123,
+   124,
+   127,
+   132,
+   134,
+   135,
+   138,
+   141,
+   142,
+   146,
+   150,
+   151,
+   153
+  ],
+  "head": "{\"ok\":true,\"dryRun\":false,\"applied\":false,\"results\":[],\"undo_ops\":[],\"summary\":{\"considere",
+  "summary": "\"summary\":{\"considered\":355,\"fresh\":351,\"rewrite\":0,\"skipped_parent_unlocatable\":4,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ },
+ {
+  "round": 1,
+  "seeds": [
+   159,
+   170,
+   186,
+   190,
+   191,
+   193,
+   195,
+   196,
+   198,
+   199,
+   200,
+   201,
+   202,
+   203,
+   206
+  ],
+  "head": "{\"ok\":true,\"dryRun\":false,\"applied\":false,\"results\":[],\"undo_ops\":[],\"summary\":{\"considere",
+  "summary": "\"summary\":{\"considered\":304,\"fresh\":301,\"rewrite\":0,\"skipped_parent_unlocatable\":3,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ },
+ {
+  "round": 1,
+  "seeds": [
+   212,
+   213,
+   214,
+   215,
+   227,
+   231,
+   240,
+   245,
+   261,
+   268,
+   269,
+   272,
+   274,
+   275,
+   278
+  ],
+  "head": "{\"ok\":true,\"dryRun\":false,\"applied\":false,\"results\":[],\"undo_ops\":[],\"summary\":{\"considere",
+  "summary": "\"summary\":{\"considered\":198,\"fresh\":196,\"rewrite\":0,\"skipped_parent_unlocatable\":2,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ },
+ {
+  "round": 1,
+  "seeds": [
+   280,
+   283,
+   284,
+   295,
+   298,
+   299
+  ],
+  "head": "{\"ok\":true,\"dryRun\":false,\"applied\":true,\"event_id\":\"bc979f72-2f46-4151-8978-119085e7a0f2\"",
+  "summary": "\"summary\":{\"considered\":74,\"fresh\":70,\"rewrite\":4,\"skipped_parent_unlocatable\":0,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ },
+ {
+  "round": 2,
+  "seeds": [
+   104,
+   105,
+   123,
+   124,
+   127,
+   132,
+   134,
+   135,
+   138,
+   141,
+   142,
+   146,
+   150,
+   151,
+   153
+  ],
+  "head": "{\"ok\":true,\"dryRun\":true,\"applied\":false,\"results\":[],\"undo_ops\":[],\"summary\":{\"considered",
+  "summary": "\"summary\":{\"considered\":355,\"fresh\":351,\"rewrite\":0,\"skipped_parent_unlocatable\":4,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ },
+ {
+  "round": 2,
+  "seeds": [
+   159,
+   170,
+   186,
+   190,
+   191,
+   193,
+   195,
+   196,
+   198,
+   199,
+   200,
+   201,
+   202,
+   203,
+   206
+  ],
+  "head": "{\"ok\":true,\"dryRun\":true,\"applied\":false,\"results\":[],\"undo_ops\":[],\"summary\":{\"considered",
+  "summary": "\"summary\":{\"considered\":304,\"fresh\":301,\"rewrite\":0,\"skipped_parent_unlocatable\":3,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ },
+ {
+  "round": 2,
+  "seeds": [
+   212,
+   213,
+   214,
+   215,
+   227,
+   231,
+   240,
+   245,
+   261,
+   268,
+   269,
+   272,
+   274,
+   275,
+   278
+  ],
+  "head": "{\"ok\":true,\"dryRun\":true,\"applied\":false,\"results\":[],\"undo_ops\":[],\"summary\":{\"considered",
+  "summary": "\"summary\":{\"considered\":198,\"fresh\":196,\"rewrite\":0,\"skipped_parent_unlocatable\":2,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ },
+ {
+  "round": 2,
+  "seeds": [
+   280,
+   283,
+   284,
+   295,
+   298,
+   299
+  ],
+  "head": "{\"ok\":true,\"dryRun\":true,\"applied\":false,\"results\":[],\"undo_ops\":[],\"summary\":{\"considered",
+  "summary": "\"summary\":{\"considered\":74,\"fresh\":74,\"rewrite\":0,\"skipped_parent_unlocatable\":0,\"skipped_no_improvement\":0,\"skipped_recompute_failed\":0}",
+  "err": ""
+ }
+]

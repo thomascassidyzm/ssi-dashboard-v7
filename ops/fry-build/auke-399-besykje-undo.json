@@ -1,0 +1,444 @@
+{
+ "family": "besykje",
+ "event_id": "2f1139e8-9774-4ac5-9652-6b3761806447",
+ "undo_file_on_popty": "2026-11-17T11-52-44-047Z-2f1139e8-9774-4ac5-9652-6b3761806447.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0008L01B01",
+  "S0008L01B02",
+  "S0008L01U02",
+  "S0008L01U05",
+  "S0010L04U02",
+  "S0011L01B02",
+  "S0011L02B04",
+  "S0011L03B04",
+  "S0017L02B03",
+  "S0019L01U04",
+  "S0049L03B02",
+  "S0050L01B01",
+  "S0055L03B03",
+  "S0078L01B02",
+  "S0085L02B02",
+  "S0088L01B02",
+  "S0091L03U01",
+  "S0091L01B03",
+  "S0092L03U01",
+  "S0105L01B02",
+  "S0146L02B03",
+  "S0146L02B04",
+  "S0146L02B01",
+  "S0146L02U04",
+  "S0244L01B01"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04U01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04B03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04B02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04B01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04C03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04C02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0008L04C01"
+  },
+  {
+   "op": "lego.delete",
+   "id": "36c2d745-f858-4af4-90f9-a9b9eb1c3668"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0244L01U02",
+   "set": {
+    "target_text": "dit is net sa dreech en ik haw al in soad leard sûnt wy besocht hawwe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0244L01B01",
+   "set": {
+    "target_text": "ik haw al in soad leard sûnt wy besocht hawwe",
+    "target1_audio_id": "cd15a520-762a-42ea-9481-961d29f6f385"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02U04",
+   "set": {
+    "target_text": "ik haw in soad leard sûnt wy besocht hawwe",
+    "target1_audio_id": "f91ca687-50ee-45a4-b64b-0390a6dd3ce6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02U05",
+   "set": {
+    "target_text": "it begjint makliker te wurden sûnt wy besocht hawwe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02U03",
+   "set": {
+    "target_text": "ik tink dat ik in soad dien haw sûnt wy besocht hawwe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02B01",
+   "set": {
+    "target_text": "ik fiel my better sûnt wy besocht hawwe",
+    "target1_audio_id": "2f165827-1192-4c8e-bf6c-50bb10f4e588"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02B04",
+   "set": {
+    "target_text": "ik sit der net oer yn sûnt wy besocht hawwe",
+    "target1_audio_id": "6682fbbf-46f2-4140-92ca-1c6fa5fc993c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02B03",
+   "set": {
+    "target_text": "ik doch it grif better sûnt wy besocht hawwe",
+    "target1_audio_id": "ad46dc80-fea3-46f3-8c01-47876517c63a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0105L01B02",
+   "set": {
+    "target_text": "dêrom besykje wy net",
+    "target1_audio_id": "158a1048-e504-420d-bd7e-1b4351a57bda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0092L03U01",
+   "set": {
+    "target_text": "ik wit noch net mar ik woe graach noch in kear besykje",
+    "target1_audio_id": "98c830a5-6108-4865-8f5c-f98b66bf6985"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01B03",
+   "set": {
+    "target_text": "ik besykje mar it is dreech",
+    "target1_audio_id": "e9a9fab5-56f3-46d0-82d4-019999ffa67d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L03U01",
+   "set": {
+    "target_text": "ik besykje mar it is dreech om fluch genôch te tinken",
+    "target1_audio_id": "2ff20595-1756-47b3-b1c3-65053dde740e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0088L01B02",
+   "set": {
+    "target_text": "ik bin noch net klear mar ik besykje",
+    "target1_audio_id": "cc6b2af0-3758-4bdc-a5b7-562a846cabbe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0085L02B02",
+   "set": {
+    "target_text": "ik ken dy minsken net mar ik besykje",
+    "target1_audio_id": "4bc606cb-b0a3-4e4c-8bf4-53d71df9120d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01B02",
+   "set": {
+    "target_text": "ik besykje mar ik begryp it net",
+    "target1_audio_id": "a0dc67b7-ab23-4f36-bb1f-6acb10b786b9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0055L03B03",
+   "set": {
+    "target_text": "ik bin wurch as ik net goed slept haw mar ik besykje",
+    "target1_audio_id": "8d795568-3c27-4e57-926d-543ac411ca83"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0050L01B01",
+   "set": {
+    "target_text": "mar ik besykje net",
+    "target1_audio_id": "183cc242-37ff-47d1-984a-a220bd681652"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0049L03B02",
+   "set": {
+    "target_text": "ik besykje, astû witst wat ik bedoel",
+    "target1_audio_id": "40f96c6a-8c83-4e08-a922-0a0c55c1deff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L01U04",
+   "set": {
+    "target_text": "ik soe net graach riede wolle mar ik sil besykje",
+    "target1_audio_id": "cb7c1b0a-127a-4186-94c9-c57b75c5f69d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L02B03",
+   "set": {
+    "target_text": "ik besykje en sy wol witte",
+    "target1_audio_id": "a06167e0-8e2f-4892-ab97-53edf7d8d5f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B04",
+   "set": {
+    "target_text": "astû útpraat bist sil ik besykje",
+    "target1_audio_id": "2302fefd-b977-4ba9-ba6a-30416558a069"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L02B04",
+   "set": {
+    "target_text": "ik moat besykje, ik wol graach prate",
+    "target1_audio_id": "97d31022-3e37-4806-9c1d-c288d5216ae9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L01B02",
+   "set": {
+    "target_text": "ik wol graach no besykje",
+    "target1_audio_id": "6e100f5d-4664-4fe6-bef9-ac7d4099f91f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L04U02",
+   "set": {
+    "target_text": "ik sil besykje, ik bin der net wis fan oft ik de hiele sin noch wit",
+    "target1_audio_id": "81802641-9df2-4833-8821-1a5b29a89a3b"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0008L01U05",
+    "seed_number": 8,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "I'm going to try as much as possible",
+    "target_text": "ik sil safolle mooglik besykje",
+    "word_count": 30,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T13:21:06.040Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:21:06.080Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": "53c53d40-39aa-4aa0-9033-be60fd68167e",
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": 2187,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0008L01U02",
+    "seed_number": 8,
+    "lego_index": 1,
+    "position": 6,
+    "known_text": "can I try now?",
+    "target_text": "kin ik no besykje?",
+    "word_count": 17,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T13:21:06.040Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:21:06.080Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": "06b78e01-4ded-4ecf-bccc-1404fab76ebc",
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": 1718,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0008L01B02",
+    "seed_number": 8,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "I can try",
+    "target_text": "ik kin besykje",
+    "word_count": 14,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:21:06.080Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": "56afa62d-63e4-4c3c-9f24-264373060186",
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": 1650,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0008L01B01",
+    "seed_number": 8,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "I'm going to try",
+    "target_text": "ik sil besykje",
+    "word_count": 14,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:21:06.080Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": "d0001117-9df8-4efb-b4d8-aad41aa55e3c",
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": 1630,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  }
+ ]
+}

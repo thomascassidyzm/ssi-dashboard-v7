@@ -1,0 +1,82 @@
+[
+{
+"find": "buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"repl": "a rá cad a tharlóidh",
+"kfind": "guess",
+"krepl": "say",
+"why": "S12 option (d), Kai 16 Nov 18:00Z: guess leaves seed 12"
+},
+{
+"find": "faoin rud a tharlóidh",
+"repl": "faoi cad a tharlóidh",
+"why": "S12 option (d): 'cad a tharlóidh' is the one taught form (#246, seed 37)"
+},
+{
+"find": "(?i)\\ban gcuala\\b",
+"repl": "ar chuala",
+"why": "A8: ar chuala (196, 267, 366)"
+},
+{
+"find": "sheanbean",
+"repl": "sheanbhean",
+"why": "A8: seanbhean (232)"
+},
+{
+"find": "seanbean",
+"repl": "seanbhean",
+"why": "A8: seanbhean (232)"
+},
+{
+"find": "cruth mo chinn",
+"repl": "cruth m'inchinne",
+"why": "A3: seed 126 says m'inchinne"
+},
+{
+"find": "gloine nó dhó uisce",
+"repl": "gloine uisce nó dhó",
+"why": "A8: 217"
+},
+{
+"find": "céanna díreach",
+"repl": "díreach céanna",
+"why": "A8: 153"
+},
+{
+"find": "féachaint ar theilifís",
+"repl": "féachaint ar an teilifís",
+"why": "A8: 287, 288"
+},
+{
+"find": "\\bi níos lú ná uair an chloig",
+"repl": "in achar níos lú ná uair",
+"why": "A8: 256"
+},
+{
+"find": "do smaoineamh an-mhaith",
+"repl": "do smaoineamh go han-mhaith",
+"why": "A8: 125"
+},
+{
+"find": "(?i)cé hé an fear sin",
+"repl": "cérbh é an fear sin",
+"known": "who was",
+"why": "A8: 262"
+},
+{
+"find": "go hiomlán uafásach",
+"repl": "ina phraiseach iomlán",
+"why": "EOG 248: Eoghan's 'ina phraiseach iomlán' for complete rubbish"
+},
+{
+"find": "(?i)tá m'airgead ar ais uaim",
+"repl": "is mian liom mo chuid airgid a fháil ar ais",
+"kfind": "I want my money back",
+"krepl": "I want to get my money back",
+"why": "EOG 248: Eoghan's 'is mian liom mo chuid airgid a fháil ar ais'"
+},
+{
+"find": "leath den chostas a íoc",
+"repl": "íoc as leath den chostas",
+"why": "EOG 299: Eoghan's 'íoc as' (his form at 508, 509; Kai ruled íoc as at 570)"
+}
+]

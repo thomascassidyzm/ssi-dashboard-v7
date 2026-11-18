@@ -1,0 +1,1583 @@
+[
+ {
+  "role": "target1",
+  "text": "¿Podríamos pedir una botella de vino tinto, por favor?",
+  "rows": [
+   "S0414"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 54
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Podríamos pedir una botella de vino tinto, por favor?",
+  "rows": [
+   "S0414"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 54
+  }
+ },
+ {
+  "role": "known",
+  "text": "could we order a bottle of red wine, please?",
+  "rows": [
+   "S0414",
+   "S0414L02U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿podríamos pedir una botella de vino tinto, por favor?",
+  "rows": [
+   "S0414L02U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 54
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿podríamos pedir una botella de vino tinto, por favor?",
+  "rows": [
+   "S0414L02U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 54
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿podríamos reservar una mesa, por favor?",
+  "rows": [
+   "S0414L01U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿podríamos reservar una mesa, por favor?",
+  "rows": [
+   "S0414L01U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "could we book a table, please?",
+  "rows": [
+   "S0414L01U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿puedo pedir agua, por favor?",
+  "rows": [
+   "S0414L01U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿puedo pedir agua, por favor?",
+  "rows": [
+   "S0414L01U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 29
+  }
+ },
+ {
+  "role": "known",
+  "text": "can I ask for some water, please?",
+  "rows": [
+   "S0414L01U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 33
+  }
+ },
+ {
+  "role": "known",
+  "text": "could we eat something, please?",
+  "rows": [
+   "S0414L01U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quieren liderar el proyecto el año que viene",
+  "rows": [
+   "S0416",
+   "S0416L02U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quieren liderar el proyecto el año que viene",
+  "rows": [
+   "S0416",
+   "S0416L02U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "they want to lead the project next year",
+  "rows": [
+   "S0416",
+   "S0416L02U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "el proyecto",
+  "rows": [
+   "S0416L02",
+   "S0416L02B01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 11
+  }
+ },
+ {
+  "role": "target2",
+  "text": "el proyecto",
+  "rows": [
+   "S0416L02",
+   "S0416L02B01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 11
+  }
+ },
+ {
+  "role": "known",
+  "text": "the project",
+  "rows": [
+   "S0416L02",
+   "S0416L02B01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 11
+  }
+ },
+ {
+  "role": "target1",
+  "text": "proyecto",
+  "rows": [
+   "S0416L02C02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 8
+  }
+ },
+ {
+  "role": "target2",
+  "text": "proyecto",
+  "rows": [
+   "S0416L02C02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 8
+  }
+ },
+ {
+  "role": "known",
+  "text": "project",
+  "rows": [
+   "S0416L02C02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 7
+  }
+ },
+ {
+  "role": "target1",
+  "text": "liderar el proyecto",
+  "rows": [
+   "S0416L02B02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 19
+  }
+ },
+ {
+  "role": "target2",
+  "text": "liderar el proyecto",
+  "rows": [
+   "S0416L02B02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 19
+  }
+ },
+ {
+  "role": "known",
+  "text": "to lead the project",
+  "rows": [
+   "S0416L02B02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 19
+  }
+ },
+ {
+  "role": "target1",
+  "text": "el nuevo proyecto",
+  "rows": [
+   "S0416L02B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "el nuevo proyecto",
+  "rows": [
+   "S0416L02B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "the new project",
+  "rows": [
+   "S0416L02B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 15
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quería liderar el proyecto",
+  "rows": [
+   "S0416L02U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quería liderar el proyecto",
+  "rows": [
+   "S0416L02U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "she wanted to lead the project",
+  "rows": [
+   "S0416L02U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pensé que iba a liderar el proyecto",
+  "rows": [
+   "S0416L02U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pensé que iba a liderar el proyecto",
+  "rows": [
+   "S0416L02U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "I thought she was going to lead the project",
+  "rows": [
+   "S0416L02U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "necesitaba liderar el proyecto",
+  "rows": [
+   "S0416L02U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 30
+  }
+ },
+ {
+  "role": "target2",
+  "text": "necesitaba liderar el proyecto",
+  "rows": [
+   "S0416L02U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 30
+  }
+ },
+ {
+  "role": "known",
+  "text": "she needed to lead the project",
+  "rows": [
+   "S0416L02U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "le dije que debería liderar el proyecto",
+  "rows": [
+   "S0416L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "le dije que debería liderar el proyecto",
+  "rows": [
+   "S0416L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "I told her she should lead the project",
+  "rows": [
+   "S0416L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "en mi opinión, debería liderar el proyecto",
+  "rows": [
+   "S0416L02U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "en mi opinión, debería liderar el proyecto",
+  "rows": [
+   "S0416L02U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "in my opinion, she should lead the project",
+  "rows": [
+   "S0416L02U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ya saben que podrían liderar el proyecto",
+  "rows": [
+   "S0432L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ya saben que podrían liderar el proyecto",
+  "rows": [
+   "S0432L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "they already know they could lead the project",
+  "rows": [
+   "S0432L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 45
+  }
+ },
+ {
+  "role": "target1",
+  "text": "querían recaudar lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437",
+   "S0437L03U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 58
+  }
+ },
+ {
+  "role": "target2",
+  "text": "querían recaudar lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437",
+   "S0437L03U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "una causa benéfica",
+  "rows": [
+   "S0437L01",
+   "S0437L01B01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "una causa benéfica",
+  "rows": [
+   "S0437L01",
+   "S0437L01B01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 18
+  }
+ },
+ {
+  "role": "target1",
+  "text": "para una causa benéfica",
+  "rows": [
+   "S0437L01B02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "para una causa benéfica",
+  "rows": [
+   "S0437L01B02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 23
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es para una causa benéfica",
+  "rows": [
+   "S0437L01B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es para una causa benéfica",
+  "rows": [
+   "S0437L01B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 26
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero hacerlo para una causa benéfica",
+  "rows": [
+   "S0437L01B04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero hacerlo para una causa benéfica",
+  "rows": [
+   "S0437L01B04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero hacer algo para una causa benéfica",
+  "rows": [
+   "S0437L01U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 41
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero hacer algo para una causa benéfica",
+  "rows": [
+   "S0437L01U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 41
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que es para una causa benéfica",
+  "rows": [
+   "S0437L01U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que es para una causa benéfica",
+  "rows": [
+   "S0437L01U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "necesito hacerlo para una causa benéfica",
+  "rows": [
+   "S0437L01U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "necesito hacerlo para una causa benéfica",
+  "rows": [
+   "S0437L01U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿puedes hacerlo para una causa benéfica?",
+  "rows": [
+   "S0437L01U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿puedes hacerlo para una causa benéfica?",
+  "rows": [
+   "S0437L01U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero dar algo a una causa benéfica",
+  "rows": [
+   "S0437L01U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero dar algo a una causa benéfica",
+  "rows": [
+   "S0437L01U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hacer lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437L02B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hacer lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437L02B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿puedes hacer lo máximo posible para una causa benéfica?",
+  "rows": [
+   "S0437L02U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿puedes hacer lo máximo posible para una causa benéfica?",
+  "rows": [
+   "S0437L02U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "necesito hacer lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437L02U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target2",
+  "text": "necesito hacer lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437L02U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quieren hacer lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 55
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quieren hacer lo máximo posible para una causa benéfica",
+  "rows": [
+   "S0437L02U05"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 55
+  }
+ },
+ {
+  "role": "target1",
+  "text": "dar lo máximo posible a una causa benéfica",
+  "rows": [
+   "S0437L02U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "dar lo máximo posible a una causa benéfica",
+  "rows": [
+   "S0437L02U06"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "querían recaudar dinero para una causa benéfica",
+  "rows": [
+   "S0437L03B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target2",
+  "text": "querían recaudar dinero para una causa benéfica",
+  "rows": [
+   "S0437L03B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sabía que querían recaudar dinero para una causa benéfica",
+  "rows": [
+   "S0437L03U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sabía que querían recaudar dinero para una causa benéfica",
+  "rows": [
+   "S0437L03U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar",
+  "rows": [
+   "S0567",
+   "S0567L03U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 69
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar",
+  "rows": [
+   "S0567",
+   "S0567L03U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 69
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo",
+  "rows": [
+   "S0567L01",
+   "S0567L01B01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo",
+  "rows": [
+   "S0567L01",
+   "S0567L01B01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 17
+  }
+ },
+ {
+  "role": "target1",
+  "text": "estupendo",
+  "rows": [
+   "S0567L01C02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "library",
+   "audioId": "97091e8d-75fa-4713-bfcd-cf82a2ad9d0a"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "estupendo",
+  "rows": [
+   "S0567L01C02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 9
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo, estoy seguro de que",
+  "rows": [
+   "S0567L01B02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo, estoy seguro de que",
+  "rows": [
+   "S0567L01B02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo, pero se está haciendo tarde",
+  "rows": [
+   "S0567L01B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo, pero se está haciendo tarde",
+  "rows": [
+   "S0567L01B03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo porque necesitábamos quedarnos",
+  "rows": [
+   "S0567L01B04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo porque necesitábamos quedarnos",
+  "rows": [
+   "S0567L01B04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo ver la iglesia pequeña al final del pueblo",
+  "rows": [
+   "S0567L01U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 60
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo ver la iglesia pequeña al final del pueblo",
+  "rows": [
+   "S0567L01U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 60
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo ver que puedes seguir adelante sin mi ayuda",
+  "rows": [
+   "S0567L01U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 61
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo ver que puedes seguir adelante sin mi ayuda",
+  "rows": [
+   "S0567L01U02"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 61
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo, pero estoy demasiado cansado para seguir adelante por más tiempo",
+  "rows": [
+   "S0567L01U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 83
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo, pero estoy demasiado cansado para seguir adelante por más tiempo",
+  "rows": [
+   "S0567L01U03"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 83
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo estar aquí desde que nos mudamos a la ciudad",
+  "rows": [
+   "S0567L01U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 62
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo estar aquí desde que nos mudamos a la ciudad",
+  "rows": [
+   "S0567L01U04"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 62
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo pasar tiempo al aire libre",
+  "rows": [
+   "S0567L02U01"
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo pasar tiempo al aire libre",
+  "rows": [
+   "S0567L02U01"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo viendo a los niños jugar",
+  "rows": [
+   "S0567L03U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo viendo a los niños jugar",
+  "rows": [
+   "S0567L03U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo despertarse cada mañana durante las vacaciones",
+  "rows": [
+   "S0584L02U05"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo despertarse cada mañana durante las vacaciones",
+  "rows": [
+   "S0584L02U05"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's been lovely waking up every morning during the holidays",
+  "rows": [
+   "S0584L02U05"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ha sido estupendo despertarse y ver las montañas",
+  "rows": [
+   "S0584L03U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ha sido estupendo despertarse y ver las montañas",
+  "rows": [
+   "S0584L03U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's been lovely to wake up and see the mountains",
+  "rows": [
+   "S0584L03U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ella se ofreció a acogernos en su casa",
+  "rows": [
+   "S0604",
+   "S0604L02U01"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ella se ofreció a acogernos en su casa",
+  "rows": [
+   "S0604",
+   "S0604L02U01"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "she offered to let us stay at her house",
+  "rows": [
+   "S0604",
+   "S0604L02U01"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acogernos",
+  "rows": [
+   "S0604L02",
+   "S0604L02B01"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acogernos",
+  "rows": [
+   "S0604L02",
+   "S0604L02B01"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "to let us stay",
+  "rows": [
+   "S0604L02",
+   "S0604L02B01"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acogernos en su casa",
+  "rows": [
+   "S0604L02B02"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acogernos en su casa",
+  "rows": [
+   "S0604L02B02"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "to let us stay at her house",
+  "rows": [
+   "S0604L02B02"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acogernos una semana",
+  "rows": [
+   "S0604L02B03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acogernos una semana",
+  "rows": [
+   "S0604L02B03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "to let us stay for a week",
+  "rows": [
+   "S0604L02B03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "se ofreció a acogernos",
+  "rows": [
+   "S0604L02U02"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "se ofreció a acogernos",
+  "rows": [
+   "S0604L02U02"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "she offered to let us stay",
+  "rows": [
+   "S0604L02U02"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quería acogernos",
+  "rows": [
+   "S0604L02U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quería acogernos",
+  "rows": [
+   "S0604L02U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "she wanted to let us stay",
+  "rows": [
+   "S0604L02U03"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "se ofreció a acogernos una semana",
+  "rows": [
+   "S0604L02U04"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "se ofreció a acogernos una semana",
+  "rows": [
+   "S0604L02U04"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "she offered to let us stay for a week",
+  "rows": [
+   "S0604L02U04"
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-deborah-12nov-apply (job #472): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ }
+]

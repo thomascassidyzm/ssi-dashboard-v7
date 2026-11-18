@@ -261,12 +261,45 @@
               <div>
                 <div class="text-sm font-medium text-ink">Build Team</div>
                 <div class="text-xs text-faint">{{ buildTeamSubtitle }}</div>
+                <!-- How the last build ended, in plain English (job #482) -->
+                <div
+                  v-if="buildLastStop?.message && buildJob !== 'running' && buildJob !== 'checking' && !stageComplete('build-team')"
+                  class="text-xs mt-0.5"
+                  :class="buildLastStop.stop_reason === 'done' ? 'text-emerald-400' : 'text-amber-400'"
+                  data-testid="build-stop-reason"
+                >{{ buildLastStop.message }}</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-ink">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
               <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
+              <!-- Job #482: nothing to press until the course builder has said what is running -->
+              <template v-else-if="buildJob === 'checking'">
+                <span class="text-xs text-faint" data-testid="build-checking">Checking build status…</span>
+                <button
+                  disabled
+                  data-testid="build-start"
+                  class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 opacity-50 cursor-not-allowed text-xs font-medium rounded-lg"
+                >{{ buildTeamButtonLabel }}</button>
+              </template>
+              <template v-else-if="buildJob === 'running' || buildJob === 'stuck' || buildJob === 'paused'">
+                <span v-if="buildJob === 'paused'" class="text-xs text-amber-400">Paused</span>
+                <span v-else-if="buildActive" class="text-xs text-emerald-400">Building — last seed {{ buildLastActivity }}</span>
+                <span v-else class="text-xs text-emerald-400" data-testid="build-running">Build running{{ buildLastActivity ? ` — last seed ${buildLastActivity}` : '' }}</span>
+                <button
+                  v-if="buildJob === 'paused'"
+                  @click="startBuildTeam"
+                  :disabled="buildTeamStarting"
+                  class="px-2 py-0.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >{{ buildTeamStarting ? 'Spawning...' : 'Resume now' }}</button>
+                <button
+                  @click="stopBuilder"
+                  :disabled="buildStopping"
+                  data-testid="build-stop"
+                  class="px-2 py-0.5 bg-surface-3/20 border border-line/50 text-ink hover:border-line/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >{{ buildStopping ? 'Stopping…' : buildJob === 'paused' ? 'Cancel auto-resume' : 'Stop' }}</button>
+              </template>
               <span v-else-if="buildActive" class="text-xs text-emerald-400">
                 Building — last seed {{ buildLastActivity }}
               </span>
@@ -510,7 +543,8 @@
               v-for="cell in seedGrid"
               :key="cell.seed"
               class="seed-cell w-5 h-5 rounded-sm cursor-pointer transition-colors"
-              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
+              :class="[queuedBySeed.has(cell.seed) ? 'bg-fuchsia-400/40 ring-1 ring-inset ring-fuchsia-300/70' : seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
+              :title="queuedBySeed.has(cell.seed) ? `Seed ${cell.seed}: redo queued — ${queuedBySeed.get(cell.seed).reason}` : undefined"
               :data-seed="cell.seed"
               @click="selectSeed(cell.seed)"
             ></div>
@@ -520,6 +554,7 @@
           <div class="flex items-center gap-4 mt-3 text-xs text-faint">
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-surface-2/30"></span> Empty</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Building</span>
+            <span v-if="redoQueue.length" class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-fuchsia-400/40 ring-1 ring-inset ring-fuchsia-300/70"></span> Redo queued</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/60"></span> Decomposed</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
@@ -612,6 +647,24 @@
             </div>
           </div>
 
+          <!-- Queued redo (job #457): a Redo pressed while no agent can run waits here instead of being refused. -->
+          <div v-if="selectedQueuedRedo" class="redo-queued-banner mt-4 px-4 py-3 rounded border border-fuchsia-500/40 bg-fuchsia-500/10 text-sm flex items-start gap-3">
+            <div class="flex-1">
+              <div class="font-medium text-fuchsia-300">Redo queued — {{ selectedQueuedRedo.reason }}</div>
+              <div class="text-muted mt-1">
+                Nothing has been changed yet; the redo starts by itself
+                {{ selectedQueuedRedo.eta_text || 'when an agent can run' }}.
+                Place {{ selectedQueuedRedo.position }} of {{ selectedQueuedRedo.of }} in the queue<span v-if="selectedQueuedRedo.seeds.length > 1"> (with seeds {{ selectedQueuedRedo.seeds.join(', ') }})</span>.
+                <span v-if="selectedQueuedRedo.notes">Notes: “{{ selectedQueuedRedo.notes }}”</span>
+              </div>
+            </div>
+            <button
+              @click="cancelQueuedRedo(selectedQueuedRedo)"
+              :disabled="redoCancelling"
+              class="px-3 py-1.5 bg-surface/80 border border-line text-ink hover:border-fuchsia-400/70 disabled:opacity-50 text-sm rounded shrink-0"
+            >{{ redoCancelling ? 'Cancelling...' : 'Cancel queued redo' }}</button>
+          </div>
+
           <!-- Approve / Redo controls -->
           <div class="mt-4 pt-4 border-t border-line/50 flex gap-3 items-start">
             <textarea
@@ -622,7 +675,7 @@
             />
             <button
               @click="redoSeed"
-              :disabled="seedRedoing"
+              :disabled="seedRedoing || !!selectedQueuedRedo"
               class="px-4 py-2 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-sm font-medium rounded transition-all shrink-0"
             >{{ seedRedoing ? 'Sending...' : 'Redo' }}</button>
             <button
@@ -651,6 +704,7 @@ import { useRouter } from 'vue-router'
 import { getApiUrl, fetchJson } from '@/services/api'
 import { dirFor } from '@/utils/textDirection.js'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
+import { nextJobStatus } from '@/services/build-status-view'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail, getGenderPairs } from '@/services/supabase'
 import GenderPairText from '@/components/production/GenderPairText.vue'
 import FilterSelect from '@/components/ui/FilterSelect.vue'
@@ -735,6 +789,13 @@ const translateSpawned = ref(false)
 const translateResetting = ref(false)
 const buildTeamStarting = ref(false)
 const buildTeamSpawned = ref(false)
+// The course builder's own answer about this course's build (job #482). 'checking' until the
+// first /api/build/status reply: before it, the page cannot know whether a build is already
+// running, and an enabled Start there is how fry_for_eng got a second orchestrator (28 Oct).
+const buildJob = ref('checking') // checking | idle | running | stuck | paused
+const buildLastStop = ref(null)
+const buildStopping = ref(false)
+let buildStatusTimer = null
 const finalPassStarting = ref(false)
 const finalPassSpawned = ref(false)
 
@@ -893,6 +954,15 @@ const seedViewLoading = ref(false)
 const seedReviewNotes = ref('')
 const seedApproving = ref(false)
 const seedRedoing = ref(false)
+// Queued redos for this course (job #457) — GET /api/build/redo-queue/:courseCode.
+const redoQueue = ref([])
+const redoCancelling = ref(false)
+const queuedBySeed = computed(() => {
+  const m = new Map()
+  for (const e of redoQueue.value) for (const n of e.seeds) m.set(n, e)
+  return m
+})
+const selectedQueuedRedo = computed(() => (selectedSeed.value ? queuedBySeed.value.get(selectedSeed.value) || null : null))
 const seedUndoing = ref(false)
 const redoingFlagged = ref(false)
 
@@ -1237,9 +1307,49 @@ async function fetchProgress() {
   }
 }
 
+async function fetchRedoQueue() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const r = await fetch(`${getApiUrl()}/api/build/redo-queue/${courseCode}`)
+    if (r.ok) redoQueue.value = (await r.json()).entries || []
+  } catch { /* the grid still renders without it */ }
+}
+
+async function cancelQueuedRedo(entry) {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || !entry) return
+  redoCancelling.value = true
+  try {
+    const r = await fetch(`${getApiUrl()}/api/build/redo-queue/${courseCode}/${entry.queue_id}/cancel`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+    const body = await r.json().catch(() => ({}))
+    if (!body.ok) showActionError(`Could not cancel: ${body.error || r.status}`)
+    await fetchRedoQueue()
+  } catch (err) {
+    showActionError(`Could not cancel: ${err.message}`)
+  } finally {
+    redoCancelling.value = false
+  }
+}
+
+// POST /api/build/redo and read the answer: started, QUEUED (202, nothing changed yet), or refused.
+// Returns the body; a queued or failed answer is surfaced here so no caller can swallow it again.
+async function postRedo(courseCode, seeds, notes) {
+  const r = await fetch(`${getApiUrl()}/api/build/redo/${courseCode}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ seeds, notes })
+  })
+  const body = await r.json().catch(() => ({ ok: false, error: `HTTP ${r.status}` }))
+  if (!body.ok) showActionError(`Redo not started: ${body.error || r.status}`)
+  await fetchRedoQueue()
+  return body
+}
+
 async function fetchSeedGrid() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
+  fetchRedoQueue()
   try {
     if (isSupabaseConfigured()) {
       seedGrid.value = await sbGetSeedGrid(courseCode)
@@ -1363,9 +1473,27 @@ async function startBuildTeam() {
       showActionError(`Build team failed: ${result.error}`)
     }
   } catch (err) {
+    // A 409 here means a build for this course is already running (job #482).
     showActionError(`Build team failed: ${err.message}`)
   } finally {
     buildTeamStarting.value = false
+    fetchBuildStatus()
+  }
+}
+
+/** Ask the course builder (through the production-api proxy) what this course's build is doing. */
+async function fetchBuildStatus() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || isCreateMode.value) return null
+  try {
+    const data = await fetchJson(`${getApiUrl()}/api/build/status/${courseCode}`)
+    buildJob.value = nextJobStatus(buildJob.value, data)
+    buildLastStop.value = data.active ? null : (data.last_stop || null)
+    if (!data.active) buildTeamSpawned.value = false
+    return data
+  } catch (err) {
+    console.warn('[TextGeneration] build status poll failed:', err.message)
+    return null
   }
 }
 
@@ -1588,15 +1716,22 @@ async function startGenderPrep() {
 
 
 async function stopBuilder() {
+  buildStopping.value = true
   try {
     const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
+    const resp = await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: {}
     })
+    const data = await resp.json().catch(() => ({}))
+    if (data && data.ok === false && data.error) showActionError(`Stop: ${data.error}`)
     progress.value.status = 'idle'
+    buildTeamSpawned.value = false
   } catch (error) {
     showActionError(`Failed to stop builder: ${error.message}`)
+  } finally {
+    buildStopping.value = false
+    fetchBuildStatus()
   }
 }
 
@@ -1743,13 +1878,10 @@ async function redoSeed() {
   if (!courseCode || !seedNum) return
   seedRedoing.value = true
   try {
-    const apiBase = getApiUrl()
     const notes = seedReviewNotes.value.trim()
-    await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ seeds: [seedNum], notes })
-    })
+    const body = await postRedo(courseCode, [seedNum], notes)
+    // Queued or refused: stay on this seed so its banner (reason, place, Cancel) or the error is in view.
+    if (!body.ok || body.queued) { if (body.queued) seedReviewNotes.value = ''; seedRedoing.value = false; return }
     seedReviewNotes.value = ''
     selectedSeed.value = null
     seedViewPhrases.value = []
@@ -1802,15 +1934,12 @@ async function redoAllFlagged() {
   if (flaggedSeeds.length === 0) return
   redoingFlagged.value = true
   try {
-    const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ seeds: flaggedSeeds, notes: 'Redo all flagged seeds' })
-    })
-    // Optimistically mark all flagged as building
-    for (const s of seedGrid.value) {
-      if (s.status === 'flagged') s.status = 'building'
+    const body = await postRedo(courseCode, flaggedSeeds, 'Redo all flagged seeds')
+    // Optimistically mark all flagged as building — unless the redo was queued or refused
+    if (body.ok && !body.queued) {
+      for (const s of seedGrid.value) {
+        if (s.status === 'flagged') s.status = 'building'
+      }
     }
     await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
   } catch (err) {
@@ -1854,14 +1983,12 @@ async function sendChat() {
       if (seedNums.length > 0) {
         const notesMatch = text.match(/^redo\s+seeds?\s+[\d,\s]+[.:]?\s*(.*)/i)
         const notes = notesMatch?.[1]?.trim() || ''
-        await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ seeds: seedNums, notes })
-        })
-        // Optimistically update grid
-        for (const s of seedGrid.value) {
-          if (seedNums.includes(s.seed)) s.status = 'building'
+        const body = await postRedo(courseCode, seedNums, notes)
+        // Optimistically update grid — a queued redo shows as queued from the queue fetch instead
+        if (body.ok && !body.queued) {
+          for (const s of seedGrid.value) {
+            if (seedNums.includes(s.seed)) s.status = 'building'
+          }
         }
         await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
         return
@@ -1960,8 +2087,19 @@ async function loadLanguages() {
 }
 
 // Lifecycle
+// A different course on the same page instance: back to 'checking' until its builder answers.
+watch(effectiveCourseCode, (code, prev) => {
+  if (!code || code === prev) return
+  buildJob.value = 'checking'
+  buildLastStop.value = null
+  fetchBuildStatus()
+})
+
 onMounted(async () => {
   startPolling()
+  if (isCreateMode.value) buildJob.value = 'idle'
+  fetchBuildStatus()
+  buildStatusTimer = setInterval(() => { fetchBuildStatus(); fetchRedoQueue() }, 15000)
   if (!isCreateMode.value) {
     // Fetch seed grid and progress immediately (buildMonitor watcher may miss initial load)
     if (isSupabaseConfigured()) {
@@ -1980,6 +2118,7 @@ onMounted(async () => {
 
 onUnmounted(() => {
   stopPolling()
+  if (buildStatusTimer) { clearInterval(buildStatusTimer); buildStatusTimer = null }
   if (tickInterval) { clearInterval(tickInterval); tickInterval = null }
 })
 </script>

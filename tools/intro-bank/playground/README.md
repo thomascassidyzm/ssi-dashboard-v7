@@ -1,0 +1,2 @@
+# Intro tuning playground (#747)
+Single-page Web Audio tool for tuning spliced-intro gap/LEGO gain/LEGO speed by ear (German trial clips: tom_001, aran_english_003, Charlotte). Live copy: command-surface `public/evidence/747-intro-tuning-playground/` (served at /evidence/747-intro-tuning-playground/). `fetch-clips.mjs` regenerates `clips/` + `manifest.json`. DSP in index.html is a port of `packages/player-vue/src/playback/introAssembly.ts` levelling. Changes no shipped defaults.

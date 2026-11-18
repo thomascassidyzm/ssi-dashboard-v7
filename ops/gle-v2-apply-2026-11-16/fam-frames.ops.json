@@ -1,0 +1,3375 @@
+{
+"family": "frames",
+"seeds": [
+9,
+13,
+73,
+96,
+100,
+105,
+109,
+122,
+133,
+207,
+217,
+250,
+273,
+277,
+290,
+296
+],
+"ops": [
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 9,
+"lego_index": 3,
+"known_text": "now",
+"target_text": "anois",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0013L03U05",
+"expect": {
+"target_text": "tá Gaeilge an-mhaith agat agus ba mhaith liom a bheith in ann labhairt go han-mhaith"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0013L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "go han-mhaith"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 73,
+"lego_index": 3,
+"known_text": "but",
+"target_text": "ach",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 73,
+"lego_index": 4,
+"known_text": "I've got more to learn",
+"target_text": "tá níos mó le foghlaim agam",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "yes",
+"target": "tá"
+},
+{
+"known": "more",
+"target": "níos mó"
+},
+{
+"known": "to learn",
+"target": "foghlaim"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0073L02B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 73,
+"lego_index": 2,
+"position": 109,
+"known_text": "thank you very much for the story",
+"target_text": "go raibh míle maith agat as an scéal",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 36,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0073L02U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 73,
+"lego_index": 2,
+"position": 110,
+"known_text": "thank you very much for everything you are doing",
+"target_text": "go raibh míle maith agat as gach rud atá tú ag déanamh",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 54,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0073L01U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 73,
+"lego_index": 1,
+"position": 111,
+"known_text": "it is not easy but thank you for everything",
+"target_text": "níl sé éasca ach go raibh maith agat as gach rud",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 48,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0073L02U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 73,
+"lego_index": 2,
+"position": 111,
+"known_text": "thank you very much for his letter",
+"target_text": "go raibh míle maith agat as a litir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 35,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0073L02U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 73,
+"lego_index": 2,
+"position": 112,
+"known_text": "thank you very much because it is not easy helping me",
+"target_text": "go raibh míle maith agat mar níl sé éasca cabhrú liom",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L03U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 53,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0073L01U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 73,
+"lego_index": 1,
+"position": 112,
+"known_text": "it is interesting, is that not so? thank you very much",
+"target_text": "tá sé suimiúil nach bhfuil? go raibh míle maith agat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0082L03U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 52,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0073L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 73,
+"lego_index": 4,
+"position": 101,
+"known_text": "thank you very much, but I've got more to learn",
+"target_text": "go raibh míle maith agat, ach tá níos mó le foghlaim agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 57,
+"lego_count": 12
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0096L03",
+"set": {
+"known_text": "a little more time",
+"target_text": "beagán níos mó ama",
+"is_new": false,
+"components": [
+{
+"known": "a little",
+"target": "beagán"
+},
+{
+"known": "more time",
+"target": "níos mó ama"
+}
+]
+},
+"expect": {
+"known_text": "I have a little more time",
+"target_text": "tá beagán níos mó ama",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0096L04",
+"set": {
+"known_text": "I need a little",
+"target_text": "tá beagán de dhíth orm",
+"components": [
+{
+"known": "yes",
+"target": "tá"
+},
+{
+"known": "a little",
+"target": "beagán"
+}
+]
+},
+"expect": {
+"known_text": "needed by me",
+"target_text": "de dhíth orm",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0096L01B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 96,
+"lego_index": 1,
+"position": 106,
+"known_text": "it is not difficult helping me",
+"target_text": "níl sé deacair cabhrú liom",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L03B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 26,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0096L01U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 96,
+"lego_index": 1,
+"position": 107,
+"known_text": "it is not difficult helping me but it is not enjoyable",
+"target_text": "níl sé deacair cabhrú liom ach níl sé spraíúil",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L03U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 46,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0096L01U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 96,
+"lego_index": 1,
+"position": 108,
+"known_text": "I'm not sure what you understand",
+"target_text": "níl mé cinnte cad a thuigeann tú",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0078L02U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 32,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0096L01U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 96,
+"lego_index": 1,
+"position": 109,
+"known_text": "I am not sure when I started learning but I want to speak better soon",
+"target_text": "níl mé cinnte cathain a thosaigh mé ag foghlaim ach is mian liom labhairt níos fearr go luath",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0079L01U09"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 93,
+"lego_count": 18
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0096L01U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 96,
+"lego_index": 1,
+"position": 110,
+"known_text": "you started learning Irish but it is not easy",
+"target_text": "thosaigh tú ag foghlaim Gaeilge ach níl sé éasca",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0079L02U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 48,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0096L01B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 96,
+"lego_index": 1,
+"position": 111,
+"known_text": "is that not so? I'm not sure",
+"target_text": "nach bhfuil? níl mé cinnte",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0082L03B06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 26,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0096L01U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 96,
+"lego_index": 1,
+"position": 112,
+"known_text": "is that not so? I don't know",
+"target_text": "nach bhfuil? níl a fhios agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0082L03U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 29,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03B01",
+"expect": {
+"target_text": "tá beagán níos mó ama anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03B03",
+"expect": {
+"target_text": "ach tá beagán níos mó ama"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03B04",
+"expect": {
+"target_text": "agus tá beagán níos mó ama inniu"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03C01",
+"expect": {
+"target_text": "tá"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03C02",
+"expect": {
+"target_text": "beagán"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03C03",
+"expect": {
+"target_text": "níos mó"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03C04",
+"expect": {
+"target_text": "ama"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L03U04",
+"expect": {
+"target_text": "tá beagán níos mó ama inniu agus ba mhaith liom labhairt a chleachtadh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04B01",
+"expect": {
+"target_text": "de dhíth orm anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04B02",
+"expect": {
+"target_text": "níl sé de dhíth orm"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04B03",
+"expect": {
+"target_text": "go bhfuil mála de dhíth orm inniu"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04U01",
+"expect": {
+"target_text": "go raibh maith agat ach níl sé de dhíth orm"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04U03",
+"expect": {
+"target_text": "ceapaim go bhfuil mála de dhíth orm sula gcaithfidh mé dul"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04U04",
+"expect": {
+"target_text": "an bhfuil tú cinnte go bhfuil an freagra de dhíth orm faoi láthair"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04U05",
+"expect": {
+"target_text": "níl sé de dhíth orm inniu ach go raibh míle maith agat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0096L04U06",
+"expect": {
+"target_text": "níl mé cinnte go bhfuil Gaeilge de dhíth orm anois"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 100,
+"lego_index": 4,
+"known_text": "to be worried about it",
+"target_text": "a bheith buartha faoi",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "to be worried",
+"target": "a bheith buartha"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 100,
+"lego_index": 5,
+"known_text": "something similar",
+"target_text": "rud éigin cosúil leis",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "something",
+"target": "rud éigin"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 100,
+"lego_index": 6,
+"known_text": "while you're doing it",
+"target_text": "agus é á dhéanamh agat",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "and",
+"target": "agus"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 101,
+"known_text": "what are you trying to do now",
+"target_text": "cad atá tú ag iarraidh a dhéanamh anois",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 39,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 102,
+"known_text": "what are you trying to do now when you are learning Irish",
+"target_text": "cad atá tú ag iarraidh a dhéanamh anois nuair atá tú ag foghlaim Gaeilge",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 72,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 103,
+"known_text": "what was the answer you were looking for before you have to go now",
+"target_text": "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú dul anois",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 62,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 104,
+"known_text": "what are you thinking about and why are you trying to stop",
+"target_text": "cad atá tú ag smaoineamh faoi agus cén fáth a bhfuil tú ag iarraidh stopadh",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 75,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 105,
+"known_text": "what are you learning at the moment and are you meeting with people",
+"target_text": "cad atá tú ag foghlaim faoi láthair agus an bhfuil tú ag bualadh le daoine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 74,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 106,
+"known_text": "what are you thinking about at the moment and are you sure about that",
+"target_text": "cad atá tú ag smaoineamh air faoi láthair agus an bhfuil tú cinnte faoi sin",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U09"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 75,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 107,
+"known_text": "what are you trying to learn now and why are you trying to stop",
+"target_text": "cad atá tú ag iarraidh a fhoghlaim anois agus cén fáth a bhfuil tú ag stopadh",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U13"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 77,
+"lego_count": 16
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 108,
+"known_text": "I was thinking about what you are talking about and I would like an answer",
+"target_text": "bhí mé ag smaoineamh ar an rud atá tú ag caint faoi agus ba mhaith liom freagra a fháil",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 87,
+"lego_count": 19
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 109,
+"known_text": "thank you for",
+"target_text": "go raibh maith agat as",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 22,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 110,
+"known_text": "thank you for everything",
+"target_text": "go raibh maith agat as gach rud",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 31,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 111,
+"known_text": "thank you for looking after the young dog today",
+"target_text": "go raibh maith agat as aire a thabhairt don mhadra óg inniu",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 59,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L06U09",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 6,
+"position": 112,
+"known_text": "I feel tired but thank you for the afternoon",
+"target_text": "mothaím tuirseach ach go raibh maith agat as an tráthnóna",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0074L02U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 57,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L05B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 5,
+"position": 101,
+"known_text": "about it while you are doing something similar",
+"target_text": "faoi agus rud éigin cosúil leis á dhéanamh agat",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0100L03B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 47,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L04B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 4,
+"position": 101,
+"known_text": "to be worried about it while you are doing something similar",
+"target_text": "a bheith buartha faoi agus rud éigin cosúil leis á dhéanamh agat",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0100L03B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 64,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L04B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 4,
+"position": 102,
+"known_text": "you shouldn't be worried about it while you are doing something similar",
+"target_text": "níor chóir duit a bheith buartha faoi agus rud éigin cosúil leis á dhéanamh agat",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0100L03B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 80,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 5,
+"position": 102,
+"known_text": "I'm not worried about it while you are doing something similar",
+"target_text": "níl mé buartha faoi agus rud éigin cosúil leis á dhéanamh agat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0100L03U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 62,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L05U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 5,
+"position": 103,
+"known_text": "why are you worried about it while you are doing something similar?",
+"target_text": "cén fáth a bhfuil tú buartha faoi agus rud éigin cosúil leis á dhéanamh agat?",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0100L03U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 77,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0100L02U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 100,
+"lego_index": 2,
+"position": 112,
+"known_text": "you shouldn't be worried about the sentence",
+"target_text": "níor chóir duit a bheith buartha faoin abairt",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0101L05U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 45,
+"lego_count": 8
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0100L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "faoi agus rud éigin cosúil leis á dhéanamh agat"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 105,
+"lego_index": 6,
+"known_text": "he didn't know it",
+"target_text": "nach raibh sé ar eolas aige",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "he didn't know it",
+"target": "nach raibh sé ar eolas aige"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 101,
+"known_text": "what were you thinking about the story",
+"target_text": "cad a bhí tú ag smaoineamh ar an scéal",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 38,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 102,
+"known_text": "what were you thinking about the story last week carefully",
+"target_text": "cad a bhí tú ag smaoineamh ar an scéal an tseachtain seo caite go cúramach",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 74,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 103,
+"known_text": "what were you trying to say to me when I was thinking about the story",
+"target_text": "cad a bhí tú ag iarraidh a rá liom nuair a bhí mé ag smaoineamh ar an scéal",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 75,
+"lego_count": 18
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 104,
+"known_text": "what answer were you trying to find but it is difficult to remember now",
+"target_text": "cad é an freagra a bhí tú ag iarraidh a fháil ach tá sé deacair cuimhneamh anois",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U10"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 80,
+"lego_count": 17
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 105,
+"known_text": "what were you trying to explain to me when you were talking to me all day",
+"target_text": "cad a bhí tú ag iarraidh a mhíniú dom nuair a bhí tú ag caint liom an lá ar fad",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U11"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 79,
+"lego_count": 20
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 106,
+"known_text": "what were you trying to say to me when I was thinking about the story yesterday",
+"target_text": "cad a bhí tú ag iarraidh a rá liom nuair a bhí mé ag smaoineamh ar an scéal inné",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L01U15"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 80,
+"lego_count": 19
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 107,
+"known_text": "I was thinking about what you are talking about and I would like an answer",
+"target_text": "bhí mé ag smaoineamh ar an rud atá tú ag caint faoi agus ba mhaith liom freagra a fháil",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 87,
+"lego_count": 19
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 108,
+"known_text": "I know it is difficult but I am thinking about what you are talking about",
+"target_text": "tá a fhios agam go bhfuil sé deacair ach tá mé ag smaoineamh ar an rud atá tú ag caint faoi",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 91,
+"lego_count": 21
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 109,
+"known_text": "I am trying to remember what you are talking about right now",
+"target_text": "tá mé ag iarraidh cuimhneamh ar an rud atá tú ag caint faoi anois",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 65,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 110,
+"known_text": "I am trying to remember carefully what you are talking about now",
+"target_text": "tá mé ag iarraidh cuimhneamh go cúramach ar an rud atá tú ag caint faoi anois",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 77,
+"lego_count": 16
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 111,
+"known_text": "I am thinking about what you are talking about and I would like to try now",
+"target_text": "tá mé ag smaoineamh ar an rud atá tú ag caint faoi agus ba mhaith liom iarracht a dhéanamh",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 90,
+"lego_count": 19
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L06U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 6,
+"position": 112,
+"known_text": "I like talking when you are thinking about what you are learning",
+"target_text": "is maith liom a bheith ag caint nuair atá tú ag smaoineamh ar an rud atá tú ag foghlaim",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 87,
+"lego_count": 19
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L01U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 1,
+"position": 111,
+"known_text": "that is why it is not known",
+"target_text": "sin é an chúis nach bhfuil sé ar eolas",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0105L04U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 38,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0105L01U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 105,
+"lego_index": 1,
+"position": 112,
+"known_text": "That is why he didn't know the answer",
+"target_text": "sin é an chúis nach raibh an freagra ar eolas aige",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0105L05U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 50,
+"lego_count": 11
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0105L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "nach raibh"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0105L04",
+"cascade_phrases": true,
+"expect": {
+"target_text": "ar eolas"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0105L05",
+"cascade_phrases": true,
+"expect": {
+"target_text": "aige"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 109,
+"lego_index": 2,
+"known_text": "we must",
+"target_text": "caithfidh muid",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "we must",
+"target": "caithfidh muid"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 109,
+"lego_index": 3,
+"known_text": "to work",
+"target_text": "obair",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 109,
+"lego_index": 4,
+"known_text": "hard",
+"target_text": "go dian",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "hard",
+"target": "go dian"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 109,
+"lego_index": 5,
+"known_text": "to learn a lot of words",
+"target_text": "chun a lán focal a fhoghlaim",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "in order to",
+"target": "chun"
+},
+{
+"known": "a lot",
+"target": "a lán"
+},
+{
+"known": "a word",
+"target": "focal"
+},
+{
+"known": "to learn",
+"target": "fhoghlaim"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0109L01B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 109,
+"lego_index": 1,
+"position": 111,
+"known_text": "to make something new quickly",
+"target_text": "rud nua a dhéanamh go tapa",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0116L05B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 26,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0109L01U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 109,
+"lego_index": 1,
+"position": 112,
+"known_text": "I'd like to make something new this evening",
+"target_text": "ba mhaith liom rud nua a dhéanamh tráthnóna",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0116L05U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 43,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0109L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 109,
+"lego_index": 5,
+"position": 101,
+"known_text": "we must work hard to learn a lot of new words",
+"target_text": "caithfidh muid obair go dian chun a lán focal nua a fhoghlaim",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 61,
+"lego_count": 12
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 122,
+"lego_index": 4,
+"known_text": "and",
+"target_text": "agus",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 122,
+"lego_index": 5,
+"known_text": "it excites me",
+"target_text": "cuireann sé sceitimíní orm",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "it excites me",
+"target": "cuireann sé sceitimíní orm"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0122L03",
+"set": {
+"known_text": "the way it's going",
+"target_text": "an tslí ina bhfuil sé ag dul",
+"components": [
+{
+"known": "to go",
+"target": "dul"
+}
+]
+},
+"expect": {
+"known_text": "and I'm excited about how it's going",
+"target_text": "agus cuireann an tslí ina bhfuil sé ag dul sceitimíní orm",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0122L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 122,
+"lego_index": 5,
+"position": 101,
+"known_text": "it's getting easier bit by bit and I'm excited about how it's going",
+"target_text": "Tá sé ag éirí níos éasca de réir a chéile, agus cuireann an tslí ina bhfuil sé ag dul sceitimíní orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 100,
+"lego_count": 21
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0122L03C01",
+"expect": {
+"target_text": "agus"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0122L03C02",
+"expect": {
+"target_text": "cuireann"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0122L03C03",
+"expect": {
+"target_text": "an tslí"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0122L03C04",
+"expect": {
+"target_text": "ina bhfuil sé ag dul"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0122L03C05",
+"expect": {
+"target_text": "sceitimíní orm"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 133,
+"lego_index": 3,
+"known_text": "good",
+"target_text": "maith",
+"type": "A",
+"is_new": true,
+"status": "draft"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0133L01",
+"set": {
+"known_text": "you get to know someone",
+"target_text": "cuireann tú aithne ar dhuine"
+},
+"expect": {
+"known_text": "you get to know someone well",
+"target_text": "cuireann tú aithne mhaith ar dhuine",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 101,
+"known_text": "thank you but it isn't needed by me",
+"target_text": "go raibh maith agat ach níl sé de dhíth orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0096L04U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 43,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 102,
+"known_text": "it isn't needed by me today but thank you very much",
+"target_text": "níl sé de dhíth orm inniu ach go raibh míle maith agat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0096L04U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 54,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 103,
+"known_text": "thank you and I agree it's not working",
+"target_text": "go raibh maith agat agus aontaím nach bhfuil sé ag obair",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0099L04U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 56,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 104,
+"known_text": "thank you and I agree about the sentence",
+"target_text": "go raibh maith agat agus aontaím faoin abairt",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0101L05U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 45,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 105,
+"known_text": "I like to read about the story",
+"target_text": "is maith liom a léamh faoin scéal",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0101L05U08"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 33,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 106,
+"known_text": "this afternoon I'd like to practise speaking with someone else",
+"target_text": "ba mhaith liom labhairt a chleachtadh le duine éigin eile an tráthnóna seo",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0101L07U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 74,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 107,
+"known_text": "thank you very much and I do not understand this whole sentence",
+"target_text": "go raibh míle maith agat agus ní thuigim an abairt iomlán seo",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0101L07U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 61,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 108,
+"known_text": "thank you I like the story that was not difficult",
+"target_text": "go raibh maith agat is maith liom an scéal nach raibh deacair",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0105L02U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 61,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U09",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 109,
+"known_text": "thank you I think that the answer is known to him already",
+"target_text": "go raibh maith agat ceapaim go bhfuil an freagra ar eolas aige cheana féin",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0105L05U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 74,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U10",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 110,
+"known_text": "after we do this together I would like to go home and think about what I learned",
+"target_text": "tar éis dúinn é seo a dhéanamh ba mhaith liom dul abhaile agus smaoineamh faoin rud atá foghlamtha agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0110L06U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 103,
+"lego_count": 19
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03U11",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 111,
+"known_text": "thank you very much, I feel like someone new",
+"target_text": "go raibh míle maith agat mothaím cosúil le duine nua",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0128L02U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 52,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0133L03B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 133,
+"lego_index": 3,
+"position": 112,
+"known_text": "I would like to change now",
+"target_text": "ba mhaith liom athrú anois",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0188L03B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 26,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0133L01C01",
+"expect": {
+"target_text": "cuireann tú aithne"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0133L01C02",
+"expect": {
+"target_text": "ar dhuine"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 207,
+"lego_index": 2,
+"known_text": "for you to do",
+"target_text": "le déanamh agat",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "for you to do",
+"target": "le déanamh agat"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 207,
+"lego_index": 3,
+"known_text": "you've done it",
+"target_text": "tá sé déanta agat",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "it is",
+"target": "tá sé"
+},
+{
+"known": "done",
+"target": "déanta"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0207L01",
+"set": {
+"known_text": "what there was",
+"target_text": "an méid a bhí",
+"is_new": true
+},
+"expect": {
+"known_text": "what you needed to do",
+"target_text": "an méid a bhí le déanamh agat",
+"is_new": false
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 101,
+"known_text": "thank you I can take my book home now",
+"target_text": "go raibh maith agat is féidir liom mo leabhar a thabhairt abhaile anois",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0181L03U08"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 71,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 102,
+"known_text": "i have forgotten already",
+"target_text": "tá dearmad déanta agam cheana féin",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 34,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 103,
+"known_text": "unfortunately i have forgotten",
+"target_text": "faraor tá dearmad déanta agam",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 29,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 104,
+"known_text": "i have forgotten what you said yesterday",
+"target_text": "tá dearmad déanta agam cad a dúirt tú inné",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 42,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 105,
+"known_text": "i am sorry but i have forgotten",
+"target_text": "tá brón orm ach tá dearmad déanta agam",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 38,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 106,
+"known_text": "i wanted to ask you about something but i have forgotten",
+"target_text": "ba mhian liom ceist a chur ort faoi rud éigin ach tá dearmad déanta agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 72,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 107,
+"known_text": "i have forgotten what was going to happen",
+"target_text": "tá dearmad déanta agam cad a bhí chun tarlú",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 43,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 108,
+"known_text": "i have forgotten how to answer the question",
+"target_text": "tá dearmad déanta agam conas an cheist a fhreagairt",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 51,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 109,
+"known_text": "i am sorry but i have forgotten what your name is",
+"target_text": "tá brón orm ach tá dearmad déanta agam cad is ainm duit",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 55,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 110,
+"known_text": "i'm not ready yet because i have forgotten what i need to do",
+"target_text": "níl mé réidh go fóill mar tá dearmad déanta agam cad atá le déanamh agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0205L01U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 72,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 111,
+"known_text": "I know you",
+"target_text": "tá aithne agam ort",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0231L01B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 18,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L03B06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 3,
+"position": 112,
+"known_text": "but I know you",
+"target_text": "ach tá aithne agam ort",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0231L01B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 22,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0207L02U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 207,
+"lego_index": 2,
+"position": 101,
+"known_text": "you've done what you needed to do",
+"target_text": "Tá an méid a bhí le déanamh agat déanta agat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 44,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0207L01C01",
+"expect": {
+"target_text": "an méid"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0207L01C02",
+"expect": {
+"target_text": "le déanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 217,
+"set": {
+"target_text": "bhí gloine uisce nó dhó agam"
+},
+"expect": {
+"known_text": "I had a glass or two of water",
+"target_text": "d'ól mé gloine nó dhó uisce"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 217,
+"lego_index": 5,
+"known_text": "I had a glass",
+"target_text": "bhí gloine agam",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "a glass",
+"target": "gloine"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0217L04",
+"set": {
+"known_text": "a glass of water",
+"target_text": "gloine uisce",
+"components": [
+{
+"known": "a glass",
+"target": "gloine"
+}
+],
+"type": "M"
+},
+"expect": {
+"known_text": "of water",
+"target_text": "uisce",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0217L04B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 217,
+"lego_index": 4,
+"position": 107,
+"known_text": "a glass of water to you",
+"target_text": "gloine uisce duit",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0225L03B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 17,
+"lego_count": 3
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0217L04U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 217,
+"lego_index": 4,
+"position": 108,
+"known_text": "unfortunately there isn't a glass of water here",
+"target_text": "faraor níl gloine uisce anseo",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0294L01U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 29,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0217L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 217,
+"lego_index": 5,
+"position": 101,
+"known_text": "I had a glass or two of water",
+"target_text": "bhí gloine uisce nó dhó agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 28,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0217L04B02",
+"set": {
+"target_text": "gloine uisce nó dhó inniu"
+},
+"expect": {
+"target_text": "gloine nó dhó uisce inniu",
+"known_text": "a glass or two of water today"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L02B02",
+"expect": {
+"target_text": "d'ól mé gloine"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L02U03",
+"expect": {
+"target_text": "d'ól mé gloine oíche Shathairn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L03U01",
+"expect": {
+"target_text": "d'ól mé gloine nó dhó aréir"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L03U03",
+"expect": {
+"target_text": "d'ól mé gloine nó dhó agus ansin chuaigh mé abhaile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L03U04",
+"expect": {
+"target_text": "tá brón orm ach d'ól mé gloine nó dhó"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L03U05",
+"expect": {
+"target_text": "d'ól mé gloine nó dhó sa teach tábhairne"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L04B04",
+"expect": {
+"target_text": "d'ól mé gloine uisce"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L04U01",
+"expect": {
+"target_text": "d'ól mé gloine nó dhó uisce aréir"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0217L04U05",
+"expect": {
+"target_text": "d'ól mé gloine uisce ach mothaím tuirseach"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0217L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "d'ól mé"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 250,
+"lego_index": 4,
+"known_text": "to tell me something",
+"target_text": "rud éigin a insint dom",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "something",
+"target": "rud éigin"
+},
+{
+"known": "to tell me",
+"target": "insint dom"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 250,
+"lego_index": 5,
+"known_text": "an answer",
+"target_text": "freagra",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 250,
+"lego_index": 6,
+"known_text": "to you",
+"target_text": "duit",
+"type": "A",
+"is_new": true,
+"status": "draft"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0250L02",
+"set": {
+"known_text": "something else",
+"target_text": "rud éigin eile",
+"is_new": false,
+"components": [
+{
+"known": "something",
+"target": "rud éigin"
+},
+{
+"known": "other",
+"target": "eile"
+}
+]
+},
+"expect": {
+"known_text": "something else to tell me",
+"target_text": "rud éigin eile a insint dom",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0250L03",
+"set": {
+"known_text": "before I give",
+"target_text": "sula dtabharfaidh mé"
+},
+"expect": {
+"known_text": "before I give you an answer",
+"target_text": "sula dtabharfaidh mé freagra duit",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 6,
+"position": 101,
+"known_text": "to you tomorrow",
+"target_text": "duit amárach",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0225L03B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 12,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 6,
+"position": 102,
+"known_text": "to show something to you",
+"target_text": "rud éigin a thaispeáint duit",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0225L03B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 28,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 6,
+"position": 103,
+"known_text": "I would like to show my book to you tomorrow",
+"target_text": "ba mhaith liom mo leabhar a thaispeáint duit amárach",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0225L03U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 52,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 6,
+"position": 104,
+"known_text": "I did not have time to show that book to you",
+"target_text": "ní raibh am agam an leabhar sin a thaispeáint duit",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0225L03U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 50,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 6,
+"position": 105,
+"known_text": "he would give the answer to you later on",
+"target_text": "thabharfadh sé an freagra duit níos déanaí",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0225L03U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 42,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L06U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 6,
+"position": 106,
+"known_text": "he would give the money to you and that would be great",
+"target_text": "thabharfadh sé an t-airgead duit agus bheadh sé sin go hiontach",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0225L03U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 63,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L06U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 6,
+"position": 107,
+"known_text": "I am sorry I know you but I don't know what your name is",
+"target_text": "tá brón orm tá aithne agam ort ach níl a fhios agam cad is ainm duit",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0231L01U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 68,
+"lego_count": 16
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0250L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 250,
+"lego_index": 4,
+"position": 101,
+"known_text": "can you tell me something else before I give you an answer?",
+"target_text": "an féidir leat rud éigin eile a insint dom sula dtabharfaidh mé freagra duit?",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 77,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L02B02",
+"expect": {
+"target_text": "rud éigin eile a insint dom maidin amárach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L02B03",
+"expect": {
+"target_text": "go bhfuil rud éigin eile a insint dom inniu"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L02B04",
+"expect": {
+"target_text": "ceapaim go bhfuil rud éigin eile a insint dom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L02U01",
+"expect": {
+"target_text": "an bhfuil tú cinnte go bhfuil rud éigin eile a insint dom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L03C01",
+"expect": {
+"target_text": "sula"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L03C02",
+"expect": {
+"target_text": "dtabharfaidh mé"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L03C03",
+"expect": {
+"target_text": "freagra"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0250L03C04",
+"expect": {
+"target_text": "duit"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 273,
+"lego_index": 4,
+"known_text": "I have too much",
+"target_text": "tá an iomarca agam",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "yes",
+"target": "tá"
+},
+{
+"known": "too many",
+"target": "an iomarca"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0273L03",
+"set": {
+"known_text": "too much work",
+"target_text": "an iomarca oibre",
+"components": [
+{
+"known": "too many",
+"target": "an iomarca"
+}
+]
+},
+"expect": {
+"known_text": "I have too much work",
+"target_text": "tá an iomarca oibre agam",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0273L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 273,
+"lego_index": 4,
+"position": 101,
+"known_text": "no unfortunately I've got too much work",
+"target_text": "Níor mhaith, faraor tá an iomarca oibre agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 44,
+"lego_count": 8
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 277,
+"lego_index": 5,
+"known_text": "an important meeting",
+"target_text": "cruinniú tábhachtach",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "important",
+"target": "tábhachtach"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0277L02",
+"set": {
+"known_text": "yes I've got a meeting",
+"target_text": "Caithfidh, tá cruinniú agam",
+"components": [
+{
+"known": "yes",
+"target": "tá"
+}
+]
+},
+"expect": {
+"known_text": "yes I've got an important meeting",
+"target_text": "Caithfidh, tá cruinniú tábhachtach agam",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0277L04",
+"set": {
+"is_new": false
+},
+"expect": {
+"known_text": "next week",
+"target_text": "an tseachtain seo chugainn",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0277L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 277,
+"lego_index": 5,
+"position": 101,
+"known_text": "yes I've got an important meeting early next week",
+"target_text": "Caithfidh, tá cruinniú tábhachtach agam go luath an tseachtain seo chugainn",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 75,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0277L02U02",
+"set": {
+"target_text": "Caithfidh, tá cruinniú tábhachtach agam in achar níos lú ná uair"
+},
+"expect": {
+"target_text": "Caithfidh, tá cruinniú tábhachtach agam i níos lú ná uair an chloig",
+"known_text": "yes I've got an important meeting in less than an hour"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L02C01",
+"expect": {
+"target_text": "Caithfidh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L02C02",
+"expect": {
+"target_text": "tá"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L02C03",
+"expect": {
+"target_text": "cruinniú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L02C04",
+"expect": {
+"target_text": "tábhachtach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L02C05",
+"expect": {
+"target_text": "agam"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L04B02",
+"expect": {
+"target_text": "an tseachtain seo chugainn tá mé chun"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L04U04",
+"expect": {
+"target_text": "ar mhaith leat teacht linn an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L04U05",
+"expect": {
+"target_text": "ceapaim go mbeidh mé réidh an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L04U06",
+"expect": {
+"target_text": "ní féidir liom teacht an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0277L04U08",
+"expect": {
+"target_text": "cad atá le déanamh agat an tseachtain seo chugainn"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 290,
+"lego_index": 3,
+"known_text": "the answer",
+"target_text": "an freagra",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "an answer",
+"target": "freagra"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0290L02",
+"set": {
+"known_text": "if he knows it",
+"target_text": "an bhfuil sé ar eolas aige",
+"components": [
+{
+"known": "if it's",
+"target": "an bhfuil sé"
+}
+]
+},
+"expect": {
+"known_text": "if he knows the answer",
+"target_text": "an bhfuil an freagra ar eolas aige",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0290L02U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 290,
+"lego_index": 2,
+"position": 111,
+"known_text": "it's true that I will be there",
+"target_text": "Tá sé fíor go mbeidh mé ann",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0253L01U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 27,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0290L02U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 290,
+"lego_index": 2,
+"position": 112,
+"known_text": "when do you think you'll be ready to leave before the weekend",
+"target_text": "cathain a cheapann tú go mbeidh tú réidh le himeacht roimh an deireadh seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0255L01U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 81,
+"lego_count": 14
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0296L02",
+"set": {
+"known_text": "a little more time",
+"target_text": "beagán níos mó ama",
+"is_new": false,
+"components": [
+{
+"known": "a little",
+"target": "beagán"
+},
+{
+"known": "more time",
+"target": "níos mó ama"
+}
+]
+},
+"expect": {
+"known_text": "that a little more",
+"target_text": "go raibh beagán níos mó",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0296L04",
+"set": {
+"known_text": "that I needed a little",
+"target_text": "go raibh beagán de dhíth orm",
+"is_new": true,
+"components": [
+{
+"known": "a little",
+"target": "beagán"
+}
+]
+},
+"expect": {
+"known_text": "needed by me",
+"target_text": "de dhíth orm",
+"is_new": false
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0296L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 296,
+"lego_index": 4,
+"position": 101,
+"known_text": "I said that I needed a little time",
+"target_text": "dúirt mé go raibh beagán ama de dhíth orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0296L03U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 41,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0296L02B01",
+"expect": {
+"target_text": "go raibh beagán níos mó"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0296L02B03",
+"expect": {
+"target_text": "dúirt mé go raibh beagán níos mó"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0296L02B05",
+"expect": {
+"target_text": "dúirt sí go raibh beagán níos mó"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0296L02B06",
+"expect": {
+"target_text": "bhí a fhios agam go raibh beagán níos mó de dhíth"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0296L02C01",
+"expect": {
+"target_text": "go raibh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0296L02C02",
+"expect": {
+"target_text": "beagán"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0296L02C03",
+"expect": {
+"target_text": "níos mó"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0296L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "ama"
+}
+}
+]
+}

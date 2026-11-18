@@ -1,0 +1,38 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01B01",
+   "expect": {
+    "known_text": "do you want the same thing to eat?",
+    "target_text": "wolstû itselde te iten?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01U03",
+   "expect": {
+    "known_text": "do you want the same thing to eat as yesterday?",
+    "target_text": "wolstû itselde te iten as juster?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01U01",
+   "expect": {
+    "known_text": "they want the same thing to eat",
+    "target_text": "sy wolle itselde te iten"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01U02",
+   "expect": {
+    "known_text": "he didn't want the same thing to eat",
+    "target_text": "hy woe net itselde te iten"
+   }
+  }
+ ],
+ "reason": "cs #121: Kai 16 Nov 'Yes on the Frisian delete despite recordings existing' - Auke: wolle + te iten is a calque (ite), ite untaught at 243",
+ "apply": true
+}

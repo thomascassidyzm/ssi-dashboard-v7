@@ -1,0 +1,235 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "20272f79-e120-454f-92b8-91192ec441ce",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:49:26.241Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-49-26-241Z-20272f79-e120-454f-92b8-91192ec441ce.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0157L01U06",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I was",
+            "legoId": "S0030L01",
+            "target": "bhí mé",
+            "isGhost": false
+          },
+          {
+            "known": "hoping to",
+            "legoId": "S0108L02",
+            "target": " ag súil le",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " é",
+            "isGhost": true
+          },
+          {
+            "known": "to do",
+            "legoId": "S0007L02",
+            "target": " a dhéanamh",
+            "isGhost": false
+          },
+          {
+            "known": "next month",
+            "legoId": "S0157L01",
+            "target": " an mhí seo chugainn",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0144L01U08",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I woke earlier",
+            "legoId": "S0144L01",
+            "target": "dhúisigh mé níos luaithe",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "because",
+            "legoId": "S0022L01",
+            "target": " mar",
+            "isGhost": false
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "I was",
+            "legoId": "S0030L01",
+            "target": " bhí mé",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " súil",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0144L01U07",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I woke earlier",
+            "legoId": "S0144L01",
+            "target": "dhúisigh mé níos luaithe",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " é",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0144L01U05",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I woke earlier",
+            "legoId": "S0144L01",
+            "target": "dhúisigh mé níos luaithe",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "I should",
+            "legoId": "S0098L01",
+            "target": " ba cheart dom",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0144L01U04",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I woke earlier",
+            "legoId": "S0144L01",
+            "target": "dhúisigh mé níos luaithe",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " í",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0144L01U02",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I woke earlier",
+            "legoId": "S0144L01",
+            "target": "dhúisigh mé níos luaithe",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "last night",
+            "legoId": "S0042L02",
+            "target": " aréir",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0144L01B03",
+      "set": {
+        "decomposition": [
+          {
+            "known": "I woke earlier",
+            "legoId": "S0144L01",
+            "target": "dhúisigh mé níos luaithe",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null
+      }
+    }
+  ]
+}

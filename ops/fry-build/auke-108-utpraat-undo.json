@@ -1,0 +1,436 @@
+{
+ "family": "utpraat",
+ "event_id": "a85a3d2e-fe19-482d-8d5e-6f2b613f9091",
+ "undo_file_on_popty": "2026-11-16T12-36-03-083Z-a85a3d2e-fe19-482d-8d5e-6f2b613f9091.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L01U03",
+   "set": {
+    "known_text": "I'll ask her after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0174L01U01",
+   "set": {
+    "known_text": "after you finish can you understand what I wanted to say?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0167L02B03",
+   "set": {
+    "known_text": "what do you need to do after you finish?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03U02",
+   "set": {
+    "known_text": "after you finish can you give me that book before I have to go?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03B04",
+   "set": {
+    "known_text": "after you finish can you give me that book?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0158L03U02",
+   "set": {
+    "known_text": "after you finish, let's talk about something else"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0154L02B03",
+   "set": {
+    "known_text": "where do you want to meet after you finish?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L03U04",
+   "set": {
+    "known_text": "we just need to work hard after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0092L02U03",
+   "set": {
+    "known_text": "we want to keep on doing this after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0090L02B01",
+   "set": {
+    "known_text": "after you finish, that would be great"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0088L02U04",
+   "set": {
+    "known_text": "I'm ready to talk after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0081L02U05",
+   "set": {
+    "known_text": "after you finish, when do you want to start?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0081L01U04",
+   "set": {
+    "known_text": "we want to start after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0075L02U05",
+   "set": {
+    "known_text": "after you finish, have you got more to learn?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0075L01U03",
+   "set": {
+    "known_text": "after you finish have you got the answer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U06",
+   "set": {
+    "known_text": "are you going to help me to understand after you finish?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0070L01U05",
+   "set": {
+    "known_text": "I'd like to tell the story after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0067L01U02",
+   "set": {
+    "known_text": "after you finish, do you want to show me something?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0063L01U01",
+   "set": {
+    "known_text": "after you finish, are you sure that you want to help me?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0061L01U01",
+   "set": {
+    "known_text": "after you finish could you show me something?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L02U07",
+   "set": {
+    "known_text": "I'm going to read the story next week after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0051L04U07",
+   "set": {
+    "known_text": "after you finish I'm going to practise with my friends"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0045L02U02",
+   "set": {
+    "known_text": "I don't need to talk after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0040L02U04",
+   "set": {
+    "known_text": "how do you feel after you finish?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0037L04U04",
+   "set": {
+    "known_text": "after you finish I'm going to try to think about it carefully"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0030L03U04",
+   "set": {
+    "known_text": "I'm going to ask after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L04U03",
+   "set": {
+    "known_text": "after you finish I'm ready to answer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L03U05",
+   "set": {
+    "known_text": "after you finish I don't like taking too much time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L03U08",
+   "set": {
+    "known_text": "after you finish I must go"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L02U05",
+   "set": {
+    "known_text": "after you finish someone else is going to help me"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U05",
+   "set": {
+    "known_text": "I'm going to remember the answer after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L02U04",
+   "set": {
+    "known_text": "I'm going to start talking after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L01U06",
+   "set": {
+    "known_text": "we want to meet each other soon after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L02U05",
+   "set": {
+    "known_text": "after you finish I'm going to meet people"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0021L03U03",
+   "set": {
+    "known_text": "after you finish I'm going to say her name"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L04U04",
+   "set": {
+    "known_text": "after you finish I'm going to learn quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L03U03",
+   "set": {
+    "known_text": "I'd like to come back quickly after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L02U08",
+   "set": {
+    "known_text": "I'm going to say his name after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L03U05",
+   "set": {
+    "known_text": "after you finish I'm going to stop talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L03U03",
+   "set": {
+    "known_text": "after you finish, he and I practise with each other in Frisian"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L02U04",
+   "set": {
+    "known_text": "I want to meet everyone else after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L04U03",
+   "set": {
+    "known_text": "I'm going to say what the answer is after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L03U06",
+   "set": {
+    "known_text": "I'm going to say the answer after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U05",
+   "set": {
+    "known_text": "I'd like to speak with everyone else after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L03U05",
+   "set": {
+    "known_text": "I'm going to speak with you later on after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L02U04",
+   "set": {
+    "known_text": "I'm going to come back after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L03U04",
+   "set": {
+    "known_text": "you speak Frisian with me after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0014L02U04",
+   "set": {
+    "known_text": "after you finish I'm going to practise all day"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L04U03",
+   "set": {
+    "known_text": "after you finish I'm going to say what's going to happen tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L02U02",
+   "set": {
+    "known_text": "I want to guess after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U05",
+   "set": {
+    "known_text": "I'm going to practise speaking as much as possible after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U04",
+   "set": {
+    "known_text": "I'm going to try as hard as I can after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U03",
+   "set": {
+    "known_text": "I can speak a little after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U02",
+   "set": {
+    "known_text": "I want to practise speaking with someone else after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U01",
+   "set": {
+    "known_text": "after you finish I'm going to try to explain what I mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B04",
+   "set": {
+    "known_text": "after you finish I'm going to try"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B03",
+   "set": {
+    "known_text": "I'm going to practise after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B02",
+   "set": {
+    "known_text": "today after you finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B01",
+   "set": {
+    "known_text": "to practise after you finish"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "8bb58060-8862-4c9e-be44-dacfcc7f462a",
+   "set": {
+    "known_text": "after you finish"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 11,
+   "set": {
+    "known_text": "I'd like to be able to speak after you finish."
+   }
+  }
+ ]
+}

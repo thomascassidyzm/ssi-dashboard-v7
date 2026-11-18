@@ -84,9 +84,6 @@ vi.mock('../../services/supabase', () => {
     },
   }
 })
-vi.mock('../../lib/podEngine', () => ({
-  buildMainStage: () => [],
-}))
 vi.mock('../../lib/podAtoms', () => ({
   resolveAtoms: () => [],
   loadPodAtomClipMap: async () => new Map(),

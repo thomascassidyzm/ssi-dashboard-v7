@@ -11,6 +11,7 @@
 // Component rows are skipped (the player never plays them). Presentation and known slots are out of scope.
 //   node tools/audio/revoice-seeds-to-cast.cjs --course spa_for_eng [--seeds 100]              # census + cast voices, nothing rendered
 //   RENDER=1 MAX_CHARS=40000 node tools/audio/revoice-seeds-to-cast.cjs --course spa_for_eng    # real: renders in course order, links in batches
+//   node tools/audio/revoice-seeds-to-cast.cjs --course deu_at_for_eng --seeds 9999 --roles target1 --job "#NNN" --purpose "…"   # one role only; a CAST_ANY_PROVIDER course may be cast off Cartesia (job #76·AA)
 //   PARALLEL=N (default 5) asks in flight per run; Popty's process-wide provider cap (15 for Cartesia) bounds the total across runs
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), quiet: true });
@@ -18,24 +19,31 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), 
 const URL = process.env.POPTY_URL || 'http://localhost:3470';
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio';
 const AGENT = 'revoice-seeds-to-cast (job #863)';
-const ROLES = ['target1', 'target2'];
+const ALL_ROLES = ['target1', 'target2'];
+// --roles known (job #140, fin_for_eng go-live): the English known side onto the cast known voice (Tom-006). Opt-in only: the default stays the two target roles.
+const OPT_IN_ROLES = ['known'];
+/** The words a role's slot says: the known prompt for known, the target text for target1/target2. */
+const textOf = (r, role) => (role === 'known' ? r.known_text : r.target_text);
+// --roles target1 (job #76·AA): re-voice one target slot and leave the other alone (deu_at: Tamara on target1, target2 unchanged).
+let ROLES = ALL_ROLES;
 const LINK_EVERY = 25; // asks per link-clip request: new clips go live within a minute, without a content_version bump per clip
 const LINK_MAX = 500;  // link-clip refuses more per request (TOO_MANY)
 // Rollback record (Tom 2026-10-17): every link is appended here BEFORE it is posted, with the old pointer (expectCurrent), so any
 // course can be put back by linking each row's `old` audioId over `new` (replace + expectCurrent: new). JSONL, one link per line.
 const fs = require('fs');
 const { evidencePath } = require('../lib/evidence-path.cjs');
-const bare = (v) => String(v || '').replace(/^cartesia_/, '');
+const bare = (v) => String(v || '').replace(/^(cartesia|elevenlabs|azure|xai)_/, '');
 
 /**
  * The ask a re-voice sends to the render route. A re-voice exists to put a course into its cast voice, so a library clip in any other
  * voice must be a MISS (then a render), never a relink (job #464). voiceBound is named here on purpose: the route defaults to it
  * (job #944) but this tool must not depend on a default, and with no cast voice for the role there is nothing to bind to, so it throws.
  */
-function renderAsk(course, a, castByRole, purpose) {
+function renderAsk(course, a, castByRole, purpose, job) {
   const voiceId = castByRole[a.role];
   if (!voiceId) throw new Error(`re-voice of ${course}: no cast voice for role ${a.role}; refusing to ask the library for any-voice reuse`);
-  return { courseCode: course, role: a.role, text: a.text, voiceId, voiceBound: true, purpose };
+  // job: what the spend guard and the re-record gate match a Tom-signed raise / grant against ("#NNN").
+  return { courseCode: course, role: a.role, text: a.text, voiceId, voiceBound: true, purpose, ...(job ? { job } : {}), ...(process.env.APPROVAL ? { approval: process.env.APPROVAL } : {}) };
 }
 
 /** One JSONL line per link, carrying the OLD pointer: the whole rollback is linking `old` back over `new`. */
@@ -44,15 +52,17 @@ function rollbackLines(course, links, at) {
 }
 
 /** Slots whose clip is TTS on a voice other than the cast voice for the role, grouped into one ask per (role, words), course order. */
-function staleAsks(rows, clips, castByRole) {
+function staleAsks(rows, clips, castByRole, roles = ROLES) {
   const asks = new Map();
   for (const r of rows) {
-    for (const role of ROLES) {
+    for (const role of roles) {
       const cur = r[`${role}_audio_id`] ? String(r[`${role}_audio_id`]) : null;
       const c = cur && clips.get(cur);
       if (!c || c.origin !== 'tts' || bare(c.voice_id) === bare(castByRole[role])) continue;
-      const k = `${role}\u0000${r.target_text}`;
-      if (!asks.has(k)) asks.set(k, { role, text: r.target_text, firstSeed: r.seed_number, chars: r.target_text.length, slots: [] });
+      const text = textOf(r, role);
+      if (!text) continue;
+      const k = `${role}\u0000${text}`;
+      if (!asks.has(k)) asks.set(k, { role, text, firstSeed: r.seed_number, chars: text.length, slots: [] });
       const a = asks.get(k);
       a.firstSeed = Math.min(a.firstSeed, r.seed_number);
       a.slots.push({ ...r.slot, role, current: cur, oldVoice: c.voice_id });
@@ -65,14 +75,17 @@ function staleAsks(rows, clips, castByRole) {
  * The cast voice per target role. RESOLVED first (job #864, por_for_eng): a course whose row still stores its old Azure voices
  * (Raquel/Duarte) but whose language cast resolves to Cartesia (Mariana/Matias) renders in the cast, so the cast is what slots move
  * to. Copying the cast into the course row instead is the per-course duplication voice-config-service refuses (updateVoiceRole).
- * Stored is the fallback for an answer without a resolution. Anything not Cartesia is no cast: stop and report, never invent one.
+ * Stored is the fallback for an answer without a resolution. Anything not Cartesia is no cast — EXCEPT on a course whose language is
+ * in the cast gate's CAST_ANY_PROVIDER set (job #76·AA: deu_at's target1 is Kai's ElevenLabs Tamara, ruled into that set by
+ * ccf153328), where any provider the gate accepts counts. Stop and report otherwise, never invent one.
  */
-function castFromVoiceConfig(vc) {
+function castFromVoiceConfig(vc, { roles = ROLES, anyProvider = false } = {}) {
   const castByRole = {};
-  for (const role of ROLES) {
+  for (const role of roles) {
     const v = (vc && vc.resolved && vc.resolved.voices && vc.resolved.voices[role]) || (vc && vc.stored && vc.stored.voices && vc.stored.voices[role]) || null;
-    if (!v || v.provider !== 'cartesia' || !v.voiceId) return { castByRole, missing: { role, voice: v } };
-    castByRole[role] = `cartesia_${bare(v.voiceId)}`;
+    const ok = v && v.voiceId && (v.provider === 'cartesia' || (anyProvider && ['elevenlabs', 'azure'].includes(v.provider)));
+    if (!ok) return { castByRole, missing: { role, voice: v } };
+    castByRole[role] = `${v.provider}_${bare(v.voiceId)}`;
   }
   return { castByRole, missing: null };
 }
@@ -92,7 +105,7 @@ async function postWith(fetchFn, wait, p, body, tries = 8) {
   for (let a = 1; ; a++) {
     let r;
     try {
-      const res = await fetchFn(`${URL}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
+      const res = await fetchFn(`${URL}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT, ...(body && body.approval && process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {}) }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
       r = { status: res.status, body: await res.json().catch(() => ({})) };
     } catch (e) { r = { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.code || e.name) } }; }
     if (!isDropped(r) || a >= tries) return r;
@@ -177,22 +190,25 @@ async function main() {
   const COURSE = arg('course'); const SEEDS = +arg('seeds', 100); const FROM = +arg('from', 1); // --from N: a second run takes seeds N.. while another owns the lower ones (job #366 beside #339)
   if (!COURSE) throw new Error('--course required');
   const RENDER = process.env.RENDER === '1', MAX = +(process.env.MAX_CHARS || 0);
-  const PURPOSE = `job #863: ${COURSE} seeds 1-${SEEDS} target slots onto the course cast voices (Tom 2026-10-12)`;
+  if (arg('roles')) ROLES = arg('roles').split(',').map((r) => { if (![...ALL_ROLES, ...OPT_IN_ROLES].includes(r)) throw new Error(`--roles: ${r} is not ${[...ALL_ROLES, ...OPT_IN_ROLES].join(' or ')}`); return r; });
+  const JOB = arg('job', null); // "#NNN": named on every render so a Tom-signed grant / raise for that job applies
+  const PURPOSE = arg('purpose', `job #863: ${COURSE} seeds 1-${SEEDS} target slots onto the course cast voices (Tom 2026-10-12)`);
   const db = require('../../services/shared/agent-db.cjs');
 
   // The cast is what a render will use, from Popty's own read route; the voice is named on every render so a clip can never land off-cast.
   const vc = await fetch(`${URL}/api/courses/${COURSE}/voice-config/resolved`).then((r) => r.json()).catch(() => ({}));
-  const { castByRole, missing } = castFromVoiceConfig(vc);
+  const anyProvider = require('../../services/shared/voice-cast-gate.cjs').CAST_ANY_PROVIDER.has(COURSE.split('_for_')[0]);
+  const { castByRole, missing } = castFromVoiceConfig(vc, { roles: ROLES, anyProvider });
   if (missing) { console.log(`NO CAST for ${missing.role}: ${JSON.stringify(missing.voice).slice(0, 300)}`); return; }
-  console.log(`${COURSE} cast: target1 ${castByRole.target1}, target2 ${castByRole.target2}`);
+  console.log(`${COURSE} cast: ${ROLES.map((r) => `${r} ${castByRole[r]}`).join(', ')}`);
 
   const pg = await db.connect();
-  const sel = 'seed_number, target_text, target1_audio_id, target2_audio_id';
+  const sel = 'seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id';
   const S = (await pg.query(`SELECT ${sel} FROM course_seeds WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { seedNumber: r.seed_number } }));
   const L = (await pg.query(`SELECT lego_id, ${sel} FROM course_legos WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { legoId: r.lego_id } }));
   const P = (await pg.query(`SELECT id, ${sel} FROM course_practice_phrases WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3 AND phrase_role <> 'component'`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { phraseId: r.id } }));
   const rows = [...S, ...L, ...P];
-  const clips = await db.clipMap(pg, rows.flatMap((r) => [r.target1_audio_id, r.target2_audio_id]), { cols: 'id::text AS id, text, voice_id, origin' });
+  const clips = await db.clipMap(pg, rows.flatMap((r) => [r.known_audio_id, r.target1_audio_id, r.target2_audio_id]), { cols: 'id::text AS id, text, voice_id, origin' });
   await pg.end();
 
   const asks = staleAsks(rows, clips, castByRole);
@@ -224,7 +240,7 @@ async function main() {
   let n = 0;
   const budget = makeBudget(MAX);
   const oneReserved = async (a, spentNow, stop) => {
-    const r = await post('/api/audio/render', renderAsk(COURSE, a, castByRole, PURPOSE));
+    const r = await post('/api/audio/render', renderAsk(COURSE, a, castByRole, PURPOSE, JOB));
     // A response that says chars were spent keeps its reservation whatever happens next (storage / write-back failing after the provider was paid).
     const paid = +(r.body && r.body.charsSpent) || 0;
     spentNow(paid); // an answer is known: 0 releases the reservation (library hit, refusal), >0 keeps it
@@ -257,5 +273,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { makeBudget, runPool, auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
+module.exports = { textOf, makeBudget, runPool, auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

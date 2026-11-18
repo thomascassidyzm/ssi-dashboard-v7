@@ -27,6 +27,9 @@
 //     Drift aborts the whole transaction (the sweep protocol's "abort on drift").
 
 const { hasNonExampleText } = require('../course-builder/lib/validation.cjs');
+const { romanGoesStale, ROMAN_STALE_MESSAGE } = require('./roman-sync.cjs');
+const spokenWords = require('./clip-spoken-words.cjs');
+const legoReorder = require('./lego-reorder.cjs');
 
 const MAX_OPS = 2000;
 
@@ -40,7 +43,8 @@ const DIFF_IGNORE = new Set(['version', 'updated_at', 'last_edit_event_id', 'tex
 // content tables so an undo can put a clip back; the checked door for linking a
 // clip is `audio.link`, which proves the clip speaks the row's words.
 const UPDATABLE = {
-  course_seeds: ['known_text', 'target_text', 'target_text_roman', 'status', 'approved_at',
+  // frame_mask: the row's frames as bits, P1 = bit 0 (job #446, tools/frame-layer/v4/write-frame-masks.cjs).
+  course_seeds: ['known_text', 'target_text', 'target_text_roman', 'status', 'approved_at', 'frame_mask',
     'known_audio_id', 'target1_audio_id', 'target2_audio_id'],
   course_legos: ['known_text', 'target_text', 'type', 'is_new', 'components', 'status',
     'target_text_roman', 'known_gloss_segments', 'target_lego_id',
@@ -48,7 +52,7 @@ const UPDATABLE = {
   course_practice_phrases: ['known_text', 'target_text', 'phrase_role', 'position', 'introduce',
     'status', 'register', 'difficulty', 'lego_id', 'connected_lego_ids', 'lego_position',
     'target_text_roman', 'metadata', 'known_gloss_segments', 'word_count', 'lego_count',
-    'target_syllable_count', 'target_phrase_id', 'decomposition', 'decomposition_course_version',
+    'target_syllable_count', 'target_phrase_id', 'decomposition', 'decomposition_course_version', 'frame_mask',
     'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'],
   // s3_key, clip_id, id and course_code are not metadata: moving them moves the
   // file a slot plays, which is the render route's business, not this door's.
@@ -65,6 +69,11 @@ const DELETABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expa
 // course_legos.lego_id is a GENERATED column (S<seed>L<index>): it is read, never written.
 const GENERATED = { course_legos: ['lego_id'] };
 const LEGO_TYPES = ['A', 'M'];
+// What an insert's copy_of must match in its source row to be exempt from the new-row shape rules.
+const COPY_CHECKED = {
+  course_legos: ['seed_number', 'lego_index', 'type', 'is_new', 'known_text', 'target_text', 'components'],
+  course_practice_phrases: ['seed_number', 'lego_index', 'phrase_role', 'known_text', 'target_text'],
+};
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const LEGO_ID_RE = /^S\d{4}L\d{2}$/;
@@ -79,16 +88,26 @@ const OP_HELP = {
   'seed.update':   { key: 'seed_number', set: UPDATABLE.course_seeds },
   'lego.update':   { key: 'lego_id (S0001L02) or id (uuid)', set: UPDATABLE.course_legos },
   'phrase.update': { key: 'phrase_id', set: UPDATABLE.course_practice_phrases },
-  'phrase.insert': { row: 'full course_practice_phrases row; id must start "<course>:"' },
+  'phrase.insert': { row: 'full course_practice_phrases row; id must start "<course>:"',
+                     copy_of: 'optional {course, id}: a verbatim copy of that course\'s phrase; may carry its empty side, refused unless seed_number/lego_index/role/texts match it' },
   'phrase.delete': { key: 'phrase_id', note: 'its course_qa_flags rows go with it' },
   'lego.insert':   { row: 'course_legos row: seed_number (the seed must exist), lego_index (free), known_text, target_text, type A|M (M needs components[]); lego_id is derived',
+                     copy_of: 'optional {course, id}: a verbatim copy of that course\'s LEGO; skips the shape rules, refused unless seed_number/lego_index/type/is_new/texts/components match it',
                      note: 'structural: on a beta/released course an apply needs "tom_go". The undo is lego.delete.' },
   'lego.delete':   { key: 'lego_id (S0001L02) or id (uuid)', cascade_phrases: 'true to delete its BUILD/USE/component rows with it; otherwise refused while any remain',
                      note: 'structural: on a beta/released course an apply needs "tom_go". Clips are never deleted. The undo re-inserts the LEGO and its phrases whole.' },
+  'lego.reorder':  { key: 'seed_number', order: 'every LEGO of the seed, each named once, in the NEW teaching order: lego_ids (S0012L03) or uuids',
+                     moves: 'lego_index is the teaching order and lego_id is generated from it, so a reorder RELABELS the seed\'s LEGOs. Moved with them, in one transaction: the seed\'s phrases (lego_index, lego_id, and the label inside the text id …:S0012L01B01), their course_qa_flags (phrase_id, lego_id), every decomposition tile and connected_lego_ids entry anywhere in the course, course_audio.lego_id, lego_introductions, course_lego_positions, course_audio_usage. uuids, texts and audio links are untouched.',
+                     never: 'learner state (lego_progress, learner_lego_metrics, learner_l1_state, course_enrollments cursors, classes / class_sessions cursors): an apply is REFUSED (LEARNER_STATE) while any row names a moved LEGO; the dry run counts them. course_round_signoffs are counted, not carried (a sign-off is a verdict on the round as it was).',
+                     phrases: 'optional {"<phrase id, before or after the reorder>": "keep"|"move"|"delete"}. The dry run lists, under results[].phrases, every phrase of the seed whose basket now uses a piece of the seed taught LATER (status newly_reaches_forward) with a proposal: move (to the first basket where all its pieces are taught, as a USE phrase, QA flags following) / keep / delete; to edit one instead, add a phrase.update after this op in the same batch and mark it keep. An apply is REFUSED (PHRASES_UNDECIDED) until every newly_reaches_forward phrase has a decision. already_reached_forward / fixed_by_reorder / unchecked (no tiles) are listed for information. Decisions run in the dry run too.',
+                     phrases_default: '"keep": keep every flagged phrase without naming them (the undo uses it)',
+                     refusals: 'PHRASES_UNDECIDED (apply only), PHRASE_NOT_FLAGGED, MOVE_UNSUPPORTED, ORDER_MISMATCH (order is not exactly the seed\'s LEGOs), REORDER_NOOP (order is the current order), NO_SUCH_SEED, TOO_MANY_LEGOS (an index above 49 leaves no room to park), LEARNER_STATE (apply only)',
+                     note: 'structural: on a beta/released course an apply needs "tom_go" (or kai_go). The undo puts moved/deleted phrases back, then runs the reverse lego.reorder by uuid.' },
   'audio.link':    { key: 'target: seed|lego|phrase + seed_number|lego_id|phrase_id', slot: SLOTS,
                      audio_id: 'course_audio id, or null to unlink',
                      note: 'refused unless the clip speaks the row\'s words (normalize_text); allow_text_mismatch:true overrides. presentation is exempt.' },
   'audio.update':  { key: 'audio_id', set: UPDATABLE.course_audio },
+  'audio.spoken':  { key: 'audio_id', spoken_text: 'the words the clip SAYS where they differ from its text (or null to remove)', basis: 'the evidence', note: 'clip_spoken_text, pinned to the clip\'s current audio_revision; every reuse path then refuses the clip for its text (cs #160·AI)' },
   'gender.update': { key: 'id', set: UPDATABLE.course_gender_expansions },
   'gender.insert': { row: 'course_gender_expansions row (id optional)' },
   'gender.delete': { key: 'id' },
@@ -137,8 +156,22 @@ function planOp(op, index, courseCode) {
       // A row that carries its `id` is a RESTORE (the undo of lego.delete puts back exactly what was there,
       // legacy values and all); only a NEW LEGO is held to the content shape.
       const restoring = row.id !== undefined;
+      // A VERBATIM COPY of an existing LEGO in another course (job #519: gle_for_eng into its draft
+      // copy) is exempt from the new-LEGO shape rules for the same reason a restore is: it re-states
+      // a row that already exists, legacy shape and all (gle_for_eng has 52 M LEGOs with no
+      // components). The exemption is not taken on trust — runPlans() reads the named source row in
+      // the same transaction and refuses (COPY_MISMATCH) unless its content columns are identical.
+      let copyOf = null;
+      if (op.copy_of !== undefined) {
+        const c = op.copy_of;
+        if (!c || typeof c !== 'object' || typeof c.course !== 'string' || !c.course || c.course === courseCode || !UUID_RE.test(String(c.id || ''))) {
+          throw new EditOpError(index, 'lego.insert copy_of must be {course: <another course code>, id: <its course_legos uuid>}');
+        }
+        if (restoring) throw new EditOpError(index, 'lego.insert: copy_of and row.id cannot be combined (a copy gets a new id)');
+        copyOf = { course: c.course, id: String(c.id) };
+      }
       if (typeof row.target_text !== 'string' || !row.target_text.trim()) throw new EditOpError(index, 'lego.insert row.target_text is required');
-      if (!restoring) {
+      if (!restoring && !copyOf) {
         for (const c of ['known_text', 'target_text']) {
           if (typeof row[c] !== 'string' || !row[c].trim()) throw new EditOpError(index, `lego.insert row.${c} is required`);
           if (hasNonExampleText(row[c])) throw new EditOpError(index, `${c} must be plain speakable text: no brackets, (notes) or slash-separated alternatives`, 'NON_EXAMPLE_TEXT');
@@ -149,7 +182,7 @@ function planOp(op, index, courseCode) {
       if (row.lego_id !== undefined && row.lego_id !== legoIdOf(seedN, idx)) throw new EditOpError(index, `row.lego_id is derived from seed_number + lego_index (${legoIdOf(seedN, idx)}); leave it out`);
       if (row.id !== undefined && !UUID_RE.test(String(row.id))) throw new EditOpError(index, 'lego.insert row.id must be a uuid when given');
       return { ...base, table: 'course_legos', kind: 'insert', structural: true, row: stripNeverSet(row, 'course_legos'),
-        key: { seed_number: seedN, lego_index: idx }, courseCode };
+        key: { seed_number: seedN, lego_index: idx }, courseCode, ...(copyOf ? { copyOf } : {}) };
     }
     case 'lego.delete': {
       return { ...base, table: 'course_legos', kind: 'delete', structural: true, cascadePhrases: op.cascade_phrases === true, where: legoWhere(op, index, courseCode) };
@@ -163,13 +196,38 @@ function planOp(op, index, courseCode) {
       if (typeof row.id !== 'string' || !hasPhraseIdPrefix(row.id, courseCode)) {
         throw new EditOpError(index, `phrase.insert row.id must start "${courseCode}:"`);
       }
-      for (const c of ['seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role']) {
+      // copy_of (job #519): a verbatim copy of another course's phrase may carry that row's legacy
+      // empty side (gle_for_eng S0014L02C01, a component with no known text); runPlans() proves it verbatim.
+      let copyOf = null;
+      if (op.copy_of !== undefined) {
+        const c = op.copy_of;
+        if (!c || typeof c !== 'object' || typeof c.course !== 'string' || !c.course || c.course === courseCode || typeof c.id !== 'string' || !c.id.startsWith(`${c.course}:`)) {
+          throw new EditOpError(index, 'phrase.insert copy_of must be {course: <another course code>, id: <its phrase id>}');
+        }
+        copyOf = { course: c.course, id: c.id };
+      }
+      for (const c of copyOf ? ['seed_number', 'lego_index', 'phrase_role'] : ['seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role']) {
         if (row[c] === undefined || row[c] === null || row[c] === '') throw new EditOpError(index, `phrase.insert row.${c} is required`);
       }
       for (const c of ['known_text', 'target_text']) {
         if (hasNonExampleText(row[c])) throw new EditOpError(index, `${c} must be plain speakable text`, 'NON_EXAMPLE_TEXT');
       }
-      return { ...base, table: 'course_practice_phrases', kind: 'insert', row: stripNeverSet(row, 'course_practice_phrases'), key: { id: row.id }, courseCode };
+      return { ...base, table: 'course_practice_phrases', kind: 'insert', row: stripNeverSet(row, 'course_practice_phrases'), key: { id: row.id }, courseCode, ...(copyOf ? { copyOf } : {}) };
+    }
+    case 'lego.reorder': {
+      const n = Number(op.seed_number);
+      if (!Number.isInteger(n) || n < 1) throw new EditOpError(index, 'lego.reorder needs seed_number');
+      if (!Array.isArray(op.order) || op.order.length < 2) throw new EditOpError(index, 'lego.reorder needs "order": the seed\'s LEGOs (lego_id or uuid) in the new order', 'ORDER_MISMATCH');
+      const order = op.order.map(String);
+      const bad = order.filter(x => !UUID_RE.test(x) && !LEGO_ID_RE.test(x));
+      if (bad.length) throw new EditOpError(index, `lego.reorder order entries must be lego_ids (S0012L03) or uuids; not: ${bad.join(', ')}`, 'ORDER_MISMATCH');
+      const phrases = op.phrases === undefined ? {} : op.phrases;
+      if (!phrases || typeof phrases !== 'object' || Array.isArray(phrases)) throw new EditOpError(index, 'lego.reorder "phrases" must be {"<phrase id>": "keep"|"move"|"delete"}');
+      const badAct = Object.entries(phrases).filter(([, v]) => !legoReorder.PHRASE_ACTIONS.includes(v));
+      if (badAct.length) throw new EditOpError(index, `lego.reorder phrase decisions must be ${legoReorder.PHRASE_ACTIONS.join('|')}; not: ${badAct.map(([k, v]) => `${k}=${v}`).join(', ')}`);
+      if (op.phrases_default !== undefined && op.phrases_default !== 'keep') throw new EditOpError(index, 'lego.reorder phrases_default may only be "keep"');
+      return { ...base, table: 'course_legos', kind: 'reorder', structural: true, where: { course_code: courseCode, seed_number: n }, order,
+        phrases, phrasesDefault: op.phrases_default === 'keep' ? 'keep' : null };
     }
     case 'audio.link': {
       const slot = op.slot;
@@ -197,6 +255,17 @@ function planOp(op, index, courseCode) {
     case 'audio.update': {
       if (!UUID_RE.test(String(op.audio_id || ''))) throw new EditOpError(index, 'audio.update needs audio_id (uuid)');
       return { ...base, table: 'course_audio', kind: 'update', where: { course_code: courseCode, id: op.audio_id }, set: needSet('course_audio') };
+    }
+    case 'audio.spoken': {
+      // The words a clip SAYS where they are not its label (clip_spoken_text; cs #160·AI, shared/clip-spoken-words.cjs).
+      // spoken_text null removes the verdict. The verdict is pinned to the clip's CURRENT audio_revision, read in the
+      // transaction; a later re-record makes it stale and every reuse path ignores it again.
+      if (!UUID_RE.test(String(op.audio_id || ''))) throw new EditOpError(index, 'audio.spoken needs audio_id (uuid)');
+      const spoken = op.spoken_text === null ? null : (typeof op.spoken_text === 'string' && op.spoken_text.trim() ? op.spoken_text : undefined);
+      if (spoken === undefined) throw new EditOpError(index, 'audio.spoken needs spoken_text (the words the clip says), or null to remove the verdict');
+      if (spoken !== null && !(typeof op.basis === 'string' && op.basis.trim())) throw new EditOpError(index, 'audio.spoken needs basis: the evidence for the spoken words');
+      return { ...base, table: 'clip_spoken_text', kind: 'spoken', where: { course_code: courseCode, id: op.audio_id },
+        audioId: op.audio_id, spokenText: spoken, basis: spoken === null ? null : op.basis };
     }
     case 'gender.update': {
       if (!UUID_RE.test(String(op.id || ''))) throw new EditOpError(index, 'gender.update needs id (uuid)');
@@ -345,7 +414,8 @@ function undoFor(plan, before, after, opName) {
  * @param {() => Promise<string>} [args.eventId]  called once, only when applying; its id is stamped on content rows
  * @returns {Promise<{applied, results, undo_ops, touched}>}
  */
-async function runPlans({ connect, courseCode, plans, apply, eventId }) {
+async function runPlans({ connect, courseCode, plans, apply, eventId, approval = null }) {
+  const trigApproval = triggerApprovalFor(approval); // throws BAD_APPROVAL before any connection is opened
   const client = await connect();
   const results = [];
   const undo = [];
@@ -354,11 +424,56 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
   try {
     await client.query('BEGIN');
     await client.query(`SET LOCAL statement_timeout = '60s'`);
+    // Kai's/Tom's human-take grant: transaction-local (is_local=true), so it dies with this COMMIT/ROLLBACK and cannot leak to a pooled connection.
+    if (trigApproval) {
+      await client.query(`SELECT set_config('popty.tom_human_take_approval', $1, true)`, [trigApproval]);
+      console.log(`[human-take] approval by ${approverOf(approval)} on edit-batch ${courseCode}: ${approval}`);
+    }
     const evId = apply && eventId ? await eventId() : null;
     const typesCache = new Map();
     const types = async (t) => { if (!typesCache.has(t)) typesCache.set(t, await columnTypes(client, t)); return typesCache.get(t); };
 
     for (const plan of plans) {
+      if (plan.kind === 'spoken') {
+        // audio.spoken: the clip must be this course's; expect asserts against the CLIP row (e.g. {text, audio_revision}).
+        const clip = (await selectRow(client, 'course_audio', plan.where, { lock: true }))[0];
+        if (!clip) throw new EditOpError(plan.index, `audio.spoken: no course_audio row ${plan.audioId} in ${courseCode}`, 'NOT_FOUND');
+        if (plan.expect) {
+          const drift = Object.entries(plan.expect).filter(([c, v]) => !same(clip[c], v));
+          if (drift.length) throw new EditOpError(plan.index, `before-state drift on ${drift.map(([c, v]) => `${c} (expected ${JSON.stringify(v)}, found ${JSON.stringify(clip[c])})`).join('; ')}`, 'DRIFT');
+        }
+        const before = (await selectRow(client, 'clip_spoken_text', { audio_id: clip.id }, { lock: true }))[0] || null;
+        let after = null;
+        if (plan.spokenText === null) {
+          await client.query(`DELETE FROM clip_spoken_text WHERE audio_id = $1`, [clip.id]);
+        } else {
+          const { rows } = await client.query(
+            `INSERT INTO clip_spoken_text (audio_id, spoken_text, basis, audio_revision, checked_at) VALUES ($1, $2, $3, $4, now())
+             ON CONFLICT (audio_id) DO UPDATE SET spoken_text = EXCLUDED.spoken_text, basis = EXCLUDED.basis,
+               audio_revision = EXCLUDED.audio_revision, checked_at = EXCLUDED.checked_at RETURNING *`,
+            [clip.id, plan.spokenText, plan.basis, clip.audio_revision ?? 1]);
+          after = rows[0];
+        }
+        touched.audio_ids.add(clip.id);
+        const changed = !(before && after && before.spoken_text === after.spoken_text && before.basis === after.basis && Number(before.audio_revision) === Number(after.audio_revision)) && !(!before && !after);
+        const u = !changed ? null : before
+          ? { op: 'audio.spoken', audio_id: clip.id, spoken_text: before.spoken_text, basis: before.basis }
+          : { op: 'audio.spoken', audio_id: clip.id, spoken_text: null };
+        if (u) undo.unshift(u);
+        results.push({ index: plan.index, op: plan.name, key: { audio_id: clip.id }, clip_text: clip.text, audio_revision: clip.audio_revision, before, after, changed });
+        continue;
+      }
+      if (plan.kind === 'reorder') {
+        const r = await legoReorder.runReorder(client, plan, courseCode, { evId, apply, types,
+          fail: (msg, code) => { throw new EditOpError(plan.index, msg, code); } });
+        touched.legos = true;
+        touched.seed_numbers.add(plan.where.seed_number);
+        for (const id of r.lego_ids) touched.lego_ids.add(id);
+        for (const id of r.phrase_ids) touched.phrase_ids.add(id);
+        undo.unshift(...r.undo_ops);
+        results.push({ index: plan.index, op: plan.name, key: plan.where, ...r.result, changed: true });
+        continue;
+      }
       const t = await types(plan.table);
       let before = null, after = null, cascadeUndo = null;
 
@@ -378,6 +493,12 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
           if (!seed.length) throw new EditOpError(plan.index, `lego.insert: ${courseCode} has no seed ${row.seed_number}; a LEGO needs its seed`, 'NO_SUCH_SEED');
           const taken = await selectRow(client, 'course_legos', { course_code: courseCode, seed_number: row.seed_number, lego_index: row.lego_index });
           if (taken.length) throw new EditOpError(plan.index, `lego.insert: ${legoIdOf(row.seed_number, row.lego_index)} already exists`, 'EXISTS');
+        }
+        if (plan.copyOf) {
+          const src = (await selectRow(client, plan.table, { course_code: plan.copyOf.course, id: plan.copyOf.id }))[0];
+          if (!src) throw new EditOpError(plan.index, `${plan.name} copy_of: ${plan.copyOf.course} has no row ${plan.copyOf.id}`, 'COPY_MISMATCH');
+          const differ = COPY_CHECKED[plan.table].filter(c => !same(src[c] ?? null, row[c] ?? null));
+          if (differ.length) throw new EditOpError(plan.index, `${plan.name} copy_of: not a verbatim copy of ${plan.copyOf.course} ${src.lego_id || src.id} (${differ.join(', ')} differ)`, 'COPY_MISMATCH');
         }
         // Text first, audio links after (see header): an insert has no OLD, but the
         // phrase trigger refusing component presentation binds still reads NEW.
@@ -438,6 +559,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
           if (flags.length) cascadeUndo = [{ op: 'phrase.insert', row: stripNeverSet(before, 'course_practice_phrases') },
             ...flags.map(f => ({ op: 'qaflag.restore', row: stripNeverSet(f, 'course_qa_flags') }))];
         } else {
+          if (romanGoesStale(before, plan.set)) throw new EditOpError(plan.index, `${plan.name}: ${ROMAN_STALE_MESSAGE}`, 'ROMAN_STALE');
           if (plan.link && plan.link.audioId) await checkLink(client, plan, before, courseCode);
           const textSet = {}, audioSet = {};
           for (const [c, v] of Object.entries(plan.set)) (AUDIO_COLS.includes(c) ? audioSet : textSet)[c] = v;
@@ -494,6 +616,16 @@ async function checkLink(client, plan, before, courseCode) {
       `audio.link: clip ${audioId} says ${JSON.stringify(rows[0].text)} but the ${slot} text is ${JSON.stringify(rowText)} (allow_text_mismatch:true to link anyway)`,
       'TEXT_MISMATCH');
   }
+  // The words the clip SAYS (cs #160·AI, shared/clip-spoken-words.cjs): a clip filed under this text that says other words
+  // (an in-place female-form re-record) is refused too, unless allow_text_mismatch.
+  const { rows: sp } = await client.query(
+    `SELECT s.spoken_text FROM clip_spoken_text s JOIN course_audio a ON a.id = s.audio_id
+      WHERE s.audio_id = $1 AND s.audio_revision = a.audio_revision`, [audioId]);
+  if (sp.length && spokenWords.saysOtherWords({ spoken_text: sp[0].spoken_text }, rowText)) {
+    throw new EditOpError(plan.index,
+      `audio.link: clip ${audioId} is filed as ${JSON.stringify(rows[0].text)} but says ${JSON.stringify(sp[0].spoken_text)} (clip_spoken_text); the ${slot} text is ${JSON.stringify(rowText)} (allow_text_mismatch:true to link anyway)`,
+      'SPOKEN_WORDS_MISMATCH');
+  }
 }
 
 function summarise(row, plan) {
@@ -506,10 +638,12 @@ function summarise(row, plan) {
   return out;
 }
 
+const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs');
+
 module.exports = { planOp, planOps, runPlans, undoFor, OP_HELP, UPDATABLE, EditOpError, MAX_OPS };
 
 /**
- * The live-course gate for STRUCTURAL ops (lego.insert, lego.delete). They move the
+ * The live-course gate for STRUCTURAL ops (lego.insert, lego.delete, lego.reorder). They move the
  * rounds a learner walks, so on a beta/released course an APPLY needs Tom's words
  * ("tom_go"), exactly as the v4 gap-fill door asks. A preview never needs it.
  * Returns null when fine, else {status, error, code}. Pure.
@@ -518,7 +652,7 @@ function structuralGate({ plans, courseStatus, apply, tomGo, kaiGo }) {
   if (!apply || !plans.some(p => p.structural)) return null;
   if (['beta', 'released'].includes(courseStatus) && !String(tomGo || '').trim() && !String(kaiGo || '').trim()) {
     return { status: 409, code: 'TOM_GO_REQUIRED',
-      error: `refusing: this course is ${courseStatus} (served to learners) and the batch inserts/deletes a LEGO; an apply needs "tom_go": "<Tom's words>". A preview needs nothing.` };
+      error: `refusing: this course is ${courseStatus} (served to learners) and the batch inserts, deletes or reorders LEGOs; an apply needs "tom_go": "<Tom's words>". A preview needs nothing.` };
   }
   return null;
 }

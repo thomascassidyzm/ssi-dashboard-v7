@@ -1,0 +1,430 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "908ea67f-7fb6-441c-ac3c-e48361250333",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:47:49.012Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-47-49-012Z-908ea67f-7fb6-441c-ac3c-e48361250333.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0181L05U04",
+      "set": {
+        "known_text": "I have to ask her what are you going to do before she has to leave on Sunday",
+        "target_text": "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0181L05U01",
+      "set": {
+        "target_text": "caithfidh mé mo mháthair a thabhairt chuig an dochtúir tráthnóna Dé Domhnaigh faraor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U08",
+      "set": {
+        "target_text": "go raibh maith agat agus beidh mé in ann teacht agus cabhrú leat tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U07",
+      "set": {
+        "target_text": "fiafróidh mé de an mbeidh sé in ann cabhrú tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U06",
+      "set": {
+        "target_text": "ní raibh am agam tráthnóna Dé Domhnaigh cé gur mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U05",
+      "set": {
+        "target_text": "an mian leat dul chuig bialann tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U04",
+      "set": {
+        "target_text": "tráthnóna Dé Domhnaigh beidh mé in ann teacht agus cabhrú leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U03",
+      "set": {
+        "target_text": "níl mé chun dul abhaile tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U02",
+      "set": {
+        "target_text": "an bhfuil tú chun teacht ar ais tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03U01",
+      "set": {
+        "target_text": "ba mhaith liom tú a fheiceáil tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03B04",
+      "set": {
+        "target_text": "ní raibh am agam tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03B03",
+      "set": {
+        "target_text": "dul chuig bialann tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03B02",
+      "set": {
+        "target_text": "tráthnóna Dé Domhnaigh agus ansin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0179L03B01",
+      "set": {
+        "target_text": "tú a fheiceáil tráthnóna Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03U07",
+      "set": {
+        "target_text": "go raibh maith agat beidh mé in ann teacht agus cabhrú leat maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03U06",
+      "set": {
+        "target_text": "bhí mé tuirseach maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03U05",
+      "set": {
+        "target_text": "tá súil agam go gcríochnóidh tú maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03U04",
+      "set": {
+        "target_text": "maidin Dé Domhnaigh caithfidh muid obair go dian"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03U03",
+      "set": {
+        "target_text": "an mian leat dul chuig bialann maidin Dé Domhnaigh nó tráthnóna amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03U02",
+      "set": {
+        "target_text": "maidin Dé Domhnaigh ní bheidh mé réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03U01",
+      "set": {
+        "target_text": "cad atá le déanamh agat maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03B04",
+      "set": {
+        "target_text": "teacht agus cabhrú leat maidin Dé Domhnaigh agus ansin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03B03",
+      "set": {
+        "target_text": "dul chuig bialann maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03B02",
+      "set": {
+        "target_text": "níos déanaí maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0175L03B01",
+      "set": {
+        "target_text": "maidin Dé Domhnaigh agus ansin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04U07",
+      "set": {
+        "target_text": "caithfidh muid imeacht maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04U06",
+      "set": {
+        "target_text": "ba mhaith liom tú a fheiceáil maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04U05",
+      "set": {
+        "target_text": "tá súil agam go gcríochnóidh tú maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04U04",
+      "set": {
+        "target_text": "maidin Dé Domhnaigh labhraímis i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04U03",
+      "set": {
+        "target_text": "níl mé chun imeacht maidin Dé Domhnaigh mar mothaím tuirseach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04U02",
+      "set": {
+        "target_text": "an mian leat dul chuig bialann maidin Dé Domhnaigh nó anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04U01",
+      "set": {
+        "target_text": "an féidir leat bualadh linn maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04B04",
+      "set": {
+        "target_text": "tú a fheiceáil maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04B03",
+      "set": {
+        "target_text": "dul abhaile maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04B02",
+      "set": {
+        "target_text": "maidin Dé Domhnaigh nó anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0161L04B01",
+      "set": {
+        "target_text": "bualadh linn maidin Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U09",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U03",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U02",
+      "set": {
+        "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U11",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus ceapaim go bhfuil a lán déanta agam in am gearr agus ba chóir duit an-áthas a bheith ort as an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U07",
+      "set": {
+        "target_text": "Ní hé sin an chúis agus creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L02U15",
+      "set": {
+        "target_text": "creidim go raibh do smaoineamh an-mhaith agus ceapaim go bhfuil a lán fós le foghlaim agam ach tá mé ag déanamh go han-mhaith in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L02U03",
+      "set": {
+        "target_text": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L01U10",
+      "set": {
+        "target_text": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L01U04",
+      "set": {
+        "target_text": "creidim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil agus stopadh ag smaoineamh ar bheith buartha faoi bhotúin a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L01B03",
+      "set": {
+        "target_text": "creidim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U10",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U09",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L01U05",
+      "set": {
+        "target_text": "cheap mé go raibh sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag iarraidh rud nua a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U10",
+      "set": {
+        "target_text": "ceapaim gur smaoineamh maith é sin agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U02",
+      "set": {
+        "target_text": "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L01U15",
+      "set": {
+        "target_text": "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L01U11",
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta agam in am gearr agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L01U04",
+      "set": {
+        "target_text": "ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag iarraidh rud nua a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L01B04",
+      "set": {
+        "target_text": "ceapaim go bhfuil a lán déanta agam in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0116L01U15",
+      "set": {
+        "target_text": "Ní hé seo an scéal agus tá sé tábhachtach am a thógáil le smaoineamh air"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L03U03",
+      "set": {
+        "target_text": "Ní raibh muid ag súil leis go mbeadh sé chomh deacair sin mórán focal nua a fhoghlaim in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L01U12",
+      "set": {
+        "target_text": "ceapaim go bhfuil sé an-suimiúil go bhfuil tú in ann a fhoghlaim a lán in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0110L05U11",
+      "set": {
+        "target_text": "Tá a fhios agam go bhfuil sé tábhachtach scíth a ligean agus am a thógáil le smaoineamh go cúramach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0102L04U11",
+      "set": {
+        "target_text": "Tá a fhios agam nach bhfuil sé indéanta teanga a fhoghlaim in am gearr"
+      }
+    }
+  ]
+}

@@ -17,9 +17,28 @@
  *   - One courses.content_version patch bump per request that moved a pointer — a repoint is invisible
  *     to a phone holding the cached bundle otherwise.
  */
-const { normalizeForDb } = require('./text-normalize.cjs')
+const { normalizeForDb, sameRecordedWords } = require('./text-normalize.cjs')
 const { bumpCourseVersion } = require('./course-version.cjs')
 const { podSentencesOf } = require('./pod-sentence-split.cjs')
+const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs')
+const resolveVoiceLib = require('./resolve-voice.cjs')
+const { isPodOnlyClip } = require('./pod-audio.cjs')
+const { slotVoiceException } = require('./slot-voice-exceptions.cjs')
+const spokenWords = require('./clip-spoken-words.cjs')
+
+/**
+ * VOICE, not just words (Tom, 2026-10-31; 9 Oct: Alessandra's female clips linked into Lorenzo's male Italian slots, ~3,400 slots).
+ * The slot's voice is resolveVoice's answer (the course cast); the clip's voice must be that voice. A mismatch, or an unreadable
+ * cast, REFUSES — there is no skip and no fallback to another voice. Slots resolveVoice has no ruling for pass (checkPointer's rule).
+ * Injectable (`checkVoice`) so tests can run without a database.
+ */
+async function defaultCheckVoice(db, courseCode, role, clip) {
+  try {
+    return resolveVoiceLib.checkPointer({ course: await resolveVoiceLib.loadCourse(db, courseCode), role, clip }, await resolveVoiceLib.loadCast(db))
+  } catch (e) {
+    return { ok: false, reason: 'unreadable', message: `cannot check the voice (${e.message}) — not knowing is not permission` }
+  }
+}
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const LEGO_ID = /^S(\d{4})L(\d{2})$/
@@ -57,7 +76,7 @@ function slotOf(link) {
   return { error: 'name the slot with exactly one of seedNumber, legoId, phraseId or podSentenceId' }
 }
 
-async function linkOne(db, courseCode, link, { dryRun }) {
+async function linkOne(db, courseCode, link, { dryRun, checkVoice = defaultCheckVoice }) {
   const slot = slotOf(link)
   const base = { slot: slot.label, role: link.role, audioId: link.audioId }
   if (slot.error) return { ...base, ok: false, code: 'BAD_SLOT', error: slot.error }
@@ -86,21 +105,48 @@ async function linkOne(db, courseCode, link, { dryRun }) {
     }
   }
 
-  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id').eq('id', link.audioId).maybeSingle()
+  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id, language, origin, role, audio_revision').eq('id', link.audioId).maybeSingle()
   if (clipErr) return { ...base, ok: false, code: 'READ_FAILED', error: clipErr.message }
   if (!clip) return { ...base, ok: false, code: 'NO_CLIP', error: `no course_audio row ${link.audioId}` }
+  // POD-ONLY (job #628, shared/pod-audio.cjs): a Pod Drill piece or Talk Bollocks line is never a seed, LEGO or phrase slot's clip.
+  if (slot.kind !== 'pod_sentence' && isPodOnlyClip(clip)) return { ...base, ok: false, code: 'POD_ONLY_CLIP', error: `${link.audioId} is a pod-only clip (${clip.role}) — pod pieces are never linked into course slots` }
   if (arrayCol) return arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   if (link.role !== 'presentation') {
     const want = link.role === 'known' ? row.known_text : row.target_text
-    if (normalizeForDb(String(clip.text || '')) !== normalizeForDb(String(want || ''))) {
+    // The words the clip SAYS, not only its label (cs #160·AI): an in-place female-form re-record is filed under the male
+    // text, so its stored text passes the check below while the learner would hear "sicura" for "sicuro". Refused.
+    let verdicts
+    try { verdicts = await spokenWords.readVerdicts(db, [clip.id]) } catch (e) { return { ...base, ok: false, code: 'READ_FAILED', error: e.message } }
+    const said = spokenWords.attachVerdicts([clip], verdicts)[0]
+    if (spokenWords.saysOtherWords(said, want)) {
+      return { ...base, ok: false, code: 'SPOKEN_WORDS_MISMATCH', error: `clip ${clip.id} is filed as "${clip.text}" but says "${said.spoken_text}" (clip_spoken_text); slot says "${want}"` }
+    }
+    // A pod line's words and its clip's words are compared with the pod pause cue folded (job #813): "A. … B." is the
+    // recording of "A. B.", so moving a line onto the one shared take of its words is never a TEXT_MISMATCH.
+    const sameWords = slot.kind === 'pod_sentence'
+      ? sameRecordedWords(clip.text || '', want || '')
+      : normalizeForDb(String(clip.text || '')) === normalizeForDb(String(want || ''))
+    if (!sameWords) {
       // A pod line's clip is often rendered from a paced form of its words ("Boa tarde. … O que vai ser?" for "Boa tarde. O que
       // vai ser?", por_for_eng Pod 1, job #864). Re-voicing that clip is legal when the new clip says exactly what the clip it
       // replaces says: replace:true + expectCurrent naming the clip the line holds now.
       const revoice = slot.kind === 'pod_sentence' && link.replace === true && link.expectCurrent != null && String(link.expectCurrent) === String(row[col])
       const { data: was } = revoice ? await db.from('course_audio').select('id, text').eq('id', String(link.expectCurrent)).maybeSingle() : { data: null }
-      if (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || ''))) {
+      if (!was || !sameRecordedWords(was.text || '', clip.text || '')) {
         return { ...base, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", slot says "${want}"` }
       }
+    }
+  }
+
+  // ONE-SLOT EXCEPTION (./slot-voice-exceptions.cjs): a LEGO slot listed there by a person's ruling may hold its listed
+  // voice (Kai 2026-11-11: swe_for_eng S0059L02 presentation → Tom-006). Anything else, or any other voice, is checked.
+  const slotException = slot.kind === 'lego' ? slotVoiceException({ courseCode, legoId: slot.label, role: link.role, voiceId: clip.voice_id }) : null
+  if (slot.kind !== 'pod_sentence' && !slotException) {
+    const v = await checkVoice(db, courseCode, link.role, clip)
+    if (!v.ok) {
+      return { ...base, ok: false, code: 'VOICE_MISMATCH', voiceId: clip.voice_id,
+        expectedVoice: (v.resolution && v.resolution.voiceId) || null,
+        error: `${base.slot} ${link.role}: expected voice ${(v.resolution && v.resolution.voiceId) || '(none resolvable)'}, clip ${link.audioId} is voice ${clip.voice_id} — ${v.message}` }
     }
   }
 
@@ -136,10 +182,13 @@ async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   // says something else (job #570: North Pod 1 SC01-S004's third English clip said "Goodbye." for "See you later.").
   // The line's sentences are the player's (pod-sentence-split.cjs), and they must number exactly the array's clips, so a
   // position always means one sentence; the line's English then rides into the write as a guard.
-  const sentences = link.role === 'knownsegment' ? podSentencesOf(row.known_text) : []
+  // A TARGET segment gets the same rule (2026-11-09, North Pod 1 SC05-S001): after a word swap ("Sarah" → "Siân") the
+  // old split slice still says the old words, so only a clip of the line's OWN sentence at that position may replace it;
+  // target_text already rides into the write as a guard.
+  const sentences = link.role === 'knownsegment' ? podSentencesOf(row.known_text) : link.role === 'segment' ? podSentencesOf(row.target_text) : []
   const ownSentence = sentences.length === arr.length ? sentences[arr.indexOf(old)] : null
-  const saysOwnSentence = ownSentence != null && normalizeForDb(ownSentence) === normalizeForDb(String(clip.text || ''))
-  if (!saysOwnSentence && (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || '')))) {
+  const saysOwnSentence = ownSentence != null && sameRecordedWords(ownSentence, clip.text || '')
+  if (!saysOwnSentence && (!was || !sameRecordedWords(was.text || '', clip.text || ''))) {
     return { ...out, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", the clip it replaces says "${was ? was.text : '(missing)'}"` }
   }
   if (dryRun) return { ...out, ok: true, changed: true, dryRun: true }
@@ -154,11 +203,16 @@ const pgArray = (a) => `{${a.map((x) => (x == null ? 'NULL' : x)).join(',')}}`
  * links: [{ seedNumber | legoId | phraseId, role, audioId, replace?, expectCurrent? }]
  * recordEdit: ({ scope, detail }) => eventId — the content-edit gate's req.contentEdit.record.
  */
-async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = null, bump = bumpCourseVersion }) {
+async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = null, bump = bumpCourseVersion, approval = null, connect = null, checkVoice = defaultCheckVoice }) {
+  // `approval` (kai:/tom:YYYY-MM-DD:<reason>) lifts the DB human-take lock for this request only. The trigger reads a transaction-local
+  // setting, which a REST (supabase-js) write cannot carry, so an approved request writes through ONE pg transaction (`connect`).
+  let trigApproval = null
+  try { trigApproval = triggerApprovalFor(approval) } catch (e) { return { ok: false, code: 'BAD_APPROVAL', error: e.message } }
+  if (trigApproval && !connect) return { ok: false, code: 'NO_APPROVAL_PATH', error: 'approval needs a database connection for its transaction' }
   if (!Array.isArray(links) || !links.length) return { ok: false, code: 'NO_LINKS', error: 'links must be a non-empty array' }
   if (links.length > 500) return { ok: false, code: 'TOO_MANY', error: 'at most 500 links per request' }
   const results = []
-  for (const link of links) results.push(await linkOne(db, courseCode, link || {}, { dryRun }))
+  for (const link of links) results.push(await linkOne(db, courseCode, link || {}, { dryRun, checkVoice }))
   const toWrite = results.filter((r) => r.ok && r.changed && !r.dryRun)
   if (!toWrite.length) return { ok: results.every((r) => r.ok), dryRun, results: results.map(strip), linked: 0 }
 
@@ -174,12 +228,16 @@ async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = n
   }) : null
 
   let linked = 0
+  const tx = trigApproval && !dryRun ? await beginApproved(connect, trigApproval) : null
+  if (tx) console.log(`[human-take] approval by ${approverOf(approval)} on link-clip ${courseCode}: ${approval}`)
+  try {
   const arrays = new Map() // `${rowId}|${col}` -> the array as this request last wrote it, so two links on one line compose
   for (const r of toWrite) {
     let u
     if (r.arrayBefore) {
       const from = arrays.get(`${r.rowId}|${r.col}`) || r.arrayBefore
       if (!from.includes(r.before)) { Object.assign(r, { ok: false, code: 'NOT_HELD', error: `${r.slot} ${r.col} no longer holds ${r.before}` }); continue }
+      r.arrayFrom = from
       r.arrayNext = from.map((x) => (x === r.before ? String(r.audioId) : x))
       u = db.from(r.table).update({ [r.col]: r.arrayNext }).eq('id', r.rowId).filter(r.col, 'eq', pgArray(from))
     } else {
@@ -189,15 +247,47 @@ async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = n
       u = r.before == null ? u.is(r.col, null) : u.eq(r.col, r.before)
     }
     for (const [c, v] of r.guards || []) u = v == null ? u.is(c, null) : u.eq(c, v)
-    const { data, error } = await u.select('id')
+    const { data, error } = tx ? await txUpdate(tx, r, eventId) : await u.select('id')
     if (error) Object.assign(r, { ok: false, code: 'WRITE_FAILED', error: error.message })
     else if (!data || !data.length) Object.assign(r, { ok: false, code: 'RACE', error: 'the slot or its words changed between read and write; nothing written' })
     else { linked++; if (r.arrayNext) arrays.set(`${r.rowId}|${r.col}`, r.arrayNext) }
   }
+  if (tx) await tx.query('COMMIT')
+  } catch (e) { if (tx) await tx.query('ROLLBACK').catch(() => {}); throw e } finally { if (tx && tx.end) await tx.end().catch(() => {}) }
   const contentVersion = linked ? await bump(db, courseCode, 'patch') : null
   return { ok: results.every((r) => r.ok), dryRun, eventId, contentVersion, linked, results: results.map(strip) }
 }
 
-const strip = ({ rowId, table, col, kind, guards, arrayBefore, arrayNext, ...r }) => r
+/** Open the approved request's transaction: the grant is transaction-local (is_local=true), so it ends with COMMIT/ROLLBACK and cannot leak to another connection. */
+async function beginApproved(connect, trigApproval) {
+  const client = await connect()
+  await client.query('BEGIN')
+  await client.query(`SELECT set_config('popty.tom_human_take_approval', $1, true)`, [trigApproval])
+  return client
+}
+
+const qi = (n) => `"${String(n).replace(/"/g, '""')}"`
+/** The same conditional write the REST path makes, inside the approved transaction; a SAVEPOINT keeps one trigger refusal from sinking the rest. */
+async function txUpdate(client, r, eventId) {
+  const params = []
+  const P = (v) => { params.push(v); return `$${params.length}` }
+  const sets = r.arrayNext ? [`${qi(r.col)} = ${P(r.arrayNext)}::uuid[]`] : [`${qi(r.col)} = ${P(r.audioId)}`]
+  if (!r.arrayNext && eventId && STAMPS_EVENT[r.kind]) sets.push(`last_edit_event_id = ${P(eventId)}`)
+  const conds = [`id = ${P(r.rowId)}`]
+  if (r.arrayNext) conds.push(`${qi(r.col)} = ${P(r.arrayFrom)}::uuid[]`)
+  else conds.push(r.before == null ? `${qi(r.col)} IS NULL` : `${qi(r.col)} = ${P(r.before)}`)
+  for (const [c, v] of r.guards || []) conds.push(v == null ? `${qi(c)} IS NULL` : `${qi(c)} = ${P(v)}`)
+  await client.query('SAVEPOINT lnk')
+  try {
+    const { rows } = await client.query(`UPDATE ${qi(r.table)} SET ${sets.join(', ')} WHERE ${conds.join(' AND ')} RETURNING id`, params)
+    await client.query('RELEASE SAVEPOINT lnk')
+    return { data: rows, error: null }
+  } catch (e) {
+    await client.query('ROLLBACK TO SAVEPOINT lnk')
+    return { data: null, error: { message: e.message } }
+  }
+}
+
+const strip =({ rowId, table, col, kind, guards, arrayBefore, arrayNext, ...r }) => r
 
 module.exports = { linkClips, slotOf }

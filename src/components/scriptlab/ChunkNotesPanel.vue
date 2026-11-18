@@ -119,7 +119,7 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
 
 /* .chip lives in ScriptLabScriptView's SCOPED styles, so it does not reach a
    child component's inner elements. The pill is restated here rather than
-   hoisted into script-rows.css, which CanonicalPodView also reads. */
+   hoisted into script-rows.css. */
 .notes-chip {
   min-height: 32px;
   padding: 4px 12px;

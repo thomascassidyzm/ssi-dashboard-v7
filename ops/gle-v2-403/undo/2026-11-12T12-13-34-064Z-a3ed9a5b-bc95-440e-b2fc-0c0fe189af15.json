@@ -1,0 +1,219 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "a3ed9a5b-bc95-440e-b2fc-0c0fe189af15",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:13:34.064Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-13-34-064Z-a3ed9a5b-bc95-440e-b2fc-0c0fe189af15.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0296L03U05",
+      "set": {
+        "target_text": "ceapaim go bhfuil beagán ama sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0288L02U05",
+      "set": {
+        "target_text": "is maith le formhór na ndaoine féachaint ar theilifís oíche dé sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0288L01B04",
+      "set": {
+        "target_text": "oíche dé sathairn is maith le formhór na ndaoine scíth a ligean"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0282L01U07",
+      "set": {
+        "target_text": "an miste leat má chríochnaím mo chaife sula dtosaíonn tú ní miste"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04U08",
+      "set": {
+        "target_text": "tá sé in am scíth a ligean sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04U07",
+      "set": {
+        "target_text": "an miste leat má chríochnaím sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04U05",
+      "set": {
+        "target_text": "is mian liom scíth a ligean ar feadh tamaill sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04U04",
+      "set": {
+        "target_text": "an gcaithfidh tú gach rud a chríochnú sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04U03",
+      "set": {
+        "target_text": "ceapaim go mbeidh mé réidh sula dtosaíonn tú maidin amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04U02",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04U01",
+      "set": {
+        "target_text": "sula dtosaíonn tú anseo ar mhaith leat teacht linn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04B04",
+      "set": {
+        "target_text": "tá mé réidh sula dtosaíonn tú maidin amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04B03",
+      "set": {
+        "target_text": "sula dtosaíonn tú an tseachtain seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04B02",
+      "set": {
+        "target_text": "sula dtosaíonn tú anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0281L04B01",
+      "set": {
+        "target_text": "tá mé réidh sula dtosaíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0271L02U06",
+      "set": {
+        "target_text": "ar mhaith leat teacht linn oíche dé sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0269L05U06",
+      "set": {
+        "target_text": "bhí muid ag súil le d'athair oíche dé sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0269L05B03",
+      "set": {
+        "target_text": "le d'athair oíche dé sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0266L01U06",
+      "set": {
+        "target_text": "chuaigh mé amach oíche Dé Sathairn agus chonaic mé seanchara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0265L01U06",
+      "set": {
+        "target_text": "chuaigh mé amach oíche Dé Sathairn agus chonaic mé cara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0248L04U05",
+      "set": {
+        "target_text": "bhí sé go hiomlán uafásach agus chuaigh mé amach oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L02U04",
+      "set": {
+        "target_text": "níl mé sásta leis an méid ama atá mé a thabhairt dó seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0234L04U01",
+      "set": {
+        "target_text": "chuaigh mé amach le do dheartháir oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0220L01B05",
+      "set": {
+        "target_text": "ar fhéach tú air le chéile oíche dé sathairn?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02U06",
+      "set": {
+        "target_text": "chuaigh mé amach oíche dé sathairn agus bhí sé deas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L01U03",
+      "set": {
+        "target_text": "chuaigh mé amach oíche Dé Sathairn agus bhí sé go hiontach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L01U04",
+      "set": {
+        "target_text": "chuaigh mé amach oíche Dé Sathairn agus ní dhearna mé aon rud nua"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0217L02U03",
+      "set": {
+        "target_text": "d'ól mé gloine oíche Dé Sathairn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0217L01U05",
+      "set": {
+        "target_text": "chuaigh mé amach oíche Dé Sathairn agus d'ól mé sa teach tábhairne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0217L01U03",
+      "set": {
+        "target_text": "d'ól mé oíche Dé Sathairn agus mothaím tuirseach inniu"
+      }
+    }
+  ]
+}

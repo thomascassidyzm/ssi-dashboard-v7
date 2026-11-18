@@ -1,0 +1,1688 @@
+[
+ {
+  "event_id": "4edff456-0569-49a0-8a85-d088b7260a5a",
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U01",
+    "set": {
+     "target_text": "dû praatst hiel goed, hoe lang learstû al Frysk?",
+     "known_text": "you speak very well, how long have you been learning Frisian?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U02",
+    "set": {
+     "target_text": "ik praat in bytsje Frysk, hoe lang learstû al?",
+     "known_text": "I speak a little Frisian, how long have you been learning?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U03",
+    "set": {
+     "target_text": "ik besykje te learen, hoe lang learstû al?",
+     "known_text": "I'm trying to learn, how long have you been learning?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U04",
+    "set": {
+     "target_text": "ik begjin aanst, hoe lang learstû al?",
+     "known_text": "I'm going to start soon, how long have you been learning?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0040L02U01",
+    "set": {
+     "target_text": "ik bin in bytsje wurch, hoe fielstû dy?",
+     "known_text": "I'm a little tired, how do you feel?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0040L02U05",
+    "set": {
+     "target_text": "ik lear al sawat in wike, hoe fielstû dy?",
+     "known_text": "I've been learning for about a week, how do you feel?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0112L01U01",
+    "set": {
+     "target_text": "dat wie hiel nijsgjirrich, wannear wolstû begjinne?",
+     "known_text": "that was very interesting, when do you want to start?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0113L01U04",
+    "set": {
+     "target_text": "ik bin in bytsje wurch, wêrom wit ik net mear wat ik sizze woe?",
+     "known_text": "I'm a little tired, why can't I remember what I wanted to say?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L01B02",
+    "set": {
+     "target_text": "nei't wy klear binne, kin ik dy wat freegje?",
+     "known_text": "after we finish can I ask you something?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L02U01",
+    "set": {
+     "target_text": "foar'tstû fuortgiest, kinstû dat noch in kear sizze?",
+     "known_text": "before you leave could you say that again?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L02U02",
+    "set": {
+     "target_text": "foar'tstû fuortgiest, silstû my helpe?",
+     "known_text": "before you leave are you going to help me?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L02U03",
+    "set": {
+     "target_text": "foar'tstû fuortgiest, woestû my wat sjen litte?",
+     "known_text": "before you leave did you want to show me something?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01B03",
+    "set": {
+     "target_text": "it is dreech, wêrom bistû net mear bliid?",
+     "known_text": "it's difficult, why are you not happy any more?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U02",
+    "set": {
+     "target_text": "ik tink datstû it hiel goed dochst, wêrom bistû net mear bliid?",
+     "known_text": "I think that you're doing very well, why are you not happy any more?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U03",
+    "set": {
+     "target_text": "ik fiel my better as juster, wêrom bistû net mear bliid?",
+     "known_text": "I feel better than yesterday, why are you not happy any more?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U04",
+    "set": {
+     "target_text": "ik begryp net, wêrom bistû net mear bliid?",
+     "known_text": "I don't understand, why are you not happy any more?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U05",
+    "set": {
+     "target_text": "ik bin fernuvere, wêrom bistû net mear bliid?",
+     "known_text": "I'm surprised, why are you not happy any more?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U06",
+    "set": {
+     "target_text": "ik bin hiel bliid, wêrom bistû net mear bliid?",
+     "known_text": "I'm very happy, why are you not happy any more?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0154L02U01",
+    "set": {
+     "target_text": "ik bin klear, wêr wolstû moetsje?",
+     "known_text": "I'm ready, where do you want to meet?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0154L02U04",
+    "set": {
+     "target_text": "astû klear bist, wêr wolstû moetsje?",
+     "known_text": "if you're ready, where do you want to meet?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0154L02U05",
+    "set": {
+     "target_text": "ik wit noch net, wêr wolstû moetsje?",
+     "known_text": "I don't know yet, where do you want to meet?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0161L03B04",
+    "set": {
+     "target_text": "astû útpraat bist, kinstû my dat boek jaan?",
+     "known_text": "after you finish can you give me that book?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0161L03U02",
+    "set": {
+     "target_text": "astû útpraat bist, kinstû my dat boek jaan foar't ik gean moat?",
+     "known_text": "after you finish can you give me that book before I have to go?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0161L03U04",
+    "set": {
+     "target_text": "astû witst wêr't it wie, kinstû my dat boek jaan?",
+     "known_text": "if you know where it was can you give me that book?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01B03",
+    "set": {
+     "target_text": "ik bin klear, wat tinkstû dêrfan?",
+     "known_text": "I'm ready, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U01",
+    "set": {
+     "target_text": "wy wolle inoar fan 'e jûn moetsje, wat tinkstû dêrfan?",
+     "known_text": "we want to meet each other this evening, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U02",
+    "set": {
+     "target_text": "ik begjin aanst, wat tinkstû dêrfan?",
+     "known_text": "I'm going to start soon, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U03",
+    "set": {
+     "target_text": "ik soe wat oars spylje moatte, wat tinkstû dêrfan?",
+     "known_text": "I should play something else, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U04",
+    "set": {
+     "target_text": "ik bin der net wis fan, wat tinkstû dêrfan?",
+     "known_text": "I'm not sure, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U05",
+    "set": {
+     "target_text": "it is dreech, wat tinkstû dêrfan?",
+     "known_text": "it's difficult, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U06",
+    "set": {
+     "target_text": "sy woe my net fertelle, wat tinkstû dêrfan?",
+     "known_text": "she didn't want to tell me, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U07",
+    "set": {
+     "target_text": "ik haw mear tiid nedich, wat tinkstû dêrfan?",
+     "known_text": "I need more time, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U01",
+    "set": {
+     "target_text": "it is no tiid om te gean, wat moatstû dwaan?",
+     "known_text": "it's time to go now, what do you need to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U02",
+    "set": {
+     "target_text": "ik bin noch net klear, wat moatstû dwaan?",
+     "known_text": "I'm not ready yet, what do you need to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U03",
+    "set": {
+     "target_text": "it is dreech, wat moatstû dwaan om it antwurd te finen?",
+     "known_text": "it's difficult, what do you need to do to find the answer?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U04",
+    "set": {
+     "target_text": "ik haw mear tiid nedich, wat moatstû dwaan foar't ik gean moat?",
+     "known_text": "I need more time, what do you need to do before I have to go?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03B02",
+    "set": {
+     "target_text": "ik bin klear, wat wolstû dat ik doch?",
+     "known_text": "I'm ready, what do you want that I do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U01",
+    "set": {
+     "target_text": "ja, wat wolstû dat ik doch foar't ik gean moat?",
+     "known_text": "yes, what do you want that I do before I have to go?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U02",
+    "set": {
+     "target_text": "ik begryp net, wat wolstû dat ik doch?",
+     "known_text": "I don't understand, what do you want that I do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U04",
+    "set": {
+     "target_text": "it is no tiid om te gean, wat wolstû dat ik doch?",
+     "known_text": "it's time to go now, what do you want that I do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U05",
+    "set": {
+     "target_text": "ik bin hjir, wat wolstû dat ik doch?",
+     "known_text": "I'm here, what do you want that I do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0171L01B02",
+    "set": {
+     "target_text": "ja, wolstû dat ik dy help?",
+     "known_text": "yes do you want that I help you?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0171L01U03",
+    "set": {
+     "target_text": "it is dreech, wolstû dat ik dy help?",
+     "known_text": "it's difficult do you want that I help you?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01B03",
+    "set": {
+     "target_text": "it is dreech, kinstû begripe?",
+     "known_text": "it's difficult can you understand?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01U01",
+    "set": {
+     "target_text": "astû útpraat bist, kinstû begripe wat ik sizze woe?",
+     "known_text": "after you finish can you understand what I wanted to say?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01U02",
+    "set": {
+     "target_text": "ik besykje út te lizzen wat ik bedoel, kinstû begripe?",
+     "known_text": "I'm trying to explain what I mean can you understand?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01U03",
+    "set": {
+     "target_text": "ik lear al sawat in wike, kinstû begripe wat ik bedoel?",
+     "known_text": "I've been learning for about a week can you understand what I mean?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0175L01B01",
+    "set": {
+     "target_text": "ik bin klear, wat wolstû dwaan?",
+     "known_text": "I'm ready, what do you want to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0175L01U02",
+    "set": {
+     "target_text": "it is no tiid om te gean, wat wolstû dwaan?",
+     "known_text": "it's time to go now, what do you want to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0175L01U03",
+    "set": {
+     "target_text": "ik wit noch net, wat wolstû dwaan?",
+     "known_text": "I don't know yet, what do you want to do?"
+    }
+   }
+  ],
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0175L01U03",
+    "set": {
+     "known_text": "I don't know yet, what do you want to do",
+     "target_text": "ik wit noch net, wat wolstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0175L01U02",
+    "set": {
+     "known_text": "it's time to go now, what do you want to do",
+     "target_text": "it is no tiid om te gean, wat wolstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0175L01B01",
+    "set": {
+     "known_text": "I'm ready, what do you want to do",
+     "target_text": "ik bin klear, wat wolstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01U03",
+    "set": {
+     "known_text": "I've been learning for about a week can you understand what I mean",
+     "target_text": "ik lear al sawat in wike, kinstû begripe wat ik bedoel"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01U02",
+    "set": {
+     "known_text": "I'm trying to explain what I mean can you understand",
+     "target_text": "ik besykje út te lizzen wat ik bedoel, kinstû begripe"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01U01",
+    "set": {
+     "known_text": "after you finish can you understand what I wanted to say",
+     "target_text": "astû útpraat bist, kinstû begripe wat ik sizze woe"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0174L01B03",
+    "set": {
+     "known_text": "it's difficult can you understand",
+     "target_text": "it is dreech, kinstû begripe"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0171L01U03",
+    "set": {
+     "known_text": "it's difficult do you want that I help you",
+     "target_text": "it is dreech, wolstû dat ik dy help"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0171L01B02",
+    "set": {
+     "known_text": "yes do you want that I help you",
+     "target_text": "ja, wolstû dat ik dy help"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U05",
+    "set": {
+     "known_text": "I'm here, what do you want that I do",
+     "target_text": "ik bin hjir, wat wolstû dat ik doch"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U04",
+    "set": {
+     "known_text": "it's time to go now, what do you want that I do",
+     "target_text": "it is no tiid om te gean, wat wolstû dat ik doch"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U02",
+    "set": {
+     "known_text": "I don't understand, what do you want that I do",
+     "target_text": "ik begryp net, wat wolstû dat ik doch"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03U01",
+    "set": {
+     "known_text": "yes, what do you want that I do before I have to go",
+     "target_text": "ja, wat wolstû dat ik doch foar't ik gean moat"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0169L03B02",
+    "set": {
+     "known_text": "I'm ready, what do you want that I do",
+     "target_text": "ik bin klear, wat wolstû dat ik doch"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U04",
+    "set": {
+     "known_text": "I need more time, what do you need to do before I have to go",
+     "target_text": "ik haw mear tiid nedich, wat moatstû dwaan foar't ik gean moat"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U03",
+    "set": {
+     "known_text": "it's difficult, what do you need to do to find the answer",
+     "target_text": "it is dreech, wat moatstû dwaan om it antwurd te finen"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U02",
+    "set": {
+     "known_text": "I'm not ready yet, what do you need to do",
+     "target_text": "ik bin noch net klear, wat moatstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0167L02U01",
+    "set": {
+     "known_text": "it's time to go now, what do you need to do",
+     "target_text": "it is no tiid om te gean, wat moatstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U07",
+    "set": {
+     "known_text": "I need more time, what do you think about that",
+     "target_text": "ik haw mear tiid nedich, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U06",
+    "set": {
+     "known_text": "she didn't want to tell me, what do you think about that",
+     "target_text": "sy woe my net fertelle, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U05",
+    "set": {
+     "known_text": "it's difficult, what do you think about that",
+     "target_text": "it is dreech, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U04",
+    "set": {
+     "known_text": "I'm not sure, what do you think about that",
+     "target_text": "ik bin der net wis fan, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U03",
+    "set": {
+     "known_text": "I should play something else, what do you think about that",
+     "target_text": "ik soe wat oars spylje moatte, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U02",
+    "set": {
+     "known_text": "I'm going to start soon, what do you think about that",
+     "target_text": "ik begjin aanst, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01U01",
+    "set": {
+     "known_text": "we want to meet each other this evening, what do you think about that",
+     "target_text": "wy wolle inoar fan 'e jûn moetsje, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0162L01B03",
+    "set": {
+     "known_text": "I'm ready, what do you think about that",
+     "target_text": "ik bin klear, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0161L03U04",
+    "set": {
+     "known_text": "if you know where it was can you give me that book",
+     "target_text": "astû witst wêr't it wie, kinstû my dat boek jaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0161L03U02",
+    "set": {
+     "known_text": "after you finish can you give me that book before I have to go",
+     "target_text": "astû útpraat bist, kinstû my dat boek jaan foar't ik gean moat"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0161L03B04",
+    "set": {
+     "known_text": "after you finish can you give me that book",
+     "target_text": "astû útpraat bist, kinstû my dat boek jaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0154L02U05",
+    "set": {
+     "known_text": "I don't know yet, where do you want to meet",
+     "target_text": "ik wit noch net, wêr wolstû moetsje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0154L02U04",
+    "set": {
+     "known_text": "if you're ready, where do you want to meet",
+     "target_text": "astû klear bist, wêr wolstû moetsje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0154L02U01",
+    "set": {
+     "known_text": "I'm ready, where do you want to meet",
+     "target_text": "ik bin klear, wêr wolstû moetsje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U06",
+    "set": {
+     "known_text": "I'm very happy, why are you not happy any more",
+     "target_text": "ik bin hiel bliid, wêrom bistû net mear bliid"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U05",
+    "set": {
+     "known_text": "I'm surprised, why are you not happy any more",
+     "target_text": "ik bin fernuvere, wêrom bistû net mear bliid"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U04",
+    "set": {
+     "known_text": "I don't understand, why are you not happy any more",
+     "target_text": "ik begryp net, wêrom bistû net mear bliid"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U03",
+    "set": {
+     "known_text": "I feel better than yesterday, why are you not happy any more",
+     "target_text": "ik fiel my better as juster, wêrom bistû net mear bliid"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01U02",
+    "set": {
+     "known_text": "I think that you're doing very well, why are you not happy any more",
+     "target_text": "ik tink datstû it hiel goed dochst, wêrom bistû net mear bliid"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0145L01B03",
+    "set": {
+     "known_text": "it's difficult, why are you not happy any more",
+     "target_text": "it is dreech, wêrom bistû net mear bliid"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L02U03",
+    "set": {
+     "known_text": "before you leave did you want to show me something",
+     "target_text": "foar'tstû fuortgiest, woestû my wat sjen litte"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L02U02",
+    "set": {
+     "known_text": "before you leave are you going to help me",
+     "target_text": "foar'tstû fuortgiest, silstû my helpe"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L02U01",
+    "set": {
+     "known_text": "before you leave could you say that again",
+     "target_text": "foar'tstû fuortgiest, kinstû dat noch in kear sizze"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0119L01B02",
+    "set": {
+     "known_text": "after we finish can I ask you something",
+     "target_text": "nei't wy klear binne, kin ik dy wat freegje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0113L01U04",
+    "set": {
+     "known_text": "I'm a little tired, why can't I remember what I wanted to say",
+     "target_text": "ik bin in bytsje wurch, wêrom wit ik net mear wat ik sizze woe"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0112L01U01",
+    "set": {
+     "known_text": "that was very interesting, when do you want to start",
+     "target_text": "dat wie hiel nijsgjirrich, wannear wolstû begjinne"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0040L02U05",
+    "set": {
+     "known_text": "I've been learning for about a week, how do you feel",
+     "target_text": "ik lear al sawat in wike, hoe fielstû dy"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0040L02U01",
+    "set": {
+     "known_text": "I'm a little tired, how do you feel",
+     "target_text": "ik bin in bytsje wurch, hoe fielstû dy"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U04",
+    "set": {
+     "known_text": "I'm going to start soon, how long have you been learning",
+     "target_text": "ik begjin aanst, hoe lang learstû al"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U03",
+    "set": {
+     "known_text": "I'm trying to learn, how long have you been learning",
+     "target_text": "ik besykje te learen, hoe lang learstû al"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U02",
+    "set": {
+     "known_text": "I speak a little Frisian, how long have you been learning",
+     "target_text": "ik praat in bytsje Frysk, hoe lang learstû al"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0033L02U01",
+    "set": {
+     "known_text": "you speak very well, how long have you been learning Frisian",
+     "target_text": "dû praatst hiel goed, hoe lang learstû al Frysk"
+    }
+   }
+  ]
+ },
+ {
+  "event_id": "49b79fc8-274a-4d31-9edb-8cf1d6757594",
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U01",
+    "set": {
+     "target_text": "ik wit noch net, wat silstû dwaan?",
+     "known_text": "I don't know yet, what are you going to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U02",
+    "set": {
+     "target_text": "it is no tiid om te gean, wat silstû dwaan?",
+     "known_text": "it's time to go now, what are you going to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U03",
+    "set": {
+     "target_text": "ik woe graach ûntspanne, wat silstû dwaan?",
+     "known_text": "I would like to relax, what are you going to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U04",
+    "set": {
+     "target_text": "it is dreech, wat silstû dwaan?",
+     "known_text": "it's difficult, what are you going to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U05",
+    "set": {
+     "target_text": "ik haw mear tiid nedich, wat silstû dwaan?",
+     "known_text": "I need more time, what are you going to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0190L03U01",
+    "set": {
+     "target_text": "as ik dy in pear fragen stel, silstû my helpe?",
+     "known_text": "if I ask you some questions are you going to help me?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0203L01B03",
+    "set": {
+     "target_text": "it is dreech, wat soestû dwaan?",
+     "known_text": "it's difficult, what would you do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0203L01U03",
+    "set": {
+     "target_text": "it sit sa, wat soestû dwaan?",
+     "known_text": "it's like this, what would you do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0203L01U04",
+    "set": {
+     "target_text": "ik bin noch net klear, wat soestû dwaan?",
+     "known_text": "I'm not ready yet, what would you do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0227L02U01",
+    "set": {
+     "target_text": "as ik dy frege, soestû my wat nijs fertelle?",
+     "known_text": "if I asked you would you tell me something new?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0247L02U02",
+    "set": {
+     "target_text": "ik fûn dat boek frij goed, wat tinkstû dêrfan?",
+     "known_text": "I thought that book was fairly good, what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0249L02B04",
+    "set": {
+     "target_text": "foar'tstû giest, kin ik dy wat freegje?",
+     "known_text": "before you go can I ask you something?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0250L02U01",
+    "set": {
+     "target_text": "foar't ik antwurdzje, kin ik dy wat freegje?",
+     "known_text": "before I answer can I ask you something?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0251L02U01",
+    "set": {
+     "target_text": "as wy klear binne, kin ik dy wat freegje?",
+     "known_text": "once we're finished can I ask you something?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02B04",
+    "set": {
+     "target_text": "ik bin noch net klear, wannear bistû klear?",
+     "known_text": "I'm not ready yet, when will you be ready?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U01",
+    "set": {
+     "target_text": "it is no tiid om te gean, wannear bistû klear?",
+     "known_text": "it's time to go now, when will you be ready?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U02",
+    "set": {
+     "target_text": "wy wolle nei in restaurant gean, wannear bistû klear?",
+     "known_text": "we want to go to a restaurant, when will you be ready?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U03",
+    "set": {
+     "target_text": "ik sil net op dy wachtsje, wannear bistû klear?",
+     "known_text": "I'm not going to wait for you, when will you be ready?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U04",
+    "set": {
+     "target_text": "dû hast dien watstû dwaan moast, wannear bistû klear?",
+     "known_text": "you've done what you needed to do, when will you be ready?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0255L01U02",
+    "set": {
+     "target_text": "it spyt my, wannear tinkstû dat wy alles ôfmeitsje?",
+     "known_text": "I'm sorry, when do you think that we finish everything?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0255L01U04",
+    "set": {
+     "target_text": "ik wit net, wannear tinkstû?",
+     "known_text": "I don't know, when do you think?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0257L02U02",
+    "set": {
+     "target_text": "ik fyn dat blauwe ding moai, wat tinkstû dêrfan?",
+     "known_text": "I like that blue thing what do you think about that?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0258L02U01",
+    "set": {
+     "target_text": "it spyt my, wat is dat blauwe ding dêre?",
+     "known_text": "I'm sorry, what's that blue thing over there?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0258L02U03",
+    "set": {
+     "target_text": "ik wit it net, wat is dat blauwe ding dêre?",
+     "known_text": "I don't know, what's that blue thing over there?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01B03",
+    "set": {
+     "target_text": "ik bin der net wis fan, wa wie dy man?",
+     "known_text": "I'm not sure, who was that man?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01B04",
+    "set": {
+     "target_text": "ik woe freegje, wa wie dy man?",
+     "known_text": "I wanted to ask, who was that man?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01U01",
+    "set": {
+     "target_text": "ik kin net mear betinke, wa wie dy man juster?",
+     "known_text": "I can't remember, who was that man yesterday?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01U03",
+    "set": {
+     "target_text": "ik ken dy minsken net, wa wie dy man?",
+     "known_text": "I don't know those people, who was that man?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0269L03B03",
+    "set": {
+     "target_text": "ik begryp net, wêrom wolstû net feroarje?",
+     "known_text": "I don't understand, why don't you want to change?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0269L03U01",
+    "set": {
+     "target_text": "it is no tiid om te gean, wêrom wolstû net nei in restaurant gean?",
+     "known_text": "it's time to go now, why don't you want to go to a restaurant?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0271L01U01",
+    "set": {
+     "target_text": "foar'tstû fuortgiest, woestû graach de wierheid hearre?",
+     "known_text": "before you leave would you like to hear the truth?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0271L01U05",
+    "set": {
+     "target_text": "nei't wy klear binne, woestû graach nei in restaurant gean?",
+     "known_text": "after we finish would you like to go to a restaurant?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0274L02B04",
+    "set": {
+     "target_text": "of moatstû fuortgean?",
+     "known_text": "or do you have to leave?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0281L03U01",
+    "set": {
+     "target_text": "foar'tstû begjinst, kin ik dy wat freegje?",
+     "known_text": "before you start can I ask you something?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0282L01U02",
+    "set": {
+     "target_text": "dat is gjin probleem, wat wolstû dwaan?",
+     "known_text": "that's not a problem, what do you want to do?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0287L01U02",
+    "set": {
+     "target_text": "ik wit net, hoefolle minsken kenstû?",
+     "known_text": "I don't know, how many people do you know?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0061L01U01",
+    "set": {
+     "target_text": "astû útpraat bist, kinstû my wat sjen litte?",
+     "known_text": "after you finish could you show me something?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0061L01U02",
+    "set": {
+     "target_text": "ik besykje te learen, kinstû mei my it praten oefenje?",
+     "known_text": "I'm trying to learn could you practise speaking with me?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0061L01U03",
+    "set": {
+     "target_text": "ik lear al sawat in wike, kinstû in pear wurden yn it Frysk sizze?",
+     "known_text": "I've been learning for about a week could you say a few words in Frisian?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0067L02U06",
+    "set": {
+     "target_text": "dû praatst hiel goed Frysk, wêrom wolstû ophâlde?",
+     "known_text": "you speak Frisian very well, why do you want to stop?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0068L02U01",
+    "set": {
+     "target_text": "ik wit noch net, wat sikestû hjir?",
+     "known_text": "I don't know yet, what are you looking for here?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0068L02U03",
+    "set": {
+     "target_text": "ik bin in bytsje wurch, wat sikestû fan 'e middei?",
+     "known_text": "I'm a little tired, what are you looking for this afternoon?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0075L01U03",
+    "set": {
+     "target_text": "astû útpraat bist, hastû it antwurd?",
+     "known_text": "after you finish have you got the answer?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U02",
+    "set": {
+     "target_text": "ik begûn ferline moanne, wannear bistû begûn te learen?",
+     "known_text": "I started last month, when did you start to learn?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U03",
+    "set": {
+     "target_text": "ik lear al sawat in wike, wannear bistû begûn te learen?",
+     "known_text": "I've been learning for about a week, when did you start to learn?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U04",
+    "set": {
+     "target_text": "dû praatst hiel goed, wannear bistû begûn te learen?",
+     "known_text": "you speak very well, when did you start to learn?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U05",
+    "set": {
+     "target_text": "tige tank, wannear bistû begûn te learen?",
+     "known_text": "thank you very much, when did you start to learn?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U01",
+    "set": {
+     "target_text": "ik bin klear, wannear wolstû begjinne?",
+     "known_text": "I'm ready, when do you want to start?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U02",
+    "set": {
+     "target_text": "it makket my neat út, wannear wolstû begjinne?",
+     "known_text": "I don't care, when do you want to start?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U03",
+    "set": {
+     "target_text": "wy woene dy in bytsje mear tiid jaan, wannear wolstû begjinne?",
+     "known_text": "we wanted to give you a little more time, when do you want to start?"
+    }
+   }
+  ],
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U03",
+    "set": {
+     "known_text": "we wanted to give you a little more time, when do you want to start",
+     "target_text": "wy woene dy in bytsje mear tiid jaan, wannear wolstû begjinne"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U02",
+    "set": {
+     "known_text": "I don't care, when do you want to start",
+     "target_text": "it makket my neat út, wannear wolstû begjinne"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U01",
+    "set": {
+     "known_text": "I'm ready, when do you want to start",
+     "target_text": "ik bin klear, wannear wolstû begjinne"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U05",
+    "set": {
+     "known_text": "thank you very much, when did you start to learn",
+     "target_text": "tige tank, wannear bistû begûn te learen"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U04",
+    "set": {
+     "known_text": "you speak very well, when did you start to learn",
+     "target_text": "dû praatst hiel goed, wannear bistû begûn te learen"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U03",
+    "set": {
+     "known_text": "I've been learning for about a week, when did you start to learn",
+     "target_text": "ik lear al sawat in wike, wannear bistû begûn te learen"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0079L02U02",
+    "set": {
+     "known_text": "I started last month, when did you start to learn",
+     "target_text": "ik begûn ferline moanne, wannear bistû begûn te learen"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0075L01U03",
+    "set": {
+     "known_text": "after you finish have you got the answer",
+     "target_text": "astû útpraat bist, hastû it antwurd"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0068L02U03",
+    "set": {
+     "known_text": "I'm a little tired, what are you looking for this afternoon",
+     "target_text": "ik bin in bytsje wurch, wat sikestû fan 'e middei"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0068L02U01",
+    "set": {
+     "known_text": "I don't know yet, what are you looking for here",
+     "target_text": "ik wit noch net, wat sikestû hjir"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0067L02U06",
+    "set": {
+     "known_text": "you speak Frisian very well, why do you want to stop",
+     "target_text": "dû praatst hiel goed Frysk, wêrom wolstû ophâlde"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0061L01U03",
+    "set": {
+     "known_text": "I've been learning for about a week could you say a few words in Frisian",
+     "target_text": "ik lear al sawat in wike, kinstû in pear wurden yn it Frysk sizze"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0061L01U02",
+    "set": {
+     "known_text": "I'm trying to learn could you practise speaking with me",
+     "target_text": "ik besykje te learen, kinstû mei my it praten oefenje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0061L01U01",
+    "set": {
+     "known_text": "after you finish could you show me something",
+     "target_text": "astû útpraat bist, kinstû my wat sjen litte"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0287L01U02",
+    "set": {
+     "known_text": "I don't know, how many people do you know",
+     "target_text": "ik wit net, hoefolle minsken kenstû"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0282L01U02",
+    "set": {
+     "known_text": "that's not a problem, what do you want to do",
+     "target_text": "dat is gjin probleem, wat wolstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0281L03U01",
+    "set": {
+     "known_text": "before you start can I ask you something",
+     "target_text": "foar'tstû begjinst, kin ik dy wat freegje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0274L02B04",
+    "set": {
+     "known_text": "or do you have to leave",
+     "target_text": "of moatstû fuortgean"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0271L01U05",
+    "set": {
+     "known_text": "after we finish would you like to go to a restaurant",
+     "target_text": "nei't wy klear binne, woestû graach nei in restaurant gean"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0271L01U01",
+    "set": {
+     "known_text": "before you leave would you like to hear the truth",
+     "target_text": "foar'tstû fuortgiest, woestû graach de wierheid hearre"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0269L03U01",
+    "set": {
+     "known_text": "it's time to go now, why don't you want to go to a restaurant",
+     "target_text": "it is no tiid om te gean, wêrom wolstû net nei in restaurant gean",
+     "target1_audio_id": "07e0aca6-bfa6-4138-b083-2e578046c2a3"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0269L03B03",
+    "set": {
+     "known_text": "I don't understand, why don't you want to change",
+     "target_text": "ik begryp net, wêrom wolstû net feroarje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01U03",
+    "set": {
+     "known_text": "I don't know those people, who was that man",
+     "target_text": "ik ken dy minsken net, wa wie dy man"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01U01",
+    "set": {
+     "known_text": "I can't remember, who was that man yesterday",
+     "target_text": "ik kin net mear betinke, wa wie dy man juster"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01B04",
+    "set": {
+     "known_text": "I wanted to ask, who was that man",
+     "target_text": "ik woe freegje, wa wie dy man"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0262L01B03",
+    "set": {
+     "known_text": "I'm not sure, who was that man",
+     "target_text": "ik bin der net wis fan, wa wie dy man"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0258L02U03",
+    "set": {
+     "known_text": "I don't know, what's that blue thing over there",
+     "target_text": "ik wit it net, wat is dat blauwe ding dêre"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0258L02U01",
+    "set": {
+     "known_text": "I'm sorry, what's that blue thing over there",
+     "target_text": "it spyt my, wat is dat blauwe ding dêre"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0257L02U02",
+    "set": {
+     "known_text": "I like that blue thing what do you think about that",
+     "target_text": "ik fyn dat blauwe ding moai, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0255L01U04",
+    "set": {
+     "known_text": "I don't know, when do you think",
+     "target_text": "ik wit net, wannear tinkstû"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0255L01U02",
+    "set": {
+     "known_text": "I'm sorry, when do you think that we finish everything",
+     "target_text": "it spyt my, wannear tinkstû dat wy alles ôfmeitsje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U04",
+    "set": {
+     "known_text": "you've done what you needed to do, when will you be ready",
+     "target_text": "dû hast dien watstû dwaan moast, wannear bistû klear"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U03",
+    "set": {
+     "known_text": "I'm not going to wait for you, when will you be ready",
+     "target_text": "ik sil net op dy wachtsje, wannear bistû klear"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U02",
+    "set": {
+     "known_text": "we want to go to a restaurant, when will you be ready",
+     "target_text": "wy wolle nei in restaurant gean, wannear bistû klear"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02U01",
+    "set": {
+     "known_text": "it's time to go now, when will you be ready",
+     "target_text": "it is no tiid om te gean, wannear bistû klear"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0252L02B04",
+    "set": {
+     "known_text": "I'm not ready yet, when will you be ready",
+     "target_text": "ik bin noch net klear, wannear bistû klear"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0251L02U01",
+    "set": {
+     "known_text": "once we're finished can I ask you something",
+     "target_text": "as wy klear binne, kin ik dy wat freegje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0250L02U01",
+    "set": {
+     "known_text": "before I answer can I ask you something",
+     "target_text": "foar't ik antwurdzje, kin ik dy wat freegje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0249L02B04",
+    "set": {
+     "known_text": "before you go can I ask you something",
+     "target_text": "foar'tstû giest, kin ik dy wat freegje"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0247L02U02",
+    "set": {
+     "known_text": "I thought that book was fairly good, what do you think about that",
+     "target_text": "ik fûn dat boek frij goed, wat tinkstû dêrfan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0227L02U01",
+    "set": {
+     "known_text": "if I asked you would you tell me something new",
+     "target_text": "as ik dy frege, soestû my wat nijs fertelle"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0203L01U04",
+    "set": {
+     "known_text": "I'm not ready yet, what would you do",
+     "target_text": "ik bin noch net klear, wat soestû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0203L01U03",
+    "set": {
+     "known_text": "it's like this, what would you do",
+     "target_text": "it sit sa, wat soestû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0203L01B03",
+    "set": {
+     "known_text": "it's difficult, what would you do",
+     "target_text": "it is dreech, wat soestû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0190L03U01",
+    "set": {
+     "known_text": "if I ask you some questions are you going to help me",
+     "target_text": "as ik dy in pear fragen stel, silstû my helpe"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U05",
+    "set": {
+     "known_text": "I need more time, what are you going to do",
+     "target_text": "ik haw mear tiid nedich, wat silstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U04",
+    "set": {
+     "known_text": "it's difficult, what are you going to do",
+     "target_text": "it is dreech, wat silstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U03",
+    "set": {
+     "known_text": "I would like to relax, what are you going to do",
+     "target_text": "ik woe graach ûntspanne, wat silstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U02",
+    "set": {
+     "known_text": "it's time to go now, what are you going to do",
+     "target_text": "it is no tiid om te gean, wat silstû dwaan"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0179L02U01",
+    "set": {
+     "known_text": "I don't know yet, what are you going to do",
+     "target_text": "ik wit noch net, wat silstû dwaan"
+    }
+   }
+  ]
+ },
+ {
+  "event_id": "6f8ad3de-69b2-4d3b-b67e-18daba781c8c",
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U04",
+    "set": {
+     "target_text": "ik bin in bytsje wurch, wannear wolstû begjinne?",
+     "known_text": "I'm a little tired, when do you want to start?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U05",
+    "set": {
+     "target_text": "astû útpraat bist, wannear wolstû begjinne?",
+     "known_text": "after you finish, when do you want to start?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0095L01U04",
+    "set": {
+     "target_text": "it is no tiid om te gean, bistû klear?",
+     "known_text": "it's time to go now are you ready?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0097L02U05",
+    "set": {
+     "target_text": "ik bin klear om te gean, wannear wolstû begjinne?",
+     "known_text": "I'm ready to go, when do you want to start?"
+    }
+   }
+  ],
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0097L02U05",
+    "set": {
+     "known_text": "I'm ready to go, when do you want to start",
+     "target_text": "ik bin klear om te gean, wannear wolstû begjinne"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0095L01U04",
+    "set": {
+     "known_text": "it's time to go now are you ready",
+     "target_text": "it is no tiid om te gean, bistû klear"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U05",
+    "set": {
+     "known_text": "after you finish, when do you want to start",
+     "target_text": "astû útpraat bist, wannear wolstû begjinne"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fry_for_eng:S0081L02U04",
+    "set": {
+     "known_text": "I'm a little tired, when do you want to start",
+     "target_text": "ik bin in bytsje wurch, wannear wolstû begjinne"
+    }
+   }
+  ]
+ }
+]

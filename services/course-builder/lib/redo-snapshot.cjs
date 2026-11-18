@@ -142,7 +142,42 @@ async function listSnapshots(supabase, courseCode, { seed = null, limit = 50 } =
  * Resolution: an explicit snapshotId, otherwise the newest snapshot for the seed.
  * dryRun reports what it would do and changes nothing.
  */
-async function restoreSnapshot(supabase, { courseCode, seedNumber, snapshotId, dryRun = false, restoredBy = 'redo-undo' }) {
+async function restoreSnapshot(supabase, opts) {
+  if (opts.dryRun) return restoreSnapshotUnlocked(supabase, opts);
+  // The seed number is only known once the snapshot is loaded; resolve it, then hold the seed lock for the
+  // check-and-wipe so a Redo's snapshot+wipe (performRedo) cannot interleave with this restore.
+  const seed = opts.snapshotId ? await snapshotSeedNumber(supabase, opts.snapshotId) : Number(opts.seedNumber);
+  return withSeedLocks(opts.courseCode, [seed], () => restoreSnapshotUnlocked(supabase, opts));
+}
+
+async function snapshotSeedNumber(supabase, snapshotId) {
+  const { data, error } = await supabase.from(SNAPSHOT_TABLE).select('seed_number').eq('id', snapshotId).maybeSingle();
+  if (error) throw new Error(`Failed to load snapshot ${snapshotId}: ${error.message}`);
+  return data ? Number(data.seed_number) : NaN;
+}
+
+/**
+ * IN-PROCESS per-seed lock (review 9dbf075d #1). The Redo route, the queue drain, the watchdog's restore and the
+ * undo route all run inside the one course-builder process, so a promise chain per course#seed serialises a
+ * Redo's snapshot→wipe against a guarded restore's newest-check→wipe. It does NOT cover a second course-builder
+ * on another machine; a DB-side lock would need a migration (wipe_seed_teaching), which a worker may not run.
+ */
+const seedLocks = new Map();
+async function withSeedLocks(courseCode, seeds, fn) {
+  const keys = [...new Set(seeds.map((n) => `${courseCode}#${n}`))].sort();
+  const prior = keys.map((k) => seedLocks.get(k) || Promise.resolve());
+  let release;
+  const mine = new Promise((r) => { release = r; });
+  for (const k of keys) seedLocks.set(k, mine);
+  await Promise.all(prior.map((p) => p.catch(() => {})));
+  try { return await fn(); }
+  finally {
+    release();
+    for (const k of keys) if (seedLocks.get(k) === mine) seedLocks.delete(k);
+  }
+}
+
+async function restoreSnapshotUnlocked(supabase, { courseCode, seedNumber, snapshotId, dryRun = false, restoredBy = 'redo-undo', requireNewest = false, requireEmpty = false }) {
   let snap;
   if (snapshotId) {
     const { data, error } = await supabase
@@ -186,6 +221,20 @@ async function restoreSnapshot(supabase, { courseCode, seedNumber, snapshotId, d
       would_restore: { legos: legos.length, phrases: phrases.length },
       already_restored_at: snap.restored_at || null,
     };
+  }
+
+  // GUARDS for an automatic restore (the redo watchdog), checked under the seed lock just before the wipe
+  // (review 9dbf075d #1): a later Redo owns the seed → never put this older snapshot over it; content arrived
+  // since the caller looked → never wipe a fresh submission. A human undo sends neither and is unchanged.
+  if (requireNewest) {
+    const { data: newer, error } = await supabase.from(SNAPSHOT_TABLE).select('id, created_at')
+      .eq('course_code', courseCode).eq('seed_number', snap.seed_number);
+    if (error) throw new Error(`Failed to check for a newer snapshot of seed ${snap.seed_number}: ${error.message}`);
+    const later = (newer || []).filter((s) => s.id !== snap.id && s.created_at > snap.created_at);
+    if (later.length) throw new Error(`SUPERSEDED: a later Redo (snapshot ${later[0].id}) owns seed ${snap.seed_number}; snapshot ${snap.id} was not restored`);
+  }
+  if (requireEmpty && ((currentLegos || 0) > 0 || (currentPhrases || 0) > 0)) {
+    throw new Error(`NOT_EMPTY: seed ${snap.seed_number} has ${currentLegos || 0} LEGOs / ${currentPhrases || 0} phrases now; snapshot ${snap.id} was not restored`);
   }
 
   // Phrases and LEGOs together, one transaction (wipe-seed-teaching.cjs, job #912).
@@ -261,6 +310,7 @@ module.exports = {
   latestSnapshots,
   listSnapshots,
   restoreSnapshot,
+  withSeedLocks,
   formatSnapshotForBrief,
   stripGenerated,
 };

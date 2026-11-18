@@ -1,0 +1,537 @@
+{
+  "link_event": "2d0b554c-3693-45a4-9b71-2d754916c113",
+  "content_version_after": "0.0.345",
+  "link_undo": {
+    "links": [
+      {
+        "phraseId": "cym_n_for_eng:S0272L05B01",
+        "role": "target2",
+        "audioId": "e55aa8db-123a-46d9-b026-7eb5d02d723c",
+        "replace": true,
+        "expectCurrent": "8da58b3d-766a-4b65-ba09-4564647a28b3"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0272L05B06",
+        "role": "target2",
+        "audioId": "3d3dc553-9a3b-4165-81a4-ff311339283d",
+        "replace": true,
+        "expectCurrent": "35e7e9ac-a034-476e-b339-67b81afc611d"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0273L01B04",
+        "role": "target2",
+        "audioId": "f75d87f5-a5dd-48f3-a394-c61365b850b5",
+        "replace": true,
+        "expectCurrent": "e9185850-7fdf-4505-9d86-0aa90db2830c"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0273L01B02",
+        "role": "target2",
+        "audioId": "262c78c1-a30d-49e5-814d-34763c45af5c",
+        "replace": true,
+        "expectCurrent": "9e60f972-1ef4-423b-b4c4-743347f9aaf5"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0272L05B04",
+        "role": "target2",
+        "audioId": "7ee48b19-9c44-4fc1-8662-04f033bdeec8",
+        "replace": true,
+        "expectCurrent": "a3fe39cb-749a-44d3-932f-117936c871c6"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0272L05B03",
+        "role": "target2",
+        "audioId": "19b214da-9ff8-402f-bb3d-1186eada419f",
+        "replace": true,
+        "expectCurrent": "b24ac6a7-536f-4dfd-a9b1-631b14a97b65"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0272L05B05",
+        "role": "target2",
+        "audioId": "2dc97ff8-9bf6-4ccd-b233-45ee1fafcfaf",
+        "replace": true,
+        "expectCurrent": "29e8dbff-310a-4bcc-bc47-8f2217e32e8e"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0272L05B07",
+        "role": "target2",
+        "audioId": "c5ae221c-0a66-4925-a098-3b536596d114",
+        "replace": true,
+        "expectCurrent": "f81ec4d1-8734-4233-ba23-262a1d98618c"
+      },
+      {
+        "phraseId": "cym_n_for_eng:S0274L07B01",
+        "role": "target2",
+        "audioId": "65b40d02-3834-4b41-87d7-98876e490c8c",
+        "replace": true,
+        "expectCurrent": "3b138f96-083b-45fd-adf4-efdd9d425826"
+      },
+      {
+        "legoId": "S0272L05",
+        "role": "target2",
+        "audioId": "c154bfbd-6cfb-4a7e-a7cd-d37963188328",
+        "replace": true,
+        "expectCurrent": "e6ef09ae-f041-4c64-b81f-49a38ae6ac9b"
+      }
+    ]
+  },
+  "link_undo_route": "POST /api/production/cym_n_for_eng/link-clip",
+  "edit_batch_undos_route": "POST /api/production/cym_n_for_eng/edit-batch with {ops: undo_ops, apply: true}",
+  "english_wants": {
+    "event_id": "ecd14eee-b627-4bc5-b9a0-b8330053789a",
+    "undo_ops": [
+      {
+        "op": "audio.update",
+        "audio_id": "98290e36-04ef-49bd-9752-d977aa32c80c",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "clip says 'pretty' where the text says 'angry' (whisper: 'these pretty eyes'); learner bug report 5f08ed7f",
+            "markedBy": "job #392 ticket"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "dd1934d0-fe52-448f-9c36-f7cd5a6c025e",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "c01e2e83-9a2f-4f25-ae04-dd8bb38ab6f7",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "cfd825b0-f671-474f-89d4-669b320c25fc",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "e924c80d-9ce7-4974-8c9d-2467b2c4cd55",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "7e2bcdec-2297-4cbf-9363-de9cb128327a",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "16375d0c-1aa4-4f94-ab32-daaba5c548b0",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "c989ba9a-ad00-4010-9ae0-3763d8dc1a8a",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "bcdefb36-90ba-4f81-8494-964c2d89cadb",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "1d2489ff-b56c-4d02-865c-bca07095bd4c",
+        "set": {
+          "rerecord_wanted": null
+        }
+      }
+    ]
+  },
+  "welsh_want_move_and_intro": {
+    "event_id": "00756284-511b-4202-8b63-02a412aa8b3c",
+    "undo_ops": [
+      {
+        "op": "audio.update",
+        "audio_id": "739866d3-c0fe-486d-ad64-d7ffc43df7bc",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "c154bfbd-6cfb-4a7e-a7cd-d37963188328",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "e6ef09ae-f041-4c64-b81f-49a38ae6ac9b",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "65b40d02-3834-4b41-87d7-98876e490c8c",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "3b138f96-083b-45fd-adf4-efdd9d425826",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "c5ae221c-0a66-4925-a098-3b536596d114",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "f81ec4d1-8734-4233-ba23-262a1d98618c",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "2dc97ff8-9bf6-4ccd-b233-45ee1fafcfaf",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "29e8dbff-310a-4bcc-bc47-8f2217e32e8e",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "19b214da-9ff8-402f-bb3d-1186eada419f",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "b24ac6a7-536f-4dfd-a9b1-631b14a97b65",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "7ee48b19-9c44-4fc1-8662-04f033bdeec8",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "a3fe39cb-749a-44d3-932f-117936c871c6",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "262c78c1-a30d-49e5-814d-34763c45af5c",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "9e60f972-1ef4-423b-b4c4-743347f9aaf5",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "f75d87f5-a5dd-48f3-a394-c61365b850b5",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "e9185850-7fdf-4505-9d86-0aa90db2830c",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "3d3dc553-9a3b-4165-81a4-ff311339283d",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "35e7e9ac-a034-476e-b339-67b81afc611d",
+        "set": {
+          "rerecord_wanted": null
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "e55aa8db-123a-46d9-b026-7eb5d02d723c",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes (seed 272 family): Jan legacy take may still say 'del' (pretty) — re-read with 'blin'. Kai 16 Nov, learner complaint via Deborah.",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #128·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "8da58b3d-766a-4b65-ba09-4564647a28b3",
+        "set": {
+          "rerecord_wanted": null
+        }
+      }
+    ]
+  },
+  "welsh_requeue_grants": {
+    "event_id": "1777c475-201c-4cc6-9f10-5d746751a0f0",
+    "undo_ops": [
+      {
+        "op": "audio.update",
+        "audio_id": "e6ef09ae-f041-4c64-b81f-49a38ae6ac9b",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "c154bfbd-6cfb-4a7e-a7cd-d37963188328"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "3b138f96-083b-45fd-adf4-efdd9d425826",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "65b40d02-3834-4b41-87d7-98876e490c8c"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "f81ec4d1-8734-4233-ba23-262a1d98618c",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "c5ae221c-0a66-4925-a098-3b536596d114"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "29e8dbff-310a-4bcc-bc47-8f2217e32e8e",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "2dc97ff8-9bf6-4ccd-b233-45ee1fafcfaf"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "b24ac6a7-536f-4dfd-a9b1-631b14a97b65",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "19b214da-9ff8-402f-bb3d-1186eada419f"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "a3fe39cb-749a-44d3-932f-117936c871c6",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "7ee48b19-9c44-4fc1-8662-04f033bdeec8"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "9e60f972-1ef4-423b-b4c4-743347f9aaf5",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "262c78c1-a30d-49e5-814d-34763c45af5c"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "e9185850-7fdf-4505-9d86-0aa90db2830c",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "f75d87f5-a5dd-48f3-a394-c61365b850b5"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "35e7e9ac-a034-476e-b339-67b81afc611d",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "3d3dc553-9a3b-4165-81a4-ff311339283d"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "8da58b3d-766a-4b65-ba09-4564647a28b3",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes stopgap: Aran's June 2026 take (WhatsApp, ElevenLabs-cleaned, cuts off at the end) linked over the Jan 'del' take; Kai 16 Nov 16:52Z wants a real booth take",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m",
+            "replaces_want_on": "e55aa8db-123a-46d9-b026-7eb5d02d723c"
+          }
+        }
+      }
+    ]
+  },
+  "intro_want_move_218": {
+    "event_id": "dbaa5985-00f8-4868-beea-771eedcc6f14",
+    "note": "cs #218: intro booth want moved 739866d3 -> e6e40d3f (human_aran_eng booth, requeue_for human_aran_eng); undo via POST /api/production/cym_n_for_eng/edit-batch apply:true",
+    "undo_ops": [
+      {
+        "op": "audio.update",
+        "audio_id": "739866d3-c0fe-486d-ad64-d7ffc43df7bc",
+        "set": {
+          "rerecord_wanted": {
+            "reason": "angry eyes LEGO intro (S0272L05): live clip is a splice whose Welsh says 'del'; Kai 16 Nov wants Aran's real take on his booth",
+            "voice_id": "human_aran_eng",
+            "requested_at": "2026-11-16",
+            "requested_by": "kai (cs #207·AI)",
+            "voice_gender": "m"
+          }
+        }
+      },
+      {
+        "op": "audio.update",
+        "audio_id": "e6e40d3f-efd1-49f6-b4fc-6a4644d4b161",
+        "set": {
+          "rerecord_wanted": null
+        }
+      }
+    ]
+  },
+  "intro_text_221": {
+    "event_id": "ef6e7d7d-1d60-420c-a9fd-b363eee1e138",
+    "note": "cs #221: e6e40d3f stored text set to the real script (English intro line + Welsh twice); undo via POST /api/production/cym_n_for_eng/edit-batch apply:true",
+    "before_text": "these angry eyes — y llygaid blin yma",
+    "after_text": "Okay, the way you’re going to say \"these angry eyes\" is: y llygaid blin yma. Y llygaid blin yma.",
+    "undo_ops": [
+      {
+        "op": "audio.update",
+        "audio_id": "e6e40d3f-efd1-49f6-b4fc-6a4644d4b161",
+        "set": {
+          "text": "these angry eyes — y llygaid blin yma",
+          "text_stripped": "these angry eyes  y llygaid blin yma"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,401 @@
+{
+ "family": "frames",
+ "event_id": "6db556b3-0b7b-43fd-ab7f-d8f739abdd61",
+ "undo_file_on_popty": "2026-11-17T12-13-02-159Z-6db556b3-0b7b-43fd-ab7f-d8f739abdd61.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "LEGO:S0049L02",
+  "LEGO:S0050L01",
+  "LEGO:S0057L01",
+  "LEGO:S0060L01",
+  "LEGO:S0078L01",
+  "LEGO:S0146L02",
+  "LEGO:S0152L02",
+  "LEGO:S0174L01",
+  "LEGO:S0135L01",
+  "LEGO:S0113L01",
+  "LEGO:S0213L01",
+  "LEGO:S0103L01",
+  "LEGO:S0059L01",
+  "S0113L01B02"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0113L01U02",
+   "set": {
+    "target_text": "ik haw in pear nije wurden leard mar wêrom wit ik net mear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0113L01B02",
+   "set": {
+    "target_text": "en wêrom wit ik net mear?",
+    "target1_audio_id": "967e76da-106d-4bfb-98d2-4cab48377374"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "eb35d70f-f0e9-4974-9616-eece3a19ab73",
+   "set": {
+    "target_text": "ik wit",
+    "components": [
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "know",
+      "target": "wit"
+     }
+    ],
+    "target1_audio_id": "ea76dcc7-ffc5-468f-86bb-718ff92a465a"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7d51dcb9-147c-42bc-b37d-2bc022b99c69",
+   "set": {
+    "target_text": "wy besykje net",
+    "components": [
+     {
+      "known": "we",
+      "target": "wy"
+     },
+     {
+      "known": "are trying",
+      "target": "besykje"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "target1_audio_id": "ecbe4019-68f5-49e5-8b9e-95f338afe29f"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "10d948fc-0d3e-4489-9ac3-34832134b64a",
+   "set": {
+    "target_text": "wy witte net",
+    "components": [
+     {
+      "known": "we know",
+      "target": "wy witte"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "target1_audio_id": "481e6061-0372-4955-8627-bb71c2181b54"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "841d8a58-cd47-4083-8156-1965cfb6b117",
+   "set": {
+    "target_text": "wêrom wit ik net mear",
+    "components": [
+     {
+      "known": "why",
+      "target": "wêrom"
+     },
+     {
+      "known": "do I know",
+      "target": "wit ik"
+     },
+     {
+      "known": "not any more",
+      "target": "net mear"
+     }
+    ],
+    "target1_audio_id": "fbffdd92-0a4b-48b3-9f5c-2924628d3a81"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c03b5489-96f8-4056-b809-59ed968887a0",
+   "set": {
+    "target_text": "ik wit net",
+    "components": [
+     {
+      "known": "I know",
+      "target": "ik wit"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "target1_audio_id": "84b004ff-7b57-4ef5-9071-38f3504f40da"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4d13af19-ad22-43fa-9bcc-cb05a2845fcf",
+   "set": {
+    "target_text": "as ik doe witten hie",
+    "components": [
+     {
+      "known": "if",
+      "target": "as"
+     },
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "then",
+      "target": "doe"
+     },
+     {
+      "known": "known",
+      "target": "witten"
+     },
+     {
+      "known": "had",
+      "target": "hie"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cf40456d-a129-4c78-9f00-ee78bf5331bb",
+   "set": {
+    "target_text": "datstû ferjitte silst",
+    "components": [
+     {
+      "known": "that you",
+      "target": "datstû"
+     },
+     {
+      "known": "to forget",
+      "target": "ferjitte"
+     },
+     {
+      "known": "will",
+      "target": "silst"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "77fbcb97-1b5d-4b26-a82c-4c4e6fe3122f",
+   "set": {
+    "target_text": "om't se no al witte",
+    "components": [
+     {
+      "known": "because",
+      "target": "om't"
+     },
+     {
+      "known": "they",
+      "target": "se"
+     },
+     {
+      "known": "already",
+      "target": "no al"
+     },
+     {
+      "known": "know",
+      "target": "witte"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2994dd13-7004-47ec-8533-987fc51a724f",
+   "set": {
+    "target_text": "ik woe dat se wist",
+    "components": [
+     {
+      "known": "I wanted",
+      "target": "ik woe"
+     },
+     {
+      "known": "that she",
+      "target": "dat se"
+     },
+     {
+      "known": "knew",
+      "target": "wist"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "8a5a2835-9ead-4ff7-9946-6bf4dccfd17c",
+   "set": {
+    "target_text": "kinstû begripe",
+    "components": [
+     {
+      "known": "can you",
+      "target": "kinstû"
+     },
+     {
+      "known": "to understand",
+      "target": "begripe"
+     }
+    ],
+    "target1_audio_id": "da6084c8-8a5b-4afc-a4a1-a70202800e1f"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "151a7608-9e00-4c14-9d31-7ef48030abe4",
+   "set": {
+    "target_text": "as ik witten hie",
+    "components": [
+     {
+      "known": "if",
+      "target": "as"
+     },
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "known",
+      "target": "witten"
+     },
+     {
+      "known": "had",
+      "target": "hie"
+     }
+    ],
+    "target1_audio_id": "95eb9df5-36ee-4575-82b9-27485146bbef"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "e72857c9-b146-4be1-9a24-d66f54c6d0ab",
+   "set": {
+    "target_text": "sûnt wy besocht hawwe",
+    "components": [
+     {
+      "known": "since",
+      "target": "sûnt"
+     },
+     {
+      "known": "we",
+      "target": "wy"
+     },
+     {
+      "known": "tried",
+      "target": "besocht"
+     },
+     {
+      "known": "have",
+      "target": "hawwe"
+     }
+    ],
+    "target1_audio_id": "cfc8fe03-0615-47a2-a3f6-23db9c585353"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "762bbd9d-00f1-4113-8f57-a6c9a8d35374",
+   "set": {
+    "target_text": "ik begryp net",
+    "components": [
+     {
+      "known": "I understand",
+      "target": "ik begryp"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "target1_audio_id": "cc496f70-f4b6-4362-830a-9adca163572e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c84281b1-cdec-4b61-9bcf-d311ae36ff0a",
+   "set": {
+    "target_text": "ik wit noch net",
+    "components": [
+     {
+      "known": "I know",
+      "target": "ik wit"
+     },
+     {
+      "known": "still",
+      "target": "noch"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "target1_audio_id": "4f8583f4-4ed2-4ad2-80da-879ded965e1e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ac8c86ba-170e-4a1d-95c0-537b6f2734fe",
+   "set": {
+    "target_text": "ik wit net mear",
+    "components": [
+     {
+      "known": "I know",
+      "target": "ik wit"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     },
+     {
+      "known": "any more",
+      "target": "mear"
+     }
+    ],
+    "target1_audio_id": "a0763bd8-c9ee-4741-b00b-10ee55fbc3b8"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2a19027f-f522-46c2-8bae-c473e23bb845",
+   "set": {
+    "target_text": "ik besykje net",
+    "components": [
+     {
+      "known": "I'm trying",
+      "target": "ik besykje"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "target1_audio_id": "9a6a8e98-1e2c-4528-b4fa-0955934041fd"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "9cb9b81a-83a1-47e1-96c9-b24075b78244",
+   "set": {
+    "target_text": "astû witst",
+    "components": [
+     {
+      "known": "if you",
+      "target": "astû"
+     },
+     {
+      "known": "know",
+      "target": "witst"
+     }
+    ],
+    "target1_audio_id": "ceaebd37-06f6-4b20-a67e-b2452bdfa7e6"
+   }
+  }
+ ]
+}

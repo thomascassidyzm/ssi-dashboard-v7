@@ -22,7 +22,7 @@ const CARD_META = {
   Pedagogy: { to: '/pedagogy', desc: 'The teaching model and the method — read this before authoring anything' },
   Seeds: { to: '/canonical/seeds', desc: 'The canonical seed library' },
   Content: { to: '/canonical/content', desc: 'Reference translations and validated content' },
-  Pods: { to: '/canonical/pods', desc: 'Listening pods — browsing the pod estate' },
+  Pods: { to: '/pods', desc: 'Listening pods — search every pod and hear it in the app' },
 }
 
 const groups = computed(() => {

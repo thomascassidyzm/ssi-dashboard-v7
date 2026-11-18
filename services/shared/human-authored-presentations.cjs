@@ -44,6 +44,14 @@
  *
  * NO TTS HERE. A rewrite queues an audio pass (audio-pass-queue.cjs) and, where
  * needed, writes a pending course_audio row for /generate to render.
+ *
+ * TWO STRENGTHS (Kai, 2026-11-11, job #247·AH). Everything above is the HARD mark,
+ * and it stays exactly as it was. A SOFT mark (guard = 'soft', added by
+ * database/changes/20261111_human_authored_presentations_soft_guard.sql) records
+ * a hand-written intro on ANY course so rebuilds can WARN and suggest carrying its
+ * "as in" example (intro-authorship.cjs) — it is never substituted, never judged,
+ * never refused by the trigger. So loadMarks returns HARD marks only unless asked
+ * for soft ones: every caller written for the hard guard keeps its meaning.
  */
 
 'use strict'
@@ -62,6 +70,14 @@ const CHECK_TYPE = 'human_authored_presentation'
 const CHANGE_FILE = 'database/changes/20260921_human_authored_presentations.sql'
 /** content_feedback.feedback_type every decision is mirrored to, for the dashboard's feedback view. */
 const FEEDBACK_TYPE = 'presentation_maintenance'
+/** The DB change that adds the soft level (guard column). Not applied until Tom's go. */
+const SOFT_GUARD_CHANGE_FILE = 'database/changes/20261111_human_authored_presentations_soft_guard.sql'
+const GUARDS = ['hard', 'soft']
+
+/** A mark's strength. A row from before the soft-guard change has no column: it is hard. */
+function markGuard(mark) {
+  return mark && mark.guard === 'soft' ? 'soft' : 'hard'
+}
 const JUDGE_MODEL = 'sonnet'
 
 // ─── Words ────────────────────────────────────────────────────────────────
@@ -87,17 +103,24 @@ function pendingRowIsFresh(row, mark) {
 
 // ─── Reading ──────────────────────────────────────────────────────────────
 
-/** Every mark of a course (optionally only some LEGOs), keyed by lego_id. Throws — a caller that cannot read the marks must not guess. */
-async function loadMarks(supabase, courseCode, legoIds = null) {
+/**
+ * The HARD marks of a course (optionally only some LEGOs), keyed by lego_id —
+ * the marks whose words are substituted and judged. `{ soft: true }` returns the
+ * soft marks instead, `{ soft: 'both' }` every mark. Throws — a caller that
+ * cannot read the marks must not guess. Filtered here, not in SQL, so it works
+ * before and after the soft-guard column exists.
+ */
+async function loadMarks(supabase, courseCode, legoIds = null, { soft = false } = {}) {
   let q = supabase.from(TABLE).select('*').eq('course_code', courseCode)
   if (Array.isArray(legoIds)) q = q.in('lego_id', legoIds)
   const { data, error } = await q
   if (error) throw new Error(`could not read ${TABLE} for ${courseCode}: ${error.message} (is ${CHANGE_FILE} applied?)`)
-  return new Map((data || []).map(m => [m.lego_id, m]))
+  const keep = (m) => soft === 'both' ? true : soft ? markGuard(m) === 'soft' : markGuard(m) === 'hard'
+  return new Map((data || []).filter(keep).map(m => [m.lego_id, m]))
 }
 
-async function loadMark(supabase, courseCode, legoId) {
-  const marks = await loadMarks(supabase, courseCode, [legoId])
+async function loadMark(supabase, courseCode, legoId, opts = {}) {
+  const marks = await loadMarks(supabase, courseCode, [legoId], opts)
   return marks.get(legoId) || null
 }
 
@@ -107,15 +130,15 @@ function decision(action, fields) {
   return { at: new Date().toISOString(), action, ...fields }
 }
 
-async function writeMark(supabase, mark, patch, newDecision) {
+async function writeMark(supabase, mark, patch, newDecision, { mirror = true } = {}) {
   const decisions = [...(mark.decisions || []), newDecision]
   const { data, error } = await supabase
     .from(TABLE)
     .update({ ...patch, decisions, updated_at: new Date().toISOString() })
     .eq('course_code', mark.course_code).eq('lego_id', mark.lego_id)
     .select().single()
-  if (error) throw new Error(`could not update the mark for ${mark.course_code}/${mark.lego_id}: ${error.message}`)
-  await mirrorToFeedback(supabase, data, newDecision)
+  if (error) throw new Error(`could not update the mark for ${mark.course_code}/${mark.lego_id}: ${error.message}${/guard/.test(String(error.message)) ? ` (is ${SOFT_GUARD_CHANGE_FILE} applied?)` : ''}`)
+  if (mirror) await mirrorToFeedback(supabase, data, newDecision)
   return data
 }
 
@@ -140,31 +163,40 @@ async function mirrorToFeedback(supabase, mark, d) {
  * same words only reconciles the LEGO revision; different words are recorded
  * as an edit. `lego` is the live course_legos row (known_text, target_text).
  */
-async function markHumanAuthored(supabase, { courseCode, legoId, text, author, authoredOn = null, source = null, lego, by, why = null }) {
+async function markHumanAuthored(supabase, { courseCode, legoId, text, author, authoredOn = null, source = null, lego, by, why = null, guard = 'hard', mirror = true }) {
   if (!text || !String(text).trim()) throw new Error('markHumanAuthored: text is required')
   if (!author) throw new Error('markHumanAuthored: author is required')
   if (!lego) throw new Error('markHumanAuthored: the live LEGO row is required — the mark records the revision it was reconciled against')
-  const existing = await loadMark(supabase, courseCode, legoId)
+  if (!GUARDS.includes(guard)) throw new Error(`markHumanAuthored: guard must be one of ${GUARDS.join(', ')}`)
+  const existing = await loadMark(supabase, courseCode, legoId, { soft: 'both' })
+  // A soft request never weakens a hard mark — that is Kai's 2026-09-21 guard, and
+  // only a person who means to lift it should. A hard request upgrades a soft one.
+  if (existing && guard === 'soft' && markGuard(existing) === 'hard') {
+    throw new Error(`${courseCode}/${legoId} already carries a HARD human-authored mark (by ${existing.author}); a soft mark would weaken it — not changed`)
+  }
+  // The guard column is written only when it says something new, so hard marking
+  // keeps working on a database that predates the soft-guard change.
+  const guardPatch = (guard === 'soft' || (existing && markGuard(existing) === 'soft')) ? { guard } : {}
   const revision = {
     reconciled_known_text: lego.known_text, reconciled_target_text: lego.target_text,
     reconciled_at: new Date().toISOString(), reconciled_by: by,
   }
   if (existing) {
     const changed = !sameWords(existing.text, text)
-    return writeMark(supabase, existing, { text, author, authored_on: authoredOn, source, ...revision },
+    return writeMark(supabase, existing, { text, author, authored_on: authoredOn, source, ...revision, ...guardPatch },
       decision(changed ? 'edited' : 'marked', {
         by, why: why || (changed ? 're-marked with new words' : 're-marked, words unchanged'),
-        old_text: existing.text, new_text: text,
+        old_text: existing.text, new_text: text, guard,
         lego: { known_text: lego.known_text, target_text: lego.target_text },
-      }))
+      }), { mirror })
   }
-  const d = decision('marked', { by, why, new_text: text, lego: { known_text: lego.known_text, target_text: lego.target_text } })
+  const d = decision('marked', { by, why, new_text: text, guard, lego: { known_text: lego.known_text, target_text: lego.target_text } })
   const { data, error } = await supabase.from(TABLE).insert({
     course_code: courseCode, lego_id: legoId, text, author, authored_on: authoredOn, source,
-    ...revision, decisions: [d],
+    ...revision, ...guardPatch, decisions: [d],
   }).select().single()
-  if (error) throw new Error(`could not mark ${courseCode}/${legoId}: ${error.message} (is ${CHANGE_FILE} applied?)`)
-  await mirrorToFeedback(supabase, data, d)
+  if (error) throw new Error(`could not mark ${courseCode}/${legoId}: ${error.message} (is ${guard === 'soft' ? SOFT_GUARD_CHANGE_FILE : CHANGE_FILE} applied?)`)
+  if (mirror) await mirrorToFeedback(supabase, data, d)
   return data
 }
 
@@ -442,8 +474,8 @@ function markedNeeds({ marks, legos, course, legoIdsWithPresentation, freshPendi
 }
 
 module.exports = {
-  TABLE, CHECK_TYPE, CHANGE_FILE, FEEDBACK_TYPE, JUDGE_MODEL,
-  normaliseWords, sameWords, legoUnchanged, pendingRowIsFresh,
+  TABLE, CHECK_TYPE, CHANGE_FILE, SOFT_GUARD_CHANGE_FILE, FEEDBACK_TYPE, JUDGE_MODEL, GUARDS,
+  markGuard, normaliseWords, sameWords, legoUnchanged, pendingRowIsFresh,
   loadMarks, loadMark, markHumanAuthored, recordWordingEdit,
   maintenancePrompt, parseJudgement, judgeMaintenance,
   reconcileMark, resolveForCourse, markedNeeds,

@@ -12,7 +12,7 @@
  * TOUCHES NOTHING SHARED. No database, no S3: the raw-archive PUT, the line resolve, the mastered
  * PUT and the course_audio filing are SLEEPS of the measured/estimated length (--io, defaults
  * from plan #715's timings), which cost no CPU — exactly what they cost the API box. The booth's
- * whisper check is off on the server (BOOTH_WHISPER_CHECK unset, Tom 2026-10-16) and is not run.
+ * server has no whisper check (removed, Tom 2026-11-07).
  *
  * Usage:
  *   node tools/booth-upload-load.cjs --dir <folder of raw .webm takes> [--takes 30]

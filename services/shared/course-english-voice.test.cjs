@@ -1,6 +1,6 @@
 /**
  * Tom 2026-09-29 10:17Z: until cloned voices replace a course's English wholesale, a NEW English clip in an
- * EXISTING course takes the voice that course already speaks English in (ita_for_eng = Sonia, Azure), provider
+ * EXISTING course takes the voice that course already speaks English in (never Sonia, r-2026-10-30), provider
  * and voice id together. Charlotte (the cast) is for a course that holds no English clip yet.
  */
 import { describe, it, expect, afterEach } from 'vitest'
@@ -12,13 +12,17 @@ const { assertCastVoice, useCastRows, useCourseVoiceHolder, useCourseVoiceCensus
 describe('pickCourseVoice', () => {
   it('takes the voice most of the recent English clips are in, with its provider', () => {
     const rows = [
-      { voice_id: 'azure_en-GB-SoniaNeural' }, { voice_id: 'azure_en-GB-SoniaNeural' },
-      { voice_id: 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121' },
+      { voice_id: 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121' }, { voice_id: 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121' },
+      { voice_id: 'azure_en-GB-RyanNeural' },
     ]
-    expect(pickCourseVoice(rows)).toEqual({ provider: 'azure', voiceId: 'en-GB-SoniaNeural' })
+    expect(pickCourseVoice(rows)).toEqual({ provider: 'cartesia', voiceId: '71a7ad14-091c-4e8e-a314-022ece01c121' })
+  })
+  it('never matches Sonia, even when she is the whole habit (r-2026-10-30): the cast speaks instead', () => {
+    expect(pickCourseVoice([{ voice_id: 'azure_en-GB-SoniaNeural' }, { voice_id: 'azure_en-GB-SoniaNeural' }])).toBeNull()
+    expect(pickCourseVoice([{ voice_id: 'en-GB-SoniaNeural' }])).toBeNull()
   })
   it('reads a bare Azure Neural name as Azure', () => {
-    expect(pickCourseVoice([{ voice_id: 'en-GB-SoniaNeural' }])).toEqual({ provider: 'azure', voiceId: 'en-GB-SoniaNeural' })
+    expect(pickCourseVoice([{ voice_id: 'en-GB-RyanNeural' }])).toEqual({ provider: 'azure', voiceId: 'en-GB-RyanNeural' })
   })
   it('ignores retired / unprefixed provider ids and human recordings', () => {
     expect(pickCourseVoice([{ voice_id: 'xai_eve' }, { voice_id: 'human_recording' }, { voice_id: 'leo' }])).toBeNull()

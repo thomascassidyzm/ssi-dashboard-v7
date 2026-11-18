@@ -12,10 +12,11 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const { claudeConfigExport } = require('../../shared/claude-config.cjs');
-const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.cjs');
+const { clearStaleRoman } = require('../../shared/roman-sync.cjs');
+const { getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { hasNonExampleText } = require('../lib/validation.cjs');
-const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
+const { advancePipeline } = require('../lib/pipeline.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 
@@ -1167,7 +1168,7 @@ end tell`;
       // Get current phrase for logging
       const { data: current } = await supabase
         .from('course_practice_phrases')
-        .select('known_text, target_text, course_code, seed_number')
+        .select('known_text, target_text, target_text_roman, course_code, seed_number')
         .eq('id', id)
         .single();
 
@@ -1183,6 +1184,11 @@ end tell`;
       if (target_text && target_text !== current.target_text) {
         updates.target_text = target_text;
       }
+      if (req.body.target_text_roman !== undefined && updates.target_text) {
+        updates.target_text_roman = req.body.target_text_roman || null;
+      }
+      // A target edit without its new romanisation clears the old one (shared/roman-sync.cjs, job #252).
+      Object.assign(updates, clearStaleRoman(current, updates).patch);
 
       if (Object.keys(updates).length === 0) {
         return res.json({ success: true, message: 'No changes needed', phrase_id: id });
@@ -1370,7 +1376,7 @@ end tell`;
       if (flagError) throw flagError;
 
       // Look up golden seed count for this course
-      let goldenCount = 10;
+      let goldenCount = getGoldenSeedCount(undefined); // the lib default until the course row says otherwise
       try {
         const { data: courseData } = await supabase
           .from('courses')
@@ -1378,7 +1384,7 @@ end tell`;
           .eq('course_code', courseCode)
           .single();
         goldenCount = getGoldenSeedCount(courseData);
-      } catch (e) { /* default to 10 */ }
+      } catch (e) { /* keep the lib default */ }
 
       // Get phrase check progress (exclude golden seeds — they aren't QA-checked)
       const { count: totalPhrases } = await supabase

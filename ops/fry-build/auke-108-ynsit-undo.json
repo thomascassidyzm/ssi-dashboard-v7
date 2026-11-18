@@ -1,0 +1,103 @@
+{
+ "family": "ynsit",
+ "event_id": "481212d0-cc10-43cb-a50c-e0b9f9b0029b",
+ "undo_file_on_popty": "2026-11-16T12-40-13-043Z-481212d0-cc10-43cb-a50c-e0b9f9b0029b.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03C02",
+   "set": {
+    "target_text": "ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0365L01B03",
+   "set": {
+    "target_text": "ik haw net heard dat se ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03U05",
+   "set": {
+    "target_text": "hy sei fan 'e moarn dat se ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03U04",
+   "set": {
+    "target_text": "sy hawwe ús ferteld dat se ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03U03",
+   "set": {
+    "target_text": "ik ken dy jonge frou dy't sei dat se ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03U02",
+   "set": {
+    "target_text": "sy sei dat se ynsit en dat se net thús wurkje wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03U01",
+   "set": {
+    "target_text": "ik tink net dat se ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03B04",
+   "set": {
+    "target_text": "wy witte dat se ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03B03",
+   "set": {
+    "target_text": "dy't sei dat se ynsit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03B02",
+   "set": {
+    "target_text": "tinkstû dat se ynsit?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0343L03B01",
+   "set": {
+    "target_text": "ik tink dat se ynsit"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "e36d1d53-2d9e-4a8e-8c4c-7ff92dbc9830",
+   "set": {
+    "target_text": "dat se ynsit",
+    "components": [
+     {
+      "known": "that she",
+      "target": "dat se"
+     },
+     {
+      "known": "is worried",
+      "target": "ynsit"
+     }
+    ]
+   }
+  }
+ ]
+}

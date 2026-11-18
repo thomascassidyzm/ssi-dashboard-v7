@@ -83,8 +83,8 @@
                   @stop="handleStopVerify"
                 />
 
-                <!-- Override: skip verification and proceed to Step 3 -->
-                <div v-if="workflow.state.value.s3Verification && !s3VerificationPassing && !isVerifying" class="mt-4 p-3 border rounded-lg" :class="s3VerifyOverride ? 'amber-box bg-amber-900/20 border-amber-700' : 'border-line'">
+                <!-- Override: skip verification and proceed to Step 3 — never when the length/format check did not run (job #994) -->
+                <div v-if="workflow.state.value.s3Verification && !workflow.state.value.s3Verification.audioCheckGap && !s3VerificationPassing && !isVerifying" class="mt-4 p-3 border rounded-lg" :class="s3VerifyOverride ? 'amber-box bg-amber-900/20 border-amber-700' : 'border-line'">
                   <label class="flex items-center gap-2 cursor-pointer group">
                     <input
                       v-model="s3VerifyOverride"

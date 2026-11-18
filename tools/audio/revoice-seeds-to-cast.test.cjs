@@ -64,6 +64,30 @@ describe('revoice-seeds-to-cast', () => {
   })
 })
 
+// job #76·AA: deu_at target1 is Kai's ElevenLabs Tamara (cast gate CAST_ANY_PROVIDER); target2 stays as it is
+describe('castFromVoiceConfig — a non-Cartesia cast on a CAST_ANY_PROVIDER course, one role', () => {
+  const vc = { resolved: { voices: {
+    target1: { provider: 'elevenlabs', voiceId: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE' },
+    target2: { provider: 'cartesia', voiceId: 'f6f3' },
+  } } }
+  it('takes the ElevenLabs cast only when the course allows any provider', () => {
+    expect(castFromVoiceConfig(vc, { roles: ['target1'], anyProvider: true })).toEqual({ castByRole: { target1: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE' }, missing: null })
+    expect(castFromVoiceConfig(vc, { roles: ['target1'] }).missing.role).toBe('target1')
+  })
+  it('deu_at is in the cast gate set and plain deu is not', () => {
+    const { CAST_ANY_PROVIDER } = createRequire(import.meta.url)('../../services/shared/voice-cast-gate.cjs')
+    expect(CAST_ANY_PROVIDER.has('deu_at')).toBe(true)
+    expect(CAST_ANY_PROVIDER.has('deu')).toBe(false)
+  })
+  it('a slot already on Tamara is not stale; a Vreni slot is; the job rides on the ask', () => {
+    const clips = new Map([['t', { id: 't', voice_id: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE', origin: 'tts' }], ['v', { id: 'v', voice_id: 'cartesia_40e0', origin: 'tts' }]])
+    const rows = [{ seed_number: 1, target_text: 'wü', target1_audio_id: 't', slot: { legoId: 'S0001L02' } }, { seed_number: 1, target_text: 'i wü', target1_audio_id: 'v', slot: { legoId: 'S0001L01' } }]
+    const asks = staleAsks(rows, clips, { target1: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE', target2: 'cartesia_f6f3' })
+    expect(asks.filter((a) => a.role === 'target1').map((a) => a.text)).toEqual(['i wü'])
+    expect(renderAsk('deu_at_for_eng', asks[0], { target1: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE' }, 'p', '#76')).toMatchObject({ job: '#76', voiceBound: true })
+  })
+})
+
 // Tom 2026-10-17: every repoint keeps the old pointer so any course can be rolled back
 describe('rollbackLines', () => {
   it('records old and new pointer per slot, one JSON line each', () => {
@@ -92,6 +116,13 @@ describe('renderAsk', () => {
     const ask = renderAsk('zho_for_eng', { role: 'target1', text: '你好' }, { target1: 'cartesia_f9a4' }, 'p')
     expect(ask).toMatchObject({ voiceId: 'cartesia_f9a4', voiceBound: true })
     expect(() => renderAsk('zho_for_eng', { role: 'target2', text: '你好' }, { target1: 'cartesia_f9a4' }, 'p')).toThrow(/no cast voice/)
+  })
+  // job #979: an APPROVAL token (Kai/Tom, shape kai:YYYY-MM-DD:<reason>) rides every ask so the re-record gate passes
+  it('carries APPROVAL from the environment onto the ask, and omits it when unset', () => {
+    const a = { role: 'target2', text: 'x' }, cast = { target2: 'cartesia_8c' }
+    expect(renderAsk('c', a, cast, 'p')).not.toHaveProperty('approval')
+    process.env.APPROVAL = 'kai:2026-10-30:t'
+    try { expect(renderAsk('c', a, cast, 'p').approval).toBe('kai:2026-10-30:t') } finally { delete process.env.APPROVAL }
   })
 })
 
@@ -143,5 +174,23 @@ describe('runPool hard cap', () => {
   })
   it('a free library hit releases its reservation and does not stop the run', async () => {
     const r = await run((a) => ({ paid: a.i === 0 ? 0 : 20 })); expect(r.charged).toBe(100); expect(r.next).toBe(6)
+  })
+})
+
+// job #140 (fin_for_eng go-live): the known side re-voices by its own words (known_text), not the target text
+describe('revoice-seeds-to-cast --roles known', () => {
+  it('asks for the known prompt, off-cast TTS only', () => {
+    const clips = new Map([['k1', { id: 'k1', voice_id: 'azure_en-GB-SoniaNeural', origin: 'tts' }], ['k2', { id: 'k2', voice_id: 'd293', origin: 'tts' }]])
+    const rows = [
+      { seed_number: 4, known_text: 'you speak', target_text: 'te puhutte', known_audio_id: 'k1', slot: { legoId: 'S0004L01' } },
+      { seed_number: 5, known_text: 'you need', target_text: 'te tarvitsette', known_audio_id: 'k2', slot: { legoId: 'S0005L01' } },
+    ]
+    expect(staleAsks(rows, clips, { known: 'cartesia_d293' })).toHaveLength(0) // the default roles are the two target roles: known is opt-in
+    const asks = staleAsks(rows, clips, { known: 'cartesia_d293' }, ['known'])
+    expect(asks.map((a) => [a.role, a.text, a.slots.length])).toEqual([['known', 'you speak', 1]])
+  })
+  it('textOf picks the side the role speaks', () => {
+    const { textOf } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+    expect([textOf({ known_text: 'a', target_text: 'b' }, 'known'), textOf({ known_text: 'a', target_text: 'b' }, 'target2')]).toEqual(['a', 'b'])
   })
 })

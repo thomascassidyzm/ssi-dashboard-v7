@@ -1,0 +1,110 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0101L01U08",
+   "expect": {
+    "known_text": "I am enjoying doing something different",
+    "target_text": "estoy disfrutando hacer algo diferente"
+   },
+   "set": {
+    "target_text": "estoy disfrutando haciendo algo diferente",
+    "target1_audio_id": "b0113df1-1515-465e-a5f9-f311f5c70a8d",
+    "target2_audio_id": "ab9bc983-28c1-4e2c-8e32-4a4d49fae9a2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0101L01U09",
+   "expect": {
+    "known_text": "I am enjoying speaking Spanish with you",
+    "target_text": "estoy disfrutando hablar español contigo"
+   },
+   "set": {
+    "target_text": "estoy disfrutando hablando español contigo",
+    "target1_audio_id": "78431a73-92fd-468b-9214-2a1efe4c2559",
+    "target2_audio_id": "25585d3c-0e12-4f84-9527-090dcf9e987b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0103L01U08",
+   "expect": {
+    "known_text": "I am enjoying listening to this language",
+    "target_text": "estoy disfrutando escuchar este idioma"
+   },
+   "set": {
+    "target_text": "estoy disfrutando escuchando este idioma",
+    "target1_audio_id": "2b812be7-8b94-41b0-a66b-ec44503643ec",
+    "target2_audio_id": "2f5fa9d4-39c6-4f52-aef2-875e11119c77"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0206L01U03",
+   "expect": {
+    "known_text": "I enjoy spending time with my son",
+    "target_text": "disfruto pasar tiempo con mi hijo"
+   },
+   "set": {
+    "target_text": "disfruto pasando tiempo con mi hijo",
+    "target1_audio_id": "96c4fa50-15b0-44b8-b3bd-e4fe0925d2c7",
+    "target2_audio_id": "dc4480a0-2a83-4723-8f8e-dfdd85e24d03"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0206L01U04",
+   "expect": {
+    "known_text": "I enjoy practising with you every week",
+    "target_text": "disfruto practicar hablando contigo"
+   },
+   "set": {
+    "target_text": "disfruto practicando contigo cada semana",
+    "target1_audio_id": "87d0f218-f633-464f-a455-7188118ffdc6",
+    "target2_audio_id": "c3695ece-1ad2-4481-9276-07ddd53fa764"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0206L01U05",
+   "expect": {
+    "known_text": "I really enjoy doing the arrangements",
+    "target_text": "disfruto mucho hacer los preparativos"
+   },
+   "set": {
+    "target_text": "disfruto mucho haciendo los preparativos",
+    "target1_audio_id": "b8a41910-d665-4a71-97a2-07d9f29591df",
+    "target2_audio_id": "eca82495-1401-4049-bbd8-e9eaf6fa3a0a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0209L02U02",
+   "expect": {
+    "known_text": "I enjoy being in a group",
+    "target_text": "disfruto estar en un grupo"
+   },
+   "set": {
+    "target_text": "disfruto estando en un grupo",
+    "target1_audio_id": "05f2f4f0-5efd-4b29-b812-35ca7b5fe87d",
+    "target2_audio_id": "88eb6230-28b2-4d53-ae0e-6de0f3533c0a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L04U04",
+   "expect": {
+    "known_text": "could we have a bottle of red wine?",
+    "target_text": "¿podríamos tener una botella de vino tinto?"
+   },
+   "set": {
+    "known_text": "could we ask for a bottle of red wine?",
+    "known_audio_id": "292578ef-e389-45e6-a71b-706fa02ae1a7",
+    "target_text": "¿podríamos pedir una botella de vino tinto?",
+    "target1_audio_id": "66d8d474-89b5-4390-af50-40d0aec84143",
+    "target2_audio_id": "8eea3871-630d-4fd3-8373-0dc7277a7032"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+{"_why":"job #650: the two BUILD rows added to S0071L02 for the /seed/complete floor ('to know the truth', 'to tell the truth') have Italian recorded only in Azure voices in ita_for_zho; the ita_for_eng cast is Cartesia, so the audio route refuses a second performance (EXISTS_IN_LANGUAGE) and a link would mix voices. Re-worded to rows that can be recorded; words taught before seed 71.",
+ "ops":[
+  {"op":"phrase.update","phrase_id":"ita_for_eng:S0071L02B02","set":{"known_text":"I need to know the truth","target_text":"devo sapere la verità","word_count":21},"expect":{"known_text":"to know the truth","target_text":"sapere la verità"}},
+  {"op":"phrase.update","phrase_id":"ita_for_eng:S0071L02B03","set":{"known_text":"I want to tell the truth","target_text":"voglio dire la verità","word_count":21},"expect":{"known_text":"to tell the truth","target_text":"dire la verità"}}
+ ]}
