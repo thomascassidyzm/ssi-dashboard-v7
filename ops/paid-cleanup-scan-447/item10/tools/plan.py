@@ -54,6 +54,8 @@ def stem(w):
 def words_in(phrase, lego):
     """known-side containment: every word of the LEGO's known text appears in the phrase (K49: split/reordered is fine;
     K6: an inflection of the word counts — learn/learning, want/wants)"""
+    if SPACELESS.search(norm(lego)):  # cs #743: a spaceless known side (jpn/zho) is checked as a substring; inflected rows (K6) are decided by hand
+        return norm(lego).replace(' ', '') in norm(phrase).replace(' ', '')
     st = [stem(w) for w in norm(phrase).split()]
     pool = collections.Counter(st)
     for w in [stem(x) for x in norm(lego).split()]:
@@ -172,6 +174,17 @@ def main():
                 touched_seeds.add(s['n'])
             plans.append(rec); continue
         nk, nt = d.get('known', l['known']), d.get('target', l['target'])
+        ack = d.get('ack', [])  # cs #743: checks answered by hand in `why`: 'known' (する stand-in / K6 inflection), 'target' (split in the seed)
+        if d.get('seed_known') and s['n'] not in seed_known_after:  # cs #743: a regloss/grow may carry its seed's known edit (KAI) itself
+            nsk = d['seed_known']
+            rec['seed_after'] = nsk
+            ops.append({'op': 'seed.update', 'seed_number': s['n'], 'set': {'known_text': nsk}, 'expect': {'known_text': s['known'], 'target_text': s['target']}})
+            copies = [pid for pid, p in P.items() if norm(p['known']) == norm(s['known']) and norm(p['target']) == norm(s['target'])]
+            for pid in copies:
+                ops.append({'op': 'phrase.update', 'phrase_id': pid, 'set': {'known_text': nsk}, 'expect': {'known_text': P[pid]['known'], 'target_text': P[pid]['target']}})
+            rec['seed_copies_updated'] = copies
+            seed_known_after[s['n']] = nsk
+        seed_copy_ids = set(rec.get('seed_copies_updated', []))
         comps = d.get('components')
         rec['after'] = {'known': nk, 'target': nt, 'type': d.get('type', l['type']), 'components': comps, 'is_new': d.get('is_new', l['is_new'])}
         after[lid] = {'known': nk, 'target': nt, 'is_new': rec['after']['is_new']}
@@ -188,13 +201,20 @@ def main():
         # --- checks on the LEGO itself
         chk = {}
         sk_after = d.get('seed_known') or seed_known_after.get(s['n']) or s['known']
-        miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
+        if SPACELESS.search(norm(nk)):
+            miss = [] if norm(nk).replace(' ', '') in norm(sk_after).replace(' ', '') else [nk]
+        else:
+            miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
+        if miss and 'known' in ack:
+            rec['acknowledged'] = rec.get('acknowledged', []) + [f'known not a literal span of the seed: {miss}']; miss = []
         chk['known_in_seed'] = not miss or miss
         chk['target_in_seed'] = has(s['target'], nt)
         chk['syllables'] = syl(nt, course)
         if chk['syllables'] > 8: problems.append(f'{lid}: target {nt} estimated {chk["syllables"]} syllables (>8) — hand-check')
         if miss and d['verdict'] != 'regloss-partial': problems.append(f'{lid}: known words not in seed: {miss}')
-        if not chk['target_in_seed']: problems.append(f'{lid}: target {nt} not contiguous in seed {s["target"]}')
+        if not chk['target_in_seed'] and 'target' in ack:
+            rec['acknowledged'] = rec.get('acknowledged', []) + ['target split in the seed']
+        elif not chk['target_in_seed']: problems.append(f'{lid}: target {nt} not contiguous in seed {s["target"]}')
         rec['checks'] = chk
         # --- basket
         bd = d.get('basket', {})
@@ -208,6 +228,9 @@ def main():
             sid = p['id'][len(course) + 1 + 8:] if p['id'].startswith(course + ':') else p['id']
             roles[p['type']] += 1
             act = bd.get(sid)
+            if p['id'] in seed_copy_ids and act in (None, 'keep'):
+                bas.append({'id': p['id'], 'role': p['type'], 'before': [p['known'], p['target']], 'action': 'seed-copy'}); kept[p['type']] += 1
+                continue
             if p['type'] == 'component':
                 act = act or 'component'
             if act is None:
@@ -231,7 +254,9 @@ def main():
                 if act[1] != p['target']: setp['target_text'] = act[1]
                 if setp:
                     ops.append({'op': 'phrase.update', 'phrase_id': p['id'], 'set': setp, 'expect': {'known_text': p['known'], 'target_text': p['target']}})
-                if not (has(act[1], nt) and words_in(act[0], nk)):
+                if has(act[1], nt) and not words_in(act[0], nk) and SPACELESS.search(norm(nk)):
+                    rec.setdefault('known_inflected_rows', []).append(sid)
+                elif not (has(act[1], nt) and words_in(act[0], nk)):
                     problems.append(f'{lid} {sid} rebuilt row does not contain the LEGO: {act}')
                 kept[p['type']] += 1
             elif act == 'del':
@@ -252,11 +277,14 @@ def main():
             row = {'id': pid, 'course_code': course, 'seed_number': s['n'], 'lego_index': l['idx'], 'known_text': k, 'target_text': t,
                    'phrase_role': 'build' if R == 'B' else 'use', 'position': pos,
                    'word_count': len(re.findall(r'[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]', t)) if SPACELESS.search(t) or re.search(r'[\uac00-\ud7af]', t) else len(t.split()),
-                   'lego_position': lego_pos(t, nt)}
+                   'lego_position': lego_pos(t, nt),
+                   'lego_count': 1}  # cs #743: NOT NULL at the door; every live row of the basket route carries 1
             ops.append({'op': 'phrase.insert', 'row': row})
             adds.append(row)
             kept['build' if R == 'B' else 'use'] += 1
-            if not (has(t, nt) and words_in(k, nk)):
+            if has(t, nt) and not words_in(k, nk) and SPACELESS.search(norm(nk)):
+                rec.setdefault('known_inflected_rows', []).append(pid[-3:])
+            elif not (has(t, nt) and words_in(k, nk)):
                 problems.append(f'{lid} add {pid} does not contain the LEGO: {k} | {t}')
         rec['basket'] = bas
         rec['add'] = adds
