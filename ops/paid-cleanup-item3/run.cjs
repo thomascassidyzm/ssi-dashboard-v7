@@ -25,7 +25,19 @@ const SCR = process.env.CS_SCRATCH || '/tmp';
 const AGENT = 'cs #699·AI for Kai (paid cleanup item 3, 18 Nov 2026)';
 const KAI_AGENT = 'kai-cs699-item3';
 
+// Popty is restarted by ssi-auto-deploy whenever main moves: wait for it and retry (up to 6 tries). Safe for applies too:
+// every op carries an "expect" on the old text, so a replay of an apply that did land aborts on drift and writes nothing.
 function signed(method, url, body) {
+  for (let i = 0; ; i++) {
+    try { return signedOnce(method, url, body); } catch (e) {
+      if (i >= 5) throw e;
+      console.error(`  (Popty call failed, try ${i + 1}; waiting for it to come back)`);
+      execFileSync('bash', ['-c', 'for i in $(seq 1 60); do curl -s -m 5 -o /dev/null http://localhost:3470/api/production/eng_for_jpn/presentation/S0001L01 && exit 0; sleep 3; done; exit 1']);
+      execFileSync('sleep', ['5']);
+    }
+  }
+}
+function signedOnce(method, url, body) {
   const args = [path.join(ROOT, 'tools/agent-admin/call.cjs'), '--key', 'kai', '--agent', KAI_AGENT, method, url];
   let tmp;
   if (body !== undefined) { tmp = path.join(SCR, `body-${process.pid}-${Date.now()}.json`); fs.writeFileSync(tmp, JSON.stringify(body)); args.push('--body-file', tmp); }
@@ -91,8 +103,9 @@ async function gate(c, file) {
   // 1. per-row gates, 200 at a time (the route's cap). Every changed row of ONE plan goes in the same request where it fits,
   //    so a known given two targets inside the plan is caught (ZUT within the request).
   const refused = new Map();
-  for (let i = 0; i < changed.length; i += 200) {
-    const staged = changed.slice(i, i + 200).map((r) => ({ seed_number: r.live.seed_number, lego_index: r.live.lego_index, phrase_role: r.live.phrase_role,
+  for (let i = 0; i < changed.length; i += 40) {
+    if (i) execFileSync('sleep', ['2']); // keep the shared DB calm: each row is a whole-course ZUT lookup
+    const staged = changed.slice(i, i + 40).map((r) => ({ seed_number: r.live.seed_number, lego_index: r.live.lego_index, phrase_role: r.live.phrase_role,
       known_text: r.known, target_text: r.live.target_text, lego_target: r.lego.target_text, lego_known: r.lego.known_text }));
     const g = signed('POST', '/api/admin/phrase-v4/gate', { courseCode: c, rows: staged });
     if (!Array.isArray(g.refused)) throw new Error(`gate: ${JSON.stringify(g).slice(0, 400)}`);
