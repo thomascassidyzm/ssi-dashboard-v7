@@ -1,0 +1,138 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "2c57b6aa-e8ea-4546-90a2-c78ac919a0bc",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_por",
+    "id": "eng_for_por:S0042L02U05"
+   },
+   "before": {
+    "id": "eng_for_por:S0042L02U05",
+    "seed_number": 42,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I've been learning English better than last month",
+    "known_text": "estou a aprender inglês melhor do que no mês passado",
+    "known_audio_id": "3da7f520-75d8-4180-b1a9-bebf696200db",
+    "target1_audio_id": "4983932e-e58e-4065-90b6-8b78cb556e6f",
+    "target2_audio_id": "fc4669f3-d344-43a9-9ea2-a60bef7bb2e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_por:S0042L02U05",
+    "seed_number": 42,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I'm learning English better than last month",
+    "known_text": "estou a aprender inglês melhor do que no mês passado",
+    "known_audio_id": "3da7f520-75d8-4180-b1a9-bebf696200db",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_por",
+    "id": "eng_for_por:S0105L01U06"
+   },
+   "before": {
+    "id": "eng_for_por:S0105L01U06",
+    "seed_number": 105,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't know it's like that",
+    "known_text": "não sabia que era assim",
+    "known_audio_id": "f2337d84-53c7-48ff-9380-4a9f5d5992a0",
+    "target1_audio_id": "bbd45573-2f66-4d32-984e-2c49d9413de9",
+    "target2_audio_id": "a9130b2f-423c-42bb-b166-c90b52924af5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_por:S0105L01U06",
+    "seed_number": 105,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't know it was like that",
+    "known_text": "não sabia que era assim",
+    "known_audio_id": "f2337d84-53c7-48ff-9380-4a9f5d5992a0",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_por",
+    "id": "eng_for_por:S0166L01U02"
+   },
+   "before": {
+    "id": "eng_for_por:S0166L01U02",
+    "seed_number": 166,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "can you tell me how do you say my name in English?",
+    "known_text": "pode dizer-me como se diz o meu nome em inglês?",
+    "known_audio_id": "9431f9b8-4d90-4476-818a-424d3e88c02e",
+    "target1_audio_id": "36e97b7d-728a-4b8e-affc-95511a3304ac",
+    "target2_audio_id": "88aefefb-8f10-40bb-b41b-eedf654702b3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_por:S0166L01U02",
+    "seed_number": 166,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "can you tell me how you say my name in English?",
+    "known_text": "pode dizer-me como se diz o meu nome em inglês?",
+    "known_audio_id": "9431f9b8-4d90-4476-818a-424d3e88c02e",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_por:S0166L01U02",
+   "set": {
+    "target_text": "can you tell me how do you say my name in English?",
+    "target1_audio_id": "36e97b7d-728a-4b8e-affc-95511a3304ac",
+    "target2_audio_id": "88aefefb-8f10-40bb-b41b-eedf654702b3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_por:S0105L01U06",
+   "set": {
+    "target_text": "I didn't know it's like that",
+    "target1_audio_id": "bbd45573-2f66-4d32-984e-2c49d9413de9",
+    "target2_audio_id": "a9130b2f-423c-42bb-b166-c90b52924af5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_por:S0042L02U05",
+   "set": {
+    "target_text": "I've been learning English better than last month",
+    "target1_audio_id": "4983932e-e58e-4065-90b6-8b78cb556e6f",
+    "target2_audio_id": "fc4669f3-d344-43a9-9ea2-a60bef7bb2e6"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-15-02-982Z-2c57b6aa-e8ea-4546-90a2-c78ac919a0bc.json"
+}

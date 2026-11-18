@@ -1,0 +1,28 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0145L02U01",
+   "set": {
+    "target_text": "why are you not happy here?",
+    "known_text": "¿por qué no estás contento aquí?"
+   },
+   "expect": {
+    "known_text": "claro que sé por qué no estás contento",
+    "target_text": "of course I know why are you not happy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_spa:S0145L02U04",
+   "set": {
+    "target_text": "why are you not happy with me?",
+    "known_text": "¿por qué no estás contento conmigo?"
+   },
+   "expect": {
+    "known_text": "lo siento que no entiendo por qué no estás contento",
+    "target_text": "I'm sorry that I don't understand why are you not happy"
+   }
+  }
+ ]
+}

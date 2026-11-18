@@ -1,0 +1,56 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0129L02B03",
+   "set": {
+    "target_text": "I think that you're doing so well",
+    "known_text": "penso che tu stia andando così bene"
+   },
+   "expect": {
+    "known_text": "pensavo che tu stessi andando così bene",
+    "target_text": "I thought that you're doing so well"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_ita:S0129L02U02",
+   "expect": {
+    "target_text": "I thought that you're doing so well last time we talked to each other"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0145L01U01",
+   "set": {
+    "target_text": "I'm sorry that I can't see why you're not happy any more"
+   },
+   "expect": {
+    "known_text": "mi dispiace non riuscire a vedere perché non sei più felice",
+    "target_text": "I'm sorry that I can't see why are you not happy any more"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0145L01U04",
+   "set": {
+    "target_text": "I don't know why you're not happy any more and I'm sorry"
+   },
+   "expect": {
+    "known_text": "non so perché non sei più felice e mi dispiace",
+    "target_text": "I don't know why are you not happy any more and I'm sorry"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0265L01U03",
+   "set": {
+    "target_text": "he has been my friend since last year"
+   },
+   "expect": {
+    "known_text": "È mio amico dall'anno scorso",
+    "target_text": "he has been a friend since last year"
+   }
+  }
+ ]
+}

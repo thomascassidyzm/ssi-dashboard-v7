@@ -1,0 +1,26 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_fra:S0182L02U05",
+   "set": {
+    "target_text": "did you see my keys yesterday?"
+   },
+   "expect": {
+    "known_text": "tu as vu mes clés hier ?",
+    "target_text": "have you seen my keys yesterday?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_fra:S0182L03U04",
+   "set": {
+    "target_text": "did you see my keys anywhere yesterday?"
+   },
+   "expect": {
+    "known_text": "tu as vu mes clés quelque part hier ?",
+    "target_text": "have you seen my keys anywhere yesterday?"
+   }
+  }
+ ]
+}

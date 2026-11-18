@@ -1,0 +1,17 @@
+{
+  "course_code": "fra_ca_for_eng",
+  "event_id": "40285063-b5ba-48aa-9a8c-ca4af035b848",
+  "actor": "cs-item5-broken-english",
+  "created_at": "2026-11-18T14:14:27.043Z",
+  "how_to_undo": "POST /api/production/fra_ca_for_eng/edit-batch {\"undo_file\":\"2026-11-18T14-14-27-043Z-40285063-b5ba-48aa-9a8c-ca4af035b848.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "fra_ca_for_eng:S0559L03U01",
+      "set": {
+        "known_text": "did you found the path through the wood?",
+        "known_audio_id": "fcbc25e0-bb51-4753-bb5e-995654022249"
+      }
+    }
+  ]
+}

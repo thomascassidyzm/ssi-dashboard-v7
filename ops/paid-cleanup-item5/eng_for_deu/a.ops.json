@@ -1,0 +1,46 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_deu:S0068L01U03",
+   "expect": {
+    "target_text": "are you sure you know what are you looking for?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0253L02U04",
+   "set": {
+    "target_text": "he said that he would be ready in a few minutes"
+   },
+   "expect": {
+    "known_text": "er sagte, dass er in ein paar Minuten fertig ist",
+    "target_text": "he said that he is done in a few minutes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0254L01B03",
+   "set": {
+    "target_text": "since last night",
+    "known_text": "seit gestern Abend"
+   },
+   "expect": {
+    "known_text": "seit einer Weile",
+    "target_text": "since a while ago"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0254L01U04",
+   "set": {
+    "target_text": "I have been doing that since yesterday",
+    "known_text": "ich mache das seit gestern"
+   },
+   "expect": {
+    "known_text": "ich mache das seit einer Weile",
+    "target_text": "I have been doing that since a while ago"
+   }
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_ca_for_eng:S0559L03U01",
+   "set": {
+    "known_text": "have you found the path through the wood?"
+   },
+   "expect": {
+    "known_text": "did you found the path through the wood?",
+    "target_text": "as-tu trouvé le sentier à travers le bois?"
+   }
+  }
+ ]
+}
