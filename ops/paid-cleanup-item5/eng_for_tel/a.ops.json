@@ -1,0 +1,54 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0600L02",
+   "set": {
+    "target_text": "if you'd told me",
+    "components": [
+     {
+      "known": "నాకు చెప్పి ఉంటే",
+      "target": "if you'd told me"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "నాకు చెప్పి ఉంటే",
+    "target_text": "'d told me"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0600L02B01",
+   "set": {
+    "target_text": "if you'd told me"
+   },
+   "expect": {
+    "known_text": "నాకు చెప్పి ఉంటే",
+    "target_text": "'d told me"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0600L02B02",
+   "set": {
+    "target_text": "if you'd told me how tired you were"
+   },
+   "expect": {
+    "known_text": "నువ్వు ఎంత అలసిపోయావో నాకు చెప్పి ఉంటే",
+    "target_text": "'d told me how tired you were"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0600L02B03",
+   "set": {
+    "target_text": "if you'd told me today"
+   },
+   "expect": {
+    "known_text": "ఇవాళ నాకు చెప్పి ఉంటే",
+    "target_text": "'d told me today"
+   }
+  }
+ ]
+}

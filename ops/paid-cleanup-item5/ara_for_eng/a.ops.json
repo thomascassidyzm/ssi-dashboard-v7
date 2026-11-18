@@ -5,6 +5,7 @@
    "phrase_id": "ara_for_eng:S0387L01B01",
    "set": {
     "target_text": "لا، كانَتْ عَلى حَقٍّ",
+    "target_text_roman": "laa, kaanat 'alaa hhaqqin",
     "known_text": "no, she was right"
    },
    "expect": {
@@ -17,6 +18,7 @@
    "phrase_id": "ara_for_eng:S0387L01B02",
    "set": {
     "target_text": "أَظُنُّ أَنَّها كانَتْ عَلى حَقٍّ",
+    "target_text_roman": "azunnu annahaa kaanat 'alaa hhaqqin",
     "known_text": "I think that she was right"
    },
    "expect": {
@@ -28,7 +30,6 @@
    "op": "phrase.update",
    "phrase_id": "ara_for_eng:S0410L01U04",
    "set": {
-    "target_text": null,
     "known_text": "I want us to stay together"
    },
    "expect": {
@@ -40,7 +41,6 @@
    "op": "phrase.update",
    "phrase_id": "ara_for_eng:S0570L02U02",
    "set": {
-    "target_text": null,
     "known_text": "I'm afraid he's willing to pay for it"
    },
    "expect": {
@@ -52,7 +52,6 @@
    "op": "phrase.update",
    "phrase_id": "ara_for_eng:S0570L02U03",
    "set": {
-    "target_text": null,
     "known_text": "I suppose he's willing to pay for it"
    },
    "expect": {
@@ -64,7 +63,6 @@
    "op": "phrase.update",
    "phrase_id": "ara_for_eng:S0570L02U05",
    "set": {
-    "target_text": null,
     "known_text": "I don't care that he's willing to pay for it"
    },
    "expect": {

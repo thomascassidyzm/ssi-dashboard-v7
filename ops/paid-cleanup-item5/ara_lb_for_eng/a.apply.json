@@ -1,7 +1,1350 @@
 {
- "status": 409,
- "error": "op 1: phrase.update: target_text changes but this row carries a target_text_roman (pinyin/romaji/romanisation) written for the old text. Send the new target_text_roman with it, read by hand (polyphones need a reader), or target_text_roman: null to clear it deliberately.",
- "code": "ROMAN_STALE",
- "index": 1,
- "applied": false
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "39fe3642-3957-4666-831a-9b528b44ce73",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0631L01U02"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0631L01U02",
+    "seed_number": 631,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think what would you like",
+    "target_text": "بفكر شو بدك؟",
+    "known_audio_id": "9bd36fe9-a204-484b-a3ef-944ad68e1067",
+    "target1_audio_id": "82a451a4-6751-4d02-b9ef-2932214fe729",
+    "target2_audio_id": "9de0f1ca-d2c1-4379-b8d6-88ba056d40ef",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0642L02U01"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0642L02U01",
+    "seed_number": 642,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "بفكر كيفك هلق",
+    "target_text_roman": "bfakkir kiifik halla'",
+    "known_text": "I think how are you now",
+    "known_audio_id": "82105f18-182a-42a4-9327-144adef7b4a0",
+    "target1_audio_id": "5383deae-c958-47ed-b327-3afd5f07ad88",
+    "target2_audio_id": "70b84ccc-496d-46ee-a54a-37f7d71ecc36",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_lb_for_eng:S0642L02U01",
+    "seed_number": 642,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "كيفك يا أستاذ؟",
+    "target_text_roman": "kiifak ya ustaaz?",
+    "known_text": "how are you, sir?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0642L02U02"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0642L02U02",
+    "seed_number": 642,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "because how are you again now",
+    "target_text": "لأنو كيفك تاني هلق",
+    "known_audio_id": "363cfd2d-466a-480d-b84d-a8de710e8788",
+    "target1_audio_id": "c14f1c6c-56a2-4276-a628-2fcde798ffa9",
+    "target2_audio_id": "73aba3e5-b55d-43ec-bafe-82c49f21f256",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0642L02U03"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0642L02U03",
+    "seed_number": 642,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think how are you again",
+    "target_text": "بفكر كيفك تاني",
+    "known_audio_id": "12bef9e7-1d22-454a-90a7-cb813022bd9b",
+    "target1_audio_id": "71911f42-77eb-401f-9316-3d26eabcfd2f",
+    "target2_audio_id": "81729a8c-8635-44b2-ae49-9b6231430ed1",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0642L02U04"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0642L02U04",
+    "seed_number": 642,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "بفكر كيفك هون",
+    "target_text_roman": "bfakkir kiifik hoon",
+    "known_text": "I think how are you here",
+    "known_audio_id": "0e550347-4418-47ad-87b2-ed2f212900e7",
+    "target1_audio_id": "1c80d186-774e-4ac6-84b0-13bfbda5bcf6",
+    "target2_audio_id": "c16bf7ad-580f-4e2a-bb37-1f8df498293d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_lb_for_eng:S0642L02U04",
+    "seed_number": 642,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "كيفك هون؟",
+    "target_text_roman": "kiifik hoon?",
+    "known_text": "how are you here?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0648L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0648L01U05",
+    "seed_number": 648,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think what you said madam",
+    "target_text": "بفكر شو قلتيه يا مدام",
+    "known_audio_id": "07d722e2-57f9-4b80-a042-2fa57d2ddcad",
+    "target1_audio_id": "632b7d48-2cb6-4ce9-9315-a469c53c965f",
+    "target2_audio_id": "caadfc10-4fd2-4c02-97be-a55eb23b48e7",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0649L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0649L01U05",
+    "seed_number": 649,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think are you ready sir now",
+    "target_text": "بفكر مستعد يا أستاذ هلق؟",
+    "known_audio_id": "72c6b83f-1b1f-4759-9835-25630fbb6bc2",
+    "target1_audio_id": "496dfbd7-fcc7-4f87-8ec8-ac321eb53572",
+    "target2_audio_id": "883d06d8-7da1-48b0-b942-f6ddc42933af",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0652L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0652L01U05",
+    "seed_number": 652,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think what do you need sir",
+    "target_text": "بفكر شو محتاج يا أستاذ؟",
+    "known_audio_id": "192dbfaf-58a2-43c3-bdcf-3af6eecb4b27",
+    "target1_audio_id": "759ddeb8-8aa3-46db-a751-2a55d56fa011",
+    "target2_audio_id": "7d72c0c1-edcb-4a37-993d-734963566946",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0657L01U01"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0657L01U01",
+    "seed_number": 657,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "بفكر كيفكون هلق",
+    "target_text_roman": "bfakkir kiifkun halla'",
+    "known_text": "I think how are you all now",
+    "known_audio_id": "6de3fbdb-55dc-4e8c-8c9a-31f7c80c1059",
+    "target1_audio_id": "18a99734-16f2-44a3-a6ed-c4b046a63b01",
+    "target2_audio_id": "a3580ffa-ee3e-491b-a2b6-43924f294dc7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_lb_for_eng:S0657L01U01",
+    "seed_number": 657,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "كيفكون هلق؟",
+    "target_text_roman": "kiifkun halla'?",
+    "known_text": "how are you all now?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0657L01U02"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0657L01U02",
+    "seed_number": 657,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "because how are you all again",
+    "target_text": "لأنو كيفكون تاني",
+    "known_audio_id": "e0f285d7-a5dc-429d-95cd-bb2e70c274d8",
+    "target1_audio_id": "2e64b056-c228-4238-993c-655ecf302be1",
+    "target2_audio_id": "49c35876-7c93-4d3d-a249-4003f341d310",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0657L01U04"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0657L01U04",
+    "seed_number": 657,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "بفكر كيفكون هون",
+    "target_text_roman": "bfakkir kiifkun hoon",
+    "known_text": "I think how are you all here",
+    "known_audio_id": "d71f91c8-6c47-40ad-b4ab-92baf980a2d7",
+    "target1_audio_id": "fcce354a-8f21-4a84-881a-91430c9df5c5",
+    "target2_audio_id": "bb0a7c0c-01b9-4c9d-b0b5-325c13aad6ce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_lb_for_eng:S0657L01U04",
+    "seed_number": 657,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "كيفكون هون؟",
+    "target_text_roman": "kiifkun hoon?",
+    "known_text": "how are you all here?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0657L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0657L01U05",
+    "seed_number": 657,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think how do you all feel",
+    "target_text": "بفكر كيفكون كلكون؟",
+    "known_audio_id": "249e9e4a-d5cb-4a27-bf0b-433e49fd23b1",
+    "target1_audio_id": "edb10d42-63bb-4d05-b6ab-d979113b6173",
+    "target2_audio_id": "085feb0e-248b-455c-8912-9a76353da045",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0658L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0658L01U05",
+    "seed_number": 658,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think do you all want",
+    "target_text": "بفكر بدكون كلكون؟",
+    "known_audio_id": "559d5376-6ae7-45fc-a44d-8b1cdcb5efee",
+    "target1_audio_id": "617568df-300c-49ba-8ddb-4c56e82d6393",
+    "target2_audio_id": "c0d3f408-dcdd-49c6-9592-11ba76f9311c",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0663L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0663L01U05",
+    "seed_number": 663,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think what you all said",
+    "target_text": "بفكر شو قلتوه كلكون",
+    "known_audio_id": "f58dee21-03d8-424c-8b31-6389c4fab3ee",
+    "target1_audio_id": "d53c8d0d-7f1b-4e03-8a5e-23448ec67da1",
+    "target2_audio_id": "e89aad55-80f1-45a6-9768-b21df9545fde",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0665L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0665L01U05",
+    "seed_number": 665,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think do you all want to go",
+    "target_text": "بفكر بدكون كلكون تروحوا؟",
+    "known_audio_id": "3080d14b-85cc-410c-8508-9d2fce340bc0",
+    "target1_audio_id": "278cf849-88d2-484d-855d-30ce75c99ec5",
+    "target2_audio_id": "e5d43b95-8af1-4286-b09e-177aacbe8e94",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0666L01U01"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0666L01U01",
+    "seed_number": 666,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "بفكر شو رأيكون هلق",
+    "target_text_roman": "bfakkir shu ra'yukun halla'",
+    "known_text": "I think what's your all's view now",
+    "known_audio_id": "84507b39-6355-4b85-a720-eddf14dc9c94",
+    "target1_audio_id": "9edfacff-55ce-42e0-acba-0729086d1038",
+    "target2_audio_id": "dc3ce9aa-4efd-4ed3-a20f-82b220961cf9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_lb_for_eng:S0666L01U01",
+    "seed_number": 666,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "شو رأيكون هلق؟",
+    "target_text_roman": "shu ra'yukun halla'?",
+    "known_text": "what do you all think now?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0666L01U02"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0666L01U02",
+    "seed_number": 666,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "because what's your all's view again",
+    "target_text": "لأنو شو رأيكون تاني",
+    "known_audio_id": "eb4fd595-0abf-4860-a5ac-ae9b5b558539",
+    "target1_audio_id": "ce5a969e-b7c0-488d-a3e7-e58ffafa5494",
+    "target2_audio_id": "ea36ee4b-8873-4965-991d-9a90e5fb7353",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0666L01U04"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0666L01U04",
+    "seed_number": 666,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "بفكر شو رأيكون هون",
+    "target_text_roman": "bfakkir shu ra'yukun hoon",
+    "known_text": "I think what's your all's view here",
+    "known_audio_id": "b216ddad-24fd-43db-b21b-bdaa340dcd8b",
+    "target1_audio_id": "08b76c14-3360-48e5-be84-1cf1cba25ed2",
+    "target2_audio_id": "ec6477cd-7554-48c3-a695-55f916900f56",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_lb_for_eng:S0666L01U04",
+    "seed_number": 666,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "شو رأيكون هون؟",
+    "target_text_roman": "shu ra'yukun hoon?",
+    "known_text": "what do you all think here?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0666L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0666L01U05",
+    "seed_number": 666,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think what do you all think",
+    "target_text": "بفكر شو رأيكون كلكون؟",
+    "known_audio_id": "8789ae1a-8cd2-4064-bcdb-50fbd78ec2bc",
+    "target1_audio_id": "109d124a-0b6c-418a-bcaf-8783ca14dd38",
+    "target2_audio_id": "0fd1e437-1a0a-43cb-9946-a4702045bada",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0667L01U01"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0667L01U01",
+    "seed_number": 667,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think do you all mind",
+    "target_text": "بفكر مش مشكلة كلكون؟",
+    "known_audio_id": "ed188b0e-e453-449c-a9ec-e610d509e315",
+    "target1_audio_id": "cff3ef74-30d8-488a-a1b7-1100262ab8d0",
+    "target2_audio_id": "482f58b2-a4d8-4502-9881-a4332d95b6f7",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0667L01U02"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0667L01U02",
+    "seed_number": 667,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "because do you all mind",
+    "target_text": "لأنو مش مشكلة كلكون؟",
+    "known_audio_id": "822ef932-974d-42da-8cd9-6ac8336d2be7",
+    "target1_audio_id": "45ff6185-eeaf-4999-8fc6-201afc2c3257",
+    "target2_audio_id": "522fc563-8e39-4b19-b379-280fc59d4a1d",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0667L01U05"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0667L01U05",
+    "seed_number": 667,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think do you all mind now",
+    "target_text": "بفكر مش مشكلة كلكون هلق؟",
+    "known_audio_id": "fa1deb3c-a1ee-4ef5-9d6f-e95f8f530488",
+    "target1_audio_id": "fe1dd5d5-8142-412f-874d-a841351f0a74",
+    "target2_audio_id": "7fe224e9-3f25-4509-b7b1-390f64928eea",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0667L01U05",
+    "seed_number": 667,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I think do you all mind now",
+    "target_text": "بفكر مش مشكلة كلكون هلق؟",
+    "word_count": 24,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:08:59.653Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:08:59.747Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "fa1deb3c-a1ee-4ef5-9d6f-e95f8f530488",
+    "target1_audio_id": "fe1dd5d5-8142-412f-874d-a841351f0a74",
+    "target2_audio_id": "7fe224e9-3f25-4509-b7b1-390f64928eea",
+    "qa_checked": null,
+    "target1_duration_ms": 3623,
+    "target2_duration_ms": 3157,
+    "lego_id": null,
+    "target_text_roman": "bfakkir mish mushkile kullkun halla'?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0667L01U02",
+    "seed_number": 667,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "because do you all mind",
+    "target_text": "لأنو مش مشكلة كلكون؟",
+    "word_count": 20,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:08:59.653Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:08:59.747Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "822ef932-974d-42da-8cd9-6ac8336d2be7",
+    "target1_audio_id": "45ff6185-eeaf-4999-8fc6-201afc2c3257",
+    "target2_audio_id": "522fc563-8e39-4b19-b379-280fc59d4a1d",
+    "qa_checked": null,
+    "target1_duration_ms": 2971,
+    "target2_duration_ms": 3016,
+    "lego_id": null,
+    "target_text_roman": "la'anno mish mushkile kullkun?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0667L01U01",
+    "seed_number": 667,
+    "lego_index": 1,
+    "position": 6,
+    "known_text": "I think do you all mind",
+    "target_text": "بفكر مش مشكلة كلكون؟",
+    "word_count": 20,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:08:59.653Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:08:59.747Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "ed188b0e-e453-449c-a9ec-e610d509e315",
+    "target1_audio_id": "cff3ef74-30d8-488a-a1b7-1100262ab8d0",
+    "target2_audio_id": "482f58b2-a4d8-4502-9881-a4332d95b6f7",
+    "qa_checked": null,
+    "target1_duration_ms": 3292,
+    "target2_duration_ms": 2901,
+    "lego_id": null,
+    "target_text_roman": "bfakkir mish mushkile kullkun?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0666L01U05",
+    "seed_number": 666,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I think what do you all think",
+    "target_text": "بفكر شو رأيكون كلكون؟",
+    "word_count": 21,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:08:31.652Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:08:31.690Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "8789ae1a-8cd2-4064-bcdb-50fbd78ec2bc",
+    "target1_audio_id": "109d124a-0b6c-418a-bcaf-8783ca14dd38",
+    "target2_audio_id": "0fd1e437-1a0a-43cb-9946-a4702045bada",
+    "qa_checked": null,
+    "target1_duration_ms": 3142,
+    "target2_duration_ms": 3011,
+    "lego_id": null,
+    "target_text_roman": "bfakkir shu ra'yukun kullkun?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0666L01U04",
+   "set": {
+    "known_text": "I think what's your all's view here",
+    "target_text": "بفكر شو رأيكون هون",
+    "known_audio_id": "b216ddad-24fd-43db-b21b-bdaa340dcd8b",
+    "target1_audio_id": "08b76c14-3360-48e5-be84-1cf1cba25ed2",
+    "target2_audio_id": "ec6477cd-7554-48c3-a695-55f916900f56",
+    "target_text_roman": "bfakkir shu ra'yukun hoon"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0666L01U02",
+    "seed_number": 666,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "because what's your all's view again",
+    "target_text": "لأنو شو رأيكون تاني",
+    "word_count": 19,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:08:31.652Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:08:31.690Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "eb4fd595-0abf-4860-a5ac-ae9b5b558539",
+    "target1_audio_id": "ce5a969e-b7c0-488d-a3e7-e58ffafa5494",
+    "target2_audio_id": "ea36ee4b-8873-4965-991d-9a90e5fb7353",
+    "qa_checked": null,
+    "target1_duration_ms": 2891,
+    "target2_duration_ms": 2540,
+    "lego_id": null,
+    "target_text_roman": "la'anno shu ra'yukun taani",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0666L01U01",
+   "set": {
+    "known_text": "I think what's your all's view now",
+    "target_text": "بفكر شو رأيكون هلق",
+    "known_audio_id": "84507b39-6355-4b85-a720-eddf14dc9c94",
+    "target1_audio_id": "9edfacff-55ce-42e0-acba-0729086d1038",
+    "target2_audio_id": "dc3ce9aa-4efd-4ed3-a20f-82b220961cf9",
+    "target_text_roman": "bfakkir shu ra'yukun halla'"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0665L01U05",
+    "seed_number": 665,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "I think do you all want to go",
+    "target_text": "بفكر بدكون كلكون تروحوا؟",
+    "word_count": 24,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:08:11.748Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:08:11.787Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "3080d14b-85cc-410c-8508-9d2fce340bc0",
+    "target1_audio_id": "278cf849-88d2-484d-855d-30ce75c99ec5",
+    "target2_audio_id": "e5d43b95-8af1-4286-b09e-177aacbe8e94",
+    "qa_checked": null,
+    "target1_duration_ms": 3472,
+    "target2_duration_ms": 3106,
+    "lego_id": null,
+    "target_text_roman": "bfakkir biddkun kullkun truuhu?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0663L01U05",
+    "seed_number": 663,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I think what you all said",
+    "target_text": "بفكر شو قلتوه كلكون",
+    "word_count": 19,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:07:28.363Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:07:28.458Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "f58dee21-03d8-424c-8b31-6389c4fab3ee",
+    "target1_audio_id": "d53c8d0d-7f1b-4e03-8a5e-23448ec67da1",
+    "target2_audio_id": "e89aad55-80f1-45a6-9768-b21df9545fde",
+    "qa_checked": null,
+    "target1_duration_ms": 3056,
+    "target2_duration_ms": 2831,
+    "lego_id": null,
+    "target_text_roman": "bfakkir shu 'iltuu kullkun",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0658L01U05",
+    "seed_number": 658,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I think do you all want",
+    "target_text": "بفكر بدكون كلكون؟",
+    "word_count": 17,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:05:46.119Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:05:46.156Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "559d5376-6ae7-45fc-a44d-8b1cdcb5efee",
+    "target1_audio_id": "617568df-300c-49ba-8ddb-4c56e82d6393",
+    "target2_audio_id": "c0d3f408-dcdd-49c6-9592-11ba76f9311c",
+    "qa_checked": null,
+    "target1_duration_ms": 2921,
+    "target2_duration_ms": 2635,
+    "lego_id": null,
+    "target_text_roman": "bfakkir biddkun kullkun?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0657L01U05",
+    "seed_number": 657,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I think how do you all feel",
+    "target_text": "بفكر كيفكون كلكون؟",
+    "word_count": 18,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:05:36.103Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:05:36.145Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "249e9e4a-d5cb-4a27-bf0b-433e49fd23b1",
+    "target1_audio_id": "edb10d42-63bb-4d05-b6ab-d979113b6173",
+    "target2_audio_id": "085feb0e-248b-455c-8912-9a76353da045",
+    "qa_checked": null,
+    "target1_duration_ms": 2891,
+    "target2_duration_ms": 2696,
+    "lego_id": null,
+    "target_text_roman": "bfakkir kiifkun kullkun?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0657L01U04",
+   "set": {
+    "known_text": "I think how are you all here",
+    "target_text": "بفكر كيفكون هون",
+    "known_audio_id": "d71f91c8-6c47-40ad-b4ab-92baf980a2d7",
+    "target1_audio_id": "fcce354a-8f21-4a84-881a-91430c9df5c5",
+    "target2_audio_id": "bb0a7c0c-01b9-4c9d-b0b5-325c13aad6ce",
+    "target_text_roman": "bfakkir kiifkun hoon"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0657L01U02",
+    "seed_number": 657,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "because how are you all again",
+    "target_text": "لأنو كيفكون تاني",
+    "word_count": 16,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:05:36.103Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:05:36.145Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "e0f285d7-a5dc-429d-95cd-bb2e70c274d8",
+    "target1_audio_id": "2e64b056-c228-4238-993c-655ecf302be1",
+    "target2_audio_id": "49c35876-7c93-4d3d-a249-4003f341d310",
+    "qa_checked": null,
+    "target1_duration_ms": 2515,
+    "target2_duration_ms": 2250,
+    "lego_id": null,
+    "target_text_roman": "la'anno kiifkun taani",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0657L01U01",
+   "set": {
+    "known_text": "I think how are you all now",
+    "target_text": "بفكر كيفكون هلق",
+    "known_audio_id": "6de3fbdb-55dc-4e8c-8c9a-31f7c80c1059",
+    "target1_audio_id": "18a99734-16f2-44a3-a6ed-c4b046a63b01",
+    "target2_audio_id": "a3580ffa-ee3e-491b-a2b6-43924f294dc7",
+    "target_text_roman": "bfakkir kiifkun halla'"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0652L01U05",
+    "seed_number": 652,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "I think what do you need sir",
+    "target_text": "بفكر شو محتاج يا أستاذ؟",
+    "word_count": 23,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:03:41.743Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:03:41.789Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "192dbfaf-58a2-43c3-bdcf-3af6eecb4b27",
+    "target1_audio_id": "759ddeb8-8aa3-46db-a751-2a55d56fa011",
+    "target2_audio_id": "7d72c0c1-edcb-4a37-993d-734963566946",
+    "qa_checked": null,
+    "target1_duration_ms": 3177,
+    "target2_duration_ms": 3056,
+    "lego_id": null,
+    "target_text_roman": "bfakkir shu mihtaaj ya ustaaz?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0649L01U05",
+    "seed_number": 649,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I think are you ready sir now",
+    "target_text": "بفكر مستعد يا أستاذ هلق؟",
+    "word_count": 24,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:02:17.225Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:02:17.266Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "72c6b83f-1b1f-4759-9835-25630fbb6bc2",
+    "target1_audio_id": "496dfbd7-fcc7-4f87-8ec8-ac321eb53572",
+    "target2_audio_id": "883d06d8-7da1-48b0-b942-f6ddc42933af",
+    "qa_checked": null,
+    "target1_duration_ms": 3367,
+    "target2_duration_ms": 2981,
+    "lego_id": null,
+    "target_text_roman": "bfakkir musta'idd ya ustaaz halla'?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0648L01U05",
+    "seed_number": 648,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I think what you said madam",
+    "target_text": "بفكر شو قلتيه يا مدام",
+    "word_count": 21,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T18:01:31.199Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T18:01:31.244Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "07d722e2-57f9-4b80-a042-2fa57d2ddcad",
+    "target1_audio_id": "632b7d48-2cb6-4ce9-9315-a469c53c965f",
+    "target2_audio_id": "caadfc10-4fd2-4c02-97be-a55eb23b48e7",
+    "qa_checked": null,
+    "target1_duration_ms": 3127,
+    "target2_duration_ms": 3081,
+    "lego_id": null,
+    "target_text_roman": "bfakkir shu 'iltii ya madaam",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0642L02U04",
+   "set": {
+    "known_text": "I think how are you here",
+    "target_text": "بفكر كيفك هون",
+    "known_audio_id": "0e550347-4418-47ad-87b2-ed2f212900e7",
+    "target1_audio_id": "1c80d186-774e-4ac6-84b0-13bfbda5bcf6",
+    "target2_audio_id": "c16bf7ad-580f-4e2a-bb37-1f8df498293d",
+    "target_text_roman": "bfakkir kiifik hoon"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0642L02U03",
+    "seed_number": 642,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "I think how are you again",
+    "target_text": "بفكر كيفك تاني",
+    "word_count": 14,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T17:59:14.358Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T17:59:14.531Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "12bef9e7-1d22-454a-90a7-cb813022bd9b",
+    "target1_audio_id": "71911f42-77eb-401f-9316-3d26eabcfd2f",
+    "target2_audio_id": "81729a8c-8635-44b2-ae49-9b6231430ed1",
+    "qa_checked": null,
+    "target1_duration_ms": 2545,
+    "target2_duration_ms": 2395,
+    "lego_id": null,
+    "target_text_roman": "bfakkir kiifik taani",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0642L02U02",
+    "seed_number": 642,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "because how are you again now",
+    "target_text": "لأنو كيفك تاني هلق",
+    "word_count": 18,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T17:59:14.358Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T17:59:14.531Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "363cfd2d-466a-480d-b84d-a8de710e8788",
+    "target1_audio_id": "c14f1c6c-56a2-4276-a628-2fcde798ffa9",
+    "target2_audio_id": "73aba3e5-b55d-43ec-bafe-82c49f21f256",
+    "qa_checked": null,
+    "target1_duration_ms": 2891,
+    "target2_duration_ms": 2696,
+    "lego_id": null,
+    "target_text_roman": "la'anno kiifik taani halla'",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0642L02U01",
+   "set": {
+    "known_text": "I think how are you now",
+    "target_text": "بفكر كيفك هلق",
+    "known_audio_id": "82105f18-182a-42a4-9327-144adef7b4a0",
+    "target1_audio_id": "5383deae-c958-47ed-b327-3afd5f07ad88",
+    "target2_audio_id": "70b84ccc-496d-46ee-a54a-37f7d71ecc36",
+    "target_text_roman": "bfakkir kiifik halla'"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0631L01U02",
+    "seed_number": 631,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "I think what would you like",
+    "target_text": "بفكر شو بدك؟",
+    "word_count": 12,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 5,
+     "format": "build_use",
+     "scored_at": "2026-07-15T17:54:33.503Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T17:54:33.543Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "9bd36fe9-a204-484b-a3ef-944ad68e1067",
+    "target1_audio_id": "82a451a4-6751-4d02-b9ef-2932214fe729",
+    "target2_audio_id": "9de0f1ca-d2c1-4379-b8d6-88ba056d40ef",
+    "qa_checked": null,
+    "target1_duration_ms": 1969,
+    "target2_duration_ms": 1834,
+    "lego_id": null,
+    "target_text_roman": "bfakkir shu biddak?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-17-09-214Z-39fe3642-3957-4666-831a-9b528b44ce73.json"
 }

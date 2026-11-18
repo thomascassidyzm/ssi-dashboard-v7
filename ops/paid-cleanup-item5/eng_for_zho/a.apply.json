@@ -1,0 +1,712 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "42022743-16f2-4080-b5e2-f6c191054446",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0150L02B01"
+   },
+   "before": {
+    "id": "eng_for_zho:S0150L02B01",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "What your name is?",
+    "known_text": "你叫什么名字",
+    "known_audio_id": "9a7d86b1-6bfc-462f-bfff-a32e7e94e4e7",
+    "target1_audio_id": "a2536e56-7c51-47cf-8d76-39b4afb1430a",
+    "target2_audio_id": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0150L02B01",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "What your name is",
+    "known_text": "你叫什么名字",
+    "known_audio_id": "9a7d86b1-6bfc-462f-bfff-a32e7e94e4e7",
+    "target1_audio_id": "a2536e56-7c51-47cf-8d76-39b4afb1430a",
+    "target2_audio_id": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0150L02B02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0150L02B02",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "What your name is now?",
+    "known_text": "你现在叫什么名字？",
+    "known_audio_id": "cc85d88c-c509-44b8-b9c5-3d6392f3ba8c",
+    "target1_audio_id": "496b1aca-412a-4215-b5df-5211d79698ed",
+    "target2_audio_id": "4a4924d6-02b7-493d-8cd7-b217213c7207",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0150L02B02",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I know what your name is now",
+    "known_text": "我现在知道你叫什么名字了",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0150L02B03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0150L02B03",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "What your name is here?",
+    "known_text": "你在这里叫什么名字？",
+    "known_audio_id": "369fa0e2-3cc7-464a-bd3e-2f8cdfc022eb",
+    "target1_audio_id": "4cb035dc-25c2-4ab2-8f71-f5664b991b31",
+    "target2_audio_id": "8f9608ec-6901-4721-84a9-d855bacdcce1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0150L02B03",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Tell me what your name is",
+    "known_text": "告诉我你叫什么名字",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0150L02B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0150L02B04",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "What your name is again?",
+    "known_text": "你的名字是什么再说一遍",
+    "known_audio_id": "0227fce7-bafd-4435-9194-c6d7f361d066",
+    "target1_audio_id": "26ecf312-7e30-4c0e-9e17-46f11dc82d27",
+    "target2_audio_id": "f0083468-9323-464e-be9e-d8ec1b4cab3a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0150L02B04",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Tell me again what your name is",
+    "known_text": "再告诉我一遍你叫什么名字",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0157L02B02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0157L02B02",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Next month now",
+    "known_text": "现在下个月",
+    "known_audio_id": "598f4733-0f94-4b4c-bdef-91d42e8f35d7",
+    "target1_audio_id": "a2ecc178-52a0-4f64-8d30-143176f9c702",
+    "target2_audio_id": "a3530b75-3224-41b4-b723-0fb4bf3d0be7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0157L02B02",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Next month, not now",
+    "known_text": "下个月，不是现在",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0157L02B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0157L02B04",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Next month soon",
+    "known_text": "很快下个月",
+    "known_audio_id": "978a51be-f56b-4287-918a-a7b957dbcf93",
+    "target1_audio_id": "861d7061-0a88-4d24-9f8c-b187854d0916",
+    "target2_audio_id": "92419ebc-f21c-4bc1-b5a3-05ce1fe1ebdb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0157L02B04",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Next month, not today",
+    "known_text": "下个月，不是今天",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0182L01B02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0182L01B02",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you seen now?",
+    "known_text": "现在你有没有看到",
+    "known_audio_id": "1c2973e5-8127-495d-a578-3e6c975a808e",
+    "target1_audio_id": "dbe85807-7420-43b0-985b-b3a05fa66c4a",
+    "target2_audio_id": "b1a67b34-0205-4726-8b9a-285179aadcd6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0182L01B02",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you seen my keys?",
+    "known_text": "你看到过我的钥匙吗？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0182L01B03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0182L01B03",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you seen here?",
+    "known_text": "在这里你有没有看到",
+    "known_audio_id": "6ef24604-24ec-40f5-935d-0ae9b65a4a63",
+    "target1_audio_id": "b8508ea0-6128-4041-a351-f02dbec07adb",
+    "target2_audio_id": "d625d2e6-febe-40b5-aedc-8109d175339a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0182L01B03",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you seen him?",
+    "known_text": "你看到过他吗？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0182L01B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0182L01B04",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you seen today?",
+    "known_text": "今天你有没有看到",
+    "known_audio_id": "014d5cfe-3562-4d52-adae-da71ce9f3d01",
+    "target1_audio_id": "f85ce189-98bc-46ed-b61e-4fec330372c7",
+    "target2_audio_id": "848f6a55-1644-4ef3-80eb-7191b49388d7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0182L01B04",
+    "seed_number": 182,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you seen her today?",
+    "known_text": "你今天看到过她吗？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0196L01B02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0196L01B02",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard now?",
+    "known_text": "现在你有没有听说",
+    "known_audio_id": "bcf6d7a8-b93e-4a9c-9ad4-2627ead64a67",
+    "target1_audio_id": "2a719dde-82e5-4002-bb32-202a276f26f7",
+    "target2_audio_id": "78eddbc5-a1a5-4e98-b5ad-60f9bb807e6a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0196L01B02",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard about it?",
+    "known_text": "你听说过这件事吗？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0196L01B03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0196L01B03",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard today?",
+    "known_text": "今天你有没有听说",
+    "known_audio_id": "2d7a12c2-978a-4466-a13e-9b4e597c7592",
+    "target1_audio_id": "2dc27898-7540-4437-8cf2-0217733a8e73",
+    "target2_audio_id": "eaacf32f-6591-431b-8303-c0f75fa11650",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0196L01B03",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard what he said?",
+    "known_text": "你听到他说的话了吗？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0196L01B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0196L01B04",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard yet?",
+    "known_text": "你还有没有听说",
+    "known_audio_id": "53015a9a-7634-496f-b4f5-af1edf2f4fca",
+    "target1_audio_id": "702e12c1-c8a5-4759-b92b-70e01ce36e6f",
+    "target2_audio_id": "0eb7b866-ed51-4856-942a-52f9ade89351",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0196L01B04",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard about him?",
+    "known_text": "你听说过他吗？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0267L01B02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0267L01B02",
+    "seed_number": 267,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard from your friend now?",
+    "known_text": "现在你有没有听到你朋友的消息",
+    "known_audio_id": "34654806-4858-451f-814b-a32abb98f4be",
+    "target1_audio_id": "3c2c839e-3d44-4ef0-97c9-35098a51094f",
+    "target2_audio_id": "e26996f6-1492-40dc-99d5-78333f81ecc9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0267L01B02",
+    "seed_number": 267,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Have you heard from your friend this morning?",
+    "known_text": "今天早上你有没有听到你朋友的消息",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0271L01B02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0271L01B02",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Would you like to come with us next month now?",
+    "known_text": "现在你想不想下个月和我们一起来",
+    "known_audio_id": "b77d5eca-29eb-4bcc-923a-6e9cc5919064",
+    "target1_audio_id": "cd658fd6-0ebf-480d-aa4b-40aef3d697de",
+    "target2_audio_id": "a8a5d757-033e-4731-9d2c-147aa320b847",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0271L01B02",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Would you like to come with us next month or not?",
+    "known_text": "你想不想下个月和我们一起来？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0271L01B03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0271L01B03",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Would you like to come with us next month soon?",
+    "known_text": "很快你想不想下个月和我们一起来",
+    "known_audio_id": "ebef0cd2-367d-4b65-af74-a3a12ab7d135",
+    "target1_audio_id": "eb082cc9-c26a-44ca-8339-24fe5852a1d3",
+    "target2_audio_id": "45fd9f4b-38f1-4342-8483-ae8d9d694f53",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0271L01B03",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Would you like to come with us next month too?",
+    "known_text": "你也想下个月和我们一起来吗？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0271L01B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0271L01B04",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Would you like to come with us next month here?",
+    "known_text": "在这里你想不想下个月和我们一起来",
+    "known_audio_id": "9319b46c-9338-41b3-8dca-d8f441b39ed2",
+    "target1_audio_id": "2d576029-7cdc-4997-8803-c1569e56ca21",
+    "target2_audio_id": "cb234498-b6cf-4da6-967e-83ff2bb444f6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0271L01B04",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Tell me, would you like to come with us next month?",
+    "known_text": "告诉我，你想不想下个月和我们一起来？",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0271L01B04",
+   "set": {
+    "known_text": "在这里你想不想下个月和我们一起来",
+    "target_text": "Would you like to come with us next month here?",
+    "known_audio_id": "9319b46c-9338-41b3-8dca-d8f441b39ed2",
+    "target1_audio_id": "2d576029-7cdc-4997-8803-c1569e56ca21",
+    "target2_audio_id": "cb234498-b6cf-4da6-967e-83ff2bb444f6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0271L01B03",
+   "set": {
+    "known_text": "很快你想不想下个月和我们一起来",
+    "target_text": "Would you like to come with us next month soon?",
+    "known_audio_id": "ebef0cd2-367d-4b65-af74-a3a12ab7d135",
+    "target1_audio_id": "eb082cc9-c26a-44ca-8339-24fe5852a1d3",
+    "target2_audio_id": "45fd9f4b-38f1-4342-8483-ae8d9d694f53"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0271L01B02",
+   "set": {
+    "known_text": "现在你想不想下个月和我们一起来",
+    "target_text": "Would you like to come with us next month now?",
+    "known_audio_id": "b77d5eca-29eb-4bcc-923a-6e9cc5919064",
+    "target1_audio_id": "cd658fd6-0ebf-480d-aa4b-40aef3d697de",
+    "target2_audio_id": "a8a5d757-033e-4731-9d2c-147aa320b847"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0267L01B02",
+   "set": {
+    "known_text": "现在你有没有听到你朋友的消息",
+    "target_text": "Have you heard from your friend now?",
+    "known_audio_id": "34654806-4858-451f-814b-a32abb98f4be",
+    "target1_audio_id": "3c2c839e-3d44-4ef0-97c9-35098a51094f",
+    "target2_audio_id": "e26996f6-1492-40dc-99d5-78333f81ecc9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0196L01B04",
+   "set": {
+    "known_text": "你还有没有听说",
+    "target_text": "Have you heard yet?",
+    "known_audio_id": "53015a9a-7634-496f-b4f5-af1edf2f4fca",
+    "target1_audio_id": "702e12c1-c8a5-4759-b92b-70e01ce36e6f",
+    "target2_audio_id": "0eb7b866-ed51-4856-942a-52f9ade89351"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0196L01B03",
+   "set": {
+    "known_text": "今天你有没有听说",
+    "target_text": "Have you heard today?",
+    "known_audio_id": "2d7a12c2-978a-4466-a13e-9b4e597c7592",
+    "target1_audio_id": "2dc27898-7540-4437-8cf2-0217733a8e73",
+    "target2_audio_id": "eaacf32f-6591-431b-8303-c0f75fa11650"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0196L01B02",
+   "set": {
+    "known_text": "现在你有没有听说",
+    "target_text": "Have you heard now?",
+    "known_audio_id": "bcf6d7a8-b93e-4a9c-9ad4-2627ead64a67",
+    "target1_audio_id": "2a719dde-82e5-4002-bb32-202a276f26f7",
+    "target2_audio_id": "78eddbc5-a1a5-4e98-b5ad-60f9bb807e6a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0182L01B04",
+   "set": {
+    "known_text": "今天你有没有看到",
+    "target_text": "Have you seen today?",
+    "known_audio_id": "014d5cfe-3562-4d52-adae-da71ce9f3d01",
+    "target1_audio_id": "f85ce189-98bc-46ed-b61e-4fec330372c7",
+    "target2_audio_id": "848f6a55-1644-4ef3-80eb-7191b49388d7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0182L01B03",
+   "set": {
+    "known_text": "在这里你有没有看到",
+    "target_text": "Have you seen here?",
+    "known_audio_id": "6ef24604-24ec-40f5-935d-0ae9b65a4a63",
+    "target1_audio_id": "b8508ea0-6128-4041-a351-f02dbec07adb",
+    "target2_audio_id": "d625d2e6-febe-40b5-aedc-8109d175339a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0182L01B02",
+   "set": {
+    "known_text": "现在你有没有看到",
+    "target_text": "Have you seen now?",
+    "known_audio_id": "1c2973e5-8127-495d-a578-3e6c975a808e",
+    "target1_audio_id": "dbe85807-7420-43b0-985b-b3a05fa66c4a",
+    "target2_audio_id": "b1a67b34-0205-4726-8b9a-285179aadcd6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0157L02B04",
+   "set": {
+    "known_text": "很快下个月",
+    "target_text": "Next month soon",
+    "known_audio_id": "978a51be-f56b-4287-918a-a7b957dbcf93",
+    "target1_audio_id": "861d7061-0a88-4d24-9f8c-b187854d0916",
+    "target2_audio_id": "92419ebc-f21c-4bc1-b5a3-05ce1fe1ebdb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0157L02B02",
+   "set": {
+    "known_text": "现在下个月",
+    "target_text": "Next month now",
+    "known_audio_id": "598f4733-0f94-4b4c-bdef-91d42e8f35d7",
+    "target1_audio_id": "a2ecc178-52a0-4f64-8d30-143176f9c702",
+    "target2_audio_id": "a3530b75-3224-41b4-b723-0fb4bf3d0be7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B04",
+   "set": {
+    "known_text": "你的名字是什么再说一遍",
+    "target_text": "What your name is again?",
+    "known_audio_id": "0227fce7-bafd-4435-9194-c6d7f361d066",
+    "target1_audio_id": "26ecf312-7e30-4c0e-9e17-46f11dc82d27",
+    "target2_audio_id": "f0083468-9323-464e-be9e-d8ec1b4cab3a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B03",
+   "set": {
+    "known_text": "你在这里叫什么名字？",
+    "target_text": "What your name is here?",
+    "known_audio_id": "369fa0e2-3cc7-464a-bd3e-2f8cdfc022eb",
+    "target1_audio_id": "4cb035dc-25c2-4ab2-8f71-f5664b991b31",
+    "target2_audio_id": "8f9608ec-6901-4721-84a9-d855bacdcce1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B02",
+   "set": {
+    "known_text": "你现在叫什么名字？",
+    "target_text": "What your name is now?",
+    "known_audio_id": "cc85d88c-c509-44b8-b9c5-3d6392f3ba8c",
+    "target1_audio_id": "496b1aca-412a-4215-b5df-5211d79698ed",
+    "target2_audio_id": "4a4924d6-02b7-493d-8cd7-b217213c7207"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B01",
+   "set": {
+    "target_text": "What your name is?"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-17-35-043Z-42022743-16f2-4080-b5e2-f6c191054446.json"
+}

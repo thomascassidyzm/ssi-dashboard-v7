@@ -1,0 +1,199 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "3e3ecf26-1166-400f-a060-fb113e190bf8",
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "lego_id": "S0600L02"
+   },
+   "before": {
+    "id": "92f3a773-5e6d-4f05-9f68-f9aad373aca6",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": "S0600L02",
+    "target_text": "'d told me",
+    "components": [
+     {
+      "known": "నాకు చెప్పి ఉంటే",
+      "target": "'d told me"
+     }
+    ],
+    "known_text": "నాకు చెప్పి ఉంటే",
+    "known_audio_id": "6de7fa59-d2a6-433b-a7d5-d1c504876105",
+    "target1_audio_id": "2f721cbe-53a1-49a5-9855-1af8b68817cf",
+    "target2_audio_id": "7badebee-1967-491a-903d-805112e740b2",
+    "presentation_audio_id": "dc725c51-8466-4b68-b1a9-81630f54e36a"
+   },
+   "after": {
+    "id": "92f3a773-5e6d-4f05-9f68-f9aad373aca6",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": "S0600L02",
+    "target_text": "if you'd told me",
+    "components": [
+     {
+      "known": "నాకు చెప్పి ఉంటే",
+      "target": "if you'd told me"
+     }
+    ],
+    "known_text": "నాకు చెప్పి ఉంటే",
+    "known_audio_id": "6de7fa59-d2a6-433b-a7d5-d1c504876105",
+    "target1_audio_id": "f579e307-8de5-4418-ada7-35f01119741e",
+    "target2_audio_id": "54444a26-5015-4755-9efd-1c4c47fc1bd3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0600L02B01"
+   },
+   "before": {
+    "id": "eng_for_tel:S0600L02B01",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "'d told me",
+    "known_text": "నాకు చెప్పి ఉంటే",
+    "known_audio_id": "6de7fa59-d2a6-433b-a7d5-d1c504876105",
+    "target1_audio_id": "2f721cbe-53a1-49a5-9855-1af8b68817cf",
+    "target2_audio_id": "7badebee-1967-491a-903d-805112e740b2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0600L02B01",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "if you'd told me",
+    "known_text": "నాకు చెప్పి ఉంటే",
+    "known_audio_id": "6de7fa59-d2a6-433b-a7d5-d1c504876105",
+    "target1_audio_id": "f579e307-8de5-4418-ada7-35f01119741e",
+    "target2_audio_id": "54444a26-5015-4755-9efd-1c4c47fc1bd3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0600L02B02"
+   },
+   "before": {
+    "id": "eng_for_tel:S0600L02B02",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "'d told me how tired you were",
+    "known_text": "నువ్వు ఎంత అలసిపోయావో నాకు చెప్పి ఉంటే",
+    "known_audio_id": "ebb84d57-a89f-4bea-b003-45e14979eb5c",
+    "target1_audio_id": "21e250cb-36f0-4e53-9590-cee44545c2a8",
+    "target2_audio_id": "821277aa-4903-43e9-babd-6bddb3aa36e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0600L02B02",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "if you'd told me how tired you were",
+    "known_text": "నువ్వు ఎంత అలసిపోయావో నాకు చెప్పి ఉంటే",
+    "known_audio_id": "ebb84d57-a89f-4bea-b003-45e14979eb5c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0600L02B03"
+   },
+   "before": {
+    "id": "eng_for_tel:S0600L02B03",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "'d told me today",
+    "known_text": "ఇవాళ నాకు చెప్పి ఉంటే",
+    "known_audio_id": "d4a2094b-a107-4e1b-a2f5-469a9df1b52c",
+    "target1_audio_id": "622799d6-9881-42d9-a4bb-71ff1484d7d9",
+    "target2_audio_id": "e5450421-2c28-4c63-a6c0-973ce8947394",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0600L02B03",
+    "seed_number": 600,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "if you'd told me today",
+    "known_text": "ఇవాళ నాకు చెప్పి ఉంటే",
+    "known_audio_id": "d4a2094b-a107-4e1b-a2f5-469a9df1b52c",
+    "target1_audio_id": "fab65ffd-a058-41d6-8770-2ae5c84a4732",
+    "target2_audio_id": "09a71af4-bb64-41f8-a05d-c09c16226d0c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0600L02B03",
+   "set": {
+    "target_text": "'d told me today",
+    "target1_audio_id": "622799d6-9881-42d9-a4bb-71ff1484d7d9",
+    "target2_audio_id": "e5450421-2c28-4c63-a6c0-973ce8947394"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0600L02B02",
+   "set": {
+    "target_text": "'d told me how tired you were",
+    "target1_audio_id": "21e250cb-36f0-4e53-9590-cee44545c2a8",
+    "target2_audio_id": "821277aa-4903-43e9-babd-6bddb3aa36e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0600L02B01",
+   "set": {
+    "target_text": "'d told me",
+    "target1_audio_id": "2f721cbe-53a1-49a5-9855-1af8b68817cf",
+    "target2_audio_id": "7badebee-1967-491a-903d-805112e740b2"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "92f3a773-5e6d-4f05-9f68-f9aad373aca6",
+   "set": {
+    "target_text": "'d told me",
+    "components": [
+     {
+      "known": "నాకు చెప్పి ఉంటే",
+      "target": "'d told me"
+     }
+    ],
+    "target1_audio_id": "2f721cbe-53a1-49a5-9855-1af8b68817cf",
+    "target2_audio_id": "7badebee-1967-491a-903d-805112e740b2",
+    "presentation_audio_id": "dc725c51-8466-4b68-b1a9-81630f54e36a"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-16-20-415Z-3e3ecf26-1166-400f-a060-fb113e190bf8.json"
+}

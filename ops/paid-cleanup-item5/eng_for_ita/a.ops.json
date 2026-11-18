@@ -13,9 +13,14 @@
    }
   },
   {
-   "op": "phrase.delete",
+   "op": "phrase.update",
    "phrase_id": "eng_for_ita:S0129L02U02",
+   "set": {
+    "target_text": "that is why I think that you're doing so well",
+    "known_text": "ecco perché penso che tu stia andando così bene"
+   },
    "expect": {
+    "known_text": "pensavo che tu stessi andando così bene l'ultima volta che abbiamo parlato",
     "target_text": "I thought that you're doing so well last time we talked to each other"
    }
   },

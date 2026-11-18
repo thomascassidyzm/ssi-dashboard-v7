@@ -1,0 +1,418 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "2def1baf-edb4-421a-8665-638f198cdfd7",
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "lego_id": "S0490L01"
+   },
+   "before": {
+    "id": "ab9e30af-1409-4fcc-a69c-6ed668185c72",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": "S0490L01",
+    "target_text": "trust anyone ever",
+    "components": [
+     {
+      "known": "কাউকে",
+      "target": "anyone"
+     },
+     {
+      "known": "বিশ্বাস করব না",
+      "target": "trust ever"
+     }
+    ],
+    "known_text": "কাউকে বিশ্বাস করব না",
+    "known_audio_id": "2099ee0d-daaa-433d-ab6a-12f77420ef02",
+    "target1_audio_id": "5371ddc4-169c-4523-bfd1-43d84a48c8dc",
+    "target2_audio_id": "87fdce1f-2ceb-415c-bbf8-a03ef314e8a3",
+    "presentation_audio_id": "d34d68eb-4374-42dd-a3f2-7607f8950251"
+   },
+   "after": {
+    "id": "ab9e30af-1409-4fcc-a69c-6ed668185c72",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": "S0490L01",
+    "target_text": "never trust anyone ever",
+    "components": [
+     {
+      "known": "কাউকে",
+      "target": "anyone"
+     },
+     {
+      "known": "বিশ্বাস করব না",
+      "target": "never trust"
+     }
+    ],
+    "known_text": "কাউকে বিশ্বাস করব না",
+    "known_audio_id": "2099ee0d-daaa-433d-ab6a-12f77420ef02",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0490L01B01"
+   },
+   "before": {
+    "id": "eng_for_ben:S0490L01B01",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "trust anyone ever",
+    "known_text": "কাউকে বিশ্বাস করব না",
+    "known_audio_id": "2099ee0d-daaa-433d-ab6a-12f77420ef02",
+    "target1_audio_id": "5371ddc4-169c-4523-bfd1-43d84a48c8dc",
+    "target2_audio_id": "87fdce1f-2ceb-415c-bbf8-a03ef314e8a3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0490L01B01",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "never trust anyone ever",
+    "known_text": "কাউকে বিশ্বাস করব না",
+    "known_audio_id": "2099ee0d-daaa-433d-ab6a-12f77420ef02",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0490L01B02"
+   },
+   "before": {
+    "id": "eng_for_ben:S0490L01B02",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't trust anyone ever",
+    "known_text": "আমি কাউকে বিশ্বাস করি না",
+    "known_audio_id": "e374a683-a328-494b-8d7e-834ceb5a110f",
+    "target1_audio_id": "9cb8d6a4-6131-4322-b4b4-e6a4b6d7cf34",
+    "target2_audio_id": "946e1a5c-767a-4d30-9bec-4755c39484f6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0490L01B02",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I never trust anyone ever",
+    "known_text": "আমি কখনো কাউকে বিশ্বাস করি না",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0490L01B03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0490L01B03",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we don't trust anyone ever",
+    "known_text": "আমরা কাউকে বিশ্বাস করি না",
+    "known_audio_id": "e266d9d9-323f-4aaf-8b45-5b43af107b1e",
+    "target1_audio_id": "0b8eff11-266a-4a8d-8e0e-bb470a5f241a",
+    "target2_audio_id": "2c4308db-9333-4d9a-a567-c9daa7410a47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0490L01B03",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we never trust anyone ever",
+    "known_text": "আমরা কখনো কাউকে বিশ্বাস করি না",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0490L01U05"
+   },
+   "before": {
+    "id": "eng_for_ben:S0490L01U05",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "don't you trust anyone ever?",
+    "known_text": "তুমি কি কাউকে বিশ্বাস কর না?",
+    "known_audio_id": "45dc9a86-9eb3-4071-bcbe-8179fe24b120",
+    "target1_audio_id": "c9ba3944-5a4c-485c-8f76-8889a2993f64",
+    "target2_audio_id": "22f32d66-ebcd-45e1-8013-bfa50db65959",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0490L01U05",
+    "seed_number": 490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "you will never trust anyone ever",
+    "known_text": "তুমি কখনো কাউকে বিশ্বাস করবে না",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "lego_id": "S0573L02"
+   },
+   "before": {
+    "id": "42aa355c-edfc-47b0-8528-69e7959db644",
+    "seed_number": 573,
+    "lego_index": 2,
+    "lego_id": "S0573L02",
+    "target_text": "makes so special",
+    "components": [
+     {
+      "known": "বিশেষ",
+      "target": "special"
+     },
+     {
+      "known": "করে তোলে",
+      "target": "makes"
+     }
+    ],
+    "known_text": "বিশেষ করে তোলে",
+    "known_audio_id": "ba32f684-4708-412b-b05a-60bbcf407eac",
+    "target1_audio_id": "d80ec904-cd82-4b08-9e76-775659bd8f48",
+    "target2_audio_id": "29b0db7e-dfd6-4d34-a3a3-ba5d7b6a5cca",
+    "presentation_audio_id": "ff3a33c2-1cd7-4e87-90fb-dda786aae11c"
+   },
+   "after": {
+    "id": "42aa355c-edfc-47b0-8528-69e7959db644",
+    "seed_number": 573,
+    "lego_index": 2,
+    "lego_id": "S0573L02",
+    "target_text": "makes it special",
+    "components": [
+     {
+      "known": "বিশেষ",
+      "target": "special"
+     },
+     {
+      "known": "করে তোলে",
+      "target": "makes it"
+     }
+    ],
+    "known_text": "বিশেষ করে তোলে",
+    "known_audio_id": "ba32f684-4708-412b-b05a-60bbcf407eac",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0573L02B01"
+   },
+   "before": {
+    "id": "eng_for_ben:S0573L02B01",
+    "seed_number": 573,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "makes so special",
+    "known_text": "বিশেষ করে তোলে",
+    "known_audio_id": "ba32f684-4708-412b-b05a-60bbcf407eac",
+    "target1_audio_id": "d80ec904-cd82-4b08-9e76-775659bd8f48",
+    "target2_audio_id": "29b0db7e-dfd6-4d34-a3a3-ba5d7b6a5cca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0573L02B01",
+    "seed_number": 573,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "makes it special",
+    "known_text": "বিশেষ করে তোলে",
+    "known_audio_id": "ba32f684-4708-412b-b05a-60bbcf407eac",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_ben",
+    "id": "eng_for_ben:S0573L02B03"
+   },
+   "before": {
+    "id": "eng_for_ben:S0573L02B03",
+    "seed_number": 573,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "makes so special now",
+    "known_text": "এখন বিশেষ করে তোলে",
+    "known_audio_id": "600ed496-826c-4d15-977c-708ef551f32d",
+    "target1_audio_id": "e3d3496b-2408-4833-a69d-e22582b0be0f",
+    "target2_audio_id": "a75251cb-32b8-495e-8d04-cc1420cefe55",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_ben:S0573L02B03",
+    "seed_number": 573,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that makes it special now",
+    "known_text": "এটা এখন বিশেষ করে তোলে",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0573L02B03",
+   "set": {
+    "known_text": "এখন বিশেষ করে তোলে",
+    "target_text": "makes so special now",
+    "known_audio_id": "600ed496-826c-4d15-977c-708ef551f32d",
+    "target1_audio_id": "e3d3496b-2408-4833-a69d-e22582b0be0f",
+    "target2_audio_id": "a75251cb-32b8-495e-8d04-cc1420cefe55"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0573L02B01",
+   "set": {
+    "target_text": "makes so special",
+    "target1_audio_id": "d80ec904-cd82-4b08-9e76-775659bd8f48",
+    "target2_audio_id": "29b0db7e-dfd6-4d34-a3a3-ba5d7b6a5cca"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "42aa355c-edfc-47b0-8528-69e7959db644",
+   "set": {
+    "target_text": "makes so special",
+    "components": [
+     {
+      "known": "বিশেষ",
+      "target": "special"
+     },
+     {
+      "known": "করে তোলে",
+      "target": "makes"
+     }
+    ],
+    "target1_audio_id": "d80ec904-cd82-4b08-9e76-775659bd8f48",
+    "target2_audio_id": "29b0db7e-dfd6-4d34-a3a3-ba5d7b6a5cca",
+    "presentation_audio_id": "ff3a33c2-1cd7-4e87-90fb-dda786aae11c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01U05",
+   "set": {
+    "known_text": "তুমি কি কাউকে বিশ্বাস কর না?",
+    "target_text": "don't you trust anyone ever?",
+    "known_audio_id": "45dc9a86-9eb3-4071-bcbe-8179fe24b120",
+    "target1_audio_id": "c9ba3944-5a4c-485c-8f76-8889a2993f64",
+    "target2_audio_id": "22f32d66-ebcd-45e1-8013-bfa50db65959"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01B03",
+   "set": {
+    "known_text": "আমরা কাউকে বিশ্বাস করি না",
+    "target_text": "we don't trust anyone ever",
+    "known_audio_id": "e266d9d9-323f-4aaf-8b45-5b43af107b1e",
+    "target1_audio_id": "0b8eff11-266a-4a8d-8e0e-bb470a5f241a",
+    "target2_audio_id": "2c4308db-9333-4d9a-a567-c9daa7410a47"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01B02",
+   "set": {
+    "known_text": "আমি কাউকে বিশ্বাস করি না",
+    "target_text": "I don't trust anyone ever",
+    "known_audio_id": "e374a683-a328-494b-8d7e-834ceb5a110f",
+    "target1_audio_id": "9cb8d6a4-6131-4322-b4b4-e6a4b6d7cf34",
+    "target2_audio_id": "946e1a5c-767a-4d30-9bec-4755c39484f6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0490L01B01",
+   "set": {
+    "target_text": "trust anyone ever",
+    "target1_audio_id": "5371ddc4-169c-4523-bfd1-43d84a48c8dc",
+    "target2_audio_id": "87fdce1f-2ceb-415c-bbf8-a03ef314e8a3"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ab9e30af-1409-4fcc-a69c-6ed668185c72",
+   "set": {
+    "target_text": "trust anyone ever",
+    "components": [
+     {
+      "known": "কাউকে",
+      "target": "anyone"
+     },
+     {
+      "known": "বিশ্বাস করব না",
+      "target": "trust ever"
+     }
+    ],
+    "target1_audio_id": "5371ddc4-169c-4523-bfd1-43d84a48c8dc",
+    "target2_audio_id": "87fdce1f-2ceb-415c-bbf8-a03ef314e8a3",
+    "presentation_audio_id": "d34d68eb-4374-42dd-a3f2-7607f8950251"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-18-30-802Z-2def1baf-edb4-421a-8665-638f198cdfd7.json"
+}
