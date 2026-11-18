@@ -1,0 +1,260 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ell_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "58a4c9b4-e3b1-46ba-a401-5aa8295503b7",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας.",
+    "target_text_roman": "den elpizame na xypnisoume sti mesi tis nychtas.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "dd488091-e50b-4431-bf77-8bfc7b8f1897",
+    "target2_audio_id": "1d2eb143-b774-470c-adaa-75ede0c2f7ed"
+   },
+   "after": {
+    "id": "58a4c9b4-e3b1-46ba-a401-5aa8295503b7",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Δεν περιμέναμε να ξυπνήσουμε στη μέση της νύχτας.",
+    "target_text_roman": "den perimename na xypnisoume sti mesi tis nychtas.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ell_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "c01ccdd5-9c9a-4d0b-bffe-c5e60dc6d157",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "ελπίζαμε να",
+    "known_text": "we hoped",
+    "target_text_roman": "elpizame na",
+    "components": [
+     {
+      "known": "we hoped (1pl imperfect)",
+      "target": "ελπίζαμε"
+     }
+    ],
+    "known_audio_id": "272146e0-3dc7-47b3-80ae-d7cefbddb10f",
+    "target1_audio_id": "d0cb7a48-cd65-48d9-a5cf-86a97f20b6e6",
+    "target2_audio_id": "e522af4b-7a9b-47c1-a8fb-b3f7d4a18ea4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "c01ccdd5-9c9a-4d0b-bffe-c5e60dc6d157",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "περιμέναμε να",
+    "known_text": "we expected",
+    "target_text_roman": "perimename na",
+    "components": [
+     {
+      "known": "we expected (1pl imperfect)",
+      "target": "περιμέναμε"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ell_for_eng",
+    "id": "el_for_eng:S0108L02B04"
+   },
+   "before": {
+    "id": "el_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "δεν ελπίζαμε να ξυπνήσουμε",
+    "target_text_roman": "den elpizame na xypnisoume",
+    "known_text": "we didn't hope to wake up",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "fd599ad0-1bc0-4281-ad94-0907e8025dc3",
+    "target2_audio_id": "cbd821ad-8726-42ce-a77f-15e49010ef57",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "el_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "δεν περιμέναμε να ξυπνήσουμε",
+    "target_text_roman": "den perimename na xypnisoume",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ell_for_eng",
+    "id": "el_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "el_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ξέρω ότι δεν ελπίζαμε να ξυπνήσουμε",
+    "target_text_roman": "xero oti den elpidzame na xypnisoume",
+    "known_text": "I know we didn't hope to wake up",
+    "known_audio_id": "a3d1c21b-5f84-4a4c-a5fe-ee4fef8e3deb",
+    "target1_audio_id": "2ab8a6f2-be75-4a22-bac9-e1202bfa6e79",
+    "target2_audio_id": "8862a2b0-76ed-4805-94a8-b0c190649101",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "el_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ξέρω ότι δεν περιμέναμε να ξυπνήσουμε",
+    "target_text_roman": "xero oti den perimename na xypnisoume",
+    "known_text": "I know we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ell_for_eng",
+    "id": "el_for_eng:S0108L04U02"
+   },
+   "before": {
+    "id": "el_for_eng:S0108L04U02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας",
+    "target_text_roman": "den elpizame na xypnisoume sti mesi tis nychtas",
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "dd488091-e50b-4431-bf77-8bfc7b8f1897",
+    "target2_audio_id": "1d2eb143-b774-470c-adaa-75ede0c2f7ed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "el_for_eng:S0108L04U02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "δεν περιμέναμε να ξυπνήσουμε στη μέση της νύχτας",
+    "target_text_roman": "den perimename na xypnisoume sti mesi tis nychtas",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "el_for_eng:S0108L04U02",
+   "set": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "dd488091-e50b-4431-bf77-8bfc7b8f1897",
+    "target2_audio_id": "1d2eb143-b774-470c-adaa-75ede0c2f7ed",
+    "target_text_roman": "den elpizame na xypnisoume sti mesi tis nychtas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "el_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I know we didn't hope to wake up",
+    "target_text": "ξέρω ότι δεν ελπίζαμε να ξυπνήσουμε",
+    "known_audio_id": "a3d1c21b-5f84-4a4c-a5fe-ee4fef8e3deb",
+    "target1_audio_id": "2ab8a6f2-be75-4a22-bac9-e1202bfa6e79",
+    "target2_audio_id": "8862a2b0-76ed-4805-94a8-b0c190649101",
+    "target_text_roman": "xero oti den elpidzame na xypnisoume"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "el_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "δεν ελπίζαμε να ξυπνήσουμε",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "fd599ad0-1bc0-4281-ad94-0907e8025dc3",
+    "target2_audio_id": "cbd821ad-8726-42ce-a77f-15e49010ef57",
+    "target_text_roman": "den elpizame na xypnisoume"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c01ccdd5-9c9a-4d0b-bffe-c5e60dc6d157",
+   "set": {
+    "known_text": "we hoped",
+    "target_text": "ελπίζαμε να",
+    "components": [
+     {
+      "known": "we hoped (1pl imperfect)",
+      "target": "ελπίζαμε"
+     }
+    ],
+    "known_audio_id": "272146e0-3dc7-47b3-80ae-d7cefbddb10f",
+    "target1_audio_id": "d0cb7a48-cd65-48d9-a5cf-86a97f20b6e6",
+    "target2_audio_id": "e522af4b-7a9b-47c1-a8fb-b3f7d4a18ea4",
+    "target_text_roman": "elpizame na"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "dd488091-e50b-4431-bf77-8bfc7b8f1897",
+    "target2_audio_id": "1d2eb143-b774-470c-adaa-75ede0c2f7ed",
+    "target_text_roman": "den elpizame na xypnisoume sti mesi tis nychtas."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

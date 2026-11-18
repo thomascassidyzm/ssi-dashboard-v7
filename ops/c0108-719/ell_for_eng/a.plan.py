@@ -5,7 +5,7 @@
 C = "ell_for_eng"
 PLAN = {
  "SEED": ("We didn't expect to wake up in the middle of the night.", "Δεν περιμέναμε να ξυπνήσουμε στη μέση της νύχτας.", "den perimename na xypnisoume sti mesi tis nychtas."),
- "S0108L01": {"lego": ("we expected", "περιμέναμε να"), "components": [{"known": "we expected (1pl imperfect)", "target": "περιμέναμε"}]},
+ "S0108L01": {"lego": ("we expected", "περιμέναμε να"), "components": [{"known": "we expected (1pl imperfect)", "target": "περιμέναμε"}], "roman": "perimename na"},
  "S0108L02B04": ("we didn't expect to wake up", "δεν περιμέναμε να ξυπνήσουμε", "den perimename na xypnisoume"),
  "S0108L02U04": ("I know we didn't expect to wake up", "ξέρω ότι δεν περιμέναμε να ξυπνήσουμε", "xero oti den perimename na xypnisoume"),
  "S0108L04U02": ("we didn't expect to wake up in the middle of the night", "δεν περιμέναμε να ξυπνήσουμε στη μέση της νύχτας", "den perimename na xypnisoume sti mesi tis nychtas"),

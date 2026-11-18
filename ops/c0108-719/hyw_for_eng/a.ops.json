@@ -1,0 +1,265 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Չէինք սպասեր գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink sbaser kishervan gesin artnnal."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Չէինք յուսար գիշերուան կէսին արթննալ։"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "չէինք սպասեր",
+    "known_text": "we didn't expect",
+    "target_text_roman": "cheink sbaser",
+    "components": [
+     {
+      "known": "we weren't",
+      "target": "չէինք"
+     },
+     {
+      "known": "expecting",
+      "target": "սպասեր"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "չէինք յուսար"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "չէինք սպասեր տեսնել",
+    "target_text_roman": "cheink sbaser desnel",
+    "known_text": "we didn't expect to see"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see",
+    "target_text": "չէինք յուսար տեսնել"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "չէինք սպասեր հասկնալ",
+    "target_text_roman": "cheink sbaser hasgnal",
+    "known_text": "we didn't expect to understand"
+   },
+   "expect": {
+    "known_text": "we didn't hope to understand",
+    "target_text": "չէինք յուսար հասկնալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "չէինք սպասեր աւարտել",
+    "target_text_roman": "cheink sbaser avardel",
+    "known_text": "we didn't expect to finish"
+   },
+   "expect": {
+    "known_text": "we didn't hope to finish",
+    "target_text": "չէինք յուսար աւարտել"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "չէինք սպասեր որքան կարելի է արագ աւարտել",
+    "target_text_roman": "cheink sbaser vorkan gareli e arak avardel",
+    "known_text": "we didn't expect to finish as quickly as possible"
+   },
+   "expect": {
+    "known_text": "we didn't hope to finish as quickly as possible",
+    "target_text": "չէինք յուսար որքան կարելի է արագ աւարտել"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "չէինք սպասեր պատասխանը դիւրութեամբ գտնել",
+    "target_text_roman": "cheink sbaser badaskhanə tyurutyamp kədnel",
+    "known_text": "we didn't expect to find the answer easily"
+   },
+   "expect": {
+    "known_text": "we didn't hope to find the answer easily",
+    "target_text": "չէինք յուսար պատասխանը դիւրութեամբ գտնել"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "երէկ չէինք սպասեր ճշմարտութիւնը լսել",
+    "target_text_roman": "yereg cheink sbaser jəshmardutyunə ləsel",
+    "known_text": "we didn't expect to hear the truth yesterday"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear the truth yesterday",
+    "target_text": "երէկ չէինք յուսար ճշմարտութիւնը լսել"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "չէինք սպասեր շատ լաւ հայերէն խօսիլ",
+    "target_text_roman": "cheink sbaser shad lav hayeren khosil",
+    "known_text": "we didn't expect to speak Armenian very well"
+   },
+   "expect": {
+    "known_text": "we didn't hope to speak Armenian very well",
+    "target_text": "չէինք յուսար շատ լաւ հայերէն խօսիլ"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "I want to wake up"
+   },
+   "expect": {
+    "known_text": "I want to wake",
+    "target_text": "կ՚ուզեմ արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "I don't want to wake",
+    "target_text": "չեմ ուզեր արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "to wake up tomorrow"
+   },
+   "expect": {
+    "known_text": "to wake tomorrow",
+    "target_text": "վաղը արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I'd like to be able to wake up easily"
+   },
+   "expect": {
+    "known_text": "I'd like to be able to wake easily",
+    "target_text": "պիտի ուզէի կարենալ դիւրութեամբ արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "he doesn't want to wake up this morning"
+   },
+   "expect": {
+    "known_text": "he doesn't want to wake this morning",
+    "target_text": "ան չ՚ուզեր այս առտու արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I'm not sure if I can wake up at six o'clock"
+   },
+   "expect": {
+    "known_text": "I'm not sure if I can wake at six o'clock",
+    "target_text": "վստահ չեմ թէ կրնամ ժամը վեցին արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we wanted to wake up at six o'clock yesterday"
+   },
+   "expect": {
+    "known_text": "we wanted to wake at six o'clock yesterday",
+    "target_text": "երէկ կ՚ուզէինք ժամը վեցին արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "գիշերուան կէսին արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "չեմ ուզեր գիշերուան կէսին արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "I don't like to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't like to wake in the middle of the night",
+    "target_text": "չեմ սիրեր գիշերուան կէսին արթննալ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03U06",
+   "set": {
+    "target_text": "Չէինք սպասեր գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink sbaser kishervan gesin artnnal.",
+    "known_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Չէինք յուսար գիշերուան կէսին արթննալ։"
+   }
+  }
+ ]
+}

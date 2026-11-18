@@ -1,0 +1,1076 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "d3b6aeab-0b09-4521-9956-db73e886efcf",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Me ei toivottu, että herätään keskellä yötä",
+    "known_audio_id": "2f97de8f-fdee-40da-b924-644592d3b847",
+    "target1_audio_id": "90cde43d-1449-4bd1-9779-8b04643769fc",
+    "target2_audio_id": "7712a55c-add2-4fff-bef4-a708d4b3cc14"
+   },
+   "after": {
+    "id": "d3b6aeab-0b09-4521-9956-db73e886efcf",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Me ei odotettu, että herätään keskellä yötä",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "4e9cd6de-5f23-4e43-848a-124dad1da190",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "me ei toivottu, että",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "we",
+      "target": "me"
+     },
+     {
+      "known": "didn't hope",
+      "target": "ei toivottu"
+     },
+     {
+      "known": "that",
+      "target": "että"
+     }
+    ],
+    "known_audio_id": "f70d96c7-e0d1-4d9b-bd34-908cc27dbd7f",
+    "target1_audio_id": "d34cf376-8770-408b-b541-f196c0765e4f",
+    "target2_audio_id": "01ff974e-477b-4077-a3d3-ec6ced9bb4a6",
+    "presentation_audio_id": "37a58a90-e209-4468-b87b-418c4d2ff711"
+   },
+   "after": {
+    "id": "4e9cd6de-5f23-4e43-848a-124dad1da190",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "me ei odotettu, että",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we",
+      "target": "me"
+     },
+     {
+      "known": "didn't expect",
+      "target": "ei odotettu"
+     },
+     {
+      "known": "that",
+      "target": "että"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ei toivottu",
+    "known_text": "didn't hope",
+    "known_audio_id": "591a4343-213e-4669-a010-b53f329f517a",
+    "target1_audio_id": "297dbc31-7e54-4b15-9839-ea429e4f6c29",
+    "target2_audio_id": "cb6a3cb4-0e95-49ad-8d59-fc10a720e869",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ei odotettu",
+    "known_text": "didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että",
+    "known_text": "we didn't hope",
+    "known_audio_id": "f70d96c7-e0d1-4d9b-bd34-908cc27dbd7f",
+    "target1_audio_id": "d34cf376-8770-408b-b541-f196c0765e4f",
+    "target2_audio_id": "01ff974e-477b-4077-a3d3-ec6ced9bb4a6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että sä puhut",
+    "known_text": "we didn't hope that you speak",
+    "known_audio_id": "f9b5ed55-8243-4264-a565-82bb56f63ab6",
+    "target1_audio_id": "b32cae68-816b-4cad-bab8-dd6431b22d1b",
+    "target2_audio_id": "be441ffe-a186-4a64-9f0e-693a41f4ecd2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että sä puhut",
+    "known_text": "we didn't expect that you speak",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että sä ymmärrät",
+    "known_text": "we didn't hope that you understand",
+    "known_audio_id": "4330e19f-2e82-4f30-b00a-02c47fa27e0c",
+    "target1_audio_id": "7d9abe09-5cb7-4f80-9e56-769494362fb9",
+    "target2_audio_id": "f6da25c0-923a-4df8-9d26-879ba42260ab",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että sä ymmärrät",
+    "known_text": "we didn't expect that you understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että sä puhut suomea",
+    "known_text": "we didn't hope that you speak Finnish",
+    "known_audio_id": "3d479f3c-c0a7-409b-ac8e-d39f7dd16a96",
+    "target1_audio_id": "07a9d13f-9db7-45cd-9941-e291791650fd",
+    "target2_audio_id": "dfd23168-8062-4bf8-93de-99d041bd41d9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että sä puhut suomea",
+    "known_text": "we didn't expect that you speak Finnish",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että se toimii",
+    "known_text": "we didn't hope that it works",
+    "known_audio_id": "de070776-111c-4b53-9df9-a383f530da50",
+    "target1_audio_id": "f198d2af-338c-4eb1-ab8c-69dd987eca10",
+    "target2_audio_id": "fb91ea00-eff2-4a04-9482-c523e76e2349",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että se toimii",
+    "known_text": "we didn't expect that it works",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että sä haluut tulla takaisin",
+    "known_text": "we didn't hope that you want to come back",
+    "known_audio_id": "11f28992-f6bb-49d5-9a9d-f7cd016aeec7",
+    "target1_audio_id": "6add62f8-c02e-4db9-9b53-1a69e1c3f4f8",
+    "target2_audio_id": "9cd27e95-cc5d-4866-a0d1-21c1416d8563",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että sä haluut tulla takaisin",
+    "known_text": "we didn't expect that you want to come back",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että me nähdään se",
+    "known_text": "we didn't hope that we see it",
+    "known_audio_id": "32d802e5-8c1d-4b86-9879-3a89ed870cf3",
+    "target1_audio_id": "0bb898ae-fc00-496b-afe4-da3774706e07",
+    "target2_audio_id": "c814e786-fe0e-44b2-a4a6-98bf63478d2d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että me nähdään se",
+    "known_text": "we didn't expect that we see it",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että sä teit sen",
+    "known_text": "we didn't hope that you did it",
+    "known_audio_id": "bed32374-55a0-4cc0-a4f3-8e41e40f79d7",
+    "target1_audio_id": "63aa1a4f-d6e7-46e4-a48f-b66b51663931",
+    "target2_audio_id": "d8fdc01f-4405-4e80-89fa-e22ff5e4316e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että sä teit sen",
+    "known_text": "we didn't expect that you did it",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että herätään",
+    "known_text": "we didn't hope that we wake",
+    "known_audio_id": "98f3767c-79ad-498f-bef1-7f602f058379",
+    "target1_audio_id": "7406cb93-2e2f-4ae6-8f69-3f7f30cf7888",
+    "target2_audio_id": "851f4477-912d-42da-88fc-672b7c9eb765",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että herätään",
+    "known_text": "we didn't expect that we wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wake now",
+    "target_text": "herätään nyt",
+    "known_audio_id": "6e32daf5-550a-43af-abab-a8d43070315d",
+    "target1_audio_id": "d188142e-c8bf-4d2d-a5af-84902264b644",
+    "target2_audio_id": "9bbd57c8-9d94-4342-a2b3-195761eaca37",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wake up now",
+    "target_text": "herätään nyt",
+    "known_audio_id": null,
+    "target1_audio_id": "d188142e-c8bf-4d2d-a5af-84902264b644",
+    "target2_audio_id": "9bbd57c8-9d94-4342-a2b3-195761eaca37",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wake this morning",
+    "target_text": "herätään tänä aamuna",
+    "known_audio_id": "55a1cfa9-5458-4b4a-8aa5-49b910310961",
+    "target1_audio_id": "2e3184ae-71e3-4fa4-9b7f-e4bb141df7f4",
+    "target2_audio_id": "1edba8d2-5f13-402c-be1a-6844b32634d0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wake up this morning",
+    "target_text": "herätään tänä aamuna",
+    "known_audio_id": null,
+    "target1_audio_id": "2e3184ae-71e3-4fa4-9b7f-e4bb141df7f4",
+    "target2_audio_id": "1edba8d2-5f13-402c-be1a-6844b32634d0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että herätään tänä aamuna",
+    "known_text": "we didn't hope that we wake this morning",
+    "known_audio_id": "3917dcc3-37b9-4107-9816-967c664be881",
+    "target1_audio_id": "4f31bde0-6f19-47b5-8e06-ca70a166f7d0",
+    "target2_audio_id": "ea30d2d4-c819-43dc-bc8b-83441c3c81b7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että herätään tänä aamuna",
+    "known_text": "we didn't expect that we wake up this morning",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want us to wake now",
+    "target_text": "mä en haluu, että herätään nyt",
+    "known_audio_id": "4aed8dde-e32f-4222-a676-9c8eced84d33",
+    "target1_audio_id": "10ecdeb8-2c35-421d-a0ca-df2df99049ce",
+    "target2_audio_id": "d4ac6207-8ea7-4931-a81c-f6a897ab00bb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want us to wake up now",
+    "target_text": "mä en haluu, että herätään nyt",
+    "known_audio_id": null,
+    "target1_audio_id": "10ecdeb8-2c35-421d-a0ca-df2df99049ce",
+    "target2_audio_id": "d4ac6207-8ea7-4931-a81c-f6a897ab00bb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's not good that we wake now",
+    "target_text": "ei oo hyvä, että herätään nyt",
+    "known_audio_id": "56d1831a-6360-4806-a86f-eb928eae5062",
+    "target1_audio_id": "f490aef9-8b25-44c7-9f62-2f074c85ca8c",
+    "target2_audio_id": "88ea3ed4-8bdc-4e45-b9d4-326d41a67443",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's not good that we wake up now",
+    "target_text": "ei oo hyvä, että herätään nyt",
+    "known_audio_id": null,
+    "target1_audio_id": "f490aef9-8b25-44c7-9f62-2f074c85ca8c",
+    "target2_audio_id": "88ea3ed4-8bdc-4e45-b9d4-326d41a67443",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not sure when we wake",
+    "target_text": "mä en oo varma, milloin herätään",
+    "known_audio_id": "d5d34e68-208d-41a2-9c98-90982073155d",
+    "target1_audio_id": "029dc9ef-a813-4bc3-85e2-b47b84dbe3f8",
+    "target2_audio_id": "d2bbdfcc-56ae-4418-9ef7-04cc80f569ea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not sure when we wake up",
+    "target_text": "mä en oo varma, milloin herätään",
+    "known_audio_id": null,
+    "target1_audio_id": "029dc9ef-a813-4bc3-85e2-b47b84dbe3f8",
+    "target2_audio_id": "d2bbdfcc-56ae-4418-9ef7-04cc80f569ea",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wake this evening",
+    "target_text": "herätään tänä iltana",
+    "known_audio_id": "6ad1c7b0-1c73-4d55-a89b-0693d2c7db62",
+    "target1_audio_id": "73d1eaa8-b44f-4772-b8b9-2247a961ce11",
+    "target2_audio_id": "d1c5962e-f8e8-4031-8187-64db52a8ee55",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wake up this evening",
+    "target_text": "herätään tänä iltana",
+    "known_audio_id": null,
+    "target1_audio_id": "73d1eaa8-b44f-4772-b8b9-2247a961ce11",
+    "target2_audio_id": "d1c5962e-f8e8-4031-8187-64db52a8ee55",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "herätä keskellä yötä",
+    "known_audio_id": "d32b97a1-d645-4d3b-b075-42a743cd8cc7",
+    "target1_audio_id": "6b20cd76-031b-43cc-9d25-c80fe2f0570a",
+    "target2_audio_id": "4a8095df-f8ac-416d-94f8-0c5bbc7becb5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "herätä keskellä yötä",
+    "known_audio_id": null,
+    "target1_audio_id": "6b20cd76-031b-43cc-9d25-c80fe2f0570a",
+    "target2_audio_id": "4a8095df-f8ac-416d-94f8-0c5bbc7becb5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "me ei toivottu, että herätään keskellä yötä",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "2f97de8f-fdee-40da-b924-644592d3b847",
+    "target1_audio_id": "90cde43d-1449-4bd1-9779-8b04643769fc",
+    "target2_audio_id": "7712a55c-add2-4fff-bef4-a708d4b3cc14",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "me ei odotettu, että herätään keskellä yötä",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "mä en haluu herätä keskellä yötä",
+    "known_audio_id": "8d11f23d-c270-4714-92ef-a351ac94f068",
+    "target1_audio_id": "642d9099-d4cd-46da-abe9-9049e6fbf229",
+    "target2_audio_id": "8a3cc12f-6ce8-4e89-b525-ff508af61700",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the middle of the night",
+    "target_text": "mä en haluu herätä keskellä yötä",
+    "known_audio_id": null,
+    "target1_audio_id": "642d9099-d4cd-46da-abe9-9049e6fbf229",
+    "target2_audio_id": "8a3cc12f-6ce8-4e89-b525-ff508af61700",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L03U04"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want us to wake in the middle of the night",
+    "target_text": "mä en haluu, että herätään keskellä yötä",
+    "known_audio_id": "92adb7a4-59d6-4c36-8fd4-004acace8152",
+    "target1_audio_id": "0ea4da88-7e72-474e-bd96-7a24809cf97b",
+    "target2_audio_id": "ed2f4250-5286-4748-9377-431b17d72a44",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want us to wake up in the middle of the night",
+    "target_text": "mä en haluu, että herätään keskellä yötä",
+    "known_audio_id": null,
+    "target1_audio_id": "0ea4da88-7e72-474e-bd96-7a24809cf97b",
+    "target2_audio_id": "ed2f4250-5286-4748-9377-431b17d72a44",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fin_for_eng",
+    "id": "fin_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "fin_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I'm not sure why we wake in the middle of the night",
+    "target_text": "mä en oo varma, miksi herätään keskellä yötä",
+    "known_audio_id": "8869eded-4456-4db4-9e0c-8b7f54af78c5",
+    "target1_audio_id": "70f61440-61aa-4359-884c-d1039f404591",
+    "target2_audio_id": "12e32de3-0270-434d-ab96-3cbc2f5dbf15",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fin_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I'm not sure why we wake up in the middle of the night",
+    "target_text": "mä en oo varma, miksi herätään keskellä yötä",
+    "known_audio_id": null,
+    "target1_audio_id": "70f61440-61aa-4359-884c-d1039f404591",
+    "target2_audio_id": "12e32de3-0270-434d-ab96-3cbc2f5dbf15",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "I'm not sure why we wake in the middle of the night",
+    "known_audio_id": "8869eded-4456-4db4-9e0c-8b7f54af78c5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "I don't want us to wake in the middle of the night",
+    "known_audio_id": "92adb7a4-59d6-4c36-8fd4-004acace8152"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "known_audio_id": "8d11f23d-c270-4714-92ef-a351ac94f068"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "me ei toivottu, että herätään keskellä yötä",
+    "known_audio_id": "2f97de8f-fdee-40da-b924-644592d3b847",
+    "target1_audio_id": "90cde43d-1449-4bd1-9779-8b04643769fc",
+    "target2_audio_id": "7712a55c-add2-4fff-bef4-a708d4b3cc14"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "known_audio_id": "d32b97a1-d645-4d3b-b075-42a743cd8cc7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we wake this evening",
+    "known_audio_id": "6ad1c7b0-1c73-4d55-a89b-0693d2c7db62"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I'm not sure when we wake",
+    "known_audio_id": "d5d34e68-208d-41a2-9c98-90982073155d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "it's not good that we wake now",
+    "known_audio_id": "56d1831a-6360-4806-a86f-eb928eae5062"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I don't want us to wake now",
+    "known_audio_id": "4aed8dde-e32f-4222-a676-9c8eced84d33"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope that we wake this morning",
+    "target_text": "me ei toivottu, että herätään tänä aamuna",
+    "known_audio_id": "3917dcc3-37b9-4107-9816-967c664be881",
+    "target1_audio_id": "4f31bde0-6f19-47b5-8e06-ca70a166f7d0",
+    "target2_audio_id": "ea30d2d4-c819-43dc-bc8b-83441c3c81b7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "we wake this morning",
+    "known_audio_id": "55a1cfa9-5458-4b4a-8aa5-49b910310961"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we wake now",
+    "known_audio_id": "6e32daf5-550a-43af-abab-a8d43070315d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "we didn't hope that we wake",
+    "target_text": "me ei toivottu, että herätään",
+    "known_audio_id": "98f3767c-79ad-498f-bef1-7f602f058379",
+    "target1_audio_id": "7406cb93-2e2f-4ae6-8f69-3f7f30cf7888",
+    "target2_audio_id": "851f4477-912d-42da-88fc-672b7c9eb765"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't hope that you did it",
+    "target_text": "me ei toivottu, että sä teit sen",
+    "known_audio_id": "bed32374-55a0-4cc0-a4f3-8e41e40f79d7",
+    "target1_audio_id": "63aa1a4f-d6e7-46e4-a48f-b66b51663931",
+    "target2_audio_id": "d8fdc01f-4405-4e80-89fa-e22ff5e4316e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope that we see it",
+    "target_text": "me ei toivottu, että me nähdään se",
+    "known_audio_id": "32d802e5-8c1d-4b86-9879-3a89ed870cf3",
+    "target1_audio_id": "0bb898ae-fc00-496b-afe4-da3774706e07",
+    "target2_audio_id": "c814e786-fe0e-44b2-a4a6-98bf63478d2d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope that you want to come back",
+    "target_text": "me ei toivottu, että sä haluut tulla takaisin",
+    "known_audio_id": "11f28992-f6bb-49d5-9a9d-f7cd016aeec7",
+    "target1_audio_id": "6add62f8-c02e-4db9-9b53-1a69e1c3f4f8",
+    "target2_audio_id": "9cd27e95-cc5d-4866-a0d1-21c1416d8563"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope that it works",
+    "target_text": "me ei toivottu, että se toimii",
+    "known_audio_id": "de070776-111c-4b53-9df9-a383f530da50",
+    "target1_audio_id": "f198d2af-338c-4eb1-ab8c-69dd987eca10",
+    "target2_audio_id": "fb91ea00-eff2-4a04-9482-c523e76e2349"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope that you speak Finnish",
+    "target_text": "me ei toivottu, että sä puhut suomea",
+    "known_audio_id": "3d479f3c-c0a7-409b-ac8e-d39f7dd16a96",
+    "target1_audio_id": "07a9d13f-9db7-45cd-9941-e291791650fd",
+    "target2_audio_id": "dfd23168-8062-4bf8-93de-99d041bd41d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope that you understand",
+    "target_text": "me ei toivottu, että sä ymmärrät",
+    "known_audio_id": "4330e19f-2e82-4f30-b00a-02c47fa27e0c",
+    "target1_audio_id": "7d9abe09-5cb7-4f80-9e56-769494362fb9",
+    "target2_audio_id": "f6da25c0-923a-4df8-9d26-879ba42260ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope that you speak",
+    "target_text": "me ei toivottu, että sä puhut",
+    "known_audio_id": "f9b5ed55-8243-4264-a565-82bb56f63ab6",
+    "target1_audio_id": "b32cae68-816b-4cad-bab8-dd6431b22d1b",
+    "target2_audio_id": "be441ffe-a186-4a64-9f0e-693a41f4ecd2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "me ei toivottu, että",
+    "known_audio_id": "f70d96c7-e0d1-4d9b-bd34-908cc27dbd7f",
+    "target1_audio_id": "d34cf376-8770-408b-b541-f196c0765e4f",
+    "target2_audio_id": "01ff974e-477b-4077-a3d3-ec6ced9bb4a6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "didn't hope",
+    "target_text": "ei toivottu",
+    "known_audio_id": "591a4343-213e-4669-a010-b53f329f517a",
+    "target1_audio_id": "297dbc31-7e54-4b15-9839-ea429e4f6c29",
+    "target2_audio_id": "cb6a3cb4-0e95-49ad-8d59-fc10a720e869"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4e9cd6de-5f23-4e43-848a-124dad1da190",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "me ei toivottu, että",
+    "components": [
+     {
+      "known": "we",
+      "target": "me"
+     },
+     {
+      "known": "didn't hope",
+      "target": "ei toivottu"
+     },
+     {
+      "known": "that",
+      "target": "että"
+     }
+    ],
+    "known_audio_id": "f70d96c7-e0d1-4d9b-bd34-908cc27dbd7f",
+    "target1_audio_id": "d34cf376-8770-408b-b541-f196c0765e4f",
+    "target2_audio_id": "01ff974e-477b-4077-a3d3-ec6ced9bb4a6",
+    "presentation_audio_id": "37a58a90-e209-4468-b87b-418c4d2ff711"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Me ei toivottu, että herätään keskellä yötä",
+    "known_audio_id": "2f97de8f-fdee-40da-b924-644592d3b847",
+    "target1_audio_id": "90cde43d-1449-4bd1-9779-8b04643769fc",
+    "target2_audio_id": "7712a55c-add2-4fff-bef4-a708d4b3cc14"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
