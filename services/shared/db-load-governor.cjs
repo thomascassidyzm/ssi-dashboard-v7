@@ -209,7 +209,7 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
   function maybeTick() {
     if (g.ticking) return g.ticking;
     if (now() - g.lastTick < TICK_MS) return null;
-    g.ticking = tick().catch(() => { g.level = "red"; }).finally(() => { g.ticking = null; });
+    g.ticking = tick().catch(() => { g.level = "red"; g.lastTick = now(); }).finally(() => { g.ticking = null; });
     return g.ticking;
   }
 
@@ -219,7 +219,7 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
     g.heldMs += ms;
     if (g.heldMs > 30000 && t - g.lastHeldLog >= HELD_LOG_MS) {
       g.lastHeldLog = t;
-      const line = `db-load-governor[${g.writer}]: HELD BACK ${Math.round(g.heldMs / 1000)} s of the last minute — database ${g.level} (${describe(g.signal)}); rate ${fmtRate(g.rate)}. Learners come first; this writer is still moving, slowly.`;
+      const line = `db-load-governor[${g.writer}]: HELD BACK — its statements waited ${Math.round(g.heldMs / 1000)} s in total over the last minute — database ${g.level} (${describe(g.signal)}); rate ${fmtRate(g.rate)}. Learners come first; this writer is still moving, slowly.`;
       log(line);
       if (t - g.lastHeldEvent >= HELD_EVENT_MS) { g.lastHeldEvent = t; event("held", line); }
     }
