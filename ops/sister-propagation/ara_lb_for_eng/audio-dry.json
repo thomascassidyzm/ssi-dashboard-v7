@@ -1,0 +1,292 @@
+{
+ "target1|مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L02B01",
+   "S0064L02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L02B01",
+   "S0064L02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي كتير": {
+  "status": 429,
+  "rows": [
+   "S0064L02B02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي كتير": {
+  "status": 429,
+  "rows": [
+   "S0064L02B02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي هلق": {
+  "status": 429,
+  "rows": [
+   "S0064L02B03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي هلق": {
+  "status": 429,
+  "rows": [
+   "S0064L02B03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|تحكي عربي مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L02U01"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|تحكي عربي مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L02U01"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي أحكي أكتر": {
+  "status": 429,
+  "rows": [
+   "S0064L02U02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي أحكي أكتر": {
+  "status": 429,
+  "rows": [
+   "S0064L02U02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|يكتب رسالة مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L02U03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|يكتب رسالة مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L02U03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي أحس أحسن": {
+  "status": 429,
+  "rows": [
+   "S0064L02U04"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي أحس أحسن": {
+  "status": 429,
+  "rows": [
+   "S0064L02U04"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي لما تفهم": {
+  "status": 429,
+  "rows": [
+   "S0064L02U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي لما تفهم": {
+  "status": 429,
+  "rows": [
+   "S0064L02U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|تعلم مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L03B03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|تعلم مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L03B03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|تعلم العربي مش سهل بس مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L03U01"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|تعلم العربي مش سهل بس مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0064L03U01"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي تاختبر حالك": {
+  "status": 429,
+  "rows": [
+   "S0065L03U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي تاختبر حالك": {
+  "status": 429,
+  "rows": [
+   "S0065L03U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|تعلم صعب بس مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0066L01U02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|تعلم صعب بس مسلّي": {
+  "status": 429,
+  "rows": [
+   "S0066L01U02"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي تلاقي الجواب": {
+  "status": 429,
+  "rows": [
+   "S0066L02U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي تلاقي الجواب": {
+  "status": 429,
+  "rows": [
+   "S0066L02U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مسلّي تدور عليه": {
+  "status": 429,
+  "rows": [
+   "S0068L01U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مسلّي تدور عليه": {
+  "status": 429,
+  "rows": [
+   "S0068L01U05"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|مبسوط لأنك ساعدتني أفهم": {
+  "status": 429,
+  "rows": [
+   "S0074L03U03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|مبسوط لأنك ساعدتني أفهم": {
+  "status": 429,
+  "rows": [
+   "S0074L03U03"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target1|تعلم العربي مش سهل بس مسلّي.": {
+  "status": 429,
+  "rows": [
+   "seed 64"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ },
+ "target2|تعلم العربي مش سهل بس مسلّي.": {
+  "status": 429,
+  "rows": [
+   "seed 64"
+  ],
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+ }
+}

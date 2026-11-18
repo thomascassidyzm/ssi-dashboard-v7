@@ -44,6 +44,9 @@ def live(d):
         out['legos'][l['id']] = b['baskets'].get(l['id'], {}).get('lego')
         out['legos'][l['id'] + '#seed'] = b.get('seed_pair')
         if l.get('intro'): out['intros'][l['id']] = call('GET', f'/api/production/{C}/presentation/{l["id"]}')[1]
+    out['seeds'] = {}
+    for sd in P.get('seeds', []):
+        out['seeds'][str(sd['n'])] = call('GET', f'/api/production/{C}/seed/S{sd["n"]:04d}/baskets')[1].get('seed_pair')
     save(d, 'live.json', out)
     miss = [k for k, v in out['phrases'].items() if v is None]
     print('live', len(out['phrases']), 'phrases', len(out['legos']) // 2, 'legos; MISSING', miss)
@@ -58,6 +61,10 @@ def asks(d):
         if 'known' in p: A.setdefault(('known', p['known']), []).append(p['id'])
         if 'target' in p:
             for r in ('target1', 'target2'): A.setdefault((r, p['target']), []).append(p['id'])
+    for sd in P.get('seeds', []):
+        if 'known' in sd: A.setdefault(('known', sd['known']), []).append(f"seed {sd['n']}")
+        if 'target' in sd:
+            for r in ('target1', 'target2'): A.setdefault((r, sd['target']), []).append(f"seed {sd['n']}")
     for l in P.get('legos', []):
         if 'known' in l: A.setdefault(('known', l['known']), []).append(l['id'])
         if 'target' in l:
@@ -68,10 +75,13 @@ def asks(d):
 def audio(d, mode):
     P = load(d, 'plan.json'); dry = mode == 'dry'; out = {}
     ledger = json.load(open(LEDGER)) if os.path.exists(LEDGER) else {'spent': 0, 'calls': []}
-    if not dry:
-        need = sum(v.get('wouldSpendChars') or 0 for v in load(d, 'audio-dry.json').values())
-        if ledger['spent'] + need > CAP: sys.exit(f'REFUSED: would spend {need}, ledger {ledger["spent"]}, cap {CAP}')
-    for (role, text), ids in asks(d).items():
+    A = asks(d)
+    if mode == 'estimate':   # dry runs capped per hour on live (BULK_DRY_RUN_ON_LIVE): upper bound = every char rendered
+        est = sum(len(t) for (r, t) in A); print('ESTIMATE <=', est, 'ledger', ledger['spent'], 'cap', CAP); return
+    for (role, text), ids in A.items():
+        if not dry and ledger['spent'] + len(text) > CAP:
+            out[f'{role}|{text}'] = {'status': 0, 'rows': ids, 'ok': False, 'code': 'JOB_BUDGET', 'message': 'not rendered: 4,500-char share would be exceeded'}
+            print('SKIP budget', role, text[:60]); continue
         st, res = call('POST', '/api/audio/render', {'courseCode': P['course'], 'role': role, 'text': text, 'purpose': P['purpose'], 'dryRun': dry}, timeout=300)
         out[f'{role}|{text}'] = {'status': st, 'rows': ids, **{k: res.get(k) for k in ('ok', 'source', 'audioId', 'charsSpent', 'wouldSpendChars', 'code', 'error', 'message') if k in res}}
         if not dry and res.get('charsSpent'):
@@ -92,12 +102,21 @@ def ops(d, text_only):
         if text_only: return []
         aid = clip.get((role, text))
         if not aid: raise SystemExit(f'no clip {role}|{text}')
-        return [{'op': 'audio.link', 'target': target, **({'lego_id': key} if target == 'lego' else {'phrase_id': f'{C}:{key}'}), 'slot': slot, 'audio_id': aid}]
+        return [{'op': 'audio.link', 'target': target, **({'lego_id': key} if target == 'lego' else {'seed_number': key} if target == 'seed' else {'phrase_id': f'{C}:{key}'}), 'slot': slot, 'audio_id': aid}]
     O = []
+    for sd in P.get('seeds', []):
+        cur = L['seeds'][str(sd['n'])]; s = {}
+        if 'known' in sd: s['known_text'] = sd['known']
+        if 'target' in sd: s['target_text'] = sd['target']
+        if 'roman' in sd: s['target_text_roman'] = sd['roman']
+        O.append({'op': 'seed.update', 'seed_number': sd['n'], 'expect': {'known_text': cur['known'], 'target_text': cur['target']}, 'set': s})
+        if 'known' in sd: O += link('seed', sd['n'], 'known', 'known', sd['known'])
+        if 'target' in sd: O += link('seed', sd['n'], 'target1', 'target1', sd['target']) + link('seed', sd['n'], 'target2', 'target2', sd['target'])
     for l in P.get('legos', []):
         cur = L['legos'][l['id']]; s = {}
         if 'known' in l: s['known_text'] = l['known']
         if 'target' in l: s['target_text'] = l['target']
+        if 'roman' in l: s['target_text_roman'] = l['roman']
         O.append({'op': 'lego.update', 'lego_id': l['id'], 'expect': {'known_text': cur['known'], 'target_text': cur['target']}, 'set': s})
         if 'known' in l: O += link('lego', l['id'], 'known', 'known', l['known'])
         if 'target' in l: O += link('lego', l['id'], 'target1', 'target1', l['target']) + link('lego', l['id'], 'target2', 'target2', l['target'])
@@ -106,6 +125,7 @@ def ops(d, text_only):
         cur = L['phrases'][p['id']]; s = {}
         if 'known' in p: s['known_text'] = p['known']
         if 'target' in p: s['target_text'] = p['target']
+        if 'roman' in p: s['target_text_roman'] = p['roman']
         O.append({'op': 'phrase.update', 'phrase_id': f'{C}:{p["id"]}', 'expect': {'known_text': cur['known_text'], 'target_text': cur['target_text']}, 'set': s})
         if 'known' in p: O += link('phrase', p['id'], 'known', 'known', p['known'])
         if 'target' in p: O += link('phrase', p['id'], 'target1', 'target1', p['target']) + link('phrase', p['id'], 'target2', 'target2', p['target'])
@@ -152,6 +172,10 @@ def readback(d):
         b = call('GET', f'/api/production/{C}/seed/{l["id"][:5]}/baskets')[1]['baskets'].get(l['id'], {}).get('lego', {})
         ok = b.get('known') == l.get('known', b.get('known')) and b.get('target') == l.get('target', b.get('target'))
         out[l['id']] = {'ok': ok, **b}; bad += not ok
+    for sd in P.get('seeds', []):
+        b = call('GET', f'/api/production/{C}/seed/S{sd["n"]:04d}/baskets')[1].get('seed_pair', {})
+        ok = b.get('known') == sd.get('known', b.get('known')) and b.get('target') == sd.get('target', b.get('target'))
+        out[f"seed {sd['n']}"] = {'ok': ok, **b}; bad += not ok
     save(d, 'readback.json', out); print('readback', len(out) - bad, '/', len(out))
 
 if __name__ == '__main__':
