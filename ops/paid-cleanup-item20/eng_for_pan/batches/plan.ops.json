@@ -677,6 +677,250 @@
    }
   },
   {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0289L01B03",
+    "seed_number": 289,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "ਮੈਂ ਸੋਚ ਰਿਹਾ ਹਾਂ ਕਿ ਮੈਂ ਤਿਆਰ ਹੋਵਾਂਗਾ ਜਾਂ ਨਹੀਂ",
+    "target_text": "I wonder if I'll be ready",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "m"
+    },
+    "word_count": 25,
+    "lego_count": 10,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0294L02B02",
+    "seed_number": 294,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "ਮੇਰੇ ਕੋਲ ਅੱਜ ਤੁਹਾਨੂੰ ਫ਼ੋਨ ਕਰਨ ਲਈ ਕਾਫ਼ੀ ਸਮਾਂ ਨਹੀਂ",
+    "target_text": "I don't have enough time to call you today",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 42,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0294L02B03",
+    "seed_number": 294,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "ਮੇਰੇ ਕੋਲ ਵੀਕਐਂਡ ਤੇ ਤੁਹਾਨੂੰ ਫ਼ੋਨ ਕਰਨ ਲਈ ਕਾਫ਼ੀ ਸਮਾਂ ਨਹੀਂ",
+    "target_text": "I don't have enough time to call you at the weekend",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 51,
+    "lego_count": 11,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0297L01B04",
+    "seed_number": 297,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "ਮੈਂ ਕੰਮ ਵਾਲੀ ਜਗ੍ਹਾ ਤੇ ਜ਼ਿਆਦਾ ਲੋਕਾਂ ਨੂੰ ਨਹੀਂ ਜਾਣਦੀ",
+    "target_text": "I don't know many people at work",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "f"
+    },
+    "word_count": 32,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0298L01B04",
+    "seed_number": 298,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "ਮੈਂ ਕਿਹਾ ਕਿ ਮੇਰੇ ਕੋਲ ਕਹਿਣ ਲਈ ਕੁਝ ਨਹੀਂ ਬਚਿਆ",
+    "target_text": "I said that I've got nothing left to say",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 40,
+    "lego_count": 10,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0349L01B03",
+    "seed_number": 349,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "ਕੀ ਉਹ ਖੇਡਣਾ ਚਾਹੁੰਦਾ ਸੀ?",
+    "target_text": "did he want to play?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 20,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0355L02B03",
+    "seed_number": 355,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "ਕੀ ਉਸਨੂੰ ਇੱਥੇ ਕਿਸੇ ਨਾਲ ਗੱਲ ਕਰਨੀ ਸੀ?",
+    "target_text": "did she need to talk to someone here?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 37,
+    "lego_count": 8,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0429L01B03",
+    "seed_number": 429,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਇਹ ਬਿਲਕੁਲ ਸਹੀ ਰਹੇਗਾ",
+    "target_text": "I think that would be perfect",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 29,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0429L02B04",
+    "seed_number": 429,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "ਇਹ ਉਨ੍ਹਾਂ ਲਈ ਬਿਲਕੁਲ ਸਹੀ ਰਹੇਗਾ",
+    "target_text": "that would be perfect for them",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 30,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0439L01B04",
+    "seed_number": 439,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "ਉਹ ਮਰਨਾ ਨਹੀਂ ਚਾਹੁਣਗੇ",
+    "target_text": "they wouldn't like to die",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 25,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_pan:S0440L03B03",
+    "seed_number": 440,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "ਉਹ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹਨ ਜਦੋਂ ਤੱਕ ਉਹ ਅਜੇ ਜਵਾਨ ਹਨ",
+    "target_text": "they want to go out while they're still young",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 45,
+    "lego_count": 11,
+    "lego_position": "end"
+   }
+  },
+  {
    "op": "phrase.update",
    "phrase_id": "eng_for_pan:S0001L02B01",
    "expect": {
@@ -4994,6 +5238,1776 @@
     "decomposition": null,
     "word_count": 23,
     "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0277L01B02",
+   "expect": {
+    "known_text": "ਅਗਲੇ ਹਫ਼ਤੇ ਜਲਦੀ",
+    "target_text": "early next week"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਅਗਲੇ ਹਫ਼ਤੇ ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਤਿਆਰ ਹੋਵਾਂਗੀ",
+    "target_text": "I'll be ready early next week",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0278L01B01",
+   "expect": {
+    "known_text": "ਸਭ ਕੁਝ ਖਤਮ ਕਰਨਾ",
+    "target_text": "finish everything"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਕੀ ਤੁਹਾਨੂੰ ਕੱਲ੍ਹ ਰਾਤ ਸਭ ਕੁਝ ਖਤਮ ਕਰਨਾ ਸੀ?",
+    "target_text": "so did you have to finish everything last night?",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0279L01B01",
+   "expect": {
+    "known_text": "ਸਮਾਂ ਨਹੀਂ ਬਚਿਆ",
+    "target_text": "much time left"
+   },
+   "set": {
+    "known_text": "ਅੱਜ ਜ਼ਿਆਦਾ ਸਮਾਂ ਨਹੀਂ ਬਚਿਆ ਸੀ",
+    "target_text": "there wasn't much time left today",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0281L02B01",
+   "expect": {
+    "known_text": "ਸ਼ੁਰੂ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ",
+    "target_text": "before you start"
+   },
+   "set": {
+    "known_text": "ਕੀ ਮੈਂ ਤੁਹਾਡੇ ਸ਼ੁਰੂ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਪੁੱਛ ਸਕਦਾ ਹਾਂ?",
+    "target_text": "can I ask before you start?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0283L02B01",
+   "expect": {
+    "known_text": "ਤੁਹਾਡੇ ਦੋਸਤਾਂ ਵਿੱਚੋਂ ਕਿਹੜੇ",
+    "target_text": "which of your friends"
+   },
+   "set": {
+    "known_text": "ਤੁਹਾਡੇ ਦੋਸਤਾਂ ਵਿੱਚੋਂ ਕਿਹੜੇ ਅੰਗਰੇਜ਼ੀ ਬਹੁਤ ਵਧੀਆ ਬੋਲਦੇ ਹਨ?",
+    "target_text": "which of your friends speak English very well?",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0284L01B01",
+   "expect": {
+    "known_text": "ਮੇਰੀ ਭੈਣ ਦਾ ਦੋਸਤ",
+    "target_text": "my sister's friend"
+   },
+   "set": {
+    "known_text": "ਇਹ ਮੇਰੀ ਭੈਣ ਦਾ ਦੋਸਤ ਹੋ ਸਕਦਾ ਹੈ",
+    "target_text": "it might be my sister's friend",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0286L01B01",
+   "expect": {
+    "known_text": "ਜਿਨ੍ਹਾਂ ਨੂੰ ਬੋਲਣਾ ਪਸੰਦ ਹੈ",
+    "target_text": "who like speaking"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਉਹ ਲੋਕ ਜਿਨ੍ਹਾਂ ਨੂੰ ਬੋਲਣਾ ਪਸੰਦ ਹੈ",
+    "target_text": "so people who like speaking",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0287L01B01",
+   "expect": {
+    "known_text": "ਟੀਵੀ ਦੇਖਣਾ",
+    "target_text": "watching television"
+   },
+   "set": {
+    "known_text": "ਲੋਕ ਜਿਨ੍ਹਾਂ ਨੂੰ ਟੀਵੀ ਦੇਖਣਾ ਪਸੰਦ ਹੈ",
+    "target_text": "people who like watching television",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0288L01B01",
+   "expect": {
+    "known_text": "ਜ਼ਿਆਦਾਤਰ ਲੋਕ",
+    "target_text": "most people"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਜ਼ਿਆਦਾਤਰ ਲੋਕ ਜਿਨ੍ਹਾਂ ਨੂੰ ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਟੀਵੀ ਦੇਖਣਾ ਪਸੰਦ ਕਰਦੇ ਹਨ",
+    "target_text": "so most people I know like watching television",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0291L01B01",
+   "expect": {
+    "known_text": "ਬਿਹਤਰ ਬੋਲਣਾ",
+    "target_text": "speak better"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਬਿਹਤਰ ਕਿਵੇਂ ਬੋਲਣਾ ਹੈ",
+    "target_text": "I don't know how to speak better",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0292L01B01",
+   "expect": {
+    "known_text": "ਪਾਰਟੀ ਵਿੱਚ ਆਉਣਾ",
+    "target_text": "come to the party"
+   },
+   "set": {
+    "known_text": "ਤੁਸੀਂ ਪਾਰਟੀ ਵਿੱਚ ਆ ਸਕੋਗੇ",
+    "target_text": "you'll be able to come to the party",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0293L01B01",
+   "expect": {
+    "known_text": "ਜਾਣਨਾ ਪਵੇਗਾ",
+    "target_text": "find out"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਛੇਤੀ ਜਾਣਨਾ ਪਵੇਗਾ",
+    "target_text": "I have to find out soon",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0294L02B01",
+   "expect": {
+    "known_text": "ਕਾਫ਼ੀ ਸਮਾਂ ਨਹੀਂ ਫ਼ੋਨ ਕਰਨ ਲਈ",
+    "target_text": "enough time to call"
+   },
+   "set": {
+    "known_text": "ਮੇਰੇ ਕੋਲ ਤੁਹਾਨੂੰ ਫ਼ੋਨ ਕਰਨ ਲਈ ਕਾਫ਼ੀ ਸਮਾਂ ਨਹੀਂ",
+    "target_text": "I don't have enough time to call you",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0295L01B01",
+   "expect": {
+    "known_text": "ਨਹੀਂ ਕਿਹਾ ਕਿ",
+    "target_text": "didn't say that"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਨਹੀਂ ਕਿਹਾ ਕਿ ਮੈਂ ਭੁੱਲ ਗਈ",
+    "target_text": "I didn't say that I've forgotten",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0297L01B01",
+   "expect": {
+    "known_text": "ਜ਼ਿਆਦਾ ਲੋਕ",
+    "target_text": "many people"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਂ ਜ਼ਿਆਦਾ ਲੋਕਾਂ ਨੂੰ ਨਹੀਂ ਜਾਣਦਾ",
+    "target_text": "I think I don't know many people",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0298L01B01",
+   "expect": {
+    "known_text": "ਕਹਿਣ ਲਈ ਕੁਝ ਨਹੀਂ",
+    "target_text": "nothing left to say"
+   },
+   "set": {
+    "known_text": "ਮੇਰੇ ਕੋਲ ਅੱਜ ਕਹਿਣ ਲਈ ਕੁਝ ਨਹੀਂ ਬਚਿਆ",
+    "target_text": "I've got nothing left to say today",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0299L01B01",
+   "expect": {
+    "known_text": "ਅੱਧਾ ਭੁਗਤਾਨ ਕਰਨਾ",
+    "target_text": "pay half"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਅੱਧਾ ਭੁਗਤਾਨ ਕਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "target_text": "I don't want to pay half",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0302L01B01",
+   "expect": {
+    "known_text": "ਉਸਨੇ ਕਿਹਾ ਕਿ ਉਹ",
+    "target_text": "she said that she"
+   },
+   "set": {
+    "known_text": "ਉਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਜਾਣਾ ਨਹੀਂ ਚਾਹੁੰਦੀ",
+    "target_text": "she said that she doesn't want to go",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0302L02B01",
+   "expect": {
+    "known_text": "ਸ਼ਹਿਰ ਵਿੱਚ ਰਹਿਣਾ",
+    "target_text": "to live in a city"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਛੇਤੀ ਸ਼ਹਿਰ ਵਿੱਚ ਰਹਿਣਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+    "target_text": "I want to live in a city soon",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0302L03B01",
+   "expect": {
+    "known_text": "ਨਹੀਂ ਚਾਹੁੰਦੀ",
+    "target_text": "doesn't want"
+   },
+   "set": {
+    "known_text": "ਉਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਭੁਗਤਾਨ ਕਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੀ",
+    "target_text": "she said that she doesn't want to pay",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0304L01B01",
+   "expect": {
+    "known_text": "ਘਰ ਤੋਂ",
+    "target_text": "from home"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਘਰ ਤੋਂ ਕੰਮ ਕਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੀ",
+    "target_text": "I don't want to work from home",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0306L01B01",
+   "expect": {
+    "known_text": "ਉਸ ਨੌਜਵਾਨ ਔਰਤ ਨੂੰ",
+    "target_text": "that young woman"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਂ ਉਸ ਨੌਜਵਾਨ ਔਰਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+    "target_text": "I think I know that young woman",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0306L02B01",
+   "expect": {
+    "known_text": "ਤੁਹਾਡੇ ਦੋਸਤ ਨਾਲ",
+    "target_text": "to your friend"
+   },
+   "set": {
+    "known_text": "ਉਹ ਤੁਹਾਡੇ ਦੋਸਤ ਨਾਲ ਗੱਲ ਕਰਨਾ ਚਾਹੁੰਦੀ ਹੈ",
+    "target_text": "she wants to talk to your friend",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0306L03B01",
+   "expect": {
+    "known_text": "ਜੋ ਗੱਲ ਕਰ ਰਹੀ ਹੈ",
+    "target_text": "who's talking"
+   },
+   "set": {
+    "known_text": "ਇਹ ਉਹ ਨੌਜਵਾਨ ਔਰਤ ਹੋ ਸਕਦੀ ਹੈ ਜੋ ਤੁਹਾਡੇ ਦੋਸਤ ਨਾਲ ਗੱਲ ਕਰ ਰਹੀ ਹੈ",
+    "target_text": "it might be that young woman who's talking to your friend",
+    "decomposition": null,
+    "word_count": 57,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0307L01B01",
+   "expect": {
+    "known_text": "ਉਸ ਨੌਜਵਾਨ ਨੂੰ",
+    "target_text": "that young man"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਂ ਉਸ ਨੌਜਵਾਨ ਨੂੰ ਜਾਣਦੀ ਹਾਂ",
+    "target_text": "I think I know that young man",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0307L02B01",
+   "expect": {
+    "known_text": "ਜੋ ਉੱਥੇ ਬੈਠਾ ਹੈ",
+    "target_text": "who's sitting over there"
+   },
+   "set": {
+    "known_text": "ਇਹ ਉਹ ਨੌਜਵਾਨ ਹੋ ਸਕਦਾ ਹੈ ਜੋ ਉੱਥੇ ਬੈਠਾ ਹੈ",
+    "target_text": "it might be that young man who's sitting over there",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0308L01B01",
+   "expect": {
+    "known_text": "ਮੇਰੀ ਮਾਂ ਦੀ ਦੋਸਤ",
+    "target_text": "a friend of my mother"
+   },
+   "set": {
+    "known_text": "ਇਹ ਮੇਰੀ ਮਾਂ ਦੀ ਇੱਕ ਦੋਸਤ ਹੋ ਸਕਦੀ ਹੈ",
+    "target_text": "it might be a friend of my mother",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0310L02B01",
+   "expect": {
+    "known_text": "ਲਿਖ ਸਕਦੀ ਹੈ",
+    "target_text": "she could write"
+   },
+   "set": {
+    "known_text": "ਉਹ ਅੱਜ ਲਿਖ ਸਕਦੀ ਹੈ",
+    "target_text": "she could write today",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0311L02B01",
+   "expect": {
+    "known_text": "ਤਿੰਨ ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ",
+    "target_text": "the three most important"
+   },
+   "set": {
+    "known_text": "ਕੀ ਤੁਸੀਂ ਮੈਨੂੰ ਤਿੰਨ ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਤੱਥ ਦੱਸ ਸਕਦੇ ਹੋ?",
+    "target_text": "can you tell me the three most important facts?",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0311L03B01",
+   "expect": {
+    "known_text": "ਯਕੀਨ ਨਹੀਂ ਕਰ ਸਕਦਾ ਸੀ",
+    "target_text": "he couldn't believe"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਉਹ ਯਕੀਨ ਨਹੀਂ ਕਰ ਸਕਦਾ ਸੀ",
+    "target_text": "I think he couldn't believe",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0312L02B01",
+   "expect": {
+    "known_text": "ਵਰਤੋਂ ਕਰ ਸਕਦੀ ਹੈ",
+    "target_text": "she could use"
+   },
+   "set": {
+    "known_text": "ਉਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਛੇਤੀ ਦੂਜੇ ਕਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੀ ਹੈ",
+    "target_text": "she said that she could use the other room soon",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0318L01B01",
+   "expect": {
+    "known_text": "ਨਹੀਂ ਮੈਂ ਨਹੀਂ ਸੋਚਦਾ ਕਿ",
+    "target_text": "no I don't think"
+   },
+   "set": {
+    "known_text": "ਨਹੀਂ ਮੈਂ ਨਹੀਂ ਸੋਚਦਾ ਕਿ ਉਹ ਉੱਥੇ ਹੋਵੇਗੀ",
+    "target_text": "no I don't think she's going to be there",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0319L01B01",
+   "expect": {
+    "known_text": "ਕਿਸੇ ਹੋਰ ਦੇਸ਼ ਵਿੱਚ",
+    "target_text": "to a different country"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਕਿਸੇ ਹੋਰ ਦੇਸ਼ ਵਿੱਚ ਜਾਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+    "target_text": "I want to go to a different country",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0324L02B01",
+   "expect": {
+    "known_text": "ਦੇ ਦੋਵੇਂ ਹੱਥ ਉੱਪਰ ਹਨ",
+    "target_text": "has both of her hands up"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਉਸ ਵਿਦਿਆਰਥੀ ਦੇ ਦੋਵੇਂ ਹੱਥ ਉੱਪਰ ਹਨ",
+    "target_text": "so that student has both of her hands up",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0339L01B01",
+   "expect": {
+    "known_text": "ਨਹੀਂ ਮੈਂ ਸੋਚਦਾ ਹਾਂ",
+    "target_text": "no I think"
+   },
+   "set": {
+    "known_text": "ਨਹੀਂ ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਇਹ ਬਹੁਤ ਜ਼ਰੂਰੀ ਹੈ",
+    "target_text": "no I think it's very important",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0340L01B01",
+   "expect": {
+    "known_text": "ਹਾਂ ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ",
+    "target_text": "yes I'm sure"
+   },
+   "set": {
+    "known_text": "ਹਾਂ ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਇਹ ਬਹੁਤ ਜ਼ਰੂਰੀ ਹੈ",
+    "target_text": "yes I'm sure it's very important",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0343L02B01",
+   "expect": {
+    "known_text": "ਉਹ ਚਿੰਤਤ ਹੈ",
+    "target_text": "she's worried"
+   },
+   "set": {
+    "known_text": "ਉਹ ਅੱਜ ਚਿੰਤਤ ਹੈ",
+    "target_text": "she's worried today",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0344L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰਕੇ ਖੁਸ਼ ਹੈ",
+    "target_text": "he's happy to help you"
+   },
+   "set": {
+    "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰਕੇ ਖੁਸ਼ ਹੈ",
+    "target_text": "they say he's happy to help you",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0345L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਅਜੇ ਜਾਣ ਲਈ ਤਿਆਰ ਨਹੀਂ",
+    "target_text": "he's not ready to leave yet"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਉਹ ਅਜੇ ਜਾਣ ਲਈ ਤਿਆਰ ਨਹੀਂ",
+    "target_text": "so he's not ready to leave yet",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0346L03B01",
+   "expect": {
+    "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਜਾਣੇ",
+    "target_text": "I wanted her to know"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਇਹ ਜਾਣੇ",
+    "target_text": "I wanted her to know this",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0349L01B01",
+   "expect": {
+    "known_text": "ਕੀ ਉਹ",
+    "target_text": "did he"
+   },
+   "set": {
+    "known_text": "ਕੀ ਉਹ ਭੁਗਤਾਨ ਕਰਨਾ ਚਾਹੁੰਦਾ ਸੀ?",
+    "target_text": "did he want to pay?",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0349L02B01",
+   "expect": {
+    "known_text": "ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+    "target_text": "want to go out"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+    "target_text": "I want to go out",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0355L02B01",
+   "expect": {
+    "known_text": "ਕੀ ਉਸਨੂੰ",
+    "target_text": "did she"
+   },
+   "set": {
+    "known_text": "ਕੀ ਉਸਨੂੰ ਉਸ ਨਾਲ ਗੱਲ ਕਰਨੀ ਸੀ?",
+    "target_text": "did she need to talk to him?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0357L03B01",
+   "expect": {
+    "known_text": "ਉਹ ਬੱਸ",
+    "target_text": "she just"
+   },
+   "set": {
+    "known_text": "ਉਹ ਬੱਸ ਉਸ ਨੌਜਵਾਨ ਨੂੰ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜਣਾ ਚਾਹੁੰਦੀ ਸੀ ਜੋ ਉੱਥੇ ਬੈਠਾ ਹੈ",
+    "target_text": "she just wanted to send a message to that young man who's sitting over there",
+    "decomposition": null,
+    "word_count": 76,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0369L01B01",
+   "expect": {
+    "known_text": "ਘੋੜੇ",
+    "target_text": "horses"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਘੋੜੇ ਦੇਖਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+    "target_text": "I want to see horses",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0369L02B01",
+   "expect": {
+    "known_text": "ਕਈ ਘੋੜੇ",
+    "target_text": "several horses"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਂ ਕਈ ਘੋੜੇ ਦੇਖੇ",
+    "target_text": "I think I saw several horses",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0369L03B01",
+   "expect": {
+    "known_text": "ਸੜਕ ਉੱਤੇ",
+    "target_text": "on the road"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੜਕ ਉੱਤੇ ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ",
+    "target_text": "I met someone on the road",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0369L04B01",
+   "expect": {
+    "known_text": "ਦੇਖੇ",
+    "target_text": "saw"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਕਈ ਘੋੜੇ ਦੇਖੇ",
+    "target_text": "I saw several horses yesterday",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0370L01B01",
+   "expect": {
+    "known_text": "ਕਿਸੇ ਨੂੰ ਨਹੀਂ ਦੇਖਿਆ",
+    "target_text": "didn't see anyone"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਕਿਸੇ ਨੂੰ ਨਹੀਂ ਦੇਖਿਆ",
+    "target_text": "I didn't see anyone yesterday",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0370L02B01",
+   "expect": {
+    "known_text": "ਜਿਸਨੂੰ ਮੈਂ ਜਾਣਦਾ ਸੀ",
+    "target_text": "that I knew"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਕਿਸੇ ਨੂੰ ਨਹੀਂ ਦੇਖਿਆ ਜਿਸਨੂੰ ਮੈਂ ਜਾਣਦਾ ਸੀ",
+    "target_text": "I didn't see anyone that I knew yesterday",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0371L01B01",
+   "expect": {
+    "known_text": "ਦੇਖਣ ਗਿਆ",
+    "target_text": "went to see"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਇੱਕ ਫ਼ਿਲਮ ਦੇਖਣ ਗਿਆ",
+    "target_text": "I went to see a film yesterday",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0371L02B01",
+   "expect": {
+    "known_text": "ਇੱਕ ਫ਼ਿਲਮ",
+    "target_text": "a film"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਇੱਕ ਫ਼ਿਲਮ ਦੇਖਣਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+    "target_text": "I want to see a film",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0371L03B01",
+   "expect": {
+    "known_text": "ਬੁੱਧਵਾਰ ਨੂੰ",
+    "target_text": "on Wednesday"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਬੁੱਧਵਾਰ ਨੂੰ ਤਿਆਰ ਹੋਵਾਂਗਾ",
+    "target_text": "I'll be ready on Wednesday",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0372L01B01",
+   "expect": {
+    "known_text": "ਕੀ ਤੁਸੀਂ ਦੇਖਿਆ?",
+    "target_text": "did you see?"
+   },
+   "set": {
+    "known_text": "ਕੀ ਤੁਸੀਂ ਦੇਖਿਆ ਕਿ ਉਸਨੇ ਕੀ ਕਿਹਾ?",
+    "target_text": "did you see what he said?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0372L02B01",
+   "expect": {
+    "known_text": "ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੀ ਸੀ",
+    "target_text": "was trying to"
+   },
+   "set": {
+    "known_text": "ਉਹ ਸ਼ਬਦ ਜੋ ਮੈਂ ਕਹਿਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੀ ਸੀ",
+    "target_text": "the word I was trying to say",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0372L03B01",
+   "expect": {
+    "known_text": "ਬਣਾਉਣ",
+    "target_text": "create"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਕੀ ਬਣਾਉਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੀ ਸੀ",
+    "target_text": "I don't know what she was trying to create",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0373L01B01",
+   "expect": {
+    "known_text": "ਸੋਹਣੀ",
+    "target_text": "beautiful"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੁਣਿਆ ਕਿ ਇਹ ਸੋਹਣੀ ਸੀ",
+    "target_text": "I heard that it was beautiful",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0374L01B01",
+   "expect": {
+    "known_text": "ਬਹੁਤ ਸੋਹਣੀ",
+    "target_text": "very beautiful"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੁਣਿਆ ਕਿ ਇਹ ਬਹੁਤ ਸੋਹਣੀ ਸੀ",
+    "target_text": "I heard that it was very beautiful",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0374L02B01",
+   "expect": {
+    "known_text": "ਮੈਂ ਸੋਚਿਆ",
+    "target_text": "I thought"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੋਚਿਆ ਇਹ ਜ਼ਰੂਰੀ ਹੈ",
+    "target_text": "I thought it's important",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0375L02B01",
+   "expect": {
+    "known_text": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਸੀ",
+    "target_text": "I didn't know"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਸੀ ਕਿ ਉਸਨੇ ਕੀ ਕਿਹਾ",
+    "target_text": "I didn't know what he said",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0376L01B01",
+   "expect": {
+    "known_text": "ਕਿਤੇ ਨਹੀਂ ਗਿਆ",
+    "target_text": "didn't go anywhere"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਂ ਕਿਤੇ ਨਹੀਂ ਗਿਆ",
+    "target_text": "I think I didn't go anywhere",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0377L01B01",
+   "expect": {
+    "known_text": "ਪਿਛਲੇ ਸਾਲ",
+    "target_text": "last year"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਪਿਛਲੇ ਸਾਲ ਕਿਸੇ ਨੂੰ ਮਿਲੀ",
+    "target_text": "I met someone last year",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0377L02B01",
+   "expect": {
+    "known_text": "ਦੁਨੀਆ ਵਿੱਚ",
+    "target_text": "in the world"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਕੀ ਤੁਸੀਂ ਦੁਨੀਆ ਵਿੱਚ ਕਿਤੇ ਗਏ?",
+    "target_text": "so did you go anywhere in the world?",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0377L03B01",
+   "expect": {
+    "known_text": "ਗਏ",
+    "target_text": "go"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਕੀ ਤੁਸੀਂ ਕਿਤੇ ਗਏ?",
+    "target_text": "so did you go anywhere?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0378L01B01",
+   "expect": {
+    "known_text": "ਕਾਫ਼ੀ ਪੈਸੇ ਨਹੀਂ ਸਨ",
+    "target_text": "didn't have enough money"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਕਿਹਾ ਕਿ ਮੇਰੇ ਕੋਲ ਕਾਫ਼ੀ ਪੈਸੇ ਨਹੀਂ ਸਨ",
+    "target_text": "I said that I didn't have enough money",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0378L02B01",
+   "expect": {
+    "known_text": "ਛੁੱਟੀਆਂ ਲਈ",
+    "target_text": "for holidays"
+   },
+   "set": {
+    "known_text": "ਮੇਰੇ ਕੋਲ ਛੁੱਟੀਆਂ ਲਈ ਕਾਫ਼ੀ ਸਮਾਂ ਨਹੀਂ",
+    "target_text": "I don't have enough time for holidays",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0379L02B01",
+   "expect": {
+    "known_text": "ਕਾਫ਼ੀ ਖੁਸ਼ਕਿਸਮਤ",
+    "target_text": "lucky enough"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਂ ਕਾਫ਼ੀ ਖੁਸ਼ਕਿਸਮਤ ਸੀ",
+    "target_text": "I think I was lucky enough",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0379L03B01",
+   "expect": {
+    "known_text": "ਜਾਣ ਦੇ ਯੋਗ ਹੋਇਆ",
+    "target_text": "to travel to"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਕਾਫ਼ੀ ਖੁਸ਼ਕਿਸਮਤ ਸੀ ਕਿ ਅਫ਼ਰੀਕਾ ਜਾਣ ਦੇ ਯੋਗ ਹੋਇਆ",
+    "target_text": "I was lucky enough to travel to Africa",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0380L01B01",
+   "expect": {
+    "known_text": "ਮੈਂ ਪੁੱਛਿਆ",
+    "target_text": "I asked"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਪੁੱਛਿਆ ਕਿ ਉਸਨੇ ਕੀ ਕਿਹਾ",
+    "target_text": "I asked what he said",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0384L01B01",
+   "expect": {
+    "known_text": "ਜੋ ਉਸਨੇ ਕਿਹਾ ਸੀ",
+    "target_text": "what he said"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਪੁੱਛਿਆ ਕਿ ਉਸਨੇ ਹੁਣੇ ਕੀ ਕਿਹਾ ਸੀ",
+    "target_text": "I asked what he said a moment ago",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0406L02B01",
+   "expect": {
+    "known_text": "ਠੀਕ ਰਹੇਗਾ",
+    "target_text": "it will be okay"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੁਣਿਆ ਕਿ ਇਹ ਠੀਕ ਰਹੇਗਾ",
+    "target_text": "I heard that it will be okay",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0407L02B01",
+   "expect": {
+    "known_text": "ਚੰਗੀ ਮਿਸਾਲ ਦੇਣੀ",
+    "target_text": "to set a good example"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਕੀ ਸਾਨੂੰ ਚੰਗੀ ਮਿਸਾਲ ਦੇਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕਰਨੀ ਚਾਹੀਦੀ?",
+    "target_text": "so shouldn't we try to set a good example?",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0409L01B01",
+   "expect": {
+    "known_text": "ਕੋਈ ਫ਼ਰਕ ਨਹੀਂ ਪੈਂਦਾ",
+    "target_text": "it doesn't matter"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੁਣਿਆ ਕਿ ਕੋਈ ਫ਼ਰਕ ਨਹੀਂ ਪੈਂਦਾ",
+    "target_text": "I heard that it doesn't matter",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0409L02B01",
+   "expect": {
+    "known_text": "ਜੋ ਵੀ ਅਸੀਂ ਕਰੀਏ",
+    "target_text": "what we do"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਪੁੱਛਿਆ ਕਿ ਅਸੀਂ ਕੀ ਕਰਦੇ ਹਾਂ",
+    "target_text": "I asked what we do",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0411L03B01",
+   "expect": {
+    "known_text": "ਚਾਰ ਜਣਿਆਂ ਲਈ",
+    "target_text": "for four"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਚਾਰ ਜਣਿਆਂ ਲਈ ਮੇਜ਼ ਰਾਖਵਾਂ ਕਰਵਾਉਣਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+    "target_text": "I want to reserve a table for four",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0421L02B01",
+   "expect": {
+    "known_text": "ਕਮਜ਼ੋਰ",
+    "target_text": "weak"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਅੱਜ ਕਮਜ਼ੋਰ ਮਹਿਸੂਸ ਕਰਦਾ ਹਾਂ",
+    "target_text": "I feel weak today",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0421L03B01",
+   "expect": {
+    "known_text": "ਉਹ ਕਮਜ਼ੋਰ ਹੁੰਦਾ ਜਾ ਰਿਹਾ ਹੈ",
+    "target_text": "he's getting weak"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਉਹ ਕਮਜ਼ੋਰ ਹੁੰਦਾ ਜਾ ਰਿਹਾ ਹੈ",
+    "target_text": "I think he's getting weak",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0423L02B01",
+   "expect": {
+    "known_text": "ਸਪੱਸ਼ਟ",
+    "target_text": "obvious"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਇਹ ਸਪੱਸ਼ਟ ਹੈ",
+    "target_text": "I think it's obvious",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0423L03B01",
+   "expect": {
+    "known_text": "ਇੰਨਾ ਸਪੱਸ਼ਟ ਸਵਾਲ",
+    "target_text": "such an obvious question"
+   },
+   "set": {
+    "known_text": "ਇਹ ਇੰਨਾ ਸਪੱਸ਼ਟ ਸਵਾਲ ਹੋ ਸਕਦਾ ਹੈ",
+    "target_text": "it might be such an obvious question",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0424L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਬਰਬਾਦ ਕਰ ਰਹੇ ਹਨ",
+    "target_text": "they're wasting"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਉਹ ਸਮਾਂ ਬਰਬਾਦ ਕਰ ਰਹੇ ਹਨ",
+    "target_text": "I think they're wasting time",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0424L02B01",
+   "expect": {
+    "known_text": "ਸਾਰਿਆਂ ਦਾ ਸਮਾਂ",
+    "target_text": "everybody's time"
+   },
+   "set": {
+    "known_text": "ਉਹ ਅੱਜ ਸਾਰਿਆਂ ਦਾ ਸਮਾਂ ਬਰਬਾਦ ਕਰ ਰਹੇ ਹਨ",
+    "target_text": "they're wasting everybody's time today",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0425L02B01",
+   "expect": {
+    "known_text": "ਉਹ ਸਮਝਦੇ ਹਨ",
+    "target_text": "they understand"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਉਹ ਸਮਝਦੇ ਹਨ",
+    "target_text": "I think they understand",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0426L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਪਿਆਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ",
+    "target_text": "they would like to love"
+   },
+   "set": {
+    "known_text": "ਉਹ ਅੱਜ ਇੱਕ ਦੂਜੇ ਨੂੰ ਪਿਆਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ",
+    "target_text": "they would like to love each other today",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0426L02B01",
+   "expect": {
+    "known_text": "ਨਾਖੁਸ਼",
+    "target_text": "unhappy"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਉਹ ਨਾਖੁਸ਼ ਹਨ",
+    "target_text": "I'm sure they're unhappy",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0426L03B01",
+   "expect": {
+    "known_text": "ਉਹ ਨਾਖੁਸ਼ ਹਨ",
+    "target_text": "they're unhappy"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੁਣਿਆ ਕਿ ਉਹ ਨਾਖੁਸ਼ ਹਨ",
+    "target_text": "I heard that they're unhappy",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0427L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਨਹੀਂ ਚਾਹੁੰਦੇ",
+    "target_text": "they wouldn't like"
+   },
+   "set": {
+    "known_text": "ਉਹ ਖੇਡਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ",
+    "target_text": "they wouldn't like to play",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0427L02B01",
+   "expect": {
+    "known_text": "ਬੋਰ",
+    "target_text": "bored"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਉਹ ਬੋਰ ਹਨ",
+    "target_text": "I'm sure they're bored",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0427L03B01",
+   "expect": {
+    "known_text": "ਉਹ ਬੋਰ ਹਨ",
+    "target_text": "they're bored"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸੁਣਿਆ ਕਿ ਉਹ ਬੋਰ ਹਨ",
+    "target_text": "I heard that they're bored",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0428L01B01",
+   "expect": {
+    "known_text": "ਕੀ ਉਹ ਚਾਹੁਣਗੇ?",
+    "target_text": "would they like?"
+   },
+   "set": {
+    "known_text": "ਕੀ ਉਹ ਖੇਡਣਾ ਚਾਹੁਣਗੇ?",
+    "target_text": "would they like to play?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0428L02B01",
+   "expect": {
+    "known_text": "ਮਿਲਣ",
+    "target_text": "to visit"
+   },
+   "set": {
+    "known_text": "ਕੀ ਉਹ ਸਾਨੂੰ ਮਿਲਣ ਆਉਣਾ ਚਾਹੁੰਦੇ ਹਨ?",
+    "target_text": "do they want to visit us?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0429L01B01",
+   "expect": {
+    "known_text": "ਇਹ ਰਹੇਗਾ",
+    "target_text": "that would be"
+   },
+   "set": {
+    "known_text": "ਹਾਂ, ਇਹ ਬਿਲਕੁਲ ਸਹੀ ਰਹੇਗਾ",
+    "target_text": "yes that would be perfect",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0429L02B01",
+   "expect": {
+    "known_text": "ਬਿਲਕੁਲ ਸਹੀ",
+    "target_text": "perfect"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਇਹ ਬਿਲਕੁਲ ਸਹੀ ਰਹੇਗਾ",
+    "target_text": "I'm sure that would be perfect",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0429L03B01",
+   "expect": {
+    "known_text": "ਉਨ੍ਹਾਂ ਲਈ",
+    "target_text": "for them"
+   },
+   "set": {
+    "known_text": "ਇਹ ਉਨ੍ਹਾਂ ਲਈ ਠੀਕ ਰਹੇਗਾ",
+    "target_text": "it will be okay for them",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0430L01B01",
+   "expect": {
+    "known_text": "ਇਹ ਨਹੀਂ ਹੋਵੇਗਾ",
+    "target_text": "that wouldn't be"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਇਹ ਸੰਭਵ ਨਹੀਂ ਹੋਵੇਗਾ",
+    "target_text": "I think that wouldn't be possible",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0431L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਤਿਆਰ ਨਹੀਂ ਹਨ",
+    "target_text": "they're not ready"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਉਹ ਅਜੇ ਤਿਆਰ ਨਹੀਂ ਹਨ",
+    "target_text": "I think they're not ready yet",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0431L02B01",
+   "expect": {
+    "known_text": "ਉਹ ਤਿਆਰ ਹੋ ਜਾਣਗੇ",
+    "target_text": "they'll be ready"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਉਹ ਛੇਤੀ ਤਿਆਰ ਹੋ ਜਾਣਗੇ",
+    "target_text": "I think they'll be ready soon",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0432L01B01",
+   "expect": {
+    "known_text": "ਉਨ੍ਹਾਂ ਦਾ ਮਤਲਬ ਹੋ ਸਕਦਾ ਹੈ",
+    "target_text": "they could mean"
+   },
+   "set": {
+    "known_text": "ਉਨ੍ਹਾਂ ਦਾ ਮਤਲਬ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਉਹ ਬੋਰ ਹਨ",
+    "target_text": "they could mean that they're bored",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0433L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਪਤਾ ਨਹੀਂ ਲਗਾ ਸਕੇ",
+    "target_text": "they couldn't find out"
+   },
+   "set": {
+    "known_text": "ਉਹ ਪਤਾ ਨਹੀਂ ਲਗਾ ਸਕੇ ਕਿ ਅਸੀਂ ਕੀ ਕਰਦੇ ਹਾਂ",
+    "target_text": "they couldn't find out what we do",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0433L02B01",
+   "expect": {
+    "known_text": "ਫ਼ਿਲਮ ਸ਼ੁਰੂ ਹੋਈ",
+    "target_text": "the film started"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਪੁੱਛਿਆ ਕਿ ਫ਼ਿਲਮ ਕਦੋਂ ਸ਼ੁਰੂ ਹੋਈ",
+    "target_text": "I asked when the film started",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0434L01B01",
+   "expect": {
+    "known_text": "ਕੀ ਉਹ ਘਟਾ ਸਕਦੇ ਹਨ?",
+    "target_text": "could they cut?"
+   },
+   "set": {
+    "known_text": "ਕੀ ਉਹ ਕੱਲ੍ਹ ਇਹ ਘਟਾ ਸਕਦੇ ਹਨ?",
+    "target_text": "could they cut it tomorrow?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0434L02B01",
+   "expect": {
+    "known_text": "ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਗਿਣਤੀ",
+    "target_text": "the number of students"
+   },
+   "set": {
+    "known_text": "ਕੀ ਤੁਸੀਂ ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਗਿਣਤੀ ਪੁੱਛੀ?",
+    "target_text": "did you ask the number of students?",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0434L03B01",
+   "expect": {
+    "known_text": "ਉਹ ਲੈਂਦੇ ਹਨ",
+    "target_text": "they take"
+   },
+   "set": {
+    "known_text": "ਤਾਂ ਕੀ ਉਹ ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਗਿਣਤੀ ਘਟਾ ਸਕਦੇ ਹਨ ਜੋ ਉਹ ਲੈਂਦੇ ਹਨ?",
+    "target_text": "so could they cut the number of students they take?",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0435L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਕਰ ਸਕਦੇ ਸਨ",
+    "target_text": "they could"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਉਹ ਕਰ ਸਕਦੇ ਸਨ ਜੇ ਉਹ ਚਾਹੁੰਦੇ",
+    "target_text": "I think they could if they wanted to",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0435L02B01",
+   "expect": {
+    "known_text": "ਜੇ ਉਹ ਚਾਹੁੰਦੇ",
+    "target_text": "if they wanted to"
+   },
+   "set": {
+    "known_text": "ਉਹ ਕੱਲ੍ਹ ਕਰ ਸਕਦੇ ਸਨ ਜੇ ਉਹ ਚਾਹੁੰਦੇ",
+    "target_text": "they could if they wanted to tomorrow",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0436L01B01",
+   "expect": {
+    "known_text": "ਇੱਕ ਘੱਟੋ-ਘੱਟ ਗਿਣਤੀ",
+    "target_text": "there's a minimum number"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਇੱਕ ਘੱਟੋ-ਘੱਟ ਗਿਣਤੀ ਹੈ ਜਿਸਦੀ ਉਨ੍ਹਾਂ ਨੂੰ ਲੋੜ ਹੈ",
+    "target_text": "I think there's a minimum number they need",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0436L02B01",
+   "expect": {
+    "known_text": "ਉਨ੍ਹਾਂ ਨੂੰ ਲੋੜ ਹੈ",
+    "target_text": "they need"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਇੱਕ ਘੱਟੋ-ਘੱਟ ਗਿਣਤੀ ਹੈ ਜਿਸਦੀ ਉਨ੍ਹਾਂ ਨੂੰ ਲੋੜ ਹੈ",
+    "target_text": "I'm sure there's a minimum number they need",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0437L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਚਾਹੁੰਦੇ ਸਨ",
+    "target_text": "they wanted"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਉਹ ਕਰ ਸਕਦੇ ਸਨ ਜੇ ਉਹ ਚਾਹੁੰਦੇ",
+    "target_text": "I'm sure they could if they wanted to",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0437L02B01",
+   "expect": {
+    "known_text": "ਇਕੱਠਾ ਕਰਨਾ",
+    "target_text": "to raise"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਪੈਸੇ ਇਕੱਠਾ ਕਰਨਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+    "target_text": "I want to raise the money",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0437L03B01",
+   "expect": {
+    "known_text": "ਜਿੰਨਾ ਹੋ ਸਕੇ ਜ਼ਿਆਦਾ",
+    "target_text": "as much as possible"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਜਿੰਨਾ ਹੋ ਸਕੇ ਜ਼ਿਆਦਾ ਸਿੱਖਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+    "target_text": "I want to learn as much as possible",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0437L04B01",
+   "expect": {
+    "known_text": "ਚੈਰਿਟੀ ਲਈ",
+    "target_text": "for charity"
+   },
+   "set": {
+    "known_text": "ਮੇਰੇ ਕੋਲ ਚੈਰਿਟੀ ਲਈ ਕਾਫ਼ੀ ਸਮਾਂ ਨਹੀਂ",
+    "target_text": "I don't have enough time for charity",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0438L01B01",
+   "expect": {
+    "known_text": "ਉਹ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸਨ",
+    "target_text": "they didn't want"
+   },
+   "set": {
+    "known_text": "ਉਹ ਘਰ ਜਾਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸਨ",
+    "target_text": "they didn't want to go home",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0438L02B01",
+   "expect": {
+    "known_text": "ਫ਼ੈਸਲਾ ਕਰਨਾ",
+    "target_text": "to decide"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਇਹ ਫ਼ੈਸਲਾ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+    "target_text": "I want to decide this",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0438L03B01",
+   "expect": {
+    "known_text": "ਉਸਨੂੰ ਕੀ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ",
+    "target_text": "what he should do"
+   },
+   "set": {
+    "known_text": "ਪੁੱਛਣਾ ਕਿ ਉਸਨੂੰ ਕੀ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ",
+    "target_text": "to ask what he should do",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0439L01B01",
+   "expect": {
+    "known_text": "ਮਰਨਾ",
+    "target_text": "to die"
+   },
+   "set": {
+    "known_text": "ਕੀ ਉਹ ਮਰਨਾ ਚਾਹੁੰਦੇ ਹਨ?",
+    "target_text": "do they want to die?",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0439L02B01",
+   "expect": {
+    "known_text": "ਉਹ ਮਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੇ",
+    "target_text": "they don't want to die"
+   },
+   "set": {
+    "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਉਹ ਮਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੇ",
+    "target_text": "I'm sure they don't want to die",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0440L01B01",
+   "expect": {
+    "known_text": "ਸਫ਼ਰ ਕਰਨਾ",
+    "target_text": "to travel"
+   },
+   "set": {
+    "known_text": "ਮੈਂ ਸਫ਼ਰ ਕਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੀ",
+    "target_text": "I don't want to travel",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0440L03B01",
+   "expect": {
+    "known_text": "ਉਹ ਅਜੇ ਜਵਾਨ ਹਨ",
+    "target_text": "they're still young"
+   },
+   "set": {
+    "known_text": "ਉਹ ਖੇਡਣਾ ਚਾਹੁੰਦੇ ਹਨ ਜਦੋਂ ਤੱਕ ਉਹ ਅਜੇ ਜਵਾਨ ਹਨ",
+    "target_text": "they want to play while they're still young",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0442L01B01",
+   "expect": {
+    "known_text": "ਕੀ ਉਹ ਚਾਹੁੰਦੇ ਸਨ?",
+    "target_text": "did they want?"
+   },
+   "set": {
+    "known_text": "ਕੀ ਉਹ ਖੇਡਣਾ ਚਾਹੁੰਦੇ ਸਨ?",
+    "target_text": "did they want to play?",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
    }
   }
  ]

@@ -1,0 +1,37 @@
+{
+ "seed": 440,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਸਫ਼ਰ ਕਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੀ",
+     "I don't want to travel",
+     null,
+     "f"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ਉਹ ਖੇਡਣਾ ਚਾਹੁੰਦੇ ਹਨ ਜਦੋਂ ਤੱਕ ਉਹ ਅਜੇ ਜਵਾਨ ਹਨ",
+     "they want to play while they're still young",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਉਹ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹਨ ਜਦੋਂ ਤੱਕ ਉਹ ਅਜੇ ਜਵਾਨ ਹਨ",
+     "they want to go out while they're still young",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
