@@ -1,0 +1,52 @@
+{
+ "seed": 281,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुम्ही सुरुवात करण्यापूर्वी मला तुमच्याशी बोलायचं आहे",
+     "I want to speak with you before you start"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "तुम्ही सुरुवात करण्यापूर्वी मला तुम्हाला काहीतरी विचारायचं आहे",
+     "I want to ask you something before you start"
+    ],
+    [
+     "use",
+     "तुम्ही सुरुवात करण्यापूर्वी मला समजावून सांगायला आवडेल",
+     "I'd like to explain before you start"
+    ],
+    [
+     "use",
+     "तुम्ही सुरुवात करण्यापूर्वी मला जाणून घ्यायचं आहे",
+     "I want to find out before you start"
+    ],
+    [
+     "use",
+     "तुम्ही सुरुवात करण्यापूर्वी मला तयार व्हायचं आहे",
+     "I want to be ready before you start"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "U01": [
+     "मी इथे थांबलो तर तुम्हाला हरकत नाही ना?",
+     "do you mind if I stay here?"
+    ],
+    "U03": [
+     "मी तुम्हाला काही प्रश्न विचारले तर तुम्हाला हरकत नाही ना?",
+     "do you mind if I ask you some questions?"
+    ],
+    "U05": [
+     "मी आज लवकर निघालो तर तुम्हाला हरकत नाही ना?",
+     "do you mind if I leave early today?"
+    ]
+   }
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

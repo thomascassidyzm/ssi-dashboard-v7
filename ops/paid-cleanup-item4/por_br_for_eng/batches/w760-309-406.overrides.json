@@ -1,0 +1,704 @@
+[
+ {
+  "seed_number": 309,
+  "phrases": {
+   "309:1": [
+    {
+     "known_text": "never",
+     "target_text": "nunca",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "her",
+     "target_text": "a",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "seen",
+     "target_text": "vi",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "never seen her",
+     "target_text": "nunca a vi",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but I've never seen her",
+     "target_text": "mas eu nunca a vi",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I've never seen her",
+     "target_text": "eu nunca a vi",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no I've never seen her before",
+     "target_text": "não, eu nunca a vi antes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've never seen her with him",
+     "target_text": "eu nunca a vi com ele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that young woman said, I've never seen her before",
+     "target_text": "aquela jovem disse, eu nunca a vi antes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that young man said, I've never seen her before",
+     "target_text": "aquele jovem disse, eu nunca a vi antes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said, no, I've never seen her before",
+     "target_text": "ela disse, não, eu nunca a vi antes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've never seen her here",
+     "target_text": "eu nunca a vi aqui",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 343,
+  "phrases": {
+   "343:1": [
+    {
+     "known_text": "she is",
+     "target_text": "está",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "concerned",
+     "target_text": "preocupada",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "she's concerned",
+     "target_text": "está preocupada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "who said that she's concerned",
+     "target_text": "que disse que está preocupada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm sure that she's concerned",
+     "target_text": "tenho a certeza de que está preocupada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that woman is concerned",
+     "target_text": "aquela mulher está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I met someone who's concerned",
+     "target_text": "eu conheci alguém que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that she's concerned",
+     "target_text": "ela disse que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student is concerned",
+     "target_text": "aquela estudante está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that she's concerned",
+     "target_text": "eu acho que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but she's concerned",
+     "target_text": "mas está preocupada",
+     "phrase_role": "build"
+    }
+   ],
+   "343:2": [
+    {
+     "known_text": "economy",
+     "target_text": "economia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the economy",
+     "target_text": "a economia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "concerned about the economy",
+     "target_text": "preocupada com a economia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "who said that she's worried about the economy",
+     "target_text": "que disse que está preocupada com a economia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know the economy",
+     "target_text": "eu conheço a economia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that woman is concerned about the economy",
+     "target_text": "aquela mulher está preocupada com a economia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student is concerned about the economy",
+     "target_text": "aquela estudante está preocupada com a economia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure that she's concerned about the economy",
+     "target_text": "tenho a certeza de que está preocupada com a economia",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 345,
+  "phrases": {
+   "345:1": [
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "está",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ready",
+     "target_text": "pronto",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he's not ready",
+     "target_text": "não está pronto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "who said that he's not ready",
+     "target_text": "que disse que não está pronto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he's still not ready",
+     "target_text": "ainda não está pronto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "who said that he's not ready to leave yet",
+     "target_text": "que disse que ainda não está pronto para sair",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said that he's not ready",
+     "target_text": "ele disse que não está pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure that he's not ready",
+     "target_text": "tenho a certeza de que não está pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that man said that he's not ready",
+     "target_text": "aquele homem disse que não está pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you think that he's not ready?",
+     "target_text": "acha que não está pronto?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but he's not ready",
+     "target_text": "mas não está pronto",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 367,
+  "phrases": {
+   "367:1": [
+    {
+     "known_text": "nobody",
+     "target_text": "ninguém",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "me",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "told",
+     "target_text": "disse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "nobody told me",
+     "target_text": "ninguém me disse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "nobody told me anything else",
+     "target_text": "ninguém me disse mais alguma coisa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "nobody told me that she liked the book",
+     "target_text": "ninguém me disse que ela gostava do livro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no nobody told me",
+     "target_text": "não, ninguém me disse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody told me what was happening",
+     "target_text": "ninguém me disse o que estava acontecendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody told me where it was",
+     "target_text": "ninguém me disse onde estava",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody told me that he stayed quiet",
+     "target_text": "ninguém me disse que ele esteve calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody told me that she's concerned",
+     "target_text": "ninguém me disse que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody told me what he was doing",
+     "target_text": "ninguém me disse o que ele estava fazendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but nobody told me",
+     "target_text": "mas ninguém me disse",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 375,
+  "phrases": {
+   "375:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "knew",
+     "target_text": "sabia",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I didn't know",
+     "target_text": "eu não sabia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't know what was happening",
+     "target_text": "eu não sabia o que estava acontecendo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't know that he was quiet",
+     "target_text": "eu não sabia que ele estava calado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no I didn't know what she was doing",
+     "target_text": "não, eu não sabia o que ela estava fazendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't know what he was doing",
+     "target_text": "eu não sabia o que ele estava fazendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't know that it was beautiful",
+     "target_text": "eu não sabia que era bonito",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't know where it was",
+     "target_text": "eu não sabia onde estava",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't know that she was concerned",
+     "target_text": "eu não sabia que estava preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but I didn't know",
+     "target_text": "mas eu não sabia",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 380,
+  "phrases": {
+   "380:1": [
+    {
+     "known_text": "I asked",
+     "target_text": "perguntei",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I asked what was happening",
+     "target_text": "perguntei o que estava acontecendo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I asked what she said",
+     "target_text": "perguntei o que ela disse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I asked where it was",
+     "target_text": "perguntei onde estava",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked what he was doing",
+     "target_text": "perguntei o que ele estava fazendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked if she was concerned",
+     "target_text": "perguntei se estava preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked her name",
+     "target_text": "perguntei o nome dela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I asked",
+     "target_text": "eu acho que perguntei",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked because I didn't know",
+     "target_text": "perguntei porque eu não sabia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked people who speak Portuguese",
+     "target_text": "perguntei a pessoas que falam português",
+     "phrase_role": "build"
+    }
+   ],
+   "380:2": [
+    {
+     "known_text": "to include",
+     "target_text": "incluir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to include it",
+     "target_text": "incluir isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she wanted to include it",
+     "target_text": "ela queria incluir isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that student wanted to include it",
+     "target_text": "aquela estudante queria incluir isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think she wanted to include it",
+     "target_text": "eu acho que ela queria incluir isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that man wanted to include something",
+     "target_text": "aquele homem queria incluir algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, she wanted to include it",
+     "target_text": "sim, ela queria incluir isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked what she wanted to include",
+     "target_text": "eu perguntei o que ela queria incluir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he is going to include my friends",
+     "target_text": "ele vai incluir meus amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I won't be able to include everything",
+     "target_text": "não vou conseguir incluir tudo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she ought to include your sister",
+     "target_text": "ela devia incluir sua irmã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to include everything",
+     "target_text": "espero conseguir incluir tudo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to include people who speak Portuguese",
+     "target_text": "gostaria de incluir pessoas que falam português",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 389,
+  "phrases": {
+   "389:1": [
+    {
+     "known_text": "that",
+     "target_text": "aquela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "person",
+     "target_text": "pessoa",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "over there",
+     "target_text": "ali",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that person over there",
+     "target_text": "aquela pessoa ali",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that person over there is a friend",
+     "target_text": "aquela pessoa ali é amiga",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that person over there needs to run",
+     "target_text": "aquela pessoa ali precisa correr",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know that person over there",
+     "target_text": "conheço aquela pessoa ali",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that person over there is a friend",
+     "target_text": "eu acho que aquela pessoa ali é amiga",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that person over there needs to travel",
+     "target_text": "aquela pessoa ali precisa viajar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know that person over there",
+     "target_text": "eu não conheço aquela pessoa ali",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that person over there could turn left",
+     "target_text": "aquela pessoa ali podia virar à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know what that person over there wants",
+     "target_text": "sabemos o que aquela pessoa ali quer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "help that person over there",
+     "target_text": "ajuda aquela pessoa ali",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 406,
+  "phrases": {
+   "406:1": [
+    {
+     "known_text": "I have",
+     "target_text": "tenho",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "certainty",
+     "target_text": "certeza",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of that",
+     "target_text": "de que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'm certain that",
+     "target_text": "tenho certeza de que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm certain that it's important",
+     "target_text": "tenho certeza de que é importante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm certain that he's ready",
+     "target_text": "tenho certeza de que está pronto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm certain that she's concerned",
+     "target_text": "tenho certeza de que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, I'm certain that it was beautiful",
+     "target_text": "sim, tenho certeza de que era bonito",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm certain that he stayed quiet",
+     "target_text": "tenho certeza de que ele esteve calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm certain that we should travel",
+     "target_text": "tenho certeza de que devíamos viajar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "no, I'm certain that it's important",
+     "target_text": "não, tenho certeza de que é importante",
+     "phrase_role": "use"
+    }
+   ],
+   "406:2": [
+    {
+     "known_text": "it will",
+     "target_text": "vai",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "go well",
+     "target_text": "correr bem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it will turn out okay",
+     "target_text": "vai correr bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm certain it will turn out okay",
+     "target_text": "tenho certeza de que vai correr bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but it will turn out okay",
+     "target_text": "mas vai correr bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no I'm sure it will be okay",
+     "target_text": "não, tenho certeza de que vai correr bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it will turn out okay",
+     "target_text": "eu acho que vai correr bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm certain that it will turn out okay today",
+     "target_text": "tenho certeza de que vai correr bem hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student thinks it will turn out okay",
+     "target_text": "aquela estudante acha que vai correr bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that person over there thinks it will turn out okay",
+     "target_text": "aquela pessoa ali acha que vai correr bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that it will turn out okay",
+     "target_text": "ela disse que vai correr bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it sounds like it will turn out okay",
+     "target_text": "parece que vai correr bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it will turn out okay tomorrow",
+     "target_text": "vai correr bem amanhã",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

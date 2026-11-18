@@ -1,0 +1,438 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0504L01B04",
+    "seed_number": 504,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I'm going to run a little",
+    "target_text": "eu vou correr um pouco",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0505L01B04",
+    "seed_number": 505,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "so that I don't make mistakes",
+    "target_text": "para não cometer erros",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L01B02",
+   "expect": {
+    "known_text": "I'm going to run now",
+    "target_text": "eu vou correr agora"
+   },
+   "set": {
+    "known_text": "I'm going to run with my friends",
+    "target_text": "eu vou correr com meus amigos",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L01B03",
+   "expect": {
+    "known_text": "yes, I'm going to run",
+    "target_text": "sim, eu vou correr"
+   },
+   "set": {
+    "known_text": "I'm going to run home",
+    "target_text": "eu vou correr para casa",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L01U01",
+   "expect": {
+    "known_text": "no, I'm going to run",
+    "target_text": "não, eu vou correr"
+   },
+   "set": {
+    "known_text": "I'm going to run on Saturday morning",
+    "target_text": "eu vou correr no sábado de manhã",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L01U02",
+   "expect": {
+    "known_text": "that's true, I'm going to run",
+    "target_text": "isso é verdade, eu vou correr"
+   },
+   "set": {
+    "known_text": "I'm going to run because I'm late",
+    "target_text": "eu vou correr porque estou atrasado",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L01U03",
+   "expect": {
+    "known_text": "I'm still going to run",
+    "target_text": "eu ainda vou correr"
+   },
+   "set": {
+    "known_text": "I'm going to run before work",
+    "target_text": "eu vou correr antes do trabalho",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L01U04",
+   "expect": {
+    "known_text": "yes, I'm still going to run",
+    "target_text": "sim, eu ainda vou correr"
+   },
+   "set": {
+    "known_text": "I'm going to run with my dog",
+    "target_text": "eu vou correr com o meu cachorro",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L01U05",
+   "expect": {
+    "known_text": "I'm sure I'm going to run",
+    "target_text": "tenho certeza, eu vou correr"
+   },
+   "set": {
+    "known_text": "I think I'm going to run tomorrow morning",
+    "target_text": "eu acho que eu vou correr amanhã de manhã",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L02B02",
+   "expect": {
+    "known_text": "I'm still going to run across the grass now",
+    "target_text": "eu ainda vou correr pela grama agora"
+   },
+   "set": {
+    "known_text": "to run across the grass",
+    "target_text": "correr pela grama",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L02B03",
+   "expect": {
+    "known_text": "yes, across the grass",
+    "target_text": "sim, pela grama"
+   },
+   "set": {
+    "known_text": "across the grass to the house",
+    "target_text": "pela grama até a casa",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L02U02",
+   "expect": {
+    "known_text": "no, across the grass",
+    "target_text": "não, pela grama"
+   },
+   "set": {
+    "known_text": "the children like to run across the grass",
+    "target_text": "as crianças gostam de correr pela grama",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L02U03",
+   "expect": {
+    "known_text": "that's true, across the grass",
+    "target_text": "isso é verdade, pela grama"
+   },
+   "set": {
+    "known_text": "it's faster to go across the grass",
+    "target_text": "é mais rápido ir pela grama",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L02U04",
+   "expect": {
+    "known_text": "yes, I'm going to run across the grass",
+    "target_text": "sim, eu vou correr pela grama"
+   },
+   "set": {
+    "known_text": "the dog wants to run across the grass",
+    "target_text": "o cachorro quer correr pela grama",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0504L02U05",
+   "expect": {
+    "known_text": "I'm still going to run across the grass",
+    "target_text": "eu ainda vou correr pela grama"
+   },
+   "set": {
+    "known_text": "I love running across the grass",
+    "target_text": "eu adoro correr pela grama",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L01B02",
+   "expect": {
+    "known_text": "so that I don't serve",
+    "target_text": "para não servir"
+   },
+   "set": {
+    "known_text": "so that I don't lose",
+    "target_text": "para não perder",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L01B03",
+   "expect": {
+    "known_text": "yes, so that I don't",
+    "target_text": "sim, para não"
+   },
+   "set": {
+    "known_text": "so that I don't arrive late",
+    "target_text": "para não chegar atrasado",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L01U01",
+   "expect": {
+    "known_text": "no, so that I don't",
+    "target_text": "não, para não"
+   },
+   "set": {
+    "known_text": "I'm going to run so that I don't arrive late",
+    "target_text": "vou correr para não chegar atrasado",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L01U02",
+   "expect": {
+    "known_text": "that's true, so that I don't",
+    "target_text": "isso é verdade, para não"
+   },
+   "set": {
+    "known_text": "I'm going early so that I don't miss the train",
+    "target_text": "vou cedo para não perder o trem",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L01U03",
+   "expect": {
+    "known_text": "I'm sure, so that I don't",
+    "target_text": "tenho certeza, para não"
+   },
+   "set": {
+    "known_text": "I speak slowly so that I don't make mistakes",
+    "target_text": "falo devagar para não cometer erros",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L01U04",
+   "expect": {
+    "known_text": "yes, so that I don't lead",
+    "target_text": "sim, para não liderar"
+   },
+   "set": {
+    "known_text": "I need to practise so that I don't lose my Portuguese",
+    "target_text": "preciso praticar para não perder meu português",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L01U05",
+   "expect": {
+    "known_text": "so that I still don't",
+    "target_text": "para ainda não"
+   },
+   "set": {
+    "known_text": "I'm going to stay quiet so that I don't make trouble",
+    "target_text": "vou ficar calado para não causar problemas",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L02B02",
+   "expect": {
+    "known_text": "so that I still don't get left behind",
+    "target_text": "para ainda não ficar para trás"
+   },
+   "set": {
+    "known_text": "I don't want to get left behind",
+    "target_text": "não quero ficar para trás",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L02B03",
+   "expect": {
+    "known_text": "yes, to get left behind",
+    "target_text": "sim, ficar para trás"
+   },
+   "set": {
+    "known_text": "nobody wants to get left behind",
+    "target_text": "ninguém quer ficar para trás",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L02U02",
+   "expect": {
+    "known_text": "no, get left behind",
+    "target_text": "não, ficar para trás"
+   },
+   "set": {
+    "known_text": "I'm going to run so that I don't get left behind",
+    "target_text": "vou correr para não ficar para trás",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L02U03",
+   "expect": {
+    "known_text": "that's true, get left behind",
+    "target_text": "isso é verdade, ficar para trás"
+   },
+   "set": {
+    "known_text": "the children don't want to get left behind",
+    "target_text": "as crianças não querem ficar para trás",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L02U04",
+   "expect": {
+    "known_text": "yes, so that I don't get left behind",
+    "target_text": "sim, para não ficar para trás"
+   },
+   "set": {
+    "known_text": "you need to work hard so that you don't get left behind",
+    "target_text": "você precisa trabalhar muito para não ficar para trás",
+    "decomposition": null,
+    "word_count": 53,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0505L02U05",
+   "expect": {
+    "known_text": "I'm sure, so that I don't get left behind",
+    "target_text": "tenho certeza, para não ficar para trás"
+   },
+   "set": {
+    "known_text": "she doesn't want to get left behind at school",
+    "target_text": "ela não quer ficar para trás na escola",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "seed": 249,
+ "legos": {
+  "L01": {
+   "update": {
+    "U01": [
+     "तुम्ही जाण्यापूर्वी मला तुमच्याशी बोलायचं आहे",
+     "I want to speak with you before you go"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही जाण्यापूर्वी, आज",
+     "before you go, today"
+    ],
+    [
+     "use",
+     "तुम्ही जाण्यापूर्वी मला तुम्हाला काहीतरी सांगायचं आहे",
+     "I want to tell you something before you go"
+    ],
+    [
+     "use",
+     "तुम्ही जाण्यापूर्वी मला उत्तर जाणून घ्यायचं आहे",
+     "I want to find out the answer before you go"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "तुम्ही आज मला मदत करावी असं मला वाटतं",
+     "I want you to help me today"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही उद्या मला मदत करावी असं मला वाटतं",
+     "I want you to help me tomorrow"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -1,0 +1,477 @@
+{
+ "event_id": "4620919b-387b-4b94-ba76-c5e17624e5bf",
+ "undo_file": "2026-11-18T15-21-02-414Z-4620919b-387b-4b94-ba76-c5e17624e5bf.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L03U05",
+   "set": {
+    "known_text": "I still hate making trouble but that one's mine",
+    "target_text": "eu ainda detesto causar problemas mas aquele é meu",
+    "word_count": 50,
+    "known_audio_id": "b30ebb54-7ee7-41e2-9c6b-8c366743eed6",
+    "target1_audio_id": "9e49c29f-93ed-4dda-9235-d49db8d7d3f6",
+    "target2_audio_id": "a9c8c979-54d8-49f2-9384-4d3db40a1ee1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L03U04",
+   "set": {
+    "known_text": "yes, I hate making trouble but that one's mine",
+    "target_text": "sim, eu detesto causar problemas mas aquele é meu",
+    "word_count": 49,
+    "known_audio_id": "f5d9ea83-947f-4e26-ab2b-5ac0292b2154",
+    "target1_audio_id": "8de24d4b-5abe-4150-827a-ee494f7ce09e",
+    "target2_audio_id": "10c5b209-b1b9-4aac-ac5e-75ed82d247ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L03U03",
+   "set": {
+    "known_text": "that's true, but that one's mine",
+    "target_text": "isso é verdade, mas aquele é meu",
+    "word_count": 32,
+    "known_audio_id": "c7a8e4ca-d486-479e-9133-3dc318a8c44b",
+    "target1_audio_id": "d3a0ff10-be89-4288-96db-d0313995f149",
+    "target2_audio_id": "525e825e-5321-4c87-b796-7a045a1a099d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L03U02",
+   "set": {
+    "known_text": "no, but that one's mine",
+    "target_text": "não, mas aquele é meu",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "17adea0e-8298-46c0-8c26-bb245d527ffe",
+    "target1_audio_id": "b84b2afe-2f47-4a6c-8cea-2aa8f026bd59",
+    "target2_audio_id": "39c33d5c-e770-48be-9a82-46aa3eefecfd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L03B03",
+   "set": {
+    "known_text": "yes, but that one's mine",
+    "target_text": "sim, mas aquele é meu",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "3606a01d-ac55-48c4-905d-72b42bcae304",
+    "target1_audio_id": "a20ee1a4-c826-4ba7-9235-b18b543b1080",
+    "target2_audio_id": "71c4e64d-39d5-42f0-b1e8-f39cbdfda8ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L03B02",
+   "set": {
+    "known_text": "I hate making trouble but that one's mine now",
+    "target_text": "eu detesto causar problemas mas aquele é meu agora",
+    "word_count": 50,
+    "known_audio_id": "cbacc339-2e6a-4ed4-b1a1-f92c73cfd52c",
+    "target1_audio_id": "3d979f6a-ab4f-4eda-b1c6-f7b7c951d9b1",
+    "target2_audio_id": "1d1a7a6e-4a97-43da-9cad-599f3bb7d625"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L02U05",
+   "set": {
+    "known_text": "I still hate making trouble",
+    "target_text": "eu ainda detesto causar problemas",
+    "lego_position": "end",
+    "known_audio_id": "1b7cd15b-4f32-4178-87fb-b1aa57c19ded",
+    "target1_audio_id": "1b1d0139-956b-4592-be45-d68ffe789f4b",
+    "target2_audio_id": "3327d8e1-c286-4ab4-b096-a47909305ff8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L02U04",
+   "set": {
+    "known_text": "yes, I hate making trouble",
+    "target_text": "sim, eu detesto causar problemas",
+    "word_count": 32,
+    "known_audio_id": "ce0a92ae-18bb-403b-b5ea-0adb28307796",
+    "target1_audio_id": "255eb81f-bd1c-4ca3-8c12-5cedaee4a09e",
+    "target2_audio_id": "0fb7dae8-ec7b-4e5e-b792-4db6dc4854d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L02U03",
+   "set": {
+    "known_text": "I hate making trouble now",
+    "target_text": "eu detesto causar problemas agora",
+    "lego_position": "middle",
+    "known_audio_id": "9a4de8bc-5690-43d5-a17b-e582247fd6f0",
+    "target1_audio_id": "a78a31f6-c67b-455a-8b87-39028618d69f",
+    "target2_audio_id": "466a6454-c70c-4cb9-8ff4-eab0058fa779"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L02U02",
+   "set": {
+    "known_text": "that's true, making trouble",
+    "target_text": "isso é verdade, causar problemas",
+    "word_count": 32,
+    "known_audio_id": "dfe4eb34-19dd-45a9-9abc-4b0708eea2d7",
+    "target1_audio_id": "6807c167-7149-41f7-8b4e-ed62652c86c4",
+    "target2_audio_id": "9c12ae34-881d-45d9-99b7-97532804c326"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L02U01",
+   "set": {
+    "known_text": "no, making trouble",
+    "target_text": "não, causar problemas",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "511581c9-d338-46fc-90ac-0e72396589b6",
+    "target1_audio_id": "f0ae3915-34ac-4119-a69a-cfe8feb84ce5",
+    "target2_audio_id": "1642c84b-9d79-46d8-9fd3-0efcecc721d0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L02B03",
+   "set": {
+    "known_text": "yes, making trouble",
+    "target_text": "sim, causar problemas",
+    "word_count": 21,
+    "known_audio_id": "7be5064f-692c-43a1-ad4c-5cabb603b909",
+    "target1_audio_id": "df71301e-94e0-4570-8e23-f6e497530796",
+    "target2_audio_id": "735cb4ef-ccb2-48bc-b3f8-9fa6353f2614"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L01U05",
+   "set": {
+    "known_text": "I'm sure I hate",
+    "target_text": "tenho certeza, eu detesto",
+    "word_count": 25,
+    "lego_position": "end",
+    "known_audio_id": "942fb45d-ed20-4c16-ad18-47bdd9b80846",
+    "target1_audio_id": "418751d5-b624-4f9e-afb9-0ba05aa74982",
+    "target2_audio_id": "4933f36b-70e4-4764-8511-d1ae4c493f9f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L01U04",
+   "set": {
+    "known_text": "yes, I still hate",
+    "target_text": "sim, eu ainda detesto",
+    "word_count": 21,
+    "lego_position": null,
+    "known_audio_id": "770207b3-addc-46aa-9b58-4c7853cab065",
+    "target1_audio_id": "73833c15-17e9-4e74-9dcf-5fc8acaf60d7",
+    "target2_audio_id": "1d30ddda-63ca-4713-acfd-2cea3c4dd4c2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L01U03",
+   "set": {
+    "known_text": "I still hate",
+    "target_text": "eu ainda detesto",
+    "word_count": 16,
+    "lego_position": null,
+    "known_audio_id": "d45d28d8-34d3-4465-95ea-f3ae20d680f4",
+    "target1_audio_id": "48cf9c8d-451e-47eb-bfa6-78afc5899899",
+    "target2_audio_id": "0a25e403-a606-41da-a49e-85ba9d7e4a6b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L01U02",
+   "set": {
+    "known_text": "that's true, I hate",
+    "target_text": "isso é verdade, eu detesto",
+    "word_count": 26,
+    "lego_position": "end",
+    "known_audio_id": "e95b35a6-52d9-42b1-b418-11f1989367ef",
+    "target1_audio_id": "be24f19a-d258-425d-b01d-701b40d3bf6e",
+    "target2_audio_id": "f0d44ef6-7896-4c6f-a559-e8b6a438c2c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L01U01",
+   "set": {
+    "known_text": "no, I hate",
+    "target_text": "não, eu detesto",
+    "word_count": 15,
+    "lego_position": "middle",
+    "known_audio_id": "8dad5594-cd65-4084-9768-51ed1da87623",
+    "target1_audio_id": "3163d498-4c33-47dc-bc21-915eb23c4092",
+    "target2_audio_id": "3f5e03eb-6c39-4b7d-ba2d-e3496496aae8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0503L01B03",
+   "set": {
+    "known_text": "yes, I hate",
+    "target_text": "sim, eu detesto",
+    "word_count": 15,
+    "lego_position": "middle",
+    "known_audio_id": "d1f8b3e5-e127-4221-983b-b4cc7bac2d27",
+    "target1_audio_id": "485c08ae-a2b6-460c-a127-f3a95bcf1896",
+    "target2_audio_id": "d47be1e4-f4cf-4381-8330-0a229fda0d1b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L03U05",
+   "set": {
+    "known_text": "I'm sure, instead of right",
+    "target_text": "tenho certeza, em vez de à direita",
+    "word_count": 34,
+    "known_audio_id": "18b8dcd3-210c-4b51-a976-67a3429ca2fb",
+    "target1_audio_id": "0855ca33-72f7-4dc1-a4f7-84c022462ab4",
+    "target2_audio_id": "1e50a4a6-8187-4c49-b8b5-4b74662aafb5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L03U04",
+   "set": {
+    "known_text": "yes, she almost got lost because she turned left instead of right",
+    "target_text": "sim, ela quase se perdeu porque virou à esquerda em vez de à direita",
+    "word_count": 68,
+    "known_audio_id": "5c3cb645-d26b-47c4-afe0-ddfc867b3d97",
+    "target1_audio_id": "77399920-cca0-4a87-b548-5949ce0cb1f0",
+    "target2_audio_id": "9d195d8c-593a-45d3-b777-3f8fea5832c8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L03U03",
+   "set": {
+    "known_text": "that's true, instead of right",
+    "target_text": "isso é verdade, em vez de à direita",
+    "word_count": 35,
+    "known_audio_id": "6f443ffa-90ba-4758-9b9d-e288c1318e43",
+    "target1_audio_id": "2cf70e55-fdec-4e86-ae0e-d13c4a29e8d6",
+    "target2_audio_id": "9a8acdbc-79dd-483b-a71d-4bbcf9f7753b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L03U02",
+   "set": {
+    "known_text": "no, instead of right",
+    "target_text": "não, em vez de à direita",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "61a3ad13-95a2-49d4-b444-cebd98bc3117",
+    "target1_audio_id": "6a631091-14de-4867-a4c3-6afbc5bbb2d3",
+    "target2_audio_id": "4f388850-0d52-43ab-8b99-ac6392482979"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L03B03",
+   "set": {
+    "known_text": "yes, instead of right",
+    "target_text": "sim, em vez de à direita",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "a6020ae8-aa3f-4cc6-bca4-f259a8b2553e",
+    "target1_audio_id": "8461e0c4-d4c6-4ff1-ad1e-9634698c1b9f",
+    "target2_audio_id": "24c711f1-1b60-4ac8-ad50-03fef39622c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L02U05",
+   "set": {
+    "known_text": "she still almost got lost because she turned left",
+    "target_text": "ela ainda quase se perdeu porque virou à esquerda",
+    "word_count": 49,
+    "known_audio_id": "77dfdf9f-0061-4f0b-8092-b1cb0ad49e92",
+    "target1_audio_id": "01733fcc-025a-42ee-89b7-5f819391a1ea",
+    "target2_audio_id": "c263d201-0b9c-4321-9e1a-549757ee1278"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L02U04",
+   "set": {
+    "known_text": "yes, she almost got lost because she turned left",
+    "target_text": "sim, ela quase se perdeu porque virou à esquerda",
+    "word_count": 48,
+    "lego_position": "end",
+    "known_audio_id": "55aea3de-744d-4468-b046-00df5580afae",
+    "target1_audio_id": "4d8f7459-8a98-4ae3-8ad3-c86dbf591065",
+    "target2_audio_id": "8791e8f9-0663-46cb-ad80-3dd4108d7149"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L02U03",
+   "set": {
+    "known_text": "I'm sure, because she turned left",
+    "target_text": "tenho certeza, porque virou à esquerda",
+    "word_count": 38,
+    "known_audio_id": "b0f4bbe7-a06e-41e7-b321-9d192d4e2fd0",
+    "target1_audio_id": "aeacc17f-48b3-4da4-a34a-ffe4befb7193",
+    "target2_audio_id": "87b8aa26-9454-4a32-9ef6-32f18fa445f2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L02U02",
+   "set": {
+    "known_text": "that's true, because she turned left",
+    "target_text": "isso é verdade, porque virou à esquerda",
+    "known_audio_id": "6df3111c-ee1d-4044-b492-8f22e4fadc59",
+    "target1_audio_id": "4511f106-c9d5-4bf1-97dc-b4a2b3f62af1",
+    "target2_audio_id": "ce6fc5b1-897a-446b-8676-920fc6cd9cad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L02U01",
+   "set": {
+    "known_text": "no, because she turned left",
+    "target_text": "não, porque virou à esquerda",
+    "word_count": 28,
+    "lego_position": "middle",
+    "known_audio_id": "3405a2fe-e847-46eb-87c4-d01134b1fe8a",
+    "target1_audio_id": "769082ca-368f-48bd-8547-e06ebc1ea1a8",
+    "target2_audio_id": "2e796d96-dd10-4da8-8a17-8a61efd4c246"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L02B03",
+   "set": {
+    "known_text": "yes, because she turned left",
+    "target_text": "sim, porque virou à esquerda",
+    "word_count": 28,
+    "known_audio_id": "560d3935-0480-4308-b90d-6dfb97dad26a",
+    "target1_audio_id": "1a810b31-c10b-48ac-8e93-a3dfc849eaaf",
+    "target2_audio_id": "85486719-c6e1-4bc6-b73a-f75d30c9d3cc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L01U05",
+   "set": {
+    "known_text": "she still almost got lost",
+    "target_text": "ela ainda quase se perdeu",
+    "word_count": 25,
+    "lego_position": null,
+    "known_audio_id": "8d426ebd-e458-4422-8569-ac565760d56f",
+    "target1_audio_id": "d6f3e3aa-3ff9-4a2d-9dd4-a89a85e29d49",
+    "target2_audio_id": "4ac86c7c-dc99-460d-9621-e3f02a34dc32"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L01U04",
+   "set": {
+    "known_text": "yes, that's true, she almost got lost",
+    "target_text": "sim, isso é verdade, ela quase se perdeu",
+    "word_count": 40,
+    "lego_position": "end",
+    "known_audio_id": "ed47e924-c6cb-4649-9560-a4987916cf36",
+    "target1_audio_id": "1446a1d4-2a79-4ac9-9c62-2dc5426c23d5",
+    "target2_audio_id": "71986340-16a0-4ffe-adcf-bb5edbc74b2d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L01U03",
+   "set": {
+    "target_text": "tenho certeza, ela quase se perdeu",
+    "word_count": 34,
+    "target1_audio_id": "86008fa0-0496-4e60-a007-3a3b07dc15cd",
+    "target2_audio_id": "55960a43-df91-4282-90d2-ed8ae3de6b39"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L01U02",
+   "set": {
+    "known_text": "that's true, she almost got lost",
+    "target_text": "isso é verdade, ela quase se perdeu",
+    "word_count": 35,
+    "lego_position": "end",
+    "known_audio_id": "574421a5-1847-427e-bbf2-6e8d9d226012",
+    "target1_audio_id": "daa89117-cfaa-475b-acd1-d6ce3c35fb1e",
+    "target2_audio_id": "265ba6de-de52-44d6-be21-1fe0222bf850"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L01U01",
+   "set": {
+    "known_text": "no, she almost got lost",
+    "target_text": "não, ela quase se perdeu",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "b3e84e0b-79b6-4e28-aa5e-4c6a33f3fa0e",
+    "target1_audio_id": "5b47248c-5b93-4522-9c81-04ea5ad86aa0",
+    "target2_audio_id": "54ecc04f-ff28-435d-96a1-fbd38db0d9b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L01B03",
+   "set": {
+    "known_text": "yes, she almost got lost",
+    "target_text": "sim, ela quase se perdeu",
+    "word_count": 24,
+    "known_audio_id": "f056312a-21e1-49fd-a111-44de3a1fb6b9",
+    "target1_audio_id": "6f1ef390-2520-47fe-b8d9-ff7ea8120ea9",
+    "target2_audio_id": "05a6bbb0-a0eb-4f7a-8a1f-18aef081629e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0502L01B02",
+   "set": {
+    "known_text": "she almost got lost now",
+    "target_text": "ela quase se perdeu agora",
+    "word_count": 25,
+    "lego_position": "middle",
+    "known_audio_id": "eebdb9ac-6862-49ff-ab73-6c9984c2b1c6",
+    "target1_audio_id": "6cc24d43-2c9a-4207-ac4c-f6cee8dfed58",
+    "target2_audio_id": "f881f7b0-2476-4877-912a-f262fd2a12d0"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0503L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0503L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0503L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0502L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0502L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0502L01B04"
+  }
+ ]
+}

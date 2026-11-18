@@ -1,0 +1,44 @@
+{
+ "seed": 595,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "I need to lie down a little",
+     "eu preciso me deitar um pouco"
+    ],
+    "B03": [
+     "I need to lie down here",
+     "eu preciso me deitar aqui"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I need to lie down this afternoon",
+     "eu preciso me deitar esta tarde"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "to wait in the garden",
+     "esperar no jardim"
+    ],
+    "B03": [
+     "to read in the garden",
+     "ler no jardim"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "to sleep in the garden",
+     "dormir no jardim"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

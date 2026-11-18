@@ -1,0 +1,2058 @@
+{
+ "event_id": "c617516d-a22f-4055-b619-9df8128e9af2",
+ "undo_file": "2026-11-18T13-19-25-326Z-c617516d-a22f-4055-b619-9df8128e9af2.json",
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0059L01B02",
+    "seed_number": 59,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "I know now",
+    "target_text": "sei agora",
+    "word_count": 9,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:25:22.807Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "4f330114-3003-43d1-ade5-cac1fc80619e",
+    "target1_audio_id": "8d67083c-d8d8-4daf-9831-30d86492a2f8",
+    "target2_audio_id": "3a833e13-604e-4fd2-b0ed-b7cf8966b8f1",
+    "qa_checked": null,
+    "target1_duration_ms": 912,
+    "target2_duration_ms": 1152,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I know",
+      "legoId": "S0059L01",
+      "target": "sei",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0058L01B02",
+    "seed_number": 58,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "it's interesting now",
+    "target_text": "é interessante agora",
+    "word_count": 20,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:23:49.679Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "9c4aad87-68e7-4775-a489-aaf9a039a92d",
+    "target1_audio_id": "d4f74d9f-5f1d-48d1-8063-673cb57663f0",
+    "target2_audio_id": "ee10b5f6-2987-4530-951d-ed3682974bd4",
+    "qa_checked": null,
+    "target1_duration_ms": 1320,
+    "target2_duration_ms": 1464,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "it's interesting",
+      "legoId": "S0058L01",
+      "target": "é interessante",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0051L02B01",
+    "seed_number": 51,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "things now",
+    "target_text": "coisas agora",
+    "word_count": 12,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:13:25.414Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "0565d817-c967-4444-877f-5294017f436f",
+    "target1_audio_id": "066a2752-45af-409b-877b-c4be9194c30c",
+    "target2_audio_id": "4954beef-6053-49df-b147-b498c48089b4",
+    "qa_checked": null,
+    "target1_duration_ms": 984,
+    "target2_duration_ms": 1152,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "things",
+      "legoId": "S0051L02",
+      "target": "coisas",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0050L01B02",
+    "seed_number": 50,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "to finish now",
+    "target_text": "acabar agora",
+    "word_count": 12,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:12:19.331Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "6d25e960-a1d6-4f0a-9b22-d7b56512bb37",
+    "target1_audio_id": "31e9a04d-4247-42ad-b345-162bd0e64862",
+    "target2_audio_id": "ce419698-7bfa-4309-a4c7-88b0fcb9c228",
+    "qa_checked": null,
+    "target1_duration_ms": 984,
+    "target2_duration_ms": 1152,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "to finish",
+      "legoId": "S0050L01",
+      "target": "acabar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0049L02B02",
+    "seed_number": 49,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "you understand now",
+    "target_text": "você entende agora",
+    "word_count": 18,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:11:32.140Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "477f2136-5ffd-4d22-88bc-839e58679c73",
+    "target1_audio_id": "ed446486-a755-4be1-84a8-7535c06f2f50",
+    "target2_audio_id": "6e1f3439-d413-4099-80c3-b03cf9bd8c86",
+    "qa_checked": null,
+    "target1_duration_ms": 1320,
+    "target2_duration_ms": 1320,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "you understand",
+      "legoId": "S0049L02",
+      "target": "você entende",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0049L01U08",
+    "seed_number": 49,
+    "lego_index": 1,
+    "position": 21,
+    "known_text": "I think it's like this",
+    "target_text": "acho que é assim",
+    "word_count": 16,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {},
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-13T12:12:00.012Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": null,
+    "known_audio_id": "9fe530ce-3242-4810-b78e-c76b47189297",
+    "target1_audio_id": "4bd3a89c-5280-454f-b550-f7c90426e6d2",
+    "target2_audio_id": "bf3bccc2-f9bc-41d2-b1ec-53cc702a41f1",
+    "qa_checked": null,
+    "target1_duration_ms": 1080,
+    "target2_duration_ms": 1040,
+    "lego_id": "S0049L01",
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "it's like this",
+      "legoId": "S0049L01",
+      "target": " é assim",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0049L01B03",
+    "seed_number": 49,
+    "lego_index": 1,
+    "position": 5,
+    "known_text": "it's like this today",
+    "target_text": "é assim hoje",
+    "word_count": 12,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:11:31.991Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "57697d69-4d7c-4b03-af85-7503368b5fbc",
+    "target1_audio_id": "299b1021-01f9-4be5-918e-b6df25b95574",
+    "target2_audio_id": "c02ab176-8b36-47c9-8d5a-95cd34a7d488",
+    "qa_checked": null,
+    "target1_duration_ms": 1152,
+    "target2_duration_ms": 1224,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "it's like this",
+      "legoId": "S0049L01",
+      "target": "é assim",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0049L01B02",
+    "seed_number": 49,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "it's like this now",
+    "target_text": "é assim agora",
+    "word_count": 13,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:11:31.991Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "ca6fc7df-7359-4f04-bf22-db9815c4096e",
+    "target1_audio_id": "e24bd383-02e5-4d63-b6ce-de935a362834",
+    "target2_audio_id": "6b6a613b-d200-4e8c-a5cf-496607d0c519",
+    "qa_checked": null,
+    "target1_duration_ms": 1152,
+    "target2_duration_ms": 1224,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "it's like this",
+      "legoId": "S0049L01",
+      "target": "é assim",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0046L02B03",
+    "seed_number": 46,
+    "lego_index": 2,
+    "position": 5,
+    "known_text": "making mistakes now",
+    "target_text": "cometer erros agora",
+    "word_count": 19,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:08:35.273Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "7eabb014-1057-492a-8adf-aada54916616",
+    "target1_audio_id": "59cdeafb-1d19-48a6-b247-bcdd279b2104",
+    "target2_audio_id": "b2ac1527-7058-45ca-bfba-a33e322e10aa",
+    "qa_checked": null,
+    "target1_duration_ms": 1392,
+    "target2_duration_ms": 1632,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "making mistakes",
+      "legoId": "S0046L02",
+      "target": "cometer erros",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0045L02B02",
+    "seed_number": 45,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "everything now",
+    "target_text": "tudo agora",
+    "word_count": 10,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:07:24.836Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "8cbf13d8-bfc3-46ee-89ac-03b4f0a604fe",
+    "target1_audio_id": "344f835f-3d9d-47a0-a16a-2be3dcd81caa",
+    "target2_audio_id": "a282035e-7b29-479c-81e1-d9ce18ccc846",
+    "qa_checked": null,
+    "target1_duration_ms": 672,
+    "target2_duration_ms": 880,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "everything",
+      "legoId": "S0045L02",
+      "target": "tudo",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0045L01B01",
+    "seed_number": 45,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "to know things now",
+    "target_text": "saber agora",
+    "word_count": 11,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:07:24.686Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "8b332169-4214-47e7-a065-9e04cfae6ae7",
+    "target1_audio_id": "a0052795-497e-4c84-a02e-94dedc74a8b3",
+    "target2_audio_id": "a04361cb-af64-481d-b425-69ff25bb5038",
+    "qa_checked": null,
+    "target1_duration_ms": 984,
+    "target2_duration_ms": 1120,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "to know things",
+      "legoId": "S0045L01",
+      "target": "saber",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L02U01",
+    "seed_number": 44,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "if you want to practise speaking with other people",
+    "target_text": "se você quiser praticar falando com outra pessoa",
+    "word_count": 46,
+    "lego_count": 9,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-03-12T19:05:51.348Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:05:51.432Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "b5725ae3-47ab-460c-b98f-3dd9addc9a0f",
+    "target1_audio_id": "50366328-ce34-437e-91d6-c9e7de66c4cb",
+    "target2_audio_id": "591958ad-5769-4442-a7c4-0fbc5a7ac4c1",
+    "qa_checked": null,
+    "target1_duration_ms": 2904,
+    "target2_duration_ms": 2904,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     },
+     {
+      "known": "to practise speaking",
+      "legoId": "S0005L02",
+      "target": " praticar falando",
+      "isGhost": false
+     },
+     {
+      "known": "with someone else",
+      "legoId": "S0005L03",
+      "target": " com outra pessoa",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L02B05",
+    "seed_number": 44,
+    "lego_index": 2,
+    "position": 5,
+    "known_text": "or if today",
+    "target_text": "ou se hoje",
+    "word_count": 10,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:05:51.432Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "8de549a2-3375-4401-a912-93cff8e03c1e",
+    "target1_audio_id": "e32cdf5b-f36a-4f0e-b2cc-8183b892f76b",
+    "target2_audio_id": "76bdcff2-5dc3-4f8b-8de9-4a4753ee3a41",
+    "qa_checked": null,
+    "target1_duration_ms": 912,
+    "target2_duration_ms": 1080,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": "ou",
+      "isGhost": false
+     },
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": " se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L02B04",
+    "seed_number": 44,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "or if later",
+    "target_text": "ou se mais tarde",
+    "word_count": 16,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:05:51.432Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "9547dd81-7ae2-49dc-b0b3-ee8e7efd6219",
+    "target1_audio_id": "db668aa2-c435-4cfb-a395-4187c32342c7",
+    "target2_audio_id": "6f248c32-7930-4de7-b310-44bab6443560",
+    "qa_checked": null,
+    "target1_duration_ms": 1224,
+    "target2_duration_ms": 1320,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": "ou",
+      "isGhost": false
+     },
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": " se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "later on",
+      "legoId": "S0016L04",
+      "target": " mais tarde",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L02B02",
+    "seed_number": 44,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "if tomorrow",
+    "target_text": "se amanhã",
+    "word_count": 9,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:05:51.432Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "48bddfd2-2668-4b09-9c16-b48c3bd8074f",
+    "target1_audio_id": "538e16a6-8025-4ee7-ae0c-5969ec864324",
+    "target2_audio_id": "75385f74-a7eb-4025-b866-55df58f042ab",
+    "qa_checked": null,
+    "target1_duration_ms": 744,
+    "target2_duration_ms": 744,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "tomorrow",
+      "legoId": "S0012L04",
+      "target": " amanhã",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L02B01",
+    "seed_number": 44,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "if now",
+    "target_text": "se agora",
+    "word_count": 8,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:05:51.432Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "e0e98c2e-d3d4-484e-ac48-7bed022c3553",
+    "target1_audio_id": "c4cceb5b-832f-4a16-917d-98c2bf417f07",
+    "target2_audio_id": "d16ca864-4b0a-4bf0-abe4-fe18ed2bcb86",
+    "qa_checked": null,
+    "target1_duration_ms": 744,
+    "target2_duration_ms": 984,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0044L01B01",
+    "seed_number": 44,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "or now",
+    "target_text": "ou agora",
+    "word_count": 8,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T19:05:51.263Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "8a2145ef-deec-44a2-887e-1b112c92d452",
+    "target1_audio_id": "827361fb-6945-4a78-b2b0-01c1bb1d48f0",
+    "target2_audio_id": "f7ff8bc6-2a79-4e35-9d75-f6804c3450d4",
+    "qa_checked": null,
+    "target1_duration_ms": 744,
+    "target2_duration_ms": 840,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": "ou",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0039L01B02",
+    "seed_number": 39,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "tired now",
+    "target_text": "cansado agora",
+    "word_count": 13,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T18:00:17.616Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "0c5ac4f9-eba9-4890-a6e2-a72f9ea43ab1",
+    "target1_audio_id": "b9c9252f-19d5-4fcf-9b88-a8380603e9ee",
+    "target2_audio_id": "1f27e159-451d-4b80-9965-c775d3af993b",
+    "qa_checked": null,
+    "target1_duration_ms": 1224,
+    "target2_duration_ms": 1320,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "tired",
+      "legoId": "S0039L01",
+      "target": "cansado",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0039L01B01",
+    "seed_number": 39,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "tired today",
+    "target_text": "cansado hoje",
+    "word_count": 12,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T18:00:17.616Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "315a9602-e789-44c3-b2fd-9cd0761f54ab",
+    "target1_audio_id": "ddd5147f-8b80-4927-b154-1fa2eea79d4d",
+    "target2_audio_id": "af457600-8696-4ded-8aae-c4809383979c",
+    "qa_checked": null,
+    "target1_duration_ms": 1152,
+    "target2_duration_ms": 1392,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "tired",
+      "legoId": "S0039L01",
+      "target": "cansado",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0035L02B03",
+    "seed_number": 35,
+    "lego_index": 2,
+    "position": 5,
+    "known_text": "to read anything today",
+    "target_text": "ler nada hoje",
+    "word_count": 13,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T17:54:42.026Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "9725cb3b-1988-4c18-9e81-737d61971d36",
+    "target1_audio_id": "6a9ce0d4-b9e8-43fa-897a-cf7e6402e07b",
+    "target2_audio_id": "ef618556-5bd8-425a-98b0-7365ae8fc3b6",
+    "qa_checked": null,
+    "target1_duration_ms": 1224,
+    "target2_duration_ms": 1320,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "to read anything",
+      "legoId": "S0035L02",
+      "target": "ler nada",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0034L02B03",
+    "seed_number": 34,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "to be quiet now",
+    "target_text": "ficar calado agora",
+    "word_count": 18,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T17:52:26.951Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "b02f8c9f-73b5-46c7-8a5b-5d727de3838b",
+    "target1_audio_id": "419c5fd6-06e0-4caa-8860-b1f43263be9e",
+    "target2_audio_id": "ca80a5cd-f419-4652-882b-ffe443b10ce8",
+    "qa_checked": null,
+    "target1_duration_ms": 1464,
+    "target2_duration_ms": 1464,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "to be quiet",
+      "legoId": "S0034L02",
+      "target": "ficar calado",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0034L02B02",
+    "seed_number": 34,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "to be quiet today",
+    "target_text": "ficar calado hoje",
+    "word_count": 17,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T17:52:26.951Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "4c832fd9-0a55-4f41-89e5-0b6edd2d2958",
+    "target1_audio_id": "25c7f76e-4f84-42dd-803b-e35a7d302cdf",
+    "target2_audio_id": "a5287d4e-385f-43c3-bc19-573593e12c46",
+    "qa_checked": null,
+    "target1_duration_ms": 1320,
+    "target2_duration_ms": 1464,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "to be quiet",
+      "legoId": "S0034L02",
+      "target": "ficar calado",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0032L01B13",
+    "seed_number": 32,
+    "lego_index": 1,
+    "position": 15,
+    "known_text": "she wants to show me now",
+    "target_text": "ela quer me mostrar agora",
+    "word_count": 25,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T17:47:23.791Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "9041c1b6-0038-4b2e-900f-5b0c08402e6e",
+    "target1_audio_id": "c70c0052-0154-496e-9ed4-6126a83bc8a4",
+    "target2_audio_id": "d16fd0ab-3165-41ef-baf9-a9150881b1a3",
+    "qa_checked": null,
+    "target1_duration_ms": 1800,
+    "target2_duration_ms": 1632,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "she wants to",
+      "legoId": "S0017L01",
+      "target": "ela quer",
+      "isGhost": false
+     },
+     {
+      "known": "to show me",
+      "legoId": "S0032L01",
+      "target": " me mostrar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0032L01B08",
+    "seed_number": 32,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "did you want to show me something now?",
+    "target_text": "queria me mostrar algo agora?",
+    "word_count": 29,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T17:47:23.791Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "8063eee4-a7f2-4c1e-af62-c94e82bbcb88",
+    "target1_audio_id": "7e95906d-8718-4654-8338-9e1a0f94bfe9",
+    "target2_audio_id": "37c38046-6a83-45c4-a76c-279675899de5",
+    "qa_checked": null,
+    "target1_duration_ms": 1704,
+    "target2_duration_ms": 1800,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I wanted to",
+      "legoId": "S0030L01",
+      "target": "queria",
+      "isGhost": false
+     },
+     {
+      "known": "to show me",
+      "legoId": "S0032L01",
+      "target": " me mostrar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "something",
+      "legoId": "S0004L02",
+      "target": " algo",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0032L01B04",
+    "seed_number": 32,
+    "lego_index": 1,
+    "position": 6,
+    "known_text": "to show me now",
+    "target_text": "me mostrar agora",
+    "word_count": 16,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T17:47:23.791Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "609447f3-3cf8-4db2-897a-be1869b6816b",
+    "target1_audio_id": "65deb91b-0b5d-481c-999d-ace2cb465069",
+    "target2_audio_id": "9ecf738a-582e-4b76-8e68-30a443405e95",
+    "qa_checked": null,
+    "target1_duration_ms": 1152,
+    "target2_duration_ms": 1320,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "to show me",
+      "legoId": "S0032L01",
+      "target": "me mostrar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0050L01U02",
+   "set": {
+    "known_text": "I don't care about finishing because I don't worry about it",
+    "target_text": "não me importo de acabar porque não me preocupo com isso",
+    "word_count": 59,
+    "known_audio_id": "48b3abaf-912d-41b1-a58b-d0a375f37e68",
+    "target1_audio_id": "38e11885-8b25-4589-a900-900514a311d6",
+    "target2_audio_id": "7e877410-2d60-407e-af5d-b263e8abbacc",
+    "decomposition": [
+     {
+      "known": "I don't care about",
+      "legoId": "S0048L01",
+      "target": "não me importo de",
+      "isGhost": false
+     },
+     {
+      "known": "to finish",
+      "legoId": "S0050L01",
+      "target": " acabar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " porque",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " não",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " me",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " preocupo",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " com",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " isso",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02U05",
+   "set": {
+    "known_text": "if you are feeling tired this morning",
+    "target_text": "se você estiver se sentindo cansado esta manhã",
+    "word_count": 43,
+    "known_audio_id": "ec731e28-023a-43a0-ae5e-791fcb18c3a0",
+    "target1_audio_id": "999bcc35-3ab9-4d1d-8336-d9c58c2813da",
+    "target2_audio_id": "51dc25b1-4891-4fe6-a300-45d44bb2e23e",
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " estiver",
+      "isGhost": true
+     },
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": " se",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " sentindo",
+      "isGhost": true
+     },
+     {
+      "known": "tired",
+      "legoId": "S0039L01",
+      "target": " cansado",
+      "isGhost": false
+     },
+     {
+      "known": "this morning",
+      "legoId": "S0039L02",
+      "target": " esta manhã",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02U04",
+   "set": {
+    "known_text": "or if you want to practise speaking Portuguese this morning",
+    "target_text": "ou se você quiser praticar falando português esta manhã",
+    "word_count": 53,
+    "known_audio_id": "7695552e-13e2-43ed-b68c-dba8d07f73a9",
+    "target1_audio_id": "89863ad0-0a21-44a9-8c2c-0998f9cd5a64",
+    "target2_audio_id": "87187d4a-1cdd-44e8-94b7-e9446a7da47a",
+    "decomposition": [
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": "ou",
+      "isGhost": false
+     },
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": " se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     },
+     {
+      "known": "to practise speaking",
+      "legoId": "S0005L02",
+      "target": " praticar falando",
+      "isGhost": false
+     },
+     {
+      "known": "Portuguese",
+      "legoId": "S0001L03",
+      "target": " português",
+      "isGhost": false
+     },
+     {
+      "known": "this morning",
+      "legoId": "S0039L02",
+      "target": " esta manhã",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02U03",
+   "set": {
+    "known_text": "or if you want to come back tomorrow or later",
+    "target_text": "ou se você quiser voltar amanhã ou mais tarde",
+    "word_count": 43,
+    "known_audio_id": "fa492014-0d0d-4b46-986c-557881b19e2a",
+    "target1_audio_id": "8e0c960e-4207-494a-8fbd-1c894abf8599",
+    "target2_audio_id": "a351f1b3-8832-43a1-a3be-f1d187e95344",
+    "decomposition": [
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": "ou",
+      "isGhost": false
+     },
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": " se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     },
+     {
+      "known": "to come back",
+      "legoId": "S0016L02",
+      "target": " voltar",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow",
+      "legoId": "S0012L04",
+      "target": " amanhã",
+      "isGhost": false
+     },
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": " ou",
+      "isGhost": false
+     },
+     {
+      "known": "later on",
+      "legoId": "S0016L04",
+      "target": " mais tarde",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B10",
+   "set": {
+    "target_text": "se você quiser falar português",
+    "target1_audio_id": "ebdfb0ad-2a8e-4540-bc4d-6703d1f42825",
+    "target2_audio_id": "f24b1504-9d11-44bd-abed-d0024822db13",
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " falar",
+      "isGhost": false
+     },
+     {
+      "known": "Portuguese",
+      "legoId": "S0001L03",
+      "target": " português",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B09",
+   "set": {
+    "target_text": "ou se você quiser aprender mais",
+    "target1_audio_id": "9fe228f5-fa65-4da6-9d63-ef0342b2be62",
+    "target2_audio_id": "684f5497-6f4e-4d64-8838-f76afc048ea2",
+    "decomposition": [
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": "ou",
+      "isGhost": false
+     },
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": " se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     },
+     {
+      "known": "to learn",
+      "legoId": "S0002L01",
+      "target": " aprender",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mais",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B08",
+   "set": {
+    "target_text": "se ele quiser voltar",
+    "target1_audio_id": "3786b2ea-8201-4e31-a395-de1777b85660",
+    "target2_audio_id": "9504345d-84e8-479c-90db-a0707c1d6e10",
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ele",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     },
+     {
+      "known": "to come back",
+      "legoId": "S0016L02",
+      "target": " voltar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B07",
+   "set": {
+    "target_text": "se ela quiser falar",
+    "target1_audio_id": "61baf7d6-e237-4224-833d-4408becde1fc",
+    "target2_audio_id": "c2d81ac3-631b-4a71-977c-a9696d097065",
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ela",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " falar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L02B06",
+   "set": {
+    "target_text": "se você quiser",
+    "target1_audio_id": "ddf5dab7-86e3-4a73-b960-54c1c11d61f3",
+    "target2_audio_id": "1749a172-520f-4afb-b2e7-2f7eba1c3025",
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0044L02",
+      "target": "se",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiser",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L01U02",
+   "set": {
+    "known_text": "she doesnt want to read anything or interrupt the story",
+    "known_audio_id": "b46b01d4-4300-4429-8a9c-d587369d6a2e",
+    "decomposition": [
+     {
+      "known": "she doesn't want to",
+      "legoId": "S0035L01",
+      "target": "ela não quer",
+      "isGhost": false
+     },
+     {
+      "known": "to read anything",
+      "legoId": "S0035L02",
+      "target": " ler nada",
+      "isGhost": false
+     },
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": " ou",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to interrupt the story",
+      "legoId": "S0036L02",
+      "target": " interromper a história",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0044L01B10",
+   "set": {
+    "known_text": "I dont want to read anything or speak now",
+    "known_audio_id": "01c32dae-0cd0-42d4-bffd-8f5fc75de2ec",
+    "decomposition": [
+     {
+      "known": "I don't want to",
+      "legoId": "S0019L02",
+      "target": "não quero",
+      "isGhost": false
+     },
+     {
+      "known": "to read anything",
+      "legoId": "S0035L02",
+      "target": " ler nada",
+      "isGhost": false
+     },
+     {
+      "known": "or",
+      "legoId": "S0044L01",
+      "target": " ou",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " falar",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0038L02U05",
+   "set": {
+    "known_text": "have you been here for a long time?",
+    "target_text": "você está aqui há muito tempo?",
+    "word_count": 31,
+    "lego_position": "start",
+    "known_audio_id": "ec4ddaea-9d55-4eaa-8a2a-95957e8e44aa",
+    "target1_audio_id": "e752b015-88e3-4de1-a24c-9853e70eda93",
+    "target2_audio_id": "7abb8287-ff2e-4ff9-a6f3-4bc5f76a616c",
+    "decomposition": [
+     {
+      "known": "how long",
+      "legoId": "S0033L01",
+      "target": "há quanto tempo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " você",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " está",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aqui?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0038L02B02",
+   "set": {
+    "known_text": "for a long time here",
+    "target_text": "há muito tempo aqui",
+    "word_count": 15,
+    "lego_position": "start",
+    "known_audio_id": "32018a46-afba-4331-a322-51fd425309a8",
+    "target1_audio_id": "84159c97-9c31-4b23-8e4d-52aea33be55d",
+    "target2_audio_id": "cb5fb1fe-b1e7-4af9-a705-33bca477a50e",
+    "decomposition": [
+     {
+      "known": "how long",
+      "legoId": "S0033L01",
+      "target": "há quanto tempo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0045L02U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L02U07"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0044L02U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0038L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0035L02U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0032L01U07"
+  }
+ ]
+}

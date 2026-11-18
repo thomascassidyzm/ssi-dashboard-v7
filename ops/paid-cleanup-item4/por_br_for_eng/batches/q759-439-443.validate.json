@@ -1,0 +1,45 @@
+{
+ "at": "2026-11-18T18:40:30.983Z",
+ "pass": false,
+ "seeds": [
+  {
+   "seed": 439,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ],
+   "blocking": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 440,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ],
+   "blocking": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 441,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ],
+   "blocking": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 442,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 443,
+   "issues": [
+    "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "blocking": []
+  }
+ ]
+}

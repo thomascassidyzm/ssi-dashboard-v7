@@ -1,0 +1,384 @@
+[
+ {
+  "seed_number": 502,
+  "phrases": {
+   "502:1": [
+    {
+     "known_text": "she",
+     "target_text": "ela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "almost",
+     "target_text": "quase",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "got lost",
+     "target_text": "se perdeu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "she almost got lost",
+     "target_text": "ela quase se perdeu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost in the city",
+     "target_text": "ela quase se perdeu na cidade",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost yesterday",
+     "target_text": "ela quase se perdeu ontem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost in Italy",
+     "target_text": "ela quase se perdeu na Itália",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost near the bridge",
+     "target_text": "ela quase se perdeu perto da ponte",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure she almost got lost",
+     "target_text": "tenho certeza de que ela quase se perdeu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost on Sunday morning",
+     "target_text": "ela quase se perdeu no domingo de manhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost because she didn't know the way",
+     "target_text": "ela quase se perdeu porque não sabia o caminho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that she almost got lost",
+     "target_text": "acho que ela quase se perdeu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't have said that if I had known that she almost got lost",
+     "target_text": "não teria dito isso se soubesse que ela quase se perdeu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost on the way",
+     "target_text": "ela quase se perdeu no caminho",
+     "phrase_role": "build"
+    }
+   ],
+   "502:2": [
+    {
+     "known_text": "because",
+     "target_text": "porque",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "turned",
+     "target_text": "virou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "left",
+     "target_text": "à esquerda",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "because she turned left",
+     "target_text": "porque virou à esquerda",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost because she turned left",
+     "target_text": "ela quase se perdeu porque virou à esquerda",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because she turned left at the corner",
+     "target_text": "porque virou à esquerda na esquina",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she got lost because she turned left",
+     "target_text": "ela se perdeu porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she didn't see us because she turned left",
+     "target_text": "ela não nos viu porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's on the other side because she turned left",
+     "target_text": "ela está do outro lado porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she couldn't find us because she turned left at the corner",
+     "target_text": "ela não conseguia nos encontrar porque virou à esquerda na esquina",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think she's not here because she turned left",
+     "target_text": "eu acho que ela não está aqui porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because she turned left near the bridge",
+     "target_text": "porque virou à esquerda perto da ponte",
+     "phrase_role": "build"
+    }
+   ],
+   "502:3": [
+    {
+     "known_text": "instead of",
+     "target_text": "em vez de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "right",
+     "target_text": "à direita",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "instead of right",
+     "target_text": "em vez de à direita",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "turned left instead of right",
+     "target_text": "virou à esquerda em vez de à direita",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "left instead of right",
+     "target_text": "à esquerda em vez de à direita",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost because she turned left instead of right",
+     "target_text": "ela quase se perdeu porque virou à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he turned left instead of right",
+     "target_text": "ele virou à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to turn left instead of right",
+     "target_text": "você precisa virar à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why did she turn left instead of right?",
+     "target_text": "por que ela virou à esquerda em vez de à direita?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's better to turn left instead of right",
+     "target_text": "é melhor virar à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to turn left instead of right",
+     "target_text": "virar à esquerda em vez de à direita",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 503,
+  "phrases": {
+   "503:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "hate",
+     "target_text": "detesto",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I hate",
+     "target_text": "eu detesto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate it",
+     "target_text": "eu detesto isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate waiting",
+     "target_text": "eu detesto esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate being late",
+     "target_text": "eu detesto chegar atrasado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate working on Sunday",
+     "target_text": "eu detesto trabalhar no domingo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate the way he talks",
+     "target_text": "eu detesto a maneira como ele fala",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate having to wait",
+     "target_text": "eu detesto ter que esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate making mistakes",
+     "target_text": "eu detesto cometer erros",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate this film",
+     "target_text": "eu detesto este filme",
+     "phrase_role": "build"
+    }
+   ],
+   "503:2": [
+    {
+     "known_text": "making",
+     "target_text": "causar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "trouble",
+     "target_text": "problemas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "making trouble",
+     "target_text": "causar problemas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate making trouble",
+     "target_text": "eu detesto causar problemas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "without making trouble",
+     "target_text": "sem causar problemas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to make trouble",
+     "target_text": "não quero causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they only know how to make trouble",
+     "target_text": "eles só sabem causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't like making trouble",
+     "target_text": "ela não gosta de causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not here to make trouble",
+     "target_text": "não estou aqui para causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's going to make trouble for us",
+     "target_text": "ele vai causar problemas para nós",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he likes making trouble",
+     "target_text": "ele gosta de causar problemas",
+     "phrase_role": "build"
+    }
+   ],
+   "503:3": [
+    {
+     "known_text": "but",
+     "target_text": "mas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that one",
+     "target_text": "aquele",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "mine",
+     "target_text": "meu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "but that one's mine",
+     "target_text": "mas aquele é meu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "sorry, but that one's mine",
+     "target_text": "lamento, mas aquele é meu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this one's yours, but that one's mine",
+     "target_text": "este é seu, mas aquele é meu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate making trouble but that one's mine",
+     "target_text": "eu detesto causar problemas mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can take this book, but that one's mine",
+     "target_text": "você pode levar este livro, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this coffee is yours, but that one's mine",
+     "target_text": "este café é seu, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this car is my brother's, but that one's mine",
+     "target_text": "este carro é do meu irmão, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can use the other one, but that one's mine",
+     "target_text": "você pode usar o outro, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know, but that one's mine",
+     "target_text": "eu sei, mas aquele é meu",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

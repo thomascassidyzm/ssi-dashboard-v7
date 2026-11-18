@@ -1,0 +1,538 @@
+[
+ {
+  "seed_number": 512,
+  "phrases": {
+   "512:1": [
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "can",
+     "target_text": "pode",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "hold",
+     "target_text": "segurar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "can you hold",
+     "target_text": "você pode segurar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold it",
+     "target_text": "você pode segurar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold my bag?",
+     "target_text": "você pode segurar minha mala?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold this for a few minutes?",
+     "target_text": "você pode segurar isso por uns minutos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold my coffee, please?",
+     "target_text": "você pode segurar meu café, por favor?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold my keys?",
+     "target_text": "você pode segurar minhas chaves?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the bag with both hands?",
+     "target_text": "você pode segurar a mala com as duas mãos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the door?",
+     "target_text": "você pode segurar a porta?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the kitten?",
+     "target_text": "você pode segurar o gatinho?",
+     "phrase_role": "build"
+    }
+   ],
+   "512:2": [
+    {
+     "known_text": "the door",
+     "target_text": "a porta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "open",
+     "target_text": "aberta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the door open",
+     "target_text": "a porta aberta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold the door open",
+     "target_text": "você pode segurar a porta aberta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to leave the door open",
+     "target_text": "deixar a porta aberta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I slept with the door open",
+     "target_text": "dormi com a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "who left the door open?",
+     "target_text": "quem deixou a porta aberta?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't work with the door open",
+     "target_text": "não consigo trabalhar com a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants the door open",
+     "target_text": "ela quer a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the door open for her?",
+     "target_text": "você pode segurar a porta aberta para ela?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to leave the door open",
+     "target_text": "vou deixar a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to leave the door open",
+     "target_text": "nós tivemos que deixar a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should leave the door open",
+     "target_text": "talvez devêssemos deixar a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "with the door open",
+     "target_text": "com a porta aberta",
+     "phrase_role": "build"
+    }
+   ],
+   "512:3": [
+    {
+     "known_text": "while",
+     "target_text": "enquanto",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I will go",
+     "target_text": "eu vou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "fetch",
+     "target_text": "pegar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "while I fetch",
+     "target_text": "enquanto eu vou pegar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold the door open while I fetch",
+     "target_text": "você pode segurar a porta aberta enquanto eu vou pegar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "while I fetch the car",
+     "target_text": "enquanto eu vou pegar o carro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you can wait here while I fetch the car",
+     "target_text": "você pode esperar aqui enquanto eu vou pegar o carro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold my coffee while I fetch my bag?",
+     "target_text": "você pode segurar meu café enquanto eu vou pegar minha mala?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can sit down while I fetch something to eat",
+     "target_text": "você pode se sentar enquanto eu vou pegar algo para comer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you stay with the children while I fetch the car?",
+     "target_text": "você pode ficar com as crianças enquanto eu vou pegar o carro?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's waiting at the door while I fetch the bag",
+     "target_text": "ela está esperando na porta enquanto eu vou pegar a mala",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "while I fetch my bag",
+     "target_text": "enquanto eu vou pegar minha mala",
+     "phrase_role": "build"
+    }
+   ],
+   "512:4": [
+    {
+     "known_text": "the",
+     "target_text": "as",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "keys",
+     "target_text": "chaves",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the keys",
+     "target_text": "as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "fetch the keys",
+     "target_text": "pegar as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the car keys",
+     "target_text": "as chaves do carro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold the door open while I fetch the keys?",
+     "target_text": "você pode segurar a porta aberta enquanto eu vou pegar as chaves?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to find the keys",
+     "target_text": "vou encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to find the keys",
+     "target_text": "estou tentando encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to find the keys",
+     "target_text": "espero conseguir encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to find the keys",
+     "target_text": "preciso encontrar as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hope you'll be able to find the keys",
+     "target_text": "espero que você consiga encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the man who said that he wanted the keys",
+     "target_text": "o homem que disse que queria as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's easy to find the keys",
+     "target_text": "é fácil encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's no point worrying about the keys",
+     "target_text": "não vale a pena se preocupar com as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there is a problem with the keys",
+     "target_text": "há um problema com as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why do you want the keys?",
+     "target_text": "por que você quer as chaves?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find out where the keys are",
+     "target_text": "eu quero descobrir onde estão as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to find the keys as quickly as possible",
+     "target_text": "preciso encontrar as chaves o mais rápido possível",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 513,
+  "phrases": {
+   "513:1": [
+    {
+     "known_text": "hurts",
+     "target_text": "dói",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "most",
+     "target_text": "mais",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it hurts most",
+     "target_text": "dói mais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it hurts most in the morning",
+     "target_text": "dói mais de manhã",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it hurts most here",
+     "target_text": "dói mais aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it hurts most when I'm tired",
+     "target_text": "dói mais quando estou cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts most after I eat",
+     "target_text": "dói mais depois de comer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where does it hurt most?",
+     "target_text": "onde dói mais?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts most when I have to work",
+     "target_text": "dói mais quando tenho que trabalhar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts most when I talk",
+     "target_text": "dói mais quando eu falo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that it hurts most at night",
+     "target_text": "ela disse que dói mais à noite",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts most after work",
+     "target_text": "dói mais depois do trabalho",
+     "phrase_role": "build"
+    }
+   ],
+   "513:2": [
+    {
+     "known_text": "when",
+     "target_text": "quando",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I move",
+     "target_text": "mexo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "when I move",
+     "target_text": "quando mexo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it hurts most when I move",
+     "target_text": "dói mais quando mexo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "only when I move",
+     "target_text": "só quando mexo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it only hurts when I move",
+     "target_text": "só dói quando mexo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's worse when I move",
+     "target_text": "é pior quando mexo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts a little when I move",
+     "target_text": "dói um pouco quando mexo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel it when I move",
+     "target_text": "sinto isso quando mexo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it still hurts most when I move",
+     "target_text": "ainda dói mais quando mexo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts when I move",
+     "target_text": "dói quando mexo",
+     "phrase_role": "build"
+    }
+   ],
+   "513:3": [
+    {
+     "known_text": "the",
+     "target_text": "a",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "head",
+     "target_text": "cabeça",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "my head",
+     "target_text": "a cabeça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when I move my head",
+     "target_text": "quando mexo a cabeça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my head hurts",
+     "target_text": "a cabeça dói",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my head hurts a little",
+     "target_text": "a cabeça dói um pouco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my head hurts a lot today",
+     "target_text": "a cabeça dói muito hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts when I move my head",
+     "target_text": "dói quando mexo a cabeça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my head hurts when I work too much",
+     "target_text": "a cabeça dói quando trabalho demais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it still hurts most when I move my head",
+     "target_text": "ainda dói mais quando mexo a cabeça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my head and my eyes",
+     "target_text": "a cabeça e os olhos",
+     "phrase_role": "build"
+    }
+   ],
+   "513:4": [
+    {
+     "known_text": "up",
+     "target_text": "para cima",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "and",
+     "target_text": "e",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "down",
+     "target_text": "para baixo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "up and down",
+     "target_text": "para cima e para baixo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "move my head up and down",
+     "target_text": "mexo a cabeça para cima e para baixo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when I move up and down",
+     "target_text": "quando mexo para cima e para baixo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it hurts most when I move my head up and down",
+     "target_text": "dói mais quando mexo a cabeça para cima e para baixo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going up and down all day",
+     "target_text": "estou indo para cima e para baixo o dia todo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's walking up and down",
+     "target_text": "ele está andando para cima e para baixo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it hurts when I move my head up and down",
+     "target_text": "dói quando mexo a cabeça para cima e para baixo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she was walking up and down in the office",
+     "target_text": "ela estava andando para cima e para baixo no escritório",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my head up and down",
+     "target_text": "a cabeça para cima e para baixo",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

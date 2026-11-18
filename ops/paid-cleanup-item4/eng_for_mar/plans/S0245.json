@@ -1,0 +1,41 @@
+{
+ "seed": 245,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "मी आज किती केलंय",
+     "how much I've done today"
+    ],
+    "U01": [
+     "मी किती केलंय ते मला माहीत नाही",
+     "I don't know how much I've done"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B04": [
+     "मी किती शिकलोय याबद्दल मी खूश आहे",
+     "I'm happy with how much I've learnt"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मी किती केलंय याबद्दल मी खूश आहे",
+     "I'm happy with how much I've done"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "मी थोड्या वेळात खूप शिकलोय",
+     "I've learnt a lot in a short time"
+    ]
+   }
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

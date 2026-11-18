@@ -1,0 +1,603 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0540L01B04",
+    "seed_number": 540,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "I don't mind if you ask",
+    "target_text": "eu não me importo se você perguntar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 35,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0540L02B04",
+    "seed_number": 540,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "as soon as you want to leave",
+    "target_text": "assim que você quiser ir embora",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0540L03B04",
+    "seed_number": 540,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "to work without the car",
+    "target_text": "trabalhar sem o carro",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0541L01B04",
+    "seed_number": 541,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's a good idea to rest",
+    "target_text": "é boa ideia descansar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0541L02B04",
+    "seed_number": 541,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "to try and breathe better",
+    "target_text": "tentar respirar melhor",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0541L03B04",
+    "seed_number": 541,
+    "lego_index": 3,
+    "position": 19,
+    "known_text": "to speak slowly",
+    "target_text": "falar devagar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L01B02",
+   "expect": {
+    "known_text": "I don't mind if now",
+    "target_text": "eu não me importo se agora"
+   },
+   "set": {
+    "known_text": "I don't mind if you can't come",
+    "target_text": "eu não me importo se você não puder vir",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L01B03",
+   "expect": {
+    "known_text": "yes, I don't mind if",
+    "target_text": "sim, eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't mind if you want",
+    "target_text": "eu não me importo se você quiser",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L01U01",
+   "expect": {
+    "known_text": "she said I don't mind if",
+    "target_text": "ela disse que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't mind if you want to stay",
+    "target_text": "eu não me importo se você quiser ficar",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L01U02",
+   "expect": {
+    "known_text": "we know I don't mind if",
+    "target_text": "sabemos que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't mind if you call me tomorrow",
+    "target_text": "eu não me importo se você me ligar amanhã",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L01U03",
+   "expect": {
+    "known_text": "they said I don't mind if",
+    "target_text": "disseram que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't mind if you can't help",
+    "target_text": "eu não me importo se você não puder ajudar",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L01U04",
+   "expect": {
+    "known_text": "I'm sure I don't mind if",
+    "target_text": "tenho certeza de que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't mind if you tell him the truth",
+    "target_text": "eu não me importo se você disser a verdade para ele",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L01U05",
+   "expect": {
+    "known_text": "I still don't mind if",
+    "target_text": "eu ainda não me importo se"
+   },
+   "set": {
+    "known_text": "I don't mind if you want to come with us",
+    "target_text": "eu não me importo se você quiser vir conosco",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L02B02",
+   "expect": {
+    "known_text": "I don't mind if you want to leave now",
+    "target_text": "eu não me importo se você quiser ir embora agora"
+   },
+   "set": {
+    "known_text": "if you want to leave",
+    "target_text": "se você quiser ir embora",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L02B03",
+   "expect": {
+    "known_text": "yes, you want to leave",
+    "target_text": "sim, você quiser ir embora"
+   },
+   "set": {
+    "known_text": "when you want to leave",
+    "target_text": "quando você quiser ir embora",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L02U02",
+   "expect": {
+    "known_text": "she said I don't mind if you want to leave",
+    "target_text": "ela disse que eu não me importo se você quiser ir embora"
+   },
+   "set": {
+    "known_text": "you can call me when you want to leave",
+    "target_text": "você pode me ligar quando você quiser ir embora",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L02U03",
+   "expect": {
+    "known_text": "we know I don't mind if you want to leave",
+    "target_text": "sabemos que eu não me importo se você quiser ir embora"
+   },
+   "set": {
+    "known_text": "if you want to leave early, it's not a problem",
+    "target_text": "se você quiser ir embora cedo, não é um problema",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L02U04",
+   "expect": {
+    "known_text": "they said I don't mind if you want to leave",
+    "target_text": "disseram que eu não me importo se você quiser ir embora"
+   },
+   "set": {
+    "known_text": "we're going home if you want to leave",
+    "target_text": "vamos para casa se você quiser ir embora",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L02U05",
+   "expect": {
+    "known_text": "I'm sure I don't mind if you want to leave",
+    "target_text": "tenho certeza de que eu não me importo se você quiser ir embora"
+   },
+   "set": {
+    "known_text": "I'll go with you if you want to leave",
+    "target_text": "eu vou com você se você quiser ir embora",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L03B03",
+   "expect": {
+    "known_text": "yes, without the car",
+    "target_text": "sim, sem o carro"
+   },
+   "set": {
+    "known_text": "to go without the car",
+    "target_text": "ir sem o carro",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L03U02",
+   "expect": {
+    "known_text": "she said I don't mind if you want to leave without the car",
+    "target_text": "ela disse que eu não me importo se você quiser ir embora sem o carro"
+   },
+   "set": {
+    "known_text": "it's hard to live here without the car",
+    "target_text": "é difícil morar aqui sem o carro",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L03U03",
+   "expect": {
+    "known_text": "we know I don't mind if you want to leave without the car",
+    "target_text": "sabemos que eu não me importo se você quiser ir embora sem o carro"
+   },
+   "set": {
+    "known_text": "I'm going to the city without the car",
+    "target_text": "vou para a cidade sem o carro",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L03U04",
+   "expect": {
+    "known_text": "they said I don't mind if you want to leave without the car",
+    "target_text": "disseram que eu não me importo se você quiser ir embora sem o carro"
+   },
+   "set": {
+    "known_text": "she left without the car",
+    "target_text": "ela foi embora sem o carro",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0540L03U05",
+   "expect": {
+    "known_text": "I'm sure I don't mind if you want to leave without the car",
+    "target_text": "tenho certeza de que eu não me importo se você quiser ir embora sem o carro"
+   },
+   "set": {
+    "known_text": "I go to work on foot, without the car",
+    "target_text": "vou para o trabalho a pé, sem o carro",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01B02",
+   "expect": {
+    "known_text": "it's a good idea now",
+    "target_text": "é boa ideia agora"
+   },
+   "set": {
+    "known_text": "it's a good idea to wait",
+    "target_text": "é boa ideia esperar",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01B03",
+   "expect": {
+    "known_text": "yes, it's a good idea",
+    "target_text": "sim, é boa ideia"
+   },
+   "set": {
+    "known_text": "it's a good idea to ask",
+    "target_text": "é boa ideia perguntar",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01U02",
+   "expect": {
+    "known_text": "we know it's a good idea",
+    "target_text": "sabemos que é boa ideia"
+   },
+   "set": {
+    "known_text": "it's a good idea to learn Portuguese",
+    "target_text": "é boa ideia aprender português",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01U03",
+   "expect": {
+    "known_text": "they said it's a good idea",
+    "target_text": "disseram que é boa ideia"
+   },
+   "set": {
+    "known_text": "it's a good idea to call before you go",
+    "target_text": "é boa ideia ligar antes de ir",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02B02",
+   "expect": {
+    "known_text": "it's a good idea to try and breathe now",
+    "target_text": "é boa ideia tentar respirar agora"
+   },
+   "set": {
+    "known_text": "I want to try and breathe",
+    "target_text": "quero tentar respirar",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02B03",
+   "expect": {
+    "known_text": "yes, to try and breathe",
+    "target_text": "sim, tentar respirar"
+   },
+   "set": {
+    "known_text": "you need to try and breathe",
+    "target_text": "você precisa tentar respirar",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U02",
+   "expect": {
+    "known_text": "she said it's a good idea to try and breathe",
+    "target_text": "ela disse que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "when you're nervous, it helps to try and breathe slowly",
+    "target_text": "quando você está nervoso, ajuda tentar respirar devagar",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U03",
+   "expect": {
+    "known_text": "we know it's a good idea to try and breathe",
+    "target_text": "sabemos que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "I'm going to try and breathe more slowly",
+    "target_text": "vou tentar respirar mais devagar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U04",
+   "expect": {
+    "known_text": "they said it's a good idea to try and breathe",
+    "target_text": "disseram que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "the doctor said to try and breathe slowly",
+    "target_text": "o médico disse para tentar respirar devagar",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U05",
+   "expect": {
+    "known_text": "I'm sure it's a good idea to try and breathe",
+    "target_text": "tenho certeza de que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "I need to sit down and try and breathe",
+    "target_text": "preciso me sentar e tentar respirar",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L03B03",
+   "expect": {
+    "known_text": "yes, slowly",
+    "target_text": "sim, devagar"
+   },
+   "set": {
+    "known_text": "very slowly",
+    "target_text": "muito devagar",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U02",
+   "expect": {
+    "known_text": "she said it's a good idea to try and breathe slowly",
+    "target_text": "ela disse que é boa ideia tentar respirar devagar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U03",
+   "expect": {
+    "known_text": "we know it's a good idea to try and breathe slowly",
+    "target_text": "sabemos que é boa ideia tentar respirar devagar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U04",
+   "expect": {
+    "known_text": "they said it's a good idea to try and breathe slowly",
+    "target_text": "disseram que é boa ideia tentar respirar devagar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U05",
+   "expect": {
+    "known_text": "I'm sure it's a good idea to try and breathe slowly",
+    "target_text": "tenho certeza de que é boa ideia tentar respirar devagar"
+   }
+  }
+ ]
+}

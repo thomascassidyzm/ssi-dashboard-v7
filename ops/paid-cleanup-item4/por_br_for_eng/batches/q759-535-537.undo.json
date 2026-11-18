@@ -1,0 +1,494 @@
+{
+ "event_id": "e0f7d7bb-8b01-4998-b8f7-c7b1fd214970",
+ "undo_file": "2026-11-18T15-34-43-841Z-e0f7d7bb-8b01-4998-b8f7-c7b1fd214970.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L02U03",
+   "set": {
+    "known_text": "we know I was wrong",
+    "target_text": "sabemos que eu estava enganado",
+    "known_audio_id": "bcbc1175-1906-4c52-8b3f-a0e220de57e6",
+    "target1_audio_id": "5e48fd79-aaa0-405d-931e-5e59b0000f66",
+    "target2_audio_id": "5234ddd4-eb7b-431b-aa6d-36e8cde633d8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L02B03",
+   "set": {
+    "known_text": "yes, mistaken",
+    "target_text": "sim, enganado",
+    "word_count": 13,
+    "known_audio_id": "2bfc1b94-b162-4491-8d8e-616450503b91",
+    "target1_audio_id": "fece244a-f855-44c3-b1b9-4d3c883731db",
+    "target2_audio_id": "b54bc1f3-8bd8-41a2-a967-1d8a2a67f2bb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L02B02",
+   "set": {
+    "known_text": "but I was mistaken now",
+    "target_text": "mas eu estava enganado agora",
+    "word_count": 28,
+    "lego_position": "middle",
+    "known_audio_id": "6873ca3a-6331-4b72-8309-6ecf8d9b85fe",
+    "target1_audio_id": "9a92faf2-9cd7-40da-9a0c-c02082f02a3c",
+    "target2_audio_id": "2778c089-c3fd-4276-878a-70b349f4e897"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U05",
+   "set": {
+    "known_text": "yes, but I was still here",
+    "target_text": "sim, mas eu ainda estava aqui",
+    "word_count": 29,
+    "lego_position": null,
+    "known_audio_id": "98f4fa9a-f937-490d-86b9-c474d6f8012b",
+    "target1_audio_id": "fc51acb5-23d1-418e-8cc3-a50715a4bf1e",
+    "target2_audio_id": "67b99acb-c3d8-4951-bce5-50be7fe66d43"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U04",
+   "set": {
+    "known_text": "she said, but I was here",
+    "target_text": "ela disse, mas eu estava aqui",
+    "word_count": 29,
+    "known_audio_id": "a3f7ffb3-fa57-4fa1-9b7b-0691d5bb2ef4",
+    "target1_audio_id": "06b4587f-c749-4bef-bbfe-ef42a14ddcdd",
+    "target2_audio_id": "35bb31f3-befc-414f-838d-05bbb82795d7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U03",
+   "set": {
+    "known_text": "I'm sure, but I was here",
+    "target_text": "tenho certeza, mas eu estava aqui",
+    "word_count": 33,
+    "known_audio_id": "592cbc8d-0778-4edb-b38c-5747837aba55",
+    "target1_audio_id": "40aff6c5-70a0-4606-914c-3ba5de50602a",
+    "target2_audio_id": "19bec950-9c36-43aa-821e-07e0d90a7fa0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U02",
+   "set": {
+    "known_text": "but I was still here",
+    "target_text": "mas eu ainda estava aqui",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "853f77ce-e91d-40de-b2d2-829f68d1f2ae",
+    "target1_audio_id": "eb402e1b-df6d-43c8-a45f-4255bf08205a",
+    "target2_audio_id": "810a0509-7694-49ef-8c5d-7697eaa4bf92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01B03",
+   "set": {
+    "known_text": "yes, but I was",
+    "target_text": "sim, mas eu estava",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "cabddb5a-6c9b-4b4a-b4ad-fa864d8f031f",
+    "target1_audio_id": "c92f087c-6791-4404-9056-c2ce2783f512",
+    "target2_audio_id": "1b011a72-2004-4d29-bb01-45075ec97bec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L03U05",
+   "set": {
+    "known_text": "I'm sure being crazy was bad",
+    "target_text": "tenho certeza de que ser maluco era ruim",
+    "word_count": 40,
+    "known_audio_id": "5ee8f34c-c7ff-464b-bfb8-1b7630faea68",
+    "target1_audio_id": "b8da0576-807c-43a1-8cbe-357738694461",
+    "target2_audio_id": "43527532-3ab4-4089-8058-7f23e5c274ff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L03U03",
+   "set": {
+    "known_text": "we know being crazy was bad",
+    "target_text": "sabemos que ser maluco era ruim",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "022fd77e-fb50-49da-9af1-028c4deb1f6c",
+    "target1_audio_id": "8de47a2c-d789-4000-ba51-bdb012ea0999",
+    "target2_audio_id": "22ab6b5b-85f0-4b0a-811c-fba9c13f639d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L03B03",
+   "set": {
+    "known_text": "yes, was bad",
+    "target_text": "sim, era ruim",
+    "word_count": 13,
+    "known_audio_id": "b2f4d9af-a4e1-4cfa-a910-94722713bb59",
+    "target1_audio_id": "f58e7baa-e7df-49e8-aa4d-959a2bf62135",
+    "target2_audio_id": "26f85c7d-8efa-4c98-889e-d780ae4b9314"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U05",
+   "set": {
+    "known_text": "I'm sure I used to think that being crazy",
+    "target_text": "tenho certeza de que eu costumava achar que ser maluco",
+    "word_count": 54,
+    "lego_position": "end",
+    "known_audio_id": "2d2025c4-ed18-4ba2-9eba-f0806e657eaa",
+    "target1_audio_id": "8fb3aacb-5880-44f5-9050-873d9bad68a7",
+    "target2_audio_id": "3381ca86-5b09-48ce-a7f7-462610cdc87f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U04",
+   "set": {
+    "known_text": "they said I used to think that being crazy",
+    "target_text": "disseram que eu costumava achar que ser maluco",
+    "word_count": 46,
+    "lego_position": "end",
+    "known_audio_id": "2ef13a47-84bd-4f07-8281-a8ff1c11fd20",
+    "target1_audio_id": "25848ff5-2f26-4459-8e01-17dd836cd99a",
+    "target2_audio_id": "f8b9e480-1616-43c8-91ed-bc2c0476c036"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U03",
+   "set": {
+    "known_text": "we know I used to think that being crazy",
+    "target_text": "sabemos que eu costumava achar que ser maluco",
+    "word_count": 45,
+    "lego_position": "end",
+    "known_audio_id": "23c22962-0ed7-4fb3-8184-88d42965ddcf",
+    "target1_audio_id": "f68c1af8-c526-4efb-a488-aac43074af68",
+    "target2_audio_id": "6ba390dc-7a91-4ebd-b68b-1c57b0b1c2c0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U02",
+   "set": {
+    "known_text": "she said I used to think that being crazy",
+    "target_text": "ela disse que eu costumava achar que ser maluco",
+    "word_count": 47,
+    "lego_position": "end",
+    "known_audio_id": "358383f4-3243-4cb7-b775-9424c7274cbe",
+    "target1_audio_id": "51f644ac-1557-4032-9c2e-565bffdb4283",
+    "target2_audio_id": "29f5cbc7-c07d-4ac9-b7e2-cb68a6686bca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U01",
+   "set": {
+    "known_text": "I used to think that being crazy",
+    "target_text": "eu costumava achar que ser maluco",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "790abc2e-b2ea-4484-a338-03894098041c",
+    "target1_audio_id": "0cca9148-484d-444b-b109-4dbf80966df5",
+    "target2_audio_id": "024656de-5d66-478a-b0c1-805a3b696d27"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02B03",
+   "set": {
+    "known_text": "yes, that being crazy",
+    "target_text": "sim, que ser maluco",
+    "word_count": 19,
+    "known_audio_id": "2862e547-da2a-48be-b34b-8de06cc82ef2",
+    "target1_audio_id": "b9d64248-1288-4ba0-8cca-220b3c0fc0d2",
+    "target2_audio_id": "98fb7f7e-11a4-443b-bf22-28173d2bc0c1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02B02",
+   "set": {
+    "known_text": "I still used to think that being crazy",
+    "target_text": "eu ainda costumava achar que ser maluco",
+    "word_count": 39,
+    "lego_position": "end",
+    "known_audio_id": "afe24f25-ab41-4297-92dc-bf287a715a9b",
+    "target1_audio_id": "2bff6fbc-7fdf-4cd3-90d0-259dcd24eec6",
+    "target2_audio_id": "1c2a1c85-1e8c-4d9b-a089-2977bc35bdaf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U05",
+   "set": {
+    "known_text": "I still used to think",
+    "target_text": "eu ainda costumava achar",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "742618ef-5f03-40ba-b091-22332ba16721",
+    "target1_audio_id": "4b319b32-a947-4554-8f8b-c71e65758aaa",
+    "target2_audio_id": "ec5575ad-e86a-40fd-babf-211da0d7ebba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U04",
+   "set": {
+    "known_text": "they said I used to think",
+    "target_text": "disseram que eu costumava achar",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "f3017864-c9c6-4699-bb6b-34ee4405002d",
+    "target1_audio_id": "5d8fedcd-da1d-45ff-b37c-9b99067c378e",
+    "target2_audio_id": "4319f21c-777d-4515-b5ed-e982ab92599e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U03",
+   "set": {
+    "known_text": "we know I used to think",
+    "target_text": "sabemos que eu costumava achar",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "24917fa8-6a32-4073-992e-fd5860e64f0f",
+    "target1_audio_id": "4d9c087a-986a-43e5-9b20-917537c837ae",
+    "target2_audio_id": "97d1b428-6c62-4d13-ad03-c02735f9b233"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U02",
+   "set": {
+    "known_text": "she said I used to think",
+    "target_text": "ela disse que eu costumava achar",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "0348b332-8715-42a8-b126-7b8631dd5599",
+    "target1_audio_id": "bb91470c-b8e6-411b-a98c-c918ef453bf5",
+    "target2_audio_id": "5ac30b8f-f414-41d6-a096-be335aa38302"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U01",
+   "set": {
+    "known_text": "I'm sure I used to think",
+    "target_text": "tenho certeza de que eu costumava achar",
+    "word_count": 39,
+    "lego_position": "end",
+    "known_audio_id": "af8a4952-e4cf-47f6-a042-9a278d9b87d2",
+    "target1_audio_id": "3c717d0b-8128-42d9-ac9a-1edeba0ed976",
+    "target2_audio_id": "27c6b8f7-2677-479c-8e32-dd334764000c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01B03",
+   "set": {
+    "known_text": "yes, I used to think",
+    "target_text": "sim, eu costumava achar",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "200e0d1d-5b20-4e2f-a58c-1a6acea4c2bf",
+    "target1_audio_id": "d5fdc6cb-0c25-42bc-839b-6aecec06447a",
+    "target2_audio_id": "2c0625ee-977f-4e57-9f83-72a9ebf085d2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L03U04",
+   "set": {
+    "known_text": "we know he made a promise that he wouldn't choose the wrong job",
+    "target_text": "sabemos que ele fez uma promessa de que não ia escolher o emprego errado",
+    "word_count": 72,
+    "known_audio_id": "0e5d160b-61ba-4fb6-b0e9-f7dd70d41bf3",
+    "target1_audio_id": "35b2edc3-d800-4db6-a660-4f530e238703",
+    "target2_audio_id": "fa262752-70e5-4430-9cdf-3af0ee2f30e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L03U03",
+   "set": {
+    "known_text": "she said he made a promise that he wouldn't choose the wrong job",
+    "target_text": "ela disse que ele fez uma promessa de que não ia escolher o emprego errado",
+    "word_count": 74,
+    "known_audio_id": "aa9c951f-6da7-4363-8df2-f12931e7f88d",
+    "target1_audio_id": "6e7941b1-9cf1-4b98-b052-c162a8f580b0",
+    "target2_audio_id": "c1ec7c5a-8db0-46b1-99f8-9d6d2fe0141d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L03B03",
+   "set": {
+    "known_text": "yes, the wrong job",
+    "target_text": "sim, o emprego errado",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "e6952ce9-be1a-41f2-acc2-2a5c2fc56003",
+    "target1_audio_id": "796d6a0d-f554-413d-8939-9aa7599b08eb",
+    "target2_audio_id": "4b119462-cb82-4dcd-bef4-9649725570c4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U05",
+   "set": {
+    "known_text": "they said he made a promise that he wouldn't choose",
+    "target_text": "disseram que ele fez uma promessa de que não ia escolher",
+    "word_count": 56,
+    "lego_position": "end",
+    "known_audio_id": "911f53a7-32d1-4994-ae6b-d5083db233e9",
+    "target1_audio_id": "23dafd0a-348b-409d-9fa7-c276cd7f0a8d",
+    "target2_audio_id": "f1c09a1a-4545-4bc6-827f-5fc4bca8d114"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U04",
+   "set": {
+    "known_text": "we know he made a promise that he wouldn't choose",
+    "target_text": "sabemos que ele fez uma promessa de que não ia escolher",
+    "word_count": 55,
+    "lego_position": "end",
+    "known_audio_id": "c475c143-330b-4f53-aab1-1c64852679c2",
+    "target1_audio_id": "1442aef1-6ba7-4743-82b8-5265334b2bd7",
+    "target2_audio_id": "fb4ac159-d037-412e-8227-972aaa9c6528"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U03",
+   "set": {
+    "known_text": "she said he made a promise that he wouldn't choose",
+    "target_text": "ela disse que ele fez uma promessa de que não ia escolher",
+    "word_count": 57,
+    "lego_position": "end",
+    "known_audio_id": "66b111a1-573a-4402-88c6-38177d5949ef",
+    "target1_audio_id": "da2b3796-1c87-4f6f-bb41-cb4cd8346a6b",
+    "target2_audio_id": "220c21c8-1f07-4be7-bc39-8fbc6f8143cf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U02",
+   "set": {
+    "known_text": "I think he made a promise that he wouldn't choose",
+    "target_text": "acho que ele fez uma promessa de que não ia escolher",
+    "word_count": 52,
+    "lego_position": "end",
+    "known_audio_id": "7eb93604-8960-4147-8da6-e2184a23d269",
+    "target1_audio_id": "627e1a29-250a-4ddd-82ab-d3626a61845e",
+    "target2_audio_id": "93653a7a-5efe-495c-835e-8f68cc24f302"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U01",
+   "set": {
+    "known_text": "he made a promise that he wouldn't choose",
+    "target_text": "ele fez uma promessa de que não ia escolher",
+    "word_count": 43,
+    "lego_position": "end",
+    "known_audio_id": "89723381-7dcb-4522-9f77-10f374b5d214",
+    "target1_audio_id": "0b250aab-2e54-4378-ba9f-50dcbe70d7b3",
+    "target2_audio_id": "10b55f8d-d71a-4a4b-bfca-c4a8bb1771b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02B03",
+   "set": {
+    "known_text": "yes, that he wouldn't choose",
+    "target_text": "sim, de que não ia escolher",
+    "word_count": 27,
+    "known_audio_id": "0fdf5039-1169-4dd3-b030-b1772b3bcc88",
+    "target1_audio_id": "e2f075ac-95a3-409d-8b2a-b2b63d5b9168",
+    "target2_audio_id": "5b2e3659-73e7-4fe2-9094-45daa9e08319"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02B02",
+   "set": {
+    "known_text": "he made a promise that he wouldn't choose now",
+    "target_text": "ele fez uma promessa de que não ia escolher agora",
+    "word_count": 49,
+    "lego_position": "middle",
+    "known_audio_id": "f582b7b3-08b2-460a-8d0a-b9f658d2e65a",
+    "target1_audio_id": "0af26ccf-31ad-4f23-aa8a-ad32bb253144",
+    "target2_audio_id": "03302923-b756-42df-9520-40ddfa680584"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L01B03",
+   "set": {
+    "known_text": "yes, he made a promise",
+    "target_text": "sim, ele fez uma promessa",
+    "word_count": 25,
+    "lego_position": "middle",
+    "known_audio_id": "b301551f-4c8e-4869-800d-c5d7af245f6a",
+    "target1_audio_id": "223f81ce-aafa-4267-ad1e-d298fb401763",
+    "target2_audio_id": "c2a8bfa5-1975-43ac-a011-6d95169cb9b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L01B02",
+   "set": {
+    "known_text": "he made a promise now",
+    "target_text": "ele fez uma promessa agora",
+    "word_count": 26,
+    "known_audio_id": "e3243e23-2271-4e03-ab6f-35c73ab1f1a8",
+    "target1_audio_id": "770874da-0c53-4cae-8b6e-866e1acb21cb",
+    "target2_audio_id": "59deb5c4-2667-4f0a-a2ef-7e6c742a74e1"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0537L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0537L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0536L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0536L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0536L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0535L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0535L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0535L01B04"
+  }
+ ]
+}

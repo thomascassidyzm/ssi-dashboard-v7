@@ -1,0 +1,728 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0466L01B04",
+    "seed_number": 466,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "let me go",
+    "target_text": "me deixa ir",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 11,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0466L02B04",
+    "seed_number": 466,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "to throw it to me",
+    "target_text": "jogar ele para mim",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0466L03B04",
+    "seed_number": 466,
+    "lego_index": 3,
+    "position": 14,
+    "known_text": "to throw everything over the wall",
+    "target_text": "jogar tudo por cima do muro",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0467L01B04",
+    "seed_number": 467,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's next to the shop",
+    "target_text": "é ao lado da loja",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0467L02B04",
+    "seed_number": 467,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "in front of the car park",
+    "target_text": "em frente do estacionamento",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0468L01B04",
+    "seed_number": 468,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's a friend",
+    "target_text": "é um amigo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 10,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0468L02B04",
+    "seed_number": 468,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "in this big world",
+    "target_text": "neste mundo grande",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01B02",
+   "expect": {
+    "known_text": "let me now",
+    "target_text": "me deixa agora"
+   },
+   "set": {
+    "known_text": "let me help",
+    "target_text": "me deixa ajudar",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01B03",
+   "expect": {
+    "known_text": "yes, let me",
+    "target_text": "sim, me deixa"
+   },
+   "set": {
+    "known_text": "let me see",
+    "target_text": "me deixa ver",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U01",
+   "expect": {
+    "known_text": "no, let me",
+    "target_text": "não, me deixa"
+   },
+   "set": {
+    "known_text": "let me help you",
+    "target_text": "me deixa te ajudar",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U02",
+   "expect": {
+    "known_text": "that's true, let me",
+    "target_text": "isso é verdade, me deixa"
+   },
+   "set": {
+    "known_text": "let me think about it",
+    "target_text": "me deixa pensar nisso",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U03",
+   "expect": {
+    "known_text": "I'm sure, let me",
+    "target_text": "tenho certeza, me deixa"
+   },
+   "set": {
+    "known_text": "let me try",
+    "target_text": "me deixa tentar",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U04",
+   "expect": {
+    "known_text": "yes, let me serve",
+    "target_text": "sim, me deixa servir"
+   },
+   "set": {
+    "known_text": "let me explain",
+    "target_text": "me deixa explicar",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U05",
+   "expect": {
+    "known_text": "let me still",
+    "target_text": "me deixa ainda"
+   },
+   "set": {
+    "known_text": "let me pay",
+    "target_text": "me deixa pagar",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02B03",
+   "expect": {
+    "known_text": "yes, to throw it",
+    "target_text": "sim, jogar ele"
+   },
+   "set": {
+    "known_text": "you can throw it",
+    "target_text": "você pode jogar ele",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U01",
+   "expect": {
+    "known_text": "no, throw it",
+    "target_text": "não, jogar ele"
+   },
+   "set": {
+    "known_text": "she wants to throw it",
+    "target_text": "ela quer jogar ele",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U02",
+   "expect": {
+    "known_text": "that's true, throw it",
+    "target_text": "isso é verdade, jogar ele"
+   },
+   "set": {
+    "known_text": "I'm going to throw it",
+    "target_text": "vou jogar ele",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U04",
+   "expect": {
+    "known_text": "yes, let me throw it",
+    "target_text": "sim, me deixa jogar ele"
+   },
+   "set": {
+    "known_text": "can I throw it?",
+    "target_text": "posso jogar ele?",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U05",
+   "expect": {
+    "known_text": "let me still throw it",
+    "target_text": "me deixa ainda jogar ele"
+   },
+   "set": {
+    "known_text": "I don't want to throw it",
+    "target_text": "não quero jogar ele",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03B03",
+   "expect": {
+    "known_text": "yes, over the wall",
+    "target_text": "sim, por cima do muro"
+   },
+   "set": {
+    "known_text": "over the garden wall",
+    "target_text": "por cima do muro do jardim",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U02",
+   "expect": {
+    "known_text": "no, over the wall",
+    "target_text": "não, por cima do muro"
+   },
+   "set": {
+    "known_text": "she wants to throw it over the wall",
+    "target_text": "ela quer jogar ele por cima do muro",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U03",
+   "expect": {
+    "known_text": "that's true, over the wall",
+    "target_text": "isso é verdade, por cima do muro"
+   },
+   "set": {
+    "known_text": "can you throw it over the wall?",
+    "target_text": "você pode jogar ele por cima do muro?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U04",
+   "expect": {
+    "known_text": "yes, let me throw it over the wall",
+    "target_text": "sim, me deixa jogar ele por cima do muro"
+   },
+   "set": {
+    "known_text": "I can't throw it over the wall",
+    "target_text": "não consigo jogar ele por cima do muro",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U05",
+   "expect": {
+    "known_text": "let me still throw it over the wall",
+    "target_text": "me deixa ainda jogar ele por cima do muro"
+   },
+   "set": {
+    "known_text": "it's easy to throw it over the wall",
+    "target_text": "é fácil jogar ele por cima do muro",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01B02",
+   "expect": {
+    "known_text": "it's next to now",
+    "target_text": "é ao lado agora"
+   },
+   "set": {
+    "known_text": "it's next to the hotel",
+    "target_text": "é ao lado do hotel",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01B03",
+   "expect": {
+    "known_text": "yes, it's next to",
+    "target_text": "sim, é ao lado"
+   },
+   "set": {
+    "known_text": "it's next to the school",
+    "target_text": "é ao lado da escola",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U01",
+   "expect": {
+    "known_text": "no, it's next to",
+    "target_text": "não, é ao lado"
+   },
+   "set": {
+    "known_text": "the café is next to the hotel",
+    "target_text": "o café é ao lado do hotel",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U02",
+   "expect": {
+    "known_text": "I'm sure, it's next to",
+    "target_text": "tenho certeza, é ao lado"
+   },
+   "set": {
+    "known_text": "my office is next to the restaurant",
+    "target_text": "o meu escritório é ao lado do restaurante",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U03",
+   "expect": {
+    "known_text": "I want to know, it's next to",
+    "target_text": "quero saber, é ao lado"
+   },
+   "set": {
+    "known_text": "it's next to the post office",
+    "target_text": "é ao lado dos correios",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U04",
+   "expect": {
+    "known_text": "yes, it's next to the hotel",
+    "target_text": "sim, é ao lado do hotel"
+   },
+   "set": {
+    "known_text": "I think it's next to the hotel",
+    "target_text": "acho que é ao lado do hotel",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U05",
+   "expect": {
+    "known_text": "it's still next to",
+    "target_text": "ainda é ao lado"
+   },
+   "set": {
+    "known_text": "the restaurant is next to the shop",
+    "target_text": "o restaurante é ao lado da loja",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02B03",
+   "expect": {
+    "known_text": "yes, the car park",
+    "target_text": "sim, do estacionamento"
+   },
+   "set": {
+    "known_text": "near the car park",
+    "target_text": "perto do estacionamento",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02U02",
+   "expect": {
+    "known_text": "no, the car park",
+    "target_text": "não, do estacionamento"
+   },
+   "set": {
+    "known_text": "I'll wait for you near the car park",
+    "target_text": "vou te esperar perto do estacionamento",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02U03",
+   "expect": {
+    "known_text": "that's true, the car park",
+    "target_text": "isso é verdade, do estacionamento"
+   },
+   "set": {
+    "known_text": "the hotel is next to the car park",
+    "target_text": "o hotel é ao lado do estacionamento",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02U04",
+   "expect": {
+    "known_text": "yes, it's next to the car park",
+    "target_text": "sim, é ao lado do estacionamento"
+   },
+   "set": {
+    "known_text": "the bus is in front of the car park",
+    "target_text": "o ônibus está em frente do estacionamento",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01B03",
+   "expect": {
+    "known_text": "yes, it's a",
+    "target_text": "sim, é um"
+   },
+   "set": {
+    "known_text": "it's a good book",
+    "target_text": "é um bom livro",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U01",
+   "expect": {
+    "known_text": "no, it's a",
+    "target_text": "não, é um"
+   },
+   "set": {
+    "known_text": "it's a problem for me",
+    "target_text": "é um problema para mim",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U02",
+   "expect": {
+    "known_text": "I'm sure, it's a",
+    "target_text": "tenho certeza, é um"
+   },
+   "set": {
+    "known_text": "it's a good restaurant",
+    "target_text": "é um bom restaurante",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U03",
+   "expect": {
+    "known_text": "I want to know, it's a",
+    "target_text": "quero saber, é um"
+   },
+   "set": {
+    "known_text": "it's a beautiful garden",
+    "target_text": "é um jardim bonito",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U04",
+   "expect": {
+    "known_text": "yes, it's a problem",
+    "target_text": "sim, é um problema"
+   },
+   "set": {
+    "known_text": "it's an interesting book",
+    "target_text": "é um livro interessante",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02B02",
+   "expect": {
+    "known_text": "it's still a big world now",
+    "target_text": "ainda é um mundo grande agora"
+   },
+   "set": {
+    "known_text": "a big world",
+    "target_text": "um mundo grande",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02B03",
+   "expect": {
+    "known_text": "yes, big world",
+    "target_text": "sim, mundo grande"
+   },
+   "set": {
+    "known_text": "in a big world",
+    "target_text": "num mundo grande",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02U02",
+   "expect": {
+    "known_text": "no, big world",
+    "target_text": "não, mundo grande"
+   },
+   "set": {
+    "known_text": "I know it's a big world",
+    "target_text": "sei que é um mundo grande",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02U03",
+   "expect": {
+    "known_text": "that's true, big world",
+    "target_text": "isso é verdade, mundo grande"
+   },
+   "set": {
+    "known_text": "I think it's a big world",
+    "target_text": "acho que é um mundo grande",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02U04",
+   "expect": {
+    "known_text": "yes, it's a big world",
+    "target_text": "sim, é um mundo grande"
+   },
+   "set": {
+    "known_text": "it was a big world",
+    "target_text": "era um mundo grande",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

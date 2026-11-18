@@ -1,0 +1,483 @@
+{
+ "event_id": "68839b8e-73a8-47da-a75a-241e1d71974b",
+ "undo_file": "2026-11-18T18-36-26-370Z-68839b8e-73a8-47da-a75a-241e1d71974b.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L03U04",
+   "set": {
+    "known_text": "yes, if you ask me now",
+    "target_text": "sim, se você me perguntar agora",
+    "word_count": 31,
+    "lego_position": "middle",
+    "known_audio_id": "ecf2aecf-ecd6-4db9-9d60-5aa05b669163",
+    "target1_audio_id": "7e0a0e2b-bc83-4dd1-b699-45d7b4228f1d",
+    "target2_audio_id": "9ada86d6-18db-413a-a222-5332d6e67fd4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L03U02",
+   "set": {
+    "known_text": "no, if you ask me",
+    "target_text": "não, se você me perguntar",
+    "word_count": 25,
+    "lego_position": "middle",
+    "known_audio_id": "c1a870ac-2dc6-4506-a860-6d63ac203e21",
+    "target1_audio_id": "d8355252-2096-4244-ae62-557125b99d16",
+    "target2_audio_id": "ca5520d8-d3a5-4ef2-acda-0acc5ba756f6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L03B03",
+   "set": {
+    "known_text": "yes, if you ask me",
+    "target_text": "sim, se você me perguntar",
+    "word_count": 25,
+    "known_audio_id": "ccf3a7d5-49d2-4b9d-b731-2392d5ea577b",
+    "target1_audio_id": "ee7479b7-4545-49fd-a47b-1801bcb379c0",
+    "target2_audio_id": "5bc3fb4f-9bc9-4842-9502-d7951255afff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L03B02",
+   "set": {
+    "known_text": "if you ask me now",
+    "target_text": "se você me perguntar agora",
+    "word_count": 26,
+    "known_audio_id": "7dea73cf-f3f2-46fd-8e9e-9a672387de46",
+    "target1_audio_id": "149082c4-0abf-4b16-9877-e2204964ca36",
+    "target2_audio_id": "1e716e1e-5dc9-47c2-8383-800fd267f672"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L01U05",
+   "set": {
+    "known_text": "that wouldn't be true, I'm sure",
+    "target_text": "isso não seria verdade, tenho certeza",
+    "word_count": 37,
+    "known_audio_id": "0c0f0e2b-4a82-4df3-b4ff-0c821557bc4d",
+    "target1_audio_id": "3612f74b-d3a0-4cc5-addb-1f0877e05d7e",
+    "target2_audio_id": "3e9e3193-db52-413d-b447-f6f271f95dd4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L01U04",
+   "set": {
+    "known_text": "yes, I think that wouldn't be",
+    "target_text": "sim, acho que isso não seria",
+    "word_count": 28,
+    "lego_position": "end",
+    "known_audio_id": "ca7bd21a-4bbb-4d45-b26c-5c94d662a80a",
+    "target1_audio_id": "78effc29-8345-4864-8e82-9dc548398f98",
+    "target2_audio_id": "dd25c3f8-8fc7-4f16-80f0-317651d5d059"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L01U02",
+   "set": {
+    "known_text": "I think that wouldn't be",
+    "target_text": "acho que isso não seria",
+    "word_count": 23,
+    "lego_position": "end",
+    "known_audio_id": "0f45b787-7504-45dc-8e07-d154aa212a18",
+    "target1_audio_id": "4cf91296-eb2d-452b-ba78-bae04da2b6f6",
+    "target2_audio_id": "7f398997-67a1-4b35-b08b-5da92874a4a5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L01U01",
+   "set": {
+    "known_text": "no, that wouldn't be",
+    "target_text": "não, isso não seria",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "21b092a9-5eb2-4d68-a133-0e8f4b8f80c8",
+    "target1_audio_id": "bc66ee43-6186-4222-9776-1c4a6f303c39",
+    "target2_audio_id": "df9c4bf3-218c-4b80-8c37-b1c4d66356c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0415L01B03",
+   "set": {
+    "known_text": "yes, that wouldn't be",
+    "target_text": "sim, isso não seria",
+    "word_count": 19,
+    "known_audio_id": "2573c5ed-3d58-42a5-aa4a-1d4c792970df",
+    "target1_audio_id": "b4d68d88-5624-4a92-b15e-5cfcc863a1a1",
+    "target2_audio_id": "217d2efb-dfa0-4245-a038-638d7f1b4634"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L03U03",
+   "set": {
+    "known_text": "I think red wine",
+    "target_text": "acho que vinho tinto",
+    "word_count": 20,
+    "known_audio_id": "590358be-e021-4e61-82cf-4d46443fc96c",
+    "target1_audio_id": "134c3a95-a373-42d3-b17f-582d7ab1a2f6",
+    "target2_audio_id": "e1c4de95-24c7-4c45-b0e1-6266c8514a6a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L03U02",
+   "set": {
+    "known_text": "yes, red wine",
+    "target_text": "sim, vinho tinto",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "b5cb0a53-9491-4fae-b53f-1989bc3ee7e9",
+    "target1_audio_id": "79504f48-8854-41ab-9c44-e37a26c7f0ad",
+    "target2_audio_id": "a712f386-64d3-4601-bc65-24d3f58d75c7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L02U05",
+   "set": {
+    "known_text": "we could have a bottle of coffee now",
+    "target_text": "podíamos ter uma garrafa de café agora",
+    "word_count": 38,
+    "known_audio_id": "556fbe7a-9e9b-48af-9875-af0dfe3fcaa3",
+    "target1_audio_id": "5eb3bd19-8941-4f18-b3da-904fe4d67b3c",
+    "target2_audio_id": "8dafb20d-d16d-4ba2-8730-5eb534f21320"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L02U04",
+   "set": {
+    "known_text": "no, a bottle of coffee",
+    "target_text": "não, uma garrafa de café",
+    "word_count": 24,
+    "known_audio_id": "52b3c689-5bcb-4398-8bfa-cff33bb76f8c",
+    "target1_audio_id": "9b5d0d4d-6b3d-4731-8378-8a93241307c8",
+    "target2_audio_id": "54dc4f75-136c-4b0f-927e-36685cdfd22f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L02U03",
+   "set": {
+    "known_text": "I think we could have a bottle of coffee",
+    "target_text": "acho que podíamos ter uma garrafa de café",
+    "word_count": 41,
+    "lego_position": "end",
+    "known_audio_id": "3ff65281-e183-4cef-b0e6-67a82829bac3",
+    "target1_audio_id": "23f96db1-e581-4f95-908f-4a4009f6d423",
+    "target2_audio_id": "703babc5-f0e1-4991-bc80-d828fc3b610f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L02U02",
+   "set": {
+    "known_text": "yes, could we have a bottle of coffee?",
+    "target_text": "sim, podíamos ter uma garrafa de café?",
+    "word_count": 38,
+    "known_audio_id": "0e7867de-38f7-44f1-a3f2-670490778b23",
+    "target1_audio_id": "29f9ac58-c1f9-4eb4-811f-c90d55edf6fa",
+    "target2_audio_id": "ab331149-c080-477d-8e75-cd383bf079d6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L02U01",
+   "set": {
+    "known_text": "could we have a bottle of coffee?",
+    "target_text": "podíamos ter uma garrafa de café?",
+    "known_audio_id": "e0db254f-b2a2-45f1-b94d-e501a19d3e67",
+    "target1_audio_id": "a6e81bb4-b6a6-46fa-b2c6-0aad54561901",
+    "target2_audio_id": "d7893c5f-febc-432e-b587-994f5f7b807e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L02B03",
+   "set": {
+    "known_text": "yes, a bottle of",
+    "target_text": "sim, uma garrafa de",
+    "known_audio_id": "5956124b-9f1c-445f-8bae-61df71c06365",
+    "target1_audio_id": "67424062-c450-4733-9071-9587539543c6",
+    "target2_audio_id": "e9d2d2c1-20ea-4958-b9b9-026b559d7b1c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L01U05",
+   "set": {
+    "known_text": "no, we couldn't have",
+    "target_text": "não, não podíamos ter",
+    "lego_position": "end",
+    "known_audio_id": "fc4a4099-f305-47bd-8b31-6f13de284f4e",
+    "target1_audio_id": "b20768fd-8f5f-4d38-b693-26aace5438ed",
+    "target2_audio_id": "10d4c9c3-6bec-4580-b22d-7e26ab186dc7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L01U03",
+   "set": {
+    "known_text": "I think we could have",
+    "target_text": "acho que podíamos ter",
+    "word_count": 21,
+    "lego_position": "end",
+    "known_audio_id": "8c3b3a1b-644e-4883-a34c-4b85826451b3",
+    "target1_audio_id": "5f9f33fb-2294-4554-9216-e8a1427b28a8",
+    "target2_audio_id": "e86af064-60c8-4f17-b26c-603e0f41bbd4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L01U02",
+   "set": {
+    "known_text": "yes, we could have",
+    "target_text": "sim, podíamos ter",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "ad4bbf09-f885-4b28-a3aa-0537e1ce9faa",
+    "target1_audio_id": "6e0c7c81-66d9-42fc-b97d-815ff7b981c6",
+    "target2_audio_id": "20b558e7-d383-422d-9733-7c46aa6f87f4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L01B03",
+   "set": {
+    "known_text": "could we have today",
+    "target_text": "podíamos ter hoje",
+    "word_count": 17,
+    "known_audio_id": "1aca1f65-3327-41aa-9ff3-2784839737b6",
+    "target1_audio_id": "458f829f-15ef-4bbc-8b60-19e44404a930",
+    "target2_audio_id": "3312765a-c2d0-45e9-b39b-2619a8f80268"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0414L01B02",
+   "set": {
+    "known_text": "could we have now",
+    "target_text": "podíamos ter agora",
+    "known_audio_id": "29428efe-c3d1-4601-ab6e-689fbbeb38e4",
+    "target1_audio_id": "f8d2c807-6ded-4581-a2ea-6b16e2967a2c",
+    "target2_audio_id": "914d5605-7eca-474e-b07c-a86b80fb57b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L03U03",
+   "set": {
+    "known_text": "no, too close",
+    "target_text": "não, perto demais",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "77ae3c74-bf6e-4ee3-9d54-8c77a6542e52",
+    "target1_audio_id": "73cd8b8a-d27a-4809-817a-00f0f3afc692",
+    "target2_audio_id": "1876466f-39a0-452b-aba9-995ee13813c6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L03U02",
+   "set": {
+    "known_text": "yes, too close",
+    "target_text": "sim, perto demais",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "b9e4d489-ded1-4a30-b8f8-cd57649e54cc",
+    "target1_audio_id": "d28820c5-c219-4847-a6b1-6bf4a445ca07",
+    "target2_audio_id": "d59a1d03-fd44-4100-add3-6edc9a591541"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L03B03",
+   "set": {
+    "known_text": "too close today",
+    "target_text": "perto demais hoje",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "3790c971-5321-4c2f-ac21-4a75a4e67a7a",
+    "target1_audio_id": "3b9812aa-0e3a-47b7-9eea-336b931bd26e",
+    "target2_audio_id": "c1c4fe4f-bf77-44ed-8816-b066c09d49a6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L03B02",
+   "set": {
+    "known_text": "too close now",
+    "target_text": "perto demais agora",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "c342361a-126b-4219-8bb5-b9dc9157f4e9",
+    "target1_audio_id": "aa82f20b-b262-45de-ba6a-8770a300337f",
+    "target2_audio_id": "81a8cf95-549a-4131-849b-84caa869a3ce"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L02U05",
+   "set": {
+    "known_text": "no, if we go",
+    "target_text": "não, se formos",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "ce5cec00-b69b-4c25-aa33-86669129b59a",
+    "target1_audio_id": "f950d57f-af52-4f14-88f6-fd7d8e3032e5",
+    "target2_audio_id": "781da3b0-87b1-4cb9-bd9c-71c9262132e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L02U03",
+   "set": {
+    "known_text": "I think if we go",
+    "target_text": "acho que se formos",
+    "word_count": 18,
+    "known_audio_id": "66e3642b-2292-4a30-b9bc-20a4e621df7d",
+    "target1_audio_id": "bb196918-da6c-4486-8fbb-a9c669ed6093",
+    "target2_audio_id": "ae93b764-4828-4bc1-8277-251c31a4943a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L02U02",
+   "set": {
+    "known_text": "yes, if we go",
+    "target_text": "sim, se formos",
+    "word_count": 14,
+    "known_audio_id": "17fa89bd-a22c-4fcd-b2c1-bcf06832a8ee",
+    "target1_audio_id": "495d8e26-ac17-4f81-9729-3180e2fe4662",
+    "target2_audio_id": "b9d33519-2574-4b5b-9a01-12e0083ed345"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L02B03",
+   "set": {
+    "known_text": "if we go today",
+    "target_text": "se formos hoje",
+    "word_count": 14,
+    "lego_position": "start",
+    "known_audio_id": "bd445d98-12a1-46a3-ad36-85c824619666",
+    "target1_audio_id": "8faed109-6420-444a-9fa1-96512367a8fa",
+    "target2_audio_id": "65f05cf2-90b1-40f6-81c7-eb9feaa323e0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L02B02",
+   "set": {
+    "known_text": "if we go now",
+    "target_text": "se formos agora",
+    "word_count": 15,
+    "known_audio_id": "5d558cf6-d269-43a7-b02c-5191706a27f4",
+    "target1_audio_id": "e6b7b4c8-ce74-418d-9939-d53121b6b5d0",
+    "target2_audio_id": "dbb2ccbd-ce4d-4678-9535-dc9a7e191794"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L01U05",
+   "set": {
+    "known_text": "we couldn't allow them to fall",
+    "target_text": "nós não podíamos deixá-los cair",
+    "word_count": 31,
+    "lego_position": null,
+    "known_audio_id": "a0f0714f-160d-4cb4-87f5-06661e0f1215",
+    "target1_audio_id": "0e48c030-6746-42d3-abae-d9992960512a",
+    "target2_audio_id": "b9f3aaf3-5602-4aa3-9675-6bef18c58ed6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L01U04",
+   "set": {
+    "known_text": "yes, I think we could fall",
+    "target_text": "sim, acho que nós podíamos cair",
+    "known_audio_id": "340c34b5-a04f-4dea-9f4a-891670243c70",
+    "target1_audio_id": "1ee6422d-52c1-4246-9854-cbfafc39fbb8",
+    "target2_audio_id": "53ddcc02-dbdb-4f4e-a550-39504b25ff94"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L01U01",
+   "set": {
+    "known_text": "no, we could fall",
+    "target_text": "não, nós podíamos cair",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "0e34f07f-53f0-46ba-ac1b-c3d539092ae6",
+    "target1_audio_id": "ce1292bf-2c24-4e0b-9cf4-710c79803183",
+    "target2_audio_id": "89d55b3c-3198-4915-b313-e2d0ce6c3fd8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L01B03",
+   "set": {
+    "known_text": "we could fall now",
+    "target_text": "nós podíamos cair agora",
+    "word_count": 23,
+    "known_audio_id": "6931b5ab-8c9d-4dc5-923d-ffbd50dbae93",
+    "target1_audio_id": "0e52479d-6003-4a5c-89fb-180cfde6e5e3",
+    "target2_audio_id": "c81a48f9-6238-45ac-9306-0330446a3d5a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0413L01B02",
+   "set": {
+    "known_text": "yes, we could fall",
+    "target_text": "sim, nós podíamos cair",
+    "word_count": 22,
+    "known_audio_id": "0f01166c-885c-459d-9af5-d46763f68e4b",
+    "target1_audio_id": "f6200786-76e0-431e-bc86-3033806e7d57",
+    "target2_audio_id": "05791df0-acf1-44d9-8157-4563f69a64c7"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0415L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0415L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0414L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0414L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0414L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0413L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0413L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0413L01B04"
+  }
+ ]
+}

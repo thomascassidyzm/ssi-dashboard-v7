@@ -1,0 +1,474 @@
+{
+ "event_id": "2bea1a2b-0314-4cc2-88d7-c737bb30fee6",
+ "undo_file": "2026-11-18T15-31-24-693Z-2bea1a2b-0314-4cc2-88d7-c737bb30fee6.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U05",
+   "set": {
+    "known_text": "I'm sure, in another room",
+    "target_text": "tenho certeza, em outro quarto",
+    "word_count": 30,
+    "known_audio_id": "f33d9d49-5430-467b-b82d-6549515a51ca",
+    "target1_audio_id": "fe4c1491-f1fb-4cf1-b758-886ff347592d",
+    "target2_audio_id": "226fe922-f4c2-4655-99d6-fc5d93734104"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U04",
+   "set": {
+    "known_text": "yes, I'm probably supposed to keep those things in another room",
+    "target_text": "sim, provavelmente devia guardar essas coisas em outro quarto",
+    "word_count": 61,
+    "known_audio_id": "bb0c9ab4-f0e2-447e-9e90-0bbc5ab87a2d",
+    "target1_audio_id": "da3db6a2-3a74-4b78-9799-6dbbe36da8fa",
+    "target2_audio_id": "341135b7-702f-4313-84e2-d6366e0c190a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U03",
+   "set": {
+    "known_text": "that's true, in another room",
+    "target_text": "isso é verdade, em outro quarto",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "a6cb1c14-35c8-41b7-8f10-c3d299083cf8",
+    "target1_audio_id": "cb7bcb60-3e38-429a-b97f-e3aaa172ff37",
+    "target2_audio_id": "e365ae4d-c757-4c4b-8706-c21eb70d2d02"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U02",
+   "set": {
+    "known_text": "no, in another room",
+    "target_text": "não, em outro quarto",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "8b7c6bfe-ace4-4062-982b-a6003bde45c8",
+    "target1_audio_id": "c91f1662-a1e9-4670-ae2b-6d9991f01450",
+    "target2_audio_id": "7a862dea-fc73-4adb-942d-6feca2e831b3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03B03",
+   "set": {
+    "known_text": "yes, in another room",
+    "target_text": "sim, em outro quarto",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "ea56692b-be1f-4aac-9ed6-c5806371301e",
+    "target1_audio_id": "1f65238f-e37c-4879-8359-131ecebf8449",
+    "target2_audio_id": "f84e868e-f6a3-4189-b316-6f6fc96da6b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U05",
+   "set": {
+    "known_text": "I'm still probably supposed to keep those things",
+    "target_text": "ainda provavelmente devia guardar essas coisas",
+    "word_count": 46,
+    "known_audio_id": "ce0fd4ec-7ffc-4866-9dd4-3f19fd7dbb60",
+    "target1_audio_id": "ab4c6819-6889-4e68-a1ab-6d2ee5577899",
+    "target2_audio_id": "ac8dd273-bb24-488e-b842-4748e869b100"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U04",
+   "set": {
+    "known_text": "yes, I'm probably supposed to keep those things",
+    "target_text": "sim, provavelmente devia guardar essas coisas",
+    "word_count": 45,
+    "lego_position": "end",
+    "known_audio_id": "885974ec-5f29-464d-8226-5a6a5fc83bad",
+    "target1_audio_id": "6149da2c-db24-415d-b38f-605f476dcbe4",
+    "target2_audio_id": "7436bad6-0976-4d92-89eb-c9248ae23ecf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U02",
+   "set": {
+    "known_text": "that's true, keep those things",
+    "target_text": "isso é verdade, guardar essas coisas",
+    "word_count": 36,
+    "lego_position": "end",
+    "known_audio_id": "6e826401-9514-41f0-82b2-7142b761dda2",
+    "target1_audio_id": "98ff229c-9847-476a-ab83-3756c4c13c23",
+    "target2_audio_id": "b26c996c-5db4-4d26-8615-adbb693fbe25"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U01",
+   "set": {
+    "known_text": "no, keep those things",
+    "target_text": "não, guardar essas coisas",
+    "word_count": 25,
+    "known_audio_id": "1dc40bcf-9c3a-4f2f-b22c-46fe9e4b2551",
+    "target1_audio_id": "72519d50-19aa-4eca-b4ed-08d8e61b3ccf",
+    "target2_audio_id": "f592d974-fa53-419c-a63a-96be42892c90"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02B03",
+   "set": {
+    "known_text": "yes, to keep those things",
+    "target_text": "sim, guardar essas coisas",
+    "word_count": 25,
+    "known_audio_id": "26901297-278a-4ffc-af3a-27203c1e7474",
+    "target1_audio_id": "b4e6ab0b-1d2f-4133-89df-c93ce4d2ffa2",
+    "target2_audio_id": "23ee4137-9367-4627-97b3-fb267ecd4fce"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U05",
+   "set": {
+    "known_text": "I'm still probably supposed to",
+    "target_text": "ainda provavelmente devia",
+    "word_count": 25,
+    "lego_position": "middle",
+    "known_audio_id": "c51cf3a3-aeb1-4cdd-8731-fe9ff5ec920a",
+    "target1_audio_id": "8c1fd08d-f1a5-4928-95ec-096972842d14",
+    "target2_audio_id": "670d40ca-f05c-459e-9810-a7d22e68f38a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U04",
+   "set": {
+    "known_text": "yes, that's true, I'm probably supposed to",
+    "target_text": "sim, isso é verdade, provavelmente devia",
+    "word_count": 40,
+    "lego_position": "end",
+    "known_audio_id": "848ef059-5010-40c1-be91-7c34447c35e9",
+    "target1_audio_id": "544737c2-05d2-48bd-b635-ce7a711edfe0",
+    "target2_audio_id": "71266c96-6949-4d54-ab1e-1967aadfe4a8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U03",
+   "set": {
+    "known_text": "I'm sure, I'm probably supposed to",
+    "target_text": "tenho certeza, provavelmente devia",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "cd1a8bc4-d1f0-4b38-936e-898fbe7d6b9c",
+    "target1_audio_id": "5c48cd7f-59a9-4a27-b460-6f9378bf3cf9",
+    "target2_audio_id": "7031fb82-8970-49a1-a5cf-495d38f862e2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U02",
+   "set": {
+    "known_text": "that's true, I'm probably supposed to",
+    "target_text": "isso é verdade, provavelmente devia",
+    "word_count": 35,
+    "lego_position": "end",
+    "known_audio_id": "30664d6a-c6b7-4a15-b790-06abf7e563cd",
+    "target1_audio_id": "acb38032-4989-4f74-8af4-615990d862c0",
+    "target2_audio_id": "325ed764-a51f-4b60-a22b-d70320098237"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U01",
+   "set": {
+    "known_text": "no, I'm probably supposed to",
+    "target_text": "não, provavelmente devia",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "8b44938d-ef3b-4872-bdb3-0f2bc1740abf",
+    "target1_audio_id": "ee560be6-3832-4d5c-bef9-8e0f2442160f",
+    "target2_audio_id": "71804a30-a020-467d-809f-806ae1514ee5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01B03",
+   "set": {
+    "known_text": "yes, I'm probably supposed to",
+    "target_text": "sim, provavelmente devia",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "3e800f3f-6459-4ef2-8f92-d2abf1f672dd",
+    "target1_audio_id": "fefd9af7-5646-4e52-8c6c-416b8f15661b",
+    "target2_audio_id": "26426518-d3d1-4b2e-9386-35a45e71ef1f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01B02",
+   "set": {
+    "known_text": "I'm probably supposed to serve",
+    "target_text": "provavelmente devia servir",
+    "word_count": 26,
+    "known_audio_id": "44cd2d71-b747-4927-8625-48910e1846a7",
+    "target1_audio_id": "0304eaaa-b82f-47b4-af5b-37dce5c01782",
+    "target2_audio_id": "af118e37-8183-4a3d-a863-e46c02afb44d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U05",
+   "set": {
+    "known_text": "I'm sure, that funny story",
+    "target_text": "tenho certeza, aquela história engraçada",
+    "word_count": 40,
+    "known_audio_id": "24a168f2-a4cb-41d0-951b-0056dff11cb2",
+    "target1_audio_id": "c1b37ecc-c30c-4867-a0f9-4adb190c6f3d",
+    "target2_audio_id": "1f9d65a2-55b2-40b5-aed0-73066da940dd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U04",
+   "set": {
+    "known_text": "yes, guess who told me that funny story",
+    "target_text": "sim, adivinha quem me contou aquela história engraçada",
+    "word_count": 54,
+    "known_audio_id": "2fe34e54-59cd-4983-a656-08afcd84c568",
+    "target1_audio_id": "891ceb1f-eb88-4332-93fc-313cf1cc57de",
+    "target2_audio_id": "d23940bf-b3ee-499f-b983-6f721ec84acd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U03",
+   "set": {
+    "known_text": "that's true, that funny story",
+    "target_text": "isso é verdade, aquela história engraçada",
+    "word_count": 41,
+    "lego_position": "end",
+    "known_audio_id": "e8ae9ded-8100-4c74-99ac-44531b0f9740",
+    "target1_audio_id": "59e482bd-6254-4122-b2ef-69afc8659618",
+    "target2_audio_id": "b56ce2dd-0388-4737-b8e5-9e491437134f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U02",
+   "set": {
+    "known_text": "no, that funny story",
+    "target_text": "não, aquela história engraçada",
+    "word_count": 30,
+    "known_audio_id": "290dac79-5fca-4a4b-b941-65d65e26fc95",
+    "target1_audio_id": "3d9c68a7-a231-4650-870b-a64c41991572",
+    "target2_audio_id": "27182144-70ce-411a-adee-df5a939e7302"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03B03",
+   "set": {
+    "known_text": "yes, that funny story",
+    "target_text": "sim, aquela história engraçada",
+    "word_count": 30,
+    "lego_position": "middle",
+    "known_audio_id": "160e53c7-dfb9-4b59-a1d3-ecf49cc6bf88",
+    "target1_audio_id": "799f03df-69dc-4a24-88f7-0abb64b37985",
+    "target2_audio_id": "2f1ce5ac-6bb2-48a6-9c54-b7f0bc5208e8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U05",
+   "set": {
+    "known_text": "guess who still told me",
+    "target_text": "adivinha quem ainda me contou",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "64bd06a6-a3aa-4964-b0fd-80620a15f1d1",
+    "target1_audio_id": "51e47030-2f3f-48a3-94e4-c97410ebc686",
+    "target2_audio_id": "0beb75c0-0142-4de5-88a8-c57584534b01"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U04",
+   "set": {
+    "known_text": "yes, guess who told me",
+    "target_text": "sim, adivinha quem me contou",
+    "word_count": 28,
+    "lego_position": "end",
+    "known_audio_id": "200bf22f-b2b2-465b-9eb8-5ce974fe39da",
+    "target1_audio_id": "905f4027-77a6-4f97-b81b-cb237d26b651",
+    "target2_audio_id": "d5fd8bf5-575b-4080-8959-2a14c6f7aa31"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U03",
+   "set": {
+    "known_text": "I'm sure, told me",
+    "target_text": "tenho certeza, me contou",
+    "word_count": 24,
+    "lego_position": "end",
+    "known_audio_id": "be4cf5e3-f6d5-4675-b056-8d064fb614e7",
+    "target1_audio_id": "c48a6e91-0502-43c5-b1f9-53f5f56eef2d",
+    "target2_audio_id": "ef8f9fd7-f804-4af2-82e3-eb142a74a9e2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U02",
+   "set": {
+    "known_text": "that's true, told me",
+    "target_text": "isso é verdade, me contou",
+    "word_count": 25,
+    "lego_position": "end",
+    "known_audio_id": "e1271caf-242b-4c32-a905-957bb807376b",
+    "target1_audio_id": "0c12c109-a47f-448a-8a92-2039d5fec339",
+    "target2_audio_id": "57f6f87e-3941-4010-8e00-4784b3332ce8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U01",
+   "set": {
+    "known_text": "no, told me",
+    "target_text": "não, me contou",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "c519c236-00a1-40f1-bedd-f54ed1316c0b",
+    "target1_audio_id": "a1154e78-de69-4276-8179-00c476aa3c6e",
+    "target2_audio_id": "fb8c92b2-ec8e-4b05-a18e-3ef51fc6957e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02B03",
+   "set": {
+    "known_text": "yes, told me",
+    "target_text": "sim, me contou",
+    "word_count": 14,
+    "known_audio_id": "f7cd348f-5a53-480d-b658-8017cd123eee",
+    "target1_audio_id": "ad7d82ec-6557-4953-871e-14753950b480",
+    "target2_audio_id": "c011c7ae-1086-4ca9-979a-be1b287fd628"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U05",
+   "set": {
+    "known_text": "guess who still",
+    "target_text": "adivinha quem ainda",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "d5636e67-73f1-43ca-867a-abeeb8c3c9c2",
+    "target1_audio_id": "faa251d7-4951-4711-ac6c-77187e7924fd",
+    "target2_audio_id": "6f857297-c80d-41fa-9092-d5ce3c5d9ff6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U04",
+   "set": {
+    "known_text": "yes, that's true, guess who",
+    "target_text": "sim, isso é verdade, adivinha quem",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "de196f7b-15f7-4d15-9695-774fa8744479",
+    "target1_audio_id": "87e42dc9-ecbc-40ad-8340-3694e6e28e8b",
+    "target2_audio_id": "22d2b6e7-b7c9-4c90-b157-6516f839ffe2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U03",
+   "set": {
+    "known_text": "I'm sure, guess who",
+    "target_text": "tenho certeza, adivinha quem",
+    "word_count": 28,
+    "lego_position": "end",
+    "known_audio_id": "c5da5c26-ebec-4c61-b21a-038a0413626b",
+    "target1_audio_id": "150885d8-4cd8-4f15-8df2-83d842d2814d",
+    "target2_audio_id": "690b68a3-df8b-4f2a-8b02-500d9fbfe2e2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U02",
+   "set": {
+    "known_text": "that's true, guess who",
+    "target_text": "isso é verdade, adivinha quem",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "53e1f483-292a-4479-bedc-9bf8013dc25c",
+    "target1_audio_id": "974df1b2-d83e-42f0-af72-579071e755ea",
+    "target2_audio_id": "64ccd444-c4e8-42fb-9c73-ed9e7ffd4698"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U01",
+   "set": {
+    "known_text": "no, guess who",
+    "target_text": "não, adivinha quem",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "1d78bcac-8dd5-499f-abf6-f18ef3b73178",
+    "target1_audio_id": "aa97230d-d164-40ad-ad5f-899a275d272f",
+    "target2_audio_id": "86cc870e-6d76-48b6-9813-55f7f2f32a16"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01B03",
+   "set": {
+    "known_text": "yes, guess who",
+    "target_text": "sim, adivinha quem",
+    "word_count": 18,
+    "known_audio_id": "bff0ef1b-406b-43ba-8025-a3c83301faa3",
+    "target1_audio_id": "2f5e5924-ddde-4ad1-80ef-1296c779ed1e",
+    "target2_audio_id": "c7d39718-7547-4b08-ac86-a9180826446b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01B02",
+   "set": {
+    "known_text": "guess who now",
+    "target_text": "adivinha quem agora",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "2b9a338a-7a02-420e-b0fb-13576871071d",
+    "target1_audio_id": "e3611aa3-5f0f-46f3-838f-1bb7844bebb0",
+    "target2_audio_id": "cc7c4211-1914-42ad-8faf-67124c7c664a"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0528L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0528L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0528L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0527L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0527L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0527L01B04"
+  }
+ ]
+}

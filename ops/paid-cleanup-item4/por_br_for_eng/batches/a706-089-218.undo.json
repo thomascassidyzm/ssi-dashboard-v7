@@ -1,0 +1,603 @@
+{
+ "event_id": "71cdd3f3-379b-4602-985b-b4c1a2149001",
+ "undo_file": "2026-11-18T13-27-51-425Z-71cdd3f3-379b-4602-985b-b4c1a2149001.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0218L02B03",
+   "set": {
+    "known_text": "didn't do much today",
+    "target_text": "não fiz muito hoje",
+    "word_count": 20,
+    "known_audio_id": "2cb68d4f-e982-4a04-aa3d-5aa41fc59d56",
+    "target1_audio_id": "5b74d7bf-86cb-4bb0-87ff-9d4edb7fac97",
+    "target2_audio_id": "87079187-3605-4d92-bf9c-77f6a553fbe3",
+    "decomposition": [
+     {
+      "known": "didn't do much",
+      "legoId": "S0218L02",
+      "target": "não fiz muito",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0188L01B03",
+   "set": {
+    "known_text": "I don't need to change today",
+    "target_text": "não preciso mudar hoje",
+    "word_count": 24,
+    "known_audio_id": "96ce5def-0336-4c98-bc69-71c5bf06bdf7",
+    "target1_audio_id": "1ba89f00-9a14-435a-947d-83316bd99244",
+    "target2_audio_id": "1481e0fc-d078-45da-bea6-e829379b77f0",
+    "decomposition": [
+     {
+      "known": "I don't need to change",
+      "legoId": "S0188L01",
+      "target": "não preciso mudar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0178L02B03",
+   "set": {
+    "known_text": "although I wanted to see you here",
+    "target_text": "embora quisesse te ver aqui",
+    "word_count": 29,
+    "lego_position": "middle",
+    "known_audio_id": "34ef8df5-76f4-4dbe-941a-c69112cce4dd",
+    "target1_audio_id": "4ab9d983-2b96-4eab-b328-c0000f1b1b36",
+    "target2_audio_id": "2ada9423-49eb-4fd8-8c59-67ecbe5bd4eb",
+    "decomposition": [
+     {
+      "known": "although I wanted to see you",
+      "legoId": "S0178L02",
+      "target": "embora quisesse te ver",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aqui",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0178L02B02",
+   "set": {
+    "known_text": "although I wanted to see you today",
+    "target_text": "embora quisesse te ver hoje",
+    "word_count": 29,
+    "lego_position": "middle",
+    "known_audio_id": "0c65f1fb-461b-4e9a-92e0-43c9726132bd",
+    "target1_audio_id": "a975b1f4-1688-42ba-b0fa-85f00240a5e0",
+    "target2_audio_id": "30c65db7-ee3c-4feb-88b0-0b2299515c66",
+    "decomposition": [
+     {
+      "known": "although I wanted to see you",
+      "legoId": "S0178L02",
+      "target": "embora quisesse te ver",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0167L02B03",
+   "set": {
+    "known_text": "in the afternoon today",
+    "target_text": "à tarde hoje",
+    "word_count": 14,
+    "lego_position": "start",
+    "known_audio_id": "930817d0-e636-4e46-afba-32e534d042a3",
+    "target1_audio_id": "0469bc22-80bd-43e7-9fa4-42488fd193b9",
+    "target2_audio_id": "5861c180-ae00-48f5-81cf-2f023b6f6dcc",
+    "decomposition": [
+     {
+      "known": "in the afternoon",
+      "legoId": "S0167L02",
+      "target": "à tarde",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0134L03B03",
+   "set": {
+    "known_text": "you work here",
+    "target_text": "trabalha aqui",
+    "word_count": 13,
+    "known_audio_id": "20d8cbe8-6d0a-4d7b-a8ee-da187bf70aa3",
+    "target1_audio_id": "df1f493f-39ec-446f-836f-545afc7c590b",
+    "target2_audio_id": "ec82d714-c266-4108-b223-9935372160a4",
+    "decomposition": [
+     {
+      "known": "you work",
+      "legoId": "S0134L03",
+      "target": "trabalha",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aqui",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0119L02B03",
+   "set": {
+    "known_text": "before you leave today",
+    "target_text": "antes de ir embora hoje",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "5f1fff26-359a-4340-8bef-bf0095f3b05a",
+    "target1_audio_id": "710b1f7a-d438-4447-ab77-5c6311b3758b",
+    "target2_audio_id": "a0029417-e1b1-449c-b4f4-7d3fca5061ff",
+    "decomposition": [
+     {
+      "known": "before you leave",
+      "legoId": "S0119L02",
+      "target": "antes de ir embora",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0114L01B02",
+   "set": {
+    "known_text": "worse today",
+    "target_text": "pior hoje",
+    "word_count": 9,
+    "lego_position": "start",
+    "known_audio_id": "4a769478-1e66-4b6a-af17-d5d98eb12029",
+    "target1_audio_id": "aad6e82c-f286-4a0c-8ea7-5b904d62afc3",
+    "target2_audio_id": "d88502fc-c064-4989-a05b-ce8bbc8bc363",
+    "decomposition": [
+     {
+      "known": "worse",
+      "legoId": "S0114L01",
+      "target": "pior",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U08",
+   "set": {
+    "target_text": "acho que fiz muito esta semana",
+    "lego_position": null,
+    "target1_audio_id": "e15752fe-b961-46d1-a789-5e89f9f41019",
+    "target2_audio_id": "83d299b3-890b-40e2-b13c-f76a1748ef87",
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " esta",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " semana",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U07",
+   "set": {
+    "known_text": "I think that I've done a lot but I want to do more",
+    "target_text": "acho que fiz muito mas quero fazer mais",
+    "word_count": 42,
+    "lego_position": null,
+    "known_audio_id": "ce81ce68-59c6-4bdb-9230-b13766bbcd21",
+    "target1_audio_id": "d732e2e5-dfcc-4871-b3c4-1757a6c9bf18",
+    "target2_audio_id": "79a67620-ec7a-40bf-96b0-d372f264bc4e",
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0019L01",
+      "target": " mas",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quero",
+      "isGhost": true
+     },
+     {
+      "known": "to do",
+      "legoId": "S0051L01",
+      "target": " fazer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mais",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U06",
+   "set": {
+    "target_text": "acho que fiz muito hoje",
+    "lego_position": null,
+    "target1_audio_id": "ad50ec0a-6cf5-482f-a8a1-059987d0212e",
+    "target2_audio_id": "94c96df4-df2e-47a8-9b81-790c834e8449",
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U05",
+   "set": {
+    "known_text": "I don't think that I've done a lot",
+    "target_text": "não acho que fiz muito",
+    "word_count": 25,
+    "lego_position": null,
+    "known_audio_id": "af395662-b6c5-444f-890e-ba52ff4a8ed1",
+    "target1_audio_id": "2b466043-361f-48fa-b6c8-52a483b04897",
+    "target2_audio_id": "e0f2ca82-f04d-423a-ae1b-852a2af4237a",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "não",
+      "isGhost": true
+     },
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": " acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U04",
+   "set": {
+    "target_text": "acho que fiz muito esta manhã",
+    "target1_audio_id": "4a510edb-209f-4703-a831-344c7c591c92",
+    "target2_audio_id": "208900bf-70fd-46bb-921f-6da487cee901",
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     },
+     {
+      "known": "this morning",
+      "legoId": "S0039L02",
+      "target": " esta manhã",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U03",
+   "set": {
+    "known_text": "I think that I've done a lot but I'm not ready yet",
+    "target_text": "acho que fiz muito mas ainda não estou pronto",
+    "word_count": 48,
+    "known_audio_id": "f75d6a13-78a8-4840-bf3e-84b9a420971e",
+    "target1_audio_id": "0580ef77-7c97-489c-a0b5-1118f6c68c6b",
+    "target2_audio_id": "67ff902c-0501-40fa-bdc1-703cb5d7bc82",
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0019L01",
+      "target": " mas",
+      "isGhost": false
+     },
+     {
+      "known": "i'm not ready yet",
+      "legoId": "S0088L01",
+      "target": " ainda não estou pronto",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U02",
+   "set": {
+    "known_text": "I think that I've already done a lot",
+    "target_text": "acho que já fiz muito",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "03390c0c-3e86-4e1b-af9c-891f68589e5b",
+    "target1_audio_id": "7712e2ff-02af-48df-9205-d600145d7733",
+    "target2_audio_id": "91f60b31-f584-48e4-a2d1-b8883b055c21",
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " já",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U01",
+   "set": {
+    "target_text": "acho que fiz muito para aprender",
+    "target1_audio_id": "07bf53e8-8683-4e84-ab4b-7a5da5b38774",
+    "target2_audio_id": "3855434f-e713-4adf-881a-8ac4b4da909c",
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "acho que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fiz",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " muito",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " para",
+      "isGhost": true
+     },
+     {
+      "known": "to learn",
+      "legoId": "S0002L01",
+      "target": " aprender",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01B02",
+   "set": {
+    "known_text": "I think that I've done a lot today",
+    "target_text": "eu acho que fiz muito hoje",
+    "word_count": 26,
+    "known_audio_id": "7127e23d-ee55-49be-aa85-22cad820692e",
+    "target1_audio_id": "56ef2d17-6d29-4421-8e25-b8dd6992bb26",
+    "target2_audio_id": "f9de44c1-d85a-4d26-aeee-8b45b91a4869",
+    "decomposition": [
+     {
+      "known": "I think that I've done a lot",
+      "legoId": "S0089L01",
+      "target": "eu acho que fiz muito",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0218L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0188L01U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0178L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0089L01B04"
+  }
+ ]
+}

@@ -1,0 +1,515 @@
+{
+ "event_id": "40557e4b-4021-4350-81ee-7426f9d02bcd",
+ "undo_file": "2026-11-18T15-27-14-414Z-40557e4b-4021-4350-81ee-7426f9d02bcd.json",
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0519L02U04",
+    "seed_number": 519,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "yes, I haven't seen their new baby yet",
+    "target_text": "sim, eu ainda não vi o bebê novo deles",
+    "word_count": 38,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 13,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:12:06.592Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:12:06.632Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "6a075dbd-089b-4bd4-b123-999bc0ae57cc",
+    "target1_audio_id": "17bf61c1-ba68-438a-a291-b89422d8b192",
+    "target2_audio_id": "4fb13b4a-5d07-4bcd-a205-2df29ea81768",
+    "qa_checked": null,
+    "target1_duration_ms": 4392,
+    "target2_duration_ms": 4752,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L02U05",
+   "set": {
+    "known_text": "I'm sure, their new baby",
+    "target_text": "tenho certeza, o bebê novo deles",
+    "word_count": 32,
+    "known_audio_id": "eb6ed8e1-8dcd-44fd-9ca3-f4f98893634c",
+    "target1_audio_id": "bae24036-1200-4f6d-8984-6e3d701c33e0",
+    "target2_audio_id": "8da69fc8-4f37-4664-93e5-301860e94ad7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L02U03",
+   "set": {
+    "known_text": "that's true, their new baby",
+    "target_text": "isso é verdade, o bebê novo deles",
+    "word_count": 33,
+    "known_audio_id": "f0995c03-6291-48cc-904f-54b1e53c41fb",
+    "target1_audio_id": "58bf065d-36f4-46c2-9cae-0bfc727f8b74",
+    "target2_audio_id": "7658b69f-a2d1-4cf1-b029-8ff470298685"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L02U02",
+   "set": {
+    "known_text": "no, their new baby",
+    "target_text": "não, o bebê novo deles",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "8d38b23c-7a5d-4d6d-b25a-be5d0d10f426",
+    "target1_audio_id": "10dabba4-5283-4f13-8be9-7f8311baab0f",
+    "target2_audio_id": "3e262cf9-fb6f-4012-a5ed-90c35bb12809"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L02B03",
+   "set": {
+    "known_text": "yes, their new baby",
+    "target_text": "sim, o bebê novo deles",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "10713864-c26e-4840-b638-1a6d422688f6",
+    "target1_audio_id": "a143c2c5-a54a-4650-9597-79e099c82509",
+    "target2_audio_id": "6cedb3da-006b-4e5d-a080-f737e75176f2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L02B02",
+   "set": {
+    "known_text": "I haven't seen their new baby now",
+    "target_text": "eu ainda não vi o bebê novo deles agora",
+    "word_count": 39,
+    "known_audio_id": "c597ba3f-9b46-477e-abc0-5d7d180a3662",
+    "target1_audio_id": "ecf65899-6c97-4788-91cb-5285f243c933",
+    "target2_audio_id": "2ffa8c3f-d513-4967-95de-a98ce44dec80"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L01U05",
+   "set": {
+    "known_text": "I haven't seen it yet",
+    "target_text": "eu ainda não vi isso ainda",
+    "word_count": 26,
+    "known_audio_id": "5ac18251-633a-4d24-86fd-f20071de7198",
+    "target1_audio_id": "71fdb2c5-590e-4429-98c3-a0a979f2d9cb",
+    "target2_audio_id": "bd9dd666-e1b4-4bb8-9d0b-c4ced98b89a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L01U04",
+   "set": {
+    "known_text": "yes, that's true, I haven't seen",
+    "target_text": "sim, isso é verdade, eu ainda não vi",
+    "word_count": 36,
+    "lego_position": "end",
+    "known_audio_id": "eed6266b-d56f-48b9-a3a1-7a2ca75b0d83",
+    "target1_audio_id": "65f5c783-5b17-4218-b902-651bca2b0868",
+    "target2_audio_id": "b53525e3-4134-44aa-9ac2-ea345f7922e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L01U03",
+   "set": {
+    "known_text": "I'm sure I haven't seen",
+    "target_text": "tenho certeza, eu ainda não vi",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "62663e97-6a6f-4b6e-84d2-00898af7a046",
+    "target1_audio_id": "7db9ad8a-bf60-49dd-9bb1-47905f5104e2",
+    "target2_audio_id": "366f4dc3-69aa-4fe2-b19c-0eaf42f0abac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L01U02",
+   "set": {
+    "known_text": "that's true, I haven't seen",
+    "target_text": "isso é verdade, eu ainda não vi",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "99f09015-c02e-43be-a282-5391ef43e1c0",
+    "target1_audio_id": "5bb3ec5f-903f-494b-b1f6-7bd2c9ab2e07",
+    "target2_audio_id": "c86aba4a-7861-4f54-ba54-b053730dd504"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L01U01",
+   "set": {
+    "known_text": "no, I haven't seen",
+    "target_text": "não, eu ainda não vi",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "774e5227-6436-4054-a938-c7aabf0e7918",
+    "target1_audio_id": "a900b339-3ed0-48fd-a2be-d94d0d6613da",
+    "target2_audio_id": "f6854763-2d1f-4228-a664-fd226178f326"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0519L01B03",
+   "set": {
+    "known_text": "yes, I haven't seen",
+    "target_text": "sim, eu ainda não vi",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "cce16339-fe1b-4fb5-a0c5-03a9e7c5f912",
+    "target1_audio_id": "e64bd413-1878-4762-8978-aa3765d1d010",
+    "target2_audio_id": "e74a89ca-fa88-4cda-a69b-1827d9c7f16f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L04U05",
+   "set": {
+    "known_text": "I'm sure, the same problem",
+    "target_text": "tenho certeza, o mesmo problema",
+    "word_count": 31,
+    "known_audio_id": "1fa2e37d-8d9d-4891-b4f3-351b9bef302c",
+    "target1_audio_id": "00d13736-23d1-458c-81a8-3fe85e675661",
+    "target2_audio_id": "ef20a409-76a5-44f3-be42-f27f3d9cd591"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L04U04",
+   "set": {
+    "known_text": "yes, I couldn't imagine myself having exactly the same problem",
+    "target_text": "sim, eu não conseguia me imaginar tendo exatamente o mesmo problema",
+    "word_count": 67,
+    "lego_position": "end",
+    "known_audio_id": "0fc37882-a544-4f02-adc3-9697424cf3be",
+    "target1_audio_id": "b6f24afa-9d4c-4e88-9d83-b4aa91b30300",
+    "target2_audio_id": "4de7e4ea-2719-4eed-8273-a0584b7ad462"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L04U03",
+   "set": {
+    "known_text": "that's true, the same problem",
+    "target_text": "isso é verdade, o mesmo problema",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "bb3befaa-d9e1-4f31-a137-4be5394840f8",
+    "target1_audio_id": "e3131b56-60f5-4691-98af-2cd4b1c4fb19",
+    "target2_audio_id": "2091e020-bfe6-488c-bc42-474a4176eed1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L04U02",
+   "set": {
+    "known_text": "no, the same problem",
+    "target_text": "não, o mesmo problema",
+    "word_count": 21,
+    "known_audio_id": "f7debe4c-7530-4f4e-a315-5d43b673c28d",
+    "target1_audio_id": "f537393e-b6b0-4a75-bb54-e52d7378304d",
+    "target2_audio_id": "a9c64e92-6f9b-4f36-91b4-ba160d861f65"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L04B03",
+   "set": {
+    "known_text": "yes, the same problem",
+    "target_text": "sim, o mesmo problema",
+    "word_count": 21,
+    "known_audio_id": "714046a2-5b6f-40b7-b2cd-07995be9de5e",
+    "target1_audio_id": "329835b9-45f5-4a53-80cf-75fd9dfc668e",
+    "target2_audio_id": "32ccc9ce-e5d1-42c3-a1c3-e4e8b539f99b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L03U05",
+   "set": {
+    "known_text": "I still couldn't imagine myself having exactly",
+    "target_text": "eu ainda não conseguia me imaginar tendo exatamente",
+    "word_count": 51,
+    "lego_position": "end",
+    "known_audio_id": "c6bbce98-e8f5-4c66-801a-f04de9b84d89",
+    "target1_audio_id": "1e28dd4c-d0c2-4353-96a0-0b9eed876667",
+    "target2_audio_id": "d7bab789-af5d-46b2-991a-343dab645cea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L03U04",
+   "set": {
+    "known_text": "yes, I couldn't imagine myself having exactly",
+    "target_text": "sim, eu não conseguia me imaginar tendo exatamente",
+    "word_count": 50,
+    "lego_position": "end",
+    "known_audio_id": "75eff9b1-3e7f-485e-ac4d-ce8fec6a7496",
+    "target1_audio_id": "940f019b-0bac-475d-ac27-8a9234d2cd44",
+    "target2_audio_id": "bc16a2e0-a76d-42cf-a941-573c8ebd1cca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L03U03",
+   "set": {
+    "known_text": "I'm sure, having exactly",
+    "target_text": "tenho certeza, tendo exatamente",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "cf85c86e-6cc8-4a9e-afaf-3270fe220112",
+    "target1_audio_id": "843647b3-e7c8-4e9a-931a-2233b77fa010",
+    "target2_audio_id": "140920d4-edea-4f09-8c68-7662cd0ae01e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L03U02",
+   "set": {
+    "known_text": "that's true, having exactly",
+    "target_text": "isso é verdade, tendo exatamente",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "101e74b9-80e9-49fa-91fe-8bdddf712c67",
+    "target1_audio_id": "9538724b-b17f-4940-83d9-898902c0ee9d",
+    "target2_audio_id": "660dbe5c-f00c-4242-8f23-992725757856"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L03U01",
+   "set": {
+    "known_text": "no, having exactly",
+    "target_text": "não, tendo exatamente",
+    "word_count": 21,
+    "known_audio_id": "a5c4b0ca-25ce-45d2-be8b-955caa07f806",
+    "target1_audio_id": "04d125d4-168b-4782-b4da-1033de4a3ffc",
+    "target2_audio_id": "f06e3af2-01a0-4d05-bcc6-05511e07c6cb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L03B03",
+   "set": {
+    "known_text": "yes, having exactly",
+    "target_text": "sim, tendo exatamente",
+    "word_count": 21,
+    "known_audio_id": "1400cafc-810f-456b-81ed-4ec9fe3a400e",
+    "target1_audio_id": "cafe5105-af66-4dcb-918d-602c88739b9d",
+    "target2_audio_id": "38fb3d86-a6b5-4350-8d58-2e288290ad33"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L02U05",
+   "set": {
+    "known_text": "I still couldn't imagine myself",
+    "target_text": "eu ainda não conseguia me imaginar",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "9db3d0e9-c8b8-4cdc-88bb-f37db9c98741",
+    "target1_audio_id": "68902b0b-3622-4afe-91da-bcb1c63062d5",
+    "target2_audio_id": "238c22ad-11e7-4b1f-bf2b-1270e3ff1cbf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L02U04",
+   "set": {
+    "known_text": "yes, I couldn't imagine myself",
+    "target_text": "sim, eu não conseguia me imaginar",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "7e8cfe65-ae76-446a-9254-89667d72ce18",
+    "target1_audio_id": "0e1a3e2a-3487-4347-ad6b-54be294c1020",
+    "target2_audio_id": "4ddadeb2-3d09-462b-89a8-26d42402afd4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L02U03",
+   "set": {
+    "known_text": "I want to imagine myself",
+    "target_text": "quero me imaginar",
+    "word_count": 17,
+    "lego_position": "end",
+    "known_audio_id": "76e92919-d053-41a2-a1cd-899373cbdcb2",
+    "target1_audio_id": "81f5436b-8293-42f6-9151-bd3ef532c596",
+    "target2_audio_id": "92147d48-3675-465e-b708-08d7ccbf7231"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L02U02",
+   "set": {
+    "known_text": "that's true, imagine myself",
+    "target_text": "isso é verdade, me imaginar",
+    "word_count": 27,
+    "lego_position": "end",
+    "known_audio_id": "93cdeaff-0fee-42d6-8861-9df87f1d6e6b",
+    "target1_audio_id": "a1199698-4f9a-4a13-9fd5-5aa490aa1d2b",
+    "target2_audio_id": "009de9c4-9020-4b54-a932-f61c82fea7ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L02U01",
+   "set": {
+    "known_text": "no, imagine myself",
+    "target_text": "não, me imaginar",
+    "word_count": 16,
+    "known_audio_id": "3a808f73-0714-48d9-a095-ec3c797b15b5",
+    "target1_audio_id": "b7f4102f-101d-4219-9516-c131b6e0ae7d",
+    "target2_audio_id": "fec46eb3-b5c3-4c8b-8c0a-c5c7c429b17f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L02B03",
+   "set": {
+    "known_text": "yes, imagine myself",
+    "target_text": "sim, me imaginar",
+    "word_count": 16,
+    "known_audio_id": "a417c9a5-d639-4a68-a281-ca56758fbe8b",
+    "target1_audio_id": "30e46c02-a82f-4289-a6b3-32cceb251786",
+    "target2_audio_id": "42fef498-a245-4b41-bfc5-9e249bc3451e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L01U05",
+   "set": {
+    "known_text": "I'm sure I couldn't",
+    "target_text": "tenho certeza, eu não conseguia",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "a30e1ee1-81e2-4c40-8d72-8e5d638ed7af",
+    "target1_audio_id": "c5555d8c-2c6f-4d54-a987-5fadf8c3da48",
+    "target2_audio_id": "a86afdf2-a063-4808-a25d-80c4d5911d7e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L01U04",
+   "set": {
+    "known_text": "yes, I still couldn't",
+    "target_text": "sim, eu ainda não conseguia",
+    "word_count": 27,
+    "lego_position": null,
+    "known_audio_id": "67734327-74b0-4c87-94ac-7c0403c4e03a",
+    "target1_audio_id": "7ba855ec-98d1-4d28-ac95-04999d9ba541",
+    "target2_audio_id": "9dbc4947-dada-4e86-9808-c5cd2e37e054"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L01U03",
+   "set": {
+    "known_text": "I still couldn't",
+    "target_text": "eu ainda não conseguia",
+    "word_count": 22,
+    "lego_position": null,
+    "known_audio_id": "8b7f1543-9fb5-43ec-b36f-b063daa5cc3f",
+    "target1_audio_id": "b2853cd9-8b07-4a42-9610-aa6c5357be20",
+    "target2_audio_id": "222fa81d-3b1a-4800-88d5-8cd3330f2890"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L01U02",
+   "set": {
+    "known_text": "that's true, I never could",
+    "target_text": "isso é verdade, eu não conseguia",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "31505964-eb9f-4199-b5a0-a59e53c55d11",
+    "target1_audio_id": "10c8115f-b7ca-49fd-bfe2-4b8468b3d1ba",
+    "target2_audio_id": "47a13b8d-2fea-4479-97e6-e004bffaa6b9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L01U01",
+   "set": {
+    "known_text": "no, I never could",
+    "target_text": "não, eu não conseguia",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "5c0d3ebb-0cf7-4ef1-8f8d-129231a2e624",
+    "target1_audio_id": "6adbef2d-e436-4d05-a1bb-68a9bdcfcb33",
+    "target2_audio_id": "e9f2bfa9-7e7f-4162-a16a-a8e47e8e781e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L01B03",
+   "set": {
+    "known_text": "yes, I never could",
+    "target_text": "sim, eu não conseguia",
+    "word_count": 21,
+    "known_audio_id": "f2ed94f4-eeb0-48e3-857a-53b586a01730",
+    "target1_audio_id": "63d003ea-3cd8-4637-8945-c46f005a3656",
+    "target2_audio_id": "d0b56525-27bc-44ac-b5a8-2dd2410cecab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0518L01B02",
+   "set": {
+    "known_text": "I couldn't serve",
+    "target_text": "eu não conseguia servir",
+    "known_audio_id": "22f23e6b-25fc-49f7-bef9-e79e809f618f",
+    "target1_audio_id": "38611cbd-cb16-43d8-954f-10ab642822df",
+    "target2_audio_id": "ce1159db-0a98-4dff-96d6-a11346b54e49"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0519L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0519L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0518L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0518L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0518L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0518L01B04"
+  }
+ ]
+}
