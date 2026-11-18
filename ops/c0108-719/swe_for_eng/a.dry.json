@@ -1,0 +1,139 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "swe_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "05911711-80c4-463a-bb52-c773283382f7",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Vi hoppades inte på att vakna mitt i natten.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "1ec682a5-9f82-46a4-b121-695930b05efa",
+    "target2_audio_id": "2ec70aae-882f-427f-aac7-f8c74bf059e1"
+   },
+   "after": {
+    "id": "05911711-80c4-463a-bb52-c773283382f7",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Vi förväntade oss inte att vakna mitt i natten.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swe_for_eng",
+    "id": "swe_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "swe_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "vi hoppades inte på att vakna mitt i",
+    "known_text": "we didn't hope to wake in the middle",
+    "known_audio_id": "ec9d66dc-2a37-481c-a780-85402f78cb23",
+    "target1_audio_id": "8b088e37-7360-43eb-a8a6-71961db6cbb7",
+    "target2_audio_id": "4b07b866-bb04-47b1-9014-5c77c185f857",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swe_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "vi förväntade oss inte att vakna mitt i",
+    "known_text": "we didn't expect to wake up in the middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swe_for_eng",
+    "id": "swe_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "swe_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "vi hoppades inte på att vakna mitt i natten",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "1ec682a5-9f82-46a4-b121-695930b05efa",
+    "target2_audio_id": "2ec70aae-882f-427f-aac7-f8c74bf059e1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swe_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "vi förväntade oss inte att vakna mitt i natten",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "swe_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "vi hoppades inte på att vakna mitt i natten",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "1ec682a5-9f82-46a4-b121-695930b05efa",
+    "target2_audio_id": "2ec70aae-882f-427f-aac7-f8c74bf059e1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swe_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle",
+    "target_text": "vi hoppades inte på att vakna mitt i",
+    "known_audio_id": "ec9d66dc-2a37-481c-a780-85402f78cb23",
+    "target1_audio_id": "8b088e37-7360-43eb-a8a6-71961db6cbb7",
+    "target2_audio_id": "4b07b866-bb04-47b1-9014-5c77c185f857"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Vi hoppades inte på att vakna mitt i natten.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "1ec682a5-9f82-46a4-b121-695930b05efa",
+    "target2_audio_id": "2ec70aae-882f-427f-aac7-f8c74bf059e1"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

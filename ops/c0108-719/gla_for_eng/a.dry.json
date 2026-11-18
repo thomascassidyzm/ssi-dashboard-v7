@@ -1,0 +1,1270 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "fb13c79e-550e-4e2a-9fc4-7ae41f5f9fda",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Cha robh sinn an dòchas dùsgadh am meadhan na h-oidhche.",
+    "known_audio_id": "dd8d9a6f-905d-4a1d-9d9f-f30b86f76227",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "fb13c79e-550e-4e2a-9fc4-7ae41f5f9fda",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Cha robh dùil againn dùsgadh am meadhan na h-oidhche.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "04635dbb-73e0-4915-94e0-99615aa53eb9",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "cha robh sinn an dòchas",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "we were not",
+      "target": "cha robh sinn"
+     },
+     {
+      "known": "hoping",
+      "target": "an dòchas"
+     }
+    ],
+    "known_audio_id": "acafeffb-b23f-4fbe-8450-cd1118435619",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "04635dbb-73e0-4915-94e0-99615aa53eb9",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "cha robh dùil againn",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "there was no expectation",
+      "target": "cha robh dùil"
+     },
+     {
+      "known": "at us",
+      "target": "againn"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01C01"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01C01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn",
+    "known_text": "we were not",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01C01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil",
+    "known_text": "there was no expectation",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "an dòchas",
+    "known_text": "hoping",
+    "known_audio_id": "ea59becd-3b29-495c-9a55-0100c0610fd6",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "againn",
+    "known_text": "at us",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas",
+    "known_text": "we didn't hope",
+    "known_audio_id": "acafeffb-b23f-4fbe-8450-cd1118435619",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas an-diugh",
+    "known_text": "we didn't hope today",
+    "known_audio_id": "267c6b93-7fd7-4962-bb8b-31affa1c63f8",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn tòiseachadh an-diugh",
+    "known_text": "we didn't expect to start today",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas a-nis",
+    "known_text": "we didn't hope at all",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn ionnsachadh a-nis",
+    "known_text": "we didn't expect to learn now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas tòiseachadh",
+    "known_text": "we didn't hope to start",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn tòiseachadh",
+    "known_text": "we didn't expect to start",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas ionnsachadh",
+    "known_text": "we didn't hope to learn",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn ionnsachadh",
+    "known_text": "we didn't expect to learn",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas faicinn",
+    "known_text": "we didn't hope to see",
+    "known_audio_id": "ce3968ac-5e13-43f3-ab2a-a814a61ea3bc",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn faicinn",
+    "known_text": "we didn't expect to see",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas leantainn orra",
+    "known_text": "we didn't hope to keep on",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn leantainn orra",
+    "known_text": "we didn't expect to keep on",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas a' lorg a-mach",
+    "known_text": "we didn't hope to find out",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn lorg a-mach",
+    "known_text": "we didn't expect to find out",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L01U06"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas obair chruaidh a dhèanamh",
+    "known_text": "we didn't hope to do hard work",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn obair chruaidh a dhèanamh",
+    "known_text": "we didn't expect to do hard work",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "lego.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "3f8320bf-4003-45b2-99cb-570c6a0f288e",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake",
+    "target_text": "dùsgadh",
+    "known_audio_id": "158e04e0-fc76-4004-838e-005d6602c6d7",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "3f8320bf-4003-45b2-99cb-570c6a0f288e",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake up",
+    "target_text": "dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake",
+    "target_text": "dùsgadh",
+    "known_audio_id": "158e04e0-fc76-4004-838e-005d6602c6d7",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake up",
+    "target_text": "dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas dùsgadh a-nis",
+    "known_text": "we didn't hope to wake now",
+    "known_audio_id": "9b1de10b-7c21-4d48-9159-d21999f75e29",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn dùsgadh a-nis",
+    "known_text": "we didn't expect to wake up now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's difficult to wake",
+    "target_text": "tha e duilich dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's difficult to wake up",
+    "target_text": "tha e duilich dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas dùsgadh an-diugh",
+    "known_text": "we didn't hope to wake today",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn dùsgadh an-diugh",
+    "known_text": "we didn't expect to wake up today",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh mi an dòchas dùsgadh",
+    "known_text": "I didn't hope to wake",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh dùil agam dùsgadh",
+    "known_text": "I didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh thu an dòchas dùsgadh",
+    "known_text": "you didn't hope to wake",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cha robh dùil agad dùsgadh",
+    "known_text": "you didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'd like to wake",
+    "target_text": "bu toil leam dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'd like to wake up",
+    "target_text": "bu toil leam dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to wake",
+    "target_text": "feumaidh mi dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to wake up",
+    "target_text": "feumaidh mi dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L02U06"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it is important to wake",
+    "target_text": "tha e cudromach dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it is important to wake up",
+    "target_text": "tha e cudromach dùsgadh",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night",
+    "target_text": "dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": "345d9d0c-1f95-4610-81bd-ef96de561e90",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night",
+    "target_text": "dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas dùsgadh am meadhan na h-oidhche a-nis",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "dd8d9a6f-905d-4a1d-9d9f-f30b86f76227",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn dùsgadh am meadhan na h-oidhche a-nis",
+    "known_text": "we didn't expect to wake up in the middle of the night now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cha robh sinn an dòchas dùsgadh am meadhan na h-oidhche",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "dd8d9a6f-905d-4a1d-9d9f-f30b86f76227",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cha robh dùil againn dùsgadh am meadhan na h-oidhche",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cha robh mi an dòchas dùsgadh am meadhan na h-oidhche",
+    "known_text": "I didn't hope to wake in the middle of the night",
+    "known_audio_id": "fa6af8ce-d72b-44a5-86f6-fa94ced98897",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cha robh dùil agam dùsgadh am meadhan na h-oidhche",
+    "known_text": "I didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it wasn't possible to wake in the middle of the night",
+    "target_text": "cha robh e comasach dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it wasn't possible to wake up in the middle of the night",
+    "target_text": "cha robh e comasach dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L03U04"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I need to wake in the middle of the night",
+    "target_text": "feumaidh mi dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I need to wake up in the middle of the night",
+    "target_text": "feumaidh mi dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "gla_for_eng",
+    "id": "gla_for_eng:S0108L03U06"
+   },
+   "before": {
+    "id": "gla_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I think we need to wake in the middle of the night",
+    "target_text": "tha mi a' smaoineachadh feumaidh sinn dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "gla_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I think we need to wake up in the middle of the night",
+    "target_text": "tha mi a' smaoineachadh feumaidh sinn dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "I think we need to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "I need to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "it wasn't possible to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "I didn't hope to wake in the middle of the night",
+    "target_text": "cha robh mi an dòchas dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": "fa6af8ce-d72b-44a5-86f6-fa94ced98897"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "cha robh sinn an dòchas dùsgadh am meadhan na h-oidhche",
+    "known_audio_id": "dd8d9a6f-905d-4a1d-9d9f-f30b86f76227"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "cha robh sinn an dòchas dùsgadh am meadhan na h-oidhche a-nis",
+    "known_audio_id": "dd8d9a6f-905d-4a1d-9d9f-f30b86f76227"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "wake in the middle of the night",
+    "known_audio_id": "345d9d0c-1f95-4610-81bd-ef96de561e90"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "it is important to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "I need to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I'd like to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "you didn't hope to wake",
+    "target_text": "cha robh thu an dòchas dùsgadh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I didn't hope to wake",
+    "target_text": "cha robh mi an dòchas dùsgadh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake today",
+    "target_text": "cha robh sinn an dòchas dùsgadh an-diugh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "it's difficult to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't hope to wake now",
+    "target_text": "cha robh sinn an dòchas dùsgadh a-nis",
+    "known_audio_id": "9b1de10b-7c21-4d48-9159-d21999f75e29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "to wake",
+    "known_audio_id": "158e04e0-fc76-4004-838e-005d6602c6d7"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "3f8320bf-4003-45b2-99cb-570c6a0f288e",
+   "set": {
+    "known_text": "to wake",
+    "known_audio_id": "158e04e0-fc76-4004-838e-005d6602c6d7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "we didn't hope to do hard work",
+    "target_text": "cha robh sinn an dòchas obair chruaidh a dhèanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't hope to find out",
+    "target_text": "cha robh sinn an dòchas a' lorg a-mach"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope to keep on",
+    "target_text": "cha robh sinn an dòchas leantainn orra"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to see",
+    "target_text": "cha robh sinn an dòchas faicinn",
+    "known_audio_id": "ce3968ac-5e13-43f3-ab2a-a814a61ea3bc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to learn",
+    "target_text": "cha robh sinn an dòchas ionnsachadh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to start",
+    "target_text": "cha robh sinn an dòchas tòiseachadh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope at all",
+    "target_text": "cha robh sinn an dòchas a-nis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope today",
+    "target_text": "cha robh sinn an dòchas an-diugh",
+    "known_audio_id": "267c6b93-7fd7-4962-bb8b-31affa1c63f8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "cha robh sinn an dòchas",
+    "known_audio_id": "acafeffb-b23f-4fbe-8450-cd1118435619"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "hoping",
+    "target_text": "an dòchas",
+    "known_audio_id": "ea59becd-3b29-495c-9a55-0100c0610fd6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gla_for_eng:S0108L01C01",
+   "set": {
+    "known_text": "we were not",
+    "target_text": "cha robh sinn"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "04635dbb-73e0-4915-94e0-99615aa53eb9",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "cha robh sinn an dòchas",
+    "components": [
+     {
+      "known": "we were not",
+      "target": "cha robh sinn"
+     },
+     {
+      "known": "hoping",
+      "target": "an dòchas"
+     }
+    ],
+    "known_audio_id": "acafeffb-b23f-4fbe-8450-cd1118435619"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Cha robh sinn an dòchas dùsgadh am meadhan na h-oidhche.",
+    "known_audio_id": "dd8d9a6f-905d-4a1d-9d9f-f30b86f76227"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

@@ -1,0 +1,83 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Mir hen net erwaart fer uffwache in der Mitt vun der Nacht."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Mir hen net ghofft fer uffwache in der Mitt vun der Nacht."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "uffwache in der Mitt vun der Nacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we hoped to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we hoped to wake in the middle of the night",
+    "target_text": "mir hen ghofft fer uffwache in der Mitt vun der Nacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "mir hen net erwaart fer uffwache in der Mitt vun der Nacht",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we hoped not to wake in the middle of the night",
+    "target_text": "mir hen net ghofft fer uffwache in der Mitt vun der Nacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "ich will net uffwache in der Mitt vun der Nacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I don't like to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't like to wake in the middle of the night",
+    "target_text": "ich gleich net uffwache in der Mitt vun der Nacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "she doesn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "target_text": "sie will net uffwache in der Mitt vun der Nacht"
+   }
+  }
+ ]
+}

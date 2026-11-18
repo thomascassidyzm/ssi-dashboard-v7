@@ -1,0 +1,264 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.insert",
+   "key": {
+    "seed_number": 108,
+    "lego_index": 4
+   },
+   "before": null,
+   "after": {
+    "id": "9dc5a1e5-c2d8-4d77-b089-cad0badd3460",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": "S0108L04",
+    "known_text": "we expected",
+    "target_text": "vi förväntade oss",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04B01"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04B01",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we expected",
+    "target_text": "vi förväntade oss",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04B02"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04B02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we didn't expect",
+    "target_text": "vi förväntade oss inte",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04B03"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04B03",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we expected to wake up",
+    "target_text": "vi förväntade oss att vakna",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04B04"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04B04",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we expected to do it",
+    "target_text": "vi förväntade oss att göra det",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04U01"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04U01",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we didn't expect to do it in the middle of the night",
+    "target_text": "vi förväntade oss inte att göra det mitt i natten",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04U02"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04U02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we expected to wake up in the middle of the day",
+    "target_text": "vi förväntade oss att vakna mitt i dagen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04U03"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04U03",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of it",
+    "target_text": "vi förväntade oss inte att vakna mitt i det",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04U04"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04U04",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we expected to do it in the middle of the day",
+    "target_text": "vi förväntade oss att göra det mitt i dagen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.insert",
+   "key": {
+    "id": "swe_for_eng:S0108L04U05"
+   },
+   "before": null,
+   "after": {
+    "id": "swe_for_eng:S0108L04U05",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we didn't expect to do it",
+    "target_text": "vi förväntade oss inte att göra det",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04U01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04B03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04B02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "swe_for_eng:S0108L04B01"
+  },
+  {
+   "op": "lego.delete",
+   "id": "9dc5a1e5-c2d8-4d77-b089-cad0badd3460"
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

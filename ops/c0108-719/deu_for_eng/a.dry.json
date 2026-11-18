@@ -1,0 +1,478 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "03091a9a-98d3-4f39-ba26-2a9fde04e3e4",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "548ecdcf-2be1-4e27-913d-0dc08ace628b",
+    "target2_audio_id": "947d00da-8152-4412-a04f-8a3c198b9b53"
+   },
+   "after": {
+    "id": "03091a9a-98d3-4f39-ba26-2a9fde04e3e4",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "wir haben nicht erwartet, mitten in der Nacht aufzuwachen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "54b9cd10-96f7-41ac-a3fc-efc7a41ba86f",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "haben gehofft",
+    "known_text": "have hoped",
+    "components": [
+     {
+      "known": "have",
+      "target": "haben"
+     },
+     {
+      "known": "hoped",
+      "target": "gehofft"
+     }
+    ],
+    "known_audio_id": "1ee630d1-06d5-442d-ac63-c6cb539aca56",
+    "target1_audio_id": "e2182839-ddda-4049-bc98-315dd2b72561",
+    "target2_audio_id": "9a12543d-3a98-4d02-bf3b-e35c520b2c41",
+    "presentation_audio_id": "d0ccd61d-431c-4f15-977d-c81418471328"
+   },
+   "after": {
+    "id": "54b9cd10-96f7-41ac-a3fc-efc7a41ba86f",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "haben erwartet",
+    "known_text": "have expected",
+    "components": [
+     {
+      "known": "have",
+      "target": "haben"
+     },
+     {
+      "known": "expected",
+      "target": "erwartet"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Gehofft",
+    "known_text": "Hoped",
+    "known_audio_id": "90292786-2405-4270-881b-934905a57912",
+    "target1_audio_id": "ac17187e-ed7f-4551-b1c9-d400508f4116",
+    "target2_audio_id": "7e2951fc-2578-4259-8924-b7c3ece933f1",
+    "presentation_audio_id": "0a49aca4-4a69-42c5-885d-78b754053eae"
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Erwartet",
+    "known_text": "Expected",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "0a49aca4-4a69-42c5-885d-78b754053eae"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Haben gehofft",
+    "known_text": "Have hoped",
+    "known_audio_id": "1ee630d1-06d5-442d-ac63-c6cb539aca56",
+    "target1_audio_id": "e2182839-ddda-4049-bc98-315dd2b72561",
+    "target2_audio_id": "9a12543d-3a98-4d02-bf3b-e35c520b2c41",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Haben erwartet",
+    "known_text": "Have expected",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben gehofft es hier zu finden",
+    "known_text": "They have hoped to find it here",
+    "known_audio_id": "29bd37a0-c773-4a52-8347-052fddb6bf17",
+    "target1_audio_id": "6db43768-cd20-4102-abd4-7f98afd8224a",
+    "target2_audio_id": "d52f8f95-34d0-42d3-9297-b9d44eff3894",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben erwartet es hier zu finden",
+    "known_text": "They have expected to find it here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L01U10"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L01U10",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben gehofft uns hier sehr bald zu sehen damit wir reden können",
+    "known_text": "They have hoped to see us here very soon so we can talk",
+    "known_audio_id": "6992b00f-bc9d-4dbb-944b-024d0a018e66",
+    "target1_audio_id": "b29c1f03-e0c3-4fd5-a7f0-cd90aebf4299",
+    "target2_audio_id": "30ddae5c-a42b-4d1a-bb7d-d6e07c4daeb7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L01U10",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben erwartet uns hier sehr bald zu sehen damit wir reden können",
+    "known_text": "They have expected to see us here very soon so we can talk",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L01U11"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L01U11",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben gehofft Deutsch besser zu lernen",
+    "known_text": "They have hoped to learn German better",
+    "known_audio_id": "fa5adaf6-3648-4e68-9899-4c361da39796",
+    "target1_audio_id": "40a7f5d7-0934-45f9-a431-bf330a1db130",
+    "target2_audio_id": "50cca4b6-f6d8-43ac-9d7d-02edcac3923b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L01U11",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben erwartet Deutsch besser zu lernen",
+    "known_text": "They have expected to learn German better",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L01U12"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L01U12",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Wir haben gehofft dir hier helfen zu können",
+    "known_text": "We have hoped to be able to help you here",
+    "known_audio_id": "ec6c7092-dcd5-4b9e-b149-e17a045fddad",
+    "target1_audio_id": "35029040-5f26-4153-9c01-37f465750bda",
+    "target2_audio_id": "ac6bd558-0f81-4524-a00f-0cf629461733",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L01U12",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Wir haben erwartet dir hier helfen zu können",
+    "known_text": "We have expected to be able to help you here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L01U13"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L01U13",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben gehofft uns hier zu treffen",
+    "known_text": "They have hoped to meet us here",
+    "known_audio_id": "34d77db3-3a01-47f7-ba11-5a5ce20ba562",
+    "target1_audio_id": "bc204bd7-c349-4258-a527-c8b047c77d3a",
+    "target2_audio_id": "dd6b4485-0901-4109-a607-6862006ddccd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L01U13",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Sie haben erwartet uns hier zu treffen",
+    "known_text": "They have expected to meet us here",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "548ecdcf-2be1-4e27-913d-0dc08ace628b",
+    "target2_audio_id": "947d00da-8152-4412-a04f-8a3c198b9b53",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "wir haben nicht erwartet, mitten in der Nacht aufzuwachen",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "548ecdcf-2be1-4e27-913d-0dc08ace628b",
+    "target2_audio_id": "947d00da-8152-4412-a04f-8a3c198b9b53"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U13",
+   "set": {
+    "known_text": "They have hoped to meet us here",
+    "target_text": "Sie haben gehofft uns hier zu treffen",
+    "known_audio_id": "34d77db3-3a01-47f7-ba11-5a5ce20ba562",
+    "target1_audio_id": "bc204bd7-c349-4258-a527-c8b047c77d3a",
+    "target2_audio_id": "dd6b4485-0901-4109-a607-6862006ddccd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U12",
+   "set": {
+    "known_text": "We have hoped to be able to help you here",
+    "target_text": "Wir haben gehofft dir hier helfen zu können",
+    "known_audio_id": "ec6c7092-dcd5-4b9e-b149-e17a045fddad",
+    "target1_audio_id": "35029040-5f26-4153-9c01-37f465750bda",
+    "target2_audio_id": "ac6bd558-0f81-4524-a00f-0cf629461733"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U11",
+   "set": {
+    "known_text": "They have hoped to learn German better",
+    "target_text": "Sie haben gehofft Deutsch besser zu lernen",
+    "known_audio_id": "fa5adaf6-3648-4e68-9899-4c361da39796",
+    "target1_audio_id": "40a7f5d7-0934-45f9-a431-bf330a1db130",
+    "target2_audio_id": "50cca4b6-f6d8-43ac-9d7d-02edcac3923b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U10",
+   "set": {
+    "known_text": "They have hoped to see us here very soon so we can talk",
+    "target_text": "Sie haben gehofft uns hier sehr bald zu sehen damit wir reden können",
+    "known_audio_id": "6992b00f-bc9d-4dbb-944b-024d0a018e66",
+    "target1_audio_id": "b29c1f03-e0c3-4fd5-a7f0-cd90aebf4299",
+    "target2_audio_id": "30ddae5c-a42b-4d1a-bb7d-d6e07c4daeb7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "They have hoped to find it here",
+    "target_text": "Sie haben gehofft es hier zu finden",
+    "known_audio_id": "29bd37a0-c773-4a52-8347-052fddb6bf17",
+    "target1_audio_id": "6db43768-cd20-4102-abd4-7f98afd8224a",
+    "target2_audio_id": "d52f8f95-34d0-42d3-9297-b9d44eff3894"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "Have hoped",
+    "target_text": "Haben gehofft",
+    "known_audio_id": "1ee630d1-06d5-442d-ac63-c6cb539aca56",
+    "target1_audio_id": "e2182839-ddda-4049-bc98-315dd2b72561",
+    "target2_audio_id": "9a12543d-3a98-4d02-bf3b-e35c520b2c41"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "Hoped",
+    "target_text": "Gehofft",
+    "known_audio_id": "90292786-2405-4270-881b-934905a57912",
+    "target1_audio_id": "ac17187e-ed7f-4551-b1c9-d400508f4116",
+    "target2_audio_id": "7e2951fc-2578-4259-8924-b7c3ece933f1"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "54b9cd10-96f7-41ac-a3fc-efc7a41ba86f",
+   "set": {
+    "known_text": "have hoped",
+    "target_text": "haben gehofft",
+    "components": [
+     {
+      "known": "have",
+      "target": "haben"
+     },
+     {
+      "known": "hoped",
+      "target": "gehofft"
+     }
+    ],
+    "known_audio_id": "1ee630d1-06d5-442d-ac63-c6cb539aca56",
+    "target1_audio_id": "e2182839-ddda-4049-bc98-315dd2b72561",
+    "target2_audio_id": "9a12543d-3a98-4d02-bf3b-e35c520b2c41",
+    "presentation_audio_id": "d0ccd61d-431c-4f15-977d-c81418471328"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "548ecdcf-2be1-4e27-913d-0dc08ace628b",
+    "target2_audio_id": "947d00da-8152-4412-a04f-8a3c198b9b53"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

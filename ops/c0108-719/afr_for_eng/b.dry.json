@@ -1,0 +1,264 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.insert",
+   "key": {
+    "seed_number": 108,
+    "lego_index": 3
+   },
+   "before": null,
+   "after": {
+    "id": "6e14e3bc-e4b4-4551-80c6-e97a9fd37aa7",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "expected",
+    "target_text": "verwag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03B01"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "expected",
+    "target_text": "verwag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03B02"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I expected it",
+    "target_text": "Ek het dit verwag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03B03"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect it",
+    "target_text": "Ek het dit nie verwag nie",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03B04"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect it",
+    "target_text": "Ons het dit nie verwag nie",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03U01"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "she didn't expect it",
+    "target_text": "Sy het dit nie verwag nie",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03U02"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect it in the middle of the week",
+    "target_text": "Ek het dit nie in die middel van die week verwag nie",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03U03"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect it in the middle of the night",
+    "target_text": "Ons het dit nie in die middel van die nag verwag nie",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03U04"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "why did you expect it",
+    "target_text": "Waarom het jy dit verwag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.insert",
+   "key": {
+    "id": "afr_for_eng:S0108L03U05"
+   },
+   "before": null,
+   "after": {
+    "id": "afr_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Ons het nie verwag om in die middel van die nag wakker te word nie",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03U01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03B03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03B02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "afr_for_eng:S0108L03B01"
+  },
+  {
+   "op": "lego.delete",
+   "id": "6e14e3bc-e4b4-4551-80c6-e97a9fd37aa7"
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

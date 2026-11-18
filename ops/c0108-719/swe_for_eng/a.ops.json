@@ -1,0 +1,40 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Vi förväntade oss inte att vakna mitt i natten."
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Vi hoppades inte på att vakna mitt i natten."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swe_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "vi förväntade oss inte att vakna mitt i",
+    "known_text": "we didn't expect to wake up in the middle"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle",
+    "target_text": "vi hoppades inte på att vakna mitt i"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swe_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "vi förväntade oss inte att vakna mitt i natten",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "vi hoppades inte på att vakna mitt i natten"
+   }
+  }
+ ]
+}
