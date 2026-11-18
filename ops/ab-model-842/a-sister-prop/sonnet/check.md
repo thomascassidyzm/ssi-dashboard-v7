@@ -1,0 +1,5 @@
+- Scripted check: every non-deleted phrase under S0202L03, S0340L01, S0482L04, S0339L01, S0382L01, S0385L01 contains its LEGO's new target exactly (0 failures).
+- Counts: 86 phrase rewrites, 6 lego, 6 seed, 1 delete (S0385L01U05).
+- One-English → two-Portuguese: none introduced. Same English now maps to one form; no phrase left with old and new variants.
+- Known risk: deleting S0385L01U05 (containment impossible); verify USE floor ≥5 for S0385L01.
+- Seeds 202/340/482/339/382/385 targets rewritten consistent with their LEGOs.
