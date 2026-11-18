@@ -1,0 +1,708 @@
+[
+ {
+  "seed_number": 9,
+  "phrases": {
+   "9:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I speak",
+     "target_text": "falo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I speak Portuguese",
+     "target_text": "falo português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I speak with you",
+     "target_text": "falo com você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I speak with someone else",
+     "target_text": "falo com outra pessoa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I speak Portuguese with you",
+     "target_text": "falo português com você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak Portuguese today",
+     "target_text": "falo português hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak Portuguese with someone else",
+     "target_text": "falo português com outra pessoa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak Portuguese as often as possible",
+     "target_text": "falo português o mais frequentemente possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak Portuguese now",
+     "target_text": "falo português agora",
+     "phrase_role": "use"
+    }
+   ],
+   "9:2": [
+    {
+     "known_text": "little",
+     "target_text": "um pouco",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a little",
+     "target_text": "um pouco de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a little Portuguese",
+     "target_text": "um pouco de português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I speak a little",
+     "target_text": "falo um pouco de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to learn a little",
+     "target_text": "aprender um pouco de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I speak a little Portuguese",
+     "target_text": "falo um pouco de português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to learn a little Portuguese",
+     "target_text": "quero aprender um pouco de português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to learn a little Portuguese today",
+     "target_text": "vou aprender um pouco de português hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak a little Portuguese now",
+     "target_text": "falo um pouco de português agora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to learn a little Portuguese",
+     "target_text": "estou tentando aprender um pouco de português",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 10,
+  "phrases": {
+   "10:1": [
+    {
+     "known_text": "sure",
+     "target_text": "certeza",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'm not sure",
+     "target_text": "não tenho certeza",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure how",
+     "target_text": "não tenho certeza de como",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure how to explain",
+     "target_text": "não tenho certeza de como explicar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure how to practise speaking with someone else",
+     "target_text": "não tenho certeza de como praticar falando com outra pessoa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure how to say something in Portuguese",
+     "target_text": "não tenho certeza de como dizer algo em português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure how to explain what I want to say",
+     "target_text": "não tenho certeza de como explicar o que quero dizer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure how to learn",
+     "target_text": "não tenho certeza de como aprender",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure how to say",
+     "target_text": "não tenho certeza de como dizer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure how to remember a word",
+     "target_text": "não tenho certeza de como me lembrar de uma palavra",
+     "phrase_role": "use"
+    }
+   ],
+   "10:2": [
+    {
+     "known_text": "if",
+     "target_text": "se",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I can",
+     "target_text": "consigo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "if I can",
+     "target_text": "se consigo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if I can speak",
+     "target_text": "se consigo falar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if I can explain",
+     "target_text": "se consigo explicar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if I can try",
+     "target_text": "se consigo tentar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure if I can speak Portuguese",
+     "target_text": "não tenho certeza se consigo falar português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I can explain what I mean",
+     "target_text": "não tenho certeza se consigo explicar o que quero dizer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I can try today",
+     "target_text": "não tenho certeza se consigo tentar hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I can say something in Portuguese",
+     "target_text": "não tenho certeza se consigo dizer algo em português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I can practise speaking today",
+     "target_text": "não tenho certeza se consigo praticar falando hoje",
+     "phrase_role": "use"
+    }
+   ],
+   "10:3": [
+    {
+     "known_text": "sentence",
+     "target_text": "frase",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the whole sentence",
+     "target_text": "a frase inteira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to say the whole sentence",
+     "target_text": "dizer a frase inteira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to explain the whole sentence",
+     "target_text": "explicar a frase inteira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if I can say the whole sentence",
+     "target_text": "se consigo dizer a frase inteira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to say the whole sentence",
+     "target_text": "quero dizer a frase inteira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to try to say the whole sentence",
+     "target_text": "vou tentar dizer a frase inteira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to try to explain the whole sentence today",
+     "target_text": "vou tentar explicar a frase inteira hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to try to say the whole sentence now",
+     "target_text": "quero tentar dizer a frase inteira agora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I can say the whole sentence",
+     "target_text": "não tenho certeza se consigo dizer a frase inteira",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 13,
+  "phrases": {
+   "13:1": [
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you speak",
+     "target_text": "você fala",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak Portuguese",
+     "target_text": "você fala português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak with someone else",
+     "target_text": "você fala com outra pessoa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak a little",
+     "target_text": "você fala um pouco de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak Portuguese with someone else",
+     "target_text": "você fala português com outra pessoa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak a little Portuguese",
+     "target_text": "você fala um pouco de português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak Portuguese as often as possible",
+     "target_text": "você fala português o mais frequentemente possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if you speak Portuguese",
+     "target_text": "não tenho certeza se você fala português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak Portuguese, I speak a little",
+     "target_text": "você fala português, eu falo um pouco",
+     "phrase_role": "use"
+    }
+   ],
+   "13:2": [
+    {
+     "known_text": "very",
+     "target_text": "muito",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "well",
+     "target_text": "bem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "very well",
+     "target_text": "muito bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak very well",
+     "target_text": "você fala muito bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to speak Portuguese very well",
+     "target_text": "falar português muito bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to speak very well",
+     "target_text": "falar muito bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak Portuguese very well",
+     "target_text": "você fala português muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak Portuguese very well",
+     "target_text": "quero falar português muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to speak very well",
+     "target_text": "gostaria de falar muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to speak Portuguese very well",
+     "target_text": "estou tentando falar português muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to be able to speak very well",
+     "target_text": "quero conseguir falar muito bem",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 15,
+  "phrases": {
+   "15:1": [
+    {
+     "known_text": "and I want",
+     "target_text": "e quero",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and I speak",
+     "target_text": "e falo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and you speak",
+     "target_text": "e você fala",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and you speak very well",
+     "target_text": "e você fala muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and I'd like to try today",
+     "target_text": "e gostaria de tentar hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and I'm going to try tomorrow",
+     "target_text": "e vou tentar amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and I speak a little Portuguese now",
+     "target_text": "e falo um pouco de português agora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and I want to speak Portuguese all day",
+     "target_text": "e quero falar português o dia todo",
+     "phrase_role": "use"
+    }
+   ],
+   "15:2": [
+    {
+     "known_text": "you speak",
+     "target_text": "você fale",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I want you to speak",
+     "target_text": "quero que você fale",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want you to speak Portuguese",
+     "target_text": "quero que você fale português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want you to speak tomorrow",
+     "target_text": "quero que você fale amanhã",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want you to speak with someone else",
+     "target_text": "quero que você fale com outra pessoa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want you to speak very well",
+     "target_text": "quero que você fale muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want you to speak Portuguese very well",
+     "target_text": "quero que você fale português muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want you to speak Portuguese all day",
+     "target_text": "quero que você fale português o dia todo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want you to speak Portuguese as often as possible",
+     "target_text": "quero que você fale português o mais frequentemente possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and I want you to speak Portuguese tomorrow",
+     "target_text": "e quero que você fale português amanhã",
+     "phrase_role": "use"
+    }
+   ],
+   "15:3": [
+    {
+     "known_text": "me",
+     "target_text": "mim",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "with me",
+     "target_text": "comigo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to speak with me",
+     "target_text": "falar comigo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak with me",
+     "target_text": "você fala comigo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to speak Portuguese with me",
+     "target_text": "falar português comigo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want you to speak with me",
+     "target_text": "quero que você fale comigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want you to speak Portuguese with me",
+     "target_text": "quero que você fale português comigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak Portuguese with me",
+     "target_text": "você fala português comigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want you to speak with me tomorrow",
+     "target_text": "quero que você fale comigo amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and I want you to speak Portuguese with me tomorrow",
+     "target_text": "e quero que você fale português comigo amanhã",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 25,
+  "phrases": {
+   "25:1": [
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you are going to",
+     "target_text": "você vai",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you are going to speak",
+     "target_text": "você vai falar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you are going to try",
+     "target_text": "você vai tentar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you are going to come back",
+     "target_text": "você vai voltar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you going to speak Portuguese?",
+     "target_text": "você vai falar português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you are going to try tomorrow",
+     "target_text": "você vai tentar amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you going to come back soon?",
+     "target_text": "você vai voltar em breve?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you going to start talking?",
+     "target_text": "você vai começar a falar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why are you going to come back?",
+     "target_text": "por que você vai voltar?",
+     "phrase_role": "use"
+    }
+   ],
+   "25:2": [
+    {
+     "known_text": "to help",
+     "target_text": "ajudar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to help me",
+     "target_text": "me ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to help me learn",
+     "target_text": "me ajudar a aprender",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to help me explain",
+     "target_text": "me ajudar a explicar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to help me tomorrow",
+     "target_text": "me ajudar amanhã",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to help me",
+     "target_text": "ele quer me ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you going to help me?",
+     "target_text": "você vai me ajudar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to help me",
+     "target_text": "ela quer me ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to help me today",
+     "target_text": "ele quer me ajudar hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you going to help me tomorrow?",
+     "target_text": "você vai me ajudar amanhã?",
+     "phrase_role": "use"
+    }
+   ],
+   "25:3": [
+    {
+     "known_text": "before",
+     "target_text": "antes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to go",
+     "target_text": "ir",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "before I have to go",
+     "target_text": "antes de eu ter que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to help me before I have to go",
+     "target_text": "me ajudar antes de eu ter que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to speak Portuguese before I have to go",
+     "target_text": "falar português antes de eu ter que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to try before I have to go",
+     "target_text": "tentar antes de eu ter que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you going to help me before I have to go?",
+     "target_text": "você vai me ajudar antes de eu ter que ir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak Portuguese before I have to go",
+     "target_text": "quero falar português antes de eu ter que ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to try before I have to go",
+     "target_text": "quero tentar antes de eu ter que ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to explain before I have to go",
+     "target_text": "gostaria de explicar antes de eu ter que ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to meet before I have to go",
+     "target_text": "queremos nos encontrar antes de eu ter que ir",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]
