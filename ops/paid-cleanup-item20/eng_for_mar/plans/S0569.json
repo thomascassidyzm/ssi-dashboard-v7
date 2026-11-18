@@ -1,0 +1,37 @@
+{
+ "seed": 569,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तुम्हाला काय हवं आहे हे तुम्ही ठरवलंय का?",
+     "have you decided what you want?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "तुम्ही किती पैसे द्यायला तयार आहात याची मला खात्री नाही",
+     "I'm not sure how much you are willing to pay",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही किती पैसे द्यायला तयार आहात हे तुम्हाला माहित आहे का?",
+     "do you know how much you are willing to pay?",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

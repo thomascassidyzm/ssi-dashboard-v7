@@ -1,0 +1,1991 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "b2-s060-300-j2.tsv",
+ "at": "2026-11-18T14:22:36.064Z",
+ "rows": [
+  {
+   "id": "S0061L01U07",
+   "role": "use",
+   "target": "could you say something again, I don't know what I mean?",
+   "old": "もう一度話してください、よく聞こえませんでした",
+   "new": "何かもう一度言っていただけますか？自分が何を言いたいのかわかりません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"could you say something again, I don't know what I mean?\",\"unknown\":\"could\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0061L01U11",
+   "role": "use",
+   "target": "could you say that again as soon as you can?",
+   "old": "もう一度言っていただけますか、なるべく早く覚えたいです",
+   "new": "できるだけ早く、もう一度言っていただけますか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"could you say that again as soon as you can?\",\"unknown\":\"could\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0061L01U14",
+   "role": "use",
+   "target": "could you say that again a little more slowly, I need to remember?",
+   "old": "もう一度言っていただけますか、ゆっくりと話していただけると助かります",
+   "new": "もう少しゆっくりもう一度言っていただけますか？覚える必要があります",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"could you say that again a little more slowly, I need to remember?\",\"unknown\":\"could slowly\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0061L02U01",
+   "role": "use",
+   "target": "could you say that again a little more slowly?",
+   "old": "ゆっくり話していただけますか、まだよくわかりません",
+   "new": "もう少しゆっくりもう一度言っていただけますか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"could you say that again a little more slowly?\",\"unknown\":\"could\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0061L02U10",
+   "role": "use",
+   "target": "could you say that again slowly, I can't remember what I wanted to say?",
+   "old": "ゆっくりやってみてください、言いたかったことが思い出せません",
+   "new": "ゆっくりもう一度言っていただけますか？言いたかったことが思い出せません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"could you say that again slowly, I can't remember what I wanted to say?\",\"unknown\":\"could\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0061L03B03",
+   "role": "build",
+   "target": "could you say that?",
+   "old": "言っていただけますか - それを",
+   "new": "それを言っていただけますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03B04",
+   "role": "build",
+   "target": "could you say that again?",
+   "old": "言っていただけますか - もう一度",
+   "new": "それをもう一度言っていただけますか",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03B05",
+   "role": "build",
+   "target": "could you say that again slowly?",
+   "old": "言っていただけますか - ゆっくり",
+   "new": "ゆっくりもう一度言っていただけますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03B06",
+   "role": "build",
+   "target": "could you say that again a little more slowly?",
+   "old": "言っていただけますか - もう少しゆっくり",
+   "new": "もう少しゆっくりもう一度言っていただけますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U05",
+   "role": "use",
+   "target": "could you say something in English again a little more slowly?",
+   "old": "言っていただけますか、もう少しゆっくりと話していただけると助かります",
+   "new": "英語で何かもう一度、もう少しゆっくり言っていただけますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U08",
+   "role": "use",
+   "target": "could you say that again as soon as you can?",
+   "old": "言っていただけますか、なるべく早く覚えたいです",
+   "new": "できるだけ早く、もう一度言っていただけますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U09",
+   "role": "use",
+   "target": "could you say that again, I don't know what I wanted to say?",
+   "old": "言っていただけますか、言いたかったことが違います",
+   "new": "もう一度言っていただけますか？言いたかったことがわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U12",
+   "role": "use",
+   "target": "could you say that again, I don't know what you want to say?",
+   "old": "言っていただけますか、何を言っているのか知りません",
+   "new": "もう一度言っていただけますか？あなたが何を言いたいのかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L03U15",
+   "role": "use",
+   "target": "could you say that again slowly, I need to remember a word?",
+   "old": "言っていただけますか、ゆっくりともう一度話していただけると助かります",
+   "new": "ゆっくりもう一度言っていただけますか？ある言葉を覚える必要があります",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L04U04",
+   "role": "use",
+   "target": "could you say that again, I don't know what I wanted to say?",
+   "old": "それをもう一度聞かせてください、言いたかったことが思い出せません",
+   "new": "もう一度言っていただけますか？言いたかったことがわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L04U08",
+   "role": "use",
+   "target": "could you say that again slowly, I can remember more easily?",
+   "old": "それをもう一度言っていただけますか、ゆっくりと話していただけると覚えやすいです",
+   "new": "ゆっくりもう一度言っていただけますか？そのほうが覚えやすいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0061L04U15",
+   "role": "use",
+   "target": "could you say that again as soon as you can, I need to remember?",
+   "old": "それをもう一度言っていただけますか、なるべく早く覚えたいです",
+   "new": "できるだけ早く、もう一度言っていただけますか？覚える必要があります",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L01B04",
+   "role": "build",
+   "target": "are you sure you don't mind helping me?",
+   "old": "確信していますか、手伝うことを気にしませんか",
+   "new": "本当に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me?\",\"unknown\":\"mind helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L01U01",
+   "role": "use",
+   "target": "Are you sure you don't mind helping me?",
+   "old": "確信していますか、手伝うことを気にしませんか",
+   "new": "本当に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"Are you sure you don't mind helping me?\",\"unknown\":\"mind helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L01U14",
+   "role": "use",
+   "target": "Are you sure you don't mind helping me with something?",
+   "old": "確信していますか、気にしませんか、手伝うことを",
+   "new": "本当に何かで私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"Are you sure you don't mind helping me with something?\",\"unknown\":\"mind helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L02B06",
+   "role": "build",
+   "target": "are you sure you don't mind helping me?",
+   "old": "気にしませんか、これを",
+   "new": "本当に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L02U01",
+   "role": "use",
+   "target": "Are you sure you don't mind helping me?",
+   "old": "確信していますか、手伝うことを気にしませんか",
+   "new": "本当に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"Are you sure you don't mind helping me?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L02U05",
+   "role": "use",
+   "target": "Are you sure you don't mind helping me at the same time?",
+   "old": "気にしませんか、手伝うことを、同時に",
+   "new": "本当に同時に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"Are you sure you don't mind helping me at the same time?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L02U11",
+   "role": "use",
+   "target": "Are you sure you don't mind helping me today?",
+   "old": "気にしませんか、手伝うことを、今日も",
+   "new": "本当に今日私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"Are you sure you don't mind helping me today?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03B03",
+   "role": "build",
+   "target": "are you sure you don't mind helping me?",
+   "old": "本当に気にしませんか、私を手伝うことを",
+   "new": "本当に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03B04",
+   "role": "build",
+   "target": "are you sure you don't mind helping me today?",
+   "old": "本当に気にしませんか、今日私を手伝うことを",
+   "new": "本当に今日私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me today?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03B05",
+   "role": "build",
+   "target": "are you sure you don't mind helping me tonight?",
+   "old": "本当に気にしませんか、今夜私を手伝うことを",
+   "new": "本当に今夜私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me tonight?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03B06",
+   "role": "build",
+   "target": "are you sure you don't mind helping me again?",
+   "old": "本当に気にしませんか、また私を手伝うことを",
+   "new": "本当にまた私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me again?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03B07",
+   "role": "build",
+   "target": "are you sure you don't mind helping me tomorrow?",
+   "old": "本当に気にしませんか、明日私を手伝うことを",
+   "new": "本当に明日私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me tomorrow?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U01",
+   "role": "use",
+   "target": "are you sure you don't mind helping me today?",
+   "old": "本当に気にしませんか、私を手伝うことを、今日",
+   "new": "本当に今日私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me today?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U02",
+   "role": "use",
+   "target": "are you sure you don't mind helping me a little more?",
+   "old": "本当に気にしませんか、もう少し時間をかけることを",
+   "new": "本当にもう少し私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me a little more?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U03",
+   "role": "use",
+   "target": "are you sure you don't mind helping me this afternoon?",
+   "old": "本当に気にしませんか、今日の午後私を手伝うことを",
+   "new": "本当に今日の午後私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me this afternoon?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U04",
+   "role": "use",
+   "target": "are you sure you don't mind helping me before you have to go?",
+   "old": "本当に気にしませんか、私を手伝うことを、あなたが行く前に",
+   "new": "本当に、あなたが行かなければならない前に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me before you have to go?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U06",
+   "role": "use",
+   "target": "are you sure you don't mind helping me speak English now?",
+   "old": "本当に気にしませんか、英語で今私を手伝うことを",
+   "new": "本当に今、私が英語を話すのを手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me speak English now?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U07",
+   "role": "use",
+   "target": "are you sure you don't mind helping me at the same time today?",
+   "old": "本当に気にしませんか、今日私を手伝うことを、同時に",
+   "new": "本当に今日同時に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me at the same time today?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U08",
+   "role": "use",
+   "target": "are you sure you don't mind helping me as soon as you can?",
+   "old": "本当に気にしませんか、あなたができるだけ早く私を手伝うことを",
+   "new": "本当にできるだけ早く私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me as soon as you can?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U09",
+   "role": "use",
+   "target": "are you sure you don't mind helping me this morning?",
+   "old": "本当に気にしませんか、今日の午前中に私を手伝うことを",
+   "new": "本当に今朝私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me this morning?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U10",
+   "role": "use",
+   "target": "are you sure you don't mind helping me a little more to answer?",
+   "old": "本当に気にしませんか、もう少し時間を取って答えることを",
+   "new": "本当に、私が答えるのをもう少し手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me a little more to answer?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U11",
+   "role": "use",
+   "target": "are you sure you don't mind helping me as often as possible?",
+   "old": "本当に気にしませんか、できるだけよく英語を練習することを",
+   "new": "本当にできるだけたくさん私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me as often as possible?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U12",
+   "role": "use",
+   "target": "are you sure you don't mind helping me tonight?",
+   "old": "本当に気にしませんか、今夜私を手伝うことを",
+   "new": "本当に今夜私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me tonight?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U13",
+   "role": "use",
+   "target": "are you sure you don't mind helping me again this afternoon?",
+   "old": "本当に気にしませんか、今日の午後もう一度私を手伝うことを",
+   "new": "本当に今日の午後また私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me again this afternoon?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U14",
+   "role": "use",
+   "target": "are you sure you don't mind helping me this evening?",
+   "old": "本当に気にしませんか、今週私を手伝うことを",
+   "new": "本当に今晩私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me this evening?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L03U15",
+   "role": "use",
+   "target": "are you sure you don't mind helping me tomorrow?",
+   "old": "本当に気にしませんか、明日私を手伝うことを",
+   "new": "本当に明日私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you sure you don't mind helping me tomorrow?\",\"unknown\":\"helping\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0063L04B04",
+   "role": "build",
+   "target": "are you sure you don't mind helping me?",
+   "old": "本当に気にしませんか、私を手伝うことを",
+   "new": "本当に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04B05",
+   "role": "build",
+   "target": "are you sure you don't mind helping me before you have to go?",
+   "old": "行く前に、私を手伝うことを",
+   "new": "本当に、あなたが行かなければならない前に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U02",
+   "role": "use",
+   "target": "are you sure you don't mind helping me today?",
+   "old": "本当に気にしませんか、今日私を手伝うことを",
+   "new": "本当に今日私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U03",
+   "role": "use",
+   "target": "are you sure you don't mind helping me before you have to go?",
+   "old": "あなたが行く前に、私を手伝うことに感謝します",
+   "new": "本当に、あなたが行かなければならない前に私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U07",
+   "role": "use",
+   "target": "are you sure you don't mind helping me as soon as you can?",
+   "old": "気にしませんか、今できるだけ早く私を手伝うことを",
+   "new": "本当にできるだけ早く私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U09",
+   "role": "use",
+   "target": "are you sure you don't mind helping me again?",
+   "old": "気にしませんか、もう一度私を手伝うことを",
+   "new": "本当にまた私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U12",
+   "role": "use",
+   "target": "are you sure you don't mind helping me speak English tonight?",
+   "old": "気にしませんか、今夜私を手伝うことを、英語で",
+   "new": "本当に今夜、私が英語を話すのを手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0063L04U14",
+   "role": "use",
+   "target": "are you sure you don't mind helping me as often as possible this week?",
+   "old": "気にしませんか、今週私を手伝うことを、できるだけ",
+   "new": "本当に今週できるだけたくさん私を手伝っても構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0065L01U05",
+   "role": "use",
+   "target": "it's important to take time to test yourself",
+   "old": "重要です、あなた自身をテストすることが、時間をかけて",
+   "new": "自分をテストする時間を取ることは大切です。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it's important to take time to test yourself\",\"unknown\":\"take test yourself\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0065L02U01",
+   "role": "use",
+   "target": "it's important to take time to test yourself",
+   "old": "重要です、時間をかけることが、あなた自身をテストするために",
+   "new": "自分をテストする時間を取ることは大切です。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it's important to take time to test yourself\",\"unknown\":\"test yourself\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0065L03U01",
+   "role": "use",
+   "target": "it's important to take time to test yourself",
+   "old": "重要です、あなた自身をテストすることが、時間をかけて",
+   "new": "自分をテストする時間を取ることは大切です。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"it's important to take time to test yourself\",\"unknown\":\"yourself\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0065L04U01",
+   "role": "use",
+   "target": "it's important to take time to test yourself",
+   "old": "重要です、あなた自身をテストすることが、時間をかけて",
+   "new": "自分をテストする時間を取ることは大切です。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0066L01U14",
+   "role": "use",
+   "target": "do you think it's difficult?",
+   "old": "難しいと思いますか？私は難しいとは思いません",
+   "new": "難しいと思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0070L05U03",
+   "role": "use",
+   "target": "I don't know why she didn't want to tell me about it",
+   "old": "なぜ彼女は私に教えたくなかったのですか？",
+   "new": "なぜ彼女が私にそれについて話したくなかったのか、わかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0075L01B05",
+   "role": "build",
+   "target": "have you got more to learn in English?",
+   "old": "ことがありますか、英語",
+   "new": "まだ英語で学ぶことがありますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0079L01B01",
+   "role": "build",
+   "target": "did you start to learn?",
+   "old": "学び始めました",
+   "new": "学び始めましたか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0079L01B02",
+   "role": "build",
+   "target": "did you start to learn?",
+   "old": "学び始めました",
+   "new": "学び始めましたか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0079L01B06",
+   "role": "build",
+   "target": "where did you start to learn English?",
+   "old": "どこで学び始めましたか、英語を",
+   "new": "どこで英語を学び始めましたか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0084L01U05",
+   "role": "use",
+   "target": "do you agree with what he said?",
+   "old": "彼が言ったことに同意しますか？私は同意しません",
+   "new": "彼が言ったことに同意しますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0093L01U06",
+   "role": "use",
+   "target": "It's time to go now, isn't it?",
+   "old": "もう行く時間ですよね？もっと話したいです",
+   "new": "もう行く時間ですよね？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0095L02U01",
+   "role": "use",
+   "target": "are you ready to go home on the next bus?",
+   "old": "準備はできていますか、次のバスで帰る？",
+   "new": "次のバスで家に帰る準備はできていますか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"are you ready to go home on the next bus?\",\"unknown\":\"bus\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0098L01U06",
+   "role": "use",
+   "target": "I should consider playing something else",
+   "old": "私は別のゲームをすることを考えるべきです",
+   "new": "何か他のことをすることを考えた方がいいです。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I should consider playing something else\",\"unknown\":\"should playing\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0098L02U02",
+   "role": "use",
+   "target": "I should consider playing something else",
+   "old": "私は別のゲームをすることを考えるべきです",
+   "new": "何か他のことをすることを考えた方がいいです。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I should consider playing something else\",\"unknown\":\"should playing\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0098L03U01",
+   "role": "use",
+   "target": "I should consider playing something else",
+   "old": "別のゲームをすることを考えてみてもいいと思います",
+   "new": "何か他のことをすることを考えた方がいいです。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I should consider playing something else\",\"unknown\":\"should\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0099L01U01",
+   "role": "use",
+   "target": "you should ask yourself why it's not working",
+   "old": "うまくいかなければ自分に聞いた方がいいです",
+   "new": "なぜうまくいかないのか自分に聞いた方がいいです。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"you should ask yourself why it's not working\",\"unknown\":\"working\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0099L02U01",
+   "role": "use",
+   "target": "you should ask yourself why it's not working",
+   "old": "自分に聞いた方がいいです、なぜうまくいかないのかを",
+   "new": "なぜうまくいかないのか自分に聞いた方がいいです。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"you should ask yourself why it's not working\",\"unknown\":\"working\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0099L02U12",
+   "role": "use",
+   "target": "ask yourself if you understand enough",
+   "old": "自分に聞いてみてください、本当に理解していますか？",
+   "new": "十分に理解しているか、自分に聞いてみてください",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0100L04B07",
+   "role": "build",
+   "target": "you shouldn't worry about doing something similar",
+   "old": "似たようなことが心配なら、そうすべきではない",
+   "new": "似たようなことをすることを心配しなくてもいいです。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0100L04U01",
+   "role": "use",
+   "target": "you shouldn't worry about doing something similar",
+   "old": "似たようなことが心配なら、そうすべきではありません",
+   "new": "似たようなことをすることを心配しなくてもいいです。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0101L01B05",
+   "role": "build",
+   "target": "I'm enjoying finding out more about this language",
+   "old": "この言語についてもっと楽しんで知っています",
+   "new": "この言語についてもっと知るのを楽しんでいます。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I'm enjoying finding out more about this language\",\"unknown\":\"language\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0101L01U01",
+   "role": "use",
+   "target": "I'm enjoying finding out more about this language",
+   "old": "この言語についてもっと楽しんで知っています",
+   "new": "この言語についてもっと知るのを楽しんでいます。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I'm enjoying finding out more about this language\",\"unknown\":\"language\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0101L02B05",
+   "role": "build",
+   "target": "I'm enjoying finding out more about this language",
+   "old": "この言語についてもっと楽しんで知っています",
+   "new": "この言語についてもっと知るのを楽しんでいます。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0101L02U01",
+   "role": "use",
+   "target": "I'm enjoying finding out more about this language",
+   "old": "この言語についてもっと楽しんで知っています",
+   "new": "この言語についてもっと知るのを楽しんでいます。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0107L02U04",
+   "role": "use",
+   "target": "can you tell me what you were doing just now?",
+   "old": "今あなたがやっていることを教えてください",
+   "new": "さっき何をしていたか教えてくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0113L01U01",
+   "role": "use",
+   "target": "why can't I remember what you said when it was so interesting?",
+   "old": "なぜあなたが言ったことを思い出せないのか、不思議です",
+   "new": "とても面白かったのに、なぜあなたが言ったことを思い出せないのでしょう？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0113L01U12",
+   "role": "use",
+   "target": "why can't I remember what you said when I think about it carefully?",
+   "old": "なぜあなたが言ったことを思い出せないのか、考えてみると難しいですね",
+   "new": "よく考えると、なぜあなたが言ったことを思い出せないのでしょう？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0122L03B03",
+   "role": "build",
+   "target": "it's starting to feel easier and I'm excited about how it's going",
+   "old": "それがどのように進んでいるか興奮しています",
+   "new": "簡単に感じ始めていて、どう進んでいるかにワクワクしています。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0126L01U01",
+   "role": "use",
+   "target": "we must work hard to learn a lot of new words",
+   "old": "もっと一生懸命勉強する必要があります",
+   "new": "たくさんの新しい言葉を学ぶために一生懸命頑張らなければなりません。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0127L01B06",
+   "role": "build",
+   "target": "why are you learning?",
+   "old": "あなたが学ぶ理由",
+   "new": "なぜ学んでいるのですか",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:zut {\"pass\":false,\"collisions\":[{\"known\":\"なぜ学んでいるのですか\",\"new_target\":\"why are you learning?\",\"existing_target\":\"Why are you learning?\",\"existing_seed\":21}],\"total\":1}",
+    "ZUT whole course: \"なぜ学んでいるのですか\" is \"Why are you learning?\" at seed 21"
+   ]
+  },
+  {
+   "id": "S0129L01B06",
+   "role": "build",
+   "target": "I'm very happy with how much I've learnt already",
+   "old": "とても嬉しいです",
+   "new": "もう学んだことにとても満足しています。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0129L03B06",
+   "role": "build",
+   "target": "I'm so happy that you're doing so well and I'd like to keep on",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、続けてください",
+   "new": "あなたがこんなにうまくやっていてとても嬉しいです。私も続けたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0131L01U07",
+   "role": "use",
+   "target": "there are too many ideas going around in my head",
+   "old": "頭の中にたくさんのアイデアがあります",
+   "new": "頭の中にたくさんの考えがぐるぐる回っています。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"there are too many ideas going around in my head\",\"unknown\":\"ideas around head\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0131L02U04",
+   "role": "use",
+   "target": "there are too many ideas going around in my head",
+   "old": "頭の中に多すぎるアイデアがあります",
+   "new": "頭の中にたくさんの考えがぐるぐる回っています。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"there are too many ideas going around in my head\",\"unknown\":\"ideas around head\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0131L02U09",
+   "role": "use",
+   "target": "there are too many things I want to talk about, I don't know where to start",
+   "old": "話したいことが多すぎます、どこから始めればいいですか？",
+   "new": "話したいことが多すぎて、どこから始めればいいかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0131L03B01",
+   "role": "build",
+   "target": "there are ideas going around",
+   "old": "アイデア",
+   "new": "考えがぐるぐる回っています",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"there are ideas going around\",\"unknown\":\"around\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0131L05U13",
+   "role": "use",
+   "target": "what are you looking for in my head, we wanted to give you a little more time?",
+   "old": "頭の中でその言葉を見つけようとしています、もう少し時間をください",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0138L01U11",
+   "role": "use",
+   "target": "This was where you said you wanted to meet me",
+   "old": "ここはあなたが私に会いたいと言っていた場所ですよね？",
+   "new": "ここはあなたが私に会いたいと言っていた場所です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0138L02U13",
+   "role": "use",
+   "target": "I want to know when your friend wants to meet us",
+   "old": "あなたの友達はいつ私たちに会いたいと思っていますか？",
+   "new": "あなたの友達がいつ私たちに会いたいのか知りたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0139L02U11",
+   "role": "use",
+   "target": "I don't know why she would need to leave so early",
+   "old": "彼女はなぜそんなに早く出る必要があったのですか？",
+   "new": "なぜ彼女がそんなに早く出る必要があるのか、わかりません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I don't know why she would need to leave so early\",\"unknown\":\"early\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0139L03U07",
+   "role": "use",
+   "target": "I don't know why she had to leave so early",
+   "old": "彼女はなぜこんなに早く出なければならなかったのですか？",
+   "new": "なぜ彼女がそんなに早く出なければならなかったのか、わかりません",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I don't know why she had to leave so early\",\"unknown\":\"had\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0144L01B02",
+   "role": "build",
+   "target": "I wanted to this morning",
+   "old": "今朝したかったこと",
+   "new": "今朝したかった",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0144L01B03",
+   "role": "build",
+   "target": "what I wanted to this morning",
+   "old": "今朝したかったこと",
+   "new": "今朝したかったこと",
+   "del": false,
+   "verdict": "NOOP"
+  },
+  {
+   "id": "S0144L01B04",
+   "role": "build",
+   "target": "all I wanted to this morning",
+   "old": "今朝したかったこと",
+   "new": "今朝したかったことは全部",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0144L01B05",
+   "role": "build",
+   "target": "more than I wanted to this morning",
+   "old": "今朝したかったこと",
+   "new": "今朝したかったより多く",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0144L01B06",
+   "role": "build",
+   "target": "less than I wanted to this morning",
+   "old": "今朝したかったこと",
+   "new": "今朝したかったより少なく",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0144L01B07",
+   "role": "build",
+   "target": "not what I wanted to this morning",
+   "old": "今朝したかったこと",
+   "new": "今朝したかったことではない",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0144L02U08",
+   "role": "use",
+   "target": "they woke earlier than us today",
+   "old": "今日私たちよりも早く起きました",
+   "new": "彼らは今日私たちよりも早く起きました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0152L01U02",
+   "role": "use",
+   "target": "I would have done it differently if I had known what you wanted",
+   "old": "私はそれを違うやり方でしたでしょう。もし知っていたら",
+   "new": "あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I would have done it differently if I had known what you wanted\",\"unknown\":\"differently had known\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0152L03U03",
+   "role": "use",
+   "target": "I would have done it differently if I had known what you wanted",
+   "old": "私は違うやり方でやったでしょう。もし知っていたら",
+   "new": "あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I would have done it differently if I had known what you wanted\",\"unknown\":\"had known\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0154L01B05",
+   "role": "build",
+   "target": "where is it?",
+   "old": "そこはどこ",
+   "new": "それはどこですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0154L01U05",
+   "role": "use",
+   "target": "this was where my friend wanted to meet us",
+   "old": "私の友達がどこで会いたかったかご存知ですか？",
+   "new": "ここは友達が私たちに会いたかった場所です。",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L01U05",
+   "role": "use",
+   "target": "are you sure you don't mind if he doesn't want to talk?",
+   "old": "彼は全く気にしないと言っていました",
+   "new": "彼が話したくなくても、本当に構いませんか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L02U01",
+   "role": "use",
+   "target": "I'm not going to be waiting for you, why not?",
+   "old": "あなたのことを待っています",
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L04B07",
+   "role": "build",
+   "target": "meet tomorrow morning",
+   "old": "明日の朝に会いましょう",
+   "new": "明日の朝に会う",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0155L04U04",
+   "role": "use",
+   "target": "I'd like to meet you tomorrow morning",
+   "old": "明日の朝に会いましょう",
+   "new": "明日の朝あなたに会いたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0156L01U11",
+   "role": "use",
+   "target": "if you can, I'd like to go to a restaurant",
+   "old": "もし時間があればレストランに行きませんか？",
+   "new": "できれば、レストランに行きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0158L01U10",
+   "role": "use",
+   "target": "let's talk this morning if you don't mind",
+   "old": "今朝話しましょうあなたには時間がありますか？",
+   "new": "よければ、今朝話しましょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0158L02U07",
+   "role": "use",
+   "target": "I should consider something else",
+   "old": "あなたは何か他のことを考えましたか？",
+   "new": "何か他のことを考えた方がいいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0160L01U11",
+   "role": "use",
+   "target": "can you show me how to use this word?",
+   "old": "この言葉を使い方を教えてください",
+   "new": "この言葉の使い方を教えてくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0166L02B05",
+   "role": "build",
+   "target": "can you tell me what my name is?",
+   "old": "私の名前を言ってください",
+   "new": "私の名前が何か教えてくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0166L02U01",
+   "role": "use",
+   "target": "do you know my name or do you need me to tell you what it is again?",
+   "old": "私の名前を覚えていますか？",
+   "new": "私の名前を知っていますか？それとも、もう一度言う必要がありますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0166L02U02",
+   "role": "use",
+   "target": "my name is not very unusual and I think that a lot of people have it",
+   "old": "私の名前はあまり珍しくありません",
+   "new": "私の名前はあまり珍しくなく、多くの人が持っていると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0166L02U03",
+   "role": "use",
+   "target": "I want my friend to know my name because I think it's important to her",
+   "old": "私の名前を友達に知ってほしいです",
+   "new": "彼女にとって大切だと思うので、友達に私の名前を知ってほしいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0166L05U07",
+   "role": "use",
+   "target": "it is not very unusual so you shouldn't worry about making mistakes",
+   "old": "あまり珍しくないので心配しないでください",
+   "new": "あまり珍しくないので、間違いを気にしなくてもいいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0167L02U11",
+   "role": "use",
+   "target": "let's meet tomorrow afternoon and you can tell me where you want to go",
+   "old": "明日の午後に会いましょう、どこが良いですか？",
+   "new": "明日の午後に会いましょう。どこに行きたいか教えてください",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0167L03B03",
+   "role": "build",
+   "target": "what do you need to do today?",
+   "old": "何をする必要がありますか、今日",
+   "new": "今日何をする必要がありますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0167L03B04",
+   "role": "build",
+   "target": "what do you need to do next?",
+   "old": "何をする必要がありますか、次に",
+   "new": "次に何をする必要がありますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0167L03B05",
+   "role": "build",
+   "target": "what do you need to do this morning?",
+   "old": "何をする必要がありますか、今朝",
+   "new": "今朝何をする必要がありますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0168L03U06",
+   "role": "use",
+   "target": "can you come and help me because I need to speak with you today?",
+   "old": "来て手伝っていただけますか、大切なことがあります",
+   "new": "今日あなたと話す必要があるので、来て手伝ってくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0169L01U01",
+   "role": "use",
+   "target": "can you tell me what your friend wants me to do this morning?",
+   "old": "友達が私に何をしてほしいか教えてください",
+   "new": "今朝、友達が私に何をしてほしいか教えてくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0170L02U01",
+   "role": "use",
+   "target": "can you tell me what you need for today so we can start talking?",
+   "old": "今日の仕事に何が必要かを教えてください",
+   "new": "話し始められるように、今日何が必要か教えてくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0170L02U12",
+   "role": "use",
+   "target": "can you tell me what you need to practise speaking English?",
+   "old": "英語を話すために何が必要か教えてください",
+   "new": "英語を話す練習に何が必要か教えてくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0190L02U11",
+   "role": "use",
+   "target": "can I ask you some questions about something different today?",
+   "old": "今日違うことについていくつか質問があります",
+   "new": "今日、違うことについていくつか質問してもいいですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0203L01B03",
+   "role": "build",
+   "target": "what would you do if I asked you to help me?",
+   "old": "もし頼んだら、どうする？",
+   "new": "手伝ってと頼んだら何をしますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0203L02B03",
+   "role": "build",
+   "target": "what would you do if I asked you to help me",
+   "old": "何をしますか、もし聞いたら",
+   "new": "手伝ってと頼んだら何をしますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0204L02U03",
+   "role": "use",
+   "target": "I wanted her to tell me what was going to happen",
+   "old": "彼女に話してほしかったです",
+   "new": "何が起こるのか、彼女に教えてほしかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0207L02U09",
+   "role": "use",
+   "target": "you've done your work for this week, well done",
+   "old": "今週の仕事はもうやりましたね？",
+   "new": "今週の仕事はもう終わりましたね。よくできました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0208L01U05",
+   "role": "use",
+   "target": "I've forgotten how to say it, could you help me?",
+   "old": "どう言うかを忘れてしまいました",
+   "new": "どう言うか忘れてしまいました。手伝っていただけますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0223L01U06",
+   "role": "use",
+   "target": "I'm going to ask for help if I can't remember how to say it",
+   "old": "助けを求めるつもりです",
+   "new": "どう言うか思い出せなかったら、助けを求めるつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0250L03U04",
+   "role": "use",
+   "target": "can you tell me something else because I need a little more time?",
+   "old": "何か違うことを話してくれますか？もう少し時間をください",
+   "new": "もう少し時間が必要なので、何か他のことを話してくれますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0262L01B04",
+   "role": "build",
+   "target": "tell me, who was that man you were talking to yesterday?",
+   "old": "昨日話していたあの男の人を教えてください",
+   "new": "教えてください、昨日話していたあの男の人は誰でしたか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0273L02U02",
+   "role": "use",
+   "target": "I think I've got too much work this week and I want you to help me",
+   "old": "今週は仕事が多すぎると思います。手伝ってもらえますか？",
+   "new": "今週は仕事が多すぎると思うので、手伝ってほしいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0274L01U01",
+   "role": "use",
+   "target": "I think I'll be ready in a few days so I'd like you to wait for me",
+   "old": "数日後に準備できると思います。それまで待ってもらえますか？",
+   "new": "数日で準備ができると思うので、待っていてほしいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0287L01B01",
+   "role": "build",
+   "target": "how many?",
+   "old": "何人",
+   "new": "何人ですか？",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  }
+ ],
+ "seeds": {
+  "61": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"could you say that again a little more slowly?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"could you say\", \"could you say that again a little more slowly?\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"that again\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"could you say that again a little more slowly?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"could you say\", \"could you say that again a little more slowly?\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"that again\""
+   ],
+   "newFailures": []
+  },
+  "63": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\", \"Are you sure you don't mind?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\"",
+    "L3: 4 duplicate phrase(s) within this LEGO: \"are you sure you don't mind?\", \"are you sure you don't mind helping me today?\", \"are you sure you don't mind helping me tonight?\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"helping me\", \"are you sure you don't mind helping me before you have to go?\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\", \"Are you sure you don't mind?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"Are you sure you don't mind helping me?\"",
+    "L3: 4 duplicate phrase(s) within this LEGO: \"are you sure you don't mind?\", \"are you sure you don't mind helping me today?\", \"are you sure you don't mind helping me tonight?\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"helping me\", \"are you sure you don't mind helping me before you have to go?\""
+   ],
+   "newFailures": []
+  },
+  "65": {
+   "before": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"it's important to test yourself when you want to learn English\", \"it's important to test yourself but it is fun at the same time\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"it's important\"",
+    "L6: 2 duplicate phrase(s) within this LEGO: \"to take time\", \"I don't like to take time to answer\"",
+    "L7: 4 duplicate phrase(s) within this LEGO: \"to test yourself\", \"it's important to take time to test yourself\", \"it's important to test yourself as often as possible\""
+   ],
+   "after": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"it's important to test yourself when you want to learn English\", \"it's important to test yourself but it is fun at the same time\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"it's important\"",
+    "L6: 2 duplicate phrase(s) within this LEGO: \"to take time\", \"I don't like to take time to answer\"",
+    "L7: 4 duplicate phrase(s) within this LEGO: \"to test yourself\", \"it's important to take time to test yourself\", \"it's important to test yourself as often as possible\""
+   ],
+   "newFailures": []
+  },
+  "66": {
+   "before": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"not difficult\", \"it's not difficult to find the answer\", \"it's not difficult if you don't worry about making mistakes\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"to find the answer\", \"it's not difficult to find the answer\""
+   ],
+   "after": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"not difficult\", \"it's not difficult to find the answer\", \"it's not difficult if you don't worry about making mistakes\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"to find the answer\", \"it's not difficult to find the answer\""
+   ],
+   "newFailures": []
+  },
+  "70": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Do you want to tell me something?\", \"Why didn't she want to tell me?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"He didn't want to tell me where it was\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"where it was\", \"He didn't want to tell me where it was\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"didn't want to tell me\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"Do you want to tell me something?\", \"Why didn't she want to tell me?\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"He didn't want to tell me where it was\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"where it was\", \"He didn't want to tell me where it was\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"didn't want to tell me\""
+   ],
+   "newFailures": []
+  },
+  "75": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"have you got?\", \"have you got more to learn in English?\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"have you got?\", \"have you got more to learn in English?\""
+   ],
+   "newFailures": []
+  },
+  "79": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"did you start to learn?\", \"did you start to learn with your friends?\", \"where did you start to learn English?\"",
+    "L1: vocab violations in 2 phrase(s)"
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"did you start to learn?\", \"did you start to learn with your friends?\", \"where did you start to learn English?\"",
+    "L1: vocab violations in 2 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "84": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"what he said\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"what he said\""
+   ],
+   "newFailures": []
+  },
+  "93": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"it's time to go now\", \"unfortunately it's time to go now\", \"It's time to go now but I don't want to stop trying to speak English\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"it's time to go now\", \"unfortunately it's time to go now\", \"It's time to go now but I don't want to stop trying to speak English\""
+   ],
+   "newFailures": []
+  },
+  "95": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I'd like to go home soon\", \"are you going to go home after you finish?\", \"are you ready to go home on the next bus?\"",
+    "L2: vocab violations in 2 phrase(s)",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the next\", \"I'd like to practise more the next time\"",
+    "L3: vocab violations in 6 phrase(s)",
+    "L4: 4 duplicate phrase(s) within this LEGO: \"are you ready to go home on the next bus?\", \"I'm going to go home on the next bus\", \"when is the next bus?\"",
+    "L4: vocab violations in 6 phrase(s)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I'd like to go home soon\", \"are you going to go home after you finish?\", \"are you ready to go home on the next bus?\"",
+    "L2: vocab violations in 2 phrase(s)",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the next\", \"I'd like to practise more the next time\"",
+    "L3: vocab violations in 6 phrase(s)",
+    "L4: 4 duplicate phrase(s) within this LEGO: \"are you ready to go home on the next bus?\", \"I'm going to go home on the next bus\", \"when is the next bus?\"",
+    "L4: vocab violations in 6 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "98": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"should\", \"you should do something else\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"should\", \"you should do something else\""
+   ],
+   "newFailures": []
+  },
+  "99": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"you should ask\", \"you should ask as soon as you can\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"it's important to take time to test yourself\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"it's not working\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"you should ask\", \"you should ask as soon as you can\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"it's important to take time to test yourself\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"it's not working\""
+   ],
+   "newFailures": []
+  },
+  "100": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"you shouldn't worry\", \"you shouldn't worry about making mistakes\", \"you shouldn't worry when it's not working\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"similar\", \"you shouldn't worry about doing something similar\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"you shouldn't worry\", \"you shouldn't worry about making mistakes\", \"you shouldn't worry when it's not working\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"similar\", \"you shouldn't worry about doing something similar\""
+   ],
+   "newFailures": []
+  },
+  "101": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"enjoying finding out\", \"I'm enjoying finding out more about this language\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"about this language\", \"I'm enjoying finding out more about this language\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"enjoying finding out\", \"I'm enjoying finding out more about this language\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"about this language\", \"I'm enjoying finding out more about this language\""
+   ],
+   "newFailures": []
+  },
+  "107": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"hoped to see\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what you were doing\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"hoped to see\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what you were doing\""
+   ],
+   "newFailures": []
+  },
+  "113": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "122": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 8 duplicate phrase(s) within this LEGO: \"it's starting to feel easier\", \"it's starting to feel easier to speak English\", \"it's starting to feel easier than it was last night\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 8 duplicate phrase(s) within this LEGO: \"it's starting to feel easier\", \"it's starting to feel easier to speak English\", \"it's starting to feel easier than it was last night\""
+   ],
+   "newFailures": []
+  },
+  "126": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"we don't need to feel happy we just need to work hard\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"when we learn something new it changes our brain\"",
+    "L2: vocab violations in 2 phrase(s)",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the shape of my brain\", \"this work is changing the shape of my brain\"",
+    "L3: vocab violations in 1 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"is changing\"",
+    "L5: 5 duplicate phrase(s) within this LEGO: \"this work is changing the shape of my brain\", \"I believe this work is changing the shape of my brain\", \"this work is changing the shape of my brain now\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"we don't need to feel happy we just need to work hard\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"when we learn something new it changes our brain\"",
+    "L2: vocab violations in 2 phrase(s)",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the shape of my brain\", \"this work is changing the shape of my brain\"",
+    "L3: vocab violations in 1 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"is changing\"",
+    "L5: 5 duplicate phrase(s) within this LEGO: \"this work is changing the shape of my brain\", \"I believe this work is changing the shape of my brain\", \"this work is changing the shape of my brain now\""
+   ],
+   "newFailures": []
+  },
+  "127": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"wanted to see\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"that isn't why I wanted to see you\", \"that isn't why I wanted to see you at all\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"wanted to see\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"that isn't why I wanted to see you\", \"that isn't why I wanted to see you at all\""
+   ],
+   "newFailures": []
+  },
+  "129": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"doing so well\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"I'm so happy that you're doing so well\", \"I'm so happy that you're doing so well in a short time\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"doing so well\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"I'm so happy that you're doing so well\", \"I'm so happy that you're doing so well in a short time\""
+   ],
+   "newFailures": []
+  },
+  "131": {
+   "before": [
+    "L1: vocab violations in 4 phrase(s)",
+    "L2: vocab violations in 3 phrase(s)",
+    "L3: vocab violations in 6 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"going around\"",
+    "L4: vocab violations in 4 phrase(s)",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"in my head\"",
+    "L5: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: vocab violations in 4 phrase(s)",
+    "L2: vocab violations in 3 phrase(s)",
+    "L3: vocab violations in 6 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"going around\"",
+    "L4: vocab violations in 4 phrase(s)",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"in my head\"",
+    "L5: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "138": {
+   "before": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this was where\", \"this was where my friend wanted to meet us\", \"this was where I wanted to meet you\"",
+    "L1: vocab violations in 2 phrase(s)",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"meet us\", \"Do you want to meet us?\""
+   ],
+   "after": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this was where\", \"this was where my friend wanted to meet us\", \"this was where I wanted to meet you\"",
+    "L1: vocab violations in 2 phrase(s)",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"meet us\", \"Do you want to meet us?\""
+   ],
+   "newFailures": []
+  },
+  "139": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I'm sorry that\", \"I'm sorry that I need to leave so early\", \"I'm sorry that I couldn't speak to you\"",
+    "L1: vocab violations in 8 phrase(s)",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"need to leave\", \"I'm sorry that I need to leave so early\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I'm sorry that I need to leave so early\"",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I'm sorry that\", \"I'm sorry that I need to leave so early\", \"I'm sorry that I couldn't speak to you\"",
+    "L1: vocab violations in 8 phrase(s)",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"need to leave\", \"I'm sorry that I need to leave so early\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I'm sorry that I need to leave so early\"",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "144": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I wanted to this morning\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"woke earlier than\", \"she woke earlier than before\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I wanted to this morning\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"woke earlier than\", \"she woke earlier than before\""
+   ],
+   "newFailures": []
+  },
+  "152": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"would have done\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I would have done it differently if I had known it wasn't going to work\"",
+    "L3: vocab violations in 2 phrase(s)",
+    "L4: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L4: vocab violations in 3 phrase(s)"
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"would have done\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I would have done it differently if I had known it wasn't going to work\"",
+    "L3: vocab violations in 2 phrase(s)",
+    "L4: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L4: vocab violations in 3 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "154": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (4 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (4 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "155": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"waiting for\", \"waiting for\", \"waiting for\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"a few minutes\", \"a few minutes\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"tomorrow morning\", \"tomorrow morning\", \"tomorrow morning again\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"waiting for\", \"waiting for\", \"waiting for\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"a few minutes\", \"a few minutes\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"tomorrow morning\", \"tomorrow morning\", \"tomorrow morning again\""
+   ],
+   "newFailures": []
+  },
+  "156": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"go to a restaurant\", \"go to a restaurant\", \"want to go to a restaurant\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"go to a restaurant\", \"go to a restaurant\", \"want to go to a restaurant\""
+   ],
+   "newFailures": []
+  },
+  "158": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"let's talk\", \"let's talk\", \"let's talk about that\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"let's talk\", \"let's talk\", \"let's talk about that\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\""
+   ],
+   "newFailures": []
+  },
+  "160": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this word\", \"how do you say this word in English?\", \"I use this word a lot\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"how do you say?\", \"how do you say this in English?\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this word\", \"how do you say this word in English?\", \"I use this word a lot\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"how do you say?\", \"how do you say this in English?\""
+   ],
+   "newFailures": []
+  },
+  "166": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"my name\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: vocab violations in 1 phrase(s)",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"not very unusual\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"my name\"",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: vocab violations in 1 phrase(s)",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"not very unusual\""
+   ],
+   "newFailures": []
+  },
+  "167": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"tomorrow afternoon\"",
+    "L3: USE: need 5+, got 1"
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"tomorrow afternoon\"",
+    "L3: USE: need 5+, got 1"
+   ],
+   "newFailures": []
+  },
+  "168": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 3 phrase(s)",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"come and help\"",
+    "L3: vocab violations in 2 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I'll be able to come and help\"",
+    "L4: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 3 phrase(s)",
+    "L2: vocab violations in 1 phrase(s)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"come and help\"",
+    "L3: vocab violations in 2 phrase(s)",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I'll be able to come and help\"",
+    "L4: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "169": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what do you want me to do?\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what do you want me to do?\""
+   ],
+   "newFailures": []
+  },
+  "170": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what you need\"",
+    "L4: 1 phrase(s) fail containment",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"I'd like you to tell me this afternoon\", \"I'd like you to tell me as soon as you can\"",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: 4 duplicate phrase(s) within this LEGO: \"I'd like you to tell me what you need\", \"I'd like you to tell me what you need this afternoon\", \"I'd like you to tell me what you need next month\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what you need\"",
+    "L4: 1 phrase(s) fail containment",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"I'd like you to tell me this afternoon\", \"I'd like you to tell me as soon as you can\"",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: 4 duplicate phrase(s) within this LEGO: \"I'd like you to tell me what you need\", \"I'd like you to tell me what you need this afternoon\", \"I'd like you to tell me what you need next month\""
+   ],
+   "newFailures": []
+  },
+  "190": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I'd like to learn some new words\", \"do you mind if I ask some questions?\"",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"do you mind if I ask some questions?\", \"can I ask you some questions before you leave?\", \"do you mind if I ask you some questions now?\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"do you mind if\", \"do you mind if I ask you something before you leave?\", \"do you mind if I speak English now?\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I'd like to learn some new words\", \"do you mind if I ask some questions?\"",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"do you mind if I ask some questions?\", \"can I ask you some questions before you leave?\", \"do you mind if I ask you some questions now?\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"do you mind if\", \"do you mind if I ask you something before you leave?\", \"do you mind if I speak English now?\""
+   ],
+   "newFailures": []
+  },
+  "203": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what would you do?\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what would you do?\""
+   ],
+   "newFailures": []
+  },
+  "204": {
+   "before": [
+    "L1: USE: need 5+, got 4",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I wanted her to\", \"I wanted her to come and help\", \"I wanted her to tell me what was going to happen\""
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I wanted her to\", \"I wanted her to come and help\", \"I wanted her to tell me what was going to happen\""
+   ],
+   "newFailures": []
+  },
+  "207": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"you've done\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"you've done\""
+   ],
+   "newFailures": []
+  },
+  "208": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"how to say it\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I didn't want to ask you\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"how to say it\"",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I didn't want to ask you\""
+   ],
+   "newFailures": []
+  },
+  "223": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"going to ask\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"going to ask\""
+   ],
+   "newFailures": []
+  },
+  "250": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "262": {
+   "before": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "newFailures": []
+  },
+  "273": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I've got too much work\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I've got too much work\""
+   ],
+   "newFailures": []
+  },
+  "274": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"do you have to leave?\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"do you have to leave?\""
+   ],
+   "newFailures": []
+  },
+  "287": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  }
+ }
+}

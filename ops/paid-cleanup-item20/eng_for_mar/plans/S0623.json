@@ -1,0 +1,30 @@
+{
+ "seed": 623,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला एक कप कॉफीची गरज आहे",
+     "I need a cup of coffee",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "तुम्हाला कॉफी आवडेल की चहा?",
+     "would you like coffee or tea?",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0623L01B01": "कॉफीची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

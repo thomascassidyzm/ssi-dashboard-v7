@@ -1,0 +1,37 @@
+{
+ "seed": 560,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি সৈকত ভালোবাসি",
+     "I love the beach",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি সৈকতে যেতে চাই",
+     "I want to go to the beach",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি নিশ্চিত এটা সৈকতের দিকে নামে",
+     "I'm sure it goes down to the beach",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

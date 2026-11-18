@@ -1,0 +1,40 @@
+{
+ "seed": 369,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तुम्ही ते घोडे ऐकले का?",
+     "did you hear those horses?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मी आज बरेच घोडे पाहिले",
+     "I saw several horses today",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "मी रस्त्यावर कोणालातरी भेटलो",
+     "I met someone on the road",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0369L01B01": "ऐकले|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

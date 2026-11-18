@@ -1,0 +1,51 @@
+{
+ "seed": 584,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি প্রতিদিন সকালে জেগে উঠে পাহাড় দেখতে চাই",
+     "I want to wake up every morning and see the mountains",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি পাহাড় ভালোবাসি",
+     "I love the mountains",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "প্রতিদিন সকালে জেগে ওঠা কেমন?",
+     "what's it like to wake up every morning?",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "প্রতিদিন সকালে জেগে ওঠা খুব ভালো লেগেছে",
+     "it's been lovely to wake up every morning",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0584L01B01": "প্রতিদিন উঠে|this seed's own wording (every morning is its third LEGO)",
+  "S0584L02B01": "প্রতিদিন ওঠা|this seed's own wording; ওঠা is a form of taught উঠা",
+  "S0584L03B01": "ওঠা|form of taught উঠা"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,41 @@
+{
+ "seed": 499,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "হয়তো আমাদের দরজা খোলা উচিত",
+     "maybe we should open the door",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি মনে করি আমাদের দরজা খোলা উচিত",
+     "I think we should open the door",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "আমি মনে করি আমাদের জানালা বন্ধ করা উচিত",
+     "I think we should close the window",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0499L01B01": "দরজা খোলা|forms of taught দরজাটা and this seed's দরজা খুলে",
+  "S0499L02B01": "খোলা|form of this LEGO's own খুলে"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,45 @@
+{
+ "seed": 3,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "insert": [
+    [
+     "build",
+     "इंग्रजी कसं बोलायचं",
+     "how to speak English",
+     null,
+     null
+    ],
+    [
+     "build",
+     "मला कसं बोलायचं ते शिकायचं आहे",
+     "I want to learn how to speak",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "शक्य तितक्या वेळा इंग्रजी बोलणे",
+     "to speak English as often as possible",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मला शक्य तितक्या वेळा बोलायचं आहे",
+     "I want to speak as often as possible",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

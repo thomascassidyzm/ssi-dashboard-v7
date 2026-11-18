@@ -1,0 +1,1891 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "123c1baf-cabd-420d-934d-2a2870e5001a",
+ "results": [
+  {
+   "index": 0,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L01B01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "왜 만나고 싶어요?",
+    "target_text": "why do you want to meet?",
+    "target1_audio_id": "e02a0952-3ed1-40e2-81bc-246a67d9d1a5",
+    "target2_audio_id": "ac2df237-bf26-4ef6-9ed5-5abc1eff3029",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "af0505cc-f6e6-4207-9799-f1312dac14d4",
+    "known_text": "왜 만나고 싶어요?",
+    "target_text": "why do you want to meet?",
+    "target1_audio_id": "e02a0952-3ed1-40e2-81bc-246a67d9d1a5",
+    "target2_audio_id": "ac2df237-bf26-4ef6-9ed5-5abc1eff3029",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L01B02",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "왜 돌아오고 싶어요?",
+    "target_text": "why do you want to come back?",
+    "target1_audio_id": "9ade3c7c-0ac2-4d44-9e59-b070ae2aa176",
+    "target2_audio_id": "015bb4ed-aaaf-4891-995a-1611a204a85b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L01B02",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "efd728e8-a9a8-463a-9740-0345b78917e8",
+    "known_text": "왜 돌아오고 싶어요?",
+    "target_text": "why do you want to come back?",
+    "target1_audio_id": "9ade3c7c-0ac2-4d44-9e59-b070ae2aa176",
+    "target2_audio_id": "015bb4ed-aaaf-4891-995a-1611a204a85b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L03B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "영어를 배우고 있나요?",
+    "target_text": "are you learning English?",
+    "target1_audio_id": "46a7c124-6467-4007-a6c4-a41b477746a5",
+    "target2_audio_id": "4fb07925-45a5-488e-a61d-6c75c0679071",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L03B02",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "9fd4c2cc-2ebb-48d3-abfa-6235b37735c0",
+    "known_text": "영어를 배우고 있나요?",
+    "target_text": "are you learning English?",
+    "target1_audio_id": "46a7c124-6467-4007-a6c4-a41b477746a5",
+    "target2_audio_id": "4fb07925-45a5-488e-a61d-6c75c0679071",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L03B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L03B03",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "지금 배우고 있나요?",
+    "target_text": "are you learning now?",
+    "target1_audio_id": "8cc5a093-6689-4446-ba2f-7dfffa3aa925",
+    "target2_audio_id": "76dec4eb-cb36-4d5a-a209-f9c44e3676c8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L03B03",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "8044e61c-94ae-4e95-9bd2-0d077a53e177",
+    "known_text": "지금 배우고 있나요?",
+    "target_text": "are you learning now?",
+    "target1_audio_id": "8cc5a093-6689-4446-ba2f-7dfffa3aa925",
+    "target2_audio_id": "76dec4eb-cb36-4d5a-a209-f9c44e3676c8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0021L03B04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0021L03B04",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "빨리 배우고 있나요?",
+    "target_text": "are you learning quickly?",
+    "target1_audio_id": "a2d7dc58-2d19-419d-8f00-61c0d9a254d6",
+    "target2_audio_id": "4f8640ec-8021-413d-916a-6924f2455ddb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0021L03B04",
+    "seed_number": 21,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "8c047a7a-a14e-47b3-8dd7-da2b5a05fab4",
+    "known_text": "빨리 배우고 있나요?",
+    "target_text": "are you learning quickly?",
+    "target1_audio_id": "a2d7dc58-2d19-419d-8f00-61c0d9a254d6",
+    "target2_audio_id": "4f8640ec-8021-413d-916a-6924f2455ddb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0063L02U04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0063L02U04",
+    "seed_number": 63,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "당신은 저를 다시 도와주는 것이 괜찮아요",
+    "target_text": "you don't mind helping me again",
+    "target1_audio_id": "d6b4801a-6e53-4924-ae0c-152bbd71720f",
+    "target2_audio_id": "a8bb24f9-7ef2-4b36-b35a-f4dabaa107c7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0063L02U04",
+    "seed_number": 63,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "b561d208-7430-49b3-bcbc-7bde51e8dc1d",
+    "known_text": "당신은 저를 다시 도와주는 것이 괜찮아요",
+    "target_text": "you don't mind helping me again",
+    "target1_audio_id": "d6b4801a-6e53-4924-ae0c-152bbd71720f",
+    "target2_audio_id": "a8bb24f9-7ef2-4b36-b35a-f4dabaa107c7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0085L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0085L01B02",
+    "seed_number": 85,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "저는 지금 몰라요",
+    "target_text": "I don't know now",
+    "target1_audio_id": "c06407f4-b1fc-4684-b524-d951f59e9536",
+    "target2_audio_id": "f5750705-cd8c-4c29-9d2f-7b352b17cef3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0085L01B02",
+    "seed_number": 85,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "589c4c6d-64a5-40d2-80ef-a962c4a4cddc",
+    "known_text": "저는 지금 몰라요",
+    "target_text": "I don't know now",
+    "target1_audio_id": "c06407f4-b1fc-4684-b524-d951f59e9536",
+    "target2_audio_id": "f5750705-cd8c-4c29-9d2f-7b352b17cef3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0094L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0094L01B02",
+    "seed_number": 94,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "이것이 영어를 배우는 유일한 방법이에요",
+    "target_text": "this is the only way to learn English",
+    "target1_audio_id": "af1f707b-0154-4259-bfb0-220b2bbb6505",
+    "target2_audio_id": "ce9c3cc2-3583-49b7-9b68-6a12eefd0768",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0094L01B02",
+    "seed_number": 94,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "3d1e6d20-291b-47e0-b4ae-4d617f26645d",
+    "known_text": "이것이 영어를 배우는 유일한 방법이에요",
+    "target_text": "this is the only way to learn English",
+    "target1_audio_id": "af1f707b-0154-4259-bfb0-220b2bbb6505",
+    "target2_audio_id": "ce9c3cc2-3583-49b7-9b68-6a12eefd0768",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0099L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0099L01B03",
+    "seed_number": 99,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "지금 저에게 물어봐야 해요",
+    "target_text": "you should ask me now",
+    "target1_audio_id": "24d040a9-e229-4088-b6c8-a2b48ccdee12",
+    "target2_audio_id": "9e602493-d49c-40a4-af23-2625c651c079",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0099L01B03",
+    "seed_number": 99,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "53995928-3a7e-4620-9361-9ed65b2d9ccc",
+    "known_text": "지금 저에게 물어봐야 해요",
+    "target_text": "you should ask me now",
+    "target1_audio_id": "24d040a9-e229-4088-b6c8-a2b48ccdee12",
+    "target2_audio_id": "9e602493-d49c-40a4-af23-2625c651c079",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0100L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0100L02B02",
+    "seed_number": 100,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "오늘 저녁에는 그것에 대해 걱정하지 않아도 돼요",
+    "target_text": "you shouldn't worry about it this evening",
+    "target1_audio_id": "a9b5b471-29c7-4d1b-a6ca-a524e09c41a1",
+    "target2_audio_id": "99c49afb-77ee-460d-85ce-8376d7dd5262",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0100L02B02",
+    "seed_number": 100,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "a5226e3f-d56e-4b21-8c9d-4e59a389b412",
+    "known_text": "오늘 저녁에는 그것에 대해 걱정하지 않아도 돼요",
+    "target_text": "you shouldn't worry about it this evening",
+    "target1_audio_id": "a9b5b471-29c7-4d1b-a6ca-a524e09c41a1",
+    "target2_audio_id": "99c49afb-77ee-460d-85ce-8376d7dd5262",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0135L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0135L01B03",
+    "seed_number": 135,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "왜 그렇게 좋다고 생각하는지 물어봐도 될까요?",
+    "target_text": "can I ask why you think it's so good?",
+    "target1_audio_id": "ac31dde0-f0e1-4b92-8ca6-23c30cf367f3",
+    "target2_audio_id": "5e1f18fc-8015-4f9b-8d4f-e43c67260475",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0135L01B03",
+    "seed_number": 135,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1eb61fd1-ea9c-42be-af6d-60d3622829a2",
+    "known_text": "왜 그렇게 좋다고 생각하는지 물어봐도 될까요?",
+    "target_text": "can I ask why you think it's so good?",
+    "target1_audio_id": "ac31dde0-f0e1-4b92-8ca6-23c30cf367f3",
+    "target2_audio_id": "5e1f18fc-8015-4f9b-8d4f-e43c67260475",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0140L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0140L01U01",
+    "seed_number": 140,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "오늘 밤에 당신을 볼 수 없어서 죄송해요",
+    "target_text": "I'm sorry that I can't see you tonight",
+    "target1_audio_id": "ea3f72ca-c7d2-489e-8b4b-e12aac6e1aed",
+    "target2_audio_id": "7b0ac62b-2cc1-4bdd-aed3-79083756c357",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0140L01U01",
+    "seed_number": 140,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a0a9929f-e50b-43e0-aa87-4651c11053b2",
+    "known_text": "오늘 밤에 당신을 볼 수 없어서 죄송해요",
+    "target_text": "I'm sorry that I can't see you tonight",
+    "target1_audio_id": "ea3f72ca-c7d2-489e-8b4b-e12aac6e1aed",
+    "target2_audio_id": "7b0ac62b-2cc1-4bdd-aed3-79083756c357",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0143L01U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0143L01U02",
+    "seed_number": 143,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "아까 그렇게 말했어요, 그리고 그것이 중요하다고 생각해요",
+    "target_text": "I said that earlier and I think it's important",
+    "target1_audio_id": "1bc813da-c01a-4f6f-a9e5-ad0e8a976af3",
+    "target2_audio_id": "fcebe0d6-2e02-4a41-9397-163d18d8f01d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0143L01U02",
+    "seed_number": 143,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "775b4803-b6e4-4fa8-85b2-621ca29b88f0",
+    "known_text": "아까 그렇게 말했어요, 그리고 그것이 중요하다고 생각해요",
+    "target_text": "I said that earlier and I think it's important",
+    "target1_audio_id": "1bc813da-c01a-4f6f-a9e5-ad0e8a976af3",
+    "target2_audio_id": "fcebe0d6-2e02-4a41-9397-163d18d8f01d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0145L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0145L01B03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "저는 이제 더 이상 행복하지 않아요",
+    "target_text": "I'm not happy any more now",
+    "target1_audio_id": "f349e4d3-9b6b-4e22-b399-cf4b80ad8afb",
+    "target2_audio_id": "ae577f41-f486-42ef-a87f-89c863da4fd1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0145L01B03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e8f9aeda-9c3d-49a7-a80a-6b5ed4673601",
+    "known_text": "저는 이제 더 이상 행복하지 않아요",
+    "target_text": "I'm not happy any more now",
+    "target1_audio_id": "f349e4d3-9b6b-4e22-b399-cf4b80ad8afb",
+    "target2_audio_id": "ae577f41-f486-42ef-a87f-89c863da4fd1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0145L01U03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0145L01U03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "저는 더 이상 행복하지 않은데, 왜 그런지 모르겠어요",
+    "target_text": "I'm not happy any more and I don't know why",
+    "target1_audio_id": "d83bc119-b2fd-4878-8238-49d65644af3e",
+    "target2_audio_id": "aa3738c8-981f-478a-9e1c-852df1f3764d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0145L01U03",
+    "seed_number": 145,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1c14ad92-f0cf-45ce-b109-ff5c2dae159a",
+    "known_text": "저는 더 이상 행복하지 않은데, 왜 그런지 모르겠어요",
+    "target_text": "I'm not happy any more and I don't know why",
+    "target1_audio_id": "d83bc119-b2fd-4878-8238-49d65644af3e",
+    "target2_audio_id": "aa3738c8-981f-478a-9e1c-852df1f3764d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0146L02U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0146L02U01",
+    "seed_number": 146,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "아무것도 작동하지 않는 것 같은데, 왜 그런지 모르겠어요",
+    "target_text": "nothing seems to be working and I don't know why",
+    "target1_audio_id": "dfb7a153-791a-4d80-b62d-de18973ee245",
+    "target2_audio_id": "e2236ddc-1c59-4dc6-a0a9-b294820becd2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0146L02U01",
+    "seed_number": 146,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "a7283eb0-f977-4b44-98ac-83e353506719",
+    "known_text": "아무것도 작동하지 않는 것 같은데, 왜 그런지 모르겠어요",
+    "target_text": "nothing seems to be working and I don't know why",
+    "target1_audio_id": "dfb7a153-791a-4d80-b62d-de18973ee245",
+    "target2_audio_id": "e2236ddc-1c59-4dc6-a0a9-b294820becd2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0148L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0148L01U01",
+    "seed_number": 148,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "그가 왜 별로 인내심이 없었는지 모르겠어요",
+    "target_text": "I don't know why he wasn't very patient",
+    "target1_audio_id": "e9ef68d2-00ba-432c-b6d0-3bcdee2c5371",
+    "target2_audio_id": "66bb1a4d-173d-4889-b755-b835a3a4e86e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0148L01U01",
+    "seed_number": 148,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "0b414f60-3a61-44e5-b0c2-36e3d36a57f9",
+    "known_text": "그가 왜 별로 인내심이 없었는지 모르겠어요",
+    "target_text": "I don't know why he wasn't very patient",
+    "target1_audio_id": "e9ef68d2-00ba-432c-b6d0-3bcdee2c5371",
+    "target2_audio_id": "66bb1a4d-173d-4889-b755-b835a3a4e86e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0149L02U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0149L02U02",
+    "seed_number": 149,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "오늘 곧 끝날 거라고 기대해요",
+    "target_text": "I hope you'll finish soon today",
+    "target1_audio_id": "8995130a-d2fc-42f6-b13f-e00fd2379dff",
+    "target2_audio_id": "014a4f38-de02-45d2-8d73-2543dee420af",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0149L02U02",
+    "seed_number": 149,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "9051ee4d-2339-48c8-a14b-e37a814e293c",
+    "known_text": "오늘 곧 끝날 거라고 기대해요",
+    "target_text": "I hope you'll finish soon today",
+    "target1_audio_id": "8995130a-d2fc-42f6-b13f-e00fd2379dff",
+    "target2_audio_id": "014a4f38-de02-45d2-8d73-2543dee420af",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0150L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0150L01B02",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "뭔지 말해줄 수 있나요?",
+    "target_text": "can you tell me what?",
+    "target1_audio_id": "4f66280a-0f61-474c-9ae5-7ff421a1e80a",
+    "target2_audio_id": "509c8013-0a6d-4373-8b05-3f524144c715",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0150L01B02",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1a774ce2-65ba-4c8e-9b13-ff938278e9f7",
+    "known_text": "뭔지 말해줄 수 있나요?",
+    "target_text": "can you tell me what?",
+    "target1_audio_id": "4f66280a-0f61-474c-9ae5-7ff421a1e80a",
+    "target2_audio_id": "509c8013-0a6d-4373-8b05-3f524144c715",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0150L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0150L01B03",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "그것에 대해 말해줄 수 있나요?",
+    "target_text": "can you tell me about it?",
+    "target1_audio_id": "8b2899f6-1497-4171-99b0-6dfdb2a2acee",
+    "target2_audio_id": "b721bb3b-aceb-46ce-b8bc-0f9f86e11135",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0150L01B03",
+    "seed_number": 150,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e1236f03-4e5e-486c-aa55-f964c658af15",
+    "known_text": "그것에 대해 말해줄 수 있나요?",
+    "target_text": "can you tell me about it?",
+    "target1_audio_id": "8b2899f6-1497-4171-99b0-6dfdb2a2acee",
+    "target2_audio_id": "b721bb3b-aceb-46ce-b8bc-0f9f86e11135",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0154L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0154L01U01",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "토요일에 만나고 싶나요?",
+    "target_text": "do you want to meet on saturday?",
+    "target1_audio_id": "ab2eb17a-4d93-48cb-8cba-710cbda5b365",
+    "target2_audio_id": "84b07ad7-a145-4f7f-bf8b-0b94c975c9db",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0154L01U01",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "947590e1-ae44-4a52-8dfe-4769ba5736d1",
+    "known_text": "토요일에 만나고 싶나요?",
+    "target_text": "do you want to meet on saturday?",
+    "target1_audio_id": "ab2eb17a-4d93-48cb-8cba-710cbda5b365",
+    "target2_audio_id": "84b07ad7-a145-4f7f-bf8b-0b94c975c9db",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0154L01U03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0154L01U03",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "토요일에 만날 수 있을 거라고 기대해요",
+    "target_text": "I hope we can meet on saturday",
+    "target1_audio_id": "6581b310-8aa3-4ce3-933a-92987194f67e",
+    "target2_audio_id": "3dfa3eb8-4452-4f98-87ed-038a20a85d54",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0154L01U03",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "01cf9c5b-9db8-4659-9a0f-6904a7b609e9",
+    "known_text": "토요일에 만날 수 있을 거라고 기대해요",
+    "target_text": "I hope we can meet on saturday",
+    "target1_audio_id": "6581b310-8aa3-4ce3-933a-92987194f67e",
+    "target2_audio_id": "3dfa3eb8-4452-4f98-87ed-038a20a85d54",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0154L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0154L02B03",
+    "seed_number": 154,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "토요일 밤에 어디서요?",
+    "target_text": "where on saturday night?",
+    "target1_audio_id": "09d6d4d0-b7f0-4e1e-b0c9-4e5cca1540cf",
+    "target2_audio_id": "4ba77ad4-9f8f-4d79-a044-33bc4074b687",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0154L02B03",
+    "seed_number": 154,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "f23cd7fa-e209-421d-acce-5ce23adb8835",
+    "known_text": "토요일 밤에 어디서요?",
+    "target_text": "where on saturday night?",
+    "target1_audio_id": "09d6d4d0-b7f0-4e1e-b0c9-4e5cca1540cf",
+    "target2_audio_id": "4ba77ad4-9f8f-4d79-a044-33bc4074b687",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L01U01",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "여기서 잠시 기다리는 것이 괜찮아요",
+    "target_text": "I don't mind waiting here for a while",
+    "target1_audio_id": "254c69f9-4ce0-48d1-90ba-fc0bb02fb8b7",
+    "target2_audio_id": "7a823039-a9a2-4278-888c-33c15477dd0d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L01U01",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "026699a2-97f4-421d-b5de-0e37e0987900",
+    "known_text": "여기서 잠시 기다리는 것이 괜찮아요",
+    "target_text": "I don't mind waiting here for a while",
+    "target1_audio_id": "254c69f9-4ce0-48d1-90ba-fc0bb02fb8b7",
+    "target2_audio_id": "7a823039-a9a2-4278-888c-33c15477dd0d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L01U03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L01U03",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "오늘 밤에 당신을 기다리는 것이 괜찮아요",
+    "target_text": "I don't mind waiting for you tonight",
+    "target1_audio_id": "999f9166-2d55-489a-a53d-9596d0e43b57",
+    "target2_audio_id": "f20dccba-453b-455f-bcfd-71864a56deb1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L01U03",
+    "seed_number": 155,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "25173c27-a766-4fa0-9535-5c7d28cc4699",
+    "known_text": "오늘 밤에 당신을 기다리는 것이 괜찮아요",
+    "target_text": "I don't mind waiting for you tonight",
+    "target1_audio_id": "999f9166-2d55-489a-a53d-9596d0e43b57",
+    "target2_audio_id": "f20dccba-453b-455f-bcfd-71864a56deb1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L02U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L02U02",
+    "seed_number": 155,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "몇 분 기다려 줄 수 있나요?",
+    "target_text": "can you wait for a few minutes?",
+    "target1_audio_id": "9ad10174-7f41-4e1d-99e2-b976d1edcb83",
+    "target2_audio_id": "42634bfa-ce8d-4c25-8c9c-68a132fbc5da",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L02U02",
+    "seed_number": 155,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "addb323f-1f99-4b41-9a85-8b7d7fbed6be",
+    "known_text": "몇 분 기다려 줄 수 있나요?",
+    "target_text": "can you wait for a few minutes?",
+    "target1_audio_id": "9ad10174-7f41-4e1d-99e2-b976d1edcb83",
+    "target2_audio_id": "42634bfa-ce8d-4c25-8c9c-68a132fbc5da",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0155L03U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0155L03U02",
+    "seed_number": 155,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "내일 아침에 어디서 만나고 싶어요?",
+    "target_text": "where do you want to meet tomorrow morning?",
+    "target1_audio_id": "4df22cce-814a-4e6a-9ed3-6c7c8cb37f55",
+    "target2_audio_id": "92912014-af00-44ce-8c7f-422cbb7febd5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0155L03U02",
+    "seed_number": 155,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "334c5e4e-f586-40bb-98e3-fcd68684673f",
+    "known_text": "내일 아침에 어디서 만나고 싶어요?",
+    "target_text": "where do you want to meet tomorrow morning?",
+    "target1_audio_id": "4df22cce-814a-4e6a-9ed3-6c7c8cb37f55",
+    "target2_audio_id": "92912014-af00-44ce-8c7f-422cbb7febd5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0157L01U05"
+   },
+   "before": {
+    "id": "eng_for_kor:S0157L01U05",
+    "seed_number": 157,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "다음 달에 식당에 가고 싶나요?",
+    "target_text": "do you want to go to a restaurant next month?",
+    "target1_audio_id": "ef8e5070-b912-40db-b27a-0eb717c1b9e7",
+    "target2_audio_id": "a4dd2807-1f82-44b1-80f6-dab2c06a4ba2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0157L01U05",
+    "seed_number": 157,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "0699ee36-10f9-45d2-86ed-cfb8e9263aab",
+    "known_text": "다음 달에 식당에 가고 싶나요?",
+    "target_text": "do you want to go to a restaurant next month?",
+    "target1_audio_id": "ef8e5070-b912-40db-b27a-0eb717c1b9e7",
+    "target2_audio_id": "a4dd2807-1f82-44b1-80f6-dab2c06a4ba2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0157L02U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0157L02U02",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "죄송하지만 내일 아침에 거기에 있을 수 없을 거예요",
+    "target_text": "I'm sorry I won't be able to be there tomorrow morning",
+    "target1_audio_id": "781d28e5-c43c-42f7-ad5d-f94af2bb287b",
+    "target2_audio_id": "c13edf12-5f84-4d0a-9e41-85cb6d3c37e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0157L02U02",
+    "seed_number": 157,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "de21a0a5-8c10-4b81-875b-8390bb8c8ea8",
+    "known_text": "죄송하지만 내일 아침에 거기에 있을 수 없을 거예요",
+    "target_text": "I'm sorry I won't be able to be there tomorrow morning",
+    "target1_audio_id": "781d28e5-c43c-42f7-ad5d-f94af2bb287b",
+    "target2_audio_id": "c13edf12-5f84-4d0a-9e41-85cb6d3c37e3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0158L01U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0158L01U01",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "오늘은 다른 것에 대해 이야기해요",
+    "target_text": "let's talk about something else today",
+    "target1_audio_id": "4e719101-77a2-4a14-a285-b6fe2e40b97a",
+    "target2_audio_id": "1a906db8-43e8-437a-9e56-b054132a5e2b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0158L01U01",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "67a39f09-ce80-454c-8652-682acf1d4988",
+    "known_text": "오늘은 다른 것에 대해 이야기해요",
+    "target_text": "let's talk about something else today",
+    "target1_audio_id": "4e719101-77a2-4a14-a285-b6fe2e40b97a",
+    "target2_audio_id": "1a906db8-43e8-437a-9e56-b054132a5e2b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0158L01U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0158L01U02",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "저는 괜찮지만, 다른 것에 대해 이야기해요",
+    "target_text": "I don't mind but let's talk about something else",
+    "target1_audio_id": "13f1fd31-b021-477a-8b27-8e91b491769c",
+    "target2_audio_id": "037e06e2-56c7-42ff-88b2-40df67e73f91",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0158L01U02",
+    "seed_number": 158,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "13fd5617-100e-4cd4-b856-724bd3a99bed",
+    "known_text": "저는 괜찮지만, 다른 것에 대해 이야기해요",
+    "target_text": "I don't mind but let's talk about something else",
+    "target1_audio_id": "13f1fd31-b021-477a-8b27-8e91b491769c",
+    "target2_audio_id": "037e06e2-56c7-42ff-88b2-40df67e73f91",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0167L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0167L02B03",
+    "seed_number": 167,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "지금 무엇을 해야 해요?",
+    "target_text": "what do you need to do now?",
+    "target1_audio_id": "320e7c97-92d4-4fe5-a174-c62631fdc42c",
+    "target2_audio_id": "1464cab6-c4fa-47c1-82f1-792a7a54f147",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0167L02B03",
+    "seed_number": 167,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "223ca512-2d39-4d10-a412-eb063351f0b1",
+    "known_text": "지금 무엇을 해야 해요?",
+    "target_text": "what do you need to do now?",
+    "target1_audio_id": "320e7c97-92d4-4fe5-a174-c62631fdc42c",
+    "target2_audio_id": "1464cab6-c4fa-47c1-82f1-792a7a54f147",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0169L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0169L01B02",
+    "seed_number": 169,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "지금 제가 무엇을 하기를 원해요?",
+    "target_text": "what do you want me to do now?",
+    "target1_audio_id": "d9bdf2cf-f897-4641-8383-954c541db6f9",
+    "target2_audio_id": "91476499-f801-4664-8fa5-7e6d9d4ed46f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0169L01B02",
+    "seed_number": 169,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "5638ac8c-49b9-4963-873d-e7bd7f835f95",
+    "known_text": "지금 제가 무엇을 하기를 원해요?",
+    "target_text": "what do you want me to do now?",
+    "target1_audio_id": "d9bdf2cf-f897-4641-8383-954c541db6f9",
+    "target2_audio_id": "91476499-f801-4664-8fa5-7e6d9d4ed46f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0171L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0171L02B02",
+    "seed_number": 171,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "지금 도와드릴까요?",
+    "target_text": "do you want me to help you now?",
+    "target1_audio_id": "a956d368-3282-4575-b3e5-74a7363c2226",
+    "target2_audio_id": "725e6ff0-78ca-4532-8df1-d5af869726ef",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0171L02B02",
+    "seed_number": 171,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "96cefa40-97e6-47aa-8b06-9fd3cbfec9c9",
+    "known_text": "지금 도와드릴까요?",
+    "target_text": "do you want me to help you now?",
+    "target1_audio_id": "a956d368-3282-4575-b3e5-74a7363c2226",
+    "target2_audio_id": "725e6ff0-78ca-4532-8df1-d5af869726ef",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0175L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0175L01B02",
+    "seed_number": 175,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "지금 무엇을 하고 싶어요?",
+    "target_text": "what do you want to do now?",
+    "target1_audio_id": "ba42cfe8-4256-46ae-9c75-e6cc626e8d79",
+    "target2_audio_id": "e3e30f5e-4138-4266-aac4-b99c5d9e62f3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0175L01B02",
+    "seed_number": 175,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "5bc67c21-8aee-4984-a79a-4e550a2fa241",
+    "known_text": "지금 무엇을 하고 싶어요?",
+    "target_text": "what do you want to do now?",
+    "target1_audio_id": "ba42cfe8-4256-46ae-9c75-e6cc626e8d79",
+    "target2_audio_id": "e3e30f5e-4138-4266-aac4-b99c5d9e62f3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0179L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0179L02B02",
+    "seed_number": 179,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "지금 무엇을 할 거예요?",
+    "target_text": "what are you going to do now?",
+    "target1_audio_id": "536daa63-298b-4054-bbdd-2c2b7b8cdd54",
+    "target2_audio_id": "ec708241-ef24-458e-9c5d-3a36ea2fc5c2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0179L02B02",
+    "seed_number": 179,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "4cb0d1ce-75f2-4302-8eb7-659bc4a3661e",
+    "known_text": "지금 무엇을 할 거예요?",
+    "target_text": "what are you going to do now?",
+    "target1_audio_id": "536daa63-298b-4054-bbdd-2c2b7b8cdd54",
+    "target2_audio_id": "ec708241-ef24-458e-9c5d-3a36ea2fc5c2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0182L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0182L02B02",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "어디선가 제 열쇠를 봤나요?",
+    "target_text": "have you seen my keys anywhere?",
+    "target1_audio_id": "cc3b5d90-c66d-45e3-a712-0cec59ac1f07",
+    "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0182L02B02",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "2842558b-7c54-48e2-a017-a5ea6227c5c2",
+    "known_text": "어디선가 제 열쇠를 봤나요?",
+    "target_text": "have you seen my keys anywhere?",
+    "target1_audio_id": "cc3b5d90-c66d-45e3-a712-0cec59ac1f07",
+    "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0182L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0182L02B03",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "어디선가 그 책을 봤나요?",
+    "target_text": "have you seen that book anywhere?",
+    "target1_audio_id": "cef28927-95d3-42be-857a-51ef19514a38",
+    "target2_audio_id": "d675a99b-7c46-4d46-921f-a0862d10768a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0182L02B03",
+    "seed_number": 182,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "59e9510a-33b8-4091-879d-a0c767880034",
+    "known_text": "어디선가 그 책을 봤나요?",
+    "target_text": "have you seen that book anywhere?",
+    "target1_audio_id": "cef28927-95d3-42be-857a-51ef19514a38",
+    "target2_audio_id": "d675a99b-7c46-4d46-921f-a0862d10768a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0196L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0196L01B03",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "최근 아이디어를 벌써 들었나요?",
+    "target_text": "have you heard the latest idea yet?",
+    "target1_audio_id": "cb35ef70-ab85-4716-a706-0e542a5652eb",
+    "target2_audio_id": "5a067edd-7e5f-48c2-a1ba-518944cd08e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0196L01B03",
+    "seed_number": 196,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "0e30b538-67a4-4112-9fac-ee3868b35cbc",
+    "known_text": "최근 아이디어를 벌써 들었나요?",
+    "target_text": "have you heard the latest idea yet?",
+    "target1_audio_id": "cb35ef70-ab85-4716-a706-0e542a5652eb",
+    "target2_audio_id": "5a067edd-7e5f-48c2-a1ba-518944cd08e3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0226L01U05"
+   },
+   "before": {
+    "id": "eng_for_kor:S0226L01U05",
+    "seed_number": 226,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "그 남자에 대해 뭔가를 알고 있나요?",
+    "target_text": "do you know something about the man?",
+    "target1_audio_id": "48dc2af0-e3c1-434a-902c-fb7227c37935",
+    "target2_audio_id": "4a172619-e052-4c48-9913-8f83e2dbe16f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0226L01U05",
+    "seed_number": 226,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "ba3caefd-7975-45fd-b6fa-1d27c2531b90",
+    "known_text": "그 남자에 대해 뭔가를 알고 있나요?",
+    "target_text": "do you know something about the man?",
+    "target1_audio_id": "48dc2af0-e3c1-434a-902c-fb7227c37935",
+    "target2_audio_id": "4a172619-e052-4c48-9913-8f83e2dbe16f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0271L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0271L01B02",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "우리와 함께 오고 싶나요?",
+    "target_text": "would you like to come with us?",
+    "target1_audio_id": "ae25a3e2-7e56-4f05-a413-fcf454ff9568",
+    "target2_audio_id": "59fc1fb5-cb9a-4738-a481-76c0a16d7306",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0271L01B02",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "2f3d3562-0a70-4e9b-8a6f-f1437b518347",
+    "known_text": "우리와 함께 오고 싶나요?",
+    "target_text": "would you like to come with us?",
+    "target1_audio_id": "ae25a3e2-7e56-4f05-a413-fcf454ff9568",
+    "target2_audio_id": "59fc1fb5-cb9a-4738-a481-76c0a16d7306",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0271L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0271L01B03",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "저와 함께 오고 싶나요?",
+    "target_text": "would you like to come with me?",
+    "target1_audio_id": "67734e7a-9309-464d-936f-f0334086e7e9",
+    "target2_audio_id": "78337a07-8889-430e-8163-665301cc8624",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0271L01B03",
+    "seed_number": 271,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "5c84d769-2629-410b-a5d8-9da384e0693e",
+    "known_text": "저와 함께 오고 싶나요?",
+    "target_text": "would you like to come with me?",
+    "target1_audio_id": "67734e7a-9309-464d-936f-f0334086e7e9",
+    "target2_audio_id": "78337a07-8889-430e-8163-665301cc8624",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0271L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0271L02B03",
+    "seed_number": 271,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "다음 달에 오고 싶나요?",
+    "target_text": "would you like to come next month?",
+    "target1_audio_id": "50365155-3793-4f9e-a585-e1fce12387de",
+    "target2_audio_id": "a5846627-034c-434e-ad75-ef9c4696565c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0271L02B03",
+    "seed_number": 271,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "f34f2808-3b15-4b53-bbb2-515efcde173c",
+    "known_text": "다음 달에 오고 싶나요?",
+    "target_text": "would you like to come next month?",
+    "target1_audio_id": "50365155-3793-4f9e-a585-e1fce12387de",
+    "target2_audio_id": "a5846627-034c-434e-ad75-ef9c4696565c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0281L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0281L01B03",
+    "seed_number": 281,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "시작하기 전에 커피를 다 마셔도 괜찮을까요?",
+    "target_text": "do you mind if I finish my coffee before you start?",
+    "target1_audio_id": "873bf45b-4a40-49a9-b2ee-e51bde8ebdc7",
+    "target2_audio_id": "93b60170-31ac-4146-b338-74e941d6599b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0281L01B03",
+    "seed_number": 281,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "b6fc1fae-2147-42cc-b10d-c96571054e3a",
+    "known_text": "시작하기 전에 커피를 다 마셔도 괜찮을까요?",
+    "target_text": "do you mind if I finish my coffee before you start?",
+    "target1_audio_id": "873bf45b-4a40-49a9-b2ee-e51bde8ebdc7",
+    "target2_audio_id": "93b60170-31ac-4146-b338-74e941d6599b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0283L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0283L01B03",
+    "seed_number": 283,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "당신 친구들 중 누가 영어를 하나요?",
+    "target_text": "which of your friends speak English?",
+    "target1_audio_id": "389ee070-b04f-4184-8898-901367a346cf",
+    "target2_audio_id": "9a084b94-4b42-4dd3-a45c-47ad18fd9705",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0283L01B03",
+    "seed_number": 283,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "9a1e47f4-850b-453d-bfc5-72f93497fe1d",
+    "known_text": "당신 친구들 중 누가 영어를 하나요?",
+    "target_text": "which of your friends speak English?",
+    "target1_audio_id": "389ee070-b04f-4184-8898-901367a346cf",
+    "target2_audio_id": "9a084b94-4b42-4dd3-a45c-47ad18fd9705",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0287L01B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0287L01B02",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "몇 명이나 알아요?",
+    "target_text": "how many do you know?",
+    "target1_audio_id": "20543a8a-8848-4070-8ff4-25751bbc5e2a",
+    "target2_audio_id": "266745c8-efdd-4b9c-8eed-c22f1d88c164",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0287L01B02",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "2a7bebb6-1508-4254-bd05-fb00e279fa2f",
+    "known_text": "몇 명이나 알아요?",
+    "target_text": "how many do you know?",
+    "target1_audio_id": "20543a8a-8848-4070-8ff4-25751bbc5e2a",
+    "target2_audio_id": "266745c8-efdd-4b9c-8eed-c22f1d88c164",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "audio.link",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0287L01B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0287L01B03",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "사람을 몇 명이나 알아요?",
+    "target_text": "how many people do you know?",
+    "target1_audio_id": "9085796b-1192-4ffb-be2f-ce7d93b24623",
+    "target2_audio_id": "b99ceff3-3fa8-4d1b-b794-825bad124f4b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0287L01B03",
+    "seed_number": 287,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e08b2850-030d-4719-869e-c972136390bf",
+    "known_text": "사람을 몇 명이나 알아요?",
+    "target_text": "how many people do you know?",
+    "target1_audio_id": "9085796b-1192-4ffb-be2f-ce7d93b24623",
+    "target2_audio_id": "b99ceff3-3fa8-4d1b-b794-825bad124f4b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0287L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0287L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0283L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0281L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0271L02B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0271L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0271L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0226L01U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0196L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0182L02B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0182L02B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0179L02B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0175L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0171L02B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0169L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0167L02B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0158L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0158L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0157L02U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0157L01U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L03U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L02U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L01U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0155L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0154L02B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0154L01U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0154L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0150L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0150L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0149L02U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0148L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0146L02U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0145L01U03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0145L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0143L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0140L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0135L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0100L02B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0099L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0094L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0085L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0063L02U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L03B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L03B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L03B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L01B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0021L01B01",
+   "set": {
+    "known_audio_id": null
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-11-12-322Z-123c1baf-cabd-420d-934d-2a2870e5001a.json"
+}

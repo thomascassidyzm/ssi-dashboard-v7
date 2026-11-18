@@ -1,0 +1,40 @@
+{
+ "seed": 195,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ते टेबलावर नव्हतं",
+     "it wasn't on the table",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मी ठेवलेले पैसे तुम्ही पाहिले का?",
+     "have you seen the money I left?",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "मी उत्तर शोधण्याचा प्रयत्न करतोय",
+     "I'm trying to find the answer",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0195L02B01": "पाहिले|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

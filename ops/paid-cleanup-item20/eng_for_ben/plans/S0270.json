@@ -1,0 +1,46 @@
+{
+ "seed": 270,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি চিন্তা করছি যে আমি ভুলে গেছি",
+     "I'm worried that I've forgotten",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি চিন্তা করছি যে সে অনেক বেশি ব্যস্ত ছিল",
+     "I'm worried that she was too busy",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আজ আমার দেরি হয়ে যাবে",
+     "I'm going to be late today",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি মনে করি আমার দেরি হয়ে যাবে",
+     "I think I'm going to be late",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

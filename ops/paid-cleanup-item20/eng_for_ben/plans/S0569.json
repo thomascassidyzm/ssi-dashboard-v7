@@ -1,0 +1,37 @@
+{
+ "seed": 569,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "তুমি কি ঠিক করেছ তুমি কী চাও?",
+     "have you decided what you want?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "তুমি কি ঠিক করেছ তুমি কোথায় যেতে চাও?",
+     "have you decided where you want to go?",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি জানি না তুমি কতটুকু দিতে রাজি আছ",
+     "I don't know how much you are willing to pay",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

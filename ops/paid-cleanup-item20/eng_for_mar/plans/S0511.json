@@ -1,0 +1,41 @@
+{
+ "seed": 511,
+ "generated": true,
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": [
+     "मला ऑफिसला पोहोचायची गरज आहे",
+     "I need to reach the office",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "मी ऑफिसमधल्या सगळ्यांना ओळखतो",
+     "I know everyone in the office",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "मला खात्री आहे की बातमीला कित्येक तास लागले",
+     "I'm sure the news took several hours",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0511L02B01": "ऑफिसला पोहोचायची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)",
+  "S0511L04B01": "बातमीला|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

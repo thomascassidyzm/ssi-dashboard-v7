@@ -1,0 +1,44 @@
+{
+ "seed": 551,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "এটা হয়তো গির্জাটা",
+     "it might be the church",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি গির্জাটা দেখিনি",
+     "I haven't seen the church",
+     null,
+     null
+    ],
+    [
+     "build",
+     "আমি গির্জাটার কাছে অপেক্ষা করছি",
+     "I'm waiting near the church",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি নিশ্চিত গির্জাটা কুৎসিত",
+     "I'm sure the church is ugly",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

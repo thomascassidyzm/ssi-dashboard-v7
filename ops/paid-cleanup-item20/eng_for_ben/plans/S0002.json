@@ -1,0 +1,63 @@
+{
+ "seed": 2,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি এখন শিখতে চাই",
+     "I want to learn now",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি তোমার সাথে ইংরেজি শিখতে চাই",
+     "I want to learn English with you",
+     null,
+     null
+    ],
+    [
+     "build",
+     "ইংরেজি শেখা",
+     "to learn English",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি তোমার সাথে ইংরেজিতে কথা বলার চেষ্টা করছি",
+     "I'm trying to speak English with you",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি তোমার সাথে কথা বলার চেষ্টা করছি",
+     "I'm trying to speak with you",
+     null,
+     null
+    ],
+    [
+     "build",
+     "আমি এখন ইংরেজিতে কথা বলার চেষ্টা করছি",
+     "I'm trying to speak English now",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0002L01B01": "শিখতে|form of taught শেখা",
+  "S0002L01": "শিখতে|form of taught শেখা"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

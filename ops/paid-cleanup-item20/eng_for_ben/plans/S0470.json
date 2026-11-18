@@ -1,0 +1,63 @@
+{
+ "seed": 470,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "তুমি কি আজ উঠতে চাও?",
+     "do you want to climb today?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি আজ উঠতে চাই না",
+     "I don't want to climb today",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "তাই তুমি কতটা উঁচুতে উঠতে চাও?",
+     "so how high do you want to climb?",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "থামার আগে আমি কি জিজ্ঞেস করতে পারি?",
+     "can I ask before we stop?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "থামার আগে আমি তৈরি হবো",
+     "I'll be ready before we stop",
+     null,
+     null
+    ],
+    [
+     "build",
+     "থামার আগে আমাকে চলে যেতে হবে",
+     "I need to leave before we stop",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

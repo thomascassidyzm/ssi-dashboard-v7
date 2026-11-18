@@ -1,0 +1,37 @@
+{
+ "seed": 251,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি আজ রাতে জানতে চাই না",
+     "I don't want to find out tonight",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি আমার টাকা ফেরত চাই না যতক্ষণ না আমরা শেষ করি",
+     "I don't want my money back until after we finish",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি তোমার জন্য অপেক্ষা করব না যতক্ষণ না আমরা শেষ করি",
+     "I'm not going to wait for you until after we finish",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

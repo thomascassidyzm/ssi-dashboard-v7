@@ -1,0 +1,60 @@
+{
+ "seed": 266,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तो माझ्या वडिलांचा मित्र होता",
+     "he was a friend of my father",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तो कदाचित माझ्या वडिलांचा मित्र असेल",
+     "it might be a friend of my father",
+     null,
+     null
+    ],
+    [
+     "build",
+     "मला वाटतं तो माझ्या वडिलांचा मित्र होता",
+     "I think he was a friend of my father",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला वाटतं की तो जुना मित्र होता",
+     "I think that he was an old friend",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मला खात्री नाही की तो जुना मित्र होता का",
+     "I'm not sure if he was an old friend",
+     null,
+     null
+    ],
+    [
+     "build",
+     "तो जुना मित्र होता पण तुम्हाला कोण म्हणायचंय हे मला माहित नाही",
+     "he was an old friend but I don't know who you mean",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

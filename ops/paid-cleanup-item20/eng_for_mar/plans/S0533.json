@@ -1,0 +1,49 @@
+{
+ "seed": 533,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला तो प्रत्येक शब्द आठवतो",
+     "I can remember every word",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "तुम्ही बोलता तो प्रत्येक शब्द मला आवडतो",
+     "I like every word you say",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ती गोष्ट ऐकणार नाही",
+     "she won't listen to a story",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ती खूप छान कल्पना ऐकणार नाही",
+     "she won't listen to a great idea",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0533L01B01": "आठवतो|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

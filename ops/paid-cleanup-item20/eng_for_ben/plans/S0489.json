@@ -1,0 +1,37 @@
+{
+ "seed": 489,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি মনে করি এটা কড়া কফি",
+     "I think it's strong coffee",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি নিশ্চিত এটা কড়া কফি",
+     "I'm sure it's strong coffee",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমার এক কাপ কফি দরকার",
+     "I need a cup of coffee",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

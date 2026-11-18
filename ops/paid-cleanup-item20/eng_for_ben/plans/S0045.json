@@ -1,0 +1,40 @@
+{
+ "seed": 45,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমার জানতে হবে",
+     "I need to know",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমার সব কিছু জানতে হবে",
+     "I need to know everything",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "আমার পড়ার দরকার নেই",
+     "I don't need to read",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0045L03B01": "পড়ার|form of taught পড়া"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

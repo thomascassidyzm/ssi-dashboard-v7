@@ -1,0 +1,49 @@
+{
+ "seed": 526,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला खात्री आहे की तुम्हाला अंदाज लावता येत नाही",
+     "I'm sure you can't guess",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "तो खूश आहे यावर विश्वास ठेवणं मला अवघड जातंय",
+     "I'm finding it hard to believe that he's happy",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ते मूर्खपणाचं होतं यावर विश्वास ठेवणं मला अवघड जातंय",
+     "I'm finding it hard to believe that it was stupid",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आयुष्य सोपं नाही यावर विश्वास ठेवणं मला अवघड जातंय",
+     "I'm finding it hard to believe that life isn't easy",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0526L02B01": "जातंय|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
