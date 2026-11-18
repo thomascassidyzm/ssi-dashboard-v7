@@ -159,15 +159,28 @@ def batch(c, mode):
     for i, r in enumerate(res.get('results') or []):
         if r.get('error') or r.get('refused'): print('  ', i, json.dumps(r, ensure_ascii=False)[:300])
 
+def input_ok(c, rid, text):
+    """a real intro render only for text that a dry run already wrote out (and a person read)"""
+    f = f'{adir(c)}/present-dry.json'
+    d = json.load(open(f)) if os.path.exists(f) else {}
+    ok = (d.get(rid) or {}).get('new') == text
+    if not ok: print('NOT IN DRY RUN, not rendered:', rid, text)
+    return ok
+
 def present(c, mode):
     E, _ = plan(c); out = {}
     for e in E:
         if e['kind'] != 'lego' or e['action'] != 'edit' or e['new']['known'] == e['current']['known']: continue
         st, cur = call('GET', f"{BASE}/api/production/{c}/presentation/{e['row']}")
         old_t = cur.get('text') or ''
-        new_t = old_t.replace(f"'{e['current']['known']}'", f"'{e['new']['known']}'")
-        new_t = new_t.replace(e['current']['known'], e['new']['known']) if e['current']['known'] in new_t else new_t
-        if new_t == old_t: out[e['row']] = {'skipped': 'old known not found in the intro text', 'text': old_t}; continue
+        # Built fresh, never by substring replacement: on 18 Nov a replace() doubled words wherever the new gloss
+        # contained the old one ("I'd like I'd like to relax") and five bad intros were rendered and linked.
+        # The "as in" example is dropped (it may quote a row this job edited or deleted); the prefix is kept.
+        prefix = old_t.split(':')[0] if ':' in old_t else ''
+        if not prefix.startswith('The '): out[e['row']] = {'skipped': 'intro prefix not recognised', 'text': old_t}; continue
+        new_t = f"{prefix}: '{e['new']['known']}', is:"
+        if new_t == old_t: out[e['row']] = {'skipped': 'intro already says this', 'text': old_t}; continue
+        if mode == 'real' and input_ok(c, e['row'], new_t) is False: continue
         st, r = call('POST', f'{BASE}/api/audio/render', {'courseCode': c, 'role': 'presentation', 'text': new_t, 'legoId': e['row'], 'purpose': PURPOSE, 'dryRun': mode == 'dry', 'job': JOB})
         out[e['row']] = {'old': old_t, 'new': new_t, 'status': st, **{k: r.get(k) for k in ('ok', 'source', 'audioId', 'charsSpent', 'wouldSpendChars', 'code', 'error') if k in r}}
         print(st, e['row'], r.get('source'), r.get('charsSpent', r.get('wouldSpendChars')), r.get('code') or '', new_t[:90], flush=True)
