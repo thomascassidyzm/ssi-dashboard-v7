@@ -1,0 +1,120 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0292L02U01",
+   "expect": {
+    "known_text": "she told me about the party",
+    "target_text": "me dijo de la fiesta"
+   },
+   "set": {
+    "known_text": "she told me something about the party",
+    "known_audio_id": "7fbadad5-a9db-44f7-9e31-6d0a4b9a5ccb",
+    "target_text": "me dijo algo de la fiesta",
+    "target1_audio_id": "feef6816-0482-478a-bde7-365d92c78d81",
+    "target2_audio_id": "4a415189-af45-4bf7-bd03-181089617962"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0668L02U04",
+   "expect": {
+    "known_text": "I hope they can go here",
+    "target_text": "espero que puedan ir aquí"
+   },
+   "set": {
+    "known_text": "I hope they can go there",
+    "known_audio_id": "ce1f3712-24a2-436f-b2b2-0410f2c95e93",
+    "target_text": "espero que puedan ir allí",
+    "target1_audio_id": "149b1396-2d40-4398-8ef9-c5b13a484e04",
+    "target2_audio_id": "f184ac36-b846-4a29-abf9-0e9d9a383176"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0402L01U04",
+   "expect": {
+    "known_text": "we don't want to stop somewhere now",
+    "target_text": "no queremos parar en algún sitio ahora"
+   },
+   "set": {
+    "known_text": "we want to stop somewhere now",
+    "known_audio_id": "4961357a-2654-4a6b-8412-ed8c58e71301",
+    "target_text": "queremos parar en algún sitio ahora",
+    "target1_audio_id": "e986e123-23d9-457f-a671-ab18f58dd352",
+    "target2_audio_id": "8bf43fbd-d324-4b85-a3e0-8f1e2e914b3d"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 55,
+   "expect": {
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "no disfruto despertarme cuando no dormí muy bien"
+   },
+   "set": {
+    "known_text": "I don't like waking up when I didn't sleep very well",
+    "known_audio_id": "5720d4ef-4a1c-47dd-97ae-b942a50a9361",
+    "target_text": "no me gusta despertarme cuando no dormí muy bien",
+    "target1_audio_id": "89c546dc-7370-467b-a15b-9dd45026c852",
+    "target2_audio_id": "7ec04325-5761-4906-9a33-586cca58d516"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 414,
+   "expect": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿Podríamos tener una botella de vino tinto, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for a bottle of red wine please?",
+    "known_audio_id": "01080d35-d14b-4d31-8a3b-86ed0260916b",
+    "target_text": "¿Podríamos pedir una botella de vino tinto, por favor?",
+    "target1_audio_id": "d375e29a-72c1-4364-8c6f-d026b98280f8",
+    "target2_audio_id": "75b45c76-41e4-4b37-9b0e-e9925c89fb6c"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 416,
+   "expect": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "quieren liderar el camino el año que viene"
+   },
+   "set": {
+    "known_text": "they want to lead the project next year",
+    "known_audio_id": "4f701a37-3b49-4c00-b23f-d3d0dfbe8e20",
+    "target_text": "quieren liderar el proyecto el año que viene",
+    "target1_audio_id": "bad2eb10-40fb-430d-a30f-a4c629c65f11",
+    "target2_audio_id": "1778d46c-95c1-4124-9e38-9adcbec082d9"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 437,
+   "expect": {
+    "known_text": "they wanted to raise as much as possible for charity",
+    "target_text": "querían recaudar lo máximo posible para caridad"
+   },
+   "set": {
+    "target_text": "querían recaudar lo máximo posible para una causa benéfica",
+    "target1_audio_id": "0bdf4f81-5dd5-4bc0-87f5-d1ceb1b6bb63",
+    "target2_audio_id": "44733167-6158-40d6-9c0c-a2f6d07c45f8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 567,
+   "expect": {
+    "known_text": "It's been lovely spending time outdoors watching the children play",
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar"
+   },
+   "set": {
+    "target_text": "ha sido lindo pasar tiempo al aire libre viendo a los niños jugar",
+    "target1_audio_id": "b90ff302-0406-49ae-aa8b-e75f1e448745",
+    "target2_audio_id": "25d4f47e-6302-438d-bcda-db3192251346"
+   }
+  }
+ ]
+}

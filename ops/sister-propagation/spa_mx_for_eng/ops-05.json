@@ -1,0 +1,120 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U02",
+   "expect": {
+    "known_text": "it's important to lead the way",
+    "target_text": "es importante liderar el camino"
+   },
+   "set": {
+    "known_text": "it's important to lead the project",
+    "known_audio_id": "7c62734e-c3a7-486d-983a-f9756606f672",
+    "target_text": "es importante liderar el proyecto",
+    "target1_audio_id": "d3e34769-052d-4613-a5b4-d3f8e0303e2e",
+    "target2_audio_id": "7c0ccc46-f4d0-40fe-8326-898549605399"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U03",
+   "expect": {
+    "known_text": "they don't want to lead the way now",
+    "target_text": "no quieren liderar el camino ahora"
+   },
+   "set": {
+    "known_text": "they don't want to lead the project now",
+    "known_audio_id": "ba9762b8-e74e-4041-9636-c7e0f35736f2",
+    "target_text": "no quieren liderar el proyecto ahora",
+    "target1_audio_id": "eaf8ddcf-85af-408f-8db5-038d6377e1d5",
+    "target2_audio_id": "3b1adfbd-0f73-4995-8f30-84f4172821ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U04",
+   "expect": {
+    "known_text": "it would be better to lead the way",
+    "target_text": "sería mejor liderar el camino"
+   },
+   "set": {
+    "known_text": "it would be better to lead the project",
+    "known_audio_id": "be266c4b-da6e-4ceb-b6a4-ee8083c6d2e8",
+    "target_text": "sería mejor liderar el proyecto",
+    "target1_audio_id": "a8fbc511-70ea-447b-9b7d-c1176f4f7cb7",
+    "target2_audio_id": "1e9868b4-05f3-41a5-be08-50bb22c5d719"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U05",
+   "expect": {
+    "known_text": "we could lead the way",
+    "target_text": "podríamos liderar el camino"
+   },
+   "set": {
+    "known_text": "we could lead the project",
+    "known_audio_id": "b2b0147e-edbb-4f9c-80a0-8bb9eb735560",
+    "target_text": "podríamos liderar el proyecto",
+    "target1_audio_id": "396f5ef6-fbac-4b82-b74c-096f1803ed5e",
+    "target2_audio_id": "27b36ffd-42fa-47ba-95f7-e088738a57bf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U06",
+   "expect": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "quieren liderar el camino el año que viene"
+   },
+   "set": {
+    "known_text": "they want to lead the project next year",
+    "known_audio_id": "4f701a37-3b49-4c00-b23f-d3d0dfbe8e20",
+    "target_text": "quieren liderar el proyecto el año que viene",
+    "target1_audio_id": "bad2eb10-40fb-430d-a30f-a4c629c65f11",
+    "target2_audio_id": "1778d46c-95c1-4124-9e38-9adcbec082d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U07",
+   "expect": {
+    "known_text": "we should ask the way",
+    "target_text": "deberíamos preguntar el camino"
+   },
+   "set": {
+    "known_text": "we should ask about the project",
+    "known_audio_id": "75fa0769-a247-494d-b768-21d5b51af78f",
+    "target_text": "deberíamos preguntar por el proyecto",
+    "target1_audio_id": "eff9314f-e188-48c9-824e-f524fb82f151",
+    "target2_audio_id": "bccdb539-638c-4b62-b50c-7d955f421ae6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03B01",
+   "expect": {
+    "known_text": "charity",
+    "target_text": "caridad"
+   },
+   "set": {
+    "target_text": "una causa benéfica",
+    "target1_audio_id": "d9cf9520-99f9-4d94-9855-10dbced6861d",
+    "target2_audio_id": "7948fdfe-bbba-456e-ab34-26b89dd827fd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03B02",
+   "expect": {
+    "known_text": "for charity",
+    "target_text": "para caridad"
+   },
+   "set": {
+    "target_text": "para una causa benéfica",
+    "target1_audio_id": "7b242545-c8a6-45a6-a1ae-188b7d2dc128",
+    "target2_audio_id": "429ef073-c142-45b6-90e1-a43ff4a03878"
+   }
+  }
+ ]
+}

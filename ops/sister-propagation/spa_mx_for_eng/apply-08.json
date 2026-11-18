@@ -1,0 +1,354 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "6a8c4f9f-7b2e-4d11-bc72-70a9039608a0",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L05B03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L05B03",
+    "seed_number": 567,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar",
+    "target1_audio_id": "3f398972-6382-4c54-8598-4aad12d19a38",
+    "target2_audio_id": "3785496d-1088-4c4a-9223-d4554ae8c8b0",
+    "known_text": "it's been lovely spending time outdoors watching the children play",
+    "known_audio_id": "563ada35-ba83-4ce4-80c8-d2b682b199d6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L05B03",
+    "seed_number": 567,
+    "lego_index": 5,
+    "lego_id": null,
+    "target_text": "ha sido lindo pasar tiempo al aire libre viendo a los niños jugar",
+    "target1_audio_id": "b90ff302-0406-49ae-aa8b-e75f1e448745",
+    "target2_audio_id": "25d4f47e-6302-438d-bcda-db3192251346",
+    "known_text": "it's been lovely spending time outdoors watching the children play",
+    "known_audio_id": "563ada35-ba83-4ce4-80c8-d2b682b199d6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0115L02U06"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0115L02U06",
+    "seed_number": 115,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't feel as if I'm ready for a conversation yet",
+    "known_audio_id": "e35bd058-8752-4d02-909b-b46dd05bd9a0",
+    "target_text": "no siento como si estuviera listo para una conversación todavía",
+    "target1_audio_id": "3e46a378-953a-43cb-bcf8-91b899ff7c2e",
+    "target2_audio_id": "57616ae2-868d-47a4-a4fb-6986d14c3be1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0115L02U06",
+    "seed_number": 115,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't feel ready for a conversation yet",
+    "known_audio_id": "bafd9b41-260d-4cdc-bb6d-3917ae6a752c",
+    "target_text": "no me siento listo para una conversación todavía",
+    "target1_audio_id": "5129544a-aefc-424d-a8cd-d70c1c0f66e7",
+    "target2_audio_id": "92c40c40-d3b2-49b2-93d9-c1ae8f279e40",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0115L03U03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0115L03U03",
+    "seed_number": 115,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "known_audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d",
+    "target_text": "no siento como si estuviera listo para tener una conversación",
+    "target1_audio_id": "d49031f0-8eaa-4bdc-952c-fe3b23a7a048",
+    "target2_audio_id": "40981d4f-dae9-4e57-8d38-3039f21a24fc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0115L03U03",
+    "seed_number": 115,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't feel ready to have a conversation",
+    "known_audio_id": "8d2f2019-a7c8-4c58-a8fb-7d2924359c8a",
+    "target_text": "no me siento listo para tener una conversación",
+    "target1_audio_id": "e0b3c37e-8ce3-4df8-8c31-096f78956fa0",
+    "target2_audio_id": "23ba217e-9b56-44c4-8856-14b3d14a18be",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0115L03U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0115L03U04",
+    "seed_number": 115,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "that is why I don't feel as if I'm ready to have a conversation today",
+    "known_audio_id": "617a411a-bf91-45c5-b87b-fa3ea52e1b52",
+    "target_text": "por eso no siento como si estuviera listo para tener una conversación hoy",
+    "target1_audio_id": "b4727e99-5398-424a-a97d-fd7982d3314e",
+    "target2_audio_id": "16b45d65-4731-412b-8d84-464cff216364",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0115L03U04",
+    "seed_number": 115,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "that is why I don't feel ready to have a conversation today",
+    "known_audio_id": "57c8d4d9-758e-4d07-979b-b7172138d5b7",
+    "target_text": "por eso no me siento listo para tener una conversación hoy",
+    "target1_audio_id": "dfa82bf6-7ef2-4945-a72f-23720fabf6fb",
+    "target2_audio_id": "d41760cf-d979-4de3-8123-59357abc85f2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0079L01U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0079L01U05",
+    "seed_number": 79,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "no sé cuándo, pero quiero intentar",
+    "target1_audio_id": "fece2ee5-b076-4312-8216-70723810b553",
+    "target2_audio_id": "7751ae0a-f124-4349-a35d-fa8f94e2a0f3",
+    "known_text": "I don't know when, but I want to try",
+    "known_audio_id": "57fbfb3a-c8f9-4b16-bdec-c9f596888fa1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0079L01U05",
+    "seed_number": 79,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "no sé cuándo, pero quiero intentarlo",
+    "target1_audio_id": "f6c1aeca-7e2c-4207-a70b-d8c9e20f453e",
+    "target2_audio_id": "3145c7cc-b5dc-4746-9299-04664949fb78",
+    "known_text": "I don't know when, but I want to try",
+    "known_audio_id": "57fbfb3a-c8f9-4b16-bdec-c9f596888fa1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0086L02U08"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0086L02U08",
+    "seed_number": 86,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "no fue posible, desafortunadamente, pero voy a intentar",
+    "target1_audio_id": "de4d3380-f7b3-4970-8166-686335334796",
+    "target2_audio_id": "17077d8f-db44-45af-90c4-cda03d9a22b9",
+    "known_text": "it wasn't possible, unfortunately, but I'm going to try",
+    "known_audio_id": "3352c477-4bf5-4bf4-b8ee-a83831231095",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0086L02U08",
+    "seed_number": 86,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "no fue posible, desafortunadamente, pero voy a intentarlo",
+    "target1_audio_id": "75a1841a-340b-4062-95d9-01c4c5006174",
+    "target2_audio_id": "30156bac-34e5-4a56-8982-f4204c8002b0",
+    "known_text": "it wasn't possible, unfortunately, but I'm going to try",
+    "known_audio_id": "3352c477-4bf5-4bf4-b8ee-a83831231095",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0088L01U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0088L01U05",
+    "seed_number": 88,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "no estoy listo, desafortunadamente, pero voy a intentar",
+    "target1_audio_id": "b400ee08-e87c-455f-8cac-554c0af109a0",
+    "target2_audio_id": "f424fa5f-acbb-497c-96c8-1fd2bb09680b",
+    "known_text": "I'm not ready, unfortunately, but I'm going to try",
+    "known_audio_id": "b64854ad-8a2c-4e5f-8f21-502511e356e1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0088L01U05",
+    "seed_number": 88,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "no estoy listo, desafortunadamente, pero voy a intentarlo",
+    "target1_audio_id": "c00453b3-fead-43cc-a564-8c2929d900e5",
+    "target2_audio_id": "4a33d621-5dbc-419c-8cb0-e534dabc50b5",
+    "known_text": "I'm not ready, unfortunately, but I'm going to try",
+    "known_audio_id": "b64854ad-8a2c-4e5f-8f21-502511e356e1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0134L01U09"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0134L01U09",
+    "seed_number": 134,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "creo que no hay problema si quieres intentar",
+    "target1_audio_id": "9f6085de-5c7a-4711-826c-7826aca943f8",
+    "target2_audio_id": "100dc7cd-4d18-4ab1-980f-c26daaec4d70",
+    "known_text": "I think there's no problem if you want to try",
+    "known_audio_id": "10aacb26-4b42-4a7f-9cd6-ce34a3e00fb7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0134L01U09",
+    "seed_number": 134,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "creo que no hay problema si quieres intentarlo",
+    "target1_audio_id": "865d9801-e1b6-48f4-ad98-ba52a92b4c72",
+    "target2_audio_id": "85fec09d-4165-4e6e-a088-c9880540d467",
+    "known_text": "I think there's no problem if you want to try",
+    "known_audio_id": "10aacb26-4b42-4a7f-9cd6-ce34a3e00fb7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0134L01U09",
+   "set": {
+    "target_text": "creo que no hay problema si quieres intentar",
+    "target1_audio_id": "9f6085de-5c7a-4711-826c-7826aca943f8",
+    "target2_audio_id": "100dc7cd-4d18-4ab1-980f-c26daaec4d70"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0088L01U05",
+   "set": {
+    "target_text": "no estoy listo, desafortunadamente, pero voy a intentar",
+    "target1_audio_id": "b400ee08-e87c-455f-8cac-554c0af109a0",
+    "target2_audio_id": "f424fa5f-acbb-497c-96c8-1fd2bb09680b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0086L02U08",
+   "set": {
+    "target_text": "no fue posible, desafortunadamente, pero voy a intentar",
+    "target1_audio_id": "de4d3380-f7b3-4970-8166-686335334796",
+    "target2_audio_id": "17077d8f-db44-45af-90c4-cda03d9a22b9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0079L01U05",
+   "set": {
+    "target_text": "no sé cuándo, pero quiero intentar",
+    "target1_audio_id": "fece2ee5-b076-4312-8216-70723810b553",
+    "target2_audio_id": "7751ae0a-f124-4349-a35d-fa8f94e2a0f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0115L03U04",
+   "set": {
+    "known_text": "that is why I don't feel as if I'm ready to have a conversation today",
+    "target_text": "por eso no siento como si estuviera listo para tener una conversación hoy",
+    "known_audio_id": "617a411a-bf91-45c5-b87b-fa3ea52e1b52",
+    "target1_audio_id": "b4727e99-5398-424a-a97d-fd7982d3314e",
+    "target2_audio_id": "16b45d65-4731-412b-8d84-464cff216364"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0115L03U03",
+   "set": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "no siento como si estuviera listo para tener una conversación",
+    "known_audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d",
+    "target1_audio_id": "d49031f0-8eaa-4bdc-952c-fe3b23a7a048",
+    "target2_audio_id": "40981d4f-dae9-4e57-8d38-3039f21a24fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0115L02U06",
+   "set": {
+    "known_text": "I don't feel as if I'm ready for a conversation yet",
+    "target_text": "no siento como si estuviera listo para una conversación todavía",
+    "known_audio_id": "e35bd058-8752-4d02-909b-b46dd05bd9a0",
+    "target1_audio_id": "3e46a378-953a-43cb-bcf8-91b899ff7c2e",
+    "target2_audio_id": "57616ae2-868d-47a4-a4fb-6986d14c3be1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L05B03",
+   "set": {
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar",
+    "target1_audio_id": "3f398972-6382-4c54-8598-4aad12d19a38",
+    "target2_audio_id": "3785496d-1088-4c4a-9223-d4554ae8c8b0"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T12-32-21-210Z-6a8c4f9f-7b2e-4d11-bc72-70a9039608a0.json"
+}

@@ -1,0 +1,114 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L05B03",
+   "expect": {
+    "known_text": "it's been lovely spending time outdoors watching the children play",
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar"
+   },
+   "set": {
+    "target_text": "ha sido lindo pasar tiempo al aire libre viendo a los niños jugar",
+    "target1_audio_id": "b90ff302-0406-49ae-aa8b-e75f1e448745",
+    "target2_audio_id": "25d4f47e-6302-438d-bcda-db3192251346"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0115L02U06",
+   "expect": {
+    "known_text": "I don't feel as if I'm ready for a conversation yet",
+    "target_text": "no siento como si estuviera listo para una conversación todavía"
+   },
+   "set": {
+    "known_text": "I don't feel ready for a conversation yet",
+    "known_audio_id": "bafd9b41-260d-4cdc-bb6d-3917ae6a752c",
+    "target_text": "no me siento listo para una conversación todavía",
+    "target1_audio_id": "5129544a-aefc-424d-a8cd-d70c1c0f66e7",
+    "target2_audio_id": "92c40c40-d3b2-49b2-93d9-c1ae8f279e40"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0115L03U03",
+   "expect": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "no siento como si estuviera listo para tener una conversación"
+   },
+   "set": {
+    "known_text": "I don't feel ready to have a conversation",
+    "known_audio_id": "8d2f2019-a7c8-4c58-a8fb-7d2924359c8a",
+    "target_text": "no me siento listo para tener una conversación",
+    "target1_audio_id": "e0b3c37e-8ce3-4df8-8c31-096f78956fa0",
+    "target2_audio_id": "23ba217e-9b56-44c4-8856-14b3d14a18be"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0115L03U04",
+   "expect": {
+    "known_text": "that is why I don't feel as if I'm ready to have a conversation today",
+    "target_text": "por eso no siento como si estuviera listo para tener una conversación hoy"
+   },
+   "set": {
+    "known_text": "that is why I don't feel ready to have a conversation today",
+    "known_audio_id": "57c8d4d9-758e-4d07-979b-b7172138d5b7",
+    "target_text": "por eso no me siento listo para tener una conversación hoy",
+    "target1_audio_id": "dfa82bf6-7ef2-4945-a72f-23720fabf6fb",
+    "target2_audio_id": "d41760cf-d979-4de3-8123-59357abc85f2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0079L01U05",
+   "expect": {
+    "known_text": "I don't know when, but I want to try",
+    "target_text": "no sé cuándo, pero quiero intentar"
+   },
+   "set": {
+    "target_text": "no sé cuándo, pero quiero intentarlo",
+    "target1_audio_id": "f6c1aeca-7e2c-4207-a70b-d8c9e20f453e",
+    "target2_audio_id": "3145c7cc-b5dc-4746-9299-04664949fb78"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0086L02U08",
+   "expect": {
+    "known_text": "it wasn't possible, unfortunately, but I'm going to try",
+    "target_text": "no fue posible, desafortunadamente, pero voy a intentar"
+   },
+   "set": {
+    "target_text": "no fue posible, desafortunadamente, pero voy a intentarlo",
+    "target1_audio_id": "75a1841a-340b-4062-95d9-01c4c5006174",
+    "target2_audio_id": "30156bac-34e5-4a56-8982-f4204c8002b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0088L01U05",
+   "expect": {
+    "known_text": "I'm not ready, unfortunately, but I'm going to try",
+    "target_text": "no estoy listo, desafortunadamente, pero voy a intentar"
+   },
+   "set": {
+    "target_text": "no estoy listo, desafortunadamente, pero voy a intentarlo",
+    "target1_audio_id": "c00453b3-fead-43cc-a564-8c2929d900e5",
+    "target2_audio_id": "4a33d621-5dbc-419c-8cb0-e534dabc50b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0134L01U09",
+   "expect": {
+    "known_text": "I think there's no problem if you want to try",
+    "target_text": "creo que no hay problema si quieres intentar"
+   },
+   "set": {
+    "target_text": "creo que no hay problema si quieres intentarlo",
+    "target1_audio_id": "865d9801-e1b6-48f4-ad98-ba52a92b4c72",
+    "target2_audio_id": "85fec09d-4165-4e6e-a088-c9880540d467"
+   }
+  }
+ ]
+}

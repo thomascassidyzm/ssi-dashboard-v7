@@ -1,0 +1,115 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 115,
+   "expect": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "no siento como si estuviera listo para tener una conversación"
+   },
+   "set": {
+    "known_text": "I don't feel ready to have a conversation",
+    "known_audio_id": "8d2f2019-a7c8-4c58-a8fb-7d2924359c8a",
+    "target_text": "no me siento listo para tener una conversación",
+    "target1_audio_id": "e0b3c37e-8ce3-4df8-8c31-096f78956fa0",
+    "target2_audio_id": "23ba217e-9b56-44c4-8856-14b3d14a18be"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 139,
+   "expect": {
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "lo siento que necesito irme tan temprano"
+   },
+   "set": {
+    "known_text": "I'm sorry, but I need to leave so early",
+    "known_audio_id": "3cdf7bcf-390a-456b-a380-3335021f457d",
+    "target_text": "lo siento, pero necesito irme tan temprano",
+    "target1_audio_id": "0dea36a7-26ba-4ba4-b759-d488db532052",
+    "target2_audio_id": "f9d8d0cc-9f35-47b5-886d-e17147c57338"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 140,
+   "expect": {
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "target_text": "lo siento que no puedo ver lo que intentas mostrarme"
+   },
+   "set": {
+    "known_text": "I'm sorry, but I can't see what you're trying to show me",
+    "known_audio_id": "c8135bb1-116b-4ca8-829c-597a205f399b",
+    "target_text": "lo siento, pero no puedo ver lo que intentas mostrarme",
+    "target1_audio_id": "a2996a0b-afd0-4ae0-887c-a093a42760c0",
+    "target2_audio_id": "3ca1120b-cb1b-4694-ac0e-eda6a0cab1b9"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 138,
+   "expect": {
+    "known_text": "this was where my friend wanted to meet us",
+    "target_text": "aquí es donde mi amigo quería reunirse con nosotros"
+   },
+   "set": {
+    "known_text": "this is where my friend wanted to meet us",
+    "known_audio_id": "0951ad7a-f622-45b4-b75a-7a71834ad532"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 419,
+   "expect": {
+    "known_text": "if they want people to like them",
+    "target_text": "si quieren que la gente les aprecie"
+   },
+   "set": {
+    "known_text": "if they want people to appreciate them",
+    "known_audio_id": "af84b85c-8db7-4832-b614-21e9ecb194c7"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0416L02",
+   "expect": {
+    "known_text": "the way",
+    "target_text": "el camino"
+   },
+   "set": {
+    "known_text": "the project",
+    "known_audio_id": "50b6afce-94e6-4f50-8c69-619463da8be6",
+    "target_text": "el proyecto",
+    "target1_audio_id": "23d70a1e-fbe9-4649-b35d-a5f55f3aee42",
+    "target2_audio_id": "2e13f198-c1d1-4069-84a9-8fb0473a0427",
+    "presentation_audio_id": "d8f1dd43-b7fe-4769-b9f9-64ca1bb286c5"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0437L03",
+   "expect": {
+    "known_text": "charity",
+    "target_text": "caridad"
+   },
+   "set": {
+    "target_text": "una causa benéfica",
+    "target1_audio_id": "d9cf9520-99f9-4d94-9855-10dbced6861d",
+    "target2_audio_id": "7948fdfe-bbba-456e-ab34-26b89dd827fd"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0567L02",
+   "expect": {
+    "known_text": "lovely",
+    "target_text": "encantador"
+   },
+   "set": {
+    "target_text": "lindo",
+    "target1_audio_id": "d8895f8a-6fa7-45bb-ad71-fb64a8056553",
+    "target2_audio_id": "db91dec4-7e4d-4f26-ba09-4f8927b535ba"
+   }
+  }
+ ]
+}

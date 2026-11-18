@@ -1,0 +1,364 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "b4b1a74d-6f66-4716-898e-126a84ef241d",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L05U01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L05U01",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we have a bottle of red wine please?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target_text": "¿podríamos tener una botella de vino tinto, por favor?",
+    "target1_audio_id": "b6c825d0-fcec-480d-a74d-785893e0492b",
+    "target2_audio_id": "ef037846-4e84-47f3-b116-9107d5b8dbd8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L05U01",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we ask for a bottle of red wine please?",
+    "known_audio_id": "01080d35-d14b-4d31-8a3b-86ed0260916b",
+    "target_text": "¿podríamos pedir una botella de vino tinto, por favor?",
+    "target1_audio_id": "d375e29a-72c1-4364-8c6f-d026b98280f8",
+    "target2_audio_id": "75b45c76-41e4-4b37-9b0e-e9925c89fb6c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L05U02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L05U02",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we have a table please?",
+    "known_audio_id": "73dca6e7-4bea-4ffb-bbf5-46ca93081d99",
+    "target_text": "¿podríamos tener una mesa, por favor?",
+    "target1_audio_id": "e86fcbcb-f94b-48cb-a56b-d204d4c49842",
+    "target2_audio_id": "f49531a4-5dac-4793-9224-9579a12d6f1f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L05U02",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we ask for a table please?",
+    "known_audio_id": "06722532-16b1-4b59-918a-aa10a213f1c4",
+    "target_text": "¿podríamos pedir una mesa, por favor?",
+    "target1_audio_id": "8a2187cc-518b-4cf6-b330-be1f52768288",
+    "target2_audio_id": "86859417-e0d6-42c3-b102-7e917f7e3851",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L05U03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L05U03",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we have water please?",
+    "known_audio_id": "21d934d0-94d2-45cc-a3c4-d50ab23685bb",
+    "target_text": "¿podríamos tener agua, por favor?",
+    "target1_audio_id": "6e07fe5c-d37b-4f7c-a7c0-e3916b59e347",
+    "target2_audio_id": "d4e82cec-6fba-4c78-8c36-b46e0a8d79c9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L05U03",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we ask for water please?",
+    "known_audio_id": "1e2e8c3e-0dd4-4c05-bbd6-e7711d8c87dd",
+    "target_text": "¿podríamos pedir agua, por favor?",
+    "target1_audio_id": "d6d841a6-7d70-4dbe-9adb-89601059be02",
+    "target2_audio_id": "74345bbb-e91a-4af6-aeeb-e9a7e83a6a7c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L03U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L03U05",
+    "seed_number": 414,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it's important to have red wine",
+    "known_audio_id": "0421dd35-fb0d-42d6-8b1a-87d02bf2df58",
+    "target_text": "es importante tener vino tinto",
+    "target1_audio_id": "c060edd3-d334-4a86-bfa8-dbca40f30c2f",
+    "target2_audio_id": "cb325d65-872c-451d-856d-75d7b398fe5e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L03U05",
+    "seed_number": 414,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it's important to ask for red wine",
+    "known_audio_id": "c55d94a3-7924-48c2-a3dd-8c7eb8d177bf",
+    "target_text": "es importante pedir vino tinto",
+    "target1_audio_id": "51e240c2-d579-4c87-8023-b39d62272482",
+    "target2_audio_id": "77de2c31-6e34-41bb-9597-09d639f945ac",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02B01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02B01",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "the way",
+    "known_audio_id": "648d5601-b65f-42b3-96c8-1757f3fc0001",
+    "target_text": "el camino",
+    "target1_audio_id": "3c75fbed-f80a-4d55-a472-687f0ff623b9",
+    "target2_audio_id": "292e4661-13f5-4b8d-b904-7efa01b4b401",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02B01",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "the project",
+    "known_audio_id": "50b6afce-94e6-4f50-8c69-619463da8be6",
+    "target_text": "el proyecto",
+    "target1_audio_id": "23d70a1e-fbe9-4649-b35d-a5f55f3aee42",
+    "target2_audio_id": "2e13f198-c1d1-4069-84a9-8fb0473a0427",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02B02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02B02",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to lead the way",
+    "known_audio_id": "334ac4b2-3627-45d8-8177-aafbb2242d6a",
+    "target_text": "liderar el camino",
+    "target1_audio_id": "b89e6729-c162-4e18-8aa6-61c16c48a505",
+    "target2_audio_id": "82d48ea2-4554-455d-bfb5-59adb94d2334",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02B02",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to lead the project",
+    "known_audio_id": "aba0b483-b7c2-4054-bf93-6cb25f7f5b64",
+    "target_text": "liderar el proyecto",
+    "target1_audio_id": "9a47170d-4532-49ee-8f73-7c68f9220836",
+    "target2_audio_id": "8019883e-4ed1-444f-962d-5552bf368635",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02B03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02B03",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they want to lead the way",
+    "known_audio_id": "e114fceb-02aa-401b-aada-f6ff9a8ebc3d",
+    "target_text": "quieren liderar el camino",
+    "target1_audio_id": "8ee6e254-56ae-46ce-9d7a-8b40ee12fc25",
+    "target2_audio_id": "7d50663d-2865-4db9-87bb-f5a86395efb7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02B03",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they want to lead the project",
+    "known_audio_id": "4dc726c3-4a69-4f8a-82c2-b858a4624f60",
+    "target_text": "quieren liderar el proyecto",
+    "target1_audio_id": "e6969296-c078-4099-b94a-1de34e144c20",
+    "target2_audio_id": "6512c17d-08ca-4a4f-9c35-8e9a3931e19c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02U01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02U01",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "she wants to lead the way",
+    "known_audio_id": "801e814e-83f4-4fc4-8266-9a6fde7a38f6",
+    "target_text": "ella quiere liderar el camino",
+    "target1_audio_id": "25747d81-7291-456f-9de7-c4ce5668c1f3",
+    "target2_audio_id": "11c79a5b-8b6c-46b0-8341-3241f4e656e7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02U01",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "she wants to lead the project",
+    "known_audio_id": "63b4297b-4608-4a9e-8eaf-f9e8a26eebb3",
+    "target_text": "ella quiere liderar el proyecto",
+    "target1_audio_id": "1df3be8f-7de8-4a57-b3e6-e6d61b52de1c",
+    "target2_audio_id": "aac2b8b7-d1b8-4909-891f-0594ae72d3a9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U01",
+   "set": {
+    "known_text": "she wants to lead the way",
+    "target_text": "ella quiere liderar el camino",
+    "known_audio_id": "801e814e-83f4-4fc4-8266-9a6fde7a38f6",
+    "target1_audio_id": "25747d81-7291-456f-9de7-c4ce5668c1f3",
+    "target2_audio_id": "11c79a5b-8b6c-46b0-8341-3241f4e656e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02B03",
+   "set": {
+    "known_text": "they want to lead the way",
+    "target_text": "quieren liderar el camino",
+    "known_audio_id": "e114fceb-02aa-401b-aada-f6ff9a8ebc3d",
+    "target1_audio_id": "8ee6e254-56ae-46ce-9d7a-8b40ee12fc25",
+    "target2_audio_id": "7d50663d-2865-4db9-87bb-f5a86395efb7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02B02",
+   "set": {
+    "known_text": "to lead the way",
+    "target_text": "liderar el camino",
+    "known_audio_id": "334ac4b2-3627-45d8-8177-aafbb2242d6a",
+    "target1_audio_id": "b89e6729-c162-4e18-8aa6-61c16c48a505",
+    "target2_audio_id": "82d48ea2-4554-455d-bfb5-59adb94d2334"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02B01",
+   "set": {
+    "known_text": "the way",
+    "target_text": "el camino",
+    "known_audio_id": "648d5601-b65f-42b3-96c8-1757f3fc0001",
+    "target1_audio_id": "3c75fbed-f80a-4d55-a472-687f0ff623b9",
+    "target2_audio_id": "292e4661-13f5-4b8d-b904-7efa01b4b401"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L03U05",
+   "set": {
+    "known_text": "it's important to have red wine",
+    "target_text": "es importante tener vino tinto",
+    "known_audio_id": "0421dd35-fb0d-42d6-8b1a-87d02bf2df58",
+    "target1_audio_id": "c060edd3-d334-4a86-bfa8-dbca40f30c2f",
+    "target2_audio_id": "cb325d65-872c-451d-856d-75d7b398fe5e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U03",
+   "set": {
+    "known_text": "could we have water please?",
+    "target_text": "¿podríamos tener agua, por favor?",
+    "known_audio_id": "21d934d0-94d2-45cc-a3c4-d50ab23685bb",
+    "target1_audio_id": "6e07fe5c-d37b-4f7c-a7c0-e3916b59e347",
+    "target2_audio_id": "d4e82cec-6fba-4c78-8c36-b46e0a8d79c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U02",
+   "set": {
+    "known_text": "could we have a table please?",
+    "target_text": "¿podríamos tener una mesa, por favor?",
+    "known_audio_id": "73dca6e7-4bea-4ffb-bbf5-46ca93081d99",
+    "target1_audio_id": "e86fcbcb-f94b-48cb-a56b-d204d4c49842",
+    "target2_audio_id": "f49531a4-5dac-4793-9224-9579a12d6f1f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U01",
+   "set": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿podríamos tener una botella de vino tinto, por favor?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "b6c825d0-fcec-480d-a74d-785893e0492b",
+    "target2_audio_id": "ef037846-4e84-47f3-b116-9107d5b8dbd8"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T12-31-35-516Z-b4b1a74d-6f66-4716-898e-126a84ef241d.json"
+}
