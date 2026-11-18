@@ -1,0 +1,115 @@
+{
+ "seed": 95,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "घरी जायला",
+     "to go home"
+    ],
+    "B03": [
+     "घरी जायला तयार",
+     "ready to go home"
+    ],
+    "U01": [
+     "मला घरी जायचं आहे",
+     "I want to go home"
+    ],
+    "U02": [
+     "तुम्हाला घरी जायचं आहे का?",
+     "do you want to go home?"
+    ],
+    "U03": [
+     "मला आता घरी जायला आवडेल",
+     "I'd like to go home now"
+    ],
+    "U04": [
+     "मी घरी वाट पाहणार आहे",
+     "I'm going to wait at home"
+    ],
+    "U05": [
+     "मी घरी जायला तयार आहे",
+     "I'm ready to go home"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "घरी जा",
+     "go home"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "बॅगेवर",
+     "on the bag"
+    ],
+    "B03": [
+     "पत्रावर",
+     "on the letter"
+    ],
+    "U01": [
+     "मला ते बॅगेवर ठेवायचं आहे",
+     "I want to put it on the bag"
+    ],
+    "U02": [
+     "त्याचं नाव पत्रावर आहे",
+     "his name is on the letter"
+    ],
+    "U03": [
+     "मी घरी जाताना गोष्ट वाचणार आहे",
+     "I'm going to read the story on the way home"
+    ],
+    "U04": [
+     "मला पत्रावर माझं नाव लिहायचं आहे",
+     "I want to write my name on the letter"
+    ],
+    "U05": [
+     "तुम्ही ते बॅगेवर ठेवू शकता का?",
+     "can you put it on the bag?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "पत्रावर त्याचं नाव",
+     "his name on the letter"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "बसमध्ये",
+     "on the bus"
+    ],
+    "U02": [
+     "मी पुढच्या बसने जाणार आहे",
+     "I'm going to go on the next bus"
+    ],
+    "U03": [
+     "मला बसमध्ये वाचायचं आहे",
+     "I want to read on the bus"
+    ],
+    "U04": [
+     "मला बसने घरी जायला आवडेल",
+     "I'd like to go home on the bus"
+    ],
+    "U05": [
+     "मी बसची वाट पाहणार आहे",
+     "I'm going to wait for the bus"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "पुढच्या बसने",
+     "on the next bus"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

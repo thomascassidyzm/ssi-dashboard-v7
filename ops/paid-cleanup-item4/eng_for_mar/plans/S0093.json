@@ -1,0 +1,37 @@
+{
+ "seed": 93,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "जायची वेळ",
+     "time to go"
+    ],
+    "U02": [
+     "मला जायचं नाही",
+     "I don't want to go"
+    ],
+    "U03": [
+     "तुम्हाला कुठे जायचं आहे?",
+     "where do you want to go?"
+    ],
+    "U04": [
+     "मला माझ्या मित्रांबरोबर जायला आवडेल",
+     "I'd like to go with my friends"
+    ],
+    "U05": [
+     "मला आता जायला हवं",
+     "I need to go now"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "जायचं आहे",
+     "want to go"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

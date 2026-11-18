@@ -1,0 +1,112 @@
+{
+ "seed": 83,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुमच्याशी सहमत",
+     "agree with you"
+    ],
+    "B03": [
+     "त्याच्याशी सहमत",
+     "agree with that"
+    ],
+    "U02": [
+     "मी तुमच्याशी सहमत आहे",
+     "I agree with you"
+    ],
+    "U03": [
+     "मी त्याच्याशी सहमत आहे",
+     "I agree with that"
+    ],
+    "U04": [
+     "तुम्ही सहमत आहात का?",
+     "do you agree?"
+    ],
+    "U05": [
+     "तुम्ही जे म्हणालात त्याच्याशी मी सहमत आहे",
+     "I agree with what you said"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "माझ्या मित्रांशी सहमत",
+     "agree with my friends"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "काहीतरीबद्दल",
+     "about something"
+    ],
+    "B03": [
+     "माझ्या मित्राबद्दल",
+     "about my friend"
+    ],
+    "B04": [
+     "गोष्टीबद्दल",
+     "about the story"
+    ],
+    "U01": [
+     "तुम्ही त्याबद्दल जे म्हणालात त्याच्याशी मी सहमत आहे",
+     "I agree with what you said about it"
+    ],
+    "U02": [
+     "तुम्हाला त्याबद्दल काय वाटतं?",
+     "what do you think about it?"
+    ],
+    "U03": [
+     "मला तुम्हाला पत्राबद्दल विचारायचं होतं",
+     "I wanted to ask you about the letter"
+    ],
+    "U04": [
+     "मला तुम्हाला माझ्या मित्रांबद्दल सांगायचं आहे",
+     "I want to tell you about my friends"
+    ],
+    "U05": [
+     "तुम्ही जे म्हणालात त्याबद्दल मी विचार करतोय",
+     "I'm thinking about what you said"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "तुमचं नाव",
+     "your name"
+    ],
+    "B03": [
+     "तुमची बॅग",
+     "your bag"
+    ],
+    "U02": [
+     "तुमचं नाव काय आहे?",
+     "what's your name?"
+    ],
+    "U03": [
+     "मी तुमच्या मित्राशी सहमत आहे",
+     "I agree with your friend"
+    ],
+    "U04": [
+     "मला तुमच्या मित्रांना भेटायचं आहे",
+     "I want to meet your friends"
+    ],
+    "U05": [
+     "तुमचा मित्र तसं म्हणाला",
+     "your friend said that"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुमचा मित्र",
+     "your friend"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

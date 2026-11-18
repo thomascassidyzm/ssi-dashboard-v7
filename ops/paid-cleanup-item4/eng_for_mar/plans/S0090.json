@@ -1,0 +1,103 @@
+{
+ "seed": 90,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "वाट पाहू शकता",
+     "can wait"
+    ],
+    "U01": [
+     "तुम्ही माझ्याशी बोलू शकता",
+     "you can speak with me"
+    ],
+    "U03": [
+     "तुम्ही इथे वाट पाहू शकता",
+     "you can wait here"
+    ],
+    "U05": [
+     "तुम्ही मला मदत करू शकता का?",
+     "can you help me?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "समजू शकता",
+     "can understand"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "शक्य होईल",
+     "would be possible"
+    ],
+    "B03": [
+     "उपयोगी होईल",
+     "would be useful"
+    ],
+    "U01": [
+     "ते मजेशीर होईल",
+     "that would be fun"
+    ],
+    "U02": [
+     "ते आठवायला सोपं होईल",
+     "it would be easy to remember"
+    ],
+    "U03": [
+     "उत्तर देणं अवघड होईल",
+     "it would be difficult to answer"
+    ],
+    "U04": [
+     "तुम्ही अजून हळू बोलू शकलात तर ते उपयोगी होईल",
+     "if you can speak more slowly, that would be useful"
+    ],
+    "U05": [
+     "तुम्ही येऊ शकलात तर ते मजेशीर होईल",
+     "if you can come, that would be fun"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "सोपं होईल",
+     "would be easy"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "एक छान गोष्ट",
+     "a great story"
+    ],
+    "B03": [
+     "छान मित्र",
+     "great friends"
+    ],
+    "U03": [
+     "तुमचा मित्र छान आहे",
+     "your friend is great"
+    ],
+    "U04": [
+     "तुम्हाला भेटून छान वाटलं",
+     "it was great to meet you"
+    ],
+    "U05": [
+     "तुम्ही उद्या परत येऊ शकलात तर ते छान होईल",
+     "if you can come back tomorrow, that would be great"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "छान होईल",
+     "would be great"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

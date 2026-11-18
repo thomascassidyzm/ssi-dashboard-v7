@@ -1,0 +1,64 @@
+{
+ "seed": 78,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "ते समजत नाही",
+     "don't understand it"
+    ],
+    "B03": [
+     "सगळं समजत नाही",
+     "don't understand everything"
+    ],
+    "U02": [
+     "तुम्हाला काय म्हणायचंय ते मला समजत नाही",
+     "I don't understand what you mean"
+    ],
+    "U03": [
+     "मला पूर्ण वाक्य समजत नाही",
+     "I don't understand the whole sentence"
+    ],
+    "U04": [
+     "त्याला का थांबायचं आहे ते मला समजत नाही",
+     "I don't understand why he wants to stop"
+    ],
+    "U05": [
+     "ते कसं करायचं ते मला समजत नाही",
+     "I don't understand how to do it"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "का ते समजत नाही",
+     "don't understand why"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "तुम्ही काय म्हणालात",
+     "what you said"
+    ],
+    "B03": [
+     "तुम्ही ते म्हणालात",
+     "you said that"
+    ],
+    "U04": [
+     "तुम्ही म्हणालात की तुम्हाला परत यायचं होतं",
+     "you said you wanted to come back"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ती काय म्हणाली",
+     "what she said"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
