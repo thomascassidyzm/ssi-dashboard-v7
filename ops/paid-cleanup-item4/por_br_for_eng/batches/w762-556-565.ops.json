@@ -1,0 +1,1765 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0556L01B04",
+    "seed_number": 556,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "they play music on Saturday",
+    "target_text": "eles tocam música no sábado",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0556L02B04",
+    "seed_number": 556,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "he works late at night",
+    "target_text": "ele trabalha tarde à noite",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0557L01B04",
+    "seed_number": 557,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I wish I could stay",
+    "target_text": "eu queria poder ficar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0557L02B04",
+    "seed_number": 557,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "I wish they wouldn't play here",
+    "target_text": "eu queria que eles não tocassem aqui",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 36,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0557L03B04",
+    "seed_number": 557,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "why such loud music?",
+    "target_text": "por que música tão alta?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0558L01B04",
+    "seed_number": 558,
+    "lego_index": 1,
+    "position": 15,
+    "known_text": "it's so late, let's go home",
+    "target_text": "é tão tarde, vamos para casa",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0559L01B04",
+    "seed_number": 559,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "have you found the dog?",
+    "target_text": "você encontrou o cachorro?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0559L02B04",
+    "seed_number": 559,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "the path through the garden is better",
+    "target_text": "o caminho pelo jardim é melhor",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0559L03B04",
+    "seed_number": 559,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "in the middle of the wood",
+    "target_text": "no meio do bosque",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0561L01B04",
+    "seed_number": 561,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "I don't care if it's not perfect",
+    "target_text": "eu não me importo se não é perfeito",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 35,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0561L02B04",
+    "seed_number": 561,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "it's not a fast car",
+    "target_text": "não é um carro rápido",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0562L01B04",
+    "seed_number": 562,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I just want to help",
+    "target_text": "eu só quero ajudar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0562L02B04",
+    "seed_number": 562,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "she wants to get there safely",
+    "target_text": "ela quer chegar lá em segurança",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0563L01B04",
+    "seed_number": 563,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "I wouldn't have been able to finish",
+    "target_text": "eu não teria conseguido acabar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0563L02B04",
+    "seed_number": 563,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "I couldn't keep going any longer",
+    "target_text": "eu não consegui continuar mais tempo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 36,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0564L02B04",
+    "seed_number": 564,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "not without your help",
+    "target_text": "não sem a sua ajuda",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0565L01B04",
+    "seed_number": 565,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I'd have thought it was difficult",
+    "target_text": "eu teria pensado que era difícil",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0565L02B04",
+    "seed_number": 565,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "we should think about it more carefully",
+    "target_text": "devíamos pensar nisso com mais cuidado",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 38,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0556L01B02",
+   "expect": {
+    "known_text": "they play music now",
+    "target_text": "eles tocam música agora"
+   },
+   "set": {
+    "known_text": "they play music all day",
+    "target_text": "eles tocam música o dia todo",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0556L01B03",
+   "expect": {
+    "known_text": "yes, they play music",
+    "target_text": "sim, eles tocam música"
+   },
+   "set": {
+    "known_text": "they play music in the pub",
+    "target_text": "eles tocam música no café",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0556L01U03",
+   "expect": {
+    "known_text": "I'm sure they play music",
+    "target_text": "tenho certeza de que eles tocam música"
+   },
+   "set": {
+    "known_text": "I'm sure they play music very well",
+    "target_text": "tenho certeza de que eles tocam música muito bem",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0556L02B02",
+   "expect": {
+    "known_text": "they play music late at night now",
+    "target_text": "eles tocam música tarde à noite agora"
+   },
+   "set": {
+    "known_text": "I like to read late at night",
+    "target_text": "gosto de ler tarde à noite",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0556L02B03",
+   "expect": {
+    "known_text": "yes, late at night",
+    "target_text": "sim, tarde à noite"
+   },
+   "set": {
+    "known_text": "I go home late at night",
+    "target_text": "vou para casa tarde à noite",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L01B02",
+   "expect": {
+    "known_text": "I wish so",
+    "target_text": "eu queria isso"
+   },
+   "set": {
+    "known_text": "I wish I could go",
+    "target_text": "eu queria poder ir",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L01B03",
+   "expect": {
+    "known_text": "yes, I wish",
+    "target_text": "sim, eu queria"
+   },
+   "set": {
+    "known_text": "I wish I could help you",
+    "target_text": "eu queria poder te ajudar",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L01U01",
+   "expect": {
+    "known_text": "he knows I wish",
+    "target_text": "ele sabe que eu queria"
+   },
+   "set": {
+    "known_text": "I wish you were here",
+    "target_text": "eu queria que você estivesse aqui",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L01U02",
+   "expect": {
+    "known_text": "you know I wish",
+    "target_text": "você sabe que eu queria"
+   },
+   "set": {
+    "known_text": "I wish I knew the answer",
+    "target_text": "eu queria saber a resposta",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L01U03",
+   "expect": {
+    "known_text": "I'm sure, I wish",
+    "target_text": "tenho certeza, eu queria"
+   },
+   "set": {
+    "known_text": "I wish she were here",
+    "target_text": "eu queria que ela estivesse aqui",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L01U04",
+   "expect": {
+    "known_text": "it's true, I wish",
+    "target_text": "é verdade que eu queria"
+   },
+   "set": {
+    "known_text": "I wish I could speak Portuguese very well",
+    "target_text": "eu queria poder falar português muito bem",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L01U05",
+   "expect": {
+    "known_text": "I still wish",
+    "target_text": "eu ainda queria"
+   },
+   "set": {
+    "known_text": "I wish you were with me",
+    "target_text": "eu queria que você estivesse comigo",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L02B03",
+   "expect": {
+    "known_text": "yes, they wouldn't play",
+    "target_text": "sim, que eles não tocassem"
+   },
+   "set": {
+    "known_text": "I wish they wouldn't play music",
+    "target_text": "eu queria que eles não tocassem música",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L02U01",
+   "expect": {
+    "known_text": "he knows I wish they wouldn't play",
+    "target_text": "ele sabe que eu queria que eles não tocassem"
+   },
+   "set": {
+    "known_text": "I wish they wouldn't play late at night",
+    "target_text": "eu queria que eles não tocassem tarde à noite",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L02U02",
+   "expect": {
+    "known_text": "you know I wish they wouldn't play",
+    "target_text": "você sabe que eu queria que eles não tocassem"
+   },
+   "set": {
+    "known_text": "I wish they wouldn't play music late at night",
+    "target_text": "eu queria que eles não tocassem música tarde à noite",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L02U03",
+   "expect": {
+    "known_text": "I'm sure, I wish they wouldn't play",
+    "target_text": "tenho certeza, eu queria que eles não tocassem"
+   },
+   "set": {
+    "known_text": "I still wish they wouldn't play music",
+    "target_text": "eu ainda queria que eles não tocassem música",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L02U04",
+   "expect": {
+    "known_text": "it's true, I wish they wouldn't play",
+    "target_text": "é verdade que eu queria que eles não tocassem"
+   },
+   "set": {
+    "known_text": "I wish they wouldn't play music all day",
+    "target_text": "eu queria que eles não tocassem música o dia todo",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L02U05",
+   "expect": {
+    "known_text": "I still wish they wouldn't play",
+    "target_text": "eu ainda queria que eles não tocassem"
+   },
+   "set": {
+    "known_text": "I wish they wouldn't play music tonight",
+    "target_text": "eu queria que eles não tocassem música esta noite",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L03B02",
+   "expect": {
+    "known_text": "play such loud music",
+    "target_text": "tocassem música tão alta"
+   },
+   "set": {
+    "known_text": "they play such loud music",
+    "target_text": "eles tocam música tão alta",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L03B03",
+   "expect": {
+    "known_text": "yes, such loud music",
+    "target_text": "sim, música tão alta"
+   },
+   "set": {
+    "known_text": "I don't like such loud music",
+    "target_text": "não gosto de música tão alta",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L03U02",
+   "expect": {
+    "known_text": "he knows I wish they wouldn't play such loud music",
+    "target_text": "ele sabe que eu queria que eles não tocassem música tão alta"
+   },
+   "set": {
+    "known_text": "I can't sleep with such loud music",
+    "target_text": "não consigo dormir com música tão alta",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L03U03",
+   "expect": {
+    "known_text": "you know I wish they wouldn't play such loud music",
+    "target_text": "você sabe que eu queria que eles não tocassem música tão alta"
+   },
+   "set": {
+    "known_text": "they play such loud music late at night",
+    "target_text": "eles tocam música tão alta tarde à noite",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L03U04",
+   "expect": {
+    "known_text": "I'm sure, I wish they wouldn't play such loud music",
+    "target_text": "tenho certeza, eu queria que eles não tocassem música tão alta"
+   },
+   "set": {
+    "known_text": "I can't think with such loud music",
+    "target_text": "não consigo pensar com música tão alta",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0557L03U05",
+   "expect": {
+    "known_text": "it's true, I wish they wouldn't play such loud music",
+    "target_text": "é verdade que eu queria que eles não tocassem música tão alta"
+   },
+   "set": {
+    "known_text": "why do they play such loud music?",
+    "target_text": "por que eles tocam música tão alta?",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0558L01B02",
+   "expect": {
+    "known_text": "it's so late now",
+    "target_text": "é tão tarde agora"
+   },
+   "set": {
+    "known_text": "it's so late, I'm tired",
+    "target_text": "é tão tarde, estou cansado",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0558L01B03",
+   "expect": {
+    "known_text": "yes, it's so late",
+    "target_text": "sim, é tão tarde"
+   },
+   "set": {
+    "known_text": "it's so late, I have got to go",
+    "target_text": "é tão tarde, tenho que ir",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0558L01U01",
+   "expect": {
+    "known_text": "he knows it's so late",
+    "target_text": "ele sabe que é tão tarde"
+   },
+   "set": {
+    "known_text": "it's so late and I'm too tired",
+    "target_text": "é tão tarde e estou cansado demais",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0558L01U02",
+   "expect": {
+    "known_text": "you know it's so late",
+    "target_text": "você sabe que é tão tarde"
+   },
+   "set": {
+    "known_text": "it's so late, I can't think",
+    "target_text": "é tão tarde, não consigo pensar",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0558L01U03",
+   "expect": {
+    "known_text": "I'm sure it's so late",
+    "target_text": "tenho certeza de que é tão tarde"
+   },
+   "set": {
+    "known_text": "it's so late, I just want to sleep",
+    "target_text": "é tão tarde, eu só quero dormir",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0558L01U04",
+   "expect": {
+    "known_text": "it's true, it's so late",
+    "target_text": "é verdade que é tão tarde"
+   },
+   "set": {
+    "known_text": "it's so late, I have got to wake up early",
+    "target_text": "é tão tarde, tenho que acordar cedo",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0558L01U05",
+   "expect": {
+    "known_text": "I think it's so late",
+    "target_text": "acho que é tão tarde"
+   },
+   "set": {
+    "known_text": "it's so late, we must go home",
+    "target_text": "é tão tarde, nós temos de ir para casa",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L01B02",
+   "expect": {
+    "known_text": "have you found it",
+    "target_text": "você encontrou isso"
+   },
+   "set": {
+    "known_text": "have you found the answer?",
+    "target_text": "você encontrou a resposta?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L01B03",
+   "expect": {
+    "known_text": "yes, have you found",
+    "target_text": "sim, você encontrou"
+   },
+   "set": {
+    "known_text": "have you found a shop?",
+    "target_text": "você encontrou uma loja?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L01U01",
+   "expect": {
+    "known_text": "he knows if you found",
+    "target_text": "ele sabe se você encontrou"
+   },
+   "set": {
+    "known_text": "have you found the hotel?",
+    "target_text": "você encontrou o hotel?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L01U02",
+   "expect": {
+    "known_text": "I'm sure you found",
+    "target_text": "tenho certeza de que você encontrou"
+   },
+   "set": {
+    "known_text": "have you found a new one?",
+    "target_text": "você encontrou uma nova?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L01U03",
+   "expect": {
+    "known_text": "it's true, you found",
+    "target_text": "é verdade que você encontrou"
+   },
+   "set": {
+    "known_text": "have you found the church?",
+    "target_text": "você encontrou a igreja?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L01U04",
+   "expect": {
+    "known_text": "I think you found",
+    "target_text": "acho que você encontrou"
+   },
+   "set": {
+    "known_text": "I think you found the answer",
+    "target_text": "acho que você encontrou a resposta",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L01U05",
+   "expect": {
+    "known_text": "I wonder if you found",
+    "target_text": "eu me pergunto se você encontrou"
+   },
+   "set": {
+    "known_text": "have you found a good restaurant?",
+    "target_text": "você encontrou um bom restaurante?",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L02B02",
+   "expect": {
+    "known_text": "have you found the path through",
+    "target_text": "você encontrou o caminho pelo"
+   },
+   "set": {
+    "known_text": "the path through the garden",
+    "target_text": "o caminho pelo jardim",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L02B03",
+   "expect": {
+    "known_text": "yes, the path through",
+    "target_text": "sim, o caminho pelo"
+   },
+   "set": {
+    "known_text": "have you found the path through the garden?",
+    "target_text": "você encontrou o caminho pelo jardim?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L02U01",
+   "expect": {
+    "known_text": "he knows if you found the path through",
+    "target_text": "ele sabe se você encontrou o caminho pelo"
+   },
+   "set": {
+    "known_text": "the path through the garden is easier",
+    "target_text": "o caminho pelo jardim é mais fácil",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L02U02",
+   "expect": {
+    "known_text": "I'm sure you found the path through",
+    "target_text": "tenho certeza de que você encontrou o caminho pelo"
+   },
+   "set": {
+    "known_text": "I'm trying to find the path through the garden",
+    "target_text": "estou tentando encontrar o caminho pelo jardim",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L02U03",
+   "expect": {
+    "known_text": "it's true, you found the path through",
+    "target_text": "é verdade que você encontrou o caminho pelo"
+   },
+   "set": {
+    "known_text": "the path through the garden is faster",
+    "target_text": "o caminho pelo jardim é mais rápido",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L02U04",
+   "expect": {
+    "known_text": "I think you found the path through",
+    "target_text": "acho que você encontrou o caminho pelo"
+   },
+   "set": {
+    "known_text": "where is the path through the garden?",
+    "target_text": "onde fica o caminho pelo jardim?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L02U05",
+   "expect": {
+    "known_text": "I wonder if you found the path through",
+    "target_text": "eu me pergunto se você encontrou o caminho pelo"
+   },
+   "set": {
+    "known_text": "I can't find the path through the garden",
+    "target_text": "não consigo encontrar o caminho pelo jardim",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L03B03",
+   "expect": {
+    "known_text": "yes, the wood",
+    "target_text": "sim, bosque"
+   },
+   "set": {
+    "known_text": "the path through the wood",
+    "target_text": "o caminho pelo bosque",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L03U02",
+   "expect": {
+    "known_text": "he knows if you found the path through the wood",
+    "target_text": "ele sabe se você encontrou o caminho pelo bosque"
+   },
+   "set": {
+    "known_text": "the dog is playing in the wood",
+    "target_text": "o cachorro está brincando no bosque",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0559L03U04",
+   "expect": {
+    "known_text": "it's true, you found the path through the wood",
+    "target_text": "é verdade que você encontrou o caminho pelo bosque"
+   },
+   "set": {
+    "known_text": "there's a small church in the middle of the wood",
+    "target_text": "há uma igreja pequena no meio do bosque",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0560L02B03",
+   "expect": {
+    "known_text": "yes, to the beach",
+    "target_text": "sim, até a praia"
+   },
+   "set": {
+    "known_text": "the path goes down to the beach",
+    "target_text": "o caminho vai até a praia",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L01B02",
+   "expect": {
+    "known_text": "I don't care if now",
+    "target_text": "eu não me importo se agora"
+   },
+   "set": {
+    "known_text": "I don't care if it's difficult",
+    "target_text": "eu não me importo se é difícil",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L01B03",
+   "expect": {
+    "known_text": "yes, I don't care if",
+    "target_text": "sim, eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't care if it's late",
+    "target_text": "eu não me importo se é tarde",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L01U01",
+   "expect": {
+    "known_text": "he knows I don't care if",
+    "target_text": "ele sabe que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't care if they play music",
+    "target_text": "eu não me importo se eles tocam música",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L01U02",
+   "expect": {
+    "known_text": "I'm sure I don't care if",
+    "target_text": "tenho certeza de que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't care if it's not easy",
+    "target_text": "eu não me importo se não é fácil",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L01U03",
+   "expect": {
+    "known_text": "it's true, I don't care if",
+    "target_text": "é verdade que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't care if this towel isn't dry",
+    "target_text": "eu não me importo se esta toalha não está seca",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L01U04",
+   "expect": {
+    "known_text": "I think I don't care if",
+    "target_text": "acho que eu não me importo se"
+   },
+   "set": {
+    "known_text": "I don't care if the dog is dirty",
+    "target_text": "eu não me importo se o cachorro está sujo",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L01U05",
+   "expect": {
+    "known_text": "I still don't care if",
+    "target_text": "eu ainda não me importo se"
+   },
+   "set": {
+    "known_text": "I don't care if it's so late",
+    "target_text": "eu não me importo se é tão tarde",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L02B02",
+   "expect": {
+    "known_text": "I don't care if it's a fast car now",
+    "target_text": "eu não me importo se é um carro rápido agora"
+   },
+   "set": {
+    "known_text": "but it's a fast car",
+    "target_text": "mas é um carro rápido",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L02B03",
+   "expect": {
+    "known_text": "yes, it's a fast car",
+    "target_text": "sim, é um carro rápido"
+   },
+   "set": {
+    "known_text": "I think it's a fast car",
+    "target_text": "acho que é um carro rápido",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L02U03",
+   "expect": {
+    "known_text": "I'm sure I don't care if it's a fast car",
+    "target_text": "tenho certeza de que eu não me importo se é um carro rápido"
+   },
+   "set": {
+    "known_text": "I'm sure it's a fast car",
+    "target_text": "tenho certeza de que é um carro rápido",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0561L02U05",
+   "expect": {
+    "known_text": "I think I don't care if it's a fast car",
+    "target_text": "acho que eu não me importo se é um carro rápido"
+   },
+   "set": {
+    "known_text": "I don't care if it's a fast car or not",
+    "target_text": "eu não me importo se é um carro rápido ou não",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L01B02",
+   "expect": {
+    "known_text": "I just want to serve",
+    "target_text": "eu só quero servir"
+   },
+   "set": {
+    "known_text": "I just want to sleep",
+    "target_text": "eu só quero dormir",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L01B03",
+   "expect": {
+    "known_text": "yes, I just want to",
+    "target_text": "sim, eu só quero"
+   },
+   "set": {
+    "known_text": "I just want to go home",
+    "target_text": "eu só quero ir para casa",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L01U01",
+   "expect": {
+    "known_text": "he knows I just want to",
+    "target_text": "ele sabe que eu só quero"
+   },
+   "set": {
+    "known_text": "I just want to speak Portuguese",
+    "target_text": "eu só quero falar português",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L01U02",
+   "expect": {
+    "known_text": "I'm sure I just want to",
+    "target_text": "tenho certeza de que eu só quero"
+   },
+   "set": {
+    "known_text": "I just want to help you",
+    "target_text": "eu só quero te ajudar",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L01U03",
+   "expect": {
+    "known_text": "it's true, I just want to",
+    "target_text": "é verdade que eu só quero"
+   },
+   "set": {
+    "known_text": "I just want to know the truth",
+    "target_text": "eu só quero saber a verdade",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L01U04",
+   "expect": {
+    "known_text": "I think I just want to",
+    "target_text": "acho que eu só quero"
+   },
+   "set": {
+    "known_text": "I'm tired, I just want to sleep",
+    "target_text": "estou cansado, eu só quero dormir",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L01U05",
+   "expect": {
+    "known_text": "I still just want to",
+    "target_text": "eu ainda só quero"
+   },
+   "set": {
+    "known_text": "I just want to understand",
+    "target_text": "eu só quero entender",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L02B02",
+   "expect": {
+    "known_text": "I just want to get there safely now",
+    "target_text": "eu só quero chegar lá em segurança agora"
+   },
+   "set": {
+    "known_text": "I want to get there safely",
+    "target_text": "eu quero chegar lá em segurança",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L02B03",
+   "expect": {
+    "known_text": "yes, to get there safely",
+    "target_text": "sim, chegar lá em segurança"
+   },
+   "set": {
+    "known_text": "we want to get there safely",
+    "target_text": "queremos chegar lá em segurança",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0562L02U03",
+   "expect": {
+    "known_text": "I'm sure I just want to get there safely",
+    "target_text": "tenho certeza de que eu só quero chegar lá em segurança"
+   },
+   "set": {
+    "known_text": "I hope to get there safely",
+    "target_text": "espero chegar lá em segurança",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L01B02",
+   "expect": {
+    "known_text": "I wouldn't have been able to serve",
+    "target_text": "eu não teria conseguido servir"
+   },
+   "set": {
+    "known_text": "I wouldn't have been able to do it",
+    "target_text": "eu não teria conseguido fazer isso",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L01B03",
+   "expect": {
+    "known_text": "yes, I wouldn't have been able to",
+    "target_text": "sim, eu não teria conseguido"
+   },
+   "set": {
+    "known_text": "I wouldn't have been able to sleep",
+    "target_text": "eu não teria conseguido dormir",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L01U01",
+   "expect": {
+    "known_text": "he knows I wouldn't have been able to",
+    "target_text": "ele sabe que eu não teria conseguido"
+   },
+   "set": {
+    "known_text": "I wouldn't have been able to go",
+    "target_text": "eu não teria conseguido ir",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L01U02",
+   "expect": {
+    "known_text": "I'm sure I wouldn't have been able to",
+    "target_text": "tenho certeza de que eu não teria conseguido"
+   },
+   "set": {
+    "known_text": "I wouldn't have been able to explain",
+    "target_text": "eu não teria conseguido explicar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L01U03",
+   "expect": {
+    "known_text": "it's true, I wouldn't have been able to",
+    "target_text": "é verdade que eu não teria conseguido"
+   },
+   "set": {
+    "known_text": "I wouldn't have been able to understand",
+    "target_text": "eu não teria conseguido entender",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L01U04",
+   "expect": {
+    "known_text": "I think I wouldn't have been able to",
+    "target_text": "acho que eu não teria conseguido"
+   },
+   "set": {
+    "known_text": "I think I wouldn't have been able to do it",
+    "target_text": "acho que eu não teria conseguido fazer isso",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L01U05",
+   "expect": {
+    "known_text": "I still wouldn't have been able to",
+    "target_text": "eu ainda não teria conseguido"
+   },
+   "set": {
+    "known_text": "I wouldn't have been able to get there safely",
+    "target_text": "eu não teria conseguido chegar lá em segurança",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L02B02",
+   "expect": {
+    "known_text": "I wouldn't have been able to keep going any longer now",
+    "target_text": "eu não teria conseguido continuar mais tempo agora"
+   },
+   "set": {
+    "known_text": "I can't keep going any longer",
+    "target_text": "não consigo continuar mais tempo",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L02B03",
+   "expect": {
+    "known_text": "yes, to keep going any longer",
+    "target_text": "sim, continuar mais tempo"
+   },
+   "set": {
+    "known_text": "I don't want to keep going any longer",
+    "target_text": "não quero continuar mais tempo",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0563L02U03",
+   "expect": {
+    "known_text": "I'm sure I wouldn't have been able to keep going any longer",
+    "target_text": "tenho certeza de que eu não teria conseguido continuar mais tempo"
+   },
+   "set": {
+    "known_text": "I'm too tired to keep going any longer",
+    "target_text": "estou cansado demais para continuar mais tempo",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0564L02B02",
+   "expect": {
+    "known_text": "I wouldn't have been able to without your help now",
+    "target_text": "eu não teria conseguido sem a sua ajuda agora"
+   },
+   "set": {
+    "known_text": "without your help, I can't",
+    "target_text": "sem a sua ajuda, não consigo",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0564L02B03",
+   "expect": {
+    "known_text": "yes, without your help",
+    "target_text": "sim, sem a sua ajuda"
+   },
+   "set": {
+    "known_text": "I can't do it without your help",
+    "target_text": "não consigo fazer isso sem a sua ajuda",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L01B02",
+   "expect": {
+    "known_text": "I'd have thought so",
+    "target_text": "eu teria pensado isso"
+   },
+   "set": {
+    "known_text": "I'd have thought about it",
+    "target_text": "eu teria pensado nisso",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L01B03",
+   "expect": {
+    "known_text": "yes, I'd have thought",
+    "target_text": "sim, eu teria pensado"
+   },
+   "set": {
+    "known_text": "I'd have thought it was easy",
+    "target_text": "eu teria pensado que era fácil",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L01U01",
+   "expect": {
+    "known_text": "you know I'd have thought",
+    "target_text": "você sabe que eu teria pensado"
+   },
+   "set": {
+    "known_text": "I'd have thought you knew",
+    "target_text": "eu teria pensado que você sabia",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L01U02",
+   "expect": {
+    "known_text": "you think I'd have thought",
+    "target_text": "você acha que eu teria pensado"
+   },
+   "set": {
+    "known_text": "I'd have thought it was true",
+    "target_text": "eu teria pensado que era verdade",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L01U03",
+   "expect": {
+    "known_text": "they think I'd have thought",
+    "target_text": "eles acham que eu teria pensado"
+   },
+   "set": {
+    "known_text": "I'd have thought it was too late",
+    "target_text": "eu teria pensado que era tarde demais",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L01U04",
+   "expect": {
+    "known_text": "it's true, I'd have thought",
+    "target_text": "é verdade que eu teria pensado"
+   },
+   "set": {
+    "known_text": "I'd have thought it was better",
+    "target_text": "eu teria pensado que era melhor",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L01U05",
+   "expect": {
+    "known_text": "I still would have thought",
+    "target_text": "eu ainda teria pensado"
+   },
+   "set": {
+    "known_text": "I'd have thought it was possible",
+    "target_text": "eu teria pensado que era possível",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L02B02",
+   "expect": {
+    "known_text": "I'd have thought about it more carefully now",
+    "target_text": "eu teria pensado nisso com mais cuidado agora"
+   },
+   "set": {
+    "known_text": "I need to think about it more carefully",
+    "target_text": "preciso pensar nisso com mais cuidado",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0565L02B03",
+   "expect": {
+    "known_text": "yes, about it more carefully",
+    "target_text": "sim, nisso com mais cuidado"
+   },
+   "set": {
+    "known_text": "I want to think about it more carefully",
+    "target_text": "quero pensar nisso com mais cuidado",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

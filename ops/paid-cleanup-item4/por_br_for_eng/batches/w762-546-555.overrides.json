@@ -1,0 +1,1306 @@
+[
+ {
+  "seed_number": 546,
+  "phrases": {
+   "546:1": [
+    {
+     "known_text": "the dog",
+     "target_text": "o cachorro",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "está",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the dog is",
+     "target_text": "o cachorro está",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the dog is tired",
+     "target_text": "o cachorro está cansado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the dog is outside",
+     "target_text": "o cachorro está lá fora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she said the dog is tired",
+     "target_text": "ela disse que o cachorro está cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is in the garden",
+     "target_text": "o cachorro está no jardim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the dog is ready",
+     "target_text": "acho que o cachorro está pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the dog is outside",
+     "target_text": "tenho certeza de que o cachorro está lá fora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is very tired today",
+     "target_text": "o cachorro está muito cansado hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is with me",
+     "target_text": "o cachorro está comigo",
+     "phrase_role": "build"
+    }
+   ],
+   "546:2": [
+    {
+     "known_text": "dirty",
+     "target_text": "sujo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "and",
+     "target_text": "e",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "wet",
+     "target_text": "molhado",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "dirty and wet",
+     "target_text": "sujo e molhado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the dog is dirty and wet now",
+     "target_text": "o cachorro está sujo e molhado agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm dirty and wet",
+     "target_text": "estou sujo e molhado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the dog is dirty and wet",
+     "target_text": "o cachorro está sujo e molhado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said the dog is dirty and wet",
+     "target_text": "ela disse que o cachorro está sujo e molhado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know the dog is dirty and wet",
+     "target_text": "sabemos que o cachorro está sujo e molhado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they said the dog is dirty and wet",
+     "target_text": "disseram que o cachorro está sujo e molhado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the dog is dirty and wet",
+     "target_text": "tenho certeza de que o cachorro está sujo e molhado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why is the dog dirty and wet?",
+     "target_text": "por que o cachorro está sujo e molhado?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "dirty and wet again",
+     "target_text": "sujo e molhado outra vez",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 547,
+  "phrases": {
+   "547:1": [
+    {
+     "known_text": "because",
+     "target_text": "porque",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he has been",
+     "target_text": "esteve",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "because he has been",
+     "target_text": "porque esteve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because he has been here",
+     "target_text": "porque esteve aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because he has been outside",
+     "target_text": "porque esteve lá fora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he's tired because he has been in the garden",
+     "target_text": "ele está cansado porque esteve no jardim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is dirty because he has been outside",
+     "target_text": "o cachorro está sujo porque esteve lá fora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's happy because he has been with me",
+     "target_text": "ele está contente porque esteve comigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is wet because he has been in the garden",
+     "target_text": "o cachorro está molhado porque esteve no jardim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's very tired because he has been at the office",
+     "target_text": "ele está muito cansado porque esteve no escritório",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because he has been with me",
+     "target_text": "porque esteve comigo",
+     "phrase_role": "build"
+    }
+   ],
+   "547:2": [
+    {
+     "known_text": "playing",
+     "target_text": "brincando",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in the",
+     "target_text": "na",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "mud",
+     "target_text": "lama",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "playing in the mud",
+     "target_text": "brincando na lama",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because he has been playing in the mud now",
+     "target_text": "porque esteve brincando na lama agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the children are playing in the mud",
+     "target_text": "as crianças estão brincando na lama",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because he has been playing in the mud",
+     "target_text": "porque esteve brincando na lama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's dirty because he has been playing in the mud",
+     "target_text": "ele está sujo porque esteve brincando na lama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog has been playing in the mud",
+     "target_text": "o cachorro esteve brincando na lama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children were playing in the mud",
+     "target_text": "as crianças estavam brincando na lama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is wet because he has been playing in the mud",
+     "target_text": "o cachorro está molhado porque esteve brincando na lama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's a dog playing in the mud",
+     "target_text": "há um cachorro brincando na lama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is playing in the mud",
+     "target_text": "o cachorro está brincando na lama",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 548,
+  "phrases": {
+   "548:1": [
+    {
+     "known_text": "I am",
+     "target_text": "estou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "feeling",
+     "target_text": "me sentindo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I am feeling",
+     "target_text": "estou me sentindo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I am feeling tired",
+     "target_text": "estou me sentindo cansado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I am feeling better",
+     "target_text": "estou me sentindo melhor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I am feeling better than yesterday",
+     "target_text": "estou me sentindo melhor do que ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling very tired today",
+     "target_text": "estou me sentindo muito cansado hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling a little tired",
+     "target_text": "estou me sentindo um pouco cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling nervous",
+     "target_text": "estou me sentindo nervoso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling ready",
+     "target_text": "estou me sentindo pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling nervous today",
+     "target_text": "estou me sentindo nervoso hoje",
+     "phrase_role": "build"
+    }
+   ],
+   "548:2": [
+    {
+     "known_text": "sad",
+     "target_text": "triste",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "feeling sad",
+     "target_text": "me sentindo triste",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "very sad",
+     "target_text": "muito triste",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I am feeling sad",
+     "target_text": "estou me sentindo triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said I am feeling sad",
+     "target_text": "ela disse que estou me sentindo triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you are feeling sad",
+     "target_text": "você está se sentindo triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they said I am feeling sad",
+     "target_text": "disseram que estou me sentindo triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling a little sad",
+     "target_text": "estou me sentindo um pouco triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you are going to feel sad",
+     "target_text": "você vai se sentir triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be sad",
+     "target_text": "ele pode estar triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why are you sad?",
+     "target_text": "por que você está triste?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to feel sad",
+     "target_text": "não quero me sentir triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm feeling less sad than yesterday",
+     "target_text": "estou me sentindo menos triste do que ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't like to feel sad",
+     "target_text": "não gosto de me sentir triste",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling sad at the moment",
+     "target_text": "estou me sentindo triste neste momento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am feeling very sad",
+     "target_text": "estou me sentindo muito triste",
+     "phrase_role": "build"
+    }
+   ],
+   "548:3": []
+  }
+ },
+ {
+  "seed_number": 549,
+  "phrases": {
+   "549:1": [
+    {
+     "known_text": "because",
+     "target_text": "porque",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I have to",
+     "target_text": "tenho que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "because I have got to",
+     "target_text": "porque tenho que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because I have got to go",
+     "target_text": "porque tenho que ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because I have got to work",
+     "target_text": "porque tenho que trabalhar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't, because I have got to work",
+     "target_text": "não consigo, porque tenho que trabalhar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to leave early because I have got to work",
+     "target_text": "vou sair cedo porque tenho que trabalhar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm tired because I have got to wake up early",
+     "target_text": "estou cansado porque tenho que acordar cedo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't go, because I have got to finish this work",
+     "target_text": "não consigo ir, porque tenho que acabar este trabalho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going home because I have got to sleep",
+     "target_text": "vou para casa porque tenho que dormir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because I have got to be quiet",
+     "target_text": "porque tenho que ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because I have got to wake up early",
+     "target_text": "porque tenho que acordar cedo",
+     "phrase_role": "build"
+    }
+   ],
+   "549:2": [
+    {
+     "known_text": "to be",
+     "target_text": "ficar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "quiet",
+     "target_text": "calado",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to be quiet",
+     "target_text": "ficar calado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because I have got to be quiet now",
+     "target_text": "porque tenho que ficar calado agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, to be quiet",
+     "target_text": "sim, ficar calado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because I have got to be quiet",
+     "target_text": "porque tenho que ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he knows, because I have got to be quiet",
+     "target_text": "ele sabe, porque tenho que ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know, because I have got to be quiet",
+     "target_text": "você sabe, porque tenho que ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure, because I have got to be quiet",
+     "target_text": "tenho certeza, porque tenho que ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think, because I have got to be quiet",
+     "target_text": "acho que, porque tenho que ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to be quiet",
+     "target_text": "eu quero ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to be quiet",
+     "target_text": "vou ficar calado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't be quiet",
+     "target_text": "não consigo ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he can't be quiet",
+     "target_text": "ele não consegue ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I should be quiet",
+     "target_text": "devo ficar calado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he likes to be quiet",
+     "target_text": "ele gosta de ficar calado",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 550,
+  "phrases": {
+   "550:1": [],
+   "550:2": [
+    {
+     "known_text": "of the",
+     "target_text": "da",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "village",
+     "target_text": "aldeia",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of the village",
+     "target_text": "da aldeia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the end of the village",
+     "target_text": "o fim da aldeia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "in the middle of the village",
+     "target_text": "no meio da aldeia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "there was a shop in the middle of the village",
+     "target_text": "havia uma loja no meio da aldeia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the people of the village speak Portuguese",
+     "target_text": "as pessoas da aldeia falam português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the hotel is at the end of the village",
+     "target_text": "o hotel fica no fim da aldeia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the hotel is in the middle of the village",
+     "target_text": "acho que o hotel fica no meio da aldeia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to live at the end of the village",
+     "target_text": "eu costumava morar no fim da aldeia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there was a shop at the end of the village",
+     "target_text": "havia uma loja no fim da aldeia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the people of the village",
+     "target_text": "as pessoas da aldeia",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 551,
+  "phrases": {
+   "551:1": [
+    {
+     "known_text": "the church",
+     "target_text": "a igreja",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the church is",
+     "target_text": "a igreja é",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church is interesting",
+     "target_text": "a igreja é interessante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church is important",
+     "target_text": "a igreja é importante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows the church is important",
+     "target_text": "ele sabe que a igreja é importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the church is very interesting",
+     "target_text": "acho que a igreja é muito interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the church is important",
+     "target_text": "tenho certeza de que a igreja é importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the church is very important for the village",
+     "target_text": "a igreja é muito importante para a aldeia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the church is different",
+     "target_text": "acho que a igreja é diferente",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the church is different",
+     "target_text": "a igreja é diferente",
+     "phrase_role": "build"
+    }
+   ],
+   "551:2": [
+    {
+     "known_text": "ugly",
+     "target_text": "feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church is ugly",
+     "target_text": "a igreja é feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church isn't ugly",
+     "target_text": "a igreja não é feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows the church is ugly",
+     "target_text": "ele sabe que a igreja é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know the church is ugly",
+     "target_text": "você sabe que a igreja é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the church is ugly",
+     "target_text": "tenho certeza de que a igreja é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the church is ugly",
+     "target_text": "acho que a igreja é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, the church is ugly",
+     "target_text": "é verdade que a igreja é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the church is ugly but it's interesting",
+     "target_text": "a igreja é feia mas é interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the shop is ugly",
+     "target_text": "a loja é feia",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 552,
+  "phrases": {
+   "552:1": [
+    {
+     "known_text": "the church",
+     "target_text": "a igreja",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "at the",
+     "target_text": "no",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the church at",
+     "target_text": "a igreja no",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church at the end",
+     "target_text": "a igreja no fim",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church at the end of the village",
+     "target_text": "a igreja no fim da aldeia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows the church at the end is ugly",
+     "target_text": "ele sabe que a igreja no fim é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know the church at the end is ugly",
+     "target_text": "você sabe que a igreja no fim é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the church at the end is ugly",
+     "target_text": "tenho certeza de que a igreja no fim é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the church at the end is ugly",
+     "target_text": "acho que a igreja no fim é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, the church at the end is ugly",
+     "target_text": "é verdade que a igreja no fim é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the church at the end is interesting",
+     "target_text": "a igreja no fim é interessante",
+     "phrase_role": "build"
+    }
+   ],
+   "552:2": [
+    {
+     "known_text": "the other",
+     "target_text": "outro",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "end",
+     "target_text": "extremo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the other end",
+     "target_text": "outro extremo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church at the other end",
+     "target_text": "a igreja no outro extremo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "at the other end",
+     "target_text": "no outro extremo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows the church at the other end is ugly",
+     "target_text": "ele sabe que a igreja no outro extremo é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know the church at the other end is ugly",
+     "target_text": "você sabe que a igreja no outro extremo é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the church at the other end is ugly",
+     "target_text": "tenho certeza de que a igreja no outro extremo é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the church at the other end is ugly",
+     "target_text": "acho que a igreja no outro extremo é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, the church at the other end is ugly",
+     "target_text": "é verdade que a igreja no outro extremo é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the shop at the other end",
+     "target_text": "a loja no outro extremo",
+     "phrase_role": "build"
+    }
+   ],
+   "552:3": [
+    {
+     "known_text": "of the",
+     "target_text": "da",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "village",
+     "target_text": "vila",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of the village is",
+     "target_text": "da vila é",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the other end of the village is",
+     "target_text": "outro extremo da vila é",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church of the village is ugly",
+     "target_text": "a igreja da vila é feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows the church at the other end of the village is ugly",
+     "target_text": "ele sabe que a igreja no outro extremo da vila é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know the church at the other end of the village is ugly",
+     "target_text": "você sabe que a igreja no outro extremo da vila é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the church at the other end of the village is ugly",
+     "target_text": "tenho certeza de que a igreja no outro extremo da vila é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the church at the other end of the village is ugly",
+     "target_text": "acho que a igreja no outro extremo da vila é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, the church at the other end of the village is ugly",
+     "target_text": "é verdade que a igreja no outro extremo da vila é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the church at the other end of the village is ugly",
+     "target_text": "a igreja no outro extremo da vila é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the village hotel is good",
+     "target_text": "o hotel da vila é bom",
+     "phrase_role": "build"
+    }
+   ],
+   "552:4": []
+  }
+ },
+ {
+  "seed_number": 553,
+  "phrases": {
+   "553:1": [],
+   "553:2": [
+    {
+     "known_text": "the church",
+     "target_text": "a igreja",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "small",
+     "target_text": "pequena",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the small church is",
+     "target_text": "a igreja pequena é",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the small church is ugly",
+     "target_text": "a igreja pequena é feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the small church is interesting",
+     "target_text": "a igreja pequena é interessante",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows the small church is ugly",
+     "target_text": "ele sabe que a igreja pequena é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know the small church is interesting",
+     "target_text": "você sabe que a igreja pequena é interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the small church is very important",
+     "target_text": "tenho certeza de que a igreja pequena é muito importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the small church is different",
+     "target_text": "a igreja pequena é diferente",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "personally, I still think the small church is ugly",
+     "target_text": "eu ainda acho que a igreja pequena é feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the small church is less ugly",
+     "target_text": "a igreja pequena é menos feia",
+     "phrase_role": "build"
+    }
+   ],
+   "553:3": [
+    {
+     "known_text": "very",
+     "target_text": "muito",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ugly",
+     "target_text": "feia",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "very ugly",
+     "target_text": "muito feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the small church is very ugly",
+     "target_text": "a igreja pequena é muito feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the church is very ugly",
+     "target_text": "a igreja é muito feia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think the small church is very ugly",
+     "target_text": "eu acho que a igreja pequena é muito feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he knows the small church is very ugly",
+     "target_text": "ele sabe que a igreja pequena é muito feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know the small church is very ugly",
+     "target_text": "você sabe que a igreja pequena é muito feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure the small church is very ugly",
+     "target_text": "tenho certeza de que a igreja pequena é muito feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, the small church is very ugly",
+     "target_text": "é verdade que a igreja pequena é muito feia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the shop is very ugly",
+     "target_text": "a loja é muito feia",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 554,
+  "phrases": {
+   "554:1": [
+    {
+     "known_text": "this",
+     "target_text": "esta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "towel",
+     "target_text": "toalha",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "está",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "this towel isn't",
+     "target_text": "esta toalha não está",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this towel isn't clean",
+     "target_text": "esta toalha não está limpa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this towel isn't outside",
+     "target_text": "esta toalha não está lá fora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows this towel isn't clean",
+     "target_text": "ele sabe que esta toalha não está limpa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this towel isn't in the garden",
+     "target_text": "esta toalha não está no jardim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure this towel isn't clean",
+     "target_text": "tenho certeza de que esta toalha não está limpa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this towel isn't in her bag",
+     "target_text": "esta toalha não está na bolsa dela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think this towel isn't clean",
+     "target_text": "acho que esta toalha não está limpa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this towel isn't with me",
+     "target_text": "esta toalha não está comigo",
+     "phrase_role": "build"
+    }
+   ],
+   "554:2": [
+    {
+     "known_text": "dry",
+     "target_text": "seca",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this towel isn't dry now",
+     "target_text": "esta toalha não está seca agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this towel is dry",
+     "target_text": "esta toalha está seca",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this towel isn't dry",
+     "target_text": "esta toalha não está seca",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he knows this towel isn't dry",
+     "target_text": "ele sabe que esta toalha não está seca",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know this towel isn't dry",
+     "target_text": "você sabe que esta toalha não está seca",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure this towel isn't dry",
+     "target_text": "tenho certeza de que esta toalha não está seca",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, this towel isn't dry",
+     "target_text": "é verdade que esta toalha não está seca",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this towel is going to be dry tomorrow",
+     "target_text": "esta toalha vai estar seca amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this towel might be dry",
+     "target_text": "esta toalha pode estar seca",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's not dry yet",
+     "target_text": "ainda não está seca",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 555,
+  "phrases": {
+   "555:1": [
+    {
+     "known_text": "and",
+     "target_text": "e",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I am",
+     "target_text": "estou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "tired",
+     "target_text": "cansado",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "too",
+     "target_text": "demais",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "and I'm too tired",
+     "target_text": "e estou cansado demais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and I'm too tired to work",
+     "target_text": "e estou cansado demais para trabalhar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and I'm too tired to go out",
+     "target_text": "e estou cansado demais para sair",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't sleep and I'm too tired",
+     "target_text": "não dormi e estou cansado demais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I woke up early and I'm too tired to think",
+     "target_text": "acordei cedo e estou cansado demais para pensar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have got to work and I'm too tired",
+     "target_text": "tenho que trabalhar e estou cansado demais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's late and I'm too tired to speak Portuguese",
+     "target_text": "é tarde e estou cansado demais para falar português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to go out, and I'm too tired",
+     "target_text": "não quero sair, e estou cansado demais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and I'm too tired to speak",
+     "target_text": "e estou cansado demais para falar",
+     "phrase_role": "build"
+    }
+   ],
+   "555:2": [
+    {
+     "known_text": "to fetch",
+     "target_text": "para ir buscar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a new one",
+     "target_text": "uma nova",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to fetch a new one",
+     "target_text": "para ir buscar uma nova",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going out to fetch a new one",
+     "target_text": "vou sair para ir buscar uma nova",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm too tired to fetch a new one",
+     "target_text": "estou cansado demais para ir buscar uma nova",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and I'm too tired to fetch a new one",
+     "target_text": "e estou cansado demais para ir buscar uma nova",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this towel isn't dry and I'm too tired to fetch a new one",
+     "target_text": "esta toalha não está seca e estou cansado demais para ir buscar uma nova",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's going to go out to fetch a new one",
+     "target_text": "ela vai sair para ir buscar uma nova",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to go out to fetch a new one",
+     "target_text": "não quero sair para ir buscar uma nova",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you go out to fetch a new one?",
+     "target_text": "você pode sair para ir buscar uma nova?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have got to go out to fetch a new one",
+     "target_text": "tenho que sair para ir buscar uma nova",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]
