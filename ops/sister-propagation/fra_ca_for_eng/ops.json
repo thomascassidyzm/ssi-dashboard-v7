@@ -1,0 +1,332 @@
+[
+ {
+  "op": "lego.update",
+  "lego_id": "S0605L02",
+  "expect": {
+   "known_text": "need for help",
+   "target_text": "besoin d'aide"
+  },
+  "set": {
+   "known_text": "need help"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0605L02",
+  "slot": "known",
+  "audio_id": "197626d7-6e70-41f9-af2d-d08dc5d452ed"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0605L02",
+  "slot": "presentation",
+  "audio_id": "5bd46d97-ae31-4272-a327-3aee1ef211aa"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0018L02U01",
+  "expect": {
+   "known_text": "he wants to meet tomorrow",
+   "target_text": "y veut se voir demain"
+  },
+  "set": {
+   "known_text": "we want to meet tomorrow",
+   "target_text": "on veut se voir demain"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U01",
+  "slot": "known",
+  "audio_id": "341159a2-dd05-4805-8b8c-cedd8e71a4e2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U01",
+  "slot": "target1",
+  "audio_id": "7e2472a5-07ed-40fb-80c9-85579c7e44dd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U01",
+  "slot": "target2",
+  "audio_id": "403c8f94-ad68-4f50-a578-911e0273e793"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0018L02U02",
+  "expect": {
+   "known_text": "she wants to meet with everyone else",
+   "target_text": "a veut se voir avec tout le monde"
+  },
+  "set": {
+   "known_text": "we want to meet with everyone",
+   "target_text": "on veut se voir avec tout le monde"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U02",
+  "slot": "known",
+  "audio_id": "1a52c87d-4f3e-4aef-ad60-36e3d6d47dd2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U02",
+  "slot": "target1",
+  "audio_id": "57b08f14-313f-4b5b-a6c1-0fd173c6337c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U02",
+  "slot": "target2",
+  "audio_id": "e692e41c-c8f2-4384-a9c6-27cafa80184e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0018L02U04",
+  "expect": {
+   "known_text": "he wants to meet later on",
+   "target_text": "y veut se voir tantôt"
+  },
+  "set": {
+   "known_text": "we want to meet later on",
+   "target_text": "on veut se voir tantôt"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U04",
+  "slot": "known",
+  "audio_id": "4cdaaecf-a90f-4172-af22-7b48c773005a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U04",
+  "slot": "target1",
+  "audio_id": "76320271-e6e7-4797-b712-7ecbf28a7a96"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L02U04",
+  "slot": "target2",
+  "audio_id": "361ff83e-8994-4f7b-8173-32aa85c3d137"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0018L03U02",
+  "expect": {
+   "known_text": "he wants to meet at six o'clock tomorrow",
+   "target_text": "y veut se voir à six heures demain"
+  },
+  "set": {
+   "known_text": "we want to meet at six o'clock tomorrow",
+   "target_text": "on veut se voir à six heures demain"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L03U02",
+  "slot": "known",
+  "audio_id": "08097921-ce8d-4b25-a055-fa18538fa28b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L03U02",
+  "slot": "target1",
+  "audio_id": "1504966d-8e6d-46af-998c-d3086d7cc11f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0018L03U02",
+  "slot": "target2",
+  "audio_id": "b3279d3c-714c-4b1d-aae0-720839553c81"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0039L03U03",
+  "expect": {
+   "known_text": "he wants to meet this morning",
+   "target_text": "y veut se voir à matin"
+  },
+  "set": {
+   "known_text": "we want to meet this morning",
+   "target_text": "on veut se voir à matin"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0039L03U03",
+  "slot": "known",
+  "audio_id": "57eec56a-a6e1-4887-9c1f-b186a05b43a1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0039L03U03",
+  "slot": "target1",
+  "audio_id": "1eeec365-9fb6-4bf1-91ea-1f9bec4d2b6b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0039L03U03",
+  "slot": "target2",
+  "audio_id": "334514cf-a737-4b21-be31-b3568bebd584"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0605L02B01",
+  "expect": {
+   "known_text": "I have need for help",
+   "target_text": "j'ai besoin d'aide"
+  },
+  "set": {
+   "known_text": "I need help"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0605L02B01",
+  "slot": "known",
+  "audio_id": "006dfbc8-0fab-417f-aa72-ff79e53de14a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0605L02B02",
+  "expect": {
+   "known_text": "she has need for help",
+   "target_text": "a besoin d'aide"
+  },
+  "set": {
+   "known_text": "she needs help"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0605L02B02",
+  "slot": "known",
+  "audio_id": "cb3e5621-02a8-4e82-994e-a72ba96d8db7"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0605L02U02",
+  "expect": {
+   "known_text": "I have need for help right now",
+   "target_text": "j'ai besoin d'aide tout de suite"
+  },
+  "set": {
+   "known_text": "I need help right now"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0605L02U02",
+  "slot": "known",
+  "audio_id": "fe3c9f1a-23c4-4c40-9218-51f37d4098b1"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0605L02U03",
+  "expect": {
+   "known_text": "maybe she has need for help",
+   "target_text": "peut-être qu'a besoin d'aide"
+  },
+  "set": {
+   "known_text": "maybe she needs help"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0605L02U03",
+  "slot": "known",
+  "audio_id": "ff659a3f-1fe4-4200-900c-ca8e854b6e1e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0605L02U04",
+  "expect": {
+   "known_text": "I heard that she has need for help",
+   "target_text": "j'ai entendu qu'a besoin d'aide"
+  },
+  "set": {
+   "known_text": "I heard that she needs help"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0605L02U04",
+  "slot": "known",
+  "audio_id": "e486f38f-1ee4-45b4-b7cd-c8a35c597de5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "fra_ca_for_eng:S0605L02U05",
+  "expect": {
+   "known_text": "I have need for help again",
+   "target_text": "j'ai besoin d'aide encore"
+  },
+  "set": {
+   "known_text": "I need help again"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "fra_ca_for_eng:S0605L02U05",
+  "slot": "known",
+  "audio_id": "a5e642d8-a252-47e9-a039-2831bf2ce9e4"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "fra_ca_for_eng:S0018L02B02",
+  "expect": {
+   "known_text": "he wants to meet",
+   "target_text": "y veut se voir"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "fra_ca_for_eng:S0018L02B03",
+  "expect": {
+   "known_text": "she wants to meet",
+   "target_text": "a veut se voir"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "fra_ca_for_eng:S0018L03B03",
+  "expect": {
+   "known_text": "he wants to meet at six o'clock",
+   "target_text": "y veut se voir à six heures"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "fra_ca_for_eng:S0040L02U04",
+  "expect": {
+   "known_text": "he wants to meet at the moment",
+   "target_text": "y veut se voir asteure"
+  }
+ }
+]

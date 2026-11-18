@@ -1,0 +1,160 @@
+#!/usr/bin/env python3
+"""cs #698·AI sister-course propagation: one plan -> live read -> render -> edit-batch, through Popty only.
+
+plan.json = {"course", "purpose", "phrases":[{"id","known"?,"target"?}], "deletes":[id], "legos":[{"id","known"?,"target"?,"intro":bool}]}
+  sp.py live    <dir>            GET live rows (lego basket / seed baskets / presentation) -> <dir>/live.json
+  sp.py audio   <dir> dry|real   one render call per (role,text) -> <dir>/audio-<mode>.json ; real stops at the job budget
+  sp.py ops     <dir> [--text-only]  -> <dir>/ops.json (expect = live text; clips linked in the same batch)
+  sp.py post    <dir> dry|apply  edit-batch in chunks of 10 -> <dir>/dry.json | apply.json (+ undo)
+  sp.py readback <dir>           -> <dir>/readback.json
+"""
+import json, sys, os, urllib.request, urllib.error, re
+API = 'http://localhost:3470'
+AGENT = 'cs-sister-propagation'
+HERE = os.path.dirname(os.path.abspath(__file__))
+LEDGER = os.path.join(HERE, '..', 'budget-rest.json')   # running charsSpent for this child's 4,500 share
+CAP = 4500
+
+def call(method, path, body=None, timeout=180):
+    data = json.dumps(body).encode() if body is not None else None
+    req = urllib.request.Request(API + path, data=data, method=method,
+                                 headers={'Content-Type': 'application/json', 'x-agent-id': AGENT})
+    try:
+        r = urllib.request.urlopen(req, timeout=timeout); return r.status, json.load(r)
+    except urllib.error.HTTPError as h:
+        raw = h.read() or b'{}'
+        try: return h.code, json.loads(raw)
+        except Exception: return h.code, {'raw': raw.decode()[:500]}
+
+def lego_of(pid): return re.match(r'(S\d{4}L\d{2})', pid).group(1)
+def load(d, f): return json.load(open(os.path.join(d, f)))
+def save(d, f, x): json.dump(x, open(os.path.join(d, f), 'w'), ensure_ascii=False, indent=1)
+
+def live(d):
+    P = load(d, 'plan.json'); C = P['course']; out = {'phrases': {}, 'legos': {}, 'intros': {}}
+    ids = [p['id'] for p in P.get('phrases', [])] + P.get('deletes', [])
+    baskets = {}
+    for pid in ids:
+        L = lego_of(pid)
+        if L not in baskets: baskets[L] = {r['id'].split(':', 1)[1]: r for r in call('GET', f'/api/production/{C}/lego/{L}/basket')[1].get('phrases', [])}
+        out['phrases'][pid] = baskets[L].get(pid)
+    for l in P.get('legos', []):
+        seed = l['id'][:5]
+        st, b = call('GET', f'/api/production/{C}/seed/{seed}/baskets')
+        out['legos'][l['id']] = b['baskets'].get(l['id'], {}).get('lego')
+        out['legos'][l['id'] + '#seed'] = b.get('seed_pair')
+        if l.get('intro'): out['intros'][l['id']] = call('GET', f'/api/production/{C}/presentation/{l["id"]}')[1]
+    save(d, 'live.json', out)
+    miss = [k for k, v in out['phrases'].items() if v is None]
+    print('live', len(out['phrases']), 'phrases', len(out['legos']) // 2, 'legos; MISSING', miss)
+
+def intro_text(d, lid, new_known):
+    old = load(d, 'live.json')['intros'][lid]['text']
+    return re.sub(r"for: '([^']*)'", lambda m: f"for: '{new_known}'", old, count=1)
+
+def asks(d):
+    P = load(d, 'plan.json'); A = {}
+    for p in P.get('phrases', []):
+        if 'known' in p: A.setdefault(('known', p['known']), []).append(p['id'])
+        if 'target' in p:
+            for r in ('target1', 'target2'): A.setdefault((r, p['target']), []).append(p['id'])
+    for l in P.get('legos', []):
+        if 'known' in l: A.setdefault(('known', l['known']), []).append(l['id'])
+        if 'target' in l:
+            for r in ('target1', 'target2'): A.setdefault((r, l['target']), []).append(l['id'])
+        if l.get('intro'): A.setdefault(('presentation', intro_text(d, l['id'], l.get('known', load(d, 'live.json')['legos'][l['id']]['known']))), []).append(l['id'])
+    return A
+
+def audio(d, mode):
+    P = load(d, 'plan.json'); dry = mode == 'dry'; out = {}
+    ledger = json.load(open(LEDGER)) if os.path.exists(LEDGER) else {'spent': 0, 'calls': []}
+    if not dry:
+        need = sum(v.get('wouldSpendChars') or 0 for v in load(d, 'audio-dry.json').values())
+        if ledger['spent'] + need > CAP: sys.exit(f'REFUSED: would spend {need}, ledger {ledger["spent"]}, cap {CAP}')
+    for (role, text), ids in asks(d).items():
+        st, res = call('POST', '/api/audio/render', {'courseCode': P['course'], 'role': role, 'text': text, 'purpose': P['purpose'], 'dryRun': dry}, timeout=300)
+        out[f'{role}|{text}'] = {'status': st, 'rows': ids, **{k: res.get(k) for k in ('ok', 'source', 'audioId', 'charsSpent', 'wouldSpendChars', 'code', 'error', 'message') if k in res}}
+        if not dry and res.get('charsSpent'):
+            ledger['spent'] += res['charsSpent']; ledger['calls'].append({'course': P['course'], 'role': role, 'text': text, 'chars': res['charsSpent'], 'audioId': res.get('audioId')})
+            json.dump(ledger, open(LEDGER, 'w'), ensure_ascii=False, indent=1)
+        print(st, role, res.get('source'), res.get('wouldSpendChars', res.get('charsSpent')), res.get('code') or '', text[:60], flush=True)
+    save(d, f'audio-{mode}.json', out)
+    if dry: print('WOULD SPEND', sum(v.get('wouldSpendChars') or 0 for v in out.values()))
+    else:
+        save(d, 'audio-real.json', [{'role': k.split('|', 1)[0], 'text': k.split('|', 1)[1], 'audioId': v.get('audioId'), 'source': v.get('source'), 'charsSpent': v.get('charsSpent'), 'rows': v['rows']} for k, v in out.items()])
+        print('SPENT', sum(v.get('charsSpent') or 0 for v in out.values()), 'ledger', ledger['spent'])
+
+def ops(d, text_only):
+    P = load(d, 'plan.json'); C = P['course']; L = load(d, 'live.json')
+    A = {} if text_only else load(d, 'audio-real.json')
+    clip = {(a['role'], a['text']): a['audioId'] for a in A} if A else {}
+    def link(target, key, slot, role, text):
+        if text_only: return []
+        aid = clip.get((role, text))
+        if not aid: raise SystemExit(f'no clip {role}|{text}')
+        return [{'op': 'audio.link', 'target': target, **({'lego_id': key} if target == 'lego' else {'phrase_id': f'{C}:{key}'}), 'slot': slot, 'audio_id': aid}]
+    O = []
+    for l in P.get('legos', []):
+        cur = L['legos'][l['id']]; s = {}
+        if 'known' in l: s['known_text'] = l['known']
+        if 'target' in l: s['target_text'] = l['target']
+        O.append({'op': 'lego.update', 'lego_id': l['id'], 'expect': {'known_text': cur['known'], 'target_text': cur['target']}, 'set': s})
+        if 'known' in l: O += link('lego', l['id'], 'known', 'known', l['known'])
+        if 'target' in l: O += link('lego', l['id'], 'target1', 'target1', l['target']) + link('lego', l['id'], 'target2', 'target2', l['target'])
+        if l.get('intro'): O += link('lego', l['id'], 'presentation', 'presentation', intro_text(d, l['id'], l.get('known', cur['known'])))
+    for p in P.get('phrases', []):
+        cur = L['phrases'][p['id']]; s = {}
+        if 'known' in p: s['known_text'] = p['known']
+        if 'target' in p: s['target_text'] = p['target']
+        O.append({'op': 'phrase.update', 'phrase_id': f'{C}:{p["id"]}', 'expect': {'known_text': cur['known_text'], 'target_text': cur['target_text']}, 'set': s})
+        if 'known' in p: O += link('phrase', p['id'], 'known', 'known', p['known'])
+        if 'target' in p: O += link('phrase', p['id'], 'target1', 'target1', p['target']) + link('phrase', p['id'], 'target2', 'target2', p['target'])
+    for pid in P.get('deletes', []):
+        cur = L['phrases'][pid]
+        O.append({'op': 'phrase.delete', 'phrase_id': f'{C}:{pid}', 'expect': {'known_text': cur['known_text'], 'target_text': cur['target_text']}})
+    save(d, 'ops.json', O); print('ops', len(O), 'text-only' if text_only else 'with clips')
+
+def chunks(O):
+    # keep an update together with its audio.link ops
+    groups, g = [], []
+    for o in O:
+        if o['op'] != 'audio.link' and g: groups.append(g); g = []
+        g.append(o)
+    if g: groups.append(g)
+    batch = []
+    for g in groups:
+        if batch and len(batch) + len(g) > 12: yield batch; batch = []
+        batch += g
+    if batch: yield batch
+
+def post(d, mode):
+    P = load(d, 'plan.json'); C = P['course']; O = load(d, 'ops.json'); res = []
+    for i, b in enumerate(chunks(O)):
+        body = {'ops': b, 'apply': mode == 'apply', 'reason': P['purpose']}
+        st, r = call('POST', f'/api/production/{C}/edit-batch', body, timeout=120)
+        res.append({'batch': i, 'status': st, 'n': len(b), 'result': r})
+        print(i, st, len(b), r.get('ok'), r.get('eventId') or r.get('event_id') or '', (r.get('error') or r.get('code') or '')[:200] if isinstance(r.get('error') or r.get('code'), str) else r.get('error'), flush=True)
+        if st >= 400 or r.get('ok') is False:
+            if mode == 'apply': break
+    save(d, f'{mode}.json', res)
+
+def readback(d):
+    P = load(d, 'plan.json'); C = P['course']; out = {}; bad = 0
+    for p in P.get('phrases', []):
+        r = {x['id'].split(':', 1)[1]: x for x in call('GET', f'/api/production/{C}/lego/{lego_of(p["id"])}/basket')[1].get('phrases', [])}.get(p['id'])
+        ok = r and r['known_text'] == p.get('known', r['known_text']) and r['target_text'] == p.get('target', r['target_text'])
+        out[p['id']] = {'ok': bool(ok), 'known': r and r['known_text'], 'target': r and r['target_text'], 'audio': r and [r['known_audio_id'], r['target1_audio_id'], r['target2_audio_id']]}
+        bad += not ok
+    for pid in P.get('deletes', []):
+        r = {x['id'].split(':', 1)[1]: x for x in call('GET', f'/api/production/{C}/lego/{lego_of(pid)}/basket')[1].get('phrases', [])}.get(pid)
+        out[pid] = {'ok': r is None, 'deleted': r is None}; bad += r is not None
+    for l in P.get('legos', []):
+        b = call('GET', f'/api/production/{C}/seed/{l["id"][:5]}/baskets')[1]['baskets'].get(l['id'], {}).get('lego', {})
+        ok = b.get('known') == l.get('known', b.get('known')) and b.get('target') == l.get('target', b.get('target'))
+        out[l['id']] = {'ok': ok, **b}; bad += not ok
+    save(d, 'readback.json', out); print('readback', len(out) - bad, '/', len(out))
+
+if __name__ == '__main__':
+    cmd, d = sys.argv[1], sys.argv[2]
+    {'live': lambda: live(d), 'audio': lambda: audio(d, sys.argv[3]), 'ops': lambda: ops(d, '--text-only' in sys.argv),
+     'post': lambda: post(d, sys.argv[3]), 'readback': lambda: readback(d)}[cmd]()
