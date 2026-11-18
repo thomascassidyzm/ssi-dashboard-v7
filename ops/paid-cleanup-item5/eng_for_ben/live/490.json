@@ -1,0 +1,688 @@
+{
+ "seed": 490,
+ "seed_pair": {
+  "known": "তাহলে আমি আর কখনো কাউকে বিশ্বাস করব না।",
+  "target": "Then I will never trust anyone ever again."
+ },
+ "legos": {
+  "S0490L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0490L01",
+    "type": "M",
+    "known_text": "কাউকে বিশ্বাস করব না",
+    "target_text": "trust anyone ever",
+    "components": [
+     {
+      "known": "কাউকে",
+      "target": "anyone"
+     },
+     {
+      "known": "বিশ্বাস করব না",
+      "target": "trust ever"
+     }
+    ],
+    "seed_number": 490
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_ben:S0490L01C01",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "কাউকে",
+     "target_text": "anyone",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-28T21:53:12.06807+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "44ca523f-e0af-403c-8ec0-3b83a403be12",
+     "target1_audio_id": "55107dd9-45f7-4865-8784-f54377cefae2",
+     "target2_audio_id": "e192c609-d344-4e72-a13c-10e7862adbf7",
+     "qa_checked": null,
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "0859940e-b6f1-4bb2-80aa-0c1180237f2f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "কেউ",
+       "legoId": "S0071L03",
+       "target": "anyone",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "119d9666-6fb4-4b1a-8681-f9df7c48f0fe",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01C03",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "বিশ্বাস করব না",
+     "target_text": "trust ever",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 128,
+     "updated_at": "2026-08-01T17:19:48.517443+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8af4b85a-21ad-404d-a77b-89f026767de2",
+     "target1_audio_id": "dc96798c-bdd9-4c7e-8849-d8d84724bbe6",
+     "target2_audio_id": "10055bc0-038e-4d39-a630-33194ddb447a",
+     "qa_checked": null,
+     "target1_duration_ms": 1056,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "dd099502-f7a3-49f7-ab0f-b5532ebee5a0",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "trust",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ever",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01B01",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "কাউকে বিশ্বাস করব না",
+     "target_text": "trust anyone ever",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 127,
+     "updated_at": "2026-08-01T17:04:16.927401+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2099ee0d-daaa-433d-ab6a-12f77420ef02",
+     "target1_audio_id": "5371ddc4-169c-4523-bfd1-43d84a48c8dc",
+     "target2_audio_id": "87fdce1f-2ceb-415c-bbf8-a03ef314e8a3",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": "trust anyone ever",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01B02",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "আমি কাউকে বিশ্বাস করি না",
+     "target_text": "I don't trust anyone ever",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 128,
+     "updated_at": "2026-08-01T17:04:16.962272+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e374a683-a328-494b-8d7e-834ceb5a110f",
+     "target1_audio_id": "9cb8d6a4-6131-4322-b4b4-e6a4b6d7cf34",
+     "target2_audio_id": "946e1a5c-767a-4d30-9bec-4755c39484f6",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1920,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": " trust anyone ever",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01B03",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "আমরা কাউকে বিশ্বাস করি না",
+     "target_text": "we don't trust anyone ever",
+     "word_count": 26,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 127,
+     "updated_at": "2026-08-01T17:04:16.961995+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e266d9d9-323f-4aaf-8b45-5b43af107b1e",
+     "target1_audio_id": "0b8eff11-266a-4a8d-8e0e-bb470a5f241a",
+     "target2_audio_id": "2c4308db-9333-4d9a-a567-c9daa7410a47",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": " trust anyone ever",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01U01",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "তাহলে আমি আর কখনো কাউকে বিশ্বাস করব না।",
+     "target_text": "then I will never trust anyone ever again",
+     "word_count": 41,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 10,
+      "format": "build_use",
+      "scored_at": "2026-07-20T15:10:56.241Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-28T23:23:05.752103+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4c71fe36-1df6-4a24-9736-37d913ae88d8",
+     "target1_audio_id": "6f7eba32-b1a4-4af6-9716-de70be516e90",
+     "target2_audio_id": "65341f64-2f2c-4df7-ac91-bac3176ad5b6",
+     "qa_checked": null,
+     "target1_duration_ms": 2784,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "then",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "করবে",
+       "legoId": "S0094L03",
+       "target": " will",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " never",
+       "isGhost": true
+      },
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": " trust anyone ever",
+       "isGhost": false
+      },
+      {
+       "known": "আবার",
+       "legoId": "S0061L02",
+       "target": " again",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "119d9666-6fb4-4b1a-8681-f9df7c48f0fe",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01U02",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "আমি আর কাউকে বিশ্বাস করব না।",
+     "target_text": "I will never trust anyone ever",
+     "word_count": 30,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-07-20T15:10:56.241Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 128,
+     "updated_at": "2026-08-01T17:04:16.976681+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "db341c1f-049f-48ce-be8e-818752ac912d",
+     "target1_audio_id": "3e3b5357-f3c0-46b1-904c-5eac92c9f92b",
+     "target2_audio_id": "77c4e720-be9b-47a9-9521-6777920c875d",
+     "qa_checked": null,
+     "target1_duration_ms": 2136,
+     "target2_duration_ms": 2208,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "করবে",
+       "legoId": "S0094L03",
+       "target": " will",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " never",
+       "isGhost": true
+      },
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": " trust anyone ever",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01U03",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "সে বলেছিল আমি কাউকে বিশ্বাস করব না।",
+     "target_text": "she said I will never trust anyone ever",
+     "word_count": 39,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 10,
+      "format": "build_use",
+      "scored_at": "2026-07-20T15:10:56.241Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 128,
+     "updated_at": "2026-08-01T17:04:17.12892+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "527e2a10-e2ce-4922-ad0a-2b2a7c96cfda",
+     "target1_audio_id": "02e381ce-5e96-4606-9ca2-535e5b641729",
+     "target2_audio_id": "8dc7ddb4-3d07-447d-9432-a8c11c48da08",
+     "qa_checked": null,
+     "target1_duration_ms": 2688,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "she",
+       "isGhost": true
+      },
+      {
+       "known": "বললে",
+       "legoId": "S0078L01",
+       "target": " said",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "করবে",
+       "legoId": "S0094L03",
+       "target": " will",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " never",
+       "isGhost": true
+      },
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": " trust anyone ever",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01U04",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "আমরা কাউকে বিশ্বাস করব না।",
+     "target_text": "we will never trust anyone ever",
+     "word_count": 31,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-20T15:10:56.241Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 127,
+     "updated_at": "2026-08-01T17:04:16.915748+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f1879be5-aaec-4d72-8eea-86ac480444f8",
+     "target1_audio_id": "6d126eb9-8186-4d82-8240-e693424db9f9",
+     "target2_audio_id": "ef5f5508-96ef-4d80-9f9a-5b593ffd26ba",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "করবে",
+       "legoId": "S0094L03",
+       "target": " will",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " never",
+       "isGhost": true
+      },
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": " trust anyone ever",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ben:S0490L01U05",
+     "course_code": "eng_for_ben",
+     "seed_number": 490,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "তুমি কি কাউকে বিশ্বাস কর না?",
+     "target_text": "don't you trust anyone ever?",
+     "word_count": 27,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-07-20T15:10:56.241Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 128,
+     "updated_at": "2026-08-01T17:04:35.239134+00:00",
+     "created_at": "2026-07-20T15:10:56.300804+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "45dc9a86-9eb3-4071-bcbe-8179fe24b120",
+     "target1_audio_id": "c9ba3944-5a4c-485c-8f76-8889a2993f64",
+     "target2_audio_id": "22f32d66-ebcd-45e1-8013-bfa50db65959",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "don't",
+       "isGhost": true
+      },
+      {
+       "known": "তোমাকে",
+       "legoId": "S0334L01",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "কাউকে বিশ্বাস করব না",
+       "legoId": "S0490L01",
+       "target": " trust anyone ever",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1627,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

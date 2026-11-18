@@ -1,0 +1,188 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0631L01U02",
+   "expect": {
+    "target_text": "بفكر شو بدك؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0642L02U01",
+   "set": {
+    "target_text": "كيفك يا أستاذ؟",
+    "known_text": "how are you, sir?"
+   },
+   "expect": {
+    "known_text": "I think how are you now",
+    "target_text": "بفكر كيفك هلق"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0642L02U02",
+   "expect": {
+    "target_text": "لأنو كيفك تاني هلق"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0642L02U03",
+   "expect": {
+    "target_text": "بفكر كيفك تاني"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0642L02U04",
+   "set": {
+    "target_text": "كيفك هون؟",
+    "known_text": "how are you here?"
+   },
+   "expect": {
+    "known_text": "I think how are you here",
+    "target_text": "بفكر كيفك هون"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0648L01U05",
+   "expect": {
+    "target_text": "بفكر شو قلتيه يا مدام"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0649L01U05",
+   "expect": {
+    "target_text": "بفكر مستعد يا أستاذ هلق؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0652L01U05",
+   "expect": {
+    "target_text": "بفكر شو محتاج يا أستاذ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0657L01U01",
+   "set": {
+    "target_text": "كيفكون هلق؟",
+    "known_text": "how are you all now?"
+   },
+   "expect": {
+    "known_text": "I think how are you all now",
+    "target_text": "بفكر كيفكون هلق"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0657L01U02",
+   "expect": {
+    "target_text": "لأنو كيفكون تاني"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0657L01U04",
+   "set": {
+    "target_text": "كيفكون هون؟",
+    "known_text": "how are you all here?"
+   },
+   "expect": {
+    "known_text": "I think how are you all here",
+    "target_text": "بفكر كيفكون هون"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0657L01U05",
+   "expect": {
+    "target_text": "بفكر كيفكون كلكون؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0658L01U05",
+   "expect": {
+    "target_text": "بفكر بدكون كلكون؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0663L01U05",
+   "expect": {
+    "target_text": "بفكر شو قلتوه كلكون"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0665L01U05",
+   "expect": {
+    "target_text": "بفكر بدكون كلكون تروحوا؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0666L01U01",
+   "set": {
+    "target_text": "شو رأيكون هلق؟",
+    "known_text": "what do you all think now?"
+   },
+   "expect": {
+    "known_text": "I think what's your all's view now",
+    "target_text": "بفكر شو رأيكون هلق"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0666L01U02",
+   "expect": {
+    "target_text": "لأنو شو رأيكون تاني"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0666L01U04",
+   "set": {
+    "target_text": "شو رأيكون هون؟",
+    "known_text": "what do you all think here?"
+   },
+   "expect": {
+    "known_text": "I think what's your all's view here",
+    "target_text": "بفكر شو رأيكون هون"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0666L01U05",
+   "expect": {
+    "target_text": "بفكر شو رأيكون كلكون؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0667L01U01",
+   "expect": {
+    "target_text": "بفكر مش مشكلة كلكون؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0667L01U02",
+   "expect": {
+    "target_text": "لأنو مش مشكلة كلكون؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_lb_for_eng:S0667L01U05",
+   "expect": {
+    "target_text": "بفكر مش مشكلة كلكون هلق؟"
+   }
+  }
+ ]
+}

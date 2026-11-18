@@ -11,7 +11,7 @@ BASE = "http://localhost:3470"; CB = "http://localhost:3471"
 AGENT = "cs-item5-broken-english"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-def call(method, url, body=None, timeout=300):
+def call(method, url, body=None, timeout=900):
     data = json.dumps(body, ensure_ascii=False).encode() if body is not None else None
     req = urllib.request.Request(url, data=data, method=method, headers={"Content-Type": "application/json", "x-agent-id": AGENT})
     try:
@@ -94,12 +94,33 @@ def validate_one(c, s, override=None):
         if f["seed"] == s: return f["issues"]
     return [] if st == 200 else [f"VALIDATOR ERROR {st} {r}"]
 
+import re as _re
+def _key(i):
+    # kind = the issue text up to its first ":" after the count, digits blanked; count = first number (BUILD/USE "got N" negated)
+    m = _re.match(r"(L\d+|Tiling): (.*)", i); lego, rest = (m.group(1), m.group(2)) if m else ("", i)
+    g = _re.match(r"(BUILD|USE): need \d+\+, got (\d+)", rest)
+    if g: return (lego, g.group(1)), -int(g.group(2))
+    head = rest.split(":")[0]; n = _re.search(r"\d+", head)
+    return (lego, _re.sub(r"\d+", "#", head)), int(n.group()) if n else 0
+def regressions(before, after):
+    """an issue is NEW only if its kind is new for that LEGO or its count got worse"""
+    b = dict(_key(i) for i in before); out = []
+    for i in after:
+        k, n = _key(i)
+        if k not in b or n > b[k]: out.append(i)
+    return out
+
+def popty_load_fresh(c, s):
+    d = copy.deepcopy(load(c, s)); return d
+
 def validate(c, ops_file):
     ops = json.load(open(ops_file))["ops"]
     sim = apply_ops(c, ops); out = {}
     for s, d in sorted(sim.items()):
-        before = validate_one(c, s); after = validate_one(c, s, override_for(d))
-        new = [i for i in after if i not in before]
+        # baseline through the SAME override path with the unedited live rows: the validator's own course read is not paged
+        # (supabase default row cap), so a live-read "before" under-counts phrases on big courses
+        before = validate_one(c, s, override_for(popty_load_fresh(c, s))); after = validate_one(c, s, override_for(d))
+        new = regressions(before, after)
         out[s] = {"before": before, "after": after, "new_issues": new}
         print(f"seed {s}: before {len(before)} after {len(after)} NEW: {new}", flush=True)
     json.dump(out, open(ops_file.replace(".ops.json", "") + ".validate.json", "w"), ensure_ascii=False, indent=1)

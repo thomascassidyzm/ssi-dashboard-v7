@@ -1,0 +1,5973 @@
+{
+ "seed": 137,
+ "seed_pair": {
+  "known": "完璧であるより頻繁に話す方が大切です。",
+  "target": "It's more important to talk often than to be perfect"
+ },
+ "legos": {
+  "S0137L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0137L01",
+    "type": "M",
+    "known_text": "より大切",
+    "target_text": "more important",
+    "components": [
+     {
+      "known": "より",
+      "target": "more"
+     },
+     {
+      "known": "大切",
+      "target": "important"
+     }
+    ],
+    "seed_number": 137
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0137L01C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "より",
+     "target_text": "more",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:47:24.176619+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b4c4df1c-8973-4bad-96ef-84e988fc43fd",
+     "target1_audio_id": "ea78ac77-94c8-4f27-bbf0-41230aad7299",
+     "target2_audio_id": "25cb11f6-1613-4abb-8d89-4358e0bf1d78",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 648,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もっと",
+       "legoId": "S0023L01",
+       "target": "more",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "大切",
+     "target_text": "important",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:50:32.714988+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b4dc5786-93be-41b3-ac57-748ec471a0c4",
+     "target1_audio_id": "34c90088-8535-4dd7-ac1f-08389e78c833",
+     "target2_audio_id": "f3cc4826-bdd4-4af8-9fc0-116fa33f01a2",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "重要な",
+       "legoId": "S0065L01",
+       "target": "important",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "より大切",
+     "target_text": "more important",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T17:04:08.156346+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bf38a56e-c332-4bb0-a8ad-09ad221b8d4c",
+     "target1_audio_id": "f370f74e-44b8-4898-b202-7afc967e2b8b",
+     "target2_audio_id": "2c89abd8-4998-490d-b248-15c425cd7153",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": "more important",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "より大切",
+     "target_text": "more important",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T17:04:08.009729+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bf38a56e-c332-4bb0-a8ad-09ad221b8d4c",
+     "target1_audio_id": "f370f74e-44b8-4898-b202-7afc967e2b8b",
+     "target2_audio_id": "2c89abd8-4998-490d-b248-15c425cd7153",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": "more important",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "それはより大切です",
+     "target_text": "that is more important",
+     "word_count": 22,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T21:48:44.394268+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "83484300-cfdb-4808-a783-15b442bc0fb2",
+     "target1_audio_id": "8f1f862f-b922-4d5f-b763-f40af36623d6",
+     "target2_audio_id": "07ddf24d-413a-48e1-8a46-3c11f466a3df",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "話すことの方がより大切",
+     "target_text": "to talk is more important",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "cc29b05d-ae57-401c-bd6e-05dcdca2c89b",
+     "target1_audio_id": "ea05062d-b54b-4236-be91-1b87f2cf9a2d",
+     "target2_audio_id": "8ff05f93-6ae0-45f9-87c5-50285448f129",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "完璧であるよりより大切",
+     "target_text": "more important than to be perfect",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T19:42:32.123443+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fa616372-23bb-4401-b4f6-cbee979af453",
+     "target1_audio_id": "1358033d-d8da-4826-9c7d-f87e7aeb28d8",
+     "target2_audio_id": "6cc475f3-4a5c-485e-b59c-959776ea45ae",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": "more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "頻繁に話す方がより大切",
+     "target_text": "more important to talk often",
+     "word_count": 28,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T19:42:31.891555+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d7d02f4d-b67c-46d8-8a7b-527a79330685",
+     "target1_audio_id": "45e27d4d-73b5-4318-b5c9-4ef39dd74873",
+     "target2_audio_id": "316c97fa-d911-4e9f-819f-372319d94492",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": "more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "頻繁に話す方が完璧であるよりより大切",
+     "target_text": "it's more important to talk often than to be perfect",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T23:19:40.764415+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b39246ef-fce1-444f-a410-a2a201d9217b",
+     "target1_audio_id": "888116b4-b57c-4f0b-a9d7-dead9defad45",
+     "target2_audio_id": "5de99132-44e7-483d-9b15-29ce1dc00e28",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 4104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "頻繁に話す方が完璧であるよりより大切だと思います",
+     "target_text": "I think it's more important to talk often than to be perfect",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-28T18:40:41.350265+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d1bd84b7-800b-43d4-bb87-2dc7ce1c9e18",
+     "target1_audio_id": "607abf20-d23d-425a-bb85-c9a61e1479a9",
+     "target2_audio_id": "245907a7-b201-4d39-9037-7d1f5d6db2c1",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 4272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "今日あなたにとって何がより大切ですか？",
+     "target_text": "what is more important to you today?",
+     "word_count": 36,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3e35a77d-0835-497c-97db-166eb3c70870",
+     "target1_audio_id": "0f672403-fad7-44bc-a536-c7d1936adfdf",
+     "target2_audio_id": "c20883a9-99b6-4dff-b6fa-50f217600359",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "あなたが言ったことに同意します、それはより大切です",
+     "target_text": "I agree with what you said, that is more important",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "664a77f8-49ae-4c81-bb23-ff8cd55fbbe3",
+     "target1_audio_id": "53341934-350d-4b72-aa9e-67ee5c090f40",
+     "target2_audio_id": "3b2a7932-b308-4a3f-9117-f3fe7c7fd581",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2784,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "言ったことに同意します",
+       "legoId": "S0083L03",
+       "target": " agree with what you said",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "完璧であるよりも頻繁に話すことの方がより大切です",
+     "target_text": "talking often is more important than to be perfect",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "00f73544-f20b-4e16-99e0-cd9237ff05ed",
+     "target1_audio_id": "b864a16a-da0d-4ef7-8b72-0402c11c2109",
+     "target2_audio_id": "9135fef1-1338-4a9c-ad48-243622ef87ff",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": "talking",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "今日やることでより大切なことがあります",
+     "target_text": "there is something more important to do today",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e5129570-99af-4241-90da-c7201944e3db",
+     "target1_audio_id": "973ab24a-1e05-4a8d-980c-396d86e10cbb",
+     "target2_audio_id": "4d0d2d4b-582a-4014-aa0b-44b1de11d791",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "there",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "毎日練習する方がより大切だと思います",
+     "target_text": "I think it is more important to practise",
+     "word_count": 41,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "cd78d322-4854-4d49-be38-db9701558b2d",
+     "target1_audio_id": "d53c6132-9311-488f-958c-8bbecd9e7cbc",
+     "target2_audio_id": "895bfa31-9c2b-46ae-a342-7d50085d3476",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "練習をする",
+       "legoId": "S0005L02",
+       "target": " to practise",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "間違えることを心配しないことの方がより大切です",
+     "target_text": "It is more important not to worry about making mistakes",
+     "word_count": 56,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ed8cffe9-7370-4999-8e88-0a542bd96035",
+     "target1_audio_id": "01c6a205-c93f-4aae-882b-7480ebe26926",
+     "target2_audio_id": "cf94be41-6301-481b-87bd-d3fd9fa4f1b4",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "It",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " worry",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "間違えること",
+       "legoId": "S0046L01",
+       "target": " making mistakes",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "彼にとって何がより大切か考えてみてください",
+     "target_text": "think about what is more important to him",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3914c4dc-0bfa-47ad-a6bc-73b1d1dee561",
+     "target1_audio_id": "54f80403-e9af-4ba1-96f6-75651ec5aa6d",
+     "target2_audio_id": "2cbbe78a-1756-4ed8-bfe1-38c91d205672",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "think",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " him",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "私が言いたいのは、話そうとすることの方がより大切だということです",
+     "target_text": "what I mean is that trying to speak is more important",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "23d8a54f-2886-4c1b-901c-d89d659143eb",
+     "target1_audio_id": "79cae39d-567f-429c-b008-1e0bb8af8bc6",
+     "target2_audio_id": "64f5c0cd-47da-4de4-9290-4873089a6a4b",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3576,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言いたいこと",
+       "legoId": "S0008L02",
+       "target": "what I mean",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "上手に話すことの方がより大切です",
+     "target_text": "It is more important to speak well",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f38c526c-da1e-4f71-a9c6-e6bbbe8e200d",
+     "target1_audio_id": "8859b2e0-51c7-4993-ac8f-d569673496d1",
+     "target2_audio_id": "03ff29fc-7831-4287-985d-ec74ea918817",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "It",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "上手に",
+       "legoId": "S0013L02",
+       "target": " well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 20,
+     "known_text": "あなたの友達にとって何がより大切なのかを考えてください",
+     "target_text": "think about what is more important to your friend",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1be465bb-31eb-45d5-adf8-1cffd8cadfe1",
+     "target1_audio_id": "626656ae-f696-447c-a5d8-d251cb2d8644",
+     "target2_audio_id": "969e987e-edc4-46d6-b65f-0e84691a0051",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "think",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " your",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 21,
+     "known_text": "あなたにとってより大切なことは何だと思いますか？",
+     "target_text": "what do you think is more important to you?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7e0527a0-c1af-4192-b769-ba2ba0b24c0d",
+     "target1_audio_id": "8d8336a1-2d7a-4f0f-bbfe-89abc43720c9",
+     "target2_audio_id": "26978a29-f6d5-4c98-a224-ae459c9b9a73",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 22,
+     "known_text": "頻繁に話すことの方が完璧であることよりより大切だということを覚えてください",
+     "target_text": "talking often is more important than to be perfect, I'd like to keep on doing this",
+     "word_count": 83,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "04ff25f4-8682-48f5-bf89-131b824171d6",
+     "target1_audio_id": "543b4eed-8c5a-4011-b05f-59d62193a050",
+     "target2_audio_id": "b59ed980-7592-4035-b4f4-2aba50c06603",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 7008,
+     "target2_duration_ms": 5400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": "talking",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "続けたいです",
+       "legoId": "S0092L01",
+       "target": " I'd like to keep on",
+       "isGhost": false
+      },
+      {
+       "known": "する",
+       "legoId": "S0051L02",
+       "target": " doing",
+       "isGhost": false
+      },
+      {
+       "known": "これ",
+       "legoId": "S0094L01",
+       "target": " this",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 23,
+     "known_text": "私にとってより大切なのは楽しむことです",
+     "target_text": "what is more important to me is to enjoy it?",
+     "word_count": 44,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.174Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 25,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f238677a-a8af-4fe8-8c3c-67da44efaad1",
+     "target1_audio_id": "20349453-4466-4fc0-b6dc-034d012ff3c8",
+     "target2_audio_id": "9729b3b9-22e7-4483-bd5a-3c72d55c539c",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " enjoy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L01U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 1,
+     "position": 24,
+     "known_text": "頻繁に話す方が、一番大切なことです",
+     "target_text": "talking often is the more important thing",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:01.175Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:01.800999+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "638cfbc1-2578-47b3-8641-b1f79c25a7a5",
+     "target1_audio_id": "08f1a201-80bc-4da3-bd2b-40c9a2a6e691",
+     "target2_audio_id": "0e62a017-2904-4cf2-a452-c37c7c11b23a",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2712,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": "talking",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " thing",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0137L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0137L02",
+    "type": "A",
+    "known_text": "頻繁に",
+    "target_text": "often",
+    "components": null,
+    "seed_number": 137
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0137L02B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "頻繁に",
+     "target_text": "often",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T21:53:51.577424+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "cbf4e303-ebad-458c-9278-826d00003489",
+     "target1_audio_id": "e04b490c-1025-4839-bea9-1a2271dc37da",
+     "target2_audio_id": "de69094b-59bf-49fa-9535-c7bc16439c54",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 648,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": "often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "頻繁に話す",
+     "target_text": "talk often",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "97299c35-6460-43e6-a23e-95678351ef23",
+     "target1_audio_id": "793fbc23-31d4-47d1-ad23-4145d7d8deaf",
+     "target2_audio_id": "6087ce88-6317-4696-bd32-6d4b5e460f11",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "talk",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "頻繁に英語を話す",
+     "target_text": "speak English often",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "84e9c00a-bf37-43c7-9574-fa9ecd3c2de7",
+     "target1_audio_id": "93b20758-750b-4bbb-9768-60fd0d4c4623",
+     "target2_audio_id": "b8f2bda8-df6c-4093-809c-9f78aa32bc20",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "speak",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "できるだけ頻繁に",
+     "target_text": "as often as possible",
+     "word_count": 20,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9837bf89-cfce-4090-b75e-b918af6fd98d",
+     "target1_audio_id": "8da64482-faff-4013-9838-83b43166d213",
+     "target2_audio_id": "11a55f05-3b92-44c4-b1da-b9717c9646a8",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "as",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " possible",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "頻繁に会う",
+     "target_text": "meet often",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6bb9b17a-764c-4204-9f4c-31f295cbc89a",
+     "target1_audio_id": "14fd9a20-622b-4c53-87a0-d3523192e828",
+     "target2_audio_id": "35f68f5c-6430-444e-bc2d-b8cd7a5f39db",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 864,
+     "target2_duration_ms": 1176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "meet",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "できるだけ頻繁に話す方法",
+     "target_text": "how to speak as often as possible",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "054671e8-f25d-42ee-9d90-97e9c54174ab",
+     "target1_audio_id": "5e2095d3-51bd-490c-ada7-b0902841cb80",
+     "target2_audio_id": "6dded46a-624b-4477-84c5-ff02ba64c09b",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2136,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話す方法",
+       "legoId": "S0003L02",
+       "target": "how to speak",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " possible",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "できるだけ頻繁に英語を話そうとしています",
+     "target_text": "I'm trying to speak English as often as possible",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-13T13:02:12.098942+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "125f89a4-52df-49d6-b65c-0a9c65e8c106",
+     "target1_audio_id": "0706bc1a-7ba3-4210-a315-1c6f12c99dc4",
+     "target2_audio_id": "05fce87b-0dda-498a-8cde-b9797b96ec99",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 3040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " possible",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "あなたは頻繁に英語を話しますか？",
+     "target_text": "Do you speak English often?",
+     "word_count": 27,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "cc676358-9a17-4291-a46b-6882e4ed1c51",
+     "target1_audio_id": "007dde28-b4f5-4cf0-b43f-8bfb3155008d",
+     "target2_audio_id": "4035c5d5-4b2a-45c0-92d5-e28829f32616",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話しますか",
+       "legoId": "S0014L01",
+       "target": "Do you speak",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "頻繁に話すことが英語を覚える一番の方法だと思います",
+     "target_text": "I think talking often is the way to remember English",
+     "word_count": 53,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "784941b1-a36f-44e4-8ba9-f7243f7fc9b1",
+     "target1_audio_id": "63eb46b7-b3c0-4f5d-b3e1-0be3308ac69f",
+     "target2_audio_id": "e8ba13a5-4d6d-403a-be80-9b154a3bc9d0",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": " talking",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "方法",
+       "legoId": "S0094L03",
+       "target": " way",
+       "isGhost": false
+      },
+      {
+       "known": "思い出す",
+       "legoId": "S0006L02",
+       "target": " to remember",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "彼女とは頻繁に会いますか？",
+     "target_text": "Do you meet her often?",
+     "word_count": 22,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e7a13870-0c19-4068-ae44-7762ed3b8279",
+     "target1_audio_id": "cdbadf87-1685-453e-953c-0851debc6cda",
+     "target2_audio_id": "8f5a1fd6-ffca-44a0-896b-177fd2c96bc9",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Do",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " meet",
+       "isGhost": true
+      },
+      {
+       "known": "彼女の",
+       "legoId": "S0021L02",
+       "target": " her",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "完璧であるよりも頻繁に話す方がより大切だと思います",
+     "target_text": "I think talking often is more important than to be perfect",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9e8fe63c-fbc3-4447-8b8f-404cba8a5fce",
+     "target1_audio_id": "e63fd6b2-26d0-434d-a476-0c0181fc6c4b",
+     "target2_audio_id": "c1b51089-6dea-47bd-b8a9-a648990c2585",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3840,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": " talking",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "友達に頻繁に会えますか？",
+     "target_text": "can you meet your friend often?",
+     "word_count": 31,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c08eb36c-fee8-462c-a004-7f1c96bba41e",
+     "target1_audio_id": "829f691a-f807-4d33-a2e6-449651b13557",
+     "target2_audio_id": "6b6dd9ac-bb07-4a59-9322-5ca0bdfbbdab",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1896,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " meet",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " your",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 13,
+     "known_text": "できるだけ頻繁に英語を使うようにしています",
+     "target_text": "I'm going to use English as often as possible",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "543e317c-f776-4953-928d-4bfb5e57cf35",
+     "target1_audio_id": "e7fcfb54-ca36-4788-8a80-95ab0b20e47c",
+     "target2_audio_id": "72adec7e-61f2-4293-89fe-01c4fe0601c8",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "するつもり",
+       "legoId": "S0005L04",
+       "target": "I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "使う",
+       "legoId": "S0121L02",
+       "target": " use",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " possible",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 14,
+     "known_text": "頻繁に英語を聞くことが大切だと思います",
+     "target_text": "I think it's important to hear English often",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "edabd941-ef0f-41cc-aa76-f6bdc6fea2df",
+     "target1_audio_id": "5bdcabc7-e7ad-4773-9268-4914d8a440dd",
+     "target2_audio_id": "a6ca2110-d45f-46d6-af21-a8e1ad95ddc5",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3072,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "重要です",
+       "legoId": "S0065L05",
+       "target": " it's important",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "聞く",
+       "legoId": "S0071L04",
+       "target": " hear",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 15,
+     "known_text": "そんなに頻繁に行く必要はありません",
+     "target_text": "you don't need to go there that often",
+     "word_count": 38,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "288cdfaa-b104-4ef2-8611-2b866137f96a",
+     "target1_audio_id": "3c074cf4-1e3e-4161-8638-5ae70e63b22f",
+     "target2_audio_id": "d1db9e00-2628-4631-b6bc-827258bebb15",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": "you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "行く",
+       "legoId": "S0025L01",
+       "target": " to go",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " there",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 16,
+     "known_text": "私はあなたに頻繁に話しかけてほしいです",
+     "target_text": "I want you to speak to me often",
+     "word_count": 32,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "515ab37a-7ce3-49da-9ca3-ab22970391a1",
+     "target1_audio_id": "c4af6d15-3659-411a-9a98-18d96e4d011f",
+     "target2_audio_id": "0e9984bc-0eff-4946-a267-33502f123b67",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話してほしい",
+       "legoId": "S0015L03",
+       "target": "I want you to speak",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 17,
+     "known_text": "できるだけ頻繁に話すのがいいと思います",
+     "target_text": "I think it's good to speak as often as possible",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7c709f25-f998-4dda-8661-018d4f2999bb",
+     "target1_audio_id": "f44db8b3-8b1d-437e-8347-c37bc2f56991",
+     "target2_audio_id": "3347a15f-5b06-4103-a405-15ed422498d7",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " possible",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 18,
+     "known_text": "彼とは頻繁に会えるといいと思います",
+     "target_text": "I would like to meet him often if I can",
+     "word_count": 40,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b9611d5a-ae19-4b5f-8215-9c37871b40b1",
+     "target1_audio_id": "c1b53ed8-9ed4-4d5d-9974-e0dc365cbf23",
+     "target2_audio_id": "d9dbab94-ea47-4de1-94ac-7d5609422a3a",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "似ています",
+       "legoId": "S0128L02",
+       "target": " like",
+       "isGhost": false
+      },
+      {
+       "known": "会う",
+       "legoId": "S0018L03",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " him",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 19,
+     "known_text": "私はそんなに頻繁に彼に会いません",
+     "target_text": "I don't meet him very often",
+     "word_count": 28,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9458be21-25cb-49a4-9be0-80f7fb8bc9bc",
+     "target1_audio_id": "960aad1b-55af-44f5-8e9b-374d1f93fcff",
+     "target2_audio_id": "d95b3923-ce52-43d7-970b-d25435a73c99",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " meet",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " him",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " very",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 20,
+     "known_text": "できるだけ頻繁に英語で話すことが役立ちます",
+     "target_text": "It's useful to speak English as often as possible",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "87691023-03f3-4eda-91e3-cf0e3b546fc0",
+     "target1_audio_id": "2d392ffc-a1c6-417f-aafa-17c8e0b64582",
+     "target2_audio_id": "b80c4cd0-b03b-46a6-88a5-71ab618e3b63",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "役に立ちます",
+       "legoId": "S0028L01",
+       "target": "It's useful",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " possible",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L02U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 2,
+     "position": 21,
+     "known_text": "頻繁に間違えることは問題ではないと思います",
+     "target_text": "I think making mistakes often is not a problem",
+     "word_count": 47,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:40.298Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:49:40.725373+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "de297b09-550b-4250-9b57-bbaf6ccc1dd1",
+     "target1_audio_id": "cf1ed043-f7cd-4276-a272-748fd41353e5",
+     "target2_audio_id": "24a63fa0-897d-4c69-8477-29a649de9394",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3072,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "間違えること",
+       "legoId": "S0046L01",
+       "target": " making mistakes",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " problem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0137L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0137L03",
+    "type": "M",
+    "known_text": "完璧である",
+    "target_text": "be perfect",
+    "components": [
+     {
+      "known": "である",
+      "target": "be"
+     },
+     {
+      "known": "完璧",
+      "target": "perfect"
+     }
+    ],
+    "seed_number": 137
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0137L03C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "である",
+     "target_text": "be",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-12T16:46:06.893318+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1a61831b-f9f4-41e2-bbd0-e2a999e38308",
+     "target1_audio_id": "9ce5ce9c-e776-4466-bb27-36787085e783",
+     "target2_audio_id": "a125ada3-0b81-4573-95d4-0b10d20c62ff",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 600,
+     "target2_duration_ms": 720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "be",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fedd5fb7-b2b1-4b94-87b0-a01ed813328b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "完璧",
+     "target_text": "perfect",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:34:33.268413+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9d063bae-f749-49db-8d99-4061941fe260",
+     "target1_audio_id": "9c6f9e88-a792-44c1-b6fb-1e658ccce961",
+     "target2_audio_id": "4a988400-fe49-449b-aef5-93cb94825d68",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "perfect",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "完璧である",
+     "target_text": "be perfect",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2ae033a3-7202-4dfe-b7f9-127e53ad0040",
+     "target1_audio_id": "0696e109-889b-4d9a-9cbc-342de9027b3b",
+     "target2_audio_id": "cab0538c-f9d9-406b-8a70-0e6f78c1742a",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 936,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": "be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "完璧である",
+     "target_text": "be perfect",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2ae033a3-7202-4dfe-b7f9-127e53ad0040",
+     "target1_audio_id": "0696e109-889b-4d9a-9cbc-342de9027b3b",
+     "target2_audio_id": "cab0538c-f9d9-406b-8a70-0e6f78c1742a",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 936,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": "be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "完璧でなければならない",
+     "target_text": "need to be perfect",
+     "word_count": 18,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ffe3d33b-49b7-4c02-8ac5-607270845c8d",
+     "target1_audio_id": "90a2d648-d187-4a0a-a85f-402fbc032842",
+     "target2_audio_id": "232f21b1-9f45-45d8-8210-d7a004bbadff",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "完璧でなくていい",
+     "target_text": "don't need to be perfect",
+     "word_count": 24,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "dbc9cb52-20dc-4c16-949d-e64f7b915778",
+     "target1_audio_id": "0c827f56-b1ad-44b5-b18b-972b32ad95a9",
+     "target2_audio_id": "638e74dc-fad9-4300-b40c-d613b863f2b8",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "完璧であることよりも大切",
+     "target_text": "more important than to be perfect",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T19:42:32.123443+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "293a1454-5cfb-467e-92cd-004694651269",
+     "target1_audio_id": "1358033d-d8da-4826-9c7d-f87e7aeb28d8",
+     "target2_audio_id": "6cc475f3-4a5c-485e-b59c-959776ea45ae",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": "more important",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "頻繁に話す方が完璧であるよりより大切",
+     "target_text": "it's more important to talk often than to be perfect",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T23:19:40.764415+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b39246ef-fce1-444f-a410-a2a201d9217b",
+     "target1_audio_id": "888116b4-b57c-4f0b-a9d7-dead9defad45",
+     "target2_audio_id": "5de99132-44e7-483d-9b15-29ce1dc00e28",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 4104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "完璧でなくていいと言いたかった",
+     "target_text": "I wanted to say you don't need to be perfect",
+     "word_count": 44,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "46a06b28-52da-4dab-a4f1-6456da999bba",
+     "target1_audio_id": "ddac7c09-29b5-4b4c-8038-c872dcfbab59",
+     "target2_audio_id": "db65da63-9d3a-4a46-8e0c-7c0059be3186",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "たかった",
+       "legoId": "S0052L02",
+       "target": " wanted to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "完璧である必要はないと思います",
+     "target_text": "I don't think you need to be perfect",
+     "word_count": 37,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4c3786ac-f458-476a-ae1d-a714007ed99b",
+     "target1_audio_id": "1140f35d-4be2-4039-8978-02304e06daef",
+     "target2_audio_id": "be801882-e363-403c-b600-784a14dd1e17",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "完璧であろうとするよりも、楽しむことの方が大切です",
+     "target_text": "enjoying it is more important than trying to be perfect",
+     "word_count": 56,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a836f6a7-9921-4ebd-9f0f-9bba0b7c2f4b",
+     "target1_audio_id": "04bf9d97-af41-4a41-a79d-aff492d2f681",
+     "target2_audio_id": "9ebbff79-efeb-4ae3-b615-e8169d00b13b",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3720,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "enjoying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "英語を話すときに完璧でなくていいです",
+     "target_text": "you don't need to be perfect when you speak English",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f20e50d3-8d3c-43da-a80c-4d85db2bc7dd",
+     "target1_audio_id": "2245347a-2533-4215-bccb-4552b54aef05",
+     "target2_audio_id": "7303b9f0-9cb5-40e3-add6-1073d7a9b1a9",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2784,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": "you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "あなたは話します",
+       "legoId": "S0013L01",
+       "target": " you speak",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "完璧であることよりも頻繁に話す方がより大切です",
+     "target_text": "talking often is more important than to be perfect",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c5512c33-0418-4245-a543-c20d844cd85c",
+     "target1_audio_id": "b864a16a-da0d-4ef7-8b72-0402c11c2109",
+     "target2_audio_id": "9135fef1-1338-4a9c-ad48-243622ef87ff",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": "talking",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "完璧でなくてもいいと思っています",
+     "target_text": "I think you don't need to be perfect",
+     "word_count": 37,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b82ca03a-0532-49cc-a2c2-e3e6b0460d24",
+     "target1_audio_id": "62eb1cbf-c2ef-4dd2-92bd-79f280a52f47",
+     "target2_audio_id": "eb8a9618-f878-4fd4-a464-6a691e670f37",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 15,
+     "known_text": "完璧であることが最も大切だとは思いません",
+     "target_text": "I don't think you need to be perfect to do well",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4a37af1a-34a4-4921-82d7-e4b96c681f39",
+     "target1_audio_id": "881c4704-69d9-43b5-ba3f-972e674fecbe",
+     "target2_audio_id": "e8cbe530-da23-4f6d-b879-97b54471ec49",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "上手に",
+       "legoId": "S0013L02",
+       "target": " well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 16,
+     "known_text": "完璧でなくていいと言いたかったのです",
+     "target_text": "I wanted to say that you don't need to be perfect",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3f1c0dd0-3b80-4ddb-ad79-20ffa0ca55a2",
+     "target1_audio_id": "7b769232-78ad-44ff-9eb4-b453452a83d6",
+     "target2_audio_id": "314ad40d-bebc-4672-80eb-82f6ab48ac76",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "たかった",
+       "legoId": "S0052L02",
+       "target": " wanted to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 17,
+     "known_text": "頻繁に話す方が、完璧であるよりずっとより大切です",
+     "target_text": "talking often is more important than to be perfect, I know that",
+     "word_count": 64,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "abffa80b-bcd9-4a5d-93b2-8093824279cb",
+     "target1_audio_id": "83e3c436-89d3-4390-b30c-e3bf38660b4d",
+     "target2_audio_id": "85b5bd09-1b43-420f-8323-49d3ddefeb8b",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 4464,
+     "target2_duration_ms": 4488,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": "talking",
+       "isGhost": false
+      },
+      {
+       "known": "頻繁に",
+       "legoId": "S0137L02",
+       "target": " often",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "知っている",
+       "legoId": "S0059L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 18,
+     "known_text": "あなたは完璧でなくていいです、ただ試みればいいのです",
+     "target_text": "You don't need to be perfect, you just need to try",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "49adc32e-fc42-40a5-8491-65f0953a3028",
+     "target1_audio_id": "a41f9b96-755c-4523-82e0-8b507d859caf",
+     "target2_audio_id": "af5822fd-40de-45b4-bcda-9591d20189d3",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3504,
+     "target2_duration_ms": 3216,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": "You",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "ただ",
+       "legoId": "S0106L02",
+       "target": " just",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "頑張る",
+       "legoId": "S0007L01",
+       "target": " to try",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 19,
+     "known_text": "完璧であることよりも大切なことがあります",
+     "target_text": "There are things more important than to be perfect",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0cef2877-5576-4a63-ae3e-9c11093aefef",
+     "target1_audio_id": "abe54240-121e-4da2-86d2-6145e3514dab",
+     "target2_audio_id": "d2222b48-6628-4ed0-892b-153c63057596",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ある",
+       "legoId": "S0131L01",
+       "target": "There are",
+       "isGhost": false
+      },
+      {
+       "known": "こと",
+       "legoId": "S0051L04",
+       "target": " things",
+       "isGhost": false
+      },
+      {
+       "known": "より大切",
+       "legoId": "S0137L01",
+       "target": " more important",
+       "isGhost": false
+      },
+      {
+       "known": "より",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 20,
+     "known_text": "すべてのことで完璧であるのは難しいです",
+     "target_text": "It's difficult to be perfect at everything",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6e0a493c-62e2-4e8d-aa5d-dccf2e3aee26",
+     "target1_audio_id": "60897761-2597-4e48-abf9-39950bd586b4",
+     "target2_audio_id": "57786186-433a-4415-a447-fcecc30aa991",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "難しいです",
+       "legoId": "S0091L01",
+       "target": "It's difficult",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " at",
+       "isGhost": true
+      },
+      {
+       "known": "すべて",
+       "legoId": "S0045L02",
+       "target": " everything",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 21,
+     "known_text": "完璧でなくていいですが、まず始めることが大切です",
+     "target_text": "You don't need to be perfect, but it's important to start",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3d115eb7-f06f-488a-8573-b52b2f494448",
+     "target1_audio_id": "385e559b-dda7-4c1c-9d17-ad66d7082c24",
+     "target2_audio_id": "38ad8918-b479-49ed-abaa-deef78e614d0",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": "You",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "重要です",
+       "legoId": "S0065L05",
+       "target": " it's important",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " start",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 22,
+     "known_text": "私はあなたが完璧である必要はないと言いたかったのです",
+     "target_text": "I wanted to tell you that you don't need to be perfect",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3e98ab8b-74d3-4ecb-ac2a-2652b7a12133",
+     "target1_audio_id": "9de73ea7-292b-4063-8ef3-1bc8d7c713fe",
+     "target2_audio_id": "c748279f-bc33-46c4-9bc4-355335eb0e3f",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "たかった",
+       "legoId": "S0052L02",
+       "target": " wanted to",
+       "isGhost": false
+      },
+      {
+       "known": "教える",
+       "legoId": "S0070L01",
+       "target": " tell",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 23,
+     "known_text": "完璧でなくていいので、英語で話してみてください",
+     "target_text": "You don't need to be perfect, so speak English",
+     "word_count": 47,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4eb33f20-2744-409b-bc1c-5d06943539ed",
+     "target1_audio_id": "297b7be8-9523-4c9f-93af-33b1f14f6d2c",
+     "target2_audio_id": "6aecf3b0-70af-450e-bddb-595a634e314c",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": "You",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0137L03U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 137,
+     "lego_index": 3,
+     "position": 24,
+     "known_text": "完璧でなくていいですよとあなたの友達に伝えてください",
+     "target_text": "Tell your friend that you don't need to be perfect",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:03.054Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:47:15.970594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9050f3b1-a11b-48d9-a5b6-223ff61d068a",
+     "target1_audio_id": "0431d7d2-d81d-4b8d-8c75-becb531e65c5",
+     "target2_audio_id": "1a011bed-aa9a-4fbd-924f-797593391d54",
+     "qa_checked": "2026-02-17T12:24:36.894+00:00",
+     "target1_duration_ms": 2712,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教える",
+       "legoId": "S0070L01",
+       "target": "Tell",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " your",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "完璧である",
+       "legoId": "S0137L03",
+       "target": " be perfect",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

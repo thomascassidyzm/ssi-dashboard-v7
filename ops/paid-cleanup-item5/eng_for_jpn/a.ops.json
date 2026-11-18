@@ -1,0 +1,431 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0061L03B01",
+   "set": {
+    "target_text": "could you say"
+   },
+   "expect": {
+    "known_text": "言っていただけますか",
+    "target_text": "could you say?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0061L03B02",
+   "set": {
+    "target_text": "could you say"
+   },
+   "expect": {
+    "known_text": "言っていただけますか",
+    "target_text": "could you say?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_jpn:S0081L01B05",
+   "expect": {
+    "target_text": "when I'm not sure when I'll be ready"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_jpn:S0113L01U10",
+   "expect": {
+    "target_text": "why can't I remember what you said I just don't know?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0137L01U14",
+   "set": {
+    "target_text": "what is more important to me is to enjoy it"
+   },
+   "expect": {
+    "known_text": "私にとってより大切なのは楽しむことです",
+    "target_text": "what is more important to me is to enjoy it?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0182L02B01",
+   "set": {
+    "target_text": "have you seen"
+   },
+   "expect": {
+    "known_text": "見ましたか",
+    "target_text": "have you seen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0182L02B02",
+   "set": {
+    "target_text": "have you seen"
+   },
+   "expect": {
+    "known_text": "見ましたか",
+    "target_text": "have you seen?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_jpn:S0182L02B03",
+   "expect": {
+    "target_text": "have you seen .?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01B03",
+   "set": {
+    "target_text": "the keys? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "鍵は？いいえ、残念ながら見ていません",
+    "target_text": "the keys no I'm afraid I haven't seen them"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01B04",
+   "set": {
+    "target_text": "today? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "今日も、いいえ、残念ながら見ていません",
+    "target_text": "today no I'm afraid I haven't seen them"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_jpn:S0183L01B05",
+   "expect": {
+    "target_text": "unfortunately no I'm afraid I haven't seen them"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01B06",
+   "set": {
+    "target_text": "have you seen them? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "見ましたか？いいえ、残念ながら見ていません",
+    "target_text": "have you seen them no I'm afraid I haven't seen them?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01B07",
+   "set": {
+    "target_text": "anywhere? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "どこかで？いいえ、残念ながら見ていません",
+    "target_text": "anywhere no I'm afraid I haven't seen them"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01U01",
+   "set": {
+    "target_text": "have you seen my keys anywhere? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "鍵をどこかで見ましたか？いいえ、残念ながら見ていません",
+    "target_text": "have you seen my keys anywhere no I'm afraid I haven't seen them?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01U03",
+   "set": {
+    "target_text": "have you seen my friend anywhere? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "友達をどこかで見ましたか？いいえ、残念ながら見ていません",
+    "target_text": "have you seen my friend anywhere no I'm afraid I haven't seen them?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01U06",
+   "set": {
+    "target_text": "have you seen anyone? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "誰かを見ましたか？いいえ、残念ながら見ていません",
+    "target_text": "have you seen anyone no I'm afraid I haven't seen them?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01U08",
+   "set": {
+    "target_text": "have you seen them since yesterday? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "昨日から見ていませんか？いいえ、残念ながら見ていません",
+    "target_text": "have you seen them since yesterday no I'm afraid I haven't seen them?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01U12",
+   "set": {
+    "target_text": "have you seen them anywhere? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "どこかで見ましたか？いいえ、残念ながら見ていません",
+    "target_text": "have you seen them anywhere no I'm afraid I haven't seen them?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01U13",
+   "set": {
+    "target_text": "have you seen them this morning? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "今朝見ましたか？いいえ、残念ながら見ていません",
+    "target_text": "have you seen them this morning no I'm afraid I haven't seen them?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_jpn:S0183L01U14",
+   "expect": {
+    "target_text": "have you seen my keys no I'm afraid I haven't seen them unfortunately?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0183L01U15",
+   "set": {
+    "target_text": "so you haven't seen them? no, I'm afraid I haven't seen them"
+   },
+   "expect": {
+    "known_text": "あなたも見ていないということですね。いいえ、残念ながら見ていません",
+    "target_text": "so you have not seen them no I'm afraid I haven't seen them"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0190L03B01",
+   "set": {
+    "target_text": "do you mind if"
+   },
+   "expect": {
+    "known_text": "してもいい",
+    "target_text": "do you mind if?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0190L03B02",
+   "set": {
+    "target_text": "do you mind if"
+   },
+   "expect": {
+    "known_text": "してもいい",
+    "target_text": "do you mind if?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0199L01U08",
+   "set": {
+    "target_text": "you used to work in a different office, didn't you?"
+   },
+   "expect": {
+    "known_text": "以前は別のオフィスで働いていましたね？",
+    "target_text": "you used to work in a different office didn't you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0203L01B03",
+   "set": {
+    "target_text": "what would you do if I asked you to help me?"
+   },
+   "expect": {
+    "known_text": "もし頼んだら、どうする？",
+    "target_text": "what would you do if I asked you to help me"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L01B05",
+   "set": {
+    "target_text": "I didn't achieve that"
+   },
+   "expect": {
+    "known_text": "達成しなかった",
+    "target_text": "I didnt achieve that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L01U03",
+   "set": {
+    "target_text": "we don't know what they are trying to achieve"
+   },
+   "expect": {
+    "known_text": "彼らが達成しようとしていることがわかりません",
+    "target_text": "we dont know what they are trying to achieve"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U01",
+   "set": {
+    "target_text": "we don't know what they're trying to achieve"
+   },
+   "expect": {
+    "known_text": "彼らが何を達成しようとしているかわかりません",
+    "target_text": "we dont know what theyre trying to achieve"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U02",
+   "set": {
+    "target_text": "at the moment we don't know what they're trying to achieve"
+   },
+   "expect": {
+    "known_text": "今のところ彼らが何を達成しようとしているかわかりません",
+    "target_text": "at the moment we dont know what theyre trying to achieve"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U03",
+   "set": {
+    "target_text": "unfortunately we don't know what they're trying to achieve"
+   },
+   "expect": {
+    "known_text": "残念ながら彼らが何を達成しようとしているかわかりません",
+    "target_text": "unfortunately we dont know what theyre trying to achieve"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U04",
+   "set": {
+    "target_text": "we don't know what they're trying to achieve yet"
+   },
+   "expect": {
+    "known_text": "まだ彼らが何を達成しようとしているかわかりません",
+    "target_text": "we dont know what theyre trying to achieve yet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U05",
+   "set": {
+    "target_text": "we don't know what they're trying to achieve at all"
+   },
+   "expect": {
+    "known_text": "全然彼らが何を達成しようとしているかわかりません",
+    "target_text": "we dont know what theyre trying to achieve at all"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U06",
+   "set": {
+    "target_text": "at the moment we don't know what they're trying to achieve yet"
+   },
+   "expect": {
+    "known_text": "今のところまだ彼らが何を達成しようとしているかわかりません",
+    "target_text": "at the moment we dont know what theyre trying to achieve yet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U07",
+   "set": {
+    "target_text": "unfortunately we don't know what they're trying to achieve at all"
+   },
+   "expect": {
+    "known_text": "残念ながら彼らが何を達成しようとしているかまったくわかりません",
+    "target_text": "unfortunately we dont know what theyre trying to achieve at all"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U08",
+   "set": {
+    "target_text": "we don't know what they're trying to achieve at all yet"
+   },
+   "expect": {
+    "known_text": "彼らが何を達成しようとしているか全然わかりません",
+    "target_text": "we dont know what theyre trying to achieve at all yet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U09",
+   "set": {
+    "target_text": "unfortunately at the moment we don't know what they're trying to achieve"
+   },
+   "expect": {
+    "known_text": "今のところ残念ながら彼らが何を達成しようとしているかわかりません",
+    "target_text": "unfortunately at the moment we dont know what theyre trying to achieve"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0213L02U10",
+   "set": {
+    "target_text": "at the moment we don't know what they're trying to achieve at all"
+   },
+   "expect": {
+    "known_text": "今のところ彼らが何を達成しようとしているか全然わかりません",
+    "target_text": "at the moment we dont know what theyre trying to achieve at all"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0257L03U01",
+   "set": {
+    "target_text": "I want to know what that blue thing over there is"
+   },
+   "expect": {
+    "known_text": "あそこにある青いものは何なのか知りたいです",
+    "target_text": "what's that blue thing over there because I want to know what it is?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0262L01B04",
+   "set": {
+    "target_text": "tell me, who was that man you were talking to yesterday?"
+   },
+   "expect": {
+    "known_text": "昨日話していたあの男の人を教えてください",
+    "target_text": "can you tell me who was that man you were talking to yesterday?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0262L01B05",
+   "set": {
+    "target_text": "can I ask, who was that man you were talking to yesterday?"
+   },
+   "expect": {
+    "known_text": "昨日話していたあの男の人のことを聞いてもいいですか",
+    "target_text": "can I ask who was that man you were talking to yesterday?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_jpn:S0262L01B07",
+   "expect": {
+    "target_text": "do you know who was that man you were talking to yesterday?"
+   }
+  }
+ ]
+}

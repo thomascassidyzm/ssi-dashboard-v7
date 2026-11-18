@@ -1,0 +1,2034 @@
+{
+ "seed": 250,
+ "seed_pair": {
+  "known": "答える前に何か他のことを教えてくれますか？",
+  "target": "can you tell me something else before I answer?"
+ },
+ "legos": {
+  "S0250L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0250L01",
+    "type": "M",
+    "known_text": "答える前に",
+    "target_text": "before I answer",
+    "components": [
+     {
+      "known": "答える",
+      "target": "answer"
+     },
+     {
+      "known": "前に",
+      "target": "before"
+     }
+    ],
+    "seed_number": 250
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0250L01C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "答える",
+     "target_text": "answer",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-12T17:34:50.991732+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e9b6e406-20dc-4f4b-bd7d-33a4ffd21ee2",
+     "target1_audio_id": "5b9e82c7-7860-4d14-80c5-eea0146f2b74",
+     "target2_audio_id": "c8b20352-a888-467e-9ca9-453af7bafea5",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "答え",
+       "legoId": "S0225L02",
+       "target": "answer",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "前に",
+     "target_text": "earlier",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-28T17:29:46.422231+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ae811acf-24a5-441d-9822-841c79113f7e",
+     "target1_audio_id": "4745e65a-83fb-4210-a3cb-c2835cbe6e2c",
+     "target2_audio_id": "30bb1cf1-ef80-4b18-9f90-7e572e4d17e2",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 720,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "before",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "答える前に",
+     "target_text": "before I answer",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T17:32:03.986641+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0786422f-03a4-4c8d-9134-f13a135c957c",
+     "target1_audio_id": "13e4505e-817e-43de-b740-6276ec52c3e9",
+     "target2_audio_id": "45b815ab-152d-491f-9248-bfba1e5825e8",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": "before I answer",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "答える前に少し考えさせてください",
+     "target_text": "before I answer let me think a little",
+     "word_count": 37,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "591414db-9703-4eee-86a1-bd4e1b504cd0",
+     "target1_audio_id": "d9452077-9776-4d39-9afd-50bcb7e9aed3",
+     "target2_audio_id": "473a7af0-3b50-4dae-8ef2-03c28e743bc1",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": "before I answer",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "させる",
+       "legoId": "S0071L02",
+       "target": " let",
+       "isGhost": false
+      },
+      {
+       "known": "私に",
+       "legoId": "S0169L01",
+       "target": " me",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "少し",
+       "legoId": "S0009L01",
+       "target": " a little",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "答える前に水を一杯飲みたいです",
+     "target_text": "I want a glass or two of water before I answer",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f9093848-3243-41c6-b838-17a5fbb049ba",
+     "target1_audio_id": "988b40dd-e797-4f91-a989-423dcb900dc2",
+     "target2_audio_id": "cf70b48e-17b2-42cf-8833-a79a50508a79",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "一杯か二杯",
+       "legoId": "S0217L02",
+       "target": " a glass or two",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " of",
+       "isGhost": true
+      },
+      {
+       "known": "水",
+       "legoId": "S0217L01",
+       "target": " water",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "答える前に少し時間をください",
+     "target_text": "can I have a little time before I answer?",
+     "word_count": 40,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5c3f7b14-9f5a-4e5a-8380-3db5dfa56a5a",
+     "target1_audio_id": "e2db1f8f-7c14-4a9c-a9da-891d1e435ebd",
+     "target2_audio_id": "5eb444c5-4547-4dcd-b889-fc09189438ff",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "少し",
+       "legoId": "S0009L01",
+       "target": " a little",
+       "isGhost": false
+      },
+      {
+       "known": "時間",
+       "legoId": "S0096L06",
+       "target": " time",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "答える前に考える時間が必要です",
+     "target_text": "I need to think before I answer",
+     "word_count": 31,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:49:49.213836+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7261afaa-24e2-47bb-bb2c-a99bb30e086a",
+     "target1_audio_id": "2fad1ab3-adff-40da-8588-eff789fd3ef8",
+     "target2_audio_id": "2bf9be33-aed4-4b83-9a37-23c72a18354e",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2112,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": "I need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "答える前にしばらく考えてもいいですか？",
+     "target_text": "can I think for a while before I answer your question?",
+     "word_count": 53,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:39:34.869Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "cc3fec10-a312-4f13-ac6f-10f149465e51",
+     "target1_audio_id": "dcfae5bf-e234-4c96-abdc-e180717100be",
+     "target2_audio_id": "8b5a1bd6-d5b2-473b-9798-3d0efb14c8f6",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2784,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "しばらく",
+       "legoId": "S0092L04",
+       "target": " for a while",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " your",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " question?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "答える前に少し時間が必要です",
+     "target_text": "I need a little more time before I answer",
+     "word_count": 41,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:39:34.869Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7493f257-1373-402a-8341-eafe9e7a124d",
+     "target1_audio_id": "04b5ae67-4425-4a63-9a5e-0499f54d286f",
+     "target2_audio_id": "f671faaf-8d5c-47db-ac99-024c435210ae",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2712,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "必要です",
+       "legoId": "S0096L04",
+       "target": "I need",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0096L05",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "時間",
+       "legoId": "S0096L06",
+       "target": " time",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "答える前に彼女に聞いてみたいです",
+     "target_text": "I want to ask her something before I answer",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:39:34.869Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c8f7debf-c82f-4df6-8404-f1028a3460aa",
+     "target1_audio_id": "44a580b7-551a-48c0-a8d5-64d77e8430bf",
+     "target2_audio_id": "79f5a1af-8213-4792-9849-d1832bebe60f",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "彼女の",
+       "legoId": "S0021L02",
+       "target": " her",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "答える前に何か話してくれますか？",
+     "target_text": "can you tell me something else before I answer?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:39:34.869Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:32:03.678546+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9174c852-d1b7-411e-abdc-edc8a49d5c4f",
+     "target1_audio_id": "9c87b730-3448-4ae3-af2d-545592595006",
+     "target2_audio_id": "886174fb-9779-465f-9b19-8055f9e47a05",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2520,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false
+      },
+      {
+       "known": "何か他のこと",
+       "legoId": "S0250L02",
+       "target": " something else",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "答える前に時間をかけすぎたくないですが、少し待ってください",
+     "target_text": "I don't like taking too much time to answer but I need a little time before I answer",
+     "word_count": 84,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:39:34.869Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:39:35.130548+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0a60e7be-4a49-4421-a51e-7b2a91cafebd",
+     "target1_audio_id": "273e8638-b698-493c-b5b5-4c8389a55171",
+     "target2_audio_id": "52a43c8c-1429-4d79-b2c3-d7710b2284fa",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 5184,
+     "target2_duration_ms": 5160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "好きじゃありません",
+       "legoId": "S0027L01",
+       "target": "I don't like",
+       "isGhost": false
+      },
+      {
+       "known": "時間がかかりすぎる",
+       "legoId": "S0027L03",
+       "target": " taking too much time",
+       "isGhost": false
+      },
+      {
+       "known": "答える",
+       "legoId": "S0043L01",
+       "target": " to answer",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "必要です",
+       "legoId": "S0096L04",
+       "target": " I need",
+       "isGhost": false
+      },
+      {
+       "known": "少し",
+       "legoId": "S0009L01",
+       "target": " a little",
+       "isGhost": false
+      },
+      {
+       "known": "時間",
+       "legoId": "S0096L06",
+       "target": " time",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0250L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0250L02",
+    "type": "M",
+    "known_text": "何か他のこと",
+    "target_text": "something else",
+    "components": [
+     {
+      "known": "何か",
+      "target": "something"
+     },
+     {
+      "known": "他のこと",
+      "target": "else"
+     }
+    ],
+    "seed_number": 250
+   },
+   "is_new": null,
+   "phrases": []
+  },
+  "S0250L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0250L03",
+    "type": "M",
+    "known_text": "教えてくれますか",
+    "target_text": "can you tell me",
+    "components": [
+     {
+      "known": "教える",
+      "target": "tell"
+     },
+     {
+      "known": "てくれますか",
+      "target": "can you"
+     }
+    ],
+    "seed_number": 250
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0250L03C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "教える",
+     "target_text": "tell",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T23:19:01.933559+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bba088b2-ff4d-4d9e-8b75-367e5fe4c582",
+     "target1_audio_id": "6701be8a-b96f-4b4d-9ee4-8351953691cf",
+     "target2_audio_id": "604b4428-7e25-4085-9e14-db62bee3bfe5",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 600,
+     "target2_duration_ms": 672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教える",
+       "legoId": "S0070L01",
+       "target": "tell",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "beb88e58-2e34-4278-b8e8-d91dcbf12246",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "てくれますか",
+     "target_text": "can you?",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T17:30:01.966362+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f6242567-24d7-4c02-ad14-155596ea4a14",
+     "target1_audio_id": "08d5351a-7b10-46e5-a0aa-bb7c1d1f3b60",
+     "target2_audio_id": "00d8644c-d05a-4571-a8ea-fcf6f558d518",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 648,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "〜していただけますか",
+       "legoId": "S0150L03",
+       "target": "can you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "教えてくれますか",
+     "target_text": "can you tell me?",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-28T17:29:52.097465+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bb2b895c-1e2f-47a9-885c-31ac2bdf58d1",
+     "target1_audio_id": "c72f88c3-1611-428a-90b1-e5d757fa390a",
+     "target2_audio_id": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "教えてくれますか、あなたの名前は何ですか？",
+     "target_text": "can you tell me what your name is?",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:29:52.073789+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8d9aa82f-4a82-4d3d-8ce6-f3bbc79a0d60",
+     "target1_audio_id": "0e9ecf91-f220-4819-89f0-b830102877db",
+     "target2_audio_id": "cb2c714d-7ee5-4151-8bd2-c32a38d76186",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "お名前",
+       "legoId": "S0150L02",
+       "target": " your name",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "答える前に何か教えてくれますか？",
+     "target_text": "can you tell me something else before I answer?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:32:03.678546+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "db2731e0-d2df-4b76-8cb1-05905853f5eb",
+     "target1_audio_id": "9c87b730-3448-4ae3-af2d-545592595006",
+     "target2_audio_id": "886174fb-9779-465f-9b19-8055f9e47a05",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2520,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何か他のこと",
+       "legoId": "S0250L02",
+       "target": " something else",
+       "isGhost": false
+      },
+      {
+       "known": "答える前に",
+       "legoId": "S0250L01",
+       "target": " before I answer",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "どこに行きたいか教えてくれますか？",
+     "target_text": "can you tell me where you want to go?",
+     "word_count": 36,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "41eafda6-d8cd-4220-a625-1de29de4b68e",
+     "target1_audio_id": "6d8d292c-09be-4cd2-95a7-151f1c9b8ae6",
+     "target2_audio_id": "e4f7cac9-d2c8-4da6-8a77-134d7be5a6c0",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "どこに",
+       "legoId": "S0070L02",
+       "target": " where",
+       "isGhost": false
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " go?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "なぜそれが重要か教えてくれますか？",
+     "target_text": "can you tell me why it is important?",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ba51819e-0ff8-48d9-852f-8870fa617e9f",
+     "target1_audio_id": "ee1391c4-0e0b-4c25-8031-eb6ef85f76d2",
+     "target2_audio_id": "fcfc33b7-e38c-4923-ba51-0f8375467f86",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2280,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "理由",
+       "legoId": "S0127L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": " it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "重要な",
+       "legoId": "S0065L01",
+       "target": " important",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "何が必要か教えてくれますか？",
+     "target_text": "can you tell me what you need?",
+     "word_count": 29,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-14T10:58:56.800061+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "46058b5f-01ca-4c07-9a7f-a25ef26c0630",
+     "target1_audio_id": "bd90e400-d9fb-443e-b12f-414e747defd6",
+     "target2_audio_id": "a4d40bbd-a7b9-46e0-b1ed-ebce7b25e038",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何が必要か",
+       "legoId": "S0170L02",
+       "target": " what you need",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "ebd54d29-ea26-4780-aecf-c65a55fd55f4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "今週末どこで会いたいか教えてくれますか？",
+     "target_text": "can you tell me where you want to meet at the weekend?",
+     "word_count": 53,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:06.182Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "794e5aa8-2a3a-4321-9fe1-540f5648bfa8",
+     "target1_audio_id": "7c92f46a-a445-4a61-a942-a458ae0e736e",
+     "target2_audio_id": "22c72ab0-de4f-456d-928f-8a1192017c1b",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "どこに",
+       "legoId": "S0070L02",
+       "target": " where",
+       "isGhost": false
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " meet",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " at",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "週末",
+       "legoId": "S0214L01",
+       "target": " weekend",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "明日の朝何をしたいか教えてくれますか？",
+     "target_text": "can you tell me what you want to do tomorrow morning?",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:06.182Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f25f4eff-d607-4079-9509-6e607895755e",
+     "target1_audio_id": "0e77fcd3-5689-46ec-bfde-98886e29a1ed",
+     "target2_audio_id": "c5792dcf-4b82-4469-9a86-46e238a4be71",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2856,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "明日の朝",
+       "legoId": "S0155L04",
+       "target": " tomorrow morning",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "何か違うことを話してくれますか？もう少し時間をください",
+     "target_text": "can you tell me something else because I need a little more time?",
+     "word_count": 64,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:06.182Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c41ed996-6afe-4917-9c98-351edc35f2a4",
+     "target1_audio_id": "a949ef95-f5e3-423b-83bf-9cacd7b1c36d",
+     "target2_audio_id": "4ae09479-9551-45ba-b499-be17862dfba0",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 3432,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何か他のこと",
+       "legoId": "S0250L02",
+       "target": " something else",
+       "isGhost": false
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "必要です",
+       "legoId": "S0096L04",
+       "target": " I need",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0096L05",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "時間",
+       "legoId": "S0096L06",
+       "target": " time",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "何について話したいか教えてくれますか？来週別のことについて話しましょう",
+     "target_text": "can you tell me what you want to talk about because I want to talk about something different next week?",
+     "word_count": 102,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:06.182Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "684e5334-a9d8-4435-a8f2-3dd63605ea09",
+     "target1_audio_id": "1e94006a-ceff-4f38-a731-9b6fa3c0dfb6",
+     "target2_audio_id": "6d9c821f-0611-47a0-8a0e-54d56162a1a7",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 5640,
+     "target2_duration_ms": 5760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "違うこと",
+       "legoId": "S0186L02",
+       "target": " something different",
+       "isGhost": false
+      },
+      {
+       "known": "来週",
+       "legoId": "S0186L01",
+       "target": " next week",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 15,
+     "known_text": "今どんな気持ちか教えてくれますか？",
+     "target_text": "can you tell me how you feel at the moment?",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:06.182Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "50a9aa6c-39b1-4c89-af9a-de1bb6712a29",
+     "target1_audio_id": "e97a0632-757d-4772-aacb-850d1417d569",
+     "target2_audio_id": "78aa9f8c-4735-4b4d-b87c-1d7fb4c90ac2",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2496,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " how",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "今のところ",
+       "legoId": "S0040L02",
+       "target": " at the moment",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0250L03U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 250,
+     "lego_index": 3,
+     "position": 16,
+     "known_text": "あなたが何を必要としているか教えてくれますか？とても助かります",
+     "target_text": "can you tell me what you need and that would be very helpful?",
+     "word_count": 60,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:06.182Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:06.292703+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "54c23528-144e-49c4-bd21-fdf06df247f7",
+     "target1_audio_id": "a723d2d8-1b83-4c27-93bd-f8391b035568",
+     "target2_audio_id": "c6f66335-ceba-4a8b-8ddb-e71f7b5ac643",
+     "qa_checked": "2026-02-17T12:28:46.566+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何が必要か",
+       "legoId": "S0170L02",
+       "target": " what you need",
+       "isGhost": false
+      },
+      {
+       "known": "そして",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "それはとても助かります",
+       "legoId": "S0172L01",
+       "target": " that would be very helpful",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

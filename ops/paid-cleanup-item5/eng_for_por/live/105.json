@@ -1,0 +1,1442 @@
+{
+ "seed": 105,
+ "seed_pair": {
+  "known": "É por isso que ele não sabia a resposta.",
+  "target": "That is why he didn't know the answer."
+ },
+ "legos": {
+  "S0105L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0105L01",
+    "type": "M",
+    "known_text": "não sabia",
+    "target_text": "didn't know",
+    "components": [
+     {
+      "known": "não",
+      "target": "didn't"
+     },
+     {
+      "known": "sabia",
+      "target": "know"
+     }
+    ],
+    "seed_number": 105
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0105L01C01",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "não",
+     "target_text": "didn't",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T23:18:40.255215+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0493c439-b935-4cf3-a411-bccefdc06e74",
+     "target1_audio_id": "cfa44fc7-f833-4845-9fc7-08a6ff415485",
+     "target2_audio_id": "39eec7ab-e7bc-466e-858d-4bd093a7e955",
+     "qa_checked": null,
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "didn't",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c01106ca-0e5f-4a97-9e32-1a71a1b401a7",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01C02",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "sabia",
+     "target_text": "know",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T21:54:10.355606+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f8f8d485-f594-4757-9591-60c396a2a8ca",
+     "target1_audio_id": "2be93a33-dfc6-4690-aef2-a55141f2a3ca",
+     "target2_audio_id": "8a3259b8-ae69-469d-9b0f-4da4136bf784",
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "know",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01B01",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "não sabia",
+     "target_text": "didn't know",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-10-12T10:37:43.813894+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "becac602-94d3-408e-9147-7bcae1f4c791",
+     "target1_audio_id": "f118af13-fd5f-4819-9c79-59c87e857e35",
+     "target2_audio_id": "56fef47d-19fb-4068-94ff-37059ee52426",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": "didn't know",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "658f4cac-0e75-4058-8a04-b91f003e1599",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01B02",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ele não sabia",
+     "target_text": "he didn't know",
+     "word_count": 14,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T17:29:05.137184+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8d2552e1-8ef6-4698-abc2-5bc0a5d0f159",
+     "target1_audio_id": "7069921c-b9ae-4f8a-b29d-7265ce5f1f6e",
+     "target2_audio_id": "5a24a5c4-4a9e-4855-a4b1-8a77a0aaa462",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "he",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01B03",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "ele não sabia a resposta",
+     "target_text": "he didn't know the answer",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T18:40:22.438818+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d904cb61-76b0-4914-9844-46d8328305f6",
+     "target1_audio_id": "a190d38a-308e-4c96-b65a-0db8ae3f783d",
+     "target2_audio_id": "7cd43986-42ef-4ba7-aabe-09c51b069fde",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "he",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " answer",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01U01",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "acho que ele não sabia a resposta",
+     "target_text": "I think he didn't know the answer",
+     "word_count": 33,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.170Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:51.649955+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dd9c3fd1-2aaa-42ca-9d63-d4e89b865b82",
+     "target1_audio_id": "04ec24bd-1c0e-4d69-a02f-757e288608e7",
+     "target2_audio_id": "b5e2d9f5-0908-4a2a-b23e-539b0c71be3a",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " answer",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01U02",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "não sabia que não estava a funcionar",
+     "target_text": "I didn't know it wasn't working",
+     "word_count": 31,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.170Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:03.705568+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9a58d18d-b61e-4040-9288-bf7c0475e777",
+     "target1_audio_id": "f0d20516-d01f-4d0e-a534-3c4d4cd3ea4e",
+     "target2_audio_id": "dfb52a06-ad0a-4350-835f-b5e37a40b1ed",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wasn't",
+       "isGhost": true
+      },
+      {
+       "known": "a funcionar",
+       "legoId": "S0099L01",
+       "target": " working",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01U03",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "não sabia o que estávamos a fazer",
+     "target_text": "I didn't know what we're doing",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.170Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:55.606896+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2f2ff989-3220-4696-9eaf-64876284aeec",
+     "target1_audio_id": "ebe55615-9394-4ec3-bb7e-1cccc79a435c",
+     "target2_audio_id": "4e527638-c593-4d49-8117-1dd4db28b402",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "estamos a fazer",
+       "legoId": "S0104L02",
+       "target": " we're doing",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01U04",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "infelizmente ele não sabia a resposta",
+     "target_text": "unfortunately he didn't know the answer",
+     "word_count": 39,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.170Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T19:42:25.982786+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "29796ed7-7c01-4e6d-864d-4674f0983e2f",
+     "target1_audio_id": "02b654d6-eb0a-4413-b74b-a15a77c70be8",
+     "target2_audio_id": "6679e9a3-3755-4b93-bef7-72a25a1eaa1d",
+     "qa_checked": null,
+     "target1_duration_ms": 3552,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "infelizmente",
+       "legoId": "S0086L01",
+       "target": "unfortunately",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " answer",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01U05",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "não sabia que precisávamos de mudar",
+     "target_text": "I didn't know we need to change",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.170Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:52.876024+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b2a885a6-5f38-4059-95db-e0a1ef5b9add",
+     "target1_audio_id": "1b7d9ef9-7442-4ca8-b0d2-0665ca0ec85c",
+     "target2_audio_id": "5a293053-705b-4a96-9bc5-fd8e59c1ca96",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "precisamos de",
+       "legoId": "S0104L03",
+       "target": " we need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " change",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L01U06",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "não sabia que era assim",
+     "target_text": "I didn't know it's like that",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.170Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:57.118765+00:00",
+     "created_at": "2026-02-25T03:36:25.238132+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f2337d84-53c7-48ff-9380-4a9f5d5992a0",
+     "target1_audio_id": "bbd45573-2f66-4d32-984e-2c49d9413de9",
+     "target2_audio_id": "a9130b2f-423c-42bb-b166-c90b52924af5",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "assim",
+       "legoId": "S0102L01",
+       "target": " like that",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0105L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0105L02",
+    "type": "M",
+    "known_text": "é por isso que",
+    "target_text": "that is why",
+    "components": [
+     {
+      "known": "é",
+      "target": "that is"
+     },
+     {
+      "known": "por isso que",
+      "target": "why"
+     }
+    ],
+    "seed_number": 105
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0105L02C01",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "é",
+     "target_text": "that is",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T23:18:59.92937+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7674a9e2-e43d-40d9-a783-ccd21e8c9349",
+     "target1_audio_id": "bc4109d2-744e-4b71-a3bf-45a2258f46db",
+     "target2_audio_id": "16fcaad9-6ed3-4d08-95ab-bf9b1e9accac",
+     "qa_checked": null,
+     "target1_duration_ms": 1512,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c01106ca-0e5f-4a97-9e32-1a71a1b401a7",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02C02",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "por isso que",
+     "target_text": "why",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T21:47:21.286381+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ef041dfc-780e-4a38-97c3-90ebf18f6395",
+     "target1_audio_id": "f7fd3561-4624-4486-a9a4-ff5a675e1f18",
+     "target2_audio_id": "9ff1ea37-64ce-4784-87ee-814e5b7724e9",
+     "qa_checked": null,
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "porque é que",
+       "legoId": "S0021L03",
+       "target": "why",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02B01",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "é por isso que",
+     "target_text": "that is why",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T17:29:04.552512+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1fbff1ad-51c5-4891-ba3f-5153298fd7d0",
+     "target1_audio_id": "4928d5b4-92b6-4380-902e-45075d8ff8d3",
+     "target2_audio_id": "7f74c303-ebda-46ce-8b94-3e7e9465cf83",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02B02",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "é por isso que ele não sabia",
+     "target_text": "that is why he didn't know",
+     "word_count": 26,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:03.325776+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e4755152-c020-487f-8cb6-1206c89a3331",
+     "target1_audio_id": "c9253f00-0c0b-4df3-9b52-337a8e2fa880",
+     "target2_audio_id": "3c5f28ad-6351-4601-accd-bdd6a60401ac",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02B03",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "é por isso que ele não sabia a resposta",
+     "target_text": "that is why he didn't know the answer",
+     "word_count": 37,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:29:04.787685+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3ac27ca2-5346-4213-9e26-79c8d055536d",
+     "target1_audio_id": "db65f0b4-a7d4-44e0-aac2-f42b0dae28a0",
+     "target2_audio_id": "c62a14d3-3160-4f2e-acdc-355528749705",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " answer",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02U01",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "É por isso que não está a funcionar",
+     "target_text": "that is why it isn't working",
+     "word_count": 28,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.276Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:54.202791+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0219b7ea-52ae-4ff9-b417-67a9ac15685b",
+     "target1_audio_id": "027f1729-4c29-4ad8-865f-3df46b30866c",
+     "target2_audio_id": "9c444ba3-fb98-43f3-b7f4-649eeaa64284",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "não é",
+       "legoId": "S0064L01",
+       "target": " it isn't",
+       "isGhost": false
+      },
+      {
+       "known": "a funcionar",
+       "legoId": "S0099L01",
+       "target": " working",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02U02",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "É por isso que precisamos de mudar o que estamos a fazer",
+     "target_text": "that is why we need to change what we're doing",
+     "word_count": 46,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.276Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T22:52:06.65267+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "24a09532-25b7-4bba-9ff1-0d74e4ad21e2",
+     "target1_audio_id": "5ff9dfaf-cfc3-4371-a295-9e7f0eedd0e4",
+     "target2_audio_id": "aaaaf666-565a-4e08-bf0a-e98ed97d8278",
+     "qa_checked": null,
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "precisamos de",
+       "legoId": "S0104L03",
+       "target": " we need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " change",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "estamos a fazer",
+       "legoId": "S0104L02",
+       "target": " we're doing",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb505d52-f41c-4e8d-b674-cd77bca380c8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02U03",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "acho que é por isso que não sabia",
+     "target_text": "I think that is why I didn't know",
+     "word_count": 33,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.277Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:55.91987+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fb2e67cf-7f5c-4641-9bc6-3c0db938c8e2",
+     "target1_audio_id": "ffde5ca2-f6e3-4ffd-bc69-6bf55cda5069",
+     "target2_audio_id": "7fc1e16f-2fb5-46b3-9588-b74b63ffa05e",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": " that is why",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02U04",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "É por isso que devias perguntar a ti mesmo",
+     "target_text": "that is why you should ask yourself",
+     "word_count": 35,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.277Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:37:47.518806+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d560bd7d-6a40-4863-aa94-49cfa77ca1d4",
+     "target1_audio_id": "965cc653-e920-4c14-94b4-70f6cc48cd3b",
+     "target2_audio_id": "72b6ad17-287b-4e5c-8c74-72346b770164",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "devias",
+       "legoId": "S0099L03",
+       "target": " you should",
+       "isGhost": false
+      },
+      {
+       "known": "perguntar a si mesmo",
+       "legoId": "S0099L02",
+       "target": " ask yourself",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0105L02U05",
+     "course_code": "eng_for_por",
+     "seed_number": 105,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "É por isso que não estou pronta ainda",
+     "target_text": "that is why I'm not ready yet",
+     "word_count": 29,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:36:25.277Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-06-02T22:37:43.250727+00:00",
+     "created_at": "2026-02-25T03:36:25.337249+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3974262b-aa56-4a0f-90ff-198e944b13c7",
+     "target1_audio_id": "a3022fff-22db-4062-a191-8e4140013aa9",
+     "target2_audio_id": "cd08e976-72c5-4941-a892-fd8a1655b1ac",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ready",
+       "isGhost": true
+      },
+      {
+       "known": "ainda",
+       "legoId": "S0060L01",
+       "target": " yet",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

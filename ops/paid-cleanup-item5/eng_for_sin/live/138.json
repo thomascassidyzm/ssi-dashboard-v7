@@ -1,0 +1,965 @@
+{
+ "seed": 138,
+ "seed_pair": {
+  "known": "ඒ තැනයි මගේ යාළුවා අපිව හමු වෙන්නට ඕනේ කිව්වේ.",
+  "target": "This was where my friend wanted to meet us."
+ },
+ "legos": {
+  "S0138L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0138L01",
+    "type": "A",
+    "known_text": "අපිට",
+    "target_text": "us",
+    "components": [],
+    "seed_number": 138
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0138L01B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "අපිට මුණ ගැහෙන්න ඕනේ",
+     "target_text": "want to meet us",
+     "word_count": 17,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-07-31T09:08:02.180556+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "eb672059-5c41-4bc3-87da-f8bd8e69d25a",
+     "target1_audio_id": "3fb43667-867f-4139-a18a-b43a9550667c",
+     "target2_audio_id": "1a041e7b-709b-4c59-93ac-203776f8f05d",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 1176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "want",
+       "isGhost": true
+      },
+      {
+       "known": "හම්බවෙන්න",
+       "legoId": "S0018L02",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "මගේ යාළුවා අපිට මුණ ගැහෙන්න ඕනේ වුණා",
+     "target_text": "my friend wanted to meet us",
+     "word_count": 29,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 34,
+     "updated_at": "2026-10-28T22:52:12.585125+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c56e3c10-e79a-4fcd-a105-15d4ddf8a159",
+     "target1_audio_id": "88530e0a-4e3c-4391-a95a-ed3826dc0941",
+     "target2_audio_id": "75e7bef7-6ed1-4751-8566-83d8ce98a3ea",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "my",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wanted",
+       "isGhost": true
+      },
+      {
+       "known": "හම්බවෙන්න",
+       "legoId": "S0018L02",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa7afa33-1ff6-4522-ae81-becfbbb0a372",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "මේ තැන මගේ යාළුවා අපිට මුණ ගැහෙන්න ඕනේ වුණ තැන",
+     "target_text": "this was where my friend wanted to meet us",
+     "word_count": 44,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 37,
+     "updated_at": "2026-10-28T17:29:36.877689+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f375242d-07a3-4721-8a85-0bc18c7655eb",
+     "target1_audio_id": "9fe3b348-c222-4879-9663-c7035130c228",
+     "target2_audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5",
+     "qa_checked": null,
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "this",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "කොහේද",
+       "legoId": "S0070L02",
+       "target": " where",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wanted",
+       "isGhost": true
+      },
+      {
+       "known": "හම්බවෙන්න",
+       "legoId": "S0018L02",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ඔයාට අපිට මුණ ගැහෙන්න ඕනේද",
+     "target_text": "do you want to meet us?",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-07-31T09:08:02.324699+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "19b36c79-e01b-4d09-a024-8e790fe622fa",
+     "target1_audio_id": "dd2a4c07-53c5-40ae-8196-73025b4f9f5d",
+     "target2_audio_id": "668f229f-d724-4b7e-a12d-47c46bc6a794",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1296,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඔයාට ඕනේද",
+       "legoId": "S0081L01",
+       "target": "do you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " meet",
+       "isGhost": true
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "අපිට කියන්න",
+     "target_text": "tell us",
+     "word_count": 9,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-07-31T09:08:02.370711+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "563a4128-fdec-4714-81a2-ce04f59360a3",
+     "target1_audio_id": "efe040eb-1070-4bbe-bfe5-9864bcb9f4ae",
+     "target2_audio_id": "8b61a033-710b-4043-b045-13b5eaa616b8",
+     "qa_checked": null,
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "පවසන්න",
+       "legoId": "S0070L01",
+       "target": "tell",
+       "isGhost": false
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ඔයාට අපිට කතා කරන්න ඕනේද",
+     "target_text": "do you want to talk to us?",
+     "word_count": 27,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-07-31T09:08:02.41646+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a0a160a1-c64b-423f-ab5f-88949e09c4e4",
+     "target1_audio_id": "87a6157f-bacb-47e6-950c-6335013e7a84",
+     "target2_audio_id": "d8302e8f-7add-4409-a08b-e0c51d93bc97",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1488,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඔයාට ඕනේද",
+       "legoId": "S0081L01",
+       "target": "do you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "ඔහු අපිට මුණ ගැහෙන්න ඕනේ වුණා",
+     "target_text": "he wanted to meet us",
+     "word_count": 22,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-07-31T09:08:02.463592+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "31dbf92c-8878-409a-bb51-b1a3e7de5f0d",
+     "target1_audio_id": "64bc8e18-ea9c-4bed-8bac-7199d1a89ab2",
+     "target2_audio_id": "05aa1e9a-e2bc-4003-8476-1bde44df5cb5",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "he",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wanted",
+       "isGhost": true
+      },
+      {
+       "known": "හම්බවෙන්න",
+       "legoId": "S0018L02",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "ඇය අපිට කිව්වා",
+     "target_text": "she said to us",
+     "word_count": 16,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-07-31T09:08:02.557146+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "54427824-1e2d-4a62-886d-cfc362a01ec0",
+     "target1_audio_id": "d31ba483-7f66-42d9-9d9d-bb99df1f0b2c",
+     "target2_audio_id": "f8a4b3e1-1c2b-4c98-86e3-4a661bb272a3",
+     "qa_checked": null,
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "she",
+       "isGhost": true
+      },
+      {
+       "known": "කිව්ව",
+       "legoId": "S0078L01",
+       "target": " said",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "අපිට බලාපොරොත්තු වෙන්න",
+     "target_text": "wait for us",
+     "word_count": 13,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-07-31T09:08:02.602661+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3ef98f4d-733a-4bbd-a9c6-c4e3a76a8bca",
+     "target1_audio_id": "5e3822e6-bec0-41d6-a989-fda4716dadf3",
+     "target2_audio_id": "3bce875e-e671-4bf0-8fe4-b208937d8381",
+     "qa_checked": null,
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "wait",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "ඔයා අපිට එකට වැඩ කරන්න ඕනේද",
+     "target_text": "do you want to work with us?",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-07-31T09:08:02.650754+00:00",
+     "created_at": "2026-03-20T14:40:18.029555+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d771db21-b818-468e-8d63-fd84eb28e229",
+     "target1_audio_id": "8c59c3b0-a7e5-4817-b738-41a87637b9d4",
+     "target2_audio_id": "cb9c0061-6b24-4e17-a23e-ff0d7dbf93bf",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඔයාට ඕනේද",
+       "legoId": "S0081L01",
+       "target": "do you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " work",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "ඔයා අපිට කතා කරන්න ලෑස්තිද",
+     "target_text": "are you ready to talk to us?",
+     "word_count": 29,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-07-31T09:08:02.696027+00:00",
+     "created_at": "2026-03-20T14:40:18.180753+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b28d0bc1-f570-4d6f-9d4a-b07e4360b7eb",
+     "target1_audio_id": "a68461c9-a5b0-4ad5-ba40-90ce9e83bb6b",
+     "target2_audio_id": "4e66a76f-eb86-4009-bd90-23ba04093877",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ready",
+       "isGhost": true
+      },
+      {
+       "known": "කතාබහ කරන්න",
+       "legoId": "S0088L01",
+       "target": " to talk",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U09",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "ඔයාට අපිට ඉගෙන්වන්න පුළුවන්ද",
+     "target_text": "can you to help us to learn?",
+     "word_count": 29,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 34,
+     "updated_at": "2026-07-31T09:08:02.742933+00:00",
+     "created_at": "2026-03-20T14:40:18.180753+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "279f29fb-81f9-4c2d-90c8-09d79f0ddfba",
+     "target1_audio_id": "e05f0515-9110-4876-aff2-6bdaa0bf7f33",
+     "target2_audio_id": "bd9d5c15-17c9-41db-8a93-8d03a0e75a7c",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "can",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "උදව් කරන්න",
+       "legoId": "S0025L01",
+       "target": " to help",
+       "isGhost": false
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      },
+      {
+       "known": "ඉගෙනගන්න",
+       "legoId": "S0002L01",
+       "target": " to learn",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0138L01U10",
+     "course_code": "eng_for_sin",
+     "seed_number": 138,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "අපිට මුණ ගැහෙන්න ආකර්ශනීයයි",
+     "target_text": "it's exciting to meet us",
+     "word_count": 26,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:40:18.104Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:08:02.788936+00:00",
+     "created_at": "2026-03-20T14:40:18.180753+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5be92f48-1d6f-4abf-ac0c-8b847fc886b5",
+     "target1_audio_id": "28f505e0-c06d-457d-bd7a-d9e4737c0322",
+     "target2_audio_id": "ea5e2e1f-ef89-41a5-bc17-bbf7ee3c555c",
+     "qa_checked": null,
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "ආකර්ශනීය",
+       "legoId": "S0132L02",
+       "target": " exciting",
+       "isGhost": false
+      },
+      {
+       "known": "හම්බවෙන්න",
+       "legoId": "S0018L02",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "අපිට",
+       "legoId": "S0138L01",
+       "target": " us",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "target_text": "We didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "We didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "we didn't hope to wake up",
+    "components": [
+     {
+      "known": "깨기를",
+      "target": "to wake up"
+     },
+     {
+      "known": "바라지 않았어요",
+      "target": "we didn't hope"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02C01",
+   "set": {
+    "target_text": "to wake up"
+   },
+   "expect": {
+    "target_text": "to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02B01",
+   "set": {
+    "target_text": "we didn't hope to wake up"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02B02",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02B03",
+   "set": {
+    "target_text": "we didn't hope to wake up now"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U01",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U02",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night tonight"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night tonight"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U04",
+   "set": {
+    "target_text": "that is why we didn't hope to wake up"
+   },
+   "expect": {
+    "target_text": "that is why we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U05",
+   "set": {
+    "target_text": "we didn't hope to wake up just now"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake just now"
+   }
+  }
+ ]
+}

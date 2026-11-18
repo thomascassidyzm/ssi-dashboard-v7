@@ -1,0 +1,821 @@
+{
+ "seed": 253,
+ "seed_pair": {
+  "known": "Ich sollte in ein paar Minuten bereit sein.",
+  "target": "I should be ready in a few minutes."
+ },
+ "legos": {
+  "S0253L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0253L01",
+    "type": "M",
+    "known_text": "ich sollte",
+    "target_text": "I should",
+    "components": [
+     {
+      "known": "ich",
+      "target": "I"
+     },
+     {
+      "known": "sollte",
+      "target": "should"
+     }
+    ],
+    "seed_number": 253
+   },
+   "is_new": null,
+   "phrases": []
+  },
+  "S0253L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0253L02",
+    "type": "M",
+    "known_text": "in ein paar Minuten",
+    "target_text": "in a few minutes",
+    "components": [
+     {
+      "known": "in",
+      "target": "in"
+     },
+     {
+      "known": "ein paar",
+      "target": "a few"
+     },
+     {
+      "known": "Minuten",
+      "target": "minutes"
+     }
+    ],
+    "seed_number": 253
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_deu:S0253L02C01",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "in",
+     "target_text": "in",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-12T17:32:13.362746+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9f077f40-fdbb-4da4-bb6a-79ac76677982",
+     "target1_audio_id": "a3c63c7f-eb55-4d9d-b50a-a9e021eb3744",
+     "target2_audio_id": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "in",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02C02",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "ein paar",
+     "target_text": "a few",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:52:12.744515+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "109affcf-1816-457e-9203-ebc95f089fb4",
+     "target1_audio_id": "fcece79b-4a27-4f6c-9620-4022e466de3d",
+     "target2_audio_id": "b7c06988-d344-4a78-a5cf-8c5c83224380",
+     "qa_checked": null,
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " few",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02C03",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "Minuten",
+     "target_text": "minutes",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-12T17:08:14.904751+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "86954618-62c1-49b6-bebf-3cd0b8a62add",
+     "target1_audio_id": "a863dedb-0218-45a8-8917-23cc9dd8122c",
+     "target2_audio_id": "bed52d24-8e8b-4c95-bef6-0a87bf8e37f2",
+     "qa_checked": null,
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 1120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "minutes",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02B01",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "in ein paar Minuten",
+     "target_text": "in a few minutes",
+     "word_count": 16,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T17:29:58.17168+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d291d91f-959f-44e5-8a3c-fae2fc8d88ad",
+     "target1_audio_id": "897f3cd0-4d84-495c-abea-c66d6d373d4e",
+     "target2_audio_id": "015dbec8-36bd-4140-9299-53e44fd7ee84",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": "in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02B02",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "bereit sein in ein paar Minuten",
+     "target_text": "be ready in a few minutes",
+     "word_count": 25,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:07.288101+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "608336c2-55d3-4cf0-b71b-da7eba74b31a",
+     "target1_audio_id": "278ca971-a1e6-49b8-bdff-f06a512dcf54",
+     "target2_audio_id": "5be6a9ba-f6a3-47b8-9e62-cdfa992442b9",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "be",
+       "isGhost": true
+      },
+      {
+       "known": "bereit",
+       "legoId": "S0252L01",
+       "target": " ready",
+       "isGhost": false
+      },
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02B03",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "ich sollte in ein paar Minuten bereit sein",
+     "target_text": "I should be ready in a few minutes",
+     "word_count": 34,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T17:32:07.982406+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a3d56db7-b097-4c9d-87b1-5db39de96432",
+     "target1_audio_id": "8681fbad-66fc-4de0-9d50-06423b8b41d5",
+     "target2_audio_id": "73fc221a-9833-447c-b9c3-e37fd5be3207",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich sollte",
+       "legoId": "S0098L01",
+       "target": "I should",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "bereit",
+       "legoId": "S0252L01",
+       "target": " ready",
+       "isGhost": false
+      },
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02U01",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "er wird in ein paar Minuten fertig sein",
+     "target_text": "he is going to be done in a few minutes",
+     "word_count": 39,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:06:24.820Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:24.296173+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5da84159-a67e-4256-b8b3-8a50946f8c09",
+     "target1_audio_id": "815f24b0-03b4-4868-8090-41bbad55c178",
+     "target2_audio_id": "17e3940b-5203-41f3-a1b5-f8f686022f5a",
+     "qa_checked": null,
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "he",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " going",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " done",
+       "isGhost": true
+      },
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02U02",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "kannst du in ein paar Minuten mit mir sprechen?",
+     "target_text": "can you speak with me in a few minutes?",
+     "word_count": 39,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:06:24.820Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:26.179374+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "be11846c-fb42-4d28-b93b-4a93eb84dd4c",
+     "target1_audio_id": "c11a9425-535c-44af-a986-46be61acff40",
+     "target2_audio_id": "c1e00d70-0c83-4e7b-8125-15e167150a32",
+     "qa_checked": null,
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "kannst du",
+       "legoId": "S0174L03",
+       "target": "can you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "mit mir",
+       "legoId": "S0015L02",
+       "target": " with me",
+       "isGhost": false
+      },
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02U03",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "ich werde in ein paar Minuten antworten",
+     "target_text": "I am going to answer in a few minutes",
+     "word_count": 37,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:06:24.820Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:09.951872+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f2b0ae72-faee-42ea-bef3-fe9191619fa8",
+     "target1_audio_id": "f0ab7ee9-869d-4eb1-96bf-c8b2f9b1b910",
+     "target2_audio_id": "100769dc-9791-4047-83b8-2f760fd2d689",
+     "qa_checked": null,
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 3600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " am",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " going",
+       "isGhost": true
+      },
+      {
+       "known": "antworten",
+       "legoId": "S0027L03",
+       "target": " to answer",
+       "isGhost": false
+      },
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02U04",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "er sagte, dass er in ein paar Minuten fertig ist",
+     "target_text": "he said that he is done in a few minutes",
+     "word_count": 40,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:06:24.820Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:21.4924+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "01c67e8d-f282-4e5a-b7a4-7436ae77042c",
+     "target1_audio_id": "8a91e52f-d6f9-49e0-9743-057218ee755a",
+     "target2_audio_id": "8a0fb0f8-9107-4c9d-a154-ea7e480459c7",
+     "qa_checked": null,
+     "target1_duration_ms": 3552,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "he",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " said",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " done",
+       "isGhost": true
+      },
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0253L02U05",
+     "course_code": "eng_for_deu",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "meine Mutter wird in ein paar Minuten bereit sein",
+     "target_text": "my mother is going to be ready in a few minutes",
+     "word_count": 47,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T14:06:24.820Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:32.193229+00:00",
+     "created_at": "2026-02-25T14:06:24.906893+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4191d052-2a80-4564-8e20-f60f622717f2",
+     "target1_audio_id": "04c0551a-2eee-4019-bbed-e501c61c8260",
+     "target2_audio_id": "57ab6468-2274-479a-a89c-3442921f6c62",
+     "qa_checked": null,
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 4176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "meine Mutter",
+       "legoId": "S0239L01",
+       "target": "my mother",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " going",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "bereit",
+       "legoId": "S0252L01",
+       "target": " ready",
+       "isGhost": false
+      },
+      {
+       "known": "in ein paar Minuten",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

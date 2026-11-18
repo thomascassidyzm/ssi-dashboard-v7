@@ -1,0 +1,34 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we feel happy when we don't wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we feel happy when we don't wake in the middle of the night"
+   }
+  }
+ ]
+}

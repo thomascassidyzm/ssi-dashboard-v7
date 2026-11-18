@@ -1,0 +1,1507 @@
+{
+ "seed": 123,
+ "seed_pair": {
+  "known": "ඒක හොඳ අදහසක් කියලා හිතනවා.",
+  "target": "I think that's a good idea."
+ },
+ "legos": {
+  "S0123L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0123L01",
+    "type": "A",
+    "known_text": "අදහස",
+    "target_text": "idea",
+    "components": [],
+    "seed_number": 123
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0123L01B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "ඒක හොඳ අදහසක්",
+     "target_text": "that is a good idea",
+     "word_count": 21,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-28T21:53:20.786993+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9f975290-ebb2-4481-87af-4d319cdba805",
+     "target1_audio_id": "7c1cb2ca-6481-4e83-8514-d7227a257d39",
+     "target2_audio_id": "9ed286b4-f6ba-48c4-90a1-b60fb8186cdc",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": "that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "හොඳ අදහසක්",
+     "target_text": "a good idea",
+     "word_count": 13,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-28T17:29:22.959895+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2d0fae96-396f-4337-8396-83a82097b8a1",
+     "target1_audio_id": "142308b9-2744-486f-a022-5069b1346df2",
+     "target2_audio_id": "1746d937-1cf4-4486-957b-f50c951c86e6",
+     "qa_checked": null,
+     "target1_duration_ms": 1056,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "මම හිතනවා ඒක හොඳ අදහසක් කියලා",
+     "target_text": "I think that is a good idea",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-07-31T09:07:44.914179+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "bbcd79d6-0569-44a6-a76a-47ba67873ad9",
+     "target1_audio_id": "153d9b07-a85f-4902-93be-115cb31b3647",
+     "target2_audio_id": "87387ec7-4312-4da5-8965-c9a5d263d5ec",
+     "qa_checked": null,
+     "target1_duration_ms": 1560,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම හිතනවා",
+       "legoId": "S0047L01",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ඒක හොඳම අදහසක්",
+     "target_text": "that is the best idea",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:44.961831+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c8181f22-a69d-4ef9-a24d-19ffc33ea38a",
+     "target1_audio_id": "cb0469cc-14ae-4b24-8c15-0bdbe99cba76",
+     "target2_audio_id": "d050ee55-57cc-4e47-ba00-de63b4f20526",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": "that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "හොඳම",
+       "legoId": "S0116L01",
+       "target": " best",
+       "isGhost": false
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "ඔයාගේ අදහසක් මොකක්ද",
+     "target_text": "what is your idea?",
+     "word_count": 19,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-28T21:48:36.99439+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c2c90d22-968a-4699-9c5a-1159325a36ac",
+     "target1_audio_id": "a0c14068-0298-472e-b590-8767527240b5",
+     "target2_audio_id": "ccd27492-7784-4aa1-a80e-b3a60cf60c7b",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "ඔයාගේ",
+       "legoId": "S0083L02",
+       "target": " your",
+       "isGhost": false
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ඒක වෙනස් අදහසක්",
+     "target_text": "that is a different idea",
+     "word_count": 26,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:45.06888+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5a35d361-53c0-4c85-940a-8e6ed20c2b3d",
+     "target1_audio_id": "226c778f-9e56-4ad7-96b7-d354c3ff13ab",
+     "target2_audio_id": "889fc569-6046-4335-a61c-e5775169bc62",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": "that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "විවිධ",
+       "legoId": "S0060L01",
+       "target": " different",
+       "isGhost": false
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "ඒක පහසු අදහසක්",
+     "target_text": "that is a easier idea",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:45.115861+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "89aec0d8-de64-42a2-82b5-5e3ca97d75bd",
+     "target1_audio_id": "9e92b899-0c99-40d8-9937-6162b0cb1644",
+     "target2_audio_id": "f98a8181-59fe-4a56-b136-c16357e0926b",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": "that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "පහසු",
+       "legoId": "S0122L01",
+       "target": " easier",
+       "isGhost": false
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "ඒක අසාමාන්‍ය අදහසක්",
+     "target_text": "that is a unusual idea",
+     "word_count": 24,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:45.257755+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7d355828-5a00-4933-a3ec-12da59997021",
+     "target1_audio_id": "d3772b6a-d532-44ec-8fea-857f086ab35d",
+     "target2_audio_id": "98be7009-d5ce-44ee-8446-7914613c7dcd",
+     "qa_checked": null,
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": "that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "අසාමාන්‍ය",
+       "legoId": "S0121L03",
+       "target": " unusual",
+       "isGhost": false
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "ඔයාගේ අදහසක් තියෙනවාද",
+     "target_text": "is your idea good?",
+     "word_count": 19,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 34,
+     "updated_at": "2026-07-31T09:07:45.315575+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c163f957-5709-45f0-a294-cdf6792b7533",
+     "target1_audio_id": "08a6c001-d2db-44f2-8da9-2b97c9c30057",
+     "target2_audio_id": "21a1c2e6-d1e4-4cb5-83c7-2804b22cb76b",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "is",
+       "isGhost": true
+      },
+      {
+       "known": "ඔයාගේ",
+       "legoId": "S0083L02",
+       "target": " your",
+       "isGhost": false
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "අදහසක් ඕනේ",
+     "target_text": "I want a idea",
+     "word_count": 15,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-07-31T09:07:45.374427+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d981aeb3-563b-4575-b3a3-08f25bdf4897",
+     "target1_audio_id": "455ec1f8-7159-46e4-a33f-458bb641fa69",
+     "target2_audio_id": "b4f51ed5-4b7e-43c2-beab-2b5f99ad0771",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මට ඕනේ",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L01U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "ඒක හොඳ අදහසක් නෙමෙයි",
+     "target_text": "that isn't a good idea",
+     "word_count": 24,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:25.995Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-28T17:30:01.422486+00:00",
+     "created_at": "2026-03-20T14:22:26.086825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2a11819d-a877-4645-af4f-13a71e27365d",
+     "target1_audio_id": "1aaca825-d3cf-41ee-9997-372703656370",
+     "target2_audio_id": "58901143-eb91-47b3-98d0-cdc9d3197273",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": "that",
+       "isGhost": false
+      },
+      {
+       "known": "නැත",
+       "legoId": "S0064L02",
+       "target": " isn't",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0123L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0123L02",
+    "type": "A",
+    "known_text": "ඒක",
+    "target_text": "that's",
+    "components": [],
+    "seed_number": 123
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0123L02B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "ඒක හොඳයි",
+     "target_text": "that's good",
+     "word_count": 13,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-12T18:45:05.216896+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9b56d06d-d352-4b88-97d7-e05f870f4389",
+     "target1_audio_id": "150111a3-061d-4f13-a653-4a5855fc8572",
+     "target2_audio_id": "3c7227ef-1fc8-46e5-a252-def28518db73",
+     "qa_checked": null,
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "ඒක හොඳ අදහසක්",
+     "target_text": "that's a good idea",
+     "word_count": 20,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-28T17:29:22.975112+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9f975290-ebb2-4481-87af-4d319cdba805",
+     "target1_audio_id": "fb1157c0-37dd-4791-9273-dfa4662ff640",
+     "target2_audio_id": "041af3ef-061a-4bce-b1de-1b430a01cc70",
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "ඒක හොඳ අදහසක් කියලා හිතනවා",
+     "target_text": "I think that's a good idea",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 34,
+     "updated_at": "2026-10-28T23:19:34.133228+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "27903fa2-1046-4e2c-92ca-95271c45c41e",
+     "target1_audio_id": "e5ca13aa-d24b-4435-b6eb-6ab32b6d0455",
+     "target2_audio_id": "3e8275a4-bd83-4c5a-834b-346c669f19a3",
+     "qa_checked": null,
+     "target1_duration_ms": 1560,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම හිතනවා",
+       "legoId": "S0047L01",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": " that's",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "අදහස",
+       "legoId": "S0123L01",
+       "target": " idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "ඒක රසවත්",
+     "target_text": "that's interesting",
+     "word_count": 20,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-29T00:15:15.732663+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1bbb3e4f-1dbb-4391-add0-f580a206c628",
+     "target1_audio_id": "209f2c23-b402-40dd-897c-e4322153224b",
+     "target2_audio_id": "3e72ecce-0448-4811-9ef4-1ee21554ccde",
+     "qa_checked": null,
+     "target1_duration_ms": 1032,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " interesting",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa7afa33-1ff6-4522-ae81-becfbbb0a372",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "ඒක අමාරුයි",
+     "target_text": "that's difficult",
+     "word_count": 18,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:45.662785+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e376ea32-b4bf-4ced-b8e6-3f54459c821d",
+     "target1_audio_id": "b33ff3f7-432f-4385-ba59-a19efabf6f3e",
+     "target2_audio_id": "8854a9a3-fbe3-47a3-8f3a-ce9f5bbcdced",
+     "qa_checked": null,
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 1008,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "අමාරු",
+       "legoId": "S0066L01",
+       "target": " difficult",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "ඒක පහසුයි",
+     "target_text": "that's easier",
+     "word_count": 15,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:45.780256+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ae52975c-d04f-4b28-a93b-3e55df20cf92",
+     "target1_audio_id": "2320d9f3-024e-47ae-b48b-d96274693fb0",
+     "target2_audio_id": "ceefbd43-5c2e-4684-92f7-3128d64910da",
+     "qa_checked": null,
+     "target1_duration_ms": 1056,
+     "target2_duration_ms": 1272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "පහසු",
+       "legoId": "S0122L01",
+       "target": " easier",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "ඒක අසාමාන්‍යයි",
+     "target_text": "that's unusual",
+     "word_count": 16,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-28T23:19:33.424281+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7d3402f4-6249-439b-a2b3-17dc3b37aa30",
+     "target1_audio_id": "1d19947e-b289-44c0-8ea6-006cefec0e33",
+     "target2_audio_id": "799a10fd-99ad-4b23-ae4b-1521a306d35f",
+     "qa_checked": null,
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "අසාමාන්‍ය",
+       "legoId": "S0121L03",
+       "target": " unusual",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "ඒක වැදගත්",
+     "target_text": "it's important",
+     "word_count": 18,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 38,
+     "updated_at": "2026-10-28T21:50:32.481077+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "170e60ea-026d-4831-b695-049545cb7575",
+     "target1_audio_id": "143d2cbf-eb3e-47b1-bc14-0b533081ca46",
+     "target2_audio_id": "247dcc1e-ba9c-466a-b889-d22440667637",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "වැදගත්",
+       "legoId": "S0065L01",
+       "target": " important",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "ඒක ඇයි එහෙම",
+     "target_text": "that's why",
+     "word_count": 12,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-13T08:13:25.441461+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "062c1ff7-4f45-403a-a4f8-f26e66e13907",
+     "target1_audio_id": "5c31406a-52cb-4d0a-a821-1340e5251cda",
+     "target2_audio_id": "56b19685-c1fb-4a46-a153-f7d54cc0009e",
+     "qa_checked": null,
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " why",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa7afa33-1ff6-4522-ae81-becfbbb0a372",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "ඒක නිසැකවම හොඳයි",
+     "target_text": "that's definitely good",
+     "word_count": 24,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:45.966534+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f2896182-1a40-4401-92a2-e7ea698367cb",
+     "target1_audio_id": "2b5ee40c-014a-4bbd-b249-674689683368",
+     "target2_audio_id": "977d1d88-65f0-4fc8-a102-47585bd540d8",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "නිසැකවම",
+       "legoId": "S0117L01",
+       "target": " definitely",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0123L02U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 123,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "ඒක මට හොඳට දැනෙනවා",
+     "target_text": "that's how I feel",
+     "word_count": 19,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-20T14:22:26.171Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-07-31T09:07:46.01614+00:00",
+     "created_at": "2026-03-20T14:22:26.489193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "837b04c7-280d-4ca4-b403-ff3290f2c1d9",
+     "target1_audio_id": "9f8cf5f7-acfe-423a-99e1-9c8d469dd68b",
+     "target2_audio_id": "f5eaeaa5-e3e1-4a86-8059-3947eb530cb7",
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒක",
+       "legoId": "S0123L02",
+       "target": "that's",
+       "isGhost": false
+      },
+      {
+       "known": "කොහොමද",
+       "legoId": "S0003L01",
+       "target": " how",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

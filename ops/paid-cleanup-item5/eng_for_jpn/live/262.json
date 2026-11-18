@@ -1,0 +1,1116 @@
+{
+ "seed": 262,
+ "seed_pair": {
+  "known": "昨日話していたあの男の人は誰ですか？",
+  "target": "who was that man you were talking to yesterday?"
+ },
+ "legos": {
+  "S0262L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0262L01",
+    "type": "M",
+    "known_text": "昨日話していたあの男の人は誰ですか",
+    "target_text": "who was that man you were talking to yesterday",
+    "components": [
+     {
+      "known": "昨日",
+      "target": "yesterday"
+     },
+     {
+      "known": "話していた",
+      "target": "you were talking to"
+     },
+     {
+      "known": "あの男の人",
+      "target": "that man"
+     },
+     {
+      "known": "は誰ですか",
+      "target": "who was"
+     }
+    ],
+    "seed_number": 262
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0262L01C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "昨日",
+     "target_text": "yesterday",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:47:34.817856+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a82ff93a-83b8-412e-8ca7-400a9e4f92d6",
+     "target1_audio_id": "729a5445-d5df-4460-b41a-4e7389f70c60",
+     "target2_audio_id": "c522333b-41ed-4d08-9536-2ef6e3b39909",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "昨日",
+       "legoId": "S0030L03",
+       "target": "yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "話していた",
+     "target_text": "you were talking to",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T17:32:13.08426+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5d2db656-9658-4e14-9162-2aac0f6e3ef6",
+     "target1_audio_id": "349e5c75-05f7-4329-8838-af2eb241bfbe",
+     "target2_audio_id": "90dcfdf9-c4ee-412e-b620-e1874e610160",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": "you",
+       "isGhost": false
+      },
+      {
+       "known": "話していた",
+       "legoId": "S0143L02",
+       "target": " were talking",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01C03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "あの男の人",
+     "target_text": "that man",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:49:34.611647+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c4fb9222-618a-4373-89a9-9fdf0dad1e41",
+     "target1_audio_id": "e5afe767-9b45-4394-97c9-fd412ea36c06",
+     "target2_audio_id": "a8af7bed-1d7e-4881-a11e-9d8bfd0a3d29",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あの男性は",
+       "legoId": "S0227L02",
+       "target": "that man",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01C04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "は誰ですか",
+     "target_text": "who was?",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 3
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T17:36:22.419203+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d1ca6763-eb79-421d-bf37-320dc4752caa",
+     "target1_audio_id": "4e77a9c1-ec99-4e9c-8c3e-fd2686e6cc9e",
+     "target2_audio_id": "906d5f7f-355e-414b-9a22-064270abbabe",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "who",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "昨日話していたあの男の人は誰ですか",
+     "target_text": "who was that man you were talking to yesterday?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T23:20:51.226607+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d34c5e98-6ec1-476e-967e-4221d47129dd",
+     "target1_audio_id": "3ac6d9f0-fc1f-489b-a860-fdafe1e475bd",
+     "target2_audio_id": "c179b9ca-20e4-468b-9a0a-9370809e56dc",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": "who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "昨日話していたあの男の人は誰ですか",
+     "target_text": "who was that man you were talking to yesterday?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T23:20:51.226607+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d34c5e98-6ec1-476e-967e-4221d47129dd",
+     "target1_audio_id": "3ac6d9f0-fc1f-489b-a860-fdafe1e475bd",
+     "target2_audio_id": "c179b9ca-20e4-468b-9a0a-9370809e56dc",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": "who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "昨日話していたあの男の人は誰ですか、全然わかりません",
+     "target_text": "who was that man you were talking to yesterday, I don't have the faintest idea",
+     "word_count": 78,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "prev_target": "who was that man you were talking to yesterday, was he a friend?",
+      "regen_model": "sonnet",
+      "regenerated": "template-stamp-2026-07-24"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-07-27T15:30:57.270234+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2ede62e9-915d-4364-a4db-ce2223031374",
+     "target1_audio_id": "f386fb9a-7a3f-4400-9cc0-132f814aedd7",
+     "target2_audio_id": "17519d5a-0307-42ba-adce-39dd515eca24",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 4296,
+     "target2_duration_ms": 4704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": "who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "昨日話していたあの男の人を教えてください",
+     "target_text": "can you tell me who was that man you were talking to yesterday?",
+     "word_count": 62,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9b1c911d-9fb0-42c8-b2d0-8e0b984bc6bb",
+     "target1_audio_id": "8c7672b7-8944-487a-9c46-e7054194fb44",
+     "target2_audio_id": "8f75f840-7556-4117-9e7b-e30ad0fcbfb8",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false
+      },
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": " who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "昨日話していたあの男の人のことを聞いてもいいですか",
+     "target_text": "can I ask who was that man you were talking to yesterday?",
+     "word_count": 56,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "219e9a71-192a-45ce-9f3b-a6efb6129c41",
+     "target1_audio_id": "d1f30e2c-5b61-442b-9ed2-118408e965ba",
+     "target2_audio_id": "8c73016b-2c21-483a-99d9-6bdb62ed59f5",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": " who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "昨日話していたあの男の人は父の友達ですか",
+     "target_text": "who was that man you were talking to yesterday, was he a friend of my father?",
+     "word_count": 76,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "65a2aa8c-caf6-45ad-85a7-1ba3b3223381",
+     "target1_audio_id": "445fd0e9-b5d1-48c4-8cce-26ab3f507c3d",
+     "target2_audio_id": "c7e8e88a-9ccd-4bb6-b19a-330ee8e9c6b3",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 4368,
+     "target2_duration_ms": 4536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": "who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " of",
+       "isGhost": true
+      },
+      {
+       "known": "私の",
+       "legoId": "S0166L01",
+       "target": " my",
+       "isGhost": false
+      },
+      {
+       "known": "父",
+       "legoId": "S0240L01",
+       "target": " father",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "昨日話していたあの男の人はわかりますか",
+     "target_text": "do you know who was that man you were talking to yesterday?",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "85f8ae6a-634d-4437-b7a3-1da1dd321f8e",
+     "target1_audio_id": "45486864-5976-4247-a8ee-3681d889b867",
+     "target2_audio_id": "f6bcaf91-d123-431b-bc33-6cb365e075ee",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3648,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "do",
+       "isGhost": true
+      },
+      {
+       "known": "わかる",
+       "legoId": "S0049L02",
+       "target": " you know",
+       "isGhost": false
+      },
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": " who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "昨日話していたあの男の人は父の友達だったのでしょうか",
+     "target_text": "who was that man you were talking to yesterday, was he a friend of my father?",
+     "word_count": 76,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:20.547Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "922af31d-51d0-452c-b160-5df36792e8b9",
+     "target1_audio_id": "445fd0e9-b5d1-48c4-8cce-26ab3f507c3d",
+     "target2_audio_id": "c7e8e88a-9ccd-4bb6-b19a-330ee8e9c6b3",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 4368,
+     "target2_duration_ms": 4536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": "who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " of",
+       "isGhost": true
+      },
+      {
+       "known": "私の",
+       "legoId": "S0166L01",
+       "target": " my",
+       "isGhost": false
+      },
+      {
+       "known": "父",
+       "legoId": "S0240L01",
+       "target": " father",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 20,
+     "known_text": "昨日話していたあの男の人に聞こうと思っていた",
+     "target_text": "I was going to ask you who was that man you were talking to yesterday",
+     "word_count": 69,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:20.547Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5a62c730-5c44-4f54-bd30-66e2e0d96b58",
+     "target1_audio_id": "dc2fc998-4d27-44d6-84a5-31734fae304d",
+     "target2_audio_id": "0fec145a-75c8-44c2-936a-841f14880c37",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 3504,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "聞くつもりです",
+       "legoId": "S0223L01",
+       "target": " going to ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": " who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 21,
+     "known_text": "昨日話していたあの男の人について友達に聞いた",
+     "target_text": "I asked a friend who was that man you were talking to yesterday",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:20.547Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "73870723-774c-4bed-8ece-2335c643b07f",
+     "target1_audio_id": "ecbb7442-401c-49f6-8a1b-a1e0b3c64306",
+     "target2_audio_id": "e7314def-d92b-4d82-b977-a388cf2f8d68",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 3648,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " asked",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": " who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0262L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 262,
+     "lego_index": 1,
+     "position": 22,
+     "known_text": "昨日話していたあの男の人のことを教えてもらえますか",
+     "target_text": "can you tell me who was that man you were talking to yesterday?",
+     "word_count": 62,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:40:20.547Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:40:20.670005+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2326befe-c258-4d46-bb3f-7b9d253670bf",
+     "target1_audio_id": "8c7672b7-8944-487a-9c46-e7054194fb44",
+     "target2_audio_id": "8f75f840-7556-4117-9e7b-e30ad0fcbfb8",
+     "qa_checked": "2026-02-17T12:29:31.867+00:00",
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "教えてくれますか",
+       "legoId": "S0250L03",
+       "target": "can you tell me",
+       "isGhost": false
+      },
+      {
+       "known": "昨日話していたあの男の人は誰ですか",
+       "legoId": "S0262L01",
+       "target": " who was that man you were talking to yesterday",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

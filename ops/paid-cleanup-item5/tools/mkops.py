@@ -15,16 +15,19 @@ for rid, v in plan.PLAN.items():
     kind, r = rows[rid]
     if kind == "phrase":
         if v == "DELETE": ops.append({"op": "phrase.delete", "phrase_id": r["id"], "expect": {"target_text": r["target_text"]}}); continue
-        k, t = v; st = {}
-        if t != r["target_text"]: st["target_text"] = t
+        k, t = v[0], v[1]; st = {}
+        if t is not None and t != r["target_text"]: st["target_text"] = t
+        if len(v) > 2: st["target_text_roman"] = v[2]
         if k is not None and k != r["known_text"]: st["known_text"] = k
         if st: ops.append({"op": "phrase.update", "phrase_id": r["id"], "set": st, "expect": {"known_text": r["known_text"], "target_text": r["target_text"]}})
     else:
         st = {}
         k, t = v["lego"]
-        if t != r["target_text"]: st["target_text"] = t
+        if t is not None and t != r["target_text"]: st["target_text"] = t
         if k is not None and k != r["known_text"]: st["known_text"] = k
-        if "components" in v: st["components"] = v["components"]
+        if "components" in v:
+            if v["components"] is None: st["type"] = "A"; st["components"] = None
+            else: st["components"] = v["components"]
         if st: ops.append({"op": "lego.update", "lego_id": rid, "set": st, "expect": {"known_text": r["known_text"], "target_text": r["target_text"]}})
 for ins in getattr(plan, "INSERT", []):
     ops.append({"op": "phrase.insert", "row": ins})

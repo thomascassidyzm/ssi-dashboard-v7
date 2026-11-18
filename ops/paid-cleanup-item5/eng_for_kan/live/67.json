@@ -1,0 +1,655 @@
+{
+ "seed": 67,
+ "seed_pair": {
+  "known": "ನಿಮಗೆ ಯಾಕೆ ನಿಲ್ಲಿಸಬೇಕು?",
+  "target": "Why do you want to stop?"
+ },
+ "legos": {
+  "S0067L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0067L01",
+    "type": "M",
+    "known_text": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+    "target_text": "do you want to stop",
+    "components": [
+     {
+      "known": "ನಿಮಗೆ",
+      "target": "you"
+     },
+     {
+      "known": "ನಿಲ್ಲಿಸಬೇಕು",
+      "target": "do you want to stop"
+     }
+    ],
+    "seed_number": 67
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kan:S0067L01C01",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "ನಿಮಗೆ",
+     "target_text": "you",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T21:53:02.572441+00:00",
+     "created_at": "2026-07-01T11:09:08.460594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6c42e29f-d360-424b-a8b0-400616767884",
+     "target1_audio_id": "d02f92d5-5c4a-42bd-8aba-aa341ae0c14e",
+     "target2_audio_id": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+     "qa_checked": null,
+     "target1_duration_ms": 504,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "91c1444a-7e9b-4db8-b97e-8d6c846bff9a",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮ್ಮನ್ನ",
+       "legoId": "S0030L02",
+       "target": "you",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "6bbfcdaa-60ab-4748-948e-a31ed0e1c0ff",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01B01",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?",
+     "target_text": "do you want to stop?",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 142,
+     "updated_at": "2026-10-28T21:52:21.121702+00:00",
+     "created_at": "2026-07-01T11:09:08.460594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "92525d16-a7dd-45c1-91ce-898fc8b8ea1e",
+     "target1_audio_id": "63e489d5-0cb4-4bac-8e7a-b696942212ba",
+     "target2_audio_id": "e81360cd-3f91-4df0-bd21-3da962e68f4f",
+     "qa_checked": null,
+     "target1_duration_ms": 1056,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d8182813-4306-44b3-bbdd-e479782fb575",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01B02",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "ಈಗ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?",
+     "target_text": "do you want to stop now?",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 162,
+     "updated_at": "2026-10-29T00:14:59.040168+00:00",
+     "created_at": "2026-07-01T11:09:08.460594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ee5ad18a-1da2-4058-9058-f1e144d54daa",
+     "target1_audio_id": "0ed75f84-b710-4331-ad13-2bb931f84500",
+     "target2_audio_id": "a8a9374a-9ccd-4ac3-af98-8391e18a3bb0",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "ಈಗ",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "eaaccf41-e0ca-4247-8e8f-7f8a29676df4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01B03",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?",
+     "target_text": "do you want to stop in English?",
+     "word_count": 30,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 162,
+     "updated_at": "2026-08-02T21:58:21.000223+00:00",
+     "created_at": "2026-07-01T11:09:08.460594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "20b04a5b-09ed-4bb7-8353-0fe83dcff531",
+     "target1_audio_id": "a0220957-419d-41a1-a69c-92e31e121e6b",
+     "target2_audio_id": "6d81741a-a374-43a6-aba6-ada3d0e49d6b",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ",
+       "legoId": "S0004L03",
+       "target": " in English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01B04",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "ಕಳೆದ ವಾರ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?",
+     "target_text": "do you want to stop last week?",
+     "word_count": 29,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 162,
+     "updated_at": "2026-08-02T21:58:21.000223+00:00",
+     "created_at": "2026-07-01T11:09:08.460594+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a3af16dd-57eb-41fc-adb3-761da35f5820",
+     "target1_audio_id": "fc15436a-1eb5-449a-83f4-7ed0fb9da7e1",
+     "target2_audio_id": "4cace051-f6fa-4add-95a3-09a687863f92",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "ಕಳೆದ ವಾರ",
+       "legoId": "S0052L01",
+       "target": " last week",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01U01",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ಯಾಕೆ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?",
+     "target_text": "why do you want to stop?",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T12:26:19.888Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 135,
+     "updated_at": "2026-07-31T03:29:03.470374+00:00",
+     "created_at": "2026-07-03T12:26:19.931684+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d942845a-9132-45ec-bd16-a33da49dba28",
+     "target1_audio_id": "bcabc2c6-c01f-419d-abd7-e86aaab4ff55",
+     "target2_audio_id": "d8ddc574-7eec-43ec-b1a2-e92a31a8b99f",
+     "qa_checked": null,
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 1272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಯಾಕೆ",
+       "legoId": "S0021L02",
+       "target": "why",
+       "isGhost": false
+      },
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": " do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01U02",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕಾ ಅಥವಾ ಬೇಡವಾ?",
+     "target_text": "do you want to stop or not?",
+     "word_count": 26,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T12:26:19.888Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 135,
+     "updated_at": "2026-07-31T03:29:03.578655+00:00",
+     "created_at": "2026-07-03T12:26:19.931684+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "458450d1-1c38-4b4b-8446-af1257400536",
+     "target1_audio_id": "653639e4-d487-42b6-a281-f57c22ec280f",
+     "target2_audio_id": "bdbd88e1-0f80-4883-9fb3-bd6c5de44882",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "ಅಥವಾ",
+       "legoId": "S0044L01",
+       "target": " or",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01U03",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "ನಿಮಗೆ ಮಾತಾಡೋದನ್ನ ನಿಲ್ಲಿಸಬೇಕಾ?",
+     "target_text": "do you want to stop talking?",
+     "word_count": 27,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T12:26:19.888Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 134,
+     "updated_at": "2026-07-31T03:29:03.625032+00:00",
+     "created_at": "2026-07-03T12:26:19.931684+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ffcb191c-33aa-4bd0-8fd1-9d76e56bab96",
+     "target1_audio_id": "9782691a-c264-42e9-9f4b-dcf48377c202",
+     "target2_audio_id": "cb078947-014f-49c7-bc34-dc9656bd22c6",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "ಮಾತಾಡೋದು",
+       "legoId": "S0019L02",
+       "target": " talking",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01U04",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "ಇವತ್ತು ಬೆಳಿಗ್ಗೆ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕಾ?",
+     "target_text": "do you want to stop this morning?",
+     "word_count": 32,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T12:26:19.888Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 135,
+     "updated_at": "2026-07-31T03:29:03.670361+00:00",
+     "created_at": "2026-07-03T12:26:19.931684+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "49ae382b-a43a-488d-a895-4bcae9a7ba71",
+     "target1_audio_id": "97a018ce-fda7-4a5d-bedd-8c6904c183a5",
+     "target2_audio_id": "93a5a50c-dac0-498e-9ef1-62c427c9e682",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "ಇವತ್ತು ಬೆಳಿಗ್ಗೆ",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0067L01U05",
+     "course_code": "eng_for_kan",
+     "seed_number": 67,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "ನಿಮಗೆ ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋದನ್ನ ನಿಲ್ಲಿಸಬೇಕಾ?",
+     "target_text": "do you want to stop learning English?",
+     "word_count": 36,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T12:26:19.888Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 136,
+     "updated_at": "2026-07-31T03:29:03.713527+00:00",
+     "created_at": "2026-07-03T12:26:19.931684+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d77f26f8-3fc1-465f-9521-d82c37756d51",
+     "target1_audio_id": "010bb1e9-6a98-4895-b1c5-271fcdd2dc14",
+     "target2_audio_id": "36713e02-5deb-4582-9fc6-9c6faffde2f9",
+     "qa_checked": null,
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 1920,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು",
+       "legoId": "S0067L01",
+       "target": "do you want to stop",
+       "isGhost": false
+      },
+      {
+       "known": "ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋದು",
+       "legoId": "S0064L01",
+       "target": " learning English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}
