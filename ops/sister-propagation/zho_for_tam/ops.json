@@ -11,6 +11,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 161,
+  "slot": "target1",
+  "audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 161,
+  "slot": "target2",
+  "audio_id": "c8f98fe0-b1d1-4b80-9e3b-4560d0032092"
+ },
+ {
   "op": "seed.update",
   "seed_number": 316,
   "expect": {
@@ -20,6 +34,20 @@
   "set": {
    "target_text": "你觉得她周一能带她哥哥来吗？"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 316,
+  "slot": "target1",
+  "audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 316,
+  "slot": "target2",
+  "audio_id": "dcedb5c5-4489-4865-8add-9770b0918d90"
  },
  {
   "op": "seed.update",
@@ -33,6 +61,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 625,
+  "slot": "target1",
+  "audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 625,
+  "slot": "target2",
+  "audio_id": "db6ceea9-42aa-465a-9121-f4337014b792"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0005L01U03",
   "expect": {
@@ -42,6 +84,20 @@
   "set": {
    "target_text": "我现在要学习"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0005L01U03",
+  "slot": "target1",
+  "audio_id": "638412ed-1382-45f2-9610-ee5185f9f354"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0005L01U03",
+  "slot": "target2",
+  "audio_id": "442cdc69-6213-444b-b48d-9df65e83c54b"
  },
  {
   "op": "phrase.update",
@@ -55,6 +111,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0005L02U04",
+  "slot": "target1",
+  "audio_id": "ebfbf016-110b-42e7-b70b-be84edfb7076"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0005L02U04",
+  "slot": "target2",
+  "audio_id": "aca85bf7-7e58-45f0-a174-257f1a08d1da"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0005L03U03",
   "expect": {
@@ -64,6 +134,20 @@
   "set": {
    "target_text": "我现在要和别人说"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0005L03U03",
+  "slot": "target1",
+  "audio_id": "d5abb7e9-4126-4101-b0b1-5d9172145d60"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0005L03U03",
+  "slot": "target2",
+  "audio_id": "e0387dac-e47f-426a-8349-879eb24c8192"
  },
  {
   "op": "phrase.update",
@@ -77,6 +161,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0011L01U04",
+  "slot": "target1",
+  "audio_id": "251244ee-5305-4a72-9473-478e56679c06"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0011L01U04",
+  "slot": "target2",
+  "audio_id": "b471378d-2160-4a3c-9516-5d50909107e3"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0012L02U05",
   "expect": {
@@ -86,6 +184,20 @@
   "set": {
    "target_text": "你明天能不能说？"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0012L02U05",
+  "slot": "target1",
+  "audio_id": "d59d4cb7-97cb-4935-87b9-230c663d427c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0012L02U05",
+  "slot": "target2",
+  "audio_id": "1b5ecd27-0e6a-4ffc-a9e5-e356a1ba4256"
  },
  {
   "op": "phrase.update",
@@ -99,6 +211,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0015L02U04",
+  "slot": "target1",
+  "audio_id": "d1ad4816-1482-4c57-b17c-6159ea2fbde8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0015L02U04",
+  "slot": "target2",
+  "audio_id": "dd3816dd-f472-4852-8480-fb8aa88ac8a4"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0023L01U05",
   "expect": {
@@ -108,6 +234,20 @@
   "set": {
    "target_text": "我不确定我现在能不能开始说话"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0023L01U05",
+  "slot": "target1",
+  "audio_id": "325a7d86-5ba8-4bf2-939e-62af1b29a158"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0023L01U05",
+  "slot": "target2",
+  "audio_id": "291b2f30-9fbf-4f75-9a62-5af42fc88c21"
  },
  {
   "op": "phrase.update",
@@ -121,6 +261,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0098L01U01",
+  "slot": "target1",
+  "audio_id": "3f6b1a51-2031-4fa9-8ca9-9d62b183e958"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0098L01U01",
+  "slot": "target2",
+  "audio_id": "2612ca3f-c9b4-4ca7-93f2-36b3ec72a513"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0098L01U05",
   "expect": {
@@ -130,6 +284,20 @@
   "set": {
    "target_text": "我今天应该努力"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0098L01U05",
+  "slot": "target1",
+  "audio_id": "13df891d-2a5b-4140-ab20-7d55bce93717"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0098L01U05",
+  "slot": "target2",
+  "audio_id": "9b2293e5-c882-4b21-b3f3-16398c503706"
  },
  {
   "op": "phrase.update",
@@ -143,6 +311,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0139L02U01",
+  "slot": "target1",
+  "audio_id": "0ad77732-30a4-44c9-9039-23e2ae9f5000"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0139L02U01",
+  "slot": "target2",
+  "audio_id": "c940a488-0c7c-4113-8790-cb6d9a57da14"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0156L01U02",
   "expect": {
@@ -152,6 +334,20 @@
   "set": {
    "target_text": "我现在需要去"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0156L01U02",
+  "slot": "target1",
+  "audio_id": "e25b4c87-2d1a-4577-8925-1a2234898215"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0156L01U02",
+  "slot": "target2",
+  "audio_id": "5fec32f7-2beb-4a04-9e62-9b45fe3c1186"
  },
  {
   "op": "phrase.update",
@@ -165,6 +361,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0161L03U01",
+  "slot": "target1",
+  "audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0161L03U01",
+  "slot": "target2",
+  "audio_id": "c8f98fe0-b1d1-4b80-9e3b-4560d0032092"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0316L02U01",
   "expect": {
@@ -174,6 +384,20 @@
   "set": {
    "target_text": "你觉得她周一能带她哥哥来吗？"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0316L02U01",
+  "slot": "target1",
+  "audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0316L02U01",
+  "slot": "target2",
+  "audio_id": "dcedb5c5-4489-4865-8add-9770b0918d90"
  },
  {
   "op": "phrase.update",
@@ -187,6 +411,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0328L01U05",
+  "slot": "target1",
+  "audio_id": "0e92bca1-78e8-47da-80d4-2a4becd3373e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0328L01U05",
+  "slot": "target2",
+  "audio_id": "7f1a11bf-9c2d-4be4-a07d-6cff7e4354c2"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0349L01U05",
   "expect": {
@@ -196,6 +434,20 @@
   "set": {
    "target_text": "他们周五需要去那里"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0349L01U05",
+  "slot": "target1",
+  "audio_id": "380803f1-4f93-48c0-9aba-9aceb1da742d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0349L01U05",
+  "slot": "target2",
+  "audio_id": "2ef89b83-1607-4cea-9d5d-9b9bcf160011"
  },
  {
   "op": "phrase.update",
@@ -209,6 +461,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0405L02U02",
+  "slot": "target1",
+  "audio_id": "bee734ab-7b3e-4d66-941a-13be4c6038a3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0405L02U02",
+  "slot": "target2",
+  "audio_id": "b8a02f14-6211-4319-b728-0ddfe6dd39d8"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0415L01U03",
   "expect": {
@@ -218,6 +484,20 @@
   "set": {
    "target_text": "依我看我们现在应该走"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0415L01U03",
+  "slot": "target1",
+  "audio_id": "f0630340-6dc3-463b-a5a1-33fd85815850"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0415L01U03",
+  "slot": "target2",
+  "audio_id": "46da0e6c-633d-4607-a663-f6356ee37c37"
  },
  {
   "op": "phrase.update",
@@ -231,6 +511,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0438L01U02",
+  "slot": "target1",
+  "audio_id": "0a77de02-9341-4b7b-a903-4711765c2ac9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0438L01U02",
+  "slot": "target2",
+  "audio_id": "e8b4867b-2d42-4412-9428-1cdb417c21a3"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0248L03B03",
   "expect": {
@@ -240,6 +534,20 @@
   "set": {
    "target_text": "想退钱"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0248L03B03",
+  "slot": "target1",
+  "audio_id": "9ceef3d9-b055-4d79-95f4-dc7d9a630f1b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0248L03B03",
+  "slot": "target2",
+  "audio_id": "0809b751-0860-4c32-8848-deacf760a866"
  },
  {
   "op": "phrase.update",
@@ -253,6 +561,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0625L01U01",
+  "slot": "target1",
+  "audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0625L01U01",
+  "slot": "target2",
+  "audio_id": "db6ceea9-42aa-465a-9121-f4337014b792"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0643L01U05",
   "expect": {
@@ -262,6 +584,20 @@
   "set": {
    "target_text": "您现在想喝茶吗？"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0643L01U05",
+  "slot": "target1",
+  "audio_id": "d68833e2-290d-4ef7-9990-851a5c4ad606"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0643L01U05",
+  "slot": "target2",
+  "audio_id": "b7a1f3a4-ff1f-42b7-a5c2-dee26a4cb44b"
  },
  {
   "op": "phrase.update",
@@ -275,6 +611,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0658L01U04",
+  "slot": "target1",
+  "audio_id": "84e8df87-a148-4ff6-be10-7b59800fb2ba"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0658L01U04",
+  "slot": "target2",
+  "audio_id": "0bc19490-7313-415f-9991-bb51df61478c"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0476L01U03",
   "expect": {
@@ -284,6 +634,20 @@
   "set": {
    "target_text": "我觉得它结束了"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0476L01U03",
+  "slot": "target1",
+  "audio_id": "055681af-acee-4488-ae34-f5bc2c917003"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0476L01U03",
+  "slot": "target2",
+  "audio_id": "d4ce9d50-b4cb-4a6c-ad27-dc0e12f35cd6"
  },
  {
   "op": "phrase.update",
@@ -297,6 +661,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0478L01U05",
+  "slot": "target1",
+  "audio_id": "b156185d-b676-4761-b0fa-aafeda190486"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0478L01U05",
+  "slot": "target2",
+  "audio_id": "30cd30af-e7da-49c5-8817-ced4d40e558b"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0479L01U05",
   "expect": {
@@ -306,6 +684,20 @@
   "set": {
    "target_text": "我觉得这是最少的了"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0479L01U05",
+  "slot": "target1",
+  "audio_id": "3bb4b536-d4bf-43e6-b7e3-9c3bed7ff7de"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0479L01U05",
+  "slot": "target2",
+  "audio_id": "3c9c615c-8a22-47ab-8d23-2b13b66eaf28"
  },
  {
   "op": "phrase.update",
@@ -319,6 +711,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0659L01B03",
+  "slot": "target1",
+  "audio_id": "7d93e49d-8bb1-432f-9356-9bf949cc38f7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0659L01B03",
+  "slot": "target2",
+  "audio_id": "0d8f433e-5f66-4f81-b9f7-89810b6f5a0d"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0662L01B02",
   "expect": {
@@ -328,6 +734,20 @@
   "set": {
    "target_text": "我觉得你们说中文"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0662L01B02",
+  "slot": "target1",
+  "audio_id": "dcdadf70-9d14-4e6e-958a-0210bd4145ea"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0662L01B02",
+  "slot": "target2",
+  "audio_id": "4f5c7db2-0713-4f49-935e-410e8733bd06"
  },
  {
   "op": "phrase.update",
@@ -341,6 +761,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0664L01B03",
+  "slot": "target1",
+  "audio_id": "0153bb76-77c8-435c-bb0b-c54d2577f790"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0664L01B03",
+  "slot": "target2",
+  "audio_id": "b393b98b-996b-4377-9f11-28a9baf51bf5"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "zho_for_tam:S0667L01B04",
   "expect": {
@@ -350,5 +784,19 @@
   "set": {
    "target_text": "我觉得你们介意"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0667L01B04",
+  "slot": "target1",
+  "audio_id": "559a20c2-1fe9-439e-be76-acf37ab19390"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_tam:S0667L01B04",
+  "slot": "target2",
+  "audio_id": "2abad24b-295c-4cb4-bc91-3f0dc99e7a7e"
  }
 ]

@@ -1,6 +1,6 @@
 {
  "course": "por_br_for_eng",
- "purpose": "por_br_for_eng sister-course propagation: Brazilian forms (ter certeza, machucar, falando sério, você perguntou/concordou) + considerar (cs #698·AI, Kai approved 18 Nov)",
+ "purpose": "cs #702·AI sister-course propagation (Kai approved 18 Nov): por_br Brazilian forms",
  "phrases": [
   {
    "id": "S0202L03B01",
@@ -355,27 +355,59 @@
  "legos": [
   {
    "id": "S0202L03",
-   "target": "tinha certeza"
+   "target": "tinha certeza",
+   "intro": true
   },
   {
    "id": "S0340L01",
-   "target": "tenho certeza de que"
+   "target": "tenho certeza de que",
+   "intro": true
   },
   {
    "id": "S0482L04",
-   "target": "falando sério"
+   "target": "falando sério",
+   "intro": true
   },
   {
    "id": "S0339L01",
-   "target": "ele se machucou"
+   "target": "ele se machucou",
+   "intro": true
   },
   {
    "id": "S0382L01",
-   "target": "você perguntou"
+   "target": "você perguntou",
+   "intro": true
   },
   {
    "id": "S0385L01",
-   "target": "você concordou"
+   "target": "você concordou",
+   "intro": true
+  }
+ ],
+ "seeds": [
+  {
+   "n": 202,
+   "target": "ninguém tinha certeza de como responder à pergunta"
+  },
+  {
+   "n": 340,
+   "target": "sim, tenho certeza de que ele vai ficar bem"
+  },
+  {
+   "n": 339,
+   "target": "não, eu acho que ele se machucou bastante"
+  },
+  {
+   "n": 382,
+   "target": "você perguntou onde ele queria pôr isso?"
+  },
+  {
+   "n": 385,
+   "target": "você concordou com ela?"
+  },
+  {
+   "n": 482,
+   "target": "a única esperança real é que eles não estejam falando sério"
   }
  ]
 }

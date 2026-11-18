@@ -1,0 +1,101 @@
+{
+  "course_code": "zho_for_tam",
+  "event_id": "6625a286-9558-447d-8fd0-0f5314e695bf",
+  "actor": "cs-sister-propagation",
+  "created_at": "2026-11-18T13:11:34.240Z",
+  "how_to_undo": "POST /api/production/zho_for_tam/edit-batch {\"undo_file\":\"2026-11-18T13-11-34-239Z-6625a286-9558-447d-8fd0-0f5314e695bf.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0479L01U05",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0479L01U05",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0479L01U05",
+      "set": {
+        "target_text": "我想这是最少的了",
+        "target1_audio_id": "b3c8d89e-2f70-435e-9bf1-f1f57b899a98",
+        "target2_audio_id": "ddc3e73e-4816-42a3-b951-c6bca111b151"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0478L01U05",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0478L01U05",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0478L01U05",
+      "set": {
+        "target_text": "我想她很善良",
+        "target1_audio_id": "c2279147-ce7f-470c-80d8-fb94ba2cf873",
+        "target2_audio_id": "10aec0dd-4ca8-4ffb-aaad-0c9516a57be2"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0476L01U03",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0476L01U03",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0476L01U03",
+      "set": {
+        "target_text": "我想它结束了",
+        "target1_audio_id": "6cb52104-1287-48e2-8860-d519dd85a4b3",
+        "target2_audio_id": "d952e237-cd14-4887-a23d-4bdc33e067de"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0658L01U04",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0658L01U04",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0658L01U04",
+      "set": {
+        "target_text": "你们想要喝点什么吗？",
+        "target1_audio_id": "706e1781-f629-4e14-880b-e9e7678a5f06",
+        "target2_audio_id": "b605a1e6-d4e6-43d1-bc8b-c7d852c979c8"
+      }
+    }
+  ]
+}

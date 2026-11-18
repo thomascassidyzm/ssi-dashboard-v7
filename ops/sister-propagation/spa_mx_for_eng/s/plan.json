@@ -1,0 +1,139 @@
+{
+ "course": "spa_mx_for_eng",
+ "purpose": "cs #702·AI spa_mx_for_eng: somewhere = algún lado (Mexican form, as mx S0182), S0377/S0402/S0403 (Kai approved 18 Nov)",
+ "seeds": [
+  {
+   "n": 377,
+   "target": "¿Fuiste a algún lado en el mundo el año pasado?"
+  },
+  {
+   "n": 402,
+   "target": "sí, sería agradable parar en algún lado para comer"
+  }
+ ],
+ "legos": [
+  {
+   "id": "S0377L02",
+   "target": "algún lado",
+   "intro": true,
+   "extra": {
+    "components": [
+     {
+      "known": "some",
+      "target": "algún"
+     },
+     {
+      "known": "side",
+      "target": "lado"
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0402L01",
+   "target": "parar en algún lado",
+   "intro": true,
+   "extra": {
+    "components": [
+     {
+      "known": "to stop",
+      "target": "parar"
+     },
+     {
+      "known": "somewhere",
+      "target": "algún lado"
+     }
+    ]
+   }
+  }
+ ],
+ "phrases": [
+  {
+   "id": "S0377L02C02",
+   "known": "side",
+   "target": "lado"
+  },
+  {
+   "id": "S0377L02B01",
+   "target": "algún lado"
+  },
+  {
+   "id": "S0377L02B02",
+   "target": "¿fuiste a algún lado?"
+  },
+  {
+   "id": "S0377L02B03",
+   "known": "did you go somewhere last year?",
+   "target": "¿fuiste a algún lado el año pasado?"
+  },
+  {
+   "id": "S0377L02U01",
+   "known": "did you go somewhere with my friend?",
+   "target": "¿fuiste a algún lado con mi amigo?"
+  },
+  {
+   "id": "S0377L02U02",
+   "target": "quiero ir a algún lado"
+  },
+  {
+   "id": "S0377L02U03",
+   "target": "mi amigo podría ir a algún lado"
+  },
+  {
+   "id": "S0377L02U04",
+   "target": "ella necesita ir a algún lado"
+  },
+  {
+   "id": "S0377L02U05",
+   "target": "creo que fuiste a algún lado"
+  },
+  {
+   "id": "S0377L03U01",
+   "target": "¿Fuiste a algún lado en el mundo el año pasado?"
+  },
+  {
+   "id": "S0402L01C02",
+   "target": "algún lado"
+  },
+  {
+   "id": "S0402L01B01",
+   "target": "parar en algún lado"
+  },
+  {
+   "id": "S0402L01B02",
+   "target": "sería agradable parar en algún lado"
+  },
+  {
+   "id": "S0402L01B03",
+   "target": "ella quiere parar en algún lado"
+  },
+  {
+   "id": "S0402L01U01",
+   "target": "sí, sería agradable parar en algún lado para comer"
+  },
+  {
+   "id": "S0402L01U02",
+   "target": "ella quiere parar en algún lado para comer"
+  },
+  {
+   "id": "S0402L01U03",
+   "target": "sería mejor parar en algún lado"
+  },
+  {
+   "id": "S0402L01U04",
+   "target": "queremos parar en algún lado ahora"
+  },
+  {
+   "id": "S0402L01U05",
+   "target": "es importante parar en algún lado para comer"
+  },
+  {
+   "id": "S0402L01U06",
+   "target": "podré parar en algún lado"
+  },
+  {
+   "id": "S0403L01U05",
+   "target": "deberíamos parar en algún lado"
+  }
+ ]
+}

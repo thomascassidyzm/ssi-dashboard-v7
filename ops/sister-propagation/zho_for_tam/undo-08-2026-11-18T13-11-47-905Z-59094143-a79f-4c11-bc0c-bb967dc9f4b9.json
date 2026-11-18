@@ -1,0 +1,101 @@
+{
+  "course_code": "zho_for_tam",
+  "event_id": "59094143-a79f-4c11-bc0c-bb967dc9f4b9",
+  "actor": "cs-sister-propagation",
+  "created_at": "2026-11-18T13:11:47.905Z",
+  "how_to_undo": "POST /api/production/zho_for_tam/edit-batch {\"undo_file\":\"2026-11-18T13-11-47-905Z-59094143-a79f-4c11-bc0c-bb967dc9f4b9.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0667L01B04",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0667L01B04",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0667L01B04",
+      "set": {
+        "target_text": "我想你们介意",
+        "target1_audio_id": "089346c4-d888-4dac-979f-00aba93e36c9",
+        "target2_audio_id": "55012512-01b3-411f-b3f3-639b6a0e8672"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0664L01B03",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0664L01B03",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0664L01B03",
+      "set": {
+        "target_text": "我想你们都准备好了",
+        "target1_audio_id": "ffc786af-73de-4f85-a022-baf8f6fca6fa",
+        "target2_audio_id": "ca4dde41-f872-4f8a-915e-4c64dd36ea4d"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0662L01B02",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0662L01B02",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0662L01B02",
+      "set": {
+        "target_text": "我想你们说中文",
+        "target1_audio_id": "283620a0-b66a-48f4-88ed-b2dd484f3774",
+        "target2_audio_id": "77f2514b-5c6a-43ef-ab64-29ab4874c242"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0659L01B03",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0659L01B03",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0659L01B03",
+      "set": {
+        "target_text": "我想你们能说一下",
+        "target1_audio_id": "c7813db7-ddfd-4ca6-8ca0-063757ca1b06",
+        "target2_audio_id": "4bd6ede3-69b1-40cd-96ad-e6428d44c0ab"
+      }
+    }
+  ]
+}
