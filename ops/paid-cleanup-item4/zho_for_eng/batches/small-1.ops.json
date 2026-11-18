@@ -1,0 +1,41 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0350L01B04",
+    "seed_number": 350,
+    "lego_index": 1,
+    "position": 100,
+    "known_text": "yes, he's ready",
+    "target_text": "是的，他准备好了",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 8,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0350L01B03",
+   "expect": {
+    "known_text": "yes he is",
+    "target_text": "是的，他是"
+   },
+   "set": {
+    "known_text": "yes, he knows",
+    "target_text": "是的，他知道",
+    "decomposition": null,
+    "word_count": 6,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

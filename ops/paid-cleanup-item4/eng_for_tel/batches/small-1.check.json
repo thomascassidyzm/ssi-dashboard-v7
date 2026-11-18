@@ -1,0 +1,28 @@
+{
+ "course": "eng_for_tel",
+ "batch": "small-1",
+ "seeds": [
+  617
+ ],
+ "counts": {
+  "insert": 3,
+  "update": 2,
+  "delete": 0
+ },
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [],
+ "checks": [
+  {
+   "lego": "S0617L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 2,
+   "inserted": 3,
+   "accept_gap": null
+  }
+ ]
+}
