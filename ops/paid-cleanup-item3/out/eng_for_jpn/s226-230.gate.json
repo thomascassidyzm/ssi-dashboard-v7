@@ -1,0 +1,1190 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "s226-230.tsv",
+ "at": "2026-11-18T12:45:42.605Z",
+ "rows": [
+  {
+   "id": "S0226L02B02",
+   "role": "build",
+   "target": "I'm trying to help you",
+   "old": "手伝おうとしています",
+   "new": "私はあなたを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02B03",
+   "role": "build",
+   "target": "he's trying to help me",
+   "old": "手伝おうとしています",
+   "new": "彼は私を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02B04",
+   "role": "build",
+   "target": "she's trying to help him",
+   "old": "手伝おうとしています",
+   "new": "彼女は彼を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02B05",
+   "role": "build",
+   "target": "I was trying to help you",
+   "old": "手伝おうとしています",
+   "new": "私はあなたを手伝おうとしていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02B06",
+   "role": "build",
+   "target": "we're trying to help them",
+   "old": "手伝おうとしています",
+   "new": "私たちは彼らを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02B07",
+   "role": "build",
+   "target": "she's trying to help us",
+   "old": "手伝おうとしています",
+   "new": "彼女は私たちを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02B08",
+   "role": "build",
+   "target": "he's trying to help her",
+   "old": "手伝おうとしています",
+   "new": "彼は彼女を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U01",
+   "role": "use",
+   "target": "I'm trying to help you understand what I mean",
+   "old": "手伝おうとしています",
+   "new": "私は、私が言いたいことをあなたが理解するのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U02",
+   "role": "use",
+   "target": "he's trying to help me remember what you said",
+   "old": "手伝おうとしています",
+   "new": "彼は、あなたが言ったことを私が覚えるのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U03",
+   "role": "use",
+   "target": "she's trying to help him but it isn't easy",
+   "old": "手伝おうとしています",
+   "new": "彼女は彼を手伝おうとしていますが、簡単ではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U04",
+   "role": "use",
+   "target": "I was trying to help you but I wasn't sure what you need to do",
+   "old": "手伝おうとしています",
+   "new": "私はあなたを手伝おうとしていましたが、あなたが何をする必要があるのかわかりませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U05",
+   "role": "use",
+   "target": "we're trying to help them find what you wanted",
+   "old": "手伝おうとしています",
+   "new": "私たちは、あなたが欲しかったものを彼らが見つけるのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U06",
+   "role": "use",
+   "target": "I'm trying to help you explain what you need",
+   "old": "手伝おうとしています",
+   "new": "私は、あなたに必要なことをあなたが説明するのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U07",
+   "role": "use",
+   "target": "he's trying to help me speak more slowly with you today",
+   "old": "手伝おうとしています",
+   "new": "彼は今日、私があなたともっとゆっくり話すのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U08",
+   "role": "use",
+   "target": "she's trying to help him understand what you said",
+   "old": "手伝おうとしています",
+   "new": "彼女は、あなたが言ったことを彼が理解するのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U09",
+   "role": "use",
+   "target": "I know you're trying to help me and I'm grateful",
+   "old": "手伝おうとしています",
+   "new": "あなたが私を手伝おうとしているのはわかっています。とても感謝しています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U10",
+   "role": "use",
+   "target": "I was trying to help you but I didn't know what you wanted",
+   "old": "手伝おうとしています",
+   "new": "私はあなたを手伝おうとしていましたが、あなたが何を欲しかったのかわかりませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U11",
+   "role": "use",
+   "target": "we're trying to help them remember what they need to do",
+   "old": "手伝おうとしています",
+   "new": "私たちは、彼らが何をする必要があるか覚えるのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U12",
+   "role": "use",
+   "target": "I'm trying to help you with something difficult",
+   "old": "手伝おうとしています",
+   "new": "私は何か難しいことであなたを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U13",
+   "role": "use",
+   "target": "he's trying to help me find what you left on the table",
+   "old": "手伝おうとしています",
+   "new": "彼は、あなたがテーブルに置いてきたものを私が見つけるのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U14",
+   "role": "use",
+   "target": "she's trying to help him understand what I want you to say",
+   "old": "手伝おうとしています",
+   "new": "彼女は、私があなたに言ってほしいことを彼が理解するのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0226L02U15",
+   "role": "use",
+   "target": "I was trying to help you but I wasn't sure if I could",
+   "old": "手伝おうとしています",
+   "new": "私はあなたを手伝おうとしていましたが、できるかどうかわかりませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01B02",
+   "role": "build",
+   "target": "that man has just started to practise speaking with you",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性はあなたと話す練習を始めたばかりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01B03",
+   "role": "build",
+   "target": "that man has just started to practise speaking in English",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は英語で話す練習を始めたばかりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01B04",
+   "role": "build",
+   "target": "that man has just started to practise speaking with me",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は私と話す練習を始めたばかりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01B05",
+   "role": "build",
+   "target": "that man has just started to practise speaking with someone else",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は他の人と話す練習を始めたばかりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01B06",
+   "role": "build",
+   "target": "I know that man has just started to practise speaking",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が話す練習を始めたばかりだと知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01B07",
+   "role": "build",
+   "target": "I think that man has just started to practise speaking today",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は今日、話す練習を始めたばかりだと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01B08",
+   "role": "build",
+   "target": "I can see that man has just started to practise speaking",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が話す練習を始めたばかりだとわかります",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U01",
+   "role": "use",
+   "target": "I know that man has just started to practise speaking with you today",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が今日あなたと話す練習を始めたばかりだと知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U02",
+   "role": "use",
+   "target": "do you think that man has just started to practise speaking in English?",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は英語で話す練習を始めたばかりだと思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U03",
+   "role": "use",
+   "target": "that man has just started to practise speaking with someone else this morning",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は今朝、他の人と話す練習を始めたばかりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U04",
+   "role": "use",
+   "target": "I can see that man has just started to practise speaking and I think that is good",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が話す練習を始めたばかりだとわかります。それはいいことだと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U05",
+   "role": "use",
+   "target": "I think that man has just started to practise speaking and you should help him",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は話す練習を始めたばかりだと思います。あなたは彼を手伝った方がいいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U06",
+   "role": "use",
+   "target": "that man has just started to practise speaking with me but it is not easy yet",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は私と話す練習を始めたばかりですが、まだ簡単ではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U07",
+   "role": "use",
+   "target": "do you know that man has just started to practise speaking in English this week?",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が今週、英語で話す練習を始めたばかりだと知っていますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U08",
+   "role": "use",
+   "target": "I think that man has just started to practise speaking but he is already doing very well",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は話す練習を始めたばかりだと思いますが、もうとてもよくやっています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U09",
+   "role": "use",
+   "target": "that man has just started to practise speaking and he wanted to ask you for help",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は話す練習を始めたばかりで、あなたに助けを求めたがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U10",
+   "role": "use",
+   "target": "I know that man has just started to practise speaking and I want to help him",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が話す練習を始めたばかりだと知っています。私は彼を手伝いたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U11",
+   "role": "use",
+   "target": "that man has just started to practise speaking with you and I think it is going very well",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性はあなたと話す練習を始めたばかりで、とてもうまくいっていると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U12",
+   "role": "use",
+   "target": "do you think that man has just started to practise speaking with someone else yesterday?",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は昨日、他の人と話す練習を始めたばかりだと思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U13",
+   "role": "use",
+   "target": "I can see that man has just started to practise speaking and you should help him soon",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が話す練習を始めたばかりだとわかります。あなたはすぐに彼を手伝った方がいいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U14",
+   "role": "use",
+   "target": "that man has just started to practise speaking in English and he works very hard",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性は英語で話す練習を始めたばかりで、とても一生懸命やっています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0228L01U15",
+   "role": "use",
+   "target": "I know that man has just started to practise speaking and he is very kind",
+   "old": "あの男性は話す練習を始めたばかりです",
+   "new": "あの男性が話す練習を始めたばかりだと知っています。彼はとても親切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01B02",
+   "role": "build",
+   "target": "a woman",
+   "old": "女性",
+   "new": "ある女性",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01B03",
+   "role": "build",
+   "target": "young woman",
+   "old": "女性",
+   "new": "若い女性",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "ZUT whole course: \"若い女性\" is \"a young woman\" at seed 233"
+   ]
+  },
+  {
+   "id": "S0229L01B04",
+   "role": "build",
+   "target": "a young woman",
+   "old": "女性",
+   "new": "ある若い女性",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01B05",
+   "role": "build",
+   "target": "the woman is trying to help me",
+   "old": "女性",
+   "new": "その女性は私を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01B06",
+   "role": "build",
+   "target": "I know a woman who wanted to help you",
+   "old": "女性",
+   "new": "あなたを手伝いたかった女性を知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01B07",
+   "role": "build",
+   "target": "the woman is very kind",
+   "old": "女性",
+   "new": "その女性はとても親切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U01",
+   "role": "use",
+   "target": "I used to know a woman who wanted to work with my friend",
+   "old": "女性",
+   "new": "私の友達と一緒に働きたかった女性を、前に知っていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U02",
+   "role": "use",
+   "target": "a young woman came to ask for help this morning",
+   "old": "女性",
+   "new": "今朝、ある若い女性が助けを求めに来ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U03",
+   "role": "use",
+   "target": "the woman is very kind and patient when you need help",
+   "old": "女性",
+   "new": "あなたが助けを必要とするとき、その女性はとても親切で辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U04",
+   "role": "use",
+   "target": "I saw a woman who wanted to speak with you today",
+   "old": "女性",
+   "new": "今日あなたと話したがっていた女性を見ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U05",
+   "role": "use",
+   "target": "a young woman wanted to ask you something before you leave",
+   "old": "女性",
+   "new": "ある若い女性が、あなたが帰る前に何か聞きたがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U06",
+   "role": "use",
+   "target": "the woman is trying to help me remember what you need to do",
+   "old": "女性",
+   "new": "その女性は、あなたが何をする必要があるか私が覚えるのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U07",
+   "role": "use",
+   "target": "I know a woman who works for the council with my friend",
+   "old": "女性",
+   "new": "私の友達と一緒に市役所で働いている女性を知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U08",
+   "role": "use",
+   "target": "a woman wanted to ask for help but she wasn't sure what to say",
+   "old": "女性",
+   "new": "ある女性が助けを求めたがっていましたが、何と言えばいいかわかりませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U09",
+   "role": "use",
+   "target": "the woman is a teacher and she works with my daughter",
+   "old": "女性",
+   "new": "その女性は先生で、私の娘と一緒に働いています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U10",
+   "role": "use",
+   "target": "I saw a woman who wanted to tell you something new",
+   "old": "女性",
+   "new": "あなたに何か新しいことを教えたがっていた女性を見ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U11",
+   "role": "use",
+   "target": "a woman came to speak with you and she is very kind",
+   "old": "女性",
+   "new": "ある女性があなたと話しに来ました。彼女はとても親切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U13",
+   "role": "use",
+   "target": "I know a woman who is going to tell us something important today",
+   "old": "女性",
+   "new": "今日私たちに何か大切なことを教えるつもりの女性を知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U14",
+   "role": "use",
+   "target": "a young woman wanted to work with you and I think that is a good idea",
+   "old": "女性",
+   "new": "ある若い女性があなたと一緒に働きたがっていました。それはいい考えだと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L01U15",
+   "role": "use",
+   "target": "the woman is very patient and I think you should ask her for help",
+   "old": "女性",
+   "new": "その女性はとても辛抱強いです。あなたは彼女に助けを求めた方がいいと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02B02",
+   "role": "build",
+   "target": "that woman is very kind",
+   "old": "あの女性は",
+   "new": "あの女性はとても親切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02B03",
+   "role": "build",
+   "target": "that woman is a teacher",
+   "old": "あの女性は",
+   "new": "あの女性は先生です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02B04",
+   "role": "build",
+   "target": "that woman is going to help you",
+   "old": "あの女性は",
+   "new": "あの女性はあなたを手伝うつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02B05",
+   "role": "build",
+   "target": "that woman is trying to help me",
+   "old": "あの女性は",
+   "new": "あの女性は私を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02B06",
+   "role": "build",
+   "target": "that woman wanted to ask you something",
+   "old": "あの女性は",
+   "new": "あの女性はあなたに何か聞きたがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02B07",
+   "role": "build",
+   "target": "that woman works very hard",
+   "old": "あの女性は",
+   "new": "あの女性はとても一生懸命働いています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02B08",
+   "role": "build",
+   "target": "that woman is very patient",
+   "old": "あの女性は",
+   "new": "あの女性はとても辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U01",
+   "role": "use",
+   "target": "that woman is trying to help me understand what you said",
+   "old": "あの女性は",
+   "new": "あの女性は、あなたが言ったことを私が理解するのを手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U02",
+   "role": "use",
+   "target": "that woman is very kind and patient with you",
+   "old": "あの女性は",
+   "new": "あの女性はあなたにとても親切で辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U03",
+   "role": "use",
+   "target": "I'm not sure if that woman is going to come back next week",
+   "old": "あの女性は",
+   "new": "あの女性が来週戻ってくるつもりかどうかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U04",
+   "role": "use",
+   "target": "that woman is a teacher who wanted to help my daughter",
+   "old": "あの女性は",
+   "new": "あの女性は、私の娘を手伝いたかった先生です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U05",
+   "role": "use",
+   "target": "that woman came to ask for help this morning",
+   "old": "あの女性は",
+   "new": "あの女性は今朝、助けを求めに来ました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U06",
+   "role": "use",
+   "target": "do you know if that woman is going to be there today?",
+   "old": "あの女性は",
+   "new": "あの女性が今日そこにいるつもりかどうか知っていますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U08",
+   "role": "use",
+   "target": "I saw that woman and she wanted to speak with you",
+   "old": "あの女性は",
+   "new": "あの女性を見ました。彼女はあなたと話したがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U09",
+   "role": "use",
+   "target": "that woman is going to speak with you about something important",
+   "old": "あの女性は",
+   "new": "あの女性は、何か大切なことについてあなたと話すつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U10",
+   "role": "use",
+   "target": "I think that woman wanted to ask for help but wasn't sure",
+   "old": "あの女性は",
+   "new": "あの女性は助けを求めたかったけれど、確かではなかったと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U11",
+   "role": "use",
+   "target": "that woman is very patient when you don't know the answer",
+   "old": "あの女性は",
+   "new": "あなたが答えを知らないとき、あの女性はとても辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U12",
+   "role": "use",
+   "target": "do you think that woman is going to tell us something new?",
+   "old": "あの女性は",
+   "new": "あの女性は私たちに何か新しいことを教えるつもりだと思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U13",
+   "role": "use",
+   "target": "that woman wanted to explain something to us before you leave",
+   "old": "あの女性は",
+   "new": "あの女性は、あなたが帰る前に私たちに何かを説明したがっていました",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U14",
+   "role": "use",
+   "target": "I know that woman and she's trying to help me",
+   "old": "あの女性は",
+   "new": "あの女性を知っています。彼女は私を手伝おうとしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L02U15",
+   "role": "use",
+   "target": "that woman is going to come and help you later on",
+   "old": "あの女性は",
+   "new": "あの女性は後で来て、あなたを手伝うつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03B02",
+   "role": "build",
+   "target": "she would help you if she could",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女はできればあなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03B03",
+   "role": "build",
+   "target": "that woman would help you if she could",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "あの女性はできればあなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03B04",
+   "role": "build",
+   "target": "I know she would help you if she could",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女はできればあなたを手伝ってくれると知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03B05",
+   "role": "build",
+   "target": "I think she would help you if she could",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女はできればあなたを手伝ってくれると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03B06",
+   "role": "build",
+   "target": "my friend would help you if she could",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "私の友達はできればあなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03B07",
+   "role": "build",
+   "target": "she would help you if she could but she isn't sure",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女はできればあなたを手伝ってくれるでしょうが、確かではありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03B08",
+   "role": "build",
+   "target": "she would help you if she could today",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女はできれば今日あなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U01",
+   "role": "use",
+   "target": "that woman would help you if she could but she is very busy today",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "あの女性はできればあなたを手伝ってくれるでしょうが、今日はとても忙しいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U02",
+   "role": "use",
+   "target": "I know she would help you if she could but she isn't ready yet",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女はできればあなたを手伝ってくれると知っていますが、彼女はまだ準備ができていません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U03",
+   "role": "use",
+   "target": "my friend would help you if she could but she is not there today",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "私の友達はできればあなたを手伝ってくれるでしょうが、今日はそこにいません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U04",
+   "role": "use",
+   "target": "I think she would help you if she could remember what you said",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女は、あなたが言ったことを覚えていられれば、あなたを手伝ってくれると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U05",
+   "role": "use",
+   "target": "she would help you if she could understand what you need",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女は、あなたに必要なことが理解できれば、あなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U06",
+   "role": "use",
+   "target": "that woman would help you if she could come and help later on",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "あの女性は、後で来て手伝えれば、あなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U08",
+   "role": "use",
+   "target": "she would help you if she could explain what I mean",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女は、私が言いたいことを説明できれば、あなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U09",
+   "role": "use",
+   "target": "do you think she would help you if she could find the answer?",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女は答えを見つけられれば、あなたを手伝ってくれると思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U10",
+   "role": "use",
+   "target": "my friend would help you if she could remember what you need to do",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "私の友達は、あなたが何をする必要があるか覚えていられれば、あなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U11",
+   "role": "use",
+   "target": "I think that woman would help you if she could understand the question",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "あの女性は、質問が理解できれば、あなたを手伝ってくれると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U12",
+   "role": "use",
+   "target": "she would help you if she could tell you what the answer is",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女は、答えが何かあなたに教えられれば、あなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U13",
+   "role": "use",
+   "target": "I know she would help you if she could be there with you",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女は、あなたと一緒にそこにいられれば、あなたを手伝ってくれると知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U14",
+   "role": "use",
+   "target": "that woman would help you if she could speak with you today",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "あの女性は、今日あなたと話せれば、あなたを手伝ってくれるでしょう",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0229L03U15",
+   "role": "use",
+   "target": "she would help you if she could but she wants to work hard today",
+   "old": "できれば手伝ってくれるでしょう",
+   "new": "彼女はできればあなたを手伝ってくれるでしょうが、今日は一生懸命働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02B02",
+   "role": "build",
+   "target": "he wants to work",
+   "old": "働きたい",
+   "new": "彼は働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02B03",
+   "role": "build",
+   "target": "she wants to work",
+   "old": "働きたい",
+   "new": "彼女は働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02B04",
+   "role": "build",
+   "target": "my son wants to work",
+   "old": "働きたい",
+   "new": "私の息子は働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02B05",
+   "role": "build",
+   "target": "that man wants to work",
+   "old": "働きたい",
+   "new": "あの男性は働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02B06",
+   "role": "build",
+   "target": "my friend wants to work",
+   "old": "働きたい",
+   "new": "私の友達は働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02B07",
+   "role": "build",
+   "target": "that woman wants to work",
+   "old": "働きたい",
+   "new": "あの女性は働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02B08",
+   "role": "build",
+   "target": "my daughter wants to work",
+   "old": "働きたい",
+   "new": "私の娘は働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U01",
+   "role": "use",
+   "target": "he wants to work with you and I think that is a good idea",
+   "old": "働きたい",
+   "new": "彼はあなたと一緒に働きたいです。それはいい考えだと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U02",
+   "role": "use",
+   "target": "she wants to work hard but she is very busy today",
+   "old": "働きたい",
+   "new": "彼女は一生懸命働きたいですが、今日はとても忙しいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U03",
+   "role": "use",
+   "target": "my son wants to work together with you on something new",
+   "old": "働きたい",
+   "new": "私の息子は、何か新しいことであなたと一緒に働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U04",
+   "role": "use",
+   "target": "that man wants to work with my friend next week",
+   "old": "働きたい",
+   "new": "あの男性は来週、私の友達と一緒に働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U05",
+   "role": "use",
+   "target": "my friend wants to work with you and she is going to ask you soon",
+   "old": "働きたい",
+   "new": "私の友達はあなたと一緒に働きたいです。彼女はすぐにあなたに聞くつもりです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U06",
+   "role": "use",
+   "target": "that woman wants to work but she isn't sure what to do",
+   "old": "働きたい",
+   "new": "あの女性は働きたいですが、何をすればいいかわかりません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U07",
+   "role": "use",
+   "target": "I know my son wants to work with someone who is patient",
+   "old": "働きたい",
+   "new": "私の息子が、辛抱強い人と一緒に働きたいのは知っています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U08",
+   "role": "use",
+   "target": "my daughter wants to work with you and I think you should help her",
+   "old": "働きたい",
+   "new": "私の娘はあなたと一緒に働きたいです。あなたは彼女を手伝った方がいいと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U09",
+   "role": "use",
+   "target": "he wants to work hard and I think he is going to do very well",
+   "old": "働きたい",
+   "new": "彼は一生懸命働きたいです。彼はとてもよくやると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U10",
+   "role": "use",
+   "target": "she wants to work together with you but she isn't ready yet",
+   "old": "働きたい",
+   "new": "彼女はあなたと一緒に働きたいですが、まだ準備ができていません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U11",
+   "role": "use",
+   "target": "do you think that man wants to work with you this morning?",
+   "old": "働きたい",
+   "new": "あの男性は今朝、あなたと一緒に働きたいと思いますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U12",
+   "role": "use",
+   "target": "my friend wants to work with someone who can help her understand",
+   "old": "働きたい",
+   "new": "私の友達は、彼女が理解するのを手伝ってくれる人と一緒に働きたいです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U13",
+   "role": "use",
+   "target": "he wants to work with my friend and I think that is a good idea",
+   "old": "働きたい",
+   "new": "彼は私の友達と一緒に働きたいです。それはいい考えだと思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U14",
+   "role": "use",
+   "target": "that woman wants to work with you and she is very kind",
+   "old": "働きたい",
+   "new": "あの女性はあなたと一緒に働きたいです。彼女はとても親切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0230L02U15",
+   "role": "use",
+   "target": "I know someone who wants to work with you and she is very patient",
+   "old": "働きたい",
+   "new": "あなたと一緒に働きたい人を知っています。彼女はとても辛抱強いです",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "226": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 4 phrase(s)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L1: vocab violations in 4 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "228": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "229": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "230": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  }
+ }
+}
