@@ -31,15 +31,114 @@
     "lego_id": null,
     "known_text": "yes, I can help you all",
     "target_text": "ja, ich kann euch allen helfen",
-    "known_audio_id": null,
-    "target1_audio_id": null,
-    "target2_audio_id": null,
+    "known_audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987",
+    "target1_audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183",
+    "target2_audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6",
     "presentation_audio_id": null
    },
    "changed": true
   },
   {
    "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987",
+    "known_text": "yes, I can help you all",
+    "target_text": "ja, ich kann euch allen helfen",
+    "target1_audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183",
+    "target2_audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987",
+    "known_text": "yes, I can help you all",
+    "target_text": "ja, ich kann euch allen helfen",
+    "target1_audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183",
+    "target2_audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183",
+    "known_text": "yes, I can help you all",
+    "target_text": "ja, ich kann euch allen helfen",
+    "known_audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987",
+    "target2_audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183",
+    "known_text": "yes, I can help you all",
+    "target_text": "ja, ich kann euch allen helfen",
+    "known_audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987",
+    "target2_audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6",
+    "known_text": "yes, I can help you all",
+    "target_text": "ja, ich kann euch allen helfen",
+    "known_audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987",
+    "target1_audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "a4b4031e-9483-4689-abc2-c252b0721fd6",
+    "known_text": "yes, I can help you all",
+    "target_text": "ja, ich kann euch allen helfen",
+    "known_audio_id": "e3f36fa8-b7aa-4138-bf6f-8c1ac617b987",
+    "target1_audio_id": "b41b78b9-fca0-45f8-b194-4680d26e7183",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 4,
    "op": "phrase.update",
    "key": {
     "course_code": "deu_for_eng",
@@ -64,7 +163,7 @@
     "lego_id": null,
     "known_text": "I think I can help you all",
     "target_text": "ich denke, ich kann euch allen helfen",
-    "known_audio_id": null,
+    "known_audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574",
     "target1_audio_id": null,
     "target2_audio_id": null,
     "presentation_audio_id": null
@@ -72,7 +171,106 @@
    "changed": true
   },
   {
-   "index": 2,
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574",
+    "known_text": "I think I can help you all",
+    "target_text": "ich denke, ich kann euch allen helfen",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574",
+    "known_text": "I think I can help you all",
+    "target_text": "ich denke, ich kann euch allen helfen",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I think I can help you all",
+    "target_text": "ich denke, ich kann euch allen helfen",
+    "known_audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "1f1b6947-1d3d-4bc3-89dc-ce5b1b7ea8d1",
+    "known_text": "I think I can help you all",
+    "target_text": "ich denke, ich kann euch allen helfen",
+    "known_audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I think I can help you all",
+    "target_text": "ich denke, ich kann euch allen helfen",
+    "known_audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574",
+    "target1_audio_id": "1f1b6947-1d3d-4bc3-89dc-ce5b1b7ea8d1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "1bf6cc4e-c825-4bbb-84a4-69e79dee5856",
+    "known_text": "I think I can help you all",
+    "target_text": "ich denke, ich kann euch allen helfen",
+    "known_audio_id": "6ac7da52-53fe-4f2a-8a7b-dfdcd8d0b574",
+    "target1_audio_id": "1f1b6947-1d3d-4bc3-89dc-ce5b1b7ea8d1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
    "op": "phrase.update",
    "key": {
     "course_code": "deu_for_eng",
@@ -97,9 +295,108 @@
     "lego_id": null,
     "known_text": "I hope I can help you all",
     "target_text": "ich hoffe, ich kann euch allen helfen",
-    "known_audio_id": null,
+    "known_audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460",
     "target1_audio_id": null,
     "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460",
+    "known_text": "I hope I can help you all",
+    "target_text": "ich hoffe, ich kann euch allen helfen",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460",
+    "known_text": "I hope I can help you all",
+    "target_text": "ich hoffe, ich kann euch allen helfen",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I hope I can help you all",
+    "target_text": "ich hoffe, ich kann euch allen helfen",
+    "known_audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "a0e2e152-e9c0-40cb-97e8-5feb6f7693a7",
+    "known_text": "I hope I can help you all",
+    "target_text": "ich hoffe, ich kann euch allen helfen",
+    "known_audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I hope I can help you all",
+    "target_text": "ich hoffe, ich kann euch allen helfen",
+    "known_audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460",
+    "target1_audio_id": "a0e2e152-e9c0-40cb-97e8-5feb6f7693a7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "b114296c-c182-446a-b115-372a34d0b86e",
+    "known_text": "I hope I can help you all",
+    "target_text": "ich hoffe, ich kann euch allen helfen",
+    "known_audio_id": "4686b809-79d2-47ce-8fe0-5928434bc460",
+    "target1_audio_id": "a0e2e152-e9c0-40cb-97e8-5feb6f7693a7",
     "presentation_audio_id": null
    },
    "changed": true
@@ -110,11 +407,39 @@
    "op": "phrase.update",
    "phrase_id": "deu_for_eng:S0660L01B03",
    "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0660L01B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0660L01B03",
+   "set": {
     "known_text": "I also tried to help",
     "target_text": "ich habe auch versucht zu helfen",
     "known_audio_id": "8b3d2f00-254d-4280-a234-facfeff7d76d",
     "target1_audio_id": "57f6c8a1-5d75-4f33-9382-475e908579ba",
     "target2_audio_id": "ecae8725-4fbe-4fd4-912c-a7e40d2b418c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0660L01B02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0660L01B02",
+   "set": {
+    "target1_audio_id": null
    }
   },
   {
