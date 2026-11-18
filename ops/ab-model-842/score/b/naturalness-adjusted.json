@@ -1,0 +1,111 @@
+{
+ "sonnet": {
+  "rows": 103,
+  "build_rows": 103,
+  "use_rows": 0,
+  "real_flags": 0,
+  "real_rate": 0.0,
+  "inherited_fala_isso": 5,
+  "build_fragment_misflags": 0,
+  "real": []
+ },
+ "opus": {
+  "rows": 191,
+  "build_rows": 99,
+  "use_rows": 92,
+  "real_flags": 7,
+  "real_rate": 3.7,
+  "inherited_fala_isso": 15,
+  "build_fragment_misflags": 11,
+  "real": [
+   [
+    "S0632L01+0",
+    "can I have a glass of water",
+    "posso tomar um copo de água",
+    3,
+    "Asks permission to drink, rather than requesting water."
+   ],
+   [
+    "S0631L01U03",
+    "I want to know what you would like",
+    "eu quero saber o que você gostaria",
+    2,
+    "“Gostaria” requires “de”; use “do que você gostaria”."
+   ],
+   [
+    "S0664L02B03",
+    "all ready for tomorrow",
+    "prontos para amanhã",
+    3,
+    "Fragment, not a complete USE sentence; explicit “all” missing."
+   ],
+   [
+    "S0638L01U01",
+    "I'm trying to speak Portuguese as much as possible",
+    "estou tentando falar português o mais possível",
+    3,
+    "“O mais possível” sounds unnatural; use “o máximo possível”."
+   ],
+   [
+    "S0633L02U02",
+    "can I have a large glass of water?",
+    "posso tomar um copo grande de água?",
+    3,
+    "Asks permission to drink, rather than requesting water."
+   ],
+   [
+    "S0660L02B02",
+    "to help all of you",
+    "ajudar vocês",
+    3,
+    "Infinitive fragment; also loses explicit “all”."
+   ],
+   [
+    "S0633L01B02",
+    "can I have a large glass",
+    "posso tomar um copo grande",
+    2,
+    "“Tomar” means drink here, not obtaining a glass."
+   ]
+  ]
+ },
+ "ref": {
+  "rows": 261,
+  "build_rows": 115,
+  "use_rows": 146,
+  "real_flags": 4,
+  "real_rate": 1.5,
+  "inherited_fala_isso": 13,
+  "build_fragment_misflags": 3,
+  "real": [
+   [
+    "S0636L01U04",
+    "I myself think that it was a mistake",
+    "eu acho que era um erro",
+    3,
+    "Completed mistake needs “foi um erro”; “myself” emphasis also missing."
+   ],
+   [
+    "S0660L02B02",
+    "with all of you",
+    "com vocês",
+    3,
+    "Prepositional fragment; also loses explicit “all”."
+   ],
+   [
+    "S0664L02B03",
+    "we were all ready",
+    "estávamos prontos",
+    3,
+    "Omits “all”; use “estávamos todos prontos”."
+   ],
+   [
+    "S0664L02U05",
+    "she said they're all ready",
+    "ela disse que eles estão prontos",
+    3,
+    "Omits “all”; use “eles estão todos prontos”."
+   ]
+  ]
+ }
+}
