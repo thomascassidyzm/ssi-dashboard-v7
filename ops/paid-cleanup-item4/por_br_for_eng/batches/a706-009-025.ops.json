@@ -1,0 +1,220 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0010L01B04",
+    "seed_number": 10,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "I'm not sure how to say",
+    "target_text": "não tenho certeza de como dizer",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0010L01U08",
+    "seed_number": 10,
+    "lego_index": 1,
+    "position": 14,
+    "known_text": "I'm not sure how to remember a word",
+    "target_text": "não tenho certeza de como me lembrar de uma palavra",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 51,
+    "lego_count": 8,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0013L01U05",
+    "seed_number": 13,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "you speak Portuguese, I speak a little",
+    "target_text": "você fala português, eu falo um pouco",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 37,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0009L01B04",
+   "expect": {
+    "known_text": "I speak now",
+    "target_text": "falo agora"
+   },
+   "set": {
+    "known_text": "I speak with someone else",
+    "target_text": "falo com outra pessoa",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0010L01B02",
+   "expect": {
+    "known_text": "I'm not sure now",
+    "target_text": "não tenho certeza agora"
+   },
+   "set": {
+    "known_text": "I'm not sure how",
+    "target_text": "não tenho certeza de como",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0010L01B03",
+   "expect": {
+    "known_text": "I'm not sure today",
+    "target_text": "não tenho certeza hoje"
+   },
+   "set": {
+    "known_text": "I'm not sure how to explain",
+    "target_text": "não tenho certeza de como explicar",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0010L01U04",
+   "expect": {
+    "known_text": "I'm not sure right now",
+    "target_text": "não tenho certeza agora"
+   },
+   "set": {
+    "known_text": "I'm not sure how to practise speaking with someone else",
+    "target_text": "não tenho certeza de como praticar falando com outra pessoa",
+    "decomposition": null,
+    "word_count": 59,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0013L01B03",
+   "expect": {
+    "known_text": "you speak now",
+    "target_text": "você fala agora"
+   },
+   "set": {
+    "known_text": "you speak with someone else",
+    "target_text": "você fala com outra pessoa",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0013L01U04",
+   "expect": {
+    "known_text": "you speak Portuguese today",
+    "target_text": "você fala português hoje"
+   },
+   "set": {
+    "known_text": "I'm not sure if you speak Portuguese",
+    "target_text": "não tenho certeza se você fala português",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0015L02B03",
+   "expect": {
+    "known_text": "I want you to speak now",
+    "target_text": "quero que você fale agora"
+   },
+   "set": {
+    "known_text": "I want you to speak tomorrow",
+    "target_text": "quero que você fale amanhã",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0015L02B04",
+   "expect": {
+    "known_text": "I want you to speak today",
+    "target_text": "quero que você fale hoje"
+   },
+   "set": {
+    "known_text": "I want you to speak with someone else",
+    "target_text": "quero que você fale com outra pessoa",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0025L02B02",
+   "expect": {
+    "known_text": "to help me now",
+    "target_text": "me ajudar agora"
+   },
+   "set": {
+    "known_text": "to help me learn",
+    "target_text": "me ajudar a aprender",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0025L02B03",
+   "expect": {
+    "known_text": "to help me today",
+    "target_text": "me ajudar hoje"
+   },
+   "set": {
+    "known_text": "to help me explain",
+    "target_text": "me ajudar a explicar",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  }
+ ]
+}
