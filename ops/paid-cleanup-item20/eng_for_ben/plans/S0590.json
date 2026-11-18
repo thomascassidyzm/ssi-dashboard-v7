@@ -1,0 +1,47 @@
+{
+ "seed": 590,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি স্টেশনের কাছে অপেক্ষা করছি",
+     "I'm waiting near the station",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "এটা স্টেশনের পাশে",
+     "it's next to the station",
+     null,
+     null
+    ],
+    [
+     "build",
+     "আমি স্টেশনের দিকে যেতে চাই",
+     "I want to go towards the station",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "যে বাসটা আমি স্টেশন ছেড়ে যেতে দেখেছিলাম",
+     "the bus I saw leaving the station",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0590L01B01": "স্টেশনের|form of taught স্টেশন",
+  "S0590L01": "স্টেশনের|form of taught স্টেশন"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

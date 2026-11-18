@@ -7748,11 +7748,11 @@
    "lego_en": "the beach",
    "lego_known": "সৈকত",
    "slot": "update:B01",
-   "en": null,
+   "en": "I love the beach",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি সৈকত ভালোবাসি",
    "gender": null,
    "n": 1
   },
@@ -7762,11 +7762,11 @@
    "lego_en": "the beach",
    "lego_known": "সৈকত",
    "slot": "insert",
-   "en": null,
+   "en": "I want to go to the beach",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি সৈকতে যেতে চাই",
    "gender": null,
    "n": 2
   },
@@ -7779,7 +7779,7 @@
    "en": "I'm sure it goes down to the beach",
    "hi": "मुझे यक़ीन है कि वह समुद्र तट तक जाता है।",
    "hin_row": "S0560L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত এটা সৈকতের দিকে নামে",
    "gender": null,
    "n": 1
   },
@@ -7792,7 +7792,7 @@
    "en": "I'm sure it's a fast car",
    "hi": "मुझे यक़ीन है कि यह तेज़ कार है।",
    "hin_row": "S0561L02U01",
-   "known": null,
+   "known": "আমি নিশ্চিত এটা দ্রুত গাড়ি",
    "gender": null,
    "n": 1
   },
@@ -7802,11 +7802,11 @@
    "lego_en": "if it's a fast car",
    "lego_known": "এটা দ্রুত গাড়ি কিনা",
    "slot": "update:B01",
-   "en": null,
+   "en": "I don't know if it's a fast car",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি জানি না এটা দ্রুত গাড়ি কিনা",
    "gender": null,
    "n": 1
   },
@@ -7819,7 +7819,7 @@
    "en": "I want to get there safely",
    "hi": "मैं वहाँ सुरक्षित पहुँचना चाहता हूँ।",
    "hin_row": "S0562L03B02",
-   "known": null,
+   "known": "আমি নিরাপদে পৌঁছাতে চাই",
    "gender": null,
    "n": 1
   },
@@ -7829,12 +7829,13 @@
    "lego_en": "any longer",
    "lego_known": "আর বেশিক্ষণ",
    "slot": "update:B01",
-   "en": "I wouldn't have been able to keep going any longer",
+   "en": "I can't wait any longer",
    "hi": "मैं और आगे चलने में सक्षम नहीं होता।",
    "hin_row": "S0563L03B01",
-   "known": null,
+   "known": "আমি আর বেশিক্ষণ অপেক্ষা করতে পারি না",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I wouldn't have been able to keep going any longer"
   },
   {
    "lego": "S0564L01",
@@ -7842,12 +7843,13 @@
    "lego_en": "without your help",
    "lego_known": "তোমার সাহায্য ছাড়া",
    "slot": "update:B01",
-   "en": "I'll be ready without your help",
+   "en": "I can't finish without your help",
    "hi": "आपकी मदद के बिना मैं तैयार हो जाऊँगा।",
    "hin_row": "S0564L02B02",
-   "known": null,
+   "known": "আমি তোমার সাহায্য ছাড়া শেষ করতে পারি না",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready without your help"
   },
   {
    "lego": "S0565L01",
@@ -7858,7 +7860,7 @@
    "en": "I think that I'd have thought more carefully",
    "hi": "मुझे लगता है कि मैंने और ध्यान से सोचा होता।",
    "hin_row": "S0565L03B03",
-   "known": null,
+   "known": "আমি মনে করি যে আমি আরও সাবধানে ভাবতাম",
    "gender": null,
    "n": 1
   },
@@ -7871,7 +7873,7 @@
    "en": "I'd have thought about it if it had been my choice",
    "hi": "अगर यह मेरी पसंद होती तो मैंने इसके बारे में सोचा होता।",
    "hin_row": "S0566L02B02",
-   "known": null,
+   "known": "এটা আমার পছন্দ হলে আমি এটা নিয়ে ভাবতাম",
    "gender": null,
    "n": 1
   },
@@ -7884,7 +7886,7 @@
    "en": "I'm sure I'd have thought more",
    "hi": "मुझे यक़ीन है कि मैंने और सोचा होता।",
    "hin_row": "S0566L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত আমি আরও ভাবতাম",
    "gender": null,
    "n": 1
   },
@@ -7894,11 +7896,11 @@
    "lego_en": "the children outdoors",
    "lego_known": "বাইরে সন্তানদের",
    "slot": "update:B01",
-   "en": null,
+   "en": "I love watching the children outdoors",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি বাইরে সন্তানদের দেখতে ভালোবাসি",
    "gender": null,
    "n": 1
   },
@@ -7911,7 +7913,7 @@
    "en": "I'm sure it's been lovely spending time",
    "hi": "मुझे यक़ीन है कि समय बिताना अच्छा रहा।",
    "hin_row": "S0567L02U02",
-   "known": null,
+   "known": "আমি নিশ্চিত সময় কাটানো খুব ভালো লেগেছে",
    "gender": null,
    "n": 1
   },
@@ -7921,12 +7923,13 @@
    "lego_en": "an improvement",
    "lego_known": "উন্নতি",
    "slot": "update:B01",
-   "en": "I want an improvement",
+   "en": "I want to see an improvement",
    "hi": "मैं सुधार चाहती हूँ।",
    "hin_row": "S0568L02B02",
-   "known": null,
+   "known": "আমি উন্নতি দেখতে চাই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I want an improvement"
   },
   {
    "lego": "S0568L03",
@@ -7937,7 +7940,7 @@
    "en": "I'm expecting to see a friend",
    "hi": "मुझे एक दोस्त को देखने की उम्मीद है।",
    "hin_row": "S0568L01B01",
-   "known": null,
+   "known": "আমি একজন বন্ধুকে দেখার আশা করছি",
    "gender": null,
    "n": 1
   },
@@ -7947,12 +7950,13 @@
    "lego_en": "have you decided",
    "lego_known": "ঠিক করেছ",
    "slot": "update:B01",
-   "en": "have you decided who told me?",
+   "en": "have you decided what you want?",
    "hi": "क्या आपने फ़ैसला कर लिया है कि मुझे किसने बताया?",
    "hin_row": "S0569L01U02",
-   "known": null,
+   "known": "তুমি কি ঠিক করেছ তুমি কী চাও?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "have you decided who told me?"
   },
   {
    "lego": "S0569L01",
@@ -7960,12 +7964,13 @@
    "lego_en": "have you decided",
    "lego_known": "ঠিক করেছ",
    "slot": "insert",
-   "en": "have you decided what happens?",
+   "en": "have you decided where you want to go?",
    "hi": "क्या आपने फ़ैसला कर लिया है कि क्या होता है?",
    "hin_row": "S0569L01B01",
-   "known": null,
+   "known": "তুমি কি ঠিক করেছ তুমি কোথায় যেতে চাও?",
    "gender": null,
-   "n": 2
+   "n": 2,
+   "orig_en": "have you decided what happens?"
   },
   {
    "lego": "S0569L02",
@@ -7976,7 +7981,7 @@
    "en": "I don't know how much you are willing to pay",
    "hi": "मुझे नहीं पता कि आप कितना देने को तैयार हैं।",
    "hin_row": "S0569L02B02",
-   "known": null,
+   "known": "আমি জানি না তুমি কতটুকু দিতে রাজি আছ",
    "gender": null,
    "n": 1
   },
@@ -7989,7 +7994,7 @@
    "en": "how much are you willing to pay for your ticket today?",
    "hi": "आज आप अपने टिकट के लिए कितना देने को तैयार हैं?",
    "hin_row": "S0570L01B01",
-   "known": null,
+   "known": "তোমার টিকেটের জন্য আজ কতটুকু দিতে রাজি আছ?",
    "gender": null,
    "n": 1
   },
@@ -8002,7 +8007,7 @@
    "en": "I'm not convinced that he's happy",
    "hi": "मैं आश्वस्त नहीं हूँ कि वह ख़ुश है।",
    "hin_row": "S0571L01B03",
-   "known": null,
+   "known": "আমি নিশ্চিত নই যে সে খুশি",
    "gender": null,
    "n": 1
   },
@@ -8012,12 +8017,13 @@
    "lego_en": "have you forgotten",
    "lego_known": "তুমি কি ভুলে গেছ",
    "slot": "update:B01",
-   "en": "have you forgotten who told me?",
+   "en": "have you forgotten the keys?",
    "hi": "क्या आप भूल गए कि मुझे किसने सुनाई?",
    "hin_row": "S0572L01B03",
-   "known": null,
+   "known": "তুমি কি চাবি ভুলে গেছ?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "have you forgotten who told me?"
   },
   {
    "lego": "S0572L02",
@@ -8028,7 +8034,7 @@
    "en": "I don't know what happened",
    "hi": "मुझे नहीं पता कि क्या हुआ था।",
    "hin_row": "S0572L02B02",
-   "known": null,
+   "known": "আমি জানি না কী হয়েছিল",
    "gender": null,
    "n": 1
   },
@@ -8041,7 +8047,7 @@
    "en": "I don't know what happened the last time they visited us",
    "hi": "मुझे नहीं पता कि पिछली बार जब वे हमसे मिलने आए थे तब क्या हुआ था।",
    "hin_row": "S0572L03B02",
-   "known": null,
+   "known": "আমি জানি না গত বার তারা আমাদের কাছে এলে কী হয়েছিল",
    "gender": null,
    "n": 1
   },
@@ -8054,7 +8060,7 @@
    "en": "it's important for everyone",
    "hi": "यह सबके लिए ज़रूरी है।",
    "hin_row": "S0574L02U03",
-   "known": null,
+   "known": "এটা সবার জন্য গুরুত্বপূর্ণ",
    "gender": null,
    "n": 1
   },
@@ -8067,7 +8073,7 @@
    "en": "I'm sure it's been upsetting",
    "hi": "मुझे यक़ीन है कि यह दुखद रहा है।",
    "hin_row": "S0575L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত এটা কষ্টের হয়েছে",
    "gender": null,
    "n": 1
   },
@@ -8080,7 +8086,7 @@
    "en": "I'm sure it has been very upsetting waiting",
    "hi": "मुझे यक़ीन है कि इंतज़ार करना बहुत दुखद रहा है।",
    "hin_row": "S0576L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত অপেক্ষা করা খুব কষ্টের হয়েছে",
    "gender": null,
    "n": 1
   },
@@ -8093,9 +8099,10 @@
    "en": "I'm waiting for the news from the hospital",
    "hi": "मैं अस्पताल से ख़बर मिलने का इंतज़ार कर रही हूँ।",
    "hin_row": "S0577L02B02",
-   "known": null,
+   "known": "আমি হাসপাতাল থেকে খবরের জন্য অপেক্ষা করছি",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "খবরের|form of taught খবর, this seed's own wording"
   },
   {
    "lego": "S0577L01",
@@ -8106,9 +8113,10 @@
    "en": "I'm waiting for the news from the hospital at the moment",
    "hi": "मैं अभी अस्पताल से ख़बर मिलने का इंतज़ार कर रही हूँ।",
    "hin_row": "S0577L02U03",
-   "known": null,
+   "known": "আমি এই মুহূর্তে হাসপাতাল থেকে খবরের জন্য অপেক্ষা করছি",
    "gender": null,
-   "n": 2
+   "n": 2,
+   "known_ok": "খবরের|form of taught খবর, this seed's own wording"
   },
   {
    "lego": "S0577L01",
@@ -8116,11 +8124,11 @@
    "lego_en": "the hospital",
    "lego_known": "হাসপাতাল",
    "slot": "insert",
-   "en": null,
+   "en": "my father is in the hospital",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমার বাবা হাসপাতালে",
    "gender": null,
    "n": 3
   },
@@ -8133,7 +8141,7 @@
    "en": "I'm sure we've been waiting for the news from the hospital",
    "hi": "मुझे यक़ीन है कि हम अस्पताल से ख़बर मिलने का इंतज़ार कर रही हैं।",
    "hin_row": "S0577L02U02",
-   "known": null,
+   "known": "আমি নিশ্চিত আমরা হাসপাতাল থেকে খবরের জন্য অপেক্ষা করছিলাম",
    "gender": null,
    "n": 1
   },
@@ -8146,7 +8154,7 @@
    "en": "I want somewhere warmer",
    "hi": "मैं कोई ज़्यादा गर्म जगह चाहता हूँ।",
    "hin_row": "S0578L01B01",
-   "known": null,
+   "known": "আমি একটু বেশি গরম কোথাও চাই",
    "gender": null,
    "n": 1
   },
@@ -8156,11 +8164,11 @@
    "lego_en": "we've tried",
    "lego_known": "চেষ্টা করেছি",
    "slot": "update:B01",
-   "en": null,
+   "en": "we've tried to help",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমরা সাহায্য করার চেষ্টা করেছি",
    "gender": null,
    "n": 1
   },
@@ -8170,11 +8178,11 @@
    "lego_en": "we've wanted to take",
    "lego_known": "নিয়ে যেতে চেয়েছি",
    "slot": "update:B01",
-   "en": null,
+   "en": "we've wanted to take the children to the beach",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমরা সন্তানদের সৈকতে নিয়ে যেতে চেয়েছি",
    "gender": null,
    "n": 1
   },
@@ -8184,11 +8192,11 @@
    "lego_en": "what it's like",
    "lego_known": "এটা কেমন",
    "slot": "update:B01",
-   "en": null,
+   "en": "I don't know what it's like",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি জানি না এটা কেমন",
    "gender": null,
    "n": 1
   },
@@ -8198,11 +8206,11 @@
    "lego_en": "a little more about",
    "lego_known": "সম্পর্কে আরেকটু বেশি",
    "slot": "update:B01",
-   "en": null,
+   "en": "tell me a little more about it",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমাকে এটা সম্পর্কে আরেকটু বেশি বলো",
    "gender": null,
    "n": 1
   },
@@ -8215,7 +8223,7 @@
    "en": "I'm sure he'd like to know a little more",
    "hi": "मुझे यक़ीन है कि वह थोड़ा और जानना चाहेगा।",
    "hin_row": "S0581L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত সে আরেকটু বেশি জানতে চায়",
    "gender": null,
    "n": 1
   },
@@ -8228,7 +8236,7 @@
    "en": "I want to grow up here",
    "hi": "मैं यहाँ बड़ा होना चाहता हूँ।",
    "hin_row": "S0582L02B02",
-   "known": null,
+   "known": "আমি এখানে বড় হতে চাই",
    "gender": null,
    "n": 1
   },
@@ -8238,12 +8246,13 @@
    "lego_en": "in this part of the world",
    "lego_known": "পৃথিবীর এই অংশে",
    "slot": "update:B01",
-   "en": "I'll be ready in this part of the world",
+   "en": "I used to live in this part of the world",
    "hi": "दुनिया के इस हिस्से में मैं तैयार हो जाऊँगी।",
    "hin_row": "S0583L01B03",
-   "known": null,
+   "known": "আমি পৃথিবীর এই অংশে থাকতাম",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready in this part of the world"
   },
   {
    "lego": "S0584L01",
@@ -8251,12 +8260,14 @@
    "lego_en": "the mountains",
    "lego_known": "পাহাড়",
    "slot": "update:B01",
-   "en": "I'll be ready to wake up every morning and see the mountains",
+   "en": "I want to wake up every morning and see the mountains",
    "hi": "मैं हर सुबह उठने पर पहाड़ देखने के लिए तैयार हो जाऊँगी।",
    "hin_row": "S0584L02U04",
-   "known": null,
+   "known": "আমি প্রতিদিন সকালে জেগে উঠে পাহাড় দেখতে চাই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready to wake up every morning and see the mountains",
+   "known_ok": "প্রতিদিন উঠে|this seed's own wording (every morning is its third LEGO)"
   },
   {
    "lego": "S0584L01",
@@ -8264,12 +8275,13 @@
    "lego_en": "the mountains",
    "lego_known": "পাহাড়",
    "slot": "insert",
-   "en": "what's it like to wake up every morning and see the mountains?",
+   "en": "I love the mountains",
    "hi": "हर सुबह उठने पर पहाड़ देखना कैसा लगता है?",
    "hin_row": "S0584L02B01",
-   "known": null,
+   "known": "আমি পাহাড় ভালোবাসি",
    "gender": null,
-   "n": 2
+   "n": 2,
+   "orig_en": "what's it like to wake up every morning and see the mountains?"
   },
   {
    "lego": "S0584L02",
@@ -8280,9 +8292,10 @@
    "en": "what's it like to wake up every morning?",
    "hi": "हर सुबह उठना कैसा लगता है?",
    "hin_row": "S0584L01B01",
-   "known": null,
+   "known": "প্রতিদিন সকালে জেগে ওঠা কেমন?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "প্রতিদিন ওঠা|this seed's own wording; ওঠা is a form of taught উঠা"
   },
   {
    "lego": "S0584L03",
@@ -8293,9 +8306,10 @@
    "en": "it's been lovely to wake up every morning",
    "hi": "हर सुबह उठना अच्छा रहा।",
    "hin_row": "S0584L01B03",
-   "known": null,
+   "known": "প্রতিদিন সকালে জেগে ওঠা খুব ভালো লেগেছে",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "ওঠা|form of taught উঠা"
   },
   {
    "lego": "S0585L01",
@@ -8306,9 +8320,10 @@
    "en": "I can see a friend out of my bedroom window",
    "hi": "मैं अपने बेडरूम की खिड़की से एक दोस्त को देख सकती हूँ।",
    "hin_row": "S0585L03B02",
-   "known": null,
+   "known": "আমি আমার শোবার ঘরের জানালা দিয়ে একজন বন্ধুকে দেখতে পাই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "ঘরের|form of this LEGO's own ঘর"
   },
   {
    "lego": "S0585L02",
@@ -8319,7 +8334,7 @@
    "en": "I can see a friend",
    "hi": "मैं एक दोस्त को देख सकता हूँ।",
    "hin_row": "S0585L01B01",
-   "known": null,
+   "known": "আমি একজন বন্ধুকে দেখতে পাই",
    "gender": null,
    "n": 1
   },
@@ -8329,11 +8344,11 @@
    "lego_en": "out of the window",
    "lego_known": "জানালা দিয়ে",
    "slot": "update:B01",
-   "en": null,
+   "en": "I can see the dog out of the window",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি জানালা দিয়ে কুকুরটা দেখতে পাই",
    "gender": null,
    "n": 1
   },
@@ -8343,11 +8358,11 @@
    "lego_en": "eggs",
    "lego_known": "ডিম",
    "slot": "update:B01",
-   "en": null,
+   "en": "I love eggs",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি ডিম ভালোবাসি",
    "gender": null,
    "n": 1
   },
@@ -8360,7 +8375,7 @@
    "en": "I need twenty boiled eggs",
    "hi": "मुझे बीस उबले अंडों की ज़रूरत है।",
    "hin_row": "S0586L01B03",
-   "known": null,
+   "known": "আমার কুড়িটি সেদ্ধ ডিম দরকার",
    "gender": null,
    "n": 1
   },
@@ -8370,12 +8385,13 @@
    "lego_en": "for supper",
    "lego_known": "রাতের খাবারে",
    "slot": "update:B01",
-   "en": "I'll be ready for supper",
+   "en": "I want eggs for supper",
    "hi": "मैं रात के खाने में तैयार हो जाऊँगा।",
    "hin_row": "S0587L03B03",
-   "known": null,
+   "known": "আমি রাতের খাবারে ডিম চাই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready for supper"
   },
   {
    "lego": "S0587L02",
@@ -8386,7 +8402,7 @@
    "en": "she used to insist that it's true",
    "hi": "वह ज़ोर देती थी कि यह सच है।",
    "hin_row": "S0587L01B01",
-   "known": null,
+   "known": "সে জোর দিত যে এটা সত্যি",
    "gender": null,
    "n": 1
   },
@@ -8399,7 +8415,7 @@
    "en": "I wanted to leave home",
    "hi": "मैं घर छोड़ना चाहता था।",
    "hin_row": "S0588L03B02",
-   "known": null,
+   "known": "আমি বাড়ি ছেড়ে যেতে চেয়েছিলাম",
    "gender": null,
    "n": 1
   },
@@ -8409,11 +8425,11 @@
    "lego_en": "so I wanted to grow up",
    "lego_known": "তাই আমি বড় হয়ে",
    "slot": "update:B01",
-   "en": null,
+   "en": "so I wanted to grow up as quickly as possible",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "তাই আমি যত দ্রুত সম্ভব বড় হতে চেয়েছিলাম",
    "gender": null,
    "n": 1
   },
@@ -8426,9 +8442,10 @@
    "en": "I want to go towards the bus",
    "hi": "मैं बस की ओर जाना चाहती हूँ।",
    "hin_row": "S0391L02B02",
-   "known": null,
+   "known": "আমি বাসটার দিকে যেতে চাই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "বাসটার|form of taught বাসটা"
   },
   {
    "lego": "S0589L01",
@@ -8439,9 +8456,10 @@
    "en": "I think I want to go towards the bus",
    "hi": "मुझे लगता है मैं बस की ओर जाना चाहता हूँ।",
    "hin_row": "S0391L02U04",
-   "known": null,
+   "known": "আমি মনে করি আমি বাসটার দিকে যেতে চাই",
    "gender": null,
-   "n": 2
+   "n": 2,
+   "known_ok": "বাসটার|form of taught বাসটা"
   },
   {
    "lego": "S0590L01",
@@ -8449,13 +8467,14 @@
    "lego_en": "the station",
    "lego_known": "স্টেশন",
    "slot": "update:B01",
-   "en": null,
+   "en": "I'm waiting near the station",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি স্টেশনের কাছে অপেক্ষা করছি",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "স্টেশনের|form of taught স্টেশন"
   },
   {
    "lego": "S0590L01",
@@ -8463,13 +8482,14 @@
    "lego_en": "the station",
    "lego_known": "স্টেশন",
    "slot": "insert",
-   "en": null,
+   "en": "it's next to the station",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "এটা স্টেশনের পাশে",
    "gender": null,
-   "n": 2
+   "n": 2,
+   "known_ok": "স্টেশনের|form of taught স্টেশন"
   },
   {
    "lego": "S0590L01",
@@ -8477,13 +8497,14 @@
    "lego_en": "the station",
    "lego_known": "স্টেশন",
    "slot": "insert",
-   "en": null,
+   "en": "I want to go towards the station",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি স্টেশনের দিকে যেতে চাই",
    "gender": null,
-   "n": 3
+   "n": 3,
+   "known_ok": "স্টেশনের|form of taught স্টেশন"
   },
   {
    "lego": "S0590L02",
@@ -8491,11 +8512,11 @@
    "lego_en": "saw leaving the station",
    "lego_known": "স্টেশন ছেড়ে যেতে দেখেছিলাম",
    "slot": "update:B01",
-   "en": null,
+   "en": "the bus I saw leaving the station",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "যে বাসটা আমি স্টেশন ছেড়ে যেতে দেখেছিলাম",
    "gender": null,
    "n": 1
   },
@@ -8508,7 +8529,7 @@
    "en": "I'm sure she followed me",
    "hi": "मुझे यक़ीन है कि वह मेरे पीछे आई।",
    "hin_row": "S0591L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত সে আমাকে অনুসরণ করল",
    "gender": null,
    "n": 1
   },
@@ -8521,7 +8542,7 @@
    "en": "I'm going to run down to the shops",
    "hi": "मैं दुकानों तक दौड़ूँगा।",
    "hin_row": "S0591L02B03",
-   "known": null,
+   "known": "আমি দোকানের দিকে দৌড়াতে যাচ্ছি",
    "gender": null,
    "n": 1
   },
@@ -8534,7 +8555,7 @@
    "en": "she followed me along the main road",
    "hi": "वह मुख्य सड़क के साथ-साथ मेरे पीछे आई।",
    "hin_row": "S0592L01B02",
-   "known": null,
+   "known": "সে প্রধান রাস্তা ধরে আমাকে অনুসরণ করল",
    "gender": null,
    "n": 1
   },
@@ -8547,9 +8568,10 @@
    "en": "I'm sure I still had to share",
    "hi": "मुझे यक़ीन है कि मुझे बाँटना ही पड़ा।",
    "hin_row": "S0593L02U01",
-   "known": null,
+   "known": "আমি নিশ্চিত আমাকে তবুও ভাগ করে নিতে হত",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "তবুও|seed 593's own wording for still"
   },
   {
    "lego": "S0593L02",
@@ -8560,7 +8582,7 @@
    "en": "however much I argued I was wrong",
    "hi": "इतनी बहस करने के बावजूद, मैं ग़लत था।",
    "hin_row": "S0593L01U05",
-   "known": null,
+   "known": "আমি যত ঝগড়াই করি না কেন আমি ভুল ছিলাম",
    "gender": null,
    "n": 1
   },
@@ -8573,7 +8595,7 @@
    "en": "I want my toys",
    "hi": "मैं अपने खिलौने चाहता हूँ।",
    "hin_row": "S0594L02B02",
-   "known": null,
+   "known": "আমি আমার খেলনা চাই",
    "gender": null,
    "n": 1
   },
@@ -8583,12 +8605,13 @@
    "lego_en": "sister",
    "lego_known": "বোনের",
    "slot": "update:B01",
-   "en": "I'll be ready with my sister",
+   "en": "I used to live with my sister",
    "hi": "अपनी बहन के साथ मैं तैयार हो जाऊँगी।",
    "hin_row": "S0594L03U04",
-   "known": null,
+   "known": "আমি আমার বোনের সাথে থাকতাম",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready with my sister"
   },
   {
    "lego": "S0595L02",
@@ -8596,12 +8619,13 @@
    "lego_en": "need to lie down",
    "lego_known": "শুয়ে পড়তে হবে",
    "slot": "update:B01",
-   "en": "I'm sure I need to lie down",
+   "en": "I think I need to lie down",
    "hi": "मुझे यक़ीन है कि मुझे लेटना है।",
    "hin_row": "S0595L01U01",
-   "known": null,
+   "known": "আমি মনে করি আমাকে শুয়ে পড়তে হবে",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure I need to lie down"
   },
   {
    "lego": "S0596L01",
@@ -8609,12 +8633,13 @@
    "lego_en": "eyes",
    "lego_known": "চোখ",
    "slot": "update:B01",
-   "en": "I'm sure I need to close my eyes",
+   "en": "I think I need to close my eyes",
    "hi": "मुझे यक़ीन है कि मुझे आँखें बंद करनी हैं।",
    "hin_row": "S0596L01U01",
-   "known": null,
+   "known": "আমি মনে করি আমাকে আমার চোখ বন্ধ করতে হবে",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure I need to close my eyes"
   },
   {
    "lego": "S0596L02",
@@ -8625,7 +8650,7 @@
    "en": "it's true I need to close my eyes",
    "hi": "यह सच है कि मुझे आँखें बंद करनी हैं।",
    "hin_row": "S0596L01B03",
-   "known": null,
+   "known": "এটা সত্যি আমাকে চোখ বন্ধ করতে হবে",
    "gender": null,
    "n": 1
   },
@@ -8635,11 +8660,11 @@
    "lego_en": "suspect",
    "lego_known": "সন্দেহ",
    "slot": "update:B01",
-   "en": null,
+   "en": "I suspect that he's happy",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমার সন্দেহ সে খুশি",
    "gender": null,
    "n": 1
   },
@@ -8649,11 +8674,11 @@
    "lego_en": "a hundred stories",
    "lego_known": "শতটা গল্প",
    "slot": "update:B01",
-   "en": null,
+   "en": "I've heard a hundred stories",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি শতটা গল্প শুনেছি",
    "gender": null,
    "n": 1
   },
@@ -8663,12 +8688,13 @@
    "lego_en": "a thousand stories",
    "lego_known": "হাজারটা গল্প",
    "slot": "update:B01",
-   "en": "a thousand stories here",
+   "en": "I've heard a thousand stories",
    "hi": "हज़ारों कहानियाँ यहाँ",
    "hin_row": "S0598L01B03",
-   "known": null,
+   "known": "আমি হাজারটা গল্প শুনেছি",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "a thousand stories here"
   },
   {
    "lego": "S0598L02",
@@ -8679,7 +8705,7 @@
    "en": "about what they were doing here",
    "hi": "कि वे क्या कर रहे थे यहाँ",
    "hin_row": "S0598L02B03",
-   "known": null,
+   "known": "তারা এখানে কী করছিল সে সম্পর্কে",
    "gender": null,
    "n": 1
   },
@@ -8692,7 +8718,7 @@
    "en": "I don't want to drive",
    "hi": "मैं ड्राइव करना नहीं चाहता।",
    "hin_row": "S0599L02B03",
-   "known": null,
+   "known": "আমি গাড়ি চালাতে চাই না",
    "gender": null,
    "n": 1
   },
@@ -8705,7 +8731,7 @@
    "en": "I'd have thought more if you'd told me",
    "hi": "अगर आपने मुझे बताया होता, तो मैंने और सोचा होता।",
    "hin_row": "S0599L03B03",
-   "known": null,
+   "known": "তুমি আমাকে বললে আমি আরও ভাবতাম",
    "gender": null,
    "n": 1
   },
@@ -8718,7 +8744,7 @@
    "en": "I didn't know how tired you were",
    "hi": "मुझे नहीं पता था कि आप कितने थके हुए हैं।",
    "hin_row": "S0600L02U02",
-   "known": null,
+   "known": "আমি জানতাম না তুমি কতটা ক্লান্ত ছিলে",
    "gender": null,
    "n": 1
   },
@@ -8731,7 +8757,7 @@
    "en": "I'm sure I'd have driven",
    "hi": "मुझे यक़ीन है कि मैं ड्राइव कर लेती।",
    "hin_row": "S0600L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত আমি গাড়ি চালাতাম",
    "gender": null,
    "n": 1
   },
@@ -8744,7 +8770,7 @@
    "en": "I'd have driven if you'd told me",
    "hi": "अगर आपने मुझे बताया होता, तो मैं ड्राइव कर लेती।",
    "hin_row": "S0600L01B01",
-   "known": null,
+   "known": "তুমি যদি আমাকে বলতে আমি গাড়ি চালাতাম",
    "gender": null,
    "n": 1
   },
@@ -8757,7 +8783,7 @@
    "en": "I don't know how it all started",
    "hi": "मुझे नहीं पता कि यह सब कैसे शुरू हुआ।",
    "hin_row": "S0601L02B02",
-   "known": null,
+   "known": "আমি জানি না কীভাবে সব শুরু হয়েছিল",
    "gender": null,
    "n": 1
   },
@@ -8770,7 +8796,7 @@
    "en": "I don't know how it started in the first place",
    "hi": "मुझे नहीं पता कि आख़िर यह सब शुरू कैसे हुआ।",
    "hin_row": "S0602L01B01",
-   "known": null,
+   "known": "আমি জানি না প্রথম থেকে এটা কীভাবে শুরু হয়েছিল",
    "gender": null,
    "n": 1
   },
@@ -8783,7 +8809,7 @@
    "en": "I said that we didn't have anywhere to live",
    "hi": "मैंने कहा था कि हमारे पास रहने के लिए कोई जगह नहीं थी।",
    "hin_row": "S0603L01U05",
-   "known": null,
+   "known": "আমি বলেছিলাম যে আমাদের থাকার কোনো জায়গা ছিল না",
    "gender": null,
    "n": 1
   },
@@ -8793,12 +8819,13 @@
    "lego_en": "at the time",
    "lego_known": "সেই সময়ে",
    "slot": "update:B01",
-   "en": "I'll be ready at the time",
+   "en": "I was tired at the time",
    "hi": "उस समय मैं तैयार हो जाऊँगी।",
    "hin_row": "S0603L02B03",
-   "known": null,
+   "known": "আমি সেই সময়ে ক্লান্ত ছিলাম",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'll be ready at the time"
   },
   {
    "lego": "S0604L01",
@@ -8809,7 +8836,7 @@
    "en": "we were talking about why we needed to stay here",
    "hi": "हम बात कर रहे थे कि हमें यहाँ क्यों रहना था।",
    "hin_row": "S0601L01U03",
-   "known": null,
+   "known": "আমরা কথা বলছিলাম কেন আমাদের এখানে থাকতে হয়েছিল",
    "gender": null,
    "n": 1
   },
@@ -8822,7 +8849,7 @@
    "en": "they offered to let us stay",
    "hi": "उन्होंने हमें रहने देने की पेशकश की",
    "hin_row": "S0604L01B03",
-   "known": null,
+   "known": "তারা আমাদের থাকতে দিতে রাজি হয়েছিল",
    "gender": null,
    "n": 1
   },
@@ -8835,7 +8862,7 @@
    "en": "I'm sure we needed help",
    "hi": "मुझे यक़ीन है कि हमें मदद की ज़रूरत थी।",
    "hin_row": "S0605L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত আমাদের সাহায্য দরকার ছিল",
    "gender": null,
    "n": 1
   },
@@ -8848,7 +8875,7 @@
    "en": "I'm sure I'd have waited",
    "hi": "मुझे यक़ीन है कि मैं इंतज़ार कर लेती।",
    "hin_row": "S0606L03U01",
-   "known": null,
+   "known": "আমি নিশ্চিত আমি অপেক্ষা করতাম",
    "gender": null,
    "n": 1
   },
@@ -8861,7 +8888,7 @@
    "en": "I'd have driven if I'd known then",
    "hi": "अगर मुझे तब पता होता, तो मैं ड्राइव कर लेती।",
    "hin_row": "S0606L01B02",
-   "known": null,
+   "known": "যদি আমি তখন জানতাম আমি গাড়ি চালাতাম",
    "gender": null,
    "n": 1
   },
@@ -8871,12 +8898,13 @@
    "lego_en": "what I know now",
    "lego_known": "এখন যা জানি",
    "slot": "update:B01",
-   "en": "I don't know what I know now",
+   "en": "I'm happy with what I know now",
    "hi": "मुझे नहीं पता कि अब मुझे क्या पता है।",
    "hin_row": "S0606L02B02",
-   "known": null,
+   "known": "এখন যা জানি তা নিয়ে আমি খুশি",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I don't know what I know now"
   },
   {
    "lego": "S0606L03",
@@ -8887,7 +8915,7 @@
    "en": "I didn't know what I know now",
    "hi": "मुझे वह नहीं पता था जो मुझे अब पता है।",
    "hin_row": "S0606L02U05",
-   "known": null,
+   "known": "এখন যা জানি তা আমি জানতাম না",
    "gender": null,
    "n": 2
   },
@@ -8900,7 +8928,7 @@
    "en": "I'd have waited if I'd known then",
    "hi": "अगर मुझे तब पता होता, तो मैं इंतज़ार कर लेती।",
    "hin_row": "S0606L03U02",
-   "known": null,
+   "known": "যদি আমি তখন জানতাম আমি অপেক্ষা করতাম",
    "gender": null,
    "n": 1
   },
@@ -8913,7 +8941,7 @@
    "en": "if I had known I'd have done things differently",
    "hi": "अगर मुझे पता होता, तो मैंने चीज़ें अलग ढंग से की होतीं।",
    "hin_row": "S0607L02U04",
-   "known": null,
+   "known": "জানলে আমি জিনিসগুলো অন্যভাবে করতাম",
    "gender": null,
    "n": 1
   },
@@ -8926,7 +8954,7 @@
    "en": "I will ask what they wanted to do",
    "hi": "मैं पूछूँगा कि वे क्या करना चाहते थे",
    "hin_row": "S0465L02U05",
-   "known": null,
+   "known": "আমি জিজ্ঞেস করব তারা কী করতে চেয়েছিল",
    "gender": null,
    "n": 1
   },
@@ -8939,7 +8967,7 @@
    "en": "I'm sure it would have been the sensible thing to do",
    "hi": "मुझे यक़ीन है कि ऐसा करना समझदारी होती।",
    "hin_row": "S0608L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত এটাই করার বুদ্ধিমানের কাজ হত",
    "gender": null,
    "n": 1
   },
@@ -8952,7 +8980,7 @@
    "en": "the sensible thing to do would have been to help",
    "hi": "मदद करना समझदारी की बात होती।",
    "hin_row": "S0609L01B02",
-   "known": null,
+   "known": "বুদ্ধিমানের কাজ হত সাহায্য করা",
    "gender": null,
    "n": 1
   },
@@ -8965,7 +8993,7 @@
    "en": "he needs to look for work now",
    "hi": "उसे अभी काम ढूँढ़ना है।",
    "hin_row": "S0610L01U01",
-   "known": null,
+   "known": "তার এখন কাজ খোঁজা দরকার",
    "gender": null,
    "n": 1
   },
@@ -8978,7 +9006,7 @@
    "en": "I'm sure I would have been ready to look",
    "hi": "मुझे यक़ीन है कि मैं ढूँढ़ने के लिए तैयार रहती।",
    "hin_row": "S0611L02U02",
-   "known": null,
+   "known": "আমি নিশ্চিত আমি খুঁজতে তৈরি থাকতাম",
    "gender": null,
    "n": 1
   },
@@ -8991,7 +9019,7 @@
    "en": "I'm sure we would have bought something",
    "hi": "मुझे यक़ीन है कि हम कुछ ख़रीद लेते।",
    "hin_row": "S0612L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত আমরা কিছু কিনতাম",
    "gender": null,
    "n": 1
   },
@@ -9004,7 +9032,7 @@
    "en": "I want a house there",
    "hi": "मैं वहाँ एक घर चाहती हूँ।",
    "hin_row": "S0613L02B02",
-   "known": null,
+   "known": "আমি সেখানে একটা বাড়ি চাই",
    "gender": null,
    "n": 1
   },
@@ -9014,11 +9042,11 @@
    "lego_en": "probably there",
    "lego_known": "সম্ভবত সেখানে",
    "slot": "update:B01",
-   "en": null,
+   "en": "it's probably there",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "এটা সম্ভবত সেখানে",
    "gender": null,
    "n": 1
   },
@@ -9028,12 +9056,13 @@
    "lego_en": "you were very brave to say",
    "lego_known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
    "slot": "update:B01",
-   "en": "you were very brave to say that you thought that",
+   "en": "you were very brave to say the truth",
    "hi": "आप यह कहने के लिए बहुत बहादुर थे कि आप ऐसा सोचते हैं।",
    "hin_row": "S0616L01B01",
-   "known": null,
+   "known": "তুমি সত্যটা বলতে খুব সাহসী ছিলে",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "you were very brave to say that you thought that"
   },
   {
    "lego": "S0617L02",
@@ -9041,12 +9070,13 @@
    "lego_en": "you thought that",
    "lego_known": "তুমি মনে করেছিলে যে",
    "slot": "update:B01",
-   "en": "i think that you thought that",
+   "en": "I know you thought that it was a mistake",
    "hi": "मुझे लगता है कि आप ऐसा सोचते हैं।",
    "hin_row": "S0616L01B02",
-   "known": null,
+   "known": "আমি জানি তুমি মনে করেছিলে যে এটা একটা ভুল ছিল",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "i think that you thought that"
   },
   {
    "lego": "S0618L01",
@@ -9057,7 +9087,7 @@
    "en": "I'm sure it doesn't feel like a long time",
    "hi": "मुझे यक़ीन है कि यह बहुत लंबा समय नहीं लगता।",
    "hin_row": "S0618L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত এটা দীর্ঘ সময় মনে হয় না",
    "gender": null,
    "n": 1
   },
@@ -9070,7 +9100,7 @@
    "en": "it's true it doesn't feel like a long time",
    "hi": "यह सच है कि यह बहुत लंबा समय नहीं लगता।",
    "hin_row": "S0618L01B02",
-   "known": null,
+   "known": "এটা সত্যি এটা দীর্ঘ সময় মনে হয় না",
    "gender": null,
    "n": 1
   },
@@ -9083,7 +9113,7 @@
    "en": "I'm sure it's a long time since we saw each other",
    "hi": "मुझे यक़ीन है कि हमें एक-दूसरे को देखे बहुत समय हो गया।",
    "hin_row": "S0619L02U01",
-   "known": null,
+   "known": "আমি নিশ্চিত আমরা একে অপরকে দেখার পর থেকে অনেক সময় হয়ে গেছে",
    "gender": null,
    "n": 1
   },
@@ -9096,7 +9126,7 @@
    "en": "I'm sure it's a long time",
    "hi": "मुझे यक़ीन है कि बहुत समय हो गया।",
    "hin_row": "S0619L01U05",
-   "known": null,
+   "known": "আমি নিশ্চিত অনেক সময় হয়ে গেছে",
    "gender": null,
    "n": 1
   },
@@ -9109,7 +9139,7 @@
    "en": "I'm sure it's a very long time",
    "hi": "मुझे यक़ीन है कि बहुत लंबा समय हो गया।",
    "hin_row": "S0620L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত অনেক দীর্ঘ সময় হয়ে গেছে",
    "gender": null,
    "n": 1
   },
@@ -9122,7 +9152,7 @@
    "en": "but it was broken",
    "hi": "लेकिन यह टूट गया था",
    "hin_row": "S0621L01B03",
-   "known": null,
+   "known": "কিন্তু এটা ভেঙে গেছে",
    "gender": null,
    "n": 1
   },
@@ -9135,7 +9165,7 @@
    "en": "I wouldn't have dared to tell her the truth",
    "hi": "मुझे उसे सच बताने की हिम्मत नहीं होती।",
    "hin_row": "S0621L03U02",
-   "known": null,
+   "known": "আমি তাকে সত্যটা বলতে সাহস করতাম না",
    "gender": null,
    "n": 1
   },
@@ -9148,7 +9178,7 @@
    "en": "I knew that we needed help",
    "hi": "मुझे पता था कि हमें मदद की ज़रूरत थी।",
    "hin_row": "S0622L01U02",
-   "known": null,
+   "known": "আমি জানতাম যে আমাদের সাহায্য দরকার ছিল",
    "gender": null,
    "n": 1
   },
@@ -9161,7 +9191,7 @@
    "en": "I'm sure the children had broken it",
    "hi": "मुझे यक़ीन है कि इसे बच्चों ने तोड़ दिया था।",
    "hin_row": "S0622L02U01",
-   "known": null,
+   "known": "আমি নিশ্চিত সন্তানরা এটা ভেঙেছে",
    "gender": null,
    "n": 1
   },
@@ -9171,11 +9201,11 @@
    "lego_en": "coffee or tea",
    "lego_known": "কফি না চা",
    "slot": "update:B01",
-   "en": null,
+   "en": "I need a cup of coffee or tea",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমার এক কাপ কফি বা চা দরকার",
    "gender": null,
    "n": 1
   },
@@ -9185,11 +9215,11 @@
    "lego_en": "that would be great please",
    "lego_known": "দারুণ হবে, দয়া করে",
    "slot": "update:B01",
-   "en": null,
+   "en": "thank you that would be great please",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "ধন্যবাদ, দারুণ হবে, দয়া করে",
    "gender": null,
    "n": 1
   },
@@ -9202,7 +9232,7 @@
    "en": "I want something to drink",
    "hi": "मैं पीने के लिए कुछ चाहता हूँ",
    "hin_row": "S0625L01B02",
-   "known": null,
+   "known": "আমি কিছু পান করতে চাই",
    "gender": null,
    "n": 1
   },
@@ -9215,7 +9245,7 @@
    "en": "I think that I want something to drink",
    "hi": "मुझे लगता है कि मैं पीने के लिए कुछ चाहता हूँ।",
    "hin_row": "S0625L01U05",
-   "known": null,
+   "known": "আমি মনে করি যে আমি কিছু পান করতে চাই",
    "gender": null,
    "n": 1
   },
@@ -9225,12 +9255,13 @@
    "lego_en": "not thirsty",
    "lego_known": "তৃষ্ণা নেই",
    "slot": "update:B01",
-   "en": "I'm sure I'm not thirsty",
+   "en": "thank you but I'm not thirsty",
    "hi": "मुझे यक़ीन है कि मुझे प्यास नहीं है।",
    "hin_row": "S0626L01U01",
-   "known": null,
+   "known": "ধন্যবাদ কিন্তু আমার তৃষ্ণা নেই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I'm sure I'm not thirsty"
   },
   {
    "lego": "S0627L01",
@@ -9241,7 +9272,7 @@
    "en": "I'm sure your coffee is ready",
    "hi": "मुझे यक़ीन है कि आपकी कॉफ़ी तैयार है।",
    "hin_row": "S0627L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত তোমার কফি তৈরি",
    "gender": null,
    "n": 1
   },
@@ -9254,7 +9285,7 @@
    "en": "do you like tea for supper?",
    "hi": "रात के खाने में क्या आपको चाय पसंद है?",
    "hin_row": "S0628L01U02",
-   "known": null,
+   "known": "তুমি কি রাতের খাবারে চা পছন্দ কর?",
    "gender": null,
    "n": 1
   },
@@ -9264,12 +9295,13 @@
    "lego_en": "something to drink please",
    "lego_known": "দয়া করে কিছু পান করতে",
    "slot": "update:B01",
-   "en": "can I have something to drink please?",
+   "en": "I'd like something to drink please",
    "hi": "क्या मुझे कुछ पीने को मिल सकता है, कृपया?",
    "hin_row": "S0630L01B01",
-   "known": null,
+   "known": "আমি দয়া করে কিছু পান করতে চাই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "can I have something to drink please?"
   },
   {
    "lego": "S0632L01",
@@ -9280,7 +9312,7 @@
    "en": "I need a glass of water",
    "hi": "मुझे एक गिलास पानी चाहिए।",
    "hin_row": "S0632L01B03",
-   "known": null,
+   "known": "আমার এক গ্লাস পানি দরকার",
    "gender": null,
    "n": 1
   },
@@ -9293,7 +9325,7 @@
    "en": "I want a large glass of water",
    "hi": "मैं पानी का एक बड़ा गिलास चाहती हूँ।",
    "hin_row": "S0633L01B01",
-   "known": null,
+   "known": "আমি এক বড় গ্লাস পানি চাই",
    "gender": null,
    "n": 1
   },
@@ -9303,12 +9335,13 @@
    "lego_en": "I think",
    "lego_known": "আমি মনে করি",
    "slot": "update:B01",
-   "en": "I think that that is Jane's bag",
+   "en": "I think it's the most interesting book",
    "hi": "मुझे लगता है वह जेन का बैग है।",
    "hin_row": "S0635L01B01",
-   "known": null,
+   "known": "আমি মনে করি এটা সবচেয়ে মজার বই",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "I think that that is Jane's bag"
   },
   {
    "lego": "S0639L01",
@@ -9316,11 +9349,11 @@
    "lego_en": "with you sir",
    "lego_known": "আপনার সাথে স্যার",
    "slot": "update:B01",
-   "en": null,
+   "en": "I want to speak with you sir",
    "hi": null,
    "hin_row": null,
    "author": true,
-   "known": null,
+   "known": "আমি আপনার সাথে কথা বলতে চাই স্যার",
    "gender": null,
    "n": 1
   },
@@ -9333,7 +9366,7 @@
    "en": "I'm sure it's the red one",
    "hi": "मुझे यक़ीन है कि लाल वाला है।",
    "hin_row": "S0640L01U01",
-   "known": null,
+   "known": "আমি নিশ্চিত এটা লাল রঙেরটা",
    "gender": null,
    "n": 1
   },
@@ -9346,7 +9379,7 @@
    "en": "it's the red one on that chair",
    "hi": "लाल वाला है जो उस कुर्सी पर रखा है।",
    "hin_row": "S0641L01B02",
-   "known": null,
+   "known": "এটা ওই চেয়ারে লাল রঙেরটা",
    "gender": null,
    "n": 1
   },
@@ -9359,7 +9392,7 @@
    "en": "I like it madam",
    "hi": "मुझे यह पसंद है, मैडम",
    "hin_row": "S0642L02B05",
-   "known": null,
+   "known": "এটা আমার ভালো লাগে ম্যাডাম",
    "gender": null,
    "n": 1
   },
@@ -9372,7 +9405,7 @@
    "en": "could you say that madam?",
    "hi": "क्या आप वह कह सकती हैं, मैडम?",
    "hin_row": "S0644L01B02",
-   "known": null,
+   "known": "আপনি কি এটা বলতে পারবেন ম্যাডাম?",
    "gender": null,
    "n": 1
   },
@@ -9385,7 +9418,7 @@
    "en": "I can help you sir",
    "hi": "मैं आपकी मदद कर सकता हूँ, सर।",
    "hin_row": "S0639L02B03",
-   "known": null,
+   "known": "আমি আপনাকে সাহায্য করতে পারি স্যার",
    "gender": null,
    "n": 1
   },
@@ -9398,7 +9431,7 @@
    "en": "I couldn't agree with what you said",
    "hi": "आपने जो कहा, मैं उससे सहमत नहीं हो पाई।",
    "hin_row": "S0384L01U01",
-   "known": null,
+   "known": "আপনি যা বলেছিলেন তার সাথে আমি একমত হতে পারিনি",
    "gender": null,
    "n": 1
   },
@@ -9411,7 +9444,7 @@
    "en": "are you ready madam?",
    "hi": "क्या आप तैयार हैं, मैडम?",
    "hin_row": "S0642L02B02",
-   "known": null,
+   "known": "আপনি কি তৈরি ম্যাডাম?",
    "gender": null,
    "n": 1
   },
@@ -9424,7 +9457,7 @@
    "en": "what do you think now madam?",
    "hi": "अब आपका क्या ख़्याल है, मैडम?",
    "hin_row": "S0651L01U03",
-   "known": null,
+   "known": "আপনি এখন কী মনে করেন, ম্যাডাম?",
    "gender": null,
    "n": 1
   },
@@ -9437,7 +9470,7 @@
    "en": "what do you need sir today?",
    "hi": "आज आपको किस चीज़ की ज़रूरत है, सर?",
    "hin_row": "S0652L01U04",
-   "known": null,
+   "known": "আজ আপনার কী দরকার, স্যার?",
    "gender": null,
    "n": 1
   },
@@ -9450,7 +9483,7 @@
    "en": "I can help you, what do you need sir",
    "hi": "मैं आपकी मदद कर सकती हूँ, आपको किस चीज़ की ज़रूरत है, सर",
    "hin_row": "S0652L01U06",
-   "known": null,
+   "known": "আমি আপনাকে সাহায্য করতে পারব, আপনার কী দরকার স্যার",
    "gender": null,
    "n": 1
   },
@@ -9463,7 +9496,7 @@
    "en": "I hope I can help you all",
    "hi": "मुझे उम्मीद है कि मैं आप सबकी मदद कर सकती हूँ।",
    "hin_row": "S0660L01U06",
-   "known": null,
+   "known": "আমি আশা করি আমি তোমাদের সবাইকে সাহায্য করতে পারি",
    "gender": null,
    "n": 1
   },
@@ -9476,7 +9509,7 @@
    "en": "he's heard what you all said",
    "hi": "उसने सुना है जो आप सबने कहा",
    "hin_row": "S0663L01B04",
-   "known": null,
+   "known": "সে শুনেছে তোমরা সবাই যা বলেছিলে",
    "gender": null,
    "n": 1
   },
@@ -9486,12 +9519,13 @@
    "lego_en": "are you all ready",
    "lego_known": "তোমরা কি সবাই তৈরি",
    "slot": "update:B01",
-   "en": "are you all ready next time?",
+   "en": "are you all ready to start?",
    "hi": "अगली बार क्या आप सब तैयार हैं?",
    "hin_row": "S0664L01U04",
-   "known": null,
+   "known": "তোমরা কি সবাই শুরু করতে তৈরি?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "are you all ready next time?"
   },
   {
    "lego": "S0666L01",
@@ -9499,12 +9533,13 @@
    "lego_en": "what do you all think",
    "lego_known": "তোমরা সবাই কী মনে কর",
    "slot": "update:B01",
-   "en": "what do you all think at work?",
+   "en": "what do you all think today?",
    "hi": "काम पर आप सब क्या सोचते हैं?",
    "hin_row": "S0666L01U05",
-   "known": null,
+   "known": "তোমরা সবাই আজ কী মনে কর?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "what do you all think at work?"
   },
   {
    "lego": "S0667L01",
@@ -9512,12 +9547,13 @@
    "lego_en": "do you all mind",
    "lego_known": "তোমাদের কি সবার আপত্তি আছে",
    "slot": "update:B01",
-   "en": "do you all mind this evening?",
+   "en": "do you all mind if I ask?",
    "hi": "आज शाम आप सबको आपत्ति तो नहीं है?",
    "hin_row": "S0667L01B02",
-   "known": null,
+   "known": "তোমাদের কি সবার আপত্তি আছে যদি আমি জিজ্ঞেস করি?",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "orig_en": "do you all mind this evening?"
   }
  ]
 }
