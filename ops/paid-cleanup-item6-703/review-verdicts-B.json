@@ -253,9 +253,9 @@
   {
     "course": "zho_for_jpn",
     "row": "S0283L02U04",
-    "verdict": "AGREE",
-    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
-    "source": "as seed 283",
+    "verdict": "DISPUTE",
+    "reason": "Replacing chinese with 中文 leaves a cold USE prompt 中国語を話せますか with both 你会说中文吗 and 你能说中文吗 elsewhere in the course. The global clash pre-exists, but this edited USE still violates P16 and must not be approved as unambiguous. Leave out until a taught Japanese competence/context prompt distinguishes 会 from 能.",
+    "source": "Independent live Popty dump after 14:10Z: S0014L02B03 中国語を話せますか | 你能说中文吗; S0297L01U06 中国語を話せますか | 你会说中文吗; planned S0283L02U04. Canon P16/K23.",
     "proposed": null
   },
   {
