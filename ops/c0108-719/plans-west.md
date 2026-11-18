@@ -1,0 +1,37 @@
+# C0108 hope -> expect: plans, shard west (cs #770·AI). Nothing applied; every ops file is dry-run only.
+
+a = the commissioned plan (seed pair, hope LEGO re-cut, rows). b = add-on proposal for courses whose seed 108 never had a hope LEGO:
+one lego.insert (short expect chunk, type A, next free index) + 9 phrase.insert rows, so the new verb is taught. b is STRUCTURAL (apply needs tom_go on beta/released) and must go in WITH or BEFORE a, otherwise a leaves the verb untaught.
+Natural positive rows ('we hoped to wake up in time', 'she hoped not to wake up...') keep hope; only wake -> wake up there.
+
+course | verb choice + source | ops | new validator issues | dry-run ok | held
+afr_for_eng | gehoop -> verwag (HAT / Pharos) | a: 1 + b: 10 (new LEGO 'expected' = 'verwag') | a alone: 1 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+dan_for_eng | håbede (på) -> forventede (Den Danske Ordbog) | a: 4 + b: 10 (new LEGO 'expected' = 'forventede') | a alone: 2 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+deu_for_eng | gehofft -> erwartet (Duden); hope LEGO re-cut 'have expected' = 'haben erwartet' | a: 10 | none | yes | nothing held
+deu_at_for_eng | ghofft -> erwartet (Österreichisches Wörterbuch) | a: 2 + b: 10 (new LEGO 'expected' = 'erwartet') | a alone: 2 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+deu_ch_for_eng | ghofft -> erwartet (Idiotikon / Zürichdeutsches Wörterbuch) | a: 7 + b: 10 (new LEGO 'expected' = 'erwartet') | a alone: 2 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+fry_for_eng | hopen -> ferwachten (Frysk Hânwurdboek / taalweb.frl); LEGO re-cut 'we didn't expect' = 'wy ferwachten net'; 'om' dropped | a: 11 | none | yes | nothing held; 10 rows become Auke re-takes (human voice)
+isl_for_eng | vonuðum -> bjuggumst við (ISLEX: búast við) | a: 6 + b: 10 (new LEGO 'we didn't expect' = 'við bjuggumst ekki við') | a alone: 2 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+nld_for_eng | hoopten -> verwachtten (Van Dale) | a: 3 + b: 10 (new LEGO 'we expected' = 'we verwachtten') | a alone: 2 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+nor_for_eng | håpet -> forventet (Bokmålsordboka) | a: 15 + b: 10 (new LEGO 'expected' = 'forventet') | a alone: 3 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+pdc_for_eng | ghofft -> erwaart (Beam, Revised Pennsylvania German Dictionary) | a: 7 + b: 10 (new LEGO 'expected' = 'erwaart') | a alone: 2 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+swe_for_eng | hoppades på -> förväntade oss (Svensk ordbok / SAOL) | a: 3 + b: 10 (new LEGO 'we expected' = 'vi förväntade oss') | a alone: 3 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+yid_for_eng | געהאָפֿט -> זיך געריכט (Beinfeld & Bochner: ריכטן זיך) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+gla_for_eng | an dòchas -> dùil (Am Faclair Beag / LearnGaelic); LEGO re-cut 'we didn't expect' = 'cha robh dùil againn' | a: 30 | none | yes | nothing held
+cor_for_eng | govenek -> gwaytya (Gerlyver Kernewek); LEGO re-cut 'we didn't expect' = 'nyns esen ni ow kwaytya'; wake LEGO 'dhe dhifuna' (M) -> 'difuna' (A) | a: 27 | none | yes | nothing held; 2 component rows of the old M wake LEGO are deleted (A LEGO has none); course parked for audio
+bre_for_eng | spi -> gortoz (Favereau / Ménard): ne c'hortozemp ket dihuniñ | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held; verb is dictionary-sourced best effort, unread by a native
+fra_for_eng | espérions -> nous attendions à (Larousse / Le Robert); LEGO re-cut 'we didn't expect to' = 'nous ne nous attendions pas à' | a: 29 | none | yes | nothing held
+fra_ca_for_eng | espérait -> s'attendait à (Usito); LEGO re-cut 'we didn't expect to' = 'on s'attendait pas à' | a: 16 | none | yes | nothing held
+ita_for_eng | speravamo -> ci aspettavamo (Treccani); LEGO re-cut 'we didn't expect to wake up' = 'non ci aspettavamo di svegliarci' | a: 17 | none | yes | nothing held
+ron_for_eng | am sperat -> ne așteptam (DEX) | a: 5 + b: 10 (new LEGO 'we expected' = 'ne așteptam') | a alone: 3 (verb untaught: tiling + vocab); a+b: none | yes / b yes | b held: lego.insert needs tom_go on apply
+mlt_for_eng | ttamajniex -> stennejniex + li (Aquilina); LEGO re-cut 'we didn't expect' = 'ma stennejniex' | a: 20 | none | yes | nothing held
+fur_for_eng | speravin -> si spietavin (Grant Dizionari Bilengâl, ARLeF) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+lmo_for_eng | speravom -> se speciavom (Cherubini) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+nap_for_eng | speràvemo -> ce aspettàvemo (D'Ascoli) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+rgn_for_eng | sperémi -> s'aspitémi (Ercolani) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+roh_for_eng | sperà -> spetgà (Pledari Grond) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+scn_for_eng | spiràvamu -> n'aspittàvamu (Piccitto) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+vec_for_eng | speràvimo -> se spetàvimo (Boerio) | a: 1 | 1, acceptable: 'vocabulary not covered by LEGOs' lists the whole seed because this draft has no LEGOs at all (same state as live; the check only fires when a target is simulated) | yes | nothing held
+eng_for_deu | known hofften -> erwarteten (Duden); LEGO re-cut 'erwarteten nicht aufzuwachen' = 'didn't expect to wake up' | a: 12 | none | yes | L01 'wir hofften' = 'we hoped' (not-new reference LEGO, no rows) no longer matches the seed; left untouched, deleting it is structural
+eng_for_fra | known espérions -> nous attendions à (Larousse); LEGO re-cut 'nous ne nous attendions pas à' = 'we didn't expect to' | a: 16 | none | yes | nothing held
+eng_for_ita | known speravamo -> ci aspettavamo (Treccani); LEGO re-cut 'non ci aspettavamo di' = 'we didn't expect to'; wake LEGO English -> 'wake up' | a: 21 | none | yes | nothing held
