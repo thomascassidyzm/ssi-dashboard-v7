@@ -1,0 +1,900 @@
+[
+ {
+  "seed_number": 501,
+  "phrases": {
+   "501:1": [
+    {
+     "known_text": "if",
+     "target_text": "se",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "only",
+     "target_text": "ao menos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I could",
+     "target_text": "pudesse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "if only I could",
+     "target_text": "se ao menos pudesse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could help",
+     "target_text": "se ao menos pudesse ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could go",
+     "target_text": "se ao menos pudesse ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could stay here",
+     "target_text": "se ao menos pudesse ficar aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could see my family",
+     "target_text": "se ao menos pudesse ver minha família",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could sleep a little",
+     "target_text": "se ao menos pudesse dormir um pouco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could understand what he says",
+     "target_text": "se ao menos pudesse entender o que ele diz",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could change that",
+     "target_text": "se ao menos pudesse mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could speak Portuguese",
+     "target_text": "se ao menos pudesse falar português",
+     "phrase_role": "build"
+    }
+   ],
+   "501:2": [
+    {
+     "known_text": "to trust",
+     "target_text": "confiar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in",
+     "target_text": "em",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to trust you",
+     "target_text": "confiar em você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could trust you",
+     "target_text": "se ao menos pudesse confiar em você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't trust you",
+     "target_text": "não consigo confiar em você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't know if I can trust you",
+     "target_text": "não sei se posso confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I trust you?",
+     "target_text": "posso confiar em você?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to trust you",
+     "target_text": "quero confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to trust you",
+     "target_text": "ela não quer confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's hard to trust you after that",
+     "target_text": "é difícil confiar em você depois disso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to trust you",
+     "target_text": "espero conseguir confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to trust you",
+     "target_text": "preciso confiar em você",
+     "phrase_role": "build"
+    }
+   ],
+   "501:3": [
+    {
+     "known_text": "to",
+     "target_text": "para",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "play",
+     "target_text": "brincarem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "together",
+     "target_text": "juntos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to play together",
+     "target_text": "para brincarem juntos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to trust you to play together",
+     "target_text": "confiar em você para brincarem juntos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "time to play together",
+     "target_text": "tempo para brincarem juntos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they have time to play together",
+     "target_text": "eles têm tempo para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children need a place to play together",
+     "target_text": "as crianças precisam de um lugar para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I left them in the garden to play together",
+     "target_text": "eu os deixei no jardim para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they came here to play together",
+     "target_text": "eles vieram aqui para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could trust you to play together",
+     "target_text": "se ao menos pudesse confiar em você para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a garden to play together",
+     "target_text": "um jardim para brincarem juntos",
+     "phrase_role": "build"
+    }
+   ],
+   "501:4": [
+    {
+     "known_text": "without",
+     "target_text": "sem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "arguing",
+     "target_text": "discutir",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "without arguing",
+     "target_text": "sem discutir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to play together without arguing",
+     "target_text": "para brincarem juntos sem discutir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to talk without arguing",
+     "target_text": "falar sem discutir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could trust you to play together without arguing",
+     "target_text": "se ao menos pudesse confiar em você para brincarem juntos sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to talk without arguing",
+     "target_text": "quero falar sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's try to talk without arguing",
+     "target_text": "vamos tentar falar sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we need to decide without arguing",
+     "target_text": "precisamos decidir sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he did it without arguing",
+     "target_text": "ele fez isso sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they have to play without arguing",
+     "target_text": "eles têm que jogar sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to work without arguing",
+     "target_text": "trabalhar sem discutir",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 502,
+  "phrases": {
+   "502:1": [
+    {
+     "known_text": "she",
+     "target_text": "ela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "almost",
+     "target_text": "quase",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "got lost",
+     "target_text": "se perdeu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "she almost got lost",
+     "target_text": "ela quase se perdeu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost in the city",
+     "target_text": "ela quase se perdeu na cidade",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost yesterday",
+     "target_text": "ela quase se perdeu ontem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost in Italy",
+     "target_text": "ela quase se perdeu na Itália",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost near the bridge",
+     "target_text": "ela quase se perdeu perto da ponte",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure she almost got lost",
+     "target_text": "tenho certeza de que ela quase se perdeu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost on Sunday morning",
+     "target_text": "ela quase se perdeu no domingo de manhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost because she didn't know the way",
+     "target_text": "ela quase se perdeu porque não sabia o caminho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that she almost got lost",
+     "target_text": "acho que ela quase se perdeu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't have said that if I had known that she almost got lost",
+     "target_text": "não teria dito isso se soubesse que ela quase se perdeu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she almost got lost on the way",
+     "target_text": "ela quase se perdeu no caminho",
+     "phrase_role": "build"
+    }
+   ],
+   "502:2": [
+    {
+     "known_text": "because",
+     "target_text": "porque",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "turned",
+     "target_text": "virou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "left",
+     "target_text": "à esquerda",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "because she turned left",
+     "target_text": "porque virou à esquerda",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost because she turned left",
+     "target_text": "ela quase se perdeu porque virou à esquerda",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because she turned left at the corner",
+     "target_text": "porque virou à esquerda na esquina",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she got lost because she turned left",
+     "target_text": "ela se perdeu porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she didn't see us because she turned left",
+     "target_text": "ela não nos viu porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's on the other side because she turned left",
+     "target_text": "ela está do outro lado porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she couldn't find us because she turned left at the corner",
+     "target_text": "ela não conseguia nos encontrar porque virou à esquerda na esquina",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think she's not here because she turned left",
+     "target_text": "eu acho que ela não está aqui porque virou à esquerda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because she turned left near the bridge",
+     "target_text": "porque virou à esquerda perto da ponte",
+     "phrase_role": "build"
+    }
+   ],
+   "502:3": [
+    {
+     "known_text": "instead of",
+     "target_text": "em vez de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "right",
+     "target_text": "à direita",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "instead of right",
+     "target_text": "em vez de à direita",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "turned left instead of right",
+     "target_text": "virou à esquerda em vez de à direita",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "left instead of right",
+     "target_text": "à esquerda em vez de à direita",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she almost got lost because she turned left instead of right",
+     "target_text": "ela quase se perdeu porque virou à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he turned left instead of right",
+     "target_text": "ele virou à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to turn left instead of right",
+     "target_text": "você precisa virar à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why did she turn left instead of right?",
+     "target_text": "por que ela virou à esquerda em vez de à direita?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's better to turn left instead of right",
+     "target_text": "é melhor virar à esquerda em vez de à direita",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to turn left instead of right",
+     "target_text": "virar à esquerda em vez de à direita",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 503,
+  "phrases": {
+   "503:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "hate",
+     "target_text": "detesto",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I hate",
+     "target_text": "eu detesto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate it",
+     "target_text": "eu detesto isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate waiting",
+     "target_text": "eu detesto esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate being late",
+     "target_text": "eu detesto chegar atrasado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate working on Sunday",
+     "target_text": "eu detesto trabalhar no domingo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate the way he talks",
+     "target_text": "eu detesto a maneira como ele fala",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate having to wait",
+     "target_text": "eu detesto ter que esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate making mistakes",
+     "target_text": "eu detesto cometer erros",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hate this film",
+     "target_text": "eu detesto este filme",
+     "phrase_role": "build"
+    }
+   ],
+   "503:2": [
+    {
+     "known_text": "making",
+     "target_text": "causar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "trouble",
+     "target_text": "problemas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "making trouble",
+     "target_text": "causar problemas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate making trouble",
+     "target_text": "eu detesto causar problemas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "without making trouble",
+     "target_text": "sem causar problemas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to make trouble",
+     "target_text": "não quero causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they only know how to make trouble",
+     "target_text": "eles só sabem causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't like making trouble",
+     "target_text": "ela não gosta de causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not here to make trouble",
+     "target_text": "não estou aqui para causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's going to make trouble for us",
+     "target_text": "ele vai causar problemas para nós",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he likes making trouble",
+     "target_text": "ele gosta de causar problemas",
+     "phrase_role": "build"
+    }
+   ],
+   "503:3": [
+    {
+     "known_text": "but",
+     "target_text": "mas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that one",
+     "target_text": "aquele",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "mine",
+     "target_text": "meu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "but that one's mine",
+     "target_text": "mas aquele é meu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "sorry, but that one's mine",
+     "target_text": "lamento, mas aquele é meu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this one's yours, but that one's mine",
+     "target_text": "este é seu, mas aquele é meu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hate making trouble but that one's mine",
+     "target_text": "eu detesto causar problemas mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can take this book, but that one's mine",
+     "target_text": "você pode levar este livro, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this coffee is yours, but that one's mine",
+     "target_text": "este café é seu, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this car is my brother's, but that one's mine",
+     "target_text": "este carro é do meu irmão, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can use the other one, but that one's mine",
+     "target_text": "você pode usar o outro, mas aquele é meu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know, but that one's mine",
+     "target_text": "eu sei, mas aquele é meu",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 504,
+  "phrases": {
+   "504:1": [
+    {
+     "known_text": "I am going to",
+     "target_text": "eu vou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "run",
+     "target_text": "correr",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'm going to run",
+     "target_text": "eu vou correr",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to run with my friends",
+     "target_text": "eu vou correr com meus amigos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to run home",
+     "target_text": "eu vou correr para casa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to run on Saturday morning",
+     "target_text": "eu vou correr no sábado de manhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to run because I'm late",
+     "target_text": "eu vou correr porque estou atrasado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to run before work",
+     "target_text": "eu vou correr antes do trabalho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to run with my dog",
+     "target_text": "eu vou correr com o meu cachorro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I'm going to run tomorrow morning",
+     "target_text": "eu acho que eu vou correr amanhã de manhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to run a little",
+     "target_text": "eu vou correr um pouco",
+     "phrase_role": "build"
+    }
+   ],
+   "504:2": [
+    {
+     "known_text": "through the",
+     "target_text": "pela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "grass",
+     "target_text": "grama",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "across the grass",
+     "target_text": "pela grama",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to run across the grass",
+     "target_text": "correr pela grama",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "across the grass to the house",
+     "target_text": "pela grama até a casa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to run across the grass",
+     "target_text": "eu vou correr pela grama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children like to run across the grass",
+     "target_text": "as crianças gostam de correr pela grama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's faster to go across the grass",
+     "target_text": "é mais rápido ir pela grama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog wants to run across the grass",
+     "target_text": "o cachorro quer correr pela grama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I love running across the grass",
+     "target_text": "eu adoro correr pela grama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should run across the grass",
+     "target_text": "talvez devêssemos correr pela grama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it is fun to run across the grass",
+     "target_text": "é divertido correr pela grama",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's run across the grass",
+     "target_text": "vamos correr pela grama",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 505,
+  "phrases": {
+   "505:1": [
+    {
+     "known_text": "so that",
+     "target_text": "para",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I don't",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "so that I don't",
+     "target_text": "para não",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "so that I don't lose",
+     "target_text": "para não perder",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "so that I don't arrive late",
+     "target_text": "para não chegar atrasado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to run so that I don't arrive late",
+     "target_text": "vou correr para não chegar atrasado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going early so that I don't miss the train",
+     "target_text": "vou cedo para não perder o trem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak slowly so that I don't make mistakes",
+     "target_text": "falo devagar para não cometer erros",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to practise so that I don't lose my Portuguese",
+     "target_text": "preciso praticar para não perder meu português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to stay quiet so that I don't make trouble",
+     "target_text": "vou ficar calado para não causar problemas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "so that I don't make mistakes",
+     "target_text": "para não cometer erros",
+     "phrase_role": "build"
+    }
+   ],
+   "505:2": [
+    {
+     "known_text": "to get left",
+     "target_text": "ficar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "behind",
+     "target_text": "para trás",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to get left behind",
+     "target_text": "ficar para trás",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to get left behind",
+     "target_text": "não quero ficar para trás",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "nobody wants to get left behind",
+     "target_text": "ninguém quer ficar para trás",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "so that I don't get left behind",
+     "target_text": "para não ficar para trás",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to run so that I don't get left behind",
+     "target_text": "vou correr para não ficar para trás",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children don't want to get left behind",
+     "target_text": "as crianças não querem ficar para trás",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you need to work hard so that you don't get left behind",
+     "target_text": "você precisa trabalhar muito para não ficar para trás",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to get left behind at school",
+     "target_text": "ela não quer ficar para trás na escola",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we're trying not to get left behind",
+     "target_text": "nós estamos tentando não ficar para trás",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's easy to get left behind",
+     "target_text": "é fácil ficar para trás",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's easy to get left behind",
+     "target_text": "acho que é fácil ficar para trás",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]
