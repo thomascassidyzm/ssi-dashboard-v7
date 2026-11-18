@@ -1,0 +1,654 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0526L01B04",
+    "seed_number": 526,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "I'm finding it hard to wait",
+    "target_text": "estou achando difícil esperar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0526L03B04",
+    "seed_number": 526,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "you can't guess who",
+    "target_text": "você não consegue adivinhar quem",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0527L01B04",
+    "seed_number": 527,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "guess who's at the door",
+    "target_text": "adivinha quem está na porta",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0527L02B04",
+    "seed_number": 527,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "he told me everything",
+    "target_text": "ele me contou tudo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0527L03B04",
+    "seed_number": 527,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "that funny story about my father",
+    "target_text": "aquela história engraçada sobre o meu pai",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 41,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L01B02",
+   "expect": {
+    "known_text": "I'm finding it hard now",
+    "target_text": "estou achando difícil agora"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to sleep",
+    "target_text": "estou achando difícil dormir",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L01B03",
+   "expect": {
+    "known_text": "yes, I'm finding it hard",
+    "target_text": "sim, estou achando difícil"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to understand",
+    "target_text": "estou achando difícil entender",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L01U01",
+   "expect": {
+    "known_text": "no, I'm finding it hard",
+    "target_text": "não, estou achando difícil"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to learn Portuguese",
+    "target_text": "estou achando difícil aprender português",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L01U02",
+   "expect": {
+    "known_text": "that's true, I'm finding it hard",
+    "target_text": "isso é verdade, estou achando difícil"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to work at home",
+    "target_text": "estou achando difícil trabalhar em casa",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L01U03",
+   "expect": {
+    "known_text": "I'm sure I'm finding it hard",
+    "target_text": "tenho certeza, estou achando difícil"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to find a house",
+    "target_text": "estou achando difícil encontrar uma casa",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L01U04",
+   "expect": {
+    "known_text": "yes, that's true, I'm finding it hard",
+    "target_text": "sim, isso é verdade, estou achando difícil"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to say no",
+    "target_text": "estou achando difícil dizer não",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L01U05",
+   "expect": {
+    "known_text": "I'm still finding it hard",
+    "target_text": "ainda estou achando difícil"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to decide",
+    "target_text": "estou achando difícil decidir",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L02B03",
+   "expect": {
+    "known_text": "yes, to believe that",
+    "target_text": "sim, acreditar que"
+   },
+   "set": {
+    "known_text": "I can't believe that",
+    "target_text": "não consigo acreditar que",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L02U01",
+   "expect": {
+    "known_text": "no, to believe that",
+    "target_text": "não, acreditar que"
+   },
+   "set": {
+    "known_text": "I can't believe that you're here",
+    "target_text": "não consigo acreditar que você está aqui",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L02U02",
+   "expect": {
+    "known_text": "that's true, to believe that",
+    "target_text": "isso é verdade, acreditar que"
+   },
+   "set": {
+    "known_text": "it's hard to believe that it's true",
+    "target_text": "é difícil acreditar que é verdade",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L02U03",
+   "expect": {
+    "known_text": "I'm sure, to believe that",
+    "target_text": "tenho certeza, acreditar que"
+   },
+   "set": {
+    "known_text": "I want to believe that it's possible",
+    "target_text": "quero acreditar que é possível",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L02U04",
+   "expect": {
+    "known_text": "yes, I'm finding it hard to believe that",
+    "target_text": "sim, estou achando difícil acreditar que"
+   },
+   "set": {
+    "known_text": "she doesn't want to believe that he left",
+    "target_text": "ela não quer acreditar que ele foi embora",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L02U05",
+   "expect": {
+    "known_text": "I'm still finding it hard to believe that",
+    "target_text": "ainda estou achando difícil acreditar que"
+   },
+   "set": {
+    "known_text": "I'm finding it hard to believe that it's so easy",
+    "target_text": "estou achando difícil acreditar que é tão fácil",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L03B03",
+   "expect": {
+    "known_text": "yes, you can't guess",
+    "target_text": "sim, você não consegue adivinhar"
+   },
+   "set": {
+    "known_text": "I know you can't guess",
+    "target_text": "eu sei que você não consegue adivinhar",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L03U02",
+   "expect": {
+    "known_text": "no, you can't guess",
+    "target_text": "não, você não consegue adivinhar"
+   },
+   "set": {
+    "known_text": "you can't guess where I am",
+    "target_text": "você não consegue adivinhar onde eu estou",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L03U03",
+   "expect": {
+    "known_text": "that's true, you can't guess",
+    "target_text": "isso é verdade, você não consegue adivinhar"
+   },
+   "set": {
+    "known_text": "you can't guess who I saw",
+    "target_text": "você não consegue adivinhar quem eu vi",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L03U04",
+   "expect": {
+    "known_text": "yes, I'm finding it hard to believe that you can't guess",
+    "target_text": "sim, estou achando difícil acreditar que você não consegue adivinhar"
+   },
+   "set": {
+    "known_text": "you can't guess how old she is",
+    "target_text": "você não consegue adivinhar quantos anos ela tem",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0526L03U05",
+   "expect": {
+    "known_text": "I'm sure, you can't guess",
+    "target_text": "tenho certeza, você não consegue adivinhar"
+   },
+   "set": {
+    "known_text": "I'm sure you can't guess my name",
+    "target_text": "tenho certeza de que você não consegue adivinhar meu nome",
+    "decomposition": null,
+    "word_count": 57,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01B02",
+   "expect": {
+    "known_text": "guess who now",
+    "target_text": "adivinha quem agora"
+   },
+   "set": {
+    "known_text": "guess who's here",
+    "target_text": "adivinha quem está aqui",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01B03",
+   "expect": {
+    "known_text": "yes, guess who",
+    "target_text": "sim, adivinha quem"
+   },
+   "set": {
+    "known_text": "guess who I saw",
+    "target_text": "adivinha quem eu vi",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U01",
+   "expect": {
+    "known_text": "no, guess who",
+    "target_text": "não, adivinha quem"
+   },
+   "set": {
+    "known_text": "guess who I saw at the café",
+    "target_text": "adivinha quem eu vi no café",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U02",
+   "expect": {
+    "known_text": "that's true, guess who",
+    "target_text": "isso é verdade, adivinha quem"
+   },
+   "set": {
+    "known_text": "guess who wants to come with us",
+    "target_text": "adivinha quem quer vir conosco",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U03",
+   "expect": {
+    "known_text": "I'm sure, guess who",
+    "target_text": "tenho certeza, adivinha quem"
+   },
+   "set": {
+    "known_text": "guess who is going to pay",
+    "target_text": "adivinha quem vai pagar",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U04",
+   "expect": {
+    "known_text": "yes, that's true, guess who",
+    "target_text": "sim, isso é verdade, adivinha quem"
+   },
+   "set": {
+    "known_text": "guess who I met yesterday",
+    "target_text": "adivinha quem eu conheci ontem",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L01U05",
+   "expect": {
+    "known_text": "guess who still",
+    "target_text": "adivinha quem ainda"
+   },
+   "set": {
+    "known_text": "guess who is learning Portuguese",
+    "target_text": "adivinha quem está aprendendo português",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02B03",
+   "expect": {
+    "known_text": "yes, told me",
+    "target_text": "sim, me contou"
+   },
+   "set": {
+    "known_text": "my friend told me",
+    "target_text": "meu amigo me contou",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U01",
+   "expect": {
+    "known_text": "no, told me",
+    "target_text": "não, me contou"
+   },
+   "set": {
+    "known_text": "she told me the truth",
+    "target_text": "ela me contou a verdade",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U02",
+   "expect": {
+    "known_text": "that's true, told me",
+    "target_text": "isso é verdade, me contou"
+   },
+   "set": {
+    "known_text": "my father told me the news",
+    "target_text": "meu pai me contou a notícia",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U03",
+   "expect": {
+    "known_text": "I'm sure, told me",
+    "target_text": "tenho certeza, me contou"
+   },
+   "set": {
+    "known_text": "my brother told me a story",
+    "target_text": "meu irmão me contou uma história",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U04",
+   "expect": {
+    "known_text": "yes, guess who told me",
+    "target_text": "sim, adivinha quem me contou"
+   },
+   "set": {
+    "known_text": "he told me why he left",
+    "target_text": "ele me contou por que foi embora",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L02U05",
+   "expect": {
+    "known_text": "guess who still told me",
+    "target_text": "adivinha quem ainda me contou"
+   },
+   "set": {
+    "known_text": "my mother told me about the new baby",
+    "target_text": "minha mãe me contou sobre o bebê novo",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03B03",
+   "expect": {
+    "known_text": "yes, that funny story",
+    "target_text": "sim, aquela história engraçada"
+   },
+   "set": {
+    "known_text": "that funny story about the dog",
+    "target_text": "aquela história engraçada sobre o cachorro",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U02",
+   "expect": {
+    "known_text": "no, that funny story",
+    "target_text": "não, aquela história engraçada"
+   },
+   "set": {
+    "known_text": "I love that funny story",
+    "target_text": "eu adoro aquela história engraçada",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U03",
+   "expect": {
+    "known_text": "that's true, that funny story",
+    "target_text": "isso é verdade, aquela história engraçada"
+   },
+   "set": {
+    "known_text": "she told me that funny story yesterday",
+    "target_text": "ela me contou aquela história engraçada ontem",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U04",
+   "expect": {
+    "known_text": "yes, guess who told me that funny story",
+    "target_text": "sim, adivinha quem me contou aquela história engraçada"
+   },
+   "set": {
+    "known_text": "who told you that funny story?",
+    "target_text": "quem te contou aquela história engraçada?",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0527L03U05",
+   "expect": {
+    "known_text": "I'm sure, that funny story",
+    "target_text": "tenho certeza, aquela história engraçada"
+   },
+   "set": {
+    "known_text": "everyone knows that funny story",
+    "target_text": "todo mundo conhece aquela história engraçada",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  }
+ ]
+}
