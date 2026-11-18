@@ -23,7 +23,8 @@
  * THE PAIR LIST OF RECORD. The three courses already hold July gender-prep pairs (text_side='known'), made before the
  * speaker-only detector existed, so they may mix listener / third-person agreement in (the detector's own header says
  * so; #941·H removed 179 such pairs from eng_for_hin). So every text the plan would touch is put to the detector:
- *   stored pair + detector 'gendered'   → kept (stored forms win, as for hin: "the pair list of record is the DB")
+ *   stored pair + detector 'gendered'   → kept; where its forms differ the DETECTOR's win (gender.update): the July female
+ *                                         forms are often wrong (guj ગયું/રહ્યી for ગઈ/રહી)
  *   stored pair + detector 'neutral'    → NOT speaker-gendered: gender.delete (the #941·H precedent), never rewritten
  *   stored pair + 'unverified'/unasked  → kept in the DB, left out of the rewrite plan (voice still follows its form)
  *   no stored pair + 'gendered'         → gender.insert (text_side 'known')
@@ -52,6 +53,14 @@ const wr = (f, o) => fs.writeFileSync(f, JSON.stringify(o, null, 1));
 const nk = kv.normalizeKnownKey;
 const realPair = (p) => p.text_side === 'known' && p.expanded_m && p.expanded_f && nk(p.expanded_m) !== nk(p.expanded_f);
 
+async function waitForPopty(course) {
+  for (let i = 0; i < 120; i++) {
+    try { const r = await fetch(`${POPTY}/api/production/${course}/edit-ops`, { signal: AbortSignal.timeout(5000) }); if (r.ok) return; } catch {}
+    await new Promise((res) => setTimeout(res, 5000));
+  }
+  throw new Error('Popty did not come back in 10 minutes');
+}
+
 async function post(p, body, headers = {}) {
   try {
     const r = await fetch(POPTY + p, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT, ...headers }, body: JSON.stringify(body), signal: AbortSignal.timeout(300000) });
@@ -62,7 +71,7 @@ async function post(p, body, headers = {}) {
 /** Pure: the pair list of record after the detector, and the gender.* ops that make the DB say so. */
 function pairListOfRecord(course, stored, detection) {
   const det = new Map((detection.results || []).map((r) => [nk(r.text), r]));
-  const keep = [], dropOps = [], insertOps = [], disagree = [], unverifiedKept = [];
+  const keep = [], dropOps = [], insertOps = [], fixOps = [], disagree = [], unverifiedKept = [];
   const covered = new Set();
   for (const p of stored.filter(realPair)) {
     const hits = [det.get(nk(p.expanded_m)), det.get(nk(p.expanded_f))].filter(Boolean);
@@ -70,8 +79,13 @@ function pairListOfRecord(course, stored, detection) {
     if (!hits.length) { unverifiedKept.push({ id: p.id, why: 'not asked (neither form is a course text)' }); continue; }
     if (hits.some((h) => h.status === 'gendered')) {
       const h = hits.find((x) => x.status === 'gendered');
-      if (nk(h.m) !== nk(p.expanded_m) || nk(h.f) !== nk(p.expanded_f)) disagree.push({ id: p.id, stored: [p.expanded_m, p.expanded_f], detector: [h.m, h.f] });
-      keep.push(p);
+      if (nk(h.m) !== nk(p.expanded_m) || nk(h.f) !== nk(p.expanded_f)) {
+        // The July rows carry wrong female forms (guj neuter ગયું for ગઈ, misspelt રહ્યી for રહી): the detector's
+        // forms are checked mechanically (one form = the course text byte for byte, same word count), so they win.
+        disagree.push({ id: p.id, stored: [p.expanded_m, p.expanded_f], detector: [h.m, h.f] });
+        fixOps.push({ op: 'gender.update', id: p.id, set: { expanded_m: h.m, expanded_f: h.f }, expect: { expanded_m: p.expanded_m, expanded_f: p.expanded_f } });
+        keep.push({ ...p, expanded_m: h.m, expanded_f: h.f });
+      } else keep.push(p);
     } else if (hits.every((h) => h.status === 'neutral')) {
       dropOps.push({ op: 'gender.delete', id: p.id, expect: { expanded_m: p.expanded_m, expanded_f: p.expanded_f, text_side: 'known' } });
     } else unverifiedKept.push({ id: p.id, why: hits.map((h) => h.reason || h.status).join('; ') });
@@ -83,10 +97,14 @@ function pairListOfRecord(course, stored, detection) {
     if (covered.has(k) || covered.has(nk(r.m)) || covered.has(nk(r.f)) || seen.has(nk(r.m))) continue;
     seen.add(nk(r.m));
     const row = { course_code: course, original_text: r.text, language: LANG[course], expanded_m: r.m, expanded_f: r.f, text_side: 'known' };
-    insertOps.push({ op: 'gender.insert', row });
+    // (course_code, original_text, language) is unique: a stored row keyed on this text whose forms are an OLDER wording
+    // (the course text was edited after July) is updated to the detector's forms, never duplicated.
+    const old = stored.find((p) => p.original_text === r.text && p.language === LANG[course]);
+    if (old) fixOps.push({ op: 'gender.update', id: old.id, set: { expanded_m: r.m, expanded_f: r.f, text_side: 'known' }, expect: { expanded_m: old.expanded_m, expanded_f: old.expanded_f } });
+    else insertOps.push({ op: 'gender.insert', row });
     keep.push({ ...row, id: null });
   }
-  return { keep, dropOps, insertOps, disagree, unverifiedKept };
+  return { keep, dropOps, insertOps, fixOps, disagree, unverifiedKept };
 }
 
 /** Pure: the edit-batch ops for one plan. Every op carries an expect on the text it was planned from. */
@@ -140,7 +158,7 @@ async function main() {
     const plan = buildGenderedKnownPlan({ courseCode: course, seeds: d.seeds, legos: d.legos, phrases: d.phrases, pairs: rec.keep });
     plan.at = new Date().toISOString();
     const ops = planOps(course, plan, new Map(d.phrases.map((p) => [p.id, p])));
-    wr(path.join(dir, 'pairs-ops.json'), { ops: [...rec.dropOps, ...rec.insertOps] });
+    wr(path.join(dir, 'pairs-ops.json'), { ops: [...rec.dropOps, ...rec.fixOps, ...rec.insertOps] });
     wr(path.join(dir, 'text-ops.json'), { ops });
     wr(path.join(dir, 'pair-review.json'), { disagree: rec.disagree, unverifiedKept: rec.unverifiedKept, dropped: rec.dropOps.length, inserted: rec.insertOps.length, kept: rec.keep.length });
     const { assignments, ...slim } = plan;
@@ -154,13 +172,36 @@ async function main() {
     const [opsFile, how] = rest;
     const { ops } = rd(opsFile);
     const out = { at: new Date().toISOString(), batches: [] };
-    for (let i = 0; i < ops.length; i += 1000) {
-      const chunk = ops.slice(i, i + 1000);
-      const r = await post(`/api/production/${course}/edit-batch`, { ops: chunk, apply: how === 'apply', reason: PURPOSE });
+    const N = +(process.env.CHUNK || 40); // 813 ops in one transaction hit the statement timeout (57014)
+    // A work queue: a chunk that times out (57014, rolled back) or is refused (drift, a rule) is split in half and retried,
+    // down to one op; a single op that is still refused is recorded as skipped (another job moved the row, or a rule said no).
+    const queue = [];
+    for (let i = 0; i < ops.length; i += N) queue.push({ from: i, chunk: ops.slice(i, i + N) });
+    const outFile = opsFile.replace(/\.json$/, `.${how}.json`);
+    out.skipped = [];
+    while (queue.length) {
+      const { from, chunk } = queue.shift();
+      // Popty restarts on every main push (auto-deploy, 2 min): wait it out. A request that never reached it (ECONNREFUSED)
+      // is sent again; one dropped mid-flight is retried only as a dry run — an apply stops so a person reads what landed.
+      let r;
+      for (let attempt = 0; attempt < 30; attempt++) {
+        await waitForPopty(course);
+        r = await post(`/api/production/${course}/edit-batch`, { ops: chunk, apply: how === 'apply', reason: PURPOSE });
+        const net = r.status === 0 || r.status === 502 || r.status === 503;
+        if (!net) break;
+        if (how === 'apply' && r.body.error !== 'ECONNREFUSED') { console.log(`STOP: ${course} ${how} ${from} dropped mid-request (${r.body.error}) — read what landed before re-running`); wr(outFile, out); process.exit(3); }
+      }
       const b = r.body || {};
-      out.batches.push({ from: i, n: chunk.length, status: r.status, ok: b.ok, event_id: b.event_id || null, undo_file: b.undo_file || null, undo_ops: b.undo_ops || null, error: b.error || null, code: b.code || null, index: b.index, counts: b.counts || b.summary || null });
-      console.log(`${course} ${how} ${i}-${i + chunk.length}: ${r.status} ok=${b.ok} event=${b.event_id || '-'} ${b.code || ''} ${b.error ? String(b.error).slice(0, 300) : ''}`);
-      if (r.status !== 200 || b.ok === false) break;
+      const good = r.status === 200 && b.ok !== false;
+      if (!good && r.status !== 0) {
+        if (chunk.length > 1) { const h = Math.ceil(chunk.length / 2); queue.unshift({ from, chunk: chunk.slice(0, h) }, { from: from + h, chunk: chunk.slice(h) }); continue; }
+        out.skipped.push({ from, op: chunk[0], status: r.status, code: b.code || null, error: b.error || null });
+        console.log(`SKIP ${course} ${how} ${from}: ${r.status} ${b.code || ''} ${String(b.error || '').slice(0, 200)}`);
+        wr(outFile, out); continue;
+      }
+      out.batches.push({ from, n: chunk.length, status: r.status, ok: b.ok, event_id: b.event_id || null, undo_file: b.undo_file || null, undo_ops: b.undo_ops || null, counts: b.counts || b.summary || null });
+      console.log(`${course} ${how} ${from}+${chunk.length}: ${r.status} event=${b.event_id || '-'}`);
+      wr(outFile, out);
     }
     wr(opsFile.replace(/\.json$/, `.${how}.json`), out);
     return;
