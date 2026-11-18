@@ -15,6 +15,7 @@ Review basis: origin/cs/703-paid-cleanup-item-6-wrong-target, plan built 18 Nove
 | ara_eg_for_eng | 7 | 0 |
 | por_for_eng | 59 | 2 |
 | ara_for_eng | 31 | 3 |
+| spa_for_eng | 12 | 0 |
 
 ## Disputes
 
