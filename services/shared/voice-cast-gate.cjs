@@ -140,13 +140,16 @@ function isTomCastRow(row) {
  * target — the voices its live clips use, Kai's pick — beside Kriti/Rehan (Cartesia) for eng_for_hin's known side, Kai 2026-10-29;
  * job #998·AB: deu_ch (Swiss, deu_ch_for_eng) target2 is cast ElevenLabs vTifwvQGTZT1q7epCu2b on eleven_v4_turbo at stability 1.0,
  * beside Cartesia Eleni for target1 — Kai approved 2026-11-02 after hearing #996, same shape as deu_at). The key is the variety, never plain 'deu'.
+ * cs #710·AI (paid cleanup item 8B, Kai 2026-11-18): guj, urd, pan are cast Azure for the KNOWN side of eng_for_guj/urd/pan —
+ * the female voice their live clips use (Dhwani, Uzma, Vaani) plus a native Azure male (Niranjan, Asad, Ojas) so a male-speaker
+ * known line is spoken in a male voice, the eng_for_hin two-known-voice rule; Kai's provisional pick, Cartesia casting is his later call.
  * The keys are cast keys (castKeyOf), so 'ara_eg' covers the variety only, never plain 'ara'.
  * Deliberately scoped to these: the
  * Voice Lab read routes refuse an agent identity, so which other languages hold a
  * non-Cartesia cast row could not be listed; widen this set only after that list
  * is read and ruled on.
  */
-const CAST_ANY_PROVIDER = new Set(['cat', 'ell', 'hin', 'ara_eg', 'ara_lb', 'ara_sy', 'deu_at', 'deu_ch'])
+const CAST_ANY_PROVIDER = new Set(['cat', 'ell', 'hin', 'ara_eg', 'ara_lb', 'ara_sy', 'deu_at', 'deu_ch', 'guj', 'urd', 'pan'])
 const castCountsVoice = (language, voiceId) => isCartesiaVoice(voiceId) || (CAST_ANY_PROVIDER.has(language) && !isBannedVoice(voiceId))
 
 const canonVoice = (v) => (v ? (tryCanonicalVoiceId(v) || String(v)) : null)

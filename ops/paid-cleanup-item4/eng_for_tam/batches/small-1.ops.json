@@ -1,0 +1,213 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_tam:S0124L01B04",
+    "seed_number": 124,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "நான் அதைப் பற்றி நினைத்தேன்",
+    "target_text": "I thought about it",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_tam:S0565L02B04",
+    "seed_number": 565,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "அதனால் நான் அதைப் பற்றி யோசித்திருப்பேன்",
+    "target_text": "so I'd have thought about it",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01B03",
+   "expect": {
+    "known_text": "நான் நினைத்தேன் இன்று",
+    "target_text": "I thought today"
+   },
+   "set": {
+    "known_text": "நாங்கள் நினைத்தோம்",
+    "target_text": "we thought",
+    "decomposition": null,
+    "word_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01U02",
+   "expect": {
+    "known_text": "நான் நேற்று நினைத்தேன்",
+    "target_text": "I thought yesterday"
+   },
+   "set": {
+    "known_text": "நான் நேற்று அதைப் பற்றி நினைத்தேன்",
+    "target_text": "I thought about it yesterday",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01U03",
+   "expect": {
+    "known_text": "நீங்கள் நினைத்தீர்களா",
+    "target_text": "you thought today?"
+   },
+   "set": {
+    "known_text": "நீங்கள் அதைப் பற்றி நினைத்தீர்கள்",
+    "target_text": "you thought about it",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01U05",
+   "expect": {
+    "known_text": "நான் இப்போது நினைத்தேன்",
+    "target_text": "I thought about it now"
+   },
+   "set": {
+    "known_text": "அவன் அதைப் பற்றி நினைத்தான்",
+    "target_text": "he thought about it",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0444L01B02",
+   "expect": {
+    "known_text": "இன்று அவர்கள் நினைத்தார்கள்",
+    "target_text": "they thought today"
+   },
+   "set": {
+    "known_text": "அவர்கள் அதைப் பற்றி நினைத்தார்கள்",
+    "target_text": "they thought about it",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0449L02B03",
+   "expect": {
+    "known_text": "இன்று இருந்ததாக",
+    "target_text": "they were today"
+   },
+   "set": {
+    "known_text": "மகிழ்ச்சியாக இருந்ததாக",
+    "target_text": "they were happy",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02B03",
+   "expect": {
+    "known_text": "இப்போது யோசித்திருப்பேன்",
+    "target_text": "I'd have thought now"
+   },
+   "set": {
+    "known_text": "நான் அதைப் பற்றி யோசித்திருப்பேன்",
+    "target_text": "I'd have thought about it",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U02",
+   "expect": {
+    "known_text": "அதனால் யோசித்திருப்பேன்",
+    "target_text": "so I'd have thought"
+   },
+   "set": {
+    "known_text": "நான் நேற்று அதைப் பற்றி யோசித்திருப்பேன்",
+    "target_text": "I'd have thought about it yesterday",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U03",
+   "expect": {
+    "known_text": "இன்று யோசித்திருப்பேன்",
+    "target_text": "I'd have thought today"
+   },
+   "set": {
+    "known_text": "நான் அதைப் பற்றி மீண்டும் யோசித்திருப்பேன்",
+    "target_text": "I'd have thought about it again",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U04",
+   "expect": {
+    "known_text": "மீண்டும் யோசித்திருப்பேன்",
+    "target_text": "I'd have thought again"
+   },
+   "set": {
+    "known_text": "அதனால் நான் அதைப் பற்றி இன்னும் கவனமாக யோசித்திருப்பேன்",
+    "target_text": "so I'd have thought about it more carefully",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U05",
+   "expect": {
+    "known_text": "நிச்சயமாக யோசித்திருப்பேன்",
+    "target_text": "definitely I'd have thought"
+   },
+   "set": {
+    "known_text": "நான் அதைப் பற்றி யோசித்திருப்பேன் என்று எங்களுக்குத் தெரியும்",
+    "target_text": "we know I'd have thought about it",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

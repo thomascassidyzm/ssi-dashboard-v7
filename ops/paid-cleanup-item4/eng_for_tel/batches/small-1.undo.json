@@ -1,0 +1,108 @@
+{
+ "event_id": "bd551320-1612-4ade-b17c-cc0724b7c4f7",
+ "undo_file": "2026-11-18T13-07-10-602Z-bd551320-1612-4ade-b17c-cc0724b7c4f7.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0617L01U02",
+   "set": {
+    "known_text": "నువ్వు ఏమనుకున్నావు?",
+    "target_text": "what did you think?",
+    "word_count": 6,
+    "known_audio_id": "1dda748d-2ba5-434d-a510-43084797672b",
+    "target1_audio_id": "9854abcb-62ea-4828-b112-9470862de95c",
+    "target2_audio_id": "d7748512-74fb-470d-b5a4-632cc9b7549a",
+    "decomposition": [
+     {
+      "known": "దేని కోసం",
+      "legoId": "S0068L01",
+      "target": "what",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " did",
+      "isGhost": true
+     },
+     {
+      "known": "నిన్ను",
+      "legoId": "S0030L02",
+      "target": " you",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " think?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0617L01B03",
+   "set": {
+    "known_text": "నువ్వు ముందు అనుకున్నావు",
+    "target_text": "you thought before",
+    "word_count": 18,
+    "known_audio_id": "152e4d3b-b6e6-486f-b687-cd1e09c8ae70",
+    "target1_audio_id": "6b36b250-8f0b-4d1e-9105-2d3dece48029",
+    "target2_audio_id": "06cd9f27-e2bc-4ee9-a9c7-e56b2cb268e9",
+    "decomposition": [
+     {
+      "known": "నువ్వు అనుకున్నావు",
+      "legoId": "S0617L01",
+      "target": "you thought",
+      "isGhost": false
+     },
+     {
+      "known": "ఇంతకుముందు",
+      "legoId": "S0309L03",
+      "target": " before",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0617L01B02",
+   "set": {
+    "known_text": "నువ్వు ఇవాళ అనుకున్నావు",
+    "target_text": "you thought today",
+    "word_count": 17,
+    "known_audio_id": "f17e9f37-2c04-4028-b0d9-c65969b70dbc",
+    "target1_audio_id": "f53dd636-7acf-42cd-9441-1c76a8bba5c4",
+    "target2_audio_id": "174005fa-9cd5-4aed-8b2a-fc7552009b6f",
+    "decomposition": [
+     {
+      "known": "నువ్వు అనుకున్నావు",
+      "legoId": "S0617L01",
+      "target": "you thought",
+      "isGhost": false
+     },
+     {
+      "known": "ఇవాళ",
+      "legoId": "S0007L01",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0617L01U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0617L01U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0617L01B04"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0086L02B01",
+   "expect": {
+    "known_text": "ਬਦਕਿਸਮਤੀ ਨਾਲ ਅਜੇ ਤੱਕ",
+    "target_text": "unfortunately yet"
+   },
+   "set": {
+    "known_text": "ਬਦਕਿਸਮਤੀ ਨਾਲ ਮੈਨੂੰ ਯਕੀਨ ਨਹੀਂ",
+    "target_text": "unfortunately I'm not sure",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  }
+ ]
+}
