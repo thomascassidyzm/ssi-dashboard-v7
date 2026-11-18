@@ -1,0 +1,4684 @@
+{
+ "course": "deu_for_jpn",
+ "db": "ssi_copy_20261118t033000z",
+ "at": "2026-11-18T13:30:57.399Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 7,
+   "id": "S0007L01U06",
+   "lego": "S0007L01",
+   "known": "今日できるだけ頑張りたいです。",
+   "target": "Ich möchte heute so hart wie möglich versuchen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0007L01U06",
+      "seed_number": 7,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "今日できるだけ頑張りたいです。",
+      "target_text": "Ich möchte heute so hart wie möglich versuchen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 7,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0007L01U06",
+     "slot": "known",
+     "audio_id": "f2eca77e-9f69-40c5-830c-4cf71655300c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0007L01U06",
+     "slot": "target1",
+     "audio_id": "3ae852ab-a800-40c9-af0d-bc89422d3aa6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0007L01U06",
+     "slot": "target2",
+     "audio_id": "fd696fc4-c712-4120-bc4e-dc6f47815f64"
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "id": "S0011L02U07",
+   "lego": "S0011L02",
+   "known": "あなたが終わったら話せるようになりたいです。",
+   "target": "Ich möchte sprechen können, nachdem du fertig bist.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0011L02U07",
+      "seed_number": 11,
+      "lego_index": 2,
+      "position": 14,
+      "known_text": "あなたが終わったら話せるようになりたいです。",
+      "target_text": "Ich möchte sprechen können, nachdem du fertig bist.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 11,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0011L02U07",
+     "slot": "known",
+     "audio_id": "76a97166-172a-4dac-8252-87ad846f04ea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0011L02U07",
+     "slot": "target1",
+     "audio_id": "1226fbf9-b269-401b-a6cc-08afbe8ad2de"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0011L02U07",
+     "slot": "target2",
+     "audio_id": "205a37c9-e86f-46cf-ae54-a705edb5d514"
+    }
+   ]
+  },
+  {
+   "seed": 13,
+   "id": "S0013L02U07",
+   "lego": "S0013L02",
+   "known": "ドイツ語がとても上手ですね。",
+   "target": "Du sprichst sehr gut Deutsch.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0013L02U07",
+      "seed_number": 13,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "ドイツ語がとても上手ですね。",
+      "target_text": "Du sprichst sehr gut Deutsch.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 13,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0013L02U07",
+     "slot": "known",
+     "audio_id": "8e7c6eb5-1029-4097-afe7-8bc7324d73c4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0013L02U07",
+     "slot": "target1",
+     "audio_id": "1e2019b3-a5e3-4b21-a3a1-f73107250480"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0013L02U07",
+     "slot": "target2",
+     "audio_id": "5b3b664d-0876-4d39-b125-1f86bf51bf4e"
+    }
+   ]
+  },
+  {
+   "seed": 16,
+   "id": "S0016L03U07",
+   "lego": "S0016L03",
+   "known": "彼は後で皆と一緒に戻りたいです。",
+   "target": "Er möchte später mit allen anderen zurückkommen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0016L03U07",
+      "seed_number": 16,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "彼は後で皆と一緒に戻りたいです。",
+      "target_text": "Er möchte später mit allen anderen zurückkommen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 16,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0016L03U07",
+     "slot": "known",
+     "audio_id": "bdd1fe17-874f-455b-a263-04a41c79a0b4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0016L03U07",
+     "slot": "target1",
+     "audio_id": "630c4679-61a2-483e-b68e-bd05fc4ec212"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0016L03U07",
+     "slot": "target2",
+     "audio_id": "5b05fa43-3355-47f3-b70d-bd8473531a59"
+    }
+   ]
+  },
+  {
+   "seed": 18,
+   "id": "S0018L02U06",
+   "lego": "S0018L02",
+   "known": "今晩6時に会いたいです。",
+   "target": "Wir möchten uns heute Abend um sechs Uhr treffen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0018L02U06",
+      "seed_number": 18,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "今晩6時に会いたいです。",
+      "target_text": "Wir möchten uns heute Abend um sechs Uhr treffen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 18,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0018L02U06",
+     "slot": "known",
+     "audio_id": "7336d737-68e1-4254-913f-32d02551666b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0018L02U06",
+     "slot": "target1",
+     "audio_id": "ee9ecd38-e95f-4d90-86b7-1484f41b8028"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0018L02U06",
+     "slot": "target2",
+     "audio_id": "7e9617e1-25a8-4867-8a6c-0225727042a5"
+    }
+   ]
+  },
+  {
+   "seed": 20,
+   "id": "S0020L02U07",
+   "lego": "S0020L02",
+   "known": "彼の名前を早く覚えたいですね。",
+   "target": "Du möchtest seinen Namen schnell lernen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0020L02U07",
+      "seed_number": 20,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "彼の名前を早く覚えたいですね。",
+      "target_text": "Du möchtest seinen Namen schnell lernen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 20,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0020L02U07",
+     "slot": "known",
+     "audio_id": "18b6efb8-eb69-442a-9552-e6d0c835c234"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0020L02U07",
+     "slot": "target1",
+     "audio_id": "55e7968d-733f-418f-b43d-626bb373ace7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0020L02U07",
+     "slot": "target2",
+     "audio_id": "dd7d6a9e-e260-45cc-9890-932da4fa52cc"
+    }
+   ]
+  },
+  {
+   "seed": 23,
+   "id": "S0023L02U07",
+   "lego": "S0023L02",
+   "known": "もうすぐもっと話し始めるつもりです。",
+   "target": "Ich werde bald mehr sprechen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0023L02U07",
+      "seed_number": 23,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "もうすぐもっと話し始めるつもりです。",
+      "target_text": "Ich werde bald mehr sprechen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 23,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0023L02U07",
+     "slot": "known",
+     "audio_id": "624df810-a553-4f2e-b55c-e6a7cdfb4557"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0023L02U07",
+     "slot": "target1",
+     "audio_id": "28256091-9139-4698-8c5d-df06b550d92e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0023L02U07",
+     "slot": "target2",
+     "audio_id": "5743f321-edc8-4d5d-8720-c104cf5d26ae"
+    }
+   ]
+  },
+  {
+   "seed": 24,
+   "id": "S0024L01U07",
+   "lego": "S0024L01",
+   "known": "簡単には覚えられないでしょう。",
+   "target": "Ich werde nicht leicht erinnern können.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0024L01U07",
+      "seed_number": 24,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "簡単には覚えられないでしょう。",
+      "target_text": "Ich werde nicht leicht erinnern können.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 24,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0024L01U07",
+     "slot": "known",
+     "audio_id": "f1b9d721-a5f2-47fe-beb6-8e2c9f3bb249"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0024L01U07",
+     "slot": "target1",
+     "audio_id": "2568fbfb-087f-4825-882b-73f3c51564ed"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0024L01U07",
+     "slot": "target2",
+     "audio_id": "cc449833-4e57-4476-a9c0-e739885b28f4"
+    }
+   ]
+  },
+  {
+   "seed": 26,
+   "id": "S0026L01U07",
+   "lego": "S0026L01",
+   "known": "もうすぐ行ける準備ができているように感じるのが好きです。",
+   "target": "Ich mag das Gefühl, fast bereit zu sein.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0026L01U07",
+      "seed_number": 26,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "もうすぐ行ける準備ができているように感じるのが好きです。",
+      "target_text": "Ich mag das Gefühl, fast bereit zu sein.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 26,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0026L01U07",
+     "slot": "known",
+     "audio_id": "627f6d2f-2db7-4c88-81a6-c6ba510ec342"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0026L01U07",
+     "slot": "target1",
+     "audio_id": "3e0bede5-3109-4c3f-b9c1-ff6eb70b2d7c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0026L01U07",
+     "slot": "target2",
+     "audio_id": "7f74a40c-7a2d-494c-aec0-0890fe61b77a"
+    }
+   ]
+  },
+  {
+   "seed": 29,
+   "id": "S0029L01U06",
+   "lego": "S0029L01",
+   "known": "できるだけ早くもっと上手に話せるようになるのを楽しみにしています。",
+   "target": "Ich freue mich darauf, so schnell wie möglich besser zu sprechen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0029L01U06",
+      "seed_number": 29,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "できるだけ早くもっと上手に話せるようになるのを楽しみにしています。",
+      "target_text": "Ich freue mich darauf, so schnell wie möglich besser zu sprechen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 29,
+       "canon": "P26"
+      },
+      "word_count": 65,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0029L01U06",
+     "slot": "known",
+     "audio_id": "63106bf6-478d-4b4d-9e71-c1e01c49ade1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0029L01U06",
+     "slot": "target1",
+     "audio_id": "05406554-d78d-4596-a2d4-7632320e31b0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0029L01U06",
+     "slot": "target2",
+     "audio_id": "41fdb6c1-0993-4217-ab0f-f6b3e3f9d04e"
+    }
+   ]
+  },
+  {
+   "seed": 30,
+   "id": "S0030L01U01",
+   "lego": "S0030L01",
+   "known": "昨日あなたに何か聞きたかったです。",
+   "target": "Ich wollte dich gestern etwas fragen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0030L01U01",
+      "seed_number": 30,
+      "lego_index": 1,
+      "position": 4,
+      "known_text": "昨日あなたに何か聞きたかったです。",
+      "target_text": "Ich wollte dich gestern etwas fragen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 30,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0030L01U01",
+     "slot": "known",
+     "audio_id": "31c8cfd8-c9c3-4e54-bac2-004fe28a44d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0030L01U01",
+     "slot": "target1",
+     "audio_id": "5f4e08ce-1b9b-482b-85f8-99c474d668fd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0030L01U01",
+     "slot": "target2",
+     "audio_id": "0ce8ac6c-6c88-49ec-8ad1-375b3ec0df59"
+    }
+   ]
+  },
+  {
+   "seed": 33,
+   "id": "S0033L01U06",
+   "lego": "S0033L01",
+   "known": "ドイツ語をどのくらい学んでいますか？",
+   "target": "Wie lange lernst du schon Deutsch?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0033L01U06",
+      "seed_number": 33,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "ドイツ語をどのくらい学んでいますか？",
+      "target_text": "Wie lange lernst du schon Deutsch?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 33,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0033L01U06",
+     "slot": "known",
+     "audio_id": "427d4a25-1b25-49e6-b1c2-1e3a4ce8d801"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0033L01U06",
+     "slot": "target1",
+     "audio_id": "560b4bdd-e43c-4c7a-bce0-e7ed5a44df93"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0033L01U06",
+     "slot": "target2",
+     "audio_id": "595f85b7-836c-44ff-b321-1208837570f1"
+    }
+   ]
+  },
+  {
+   "seed": 34,
+   "id": "S0034L03U05",
+   "lego": "S0034L03",
+   "known": "彼は他の人がいる時に静かにしたくありません。",
+   "target": "Er möchte nicht still sein, wenn andere Leute hier sind.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0034L03U05",
+      "seed_number": 34,
+      "lego_index": 3,
+      "position": 8,
+      "known_text": "彼は他の人がいる時に静かにしたくありません。",
+      "target_text": "Er möchte nicht still sein, wenn andere Leute hier sind.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 34,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0034L03U05",
+     "slot": "known",
+     "audio_id": "4c96670d-ee75-46d9-8dea-ec0f3bc0a4f0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0034L03U05",
+     "slot": "target1",
+     "audio_id": "dc00037f-ce19-4186-b61d-1188eb5b5fca"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0034L03U05",
+     "slot": "target2",
+     "audio_id": "6e02e153-f542-44a2-b5a5-fd039412cde8"
+    }
+   ]
+  },
+  {
+   "seed": 35,
+   "id": "S0035L03U06",
+   "lego": "S0035L03",
+   "known": "彼女は今日の午後何も読みたくありません。",
+   "target": "Sie möchte heute Nachmittag nichts lesen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0035L03U06",
+      "seed_number": 35,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "彼女は今日の午後何も読みたくありません。",
+      "target_text": "Sie möchte heute Nachmittag nichts lesen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 35,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0035L03U06",
+     "slot": "known",
+     "audio_id": "3832d13e-a51c-47af-ae2b-ee22507736c0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0035L03U06",
+     "slot": "target1",
+     "audio_id": "e9f8de6d-6e28-4f5d-a092-0ea75a52b6f7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0035L03U06",
+     "slot": "target2",
+     "audio_id": "2f72fa07-5348-43e4-9098-517a66cda57a"
+    }
+   ]
+  },
+  {
+   "seed": 38,
+   "id": "S0038L02U01",
+   "lego": "S0038L02",
+   "known": "約一週間学んでいます。",
+   "target": "Ich lerne seit etwa einer Woche.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0038L02U01",
+      "seed_number": 38,
+      "lego_index": 2,
+      "position": 5,
+      "known_text": "約一週間学んでいます。",
+      "target_text": "Ich lerne seit etwa einer Woche.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 38,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0038L02U01",
+     "slot": "known",
+     "audio_id": "a587767f-6abb-4736-8fa2-10f0c8567456"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0038L02U01",
+     "slot": "target1",
+     "audio_id": "35149603-29c4-469c-8811-cd44f503c06f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0038L02U01",
+     "slot": "target2",
+     "audio_id": "df97d2c1-ebf9-4f34-b752-7697ebb08b8f"
+    }
+   ]
+  },
+  {
+   "seed": 39,
+   "id": "S0039L02U06",
+   "lego": "S0039L02",
+   "known": "でも今朝は少し疲れています。",
+   "target": "Aber ich bin heute Morgen ein bisschen müde.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0039L02U06",
+      "seed_number": 39,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "でも今朝は少し疲れています。",
+      "target_text": "Aber ich bin heute Morgen ein bisschen müde.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 39,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0039L02U06",
+     "slot": "known",
+     "audio_id": "d305ecc4-74af-4f82-8655-9c703b7bf0f1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0039L02U06",
+     "slot": "target1",
+     "audio_id": "69fdfec8-8309-40f1-b59d-e5bc51e3e8b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0039L02U06",
+     "slot": "target2",
+     "audio_id": "8e962257-8e83-48db-967a-4672478ab7aa"
+    }
+   ]
+  },
+  {
+   "seed": 44,
+   "id": "S0044L02U06",
+   "lego": "S0044L02",
+   "known": "または改善する必要があるかどうか。",
+   "target": "Oder ob ich mich verbessern muss.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0044L02U06",
+      "seed_number": 44,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "または改善する必要があるかどうか。",
+      "target_text": "Oder ob ich mich verbessern muss.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 44,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0044L02U06",
+     "slot": "known",
+     "audio_id": "a9e96b4e-2f0b-4d84-b347-7c909de9f8a2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0044L02U06",
+     "slot": "target1",
+     "audio_id": "8e5341aa-0d06-49d7-8684-e8a71558681a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0044L02U06",
+     "slot": "target2",
+     "audio_id": "841c95f0-f6e5-4431-9842-13efca9939a5"
+    }
+   ]
+  },
+  {
+   "seed": 45,
+   "id": "S0045L02U06",
+   "lego": "S0045L02",
+   "known": "すべてを知る必要はありません。",
+   "target": "Ich muss nicht alles wissen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0045L02U06",
+      "seed_number": 45,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "すべてを知る必要はありません。",
+      "target_text": "Ich muss nicht alles wissen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 45,
+       "canon": "P26"
+      },
+      "word_count": 28,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0045L02U06",
+     "slot": "known",
+     "audio_id": "9ce6d90e-bd1e-4cd1-9f74-fa093f1b0a0c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0045L02U06",
+     "slot": "target1",
+     "audio_id": "b7ff5591-3b96-4893-9dd8-192ff0f37569"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0045L02U06",
+     "slot": "target2",
+     "audio_id": "bd6a443c-db2e-4171-a560-b86228c8c063"
+    }
+   ]
+  },
+  {
+   "seed": 50,
+   "id": "S0050L01U06",
+   "lego": "S0050L01",
+   "known": "できるだけ早く終わらせようとしているわけではありません。",
+   "target": "Ich versuche nicht so schnell wie möglich fertig zu werden.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0050L01U06",
+      "seed_number": 50,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "できるだけ早く終わらせようとしているわけではありません。",
+      "target_text": "Ich versuche nicht so schnell wie möglich fertig zu werden.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 50,
+       "canon": "P26"
+      },
+      "word_count": 59,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0050L01U06",
+     "slot": "known",
+     "audio_id": "82602195-60ae-4a54-ab9c-890425d2d851"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0050L01U06",
+     "slot": "target1",
+     "audio_id": "8b6da66c-eb5f-4904-b13b-0d48ea43db6f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0050L01U06",
+     "slot": "target2",
+     "audio_id": "9e6eefd7-946a-413f-ad9b-587fdb70b193"
+    }
+   ]
+  },
+  {
+   "seed": 51,
+   "id": "S0051L02U06",
+   "lego": "S0051L02",
+   "known": "友達と面白いことをするのを楽しんでいます。",
+   "target": "Ich genieße es, interessante Dinge mit meinen Freunden zu machen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0051L02U06",
+      "seed_number": 51,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "友達と面白いことをするのを楽しんでいます。",
+      "target_text": "Ich genieße es, interessante Dinge mit meinen Freunden zu machen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 51,
+       "canon": "P26"
+      },
+      "word_count": 65,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0051L02U06",
+     "slot": "known",
+     "audio_id": "2a8fa2b5-d8a3-4bb2-89c5-968b7f1eec9d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0051L02U06",
+     "slot": "target1",
+     "audio_id": "0871b9a8-c9d3-4e07-929e-683b7a71bb5d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0051L02U06",
+     "slot": "target2",
+     "audio_id": "b81242f6-28f7-4da1-bc96-045c76b117f9"
+    }
+   ]
+  },
+  {
+   "seed": 52,
+   "id": "S0052L05U06",
+   "lego": "S0052L05",
+   "known": "彼は先週友達に手紙を書きたかったです。",
+   "target": "Er wollte letzte Woche einen Brief an seinen Freund schreiben.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0052L05U06",
+      "seed_number": 52,
+      "lego_index": 5,
+      "position": 11,
+      "known_text": "彼は先週友達に手紙を書きたかったです。",
+      "target_text": "Er wollte letzte Woche einen Brief an seinen Freund schreiben.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 52,
+       "canon": "P26"
+      },
+      "word_count": 62,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0052L05U06",
+     "slot": "known",
+     "audio_id": "950f07cf-bd2c-4a87-948e-31e1712cce12"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0052L05U06",
+     "slot": "target1",
+     "audio_id": "a4fc939e-e2d6-45b4-9f7d-177985c836b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0052L05U06",
+     "slot": "target2",
+     "audio_id": "926fe456-7e66-4f92-8599-a4960d17e58d"
+    }
+   ]
+  },
+  {
+   "seed": 56,
+   "id": "S0056L03U07",
+   "lego": "S0056L03",
+   "known": "だからいくつかの言葉の言い方を覚えられます。",
+   "target": "Also kann ich erinnern, wie man ein paar Wörter sagt.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0056L03U07",
+      "seed_number": 56,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "だからいくつかの言葉の言い方を覚えられます。",
+      "target_text": "Also kann ich erinnern, wie man ein paar Wörter sagt.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 56,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0056L03U07",
+     "slot": "known",
+     "audio_id": "d8098cad-bb94-4503-b012-1f86afbf33b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0056L03U07",
+     "slot": "target1",
+     "audio_id": "0a191fc7-b51e-424a-876f-b222df8db746"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0056L03U07",
+     "slot": "target2",
+     "audio_id": "e2cedaf6-6f8d-4376-951a-e3ddb3d29b24"
+    }
+   ]
+  },
+  {
+   "seed": 58,
+   "id": "S0058L02U06",
+   "lego": "S0058L02",
+   "known": "十分な言葉がわかると面白いです。",
+   "target": "Es ist interessant, wenn man genug Wörter versteht.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0058L02U06",
+      "seed_number": 58,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "十分な言葉がわかると面白いです。",
+      "target_text": "Es ist interessant, wenn man genug Wörter versteht.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 58,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0058L02U06",
+     "slot": "known",
+     "audio_id": "1d07f825-3139-4cd9-a40a-f47661fd4f7a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0058L02U06",
+     "slot": "target1",
+     "audio_id": "20efa7e8-cb07-49dc-ab88-7d2faf66344a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0058L02U06",
+     "slot": "target2",
+     "audio_id": "29cbbd95-3dc8-4350-a9b5-d5658794d2c2"
+    }
+   ]
+  },
+  {
+   "seed": 61,
+   "id": "S0061L02U06",
+   "lego": "S0061L02",
+   "known": "もう少しゆっくりもう一度言っていただけますか？",
+   "target": "Kannst du das noch einmal ein bisschen langsamer sagen?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0061L02U06",
+      "seed_number": 61,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "もう少しゆっくりもう一度言っていただけますか？",
+      "target_text": "Kannst du das noch einmal ein bisschen langsamer sagen?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 61,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0061L02U06",
+     "slot": "known",
+     "audio_id": "471c1a4d-2ede-4b12-966a-6298aadfdb16"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0061L02U06",
+     "slot": "target1",
+     "audio_id": "eef7f358-3978-4932-ad7f-84c5032c4853"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0061L02U06",
+     "slot": "target2",
+     "audio_id": "864f8219-50a5-42bd-931d-5b463c2cb1d8"
+    }
+   ]
+  },
+  {
+   "seed": 62,
+   "id": "S0062L01U05",
+   "lego": "S0062L01",
+   "known": "同時にあなたを手伝えるかどうかわかりません。",
+   "target": "Ich bin nicht sicher, ob ich dir gleichzeitig helfen kann.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0062L01U05",
+      "seed_number": 62,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "同時にあなたを手伝えるかどうかわかりません。",
+      "target_text": "Ich bin nicht sicher, ob ich dir gleichzeitig helfen kann.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 62,
+       "canon": "P26"
+      },
+      "word_count": 58,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0062L01U05",
+     "slot": "known",
+     "audio_id": "712602a3-52af-42e3-8cae-818f70704af8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0062L01U05",
+     "slot": "target1",
+     "audio_id": "2402b849-d0c5-4ecf-b5c6-db2ee22db93e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0062L01U05",
+     "slot": "target2",
+     "audio_id": "10e46b0d-7a25-4d54-8625-7a368dd067b9"
+    }
+   ]
+  },
+  {
+   "seed": 70,
+   "id": "S0070L01U06",
+   "lego": "S0070L01",
+   "known": "彼女はそれがどこにあるか教えたくありませんでした。",
+   "target": "Sie wollte mir nicht sagen, wo es war.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0070L01U06",
+      "seed_number": 70,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "彼女はそれがどこにあるか教えたくありませんでした。",
+      "target_text": "Sie wollte mir nicht sagen, wo es war.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 70,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 1,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0070L01U06",
+     "slot": "known",
+     "audio_id": "52dbb9a2-22c3-4e1b-8089-5f3deb238ddc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0070L01U06",
+     "slot": "target1",
+     "audio_id": "8aac4d79-273f-45cc-a5f1-f4dc4f9b8f07"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0070L01U06",
+     "slot": "target2",
+     "audio_id": "a8370991-3766-4757-a955-c6023ff149d1"
+    }
+   ]
+  },
+  {
+   "seed": 71,
+   "id": "S0071L02U06",
+   "lego": "S0071L02",
+   "known": "誰にも本当のことを聞かせたくありませんでした。",
+   "target": "Wir wollten niemanden die Wahrheit hören lassen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0071L02U06",
+      "seed_number": 71,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "誰にも本当のことを聞かせたくありませんでした。",
+      "target_text": "Wir wollten niemanden die Wahrheit hören lassen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 71,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0071L02U06",
+     "slot": "known",
+     "audio_id": "2e4f02a2-d4f8-4e3e-a738-16baaad0a0d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0071L02U06",
+     "slot": "target1",
+     "audio_id": "93571097-7c05-490c-adbc-59e12c11ad63"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0071L02U06",
+     "slot": "target2",
+     "audio_id": "be713a41-183e-4e47-a17e-1afcfea34ee7"
+    }
+   ]
+  },
+  {
+   "seed": 74,
+   "id": "S0074L01U06",
+   "lego": "S0074L01",
+   "known": "理解するのを手伝ってくれてどうもありがとうございます。",
+   "target": "Danke sehr, dass du mir geholfen hast zu verstehen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0074L01U06",
+      "seed_number": 74,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "理解するのを手伝ってくれてどうもありがとうございます。",
+      "target_text": "Danke sehr, dass du mir geholfen hast zu verstehen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 74,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0074L01U06",
+     "slot": "known",
+     "audio_id": "e236e04b-2277-418c-88af-7d80219721c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0074L01U06",
+     "slot": "target1",
+     "audio_id": "d537deda-3b2e-4a28-9d75-321b6dd5dc53"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0074L01U06",
+     "slot": "target2",
+     "audio_id": "4c047801-bfa4-4937-baad-c38d151e363c"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L01U06",
+   "lego": "S0082L01",
+   "known": "あなたを待つつもりはありません。なぜですか？",
+   "target": "Ich werde nicht auf dich warten. Warum nicht?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0082L01U06",
+      "seed_number": 82,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "あなたを待つつもりはありません。なぜですか？",
+      "target_text": "Ich werde nicht auf dich warten. Warum nicht?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0082L01U06",
+     "slot": "known",
+     "audio_id": "7570d797-c704-4024-9d92-2ae0b68532b2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0082L01U06",
+     "slot": "target1",
+     "audio_id": "2cb7a66e-8152-4379-aa70-2e3e7056b18b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0082L01U06",
+     "slot": "target2",
+     "audio_id": "dad29173-949b-4b3c-b508-3f1ec08ef91b"
+    }
+   ]
+  },
+  {
+   "seed": 84,
+   "id": "S0084L02U06",
+   "lego": "S0084L02",
+   "known": "彼が私の友達について言ったことに同意しません。",
+   "target": "Ich stimme nicht mit dem überein, was er über meinen Freund gesagt hat.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0084L02U06",
+      "seed_number": 84,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "彼が私の友達について言ったことに同意しません。",
+      "target_text": "Ich stimme nicht mit dem überein, was er über meinen Freund gesagt hat.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 84,
+       "canon": "P26"
+      },
+      "word_count": 71,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0084L02U06",
+     "slot": "known",
+     "audio_id": "e61382d7-d35b-4bae-b5e3-3070eb3456ed"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0084L02U06",
+     "slot": "target1",
+     "audio_id": "9029532e-5882-424c-8975-ef2508d217ea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0084L02U06",
+     "slot": "target2",
+     "audio_id": "274c9b18-f0ef-48ad-98af-25dce1fe8c1c"
+    }
+   ]
+  },
+  {
+   "seed": 108,
+   "id": "S0108L01U06",
+   "lego": "S0108L01",
+   "known": "夜中に起きることを望んでいませんでした。",
+   "target": "Wir hofften nicht, mitten in der Nacht aufzuwachen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0108L01U06",
+      "seed_number": 108,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "夜中に起きることを望んでいませんでした。",
+      "target_text": "Wir hofften nicht, mitten in der Nacht aufzuwachen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 108,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0108L01U06",
+     "slot": "known",
+     "audio_id": "a4da2ea8-7e71-4e95-a46d-47a44902da2b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0108L01U06",
+     "slot": "target1",
+     "audio_id": "491c1f43-94c0-47d2-8cdb-2be5238d812f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0108L01U06",
+     "slot": "target2",
+     "audio_id": "7668b989-bd68-4a67-a12d-674c68425189"
+    }
+   ]
+  },
+  {
+   "seed": 127,
+   "id": "S0127L01U06",
+   "lego": "S0127L01",
+   "known": "それはあなたに会いたかった理由ではありません。",
+   "target": "Das ist nicht der Grund, warum ich dich sehen wollte.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0127L01U06",
+      "seed_number": 127,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "それはあなたに会いたかった理由ではありません。",
+      "target_text": "Das ist nicht der Grund, warum ich dich sehen wollte.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 127,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0127L01U06",
+     "slot": "known",
+     "audio_id": "bd535ed4-06bd-4724-8b1c-f25a2798d4bc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0127L01U06",
+     "slot": "target1",
+     "audio_id": "4abca663-5df0-4fb5-bd8e-491cb96a8fa7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0127L01U06",
+     "slot": "target2",
+     "audio_id": "c206b36a-4c0c-42d8-8f82-3fa3cdb4637c"
+    }
+   ]
+  },
+  {
+   "seed": 151,
+   "id": "S0151L02U06",
+   "lego": "S0151L02",
+   "known": "それは私が起こると期待していたことではありませんでした。",
+   "target": "Das war nicht das, was ich gehofft hatte, dass es passieren würde.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0151L02U06",
+      "seed_number": 151,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "それは私が起こると期待していたことではありませんでした。",
+      "target_text": "Das war nicht das, was ich gehofft hatte, dass es passieren würde.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 151,
+       "canon": "P26"
+      },
+      "word_count": 66,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0151L02U06",
+     "slot": "known",
+     "audio_id": "c43093fb-2107-4033-a423-fa27fc348986"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0151L02U06",
+     "slot": "target1",
+     "audio_id": "55d689cd-2c5e-427f-bcf8-791f508999fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0151L02U06",
+     "slot": "target2",
+     "audio_id": "94feffe0-083c-42ee-9172-c7941178a735"
+    }
+   ]
+  },
+  {
+   "seed": 184,
+   "id": "S0184L02U06",
+   "lego": "S0184L02",
+   "known": "はい、しばらく前にオフィスで見ました。",
+   "target": "Ja, ich habe sie vor einer Weile im Büro gesehen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0184L02U06",
+      "seed_number": 184,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "はい、しばらく前にオフィスで見ました。",
+      "target_text": "Ja, ich habe sie vor einer Weile im Büro gesehen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 184,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0184L02U06",
+     "slot": "known",
+     "audio_id": "42254291-d0e1-4dda-afe7-bbce6c1c290d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0184L02U06",
+     "slot": "target1",
+     "audio_id": "3fa6bdfe-9a95-49ed-b0ec-a3fb79f4d513"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0184L02U06",
+     "slot": "target2",
+     "audio_id": "232dac51-5ee1-4816-af34-11f38955931b"
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "id": "S0210L01U06",
+   "lego": "S0210L01",
+   "known": "彼らは私たちが問題について話し合う必要があると思っています。",
+   "target": "Sie denken, dass wir das Problem besprechen müssen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0210L01U06",
+      "seed_number": 210,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "彼らは私たちが問題について話し合う必要があると思っています。",
+      "target_text": "Sie denken, dass wir das Problem besprechen müssen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 210,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0210L01U06",
+     "slot": "known",
+     "audio_id": "b500bccc-0f9a-4cf1-80ca-d240b8224e77"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0210L01U06",
+     "slot": "target1",
+     "audio_id": "fa3b52ed-46b7-48fb-8f6c-d41c53a47f90"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0210L01U06",
+     "slot": "target2",
+     "audio_id": "9c4d61dc-f6b5-4eb6-8c90-c3c83d925c46"
+    }
+   ]
+  },
+  {
+   "seed": 220,
+   "id": "S0220L02U06",
+   "lego": "S0220L02",
+   "known": "テレビを少し見ましたか？",
+   "target": "Hast du ein bisschen Fernsehen geschaut?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0220L02U06",
+      "seed_number": 220,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "テレビを少し見ましたか？",
+      "target_text": "Hast du ein bisschen Fernsehen geschaut?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 220,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0220L02U06",
+     "slot": "known",
+     "audio_id": "cdfe6a60-4d04-49a0-bd4b-aa190b95854e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0220L02U06",
+     "slot": "target1",
+     "audio_id": "90fd7e66-1e82-4cd4-9e57-34b62a16e7d4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0220L02U06",
+     "slot": "target2",
+     "audio_id": "d87d2975-ea62-4273-b198-8b84032918a7"
+    }
+   ]
+  },
+  {
+   "seed": 259,
+   "id": "S0259L01U06",
+   "lego": "S0259L01",
+   "known": "アイデア。",
+   "target": "Eine Idee.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0259L01U06",
+      "seed_number": 259,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "アイデア。",
+      "target_text": "Eine Idee.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 259,
+       "canon": "P26"
+      },
+      "word_count": 10,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0259L01U06",
+     "slot": "known",
+     "audio_id": "c92457f4-175e-46c4-b46c-fe3ed045fd6c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0259L01U06",
+     "slot": "target1",
+     "audio_id": "cc567673-369d-4c2b-8096-f0f4e47fe42b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0259L01U06",
+     "slot": "target2",
+     "audio_id": "2c095212-c1bc-4f0f-9174-724916f2312d"
+    }
+   ]
+  },
+  {
+   "seed": 280,
+   "id": "S0280L03U06",
+   "lego": "S0280L03",
+   "known": "いいえ、一番大事な仕事だけしなければなりませんでした。",
+   "target": "Nein, ich musste nur die wichtigste Arbeit erledigen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0280L03U06",
+      "seed_number": 280,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "いいえ、一番大事な仕事だけしなければなりませんでした。",
+      "target_text": "Nein, ich musste nur die wichtigste Arbeit erledigen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 280,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 1,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0280L03U06",
+     "slot": "known",
+     "audio_id": "735d2956-ae86-4837-a602-2bd43e0e0330"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0280L03U06",
+     "slot": "target1",
+     "audio_id": "3b25ece7-dc98-4c8b-8ece-efa37086427e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0280L03U06",
+     "slot": "target2",
+     "audio_id": "8d4a6fc8-3af1-4445-9f61-1f0d3252084b"
+    }
+   ]
+  },
+  {
+   "seed": 281,
+   "id": "S0281L01U06",
+   "lego": "S0281L01",
+   "known": "コーヒー飲み終わるまで待っていい？",
+   "target": "Macht es dir etwas aus, wenn ich meinen Kaffee austrinke, bevor du anfängst?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0281L01U06",
+      "seed_number": 281,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "コーヒー飲み終わるまで待っていい？",
+      "target_text": "Macht es dir etwas aus, wenn ich meinen Kaffee austrinke, bevor du anfängst?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 281,
+       "canon": "P26"
+      },
+      "word_count": 76,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0281L01U06",
+     "slot": "known",
+     "audio_id": "953160a7-e965-4514-a240-203933066d32"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0281L01U06",
+     "slot": "target1",
+     "audio_id": "0f26c745-8e29-4ec2-8b5d-747440842fe4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0281L01U06",
+     "slot": "target2",
+     "audio_id": "4961db99-2628-49fa-a293-261666ec8b69"
+    }
+   ]
+  },
+  {
+   "seed": 287,
+   "id": "S0287L01U06",
+   "lego": "S0287L01",
+   "known": "テレビ見るのが好きな人、何人知ってる？",
+   "target": "Wie viele Menschen kennst du, die gerne fernsehen?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0287L01U06",
+      "seed_number": 287,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "テレビ見るのが好きな人、何人知ってる？",
+      "target_text": "Wie viele Menschen kennst du, die gerne fernsehen?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 287,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0287L01U06",
+     "slot": "known",
+     "audio_id": "eb437cd8-dee0-4d36-9a64-f7afb31567b2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0287L01U06",
+     "slot": "target1",
+     "audio_id": "d3411d88-c8e9-4281-8b4b-9ecb0e2cb96e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0287L01U06",
+     "slot": "target2",
+     "audio_id": "91178943-57e0-4c3d-a3b2-19058dcf57f9"
+    }
+   ]
+  },
+  {
+   "seed": 294,
+   "id": "S0294L01U05",
+   "lego": "S0294L01",
+   "known": "今夜は電話する時間がない。",
+   "target": "Ich habe heute Abend nicht genug Zeit, um dich anzurufen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0294L01U05",
+      "seed_number": 294,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "今夜は電話する時間がない。",
+      "target_text": "Ich habe heute Abend nicht genug Zeit, um dich anzurufen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 294,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 1,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0294L01U05",
+     "slot": "known",
+     "audio_id": "709c820a-0950-4e7e-a111-8aa4ee715f09"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0294L01U05",
+     "slot": "target1",
+     "audio_id": "2c25a04c-3eb9-41de-829a-e2c60f189273"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0294L01U05",
+     "slot": "target2",
+     "audio_id": "310ce1fe-527c-47ca-ad3a-3107d7f8df39"
+    }
+   ]
+  },
+  {
+   "seed": 299,
+   "id": "S0299L02U05",
+   "lego": "S0299L02",
+   "known": "半分払いたい。",
+   "target": "Er möchte die Hälfte bezahlen.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "deu_for_jpn:S0299L02U05",
+      "seed_number": 299,
+      "lego_index": 2,
+      "position": 8,
+      "known_text": "半分払いたい。",
+      "target_text": "Er möchte die Hälfte bezahlen.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 299,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 1,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0299L02U05",
+     "slot": "known",
+     "audio_id": "7ad8bb17-477f-48c1-b7f0-32be46a5c253"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0299L02U05",
+     "slot": "target1",
+     "audio_id": "5cb5f013-5c30-4d1a-8cec-cb89736dd592"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "deu_for_jpn:S0299L02U05",
+     "slot": "target2",
+     "audio_id": "48df5cdd-7144-4761-92e4-e401158f2739"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "no_home": [
+   {
+    "seed": 3,
+    "known": "できるだけ頻繁に話す方法。",
+    "target": "so oft wie möglich zu sprechen.",
+    "legos": [
+     "S0003L01 よく | oft",
+     "S0003L02 できるだけよく | so oft wie möglich"
+    ]
+   },
+   {
+    "seed": 6,
+    "known": "言葉を思い出そうとしています。",
+    "target": "Ich versuche, ein Wort zu erinnern.",
+    "legos": [
+     "S0006L01 一言 | ein Wort",
+     "S0006L02 思い出す | erinnern"
+    ]
+   },
+   {
+    "seed": 22,
+    "known": "ドイツ語を話す人に会いたいからです。",
+    "target": "Weil ich Menschen treffen möchte, die Deutsch sprechen.",
+    "legos": [
+     "S0022L01 なぜなら | weil",
+     "S0022L02 人々 | menschen"
+    ]
+   },
+   {
+    "seed": 25,
+    "known": "私が行かなければならない前に手伝ってくれますか？",
+    "target": "Wirst du mir helfen, bevor ich gehen muss?",
+    "legos": [
+     "S0025L01 行く | gehen",
+     "S0025L02 〜しなければならない | muss",
+     "S0025L03 手伝う | helfen",
+     "S0025L04 〜の前に | bevor",
+     "S0025L05 〜してくれますか | wirst du"
+    ]
+   },
+   {
+    "seed": 28,
+    "known": "できるだけ早く話し始めるのは役に立ちます。",
+    "target": "Es ist nützlich, so schnell wie möglich zu sprechen.",
+    "legos": [
+     "S0028L01 役に立つ | nützlich"
+    ]
+   },
+   {
+    "seed": 31,
+    "known": "今夜私と話したかったですね。",
+    "target": "Du wolltest heute Abend mit mir sprechen.",
+    "legos": [
+     "S0031L01 あなたは〜したかった | du wolltest"
+    ]
+   },
+   {
+    "seed": 32,
+    "known": "何か見せたかったですか？",
+    "target": "Wolltest du mir etwas zeigen?",
+    "legos": [
+     "S0032L01 見せる | zeigen",
+     "S0032L02 あなたは〜したかったですか？ | wolltest du"
+    ]
+   },
+   {
+    "seed": 43,
+    "known": "答え方について考えていませんでした。",
+    "target": "Ich dachte nicht daran, wie ich antworten soll.",
+    "legos": [
+     "S0043L01 答える | antworten",
+     "S0043L02 〜すべき | soll",
+     "S0043L03 そのことを | daran",
+     "S0043L04 〜と考えていた | ich dachte"
+    ]
+   },
+   {
+    "seed": 46,
+    "known": "でも間違えることを心配しません。",
+    "target": "Aber ich mache mir keine Sorgen über Fehler.",
+    "legos": [
+     "S0046L01 間違い | fehler",
+     "S0046L02 〜について | über",
+     "S0046L03 心配ない | keine Sorgen",
+     "S0046L04 心配しない | ich mache mir"
+    ]
+   },
+   {
+    "seed": 47,
+    "known": "間違えることは良いことだと思うからです。",
+    "target": "Weil ich denke, dass es gut ist, Fehler zu machen.",
+    "legos": [
+     "S0047L01 する | machen",
+     "S0047L02 〜と思う | ich denke"
+    ]
+   },
+   {
+    "seed": 48,
+    "known": "間違えても気にしません。",
+    "target": "Es ist mir egal, wenn ich Fehler mache.",
+    "legos": [
+     "S0048L01 どうでもいい | egal"
+    ]
+   },
+   {
+    "seed": 49,
+    "known": "こんな感じです、私が言いたいことがわかれば。",
+    "target": "Es ist so, wenn du weißt, was ich meine.",
+    "legos": [
+     "S0049L01 あなたは知っている | du weißt"
+    ]
+   },
+   {
+    "seed": 53,
+    "known": "彼女は彼の手紙を自分のかばんに入れたかったです。",
+    "target": "Sie wollte seinen Brief in ihre Tasche stecken.",
+    "legos": [
+     "S0053L01 入れる | stecken",
+     "S0053L02 彼女のかばんに | in ihre Tasche"
+    ]
+   },
+   {
+    "seed": 54,
+    "known": "もう少し時間をあげたかったです。",
+    "target": "Wir wollten dir ein bisschen mehr Zeit geben.",
+    "legos": [
+     "S0054L01 あげる | geben",
+     "S0054L02 私たちは〜したかった | wir wollten"
+    ]
+   },
+   {
+    "seed": 55,
+    "known": "よく眠れなかった時に起きるのは楽しくありません。",
+    "target": "Ich mag es nicht aufzuwachen, wenn ich nicht gut geschlafen habe.",
+    "legos": [
+     "S0055L01 眠る | geschlafen",
+     "S0055L02 目を覚ます | aufzuwachen"
+    ]
+   },
+   {
+    "seed": 57,
+    "known": "言いたかったことの言い方を思い出せません。",
+    "target": "Ich kann mich nicht erinnern, wie ich sagen wollte, was ich sagen wollte.",
+    "legos": [
+     "S0057L01 私自身を | mich"
+    ]
+   },
+   {
+    "seed": 114,
+    "known": "昨日より今日の方がうまくいっていないように感じます。",
+    "target": "Ich habe das Gefühl, dass ich heute schlechter bin als gestern.",
+    "legos": [
+     "S0114L01 もっと悪い | schlechter"
+    ]
+   },
+   {
+    "seed": 120,
+    "known": "バスで行くのが好きなのは面白いですね。",
+    "target": "Es ist interessant, dass du gerne mit dem Bus fährst.",
+    "legos": [
+     "S0120L01 あなたは乗る | fährst"
+    ]
+   },
+   {
+    "seed": 145,
+    "known": "なぜもう幸せじゃないのですか？",
+    "target": "Warum bist du nicht mehr glücklich?",
+    "legos": [
+     "S0145L01(old) 幸せ | glücklich"
+    ]
+   },
+   {
+    "seed": 163,
+    "known": "面白いと思います。",
+    "target": "Ich denke, dass es interessant ist.",
+    "legos": [
+     "S0163L01(old) 面白い | interessant"
+    ]
+   },
+   {
+    "seed": 168,
+    "known": "そしたら後で来て手伝うことができます。",
+    "target": "Und dann werde ich kommen und später helfen können.",
+    "legos": [
+     "S0168L01 そして | und",
+     "S0168L02 それから | dann",
+     "S0168L03 来る | kommen",
+     "S0168L04(old) 後で | später",
+     "S0168L05(old) 手伝う | helfen"
+    ]
+   },
+   {
+    "seed": 175,
+    "known": "日曜日の朝何をしたいですか？",
+    "target": "Was möchtest du am Sonntagmorgen machen?",
+    "legos": [
+     "S0175L01(old) 日曜日の朝 | sonntagmorgen"
+    ]
+   },
+   {
+    "seed": 201,
+    "known": "何が起こるか知りたかったです。",
+    "target": "Wir wollten wissen, was passieren würde.",
+    "legos": [
+     "S0201L01 知る | wissen"
+    ]
+   },
+   {
+    "seed": 203,
+    "known": "手伝ってと頼んだら何をしますか？",
+    "target": "Was würdest du tun, wenn ich dich bitten würde, mir zu helfen?",
+    "legos": [
+     "S0203L01 〜するでしょう | würdest",
+     "S0203L02 頼む | bitten"
+    ]
+   },
+   {
+    "seed": 207,
+    "known": "やる必要があったことをやりましたね。",
+    "target": "Du hast getan, was du tun musstest.",
+    "legos": [
+     "S0207L01(old) しなければならなかった | musstest"
+    ]
+   },
+   {
+    "seed": 211,
+    "known": "彼らは説明したくないと言いました。",
+    "target": "Sie haben uns gesagt, dass sie nicht erklären wollten.",
+    "legos": [
+     "S0211L01 彼らはしたくなかった | wollten"
+    ]
+   },
+   {
+    "seed": 212,
+    "known": "彼らは助けを求めたかったです。",
+    "target": "Sie wollten um Hilfe bitten.",
+    "legos": [
+     "S0212L01(old) 助け | hilfe"
+    ]
+   },
+   {
+    "seed": 216,
+    "known": "友達に何人か会いました。",
+    "target": "Ich habe ein paar Freunde gesehen.",
+    "legos": [
+     "S0216L01(old) 友人たち | freunde"
+    ]
+   },
+   {
+    "seed": 235,
+    "known": "あなたに何か伝えたいと言った人に会いました。",
+    "target": "Ich habe jemanden getroffen, der sagte, er möchte mir etwas sagen.",
+    "legos": [
+     "S0235L01 彼は言った | sagte"
+    ]
+   },
+   {
+    "seed": 237,
+    "known": "彼は週末の前にあなたに伝えてほしかったです。",
+    "target": "Er wollte, dass ich dir es vor dem Wochenende sage.",
+    "legos": [
+     "S0237L01 〜より前に | vor"
+    ]
+   },
+   {
+    "seed": 238,
+    "known": "彼は昨日あなたが私に伝えてほしかったです。",
+    "target": "Er wollte, dass du mir es gestern sagst.",
+    "legos": [
+     "S0238L01 あなたは言う | sagst"
+    ]
+   },
+   {
+    "seed": 246,
+    "known": "彼女にあなたを手伝ってほしかったけど、彼女は忙しすぎました。",
+    "target": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt.",
+    "legos": [
+     "S0246L01 忙しすぎた | zu beschäftigt"
+    ]
+   },
+   {
+    "seed": 273,
+    "known": "いいえ、残念ながら仕事が多すぎます。",
+    "target": "Nein, leider habe ich zu viel Arbeit.",
+    "legos": [
+     "S0273L01 〜が多すぎる | zu viel"
+    ]
+   },
+   {
+    "seed": 279,
+    "known": "はい、時間があまり残っていなかったからです。",
+    "target": "Ja, weil nicht mehr viel Zeit war.",
+    "legos": [
+     "S0279L01 もうあまり〜ない | nicht mehr viel"
+    ]
+   },
+   {
+    "seed": 283,
+    "known": "Germanを話す友だち、誰がいる？",
+    "target": "Welche deiner Freunde sprechen Deutsch?",
+    "legos": [
+     "S0283L01 どの人たち | welche",
+     "S0283L02 あなたの〜の | deiner"
+    ]
+   },
+   {
+    "seed": 284,
+    "known": "妹の友だち、知ってる？",
+    "target": "Kennst du die Freundin meiner Schwester?",
+    "legos": [
+     "S0284L01 あなたは面識がある | kennst",
+     "S0284L02 私の妹 | meiner Schwester"
+    ]
+   },
+   {
+    "seed": 285,
+    "known": "彼女、German話せる。",
+    "target": "Sie spricht Deutsch.",
+    "legos": [
+     "S0285L01 話しています | spricht"
+    ]
+   },
+   {
+    "seed": 286,
+    "known": "Germanを話すのが好きな人。",
+    "target": "Menschen, die gerne Deutsch sprechen.",
+    "legos": [
+     "S0286L01 〜するのが好きな人 | menschen, die gerne"
+    ]
+   },
+   {
+    "seed": 288,
+    "known": "知ってる人のほとんどがテレビ好き。",
+    "target": "Die meisten Menschen, die ich kenne, sehen gerne fern.",
+    "legos": [
+     "S0288L01 大半 | meisten",
+     "S0288L02 テレビを | fern"
+    ]
+   },
+   {
+    "seed": 289,
+    "known": "今日の午後、来るか気になる。",
+    "target": "Ich frage mich, ob sie heute Nachmittag da sein wird.",
+    "legos": [
+     "S0289L01 そこに・ここに | da"
+    ]
+   },
+   {
+    "seed": 290,
+    "known": "答えを知ってるか気になる。",
+    "target": "Ich frage mich, ob er die Antwort kennt.",
+    "legos": [
+     "S0290L01 〜かどうか気になる | ich frage mich, ob"
+    ]
+   },
+   {
+    "seed": 291,
+    "known": "もっと上手に話せるようになりたい。",
+    "target": "Ich hoffe, dass ich bald besser sprechen kann.",
+    "legos": [
+     "S0291L01 もうすぐ・まもなく | bald"
+    ]
+   },
+   {
+    "seed": 293,
+    "known": "どこで会うか調べないと。",
+    "target": "Ich muss herausfinden, wo er mich treffen wird.",
+    "legos": [
+     "S0293L01 彼は〜するつもりだ | wird"
+    ]
+   },
+   {
+    "seed": 295,
+    "known": "一日で終わるって言ってない。",
+    "target": "Ich habe nicht gesagt, dass ich an einem Tag fertig sein wollte.",
+    "legos": [
+     "S0295L01 私は〜したかった | wollte"
+    ]
+   },
+   {
+    "seed": 296,
+    "known": "もう少し時間が必要って言った。",
+    "target": "Ich sagte, dass ich noch ein bisschen mehr Zeit brauche.",
+    "legos": [
+     "S0296L01 私は言った | sagte",
+     "S0296L02 私は必要だ | brauche"
+    ]
+   },
+   {
+    "seed": 297,
+    "known": "German話せる人、あまり知らない。",
+    "target": "Ich kenne nicht viele Menschen, die Deutsch sprechen.",
+    "legos": [
+     "S0297L01 〜する人 | die"
+    ]
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 4,
+    "known": "ドイツ語で何かを言う方法",
+    "target": "wie man etwas auf Deutsch sagt",
+    "row": "S0004L04U05",
+    "row_known": "ドイツ語で何かを言う方法",
+    "row_target": "wie man auf Deutsch etwas sagt"
+   },
+   {
+    "seed": 42,
+    "known": "昨夜より良く感じ始めていました。",
+    "target": "Ich fing an, mich besser zu fühlen als letzte Nacht.",
+    "row": "S0042L04U01",
+    "row_known": "昨夜より良く感じ始めていました",
+    "row_target": "ich fing an besser als letzte Nacht zu fühlen"
+   },
+   {
+    "seed": 164,
+    "known": "面白い本",
+    "target": "Ein interessantes Buch",
+    "row": "S0164L01B01",
+    "row_known": "面白い本",
+    "row_target": "interessantes Buch"
+   },
+   {
+    "seed": 265,
+    "known": "友達。",
+    "target": "Ein Freund.",
+    "row": "S0083L02B01",
+    "row_known": "友達",
+    "row_target": "freund"
+   },
+   {
+    "seed": 272,
+    "known": "はい、それはいい考えですね。",
+    "target": "Ja, das klingt wie eine tolle Idee.",
+    "row": "S0189L01U01",
+    "row_known": "はい、それはいい考えですね",
+    "row_target": "ja, das ist eine gute Idee"
+   },
+   {
+    "seed": 298,
+    "known": "もう言うことがない。",
+    "target": "Ich habe nichts mehr zu sagen.",
+    "row": "S0298L01B02",
+    "row_known": "もう言うことがない",
+    "row_target": "nichts mehr zu sagen"
+   },
+   {
+    "seed": 300,
+    "known": "冷たく見られたくない。",
+    "target": "Sie möchte nicht unfreundlich wirken.",
+    "row": "S0300L02B03",
+    "row_known": "冷たく見られたくない",
+    "row_target": "nicht unfreundlich wirken"
+   },
+   {
+    "seed": 321,
+    "known": "本。",
+    "target": "Ein Buch.",
+    "row": "S0161L01B01",
+    "row_known": "本",
+    "row_target": "buch"
+   },
+   {
+    "seed": 329,
+    "known": "大事なこと。",
+    "target": "Es ist wichtig.",
+    "row": "S0261L01B01",
+    "row_known": "大事なこと",
+    "row_target": "etwas Wichtiges"
+   },
+   {
+    "seed": 422,
+    "known": "質問。",
+    "target": "Eine Frage.",
+    "row": "S0190L03B01",
+    "row_known": "質問",
+    "row_target": "fragen"
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 10,
+    "known": "文全体を覚えられるかどうかわかりません。",
+    "target": "Ich bin nicht sicher, ob ich den ganzen Satz erinnern kann.",
+    "row": "S0010L03U01",
+    "row_known": "全文を覚えられるかどうかわかりません",
+    "row_target": "ich bin nicht sicher, ob ich den ganzen Satz erinnern kann"
+   },
+   {
+    "seed": 27,
+    "known": "答えるのに時間がかかりすぎるのは好きじゃありません。",
+    "target": "Ich mag es nicht, zu viel Zeit zum Antworten zu brauchen.",
+    "row": "S0027L05U01",
+    "row_known": "答えるのに時間がかかりすぎるのが好きじゃありません",
+    "row_target": "ich mag es nicht, zu viel Zeit zum Antworten zu brauchen"
+   },
+   {
+    "seed": 37,
+    "known": "先月それについて慎重に考え始めました。",
+    "target": "Ich habe letzten Monat angefangen, sorgfältig darüber nachzudenken.",
+    "row": "S0037L05U01",
+    "row_known": "先月それについて慎重に考え始めた",
+    "row_target": "ich habe letzten Monat angefangen, sorgfältig darüber nachzudenken"
+   },
+   {
+    "seed": 41,
+    "known": "大丈夫ですが、疲れ始めています。",
+    "target": "Ich fühle mich okay, aber ich fange an müde zu werden.",
+    "row": "S0041L04U01",
+    "row_known": "大丈夫ですが疲れ始めています",
+    "row_target": "ich fühle mich okay, aber ich fange an müde zu werden"
+   },
+   {
+    "seed": 60,
+    "known": "まだ十分な違う言葉の言い方を知りません。",
+    "target": "Ich weiß noch nicht, wie ich genug verschiedene Wörter sage.",
+    "row": "S0060L03U04",
+    "row_known": "まだ十分な言葉の言い方を知りません",
+    "row_target": "ich weiß noch nicht wie ich genug verschiedene Wörter sage"
+   },
+   {
+    "seed": 119,
+    "known": "帰る前に何か聞いてもいいですか？",
+    "target": "Kann ich dich etwas fragen, bevor du gehst?",
+    "row": "S0119L01U01",
+    "row_known": "行く前に何か聞いてもいいですか？",
+    "row_target": "kann ich dich etwas fragen, bevor du gehst?"
+   },
+   {
+    "seed": 126,
+    "known": "この仕事が脳の形を変えています。",
+    "target": "Diese Arbeit verändert die Form meines Gehirns.",
+    "row": "S0126L03U04",
+    "row_known": "仕事が脳の形を変えています",
+    "row_target": "diese Arbeit verändert die Form meines Gehirns"
+   },
+   {
+    "seed": 204,
+    "known": "彼女にあなたが準備を手伝うのを手伝ってほしかったです。",
+    "target": "Ich wollte, dass sie dir bei den Vorbereitungen hilft.",
+    "row": "S0204L02U04",
+    "row_known": "彼女があなたが準備を手伝うのを手伝ってほしかったです。",
+    "row_target": "ich wollte, dass sie dir bei den Vorbereitungen hilft"
+   },
+   {
+    "seed": 230,
+    "known": "あなたと一緒に働きたい若い男性を知っています。",
+    "target": "Ich kenne einen jungen Mann, der mit dir arbeiten möchte.",
+    "row": "S0230L01U01",
+    "row_known": "私はあなたと一緒に働きたい若い男性を知っています。",
+    "row_target": "ich kenne einen jungen Mann, der mit dir arbeiten möchte"
+   },
+   {
+    "seed": 257,
+    "known": "その青いものが好きです。",
+    "target": "Ich mag dieses blaue Ding.",
+    "row": "S0257L04U02",
+    "row_known": "青いものが好きです",
+    "row_target": "ich mag dieses blaue Ding"
+   },
+   {
+    "seed": 264,
+    "known": "年を取った男の人。",
+    "target": "Ein alter Mann.",
+    "row": "S0264L01B02",
+    "row_known": "年を取った男性",
+    "row_target": "ein alter Mann"
+   },
+   {
+    "seed": 656,
+    "known": "ご一緒に。",
+    "target": "Zusammen.",
+    "row": "S0133L03B01",
+    "row_known": "一緒に",
+    "row_target": "zusammen"
+   }
+  ],
+  "not_built": [
+   {
+    "seed": 301,
+    "known": "彼は何か見せたいって言ってた。",
+    "target": "Er sagte, dass er dir etwas zeigen möchte."
+   },
+   {
+    "seed": 302,
+    "known": "彼女は都会に住みたくないって言ってた。",
+    "target": "Sie sagte, dass sie nicht in einer Stadt leben möchte."
+   },
+   {
+    "seed": 303,
+    "known": "彼は座りたいんだと思う。",
+    "target": "Ich denke, dass er sich setzen möchte."
+   },
+   {
+    "seed": 304,
+    "known": "彼女は家で働きたくないと思う。",
+    "target": "Ich denke, dass sie nicht von zu Hause aus arbeiten möchte."
+   },
+   {
+    "seed": 305,
+    "known": "女の人。",
+    "target": "Frau."
+   },
+   {
+    "seed": 306,
+    "known": "友だちと話してる若い女性を知ってる。",
+    "target": "Ich kenne die junge Frau, die mit deiner Freundin spricht."
+   },
+   {
+    "seed": 307,
+    "known": "あそこに座ってる若い男性を知ってる。",
+    "target": "Ich kenne den jungen Mann, der da drüben sitzt."
+   },
+   {
+    "seed": 308,
+    "known": "うん、母の友だち。",
+    "target": "Ja, sie ist eine Freundin meiner Mutter."
+   },
+   {
+    "seed": 309,
+    "known": "いや、前に見たことない。",
+    "target": "Nein, ich habe sie noch nie gesehen."
+   },
+   {
+    "seed": 310,
+    "known": "彼女なら、その人の話を書ける。",
+    "target": "Sie könnte eine Geschichte über diesen Mann schreiben."
+   },
+   {
+    "seed": 311,
+    "known": "彼は大事な三つの事実を信じられなかった。",
+    "target": "Er konnte die drei wichtigsten Fakten nicht glauben."
+   },
+   {
+    "seed": 312,
+    "known": "明日の夜、別の部屋を使えるって言ってた。",
+    "target": "Sie sagte, dass sie das andere Zimmer morgen Abend benutzen könnte."
+   },
+   {
+    "seed": 313,
+    "known": "五試合全部は見られないって言ってた。",
+    "target": "Er sagte, dass er sich nicht alle fünf Spiele ansehen konnte."
+   },
+   {
+    "seed": 314,
+    "known": "テーブルに置けると思う。",
+    "target": "Ich denke, dass sie es auf den Tisch legen könnte."
+   },
+   {
+    "seed": 315,
+    "known": "欲しかった車は買えなかったと思う。",
+    "target": "Ich denke, dass er sich das Auto, das er wollte, nicht leisten konnte."
+   },
+   {
+    "seed": 316,
+    "known": "月曜に兄を連れて来られると思う？",
+    "target": "Denkst du, dass sie ihren Bruder am Montag mitbringen könnte?"
+   },
+   {
+    "seed": 317,
+    "known": "うん、やりたければできると思う。",
+    "target": "Ja, ich denke, sie könnte, wenn sie wollte."
+   },
+   {
+    "seed": 318,
+    "known": "今回は無理だと思う。",
+    "target": "Nein, ich denke, sie könnte dieses Mal nicht."
+   },
+   {
+    "seed": 319,
+    "known": "別の国に引っ越す必要がある。",
+    "target": "Sie muss in ein anderes Land umziehen."
+   },
+   {
+    "seed": 320,
+    "known": "今年はテレビを買う必要ない。",
+    "target": "Er muss dieses Jahr keinen neuen Fernseher kaufen."
+   },
+   {
+    "seed": 322,
+    "known": "同じ本を読む必要があるって言ってた。",
+    "target": "Sie sagte, dass sie dasselbe Buch lesen muss."
+   },
+   {
+    "seed": 323,
+    "known": "学校まで歩かなくていいって言ってた。",
+    "target": "Er sagte, dass er nicht zur Schule laufen muss."
+   },
+   {
+    "seed": 324,
+    "known": "あの生徒、両手を上げてる。",
+    "target": "Diese Schülerin hat beide Hände oben."
+   },
+   {
+    "seed": 325,
+    "known": "考えるべき問題が十個あると思う。",
+    "target": "Ich denke, dass er zehn mögliche Probleme bedenken muss."
+   },
+   {
+    "seed": 326,
+    "known": "会社を売る必要はないと思う。",
+    "target": "Ich denke nicht, dass sie das Unternehmen verkaufen muss."
+   },
+   {
+    "seed": 327,
+    "known": "別の方法を出す必要あると思う？",
+    "target": "Denkst du, dass sie einen anderen Weg anbieten muss?"
+   },
+   {
+    "seed": 328,
+    "known": "うん、そうしたほうがいいと思う。",
+    "target": "Ja, ich denke, das sollte sie."
+   },
+   {
+    "seed": 330,
+    "known": "いや、そんなに大事じゃない。",
+    "target": "Nein, ich denke nicht, dass es sehr wichtig ist."
+   },
+   {
+    "seed": 331,
+    "known": "全部の答えは出せない。",
+    "target": "Sie kann nicht alle Antworten geben."
+   },
+   {
+    "seed": 332,
+    "known": "妹のために新しい人生を作れる。",
+    "target": "Er kann ein neues Leben für seine Schwester aufbauen."
+   },
+   {
+    "seed": 333,
+    "known": "あまり長く一緒にいられないって言ってた。",
+    "target": "Sie sagte, dass sie nicht viel Zeit mit der Gruppe verbringen kann."
+   },
+   {
+    "seed": 334,
+    "known": "子猫を抱いていいって言ってた。",
+    "target": "Er sagte, dass er dich das Kätzchen halten lassen kann."
+   },
+   {
+    "seed": 335,
+    "known": "いいアイデアを足せると思う。",
+    "target": "Ich denke, dass er einige wertvolle Ideen hinzufügen kann."
+   },
+   {
+    "seed": 336,
+    "known": "そのドアは開けられないと思う。",
+    "target": "Ich denke nicht, dass sie die Tür öffnen kann."
+   },
+   {
+    "seed": 337,
+    "known": "まだ続けられると思う？",
+    "target": "Denkst du, dass er weiter spielen kann?"
+   },
+   {
+    "seed": 338,
+    "known": "ひどく。",
+    "target": "Schlecht."
+   },
+   {
+    "seed": 339,
+    "known": "結構ひどくケガしてると思う。",
+    "target": "Nein, ich denke, er hat sich ziemlich schlimm verletzt."
+   },
+   {
+    "seed": 340,
+    "known": "うん、きっと大丈夫。",
+    "target": "Ja, ich bin sicher, dass es ihm gut gehen wird."
+   },
+   {
+    "seed": 341,
+    "known": "数日前、人に会った。",
+    "target": "Ich habe vor ein paar Tagen jemanden getroffen."
+   },
+   {
+    "seed": 342,
+    "known": "何か言ってた人に会った。",
+    "target": "Ich habe jemanden getroffen, der etwas sagte."
+   },
+   {
+    "seed": 343,
+    "known": "経済が心配だって言ってた。",
+    "target": "Der sagte, dass sie sich um die Wirtschaft Sorgen macht."
+   },
+   {
+    "seed": 344,
+    "known": "喜んで手伝うって言ってた。",
+    "target": "Der sagte, dass er gerne helfen möchte."
+   },
+   {
+    "seed": 345,
+    "known": "まだ出る準備ができてないって言ってた。",
+    "target": "Der sagte, dass er noch nicht bereit ist zu gehen."
+   },
+   {
+    "seed": 346,
+    "known": "本が好きだって伝えたかった。",
+    "target": "Ich wollte, dass sie weiß, dass mir ihr Buch gefiel."
+   },
+   {
+    "seed": 347,
+    "known": "一週間前に何が起きてたか知りたがってた。",
+    "target": "Er wollte wissen, was vor einer Woche passierte."
+   },
+   {
+    "seed": 348,
+    "known": "これから何が起きるか知りたくなかった。",
+    "target": "Sie wollte nicht wissen, was passieren würde."
+   },
+   {
+    "seed": 349,
+    "known": "金曜の夜、出かけたかった？",
+    "target": "Wollte er am Freitagabend ausgehen?"
+   },
+   {
+    "seed": 350,
+    "known": "うん、昔の友だちに会いたかった。",
+    "target": "Ja, er wollte ein paar alte Freunde treffen."
+   },
+   {
+    "seed": 351,
+    "known": "一人にしたくなかった。",
+    "target": "Nein, er wollte mich nicht alleine lassen."
+   },
+   {
+    "seed": 352,
+    "known": "やりたくても、できなかった。",
+    "target": "Selbst wenn er wollte, würde er es nicht schaffen."
+   },
+   {
+    "seed": 353,
+    "known": "フィールドを走り回る必要があった。",
+    "target": "Sie musste um das Feld laufen."
+   },
+   {
+    "seed": 354,
+    "known": "怒ってるように見せる必要なかった。",
+    "target": "Er musste nicht wütend wirken."
+   },
+   {
+    "seed": 355,
+    "known": "知ってるあの女性と話す必要あった？",
+    "target": "Musste sie mit der Frau sprechen, die du kennst?"
+   },
+   {
+    "seed": 356,
+    "known": "大事な話があった。",
+    "target": "Ja, sie hatten etwas Wichtiges zu besprechen."
+   },
+   {
+    "seed": 357,
+    "known": "ただメッセージを送りたかっただけ。",
+    "target": "Nein, sie wollte ihr nur eine Nachricht schicken."
+   },
+   {
+    "seed": 358,
+    "known": "頂上に行けなかったって言ってた。",
+    "target": "Dein Freund sagte, dass sie die Spitze nicht erreichen konnte."
+   },
+   {
+    "seed": 359,
+    "known": "左に曲がれるって言ってた。",
+    "target": "Dein Freund sagte, dass er links abbiegen konnte."
+   },
+   {
+    "seed": 360,
+    "known": "他にも何か言ってた？",
+    "target": "Sagte dein Freund noch etwas anderes?"
+   },
+   {
+    "seed": 361,
+    "known": "静かだった。",
+    "target": "Er war ruhig."
+   },
+   {
+    "seed": 362,
+    "known": "出たあと、ずっと静かだった。",
+    "target": "Nein, er war ziemlich ruhig, nachdem du gegangen bist."
+   },
+   {
+    "seed": 363,
+    "known": "たくさん話したそうだった。",
+    "target": "Ja, er hatte Lust, viel zu reden."
+   },
+   {
+    "seed": 364,
+    "known": "あの場所が好きじゃないって聞いた。",
+    "target": "Ich hörte, dass er diesen Ort nicht mochte."
+   },
+   {
+    "seed": 365,
+    "known": "彼女が何て言ったか聞こえなかった。",
+    "target": "Ich habe nicht gehört, was sie zu ihm sagte."
+   },
+   {
+    "seed": 366,
+    "known": "何を育てたいか聞いた？",
+    "target": "Hast du gehört, was er anbauen wollte?"
+   },
+   {
+    "seed": 367,
+    "known": "誰も教えてくれなかった。",
+    "target": "Nein, niemand hat es mir gesagt."
+   },
+   {
+    "seed": 368,
+    "known": "トマトを育てたいって聞いた。",
+    "target": "Ja, ich hörte, dass er Tomaten anbauen wollte."
+   },
+   {
+    "seed": 369,
+    "known": "道で馬を何頭か見た。",
+    "target": "Ich sah mehrere Pferde auf der Straße."
+   },
+   {
+    "seed": 370,
+    "known": "知ってる人は誰も見なかった。",
+    "target": "Ich sah niemanden, den ich kannte."
+   },
+   {
+    "seed": 371,
+    "known": "水曜に映画を見に行った。",
+    "target": "Ich bin am Mittwoch ins Kino gegangen."
+   },
+   {
+    "seed": 372,
+    "known": "彼女が作ろうとしてたものを見た？",
+    "target": "Hast du gesehen, was sie zu erschaffen versuchte?"
+   },
+   {
+    "seed": 373,
+    "known": "きれいだった。",
+    "target": "Es war wunderschön."
+   },
+   {
+    "seed": 374,
+    "known": "うん、とてもきれいだった。",
+    "target": "Ja, ich fand es sehr schön."
+   },
+   {
+    "seed": 375,
+    "known": "何をしてたか分からなかった。",
+    "target": "Nein, ich wusste nicht, was sie machte."
+   },
+   {
+    "seed": 376,
+    "known": "先月はどこにも行かなかった。",
+    "target": "Ich bin letzten Monat nirgendwo hingegangen."
+   },
+   {
+    "seed": 377,
+    "known": "去年、どこか行った？",
+    "target": "Bist du letztes Jahr irgendwo auf der Welt gewesen?"
+   },
+   {
+    "seed": 378,
+    "known": "休みに行くお金がなかった。",
+    "target": "Nein, ich hatte nicht genug Geld für den Urlaub."
+   },
+   {
+    "seed": 379,
+    "known": "運よくアフリカに行けた。",
+    "target": "Ja, ich hatte das Glück nach Afrika zu reisen."
+   },
+   {
+    "seed": 380,
+    "known": "何を入れたいか聞いた。",
+    "target": "Ich fragte, was sie einbeziehen wollte."
+   },
+   {
+    "seed": 381,
+    "known": "ついて来たいかは聞かなかった。",
+    "target": "Ich fragte nicht, ob er uns folgen wollte."
+   },
+   {
+    "seed": 382,
+    "known": "どこに置きたいか聞いた？",
+    "target": "Hast du gefragt, wo er es hinlegen wollte?"
+   },
+   {
+    "seed": 383,
+    "known": "庭に置きたいって言ってた。",
+    "target": "Ja, er sagte, er wollte es in den Garten legen."
+   },
+   {
+    "seed": 384,
+    "known": "さっきの意見には同意できなかった。",
+    "target": "Ich konnte nicht zustimmen, was er vor einem Moment sagte."
+   },
+   {
+    "seed": 385,
+    "known": "彼女の意見には同意した？",
+    "target": "Hast du ihr zugestimmt?"
+   },
+   {
+    "seed": 386,
+    "known": "うん、同意した。",
+    "target": "Ja, ich habe ihr zugestimmt."
+   },
+   {
+    "seed": 387,
+    "known": "いや、正しいとは思わなかった。",
+    "target": "Nein, ich dachte nicht, dass sie recht hatte."
+   },
+   {
+    "seed": 388,
+    "known": "一緒に働いてる人。",
+    "target": "Die Person, mit der du zusammenarbeitest."
+   },
+   {
+    "seed": 389,
+    "known": "あそこにいる人。",
+    "target": "Die Person da drüben."
+   },
+   {
+    "seed": 390,
+    "known": "入り口の近くに立ってる人。",
+    "target": "Diejenige, die nahe am Eingang steht."
+   },
+   {
+    "seed": 391,
+    "known": "バスのほうに歩いてる人。",
+    "target": "Derjenige, der auf den Bus zugeht."
+   },
+   {
+    "seed": 392,
+    "known": "郵便局の向かいの黒い髪の子。",
+    "target": "Das Kind mit den schwarzen Haaren gegenüber der Post."
+   },
+   {
+    "seed": 393,
+    "known": "緑のシャツの男の子。",
+    "target": "Der Junge mit dem grünen Hemd."
+   },
+   {
+    "seed": 394,
+    "known": "黄色い服の女の子。",
+    "target": "Das Mädchen mit dem gelben Kleid."
+   },
+   {
+    "seed": 395,
+    "known": "次の角で左に曲がる。",
+    "target": "Wir müssen an der nächsten Ecke links abbiegen."
+   },
+   {
+    "seed": 396,
+    "known": "みんなが準備できるまで立たなくていい。",
+    "target": "Wir müssen nicht aufstehen, bis alle anderen bereit sind."
+   },
+   {
+    "seed": 397,
+    "known": "もうすぐ準備する必要ある？",
+    "target": "Müssen wir uns bald fertigmachen?"
+   },
+   {
+    "seed": 398,
+    "known": "子どもにもっと我慢強くなりたい。",
+    "target": "Wir wollen geduldiger mit unseren Kindern werden."
+   },
+   {
+    "seed": 399,
+    "known": "希望を失いたくない。",
+    "target": "Wir wollen die Hoffnung nicht verlieren."
+   },
+   {
+    "seed": 400,
+    "known": "あとで何か食べたい？",
+    "target": "Wollen wir später etwas essen?"
+   },
+   {
+    "seed": 401,
+    "known": "いや、まっすぐ帰ったほうがいい。",
+    "target": "Nein, es wäre besser, direkt nach Hause zu gehen."
+   },
+   {
+    "seed": 402,
+    "known": "うん、どこかで食べたい。",
+    "target": "Ja, es wäre schön, irgendwo zum Essen anzuhalten."
+   },
+   {
+    "seed": 403,
+    "known": "できるだけ静かにしていよう。",
+    "target": "Wir sollten so lange wie möglich ruhig bleiben."
+   },
+   {
+    "seed": 404,
+    "known": "木曜前に終わるとは思わない。",
+    "target": "Wir sollten nicht erwarten, vor Donnerstag fertig zu sein."
+   },
+   {
+    "seed": 405,
+    "known": "予約が必要か聞く？",
+    "target": "Sollten wir fragen, ob wir buchen müssen?"
+   },
+   {
+    "seed": 406,
+    "known": "いや、大丈夫だと思う。",
+    "target": "Nein, ich bin sicher, es wird okay sein."
+   },
+   {
+    "seed": 407,
+    "known": "良い例を見せたほうがいいんじゃない？",
+    "target": "Sollten wir nicht versuchen, ein gutes Beispiel zu geben?"
+   },
+   {
+    "seed": 408,
+    "known": "うん、それが幸せな家族への一番の方法。",
+    "target": "Ja, das ist der beste Weg, eine glückliche Familie zu schaffen."
+   },
+   {
+    "seed": 409,
+    "known": "いや、何をしても関係ない。",
+    "target": "Nein, es ist egal, was wir tun."
+   },
+   {
+    "seed": 410,
+    "known": "彼らはまだケンカしてる。",
+    "target": "Sie streiten sich immer noch."
+   },
+   {
+    "seed": 411,
+    "known": "今夜、四人でテーブルを予約したい。",
+    "target": "Wir möchten einen Tisch für vier Personen für heute Abend reservieren."
+   },
+   {
+    "seed": 412,
+    "known": "全部勝たせるわけにはいかなかった。",
+    "target": "Wir konnten es ihnen nicht erlauben, alles zu gewinnen."
+   },
+   {
+    "seed": 413,
+    "known": "端に近づきすぎると落ちるかも。",
+    "target": "Wir könnten fallen, wenn wir zu nah an den Rand gehen."
+   },
+   {
+    "seed": 414,
+    "known": "赤ワインを一本ください。",
+    "target": "Könnten wir bitte eine Flasche Rotwein haben?"
+   },
+   {
+    "seed": 415,
+    "known": "それは問題にならないと思う。",
+    "target": "Das wäre kein Problem, wenn du mich fragst."
+   },
+   {
+    "seed": 416,
+    "known": "来年、先頭に立ちたいらしい。",
+    "target": "Sie wollen nächstes Jahr die Führung übernehmen."
+   },
+   {
+    "seed": 417,
+    "known": "アリを殺したいの？",
+    "target": "Wollen sie diese Ameisen töten?"
+   },
+   {
+    "seed": 418,
+    "known": "地域に貢献する必要がある。",
+    "target": "Sie müssen der Gemeinschaft dienen."
+   },
+   {
+    "seed": 419,
+    "known": "人に好かれたいなら。",
+    "target": "Wenn sie wollen, dass die Menschen sie mögen."
+   },
+   {
+    "seed": 420,
+    "known": "年齢を聞く必要はない。",
+    "target": "Sie müssen nicht fragen, wie alt er ist."
+   },
+   {
+    "seed": 421,
+    "known": "もう弱ってきてるのを知ってるから。",
+    "target": "Weil ich weiß, dass es schon schwächer wird."
+   },
+   {
+    "seed": 423,
+    "known": "そんな分かりきった質問をする必要ある？",
+    "target": "Musst du eine so offensichtliche Frage stellen?"
+   },
+   {
+    "seed": 424,
+    "known": "みんなの時間を無駄にしてる。",
+    "target": "Du verschwendest die Zeit aller."
+   },
+   {
+    "seed": 425,
+    "known": "ちゃんと理解する必要がある。",
+    "target": "Ich muss es richtig verstehen."
+   },
+   {
+    "seed": 426,
+    "known": "愛したいけど、幸せじゃない。",
+    "target": "Ich möchte lieben, aber ich bin nicht glücklich."
+   },
+   {
+    "seed": 427,
+    "known": "退屈してると思われたくない。",
+    "target": "Ich möchte nicht gelangweilt wirken."
+   },
+   {
+    "seed": 428,
+    "known": "火曜に来たい？",
+    "target": "Möchtest du am Dienstag kommen?"
+   },
+   {
+    "seed": 429,
+    "known": "うん、それは完璧。",
+    "target": "Ja, das ist perfekt."
+   },
+   {
+    "seed": 430,
+    "known": "いや、それは無理。",
+    "target": "Nein, das geht nicht."
+   },
+   {
+    "seed": 431,
+    "known": "まだ準備できてないけど、もうすぐ。",
+    "target": "Ich bin noch nicht bereit, aber bald."
+   },
+   {
+    "seed": 432,
+    "known": "聞いてほしいって意味かもしれない。",
+    "target": "Vielleicht bedeutet es, dass er zuhören soll."
+   },
+   {
+    "seed": 433,
+    "known": "映画の開始時間が分からなかった。",
+    "target": "Ich wusste nicht, wann der Film anfängt."
+   },
+   {
+    "seed": 434,
+    "known": "学生の数を減らせると思う？",
+    "target": "Glaubst du, wir können die Anzahl der Schüler verringern?"
+   },
+   {
+    "seed": 435,
+    "known": "うん、やりたければできる。",
+    "target": "Ja, ich kann es, wenn ich es möchte."
+   },
+   {
+    "seed": 436,
+    "known": "いや、最低人数がある。",
+    "target": "Nein, es gibt eine Mindestanzahl."
+   },
+   {
+    "seed": 437,
+    "known": "できるだけ多く寄付を集めたかった。",
+    "target": "Ich wollte so viele Spenden wie möglich sammeln."
+   },
+   {
+    "seed": 438,
+    "known": "何をすべきか決めたくなかった。",
+    "target": "Ich wollte nicht entscheiden, was getan werden soll."
+   },
+   {
+    "seed": 439,
+    "known": "死にたくない。",
+    "target": "Ich möchte nicht sterben."
+   },
+   {
+    "seed": 440,
+    "known": "若いうちに旅したい。",
+    "target": "Ich möchte reisen, solange ich jung bin."
+   },
+   {
+    "seed": 441,
+    "known": "やり方。",
+    "target": "Eine Methode."
+   },
+   {
+    "seed": 442,
+    "known": "新しいやり方を考えたかった？",
+    "target": "Wolltest du einen neuen Weg finden?"
+   },
+   {
+    "seed": 443,
+    "known": "同じやり方を続けたかった。",
+    "target": "Ich wollte denselben Weg weiterverfolgen."
+   },
+   {
+    "seed": 444,
+    "known": "もっと効率よくできると思った。",
+    "target": "Ich dachte, ich kann es effizienter machen."
+   },
+   {
+    "seed": 445,
+    "known": "そのスーツケースは運べる。",
+    "target": "Ich kann diesen Koffer tragen."
+   },
+   {
+    "seed": 446,
+    "known": "その窓は壊せない。",
+    "target": "Dieses Fenster kann nicht kaputt gemacht werden."
+   },
+   {
+    "seed": 447,
+    "known": "食事のあと、家まで運転できる？",
+    "target": "Kannst du nach dem Essen nach Hause fahren?"
+   },
+   {
+    "seed": 448,
+    "known": "うん、喜んで。",
+    "target": "Ja, gerne."
+   },
+   {
+    "seed": 449,
+    "known": "もうすぐ準備できるって言ってた。",
+    "target": "Er sagte, er wird bald bereit sein."
+   },
+   {
+    "seed": 450,
+    "known": "自分たちで電車に乗らないといけない。",
+    "target": "Wir müssen selbst in den Zug einsteigen."
+   },
+   {
+    "seed": 451,
+    "known": "彼らは何をしたいか言った。",
+    "target": "Sie sagten, was sie machen möchten."
+   },
+   {
+    "seed": 452,
+    "known": "彼らは何をしたいか言わなかった。",
+    "target": "Sie sagten nicht, was sie machen möchten."
+   },
+   {
+    "seed": 453,
+    "known": "昨夜、誰に会ったか言った？",
+    "target": "Hast du gesagt, wen du gestern Nacht getroffen hast?"
+   },
+   {
+    "seed": 454,
+    "known": "友だちは六時ごろ来た。",
+    "target": "Mein Freund kam gegen sechs Uhr."
+   },
+   {
+    "seed": 455,
+    "known": "子どもが疲れてたから帰らなきゃいけなかった。",
+    "target": "Ich musste nach Hause gehen, weil das Kind müde war."
+   },
+   {
+    "seed": 456,
+    "known": "いるかもしれないけど、あまり可能性は高くない。",
+    "target": "Er ist vielleicht da, aber es ist nicht sehr wahrscheinlich."
+   },
+   {
+    "seed": 457,
+    "known": "問題の一部は分野が多すぎること。",
+    "target": "Ein Teil des Problems ist, dass es zu viele Bereiche gibt."
+   },
+   {
+    "seed": 458,
+    "known": "昔はずっと簡単だった。",
+    "target": "Früher war es viel einfacher."
+   },
+   {
+    "seed": 459,
+    "known": "青い標識の前じゃなかった。",
+    "target": "Es war nicht vor dem blauen Schild."
+   },
+   {
+    "seed": 460,
+    "known": "ホテルの近くで店を探したい。",
+    "target": "Ich möchte in der Nähe des Hotels ein Geschäft finden."
+   },
+   {
+    "seed": 461,
+    "known": "はがきを買える店。",
+    "target": "Ein Laden, wo man Postkarten kaufen kann."
+   },
+   {
+    "seed": 462,
+    "known": "祖父は戦争中にイタリアで戦った。",
+    "target": "Mein Großvater hat im Krieg in Italien gekämpft."
+   },
+   {
+    "seed": 463,
+    "known": "部屋番号。",
+    "target": "Die Zimmernummer."
+   },
+   {
+    "seed": 464,
+    "known": "部屋番号を一度言ったけど、忘れられた。",
+    "target": "Ich habe die Zimmernummer einmal gesagt, aber sie wurde vergessen."
+   },
+   {
+    "seed": 465,
+    "known": "次は彼女の名前を聞く。",
+    "target": "Als nächstes frage ich nach ihrem Namen."
+   },
+   {
+    "seed": 466,
+    "known": "壁の向こうに投げさせて。",
+    "target": "Lass mich es über die Mauer werfen."
+   },
+   {
+    "seed": 467,
+    "known": "駐車場の隣。",
+    "target": "Neben dem Parkplatz."
+   },
+   {
+    "seed": 468,
+    "known": "世界は大きい。",
+    "target": "Die Welt ist groß."
+   },
+   {
+    "seed": 469,
+    "known": "でも、変えられないわけじゃない。",
+    "target": "Aber das bedeutet nicht, dass man sie nicht verändern kann."
+   },
+   {
+    "seed": 470,
+    "known": "どこまで登りたい？",
+    "target": "Wie weit möchtest du klettern?"
+   },
+   {
+    "seed": 471,
+    "known": "休憩したい？",
+    "target": "Möchtest du eine Pause machen?"
+   },
+   {
+    "seed": 472,
+    "known": "問題の一部は事実を知らないこと。",
+    "target": "Ein Teil des Problems ist, dass ich die Fakten nicht kenne."
+   },
+   {
+    "seed": 473,
+    "known": "それはいらない。",
+    "target": "Das brauche ich nicht."
+   },
+   {
+    "seed": 474,
+    "known": "無料でもいらない。",
+    "target": "Ich will es auch nicht kostenlos."
+   },
+   {
+    "seed": 475,
+    "known": "待つ理由はたくさんある。",
+    "target": "Es gibt viele Gründe zu warten."
+   },
+   {
+    "seed": 476,
+    "known": "後半の終わりを待ってる。",
+    "target": "Ich warte auf das Ende der zweiten Hälfte."
+   },
+   {
+    "seed": 477,
+    "known": "休みの二日目からずっと具合が悪い。",
+    "target": "Ich bin seit dem zweiten Tag des Urlaubs krank."
+   },
+   {
+    "seed": 478,
+    "known": "彼女はとても優しい心を持ってる。",
+    "target": "Sie hat ein sehr freundliches Herz."
+   },
+   {
+    "seed": 479,
+    "known": "それくらいしかできなかった。",
+    "target": "Das war das Einzige, was ich tun konnte."
+   },
+   {
+    "seed": 480,
+    "known": "彼が何を言っても、もうすぐだ。",
+    "target": "Was auch immer er sagt, es wird bald so weit sein."
+   },
+   {
+    "seed": 481,
+    "known": "残った唯一の希望。",
+    "target": "Die einzige Hoffnung, die noch übrig ist."
+   },
+   {
+    "seed": 482,
+    "known": "唯一の希望は、彼らが本気じゃないこと。",
+    "target": "Die einzige Hoffnung ist, dass sie es nicht ernst meinen."
+   },
+   {
+    "seed": 483,
+    "known": "人生は簡単じゃない。",
+    "target": "Das Leben ist nicht einfach."
+   },
+   {
+    "seed": 484,
+    "known": "簡単なはずじゃない。",
+    "target": "Es soll nicht einfach sein."
+   },
+   {
+    "seed": 485,
+    "known": "逃げられたら何より嬉しい。",
+    "target": "Nichts würde mich mehr freuen, als zu entkommen."
+   },
+   {
+    "seed": 486,
+    "known": "君の目はきれいだと思う。",
+    "target": "Ich finde, deine Augen sind schön."
+   },
+   {
+    "seed": 487,
+    "known": "橋の下。",
+    "target": "Unter der Brücke."
+   },
+   {
+    "seed": 488,
+    "known": "あの黄色い線の向こう。",
+    "target": "Auf der anderen Seite der gelben Linie dort."
+   },
+   {
+    "seed": 489,
+    "known": "今すぐ濃いコーヒーを作ってくれなかったら。",
+    "target": "Wenn du mir nicht sofort einen starken Kaffee machst."
+   },
+   {
+    "seed": 490,
+    "known": "二度と誰も信じない。",
+    "target": "Ich werde nie wieder jemandem vertrauen."
+   },
+   {
+    "seed": 491,
+    "known": "助けようとするところが好き。",
+    "target": "Ich mag es, dass du versuchst zu helfen."
+   },
+   {
+    "seed": 492,
+    "known": "どの場所が一番面白いと思う？",
+    "target": "Welchen Ort findest du am interessantesten?"
+   },
+   {
+    "seed": 493,
+    "known": "次に何が来る？",
+    "target": "Was kommt als nächstes?"
+   },
+   {
+    "seed": 494,
+    "known": "ショーの最初のあとに何が起きる？",
+    "target": "Was passiert nach dem ersten Teil der Show?"
+   },
+   {
+    "seed": 495,
+    "known": "大事なとき。",
+    "target": "Ein wichtiger Moment."
+   },
+   {
+    "seed": 496,
+    "known": "本当に大事なときに負けるつもりはない。",
+    "target": "Ich habe nicht vor, in einem wirklich wichtigen Moment zu verlieren."
+   },
+   {
+    "seed": 497,
+    "known": "眠ったほうがよさそう。",
+    "target": "Ich sollte besser schlafen."
+   },
+   {
+    "seed": 498,
+    "known": "入り口の中で一人で立ってる。",
+    "target": "Ich stehe alleine am Eingang."
+   },
+   {
+    "seed": 499,
+    "known": "ドアを開けて、窓を閉めよう。",
+    "target": "Lass uns die Tür öffnen und das Fenster schließen."
+   },
+   {
+    "seed": 500,
+    "known": "なんで二人の女の子の間に座りたくないの？",
+    "target": "Warum möchtest du nicht zwischen den zwei Mädchen sitzen?"
+   },
+   {
+    "seed": 501,
+    "known": "ケンカせずに一緒に遊んでくれたら。",
+    "target": "Wenn ihr zusammen spielen könntet, ohne zu streiten."
+   },
+   {
+    "seed": 502,
+    "known": "左に曲がって、迷いそうになった。",
+    "target": "Ich bog links ab und hätte mich fast verirrt."
+   },
+   {
+    "seed": 503,
+    "known": "トラブルは嫌だけど、それは私のもの。",
+    "target": "Ich mag keinen Ärger, aber das ist mein Problem."
+   },
+   {
+    "seed": 504,
+    "known": "草の上を走る。",
+    "target": "Ich laufe über das Gras."
+   },
+   {
+    "seed": 505,
+    "known": "置いていかれないように。",
+    "target": "Damit ich nicht zurückgelassen werde."
+   },
+   {
+    "seed": 506,
+    "known": "昔、この辺に住んでた。",
+    "target": "Früher habe ich hier in der Nähe gewohnt."
+   },
+   {
+    "seed": 507,
+    "known": "街に引っ越した。",
+    "target": "Ich bin in die Stadt gezogen."
+   },
+   {
+    "seed": 508,
+    "known": "支払いの心配をしても意味がない。",
+    "target": "Es hat keinen Sinn, sich über die Zahlung Sorgen zu machen."
+   },
+   {
+    "seed": 509,
+    "known": "新しいベッド代を払うって聞いた。",
+    "target": "Ich habe gehört, dass er das neue Bett bezahlen wird."
+   },
+   {
+    "seed": 510,
+    "known": "彼女は安全に停める場所を探しに行った。",
+    "target": "Sie ist gegangen, um einen sicheren Parkplatz zu finden."
+   },
+   {
+    "seed": 511,
+    "known": "ニュースがオフィス全体に届くまで数時間かかった。",
+    "target": "Es hat ein paar Stunden gedauert, bis die Nachricht das ganze Büro erreicht hat."
+   },
+   {
+    "seed": 512,
+    "known": "鍵を取る間、ドアを押さえてくれる？",
+    "target": "Kannst du die Tür halten, während ich den Schlüssel hole?"
+   },
+   {
+    "seed": 513,
+    "known": "頭を上下に動かすと一番痛い。",
+    "target": "Es tut am meisten weh, wenn ich den Kopf auf und ab bewege."
+   },
+   {
+    "seed": 514,
+    "known": "初日に完璧な家を見つけた。",
+    "target": "Ich habe am ersten Tag das perfekte Haus gefunden."
+   },
+   {
+    "seed": 515,
+    "known": "新年の最初の日。",
+    "target": "Der erste Tag des neuen Jahres."
+   },
+   {
+    "seed": 516,
+    "known": "二人とも一人で来た。",
+    "target": "Beide sind alleine gekommen."
+   },
+   {
+    "seed": 517,
+    "known": "でも、一緒に帰った。",
+    "target": "Aber sie sind zusammen nach Hause gegangen."
+   },
+   {
+    "seed": 518,
+    "known": "同じ問題を想像できなかった。",
+    "target": "Ich konnte mir das gleiche Problem nicht vorstellen."
+   },
+   {
+    "seed": 519,
+    "known": "まだ新しい赤ちゃんを見てない。",
+    "target": "Ich habe das neue Baby noch nicht gesehen."
+   },
+   {
+    "seed": 520,
+    "known": "家族全員に起きたかもしれない。",
+    "target": "Es hätte der ganzen Familie passieren können."
+   },
+   {
+    "seed": 521,
+    "known": "ここにいる理由を忘れそうで怖い。",
+    "target": "Ich habe Angst, dass ich vergessen könnte, warum ich hier bin."
+   },
+   {
+    "seed": 522,
+    "known": "本当のことを言うのはバカだったとしよう。",
+    "target": "Nehmen wir an, es war dumm, die Wahrheit zu sagen."
+   },
+   {
+    "seed": 523,
+    "known": "言い訳する代わりに。",
+    "target": "Anstatt Ausreden zu machen."
+   },
+   {
+    "seed": 524,
+    "known": "三、四分でかけ直す。",
+    "target": "Ich rufe in drei oder vier Minuten zurück."
+   },
+   {
+    "seed": 525,
+    "known": "終わったか確認するため。",
+    "target": "Um zu überprüfen, ob es fertig ist."
+   },
+   {
+    "seed": 526,
+    "known": "当てられないのが信じられない。",
+    "target": "Ich kann nicht glauben, dass du es nicht erraten kannst."
+   },
+   {
+    "seed": 527,
+    "known": "あの面白い話を誰が言ったと思う？",
+    "target": "Wer glaubst du, hat diese lustige Geschichte erzählt?"
+   },
+   {
+    "seed": 528,
+    "known": "それは別の部屋に置くべきだと思う。",
+    "target": "Ich glaube, das sollte in ein anderes Zimmer gestellt werden."
+   },
+   {
+    "seed": 529,
+    "known": "みんな、手を上げて。",
+    "target": "Alle, bitte Hände heben."
+   },
+   {
+    "seed": 530,
+    "known": "数えるから。",
+    "target": "Damit ich zählen kann."
+   },
+   {
+    "seed": 531,
+    "known": "誰でも勝てるわけじゃない。",
+    "target": "Es stimmt nicht, dass jeder das Spiel gewinnen kann."
+   },
+   {
+    "seed": 532,
+    "known": "運が良ければ別だけど。",
+    "target": "Es sei denn, sie haben Glück."
+   },
+   {
+    "seed": 533,
+    "known": "彼女は全部は聞かない。",
+    "target": "Sie wird nicht auf jedes Wort hören, das du sagst."
+   },
+   {
+    "seed": 534,
+    "known": "このひどい天気で外に出るのはやめよう。",
+    "target": "Lass uns bei diesem schrecklichen Wetter nicht nach draußen gehen."
+   },
+   {
+    "seed": 535,
+    "known": "彼は間違った仕事を選ばないと約束した。",
+    "target": "Er hat versprochen, nicht den falschen Job zu wählen."
+   },
+   {
+    "seed": 536,
+    "known": "昔は、変なのは悪いと思ってた。",
+    "target": "Ich dachte früher, dass verrückt zu sein schlecht sei."
+   },
+   {
+    "seed": 537,
+    "known": "でも、間違ってた。",
+    "target": "Aber ich lag falsch."
+   },
+   {
+    "seed": 538,
+    "known": "気にしてないように見せたくない。",
+    "target": "Ich möchte nicht so wirken, als ob mir das egal wäre."
+   },
+   {
+    "seed": 539,
+    "known": "でも、もう遅い。",
+    "target": "Aber es wird spät."
+   },
+   {
+    "seed": 540,
+    "known": "車なしで帰っても気にしない。",
+    "target": "Es ist mir egal, wenn du ohne das Auto gehen möchtest."
+   },
+   {
+    "seed": 541,
+    "known": "ゆっくり呼吸するのはいい考え。",
+    "target": "Es ist eine gute Idee, langsam zu atmen."
+   },
+   {
+    "seed": 542,
+    "known": "怒ったときは。",
+    "target": "Immer wenn du wütend bist."
+   },
+   {
+    "seed": 543,
+    "known": "彼女が正しかった。",
+    "target": "Sie hatte recht."
+   },
+   {
+    "seed": 544,
+    "known": "難しいと言った人は正しかった。",
+    "target": "Wer auch immer gesagt hat, es würde schwierig sein, hatte absolut recht."
+   },
+   {
+    "seed": 545,
+    "known": "きれいな服を上に持っていく番。",
+    "target": "Du bist dran, die sauberen Kleider nach oben zu bringen."
+   },
+   {
+    "seed": 546,
+    "known": "犬は汚れて濡れてる。",
+    "target": "Der Hund ist dreckig und nass."
+   },
+   {
+    "seed": 547,
+    "known": "泥で遊んだから。",
+    "target": "Weil er im Schlamm gespielt hat."
+   },
+   {
+    "seed": 548,
+    "known": "今、とても悲しい。",
+    "target": "Im Moment bin ich traurig."
+   },
+   {
+    "seed": 549,
+    "known": "静かにしなきゃいけないから。",
+    "target": "Weil ich ruhig sein muss."
+   },
+   {
+    "seed": 550,
+    "known": "村の端。",
+    "target": "Das Ende des Dorfes."
+   },
+   {
+    "seed": 551,
+    "known": "教会は醜い。",
+    "target": "Die Kirche ist hässlich."
+   },
+   {
+    "seed": 552,
+    "known": "村の反対側の教会は醜い。",
+    "target": "Die Kirche am anderen Ende des Dorfes ist hässlich."
+   },
+   {
+    "seed": 553,
+    "known": "小さな教会はとても醜いと思う。",
+    "target": "Ich finde die kleine Kirche sehr hässlich."
+   },
+   {
+    "seed": 554,
+    "known": "このタオルは乾いてない。",
+    "target": "Dieses Handtuch ist nicht trocken."
+   },
+   {
+    "seed": 555,
+    "known": "もう一枚取りに行く元気がない。",
+    "target": "Und ich bin zu müde, um ein neues zu holen."
+   },
+   {
+    "seed": 556,
+    "known": "夜遅く音楽をかける。",
+    "target": "Sie spielen spät in der Nacht Musik."
+   },
+   {
+    "seed": 557,
+    "known": "あんなに大きな音でかけなければいいのに。",
+    "target": "Ich wünschte, sie würden keine so laute Musik spielen."
+   },
+   {
+    "seed": 558,
+    "known": "もう夜遅い。",
+    "target": "Es ist so spät in der Nacht."
+   },
+   {
+    "seed": 559,
+    "known": "森を通る道、見つけた？",
+    "target": "Hast du den Weg durch den Wald gefunden?"
+   },
+   {
+    "seed": 560,
+    "known": "浜まで下りる。",
+    "target": "Er führt hinunter zum Strand."
+   },
+   {
+    "seed": 561,
+    "known": "速い車でも気にしない。",
+    "target": "Es ist mir egal, ob es ein schnelles Auto ist."
+   },
+   {
+    "seed": 562,
+    "known": "安全に着きたいだけ。",
+    "target": "Ich möchte nur sicher ankommen."
+   },
+   {
+    "seed": 563,
+    "known": "これ以上続けられなかった。",
+    "target": "Ich hätte nicht mehr weitermachen können."
+   },
+   {
+    "seed": 564,
+    "known": "君の助けなしでは無理だった。",
+    "target": "Ich hätte es nicht ohne deine Hilfe geschafft."
+   },
+   {
+    "seed": 565,
+    "known": "もっとよく考えたはず。",
+    "target": "Ich hätte darüber sorgfältiger nachgedacht."
+   },
+   {
+    "seed": 566,
+    "known": "自分の選択だったら、もっと考えた。",
+    "target": "Ich hätte mehr nachgedacht, wenn es meine Entscheidung gewesen wäre."
+   },
+   {
+    "seed": 567,
+    "known": "子どもが遊ぶのを外で見るのは楽しかった。",
+    "target": "Es war wunderschön, Zeit draußen zu verbringen und die Kinder spielen zu sehen."
+   },
+   {
+    "seed": 568,
+    "known": "次に会うとき、良くなってるはず。",
+    "target": "Ich erwarte beim nächsten Treffen eine Verbesserung zu sehen."
+   },
+   {
+    "seed": 569,
+    "known": "いくら払えるか決めた？",
+    "target": "Hast du entschieden, wie viel du bereit bist zu zahlen?"
+   },
+   {
+    "seed": 570,
+    "known": "チケットにいくら払える？",
+    "target": "Wie viel bist du bereit, für dein Ticket zu zahlen?"
+   },
+   {
+    "seed": 571,
+    "known": "それは良い考えだとは思えない。",
+    "target": "Ich bin nicht überzeugt, dass das eine sehr gute Idee wäre."
+   },
+   {
+    "seed": 572,
+    "known": "前に何が起きたか忘れた？",
+    "target": "Hast du vergessen, was letztes Mal passiert ist, als sie uns besucht haben?"
+   },
+   {
+    "seed": 573,
+    "known": "休みを特別にするようなこと。",
+    "target": "Das ist die Art von Sache, die die Ferien sehr besonders macht."
+   },
+   {
+    "seed": 574,
+    "known": "休みはみんなにとって特別。",
+    "target": "Die Ferien sind für alle sehr besonders."
+   },
+   {
+    "seed": 575,
+    "known": "つらかった。",
+    "target": "Es war aufwühlend."
+   },
+   {
+    "seed": 576,
+    "known": "待つのはとてもつらかった。",
+    "target": "Das Warten war sehr aufwühlend."
+   },
+   {
+    "seed": 577,
+    "known": "病院からの連絡を待ってた。",
+    "target": "Wir haben auf die Nachrichten aus dem Krankenhaus gewartet."
+   },
+   {
+    "seed": 578,
+    "known": "もっと暖かい場所。",
+    "target": "Irgendwo wärmer."
+   },
+   {
+    "seed": 579,
+    "known": "何度も試した。",
+    "target": "Wir haben es oft versucht."
+   },
+   {
+    "seed": 580,
+    "known": "子どもを暖かい所に連れて行きたかった。",
+    "target": "Wir wollten die Kinder oft irgendwo ein bisschen wärmer hinbringen."
+   },
+   {
+    "seed": 581,
+    "known": "どんな感じかもっと知りたい。",
+    "target": "Er würde gerne ein bisschen mehr darüber wissen, wie es ist."
+   },
+   {
+    "seed": 582,
+    "known": "ここで育つのはどんな感じ？",
+    "target": "Wie ist es, hier aufzuwachsen?"
+   },
+   {
+    "seed": 583,
+    "known": "この辺はどんな感じ？",
+    "target": "Wie ist es in diesem Teil der Welt?"
+   },
+   {
+    "seed": 584,
+    "known": "毎朝山を見るのはどんな感じ？",
+    "target": "Wie ist es, jeden Morgen aufzuwachen und die Berge zu sehen?"
+   },
+   {
+    "seed": 585,
+    "known": "寝室の窓から山が見える。",
+    "target": "Ich kann die Berge aus meinem Schlafzimmerfenster sehen."
+   },
+   {
+    "seed": 586,
+    "known": "ゆで卵を二十個ほしい。",
+    "target": "Ich möchte zwanzig gekochte Eier."
+   },
+   {
+    "seed": 587,
+    "known": "夕食は卵って言われてた。",
+    "target": "Sie bestand früher darauf, dass wir zum Abendessen Eier aßen."
+   },
+   {
+    "seed": 588,
+    "known": "大人になって家を出たかった。",
+    "target": "Also wollte ich erwachsen werden und von zu Hause ausziehen."
+   },
+   {
+    "seed": 589,
+    "known": "彼女は最後のバスを見たって言った。",
+    "target": "Sie sagte mir, sie habe gerade den letzten Bus gesehen."
+   },
+   {
+    "seed": 590,
+    "known": "駅を出る最後のバスを見た。",
+    "target": "Ich sah den letzten Bus, der vom Bahnhof abfuhr."
+   },
+   {
+    "seed": 591,
+    "known": "店までついて来た。",
+    "target": "Sie folgte mir zu den Geschäften."
+   },
+   {
+    "seed": 592,
+    "known": "大通りを通って。",
+    "target": "Und die Hauptstraße entlang."
+   },
+   {
+    "seed": 593,
+    "known": "どんなに言い争っても、分けなきゃいけなかった。",
+    "target": "Egal wie viel ich diskutiert habe, ich musste trotzdem teilen."
+   },
+   {
+    "seed": 594,
+    "known": "妹とおもちゃを分けた。",
+    "target": "Ich musste mein Spielzeug mit meiner Schwester teilen."
+   },
+   {
+    "seed": 595,
+    "known": "庭で横になりたい。",
+    "target": "Ich muss mich im Garten hinlegen."
+   },
+   {
+    "seed": 596,
+    "known": "少し目を閉じたい。",
+    "target": "Und ich muss für eine Weile die Augen schließen."
+   },
+   {
+    "seed": 597,
+    "known": "もう百回は聞いたと思う。",
+    "target": "Ich vermute, dass er hundert Geschichten darüber gehört hat."
+   },
+   {
+    "seed": 598,
+    "known": "千回は聞いた。",
+    "target": "Er hat tausend Geschichten darüber gehört, was sie gemacht haben."
+   },
+   {
+    "seed": 599,
+    "known": "言ってくれてたら運転したのに。",
+    "target": "Ich wäre gerne gefahren, wenn du mir es gesagt hättest."
+   },
+   {
+    "seed": 600,
+    "known": "疲れてるって言ってくれてたら運転した。",
+    "target": "Ich wäre gefahren, wenn du mir gesagt hättest, wie müde du warst."
+   },
+   {
+    "seed": 601,
+    "known": "どうやって始まったか話してた。",
+    "target": "Wir haben darüber geredet, wie es alles angefangen hat."
+   },
+   {
+    "seed": 602,
+    "known": "最初はどう始まったか。",
+    "target": "Wie es überhaupt angefangen hat."
+   },
+   {
+    "seed": 603,
+    "known": "その時、住む場所がなかった。",
+    "target": "Wir hatten damals nirgendwo zu wohnen."
+   },
+   {
+    "seed": 604,
+    "known": "彼女は泊めてくれると言ってくれた。",
+    "target": "Sie bot an, uns bei sich wohnen zu lassen."
+   },
+   {
+    "seed": 605,
+    "known": "助けが必要だったから。",
+    "target": "Weil wir Hilfe brauchten."
+   },
+   {
+    "seed": 606,
+    "known": "今のことを知ってたら、待ってた。",
+    "target": "Wenn ich damals gewusst hätte, was ich jetzt weiß, hätte ich gewartet."
+   },
+   {
+    "seed": 607,
+    "known": "知ってたら、違うことをしてた。",
+    "target": "Wenn ich es gewusst hätte, hätte ich die Dinge anders gemacht."
+   },
+   {
+    "seed": 608,
+    "known": "それが一番賢いやり方だった。",
+    "target": "Es wäre das Vernünftigste gewesen, was man hätte tun können."
+   },
+   {
+    "seed": 609,
+    "known": "賢いやり方は、聞くことだった。",
+    "target": "Das Vernünftigste wäre gewesen, zu fragen."
+   },
+   {
+    "seed": 610,
+    "known": "彼は仕事を探す必要がある。",
+    "target": "Er muss Arbeit suchen."
+   },
+   {
+    "seed": 611,
+    "known": "別の場所を探す準備はできてた。",
+    "target": "Ich wäre bereit gewesen, woanders zu suchen."
+   },
+   {
+    "seed": 612,
+    "known": "何かを買ってたはず。",
+    "target": "Wir hätten etwas gekauft."
+   },
+   {
+    "seed": 613,
+    "known": "そこに家を買ってたと思う。",
+    "target": "Wir hätten dort wahrscheinlich ein Haus gekauft."
+   },
+   {
+    "seed": 614,
+    "known": "家族が住んでる近く。",
+    "target": "Es ist in der Nähe von wo deine Familie wohnt."
+   },
+   {
+    "seed": 615,
+    "known": "そう言ったのは勇気があったと思う。",
+    "target": "Ich fand es sehr mutig von dir, das zu sagen."
+   },
+   {
+    "seed": 616,
+    "known": "それが間違いだと思ったと言ったのは勇気があった。",
+    "target": "Du warst sehr mutig, zu sagen, was du dachtest."
+   },
+   {
+    "seed": 617,
+    "known": "それは間違いだと思ってた。",
+    "target": "Du dachtest, es war ein Fehler."
+   },
+   {
+    "seed": 618,
+    "known": "あまり長い時間に感じない。",
+    "target": "Es fühlt sich nicht wie eine lange Zeit an."
+   },
+   {
+    "seed": 619,
+    "known": "会ってない時間が長い。",
+    "target": "Es ist lange her, dass wir uns gesehen haben."
+   },
+   {
+    "seed": 620,
+    "known": "最後に会ってから、すごく長い。",
+    "target": "Es ist sehr lange her, dass wir uns zuletzt gesehen haben."
+   },
+   {
+    "seed": 621,
+    "known": "壊れてるって言えなかった。",
+    "target": "Ich hätte nicht gewagt, ihr zu sagen, dass es kaputt war."
+   },
+   {
+    "seed": 622,
+    "known": "子どもが壊したって知ってた。",
+    "target": "Ich wusste, dass die Kinder es kaputt gemacht hatten."
+   },
+   {
+    "seed": 623,
+    "known": "コーヒーとお茶、どっちにする？",
+    "target": "Möchtest du einen Kaffee oder Tee?"
+   },
+   {
+    "seed": 624,
+    "known": "うん、それいい。",
+    "target": "Ja, das wäre toll, danke."
+   },
+   {
+    "seed": 625,
+    "known": "何か飲みたい？",
+    "target": "Möchtest du etwas trinken?"
+   },
+   {
+    "seed": 626,
+    "known": "いや、喉乾いてない。",
+    "target": "Nein, ich habe keinen Durst, danke."
+   },
+   {
+    "seed": 627,
+    "known": "コーヒーできたよ。",
+    "target": "Dein Kaffee ist fertig."
+   },
+   {
+    "seed": 628,
+    "known": "お茶、好き？",
+    "target": "Trinkst du gerne Tee?"
+   },
+   {
+    "seed": 629,
+    "known": "ミルク入りで砂糖なしがいい。",
+    "target": "Ich trinke ihn gerne mit Milch, aber ohne Zucker."
+   },
+   {
+    "seed": 630,
+    "known": "何か飲み物もらえる？",
+    "target": "Kann ich bitte etwas zu trinken haben?"
+   },
+   {
+    "seed": 631,
+    "known": "何がいい？",
+    "target": "Was hätten Sie gerne?"
+   },
+   {
+    "seed": 632,
+    "known": "水。",
+    "target": "Ein Glas Wasser."
+   },
+   {
+    "seed": 633,
+    "known": "大きな水がいい。",
+    "target": "Ein großes Glas Wasser wäre gut."
+   },
+   {
+    "seed": 634,
+    "known": "それがほしい。",
+    "target": "Ich hätte gerne eines davon."
+   },
+   {
+    "seed": 635,
+    "known": "あれはジェーンのバッグ。",
+    "target": "Das ist Janes Tasche."
+   },
+   {
+    "seed": 636,
+    "known": "あれはジェーンのバッグだと思う。",
+    "target": "Ich glaube, das ist Janes Tasche."
+   },
+   {
+    "seed": 637,
+    "known": "彼女のバッグはどこ？",
+    "target": "Wo ist ihre Tasche?"
+   },
+   {
+    "seed": 638,
+    "known": "考えてる。",
+    "target": "Ich versuche nachzudenken."
+   },
+   {
+    "seed": 639,
+    "known": "ご一緒します、先生。",
+    "target": "Mit Ihnen, mein Herr."
+   },
+   {
+    "seed": 640,
+    "known": "赤いやつ。",
+    "target": "Es ist die rote."
+   },
+   {
+    "seed": 641,
+    "known": "あの椅子の上の赤いやつだと思う。",
+    "target": "Ich glaube, das rote auf dem Stuhl dort."
+   },
+   {
+    "seed": 642,
+    "known": "ご気分はいかがですか、奥様。",
+    "target": "Wie geht es Ihnen, meine Dame?"
+   },
+   {
+    "seed": 643,
+    "known": "何になさいますか、先生。",
+    "target": "Was darf es sein, mein Herr?"
+   },
+   {
+    "seed": 644,
+    "known": "もう一度言っていただけますか、先生。",
+    "target": "Könnten Sie das noch einmal sagen, mein Herr?"
+   },
+   {
+    "seed": 645,
+    "known": "お手伝いできます、奥様。",
+    "target": "Ich kann Ihnen helfen, meine Dame."
+   },
+   {
+    "seed": 646,
+    "known": "何かされていますね、先生。",
+    "target": "Sie tun etwas, mein Herr."
+   },
+   {
+    "seed": 647,
+    "known": "お話しできますね、奥様。",
+    "target": "Wir können sprechen, meine Dame."
+   },
+   {
+    "seed": 648,
+    "known": "今おっしゃったこと。",
+    "target": "Was Sie gerade gesagt haben."
+   },
+   {
+    "seed": 649,
+    "known": "ご準備はよろしいですか、先生。",
+    "target": "Sind Sie bereit, mein Herr?"
+   },
+   {
+    "seed": 650,
+    "known": "出かけますか、奥様。",
+    "target": "Gehen Sie aus, meine Dame?"
+   },
+   {
+    "seed": 651,
+    "known": "どう思われますか、奥様。",
+    "target": "Was meinen Sie, meine Dame?"
+   },
+   {
+    "seed": 652,
+    "known": "何が必要ですか、先生。",
+    "target": "Was brauchen Sie, mein Herr?"
+   },
+   {
+    "seed": 653,
+    "known": "お気になりませんか、奥様。",
+    "target": "Macht es Ihnen etwas aus, meine Dame?"
+   },
+   {
+    "seed": 654,
+    "known": "お手伝いできるか分かりません、先生。",
+    "target": "Ich weiß nicht, ob ich Ihnen helfen kann, mein Herr."
+   },
+   {
+    "seed": 655,
+    "known": "とてもよくやっておられます、奥様。",
+    "target": "Sie machen das sehr gut, meine Dame."
+   },
+   {
+    "seed": 657,
+    "known": "皆さん、いかがですか。",
+    "target": "Wie geht es Ihnen allen?"
+   },
+   {
+    "seed": 658,
+    "known": "皆さん、どうしますか。",
+    "target": "Was werden Sie alle tun?"
+   },
+   {
+    "seed": 659,
+    "known": "もう一度言ってください。",
+    "target": "Bitte sagen Sie es noch einmal."
+   },
+   {
+    "seed": 660,
+    "known": "皆さん、お手伝いできます。",
+    "target": "Ich kann Ihnen allen helfen."
+   },
+   {
+    "seed": 661,
+    "known": "皆さん、何かされています。",
+    "target": "Sie alle tun etwas."
+   },
+   {
+    "seed": 662,
+    "known": "皆さん、話せますね。",
+    "target": "Wir alle können sprechen."
+   },
+   {
+    "seed": 663,
+    "known": "今おっしゃったこと。",
+    "target": "Was Sie alle gerade gesagt haben."
+   },
+   {
+    "seed": 664,
+    "known": "準備はいいですか、皆さん。",
+    "target": "Sind Sie alle bereit?"
+   },
+   {
+    "seed": 665,
+    "known": "出かけますか、皆さん。",
+    "target": "Gehen Sie alle aus?"
+   },
+   {
+    "seed": 666,
+    "known": "どう思いますか、皆さん。",
+    "target": "Was meinen Sie alle?"
+   },
+   {
+    "seed": 667,
+    "known": "気にしませんか、皆さん。",
+    "target": "Macht es Ihnen allen etwas aus?"
+   },
+   {
+    "seed": 668,
+    "known": "皆さん、行けるといいですね。",
+    "target": "Ich hoffe, Sie alle können kommen."
+   }
+  ]
+ },
+ "counts": {
+  "planned": 42,
+  "no_home": 46,
+  "variant_zut": 10,
+  "variant_form": 12,
+  "not_built": 364
+ }
+}
