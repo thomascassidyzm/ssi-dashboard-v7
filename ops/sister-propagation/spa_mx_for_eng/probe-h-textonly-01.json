@@ -1,0 +1,172 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01B01",
+   "expect": {
+    "known_text": "to feel",
+    "target_text": "sentirse"
+   },
+   "set": {
+    "known_text": "easier",
+    "target_text": "más fácil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01B02",
+   "expect": {
+    "known_text": "to feel easier",
+    "target_text": "sentirse más fácil"
+   },
+   "set": {
+    "known_text": "to get easier",
+    "target_text": "ser más fácil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01B03",
+   "expect": {
+    "known_text": "starting to feel",
+    "target_text": "empezando a sentirse"
+   },
+   "set": {
+    "known_text": "starting to get easier",
+    "target_text": "empezando a ser más fácil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U01",
+   "expect": {
+    "known_text": "it's starting to feel",
+    "target_text": "está empezando a sentirse"
+   },
+   "set": {
+    "known_text": "it's starting to get easier",
+    "target_text": "está empezando a ser más fácil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U02",
+   "expect": {
+    "known_text": "starting to feel better",
+    "target_text": "empezando a sentirse mejor"
+   },
+   "set": {
+    "known_text": "starting to get easier now",
+    "target_text": "empezando a ser más fácil ahora"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U04",
+   "expect": {
+    "known_text": "I think it's starting to feel different now",
+    "target_text": "creo que está empezando a sentirse diferente ahora"
+   },
+   "set": {
+    "known_text": "I think it's starting to get easier now",
+    "target_text": "creo que está empezando a ser más fácil ahora"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U05",
+   "expect": {
+    "known_text": "it's starting to feel easier to have a conversation",
+    "target_text": "está empezando a sentirse más fácil tener una conversación"
+   },
+   "set": {
+    "known_text": "it's starting to get easier to have a conversation",
+    "target_text": "está empezando a ser más fácil tener una conversación"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U06",
+   "expect": {
+    "known_text": "that is why it's starting to feel easier to use new words",
+    "target_text": "por eso está empezando a sentirse más fácil usar palabras nuevas"
+   },
+   "set": {
+    "known_text": "that is why it's starting to get easier to use new words",
+    "target_text": "por eso está empezando a ser más fácil usar palabras nuevas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U07",
+   "expect": {
+    "known_text": "it's definitely starting to feel better when we speak Spanish",
+    "target_text": "definitivamente está empezando a sentirse mejor cuando hablamos español"
+   },
+   "set": {
+    "known_text": "it's definitely starting to get easier when we speak Spanish",
+    "target_text": "definitivamente está empezando a ser más fácil cuando hablamos español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L02U07",
+   "expect": {
+    "known_text": "it's starting to feel easier and I'm excited about how it's going",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va"
+   },
+   "set": {
+    "known_text": "it's starting to get easier and I'm excited about how it's going",
+    "target_text": "está empezando a ser más fácil y estoy emocionado con cómo va"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0123L01U04",
+   "expect": {
+    "known_text": "I think it's starting to feel easier",
+    "target_text": "pienso que está empezando a sentirse más fácil"
+   },
+   "set": {
+    "known_text": "I think it's starting to get easier",
+    "target_text": "pienso que está empezando a ser más fácil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0123L02U06",
+   "expect": {
+    "known_text": "I reckon it's starting to feel easier now",
+    "target_text": "pienso que está empezando a sentirse más fácil ahora"
+   },
+   "set": {
+    "known_text": "I reckon it's starting to get easier now",
+    "target_text": "pienso que está empezando a ser más fácil ahora"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 122,
+   "expect": {
+    "known_text": "It's starting to feel easier and I'm excited about how it's going",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va"
+   },
+   "set": {
+    "known_text": "It's starting to get easier and I'm excited about how it's going",
+    "target_text": "está empezando a ser más fácil y estoy emocionado con cómo va"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0122L01",
+   "expect": {
+    "known_text": "to feel easier",
+    "target_text": "sentirse más fácil"
+   },
+   "set": {
+    "known_text": "to get easier",
+    "target_text": "ser más fácil"
+   }
+  }
+ ]
+}
