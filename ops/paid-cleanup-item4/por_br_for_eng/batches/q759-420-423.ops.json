@@ -201,14 +201,29 @@
   },
   {
    "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0420L01U02",
+   "expect": {
+    "known_text": "they still don't need to ask",
+    "target_text": "eles ainda não precisam perguntar"
+   },
+   "set": {
+    "known_text": "they don't need to ask anything",
+    "target_text": "eles não precisam perguntar nada",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
    "phrase_id": "por_br_for_eng:S0420L01U04",
    "expect": {
     "known_text": "yes, they still don't need to ask",
     "target_text": "sim, eles ainda não precisam perguntar"
    },
    "set": {
-    "known_text": "he said that they don't need to ask",
-    "target_text": "ele disse que eles não precisam perguntar",
+    "known_text": "it's true that they don't need to ask",
+    "target_text": "é verdade que eles não precisam perguntar",
     "decomposition": null,
     "word_count": 41,
     "lego_position": "end"

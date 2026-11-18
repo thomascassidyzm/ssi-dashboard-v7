@@ -1,0 +1,140 @@
+{
+ "seed": 200,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "वेळेत पूर्ण करायला",
+     "to finish in time"
+    ],
+    "B03": [
+     "मला वेळेत पूर्ण करायचं आहे",
+     "I want to finish in time"
+    ],
+    "B04": [
+     "वेळेत तयार",
+     "ready in time"
+    ],
+    "U01": [
+     "मी वेळेत पूर्ण करणार आहे",
+     "I'm going to finish in time"
+    ],
+    "U02": [
+     "मला वेळेत तयार व्हायचं आहे",
+     "I want to be ready in time"
+    ],
+    "U03": [
+     "कारण मला वेळेत पूर्ण करायचं आहे",
+     "because I want to finish in time"
+    ],
+    "U04": [
+     "मला वाटतं की मी वेळेत तयार असेन",
+     "I think that I'm going to be ready in time"
+    ],
+    "U05": [
+     "मी वेळेत पूर्ण करेन का याची मला खात्री नाही",
+     "I'm not sure if I'm going to finish in time"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "ते म्हणतात ते खरं आहे",
+     "they say it's true"
+    ],
+    "B04": [
+     "ते म्हणतात ते रंजक आहे",
+     "they say it's interesting"
+    ],
+    "U01": [
+     "ते म्हणतात त्यांना मदत करायची आहे",
+     "they say they want to help"
+    ],
+    "U02": [
+     "कारण ते म्हणतात ते खरं आहे",
+     "because they say it's true"
+    ],
+    "U03": [
+     "ते म्हणतात त्यांना परत यायचं आहे",
+     "they say they want to come back"
+    ],
+    "U04": [
+     "ते म्हणतात ते खूप उपयुक्त आहे",
+     "they say it's very helpful"
+    ],
+    "U05": [
+     "ते म्हणतात ते खरं नाही",
+     "they say it's not true"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ते म्हणतात ते उपयुक्त आहे",
+     "they say it's useful"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "आम्ही आज सगळं पूर्ण करतो",
+     "we finish everything today"
+    ],
+    "B04": [
+     "आम्ही उद्या सगळं पूर्ण करतो",
+     "we finish everything tomorrow"
+    ],
+    "U01": [
+     "मला वाटतं की आम्ही सगळं वेळेत पूर्ण करतो",
+     "I think that we finish everything in time"
+    ],
+    "U02": [
+     "कारण आम्ही सगळं वेळेत पूर्ण करतो",
+     "because we finish everything in time"
+    ],
+    "U03": [
+     "आम्ही आज संध्याकाळी सगळं पूर्ण करतो",
+     "we finish everything this evening"
+    ],
+    "U04": [
+     "ते म्हणतात आम्ही सगळं वेळेत पूर्ण करतो",
+     "they say we finish everything in time"
+    ],
+    "U05": [
+     "आम्ही रविवारी सगळं पूर्ण करतो",
+     "we finish everything on Sunday"
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B03": [
+     "ते खरं आहे याची त्यांना खात्री करायची आहे",
+     "they want to make sure that it's true"
+    ],
+    "B04": [
+     "आम्ही तयार आहोत याची त्यांना खात्री करायची आहे",
+     "they want to make sure that we're ready"
+    ],
+    "U02": [
+     "आम्ही आज सगळं पूर्ण करतो याची त्यांना खात्री करायची आहे",
+     "they want to make sure that we finish everything today"
+    ],
+    "U03": [
+     "आम्ही उद्या सगळं पूर्ण करतो याची त्यांना खात्री करायची आहे",
+     "they want to make sure that we finish everything tomorrow"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "मला वाटतं आम्ही तयार आहोत याची त्यांना खात्री करायची आहे",
+     "I think they want to make sure that we're ready"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
