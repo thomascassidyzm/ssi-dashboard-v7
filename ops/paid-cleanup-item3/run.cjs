@@ -206,9 +206,15 @@ async function link(c, file, apply) {
     ops.push({ op: 'audio.link', target: 'phrase', phrase_id: `${c}:${x.id}`, slot: 'known', audio_id: a.audioId, expect: { known_text: x.live } });
   }
   if (!ops.length) return console.log(`${c} ${path.basename(file)} link: nothing to link`);
-  const r = signed('POST', `/api/admin/course-edit/${c}/edit-batch`, { ops, apply: !!apply, note: `paid cleanup item 3: new known clips linked (cs #699·AI)` });
-  const f = outFile(c, file, apply ? 'link-apply' : 'link-dry'); fs.writeFileSync(f, JSON.stringify(r, null, 1));
-  console.log(`${c} ${path.basename(file)} link ${apply ? 'APPLY' : 'dry'}: ok=${r.ok} event=${r.event_id || '-'} ops=${ops.length} changed=${(r.results || []).filter((x) => x.changed).length} ${r.error || ''} ${r.code || ''}`);
+  const all = [];
+  for (let i = 0; i < ops.length; i += 50) { // ≤50 per request, 2 s apart (#726·AI)
+    if (i) execFileSync('sleep', ['2']);
+    const r = signed('POST', `/api/admin/course-edit/${c}/edit-batch`, { ops: ops.slice(i, i + 50), apply: !!apply, note: `paid cleanup item 3: new known clips linked (cs #699·AI, resumed #726·AI)` });
+    all.push(r);
+    console.log(`${c} ${path.basename(file)} link ${apply ? 'APPLY' : 'dry'} [${i}..): ok=${r.ok} event=${r.event_id || '-'} changed=${(r.results || []).filter((x) => x.changed).length} ${r.error || ''} ${r.code || ''}`);
+    if (!r.ok) break;
+  }
+  const f = outFile(c, file, apply ? 'link-apply' : 'link-dry'); fs.writeFileSync(f, JSON.stringify(all.length === 1 ? all[0] : all, null, 1));
 }
 
 (async () => {
