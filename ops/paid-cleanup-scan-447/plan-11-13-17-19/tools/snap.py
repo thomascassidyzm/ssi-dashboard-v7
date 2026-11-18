@@ -29,7 +29,9 @@ def find(course, known=None, target=None, sub=False):
     return out
 
 def phrases(course, lego_id):
-    return [p for p in snap(course)['phrases'] if p['lego_id'] == lego_id]
+    # snapshot phrase rows carry seed_number + lego_index (their lego_id column is not the S0001L02 label)
+    n, i = int(lego_id[1:5]), int(lego_id[6:8])
+    return [p for p in snap(course)['phrases'] if p['seed_number'] == n and p['lego_index'] == i]
 
 def live(course):
     f = os.path.join(HERE, '..', 'data', 'live', f'{course}.json')

@@ -32,7 +32,7 @@ POPTY = 'http://localhost:3470'
 def norm(t):
     t = unicodedata.normalize('NFC', t or '').lower()
     t = re.sub(r"[’‘`]", "'", t)
-    t = re.sub(r"[\.,!?¿¡;:\"“”«»。，！？、；：（）()\[\]…—–\-]+", " ", t)
+    t = re.sub(r"[\.,!?¿¡;:\"“”«»。，！？、；：（）()\[\]…—–\-।॥؟،۔]+", " ", t)  # cs #784: + danda, Arabic/Urdu marks
     return re.sub(r'\s+', ' ', t).strip()
 
 
