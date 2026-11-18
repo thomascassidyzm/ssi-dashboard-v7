@@ -73,6 +73,11 @@
      "u",
      "I'm going to try to explain what I mean",
      "我要试试解释我的意思"
+    ],
+    [
+     "u",
+     "I'm trying to explain what I mean",
+     "我试试解释我的意思"
     ]
    ],
    "id": "S0008L02",
@@ -149,6 +154,13 @@
      "can't",
      "不能"
     ]
+   ],
+   "add": [
+    [
+     "u",
+     "I'm not sure now if I can speak Chinese",
+     "我现在不确定我能不能说中文"
+    ]
    ]
   },
   {
@@ -213,6 +225,13 @@
      "speak",
      "说"
     ]
+   ],
+   "add": [
+    [
+     "b",
+     "I can speak too today",
+     "今天我也能说"
+    ]
    ]
   },
   {
@@ -240,6 +259,16 @@
      "u",
      "do you want to speak Chinese all day?",
      "你想一整天都说中文吗？"
+    ],
+    [
+     "b",
+     "I can speak Chinese all day",
+     "我能一整天都说中文"
+    ],
+    [
+     "u",
+     "I hope you can speak Chinese all day",
+     "我希望你能一整天都说中文"
     ]
    ],
    "id": "S0014L02",
@@ -340,6 +369,13 @@
      "together",
      "一起"
     ]
+   ],
+   "add": [
+    [
+     "u",
+     "he wants to come back with everyone else",
+     "他想和别人一起回来"
+    ]
    ]
   },
   {
@@ -404,6 +440,13 @@
      "name",
      "名字"
     ]
+   ],
+   "add": [
+    [
+     "b",
+     "why learn her name?",
+     "为什么学她的名字？"
+    ]
    ]
   },
   {
@@ -436,13 +479,23 @@
     ],
     [
      "u",
-     "I hope I can remember easily",
-     "我希望我能容易记住"
+     "she can't remember Chinese easily",
+     "她不容易记住中文"
+    ],
+    [
+     "b",
+     "she can't remember easily",
+     "她不容易记住"
     ],
     [
      "u",
-     "she can't remember Chinese easily",
-     "她不容易记住中文"
+     "you can't remember his name easily",
+     "你不容易记住他的名字"
+    ],
+    [
+     "u",
+     "we can't remember easily",
+     "我们不容易记住"
     ]
    ],
    "knock": "S0483L02 \"easy | 容易\" is not-new on this LEGO; it loses its pair (L31) and is re-judged at seed 483.",
@@ -464,10 +517,7 @@
      "我不容易记住"
     ],
     "U03": "del",
-    "U04": [
-     "I might not remember easily",
-     "我可能不容易记住"
-    ],
+    "U04": "del",
     "U05": "del",
     "U06": "del",
     "U07": "del",
@@ -501,11 +551,6 @@
     ],
     [
      "b",
-     "ask before I go",
-     "在我走之前问"
-    ],
-    [
-     "b",
      "explain before I go",
      "在我走之前解释"
     ],
@@ -516,11 +561,6 @@
     ],
     [
      "u",
-     "I want to ask you before I go",
-     "我想在我走之前问你"
-    ],
-    [
-     "u",
      "he wants to come back before I go",
      "他想在我走之前回来"
     ],
@@ -528,6 +568,21 @@
      "u",
      "I hope to practise before I go",
      "我希望在我走之前练习"
+    ],
+    [
+     "b",
+     "practise before I go",
+     "在我走之前练习"
+    ],
+    [
+     "u",
+     "I want to learn her name before I go",
+     "我想在我走之前学她的名字"
+    ],
+    [
+     "u",
+     "can you explain before I go?",
+     "你能在我走之前解释吗？"
     ]
    ],
    "knock": "在 = \"be here/at\" phrases elsewhere lean on this LEGO; \"at | 在\" stays a component (K29). Census below.",
@@ -582,14 +637,19 @@
      "你快要走"
     ],
     [
-     "u",
-     "I like feeling as if I'm nearly ready to go",
-     "我喜欢快要走的感觉"
+     "b",
+     "I'm nearly ready to go now",
+     "我现在快要走"
     ],
     [
      "u",
-     "I'm not sure if he's nearly ready to go",
-     "我不确定他是不是快要走"
+     "but I'm nearly ready to go",
+     "但是我快要走"
+    ],
+    [
+     "u",
+     "today I'm nearly ready to go",
+     "今天我快要走"
     ]
    ],
    "id": "S0026L02",
@@ -640,6 +700,16 @@
      "b",
      "don't take too much time",
      "不花太多时间"
+    ],
+    [
+     "b",
+     "want to take too much time",
+     "想花太多时间"
+    ],
+    [
+     "b",
+     "might take too much time",
+     "可能花太多时间"
     ]
    ],
    "id": "S0027L02",
@@ -718,23 +788,28 @@
     ],
     [
      "u",
-     "my Chinese is better now",
-     "我现在的中文更好"
-    ],
-    [
-     "u",
      "I hope my Chinese can be better",
      "我希望我的中文能更好"
     ],
     [
-     "u",
-     "this way is better",
-     "这样更好"
+     "b",
+     "your Chinese is better",
+     "你的中文更好"
     ],
     [
      "u",
-     "her Chinese is better than before",
-     "她的中文比以前更好"
+     "her Chinese is better now",
+     "她的中文现在更好"
+    ],
+    [
+     "u",
+     "I hope your Chinese can be better",
+     "我希望你的中文能更好"
+    ],
+    [
+     "u",
+     "his Chinese is a little better now",
+     "他的中文现在更好一点"
     ]
    ],
    "knock": "S0291L01 \"better | 更好\" (new) becomes a duplicate of this LEGO and should go not-new (planned at 291 if flagged; otherwise listed as a knock-on).",
@@ -743,10 +818,7 @@
    "basket": {
     "B01": "del",
     "B02": "del",
-    "B03": [
-     "even better",
-     "更好"
-    ],
+    "B03": "del",
     "U01": "del",
     "U02": "del",
     "U03": [
@@ -856,11 +928,6 @@
      "现在给我看"
     ],
     [
-     "b",
-     "show me this",
-     "给我看这个"
-    ],
-    [
      "u",
      "did you want to show me something?",
      "你想给我看点什么吗？"
@@ -879,6 +946,16 @@
      "u",
      "I hope you can show me tomorrow",
      "我希望你明天能给我看"
+    ],
+    [
+     "b",
+     "show me tomorrow",
+     "明天给我看"
+    ],
+    [
+     "u",
+     "why don't you want to show me?",
+     "你为什么不想给我看？"
     ]
    ],
    "knock": "S0140L01 \"show me | 给我看\" (new) becomes a duplicate and should go not-new; S0301L01 \"to give | 给\" (not-new on this LEGO) loses its pair (L31, handled at 301). 给 = give and 看 = look stay as components (K29).",

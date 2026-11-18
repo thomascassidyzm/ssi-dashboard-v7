@@ -168,5 +168,41 @@ D('S0032L02', 'grow', known='something', target='点什么', is_new=False, comps
 D('S0036L01', 'seed', seed_known="we don't want to interrupt this story",
   why='这个故事 is "this story"; "this | 这个" is the course\'s only teaching of 这个 (13 rows). Editing the English seed keeps it. KAI: seed edit.')
 
+# ---- validator-floor + taught-words fixes (successor of #714·AI, 18 Nov evening). tools/plan.py now mirrors the
+# course-builder validator (build 3+/use 5+ not counting a bare-LEGO row; every target chunk taught by this seed) and named
+# these rows; each fix below uses only LEGOs/components taught by its seed.
+def FIX(id, add=(), drop_add=(), b=None):
+    d = next(x for x in OUT if x['id'] == id)
+    d['add'] = [a for a in d.get('add', []) if a[2] not in drop_add] + list(add)
+    for k, v in (b or {}).items():
+        d.setdefault('basket', {})[k] = 'keep' if v == 'k' else 'del' if v == 'd' else list(v)
+
+
+FIX('S0008L02', add=[('u', "I'm trying to explain what I mean", '我试试解释我的意思')])
+FIX('S0010L03', add=[('u', "I'm not sure now if I can speak Chinese", '我现在不确定我能不能说中文')])
+FIX('S0011L03', add=[('b', 'I can speak too today', '今天我也能说')])
+FIX('S0014L02', add=[('b', 'I can speak Chinese all day', '我能一整天都说中文'), ('u', 'I hope you can speak Chinese all day', '我希望你能一整天都说中文')])
+FIX('S0016L03', add=[('u', 'he wants to come back with everyone else', '他想和别人一起回来')])
+FIX('S0021L02', add=[('b', 'why learn her name?', '为什么学她的名字？')])
+# U04 and U09 would both read "I might not remember easily | 我可能不容易记住" (U09 is the seed copy): U04 goes.
+FIX('S0024L03', b={'U04': 'd'}, drop_add=['我希望我能容易记住'],
+    add=[('b', "she can't remember easily", '她不容易记住'), ('u', "you can't remember his name easily", '你不容易记住他的名字'),
+         ('u', "we can't remember easily", '我们不容易记住')])
+# 问 "to ask" is first taught at seed 30.
+FIX('S0025L01', drop_add=['在我走之前问', '我想在我走之前问你'],
+    add=[('b', 'practise before I go', '在我走之前练习'), ('u', 'I want to learn her name before I go', '我想在我走之前学她的名字'),
+         ('u', 'can you explain before I go?', '你能在我走之前解释吗？')])
+# 的 alone and 是不是 are never taught: the seed copy 我喜欢快要走的感觉 is not this LEGO's to drill (it is the seed).
+FIX('S0026L02', drop_add=['我喜欢快要走的感觉', '我不确定他是不是快要走'],
+    add=[('b', "I'm nearly ready to go now", '我现在快要走'), ('u', "but I'm nearly ready to go", '但是我快要走'),
+         ('u', "today I'm nearly ready to go", '今天我快要走')])
+FIX('S0027L02', add=[('b', 'want to take too much time', '想花太多时间'), ('b', 'might take too much time', '可能花太多时间')])
+# 的 alone, 这样 and 比以前 are untaught at 29; B03 "even better" was a bare LEGO row under a second gloss: it goes.
+FIX('S0029L02', b={'B03': 'd'}, drop_add=['我现在的中文更好', '这样更好', '她的中文比以前更好'],
+    add=[('b', 'your Chinese is better', '你的中文更好'), ('u', 'her Chinese is better now', '她的中文现在更好'),
+         ('u', 'I hope your Chinese can be better', '我希望你的中文能更好'), ('u', 'his Chinese is a little better now', '他的中文现在更好一点')])
+# 这个 is untaught at 32.
+FIX('S0032L01', drop_add=['给我看这个'], add=[('b', 'show me tomorrow', '明天给我看'), ('u', "why don't you want to show me?", '你为什么不想给我看？')])
+
 json.dump({'course': 'zho_for_eng', 'legos': OUT}, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'zho_for_eng.json'), 'w'), ensure_ascii=False, indent=1)
 print(len(OUT), 'decisions')
