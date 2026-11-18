@@ -1,0 +1,47 @@
+{
+ "seed": 569,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "શું તમે નક્કી કર્યું છે કે તે શું કરવું જોઈએ?",
+     "have you decided what he should do?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "હું જાણતો નથી કે તમે કેટલું માગો છો",
+     "I don't know how much you want",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "શું તમે નક્કી કર્યું છે કે તમારે કેટલું જોઈએ?",
+     "have you decided how much you need?",
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "હું જાણતો નથી કે તમે કેટલું ચૂકવવા તૈયાર છો",
+     "I don't know how much you are willing to pay",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

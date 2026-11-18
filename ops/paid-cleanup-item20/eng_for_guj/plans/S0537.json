@@ -1,0 +1,39 @@
+{
+ "seed": 537,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "હું વિચારતો હતો કે પાગલ હોવું ખરાબ છે પણ હું ખોટો હતો",
+     "I used to think that being crazy was bad but I was wrong",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "હું થાકેલો હતો પણ હું ખુશ હતો",
+     "I was tired but I was happy",
+     null,
+     "m"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "મને ખાતરી છે કે હું ખોટો હતો",
+     "I'm sure I was wrong",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0537L01B01": "ખોટો|the known wording of this seed's own later LEGO, which the English row already uses"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,37 @@
+{
+ "seed": 185,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "તમે તેઓને પબમાં ભૂલી ગયા",
+     "you left them in the pub",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "કામ પર મળવું",
+     "to meet at work",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "કામ પર બોલવું",
+     "to speak at work",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,39 @@
+{
+ "seed": 468,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "મને લાગે છે કે તે મોટું જગત છે",
+     "I think it's a big world",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "મને ખાતરી છે કે તે મોટું જગત છે",
+     "I'm sure it's a big world",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "મેં સાંભળ્યું કે તે મોટું જગત છે",
+     "I heard that it's a big world",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0468L01B01": "જગત|the known wording of this seed's own later LEGO, which the English row already uses"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

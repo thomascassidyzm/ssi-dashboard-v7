@@ -1,0 +1,37 @@
+{
+ "seed": 262,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "તો એ માણસ કોણ હતો?",
+     "so who was that man?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "તમે જે માણસ સાથે વાત કરતા હતા એ કોણ હતો?",
+     "who was that man you were talking to?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "તો તમે જે માણસ સાથે વાત કરતા હતા એ કોણ હતો?",
+     "so who was that man you were talking to?",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

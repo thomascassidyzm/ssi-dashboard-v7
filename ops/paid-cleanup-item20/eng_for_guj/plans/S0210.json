@@ -1,0 +1,41 @@
+{
+ "seed": 210,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "તેઓ સમજે છે કે તે સાચું છે",
+     "they think that it's true",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "અમારે સત્યની ચર્ચા કરવી જોઈએ",
+     "we need to discuss the truth",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "અમારે એ સમસ્યાની ચર્ચા કરવી જોઈએ",
+     "we need to discuss the problem",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0210L02B01": "સત્યની|genitive of taught સત્ય",
+  "S0210L03B01": "સમસ્યાની|genitive of the LEGO's સમસ્યા"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

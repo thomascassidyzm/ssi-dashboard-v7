@@ -1,0 +1,47 @@
+{
+ "seed": 540,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "જો તમે જવા ઇચ્છો તો મને વાંધો નથી",
+     "I don't mind if you want to leave",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "જો તમે જવા ઇચ્છો તો હું તૈયાર થઈ જઈશ",
+     "I'll be ready if you want to leave",
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "જો તમે જવા ઇચ્છો તો હું તમને પાછો ફોન કરીશ",
+     "I'll call you back if you want to leave",
+     null,
+     null
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "જો તમે જવા ઇચ્છો તો મને જરાય વાંધો નથી",
+     "I don't mind at all if you want to leave",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

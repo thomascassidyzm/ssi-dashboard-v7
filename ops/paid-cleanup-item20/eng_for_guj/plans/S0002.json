@@ -1,0 +1,45 @@
+{
+ "seed": 2,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "હું હવે બોલવાની કોશિશ કરી રહ્યો છું",
+     "I'm trying to speak now",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "હું તમારી સાથે બોલવાની કોશિશ કરી રહ્યો છું",
+     "I'm trying to speak with you",
+     null,
+     "m"
+    ]
+   ]
+  },
+  "L02": {
+   "insert": [
+    [
+     "build",
+     "હું શીખવા માગું છું",
+     "I want to learn",
+     null,
+     null
+    ],
+    [
+     "build",
+     "હું હવે શીખવા માગું છું",
+     "I want to learn now",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
