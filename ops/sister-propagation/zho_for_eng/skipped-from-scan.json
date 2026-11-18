@@ -1,0 +1,59 @@
+[
+ {
+  "row": "S0005L01U03",
+  "verdict": "KNOWN",
+  "why": "KNOWN d/162f9caf: approved #545 edit refused by the anchor check (splits LEGO 我要) → 我现在要说中文"
+ },
+ {
+  "row": "S0044L02U06",
+  "verdict": "NOT A DEFECT",
+  "why": "negated \"don't need to … now\": natural as it is"
+ },
+ {
+  "row": "S0045L01U06",
+  "verdict": "NOT A DEFECT",
+  "why": "\"before tomorrow\" is a deadline phrase; natural after the modal"
+ },
+ {
+  "row": "seed:168",
+  "verdict": "NOT A DEFECT",
+  "why": "晚点 \"a bit later\" after 能 is natural colloquial Chinese; and it is a seed (S15)"
+ },
+ {
+  "row": "S0168L02U04",
+  "verdict": "NOT A DEFECT",
+  "why": "as seed 168"
+ },
+ {
+  "row": "S0168L02U09",
+  "verdict": "NOT A DEFECT",
+  "why": "copy of seed 168"
+ },
+ {
+  "row": "S0348L01U05",
+  "verdict": "NOT A DEFECT",
+  "why": "将要 is not one of the fixed modals; reads naturally"
+ },
+ {
+  "row": "S0285L01U04",
+  "verdict": "KNOWN",
+  "why": "KNOWN d/c5f74eae K18 (seed 285 会说 + manner)"
+ },
+ {
+  "row": "S0542L01U02",
+  "verdict": "NOT A DEFECT",
+  "why": "想这件事 = \"think about it\" (想 + object), not the \"I think that\" frame"
+ },
+ {
+  "row": "S0149L03U04",
+  "why": "很快 'soon' after the modal is standard (我应该很快离开); scan's reorder not needed"
+ },
+ {
+  "row": "S0255L01U04",
+  "why": "same: 很快 after the modal is standard"
+ },
+ {
+  "row": "S0176L01U02",
+  "why": "render route refused 你明年能来吗？ (EXISTS_IN_LANGUAGE); left as is"
+ }
+]

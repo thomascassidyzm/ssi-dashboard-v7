@@ -1,0 +1,813 @@
+[
+ {
+  "batch": 0,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0210L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0210L01U03",
+      "seed_number": 210,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我们能今天讨论这个吗？",
+      "target_text_roman": "wǒmen néng jīntiān tǎolùn zhège ma?",
+      "known_text": "can we discuss this today?",
+      "known_audio_id": "c505e3cc-40ab-4a5a-9d02-76489f109621",
+      "target1_audio_id": "f23e313e-9be1-46f3-bf20-a707493e93a3",
+      "target2_audio_id": "5ea352b8-de08-4036-9e66-41b97ac74def",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0210L01U03",
+      "seed_number": 210,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我们今天能讨论这个吗？",
+      "target_text_roman": "wǒmen jīntiān néng tǎolùn zhège ma?",
+      "known_text": "can we discuss this today?",
+      "known_audio_id": "c505e3cc-40ab-4a5a-9d02-76489f109621",
+      "target1_audio_id": "102b2c9c-71fb-433a-81bb-ae91cfe8bfc9",
+      "target2_audio_id": "f7dc7831-69f1-4c94-acb2-45404242315e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0210L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0210L01U03",
+      "seed_number": 210,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "102b2c9c-71fb-433a-81bb-ae91cfe8bfc9",
+      "known_text": "can we discuss this today?",
+      "target_text": "我们今天能讨论这个吗？",
+      "known_audio_id": "c505e3cc-40ab-4a5a-9d02-76489f109621",
+      "target2_audio_id": "f7dc7831-69f1-4c94-acb2-45404242315e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0210L01U03",
+      "seed_number": 210,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "102b2c9c-71fb-433a-81bb-ae91cfe8bfc9",
+      "known_text": "can we discuss this today?",
+      "target_text": "我们今天能讨论这个吗？",
+      "known_audio_id": "c505e3cc-40ab-4a5a-9d02-76489f109621",
+      "target2_audio_id": "f7dc7831-69f1-4c94-acb2-45404242315e",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0210L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0210L01U03",
+      "seed_number": 210,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "f7dc7831-69f1-4c94-acb2-45404242315e",
+      "known_text": "can we discuss this today?",
+      "target_text": "我们今天能讨论这个吗？",
+      "known_audio_id": "c505e3cc-40ab-4a5a-9d02-76489f109621",
+      "target1_audio_id": "102b2c9c-71fb-433a-81bb-ae91cfe8bfc9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0210L01U03",
+      "seed_number": 210,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "f7dc7831-69f1-4c94-acb2-45404242315e",
+      "known_text": "can we discuss this today?",
+      "target_text": "我们今天能讨论这个吗？",
+      "known_audio_id": "c505e3cc-40ab-4a5a-9d02-76489f109621",
+      "target1_audio_id": "102b2c9c-71fb-433a-81bb-ae91cfe8bfc9",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0277L02U02"
+     },
+     "before": {
+      "id": "zho_for_eng:S0277L02U02",
+      "seed_number": 277,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "我们能下周初见吗",
+      "target_text_roman": "wǒmen néng xià zhōu chū jiàn ma",
+      "known_text": "can we meet early next week?",
+      "known_audio_id": "9b0a5028-6cb7-450e-aeab-61dce21a0b0a",
+      "target1_audio_id": "e674c043-79df-4a83-8c4e-0dd0efa50092",
+      "target2_audio_id": "c218c882-4060-4760-947f-bbb5b4949fd5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0277L02U02",
+      "seed_number": 277,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "我们下周初能见吗",
+      "target_text_roman": "wǒmen xià zhōu chū néng jiàn ma",
+      "known_text": "can we meet early next week?",
+      "known_audio_id": "9b0a5028-6cb7-450e-aeab-61dce21a0b0a",
+      "target1_audio_id": "4506ca46-4b21-44b9-9b83-24231a1a73f3",
+      "target2_audio_id": "2909bc76-a920-4b08-a241-d65fd779db33",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0277L02U02"
+     },
+     "before": {
+      "id": "zho_for_eng:S0277L02U02",
+      "seed_number": 277,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "4506ca46-4b21-44b9-9b83-24231a1a73f3",
+      "known_text": "can we meet early next week?",
+      "target_text": "我们下周初能见吗",
+      "known_audio_id": "9b0a5028-6cb7-450e-aeab-61dce21a0b0a",
+      "target2_audio_id": "2909bc76-a920-4b08-a241-d65fd779db33",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0277L02U02",
+      "seed_number": 277,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "4506ca46-4b21-44b9-9b83-24231a1a73f3",
+      "known_text": "can we meet early next week?",
+      "target_text": "我们下周初能见吗",
+      "known_audio_id": "9b0a5028-6cb7-450e-aeab-61dce21a0b0a",
+      "target2_audio_id": "2909bc76-a920-4b08-a241-d65fd779db33",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0277L02U02"
+     },
+     "before": {
+      "id": "zho_for_eng:S0277L02U02",
+      "seed_number": 277,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "2909bc76-a920-4b08-a241-d65fd779db33",
+      "known_text": "can we meet early next week?",
+      "target_text": "我们下周初能见吗",
+      "known_audio_id": "9b0a5028-6cb7-450e-aeab-61dce21a0b0a",
+      "target1_audio_id": "4506ca46-4b21-44b9-9b83-24231a1a73f3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0277L02U02",
+      "seed_number": 277,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "2909bc76-a920-4b08-a241-d65fd779db33",
+      "known_text": "can we meet early next week?",
+      "target_text": "我们下周初能见吗",
+      "known_audio_id": "9b0a5028-6cb7-450e-aeab-61dce21a0b0a",
+      "target1_audio_id": "4506ca46-4b21-44b9-9b83-24231a1a73f3",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0371L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0371L01U03",
+      "seed_number": 371,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "她告诉我她需要周三来",
+      "target_text_roman": "tā gàosu wǒ tā xūyào zhōusān lái",
+      "known_text": "she told me she needed to come on Wednesday",
+      "known_audio_id": "23353d95-634f-45b6-9492-faa07e58c7f0",
+      "target1_audio_id": "f218a412-a027-41f1-8d5c-02dd81ec007d",
+      "target2_audio_id": "7e10a7b4-66f1-4695-b04a-5724b5149d99",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0371L01U03",
+      "seed_number": 371,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "她告诉我她周三需要来",
+      "target_text_roman": "tā gàosu wǒ tā zhōusān xūyào lái",
+      "known_text": "she told me she needed to come on Wednesday",
+      "known_audio_id": "23353d95-634f-45b6-9492-faa07e58c7f0",
+      "target1_audio_id": "b7709a3e-ba68-4936-b9d2-e47d16f01458",
+      "target2_audio_id": "6f6d64c6-2eb6-443f-9c3d-211500a0832c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0371L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0371L01U03",
+      "seed_number": 371,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "b7709a3e-ba68-4936-b9d2-e47d16f01458",
+      "known_text": "she told me she needed to come on Wednesday",
+      "target_text": "她告诉我她周三需要来",
+      "known_audio_id": "23353d95-634f-45b6-9492-faa07e58c7f0",
+      "target2_audio_id": "6f6d64c6-2eb6-443f-9c3d-211500a0832c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0371L01U03",
+      "seed_number": 371,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "b7709a3e-ba68-4936-b9d2-e47d16f01458",
+      "known_text": "she told me she needed to come on Wednesday",
+      "target_text": "她告诉我她周三需要来",
+      "known_audio_id": "23353d95-634f-45b6-9492-faa07e58c7f0",
+      "target2_audio_id": "6f6d64c6-2eb6-443f-9c3d-211500a0832c",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0371L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0371L01U03",
+      "seed_number": 371,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "6f6d64c6-2eb6-443f-9c3d-211500a0832c",
+      "known_text": "she told me she needed to come on Wednesday",
+      "target_text": "她告诉我她周三需要来",
+      "known_audio_id": "23353d95-634f-45b6-9492-faa07e58c7f0",
+      "target1_audio_id": "b7709a3e-ba68-4936-b9d2-e47d16f01458",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0371L01U03",
+      "seed_number": 371,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "6f6d64c6-2eb6-443f-9c3d-211500a0832c",
+      "known_text": "she told me she needed to come on Wednesday",
+      "target_text": "她告诉我她周三需要来",
+      "known_audio_id": "23353d95-634f-45b6-9492-faa07e58c7f0",
+      "target1_audio_id": "b7709a3e-ba68-4936-b9d2-e47d16f01458",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0404L02U04"
+     },
+     "before": {
+      "id": "zho_for_eng:S0404L02U04",
+      "seed_number": 404,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "我可以周四做",
+      "target_text_roman": "wǒ kěyǐ zhōusì zuò",
+      "known_text": "I can do it on Thursday",
+      "known_audio_id": "589443af-9b12-4ac5-998e-edcf5901ec94",
+      "target1_audio_id": "173032c2-1678-4736-9632-9ae601bc7764",
+      "target2_audio_id": "fcd1ce25-5df7-4725-a314-ab37ea5f7e94",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0404L02U04",
+      "seed_number": 404,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "我周四可以做",
+      "target_text_roman": "wǒ zhōusì kěyǐ zuò",
+      "known_text": "I can do it on Thursday",
+      "known_audio_id": "589443af-9b12-4ac5-998e-edcf5901ec94",
+      "target1_audio_id": "bcdba980-b1a4-486b-ae54-2a3c44f660e5",
+      "target2_audio_id": "149e612b-42b3-4a38-9ffc-189bd5d2765d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0404L02U04"
+     },
+     "before": {
+      "id": "zho_for_eng:S0404L02U04",
+      "seed_number": 404,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "bcdba980-b1a4-486b-ae54-2a3c44f660e5",
+      "known_text": "I can do it on Thursday",
+      "target_text": "我周四可以做",
+      "known_audio_id": "589443af-9b12-4ac5-998e-edcf5901ec94",
+      "target2_audio_id": "149e612b-42b3-4a38-9ffc-189bd5d2765d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0404L02U04",
+      "seed_number": 404,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "bcdba980-b1a4-486b-ae54-2a3c44f660e5",
+      "known_text": "I can do it on Thursday",
+      "target_text": "我周四可以做",
+      "known_audio_id": "589443af-9b12-4ac5-998e-edcf5901ec94",
+      "target2_audio_id": "149e612b-42b3-4a38-9ffc-189bd5d2765d",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0404L02U04"
+     },
+     "before": {
+      "id": "zho_for_eng:S0404L02U04",
+      "seed_number": 404,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "149e612b-42b3-4a38-9ffc-189bd5d2765d",
+      "known_text": "I can do it on Thursday",
+      "target_text": "我周四可以做",
+      "known_audio_id": "589443af-9b12-4ac5-998e-edcf5901ec94",
+      "target1_audio_id": "bcdba980-b1a4-486b-ae54-2a3c44f660e5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0404L02U04",
+      "seed_number": 404,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "149e612b-42b3-4a38-9ffc-189bd5d2765d",
+      "known_text": "I can do it on Thursday",
+      "target_text": "我周四可以做",
+      "known_audio_id": "589443af-9b12-4ac5-998e-edcf5901ec94",
+      "target1_audio_id": "bcdba980-b1a4-486b-ae54-2a3c44f660e5",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_eng:S0404L02U04",
+     "set": {
+      "target_text": "我可以周四做",
+      "target1_audio_id": "173032c2-1678-4736-9632-9ae601bc7764",
+      "target2_audio_id": "fcd1ce25-5df7-4725-a314-ab37ea5f7e94",
+      "target_text_roman": "wǒ kěyǐ zhōusì zuò"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_eng:S0371L01U03",
+     "set": {
+      "target_text": "她告诉我她需要周三来",
+      "target1_audio_id": "f218a412-a027-41f1-8d5c-02dd81ec007d",
+      "target2_audio_id": "7e10a7b4-66f1-4695-b04a-5724b5149d99",
+      "target_text_roman": "tā gàosu wǒ tā xūyào zhōusān lái"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_eng:S0277L02U02",
+     "set": {
+      "target_text": "我们能下周初见吗",
+      "target1_audio_id": "e674c043-79df-4a83-8c4e-0dd0efa50092",
+      "target2_audio_id": "c218c882-4060-4760-947f-bbb5b4949fd5",
+      "target_text_roman": "wǒmen néng xià zhōu chū jiàn ma"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_eng:S0210L01U03",
+     "set": {
+      "target_text": "我们能今天讨论这个吗？",
+      "target1_audio_id": "f23e313e-9be1-46f3-bf20-a707493e93a3",
+      "target2_audio_id": "5ea352b8-de08-4036-9e66-41b97ac74def",
+      "target_text_roman": "wǒmen néng jīntiān tǎolùn zhège ma?"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "n": 9,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0405L01U06"
+     },
+     "before": {
+      "id": "zho_for_eng:S0405L01U06",
+      "seed_number": 405,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我需要今晚预订",
+      "target_text_roman": "wǒ xūyào jīnwǎn yùdìng",
+      "known_text": "I need to book for tonight",
+      "known_audio_id": "83ed17e4-f200-41e5-840f-d7cf1a6a9602",
+      "target1_audio_id": "3336b6f9-f620-41b7-8e89-534c7dd37858",
+      "target2_audio_id": "0d3cfde9-77d1-4c2e-b110-04133dc00f33",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0405L01U06",
+      "seed_number": 405,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我今晚需要预订",
+      "target_text_roman": "wǒ jīnwǎn xūyào yùdìng",
+      "known_text": "I need to book for tonight",
+      "known_audio_id": "83ed17e4-f200-41e5-840f-d7cf1a6a9602",
+      "target1_audio_id": "50603efe-d2d3-4b37-9696-2e9b4723feb8",
+      "target2_audio_id": "a3c8737c-0c6e-4214-b0fc-82b1563558d4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0405L01U06"
+     },
+     "before": {
+      "id": "zho_for_eng:S0405L01U06",
+      "seed_number": 405,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "50603efe-d2d3-4b37-9696-2e9b4723feb8",
+      "known_text": "I need to book for tonight",
+      "target_text": "我今晚需要预订",
+      "known_audio_id": "83ed17e4-f200-41e5-840f-d7cf1a6a9602",
+      "target2_audio_id": "a3c8737c-0c6e-4214-b0fc-82b1563558d4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0405L01U06",
+      "seed_number": 405,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "50603efe-d2d3-4b37-9696-2e9b4723feb8",
+      "known_text": "I need to book for tonight",
+      "target_text": "我今晚需要预订",
+      "known_audio_id": "83ed17e4-f200-41e5-840f-d7cf1a6a9602",
+      "target2_audio_id": "a3c8737c-0c6e-4214-b0fc-82b1563558d4",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0405L01U06"
+     },
+     "before": {
+      "id": "zho_for_eng:S0405L01U06",
+      "seed_number": 405,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "a3c8737c-0c6e-4214-b0fc-82b1563558d4",
+      "known_text": "I need to book for tonight",
+      "target_text": "我今晚需要预订",
+      "known_audio_id": "83ed17e4-f200-41e5-840f-d7cf1a6a9602",
+      "target1_audio_id": "50603efe-d2d3-4b37-9696-2e9b4723feb8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0405L01U06",
+      "seed_number": 405,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "a3c8737c-0c6e-4214-b0fc-82b1563558d4",
+      "known_text": "I need to book for tonight",
+      "target_text": "我今晚需要预订",
+      "known_audio_id": "83ed17e4-f200-41e5-840f-d7cf1a6a9602",
+      "target1_audio_id": "50603efe-d2d3-4b37-9696-2e9b4723feb8",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0428L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0428L01U03",
+      "seed_number": 428,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我可以周二做",
+      "target_text_roman": "wǒ kěyǐ zhōu'èr zuò",
+      "known_text": "I can do that on Tuesday",
+      "known_audio_id": "bca9f501-05ec-4f32-83be-cae1fc095a49",
+      "target1_audio_id": "9ef3c320-b8f2-49cb-a5ea-28bc3a956702",
+      "target2_audio_id": "5e43f296-7a71-4b3f-821d-d131711e28bf",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0428L01U03",
+      "seed_number": 428,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我周二可以做",
+      "target_text_roman": "wǒ zhōu'èr kěyǐ zuò",
+      "known_text": "I can do that on Tuesday",
+      "known_audio_id": "bca9f501-05ec-4f32-83be-cae1fc095a49",
+      "target1_audio_id": "f09e4067-2ab5-498b-9654-149b4e49933a",
+      "target2_audio_id": "909c3d36-8cac-402e-9c1c-b76fee36d483",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0428L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0428L01U03",
+      "seed_number": 428,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "f09e4067-2ab5-498b-9654-149b4e49933a",
+      "known_text": "I can do that on Tuesday",
+      "target_text": "我周二可以做",
+      "known_audio_id": "bca9f501-05ec-4f32-83be-cae1fc095a49",
+      "target2_audio_id": "909c3d36-8cac-402e-9c1c-b76fee36d483",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0428L01U03",
+      "seed_number": 428,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "f09e4067-2ab5-498b-9654-149b4e49933a",
+      "known_text": "I can do that on Tuesday",
+      "target_text": "我周二可以做",
+      "known_audio_id": "bca9f501-05ec-4f32-83be-cae1fc095a49",
+      "target2_audio_id": "909c3d36-8cac-402e-9c1c-b76fee36d483",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0428L01U03"
+     },
+     "before": {
+      "id": "zho_for_eng:S0428L01U03",
+      "seed_number": 428,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "909c3d36-8cac-402e-9c1c-b76fee36d483",
+      "known_text": "I can do that on Tuesday",
+      "target_text": "我周二可以做",
+      "known_audio_id": "bca9f501-05ec-4f32-83be-cae1fc095a49",
+      "target1_audio_id": "f09e4067-2ab5-498b-9654-149b4e49933a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0428L01U03",
+      "seed_number": 428,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "909c3d36-8cac-402e-9c1c-b76fee36d483",
+      "known_text": "I can do that on Tuesday",
+      "target_text": "我周二可以做",
+      "known_audio_id": "bca9f501-05ec-4f32-83be-cae1fc095a49",
+      "target1_audio_id": "f09e4067-2ab5-498b-9654-149b4e49933a",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0172L01U04"
+     },
+     "before": {
+      "id": "zho_for_eng:S0172L01U04",
+      "seed_number": 172,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我想这会很有帮助",
+      "target_text_roman": "wǒ xiǎng zhè huì hěn yǒu bāngzhù.",
+      "known_text": "I think this will be helpful",
+      "known_audio_id": "cf6e973f-299d-4c41-ac7f-928fad7ecd48",
+      "target1_audio_id": "6f7bc086-de67-44fd-bcf9-136df68551de",
+      "target2_audio_id": "784c9adf-f643-4f5a-86a3-cb61e957d778",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0172L01U04",
+      "seed_number": 172,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "我觉得这会很有帮助",
+      "target_text_roman": "wǒ juéde zhè huì hěn yǒu bāngzhù.",
+      "known_text": "I think this will be helpful",
+      "known_audio_id": "cf6e973f-299d-4c41-ac7f-928fad7ecd48",
+      "target1_audio_id": "9f1d3474-0dd5-4b65-b15d-3819887f4ebc",
+      "target2_audio_id": "bb972c90-8280-44a6-bb6a-aeb95dbf03b9",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0172L01U04"
+     },
+     "before": {
+      "id": "zho_for_eng:S0172L01U04",
+      "seed_number": 172,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "9f1d3474-0dd5-4b65-b15d-3819887f4ebc",
+      "known_text": "I think this will be helpful",
+      "target_text": "我觉得这会很有帮助",
+      "known_audio_id": "cf6e973f-299d-4c41-ac7f-928fad7ecd48",
+      "target2_audio_id": "bb972c90-8280-44a6-bb6a-aeb95dbf03b9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0172L01U04",
+      "seed_number": 172,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "9f1d3474-0dd5-4b65-b15d-3819887f4ebc",
+      "known_text": "I think this will be helpful",
+      "target_text": "我觉得这会很有帮助",
+      "known_audio_id": "cf6e973f-299d-4c41-ac7f-928fad7ecd48",
+      "target2_audio_id": "bb972c90-8280-44a6-bb6a-aeb95dbf03b9",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_eng",
+      "id": "zho_for_eng:S0172L01U04"
+     },
+     "before": {
+      "id": "zho_for_eng:S0172L01U04",
+      "seed_number": 172,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "bb972c90-8280-44a6-bb6a-aeb95dbf03b9",
+      "known_text": "I think this will be helpful",
+      "target_text": "我觉得这会很有帮助",
+      "known_audio_id": "cf6e973f-299d-4c41-ac7f-928fad7ecd48",
+      "target1_audio_id": "9f1d3474-0dd5-4b65-b15d-3819887f4ebc",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_eng:S0172L01U04",
+      "seed_number": 172,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "bb972c90-8280-44a6-bb6a-aeb95dbf03b9",
+      "known_text": "I think this will be helpful",
+      "target_text": "我觉得这会很有帮助",
+      "known_audio_id": "cf6e973f-299d-4c41-ac7f-928fad7ecd48",
+      "target1_audio_id": "9f1d3474-0dd5-4b65-b15d-3819887f4ebc",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_eng:S0172L01U04",
+     "set": {
+      "target_text": "我想这会很有帮助",
+      "target1_audio_id": "6f7bc086-de67-44fd-bcf9-136df68551de",
+      "target2_audio_id": "784c9adf-f643-4f5a-86a3-cb61e957d778",
+      "target_text_roman": "wǒ xiǎng zhè huì hěn yǒu bāngzhù."
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_eng:S0428L01U03",
+     "set": {
+      "target_text": "我可以周二做",
+      "target1_audio_id": "9ef3c320-b8f2-49cb-a5ea-28bc3a956702",
+      "target2_audio_id": "5e43f296-7a71-4b3f-821d-d131711e28bf",
+      "target_text_roman": "wǒ kěyǐ zhōu'èr zuò"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_eng:S0405L01U06",
+     "set": {
+      "target_text": "我需要今晚预订",
+      "target1_audio_id": "3336b6f9-f620-41b7-8e89-534c7dd37858",
+      "target2_audio_id": "0d3cfde9-77d1-4c2e-b110-04133dc00f33",
+      "target_text_roman": "wǒ xūyào jīnwǎn yùdìng"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ }
+]
