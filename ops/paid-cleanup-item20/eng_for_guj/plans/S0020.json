@@ -1,0 +1,41 @@
+{
+ "seed": 20,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "તમે અંગ્રેજી બોલવા માગો છો",
+     "you want to speak English",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "એનું નામ શીખવું",
+     "to learn his name",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "જલ્દી શીખવું",
+     "to learn quickly",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0020L02B01": "શીખવું|verbal-noun/infinitive form of a taught verb (K6)",
+  "S0020L03B01": "શીખવું|verbal-noun/infinitive form of a taught verb (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
