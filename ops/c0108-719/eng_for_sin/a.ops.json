@@ -1,0 +1,313 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "රෑ මැද අවදි වෙනවා කියලා බලාපොරොත්තු වුණේ නෑ.",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "රෑ මැද අවදි වෙනවා කියලා ආශා කළේ නෑ.",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "expect"
+   },
+   "expect": {
+    "known_text": "බලාපොරොත්තු වෙන්න",
+    "target_text": "hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01B01",
+   "set": {
+    "target_text": "didn't expect to do it"
+   },
+   "expect": {
+    "known_text": "බලාපොරොත්තු නැත්තේ ඒක",
+    "target_text": "didn't hope to do it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01B02",
+   "set": {
+    "target_text": "expect it is good"
+   },
+   "expect": {
+    "known_text": "බලාපොරොත්තු වෙනවා ඒක හොඳයි",
+    "target_text": "hope it is good"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01B03",
+   "set": {
+    "target_text": "expect to do it"
+   },
+   "expect": {
+    "known_text": "බලාපොරොත්තු වෙනවා සිදු කරන්න ඒක",
+    "target_text": "hope to do it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U01",
+   "set": {
+    "target_text": "we didn't expect to do it"
+   },
+   "expect": {
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ ඒක සිදු කරන්න",
+    "target_text": "we didn't hope to do it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U02",
+   "set": {
+    "target_text": "I expect it will work"
+   },
+   "expect": {
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඒක වැඩ කරනවා",
+    "target_text": "I hope it will work"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U03",
+   "set": {
+    "target_text": "do you expect it will be easy?"
+   },
+   "expect": {
+    "known_text": "ඔයා බලාපොරොත්තු වෙනවාද ඒක පහසුද",
+    "target_text": "do you hope it will be easy?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U04",
+   "set": {
+    "target_text": "I expect to see you soon"
+   },
+   "expect": {
+    "known_text": "මම බලාපොරොත්තු වෙනවා බලන්න ඔයාව ඉක්මනට",
+    "target_text": "I hope to see you soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U05",
+   "set": {
+    "target_text": "I expect to learn a lot"
+   },
+   "expect": {
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඉගෙනගන්න බොහෝ",
+    "target_text": "I hope to learn a lot"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U06",
+   "set": {
+    "target_text": "do you expect to change it?"
+   },
+   "expect": {
+    "known_text": "ඔයා බලාපොරොත්තු වෙනවාද ඒක වෙනස් කරන්න",
+    "target_text": "do you hope to change it?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U07",
+   "set": {
+    "target_text": "we didn't expect it would be difficult"
+   },
+   "expect": {
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ ඒක අමාරු වෙනවා",
+    "target_text": "we didn't hope it would be difficult"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L01U08",
+   "set": {
+    "target_text": "I expect it is working"
+   },
+   "expect": {
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඒක ක්‍රියා කරනවා",
+    "target_text": "I hope it is working"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "නැගිටින්න",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02B01",
+   "set": {
+    "target_text": "should wake up in the morning"
+   },
+   "expect": {
+    "known_text": "නැගිටින්න ඕනේ උදේට",
+    "target_text": "should wake in the morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02B02",
+   "set": {
+    "target_text": "wake up soon"
+   },
+   "expect": {
+    "known_text": "නැගිටින්න ඉක්මනට",
+    "target_text": "wake soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02B03",
+   "set": {
+    "target_text": "didn't wake up"
+   },
+   "expect": {
+    "known_text": "නොනැගිටියා",
+    "target_text": "didn't wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U01",
+   "set": {
+    "target_text": "we didn't expect to wake up at night"
+   },
+   "expect": {
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ නැගිටින්න රෑ",
+    "target_text": "we didn't hope to wake at night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U02",
+   "set": {
+    "target_text": "I don't want to wake up that quickly"
+   },
+   "expect": {
+    "known_text": "මට ඕනේ නෑ නැගිටින්න ඒ තරම් ඉක්මනට",
+    "target_text": "I don't want to wake that quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U03",
+   "set": {
+    "target_text": "did you wake up last night?"
+   },
+   "expect": {
+    "known_text": "ඔයා නැගිටියාද ඊයේ රෑ",
+    "target_text": "did you wake last night?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U04",
+   "set": {
+    "target_text": "you should wake up soon tomorrow"
+   },
+   "expect": {
+    "known_text": "ඔයා නැගිටින්න ඕනේ ඉක්මනට හෙට",
+    "target_text": "you should wake soon tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U05",
+   "set": {
+    "target_text": "I didn't expect to wake up that quickly"
+   },
+   "expect": {
+    "known_text": "මම බලාපොරොත්තු නැත්තේ නැගිටින්න ඒ තරම් ඉක්මනට",
+    "target_text": "I didn't hope to wake that quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U06",
+   "set": {
+    "target_text": "they did wake up last night"
+   },
+   "expect": {
+    "known_text": "ඒ අය නැගිටියා ඊයේ රෑ",
+    "target_text": "they did wake last night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U07",
+   "set": {
+    "target_text": "I did wake up very quickly"
+   },
+   "expect": {
+    "known_text": "මම නැගිටියා ඉතා ඉක්මනට",
+    "target_text": "I did wake very quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L02U08",
+   "set": {
+    "target_text": "you shouldn't wake up that quickly"
+   },
+   "expect": {
+    "known_text": "ඔයා නැගිටින්න ඕනේ නෑ ඒ තරම් ඉක්මනට",
+    "target_text": "you shouldn't wake that quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L03U01",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "අපි බලාපොරොත්තු නැත්තේ නැගිටින්න මැද භාගයේ රෑ",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L03U04",
+   "set": {
+    "target_text": "did you wake up in the middle of the night?"
+   },
+   "expect": {
+    "known_text": "ඔයා නැගිටියාද මැද භාගයේ රෑ?",
+    "target_text": "did you wake in the middle of the night?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0108L03U08",
+   "set": {
+    "target_text": "you shouldn't wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ඔයා නැගිටින්න ඕනේ නෑ මැද භාගයේ රෑ",
+    "target_text": "you shouldn't wake in the middle of the night"
+   }
+  }
+ ]
+}

@@ -1,0 +1,448 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "b190d356-5f03-4c1e-9b08-32d8ad35067c",
+    "seed_number": 108,
+    "known_text": "మేము అర్ధరాత్రి లేవాలని ఆశించలేదు.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "0ec087b1-f622-4777-a4ee-845fbd74bcb6",
+    "target1_audio_id": "1728fcf1-62bd-4111-8dde-89e9b7ab24eb",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "b190d356-5f03-4c1e-9b08-32d8ad35067c",
+    "seed_number": 108,
+    "known_text": "మేము అర్ధరాత్రి లేస్తామని ఊహించలేదు.",
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "d64f6d04-3347-41a9-8fb1-8e506d69d2f4",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "we didn't hope to wake",
+    "known_text": "లేవాలని ఆశించలేదు",
+    "known_audio_id": "27c8b340-7c00-4e65-87f9-e268740c7bca",
+    "target1_audio_id": "614f6101-9c22-424f-86ce-2559d6f5bb1d",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": "bf75e928-89c5-4e84-a996-bc740ed51633"
+   },
+   "after": {
+    "id": "d64f6d04-3347-41a9-8fb1-8e506d69d2f4",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "we didn't expect to wake up",
+    "known_text": "లేస్తామని ఊహించలేదు",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01B01"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake now",
+    "known_text": "లేవాలని ఆశించలేదు ఇప్పుడు",
+    "known_audio_id": "4e39a6ef-491d-49f2-96fa-3751333efdbd",
+    "target1_audio_id": "548bd54e-0b4f-4ffe-9901-f33a7090ad7e",
+    "target2_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up now",
+    "known_text": "లేస్తామని ఊహించలేదు ఇప్పుడు",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01B02"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake with someone",
+    "known_text": "లేవాలని ఆశించలేదు ఎవరితోనైనా",
+    "known_audio_id": "13ecaa0b-4e74-4148-81d0-2e01e5b3402f",
+    "target1_audio_id": "de0153c1-d2d2-4ad3-8351-47330e41692c",
+    "target2_audio_id": "038ea7ca-b508-4b8b-9461-a46084d50421",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up with someone",
+    "known_text": "లేస్తామని ఊహించలేదు ఎవరితోనైనా",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01B03"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake for helping",
+    "known_text": "సహాయం చేసినందుకు లేవాలని ఆశించలేదు",
+    "known_audio_id": "f11fad75-46ba-4446-8bd6-47c6fc0b0de1",
+    "target1_audio_id": "48277317-53d1-4fea-be17-5982e418cb64",
+    "target2_audio_id": "8f2ba41b-b942-46f7-848f-83546c6db279",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up for helping",
+    "known_text": "సహాయం చేసినందుకు లేస్తామని ఊహించలేదు",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01U01"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "అర్ధరాత్రి లేవాలని మేము ఆశించలేదు",
+    "known_audio_id": "c5e667e5-6491-495e-b923-a433819391f6",
+    "target1_audio_id": "1728fcf1-62bd-4111-8dde-89e9b7ab24eb",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "అర్ధరాత్రి లేస్తామని మేము ఊహించలేదు",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01U02"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake",
+    "known_text": "మేము లేవాలని ఆశించలేదు",
+    "known_audio_id": "3edbc6ed-bdd4-407c-b01b-9c1e9e853622",
+    "target1_audio_id": "614f6101-9c22-424f-86ce-2559d6f5bb1d",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up",
+    "known_text": "మేము లేస్తామని ఊహించలేదు",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01U03"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I think that we didn't hope to wake",
+    "known_text": "మేము లేవాలని ఆశించలేదని నేను అనుకుంటాను",
+    "known_audio_id": "f0be52f3-6840-4a24-a9d6-f67026570a40",
+    "target1_audio_id": "532465b1-d750-440d-b3ec-78a947be25fb",
+    "target2_audio_id": "79eafb5a-09f1-41f6-94b7-ae0fdaed4629",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I think that we didn't expect to wake up",
+    "known_text": "మేము లేస్తామని ఊహించలేదని నేను అనుకుంటాను",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01U04"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake this morning",
+    "known_text": "ఈ ఉదయం మేము లేవాలని ఆశించలేదు",
+    "known_audio_id": "5a704490-cc90-4731-a6bd-b6ff3a66b093",
+    "target1_audio_id": "eb04d6f6-519d-49fe-8f21-f21539c623ed",
+    "target2_audio_id": "1e131c74-f75d-4730-928a-e5e60bc6000f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up this morning",
+    "known_text": "ఈ ఉదయం మేము లేస్తామని ఊహించలేదు",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tel",
+    "id": "eng_for_tel:S0108L01U05"
+   },
+   "before": {
+    "id": "eng_for_tel:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake today",
+    "known_text": "ఈ రోజు మేము లేవాలని ఆశించలేదు",
+    "known_audio_id": "2fbeb385-68dd-4b60-89ca-0d9552b380c9",
+    "target1_audio_id": "23e4bd47-61d3-4d17-b87c-0583582ef5a4",
+    "target2_audio_id": "cba42798-7785-4db4-ae04-435912cb3763",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tel:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up today",
+    "known_text": "ఈ రోజు మేము లేస్తామని ఊహించలేదు",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01U05",
+   "set": {
+    "known_text": "ఈ రోజు మేము లేవాలని ఆశించలేదు",
+    "target_text": "we didn't hope to wake today",
+    "known_audio_id": "2fbeb385-68dd-4b60-89ca-0d9552b380c9",
+    "target1_audio_id": "23e4bd47-61d3-4d17-b87c-0583582ef5a4",
+    "target2_audio_id": "cba42798-7785-4db4-ae04-435912cb3763"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01U04",
+   "set": {
+    "known_text": "ఈ ఉదయం మేము లేవాలని ఆశించలేదు",
+    "target_text": "we didn't hope to wake this morning",
+    "known_audio_id": "5a704490-cc90-4731-a6bd-b6ff3a66b093",
+    "target1_audio_id": "eb04d6f6-519d-49fe-8f21-f21539c623ed",
+    "target2_audio_id": "1e131c74-f75d-4730-928a-e5e60bc6000f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01U03",
+   "set": {
+    "known_text": "మేము లేవాలని ఆశించలేదని నేను అనుకుంటాను",
+    "target_text": "I think that we didn't hope to wake",
+    "known_audio_id": "f0be52f3-6840-4a24-a9d6-f67026570a40",
+    "target1_audio_id": "532465b1-d750-440d-b3ec-78a947be25fb",
+    "target2_audio_id": "79eafb5a-09f1-41f6-94b7-ae0fdaed4629"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01U02",
+   "set": {
+    "known_text": "మేము లేవాలని ఆశించలేదు",
+    "target_text": "we didn't hope to wake",
+    "known_audio_id": "3edbc6ed-bdd4-407c-b01b-9c1e9e853622",
+    "target1_audio_id": "614f6101-9c22-424f-86ce-2559d6f5bb1d",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01U01",
+   "set": {
+    "known_text": "అర్ధరాత్రి లేవాలని మేము ఆశించలేదు",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "c5e667e5-6491-495e-b923-a433819391f6",
+    "target1_audio_id": "1728fcf1-62bd-4111-8dde-89e9b7ab24eb",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01B03",
+   "set": {
+    "known_text": "సహాయం చేసినందుకు లేవాలని ఆశించలేదు",
+    "target_text": "we didn't hope to wake for helping",
+    "known_audio_id": "f11fad75-46ba-4446-8bd6-47c6fc0b0de1",
+    "target1_audio_id": "48277317-53d1-4fea-be17-5982e418cb64",
+    "target2_audio_id": "8f2ba41b-b942-46f7-848f-83546c6db279"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01B02",
+   "set": {
+    "known_text": "లేవాలని ఆశించలేదు ఎవరితోనైనా",
+    "target_text": "we didn't hope to wake with someone",
+    "known_audio_id": "13ecaa0b-4e74-4148-81d0-2e01e5b3402f",
+    "target1_audio_id": "de0153c1-d2d2-4ad3-8351-47330e41692c",
+    "target2_audio_id": "038ea7ca-b508-4b8b-9461-a46084d50421"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0108L01B01",
+   "set": {
+    "known_text": "లేవాలని ఆశించలేదు ఇప్పుడు",
+    "target_text": "we didn't hope to wake now",
+    "known_audio_id": "4e39a6ef-491d-49f2-96fa-3751333efdbd",
+    "target1_audio_id": "548bd54e-0b4f-4ffe-9901-f33a7090ad7e",
+    "target2_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "d64f6d04-3347-41a9-8fb1-8e506d69d2f4",
+   "set": {
+    "known_text": "లేవాలని ఆశించలేదు",
+    "target_text": "we didn't hope to wake",
+    "known_audio_id": "27c8b340-7c00-4e65-87f9-e268740c7bca",
+    "target1_audio_id": "614f6101-9c22-424f-86ce-2559d6f5bb1d",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": "bf75e928-89c5-4e84-a996-bc740ed51633"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "మేము అర్ధరాత్రి లేవాలని ఆశించలేదు.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "0ec087b1-f622-4777-a4ee-845fbd74bcb6",
+    "target1_audio_id": "1728fcf1-62bd-4111-8dde-89e9b7ab24eb",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

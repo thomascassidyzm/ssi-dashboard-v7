@@ -1,0 +1,16 @@
+{
+ "108": {
+  "before": [
+   "L1: BUILD: need 3+, got 1 (3 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+  ],
+  "after": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [到会半夜醒来]",
+   "L1: BUILD: need 3+, got 1 (3 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "new_issues": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [到会半夜醒来]",
+   "L1: vocab violations in 1 phrase(s)"
+  ]
+ }
+}

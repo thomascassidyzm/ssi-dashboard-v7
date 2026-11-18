@@ -1,0 +1,255 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "ನಾವು ಮಧ್ಯರಾತ್ರಿಯಲ್ಲಿ ಎಚ್ಚರ ಆಗ್ತೀವಿ ಅಂತ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ.",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "ನಾವು ಮಧ್ಯರಾತ್ರಿಯಲ್ಲಿ ಎಚ್ಚರ ಆಗ್ತೀವಿ ಅಂತ ಆಶಿಸಿರಲಿಲ್ಲ.",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L01U03",
+   "set": {
+    "target_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ನನಗೆ ಮಧ್ಯರಾತ್ರಿಯಲ್ಲಿ ಎಚ್ಚರ ಆಗೋದು ಬೇಡ",
+    "target_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "to wake up",
+    "components": [
+     {
+      "known": "ಎಚ್ಚರ",
+      "target": "awake"
+     },
+     {
+      "known": "ಆಗ್ತೀವಿ",
+      "target": "to become"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "ಎಚ್ಚರ ಆಗ್ತೀವಿ",
+    "target_text": "to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02B01",
+   "set": {
+    "target_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "ಎಚ್ಚರ ಆಗ್ತೀವಿ",
+    "target_text": "to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02B02",
+   "set": {
+    "target_text": "to wake up now"
+   },
+   "expect": {
+    "known_text": "ಈಗ ಎಚ್ಚರ ಆಗ್ತೀವಿ",
+    "target_text": "to wake now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02B03",
+   "set": {
+    "target_text": "to wake up in English"
+   },
+   "expect": {
+    "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಎಚ್ಚರ ಆಗ್ತೀವಿ",
+    "target_text": "to wake in English"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02B04",
+   "set": {
+    "target_text": "but to wake up"
+   },
+   "expect": {
+    "known_text": "ಆದರೆ ಎಚ್ಚರ ಆಗ್ತೀವಿ",
+    "target_text": "but to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02U01",
+   "set": {
+    "target_text": "I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "ನನಗೆ ಎಚ್ಚರ ಆಗೋದು ಬೇಡ",
+    "target_text": "I don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02U02",
+   "set": {
+    "target_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ನನಗೆ ಮಧ್ಯರಾತ್ರಿಯಲ್ಲಿ ಎಚ್ಚರ ಆಗೋದು ಬೇಡ",
+    "target_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02U03",
+   "set": {
+    "target_text": "I don't want to wake up now"
+   },
+   "expect": {
+    "known_text": "ನನಗೆ ಈಗ ಎಚ್ಚರ ಆಗೋದು ಬೇಡ",
+    "target_text": "I don't want to wake now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02U04",
+   "set": {
+    "target_text": "it's difficult to wake up"
+   },
+   "expect": {
+    "known_text": "ಎಚ್ಚರ ಆಗೋದು ಕಷ್ಟ",
+    "target_text": "it's difficult to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L02U05",
+   "set": {
+    "target_text": "I need to wake up"
+   },
+   "expect": {
+    "known_text": "ನಾನು ಎಚ್ಚರ ಆಗಬೇಕು",
+    "target_text": "I need to wake"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "target_text": "didn't expect",
+    "known_text": "ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03B01",
+   "set": {
+    "target_text": "didn't expect to wake up",
+    "known_text": "ಎಚ್ಚರ ಆಗ್ತೀವಿ ಅಂತ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ಎಚ್ಚರ ಆಗ್ತೀವಿ ಅಂತ ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03B02",
+   "set": {
+    "target_text": "didn't expect in English",
+    "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "didn't hope in English"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03B03",
+   "set": {
+    "target_text": "didn't expect last week",
+    "known_text": "ಕಳೆದ ವಾರ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ಕಳೆದ ವಾರ ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "didn't hope last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03U01",
+   "set": {
+    "target_text": "I didn't expect that",
+    "known_text": "ನಾನು ಅದನ್ನ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ನಾನು ಅದನ್ನ ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "I didn't hope for that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03U02",
+   "set": {
+    "target_text": "we didn't expect more",
+    "known_text": "ನಾವು ಇನ್ನೂ ಹೆಚ್ಚು ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ನಾವು ಇನ್ನೂ ಹೆಚ್ಚು ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "we didn't hope for more"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03U03",
+   "set": {
+    "target_text": "I didn't expect to see you",
+    "known_text": "ನಾನು ನಿಮ್ಮನ್ನ ನೋಡೋದನ್ನ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ನಾನು ನಿಮ್ಮನ್ನ ನೋಡೋದನ್ನ ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "I didn't hope to see you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03U04",
+   "set": {
+    "target_text": "she didn't expect help",
+    "known_text": "ಅವಳು ಸಹಾಯ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ಅವಳು ಸಹಾಯ ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "she didn't hope for help"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03U05",
+   "set": {
+    "target_text": "we didn't expect anything",
+    "known_text": "ನಾವು ಏನೂ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ"
+   },
+   "expect": {
+    "known_text": "ನಾವು ಏನೂ ಆಶಿಸಿರಲಿಲ್ಲ",
+    "target_text": "we didn't hope for anything"
+   }
+  }
+ ]
+}

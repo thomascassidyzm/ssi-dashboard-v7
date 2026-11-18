@@ -1,0 +1,207 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "한밤중에 일어날 줄 몰랐어요",
+    "target_text_roman": "han-bam-jung-e i-reo-nal jul mol-la-sseo-yo"
+   },
+   "expect": {
+    "known_text": "we didn't want to wake up in the middle of the night",
+    "target_text": "한밤중에 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "일어날 줄 몰랐어요",
+    "known_text": "didn't expect to wake up",
+    "components": [
+     {
+      "known": "to wake up",
+      "target": "일어날"
+     },
+     {
+      "known": "didn't expect",
+      "target": "줄 몰랐어요"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "didn't want to wake up",
+    "target_text": "일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "일어날 줄 몰랐어요",
+    "known_text": "didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "didn't want to wake up",
+    "target_text": "일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "일어날 줄 몰랐어요",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't want to wake up",
+    "target_text": "일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01B04",
+   "set": {
+    "target_text": "하지만 일어날 줄 몰랐어요",
+    "known_text": "but we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "but we didn't want to wake up",
+    "target_text": "하지만 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01C01",
+   "set": {
+    "target_text": "일어날",
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to get up",
+    "target_text": "일어나고"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01C02",
+   "set": {
+    "target_text": "줄 몰랐어요",
+    "known_text": "didn't expect"
+   },
+   "expect": {
+    "known_text": "didn't want",
+    "target_text": "싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "일어날 줄 몰랐어요",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't want to wake up",
+    "target_text": "일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "일어날 줄 몰랐어요",
+    "known_text": "I didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "I didn't want to wake up",
+    "target_text": "일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01U05",
+   "set": {
+    "target_text": "하지만 일어날 줄 몰랐어요",
+    "known_text": "but we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "but we didn't want to wake up",
+    "target_text": "하지만 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L01U08",
+   "set": {
+    "target_text": "그래서 일어날 줄 몰랐어요",
+    "known_text": "so we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "so we didn't want to wake up",
+    "target_text": "그래서 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L02B03",
+   "set": {
+    "target_text": "한밤중에 일어날 줄 몰랐어요",
+    "known_text": "didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "didn't want to wake up in the middle of the night",
+    "target_text": "한밤중에 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "한밤중에 일어날 줄 몰랐어요",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't want to wake up in the middle of the night",
+    "target_text": "한밤중에 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L02U02",
+   "set": {
+    "target_text": "한밤중에 일어날 줄 몰랐어요",
+    "known_text": "I didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I didn't want to wake up in the middle of the night",
+    "target_text": "한밤중에 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L02U06",
+   "set": {
+    "target_text": "하지만 한밤중에 일어날 줄 몰랐어요",
+    "known_text": "but we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "but we didn't want to wake up in the middle of the night",
+    "target_text": "하지만 한밤중에 일어나고 싶지 않았어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_eng:S0108L02U08",
+   "set": {
+    "target_text": "그래서 한밤중에 일어날 줄 몰랐어요",
+    "known_text": "so we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "so we didn't want to wake up in the middle of the night",
+    "target_text": "그래서 한밤중에 일어나고 싶지 않았어요"
+   }
+  }
+ ]
+}
