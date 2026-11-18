@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # fetch -> build -> validate -> dry -> apply one batch; stops at the first failure (cs #708·AI)
-set -o pipefail; export ITEM4_OWNER=708
+set -o pipefail; export ITEM4_OWNER=${ITEM4_OWNER:-708}
 b=$1; f=$2; t=$3; c=eng_for_mar; ok=
 # Under DB load the seeds route times out; #700·AI ruled (18 Nov): build on the 12:52Z snapshot for seeds not applied since,
 # expect guards abort on any re-worded row; validate + dry stay live.
