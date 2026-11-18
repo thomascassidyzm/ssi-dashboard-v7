@@ -1428,5 +1428,2649 @@
 ],
 "status": "released",
 "target": "그는 제가 대답하지 못했을 때 참을성이 별로 없었어요"
+},
+"150": {
+"at": "2026-11-18T18:42:32Z",
+"known": "can you tell me what your name is?",
+"legos": [
+{
+"id": "S0150L01",
+"idx": 1,
+"is_new": true,
+"known": "can you tell me",
+"phrases": [
+{
+"id": "d0863f78-ed74-4e67-9162-244753fca6b0",
+"ka": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+"known": "can you tell me",
+"pos": 0,
+"t1": "658d21c6-3527-48b3-a65d-641d9eaa7814",
+"t2": "56ee0457-7918-4cc0-a058-91f50b8ec0ad",
+"target": "말해 줄 수 있어요",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0150L01C01",
+"ka": "604b4428-7e25-4085-9e14-db62bee3bfe5",
+"known": "tell",
+"pos": 1,
+"t1": "5bb32e30-ad05-4622-9571-f8af914cf5b1",
+"t2": "884174da-aa74-4714-99db-ea9c500f3a12",
+"target": "말해",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0150L01C02",
+"ka": "96da244b-ca12-4a86-b8d0-c4af5c6bd8fe",
+"known": "can give",
+"pos": 2,
+"t1": "5fba027c-851c-49f4-80a4-8dbbf4d932bb",
+"t2": "0e46507f-49dd-4898-b3bb-6f457c37973a",
+"target": "줄 수 있어요",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0150L01B01",
+"ka": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+"known": "can you tell me",
+"pos": 3,
+"t1": "658d21c6-3527-48b3-a65d-641d9eaa7814",
+"t2": "56ee0457-7918-4cc0-a058-91f50b8ec0ad",
+"target": "말해 줄 수 있어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L01B02",
+"ka": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+"known": "can you tell me",
+"pos": 4,
+"t1": "658d21c6-3527-48b3-a65d-641d9eaa7814",
+"t2": "56ee0457-7918-4cc0-a058-91f50b8ec0ad",
+"target": "말해 줄 수 있어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L01B03",
+"ka": "931bd856-d0ff-45fa-8a32-70573edcd0f9",
+"known": "but can you tell me",
+"pos": 5,
+"t1": "e7c293e2-a730-4e22-a4fd-721dddd437e1",
+"t2": "2e3a2782-2888-490d-aa2d-d384bbd781ca",
+"target": "하지만 말해 줄 수 있어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L01B04",
+"ka": "339cb577-4507-4a6e-a46e-541000301ab9",
+"known": "really can you tell me",
+"pos": 6,
+"t1": "4c0f7ed2-3e3e-428b-90dd-733a8999f190",
+"t2": "d1bdc67b-e3c2-47ea-9bed-4ee666d195fe",
+"target": "정말 말해 줄 수 있어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L01U01",
+"ka": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+"known": "can you tell me",
+"pos": 7,
+"t1": "658d21c6-3527-48b3-a65d-641d9eaa7814",
+"t2": "56ee0457-7918-4cc0-a058-91f50b8ec0ad",
+"target": "말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L01U02",
+"ka": "931bd856-d0ff-45fa-8a32-70573edcd0f9",
+"known": "but can you tell me",
+"pos": 8,
+"t1": "e7c293e2-a730-4e22-a4fd-721dddd437e1",
+"t2": "2e3a2782-2888-490d-aa2d-d384bbd781ca",
+"target": "하지만 말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L01U03",
+"ka": "b5d3b380-9389-4636-8257-dc3152bd1975",
+"known": "we want to know if you can tell us",
+"pos": 9,
+"t1": "b7bb60c8-b989-4708-ad81-77ee8b8734e6",
+"t2": "663b8da7-c768-4c6c-811b-72c2f4945c53",
+"target": "우리는 말해 줄 수 있는지 알고 싶어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L01U05",
+"ka": "42a69648-a98b-496b-859c-4389bafaf32c",
+"known": "so can you tell me",
+"pos": 11,
+"t1": "9ec1e59e-b550-440a-b784-6bcfa88e9c7a",
+"t2": "b9266579-26c9-4b07-affb-2ae2dd5a7c34",
+"target": "그래서 말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L01U06",
+"ka": "79b4da25-a2b7-4c96-ae53-53f31513f67e",
+"known": "yes can you tell me",
+"pos": 12,
+"t1": "26a029f3-91ce-4ba2-bdd2-6eada2bae4c2",
+"t2": "6789b68d-9ccc-47e3-a246-7215e4191e4d",
+"target": "네 말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L01U07",
+"ka": "efbafae9-e721-4612-8379-af703e1e1727",
+"known": "no problem can you tell me",
+"pos": 13,
+"t1": "b248f965-a4b7-4856-a900-5854a376fa2b",
+"t2": "57e2e70e-6521-4e0b-8b65-0b7ef57411cf",
+"target": "문제없어요 말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L01U08",
+"ka": "33d966c5-e6e2-4974-abb2-a02b23385435",
+"known": "I'm sorry but can you tell me",
+"pos": 14,
+"t1": "8f24d871-c6cd-4ea4-adad-c4dcdce4e222",
+"t2": "9311c081-36af-4389-89b4-3c15810f19fe",
+"target": "미안해요 하지만 말해 줄 수 있어요",
+"type": "use"
+}
+],
+"target": "말해 줄 수 있어요",
+"type": "M"
+},
+{
+"id": "S0150L02",
+"idx": 2,
+"is_new": true,
+"known": "what your name is",
+"phrases": [
+{
+"id": "7bf0d64d-ccc5-4bb1-b746-c00a00d5c9c2",
+"ka": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+"known": "what your name is",
+"pos": 0,
+"t1": "06fa0b53-01e7-4f96-9bde-9ce7e4472150",
+"t2": "85e1fe0f-89ea-4ff5-8306-60af3b3ce04c",
+"target": "이름이 뭔지",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0150L02C01",
+"ka": "d24e3097-4a96-42d0-8d21-35354b4e8b0d",
+"known": "name",
+"pos": 1,
+"t1": "370bb601-246a-454e-9696-4d2715115d33",
+"t2": "ca4b30e8-5c7e-48d4-bc52-b6dc29fa85a9",
+"target": "이름이",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0150L02C02",
+"ka": "d76e7774-22b6-478a-9dbc-2e0d0187ae2e",
+"known": "what",
+"pos": 2,
+"t1": "28144f5b-2a4c-4fdd-ac76-95d48df4cb99",
+"t2": "659fb6fe-fbc0-42e9-a244-70d4029a8084",
+"target": "뭔지",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0150L02B01",
+"ka": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+"known": "what your name is",
+"pos": 3,
+"t1": "06fa0b53-01e7-4f96-9bde-9ce7e4472150",
+"t2": "85e1fe0f-89ea-4ff5-8306-60af3b3ce04c",
+"target": "이름이 뭔지",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L02B02",
+"ka": "8529ec88-631b-42bc-8577-cb03aa32a76e",
+"known": "what your name is",
+"pos": 4,
+"t1": "06fa0b53-01e7-4f96-9bde-9ce7e4472150",
+"t2": "85e1fe0f-89ea-4ff5-8306-60af3b3ce04c",
+"target": "이름이 뭔지",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L02B03",
+"ka": "cb2c714d-7ee5-4151-8bd2-c32a38d76186",
+"known": "can you tell me what your name is",
+"pos": 5,
+"t1": "2baee52f-18bb-44ef-82f3-dd5ae7f0bd2a",
+"t2": "8107b687-a813-46e2-b8fb-3c531c328035",
+"target": "이름이 뭔지 말해 줄 수 있어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L02B04",
+"ka": "4efab6e0-899d-4e23-a1fe-8bd9757909e6",
+"known": "but what your name is",
+"pos": 6,
+"t1": "286c3d2e-0724-428a-80eb-9727e945ff0f",
+"t2": "2456580c-fa39-4211-9d22-a962ae4a33eb",
+"target": "하지만 이름이 뭔지",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0150L02U01",
+"ka": "cb2c714d-7ee5-4151-8bd2-c32a38d76186",
+"known": "can you tell me what your name is",
+"pos": 7,
+"t1": "2baee52f-18bb-44ef-82f3-dd5ae7f0bd2a",
+"t2": "8107b687-a813-46e2-b8fb-3c531c328035",
+"target": "이름이 뭔지 말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L02U02",
+"ka": "9b40a810-73cd-4411-a240-7ca30a30c154",
+"known": "but can you tell me what your name is",
+"pos": 8,
+"t1": "8b6fd607-f302-4ed9-bcf5-7c465d78119a",
+"t2": "4859fafc-8fe8-41a1-8fcb-0bddf2a5cfae",
+"target": "하지만 이름이 뭔지 말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L02U03",
+"ka": "421a442f-e65f-4b03-9002-5c2502342732",
+"known": "I don't know what your name is",
+"pos": 9,
+"t1": "740f1713-b8e8-4653-9e11-02102f4db493",
+"t2": "4945af3b-e131-4aff-ae19-b097741c3f3a",
+"target": "이름이 뭔지 모르겠어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L02U04",
+"ka": "7bdce3d9-876f-4f6c-98a2-6b51a47c87d0",
+"known": "I want to know what your name is",
+"pos": 10,
+"t1": "265fa8de-ce5a-4877-a9ac-ebe9c53bd3e4",
+"t2": "1434e445-225e-4cda-9821-3ef74aeecba6",
+"target": "이름이 뭔지 알고 싶어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L02U06",
+"ka": "c2aa3e74-37a0-4e3f-aa03-abc1190fc535",
+"known": "so can you tell me what your name is",
+"pos": 12,
+"t1": "7e6c307a-05ee-42b9-b9b0-88a130ba6dea",
+"t2": "7122f559-7ba7-49e1-b06b-879adcf2ca74",
+"target": "그래서 이름이 뭔지 말해 줄 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L02U07",
+"ka": "574d9dfa-9619-4387-a81e-f4d237d33664",
+"known": "we want to know what your name is",
+"pos": 13,
+"t1": "26a394d2-ef9a-474f-9c41-13c687f77acd",
+"t2": "4f5a87c9-66cc-4b19-b352-d4cf2f476eed",
+"target": "우리는 이름이 뭔지 알고 싶어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0150L02U08",
+"ka": "ad70cda2-f951-44fa-b0cd-321231667500",
+"known": "yes I want to know what your name is",
+"pos": 14,
+"t1": "18eddba1-cfa5-48bd-80dc-634670f4a2fd",
+"t2": "750d7e16-536a-4bb6-87a2-e2cf9e1e6cfd",
+"target": "네 이름이 뭔지 알고 싶어요",
+"type": "use"
+}
+],
+"target": "이름이 뭔지",
+"type": "M"
+}
+],
+"status": "released",
+"target": "이름이 뭔지 말해 줄 수 있어요?"
+},
+"160": {
+"at": "2026-11-18T18:42:33Z",
+"known": "how do you say this word in Korean?",
+"legos": [
+{
+"id": "S0160L01",
+"idx": 1,
+"is_new": true,
+"known": "how do you say",
+"phrases": [
+{
+"id": "fa90a577-7846-4179-a332-297dcacc1aac",
+"ka": "98d523e2-7acf-43ec-bf3c-51f79ee278a1",
+"known": "how do you say",
+"pos": 0,
+"t1": "2927fec8-00a3-4060-b6d9-41618083ed72",
+"t2": "e80c7237-239d-42b3-82c5-99409dc28b7d",
+"target": "어떻게 말해요",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0160L01C01",
+"ka": "312c2034-775a-4646-a54a-3a7312d137ed",
+"known": "how",
+"pos": 1,
+"t1": "135d8ad6-01f5-4a58-830b-cdc5a00dacde",
+"t2": "4f823d6a-20fa-4848-a7b1-886c3dcfb964",
+"target": "어떻게",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0160L01C02",
+"ka": "e41c27c6-d2f4-4494-b9c9-956bd3fd253b",
+"known": "say",
+"pos": 2,
+"t1": "b4dd9b8e-8b50-4b01-9b2e-199f3fd43eb1",
+"t2": "fc4c3063-4254-4a59-be9b-05350380bbba",
+"target": "말해요",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0160L01B01",
+"ka": "98d523e2-7acf-43ec-bf3c-51f79ee278a1",
+"known": "how do you say",
+"pos": 3,
+"t1": "2927fec8-00a3-4060-b6d9-41618083ed72",
+"t2": "e80c7237-239d-42b3-82c5-99409dc28b7d",
+"target": "어떻게 말해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L01B02",
+"ka": "98d523e2-7acf-43ec-bf3c-51f79ee278a1",
+"known": "how do you say",
+"pos": 4,
+"t1": "2927fec8-00a3-4060-b6d9-41618083ed72",
+"t2": "e80c7237-239d-42b3-82c5-99409dc28b7d",
+"target": "어떻게 말해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L01B03",
+"ka": "0bc740fb-617f-41d6-8727-24769a5206bc",
+"known": "but how do you say",
+"pos": 5,
+"t1": "4b6b9c99-50ff-452b-b1c9-f127d65dc802",
+"t2": "f616607d-243c-4bdb-b2c3-de10c072ed52",
+"target": "하지만 어떻게 말해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L01B04",
+"ka": "44daf6c1-3295-4b33-a871-0def7c7e42e2",
+"known": "so how do you say",
+"pos": 6,
+"t1": "e0c3d53c-893e-4c60-805d-17fd6c0a5b59",
+"t2": "e4d127cd-99ae-450d-b233-47db84e652c9",
+"target": "그래서 어떻게 말해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L01U01",
+"ka": "fb40468f-f2d2-43df-a274-e49d22450aa1",
+"known": "how do you say it",
+"pos": 7,
+"t1": "2927fec8-00a3-4060-b6d9-41618083ed72",
+"t2": "e80c7237-239d-42b3-82c5-99409dc28b7d",
+"target": "어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L01U02",
+"ka": "fbf322cc-d058-41a5-a582-5b38907aa473",
+"known": "but how do you say it",
+"pos": 8,
+"t1": "4b6b9c99-50ff-452b-b1c9-f127d65dc802",
+"t2": "f616607d-243c-4bdb-b2c3-de10c072ed52",
+"target": "하지만 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L01U03",
+"ka": "dfe6443c-88e2-4379-924c-5f137eaa21a6",
+"known": "so how do you say it",
+"pos": 9,
+"t1": "e0c3d53c-893e-4c60-805d-17fd6c0a5b59",
+"t2": "e4d127cd-99ae-450d-b233-47db84e652c9",
+"target": "그래서 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L01U04",
+"ka": "fc660654-6cc1-4043-a2bb-8be87c4bb76d",
+"known": "I'm sorry how do you say it",
+"pos": 10,
+"t1": "233e063a-1ee9-4ee9-bbc0-9e11efb73737",
+"t2": "c25c5f44-d8fb-4e33-b662-c13f6f23d48b",
+"target": "미안해요 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L01U05",
+"ka": "29de26bc-e15e-41e5-a9a4-c3cae24f8ca7",
+"known": "really how do you say it",
+"pos": 11,
+"t1": "0ba89db8-69cf-4617-b6b1-627513481ca9",
+"t2": "009bd93c-e606-46c2-b6bd-37c128a4b092",
+"target": "정말 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L01U06",
+"ka": "decfccb4-2c40-4b26-9b88-28c1717cc37f",
+"known": "yes how do you say it",
+"pos": 12,
+"t1": "c9b94945-be63-4daa-b594-677b351dde6c",
+"t2": "e58f4e81-e7d0-4a57-b9c3-65a7a9eb8827",
+"target": "네 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L01U07",
+"ka": "6ab11a8e-f8b5-448f-9559-f3890c53fc38",
+"known": "we want to know how to say it",
+"pos": 13,
+"t1": "513fd97c-0250-4c1d-84b4-a4b12f443be6",
+"t2": "6d3833bb-1c8e-4ffe-98fa-fc886ef8dd65",
+"target": "우리는 어떻게 말하는지 알고 싶어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L01U08",
+"ka": "3e1e3d85-42f9-4e15-8bad-ee649fbfc71e",
+"known": "no problem how do you say it",
+"pos": 14,
+"t1": "b188b468-3f1a-4ec5-a77b-81f424ba6fa9",
+"t2": "2eaf73af-b1f4-44c6-b5c7-cd047c56d7c0",
+"target": "문제없어요 어떻게 말해요",
+"type": "use"
+}
+],
+"target": "어떻게 말해요",
+"type": "M"
+},
+{
+"id": "S0160L02",
+"idx": 2,
+"is_new": true,
+"known": "this word in Korean",
+"phrases": [
+{
+"id": "ac206d2b-38df-41e5-a7ed-8206c93eb307",
+"ka": "479281ec-5604-491d-afc0-df5280371b72",
+"known": "this word in Korean",
+"pos": 0,
+"t1": "9e29d483-2d3e-4663-9645-f7668ee41e77",
+"t2": "1d6094c7-ae9f-41a5-8f6c-7b8afe41fbd5",
+"target": "이 단어를 한국어로",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0160L02C01",
+"ka": "4b9ca578-c431-4d77-8b34-b354eb69e5e8",
+"known": "this",
+"pos": 1,
+"t1": "94d37a26-e939-4b50-b7c5-df256e1d12d2",
+"t2": "11deb762-5b2a-4319-bcbd-c6d1ec8218d5",
+"target": "이",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0160L02C02",
+"ka": "c6281347-b3c6-4ca7-b693-12ac15e29a03",
+"known": "word",
+"pos": 2,
+"t1": "6b2f18a3-48a4-4db3-9af7-916471614b7f",
+"t2": "76e1f384-5731-4ce0-bb66-454202ca8487",
+"target": "단어를",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0160L02C03",
+"ka": "f0305af0-7861-4a94-804c-571d35b9a39d",
+"known": "in Korean",
+"pos": 3,
+"t1": "24ba4bae-42ad-47ab-ba26-11314e7ea54a",
+"t2": "97fa2f74-830a-459e-8c0f-024cecaf3be8",
+"target": "한국어로",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0160L02B01",
+"ka": "479281ec-5604-491d-afc0-df5280371b72",
+"known": "this word in Korean",
+"pos": 4,
+"t1": "9e29d483-2d3e-4663-9645-f7668ee41e77",
+"t2": "1d6094c7-ae9f-41a5-8f6c-7b8afe41fbd5",
+"target": "이 단어를 한국어로",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L02B02",
+"ka": "479281ec-5604-491d-afc0-df5280371b72",
+"known": "this word in Korean",
+"pos": 5,
+"t1": "9e29d483-2d3e-4663-9645-f7668ee41e77",
+"t2": "1d6094c7-ae9f-41a5-8f6c-7b8afe41fbd5",
+"target": "이 단어를 한국어로",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L02B03",
+"ka": "90665518-a37f-4bdd-830c-4eb00cc357d1",
+"known": "how do you say this word in Korean",
+"pos": 6,
+"t1": "ee6bf1fc-d543-4274-966a-2d45afcf77b8",
+"t2": "ec438985-c4dd-4a45-bb05-9dec8f012eae",
+"target": "이 단어를 한국어로 어떻게 말해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L02B04",
+"ka": "833d87ef-727e-4265-b3d8-d9bc0177b38f",
+"known": "but this word in Korean",
+"pos": 7,
+"t1": "91ca76ca-811b-4687-8462-f6bb4f0e85a0",
+"t2": "7c958183-ea67-457b-a9d8-e6d52d485bad",
+"target": "하지만 이 단어를 한국어로",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0160L02U01",
+"ka": "90665518-a37f-4bdd-830c-4eb00cc357d1",
+"known": "how do you say this word in Korean",
+"pos": 8,
+"t1": "ee6bf1fc-d543-4274-966a-2d45afcf77b8",
+"t2": "ec438985-c4dd-4a45-bb05-9dec8f012eae",
+"target": "이 단어를 한국어로 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L02U02",
+"ka": "3d08b2ba-e932-4dd4-8257-3aa84b5b55cd",
+"known": "but how do you say this word in Korean",
+"pos": 9,
+"t1": "6db49888-cad9-473c-a9fe-6a3c8059ed98",
+"t2": "037d16e2-fe18-4b8d-90ef-9b49d155c192",
+"target": "하지만 이 단어를 한국어로 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L02U03",
+"ka": "05a0d9c8-73da-4a8f-acc2-872af299d98d",
+"known": "I'm sorry how do you say this word in Korean",
+"pos": 10,
+"t1": "ba1c4f28-1016-4fc1-b4ff-89368d80f4ad",
+"t2": "56ddc525-e4f1-4355-aa95-0990ad143a7c",
+"target": "미안해요 이 단어를 한국어로 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L02U05",
+"ka": "9fc28825-2817-409c-aef5-14b11391df3c",
+"known": "really how do you say this word in Korean",
+"pos": 12,
+"t1": "67ccd47f-5d1e-40ab-9299-d4c60af28886",
+"t2": "cb533dd5-89a9-47d5-9994-a7d95bc1586c",
+"target": "정말 이 단어를 한국어로 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L02U06",
+"ka": "eb882798-431c-4864-ae64-42b4a00604ea",
+"known": "so how do you say this word in Korean",
+"pos": 13,
+"t1": "8ca54e3c-b087-472d-9020-f6660b2b3d3c",
+"t2": "593dce32-7d61-4853-8197-3e5f143490b9",
+"target": "그래서 이 단어를 한국어로 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L02U08",
+"ka": "3fe6d0a4-e33c-4eed-b022-1cf590e247f4",
+"known": "yes how do you say this word in Korean",
+"pos": 15,
+"t1": "54fbb0c8-f519-40df-a1d3-f6db0304e35f",
+"t2": "1b92cecd-3300-4f1f-9479-73cf4c56f070",
+"target": "네 이 단어를 한국어로 어떻게 말해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0160L02U09",
+"ka": "d5bbd94b-8445-45b2-9c2e-4455034781a3",
+"known": "need to change this word into Korean",
+"pos": 16,
+"t1": "2e532e99-ff78-4a68-a6d2-d1e94010bda7",
+"t2": "20968b43-3380-42df-aa80-2fe585d2f346",
+"target": "이 단어를 한국어로 바꿔야 해요",
+"type": "use"
+}
+],
+"target": "이 단어를 한국어로",
+"type": "M"
+}
+],
+"status": "released",
+"target": "이 단어를 한국어로 어떻게 말해요?"
+},
+"325": {
+"at": "2026-11-18T18:42:34Z",
+"known": "I think that he needs to consider ten possible problems",
+"legos": [
+{
+"id": "S0325L01",
+"idx": 1,
+"is_new": true,
+"known": "problems",
+"phrases": [
+{
+"id": "82ed4f1c-1b7e-4220-9dc3-88ac47ae8cad",
+"ka": "8c48dbb4-ffcf-49dc-829f-e5bcf76e42be",
+"known": "problems",
+"pos": 0,
+"t1": "a0a61b98-d75e-4b4a-9610-4c79f84aa43b",
+"t2": "96cd2349-e287-465f-938a-fd5bc2bfc6a2",
+"target": "문제를",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0325L01B04",
+"ka": "3cd34494-6833-4dbb-8595-c52d0e66eca7",
+"known": "five problems",
+"pos": 9,
+"t1": "35d54c07-d135-4bb6-8e4a-7456b17edc19",
+"t2": "333dc02e-ae8f-4208-a94c-ab2694da1b76",
+"target": "다섯 문제를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L01B05",
+"ka": "1bc5b637-a323-4137-8f5b-9e1babfe1ff9",
+"known": "other problems",
+"pos": 10,
+"t1": "5b523cf1-5529-4a72-9b12-ef4c04ce7dae",
+"t2": "470c911e-691a-4ffa-af40-9434436696a9",
+"target": "다른 문제를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L01B06",
+"ka": "5ee26a44-333a-4339-8c00-f62e351ff4d7",
+"known": "I'm trying to find problems",
+"pos": 11,
+"t1": "b3cf28e6-c0c6-4828-ac96-c9c86e800a5e",
+"t2": "2816e19d-2696-4531-b968-edf0a3e0fd9e",
+"target": "문제를 찾으려고 해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L01B07",
+"ka": "b1ba3189-13b7-4218-bfc7-cea75f15d2aa",
+"known": "I can't remember the problems",
+"pos": 12,
+"t1": "9ae3367a-8a5d-4555-b0cc-d521f223ed9f",
+"t2": "479e2a15-533e-467f-b29e-abc575858112",
+"target": "문제를 기억하지 못해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L01U06",
+"ka": "08fda17e-53e0-4107-9a0a-0219aa55495a",
+"known": "this time you should consider similar problems",
+"pos": 13,
+"t1": "07457eae-a576-4f00-af0d-6b46e66701b7",
+"t2": "aab8a0cf-06ee-47a7-a0e2-f3147167472e",
+"target": "이번에는 비슷한 문제를 생각해 봐야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L01U07",
+"ka": "cd7b756f-3818-4639-8268-52e73ab132e8",
+"known": "I have never seen the same problems before",
+"pos": 14,
+"t1": "8d22875d-6378-47d3-a113-3d38be826be0",
+"t2": "187ba3f6-f900-4a71-9aab-7146e56e19a7",
+"target": "전에 같은 문제를 본 적 없어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L01U08",
+"ka": "555c20ec-6101-4ca2-8038-2b42ca7435b6",
+"known": "nobody knew the problems",
+"pos": 15,
+"t1": "20e06649-cee3-4d6d-b403-13d9879fdc52",
+"t2": "d5a82a78-e538-4736-a31b-238f2004691c",
+"target": "아무도 문제를 몰랐어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L01U09",
+"ka": "86d3f68d-e4b7-49ee-b2cb-82c0cf01ece4",
+"known": "do you want to talk about other problems next week",
+"pos": 16,
+"t1": "5967019c-a641-46de-bba8-8e0afc7af6db",
+"t2": "e1143f6e-b6eb-4573-8ead-4700d18789d1",
+"target": "다음 주에 다른 문제를 이야기하고 싶어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L01U10",
+"ka": "7b1ff235-cc58-4973-8e41-9eb60c9e21bf",
+"known": "I can write five problems tonight",
+"pos": 17,
+"t1": "b6b49c48-9ee4-4b49-bb8d-3267fcedc0f1",
+"t2": "c95abf32-7c11-495d-8e84-684d4cc10b73",
+"target": "오늘 밤에 다섯 문제를 쓸 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L01U11",
+"ka": "e3dffeb4-1bc5-4dfc-b9b9-ed6b485b6705",
+"known": "before you start I have to find out the problems",
+"pos": 18,
+"t1": "3382dfe2-1dae-4381-a5ba-fec652753c0c",
+"t2": "1f712472-76db-467d-9905-baada014bdf4",
+"target": "시작하기 전에 문제를 알아내야 해요",
+"type": "use"
+}
+],
+"target": "문제를",
+"type": "A"
+},
+{
+"id": "S0325L02",
+"idx": 2,
+"is_new": true,
+"known": "possible problems",
+"phrases": [
+{
+"id": "fc68bff1-87fb-4cf3-94d9-57f79fff4e81",
+"ka": "c5fc9639-5717-4352-a8ca-2fca95f06d9b",
+"known": "possible problems",
+"pos": 0,
+"t1": "893aca28-06e5-4425-a990-3faf6bbc533c",
+"t2": "c8d6a31b-e54d-47c1-a6d2-4427ad981f36",
+"target": "가능한 문제",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0325L02B01",
+"ka": "dec0a97d-ac7e-4630-88b2-47ca0ce61a33",
+"known": "possible",
+"pos": 1,
+"t1": "1650222a-c8be-42e3-bc0e-a6b865a6b518",
+"t2": "d20109a5-6686-4102-84db-8aede195b2d1",
+"target": "가능한",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L02B02",
+"ka": "c5fc9639-5717-4352-a8ca-2fca95f06d9b",
+"known": "possible problems",
+"pos": 2,
+"t1": "15038a0f-4534-4abb-badc-90f0f49ae03e",
+"t2": "a6446bc1-9e71-4e2f-b378-b211fbb1568e",
+"target": "가능한 문제를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L02B03",
+"ka": "33ef251c-464b-4e1b-8eef-569d23206978",
+"known": "most important possible problems",
+"pos": 3,
+"t1": "2c0e05da-bf3d-4b50-83f9-6ec23c1885e4",
+"t2": "9e0fb755-77b6-4aa6-8742-017611c80f92",
+"target": "가장 중요한 가능한 문제를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L02U01",
+"ka": "dd3e9654-f509-47ee-b0a3-d3b5dd4209ac",
+"known": "I know about possible problems",
+"pos": 4,
+"t1": "867985c5-be88-419e-9fe0-377c0e40464a",
+"t2": "7c66c6b4-07c2-46a5-a321-e4778143ca8b",
+"target": "가능한 문제를 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L02U02",
+"ka": "b69919d8-05e4-46ba-a666-01e98dfd6052",
+"known": "I know there are most important possible solutions",
+"pos": 5,
+"t1": "0eb3125d-cefd-459a-8321-389604eae8c3",
+"t2": "29c28f8c-f712-416e-a96e-4a3ab7078120",
+"target": "가장 중요한 가능한 것을 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L02U03",
+"ka": "c76772f2-558d-4e8b-b904-edf26f2e9801",
+"known": "I think it's possible",
+"pos": 6,
+"t1": "c9722480-edd7-4d4b-ba38-2ce1eb4b72ab",
+"t2": "faf64f1e-262e-4cd3-9627-53406040ea47",
+"target": "가능한 것 같아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L02U04",
+"ka": "37502dc2-2a2e-4496-b70a-1e0da5ebf43e",
+"known": "I know she needed to consider possible problems",
+"pos": 7,
+"t1": "57997417-b885-4dba-b955-345175340e3e",
+"t2": "dc6df2cd-e5e2-4d33-a2b0-e769117f067d",
+"target": "가능한 문제를 생각해 봐야 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L02U05",
+"ka": "9a13acfc-5c7c-4b0c-8758-9438479669f4",
+"known": "I know she doesn't need to worry about possible problems",
+"pos": 8,
+"t1": "a54e4135-8e9e-423f-9d12-f3e6d928de90",
+"t2": "ddf6c94c-b109-49c4-acd3-e11a705b7bc0",
+"target": "가능한 문제를 생각해 봐야 할 필요가 없어요",
+"type": "use"
+}
+],
+"target": "가능한 문제",
+"type": "M"
+},
+{
+"id": "S0325L03",
+"idx": 3,
+"is_new": true,
+"known": "ten",
+"phrases": [
+{
+"id": "a4d95a57-4f33-4ab4-afa0-3435934577fe",
+"ka": "3f0e0c02-0067-4827-8998-c59c09cf8250",
+"known": "ten",
+"pos": 0,
+"t1": "ba6e406a-46ef-4b59-a77c-eb9db83e9e75",
+"t2": "83f1425f-eb0c-4fc7-ad08-7a101b927ab3",
+"target": "열",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0325L03B04",
+"ka": "b9bb5739-e684-4b0a-8f38-ac41510de187",
+"known": "ten games",
+"pos": 9,
+"t1": "5c7429f0-552a-4731-bbeb-9be449ad1c5f",
+"t2": "834a12f3-de20-49c9-bcb2-932d163eb30a",
+"target": "열 경기를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L03B05",
+"ka": "f656494e-4362-47f9-adaa-76b16518188b",
+"known": "the ten facts",
+"pos": 10,
+"t1": "d02763b3-4f50-4935-aa8b-f22c4e383214",
+"t2": "d02763b3-4f50-4935-aa8b-f22c4e383214",
+"target": "열 가지 사실을",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L03B06",
+"ka": "2940a31f-3e44-44fb-b941-c5f7535158a3",
+"known": "couldn't watch all ten games",
+"pos": 11,
+"t1": "51a2b961-d486-4454-ac54-9aa92b7d7231",
+"t2": "d73148e4-f0be-4c83-a170-f62045f816a8",
+"target": "열 경기를 다 볼 수 없다고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L03U06",
+"ka": "cc12a544-bdfa-470a-ad01-a755a51efe4b",
+"known": "before I answer I should consider ten problems",
+"pos": 12,
+"t1": "35e2984d-14b6-4fba-a529-a4020845110c",
+"t2": "d1b52351-9819-4e51-85d8-ee9736119eb0",
+"target": "제가 대답하기 전에 열 가지 문제를 생각해 봐야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L03U07",
+"ka": "8c61d1a1-b833-4e88-8a26-51465523e10e",
+"known": "I can write ten things about that man",
+"pos": 13,
+"t1": "1e3f0363-3bad-479b-9e5f-256e4f7e167b",
+"t2": "fdc09022-772c-48f2-ab0b-bfba388aa9e4",
+"target": "그 남자에 대해 열 가지 쓸 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L03U08",
+"ka": "156c7084-38f4-4b54-93ed-bccb635c3d0e",
+"known": "I have to find out ten facts",
+"pos": 14,
+"t1": "afd5e0b5-0f94-46e3-9b13-db03fdae05ba",
+"t2": "fd47c84c-6b92-4007-a402-456b1d097cbd",
+"target": "열 가지 사실을 알아내야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L03U09",
+"ka": "02e6f7f2-f3a4-4d2c-812e-b0ea81afd82b",
+"known": "I wonder if you know the ten facts",
+"pos": 15,
+"t1": "27a2fcbf-0a4b-4837-8ba9-32f0ebeb7a1f",
+"t2": "f74959b5-1ff4-471b-9cf3-4df7b6c540d1",
+"target": "열 가지 사실을 알고 있는지 궁금해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L03U10",
+"ka": "1d856ad6-88a4-49f6-b401-9970320f93b4",
+"known": "you don't need to know the ten facts",
+"pos": 16,
+"t1": "89073df1-26c4-4b07-97f2-2a0d5307d59e",
+"t2": "8ffd75a7-d351-4cd3-a55a-7fb21ed56343",
+"target": "열 가지 사실을 알 필요는 없어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L03U11",
+"ka": "de0dc092-4f71-4e61-8987-3548d32861b9",
+"known": "why should we consider ten problems",
+"pos": 17,
+"t1": "a79df370-f703-406a-b462-9da986355308",
+"t2": "9cdaaab7-1e29-413e-9f0d-97797c26059d",
+"target": "왜 열 가지 문제를 생각해 봐야 해요",
+"type": "use"
+}
+],
+"target": "열",
+"type": "A"
+},
+{
+"id": "S0325L04",
+"idx": 4,
+"is_new": true,
+"known": "kinds",
+"phrases": [
+{
+"id": "10f878e7-2a29-4845-b39a-8b255a798e1e",
+"ka": "53bb7418-07f7-4633-8bec-a7dfef2ab9a3",
+"known": "kinds",
+"pos": 0,
+"t1": "eebf4044-e061-4889-b876-86ffb25308c9",
+"t2": "392ed438-ce6f-4b75-a1e0-2f8b8280d993",
+"target": "가지",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0325L04B04",
+"ka": "450cc857-3b7a-497e-b662-04c8b8619763",
+"known": "one or two kinds",
+"pos": 9,
+"t1": "b33131ec-81a2-48b6-9681-f1751607dab1",
+"t2": "6dcad63e-927b-4ac3-a36c-70877ccf8a4e",
+"target": "한두 가지",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L04B05",
+"ka": "b55d1781-584c-4b13-81a7-a0a1d702d59b",
+"known": "five kinds of interesting things",
+"pos": 10,
+"t1": "fce4a83f-2e6d-4c54-a503-57ccaf596864",
+"t2": "bd718e7b-f8ae-47a9-9ac3-1c5f494a9f0c",
+"target": "다섯 가지 재미있는 걸",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L04U06",
+"ka": "3737d7fa-0c2a-448d-9c9c-a734c83e6fa8",
+"known": "I have never seen five kinds of games",
+"pos": 11,
+"t1": "74539cf0-4421-42f8-a143-8596a69c14da",
+"t2": "8b175d5f-7fd5-492b-a6b8-90db1ab7abeb",
+"target": "다섯 가지 경기를 본 적 없어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L04U07",
+"ka": "027c7b3e-4614-4fab-9259-1b3f1dd912e3",
+"known": "I wanted to show you one or two kinds of interesting things",
+"pos": 12,
+"t1": "a29092ab-727f-4cb9-b334-0a20474d9001",
+"t2": "bbeed8aa-3894-4a2c-a3d3-79d671d368c8",
+"target": "한두 가지 재미있는 걸 보여 주고 싶었어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L04U08",
+"ka": "3eb9598d-64ed-42a7-9bbe-59e4209c8f74",
+"known": "you don't need to know ten kinds of similar problems",
+"pos": 13,
+"t1": "94798057-803d-4c1c-bdd8-1ad4c399ad5a",
+"t2": "06cf5f6d-015a-414f-97bf-177e4a0232b4",
+"target": "열 가지 비슷한 문제를 알 필요는 없어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L04U09",
+"ka": "36f8b80b-34ce-4932-be01-a8e86847b076",
+"known": "why should I consider ten kinds of problems",
+"pos": 14,
+"t1": "f67607be-ca76-4d5c-b4fe-f52c4f46ad07",
+"t2": "d4d5c8c4-579d-4fb3-afbc-5cf076da48ac",
+"target": "왜 문제를 열 가지 생각해 봐야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L04U10",
+"ka": "fbc98444-4ee7-4214-bd21-34e8ac44e98c",
+"known": "before you start you should consider five kinds of problems",
+"pos": 15,
+"t1": "3359a903-e959-474c-a63a-a1bf59c0c50d",
+"t2": "2056dd36-29a5-4ae7-981b-ac791f8b1712",
+"target": "시작하기 전에 문제를 다섯 가지 생각해 봐야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L04U11",
+"ka": "0e5ac451-db66-4737-9b22-a57e8217b101",
+"known": "you can write ten kinds of interesting things",
+"pos": 16,
+"t1": "acaa0007-f841-4b19-b24b-31429a18fe7d",
+"t2": "31b8731d-7503-4523-b3be-d49c3939caeb",
+"target": "재미있는 걸 열 가지 쓸 수 있어요",
+"type": "use"
+}
+],
+"target": "가지",
+"type": "A"
+},
+{
+"id": "S0325L05",
+"idx": 5,
+"is_new": true,
+"known": "needs to consider",
+"phrases": [
+{
+"id": "856a6ecb-bd59-4236-b896-1ade3ecac4cf",
+"ka": "b419a505-24f0-4ea2-8909-e7ebcbb1726d",
+"known": "needs to consider",
+"pos": 0,
+"t1": "cae51d45-bc40-4082-81d3-088267577bd6",
+"t2": "0d3321b9-9b0f-4908-a435-8d2c7daf3bfc",
+"target": "생각해 봐야",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0325L05C01",
+"ka": "a262d235-285e-4597-9b4d-5612b4add657",
+"known": "consider",
+"pos": 1,
+"t1": "a0f7ba58-890e-43ca-8cce-ee984be8c0d1",
+"t2": "461544da-5327-42f1-b7b8-09cb12ad5a0a",
+"target": "생각해",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0325L05C02",
+"ka": "59520b5e-cba3-441e-a62b-d3b23ce36d93",
+"known": "needs to",
+"pos": 2,
+"t1": "cb15239a-07c5-4b5b-b036-68a96c0f28c1",
+"t2": "8f738354-a27c-4deb-ae90-c0efa07d1e0a",
+"target": "봐야",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0325L05B04",
+"ka": "805c4a77-1162-4d3c-aa27-98f6e8b8d3c9",
+"known": "needs to consider the problem",
+"pos": 11,
+"t1": "ff4bd1c6-0791-4fe7-b4ba-a5a4bac37636",
+"t2": "f771eac4-7949-4188-8143-08b8fa7b1cca",
+"target": "그 문제를 생각해 봐야",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L05B05",
+"ka": "fbf25485-8b5b-45c6-b3eb-0d30f3ece019",
+"known": "the student needs to consider",
+"pos": 12,
+"t1": "eee3ce08-5dbf-41ea-b6fa-aafa539d8a20",
+"t2": "0ea6fac4-e522-40ef-9815-e206b00cae2d",
+"target": "학생은 생각해 봐야 해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L05B06",
+"ka": "c1457a1b-09f3-4d63-a38e-d1b576d8c564",
+"known": "this time needs to consider ten problems",
+"pos": 13,
+"t1": "dfd9f309-084c-4891-9e8a-242e286d1c45",
+"t2": "eefd175a-41a7-4b71-bbad-db5547160d77",
+"target": "이번에는 열 가지 문제를 생각해 봐야",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L05B07",
+"ka": "1458f65c-4553-4612-b678-91fd0c94e17b",
+"known": "my mother needs to consider the facts",
+"pos": 14,
+"t1": "799d2e1e-5db3-4007-b451-c30c1b5908fb",
+"t2": "adaf51c0-c868-483a-82dd-0c0dfd0eece4",
+"target": "제 어머니는 사실을 생각해 봐야 해요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0325L05U06",
+"ka": "212553ea-440a-4b81-a0ad-391cde54f0d9",
+"known": "my father needs to consider the arrangements before the weekend",
+"pos": 15,
+"t1": "e99cd2e1-9c50-44cf-8448-8b55e889858c",
+"t2": "7a0eba40-e37d-42e9-a5e7-71e2f37691bf",
+"target": "제 아버지는 주말 전에 준비를 생각해 봐야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L05U07",
+"ka": "5983a49e-02f6-4cd0-b703-4badb35b33ba",
+"known": "my son is too busy because he needs to consider the facts",
+"pos": 16,
+"t1": "0ee2f92b-639c-43fb-9f41-83d5afee463e",
+"t2": "c5a88839-0c12-4f1e-942d-5e29cf71bd0a",
+"target": "제 아들은 사실을 생각해 봐야 해서 너무 바빠요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L05U08",
+"ka": "080d166f-c0af-4004-aaae-a27dc928dddc",
+"known": "why do you need to consider the problem tonight",
+"pos": 17,
+"t1": "494f7538-4db8-4ad3-9176-d7e535f4be30",
+"t2": "005c5df6-846f-4a08-9e33-6c0f3373fce6",
+"target": "왜 오늘 밤에 그 문제를 생각해 봐야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L05U09",
+"ka": "c1195889-f8cf-449e-8778-9be9b1f970b7",
+"known": "nobody knew if they needed to consider the problem",
+"pos": 18,
+"t1": "b01655a5-1cec-4d28-ab92-a6b167474d1c",
+"t2": "a52add04-9d9c-4bae-b028-8fe248fad499",
+"target": "아무도 그 문제를 생각해 봐야 하는지 몰랐어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L05U10",
+"ka": "87262072-e7ca-4c65-855f-eb1556d2be8d",
+"known": "after we finish we need to consider ten problems",
+"pos": 19,
+"t1": "1a31a19d-793d-4504-a5f7-28622ca8bed4",
+"t2": "da312c4e-4dea-4bf4-be18-1603628cd609",
+"target": "끝나면 열 가지 문제를 생각해 봐야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0325L05U11",
+"ka": "22b73989-91f5-419b-9799-97cd4ab01162",
+"known": "do you need to consider the facts before the weekend",
+"pos": 20,
+"t1": "fb68552b-326e-4ff4-b23c-5e4c7b59ed5a",
+"t2": "e32343ca-2e57-4d31-b3fe-72c19477764e",
+"target": "주말 전에 사실을 생각해 봐야 해요",
+"type": "use"
+}
+],
+"target": "생각해 봐야",
+"type": "M"
+}
+],
+"status": "released",
+"target": "그가 열 가지 가능한 문제를 생각해 봐야 하는 것 같아요"
+},
+"330": {
+"at": "2026-11-18T18:42:34Z",
+"known": "no I don't think it's very important",
+"legos": [
+{
+"id": "S0330L01",
+"idx": 1,
+"is_new": true,
+"known": "not that important",
+"phrases": [
+{
+"id": "271734ea-2fd0-4c9e-911a-f2323c03dad6",
+"ka": "91fc6c02-94f1-40d8-b182-1dfe98f1dd44",
+"known": "not that important",
+"pos": 0,
+"t1": "c0f04bb6-5786-4b92-9da3-cdfc5879e9f7",
+"t2": "7ed6bd95-8253-4445-b00e-063c3017c759",
+"target": "중요하지 않은",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0330L01B01",
+"ka": "ac90394a-ff67-47ea-a570-7a4270b6b9df",
+"known": "not important",
+"pos": 1,
+"t1": "c0f04bb6-5786-4b92-9da3-cdfc5879e9f7",
+"t2": "7ed6bd95-8253-4445-b00e-063c3017c759",
+"target": "중요하지 않은",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0330L01B02",
+"ka": "6bd1aa4a-ad8c-4aeb-a916-6a8551c442bd",
+"known": "not very important",
+"pos": 2,
+"t1": "04ac9948-d797-4c67-9a96-afdfb7289141",
+"t2": "77a14070-e544-4958-9dbc-2e707eba0fa9",
+"target": "별로 중요하지 않은",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0330L01B03",
+"ka": "49465f30-cad6-48ca-8b65-35b01dc90c7e",
+"known": "no not very important",
+"pos": 3,
+"t1": "b6fa43d0-ed34-4ee5-85e1-e3440fcbd848",
+"t2": "f3763da7-ecc4-4027-a8ad-acaeb2f4f1f4",
+"target": "아니요 별로 중요하지 않은",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0330L01U01",
+"ka": "92b2f4d0-576b-42b5-b344-d0e9668185c2",
+"known": "no I don't think it's very important",
+"pos": 4,
+"t1": "69e81db9-3ac3-48e6-adb2-021c8f7200e1",
+"t2": "0c1cead0-c057-4991-94d7-bf8ceec60212",
+"target": "아니요 별로 중요하지 않은 것 같아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0330L01U02",
+"ka": "633c4e08-3da0-4f32-800e-31dab9b17c0d",
+"known": "I don't think that's very important",
+"pos": 5,
+"t1": "0d079c67-fcfb-4be0-9422-f2b186cfb6f8",
+"t2": "86e010fe-5a16-4f9c-82c8-11d01d294e2d",
+"target": "별로 중요하지 않은 것 같아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0330L01U03",
+"ka": "d729eead-fb80-4f7b-8c99-4f751cb1281b",
+"known": "I know that's not very important",
+"pos": 6,
+"t1": "9805107c-fa88-4abf-b2b4-6faffcad21f3",
+"t2": "dd7cf05b-83b1-479c-8832-83ba6ee70b1f",
+"target": "별로 중요하지 않은 걸 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0330L01U04",
+"ka": "4514e62f-5e94-4408-bff4-ca72f2dd2b62",
+"known": "I know selling the company is not that important",
+"pos": 7,
+"t1": "8e88e0cb-fea4-4e97-9c8f-89c7ead0ab52",
+"t2": "6ee6899f-134b-4e07-afa6-a09bc2c49c6c",
+"target": "회사를 파는 게 별로 중요하지 않다는 걸 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0330L01U05",
+"ka": "fdf8a6cf-1b6e-4cba-afa0-3e34d10b3e33",
+"known": "I know walking to school is not that important",
+"pos": 8,
+"t1": "f9c0ab14-5fa6-4d5e-8f13-c220556c2393",
+"t2": "eed8c014-1e8a-4b2f-b5f7-353d4a39d37a",
+"target": "학교까지 걸어가는 게 별로 중요하지 않다는 걸 알아요",
+"type": "use"
+}
+],
+"target": "중요하지 않은",
+"type": "M"
+}
+],
+"status": "released",
+"target": "아니요 별로 중요하지 않은 것 같아요"
+},
+"380": {
+"at": "2026-11-18T18:42:35Z",
+"known": "I asked what she wanted to include",
+"legos": [
+{
+"id": "S0380L01",
+"idx": 1,
+"is_new": true,
+"known": "include",
+"phrases": [
+{
+"id": "253bf0eb-cab0-419f-817f-9c776494a4e7",
+"ka": "a9bfe953-dfb7-4cad-aa1c-f8752230d341",
+"known": "include",
+"pos": 0,
+"t1": "1455504a-8f6f-4a90-b3d1-1cd448c0309a",
+"t2": "bf60093e-15e7-4d2c-afa5-d0b02fba3a95",
+"target": "포함하고",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0380L01B04",
+"ka": "daecfe62-0897-4032-a74a-95e059e7ab1c",
+"known": "include a message",
+"pos": 9,
+"t1": "647ed4e6-56f0-43f6-8596-5072987aa3cf",
+"t2": "2809b684-28b0-49a9-b0bc-4512b4149e1e",
+"target": "메시지를 포함하고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L01B05",
+"ka": "954eb3e0-a9c6-4e1f-aa4b-e7ccdf8f8d63",
+"known": "who doesn't want to include that place",
+"pos": 10,
+"t1": "42ede9a5-5a5b-40eb-9a0b-fb5ebeb5e909",
+"t2": "9a1bc48e-2943-41fd-9143-02a6c0863b6e",
+"target": "그곳을 포함하고 싶어하지 않는",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L01B06",
+"ka": "76d99c90-7d2f-4995-9fd6-fcadda455abc",
+"known": "he said he wants to include it",
+"pos": 11,
+"t1": "6764b46c-151c-40e1-aede-2b9ba4281820",
+"t2": "c318caaf-80aa-4854-a3a8-67fa3d4c9608",
+"target": "그걸 포함하고 싶다고 했어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L01U06",
+"ka": "c3a206cb-1063-4d1f-a867-511347b18b51",
+"known": "nobody told me she wanted to include a message",
+"pos": 12,
+"t1": "b2ffea10-149c-46ff-8584-66f95dfea1f3",
+"t2": "c59858f4-e00e-4a83-be80-2a9e5cbd8927",
+"target": "메시지를 포함하고 싶어한다고 아무도 저한테 말 안 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L01U07",
+"ka": "2f4b2f3f-c58a-4d50-b262-ac96fabe6bbc",
+"known": "my mother said she doesn't want to include that place",
+"pos": 13,
+"t1": "f49841f2-f530-4e54-9e28-417c3c73bf65",
+"t2": "279fc3cb-9fad-4009-ae50-ed928e952fa8",
+"target": "제 어머니는 그곳을 포함하고 싶지 않다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L01U08",
+"ka": "e225024b-3ad2-470b-8c43-fcd48f45b1d1",
+"known": "why did he say he wants to include tomatoes",
+"pos": 14,
+"t1": "31b393ef-48ee-48a3-a264-178420d40f0b",
+"t2": "0966e1fe-4436-4d2a-afe5-b8f7d533f77c",
+"target": "왜 토마토를 포함하고 싶다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L01U09",
+"ka": "11cdac16-5cf8-4c38-ad80-3bf80541923f",
+"known": "the student who doesn't want to include tomatoes is holding up both hands",
+"pos": 15,
+"t1": "ae719cd4-3539-4ef7-931f-fda404f23c64",
+"t2": "60323acb-d227-40ef-a212-b44b2d1bfc31",
+"target": "토마토를 포함하고 싶어하지 않는 학생은 양손을 들고 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L01U10",
+"ka": "2601c514-beda-454f-b7d3-e32a8e2bfda7",
+"known": "this time he said he wants to include a message",
+"pos": 16,
+"t1": "6014df3f-ea3c-479b-b974-487df5551d73",
+"t2": "837756f7-74c1-4a3a-9c83-13f4225da109",
+"target": "이번에는 메시지를 포함하고 싶다고 했어요",
+"type": "use"
+}
+],
+"target": "포함하고",
+"type": "A"
+},
+{
+"id": "S0380L02",
+"idx": 2,
+"is_new": true,
+"known": "she wanted to",
+"phrases": [
+{
+"id": "a84423f9-0647-42dd-a7c0-7b067bf9d652",
+"ka": "f58e45e4-6538-40ba-943f-6d76238e0bf6",
+"known": "she wanted to",
+"pos": 0,
+"t1": "cf728e24-75bf-491b-a809-fbd2a69924a9",
+"t2": "439e5093-c872-4231-ba59-5d3aaa0c64fd",
+"target": "싶어하는지",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0380L02C01",
+"ka": "37df032d-56c6-426c-9012-22e192943ef6",
+"known": "wants",
+"pos": 1,
+"t1": "31ff1402-aec6-4682-a3f3-81377f656885",
+"t2": "6add3f87-b5c6-4fc2-8661-b8ba77d75bb4",
+"target": "싶은",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0380L02C02",
+"ka": "4f34ebd1-5f52-4e38-afcd-2d73f0b159ab",
+"known": "things",
+"pos": 2,
+"t1": "e24cfb84-ce0e-4c46-9ac6-de593a9d4165",
+"t2": "8c9fb1e5-21b3-4fdf-92e0-f8fa710003b2",
+"target": "게",
+"type": "component"
+},
+{
+"id": "kor_for_eng:S0380L02B01",
+"ka": "37df032d-56c6-426c-9012-22e192943ef6",
+"known": "wants",
+"pos": 3,
+"t1": "d5018eb4-f3df-486c-9ec3-2c8f8a095979",
+"t2": "c2fa25c2-3442-4cc6-a6b6-b655db639375",
+"target": "싶은 게",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L02B02",
+"ka": "04d084bb-e8d8-49d5-b420-b949cef4c0fa",
+"known": "wants to include",
+"pos": 4,
+"t1": "4fc04e8b-f963-41ad-ab6e-21b338523075",
+"t2": "792d531b-2284-48cb-880c-1e7e8c6d74fd",
+"target": "포함하고 싶은 게",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L02B03",
+"ka": "5e5a6d20-4006-4894-884f-2abb61c045f8",
+"known": "wants to include what",
+"pos": 5,
+"t1": "d8abdd78-3c70-4273-83bf-72523e10225b",
+"t2": "ce37d9c1-c624-471d-9329-df434c7ea942",
+"target": "포함하고 싶은 게 뭔지",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L02U01",
+"ka": "e6bc0656-4ff9-4915-874f-13a7e36493e7",
+"known": "she knows what he wants to include",
+"pos": 6,
+"t1": "840b0549-e3a1-4811-84dc-9c42786cd249",
+"t2": "be3cb1a3-4357-4edf-978a-17eb87a161b0",
+"target": "포함하고 싶은 게 뭔지 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L02U02",
+"ka": "0026c894-5e2b-4611-ae83-164d5b55662d",
+"known": "I know what she wants",
+"pos": 7,
+"t1": "bad31031-44fd-4a0b-b10a-7b715ba77826",
+"t2": "4f6dca22-099e-47a7-891b-2a2f12f71e8c",
+"target": "싶은 게 뭔지 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L02U03",
+"ka": "9550d802-110d-4f5b-9b6e-e7200747ff70",
+"known": "she wants to include something important",
+"pos": 8,
+"t1": "97709461-fa74-4d93-a732-e606da269e83",
+"t2": "c029eb6b-b2d3-487f-a115-365f121596d0",
+"target": "중요한 걸 포함하고 싶은 게 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L02U04",
+"ka": "48b1d8fb-120c-4146-ad1a-fde0a182fec3",
+"known": "she knows what she wants to include",
+"pos": 9,
+"t1": "0eae3a00-8490-4cf1-a9d9-ed741e18a363",
+"t2": "e72a1132-ef03-4088-b9f4-0a56ca96b81c",
+"target": "그녀는 포함하고 싶은 게 뭔지 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L02U05",
+"ka": "e69cd07f-157e-425f-95ab-c16a9a863583",
+"known": "I know what she wants today",
+"pos": 10,
+"t1": "aa08cb18-9093-40c9-a34c-2727c55c0a0f",
+"t2": "977970bc-5bce-4dcd-ad45-a8de25eed18c",
+"target": "오늘 싶은 게 뭔지 알아요",
+"type": "use"
+}
+],
+"target": "싶어하는지",
+"type": "M"
+},
+{
+"id": "S0380L03",
+"idx": 3,
+"is_new": true,
+"known": "asked",
+"phrases": [
+{
+"id": "34b6554c-4493-481d-a372-72fda99560cc",
+"ka": "1baa1e09-0b39-40b8-9f46-dd3edd447113",
+"known": "asked",
+"pos": 0,
+"t1": "afeb3aae-7c40-4567-b111-2427fd4a78df",
+"t2": "e91b1645-c36b-481c-88c5-f142f0542516",
+"target": "물어봤어요",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0380L03B04",
+"ka": "c0d0d574-8112-428b-842b-85d5b7223a8e",
+"known": "asked him",
+"pos": 10,
+"t1": "73d314d0-ea65-473d-8a62-66cced56bb22",
+"t2": "a0616ed3-578d-465c-be77-0690c1f42984",
+"target": "그한테 물어봤어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L03B05",
+"ka": "f5722cf2-35a0-45ff-a7a9-9a87cacdc3cb",
+"known": "asked on wednesday",
+"pos": 11,
+"t1": "b9800434-029b-40f1-9412-141e0af15328",
+"t2": "92e6ebcf-5997-4e47-b1f4-b64fbd877642",
+"target": "수요일에 물어봤어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L03B06",
+"ka": "3b8588f2-ed40-4010-9b4a-bf4a16eafb5b",
+"known": "my mother asked",
+"pos": 12,
+"t1": "fcd3aafa-b443-463b-8e79-c744bec12e67",
+"t2": "c5f73e0e-630a-4a90-aae8-ea7465364132",
+"target": "제 어머니는 물어봤어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L03B07",
+"ka": "79913d0e-5256-4224-acde-a4a69e486cf1",
+"known": "asked where it was",
+"pos": 13,
+"t1": "8d77222e-cb3e-4231-9b2f-8513f2710422",
+"t2": "13b26c14-9591-413a-9037-57ae916a9768",
+"target": "그게 어디에 있었는지 물어봤어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0380L03U07",
+"ka": "9548ad04-8a77-4a2d-a0e6-ce624f2e33f4",
+"known": "I asked what you were doing on wednesday",
+"pos": 14,
+"t1": "28188091-85db-4511-a404-4c44a8f3d017",
+"t2": "f3149378-704f-4586-9d5f-b43f7cb25320",
+"target": "수요일에 뭘 하고 있었는지 물어봤어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L03U08",
+"ka": "a23916ee-134f-48d9-9d9c-292501313507",
+"known": "why did you ask about that man",
+"pos": 15,
+"t1": "7eb24fdf-e5f9-4141-9dd0-4dfe1a09d859",
+"t2": "52eed9b2-a883-45e6-916b-44bbb6de2eab",
+"target": "왜 그 남자에 대해 물어봤어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L03U09",
+"ka": "b154169f-f8a3-450a-b59a-c62ba2425d1d",
+"known": "I asked him if he'll be able to help next year",
+"pos": 16,
+"t1": "c749f17d-7891-4aba-8f3f-81ad2a2a7035",
+"t2": "72faaa49-dddb-4c3f-ae21-db1a1fd5c6fb",
+"target": "그한테 내년에 도와줄 수 있는지 물어봤어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L03U10",
+"ka": "097fa9aa-55a5-463f-a87a-1e34764c6868",
+"known": "the student asked how to say this word in korean",
+"pos": 17,
+"t1": "5772654d-13d6-4df8-8e90-e8c071430760",
+"t2": "70016455-e8a8-4513-9924-363443c92b5e",
+"target": "학생은 이 단어를 한국어로 어떻게 말하는지 물어봤어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L03U11",
+"ka": "229720b2-a7d5-44c9-bf65-3bd58bf6f6e8",
+"known": "did you ask him last year",
+"pos": 18,
+"t1": "b04f0f5a-44a2-40aa-a241-66ad29215388",
+"t2": "db06ae52-6824-48bb-8c6f-d787d0c836e3",
+"target": "작년에 그한테 물어봤어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0380L03U12",
+"ka": "dc7bd1e6-11f6-488f-a78b-691b4eea769e",
+"known": "my mother asked what you wanted",
+"pos": 19,
+"t1": "1f7c9635-9109-4750-a729-b8823ed8e856",
+"t2": "ac9d53df-562d-4af1-bcb4-f237f76e961f",
+"target": "제 어머니는 뭘 원했는지 물어봤어요",
+"type": "use"
+}
+],
+"target": "물어봤어요",
+"type": "A"
+}
+],
+"status": "released",
+"target": "그녀가 뭘 포함하고 싶어하는지 물어봤어요"
+},
+"399": {
+"at": "2026-11-18T18:42:35Z",
+"known": "we don't want to lose hope",
+"legos": [
+{
+"id": "S0399L01",
+"idx": 1,
+"is_new": true,
+"known": "losing",
+"phrases": [
+{
+"id": "6d0c62cb-daea-40b1-9427-2d052da1a626",
+"ka": "0960b52d-07d5-421e-b1ad-4a1f02a73646",
+"known": "losing",
+"pos": 0,
+"t1": "c8fe393e-77a7-4419-a888-9e2b890d74c9",
+"t2": "f6ce3cee-4bff-4f81-a159-1fe65ef29dea",
+"target": "잃고",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0399L01B04",
+"ka": "535d8891-79e0-4344-955e-b0b7c0fbc2cb",
+"known": "losing that place",
+"pos": 9,
+"t1": "3b888eb3-1042-461e-8dca-a81d6bea6dec",
+"t2": "cc191324-183b-421b-bb83-4cb36df0632a",
+"target": "그곳을 잃고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0399L01B05",
+"ka": "d5bb9982-1348-4e47-8bca-455eb9e4829c",
+"known": "I'm losing the cat",
+"pos": 10,
+"t1": "82fd6348-6e88-4745-8ed4-b3accf0a24ad",
+"t2": "d3e7eae1-96d7-499a-b506-3783e558b8bf",
+"target": "고양이를 잃고 있어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0399L01B06",
+"ka": "27f2e937-75ac-452c-bbbe-e53b99391be5",
+"known": "a person who doesn't want to lose his brother",
+"pos": 11,
+"t1": "502eb9ff-5882-45fd-bbc6-cbdafcf1008d",
+"t2": "7a5fdc11-698e-419c-8428-c75d80a348f2",
+"target": "남동생을 잃고 싶어하지 않는 사람",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0399L01U06",
+"ka": "5aa1c906-b21a-4ed8-813c-327480ef50cd",
+"known": "she said that she doesn't want to lose some old friends",
+"pos": 12,
+"t1": "bcd0cecc-17c1-42f7-a648-3d29e1561092",
+"t2": "2b98b7be-4f73-490d-b7c0-f74f13d66226",
+"target": "오래된 친구들을 잃고 싶지 않다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L01U07",
+"ka": "3ace86bc-4cb5-4d9e-81af-6a230f134439",
+"known": "this year I'm losing some old friends",
+"pos": 13,
+"t1": "548c54bc-0872-407a-b3c2-e4b5d5f63c26",
+"t2": "7fe47528-c2cd-4e76-8c58-6025515efb40",
+"target": "올해 오래된 친구들을 잃고 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L01U08",
+"ka": "5c97dd86-ef6c-4dfb-9c9c-2ab222197a85",
+"known": "why does he want to lose that place",
+"pos": 14,
+"t1": "8dc4b7c8-fdb0-4e58-a9ad-a14f5978e580",
+"t2": "d35b3247-5e16-49d8-ae2f-456094389009",
+"target": "왜 그곳을 잃고 싶어해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L01U09",
+"ka": "72b309a4-4c80-4898-bba9-52b7c62e1838",
+"known": "I'm losing the company so I need to move",
+"pos": 15,
+"t1": "b9e8556e-5073-4468-a44e-ae3640181275",
+"t2": "488979f1-04a6-41af-ba76-c10dce06ace8",
+"target": "회사를 잃고 있어서 이사해야 해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L01U10",
+"ka": "e826a289-eb7a-4ba7-b454-e1f20cedb653",
+"known": "I don't think that I'm losing my keys",
+"pos": 16,
+"t1": "c8b89d29-3d69-4a79-96d3-e6cadc401d8f",
+"t2": "e43e8006-fc9d-4e96-89ee-93853848f701",
+"target": "제 열쇠를 잃고 있다고 생각하지 않아요",
+"type": "use"
+}
+],
+"target": "잃고",
+"type": "A"
+},
+{
+"id": "S0399L02",
+"idx": 2,
+"is_new": true,
+"known": "lose hope",
+"phrases": [
+{
+"id": "a6e8d490-877a-42fb-a035-5667a0f0971f",
+"ka": "c9b90a82-ebf1-4722-942c-3d62c4a741fa",
+"known": "lose hope",
+"pos": 0,
+"t1": "996ff7f8-7ae3-47f5-8c01-bc4e3025ec47",
+"t2": "c03a6ec0-cc03-4ce0-bbd3-95b09cb38741",
+"target": "희망을 잃고",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0399L02B01",
+"ka": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+"known": "hope",
+"pos": 1,
+"t1": "b2e75bdf-f2f8-4675-b973-bd851e3fb4fa",
+"t2": "ccae6046-33a9-4e0f-aea1-c2dec508968d",
+"target": "희망을",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0399L02B02",
+"ka": "c9b90a82-ebf1-4722-942c-3d62c4a741fa",
+"known": "lose hope",
+"pos": 2,
+"t1": "996ff7f8-7ae3-47f5-8c01-bc4e3025ec47",
+"t2": "c03a6ec0-cc03-4ce0-bbd3-95b09cb38741",
+"target": "희망을 잃고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0399L02B03",
+"ka": "55be51fe-dd84-438f-9bda-0c035568b8bc",
+"known": "lose hope alone",
+"pos": 3,
+"t1": "16ce6162-8b51-4167-90e1-831e0c49e830",
+"t2": "848970a9-a5b3-44ae-9bf4-66d447a4dd8d",
+"target": "혼자 희망을 잃고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0399L02U01",
+"ka": "ad107fb4-30d7-486a-9da0-dd6d1a5a7e8b",
+"known": "we don't want to lose hope",
+"pos": 4,
+"t1": "743f545e-5540-42a9-b021-7c0afd203729",
+"t2": "855f2f1c-ceca-4207-af32-477956b614e6",
+"target": "희망을 잃고 싶지 않아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L02U02",
+"ka": "bae9a1ef-9b3c-4a39-a22e-15f88d1b8c88",
+"known": "she doesn't want to lose hope today",
+"pos": 5,
+"t1": "3d2180af-1f14-4604-ac5c-ccb515461d63",
+"t2": "701593a7-639a-4c7c-b917-d1f8ece6e3a3",
+"target": "오늘 희망을 잃고 싶지 않아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L02U03",
+"ka": "1e436e19-eab8-4b4c-843c-1fb7eb782e9a",
+"known": "he doesn't want to lose hope alone",
+"pos": 6,
+"t1": "de65e4de-e2f8-47df-be10-cf07a372ab5c",
+"t2": "15a40850-0f25-4a1b-9c01-d0869e3d6c46",
+"target": "혼자 희망을 잃고 싶지 않아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L02U04",
+"ka": "513a4021-97ce-4098-bae4-d97966c596bc",
+"known": "I don't want to lose hope just now",
+"pos": 7,
+"t1": "f1ae65b3-074d-44a2-8012-ed3930ce4108",
+"t2": "802fa14c-3f68-453a-976f-78e353f77831",
+"target": "방금 희망을 잃고 싶지 않아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L02U05",
+"ka": "591aadc7-b75d-45d8-89c6-37fe1bf29721",
+"known": "she doesn't want to lose hope together",
+"pos": 8,
+"t1": "453de026-a8f2-4460-bfa6-9b900710d947",
+"t2": "b26ed332-4423-4fa3-964a-f20f1caeb70b",
+"target": "같이 희망을 잃고 싶지 않아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L02U06",
+"ka": "a7a1beca-2889-48a3-a58d-6c3d00329c1e",
+"known": "he said that he doesn't want to lose hope",
+"pos": 9,
+"t1": "7e937d26-9acb-440f-9adc-a7f83697ce4a",
+"t2": "5fc42379-70ce-40eb-9029-ab07612a5586",
+"target": "희망을 잃고 싶지 않다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0399L02U07",
+"ka": "ea40fa54-e37a-4b83-9a76-cd268f08931d",
+"known": "we don't want to lose hope but it's difficult",
+"pos": 10,
+"t1": "7c0aef41-e778-4380-851f-0997202f1005",
+"t2": "2d55bf80-c41b-4679-950a-4278c75191ca",
+"target": "희망을 잃고 싶지 않아요 하지만 어려워요",
+"type": "use"
+}
+],
+"target": "희망을 잃고",
+"type": "M"
+}
+],
+"status": "released",
+"target": "희망을 잃고 싶지 않아요"
+},
+"402": {
+"at": "2026-11-18T18:42:36Z",
+"known": "yes it would be nice to stop somewhere for food",
+"legos": [
+{
+"id": "S0402L01",
+"idx": 1,
+"is_new": true,
+"known": "nice",
+"phrases": [
+{
+"id": "47a816ab-679a-4e66-b2d3-a731482de68f",
+"ka": "ab934b63-c847-41a7-95c1-110fe9065eb1",
+"known": "nice",
+"pos": 0,
+"t1": "65487ead-66cb-406c-946a-4dbc94e7f4a5",
+"t2": "1c8570c7-f517-4141-bdf7-e3cb1a01259c",
+"target": "좋을",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0402L01B04",
+"ka": "2494955b-9087-4e0e-88da-73653a026012",
+"known": "might be nice",
+"pos": 9,
+"t1": "ef861d48-dd8e-43e2-9979-2e8e1057b91c",
+"t2": "5045754b-5a0f-446c-b285-b0e502a97480",
+"target": "좋을 수도 있는",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L01B05",
+"ka": "2ba83433-e1a0-4bc4-b800-ef98e2bef773",
+"known": "until it's nice",
+"pos": 10,
+"t1": "d031bb4b-5bcb-45b0-a4a2-3782dd615b3f",
+"t2": "d15de694-164c-4eb1-a641-402dabdf024d",
+"target": "좋을 때까지",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L01B06",
+"ka": "3385b48a-f5f9-4e7d-a7b0-375689aeb318",
+"known": "it would be nice if you could come",
+"pos": 11,
+"t1": "4abb6cfe-8be1-46aa-b1a9-d7dd4f315966",
+"t2": "4a4786bc-d5f5-4bb9-bd5f-622ee55d0046",
+"target": "올 수 있으면 좋을 텐데요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L01B07",
+"ka": "6deb3074-ccff-4c24-92ed-3a40ca462cf5",
+"known": "I don't feel as if it'll be nice this year",
+"pos": 12,
+"t1": "7bba3091-16ec-4792-a657-9e74eaf35db1",
+"t2": "e2f5aaa1-4a5e-41cd-9558-bdb89cd71429",
+"target": "올해 좋을 것 같지 않아요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L01U06",
+"ka": "450e7737-18ee-4ecf-88dc-b49aef090606",
+"known": "it would be nice if you could come to the party",
+"pos": 13,
+"t1": "2619e2c9-6ac3-4c76-8d5c-eb6326db0fec",
+"t2": "cce8a49f-3071-4038-9135-4c59981b9c04",
+"target": "파티에 올 수 있으면 좋을 텐데요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L01U07",
+"ka": "96296a4e-db16-4697-84a8-b66d3386034a",
+"known": "she said that she doesn't want to go out until it's nice",
+"pos": 14,
+"t1": "1ea47679-9fc9-4cc9-a441-3812cf180453",
+"t2": "6eda2ab7-81b8-4326-ac16-257a897b7e0b",
+"target": "좋을 때까지 나가고 싶지 않다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L01U08",
+"ka": "f9e7b6ff-071b-46a7-84cb-11e8e5e6b737",
+"known": "I don't feel as if it'll be nice on Wednesday",
+"pos": 15,
+"t1": "eec62804-a469-44e1-ab63-467ca5f9032c",
+"t2": "bac6ad29-7b91-4e77-876a-d4edc7685215",
+"target": "수요일에 좋을 것 같지 않아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L01U09",
+"ka": "a85d974e-aceb-49ad-be20-ff2816c7c3cc",
+"known": "I want to meet a person who might be nice",
+"pos": 16,
+"t1": "b08b4d49-5a5a-4149-805d-7012a1584e5f",
+"t2": "7782c57c-8c9f-4eea-b78c-401fde75923f",
+"target": "좋을 수도 있는 사람을 만나고 싶어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L01U10",
+"ka": "fcd7505c-76bc-4182-a323-66553b0ad6d9",
+"known": "why don't you feel as if it'll be nice next month",
+"pos": 17,
+"t1": "97e7d767-8064-45c3-a771-286a2ff4f11a",
+"t2": "df8dd31a-0022-40bf-ab41-445d44f9ae57",
+"target": "왜 다음 달에 좋을 것 같지 않아요",
+"type": "use"
+}
+],
+"target": "좋을",
+"type": "A"
+},
+{
+"id": "S0402L02",
+"idx": 2,
+"is_new": true,
+"known": "stopping by",
+"phrases": [
+{
+"id": "6c8e70be-19e1-4a12-b8ab-d8d26c20d025",
+"ka": "35384d6f-4be9-46ca-90cc-ad60b63e8188",
+"known": "stopping by",
+"pos": 0,
+"t1": "7303ca37-0216-4c43-b56d-31ea6bfe9a09",
+"t2": "4c2cdd73-a22e-477c-8acc-90bec1d7015b",
+"target": "들러서",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0402L02B01",
+"ka": "ca05dde6-c102-4ecd-990e-64be36418078",
+"known": "stop by",
+"pos": 1,
+"t1": "7303ca37-0216-4c43-b56d-31ea6bfe9a09",
+"t2": "4c2cdd73-a22e-477c-8acc-90bec1d7015b",
+"target": "들러서",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L02B02",
+"ka": "8210d87b-d1f4-4425-95a8-d3506a4809b4",
+"known": "stop by today",
+"pos": 2,
+"t1": "1dbb8339-a3de-47f9-af04-b10fa4f86f71",
+"t2": "2cc70da8-be7e-468b-964b-0c2bedc16172",
+"target": "오늘 들러서",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L02B03",
+"ka": "b28dd27b-5f9d-482b-b08d-5acd28abbdf0",
+"known": "stop by alone",
+"pos": 3,
+"t1": "1fac26e5-f2d1-4441-b538-35dba7250713",
+"t2": "439fc0cc-7c13-4dd5-880b-663a431403b7",
+"target": "혼자 들러서",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L02U01",
+"ka": "92da9fbb-2ca2-4f59-ab61-b09b553f5f22",
+"known": "I stopped by today",
+"pos": 4,
+"t1": "9670dcd5-cf4b-41d0-8d51-0fdefe316ea2",
+"t2": "396e2777-3ee1-4538-8df4-ea73494d5e66",
+"target": "오늘 들러서 갔어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L02U02",
+"ka": "2a70cbf1-6b7a-4911-a5e6-656d8056b88a",
+"known": "she stopped by alone",
+"pos": 5,
+"t1": "ff3b26b4-4d1e-4210-9e46-6ff9f878d9bf",
+"t2": "32f45472-1f3b-4c8e-9805-e31eb023bf96",
+"target": "혼자 들러서 갔어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L02U03",
+"ka": "3242fff9-c738-42ed-9959-5b53eef3596f",
+"known": "he stopped by just now",
+"pos": 6,
+"t1": "1acf1cce-0a27-40c1-8f42-d46536c0a677",
+"t2": "2bdcd532-52e0-4d82-a180-6248c1542c51",
+"target": "방금 들러서 갔어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L02U04",
+"ka": "8850717d-d50b-41c4-8d55-b134232a91ad",
+"known": "I stopped by together",
+"pos": 7,
+"t1": "bd1434c2-0145-4f78-a47e-327a2fb5bb1d",
+"t2": "2111da00-89f8-4a6b-9d3d-4619ae594408",
+"target": "같이 들러서 갔어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L02U05",
+"ka": "ce98b004-355f-4be4-b894-56bde2e6e902",
+"known": "she stopped by last year",
+"pos": 8,
+"t1": "6662b3c9-a638-4a2d-a8c9-9e150a10dfcf",
+"t2": "ff228f13-55cc-463c-8971-776768309203",
+"target": "작년에 들러서 갔어요",
+"type": "use"
+}
+],
+"target": "들러서",
+"type": "A"
+},
+{
+"id": "S0402L03",
+"idx": 3,
+"is_new": true,
+"known": "if eat",
+"phrases": [
+{
+"id": "9426dcfd-1262-45b9-9a72-a4e6b6c3ecc4",
+"ka": "a4d4a599-ee7c-4ee3-8c4a-9b5dcdab01be",
+"known": "if eat",
+"pos": 0,
+"t1": "863d186a-95bb-4751-949e-aab151282747",
+"t2": "cdcfa6c2-4871-46fe-ae66-48eae947366c",
+"target": "먹으면",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0402L03B01",
+"ka": "a4d4a599-ee7c-4ee3-8c4a-9b5dcdab01be",
+"known": "if eat",
+"pos": 1,
+"t1": "863d186a-95bb-4751-949e-aab151282747",
+"t2": "cdcfa6c2-4871-46fe-ae66-48eae947366c",
+"target": "먹으면",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L03B02",
+"ka": "386391cd-b84c-4f4c-b38d-0cfb4759d487",
+"known": "when eat food",
+"pos": 2,
+"t1": "a1b02c19-76b5-4cc4-8cda-f3674f81318d",
+"t2": "77fd76ba-d4ca-427c-894b-baa2de60b7d1",
+"target": "음식을 먹으면",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L03B03",
+"ka": "65cb01de-2ce3-4122-a2e1-f9c33c1127ef",
+"known": "stop and eat",
+"pos": 3,
+"t1": "1974eab4-0754-4dd1-bd06-bd10274c6d75",
+"t2": "d4f74f08-2daa-4fb4-b1c9-c96ae52aae8f",
+"target": "들러서 먹으면",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L03U01",
+"ka": "7cb7c586-0b84-4ca7-8c36-ae751b3120d7",
+"known": "if we eat food it would be good",
+"pos": 4,
+"t1": "c65f6afe-b57f-409c-b423-00cca4066642",
+"t2": "a59a359e-3353-496f-90a8-93fea0b6ea30",
+"target": "음식을 먹으면 좋을 것 같아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L03U02",
+"ka": "8ba2f3b6-90c7-4fb1-b46b-cdadad855990",
+"known": "if we eat together it would be good",
+"pos": 5,
+"t1": "629a77c5-dc94-4c10-b542-45bca1f03423",
+"t2": "08e36661-79f9-476c-9af9-73c459a7d72f",
+"target": "같이 먹으면 좋을 것 같아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L03U03",
+"ka": "0a69fca0-19e9-4b89-85b5-e62dc8aab2f4",
+"known": "if we eat today it would be good",
+"pos": 6,
+"t1": "620476e1-c187-42ad-810d-033322a70d88",
+"t2": "61de641e-918e-4a60-9a57-82b1dca140c2",
+"target": "오늘 먹으면 좋을 것 같아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L03U04",
+"ka": "9a9fa11a-b1cd-4018-bc03-237ea260337f",
+"known": "if we eat alone it would be good",
+"pos": 7,
+"t1": "9f5eba64-9aae-49a1-a60a-0ed0d3570fb8",
+"t2": "d1627684-d5c3-408b-81cd-16e8da72b363",
+"target": "혼자 먹으면 좋을 것 같아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L03U05",
+"ka": "c2b3a006-d678-423e-8b42-8f8585660484",
+"known": "if we stop by and eat",
+"pos": 8,
+"t1": "99031f24-ecce-4b0f-9de1-e357b7b037fd",
+"t2": "9f2e1f82-e987-4fb9-afe4-5b8df04d7ecd",
+"target": "들러서 먹어요",
+"type": "use"
+}
+],
+"target": "먹으면",
+"type": "A"
+},
+{
+"id": "S0402L04",
+"idx": 4,
+"is_new": true,
+"known": "somewhere",
+"phrases": [
+{
+"id": "54a221c0-3f85-4228-86d5-e86480bd757d",
+"ka": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+"known": "somewhere",
+"pos": 0,
+"t1": "b6242632-bd5f-4511-a3d3-a3d597e9886e",
+"t2": "af0ddf95-dad6-4226-80d8-fdec35109e07",
+"target": "어딘가에",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0402L04B04",
+"ka": "72053ea5-d515-4341-b02c-355f97d7806c",
+"known": "somewhere over there",
+"pos": 9,
+"t1": "d9b12abe-d0a2-448e-8cf5-74b20d654581",
+"t2": "2dc073f5-dd74-47fc-9793-b93b876e7ff3",
+"target": "저기 어딘가에",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L04B05",
+"ka": "671d0860-1242-4cd5-a664-2442e3f5b25c",
+"known": "stopping by somewhere",
+"pos": 10,
+"t1": "cab855ed-4cc5-48ae-87d8-075a5f3de2f5",
+"t2": "3eeff45c-fa61-43c9-908e-d34373b9e412",
+"target": "어딘가에 들러서",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L04B06",
+"ka": "d6c3c35f-258a-422e-8ccf-e97fca853bbc",
+"known": "stopping by somewhere over there",
+"pos": 11,
+"t1": "989d867e-79c0-47ba-8e1d-808208a2557b",
+"t2": "cbedeb97-3560-4942-bd65-c05ca6bb40bd",
+"target": "저기 어딘가에 들러서",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L04B07",
+"ka": "ad359d03-6e67-4220-ad76-6f5797389184",
+"known": "stopping by somewhere to eat",
+"pos": 12,
+"t1": "4fdb47a9-402d-48ee-a162-400a6378f486",
+"t2": "07f762d5-7cc7-49c1-90b4-bd9412cf1ec0",
+"target": "어딘가에 들러서 먹고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0402L04U06",
+"ka": "b0a8fcff-f470-4216-9eea-4f40aedb9cc2",
+"known": "she said that she doesn't want to live somewhere alone",
+"pos": 13,
+"t1": "e869c45c-b671-4e9a-91a9-9578afa3fb9d",
+"t2": "0bfd120a-e857-4d16-a9ef-7dd38ed8a5a9",
+"target": "어딘가에 혼자 살고 싶지 않다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L04U07",
+"ka": "61b40df6-78d4-4e6f-b5cb-dc0ea6951929",
+"known": "why did you go somewhere on wednesday",
+"pos": 14,
+"t1": "18fbc970-fa6e-49e8-ae26-35776a2040fc",
+"t2": "8379c49a-71f6-4b4c-aca3-6562d09c1c23",
+"target": "왜 수요일에 어딘가에 갔어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L04U08",
+"ka": "b2c5cca0-ad25-46b4-9331-1b3eb7feee02",
+"known": "last year I went somewhere to see a person I know",
+"pos": 15,
+"t1": "229dfbbb-e3c0-409c-a1fb-780054da6ff5",
+"t2": "400db7b9-0df8-4006-8ba0-946ce6e06c8b",
+"target": "작년에 아는 사람을 보러 어딘가에 갔어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L04U09",
+"ka": "05afe47c-c611-4fb1-990e-b678b733bff9",
+"known": "I can stay somewhere for a few days",
+"pos": 16,
+"t1": "ee03d6ed-c4da-45b7-8fea-e0e6d8192330",
+"t2": "6cee281b-7279-45c2-b78c-271c11982e01",
+"target": "며칠 어딘가에 있을 수 있어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0402L04U10",
+"ka": "4f0527df-0572-4b59-b35e-b730207cd327",
+"known": "do you want to go somewhere on monday",
+"pos": 17,
+"t1": "d9d8f124-6fa0-40a3-9ac6-213a58ca6437",
+"t2": "1b3dff7b-3596-40a2-ac1b-3a8b567f688b",
+"target": "월요일에 어딘가에 가고 싶어요",
+"type": "use"
+}
+],
+"target": "어딘가에",
+"type": "A"
+}
+],
+"status": "released",
+"target": "네 어딘가에 들러서 음식을 먹으면 좋을 것 같아요"
+},
+"411": {
+"at": "2026-11-18T18:42:36Z",
+"known": "we would like to reserve a table for four tonight",
+"legos": [
+{
+"id": "S0411L01",
+"idx": 1,
+"is_new": true,
+"known": "people",
+"phrases": [
+{
+"id": "029d1841-801a-420d-ae51-908d5f250f3b",
+"ka": "48cae653-75c0-4e1f-9714-002d9eb4b07e",
+"known": "people",
+"pos": 0,
+"t1": "95fb1248-aea5-446a-902f-76395e961a4f",
+"t2": "4ab6b706-a6f7-4bfd-8ec7-e04da31f3940",
+"target": "명",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0411L01B04",
+"ka": "540bc319-3e15-4658-8e60-ea1d92c3a3a1",
+"known": "still five people",
+"pos": 9,
+"t1": "6fcf8eef-5431-41bb-be22-9022059735ad",
+"t2": "597c15c8-17c0-4b31-bbce-a11b07196ac9",
+"target": "아직도 다섯 명",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L01B05",
+"ka": "eb510887-4410-447c-bc8c-427df5a73db8",
+"known": "ten people who left",
+"pos": 10,
+"t1": "3166e1bb-525b-4ffd-9ba1-e7d99cdb0cd1",
+"t2": "0924e45f-5294-4970-822a-f8e860f71966",
+"target": "떠난 열 명",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L01B06",
+"ka": "ffadedb2-4318-4c2a-8447-3f2e41900ec4",
+"known": "why ten people",
+"pos": 11,
+"t1": "627c4770-2623-4f8f-a8c7-57db273f20d7",
+"t2": "aa6f4cae-93d3-4887-84bc-b2eb2f824e21",
+"target": "왜 열 명",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L01B07",
+"ka": "b80c3c04-4d84-4ede-9ed0-8484b1e1f739",
+"known": "several people couldn't hear",
+"pos": 12,
+"t1": "960ce339-7a6a-4436-b6cd-5d8a6b9f785e",
+"t2": "ce532890-fab2-4be6-9857-1bcc87ddfd8e",
+"target": "여러 명 못 들었어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L01U06",
+"ka": "446356ee-dace-4d19-93df-bd55070febc9",
+"known": "why did five people agree with her",
+"pos": 13,
+"t1": "cac64526-5b8c-480f-9a14-a0cbccc1971d",
+"t2": "a5726e1a-fcd8-402c-ba59-21d3387a2e2a",
+"target": "왜 다섯 명 그녀에게 동의했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L01U07",
+"ka": "b10f383e-258d-4dc7-bc6b-59e7b06975c1",
+"known": "ten people still fight",
+"pos": 14,
+"t1": "fa2544a0-92ce-4783-888c-e982ae21bc8e",
+"t2": "666a0b04-3ca5-43f4-9b54-0b50b33217e2",
+"target": "열 명 아직도 싸워요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L01U08",
+"ka": "9e95d989-ac62-40b3-82ae-ef235c45512f",
+"known": "on wednesday five people couldn't hear",
+"pos": 15,
+"t1": "d7a9fd43-8800-43db-91f4-4f7f437336e0",
+"t2": "02c41d61-045e-4d65-bd71-13c769d20327",
+"target": "수요일에 다섯 명 못 들었어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L01U09",
+"ka": "1134dfdf-6a84-409e-9b49-06644810c708",
+"known": "I wonder if ten people will be near the entrance",
+"pos": 16,
+"t1": "0cd9d593-7b67-4a07-8649-a1e60658dccb",
+"t2": "4e5eef7e-7178-4635-9921-94babc45d18f",
+"target": "입구 근처에 열 명 있을지 궁금해요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L01U10",
+"ka": "3a6a12e6-5e2e-4061-8ad6-eaa858bf9ffc",
+"known": "five people didn't think that it's right",
+"pos": 17,
+"t1": "13336b6a-79d9-4f45-9fe8-d955ec97ef3e",
+"t2": "b16d34a6-3703-40d6-a443-d06d088adc3a",
+"target": "다섯 명 맞다고 생각하지 않았어요",
+"type": "use"
+}
+],
+"target": "명",
+"type": "A"
+},
+{
+"id": "S0411L02",
+"idx": 2,
+"is_new": true,
+"known": "table",
+"phrases": [
+{
+"id": "806ee5b6-a21d-427d-af12-ef7072492157",
+"ka": "5581971a-8b49-4fac-8204-3bce5027bc77",
+"known": "table",
+"pos": 0,
+"t1": "3a4d767d-e384-47d7-80ae-21a3dac9862a",
+"t2": "02bc46b1-ce41-41e2-b35e-e7217d77becf",
+"target": "자리를",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0411L02B01",
+"ka": "868f4611-c20b-42e2-94aa-68a922e5f76d",
+"known": "seat",
+"pos": 1,
+"t1": "3a4d767d-e384-47d7-80ae-21a3dac9862a",
+"t2": "02bc46b1-ce41-41e2-b35e-e7217d77becf",
+"target": "자리를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L02B02",
+"ka": "eb3da901-6802-452d-a42a-b3f5e8a0d406",
+"known": "a table for four",
+"pos": 2,
+"t1": "173af687-1620-435d-871d-98f50a79346b",
+"t2": "5fdb08c6-8826-4f8f-9c46-577288486112",
+"target": "네 명 자리를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L02B03",
+"ka": "562edff1-c535-47bf-a106-174088c42aa9",
+"known": "a good table",
+"pos": 3,
+"t1": "d7fe0e95-8405-4c43-9a62-46869ab3dcb6",
+"t2": "be6a37f5-f7ba-49c3-809f-5473a5daf0b9",
+"target": "좋은 자리를",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L02U01",
+"ka": "05d8170c-5ddd-4019-97d8-15ed488fa8cf",
+"known": "I heard about a table for four",
+"pos": 4,
+"t1": "a61f2769-de95-470c-8979-e9d3544d97f5",
+"t2": "9fe6c152-a37b-4273-8155-6658c3cb79e9",
+"target": "네 명 자리에 대해 들었어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L02U02",
+"ka": "be96626f-99f7-42a0-b577-93182a5677ac",
+"known": "she knows a good table",
+"pos": 5,
+"t1": "4c5e71f0-fed0-4b88-abdc-55c0c9e7fa97",
+"t2": "87635989-5e04-41ce-ac1f-02b2dfd67cff",
+"target": "좋은 자리를 알아요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L02U04",
+"ka": "c47dc5a0-99b9-4db6-ac71-7a03b2c92594",
+"known": "I saw a good table today",
+"pos": 7,
+"t1": "04f7c6d6-6553-4d48-aa9d-b5717eb8bc5d",
+"t2": "10db7d6b-78a8-4142-a62c-88538df33578",
+"target": "오늘 좋은 자리를 봤어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L02U05",
+"ka": "00a32708-a354-4b68-99c2-ede413a38a28",
+"known": "he heard about a table for four tonight",
+"pos": 8,
+"t1": "38ce3b50-39d2-4e12-a879-324657ba3fe5",
+"t2": "58b1887c-9ac0-4384-a3b3-5b4f3d56ce25",
+"target": "오늘 밤에 네 명 자리에 대해 들었어요",
+"type": "use"
+}
+],
+"target": "자리를",
+"type": "A"
+},
+{
+"id": "S0411L03",
+"idx": 3,
+"is_new": true,
+"known": "reserve",
+"phrases": [
+{
+"id": "8c0aa36c-59d1-4155-b122-9129dd9fcaae",
+"ka": "854e9844-3d98-45c4-93c9-a0ae24eb3c65",
+"known": "reserve",
+"pos": 0,
+"t1": "619ecfd1-35cb-4401-af11-0da5037bc2c1",
+"t2": "6d0be9e3-1bf9-4515-b19a-37d5445d3d3c",
+"target": "예약하고",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_eng:S0411L03B04",
+"ka": "44694563-2241-4503-87a1-0eafa8c51468",
+"known": "would like to reserve",
+"pos": 10,
+"t1": "ee4a19ec-9c4a-4f8d-9345-fc9bcd1a5bb0",
+"t2": "a4839f24-5dcd-4353-b174-242d5c749126",
+"target": "예약하고 싶어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L03B05",
+"ka": "1dfa5846-f7ee-4b4c-8e1b-b984c74d0996",
+"known": "still want to reserve",
+"pos": 11,
+"t1": "16ad0184-639f-4313-9803-d5b6c5505342",
+"t2": "1b910100-96fb-4f77-9d0f-a6c97002904b",
+"target": "아직도 예약하고 싶어요",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L03B06",
+"ka": "03be3601-897e-447a-ad38-32d808cf98c5",
+"known": "reserve a table and send a message",
+"pos": 12,
+"t1": "dc1d7162-8c47-4b7a-bd4f-7e649ac2c674",
+"t2": "81b82b7d-5809-484f-a5f2-8b4b7338eaa3",
+"target": "자리를 예약하고 메시지를 보내고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L03B07",
+"ka": "56ce5e00-4f26-470a-8b77-8549611cec39",
+"known": "reserve at a restaurant and go out",
+"pos": 13,
+"t1": "77838598-23e3-4c8c-8b20-c689685a55b3",
+"t2": "9cf513e4-0a2b-4e74-924c-ffca7c801718",
+"target": "식당에 예약하고 나가고",
+"type": "build"
+},
+{
+"id": "kor_for_eng:S0411L03U07",
+"ka": "7e6a4521-87b7-4424-a4d2-cb380fb385e9",
+"known": "do you want to reserve a table tonight",
+"pos": 14,
+"t1": "303c8897-77d9-4fbb-88cd-e5df8cb539ef",
+"t2": "ccde8357-1058-43f6-8957-d85c56ccd26d",
+"target": "오늘 밤에 자리를 예약하고 싶어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L03U08",
+"ka": "dffc1e9f-7893-48f2-b06b-84e7e07b06a6",
+"known": "he said that he wants to reserve a table",
+"pos": 15,
+"t1": "763a79a2-52cc-40a5-a571-cf7da21c10ff",
+"t2": "45b5ea2a-f21e-4216-ba44-d3ad43bb4faa",
+"target": "자리를 예약하고 싶다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L03U09",
+"ka": "54af613a-27c3-455f-aea4-f2df181f0072",
+"known": "she said that she doesn't want to reserve on wednesday",
+"pos": 16,
+"t1": "c9791c90-5a0f-4c90-8398-5d29824d72e4",
+"t2": "1a7021f3-d631-406d-8bf7-a25ef7e37f25",
+"target": "수요일에 예약하고 싶지 않다고 했어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L03U10",
+"ka": "0ddc045b-b846-4dfe-a93c-ee179722e71b",
+"known": "I wanted to reserve a table but the money wasn't sufficient",
+"pos": 17,
+"t1": "75130f75-dbdf-4580-8b4a-0f3d808144f5",
+"t2": "a154ec7d-4511-4881-874b-a7645799477b",
+"target": "자리를 예약하고 싶었지만 돈이 충분하지 않았어요",
+"type": "use"
+},
+{
+"id": "kor_for_eng:S0411L03U11",
+"ka": "a6b7afcf-a9fb-4bd7-b70f-f529b78f7ed0",
+"known": "on monday he said that he wants to reserve at a restaurant",
+"pos": 18,
+"t1": "87a3a8ca-4276-4fce-8961-92e9572a81b4",
+"t2": "c11eb668-797f-4554-96e5-25a1568572f3",
+"target": "월요일에 식당에 예약하고 싶다고 했어요",
+"type": "use"
+}
+],
+"target": "예약하고",
+"type": "A"
+}
+],
+"status": "released",
+"target": "오늘 밤에 네 명 자리를 예약하고 싶어요"
 }
 }

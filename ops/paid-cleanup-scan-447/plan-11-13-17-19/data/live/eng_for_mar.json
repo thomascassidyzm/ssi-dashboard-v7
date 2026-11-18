@@ -217,6 +217,710 @@
 "status": "released",
 "target": "Do you speak English all day?"
 },
+"161": {
+"at": "2026-11-18T18:41:27Z",
+"known": "तुम्ही मला ते पुस्तक रविवारी सकाळी द्याल का?",
+"legos": [
+{
+"id": "S0161L01",
+"idx": 1,
+"is_new": true,
+"known": "पुस्तक",
+"phrases": [
+{
+"id": "6cff0258-4a99-45e0-b558-131a1128ab8c",
+"ka": "a2f69086-e832-466c-8395-7c53c5ce8011",
+"known": "पुस्तक",
+"pos": 0,
+"t1": "58a8c5f5-b8d7-408a-94d7-98d4803ff73a",
+"t2": "cff5c9fa-60ba-4f30-85ee-f0441b27a945",
+"target": "book",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0161L01B01",
+"ka": "a2f69086-e832-466c-8395-7c53c5ce8011",
+"known": "पुस्तक",
+"pos": 1,
+"t1": "58a8c5f5-b8d7-408a-94d7-98d4803ff73a",
+"t2": "cff5c9fa-60ba-4f30-85ee-f0441b27a945",
+"target": "book",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0161L01B02",
+"ka": "6ad82b2b-1d66-4634-94bd-1d1cab26cf76",
+"known": "ते पुस्तक",
+"pos": 2,
+"t1": "cea62d9d-3266-4129-a3f0-59ebe4f8a1cd",
+"t2": "f097b7fc-479e-4324-815e-b706d0536dd4",
+"target": "that book",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0161L01B03",
+"ka": "923753c4-47ea-4976-968b-4dec29a6eb07",
+"known": "पुस्तक आज",
+"pos": 3,
+"t1": "2c67901e-cf3d-4489-b7d7-b1fd6d773ad9",
+"t2": "600b4987-786d-44f8-a32a-c12eb122b254",
+"target": "book today",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0161L01U01",
+"ka": "b632b623-79fa-43d8-96e8-0742f6bbd83c",
+"known": "का तुम्ही मला ते पुस्तक देऊ?",
+"pos": 4,
+"t1": "05c418ad-f7c1-444a-8353-74de5753e83f",
+"t2": "813afc9b-9fb1-40d8-9ff4-ebdce2df9d15",
+"target": "can you give me that book?",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L01U02",
+"ka": "abdffa43-af1e-45c8-b0fe-9d4fe322c31a",
+"known": "इंग्रजीत पुस्तक",
+"pos": 5,
+"t1": "dfcbeaf3-f8fd-4682-ba31-203d122bda23",
+"t2": "0a564414-b8f2-47a7-9873-6b7a07c75d89",
+"target": "book in English",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L01U03",
+"ka": "0c3905ae-a6ff-450a-b321-48ebb3041748",
+"known": "मला ते पुस्तक देऊ",
+"pos": 6,
+"t1": "10997bf8-aeae-40dd-ac68-e28b4dc89ad9",
+"t2": "773c7576-f63f-4b25-8b12-94a2b066520f",
+"target": "give me that book",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L01U04",
+"ka": "beaf6ba3-9c7e-483f-ab58-6761438b9092",
+"known": "ते पुस्तक आज",
+"pos": 7,
+"t1": "7f2d725f-79b5-4be2-a585-b5631485710c",
+"t2": "3f59f7ad-0834-40e2-b094-08aaac4a8561",
+"target": "that book today",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L01U05",
+"ka": "f4b8dd67-ab7a-498d-8a13-60db684d8ec8",
+"known": "मला ते पुस्तक देऊ इथे",
+"pos": 8,
+"t1": "565d43ff-3ea5-4121-88da-a4fbaded735e",
+"t2": "4a27eb39-c595-4063-8a0e-69d4cc05a8fd",
+"target": "give me that book here",
+"type": "use"
+}
+],
+"target": "book",
+"type": "A"
+},
+{
+"id": "S0161L02",
+"idx": 2,
+"is_new": true,
+"known": "रविवारी",
+"phrases": [
+{
+"id": "a40e8b70-7c39-42be-aabb-d84bb88de084",
+"ka": "6e9bddf0-cc54-4435-939f-28c7b9cc3a4b",
+"known": "रविवारी",
+"pos": 0,
+"t1": "198774c4-94c1-4911-8efa-9a86a23f17eb",
+"t2": "d1a1b22f-1b8c-44c3-8399-f21f45097813",
+"target": "on Sunday",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0161L02B01",
+"ka": "6e9bddf0-cc54-4435-939f-28c7b9cc3a4b",
+"known": "रविवारी",
+"pos": 1,
+"t1": "840ac886-9c85-446c-b73d-417fdeffa317",
+"t2": "32bb5d90-6a16-400a-a863-a1f4cb7176ed",
+"target": "Sunday",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0161L02B02",
+"ka": "f57485ca-b351-4692-ab5a-8f09e1e7cf58",
+"known": "रविवारी सकाळी",
+"pos": 2,
+"t1": "98412d52-da3a-4a2b-b6e2-868f2629ce5d",
+"t2": "b4d93008-4f58-4264-838f-4ca39b8852e5",
+"target": "Sunday morning",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0161L02B03",
+"ka": "f35f88a6-2a30-43bf-b550-781a5b796d4f",
+"known": "रविवारी इथे",
+"pos": 3,
+"t1": "154603bb-c057-48bc-839c-d024c3c0903a",
+"t2": "c89d7e8a-d2d7-476e-b309-6b2e599d1a4a",
+"target": "Sunday here",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0161L02U01",
+"ka": "2a3ad88b-bbcb-4fa0-aae9-bf0befdc245c",
+"known": "तुम्ही मला ते पुस्तक रविवारी सकाळी द्याल का?",
+"pos": 4,
+"t1": "c6b84fb9-c726-4787-a1bf-51570f34cc10",
+"t2": "b89a5d50-772d-467c-8a69-fed6efa42c60",
+"target": "can you give me that book on Sunday morning?",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L02U02",
+"ka": "d580acb7-2443-4bd6-994b-0916e5b91775",
+"known": "इंग्रजीत रविवारी",
+"pos": 5,
+"t1": "98912cba-1a76-44a1-9336-f8d709b303c9",
+"t2": "7fc67792-eec1-412e-98f6-a4d6db154525",
+"target": "Sunday in English",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L02U03",
+"ka": "cfc2840e-3f4e-42f2-ba2e-ce598f484329",
+"known": "रविवारी सकाळी इथे",
+"pos": 6,
+"t1": "ea2430c9-d111-4a51-a01a-88772e31d90e",
+"t2": "de47a3de-b7d9-4689-9e6b-9371dc86d4f2",
+"target": "on Sunday morning",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L02U04",
+"ka": "a3271c1b-b05b-48bf-bb43-001ca80ca680",
+"known": "ते पुस्तक रविवारी",
+"pos": 7,
+"t1": "6a87b51c-69a2-4c85-a689-fc3dc0cdf263",
+"t2": "212276e8-9d75-4091-aedf-b80b049b7d17",
+"target": "that book on Sunday",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0161L02U05",
+"ka": "cfc2840e-3f4e-42f2-ba2e-ce598f484329",
+"known": "रविवारी सकाळी इथे",
+"pos": 8,
+"t1": "7e90e768-3da7-4a3d-ba79-d32c56d43f2a",
+"t2": "1ca94620-9574-43e5-9c56-1eb5e795ee80",
+"target": "Sunday morning here",
+"type": "use"
+}
+],
+"target": "on Sunday",
+"type": "A"
+}
+],
+"status": "released",
+"target": "Can you give me that book on Sunday morning?"
+},
+"215": {
+"at": "2026-11-18T18:41:28Z",
+"known": "मी शनिवारी रात्री बाहेर गेलो.",
+"legos": [
+{
+"id": "S0215L01",
+"idx": 1,
+"is_new": true,
+"known": "शनिवारी रात्री",
+"phrases": [
+{
+"id": "89bc425d-5312-439c-aaa0-529abd15aaf9",
+"ka": "caca71bb-f4d1-4c43-9b6c-5011c4d14bae",
+"known": "शनिवारी रात्री",
+"pos": 0,
+"t1": "6b168894-3623-4a16-a048-aba2c712fc8b",
+"t2": "fbbc22bd-065a-4bb0-a1e4-dc83e55a785a",
+"target": "on Saturday night",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0215L01B01",
+"ka": "caca71bb-f4d1-4c43-9b6c-5011c4d14bae",
+"known": "शनिवारी रात्री",
+"pos": 1,
+"t1": "42488745-21a4-4516-9902-1b972a87ab7d",
+"t2": "7ea31bad-8d41-4427-8705-1aa1a500a43a",
+"target": "Saturday night",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0215L01B02",
+"ka": "c914c0d8-b38d-47b1-a171-1e9c0a660893",
+"known": "मी शनिवारी रात्री बाहेर गेलो",
+"pos": 2,
+"t1": "de16e2e4-5c6d-4c01-9e46-d9dc13ed84be",
+"t2": "b06fca38-891b-4731-839d-aed9285d7922",
+"target": "I went out on Saturday night",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0215L01B03",
+"ka": "ae8af5bb-3bab-4f07-90ac-2d36366b7f0e",
+"known": "शनिवारी रात्री पुन्हा",
+"pos": 3,
+"t1": "7a0ed7d5-1e8c-4791-b4f5-aa72cf24d72f",
+"t2": "bfbd7c30-081f-4aed-bb28-42a2b3ab1a01",
+"target": "Saturday night again",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0215L01B04",
+"ka": "300ac6fd-2c71-412b-8c3d-d18da587c8b5",
+"known": "शनिवारी रात्री इंग्रजीत",
+"pos": 4,
+"t1": "d2b5f528-d83d-4e98-9ec1-8fb5cc06a32f",
+"t2": "10f73faa-2c79-4b87-b12f-e07ad5625cea",
+"target": "Saturday night in English",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0215L01U01",
+"ka": "34826aa5-0777-4da0-ace7-ca36b49cb6b4",
+"known": "मला शनिवारी रात्री आठवत नाही",
+"pos": 5,
+"t1": "740837ea-409b-4326-aafc-58464b1a37cf",
+"t2": "44b28dd7-97db-4c1a-ad74-6fcacb6f247e",
+"target": "I can't remember Saturday night",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L01U03",
+"ka": "bd91bd1b-f0e0-4e8d-838e-5215ff781a4d",
+"known": "मला शनिवारी रात्री पुन्हा आठवत नाही",
+"pos": 7,
+"t1": "c3a62511-545c-48cb-b0f3-ecf91fc506cf",
+"t2": "3c787083-de99-41b1-b81b-3db42973456b",
+"target": "I can't remember Saturday night again",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L01U04",
+"ka": "8896a718-a544-4b86-97c5-5a09440e1a64",
+"known": "कारण मला शनिवारी रात्री आठवत नाही",
+"pos": 8,
+"t1": "b62abd1c-5185-4493-97c4-6a90188d71ed",
+"t2": "0fbf8802-6c5c-4726-a2cc-e6db6a6ec31e",
+"target": "because I can't remember Saturday night",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L01U05",
+"ka": "84c56eec-37f9-45df-ab01-00e6a0c3a71b",
+"known": "मला वाटतं की मला शनिवारी रात्री आठवत नाही",
+"pos": 9,
+"t1": "ca435c72-32fb-4451-b197-f6315dde4aea",
+"t2": "7dafe67d-a775-4937-92af-427a5752edb2",
+"target": "I think that I can't remember Saturday night",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L01U06",
+"ka": "fe60be8f-eb66-4a57-bd01-f0fc7298e1a6",
+"known": "तुम्ही शनिवारी रात्री घरी जायला पाहिजे.",
+"pos": 10,
+"t1": "1fbc0f2b-f509-4fae-a280-f3f6e58e6b2c",
+"t2": "b989e648-2acc-47aa-9a43-3689b2f4ed32",
+"target": "You should go home on Saturday night.",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L01U07",
+"ka": "74fc32d2-82b4-4499-a9ed-05b22aac214a",
+"known": "मला माहित असतं तर शनिवारी रात्री मी ते केलं असतं.",
+"pos": 11,
+"t1": "e0dffe29-9c48-4d84-aa99-665bf69f4d55",
+"t2": "f5cdd18a-3c2b-48cb-a6dd-3956f4fe4fbf",
+"target": "If I had known, I would have done it on Saturday night.",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L01U08",
+"ka": "6cb78521-1e82-4c91-9403-434028ede6c8",
+"known": "शनिवारी रात्री तुम्ही म्हणालात ते मी विसरलोय.",
+"pos": 12,
+"t1": "63090792-b0fe-4f30-b977-4d879f0071fd",
+"t2": "d2f04cc1-b301-45b1-85ea-ca1734f9d96e",
+"target": "I've forgotten what you said on Saturday night.",
+"type": "use"
+}
+],
+"target": "on Saturday night",
+"type": "M"
+},
+{
+"id": "S0215L02",
+"idx": 2,
+"is_new": true,
+"known": "बाहेर गेलो",
+"phrases": [
+{
+"id": "11fb4ab8-12ac-4bd5-a4d1-86d0a4d336c8",
+"ka": "40339895-9531-4636-809a-ea317aa1d159",
+"known": "बाहेर गेलो",
+"pos": 0,
+"t1": "a11ed793-7df8-4aa4-9652-195e2df00434",
+"t2": "418a68d9-c154-411e-a070-d1a0395ce660",
+"target": "I went out on",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0215L02B01",
+"ka": "40339895-9531-4636-809a-ea317aa1d159",
+"known": "बाहेर गेलो",
+"pos": 1,
+"t1": "a11ed793-7df8-4aa4-9652-195e2df00434",
+"t2": "418a68d9-c154-411e-a070-d1a0395ce660",
+"target": "I went out on",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0215L02B02",
+"ka": "a0213d49-af2b-4f4a-9940-90c43b8c491f",
+"known": "मी बाहेर गेलो शनिवारी रात्री इंग्रजीत",
+"pos": 2,
+"t1": "03a3c494-9584-4cd8-8308-7edec130463b",
+"t2": "3cff89ea-64cd-4b1c-9577-0f468b7bd411",
+"target": "I went out on Saturday night in English",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0215L02U01",
+"ka": "c914c0d8-b38d-47b1-a171-1e9c0a660893",
+"known": "मी शनिवारी रात्री बाहेर गेलो",
+"pos": 5,
+"t1": "de16e2e4-5c6d-4c01-9e46-d9dc13ed84be",
+"t2": "b06fca38-891b-4731-839d-aed9285d7922",
+"target": "I went out on Saturday night",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L02U02",
+"ka": "b855f142-78ca-4143-bdaf-834e699e7996",
+"known": "मी शनिवारी रात्री आधीच बाहेर गेलो",
+"pos": 6,
+"t1": "4d8dc5f2-06c0-4b63-8687-58a2f2e4daa6",
+"t2": "6f59b00f-a28f-48bb-8c0a-30c251344f9a",
+"target": "I went out on Saturday night already",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L02U03",
+"ka": "ce2939e6-3a4b-444f-9315-1c074539b703",
+"known": "मी शनिवारी रात्री पुन्हा बाहेर गेलो",
+"pos": 7,
+"t1": "7a2fccb2-3018-41de-ae0e-e146a10d638a",
+"t2": "880de7d8-d967-4252-81be-98085d5440df",
+"target": "I went out on Saturday night again",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L02U04",
+"ka": "4b252561-a6fd-4d10-aab0-0e64e203bca6",
+"known": "मला वाटतं की मी शनिवारी रात्री बाहेर गेलो",
+"pos": 8,
+"t1": "4a229886-d5a8-4bed-a55c-c59093ebfb1c",
+"t2": "b147d251-f3b7-4291-8e1d-1a7205851029",
+"target": "I think that I went out on Saturday night",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0215L02U05",
+"ka": "d8387573-94e7-41e5-8932-7762558abe0e",
+"known": "कारण मी शनिवारी रात्री बाहेर गेलो",
+"pos": 9,
+"t1": "41b9b125-33f3-40c8-9b63-03139b12a7ad",
+"t2": "7d4df34e-3a12-4054-8d67-9478c5815ea3",
+"target": "because I went out on Saturday night",
+"type": "use"
+}
+],
+"target": "I went out on",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I went out on Saturday night."
+},
+"248": {
+"at": "2026-11-18T18:41:28Z",
+"known": "मला वाटलं तो सिनेमा अगदी टाकाऊ होता आणि मला माझे पैसे परत हवे आहेत.",
+"legos": [
+{
+"id": "S0248L01",
+"idx": 1,
+"is_new": true,
+"known": "टाकाऊ होता",
+"phrases": [
+{
+"id": "4421917a-4c1b-440b-a7df-450d342e2fb7",
+"ka": "10c3f501-0870-4fb5-8406-406781ebf270",
+"known": "टाकाऊ होता",
+"pos": 0,
+"t1": "df82abbe-35dc-4f6f-a441-71553e88cf4c",
+"t2": "cc9dff8f-55fe-4373-8028-494eb6f85c47",
+"target": "complete rubbish",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0248L01B01",
+"ka": "10c3f501-0870-4fb5-8406-406781ebf270",
+"known": "टाकाऊ होता",
+"pos": 1,
+"t1": "df82abbe-35dc-4f6f-a441-71553e88cf4c",
+"t2": "cc9dff8f-55fe-4373-8028-494eb6f85c47",
+"target": "complete rubbish",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L01B03",
+"ka": "3fd9ec3d-b835-4497-a2fb-74f9ebb97d15",
+"known": "तो अगदी टाकाऊ होता",
+"pos": 3,
+"t1": "94ebfd8d-9f92-47fa-9183-6d110e23676c",
+"t2": "ef523798-c293-4ced-be71-26d0d16b41f6",
+"target": "it was complete rubbish",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L01B04",
+"ka": "21a91004-23fc-4b71-a497-5353fab213ca",
+"known": "टाकाऊ होता इंग्रजीत",
+"pos": 4,
+"t1": "987547c2-a65d-477c-ba03-89d99a49f14e",
+"t2": "0d4998fa-6ef4-4bb8-9c85-ac3ae08acb54",
+"target": "complete rubbish in English",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L01U02",
+"ka": "30794827-97d0-45fd-a51b-329d514bb9cc",
+"known": "मला वाटलं की तो सिनेमा अगदी टाकाऊ होता",
+"pos": 6,
+"t1": "bfcd3dca-376e-4488-be47-7d7e1ad404f3",
+"t2": "20c4b334-3e00-4dd1-8dda-2b187d99bd24",
+"target": "I thought that the film was complete rubbish",
+"type": "use"
+}
+],
+"target": "complete rubbish",
+"type": "M"
+},
+{
+"id": "S0248L02",
+"idx": 2,
+"is_new": true,
+"known": "सिनेमा खराब होता",
+"phrases": [
+{
+"id": "28db07b2-be3b-4cc6-99dd-5a6aa264e1a4",
+"ka": "a99d8e5a-cfe5-4a2c-bd8b-2276068bb4db",
+"known": "सिनेमा खराब होता",
+"pos": 0,
+"t1": "937e5b3a-39ec-4994-9ad3-b860bed54b8f",
+"t2": "11396c1b-ef73-4f3d-86f3-257c50248c06",
+"target": "I thought the film was",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0248L02B01",
+"ka": "a99d8e5a-cfe5-4a2c-bd8b-2276068bb4db",
+"known": "सिनेमा खराब होता",
+"pos": 1,
+"t1": "937e5b3a-39ec-4994-9ad3-b860bed54b8f",
+"t2": "11396c1b-ef73-4f3d-86f3-257c50248c06",
+"target": "I thought the film was",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L02B02",
+"ka": "7f7910eb-7720-4363-83e3-0a5b8bf4cced",
+"known": "सिनेमा खराब होता टाकाऊ होता अजून",
+"pos": 2,
+"t1": "33a53051-64b5-4ff4-a1d6-143920cc0c81",
+"t2": "84297d45-8ecf-437b-a816-b5f9fba9d47f",
+"target": "I thought the film was complete rubbish yet",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L02B04",
+"ka": "3d929604-2186-4304-801b-af48a1ba693c",
+"known": "सिनेमा खराब होता टाकाऊ होता आज",
+"pos": 4,
+"t1": "0137a704-8cd5-490d-8bf1-201098486970",
+"t2": "b383372e-82a0-47b7-bf4f-622683cc6a41",
+"target": "I thought the film was complete rubbish today",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L02U01",
+"ka": "6ccd4301-dfd2-4eca-8c2b-649f1e8f16df",
+"known": "सिनेमा खराब होता टाकाऊ होता",
+"pos": 5,
+"t1": "832a4706-0af2-4c75-bff7-5234bf6a66c6",
+"t2": "93b3de22-d2eb-43cd-b640-f7ac8df2e3d7",
+"target": "I thought the film was complete rubbish",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L02U02",
+"ka": "7a5ae81c-f577-443f-b5c0-ff771ea1a5b5",
+"known": "सिनेमा खराब होता टाकाऊ होता इंग्रजीत",
+"pos": 6,
+"t1": "2c81600d-d404-4589-8570-ec2bd0ec7af6",
+"t2": "60456e9b-53b3-4a4f-b6eb-22383858adc7",
+"target": "I thought the film was complete rubbish in English",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L02U03",
+"ka": "5b88904d-3f12-4f43-b5f6-f6764e9d5619",
+"known": "सिनेमा खराब होता टाकाऊ होता आधीच",
+"pos": 7,
+"t1": "a6b2a921-df24-47df-8d4e-3fd6061a6815",
+"t2": "08739a10-30d1-4885-8bb7-8dba8fb4385e",
+"target": "I thought the film was complete rubbish already",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L02U04",
+"ka": "06f4781a-8ca1-47cd-9fab-5a5465ea773a",
+"known": "मला वाटतं की सिनेमा खराब होता टाकाऊ होता",
+"pos": 8,
+"t1": "e9f053fb-c164-4ddd-ad68-ea4a06049e4e",
+"t2": "e100b2af-ab7f-4662-b966-2b7ce97ae740",
+"target": "I think that I thought the film was complete rubbish",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L02U05",
+"ka": "6a0c6649-8dfc-4639-8177-fe0410e7858d",
+"known": "कारण सिनेमा खराब होता टाकाऊ होता",
+"pos": 9,
+"t1": "238b4f3d-d906-4646-bf6f-2ea14b959dab",
+"t2": "34d2c353-e360-41ad-b460-6af0ab552179",
+"target": "because I thought the film was complete rubbish",
+"type": "use"
+}
+],
+"target": "I thought the film was",
+"type": "M"
+},
+{
+"id": "S0248L03",
+"idx": 3,
+"is_new": true,
+"known": "माझे पैसे परत",
+"phrases": [
+{
+"id": "7933a264-5eea-40b3-934f-5fcabe56a448",
+"ka": "822bb4ee-4bdd-4bea-a8f1-8a8395cf0938",
+"known": "माझे पैसे परत",
+"pos": 0,
+"t1": "32946f06-c610-49d0-86a0-2288e262465b",
+"t2": "6ba09b21-53eb-4ba8-80a5-c719f9e18c7a",
+"target": "and I want my money back",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0248L03B01",
+"ka": "822bb4ee-4bdd-4bea-a8f1-8a8395cf0938",
+"known": "माझे पैसे परत",
+"pos": 1,
+"t1": "32946f06-c610-49d0-86a0-2288e262465b",
+"t2": "6ba09b21-53eb-4ba8-80a5-c719f9e18c7a",
+"target": "and I want my money back",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L03B02",
+"ka": "129371de-00cc-4668-9b10-d8475e4584a7",
+"known": "माझे पैसे परत पुन्हा",
+"pos": 2,
+"t1": "d7a193e3-6342-422e-8d80-26736988ee0f",
+"t2": "6401910e-0f3a-4146-b464-e38c403b03b2",
+"target": "and I want my money back again",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L03B03",
+"ka": null,
+"known": "मला आज माझे पैसे परत हवे आहेत",
+"pos": 3,
+"t1": "b4317a84-f282-4509-bbe5-7df429294c76",
+"t2": "a51215cb-e6fd-4ae7-864c-1e3dc4219578",
+"target": "I want my money back today",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0248L03U01",
+"ka": "b6a4385f-90a7-4ece-a924-c19e3c4e7aec",
+"known": "मला वाटलं तो सिनेमा अगदी टाकाऊ होता आणि मला माझे पैसे परत हवे आहेत",
+"pos": 5,
+"t1": "e5d83e5c-fe3a-42a5-a5f6-a3417a35d7e8",
+"t2": "870c3434-3583-4d9d-8d9a-93d16d8c7d1e",
+"target": "I thought the film was complete rubbish and I want my money back",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L03U02",
+"ka": "205394da-e995-4efc-93a9-25743e267554",
+"known": "सिनेमा खराब होता टाकाऊ होता माझे पैसे परत इंग्रजीत",
+"pos": 6,
+"t1": "23f4b320-fc18-4686-9f82-e455f3495878",
+"t2": "fdcc29bc-b3d2-4373-bb61-876d92f607c3",
+"target": "I thought the film was complete rubbish and I want my money back in English",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L03U03",
+"ka": "a630be11-5727-44bc-9515-5f16b099c590",
+"known": "सिनेमा खराब होता टाकाऊ होता माझे पैसे परत आधीच",
+"pos": 7,
+"t1": "b179b20e-0be3-40cb-846e-c4aaa9715fcf",
+"t2": "ded02834-aaf7-437b-b9f4-6aeed6887dba",
+"target": "I thought the film was complete rubbish and I want my money back already",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L03U04",
+"ka": "d8e68756-dbe2-44d3-89d9-94983d59df0c",
+"known": "मला वाटतं की सिनेमा खराब होता टाकाऊ होता माझे पैसे परत",
+"pos": 8,
+"t1": "4348b604-863e-4b2c-b3ff-ad32dedb31d3",
+"t2": "79f20478-9bbd-4594-9141-508ce7648314",
+"target": "I think that I thought the film was complete rubbish and I want my money back",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0248L03U05",
+"ka": "cde91263-bc6c-4d5f-bdad-f3c0867a5e27",
+"known": "कारण सिनेमा खराब होता टाकाऊ होता माझे पैसे परत",
+"pos": 9,
+"t1": "c21ca484-0ca6-4590-b5ea-aa79909ff7f8",
+"t2": "3b2021e4-3590-498d-a22a-ed0333590d59",
+"target": "because I thought the film was complete rubbish and I want my money back",
+"type": "use"
+}
+],
+"target": "and I want my money back",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I thought the film was complete rubbish and I want my money back."
+},
 "485": {
 "at": "2026-11-18T18:34:03Z",
 "known": "दूर निघून जाण्यापेक्षा मला जास्त आनंद दुसऱ्या कशानेच होणार नाही.",
@@ -674,5 +1378,143 @@
 ],
 "status": "released",
 "target": "Nothing would make me happier than to get away."
+},
+"636": {
+"at": "2026-11-18T18:41:29Z",
+"known": "मला वाटतं ती जेनची बॅग आहे.",
+"legos": [
+{
+"id": "S0636L01",
+"idx": 1,
+"is_new": true,
+"known": "ती जेनची बॅग आहे",
+"phrases": [
+{
+"id": "2df896b8-bc68-4075-b0d5-e8a09fbc6b7a",
+"ka": "1025dd59-1a21-4c9a-aba7-1df03680fd1c",
+"known": "ती जेनची बॅग आहे",
+"pos": 0,
+"t1": "12d21fc2-b7cf-4a4a-999b-288d0eab155e",
+"t2": "21e95445-f04e-4afe-989b-84ba228bb039",
+"target": "that is Jane's bag",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0636L01C01",
+"ka": "fa289a75-625f-459a-a406-8fe1280165cc",
+"known": "जेनची बॅग",
+"pos": 1,
+"t1": "f0924969-70e6-46bb-89a9-c62717b71384",
+"t2": "6944968e-4c8b-44a1-a3b1-4060a9dacb6b",
+"target": "Jane's bag",
+"type": "component"
+},
+{
+"id": "eng_for_mar:S0636L01B01",
+"ka": "1025dd59-1a21-4c9a-aba7-1df03680fd1c",
+"known": "ती जेनची बॅग आहे",
+"pos": 2,
+"t1": "12d21fc2-b7cf-4a4a-999b-288d0eab155e",
+"t2": "21e95445-f04e-4afe-989b-84ba228bb039",
+"target": "that is Jane's bag",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0636L01B02",
+"ka": "ae51e5a8-a6e3-4ec3-855b-0c82d16faa9e",
+"known": "हो, ती जेनची बॅग आहे",
+"pos": 3,
+"t1": "9559e368-03a8-4595-9d1c-b704aee1e0e9",
+"t2": "bceb1b90-ded6-48b8-bb26-f2f7e827caaa",
+"target": "yes that is Jane's bag",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0636L01B03",
+"ka": "b0b33602-2190-48be-b443-eb81a10a4600",
+"known": "बहुधा ती जेनची बॅग आहे",
+"pos": 4,
+"t1": "954f998f-ec42-4bb8-b4d5-cacdfeb25a77",
+"t2": "6cec5a0a-f2b8-4503-bf5d-a854a47507f7",
+"target": "probably that is Jane's bag",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0636L01B04",
+"ka": "7daea0b2-d371-4ac3-9049-ce2e999ad973",
+"known": "आणि ती जेनची बॅग आहे",
+"pos": 5,
+"t1": "ee1fab94-7015-4a2d-8860-194d837152bc",
+"t2": "87bd03d2-86f1-4a5a-a29c-bb41c1389456",
+"target": "and that is Jane's bag",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0636L01U01",
+"ka": "1b281745-e2db-4707-b8f0-b1c3483f9e81",
+"known": "मला वाटतं ती जेनची बॅग आहे",
+"pos": 6,
+"t1": "a6bdae36-6e29-4105-b7e5-0c9b73f6f297",
+"t2": "ef5fab2c-bd21-4d47-902f-09cb438de6bf",
+"target": "I think that that is Jane's bag",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0636L01U02",
+"ka": "2e941837-3e6d-4ec7-977c-ffbd66f150df",
+"known": "मला खात्री आहे ती जेनची बॅग आहे",
+"pos": 7,
+"t1": "cb595765-81c2-4e4e-ab6e-55ccf3ecaf60",
+"t2": "349e5e91-7bce-4c2f-b678-93849f196381",
+"target": "I'm sure that that is Jane's bag",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0636L01U03",
+"ka": "e6509390-9e2e-4593-aafa-c92a3e257de1",
+"known": "ती जेनची बॅग आहे हे मला माहित आहे",
+"pos": 8,
+"t1": "3320e897-6998-487b-b42f-0ba6ac79a1db",
+"t2": "f2751626-0b8c-4fcf-89ab-7d5f431c497a",
+"target": "I know that that is Jane's bag",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0636L01U04",
+"ka": "96ba7c87-bb2d-4184-85ae-77c34cfd5305",
+"known": "मला वाटलं ती जेनची बॅग आहे",
+"pos": 9,
+"t1": "1ab72307-2be2-4b0c-a510-101dc2e04472",
+"t2": "2255303c-5154-4706-973b-0edad78373cc",
+"target": "I thought that that was Jane's bag",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0636L01U05",
+"ka": "adbb88a0-80d6-4d35-bc29-d2476e61917b",
+"known": "तुम्हाला वाटतं का ती जेनची बॅग आहे?",
+"pos": 10,
+"t1": "779839fa-7dde-4b9d-8efe-e489d7ccde47",
+"t2": "9bc120e1-d54e-4ef2-b943-d16a3246960d",
+"target": "do you think that that is Jane's bag?",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0636L01U06",
+"ka": "7ca3df9d-0e08-4fee-822c-17afc22d1106",
+"known": "ती जेनची बॅग आहे हे खरं आहे",
+"pos": 11,
+"t1": "74aad37c-29d8-42a5-bcb2-e30ff58ec01c",
+"t2": "c7d7987c-2be5-40cf-a081-b65108653e2e",
+"target": "it's true that that is Jane's bag",
+"type": "use"
+}
+],
+"target": "that is Jane's bag",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I think that that is Jane's bag."
 }
 }

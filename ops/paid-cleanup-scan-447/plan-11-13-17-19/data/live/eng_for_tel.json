@@ -1,4 +1,4700 @@
 {
+"386": {
+"at": "2026-11-18T18:42:07Z",
+"known": "అవును, నేను ఆమెతో ఏకీభవించాను.",
+"legos": [
+{
+"id": "S0386L01",
+"idx": 1,
+"is_new": true,
+"known": "నేను ఆమెతో ఏకీభవించాను",
+"phrases": [
+{
+"id": "b0e826fb-d5b4-425b-8957-7a774a2f7e00",
+"ka": "18ce6c41-ab0d-4adb-aaa0-44db4dcd039d",
+"known": "నేను ఆమెతో ఏకీభవించాను",
+"pos": 0,
+"t1": "b08a4f4f-3333-4f01-bb82-b863ca27258d",
+"t2": "e24cc3bf-392a-4b54-93e1-ac7efb26231c",
+"target": "I agreed with her",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0386L01C01",
+"ka": "636aeef9-945d-48b3-8d5b-d2d5593dfad2",
+"known": "నేను",
+"pos": 1,
+"t1": "1b65de01-78e2-4da7-8511-2d167bd3ea00",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0386L01C02",
+"ka": "dc4ad695-a163-4872-94b0-372632414583",
+"known": "ఏకీభవించాను",
+"pos": 2,
+"t1": "bfc0a6f9-3dea-43c4-977d-b24b870cae53",
+"t2": "15413cdb-10e7-46c9-a586-373ede0f211c",
+"target": "agreed with",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0386L01C03",
+"ka": "f8623a88-a18a-4409-8fdd-37bf36fadc86",
+"known": "ఆమెతో",
+"pos": 3,
+"t1": "42caa549-d204-4223-a29f-7bb284316db1",
+"t2": "4562ba85-4041-4f00-984e-818e5809af00",
+"target": "with her",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0386L01B01",
+"ka": "18ce6c41-ab0d-4adb-aaa0-44db4dcd039d",
+"known": "నేను ఆమెతో ఏకీభవించాను",
+"pos": 4,
+"t1": "b08a4f4f-3333-4f01-bb82-b863ca27258d",
+"t2": "e24cc3bf-392a-4b54-93e1-ac7efb26231c",
+"target": "I agreed with her",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0386L01B04",
+"ka": "5e397458-f626-41a0-9d29-a6b4b1888ad4",
+"known": "దాని గురించి నేను ఆమెతో ఏకీభవించాను",
+"pos": 7,
+"t1": "67e4a07a-aeda-4972-8645-4e757b06edc7",
+"t2": "4825b8b6-b090-485f-b516-386bc19e85d7",
+"target": "I agreed with her about it",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0386L01U01",
+"ka": "5e397458-f626-41a0-9d29-a6b4b1888ad4",
+"known": "దాని గురించి నేను ఆమెతో ఏకీభవించాను",
+"pos": 8,
+"t1": "67e4a07a-aeda-4972-8645-4e757b06edc7",
+"t2": "4825b8b6-b090-485f-b516-386bc19e85d7",
+"target": "I agreed with her about it",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0386L01U02",
+"ka": "27cda0a5-03f9-45a0-a8dc-2d3f9d3f0fab",
+"known": "నేను ఆమెతో ఏకీభవించలేదు",
+"pos": 9,
+"t1": "b4a91196-621f-4d9f-95cb-6979186271d7",
+"t2": "3c818696-dfe7-4476-bb08-12181852480f",
+"target": "I didn't agree with her",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0386L01U03",
+"ka": "b4c26a7d-10a1-48a0-8e55-c8faa606bce4",
+"known": "నువ్వు ఆమెతో ఏకీభవిస్తావా?",
+"pos": 10,
+"t1": "f9564ff9-2d1c-4589-875e-dcaf9f4b4eb1",
+"t2": "411e8d8d-9daf-4b54-b472-494db3909137",
+"target": "do you agree with her?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0386L01U04",
+"ka": "df4baa68-df5f-4002-bb97-8d4034fa7508",
+"known": "నేను ఆమెతో ఏకీభవించానని అనుకుంటాను",
+"pos": 11,
+"t1": "a1aa8cc5-9710-42aa-a6ac-5cc079366e27",
+"t2": "589522e4-e85d-4ad4-9d11-98ee72abcbb3",
+"target": "I think I agreed with her",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0386L01U05",
+"ka": "6d87de3d-09b7-4924-aa74-ddf175f60ca4",
+"known": "నువ్వు వెళ్ళాక నేను ఆమెతో ఏకీభవించాను.",
+"pos": 12,
+"t1": "16b73ccb-5ede-4bf1-b928-d6abb8b8d35d",
+"t2": "fe6f295d-706b-4cd0-a2de-cb62ebee43d8",
+"target": "I agreed with her after you left.",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0386L01U06",
+"ka": "b97ebf96-26c9-44a2-874e-b8dd9d0f532a",
+"known": "నేను ఆమెతో ఏకీభవించాను ఎందుకంటే ఆమె నా స్నేహితురాలు.",
+"pos": 13,
+"t1": "c0b1017b-8012-4ce0-ab0b-e5ff0abadd4d",
+"t2": "c98faabf-ef67-4719-bfec-0675947e92a7",
+"target": "I agreed with her because she's my friend.",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0386L01U07",
+"ka": "e4f61670-b843-4ba8-a125-5ad7a410cb50",
+"known": "నాకు ఖచ్చితంగా తెలుసు నేను ఆమెతో ఏకీభవించాను",
+"pos": 14,
+"t1": "e09d3c48-d5b0-4f16-b87a-946647e5daba",
+"t2": "a2d3adf7-baa7-4fcd-a4db-5e2184c6306c",
+"target": "I'm sure I agreed with her",
+"type": "use"
+}
+],
+"target": "I agreed with her",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Yes I agreed with her."
+},
+"397": {
+"at": "2026-11-18T18:42:07Z",
+"known": "మనం త్వరగా సిద్ధం కావాల్సిన అవసరం ఉందా?",
+"legos": [
+{
+"id": "S0397L01",
+"idx": 1,
+"is_new": true,
+"known": "మనం సిద్ధం కావాల్సిన అవసరం ఉందా",
+"phrases": [
+{
+"id": "3621211a-7da0-431e-8daa-5add0a55793b",
+"ka": "7bf36881-7549-463e-a982-13385ae6cf3d",
+"known": "మనం సిద్ధం కావాల్సిన అవసరం ఉందా",
+"pos": 0,
+"t1": "ecb90c69-99d6-4326-b934-69a1b59776b4",
+"t2": "2adeeb19-af06-4b90-8a88-b13f9ae07a6f",
+"target": "do we need to get ready",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0397L01C01",
+"ka": "47523206-ea53-42b3-bb1d-7d608471cbdd",
+"known": "మనం",
+"pos": 1,
+"t1": "7ff81cee-b4c7-44b6-a812-a1383974dfdb",
+"t2": "a24754eb-201f-4b12-bf11-32b2ab328248",
+"target": "we",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0397L01C02",
+"ka": "a14db025-94b9-437d-bbea-71fea6b59961",
+"known": "సిద్ధం కావాలి",
+"pos": 2,
+"t1": "59087442-81b5-4f0d-9439-ba48aa09ae30",
+"t2": "eaa9ac30-94d1-449f-a6d6-6878d4c547b7",
+"target": "get ready",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0397L01C03",
+"ka": "3921c643-4a3b-4130-b270-76921b17c84c",
+"known": "అవసరం ఉందా",
+"pos": 3,
+"t1": "6d1ec093-b4b8-462a-a670-2dc5f40415f1",
+"t2": "cd617ef1-4fea-4831-95bc-2681780bde24",
+"target": "do need to",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0397L01B01",
+"ka": "7bf36881-7549-463e-a982-13385ae6cf3d",
+"known": "మనం సిద్ధం కావాల్సిన అవసరం ఉందా?",
+"pos": 4,
+"t1": "ecb90c69-99d6-4326-b934-69a1b59776b4",
+"t2": "cd5190c6-bf7b-44f7-a649-e6254c6da4b9",
+"target": "do we need to get ready?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0397L01B02",
+"ka": "44aa92f0-baa0-47da-a90a-941301b53b59",
+"known": "అయితే మనం సిద్ధం కావాల్సిన అవసరం ఉందా",
+"pos": 5,
+"t1": "ef6196e5-b7ce-46b7-a8d8-6dd2381c4ccf",
+"t2": "659c6dcc-8b0b-4c9c-b0a5-757d49f36cc5",
+"target": "so do we need to get ready",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0397L01B03",
+"ka": "948e58c3-2405-4b25-a851-73637245af38",
+"known": "మనం ఇక్కడ సిద్ధం కావాల్సిన అవసరం ఉందా?",
+"pos": 6,
+"t1": "daca7832-b992-4bd6-87b1-4c5fd98e511f",
+"t2": "e9e383fe-9a32-426e-a47f-7cef1b3f0bda",
+"target": "do we need to get ready here?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0397L01B04",
+"ka": "f63584a9-7355-438a-83a7-479c8378ff62",
+"known": "మనం ఎందుకు సిద్ధం కావాల్సిన అవసరం ఉంది?",
+"pos": 7,
+"t1": "b33bbd78-90cb-4f6c-8d07-e95ca1f1f1aa",
+"t2": "06865d72-2e42-432b-b106-974dcd021d96",
+"target": "why do we need to get ready?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0397L01U01",
+"ka": "f63584a9-7355-438a-83a7-479c8378ff62",
+"known": "మనం ఎందుకు సిద్ధం కావాల్సిన అవసరం ఉంది?",
+"pos": 8,
+"t1": "b33bbd78-90cb-4f6c-8d07-e95ca1f1f1aa",
+"t2": "06865d72-2e42-432b-b106-974dcd021d96",
+"target": "why do we need to get ready?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0397L01U02",
+"ka": "2e47fea8-8527-446d-9249-ac1db0fb7723",
+"known": "మనం సిద్ధం కావాల్సిన అవసరం ఉంది",
+"pos": 9,
+"t1": "f69de1ee-7ce3-4c0f-80e1-8d260b2adec8",
+"t2": "63e1aee6-3651-4e15-95e1-68d40a95383c",
+"target": "we need to get ready",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0397L01U03",
+"ka": "5669bf28-c675-49c4-a048-d9f3dd58638c",
+"known": "మనం బస్సు కోసం సిద్ధం కావాల్సిన అవసరం ఉందా?",
+"pos": 10,
+"t1": "fea78c92-3f3a-48a9-8198-4db675faa1e3",
+"t2": "63e837a1-0642-484d-a6fc-88bf60a33bc0",
+"target": "do we need to get ready for the bus?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0397L01U05",
+"ka": "f1e9e36b-869d-4787-8543-7a966e1c44d8",
+"known": "దాని కోసం మనం సిద్ధం కావాల్సిన అవసరం ఉందా?",
+"pos": 12,
+"t1": "b9f2f19d-7d09-45fb-99ed-053d49c357b3",
+"t2": "d358dcd1-601a-48b8-92ad-cd8528da8308",
+"target": "do we need to get ready for it?",
+"type": "use"
+}
+],
+"target": "do we need to get ready",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Do we need to get ready soon?"
+},
+"398": {
+"at": "2026-11-18T18:42:08Z",
+"known": "మనం మన పిల్లలతో ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం.",
+"legos": [
+{
+"id": "S0398L01",
+"idx": 1,
+"is_new": true,
+"known": "మన పిల్లలతో",
+"phrases": [
+{
+"id": "9b8338dd-c108-4027-bc5a-c7c7490ae15e",
+"ka": "b485b9b7-dbdb-458a-8a23-c1e08a3e917d",
+"known": "మన పిల్లలతో",
+"pos": 0,
+"t1": "e0dea1fd-9369-45a3-a989-e51be8769068",
+"t2": "c280c809-062c-4ada-b41c-5b2211387080",
+"target": "with our children",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0398L01C01",
+"ka": "5b1968d4-945b-486c-8f1b-39d6556ff24f",
+"known": "తో",
+"pos": 1,
+"t1": "5b392a6a-1b9d-4fe1-a1e9-09519fad706d",
+"t2": "1510ccc9-d82b-46d2-9801-108ce159179b",
+"target": "with",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0398L01C02",
+"ka": "114f6208-ab26-4609-aa97-1bf62f278297",
+"known": "మన పిల్లలు",
+"pos": 2,
+"t1": "17db4b58-6825-47fb-b636-0af7d084a1da",
+"t2": "a002e7e6-a6bf-4c98-960c-6d7a66a385bd",
+"target": "our children",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0398L01B01",
+"ka": "b485b9b7-dbdb-458a-8a23-c1e08a3e917d",
+"known": "మన పిల్లలతో",
+"pos": 3,
+"t1": "e0dea1fd-9369-45a3-a989-e51be8769068",
+"t2": "c280c809-062c-4ada-b41c-5b2211387080",
+"target": "with our children",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0398L01B02",
+"ka": "a339e670-7efb-4cc5-9614-3466f7cfe98e",
+"known": "ఇప్పుడు మన పిల్లలతో",
+"pos": 4,
+"t1": "2b515310-e3a5-4d02-b7d6-91a6ae2b764e",
+"t2": "3b7435e3-9e6f-4c92-b33b-5f80d5270cbc",
+"target": "with our children now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0398L01B03",
+"ka": "07c4f65b-6fb9-4b8f-9f5c-007fa0f54d62",
+"known": "ఇక్కడ మన పిల్లలతో",
+"pos": 5,
+"t1": "38833a97-1a9d-48b0-9347-2b87266acaf5",
+"t2": "dc606d87-8dbe-4b53-8c08-fd845403c7f3",
+"target": "here with our children",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0398L01B04",
+"ka": "aacbf5ce-d78c-449c-9b70-a1366c743f0b",
+"known": "అక్కడ మన పిల్లలతో",
+"pos": 6,
+"t1": "0b1b4505-0b4b-4985-be1f-f3b9e63fbade",
+"t2": "eb967e10-abf5-4ebc-a347-680fa6075c7b",
+"target": "over there with our children",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0398L01U01",
+"ka": "3623bdf5-07fd-4220-917d-43ff62b5993c",
+"known": "నేను మన పిల్లలతో మాట్లాడాలనుకుంటున్నాను",
+"pos": 7,
+"t1": "213aa6f1-6316-44a5-a7f8-9534663d511c",
+"t2": "ecc4264c-7b0f-48db-b897-5429af28a36d",
+"target": "I want to speak with our children",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01U02",
+"ka": "5a339387-e6cf-4ae7-9106-8b517f6dfbbd",
+"known": "మన పిల్లలతో మాట్లాడుకుందాం",
+"pos": 8,
+"t1": "cfe8df9e-870e-4c1b-baae-7bb3ae28570f",
+"t2": "587f5439-36a8-4608-8356-0412e8e13852",
+"target": "let's talk with our children",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01U03",
+"ka": "217064ce-e947-4210-8258-075dbcd40dd1",
+"known": "అతను మన పిల్లలతో సంతోషంగా ఉన్నాడు",
+"pos": 9,
+"t1": "bfe83e40-ddf1-41cd-8e34-659255140fe2",
+"t2": "367cd5b1-b81f-4177-9ffb-c57ec7e67306",
+"target": "he's happy with our children",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01U04",
+"ka": "b46e7020-20e7-4f32-9cf6-eea5ccf33050",
+"known": "అతను మన పిల్లలతో మౌనంగా ఉన్నాడు",
+"pos": 10,
+"t1": "b5f4eaec-2812-4bf2-be2d-1f3893212a8b",
+"t2": "a1b4982d-0dec-4f91-95a7-0927f149b6d6",
+"target": "he was quiet with our children",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01U06",
+"ka": "c43e7b8b-9ab6-4b18-bd45-87335de35f97",
+"known": "నాకు తెలిసుంటే మన పిల్లలతో నేను దాన్ని వేరేలా చేసేవాడిని",
+"pos": 12,
+"t1": "8fd8eba5-cc76-442f-bea0-cc8b53388811",
+"t2": "209e9a4f-5efb-44ff-9955-ada365047b2f",
+"target": "I would have done it differently with our children if I had known",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01U07",
+"ka": "b637b610-3170-49ce-bdff-eb488cb3c999",
+"known": "మన పిల్లలతో పరిపూర్ణంగా ఉండటం కంటే మాట్లాడటం ఇంకా ముఖ్యం",
+"pos": 13,
+"t1": "f19a8ed6-f5c1-4dec-bb2d-d1767fddaca3",
+"t2": "73293484-5a4d-4fc1-889b-46efabd4c7a6",
+"target": "with our children it's more important to talk than to be perfect",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01U08",
+"ka": "952d5524-8efb-460d-b1d5-63694aa864b5",
+"known": "మన పిల్లలతో వాళ్ళు ఏం సాధించడానికి ప్రయత్నిస్తున్నారో మాకు తెలియదు",
+"pos": 14,
+"t1": "11eb38ac-1091-4f32-b15b-dc20de10b385",
+"t2": "7e93d0b5-aa12-4e6e-83da-4a7fc7e39d48",
+"target": "we don't know what they're trying to achieve with our children",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01U09",
+"ka": "fa905107-50c4-4083-8f6b-e08a9bb0a461",
+"known": "నేను మన పిల్లలతో వీలైనంత తరచుగా మాట్లాడాలనుకుంటున్నాను",
+"pos": 15,
+"t1": "3cc1a473-66ba-4f66-a70c-746440591325",
+"t2": "6dba0e39-767b-4348-a37d-3df9cbf457e2",
+"target": "I want to speak with our children as often as possible",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L01B05",
+"ka": "bb69a0e7-2460-4608-8367-f566fc5bc3cc",
+"known": "మన పిల్లలతో ఇది ఇలా ఉంటుంది",
+"pos": 16,
+"t1": "2bb37fb0-f5b1-44ea-8cfe-db60a72a5259",
+"t2": "7d8a0680-0041-4fa1-9f85-8019c364356f",
+"target": "it'll be like this with our children",
+"type": "build"
+}
+],
+"target": "with our children",
+"type": "M"
+},
+{
+"id": "S0398L02",
+"idx": 2,
+"is_new": true,
+"known": "మనం ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం",
+"phrases": [
+{
+"id": "18c1fc3f-b9de-4253-bd6a-f8ba70a6da90",
+"ka": "77c74180-afd8-46be-bd1e-372a06a96d36",
+"known": "మనం ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం",
+"pos": 0,
+"t1": "18cb6abc-b19e-4491-949b-44344c19dcbc",
+"t2": "ef4466a7-d7bf-4e1b-a2f0-d3578c8a0e52",
+"target": "we want to become more patient",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0398L02C01",
+"ka": "d7e4c9e0-8061-4686-a597-028b6fc0232b",
+"known": "మనం ఉండాలనుకుంటున్నాం",
+"pos": 1,
+"t1": "da1e3b27-2ecf-4164-ac91-bca0f089aea6",
+"t2": "fa5bdcee-e316-491c-99f3-caee724b6af0",
+"target": "we want to become",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0398L02C02",
+"ka": "20aaab00-23bd-4ce8-96db-0a8c0cdeb323",
+"known": "ఇంకా ఎక్కువ ఓపికగా",
+"pos": 2,
+"t1": "dbd08c34-3071-41a1-9b23-4bcf688be3be",
+"t2": "448d2b2d-4d4e-427c-8ee1-950a888b23a5",
+"target": "more patient",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0398L02B01",
+"ka": "77c74180-afd8-46be-bd1e-372a06a96d36",
+"known": "మనం ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం",
+"pos": 3,
+"t1": "18cb6abc-b19e-4491-949b-44344c19dcbc",
+"t2": "ef4466a7-d7bf-4e1b-a2f0-d3578c8a0e52",
+"target": "we want to become more patient",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0398L02B02",
+"ka": "05cf50ad-ad2d-4f5b-a317-46f37863fb07",
+"known": "ఇక్కడ మనం ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం",
+"pos": 4,
+"t1": "c05b06cb-2a1c-4deb-913d-b14bc6b5ba3a",
+"t2": "e198ef4f-d04b-4463-8f75-96f2e1b61cba",
+"target": "we want to become more patient here",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0398L02B03",
+"ka": "6c4e1094-2747-4b6e-b8c1-0e30728201f2",
+"known": "అయితే మనం ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం",
+"pos": 5,
+"t1": "80f4f457-84f9-4c86-88fe-188ea993a749",
+"t2": "7b363b88-cc48-4c12-a0d7-b571084733a7",
+"target": "so we want to become more patient",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0398L02U01",
+"ka": "5bc1a78d-1a92-4f77-bb20-9c940cab4f82",
+"known": "మనం మన పిల్లలతో ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం",
+"pos": 7,
+"t1": "0b2193a3-da43-4495-89c4-60aa950eed32",
+"t2": "0c076ca2-46b4-42e2-a559-3a7e7254f197",
+"target": "we want to become more patient with our children",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L02U02",
+"ka": "9e05f5bb-9900-4f8f-89bc-c20b4e14b700",
+"known": "నేను ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాను",
+"pos": 8,
+"t1": "a097ca05-b2a1-4dd5-8bc6-8482980bbc0f",
+"t2": "643a4b86-6db1-4a91-ab63-0ca7079cef98",
+"target": "I want to become more patient",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L02U03",
+"ka": "a928a0ac-24d5-45e1-a9f5-29e20235a597",
+"known": "నువ్వు ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నావా?",
+"pos": 9,
+"t1": "0e21e03f-f03d-43a9-935d-217b3d97bb08",
+"t2": "bc7bbb0a-dc1b-4c8d-a0e3-00124fd45f87",
+"target": "do you want to become more patient?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L02U04",
+"ka": "66ffe154-ebbe-4c1c-90af-2976a40384da",
+"known": "మనం ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకోవడం లేదు",
+"pos": 10,
+"t1": "0aa0d8b6-0113-4ee6-b465-560565a2d049",
+"t2": "7c03c1fe-d614-4a26-bf7a-0b90ba28245b",
+"target": "we don't want to become more patient",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0398L02U05",
+"ka": "ffa34b16-6836-4a86-8243-11ec1422e81b",
+"known": "మనం ఇంకా ఎక్కువ ఓపికగా ఉండాలనుకుంటున్నాం కానీ కష్టం",
+"pos": 11,
+"t1": "fbc905f2-6ffa-4de1-8c84-742eb63c5217",
+"t2": "0b28873a-be1d-4439-ae11-745cec141956",
+"target": "we want to become more patient but it's difficult",
+"type": "use"
+}
+],
+"target": "we want to become more patient",
+"type": "M"
+}
+],
+"status": "released",
+"target": "We want to become more patient with our children."
+},
+"399": {
+"at": "2026-11-18T18:42:09Z",
+"known": "మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు.",
+"legos": [
+{
+"id": "S0399L01",
+"idx": 1,
+"is_new": true,
+"known": "మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"phrases": [
+{
+"id": "5f75d184-5f81-4202-9f6d-a310a726f232",
+"ka": "e2820858-958b-4e5c-9df8-583623d4cd6c",
+"known": "మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 0,
+"t1": "e1c67e05-9c00-4ff3-969c-a3cf21857857",
+"t2": "ad107fb4-30d7-486a-9da0-dd6d1a5a7e8b",
+"target": "we don't want to lose hope",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0399L01C01",
+"ka": "47523206-ea53-42b3-bb1d-7d608471cbdd",
+"known": "మనం",
+"pos": 1,
+"t1": "7ff81cee-b4c7-44b6-a812-a1383974dfdb",
+"t2": "a24754eb-201f-4b12-bf11-32b2ab328248",
+"target": "we",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0399L01C02",
+"ka": "bb0059c2-b4f1-445d-b941-a26439b0cc6f",
+"known": "కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 2,
+"t1": "777b586a-afc7-4d05-8270-bcf89f228a18",
+"t2": "5d589201-3152-4427-b506-3cff58f7bc81",
+"target": "don't want to lose",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0399L01C03",
+"ka": "15384b07-0809-4eba-9059-429788d17caa",
+"known": "ఆశ",
+"pos": 3,
+"t1": "16e57a37-1456-4504-b61d-3c7d8503dab4",
+"t2": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+"target": "hope",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0399L01B01",
+"ka": "e2820858-958b-4e5c-9df8-583623d4cd6c",
+"known": "మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 4,
+"t1": "e1c67e05-9c00-4ff3-969c-a3cf21857857",
+"t2": "ad107fb4-30d7-486a-9da0-dd6d1a5a7e8b",
+"target": "we don't want to lose hope",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0399L01B02",
+"ka": "ea4a1924-3f0c-428e-a32e-1d9760c6ed3b",
+"known": "ఇక్కడ మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 5,
+"t1": "5e14830b-8940-4394-8dbd-79a8c4f563d6",
+"t2": "819c986d-499e-44de-bcff-4a37f14652d8",
+"target": "we don't want to lose hope here",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0399L01B03",
+"ka": "6bc36931-2302-4b1b-a02a-cb47a0f92810",
+"known": "అయితే మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 6,
+"t1": "127a0cbc-f7cd-4dfa-86f5-1b597babf3a1",
+"t2": "b9ed0c11-2f39-49da-80ee-e2d485515735",
+"target": "so we don't want to lose hope",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0399L01U01",
+"ka": "7d125663-4c24-4205-96f4-f2738e338671",
+"known": "నేను ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 8,
+"t1": "70030c15-3625-42d5-a1fc-27ed3dae948e",
+"t2": "5697fca5-9460-4a84-9af2-d2182b5d2b4c",
+"target": "I don't want to lose hope",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0399L01U03",
+"ka": "d564e752-db91-4522-8daa-dcb387446e30",
+"known": "మనం ఇంకా ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 10,
+"t1": "511b2e07-8302-4c04-8793-d2b695968e2a",
+"t2": "c6e1bdbc-dacd-47c6-a7be-9b0cbc86df60",
+"target": "we don't want to lose hope yet",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0399L01U04",
+"ka": "4c54e9fd-44fd-4100-b958-a636bbe86e5f",
+"known": "మనం అస్సలు ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 11,
+"t1": "adf40329-b9f1-4eab-97e9-817d8f8f210c",
+"t2": "2a836146-b11a-454a-b3c6-34f0f1ecc956",
+"target": "we don't want to lose hope at all",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0399L01U05",
+"ka": "7c1b3d83-ce38-4c4a-a045-4e934ef4225f",
+"known": "తప్పకుండా కష్టపడి పని చేయాలి ఎందుకంటే మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 12,
+"t1": "112f5f69-5dc4-4901-b57c-3dfff15f7767",
+"t2": "248437bd-8c2d-4344-ab1a-b2612cb8f56f",
+"target": "we must work hard because we don't want to lose hope",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0399L01U06",
+"ka": "1c79cd15-9825-444e-b2bb-e96f400d6dc0",
+"known": "నాకు ఖచ్చితంగా తెలుసు మనం ఆశ కోల్పోవాలని అనుకోవడం లేదు",
+"pos": 13,
+"t1": "710db4b6-08a5-46d7-a25c-fb0b29391bf8",
+"t2": "f48581b1-69cd-45e4-9d51-084142193877",
+"target": "I'm sure we don't want to lose hope",
+"type": "use"
+}
+],
+"target": "we don't want to lose hope",
+"type": "M"
+}
+],
+"status": "released",
+"target": "We don't want to lose hope."
+},
+"404": {
+"at": "2026-11-18T18:42:09Z",
+"known": "మనం గురువారం కంటే ముందు ముగిస్తామని ఆశించకూడదు.",
+"legos": [
+{
+"id": "S0404L01",
+"idx": 1,
+"is_new": true,
+"known": "ముగించడం",
+"phrases": [
+{
+"id": "9f40e525-ff95-47a3-bf00-39c7d6d24b91",
+"ka": "f035957d-b509-44ae-8ee7-fd2968de0159",
+"known": "ముగించడం",
+"pos": 0,
+"t1": "6ca39388-2c75-48bf-8720-b74e0a232e42",
+"t2": "b1883061-e6f6-4a67-a1c8-9402b2e9ab6b",
+"target": "to finish",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0404L01B01",
+"ka": "075f49b4-03c4-4aef-81fe-b4d803d715ab",
+"known": "ఇప్పుడు ముగించడం",
+"pos": 1,
+"t1": "96a4b8f9-9691-4baf-b5fa-74b6c9b8a1a5",
+"t2": "6d25e960-a1d6-4f0a-9b22-d7b56512bb37",
+"target": "to finish now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L01B02",
+"ka": "f507d867-9b8e-4ce0-bcac-a98d9cfc9d34",
+"known": "ఇవాళ ముగించడం",
+"pos": 2,
+"t1": "a7c203b1-5240-458c-9784-a47d0d59caa9",
+"t2": "39c6ddb9-9d8c-40a5-88ca-9f7534b81a51",
+"target": "to finish today",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L01B03",
+"ka": "9cc3e1f4-5ed0-45ff-9027-4839d70024da",
+"known": "త్వరగా ముగించడం",
+"pos": 3,
+"t1": "aa0bad50-359b-4d09-b654-5259dc4b1f8e",
+"t2": "24d00a54-9187-43a8-b2b4-c5df64686ede",
+"target": "to finish soon",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L01U01",
+"ka": "f5c26b8c-83b5-4878-be4a-7d6dee718401",
+"known": "ముగించడం బాగుంటుంది",
+"pos": 4,
+"t1": "19efcd33-0613-47b8-90a8-4abbc081babe",
+"t2": "e182690f-1847-4bd0-b819-9059e30784d2",
+"target": "it would be nice to finish",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L01U02",
+"ka": "439f8fc3-c9d9-469b-ae47-67ab9e493ee3",
+"known": "ముగించడం మంచిది",
+"pos": 5,
+"t1": "a8e33253-31e6-4147-9ed5-5d429573a80a",
+"t2": "027840e7-a76d-4149-8bc2-21ec53cbde77",
+"target": "it would be better to finish",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L01U03",
+"ka": "85c3730b-2307-4b9e-b900-c6b64bf29db2",
+"known": "నేను ముగించాలనుకుంటున్నాను",
+"pos": 6,
+"t1": "d7740e11-f8b0-44b7-a03b-5943b1d0fbd3",
+"t2": "2e5283a0-b7ce-456f-9e13-ff1e8b972968",
+"target": "I want to finish",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L01U04",
+"ka": "d1ed8959-ae12-4f00-8923-538240fc290c",
+"known": "నువ్వు ముగించాలనుకుంటున్నావా?",
+"pos": 7,
+"t1": "089a22bb-a599-4fd2-8081-b2a4c6fb104b",
+"t2": "cf272f4f-6c77-430c-af9d-cfcc340a3c70",
+"target": "do you want to finish?",
+"type": "use"
+}
+],
+"target": "to finish",
+"type": "A"
+},
+{
+"id": "S0404L02",
+"idx": 2,
+"is_new": true,
+"known": "మనం ఆశించకూడదు",
+"phrases": [
+{
+"id": "d449db00-cd6f-4cf2-b1b6-31170b5edbd2",
+"ka": "fbf86295-90cc-4058-b98f-419d9c02e5d1",
+"known": "మనం ఆశించకూడదు",
+"pos": 0,
+"t1": "b311b77c-c657-43ff-9bb3-b3cb5bb05af7",
+"t2": "0403a08f-0d92-4adb-a843-4d1ead8e300b",
+"target": "we shouldn't expect",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0404L02C01",
+"ka": "47523206-ea53-42b3-bb1d-7d608471cbdd",
+"known": "మనం",
+"pos": 1,
+"t1": "7ff81cee-b4c7-44b6-a812-a1383974dfdb",
+"t2": "a24754eb-201f-4b12-bf11-32b2ab328248",
+"target": "we",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0404L02C02",
+"ka": "f5eaf074-5f9b-4c43-b41d-5b73bbf5f2a7",
+"known": "ఆశించకూడదు",
+"pos": 2,
+"t1": "4fad9d63-d5f3-4f48-abb2-58aed6be05ca",
+"t2": "70ceb113-60c2-4ecd-b366-61ce6939d3aa",
+"target": "shouldn't expect",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0404L02B01",
+"ka": "fbf86295-90cc-4058-b98f-419d9c02e5d1",
+"known": "మనం ఆశించకూడదు",
+"pos": 3,
+"t1": "b311b77c-c657-43ff-9bb3-b3cb5bb05af7",
+"t2": "0403a08f-0d92-4adb-a843-4d1ead8e300b",
+"target": "we shouldn't expect",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L02B02",
+"ka": "de099968-a7e7-4570-b68e-99522ad714e7",
+"known": "అయితే మనం ఆశించకూడదు",
+"pos": 4,
+"t1": "af4bd23c-fc22-4fc9-be45-1d8c67bc0568",
+"t2": "fd79fe19-35fc-4606-9cd8-d44b76ff86aa",
+"target": "so we shouldn't expect",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L02B03",
+"ka": "cd898378-0167-471c-9fae-fdcf4e3e4cae",
+"known": "దాన్ని మనం ఆశించకూడదు",
+"pos": 5,
+"t1": "da8f4a49-9d21-4865-a655-08435341857f",
+"t2": "9f5e5544-9c56-483d-8ad8-32f1c94f57a5",
+"target": "we shouldn't expect it",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L02B04",
+"ka": "26e3f8b6-f615-4dbd-938b-0e8d32653127",
+"known": "ఇది మనం ఆశించకూడదు",
+"pos": 6,
+"t1": "dac45f05-9928-4fb5-a8d7-4b28335a0646",
+"t2": "61641caa-7ee3-49b7-aa16-7e6251f061eb",
+"target": "we shouldn't expect this",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L02U01",
+"ka": "58474bf8-02c5-481a-a85b-8a4ca72e91c5",
+"known": "మనం ముగించడం ఆశించకూడదు",
+"pos": 7,
+"t1": "f3b1a6d7-6be7-4ad5-aeb0-9715d0b1c1e1",
+"t2": "507902a0-ee58-4682-b2e4-d36b75647eaf",
+"target": "we shouldn't expect to finish",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L02U02",
+"ka": "72003dd3-85e2-4e0f-8ffc-bf9b5464cc55",
+"known": "మనం ఎక్కువ ఆశించకూడదు",
+"pos": 8,
+"t1": "702fcb8b-2d69-4fbb-a843-619f9026bc3a",
+"t2": "91b600d7-0433-4003-805d-7320ef44480e",
+"target": "we shouldn't expect too much",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L02U03",
+"ka": "cf9281c8-0c10-4bb7-acaa-251ed8c79b8a",
+"known": "అది మనం ఆశించకూడదు",
+"pos": 9,
+"t1": "4a04a36f-b75f-430c-923f-8cea3df8c435",
+"t2": "f00b45ce-a57f-49b1-b6a8-7355624962d6",
+"target": "we shouldn't expect that",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L02U04",
+"ka": "e843a7c9-bd19-45ce-8328-f7ab6e0cce6b",
+"known": "మనం ఎక్కువ ఆశించాలా?",
+"pos": 10,
+"t1": "58729c98-1fc2-47dc-b4d2-1b72516fc581",
+"t2": "3c78abf9-7159-4a62-b59f-d36b8559ce9b",
+"target": "should we expect too much?",
+"type": "use"
+}
+],
+"target": "we shouldn't expect",
+"type": "M"
+},
+{
+"id": "S0404L03",
+"idx": 3,
+"is_new": true,
+"known": "గురువారం",
+"phrases": [
+{
+"id": "58941bd4-39a4-4ccf-a415-495d7c34a4f8",
+"ka": "81957ef5-57b5-4786-80bf-ba68918eb2d3",
+"known": "గురువారం",
+"pos": 0,
+"t1": "8a597750-c558-4dcc-b538-b7a01806cc99",
+"t2": "08b5907f-4e05-4d33-8133-4f0403d8e95f",
+"target": "thursday",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0404L03B01",
+"ka": "92722d07-98a7-4e15-aff3-15d1e64080bd",
+"known": "గురువారం నాడు",
+"pos": 1,
+"t1": "56cbf8e6-6614-4e60-99a6-2449ae4f6be1",
+"t2": "946a3f91-c852-4292-9130-54d320300ebb",
+"target": "on Thursday",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L03B02",
+"ka": "d18ce317-5420-4d3e-9f12-e62c52335862",
+"known": "ఈ గురువారం",
+"pos": 2,
+"t1": "3f9475e7-d975-43bc-a0fd-822d776d089e",
+"t2": "ea77c09f-7b9b-4d1f-8f98-d5feb5976498",
+"target": "this Thursday",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L03B03",
+"ka": "90e51255-52d9-4e5e-a04f-4d49dcbecb4f",
+"known": "గురువారం కంటే ముందు",
+"pos": 3,
+"t1": "e7ea9e8c-ca0a-4e2f-93db-331e22348cd5",
+"t2": "7e307a64-be76-47a7-8459-a99c625d7097",
+"target": "before Thursday",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0404L03U01",
+"ka": "df0beb13-3bdd-41da-9fa0-4c6baca48c0b",
+"known": "మనం గురువారం కంటే ముందు ముగిస్తామని ఆశించకూడదు",
+"pos": 4,
+"t1": "55082e7d-9adc-4fa2-9dcc-7d2020c5aa3d",
+"t2": "3c9a6d06-bfdf-46e5-a4a9-43f92916866d",
+"target": "we shouldn't expect to finish before Thursday",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L03U02",
+"ka": "5cf7aa37-44ab-4765-bef0-3179942a07ad",
+"known": "గురువారం కంటే ముందు ముగించడం మంచిది",
+"pos": 5,
+"t1": "0a182a4b-21d6-4fb6-86f3-4c3de6d6d53c",
+"t2": "d772fe86-b12c-4f35-a316-108cd0d647eb",
+"target": "it would be better to finish before Thursday",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L03U03",
+"ka": "3cf97c08-8a3f-4fed-a048-4b192ac4bdf5",
+"known": "గురువారం కంటే ముందు ముగించడం బాగుంటుంది",
+"pos": 6,
+"t1": "0cc52acf-bb66-4ab2-a616-d3b0f14ee46f",
+"t2": "7282369a-277e-4fed-882e-b2a3066c5e9b",
+"target": "it would be nice to finish before Thursday",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L03U04",
+"ka": "0981a862-6426-4ac2-a310-2b942a7caba7",
+"known": "గురువారం కంటే ముందు మాట్లాడుకుందాం",
+"pos": 7,
+"t1": "8ff83dab-9dad-4518-9280-4f5dfe0c835e",
+"t2": "79b48f76-f6c4-482f-a940-d0ee62e438c7",
+"target": "let's talk before Thursday",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0404L03U05",
+"ka": "d88039bf-1e56-4134-99fd-8e6816d2ca53",
+"known": "నేను గురువారం కంటే ముందు మాట్లాడాలనుకుంటున్నాను",
+"pos": 8,
+"t1": "7552ea37-6fad-41f3-bc37-d8108e60b343",
+"t2": "444ca685-17fe-457a-a01f-98b740a98fc2",
+"target": "I want to speak before Thursday",
+"type": "use"
+}
+],
+"target": "thursday",
+"type": "A"
+}
+],
+"status": "released",
+"target": "We shouldn't expect to finish before Thursday."
+},
+"410": {
+"at": "2026-11-18T18:42:10Z",
+"known": "వాళ్ళు ఇంకా ఒకరితో ఒకరు గొడవ పడుతున్నారు.",
+"legos": [
+{
+"id": "S0410L01",
+"idx": 1,
+"is_new": true,
+"known": "వాళ్ళు ఇంకా ఒకరితో ఒకరు గొడవ పడుతున్నారు",
+"phrases": [
+{
+"id": "3fb898cf-b860-4cf6-a634-1e7fd429b5ea",
+"ka": "ead6cab1-51e2-4412-84a9-8a7b7a8b0cf3",
+"known": "వాళ్ళు ఇంకా ఒకరితో ఒకరు గొడవ పడుతున్నారు",
+"pos": 0,
+"t1": "48384d9c-fb17-450c-bff4-73195b04db06",
+"t2": "0764b8d4-c272-4ce6-8fde-fb235942bd39",
+"target": "they still fight with each other",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0410L01C01",
+"ka": "4d80cadc-f642-4ff0-a007-780b8a99190f",
+"known": "వాళ్ళు",
+"pos": 1,
+"t1": "75d644c8-31ab-43e0-9e8f-8cc7452f0a98",
+"t2": "9fa7e997-974b-4bfa-80cb-1d1f1292c643",
+"target": "they",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0410L01C02",
+"ka": "de38b958-42e7-4d29-bbce-9b12915c5b69",
+"known": "ఇంకా గొడవ పడుతున్నారు",
+"pos": 2,
+"t1": "9ac543ae-f9d1-48f1-b6a8-f4a3060ed45e",
+"t2": "8efdbe02-6519-436a-8837-2e79a7878782",
+"target": "still fight",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0410L01C03",
+"ka": "74cbf94a-f48d-45c9-8795-b12935724c47",
+"known": "ఒకరితో ఒకరు",
+"pos": 3,
+"t1": "4395fa7c-1609-4403-bdea-04b6ff90151f",
+"t2": "c86162eb-7fa7-4b72-a805-048d2242dac4",
+"target": "with each other",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0410L01B01",
+"ka": "ead6cab1-51e2-4412-84a9-8a7b7a8b0cf3",
+"known": "వాళ్ళు ఇంకా ఒకరితో ఒకరు గొడవ పడుతున్నారు",
+"pos": 4,
+"t1": "48384d9c-fb17-450c-bff4-73195b04db06",
+"t2": "0764b8d4-c272-4ce6-8fde-fb235942bd39",
+"target": "they still fight with each other",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0410L01B02",
+"ka": "fae13e7b-13bb-454f-8fee-10b90fe36ab5",
+"known": "అయితే వాళ్ళు ఇంకా ఒకరితో ఒకరు గొడవ పడుతున్నారు",
+"pos": 5,
+"t1": "852d3269-1eb1-4914-96c9-7c065d7e7b8a",
+"t2": "b2b55e21-ba0f-46ba-bdb4-14e044f5408c",
+"target": "so they still fight with each other",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0410L01B04",
+"ka": "bb3ca08d-7a58-4cb0-937c-618782f20d78",
+"known": "వాళ్ళు ఇంకా ఇక్కడ ఒకరితో ఒకరు గొడవ పడుతున్నారు",
+"pos": 7,
+"t1": "ae4116a3-0e3b-4256-854a-b0f443d23ef6",
+"t2": "1b3b067e-6105-4322-850b-98d3e10d7402",
+"target": "they still fight with each other here",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0410L01U01",
+"ka": "6c25e493-cbb0-4c5a-a6a6-a4fa2d0a4f55",
+"known": "వాళ్ళు ఒకరితో ఒకరు గొడవ పడరు",
+"pos": 8,
+"t1": "6ac86f26-64d2-426e-aa3e-afdc9f17c032",
+"t2": "e399c4b7-e101-4e89-ae36-3a1245fb0163",
+"target": "they don't fight with each other",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0410L01U02",
+"ka": "f99498fe-eb07-42f3-bf64-d456757b48fa",
+"known": "వాళ్ళు ఇంకా ఒకరితో ఒకరు ఎందుకు గొడవ పడుతున్నారు?",
+"pos": 9,
+"t1": "6b83a1f6-4646-44ae-afa1-8d44e601f156",
+"t2": "125b48c7-1d0a-4237-ba18-d34ec18e3a76",
+"target": "why do they still fight with each other?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0410L01U03",
+"ka": "0a04562b-e207-4deb-9687-8d545496ec03",
+"known": "వాళ్ళు ఇంకా ఒకరితో ఒకరు గొడవ పడుతున్నారని నాకు తెలుసు",
+"pos": 10,
+"t1": "5dcac8e8-09ac-448e-bd8f-1502528037b8",
+"t2": "4eb364bb-0947-45a6-af34-46a768be0c66",
+"target": "I know they still fight with each other",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0410L01U04",
+"ka": "ac9daca0-cd3b-4380-9402-77166582004f",
+"known": "వాళ్ళు ఇంకా ఒకరితో ఒకరు గొడవ పడుతున్నారా?",
+"pos": 11,
+"t1": "16d372c1-4fb0-4ed3-b1b1-23ba7c72117c",
+"t2": "4849c2e7-36d7-42e7-9926-6b1337116d34",
+"target": "do they still fight with each other?",
+"type": "use"
+}
+],
+"target": "they still fight with each other",
+"type": "M"
+}
+],
+"status": "released",
+"target": "They still fight with each other."
+},
+"417": {
+"at": "2026-11-18T18:42:11Z",
+"known": "వాళ్ళు ఆ చీమలను చంపాలనుకుంటున్నారా?",
+"legos": [
+{
+"id": "S0417L01",
+"idx": 1,
+"is_new": true,
+"known": "ఆ చీమలను",
+"phrases": [
+{
+"id": "90b2383c-beb0-444f-b009-43d021cee3b5",
+"ka": "77e082f1-03d7-4ae4-ad1e-fff5987758b9",
+"known": "ఆ చీమలను",
+"pos": 0,
+"t1": "433662d4-599a-4e57-8cd9-a3567186fb9b",
+"t2": "a03ff58b-9a0f-4bba-803d-48725aa04a28",
+"target": "those ants",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0417L01C01",
+"ka": "d4776166-6ebe-4825-a2ff-d0d412f03461",
+"known": "ఆ",
+"pos": 1,
+"t1": "709b4294-a106-4d3b-af8b-b2b35b46067c",
+"t2": "9e13716a-5600-4bc4-8664-6fe812f43fce",
+"target": "those",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0417L01C02",
+"ka": "c3ded7b9-6c10-4ff3-9e6b-eb41765371a9",
+"known": "చీమలను",
+"pos": 2,
+"t1": "2c41f822-bda4-4df3-807a-a6298f8c922f",
+"t2": "921ff336-26f1-438c-9743-44adb52b1548",
+"target": "ants",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0417L01B01",
+"ka": "77e082f1-03d7-4ae4-ad1e-fff5987758b9",
+"known": "ఆ చీమలను",
+"pos": 3,
+"t1": "433662d4-599a-4e57-8cd9-a3567186fb9b",
+"t2": "a03ff58b-9a0f-4bba-803d-48725aa04a28",
+"target": "those ants",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L01B02",
+"ka": "81b0a52a-11b5-4364-896d-37d8cb45ab1b",
+"known": "ఆ చీమలతో",
+"pos": 4,
+"t1": "d1cbe97a-835e-43a2-91b3-4bda4b624675",
+"t2": "2d0879c6-a08a-4ef4-9447-c42d030fa065",
+"target": "with those ants",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L01B03",
+"ka": "3de98a40-fdb9-44f1-a656-627da4c258e6",
+"known": "ఆ చీమల కోసం",
+"pos": 5,
+"t1": "02cc3d6e-8320-4ba1-ab9b-d6f14c39cecb",
+"t2": "84effb47-46fa-4c34-8aed-183b1250999e",
+"target": "for those ants",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L01B04",
+"ka": "88fc25f9-816c-49bf-997c-60303d784c21",
+"known": "ఇక్కడ ఆ చీమలను",
+"pos": 6,
+"t1": "869f5269-4e82-4a19-be7d-ac0e97fe3914",
+"t2": "787816cb-7658-4ed9-981e-64c94858a62f",
+"target": "those ants here",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L01U01",
+"ka": "29550404-cce2-499b-b171-c5adb150aeee",
+"known": "నేను ఆ చీమలను చూశాను",
+"pos": 7,
+"t1": "5af0b48a-5009-4a1c-bdf8-892dae19db87",
+"t2": "cf7690a0-5123-4a5b-aabc-8bc0089cb2be",
+"target": "I saw those ants",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0417L01U02",
+"ka": "ed0daae1-e47f-4e6f-bdcc-94aeb0266c18",
+"known": "నాకు ఆ చీమలు నచ్చవు",
+"pos": 8,
+"t1": "eb904bbc-1a39-43a9-be63-e7e9e28d5714",
+"t2": "1cab70b1-a2c1-48b2-9af4-29b6580027b3",
+"target": "I don't like those ants",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0417L01U03",
+"ka": "03a97b25-1b4c-4925-9f1d-5670af8b4885",
+"known": "నీకు ఆ చీమలు నచ్చుతాయా?",
+"pos": 9,
+"t1": "86899451-0935-49ed-88c6-d8e7fd0f719d",
+"t2": "1f0210d8-f01f-42aa-8ea7-386b842409b6",
+"target": "do you like those ants?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0417L01U04",
+"ka": "ac18aa63-0e2d-40f7-9d52-573e8c77fc15",
+"known": "నాకు ఆ చీమలు అస్సలు నచ్చవు",
+"pos": 10,
+"t1": "8b9ff92b-95c5-44be-93a8-810064f4cc54",
+"t2": "00477b8b-2081-4d32-9bb4-ee196a8cbf84",
+"target": "I don't like those ants at all",
+"type": "use"
+}
+],
+"target": "those ants",
+"type": "M"
+},
+{
+"id": "S0417L02",
+"idx": 2,
+"is_new": true,
+"known": "వాళ్ళు చంపాలనుకుంటున్నారా",
+"phrases": [
+{
+"id": "c44f1129-a873-4227-9c7a-64c1eb16b84d",
+"ka": "d72e073d-aaaf-483c-b06a-caa2e4d13438",
+"known": "వాళ్ళు చంపాలనుకుంటున్నారా",
+"pos": 0,
+"t1": "100d46b1-4edb-48de-a635-ba79b32d4190",
+"t2": "e6c015da-8b87-49fe-825a-a6485541a9cb",
+"target": "do they want to kill",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0417L02C01",
+"ka": "4d80cadc-f642-4ff0-a007-780b8a99190f",
+"known": "వాళ్ళు",
+"pos": 1,
+"t1": "a20fa2d2-ac15-4901-87ab-e14a742184a3",
+"t2": "c48fb2ad-85ed-42eb-83c2-a93a5ed8cf93",
+"target": "do they want to",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0417L02C02",
+"ka": "979ab967-56ad-4415-b292-cbe07813909f",
+"known": "చంపాలనుకుంటున్నారా",
+"pos": 2,
+"t1": "e92de419-940f-4520-821e-b7c7ba0e751d",
+"t2": "0e8be691-79ba-4437-bfad-9e6f8ab8d1cf",
+"target": "kill",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0417L02B01",
+"ka": "d72e073d-aaaf-483c-b06a-caa2e4d13438",
+"known": "వాళ్ళు చంపాలనుకుంటున్నారా?",
+"pos": 3,
+"t1": "cb2daecf-722d-4e95-a17a-4d27aeb31611",
+"t2": "b056d602-63ee-4c54-aadd-d52ae298eb4e",
+"target": "do they want to kill?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L02B02",
+"ka": "66cdf91d-642c-4da7-ab5f-845bde853eb7",
+"known": "అయితే వాళ్ళు చంపాలనుకుంటున్నారా",
+"pos": 4,
+"t1": "08630592-290b-4384-809e-987e20f8bcda",
+"t2": "7f7ca752-2375-42b7-83eb-f47c5488465b",
+"target": "so do they want to kill",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L02B03",
+"ka": "bdf67080-f64a-4ea8-9d47-5b2ec662e74c",
+"known": "వాళ్ళు మళ్ళీ చంపాలనుకుంటున్నారా?",
+"pos": 5,
+"t1": "522ff9bb-cbd1-4c7d-be98-07075b2995bf",
+"t2": "f6ffb8c7-885e-4d21-9856-b5c87cd6f0e6",
+"target": "do they want to kill again?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L02B04",
+"ka": "67ad6b2b-439b-4060-af31-a930cb22dba9",
+"known": "వాళ్ళు దాన్ని చంపాలనుకుంటున్నారా?",
+"pos": 6,
+"t1": "7efa15e4-6389-400c-848f-6b9d2fc7e902",
+"t2": "b7ff60ec-acec-4404-ae3b-54b72aaf39ad",
+"target": "do they want to kill it?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0417L02U01",
+"ka": "bb765ec4-22ad-44aa-9f95-7b82422e2b51",
+"known": "వాళ్ళు ఆ చీమలను చంపాలనుకుంటున్నారా?",
+"pos": 7,
+"t1": "82e27aa1-95e6-4f85-b274-3a3ef93ddaeb",
+"t2": "f291eb24-4233-4583-80b8-711d323c4501",
+"target": "do they want to kill those ants?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0417L02U02",
+"ka": "eaf40962-ba95-46db-9a07-00c3e2eb6d42",
+"known": "వాళ్ళు ఆ చీమలను చంపాలనుకుంటున్నారని నేను అనుకోను",
+"pos": 8,
+"t1": "2dfa39e7-bb1e-4fae-b4d9-0b7e9c5c5d70",
+"t2": "7ddae285-4c41-4492-82a3-78b8d89365f5",
+"target": "I don't think they want to kill those ants",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0417L02U03",
+"ka": "67ad6b2b-439b-4060-af31-a930cb22dba9",
+"known": "వాళ్ళు దాన్ని చంపాలనుకుంటున్నారా?",
+"pos": 9,
+"t1": "7efa15e4-6389-400c-848f-6b9d2fc7e902",
+"t2": "b7ff60ec-acec-4404-ae3b-54b72aaf39ad",
+"target": "do they want to kill it?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0417L02U04",
+"ka": "760fd875-95a6-4e67-a9ca-0e2f5ae9563a",
+"known": "వాళ్ళు ఆ చీమలను ఎందుకు చంపాలనుకుంటున్నారు?",
+"pos": 10,
+"t1": "7daf7702-cb6c-4768-88dc-188f7edd9c1b",
+"t2": "ccb8db79-ae0d-4b4b-87e4-b567cd311079",
+"target": "why do they want to kill those ants?",
+"type": "use"
+}
+],
+"target": "do they want to kill",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Do they want to kill those ants?"
+},
+"486": {
+"at": "2026-11-18T18:42:12Z",
+"known": "నీ కళ్ళు అందంగా ఉన్నాయని నేను అనుకుంటున్నాను.",
+"legos": [
+{
+"id": "S0486L01",
+"idx": 1,
+"is_new": true,
+"known": "నేను అనుకుంటున్నాను",
+"phrases": [
+{
+"id": "228607c1-a483-469f-aa93-584151a163d8",
+"ka": "60b048bc-fea2-4965-b374-338b513986db",
+"known": "నేను అనుకుంటున్నాను",
+"pos": 0,
+"t1": "cfa34f4b-0f3d-4cec-8127-5ad06af0792d",
+"t2": "a487bc0f-cb56-496a-a2e7-acb9b5f0011f",
+"target": "I think",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0486L01C01",
+"ka": "636aeef9-945d-48b3-8d5b-d2d5593dfad2",
+"known": "నేను",
+"pos": 1,
+"t1": "1b65de01-78e2-4da7-8511-2d167bd3ea00",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0486L01C02",
+"ka": "9e2fa375-7304-44ab-b516-71c931fa9e11",
+"known": "అనుకుంటున్నాను",
+"pos": 2,
+"t1": "32531e63-6ff8-4be1-a8ee-84c8d4a5e94b",
+"t2": "2a6170c4-1935-49ce-ac56-76caad8f2625",
+"target": "think",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0486L01B01",
+"ka": "60b048bc-fea2-4965-b374-338b513986db",
+"known": "నేను అనుకుంటున్నాను",
+"pos": 3,
+"t1": "cfa34f4b-0f3d-4cec-8127-5ad06af0792d",
+"t2": "a487bc0f-cb56-496a-a2e7-acb9b5f0011f",
+"target": "I think",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0486L01U01",
+"ka": "2a7b797f-4d58-4ad2-962f-7537c1959b08",
+"known": "నేను అలా అనుకుంటున్నాను",
+"pos": 7,
+"t1": "5c89d8da-0f4f-404e-8199-0bb25f0984f9",
+"t2": "b391773c-19aa-496c-9e0b-220de58f2401",
+"target": "I think so",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L01U02",
+"ka": "6bf18d30-05cb-4a53-aa27-795ecbe1a961",
+"known": "నేను అలా అనుకోను",
+"pos": 8,
+"t1": "d8dde4a7-3398-4f4b-a1bf-720bcdf42a02",
+"t2": "e98874e9-69bd-40d2-af1a-a809c803eda1",
+"target": "I don't think so",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L01U03",
+"ka": "7ff91798-5769-4c5e-9e13-b3ace7e00789",
+"known": "నువ్వు చెప్పింది సరైనదని నేను అనుకుంటాను",
+"pos": 9,
+"t1": "11682bdd-5f80-4e0a-b692-b01c6f303034",
+"t2": "cec6dc72-8974-45ab-9d23-a7bd74aac404",
+"target": "I think you're right",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L01U06",
+"ka": "70b96c61-2b33-405e-9261-9ace7c79d07e",
+"known": "అది ఆశ్చర్యం కలిగించింది అని నేను అనుకుంటున్నాను",
+"pos": 12,
+"t1": "272068d0-f0bc-400d-af0e-418f08b8d6c2",
+"t2": "65288428-05ec-4a80-9192-7a1dcbea055a",
+"target": "I think that was a surprise",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L01U07",
+"ka": "53bc2f91-1a52-4a1f-9478-e4f1433d457d",
+"known": "తాము వివరించాలని అనుకోలేదని నేను అనుకుంటున్నాను",
+"pos": 13,
+"t1": "0d922efd-0bad-4427-9199-1873e6b4feda",
+"t2": "1e2b23d4-3e4a-42b8-9636-10ec51cd6056",
+"target": "I think that they didn't want to explain",
+"type": "use"
+}
+],
+"target": "I think",
+"type": "M"
+},
+{
+"id": "S0486L02",
+"idx": 2,
+"is_new": true,
+"known": "నీ కళ్ళు",
+"phrases": [
+{
+"id": "f4985d4d-6747-4c24-be93-3ad0bb31ab62",
+"ka": "c6e07a51-a3ec-488c-8339-6022ae3c0d1a",
+"known": "నీ కళ్ళు",
+"pos": 0,
+"t1": "2f1012e3-3dd0-4c88-a48e-0581a5210a12",
+"t2": "992dd60e-9323-429e-98d6-62c2532984c3",
+"target": "your eyes",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0486L02C01",
+"ka": "110898ac-4102-4954-89c6-04269d41fa88",
+"known": "నీ",
+"pos": 1,
+"t1": "945b9f93-59ea-499f-8a7d-64a27f6311c5",
+"t2": "92ae4d66-d4e7-48f0-b32b-af46282d4ab7",
+"target": "your",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0486L02C02",
+"ka": "55465b80-4ed8-4053-a5ae-cc8c36202ff7",
+"known": "కళ్ళు",
+"pos": 2,
+"t1": "be6e84e5-f42b-415d-bc60-3087fd93d1a3",
+"t2": "62aaba1b-09b6-4277-b310-94b1ee9284c4",
+"target": "eyes",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0486L02B01",
+"ka": "c6e07a51-a3ec-488c-8339-6022ae3c0d1a",
+"known": "నీ కళ్ళు",
+"pos": 3,
+"t1": "2f1012e3-3dd0-4c88-a48e-0581a5210a12",
+"t2": "992dd60e-9323-429e-98d6-62c2532984c3",
+"target": "your eyes",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0486L02B03",
+"ka": "1b8315e3-a220-4c04-ad07-2c0d611066a6",
+"known": "మళ్ళీ నీ కళ్ళు",
+"pos": 5,
+"t1": "495dea70-3c02-4455-8a0f-c3eb3111868f",
+"t2": "d7973451-f6ff-490f-8272-204b1f2ddecd",
+"target": "your eyes again",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0486L02U01",
+"ka": "bc0e20ac-c287-46d4-8000-2efdf395e791",
+"known": "నాకు నీ కళ్ళు నచ్చుతాయి",
+"pos": 6,
+"t1": "87cb0b7a-1b4d-4519-ab9d-3814aad8973f",
+"t2": "136b9e4f-fcc6-48d8-b5b0-65ad332e901d",
+"target": "I like your eyes",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L02U02",
+"ka": "7d3f9682-6c9c-4a94-822b-878a1dccc614",
+"known": "నీ కళ్ళు బాగున్నాయి",
+"pos": 7,
+"t1": "ab7d56e4-e93b-4e52-bc89-8e73b8856c2a",
+"t2": "9b7b1cb9-8229-4e6f-b8c2-98026d874261",
+"target": "your eyes are nice",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L02U03",
+"ka": "a60773ad-ba8d-4a93-ade0-071e224024df",
+"known": "నాకు నీ కళ్ళు చాలా నచ్చుతాయి",
+"pos": 8,
+"t1": "a3405d7a-2024-4145-9e6a-6cb43d9e895c",
+"t2": "68739e5b-ed11-462c-8f43-291cf343bd23",
+"target": "I like your eyes very much",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L02U04",
+"ka": "07b0d074-04b5-461c-aead-394f18213b78",
+"known": "నీ కళ్ళు బాగున్నాయని నేను అనుకుంటాను",
+"pos": 9,
+"t1": "62f4611d-8eb1-4a30-abdb-d7beafa8aea6",
+"t2": "d83d2fb9-f6bf-4229-a385-4706de3b5d89",
+"target": "I think your eyes are nice",
+"type": "use"
+}
+],
+"target": "your eyes",
+"type": "M"
+},
+{
+"id": "S0486L03",
+"idx": 3,
+"is_new": true,
+"known": "అందంగా ఉన్నాయని",
+"phrases": [
+{
+"id": "1830a38a-5cb2-47b5-bae5-ab2b5113df56",
+"ka": "f2f51a9b-b4ef-483b-bf69-3768aedbf4af",
+"known": "అందంగా ఉన్నాయని",
+"pos": 0,
+"t1": "f38d0537-3668-429c-b9c9-e40fb756e045",
+"t2": "9abdd7a7-dd96-4568-9476-7f1f4e4f6bad",
+"target": "are beautiful",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0486L03B01",
+"ka": "1ed724f7-6834-486c-8006-eb42a6156efb",
+"known": "నీ కళ్ళు అందంగా ఉన్నాయని",
+"pos": 1,
+"t1": "90432dfd-f702-4f37-a800-c855bb38b7a9",
+"t2": "4557a8ae-3ba9-4776-8994-d9968e0cf475",
+"target": "your eyes are beautiful",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0486L03B02",
+"ka": "50dd95dd-5b87-4d24-bdf6-828a97cfec2d",
+"known": "ఇప్పుడు నీ కళ్ళు అందంగా ఉన్నాయని",
+"pos": 2,
+"t1": "b4556208-0d80-423a-80f7-7bfb319c7f84",
+"t2": "e8bce7fe-f894-45ac-bcda-b40a53383d53",
+"target": "your eyes are beautiful now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0486L03B03",
+"ka": "fb136dc4-3916-4906-a0b6-7c30d4dbe6dc",
+"known": "మళ్ళీ నీ కళ్ళు అందంగా ఉన్నాయని",
+"pos": 3,
+"t1": "598c2ddc-fb56-4253-acce-64df1d0fb363",
+"t2": "18837f3a-3834-4590-9959-575af8fd63ca",
+"target": "your eyes are beautiful again",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0486L03U01",
+"ka": "85e0d8d5-1b19-4bb6-a0d4-0e4aba4cbf9a",
+"known": "నీ కళ్ళు అందంగా ఉన్నాయని నేను అనుకుంటున్నాను",
+"pos": 4,
+"t1": "28eb2e53-00c1-440e-a475-a4f9aacbb30e",
+"t2": "a770d41d-f5eb-44fd-86be-438ceab43d74",
+"target": "I think your eyes are beautiful",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L03U02",
+"ka": "a8b57e63-56da-4b03-8af1-53d3dc24731a",
+"known": "నీ కళ్ళు అందంగా ఉన్నాయి",
+"pos": 5,
+"t1": "90432dfd-f702-4f37-a800-c855bb38b7a9",
+"t2": "4557a8ae-3ba9-4776-8994-d9968e0cf475",
+"target": "your eyes are beautiful",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L03U03",
+"ka": "6bf09697-29f7-4971-ab82-d7b679256b05",
+"known": "ఆమె కళ్ళు అందంగా ఉన్నాయి",
+"pos": 6,
+"t1": "ea56d1aa-0e09-4e04-9683-3eb816f5743f",
+"t2": "301ad33b-e865-457e-90df-d973b48230cb",
+"target": "her eyes are beautiful",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0486L03U04",
+"ka": "a5ba8ead-d5a4-4f00-802b-0af86f36de07",
+"known": "అవి అందంగా ఉన్నాయని నేను అనుకుంటాను",
+"pos": 7,
+"t1": "80a9813a-08bb-4c83-ab5f-3ca6058df45a",
+"t2": "479ca1ba-1da5-4124-8662-14d713cf6dac",
+"target": "I think they're beautiful",
+"type": "use"
+}
+],
+"target": "are beautiful",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I think your eyes are beautiful."
+},
+"492": {
+"at": "2026-11-18T18:42:12Z",
+"known": "ఆ చోట్లలో ఏది అత్యంత ఆసక్తికరమైనది అని నువ్వు అనుకుంటున్నావు?",
+"legos": [
+{
+"id": "S0492L01",
+"idx": 1,
+"is_new": true,
+"known": "నువ్వు అనుకుంటున్నావు",
+"phrases": [
+{
+"id": "f6f53c1c-db58-43b4-a79d-d8454b2cd711",
+"ka": "390ad4d1-d952-4842-89b3-054c9834bffc",
+"known": "నువ్వు అనుకుంటున్నావు",
+"pos": 0,
+"t1": "5c1438b1-8671-43ed-8f79-e5728e57a804",
+"t2": "01cc9ebf-1e5a-45be-9a1f-974a0b51bdde",
+"target": "do you think",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0492L01C01",
+"ka": "30b7c6a7-9602-4a2d-828a-95804141c000",
+"known": "నువ్వు",
+"pos": 1,
+"t1": "6d276d52-4b9a-4446-85b2-9e033edeb588",
+"t2": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"target": "you",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0492L01C02",
+"ka": "d8906748-8a7b-403e-b6e4-0df65761d4bf",
+"known": "అనుకుంటున్నావు",
+"pos": 2,
+"t1": "6f1a5764-b933-4ff4-9f51-9a24e014b883",
+"t2": "887dd276-de06-4ece-8793-6673f09d1e5d",
+"target": "do think",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0492L01B01",
+"ka": "390ad4d1-d952-4842-89b3-054c9834bffc",
+"known": "నువ్వు అనుకుంటున్నావు",
+"pos": 3,
+"t1": "5c1438b1-8671-43ed-8f79-e5728e57a804",
+"t2": "01cc9ebf-1e5a-45be-9a1f-974a0b51bdde",
+"target": "do you think",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0492L01U01",
+"ka": "f2f29329-3ecc-44d7-96e4-1b56ae9fa132",
+"known": "నువ్వు అలా అనుకుంటున్నావా?",
+"pos": 6,
+"t1": "383959d0-70f2-4cfd-9a48-d3c9d3a33d63",
+"t2": "52a4ac05-cf24-4710-9090-629cdaa7ad9a",
+"target": "do you think so?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L01U02",
+"ka": "68f55f17-728a-4430-ba4a-9d63d4a03350",
+"known": "నువ్వు ఏమనుకుంటున్నావు?",
+"pos": 7,
+"t1": "5c27590b-24c9-4247-bb3c-aba56581eebf",
+"t2": "87f7c6cc-51e4-4bdd-aac3-66986c23a48a",
+"target": "what do you think?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L01U03",
+"ka": "c16bd0d7-ef7b-4566-b208-2014baba3fa4",
+"known": "నువ్వు అలా అనుకోవడం లేదా?",
+"pos": 8,
+"t1": "0ed71163-090f-4734-9b1e-9d4c6ce028b6",
+"t2": "d97f60b2-b321-4831-8b07-fd9068becc77",
+"target": "don't you think so?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L01U04",
+"ka": "b1105b08-f410-4512-b898-13f5b71ec5f2",
+"known": "నువ్వు అలా ఎందుకు అనుకుంటున్నావు?",
+"pos": 9,
+"t1": "3519668c-0f58-45f0-90a4-66ab37834f49",
+"t2": "3bbea79a-9456-4464-a5f9-027d503c9fc4",
+"target": "why do you think that?",
+"type": "use"
+}
+],
+"target": "do you think",
+"type": "M"
+},
+{
+"id": "S0492L02",
+"idx": 2,
+"is_new": true,
+"known": "ఆ చోట్లలో",
+"phrases": [
+{
+"id": "2ac41b4f-c084-4dc9-b91b-7d325fff3c28",
+"ka": "4989178a-8608-4139-9c65-d7c6d6fd1e1a",
+"known": "ఆ చోట్లలో",
+"pos": 0,
+"t1": "89bfe1c3-9bf1-4ac0-8580-dff9caaf62ce",
+"t2": "f114a124-6df7-4248-8350-4c795bb99834",
+"target": "of those places",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0492L02C01",
+"ka": "d4776166-6ebe-4825-a2ff-d0d412f03461",
+"known": "ఆ",
+"pos": 1,
+"t1": "709b4294-a106-4d3b-af8b-b2b35b46067c",
+"t2": "9e13716a-5600-4bc4-8664-6fe812f43fce",
+"target": "those",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0492L02C02",
+"ka": "b8e2dec1-8326-4c77-8532-a1a752932c47",
+"known": "చోట్లలో",
+"pos": 2,
+"t1": "b1fa80ba-38d7-4a72-888f-9225d9c9604b",
+"t2": "4c3dc1c2-d81a-4608-8ec2-a2bc76c4518b",
+"target": "places",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0492L02B01",
+"ka": "4989178a-8608-4139-9c65-d7c6d6fd1e1a",
+"known": "ఆ చోట్లలో",
+"pos": 3,
+"t1": "89bfe1c3-9bf1-4ac0-8580-dff9caaf62ce",
+"t2": "f114a124-6df7-4248-8350-4c795bb99834",
+"target": "of those places",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0492L02B02",
+"ka": "7e0ac2fe-f1f3-431d-9734-ed1250e7cb39",
+"known": "ఇప్పుడు ఆ చోట్లలో",
+"pos": 4,
+"t1": "a4471af6-60ad-4e1c-a309-a5e00cca5c94",
+"t2": "71e735b1-8956-4083-9f8f-6ea3cc35d752",
+"target": "of those places now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0492L02B03",
+"ka": "e865ef7a-fd0c-44ef-86f4-c9db772037d3",
+"known": "మళ్ళీ ఆ చోట్లలో",
+"pos": 5,
+"t1": "13073b67-89b9-4f7d-983f-eebf779faf81",
+"t2": "24313982-556a-4454-b7bb-aef36d19504f",
+"target": "of those places again",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0492L02U01",
+"ka": "d1baacda-23c5-4e9b-a451-40a975971d67",
+"known": "ఆ చోట్లలో ఏది ఉత్తమమైనది?",
+"pos": 6,
+"t1": "4ba7eae7-b3b4-46f8-8731-38ffa4213646",
+"t2": "e84ce3fd-865a-4ec4-8453-ed91441f098f",
+"target": "which of those places is best?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L02U02",
+"ka": "68180b39-01cd-48a0-b14f-4fb2be72855b",
+"known": "ఆ చోట్లలో నువ్వు ఏది సందర్శించాలనుకుంటున్నావు?",
+"pos": 7,
+"t1": "b26f4e02-1500-4ecf-a036-204677ede201",
+"t2": "f455e505-459a-4d74-b9a1-a195d7d593bc",
+"target": "which of those places do you want to visit?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L02U03",
+"ka": "ebe338e0-f2af-4de1-af05-590d51893cf3",
+"known": "ఆ చోట్లలో కొన్ని నాకు నచ్చుతాయి",
+"pos": 8,
+"t1": "ff532a5a-2445-4705-bfee-7a1854ea3e92",
+"t2": "63ca4c76-0124-447e-b80e-e665224befaa",
+"target": "I like some of those places",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L02U04",
+"ka": "c1033cee-ac98-473c-a952-582c7eb089f9",
+"known": "ఆ చోట్లు నీకు తెలుసా?",
+"pos": 9,
+"t1": "0200a31b-c2db-4b41-8c22-bb05d06390dd",
+"t2": "59cc86bf-e525-4148-bf63-e4f6004bf067",
+"target": "do you know those places?",
+"type": "use"
+}
+],
+"target": "of those places",
+"type": "M"
+},
+{
+"id": "S0492L03",
+"idx": 3,
+"is_new": true,
+"known": "ఏది అత్యంత ఆసక్తికరమైనది",
+"phrases": [
+{
+"id": "b4b1dbe9-9e37-4e34-9f90-f532c48e56b3",
+"ka": "f20a2aa3-0de5-4edf-82e8-a5db4453a90c",
+"known": "ఏది అత్యంత ఆసక్తికరమైనది",
+"pos": 0,
+"t1": "be26e40c-5a14-4553-bdce-a267b09d5325",
+"t2": "539db619-5951-47ed-bed4-19630d561063",
+"target": "which is the most interesting",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0492L03C01",
+"ka": "9f4b800f-f8b4-429b-89c9-2c017f9d381b",
+"known": "ఏది",
+"pos": 1,
+"t1": "6e3afdf6-a148-4c0c-a85d-d5f0fe75861d",
+"t2": "3f88bd61-c82c-4309-9812-fccc5423b5ac",
+"target": "which",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0492L03C02",
+"ka": "e44f20c1-4174-49d4-bc0a-c0e8054dac24",
+"known": "అత్యంత",
+"pos": 2,
+"t1": "2efe0494-f562-424b-babf-7d7471ac253c",
+"t2": "0ac809e3-a298-4831-a9c1-a5eb4d6c77a5",
+"target": "most",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0492L03C03",
+"ka": "7876e38f-b93b-49de-840b-485d36cea008",
+"known": "ఆసక్తికరమైనది",
+"pos": 3,
+"t1": "17abd12c-ac43-432c-9197-83f1de99aed8",
+"t2": "94727645-b340-4936-bfb4-ba46fdb09f60",
+"target": "is interesting",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0492L03B01",
+"ka": "f20a2aa3-0de5-4edf-82e8-a5db4453a90c",
+"known": "ఏది అత్యంత ఆసక్తికరమైనది?",
+"pos": 4,
+"t1": "a37f9c45-952a-4a8b-a13b-54ff412343dc",
+"t2": "539db619-5951-47ed-bed4-19630d561063",
+"target": "which is the most interesting?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0492L03B02",
+"ka": "e7a98881-5648-48d0-ad0a-1d4d50a6037e",
+"known": "ఏది అత్యంత ఆసక్తికరమైనది ఆ చోట్లలో?",
+"pos": 5,
+"t1": "68d9bc7a-6ac1-4861-b114-1d7d969208c2",
+"t2": "4cf965e5-df43-49ca-b9cc-61f0d89f1ba3",
+"target": "which is the most interesting of those places?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0492L03B03",
+"ka": "6efbf32d-cb98-4bf7-ae3f-3ca33b5ca1e1",
+"known": "ఈరోజు ఏది అత్యంత ఆసక్తికరమైనది?",
+"pos": 6,
+"t1": "a1064232-69ad-41ff-b684-82ca520e353f",
+"t2": "089dea6c-178c-4ae6-b1fc-67c58f62af23",
+"target": "which is the most interesting today?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0492L03U01",
+"ka": "f20a2aa3-0de5-4edf-82e8-a5db4453a90c",
+"known": "ఏది అత్యంత ఆసక్తికరమైనది?",
+"pos": 7,
+"t1": "a37f9c45-952a-4a8b-a13b-54ff412343dc",
+"t2": "539db619-5951-47ed-bed4-19630d561063",
+"target": "which is the most interesting?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L03U02",
+"ka": "d487a318-0773-4c37-b95a-aa675d1195ef",
+"known": "ఆ చోట్లలో ఏది అత్యంత ఆసక్తికరమైనది?",
+"pos": 8,
+"t1": "68d9bc7a-6ac1-4861-b114-1d7d969208c2",
+"t2": "4cf965e5-df43-49ca-b9cc-61f0d89f1ba3",
+"target": "which is the most interesting of those places?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L03U03",
+"ka": "dd6fd84a-2a9d-46ec-a6df-f3cc05260995",
+"known": "ఏది అత్యంత ఆసక్తికరమైనదని నువ్వు అనుకుంటున్నావు?",
+"pos": 9,
+"t1": "cf397789-1d7a-4d7f-bc57-589e798f6265",
+"t2": "15863e37-64d5-449a-b111-467707c8ba41",
+"target": "which do you think is the most interesting?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0492L03U04",
+"ka": "0f9c24cc-01cc-42c2-9231-23375c9ca35f",
+"known": "ఇది అత్యంత ఆసక్తికరమైనది",
+"pos": 10,
+"t1": "3e4ceed5-cf43-4fd5-b9fb-f69e8a3b58c2",
+"t2": "5e18f0f0-0807-4648-97d1-e7d0e7fe8c04",
+"target": "this is the most interesting",
+"type": "use"
+}
+],
+"target": "which is the most interesting",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Which of those places do you think is the most interesting?"
+},
+"498": {
+"at": "2026-11-18T18:42:13Z",
+"known": "అతను అక్కడ ద్వారం లోపల ఒంటరిగా నిలబడి ఉన్నాడు.",
+"legos": [
+{
+"id": "S0498L01",
+"idx": 1,
+"is_new": true,
+"known": "ఒంటరిగా",
+"phrases": [
+{
+"id": "07118af4-caf9-476b-bdcf-c44befc4fdef",
+"ka": "c92628f9-554c-4e4e-b087-fcf89af4bcad",
+"known": "ఒంటరిగా",
+"pos": 0,
+"t1": "fc2a0709-b6d7-4f55-b542-417abe3c09ff",
+"t2": "62dce0a9-5d17-4111-ab79-a5fae0ec1718",
+"target": "alone",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0498L01B01",
+"ka": "c92628f9-554c-4e4e-b087-fcf89af4bcad",
+"known": "ఒంటరిగా",
+"pos": 1,
+"t1": "fc2a0709-b6d7-4f55-b542-417abe3c09ff",
+"t2": "62dce0a9-5d17-4111-ab79-a5fae0ec1718",
+"target": "alone",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0498L01B02",
+"ka": "a7b70c57-d353-4b22-a3a0-4e519975ecb9",
+"known": "అతను ఒంటరిగా",
+"pos": 2,
+"t1": "ac6ca898-bc38-45f6-9e32-44bc8f4c97ae",
+"t2": "ec38b838-633d-41c4-b263-0b90d5522057",
+"target": "he alone",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0498L01B03",
+"ka": "4a541ec3-a0b4-444a-b63b-d91d14c7c4ff",
+"known": "ఒంటరిగా అక్కడ",
+"pos": 3,
+"t1": "b8a7b205-629f-4fc7-a57f-5d797e8b0599",
+"t2": "4fa57da0-9fee-4717-8571-42087121ef44",
+"target": "alone over there",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0498L01U01",
+"ka": "daf9830e-146b-44ac-b07f-21426410fee0",
+"known": "అతను ఒంటరిగా ఉన్నాడు",
+"pos": 4,
+"t1": "82301c5d-d0df-4b61-a74e-4dca7e25e5b7",
+"t2": "87cbfc93-e420-4395-9038-ed2f80eee52f",
+"target": "he's alone",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L01U02",
+"ka": "0af3f0be-29f6-43c5-adf4-88c73ccdf386",
+"known": "అతను అక్కడ ఒంటరిగా ఉన్నాడు",
+"pos": 5,
+"t1": "bc8a4aeb-e172-440a-8663-13072d589ec3",
+"t2": "626c911d-8123-467d-b7e2-4b42552d9db0",
+"target": "he's alone over there",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L01U03",
+"ka": "2983d51f-c773-4129-b566-7df61ad6315b",
+"known": "ఆమె ఒంటరిగా ఉంది",
+"pos": 6,
+"t1": "a1bc1558-368f-4dd6-8800-da5febf93fb7",
+"t2": "5092c06a-ee9b-4541-86b0-f53fa477cc29",
+"target": "she's alone",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L01U04",
+"ka": "65a1395b-7a5b-41a6-9be6-3f1956a45b09",
+"known": "నువ్వు ఒంటరిగా ఉన్నావా?",
+"pos": 7,
+"t1": "99f9f598-ec83-405e-bcd4-ccc202b415eb",
+"t2": "2fa19c3c-3d12-44bd-a08e-27bb77e7050e",
+"target": "are you alone?",
+"type": "use"
+}
+],
+"target": "alone",
+"type": "A"
+},
+{
+"id": "S0498L02",
+"idx": 2,
+"is_new": true,
+"known": "అతను నిలబడి ఉన్నాడు",
+"phrases": [
+{
+"id": "44845a6f-a44f-4e73-84db-34947cde5d12",
+"ka": "5727d873-1821-49a6-88bc-252351006311",
+"known": "అతను నిలబడి ఉన్నాడు",
+"pos": 0,
+"t1": "a29930ee-a086-469a-b35a-8c6e538c0d61",
+"t2": "6c1f5d7e-950d-4c3b-a306-b8b13946bf72",
+"target": "he's standing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0498L02C01",
+"ka": "e7191bf5-8397-4f36-bf8c-9a2303d0f5a3",
+"known": "అతను",
+"pos": 1,
+"t1": "f05ef9a4-3f03-4f07-9313-088f128bf094",
+"t2": "4a4082de-9bba-4b4b-bde7-5320c4a3034a",
+"target": "he",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0498L02C02",
+"ka": "f36ae02b-a17f-44de-a796-4b0fb0d8bcc5",
+"known": "నిలబడి ఉన్నాడు",
+"pos": 2,
+"t1": "910d2bac-cd24-43e8-afc4-21959641da46",
+"t2": "15f6e6a8-5c1c-44d4-8e07-c909b8afdf97",
+"target": "is standing",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0498L02B01",
+"ka": "5727d873-1821-49a6-88bc-252351006311",
+"known": "అతను నిలబడి ఉన్నాడు",
+"pos": 3,
+"t1": "a29930ee-a086-469a-b35a-8c6e538c0d61",
+"t2": "6c1f5d7e-950d-4c3b-a306-b8b13946bf72",
+"target": "he's standing",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0498L02U01",
+"ka": "66b647d4-76d6-4764-b41e-5eb217018112",
+"known": "అతను ఒంటరిగా నిలబడి ఉన్నాడు",
+"pos": 6,
+"t1": "607d8b7f-7c14-4b49-aa5c-1df8cab1bb5c",
+"t2": "2d7af9a0-d924-4ad3-9713-a19390e985ac",
+"target": "he's standing alone",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L02U02",
+"ka": "13e4c337-956c-4fc9-beb7-d01b313730fe",
+"known": "అతను అక్కడ నిలబడి ఉన్నాడు",
+"pos": 7,
+"t1": "f145382c-7757-4280-b31f-2b6c9ab88033",
+"t2": "5683647a-17be-4513-bab4-c79c08b7da6f",
+"target": "he's standing over there",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L02U03",
+"ka": "456b561c-1a69-4e49-9c2f-fc81a4325227",
+"known": "అతను ఇక్కడ నిలబడి ఉన్నాడు",
+"pos": 8,
+"t1": "52016417-db3a-498e-bdb1-bd3341312591",
+"t2": "eab73454-e20f-4199-9f2f-f3cfe2715549",
+"target": "he's standing here",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L02U04",
+"ka": "a4fcba20-2c64-4a1b-9c37-babbe3bddf1d",
+"known": "అతను నిలబడి ఉన్నాడా?",
+"pos": 9,
+"t1": "8bd37532-d556-4960-a295-599796fe0511",
+"t2": "32c2d84f-b187-4d8a-bd18-4b076e405d8d",
+"target": "is he standing?",
+"type": "use"
+}
+],
+"target": "he's standing",
+"type": "M"
+},
+{
+"id": "S0498L03",
+"idx": 3,
+"is_new": true,
+"known": "ద్వారం లోపల",
+"phrases": [
+{
+"id": "9ea674f5-02c6-403e-9b4e-ef87ee8bae0b",
+"ka": "d7f5bddc-759f-42dc-90fa-93b807fbdaf1",
+"known": "ద్వారం లోపల",
+"pos": 0,
+"t1": "3f8351ce-8470-4e65-a7c5-b0de65ab8a90",
+"t2": "d4f908a7-47fd-4c57-949c-b3186b093abb",
+"target": "inside the entrance",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0498L03C01",
+"ka": "0ce3f36c-744a-42b5-b84f-b74db3bc4bbe",
+"known": "లోపల",
+"pos": 1,
+"t1": "b40daa95-e2cf-486a-83ec-2e6a585fdba2",
+"t2": "f83a8e71-c90b-4ad6-8241-6c97273a9eaa",
+"target": "inside",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0498L03C02",
+"ka": "b5612185-0a26-46b3-859b-02a5d205336d",
+"known": "ద్వారం",
+"pos": 2,
+"t1": "2b99c138-5198-4be1-abac-097c2acdde89",
+"t2": "8982c8ea-bc1a-4b21-be5c-a9c5ba59608b",
+"target": "the entrance",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0498L03B01",
+"ka": "d7f5bddc-759f-42dc-90fa-93b807fbdaf1",
+"known": "ద్వారం లోపల",
+"pos": 3,
+"t1": "3f8351ce-8470-4e65-a7c5-b0de65ab8a90",
+"t2": "d4f908a7-47fd-4c57-949c-b3186b093abb",
+"target": "inside the entrance",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0498L03B02",
+"ka": "a4abe208-347d-41fe-9e4d-4209d0b313c0",
+"known": "అతను ద్వారం లోపల నిలబడి ఉన్నాడు",
+"pos": 4,
+"t1": "a83d234c-6523-4621-ba4f-52c636afcbfb",
+"t2": "cc256fab-78cd-4f11-afb0-c2d867176fab",
+"target": "he's standing inside the entrance",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0498L03B03",
+"ka": "35d074fa-c2f0-451d-bbcb-876ffc005b3d",
+"known": "ద్వారం లోపల ఒంటరిగా",
+"pos": 5,
+"t1": "69068c2b-5494-46bd-8971-e9c123a01568",
+"t2": "9413938a-18ed-40f6-8175-731bef1c60ac",
+"target": "alone inside the entrance",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0498L03U01",
+"ka": "ba378140-49c4-4e15-8981-470b1a06acfa",
+"known": "అతను ద్వారం లోపల ఒంటరిగా నిలబడి ఉన్నాడు",
+"pos": 6,
+"t1": "67afaf73-9413-48ee-85c7-16997d73db2a",
+"t2": "acfe9851-f124-437b-a397-9c68abe1a526",
+"target": "he's standing alone inside the entrance",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L03U02",
+"ka": "a391538b-22ed-4e1b-ba77-dd19a17f000c",
+"known": "అతను అక్కడ ద్వారం లోపల నిలబడి ఉన్నాడు",
+"pos": 7,
+"t1": "63b28578-6f0b-4d0d-b706-2ff855585ab3",
+"t2": "68588654-8d55-4a4c-8da2-160551d52b7e",
+"target": "he's standing over there inside the entrance",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L03U03",
+"ka": "66daafe4-c7a8-44b1-802f-0b3dbec068a0",
+"known": "ఆమె ద్వారం లోపల ఒంటరిగా ఉంది",
+"pos": 8,
+"t1": "62e4ff5c-9a67-4878-8496-83ae4fcef5aa",
+"t2": "89f895e7-2470-47ca-9238-3dd2e26d1b3d",
+"target": "she's alone inside the entrance",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0498L03U04",
+"ka": "f1fb162a-872c-4f54-9c68-f1b7b864d60e",
+"known": "అతను ద్వారం లోపల ఉన్నాడా?",
+"pos": 9,
+"t1": "b1329204-183d-4699-80b9-3e3e7b75d52c",
+"t2": "da2ee962-85bd-4ba8-912b-b5ba442ce36b",
+"target": "is he inside the entrance?",
+"type": "use"
+}
+],
+"target": "inside the entrance",
+"type": "M"
+}
+],
+"status": "released",
+"target": "He's standing alone over there inside the entrance."
+},
+"529": {
+"at": "2026-11-18T18:42:14Z",
+"known": "మీరందరూ మీ చేతులు పైకెత్తగలరా?",
+"legos": [
+{
+"id": "S0529L01",
+"idx": 1,
+"is_new": true,
+"known": "మీ చేతులు",
+"phrases": [
+{
+"id": "47eac5bb-14b7-492d-ae8c-30b57fd21088",
+"ka": "c8287edf-0fd2-45a0-81a7-7dceef98d83a",
+"known": "మీ చేతులు",
+"pos": 0,
+"t1": "72813c82-120c-4638-bd5d-dea208990bdb",
+"t2": "6be89f23-bcd5-45a5-a8dc-bedf8fff1d4c",
+"target": "your hands",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0529L01B01",
+"ka": "c8287edf-0fd2-45a0-81a7-7dceef98d83a",
+"known": "మీ చేతులు",
+"pos": 1,
+"t1": "72813c82-120c-4638-bd5d-dea208990bdb",
+"t2": "6be89f23-bcd5-45a5-a8dc-bedf8fff1d4c",
+"target": "your hands",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0529L01B02",
+"ka": "0d039d95-0ad8-40bf-82ca-5c93fcee5b4a",
+"known": "మీ చేతులు ఇవాళ",
+"pos": 2,
+"t1": "5ddc9530-b54f-443d-9e89-a97d05632549",
+"t2": "dce6f319-8eaa-404b-ae2f-212c11f26fcc",
+"target": "your hands today",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0529L01B03",
+"ka": "12ff7e42-6399-4d6e-a85a-ac7913745a86",
+"known": "మీ చేతులు ఇప్పుడు",
+"pos": 3,
+"t1": "43d09031-e424-4fbe-8982-80db527db6dd",
+"t2": "b885bd39-4395-4a48-8d71-5c7cc8624a16",
+"target": "your hands now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0529L01U01",
+"ka": "3efd65cb-8cbf-4e94-9a21-9b534071d5ca",
+"known": "నేను మీ చేతులు చూడగలను",
+"pos": 4,
+"t1": "0d56584c-b2d3-4db3-b75f-4f0a8338cff5",
+"t2": "498c5088-7055-4d1a-bd9d-0d04e9d2a895",
+"target": "I can see your hands",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0529L01U02",
+"ka": "c7648494-666b-4cd7-acc5-6542683145ae",
+"known": "నాకు మీ చేతులు ఇష్టం",
+"pos": 5,
+"t1": "aba2c778-dc35-4681-b333-71c2be55452f",
+"t2": "3194170b-a767-489a-83f2-598bc6d9f4f1",
+"target": "I like your hands",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0529L01U03",
+"ka": "c25f4486-490d-4408-aa8b-11e6f8c42f80",
+"known": "నేను మీ చేతులు చూడలేను",
+"pos": 6,
+"t1": "7616b45e-209e-420c-9994-efc3a8953b98",
+"t2": "48740652-40d3-4ae7-bd6c-e59834b17671",
+"target": "I can't see your hands",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0529L01U04",
+"ka": "d9b5e5cc-1829-4ee2-bfcf-a169ebb03f2d",
+"known": "నాకు మీ చేతులు ఇష్టం లేదు",
+"pos": 7,
+"t1": "a32eb606-52d3-4701-96a2-ed8592005f10",
+"t2": "49b7439d-7be1-49b0-adde-ca0e2fa6f26a",
+"target": "I don't like your hands",
+"type": "use"
+}
+],
+"target": "your hands",
+"type": "M"
+},
+{
+"id": "S0529L02",
+"idx": 2,
+"is_new": true,
+"known": "మీరందరూ మీ చేతులు పైకెత్తగలరా",
+"phrases": [
+{
+"id": "d479d791-da1c-44a3-ac6b-4bbc03740fb7",
+"ka": "17102b89-a783-4aab-a29a-f7839b3cbee0",
+"known": "మీరందరూ మీ చేతులు పైకెత్తగలరా",
+"pos": 0,
+"t1": "dcb9b650-d568-41ba-9a29-ca8bd429af80",
+"t2": "c719e744-5d7c-43da-bc0e-90dd046d9c95",
+"target": "can you all put your hands up",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0529L02C01",
+"ka": "416e5573-bf85-40da-89b2-6d44d44c16d1",
+"known": "మీరందరూ",
+"pos": 1,
+"t1": "9c8d2a62-536f-430b-be36-326ebcd0d6c7",
+"t2": "dbc72b90-8ce2-4af0-abc6-a3af1d29489f",
+"target": "you all",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0529L02C02",
+"ka": "c8287edf-0fd2-45a0-81a7-7dceef98d83a",
+"known": "మీ చేతులు",
+"pos": 2,
+"t1": "72813c82-120c-4638-bd5d-dea208990bdb",
+"t2": "6be89f23-bcd5-45a5-a8dc-bedf8fff1d4c",
+"target": "your hands",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0529L02C03",
+"ka": "aea3d0cb-9896-4e0e-94d7-5fd62feed086",
+"known": "పైకెత్తగలరా",
+"pos": 3,
+"t1": "0f399c6f-066e-4c0e-895c-54a32f633e14",
+"t2": "d4b76272-6e2e-4d12-974a-26d9350acee9",
+"target": "can...put...up",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0529L02B01",
+"ka": "17102b89-a783-4aab-a29a-f7839b3cbee0",
+"known": "మీరందరూ మీ చేతులు పైకెత్తగలరా?",
+"pos": 4,
+"t1": "dcb9b650-d568-41ba-9a29-ca8bd429af80",
+"t2": "c719e744-5d7c-43da-bc0e-90dd046d9c95",
+"target": "can you all put your hands up?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0529L02U01",
+"ka": "17102b89-a783-4aab-a29a-f7839b3cbee0",
+"known": "మీరందరూ మీ చేతులు పైకెత్తగలరా?",
+"pos": 8,
+"t1": "dcb9b650-d568-41ba-9a29-ca8bd429af80",
+"t2": "c719e744-5d7c-43da-bc0e-90dd046d9c95",
+"target": "can you all put your hands up?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0529L02U02",
+"ka": "697ca5db-e7c2-4f4b-a85c-6f31960ec50b",
+"known": "నా కోసం మీరందరూ మీ చేతులు పైకెత్తగలరా?",
+"pos": 9,
+"t1": "c3172054-e682-42ad-aecb-2ccf68b76e1d",
+"t2": "a59d050b-e8c5-4e1c-9c33-2b05c0001d1d",
+"target": "can you all put your hands up for me?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0529L02U03",
+"ka": "32cfae67-6f86-4349-8eb3-f70f4ad2ae3c",
+"known": "మీరందరూ మీ చేతులు ఎందుకు పైకెత్తలేరు?",
+"pos": 10,
+"t1": "a6433922-e40e-40ba-83f1-225eded15670",
+"t2": "19f7faa7-fa5d-4840-ae1a-dc97d20cb288",
+"target": "why can't you all put your hands up?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0529L02U04",
+"ka": "7c9ba71f-6072-4fec-bede-85c1e8ba2692",
+"known": "మీరందరూ కలిసి మీ చేతులు పైకెత్తగలరా?",
+"pos": 11,
+"t1": "29e7bced-bd73-4359-b81e-834f22ec594a",
+"t2": "bc5c914f-df81-409c-a45f-efbaf75a1f61",
+"target": "can you all put your hands up together?",
+"type": "use"
+}
+],
+"target": "can you all put your hands up",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Can you all put your hands up?"
+},
+"569": {
+"at": "2026-11-18T18:42:14Z",
+"known": "నువ్వు ఎంత చెల్లించడానికి సిద్ధంగా ఉన్నావో నిర్ణయించుకున్నావా?",
+"legos": [
+{
+"id": "S0569L01",
+"idx": 1,
+"is_new": true,
+"known": "నిర్ణయించుకున్నావా",
+"phrases": [
+{
+"id": "ab5aff74-59a9-485f-a612-80e49f5e61a9",
+"ka": "c1d5f4d1-7dfe-40e1-a726-c9acc20d4e43",
+"known": "నిర్ణయించుకున్నావా",
+"pos": 0,
+"t1": "524fb049-c50e-4d67-b344-907c3340b651",
+"t2": "0088ccdd-5b4e-41e6-b52a-a16d275cb5ed",
+"target": "have you decided",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0569L01B01",
+"ka": "c1d5f4d1-7dfe-40e1-a726-c9acc20d4e43",
+"known": "నిర్ణయించుకున్నావా?",
+"pos": 1,
+"t1": "524fb049-c50e-4d67-b344-907c3340b651",
+"t2": "946b7474-186d-49e9-8f7b-8cbae087e3ae",
+"target": "have you decided?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L01B02",
+"ka": "f44cf645-821d-4d6d-890f-03a430f81734",
+"known": "ఇప్పుడు నిర్ణయించుకున్నావా?",
+"pos": 2,
+"t1": "8154937f-75d6-4881-b182-a773b8e64181",
+"t2": "421002ec-5216-4a99-a175-8228bef53724",
+"target": "have you decided now?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L01B03",
+"ka": "6abf8fd7-8547-4dc6-b7a0-5739b79a489f",
+"known": "దాని గురించి నిర్ణయించుకున్నావా?",
+"pos": 3,
+"t1": "1a19c4c6-144b-4a3b-a7f6-776c796a3c5a",
+"t2": "efc20523-27a6-41d4-b421-48635c16b743",
+"target": "have you decided about it?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L01U01",
+"ka": "a32f149e-c22c-4fed-a510-0276d12563ed",
+"known": "నువ్వు నిర్ణయించుకున్నావా?",
+"pos": 4,
+"t1": "524fb049-c50e-4d67-b344-907c3340b651",
+"t2": "946b7474-186d-49e9-8f7b-8cbae087e3ae",
+"target": "have you decided?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L01U02",
+"ka": "220d53d0-c4d2-4b96-8bd5-17c889452c01",
+"known": "నువ్వు నిర్ణయించుకున్నావో లేదో నాకు తెలియదు",
+"pos": 5,
+"t1": "c0ec8948-1c1b-4a57-8f90-8c32441e8e0b",
+"t2": "109917e9-da47-44d6-b2c1-dabff3160e11",
+"target": "I don't know if you've decided",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L01U03",
+"ka": "b63fffc2-7a97-4b71-a34c-10a60b6f3bb6",
+"known": "నువ్వు దీని గురించి నిర్ణయించుకున్నావా?",
+"pos": 6,
+"t1": "febcdb49-0edf-42ef-a8ff-95e2aa5b4d8e",
+"t2": "95d885ea-7b81-4996-9da2-202d2cfb68ba",
+"target": "have you decided about this?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L01U05",
+"ka": "ef427a97-c9aa-4511-ac52-0858030437d7",
+"known": "నువ్వు అది నిర్ణయించుకున్నావా?",
+"pos": 8,
+"t1": "29a1a71b-6d4e-4b5e-bd54-e607bf56a4b2",
+"t2": "2226389f-45af-4fb6-a575-b704c1bf02f6",
+"target": "have you decided that?",
+"type": "use"
+}
+],
+"target": "have you decided",
+"type": "A"
+},
+{
+"id": "S0569L02",
+"idx": 2,
+"is_new": true,
+"known": "చెల్లించడానికి",
+"phrases": [
+{
+"id": "fa0c743c-ce31-41e4-adc3-fa33b85a0ace",
+"ka": "96f57aa5-996c-4083-89c8-7b5020940222",
+"known": "చెల్లించడానికి",
+"pos": 0,
+"t1": "39096500-7c9e-4809-8213-76612e1b2291",
+"t2": "e7aaa2bc-f98d-43f7-a0e6-f67235f14f79",
+"target": "to pay",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0569L02B01",
+"ka": "96f57aa5-996c-4083-89c8-7b5020940222",
+"known": "చెల్లించడానికి",
+"pos": 1,
+"t1": "39096500-7c9e-4809-8213-76612e1b2291",
+"t2": "e7aaa2bc-f98d-43f7-a0e6-f67235f14f79",
+"target": "to pay",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L02B02",
+"ka": "a73af3fc-6b61-4baf-aaf8-dceaebb97a7a",
+"known": "చెల్లించడానికి నిర్ణయించుకున్నావా?",
+"pos": 2,
+"t1": "2f2da158-2422-499e-885f-d0aa6ba22c07",
+"t2": "a212255b-bfeb-4c67-9fac-36c16b701e1b",
+"target": "have you decided to pay?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L02B03",
+"ka": "44ca1b3c-341c-4ac1-b2fc-559c088a217d",
+"known": "ఇప్పుడు చెల్లించడానికి",
+"pos": 3,
+"t1": "c0706c03-8327-40c8-92e2-37b893bc1a87",
+"t2": "8896fa46-cdd5-4892-9da4-1d9635f82ebf",
+"target": "to pay now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L02U01",
+"ka": "8832f022-a067-4f9c-ba07-39d38727c4a8",
+"known": "నువ్వు చెల్లించడానికి సిద్ధంగా ఉన్నావా?",
+"pos": 4,
+"t1": "adb99d19-5024-4e42-85a7-5840b0cef669",
+"t2": "56210866-56c9-4fe3-9d56-c2129427b7f1",
+"target": "are you willing to pay?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L02U02",
+"ka": "ee7ea363-3eb1-45ff-bdbc-375ee2b2adf9",
+"known": "నువ్వు చెల్లించడానికి నిర్ణయించుకున్నావా?",
+"pos": 5,
+"t1": "2f2da158-2422-499e-885f-d0aa6ba22c07",
+"t2": "a212255b-bfeb-4c67-9fac-36c16b701e1b",
+"target": "have you decided to pay?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L02U03",
+"ka": "52beae63-bd06-4bc4-ada3-eea5777c7c02",
+"known": "నేను చెల్లించడానికి సిద్ధంగా లేను",
+"pos": 6,
+"t1": "fa013511-ddcd-4609-876c-6bdf61ff0bac",
+"t2": "9134b617-e2ac-4c43-bdc9-b278190e7011",
+"target": "I'm not willing to pay",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L02U04",
+"ka": "864dfd44-cc77-4f5b-bb0c-befd2273dd50",
+"known": "నువ్వు దాని కోసం చెల్లించడానికి సిద్ధంగా ఉన్నావా?",
+"pos": 7,
+"t1": "0185e9d3-0502-4bad-a055-6426f53c4d00",
+"t2": "ed23c87d-f90b-4bef-8c95-ce07d8989b76",
+"target": "are you willing to pay for it?",
+"type": "use"
+}
+],
+"target": "to pay",
+"type": "A"
+},
+{
+"id": "S0569L03",
+"idx": 3,
+"is_new": true,
+"known": "ఎంత చెల్లించడానికి",
+"phrases": [
+{
+"id": "582f0c0e-d403-44ca-ab8b-8f908395fb65",
+"ka": "a3c9fcaf-f36e-4950-816e-531fc81cf445",
+"known": "ఎంత చెల్లించడానికి",
+"pos": 0,
+"t1": "d07864bd-cc91-498b-98c4-d40c0862e855",
+"t2": "afe46dea-150e-4300-8261-58b45370b2f5",
+"target": "how much to pay",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0569L03C01",
+"ka": "3e3d600d-ab5b-416b-b610-8e6b69858088",
+"known": "ఎంత",
+"pos": 1,
+"t1": "241c187b-b046-4a5c-96fb-64aec8e1985e",
+"t2": "33c745b7-48fa-4bea-a477-9969dddc89ba",
+"target": "how much",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0569L03C02",
+"ka": "96f57aa5-996c-4083-89c8-7b5020940222",
+"known": "చెల్లించడానికి",
+"pos": 2,
+"t1": "39096500-7c9e-4809-8213-76612e1b2291",
+"t2": "e7aaa2bc-f98d-43f7-a0e6-f67235f14f79",
+"target": "to pay",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0569L03B01",
+"ka": "a3c9fcaf-f36e-4950-816e-531fc81cf445",
+"known": "ఎంత చెల్లించడానికి",
+"pos": 3,
+"t1": "d07864bd-cc91-498b-98c4-d40c0862e855",
+"t2": "afe46dea-150e-4300-8261-58b45370b2f5",
+"target": "how much to pay",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L03B02",
+"ka": "018c0f2c-eefa-4028-9e7e-31272224a995",
+"known": "ఎంత చెల్లించడానికి నిర్ణయించుకున్నావా?",
+"pos": 4,
+"t1": "6b674a9e-702b-4d38-b868-8ded933a067c",
+"t2": "886be079-4a98-44e9-b716-53f0ba361cc1",
+"target": "have you decided how much to pay?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L03B03",
+"ka": "b2432b46-591b-43d9-bc1e-da27ba7b117f",
+"known": "నువ్వు ఎంత చెల్లించడానికి సిద్ధంగా ఉన్నావు?",
+"pos": 5,
+"t1": "9b5b3f53-e792-4513-a7bf-977d41d06827",
+"t2": "48ddc26b-46bf-45c8-8cac-74e932cb3cb8",
+"target": "how much are you willing to pay?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L03U01",
+"ka": "2b3d8753-e3a8-4874-8a71-6ac023f91b93",
+"known": "నువ్వు ఎంత చెల్లించడానికి నిర్ణయించుకున్నావా?",
+"pos": 6,
+"t1": "6b674a9e-702b-4d38-b868-8ded933a067c",
+"t2": "886be079-4a98-44e9-b716-53f0ba361cc1",
+"target": "have you decided how much to pay?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L03U02",
+"ka": "b2432b46-591b-43d9-bc1e-da27ba7b117f",
+"known": "నువ్వు ఎంత చెల్లించడానికి సిద్ధంగా ఉన్నావు?",
+"pos": 7,
+"t1": "9b5b3f53-e792-4513-a7bf-977d41d06827",
+"t2": "48ddc26b-46bf-45c8-8cac-74e932cb3cb8",
+"target": "how much are you willing to pay?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L03U03",
+"ka": "d40e82f9-cb5f-4d29-b0d0-6e0a33ae25d4",
+"known": "ఎంత చెల్లించాలో నాకు తెలియదు",
+"pos": 8,
+"t1": "6d9a9e54-2349-4e30-ae94-6cbc6d81353e",
+"t2": "5e1fe504-69bf-4fc5-998c-47df6e499ea8",
+"target": "I don't know how much to pay",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L03U05",
+"ka": "a4846a3b-4800-43bf-b47f-7934abc54a99",
+"known": "నువ్వు దాని కోసం ఎంత చెల్లించడానికి నిర్ణయించుకున్నావా?",
+"pos": 10,
+"t1": "219e93a3-7b7f-4cd9-aa03-ef0b3eca5553",
+"t2": "43d34417-898f-43b6-a585-e348fca25c28",
+"target": "have you decided how much to pay for it?",
+"type": "use"
+}
+],
+"target": "how much to pay",
+"type": "M"
+},
+{
+"id": "S0569L04",
+"idx": 4,
+"is_new": true,
+"known": "నువ్వు సిద్ధంగా ఉన్నావో",
+"phrases": [
+{
+"id": "bb583716-a492-47bb-ba5c-7f6bdf6be22e",
+"ka": "9935772e-8842-46c0-974f-65be289e2d51",
+"known": "నువ్వు సిద్ధంగా ఉన్నావో",
+"pos": 0,
+"t1": "ab53cf62-73d1-4646-bceb-cff509ad79e9",
+"t2": "77028178-113d-4de8-8867-ed16f7944c3c",
+"target": "you are willing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0569L04C01",
+"ka": "30b7c6a7-9602-4a2d-828a-95804141c000",
+"known": "నువ్వు",
+"pos": 1,
+"t1": "6d276d52-4b9a-4446-85b2-9e033edeb588",
+"t2": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"target": "you",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0569L04C02",
+"ka": "15326b6c-9b04-4926-a12f-13823bb1bbec",
+"known": "సిద్ధంగా ఉన్నావో",
+"pos": 2,
+"t1": "0bfecfa2-ac3c-431a-bf80-310fac5876d8",
+"t2": "eb7344c1-ffe3-482c-bdb9-f41d2a871aac",
+"target": "are willing",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0569L04B01",
+"ka": "9935772e-8842-46c0-974f-65be289e2d51",
+"known": "నువ్వు సిద్ధంగా ఉన్నావో",
+"pos": 3,
+"t1": "ab53cf62-73d1-4646-bceb-cff509ad79e9",
+"t2": "77028178-113d-4de8-8867-ed16f7944c3c",
+"target": "you are willing",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L04B02",
+"ka": "319388b0-d02c-4262-b3a8-553db040f905",
+"known": "ఎంత చెల్లించడానికి నువ్వు సిద్ధంగా ఉన్నావో",
+"pos": 4,
+"t1": "9a0f2297-edec-47a1-a865-64eb3f604ec4",
+"t2": "78b152d2-6958-430e-9d6a-743f8a855426",
+"target": "how much you are willing to pay",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0569L04U01",
+"ka": "3e1a4c6b-d3e3-462a-82cd-0f34d25ce0c6",
+"known": "నువ్వు ఎంత చెల్లించడానికి సిద్ధంగా ఉన్నావో నిర్ణయించుకున్నావా?",
+"pos": 6,
+"t1": "1550ece7-88f9-468b-8c37-4098a6235174",
+"t2": "5f1696ee-765d-4b0a-942a-c3396b11f9e1",
+"target": "have you decided how much you are willing to pay?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L04U02",
+"ka": "9108e696-ce05-471e-9882-7db47dee5623",
+"known": "నువ్వు దాని కోసం ఎంత చెల్లించడానికి సిద్ధంగా ఉన్నావో నిర్ణయించుకున్నావా?",
+"pos": 7,
+"t1": "a02b9a38-6583-47e4-a9a1-f09992c69161",
+"t2": "e86d8db0-06a8-459a-964e-c960409ea80a",
+"target": "have you decided how much you are willing to pay for it?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L04U03",
+"ka": "6ba22f7e-8da6-4739-9183-e0f2c85ba248",
+"known": "నువ్వు ఎంత చెల్లించడానికి సిద్ధంగా ఉన్నావో నాకు తెలియదు",
+"pos": 8,
+"t1": "c9c8ca04-cafa-463c-9220-38176466a5f6",
+"t2": "ad896350-eaa6-449f-866f-48f3d662b69f",
+"target": "I don't know how much you are willing to pay",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0569L04U04",
+"ka": "0c9a9d29-381d-4cbe-91f9-aaf1fd2f5316",
+"known": "నువ్వు చెల్లించడానికి సిద్ధంగా ఉన్నావో లేదో నాకు తెలియదు",
+"pos": 9,
+"t1": "ce55bd4a-cfdb-4fdf-baa1-f415652475eb",
+"t2": "8495a469-5b4c-43af-a00c-c5854674e94a",
+"target": "I don't know if you are willing to pay",
+"type": "use"
+}
+],
+"target": "you are willing",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Have you decided how much you are willing to pay?"
+},
+"572": {
+"at": "2026-11-18T18:42:15Z",
+"known": "వాళ్ళు గత సారి మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో నువ్వు మర్చిపోయావా?",
+"legos": [
+{
+"id": "S0572L01",
+"idx": 1,
+"is_new": true,
+"known": "మర్చిపోయావా",
+"phrases": [
+{
+"id": "dec30f0b-c5ec-4ce2-9556-3562a72b393c",
+"ka": "3f040ce7-b0b2-4a17-b9d2-ce891d30a734",
+"known": "మర్చిపోయావా",
+"pos": 0,
+"t1": "58f6501c-048f-4776-bb1b-c114585b7893",
+"t2": "deace63a-2653-420c-bd84-dbf819c7e861",
+"target": "have you forgotten",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0572L01B01",
+"ka": "3f040ce7-b0b2-4a17-b9d2-ce891d30a734",
+"known": "మర్చిపోయావా?",
+"pos": 1,
+"t1": "58f6501c-048f-4776-bb1b-c114585b7893",
+"t2": "ae03a558-4322-4817-a372-568a1db8e494",
+"target": "have you forgotten?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0572L01B02",
+"ka": "7fd532ec-e3c7-4747-90a8-2a6095a3676f",
+"known": "ఇప్పుడే మర్చిపోయావా?",
+"pos": 2,
+"t1": "6d42aa9a-3d77-4591-91f9-e6144a138624",
+"t2": "ef44ea2e-5b07-4e9c-8744-076d2c4c87bb",
+"target": "have you forgotten right now?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0572L01B03",
+"ka": "7005da85-0d49-4219-8e01-8ba239198b76",
+"known": "దాని గురించి మర్చిపోయావా?",
+"pos": 3,
+"t1": "6861cb27-760f-4d46-a1a5-ecf20e181c30",
+"t2": "09a02ca8-2197-475f-ab72-cb6b4b45bfad",
+"target": "have you forgotten about it?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0572L01U01",
+"ka": "d178924b-c9d5-462d-bd3c-9454e16c25dc",
+"known": "నువ్వు మర్చిపోయావా?",
+"pos": 4,
+"t1": "58f6501c-048f-4776-bb1b-c114585b7893",
+"t2": "ae03a558-4322-4817-a372-568a1db8e494",
+"target": "have you forgotten?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L01U02",
+"ka": "b6988bd7-d9c8-44d0-b99a-d24a770c1dae",
+"known": "నువ్వు దీని గురించి మర్చిపోయావా?",
+"pos": 5,
+"t1": "68615fc5-85e6-48a7-9de3-e197c0b913c7",
+"t2": "91812c1f-39e0-4b73-9216-c5c033df24a7",
+"target": "have you forgotten about this?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L01U03",
+"ka": "c863b19a-6293-4761-8667-6cbb44422bcd",
+"known": "నువ్వు అది మర్చిపోయావా?",
+"pos": 6,
+"t1": "63fd6146-5eb8-4d9c-af8b-8edee9a4301e",
+"t2": "b80a5037-30ab-413d-8865-209d66d2d16a",
+"target": "have you forgotten that?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L01U04",
+"ka": "168b5ade-c1e3-4c35-acfd-6e2df57ed631",
+"known": "నువ్వు మర్చిపోయావో లేదో నాకు తెలియదు",
+"pos": 7,
+"t1": "0e36b187-0928-4c66-9de9-5a166dbcf9d8",
+"t2": "21af202e-b566-4dde-84b0-5c5dd022233a",
+"target": "I don't know if you've forgotten",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L01U05",
+"ka": "0c473b7f-5ce2-40de-ba3f-1d73be86869d",
+"known": "నువ్వు నా పేరు మర్చిపోయావా",
+"pos": 8,
+"t1": "36398a82-a265-4247-bfb7-6bb39f458591",
+"t2": "b966c4e8-a57f-4634-883c-378cca576c3f",
+"target": "have you forgotten my name",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L01B04",
+"ka": "5c89f673-5b58-4e9d-a305-3debc595b20e",
+"known": "ఆమె పేరు మర్చిపోయావా",
+"pos": 9,
+"t1": "70128937-fd70-43f7-ba43-83e56eafc52c",
+"t2": "26870271-e36f-4b65-ae47-7c82ceaaf254",
+"target": "have you forgotten her name",
+"type": "build"
+}
+],
+"target": "have you forgotten",
+"type": "A"
+},
+{
+"id": "S0572L02",
+"idx": 2,
+"is_new": true,
+"known": "ఏం జరిగిందో",
+"phrases": [
+{
+"id": "83c0e3e9-ec82-4e9a-ac49-b6d41884fab9",
+"ka": "66c63154-817f-48fc-bb45-5c86d21bddc3",
+"known": "ఏం జరిగిందో",
+"pos": 0,
+"t1": "15901ab1-4007-4723-8313-c415a48fea3d",
+"t2": "5f23c700-e4fa-4e9f-8806-8654f58c13b6",
+"target": "what happened",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0572L02C01",
+"ka": "4bc591ac-d43d-49de-a5d8-5fc14aa5341d",
+"known": "ఏం",
+"pos": 1,
+"t1": "c3f795df-1f48-4172-9be3-13aa36cc016a",
+"t2": "d76e7774-22b6-478a-9dbc-2e0d0187ae2e",
+"target": "what",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0572L02C02",
+"ka": "e09391eb-05a4-4e2c-9e30-22f1112d14b1",
+"known": "జరిగిందో",
+"pos": 2,
+"t1": "3dd148ea-f7ea-4a9c-b717-63d4a1af7bdf",
+"t2": "bbf6d5fc-3251-41bd-853e-c94ee4c4fb9c",
+"target": "happened",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0572L02B01",
+"ka": "66c63154-817f-48fc-bb45-5c86d21bddc3",
+"known": "ఏం జరిగిందో",
+"pos": 3,
+"t1": "15901ab1-4007-4723-8313-c415a48fea3d",
+"t2": "5f23c700-e4fa-4e9f-8806-8654f58c13b6",
+"target": "what happened",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0572L02U01",
+"ka": "e34b7443-f91c-47a4-a090-b8927dfcf6ac",
+"known": "నువ్వు ఏం జరిగిందో మర్చిపోయావా?",
+"pos": 6,
+"t1": "7d35cb9c-6f28-4ce2-8408-fef38d8eae16",
+"t2": "851f3706-a54d-43d2-be49-5f6f47548811",
+"target": "have you forgotten what happened?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U02",
+"ka": "39cbb66e-a4bf-47c4-805e-c22a04cc0305",
+"known": "ఏం జరిగిందో నీకు తెలుసా?",
+"pos": 7,
+"t1": "be30f599-4dbe-4fea-95e7-182f521b0d44",
+"t2": "ab1b4396-84d4-4a1c-a3e9-a912922d3d7d",
+"target": "do you know what happened?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U03",
+"ka": "231960b8-e98e-4601-8c4e-a74ae24f5a1f",
+"known": "నాకు ఏం జరిగిందో తెలియదు",
+"pos": 8,
+"t1": "f714305d-9953-4bdc-884b-08604ce02e10",
+"t2": "db01d166-a46a-4e32-97b6-faef575dd258",
+"target": "I don't know what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U04",
+"ka": "87b2eaec-6049-4e97-8ead-7d780f41fd41",
+"known": "ఏం జరిగిందో ఇది",
+"pos": 9,
+"t1": "7625e32a-6e29-43b5-b538-1c5528585308",
+"t2": "5c4047ed-9a74-4f11-b970-ea98dd84871a",
+"target": "this is what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U05",
+"ka": "d4607363-9905-4004-a0d7-9714f0c5388b",
+"known": "ఏం జరిగిందో అతను నిన్ను అడగబోతున్నాడు",
+"pos": 10,
+"t1": "fb0ae4b4-8126-42c9-98a8-687e067397ae",
+"t2": "bb5bc8ee-8512-43d7-b9d6-57ca02470dfe",
+"target": "he's going to ask you what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U06",
+"ka": "8c8459cf-2d5b-438f-b9e0-c55088c8e4ec",
+"known": "ఏం జరిగిందో నాకు చెప్పగలవా",
+"pos": 11,
+"t1": "123d44b2-ac19-4158-b774-3bc87ff1686d",
+"t2": "f434f7be-c796-4947-b7ff-5445510ad520",
+"target": "can you tell me what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U07",
+"ka": "da1addf3-ab12-47a0-833a-62ae855a13a0",
+"known": "ఏం జరిగిందో నేను తెలుసుకోవాల్సి ఉంది",
+"pos": 12,
+"t1": "d7d3aa68-19e2-4b13-9f95-a5998ae9bca5",
+"t2": "20520955-6f15-4daf-a1e8-aad25deba653",
+"target": "I need to find out what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U08",
+"ka": "0c1333d6-89cb-4a8b-9585-a8d6d75540c4",
+"known": "మనం ఏం జరిగిందో అడగాలా",
+"pos": 13,
+"t1": "5eb5febc-69b4-43d6-adb0-6402d330ce9b",
+"t2": "5086bf78-7ce3-4b49-8b19-c78d782c08b1",
+"target": "should we ask what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U09",
+"ka": "46d84cff-7272-4afd-a830-2938440b013c",
+"known": "ఏం జరిగిందో నాకు ఎవరూ చెప్పలేదు",
+"pos": 14,
+"t1": "e9a403b0-f3b2-4353-be59-727fbaed921d",
+"t2": "e6ef5946-29fd-4a2a-a990-715b076a20c1",
+"target": "nobody told me what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U10",
+"ka": "4402d169-4ddc-4a03-95e3-211457a6db40",
+"known": "ఏం జరిగిందో నేను ఆమెకు చెప్పాను",
+"pos": 15,
+"t1": "22dce44b-b82b-4970-a3a4-3eca87084e50",
+"t2": "584d2cf5-5e11-4432-a7e2-dcc2e3b3d03d",
+"target": "I told her what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U11",
+"ka": "2714c934-6395-4adf-88d8-040eff2ca5d1",
+"known": "ఏం జరిగిందో నాకు తెలియదు ఎందుకంటే నేను బయటికి వెళ్ళాను",
+"pos": 16,
+"t1": "b5b358e0-42b0-4eda-bda3-654732129bf1",
+"t2": "9bf112af-71a3-455c-aac3-3fefa1247a55",
+"target": "I don't know what happened because I went out",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U12",
+"ka": "10ef88e7-fcd0-4e39-9a5c-21876ee15627",
+"known": "ఏం జరిగిందో వీలైనంత త్వరగా నాకు చెప్పగలవా",
+"pos": 17,
+"t1": "935514d7-e63d-4a13-ad4c-cedeee831210",
+"t2": "1a6a7477-b813-4829-9431-88cade434a32",
+"target": "can you tell me what happened as soon as possible",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U13",
+"ka": "fd12d758-0c75-4d08-8aeb-1c98c17cc148",
+"known": "ఏం జరిగిందో నువ్వు విన్నావా",
+"pos": 18,
+"t1": "5674dc23-4d89-455a-bdc3-0c7944a6ded4",
+"t2": "8a37feed-a141-4409-84ab-e1367c1c765b",
+"target": "have you heard what happened",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L02U14",
+"ka": "24c0c52a-7703-4143-ba44-c81b30224a97",
+"known": "ఏం జరిగిందో నాకు తెలిసుంటే నేను దాన్ని వేరేలా చేసేవాడిని.",
+"pos": 19,
+"t1": "3af41736-9154-451f-b9eb-f43fbcdd94d1",
+"t2": "b21063e5-d1b8-4b97-bedf-2e9e8fa100cf",
+"target": "I would have done it differently if I had known what happened.",
+"type": "use"
+}
+],
+"target": "what happened",
+"type": "M"
+},
+{
+"id": "S0572L03",
+"idx": 3,
+"is_new": true,
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు",
+"phrases": [
+{
+"id": "3e96502c-cbcb-4712-aede-590971137cf4",
+"ka": "f45e2d0b-2cb9-4b47-b841-52f18cb21de6",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు",
+"pos": 0,
+"t1": "a7bd19b7-01f0-4ad3-9d1a-25fb09700ec6",
+"t2": "83d83c40-a372-4d13-96e2-fb527b5b6d38",
+"target": "the last time they visited us",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0572L03C01",
+"ka": "c8e8e34a-639f-498d-ba80-655ba96730af",
+"known": "గత సారి",
+"pos": 1,
+"t1": "6f924192-3bc6-4674-b2b7-dd2b5f877d8d",
+"t2": "f8ba15f8-3969-423e-a230-75fd901255b1",
+"target": "last time",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0572L03C02",
+"ka": "4d80cadc-f642-4ff0-a007-780b8a99190f",
+"known": "వాళ్ళు",
+"pos": 2,
+"t1": "75d644c8-31ab-43e0-9e8f-8cc7452f0a98",
+"t2": "9fa7e997-974b-4bfa-80cb-1d1f1292c643",
+"target": "they",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0572L03C03",
+"ka": "d37214de-cca5-41ce-bb7a-341395115e16",
+"known": "మమ్మల్ని చూడటానికి వచ్చినప్పుడు",
+"pos": 3,
+"t1": "e81f43f5-2f54-4fde-b806-5281fe867851",
+"t2": "52f0d833-74f4-41b7-93e2-6ef0497acbf4",
+"target": "visited us",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0572L03B01",
+"ka": "f45e2d0b-2cb9-4b47-b841-52f18cb21de6",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు",
+"pos": 4,
+"t1": "a7bd19b7-01f0-4ad3-9d1a-25fb09700ec6",
+"t2": "83d83c40-a372-4d13-96e2-fb527b5b6d38",
+"target": "the last time they visited us",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0572L03B02",
+"ka": "2a70b375-b821-4742-bf69-d69bed107e32",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో?",
+"pos": 5,
+"t1": "872c5e49-be4f-41f1-bb12-07b9d933384a",
+"t2": "4361dfbb-0868-4435-9c39-40c61827b407",
+"target": "what happened the last time they visited us?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0572L03B03",
+"ka": "8dc428b3-07b8-4416-9de6-5ac511e39870",
+"known": "మర్చిపోయావా గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు?",
+"pos": 6,
+"t1": "afc67b15-b441-44cf-94b4-f2c9316b3439",
+"t2": "78550013-abcc-4f8a-944d-a292ad10f898",
+"target": "have you forgotten the last time they visited us?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0572L03U01",
+"ka": "a318ecce-253c-4c2e-8f8b-27d85984d535",
+"known": "నువ్వు గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో మర్చిపోయావా?",
+"pos": 7,
+"t1": "0ad3a0e1-5465-4ec2-9813-ea35bb8f16de",
+"t2": "f473c472-0da7-41f5-8ab1-d6b610c61414",
+"target": "have you forgotten what happened the last time they visited us?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L03U02",
+"ka": "d2e35d7c-7e28-4b1c-a5e9-9a48e085431c",
+"known": "నాకు గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో తెలియదు",
+"pos": 8,
+"t1": "d574a11b-dcec-4c84-9f6f-8348614a3d8a",
+"t2": "436dd243-2e7b-49b5-8b6d-68ad6907b783",
+"target": "I don't know what happened the last time they visited us",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L03U03",
+"ka": "92a0d05c-fa79-4b9a-befb-78508f6911c4",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో నీకు తెలుసా?",
+"pos": 9,
+"t1": "622d5a3f-3961-4ebf-99ca-d7a64d1ff355",
+"t2": "e38f6ec4-f4d0-4c2d-b77a-663285535fae",
+"target": "do you know what happened the last time they visited us?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L03U04",
+"ka": "6700ab4e-4b6e-41bf-8f98-01d22bd08e21",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో ఇది",
+"pos": 10,
+"t1": "3b23a40b-00aa-4217-9159-9dc2bb735c7b",
+"t2": "7e064b0b-99a3-4084-b687-318c9c2c2967",
+"target": "this is what happened the last time they visited us",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L03U05",
+"ka": "8ed245a4-b879-4f9e-911c-ae937e74f723",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు అది జరిగి ఉండొచ్చు",
+"pos": 11,
+"t1": "b61d27b1-0ad4-4ba6-aa90-30405c60f29f",
+"t2": "553e21d9-13bd-48fc-a12d-6c6fc2daba90",
+"target": "it might have happened the last time they visited us",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L03U06",
+"ka": "a122a3d2-bbd7-446d-a0d0-ea2cae5b5d31",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో నాకు ఎవరూ చెప్పలేదు",
+"pos": 12,
+"t1": "6a78979e-450b-4517-ad36-7b8bdbddde6c",
+"t2": "609d003e-9d94-46d2-a33a-46f11232ab67",
+"target": "nobody told me what happened the last time they visited us",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0572L03U07",
+"ka": "9fa5cca5-4645-4157-a325-c3e213f7e672",
+"known": "గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో ఊహించు",
+"pos": 13,
+"t1": "df34c113-c6e1-49ea-aef0-452814e5b918",
+"t2": "7affe77d-5604-408e-b002-7664c095ebae",
+"target": "guess what happened the last time they visited us",
+"type": "use"
+}
+],
+"target": "the last time they visited us",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Have you forgotten what happened the last time they visited us?"
+},
+"573": {
+"at": "2026-11-18T18:42:16Z",
+"known": "సెలవులను చాలా ప్రత్యేకంగా చేసే అలాంటి విషయం ఇది.",
+"legos": [
+{
+"id": "S0573L01",
+"idx": 1,
+"is_new": true,
+"known": "విషయం",
+"phrases": [
+{
+"id": "f8a82d70-e2f7-42a2-895d-96be9de097ba",
+"ka": "af06fd70-5b6b-45ef-bb89-7de1308864c8",
+"known": "విషయం",
+"pos": 0,
+"t1": "8fb458ac-10d8-46d6-b521-e3e5e9a7dd17",
+"t2": "699e4780-a768-4477-a7a0-8ca273570c5a",
+"target": "thing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0573L01B01",
+"ka": "af06fd70-5b6b-45ef-bb89-7de1308864c8",
+"known": "విషయం",
+"pos": 1,
+"t1": "8fb458ac-10d8-46d6-b521-e3e5e9a7dd17",
+"t2": "699e4780-a768-4477-a7a0-8ca273570c5a",
+"target": "thing",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L01B02",
+"ka": "5f8c5fde-20e6-4db0-968d-6870b369da7c",
+"known": "ఈ విషయం",
+"pos": 2,
+"t1": "1dff8c9f-577e-4609-be03-2cc46cf99eef",
+"t2": "f898a574-4e60-42cf-8661-bea4b481762e",
+"target": "this thing",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L01B03",
+"ka": "4e89a26b-52b2-4741-9270-5b0c07b018bf",
+"known": "ఆ విషయం",
+"pos": 3,
+"t1": "0ef10bd2-d794-4464-8798-1c922fc4ff4d",
+"t2": "c9786011-9189-465f-9c8a-271c557b60e4",
+"target": "that thing",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L01U01",
+"ka": "d7be04ab-ea76-431b-98d6-c8ab511df3d4",
+"known": "ఇది ఒక మంచి విషయం",
+"pos": 4,
+"t1": "8444f04d-6feb-404e-8a32-553434818057",
+"t2": "d339b48f-263e-4d32-a8c9-39205b5c7a48",
+"target": "this is a good thing",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L01U02",
+"ka": "3970030b-f001-4058-908c-e5e987e6eac8",
+"known": "అది చాలా మంచి విషయం",
+"pos": 5,
+"t1": "473d2d1b-9b72-4263-ad2a-2f2ed458ff4d",
+"t2": "ae6bbbf9-9089-4015-ab83-0bc572c0222e",
+"target": "that is a very good thing",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L01U03",
+"ka": "2ee30bb4-a51a-4015-b52a-8605728aa5c7",
+"known": "ఇది ఆ విషయం కాదు",
+"pos": 6,
+"t1": "e07bf2ae-5218-401c-94bf-c9eb45f782fb",
+"t2": "34e95bfe-ca5a-488b-8433-b306998e40b4",
+"target": "this is not that thing",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L01U04",
+"ka": "13dd9050-fc06-4f1b-b7c2-9c8c2bb77828",
+"known": "ఇది ఒక కొత్త విషయం",
+"pos": 7,
+"t1": "6d15cb11-a205-43c2-891e-93e6697f2ae1",
+"t2": "3fd887d8-2249-4ffb-86ec-2fe8bd4639fd",
+"target": "this is a new thing",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L01U05",
+"ka": "cb3f9867-d4e6-4d62-9f6d-c649b9cea03b",
+"known": "అది ఒక మంచి విషయం కాదు",
+"pos": 8,
+"t1": "bab552b8-13d4-44c8-b8e0-21d556bdae1c",
+"t2": "10e0d887-efd5-4e2d-87df-78dbcaaf3e6d",
+"target": "that is not a good thing",
+"type": "use"
+}
+],
+"target": "thing",
+"type": "A"
+},
+{
+"id": "S0573L02",
+"idx": 2,
+"is_new": true,
+"known": "అలాంటి విషయం ఇది",
+"phrases": [
+{
+"id": "6ff9b438-022c-4d4e-ae7a-80142014311d",
+"ka": "c8d11fe5-fe7a-41c0-9cbf-d612c0f1bdf7",
+"known": "అలాంటి విషయం ఇది",
+"pos": 0,
+"t1": "7f9a50af-2dd5-4b5e-a29d-bb5cca581a0b",
+"t2": "b178f795-8df4-4a88-a05b-06fc864c772a",
+"target": "it's the kind of thing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0573L02C01",
+"ka": "f53d54f5-2149-43b7-8465-c09c7295a89f",
+"known": "అలాంటి",
+"pos": 1,
+"t1": "288ab5ea-0234-48d8-91f0-b2b2d016a7b1",
+"t2": "658e3eae-2bd1-4fd6-b2ba-ecfdb536213b",
+"target": "the kind of",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0573L02C02",
+"ka": "af06fd70-5b6b-45ef-bb89-7de1308864c8",
+"known": "విషయం",
+"pos": 2,
+"t1": "8fb458ac-10d8-46d6-b521-e3e5e9a7dd17",
+"t2": "699e4780-a768-4477-a7a0-8ca273570c5a",
+"target": "thing",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0573L02C03",
+"ka": "f8a5ab6e-08e4-438e-9781-aabd8d4e9666",
+"known": "ఇది",
+"pos": 3,
+"t1": "6e7eeac8-2f9b-401c-8c71-3f126041d816",
+"t2": "d0b7b440-4bfe-48cd-bdeb-7accacadccca",
+"target": "it's",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0573L02B01",
+"ka": "c8d11fe5-fe7a-41c0-9cbf-d612c0f1bdf7",
+"known": "అలాంటి విషయం ఇది",
+"pos": 4,
+"t1": "7f9a50af-2dd5-4b5e-a29d-bb5cca581a0b",
+"t2": "b178f795-8df4-4a88-a05b-06fc864c772a",
+"target": "it's the kind of thing",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L02U01",
+"ka": "175cb76b-17e6-417f-b863-959ea148a235",
+"known": "నాకు తెలుసు, అలాంటి విషయం ఇది",
+"pos": 7,
+"t1": "aac79b2f-6ff8-415b-a120-9032f24a80b1",
+"t2": "e9cd9d24-d690-457b-bf1d-2feee30938b2",
+"target": "I know it's the kind of thing",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L02U02",
+"ka": "cf476a47-e4be-4381-a634-ebf87863cd7e",
+"known": "ఇది అలాంటి విషయం అని నేను అనుకుంటాను",
+"pos": 8,
+"t1": "d201d586-b8ec-43af-a464-a06b0065c7c3",
+"t2": "f415614c-d344-48f3-8b40-8fbfed281bbe",
+"target": "I think it's the kind of thing",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L02U03",
+"ka": "fc0ba9e6-b495-45ae-912e-3bfa93c7f21b",
+"known": "బహుశా ఇది అలాంటి విషయం",
+"pos": 9,
+"t1": "8ad4974f-30a3-4281-82fc-dee85c3d85ae",
+"t2": "05e97152-8809-4625-a494-858f6ae84679",
+"target": "maybe it's the kind of thing",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L02U04",
+"ka": "72d6cc68-d9cf-4f99-8824-f472bde2f921",
+"known": "ఇది నాకు ఇష్టమైన అలాంటి విషయం కాదు",
+"pos": 10,
+"t1": "fa894076-5ace-4abe-95c0-c070a897f9a4",
+"t2": "7f266d2f-3cef-422c-a551-c9ed7866b96f",
+"target": "it's not the kind of thing I like",
+"type": "use"
+}
+],
+"target": "it's the kind of thing",
+"type": "M"
+},
+{
+"id": "S0573L03",
+"idx": 3,
+"is_new": true,
+"known": "సెలవులను",
+"phrases": [
+{
+"id": "0bf5933c-918b-45f0-bb38-6a1d7cf16ff6",
+"ka": "959a0ae0-9db2-4627-b5ed-91dadf2fd46b",
+"known": "సెలవులను",
+"pos": 0,
+"t1": "864b320e-2654-429c-9202-40b07ceea050",
+"t2": "8714edb7-423d-459d-922f-c4c679eb4c9f",
+"target": "the holidays",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0573L03B01",
+"ka": "959a0ae0-9db2-4627-b5ed-91dadf2fd46b",
+"known": "సెలవులను",
+"pos": 1,
+"t1": "864b320e-2654-429c-9202-40b07ceea050",
+"t2": "8714edb7-423d-459d-922f-c4c679eb4c9f",
+"target": "the holidays",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L03B02",
+"ka": "d3bc4584-e71b-4fbc-99c3-fe297ceb7580",
+"known": "సెలవులను ఇప్పుడు",
+"pos": 2,
+"t1": "6f070b01-266f-4231-a959-8efc189da93d",
+"t2": "7f18cdad-8897-4e12-940b-c1a1af015fcb",
+"target": "the holidays now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L03B03",
+"ka": "b6390b5d-e5ab-4671-ae35-66d7e4030bd2",
+"known": "సెలవులను ఇప్పటికే",
+"pos": 3,
+"t1": "f2eaaeff-fddd-444b-af5b-855819648496",
+"t2": "03012bb7-7166-4531-8896-cfe3fb4092cf",
+"target": "the holidays already",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L03U01",
+"ka": "cfad7120-e27e-40a0-b1d6-72f70e6e93b1",
+"known": "సెలవులు చాలా మంచివి",
+"pos": 4,
+"t1": "7995cae2-0014-46e5-8443-1c09362a5fb1",
+"t2": "0cf2bba9-0c02-4cd9-9b35-025a23f7c346",
+"target": "the holidays are very good",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L03U02",
+"ka": "dabb2c48-f0e9-4ba4-a527-cc0a51ef25da",
+"known": "సెలవులు వేరుగా ఉంటాయి",
+"pos": 5,
+"t1": "2daa23a9-3197-40cb-b056-381aaff552aa",
+"t2": "6f876f41-f1eb-4990-84bf-7f5b07ec6480",
+"target": "the holidays are different",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L03U03",
+"ka": "e102a31d-06eb-45aa-9f00-68906a9d4283",
+"known": "సెలవులు మంచివి",
+"pos": 6,
+"t1": "62349e31-ab8c-42d4-b5bc-1d9e58aff741",
+"t2": "050d0423-cce1-4285-875b-b1f701d97557",
+"target": "the holidays are good",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L03U04",
+"ka": "9bee96be-d16a-489f-a944-4ffdef73262e",
+"known": "నాకు సెలవులు ఇష్టం",
+"pos": 7,
+"t1": "14115d19-8781-4f78-a34c-ad14be18d2aa",
+"t2": "8a1bd051-8441-4dfd-acf6-ca702bbc50ba",
+"target": "I like the holidays",
+"type": "use"
+}
+],
+"target": "the holidays",
+"type": "A"
+},
+{
+"id": "S0573L04",
+"idx": 4,
+"is_new": true,
+"known": "చేసే",
+"phrases": [
+{
+"id": "58b7a69a-89a6-44e9-b3f8-73c5ac068ef6",
+"ka": "1276eb43-e863-451e-9991-d9f58d56627d",
+"known": "చేసే",
+"pos": 0,
+"t1": "b1912ae1-2dd0-40aa-966c-296c46e9d299",
+"t2": "be34abb9-6b49-4c7e-a0be-fe6980041eec",
+"target": "that makes",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0573L04B01",
+"ka": "1276eb43-e863-451e-9991-d9f58d56627d",
+"known": "చేసే",
+"pos": 1,
+"t1": "b1912ae1-2dd0-40aa-966c-296c46e9d299",
+"t2": "be34abb9-6b49-4c7e-a0be-fe6980041eec",
+"target": "that makes",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L04B02",
+"ka": "6c3776e4-67df-4d8f-b9cf-3144b1e4f635",
+"known": "సెలవులను చేసే",
+"pos": 2,
+"t1": "489f1efc-ebb9-4c26-88ec-098603559d97",
+"t2": "5dfbc471-7fbe-4de7-8243-ff4e640829ad",
+"target": "that makes the holidays",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L04B03",
+"ka": "aed65618-4394-44b8-89f5-f891864b8270",
+"known": "ఇప్పుడు చేసే",
+"pos": 3,
+"t1": "2cf2e060-e31d-4bbc-99c0-df572bee9372",
+"t2": "699c0463-288a-4810-851b-9f0b3ecb3056",
+"target": "that makes now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L04U01",
+"ka": "8f66620f-76e5-4238-bc50-b2d9f51271dc",
+"known": "అలాంటి విషయం ఇది సెలవులను చాలా మంచి చేసే",
+"pos": 4,
+"t1": "d3d57c75-4f6c-4160-917e-7be72244b68a",
+"t2": "81ba2c76-0aa1-4abc-8ef9-6e64ab508bcb",
+"target": "it's the kind of thing that makes the holidays very good",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L04U02",
+"ka": "b5d1172c-2c82-4e2f-bdd5-961cfea2523c",
+"known": "అలాంటి విషయం ఇది సెలవులను చాలా వేరు చేసే",
+"pos": 5,
+"t1": "b0ea8af4-80e0-4834-a576-739b6f20404f",
+"t2": "b8fe5f3b-8799-48cf-8050-45a0f1b3510a",
+"target": "it's the kind of thing that makes the holidays very different",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L04U03",
+"ka": "bd6c3b97-aa4a-49f2-8ce9-e9d9ae8e2543",
+"known": "సెలవులను మంచి చేసే విషయం ఇది",
+"pos": 6,
+"t1": "a0353480-d92f-43b0-bf62-43fd4e9068ed",
+"t2": "6c7cf8e5-06d9-44d2-9dae-8c0c6d50b7d6",
+"target": "it's the kind of thing that makes the holidays good",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L04U04",
+"ka": "1d35fbc7-3376-4055-bccf-cff84ea6aaa7",
+"known": "నాకు తెలుసు, సెలవులను చాలా మంచి చేసే విషయం ఇది",
+"pos": 7,
+"t1": "bf99d95d-49a7-4933-8ea4-2d4af171640c",
+"t2": "15ed212a-bdfe-4496-8d7e-1ad3ddeba0dd",
+"target": "I know it's the kind of thing that makes the holidays very good",
+"type": "use"
+}
+],
+"target": "that makes",
+"type": "A"
+},
+{
+"id": "S0573L05",
+"idx": 5,
+"is_new": true,
+"known": "చాలా ప్రత్యేకంగా",
+"phrases": [
+{
+"id": "567b0a67-5af9-4ef8-a60f-319c11dc2c23",
+"ka": "3a481dbd-ba03-4057-9425-dd57ba821008",
+"known": "చాలా ప్రత్యేకంగా",
+"pos": 0,
+"t1": "2b8e4684-f07c-41fe-a832-8b1691c627b1",
+"t2": "4075e079-d3d6-4e05-ab8a-7c2a8c361fff",
+"target": "very special",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0573L05C01",
+"ka": "d10a3286-8b9f-494e-ba7f-d88ada1e9b8a",
+"known": "చాలా",
+"pos": 1,
+"t1": "e7126024-4567-4220-adef-32426bcbae47",
+"t2": "5dd92315-19a3-494f-88f3-407ad19de6cf",
+"target": "very",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0573L05C02",
+"ka": "ebd3110a-e838-4b8e-b969-1e73315261de",
+"known": "ప్రత్యేకంగా",
+"pos": 2,
+"t1": "622fc8b5-1798-47be-ba7f-5cf93657fc1b",
+"t2": "4de9cca1-0feb-4f82-b23d-ae6a03b19542",
+"target": "special",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0573L05B01",
+"ka": "3a481dbd-ba03-4057-9425-dd57ba821008",
+"known": "చాలా ప్రత్యేకంగా",
+"pos": 3,
+"t1": "2b8e4684-f07c-41fe-a832-8b1691c627b1",
+"t2": "4075e079-d3d6-4e05-ab8a-7c2a8c361fff",
+"target": "very special",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L05B02",
+"ka": "761eaf46-dfcc-4b50-b5f7-17109bec971e",
+"known": "సెలవులను చాలా ప్రత్యేకంగా చేసే",
+"pos": 4,
+"t1": "ef2e0f5f-7f1c-424a-be2b-a70f462d9335",
+"t2": "71611df9-d166-4ab0-9475-019fd15b2366",
+"target": "that makes the holidays very special",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L05B03",
+"ka": "ea63276a-1fe5-4ba4-a19a-c3e41f1b5f5f",
+"known": "చేసే చాలా ప్రత్యేకంగా",
+"pos": 5,
+"t1": "1ea94fae-1bab-4261-aba3-3814ed81d54a",
+"t2": "7a378ad2-3462-4d9d-8dd0-3c32f69307a9",
+"target": "that makes very special",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0573L05U01",
+"ka": "e5c7e466-4753-47a2-b75a-33481d0c7d6c",
+"known": "అలాంటి విషయం ఇది సెలవులను చాలా ప్రత్యేకంగా చేసే",
+"pos": 6,
+"t1": "d8fb50e1-ee15-4c90-8b9f-24c24cf4cba9",
+"t2": "c09091d0-f5e4-4062-89ce-3717542ba57f",
+"target": "it's the kind of thing that makes the holidays very special",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L05U02",
+"ka": "45cedd75-f99c-4773-819d-c1e8530e311d",
+"known": "నాకు తెలుసు, సెలవులను చాలా ప్రత్యేకంగా చేసే విషయం ఇది",
+"pos": 7,
+"t1": "eb7655ab-2f9e-4d23-b179-e911f86e23f0",
+"t2": "bcb85a71-57a2-4833-a9b6-8bfde92ecbe6",
+"target": "I know it's the kind of thing that makes the holidays very special",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L05U03",
+"ka": "4c03f5d8-e276-4cd6-9205-df9264010f85",
+"known": "సెలవులను ప్రత్యేకంగా చేసే విషయం ఇది",
+"pos": 8,
+"t1": "fa631fa1-e6cb-45c0-83e0-2f01398d17dc",
+"t2": "76c306db-0300-4e09-aaf5-202019c2d421",
+"target": "it's the kind of thing that makes the holidays special",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0573L05U04",
+"ka": "e79e12e3-b907-4b92-8823-5be259fcf9d0",
+"known": "సెలవులను చాలా ప్రత్యేకంగా చేసే విషయం ఇది అని నేను అనుకుంటాను",
+"pos": 9,
+"t1": "457a941b-fc3b-4667-8c4a-8934a4c54131",
+"t2": "3edfa6d8-3d42-42c3-921e-b2a3e2172b6e",
+"target": "I think it's the kind of thing that makes the holidays very special",
+"type": "use"
+}
+],
+"target": "very special",
+"type": "M"
+}
+],
+"status": "released",
+"target": "It's the kind of thing that makes the holidays very special."
+},
+"575": {
+"at": "2026-11-18T18:42:16Z",
+"known": "అది బాధ కలిగించింది.",
+"legos": [
+{
+"id": "S0575L01",
+"idx": 1,
+"is_new": true,
+"known": "బాధ కలిగించింది",
+"phrases": [
+{
+"id": "bddb59b0-e0e2-44a2-aee4-24bab2176b77",
+"ka": "1a96758a-0114-4f2e-b727-dc7a54fadbf7",
+"known": "బాధ కలిగించింది",
+"pos": 0,
+"t1": "e0770d44-6054-4cc6-9278-30985a3e9354",
+"t2": "43180918-2df2-4460-9125-e0cd8ea557c3",
+"target": "been upsetting",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0575L01B01",
+"ka": "1a96758a-0114-4f2e-b727-dc7a54fadbf7",
+"known": "బాధ కలిగించింది",
+"pos": 1,
+"t1": "e0770d44-6054-4cc6-9278-30985a3e9354",
+"t2": "43180918-2df2-4460-9125-e0cd8ea557c3",
+"target": "been upsetting",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0575L01B02",
+"ka": "7269b1bb-ff7e-421c-8cdc-4c39991dab28",
+"known": "ఇప్పటికే బాధ కలిగించింది",
+"pos": 2,
+"t1": "a14244c6-f4c7-4dbc-b7c4-d9072d4cc776",
+"t2": "fdd8934b-4e1f-4da9-af77-8099e93d0cda",
+"target": "been upsetting already",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0575L01B03",
+"ka": "a7dafa28-9068-47d1-ac05-d7d384a29e59",
+"known": "ఇప్పుడే బాధ కలిగించింది",
+"pos": 3,
+"t1": "05b8fe2a-78b4-4c8b-82fd-c8d9c428ad93",
+"t2": "82f783d0-e79c-4c9c-95fb-d77e0a4de70d",
+"target": "been upsetting right now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0575L01U01",
+"ka": "b4780ccc-6fa5-4c11-bc37-eac3f8867a19",
+"known": "ఇది బాధ కలిగించింది",
+"pos": 4,
+"t1": "1e595748-76ee-48c4-bebd-9c1ae1c5fd6f",
+"t2": "7ad825e4-f55f-4ab3-9542-d5377e68afdd",
+"target": "it's been upsetting",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0575L01U02",
+"ka": "0e2bd97f-0b5a-4674-a22f-3669ba294f42",
+"known": "ఇది బాధ కలిగించిందని నేను అనుకుంటాను",
+"pos": 5,
+"t1": "54e38f5d-20d2-406f-9e38-04dd2e2f6f97",
+"t2": "1f3d79ff-781e-4b1d-b0dc-ba3145bc8686",
+"target": "I think it's been upsetting",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0575L01U03",
+"ka": "7c2656f7-917e-46df-b7f1-f0d7efe8bf90",
+"known": "ఇది చాలా బాధ కలిగించింది",
+"pos": 6,
+"t1": "f844ac47-779d-493f-a874-c82a4f51da14",
+"t2": "a6e5258b-be51-4254-b9dd-149a5a7bfa02",
+"target": "it's been very upsetting",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0575L01U05",
+"ka": "b3c4137f-0423-4ddb-89b2-10fc798ed6e5",
+"known": "ఇది బాధ కలిగించింది, నాకు తెలుసు",
+"pos": 8,
+"t1": "6a84d4fe-ce39-4b4a-9a75-1c0f2556a70b",
+"t2": "cc6c0ca4-f0e5-4215-94ee-50e3f275fc3b",
+"target": "it's been upsetting, I know",
+"type": "use"
+}
+],
+"target": "been upsetting",
+"type": "M"
+},
+{
+"id": "S0575L02",
+"idx": 2,
+"is_new": true,
+"known": "అది బాధ కలిగించింది",
+"phrases": [
+{
+"id": "88050363-eed3-4511-8619-90fea830c54c",
+"ka": "164349c5-8726-45d3-add0-a58043c650c5",
+"known": "అది బాధ కలిగించింది",
+"pos": 0,
+"t1": "1e595748-76ee-48c4-bebd-9c1ae1c5fd6f",
+"t2": "7ad825e4-f55f-4ab3-9542-d5377e68afdd",
+"target": "it's been upsetting",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0575L02B01",
+"ka": "164349c5-8726-45d3-add0-a58043c650c5",
+"known": "అది బాధ కలిగించింది",
+"pos": 1,
+"t1": "1e595748-76ee-48c4-bebd-9c1ae1c5fd6f",
+"t2": "7ad825e4-f55f-4ab3-9542-d5377e68afdd",
+"target": "it's been upsetting",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0575L02B02",
+"ka": "1a527132-be79-4b26-a6d2-69d0a99feebb",
+"known": "ఇప్పుడు అది బాధ కలిగించింది",
+"pos": 2,
+"t1": "9451987c-1600-4db0-a6dd-3a33308c07f3",
+"t2": "e501c5ac-db57-4cdc-ae71-c40f42d002db",
+"target": "now it's been upsetting",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0575L02B03",
+"ka": "b82f47c9-8428-4e2d-bfc1-78bb48e357c7",
+"known": "ఇప్పుడే అది బాధ కలిగించింది",
+"pos": 3,
+"t1": "63376830-d728-4a26-a0bf-a505b9c1266e",
+"t2": "35c98170-254e-4789-aaa4-882e65d1c71d",
+"target": "right now it's been upsetting",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0575L02U01",
+"ka": "119e0e24-fc9f-495e-9edb-5e8b42393b08",
+"known": "ఇది మాకు బాధ కలిగించింది",
+"pos": 4,
+"t1": "c37f32e3-9b5d-4907-bf9d-9aa9fefcc093",
+"t2": "f2c49a22-cc1d-4658-838e-c87ad6d3765f",
+"target": "it's been upsetting for us",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0575L02U02",
+"ka": "ff4f644e-1d2d-4514-bf63-f3ab474691d9",
+"known": "నాకు తెలుసు, అది బాధ కలిగించింది",
+"pos": 5,
+"t1": "395ade36-9170-45e3-966e-61670cb5ada2",
+"t2": "d755bba8-2849-4ef3-96c3-99d0a6b1abb5",
+"target": "I know it's been upsetting",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0575L02U03",
+"ka": "0e2bd97f-0b5a-4674-a22f-3669ba294f42",
+"known": "ఇది బాధ కలిగించిందని నేను అనుకుంటాను",
+"pos": 6,
+"t1": "54e38f5d-20d2-406f-9e38-04dd2e2f6f97",
+"t2": "1f3d79ff-781e-4b1d-b0dc-ba3145bc8686",
+"target": "I think it's been upsetting",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0575L02U04",
+"ka": "ef38a8f1-38a8-4797-a769-92eea87f5141",
+"known": "ఇది బాధ కలిగించలేదా?",
+"pos": 7,
+"t1": "f545f795-f14e-403a-a8b8-e519b8dc14fc",
+"t2": "62fa6f51-b4ef-4e5f-aacd-6acc1be91593",
+"target": "hasn't it been upsetting?",
+"type": "use"
+}
+],
+"target": "it's been upsetting",
+"type": "M"
+}
+],
+"status": "released",
+"target": "It's been upsetting."
+},
+"579": {
+"at": "2026-11-18T18:42:17Z",
+"known": "మేము తరచుగా ప్రయత్నించాం.",
+"legos": [
+{
+"id": "S0579L01",
+"idx": 1,
+"is_new": true,
+"known": "ప్రయత్నించాం",
+"phrases": [
+{
+"id": "bd0fa577-9a79-4d40-9fd1-4f3309dcf403",
+"ka": "65080ef8-9484-4e89-88a4-092e1704c956",
+"known": "ప్రయత్నించాం",
+"pos": 0,
+"t1": "d1d03af0-a547-48ad-b001-a1793ac92f94",
+"t2": "9f4a2e22-9501-48bc-917d-34151b43959f",
+"target": "tried",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0579L01B01",
+"ka": "65080ef8-9484-4e89-88a4-092e1704c956",
+"known": "ప్రయత్నించాం",
+"pos": 1,
+"t1": "d1d03af0-a547-48ad-b001-a1793ac92f94",
+"t2": "9f4a2e22-9501-48bc-917d-34151b43959f",
+"target": "tried",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0579L01B02",
+"ka": "ed1c79aa-3c76-42da-ba4b-828216320c57",
+"known": "మేము ప్రయత్నించాం",
+"pos": 2,
+"t1": "7ab435d9-1c92-4eda-ba77-23b25510dcf0",
+"t2": "c49585a0-316f-44f7-9689-0dd82f1f3d30",
+"target": "we tried",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0579L01B03",
+"ka": "d9a33249-d576-4afa-bf71-01bde353348b",
+"known": "ఇప్పటికే ప్రయత్నించాం",
+"pos": 3,
+"t1": "35c4187c-ca73-4e3c-9a40-ea62a5516f52",
+"t2": "a56b6f0b-bc25-43fc-94cd-4ff95fbb9e0e",
+"target": "tried already",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0579L01U01",
+"ka": "ed1c79aa-3c76-42da-ba4b-828216320c57",
+"known": "మేము ప్రయత్నించాం",
+"pos": 4,
+"t1": "7ab435d9-1c92-4eda-ba77-23b25510dcf0",
+"t2": "c49585a0-316f-44f7-9689-0dd82f1f3d30",
+"target": "we tried",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L01U02",
+"ka": "37defe62-ee05-445d-95aa-611d6a1f3891",
+"known": "మేము ప్రయత్నించలేదు",
+"pos": 5,
+"t1": "7e346369-6a16-4944-8481-891d87e36cd8",
+"t2": "5af0463a-cfff-4bd7-a778-df3e25f2c674",
+"target": "we haven't tried",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L01U03",
+"ka": "fbb19cc0-27c3-4f75-b0e8-41f300466611",
+"known": "మేము ప్రయత్నించామా?",
+"pos": 6,
+"t1": "dda9cb8b-9c34-45c0-bd46-00394fd31e34",
+"t2": "7bde33f4-ab2b-4317-b2d7-124a5b17b3e9",
+"target": "did we try?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L01U04",
+"ka": "a77cfd03-45aa-4a86-a631-b6e1e334458a",
+"known": "నాకు తెలుసు, మేము ప్రయత్నించాం",
+"pos": 7,
+"t1": "95d290ff-7585-4f54-9500-e137df6462e3",
+"t2": "368d13cd-0565-4d54-90c0-cbbb48172657",
+"target": "I know we tried",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L01U05",
+"ka": "6b6c40db-d372-4383-8afc-a40cd6312b1f",
+"known": "మేము వీలైనంత తరచుగా ప్రయత్నించాం",
+"pos": 8,
+"t1": "a3d4ea24-a95a-4aff-9d80-8522eca5e7a1",
+"t2": "414425dc-f777-489e-8a03-1e98481a9a48",
+"target": "we tried as often as possible",
+"type": "use"
+}
+],
+"target": "tried",
+"type": "A"
+},
+{
+"id": "S0579L02",
+"idx": 2,
+"is_new": true,
+"known": "మేము తరచుగా ప్రయత్నించాం",
+"phrases": [
+{
+"id": "903ac582-bc63-42cf-bca0-dfd29bd60ef3",
+"ka": "78cbedf7-ef50-4099-b94c-d2f711ee26bc",
+"known": "మేము తరచుగా ప్రయత్నించాం",
+"pos": 0,
+"t1": "357b33c7-0cf3-4e98-a529-90aeb561c3d7",
+"t2": "e5887451-76e4-49d7-8aba-c621e81e760b",
+"target": "we've often tried",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0579L02B01",
+"ka": "78cbedf7-ef50-4099-b94c-d2f711ee26bc",
+"known": "మేము తరచుగా ప్రయత్నించాం",
+"pos": 1,
+"t1": "357b33c7-0cf3-4e98-a529-90aeb561c3d7",
+"t2": "e5887451-76e4-49d7-8aba-c621e81e760b",
+"target": "we've often tried",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0579L02B02",
+"ka": "b2ee7008-1a32-44a8-afc2-bfec6bf72b00",
+"known": "నాకు తెలుసు, మేము తరచుగా ప్రయత్నించాం",
+"pos": 2,
+"t1": "6b4bc7e1-3468-45ae-8ce9-3ccbb53ec456",
+"t2": "318b1e22-b118-4a99-a4a8-00a19689b348",
+"target": "I know we've often tried",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0579L02B03",
+"ka": "674a69ed-d9ab-442b-86a2-9d021031621a",
+"known": "మేము తరచుగా ప్రయత్నించాం ఇప్పుడే",
+"pos": 3,
+"t1": "f981fe0b-ee4b-40c7-85ab-cdeb07e8c55c",
+"t2": "6b4b1bba-1904-441f-9cbd-5d259fbeeb39",
+"target": "we've often tried right now",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0579L02U01",
+"ka": "78cbedf7-ef50-4099-b94c-d2f711ee26bc",
+"known": "మేము తరచుగా ప్రయత్నించాం",
+"pos": 4,
+"t1": "357b33c7-0cf3-4e98-a529-90aeb561c3d7",
+"t2": "e5887451-76e4-49d7-8aba-c621e81e760b",
+"target": "we've often tried",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L02U02",
+"ka": "8a195291-b813-499c-bfc4-dbdecb889d3e",
+"known": "మేము ఇంతకుముందు తరచుగా ప్రయత్నించాం",
+"pos": 5,
+"t1": "4d02358f-e383-443a-a7ef-b9240a623f46",
+"t2": "e39f3c83-f78a-40f4-90fb-52d7c5ddac5b",
+"target": "we've often tried before",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L02U04",
+"ka": "9f8a70d6-d794-436b-9af3-859d7e2da767",
+"known": "మేము తరచుగా ప్రయత్నించాం, నాకు తెలుసు",
+"pos": 7,
+"t1": "749c1cb1-69e8-4838-8561-d742106f181a",
+"t2": "21c3d5e0-cf01-429e-b341-50dbd6330af7",
+"target": "we've often tried, I know",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L02U05",
+"ka": "669a07b3-280f-4301-803a-675735bbc2c5",
+"known": "ఇది కష్టం, మేము తరచుగా ప్రయత్నించాం",
+"pos": 8,
+"t1": "2202ec79-f723-45cc-b677-b7fc53fb39b6",
+"t2": "b4afe69a-bcb9-4eaf-a76d-acf7d0e7de1a",
+"target": "this is difficult, we've often tried",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0579L02U06",
+"ka": "b05898aa-31d0-40e3-bc6a-3bb8853dc60a",
+"known": "మేము తరచుగా ప్రయత్నించాం కానీ సాధ్యం కాలేదు",
+"pos": 9,
+"t1": "7bce4d76-effe-4b2e-9d89-935975b981b5",
+"t2": "0ce52328-1259-44dc-a9cf-c58f98540f63",
+"target": "we've often tried but it wasn't possible",
+"type": "use"
+}
+],
+"target": "we've often tried",
+"type": "M"
+}
+],
+"status": "released",
+"target": "We've often tried."
+},
+"592": {
+"at": "2026-11-18T18:42:18Z",
+"known": "ఇంకా ముఖ్య రహదారి వెంట.",
+"legos": [
+{
+"id": "S0592L01",
+"idx": 1,
+"is_new": true,
+"known": "ముఖ్య",
+"phrases": [
+{
+"id": "69d593b1-a576-40e2-997c-f5d6e36217be",
+"ka": "ab95f582-7f2a-4fa4-a010-38d7b029eb3d",
+"known": "ముఖ్య",
+"pos": 0,
+"t1": "d43732ed-760f-4046-8a33-e9f33bf4fceb",
+"t2": "257238d6-c5df-4433-ae5d-931f3584c88b",
+"target": "main",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0592L01B01",
+"ka": "ab95f582-7f2a-4fa4-a010-38d7b029eb3d",
+"known": "ముఖ్య",
+"pos": 1,
+"t1": "d43732ed-760f-4046-8a33-e9f33bf4fceb",
+"t2": "257238d6-c5df-4433-ae5d-931f3584c88b",
+"target": "main",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L01B02",
+"ka": "45431608-5a46-45e9-8027-1196dad8a6ed",
+"known": "ముఖ్య స్టేషన్",
+"pos": 2,
+"t1": "75123471-6dd8-4467-96cb-1079e5a74ba8",
+"t2": "e0a982ce-d7f4-46b5-8522-46f6fd04d1c2",
+"target": "main station",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L01B03",
+"ka": "24576745-f70a-4b22-bca9-020b7991f1ed",
+"known": "ముఖ్య దుకాణాల",
+"pos": 3,
+"t1": "1dacc8d9-dbda-458d-94b3-5f0dbc7626da",
+"t2": "7d034ba0-da8b-43ab-9f94-7a3f06e86789",
+"target": "main shops",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L01U01",
+"ka": "fe6d2a41-e5e9-4bd6-b882-96639da9482c",
+"known": "నాకు ముఖ్య స్టేషన్ ఇష్టం లేదు",
+"pos": 4,
+"t1": "32e3f5e5-7619-4fd1-86d6-38a2bc0efc61",
+"t2": "3ee3c5e4-4717-4984-b7d5-4cf2c1b198bf",
+"target": "I don't like the main station",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L01U02",
+"ka": "7401ddbd-17a8-4d66-aa57-c56117165c25",
+"known": "ఆమె నాకు ముఖ్య దుకాణాల గురించి చెప్పింది",
+"pos": 5,
+"t1": "876e5ff3-6fea-4fed-8052-42fa27c6f9aa",
+"t2": "c9cb4c6d-e15d-4d7e-8ed7-64751bc5cbf2",
+"target": "she told me about the main shops",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L01U03",
+"ka": "1019165f-8ba9-459d-a6c5-5e3d59d6e8d9",
+"known": "నేను ఇక్కడ ముఖ్య స్టేషన్ చూశాను",
+"pos": 6,
+"t1": "3d486c3a-775c-4818-916f-da8174230404",
+"t2": "0384129b-499a-428e-9cc2-7a3e4ad6a3e4",
+"target": "I saw the main station here",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L01U04",
+"ka": "94bde874-6609-4e80-9867-0e7ed30916b0",
+"known": "చివరి బస్సు ముఖ్య స్టేషన్ నుంచి బయలుదేరింది",
+"pos": 7,
+"t1": "a2951ee4-108a-4797-befe-341f57e19bf8",
+"t2": "bbfd2822-2db6-41c2-b79b-d53540c11d6e",
+"target": "the last bus left the main station",
+"type": "use"
+}
+],
+"target": "main",
+"type": "A"
+},
+{
+"id": "S0592L02",
+"idx": 2,
+"is_new": true,
+"known": "రహదారి",
+"phrases": [
+{
+"id": "5d2bb8bc-45e2-4c57-9b37-3b358cadb0f8",
+"ka": "03ad3690-fbd3-4b2d-94ed-577a99d8c3dc",
+"known": "రహదారి",
+"pos": 0,
+"t1": "3657b876-f245-4a76-b9c6-20962f9be3a6",
+"t2": "e4f9aa6c-b826-43d7-9cea-bfe2163bc508",
+"target": "road",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0592L02B01",
+"ka": "03ad3690-fbd3-4b2d-94ed-577a99d8c3dc",
+"known": "రహదారి",
+"pos": 1,
+"t1": "3657b876-f245-4a76-b9c6-20962f9be3a6",
+"t2": "e4f9aa6c-b826-43d7-9cea-bfe2163bc508",
+"target": "road",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L02B02",
+"ka": "338f32fe-aeb4-4b53-a4f3-f300b20cd3f3",
+"known": "ఈ రహదారి",
+"pos": 2,
+"t1": "bd6059ba-cdf3-4a03-800a-7b374ea602d2",
+"t2": "9071185e-c7e7-4cf9-abd8-f6cd41ebb3cd",
+"target": "this road",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L02B03",
+"ka": "7de9e70e-3ab9-47bf-a8d2-044e9955207c",
+"known": "రహదారి ఇక్కడ",
+"pos": 3,
+"t1": "12033f71-e251-4022-bdf7-14eacf680d5d",
+"t2": "5fafe799-7fd7-4d89-9610-e8ac95877d8a",
+"target": "road here",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L02U01",
+"ka": "561d938c-5764-4e37-87ff-927d5445f7c4",
+"known": "నాకు ఈ రహదారి ఇష్టం లేదు",
+"pos": 4,
+"t1": "5b08b480-1b6b-41df-972e-edcf4670a256",
+"t2": "d2b5939c-a619-46b1-9932-08af83acf182",
+"target": "I don't like this road",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L02U02",
+"ka": "acb57d87-905f-476f-b8e2-54f28741bba6",
+"known": "ఆమె నన్ను ఈ రహదారి వరకు అనుసరించింది",
+"pos": 5,
+"t1": "7d7833ae-c1ba-4752-b976-0bd90fb590e5",
+"t2": "fd2df0d8-e059-47d5-b5fd-b28588a5edbf",
+"target": "she followed me to this road",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L02U03",
+"ka": "0537a45f-d2d6-4712-a4c5-1911dffe729e",
+"known": "నేను ఇక్కడ రహదారి చూశాను",
+"pos": 6,
+"t1": "21b8a537-2e06-4f70-8b16-f79a328b0dbd",
+"t2": "9508734a-38a9-414a-bc85-b421fa245bd2",
+"target": "I saw the road here",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L02U04",
+"ka": "4c6e08ca-1a5e-4a50-8f29-f6ef8d24bb16",
+"known": "ఆమె నాకు రహదారి గురించి చెప్పింది",
+"pos": 7,
+"t1": "d6204591-a11d-4388-a554-f3f915b581d3",
+"t2": "aa755524-a140-4ccc-949c-577379c408ba",
+"target": "she told me about the road",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L02U05",
+"ka": "3e244175-1152-45ab-bb29-86958a341042",
+"known": "ప్రతి ఉదయం రహదారి ఇక్కడ ఉంటుంది",
+"pos": 8,
+"t1": "089761cf-2cf5-4598-9f7b-703d563ecdef",
+"t2": "a1412041-bd65-4ba7-9e9c-80f1ddfdcb7d",
+"target": "the road is here every morning",
+"type": "use"
+}
+],
+"target": "road",
+"type": "A"
+},
+{
+"id": "S0592L03",
+"idx": 3,
+"is_new": true,
+"known": "ముఖ్య రహదారి వెంట",
+"phrases": [
+{
+"id": "f12ce7e4-cb82-4e33-989e-4dfa280212bb",
+"ka": "96790273-a802-4837-9afa-1f070d2195fb",
+"known": "ముఖ్య రహదారి వెంట",
+"pos": 0,
+"t1": "d5a46820-aae2-489d-aea0-91ea9163adc6",
+"t2": "ae8edc09-9f3f-4785-a0ae-dc15944603b7",
+"target": "along the main road",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0592L03C01",
+"ka": "5d1562d5-8182-45a2-a31f-b882a24e93d8",
+"known": "ముఖ్య రహదారి",
+"pos": 1,
+"t1": "030365b5-f34c-44c6-8b37-9154e692eb36",
+"t2": "deb364cd-1004-4302-ac52-03bd1d4b9111",
+"target": "main road",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0592L03C02",
+"ka": "ca961643-715a-472c-b633-aee082b65ea2",
+"known": "వెంట",
+"pos": 2,
+"t1": "3fd28cfa-df22-4820-9a65-98696b225cee",
+"t2": "c275ae19-9ff8-4598-98d7-76305fbbb65d",
+"target": "along the",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0592L03B01",
+"ka": "96790273-a802-4837-9afa-1f070d2195fb",
+"known": "ముఖ్య రహదారి వెంట",
+"pos": 3,
+"t1": "d5a46820-aae2-489d-aea0-91ea9163adc6",
+"t2": "ae8edc09-9f3f-4785-a0ae-dc15944603b7",
+"target": "along the main road",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L03B02",
+"ka": "67b4b24a-fdc8-4ac7-93d2-4010a352886a",
+"known": "ఇక్కడ ముఖ్య రహదారి వెంట",
+"pos": 4,
+"t1": "5ac067e2-1965-4067-a658-8f2c2e2a268a",
+"t2": "4c90b558-c11b-44fb-84fb-886e1874da55",
+"target": "here along the main road",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L03B03",
+"ka": "1146def7-ea0d-4a1b-8e3c-a9955cda27db",
+"known": "ఇప్పుడే ముఖ్య రహదారి వెంట",
+"pos": 5,
+"t1": "84f130e2-f85e-4bf3-baa9-7b04d5906b47",
+"t2": "47dac116-28eb-4214-ab7b-fcd6cd6dddda",
+"target": "just along the main road",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L03U01",
+"ka": "bea5b37c-a3c3-4e71-a703-f279399ded2a",
+"known": "నేను ముఖ్య రహదారి వెంట చివరి బస్సును చూశాను",
+"pos": 6,
+"t1": "74721d3e-9714-4434-85d7-0eb60eea756c",
+"t2": "6de34f26-6139-4b4b-b507-a168f7902e75",
+"target": "I saw the last bus along the main road",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L03U02",
+"ka": "e48ed8b9-2567-4b57-bb22-ebd418aa07be",
+"known": "ఆమె నన్ను ముఖ్య రహదారి వెంట అనుసరించింది",
+"pos": 7,
+"t1": "626be611-6125-4636-87ff-d38c2e96d42c",
+"t2": "5ba2c0b7-424f-4113-bd6b-1dd5170dde42",
+"target": "she followed me along the main road",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L03U03",
+"ka": "075c8abe-aa8c-490f-b90b-c818f974f8ea",
+"known": "నాకు ముఖ్య రహదారి వెంట దుకాణాల ఇష్టం",
+"pos": 8,
+"t1": "8077cbc6-8907-434e-b983-6244dcc63602",
+"t2": "c71244bd-26a4-44e0-afd6-619252873416",
+"target": "I like shops along the main road",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L03U04",
+"ka": "3b76a3e3-726d-4787-af45-ede07f46232d",
+"known": "ఆమె నాకు ముఖ్య రహదారి గురించి చెప్పింది",
+"pos": 9,
+"t1": "20c39f5c-c50c-4474-987c-4379dfc28dea",
+"t2": "3f63c392-d4cd-4311-8a3f-f89e65b00935",
+"target": "she told me about the main road",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L03U05",
+"ka": "a1cbd9bd-836d-42ed-9059-100fb7326d77",
+"known": "ప్రతి ఉదయం నేను ముఖ్య రహదారి వెంట కొండలను చూడగలను",
+"pos": 10,
+"t1": "e207df8b-9410-4eda-b86f-4e42ba453f8e",
+"t2": "439d969b-e2d7-44b8-8cb6-7de5e8c87e1b",
+"target": "I can see the mountains along the main road every morning",
+"type": "use"
+}
+],
+"target": "along the main road",
+"type": "M"
+},
+{
+"id": "S0592L04",
+"idx": 4,
+"is_new": true,
+"known": "ఇంకా ముఖ్య రహదారి వెంట",
+"phrases": [
+{
+"id": "5a3384c9-c594-4425-901b-758a9491962e",
+"ka": "8bab8351-329b-498b-8516-23426b6c34da",
+"known": "ఇంకా ముఖ్య రహదారి వెంట",
+"pos": 0,
+"t1": "05c07029-c893-4098-93cb-0427833a3bd2",
+"t2": "ea70a0e1-6915-4f71-9c79-10aece10fd5b",
+"target": "and along the main road",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0592L04C01",
+"ka": "57202d48-94e9-46ff-9421-027b23456123",
+"known": "ఇంకా",
+"pos": 1,
+"t1": "93bb9f74-762b-4837-af21-4f573f052adf",
+"t2": "03a67bf8-8355-468b-84ba-81941c36c807",
+"target": "and",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0592L04C02",
+"ka": "96790273-a802-4837-9afa-1f070d2195fb",
+"known": "ముఖ్య రహదారి వెంట",
+"pos": 2,
+"t1": "d5a46820-aae2-489d-aea0-91ea9163adc6",
+"t2": "ae8edc09-9f3f-4785-a0ae-dc15944603b7",
+"target": "along the main road",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0592L04B01",
+"ka": "8bab8351-329b-498b-8516-23426b6c34da",
+"known": "ఇంకా ముఖ్య రహదారి వెంట",
+"pos": 3,
+"t1": "05c07029-c893-4098-93cb-0427833a3bd2",
+"t2": "ea70a0e1-6915-4f71-9c79-10aece10fd5b",
+"target": "and along the main road",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L04B02",
+"ka": "8cf3dcb0-5e33-417f-a979-c8c22e322a7b",
+"known": "ఇక్కడ ఇంకా ముఖ్య రహదారి వెంట",
+"pos": 4,
+"t1": "5baf2c9d-aaaa-406c-b827-d1a800b67069",
+"t2": "1ad05756-6fed-4886-9162-5b47d0168db8",
+"target": "here and along the main road",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0592L04U02",
+"ka": "fe135373-6430-4915-ab8d-a827f348ab09",
+"known": "నేను స్టేషన్ చూశాను, ఇంకా ముఖ్య రహదారి వెంట దుకాణాలను చూశాను",
+"pos": 7,
+"t1": "1cf1e739-4015-4b85-a1cb-fa2f2225fa4b",
+"t2": "c92d8df1-a530-42c6-9725-aeacd93915a1",
+"target": "I saw the station, and along the main road I saw the shops",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L04U03",
+"ka": "42f09193-549d-4c7f-8fa6-d85734fa57ac",
+"known": "నాకు ఈ రహదారి ఇష్టం, ఇంకా ముఖ్య రహదారి వెంట కొండలను చూడగలను",
+"pos": 8,
+"t1": "b26f9802-f343-4cbe-805a-d044cecda636",
+"t2": "ff82edce-c6be-4e0b-81ee-aadf849029f3",
+"target": "I like this road, and along the main road I can see the mountains",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0592L04U04",
+"ka": "3d4f9aa0-e499-4f99-86ae-ce13045c5c3e",
+"known": "నాకు దుకాణాలు ఇష్టం, ఇంకా ముఖ్య రహదారి వెంట స్టేషన్ చూడగలను",
+"pos": 9,
+"t1": "0c74d657-b706-4b01-9ae9-6faf8a496fa0",
+"t2": "e792369d-65fa-44ec-95b3-d0beffd0c740",
+"target": "I like the shops, and along the main road I can see the station",
+"type": "use"
+}
+],
+"target": "and along the main road",
+"type": "M"
+}
+],
+"status": "released",
+"target": "And along the main road."
+},
 "614": {
 "at": "2026-11-18T18:34:05Z",
 "known": "అది నీ కుటుంబం నివసించే చోటికి దగ్గర్లో ఉంది.",
@@ -276,5 +4972,857 @@
 ],
 "status": "released",
 "target": "It's near where your family live."
+},
+"617": {
+"at": "2026-11-18T18:42:18Z",
+"known": "అది ఒక పొరపాటు అని నువ్వు అనుకున్నావు.",
+"legos": [
+{
+"id": "S0617L01",
+"idx": 1,
+"is_new": true,
+"known": "నువ్వు అనుకున్నావు",
+"phrases": [
+{
+"id": "8669a080-4fa6-451c-868a-dbe1d0df7f29",
+"ka": "c26b4b29-238b-48fa-bd1a-1559043dfa5d",
+"known": "నువ్వు అనుకున్నావు",
+"pos": 0,
+"t1": "27fbe43c-ba4d-4673-84c2-7e031c4e38e7",
+"t2": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+"target": "you thought",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0617L01B01",
+"ka": "c26b4b29-238b-48fa-bd1a-1559043dfa5d",
+"known": "నువ్వు అనుకున్నావు",
+"pos": 1,
+"t1": "27fbe43c-ba4d-4673-84c2-7e031c4e38e7",
+"t2": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+"target": "you thought",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L01B02",
+"ka": null,
+"known": "అది మంచిది అని నువ్వు అనుకున్నావు",
+"pos": 2,
+"t1": null,
+"t2": null,
+"target": "you thought it was good",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L01B03",
+"ka": null,
+"known": "నువ్వు ముందు దాని గురించి అనుకున్నావు",
+"pos": 3,
+"t1": null,
+"t2": null,
+"target": "you thought about it before",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L01U01",
+"ka": "d050d2e9-efc6-4604-ae74-b99de44a665b",
+"known": "నువ్వు దాని గురించి అనుకున్నావు",
+"pos": 4,
+"t1": "9155fd3a-e7ae-4abc-8856-e56a2122ca0c",
+"t2": "94b57f13-f99b-4572-bb2a-168d5ecefedb",
+"target": "you thought about it",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L01U02",
+"ka": null,
+"known": "నువ్వు నిన్న దాని గురించి అనుకున్నావు",
+"pos": 5,
+"t1": null,
+"t2": null,
+"target": "you thought about it yesterday",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L01U03",
+"ka": "adc25073-5ce9-4bcf-b345-69e0871d00fa",
+"known": "నువ్వు అలా అనుకున్నావని నాకు తెలుసు",
+"pos": 6,
+"t1": "45323006-c07d-4446-a993-9f7a8f06a0fb",
+"t2": "35c4f7c0-7857-4d94-a5b1-37765c2dedeb",
+"target": "I know you thought that",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L01U04",
+"ka": "7c40df2c-da81-48b5-992d-d39827318e71",
+"known": "నువ్వు అలా అనుకున్నావు",
+"pos": 7,
+"t1": "90648ead-6a8d-462d-af4f-200c2fecd2c9",
+"t2": "df7b9529-b32c-4104-800c-6514d630af72",
+"target": "you thought so",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L01B04",
+"ka": null,
+"known": "అది ముఖ్యం అని నువ్వు అనుకున్నావు",
+"pos": 8,
+"t1": null,
+"t2": null,
+"target": "you thought it was important",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L01U05",
+"ka": null,
+"known": "అది మంచిది అని నువ్వు అనుకున్నావని నాకు తెలుసు",
+"pos": 9,
+"t1": null,
+"t2": null,
+"target": "I know you thought it was good",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L01U06",
+"ka": null,
+"known": "నువ్వు దాని గురించి చాలా అనుకున్నావు",
+"pos": 10,
+"t1": null,
+"t2": null,
+"target": "you thought about it a lot",
+"type": "use"
+}
+],
+"target": "you thought",
+"type": "M"
+},
+{
+"id": "S0617L02",
+"idx": 2,
+"is_new": true,
+"known": "ఒక పొరపాటు",
+"phrases": [
+{
+"id": "f1628f71-f932-4f6f-a1c7-926647eada21",
+"ka": "bef67392-8f8c-4694-8231-551d1bb88a2b",
+"known": "ఒక పొరపాటు",
+"pos": 0,
+"t1": "2d031e03-8bda-4039-bb79-4ded9f414718",
+"t2": "7081177b-a240-4d57-bdf1-dd493764b192",
+"target": "a mistake",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0617L02C01",
+"ka": "663cd073-203d-4694-95da-86ae3323580a",
+"known": "ఒక",
+"pos": 1,
+"t1": "fb936778-e424-4b74-a049-1f33045587af",
+"t2": "e6b082da-9e72-45ec-8f7c-f2c361b705d3",
+"target": "a",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0617L02C02",
+"ka": "db92ebbc-bfef-4188-bb10-baf993cdb42d",
+"known": "పొరపాటు",
+"pos": 2,
+"t1": "8ef9a848-18d3-4269-bd97-b758a62ddcc7",
+"t2": "c0af9014-15bc-49dc-85d9-a1871c6aef40",
+"target": "mistake",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0617L02B01",
+"ka": "bef67392-8f8c-4694-8231-551d1bb88a2b",
+"known": "ఒక పొరపాటు",
+"pos": 3,
+"t1": "2d031e03-8bda-4039-bb79-4ded9f414718",
+"t2": "7081177b-a240-4d57-bdf1-dd493764b192",
+"target": "a mistake",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L02B02",
+"ka": "496a69c3-a67b-4498-83f6-2fc1b4f144b6",
+"known": "అది ఒక పొరపాటు",
+"pos": 4,
+"t1": "51029d87-34c3-4e12-bf14-12fb88f15046",
+"t2": "aec0305c-759f-4214-a60c-26cd9d734a35",
+"target": "it was a mistake",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L02U01",
+"ka": "496a69c3-a67b-4498-83f6-2fc1b4f144b6",
+"known": "అది ఒక పొరపాటు",
+"pos": 6,
+"t1": "51029d87-34c3-4e12-bf14-12fb88f15046",
+"t2": "aec0305c-759f-4214-a60c-26cd9d734a35",
+"target": "it was a mistake",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L02U02",
+"ka": "0aeb75d3-9e57-4c6e-baf2-24a07b2424c4",
+"known": "అది ఒక పొరపాటా?",
+"pos": 7,
+"t1": "19746ce1-682a-4bf0-8e8d-534836fb9662",
+"t2": "a88cb242-7730-4069-87bc-fcfc9e201966",
+"target": "was it a mistake?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L02U03",
+"ka": "c1149d9f-0d37-454c-99df-d27220e6c9c9",
+"known": "అది ఒక పొరపాటు అని నాకు తెలుసు",
+"pos": 8,
+"t1": "1c07122c-75b0-4994-9215-322ab97a304b",
+"t2": "603f43a8-0173-47af-b7ad-22e155e985a6",
+"target": "I know it was a mistake",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L02U04",
+"ka": "a98ec673-187c-4bf4-a67d-f10239eabe76",
+"known": "అది ఒక పొరపాటు కాదు",
+"pos": 9,
+"t1": "68003c95-409e-40b8-a2c0-1410619f7c69",
+"t2": "f9dd4171-12a9-4d20-9b17-335f5e6ecadf",
+"target": "it wasn't a mistake",
+"type": "use"
+}
+],
+"target": "a mistake",
+"type": "M"
+},
+{
+"id": "S0617L03",
+"idx": 3,
+"is_new": true,
+"known": "అది ఒక పొరపాటు అని",
+"phrases": [
+{
+"id": "e500d966-aa8a-4b17-aa20-4f453f29b95f",
+"ka": "d28d20a7-41d1-4da3-bf79-75d1874504a3",
+"known": "అది ఒక పొరపాటు అని",
+"pos": 0,
+"t1": "eb721000-b499-4e02-a3ab-509356b084a0",
+"t2": "86ee989c-6a22-40c1-be47-4475efcac64a",
+"target": "that it was a mistake",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0617L03C01",
+"ka": "b7c979cb-7316-47d9-96b2-15321baeea6f",
+"known": "అది",
+"pos": 1,
+"t1": "c86d8d5e-27ed-458d-9f79-f02e430a5a24",
+"t2": "11b9f532-1f84-485d-b343-4927f34df7ff",
+"target": "it",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0617L03C02",
+"ka": "bef67392-8f8c-4694-8231-551d1bb88a2b",
+"known": "ఒక పొరపాటు",
+"pos": 2,
+"t1": "2d031e03-8bda-4039-bb79-4ded9f414718",
+"t2": "7081177b-a240-4d57-bdf1-dd493764b192",
+"target": "a mistake",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0617L03C03",
+"ka": "ca2495ce-ae52-4d3c-a039-0a241bcddc36",
+"known": "అని",
+"pos": 3,
+"t1": "85ce3e65-666f-4082-8c6e-f6c8c69b68c7",
+"t2": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+"target": "that",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0617L03B01",
+"ka": "d28d20a7-41d1-4da3-bf79-75d1874504a3",
+"known": "అది ఒక పొరపాటు అని",
+"pos": 4,
+"t1": "eb721000-b499-4e02-a3ab-509356b084a0",
+"t2": "86ee989c-6a22-40c1-be47-4475efcac64a",
+"target": "that it was a mistake",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L03B02",
+"ka": "819d163d-f7e9-46e4-81e5-a09f49655593",
+"known": "అది ఒక పొరపాటు అని నువ్వు అనుకున్నావు",
+"pos": 5,
+"t1": "974de359-406f-4a07-99e6-f9cd6c68cd54",
+"t2": "2d850b45-56ba-4869-931d-89e4f504fe77",
+"target": "you thought that it was a mistake",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0617L03U01",
+"ka": "819d163d-f7e9-46e4-81e5-a09f49655593",
+"known": "అది ఒక పొరపాటు అని నువ్వు అనుకున్నావు",
+"pos": 8,
+"t1": "974de359-406f-4a07-99e6-f9cd6c68cd54",
+"t2": "2d850b45-56ba-4869-931d-89e4f504fe77",
+"target": "you thought that it was a mistake",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L03U02",
+"ka": "b9e9c397-f6f1-454f-a08e-6b6400c561e0",
+"known": "అది ఒక పొరపాటు అని నేను అనుకున్నాను",
+"pos": 9,
+"t1": "a65e2dd2-d2c2-4ba6-afb7-3bbe6c8ef53c",
+"t2": "65d31726-4cb4-41e7-93e8-4a815124e6cc",
+"target": "I thought that it was a mistake",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L03U03",
+"ka": "d2de8353-6ead-439e-a978-83210c47f43b",
+"known": "అది ఒక పొరపాటు అని నువ్వు అనుకున్నావా?",
+"pos": 10,
+"t1": "7475997d-bbae-4d35-98e2-eb62381a3d89",
+"t2": "e60d7134-c067-4fb5-a797-bffa9b7316b7",
+"target": "did you think that it was a mistake?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0617L03U04",
+"ka": "c1149d9f-0d37-454c-99df-d27220e6c9c9",
+"known": "అది ఒక పొరపాటు అని నాకు తెలుసు",
+"pos": 11,
+"t1": "f9994a5d-894c-497b-b727-788d6f9043bc",
+"t2": "0adbe0b5-5ed6-48ed-8646-29d147e57c1b",
+"target": "I know that it was a mistake",
+"type": "use"
+}
+],
+"target": "that it was a mistake",
+"type": "M"
+}
+],
+"status": "released",
+"target": "You thought that it was a mistake."
+},
+"619": {
+"at": "2026-11-18T18:42:19Z",
+"known": "మనం ఒకరినొకరం చూసుకుని చాలా కాలం అయింది.",
+"legos": [
+{
+"id": "S0619L01",
+"idx": 1,
+"is_new": true,
+"known": "మనం ఒకరినొకరం చూసుకుని",
+"phrases": [
+{
+"id": "a73ff00c-8108-44d0-965b-2795b8949f62",
+"ka": "a6a0e2f5-6153-42c5-816d-edc72a5a4754",
+"known": "మనం ఒకరినొకరం చూసుకుని",
+"pos": 0,
+"t1": "fad6caa2-62c6-4ac2-90b1-ed5bb6d00d9b",
+"t2": "cd87589b-30f6-49d0-bd10-0c19ffe85ac9",
+"target": "since we saw each other",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0619L01C01",
+"ka": "47523206-ea53-42b3-bb1d-7d608471cbdd",
+"known": "మనం",
+"pos": 1,
+"t1": "7ff81cee-b4c7-44b6-a812-a1383974dfdb",
+"t2": "a24754eb-201f-4b12-bf11-32b2ab328248",
+"target": "we",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0619L01C02",
+"ka": "66d04e45-8b3f-4bcc-9075-98448869dbb6",
+"known": "చూసుకుని",
+"pos": 2,
+"t1": "4ee65821-7ebc-4abe-a39b-9477b56cf491",
+"t2": "622cd058-3d33-4a75-99ea-adb7abe2556e",
+"target": "saw",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0619L01C03",
+"ka": "a5b0d41d-0466-4b6d-b4aa-7c82e02c1988",
+"known": "ఒకరినొకరం",
+"pos": 3,
+"t1": "46a32f29-5052-48b1-894d-469fdc2391a6",
+"t2": "9337223b-b157-46e6-b70f-8879e89909fc",
+"target": "each other",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0619L01B01",
+"ka": "a6a0e2f5-6153-42c5-816d-edc72a5a4754",
+"known": "మనం ఒకరినొకరం చూసుకుని",
+"pos": 4,
+"t1": "fad6caa2-62c6-4ac2-90b1-ed5bb6d00d9b",
+"t2": "cd87589b-30f6-49d0-bd10-0c19ffe85ac9",
+"target": "since we saw each other",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0619L01U01",
+"ka": "9aa97d8a-cb61-41cb-b866-55e680f58c2c",
+"known": "మనం ఒకరినొకరం చూసుకుని చాలా కాలం అయింది",
+"pos": 7,
+"t1": "96ffa0de-bedb-409f-98ec-0485290fec13",
+"t2": "27dff43a-9327-406b-aeb8-6825e232017c",
+"target": "it's a long time since we saw each other",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0619L01U02",
+"ka": "72bea0cc-447e-44bf-ae68-78446a73305a",
+"known": "అప్పటి నుండి మనం ఒకరినొకరం చూసుకోలేదు",
+"pos": 8,
+"t1": "a1c50eef-b570-49df-87d9-f85c7ee1bf2a",
+"t2": "7dd87499-678f-4e30-af27-fd1feadbde1e",
+"target": "we haven't seen each other since then",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0619L01U03",
+"ka": "39c49638-d177-4164-8aa3-571c160ec5a6",
+"known": "మనం ఒకరినొకరం చూసుకుని చాలా చాలా కాలం అయింది",
+"pos": 9,
+"t1": "75ece75f-4c0c-4b41-9796-d35fad696cba",
+"t2": "f651e433-2cec-4767-aaa1-df24f6319d1a",
+"target": "it's a very long time since we saw each other",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0619L01U04",
+"ka": "f3e3c226-ddac-4c4a-a9d2-47b5aa2f5fbe",
+"known": "అప్పటి నుండి మనం ఒకరినొకరం చూసుకున్నామా?",
+"pos": 10,
+"t1": "dec22a59-5f27-41f3-b291-b188a988111b",
+"t2": "6325c50e-c0c2-4329-917c-4ab573be542a",
+"target": "have we seen each other since then?",
+"type": "use"
+}
+],
+"target": "since we saw each other",
+"type": "M"
+},
+{
+"id": "S0619L02",
+"idx": 2,
+"is_new": true,
+"known": "చాలా కాలం అయింది",
+"phrases": [
+{
+"id": "293f753a-7697-4b8e-868d-f862d1fe2a97",
+"ka": "1e453b50-f3a0-48bc-8fd0-9821d8a509fa",
+"known": "చాలా కాలం అయింది",
+"pos": 0,
+"t1": "2ee487d5-f13b-4595-9b51-8e7a4803fc77",
+"t2": "06897a4e-6bce-4020-a1f0-ce65a6d8eb46",
+"target": "it's a long time",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0619L02C01",
+"ka": "7d450ef0-8f15-4983-91ca-7dc9e22d4408",
+"known": "చాలా కాలం",
+"pos": 1,
+"t1": "e3e49908-50a9-4285-b60d-96f686d95de3",
+"t2": "4bdd1596-317d-4a5a-a167-723ed5b095fd",
+"target": "a long time",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0619L02C02",
+"ka": "860eecb2-70e4-437c-86b2-0a10bcea87e8",
+"known": "అయింది",
+"pos": 2,
+"t1": "6e7eeac8-2f9b-401c-8c71-3f126041d816",
+"t2": "d0b7b440-4bfe-48cd-bdeb-7accacadccca",
+"target": "it's",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0619L02B01",
+"ka": "1e453b50-f3a0-48bc-8fd0-9821d8a509fa",
+"known": "చాలా కాలం అయింది",
+"pos": 3,
+"t1": "2ee487d5-f13b-4595-9b51-8e7a4803fc77",
+"t2": "06897a4e-6bce-4020-a1f0-ce65a6d8eb46",
+"target": "it's a long time",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0619L02U01",
+"ka": "47283e0d-8571-4c8f-a6aa-54d9bde26cd4",
+"known": "చాలా కాలం అయింది, మనం ఒకరినొకరం చూసుకుని",
+"pos": 6,
+"t1": "96ffa0de-bedb-409f-98ec-0485290fec13",
+"t2": "27dff43a-9327-406b-aeb8-6825e232017c",
+"target": "it's a long time since we saw each other",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0619L02U02",
+"ka": "a337a1dc-412c-4cdc-859c-9eba4e299a9d",
+"known": "మనం ఒకరినొకరం చూసుకుని చాలా కాలం అయింది కదా?",
+"pos": 7,
+"t1": "80b24f66-ef1e-4682-88a8-e5897999ab9c",
+"t2": "efd4315f-91e8-4076-9027-9b775295d829",
+"target": "isn't it a long time since we saw each other?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0619L02U03",
+"ka": "394adf35-4933-40d2-820d-311f86dc9b09",
+"known": "మనం ఒకరినొకరం చూసుకుని ఎంత కాలం అయిందో",
+"pos": 8,
+"t1": "b253e33d-991c-41bb-ae4c-3eb54af6abb9",
+"t2": "e6560453-76b2-4ccb-872a-63bb1543fe94",
+"target": "it's such a long time since we saw each other",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0619L02U04",
+"ka": "0efc0e70-c3e4-4ebe-84e1-8215c0585d04",
+"known": "చాలా కాలం అయింది, నిజంగా మనం ఒకరినొకరం చూసుకుని",
+"pos": 9,
+"t1": "f4d94c63-2a0b-4a5e-9877-b142e1c56cf7",
+"t2": "f25961fe-3f83-4c8d-8bdf-9b0220bc8d97",
+"target": "it's really a long time since we saw each other",
+"type": "use"
+}
+],
+"target": "it's a long time",
+"type": "M"
+}
+],
+"status": "released",
+"target": "It's a long time since we saw each other."
+},
+"622": {
+"at": "2026-11-18T18:42:20Z",
+"known": "పిల్లలు దాన్ని విరగొట్టారని నాకు తెలుసు.",
+"legos": [
+{
+"id": "S0622L01",
+"idx": 1,
+"is_new": true,
+"known": "పిల్లలు దాన్ని విరగొట్టారు",
+"phrases": [
+{
+"id": "f441e15a-958a-44e3-ba56-f16dc384601e",
+"ka": "6905f9ff-c232-41e5-87f5-1090e4b33a1c",
+"known": "పిల్లలు దాన్ని విరగొట్టారు",
+"pos": 0,
+"t1": "1c49ed2b-0877-49ff-aa04-94c69a77dea6",
+"t2": "f65b1ded-ac57-4749-a62a-533c5b3f98f3",
+"target": "the children had broken it",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0622L01C01",
+"ka": "470612a3-73dc-4b27-94db-933c9a943bb3",
+"known": "పిల్లలు",
+"pos": 1,
+"t1": "220161e2-61db-441f-8398-9c77c9d56f3f",
+"t2": "4595956c-7b0f-4360-a873-81b0dbd31006",
+"target": "the children",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0622L01C02",
+"ka": "84a6b2e0-50f0-471d-bf54-d069b86ec408",
+"known": "దాన్ని",
+"pos": 2,
+"t1": "c86d8d5e-27ed-458d-9f79-f02e430a5a24",
+"t2": "11b9f532-1f84-485d-b343-4927f34df7ff",
+"target": "it",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0622L01C03",
+"ka": "10f46143-ec91-48fb-8f5b-865fdf2bc8a0",
+"known": "విరగొట్టారు",
+"pos": 3,
+"t1": "f5c9b93f-f1ab-4922-8a9e-7df4d3fbd2f6",
+"t2": "a3ae51df-dade-450f-a3f0-79bf68ccdfaf",
+"target": "had broken",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0622L01B01",
+"ka": "6905f9ff-c232-41e5-87f5-1090e4b33a1c",
+"known": "పిల్లలు దాన్ని విరగొట్టారు",
+"pos": 4,
+"t1": "1c49ed2b-0877-49ff-aa04-94c69a77dea6",
+"t2": "f65b1ded-ac57-4749-a62a-533c5b3f98f3",
+"target": "the children had broken it",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0622L01U01",
+"ka": "6905f9ff-c232-41e5-87f5-1090e4b33a1c",
+"known": "పిల్లలు దాన్ని విరగొట్టారు",
+"pos": 7,
+"t1": "1c49ed2b-0877-49ff-aa04-94c69a77dea6",
+"t2": "f65b1ded-ac57-4749-a62a-533c5b3f98f3",
+"target": "the children had broken it",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0622L01U02",
+"ka": "7f1187f4-72ee-42a2-8c03-c3555aaaa441",
+"known": "పిల్లలు దాన్ని విరగొట్టారా?",
+"pos": 8,
+"t1": "855ea705-b283-4204-9283-fee429cf1e48",
+"t2": "eb27effa-0491-4aad-860b-1c569699c5fe",
+"target": "had the children broken it?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0622L01U04",
+"ka": "15907dde-0d88-4218-bc83-a0339b8331e1",
+"known": "పిల్లలు దాన్ని విరగొట్టలేదు",
+"pos": 10,
+"t1": "8ca1d3b1-b4df-4395-8c6b-10566847cc1f",
+"t2": "dd2198fc-dfd3-4874-9e51-7b4f01ab13fe",
+"target": "the children hadn't broken it",
+"type": "use"
+}
+],
+"target": "the children had broken it",
+"type": "M"
+},
+{
+"id": "S0622L02",
+"idx": 2,
+"is_new": true,
+"known": "అని నాకు తెలుసు",
+"phrases": [
+{
+"id": "47c47793-798b-4fcd-bfe1-dd942e28a998",
+"ka": "4e3abe88-40be-4426-bf99-e17e1b447c1d",
+"known": "అని నాకు తెలుసు",
+"pos": 0,
+"t1": "44eb9eaf-d6dc-44bf-8e08-436b31bc3d8c",
+"t2": "48bb24e1-62b1-47c9-a879-8509f84579a5",
+"target": "I knew that",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0622L02C01",
+"ka": "5f509d54-eeea-4b30-95c9-2c2927d31da3",
+"known": "నాకు తెలుసు",
+"pos": 1,
+"t1": "c8f041a1-669e-4b1f-a33b-629ecffe1107",
+"t2": "0fd86ead-3cbf-4ac9-8e11-abae2530d3da",
+"target": "I knew",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0622L02C02",
+"ka": "ca2495ce-ae52-4d3c-a039-0a241bcddc36",
+"known": "అని",
+"pos": 2,
+"t1": "85ce3e65-666f-4082-8c6e-f6c8c69b68c7",
+"t2": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+"target": "that",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0622L02B01",
+"ka": "4e3abe88-40be-4426-bf99-e17e1b447c1d",
+"known": "అని నాకు తెలుసు",
+"pos": 3,
+"t1": "44eb9eaf-d6dc-44bf-8e08-436b31bc3d8c",
+"t2": "48bb24e1-62b1-47c9-a879-8509f84579a5",
+"target": "I knew that",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0622L02B02",
+"ka": "64277196-2704-4300-8548-af78c40fb84c",
+"known": "పిల్లలు దాన్ని విరగొట్టారని నాకు తెలుసు",
+"pos": 4,
+"t1": "54bd9f11-6c99-4d21-9f96-5d206057f83f",
+"t2": "942cad5f-3f12-4e2c-81a4-74e8124cf53f",
+"target": "I knew that the children had broken it",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0622L02U01",
+"ka": "53bbb61e-62c9-44a1-8f3f-f7dd381bd91e",
+"known": "అది విరిగిపోయిందని నాకు తెలుసు",
+"pos": 6,
+"t1": "4642bb79-22b5-4605-b05d-be8fa3a89130",
+"t2": "27256eee-17cc-4b83-9c3e-6d62ec1882cf",
+"target": "I knew that it was broken",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0622L02U02",
+"ka": "adc25073-5ce9-4bcf-b345-69e0871d00fa",
+"known": "నువ్వు అలా అనుకున్నావని నాకు తెలుసు",
+"pos": 7,
+"t1": "210e8d85-6aa1-472e-b85e-6d66b727e3ee",
+"t2": "3f9bad3a-2237-4d23-bd85-57bc4ee359e2",
+"target": "I knew that you thought so",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0622L02U03",
+"ka": "64277196-2704-4300-8548-af78c40fb84c",
+"known": "పిల్లలు దాన్ని విరగొట్టారని నాకు తెలుసు",
+"pos": 8,
+"t1": "54bd9f11-6c99-4d21-9f96-5d206057f83f",
+"t2": "942cad5f-3f12-4e2c-81a4-74e8124cf53f",
+"target": "I knew that the children had broken it",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0622L02U04",
+"ka": "c1149d9f-0d37-454c-99df-d27220e6c9c9",
+"known": "అది ఒక పొరపాటు అని నాకు తెలుసు",
+"pos": 9,
+"t1": "1585367e-05b9-446c-ba36-f260f9ca2c43",
+"t2": "603dd331-c30a-4a6f-a4e6-8fc869416c43",
+"target": "I knew that it was a mistake",
+"type": "use"
+}
+],
+"target": "I knew that",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I knew that the children had broken it."
+},
+"628": {
+"at": "2026-11-18T18:42:21Z",
+"known": "నీకు టీ ఇష్టమా?",
+"legos": [
+{
+"id": "S0628L01",
+"idx": 1,
+"is_new": true,
+"known": "నీకు ఇష్టమా",
+"phrases": [
+{
+"id": "01180ac0-a621-401d-add5-cd53969ffe1e",
+"ka": "d2e3d5e0-65c4-4c6c-bb8f-14b271f6a150",
+"known": "నీకు ఇష్టమా",
+"pos": 0,
+"t1": "96ce00fa-7922-4aec-ac2c-48772db82606",
+"t2": "306c4fa2-6024-4daa-9873-b177fa364a72",
+"target": "do you like",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_tel:S0628L01C01",
+"ka": "be30eab7-e5b3-4acb-a08a-3e1599ec73f9",
+"known": "నీకు",
+"pos": 1,
+"t1": "6d276d52-4b9a-4446-85b2-9e033edeb588",
+"t2": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"target": "you",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0628L01C02",
+"ka": "e9aead15-a8ef-461c-8e41-32b22a4bed87",
+"known": "ఇష్టమా",
+"pos": 2,
+"t1": "25fa65ec-599c-46a1-853f-09d38cd0b92c",
+"t2": "8507300e-45df-4b0d-a558-8a0e890a3fcb",
+"target": "like",
+"type": "component"
+},
+{
+"id": "eng_for_tel:S0628L01B01",
+"ka": "d2e3d5e0-65c4-4c6c-bb8f-14b271f6a150",
+"known": "నీకు ఇష్టమా",
+"pos": 3,
+"t1": "96ce00fa-7922-4aec-ac2c-48772db82606",
+"t2": "306c4fa2-6024-4daa-9873-b177fa364a72",
+"target": "do you like",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0628L01B02",
+"ka": "9f28bbd8-f7d9-405c-bbb8-a0ae8d65c950",
+"known": "నీకు టీ ఇష్టమా?",
+"pos": 4,
+"t1": "cecf11ba-e372-4811-9798-25ccce8f0678",
+"t2": "754db023-b7ef-499d-87ff-43ce8bc0b955",
+"target": "do you like tea?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0628L01B03",
+"ka": "bcdde362-ed1a-4e43-a379-a62e11c841bb",
+"known": "నీకు కాఫీ ఇష్టమా?",
+"pos": 5,
+"t1": "8dc793c8-cab6-430b-8ef7-fdbd00a71554",
+"t2": "add3ba69-ab89-44ee-930e-9114c52d3974",
+"target": "do you like coffee?",
+"type": "build"
+},
+{
+"id": "eng_for_tel:S0628L01U01",
+"ka": "9f28bbd8-f7d9-405c-bbb8-a0ae8d65c950",
+"known": "నీకు టీ ఇష్టమా?",
+"pos": 6,
+"t1": "cecf11ba-e372-4811-9798-25ccce8f0678",
+"t2": "754db023-b7ef-499d-87ff-43ce8bc0b955",
+"target": "do you like tea?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0628L01U02",
+"ka": "bcdde362-ed1a-4e43-a379-a62e11c841bb",
+"known": "నీకు కాఫీ ఇష్టమా?",
+"pos": 7,
+"t1": "8dc793c8-cab6-430b-8ef7-fdbd00a71554",
+"t2": "add3ba69-ab89-44ee-930e-9114c52d3974",
+"target": "do you like coffee?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0628L01U03",
+"ka": "cb18de65-6517-4c3b-8330-d11af8787101",
+"known": "నీకు టీ ఇష్టమా లేక కాఫీ ఇష్టమా?",
+"pos": 8,
+"t1": "9f5dddea-2b1f-48a0-87ba-38fc21f44f0b",
+"t2": "94001c27-869c-4105-aabf-402d56be1470",
+"target": "do you like tea or coffee?",
+"type": "use"
+},
+{
+"id": "eng_for_tel:S0628L01U04",
+"ka": "0d8ce905-0186-4376-8b70-05cc095cb25d",
+"known": "నీకు కాఫీ ఇష్టం లేదా?",
+"pos": 9,
+"t1": "b096eb4c-03ab-47c8-8ce2-d5ef08eb6f45",
+"t2": "08c547cd-7bb1-4839-baa3-341874d24216",
+"target": "don't you like coffee?",
+"type": "use"
+}
+],
+"target": "do you like",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Do you like tea?"
 }
 }

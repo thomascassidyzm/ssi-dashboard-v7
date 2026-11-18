@@ -1,0 +1,272 @@
+{
+ "course": "ara_for_eng",
+ "roman_flags": [],
+ "dumped": "2026-11-18T18:43:10Z",
+ "decisions": 1,
+ "verdicts": {
+  "rebuild-rows": 1
+ },
+ "touched_seeds": [
+  109
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0109L02",
+   "verdict": "rebuild-rows",
+   "why": "Every practice phrase under a LEGO contains the whole LEGO (P17). The LEGO \"new words | كَلِماتٍ جَديدَةً\" is the seed's own words and 5 of 7 rows drill it; two rows use the singular كَلِمَةً جَديدَةً (\"a new word\"), a different form the seed does not say. Those two are reworded to the plural; nothing else moves.",
+   "closes": [
+    "11"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 109,
+    "known": "we must work hard to learn a lot of new words",
+    "target": "يَجِبُ أَنْ نَعْمَلَ بِجِدٍّ لِنَتَعَلَّمَ كَلِماتٍ جَديدَةً كَثيرَة"
+   },
+   "before": {
+    "known": "new words",
+    "target": "كَلِماتٍ جَديدَةً",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "new words",
+    "target": "كَلِماتٍ جَديدَةً",
+    "type": "M",
+    "components": null,
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "ara_for_eng:S0109L02B01",
+     "role": "build",
+     "before": [
+      "a new word",
+      "كَلِمَةً جَديدَةً"
+     ],
+     "action": [
+      "new words in Arabic",
+      "كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0109L02B02",
+     "role": "build",
+     "before": [
+      "new words",
+      "كَلِماتٍ جَديدَةً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0109L02B03",
+     "role": "build",
+     "before": [
+      "many new words",
+      "كَلِماتٍ جَديدَةً كَثيرَةً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0109L02U02",
+     "role": "use",
+     "before": [
+      "that is why we need to learn new words",
+      "لِذٰلِكَ نَحْتاجُ أَنْ نَتَعَلَّمَ كَلِماتٍ جَديدَةً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0109L02U03",
+     "role": "use",
+     "before": [
+      "I want to learn a new word in Arabic",
+      "أُريدُ أَنْ أَتَعَلَّمَ كَلِمَةً جَديدَةً بِالعَرَبِيَّةِ"
+     ],
+     "action": [
+      "I want to learn new words in Arabic",
+      "أُريدُ أَنْ أَتَعَلَّمَ كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ"
+     ]
+    },
+    {
+     "id": "ara_for_eng:S0109L02U04",
+     "role": "use",
+     "before": [
+      "we hope to learn many new words",
+      "نَأْمَلُ أَنْ نَتَعَلَّمَ كَلِماتٍ جَديدَةً كَثيرَةً"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "ara_for_eng:S0109L02U05",
+     "role": "use",
+     "before": [
+      "we were not learning new words before",
+      "لَمْ نَكُنْ نَتَعَلَّمُ كَلِماتٍ جَديدَةً قَبْلَ الآنِ"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0109L02B01",
+   "set": {
+    "known_text": "new words in Arabic",
+    "target_text": "كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
+    "target_text_roman": "kalimaatin jadeedatan bil'arabiyyati"
+   },
+   "expect": {
+    "known_text": "a new word",
+    "target_text": "كَلِمَةً جَديدَةً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0109L02U03",
+   "set": {
+    "known_text": "I want to learn new words in Arabic",
+    "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
+    "target_text_roman": "ureedu an ata'allama kalimaatin jadeedatan bil'arabiyyati"
+   },
+   "expect": {
+    "known_text": "I want to learn a new word in Arabic",
+    "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِمَةً جَديدَةً بِالعَرَبِيَّةِ"
+   }
+  }
+ ],
+ "dryRun": {
+  "at": "2026-11-18T18:45:20Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 2,
+    "status": 200,
+    "secs": 8.2,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_for_eng",
+        "id": "ara_for_eng:S0109L02B01"
+       },
+       "before": {
+        "id": "ara_for_eng:S0109L02B01",
+        "seed_number": 109,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "a new word",
+        "target_text": "كَلِمَةً جَديدَةً",
+        "target_text_roman": "kalimat jadeedatan",
+        "known_audio_id": "917a122c-36af-40a0-bc4c-e5fbb287bd11",
+        "target1_audio_id": "ca16bc44-b4c8-4d1c-a1bb-73455a3b7cd8",
+        "target2_audio_id": "0bac7a22-375b-4987-bf3c-988c3e8f89a3",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_for_eng:S0109L02B01",
+        "seed_number": 109,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "new words in Arabic",
+        "target_text": "كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
+        "target_text_roman": "kalimaatin jadeedatan bil'arabiyyati",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "phrase.update",
+       "key": {
+        "course_code": "ara_for_eng",
+        "id": "ara_for_eng:S0109L02U03"
+       },
+       "before": {
+        "id": "ara_for_eng:S0109L02U03",
+        "seed_number": 109,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I want to learn a new word in Arabic",
+        "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِمَةً جَديدَةً بِالعَرَبِيَّةِ",
+        "target_text_roman": "ureedu an ata'allam kalimat jadeedatan bil-'arabiyyati",
+        "known_audio_id": "1d7b9b91-e00d-45a3-9806-392bc0a7d002",
+        "target1_audio_id": "b6224aed-031d-4c4e-b3dd-147877b4a770",
+        "target2_audio_id": "64c12a69-203a-45b1-a6f2-da2fc0434f18",
+        "presentation_audio_id": null
+       },
+       "after": {
+        "id": "ara_for_eng:S0109L02U03",
+        "seed_number": 109,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "I want to learn new words in Arabic",
+        "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِماتٍ جَديدَةً بِالعَرَبِيَّةِ",
+        "target_text_roman": "ureedu an ata'allama kalimaatin jadeedatan bil'arabiyyati",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_for_eng:S0109L02U03",
+       "set": {
+        "known_text": "I want to learn a new word in Arabic",
+        "target_text": "أُريدُ أَنْ أَتَعَلَّمَ كَلِمَةً جَديدَةً بِالعَرَبِيَّةِ",
+        "known_audio_id": "1d7b9b91-e00d-45a3-9806-392bc0a7d002",
+        "target1_audio_id": "b6224aed-031d-4c4e-b3dd-147877b4a770",
+        "target2_audio_id": "64c12a69-203a-45b1-a6f2-da2fc0434f18",
+        "target_text_roman": "ureedu an ata'allam kalimat jadeedatan bil-'arabiyyati"
+       }
+      },
+      {
+       "op": "phrase.update",
+       "phrase_id": "ara_for_eng:S0109L02B01",
+       "set": {
+        "known_text": "a new word",
+        "target_text": "كَلِمَةً جَديدَةً",
+        "known_audio_id": "917a122c-36af-40a0-bc4c-e5fbb287bd11",
+        "target1_audio_id": "ca16bc44-b4c8-4d1c-a1bb-73455a3b7cd8",
+        "target2_audio_id": "0bac7a22-375b-4987-bf3c-988c3e8f89a3",
+        "target_text_roman": "kalimat jadeedatan"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ]
+ }
+}

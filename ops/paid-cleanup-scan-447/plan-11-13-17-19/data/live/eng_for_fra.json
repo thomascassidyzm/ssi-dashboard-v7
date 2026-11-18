@@ -1,0 +1,976 @@
+{
+"139": {
+"at": "2026-11-18T18:41:05Z",
+"known": "Je suis désolé de devoir partir si tôt.",
+"legos": [
+{
+"id": "S0139L01",
+"idx": 1,
+"is_new": true,
+"known": "je suis désolé",
+"phrases": [
+{
+"id": "0cb6d675-bb9a-4b98-a957-af0c6a8495c0",
+"ka": "aa43dc8a-caa6-436c-932d-bdcf71214317",
+"known": "je suis désolé",
+"pos": 0,
+"t1": "69b47a09-d79d-447f-a2c1-ff2561bc4a2f",
+"t2": "6ea12308-f390-4028-8313-17026134ad1e",
+"target": "I'm sorry",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0139L01C01",
+"ka": "b6663327-29b4-4451-8d6d-fd233fbf8aae",
+"known": "je suis",
+"pos": 1,
+"t1": "95f54295-5052-4fd2-90ad-ee15c58c2fb4",
+"t2": "ebc84298-a90f-4b49-9b52-db32ca20bbec",
+"target": "I'm",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0139L01C02",
+"ka": "0a724da5-a8fe-4114-8fc7-e511f8ff4328",
+"known": "désolé",
+"pos": 2,
+"t1": "bda03bea-0c41-4ec0-b388-a167b81c7821",
+"t2": "3ccd52e4-a28e-4320-a6f7-cbd19a25829e",
+"target": "sorry",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0139L01B01",
+"ka": "f9042bb9-dbbd-4461-95fa-9307ad44d024",
+"known": "je suis désolée",
+"pos": 3,
+"t1": "69b47a09-d79d-447f-a2c1-ff2561bc4a2f",
+"t2": "6ea12308-f390-4028-8313-17026134ad1e",
+"target": "I'm sorry",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L01B02",
+"ka": "c99fdd04-421d-4727-9fcf-a975cb70740f",
+"known": "je suis désolée de",
+"pos": 4,
+"t1": "95c36ddc-ed3b-4274-ac8d-5471c1ae1215",
+"t2": "1026b604-7d35-4208-943d-4937b52ac59f",
+"target": "I'm sorry that",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L01B03",
+"ka": "069b06da-47c0-454d-8df5-20f2d5ab34fc",
+"known": "je suis désolée de partir",
+"pos": 5,
+"t1": "60cdd686-a1e8-4414-8a68-980b2455c990",
+"t2": "6fca4abd-f740-4f71-8870-9b8b0256317f",
+"target": "I'm sorry to leave",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L01U01",
+"ka": "04ef4ef5-ebd8-4015-8924-8c2f5f9e7f64",
+"known": "je suis désolée mais je ne sais pas",
+"pos": 6,
+"t1": "ec797548-a552-4961-9f2c-a92ba1b4ab29",
+"t2": "8f544f10-400d-4d67-ae61-9a6e554cb92d",
+"target": "I'm sorry but I don't know",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L01U02",
+"ka": "ec5702a9-89e3-4fa9-bb22-0dd3f83b74ee",
+"known": "je suis désolée de ne pas comprendre",
+"pos": 7,
+"t1": "6547f539-75fb-4d86-82a5-57297cbbf049",
+"t2": "c51682a8-b243-407b-877b-d62de5463324",
+"target": "I'm sorry I don't understand",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L01U03",
+"ka": "837c01b7-4e51-4824-adef-137e8115736f",
+"known": "je suis désolée mais je ne peux pas t'aider",
+"pos": 8,
+"t1": "282e7b13-090c-40fb-8ec9-bf25ea681b7b",
+"t2": "bf9d9851-ddce-462f-b40c-b7a86bc03b3c",
+"target": "I'm sorry but I can't help you",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L01U04",
+"ka": "772f7990-4e4b-4478-8b42-569d0358c387",
+"known": "je suis désolée mais c'est difficile",
+"pos": 9,
+"t1": "39b03ffb-b3a7-4709-808f-aed0433192f4",
+"t2": "24ba5cf7-8f8d-41d8-bd15-3ea656b84a18",
+"target": "I'm sorry but it's difficult",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L01U05",
+"ka": "ab8a35d0-4b18-4e1b-a1aa-0b0c36af0597",
+"known": "je suis désolée mais je dois y aller",
+"pos": 10,
+"t1": "79dc41ca-c396-408a-878b-7a65710ecd25",
+"t2": "6f7b07d7-65e7-4164-96f3-ca9539442d59",
+"target": "I'm sorry but I have to go",
+"type": "use"
+}
+],
+"target": "I'm sorry",
+"type": "M"
+},
+{
+"id": "S0139L02",
+"idx": 2,
+"is_new": true,
+"known": "devoir partir",
+"phrases": [
+{
+"id": "464e35f9-0876-494a-b7f2-0af54b23c95d",
+"ka": "ad86af11-bacc-42ec-8d63-4b0071c6d8b2",
+"known": "devoir partir",
+"pos": 0,
+"t1": "2b97f7e8-c3ef-4efa-8668-4dde5581c4b7",
+"t2": "947fadcb-4ff3-48f3-bc8b-407aefe87d61",
+"target": "need to leave",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0139L02C01",
+"ka": "bd67487b-16b2-4ec6-b4e5-3b8fb8af47fd",
+"known": "devoir",
+"pos": 1,
+"t1": "a8e7bf9e-ad04-4f44-bb8c-7fa102871afb",
+"t2": "e75683a0-3ac7-4d7a-85e6-fa45673401d7",
+"target": "need to",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0139L02C02",
+"ka": "27aa409e-0b29-426d-8b3a-f19fd210b3af",
+"known": "partir",
+"pos": 2,
+"t1": "5c3bd63f-7dda-47ac-b42f-c8da2b265a78",
+"t2": "2776d864-31b2-4e30-acf7-131528864164",
+"target": "leave",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0139L02B01",
+"ka": "ad86af11-bacc-42ec-8d63-4b0071c6d8b2",
+"known": "devoir partir",
+"pos": 3,
+"t1": "2b97f7e8-c3ef-4efa-8668-4dde5581c4b7",
+"t2": "947fadcb-4ff3-48f3-bc8b-407aefe87d61",
+"target": "need to leave",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L02B02",
+"ka": "b0752196-e86a-406e-a216-b0378f1e0d0e",
+"known": "je dois partir",
+"pos": 4,
+"t1": "98de2262-e97e-4a2f-ae71-610570083347",
+"t2": "83235a69-d02e-4bc9-ac19-d2ea858ce971",
+"target": "I have to leave",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L02B03",
+"ka": "a8c59bf7-b362-4fd1-82b3-ae1055513f4f",
+"known": "de devoir partir",
+"pos": 5,
+"t1": "faa19c61-ccad-4f3c-b1d9-ffa590f23c5e",
+"t2": "2c07e6fe-8c97-4266-aa4b-92e06c0eabcd",
+"target": "that I need to leave",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L02B04",
+"ka": "ade430c1-e69c-471c-a400-cc485831501f",
+"known": "je suis désolée de devoir partir",
+"pos": 6,
+"t1": "0a36203b-fb57-4481-8e87-073360ce83de",
+"t2": "16df7ef2-d169-4965-90cf-ab539999d7bc",
+"target": "I'm sorry that I need to leave",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L02U01",
+"ka": "46771d9d-2b18-456e-813b-907c59d57c39",
+"known": "je sais que je dois partir",
+"pos": 7,
+"t1": "6ccc609e-9d6f-4260-97ba-22d27ff97b21",
+"t2": "6e95a3b8-4e89-4319-93f5-9f32c4aef1a9",
+"target": "I know I need to leave",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L02U02",
+"ka": "26babe95-09ff-4c78-a623-22247b90a5e0",
+"known": "je ne suis pas sûre de devoir partir maintenant",
+"pos": 8,
+"t1": "9bd07518-7c9b-4866-92b1-2a30b55d280d",
+"t2": "8c1dd783-ab4a-4b69-8ff6-f6c8d88d23c1",
+"target": "I'm not sure I need to leave now",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L02U03",
+"ka": "9ab34f5c-e44b-4f7f-9f9d-8b4494067bf1",
+"known": "je dois partir mais je ne veux pas",
+"pos": 9,
+"t1": "fa50c803-6767-436f-819b-7627de780245",
+"t2": "ac7f949d-64b4-4087-b709-0d1f4d7f9f6c",
+"target": "I need to leave but I don't want to",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L02U04",
+"ka": "1a7191a4-10ce-4fe4-be59-3dde336b8cb1",
+"known": "je dois partir avant toi",
+"pos": 10,
+"t1": "1d5e0348-ef9a-41a0-b7b8-cd5f8ac4e24d",
+"t2": "3d5b83d2-1e22-4124-aecc-738f88143744",
+"target": "I need to leave before you",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L02U05",
+"ka": "56cfead2-5160-4724-85b5-26905d876671",
+"known": "je suis désolée mais je dois partir",
+"pos": 11,
+"t1": "0ef7184c-7c04-4383-bb67-c3ef77cf2003",
+"t2": "37932053-b4e9-438c-a4aa-62372b023b6b",
+"target": "I'm sorry but I need to leave",
+"type": "use"
+}
+],
+"target": "need to leave",
+"type": "M"
+},
+{
+"id": "S0139L03",
+"idx": 3,
+"is_new": true,
+"known": "si tôt",
+"phrases": [
+{
+"id": "7bd78342-bbdc-4077-a049-004f34b95bb5",
+"ka": "0ce53fe4-87ed-4632-b26e-c949896410ec",
+"known": "si tôt",
+"pos": 0,
+"t1": "68a9e7f9-a5c3-4fc9-a507-861ab88c4ae8",
+"t2": "aabc3d68-c13b-485c-822c-387608c01d35",
+"target": "so early",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0139L03C01",
+"ka": "a81eb170-8861-46bb-95d4-0883b34c5c8b",
+"known": "si",
+"pos": 1,
+"t1": "289bddca-14a8-461a-b00e-be0b6047b4ca",
+"t2": "72fbb0a0-421a-4cfb-9e1e-647776f99450",
+"target": "so",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0139L03C02",
+"ka": "a2422e6a-992b-4b38-b240-2fc6e26d6514",
+"known": "tôt",
+"pos": 2,
+"t1": "15a13ab2-ae7d-49b8-b3ef-9e0366705210",
+"t2": "547e6b88-a285-4bcc-b89e-414139a103b8",
+"target": "early",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0139L03B01",
+"ka": "0ce53fe4-87ed-4632-b26e-c949896410ec",
+"known": "si tôt",
+"pos": 3,
+"t1": "68a9e7f9-a5c3-4fc9-a507-861ab88c4ae8",
+"t2": "aabc3d68-c13b-485c-822c-387608c01d35",
+"target": "so early",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L03B02",
+"ka": "d4f488ad-f974-42af-83fe-16c3ecee05a4",
+"known": "partir si tôt",
+"pos": 4,
+"t1": "63277c1c-b585-4d01-a31a-36f2dd16aadc",
+"t2": "9bc02329-3e65-4301-8459-721813a9709e",
+"target": "to leave so early",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L03B03",
+"ka": "46f5bcc0-774c-486a-930b-96481a3b2ce3",
+"known": "devoir partir si tôt",
+"pos": 5,
+"t1": "e1f915b2-1067-4842-9147-9ccfccc1dede",
+"t2": "00eb0ba4-f95e-48fd-b0cb-980342d4e2c3",
+"target": "to need to leave so early",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L03B04",
+"ka": "f7020e44-bc72-4a6a-95e4-0bf730d0e2ce",
+"known": "je suis désolée de devoir partir si tôt",
+"pos": 6,
+"t1": "e747df85-3547-4328-b76f-f4767a4822bb",
+"t2": "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+"target": "I'm sorry that I need to leave so early",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0139L03U01",
+"ka": "8cadf0b8-c0ee-45fd-9188-2b75c7847950",
+"known": "je ne veux pas partir si tôt",
+"pos": 7,
+"t1": "8bea7554-b65c-443f-b597-879746ae107b",
+"t2": "ed9e6547-2cb8-44c0-badb-3c6dcf3b3108",
+"target": "I don't want to leave so early",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L03U02",
+"ka": "4d21d40d-38fa-4963-b3e4-d1a03bdf53d2",
+"known": "je suis surprise que tu doives partir si tôt",
+"pos": 8,
+"t1": "095b731e-5ec2-4144-a817-390ae2956513",
+"t2": "e039a7e1-8183-41d0-8f6e-478a54c956aa",
+"target": "I'm surprised you need to leave so early",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L03U03",
+"ka": "61003cfd-4626-4d41-9a96-71ec35d84252",
+"known": "pourquoi dois-tu partir si tôt?",
+"pos": 9,
+"t1": "49bfbc0d-9dbf-4bc7-943d-f159a5773ed8",
+"t2": "80866f7a-1050-4c79-bfe5-67c3f90f4463",
+"target": "why do you need to leave so early?",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L03U04",
+"ka": "8d7b4e23-6a79-4329-9965-b15f6e874b02",
+"known": "je dois partir si tôt demain",
+"pos": 10,
+"t1": "b590d863-c960-4d12-aef1-f5e7a43eef76",
+"t2": "b6bfb27b-f7f7-45e5-8b78-62e318909a36",
+"target": "I need to leave so early tomorrow",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0139L03U05",
+"ka": "4842bd27-ba99-4edf-8d9b-8af72d726cba",
+"known": "je suis désolée de partir si tôt ce soir",
+"pos": 11,
+"t1": "80f4534f-d4a7-4fc4-bb7b-a9749720a71e",
+"t2": "48d5280d-04f6-44da-8a3b-10320a2f989a",
+"target": "I'm sorry to leave so early this evening",
+"type": "use"
+}
+],
+"target": "so early",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I'm sorry that I need to leave so early."
+},
+"149": {
+"at": "2026-11-18T18:41:05Z",
+"known": "Ce n'est pas très difficile, donc j'espère que tu vas finir bientôt.",
+"legos": [
+{
+"id": "S0149L01",
+"idx": 1,
+"is_new": true,
+"known": "ce n'est pas très difficile",
+"phrases": [
+{
+"id": "a08ab7bb-1865-4ddd-9206-eeecbcbc589c",
+"ka": "02074056-dc09-4518-97f8-41e20c17ecfe",
+"known": "ce n'est pas très difficile",
+"pos": 0,
+"t1": "bfab21d9-d95a-46e6-a142-7dc1a765bc75",
+"t2": "2a955f25-9c77-4483-9830-7981c9afbd66",
+"target": "that isn't very difficult",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0149L01C01",
+"ka": "2c9358ae-2912-41f6-8fe3-52d3a18fdd7b",
+"known": "ce n'est pas",
+"pos": 1,
+"t1": "2fa66a67-3623-416f-8ed2-e8cf183b6764",
+"t2": "952b272d-14b7-4f02-a821-36fd90982100",
+"target": "this isn't",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0149L01C02",
+"ka": "13219694-15b8-489e-9862-52e096b0cee4",
+"known": "très difficile",
+"pos": 2,
+"t1": "7beb9464-db0f-4019-870a-0cfb83be97cc",
+"t2": "9e20b5a8-5b36-4220-bb12-833db544b164",
+"target": "very difficult",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0149L01B01",
+"ka": "02074056-dc09-4518-97f8-41e20c17ecfe",
+"known": "ce n'est pas très difficile",
+"pos": 3,
+"t1": "bfab21d9-d95a-46e6-a142-7dc1a765bc75",
+"t2": "2a955f25-9c77-4483-9830-7981c9afbd66",
+"target": "that isn't very difficult",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L01B02",
+"ka": "bab630fa-2ca9-41c2-8555-832d4548b5a3",
+"known": "ce n'est pas très difficile à faire",
+"pos": 4,
+"t1": "82775572-fb03-459d-aba1-72928675494c",
+"t2": "1ac1021b-f4c1-450b-9f94-b826ae858756",
+"target": "this isn't very difficult to do",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L01B03",
+"ka": "b10debfb-d748-4885-881a-6b13068793a8",
+"known": "bien sûr ce n'est pas très difficile",
+"pos": 5,
+"t1": "d305e005-1e41-4b79-898c-1feae4c55673",
+"t2": "86df6bab-0a9c-4d28-a928-137c8709c8d7",
+"target": "of course this isn't very difficult",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L01U01",
+"ka": "9e8211f8-d498-4673-bc5d-10e23f0e8ac9",
+"known": "je pense que ce n'est pas très difficile",
+"pos": 6,
+"t1": "28864c6c-f811-4670-a5d5-c6b56fd0d901",
+"t2": "5851eb0b-b54d-47dd-a89c-e9b0676ac61e",
+"target": "I think this isn't very difficult",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L01U02",
+"ka": "f797f2bf-a1c8-4349-803f-2773a9ef56bc",
+"known": "ce n'est pas très difficile si tu essaies",
+"pos": 7,
+"t1": "592c9201-2e20-4db5-b813-cd9e1e0471e5",
+"t2": "94a89c3f-aeb4-404d-8755-1cda69806450",
+"target": "this isn't very difficult if you try",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L01U03",
+"ka": "a9e02245-643f-4aba-a4a3-60b6729758b2",
+"known": "ce n'est pas très difficile à comprendre",
+"pos": 8,
+"t1": "657e5f0c-5ca3-4de6-8262-d8fbd3645b9c",
+"t2": "eaaf614d-7875-4119-9ef3-163c40581c5e",
+"target": "this isn't very difficult to understand",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L01U04",
+"ka": "1a8b959e-7901-4c62-b6f1-f533237f404c",
+"known": "ce n'est pas très difficile quand tu t'entraînes",
+"pos": 9,
+"t1": "6c232599-22f5-4b84-849b-a274685e62ae",
+"t2": "5784df79-1d75-447e-b1bd-fa998f7da176",
+"target": "this isn't very difficult when you practise",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L01U05",
+"ka": "1e4cdc00-5804-4040-b477-6730aebe46e7",
+"known": "ce n'est pas très difficile mais c'est important",
+"pos": 10,
+"t1": "8f4a7e28-ae24-462e-9fae-0564f127788c",
+"t2": "cfb99de4-0563-491d-923e-7534611a17ef",
+"target": "this isn't very difficult but it's important",
+"type": "use"
+}
+],
+"target": "that isn't very difficult",
+"type": "M"
+},
+{
+"id": "S0149L02",
+"idx": 2,
+"is_new": true,
+"known": "j'espère que",
+"phrases": [
+{
+"id": "744b9a00-ac1c-4aba-857b-4f0e372ca628",
+"ka": "b7e498e8-4a0a-4114-b5da-3019f6548135",
+"known": "j'espère que",
+"pos": 0,
+"t1": "26d1e305-3c30-478f-a016-43cf6126497b",
+"t2": "3efdda95-6ce9-41ff-8fbe-943ddcb334f4",
+"target": "I hope",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0149L02C01",
+"ka": "3d92b9c2-9fa3-43cd-8630-17ee00b353d8",
+"known": "que",
+"pos": 1,
+"t1": "8367840b-04ca-4de5-844b-27be4a91bfd2",
+"t2": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+"target": "that",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0149L02B01",
+"ka": "b7e498e8-4a0a-4114-b5da-3019f6548135",
+"known": "j'espère que",
+"pos": 2,
+"t1": "26d1e305-3c30-478f-a016-43cf6126497b",
+"t2": "3efdda95-6ce9-41ff-8fbe-943ddcb334f4",
+"target": "I hope",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L02B02",
+"ka": "1d1249fe-65a5-4ef2-9df1-663c42fe0bfd",
+"known": "j'espère que tout va bien",
+"pos": 3,
+"t1": "ef56c00d-68eb-44ee-93d7-caa64b0f717e",
+"t2": "d32ce54a-fd0c-40f8-9825-74c5554de848",
+"target": "I hope everything is okay",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L02B03",
+"ka": "a5204381-6116-489c-9c6b-9200ae4f1ce5",
+"known": "j'espère que ce n'est pas très difficile",
+"pos": 4,
+"t1": "b7eff63a-a252-4b0d-aac9-b13226215c8e",
+"t2": "2700553e-b9a8-4c37-87b3-1c9babf1a9e3",
+"target": "I hope this isn't very difficult",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L02U01",
+"ka": "1d185eed-6c01-48b7-8f4c-c5823e763a82",
+"known": "bien sûr j'espère que tout va bien",
+"pos": 5,
+"t1": "a58dc732-4e3f-4a00-ade7-acea364df1c5",
+"t2": "95b060e5-9147-47c7-b592-95fe7d71edd0",
+"target": "of course I hope everything is okay",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L02U02",
+"ka": "5183b92a-3926-4954-b5bd-05bb03dc9491",
+"known": "j'espère que tu peux m'aider",
+"pos": 6,
+"t1": "df715e7d-1308-4b8d-a878-a6ab86d26a09",
+"t2": "83b8c934-4923-44ef-9a65-16930c605281",
+"target": "I hope you can help me",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L02U03",
+"ka": "597436a6-7b58-448d-8bbf-7b990247e6d9",
+"known": "j'espère que tu comprends",
+"pos": 7,
+"t1": "78b1a5b7-5526-42ea-ac55-6a701d0d468e",
+"t2": "ebdff9ab-b7ce-4608-b91a-3f0df4a89540",
+"target": "I hope you understand",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L02U04",
+"ka": "29cbcc1c-017b-4164-8b5c-7481fb0bd21c",
+"known": "j'espère que tu fais très bien",
+"pos": 8,
+"t1": "a5b48ff9-e57d-4d81-93be-52721cedb246",
+"t2": "5707cc65-04e8-4958-a67b-32780056e00f",
+"target": "I hope you're doing very well",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L02U05",
+"ka": "db85eb4e-8806-4522-9519-5285f7c37440",
+"known": "j'espère que ce n'est pas un problème",
+"pos": 9,
+"t1": "ddc39ede-4051-4ef9-9976-a6bcf8c52efe",
+"t2": "f771a131-0f64-4e7a-8fa3-d4ace992d14e",
+"target": "I hope this isn't a problem",
+"type": "use"
+}
+],
+"target": "I hope",
+"type": "M"
+},
+{
+"id": "S0149L03",
+"idx": 3,
+"is_new": true,
+"known": "tu vas finir bientôt",
+"phrases": [
+{
+"id": "9e98043c-c180-4c24-8439-055205ab15d3",
+"ka": "a30fc125-6b30-465e-869b-89574eefa9cd",
+"known": "tu vas finir bientôt",
+"pos": 0,
+"t1": "ff831c0c-c495-4e33-bae8-7c7c0bb80511",
+"t2": "ea75eb93-cd4f-4e58-b257-7af624664766",
+"target": "you'll finish soon",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0149L03C01",
+"ka": "86c1d9b0-c75b-4f95-b731-c6139ba36eaf",
+"known": "tu vas finir",
+"pos": 1,
+"t1": "ed7830a2-73f5-4b19-88e9-ce69821ece05",
+"t2": "94871f98-ec85-410a-aafe-1119add2f079",
+"target": "you'll finish",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0149L03C02",
+"ka": "f230f6ef-6ce8-46b3-8851-0994fdec0b6d",
+"known": "bientôt",
+"pos": 2,
+"t1": "c08ba962-dfb5-4ae6-86c1-33d738c5566c",
+"t2": "2fb6751b-8f96-45f4-997e-664bb1cbf87e",
+"target": "soon",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0149L03B01",
+"ka": "a30fc125-6b30-465e-869b-89574eefa9cd",
+"known": "tu vas finir bientôt",
+"pos": 3,
+"t1": "ff831c0c-c495-4e33-bae8-7c7c0bb80511",
+"t2": "ea75eb93-cd4f-4e58-b257-7af624664766",
+"target": "you'll finish soon",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L03B02",
+"ka": "17aa75a4-3a19-4d6b-b6a1-83a680e1104b",
+"known": "j'espère que tu vas finir bientôt",
+"pos": 4,
+"t1": "4dcb36af-56a7-4a0c-9b84-56425c969a8f",
+"t2": "d6038565-67f9-4020-bde6-349d80b1793b",
+"target": "I hope you'll finish soon",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L03B03",
+"ka": "fc0c545b-5c32-4c18-917d-d13d91e9ca8c",
+"known": "ce n'est pas très difficile donc tu vas finir bientôt",
+"pos": 5,
+"t1": "515ad5bb-b098-477c-8fd4-40f3ecba39f5",
+"t2": "53f7da84-915c-4fc6-87ea-bef2e9cdab1d",
+"target": "this isn't very difficult so you'll finish soon",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0149L03U01",
+"ka": "aeeb318d-ccd6-4e91-b85e-034198311023",
+"known": "je pense que tu vas finir bientôt",
+"pos": 6,
+"t1": "0a3ef799-cae4-40ec-90aa-d9b85a376acf",
+"t2": "b5ebf409-c327-4149-a941-24f9a735f8db",
+"target": "I think you'll finish soon",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L03U02",
+"ka": "55089bc8-ddf5-4dfd-81d0-c581791bb9fc",
+"known": "bien sûr que tu vas finir bientôt",
+"pos": 7,
+"t1": "9892517c-82c3-4f39-8ca5-ebe407d6c951",
+"t2": "3e1c01a1-a671-4e7e-b337-a9da937241e2",
+"target": "of course you'll finish soon",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L03U03",
+"ka": "d93328fa-ba77-41f9-926b-16dfdeb8e023",
+"known": "j'espère que tu vas finir bientôt parce que je veux partir",
+"pos": 8,
+"t1": "353989ee-2eeb-4706-bce8-29314a82d613",
+"t2": "3fb27d67-bcff-478c-8929-d9f282db569b",
+"target": "I hope you'll finish soon because I want to leave",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L03U04",
+"ka": "e4cb3a9e-bcbe-4542-bf92-b995e6fb1e03",
+"known": "tu vas finir bientôt et tout va bien",
+"pos": 9,
+"t1": "cebbf298-fe00-4d74-95a8-f856f744d304",
+"t2": "085a21de-9a46-4d22-8d43-5b19b6224090",
+"target": "you'll finish soon and everything is okay",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0149L03U05",
+"ka": "969aae0f-6fcc-4fd5-acfe-5ab34c5b2601",
+"known": "tu vas finir bientôt si tu essaies",
+"pos": 10,
+"t1": "a4b9a647-ff74-4c1e-96e8-1f63304eb7b2",
+"t2": "849f4897-d496-43be-8518-7681706ab1a2",
+"target": "you'll finish soon if you try",
+"type": "use"
+}
+],
+"target": "you'll finish soon",
+"type": "M"
+}
+],
+"status": "released",
+"target": "This isn't very difficult, so I hope you'll finish soon."
+},
+"245": {
+"at": "2026-11-18T18:41:06Z",
+"known": "Je suis content de tout ce que j'ai fait en peu de temps.",
+"legos": [
+{
+"id": "S0245L01",
+"idx": 1,
+"is_new": true,
+"known": "je suis contente de",
+"phrases": [
+{
+"id": "59e5db04-90b8-4ec6-8694-dd1540776a1f",
+"ka": "0e1a03e9-cb84-488f-842c-0322a36b7f66",
+"known": "je suis contente de",
+"pos": 0,
+"t1": "bbe37c83-ff6a-4f0b-bc59-25c51b63b2be",
+"t2": "f9acd112-0901-4f3d-bc30-56915fbb97bd",
+"target": "I'm happy with",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0245L01C01",
+"ka": "a4f5450f-419a-4204-88e7-fdfe319f5fdd",
+"known": "je suis contente",
+"pos": 1,
+"t1": "b0d2f4af-785d-4c2a-8f05-b5aca9b25fc5",
+"t2": "84991d39-cb48-4b01-8cde-e317104b8aa8",
+"target": "I'm happy",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0245L01C02",
+"ka": "56dd9aac-9ad7-4aa8-bc2e-7d4ad1155b51",
+"known": "de",
+"pos": 2,
+"t1": "c2fe0d6d-64d7-4c68-9c5e-e9d7eb775f3a",
+"t2": "1510ccc9-d82b-46d2-9801-108ce159179b",
+"target": "with",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0245L01B01",
+"ka": "0e1a03e9-cb84-488f-842c-0322a36b7f66",
+"known": "je suis contente de",
+"pos": 3,
+"t1": "bbe37c83-ff6a-4f0b-bc59-25c51b63b2be",
+"t2": "f9acd112-0901-4f3d-bc30-56915fbb97bd",
+"target": "I'm happy with",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0245L01B02",
+"ka": "3d31061d-f437-4fdd-b453-6182504589a8",
+"known": "je suis contente de tout ce que j'ai appris",
+"pos": 4,
+"t1": "82218a98-292b-4ca1-ace5-66fd4d0f413a",
+"t2": "ab7236eb-ebab-4e23-b2eb-8303fcfe4d65",
+"target": "I'm happy with everything I've learnt",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0245L01B03",
+"ka": "ef5c3753-f10c-40bb-a8b6-f34bf1c1c2b0",
+"known": "je suis contente de tout",
+"pos": 5,
+"t1": "3e96fdc6-c138-4367-a2c4-fd4f2a9df70b",
+"t2": "217d7ac5-da2b-46d2-a3d4-0a5007f10390",
+"target": "I'm happy with everything",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0245L01U01",
+"ka": "96c53702-ddf2-43cd-9de2-d2647c44e679",
+"known": "je suis contente de tout ce que j'ai appris en peu de temps",
+"pos": 6,
+"t1": "37ed3121-d00d-4f5b-bf77-c1c2d8487f52",
+"t2": "3f14b403-397e-4d7c-b825-dfea091f1b18",
+"target": "I'm happy with everything I've learnt in a short time",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0245L01U02",
+"ka": "95387e33-ee4f-4f90-aea3-c90371fb0260",
+"known": "je suis contente de tout ce que j'ai fait",
+"pos": 7,
+"t1": "2b8470e0-1e2e-43c3-92c1-e65ac1802ae7",
+"t2": "21e7fc73-009c-4f48-82e4-1ecb98aad92d",
+"target": "I'm happy with everything I've done",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0245L01U05",
+"ka": "3e39a7fb-dd3e-4b32-9e30-4dbea88d8b5b",
+"known": "je suis contente de la réponse",
+"pos": 10,
+"t1": "48600c21-847d-44fa-a4f2-5b6ab6a53a9f",
+"t2": "9939ef47-789e-444e-b3e9-c283566fe794",
+"target": "I'm happy with the answer",
+"type": "use"
+}
+],
+"target": "I'm happy with",
+"type": "M"
+},
+{
+"id": "S0245L02",
+"idx": 2,
+"is_new": true,
+"known": "tout ce que j'ai fait",
+"phrases": [
+{
+"id": "222f7977-8af4-4a79-9b38-09630a7c16c5",
+"ka": "e101b997-d2c2-4862-a677-45761d6b28fd",
+"known": "tout ce que j'ai fait",
+"pos": 0,
+"t1": "3b0e049d-7e9f-4c9f-9faf-53d66bd8326f",
+"t2": "819d9ebf-eb32-4146-b1ba-eb1c0c392ed2",
+"target": "how much I've done",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_fra:S0245L02C01",
+"ka": "8c645d5a-0a99-4e84-8eaa-b216bb958d5b",
+"known": "tout ce que",
+"pos": 1,
+"t1": "c2d3571a-46fc-4f77-8989-69763e625698",
+"t2": "33c745b7-48fa-4bea-a477-9969dddc89ba",
+"target": "how much",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0245L02C02",
+"ka": "58ad60b1-05af-4e5b-918c-1b600234bd18",
+"known": "j'ai fait",
+"pos": 2,
+"t1": "5e0f4d03-751b-4cc8-8ab6-f7f5d8907ee8",
+"t2": "817253cf-fb52-4a94-8d67-030977665646",
+"target": "I've done",
+"type": "component"
+},
+{
+"id": "eng_for_fra:S0245L02B01",
+"ka": "e101b997-d2c2-4862-a677-45761d6b28fd",
+"known": "tout ce que j'ai fait",
+"pos": 3,
+"t1": "3b0e049d-7e9f-4c9f-9faf-53d66bd8326f",
+"t2": "819d9ebf-eb32-4146-b1ba-eb1c0c392ed2",
+"target": "how much I've done",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0245L02B02",
+"ka": "95387e33-ee4f-4f90-aea3-c90371fb0260",
+"known": "je suis contente de tout ce que j'ai fait",
+"pos": 4,
+"t1": "2b8470e0-1e2e-43c3-92c1-e65ac1802ae7",
+"t2": "21e7fc73-009c-4f48-82e4-1ecb98aad92d",
+"target": "I'm happy with everything I've done",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0245L02B03",
+"ka": "fe9c21d5-d1fe-4824-9dc8-dd6340d63c38",
+"known": "je suis surprise de tout ce que j'ai fait",
+"pos": 5,
+"t1": "f419b0ca-fa47-4563-ae79-30a7c9a10e56",
+"t2": "9abd91ea-1bf4-43a4-964b-274c96633bc5",
+"target": "I'm surprised at how much I've done",
+"type": "build"
+},
+{
+"id": "eng_for_fra:S0245L02U01",
+"ka": "9dd953a7-9f8f-400c-8582-4ab527d808fc",
+"known": "je suis contente de tout ce que j'ai fait en peu de temps",
+"pos": 6,
+"t1": "6a302a5d-5d98-438a-8f2f-f97f3b175d0c",
+"t2": "05c75410-85cf-4386-b771-21c0e4e875d2",
+"target": "I'm happy with how much I've done in a short time",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0245L02U02",
+"ka": "35e9fa73-4a66-491c-b4b5-a4b6840ee4a3",
+"known": "il a dit qu'il voulait voir tout ce que j'ai fait",
+"pos": 7,
+"t1": "aa8a18b7-ea12-48df-bf16-4377bb615f0b",
+"t2": "25a1f0f6-7d57-441c-be01-15279da5c587",
+"target": "he said that he wanted to see how much I've done",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0245L02U03",
+"ka": "12f007af-25b6-408c-bbce-a617b242a613",
+"known": "je suis contente de tout ce que j'ai fait avant le week-end",
+"pos": 8,
+"t1": "29e60aea-a26c-4483-8da2-baf925b413cd",
+"t2": "85fbad03-2a23-41e9-8b40-1aed2e1010d0",
+"target": "I'm happy with how much I've done before the weekend",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0245L02U04",
+"ka": "46addd4a-43a1-40cc-a7d1-ad5fe3bd9414",
+"known": "je suis surprise de tout ce que j'ai fait déjà",
+"pos": 9,
+"t1": "e10e8af9-685f-4536-b421-08f5d6994ff5",
+"t2": "2f81de06-7b35-4b9e-9af4-1876fd04520d",
+"target": "I'm surprised at how much I've done already",
+"type": "use"
+},
+{
+"id": "eng_for_fra:S0245L02U05",
+"ka": "79dffce9-0df6-4be5-9a45-9dd8cbaece0a",
+"known": "je ne sais pas si tu comprends tout ce que j'ai fait",
+"pos": 10,
+"t1": "590fbe3f-4906-4cd7-85e1-4a75baff19a2",
+"t2": "1e7dea80-6874-410b-9b2f-c103bec688fb",
+"target": "I don't know if you understand how much I've done",
+"type": "use"
+}
+],
+"target": "how much I've done",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I'm happy with how much I've done in a short time"
+}
+}

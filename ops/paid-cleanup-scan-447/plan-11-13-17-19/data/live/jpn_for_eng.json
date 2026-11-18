@@ -1,0 +1,2676 @@
+{
+"108": {
+"at": "2026-11-18T18:42:28Z",
+"known": "we didn't expect to wake up in the middle of the night",
+"legos": [
+{
+"id": "S0108L01",
+"idx": 1,
+"is_new": true,
+"known": "to wake up",
+"phrases": [
+{
+"id": "75b1909a-599d-4504-816d-e721456fcfe2",
+"ka": "d0816121-ad04-4da6-8f00-df26e94c6b0b",
+"known": "to wake up",
+"pos": 0,
+"t1": "2f8bc660-8756-4a48-b627-c3e3c2d0fe4f",
+"t2": "5ce33399-4348-48d0-9838-12227ddb0dcd",
+"target": "起きる",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0108L01B01",
+"ka": "d0816121-ad04-4da6-8f00-df26e94c6b0b",
+"known": "to wake up",
+"pos": 1,
+"t1": "2f8bc660-8756-4a48-b627-c3e3c2d0fe4f",
+"t2": "5ce33399-4348-48d0-9838-12227ddb0dcd",
+"target": "起きる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L01B02",
+"ka": "e6c279ae-ee50-4413-a560-0ab42b52c566",
+"known": "I will wake up",
+"pos": 2,
+"t1": "e0e92bd9-6bee-4f6b-bf19-011a24124b2f",
+"t2": "860095bc-f99a-4ee6-a3f5-e57361d1524b",
+"target": "起きる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L01B03",
+"ka": null,
+"known": "I can wake up",
+"pos": 3,
+"t1": "4beef2ff-7971-495a-84d1-3ec3b09820fa",
+"t2": "309bfaaf-7534-4655-a642-0b20f521ee00",
+"target": "起きることができる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L01B04",
+"ka": "24e06000-a251-456a-aad8-e31721f05ef9",
+"known": "I must wake up",
+"pos": 4,
+"t1": "bff29e1c-937b-45b5-b060-172b25916bd2",
+"t2": "975ad424-7b7b-466a-93e9-c84c6bf4e80f",
+"target": "起きる必要がある",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L01U01",
+"ka": "fc38d656-ecdc-4d7e-8a50-1cb64c47483c",
+"known": "I will wake up tomorrow",
+"pos": 5,
+"t1": "594e720e-dc76-4392-bdbd-f0fdcc895aa5",
+"t2": "d5c08aea-535b-49d8-b4bd-585a3e5d7246",
+"target": "明日起きる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U03",
+"ka": "f5ad6e0c-2579-4cc4-93a7-9870df2ffeba",
+"known": "I think I can wake up early",
+"pos": 7,
+"t1": "c2f09ed4-bd61-48d9-b009-a2dd45b0f956",
+"t2": "4eddce26-1db6-47e0-aaad-de67a72e6905",
+"target": "早く起きることができると思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U04",
+"ka": "c772a672-c686-4cf1-a8e7-653c452f851b",
+"known": "I hope I can wake up tomorrow",
+"pos": 8,
+"t1": "92fde64a-14db-49e9-91b9-81f9511a3218",
+"t2": "6caeb125-51a2-49b5-a8ad-85ce2021e0c9",
+"target": "明日起きることができるといいな",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U05",
+"ka": "e65c8258-8081-4835-b2d9-f0fd163c6e55",
+"known": "I need to wake up before you",
+"pos": 9,
+"t1": "06751d01-9d51-45ad-95bd-986e84b08573",
+"t2": "83db368b-037f-434a-a524-1073a7f98415",
+"target": "あなたの前に起きる必要がある",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U06",
+"ka": "6f4595f1-5040-4468-aed5-1515d6ba1b8b",
+"known": "I felt I must wake up soon",
+"pos": 10,
+"t1": "77448176-7453-424d-9b90-ad296025d1f7",
+"t2": "c4ba77f4-3cbc-4fd0-89dd-1beaef6e423e",
+"target": "すぐ起きる必要があると感じた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U07",
+"ka": "3abd9317-0403-4950-86fc-55498426be07",
+"known": "that is why I must wake up",
+"pos": 11,
+"t1": "d6eca505-5967-407a-b9d2-1e05776e9f1d",
+"t2": "b1323cff-b12a-481e-a23d-785096be44e6",
+"target": "だから起きる必要がある",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U08",
+"ka": "6654cdd3-4651-4af8-bf53-f738602e94f6",
+"known": "even if I'm tired, I must wake up",
+"pos": 12,
+"t1": "a94745d2-340c-40c7-8565-97a4e7ccf1aa",
+"t2": "9d7f1b85-42e9-4766-a3fb-73a9ca663283",
+"target": "疲れていても起きる必要がある",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U09",
+"ka": "b3e5d32d-b7a3-4faf-b8fe-eac1d25ab6a9",
+"known": "I woke earlier than I expected this morning",
+"pos": 13,
+"t1": "1503b557-bcbb-49f5-9a36-79b79ef9b764",
+"t2": "1525018e-c4cf-4f7c-91ed-431db0f768e2",
+"target": "今朝、思ってたより早く起きた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L01U10",
+"ka": "fb252e9d-f857-4317-81cc-f3687f7e043e",
+"known": "we wanted to know what was going to happen",
+"pos": 14,
+"t1": "ab3096dd-0c1f-4481-bc98-50b37c793aed",
+"t2": "20c5d790-d5a8-462c-bf7a-5b314084021b",
+"target": "何が起きるか知りたかった",
+"type": "use"
+}
+],
+"target": "起きる",
+"type": "M"
+},
+{
+"id": "S0108L02",
+"idx": 2,
+"is_new": true,
+"known": "in the middle of the night",
+"phrases": [
+{
+"id": "a2bc5bf9-f589-410d-b491-79afc93300f1",
+"ka": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+"known": "in the middle of the night",
+"pos": 0,
+"t1": "2b6a01cd-8e2a-43b2-a781-cc0f4bda29d4",
+"t2": "b812de43-530e-4161-a2f5-edb8830211a2",
+"target": "夜中に",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0108L02C01",
+"ka": "fe52c5a8-90ee-4235-80e1-3cbf33d9efe6",
+"known": "middle of the night",
+"pos": 1,
+"t1": "d389c70b-61c1-45eb-8621-4238a45e92cf",
+"t2": "e505cd85-4c78-42d4-b451-e28d5171a096",
+"target": "夜中",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0108L02C02",
+"ka": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+"known": "in",
+"pos": 2,
+"t1": "144edcd3-11a2-4e54-8935-e8fca1a4a284",
+"t2": "21959db8-f3bf-49ad-a787-3cc7737d6041",
+"target": "に",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0108L02B01",
+"ka": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+"known": "in the middle of the night",
+"pos": 3,
+"t1": "2b6a01cd-8e2a-43b2-a781-cc0f4bda29d4",
+"t2": "b812de43-530e-4161-a2f5-edb8830211a2",
+"target": "夜中に",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L02B02",
+"ka": "a6a2a9cf-cfe4-43d8-98d9-30cfc7d37049",
+"known": "I woke in the middle of the night",
+"pos": 4,
+"t1": "53ca4fdd-fc65-4370-89ba-255ca61a9b0e",
+"t2": "f0ba9ee9-35fb-47bf-9879-dd286441a62d",
+"target": "夜中に起きることがあった",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L02B03",
+"ka": "2dbfe2fd-8315-4e1c-a016-fef6f1bce5ea",
+"known": "I was working in the middle of the night",
+"pos": 5,
+"t1": "758e15b5-5609-41cf-9a25-da45a87c5449",
+"t2": "1ad2f79e-fd37-463c-9cee-64f93551cfcb",
+"target": "夜中に頑張っていた",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L02B04",
+"ka": "47787cb7-134b-4ce3-a4c8-9bba91776118",
+"known": "I read in the middle of the night",
+"pos": 6,
+"t1": "dcf3df11-73ec-4ce0-ba8f-82d1e0fc5d60",
+"t2": "0e952b96-6e54-4428-8235-e4aa2219dc0f",
+"target": "夜中に読んだ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L02U02",
+"ka": "9e93a82b-cd3f-4a56-8ae3-6b610aa66c58",
+"known": "I think I must wake up in the middle of the night",
+"pos": 8,
+"t1": "12adfde1-c809-4f5c-8add-8ca57d6c5bc1",
+"t2": "5a1cb251-9cb1-4bc1-a6ba-f691fef756bb",
+"target": "夜中に起きる必要があると思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L02U03",
+"ka": "e4b22a0e-9e35-40aa-a83a-f3e7a7f11a72",
+"known": "I hope I don't wake up in the middle of the night",
+"pos": 9,
+"t1": "4c046ca6-274e-49db-a977-f2fadd82bf2e",
+"t2": "9bb51bca-6d0b-496f-9815-4b0f79d7d3c1",
+"target": "夜中に起きることがないといいな",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L02U04",
+"ka": "fb76280e-72b8-4185-9d8b-a72275ad34df",
+"known": "I was trying to work in the middle of the night",
+"pos": 10,
+"t1": "a418f720-65c1-461b-9a85-42f11d5fcf9c",
+"t2": "774e4ffa-bc4c-4e87-b23d-f9335deb27db",
+"target": "夜中に頑張ることを試していた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L02U05",
+"ka": "34c2cb5c-75be-4351-91a6-39f8b7ad4acc",
+"known": "I felt tired in the middle of the night",
+"pos": 11,
+"t1": "8c834595-ee94-4cd0-9512-42ae83a06fbb",
+"t2": "5bd9cc3f-15d5-4693-a121-0be7167ca57a",
+"target": "夜中に疲れたと感じた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L02U06",
+"ka": "7b9957e7-6602-4734-93af-53bdedf52387",
+"known": "I need to work hard even in the middle of the night",
+"pos": 12,
+"t1": "05f38ad3-af98-445b-8512-dc9f7e5ba24a",
+"t2": "8f07f29f-f51f-404f-b4c7-8dee77efb8a4",
+"target": "夜中にも頑張る必要がある",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L02U07",
+"ka": "0ed12bec-f509-4ff1-9a29-ba9a5066ce0f",
+"known": "I didn't know what you were doing in the middle of the night",
+"pos": 13,
+"t1": "0bd4e1c7-31fd-4959-9a7b-657d67db2b2e",
+"t2": "83929820-c53f-461b-8dcf-5bdb69e7dd87",
+"target": "夜中に何をしてるか知らなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L02U08",
+"ka": "f770923b-b376-445e-aaf0-209a774339d7",
+"known": "that is why I must wake up in the middle of the night",
+"pos": 14,
+"t1": "41ed800c-2910-424a-9ebc-6311ccdf45a7",
+"t2": "781f57e1-3ab8-425e-857e-b2d26996eee5",
+"target": "だから夜中に起きる必要がある",
+"type": "use"
+}
+],
+"target": "夜中に",
+"type": "M"
+},
+{
+"id": "S0108L03",
+"idx": 3,
+"is_new": true,
+"known": "didn't expect to",
+"phrases": [
+{
+"id": "3a66b971-5a8f-4fe7-bc9e-dd625f77c4a6",
+"ka": "7d1e7c7f-8bda-4177-bac5-626634e01dbc",
+"known": "didn't expect to",
+"pos": 0,
+"t1": "174a44b9-3172-451e-b4ad-42529155c017",
+"t2": "12e9de3b-8e33-4c09-a660-3078b3826250",
+"target": "とは思ってなかった",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0108L03C01",
+"ka": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+"known": "that",
+"pos": 1,
+"t1": "866e792a-5df9-446e-8230-5cf1c0bc2b08",
+"t2": "3d8f3be4-8b05-49a7-9749-6702e5d38302",
+"target": "とは",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0108L03C02",
+"ka": "9f9b084e-542c-4fa9-94c7-1a22725609c6",
+"known": "didn't think",
+"pos": 2,
+"t1": "b0e330e4-d01f-4a96-a42f-bd3a0eeeb950",
+"t2": "1e829d17-e9f0-44ea-80e5-cbc50276e708",
+"target": "思ってなかった",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0108L03B01",
+"ka": "7d1e7c7f-8bda-4177-bac5-626634e01dbc",
+"known": "didn't expect to",
+"pos": 3,
+"t1": "174a44b9-3172-451e-b4ad-42529155c017",
+"t2": "12e9de3b-8e33-4c09-a660-3078b3826250",
+"target": "とは思ってなかった",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L03B02",
+"ka": "3b97d8ef-01da-4be8-87f5-7b8a6cded856",
+"known": "I didn't expect to do it",
+"pos": 4,
+"t1": "d7158f8f-1523-4ea1-b725-90856b22e4cf",
+"t2": "6c946d78-97fe-4675-b7e1-c1d7d46bc54b",
+"target": "するとは思ってなかった",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L03B03",
+"ka": "e881c638-efc7-46c8-aa7a-2dbc489d5018",
+"known": "I didn't expect to see it",
+"pos": 5,
+"t1": "9dbc3b20-57db-4c33-b66f-4bbf9625980b",
+"t2": "0f498575-34f1-407e-b39a-8dd3949f668c",
+"target": "見るとは思ってなかった",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L03B04",
+"ka": "9dad04bb-81b6-44f0-b7fe-f765a8e666e7",
+"known": "I didn't expect to know it",
+"pos": 6,
+"t1": "a4811fc4-8ca3-4400-8da3-487338a335f1",
+"t2": "24a7199f-c5b1-4ed9-a370-5a5cf4250e43",
+"target": "知るとは思ってなかった",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0108L03U03",
+"ka": "c1dbf437-1934-435e-90ec-61ffcbac04c6",
+"known": "I didn't expect to change my way of doing it",
+"pos": 9,
+"t1": "8f76332e-03f1-49e4-afa2-5a0dec4b4ea2",
+"t2": "45c39be5-f8f5-4175-916f-adad64fb1f94",
+"target": "やり方を変えるとは思ってなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L03U05",
+"ka": "765dd5fd-d6ba-4abf-87fd-45be62aabcd7",
+"known": "I didn't expect to see what you were doing",
+"pos": 11,
+"t1": "f6b0bc52-5588-4ea2-a23b-db085a23510e",
+"t2": "2e44ebaa-79ca-4849-8dff-0414f35d79b0",
+"target": "何をしてるか見るとは思ってなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L03U06",
+"ka": "76c5031b-1cd6-4bb7-a385-e5defd5c8e5d",
+"known": "I didn't expect to find the answer",
+"pos": 12,
+"t1": "3b7fb519-863b-4c6e-8369-1ad363f56c62",
+"t2": "4c2eb075-dd94-4a37-aefc-a58a7ced3986",
+"target": "答えを見つけるとは思ってなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L03U07",
+"ka": "ca69686f-9e16-4cc8-8482-5e4f74e263f0",
+"known": "that is why I didn't expect to feel happy",
+"pos": 13,
+"t1": "12117560-15c4-4702-b0ad-627d0a43ab47",
+"t2": "9b021dc1-3d2e-4e01-ae4e-dbe4b69a160e",
+"target": "だから楽しいと感じるとは思ってなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0108L03U08",
+"ka": "b19e4561-fbec-418b-ae33-0a88f1c5b7d7",
+"known": "we didn't expect to wake up in the middle of the night",
+"pos": 14,
+"t1": "9bf3eb5a-27d0-4d56-9003-3164e7c3f122",
+"t2": "aa26063c-6340-46ed-a981-0f5e4765cc8d",
+"target": "夜中に起きるとは思ってなかった",
+"type": "use"
+}
+],
+"target": "とは思ってなかった",
+"type": "M"
+}
+],
+"status": "released",
+"target": "夜中に起きるとは思ってなかった"
+},
+"109": {
+"at": "2026-11-18T18:42:28Z",
+"known": "we must work hard to learn a lot of new words",
+"legos": [
+{
+"id": "S0109L01",
+"idx": 1,
+"is_new": true,
+"known": "a lot of",
+"phrases": [
+{
+"id": "31517ec4-ff8f-4632-83db-8471f414de28",
+"ka": "20cdc2c1-7ef2-4626-bec7-a11c4daa3f02",
+"known": "a lot of",
+"pos": 0,
+"t1": "aa22abb1-c732-41ca-b48f-34aa8ce42a2d",
+"t2": "bd36f95d-71a4-46ed-86b1-b145352d2d1f",
+"target": "たくさん",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0109L01B01",
+"ka": "20cdc2c1-7ef2-4626-bec7-a11c4daa3f02",
+"known": "a lot of",
+"pos": 1,
+"t1": "aa22abb1-c732-41ca-b48f-34aa8ce42a2d",
+"t2": "bd36f95d-71a4-46ed-86b1-b145352d2d1f",
+"target": "たくさん",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L01B02",
+"ka": "6ddf1509-c481-49b6-880a-94e7759f36a5",
+"known": "I have a lot",
+"pos": 2,
+"t1": "3bb9ff6a-6c78-4a1c-9e5a-f242cbb032f5",
+"t2": "e3cdb093-2eb5-4256-bc64-4a368ffe3aaf",
+"target": "たくさんある",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L01B03",
+"ka": "fb6b1d99-9dc5-44e6-83be-fde54fa7de3e",
+"known": "I need a lot",
+"pos": 3,
+"t1": "ff4b5bad-6c68-4cd5-9574-fa9539f84576",
+"t2": "a2f86b4c-0221-43c8-b82b-c54a62f9e923",
+"target": "たくさん必要だ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L01B04",
+"ka": "8d487538-81a4-4200-ba22-e72373bd29e3",
+"known": "I did a lot",
+"pos": 4,
+"t1": "9b943bb3-c8eb-4119-8f17-8047398e4026",
+"t2": "ab422869-4abc-4558-be73-458c2d0d2f07",
+"target": "たくさんした",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L01U01",
+"ka": "f6b438a7-e1ed-4a78-9c3e-ee33898ad55f",
+"known": "I have a lot of words now",
+"pos": 5,
+"t1": "520ee713-a88b-444e-aac8-08e962f29922",
+"t2": "efe48c0f-fad1-4826-967f-d6d1c6b72ddd",
+"target": "今たくさん言葉がある",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L01U02",
+"ka": "fdf6bcea-6f92-4f50-a57f-a43cc9dbd0e8",
+"known": "I think I know a lot now",
+"pos": 6,
+"t1": "39caa2ed-87ef-4133-afd3-28f93941da38",
+"t2": "889223d5-324d-4a1f-8030-d90cebe252c0",
+"target": "今たくさん知っていると思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L01U03",
+"ka": "2ab9d6f1-7eeb-456d-87e2-d0047fb6389b",
+"known": "I hope to learn a lot tomorrow",
+"pos": 7,
+"t1": "9aa5812b-4b6f-42ed-84a0-e13bb2e057b9",
+"t2": "66fc58cd-7d18-4360-82d0-78d9051d1ff2",
+"target": "明日たくさん学ぶといいな",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L01U05",
+"ka": "b6254022-0aaa-4afe-87c2-00035a13d87d",
+"known": "I didn't know a lot before",
+"pos": 9,
+"t1": "78be3eef-780b-436c-bd3d-3e37ed60ce80",
+"t2": "155ebf23-d20a-4e86-a4e5-ff38c479960b",
+"target": "前はたくさん知らなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L01U06",
+"ka": "228fe384-4fb3-4260-bf17-795b449248c3",
+"known": "I felt happy when I learned a lot",
+"pos": 10,
+"t1": "a85843ac-d379-4343-9336-a84ff2059629",
+"t2": "4b764659-227a-4bbc-9d7c-af22de6923bc",
+"target": "たくさん学んで楽しいと感じた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L01U07",
+"ka": "7e13f801-e4d6-45b0-aed0-d184e8c17fc7",
+"known": "that is why I need a lot of time",
+"pos": 11,
+"t1": "10ecfa4d-8b27-4a70-9876-eb172b71e49b",
+"t2": "111f1fd3-41c9-4ae5-b380-1a69c2fc9e0e",
+"target": "だからたくさん時間が必要だ",
+"type": "use"
+}
+],
+"target": "たくさん",
+"type": "M"
+},
+{
+"id": "S0109L02",
+"idx": 2,
+"is_new": true,
+"known": "new",
+"phrases": [
+{
+"id": "75b54dea-eb32-4123-9ce8-db56ccbea7e7",
+"ka": "d23339c2-0169-4a09-9d15-73ec17ba92b9",
+"known": "new",
+"pos": 0,
+"t1": "a5397665-a2aa-4ea1-933b-b406d212ba28",
+"t2": "82359d8e-cf43-47fc-b825-bd18ef9aa38d",
+"target": "新しい",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0109L02B01",
+"ka": "d23339c2-0169-4a09-9d15-73ec17ba92b9",
+"known": "new",
+"pos": 1,
+"t1": "a5397665-a2aa-4ea1-933b-b406d212ba28",
+"t2": "82359d8e-cf43-47fc-b825-bd18ef9aa38d",
+"target": "新しい",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L02B02",
+"ka": "2585e3cf-b5bd-4614-82c4-5593fc55590d",
+"known": "this is new",
+"pos": 2,
+"t1": "e9549fbf-878c-4ac0-89b0-5b9e3d6c0913",
+"t2": "9cbabaf2-54c6-4cd3-870b-2c89186dbe22",
+"target": "これは新しい",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L02B03",
+"ka": "e5632dd0-f9a6-4021-86c7-989958f4ef9f",
+"known": "I need something new",
+"pos": 3,
+"t1": "3006ea14-1e8b-4102-9c9a-a1ccf6ea5fd0",
+"t2": "56e94e82-ee53-46f1-bb29-03e593865c87",
+"target": "新しいことが必要だ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L02B04",
+"ka": "7fa5a3d2-581e-47fe-939b-736c1e52261d",
+"known": "I learned something new",
+"pos": 4,
+"t1": "c0a3ca38-697d-4204-bca1-7db865a8fd21",
+"t2": "09f2f07f-daf9-4096-aa1a-dca8a70d532f",
+"target": "新しいことを学んだ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L02U01",
+"ka": "48747bd3-0f53-4b0a-a252-93c3fe637de1",
+"known": "I think this is new",
+"pos": 5,
+"t1": "173afa4d-db0e-4e3d-bf36-a7854bab873c",
+"t2": "e4a7d6d3-3761-43cd-9506-57b5a585e8c2",
+"target": "これは新しいと思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L02U02",
+"ka": "18bc1199-4d49-47b4-a173-f0f800294c6d",
+"known": "I want to learn new words",
+"pos": 6,
+"t1": "39fc28a1-e7d3-49f4-b9ef-ad87957025ea",
+"t2": "98566427-0ce7-4d4e-a6ee-8bc758eefae8",
+"target": "新しい言葉を学びたい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L02U03",
+"ka": "1ce96c66-26df-4a10-bbda-5ff12eb62bad",
+"known": "I hope to find something new",
+"pos": 7,
+"t1": "b6db1b58-39b0-467d-8793-c12f37a2d421",
+"t2": "d6f8f22d-dc28-4680-bd36-3530a95f4098",
+"target": "新しいことを見つけるといいな",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L02U05",
+"ka": "dcfb5ed7-cadb-4366-bdc9-ab79ba919ad1",
+"known": "I didn't know this was new",
+"pos": 9,
+"t1": "c00c7de4-4ddc-4d2c-b30c-2813fb165e12",
+"t2": "86ff1d21-b476-4fda-96fa-e612c51b57e1",
+"target": "これが新しいとは知らなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L02U06",
+"ka": "5aab23b8-5b9c-4b8e-ba12-63ea25758b50",
+"known": "I felt excited when I learned something new",
+"pos": 10,
+"t1": "55e58288-5a73-45b7-bb97-c8e91a54c078",
+"t2": "5eeafb19-aa08-4a82-94a6-c227f70a1e65",
+"target": "新しいことを学んで楽しいと感じた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L02U07",
+"ka": "9301d731-ddbe-4ab2-90a5-e4fd95ae53f9",
+"known": "that is why I need a lot of new words",
+"pos": 11,
+"t1": "4bfb75b5-88bb-4a51-89fd-262f96d41af2",
+"t2": "16a37db9-d13a-4f68-b4e6-66acc9e41583",
+"target": "だからたくさん新しい言葉が必要だ",
+"type": "use"
+}
+],
+"target": "新しい",
+"type": "M"
+},
+{
+"id": "S0109L03",
+"idx": 3,
+"is_new": true,
+"known": "must learn",
+"phrases": [
+{
+"id": "b9f45903-8565-400f-8fa7-a13c1f8d97a4",
+"ka": "5eb6ce50-8ae8-421f-834e-aff1eeb8fc9f",
+"known": "must learn",
+"pos": 0,
+"t1": "38623b0c-f229-4028-a93f-2cbeed15ace9",
+"t2": "2d97931f-68b3-4e77-a607-db8d48f18946",
+"target": "学ばないといけない",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0109L03C01",
+"ka": "b0787242-6b12-44c6-be70-0ea3bacb3bfe",
+"known": "learn",
+"pos": 1,
+"t1": "315e6c6d-f737-4a70-8f0f-08c48f4878c2",
+"t2": "c5e0e682-9969-4028-b90a-9140c5419d95",
+"target": "学",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0109L03C02",
+"ka": "b3b6ba2f-081b-47ab-8c13-847e5ce54050",
+"known": "must",
+"pos": 2,
+"t1": "03f00012-ad54-4852-8e10-ed7105255bf0",
+"t2": "316ed612-93c9-4fb7-94c0-d60c80d1549f",
+"target": "ばないといけない",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0109L03B01",
+"ka": "5eb6ce50-8ae8-421f-834e-aff1eeb8fc9f",
+"known": "must learn",
+"pos": 3,
+"t1": "38623b0c-f229-4028-a93f-2cbeed15ace9",
+"t2": "2d97931f-68b3-4e77-a607-db8d48f18946",
+"target": "学ばないといけない",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L03B02",
+"ka": "ccdc2a8d-2a54-438a-9387-b9b2a33c53d6",
+"known": "I must learn it",
+"pos": 4,
+"t1": "38623b0c-f229-4028-a93f-2cbeed15ace9",
+"t2": "e2e65ac5-d2b7-4abc-9909-0ddf854b8034",
+"target": "学ばないといけない",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L03B03",
+"ka": "c7d399ea-b830-4dc1-b6cf-19f4397a2488",
+"known": "I must learn this",
+"pos": 5,
+"t1": "0ffede72-4a7c-4782-84bf-1be0817e2201",
+"t2": "eab2a762-16f8-4705-b8ff-0e96f427c8bb",
+"target": "これを学ばないといけない",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L03B04",
+"ka": "61bf8d84-e278-4a7d-8ee7-992991299442",
+"known": "I must learn more",
+"pos": 6,
+"t1": "65561c68-5fb5-4781-999f-876a010ee0ba",
+"t2": "9cadb758-ce53-4bdf-bdb8-5bfdf14206de",
+"target": "もっと学ばないといけない",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0109L03U01",
+"ka": "e32d0734-b793-4e87-b072-5f3166809c08",
+"known": "I must learn today",
+"pos": 7,
+"t1": "96f0f2f5-c94a-469a-9ad1-650de5972c4d",
+"t2": "cc061540-4c20-4315-ad6e-fd3d010bc864",
+"target": "今日学ばないといけない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U02",
+"ka": "544c5a58-53fd-4580-93ff-fadc62f9f940",
+"known": "I think I must learn this",
+"pos": 8,
+"t1": "7163efb9-760a-4da1-8232-67d5a7ac2b0c",
+"t2": "73a571d7-af18-4a74-af60-600514a02edf",
+"target": "これを学ばないといけないと思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U03",
+"ka": "5d4fe496-07fc-44ea-bdec-2bad205668e3",
+"known": "I must learn what you're doing",
+"pos": 9,
+"t1": "2e934c7e-04e0-4ea3-8a30-1a5058563aa1",
+"t2": "6211c6bd-66ec-4f48-a305-a1504b4f8ed8",
+"target": "何をしてるか学ばないといけない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U05",
+"ka": "91df0d86-0b31-4bb8-bfbf-ae1933da31c5",
+"known": "I didn't know I must learn so much",
+"pos": 11,
+"t1": "0a648c2c-a403-4c35-b95e-9e3126a77f2c",
+"t2": "835bd8e2-4d76-4f56-bb7a-370f11acf1a8",
+"target": "こんなに学ばないといけないとは知らなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U06",
+"ka": "59f4c828-7195-4b51-89d0-7bca6578ebc3",
+"known": "I felt I must learn the answer",
+"pos": 12,
+"t1": "e1321ac3-adb5-45e9-a20e-07cf048db1c6",
+"t2": "999f3e8f-4e1c-4ab3-bd79-a1b71fb15402",
+"target": "答えを学ばないといけないと感じた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U07",
+"ka": "b2d34d68-3455-49a8-9e36-4221ad8cc197",
+"known": "that is why I must learn more",
+"pos": 13,
+"t1": "c00c48b6-1756-4271-bd32-276e641972ae",
+"t2": "d409e193-7f0c-4902-a17a-379b177ac87c",
+"target": "だからもっと学ばないといけない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U08",
+"ka": "f09154bf-6f88-48d8-a7c1-65adca20d3c4",
+"known": "even if I'm tired, I must learn a lot of new words",
+"pos": 14,
+"t1": "93792555-2166-4a55-a0e5-56c6daf960c1",
+"t2": "78b0ef52-5cc4-48be-acc1-85ee0b761204",
+"target": "疲れていてもたくさん新しい言葉を学ばないといけない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U09",
+"ka": "8f627525-457d-463f-a47d-2a2a4bd396ed",
+"known": "he's just started to learn",
+"pos": 15,
+"t1": "77242066-c3a1-43c2-842e-4c04c58ebc91",
+"t2": "830e2305-c8a2-4b89-b59a-9368d46616d8",
+"target": "学び始めたばかり",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0109L03U11",
+"ka": "d65894ef-7f7c-4e9e-afd2-7a723cfed66c",
+"known": "we must work hard to learn a lot of new words",
+"pos": 17,
+"t1": "aa0a0022-bcbc-43ea-b761-9416d2b01fe4",
+"t2": "27237074-8fff-4514-9dae-0ffe49cf3d31",
+"target": "たくさん新しい言葉を学ばないといけない",
+"type": "use"
+}
+],
+"target": "学ばないといけない",
+"type": "M"
+}
+],
+"status": "released",
+"target": "たくさん新しい言葉を学ばないといけない"
+},
+"154": {
+"at": "2026-11-18T18:42:29Z",
+"known": "where do you want to meet on Saturday night?",
+"legos": [
+{
+"id": "S0154L01",
+"idx": 1,
+"is_new": true,
+"known": "Saturday night",
+"phrases": [
+{
+"id": "4b80d2bd-e542-46d5-bf7e-ebe2f8a0fe0e",
+"ka": "7ea31bad-8d41-4427-8705-1aa1a500a43a",
+"known": "Saturday night",
+"pos": 0,
+"t1": "41bd6858-23bd-4ebd-962e-dc162128f03e",
+"t2": "d282b79c-c711-46d6-9342-9e464ac3f16e",
+"target": "土曜の夜",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0154L01C01",
+"ka": "5f6280f2-6008-4f35-ab39-49bbbde88730",
+"known": "Saturday",
+"pos": 1,
+"t1": "7a201042-afff-4923-b09b-4ffad18018f4",
+"t2": "0df2ee41-9bea-495f-a45c-d5d0da42bb17",
+"target": "土曜の",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0154L01C02",
+"ka": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+"known": "night",
+"pos": 2,
+"t1": "38f592d6-ce1b-4744-a291-0cc525659302",
+"t2": "22abeb2c-d079-4609-bc82-214375cc7ade",
+"target": "夜",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0154L01B01",
+"ka": "fbbc22bd-065a-4bb0-a1e4-dc83e55a785a",
+"known": "on Saturday night",
+"pos": 3,
+"t1": "795b05ee-f7e8-4279-838d-09e31e968a76",
+"t2": "ce96419a-51de-4676-a6e0-e175da0218a0",
+"target": "土曜の夜に",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0154L01B02",
+"ka": "f2a8d3bb-7fb7-43e1-a179-f32aff14b9f8",
+"known": "I want to meet Saturday night",
+"pos": 4,
+"t1": "101ba1d3-ba63-429d-9059-6fb6acb27d4e",
+"t2": "ae3e4db7-0fc1-4323-b425-8c0ca3e34e75",
+"target": "土曜の夜に会いたい",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0154L01B03",
+"ka": "5feef673-7c58-420a-a64b-a2b0bc340028",
+"known": "what happened on Saturday night?",
+"pos": 5,
+"t1": "8db782ca-f198-413d-9840-dbb16eb718fa",
+"t2": "c879b93b-fd69-4f58-a267-e3f06f4cf161",
+"target": "土曜の夜に何が起きて？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0154L01U01",
+"ka": "d5919143-5a78-443f-aa84-cea371dd483b",
+"known": "I'm glad we talked on Saturday night",
+"pos": 6,
+"t1": "36d0ab83-e490-479e-85a3-0a8127e54aaf",
+"t2": "d23bcce6-937b-4cb1-9cba-47d41241434f",
+"target": "土曜の夜に話して嬉しい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U02",
+"ka": "ee81ba2c-d47b-4f4b-8dd7-45b24735b530",
+"known": "where do you want to meet on Saturday night?",
+"pos": 7,
+"t1": "98586b21-87e6-4ffc-bf3e-65fc98ac4807",
+"t2": "2c9b4190-1a90-40a6-97ae-5ea92db71411",
+"target": "土曜の夜、どこで会いたい？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U04",
+"ka": "74ce8969-1800-4c73-815e-726ab4e3f8bc",
+"known": "I think I will be there Saturday night",
+"pos": 9,
+"t1": "dd1f68cb-cece-4791-88bf-c3774d040c70",
+"t2": "3c4a21b5-9754-423c-986d-925711688732",
+"target": "土曜の夜にそこにいると思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U05",
+"ka": "f3e0c963-84e2-4097-aedf-07a60021f508",
+"known": "I was trying to finish it Saturday night",
+"pos": 10,
+"t1": "049315af-95c1-4db2-b404-b437ba8879ff",
+"t2": "ff5819de-44d3-4d8e-92e3-4906dbc10cf8",
+"target": "土曜の夜に終わろうとしてた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U06",
+"ka": "a417d41a-a322-4b02-982b-a60985e3299f",
+"known": "I hope you can come here Saturday night",
+"pos": 11,
+"t1": "26e683e8-a3ac-421f-a7ec-a94d49546bc9",
+"t2": "584d2f39-d2aa-483d-ac77-42b0b210679e",
+"target": "土曜の夜にここに来てほしい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U07",
+"ka": "6a1766ec-2c3e-4dcf-ae9e-6659e064b10b",
+"known": "I wouldn't have said that on Saturday night",
+"pos": 12,
+"t1": "526e029d-ebf7-4891-bb96-620f6a1200eb",
+"t2": "62780bb0-0bc6-4093-902a-17894777a9c5",
+"target": "土曜の夜にそれは言わなかった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U08",
+"ka": "3c972936-42ff-4a38-8049-46c30b0b624c",
+"known": "I want to know what you were doing Saturday night",
+"pos": 13,
+"t1": "fd2c47a2-278e-45ef-949f-007850ec3a11",
+"t2": "c7ed5ee7-2dad-4090-bd46-6291426be81d",
+"target": "土曜の夜に何をしてたか知りたい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U09",
+"ka": "a7ab4456-e00a-42d5-a598-739b7e454b1e",
+"known": "I would have done it differently Saturday night if I had known",
+"pos": 14,
+"t1": "83c7a3c4-5202-435f-983a-136d0725431b",
+"t2": "f9228545-9def-4884-98d2-6ae92c345e5e",
+"target": "知ってたら、土曜の夜に違うやり方をしてた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U10",
+"ka": "8eabf03b-584b-45ea-b0f5-cb525c15a846",
+"known": "what do you want to do on Sunday morning?",
+"pos": 15,
+"t1": "db8be184-1e4c-4775-9fac-ca8740057afe",
+"t2": "7c93bcf5-f058-42ba-b900-6637bf236b05",
+"target": "日曜の朝、何したい？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L01U11",
+"ka": "c60bafc7-135c-4f88-add7-efd7e94f3907",
+"known": "what are you going to do on Sunday afternoon?",
+"pos": 16,
+"t1": "23e01e33-30e4-4951-9eb6-3f82a747c395",
+"t2": "4063c7aa-0095-4393-9cba-6beb59b14016",
+"target": "日曜の午後、何する？",
+"type": "use"
+}
+],
+"target": "土曜の夜",
+"type": "M"
+},
+{
+"id": "S0154L02",
+"idx": 2,
+"is_new": false,
+"known": "want to meet",
+"phrases": [
+{
+"id": "ebff7eeb-87df-4e01-9913-6ba69fccfd7e",
+"ka": "92598768-cc91-43b8-bde6-4374308c1d37",
+"known": "want to meet",
+"pos": 0,
+"t1": "0b386b97-35cf-4fee-91ee-87393d6018cf",
+"t2": "285ac5db-e657-4506-a20c-696651261a8b",
+"target": "会いたい",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0154L02B01",
+"ka": "60dc81df-e0ab-4e2e-b061-a18c6b8fca98",
+"known": "I want to meet",
+"pos": 1,
+"t1": "06a35432-8e4f-4f59-9689-04253a678f9a",
+"t2": "d730d08a-5c35-484a-834e-b48f3473d42e",
+"target": "会いたい",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0154L02B02",
+"ka": "5df15390-f375-4774-9789-03093d55a27a",
+"known": "do you want to meet?",
+"pos": 2,
+"t1": "f470ce78-a0c6-4724-b1d0-229b18831f20",
+"t2": "a1ed0042-9724-4002-bf91-2d75ced49ccd",
+"target": "会いたい？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0154L02B03",
+"ka": "ac8646ef-60b8-4001-a71a-2e4f10c0bba8",
+"known": "where do you want to meet?",
+"pos": 3,
+"t1": "e5fed1b2-7c3e-49a4-921d-ad3d041a512e",
+"t2": "3bf1985e-f3fd-4907-bfbd-e354ea023eff",
+"target": "どこで会いたい？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0154L02U01",
+"ka": "bd9a5a72-13d7-487e-b09f-c220c59ba5bc",
+"known": "I want to meet you tomorrow morning",
+"pos": 4,
+"t1": "ffae097a-d70c-48e7-830b-8a9245152e39",
+"t2": "b37c2b63-7305-423f-8ca0-f96274606da2",
+"target": "明日の朝会いたい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L02U03",
+"ka": "ee81ba2c-d47b-4f4b-8dd7-45b24735b530",
+"known": "where do you want to meet on Saturday night?",
+"pos": 6,
+"t1": "98586b21-87e6-4ffc-bf3e-65fc98ac4807",
+"t2": "2c9b4190-1a90-40a6-97ae-5ea92db71411",
+"target": "土曜の夜、どこで会いたい？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L02U05",
+"ka": "16cdad8d-f75f-4579-935e-2477ce39ab5c",
+"known": "I want to meet you there when I finish",
+"pos": 8,
+"t1": "1ed89547-05c4-4a25-a73d-4605feba4b75",
+"t2": "cfece6d4-637f-4d93-ae14-e915bba913d0",
+"target": "終わったらそこで会いたい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0154L02U09",
+"ka": "e4d1bcec-416a-4539-ae0d-634bb0fc88dd",
+"known": "I'm trying to understand where you want to meet",
+"pos": 12,
+"t1": "7a9de710-435e-4e87-8a59-a0fc547ea78c",
+"t2": "971b6358-553c-4d37-ad77-4b27e19f4fc9",
+"target": "どこで会いたいか理解しようとしてる",
+"type": "use"
+}
+],
+"target": "会いたい",
+"type": "A"
+}
+],
+"status": "released",
+"target": "土曜の夜、どこで会いたい？"
+},
+"195": {
+"at": "2026-11-18T18:42:29Z",
+"known": "I'm trying to find the money I left on the table",
+"legos": [
+{
+"id": "S0195L01",
+"idx": 1,
+"is_new": true,
+"known": "money",
+"phrases": [
+{
+"id": "a63dd056-a1a1-42d3-b4db-e8893173c446",
+"ka": "b811f00b-f722-48dd-b0c2-cd8ce279fa89",
+"known": "money",
+"pos": 0,
+"t1": "dade29e8-4878-427e-87d5-b5ab9d4d6601",
+"t2": "2d10a044-9564-4a20-a218-4a5de1be116c",
+"target": "お金",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0195L01B01",
+"ka": "57c1f6e9-b8e1-4f2a-aa04-6a579df8d8c1",
+"known": "do you have money?",
+"pos": 1,
+"t1": "c5db804e-b7bc-49d7-b90d-b830ee8fcc86",
+"t2": "60b4746d-afb4-4736-b216-5a8c200708f8",
+"target": "お金ある？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L01B02",
+"ka": "0ee1529c-ab77-478b-9ab1-d2f31b0ca535",
+"known": "I need money",
+"pos": 2,
+"t1": "75c0cd5c-c684-417e-87a9-fce7c7c90f4f",
+"t2": "f3eca403-b16e-4297-a445-fd01f0eb20fb",
+"target": "お金が必要",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L01B03",
+"ka": "c9569178-b657-4720-84b8-0228b03565de",
+"known": "I'm looking for the money",
+"pos": 3,
+"t1": "9004240b-fd94-4f7d-aea9-d658e3e741ac",
+"t2": "0e67147b-879e-4814-8644-e216dbcee05b",
+"target": "お金を探してる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L01U01",
+"ka": "deea1b2f-eb6a-4e3a-9c11-d54bd77c4bbe",
+"known": "my friend said he doesn't have money to go tonight",
+"pos": 4,
+"t1": "601cc015-e719-476b-8c4a-28fa5de6ee9c",
+"t2": "2388f078-3c85-49dd-bbf2-cabe7d3d51b0",
+"target": "友だちは今夜行くお金がないって言ってた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U02",
+"ka": "b95e9165-421f-4ac0-be9f-ffee3764d2a8",
+"known": "I want to know if you have enough money to help me",
+"pos": 5,
+"t1": "e596b823-ae4f-4fd8-87f5-855e1ec3462e",
+"t2": "b38b3b5c-1167-4df8-a3f9-4e59e996f6d7",
+"target": "手伝えるだけのお金があるかどうか知りたい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U04",
+"ka": "e8e0a9c3-b872-4be9-b594-979a8a0506f3",
+"known": "I was worried that I don't have enough money to finish the week",
+"pos": 7,
+"t1": "7cf90036-309c-4a63-a3b6-b98230f7771c",
+"t2": "f83f1ce2-fa0b-42c9-a55b-753cf64af7a4",
+"target": "週を終えるだけのお金がないかって心配してた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U05",
+"ka": "cfd89f18-6176-438c-98fb-f01e547ff7f6",
+"known": "I think it's important to have some money before you start",
+"pos": 8,
+"t1": "773df5ee-7c3e-4259-8de9-4034e779fb2b",
+"t2": "3f1dc9e7-a304-429a-92b4-073c1faded09",
+"target": "始める前にお金がいくらかあるのは大事だと思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U06",
+"ka": "9069a413-2d3c-48d9-8d83-6f9d2f9e8c16",
+"known": "they say you need a lot of money to start a good job",
+"pos": 9,
+"t1": "9f4eae47-3c08-48b1-a38d-1ff9d4ba1b30",
+"t2": "b2fa073f-1252-48c9-a1db-6a1fa7caa6ee",
+"target": "いい仕事を始めるにはたくさんのお金が必要らしい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U07",
+"ka": "f0a389c1-3e53-42f1-82b2-768c5d5c88b3",
+"known": "I don't understand why he left all his money at home",
+"pos": 10,
+"t1": "9fda78cf-6036-4be1-a0e3-193c5d4e8d90",
+"t2": "f140645e-7b75-429b-bb6d-84de10ea6975",
+"target": "彼が全部のお金をうちに置いてきた理由が分からない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U08",
+"ka": "88ab6626-0beb-489b-9b2c-eea3c36fe326",
+"known": "my friend asked me if I have enough money to see him tomorrow",
+"pos": 11,
+"t1": "731281ed-7bdf-4183-b276-ab0b0af68b64",
+"t2": "bd1eafeb-6cfe-46a2-ad94-e3c63e50e9d7",
+"target": "友だちが、明日会えるだけのお金があるか聞いてきた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U09",
+"ka": "3c2d35bf-5123-47a4-92a2-3daf1e905eed",
+"known": "I know you don't have money but I can help you finish this",
+"pos": 12,
+"t1": "b40bd0dc-e22f-4ac5-9cf0-76c0d01e8697",
+"t2": "397f9c82-5307-4ce4-946d-14bc2865998c",
+"target": "お金がないのは分かってるけど、これを終わるの手伝える",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L01U10",
+"ka": "15c2d98b-59e9-4e14-89c8-a1280e778efd",
+"known": "the man is trying to help me",
+"pos": 13,
+"t1": "1a07cc00-1ffc-4f66-a5a3-dc3c509ef00c",
+"t2": "51c09aa6-23d0-45a8-801d-0d16e264bab7",
+"target": "あの人、手伝おうとしてる",
+"type": "use"
+}
+],
+"target": "お金",
+"type": "M"
+},
+{
+"id": "S0195L02",
+"idx": 2,
+"is_new": true,
+"known": "left it",
+"phrases": [
+{
+"id": "75b08a97-ccee-4c86-8d62-2e9cf947e139",
+"ka": "bc57556c-4972-4ace-9a84-63ee86b072d0",
+"known": "left it",
+"pos": 0,
+"t1": "3e0654c4-2b51-4866-af03-1c1aa29e5992",
+"t2": "6894aaca-239c-4944-b784-3e8c4e4e3479",
+"target": "置いた",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0195L02B01",
+"ka": "3c15ae75-62f9-41a2-8e99-f24370b487a5",
+"known": "I left it here",
+"pos": 1,
+"t1": "5204997b-8290-4a10-a358-a4c5459fed61",
+"t2": "6f7b9ae2-6ebb-4cad-b7bf-18be1d747060",
+"target": "ここに置いた",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L02B02",
+"ka": "45816306-ba69-4045-9030-39cd62ee2c34",
+"known": "where did you leave it?",
+"pos": 2,
+"t1": "5f181ca8-b69b-4a62-b033-39641b34eab3",
+"t2": "b7b2819b-a6ec-4259-b143-f41775071169",
+"target": "どこに置いた？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L02B03",
+"ka": "c0cc6f63-aab4-4798-95f3-08afd4fa396b",
+"known": "I left the money here",
+"pos": 3,
+"t1": "e4da6907-4946-4860-b36a-ee01af4b966d",
+"t2": "2749d023-c64b-4a6b-a55c-3939d14eab13",
+"target": "お金をここに置いた",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L02U01",
+"ka": "8de218a8-26e0-4a5b-b479-056306f1d5e1",
+"known": "I want to know where you left the book",
+"pos": 4,
+"t1": "6ceffcb7-c9c8-4c34-9595-7d91c823454a",
+"t2": "2926a28d-02b8-40ec-a459-24612697e28b",
+"target": "どこに本を置いたか知りたい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U02",
+"ka": "dc6b92ac-9c4d-4572-ab8f-e248187329f6",
+"known": "I was looking for the book that I left here yesterday",
+"pos": 5,
+"t1": "29903d59-a6e6-48e9-bc3f-d2a87411b696",
+"t2": "77f6310c-2494-4953-8072-c430d36b74f6",
+"target": "昨日ここに置いた本を探してた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U03",
+"ka": "8c4da140-ee74-44d6-8cad-dd67a9bceb7f",
+"known": "they say he left his car at the hospital this morning",
+"pos": 6,
+"t1": "6409ae69-84c7-48e6-909e-3c15d931a864",
+"t2": "436abf70-7f3b-4941-a275-5627cfcc6745",
+"target": "彼は今朝病院に車を置いたらしい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U04",
+"ka": "88a8a7c1-217e-4d09-9ea9-ab8a83ec5c0f",
+"known": "my friend said he left his keys at my house yesterday",
+"pos": 7,
+"t1": "dad95e11-ec75-423c-ae91-8c0a3a7fac97",
+"t2": "67fbe4e2-20b5-4e24-aedb-d41ed8e6929d",
+"target": "友だちは昨日うちに鍵を置いたって言ってた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U05",
+"ka": "af806c0d-2196-43a5-908f-9f97563e6b0f",
+"known": "my friend asked me where I left everything",
+"pos": 8,
+"t1": "a237602e-1904-42dc-b285-377757dd04fc",
+"t2": "fa872e69-1b9a-40c9-8eec-e4d52ee50381",
+"target": "友だちが、どこに全部を置いたか聞いてきた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U06",
+"ka": "3b6782d3-aa9e-42c6-bc17-61f6f25f51d8",
+"known": "I think I left the same thing at your house last week",
+"pos": 9,
+"t1": "23801d14-d8de-46e6-80f7-e1b412836d99",
+"t2": "1a6fd68c-266f-4ba8-9905-f1b4cad7ce89",
+"target": "先週あなたのうちに同じものを置いたと思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U07",
+"ka": "ceac6298-2c91-4a87-ba09-31f78873503f",
+"known": "I know I left the dog at home but I'm worried about him",
+"pos": 10,
+"t1": "289d5764-c0ee-4698-b12a-ec324f632178",
+"t2": "48f8b45c-034d-4402-b6da-dbd168f67ed7",
+"target": "犬をうちに置いたのは分かってるけど、心配してる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U08",
+"ka": "170c61b3-b8f9-457f-92f6-c8d62877d3c1",
+"known": "I know you left the money here but I can't see it now",
+"pos": 11,
+"t1": "bb529239-bd18-41d6-9ec8-aeadac25a061",
+"t2": "681475d0-8b98-408c-8282-76f65c28aa98",
+"target": "お金をここに置いたのは分かってるけど、今見えない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L02U09",
+"ka": "e429c9f5-91f5-484f-abca-00760fc0b5ff",
+"known": "I think I left the money in a different place from where you said",
+"pos": 12,
+"t1": "0b752145-f22a-4001-8474-ccd0a30ae0bc",
+"t2": "cb25dd7f-ddbf-4b5b-8a6e-76dc7caeb03e",
+"target": "あなたが言った場所とは違う場所にお金を置いたと思う",
+"type": "use"
+}
+],
+"target": "置いた",
+"type": "M"
+},
+{
+"id": "S0195L03",
+"idx": 3,
+"is_new": true,
+"known": "table",
+"phrases": [
+{
+"id": "4cb68b29-a0fa-4871-b791-c2fc01af605e",
+"ka": "5581971a-8b49-4fac-8204-3bce5027bc77",
+"known": "table",
+"pos": 0,
+"t1": "bb425944-8591-4af9-800c-773bc0a52f2e",
+"t2": "5e7190a2-2abb-4108-918e-6a4a71696a14",
+"target": "テーブル",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0195L03B01",
+"ka": "94efc14a-19f7-4965-80a4-9a0c02231a6d",
+"known": "it's on the table",
+"pos": 1,
+"t1": "2d4c108e-42e3-4df2-ba43-3d7ad084a28b",
+"t2": "785ece5f-4b98-4c35-8de9-f72aef639a74",
+"target": "テーブルにある",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L03B02",
+"ka": "cde87531-2e0e-49d0-8a3b-d6ee1a7f04e9",
+"known": "where's the table?",
+"pos": 2,
+"t1": "053cc626-f632-411c-b3b9-2a108c6c9f1e",
+"t2": "a9641b9a-875f-4378-95e0-fc9fdfdd3df3",
+"target": "テーブルはどこ？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L03B03",
+"ka": "4ab5a11c-bfec-42a1-8983-b57b7a227585",
+"known": "I left the money on the table",
+"pos": 3,
+"t1": "4c9eff42-c64a-4848-ad61-b344b3813edd",
+"t2": "2a23b890-bfa6-466a-a00c-acbbfacc4631",
+"target": "テーブルにお金を置いた",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0195L03U01",
+"ka": "977fdead-597a-47a6-8539-7ccc354ce06a",
+"known": "they say the dog was on the table this morning",
+"pos": 4,
+"t1": "a429974e-a309-4eb4-9dce-c1f9e8cb5eeb",
+"t2": "da0d8147-1517-4577-ac81-8fe6529ef224",
+"target": "今朝犬がテーブルにいたらしい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U02",
+"ka": "80cb3c7f-25ed-411e-a743-cfd6151fc309",
+"known": "I was looking for the thing I left on the table yesterday",
+"pos": 5,
+"t1": "0dec2104-a8b3-4943-af4a-00d5ef5d2084",
+"t2": "8b07764d-76c3-4103-b321-7097b618692f",
+"target": "昨日テーブルに置いたものを探してた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U03",
+"ka": "47de3e4d-7c87-4506-a062-9948662ed230",
+"known": "I don't understand why you left everything on the table",
+"pos": 6,
+"t1": "94746c09-02b1-4601-966d-c70290d4ab04",
+"t2": "24336396-fb9c-4487-a85e-136a73a867a2",
+"target": "全部をテーブルに置いた理由が分からない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U04",
+"ka": "74681cde-4069-476e-8e10-3d3db8ae93a5",
+"known": "I think there's a different book on the table from yesterday",
+"pos": 7,
+"t1": "68d29e49-7e0a-4c52-b84d-c1a2fac4ae7e",
+"t2": "0dbc9ea7-496d-40d4-892a-cddac0473e24",
+"target": "テーブルには昨日とは違う本があると思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U05",
+"ka": "f391de2f-9bf1-4da6-9048-daf6051d47a9",
+"known": "I want to know if the money is still on the table",
+"pos": 8,
+"t1": "3a10817b-8c48-4c9c-9d5b-352387f11833",
+"t2": "e777c0ad-4b5d-4ade-b1cb-fa08d6d24d4c",
+"target": "お金がまだテーブルにあるかどうか知りたい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U06",
+"ka": "483ecd90-a604-428f-806a-ef7270848ef4",
+"known": "I think the book you're looking for is on the table",
+"pos": 9,
+"t1": "bed0ee50-5938-4251-9805-50b16a04ea66",
+"t2": "b9932da9-4504-4479-acf1-246fbaa5de85",
+"target": "あなたが探してる本はテーブルにあると思う",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U07",
+"ka": "a5e26e54-912d-45b2-9aa4-6393eed9b48b",
+"known": "my friend asked me if I saw the money on the table",
+"pos": 10,
+"t1": "442cbce1-12e1-4c30-88f2-40d421bbdfdf",
+"t2": "a3b20cf4-48f3-470d-b1f0-199e1739e2ec",
+"target": "友だちが、テーブルにお金を見たか聞いてきた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U08",
+"ka": "499366c7-5d74-4f25-8743-2bb6cfc51b95",
+"known": "my friend said he left all his keys on the table yesterday",
+"pos": 11,
+"t1": "79bb6dfb-fd75-41d6-b342-a3249d09c907",
+"t2": "8c0bbcc7-c861-4de4-a5e8-9db2d0da8614",
+"target": "友だちは昨日全部の鍵をテーブルに置いたって言ってた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U09",
+"ka": "a3beca31-6d70-4516-be42-801f3adf69fa",
+"known": "I know I left the money on the table but I can't see it now",
+"pos": 12,
+"t1": "dfaff27f-66c2-4e32-a563-e2f977342d75",
+"t2": "08bef81c-6e3e-47e7-8923-a00686dabf5a",
+"target": "テーブルにお金を置いたのは分かってるけど、今見えない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0195L03U10",
+"ka": "a5a108a5-d788-4017-942c-9d55a224f495",
+"known": "I'm trying to find the money I left on the table",
+"pos": 13,
+"t1": "cb2812e6-301a-4277-b423-e78a02f504ae",
+"t2": "479b9abb-5ff4-4819-b8be-7c023222d0ad",
+"target": "テーブルに置いたお金を探してる",
+"type": "use"
+}
+],
+"target": "テーブル",
+"type": "M"
+}
+],
+"status": "released",
+"target": "テーブルに置いたお金を探してる"
+},
+"273": {
+"at": "2026-11-18T18:42:30Z",
+"known": "no unfortunately I've got too much work",
+"legos": [
+{
+"id": "S0273L02",
+"idx": 2,
+"is_new": true,
+"known": "too much",
+"phrases": [
+{
+"id": "397748e6-4ac7-4781-85f4-4974d06d5744",
+"ka": "0761e78a-6b12-4670-9dcc-a84cec2b81f6",
+"known": "too much",
+"pos": 0,
+"t1": "c8f7ab28-053a-4463-99e4-8cbe405e3554",
+"t2": "7084c879-2b22-4246-b4b3-06bd98a15995",
+"target": "多すぎる",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0273L02C01",
+"ka": "9c13c9b6-3fd2-4c72-a2e7-39c8cfb2264d",
+"known": "much",
+"pos": 1,
+"t1": "c40c9f33-c1ba-4754-a112-7ca7bf6cd0c4",
+"t2": "8b885ba9-31d4-4023-9d9f-45b06828f365",
+"target": "多",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0273L02C02",
+"ka": "bf2f5f71-bca0-4cde-b9f2-ddd38487ca3c",
+"known": "exceed",
+"pos": 2,
+"t1": "f0574694-76b7-4a17-a9ad-50dfc5a4d5c9",
+"t2": "6cce7cff-d5e4-41ab-b7dc-7a38d66583e6",
+"target": "すぎる",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0273L02B01",
+"ka": "0761e78a-6b12-4670-9dcc-a84cec2b81f6",
+"known": "too much",
+"pos": 3,
+"t1": "01daa48e-fa3d-41f6-9546-88d308306a72",
+"t2": "6fd87f9d-a0e3-4961-9724-214ea8a81c9a",
+"target": "多すぎる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0273L02B02",
+"ka": "c16064bc-8d93-4358-8179-aa8041f6fb63",
+"known": "there's too much",
+"pos": 4,
+"t1": "01daa48e-fa3d-41f6-9546-88d308306a72",
+"t2": "6fd87f9d-a0e3-4961-9724-214ea8a81c9a",
+"target": "多すぎる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0273L02B03",
+"ka": "abdd38d3-fc0f-4e52-9b35-25d58c6d16d3",
+"known": "that's too much for me",
+"pos": 5,
+"t1": "01daa48e-fa3d-41f6-9546-88d308306a72",
+"t2": "6fd87f9d-a0e3-4961-9724-214ea8a81c9a",
+"target": "多すぎる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0273L02B04",
+"ka": "5e6b1fb6-6639-4894-b434-7c9bf91adbe7",
+"known": "it's too much",
+"pos": 6,
+"t1": "30092809-ed64-4da4-94ac-f746010e68e0",
+"t2": "836d5fcc-49a1-44b3-87a0-db7fd98d2447",
+"target": "多すぎるね",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0273L02U01",
+"ka": "692a0000-7f56-4daa-9ddc-517fab8e6692",
+"known": "you work too much",
+"pos": 7,
+"t1": "9f04e54b-a9b2-4209-8d44-2a6793fbbdc5",
+"t2": "aebc9243-25b5-4deb-a8da-e6819d31247b",
+"target": "働きすぎだ",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0273L02U02",
+"ka": "4b2de88e-817c-46c8-befa-985e338a0a8e",
+"known": "I think too much",
+"pos": 8,
+"t1": "adda942f-9fd4-4a2a-aa88-6276f986bd05",
+"t2": "9ed6ba89-3662-443f-b975-fc1c33bec8b0",
+"target": "考えすぎる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0273L02U03",
+"ka": "f652f3db-80fd-4f2d-96ec-37285c795a21",
+"known": "that's too much trouble",
+"pos": 9,
+"t1": "c73c576b-b2ab-4679-996a-f8f32044ca28",
+"t2": "1e57e874-30ac-4866-8e20-afd876b2dfe4",
+"target": "大変すぎる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0273L02U04",
+"ka": "9970e3b9-06c5-4365-90bb-d9351a1874ba",
+"known": "there are too many people",
+"pos": 10,
+"t1": "d2d4c828-2fea-4bdc-bbea-21c643925aba",
+"t2": "9c000d86-4478-455f-9638-6966352e6bf4",
+"target": "人が多すぎる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0273L02U05",
+"ka": "a8313d9e-b4f4-4d8c-b8aa-cc0f3a414d1f",
+"known": "I worry too much",
+"pos": 11,
+"t1": "7457ec13-111b-46eb-a913-4198add3ddbe",
+"t2": "5844fc33-6ee4-47fd-ad18-6d2b28929094",
+"target": "心配しすぎる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0273L02U06",
+"ka": "b880ce45-5d17-4aba-954c-6fe1d50fe93c",
+"known": "that's too much work",
+"pos": 12,
+"t1": "4f3a0a04-adc2-481b-a7f2-2f873bf8b2fa",
+"t2": "7335d12f-5adf-4d30-82bd-c027668fbe6f",
+"target": "仕事が多すぎる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0273L02U07",
+"ka": "05959597-1829-4c73-bdcc-e8063f3ef4b9",
+"known": "I have too much to do",
+"pos": 13,
+"t1": "42207889-a8fc-421c-bcdf-54a55c70df01",
+"t2": "dd9b8cee-7f9a-4d68-ba3c-7fb0c8ee00a4",
+"target": "やることが多すぎる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0273L02U08",
+"ka": "8b93969c-bbf3-4ae8-b697-1d20d3efe78d",
+"known": "no unfortunately I've got too much work",
+"pos": 14,
+"t1": "98023680-8b39-47b0-86d4-2d328c1ab29a",
+"t2": "5ad15078-4156-4f95-a35f-77e46943f6d0",
+"target": "残念だけど、仕事が多すぎる",
+"type": "use"
+}
+],
+"target": "多すぎる",
+"type": "M"
+}
+],
+"status": "released",
+"target": "残念だけど、仕事が多すぎる"
+},
+"274": {
+"at": "2026-11-18T18:42:30Z",
+"known": "do you have to leave in a few days?",
+"legos": [
+{
+"id": "S0274L01",
+"idx": 1,
+"is_new": true,
+"known": "in a few days",
+"phrases": [
+{
+"id": "1761eb62-ef3f-4f99-8ce9-8a84107c9d64",
+"ka": "c8065821-d9dd-4e79-bfbb-51588d903324",
+"known": "in a few days",
+"pos": 0,
+"t1": "0a803140-54d5-4f85-9ddd-e8d90fe7c904",
+"t2": "229358e3-2e4e-4bb3-b3e7-e215a7108f4e",
+"target": "数日で",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0274L01C01",
+"ka": "6db7719f-0a7e-4828-b499-d81415542f52",
+"known": "a few days",
+"pos": 1,
+"t1": "7ea89532-eb34-4cde-bad4-de52102dc8b6",
+"t2": "3af171d6-3b6e-42f5-b115-f6ae6f22cacc",
+"target": "数日",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0274L01C02",
+"ka": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+"known": "in",
+"pos": 2,
+"t1": "c292118f-450e-4a38-9923-e942d7884a9b",
+"t2": "dd2c9cd4-fe5b-4ebc-b427-c64a7f5408f5",
+"target": "で",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0274L01B01",
+"ka": "c8065821-d9dd-4e79-bfbb-51588d903324",
+"known": "in a few days",
+"pos": 3,
+"t1": "0a803140-54d5-4f85-9ddd-e8d90fe7c904",
+"t2": "229358e3-2e4e-4bb3-b3e7-e215a7108f4e",
+"target": "数日で",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L01B02",
+"ka": "3b6351d4-b392-48ca-b1a4-a95c2e743f2c",
+"known": "I'm leaving in a few days",
+"pos": 4,
+"t1": "c68897bc-177e-41bf-89fc-a242adea5edd",
+"t2": "8941a842-3fbb-4f61-8c53-a4e88b139227",
+"target": "数日で出る",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L01B03",
+"ka": "5998df45-49df-480d-b3b1-fc50102df7fd",
+"known": "I'll be back in a few days",
+"pos": 5,
+"t1": "76fe92a5-c57e-4d70-84f4-defc38aed712",
+"t2": "b19df8be-376f-43fc-b8c7-fdf67d9d8dc6",
+"target": "数日で戻る",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L01B04",
+"ka": "bf55f7ea-dbde-46bf-8474-5eaad8e47c66",
+"known": "we'll meet in a few days",
+"pos": 6,
+"t1": "656f311f-5708-4ddd-a882-1e388fc0793d",
+"t2": "bbd56e00-0bb8-49c3-8fba-2939d945c2e7",
+"target": "数日で会う",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L01U01",
+"ka": "e47e091f-d5c3-4255-a088-f239fcd9264a",
+"known": "it will be ready in a few days",
+"pos": 7,
+"t1": "53a861d9-2b74-4ac1-8985-fa1a56836403",
+"t2": "731a9e47-eecf-47d1-a221-7fee2ad6d378",
+"target": "数日でできる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L01U02",
+"ka": "40af6b5c-918c-4855-b668-b072f4f8bf81",
+"known": "I'll finish in a few days",
+"pos": 8,
+"t1": "c68fef37-f127-492c-b9a6-e022086c61c9",
+"t2": "4141e537-66b8-48c9-8fb4-146fe5b0e45f",
+"target": "数日で終わる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L01U03",
+"ka": "a3ec774c-d21e-4015-8ba8-8c86c6c0bf11",
+"known": "can you do it in a few days?",
+"pos": 9,
+"t1": "c912cacb-97b5-4b08-8a5c-f8d78fd89ecf",
+"t2": "ad2e3d97-325a-484b-a0f6-78262c6ad640",
+"target": "数日でできる？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L01U04",
+"ka": "8a10a720-0d13-4bef-b60b-61a2547c6d82",
+"known": "it will end in a few days",
+"pos": 10,
+"t1": "c68fef37-f127-492c-b9a6-e022086c61c9",
+"t2": "4141e537-66b8-48c9-8fb4-146fe5b0e45f",
+"target": "数日で終わる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L01U05",
+"ka": "4ffb9b83-6dcf-46c3-9f7f-67db62d5d09a",
+"known": "I'll know in a few days",
+"pos": 11,
+"t1": "56f407b6-d263-4563-96fa-66e6ce164b5f",
+"t2": "c941410d-f64a-4210-994c-e5b38e728f82",
+"target": "数日で分かる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L01U06",
+"ka": "0132076c-37b4-45a5-b45e-36938bfdda7d",
+"known": "I'll start in a few days",
+"pos": 12,
+"t1": "e78d2a40-e093-45b8-9eb4-681832da7ce4",
+"t2": "8218d72b-ee51-4865-b18b-44e1d166a6f8",
+"target": "数日で始める",
+"type": "use"
+}
+],
+"target": "数日で",
+"type": "M"
+},
+{
+"id": "S0274L02",
+"idx": 2,
+"is_new": true,
+"known": "have to leave",
+"phrases": [
+{
+"id": "d277f8ec-c402-480f-8369-504ee81acf66",
+"ka": "877e1075-6f69-42e8-bdb0-475e2bb83ac6",
+"known": "have to leave",
+"pos": 0,
+"t1": "a59b80e6-0d7c-499a-8e51-0a7f446e1c17",
+"t2": "89b55006-4aec-49b9-a7cb-198aa9daa368",
+"target": "出ないといけない",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0274L02C01",
+"ka": "2776d864-31b2-4e30-acf7-131528864164",
+"known": "leave",
+"pos": 1,
+"t1": "f29d36d9-b831-4a3b-a707-b643fe45ed59",
+"t2": "57660fb5-0866-44a6-9016-6991a6fa98a5",
+"target": "出",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0274L02C02",
+"ka": "13c97600-d075-443b-b66a-978a4012586b",
+"known": "not",
+"pos": 2,
+"t1": "64329ed6-7919-4022-8908-23e90e466231",
+"t2": "b57487af-b56a-4401-a2bd-17aa6bbedec2",
+"target": "ない",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0274L02C04",
+"ka": "2bd811c7-f272-4528-91fd-b7d0f8cc874c",
+"known": "cant",
+"pos": 4,
+"t1": "25e1d476-71a0-4947-acc2-ec285d362452",
+"t2": "81b8c6d8-0d29-4d34-85c1-8ec45f3a4189",
+"target": "いけない",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0274L02B01",
+"ka": "877e1075-6f69-42e8-bdb0-475e2bb83ac6",
+"known": "have to leave",
+"pos": 5,
+"t1": "851b6bcb-739d-4f20-bedc-c06e76110867",
+"t2": "89b55006-4aec-49b9-a7cb-198aa9daa368",
+"target": "出ないといけない",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L02B02",
+"ka": "6aa2ba35-6b16-4cb8-a2af-3c35ffa319f8",
+"known": "I don't want to leave",
+"pos": 6,
+"t1": "eb5f0271-06f6-4f87-a66d-3e1dd067032d",
+"t2": "475efbda-36aa-4ad4-be3e-dc40c84bc3f2",
+"target": "出たくない",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L02B03",
+"ka": "90d389b0-c4e7-4737-b7c8-550f9c890dfc",
+"known": "you don't have to leave",
+"pos": 7,
+"t1": "d72ac931-3cb9-4916-9b7a-09838abb81c9",
+"t2": "7115eefc-9c77-4d38-baac-a9e92efa9879",
+"target": "出なくていい",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L02B04",
+"ka": "747157d7-7a16-421d-9f36-5e8ed98f5fc8",
+"known": "I really have to leave",
+"pos": 8,
+"t1": "8e963ce6-3945-4072-b157-ff0129452352",
+"t2": "76cbafa1-aa6d-48a4-b6e3-31a389acdbef",
+"target": "本当に出ないと",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0274L02U01",
+"ka": "83235a69-d02e-4bc9-ac19-d2ea858ce971",
+"known": "I have to leave",
+"pos": 9,
+"t1": "a59b80e6-0d7c-499a-8e51-0a7f446e1c17",
+"t2": "89b55006-4aec-49b9-a7cb-198aa9daa368",
+"target": "出ないといけない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L02U02",
+"ka": "3856cb67-3acf-4820-bd6d-d231ea47929e",
+"known": "do you have to leave?",
+"pos": 10,
+"t1": "54dd3ad2-812a-46b4-96c8-2025547a5489",
+"t2": "a6441064-75f1-4b55-a627-27da22d95166",
+"target": "出ないといけない？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L02U03",
+"ka": "bcdca89b-84b4-4d36-83d8-e9f6c42dac7c",
+"known": "I have to leave soon",
+"pos": 11,
+"t1": "6f845789-b47a-4260-9c77-92ea681a79db",
+"t2": "d16641eb-8bed-451c-9370-3a61985f6ffe",
+"target": "もうすぐ出ないと",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L02U04",
+"ka": "b2429349-54c0-412c-a579-93bd01060d39",
+"known": "do I have to leave now?",
+"pos": 12,
+"t1": "6591867a-342f-4128-986a-a7a475ec9ade",
+"t2": "e0d606da-ee87-4f05-8d75-1d01ea79348d",
+"target": "今、出ないといけない？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L02U05",
+"ka": "6e6dd258-95e6-4c46-baa5-b419b4f9987c",
+"known": "when do you have to leave?",
+"pos": 13,
+"t1": "ab55ce34-f0d5-404b-9642-1727c02d51df",
+"t2": "25b966f6-18ee-4511-b28a-59d45b4fed58",
+"target": "いつ出ないといけない？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L02U08",
+"ka": "ddf71f50-ee3f-412e-a99e-a96741f2960a",
+"known": "she has to leave early",
+"pos": 16,
+"t1": "19de61f7-7131-482f-a99f-8c87cf08644c",
+"t2": "2a143031-9ac2-49e5-baf7-799adfa5b051",
+"target": "彼女は早く出ないといけない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0274L02U09",
+"ka": "e5d0beac-f204-4437-a6c9-cc183791a095",
+"known": "do you have to leave in a few days?",
+"pos": 17,
+"t1": "833da14d-e826-433a-8f53-687440e209fa",
+"t2": "ba7a458c-1e76-49b0-b517-8ee87959ea94",
+"target": "数日で出ないといけない？",
+"type": "use"
+}
+],
+"target": "出ないといけない",
+"type": "M"
+}
+],
+"status": "released",
+"target": "数日で出ないといけない？"
+},
+"276": {
+"at": "2026-11-18T18:42:31Z",
+"known": "no I can stay here for a little longer",
+"legos": [
+{
+"id": "S0276L01",
+"idx": 1,
+"is_new": true,
+"known": "a little longer",
+"phrases": [
+{
+"id": "8eb59f95-1227-4192-9125-aad47ac45740",
+"ka": "72f463e4-f6b4-4912-9fd8-c238fd22f5e8",
+"known": "a little longer",
+"pos": 0,
+"t1": "236c3043-434d-4065-81a5-fb85993b780d",
+"t2": "e477aa75-1fd6-464f-81d7-e85aa02bab0a",
+"target": "少し",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0276L01B01",
+"ka": "72f463e4-f6b4-4912-9fd8-c238fd22f5e8",
+"known": "a little longer",
+"pos": 1,
+"t1": "236c3043-434d-4065-81a5-fb85993b780d",
+"t2": "e477aa75-1fd6-464f-81d7-e85aa02bab0a",
+"target": "少し",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L01B02",
+"ka": "696031ea-5573-4fb2-8522-85d239d5bccc",
+"known": "wait a little",
+"pos": 2,
+"t1": "6cbf239e-263c-4cbf-ae1e-b026cacc678e",
+"t2": "02a644b2-3967-411b-9317-8d1a7ae88187",
+"target": "少し待って",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L01B03",
+"ka": "a040d11b-2a34-4dc5-9c83-c873c62c7df0",
+"known": "can you wait a little?",
+"pos": 3,
+"t1": "9a3edba2-2a73-48c9-ae3f-77ea44156302",
+"t2": "5080b221-5131-4bdc-bc1a-bb5721fb8a33",
+"target": "少し待てる？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L01B04",
+"ka": "fa60d147-26f9-44bb-bba4-bc94ac0e2711",
+"known": "I understand a little",
+"pos": 4,
+"t1": "0d336d7c-3e82-4f76-a750-5e88d3114597",
+"t2": "796f803e-51f4-4936-a2a9-78b5e877bdf0",
+"target": "少し分かる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L01U01",
+"ka": "42b67080-8091-40b8-9e20-164eda2ffe10",
+"known": "I'm a little tired",
+"pos": 5,
+"t1": "747fd3b8-8062-4012-8c56-46da40faf18c",
+"t2": "d7f7afa1-1804-4ac2-9e68-e205abd15cf9",
+"target": "少し疲れた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L01U02",
+"ka": "bb4f7933-5acb-4fa1-8afc-6b3641fbf387",
+"known": "it's a little difficult",
+"pos": 6,
+"t1": "a18dc7c3-5e43-4c33-b32b-d78a576b77ee",
+"t2": "fdb5d9cc-51c8-4621-8e8d-f703532216fe",
+"target": "少し難しい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L01U03",
+"ka": "990f0669-3e93-4b8f-87d2-47547bf06ce1",
+"known": "I'm a little busy",
+"pos": 7,
+"t1": "7ab02c1e-2369-404b-a85d-2d022cc650c7",
+"t2": "981962c5-c06d-4212-93d9-5a039afcfa4d",
+"target": "少し忙しい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L01U04",
+"ka": "d06703d4-10dd-4093-8907-be3d10764fbc",
+"known": "I know a little",
+"pos": 8,
+"t1": "b7ba98cf-a28e-4018-9544-cc6a8935f9d1",
+"t2": "8752365d-f8c5-40cd-8aaf-5a9336fe8c70",
+"target": "少し知ってる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L01U05",
+"ka": "51322fb4-6673-4aef-bfee-684829e1c5c2",
+"known": "can I have a little?",
+"pos": 9,
+"t1": "79b460c6-2b1f-4d6b-8c40-8008073702ec",
+"t2": "1b60fd09-3a69-45ee-af26-f460607e93da",
+"target": "少しもらえる？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L01U06",
+"ka": "68bc1daf-af1f-4c33-b2e0-bdd52478e7e6",
+"known": "I need a little time",
+"pos": 10,
+"t1": "871da669-81f2-49d0-8cec-066f72b1103e",
+"t2": "facaf501-7bd4-4840-8ba6-eb77d9daac03",
+"target": "少し時間が必要",
+"type": "use"
+}
+],
+"target": "少し",
+"type": "M"
+},
+{
+"id": "S0276L02",
+"idx": 2,
+"is_new": true,
+"known": "can stay",
+"phrases": [
+{
+"id": "72019066-f69a-451d-9609-1ec3558b7d74",
+"ka": "7c2f058a-7733-44aa-be18-aa438a6215b3",
+"known": "can stay",
+"pos": 0,
+"t1": "5df12f35-db41-4bf3-9d55-e249e00cc6bc",
+"t2": "ece35ed3-1c7e-4216-b20c-3505c6e9789d",
+"target": "いられる",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0276L02C01",
+"ka": "301db467-d033-4c5d-ad35-87524525506f",
+"known": "stay",
+"pos": 1,
+"t1": "cf6bb21a-aa7d-4aaa-802e-5821b9326b85",
+"t2": "388cae8e-f999-4441-ac46-5f66bed5a8a0",
+"target": "い",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0276L02C02",
+"ka": "2214039c-045e-4a42-9f13-9f933289f2e5",
+"known": "can",
+"pos": 2,
+"t1": "6f1efe46-0ccd-4ff8-b22d-eadb910036b2",
+"t2": "7e0bf0fa-3639-4ef4-befb-d568bddb1705",
+"target": "られる",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0276L02B01",
+"ka": "7c2f058a-7733-44aa-be18-aa438a6215b3",
+"known": "can stay",
+"pos": 3,
+"t1": "5df12f35-db41-4bf3-9d55-e249e00cc6bc",
+"t2": "4771d2a2-9525-427f-ae51-35312f472de1",
+"target": "いられる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L02B02",
+"ka": "39c96d96-e3be-4ea4-a5c0-ba80c3f5c588",
+"known": "I want to stay",
+"pos": 4,
+"t1": "3b3beb1e-3466-47cb-8b92-72000bcf9bee",
+"t2": "bed2678c-b60a-48ae-99dc-4aa0833785b6",
+"target": "いたい",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L02B03",
+"ka": "c0d52977-3d12-4394-998b-3eb879572396",
+"known": "I can stay",
+"pos": 5,
+"t1": "5df12f35-db41-4bf3-9d55-e249e00cc6bc",
+"t2": "ece35ed3-1c7e-4216-b20c-3505c6e9789d",
+"target": "いられる",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L02B04",
+"ka": "9310056a-d824-4b14-81a5-1047dfeab0c3",
+"known": "can you stay?",
+"pos": 6,
+"t1": "46ccd75a-b97a-4504-b0c3-5a7d71aa4430",
+"t2": "934d9dae-f1a7-42d1-a006-5a39e05e5853",
+"target": "いられる？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0276L02U01",
+"ka": "e6860c3c-49c8-4603-ac64-d7705e46165c",
+"known": "I can't stay",
+"pos": 7,
+"t1": "03655410-709d-420a-9f38-82b3b6265100",
+"t2": "134d4b19-19d9-4c44-b4e0-00a99972358c",
+"target": "いられない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U02",
+"ka": "a9d7c02d-6f2d-494b-91d7-d9b38f47c1a2",
+"known": "can you stay tonight?",
+"pos": 8,
+"t1": "987c076c-24b5-4044-8996-6d0120f5066d",
+"t2": "91918137-b9b7-4ee9-a47b-1829a34ff612",
+"target": "今夜いられる？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U03",
+"ka": "394f0397-baa1-4acf-b008-2e63ad09bdbb",
+"known": "I can stay tomorrow",
+"pos": 9,
+"t1": "016d3616-24bd-4f9e-946a-978c53264089",
+"t2": "7530316b-733b-445d-8993-e39b03c9f669",
+"target": "明日いられる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U04",
+"ka": "0c21b403-9306-49bc-a4e1-06d4e13c6241",
+"known": "can you stay a little?",
+"pos": 10,
+"t1": "498cf51a-5754-4900-95cc-3c8f1e48774b",
+"t2": "01a7558e-cb47-418d-b6bc-568968978d68",
+"target": "少しいられる？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U05",
+"ka": "a536d830-00e4-412b-8a72-46577377c759",
+"known": "I can stay here",
+"pos": 11,
+"t1": "b661b3a1-3a9a-4eeb-8b59-8cfeba435721",
+"t2": "d809ac39-adf8-4240-a5c1-7e90721f0b0c",
+"target": "ここにいられる",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U06",
+"ka": "6e325b09-426e-4462-9851-4c718299d56d",
+"known": "I can't stay long",
+"pos": 12,
+"t1": "6572d5c2-d96f-4575-a8df-fc7c9c95763b",
+"t2": "cbb6da6c-1d2f-445f-b49f-dda640447f43",
+"target": "長くいられない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U07",
+"ka": "f6f6450b-575c-4fc3-b059-989a6bddc71c",
+"known": "can I stay here?",
+"pos": 13,
+"t1": "82ce2d8b-0827-4301-99c8-f0b9dc92fa0a",
+"t2": "e93fb6ba-893e-4a56-b8ab-4e28b6964ca9",
+"target": "ここにいられる？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U08",
+"ka": "4001ed33-ba63-4625-a835-978cec821c81",
+"known": "how long can you stay?",
+"pos": 14,
+"t1": "c77dd0d6-061a-4449-8b32-8cef145867dc",
+"t2": "b0eda4cc-98e7-4592-bcaa-0fed96745eb4",
+"target": "どれくらいいられる？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0276L02U09",
+"ka": "dcfb50c8-6160-4e80-9726-ea2e82a93978",
+"known": "no I can stay here for a little longer",
+"pos": 15,
+"t1": "3be40ecf-6d32-4b0b-8454-5f98b0383b5f",
+"t2": "958545b3-caeb-4246-9536-cec2296d4b35",
+"target": "まだ、少しここにいられる",
+"type": "use"
+}
+],
+"target": "いられる",
+"type": "M"
+}
+],
+"status": "released",
+"target": "まだ、少しここにいられる"
+},
+"280": {
+"at": "2026-11-18T18:42:32Z",
+"known": "no I only had to do the most important job",
+"legos": [
+{
+"id": "S0280L01",
+"idx": 1,
+"is_new": true,
+"known": "the most",
+"phrases": [
+{
+"id": "5c3ed098-de0b-4744-9eb2-43f56b8b2991",
+"ka": "3cad236d-9e13-4496-b3a6-5823bf90c5de",
+"known": "the most",
+"pos": 0,
+"t1": "7b868b26-10b6-4fc6-9879-82e97ec27e0b",
+"t2": "205c7a2f-a99b-484f-bdb3-786fe7ea9a5e",
+"target": "一番",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0280L01B01",
+"ka": "3cad236d-9e13-4496-b3a6-5823bf90c5de",
+"known": "the most",
+"pos": 1,
+"t1": "7b868b26-10b6-4fc6-9879-82e97ec27e0b",
+"t2": "205c7a2f-a99b-484f-bdb3-786fe7ea9a5e",
+"target": "一番",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L01B02",
+"ka": "760e7229-867e-4388-994f-cb1cacc529ea",
+"known": "that's the most",
+"pos": 2,
+"t1": "8694d615-3262-4018-9800-f53cb8a05155",
+"t2": "6983b97b-6f9b-4cdc-a5e1-bc1584d661fa",
+"target": "それが一番",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L01B03",
+"ka": "75ce1163-5907-416a-97a1-4760b275d3ee",
+"known": "this is the most important",
+"pos": 3,
+"t1": "d4bc474b-34dc-4563-8376-7cbd68d20b8e",
+"t2": "d09a8bef-c398-4f1f-9aed-0bc9d0d3c93b",
+"target": "これが一番大事",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L01B04",
+"ka": "89049675-c457-4186-bb22-f6d9c098f961",
+"known": "this is the most good",
+"pos": 4,
+"t1": "e228c976-c145-4149-9941-c9534e6f2b25",
+"t2": "172726ea-8873-4bc3-8aff-b230b0c730d5",
+"target": "これが一番いい",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L01U01",
+"ka": "d1f13019-3403-4abd-b9e7-b5d7ae59fc05",
+"known": "what's the most difficult?",
+"pos": 5,
+"t1": "85619df5-ca56-438f-9ba8-a9d072e7b17c",
+"t2": "ad334775-051f-48a1-b622-3805a6563dc4",
+"target": "一番難しいのは何？",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L01U02",
+"ka": "13a89e98-477e-4ff5-a501-dcdefb6a46da",
+"known": "that's the most interesting",
+"pos": 6,
+"t1": "fff50a48-51a8-4592-bcee-d2318e2cab09",
+"t2": "f1ef1a22-258a-41b9-8abe-4e81245e151b",
+"target": "それが一番面白い",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L01U03",
+"ka": "3a1f2192-395c-4457-a706-ddc7419a5a11",
+"known": "that's the most fun",
+"pos": 7,
+"t1": "7624ace1-6f82-43d3-a0e3-cb2d5332db2b",
+"t2": "b38c876b-2184-4ad5-9c21-6c013ab2ff26",
+"target": "それが一番楽しい",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L01U04",
+"ka": "8bc1a426-777c-4fff-a62c-031251ab8636",
+"known": "what do you like the most?",
+"pos": 8,
+"t1": "d7cf53c6-a51b-42f7-8b31-b5be3178fa37",
+"t2": "4455f3d3-4476-4f37-9a68-b4dfc5ae6e14",
+"target": "一番好きなのは何？",
+"type": "use"
+}
+],
+"target": "一番",
+"type": "M"
+},
+{
+"id": "S0280L02",
+"idx": 2,
+"is_new": true,
+"known": "important thing",
+"phrases": [
+{
+"id": "fc582312-1cf9-4214-844f-76dd03bd9a79",
+"ka": "4d6b1405-d29f-4f0d-ae0e-13172e2d53b5",
+"known": "important thing",
+"pos": 0,
+"t1": "6ed085c0-c81a-4946-8b4b-bf9361f655cd",
+"t2": "20165d68-2435-46ee-a2c4-2a3cff8fb007",
+"target": "大事なこと",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0280L02C01",
+"ka": "f3cc4826-bdd4-4af8-9fc0-116fa33f01a2",
+"known": "important",
+"pos": 1,
+"t1": "cd6884af-ded3-4694-89ca-7c81a546a1c2",
+"t2": "e99d421c-fa94-429e-ac23-2b17da6a398c",
+"target": "大事な",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0280L02C02",
+"ka": "699e4780-a768-4477-a7a0-8ca273570c5a",
+"known": "thing",
+"pos": 2,
+"t1": "818c4f7d-af69-448b-b57a-c14f684ef80c",
+"t2": "7d756c48-2c74-4728-833b-883eb8d96d28",
+"target": "こと",
+"type": "component"
+},
+{
+"id": "jpn_for_eng:S0280L02B01",
+"ka": "4d6b1405-d29f-4f0d-ae0e-13172e2d53b5",
+"known": "important thing",
+"pos": 3,
+"t1": "6ed085c0-c81a-4946-8b4b-bf9361f655cd",
+"t2": "20165d68-2435-46ee-a2c4-2a3cff8fb007",
+"target": "大事なこと",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L02B02",
+"ka": "9f559ea4-2eb4-453d-afde-90bd28dd6271",
+"known": "it's an important thing",
+"pos": 4,
+"t1": "7bb52272-3c62-498a-9577-f4794c9e3878",
+"t2": "57b14e99-945f-4833-aac8-b35ca56a00c8",
+"target": "大事なことだ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L02B03",
+"ka": "172d1f0c-7fb3-42ff-9c5a-cb53935b3696",
+"known": "what's the important thing?",
+"pos": 5,
+"t1": "01dccc6b-aff4-46b6-b2d4-c55909caa809",
+"t2": "529aa7a2-2984-4321-be69-2ed3322c42b2",
+"target": "大事なことは何？",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L02B04",
+"ka": "4bae41d2-31d7-4572-84d7-6191680cc1a9",
+"known": "that's an important thing",
+"pos": 6,
+"t1": "04160b39-7110-4c5f-bd51-6404d26136c6",
+"t2": "b0cc1257-4137-4ae9-88aa-5508a0f3aea8",
+"target": "それは大事なこと",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L02U02",
+"ka": "bce595d4-214a-4442-95d8-7eed6b6dc650",
+"known": "there's an important thing",
+"pos": 8,
+"t1": "cd1223c4-d467-42e3-b380-57fd35741ca9",
+"t2": "8b86b2b6-d2db-4651-a507-b00cabb945cc",
+"target": "大事なことがある",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L02U03",
+"ka": "53adc641-3b09-4132-b6f6-341fe3e2a848",
+"known": "the important thing is time",
+"pos": 9,
+"t1": "8ccf12c5-6455-4a8a-8483-0323899e2d2e",
+"t2": "dbe62cfe-b72a-42ab-ac57-800f5f3f53f8",
+"target": "大事なことは時間",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L02U04",
+"ka": "fbda6e2d-d52c-4cdd-967b-62607db72f3d",
+"known": "I forgot an important thing",
+"pos": 10,
+"t1": "6912eee3-84fb-460c-ae4c-6337e9de49bb",
+"t2": "f5ec2312-f3cd-4699-9da5-f9956c10d7a0",
+"target": "大事なことを忘れた",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L02U07",
+"ka": "99c7b7f7-f85b-496c-bd2d-522a86b1e299",
+"known": "I have to do an important thing",
+"pos": 13,
+"t1": "e84a6a49-3192-411a-b405-f716eb1276ff",
+"t2": "388e95ba-5627-4dcf-949c-bbe0065a3a7c",
+"target": "大事なことをしないと",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L02U08",
+"ka": "78a7e16e-1694-4e17-9a1d-73631b8b2cd9",
+"known": "that was an important thing",
+"pos": 14,
+"t1": "19c700d1-53b7-44b1-917e-f56ac816f18b",
+"t2": "e43fa6b5-f71e-42ee-8f9f-3d6e0210d795",
+"target": "それは大事なことだった",
+"type": "use"
+}
+],
+"target": "大事なこと",
+"type": "M"
+},
+{
+"id": "S0280L03",
+"idx": 3,
+"is_new": true,
+"known": "only",
+"phrases": [
+{
+"id": "25e2480e-77d5-43f9-8cdc-43220a67fda3",
+"ka": "42b031d2-225c-417a-b89c-48c1180e00cd",
+"known": "only",
+"pos": 0,
+"t1": "ceac76ad-c73d-4ff9-991d-080660bd370b",
+"t2": "2ccf7224-99e4-49b4-a657-f2a8f16ce489",
+"target": "だけ",
+"type": "lego_debut"
+},
+{
+"id": "jpn_for_eng:S0280L03B01",
+"ka": "72e28c54-26ec-43c5-9d86-26d6ccbd9ff9",
+"known": "only this",
+"pos": 1,
+"t1": "bdd2cb4c-19f0-4b32-ae0a-8378d9beeee5",
+"t2": "5ddcfb39-77b5-4fbe-a277-08bf34c8d98c",
+"target": "これだけ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L03B02",
+"ka": "9fe1034e-c35e-4f56-a526-0b4f22d68be2",
+"known": "only here",
+"pos": 2,
+"t1": "437f7a17-4c54-4c90-8934-1963cd02f336",
+"t2": "ffbe5ccc-dcb6-4764-b665-75fc3f944ade",
+"target": "ここだけ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L03B03",
+"ka": "82bf2e42-08e8-4c9a-8bdd-eee6bf0ba537",
+"known": "only today",
+"pos": 3,
+"t1": "ce264b21-073a-4f6f-9fdc-d843329f9b5f",
+"t2": "49a47955-4c21-425e-b6e8-293a2c0cec7b",
+"target": "今日だけ",
+"type": "build"
+},
+{
+"id": "jpn_for_eng:S0280L03U02",
+"ka": "e490926c-1152-4ce9-8352-f005ec49d166",
+"known": "only a little",
+"pos": 5,
+"t1": "c42693ad-c28a-4c12-89d2-7ba22ee0326b",
+"t2": "3a5691e1-a192-48bd-bab5-54b72a3457c3",
+"target": "少しだけ",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L03U05",
+"ka": "39fda867-575a-4c41-a930-db65f150ac4d",
+"known": "I only know a little",
+"pos": 8,
+"t1": "cc14d567-1bc3-4d93-b0fd-080196ba86b1",
+"t2": "613c3a22-cd2c-44d8-80ca-39b029d83709",
+"target": "少ししか知らない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L03U07",
+"ka": "56ae1303-f5f2-49e4-b45f-1adaf31f118b",
+"known": "there's only a little time",
+"pos": 10,
+"t1": "5e93dab6-731d-4b1b-b10b-95b9551bb09d",
+"t2": "5fc28385-d5d9-4346-bf71-b58e03883dd9",
+"target": "時間が少ししかない",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L03U08",
+"ka": "d92f5438-bc6f-4965-96c8-c51bbfc9a064",
+"known": "I only did the important thing",
+"pos": 11,
+"t1": "ec281ba2-4d40-488e-a100-a3a398814463",
+"t2": "5cfeb78c-700a-44e9-adc5-69e6e8dc4c57",
+"target": "大事なことだけやった",
+"type": "use"
+},
+{
+"id": "jpn_for_eng:S0280L03U09",
+"ka": "888f4aaf-b587-43a9-92f5-160b75a39bb9",
+"known": "no I only had to do the most important job",
+"pos": 12,
+"t1": "3d7744df-3858-4b7f-91e9-0322e6d12513",
+"t2": "4ecf9018-da4c-4274-8215-ab2cb3df8798",
+"target": "一番大事なことだけやった",
+"type": "use"
+}
+],
+"target": "だけ",
+"type": "M"
+}
+],
+"status": "released",
+"target": "一番大事なことだけやった"
+}
+}

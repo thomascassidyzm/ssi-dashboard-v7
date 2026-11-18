@@ -692,5 +692,271 @@
 ],
 "status": "released",
 "target": "밤이 너무 늦었어요."
+},
+"631": {
+"at": "2026-11-18T18:42:37Z",
+"known": "உங்களுக்கு என்ன வேண்டும்?",
+"legos": [
+{
+"id": "S0631L01",
+"idx": 1,
+"is_new": true,
+"known": "என்ன வேண்டும்",
+"phrases": [
+{
+"id": "123b9484-ec16-4363-a54b-91c41fb1c776",
+"ka": "a98841e6-b605-4b9e-8eef-b38708f11e62",
+"known": "என்ன வேண்டும்",
+"pos": 0,
+"t1": "04d4add3-dbe2-4542-b94a-0ee1b9ce4ee8",
+"t2": "c4a91422-d48b-4c8d-9f48-b62ce206e9dd",
+"target": "무엇을 드릴까요",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_tam:S0631L01C01",
+"ka": "5364654d-f2b0-46e8-8c63-e4e228dc4932",
+"known": "என்ன",
+"pos": 1,
+"t1": "dde2afdd-ccfb-4435-bd68-11693773be11",
+"t2": "f66af287-530d-4452-980d-df7bc65d76fc",
+"target": "무엇을",
+"type": "component"
+},
+{
+"id": "kor_for_tam:S0631L01C02",
+"ka": "7acf6296-92d2-46c7-a6dc-ac8bd761819e",
+"known": "வேண்டும்",
+"pos": 2,
+"t1": "4815d0fd-9cf6-415c-b795-124159ea98f8",
+"t2": "949013cd-1eee-490a-983c-35096e1771e8",
+"target": "드릴까요",
+"type": "component"
+},
+{
+"id": "kor_for_tam:S0631L01B01",
+"ka": "a98841e6-b605-4b9e-8eef-b38708f11e62",
+"known": "என்ன வேண்டும்",
+"pos": 3,
+"t1": "04d4add3-dbe2-4542-b94a-0ee1b9ce4ee8",
+"t2": "c4a91422-d48b-4c8d-9f48-b62ce206e9dd",
+"target": "무엇을 드릴까요",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0631L01B02",
+"ka": "d84fa622-d01b-4318-8223-31dc0e38437b",
+"known": "இப்போது என்ன வேண்டும்",
+"pos": 4,
+"t1": "17e96bab-5951-4a93-8bef-be6c32f1f470",
+"t2": "aa4cdb1e-f2d5-4160-beaa-031070b6c2a8",
+"target": "지금 무엇을 드릴까요",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0631L01B03",
+"ka": "bec9a001-4bb0-4a03-9642-510df240b6a3",
+"known": "இன்று என்ன வேண்டும்",
+"pos": 5,
+"t1": "d780e3c2-7acf-4fc1-8dd1-910e0771090d",
+"t2": "7cacef93-d700-47b6-92b6-5502d475c850",
+"target": "오늘 무엇을 드릴까요",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0631L01B04",
+"ka": "ad54ea2c-21a6-42ad-a4e4-75cbdf97fad0",
+"known": "அடிக்கடி என்ன வேண்டும்",
+"pos": 6,
+"t1": "d0c4f588-1e29-4347-b751-23592991fd6d",
+"t2": "468f8d97-4eab-4b42-bb1c-6192d4c38603",
+"target": "자주 무엇을 드릴까요",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0631L01U01",
+"ka": "6ec8e9cd-09ac-4594-acdf-15647e2fd669",
+"known": "உங்களுக்கு ஒரு கப் காப்பி வேண்டுமா",
+"pos": 7,
+"t1": "75f34747-1143-4d0f-a345-cf7f527defc7",
+"t2": "54efd0df-7493-476a-9b79-c10e3113f937",
+"target": "커피 한 잔 드릴까요",
+"type": "use"
+},
+{
+"id": "kor_for_tam:S0631L01U02",
+"ka": "fef2ffdf-0d8d-409d-8f80-4a2c9f76ef84",
+"known": "உங்களுக்குத் தேநீர் வேண்டுமா",
+"pos": 8,
+"t1": "4180db44-51b6-4687-8817-b9e6bbf2a489",
+"t2": "0155d72c-f866-4587-b421-aa17388a5446",
+"target": "차를 드릴까요",
+"type": "use"
+},
+{
+"id": "kor_for_tam:S0631L01U03",
+"ka": "b1ea1554-e241-4f03-b54e-0e76de3f8b0a",
+"known": "உங்களுக்குக் குடிக்க ஏதாவது வேண்டுமா",
+"pos": 9,
+"t1": "1d641821-2065-4f2f-bae3-5af2bd3e0262",
+"t2": "546729ba-3039-4ecb-9574-04574e2bd39a",
+"target": "뭔가 마실 것 드릴까요",
+"type": "use"
+},
+{
+"id": "kor_for_tam:S0631L01U04",
+"ka": "9fe9c73e-fc33-4c52-b493-3ad614527781",
+"known": "இப்போது உங்களுக்குக் காப்பி வேண்டுமா",
+"pos": 10,
+"t1": "5d9fbc19-bd96-4856-9032-d086bf523ec9",
+"t2": "6ec0841d-85a5-47f8-8c7c-1ec7aac8063b",
+"target": "지금 커피 드릴까요",
+"type": "use"
+}
+],
+"target": "무엇을 드릴까요",
+"type": "M"
+}
+],
+"status": "released",
+"target": "무엇을 드릴까요?"
+},
+"642": {
+"at": "2026-11-18T18:42:38Z",
+"known": "நீங்கள் எப்படி உணர்கிறீர்கள் மேடம்?",
+"legos": [
+{
+"id": "S0642L01",
+"idx": 1,
+"is_new": true,
+"known": "உணர்கிறீர்கள் மேடம்",
+"phrases": [
+{
+"id": "09abfe2c-0a74-40a7-bc31-7724c7679b9f",
+"ka": "5fa0f63f-7c81-4bf5-9594-a503f8196fc1",
+"known": "உணர்கிறீர்கள் மேடம்",
+"pos": 0,
+"t1": "745442ab-c17f-4c07-9df1-5bb26ab501d2",
+"t2": "45ef8f03-6fa4-4f7f-b7d8-12c7dc9175d8",
+"target": "어때요 선생님",
+"type": "lego_debut"
+},
+{
+"id": "kor_for_tam:S0642L01C01",
+"ka": "d5fa84e4-3d87-4f97-a2ed-0c1caa173a16",
+"known": "உணர்கிறீர்கள்",
+"pos": 1,
+"t1": "9d5871ac-87ae-42c8-a3c3-aa90dbe31858",
+"t2": "16e0d1a2-4d68-41da-90cb-75db797d118f",
+"target": "어때요",
+"type": "component"
+},
+{
+"id": "kor_for_tam:S0642L01C02",
+"ka": "00a5483d-d15f-47d3-a269-d6ac5f1cd1b6",
+"known": "மேடம்",
+"pos": 2,
+"t1": "00344320-23ee-446b-9ea3-336e3a761cf7",
+"t2": "d587ca80-c9b4-43df-891d-2c5e737625a3",
+"target": "선생님",
+"type": "component"
+},
+{
+"id": "kor_for_tam:S0642L01B01",
+"ka": "5fa0f63f-7c81-4bf5-9594-a503f8196fc1",
+"known": "உணர்கிறீர்கள் மேடம்",
+"pos": 3,
+"t1": "745442ab-c17f-4c07-9df1-5bb26ab501d2",
+"t2": "45ef8f03-6fa4-4f7f-b7d8-12c7dc9175d8",
+"target": "어때요 선생님",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0642L01B02",
+"ka": "dd4ba7e5-8acc-49fa-8169-980af7abef00",
+"known": "இப்போது எப்படி உணர்கிறீர்கள் மேடம்",
+"pos": 4,
+"t1": "b929ec74-333f-473e-84c6-9c2c43b2666b",
+"t2": "d7d693d0-6bda-4c83-b626-f15ed42870ec",
+"target": "지금 어때요 선생님",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0642L01B03",
+"ka": "8d5f69d0-86a7-4717-8d1b-5125a5c32e51",
+"known": "அடிக்கடி எப்படி உணர்கிறீர்கள் மேடம்",
+"pos": 5,
+"t1": "28182f4f-6d47-4bf9-9671-ce54ec143f73",
+"t2": "aaa0e9a2-6c42-485d-af1c-92802f807984",
+"target": "자주 어때요 선생님",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0642L01B04",
+"ka": "69e8b575-5a42-4924-b14e-1f7ee782a8bc",
+"known": "இன்று எப்படி உணர்கிறீர்கள் மேடம்",
+"pos": 6,
+"t1": "49dce33a-2668-48ff-8509-b51c8bf40fdf",
+"t2": "0fa3e67b-fc10-4d01-b182-828cea19b32e",
+"target": "오늘 어때요 선생님",
+"type": "build"
+},
+{
+"id": "kor_for_tam:S0642L01U01",
+"ka": "4f922787-cf60-426f-8c09-cf05c1d13954",
+"known": "நீங்கள் எப்படி உணர்கிறீர்கள் மேடம்",
+"pos": 7,
+"t1": "a8368bc0-e95a-49bf-b37c-5d98f3445d63",
+"t2": "5d70b89a-7f2d-476f-8af6-2200f7ca66d9",
+"target": "기분이 어때요 선생님",
+"type": "use"
+},
+{
+"id": "kor_for_tam:S0642L01U02",
+"ka": "9cfee655-95cb-46e4-be88-7c9d1cfc2b48",
+"known": "இப்போது நீங்கள் எப்படி உணர்கிறீர்கள் மேடம்",
+"pos": 8,
+"t1": "d1dd71f8-1a75-4c74-ace8-fdf9ea4e9297",
+"t2": "a1f637a3-2fc2-4e38-a2de-6395bc04dda7",
+"target": "지금 기분이 어때요 선생님",
+"type": "use"
+},
+{
+"id": "kor_for_tam:S0642L01U03",
+"ka": "ac9cf190-be78-402e-937b-57ed2df92a35",
+"known": "நீங்கள் இன்று எப்படி உணர்கிறீர்கள் மேடம்",
+"pos": 9,
+"t1": "4c99f645-a5f8-44e9-a2f3-07077828289a",
+"t2": "d1e746a0-b6a9-40e7-a892-b13753b5222e",
+"target": "오늘 기분이 어때요 선생님",
+"type": "use"
+},
+{
+"id": "kor_for_tam:S0642L01U04",
+"ka": "1277183c-9f24-4ec1-b2ce-ce4d6c555fa9",
+"known": "நீங்கள் எப்படி உணர்கிறீர்கள்",
+"pos": 10,
+"t1": "c832bf45-f37a-486f-82b3-464712ec89e4",
+"t2": "b3fa195f-fdfb-45d5-ab43-7ecf69f7d8a8",
+"target": "기분이 어때요",
+"type": "use"
+},
+{
+"id": "kor_for_tam:S0642L01U05",
+"ka": "a3882d4f-4e83-4312-8bfb-82bfc19a351d",
+"known": "அடிக்கடி நீங்கள் எப்படி உணர்கிறீர்கள் மேடம்",
+"pos": 11,
+"t1": "7864d7bb-e94b-4291-a847-bcf8adf17495",
+"t2": "dfaa80be-a29c-4781-8b87-cf170a7221e5",
+"target": "자주 기분이 어때요 선생님",
+"type": "use"
+}
+],
+"target": "어때요 선생님",
+"type": "M"
+}
+],
+"status": "released",
+"target": "기분이 어때요, 선생님?"
 }
 }
