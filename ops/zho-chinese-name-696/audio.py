@@ -6,6 +6,7 @@
 import json, sys, urllib.request, urllib.parse
 C, MODE = sys.argv[1], sys.argv[2]; DRY = MODE == 'dry'
 CAP = int(sys.argv[3]) if len(sys.argv) > 3 else 10000
+VOICE = sys.argv[4] if len(sys.argv) > 4 else None  # named voice for presentation renders only
 NAME = {'spa_for_zho': '西班牙语', 'fra_for_zho': '法语', 'deu_for_zho': '德语', 'ita_for_zho': '意大利语'}[C]
 PURPOSE = 'cs #696·AI known side said 中文 where it meant the target language; Kai approved 18 Nov 2026, cap 10,000 chars'
 H = {'Content-Type': 'application/json', 'x-agent-id': 'worker-cs-696-zho-name'}
@@ -32,13 +33,15 @@ for s in slots:
     else:
         if not DRY and spent >= CAP: out.append({**s, 'text': text, 'source': None, 'error': 'CAP_STOP'}); continue
         body = {'courseCode': C, 'role': s['role'], 'text': text, 'purpose': PURPOSE, 'dryRun': DRY}
-        if s['role'] == 'presentation': body['legoId'] = s['key']
+        if s['role'] == 'presentation':
+            body['legoId'] = s['key']
+            if VOICE: body['voiceId'] = VOICE
         r = call('http://localhost:3470/api/audio/render', body); cache[ck] = r
         spent += r.get('charsSpent') or 0; would += r.get('wouldSpendChars') or 0
         if not r.get('ok'): print('REFUSED', s['key'], s['role'], r.get('code'), str(r.get('error'))[:200])
     import re as _re
     ex = _re.findall(r'clip\(s\): ([0-9a-f-]{36})', str(r.get('error') or '')) if r.get('code') == 'EXISTS_IN_LANGUAGE' else []
-    out.append({**s, 'text': text, 'existing': ex[0] if ex else None, 'existing_detail': str(r.get('error'))[:300] if ex else None, 'source': r.get('source'), 'audioId': r.get('audioId'), 'chars': r.get('charsSpent') or r.get('wouldSpendChars') or 0,
+    out.append({**s, 'text': text, 'existing': ex[0] if ex else None, 'existing_detail': str(r.get('error'))[:300] if ex else None, 'source': r.get('source'), 'voiceId': r.get('voiceId'), 'full_error': r.get('error'), 'audioId': r.get('audioId'), 'chars': r.get('charsSpent') or r.get('wouldSpendChars') or 0,
                 'error': None if r.get('ok') else (r.get('code') or r.get('error'))})
     if not DRY and r.get('code') in ('DAILY_TOTAL_CAP', 'NOT_IN_CHAIN'): break
 json.dump(out, open(f'{C}.audio-{MODE}.json', 'w'), ensure_ascii=False, indent=1)
