@@ -1,0 +1,44 @@
+{
+ "seed": 559,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি নিশ্চিত পথটা এখানে",
+     "I'm sure the path is here",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি পথটা দেখিনি",
+     "I haven't seen the path",
+     null,
+     null
+    ],
+    [
+     "build",
+     "এটা হয়তো পথটা",
+     "it might be the path",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি বনের মধ্য দিয়ে পথটা খুঁজছি",
+     "I'm looking for the path through the wood",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

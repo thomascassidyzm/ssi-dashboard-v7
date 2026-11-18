@@ -1,0 +1,47 @@
+{
+ "seed": 474,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি এটা বিনামূল্যে অফার হিসেবে চাই না",
+     "I don't want it as a free offer",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি আজ এটা চাইও না",
+     "I don't even want it today",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি মনে করি আমি এটা চাইও না",
+     "I think I don't even want it",
+     null,
+     null
+    ],
+    [
+     "build",
+     "আমি কাল এটা চাইও না",
+     "I don't even want it tomorrow",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0474L02B01": "চাইও|form of taught চাই (even want)",
+  "S0474L02": "চাইও|form of taught চাই (even want)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

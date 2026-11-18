@@ -1,0 +1,51 @@
+{
+ "seed": 511,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "তুমি কি খবরটা শুনেছ?",
+     "have you heard the news?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "আমি নিশ্চিত খবরটার কয়েক ঘণ্টা লেগেছিল",
+     "I'm sure the news took several hours",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "সবার কাছে খবর পৌঁছাতে কয়েক ঘণ্টা লেগেছিল",
+     "the news took several hours to reach everyone",
+     null,
+     null
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "আমি শুনেছি যে অফিসের সবার কাছে খবর পৌঁছাতে কয়েক ঘণ্টা লেগেছিল",
+     "I heard that the news took several hours to reach everyone in the office",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0511L01B01": "খবরটা|form of taught খবর",
+  "S0511L02B01": "খবরটার|form of taught খবর"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
