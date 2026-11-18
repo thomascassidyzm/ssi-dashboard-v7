@@ -46549,8 +46549,8 @@
    ],
    "472:2": [
     {
-     "known_text": "એ છે કે",
-     "target_text": "is that",
+     "known_text": "જો તમે મને પૂછો તો સમસ્યાનો એક ભાગ એ છે કે આપણને હકીકતો ખબર નથી",
+     "target_text": "part of the problem is that we don't know the facts if you ask me",
      "phrase_role": "build"
     },
     {
@@ -46571,6 +46571,5781 @@
     {
      "known_text": "સમસ્યાનો એક ભાગ એ છે કે તેઓને કંટાળો આવ્યો છે",
      "target_text": "part of the problem is that they're bored",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 473,
+  "phrases": {
+   "473:1": [
+    {
+     "known_text": "હું",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ઇચ્છતો નથી",
+     "target_text": "don't want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું આજે એ ઇચ્છતો નથી",
+     "target_text": "I don't want it today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું એ ઇચ્છતો નથી",
+     "target_text": "I don't want it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ના, હું ઇચ્છતો નથી",
+     "target_text": "no I don't want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે હું ઇચ્છતો નથી",
+     "target_text": "I'm sure I don't want it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેઓ કહે છે કે હું ઇચ્છતો નથી",
+     "target_text": "they say I don't want it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે હું ઇચ્છતો નથી",
+     "target_text": "I don't want it on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે હું ઇચ્છતો નથી",
+     "target_text": "I think I don't want it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે હું ઇચ્છતો નથી",
+     "target_text": "the students say I don't want it",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 474,
+  "phrases": {
+   "474:1": [
+    {
+     "known_text": "મફત ઑફર તરીકે મને તે જોઈતું નથી",
+     "target_text": "I don't want it as a free offer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મફત ઑફર",
+     "target_text": "a free offer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મફત ઑફર તરીકે",
+     "target_text": "as a free offer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ મફત છે",
+     "target_text": "I'm sure that's free",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ મફત છે",
+     "target_text": "the students say that's free",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ મફત છે",
+     "target_text": "I know that's free",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ મફત હતું",
+     "target_text": "it was free on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એ મફત છે",
+     "target_text": "I think that's free",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જો તમે મને એક મફત ચોપડી આપી શકો, તો ઘણું સારું.",
+     "target_text": "If you can give me a free book, that would be great.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને મફત કૉફી ગમે છે.",
+     "target_text": "I like free coffee.",
+     "phrase_role": "use"
+    }
+   ],
+   "474:2": [
+    {
+     "known_text": "ઑફર",
+     "target_text": "offer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તરીકે",
+     "target_text": "as",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "પણ",
+     "target_text": "even",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મફત ઑફર તરીકે પણ નહીં",
+     "target_text": "not even as a free offer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, મફત ઑફર તરીકે પણ",
+     "target_text": "yes even as a free offer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે મફત ઑફર તરીકે પણ",
+     "target_text": "even as a free offer on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ મફત ઑફર તરીકે પણ સારું છે",
+     "target_text": "I'm sure it's good even as a free offer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ મફત ઑફર તરીકે પણ સારું છે",
+     "target_text": "I know it's good even as a free offer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ મફત ઑફર તરીકે પણ સારું છે",
+     "target_text": "the students say it's good even as a free offer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મફત ઑફર તરીકે પણ મને તે જોઈતું નથી",
+     "target_text": "I don't want it even as a free offer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એ મફત ઑફર તરીકે પણ સારું છે",
+     "target_text": "I think it's good even as a free offer",
+     "phrase_role": "use"
+    }
+   ],
+   "474:3": [
+    {
+     "known_text": "મને",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "જોઈતું નથી",
+     "target_text": "don't want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કાલે મફત ઑફર તરીકે મને તે જોઈતું નથી",
+     "target_text": "I don't want it as a free offer tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને તે જોઈતું નથી",
+     "target_text": "I don't want it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, મને જોઈતું નથી",
+     "target_text": "yes I don't want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે મને તે જોઈતું નથી",
+     "target_text": "I'm sure I don't want it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે મને તે જોઈતું નથી",
+     "target_text": "I know I don't want it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે મને તે જોઈતું નથી",
+     "target_text": "the students say I don't want it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે મને તે જોઈતું નથી",
+     "target_text": "I don't want it on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મફત ઑફર તરીકે પણ મને તે જોઈતું નથી",
+     "target_text": "I don't want it even as a free offer",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 475,
+  "phrases": {
+   "475:1": [
+    {
+     "known_text": "મને લાગે છે કે ઘણાં કારણો છે",
+     "target_text": "I think there are many reasons",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ઘણાં કારણો",
+     "target_text": "many reasons",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, ઘણાં કારણો",
+     "target_text": "yes many reasons",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ઘણાં કારણો છે",
+     "target_text": "there are many reasons",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે ઘણાં કારણો છે",
+     "target_text": "I'm sure there are many reasons",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે ઘણાં કારણો છે",
+     "target_text": "the students say there are many reasons",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે ઘણાં કારણો છે",
+     "target_text": "I know there are many reasons",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે ઘણાં કારણો હતા",
+     "target_text": "there were many reasons on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જો તમે મને પૂછો, ઘણાં કારણો છે.",
+     "target_text": "If you ask me there are many reasons.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં પૂછ્યું કે કારણો શું હતા.",
+     "target_text": "I asked what the reasons were.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને કારણો સમજાવવા દો.",
+     "target_text": "Let me explain the reasons.",
+     "phrase_role": "use"
+    }
+   ],
+   "475:2": [
+    {
+     "known_text": "મને લાગે છે કે રાહ જોવાનો વિચાર કરવાનાં ઘણાં કારણો છે",
+     "target_text": "I think there are many reasons to consider waiting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કારણો વિચાર કરવાનાં",
+     "target_text": "reasons to consider",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "રાહ જોવાનો વિચાર કરવાનાં",
+     "target_text": "to consider waiting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારે વિચાર કરવાનાં છે",
+     "target_text": "I need to consider it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તેઓને વિચાર કરવાનાં છે",
+     "target_text": "I'm sure they need to consider it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓને વિચાર કરવાનાં છે",
+     "target_text": "the students need to consider it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "રાહ જોવાનો વિચાર કરવાનાં ઘણાં કારણો છે",
+     "target_text": "there are many reasons to consider waiting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તેઓને વિચાર કરવાનાં છે",
+     "target_text": "I know they need to consider it",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 476,
+  "phrases": {
+   "476:1": [
+    {
+     "known_text": "મેં ફિલ્મનો અંત ન જોયો",
+     "target_text": "I didn't see the end of the film",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અંતની રાહ",
+     "target_text": "waiting for the end of",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હાફના અંતની",
+     "target_text": "the end of the half",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારે અંતની જરૂર છે",
+     "target_text": "I need the end of it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે અંતની રાહ સારી છે",
+     "target_text": "I'm sure waiting for the end of it is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હાફના અંતની રાહ",
+     "target_text": "waiting for the end of the half",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હાફના અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm waiting for the end of the half",
+     "phrase_role": "use"
+    }
+   ],
+   "476:2": [
+    {
+     "known_text": "બીજા",
+     "target_text": "second",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હાફના",
+     "target_text": "the half",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "બીજા હાફના અંત પછી",
+     "target_text": "after the end of the second half",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "બીજા હાફના અંતની",
+     "target_text": "the end of the second half",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, બીજા હાફના",
+     "target_text": "yes the second half",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે બીજા હાફના અંતની રાહ સારી છે",
+     "target_text": "I'm sure waiting for the end of the second half is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે બીજા હાફના અંતની રાહ સારી છે",
+     "target_text": "the students say waiting for the end of the second half is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે બીજા હાફના અંતની રાહ સારી છે",
+     "target_text": "I know waiting for the end of the second half is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું બીજા હાફના અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm waiting for the end of the second half",
+     "phrase_role": "use"
+    }
+   ],
+   "476:3": [
+    {
+     "known_text": "હું",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અંતની",
+     "target_text": "the end of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "રાહ જોઈ રહ્યો છું",
+     "target_text": "'m waiting for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm waiting for the end of it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "yes I'm waiting for the end of it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm waiting for the end of it on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm sure I'm waiting for the end of it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "the students say I'm waiting for the end of it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I know I'm waiting for the end of it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I think I'm waiting for the end of it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી નથી, પણ હું અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm not sure, but I'm waiting for the end of it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જ્યાં સુધી શક્ય હોય ત્યાં સુધી અંતની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm waiting for the end of it for as long as possible",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 477,
+  "phrases": {
+   "477:1": [
+    {
+     "known_text": "તે",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માંદો",
+     "target_text": "sick",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "છે",
+     "target_text": "'s been",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે છુટ્ટીથી માંદો છે",
+     "target_text": "he's been sick since the holidays",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, તે માંદો છે",
+     "target_text": "yes he's been sick",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે તે માંદો છે",
+     "target_text": "he's been sick on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે માંદો છે",
+     "target_text": "I'm sure he's been sick",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તે માંદો છે",
+     "target_text": "the students say he's been sick",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તે માંદો છે",
+     "target_text": "I know he's been sick",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તે માંદો છે",
+     "target_text": "I think he's been sick",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેઓ કહે છે કે તે માંદો છે",
+     "target_text": "they say he's been sick",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે લગભગ એક અઠવાડિયાથી માંદો છે",
+     "target_text": "he's been sick for about a week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આખો દિવસ માંદો છે",
+     "target_text": "he's been sick all day",
+     "phrase_role": "use"
+    }
+   ],
+   "477:2": [
+    {
+     "known_text": "અમારા મિત્રો છુટ્ટી ના બીજા દિવસે આવ્યા",
+     "target_text": "our friends came round on the second day of the holidays",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "છુટ્ટી ના દિવસ",
+     "target_text": "the day of the holidays",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "છુટ્ટી ના બીજા દિવસ",
+     "target_text": "the second day of the holidays",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે છુટ્ટી ના દિવસ સારો છે",
+     "target_text": "I'm sure the day of the holidays is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે છુટ્ટી ના દિવસ સારો છે",
+     "target_text": "the students say the day of the holidays is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે છુટ્ટી ના દિવસ સારો છે",
+     "target_text": "I know the day of the holidays is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "છુટ્ટી ના બીજા દિવસ સારો છે",
+     "target_text": "the second day of the holidays is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે છુટ્ટી ના બીજા દિવસ હતો",
+     "target_text": "the second day of the holidays was Tuesday",
+     "phrase_role": "use"
+    }
+   ],
+   "477:3": [
+    {
+     "known_text": "બીજા",
+     "target_text": "second",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "દિવસથી",
+     "target_text": "since the day",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે બીજા દિવસથી માંદો છે",
+     "target_text": "he's been sick since the second day",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "છુટ્ટી ના બીજા દિવસથી",
+     "target_text": "since the second day of the holidays",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, બીજા દિવસથી",
+     "target_text": "yes since the second day",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે બીજા દિવસથી માંદો છે",
+     "target_text": "I'm sure he's been sick since the second day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તે બીજા દિવસથી માંદો છે",
+     "target_text": "the students say he's been sick since the second day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તે બીજા દિવસથી માંદો છે",
+     "target_text": "I know he's been sick since the second day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તે બીજા દિવસથી માંદો છે",
+     "target_text": "I think he's been sick since the second day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે છુટ્ટી ના બીજા દિવસથી માંદો છે",
+     "target_text": "he's been sick since the second day of the holidays",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 478,
+  "phrases": {
+   "478:1": [
+    {
+     "known_text": "એ અંગ્રેજી બોલે છે અને એ ઘણી દયાળુ હતી",
+     "target_text": "she speaks English and she was very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ખૂબ દયાળુ",
+     "target_text": "very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, દયાળુ",
+     "target_text": "yes kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ ખૂબ દયાળુ છે",
+     "target_text": "that's very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ ખૂબ દયાળુ છે",
+     "target_text": "I'm sure that's very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ ખૂબ દયાળુ છે",
+     "target_text": "the students say that's very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ ખૂબ દયાળુ છે",
+     "target_text": "I know that's very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ ખૂબ દયાળુ હતું",
+     "target_text": "it was very kind on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે તમારી બહેન સાથે દયાળુ રહેવું જોઈએ.",
+     "target_text": "You should be kind to your sister.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ખૂબ દયાળુ હોઈ શકે.",
+     "target_text": "He might be very kind.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આશા છે કે તે દયાળુ છે.",
+     "target_text": "I hope she's kind.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ગયા પછી એ ઘણી દયાળુ હતી.",
+     "target_text": "She was very kind after you left.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ એક દયાળુ માણસ છે જે મદદ કરવા માગે છે.",
+     "target_text": "He's a kind man who wants to help.",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મારા પિતા ને દયાળુ લોકો ગમે.",
+     "target_text": "My father likes kind people.",
+     "phrase_role": "use"
+    }
+   ],
+   "478:2": [
+    {
+     "known_text": "હા, તેનું હૃદય ખૂબ દયાળુ છે",
+     "target_text": "yes she has such a kind heart",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એક દયાળુ હૃદય",
+     "target_text": "a kind heart",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એવું હૃદય",
+     "target_text": "such a heart",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારે એક દયાળુ હૃદય જોઈએ છે",
+     "target_text": "I need a kind heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ એક દયાળુ હૃદય છે",
+     "target_text": "I'm sure that's a kind heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ એક દયાળુ હૃદય છે",
+     "target_text": "the students say that's a kind heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ એક દયાળુ હૃદય છે",
+     "target_text": "I know that's a kind heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ એક દયાળુ હૃદય હતું",
+     "target_text": "it was a kind heart on Tuesday",
+     "phrase_role": "use"
+    }
+   ],
+   "478:3": [
+    {
+     "known_text": "તેનું",
+     "target_text": "she",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "છે",
+     "target_text": "has",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને લાગે છે કે તેનું હૃદય ખૂબ દયાળુ છે",
+     "target_text": "I think she has such a kind heart",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, તેનું છે",
+     "target_text": "yes she has",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તેનું એવું હૃદય છે",
+     "target_text": "I'm sure she has such a heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તેનું એવું હૃદય છે",
+     "target_text": "the students say she has such a heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તેનું એવું હૃદય છે",
+     "target_text": "I know she has such a heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તેનું એવું હૃદય છે",
+     "target_text": "I think she has such a heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેનું હૃદય ખૂબ દયાળુ છે",
+     "target_text": "she has such a kind heart",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તેનું હૃદય ખૂબ દયાળુ છે",
+     "target_text": "I'm sure she has such a kind heart",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 479,
+  "phrases": {
+   "479:1": [
+    {
+     "known_text": "આટલું",
+     "target_text": "the least",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તો",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કરી જ શકું",
+     "target_text": "could do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અલબત્ત, આટલું તો હું કરી જ શકું",
+     "target_text": "of course it's the least I could do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, આટલું તો હું કરી જ શકું",
+     "target_text": "yes it's the least I could do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે આટલું તો હું કરી જ શકું",
+     "target_text": "it's the least I could do on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે આટલું તો હું કરી જ શકું",
+     "target_text": "I'm sure it's the least I could do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે આટલું તો હું કરી જ શકું",
+     "target_text": "the students say it's the least I could do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે આટલું તો હું કરી જ શકું",
+     "target_text": "I know it's the least I could do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે આટલું તો હું કરી જ શકું",
+     "target_text": "I think it's the least I could do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેઓ કહે છે કે આટલું તો હું કરી જ શકું",
+     "target_text": "they say it's the least I could do",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 480,
+  "phrases": {
+   "480:1": [
+    {
+     "known_text": "હવે બહુ દૂર આગળ",
+     "target_text": "far ahead now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "બહુ દૂર આગળ",
+     "target_text": "far ahead",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હવે તે આગળ બહુ દૂર નથી",
+     "target_text": "it's not far ahead now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ આગળ છે",
+     "target_text": "I'm sure that's ahead",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ આગળ છે",
+     "target_text": "the students say that's ahead",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ બહુ દૂર આગળ છે",
+     "target_text": "I know that's far ahead",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ આગળ હતું",
+     "target_text": "it was ahead on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એ બહુ દૂર આગળ છે",
+     "target_text": "I think that's far ahead",
+     "phrase_role": "use"
+    }
+   ],
+   "480:2": [
+    {
+     "known_text": "તે",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ગમે તે",
+     "target_text": "whatever",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કહે",
+     "target_text": "says",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે ગમે તે કહે, હું એ ઇચ્છતો નથી",
+     "target_text": "whatever he says, I don't want it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, તે ગમે તે કહે",
+     "target_text": "yes whatever he says",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે તે ગમે તે કહે",
+     "target_text": "whatever he says on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે ગમે તે કહે",
+     "target_text": "I'm sure whatever he says",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તે ગમે તે કહે",
+     "target_text": "the students say whatever he says",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તે ગમે તે કહે",
+     "target_text": "I know whatever he says",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તે ગમે તે કહે",
+     "target_text": "I think whatever he says",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ગમે તે કહે, હવે તે આગળ બહુ દૂર નથી",
+     "target_text": "whatever he says it's not far ahead now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 481,
+  "phrases": {
+   "481:1": [
+    {
+     "known_text": "સાચી",
+     "target_text": "real",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આશા",
+     "target_text": "hope",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે આપણી પાસે બચેલી એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "I'm sure it's the only real hope we have left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એકમાત્ર સાચી આશા",
+     "target_text": "the only real hope",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, સાચી આશા",
+     "target_text": "yes real hope",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ સાચી આશા છે",
+     "target_text": "I'm sure that's real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ સાચી આશા છે",
+     "target_text": "the students say that's real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ સાચી આશા છે",
+     "target_text": "I know that's real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એ સાચી આશા છે",
+     "target_text": "I think that's real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ સાચી આશા હતી",
+     "target_text": "it was real hope on Tuesday",
+     "phrase_role": "use"
+    }
+   ],
+   "481:2": [
+    {
+     "known_text": "આપણી પાસે",
+     "target_text": "we have",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "બચેલી",
+     "target_text": "left",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માફ કરશો, આપણી પાસે બચેલી એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "I'm afraid it's the only real hope we have left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આપણી પાસે બચેલી સાચી આશા",
+     "target_text": "the real hope we have left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, આપણી પાસે બચેલી",
+     "target_text": "yes we have left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આપણી પાસે બચેલી એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "it's the only real hope we have left",
+     "phrase_role": "use"
+    }
+   ],
+   "481:3": [
+    {
+     "known_text": "એકમાત્ર",
+     "target_text": "the only",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "સાચી આશા",
+     "target_text": "real hope",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "એ જ છે",
+     "target_text": "it's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મેં કહ્યું કે આપણી પાસે બચેલી એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "I said that it's the only real hope we have left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "yes it's the only real hope",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "it's the only real hope on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "I'm sure it's the only real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "the students say it's the only real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "I know it's the only real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "I think it's the only real hope",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણી પાસે બચેલી એકમાત્ર સાચી આશા એ જ છે",
+     "target_text": "it's the only real hope we have left",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 482,
+  "phrases": {
+   "482:1": [
+    {
+     "known_text": "તે સાચું છે કે તેઓ ગંભીર નથી",
+     "target_text": "it's true they're not serious",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તેઓ ગંભીર છે",
+     "target_text": "they are serious",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું ગંભીર છું",
+     "target_text": "I'm serious",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તેઓ ગંભીર છે",
+     "target_text": "I'm sure they are serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ ગંભીર છે",
+     "target_text": "the students are serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તેઓ ગંભીર છે",
+     "target_text": "I know they are serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે તેઓ ગંભીર હતા",
+     "target_text": "they were serious on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તેઓ ગંભીર છે",
+     "target_text": "I think they are serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ગંભીર થઈ રહ્યો છે",
+     "target_text": "he's getting serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મારે ગંભીર રહેવું પડશે",
+     "target_text": "I'll have to remain serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણે ગંભીર રહેવું જોઇએ",
+     "target_text": "we should remain serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ગંભીર હોઈ શકે",
+     "target_text": "he might be serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "શું તમે ગંભીર છો",
+     "target_text": "are you serious",
+     "phrase_role": "use"
+    }
+   ],
+   "482:2": [
+    {
+     "known_text": "તેઓ",
+     "target_text": "they",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ગંભીર",
+     "target_text": "serious",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "નથી",
+     "target_text": "'re not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માફ કરશો, તેઓ ગંભીર નથી",
+     "target_text": "I'm afraid they're not serious",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, તેઓ ગંભીર નથી",
+     "target_text": "yes they're not serious",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે તેઓ ગંભીર નથી",
+     "target_text": "they're not serious on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તેઓ ગંભીર નથી",
+     "target_text": "I'm sure they're not serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તેઓ ગંભીર નથી",
+     "target_text": "the students say they're not serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તેઓ ગંભીર નથી",
+     "target_text": "I know they're not serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તેઓ ગંભીર નથી",
+     "target_text": "I think they're not serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એક માત્ર સાચી આશા એ છે કે તેઓ ગંભીર નથી",
+     "target_text": "the only real hope is that they're not serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આશા છે કે તેઓ ગંભીર નથી",
+     "target_text": "I hope they're not serious",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણતો નથી કે શા માટે તેઓ ગંભીર નથી",
+     "target_text": "I don't know why they're not serious",
+     "phrase_role": "use"
+    }
+   ],
+   "482:3": [
+    {
+     "known_text": "એક માત્ર",
+     "target_text": "the only",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "સાચી આશા",
+     "target_text": "real hope",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "એ છે કે",
+     "target_text": "is that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "એક માત્ર સાચી આશા એ છે કે તે ખુશ છે",
+     "target_text": "the only real hope is that he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, એક માત્ર સાચી આશા એ છે કે",
+     "target_text": "yes the only real hope is that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે એક માત્ર સાચી આશા એ છે કે",
+     "target_text": "the only real hope is that on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એક માત્ર સાચી આશા એ છે કે તેઓ તૈયાર થઈ જશે",
+     "target_text": "I'm sure the only real hope is that they'll be ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એક માત્ર સાચી આશા એ છે કે તેઓ સમજે છે",
+     "target_text": "the students say the only real hope is that they understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એક માત્ર સાચી આશા એ છે કે તેઓ સમજે છે",
+     "target_text": "I think the only real hope is that they understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એક માત્ર સાચી આશા એ છે કે તેઓ ગંભીર નથી",
+     "target_text": "the only real hope is that they're not serious",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 483,
+  "phrases": {
+   "483:1": [
+    {
+     "known_text": "જીવન",
+     "target_text": "life",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જીવન સરળ નથી",
+     "target_text": "life isn't easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારું જીવન",
+     "target_text": "my life",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારું જીવન સારું છે",
+     "target_text": "my life is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે જીવન સરળ છે",
+     "target_text": "I'm sure life is easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે જીવન સરળ નથી",
+     "target_text": "the students say life isn't easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે જીવન સરળ નથી",
+     "target_text": "I know life isn't easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે જીવન સરળ નથી",
+     "target_text": "life isn't easy on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ગયા પછી જીવન સહેલું નહોતું",
+     "target_text": "life wasn't easy after you left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું શીખ્યો છું કે જીવન સહેલું નથી",
+     "target_text": "I've learnt that life isn't easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને જીવન ગમે છે",
+     "target_text": "I like life",
+     "phrase_role": "build"
+    }
+   ],
+   "483:2": [
+    {
+     "known_text": "તે",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હોવાનું",
+     "target_text": "meant to be",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "નથી",
+     "target_text": "'s not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અલબત્ત, તે સરળ હોવાનું નથી",
+     "target_text": "of course it's not meant to be easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે સરળ હોવાનું નથી",
+     "target_text": "it's not meant to be easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, તે હોવાનું નથી",
+     "target_text": "yes it's not meant to be",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે સરળ હોવાનું નથી",
+     "target_text": "I'm sure it's not meant to be easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તે સરળ હોવાનું નથી",
+     "target_text": "the students say it's not meant to be easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તે સરળ હોવાનું નથી",
+     "target_text": "I know it's not meant to be easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તે સરળ હોવાનું નથી",
+     "target_text": "I think it's not meant to be easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જીવન સરળ નથી પણ તે સરળ હોવાનું પણ નથી",
+     "target_text": "life isn't easy but it's not meant to be easy",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 484,
+  "phrases": {
+   "484:1": [
+    {
+     "known_text": "હું પડકાર ઈચ્છું છું",
+     "target_text": "I want a challenge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે પડકાર",
+     "target_text": "a challenge on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ પડકાર છે",
+     "target_text": "that's a challenge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ પડકાર છે",
+     "target_text": "I'm sure that's a challenge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ પડકાર છે",
+     "target_text": "the students say that's a challenge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ પડકાર છે",
+     "target_text": "I know that's a challenge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ પડકાર હતું",
+     "target_text": "it was a challenge on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એ પડકાર છે",
+     "target_text": "I think that's a challenge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જીવન કેમ પડકાર છે",
+     "target_text": "why is life a challenge",
+     "phrase_role": "use"
+    }
+   ],
+   "484:2": [
+    {
+     "known_text": "તે",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "બનવા માટે છે",
+     "target_text": "'s meant to be",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે એક નવું જીવન બનવા માટે છે",
+     "target_text": "it's meant to be a new life",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે તે બનવા માટે છે",
+     "target_text": "it's meant to be on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, તે બનવા માટે છે",
+     "target_text": "yes it's meant to be",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે બનવા માટે છે",
+     "target_text": "I'm sure it's meant to be",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તે બનવા માટે છે",
+     "target_text": "the students say it's meant to be",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તે બનવા માટે છે",
+     "target_text": "I know it's meant to be",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તે બનવા માટે છે",
+     "target_text": "I think it's meant to be",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે એક પડકાર બનવા માટે છે",
+     "target_text": "it's meant to be a challenge",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 485,
+  "phrases": {
+   "485:1": [
+    {
+     "known_text": "અમારે દૂર જવું જોઈએ",
+     "target_text": "we need to get away",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારે દૂર જવા છે",
+     "target_text": "I want to get away",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, દૂર જવા",
+     "target_text": "yes to get away",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તેઓ દૂર જવા માગે છે",
+     "target_text": "I'm sure they want to get away",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ દૂર જવા માગે છે",
+     "target_text": "the students want to get away",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તેઓ દૂર જવા માગે છે",
+     "target_text": "I know they want to get away",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે તેઓ દૂર જવા માગે છે",
+     "target_text": "they want to get away on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તેઓ દૂર જવા માગે છે",
+     "target_text": "I think they want to get away",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જેટલું ઝડપથી શક્ય હોય તેટલું દૂર જવા ઈચ્છું છું",
+     "target_text": "I want to get away as quickly as possible",
+     "phrase_role": "use"
+    }
+   ],
+   "485:2": [
+    {
+     "known_text": "બીજું કશું",
+     "target_text": "nothing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "વધારે ખુશ",
+     "target_text": "happier",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ન કરી શકે",
+     "target_text": "would make",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે સાચું છે કે બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "it's true nothing would make me happier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "nothing would make me happier on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "yes, nothing would make me happier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "I'm sure nothing would make me happier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "the students say nothing would make me happier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "I know nothing would make me happier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "I think nothing would make me happier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "દૂર જવા કરતાં બીજું કશું મને વધારે ખુશ ન કરી શકે",
+     "target_text": "nothing would make me happier than to get away",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 486,
+  "phrases": {
+   "486:1": [
+    {
+     "known_text": "તે સાચું છે કે તમારી આંખો સુંદર છે",
+     "target_text": "it's true your eyes are beautiful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમારી આંખો",
+     "target_text": "your eyes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમારી આંખો સુંદર છે",
+     "target_text": "your eyes are beautiful",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારી આંખો સારી છે",
+     "target_text": "my eyes are good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તમારી આંખો સુંદર છે",
+     "target_text": "I'm sure your eyes are beautiful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તમારી આંખો સુંદર છે",
+     "target_text": "the students say your eyes are beautiful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તમારી આંખો સુંદર છે",
+     "target_text": "I know your eyes are beautiful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે તમારી આંખો સુંદર હતી",
+     "target_text": "your eyes were beautiful on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને તમારી આંખો ગમે છે",
+     "target_text": "I like your eyes",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 487,
+  "phrases": {
+   "487:1": [
+    {
+     "known_text": "પુલ ની બાજુમાં",
+     "target_text": "next to the bridge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ પુલ છે",
+     "target_text": "that's the bridge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "પુલ ની",
+     "target_text": "of the bridge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ પુલ છે",
+     "target_text": "I'm sure that's the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ પુલ છે",
+     "target_text": "the students say that's the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ પુલ છે",
+     "target_text": "I know that's the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ પુલ હતું",
+     "target_text": "it was the bridge on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એ પુલ છે",
+     "target_text": "I think that's the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "શું તમે પુલ જોયો",
+     "target_text": "did you see the bridge",
+     "phrase_role": "use"
+    }
+   ],
+   "487:2": [
+    {
+     "known_text": "મને લાગે છે કે એ પુલ ની નીચે છે",
+     "target_text": "I think that it's under the bridge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "પુલ ની નીચે",
+     "target_text": "under the bridge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ પુલ ની નીચે છે",
+     "target_text": "it's under the bridge",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ ટ્રેન ની નીચે છે",
+     "target_text": "it's under the train",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ પુલ ની નીચે છે",
+     "target_text": "I'm sure it's under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ પુલ ની નીચે છે",
+     "target_text": "the students say it's under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ પુલ ની નીચે છે",
+     "target_text": "I know it's under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ પુલ ની નીચે હતું",
+     "target_text": "it was under the bridge on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ પુલ ની નીચે શું થવાનું છે",
+     "target_text": "what's going to happen under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ માણસ પુલ ની નીચે ઊભો છે",
+     "target_text": "that man is standing under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે પુલ ની નીચે ઊભા ન રહેવું જોઈએ",
+     "target_text": "you shouldn't stand under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કદાચ એ પુલ ની નીચે છે",
+     "target_text": "it might be under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આશા છે કે એ પુલ ની નીચે છે",
+     "target_text": "I hope it's under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "પુલ ની નીચે શું છે",
+     "target_text": "what's under the bridge",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં પૂછ્યું કે પુલ ની નીચે શું છે",
+     "target_text": "I asked what's under the bridge",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 488,
+  "phrases": {
+   "488:1": [
+    {
+     "known_text": "મને રેખા ન દેખાય",
+     "target_text": "I can't see the line",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "પીળી રેખા",
+     "target_text": "yellow line",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ પીળી રેખા",
+     "target_text": "this yellow line",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ રેખા સારી છે",
+     "target_text": "the line is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ પીળી રેખા છે",
+     "target_text": "I'm sure that's a yellow line",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ પીળી રેખા છે",
+     "target_text": "the students say that's a yellow line",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ પીળી રેખા છે",
+     "target_text": "I know that's a yellow line",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ પીળી રેખા હતી",
+     "target_text": "it was a yellow line on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું રેખા જોઈ શકવાનો નથી",
+     "target_text": "I'm not going to be able to see the line",
+     "phrase_role": "use"
+    }
+   ],
+   "488:2": [
+    {
+     "known_text": "મને ખાતરી છે કે એ આ પીળી રેખા ની બીજી બાજુ છે",
+     "target_text": "I'm sure it's on the other side of that yellow line",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "બીજી બાજુ",
+     "target_text": "the other side",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "રેખા ની બીજી બાજુ",
+     "target_text": "the other side of the line",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ બાજુ પર છે",
+     "target_text": "it's on the side",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ બીજી બાજુ છે",
+     "target_text": "I'm sure that's the other side",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ બીજી બાજુ છે",
+     "target_text": "the students say that's the other side",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ પીળી રેખા ની બીજી બાજુ છે",
+     "target_text": "I know it's on the other side of the yellow line",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ આ પીળી રેખા ની બીજી બાજુ છે",
+     "target_text": "it's on the other side of that yellow line",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ માણસ રેખા ની બીજી બાજુ ઊભો છે",
+     "target_text": "that man is standing on the other side of the line",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કદાચ એ રેખા ની બીજી બાજુ છે",
+     "target_text": "it might be on the other side of the line",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 489,
+  "phrases": {
+   "489:1": [
+    {
+     "known_text": "મને કડક કોફી ગમે છે",
+     "target_text": "I like strong coffee",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કડક કોફી",
+     "target_text": "strong coffee",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે કડક",
+     "target_text": "strong on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ કડક છે",
+     "target_text": "I'm sure that's strong",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે એ કડક છે",
+     "target_text": "the students say that's strong",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે એ કડક કોફી છે",
+     "target_text": "I know that's strong coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે એ કડક હતું",
+     "target_text": "it was strong on Tuesday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે એ કડક છે",
+     "target_text": "I think that's strong",
+     "phrase_role": "use"
+    }
+   ],
+   "489:2": [
+    {
+     "known_text": "હમણા",
+     "target_text": "right now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને હમણા જોઈએ છે",
+     "target_text": "I need it right now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હમણા બનાવો",
+     "target_text": "make it right now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મારે હમણા જવું છે",
+     "target_text": "I want to go right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ કડક કોફી હમણા છે",
+     "target_text": "I'm sure that's strong coffee right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ હમણા તૈયાર છે",
+     "target_text": "the students are ready right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મંગળવારે નહીં, હમણા",
+     "target_text": "not on Tuesday, right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હમણા શું થવાનું છે",
+     "target_text": "what's going to happen right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું હમણા પુલ જોઈ શકવાનો નથી",
+     "target_text": "I'm not going to be able to see the bridge right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હમણા તે શક્ય ન હોત",
+     "target_text": "that wouldn't be possible right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હમણા કોઈ સમસ્યા નથી",
+     "target_text": "it's not a problem right now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હમણા તે કરી શકાય",
+     "target_text": "it could be done right now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે હમણા કરી શકાય",
+     "target_text": "It could be done right now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હમણા કરી શકાય",
+     "target_text": "could be done right now",
+     "phrase_role": "build"
+    }
+   ],
+   "489:3": [
+    {
+     "known_text": "મને",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કડક",
+     "target_text": "strong",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કોફી",
+     "target_text": "coffee",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "શું તમે મને કડક કોફી આપી શકો",
+     "target_text": "can you give me a strong cup of coffee",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હા, મને કડક કોફી",
+     "target_text": "yes me a strong cup of coffee",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મંગળવારે મને કડક કોફી",
+     "target_text": "me a strong cup of coffee on Tuesday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તેઓ મને કડક કોફી આપશે",
+     "target_text": "I'm sure they will give me a strong cup of coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તેઓ મને કડક કોફી આપશે",
+     "target_text": "the students say they will give me a strong cup of coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તેઓ મને કડક કોફી આપશે",
+     "target_text": "I know they will give me a strong cup of coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તેઓ મને કડક કોફી આપશે",
+     "target_text": "I think they will give me a strong cup of coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કાલે તમે મને કડક કોફી આપશો",
+     "target_text": "tomorrow you will give me a strong cup of coffee",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જતા પહેલાં મને કડક કોફી બનાવો",
+     "target_text": "make me a strong cup of coffee before you go",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "શું તમે હમણા મને કડક કોફી બનાવી શકો",
+     "target_text": "can you make me a strong cup of coffee right now",
+     "phrase_role": "use"
+    }
+   ],
+   "489:4": [
+    {
+     "known_text": "તમે",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ના બનાવો",
+     "target_text": "don't make",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "જો તમે હમણા મને કડક કોફી ના બનાવો તો ફર્ક નથી",
+     "target_text": "if you don't make me a strong cup of coffee right now it doesn't matter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જો તમે ના બનાવો",
+     "target_text": "if you don't make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જો તમે મને ના બનાવો",
+     "target_text": "if you don't make me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તમે ના બનાવો",
+     "target_text": "I'm sure you don't make it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વિદ્યાર્થીઓ કહે છે કે તમે ના બનાવો",
+     "target_text": "the students say you don't make it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું જાણું છું કે તમે ના બનાવો",
+     "target_text": "I know you don't make it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે તમે ના બનાવો",
+     "target_text": "I think you don't make it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જો તમે હમણા મને કડક કોફી ના બનાવો",
+     "target_text": "if you don't make me a strong cup of coffee right now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 490,
+  "phrases": {
+   "490:2": [
+    {
+     "known_text": "વિશ્વાસ",
+     "target_text": "trust",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કોઈ",
+     "target_text": "anyone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "પર",
+     "target_text": "on",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તો હું કોઈ પર વિશ્વાસ નહીં કરીશ",
+     "target_text": "I'm sure then I will never trust anyone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોઈ પર વિશ્વાસ કરવો",
+     "target_text": "to trust anyone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોઈ પર વિશ્વાસ કરતી નથી",
+     "target_text": "doesn't trust anyone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે કોઈ પર વિશ્વાસ કરતી નથી",
+     "target_text": "she doesn't trust anyone",
+     "phrase_role": "use"
+    }
+   ],
+   "490:3": [
+    {
+     "known_text": "નહીં",
+     "target_text": "not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કરીશ",
+     "target_text": "will do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માફ કરશો, તો હું કોઈ પર વિશ્વાસ નહીં કરીશ",
+     "target_text": "I'm afraid then I will never trust anyone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું નહીં કરીશ",
+     "target_text": "I will never",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે નહીં કરીશ",
+     "target_text": "will never do that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું કોઈ પર વિશ્વાસ નહીં કરીશ",
+     "target_text": "I will never trust anyone",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું તે નહીં કરીશ",
+     "target_text": "I will never do that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું તે નહીં કહીશ",
+     "target_text": "I will never say that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ત્યાં નહીં જઈશ",
+     "target_text": "I will never go there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે કોઈ પર વિશ્વાસ નહીં કરે",
+     "target_text": "she will never trust anyone",
+     "phrase_role": "use"
+    }
+   ],
+   "490:4": [
+    {
+     "known_text": "ફરી",
+     "target_text": "again",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ક્યારેય",
+     "target_text": "ever",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અમે ફરી ક્યારેય વાત કરવા માગતા નથી",
+     "target_text": "we never want to talk ever again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી ક્યારેય નહીં",
+     "target_text": "not ever again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે ફરી ક્યારેય નહીં કરીશ",
+     "target_text": "will never do that ever again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું ફરી ક્યારેય કોઈ પર વિશ્વાસ નહીં કરીશ",
+     "target_text": "I will never trust anyone ever again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ફરી ક્યારેય ત્યાં નહીં જઈશ",
+     "target_text": "I will never go there ever again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ફરી ક્યારેય તે નહીં કહીશ",
+     "target_text": "I will never say that ever again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું તે ફરી ક્યારેય નહીં કરીશ",
+     "target_text": "I will never do that ever again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તો હું ફરી ક્યારેય કોઈ પર વિશ્વાસ નહીં કરીશ",
+     "target_text": "then I will never trust anyone ever again",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 491,
+  "phrases": {
+   "491:1": [
+    {
+     "known_text": "મને ખાતરી છે કે તમે જે રીતે મદદ કરવાની કોશિશ કરો છો એ મને ગમે છે",
+     "target_text": "I'm sure I love the way you try to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોશિશ કરીશ",
+     "target_text": "will try",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી કોશિશ",
+     "target_text": "try again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું કોશિશ કરીશ",
+     "target_text": "I will try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે કોશિશ કરીશું",
+     "target_text": "we will try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે કોશિશ કરશો",
+     "target_text": "you will try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેઓ કોશિશ કરશે",
+     "target_text": "they will try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ફરી કોશિશ કરીશ",
+     "target_text": "I will try again",
+     "phrase_role": "use"
+    }
+   ],
+   "491:2": [
+    {
+     "known_text": "એ",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ગમે છે",
+     "target_text": "love",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "એ મને ગમે છે",
+     "target_text": "I love that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે એ મને ગમે છે",
+     "target_text": "today I love that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હવે એ મને ગમે છે",
+     "target_text": "now I love that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી એ મને ગમે છે",
+     "target_text": "again I love that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં એ મને ગમે છે",
+     "target_text": "here I love that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે ફરી એ મને ગમે છે",
+     "target_text": "today again I love that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હવે અહીં એ મને ગમે છે",
+     "target_text": "now here I love that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી અહીં એ મને ગમે છે",
+     "target_text": "again here I love that",
+     "phrase_role": "use"
+    }
+   ],
+   "491:3": [
+    {
+     "known_text": "જે",
+     "target_text": "the",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "રીતે",
+     "target_text": "way",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે સાચું છે કે તમે જે રીતે મદદ કરવાની કોશિશ કરો છો એ મને ગમે છે",
+     "target_text": "it's true I love the way you try to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જે રીતે તમે",
+     "target_text": "the way you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જે રીતે અમે",
+     "target_text": "the way we",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જે રીતે તમે કોશિશ કરો છો એ મને ગમે છે",
+     "target_text": "I love the way you try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જે રીતે અમે કોશિશ કરીએ છીએ એ મને ગમે છે",
+     "target_text": "I love the way we try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જે રીતે તેઓ કોશિશ કરે છે એ મને ગમે છે",
+     "target_text": "I love the way they try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે જે રીતે તમે કોશિશ કરો છો એ મને ગમે છે",
+     "target_text": "today I love the way you try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી જે રીતે તમે કોશિશ કરો છો એ મને ગમે છે",
+     "target_text": "again I love the way you try",
+     "phrase_role": "use"
+    }
+   ],
+   "491:4": [
+    {
+     "known_text": "મદદ",
+     "target_text": "help",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કરવાની કોશિશ",
+     "target_text": "try to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અલબત્ત, તમે જે રીતે મદદ કરવાની કોશિશ કરો છો એ મને ગમે છે",
+     "target_text": "of course I love the way you try to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે મદદ કરવાની કોશિશ",
+     "target_text": "today try to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી મદદ કરવાની કોશિશ",
+     "target_text": "again try to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું મદદ કરવાની કોશિશ કરીશ",
+     "target_text": "I will try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે મદદ કરવાની કોશિશ કરીશું",
+     "target_text": "we will try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે મદદ કરવાની કોશિશ કરો છો",
+     "target_text": "you try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેઓ મદદ કરવાની કોશિશ કરે છે",
+     "target_text": "they try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે જે રીતે મદદ કરવાની કોશિશ કરો છો એ મને ગમે છે",
+     "target_text": "I love the way you try to help",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 492,
+  "phrases": {
+   "492:1": [
+    {
+     "known_text": "અને તમારા કયા મિત્રો અંગ્રેજી બોલે છે?",
+     "target_text": "and which of your friends speak English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમને કઈ",
+     "target_text": "which to you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અમને કઈ",
+     "target_text": "which to us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કઈ છે?",
+     "target_text": "which is it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને કઈ ગમે છે?",
+     "target_text": "which do you love?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને કઈ ગમે છે?",
+     "target_text": "which do we love?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તેઓને કઈ ગમે છે?",
+     "target_text": "which do they love?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને આજે કઈ ગમે છે?",
+     "target_text": "which do you love today?",
+     "phrase_role": "use"
+    }
+   ],
+   "492:2": [
+    {
+     "known_text": "સૌથી રસપ્રદ ચોપડી",
+     "target_text": "the most interesting book",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "રસપ્રદ છે",
+     "target_text": "is interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "રસપ્રદ છે?",
+     "target_text": "is it interesting?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ રસપ્રદ છે",
+     "target_text": "that is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ રસપ્રદ છે?",
+     "target_text": "is this interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને એ રસપ્રદ લાગે છે",
+     "target_text": "we feel that is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને એ રસપ્રદ લાગે છે",
+     "target_text": "I feel that is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે એ રસપ્રદ છે",
+     "target_text": "today that is interesting",
+     "phrase_role": "use"
+    }
+   ],
+   "492:3": [
+    {
+     "known_text": "જગ્યાઓ",
+     "target_text": "places",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માંથી",
+     "target_text": "of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "એ",
+     "target_text": "those",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી તમને કઈ ગમે છે?",
+     "target_text": "which of those places do you like?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી કઈ?",
+     "target_text": "which of those places?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી કઈ રસપ્રદ?",
+     "target_text": "which of those places interesting?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી કઈ રસપ્રદ છે?",
+     "target_text": "which of those places is interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી કઈ છે?",
+     "target_text": "which of those places is it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે એ જગ્યાઓમાંથી કઈ છે?",
+     "target_text": "which of those places is it today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં એ જગ્યાઓમાંથી કઈ છે?",
+     "target_text": "which of those places is it here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી એ જગ્યાઓમાંથી કઈ છે?",
+     "target_text": "again, which of those places is it?",
+     "phrase_role": "use"
+    }
+   ],
+   "492:4": [
+    {
+     "known_text": "કઈ",
+     "target_text": "which",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "સૌથી",
+     "target_text": "most",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "રસપ્રદ",
+     "target_text": "interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું જાણતો નથી કે કઈ સૌથી રસપ્રદ છે",
+     "target_text": "I don't know which is the most interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે કઈ સૌથી રસપ્રદ",
+     "target_text": "today which is the most interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં કઈ સૌથી રસપ્રદ",
+     "target_text": "here which is the most interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી કઈ સૌથી રસપ્રદ છે?",
+     "target_text": "which of those places is the most interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને કઈ સૌથી રસપ્રદ લાગે છે",
+     "target_text": "we think which is the most interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને કઈ સૌથી રસપ્રદ લાગે છે",
+     "target_text": "I think which is the most interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી કઈ સૌથી રસપ્રદ લાગે છે?",
+     "target_text": "of those places, which is the most interesting?",
+     "phrase_role": "use"
+    }
+   ],
+   "492:5": [
+    {
+     "known_text": "તમને",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કઈ સૌથી રસપ્રદ",
+     "target_text": "which is the most interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "લાગે છે",
+     "target_text": "think",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તમને કઈ સૌથી રસપ્રદ લાગે છે?",
+     "target_text": "which do you think is the most interesting?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે તમને કઈ સૌથી રસપ્રદ લાગે છે",
+     "target_text": "today, which do you think is the most interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી તમને કઈ સૌથી રસપ્રદ લાગે છે",
+     "target_text": "again, which do you think is the most interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમને કઈ સૌથી રસપ્રદ લાગે છે?",
+     "target_text": "which do you think is the most interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ જગ્યાઓમાંથી તમને કઈ સૌથી રસપ્રદ લાગે છે?",
+     "target_text": "which of those places do you think is the most interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે તમને કઈ સૌથી રસપ્રદ લાગે છે?",
+     "target_text": "today, which do you think is the most interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી તમને કઈ સૌથી રસપ્રદ લાગે છે?",
+     "target_text": "again, which do you think is the most interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં તમને કઈ સૌથી રસપ્રદ લાગે છે?",
+     "target_text": "here, which do you think is the most interesting?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 493,
+  "phrases": {
+   "493:1": [
+    {
+     "known_text": "હું જાણતો નથી કે હવે શું આવવા નું છે",
+     "target_text": "I don't know what's going to come next",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આવવા નું",
+     "target_text": "to come",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી આવવા",
+     "target_text": "come again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું આવવા માંગું છું",
+     "target_text": "I want to come",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ફરી આવવા માંગું છું",
+     "target_text": "I want to come again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આવવા માંગું છું",
+     "target_text": "I want to come here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું આજે આવવા માંગું છું",
+     "target_text": "I want to come today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું હવે આવવા માંગું છું",
+     "target_text": "I want to come now",
+     "phrase_role": "use"
+    }
+   ],
+   "493:2": [
+    {
+     "known_text": "આવવા",
+     "target_text": "come",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "નું છે",
+     "target_text": "going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આવવા નું છે",
+     "target_text": "going to come",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે આવવા નું છે",
+     "target_text": "going to come today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી આવવા નું છે",
+     "target_text": "going to come again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "શું આવવા નું છે?",
+     "target_text": "what is going to come?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે શું આવવા નું છે?",
+     "target_text": "what is going to come today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં શું આવવા નું છે?",
+     "target_text": "what is going to come here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી શું આવવા નું છે?",
+     "target_text": "what is going to come again?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હવે શું આવવા નું છે?",
+     "target_text": "what is going to come now?",
+     "phrase_role": "use"
+    }
+   ],
+   "493:3": [
+    {
+     "known_text": "હવે",
+     "target_text": "next",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "શું",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આવવા",
+     "target_text": "come",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "નું છે",
+     "target_text": "'s going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આજે ફરી હવે શું આવવા નું છે",
+     "target_text": "today again what's going to come next",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં આજે હવે શું આવવા નું છે",
+     "target_text": "here today what's going to come next",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં ફરી હવે શું આવવા નું છે",
+     "target_text": "here again what's going to come next",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હવે શું આવવા નું છે?",
+     "target_text": "what's going to come next?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તો હવે શું આવવા નું છે?",
+     "target_text": "so what's going to come next?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી, હવે શું આવવા નું છે?",
+     "target_text": "again, what's going to come next?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં, હવે શું આવવા નું છે?",
+     "target_text": "here, what's going to come next?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે, હવે શું આવવા નું છે?",
+     "target_text": "today, what's going to come next?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 494,
+  "phrases": {
+   "494:1": [
+    {
+     "known_text": "એ ફક્ત સમસ્યાનો એક ભાગ છે",
+     "target_text": "that's only part of the problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ ભાગ",
+     "target_text": "this part",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ ભાગ",
+     "target_text": "that part",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ ભાગ રસપ્રદ છે",
+     "target_text": "this part is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ ભાગ રસપ્રદ છે",
+     "target_text": "that part is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને આ ભાગ ગમે છે",
+     "target_text": "we love this part",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને એ ભાગ ગમે છે",
+     "target_text": "I love that part",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને આ ભાગ ગમે છે?",
+     "target_text": "do you love this part?",
+     "phrase_role": "use"
+    }
+   ],
+   "494:2": [
+    {
+     "known_text": "હું શો જોવા માગું છું",
+     "target_text": "I want to see the show",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ શો",
+     "target_text": "this show",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ શો",
+     "target_text": "that show",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ શો રસપ્રદ છે",
+     "target_text": "this show is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ શો રસપ્રદ છે?",
+     "target_text": "is that show interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને આ શો ગમે છે",
+     "target_text": "we love this show",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને એ શો ગમે છે",
+     "target_text": "I love that show",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને આ શો ગમે છે?",
+     "target_text": "do you love this show?",
+     "phrase_role": "use"
+    }
+   ],
+   "494:3": [
+    {
+     "known_text": "પછી",
+     "target_text": "after",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "શું",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "થશે",
+     "target_text": "happens",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ફિલ્મ પછી શું થશે?",
+     "target_text": "what happens after the film?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે પછી શું થશે?",
+     "target_text": "what happens after today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી પછી શું થશે?",
+     "target_text": "what happens after again?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ ભાગ પછી શું થશે?",
+     "target_text": "what happens after this part?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ ભાગ પછી શું થશે?",
+     "target_text": "what happens after that part?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ શો પછી શું થશે?",
+     "target_text": "what happens after this show?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ શો પછી શું થશે?",
+     "target_text": "what happens after that show?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી, આ ભાગ પછી શું થશે?",
+     "target_text": "again, what happens after this part?",
+     "phrase_role": "use"
+    }
+   ],
+   "494:4": [
+    {
+     "known_text": "શોના",
+     "target_text": "of the show",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "પહેલા",
+     "target_text": "first",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ભાગ",
+     "target_text": "part",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું શોના પહેલા ભાગ પછી તૈયાર થઈ જઈશ",
+     "target_text": "I'll be ready after the first part of the show",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે શોના પહેલા ભાગ",
+     "target_text": "today the first part of the show",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી શોના પહેલા ભાગ",
+     "target_text": "again the first part of the show",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "શોના પહેલા ભાગ રસપ્રદ છે",
+     "target_text": "the first part of the show is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને શોના પહેલા ભાગ ગમે છે",
+     "target_text": "I love the first part of the show",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને શોના પહેલા ભાગ ગમે છે",
+     "target_text": "we love the first part of the show",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "શોના પહેલા ભાગ પછી શું થશે?",
+     "target_text": "what happens after the first part of the show?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે શોના પહેલા ભાગ પછી શું થશે?",
+     "target_text": "today, what happens after the first part of the show?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 496,
+  "phrases": {
+   "496:1": [
+    {
+     "known_text": "હું હારવા માગતો નથી",
+     "target_text": "I don't want to lose",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હારવાનું છે",
+     "target_text": "to lose is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી હારવાનું",
+     "target_text": "to lose again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હારવાનું મહત્વનું નથી",
+     "target_text": "to lose is not important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હારવાનું રસપ્રદ નથી",
+     "target_text": "to lose is not interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હારવાનું અહીં મહત્વનું નથી",
+     "target_text": "to lose is not important here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હારવાનું આજે મહત્વનું નથી",
+     "target_text": "to lose is not important today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હારવાનું ફરી મહત્વનું નથી",
+     "target_text": "to lose is not important again",
+     "phrase_role": "use"
+    }
+   ],
+   "496:2": [
+    {
+     "known_text": "હારવાનું",
+     "target_text": "to lose",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "વિચારતો નથી",
+     "target_text": "not planning",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે હું હારવાનું વિચારતો નથી",
+     "target_text": "I'm sure I'm not planning to lose",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે હારવાનું વિચારતો નથી",
+     "target_text": "not planning to lose today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી હારવાનું વિચારતો નથી",
+     "target_text": "not planning to lose again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું હારવાનું વિચારતો નથી",
+     "target_text": "I'm not planning to lose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું આજે હારવાનું વિચારતો નથી",
+     "target_text": "I'm not planning to lose today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં હારવાનું વિચારતો નથી",
+     "target_text": "I'm not planning to lose here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ફરી હારવાનું વિચારતો નથી",
+     "target_text": "I'm not planning to lose again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હવે હું હારવાનું વિચારતો નથી",
+     "target_text": "now I'm not planning to lose",
+     "phrase_role": "use"
+    }
+   ],
+   "496:3": [
+    {
+     "known_text": "જ્યારે",
+     "target_text": "when",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ખરેખર",
+     "target_text": "really",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મહત્વનું હોય ત્યારે",
+     "target_text": "it matters",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "જ્યારે ખરેખર મહત્વનું હોય ત્યારે હું તૈયાર થઈ જઈશ",
+     "target_text": "I'll be ready when it really matters",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે જ્યારે ખરેખર મહત્વનું હોય ત્યારે",
+     "target_text": "today, when it really matters",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી જ્યારે ખરેખર મહત્વનું હોય ત્યારે",
+     "target_text": "again, when it really matters",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જ્યારે ખરેખર મહત્વનું હોય ત્યારે, હું કોશિશ કરીશ",
+     "target_text": "when it really matters, I will try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જ્યારે ખરેખર મહત્વનું હોય ત્યારે, હું મદદ કરવાની કોશિશ કરીશ",
+     "target_text": "when it really matters, I will try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જ્યારે ખરેખર મહત્વનું હોય ત્યારે હું હારવાનું વિચારતો નથી",
+     "target_text": "I'm not planning to lose when it really matters",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જ્યારે ખરેખર મહત્વનું હોય ત્યારે, એ મને ગમે છે",
+     "target_text": "when it really matters, I love that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જ્યારે ખરેખર મહત્વનું હોય ત્યારે, તમે કોશિશ કરો છો",
+     "target_text": "when it really matters, you try",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 497,
+  "phrases": {
+   "497:1": [
+    {
+     "known_text": "મને ખાતરી છે કે તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "I'm sure you need to get some sleep",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ઊંઘ છે",
+     "target_text": "sleep is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ ઊંઘ",
+     "target_text": "this sleep",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ઊંઘ ગમે છે",
+     "target_text": "I love sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને ઊંઘ ગમે છે",
+     "target_text": "we love sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ ઊંઘ મહત્વનું છે",
+     "target_text": "this sleep is important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ ઊંઘ રસપ્રદ નથી",
+     "target_text": "that sleep is not interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે ઊંઘ મહત્વનું છે",
+     "target_text": "today sleep is important",
+     "phrase_role": "use"
+    }
+   ],
+   "497:2": [
+    {
+     "known_text": "થોડી",
+     "target_text": "some",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ઊંઘ",
+     "target_text": "sleep",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અલબત્ત, તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "of course you need to get some sleep",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "થોડી ઊંઘ છે",
+     "target_text": "some sleep is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે થોડી ઊંઘ",
+     "target_text": "some sleep today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને થોડી ઊંઘ ગમે છે",
+     "target_text": "I love some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને થોડી ઊંઘ ગમે છે",
+     "target_text": "we love some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને થોડી ઊંઘ જોઈએ",
+     "target_text": "I need some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને થોડી ઊંઘ જોઈએ",
+     "target_text": "we need some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે મને થોડી ઊંઘ જોઈએ",
+     "target_text": "today I need some sleep",
+     "phrase_role": "use"
+    }
+   ],
+   "497:3": [
+    {
+     "known_text": "લેવાની",
+     "target_text": "to get",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "જરૂર છે",
+     "target_text": "need",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માફ કરશો, તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "I'm afraid you need to get some sleep",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે લેવાની જરૂર છે",
+     "target_text": "need to get today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી લેવાની જરૂર છે",
+     "target_text": "need to get again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "you need to get some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે આજે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "you need to get some sleep today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે અહીં થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "you need to get some sleep here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે ફરી થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "you need to get some sleep again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે હવે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "you need to get some sleep now",
+     "phrase_role": "use"
+    }
+   ],
+   "497:4": [
+    {
+     "known_text": "એવું",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "લાગે છે",
+     "target_text": "sounds",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કે",
+     "target_text": "as though",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તમારે",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "એવું લાગે છે કે તમારે આરામની જરૂર છે",
+     "target_text": "that sounds as though you need a rest",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે એવું લાગે છે કે તમારે",
+     "target_text": "today that sounds as though you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી એવું લાગે છે કે તમારે",
+     "target_text": "again that sounds as though you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એવું લાગે છે કે તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "that sounds as though you need to get some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એવું લાગે છે કે તમારે થોડી ઊંઘ જોઈએ",
+     "target_text": "that sounds as though you need some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે એવું લાગે છે કે તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "today, that sounds as though you need to get some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી એવું લાગે છે કે તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "again, that sounds as though you need to get some sleep",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં એવું લાગે છે કે તમારે થોડી ઊંઘ લેવાની જરૂર છે",
+     "target_text": "here, that sounds as though you need to get some sleep",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 498,
+  "phrases": {
+   "498:1": [
+    {
+     "known_text": "ઊભો છે",
+     "target_text": "is standing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં ઊભો છે",
+     "target_text": "is standing here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી ઊભો છે",
+     "target_text": "is standing again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે અહીં ઊભો છે",
+     "target_text": "he is standing here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ફરી ઊભો છે",
+     "target_text": "he is standing again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આજે ઊભો છે",
+     "target_text": "he is standing today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે હવે ઊભો છે",
+     "target_text": "he is standing now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અહીં ફરી ઊભો છે",
+     "target_text": "he is standing here again",
+     "phrase_role": "use"
+    }
+   ],
+   "498:2": [
+    {
+     "known_text": "મને ખાતરી છે કે તે ત્યાં એકલો ઊભો છે",
+     "target_text": "I'm sure he's standing alone over there",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એકલો છે",
+     "target_text": "is alone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં એકલો",
+     "target_text": "alone here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે એકલો છે",
+     "target_text": "he is alone",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અહીં એકલો છે",
+     "target_text": "he is alone here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આજે એકલો છે",
+     "target_text": "he is alone today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ફરી એકલો છે",
+     "target_text": "he is alone again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે હવે એકલો છે",
+     "target_text": "he is alone now",
+     "phrase_role": "use"
+    }
+   ],
+   "498:3": [
+    {
+     "known_text": "મને લાગે છે કે તે ત્યાં એકલો ઊભો છે",
+     "target_text": "I think that he's standing alone over there",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ત્યાં છે",
+     "target_text": "is there",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી ત્યાં",
+     "target_text": "there again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે ત્યાં છે",
+     "target_text": "he is there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ત્યાં એકલો છે",
+     "target_text": "he is alone there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ત્યાં ઊભો છે",
+     "target_text": "he is standing there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ફરી ત્યાં છે",
+     "target_text": "he is there again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ત્યાં એકલો ઊભો છે",
+     "target_text": "he is standing alone there",
+     "phrase_role": "use"
+    }
+   ],
+   "498:4": [
+    {
+     "known_text": "પ્રવેશદ્વારની",
+     "target_text": "entrance",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અંદર",
+     "target_text": "inside",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું પ્રવેશદ્વારની અંદર એક મિત્રની રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm waiting for a friend inside the entrance",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે પ્રવેશદ્વારની અંદર",
+     "target_text": "inside the entrance today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી પ્રવેશદ્વારની અંદર",
+     "target_text": "inside the entrance again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે પ્રવેશદ્વારની અંદર છે",
+     "target_text": "he is inside the entrance",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પ્રવેશદ્વારની અંદર એકલો છે",
+     "target_text": "he is alone inside the entrance",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પ્રવેશદ્વારની અંદર ઊભો છે",
+     "target_text": "he is standing inside the entrance",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ત્યાં પ્રવેશદ્વારની અંદર એકલો ઊભો છે",
+     "target_text": "he is standing alone there inside the entrance",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે તે પ્રવેશદ્વારની અંદર છે",
+     "target_text": "today he is inside the entrance",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 499,
+  "phrases": {
+   "499:3": [
+    {
+     "known_text": "થોડી મિનિટોમાં બારી બંધ કરવી",
+     "target_text": "close the window in a few minutes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ બારી",
+     "target_text": "this window",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ બારી",
+     "target_text": "that window",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ બારી રસપ્રદ છે",
+     "target_text": "this window is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ બારી મહત્વનું છે",
+     "target_text": "that window is important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને આ બારી ગમે છે",
+     "target_text": "I love this window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને એ બારી ગમે છે",
+     "target_text": "we love that window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં આ બારી છે",
+     "target_text": "this window is here",
+     "phrase_role": "use"
+    }
+   ],
+   "499:4": [
+    {
+     "known_text": "દરવાજો",
+     "target_text": "door",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ખોલવો",
+     "target_text": "open",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને નથી લાગતું કે એ ટૂંક સમયમાં દરવાજો ખોલી શકે",
+     "target_text": "I don't think that she can open the door soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે દરવાજો ખોલવો",
+     "target_text": "open the door today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી દરવાજો ખોલવો",
+     "target_text": "open the door again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને દરવાજો ખોલવો ગમે છે",
+     "target_text": "I love to open the door",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને દરવાજો ખોલવો ગમે છે",
+     "target_text": "we love to open the door",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે દરવાજો ખોલવો જોઈએ",
+     "target_text": "you should open the door",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણે દરવાજો ખોલવો જોઈએ",
+     "target_text": "we should open the door",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં દરવાજો ખોલવો મહત્વનું છે",
+     "target_text": "it's important to open the door here",
+     "phrase_role": "use"
+    }
+   ],
+   "499:5": [
+    {
+     "known_text": "બારી",
+     "target_text": "window",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "બંધ કરવી",
+     "target_text": "close",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "શું તમે બારી બંધ કરી શકો?",
+     "target_text": "can you close the window?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે બારી બંધ કરવી",
+     "target_text": "close the window today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી બારી બંધ કરવી",
+     "target_text": "close the window again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને બારી બંધ કરવી ગમે છે",
+     "target_text": "I love to close the window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને બારી બંધ કરવી ગમે છે",
+     "target_text": "we love to close the window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમારે બારી બંધ કરવી જોઈએ",
+     "target_text": "you should close the window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણે બારી બંધ કરવી જોઈએ",
+     "target_text": "we should close the window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં બારી બંધ કરવી મહત્વનું છે",
+     "target_text": "it's important to close the window here",
+     "phrase_role": "use"
+    }
+   ],
+   "499:6": [
+    {
+     "known_text": "કદાચ",
+     "target_text": "maybe",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આપણે",
+     "target_text": "we should",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કદાચ આપણે હવે દરવાજો ખોલવો જોઈએ",
+     "target_text": "maybe we should open the door now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે કદાચ આપણે",
+     "target_text": "today maybe we should",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી કદાચ આપણે",
+     "target_text": "again maybe we should",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કદાચ આપણે દરવાજો ખોલવો જોઈએ",
+     "target_text": "maybe we should open the door",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કદાચ આપણે બારી બંધ કરવી જોઈએ",
+     "target_text": "maybe we should close the window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કદાચ આપણે દરવાજો ખોલવો અને બારી બંધ કરવી જોઈએ",
+     "target_text": "maybe we should open the door and close the window",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે કદાચ આપણે દરવાજો ખોલવો જોઈએ",
+     "target_text": "today, maybe we should open the door",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી કદાચ આપણે બારી બંધ કરવી જોઈએ",
+     "target_text": "again, maybe we should close the window",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 500,
+  "phrases": {
+   "500:1": [
+    {
+     "known_text": "હું એ છોકરીઓને ઓળખું છું",
+     "target_text": "I know those girls",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ છોકરીઓ",
+     "target_text": "those girls",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં છોકરીઓ",
+     "target_text": "girls here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને છોકરીઓ ગમે છે",
+     "target_text": "I love girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને છોકરીઓ ગમે છે",
+     "target_text": "we love girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને છોકરીઓ ગમે છે?",
+     "target_text": "do you love girls?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને એ છોકરીઓ ગમે છે",
+     "target_text": "I love those girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને એ છોકરીઓ ગમે છે",
+     "target_text": "we love those girls",
+     "phrase_role": "use"
+    }
+   ],
+   "500:2": [
+    {
+     "known_text": "બે",
+     "target_text": "two",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "છોકરીઓ",
+     "target_text": "girls",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "બે છોકરીઓ થાકી ગઈ હતી",
+     "target_text": "the two girls were tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે બે છોકરીઓ",
+     "target_text": "the two girls today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી બે છોકરીઓ",
+     "target_text": "the two girls again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને બે છોકરીઓ ગમે છે",
+     "target_text": "I love the two girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને બે છોકરીઓ ગમે છે",
+     "target_text": "we love the two girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને બે છોકરીઓ ગમે છે?",
+     "target_text": "do you love the two girls?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં બે છોકરીઓ છે",
+     "target_text": "the two girls are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે બે છોકરીઓ છે",
+     "target_text": "the two girls are here today",
+     "phrase_role": "use"
+    }
+   ],
+   "500:3": [
+    {
+     "known_text": "બે છોકરીઓ",
+     "target_text": "the two girls",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "વચ્ચે",
+     "target_text": "between",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું બે છોકરીઓ વચ્ચે બેસવા માગું છું",
+     "target_text": "I want to sit between the two girls",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે બે છોકરીઓ વચ્ચે",
+     "target_text": "between the two girls today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી બે છોકરીઓ વચ્ચે",
+     "target_text": "between the two girls again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે બે છોકરીઓ વચ્ચે છે",
+     "target_text": "he is between the two girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે બે છોકરીઓ વચ્ચે ઊભો છે",
+     "target_text": "he is standing between the two girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં બે છોકરીઓ વચ્ચે",
+     "target_text": "here, between the two girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે તે બે છોકરીઓ વચ્ચે છે",
+     "target_text": "today he is between the two girls",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી તે બે છોકરીઓ વચ્ચે ઊભો છે",
+     "target_text": "again he is standing between the two girls",
+     "phrase_role": "use"
+    }
+   ],
+   "500:4": [
+    {
+     "known_text": "કેમ",
+     "target_text": "why",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "બેસવા",
+     "target_text": "to sit",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માગતા",
+     "target_text": "want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "નથી",
+     "target_text": "don't you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આજે ફરી કેમ બેસવા માગતા નથી",
+     "target_text": "today again why don't you want to sit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં ફરી કેમ બેસવા માગતા નથી",
+     "target_text": "here again why don't you want to sit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં આજે કેમ બેસવા માગતા નથી",
+     "target_text": "here today why don't you want to sit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમે કેમ બેસવા માગતા નથી?",
+     "target_text": "why don't you want to sit?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે બે છોકરીઓ વચ્ચે કેમ બેસવા માગતા નથી?",
+     "target_text": "why don't you want to sit between the two girls?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે અહીં કેમ બેસવા માગતા નથી?",
+     "target_text": "why don't you want to sit here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે આજે કેમ બેસવા માગતા નથી?",
+     "target_text": "why don't you want to sit today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ફરી કેમ બેસવા માગતા નથી?",
+     "target_text": "why don't you want to sit again?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 501,
+  "phrases": {
+   "501:1": [
+    {
+     "known_text": "કાશ હું મદદ કરવા માટે તમારા પર વિશ્વાસ કરી શકતો",
+     "target_text": "if only I could trust you to help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કાશ હું",
+     "target_text": "if only I",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કાશ તમે",
+     "target_text": "if only you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કાશ અમે મદદ કરવાની કોશિશ કરીશું",
+     "target_text": "if only we will try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કાશ હું મદદ કરવાની કોશિશ કરીશ",
+     "target_text": "if only I will try to help",
+     "phrase_role": "use"
+    }
+   ],
+   "501:2": [
+    {
+     "known_text": "સાથે",
+     "target_text": "together",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "રમશો",
+     "target_text": "play",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું ઈચ્છું છું કે તમે સાથે રમશો",
+     "target_text": "I want you to play together",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે સાથે રમશો",
+     "target_text": "play together today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી સાથે રમશો",
+     "target_text": "play together again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમે સાથે રમશો",
+     "target_text": "you will play together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે અહીં સાથે રમશો",
+     "target_text": "you will play together here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે આજે સાથે રમશો",
+     "target_text": "you will play together today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ફરી સાથે રમશો",
+     "target_text": "you will play together again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે હવે સાથે રમશો",
+     "target_text": "you will play together now",
+     "phrase_role": "use"
+    }
+   ],
+   "501:3": [
+    {
+     "known_text": "ઝઘડ્યા",
+     "target_text": "arguing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "વગર",
+     "target_text": "without",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ઝઘડ્યા વગર મદદ કરવા",
+     "target_text": "to help without arguing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે ઝઘડ્યા વગર",
+     "target_text": "without arguing today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી ઝઘડ્યા વગર",
+     "target_text": "without arguing again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમે ઝઘડ્યા વગર સાથે રમશો",
+     "target_text": "you will play together without arguing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે અહીં ઝઘડ્યા વગર સાથે રમશો",
+     "target_text": "you will play together here without arguing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે આજે ઝઘડ્યા વગર સાથે રમશો",
+     "target_text": "you will play together today without arguing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ફરી ઝઘડ્યા વગર સાથે રમશો",
+     "target_text": "you will play together again without arguing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે હવે ઝઘડ્યા વગર સાથે રમશો",
+     "target_text": "you will play together now without arguing",
+     "phrase_role": "use"
+    }
+   ],
+   "501:4": [
+    {
+     "known_text": "તમારા પર",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "વિશ્વાસ કરી શકતો",
+     "target_text": "could trust",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કાશ હું ચૂપ રહેવા માટે તમારા પર વિશ્વાસ કરી શકતો",
+     "target_text": "if only I could trust you to be quiet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું તમારા પર વિશ્વાસ કરી શકતો",
+     "target_text": "I could trust you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે તમારા પર વિશ્વાસ કરી શકતો",
+     "target_text": "today could trust you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં હું તમારા પર વિશ્વાસ કરી શકતો",
+     "target_text": "here I could trust you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કાશ હું તમારા પર વિશ્વાસ કરી શકતો",
+     "target_text": "if only I could trust you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કાશ હું તમારા પર વિશ્વાસ કરી શકતો કે તમે સાથે રમશો",
+     "target_text": "if only I could trust you to play together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કાશ હું તમારા પર વિશ્વાસ કરી શકતો કે તમે ઝઘડ્યા વગર સાથે રમશો",
+     "target_text": "if only I could trust you to play together without arguing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે હું તમારા પર વિશ્વાસ કરી શકતો",
+     "target_text": "today I could trust you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 502,
+  "phrases": {
+   "502:2": [
+    {
+     "known_text": "ડાબી તરફ",
+     "target_text": "left",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "વળી ગઈ",
+     "target_text": "turned",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે ડાબી તરફ વળી ગઈ",
+     "target_text": "I'm sure she turned left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે ડાબી તરફ વળી ગઈ",
+     "target_text": "turned left today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી ડાબી તરફ વળી ગઈ",
+     "target_text": "turned left again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અહીં ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આજે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ફરી ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે હવે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left now",
+     "phrase_role": "use"
+    }
+   ],
+   "502:3": [
+    {
+     "known_text": "જમણીને",
+     "target_text": "right",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "બદલે",
+     "target_text": "instead of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે જમણીને બદલે ડાબી તરફ વળી ગઈ",
+     "target_text": "I'm sure she turned left instead of right",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે જમણીને બદલે",
+     "target_text": "instead of right today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી જમણીને બદલે",
+     "target_text": "instead of right again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે જમણીને બદલે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left instead of right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અહીં જમણીને બદલે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left here instead of right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આજે જમણીને બદલે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left today instead of right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ફરી જમણીને બદલે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left again instead of right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે હવે જમણીને બદલે ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left now instead of right",
+     "phrase_role": "use"
+    }
+   ],
+   "502:4": [
+    {
+     "known_text": "લગભગ",
+     "target_text": "almost",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ખોવાઈ ગઈ",
+     "target_text": "got lost",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે તે લગભગ ખોવાઈ ગઈ",
+     "target_text": "I'm sure she almost got lost",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે લગભગ ખોવાઈ ગઈ",
+     "target_text": "almost got lost today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી લગભગ ખોવાઈ ગઈ",
+     "target_text": "almost got lost again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે લગભગ ખોવાઈ ગઈ",
+     "target_text": "she almost got lost",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અહીં લગભગ ખોવાઈ ગઈ",
+     "target_text": "she almost got lost here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આજે લગભગ ખોવાઈ ગઈ",
+     "target_text": "she almost got lost today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે લગભગ ખોવાઈ ગઈ કારણ કે તે જમણીને બદલે ડાબી તરફ વળી ગઈ",
+     "target_text": "she almost got lost because she turned left instead of right",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી તે લગભગ ખોવાઈ ગઈ",
+     "target_text": "again she almost got lost",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 503,
+  "phrases": {
+   "503:1": [
+    {
+     "known_text": "તેઓ મુશ્કેલી ઇચ્છતા નથી",
+     "target_text": "they don't want trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ મુશ્કેલી",
+     "target_text": "this trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ મુશ્કેલી",
+     "target_text": "that trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને આ મુશ્કેલી ગમે છે",
+     "target_text": "I love this trouble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને એ મુશ્કેલી ગમે છે",
+     "target_text": "we love that trouble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ મુશ્કેલી મહત્વનું છે",
+     "target_text": "this trouble is important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ મુશ્કેલી રસપ્રદ છે",
+     "target_text": "that trouble is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં આ મુશ્કેલી છે",
+     "target_text": "this trouble is here",
+     "phrase_role": "use"
+    }
+   ],
+   "503:2": [
+    {
+     "known_text": "મુશ્કેલી",
+     "target_text": "trouble",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ઊભી કરવી",
+     "target_text": "making",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તેઓ મુશ્કેલી ઊભી કરી રહ્યા છે",
+     "target_text": "they're making trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે મુશ્કેલી ઊભી કરવી",
+     "target_text": "making trouble today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી મુશ્કેલી ઊભી કરવી",
+     "target_text": "making trouble again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને મુશ્કેલી ઊભી કરવી ગમે છે",
+     "target_text": "I love making trouble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને મુશ્કેલી ઊભી કરવી ગમે છે",
+     "target_text": "we love making trouble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને મુશ્કેલી ઊભી કરવી ગમે છે?",
+     "target_text": "do you love making trouble?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મુશ્કેલી ઊભી કરવી મહત્વનું નથી",
+     "target_text": "making trouble is not important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મુશ્કેલી ઊભી કરવી રસપ્રદ નથી",
+     "target_text": "making trouble is not interesting",
+     "phrase_role": "use"
+    }
+   ],
+   "503:3": [
+    {
+     "known_text": "મને ખાતરી છે કે મને મુશ્કેલી ઊભી કરવી નથી ગમતી",
+     "target_text": "I'm sure I hate making trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને નથી ગમતી",
+     "target_text": "I hate",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મુશ્કેલી નથી ગમતી",
+     "target_text": "hate trouble",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને મુશ્કેલી ઊભી કરવી નથી ગમતી",
+     "target_text": "I hate making trouble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને આ નથી ગમતી",
+     "target_text": "I hate this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને એ નથી ગમતી",
+     "target_text": "I hate that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને મુશ્કેલી ઊભી કરવી નથી ગમતી",
+     "target_text": "we hate making trouble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમને મુશ્કેલી ઊભી કરવી નથી ગમતી?",
+     "target_text": "do you hate making trouble?",
+     "phrase_role": "use"
+    }
+   ],
+   "503:4": [
+    {
+     "known_text": "તે",
+     "target_text": "that one",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મારું",
+     "target_text": "mine",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "છે",
+     "target_text": "'s",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અહીં તે મારું છે",
+     "target_text": "here that one's mine",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હવે તે મારું છે",
+     "target_text": "now that one's mine",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં હવે તે મારું છે",
+     "target_text": "here now that one's mine",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે મારું છે",
+     "target_text": "that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે તે મારું છે",
+     "target_text": "today that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ફરી તે મારું છે",
+     "target_text": "again that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આજે ફરી તે મારું છે",
+     "target_text": "today again that one's mine",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને મુશ્કેલી ઊભી કરવી નથી ગમતી પણ તે મારું છે",
+     "target_text": "I hate making trouble but that one's mine",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 504,
+  "phrases": {
+   "504:1": [
+    {
+     "known_text": "ઘાસ પર બેસવા",
+     "target_text": "to sit down on the grass",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આ ઘાસ",
+     "target_text": "this grass",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ ઘાસ",
+     "target_text": "that grass",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને આ ઘાસ ગમે છે",
+     "target_text": "I love this grass",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમને એ ઘાસ ગમે છે",
+     "target_text": "we love that grass",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આ ઘાસ રસપ્રદ છે",
+     "target_text": "this grass is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "એ ઘાસ મહત્વનું છે",
+     "target_text": "that grass is important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અહીં આ ઘાસ છે",
+     "target_text": "this grass is here",
+     "phrase_role": "use"
+    }
+   ],
+   "504:2": [
+    {
+     "known_text": "ઘાસ",
+     "target_text": "grass",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "પાર",
+     "target_text": "across",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "છ વાગ્યે ઘાસ પાર",
+     "target_text": "across the grass at six o'clock",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે ઘાસ પાર",
+     "target_text": "across the grass today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી ઘાસ પાર",
+     "target_text": "across the grass again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે ઘાસ પાર ઊભો છે",
+     "target_text": "he is standing across the grass",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ઘાસ પાર છે",
+     "target_text": "he is across the grass",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અહીં ઘાસ પાર છે",
+     "target_text": "he is here across the grass",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આજે ઘાસ પાર છે",
+     "target_text": "he is across the grass today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ફરી ઘાસ પાર છે",
+     "target_text": "he is across the grass again",
+     "phrase_role": "use"
+    }
+   ],
+   "504:3": [
+    {
+     "known_text": "દોડવા",
+     "target_text": "run",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "જવાનો છું",
+     "target_text": "going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું આવતા અઠવાડિયે દોડવા જવાનો છું",
+     "target_text": "I'm going to run next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે દોડવા જવાનો છું",
+     "target_text": "going to run today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી દોડવા જવાનો છું",
+     "target_text": "going to run again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું દોડવા જવાનો છું",
+     "target_text": "I'm going to run",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું આજે દોડવા જવાનો છું",
+     "target_text": "I'm going to run today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં દોડવા જવાનો છું",
+     "target_text": "I'm going to run here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ફરી દોડવા જવાનો છું",
+     "target_text": "I'm going to run again",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ઘાસ પાર દોડવા જવાનો છું",
+     "target_text": "I'm going to run across the grass",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 505,
+  "phrases": {
+   "505:1": [
+    {
+     "known_text": "આશા છે કે હું પાછળ ના રહી જાઉં",
+     "target_text": "I hope I don't get left behind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં પાછળ",
+     "target_text": "behind here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી પાછળ",
+     "target_text": "behind again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તે પાછળ છે",
+     "target_text": "he is behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પાછળ ઊભો છે",
+     "target_text": "he is standing behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે અહીં પાછળ છે",
+     "target_text": "he is behind here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે આજે પાછળ છે",
+     "target_text": "he is behind today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે ફરી પાછળ છે",
+     "target_text": "he is behind again",
+     "phrase_role": "use"
+    }
+   ],
+   "505:2": [
+    {
+     "known_text": "ના",
+     "target_text": "don't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "રહી જાઉં",
+     "target_text": "get left",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું દોડવા જવાનો છું જેથી હું પાછળ ના રહી જાઉં",
+     "target_text": "I'm going to run so that I don't get left behind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આજે ના રહી જાઉં",
+     "target_text": "don't get left today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ફરી ના રહી જાઉં",
+     "target_text": "don't get left again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું ના રહી જાઉં",
+     "target_text": "I don't get left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું પાછળ ના રહી જાઉં",
+     "target_text": "I don't get left behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં ના રહી જાઉં",
+     "target_text": "I don't get left here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું આજે ના રહી જાઉં",
+     "target_text": "I don't get left today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું ફરી ના રહી જાઉં",
+     "target_text": "I don't get left again",
+     "phrase_role": "use"
+    }
+   ],
+   "505:3": [
+    {
+     "known_text": "જેથી તે ખુશ છે",
+     "target_text": "so that he's happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જેથી હું",
+     "target_text": "so that I",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જેથી તમે",
+     "target_text": "so that you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "જેથી હું પાછળ ના રહી જાઉં",
+     "target_text": "so that I don't get left behind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જેથી હું કોશિશ કરીશ",
+     "target_text": "so that I will try",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જેથી અમે મદદ કરવાની કોશિશ કરીશું",
+     "target_text": "so that we will try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જેથી તમે ત્યાં છો",
+     "target_text": "so that you are there",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "જેથી એ મહત્વનું છે",
+     "target_text": "so that it is important",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 506,
+  "phrases": {
+   "506:1": [
+    {
+     "known_text": "બીજા હાફના અંત પહેલાં",
+     "target_text": "before the end of the second half",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું, તે પહેલાં",
+     "target_text": "I, before",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં, તે પહેલાં",
+     "target_text": "here, before",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો, તે પહેલાં",
+     "target_text": "I used to live around here, before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં તે પહેલાં રહેતો હતો",
+     "target_text": "I used to live here before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પહેલાં હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "before that I used to live around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પહેલાં હું અહીં રહેતો હતો",
+     "target_text": "before that I used to live here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ તે પહેલાં જ રહેતો હતો",
+     "target_text": "I used to live around here right before that",
+     "phrase_role": "use"
+    }
+   ],
+   "506:2": [
+    {
+     "known_text": "તે વર્ષો પહેલાં ડાબી તરફ વળી ગઈ",
+     "target_text": "she turned left years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું, વર્ષો પહેલાં",
+     "target_text": "I, years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અહીં, વર્ષો પહેલાં",
+     "target_text": "here, years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો, વર્ષો પહેલાં",
+     "target_text": "I used to live around here, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વર્ષો પહેલાં, હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "years ago, I used to live around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વર્ષો પહેલાં તે પહેલાં હું અહીં રહેતો હતો",
+     "target_text": "years ago, before that, I used to live here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ વર્ષો પહેલાં રહેતો હતો, તે પહેલાં",
+     "target_text": "I used to live around here years ago, before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વર્ષો પહેલાં હું અહીં આસપાસ તે પહેલાં રહેતો હતો",
+     "target_text": "years ago I used to live around here before that",
+     "phrase_role": "use"
+    }
+   ],
+   "506:3": [
+    {
+     "known_text": "અહીં",
+     "target_text": "here",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આસપાસ",
+     "target_text": "around",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "I'm sure I used to live around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "શું તમે અહીં આસપાસ રહેતા હતા?",
+     "target_text": "did you use to live around here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ અહીં આસપાસ રહેતી ન હતી",
+     "target_text": "she didn't use to live around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "I used to live around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો, વર્ષો પહેલાં",
+     "target_text": "I used to live around here, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો, તે પહેલાં",
+     "target_text": "I used to live around here, before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "વર્ષો પહેલાં હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "years ago I used to live around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પહેલાં હું અહીં આસપાસ રહેતો હતો, વર્ષો પહેલાં",
+     "target_text": "before that, I used to live around here, years ago",
+     "phrase_role": "use"
+    }
+   ],
+   "506:4": [
+    {
+     "known_text": "હું",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "રહેતો હતો",
+     "target_text": "used to live",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે સાચું છે કે હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "it's true I used to live around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો, તે પહેલાં એ ટોચ સુધી પહોંચી ન શકી",
+     "target_text": "I used to live around here, before that she couldn't reach the top",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ મહત્ત્વનું છે કે હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "it's important that I used to live around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "I used to live around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો, વર્ષો પહેલાં",
+     "target_text": "I used to live around here, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ તે પહેલાં રહેતો હતો",
+     "target_text": "I used to live around here before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પહેલાં હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "before that I used to live around here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "હું અહીં આસપાસ રહેતો હતો, વર્ષો પહેલાં, તે પહેલાં",
+     "target_text": "I used to live around here, years ago, before that",
+     "phrase_role": "use"
+    }
+   ],
+   "506:5": [
+    {
+     "known_text": "આપણે",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "સ્થળાંતર કર્યું",
+     "target_text": "moved",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "આપણે સ્થળાંતર કર્યું",
+     "target_text": "we moved",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કારણ કે આપણે સ્થળાંતર કર્યું",
+     "target_text": "because we moved",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આપણે સ્થળાંતર કર્યું તે પહેલાં અહીં આસપાસ",
+     "target_text": "around here before we moved",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ જાણવા ઈચ્છતો હતો કે આપણે સ્થળાંતર કર્યું",
+     "target_text": "he wanted to know that we moved",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "આપણે વર્ષો પહેલાં સ્થળાંતર કર્યું",
+     "target_text": "we moved years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણે તે પહેલાં સ્થળાંતર કર્યું",
+     "target_text": "we moved before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણે સ્થળાંતર કર્યું તે પહેલાં હું અહીં રહેતો હતો",
+     "target_text": "I used to live here before we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણે સ્થળાંતર કર્યું તે પહેલાં હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "I used to live around here before we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "આપણે સ્થળાંતર કર્યું તે પહેલાં, વર્ષો પહેલાં હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "I used to live around here years ago before we moved",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 507,
+  "phrases": {
+   "507:1": [
+    {
+     "known_text": "અમે",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ગયા",
+     "target_text": "moved",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે અમે શહેરમાં ગયા",
+     "target_text": "I'm sure we moved to the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અમે ગયા જેથી",
+     "target_text": "we moved so that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અમે ગયા કારણ કે",
+     "target_text": "we moved because",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અમે ગયા વર્ષો પહેલાં",
+     "target_text": "we moved years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે ગયા તે પહેલાં",
+     "target_text": "we moved before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે ગયા અહીં, વર્ષો પહેલાં",
+     "target_text": "we moved here, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે ગયા, વર્ષો પહેલાં, તે પહેલાં",
+     "target_text": "we moved, years ago, before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે ગયા અહીં તે પહેલાં",
+     "target_text": "we moved here before that",
+     "phrase_role": "use"
+    }
+   ],
+   "507:2": [
+    {
+     "known_text": "શહેરમાં",
+     "target_text": "in a city",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ગયા",
+     "target_text": "moved",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે સાચું છે કે અમે શહેરમાં ગયા",
+     "target_text": "it's true we moved to the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમે ગયા પછી, અમે શહેરમાં ગયા",
+     "target_text": "after you left, we moved to the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "અમે શહેરમાં ગયા",
+     "target_text": "we moved to the city",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે શહેરમાં ગયા, વર્ષો પહેલાં",
+     "target_text": "we moved to the city, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે શહેરમાં ગયા તે પહેલાં",
+     "target_text": "we moved to the city before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે અહીં શહેરમાં ગયા",
+     "target_text": "we moved here to the city",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે શહેરમાં ગયા, વર્ષો પહેલાં, તે પહેલાં",
+     "target_text": "we moved to the city, years ago, before that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મને લાગે છે કે અમે શહેરમાં ગયા",
+     "target_text": "I think that we moved to the city",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 508,
+  "phrases": {
+   "508:1": [
+    {
+     "known_text": "કોઈ",
+     "target_text": "no",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "અર્થ",
+     "target_text": "point",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "નથી",
+     "target_text": "there's not",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માફ કરશો, કોઈ અર્થ નથી",
+     "target_text": "I'm afraid there's no point",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી, જો આપણે શહેરમાં ગયા",
+     "target_text": "there's no point if we moved to the city",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી, હું અહીં આસપાસ રહેતો હતો",
+     "target_text": "there's no point, I used to live around here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી, અમે ગયા",
+     "target_text": "there's no point, we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી અહીં",
+     "target_text": "there's no point here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી, વર્ષો પહેલાં",
+     "target_text": "there's no point, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "અમે શહેરમાં ગયા, કોઈ અર્થ નથી",
+     "target_text": "we moved to the city, there's no point",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે પહેલાં કોઈ અર્થ નથી",
+     "target_text": "before that there's no point",
+     "phrase_role": "use"
+    }
+   ],
+   "508:2": [
+    {
+     "known_text": "તે",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "વિશે",
+     "target_text": "about",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તે વિશે",
+     "target_text": "about that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે તે વિશે",
+     "target_text": "I'm sure about that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી, તે વિશે",
+     "target_text": "there's no point about that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે વિશે, અમે ગયા વર્ષો પહેલાં",
+     "target_text": "about that, we moved years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી અહીં તે વિશે",
+     "target_text": "there's no point here about that",
+     "phrase_role": "use"
+    }
+   ],
+   "508:3": [
+    {
+     "known_text": "ચિંતા",
+     "target_text": "worry",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કરવાનો",
+     "target_text": "doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "શું થશે તે વિશે ચિંતા કરવાનો કોઈ અર્થ નથી",
+     "target_text": "there's no point worrying about what happens",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કારણ કે ચિંતા કરવાનો કોઈ અર્થ નથી",
+     "target_text": "because there's no point worrying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ચિંતા કરવાનો કોઈ અર્થ નથી જ્યાં સુધી શક્ય હોય ત્યાં સુધી",
+     "target_text": "there's no point worrying for as long as possible",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "કોઈ અર્થ નથી ચિંતા કરવાનો",
+     "target_text": "there's no point worrying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ચિંતા કરવાનો કોઈ અર્થ નથી, તે વિશે",
+     "target_text": "there's no point worrying about that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ચિંતા કરવાનો કોઈ અર્થ નથી, વર્ષો પહેલાં",
+     "target_text": "there's no point worrying, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ચિંતા કરવાનો કોઈ અર્થ નથી, અહીં",
+     "target_text": "there's no point worrying, here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે વિશે ચિંતા કરવાનો કોઈ અર્થ નથી, અમે ગયા",
+     "target_text": "there's no point worrying about that, we moved",
+     "phrase_role": "use"
+    }
+   ],
+   "508:4": [
+    {
+     "known_text": "કેવી રીતે",
+     "target_text": "how to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "તમે",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ચૂકવણી કરશો",
+     "target_text": "going to pay",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું જાણતો નથી કે કેવી રીતે તમે ચૂકવણી કરશો",
+     "target_text": "I don't know how you're going to pay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કેવી રીતે તમે ચૂકવણી કરશો",
+     "target_text": "I'm sure how you're going to pay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એ જાણવા ઈચ્છતો હતો કેવી રીતે તમે ચૂકવણી કરશો",
+     "target_text": "he wanted to know how you're going to pay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ચિંતા કરવાનો કોઈ અર્થ નથી કેવી રીતે તમે ચૂકવણી કરશો",
+     "target_text": "there's no point worrying about how you're going to pay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કેવી રીતે તમે ચૂકવણી કરશો, વર્ષો પહેલાં",
+     "target_text": "how you're going to pay, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તે વિશે કેવી રીતે તમે ચૂકવણી કરશો",
+     "target_text": "about that, how you're going to pay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "કેવી રીતે તમે ચૂકવણી કરશો અહીં",
+     "target_text": "how you're going to pay here",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 509,
+  "phrases": {
+   "509:1": [
+    {
+     "known_text": "મેં",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "સાંભળ્યું",
+     "target_text": "heard",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તે વર્ષો પહેલાં લગભગ ખોવાઈ ગઈ",
+     "target_text": "I heard that she almost got lost years ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે એ જાણવા ઈચ્છતો હતો કે એ શું થવાનું છે",
+     "target_text": "I heard that he wanted to know what was going to happen",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું, અમે ગયા",
+     "target_text": "I heard, we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું તે વિશે",
+     "target_text": "I heard about that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું, કોઈ અર્થ નથી",
+     "target_text": "I heard, there's no point",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું, વર્ષો પહેલાં",
+     "target_text": "I heard, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું અમે શહેરમાં ગયા",
+     "target_text": "I heard we moved to the city",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે અમે ગયા તે પહેલાં તે ડાબી તરફ વળી ગઈ",
+     "target_text": "I heard that she turned left before we moved",
+     "phrase_role": "build"
+    }
+   ],
+   "509:2": [
+    {
+     "known_text": "મને લાગે છે કે શું થશે તે વિશે ચિંતા કરવાનો કોઈ અર્થ નથી",
+     "target_text": "I think that there's no point worrying about what happens",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મને ખાતરી છે કે એ તમને મદદ કરવા ખુશ છે",
+     "target_text": "I'm sure that he's happy to help you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "એણે કહ્યું કે એ ટામેટાં ઉગાડવા ઈચ્છતો હતો",
+     "target_text": "he said that he wanted to grow tomatoes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે અમે ગયા",
+     "target_text": "I heard that we moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે અમે શહેરમાં ગયા",
+     "target_text": "I heard that we moved to the city",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે કોઈ અર્થ નથી",
+     "target_text": "I heard that there's no point",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે, વર્ષો પહેલાં",
+     "target_text": "I heard that, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તે વિશે ચિંતા કરવાનો કોઈ અર્થ નથી",
+     "target_text": "I heard that there's no point worrying about that",
+     "phrase_role": "use"
+    }
+   ],
+   "509:3": [
+    {
+     "known_text": "તમે",
+     "target_text": "you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "શું તમે સાંભળ્યું કે એ શું ઉગાડવા ઈચ્છતો હતો?",
+     "target_text": "did you hear what he wanted to grow?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "શું તમે જોયું કે એ શું બનાવવાની કોશિશ કરી રહી હતી?",
+     "target_text": "did you see what she was trying to create?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તમે ગયા",
+     "target_text": "I heard that you moved",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે અહીં ગયા",
+     "target_text": "you moved here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તમે અહીં ગયા",
+     "target_text": "I heard that you moved here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે વર્ષો પહેલાં ગયા",
+     "target_text": "you moved years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તમે શહેરમાં ગયા",
+     "target_text": "I heard that you moved to the city",
+     "phrase_role": "use"
+    }
+   ],
+   "509:4": [
+    {
+     "known_text": "નવા",
+     "target_text": "new",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "પલંગ",
+     "target_text": "bed",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "માટે",
+     "target_text": "for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "હું નવા પલંગ માટે રાહ જોઈ રહ્યો છું",
+     "target_text": "I'm waiting for a new bed",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "શું તમે સાંભળ્યું કે તમે નવા પલંગ માટે ગયા?",
+     "target_text": "did you hear that you moved for a new bed?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમે નવા પલંગ માટે",
+     "target_text": "you, for a new bed",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમે નવા પલંગ માટે અહીં ગયા",
+     "target_text": "you moved here for a new bed",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તમે નવા પલંગ માટે ગયા",
+     "target_text": "I heard that you moved for a new bed",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "નવા પલંગ માટે, વર્ષો પહેલાં",
+     "target_text": "for a new bed, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે નવા પલંગ માટે કોઈ અર્થ નથી",
+     "target_text": "I heard that there's no point for a new bed",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે નવા પલંગ માટે શહેરમાં ગયા",
+     "target_text": "you moved to the city for a new bed",
+     "phrase_role": "use"
+    }
+   ],
+   "509:5": [
+    {
+     "known_text": "ચૂકવણી",
+     "target_text": "pay",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "કરવા જઈ રહ્યા છો",
+     "target_text": "going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ચૂકવણી કરવા જઈ રહ્યા છો",
+     "target_text": "going to pay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "તમારા મિત્રે કહ્યું કે તમે ચૂકવણી કરવા જઈ રહ્યા છો",
+     "target_text": "your friend said that you're going to pay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "શું તમે ચૂકવણી કરવા જઈ રહ્યા છો?",
+     "target_text": "are you going to pay?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તમે નવા પલંગ માટે ચૂકવણી કરવા જઈ રહ્યા છો",
+     "target_text": "I heard that you're going to pay for a new bed",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ચૂકવણી કરવા જઈ રહ્યા છો",
+     "target_text": "you're going to pay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ચૂકવણી કરવા જઈ રહ્યા છો, અહીં",
+     "target_text": "you're going to pay, here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "તમે ચૂકવણી કરવા જઈ રહ્યા છો, વર્ષો પહેલાં",
+     "target_text": "you're going to pay, years ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "મેં સાંભળ્યું કે તમે ચૂકવણી કરવા જઈ રહ્યા છો",
+     "target_text": "I heard that you're going to pay",
      "phrase_role": "use"
     }
    ]
