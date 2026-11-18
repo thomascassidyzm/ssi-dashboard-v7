@@ -1,0 +1,2764 @@
+[
+ {
+  "seed_number": 631,
+  "phrases": {
+   "631:1": [
+    {
+     "known_text": "what",
+     "target_text": "o que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "would you like",
+     "target_text": "você gostaria",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what would you like",
+     "target_text": "o que você gostaria",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what would you like to eat",
+     "target_text": "o que você gostaria de comer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what would you like to do today",
+     "target_text": "o que você gostaria de fazer hoje",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what would you really like",
+     "target_text": "o que você realmente gostaria?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wonder what you would like",
+     "target_text": "eu me pergunto o que você gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to know what you would like",
+     "target_text": "eu quero saber o que você gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks he knows what you would like",
+     "target_text": "ele acha que sabe o que você gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she thinks she knows what you would like",
+     "target_text": "ela acha que sabe o que você gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what would you like to drink",
+     "target_text": "o que você gostaria de beber",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what would you like to say",
+     "target_text": "o que você gostaria de dizer",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 632,
+  "phrases": {
+   "632:1": [
+    {
+     "known_text": "a glass of",
+     "target_text": "um copo de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "water",
+     "target_text": "água",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a glass of water",
+     "target_text": "um copo de água",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want a glass of water",
+     "target_text": "quero um copo de água",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a glass of water, please",
+     "target_text": "um copo de água, por favor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can have a glass of water",
+     "target_text": "posso beber um copo de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wonder if I can have a glass of water",
+     "target_text": "eu me pergunto se posso beber um copo de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to drink a glass of water",
+     "target_text": "vou beber um copo de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she ought to drink a glass of water",
+     "target_text": "ela devia beber um copo de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there is a glass of water on the table",
+     "target_text": "há um copo de água em cima da mesa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a glass of water would be better than coffee",
+     "target_text": "um copo de água seria melhor do que café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "drink a glass of water slowly",
+     "target_text": "beber um copo de água devagar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left a glass of water on the table",
+     "target_text": "deixei um copo de água em cima da mesa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I have a glass of water",
+     "target_text": "posso tomar um copo de água",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 633,
+  "phrases": {
+   "633:1": [
+    {
+     "known_text": "a",
+     "target_text": "um",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "large",
+     "target_text": "grande",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "glass",
+     "target_text": "copo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a large glass",
+     "target_text": "um copo grande",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can I have a large glass",
+     "target_text": "posso tomar um copo grande",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a large glass, please",
+     "target_text": "um copo grande, por favor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can have a large glass",
+     "target_text": "posso beber um copo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want a large glass",
+     "target_text": "eu quero um copo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I can have a large glass",
+     "target_text": "eu acho que posso beber um copo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there was a large glass of water on the table",
+     "target_text": "havia um copo grande de água em cima da mesa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a large glass would be better",
+     "target_text": "um copo grande seria melhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "drink a large glass of water",
+     "target_text": "beber um copo grande de água",
+     "phrase_role": "build"
+    }
+   ],
+   "633:2": [
+    {
+     "known_text": "of water",
+     "target_text": "de água",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a large glass of water",
+     "target_text": "um copo grande de água",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a large glass of water, please",
+     "target_text": "um copo grande de água, por favor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can have a large glass of water",
+     "target_text": "posso beber um copo grande de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I have a large glass of water?",
+     "target_text": "posso tomar um copo grande de água?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to drink a large glass of water",
+     "target_text": "gostaria de beber um copo grande de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I can have a large glass of water",
+     "target_text": "eu acho que posso beber um copo grande de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a large glass of water sounds like a great idea",
+     "target_text": "um copo grande de água parece uma ótima ideia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want a large glass of water",
+     "target_text": "eu quero um copo grande de água",
+     "phrase_role": "build"
+    }
+   ],
+   "633:3": [
+    {
+     "known_text": "it would be",
+     "target_text": "seria",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it would be better",
+     "target_text": "seria melhor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it would be easier",
+     "target_text": "seria mais fácil",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a large glass of water would be better",
+     "target_text": "um copo grande de água seria melhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it would be better to wait",
+     "target_text": "seria melhor esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it would be easier to speak Portuguese",
+     "target_text": "seria mais fácil falar português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it would be better to go tomorrow",
+     "target_text": "seria melhor ir amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it would be interesting to know",
+     "target_text": "seria interessante saber",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it would be interesting",
+     "target_text": "seria interessante",
+     "phrase_role": "build"
+    }
+   ],
+   "633:4": [
+    {
+     "known_text": "fine",
+     "target_text": "ótimo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that would be fine",
+     "target_text": "isso seria ótimo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "tomorrow would be fine",
+     "target_text": "amanhã seria ótimo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a large glass of water would be fine",
+     "target_text": "um copo grande de água seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks a large glass of water would be fine",
+     "target_text": "ele acha que um copo grande de água seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she thinks a large glass of water would be fine",
+     "target_text": "ela acha que um copo grande de água seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that would be fine",
+     "target_text": "eu acho que isso seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you can help me, that would be fine",
+     "target_text": "se você puder me ajudar, seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "at six o'clock this evening would be fine",
+     "target_text": "às seis da tarde seria ótimo",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 634,
+  "phrases": {
+   "634:1": [
+    {
+     "known_text": "I'd like",
+     "target_text": "eu gostaria",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like it now",
+     "target_text": "eu gostaria agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, I'd like",
+     "target_text": "sim, eu gostaria",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he thinks I'd like",
+     "target_text": "ele acha que eu gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she thinks I'd like",
+     "target_text": "ela acha que eu gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it seems that I'd like",
+     "target_text": "parece que eu gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I'd like",
+     "target_text": "eu acho que eu gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know I'd like",
+     "target_text": "sabemos que eu gostaria",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to speak with you sir",
+     "target_text": "eu gostaria de falar com o senhor",
+     "phrase_role": "use"
+    }
+   ],
+   "634:2": [
+    {
+     "known_text": "of",
+     "target_text": "de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "one",
+     "target_text": "um",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "those",
+     "target_text": "desses",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "one of those",
+     "target_text": "de um desses",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like one of those, please",
+     "target_text": "eu gostaria de um desses, por favor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I need one of those",
+     "target_text": "eu preciso de um desses",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like one of those",
+     "target_text": "eu gostaria de um desses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd really like one of those",
+     "target_text": "eu realmente gostaria de um desses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't need one of those",
+     "target_text": "eu não preciso de um desses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I'd like one of those",
+     "target_text": "eu acho que eu gostaria de um desses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you can, I'd like one of those",
+     "target_text": "se você puder, eu gostaria de um desses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she'd like one of those",
+     "target_text": "ela gostaria de um desses",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 635,
+  "phrases": {
+   "635:1": [
+    {
+     "known_text": "that bag",
+     "target_text": "aquela bolsa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want that bag",
+     "target_text": "eu quero aquela bolsa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to find that bag",
+     "target_text": "eu quero encontrar aquela bolsa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I need to find that bag",
+     "target_text": "preciso encontrar aquela bolsa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should look for that bag",
+     "target_text": "talvez devêssemos procurar aquela bolsa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must find that bag",
+     "target_text": "nós temos de encontrar aquela bolsa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope you'll be able to find that bag",
+     "target_text": "espero que você consiga encontrar aquela bolsa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "look for that bag",
+     "target_text": "procurar aquela bolsa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left that bag on the table",
+     "target_text": "deixei aquela bolsa em cima da mesa",
+     "phrase_role": "use"
+    }
+   ],
+   "635:2": [],
+   "635:3": [
+    {
+     "known_text": "of the",
+     "target_text": "da",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "Jane",
+     "target_text": "Jane",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "jane's",
+     "target_text": "da Jane",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the book is Jane's",
+     "target_text": "o livro é da Jane",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the car is Jane's",
+     "target_text": "o carro é da Jane",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that is Jane's bag",
+     "target_text": "aquela bolsa é da Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks that is Jane's bag",
+     "target_text": "ele acha que aquela bolsa é da Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she thinks that is Jane's bag",
+     "target_text": "ela acha que aquela bolsa é da Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know that is Jane's bag",
+     "target_text": "sabemos que aquela bolsa é da Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the book on the table is Jane's",
+     "target_text": "o livro em cima da mesa é da Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that bag isn't Jane's",
+     "target_text": "aquela bolsa não é da Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "is it Jane's",
+     "target_text": "é da Jane",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 636,
+  "phrases": {
+   "636:1": [
+    {
+     "known_text": "I myself think that",
+     "target_text": "eu acho que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's easier",
+     "target_text": "eu acho que é mais fácil",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's true",
+     "target_text": "eu acho que é verdade",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it would be better to wait",
+     "target_text": "eu acho que seria melhor esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that she wants to come back tomorrow",
+     "target_text": "eu acho que ela quer voltar amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that you speak Portuguese very well",
+     "target_text": "eu acho que você fala português muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that I'm going to wait",
+     "target_text": "eu acho que vou esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that she needs a glass of water",
+     "target_text": "eu acho que ela precisa de um copo de água",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's Jane's",
+     "target_text": "eu acho que é da Jane",
+     "phrase_role": "build"
+    }
+   ],
+   "636:2": [],
+   "636:3": [],
+   "636:4": []
+  }
+ },
+ {
+  "seed_number": 637,
+  "phrases": {
+   "637:1": [],
+   "637:2": [
+    {
+     "known_text": "is",
+     "target_text": "está",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "her bag",
+     "target_text": "a bolsa dela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is her bag",
+     "target_text": "está a bolsa dela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "where is her bag now",
+     "target_text": "onde está a bolsa dela agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and where is her bag",
+     "target_text": "e onde está a bolsa dela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "where is her bag",
+     "target_text": "onde está a bolsa dela?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you know where her bag is?",
+     "target_text": "você sabe onde está a bolsa dela?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't know where her bag is",
+     "target_text": "ele não sabe onde está a bolsa dela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know where her bag is",
+     "target_text": "sabemos onde está a bolsa dela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to know where her bag is",
+     "target_text": "eu quero saber onde está a bolsa dela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but where is her bag",
+     "target_text": "mas onde está a bolsa dela",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 638,
+  "phrases": {
+   "638:1": [
+    {
+     "known_text": "I'm trying",
+     "target_text": "estou tentando",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm trying to learn",
+     "target_text": "estou tentando aprender",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but I'm trying",
+     "target_text": "mas estou tentando",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm trying to speak Portuguese as much as possible",
+     "target_text": "estou tentando falar português o mais possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to remember a word",
+     "target_text": "estou tentando me lembrar de uma palavra",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to find her bag",
+     "target_text": "estou tentando encontrar a bolsa dela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to understand what you said",
+     "target_text": "estou tentando entender o que você disse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to explain what I mean",
+     "target_text": "estou tentando explicar o que quero dizer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying, but I can't",
+     "target_text": "estou tentando, mas não consigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to help",
+     "target_text": "estou tentando ajudar",
+     "phrase_role": "build"
+    }
+   ],
+   "638:2": [
+    {
+     "known_text": "to think",
+     "target_text": "pensar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to think in Portuguese",
+     "target_text": "pensar em português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to think",
+     "target_text": "eu quero pensar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm trying to think",
+     "target_text": "estou tentando pensar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to think in Portuguese",
+     "target_text": "estou tentando pensar em português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to think",
+     "target_text": "vou pensar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to be able to think",
+     "target_text": "eu quero conseguir pensar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I won't be able to think",
+     "target_text": "não vou conseguir pensar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to think",
+     "target_text": "preciso pensar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to think",
+     "target_text": "não quero pensar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what's it like to think in Portuguese",
+     "target_text": "como é pensar em português",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 639,
+  "phrases": {
+   "639:1": [
+    {
+     "known_text": "with you sir",
+     "target_text": "com o senhor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to speak with you sir",
+     "target_text": "falar com o senhor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can I speak with you sir?",
+     "target_text": "posso falar com o senhor?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm with you sir",
+     "target_text": "estou com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak with you sir",
+     "target_text": "eu quero falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to speak with you sir",
+     "target_text": "tenho que falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I should speak with you sir",
+     "target_text": "devo falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must speak with you sir",
+     "target_text": "nós temos de falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to speak with you sir",
+     "target_text": "espero conseguir falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "as soon as I can, I'm going to speak with you sir",
+     "target_text": "assim que eu puder, vou falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to learn with you sir",
+     "target_text": "aprender com o senhor",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 640,
+  "phrases": {
+   "640:1": [
+    {
+     "known_text": "it's the red one",
+     "target_text": "é o vermelho",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think it's the red one",
+     "target_text": "eu acho que é o vermelho",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's the red one on the table",
+     "target_text": "é o vermelho em cima da mesa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure, but I think it's the red one",
+     "target_text": "não tenho certeza, mas eu acho que é o vermelho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks it's the red one",
+     "target_text": "ele acha que é o vermelho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she thinks it's the red one",
+     "target_text": "ela acha que é o vermelho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know it's the red one",
+     "target_text": "sabemos que é o vermelho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that it's the red one",
+     "target_text": "ela disse que é o vermelho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I said that it's the red one",
+     "target_text": "disse que é o vermelho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's the red one in her bag",
+     "target_text": "é o vermelho na bolsa dela",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 641,
+  "phrases": {
+   "641:1": [],
+   "641:2": [],
+   "641:3": [
+    {
+     "known_text": "on that",
+     "target_text": "naquela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "chair",
+     "target_text": "cadeira",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "on that chair",
+     "target_text": "naquela cadeira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the book on that chair",
+     "target_text": "o livro naquela cadeira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "her bag is on that chair",
+     "target_text": "a bolsa dela está naquela cadeira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's the red one on that chair",
+     "target_text": "eu acho que é o vermelho naquela cadeira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to put it on that chair",
+     "target_text": "vou colocar isso naquela cadeira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to put it on that chair",
+     "target_text": "estou tentando colocar isso naquela cadeira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to be able to put it on that chair",
+     "target_text": "eu quero conseguir colocar isso naquela cadeira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to put it on that chair",
+     "target_text": "tenho que colocar isso naquela cadeira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope you'll be able to put it on that chair",
+     "target_text": "espero que você consiga colocar isso naquela cadeira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there was a book on that chair",
+     "target_text": "havia um livro naquela cadeira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you found the keys on that chair?",
+     "target_text": "você encontrou as chaves naquela cadeira?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to put it on that chair",
+     "target_text": "colocar isso naquela cadeira",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 643,
+  "phrases": {
+   "643:1": [
+    {
+     "known_text": "do you want sir?",
+     "target_text": "o senhor quer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what do you want sir",
+     "target_text": "o que o senhor quer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want coffee sir",
+     "target_text": "o senhor quer café",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want a glass of water sir?",
+     "target_text": "o senhor quer um copo de água?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want a cup of coffee sir?",
+     "target_text": "o senhor quer uma xícara de café?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want something to drink sir?",
+     "target_text": "o senhor quer beber algo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to speak with Jane sir?",
+     "target_text": "o senhor quer falar com a Jane?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what do you want to do sir?",
+     "target_text": "o que o senhor quer fazer?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to speak sir",
+     "target_text": "o senhor quer falar",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 644,
+  "phrases": {
+   "644:1": [
+    {
+     "known_text": "you",
+     "target_text": "o",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "sir",
+     "target_text": "senhor",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you, sir",
+     "target_text": "o senhor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you, sir, now",
+     "target_text": "o senhor agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, you, sir",
+     "target_text": "sim, o senhor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he thinks you, sir, are ready",
+     "target_text": "ele acha que o senhor está pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks you, sir, want",
+     "target_text": "ele acha que o senhor quer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she thinks you, sir, want",
+     "target_text": "ela acha que o senhor quer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know you, sir, want",
+     "target_text": "sabemos que o senhor quer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, you, sir, want",
+     "target_text": "é verdade, o senhor quer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you, sir, need to wait",
+     "target_text": "o senhor precisa esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you, sir, should wait",
+     "target_text": "o senhor devia esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if you, sir, can wait, that would be great",
+     "target_text": "se o senhor puder esperar, seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak with you, sir, because I need help",
+     "target_text": "eu quero falar com o senhor porque preciso de ajuda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's important to speak with you, sir",
+     "target_text": "é importante falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there was a man who wanted to speak with you, sir",
+     "target_text": "havia um homem que queria falar com o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you, sir, don't want to wait",
+     "target_text": "o senhor não quer esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you, sir, speak Portuguese better than I",
+     "target_text": "o senhor fala português melhor do que eu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like to speak with you, sir",
+     "target_text": "gosto de falar com o senhor",
+     "phrase_role": "use"
+    }
+   ],
+   "644:2": [
+    {
+     "known_text": "could you",
+     "target_text": "poderia",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "say",
+     "target_text": "dizer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "could you say",
+     "target_text": "poderia dizer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "could you say something",
+     "target_text": "poderia dizer algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "could you say something in Portuguese",
+     "target_text": "poderia dizer algo em português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "sir, could you say that in Portuguese?",
+     "target_text": "o senhor poderia dizer isso em português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you say that a little more slowly?",
+     "target_text": "poderia dizer isso um pouco mais devagar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you say his name?",
+     "target_text": "poderia dizer o nome dele?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you say the whole sentence?",
+     "target_text": "poderia dizer a frase inteira?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you say what this is called?",
+     "target_text": "poderia dizer como isto se chama?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you say that sir?",
+     "target_text": "o senhor poderia dizer isso?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you say a word",
+     "target_text": "poderia dizer uma palavra",
+     "phrase_role": "build"
+    }
+   ],
+   "644:3": []
+  }
+ },
+ {
+  "seed_number": 645,
+  "phrases": {
+   "645:1": [
+    {
+     "known_text": "I can",
+     "target_text": "eu posso",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "help",
+     "target_text": "ajudar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I can help",
+     "target_text": "eu posso ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can help with that",
+     "target_text": "eu posso ajudar com isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can help a little",
+     "target_text": "eu posso ajudar um pouco",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can help tomorrow",
+     "target_text": "eu posso ajudar amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can help, but I'm tired",
+     "target_text": "eu posso ajudar, mas estou cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I can help",
+     "target_text": "eu acho que eu posso ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can help if you want",
+     "target_text": "eu posso ajudar se você quiser",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can help but not today",
+     "target_text": "eu posso ajudar mas não hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can help more",
+     "target_text": "eu posso ajudar mais",
+     "phrase_role": "build"
+    }
+   ],
+   "645:2": [
+    {
+     "known_text": "you madam",
+     "target_text": "a senhora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can help you madam now",
+     "target_text": "eu posso ajudar a senhora agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, you madam",
+     "target_text": "sim, a senhora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can help you madam",
+     "target_text": "eu posso ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true, I can help you madam",
+     "target_text": "é verdade, eu posso ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it seems, I can help you madam",
+     "target_text": "parece, eu posso ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I can help you madam",
+     "target_text": "eu acho que eu posso ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said, I can help you madam",
+     "target_text": "ele disse, eu posso ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to be able to help you madam",
+     "target_text": "gostaria de conseguir ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't have been able to help you madam",
+     "target_text": "eu não teria conseguido ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to help you madam",
+     "target_text": "preciso ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I should help you madam",
+     "target_text": "devo ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to help you madam",
+     "target_text": "espero conseguir ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we hoped to see you madam",
+     "target_text": "nós esperávamos ver a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the man who works with you madam",
+     "target_text": "o homem que trabalha com a senhora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's easy to help you madam",
+     "target_text": "é fácil ajudar a senhora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like to help you madam",
+     "target_text": "gosto de ajudar a senhora",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 647,
+  "phrases": {
+   "647:1": [],
+   "647:2": [
+    {
+     "known_text": "you speak",
+     "target_text": "fala",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it",
+     "target_text": "isso",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you speak it",
+     "target_text": "fala isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak it better than I madam",
+     "target_text": "a senhora fala isso melhor do que eu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak it with Jane madam",
+     "target_text": "a senhora fala isso com a Jane",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you speak it madam",
+     "target_text": "a senhora fala isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak it very well madam",
+     "target_text": "a senhora fala isso muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you speak it very well madam",
+     "target_text": "eu acho que a senhora fala isso muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak it better than Jane madam",
+     "target_text": "a senhora fala isso melhor do que a Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak it as much as possible madam",
+     "target_text": "a senhora fala isso o mais possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you speak it a little madam",
+     "target_text": "a senhora fala isso um pouco",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 650,
+  "phrases": {
+   "650:1": [],
+   "650:2": [
+    {
+     "known_text": "want to",
+     "target_text": "quer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "go",
+     "target_text": "ir",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "do you want to go",
+     "target_text": "quer ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want to go tomorrow madam",
+     "target_text": "a senhora quer ir amanhã",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want to go with me madam",
+     "target_text": "a senhora quer ir comigo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want to go madam",
+     "target_text": "a senhora quer ir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where do you want to go madam?",
+     "target_text": "onde a senhora quer ir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to go with Jane madam?",
+     "target_text": "a senhora quer ir com a Jane?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to go today or tomorrow madam?",
+     "target_text": "a senhora quer ir hoje ou amanhã?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you want to go madam",
+     "target_text": "eu acho que a senhora quer ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to go after we finish?",
+     "target_text": "você quer ir depois de acabarmos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to go home madam",
+     "target_text": "a senhora quer ir para casa",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 653,
+  "phrases": {
+   "653:1": [],
+   "653:2": [
+    {
+     "known_text": "would you mind",
+     "target_text": "se importa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "would you mind waiting madam",
+     "target_text": "a senhora se importa de esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "would you mind helping me madam",
+     "target_text": "a senhora se importa de me ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you mind madam",
+     "target_text": "a senhora se importa?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would you mind speaking a little more slowly madam?",
+     "target_text": "a senhora se importa de falar um pouco mais devagar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would you mind waiting a few minutes madam?",
+     "target_text": "a senhora se importa de esperar uns minutos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would you mind helping me with this madam?",
+     "target_text": "a senhora se importa de me ajudar com isso?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would you mind coming back later madam?",
+     "target_text": "a senhora se importa de voltar mais tarde?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would you mind speaking Portuguese madam",
+     "target_text": "a senhora se importa de falar português",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 654,
+  "phrases": {
+   "654:1": [
+    {
+     "known_text": "I'm not sure",
+     "target_text": "não tenho certeza",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure now",
+     "target_text": "não tenho certeza agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, I'm not sure",
+     "target_text": "sim, não tenho certeza",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's true, I'm not sure",
+     "target_text": "é verdade, não tenho certeza",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know, I'm not sure",
+     "target_text": "sabemos, não tenho certeza",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said, I'm not sure",
+     "target_text": "ele disse, não tenho certeza",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said, I'm not sure",
+     "target_text": "ela disse, não tenho certeza",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks, I'm not sure",
+     "target_text": "ele acha, não tenho certeza",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure but I'm going to try",
+     "target_text": "não tenho certeza mas vou tentar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if there is a problem",
+     "target_text": "não tenho certeza se há um problema",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if it can be done",
+     "target_text": "não tenho certeza se pode ser feito",
+     "phrase_role": "use"
+    }
+   ],
+   "654:2": [
+    {
+     "known_text": "if",
+     "target_text": "se",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I can",
+     "target_text": "posso",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "help",
+     "target_text": "ajudar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "if I can help",
+     "target_text": "se posso ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to see if I can help",
+     "target_text": "ver se posso ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to find out if I can help",
+     "target_text": "descobrir se posso ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure if I can help",
+     "target_text": "não tenho certeza se posso ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am going to ask if I can help",
+     "target_text": "eu vou perguntar se posso ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to find out if I can help",
+     "target_text": "estou tentando descobrir se posso ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to find out if I can help",
+     "target_text": "tenho que descobrir se posso ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to ask if I can help as soon as I can",
+     "target_text": "vou perguntar se posso ajudar assim que eu puder",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let me see if I can help",
+     "target_text": "me deixa ver se posso ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not sure if I can help you, sir",
+     "target_text": "não tenho certeza se posso ajudar o senhor",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to ask if I can help",
+     "target_text": "perguntar se posso ajudar",
+     "phrase_role": "build"
+    }
+   ],
+   "654:3": []
+  }
+ },
+ {
+  "seed_number": 656,
+  "phrases": {
+   "656:1": [
+    {
+     "known_text": "with you all",
+     "target_text": "com vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to speak with you all",
+     "target_text": "falar com vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to learn with you all",
+     "target_text": "aprender com vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm with you all",
+     "target_text": "estou com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak with you all",
+     "target_text": "eu quero falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to speak Portuguese with you all",
+     "target_text": "gostaria de falar português com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to speak with you all tomorrow",
+     "target_text": "vou falar com vocês amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to speak with you all",
+     "target_text": "estou tentando falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to speak with you all",
+     "target_text": "espero conseguir falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have to speak with you all",
+     "target_text": "tenho que falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should speak with you all",
+     "target_text": "talvez devêssemos falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must speak with you all",
+     "target_text": "nós temos de falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be with you all",
+     "target_text": "ele pode estar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to go with you all",
+     "target_text": "espero conseguir ir com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak with you all before I have to go",
+     "target_text": "eu quero falar com vocês antes de eu ter que ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak with you all because I need to improve",
+     "target_text": "eu quero falar com vocês porque preciso melhorar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak more with you all",
+     "target_text": "eu quero falar mais com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to speak with you all as much as possible",
+     "target_text": "vou falar com vocês o mais possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've already learnt a lot with you all",
+     "target_text": "já aprendi muito com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've been learning Portuguese with you all",
+     "target_text": "estou aprendendo português com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like to speak with you all",
+     "target_text": "gosto de falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she likes to speak with you all",
+     "target_text": "ela gosta de falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't have dared to speak with you all if I'd known",
+     "target_text": "eu não teria ousado falar com vocês se eu soubesse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if I'd known, I wouldn't have dared to come back with you all",
+     "target_text": "se eu soubesse, eu não teria ousado voltar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there was a problem with you all",
+     "target_text": "havia um problema com vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "guess who wants to speak with you all",
+     "target_text": "adivinha quem quer falar com vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what's it like with you all",
+     "target_text": "como é com vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's like this with you all",
+     "target_text": "é assim com vocês",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 657,
+  "phrases": {
+   "657:1": [],
+   "657:2": [
+    {
+     "known_text": "you all",
+     "target_text": "vocês",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "feel",
+     "target_text": "se sentem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "do you all feel",
+     "target_text": "vocês se sentem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how do you all feel now",
+     "target_text": "como vocês se sentem agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all feel better",
+     "target_text": "vocês se sentem melhor",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how do you all feel",
+     "target_text": "como vocês se sentem?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks he knows how you all feel",
+     "target_text": "ele acha que sabe como vocês se sentem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know how you all feel",
+     "target_text": "sabemos como vocês se sentem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "how do you all feel today?",
+     "target_text": "como vocês se sentem hoje?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to know how you all feel",
+     "target_text": "eu quero saber como vocês se sentem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all feel better than yesterday?",
+     "target_text": "vocês se sentem melhor do que ontem?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all feel well",
+     "target_text": "vocês se sentem bem",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 658,
+  "phrases": {
+   "658:1": [
+    {
+     "known_text": "do you all want",
+     "target_text": "vocês querem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what do you all want",
+     "target_text": "o que vocês querem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all want coffee",
+     "target_text": "vocês querem café",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all want it",
+     "target_text": "vocês querem isso?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all want something to drink?",
+     "target_text": "vocês querem beber algo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all want to learn Portuguese?",
+     "target_text": "vocês querem aprender português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all want to come back tomorrow?",
+     "target_text": "vocês querem voltar amanhã?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what do you all want to do today?",
+     "target_text": "o que vocês querem fazer hoje?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all want to speak Portuguese?",
+     "target_text": "vocês querem falar português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all want to wait",
+     "target_text": "vocês querem esperar",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 659,
+  "phrases": {
+   "659:1": [
+    {
+     "known_text": "could you all",
+     "target_text": "vocês podiam",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "say",
+     "target_text": "dizer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "could you all say",
+     "target_text": "vocês podiam dizer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "could you all say something",
+     "target_text": "vocês podiam dizer algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "could you all say it in Portuguese",
+     "target_text": "vocês podiam dizer isso em português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "could you all say something in Portuguese?",
+     "target_text": "vocês podiam dizer algo em português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you all say the whole sentence?",
+     "target_text": "vocês podiam dizer a frase inteira?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you all say his name?",
+     "target_text": "vocês podiam dizer o nome dele?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you all say that a little more slowly?",
+     "target_text": "vocês podiam dizer isso um pouco mais devagar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you all say that?",
+     "target_text": "vocês podiam dizer isso?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you all say a word",
+     "target_text": "vocês podiam dizer uma palavra",
+     "phrase_role": "build"
+    }
+   ],
+   "659:2": []
+  }
+ },
+ {
+  "seed_number": 660,
+  "phrases": {
+   "660:1": [],
+   "660:2": [
+    {
+     "known_text": "all of you",
+     "target_text": "vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to help all of you",
+     "target_text": "ajudar vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to see all of you",
+     "target_text": "eu quero ver vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can help you all",
+     "target_text": "eu posso ajudar vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I am going to help all of you",
+     "target_text": "eu vou ajudar vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to help all of you",
+     "target_text": "estou tentando ajudar vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like to be able to help all of you",
+     "target_text": "gostaria de conseguir ajudar vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to help all of you",
+     "target_text": "espero conseguir ajudar vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to help all of you",
+     "target_text": "preciso ajudar vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we must help all of you",
+     "target_text": "nós temos de ajudar vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we hoped to see all of you",
+     "target_text": "nós esperávamos ver vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "as soon as I can I'm going to help all of you",
+     "target_text": "assim que eu puder vou ajudar vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I speak better than all of you",
+     "target_text": "falo melhor do que vocês",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to help all of you",
+     "target_text": "gostaria de ajudar vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let me help all of you",
+     "target_text": "me deixa ajudar vocês",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 661,
+  "phrases": {
+   "661:1": [
+    {
+     "known_text": "you all",
+     "target_text": "vocês",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "are",
+     "target_text": "estão",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you're all",
+     "target_text": "vocês estão",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you're all here",
+     "target_text": "vocês estão aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you're all learning",
+     "target_text": "vocês estão aprendendo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you're all speaking Portuguese very well",
+     "target_text": "vocês estão falando português muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're all learning very quickly",
+     "target_text": "vocês estão aprendendo muito rapidamente",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're all here today",
+     "target_text": "vocês estão aqui hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're all trying to help me",
+     "target_text": "vocês estão tentando me ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where are you all?",
+     "target_text": "onde vocês estão?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're all speaking",
+     "target_text": "vocês estão falando",
+     "phrase_role": "build"
+    }
+   ],
+   "661:2": [
+    {
+     "known_text": "doing",
+     "target_text": "fazendo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "something",
+     "target_text": "algo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "doing something",
+     "target_text": "fazendo algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm doing something",
+     "target_text": "estou fazendo algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she's doing something",
+     "target_text": "ela está fazendo algo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you're all doing something",
+     "target_text": "vocês estão fazendo algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're all doing something important",
+     "target_text": "vocês estão fazendo algo importante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you're all doing something interesting",
+     "target_text": "eu acho que vocês estão fazendo algo interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't, I'm doing something",
+     "target_text": "não consigo, estou fazendo algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be doing something",
+     "target_text": "ele pode estar fazendo algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's doing something",
+     "target_text": "ele está fazendo algo",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 662,
+  "phrases": {
+   "662:1": [
+    {
+     "known_text": "you all",
+     "target_text": "vocês",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "speak",
+     "target_text": "falam",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it",
+     "target_text": "isso",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you all speak it",
+     "target_text": "vocês falam isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you all speak it very well",
+     "target_text": "vocês falam isso muito bem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you all speak it better than I",
+     "target_text": "vocês falam isso melhor do que eu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think you all speak it very well",
+     "target_text": "eu acho que vocês falam isso muito bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all speak it better than Jane",
+     "target_text": "vocês falam isso melhor do que a Jane",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all speak it as much as possible",
+     "target_text": "vocês falam isso o mais possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all speak it with me",
+     "target_text": "vocês falam isso comigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all speak it easily",
+     "target_text": "vocês falam isso facilmente",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all speak it a little",
+     "target_text": "vocês falam isso um pouco",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 663,
+  "phrases": {
+   "663:1": [],
+   "663:2": [
+    {
+     "known_text": "you all",
+     "target_text": "vocês",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "said",
+     "target_text": "disseram",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you all said",
+     "target_text": "vocês disseram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you all said that",
+     "target_text": "vocês disseram isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what you all said yesterday",
+     "target_text": "o que vocês disseram ontem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what you all said",
+     "target_text": "o que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he thinks he knows what you all said",
+     "target_text": "ele acha que sabe o que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know what you all said",
+     "target_text": "sabemos o que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he is going to ask what you all said",
+     "target_text": "ele vai perguntar o que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't remember what you all said",
+     "target_text": "não consigo me lembrar do que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to know what you all said",
+     "target_text": "preciso saber o que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't understand what you all said because I'm tired",
+     "target_text": "eu não entendo o que vocês disseram porque estou cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's no point worrying about what you all said",
+     "target_text": "não vale a pena se preocupar com o que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't hear what you all said",
+     "target_text": "eu não ouvi o que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what you all said sounds like a great idea",
+     "target_text": "o que vocês disseram parece uma ótima ideia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've forgotten what you all said",
+     "target_text": "me esqueci do que vocês disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all said that it could be done",
+     "target_text": "vocês disseram que podia ser feito",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you all said that it's easier",
+     "target_text": "vocês disseram que é mais fácil",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 664,
+  "phrases": {
+   "664:1": [],
+   "664:2": [
+    {
+     "known_text": "all ready",
+     "target_text": "prontos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you're all ready to go",
+     "target_text": "vocês estão prontos para ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "all ready for tomorrow",
+     "target_text": "prontos para amanhã",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you all ready",
+     "target_text": "vocês estão prontos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you're all ready",
+     "target_text": "eu acho que vocês estão prontos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you all ready for tomorrow?",
+     "target_text": "vocês estão prontos para amanhã?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're all ready to start talking",
+     "target_text": "vocês estão prontos para começar a falar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to wait until you are all ready",
+     "target_text": "vou esperar até vocês estarem prontos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're all ready to speak",
+     "target_text": "vocês estão prontos para falar",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 665,
+  "phrases": {
+   "665:1": [],
+   "665:2": [
+    {
+     "known_text": "go",
+     "target_text": "ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all want to go now",
+     "target_text": "vocês querem ir agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to go with you",
+     "target_text": "ir com você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all want to go",
+     "target_text": "vocês querem ir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we know you all want to go",
+     "target_text": "sabemos que vocês querem ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't go today",
+     "target_text": "não consigo ir hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can go with you all",
+     "target_text": "eu posso ir com vocês",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we have to go now",
+     "target_text": "temos que ir agora",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you need to go tomorrow",
+     "target_text": "você precisa ir amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we should go tomorrow",
+     "target_text": "devíamos ir amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must go today",
+     "target_text": "nós temos de ir hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to go after you finish",
+     "target_text": "quero ir depois de você acabar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to go as soon as I can",
+     "target_text": "quero ir assim que eu puder",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you can go tomorrow, that would be great",
+     "target_text": "se você puder ir amanhã, seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to go but I can't",
+     "target_text": "quero ir mas não consigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that young woman who's talking to your friend wants to go",
+     "target_text": "aquela jovem que está falando com o seu amigo quer ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there are many reasons to go",
+     "target_text": "há muitas razões para ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to go",
+     "target_text": "não quero ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to go",
+     "target_text": "ela não quer ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's easier to go now",
+     "target_text": "é mais fácil ir agora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to go as quickly as possible",
+     "target_text": "eu quero ir o mais rápido possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we want to go as quickly as possible",
+     "target_text": "queremos ir o mais rápido possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what's it like to go there",
+     "target_text": "como é ir lá",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you've been able to go",
+     "target_text": "você conseguiu ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you decided to go",
+     "target_text": "você já decidiu ir",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 667,
+  "phrases": {
+   "667:1": [
+    {
+     "known_text": "you all",
+     "target_text": "vocês",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "mind",
+     "target_text": "se importam",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "do you all mind",
+     "target_text": "vocês se importam",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all mind waiting",
+     "target_text": "vocês se importam de esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all mind helping me",
+     "target_text": "vocês se importam de me ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you all mind waiting a few minutes?",
+     "target_text": "vocês se importam de esperar uns minutos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all mind speaking a little more slowly?",
+     "target_text": "vocês se importam de falar um pouco mais devagar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all mind coming back later?",
+     "target_text": "vocês se importam de voltar mais tarde?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all mind speaking Portuguese with me?",
+     "target_text": "vocês se importam de falar português comigo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all mind helping me with this?",
+     "target_text": "vocês se importam de me ajudar com isso?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you all mind coming back",
+     "target_text": "vocês se importam de voltar",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 668,
+  "phrases": {
+   "668:1": [],
+   "668:2": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you all",
+     "target_text": "vocês",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "will be able",
+     "target_text": "consigam",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that you'll all be able",
+     "target_text": "que vocês consigam",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hope that you'll all be able to come back",
+     "target_text": "espero que vocês consigam voltar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that you'll all be able to help",
+     "target_text": "que vocês consigam ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hope that you'll all be able to speak Portuguese",
+     "target_text": "espero que vocês consigam falar português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope that you'll all be able to come back tomorrow",
+     "target_text": "espero que vocês consigam voltar amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope that you'll all be able to help me",
+     "target_text": "espero que vocês consigam me ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope that you'll all be able to understand",
+     "target_text": "espero que vocês consigam entender",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope that you'll all be able to wait a few minutes",
+     "target_text": "espero que vocês consigam esperar uns minutos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope that you'll all be able to learn",
+     "target_text": "espero que vocês consigam aprender",
+     "phrase_role": "build"
+    }
+   ],
+   "668:3": [],
+   "668:4": [
+    {
+     "known_text": "all of them",
+     "target_text": "todos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want all of them",
+     "target_text": "eu quero todos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I need all of them",
+     "target_text": "eu preciso de todos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hope you'll all be able to go",
+     "target_text": "espero que vocês consigam ir todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to help all of them",
+     "target_text": "vou ajudar todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to get to know all of them",
+     "target_text": "gostaria de conhecer todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to speak with all of them",
+     "target_text": "eu quero falar com todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't remember all of them",
+     "target_text": "não consigo me lembrar de todos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like all of them",
+     "target_text": "gosto de todos",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

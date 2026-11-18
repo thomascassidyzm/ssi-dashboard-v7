@@ -1,0 +1,48 @@
+{
+ "seed": 635,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "I want that bag",
+     "eu quero aquela bolsa"
+    ],
+    "B03": [
+     "I want to find that bag",
+     "eu quero encontrar aquela bolsa"
+    ]
+   },
+   "delete": [
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05"
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "the book is Jane's",
+     "o livro é da Jane"
+    ],
+    "B03": [
+     "the car is Jane's",
+     "o carro é da Jane"
+    ],
+    "U05": [
+     "the book on the table is Jane's",
+     "o livro em cima da mesa é da Jane"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "is it Jane's",
+     "é da Jane"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #842·AI opus arm, item 4: scan-marked filler and template-glue rows in touched baskets rewritten from taught chunks or cut where the basket stays above floor"
+}

@@ -1,0 +1,122 @@
+{
+ "seed": 633,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "can I have a large glass",
+     "posso tomar um copo grande"
+    ],
+    "B03": [
+     "a large glass, please",
+     "um copo grande, por favor"
+    ],
+    "U03": [
+     "I want a large glass",
+     "eu quero um copo grande"
+    ]
+   },
+   "delete": [
+    "U02",
+    "U04"
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "a large glass of water",
+     "um copo grande de água"
+    ],
+    "B03": [
+     "a large glass of water, please",
+     "um copo grande de água, por favor"
+    ],
+    "U02": [
+     "can I have a large glass of water?",
+     "posso tomar um copo grande de água?"
+    ],
+    "U03": [
+     "I'd like to drink a large glass of water",
+     "gostaria de beber um copo grande de água"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I want a large glass of water",
+     "eu quero um copo grande de água"
+    ]
+   ],
+   "delete": [
+    "U04"
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "it would be better",
+     "seria melhor"
+    ],
+    "B03": [
+     "it would be easier",
+     "seria mais fácil"
+    ],
+    "U01": [
+     "a large glass of water would be better",
+     "um copo grande de água seria melhor"
+    ],
+    "U02": [
+     "it would be better to wait",
+     "seria melhor esperar"
+    ],
+    "U03": [
+     "it would be easier to speak Portuguese",
+     "seria mais fácil falar português"
+    ],
+    "U04": [
+     "it would be better to go tomorrow",
+     "seria melhor ir amanhã"
+    ],
+    "U05": [
+     "it would be interesting to know",
+     "seria interessante saber"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "it would be interesting",
+     "seria interessante"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B02": [
+     "that would be fine",
+     "isso seria ótimo"
+    ],
+    "B03": [
+     "tomorrow would be fine",
+     "amanhã seria ótimo"
+    ],
+    "U04": [
+     "I think that would be fine",
+     "eu acho que isso seria ótimo"
+    ],
+    "U05": [
+     "if you can help me, that would be fine",
+     "se você puder me ajudar, seria ótimo"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "at six o'clock this evening would be fine",
+     "às seis da tarde seria ótimo"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #842·AI opus arm, item 4: scan-marked filler and template-glue rows in touched baskets rewritten from taught chunks or cut where the basket stays above floor"
+}

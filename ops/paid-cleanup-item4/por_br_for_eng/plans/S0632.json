@@ -1,0 +1,30 @@
+{
+ "seed": 632,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "I want a glass of water",
+     "quero um copo de água"
+    ],
+    "B03": [
+     "a glass of water, please",
+     "um copo de água, por favor"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "can I have a glass of water",
+     "posso tomar um copo de água"
+    ]
+   ],
+   "delete": [
+    "U02",
+    "U04",
+    "U05"
+   ]
+  }
+ },
+ "notes": "cs #842·AI opus arm, item 4: scan-marked filler and template-glue rows in touched baskets rewritten from taught chunks or cut where the basket stays above floor"
+}

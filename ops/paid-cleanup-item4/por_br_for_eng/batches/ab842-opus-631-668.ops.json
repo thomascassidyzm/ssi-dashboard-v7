@@ -1,0 +1,3457 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0631L01B04",
+    "seed_number": 631,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "what would you like to say",
+    "target_text": "o que você gostaria de dizer",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0632L01B05",
+    "seed_number": 632,
+    "lego_index": 1,
+    "position": 17,
+    "known_text": "can I have a glass of water",
+    "target_text": "posso tomar um copo de água",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0633L02B04",
+    "seed_number": 633,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "I want a large glass of water",
+    "target_text": "eu quero um copo grande de água",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0633L03B04",
+    "seed_number": 633,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "it would be interesting",
+    "target_text": "seria interessante",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0633L04B04",
+    "seed_number": 633,
+    "lego_index": 4,
+    "position": 9,
+    "known_text": "at six o'clock this evening would be fine",
+    "target_text": "às seis da tarde seria ótimo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0634L02B04",
+    "seed_number": 634,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "she'd like one of those",
+    "target_text": "ela gostaria de um desses",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0635L03B04",
+    "seed_number": 635,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "is it Jane's",
+    "target_text": "é da Jane",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 9,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0636L01B04",
+    "seed_number": 636,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "I think that it's Jane's",
+    "target_text": "eu acho que é da Jane",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0637L02B04",
+    "seed_number": 637,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "but where is her bag",
+    "target_text": "mas onde está a bolsa dela",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0638L01B04",
+    "seed_number": 638,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I'm trying to help",
+    "target_text": "estou tentando ajudar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0639L01B04",
+    "seed_number": 639,
+    "lego_index": 1,
+    "position": 15,
+    "known_text": "to learn with you sir",
+    "target_text": "aprender com o senhor",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0640L01B04",
+    "seed_number": 640,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's the red one in her bag",
+    "target_text": "é o vermelho na bolsa dela",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0641L03B04",
+    "seed_number": 641,
+    "lego_index": 3,
+    "position": 18,
+    "known_text": "to put it on that chair",
+    "target_text": "colocar isso naquela cadeira",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0643L01B04",
+    "seed_number": 643,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "do you want to speak sir",
+    "target_text": "o senhor quer falar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0644L02B04",
+    "seed_number": 644,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "could you say a word",
+    "target_text": "poderia dizer uma palavra",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0647L02B04",
+    "seed_number": 647,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "you speak it a little madam",
+    "target_text": "a senhora fala isso um pouco",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0650L02B04",
+    "seed_number": 650,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "do you want to go home madam",
+    "target_text": "a senhora quer ir para casa",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0653L02B04",
+    "seed_number": 653,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "would you mind speaking Portuguese madam",
+    "target_text": "a senhora se importa de falar português",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 39,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0654L02B04",
+    "seed_number": 654,
+    "lego_index": 2,
+    "position": 18,
+    "known_text": "to ask if I can help",
+    "target_text": "perguntar se posso ajudar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0657L02B04",
+    "seed_number": 657,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "do you all feel well",
+    "target_text": "vocês se sentem bem",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0659L01B04",
+    "seed_number": 659,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "could you all say a word",
+    "target_text": "vocês podiam dizer uma palavra",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0661L01B04",
+    "seed_number": 661,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "you're all speaking",
+    "target_text": "vocês estão falando",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0661L02B04",
+    "seed_number": 661,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "he's doing something",
+    "target_text": "ele está fazendo algo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0662L01B04",
+    "seed_number": 662,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "you all speak it a little",
+    "target_text": "vocês falam isso um pouco",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0663L02B04",
+    "seed_number": 663,
+    "lego_index": 2,
+    "position": 20,
+    "known_text": "you all said that it's easier",
+    "target_text": "vocês disseram que é mais fácil",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0664L02B04",
+    "seed_number": 664,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "you're all ready to speak",
+    "target_text": "vocês estão prontos para falar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0667L01B04",
+    "seed_number": 667,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "do you all mind coming back",
+    "target_text": "vocês se importam de voltar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0668L02B04",
+    "seed_number": 668,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "I hope that you'll all be able to learn",
+    "target_text": "espero que vocês consigam aprender",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 34,
+    "lego_count": 9,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0631L01B02",
+   "expect": {
+    "known_text": "what would you like now",
+    "target_text": "o que você gostaria agora"
+   },
+   "set": {
+    "known_text": "what would you like to eat",
+    "target_text": "o que você gostaria de comer",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0631L01B03",
+   "expect": {
+    "known_text": "yes, what would you like",
+    "target_text": "sim, o que você gostaria"
+   },
+   "set": {
+    "known_text": "what would you like to do today",
+    "target_text": "o que você gostaria de fazer hoje",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0631L01U03",
+   "expect": {
+    "known_text": "it seems that we know what you would like",
+    "target_text": "parece que sabemos o que você gostaria"
+   },
+   "set": {
+    "known_text": "I want to know what you would like",
+    "target_text": "eu quero saber o que você gostaria",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0632L01B02",
+   "expect": {
+    "known_text": "a glass of water now",
+    "target_text": "um copo de água agora"
+   },
+   "set": {
+    "known_text": "I want a glass of water",
+    "target_text": "quero um copo de água",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0632L01B03",
+   "expect": {
+    "known_text": "yes, a glass of water",
+    "target_text": "sim, um copo de água"
+   },
+   "set": {
+    "known_text": "a glass of water, please",
+    "target_text": "um copo de água, por favor",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L01B02",
+   "expect": {
+    "known_text": "a large glass now",
+    "target_text": "um copo grande agora"
+   },
+   "set": {
+    "known_text": "can I have a large glass",
+    "target_text": "posso tomar um copo grande",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L01B03",
+   "expect": {
+    "known_text": "yes, a large glass",
+    "target_text": "sim, um copo grande"
+   },
+   "set": {
+    "known_text": "a large glass, please",
+    "target_text": "um copo grande, por favor",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L01U03",
+   "expect": {
+    "known_text": "it's true, I can have a large glass",
+    "target_text": "é verdade, posso beber um copo grande"
+   },
+   "set": {
+    "known_text": "I want a large glass",
+    "target_text": "eu quero um copo grande",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L02B02",
+   "expect": {
+    "known_text": "a large glass of water now",
+    "target_text": "um copo grande de água agora"
+   },
+   "set": {
+    "known_text": "a large glass of water",
+    "target_text": "um copo grande de água",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L02B03",
+   "expect": {
+    "known_text": "yes, of water",
+    "target_text": "sim, de água"
+   },
+   "set": {
+    "known_text": "a large glass of water, please",
+    "target_text": "um copo grande de água, por favor",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L02U02",
+   "expect": {
+    "known_text": "it seems that I can have a large glass of water",
+    "target_text": "parece que posso beber um copo grande de água"
+   },
+   "set": {
+    "known_text": "can I have a large glass of water?",
+    "target_text": "posso tomar um copo grande de água?",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L02U03",
+   "expect": {
+    "known_text": "it's true, I can have a large glass of water",
+    "target_text": "é verdade, posso beber um copo grande de água"
+   },
+   "set": {
+    "known_text": "I'd like to drink a large glass of water",
+    "target_text": "gostaria de beber um copo grande de água",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L03B02",
+   "expect": {
+    "known_text": "a large glass of water would be now",
+    "target_text": "um copo grande de água seria agora"
+   },
+   "set": {
+    "known_text": "it would be better",
+    "target_text": "seria melhor",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L03B03",
+   "expect": {
+    "known_text": "yes, it would be",
+    "target_text": "sim, seria"
+   },
+   "set": {
+    "known_text": "it would be easier",
+    "target_text": "seria mais fácil",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L03U01",
+   "expect": {
+    "known_text": "a large glass of water would be",
+    "target_text": "um copo grande de água seria"
+   },
+   "set": {
+    "known_text": "a large glass of water would be better",
+    "target_text": "um copo grande de água seria melhor",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L03U02",
+   "expect": {
+    "known_text": "he thinks a large glass of water would be",
+    "target_text": "ele acha que um copo grande de água seria"
+   },
+   "set": {
+    "known_text": "it would be better to wait",
+    "target_text": "seria melhor esperar",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L03U03",
+   "expect": {
+    "known_text": "she thinks a large glass of water would be",
+    "target_text": "ela acha que um copo grande de água seria"
+   },
+   "set": {
+    "known_text": "it would be easier to speak Portuguese",
+    "target_text": "seria mais fácil falar português",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L03U04",
+   "expect": {
+    "known_text": "we know a large glass of water would be",
+    "target_text": "sabemos que um copo grande de água seria"
+   },
+   "set": {
+    "known_text": "it would be better to go tomorrow",
+    "target_text": "seria melhor ir amanhã",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L03U05",
+   "expect": {
+    "known_text": "it seems that a large glass of water would be",
+    "target_text": "parece que um copo grande de água seria"
+   },
+   "set": {
+    "known_text": "it would be interesting to know",
+    "target_text": "seria interessante saber",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L04B02",
+   "expect": {
+    "known_text": "would be fine now",
+    "target_text": "seria ótimo agora"
+   },
+   "set": {
+    "known_text": "that would be fine",
+    "target_text": "isso seria ótimo",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L04B03",
+   "expect": {
+    "known_text": "yes, fine",
+    "target_text": "sim, ótimo"
+   },
+   "set": {
+    "known_text": "tomorrow would be fine",
+    "target_text": "amanhã seria ótimo",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L04U04",
+   "expect": {
+    "known_text": "we know a large glass of water would be fine",
+    "target_text": "sabemos que um copo grande de água seria ótimo"
+   },
+   "set": {
+    "known_text": "I think that would be fine",
+    "target_text": "eu acho que isso seria ótimo",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0633L04U05",
+   "expect": {
+    "known_text": "it seems that a large glass of water would be fine",
+    "target_text": "parece que um copo grande de água seria ótimo"
+   },
+   "set": {
+    "known_text": "if you can help me, that would be fine",
+    "target_text": "se você puder me ajudar, seria ótimo",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0634L02B02",
+   "expect": {
+    "known_text": "I'd like one of those now",
+    "target_text": "eu gostaria de um desses agora"
+   },
+   "set": {
+    "known_text": "I'd like one of those, please",
+    "target_text": "eu gostaria de um desses, por favor",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0634L02B03",
+   "expect": {
+    "known_text": "yes, one of those",
+    "target_text": "sim, de um desses"
+   },
+   "set": {
+    "known_text": "I need one of those",
+    "target_text": "eu preciso de um desses",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0634L02U02",
+   "expect": {
+    "known_text": "he thinks I'd like one of those",
+    "target_text": "ele acha que eu gostaria de um desses"
+   },
+   "set": {
+    "known_text": "I'd really like one of those",
+    "target_text": "eu realmente gostaria de um desses",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0634L02U03",
+   "expect": {
+    "known_text": "she thinks I'd like one of those",
+    "target_text": "ela acha que eu gostaria de um desses"
+   },
+   "set": {
+    "known_text": "I don't need one of those",
+    "target_text": "eu não preciso de um desses",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0634L02U04",
+   "expect": {
+    "known_text": "it seems that I'd like one of those",
+    "target_text": "parece que eu gostaria de um desses"
+   },
+   "set": {
+    "known_text": "I think I'd like one of those",
+    "target_text": "eu acho que eu gostaria de um desses",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0635L01B02",
+   "expect": {
+    "known_text": "that bag now",
+    "target_text": "aquela bolsa agora"
+   },
+   "set": {
+    "known_text": "I want that bag",
+    "target_text": "eu quero aquela bolsa",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0635L01B03",
+   "expect": {
+    "known_text": "yes, that bag",
+    "target_text": "sim, aquela bolsa"
+   },
+   "set": {
+    "known_text": "I want to find that bag",
+    "target_text": "eu quero encontrar aquela bolsa",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0635L03B02",
+   "expect": {
+    "known_text": "that bag is Jane's now",
+    "target_text": "aquela bolsa é da Jane agora"
+   },
+   "set": {
+    "known_text": "the book is Jane's",
+    "target_text": "o livro é da Jane",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0635L03B03",
+   "expect": {
+    "known_text": "yes, Jane's",
+    "target_text": "sim, da Jane"
+   },
+   "set": {
+    "known_text": "the car is Jane's",
+    "target_text": "o carro é da Jane",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0635L03U05",
+   "expect": {
+    "known_text": "yes, that is Jane's bag",
+    "target_text": "sim, aquela bolsa é da Jane"
+   },
+   "set": {
+    "known_text": "the book on the table is Jane's",
+    "target_text": "o livro em cima da mesa é da Jane",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0636L01B02",
+   "expect": {
+    "known_text": "yes, I myself think that",
+    "target_text": "sim, eu acho que"
+   },
+   "set": {
+    "known_text": "I think that it's easier",
+    "target_text": "eu acho que é mais fácil",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0636L01B03",
+   "expect": {
+    "known_text": "I myself think that now",
+    "target_text": "eu acho que agora"
+   },
+   "set": {
+    "known_text": "I think that it's true",
+    "target_text": "eu acho que é verdade",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0636L01U01",
+   "expect": {
+    "known_text": "he thinks I think that",
+    "target_text": "ele acha que eu acho que"
+   },
+   "set": {
+    "known_text": "I think that it would be better to wait",
+    "target_text": "eu acho que seria melhor esperar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0636L01U02",
+   "expect": {
+    "known_text": "she thinks I think that",
+    "target_text": "ela acha que eu acho que"
+   },
+   "set": {
+    "known_text": "I think that she wants to come back tomorrow",
+    "target_text": "eu acho que ela quer voltar amanhã",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0636L01U03",
+   "expect": {
+    "known_text": "we know I think that",
+    "target_text": "sabemos que eu acho que"
+   },
+   "set": {
+    "known_text": "I think that you speak Portuguese very well",
+    "target_text": "eu acho que você fala português muito bem",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0636L01U04",
+   "expect": {
+    "known_text": "it's true, I think that",
+    "target_text": "é verdade, eu acho que"
+   },
+   "set": {
+    "known_text": "I think that I'm going to wait",
+    "target_text": "eu acho que vou esperar",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0636L01U05",
+   "expect": {
+    "known_text": "it seems, I think that",
+    "target_text": "parece, eu acho que"
+   },
+   "set": {
+    "known_text": "I think that she needs a glass of water",
+    "target_text": "eu acho que ela precisa de um copo de água",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0637L02B03",
+   "expect": {
+    "known_text": "yes, is her bag",
+    "target_text": "sim, está a bolsa dela"
+   },
+   "set": {
+    "known_text": "and where is her bag",
+    "target_text": "e onde está a bolsa dela",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0637L02U02",
+   "expect": {
+    "known_text": "he thinks he knows where is her bag",
+    "target_text": "ele acha que sabe onde está a bolsa dela"
+   },
+   "set": {
+    "known_text": "do you know where her bag is?",
+    "target_text": "você sabe onde está a bolsa dela?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0637L02U03",
+   "expect": {
+    "known_text": "she thinks she knows where is her bag",
+    "target_text": "ela acha que sabe onde está a bolsa dela"
+   },
+   "set": {
+    "known_text": "he doesn't know where her bag is",
+    "target_text": "ele não sabe onde está a bolsa dela",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0637L02U04",
+   "expect": {
+    "known_text": "we know where is her bag",
+    "target_text": "sabemos onde está a bolsa dela"
+   },
+   "set": {
+    "known_text": "we know where her bag is",
+    "target_text": "sabemos onde está a bolsa dela",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0637L02U05",
+   "expect": {
+    "known_text": "yes, we know where is her bag",
+    "target_text": "sim, sabemos onde está a bolsa dela"
+   },
+   "set": {
+    "known_text": "I want to know where her bag is",
+    "target_text": "eu quero saber onde está a bolsa dela",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L01B02",
+   "expect": {
+    "known_text": "I'm trying now",
+    "target_text": "estou tentando agora"
+   },
+   "set": {
+    "known_text": "I'm trying to learn",
+    "target_text": "estou tentando aprender",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L01B03",
+   "expect": {
+    "known_text": "yes, I'm trying",
+    "target_text": "sim, estou tentando"
+   },
+   "set": {
+    "known_text": "but I'm trying",
+    "target_text": "mas estou tentando",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L01U01",
+   "expect": {
+    "known_text": "it's true, I'm trying",
+    "target_text": "é verdade, estou tentando"
+   },
+   "set": {
+    "known_text": "I'm trying to speak Portuguese as much as possible",
+    "target_text": "estou tentando falar português o mais possível",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L01U02",
+   "expect": {
+    "known_text": "it seems, I'm trying",
+    "target_text": "parece, estou tentando"
+   },
+   "set": {
+    "known_text": "I'm trying to remember a word",
+    "target_text": "estou tentando me lembrar de uma palavra",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L01U03",
+   "expect": {
+    "known_text": "he thinks, I'm trying",
+    "target_text": "ele acha, estou tentando"
+   },
+   "set": {
+    "known_text": "I'm trying to find her bag",
+    "target_text": "estou tentando encontrar a bolsa dela",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L01U04",
+   "expect": {
+    "known_text": "she thinks, I'm trying",
+    "target_text": "ela acha, estou tentando"
+   },
+   "set": {
+    "known_text": "I'm trying to understand what you said",
+    "target_text": "estou tentando entender o que você disse",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L01U05",
+   "expect": {
+    "known_text": "we know, I'm trying",
+    "target_text": "sabemos, estou tentando"
+   },
+   "set": {
+    "known_text": "I'm trying to explain what I mean",
+    "target_text": "estou tentando explicar o que quero dizer",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L02B02",
+   "expect": {
+    "known_text": "I'm trying to think now",
+    "target_text": "estou tentando pensar agora"
+   },
+   "set": {
+    "known_text": "to think in Portuguese",
+    "target_text": "pensar em português",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L02B03",
+   "expect": {
+    "known_text": "yes, to think",
+    "target_text": "sim, pensar"
+   },
+   "set": {
+    "known_text": "I want to think",
+    "target_text": "eu quero pensar",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0638L02U02",
+   "expect": {
+    "known_text": "it's true, I'm trying to think",
+    "target_text": "é verdade, estou tentando pensar"
+   },
+   "set": {
+    "known_text": "I'm trying to think in Portuguese",
+    "target_text": "estou tentando pensar em português",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0639L01B02",
+   "expect": {
+    "known_text": "with you sir now",
+    "target_text": "com o senhor agora"
+   },
+   "set": {
+    "known_text": "to speak with you sir",
+    "target_text": "falar com o senhor",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0639L01B03",
+   "expect": {
+    "known_text": "yes, with you sir",
+    "target_text": "sim, com o senhor"
+   },
+   "set": {
+    "known_text": "can I speak with you sir?",
+    "target_text": "posso falar com o senhor?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0640L01B02",
+   "expect": {
+    "known_text": "it's the red one now",
+    "target_text": "é o vermelho agora"
+   },
+   "set": {
+    "known_text": "I think it's the red one",
+    "target_text": "eu acho que é o vermelho",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0640L01B03",
+   "expect": {
+    "known_text": "yes, it's the red one",
+    "target_text": "sim, é o vermelho"
+   },
+   "set": {
+    "known_text": "it's the red one on the table",
+    "target_text": "é o vermelho em cima da mesa",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0640L01U01",
+   "expect": {
+    "known_text": "it's true, it's the red one",
+    "target_text": "é verdade, é o vermelho"
+   },
+   "set": {
+    "known_text": "I'm not sure, but I think it's the red one",
+    "target_text": "não tenho certeza, mas eu acho que é o vermelho",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0641L03B02",
+   "expect": {
+    "known_text": "I think that it's the red one on that chair now",
+    "target_text": "eu acho que é o vermelho naquela cadeira agora"
+   },
+   "set": {
+    "known_text": "the book on that chair",
+    "target_text": "o livro naquela cadeira",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0641L03B03",
+   "expect": {
+    "known_text": "yes, on that chair",
+    "target_text": "sim, naquela cadeira"
+   },
+   "set": {
+    "known_text": "her bag is on that chair",
+    "target_text": "a bolsa dela está naquela cadeira",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0643L01B02",
+   "expect": {
+    "known_text": "do you want sir now",
+    "target_text": "o senhor quer agora"
+   },
+   "set": {
+    "known_text": "what do you want sir",
+    "target_text": "o que o senhor quer",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0643L01B03",
+   "expect": {
+    "known_text": "yes, do you want sir",
+    "target_text": "sim, o senhor quer"
+   },
+   "set": {
+    "known_text": "do you want coffee sir",
+    "target_text": "o senhor quer café",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0643L01U01",
+   "expect": {
+    "known_text": "it seems, the sir wants",
+    "target_text": "parece, o senhor quer"
+   },
+   "set": {
+    "known_text": "do you want a glass of water sir?",
+    "target_text": "o senhor quer um copo de água?",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0643L01U02",
+   "expect": {
+    "known_text": "he thinks the sir wants",
+    "target_text": "ele acha que o senhor quer"
+   },
+   "set": {
+    "known_text": "do you want a cup of coffee sir?",
+    "target_text": "o senhor quer uma xícara de café?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0643L01U03",
+   "expect": {
+    "known_text": "she thinks the sir wants",
+    "target_text": "ela acha que o senhor quer"
+   },
+   "set": {
+    "known_text": "do you want something to drink sir?",
+    "target_text": "o senhor quer beber algo?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0643L01U04",
+   "expect": {
+    "known_text": "we know the sir wants",
+    "target_text": "sabemos que o senhor quer"
+   },
+   "set": {
+    "known_text": "do you want to speak with Jane sir?",
+    "target_text": "o senhor quer falar com a Jane?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0643L01U05",
+   "expect": {
+    "known_text": "it's true, the sir wants",
+    "target_text": "é verdade, o senhor quer"
+   },
+   "set": {
+    "known_text": "what do you want to do sir?",
+    "target_text": "o que o senhor quer fazer?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0644L02B02",
+   "expect": {
+    "known_text": "sir, could you say now",
+    "target_text": "o senhor, poderia dizer agora"
+   },
+   "set": {
+    "known_text": "could you say something",
+    "target_text": "poderia dizer algo",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0644L02B03",
+   "expect": {
+    "known_text": "yes, could you say",
+    "target_text": "sim, poderia dizer"
+   },
+   "set": {
+    "known_text": "could you say something in Portuguese",
+    "target_text": "poderia dizer algo em português",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0644L02U01",
+   "expect": {
+    "known_text": "sir, could you say",
+    "target_text": "o senhor poderia dizer?"
+   },
+   "set": {
+    "known_text": "sir, could you say that in Portuguese?",
+    "target_text": "o senhor poderia dizer isso em português?",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0644L02U02",
+   "expect": {
+    "known_text": "he thinks you, sir, could say",
+    "target_text": "ele acha que o senhor poderia dizer"
+   },
+   "set": {
+    "known_text": "could you say that a little more slowly?",
+    "target_text": "poderia dizer isso um pouco mais devagar?",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0644L02U03",
+   "expect": {
+    "known_text": "she thinks you, sir, could say",
+    "target_text": "ela acha que o senhor poderia dizer"
+   },
+   "set": {
+    "known_text": "could you say his name?",
+    "target_text": "poderia dizer o nome dele?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0644L02U04",
+   "expect": {
+    "known_text": "we know you, sir, could say",
+    "target_text": "sabemos que o senhor poderia dizer"
+   },
+   "set": {
+    "known_text": "could you say the whole sentence?",
+    "target_text": "poderia dizer a frase inteira?",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0645L01B02",
+   "expect": {
+    "known_text": "I can help now",
+    "target_text": "eu posso ajudar agora"
+   },
+   "set": {
+    "known_text": "I can help with that",
+    "target_text": "eu posso ajudar com isso",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0645L01B03",
+   "expect": {
+    "known_text": "yes, I can help",
+    "target_text": "sim, eu posso ajudar"
+   },
+   "set": {
+    "known_text": "I can help a little",
+    "target_text": "eu posso ajudar um pouco",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0645L01U01",
+   "expect": {
+    "known_text": "it's true, I can help",
+    "target_text": "é verdade, eu posso ajudar"
+   },
+   "set": {
+    "known_text": "I can help tomorrow",
+    "target_text": "eu posso ajudar amanhã",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0645L01U02",
+   "expect": {
+    "known_text": "it seems, I can help",
+    "target_text": "parece, eu posso ajudar"
+   },
+   "set": {
+    "known_text": "I can help, but I'm tired",
+    "target_text": "eu posso ajudar, mas estou cansado",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0647L02B02",
+   "expect": {
+    "known_text": "you madam speak it now",
+    "target_text": "a senhora fala isso agora"
+   },
+   "set": {
+    "known_text": "you speak it better than I madam",
+    "target_text": "a senhora fala isso melhor do que eu",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0647L02B03",
+   "expect": {
+    "known_text": "yes, you speak it",
+    "target_text": "sim, fala isso"
+   },
+   "set": {
+    "known_text": "you speak it with Jane madam",
+    "target_text": "a senhora fala isso com a Jane",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0647L02U02",
+   "expect": {
+    "known_text": "he thinks you madam speak it",
+    "target_text": "ele acha que a senhora fala isso"
+   },
+   "set": {
+    "known_text": "you speak it very well madam",
+    "target_text": "a senhora fala isso muito bem",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0647L02U03",
+   "expect": {
+    "known_text": "she thinks you madam speak it",
+    "target_text": "ela acha que a senhora fala isso"
+   },
+   "set": {
+    "known_text": "I think you speak it very well madam",
+    "target_text": "eu acho que a senhora fala isso muito bem",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0647L02U04",
+   "expect": {
+    "known_text": "it's true, you madam speak it",
+    "target_text": "é verdade, a senhora fala isso"
+   },
+   "set": {
+    "known_text": "you speak it better than Jane madam",
+    "target_text": "a senhora fala isso melhor do que a Jane",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0647L02U05",
+   "expect": {
+    "known_text": "he said, you madam speak it",
+    "target_text": "ele disse, a senhora fala isso"
+   },
+   "set": {
+    "known_text": "you speak it as much as possible madam",
+    "target_text": "a senhora fala isso o mais possível",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0650L02B02",
+   "expect": {
+    "known_text": "you madam want to go now",
+    "target_text": "a senhora quer ir agora"
+   },
+   "set": {
+    "known_text": "do you want to go tomorrow madam",
+    "target_text": "a senhora quer ir amanhã",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0650L02B03",
+   "expect": {
+    "known_text": "yes, do you want to go",
+    "target_text": "sim, quer ir"
+   },
+   "set": {
+    "known_text": "do you want to go with me madam",
+    "target_text": "a senhora quer ir comigo",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0650L02U02",
+   "expect": {
+    "known_text": "he thinks you madam want to go",
+    "target_text": "ele acha que a senhora quer ir"
+   },
+   "set": {
+    "known_text": "where do you want to go madam?",
+    "target_text": "onde a senhora quer ir?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0650L02U03",
+   "expect": {
+    "known_text": "it's true, you madam want to go",
+    "target_text": "é verdade, a senhora quer ir"
+   },
+   "set": {
+    "known_text": "do you want to go with Jane madam?",
+    "target_text": "a senhora quer ir com a Jane?",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0650L02U04",
+   "expect": {
+    "known_text": "he said, you madam want to go",
+    "target_text": "ele disse, a senhora quer ir"
+   },
+   "set": {
+    "known_text": "do you want to go today or tomorrow madam?",
+    "target_text": "a senhora quer ir hoje ou amanhã?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0650L02U05",
+   "expect": {
+    "known_text": "yes, you madam want to go",
+    "target_text": "sim, a senhora quer ir"
+   },
+   "set": {
+    "known_text": "I think you want to go madam",
+    "target_text": "eu acho que a senhora quer ir",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0653L02B02",
+   "expect": {
+    "known_text": "you madam would mind now",
+    "target_text": "a senhora se importa agora"
+   },
+   "set": {
+    "known_text": "would you mind waiting madam",
+    "target_text": "a senhora se importa de esperar",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0653L02B03",
+   "expect": {
+    "known_text": "yes, would you mind",
+    "target_text": "sim, se importa"
+   },
+   "set": {
+    "known_text": "would you mind helping me madam",
+    "target_text": "a senhora se importa de me ajudar",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0653L02U02",
+   "expect": {
+    "known_text": "he thinks you madam mind",
+    "target_text": "ele acha que a senhora se importa"
+   },
+   "set": {
+    "known_text": "would you mind speaking a little more slowly madam?",
+    "target_text": "a senhora se importa de falar um pouco mais devagar?",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0653L02U03",
+   "expect": {
+    "known_text": "we know you madam mind",
+    "target_text": "sabemos que a senhora se importa"
+   },
+   "set": {
+    "known_text": "would you mind waiting a few minutes madam?",
+    "target_text": "a senhora se importa de esperar uns minutos?",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0653L02U04",
+   "expect": {
+    "known_text": "it's true, you madam mind",
+    "target_text": "é verdade, a senhora se importa"
+   },
+   "set": {
+    "known_text": "would you mind helping me with this madam?",
+    "target_text": "a senhora se importa de me ajudar com isso?",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0653L02U05",
+   "expect": {
+    "known_text": "he said, you madam mind",
+    "target_text": "ele disse, a senhora se importa"
+   },
+   "set": {
+    "known_text": "would you mind coming back later madam?",
+    "target_text": "a senhora se importa de voltar mais tarde?",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0654L02B02",
+   "expect": {
+    "known_text": "I'm not sure if I can help now",
+    "target_text": "não tenho certeza se posso ajudar agora"
+   },
+   "set": {
+    "known_text": "to see if I can help",
+    "target_text": "ver se posso ajudar",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0654L02B03",
+   "expect": {
+    "known_text": "yes, if I can help",
+    "target_text": "sim, se posso ajudar"
+   },
+   "set": {
+    "known_text": "to find out if I can help",
+    "target_text": "descobrir se posso ajudar",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0656L01B02",
+   "expect": {
+    "known_text": "with you all now",
+    "target_text": "com vocês agora"
+   },
+   "set": {
+    "known_text": "to speak with you all",
+    "target_text": "falar com vocês",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0656L01B03",
+   "expect": {
+    "known_text": "yes, with you all",
+    "target_text": "sim, com vocês"
+   },
+   "set": {
+    "known_text": "to learn with you all",
+    "target_text": "aprender com vocês",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0657L02B03",
+   "expect": {
+    "known_text": "yes, do you all feel",
+    "target_text": "sim, vocês se sentem"
+   },
+   "set": {
+    "known_text": "do you all feel better",
+    "target_text": "vocês se sentem melhor",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0657L02U04",
+   "expect": {
+    "known_text": "it's true, we know how you all feel",
+    "target_text": "é verdade, sabemos como vocês se sentem"
+   },
+   "set": {
+    "known_text": "how do you all feel today?",
+    "target_text": "como vocês se sentem hoje?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0657L02U05",
+   "expect": {
+    "known_text": "he said, we know how you all feel",
+    "target_text": "ele disse, sabemos como vocês se sentem"
+   },
+   "set": {
+    "known_text": "I want to know how you all feel",
+    "target_text": "eu quero saber como vocês se sentem",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0658L01B02",
+   "expect": {
+    "known_text": "do you all want now",
+    "target_text": "vocês querem agora"
+   },
+   "set": {
+    "known_text": "what do you all want",
+    "target_text": "o que vocês querem",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0658L01B03",
+   "expect": {
+    "known_text": "yes, do you all want",
+    "target_text": "sim, vocês querem"
+   },
+   "set": {
+    "known_text": "do you all want coffee",
+    "target_text": "vocês querem café",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0658L01U02",
+   "expect": {
+    "known_text": "we know you all want",
+    "target_text": "sabemos que vocês querem"
+   },
+   "set": {
+    "known_text": "do you all want something to drink?",
+    "target_text": "vocês querem beber algo?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0658L01U03",
+   "expect": {
+    "known_text": "it's true, you all want",
+    "target_text": "é verdade, vocês querem"
+   },
+   "set": {
+    "known_text": "do you all want to learn Portuguese?",
+    "target_text": "vocês querem aprender português?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0658L01U04",
+   "expect": {
+    "known_text": "he said, you all want",
+    "target_text": "ele disse, vocês querem"
+   },
+   "set": {
+    "known_text": "do you all want to come back tomorrow?",
+    "target_text": "vocês querem voltar amanhã?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0658L01U05",
+   "expect": {
+    "known_text": "she said, you all want",
+    "target_text": "ela disse, vocês querem"
+   },
+   "set": {
+    "known_text": "what do you all want to do today?",
+    "target_text": "o que vocês querem fazer hoje?",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0659L01B02",
+   "expect": {
+    "known_text": "could you all say now",
+    "target_text": "vocês podiam dizer agora"
+   },
+   "set": {
+    "known_text": "could you all say something",
+    "target_text": "vocês podiam dizer algo",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0659L01B03",
+   "expect": {
+    "known_text": "it's true, could you all say",
+    "target_text": "é verdade, vocês podiam dizer"
+   },
+   "set": {
+    "known_text": "could you all say it in Portuguese",
+    "target_text": "vocês podiam dizer isso em português",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0659L01U01",
+   "expect": {
+    "known_text": "we know you all could say",
+    "target_text": "sabemos que vocês podiam dizer"
+   },
+   "set": {
+    "known_text": "could you all say something in Portuguese?",
+    "target_text": "vocês podiam dizer algo em português?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0659L01U02",
+   "expect": {
+    "known_text": "he said, you all could say",
+    "target_text": "ele disse, vocês podiam dizer"
+   },
+   "set": {
+    "known_text": "could you all say the whole sentence?",
+    "target_text": "vocês podiam dizer a frase inteira?",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0659L01U03",
+   "expect": {
+    "known_text": "she said, you all could say",
+    "target_text": "ela disse, vocês podiam dizer"
+   },
+   "set": {
+    "known_text": "could you all say his name?",
+    "target_text": "vocês podiam dizer o nome dele?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0660L02B02",
+   "expect": {
+    "known_text": "all of you now",
+    "target_text": "vocês agora"
+   },
+   "set": {
+    "known_text": "to help all of you",
+    "target_text": "ajudar vocês",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0660L02B03",
+   "expect": {
+    "known_text": "yes, all of you",
+    "target_text": "sim, vocês"
+   },
+   "set": {
+    "known_text": "I want to see all of you",
+    "target_text": "eu quero ver vocês",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L01B02",
+   "expect": {
+    "known_text": "you're all now",
+    "target_text": "vocês estão agora"
+   },
+   "set": {
+    "known_text": "you're all here",
+    "target_text": "vocês estão aqui",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L01B03",
+   "expect": {
+    "known_text": "yes, you're all",
+    "target_text": "sim, vocês estão"
+   },
+   "set": {
+    "known_text": "you're all learning",
+    "target_text": "vocês estão aprendendo",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L01U01",
+   "expect": {
+    "known_text": "it's true, you're all",
+    "target_text": "é verdade, vocês estão"
+   },
+   "set": {
+    "known_text": "you're all speaking Portuguese very well",
+    "target_text": "vocês estão falando português muito bem",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L01U02",
+   "expect": {
+    "known_text": "we know, you're all",
+    "target_text": "sabemos, vocês estão"
+   },
+   "set": {
+    "known_text": "you're all learning very quickly",
+    "target_text": "vocês estão aprendendo muito rapidamente",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L01U03",
+   "expect": {
+    "known_text": "he said, you're all",
+    "target_text": "ele disse, vocês estão"
+   },
+   "set": {
+    "known_text": "you're all here today",
+    "target_text": "vocês estão aqui hoje",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L01U04",
+   "expect": {
+    "known_text": "she said, you're all",
+    "target_text": "ela disse, vocês estão"
+   },
+   "set": {
+    "known_text": "you're all trying to help me",
+    "target_text": "vocês estão tentando me ajudar",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L01U05",
+   "expect": {
+    "known_text": "he thinks, you're all",
+    "target_text": "ele acha, vocês estão"
+   },
+   "set": {
+    "known_text": "where are you all?",
+    "target_text": "onde vocês estão?",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L02B02",
+   "expect": {
+    "known_text": "you're all doing something now",
+    "target_text": "vocês estão fazendo algo agora"
+   },
+   "set": {
+    "known_text": "I'm doing something",
+    "target_text": "estou fazendo algo",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L02B03",
+   "expect": {
+    "known_text": "yes, doing something",
+    "target_text": "sim, fazendo algo"
+   },
+   "set": {
+    "known_text": "she's doing something",
+    "target_text": "ela está fazendo algo",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L02U02",
+   "expect": {
+    "known_text": "it's true, you're all doing something",
+    "target_text": "é verdade, vocês estão fazendo algo"
+   },
+   "set": {
+    "known_text": "you're all doing something important",
+    "target_text": "vocês estão fazendo algo importante",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L02U03",
+   "expect": {
+    "known_text": "we know, you're all doing something",
+    "target_text": "sabemos, vocês estão fazendo algo"
+   },
+   "set": {
+    "known_text": "I think you're all doing something interesting",
+    "target_text": "eu acho que vocês estão fazendo algo interessante",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0661L02U04",
+   "expect": {
+    "known_text": "he said, you're all doing something",
+    "target_text": "ele disse, vocês estão fazendo algo"
+   },
+   "set": {
+    "known_text": "I can't, I'm doing something",
+    "target_text": "não consigo, estou fazendo algo",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0662L01B02",
+   "expect": {
+    "known_text": "you all speak it now",
+    "target_text": "vocês falam isso agora"
+   },
+   "set": {
+    "known_text": "you all speak it very well",
+    "target_text": "vocês falam isso muito bem",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0662L01B03",
+   "expect": {
+    "known_text": "yes, you all speak it",
+    "target_text": "sim, vocês falam isso"
+   },
+   "set": {
+    "known_text": "you all speak it better than I",
+    "target_text": "vocês falam isso melhor do que eu",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0662L01U01",
+   "expect": {
+    "known_text": "it's true, you all speak it",
+    "target_text": "é verdade, vocês falam isso"
+   },
+   "set": {
+    "known_text": "I think you all speak it very well",
+    "target_text": "eu acho que vocês falam isso muito bem",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0662L01U02",
+   "expect": {
+    "known_text": "we know, you all speak it",
+    "target_text": "sabemos, vocês falam isso"
+   },
+   "set": {
+    "known_text": "you all speak it better than Jane",
+    "target_text": "vocês falam isso melhor do que a Jane",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0662L01U03",
+   "expect": {
+    "known_text": "he said, you all speak it",
+    "target_text": "ele disse, vocês falam isso"
+   },
+   "set": {
+    "known_text": "you all speak it as much as possible",
+    "target_text": "vocês falam isso o mais possível",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0662L01U04",
+   "expect": {
+    "known_text": "she said, you all speak it",
+    "target_text": "ela disse, vocês falam isso"
+   },
+   "set": {
+    "known_text": "you all speak it with me",
+    "target_text": "vocês falam isso comigo",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0662L01U05",
+   "expect": {
+    "known_text": "he thinks, you all speak it",
+    "target_text": "ele acha, vocês falam isso"
+   },
+   "set": {
+    "known_text": "you all speak it easily",
+    "target_text": "vocês falam isso facilmente",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0663L02B02",
+   "expect": {
+    "known_text": "what you all said now",
+    "target_text": "o que vocês disseram agora"
+   },
+   "set": {
+    "known_text": "you all said that",
+    "target_text": "vocês disseram isso",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0663L02B03",
+   "expect": {
+    "known_text": "yes, you all said",
+    "target_text": "sim, vocês disseram"
+   },
+   "set": {
+    "known_text": "what you all said yesterday",
+    "target_text": "o que vocês disseram ontem",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0664L02B02",
+   "expect": {
+    "known_text": "you're all ready now",
+    "target_text": "vocês estão prontos agora"
+   },
+   "set": {
+    "known_text": "you're all ready to go",
+    "target_text": "vocês estão prontos para ir",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0664L02B03",
+   "expect": {
+    "known_text": "yes, all ready",
+    "target_text": "sim, prontos"
+   },
+   "set": {
+    "known_text": "all ready for tomorrow",
+    "target_text": "prontos para amanhã",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0664L02U02",
+   "expect": {
+    "known_text": "it's true, you're all ready",
+    "target_text": "é verdade, vocês estão prontos"
+   },
+   "set": {
+    "known_text": "I think you're all ready",
+    "target_text": "eu acho que vocês estão prontos",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0664L02U03",
+   "expect": {
+    "known_text": "we know, you're all ready",
+    "target_text": "sabemos, vocês estão prontos"
+   },
+   "set": {
+    "known_text": "are you all ready for tomorrow?",
+    "target_text": "vocês estão prontos para amanhã?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0664L02U04",
+   "expect": {
+    "known_text": "he said, you're all ready",
+    "target_text": "ele disse, vocês estão prontos"
+   },
+   "set": {
+    "known_text": "you're all ready to start talking",
+    "target_text": "vocês estão prontos para começar a falar",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0665L02B03",
+   "expect": {
+    "known_text": "yes, go",
+    "target_text": "sim, ir"
+   },
+   "set": {
+    "known_text": "to go with you",
+    "target_text": "ir com você",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0667L01B02",
+   "expect": {
+    "known_text": "do you all mind now",
+    "target_text": "vocês se importam agora"
+   },
+   "set": {
+    "known_text": "do you all mind waiting",
+    "target_text": "vocês se importam de esperar",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0667L01B03",
+   "expect": {
+    "known_text": "it's true, do you all mind",
+    "target_text": "é verdade, vocês se importam"
+   },
+   "set": {
+    "known_text": "do you all mind helping me",
+    "target_text": "vocês se importam de me ajudar",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0667L01U01",
+   "expect": {
+    "known_text": "we know you all mind",
+    "target_text": "sabemos que vocês se importam"
+   },
+   "set": {
+    "known_text": "do you all mind waiting a few minutes?",
+    "target_text": "vocês se importam de esperar uns minutos?",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0667L01U02",
+   "expect": {
+    "known_text": "he said, you all mind",
+    "target_text": "ele disse, vocês se importam"
+   },
+   "set": {
+    "known_text": "do you all mind speaking a little more slowly?",
+    "target_text": "vocês se importam de falar um pouco mais devagar?",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0667L01U03",
+   "expect": {
+    "known_text": "she said, you all mind",
+    "target_text": "ela disse, vocês se importam"
+   },
+   "set": {
+    "known_text": "do you all mind coming back later?",
+    "target_text": "vocês se importam de voltar mais tarde?",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0667L01U04",
+   "expect": {
+    "known_text": "he thinks, you all mind",
+    "target_text": "ele acha, vocês se importam"
+   },
+   "set": {
+    "known_text": "do you all mind speaking Portuguese with me?",
+    "target_text": "vocês se importam de falar português comigo?",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0667L01U05",
+   "expect": {
+    "known_text": "she thinks, you all mind",
+    "target_text": "ela acha, vocês se importam"
+   },
+   "set": {
+    "known_text": "do you all mind helping me with this?",
+    "target_text": "vocês se importam de me ajudar com isso?",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L02B02",
+   "expect": {
+    "known_text": "I hope that you'll all be able now",
+    "target_text": "espero que vocês consigam agora"
+   },
+   "set": {
+    "known_text": "I hope that you'll all be able to come back",
+    "target_text": "espero que vocês consigam voltar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L02B03",
+   "expect": {
+    "known_text": "yes, that you'll all be able",
+    "target_text": "sim, que vocês consigam"
+   },
+   "set": {
+    "known_text": "that you'll all be able to help",
+    "target_text": "que vocês consigam ajudar",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L02U01",
+   "expect": {
+    "known_text": "I hope that you'll all be able",
+    "target_text": "espero que vocês consigam"
+   },
+   "set": {
+    "known_text": "I hope that you'll all be able to speak Portuguese",
+    "target_text": "espero que vocês consigam falar português",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L02U02",
+   "expect": {
+    "known_text": "it's true, I hope that you'll all be able",
+    "target_text": "é verdade, espero que vocês consigam"
+   },
+   "set": {
+    "known_text": "I hope that you'll all be able to come back tomorrow",
+    "target_text": "espero que vocês consigam voltar amanhã",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L02U03",
+   "expect": {
+    "known_text": "we know, I hope that you'll all be able",
+    "target_text": "sabemos, espero que vocês consigam"
+   },
+   "set": {
+    "known_text": "I hope that you'll all be able to help me",
+    "target_text": "espero que vocês consigam me ajudar",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L02U04",
+   "expect": {
+    "known_text": "he said, I hope that you'll all be able",
+    "target_text": "ele disse, espero que vocês consigam"
+   },
+   "set": {
+    "known_text": "I hope that you'll all be able to understand",
+    "target_text": "espero que vocês consigam entender",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L02U05",
+   "expect": {
+    "known_text": "she said, I hope that you'll all be able",
+    "target_text": "ela disse, espero que vocês consigam"
+   },
+   "set": {
+    "known_text": "I hope that you'll all be able to wait a few minutes",
+    "target_text": "espero que vocês consigam esperar uns minutos",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L04B02",
+   "expect": {
+    "known_text": "go, all of them, now",
+    "target_text": "ir todos agora"
+   },
+   "set": {
+    "known_text": "I want all of them",
+    "target_text": "eu quero todos",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L04B03",
+   "expect": {
+    "known_text": "yes, all of them",
+    "target_text": "sim, todos"
+   },
+   "set": {
+    "known_text": "I need all of them",
+    "target_text": "eu preciso de todos",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L04U02",
+   "expect": {
+    "known_text": "it's true, I hope you'll all be able to go",
+    "target_text": "é verdade, espero que vocês consigam ir todos"
+   },
+   "set": {
+    "known_text": "I'm going to help all of them",
+    "target_text": "vou ajudar todos",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L04U03",
+   "expect": {
+    "known_text": "we know, I hope you'll all be able to go",
+    "target_text": "sabemos, espero que vocês consigam ir todos"
+   },
+   "set": {
+    "known_text": "I'd like to get to know all of them",
+    "target_text": "gostaria de conhecer todos",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0668L04U04",
+   "expect": {
+    "known_text": "he said, I hope you'll all be able to go",
+    "target_text": "ele disse, espero que vocês consigam ir todos"
+   },
+   "set": {
+    "known_text": "I want to speak with all of them",
+    "target_text": "eu quero falar com todos",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0632L01U02",
+   "expect": {
+    "known_text": "it seems that I can have a glass of water",
+    "target_text": "parece que posso beber um copo de água"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0632L01U04",
+   "expect": {
+    "known_text": "it's true that I can have a glass of water",
+    "target_text": "é verdade que posso beber um copo de água"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0632L01U05",
+   "expect": {
+    "known_text": "yes, I can have a glass of water",
+    "target_text": "sim, posso beber um copo de água"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0633L01U02",
+   "expect": {
+    "known_text": "it seems that I can have a large glass",
+    "target_text": "parece que posso beber um copo grande"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0633L01U04",
+   "expect": {
+    "known_text": "yes, I can have a large glass",
+    "target_text": "sim, posso beber um copo grande"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0633L02U04",
+   "expect": {
+    "known_text": "yes, I can have a large glass of water",
+    "target_text": "sim, posso beber um copo grande de água"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0634L02U05",
+   "expect": {
+    "known_text": "yes, I'd like one of those",
+    "target_text": "sim, eu gostaria de um desses"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0635L01U01",
+   "expect": {
+    "known_text": "I like that bag",
+    "target_text": "eu gosto de aquela bolsa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0635L01U02",
+   "expect": {
+    "known_text": "he thinks I like that bag",
+    "target_text": "ele acha que eu gosto de aquela bolsa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0635L01U03",
+   "expect": {
+    "known_text": "she thinks I like that bag",
+    "target_text": "ela acha que eu gosto de aquela bolsa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0635L01U04",
+   "expect": {
+    "known_text": "we know I like that bag",
+    "target_text": "sabemos que eu gosto de aquela bolsa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0635L01U05",
+   "expect": {
+    "known_text": "yes, I like that bag",
+    "target_text": "sim, eu gosto de aquela bolsa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0638L02U03",
+   "expect": {
+    "known_text": "it seems, I'm trying to think",
+    "target_text": "parece, estou tentando pensar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0638L02U04",
+   "expect": {
+    "known_text": "he thinks, I'm trying to think",
+    "target_text": "ele acha, estou tentando pensar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0638L02U05",
+   "expect": {
+    "known_text": "she thinks, I'm trying to think",
+    "target_text": "ela acha, estou tentando pensar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0639L01U02",
+   "expect": {
+    "known_text": "it's true, I'm with you sir",
+    "target_text": "é verdade, estou com o senhor"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0639L01U03",
+   "expect": {
+    "known_text": "it seems, I'm with you sir",
+    "target_text": "parece, estou com o senhor"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0639L01U04",
+   "expect": {
+    "known_text": "we know, I'm with you sir",
+    "target_text": "sabemos, estou com o senhor"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0639L01U05",
+   "expect": {
+    "known_text": "yes, I'm with you sir",
+    "target_text": "sim, estou com o senhor"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0640L01U02",
+   "expect": {
+    "known_text": "it seems, it's the red one",
+    "target_text": "parece, é o vermelho"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0641L03U02",
+   "expect": {
+    "known_text": "he thinks I think that it's the red one on that chair",
+    "target_text": "ele acha que eu acho que é o vermelho naquela cadeira"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0641L03U03",
+   "expect": {
+    "known_text": "she thinks I think that it's the red one on that chair",
+    "target_text": "ela acha que eu acho que é o vermelho naquela cadeira"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0641L03U04",
+   "expect": {
+    "known_text": "we know I think that it's the red one on that chair",
+    "target_text": "sabemos que eu acho que é o vermelho naquela cadeira"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0641L03U05",
+   "expect": {
+    "known_text": "it's true, I think that it's the red one on that chair",
+    "target_text": "é verdade, eu acho que é o vermelho naquela cadeira"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0644L02U05",
+   "expect": {
+    "known_text": "it's true, you, sir, could say",
+    "target_text": "é verdade, o senhor poderia dizer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0645L01U04",
+   "expect": {
+    "known_text": "he said, I can help",
+    "target_text": "ele disse, eu posso ajudar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0645L01U05",
+   "expect": {
+    "known_text": "she said, I can help",
+    "target_text": "ela disse, eu posso ajudar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0654L02U02",
+   "expect": {
+    "known_text": "it's true, I'm not sure if I can help",
+    "target_text": "é verdade, não tenho certeza se posso ajudar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0654L02U03",
+   "expect": {
+    "known_text": "we know, I'm not sure if I can help",
+    "target_text": "sabemos, não tenho certeza se posso ajudar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0654L02U04",
+   "expect": {
+    "known_text": "he said, I'm not sure if I can help",
+    "target_text": "ele disse, não tenho certeza se posso ajudar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0654L02U05",
+   "expect": {
+    "known_text": "she said, I'm not sure if I can help",
+    "target_text": "ela disse, não tenho certeza se posso ajudar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0656L01U02",
+   "expect": {
+    "known_text": "he said, I'm with you all",
+    "target_text": "ele disse, estou com vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0656L01U03",
+   "expect": {
+    "known_text": "she said, I'm with you all",
+    "target_text": "ela disse, estou com vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0656L01U04",
+   "expect": {
+    "known_text": "we know, I'm with you all",
+    "target_text": "sabemos, estou com vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0656L01U05",
+   "expect": {
+    "known_text": "it's true, I'm with you all",
+    "target_text": "é verdade, estou com vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0659L01U04",
+   "expect": {
+    "known_text": "yes, you all could say",
+    "target_text": "sim, vocês podiam dizer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0659L01U05",
+   "expect": {
+    "known_text": "we know, you all could say",
+    "target_text": "sabemos, vocês podiam dizer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0660L02U02",
+   "expect": {
+    "known_text": "it's true, I can help you all",
+    "target_text": "é verdade, eu posso ajudar vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0660L02U03",
+   "expect": {
+    "known_text": "he said, I can help you all",
+    "target_text": "ele disse, eu posso ajudar vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0660L02U04",
+   "expect": {
+    "known_text": "she said, I can help you all",
+    "target_text": "ela disse, eu posso ajudar vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0660L02U05",
+   "expect": {
+    "known_text": "we know, I can help you all",
+    "target_text": "sabemos, eu posso ajudar vocês"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0661L02U05",
+   "expect": {
+    "known_text": "she said, you're all doing something",
+    "target_text": "ela disse, vocês estão fazendo algo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0663L02U04",
+   "expect": {
+    "known_text": "it's true, we know what you all said",
+    "target_text": "é verdade, sabemos o que vocês disseram"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0663L02U05",
+   "expect": {
+    "known_text": "she said, we know what you all said",
+    "target_text": "ela disse, sabemos o que vocês disseram"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0664L02U05",
+   "expect": {
+    "known_text": "she said, you're all ready",
+    "target_text": "ela disse, vocês estão prontos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0665L02U03",
+   "expect": {
+    "known_text": "he said, you all want to go",
+    "target_text": "ele disse, vocês querem ir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0665L02U04",
+   "expect": {
+    "known_text": "she said, you all want to go",
+    "target_text": "ela disse, vocês querem ir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0665L02U05",
+   "expect": {
+    "known_text": "he thinks, you all want to go",
+    "target_text": "ele acha, vocês querem ir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0668L04U05",
+   "expect": {
+    "known_text": "she said, I hope you'll all be able to go",
+    "target_text": "ela disse, espero que vocês consigam ir todos"
+   }
+  }
+ ]
+}

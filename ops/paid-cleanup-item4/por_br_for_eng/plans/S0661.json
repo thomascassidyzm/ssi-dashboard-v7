@@ -1,0 +1,79 @@
+{
+ "seed": 661,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "you're all here",
+     "vocês estão aqui"
+    ],
+    "B03": [
+     "you're all learning",
+     "vocês estão aprendendo"
+    ],
+    "U01": [
+     "you're all speaking Portuguese very well",
+     "vocês estão falando português muito bem"
+    ],
+    "U02": [
+     "you're all learning very quickly",
+     "vocês estão aprendendo muito rapidamente"
+    ],
+    "U03": [
+     "you're all here today",
+     "vocês estão aqui hoje"
+    ],
+    "U04": [
+     "you're all trying to help me",
+     "vocês estão tentando me ajudar"
+    ],
+    "U05": [
+     "where are you all?",
+     "onde vocês estão?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "you're all speaking",
+     "vocês estão falando"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "I'm doing something",
+     "estou fazendo algo"
+    ],
+    "B03": [
+     "she's doing something",
+     "ela está fazendo algo"
+    ],
+    "U02": [
+     "you're all doing something important",
+     "vocês estão fazendo algo importante"
+    ],
+    "U03": [
+     "I think you're all doing something interesting",
+     "eu acho que vocês estão fazendo algo interessante"
+    ],
+    "U04": [
+     "I can't, I'm doing something",
+     "não consigo, estou fazendo algo"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "he's doing something",
+     "ele está fazendo algo"
+    ]
+   ],
+   "delete": [
+    "U05"
+   ]
+  }
+ },
+ "notes": "cs #842·AI opus arm, item 4: scan-marked filler and template-glue rows in touched baskets rewritten from taught chunks or cut where the basket stays above floor"
+}
