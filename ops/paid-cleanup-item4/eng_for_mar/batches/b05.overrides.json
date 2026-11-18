@@ -1,0 +1,651 @@
+[
+ {
+  "seed_number": 71,
+  "phrases": {
+   "71:1": [
+    {
+     "known_text": "सोडणे",
+     "target_text": "let",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कोणाला",
+     "target_text": "anyone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "कोणाला ऐकू द्यायला",
+     "target_text": "to let anyone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कोणाला बोलू द्यायला",
+     "target_text": "to let anyone speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कोणाला ते वाचू द्यायला",
+     "target_text": "to let anyone read it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्हाला कोणाला बोलू द्यायचं नव्हतं",
+     "target_text": "we didn't want to let anyone speak",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कोणाला माझं पत्र वाचू द्यायचं नाही",
+     "target_text": "I don't want to let anyone read my letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला कोणाला कळू द्यायचं नव्हतं",
+     "target_text": "she didn't want to let anyone know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कोणाला गोष्टीत व्यत्यय आणू द्यायचा नव्हता",
+     "target_text": "I didn't want to let anyone interrupt the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला कोणाला लहान कुत्र्याला सांभाळू द्यायचं नाही",
+     "target_text": "he doesn't want to let anyone look after the young dog",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "कोणाला कळू द्यायला",
+     "target_text": "to let anyone know",
+     "phrase_role": "build"
+    }
+   ],
+   "71:2": [
+    {
+     "known_text": "ऐकणे",
+     "target_text": "hear",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "सत्य",
+     "target_text": "truth",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "खरं ऐकणे",
+     "target_text": "hear the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खरं ऐकायला",
+     "target_text": "to hear the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खरं ऐकायचं आहे",
+     "target_text": "want to hear the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्हाला कोणाला खरं ऐकू द्यायचं नव्हतं",
+     "target_text": "we didn't want to let anyone hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खरं ऐकायचं आहे",
+     "target_text": "I want to hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तिला खरं ऐकायचं नव्हतं",
+     "target_text": "she didn't want to hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कोणाला खरं ऐकू द्यायचं नव्हतं",
+     "target_text": "I didn't want to let anyone hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "खरं ऐकणं सोपं नाही",
+     "target_text": "it isn't easy to hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "खरं ऐकायचं नव्हतं",
+     "target_text": "didn't want to hear the truth",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 72,
+  "phrases": {
+   "72:1": [
+    {
+     "known_text": "वाटतं",
+     "target_text": "think",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला तसं वाटतं",
+     "target_text": "I think so",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला तसं वाटत नाही",
+     "target_text": "I don't think so",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं ते महत्त्वाचं आहे",
+     "target_text": "I think it's important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला काय वाटतं?",
+     "target_text": "what do you think?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ते अवघड वाटत नाही",
+     "target_text": "I don't think it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला ते मजेशीर वाटतं का?",
+     "target_text": "do you think it is fun?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं त्याला थांबायचं आहे",
+     "target_text": "I think he wants to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वाटत नाही",
+     "target_text": "don't think",
+     "phrase_role": "build"
+    }
+   ],
+   "72:2": [
+    {
+     "known_text": "तुम्ही",
+     "target_text": "you're",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "करत",
+     "target_text": "doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही करत",
+     "target_text": "you're doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही काय करताय",
+     "target_text": "what you're doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही छान करताय",
+     "target_text": "you're doing well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की तुम्ही खूप छान करताय",
+     "target_text": "I think that you're doing very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही काय करताय ते मला माहित आहे",
+     "target_text": "I know what you're doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही ते खूप छान करताय",
+     "target_text": "you're doing it very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं तुम्ही काहीतरी रंजक करताय",
+     "target_text": "I think you're doing something interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही काय करताय ते मला समजत नाही",
+     "target_text": "I don't understand what you're doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही ते करताय",
+     "target_text": "you're doing it",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 73,
+  "phrases": {
+   "73:1": [
+    {
+     "known_text": "धन्यवाद",
+     "target_text": "thank",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "खूप",
+     "target_text": "much",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "खूप खूप धन्यवाद",
+     "target_text": "thank you very much",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पत्राबद्दल खूप खूप धन्यवाद",
+     "target_text": "thank you very much for the letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सगळ्याबद्दल खूप खूप धन्यवाद",
+     "target_text": "thank you very much for everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खूप खूप धन्यवाद, मला बरं वाटतंय",
+     "target_text": "thank you very much, I feel better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला मदत केल्याबद्दल खूप खूप धन्यवाद",
+     "target_text": "thank you very much for helping me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "खूप खूप धन्यवाद, ते खूप महत्त्वाचं आहे",
+     "target_text": "thank you very much, it's very important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "खूप खूप धन्यवाद, पण मला त्याची गरज नाही",
+     "target_text": "thank you very much, but I don't need it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "गोष्टीबद्दल खूप खूप धन्यवाद",
+     "target_text": "thank you very much for the story",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पण खूप खूप धन्यवाद",
+     "target_text": "but thank you very much",
+     "phrase_role": "build"
+    }
+   ],
+   "73:2": [
+    {
+     "known_text": "मला आहे",
+     "target_text": "I've",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "मला मिळालंय",
+     "target_text": "I've got",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला काहीतरी मिळालंय",
+     "target_text": "I've got something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला एक पत्र मिळालंय",
+     "target_text": "I've got a letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "खूप खूप धन्यवाद पण मला अजून बरंच शिकायचं आहे",
+     "target_text": "thank you very much, but I've got more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अजून बरंच शिकायचं आहे",
+     "target_text": "I've got more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझ्याकडे एक लहान कुत्रा आहे",
+     "target_text": "I've got a young dog",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "माझ्याकडे तुमच्यासाठी काहीतरी आहे",
+     "target_text": "I've got something for you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज माझ्याकडे पुरेसा वेळ आहे",
+     "target_text": "I've got enough time today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याचं नाव मिळालंय",
+     "target_text": "I've got his name",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 77,
+  "phrases": {
+   "77:1": [
+    {
+     "known_text": "ला",
+     "target_text": "at",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "आश्चर्य वाटतंय",
+     "target_text": "surprised at",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "किती पटकन याचं आश्चर्य वाटतंय",
+     "target_text": "surprised at how quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी किती शिकलोय याचं आश्चर्य वाटतंय",
+     "target_text": "surprised at how much I've learnt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला किती माहित आहे याचं मला आश्चर्य वाटतंय",
+     "target_text": "I'm surprised at how much you know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला किती पटकन समजतं याचं मला आश्चर्य वाटतंय",
+     "target_text": "I'm surprised at how quickly you understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याचं खूप आश्चर्य वाटतंय",
+     "target_text": "I'm very surprised at that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते किती सोपं आहे याचं मला आश्चर्य वाटतंय",
+     "target_text": "I'm surprised at how easy it is",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला त्याचं आश्चर्य वाटत नाही",
+     "target_text": "I'm not surprised at that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याचं आश्चर्य वाटतंय",
+     "target_text": "surprised at it",
+     "phrase_role": "build"
+    }
+   ],
+   "77:2": [
+    {
+     "known_text": "सुरू",
+     "target_text": "starting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सुरू",
+     "target_text": "starting today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "समजायला लागणं",
+     "target_text": "starting to understand",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला किती पटकन समजायला लागलंय याचं मला आश्चर्य वाटतंय",
+     "target_text": "I'm surprised at how quickly I'm starting to understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला समजायला लागलंय",
+     "target_text": "I'm starting to understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बरं वाटायला लागलंय",
+     "target_text": "I'm starting to feel better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काही शब्द शिकायला सुरुवात करतोय",
+     "target_text": "I'm starting to learn a few words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला ते आवडायला लागलंय",
+     "target_text": "I'm starting to enjoy it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पुढच्या आठवड्यापासून सुरू",
+     "target_text": "starting next week",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 78,
+  "phrases": {
+   "78:1": [
+    {
+     "known_text": "समजत नाही",
+     "target_text": "don't understand",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ते समजत नाही",
+     "target_text": "don't understand it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सगळं समजत नाही",
+     "target_text": "don't understand everything",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला समजत नाही",
+     "target_text": "I don't understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला काय म्हणायचंय ते मला समजत नाही",
+     "target_text": "I don't understand what you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पूर्ण वाक्य समजत नाही",
+     "target_text": "I don't understand the whole sentence",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्याला का थांबायचं आहे ते मला समजत नाही",
+     "target_text": "I don't understand why he wants to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते कसं करायचं ते मला समजत नाही",
+     "target_text": "I don't understand how to do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "का ते समजत नाही",
+     "target_text": "don't understand why",
+     "phrase_role": "build"
+    }
+   ],
+   "78:2": [
+    {
+     "known_text": "म्हणालात",
+     "target_text": "said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही काय म्हणालात",
+     "target_text": "what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही ते म्हणालात",
+     "target_text": "you said that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही काय म्हणालात ते मला समजलं नाही",
+     "target_text": "I don't understand what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही काहीतरी म्हणालात",
+     "target_text": "you said something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही इंग्रजीत ते म्हणालात",
+     "target_text": "you said that in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही म्हणालात की तुम्हाला परत यायचं होतं",
+     "target_text": "you said you wanted to come back",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी ते म्हणालो",
+     "target_text": "I said that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती काय म्हणाली",
+     "target_text": "what she said",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 79,
+  "phrases": {
+   "79:1": [
+    {
+     "known_text": "केलं",
+     "target_text": "did",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "तुम्ही केलं का",
+     "target_text": "did you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला माहित होतं का?",
+     "target_text": "did you know?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्हाला झोप लागली का?",
+     "target_text": "did you sleep?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही ते कधी शिकलात?",
+     "target_text": "when did you learn it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला समजलं का?",
+     "target_text": "did you understand?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी काय म्हणालो ते तुम्हाला समजलं का?",
+     "target_text": "did you understand what I said?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला नीट झोप लागली का?",
+     "target_text": "did you sleep very well?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला त्याचं नाव सापडलं का?",
+     "target_text": "did you find his name?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही ते म्हणालात का?",
+     "target_text": "did you say that?",
+     "phrase_role": "build"
+    }
+   ],
+   "79:2": [
+    {
+     "known_text": "सुरुवात",
+     "target_text": "start",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज सुरुवात",
+     "target_text": "start today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पुढच्या आठवड्यात सुरुवात",
+     "target_text": "start next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुम्ही कधी शिकायला सुरुवात केली?",
+     "target_text": "when did you start to learn?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज सुरुवात करायची आहे",
+     "target_text": "I want to start today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला कधी सुरुवात करायची आहे?",
+     "target_text": "when do you want to start?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही सुरुवात केली का?",
+     "target_text": "did you start?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला समजायला सुरुवात झाली का?",
+     "target_text": "did you start to understand?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "शिकायला सुरुवात",
+     "target_text": "start to learn",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

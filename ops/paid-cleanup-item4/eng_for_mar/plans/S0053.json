@@ -1,0 +1,64 @@
+{
+ "seed": 53,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "काहीतरी ठेवायला",
+     "to put something"
+    ],
+    "U02": [
+     "तिला इथे काहीतरी ठेवायचं होतं",
+     "she wanted to put something here"
+    ],
+    "U04": [
+     "आम्हाला ते इथे ठेवायचं होतं",
+     "we wanted to put it here"
+    ],
+    "U05": [
+     "मला त्याचं पत्र इथे ठेवायचं होतं",
+     "I wanted to put his letter here"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "त्याचं पत्र ठेवायला",
+     "to put his letter"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "तिच्या बॅगेत काहीतरी",
+     "something in her bag"
+    ],
+    "B03": [
+     "तिच्या बॅगेत त्याचं पत्र",
+     "his letter in her bag"
+    ],
+    "U02": [
+     "मला तिच्या बॅगेत काहीतरी ठेवायचं होतं",
+     "I wanted to put something in her bag"
+    ],
+    "U03": [
+     "त्याला त्याचं पत्र तिच्या बॅगेत ठेवायचं होतं",
+     "he wanted to put his letter in her bag"
+    ],
+    "U04": [
+     "तिला ते तिच्या बॅगेत ठेवायचं होतं",
+     "she wanted to put it in her bag"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ते तिच्या बॅगेत ठेवायला",
+     "to put it in her bag"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -1,0 +1,73 @@
+{
+ "seed": 120,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "मला माहित नाही हे रंजक आहे",
+     "it's interesting that I don't know"
+    ],
+    "B03": [
+     "तुम्हाला समजतं हे रंजक आहे",
+     "it's interesting that you understand"
+    ],
+    "B04": [
+     "मला आठवत नाही हे रंजक आहे",
+     "it's interesting that I can't remember"
+    ],
+    "U02": [
+     "तुम्ही माझ्याशी सहमत आहात हे रंजक आहे",
+     "it's interesting that you agree with me"
+    ],
+    "U03": [
+     "त्याला उत्तर माहित नव्हतं हे रंजक आहे",
+     "it's interesting that he didn't know the answer"
+    ],
+    "U04": [
+     "तुम्हाला इंग्रजी शिकायचं आहे हे रंजक आहे",
+     "it's interesting that you want to learn English"
+    ],
+    "U05": [
+     "तुम्हाला कुत्र्याशी खेळायला आवडतं हे रंजक आहे",
+     "it's interesting that you like playing with the dog"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "तुम्हाला तुमच्या मित्रांबरोबर बसने जायला आवडतं",
+     "you like to go by bus with your friends"
+    ],
+    "B03": [
+     "तुम्हाला रात्री बसने जायला आवडतं",
+     "you like to go by bus at night"
+    ],
+    "B04": [
+     "तुम्हाला बसने जायला आवडतं हे मला माहित आहे",
+     "I know you like to go by bus"
+    ],
+    "U03": [
+     "तुम्हाला बसने जायला आवडतं हे मला माहित नव्हतं",
+     "I didn't know you like to go by bus"
+    ],
+    "U04": [
+     "तुम्हाला बसने जायला आवडतं का?",
+     "do you like to go by bus?"
+    ],
+    "U05": [
+     "तुम्हाला बसने जायला आवडतं याचं मला आश्चर्य वाटतंय",
+     "I'm surprised that you like to go by bus"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "माझा मित्र म्हणाला की तुम्हाला बसने जायला आवडतं",
+     "my friend said you like to go by bus"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

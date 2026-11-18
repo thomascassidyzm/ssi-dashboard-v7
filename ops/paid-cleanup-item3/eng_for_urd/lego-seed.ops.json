@@ -1,0 +1,23 @@
+[
+ {
+  "op": "lego.update",
+  "lego_id": "S0489L02",
+  "expect": {
+   "known_text": "مضبوط",
+   "target_text": "strong"
+  },
+  "set": {
+   "known_text": "کڑک"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 489,
+  "expect": {
+   "known_text": "اگر آپ ابھی مجھے ایک مضبوط کپ کافی نہیں بناتے۔"
+  },
+  "set": {
+   "known_text": "اگر آپ ابھی مجھے ایک کڑک کپ کافی نہیں بناتے۔"
+  }
+ }
+]

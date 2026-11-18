@@ -1,0 +1,1218 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0109L02B04",
+    "seed_number": 109,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "पण आम्ही मेहनत केली पाहिजे",
+    "target_text": "but we must work hard",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0112L02U05",
+    "seed_number": 112,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "त्याला उत्तर माहित नव्हतं, आणि मला त्याची अपेक्षा नव्हती",
+    "target_text": "he didn't know the answer, and I wasn't expecting it",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 52,
+    "lego_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01B02",
+   "expect": {
+    "known_text": "खूप नवीन शब्द इंग्रजीत",
+    "target_text": "a lot of new words in English"
+   },
+   "set": {
+    "known_text": "खूप नवीन शब्द शिकणे",
+    "target_text": "to learn a lot of new words",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01B03",
+   "expect": {
+    "known_text": "खूप नवीन शब्द पुन्हा",
+    "target_text": "a lot of new words again"
+   },
+   "set": {
+    "known_text": "मी खूप नवीन शब्द शिकलोय",
+    "target_text": "I've learnt a lot of new words",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01B04",
+   "expect": {
+    "known_text": "खूप नवीन शब्द आधीच",
+    "target_text": "a lot of new words already"
+   },
+   "set": {
+    "known_text": "आज खूप नवीन शब्द",
+    "target_text": "a lot of new words today",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01U01",
+   "expect": {
+    "known_text": "मला माहित नाही खूप नवीन शब्द",
+    "target_text": "I don't know a lot of new words"
+   },
+   "set": {
+    "known_text": "मला खूप नवीन शब्द शिकायचे आहेत",
+    "target_text": "I want to learn a lot of new words",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01U02",
+   "expect": {
+    "known_text": "मला माहित नाही खूप नवीन शब्द इंग्रजीत",
+    "target_text": "I don't know a lot of new words in English"
+   },
+   "set": {
+    "known_text": "मला त्याच वेळी खूप नवीन शब्द आठवत नाहीत",
+    "target_text": "I can't remember a lot of new words at the same time",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01U03",
+   "expect": {
+    "known_text": "मला आठवत नाही खूप नवीन शब्द",
+    "target_text": "I can't remember a lot of new words"
+   },
+   "set": {
+    "known_text": "खूप नवीन शब्द आठवणं सोपं नाही",
+    "target_text": "it isn't easy to remember a lot of new words",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01U04",
+   "expect": {
+    "known_text": "मला वाटतं की मला खूप नवीन शब्द माहित नाहीत",
+    "target_text": "I think that I don't know a lot of new words"
+   },
+   "set": {
+    "known_text": "आम्ही गेल्या आठवड्यात खूप नवीन शब्द शिकलो",
+    "target_text": "we learnt a lot of new words last week",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L01U05",
+   "expect": {
+    "known_text": "मला खूप नवीन शब्द आधीच माहित नाहीत",
+    "target_text": "I don't know a lot of new words already"
+   },
+   "set": {
+    "known_text": "मला खूप नवीन शब्द शिकायला मजा येतेय",
+    "target_text": "I'm enjoying learning a lot of new words",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L02B02",
+   "expect": {
+    "known_text": "खूप नवीन शब्द शिकण्यासाठी आम्ही आज मेहनत केली पाहिजे",
+    "target_text": "we must work hard to learn a lot of new words today"
+   },
+   "set": {
+    "known_text": "आम्ही आज मेहनत केली पाहिजे",
+    "target_text": "we must work hard today",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L02B03",
+   "expect": {
+    "known_text": "खूप नवीन शब्द इंग्रजीत शिकण्यासाठी आम्ही मेहनत केली पाहिजे",
+    "target_text": "we must work hard to learn a lot of new words in English"
+   },
+   "set": {
+    "known_text": "शिकण्यासाठी आम्ही मेहनत केली पाहिजे",
+    "target_text": "we must work hard to learn",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L02U02",
+   "expect": {
+    "known_text": "आम्ही इंग्रजीत मेहनत केली पाहिजे",
+    "target_text": "we must work hard in English"
+   },
+   "set": {
+    "known_text": "सुधारण्यासाठी आम्ही मेहनत केली पाहिजे",
+    "target_text": "we must work hard to improve",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L02U04",
+   "expect": {
+    "known_text": "आम्ही पुन्हा मेहनत केली पाहिजे",
+    "target_text": "we must work hard again"
+   },
+   "set": {
+    "known_text": "आम्ही मेहनत केली पाहिजे, पण ते मजेशीर आहे",
+    "target_text": "we must work hard, but it is fun",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0109L02U05",
+   "expect": {
+    "known_text": "आम्ही आज मेहनत केली पाहिजे",
+    "target_text": "we must work hard today"
+   },
+   "set": {
+    "known_text": "पुढच्या आठवड्यात आम्ही मेहनत केली पाहिजे",
+    "target_text": "we must work hard next week",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L01B02",
+   "expect": {
+    "known_text": "मित्र आहोत इंग्रजीत",
+    "target_text": "friends in English"
+   },
+   "set": {
+    "known_text": "आम्ही चांगले मित्र आहोत",
+    "target_text": "we're good friends",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L01B03",
+   "expect": {
+    "known_text": "मित्र आहोत रात्री",
+    "target_text": "friends tonight"
+   },
+   "set": {
+    "known_text": "आता आम्ही मित्र आहोत",
+    "target_text": "we're friends now",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L01U02",
+   "expect": {
+    "known_text": "आम्ही इंग्रजीत मित्र आहोत",
+    "target_text": "we're friends in English"
+   },
+   "set": {
+    "known_text": "आम्ही मित्र आहोत, म्हणूनच मी इथे आहे",
+    "target_text": "we're friends, that is why I'm here",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L01U05",
+   "expect": {
+    "known_text": "कारण आम्ही मित्र आहोत",
+    "target_text": "because we're friends"
+   },
+   "set": {
+    "known_text": "आम्ही मित्र आहोत, म्हणून मला तुम्हाला मदत करायची आहे",
+    "target_text": "we're friends, so I want to help you",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02B02",
+   "expect": {
+    "known_text": "मित्र आहोत आणि आमचं झाल्यावर मी खात्री नाही",
+    "target_text": "friends and after we finish I'm not sure"
+   },
+   "set": {
+    "known_text": "आणि आज आमचं झाल्यावर",
+    "target_text": "and after we finish today",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02B03",
+   "expect": {
+    "known_text": "आमचं झाल्यावर इंग्रजीत",
+    "target_text": "and after we finish in English"
+   },
+   "set": {
+    "known_text": "आणि आमचं झाल्यावर आम्ही जाऊ शकतो",
+    "target_text": "and after we finish, we can go",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02B04",
+   "expect": {
+    "known_text": "आमचं झाल्यावर पुन्हा",
+    "target_text": "and after we finish again"
+   },
+   "set": {
+    "known_text": "आणि हे आमचं झाल्यावर",
+    "target_text": "and after we finish this",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02U01",
+   "expect": {
+    "known_text": "आम्ही मित्र आहोत आणि आमचं झाल्यावर मला खात्री नाही",
+    "target_text": "we're friends and after we finish I'm not sure"
+   },
+   "set": {
+    "known_text": "आम्ही सहा वाजता सुरुवात करणार आहोत, आणि आमचं झाल्यावर आम्ही घरी जाऊ शकतो",
+    "target_text": "we're going to start at six o'clock, and after we finish we can go home",
+    "decomposition": null,
+    "word_count": 71,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02U02",
+   "expect": {
+    "known_text": "आम्ही मित्र आहोत आणि आमचं झाल्यावर मला खूप आनंद आहे",
+    "target_text": "we're friends and after we finish I'm very happy"
+   },
+   "set": {
+    "known_text": "आम्ही गोष्ट वाचणार आहोत, आणि आमचं झाल्यावर आम्ही बोलणार आहोत",
+    "target_text": "we're going to read the story, and after we finish we're going to talk",
+    "decomposition": null,
+    "word_count": 70,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02U03",
+   "expect": {
+    "known_text": "मला खूप आनंद आहे आणि आमचं झाल्यावर मला खात्री नाही",
+    "target_text": "I'm very happy and after we finish I'm not sure"
+   },
+   "set": {
+    "known_text": "आम्ही काहीतरी रंजक करतोय, आणि आमचं झाल्यावर मी तुम्हाला त्याबद्दल सांगणार आहे",
+    "target_text": "we're doing something interesting, and after we finish I'm going to tell you about it",
+    "decomposition": null,
+    "word_count": 85,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02U04",
+   "expect": {
+    "known_text": "मला वाटतं की आम्ही मित्र आहोत आणि आमचं झाल्यावर मला खात्री नाही",
+    "target_text": "I think that we're friends and after we finish I'm not sure"
+   },
+   "set": {
+    "known_text": "तुम्ही इथे वाट पाहू शकता, आणि आमचं झाल्यावर आपण बोलू शकतो",
+    "target_text": "you can wait here, and after we finish we can speak",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L02U05",
+   "expect": {
+    "known_text": "कारण आम्ही मित्र आहोत आणि आमचं झाल्यावर मला खूप आनंद आहे",
+    "target_text": "because we're friends and after we finish I'm very happy"
+   },
+   "set": {
+    "known_text": "आम्ही मेहनत करणार आहोत, आणि आमचं झाल्यावर मी झोपणार आहे",
+    "target_text": "we're going to work hard, and after we finish I'm going to sleep",
+    "decomposition": null,
+    "word_count": 64,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L03B02",
+   "expect": {
+    "known_text": "आम्ही मित्र आहोत आणि आमचं झाल्यावर मला आराम करायला आवडेल इंग्रजीत",
+    "target_text": "we're friends and after we finish I'd like to relax in English"
+   },
+   "set": {
+    "known_text": "आणि मला आराम करायला आवडेल",
+    "target_text": "and I'd like to relax",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L03B04",
+   "expect": {
+    "known_text": "आराम करायला आवडेल पुन्हा",
+    "target_text": "I'd like to relax again"
+   },
+   "set": {
+    "known_text": "मला थोडा आराम करायला आवडेल",
+    "target_text": "I'd like to relax a little",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L03U02",
+   "expect": {
+    "known_text": "मला आराम करायला आवडेल इंग्रजीत",
+    "target_text": "I'd like to relax in English"
+   },
+   "set": {
+    "known_text": "मला घरी आराम करायला आवडेल",
+    "target_text": "I'd like to relax at home",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L03U03",
+   "expect": {
+    "known_text": "मला आराम करायला आवडेल आधीच",
+    "target_text": "I'd like to relax already"
+   },
+   "set": {
+    "known_text": "मला आज दुपारी आराम करायला आवडेल",
+    "target_text": "I'd like to relax this afternoon",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L03U04",
+   "expect": {
+    "known_text": "मला वाटतं की मला आराम करायला आवडेल",
+    "target_text": "I think that I'd like to relax"
+   },
+   "set": {
+    "known_text": "मला वाटतं की मला आता आराम करायला आवडेल",
+    "target_text": "I think that I'd like to relax now",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0110L03U05",
+   "expect": {
+    "known_text": "कारण मला आराम करायला आवडेल",
+    "target_text": "because I'd like to relax"
+   },
+   "set": {
+    "known_text": "मी थोडा थकलोय, मला आराम करायला आवडेल",
+    "target_text": "I'm a little tired, I'd like to relax",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01B02",
+   "expect": {
+    "known_text": "काहीतरी नवीन इंग्रजीत",
+    "target_text": "something new in English"
+   },
+   "set": {
+    "known_text": "काहीतरी नवीन शिकणे",
+    "target_text": "to learn something new",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01B03",
+   "expect": {
+    "known_text": "काहीतरी नवीन रात्री",
+    "target_text": "something new tonight"
+   },
+   "set": {
+    "known_text": "काहीतरी नवीन करून बघणे",
+    "target_text": "to try something new",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01B04",
+   "expect": {
+    "known_text": "काहीतरी नवीन पुन्हा",
+    "target_text": "something new again"
+   },
+   "set": {
+    "known_text": "आज काहीतरी नवीन",
+    "target_text": "something new today",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01U01",
+   "expect": {
+    "known_text": "मला काहीतरी नवीन माहित नाही",
+    "target_text": "I don't know something new"
+   },
+   "set": {
+    "known_text": "मला काहीतरी नवीन शिकायचं आहे",
+    "target_text": "I want to learn something new",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01U02",
+   "expect": {
+    "known_text": "मला काहीतरी नवीन आठवत नाही",
+    "target_text": "I can't remember something new"
+   },
+   "set": {
+    "known_text": "मला काहीतरी नवीन करून बघायला आवडेल",
+    "target_text": "I'd like to try something new",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01U03",
+   "expect": {
+    "known_text": "काहीतरी नवीन इंग्रजीत माहित नाही",
+    "target_text": "I don't know something new in English"
+   },
+   "set": {
+    "known_text": "मी आज काहीतरी नवीन शिकलोय",
+    "target_text": "I've learnt something new today",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01U04",
+   "expect": {
+    "known_text": "कारण मला काहीतरी नवीन माहित नाही",
+    "target_text": "because I don't know something new"
+   },
+   "set": {
+    "known_text": "तुम्हाला काहीतरी नवीन करायचं आहे का?",
+    "target_text": "do you want to do something new?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L01U05",
+   "expect": {
+    "known_text": "मला काहीतरी नवीन आठवत नाही पुन्हा",
+    "target_text": "I can't remember something new again"
+   },
+   "set": {
+    "known_text": "काहीतरी नवीन शिकणं मजेशीर आहे",
+    "target_text": "it's fun to learn something new",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02B02",
+   "expect": {
+    "known_text": "जेव्हा शिकतो काहीतरी नवीन",
+    "target_text": "when we learn something new"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही काहीतरी नवीन शिकतो",
+    "target_text": "when we learn something new",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02B03",
+   "expect": {
+    "known_text": "जेव्हा शिकतो इंग्रजीत",
+    "target_text": "when we learn in English"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही इंग्रजी शिकतो",
+    "target_text": "when we learn English",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02B04",
+   "expect": {
+    "known_text": "जेव्हा शिकतो पुन्हा",
+    "target_text": "when we learn again"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही माझ्या मित्रांबरोबर शिकतो",
+    "target_text": "when we learn with my friends",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02U01",
+   "expect": {
+    "known_text": "जेव्हा आम्ही शिकतो तेव्हा काहीतरी नवीन माहित नसतं",
+    "target_text": "when we learn something new I don't know"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही काहीतरी नवीन शिकतो, तेव्हा ते मजेशीर असतं",
+    "target_text": "when we learn something new, it's fun",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02U02",
+   "expect": {
+    "known_text": "जेव्हा आम्ही शिकतो तेव्हा काहीतरी नवीन आठवत नाही",
+    "target_text": "when we learn something new I can't remember"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही नवीन शब्द शिकतो, तेव्हा आम्हाला सराव करायची गरज असते",
+    "target_text": "when we learn new words, we need to practise",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02U03",
+   "expect": {
+    "known_text": "मला माहित नाही जेव्हा आम्ही शिकतो",
+    "target_text": "I don't know when we learn"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही शिकतो, तेव्हा आम्ही चुका करतो",
+    "target_text": "when we learn, we make mistakes",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02U04",
+   "expect": {
+    "known_text": "मला आठवत नाही जेव्हा आम्ही शिकतो",
+    "target_text": "I can't remember when we learn"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही हळू शिकतो, तेव्हा आम्हाला जास्त आठवतं",
+    "target_text": "when we learn slowly, we remember more",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L02U06",
+   "expect": {
+    "known_text": "जेव्हा खूप नवीन शब्द शिकतो",
+    "target_text": "when we learn a lot of new words"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही खूप नवीन शब्द शिकतो, तेव्हा ते सोपं नसतं",
+    "target_text": "when we learn a lot of new words, it isn't easy",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L03B02",
+   "expect": {
+    "known_text": "जेव्हा आम्ही काहीतरी नवीन शिकतो तेव्हा मेंदू बदलतं इंग्रजीत",
+    "target_text": "when we learn something new it changes our brain in English"
+   },
+   "set": {
+    "known_text": "जेव्हा आम्ही शिकतो, तेव्हा ते आमचा मेंदू बदलतं",
+    "target_text": "when we learn, it changes our brain",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L03B03",
+   "expect": {
+    "known_text": "मेंदू बदलतं रात्री",
+    "target_text": "it changes our brain tonight"
+   },
+   "set": {
+    "known_text": "मला वाटतं ते आमचा मेंदू बदलतं",
+    "target_text": "I think it changes our brain",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L03B04",
+   "expect": {
+    "known_text": "मेंदू बदलतं पुन्हा",
+    "target_text": "it changes our brain again"
+   },
+   "set": {
+    "known_text": "आणि ते आमचा मेंदू बदलतं",
+    "target_text": "and it changes our brain",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L03U02",
+   "expect": {
+    "known_text": "मेंदू बदलतं इंग्रजीत",
+    "target_text": "it changes our brain in English"
+   },
+   "set": {
+    "known_text": "इंग्रजी शिकणं मजेशीर आहे, आणि ते आमचा मेंदू बदलतं",
+    "target_text": "learning English is fun, and it changes our brain",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L03U03",
+   "expect": {
+    "known_text": "मेंदू बदलतं आज सकाळी",
+    "target_text": "it changes our brain this morning"
+   },
+   "set": {
+    "known_text": "ते आमचा मेंदू बदलतं याची मला खात्री आहे",
+    "target_text": "I'm sure it changes our brain",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L03U04",
+   "expect": {
+    "known_text": "कारण मेंदू बदलतं",
+    "target_text": "because it changes our brain"
+   },
+   "set": {
+    "known_text": "खेळणं महत्त्वाचं आहे कारण ते आमचा मेंदू बदलतं",
+    "target_text": "playing is important because it changes our brain",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0111L03U05",
+   "expect": {
+    "known_text": "मेंदू बदलतं आधीच",
+    "target_text": "it changes our brain already"
+   },
+   "set": {
+    "known_text": "ते किती पटकन आमचा मेंदू बदलतं याचं मला आश्चर्य वाटतंय",
+    "target_text": "I'm surprised at how quickly it changes our brain",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L01B02",
+   "expect": {
+    "known_text": "ते खूप रंजक होतं इंग्रजीत",
+    "target_text": "that was very interesting in English"
+   },
+   "set": {
+    "known_text": "ते वाचायला खूप रंजक होतं",
+    "target_text": "that was very interesting to read",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L01B03",
+   "expect": {
+    "known_text": "ते खूप रंजक होतं रात्री",
+    "target_text": "that was very interesting tonight"
+   },
+   "set": {
+    "known_text": "पण ते खूप रंजक होतं",
+    "target_text": "but that was very interesting",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L01B04",
+   "expect": {
+    "known_text": "ते खूप रंजक होतं पुन्हा",
+    "target_text": "that was very interesting again"
+   },
+   "set": {
+    "known_text": "हो, ते खूप रंजक होतं",
+    "target_text": "yes, that was very interesting",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L01U02",
+   "expect": {
+    "known_text": "कारण ते शिकायला खूप रंजक होतं",
+    "target_text": "because that was very interesting to learn"
+   },
+   "set": {
+    "known_text": "खूप खूप धन्यवाद, ते खूप रंजक होतं",
+    "target_text": "thank you very much, that was very interesting",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L01U03",
+   "expect": {
+    "known_text": "मला वाटतं की ते शिकायला खूप रंजक होतं",
+    "target_text": "I think that that was very interesting to learn"
+   },
+   "set": {
+    "known_text": "गोष्ट सोपी नव्हती, पण ते खूप रंजक होतं",
+    "target_text": "the story wasn't easy, but that was very interesting",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L01U05",
+   "expect": {
+    "known_text": "कारण ते खूप रंजक होतं",
+    "target_text": "because that was very interesting"
+   },
+   "set": {
+    "known_text": "मला ते माहित नव्हतं, ते खूप रंजक होतं",
+    "target_text": "I didn't know that, that was very interesting",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L02B02",
+   "expect": {
+    "known_text": "ते खूप रंजक होतं इंग्रजीत आणि अपेक्षा नव्हती",
+    "target_text": "that was very interesting in English and I wasn't expecting it"
+   },
+   "set": {
+    "known_text": "ते अवघड होतं, आणि मला त्याची अपेक्षा नव्हती",
+    "target_text": "that was difficult, and I wasn't expecting it",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L02B03",
+   "expect": {
+    "known_text": "आणि अपेक्षा नव्हती रात्री",
+    "target_text": "and I wasn't expecting it tonight"
+   },
+   "set": {
+    "known_text": "ते सोपं होतं, आणि मला त्याची अपेक्षा नव्हती",
+    "target_text": "it was easy, and I wasn't expecting it",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L02B04",
+   "expect": {
+    "known_text": "आणि अपेक्षा नव्हती अजून",
+    "target_text": "and I wasn't expecting it yet"
+   },
+   "set": {
+    "known_text": "ते मजेशीर होतं, आणि मला त्याची अपेक्षा नव्हती",
+    "target_text": "it was fun, and I wasn't expecting it",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L02U02",
+   "expect": {
+    "known_text": "ते शिकायला खूप रंजक होतं आणि अपेक्षा नव्हती",
+    "target_text": "that was very interesting to learn and I wasn't expecting it"
+   },
+   "set": {
+    "known_text": "ती काहीतरी रंजक म्हणाली, आणि मला त्याची अपेक्षा नव्हती",
+    "target_text": "she said something interesting, and I wasn't expecting it",
+    "decomposition": null,
+    "word_count": 57,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0112L02U03",
+   "expect": {
+    "known_text": "मला वाटतं की ते खूप रंजक होतं आणि अपेक्षा नव्हती",
+    "target_text": "I think that that was very interesting, and I wasn't expecting it"
+   },
+   "set": {
+    "known_text": "मी बरंच काही शिकलोय, आणि मला त्याची अपेक्षा नव्हती",
+    "target_text": "I've learnt a lot, and I wasn't expecting it",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L01B02",
+   "expect": {
+    "known_text": "तुम्ही म्हणालात इंग्रजीत",
+    "target_text": "what you said in English"
+   },
+   "set": {
+    "known_text": "तुम्ही जे म्हणालात त्याबद्दल",
+    "target_text": "about what you said",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L01B03",
+   "expect": {
+    "known_text": "तुम्ही म्हणालात रात्री",
+    "target_text": "what you said tonight"
+   },
+   "set": {
+    "known_text": "तुम्ही काल जे म्हणालात",
+    "target_text": "what you said yesterday",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L01B04",
+   "expect": {
+    "known_text": "तुम्ही म्हणालात पुन्हा",
+    "target_text": "what you said again"
+   },
+   "set": {
+    "known_text": "तुम्ही जे म्हणालात ते मला आवडलं",
+    "target_text": "I like what you said",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L01U03",
+   "expect": {
+    "known_text": "मला खात्री नाही तुम्ही काय म्हणालात",
+    "target_text": "I'm not sure what you said"
+   },
+   "set": {
+    "known_text": "तुम्ही काय म्हणालात याची मला खात्री नाही",
+    "target_text": "I'm not sure what you said",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L01U04",
+   "expect": {
+    "known_text": "कारण मला तुम्ही काय म्हणालात ते आठवत नाही",
+    "target_text": "because I can't remember what you said"
+   },
+   "set": {
+    "known_text": "तुम्ही काल जे म्हणालात त्याबद्दल मी विचार करतोय",
+    "target_text": "I'm thinking about what you said yesterday",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L01U05",
+   "expect": {
+    "known_text": "मला तुम्ही काय म्हणालात ते माहित नाही इंग्रजीत",
+    "target_text": "I don't know what you said in English"
+   },
+   "set": {
+    "known_text": "तुम्ही जे म्हणालात त्याच्याशी मी सहमत नाही",
+    "target_text": "I don't agree with what you said",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L02B02",
+   "expect": {
+    "known_text": "का आठवत नाही तुम्ही काय म्हणालात इंग्रजीत?",
+    "target_text": "why can't I remember what you said in English?"
+   },
+   "set": {
+    "known_text": "मला त्याचं नाव का आठवत नाही?",
+    "target_text": "why can't I remember his name?",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L02B03",
+   "expect": {
+    "known_text": "का आठवत नाही इंग्रजीत?",
+    "target_text": "why can't I remember in English?"
+   },
+   "set": {
+    "known_text": "मला हा शब्द का आठवत नाही?",
+    "target_text": "why can't I remember this word?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L02B04",
+   "expect": {
+    "known_text": "का आठवत नाही रात्री?",
+    "target_text": "why can't I remember tonight?"
+   },
+   "set": {
+    "known_text": "मला ते का आठवत नाही?",
+    "target_text": "why can't I remember it?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L02U02",
+   "expect": {
+    "known_text": "का आठवत नाही तुम्ही काय म्हणालात पुन्हा?",
+    "target_text": "why can't I remember what you said again?"
+   },
+   "set": {
+    "known_text": "मला पूर्ण वाक्य का आठवत नाही?",
+    "target_text": "why can't I remember the whole sentence?",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L02U03",
+   "expect": {
+    "known_text": "का आठवत नाही अजून?",
+    "target_text": "why can't I remember yet?"
+   },
+   "set": {
+    "known_text": "मला हा शब्द माहित आहे, मला तो का आठवत नाही?",
+    "target_text": "I know this word, why can't I remember it?",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L02U04",
+   "expect": {
+    "known_text": "का आठवत नाही पुन्हा?",
+    "target_text": "why can't I remember again?"
+   },
+   "set": {
+    "known_text": "मला काय म्हणायचं होतं ते मला का आठवत नाही?",
+    "target_text": "why can't I remember what I wanted to say?",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0113L02U05",
+   "expect": {
+    "known_text": "मला खात्री नाही का आठवत नाही",
+    "target_text": "I'm not sure why I can't remember"
+   },
+   "set": {
+    "known_text": "आम्ही काल काय शिकलो ते मला का आठवत नाही?",
+    "target_text": "why can't I remember what we learnt yesterday?",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "seed": 72,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "मला तसं वाटतं",
+     "I think so"
+    ],
+    "B03": [
+     "मला तसं वाटत नाही",
+     "I don't think so"
+    ],
+    "U01": [
+     "मला वाटतं ते महत्त्वाचं आहे",
+     "I think it's important"
+    ],
+    "U02": [
+     "तुम्हाला काय वाटतं?",
+     "what do you think?"
+    ],
+    "U03": [
+     "मला ते अवघड वाटत नाही",
+     "I don't think it's difficult"
+    ],
+    "U04": [
+     "तुम्हाला ते मजेशीर वाटतं का?",
+     "do you think it is fun?"
+    ],
+    "U05": [
+     "मला वाटतं त्याला थांबायचं आहे",
+     "I think he wants to stop"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "वाटत नाही",
+     "don't think"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "तुम्ही काय करताय",
+     "what you're doing"
+    ],
+    "B03": [
+     "तुम्ही छान करताय",
+     "you're doing well"
+    ],
+    "U02": [
+     "तुम्ही काय करताय ते मला माहित आहे",
+     "I know what you're doing"
+    ],
+    "U03": [
+     "तुम्ही ते खूप छान करताय",
+     "you're doing it very well"
+    ],
+    "U04": [
+     "मला वाटतं तुम्ही काहीतरी रंजक करताय",
+     "I think you're doing something interesting"
+    ],
+    "U05": [
+     "तुम्ही काय करताय ते मला समजत नाही",
+     "I don't understand what you're doing"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही ते करताय",
+     "you're doing it"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

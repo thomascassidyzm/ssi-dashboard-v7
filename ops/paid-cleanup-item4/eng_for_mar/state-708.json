@@ -1,0 +1,6 @@
+{"job":"cs #708·AI eng_for_mar item 4",
+ "how":"plans-src/bNN.txt (compact, [Marathi | English]) -> node mk-plans.cjs plans-src/bNN.txt plans -> ./run-batch.sh <batch> <from> <to> (build, validate, dry, apply; falls back to the live snapshot when the seeds route times out, per #700·AI)",
+ "plans_written":"seeds 34-153 (plans-src b01-b17)",
+ "applied":"see events-708.json",
+ "queue":"bgkuokpo4 running b01b..b09b (41-108); b01b/b01c/b02a/b02b failed on Popty restarts 13:19-13:25 (nothing committed) and must be re-run; 109-153 not yet queued",
+ "remaining_scan_seeds":"154-300 and 363,491,538,601,618,647,660,662"}

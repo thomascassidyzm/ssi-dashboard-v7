@@ -1,0 +1,92 @@
+{
+ "seed": 42,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "थोडं बरं",
+     "a little better"
+    ],
+    "B03": [
+     "आज बरं",
+     "better today"
+    ],
+    "U01": [
+     "मला आत्ता थोडं बरं वाटतंय",
+     "I feel a little better now"
+    ],
+    "U02": [
+     "मला आज सकाळी बरं वाटतंय",
+     "I feel better this morning"
+    ],
+    "U03": [
+     "तुम्हाला आज बरं वाटतंय का?",
+     "do you feel better today?"
+    ],
+    "U04": [
+     "मला बरं वाटतंय, पण मी थोडा थकलोय",
+     "I feel better, but I'm a little tired"
+    ],
+    "U05": [
+     "तुमच्याशी बोलल्यानंतर मला बरं वाटतंय",
+     "I feel better after speaking with you"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "कालच्या रात्रीपेक्षा थोडं बरं",
+     "a little better than last night"
+    ],
+    "B04": [
+     "मला कालच्या रात्रीपेक्षा बरं वाटतंय",
+     "I feel better than last night"
+    ],
+    "U02": [
+     "मला कालच्या रात्रीपेक्षा थोडं बरं वाटतंय",
+     "I feel a little better than last night"
+    ],
+    "U03": [
+     "तुम्हाला कालच्या रात्रीपेक्षा बरं वाटतंय का?",
+     "do you feel better than last night?"
+    ],
+    "U04": [
+     "मला कालच्या रात्रीपेक्षा आज सकाळी बरं वाटतंय",
+     "I feel better this morning than last night"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "मी थोडा थकलोय, पण मला कालच्या रात्रीपेक्षा बरं वाटतंय",
+     "I'm a little tired, but I feel better than last night"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B04": [
+     "थोडं बरं वाटायला लागलं होतं",
+     "was starting to feel a little better"
+    ],
+    "U04": [
+     "तिला आज सकाळी बरं वाटायला लागलं होतं",
+     "she was starting to feel better this morning"
+    ],
+    "U05": [
+     "मला काल थोडं बरं वाटायला लागलं होतं",
+     "I was starting to feel a little better yesterday"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "मला काल रात्री थकल्यासारखं वाटायला लागलं होतं",
+     "I was starting to feel tired last night"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

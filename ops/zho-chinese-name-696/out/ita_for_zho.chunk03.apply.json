@@ -1,0 +1,1645 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "ab3d2d22-7743-4f1a-a7cd-ff9b380263b5",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0015L03U02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0015L03U02",
+    "seed_number": 15,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "而且我想让你和我说中文",
+    "known_audio_id": "3beae4fc-ac94-4b6d-8c79-def2ec34528f",
+    "target_text": "e voglio che tu parli italiano con me",
+    "target1_audio_id": "d27dc262-af74-442c-b9b8-25031bd8d380",
+    "target2_audio_id": "53ed0a51-5a4d-4c5a-9f9e-d4f515fab93c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0015L03U02",
+    "seed_number": 15,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "而且我想让你和我说意大利语",
+    "known_audio_id": "453b9e08-ea05-446e-9adb-19c734457bea",
+    "target_text": "e voglio che tu parli italiano con me",
+    "target1_audio_id": "d27dc262-af74-442c-b9b8-25031bd8d380",
+    "target2_audio_id": "53ed0a51-5a4d-4c5a-9f9e-d4f515fab93c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L03B02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L03B02",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "和别人一起说中文",
+    "known_audio_id": "940039d3-95ca-470e-a53b-95ceff3b95ab",
+    "target_text": "parlare italiano con tutti gli altri",
+    "target1_audio_id": "44a06c53-8ff7-4897-94ab-34e1a3b241d4",
+    "target2_audio_id": "d14f4a9d-e706-4efc-a245-436d36e9f507",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L03B02",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "和别人一起说意大利语",
+    "known_audio_id": "090e9ec3-2609-4828-8ff8-a21c30918264",
+    "target_text": "parlare italiano con tutti gli altri",
+    "target1_audio_id": "44a06c53-8ff7-4897-94ab-34e1a3b241d4",
+    "target2_audio_id": "d14f4a9d-e706-4efc-a245-436d36e9f507",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L03U04"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L03U04",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我在试着和别人一起说中文",
+    "known_audio_id": "21e74bd7-323e-477b-a492-73d43ed99668",
+    "target_text": "sto cercando di parlare italiano con tutti gli altri",
+    "target1_audio_id": "d0949718-da81-4d10-b86f-0672a28eca3a",
+    "target2_audio_id": "c28d8238-dc98-46c3-84dc-fd99a2a16f10",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L03U04",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我在试着和别人一起说意大利语",
+    "known_audio_id": "ab295af8-e960-431a-ad32-d0ee1343e4de",
+    "target_text": "sto cercando di parlare italiano con tutti gli altri",
+    "target1_audio_id": "d0949718-da81-4d10-b86f-0672a28eca3a",
+    "target2_audio_id": "c28d8238-dc98-46c3-84dc-fd99a2a16f10",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L03U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L03U01",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "他想和别人一起说中文",
+    "known_audio_id": "b39e633c-8eef-4f76-95e1-88ec658dd836",
+    "target_text": "vuole parlare italiano con tutti gli altri",
+    "target1_audio_id": "1f83ae8d-8c0e-444c-b2a0-1b0b4266823e",
+    "target2_audio_id": "047c3f3b-b63e-4357-b894-35dcb8dea6ac",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L03U01",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "他想和别人一起说意大利语",
+    "known_audio_id": "42c6f93d-91cc-4864-b301-4d819badb012",
+    "target_text": "vuole parlare italiano con tutti gli altri",
+    "target1_audio_id": "1f83ae8d-8c0e-444c-b2a0-1b0b4266823e",
+    "target2_audio_id": "047c3f3b-b63e-4357-b894-35dcb8dea6ac",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L03U03"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L03U03",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想和别人一起说中文",
+    "known_audio_id": "7732ca9f-a358-4654-92e8-2ae6fe0735fd",
+    "target_text": "mi piacerebbe parlare italiano con tutti gli altri",
+    "target1_audio_id": "c96a5c92-67b5-4377-bd0b-7c325854b45a",
+    "target2_audio_id": "566e92d3-de5f-424b-b518-2d2197a85619",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L03U03",
+    "seed_number": 16,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想和别人一起说意大利语",
+    "known_audio_id": "abc1120e-2660-43fc-a22e-fb8f484bf104",
+    "target_text": "mi piacerebbe parlare italiano con tutti gli altri",
+    "target1_audio_id": "c96a5c92-67b5-4377-bd0b-7c325854b45a",
+    "target2_audio_id": "566e92d3-de5f-424b-b518-2d2197a85619",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L01B01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L01B01",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想说中文",
+    "known_audio_id": "c6980ef8-03f8-4292-a2cb-dfd162dd2847",
+    "target_text": "vuole parlare italiano",
+    "target1_audio_id": "22152a0f-9961-4e20-a829-8a7cd2d2a1cd",
+    "target2_audio_id": "ac893d01-29ba-4ef3-98b1-0d2950145d18",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L01B01",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想说意大利语",
+    "known_audio_id": "b273626f-9d90-40e9-89b7-0a7b470236d6",
+    "target_text": "vuole parlare italiano",
+    "target1_audio_id": "22152a0f-9961-4e20-a829-8a7cd2d2a1cd",
+    "target2_audio_id": "ac893d01-29ba-4ef3-98b1-0d2950145d18",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L01U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L01U01",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想说中文说得很好",
+    "known_audio_id": "ee8cfc18-5edd-49ea-a792-c094fda1b0cd",
+    "target_text": "vuole parlare italiano molto bene",
+    "target1_audio_id": "fd556303-7b54-4168-a5ac-ec72d06e6336",
+    "target2_audio_id": "ba703129-2e7a-44e8-a2fd-9ad1cd5f4604",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L01U01",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想说意大利语说得很好",
+    "known_audio_id": "1dedc8e5-5627-4a05-98a7-f79880740b91",
+    "target_text": "vuole parlare italiano molto bene",
+    "target1_audio_id": "fd556303-7b54-4168-a5ac-ec72d06e6336",
+    "target2_audio_id": "ba703129-2e7a-44e8-a2fd-9ad1cd5f4604",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L01U03"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L01U03",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想明天和你说中文",
+    "known_audio_id": "c33296a8-5961-45fa-acb5-08fc9e177f42",
+    "target_text": "vuole parlare italiano con te domani",
+    "target1_audio_id": "118b22f9-2b35-4755-8ef7-0ea535d12713",
+    "target2_audio_id": "70703a69-47af-4370-8667-4fc6c0f57432",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L01U03",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想明天和你说意大利语",
+    "known_audio_id": "10d32d98-32d6-4d25-a783-ace6a3245555",
+    "target_text": "vuole parlare italiano con te domani",
+    "target1_audio_id": "118b22f9-2b35-4755-8ef7-0ea535d12713",
+    "target2_audio_id": "70703a69-47af-4370-8667-4fc6c0f57432",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L01U05"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L01U05",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想和别人说中文",
+    "known_audio_id": "f522beb0-a6dd-4e87-9b59-9129c16e4f15",
+    "target_text": "vuole parlare italiano con qualcun altro",
+    "target1_audio_id": "122b1cf3-ffa2-4fc4-80d1-93a5ae7e88fe",
+    "target2_audio_id": "5b6e88a4-bbe6-49ff-989d-6f7f9a62f96b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L01U05",
+    "seed_number": 16,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "他想和别人说意大利语",
+    "known_audio_id": "6ccec3cc-e2f2-422b-af2d-553bb6515dee",
+    "target_text": "vuole parlare italiano con qualcun altro",
+    "target1_audio_id": "122b1cf3-ffa2-4fc4-80d1-93a5ae7e88fe",
+    "target2_audio_id": "5b6e88a4-bbe6-49ff-989d-6f7f9a62f96b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L04B01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L04B01",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "以后说中文",
+    "known_audio_id": "f20e2dbe-cc61-468d-9222-5ef5e0b91913",
+    "target_text": "parlare italiano più tardi",
+    "target1_audio_id": "3cef5cf8-7802-4eb6-ad57-b076bef625d6",
+    "target2_audio_id": "ba34dedf-3a9f-4f40-b2b6-0ecfcde66d93",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L04B01",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "以后说意大利语",
+    "known_audio_id": "996bcac5-7b2f-4fed-a051-6ba92d3b1525",
+    "target_text": "parlare italiano più tardi",
+    "target1_audio_id": "3cef5cf8-7802-4eb6-ad57-b076bef625d6",
+    "target2_audio_id": "ba34dedf-3a9f-4f40-b2b6-0ecfcde66d93",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L04U03"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L04U03",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想以后和你说中文",
+    "known_audio_id": "8f3337d3-ed80-442c-a58b-bc5d7d3ac051",
+    "target_text": "mi piacerebbe parlare italiano con te più tardi",
+    "target1_audio_id": "394518aa-3350-4262-ad89-c0e541c39aba",
+    "target2_audio_id": "82452d73-b81a-48a2-9261-60b07dd67a91",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L04U03",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想以后和你说意大利语",
+    "known_audio_id": "373f20b8-acef-4be1-b941-4ed2eb21bc39",
+    "target_text": "mi piacerebbe parlare italiano con te più tardi",
+    "target1_audio_id": "394518aa-3350-4262-ad89-c0e541c39aba",
+    "target2_audio_id": "82452d73-b81a-48a2-9261-60b07dd67a91",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L04U02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L04U02",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想以后说中文",
+    "known_audio_id": "6c7ecfca-0c2d-49fa-b06d-ae30fbd10e2c",
+    "target_text": "voglio parlare italiano più tardi",
+    "target1_audio_id": "90917728-8e6c-476f-8816-9bc446cf3c6e",
+    "target2_audio_id": "0c8a5be6-5eb4-4d59-ab2c-33105db8d250",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L04U02",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想以后说意大利语",
+    "known_audio_id": "16d15b17-c69f-4bae-839d-774d6f1dddfd",
+    "target_text": "voglio parlare italiano più tardi",
+    "target1_audio_id": "90917728-8e6c-476f-8816-9bc446cf3c6e",
+    "target2_audio_id": "0c8a5be6-5eb4-4d59-ab2c-33105db8d250",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L04U04"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L04U04",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想以后和别人一起说中文",
+    "known_audio_id": "599176de-7908-409a-9a54-0464ad64ed04",
+    "target_text": "voglio parlare italiano con tutti gli altri più tardi",
+    "target1_audio_id": "b0b3f5dd-6b6f-4c98-bcad-052d4efc9ee0",
+    "target2_audio_id": "38301df6-1c5e-4dae-b801-d1cf96e2aa3c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L04U04",
+    "seed_number": 16,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "我想以后和别人一起说意大利语",
+    "known_audio_id": "241dfdd1-44cb-4356-b622-a78ab1653e08",
+    "target_text": "voglio parlare italiano con tutti gli altri più tardi",
+    "target1_audio_id": "b0b3f5dd-6b6f-4c98-bcad-052d4efc9ee0",
+    "target2_audio_id": "38301df6-1c5e-4dae-b801-d1cf96e2aa3c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L02B02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L02B02",
+    "seed_number": 16,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "回来说中文",
+    "known_audio_id": "a644adaa-f404-4a05-9465-b8e1d01e687a",
+    "target_text": "tornare e parlare italiano",
+    "target1_audio_id": "be5e042d-01b9-4af8-82f4-6ec326703fb2",
+    "target2_audio_id": "7089a3e0-a2f8-4df9-8900-11086db564d2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L02B02",
+    "seed_number": 16,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "回来说意大利语",
+    "known_audio_id": "22186bd5-00ff-466b-961f-126203b1083b",
+    "target_text": "tornare e parlare italiano",
+    "target1_audio_id": "be5e042d-01b9-4af8-82f4-6ec326703fb2",
+    "target2_audio_id": "7089a3e0-a2f8-4df9-8900-11086db564d2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0016L02U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0016L02U01",
+    "seed_number": 16,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "他想回来说中文",
+    "known_audio_id": "f4f9b232-0d33-48fc-b815-d7cf5d068052",
+    "target_text": "vuole tornare e parlare italiano",
+    "target1_audio_id": "d62d5f2e-c08a-4e82-a4c7-f720dc17f896",
+    "target2_audio_id": "6a860d88-c122-4e98-aae7-1a0a9623fa23",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0016L02U01",
+    "seed_number": 16,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "他想回来说意大利语",
+    "known_audio_id": "27484ef0-a65e-4d0f-bd43-e992b194bf2f",
+    "target_text": "vuole tornare e parlare italiano",
+    "target1_audio_id": "d62d5f2e-c08a-4e82-a4c7-f720dc17f896",
+    "target2_audio_id": "6a860d88-c122-4e98-aae7-1a0a9623fa23",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0018L01B01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0018L01B01",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想说中文",
+    "known_audio_id": "e27c046e-4adc-4bb9-aa18-355f35c89f33",
+    "target_text": "vogliamo parlare italiano",
+    "target1_audio_id": "c654726f-86f9-4281-965f-ee6fb98b1c80",
+    "target2_audio_id": "b1a305fa-6c3c-496e-bafd-ce18e91ad6ca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0018L01B01",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想说意大利语",
+    "known_audio_id": "d39356c0-5c24-4752-a59c-f56160cd0912",
+    "target_text": "vogliamo parlare italiano",
+    "target1_audio_id": "c654726f-86f9-4281-965f-ee6fb98b1c80",
+    "target2_audio_id": "b1a305fa-6c3c-496e-bafd-ce18e91ad6ca",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0018L01U05"
+   },
+   "before": {
+    "id": "ita_for_zho:S0018L01U05",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想和别人一起说中文",
+    "known_audio_id": "1d5fe024-276b-4882-96d6-74bd20f57896",
+    "target_text": "vogliamo parlare italiano con tutti gli altri",
+    "target1_audio_id": "9cc8a76b-77f8-4148-ab9b-03d4a4981231",
+    "target2_audio_id": "4b7f0bc6-eb1b-4f6a-b5bc-3e67dc2c2490",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0018L01U05",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想和别人一起说意大利语",
+    "known_audio_id": "58920ccc-dda9-427c-a4de-987c1655d2ac",
+    "target_text": "vogliamo parlare italiano con tutti gli altri",
+    "target1_audio_id": "9cc8a76b-77f8-4148-ab9b-03d4a4981231",
+    "target2_audio_id": "4b7f0bc6-eb1b-4f6a-b5bc-3e67dc2c2490",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0018L01U04"
+   },
+   "before": {
+    "id": "ita_for_zho:S0018L01U04",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想明天和你说中文",
+    "known_audio_id": "09a600be-6a9f-4b87-b733-42f95f0661a7",
+    "target_text": "vogliamo parlare italiano con te domani",
+    "target1_audio_id": "b61ccecc-6c97-45b1-9382-a10af576e0f5",
+    "target2_audio_id": "35ee4d94-41d1-4e11-af8b-4feb248d413d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0018L01U04",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想明天和你说意大利语",
+    "known_audio_id": "1558834e-95f1-43aa-9bfb-4ebd91cca685",
+    "target_text": "vogliamo parlare italiano con te domani",
+    "target1_audio_id": "b61ccecc-6c97-45b1-9382-a10af576e0f5",
+    "target2_audio_id": "35ee4d94-41d1-4e11-af8b-4feb248d413d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0018L01U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0018L01U01",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想说中文说得很好",
+    "known_audio_id": "7f67ca04-fb81-46c9-aac5-98b295d78a3d",
+    "target_text": "vogliamo parlare italiano molto bene",
+    "target1_audio_id": "303357c9-9dbd-441e-8bc8-a510fe89a945",
+    "target2_audio_id": "398e1dc8-09a5-4626-9fd5-8e6474109fdd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0018L01U01",
+    "seed_number": 18,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我们想说意大利语说得很好",
+    "known_audio_id": "db453a1f-b1b2-4ed3-ad5e-ab0a3c7cd410",
+    "target_text": "vogliamo parlare italiano molto bene",
+    "target1_audio_id": "303357c9-9dbd-441e-8bc8-a510fe89a945",
+    "target2_audio_id": "398e1dc8-09a5-4626-9fd5-8e6474109fdd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0018L03B02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0018L03B02",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "今天晚上六点说中文",
+    "known_audio_id": "23e8c09a-a0ad-4b1f-9285-860908f38300",
+    "target_text": "parlare italiano alle sei di questa sera",
+    "target1_audio_id": "e3e30229-adaf-41c8-b11e-f14dd60992ec",
+    "target2_audio_id": "93fcc351-74d2-4ee5-ba7c-8ca719858b68",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0018L03B02",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "今天晚上六点说意大利语",
+    "known_audio_id": "81d3bb70-ee37-403d-8c36-993934c1beee",
+    "target_text": "parlare italiano alle sei di questa sera",
+    "target1_audio_id": "e3e30229-adaf-41c8-b11e-f14dd60992ec",
+    "target2_audio_id": "93fcc351-74d2-4ee5-ba7c-8ca719858b68",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0018L03U02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0018L03U02",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想今天晚上六点和你说中文",
+    "known_audio_id": "3957e6b4-e1d1-4aaf-b6a6-80290adc3854",
+    "target_text": "mi piacerebbe parlare italiano con te alle sei di questa sera",
+    "target1_audio_id": "be92c1fa-96df-4780-8cbd-5579fa8458d6",
+    "target2_audio_id": "9c60fc9d-7eb3-4b04-81ad-9eb016c18913",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0018L03U02",
+    "seed_number": 18,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我想今天晚上六点和你说意大利语",
+    "known_audio_id": "1576333d-9c9f-4a94-bba8-fe688a6e6796",
+    "target_text": "mi piacerebbe parlare italiano con te alle sei di questa sera",
+    "target1_audio_id": "be92c1fa-96df-4780-8cbd-5579fa8458d6",
+    "target2_audio_id": "9c60fc9d-7eb3-4b04-81ad-9eb016c18913",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0018L02B02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0018L02B02",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "见面说中文",
+    "known_audio_id": "202efffc-1410-408b-b610-888d9f756061",
+    "target_text": "incontrarci e parlare italiano",
+    "target1_audio_id": "9b21fb85-236b-4791-a73d-3c341809c89a",
+    "target2_audio_id": "aad6b246-0b82-4c3e-9809-769e0bda243a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0018L02B02",
+    "seed_number": 18,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "见面说意大利语",
+    "known_audio_id": "db085055-532c-41c0-8152-2e68c888cb53",
+    "target_text": "incontrarci e parlare italiano",
+    "target1_audio_id": "9b21fb85-236b-4791-a73d-3c341809c89a",
+    "target2_audio_id": "aad6b246-0b82-4c3e-9809-769e0bda243a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0019L01B01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0019L01B01",
+    "seed_number": 19,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "但是我想说中文",
+    "known_audio_id": "8e0d1d3c-8499-4b81-91bd-9e07147fb91c",
+    "target_text": "ma voglio parlare italiano",
+    "target1_audio_id": "35acf26a-2e73-4f3b-982e-169e30507206",
+    "target2_audio_id": "9f38bba9-a610-43f4-a7d3-3b4b7d8e5d87",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0019L01B01",
+    "seed_number": 19,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "但是我想说意大利语",
+    "known_audio_id": "3c8e3375-e4cd-4137-867a-1d6eac533d8e",
+    "target_text": "ma voglio parlare italiano",
+    "target1_audio_id": "35acf26a-2e73-4f3b-982e-169e30507206",
+    "target2_audio_id": "9f38bba9-a610-43f4-a7d3-3b4b7d8e5d87",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0019L01U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0019L01U01",
+    "seed_number": 19,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "但是我想说中文说得很好",
+    "known_audio_id": "4730fa82-d600-41d3-aaaa-6d778354bbab",
+    "target_text": "ma voglio parlare italiano molto bene",
+    "target1_audio_id": "f4def10f-1689-4e46-901f-5871dd2f7902",
+    "target2_audio_id": "05000813-6d2d-4e9f-ab4b-76c570b8b7c5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0019L01U01",
+    "seed_number": 19,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "但是我想说意大利语说得很好",
+    "known_audio_id": "48d1aa6b-8dde-443f-a43b-abc1e94d0895",
+    "target_text": "ma voglio parlare italiano molto bene",
+    "target1_audio_id": "f4def10f-1689-4e46-901f-5871dd2f7902",
+    "target2_audio_id": "05000813-6d2d-4e9f-ab4b-76c570b8b7c5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0019L02B02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0019L02B02",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "停止学中文",
+    "known_audio_id": "f30064f1-23fd-40b2-8dc3-2d5b716ff8be",
+    "target_text": "smettere di imparare italiano",
+    "target1_audio_id": "5e5046b9-e5fc-4dbc-ae96-c028badf49b6",
+    "target2_audio_id": "10a64b53-d817-4e91-9902-967a80abff14",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0019L02B02",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "停止学意大利语",
+    "known_audio_id": "0d3bf0fe-d84a-4c7c-9f48-7c8869245dc0",
+    "target_text": "smettere di imparare italiano",
+    "target1_audio_id": "5e5046b9-e5fc-4dbc-ae96-c028badf49b6",
+    "target2_audio_id": "10a64b53-d817-4e91-9902-967a80abff14",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0019L02U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0019L02U01",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我不想停止说中文",
+    "known_audio_id": "ba5f666d-78ab-4d55-a3fc-510c8c9a0a4f",
+    "target_text": "non voglio smettere di parlare italiano",
+    "target1_audio_id": "11194364-00d2-483d-8aa8-79fa760dd2ff",
+    "target2_audio_id": "cf7fd063-663e-499f-89f5-c58d1ce928c4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0019L02U01",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我不想停止说意大利语",
+    "known_audio_id": "0b262e26-b6d3-4417-86a0-f09908c82666",
+    "target_text": "non voglio smettere di parlare italiano",
+    "target1_audio_id": "11194364-00d2-483d-8aa8-79fa760dd2ff",
+    "target2_audio_id": "cf7fd063-663e-499f-89f5-c58d1ce928c4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0019L02U02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0019L02U02",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "他不想停止说中文",
+    "known_audio_id": "686e34da-4b65-4e4b-a353-00fe4ef7817c",
+    "target_text": "non vuole smettere di parlare italiano",
+    "target1_audio_id": "6ef7cca7-aec4-4be9-b053-512c4ea961a8",
+    "target2_audio_id": "7987c67d-5068-4f87-bcd1-e8a3fb011eea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0019L02U02",
+    "seed_number": 19,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "他不想停止说意大利语",
+    "known_audio_id": "6cbf6235-9a13-4f4f-9263-2cffbef365f3",
+    "target_text": "non vuole smettere di parlare italiano",
+    "target1_audio_id": "6ef7cca7-aec4-4be9-b053-512c4ea961a8",
+    "target2_audio_id": "7987c67d-5068-4f87-bcd1-e8a3fb011eea",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0020L03B02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0020L03B02",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "快点说中文",
+    "known_audio_id": "2bdb341d-be63-49e5-baf2-df3315c73baa",
+    "target_text": "parlare italiano in fretta",
+    "target1_audio_id": "1745909f-8268-4cf0-ae1d-4d8b890a743c",
+    "target2_audio_id": "7175a55f-7012-49dd-b326-3198aa03dffa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0020L03B02",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "快点说意大利语",
+    "known_audio_id": "5accc088-b021-4f3f-9682-5b9b1d000c8a",
+    "target_text": "parlare italiano in fretta",
+    "target1_audio_id": "1745909f-8268-4cf0-ae1d-4d8b890a743c",
+    "target2_audio_id": "7175a55f-7012-49dd-b326-3198aa03dffa",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0020L03U03"
+   },
+   "before": {
+    "id": "ita_for_zho:S0020L03U03",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我在试着快点说中文",
+    "known_audio_id": "c22fb6d3-1bcd-48aa-89b1-15e3535abecb",
+    "target_text": "sto cercando di parlare italiano in fretta",
+    "target1_audio_id": "4063ce54-0332-47c8-b7b1-20992c73376a",
+    "target2_audio_id": "44325c97-5336-486b-8119-b4642446ffd5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0020L03U03",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "我在试着快点说意大利语",
+    "known_audio_id": "3825a0fb-68cc-4056-87e0-ef1a0d58ab0d",
+    "target_text": "sto cercando di parlare italiano in fretta",
+    "target1_audio_id": "4063ce54-0332-47c8-b7b1-20992c73376a",
+    "target2_audio_id": "44325c97-5336-486b-8119-b4642446ffd5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0020L01B01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0020L01B01",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想说中文？",
+    "known_audio_id": "3992c258-a15c-45c2-b499-971d0db4fb47",
+    "target_text": "vuoi parlare italiano?",
+    "target1_audio_id": "3334138f-8528-421b-983f-1987ea88a661",
+    "target2_audio_id": "8a4e8111-fb66-4799-912b-743a4c6596fc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0020L01B01",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想说意大利语？",
+    "known_audio_id": "801dbc51-4799-41f9-ad65-821aaa7fb573",
+    "target_text": "vuoi parlare italiano?",
+    "target1_audio_id": "3334138f-8528-421b-983f-1987ea88a661",
+    "target2_audio_id": "8a4e8111-fb66-4799-912b-743a4c6596fc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0020L01U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0020L01U01",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想说中文说得很好？",
+    "known_audio_id": "b3b75463-67d5-4613-bcab-1f78a45f763f",
+    "target_text": "vuoi parlare italiano molto bene?",
+    "target1_audio_id": "bc562ab9-1636-40a4-82b3-c0ababda194b",
+    "target2_audio_id": "00fe1df4-1785-40f4-b14f-2c2f8500761b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0020L01U01",
+    "seed_number": 20,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想说意大利语说得很好？",
+    "known_audio_id": "e7efe35c-8dcd-4d1e-80ce-8ca9a9839256",
+    "target_text": "vuoi parlare italiano molto bene?",
+    "target1_audio_id": "bc562ab9-1636-40a4-82b3-c0ababda194b",
+    "target2_audio_id": "00fe1df4-1785-40f4-b14f-2c2f8500761b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0021L01B01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "为什么说中文？",
+    "known_audio_id": "f71a66d5-33ae-44ab-b37d-5f6d2c437b5d",
+    "target_text": "perché parlare italiano?",
+    "target1_audio_id": "83d998e6-c181-4630-98e1-546e84c6a5c7",
+    "target2_audio_id": "58ff808d-352d-444c-8163-718bd5dd00b4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0021L01B01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "为什么说意大利语？",
+    "known_audio_id": "98e85ed9-03e0-4bc9-8ea4-9862153c5257",
+    "target_text": "perché parlare italiano?",
+    "target1_audio_id": "83d998e6-c181-4630-98e1-546e84c6a5c7",
+    "target2_audio_id": "58ff808d-352d-444c-8163-718bd5dd00b4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0021L01U02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0021L01U02",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想学中文？",
+    "known_audio_id": "db848154-7314-4d15-bace-e2ad59f4a958",
+    "target_text": "perché vuoi imparare italiano?",
+    "target1_audio_id": "13dabc97-c828-4716-9fbb-d75eb51a11d4",
+    "target2_audio_id": "d109ede6-6f10-42a0-984c-cf6580f8fe82",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0021L01U02",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想学意大利语？",
+    "known_audio_id": "50fcc7ea-2841-41f5-a0b1-081c78e43fef",
+    "target_text": "perché vuoi imparare italiano?",
+    "target1_audio_id": "13dabc97-c828-4716-9fbb-d75eb51a11d4",
+    "target2_audio_id": "d109ede6-6f10-42a0-984c-cf6580f8fe82",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0021L01U01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0021L01U01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么说中文？",
+    "known_audio_id": "28483548-5436-46e6-bdde-0bc14dc30bf1",
+    "target_text": "perché parli italiano?",
+    "target1_audio_id": "41a07442-a50f-4a2a-af58-7e2e90a760f0",
+    "target2_audio_id": "f4f3b24e-1995-4a68-89c7-6ad47cbecddb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0021L01U01",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么说意大利语？",
+    "known_audio_id": "aa379133-fffa-4b27-938a-6f3c6f859af9",
+    "target_text": "perché parli italiano?",
+    "target1_audio_id": "41a07442-a50f-4a2a-af58-7e2e90a760f0",
+    "target2_audio_id": "f4f3b24e-1995-4a68-89c7-6ad47cbecddb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0021L01U03"
+   },
+   "before": {
+    "id": "ita_for_zho:S0021L01U03",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想和别人说中文？",
+    "known_audio_id": "7375f5ea-9cf0-4bb9-a5da-21762c2d5034",
+    "target_text": "perché vuoi parlare italiano con tutti gli altri?",
+    "target1_audio_id": "9397869c-2a65-4752-9a35-152c5ffe558f",
+    "target2_audio_id": "1d51d025-eed8-4321-9e6a-d713209f0f07",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0021L01U03",
+    "seed_number": 21,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想和别人说意大利语？",
+    "known_audio_id": "52d9af3c-31a3-4c62-9f0c-4301c12d005d",
+    "target_text": "perché vuoi parlare italiano con tutti gli altri?",
+    "target1_audio_id": "9397869c-2a65-4752-9a35-152c5ffe558f",
+    "target2_audio_id": "1d51d025-eed8-4321-9e6a-d713209f0f07",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0021L02B02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0021L02B02",
+    "seed_number": 21,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "在学中文",
+    "known_audio_id": "6eb095ed-3cd8-42e7-ac30-27394c3edf60",
+    "target_text": "stai imparando italiano",
+    "target1_audio_id": "4e528ac3-ea20-4d48-a6b1-b9d4bfb2d2dc",
+    "target2_audio_id": "d2434c41-292b-4f51-9c5d-fd5deaf1a55e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0021L02B02",
+    "seed_number": 21,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "在学意大利语",
+    "known_audio_id": "fb763767-d45c-4bbf-8a19-0f0cc2b9df49",
+    "target_text": "stai imparando italiano",
+    "target1_audio_id": "4e528ac3-ea20-4d48-a6b1-b9d4bfb2d2dc",
+    "target2_audio_id": "d2434c41-292b-4f51-9c5d-fd5deaf1a55e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0021L02U05"
+   },
+   "before": {
+    "id": "ita_for_zho:S0021L02U05",
+    "seed_number": 21,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你现在在学中文？",
+    "known_audio_id": "244ecb82-0ab9-4c36-afd3-69b8da0b9aa7",
+    "target_text": "stai imparando italiano adesso?",
+    "target1_audio_id": "f7bd517f-af2f-4e34-8843-033b365b757c",
+    "target2_audio_id": "a7242b42-b6c3-4482-8d68-ec2ea6a4c767",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0021L02U05",
+    "seed_number": 21,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你现在在学意大利语？",
+    "known_audio_id": "3fe69842-ca46-4e29-9d45-e9d8408948a8",
+    "target_text": "stai imparando italiano adesso?",
+    "target1_audio_id": "f7bd517f-af2f-4e34-8843-033b365b757c",
+    "target2_audio_id": "a7242b42-b6c3-4482-8d68-ec2ea6a4c767",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0021L02U02"
+   },
+   "before": {
+    "id": "ita_for_zho:S0021L02U02",
+    "seed_number": 21,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你在学中文和别人一起？",
+    "known_audio_id": "b0252c33-e938-4f9a-8fac-e3a7d93156b5",
+    "target_text": "stai imparando italiano con tutti gli altri?",
+    "target1_audio_id": "a512882f-2a0a-4b29-b87a-dd6306c1f845",
+    "target2_audio_id": "ceeb5ccc-efe0-43b7-baa3-d5ddc379d2b5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0021L02U02",
+    "seed_number": 21,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你在学意大利语和别人一起？",
+    "known_audio_id": "52e6cead-33c5-4ef8-9051-37044e7772bc",
+    "target_text": "stai imparando italiano con tutti gli altri?",
+    "target1_audio_id": "a512882f-2a0a-4b29-b87a-dd6306c1f845",
+    "target2_audio_id": "ceeb5ccc-efe0-43b7-baa3-d5ddc379d2b5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "seed_number": 22
+   },
+   "before": {
+    "id": "e73b0c52-a2d3-44f7-a02e-4ce866eb54fb",
+    "seed_number": 22,
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "3155812f-1294-4bc9-a5c5-11dc27326c67",
+    "target_text": "Perché voglio incontrare persone che parlano italiano.",
+    "target1_audio_id": "f5e8658f-7471-4927-86d3-2add803670ad",
+    "target2_audio_id": "81f573af-5080-4701-94a0-e946b8ce59cc"
+   },
+   "after": {
+    "id": "e73b0c52-a2d3-44f7-a02e-4ce866eb54fb",
+    "seed_number": 22,
+    "known_text": "因为我想见说意大利语的人。",
+    "known_audio_id": "acc34e1d-4dc8-4a2f-ab28-66214262dd41",
+    "target_text": "Perché voglio incontrare persone che parlano italiano.",
+    "target1_audio_id": "f5e8658f-7471-4927-86d3-2add803670ad",
+    "target2_audio_id": "81f573af-5080-4701-94a0-e946b8ce59cc"
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_zho",
+    "id": "ita_for_zho:S0022L01B01"
+   },
+   "before": {
+    "id": "ita_for_zho:S0022L01B01",
+    "seed_number": 22,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "因为我想说中文",
+    "known_audio_id": "ca267786-f6af-46da-9e08-6847027ab66f",
+    "target_text": "perché voglio parlare italiano",
+    "target1_audio_id": "ed4da3d5-ec0a-47fd-a077-4803d0995385",
+    "target2_audio_id": "9fd1208c-c791-425f-82f7-1cdd2f49deba",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_zho:S0022L01B01",
+    "seed_number": 22,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "因为我想说意大利语",
+    "known_audio_id": "a0d9d951-110e-46e9-8c2d-719b1d545ad6",
+    "target_text": "perché voglio parlare italiano",
+    "target1_audio_id": "ed4da3d5-ec0a-47fd-a077-4803d0995385",
+    "target2_audio_id": "9fd1208c-c791-425f-82f7-1cdd2f49deba",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0022L01B01",
+   "set": {
+    "known_text": "因为我想说中文",
+    "known_audio_id": "ca267786-f6af-46da-9e08-6847027ab66f"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 22,
+   "set": {
+    "known_text": "因为我想见说中文的人。",
+    "known_audio_id": "3155812f-1294-4bc9-a5c5-11dc27326c67"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0021L02U02",
+   "set": {
+    "known_text": "你在学中文和别人一起？",
+    "known_audio_id": "b0252c33-e938-4f9a-8fac-e3a7d93156b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0021L02U05",
+   "set": {
+    "known_text": "你现在在学中文？",
+    "known_audio_id": "244ecb82-0ab9-4c36-afd3-69b8da0b9aa7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0021L02B02",
+   "set": {
+    "known_text": "在学中文",
+    "known_audio_id": "6eb095ed-3cd8-42e7-ac30-27394c3edf60"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0021L01U03",
+   "set": {
+    "known_text": "你为什么想和别人说中文？",
+    "known_audio_id": "7375f5ea-9cf0-4bb9-a5da-21762c2d5034"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0021L01U01",
+   "set": {
+    "known_text": "你为什么说中文？",
+    "known_audio_id": "28483548-5436-46e6-bdde-0bc14dc30bf1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0021L01U02",
+   "set": {
+    "known_text": "你为什么想学中文？",
+    "known_audio_id": "db848154-7314-4d15-bace-e2ad59f4a958"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0021L01B01",
+   "set": {
+    "known_text": "为什么说中文？",
+    "known_audio_id": "f71a66d5-33ae-44ab-b37d-5f6d2c437b5d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0020L01U01",
+   "set": {
+    "known_text": "你想说中文说得很好？",
+    "known_audio_id": "b3b75463-67d5-4613-bcab-1f78a45f763f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0020L01B01",
+   "set": {
+    "known_text": "你想说中文？",
+    "known_audio_id": "3992c258-a15c-45c2-b499-971d0db4fb47"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0020L03U03",
+   "set": {
+    "known_text": "我在试着快点说中文",
+    "known_audio_id": "c22fb6d3-1bcd-48aa-89b1-15e3535abecb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0020L03B02",
+   "set": {
+    "known_text": "快点说中文",
+    "known_audio_id": "2bdb341d-be63-49e5-baf2-df3315c73baa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0019L02U02",
+   "set": {
+    "known_text": "他不想停止说中文",
+    "known_audio_id": "686e34da-4b65-4e4b-a353-00fe4ef7817c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0019L02U01",
+   "set": {
+    "known_text": "我不想停止说中文",
+    "known_audio_id": "ba5f666d-78ab-4d55-a3fc-510c8c9a0a4f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0019L02B02",
+   "set": {
+    "known_text": "停止学中文",
+    "known_audio_id": "f30064f1-23fd-40b2-8dc3-2d5b716ff8be"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0019L01U01",
+   "set": {
+    "known_text": "但是我想说中文说得很好",
+    "known_audio_id": "4730fa82-d600-41d3-aaaa-6d778354bbab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0019L01B01",
+   "set": {
+    "known_text": "但是我想说中文",
+    "known_audio_id": "8e0d1d3c-8499-4b81-91bd-9e07147fb91c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0018L02B02",
+   "set": {
+    "known_text": "见面说中文",
+    "known_audio_id": "202efffc-1410-408b-b610-888d9f756061"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0018L03U02",
+   "set": {
+    "known_text": "我想今天晚上六点和你说中文",
+    "known_audio_id": "3957e6b4-e1d1-4aaf-b6a6-80290adc3854"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0018L03B02",
+   "set": {
+    "known_text": "今天晚上六点说中文",
+    "known_audio_id": "23e8c09a-a0ad-4b1f-9285-860908f38300"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0018L01U01",
+   "set": {
+    "known_text": "我们想说中文说得很好",
+    "known_audio_id": "7f67ca04-fb81-46c9-aac5-98b295d78a3d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0018L01U04",
+   "set": {
+    "known_text": "我们想明天和你说中文",
+    "known_audio_id": "09a600be-6a9f-4b87-b733-42f95f0661a7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0018L01U05",
+   "set": {
+    "known_text": "我们想和别人一起说中文",
+    "known_audio_id": "1d5fe024-276b-4882-96d6-74bd20f57896"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0018L01B01",
+   "set": {
+    "known_text": "我们想说中文",
+    "known_audio_id": "e27c046e-4adc-4bb9-aa18-355f35c89f33"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L02U01",
+   "set": {
+    "known_text": "他想回来说中文",
+    "known_audio_id": "f4f9b232-0d33-48fc-b815-d7cf5d068052"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L02B02",
+   "set": {
+    "known_text": "回来说中文",
+    "known_audio_id": "a644adaa-f404-4a05-9465-b8e1d01e687a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L04U04",
+   "set": {
+    "known_text": "我想以后和别人一起说中文",
+    "known_audio_id": "599176de-7908-409a-9a54-0464ad64ed04"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L04U02",
+   "set": {
+    "known_text": "我想以后说中文",
+    "known_audio_id": "6c7ecfca-0c2d-49fa-b06d-ae30fbd10e2c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L04U03",
+   "set": {
+    "known_text": "我想以后和你说中文",
+    "known_audio_id": "8f3337d3-ed80-442c-a58b-bc5d7d3ac051"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L04B01",
+   "set": {
+    "known_text": "以后说中文",
+    "known_audio_id": "f20e2dbe-cc61-468d-9222-5ef5e0b91913"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L01U05",
+   "set": {
+    "known_text": "他想和别人说中文",
+    "known_audio_id": "f522beb0-a6dd-4e87-9b59-9129c16e4f15"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L01U03",
+   "set": {
+    "known_text": "他想明天和你说中文",
+    "known_audio_id": "c33296a8-5961-45fa-acb5-08fc9e177f42"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L01U01",
+   "set": {
+    "known_text": "他想说中文说得很好",
+    "known_audio_id": "ee8cfc18-5edd-49ea-a792-c094fda1b0cd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L01B01",
+   "set": {
+    "known_text": "他想说中文",
+    "known_audio_id": "c6980ef8-03f8-4292-a2cb-dfd162dd2847"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L03U03",
+   "set": {
+    "known_text": "我想和别人一起说中文",
+    "known_audio_id": "7732ca9f-a358-4654-92e8-2ae6fe0735fd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L03U01",
+   "set": {
+    "known_text": "他想和别人一起说中文",
+    "known_audio_id": "b39e633c-8eef-4f76-95e1-88ec658dd836"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L03U04",
+   "set": {
+    "known_text": "我在试着和别人一起说中文",
+    "known_audio_id": "21e74bd7-323e-477b-a492-73d43ed99668"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0016L03B02",
+   "set": {
+    "known_text": "和别人一起说中文",
+    "known_audio_id": "940039d3-95ca-470e-a53b-95ceff3b95ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_zho:S0015L03U02",
+   "set": {
+    "known_text": "而且我想让你和我说中文",
+    "known_audio_id": "3beae4fc-ac94-4b6d-8c79-def2ec34528f"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-24-36-846Z-ab3d2d22-7743-4f1a-a7cd-ff9b380263b5.json"
+}

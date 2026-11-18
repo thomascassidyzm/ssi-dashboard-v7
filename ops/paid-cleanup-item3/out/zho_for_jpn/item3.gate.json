@@ -1,0 +1,48 @@
+{
+ "course": "zho_for_jpn",
+ "plan": "item3.tsv",
+ "at": "2026-11-18T13:22:09.973Z",
+ "rows": [
+  {
+   "id": "S0122L03U01",
+   "role": "use",
+   "target": "你觉得兴奋吗？",
+   "old": "ワクワクする？",
+   "new": "ワクワクしますか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0122L03U03",
+   "role": "use",
+   "target": "你对进展兴奋吗？",
+   "old": "進展にワクワクしている？",
+   "new": "進展にワクワクしていますか？",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "122": {
+   "before": [
+    "Tiling: Seed target contains vocabulary not covered by LEGOs: [更容易我对进展很兴奋]",
+    "L1: USE: need 5+, got 4",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: USE: need 5+, got 4",
+    "L3: USE: need 5+, got 4",
+    "L3: vocab violations in 5 phrase(s)",
+    "L4: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "Tiling: Seed target contains vocabulary not covered by LEGOs: [更容易我对进展很兴奋]",
+    "L1: USE: need 5+, got 4",
+    "L1: vocab violations in 1 phrase(s)",
+    "L2: USE: need 5+, got 4",
+    "L3: USE: need 5+, got 4",
+    "L3: vocab violations in 5 phrase(s)",
+    "L4: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  }
+ }
+}

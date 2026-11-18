@@ -1,0 +1,50 @@
+{
+ "held_target_side": [
+  {
+   "kind": "phrase",
+   "key": "fra_for_zho:S0014L01U05",
+   "known": "你想学中文吗？",
+   "target": "est-ce que tu veux apprendre ?",
+   "why": "target does not say français: a target-side defect, not this family"
+  }
+ ],
+ "held_zut": [
+  {
+   "kind": "phrase",
+   "key": "fra_for_zho:S0022L03U03",
+   "known_new": "我们想见说法语的人",
+   "target": "nous voulons rencontrer des gens qui parlent français ce soir",
+   "clashes_with": [
+    [
+     "fra_for_zho:S0022L02U03",
+     "nousvoulonsrencontrerdesgensquiparlentfrançaisrapidement",
+     "我们想见说法语的人"
+    ]
+   ]
+  }
+ ],
+ "preexisting_zut_applied": [
+  {
+   "key": "fra_for_zho:S0039L01B03",
+   "known_new": "我是准备好了说法语",
+   "target": "je suis prêt à parler français",
+   "clashes_with": [
+    [
+     "fra_for_zho:S0039L01U01",
+     "jesuisprêtàparlerfrançaismaintenant"
+    ]
+   ]
+  },
+  {
+   "key": "fra_for_zho:S0039L01U01",
+   "known_new": "我是准备好了说法语。",
+   "target": "je suis prêt à parler français maintenant",
+   "clashes_with": [
+    [
+     "fra_for_zho:S0039L01B03",
+     "jesuisprêtàparlerfrançais"
+    ]
+   ]
+  }
+ ]
+}

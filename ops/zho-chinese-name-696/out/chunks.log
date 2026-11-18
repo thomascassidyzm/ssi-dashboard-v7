@@ -1,0 +1,40 @@
+deu_for_zho undo apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': '59a6490d-8758-4f53-b1e2-4231b2a503dd', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-20-48-773Z-59a6490d-8758-4f53-b1e2-4231b2a503dd.json'} results 40 undo_ops 40
+deu_for_zho chunk01 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': 'd2300ad6-1691-4c2b-8b1b-bc165c47238b', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-21-05-071Z-d2300ad6-1691-4c2b-8b1b-bc165c47238b.json'} results 40 undo_ops 40
+deu_for_zho chunk02 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': '1b8a92c4-ce86-408f-a179-10a75356820b', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-21-20-850Z-1b8a92c4-ce86-408f-a179-10a75356820b.json'} results 40 undo_ops 40
+deu_for_zho chunk03 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': 'bb7e7af4-d121-4cda-b8b1-f3cc7a92d3f6', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-21-38-466Z-bb7e7af4-d121-4cda-b8b1-f3cc7a92d3f6.json'} results 40 undo_ops 40
+deu_for_zho chunk04 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': '54aab2a3-70c4-404d-9b19-9257ca28d79b', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-22-00-283Z-54aab2a3-70c4-404d-9b19-9257ca28d79b.json'} results 40 undo_ops 40
+deu_for_zho chunk05 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': 'b30ec61c-3055-46cb-91d2-a5b68baf9fb7', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-22-27-062Z-b30ec61c-3055-46cb-91d2-a5b68baf9fb7.json'} results 35 undo_ops 35
+ita_for_zho chunk00 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': 'df92c665-d17a-44d5-96b4-e46c55bbc3b0', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-22-49-961Z-df92c665-d17a-44d5-96b4-e46c55bbc3b0.json'} results 40 undo_ops 40
+ita_for_zho chunk01 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': '3f923d0b-fbb2-4ec2-bed9-61a510ef1347', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-23-11-452Z-3f923d0b-fbb2-4ec2-bed9-61a510ef1347.json'} results 40 undo_ops 40
+ita_for_zho chunk02 apply {'ok': True, 'dryRun': False, 'applied': True, 'event_id': '6e7bea1b-7598-46d9-872b-473748326e02', 'error': None, 'code': None, '_http': None, 'undo_file': '2026-11-18T13-23-30-350Z-6e7bea1b-7598-46d9-872b-473748326e02.json'} results 40 undo_ops 40
+Traceback (most recent call last):
+  File "/home/tomcassidy/.cs-worktrees/ssi-dashboard-v7-clean/696-chinese-known-courses-target-nam/ops/zho-chinese-name-696/batch.py", line 10, in <module>
+    with urllib.request.urlopen(req, timeout=600) as r: res = json.loads(r.read())
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.14/urllib/request.py", line 1350, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 1325, in do_open
+    r = h.getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+                             " response")
+http.client.RemoteDisconnected: Remote end closed connection without response
+STOP ita chunk03
+DONE

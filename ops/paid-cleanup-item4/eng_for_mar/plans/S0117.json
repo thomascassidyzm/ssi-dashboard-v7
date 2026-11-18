@@ -1,0 +1,138 @@
+{
+ "seed": 117,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "नक्कीच नाही",
+     "definitely not"
+    ],
+    "U01": [
+     "मी नक्कीच तयार आहे",
+     "I'm definitely ready"
+    ],
+    "U02": [
+     "मला नक्कीच परत यायचं आहे",
+     "I definitely want to come back"
+    ],
+    "U03": [
+     "ते नक्कीच चालेल",
+     "it will definitely work"
+    ],
+    "U05": [
+     "तो नक्कीच सर्वात चांगला पर्याय होता",
+     "that was definitely the best choice"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "नक्कीच तयार",
+     "definitely ready"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "त्यापेक्षा जास्त",
+     "more than"
+    ],
+    "U01": [
+     "मी कालपेक्षा नक्कीच चांगलं करतोय",
+     "I'm definitely doing better than yesterday"
+    ],
+    "U02": [
+     "मी आधी होतो त्यापेक्षा चांगलं करतोय",
+     "I'm doing better than I was"
+    ],
+    "U03": [
+     "मला अपेक्षा होती त्यापेक्षा हे जास्त अवघड आहे",
+     "this is more difficult than I was expecting"
+    ],
+    "U04": [
+     "मला माझ्या मित्रापेक्षा जास्त शब्द माहित आहेत",
+     "I know more words than my friend"
+    ],
+    "U05": [
+     "ती माझ्यापेक्षा चांगलं बोलू शकते",
+     "she can speak better than me"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "कालपेक्षा चांगलं",
+     "better than yesterday"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "मागच्या वेळी मी इथे होतो",
+     "last time I was here"
+    ],
+    "U01": [
+     "मागच्या वेळी मी थकलो होतो",
+     "I was tired last time"
+    ],
+    "U02": [
+     "मागच्या वेळी ते सोपं नव्हतं",
+     "last time it wasn't easy"
+    ],
+    "U03": [
+     "मागच्या वेळी तुम्ही काय म्हणालात?",
+     "what did you say last time?"
+    ],
+    "U04": [
+     "मी मागच्या वेळेपेक्षा चांगलं करतोय",
+     "I'm doing better than I was last time"
+    ],
+    "U05": [
+     "ते मागच्या वेळेपेक्षा नक्कीच चांगलं होतं",
+     "it was definitely better than last time"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मागच्या वेळेपेक्षा चांगलं",
+     "better than last time"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B02": [
+     "आम्ही काल एकमेकांशी बोललो",
+     "we talked to each other yesterday"
+    ],
+    "B03": [
+     "मागच्या वेळी आम्ही एकमेकांशी बोललो",
+     "last time we talked to each other"
+    ],
+    "U03": [
+     "आम्ही मध्यरात्री एकमेकांशी बोललो",
+     "we talked to each other in the middle of the night"
+    ],
+    "U04": [
+     "आम्ही मागच्या आठवड्यात एकमेकांशी बोललो",
+     "we talked to each other last week"
+    ],
+    "U05": [
+     "आम्ही दुपारभर एकमेकांशी बोललो",
+     "we talked to each other all afternoon"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "थोडा वेळ एकमेकांशी बोललो",
+     "talked to each other for a while"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -1,0 +1,56 @@
+{
+ "seed": 34,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "पण त्याला गप्प राहायचं नाही",
+     "but he doesn't want to be quiet"
+    ],
+    "B03": [
+     "कारण त्याला गप्प राहायचं नाही",
+     "because he doesn't want to be quiet"
+    ],
+    "U01": [
+     "त्याला दिवसभर गप्प राहायचं नाही",
+     "he doesn't want to be quiet all day"
+    ],
+    "U02": [
+     "त्याला गप्प राहायचं नाही कारण त्याला इंग्रजी बोलायचं आहे",
+     "he doesn't want to be quiet because he wants to speak English"
+    ],
+    "U03": [
+     "त्याला गप्प राहायचं नाही, त्याला तुमच्याशी बोलायचं आहे",
+     "he doesn't want to be quiet, he wants to speak with you"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "त्याला आज गप्प राहायचं नाही",
+     "he doesn't want to be quiet today"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "इतर लोक इथे असताना बोलणे",
+     "to speak when other people are here"
+    ],
+    "B03": [
+     "इतर लोक इथे असताना शिकणे",
+     "to learn when other people are here"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "इतर लोक इथे असताना काहीतरी म्हणणे",
+     "to say something when other people are here"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

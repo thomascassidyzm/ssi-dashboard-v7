@@ -1,0 +1,186 @@
+{
+ "course": "eng_for_mar",
+ "batch": "b11",
+ "seeds": [
+  114,
+  115,
+  116,
+  117,
+  118
+ ],
+ "counts": {
+  "insert": 12,
+  "update": 80,
+  "delete": 0
+ },
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [],
+ "checks": [
+  {
+   "lego": "S0114L01",
+   "is_new": true,
+   "before": "USE: need 5+, got 4",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0114L02",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0115L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0115L02",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 4,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0115L03",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0116L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0116L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0116L03",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0117L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0117L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0117L03",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0117L04",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0118L01",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0118L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 2,
+   "inserted": 2,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0118L03",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  }
+ ]
+}

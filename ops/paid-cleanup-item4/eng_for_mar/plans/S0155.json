@@ -1,0 +1,146 @@
+{
+ "seed": 155,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "मदत करायला हरकत नाही",
+     "don't mind helping"
+    ],
+    "B03": [
+     "जायला हरकत नाही",
+     "don't mind going"
+    ],
+    "U02": [
+     "बसने जायला माझी हरकत नाही",
+     "I don't mind going by bus"
+    ],
+    "U03": [
+     "इंग्रजी बोलायला माझी हरकत नाही",
+     "I don't mind speaking English"
+    ],
+    "U04": [
+     "दुपारभर काम करायला माझी हरकत नाही",
+     "I don't mind working all afternoon"
+    ],
+    "U05": [
+     "मला त्याची हरकत नाही",
+     "I don't mind that"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुमची हरकत नसेल तर",
+     "if you don't mind"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "वाट पाहायला हरकत नाही",
+     "don't mind waiting"
+    ],
+    "B03": [
+     "तुमची वाट पाहत",
+     "waiting for you"
+    ],
+    "U01": [
+     "वाट पाहायला माझी हरकत नाही",
+     "I don't mind waiting"
+    ],
+    "U02": [
+     "मी माझ्या मित्राची वाट पाहतोय",
+     "I'm waiting for my friend"
+    ],
+    "U03": [
+     "तुम्ही कोणाची वाट पाहताय का?",
+     "are you waiting for someone?"
+    ],
+    "U04": [
+     "आम्ही दुपारभर वाट पाहत होतो",
+     "we were waiting all afternoon"
+    ],
+    "U05": [
+     "मला वाट पाहायला आवडत नाही",
+     "I don't like waiting"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "बसची वाट पाहत",
+     "waiting for the bus"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "सहा मिनिटं",
+     "six minutes"
+    ],
+    "U01": [
+     "काही मिनिटं वाट पाहायला माझी हरकत नाही",
+     "I don't mind waiting for a few minutes"
+    ],
+    "U02": [
+     "मी काही मिनिटांत तयार असेन",
+     "I'll be ready in a few minutes"
+    ],
+    "U03": [
+     "तुम्ही काही मिनिटं वाट पाहू शकता का?",
+     "can you wait a few minutes?"
+    ],
+    "U04": [
+     "आम्ही काही मिनिटं एकमेकांशी बोललो",
+     "we talked to each other for a few minutes"
+    ],
+    "U05": [
+     "मला विचार करायला काही मिनिटं हवी आहेत",
+     "I need a few minutes to think"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "काही मिनिटांत",
+     "in a few minutes"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B03": [
+     "शनिवारी सकाळी",
+     "on Saturday morning"
+    ],
+    "U02": [
+     "मी उद्या सकाळी सुरुवात करणार आहे",
+     "I'm going to start tomorrow morning"
+    ],
+    "U03": [
+     "आपण उद्या सकाळी भेटू शकतो का?",
+     "can we meet tomorrow morning?"
+    ],
+    "U04": [
+     "उद्या सकाळी माझ्याकडे काही मिनिटं आहेत",
+     "I've got a few minutes tomorrow morning"
+    ],
+    "U05": [
+     "मला सकाळच्या वेळी शिकायला आवडतं",
+     "I like to learn in the morning"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "सकाळच्या वेळी",
+     "in the morning"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
