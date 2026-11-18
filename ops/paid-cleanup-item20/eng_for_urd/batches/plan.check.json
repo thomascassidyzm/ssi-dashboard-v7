@@ -173,12 +173,7 @@
   "delete": 0
  },
  "recorded_today_by_others": [],
- "errors": [
-  "S0242L01B01: duplicate: \"میں اسے مزید وقت دینا چاہتا ہوں | I want to give her more time\" already exists at S0242L01U01 (Kai's rule)",
-  "S0242L01: after the edit: 1 duplicate phrase(s) within this LEGO: \"I want to give her more time\"",
-  "S0322L02B01: duplicate: \"میں وہی کتاب پڑھنا چاہتا ہوں | I want to read the same book\" already exists at S0322L02U01 (Kai's rule)",
-  "S0322L02: after the edit: 1 duplicate phrase(s) within this LEGO: \"I want to read the same book\""
- ],
+ "errors": [],
  "warnings": [
   "S0072L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0162L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
@@ -189,13 +184,10 @@
   "S0224L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 3",
   "S0229L02: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0230L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
-  "S0231L01B01: known side untaught: جانتی in \"میں ایک بوڑھے آدمی کو جانتی ہوں\" (or list them in plan.known_ok[\"S0231L01B01\"] = \"words|why\")",
-  "S0232L01B01: known side untaught: جانتی in \"میں ایک بوڑھی عورت کو جانتی ہوں\" (or list them in plan.known_ok[\"S0232L01B01\"] = \"words|why\")",
   "S0232L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0236L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 3",
   "S0237L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0238L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
-  "S0242L01U01: duplicate of S0242L01B01 in the basket: \"I want to give her more time\"",
   "S0244L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0245L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0251L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 3",
@@ -203,15 +195,12 @@
   "S0262L01B03: known side untaught: جن in \"وہ لوگ جن سے آپ کل بات کر رہے تھے\" (or list them in plan.known_ok[\"S0262L01B03\"] = \"words|why\")",
   "S0269L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 3",
   "S0297L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
-  "S0299L01B03: known side untaught: آدھے in \"میں آدھے پیسے چاہتا ہوں\" (or list them in plan.known_ok[\"S0299L01B03\"] = \"words|why\")",
   "S0299L01: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0302L01C04: duplicate of S0302L01C01 in the basket: \"she\"",
   "S0313L02: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
   "S0315L02: not this item (USE rows are not touched by item 20): USE: need 5+, got 1",
   "S0316L03: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
-  "S0322L01C04: duplicate of S0322L01C01 in the basket: \"she\"",
-  "S0322L01B01: known side untaught: پڑھنی in \"اس نے کہا کہ اسے ایک کتاب پڑھنی ہے\" (or list them in plan.known_ok[\"S0322L01B01\"] = \"words|why\")",
-  "S0322L02U01: duplicate of S0322L02B01 in the basket: \"I want to read the same book\""
+  "S0322L01C04: duplicate of S0322L01C01 in the basket: \"she\""
  ],
  "checks": [
   {
@@ -1626,7 +1615,7 @@
    "lego": "S0242L01",
    "is_new": true,
    "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-   "after": "1 duplicate phrase(s) within this LEGO: \"I want to give her more time\"",
+   "after": "ok",
    "real_builds_after": 2,
    "deleted": 0,
    "rewritten": 1,
@@ -2583,7 +2572,7 @@
    "lego": "S0322L02",
    "is_new": true,
    "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-   "after": "1 duplicate phrase(s) within this LEGO: \"I want to read the same book\"",
+   "after": "ok",
    "real_builds_after": 3,
    "deleted": 0,
    "rewritten": 1,

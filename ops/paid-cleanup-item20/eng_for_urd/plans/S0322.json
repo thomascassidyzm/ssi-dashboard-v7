@@ -15,10 +15,10 @@
   "L02": {
    "update": {
     "B01": [
-     "میں وہی کتاب پڑھنا چاہتا ہوں",
-     "I want to read the same book",
+     "وہ وہی کتاب پڑھنا چاہتا ہے",
+     "he wants to read the same book",
      null,
-     "m"
+     null
     ]
    }
   },
@@ -33,6 +33,8 @@
    }
   }
  },
- "known_ok": {},
+ "known_ok": {
+  "S0322L01B01": "پڑھنی|form of the taught پڑھنا"
+ },
  "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
 }

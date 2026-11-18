@@ -1748,7 +1748,8 @@
    "hin_row": "S0231L01B01",
    "known": "میں ایک بوڑھے آدمی کو جانتی ہوں",
    "gender": "f",
-   "n": 1
+   "n": 1,
+   "known_ok": "جانتی|feminine form of the taught جانتا"
   },
   {
    "lego": "S0232L01",
@@ -1761,7 +1762,8 @@
    "hin_row": "S0232L01B01",
    "known": "میں ایک بوڑھی عورت کو جانتی ہوں",
    "gender": "f",
-   "n": 1
+   "n": 1,
+   "known_ok": "جانتی|feminine form of the taught جانتا"
   },
   {
    "lego": "S0233L01",
@@ -1941,10 +1943,10 @@
    "lego_en": "give her more time",
    "lego_known": "اسے مزید وقت دینا",
    "slot": "update:B01",
-   "en": "I want to give her more time",
+   "en": "I want to give her more time today",
    "hi": "उसे और समय देना",
    "hin_row": "S0242L01B03",
-   "known": "میں اسے مزید وقت دینا چاہتا ہوں",
+   "known": "میں آج اسے مزید وقت دینا چاہتا ہوں",
    "gender": "m",
    "n": 1,
    "en_was": "to give her more time"
@@ -2669,7 +2671,8 @@
    "author": true,
    "known": "میں آدھے پیسے چاہتا ہوں",
    "gender": "m",
-   "n": 1
+   "n": 1,
+   "known_ok": "آدھے|plural form of the LEGO آدھا"
   },
   {
    "lego": "S0299L02",
@@ -3295,7 +3298,8 @@
    "hin_row": "S0322L03B01",
    "known": "اس نے کہا کہ اسے ایک کتاب پڑھنی ہے",
    "gender": null,
-   "n": 1
+   "n": 1,
+   "known_ok": "پڑھنی|form of the taught پڑھنا"
   },
   {
    "lego": "S0322L02",
@@ -3303,11 +3307,11 @@
    "lego_en": "the same book",
    "lego_known": "وہی کتاب",
    "slot": "update:B01",
-   "en": "I want to read the same book",
+   "en": "he wants to read the same book",
    "hi": "अभी वही किताब",
    "hin_row": "S0322L01B03",
-   "known": "میں وہی کتاب پڑھنا چاہتا ہوں",
-   "gender": "m",
+   "known": "وہ وہی کتاب پڑھنا چاہتا ہے",
+   "gender": null,
    "n": 1,
    "en_was": "the same book now"
   },
