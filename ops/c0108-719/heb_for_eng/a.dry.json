@@ -1,0 +1,101 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "heb_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "ed785b32-b3c0-432b-81ef-b1ecd47af5a4",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "לא קיווינו להתעורר באמצע הלילה.",
+    "target_text_roman": "lo kivinu lehit'orer be'emtsa halayla.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "0ad9b9dc-1db5-4e7b-b3a1-2fbb91423844",
+    "target2_audio_id": "47fc1c2a-70db-4a75-bf04-46bf2e5177d2"
+   },
+   "after": {
+    "id": "ed785b32-b3c0-432b-81ef-b1ecd47af5a4",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "לא ציפינו להתעורר באמצע הלילה.",
+    "target_text_roman": "lo tsipinu lehit'orer be'emtsa halayla.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "heb_for_eng",
+    "id": "heb_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "heb_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "לא קיווינו להתעורר באמצע הלילה",
+    "target_text_roman": "lo kivinu lehit'orer be'emtsa halayla",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "0ad9b9dc-1db5-4e7b-b3a1-2fbb91423844",
+    "target2_audio_id": "47fc1c2a-70db-4a75-bf04-46bf2e5177d2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "heb_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "לא ציפינו להתעורר באמצע הלילה",
+    "target_text_roman": "lo tsipinu lehit'orer be'emtsa halayla",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "heb_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "לא קיווינו להתעורר באמצע הלילה",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "0ad9b9dc-1db5-4e7b-b3a1-2fbb91423844",
+    "target2_audio_id": "47fc1c2a-70db-4a75-bf04-46bf2e5177d2",
+    "target_text_roman": "lo kivinu lehit'orer be'emtsa halayla"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "לא קיווינו להתעורר באמצע הלילה.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "0ad9b9dc-1db5-4e7b-b3a1-2fbb91423844",
+    "target2_audio_id": "47fc1c2a-70db-4a75-bf04-46bf2e5177d2",
+    "target_text_roman": "lo kivinu lehit'orer be'emtsa halayla."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

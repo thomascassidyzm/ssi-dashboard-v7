@@ -1,0 +1,542 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "88391d6e-6238-414a-baa9-831e91e2d5d6",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Hatukulitumaini kuamka usiku wa manane.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "19f51709-81d3-4410-8bc7-8fb11191e628",
+    "target2_audio_id": "d3058e3a-2269-4677-8538-50e6c5a2c1ad"
+   },
+   "after": {
+    "id": "88391d6e-6238-414a-baa9-831e91e2d5d6",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Hatukutarajia kuamka usiku wa manane.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "e8aa87ba-2a6e-49fd-80ce-9d824a83d715",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "hatukulitumaini",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "we did not",
+      "target": "hatuku"
+     }
+    ],
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "0c1b81b3-ba87-4fa1-b935-6e76ad79ddd0",
+    "target2_audio_id": "e238c5e4-96fa-4fbe-8bcf-8ef6589ef113",
+    "presentation_audio_id": "43020c01-ea50-4d14-ab05-7449557b93b2"
+   },
+   "after": {
+    "id": "e8aa87ba-2a6e-49fd-80ce-9d824a83d715",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "hatukutarajia",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we did not",
+      "target": "hatuku"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukulitumaini",
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "0c1b81b3-ba87-4fa1-b935-6e76ad79ddd0",
+    "target2_audio_id": "e238c5e4-96fa-4fbe-8bcf-8ef6589ef113",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukutarajia",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukulitumaini kuanza",
+    "known_text": "we didn't hope to start",
+    "known_audio_id": "65bd1288-21e6-4b81-9bab-2997c4ce64dc",
+    "target1_audio_id": "cc2f5b03-acb4-4508-9e91-f4a4fa60b46c",
+    "target2_audio_id": "9015cc1d-2490-4daf-ae66-7d317d0451a9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukutarajia kuanza",
+    "known_text": "we didn't expect to start",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukulitumaini kujifunza",
+    "known_text": "we didn't hope to learn",
+    "known_audio_id": "7719ec35-c74e-418c-89c9-699ac79d36e7",
+    "target1_audio_id": "8bfa6986-b98f-442f-b118-65db8d07ae33",
+    "target2_audio_id": "b5f5ff04-2060-45a4-b8a8-52dca01ffc33",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukutarajia kujifunza",
+    "known_text": "we didn't expect to learn",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukulitumaini kujifunza sana",
+    "known_text": "we didn't hope to learn so much",
+    "known_audio_id": "ba456312-45ec-413e-9fdf-ebfe09387a30",
+    "target1_audio_id": "b096e6f1-876c-493c-8b60-987466d55e1c",
+    "target2_audio_id": "0b5df5b7-1971-4658-921d-cb4b2fd7ba7a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukutarajia kujifunza sana",
+    "known_text": "we didn't expect to learn so much",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukulitumaini kupata jibu",
+    "known_text": "we didn't hope to find the answer",
+    "known_audio_id": "8ab3c93e-1519-4475-99e0-e967a1ae9395",
+    "target1_audio_id": "187a48a1-994a-4a11-9929-e4b8e2d4014b",
+    "target2_audio_id": "cb14696f-f84b-44fe-bc8f-43906e23b323",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukutarajia kupata jibu",
+    "known_text": "we didn't expect to find the answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukulitumaini kuelewa hii",
+    "known_text": "we didn't hope to understand this",
+    "known_audio_id": "23f47fb7-3664-4d91-8d01-494c45704ac2",
+    "target1_audio_id": "d57a8e6d-414d-4f72-b910-62956eb66572",
+    "target2_audio_id": "a592fdec-419e-468b-90e9-2b8665474780",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukutarajia kuelewa hii",
+    "known_text": "we didn't expect to understand this",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukulitumaini kuona hivyo",
+    "known_text": "we didn't hope to see that",
+    "known_audio_id": "6558d3ef-6f1a-48ac-96c9-d269960cfcaf",
+    "target1_audio_id": "f43e466b-ca54-4bf2-977d-4cf07dbe262f",
+    "target2_audio_id": "e3b56001-3bb7-4ba3-a327-a83742301a46",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "hatukutarajia kuona hivyo",
+    "known_text": "we didn't expect to see that",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night",
+    "target_text": "kuamka usiku wa manane",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+    "target1_audio_id": "a9b459d7-a1ec-41be-82eb-4567f7e9c4fd",
+    "target2_audio_id": "d0241b7a-b000-4247-b41c-cc9afc7f1844",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night",
+    "target_text": "kuamka usiku wa manane",
+    "known_audio_id": null,
+    "target1_audio_id": "a9b459d7-a1ec-41be-82eb-4567f7e9c4fd",
+    "target2_audio_id": "d0241b7a-b000-4247-b41c-cc9afc7f1844",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "hatukulitumaini kuamka usiku wa manane",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "19f51709-81d3-4410-8bc7-8fb11191e628",
+    "target2_audio_id": "d3058e3a-2269-4677-8538-50e6c5a2c1ad",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "hatukutarajia kuamka usiku wa manane",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "swa_for_eng",
+    "id": "swa_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "swa_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we need to wake in the middle of the night",
+    "target_text": "tunahitaji kuamka usiku wa manane",
+    "known_audio_id": "60b5e44c-a105-493b-9331-dba59caba250",
+    "target1_audio_id": "cc4cbaf7-077b-41b9-b263-b74d79d93c11",
+    "target2_audio_id": "5b0bb88a-c499-4964-9fde-a6bc5be4fa0b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "swa_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we need to wake up in the middle of the night",
+    "target_text": "tunahitaji kuamka usiku wa manane",
+    "known_audio_id": null,
+    "target1_audio_id": "cc4cbaf7-077b-41b9-b263-b74d79d93c11",
+    "target2_audio_id": "5b0bb88a-c499-4964-9fde-a6bc5be4fa0b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we need to wake in the middle of the night",
+    "known_audio_id": "60b5e44c-a105-493b-9331-dba59caba250"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "hatukulitumaini kuamka usiku wa manane",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "19f51709-81d3-4410-8bc7-8fb11191e628",
+    "target2_audio_id": "d3058e3a-2269-4677-8538-50e6c5a2c1ad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "wake in the middle of the night",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope to see that",
+    "target_text": "hatukulitumaini kuona hivyo",
+    "known_audio_id": "6558d3ef-6f1a-48ac-96c9-d269960cfcaf",
+    "target1_audio_id": "f43e466b-ca54-4bf2-977d-4cf07dbe262f",
+    "target2_audio_id": "e3b56001-3bb7-4ba3-a327-a83742301a46"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to understand this",
+    "target_text": "hatukulitumaini kuelewa hii",
+    "known_audio_id": "23f47fb7-3664-4d91-8d01-494c45704ac2",
+    "target1_audio_id": "d57a8e6d-414d-4f72-b910-62956eb66572",
+    "target2_audio_id": "a592fdec-419e-468b-90e9-2b8665474780"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to find the answer",
+    "target_text": "hatukulitumaini kupata jibu",
+    "known_audio_id": "8ab3c93e-1519-4475-99e0-e967a1ae9395",
+    "target1_audio_id": "187a48a1-994a-4a11-9929-e4b8e2d4014b",
+    "target2_audio_id": "cb14696f-f84b-44fe-bc8f-43906e23b323"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to learn so much",
+    "target_text": "hatukulitumaini kujifunza sana",
+    "known_audio_id": "ba456312-45ec-413e-9fdf-ebfe09387a30",
+    "target1_audio_id": "b096e6f1-876c-493c-8b60-987466d55e1c",
+    "target2_audio_id": "0b5df5b7-1971-4658-921d-cb4b2fd7ba7a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to learn",
+    "target_text": "hatukulitumaini kujifunza",
+    "known_audio_id": "7719ec35-c74e-418c-89c9-699ac79d36e7",
+    "target1_audio_id": "8bfa6986-b98f-442f-b118-65db8d07ae33",
+    "target2_audio_id": "b5f5ff04-2060-45a4-b8a8-52dca01ffc33"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to start",
+    "target_text": "hatukulitumaini kuanza",
+    "known_audio_id": "65bd1288-21e6-4b81-9bab-2997c4ce64dc",
+    "target1_audio_id": "cc2f5b03-acb4-4508-9e91-f4a4fa60b46c",
+    "target2_audio_id": "9015cc1d-2490-4daf-ae66-7d317d0451a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "hatukulitumaini",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "0c1b81b3-ba87-4fa1-b935-6e76ad79ddd0",
+    "target2_audio_id": "e238c5e4-96fa-4fbe-8bcf-8ef6589ef113"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "e8aa87ba-2a6e-49fd-80ce-9d824a83d715",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "hatukulitumaini",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "0c1b81b3-ba87-4fa1-b935-6e76ad79ddd0",
+    "target2_audio_id": "e238c5e4-96fa-4fbe-8bcf-8ef6589ef113",
+    "presentation_audio_id": "43020c01-ea50-4d14-ab05-7449557b93b2"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Hatukulitumaini kuamka usiku wa manane.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "19f51709-81d3-4410-8bc7-8fb11191e628",
+    "target2_audio_id": "d3058e3a-2269-4677-8538-50e6c5a2c1ad"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

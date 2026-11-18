@@ -1,0 +1,152 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Hatukutarajia kuamka usiku wa manane."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Hatukulitumaini kuamka usiku wa manane."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "hatukutarajia",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we did not",
+      "target": "hatuku"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "hatukulitumaini"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "hatukutarajia",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "hatukulitumaini"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "hatukutarajia kuanza",
+    "known_text": "we didn't expect to start"
+   },
+   "expect": {
+    "known_text": "we didn't hope to start",
+    "target_text": "hatukulitumaini kuanza"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "hatukutarajia kujifunza",
+    "known_text": "we didn't expect to learn"
+   },
+   "expect": {
+    "known_text": "we didn't hope to learn",
+    "target_text": "hatukulitumaini kujifunza"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "hatukutarajia kujifunza sana",
+    "known_text": "we didn't expect to learn so much"
+   },
+   "expect": {
+    "known_text": "we didn't hope to learn so much",
+    "target_text": "hatukulitumaini kujifunza sana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "hatukutarajia kupata jibu",
+    "known_text": "we didn't expect to find the answer"
+   },
+   "expect": {
+    "known_text": "we didn't hope to find the answer",
+    "target_text": "hatukulitumaini kupata jibu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "hatukutarajia kuelewa hii",
+    "known_text": "we didn't expect to understand this"
+   },
+   "expect": {
+    "known_text": "we didn't hope to understand this",
+    "target_text": "hatukulitumaini kuelewa hii"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "hatukutarajia kuona hivyo",
+    "known_text": "we didn't expect to see that"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see that",
+    "target_text": "hatukulitumaini kuona hivyo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "kuamka usiku wa manane"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "hatukutarajia kuamka usiku wa manane",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "hatukulitumaini kuamka usiku wa manane"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "swa_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we need to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we need to wake in the middle of the night",
+    "target_text": "tunahitaji kuamka usiku wa manane"
+   }
+  }
+ ]
+}

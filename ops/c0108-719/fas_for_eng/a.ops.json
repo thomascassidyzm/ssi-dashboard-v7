@@ -1,0 +1,249 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "انتظار نداشتیم وسط شب بیدار شیم.",
+    "target_text_roman": "entezâr nadâshtim vasat-e shab bidâr shim."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "امیدوار نبودیم وسط شب بیدار شیم."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "انتظار نداشتیم",
+    "known_text": "we didn't expect",
+    "target_text_roman": "entezâr nadâshtim",
+    "type": "M",
+    "components": [
+     {
+      "known": "expectation",
+      "target": "انتظار"
+     },
+     {
+      "known": "we didn't have",
+      "target": "نداشتیم"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we weren't",
+    "target_text": "نبودیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "انتظار نداشتیم امتحان کنیم",
+    "target_text_roman": "entezâr nadâshtim emtehân konim",
+    "known_text": "we didn't expect to try"
+   },
+   "expect": {
+    "known_text": "ready we weren't",
+    "target_text": "آماده نبودیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "انتظار نداشتیم سخت کار کنیم",
+    "target_text_roman": "entezâr nadâshtim sakht kâr konim",
+    "known_text": "we didn't expect to work hard"
+   },
+   "expect": {
+    "known_text": "sure we weren't",
+    "target_text": "مطمئن نبودیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "انتظار نداشتیم آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim âmâde bâshim",
+    "known_text": "we didn't expect to be ready"
+   },
+   "expect": {
+    "known_text": "we weren't ready for this",
+    "target_text": "آماده نبودیم برای این"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "انتظار نداشتیم مطمئن باشیم",
+    "target_text_roman": "entezâr nadâshtim motma'en bâshim",
+    "known_text": "we didn't expect to be sure"
+   },
+   "expect": {
+    "known_text": "we weren't sure what to do",
+    "target_text": "مطمئن نبودیم چیکار کنیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "انتظار نداشتیم برای این آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim barâ-ye in âmâde bâshim",
+    "known_text": "we didn't expect to be ready for this"
+   },
+   "expect": {
+    "known_text": "we weren't hopeful about what we were doing",
+    "target_text": "امیدوار نبودیم به چیزی که داریم انجام می‌دیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "انتظار نداشتیم مطمئن باشیم چیکار کنیم",
+    "target_text_roman": "entezâr nadâshtim motma'en bâshim chikâr konim",
+    "known_text": "we didn't expect to be sure what to do"
+   },
+   "expect": {
+    "known_text": "we weren't ready to try",
+    "target_text": "آماده نبودیم امتحان کنیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U05",
+   "set": {
+    "target_text": "انتظار نداشتیم امیدوار باشیم",
+    "target_text_roman": "entezâr nadâshtim omidvâr bâshim",
+    "known_text": "we didn't expect to be hopeful"
+   },
+   "expect": {
+    "known_text": "we weren't sure if we should work hard",
+    "target_text": "مطمئن نبودیم باید سخت کار کنیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "انتظار نداشتیم وسط آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim vasat âmâde bâshim",
+    "known_text": "we didn't expect to be ready in the middle"
+   },
+   "expect": {
+    "known_text": "we weren't ready in the middle",
+    "target_text": "آماده نبودیم وسط"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L02U02",
+   "set": {
+    "target_text": "انتظار نداشتیم وسط باشیم",
+    "target_text_roman": "entezâr nadâshtim vasat bâshim",
+    "known_text": "we didn't expect to be in the middle"
+   },
+   "expect": {
+    "known_text": "we weren't sure we were in the middle",
+    "target_text": "مطمئن نبودیم وسط بودیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L02U04",
+   "set": {
+    "target_text": "انتظار نداشتیم وسط کار کنیم",
+    "target_text_roman": "entezâr nadâshtim vasat kâr konim",
+    "known_text": "we didn't expect to work in the middle"
+   },
+   "expect": {
+    "known_text": "we weren't sure what we were doing in the middle",
+    "target_text": "مطمئن نبودیم چیکار وسط داریم انجام می‌دیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "انتظار نداشتیم اون شب آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim un shab âmâde bâshim",
+    "known_text": "we didn't expect to be ready that night"
+   },
+   "expect": {
+    "known_text": "we weren't ready that night",
+    "target_text": "آماده نبودیم اون شب"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L03U02",
+   "set": {
+    "target_text": "انتظار نداشتیم شب کار کنیم",
+    "target_text_roman": "entezâr nadâshtim shab kâr konim",
+    "known_text": "we didn't expect to work at night"
+   },
+   "expect": {
+    "known_text": "we weren't sure about this night",
+    "target_text": "مطمئن نبودیم از این شب"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L03U05",
+   "set": {
+    "target_text": "انتظار نداشتیم وسط شب سخت کار کنیم",
+    "target_text_roman": "entezâr nadâshtim vasat-e shab sakht kâr konim",
+    "known_text": "we didn't expect to work hard in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we weren't sure what we were doing in the middle of the night",
+    "target_text": "مطمئن نبودیم چیکار وسط شب داریم انجام می‌دیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L04U02",
+   "set": {
+    "target_text": "انتظار نداشتیم شب بیدار شیم",
+    "target_text_roman": "entezâr nadâshtim shab bidâr shim",
+    "known_text": "we didn't expect to wake up at night"
+   },
+   "expect": {
+    "known_text": "we weren't ready to wake up at night",
+    "target_text": "آماده نبودیم شب بیدار شیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L04U01",
+   "set": {
+    "target_text": "انتظار نداشتیم وسط شب بیدار شیم",
+    "target_text_roman": "entezâr nadâshtim vasat-e shab bidâr shim",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "امیدوار نبودیم وسط شب بیدار شیم"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L04U03",
+   "set": {
+    "target_text": "انتظار نداشتیم آماده بیدار شیم",
+    "target_text_roman": "entezâr nadâshtim âmâde bidâr shim",
+    "known_text": "we didn't expect to wake up ready"
+   },
+   "expect": {
+    "known_text": "we hoped to wake up ready",
+    "target_text": "امیدوار بودیم آماده بیدار شیم"
+   }
+  }
+ ]
+}

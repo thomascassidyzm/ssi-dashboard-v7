@@ -1,0 +1,869 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "13e745b2-e3da-4670-8bb8-913b2f9ab863",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "امیدوار نبودیم وسط شب بیدار شیم.",
+    "target_text_roman": "omidvâr nabudim vasat-e shab bidâr shim.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "2388996a-549e-4f47-8fda-5743de399cbc",
+    "target2_audio_id": "d596ad02-b682-4800-b3e0-f5839ead8462"
+   },
+   "after": {
+    "id": "13e745b2-e3da-4670-8bb8-913b2f9ab863",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "انتظار نداشتیم وسط شب بیدار شیم.",
+    "target_text_roman": "entezâr nadâshtim vasat-e shab bidâr shim.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "a2f029bd-beb9-4200-870d-1a9fcf9abfa7",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "نبودیم",
+    "known_text": "we weren't",
+    "target_text_roman": "nabudim",
+    "type": "A",
+    "components": null,
+    "known_audio_id": "e921eb44-f05c-4f3c-bfa0-2582be06ec35",
+    "target1_audio_id": "d91a514a-0161-456a-a1d7-cd9618f5f5cb",
+    "target2_audio_id": "b6c80cf4-5135-44b1-8502-0edb40165fd1",
+    "presentation_audio_id": "ac1ae623-066e-45da-b04c-00966dc7dfa8"
+   },
+   "after": {
+    "id": "a2f029bd-beb9-4200-870d-1a9fcf9abfa7",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "انتظار نداشتیم",
+    "known_text": "we didn't expect",
+    "target_text_roman": "entezâr nadâshtim",
+    "type": "M",
+    "components": [
+     {
+      "known": "expectation",
+      "target": "انتظار"
+     },
+     {
+      "known": "we didn't have",
+      "target": "نداشتیم"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "آماده نبودیم",
+    "target_text_roman": "âmâde nabudim",
+    "known_text": "ready we weren't",
+    "known_audio_id": "5d0b0879-5506-447e-8293-42aef6fb910c",
+    "target1_audio_id": "193cbda1-d066-47ff-835e-f21fcdc4450b",
+    "target2_audio_id": "9353c5b0-0238-40fe-a873-5f181569528d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم امتحان کنیم",
+    "target_text_roman": "entezâr nadâshtim emtehân konim",
+    "known_text": "we didn't expect to try",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "مطمئن نبودیم",
+    "target_text_roman": "motma'en nabudim",
+    "known_text": "sure we weren't",
+    "known_audio_id": "4b0e31a0-3421-4941-9a78-f27c4697c337",
+    "target1_audio_id": "7dde5a63-dea3-462b-8014-28ec25579ab9",
+    "target2_audio_id": "52d6cb52-b1a7-4f3c-97ea-0c14f565e72d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم سخت کار کنیم",
+    "target_text_roman": "entezâr nadâshtim sakht kâr konim",
+    "known_text": "we didn't expect to work hard",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "آماده نبودیم برای این",
+    "target_text_roman": "âmâde nabudim barâ-ye in",
+    "known_text": "we weren't ready for this",
+    "known_audio_id": "29a5565e-8bb5-4690-bf37-ffa50f4c8d98",
+    "target1_audio_id": "01d2c22f-7023-4b21-b017-e25329ffff43",
+    "target2_audio_id": "1b107711-8ae0-4c8d-ad3b-eaca8ea24a90",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim âmâde bâshim",
+    "known_text": "we didn't expect to be ready",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "مطمئن نبودیم چیکار کنیم",
+    "target_text_roman": "motma'en nabudim chikâr konim",
+    "known_text": "we weren't sure what to do",
+    "known_audio_id": "19c27a0d-feca-47aa-a17d-34c7c05a153c",
+    "target1_audio_id": "0d52ea0f-08e8-43b6-b0fd-f5c47b208593",
+    "target2_audio_id": "db9e6674-641c-4f55-94a6-25bea3ee5601",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم مطمئن باشیم",
+    "target_text_roman": "entezâr nadâshtim motma'en bâshim",
+    "known_text": "we didn't expect to be sure",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "امیدوار نبودیم به چیزی که داریم انجام می‌دیم",
+    "target_text_roman": "omidvâr nabudim be chizi ke dârim anjâm mi-dim",
+    "known_text": "we weren't hopeful about what we were doing",
+    "known_audio_id": "60e1e842-bfff-423a-95d4-e9746d78c461",
+    "target1_audio_id": "845c6000-fb69-447b-8327-2ab2976d0b56",
+    "target2_audio_id": "c9a73df6-8998-4006-a301-f28942b21aee",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم برای این آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim barâ-ye in âmâde bâshim",
+    "known_text": "we didn't expect to be ready for this",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "آماده نبودیم امتحان کنیم",
+    "target_text_roman": "âmâde nabudim emtehân konim",
+    "known_text": "we weren't ready to try",
+    "known_audio_id": "77c3c980-eafa-4852-8e31-b6dbbbda9e0b",
+    "target1_audio_id": "4cdc3934-5ea2-4417-b042-cd0a916a5b92",
+    "target2_audio_id": "901b40ba-e537-439b-b95e-6295da7b3dcd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم مطمئن باشیم چیکار کنیم",
+    "target_text_roman": "entezâr nadâshtim motma'en bâshim chikâr konim",
+    "known_text": "we didn't expect to be sure what to do",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "مطمئن نبودیم باید سخت کار کنیم",
+    "target_text_roman": "motma'en nabudim bâyad sakht kâr konim",
+    "known_text": "we weren't sure if we should work hard",
+    "known_audio_id": "0d2cfc6b-6672-4a88-9218-242788d0b5f3",
+    "target1_audio_id": "abac46d4-35d4-4846-a148-9dc769fc2584",
+    "target2_audio_id": "16e1926d-6fcc-4417-8247-ba19c8cdaf2c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم امیدوار باشیم",
+    "target_text_roman": "entezâr nadâshtim omidvâr bâshim",
+    "known_text": "we didn't expect to be hopeful",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "آماده نبودیم وسط",
+    "target_text_roman": "âmâde nabudim vasat",
+    "known_text": "we weren't ready in the middle",
+    "known_audio_id": "c1def72c-44f3-4264-b46f-ac5c8a9b23fa",
+    "target1_audio_id": "d3b2195b-f66c-4b49-afed-b91e549b8133",
+    "target2_audio_id": "f7cde8b1-9a68-4b76-a81d-7e96eab374fd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم وسط آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim vasat âmâde bâshim",
+    "known_text": "we didn't expect to be ready in the middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "مطمئن نبودیم وسط بودیم",
+    "target_text_roman": "motma'en nabudim vasat budim",
+    "known_text": "we weren't sure we were in the middle",
+    "known_audio_id": "e76176d0-01aa-4fa0-8b59-e6c1d2c414f6",
+    "target1_audio_id": "89e189b6-35d8-4f2c-9cb8-2fa1f7393357",
+    "target2_audio_id": "39035440-ee1f-4e6e-b489-0b2368a763c5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم وسط باشیم",
+    "target_text_roman": "entezâr nadâshtim vasat bâshim",
+    "known_text": "we didn't expect to be in the middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "مطمئن نبودیم چیکار وسط داریم انجام می‌دیم",
+    "target_text_roman": "motma'en nabudim chikâr vasat dârim anjâm midim",
+    "known_text": "we weren't sure what we were doing in the middle",
+    "known_audio_id": "fb797a28-aa68-41cf-8f59-2a685387ab77",
+    "target1_audio_id": "ef4d7c6f-6f3d-4e15-b85e-db652b0e7aac",
+    "target2_audio_id": "03b5ea2d-54ec-423f-881f-5b88b6b50246",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم وسط کار کنیم",
+    "target_text_roman": "entezâr nadâshtim vasat kâr konim",
+    "known_text": "we didn't expect to work in the middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "آماده نبودیم اون شب",
+    "target_text_roman": "âmâde nabudim un shab",
+    "known_text": "we weren't ready that night",
+    "known_audio_id": "1a64cc19-5eb8-4b0c-8b61-05d5e8e867c0",
+    "target1_audio_id": "237b9951-b13d-4342-b5d9-cb57f98791d8",
+    "target2_audio_id": "6935ad07-1197-4207-8173-1b890c223e5a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم اون شب آماده باشیم",
+    "target_text_roman": "entezâr nadâshtim un shab âmâde bâshim",
+    "known_text": "we didn't expect to be ready that night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "مطمئن نبودیم از این شب",
+    "target_text_roman": "motma'en nabudim az in shab",
+    "known_text": "we weren't sure about this night",
+    "known_audio_id": "b02753c1-3adf-4019-b09d-4da4aba923e6",
+    "target1_audio_id": "d68bab2c-5279-448f-a214-24b33016d291",
+    "target2_audio_id": "5936ba48-81a8-4f69-9997-bd2d51c00e27",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم شب کار کنیم",
+    "target_text_roman": "entezâr nadâshtim shab kâr konim",
+    "known_text": "we didn't expect to work at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "مطمئن نبودیم چیکار وسط شب داریم انجام می‌دیم",
+    "target_text_roman": "motma'en nabudim chikâr vasat-e shab dârim anjâm midim",
+    "known_text": "we weren't sure what we were doing in the middle of the night",
+    "known_audio_id": "c3e6d413-4cf8-41e5-a732-f99aa1ba5f68",
+    "target1_audio_id": "b80eea52-1456-45a6-a055-ab1ebd21f2c7",
+    "target2_audio_id": "2a66667a-8f1e-44a4-ab45-2802200240b1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم وسط شب سخت کار کنیم",
+    "target_text_roman": "entezâr nadâshtim vasat-e shab sakht kâr konim",
+    "known_text": "we didn't expect to work hard in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L04U02"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L04U02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "آماده نبودیم شب بیدار شیم",
+    "target_text_roman": "âmâde nabudim shab bidâr shim",
+    "known_text": "we weren't ready to wake up at night",
+    "known_audio_id": "4e18195b-c749-4675-aa7e-9f3c7c866413",
+    "target1_audio_id": "b139a2d7-1771-4883-8408-5be35d807904",
+    "target2_audio_id": "b6ab1193-a117-4cac-a975-3d8c9198f78d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L04U02",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم شب بیدار شیم",
+    "target_text_roman": "entezâr nadâshtim shab bidâr shim",
+    "known_text": "we didn't expect to wake up at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L04U01"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L04U01",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "امیدوار نبودیم وسط شب بیدار شیم",
+    "target_text_roman": "omidvâr nabudim vasat-e shab bidâr shim",
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "2388996a-549e-4f47-8fda-5743de399cbc",
+    "target2_audio_id": "d596ad02-b682-4800-b3e0-f5839ead8462",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L04U01",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم وسط شب بیدار شیم",
+    "target_text_roman": "entezâr nadâshtim vasat-e shab bidâr shim",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fas_for_eng",
+    "id": "fas_for_eng:S0108L04U03"
+   },
+   "before": {
+    "id": "fas_for_eng:S0108L04U03",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "امیدوار بودیم آماده بیدار شیم",
+    "target_text_roman": "omidvâr budim âmâde bidâr shim",
+    "known_text": "we hoped to wake up ready",
+    "known_audio_id": "2f33af9e-c8c1-4643-85dd-3e7af7a49822",
+    "target1_audio_id": "ccfb65ba-3c46-4438-b56a-44ac774f9b01",
+    "target2_audio_id": "3d1021aa-f802-4ae5-8d36-7bd984bb90a7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fas_for_eng:S0108L04U03",
+    "seed_number": 108,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "انتظار نداشتیم آماده بیدار شیم",
+    "target_text_roman": "entezâr nadâshtim âmâde bidâr shim",
+    "known_text": "we didn't expect to wake up ready",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L04U03",
+   "set": {
+    "known_text": "we hoped to wake up ready",
+    "target_text": "امیدوار بودیم آماده بیدار شیم",
+    "known_audio_id": "2f33af9e-c8c1-4643-85dd-3e7af7a49822",
+    "target1_audio_id": "ccfb65ba-3c46-4438-b56a-44ac774f9b01",
+    "target2_audio_id": "3d1021aa-f802-4ae5-8d36-7bd984bb90a7",
+    "target_text_roman": "omidvâr budim âmâde bidâr shim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L04U01",
+   "set": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "امیدوار نبودیم وسط شب بیدار شیم",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "2388996a-549e-4f47-8fda-5743de399cbc",
+    "target2_audio_id": "d596ad02-b682-4800-b3e0-f5839ead8462",
+    "target_text_roman": "omidvâr nabudim vasat-e shab bidâr shim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L04U02",
+   "set": {
+    "known_text": "we weren't ready to wake up at night",
+    "target_text": "آماده نبودیم شب بیدار شیم",
+    "known_audio_id": "4e18195b-c749-4675-aa7e-9f3c7c866413",
+    "target1_audio_id": "b139a2d7-1771-4883-8408-5be35d807904",
+    "target2_audio_id": "b6ab1193-a117-4cac-a975-3d8c9198f78d",
+    "target_text_roman": "âmâde nabudim shab bidâr shim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "we weren't sure what we were doing in the middle of the night",
+    "target_text": "مطمئن نبودیم چیکار وسط شب داریم انجام می‌دیم",
+    "known_audio_id": "c3e6d413-4cf8-41e5-a732-f99aa1ba5f68",
+    "target1_audio_id": "b80eea52-1456-45a6-a055-ab1ebd21f2c7",
+    "target2_audio_id": "2a66667a-8f1e-44a4-ab45-2802200240b1",
+    "target_text_roman": "motma'en nabudim chikâr vasat-e shab dârim anjâm midim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we weren't sure about this night",
+    "target_text": "مطمئن نبودیم از این شب",
+    "known_audio_id": "b02753c1-3adf-4019-b09d-4da4aba923e6",
+    "target1_audio_id": "d68bab2c-5279-448f-a214-24b33016d291",
+    "target2_audio_id": "5936ba48-81a8-4f69-9997-bd2d51c00e27",
+    "target_text_roman": "motma'en nabudim az in shab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we weren't ready that night",
+    "target_text": "آماده نبودیم اون شب",
+    "known_audio_id": "1a64cc19-5eb8-4b0c-8b61-05d5e8e867c0",
+    "target1_audio_id": "237b9951-b13d-4342-b5d9-cb57f98791d8",
+    "target2_audio_id": "6935ad07-1197-4207-8173-1b890c223e5a",
+    "target_text_roman": "âmâde nabudim un shab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we weren't sure what we were doing in the middle",
+    "target_text": "مطمئن نبودیم چیکار وسط داریم انجام می‌دیم",
+    "known_audio_id": "fb797a28-aa68-41cf-8f59-2a685387ab77",
+    "target1_audio_id": "ef4d7c6f-6f3d-4e15-b85e-db652b0e7aac",
+    "target2_audio_id": "03b5ea2d-54ec-423f-881f-5b88b6b50246",
+    "target_text_roman": "motma'en nabudim chikâr vasat dârim anjâm midim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "we weren't sure we were in the middle",
+    "target_text": "مطمئن نبودیم وسط بودیم",
+    "known_audio_id": "e76176d0-01aa-4fa0-8b59-e6c1d2c414f6",
+    "target1_audio_id": "89e189b6-35d8-4f2c-9cb8-2fa1f7393357",
+    "target2_audio_id": "39035440-ee1f-4e6e-b489-0b2368a763c5",
+    "target_text_roman": "motma'en nabudim vasat budim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we weren't ready in the middle",
+    "target_text": "آماده نبودیم وسط",
+    "known_audio_id": "c1def72c-44f3-4264-b46f-ac5c8a9b23fa",
+    "target1_audio_id": "d3b2195b-f66c-4b49-afed-b91e549b8133",
+    "target2_audio_id": "f7cde8b1-9a68-4b76-a81d-7e96eab374fd",
+    "target_text_roman": "âmâde nabudim vasat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we weren't sure if we should work hard",
+    "target_text": "مطمئن نبودیم باید سخت کار کنیم",
+    "known_audio_id": "0d2cfc6b-6672-4a88-9218-242788d0b5f3",
+    "target1_audio_id": "abac46d4-35d4-4846-a148-9dc769fc2584",
+    "target2_audio_id": "16e1926d-6fcc-4417-8247-ba19c8cdaf2c",
+    "target_text_roman": "motma'en nabudim bâyad sakht kâr konim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we weren't ready to try",
+    "target_text": "آماده نبودیم امتحان کنیم",
+    "known_audio_id": "77c3c980-eafa-4852-8e31-b6dbbbda9e0b",
+    "target1_audio_id": "4cdc3934-5ea2-4417-b042-cd0a916a5b92",
+    "target2_audio_id": "901b40ba-e537-439b-b95e-6295da7b3dcd",
+    "target_text_roman": "âmâde nabudim emtehân konim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we weren't hopeful about what we were doing",
+    "target_text": "امیدوار نبودیم به چیزی که داریم انجام می‌دیم",
+    "known_audio_id": "60e1e842-bfff-423a-95d4-e9746d78c461",
+    "target1_audio_id": "845c6000-fb69-447b-8327-2ab2976d0b56",
+    "target2_audio_id": "c9a73df6-8998-4006-a301-f28942b21aee",
+    "target_text_roman": "omidvâr nabudim be chizi ke dârim anjâm mi-dim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we weren't sure what to do",
+    "target_text": "مطمئن نبودیم چیکار کنیم",
+    "known_audio_id": "19c27a0d-feca-47aa-a17d-34c7c05a153c",
+    "target1_audio_id": "0d52ea0f-08e8-43b6-b0fd-f5c47b208593",
+    "target2_audio_id": "db9e6674-641c-4f55-94a6-25bea3ee5601",
+    "target_text_roman": "motma'en nabudim chikâr konim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we weren't ready for this",
+    "target_text": "آماده نبودیم برای این",
+    "known_audio_id": "29a5565e-8bb5-4690-bf37-ffa50f4c8d98",
+    "target1_audio_id": "01d2c22f-7023-4b21-b017-e25329ffff43",
+    "target2_audio_id": "1b107711-8ae0-4c8d-ad3b-eaca8ea24a90",
+    "target_text_roman": "âmâde nabudim barâ-ye in"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "sure we weren't",
+    "target_text": "مطمئن نبودیم",
+    "known_audio_id": "4b0e31a0-3421-4941-9a78-f27c4697c337",
+    "target1_audio_id": "7dde5a63-dea3-462b-8014-28ec25579ab9",
+    "target2_audio_id": "52d6cb52-b1a7-4f3c-97ea-0c14f565e72d",
+    "target_text_roman": "motma'en nabudim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "ready we weren't",
+    "target_text": "آماده نبودیم",
+    "known_audio_id": "5d0b0879-5506-447e-8293-42aef6fb910c",
+    "target1_audio_id": "193cbda1-d066-47ff-835e-f21fcdc4450b",
+    "target2_audio_id": "9353c5b0-0238-40fe-a873-5f181569528d",
+    "target_text_roman": "âmâde nabudim"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "a2f029bd-beb9-4200-870d-1a9fcf9abfa7",
+   "set": {
+    "type": "A",
+    "known_text": "we weren't",
+    "target_text": "نبودیم",
+    "components": null,
+    "known_audio_id": "e921eb44-f05c-4f3c-bfa0-2582be06ec35",
+    "target1_audio_id": "d91a514a-0161-456a-a1d7-cd9618f5f5cb",
+    "target2_audio_id": "b6c80cf4-5135-44b1-8502-0edb40165fd1",
+    "presentation_audio_id": "ac1ae623-066e-45da-b04c-00966dc7dfa8",
+    "target_text_roman": "nabudim"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "امیدوار نبودیم وسط شب بیدار شیم.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "2388996a-549e-4f47-8fda-5743de399cbc",
+    "target2_audio_id": "d596ad02-b682-4800-b3e0-f5839ead8462",
+    "target_text_roman": "omidvâr nabudim vasat-e shab bidâr shim."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
