@@ -34,7 +34,7 @@ for (const f of fs.readdirSync(SNAP).filter(f => f.endsWith('.json'))) {
 for (const c of COURSES) knownLib[c] ||= new Set();
 const paidEn = new Set(); const per = {}; const tot = { cartesia: 0, azure: 0 };
 for (const c of COURSES) {
-  const files = ['plan', 'probe'].map(b => path.join(L.ITEM_DIR, c, 'batches', `${b}.ops.json`)).filter(f => fs.existsSync(f));
+  const files = ['plan'].map(b => path.join(L.ITEM_DIR, c, 'batches', `${b}.ops.json`)).filter(f => fs.existsSync(f)); // plan.ops.json already carries the hand-written #718 probe seeds
   const s = per[c] = { rows: 0, en_free: 0, en_new: 0, known_free: 0, known_new: 0, cartesia: 0, azure: 0 };
   const seenK = new Set();
   for (const f of files) for (const o of JSON.parse(fs.readFileSync(f, 'utf8')).ops) {
