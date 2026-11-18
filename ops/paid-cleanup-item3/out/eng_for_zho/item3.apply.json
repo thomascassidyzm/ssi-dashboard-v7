@@ -1,0 +1,1036 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "f7407af6-d3ce-4a97-be5c-7e4d0be0357b",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0028L03U03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0028L03U03",
+    "seed_number": 28,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "是有用的尽快开始说话",
+    "target_text": "It's useful to start talking as soon as you can",
+    "known_audio_id": "b0274c2e-0a03-40e0-bf82-b0d430d9ca91",
+    "target1_audio_id": "26c8a5b7-8d5b-4323-a29f-e1b4a309f62a",
+    "target2_audio_id": "eae8c71a-4296-48f9-8b3a-3af3d64716f3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0028L03U03",
+    "seed_number": 28,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "尽快开始说话是有用的",
+    "target_text": "It's useful to start talking as soon as you can",
+    "known_audio_id": "21c80cc8-f0f8-4b69-9a16-fe9a6ffbb3e2",
+    "target1_audio_id": "26c8a5b7-8d5b-4323-a29f-e1b4a309f62a",
+    "target2_audio_id": "eae8c71a-4296-48f9-8b3a-3af3d64716f3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0044L01U06"
+   },
+   "before": {
+    "id": "eng_for_zho:S0044L01U06",
+    "seed_number": 44,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想现在开始或者晚一点",
+    "target_text": "Do you want to start now or later on?",
+    "known_audio_id": "bca3f96f-1c41-41e0-aa4e-6d6a8de66ce3",
+    "target1_audio_id": "d42345bc-2a6d-43ba-9a89-b2c1c33a7159",
+    "target2_audio_id": "936f718e-ccb1-4f31-a07a-3ca394823bc9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0044L01U06",
+    "seed_number": 44,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想现在开始还是晚一点开始？",
+    "target_text": "Do you want to start now or later on?",
+    "known_audio_id": null,
+    "target1_audio_id": "d42345bc-2a6d-43ba-9a89-b2c1c33a7159",
+    "target2_audio_id": "936f718e-ccb1-4f31-a07a-3ca394823bc9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0052L01U05"
+   },
+   "before": {
+    "id": "eng_for_zho:S0052L01U05",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想写吗或者你想说一些东西",
+    "target_text": "Do you want to write or do you want to say something?",
+    "known_audio_id": "af828b26-0875-4802-b621-2777f6f3daef",
+    "target1_audio_id": "7ff7f243-0eab-4c29-a2f5-e3abf12569ed",
+    "target2_audio_id": "03d98483-bb6b-471c-9554-bd3f2e32a309",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0052L01U05",
+    "seed_number": 52,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你想写，还是想说一些东西？",
+    "target_text": "Do you want to write or do you want to say something?",
+    "known_audio_id": null,
+    "target1_audio_id": "7ff7f243-0eab-4c29-a2f5-e3abf12569ed",
+    "target2_audio_id": "03d98483-bb6b-471c-9554-bd3f2e32a309",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0064L02B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0064L02B04",
+    "seed_number": 64,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "学起来不容易但很有趣",
+    "target_text": "Isn't easy but it is fun to try",
+    "known_audio_id": "83de53c4-1809-418b-929a-38eb8c135124",
+    "target1_audio_id": "f8ba4a83-f92d-41aa-b2fe-6c8798652c40",
+    "target2_audio_id": "c0b3c664-3039-4447-93d4-0e7e0e8d274d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0064L02B04",
+    "seed_number": 64,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "不容易，但是试一试很有趣",
+    "target_text": "Isn't easy but it is fun to try",
+    "known_audio_id": null,
+    "target1_audio_id": "f8ba4a83-f92d-41aa-b2fe-6c8798652c40",
+    "target2_audio_id": "c0b3c664-3039-4447-93d4-0e7e0e8d274d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0066L01U01"
+   },
+   "before": {
+    "id": "eng_for_zho:S0066L01U01",
+    "seed_number": 66,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "同时做所有事情很难",
+    "target_text": "It's not difficult to speak a little English",
+    "known_audio_id": "adb7c1ad-51fa-43d7-973e-764912738d4a",
+    "target1_audio_id": "47b131f5-82e7-4ac7-8322-4e43bfeebe41",
+    "target2_audio_id": "060ebb82-b914-4f2c-a6e6-0f752b45c3f8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0066L01U01",
+    "seed_number": 66,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "说一点英语不难",
+    "target_text": "It's not difficult to speak a little English",
+    "known_audio_id": null,
+    "target1_audio_id": "47b131f5-82e7-4ac7-8322-4e43bfeebe41",
+    "target2_audio_id": "060ebb82-b914-4f2c-a6e6-0f752b45c3f8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0066L02B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0066L02B04",
+    "seed_number": 66,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "今天找到答案不难",
+    "target_text": "Not difficult to find the answer quickly",
+    "known_audio_id": "d43893ee-53ff-47c3-be29-124616337fae",
+    "target1_audio_id": "e517244f-d963-46f9-8a75-3afd33a9ee4b",
+    "target2_audio_id": "b045d9b3-3971-4627-b146-a3a8a0cd087f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0066L02B04",
+    "seed_number": 66,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "很快找到答案不难",
+    "target_text": "Not difficult to find the answer quickly",
+    "known_audio_id": null,
+    "target1_audio_id": "e517244f-d963-46f9-8a75-3afd33a9ee4b",
+    "target2_audio_id": "b045d9b3-3971-4627-b146-a3a8a0cd087f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0067L01U02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0067L01U02",
+    "seed_number": 67,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么现在想停下来",
+    "target_text": "Why do you want to stop learning English?",
+    "known_audio_id": "f0b614c3-c9c0-45b4-8282-6177ab145516",
+    "target1_audio_id": "d8963a1e-08ac-47b5-94ee-634bba63e058",
+    "target2_audio_id": "b2d7f83d-e10e-45aa-a700-847f47899ba3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0067L01U02",
+    "seed_number": 67,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想停止学英语？",
+    "target_text": "Why do you want to stop learning English?",
+    "known_audio_id": null,
+    "target1_audio_id": "d8963a1e-08ac-47b5-94ee-634bba63e058",
+    "target2_audio_id": "b2d7f83d-e10e-45aa-a700-847f47899ba3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0067L01U03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0067L01U03",
+    "seed_number": 67,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想停止学习",
+    "target_text": "Why do you want to stop speaking with me?",
+    "known_audio_id": "686ce66b-7fdd-42f9-b3c0-f8344757464e",
+    "target1_audio_id": "675c9553-595f-4cde-b8ae-c428b4b9b082",
+    "target2_audio_id": "4f4c0997-771a-4b69-8469-09ee166b812a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0067L01U03",
+    "seed_number": 67,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你为什么想停止和我说话？",
+    "target_text": "Why do you want to stop speaking with me?",
+    "known_audio_id": null,
+    "target1_audio_id": "675c9553-595f-4cde-b8ae-c428b4b9b082",
+    "target2_audio_id": "4f4c0997-771a-4b69-8469-09ee166b812a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0068L01U01"
+   },
+   "before": {
+    "id": "eng_for_zho:S0068L01U01",
+    "seed_number": 68,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我在找有趣的事情做",
+    "target_text": "I'm looking for something",
+    "known_audio_id": "0563e453-27a9-4930-b066-c97d570b266e",
+    "target1_audio_id": "cb52573b-3c65-4f85-a50c-9aea81580eac",
+    "target2_audio_id": "006cd215-fa10-4582-ad68-47a311547cd3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0068L01U01",
+    "seed_number": 68,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我在找一些东西",
+    "target_text": "I'm looking for something",
+    "known_audio_id": null,
+    "target1_audio_id": "cb52573b-3c65-4f85-a50c-9aea81580eac",
+    "target2_audio_id": "006cd215-fa10-4582-ad68-47a311547cd3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0069L01U01"
+   },
+   "before": {
+    "id": "eng_for_zho:S0069L01U01",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我不确定我是否想照顾你",
+    "target_text": "She wants to look after you",
+    "known_audio_id": "57bdadc4-4302-4da5-929c-e7716bf5a241",
+    "target1_audio_id": "742906e5-ed12-48fa-95e6-6fcbeba1721d",
+    "target2_audio_id": "f2e7a660-364e-474c-a832-570ce5555b4e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0069L01U01",
+    "seed_number": 69,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "她想照顾你",
+    "target_text": "She wants to look after you",
+    "known_audio_id": null,
+    "target1_audio_id": "742906e5-ed12-48fa-95e6-6fcbeba1721d",
+    "target2_audio_id": "f2e7a660-364e-474c-a832-570ce5555b4e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0069L02U03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0069L02U03",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "想整个下午都照看那只小狗",
+    "target_text": "I don't want to look after the young dog all afternoon",
+    "known_audio_id": "0a9a1495-f4ef-45d8-9878-9c4603b86c0c",
+    "target1_audio_id": "3d859a75-4253-417d-a303-7e3abf257879",
+    "target2_audio_id": "c7f6fe06-04c9-42d2-b2f9-61214664566f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0069L02U03",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我不要整个下午都照顾那只小狗",
+    "target_text": "I don't want to look after the young dog all afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": "3d859a75-4253-417d-a303-7e3abf257879",
+    "target2_audio_id": "c7f6fe06-04c9-42d2-b2f9-61214664566f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0069L02U04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0069L02U04",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "需要整个下午都照看那只小狗",
+    "target_text": "I didn't want to look after the young dog all afternoon",
+    "known_audio_id": "a594d3a4-ff9b-4049-a83c-2be46beab75e",
+    "target1_audio_id": "6da2c8a7-fb96-4275-8010-b69034fbae78",
+    "target2_audio_id": "3ceb774f-c350-4525-89e0-7a20f6f95fe7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0069L02U04",
+    "seed_number": 69,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我不想整个下午都照顾那只小狗",
+    "target_text": "I didn't want to look after the young dog all afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": "6da2c8a7-fb96-4275-8010-b69034fbae78",
+    "target2_audio_id": "3ceb774f-c350-4525-89e0-7a20f6f95fe7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0070L01U01"
+   },
+   "before": {
+    "id": "eng_for_zho:S0070L01U01",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我不确定我想告诉你什么",
+    "target_text": "I want to tell you something",
+    "known_audio_id": "d31862ba-9a87-4997-9263-47fddab84bf2",
+    "target1_audio_id": "32a8ed60-2964-48cb-a016-d4a52ba99f05",
+    "target2_audio_id": "2d09cbab-f035-4807-845e-3c13d09c4116",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0070L01U01",
+    "seed_number": 70,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想告诉你一些事",
+    "target_text": "I want to tell you something",
+    "known_audio_id": null,
+    "target1_audio_id": "32a8ed60-2964-48cb-a016-d4a52ba99f05",
+    "target2_audio_id": "2d09cbab-f035-4807-845e-3c13d09c4116",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0070L02B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0070L02B04",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "想告诉我它在哪里",
+    "target_text": "Need to tell me where it was",
+    "known_audio_id": "dcc3706d-eef0-491e-9a53-ae1fad53bb15",
+    "target1_audio_id": "0c651481-0546-4ddf-8523-8b017842bb9f",
+    "target2_audio_id": "ac00c18d-1622-4ece-895a-aee057586809",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0070L02B04",
+    "seed_number": 70,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "需要告诉我它在哪里",
+    "target_text": "Need to tell me where it was",
+    "known_audio_id": null,
+    "target1_audio_id": "0c651481-0546-4ddf-8523-8b017842bb9f",
+    "target2_audio_id": "ac00c18d-1622-4ece-895a-aee057586809",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0071L01U01"
+   },
+   "before": {
+    "id": "eng_for_zho:S0071L01U01",
+    "seed_number": 71,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我不确定我是否想听这个故事",
+    "target_text": "I want to hear the answer",
+    "known_audio_id": "e4770a2a-a635-4990-9a2f-8f41ef8f7e0f",
+    "target1_audio_id": "305d8b23-8350-4e7c-935f-e321ab519fcd",
+    "target2_audio_id": "00b5509c-f4ad-4175-b36b-dc9a45effc3f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0071L01U01",
+    "seed_number": 71,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "我想听答案",
+    "target_text": "I want to hear the answer",
+    "known_audio_id": null,
+    "target1_audio_id": "305d8b23-8350-4e7c-935f-e321ab519fcd",
+    "target2_audio_id": "00b5509c-f4ad-4175-b36b-dc9a45effc3f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0071L02U01"
+   },
+   "before": {
+    "id": "eng_for_zho:S0071L02U01",
+    "seed_number": 71,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "现在让任何人听到这个真相",
+    "target_text": "We didn't want to let anyone hear the truth",
+    "known_audio_id": "78f8be4f-091f-443d-ba20-92af9a899461",
+    "target1_audio_id": "13e84be5-8037-4ba5-b22c-b1ddb9a3c3e7",
+    "target2_audio_id": "c7d45a63-237c-4750-8b64-9a0dc69f9cca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0071L02U01",
+    "seed_number": 71,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我们不想让任何人听到真相",
+    "target_text": "We didn't want to let anyone hear the truth",
+    "known_audio_id": "97ceb58d-c620-495f-9c91-68b4c71b2410",
+    "target1_audio_id": "13e84be5-8037-4ba5-b22c-b1ddb9a3c3e7",
+    "target2_audio_id": "c7d45a63-237c-4750-8b64-9a0dc69f9cca",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0071L02U04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0071L02U04",
+    "seed_number": 71,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "想让任何人听到这个真相",
+    "target_text": "Do you want to let anyone hear the truth?",
+    "known_audio_id": "3674d90a-d0c2-4af4-ac31-1d82947d8874",
+    "target1_audio_id": "f98c4bb7-cfca-4fb0-a867-df73376d4289",
+    "target2_audio_id": "5e79ce58-fdad-4fb8-b237-6c7b16a05652",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0071L02U04",
+    "seed_number": 71,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你想让任何人听到真相吗？",
+    "target_text": "Do you want to let anyone hear the truth?",
+    "known_audio_id": null,
+    "target1_audio_id": "f98c4bb7-cfca-4fb0-a867-df73376d4289",
+    "target2_audio_id": "5e79ce58-fdad-4fb8-b237-6c7b16a05652",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0071L02U05"
+   },
+   "before": {
+    "id": "eng_for_zho:S0071L02U05",
+    "seed_number": 71,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "现在让任何人听到这个真相",
+    "target_text": "I'm not sure if we want to let anyone hear the truth",
+    "known_audio_id": "78f8be4f-091f-443d-ba20-92af9a899461",
+    "target1_audio_id": "a475eb35-3784-48cf-b5b1-9bd87df65faf",
+    "target2_audio_id": "cf86bf5f-5787-4407-8f8a-831d5fb19e01",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0071L02U05",
+    "seed_number": 71,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我不确定我们想不想让任何人听到真相",
+    "target_text": "I'm not sure if we want to let anyone hear the truth",
+    "known_audio_id": null,
+    "target1_audio_id": "a475eb35-3784-48cf-b5b1-9bd87df65faf",
+    "target2_audio_id": "cf86bf5f-5787-4407-8f8a-831d5fb19e01",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0072L01B04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0072L01B04",
+    "seed_number": 72,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你现在表现得很好",
+    "target_text": "You're doing very well with English",
+    "known_audio_id": "57b434e3-b188-4a33-bb20-24f8ad43085c",
+    "target1_audio_id": "28f5edba-b326-47b2-b5d6-49e31b7e257a",
+    "target2_audio_id": "a8c86d5d-19eb-4300-8823-ecb0b894f10e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0072L01B04",
+    "seed_number": 72,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你的英语做得很好",
+    "target_text": "You're doing very well with English",
+    "known_audio_id": null,
+    "target1_audio_id": "28f5edba-b326-47b2-b5d6-49e31b7e257a",
+    "target2_audio_id": "a8c86d5d-19eb-4300-8823-ecb0b894f10e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0073L02U02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0073L02U02",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我今天还有更多要学",
+    "target_text": "I know I've got more to learn",
+    "known_audio_id": "ad552c88-ccb8-4844-a2f4-4b55a430fb65",
+    "target1_audio_id": "382fbbfa-e8fc-493a-9315-67f77b1fe89f",
+    "target2_audio_id": "b1d6cfe2-e9c2-4c7d-aded-7dea21fd2357",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0073L02U02",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我知道我还有更多要学的",
+    "target_text": "I know I've got more to learn",
+    "known_audio_id": null,
+    "target1_audio_id": "382fbbfa-e8fc-493a-9315-67f77b1fe89f",
+    "target2_audio_id": "b1d6cfe2-e9c2-4c7d-aded-7dea21fd2357",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0073L02U03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0073L02U03",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "在明天之前我还有更多要学",
+    "target_text": "I've got more to learn and it's not easy",
+    "known_audio_id": "d63ea7a6-1074-4984-a585-e9d98ded5a83",
+    "target1_audio_id": "39e2be5f-49b0-40df-abc7-3dde832340e0",
+    "target2_audio_id": "f6fd09ca-ed5a-4ef3-b85f-8c588ef3fd89",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0073L02U03",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我还有更多要学的，而且不容易",
+    "target_text": "I've got more to learn and it's not easy",
+    "known_audio_id": null,
+    "target1_audio_id": "39e2be5f-49b0-40df-abc7-3dde832340e0",
+    "target2_audio_id": "f6fd09ca-ed5a-4ef3-b85f-8c588ef3fd89",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0073L02U04"
+   },
+   "before": {
+    "id": "eng_for_zho:S0073L02U04",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "下周我还有更多要学",
+    "target_text": "I've got more to learn and it's important",
+    "known_audio_id": "3d419b03-c84d-4d71-a522-5146070ec5c4",
+    "target1_audio_id": "36170593-8020-4a4b-a5b0-d5e6f752af36",
+    "target2_audio_id": "584b435e-8127-426c-a78b-a81895ad5885",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0073L02U04",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "我还有更多要学的，而且这很重要",
+    "target_text": "I've got more to learn and it's important",
+    "known_audio_id": null,
+    "target1_audio_id": "36170593-8020-4a4b-a5b0-d5e6f752af36",
+    "target2_audio_id": "584b435e-8127-426c-a78b-a81895ad5885",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0075L01U05"
+   },
+   "before": {
+    "id": "eng_for_zho:S0075L01U05",
+    "seed_number": 75,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你还有更多要学，还是已经准备好了",
+    "target_text": "Have you got more to learn or are you ready?",
+    "known_audio_id": "4bd64912-06cf-4fc8-91a1-7e61d988835b",
+    "target1_audio_id": "9f03263b-cb63-44db-ab57-c60ec73b7149",
+    "target2_audio_id": "9e956d46-008c-490f-ae78-4630a23b8ea9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0075L01U05",
+    "seed_number": 75,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "你还有更多要学的，还是准备好了？",
+    "target_text": "Have you got more to learn or are you ready?",
+    "known_audio_id": null,
+    "target1_audio_id": "9f03263b-cb63-44db-ab57-c60ec73b7149",
+    "target2_audio_id": "9e956d46-008c-490f-ae78-4630a23b8ea9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0150L02B02"
+   },
+   "before": {
+    "id": "eng_for_zho:S0150L02B02",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你的名字是什么现在",
+    "target_text": "What your name is now?",
+    "known_audio_id": "51469b13-318f-4c1a-8fa4-6c3c2fdf5f95",
+    "target1_audio_id": "496b1aca-412a-4215-b5df-5211d79698ed",
+    "target2_audio_id": "4a4924d6-02b7-493d-8cd7-b217213c7207",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0150L02B02",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你现在叫什么名字？",
+    "target_text": "What your name is now?",
+    "known_audio_id": null,
+    "target1_audio_id": "496b1aca-412a-4215-b5df-5211d79698ed",
+    "target2_audio_id": "4a4924d6-02b7-493d-8cd7-b217213c7207",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_zho",
+    "id": "eng_for_zho:S0150L02B03"
+   },
+   "before": {
+    "id": "eng_for_zho:S0150L02B03",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你叫什么名字在这里",
+    "target_text": "What your name is here?",
+    "known_audio_id": "f4b9f1d9-f43c-4539-882e-9e4ce9135d82",
+    "target1_audio_id": "4cb035dc-25c2-4ab2-8f71-f5664b991b31",
+    "target2_audio_id": "8f9608ec-6901-4721-84a9-d855bacdcce1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_zho:S0150L02B03",
+    "seed_number": 150,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "你在这里叫什么名字？",
+    "target_text": "What your name is here?",
+    "known_audio_id": null,
+    "target1_audio_id": "4cb035dc-25c2-4ab2-8f71-f5664b991b31",
+    "target2_audio_id": "8f9608ec-6901-4721-84a9-d855bacdcce1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B03",
+   "set": {
+    "known_text": "你叫什么名字在这里",
+    "known_audio_id": "f4b9f1d9-f43c-4539-882e-9e4ce9135d82"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B02",
+   "set": {
+    "known_text": "你的名字是什么现在",
+    "known_audio_id": "51469b13-318f-4c1a-8fa4-6c3c2fdf5f95"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0075L01U05",
+   "set": {
+    "known_text": "你还有更多要学，还是已经准备好了",
+    "known_audio_id": "4bd64912-06cf-4fc8-91a1-7e61d988835b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0073L02U04",
+   "set": {
+    "known_text": "下周我还有更多要学",
+    "known_audio_id": "3d419b03-c84d-4d71-a522-5146070ec5c4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0073L02U03",
+   "set": {
+    "known_text": "在明天之前我还有更多要学",
+    "known_audio_id": "d63ea7a6-1074-4984-a585-e9d98ded5a83"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0073L02U02",
+   "set": {
+    "known_text": "我今天还有更多要学",
+    "known_audio_id": "ad552c88-ccb8-4844-a2f4-4b55a430fb65"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0072L01B04",
+   "set": {
+    "known_text": "你现在表现得很好",
+    "known_audio_id": "57b434e3-b188-4a33-bb20-24f8ad43085c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0071L02U05",
+   "set": {
+    "known_text": "现在让任何人听到这个真相",
+    "known_audio_id": "78f8be4f-091f-443d-ba20-92af9a899461"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0071L02U04",
+   "set": {
+    "known_text": "想让任何人听到这个真相",
+    "known_audio_id": "3674d90a-d0c2-4af4-ac31-1d82947d8874"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0071L02U01",
+   "set": {
+    "known_text": "现在让任何人听到这个真相",
+    "known_audio_id": "78f8be4f-091f-443d-ba20-92af9a899461"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0071L01U01",
+   "set": {
+    "known_text": "我不确定我是否想听这个故事",
+    "known_audio_id": "e4770a2a-a635-4990-9a2f-8f41ef8f7e0f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0070L02B04",
+   "set": {
+    "known_text": "想告诉我它在哪里",
+    "known_audio_id": "dcc3706d-eef0-491e-9a53-ae1fad53bb15"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0070L01U01",
+   "set": {
+    "known_text": "我不确定我想告诉你什么",
+    "known_audio_id": "d31862ba-9a87-4997-9263-47fddab84bf2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0069L02U04",
+   "set": {
+    "known_text": "需要整个下午都照看那只小狗",
+    "known_audio_id": "a594d3a4-ff9b-4049-a83c-2be46beab75e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0069L02U03",
+   "set": {
+    "known_text": "想整个下午都照看那只小狗",
+    "known_audio_id": "0a9a1495-f4ef-45d8-9878-9c4603b86c0c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0069L01U01",
+   "set": {
+    "known_text": "我不确定我是否想照顾你",
+    "known_audio_id": "57bdadc4-4302-4da5-929c-e7716bf5a241"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0068L01U01",
+   "set": {
+    "known_text": "我在找有趣的事情做",
+    "known_audio_id": "0563e453-27a9-4930-b066-c97d570b266e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0067L01U03",
+   "set": {
+    "known_text": "你为什么想停止学习",
+    "known_audio_id": "686ce66b-7fdd-42f9-b3c0-f8344757464e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0067L01U02",
+   "set": {
+    "known_text": "你为什么现在想停下来",
+    "known_audio_id": "f0b614c3-c9c0-45b4-8282-6177ab145516"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0066L02B04",
+   "set": {
+    "known_text": "今天找到答案不难",
+    "known_audio_id": "d43893ee-53ff-47c3-be29-124616337fae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0066L01U01",
+   "set": {
+    "known_text": "同时做所有事情很难",
+    "known_audio_id": "adb7c1ad-51fa-43d7-973e-764912738d4a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0064L02B04",
+   "set": {
+    "known_text": "学起来不容易但很有趣",
+    "known_audio_id": "83de53c4-1809-418b-929a-38eb8c135124"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0052L01U05",
+   "set": {
+    "known_text": "你想写吗或者你想说一些东西",
+    "known_audio_id": "af828b26-0875-4802-b621-2777f6f3daef"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0044L01U06",
+   "set": {
+    "known_text": "你想现在开始或者晚一点",
+    "known_audio_id": "bca3f96f-1c41-41e0-aa4e-6d6a8de66ce3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0028L03U03",
+   "set": {
+    "known_text": "是有用的尽快开始说话",
+    "known_audio_id": "b0274c2e-0a03-40e0-bf82-b0d430d9ca91"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T13-16-16-049Z-f7407af6-d3ce-4a97-be5c-7e4d0be0357b.json"
+}
