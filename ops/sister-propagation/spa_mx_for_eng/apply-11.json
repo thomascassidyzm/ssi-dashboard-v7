@@ -1,0 +1,327 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "d2b6e097-5cd2-4ae2-804a-2183476e36c4",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 115
+   },
+   "before": {
+    "id": "675ea5e1-8096-4433-ac85-f41f926865a9",
+    "seed_number": 115,
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "known_audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d",
+    "target_text": "no siento como si estuviera listo para tener una conversación",
+    "target1_audio_id": "d49031f0-8eaa-4bdc-952c-fe3b23a7a048",
+    "target2_audio_id": "40981d4f-dae9-4e57-8d38-3039f21a24fc"
+   },
+   "after": {
+    "id": "675ea5e1-8096-4433-ac85-f41f926865a9",
+    "seed_number": 115,
+    "known_text": "I don't feel ready to have a conversation",
+    "known_audio_id": "8d2f2019-a7c8-4c58-a8fb-7d2924359c8a",
+    "target_text": "no me siento listo para tener una conversación",
+    "target1_audio_id": "e0b3c37e-8ce3-4df8-8c31-096f78956fa0",
+    "target2_audio_id": "23ba217e-9b56-44c4-8856-14b3d14a18be"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 139
+   },
+   "before": {
+    "id": "ebd7a879-6cc7-4991-b0f2-23bfb42084a9",
+    "seed_number": 139,
+    "known_text": "I'm sorry that I need to leave so early",
+    "known_audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+    "target_text": "lo siento que necesito irme tan temprano",
+    "target1_audio_id": "19752878-2f2b-4556-8578-b10a9cb5ac0c",
+    "target2_audio_id": "238ef2ea-e917-480b-b4df-b64453716f27"
+   },
+   "after": {
+    "id": "ebd7a879-6cc7-4991-b0f2-23bfb42084a9",
+    "seed_number": 139,
+    "known_text": "I'm sorry, but I need to leave so early",
+    "known_audio_id": "3cdf7bcf-390a-456b-a380-3335021f457d",
+    "target_text": "lo siento, pero necesito irme tan temprano",
+    "target1_audio_id": "0dea36a7-26ba-4ba4-b759-d488db532052",
+    "target2_audio_id": "f9d8d0cc-9f35-47b5-886d-e17147c57338"
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 140
+   },
+   "before": {
+    "id": "e535a89e-b5ef-4e37-b365-0564866e0f5b",
+    "seed_number": 140,
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "known_audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922",
+    "target_text": "lo siento que no puedo ver lo que intentas mostrarme",
+    "target1_audio_id": "3e8460be-5beb-491b-afa1-1c367f556951",
+    "target2_audio_id": "973e0e2c-3172-4c0c-80b4-39726e763022"
+   },
+   "after": {
+    "id": "e535a89e-b5ef-4e37-b365-0564866e0f5b",
+    "seed_number": 140,
+    "known_text": "I'm sorry, but I can't see what you're trying to show me",
+    "known_audio_id": "c8135bb1-116b-4ca8-829c-597a205f399b",
+    "target_text": "lo siento, pero no puedo ver lo que intentas mostrarme",
+    "target1_audio_id": "a2996a0b-afd0-4ae0-887c-a093a42760c0",
+    "target2_audio_id": "3ca1120b-cb1b-4694-ac0e-eda6a0cab1b9"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 138
+   },
+   "before": {
+    "id": "df7fc2e0-0808-4606-b2dd-2242fe1316dc",
+    "seed_number": 138,
+    "known_text": "this was where my friend wanted to meet us",
+    "known_audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5",
+    "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
+    "target1_audio_id": "f3e22ad6-2236-45f0-924e-ea91bc4101c1",
+    "target2_audio_id": "c743acc1-607a-4269-b081-5b36476b083f"
+   },
+   "after": {
+    "id": "df7fc2e0-0808-4606-b2dd-2242fe1316dc",
+    "seed_number": 138,
+    "known_text": "this is where my friend wanted to meet us",
+    "known_audio_id": "0951ad7a-f622-45b4-b75a-7a71834ad532",
+    "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
+    "target1_audio_id": "f3e22ad6-2236-45f0-924e-ea91bc4101c1",
+    "target2_audio_id": "c743acc1-607a-4269-b081-5b36476b083f"
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 419
+   },
+   "before": {
+    "id": "aa74c4c1-3619-4c04-9b23-0fe97332d7e3",
+    "seed_number": 419,
+    "known_text": "if they want people to like them",
+    "known_audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3",
+    "target_text": "si quieren que la gente les aprecie",
+    "target1_audio_id": "b4a63143-4609-4747-b09b-50d6d0bc8abf",
+    "target2_audio_id": "dc333165-dbf0-45ac-85cb-049be9745211"
+   },
+   "after": {
+    "id": "aa74c4c1-3619-4c04-9b23-0fe97332d7e3",
+    "seed_number": 419,
+    "known_text": "if they want people to appreciate them",
+    "known_audio_id": "af84b85c-8db7-4832-b614-21e9ecb194c7",
+    "target_text": "si quieren que la gente les aprecie",
+    "target1_audio_id": "b4a63143-4609-4747-b09b-50d6d0bc8abf",
+    "target2_audio_id": "dc333165-dbf0-45ac-85cb-049be9745211"
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "lego_id": "S0416L02"
+   },
+   "before": {
+    "id": "d8b467d4-1208-4098-b67c-3015b3f3844b",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": "S0416L02",
+    "known_text": "the way",
+    "known_audio_id": "648d5601-b65f-42b3-96c8-1757f3fc0001",
+    "target_text": "el camino",
+    "target1_audio_id": "3c75fbed-f80a-4d55-a472-687f0ff623b9",
+    "target2_audio_id": "292e4661-13f5-4b8d-b904-7efa01b4b401",
+    "presentation_audio_id": "37979f19-ddeb-4d6e-b35d-d7277dd6483b"
+   },
+   "after": {
+    "id": "d8b467d4-1208-4098-b67c-3015b3f3844b",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": "S0416L02",
+    "known_text": "the project",
+    "known_audio_id": "50b6afce-94e6-4f50-8c69-619463da8be6",
+    "target_text": "el proyecto",
+    "target1_audio_id": "23d70a1e-fbe9-4649-b35d-a5f55f3aee42",
+    "target2_audio_id": "2e13f198-c1d1-4069-84a9-8fb0473a0427",
+    "presentation_audio_id": "d8f1dd43-b7fe-4769-b9f9-64ca1bb286c5"
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "lego_id": "S0437L03"
+   },
+   "before": {
+    "id": "797a2554-59d5-4093-b806-c075f7a615a2",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": "S0437L03",
+    "target_text": "caridad",
+    "target1_audio_id": "4b379560-abbd-40ee-a0b9-dd228487c47b",
+    "target2_audio_id": "aa00c296-a637-421d-89d0-81a204ad7359",
+    "known_text": "charity",
+    "known_audio_id": "78b8b25d-e9e1-4cdc-b444-2518fd606f94",
+    "presentation_audio_id": "f33446c9-ae52-4d46-a07f-8b75bb9c9fdb"
+   },
+   "after": {
+    "id": "797a2554-59d5-4093-b806-c075f7a615a2",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": "S0437L03",
+    "target_text": "una causa benéfica",
+    "target1_audio_id": "d9cf9520-99f9-4d94-9855-10dbced6861d",
+    "target2_audio_id": "7948fdfe-bbba-456e-ab34-26b89dd827fd",
+    "known_text": "charity",
+    "known_audio_id": "78b8b25d-e9e1-4cdc-b444-2518fd606f94",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "lego_id": "S0567L02"
+   },
+   "before": {
+    "id": "000242d3-b446-4c64-80ed-bdc893e9653f",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": "S0567L02",
+    "target_text": "encantador",
+    "target1_audio_id": "dee6de54-973a-4cf1-811f-a3e9e8de69ca",
+    "target2_audio_id": "a921c77e-fba2-4b6c-ba94-552d5e00ce0e",
+    "known_text": "lovely",
+    "known_audio_id": "fde1b72f-fed1-4c37-8dc3-f434d722bd31",
+    "presentation_audio_id": "cd03e38b-6dff-4e48-95de-b15ffbff6e1a"
+   },
+   "after": {
+    "id": "000242d3-b446-4c64-80ed-bdc893e9653f",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": "S0567L02",
+    "target_text": "lindo",
+    "target1_audio_id": "d8895f8a-6fa7-45bb-ad71-fb64a8056553",
+    "target2_audio_id": "db91dec4-7e4d-4f26-ba09-4f8927b535ba",
+    "known_text": "lovely",
+    "known_audio_id": "fde1b72f-fed1-4c37-8dc3-f434d722bd31",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "000242d3-b446-4c64-80ed-bdc893e9653f",
+   "set": {
+    "target_text": "encantador",
+    "target1_audio_id": "dee6de54-973a-4cf1-811f-a3e9e8de69ca",
+    "target2_audio_id": "a921c77e-fba2-4b6c-ba94-552d5e00ce0e",
+    "presentation_audio_id": "cd03e38b-6dff-4e48-95de-b15ffbff6e1a"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "797a2554-59d5-4093-b806-c075f7a615a2",
+   "set": {
+    "target_text": "caridad",
+    "target1_audio_id": "4b379560-abbd-40ee-a0b9-dd228487c47b",
+    "target2_audio_id": "aa00c296-a637-421d-89d0-81a204ad7359",
+    "presentation_audio_id": "f33446c9-ae52-4d46-a07f-8b75bb9c9fdb"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "d8b467d4-1208-4098-b67c-3015b3f3844b",
+   "set": {
+    "known_text": "the way",
+    "target_text": "el camino",
+    "known_audio_id": "648d5601-b65f-42b3-96c8-1757f3fc0001",
+    "target1_audio_id": "3c75fbed-f80a-4d55-a472-687f0ff623b9",
+    "target2_audio_id": "292e4661-13f5-4b8d-b904-7efa01b4b401",
+    "presentation_audio_id": "37979f19-ddeb-4d6e-b35d-d7277dd6483b"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 419,
+   "set": {
+    "known_text": "if they want people to like them",
+    "known_audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 138,
+   "set": {
+    "known_text": "this was where my friend wanted to meet us",
+    "known_audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 140,
+   "set": {
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "target_text": "lo siento que no puedo ver lo que intentas mostrarme",
+    "known_audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922",
+    "target1_audio_id": "3e8460be-5beb-491b-afa1-1c367f556951",
+    "target2_audio_id": "973e0e2c-3172-4c0c-80b4-39726e763022"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 139,
+   "set": {
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "lo siento que necesito irme tan temprano",
+    "known_audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+    "target1_audio_id": "19752878-2f2b-4556-8578-b10a9cb5ac0c",
+    "target2_audio_id": "238ef2ea-e917-480b-b4df-b64453716f27"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 115,
+   "set": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "no siento como si estuviera listo para tener una conversación",
+    "known_audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d",
+    "target1_audio_id": "d49031f0-8eaa-4bdc-952c-fe3b23a7a048",
+    "target2_audio_id": "40981d4f-dae9-4e57-8d38-3039f21a24fc"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T12-33-02-476Z-d2b6e097-5cd2-4ae2-804a-2183476e36c4.json"
+}

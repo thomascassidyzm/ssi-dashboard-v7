@@ -1,0 +1,361 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02U02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02U02",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's important to lead the way",
+    "known_audio_id": "cb69bb94-ea54-4ca4-a1b7-ab34fe88fe73",
+    "target_text": "es importante liderar el camino",
+    "target1_audio_id": "4b5b17fe-e0fd-45de-81d4-409903f9b5c8",
+    "target2_audio_id": "0bd97e8d-0736-47d0-95d8-583b740d0630",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02U02",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's important to lead the project",
+    "known_audio_id": "7c62734e-c3a7-486d-983a-f9756606f672",
+    "target_text": "es importante liderar el proyecto",
+    "target1_audio_id": "d3e34769-052d-4613-a5b4-d3f8e0303e2e",
+    "target2_audio_id": "7c0ccc46-f4d0-40fe-8326-898549605399",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02U03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02U03",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they don't want to lead the way now",
+    "known_audio_id": "5842cea6-c17c-458a-804f-0de985eb8b53",
+    "target_text": "no quieren liderar el camino ahora",
+    "target1_audio_id": "4222bd5a-4cc2-45de-b3b8-a43bade2f7d6",
+    "target2_audio_id": "c6138c2a-4e33-4042-9eda-4c4f9c8d6e29",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02U03",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they don't want to lead the project now",
+    "known_audio_id": "ba9762b8-e74e-4041-9636-c7e0f35736f2",
+    "target_text": "no quieren liderar el proyecto ahora",
+    "target1_audio_id": "eaf8ddcf-85af-408f-8db5-038d6377e1d5",
+    "target2_audio_id": "3b1adfbd-0f73-4995-8f30-84f4172821ab",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02U04",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it would be better to lead the way",
+    "known_audio_id": "097c735c-7e62-40e2-9fda-9fab2806c6c4",
+    "target_text": "sería mejor liderar el camino",
+    "target1_audio_id": "73ec4af2-e479-4165-a1f6-a8bcbfc1d360",
+    "target2_audio_id": "389f6b29-5e80-4790-9f75-22738a9fc09e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02U04",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it would be better to lead the project",
+    "known_audio_id": "be266c4b-da6e-4ceb-b6a4-ee8083c6d2e8",
+    "target_text": "sería mejor liderar el proyecto",
+    "target1_audio_id": "a8fbc511-70ea-447b-9b7d-c1176f4f7cb7",
+    "target2_audio_id": "1e9868b4-05f3-41a5-be08-50bb22c5d719",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02U05",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we could lead the way",
+    "known_audio_id": "d2a70d49-9a0e-4134-ad28-83ba98d10057",
+    "target_text": "podríamos liderar el camino",
+    "target1_audio_id": "00bff650-6f5c-40c2-b34a-fbbdb247e002",
+    "target2_audio_id": "b54af252-1bf9-4fd8-8671-9e507b683a2b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02U05",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we could lead the project",
+    "known_audio_id": "b2b0147e-edbb-4f9c-80a0-8bb9eb735560",
+    "target_text": "podríamos liderar el proyecto",
+    "target1_audio_id": "396f5ef6-fbac-4b82-b74c-096f1803ed5e",
+    "target2_audio_id": "27b36ffd-42fa-47ba-95f7-e088738a57bf",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02U06"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02U06",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they want to lead the way next year",
+    "known_audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512",
+    "target_text": "quieren liderar el camino el año que viene",
+    "target1_audio_id": "2169c8a6-1b53-4503-88b1-3b452d154e77",
+    "target2_audio_id": "9ec11f34-ded3-4759-8cf1-d7dd79c72cd8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02U06",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they want to lead the project next year",
+    "known_audio_id": "4f701a37-3b49-4c00-b23f-d3d0dfbe8e20",
+    "target_text": "quieren liderar el proyecto el año que viene",
+    "target1_audio_id": "bad2eb10-40fb-430d-a30f-a4c629c65f11",
+    "target2_audio_id": "1778d46c-95c1-4124-9e38-9adcbec082d9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0416L02U07"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0416L02U07",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we should ask the way",
+    "known_audio_id": "b9231c0f-340a-4fb6-b5ab-dcac47ca1a8b",
+    "target_text": "deberíamos preguntar el camino",
+    "target1_audio_id": "924677fc-56aa-4ade-8753-b7a9f9913c25",
+    "target2_audio_id": "d267c25a-4575-43af-931b-db947b48c0aa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0416L02U07",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we should ask about the project",
+    "known_audio_id": "75fa0769-a247-494d-b768-21d5b51af78f",
+    "target_text": "deberíamos preguntar por el proyecto",
+    "target1_audio_id": "eff9314f-e188-48c9-824e-f524fb82f151",
+    "target2_audio_id": "bccdb539-638c-4b62-b50c-7d955f421ae6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03B01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03B01",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "caridad",
+    "target1_audio_id": "4b379560-abbd-40ee-a0b9-dd228487c47b",
+    "target2_audio_id": "aa00c296-a637-421d-89d0-81a204ad7359",
+    "known_text": "charity",
+    "known_audio_id": "78b8b25d-e9e1-4cdc-b444-2518fd606f94",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03B01",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "una causa benéfica",
+    "target1_audio_id": "d9cf9520-99f9-4d94-9855-10dbced6861d",
+    "target2_audio_id": "7948fdfe-bbba-456e-ab34-26b89dd827fd",
+    "known_text": "charity",
+    "known_audio_id": "78b8b25d-e9e1-4cdc-b444-2518fd606f94",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03B02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03B02",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "para caridad",
+    "target1_audio_id": "c8199dd0-1f27-4d96-819c-09adf547cdad",
+    "target2_audio_id": "3f207c57-378c-43ed-8784-acae5bee3a59",
+    "known_text": "for charity",
+    "known_audio_id": "b4108f2f-afdc-412b-a81d-c979d6b26f5c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03B02",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "para una causa benéfica",
+    "target1_audio_id": "7b242545-c8a6-45a6-a1ae-188b7d2dc128",
+    "target2_audio_id": "429ef073-c142-45b6-90e1-a43ff4a03878",
+    "known_text": "for charity",
+    "known_audio_id": "b4108f2f-afdc-412b-a81d-c979d6b26f5c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03B02",
+   "set": {
+    "target_text": "para caridad",
+    "target1_audio_id": "c8199dd0-1f27-4d96-819c-09adf547cdad",
+    "target2_audio_id": "3f207c57-378c-43ed-8784-acae5bee3a59"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03B01",
+   "set": {
+    "target_text": "caridad",
+    "target1_audio_id": "4b379560-abbd-40ee-a0b9-dd228487c47b",
+    "target2_audio_id": "aa00c296-a637-421d-89d0-81a204ad7359"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U07",
+   "set": {
+    "known_text": "we should ask the way",
+    "target_text": "deberíamos preguntar el camino",
+    "known_audio_id": "b9231c0f-340a-4fb6-b5ab-dcac47ca1a8b",
+    "target1_audio_id": "924677fc-56aa-4ade-8753-b7a9f9913c25",
+    "target2_audio_id": "d267c25a-4575-43af-931b-db947b48c0aa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U06",
+   "set": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "quieren liderar el camino el año que viene",
+    "known_audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512",
+    "target1_audio_id": "2169c8a6-1b53-4503-88b1-3b452d154e77",
+    "target2_audio_id": "9ec11f34-ded3-4759-8cf1-d7dd79c72cd8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U05",
+   "set": {
+    "known_text": "we could lead the way",
+    "target_text": "podríamos liderar el camino",
+    "known_audio_id": "d2a70d49-9a0e-4134-ad28-83ba98d10057",
+    "target1_audio_id": "00bff650-6f5c-40c2-b34a-fbbdb247e002",
+    "target2_audio_id": "b54af252-1bf9-4fd8-8671-9e507b683a2b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U04",
+   "set": {
+    "known_text": "it would be better to lead the way",
+    "target_text": "sería mejor liderar el camino",
+    "known_audio_id": "097c735c-7e62-40e2-9fda-9fab2806c6c4",
+    "target1_audio_id": "73ec4af2-e479-4165-a1f6-a8bcbfc1d360",
+    "target2_audio_id": "389f6b29-5e80-4790-9f75-22738a9fc09e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U03",
+   "set": {
+    "known_text": "they don't want to lead the way now",
+    "target_text": "no quieren liderar el camino ahora",
+    "known_audio_id": "5842cea6-c17c-458a-804f-0de985eb8b53",
+    "target1_audio_id": "4222bd5a-4cc2-45de-b3b8-a43bade2f7d6",
+    "target2_audio_id": "c6138c2a-4e33-4042-9eda-4c4f9c8d6e29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U02",
+   "set": {
+    "known_text": "it's important to lead the way",
+    "target_text": "es importante liderar el camino",
+    "known_audio_id": "cb69bb94-ea54-4ca4-a1b7-ab34fe88fe73",
+    "target1_audio_id": "4b5b17fe-e0fd-45de-81d4-409903f9b5c8",
+    "target2_audio_id": "0bd97e8d-0736-47d0-95d8-583b740d0630"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

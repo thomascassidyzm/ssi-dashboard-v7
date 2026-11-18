@@ -1,0 +1,90 @@
+{
+ "event_id": "b6538d98-2ca2-4334-8685-63a266ffd3a2",
+ "undo_ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 567,
+   "set": {
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar",
+    "target1_audio_id": "3f398972-6382-4c54-8598-4aad12d19a38",
+    "target2_audio_id": "3785496d-1088-4c4a-9223-d4554ae8c8b0"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 437,
+   "set": {
+    "target_text": "querían recaudar lo máximo posible para caridad",
+    "target1_audio_id": "2a144404-83c8-49a6-b726-2a6f097c383f",
+    "target2_audio_id": "f65df45d-b1df-4991-a08e-9b1416039b00"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 416,
+   "set": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "quieren liderar el camino el año que viene",
+    "known_audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512",
+    "target1_audio_id": "2169c8a6-1b53-4503-88b1-3b452d154e77",
+    "target2_audio_id": "9ec11f34-ded3-4759-8cf1-d7dd79c72cd8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 414,
+   "set": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿Podríamos tener una botella de vino tinto, por favor?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "b6c825d0-fcec-480d-a74d-785893e0492b",
+    "target2_audio_id": "ef037846-4e84-47f3-b116-9107d5b8dbd8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 55,
+   "set": {
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "no disfruto despertarme cuando no dormí muy bien",
+    "known_audio_id": "0dbeb505-4b9a-4838-820d-5a632f007676",
+    "target1_audio_id": "9fd25c70-8f22-45a5-aa46-32c98ce93495",
+    "target2_audio_id": "5b81f993-1f92-453d-bd56-b4a26ce20fbf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0402L01U04",
+   "set": {
+    "known_text": "we don't want to stop somewhere now",
+    "target_text": "no queremos parar en algún sitio ahora",
+    "known_audio_id": "8d365eb6-1f2c-4bf1-8914-da02af03b3a3",
+    "target1_audio_id": "049f5dc8-df41-4ee1-b709-2c4606cf7b47",
+    "target2_audio_id": "18999991-d727-462f-9b2e-84ac81d0873c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0668L02U04",
+   "set": {
+    "known_text": "I hope they can go here",
+    "target_text": "espero que puedan ir aquí",
+    "known_audio_id": "c0e0f32f-ee0a-4b2a-ba1f-962679dbb448",
+    "target1_audio_id": "520e6a43-e3ab-480a-b597-21e523b18ea3",
+    "target2_audio_id": "324dc4c3-0916-40bd-815c-7bdba6f2e18a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0292L02U01",
+   "set": {
+    "known_text": "she told me about the party",
+    "target_text": "me dijo de la fiesta",
+    "known_audio_id": "56934ace-0d83-4e1e-b253-9777d44d3e66",
+    "target1_audio_id": "02faa76a-f07f-4b90-82ed-7e94dd19aa46",
+    "target2_audio_id": "1637d432-5b2c-4a8b-a71d-b0c591b996dc"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T12-32-47-253Z-b6538d98-2ca2-4334-8685-63a266ffd3a2.json"
+}

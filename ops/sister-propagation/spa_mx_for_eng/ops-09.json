@@ -1,0 +1,120 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0147L03U08",
+   "expect": {
+    "known_text": "I'm nervous but of course I'm going to try",
+    "target_text": "estoy nervioso pero claro que voy a intentar"
+   },
+   "set": {
+    "target_text": "estoy nervioso pero claro que voy a intentarlo",
+    "target1_audio_id": "5df75d73-e1fe-42d3-ae18-c002d62fe11e",
+    "target2_audio_id": "dad3b4eb-74e5-4d9f-ab69-2997c3e601e2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0058L04U02",
+   "expect": {
+    "known_text": "I need enough words to practise speaking Spanish",
+    "target_text": "necesito suficientes palabras para practicar hablar español"
+   },
+   "set": {
+    "known_text": "I need enough words to practise Spanish",
+    "known_audio_id": "1d251476-b1ae-4d66-a754-26ea94f8dfca",
+    "target_text": "necesito suficientes palabras para practicar español",
+    "target1_audio_id": "0bf45299-8993-4392-9785-aec8f04fd78f",
+    "target2_audio_id": "135ebf33-cf57-4872-93d5-015004b4b139"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0060L02U04",
+   "expect": {
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "target_text": "necesito practicar decir palabras diferentes cuando hablo español"
+   },
+   "set": {
+    "target_text": "necesito practicar cómo decir palabras diferentes cuando hablo español",
+    "target1_audio_id": "c773bb49-1089-4711-a88d-7862c35b4d21",
+    "target2_audio_id": "dd1e6105-5366-4154-afc1-d180c56e8931"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0090L03U05",
+   "expect": {
+    "known_text": "it would be good if you can help me",
+    "target_text": "sería bueno si puedes ayudarme"
+   },
+   "set": {
+    "known_text": "it would be good to practise more",
+    "known_audio_id": "52aeda3e-34e4-49ae-8fe7-d8ecacadc455",
+    "target_text": "sería bueno practicar más",
+    "target1_audio_id": "dd64d763-1cb4-4072-b8b9-71cf4680df84",
+    "target2_audio_id": "85a43dd2-c9be-4a33-b4f5-e552fb08089c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0090L04U02",
+   "expect": {
+    "known_text": "it would be great if you can speak more slowly",
+    "target_text": "sería genial si puedes hablar más despacio"
+   },
+   "set": {
+    "known_text": "it would be great to speak more slowly",
+    "known_audio_id": "785a2d8e-16dd-41fc-afff-7315492f971d",
+    "target_text": "sería genial hablar más despacio",
+    "target1_audio_id": "03def109-31db-4044-a117-0ee8862adee0",
+    "target2_audio_id": "eeb564d1-42f8-4050-aae6-170b2909f512"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0281L01U04",
+   "expect": {
+    "known_text": "when I finish I want to leave",
+    "target_text": "cuando termino quiero irme"
+   },
+   "set": {
+    "known_text": "if I finish, I want to leave",
+    "known_audio_id": "f166181b-8ce5-44ed-918b-c855a7155e9c",
+    "target_text": "si termino, quiero irme",
+    "target1_audio_id": "80f77747-71cc-4998-8b16-bd2c800ccb44",
+    "target2_audio_id": "4de972bf-d946-44ce-a896-645beb8b3929"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0277L01B03",
+   "expect": {
+    "known_text": "he told me about the meeting",
+    "target_text": "me dijo de la reunión"
+   },
+   "set": {
+    "known_text": "he told me something about the important meeting",
+    "known_audio_id": "36801122-fd50-4e05-b047-9a733db27849",
+    "target_text": "me dijo algo de la reunión importante",
+    "target1_audio_id": "a389655f-aadd-4f48-a8e8-88720edac330",
+    "target2_audio_id": "db786664-8f3a-419e-8af4-813538f8625e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0286L02U01",
+   "expect": {
+    "known_text": "she told them about the meeting",
+    "target_text": "les dijo de la reunión"
+   },
+   "set": {
+    "known_text": "she told them something about the meeting",
+    "known_audio_id": "195dc338-3144-4351-82a1-63fe10a197a9",
+    "target_text": "les dijo algo de la reunión",
+    "target1_audio_id": "3bf719ee-ea51-4e58-a9e0-65460cd31ec8",
+    "target2_audio_id": "ae5b2d58-fb45-4bda-ae0f-06082271bfa0"
+   }
+  }
+ ]
+}
