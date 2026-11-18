@@ -56,6 +56,7 @@ class Course:
                 self.L[l['id']] = l
         self.order = sorted(self.L.values(), key=lambda l: (l['seed'], l['idx']))
         self.out, self.rec, self.problems, self.notes = [], [], [], []
+        self.knock = []
         self.vocab_cache = {}
         self.planned_new = {}   # key -> lego id of a NEW piece this plan itself appends (so a later equal piece is not-new)
         self.next_idx = {}
@@ -200,6 +201,8 @@ class Course:
                 self.problems.append(f'{lid}: new piece {nid} "{t}" basket {dict(cnt)} (needs 3 build + 5 use)')
             nb = nu = 0
             for pos, (role, kx, tx, moved) in enumerate(newrows, 1):
+                if not moved and any(key(q['known'], q['target']) == key(kx, tx) for x in s['legos'] for q in x['phrases'] if q['type'] in ('build', 'use')):
+                    self.notes.append(f'{lid}: new row for {nid} repeats a row already in this seed: {tx}')
                 if key(kx, tx) == key(k, t):
                     self.problems.append(f'{lid}: bare-LEGO row for {nid} does not count as a build/use (builder rule): {tx}')
                 if not has(tx, t):
@@ -225,7 +228,23 @@ class Course:
         # P26: the seed sentence still sits in a played basket of this LEGO if it did before
         self.out.append(d)
 
+    def notnew(self, lid, pair_of, why=''):
+        """knock-on (L31 / L17): a LATER LEGO that the cut turns into an exact pair of the newly cut piece. It is introduced once
+        (at the earlier seed), so this one goes not-new; a not-new LEGO's basket is never played (P25), so its rows go."""
+        l = self.L.get(lid)
+        if not l:
+            self.problems.append(f'{lid}: not in dump'); return
+        if l['seed'] not in self.live:
+            self.problems.append(f'{lid}: seed not re-read live')
+        rows = {p['id'][len(self.course) + 9:]: 'del' for p in l['phrases'] if p['type'] in ('build', 'use')}
+        self.knock.append({'id': lid, 'known': l['known'], 'target': l['target'], 'pair_of': pair_of, 'rows_deleted': len(rows)})
+        self.out.append({'id': lid, 'verdict': 'recut', 'is_new': False, 'basket': rows,
+                         'why': f'Knock-on of the cut at {pair_of}: this LEGO is now word for word the piece taught there ("{l["target"]}" = "{l["known"]}"). '
+                                'A pair is introduced once; the later copy becomes not-new, and a not-new LEGO has no played basket, so its '
+                                f'{len(rows)} rows are removed (the piece keeps its full basket at {pair_of}). ' + why})
+
     def done(self):
+        json.dump(self.knock, open(os.path.join(ROOT, 'recount', f'{self.course}.knock.json'), 'w'), ensure_ascii=False, indent=1)
         json.dump({'course': self.course, 'legos': self.out}, open(os.path.join(ROOT, 'decisions', f'{self.course}.json'), 'w'), ensure_ascii=False, indent=1)
         json.dump(self.rec, open(os.path.join(ROOT, 'recount', f'{self.course}.json'), 'w'), ensure_ascii=False, indent=1)
         v = collections.Counter(r['verdict'] for r in self.rec)
