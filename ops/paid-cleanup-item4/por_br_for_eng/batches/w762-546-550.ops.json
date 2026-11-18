@@ -1,0 +1,825 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0546L01B04",
+    "seed_number": 546,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "the dog is with me",
+    "target_text": "o cachorro está comigo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0546L02B04",
+    "seed_number": 546,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "dirty and wet again",
+    "target_text": "sujo e molhado outra vez",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0547L01B04",
+    "seed_number": 547,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "because he has been with me",
+    "target_text": "porque esteve comigo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0547L02B04",
+    "seed_number": 547,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "the dog is playing in the mud",
+    "target_text": "o cachorro está brincando na lama",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0548L01B04",
+    "seed_number": 548,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I am feeling nervous today",
+    "target_text": "estou me sentindo nervoso hoje",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0548L02B04",
+    "seed_number": 548,
+    "lego_index": 2,
+    "position": 16,
+    "known_text": "I am feeling very sad",
+    "target_text": "estou me sentindo muito triste",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0549L01B04",
+    "seed_number": 549,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "because I have got to wake up early",
+    "target_text": "porque tenho que acordar cedo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 8,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0550L02B04",
+    "seed_number": 550,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "the people of the village",
+    "target_text": "as pessoas da aldeia",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L01B02",
+   "expect": {
+    "known_text": "the dog is here",
+    "target_text": "o cachorro está aqui"
+   },
+   "set": {
+    "known_text": "the dog is tired",
+    "target_text": "o cachorro está cansado",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L01B03",
+   "expect": {
+    "known_text": "yes, the dog is",
+    "target_text": "sim, o cachorro está"
+   },
+   "set": {
+    "known_text": "the dog is outside",
+    "target_text": "o cachorro está lá fora",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L01U01",
+   "expect": {
+    "known_text": "she said the dog is",
+    "target_text": "ela disse que o cachorro está"
+   },
+   "set": {
+    "known_text": "she said the dog is tired",
+    "target_text": "ela disse que o cachorro está cansado",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L01U02",
+   "expect": {
+    "known_text": "we know the dog is",
+    "target_text": "sabemos que o cachorro está"
+   },
+   "set": {
+    "known_text": "the dog is in the garden",
+    "target_text": "o cachorro está no jardim",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L01U03",
+   "expect": {
+    "known_text": "they said the dog is",
+    "target_text": "disseram que o cachorro está"
+   },
+   "set": {
+    "known_text": "I think the dog is ready",
+    "target_text": "acho que o cachorro está pronto",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L01U04",
+   "expect": {
+    "known_text": "I'm sure the dog is",
+    "target_text": "tenho certeza de que o cachorro está"
+   },
+   "set": {
+    "known_text": "I'm sure the dog is outside",
+    "target_text": "tenho certeza de que o cachorro está lá fora",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L01U05",
+   "expect": {
+    "known_text": "I think the dog is",
+    "target_text": "acho que o cachorro está"
+   },
+   "set": {
+    "known_text": "the dog is very tired today",
+    "target_text": "o cachorro está muito cansado hoje",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0546L02B03",
+   "expect": {
+    "known_text": "yes, dirty and wet",
+    "target_text": "sim, sujo e molhado"
+   },
+   "set": {
+    "known_text": "I'm dirty and wet",
+    "target_text": "estou sujo e molhado",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L01B02",
+   "expect": {
+    "known_text": "because he has already been",
+    "target_text": "porque já esteve"
+   },
+   "set": {
+    "known_text": "because he has been here",
+    "target_text": "porque esteve aqui",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L01B03",
+   "expect": {
+    "known_text": "yes, because he has been",
+    "target_text": "sim, porque esteve"
+   },
+   "set": {
+    "known_text": "because he has been outside",
+    "target_text": "porque esteve lá fora",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L01U01",
+   "expect": {
+    "known_text": "she said, because he has been",
+    "target_text": "ela disse, porque esteve"
+   },
+   "set": {
+    "known_text": "he's tired because he has been in the garden",
+    "target_text": "ele está cansado porque esteve no jardim",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L01U02",
+   "expect": {
+    "known_text": "we know, because he has been",
+    "target_text": "sabemos, porque esteve"
+   },
+   "set": {
+    "known_text": "the dog is dirty because he has been outside",
+    "target_text": "o cachorro está sujo porque esteve lá fora",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L01U03",
+   "expect": {
+    "known_text": "I'm sure, because he has been",
+    "target_text": "tenho certeza, porque esteve"
+   },
+   "set": {
+    "known_text": "he's happy because he has been with me",
+    "target_text": "ele está contente porque esteve comigo",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L01U04",
+   "expect": {
+    "known_text": "they said, because he has been",
+    "target_text": "disseram, porque esteve"
+   },
+   "set": {
+    "known_text": "the dog is wet because he has been in the garden",
+    "target_text": "o cachorro está molhado porque esteve no jardim",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L01U05",
+   "expect": {
+    "known_text": "I think, because he has been",
+    "target_text": "acho que, porque esteve"
+   },
+   "set": {
+    "known_text": "he's very tired because he has been at the office",
+    "target_text": "ele está muito cansado porque esteve no escritório",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L02B03",
+   "expect": {
+    "known_text": "yes, playing in the mud",
+    "target_text": "sim, brincando na lama"
+   },
+   "set": {
+    "known_text": "the children are playing in the mud",
+    "target_text": "as crianças estão brincando na lama",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L02U02",
+   "expect": {
+    "known_text": "she said, because he has been playing in the mud",
+    "target_text": "ela disse, porque esteve brincando na lama"
+   },
+   "set": {
+    "known_text": "he's dirty because he has been playing in the mud",
+    "target_text": "ele está sujo porque esteve brincando na lama",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L02U03",
+   "expect": {
+    "known_text": "we know, because he has been playing in the mud",
+    "target_text": "sabemos, porque esteve brincando na lama"
+   },
+   "set": {
+    "known_text": "the dog has been playing in the mud",
+    "target_text": "o cachorro esteve brincando na lama",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L02U04",
+   "expect": {
+    "known_text": "they said, because he has been playing in the mud",
+    "target_text": "disseram, porque esteve brincando na lama"
+   },
+   "set": {
+    "known_text": "the children were playing in the mud",
+    "target_text": "as crianças estavam brincando na lama",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0547L02U05",
+   "expect": {
+    "known_text": "I'm sure, because he has been playing in the mud",
+    "target_text": "tenho certeza, porque esteve brincando na lama"
+   },
+   "set": {
+    "known_text": "the dog is wet because he has been playing in the mud",
+    "target_text": "o cachorro está molhado porque esteve brincando na lama",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L01B02",
+   "expect": {
+    "known_text": "I am feeling it",
+    "target_text": "estou me sentindo isso"
+   },
+   "set": {
+    "known_text": "I am feeling tired",
+    "target_text": "estou me sentindo cansado",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L01B03",
+   "expect": {
+    "known_text": "yes, I am feeling",
+    "target_text": "sim, estou me sentindo"
+   },
+   "set": {
+    "known_text": "I am feeling better",
+    "target_text": "estou me sentindo melhor",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L01U01",
+   "expect": {
+    "known_text": "she said I am feeling",
+    "target_text": "ela disse que estou me sentindo"
+   },
+   "set": {
+    "known_text": "I am feeling better than yesterday",
+    "target_text": "estou me sentindo melhor do que ontem",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L01U02",
+   "expect": {
+    "known_text": "we know I am feeling",
+    "target_text": "sabemos que estou me sentindo"
+   },
+   "set": {
+    "known_text": "I am feeling very tired today",
+    "target_text": "estou me sentindo muito cansado hoje",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L01U03",
+   "expect": {
+    "known_text": "they said I am feeling",
+    "target_text": "disseram que estou me sentindo"
+   },
+   "set": {
+    "known_text": "I am feeling a little tired",
+    "target_text": "estou me sentindo um pouco cansado",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L01U04",
+   "expect": {
+    "known_text": "I'm sure I am feeling",
+    "target_text": "tenho certeza de que estou me sentindo"
+   },
+   "set": {
+    "known_text": "I am feeling nervous",
+    "target_text": "estou me sentindo nervoso",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L01U05",
+   "expect": {
+    "known_text": "I think I am feeling",
+    "target_text": "acho que estou me sentindo"
+   },
+   "set": {
+    "known_text": "I am feeling ready",
+    "target_text": "estou me sentindo pronto",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L02B03",
+   "expect": {
+    "known_text": "yes, sad",
+    "target_text": "sim, triste"
+   },
+   "set": {
+    "known_text": "very sad",
+    "target_text": "muito triste",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L02U03",
+   "expect": {
+    "known_text": "we know I am feeling sad",
+    "target_text": "sabemos que estou me sentindo triste"
+   },
+   "set": {
+    "known_text": "you are feeling sad",
+    "target_text": "você está se sentindo triste",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0548L02U05",
+   "expect": {
+    "known_text": "I'm sure I am feeling sad",
+    "target_text": "tenho certeza de que estou me sentindo triste"
+   },
+   "set": {
+    "known_text": "I am feeling a little sad",
+    "target_text": "estou me sentindo um pouco triste",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0549L01B02",
+   "expect": {
+    "known_text": "because I have already got to",
+    "target_text": "porque já tenho que"
+   },
+   "set": {
+    "known_text": "because I have got to go",
+    "target_text": "porque tenho que ir",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0549L01B03",
+   "expect": {
+    "known_text": "yes, because I have got to",
+    "target_text": "sim, porque tenho que"
+   },
+   "set": {
+    "known_text": "because I have got to work",
+    "target_text": "porque tenho que trabalhar",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0549L01U01",
+   "expect": {
+    "known_text": "he knows, because I have got to",
+    "target_text": "ele sabe, porque tenho que"
+   },
+   "set": {
+    "known_text": "I can't, because I have got to work",
+    "target_text": "não consigo, porque tenho que trabalhar",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0549L01U02",
+   "expect": {
+    "known_text": "you know, because I have got to",
+    "target_text": "você sabe, porque tenho que"
+   },
+   "set": {
+    "known_text": "I'm going to leave early because I have got to work",
+    "target_text": "vou sair cedo porque tenho que trabalhar",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0549L01U03",
+   "expect": {
+    "known_text": "I'm sure, because I have got to",
+    "target_text": "tenho certeza, porque tenho que"
+   },
+   "set": {
+    "known_text": "I'm tired because I have got to wake up early",
+    "target_text": "estou cansado porque tenho que acordar cedo",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0549L01U04",
+   "expect": {
+    "known_text": "I think, because I have got to",
+    "target_text": "acho que, porque tenho que"
+   },
+   "set": {
+    "known_text": "I can't go, because I have got to finish this work",
+    "target_text": "não consigo ir, porque tenho que acabar este trabalho",
+    "decomposition": null,
+    "word_count": 53,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0549L01U05",
+   "expect": {
+    "known_text": "he knows, because I have already got to",
+    "target_text": "ele sabe, porque já tenho que"
+   },
+   "set": {
+    "known_text": "I'm going home because I have got to sleep",
+    "target_text": "vou para casa porque tenho que dormir",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0550L02B03",
+   "expect": {
+    "known_text": "yes, of the village",
+    "target_text": "sim, da aldeia"
+   },
+   "set": {
+    "known_text": "in the middle of the village",
+    "target_text": "no meio da aldeia",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0550L02U01",
+   "expect": {
+    "known_text": "he knows the end of the village",
+    "target_text": "ele sabe o fim da aldeia"
+   },
+   "set": {
+    "known_text": "there was a shop in the middle of the village",
+    "target_text": "havia uma loja no meio da aldeia",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0550L02U02",
+   "expect": {
+    "known_text": "you know the end of the village",
+    "target_text": "você sabe o fim da aldeia"
+   },
+   "set": {
+    "known_text": "the people of the village speak Portuguese",
+    "target_text": "as pessoas da aldeia falam português",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0550L02U03",
+   "expect": {
+    "known_text": "I'm sure that's the end of the village",
+    "target_text": "tenho certeza de que isso é o fim da aldeia"
+   },
+   "set": {
+    "known_text": "the hotel is at the end of the village",
+    "target_text": "o hotel fica no fim da aldeia",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0550L02U04",
+   "expect": {
+    "known_text": "I think that's the end of the village",
+    "target_text": "acho que isso é o fim da aldeia"
+   },
+   "set": {
+    "known_text": "I think the hotel is in the middle of the village",
+    "target_text": "acho que o hotel fica no meio da aldeia",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0550L02U05",
+   "expect": {
+    "known_text": "it's true, that's the end of the village",
+    "target_text": "é verdade que isso é o fim da aldeia"
+   },
+   "set": {
+    "known_text": "I used to live at the end of the village",
+    "target_text": "eu costumava morar no fim da aldeia",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  }
+ ]
+}
