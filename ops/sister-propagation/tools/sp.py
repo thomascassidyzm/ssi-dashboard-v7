@@ -16,6 +16,18 @@ LEDGER = os.environ.get('SP_LEDGER') or os.path.join(HERE, '..', 'budget-rest.js
 CAP = int(os.environ.get('SP_CAP') or 4500)   # cs #702·AI: SP_LEDGER/SP_CAP for its own 45,000 cap
 
 def call(method, path, body=None, timeout=180):
+    # cs #702·AI: Popty restarts on every deploy to main (twice in 10 min on 18 Nov). A refused CONNECTION is not a
+    # refusal from the route: wait for the service to come back (up to ~3 min) and ask again. HTTP answers
+    # (402/403/409/...) are returned as they are and never re-asked.
+    import time
+    for attempt in range(19):
+        r = _call_once(method, path, body, timeout)
+        if r[0] == 0 and r[1].get('code') == 'CONNECTION_LOST':
+            time.sleep(10); continue
+        return r
+    return r
+
+def _call_once(method, path, body, timeout):
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(API + path, data=data, method=method,
                                  headers={'Content-Type': 'application/json', 'x-agent-id': AGENT})
@@ -25,8 +37,11 @@ def call(method, path, body=None, timeout=180):
         raw = h.read() or b'{}'
         try: return h.code, json.loads(raw)
         except Exception: return h.code, {'raw': raw.decode()[:500]}
-    except (TimeoutError, OSError) as e:   # cs #702·AI: a slow render must not kill the whole run; the re-run finds it in the library
+    except TimeoutError as e:   # a slow render must not kill the whole run; the re-run finds it in the library
         return 0, {'ok': False, 'code': 'CLIENT_TIMEOUT', 'error': str(e)[:200]}
+    except (urllib.error.URLError, ConnectionError, OSError) as e:
+        import http.client
+        return 0, {'ok': False, 'code': 'CONNECTION_LOST', 'error': str(e)[:200]}
 
 def lego_of(pid): return re.match(r'(S\d{4}L\d{2})', pid).group(1)
 def load(d, f): return json.load(open(os.path.join(d, f)))

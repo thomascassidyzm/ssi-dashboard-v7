@@ -1,0 +1,1148 @@
+[
+ {
+  "batch": 0,
+  "status": 200,
+  "n": 11,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "seed.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "seed_number": 643
+     },
+     "before": {
+      "id": "a88550f4-9947-49ba-99e0-9551a2421061",
+      "seed_number": 643,
+      "known_text": "do you want sir?",
+      "target_text": "Möchten Sie, der Herr",
+      "known_audio_id": "fb163442-960f-40ec-9747-1b20c44f06a8",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b"
+     },
+     "after": {
+      "id": "a88550f4-9947-49ba-99e0-9551a2421061",
+      "seed_number": 643,
+      "known_text": "would you like, sir?",
+      "target_text": "Möchten Sie, der Herr",
+      "known_audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b"
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "seed_number": 643
+     },
+     "before": {
+      "id": "a88550f4-9947-49ba-99e0-9551a2421061",
+      "seed_number": 643,
+      "known_audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1",
+      "known_text": "would you like, sir?",
+      "target_text": "Möchten Sie, der Herr",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b"
+     },
+     "after": {
+      "id": "a88550f4-9947-49ba-99e0-9551a2421061",
+      "seed_number": 643,
+      "known_audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1",
+      "known_text": "would you like, sir?",
+      "target_text": "Möchten Sie, der Herr",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b"
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "seed.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "seed_number": 650
+     },
+     "before": {
+      "id": "6b909bfc-1470-4cf9-9abe-0998e53299b6",
+      "seed_number": 650,
+      "known_text": "do you want to go madam?",
+      "target_text": "Möchten Sie gehen, gnädige Frau?",
+      "known_audio_id": "c6f133ed-af4e-46a2-87b6-b68fb8225a28",
+      "target1_audio_id": "ef81fe47-b7ed-4f10-b93d-a886ee6c5faa",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e"
+     },
+     "after": {
+      "id": "6b909bfc-1470-4cf9-9abe-0998e53299b6",
+      "seed_number": 650,
+      "known_text": "would you like to go, madam?",
+      "target_text": "Möchten Sie gehen, gnädige Frau?",
+      "known_audio_id": "0b0b4f2f-e05e-475f-a8a6-a1692a3d9d13",
+      "target1_audio_id": "ef81fe47-b7ed-4f10-b93d-a886ee6c5faa",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e"
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "seed_number": 650
+     },
+     "before": {
+      "id": "6b909bfc-1470-4cf9-9abe-0998e53299b6",
+      "seed_number": 650,
+      "known_audio_id": "0b0b4f2f-e05e-475f-a8a6-a1692a3d9d13",
+      "known_text": "would you like to go, madam?",
+      "target_text": "Möchten Sie gehen, gnädige Frau?",
+      "target1_audio_id": "ef81fe47-b7ed-4f10-b93d-a886ee6c5faa",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e"
+     },
+     "after": {
+      "id": "6b909bfc-1470-4cf9-9abe-0998e53299b6",
+      "seed_number": 650,
+      "known_audio_id": "0b0b4f2f-e05e-475f-a8a6-a1692a3d9d13",
+      "known_text": "would you like to go, madam?",
+      "target_text": "Möchten Sie gehen, gnädige Frau?",
+      "target1_audio_id": "ef81fe47-b7ed-4f10-b93d-a886ee6c5faa",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e"
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "lego.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "lego_id": "S0650L01"
+     },
+     "before": {
+      "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": "S0650L01",
+      "known_text": "do you want to go",
+      "target_text": "möchten Sie gehen",
+      "known_audio_id": "9f51c56e-ffae-4c88-b415-2297137a1d3b",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": "f33a81f1-99a2-4426-a651-d04a1a8fb87c"
+     },
+     "after": {
+      "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": "S0650L01",
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "known_audio_id": null,
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "lego_id": "S0650L01"
+     },
+     "before": {
+      "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": "S0650L01",
+      "known_audio_id": null,
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": "S0650L01",
+      "known_audio_id": "5ee39f60-76e8-41a4-a63a-cceb75eef3c0",
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "lego_id": "S0650L01"
+     },
+     "before": {
+      "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": "S0650L01",
+      "presentation_audio_id": null,
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "known_audio_id": "5ee39f60-76e8-41a4-a63a-cceb75eef3c0",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243"
+     },
+     "after": {
+      "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": "S0650L01",
+      "presentation_audio_id": "2a261a9b-dd1b-474e-8f5f-672a6b8789f9",
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "known_audio_id": "5ee39f60-76e8-41a4-a63a-cceb75eef3c0",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243"
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0643L01U01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0643L01U01",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want sir?",
+      "target_text": "möchten Sie, der Herr",
+      "known_audio_id": "fb163442-960f-40ec-9747-1b20c44f06a8",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0643L01U01",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like, sir?",
+      "target_text": "möchten Sie, der Herr",
+      "known_audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0643L01U01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0643L01U01",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1",
+      "known_text": "would you like, sir?",
+      "target_text": "möchten Sie, der Herr",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0643L01U01",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1",
+      "known_text": "would you like, sir?",
+      "target_text": "möchten Sie, der Herr",
+      "target1_audio_id": "fa6cd4c4-aa92-49fc-9a24-a81060a72340",
+      "target2_audio_id": "825889fa-65d6-44de-b684-86dac409837b",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01C01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01C01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want to",
+      "target_text": "Möchten Sie",
+      "known_audio_id": "57d18027-e4e9-458d-905f-a6ce830ea15f",
+      "target1_audio_id": "58efaa05-891c-451c-b747-30b59f71cdab",
+      "target2_audio_id": "683df5b3-a1c3-48b7-b3d2-76d0260d6396",
+      "presentation_audio_id": "f14255c0-2cfb-42b2-8342-891b614d661f"
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01C01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like to",
+      "target_text": "Möchten Sie",
+      "known_audio_id": "5a30a1e6-3e12-49bc-b16d-eb071636326a",
+      "target1_audio_id": "58efaa05-891c-451c-b747-30b59f71cdab",
+      "target2_audio_id": "683df5b3-a1c3-48b7-b3d2-76d0260d6396",
+      "presentation_audio_id": "f14255c0-2cfb-42b2-8342-891b614d661f"
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01C01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01C01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "5a30a1e6-3e12-49bc-b16d-eb071636326a",
+      "known_text": "would you like to",
+      "target_text": "Möchten Sie",
+      "target1_audio_id": "58efaa05-891c-451c-b747-30b59f71cdab",
+      "target2_audio_id": "683df5b3-a1c3-48b7-b3d2-76d0260d6396",
+      "presentation_audio_id": "f14255c0-2cfb-42b2-8342-891b614d661f"
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01C01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "5a30a1e6-3e12-49bc-b16d-eb071636326a",
+      "known_text": "would you like to",
+      "target_text": "Möchten Sie",
+      "target1_audio_id": "58efaa05-891c-451c-b747-30b59f71cdab",
+      "target2_audio_id": "683df5b3-a1c3-48b7-b3d2-76d0260d6396",
+      "presentation_audio_id": "f14255c0-2cfb-42b2-8342-891b614d661f"
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01C01",
+     "set": {
+      "known_text": "do you want to",
+      "known_audio_id": "57d18027-e4e9-458d-905f-a6ce830ea15f"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0643L01U01",
+     "set": {
+      "known_text": "do you want sir?",
+      "known_audio_id": "fb163442-960f-40ec-9747-1b20c44f06a8"
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+     "set": {
+      "presentation_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "60bbe4cc-8222-4888-a024-74d4d3b7a908",
+     "set": {
+      "known_text": "do you want to go",
+      "known_audio_id": "9f51c56e-ffae-4c88-b415-2297137a1d3b",
+      "presentation_audio_id": "f33a81f1-99a2-4426-a651-d04a1a8fb87c"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 650,
+     "set": {
+      "known_text": "do you want to go madam?",
+      "known_audio_id": "c6f133ed-af4e-46a2-87b6-b68fb8225a28"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 643,
+     "set": {
+      "known_text": "do you want sir?",
+      "known_audio_id": "fb163442-960f-40ec-9747-1b20c44f06a8"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want to go",
+      "target_text": "möchten Sie gehen",
+      "known_audio_id": "9f51c56e-ffae-4c88-b415-2297137a1d3b",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "known_audio_id": null,
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "5ee39f60-76e8-41a4-a63a-cceb75eef3c0",
+      "known_text": "would you like to go",
+      "target_text": "möchten Sie gehen",
+      "target1_audio_id": "7f9d69fc-25c4-4dd7-8137-be1a137cf00b",
+      "target2_audio_id": "8aea352b-d605-4496-a109-1fd37cfe4243",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B02"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "so do you want to go home",
+      "target_text": "und möchten Sie hoam gehen",
+      "known_audio_id": "c5799f65-0c23-4510-90bb-710fa077b831",
+      "target1_audio_id": "af6fb775-50bb-4eb3-98c5-5d89f876655a",
+      "target2_audio_id": "cd4b1679-2562-4b6f-98b9-d84a58c24c33",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "so would you like to go home",
+      "target_text": "und möchten Sie hoam gehen",
+      "known_audio_id": null,
+      "target1_audio_id": "af6fb775-50bb-4eb3-98c5-5d89f876655a",
+      "target2_audio_id": "cd4b1679-2562-4b6f-98b9-d84a58c24c33",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B02"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "so would you like to go home",
+      "target_text": "und möchten Sie hoam gehen",
+      "target1_audio_id": "af6fb775-50bb-4eb3-98c5-5d89f876655a",
+      "target2_audio_id": "cd4b1679-2562-4b6f-98b9-d84a58c24c33",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "a20585b6-f421-4c74-8678-615b1c8149b7",
+      "known_text": "so would you like to go home",
+      "target_text": "und möchten Sie hoam gehen",
+      "target1_audio_id": "af6fb775-50bb-4eb3-98c5-5d89f876655a",
+      "target2_audio_id": "cd4b1679-2562-4b6f-98b9-d84a58c24c33",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B03"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "so do you want to go",
+      "target_text": "und Möchten Sie gehen",
+      "known_audio_id": "672ece3f-c9c5-40fe-b90e-d94eedb40e7e",
+      "target1_audio_id": "bf1709d6-f7b0-4797-b4ff-4891122ebd60",
+      "target2_audio_id": "65f8211a-d5c4-4a6a-9d1a-f9b7a03b8df5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "so would you like to go",
+      "target_text": "und Möchten Sie gehen",
+      "known_audio_id": null,
+      "target1_audio_id": "bf1709d6-f7b0-4797-b4ff-4891122ebd60",
+      "target2_audio_id": "65f8211a-d5c4-4a6a-9d1a-f9b7a03b8df5",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B03"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "so would you like to go",
+      "target_text": "und Möchten Sie gehen",
+      "target1_audio_id": "bf1709d6-f7b0-4797-b4ff-4891122ebd60",
+      "target2_audio_id": "65f8211a-d5c4-4a6a-9d1a-f9b7a03b8df5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "66f00478-d170-4c92-a685-efdb23aeb7cd",
+      "known_text": "so would you like to go",
+      "target_text": "und Möchten Sie gehen",
+      "target1_audio_id": "bf1709d6-f7b0-4797-b4ff-4891122ebd60",
+      "target2_audio_id": "65f8211a-d5c4-4a6a-9d1a-f9b7a03b8df5",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B04"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want to go now",
+      "target_text": "möchten Sie iatz gehen",
+      "known_audio_id": "605a2655-dfb7-4897-be6e-dac754b22668",
+      "target1_audio_id": "208095ef-23fb-47c1-a092-f631154d3b5c",
+      "target2_audio_id": "6d09753b-4fca-4b94-a832-a4e8f989fd7f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like to go now",
+      "target_text": "möchten Sie iatz gehen",
+      "known_audio_id": "1ac9990b-ba49-4c18-990b-27233a4d116e",
+      "target1_audio_id": "208095ef-23fb-47c1-a092-f631154d3b5c",
+      "target2_audio_id": "6d09753b-4fca-4b94-a832-a4e8f989fd7f",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01B04"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01B04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "1ac9990b-ba49-4c18-990b-27233a4d116e",
+      "known_text": "would you like to go now",
+      "target_text": "möchten Sie iatz gehen",
+      "target1_audio_id": "208095ef-23fb-47c1-a092-f631154d3b5c",
+      "target2_audio_id": "6d09753b-4fca-4b94-a832-a4e8f989fd7f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01B04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "1ac9990b-ba49-4c18-990b-27233a4d116e",
+      "known_text": "would you like to go now",
+      "target_text": "möchten Sie iatz gehen",
+      "target1_audio_id": "208095ef-23fb-47c1-a092-f631154d3b5c",
+      "target2_audio_id": "6d09753b-4fca-4b94-a832-a4e8f989fd7f",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want to go madam",
+      "target_text": "möchten Sie gehen, gnädige Frau",
+      "known_audio_id": "c6f133ed-af4e-46a2-87b6-b68fb8225a28",
+      "target1_audio_id": "d0aa0231-c056-4ba6-b604-77810ef49bc3",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like to go madam",
+      "target_text": "möchten Sie gehen, gnädige Frau",
+      "known_audio_id": "57df7586-db50-41b7-8955-ac68384699ea",
+      "target1_audio_id": "d0aa0231-c056-4ba6-b604-77810ef49bc3",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U01"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "57df7586-db50-41b7-8955-ac68384699ea",
+      "known_text": "would you like to go madam",
+      "target_text": "möchten Sie gehen, gnädige Frau",
+      "target1_audio_id": "d0aa0231-c056-4ba6-b604-77810ef49bc3",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U01",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "57df7586-db50-41b7-8955-ac68384699ea",
+      "known_text": "would you like to go madam",
+      "target_text": "möchten Sie gehen, gnädige Frau",
+      "target1_audio_id": "d0aa0231-c056-4ba6-b604-77810ef49bc3",
+      "target2_audio_id": "b86b7bc5-31b4-43fd-8b7e-da870b98a62e",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U02"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want to go today",
+      "target_text": "möchten Sie heit gehen",
+      "known_audio_id": "1f211f11-bf30-45ef-9104-be4173c82d2d",
+      "target1_audio_id": "6b623208-e796-451a-8212-d6dd2912af32",
+      "target2_audio_id": "3131e78f-9b23-4ca7-a879-10ad1315f1de",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like to go today",
+      "target_text": "möchten Sie heit gehen",
+      "known_audio_id": "07649bd2-79e2-47e9-9925-ed0a3b4448e3",
+      "target1_audio_id": "6b623208-e796-451a-8212-d6dd2912af32",
+      "target2_audio_id": "3131e78f-9b23-4ca7-a879-10ad1315f1de",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U02"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "07649bd2-79e2-47e9-9925-ed0a3b4448e3",
+      "known_text": "would you like to go today",
+      "target_text": "möchten Sie heit gehen",
+      "target1_audio_id": "6b623208-e796-451a-8212-d6dd2912af32",
+      "target2_audio_id": "3131e78f-9b23-4ca7-a879-10ad1315f1de",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U02",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "07649bd2-79e2-47e9-9925-ed0a3b4448e3",
+      "known_text": "would you like to go today",
+      "target_text": "möchten Sie heit gehen",
+      "target1_audio_id": "6b623208-e796-451a-8212-d6dd2912af32",
+      "target2_audio_id": "3131e78f-9b23-4ca7-a879-10ad1315f1de",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01U02",
+     "set": {
+      "known_text": "do you want to go today",
+      "known_audio_id": "1f211f11-bf30-45ef-9104-be4173c82d2d"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01U01",
+     "set": {
+      "known_text": "do you want to go madam",
+      "known_audio_id": "c6f133ed-af4e-46a2-87b6-b68fb8225a28"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01B04",
+     "set": {
+      "known_text": "do you want to go now",
+      "known_audio_id": "605a2655-dfb7-4897-be6e-dac754b22668"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01B03",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01B03",
+     "set": {
+      "known_text": "so do you want to go",
+      "known_audio_id": "672ece3f-c9c5-40fe-b90e-d94eedb40e7e"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01B02",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01B02",
+     "set": {
+      "known_text": "so do you want to go home",
+      "known_audio_id": "c5799f65-0c23-4510-90bb-710fa077b831"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01B01",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01B01",
+     "set": {
+      "known_text": "do you want to go",
+      "known_audio_id": "9f51c56e-ffae-4c88-b415-2297137a1d3b"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "n": 6,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U03"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want to go now sir",
+      "target_text": "möchten Sie gehen iatz, der Herr",
+      "known_audio_id": "40802a94-d003-4ddf-b1dc-ad24acbaa696",
+      "target1_audio_id": "adb52807-993c-4640-a1bf-bc67123874cc",
+      "target2_audio_id": "400b51df-fa7a-4c83-8146-76c10dc23018",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like to go now sir",
+      "target_text": "möchten Sie gehen iatz, der Herr",
+      "known_audio_id": "f570f378-799a-41d8-9a9a-54506e6fc36d",
+      "target1_audio_id": "adb52807-993c-4640-a1bf-bc67123874cc",
+      "target2_audio_id": "400b51df-fa7a-4c83-8146-76c10dc23018",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U03"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "f570f378-799a-41d8-9a9a-54506e6fc36d",
+      "known_text": "would you like to go now sir",
+      "target_text": "möchten Sie gehen iatz, der Herr",
+      "target1_audio_id": "adb52807-993c-4640-a1bf-bc67123874cc",
+      "target2_audio_id": "400b51df-fa7a-4c83-8146-76c10dc23018",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U03",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "f570f378-799a-41d8-9a9a-54506e6fc36d",
+      "known_text": "would you like to go now sir",
+      "target_text": "möchten Sie gehen iatz, der Herr",
+      "target1_audio_id": "adb52807-993c-4640-a1bf-bc67123874cc",
+      "target2_audio_id": "400b51df-fa7a-4c83-8146-76c10dc23018",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U04"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "so do you want to go then madam",
+      "target_text": "und Möchten Sie gehen, gnädige Frau",
+      "known_audio_id": "bb94e06e-c5ed-46c4-b026-9c3bd90d2d65",
+      "target1_audio_id": "f2205d2f-379d-4daf-a337-140a4a16df74",
+      "target2_audio_id": "7afe4d7f-6a05-43e0-861c-6f5aa4bf388e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "so would you like to go then madam",
+      "target_text": "und Möchten Sie gehen, gnädige Frau",
+      "known_audio_id": null,
+      "target1_audio_id": "f2205d2f-379d-4daf-a337-140a4a16df74",
+      "target2_audio_id": "7afe4d7f-6a05-43e0-861c-6f5aa4bf388e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U04"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "so would you like to go then madam",
+      "target_text": "und Möchten Sie gehen, gnädige Frau",
+      "target1_audio_id": "f2205d2f-379d-4daf-a337-140a4a16df74",
+      "target2_audio_id": "7afe4d7f-6a05-43e0-861c-6f5aa4bf388e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U04",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "b9b173c1-9d3c-4e38-9e4b-ddafb528e99e",
+      "known_text": "so would you like to go then madam",
+      "target_text": "und Möchten Sie gehen, gnädige Frau",
+      "target1_audio_id": "f2205d2f-379d-4daf-a337-140a4a16df74",
+      "target2_audio_id": "7afe4d7f-6a05-43e0-861c-6f5aa4bf388e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U05"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U05",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "do you want to go this evening",
+      "target_text": "möchten Sie heit auf d'Nocht gehen",
+      "known_audio_id": "08b85ec1-1149-4970-b548-df6d39c6037e",
+      "target1_audio_id": "632ab2ae-abe5-4917-a622-3a840e1b8a1e",
+      "target2_audio_id": "66b01528-3a76-4589-b0e8-f4e9efc23ac4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U05",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "would you like to go this evening",
+      "target_text": "möchten Sie heit auf d'Nocht gehen",
+      "known_audio_id": null,
+      "target1_audio_id": "632ab2ae-abe5-4917-a622-3a840e1b8a1e",
+      "target2_audio_id": "66b01528-3a76-4589-b0e8-f4e9efc23ac4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_at_for_eng",
+      "id": "deu_at_for_eng:S0650L01U05"
+     },
+     "before": {
+      "id": "deu_at_for_eng:S0650L01U05",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": null,
+      "known_text": "would you like to go this evening",
+      "target_text": "möchten Sie heit auf d'Nocht gehen",
+      "target1_audio_id": "632ab2ae-abe5-4917-a622-3a840e1b8a1e",
+      "target2_audio_id": "66b01528-3a76-4589-b0e8-f4e9efc23ac4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_at_for_eng:S0650L01U05",
+      "seed_number": 650,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "62286564-3ed0-4d64-8939-d4ebfd70c110",
+      "known_text": "would you like to go this evening",
+      "target_text": "möchten Sie heit auf d'Nocht gehen",
+      "target1_audio_id": "632ab2ae-abe5-4917-a622-3a840e1b8a1e",
+      "target2_audio_id": "66b01528-3a76-4589-b0e8-f4e9efc23ac4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01U05",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01U05",
+     "set": {
+      "known_text": "do you want to go this evening",
+      "known_audio_id": "08b85ec1-1149-4970-b548-df6d39c6037e"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01U04",
+     "set": {
+      "known_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01U04",
+     "set": {
+      "known_text": "so do you want to go then madam",
+      "known_audio_id": "bb94e06e-c5ed-46c4-b026-9c3bd90d2d65"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_at_for_eng:S0650L01U03",
+     "set": {
+      "known_text": "do you want to go now sir",
+      "known_audio_id": "40802a94-d003-4ddf-b1dc-ad24acbaa696"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ }
+]

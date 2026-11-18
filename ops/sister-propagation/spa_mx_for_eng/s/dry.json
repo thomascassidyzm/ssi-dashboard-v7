@@ -1,0 +1,32 @@
+[
+ {
+  "batch": 0,
+  "status": 0,
+  "n": 12,
+  "result": {
+   "ok": false,
+   "code": "CLIENT_TIMEOUT",
+   "error": "<urlopen error [Errno 111] Connection refused>"
+  }
+ },
+ {
+  "batch": 1,
+  "status": 0,
+  "n": 12,
+  "result": {
+   "ok": false,
+   "code": "CLIENT_TIMEOUT",
+   "error": "<urlopen error [Errno 111] Connection refused>"
+  }
+ },
+ {
+  "batch": 2,
+  "status": 0,
+  "n": 1,
+  "result": {
+   "ok": false,
+   "code": "CLIENT_TIMEOUT",
+   "error": "<urlopen error [Errno 111] Connection refused>"
+  }
+ }
+]

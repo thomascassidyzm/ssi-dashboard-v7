@@ -9,10 +9,6 @@
   {
    "n": 650,
    "known": "would you like to go, madam?"
-  },
-  {
-   "n": 383,
-   "target": "jo, er hot gsogt, er wollt des in Gortn tan"
   }
  ],
  "legos": [
@@ -66,10 +62,12 @@
   {
    "id": "S0650L01U05",
    "known": "would you like to go this evening"
-  },
+  }
+ ],
+ "held": [
   {
-   "id": "S0383L01U01",
-   "target": "jo, er hot gsogt, er wollt des in Gortn tan"
+   "what": "seed 383 + S0383L01U01 mechat -> wollt",
+   "why": "render refused VOICE_POLICY: deu_at target2 (m) uncast (draft casting only; Tom casts in the Voice Lab). Applying would leave target2 silent or on the old mechat clip. target1 clip rendered (43 chars) and unused: see audio-real.json"
   }
  ]
 }
