@@ -21,7 +21,7 @@ AGENT = 'cs-703-item6-wrong-target-form'
 JOB = '#703·AI'
 PURPOSE = 'paid-course cleanup item 6, wrong target-language form (Kai approved 18 Nov) cs #703·AI'
 SCR = os.environ.get('ITEM6_DATA') or os.environ['CS_SCRATCH']
-SPELL_ONLY = {('fra_for_eng', 'S0469L01B02'), ('fra_for_eng', 'S0555L04B02'), ('por_for_eng', 'S0434L05B01'), ('por_for_eng', 'S0453L02B01')}
+SPELL_ONLY = {('fra_for_eng', 'S0469L01B02'), ('fra_for_eng', 'S0555L04B02'), ('por_for_eng', 'S0434L05B01')}  # S0453L02B01 became a delete after review #723
 
 def call(method, url, body=None, timeout=600):
     data = json.dumps(body, ensure_ascii=False).encode() if body is not None else None
