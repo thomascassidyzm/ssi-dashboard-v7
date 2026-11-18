@@ -1,0 +1,703 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "לא קיווינו להתעורר באמצע הלילה."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "A",
+    "known_text": "to wake up",
+    "target_text": "להתעורר",
+    "components": null,
+    "seed_number": 108
+   },
+   "is_new": null,
+   "phrases": []
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "באמצע הלילה",
+    "components": [
+     {
+      "known": "in the middle of",
+      "target": "באמצע"
+     },
+     {
+      "known": "the night",
+      "target": "הלילה"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "heb_for_eng:S0108L02C01",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "in the middle of",
+     "target_text": "באמצע",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 105,
+     "updated_at": "2026-10-12T16:29:31.999946+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "015ec61e-cb05-4bef-99ba-c2b1be2ab42d",
+     "target1_audio_id": "71f11270-3df2-4ec7-9ef2-c64c196b62d8",
+     "target2_audio_id": "f072e66d-b773-47be-b3dc-d50e4c113ac8",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": "be'emtsa",
+     "target_phrase_id": null,
+     "presentation_audio_id": "89f0816e-f823-4882-8157-1e333d8c955f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "באמצע",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "80d60135-1f29-403a-a9c5-7b6b8941910d",
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02C02",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "the night",
+     "target_text": "הלילה",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 63,
+     "updated_at": "2026-10-12T16:29:31.999946+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1b7a868e-9805-4571-854b-3e191760d808",
+     "target1_audio_id": "7de47f49-ecf9-4c21-a7b7-2f2631979a11",
+     "target2_audio_id": "9013c758-00e8-496a-8e72-b3e228fabff9",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": "halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": "12383e35-3bca-43a2-8613-bc67e7624f1e",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "tonight",
+       "legoId": "S0031L02",
+       "target": "הלילה",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "80d60135-1f29-403a-a9c5-7b6b8941910d",
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02B01",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "in the middle of the night",
+     "target_text": "באמצע הלילה",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-10-12T16:57:18.326616+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "a1a1e648-01d9-4b7a-b9eb-c27565ade94c",
+     "target2_audio_id": "598538d9-b585-4c94-8f91-1743ea79cd88",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": "be'emtsa halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4ccb3e3f-8655-4ff8-8bfb-1b73b153b31f",
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02B02",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "wake up in the middle of the night",
+     "target_text": "להתעורר באמצע הלילה",
+     "word_count": 19,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 101,
+     "updated_at": "2026-06-04T14:26:11.897887+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "27932eb5-e8eb-460d-aa60-a91612348059",
+     "target1_audio_id": "50e318e8-2065-4b23-ad40-31b14d1b3a65",
+     "target2_audio_id": "9dacf7c8-aefe-432d-9129-fd9e57685f6c",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": "lehitor'er be'emtsa halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0108L01",
+       "target": "להתעורר",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02B03",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "לא קיווינו להתעורר באמצע הלילה",
+     "word_count": 30,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-10-12T16:29:33.50748+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "0ad9b9dc-1db5-4e7b-b3a1-2fbb91423844",
+     "target2_audio_id": "47fc1c2a-70db-4a75-bf04-46bf2e5177d2",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": "lo kivinu lehit'orer be'emtsa halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": "לא",
+       "isGhost": false
+      },
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": " קיווינו",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L01",
+       "target": " להתעורר",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "80d60135-1f29-403a-a9c5-7b6b8941910d",
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02U01",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "it's difficult to learn Hebrew in the middle of the night",
+     "target_text": "זה קשה ללמוד עברית באמצע הלילה",
+     "word_count": 30,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-19T09:45:04.714Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 102,
+     "updated_at": "2026-10-14T00:52:54.066327+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f5211932-5aac-4138-ab0c-1abcbdd533a3",
+     "target1_audio_id": "095d3db4-7cbe-4d82-a525-039a6ff6a98d",
+     "target2_audio_id": "fad11219-925c-4c1f-9523-8aaa80264f41",
+     "qa_checked": null,
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": "ze kashe lilmod ivrit be'emtsa halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": "זה",
+       "isGhost": false
+      },
+      {
+       "known": "difficult",
+       "legoId": "S0066L01",
+       "target": " קשה",
+       "isGhost": false
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L02",
+       "target": " ללמוד",
+       "isGhost": false
+      },
+      {
+       "known": "Hebrew",
+       "legoId": "S0001L03",
+       "target": " עברית",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02U02",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "I don't want to wake up in the middle of the night",
+     "target_text": "אני לא רוצה להתעורר באמצע הלילה",
+     "word_count": 31,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-19T09:45:04.714Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 101,
+     "updated_at": "2026-06-04T14:21:23.533686+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "62e8ccab-3a28-4590-b7f0-d89fda9759b1",
+     "target1_audio_id": "2c251001-4d3b-4fad-a76e-f2a70f7d7aed",
+     "target2_audio_id": "252b5f4d-2b99-43f3-8769-c85299707175",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": "ani lo rotse lehit'orer be-emtsa ha-layla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "אני",
+       "isGhost": true
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " לא",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " רוצה",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L01",
+       "target": " להתעורר",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02U03",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "I needed to work hard in the middle of the night",
+     "target_text": "הייתי צריך לעבוד קשה באמצע הלילה",
+     "word_count": 32,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-19T09:45:04.714Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 101,
+     "updated_at": "2026-06-04T14:24:10.047245+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "740abbee-b4ce-478b-b134-58e7234b25cc",
+     "target1_audio_id": "892185b6-dff1-4a42-85dc-dc24a546f1c0",
+     "target2_audio_id": "03f4a594-e461-42bb-9df7-484b448379c3",
+     "qa_checked": null,
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": "hayiti tsarikh la'avod kashe be'emtsa halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "הייתי",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " צריך",
+       "isGhost": true
+      },
+      {
+       "known": "to work hard",
+       "legoId": "S0106L04",
+       "target": " לעבוד קשה",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02U04",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "that is why it's not good to wake up in the middle of the night",
+     "target_text": "זו הסיבה שזה לא טוב להתעורר באמצע הלילה",
+     "word_count": 39,
+     "lego_count": 15,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-19T09:45:04.714Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 101,
+     "updated_at": "2026-06-04T14:25:20.595125+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "27f565f2-a640-44f4-b6e2-fa24b605b020",
+     "target1_audio_id": "82386d7f-0a69-4973-8226-62de8c1b45b7",
+     "target2_audio_id": "6f31a1db-ea56-4d12-b121-2f75489b8635",
+     "qa_checked": null,
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3984,
+     "lego_id": null,
+     "target_text_roman": "zo hasibah shezeh lo tov lehit'orer be'emtsa halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that is why",
+       "legoId": "S0105L01",
+       "target": "זו הסיבה",
+       "isGhost": false
+      },
+      {
+       "known": "that it is",
+       "legoId": "S0047L02",
+       "target": " שזה",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " לא",
+       "isGhost": false
+      },
+      {
+       "known": "well",
+       "legoId": "S0013L03",
+       "target": " טוב",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L01",
+       "target": " להתעורר",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "heb_for_eng:S0108L02U05",
+     "course_code": "heb_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "i'd like to practise Hebrew in the middle of the night",
+     "target_text": "אני הייתי רוצה להתאמן בעברית באמצע הלילה",
+     "word_count": 40,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-19T09:45:04.714Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 101,
+     "updated_at": "2026-06-04T14:20:20.822784+00:00",
+     "created_at": "2026-04-19T09:45:04.746325+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "fc83a974-1539-47c4-aeb2-1e78b2f3b729",
+     "target1_audio_id": "af748161-1403-4930-9d2f-b044c3d7874c",
+     "target2_audio_id": "aad80417-6d85-40df-a3b5-c92dee062aa5",
+     "qa_checked": null,
+     "target1_duration_ms": 3816,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": "ani hayiti rotse lehit'amen be'ivrit be'emtsa halayla",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "i'd like",
+       "legoId": "S0011L01",
+       "target": "אני הייתי רוצה",
+       "isGhost": false
+      },
+      {
+       "known": "to practise",
+       "legoId": "S0005L02",
+       "target": " להתאמן",
+       "isGhost": false
+      },
+      {
+       "known": "in Hebrew",
+       "legoId": "S0004L03",
+       "target": " בעברית",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " באמצע הלילה",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

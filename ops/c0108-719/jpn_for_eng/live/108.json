@@ -1,0 +1,4240 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "we didn't hope to wake in the middle of the night",
+  "target": "夜中に起きるとは思ってなかった"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "to wake",
+    "target_text": "起きる",
+    "components": [
+     {
+      "known": "to wake",
+      "target": "起きる"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "jpn_for_eng:S0108L01B01",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "to wake",
+     "target_text": "起きる",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T16:57:13.207887+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+     "target1_audio_id": "2f8bc660-8756-4a48-b627-c3e3c2d0fe4f",
+     "target2_audio_id": "5ce33399-4348-48d0-9838-12227ddb0dcd",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": "okiru",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e06cc16e-bda4-42cc-b6e4-741c64176708",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01B02",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "I will wake",
+     "target_text": "起きる",
+     "word_count": 4,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:14.35159+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1c0e2d70-8ed4-4465-b0a0-a49fc14367fe",
+     "target1_audio_id": "e0e92bd9-6bee-4f6b-bf19-011a24124b2f",
+     "target2_audio_id": "860095bc-f99a-4ee6-a3f5-e57361d1524b",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": "okiru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "起きる。",
+       "r": "okiru.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01B03",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "I can wake",
+     "target_text": "起きることができる",
+     "word_count": 10,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:25:23.281635+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "628f52cb-82a0-49e4-b3e4-867b64ae6058",
+     "target1_audio_id": "4beef2ff-7971-495a-84d1-3ec3b09820fa",
+     "target2_audio_id": "309bfaaf-7534-4655-a642-0b20f521ee00",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": "okiru koto ga dekiru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "こと",
+       "r": "koto",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "できる。",
+       "r": "dekiru.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01B04",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "I must wake",
+     "target_text": "起きる必要がある",
+     "word_count": 9,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:26:07.92641+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "96d314a8-fa24-4c57-9d75-b3b366eb9e69",
+     "target1_audio_id": "bff29e1c-937b-45b5-b060-172b25916bd2",
+     "target2_audio_id": "975ad424-7b7b-466a-93e9-c84c6bf4e80f",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": "okiru hitsuyoo ga aru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある。",
+       "r": "aru.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U01",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "I will wake tomorrow",
+     "target_text": "明日起きる",
+     "word_count": 6,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 5,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:42.935Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:14.910559+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b56f84f4-de06-4bf5-9318-d14f2f44b7ba",
+     "target1_audio_id": "594e720e-dc76-4392-bdbd-f0fdcc895aa5",
+     "target2_audio_id": "d5c08aea-535b-49d8-b4bd-585a3e5d7246",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": "ashita okiru",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "明",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "日",
+       "isGhost": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "明日",
+       "r": "ashita",
+       "salient": false
+      },
+      {
+       "n": "起きる。",
+       "r": "okiru",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U03",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "I think I can wake early",
+     "target_text": "早く起きることができると思う",
+     "word_count": 15,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:42.935Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:12.56673+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ca20fcd4-a035-4772-b144-62ff2c98c4e2",
+     "target1_audio_id": "c2f09ed4-bd61-48d9-b009-a2dd45b0f956",
+     "target2_audio_id": "4eddce26-1db6-47e0-aaad-de67a72e6905",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": "hayaku okiru koto ga dekiru to omou.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "how quickly",
+       "legoId": "S0077L02",
+       "target": "早く",
+       "isGhost": false
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "I think that",
+       "legoId": "S0072L01",
+       "target": "と思う",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "早く",
+       "r": "hayaku",
+       "salient": false
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "こと",
+       "r": "koto",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "できる",
+       "r": "dekiru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "思う。",
+       "r": "omou.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U04",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "I hope I can wake tomorrow",
+     "target_text": "明日起きることができるといいな",
+     "word_count": 16,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:42.935Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:26:09.50679+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "cf6b2f68-ef1b-4b8e-9e6c-6a4b0e2e0fe5",
+     "target1_audio_id": "92fde64a-14db-49e9-91b9-81f9511a3218",
+     "target2_audio_id": "6caeb125-51a2-49b5-a8ad-85ce2021e0c9",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": "ashita okiru koto ga dekiru to ii na",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "明",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "日",
+       "isGhost": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "明日",
+       "r": "ashita",
+       "salient": false
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "こと",
+       "r": "koto",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "できる",
+       "r": "dekiru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "いい",
+       "r": "ii",
+       "salient": false
+      },
+      {
+       "n": "な。",
+       "r": "na",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U05",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "I need to wake before you",
+     "target_text": "あなたの前に起きる必要がある",
+     "word_count": 15,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:42.935Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:09.044028+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2c827fbd-9d46-4c85-95a1-74a7b3d70c3a",
+     "target1_audio_id": "06751d01-9d51-45ad-95bd-986e84b08573",
+     "target2_audio_id": "83db368b-037f-434a-a524-1073a7f98415",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": "anata no mae ni okiru hitsuyoo ga aru",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "の",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "前",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "に",
+       "isGhost": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "あなた",
+       "r": "anata",
+       "salient": false
+      },
+      {
+       "n": "の",
+       "r": "no",
+       "salient": false
+      },
+      {
+       "n": "前",
+       "r": "mae",
+       "salient": false
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": false
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある。",
+       "r": "aru",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U06",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "I felt I must wake soon",
+     "target_text": "すぐ起きる必要があると感じた",
+     "word_count": 15,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:42.935Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 25,
+     "updated_at": "2026-10-14T01:52:47.256273+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "28a6512d-e769-4082-aa66-a21c0aa88303",
+     "target1_audio_id": "77448176-7453-424d-9b90-ad296025d1f7",
+     "target2_audio_id": "c4ba77f4-3cbc-4fd0-89dd-1beaef6e423e",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 3888,
+     "lego_id": null,
+     "target_text_roman": "sugu okiru hitsuyoo ga aru to kanjita",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "す",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ぐ",
+       "isGhost": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "feeling",
+       "legoId": "S0049L01",
+       "target": "感じ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "すぐ",
+       "r": "sugu",
+       "salient": false
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある",
+       "r": "aru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "感じた。",
+       "r": "kanjita",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U07",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "that is why I must wake",
+     "target_text": "だから起きる必要がある",
+     "word_count": 12,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:42.935Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:26:18.321409+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7e20e892-1e26-404e-94d8-a62e86eab69e",
+     "target1_audio_id": "d6eca505-5967-407a-b9d2-1e05776e9f1d",
+     "target2_audio_id": "b1323cff-b12a-481e-a23d-785096be44e6",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": "dakara okiru hitsuyō ga aru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "だ",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "だから",
+       "r": "dakara",
+       "salient": false
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyō",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある。",
+       "r": "aru.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U08",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "even if I'm tired, I must wake",
+     "target_text": "疲れていても起きる必要がある",
+     "word_count": 15,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:42.935Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 25,
+     "updated_at": "2026-10-13T11:25:23.414233+00:00",
+     "created_at": "2026-02-11T15:40:42.967483+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "62af70b2-f232-4e59-8009-3c3c734a8774",
+     "target1_audio_id": "a94745d2-340c-40c7-8565-97a4e7ccf1aa",
+     "target2_audio_id": "9d7f1b85-42e9-4766-a3fb-73a9ca663283",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": "tsukareteite mo okiru hitsuyoo ga aru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "疲",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "れ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "も",
+       "isGhost": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "疲れていて",
+       "r": "tsukareteite",
+       "salient": false
+      },
+      {
+       "n": "も",
+       "r": "mo",
+       "salient": false
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある。",
+       "r": "aru.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U09",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "I woke earlier than I expected this morning",
+     "target_text": "今朝、思ってたより早く起きた",
+     "word_count": 15,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "source": "seed_sentence",
+      "source_seed": 144
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-10-29T11:01:55.383689+00:00",
+     "created_at": "2026-02-11T15:55:49.664516+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "b3e5d32d-b7a3-4faf-b8fe-eac1d25ab6a9",
+     "target1_audio_id": "1503b557-bcbb-49f5-9a36-79b79ef9b764",
+     "target2_audio_id": "1525018e-c4cf-4f7c-91ed-431db0f768e2",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": "kesa, omotte'ta yori hayaku okita.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "now",
+       "legoId": "S0001L04",
+       "target": "今",
+       "isGhost": false
+      },
+      {
+       "known": "morning",
+       "legoId": "S0055L02",
+       "target": "朝",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "、",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "思",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "よ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "り",
+       "isGhost": true
+      },
+      {
+       "known": "how quickly",
+       "legoId": "S0077L02",
+       "target": "早く",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "起",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "今朝、",
+       "r": "kesa,",
+       "salient": false
+      },
+      {
+       "n": "思ってた",
+       "r": "omotte'ta",
+       "salient": false
+      },
+      {
+       "n": "より",
+       "r": "yori",
+       "salient": false
+      },
+      {
+       "n": "早く",
+       "r": "hayaku",
+       "salient": false
+      },
+      {
+       "n": "起きた。",
+       "r": "okita.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d673f28a-ee59-4a97-84f2-3fcad0a8da34",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L01U10",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "we wanted to know what was going to happen",
+     "target_text": "何が起きるか知りたかった",
+     "word_count": 13,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "source": "seed_sentence",
+      "source_seed": 201
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 25,
+     "updated_at": "2026-10-12T17:15:58.328567+00:00",
+     "created_at": "2026-02-11T15:55:59.560976+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fb252e9d-f857-4317-81cc-f3687f7e043e",
+     "target1_audio_id": "ab3096dd-0c1f-4481-bc98-50b37c793aed",
+     "target2_audio_id": "20c5d790-d5a8-462c-bf7a-5b314084021b",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": "nani ga okiru ka shiritakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "何",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "知",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "り",
+       "isGhost": true
+      },
+      {
+       "known": "wanted to",
+       "legoId": "S0052L01",
+       "target": "たかった",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "何",
+       "r": "nani",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": true
+      },
+      {
+       "n": "か",
+       "r": "ka",
+       "salient": false
+      },
+      {
+       "n": "知りたかった。",
+       "r": "shiritakatta.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e06cc16e-bda4-42cc-b6e4-741c64176708",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "夜中に",
+    "components": [
+     {
+      "known": "middle of the night",
+      "target": "夜中"
+     },
+     {
+      "known": "in",
+      "target": "に"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "jpn_for_eng:S0108L02C01",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "middle of the night",
+     "target_text": "夜中",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-13T06:34:53.808004+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fe52c5a8-90ee-4235-80e1-3cbf33d9efe6",
+     "target1_audio_id": "d389c70b-61c1-45eb-8621-4238a45e92cf",
+     "target2_audio_id": "e505cd85-4c78-42d4-b451-e28d5171a096",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": "yonaka",
+     "target_phrase_id": null,
+     "presentation_audio_id": "6ee8ae30-a394-45fb-bb00-52ed3a9d2e86",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "夜",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "中",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02C02",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "in",
+     "target_text": "に",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-12T16:30:33.05704+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+     "target1_audio_id": "144edcd3-11a2-4e54-8935-e8fca1a4a284",
+     "target2_audio_id": "21959db8-f3bf-49ad-a787-3cc7737d6041",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 1512,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": "ni",
+     "target_phrase_id": null,
+     "presentation_audio_id": "27707d6e-c8c0-417e-840e-071d7c64fa2f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "に",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "19f963fd-fd71-4f8b-8060-bf21dc44e9d2",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02B01",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "in the middle of the night",
+     "target_text": "夜中に",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-12T16:57:15.048591+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "2b6a01cd-8e2a-43b2-a781-cc0f4bda29d4",
+     "target2_audio_id": "b812de43-530e-4161-a2f5-edb8830211a2",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 2016,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e06cc16e-bda4-42cc-b6e4-741c64176708",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02B02",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "I woke in the middle of the night",
+     "target_text": "夜中に起きることがあった",
+     "word_count": 13,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:15.74772+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a6a2a9cf-cfe4-43d8-98d9-30cfc7d37049",
+     "target1_audio_id": "53ca4fdd-fc65-4370-89ba-255ca61a9b0e",
+     "target2_audio_id": "f0ba9ee9-35fb-47bf-9879-dd286441a62d",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni okiru koto ga atta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": false
+      },
+      {
+       "n": "こと",
+       "r": "koto",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "あった。",
+       "r": "atta",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02B03",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "I was working in the middle of the night",
+     "target_text": "夜中に頑張っていた",
+     "word_count": 10,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:13.957118+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2dbfe2fd-8315-4e1c-a016-fef6f1bce5ea",
+     "target1_audio_id": "758e15b5-5609-41cf-9a25-da45a87c5449",
+     "target2_audio_id": "1ad2f79e-fd37-463c-9cee-64f93551cfcb",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni ganbatte ita",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "頑",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "張",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "頑張って",
+       "r": "ganbatte",
+       "salient": false
+      },
+      {
+       "n": "いた。",
+       "r": "ita",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02B04",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "I read in the middle of the night",
+     "target_text": "夜中に読んだ",
+     "word_count": 7,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:09.68071+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "47787cb7-134b-4ce3-a4c8-9bba91776118",
+     "target1_audio_id": "dcf3df11-73ec-4ce0-ba8f-82d1e0fc5d60",
+     "target2_audio_id": "0e952b96-6e54-4428-8235-e4aa2219dc0f",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni yonda",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "読",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ん",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "だ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "読んだ。",
+       "r": "yonda",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02U02",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "I think I must wake in the middle of the night",
+     "target_text": "夜中に起きる必要があると思う",
+     "word_count": 15,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.032Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:26:13.621185+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ca865588-b375-4111-856e-ad295af9fb24",
+     "target1_audio_id": "12adfde1-c809-4f5c-8add-8ca57d6c5bc1",
+     "target2_audio_id": "5a1cb251-9cb1-4bc1-a6ba-f691fef756bb",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 3888,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni okiru hitsuyoo ga aru to omou",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "I think that",
+       "legoId": "S0072L01",
+       "target": "と思う",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": false
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある",
+       "r": "aru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "思う。",
+       "r": "omou",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02U03",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "I hope I don't wake in the middle of the night",
+     "target_text": "夜中に起きることがないといいな",
+     "word_count": 16,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.032Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:26:08.469357+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1dc31f89-4f78-43ba-ac70-e4b735e9266f",
+     "target1_audio_id": "4c046ca6-274e-49db-a977-f2fadd82bf2e",
+     "target2_audio_id": "9bb51bca-6d0b-496f-9815-4b0f79d7d3c1",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni okiru koto ga nai to ii na",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": false
+      },
+      {
+       "n": "こと",
+       "r": "koto",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ない",
+       "r": "nai",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "いい",
+       "r": "ii",
+       "salient": false
+      },
+      {
+       "n": "な。",
+       "r": "na",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02U04",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "I was trying to work in the middle of the night",
+     "target_text": "夜中に頑張ることを試していた",
+     "word_count": 15,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.032Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-12T20:38:12.288036+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fb76280e-72b8-4185-9d8b-a72275ad34df",
+     "target1_audio_id": "a418f720-65c1-461b-9a85-42f11d5fcf9c",
+     "target2_audio_id": "774e4ffa-bc4c-4e87-b23d-f9335deb27db",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 3816,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni ganbaru koto o tameshite ita.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to work hard",
+       "legoId": "S0106L02",
+       "target": "頑張る",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "を",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "試",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "頑張る",
+       "r": "ganbaru",
+       "salient": false
+      },
+      {
+       "n": "こと",
+       "r": "koto",
+       "salient": false
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": false
+      },
+      {
+       "n": "試して",
+       "r": "tameshite",
+       "salient": false
+      },
+      {
+       "n": "いた。",
+       "r": "ita.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e06cc16e-bda4-42cc-b6e4-741c64176708",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02U05",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "I felt tired in the middle of the night",
+     "target_text": "夜中に疲れたと感じた",
+     "word_count": 11,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.032Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-14T01:52:47.256273+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "34c2cb5c-75be-4351-91a6-39f8b7ad4acc",
+     "target1_audio_id": "8c834595-ee94-4cd0-9512-42ae83a06fbb",
+     "target2_audio_id": "5bd9cc3f-15d5-4693-a121-0be7167ca57a",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni tsukareta to kanjita",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "疲",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "れ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "feeling",
+       "legoId": "S0049L01",
+       "target": "感じ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "疲れた",
+       "r": "tsukareta",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "感じた。",
+       "r": "kanjita",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02U06",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "I need to work hard even in the middle of the night",
+     "target_text": "夜中にも頑張る必要がある",
+     "word_count": 13,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.032Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:26:10.518177+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7b9957e7-6602-4734-93af-53bdedf52387",
+     "target1_audio_id": "05f38ad3-af98-445b-8512-dc9f7e5ba24a",
+     "target2_audio_id": "8f07f29f-f51f-404f-b4c7-8dee77efb8a4",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni mo ganbaru hitsuyoo ga aru",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "も",
+       "isGhost": true
+      },
+      {
+       "known": "to work hard",
+       "legoId": "S0106L02",
+       "target": "頑張る",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "も",
+       "r": "mo",
+       "salient": false
+      },
+      {
+       "n": "頑張る",
+       "r": "ganbaru",
+       "salient": false
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある。",
+       "r": "aru",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02U07",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 13,
+     "known_text": "I didn't know what you were doing in the middle of the night",
+     "target_text": "夜中に何をしてるか知らなかった",
+     "word_count": 16,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.032Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:25:29.374719+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0ed12bec-f509-4ff1-9a29-ba9a5066ce0f",
+     "target1_audio_id": "0bd4e1c7-31fd-4959-9a7b-657d67db2b2e",
+     "target2_audio_id": "83929820-c53f-461b-8dcf-5bdb69e7dd87",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 3888,
+     "lego_id": null,
+     "target_text_roman": "yonaka ni nani o shiteru ka shiranakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "what you were doing",
+       "legoId": "S0107L01",
+       "target": "何をしてるか",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "知",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ら",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "何",
+       "r": "nani",
+       "salient": false
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": false
+      },
+      {
+       "n": "してる",
+       "r": "shiteru",
+       "salient": false
+      },
+      {
+       "n": "か",
+       "r": "ka",
+       "salient": false
+      },
+      {
+       "n": "知らなかった。",
+       "r": "shiranakatta",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L02U08",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 14,
+     "known_text": "that is why I must wake in the middle of the night",
+     "target_text": "だから夜中に起きる必要がある",
+     "word_count": 15,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.032Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:26:19.001305+00:00",
+     "created_at": "2026-02-11T15:40:43.063243+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "415e57ae-d2ca-4ccd-a8bd-2e5deaac6125",
+     "target1_audio_id": "41ed800c-2910-424a-9ebc-6311ccdf45a7",
+     "target2_audio_id": "781f57e1-3ab8-425e-857e-b2d26996eee5",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3960,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": "dakara yonaka ni okiru hitsuyoo ga aru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "だ",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "夜中に",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to wake",
+       "legoId": "S0108L01",
+       "target": "起きる",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "だから",
+       "r": "dakara",
+       "salient": false
+      },
+      {
+       "n": "夜中",
+       "r": "yonaka",
+       "salient": true
+      },
+      {
+       "n": "に",
+       "r": "ni",
+       "salient": true
+      },
+      {
+       "n": "起きる",
+       "r": "okiru",
+       "salient": false
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある。",
+       "r": "aru.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "didn't hope to",
+    "target_text": "とは思ってなかった",
+    "components": [
+     {
+      "known": "that",
+      "target": "とは"
+     },
+     {
+      "known": "didn't think",
+      "target": "思ってなかった"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "jpn_for_eng:S0108L03C01",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "that",
+     "target_text": "とは",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-12T16:30:34.371609+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+     "target1_audio_id": "866e792a-5df9-446e-8230-5cf1c0bc2b08",
+     "target2_audio_id": "3d8f3be4-8b05-49a7-9749-6702e5d38302",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": "to wa",
+     "target_phrase_id": null,
+     "presentation_audio_id": "93738d40-fc36-49bb-9bd5-e06eb7a2b4fc",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "19f963fd-fd71-4f8b-8060-bf21dc44e9d2",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03C02",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "didn't think",
+     "target_text": "思ってなかった",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-12T12:52:06.94285+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9f9b084e-542c-4fa9-94c7-1a22725609c6",
+     "target1_audio_id": "b0e330e4-d01f-4a96-a42f-bd3a0eeeb950",
+     "target2_audio_id": "1e829d17-e9f0-44ea-80e5-cbc50276e708",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": "omotte nakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": "6f66de73-56b4-42d6-b60d-4111b3ecc8e6",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "思",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "思って",
+       "r": "omotte",
+       "salient": false
+      },
+      {
+       "n": "なかった",
+       "r": "nakatta.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb796611-630b-4e9e-98cf-84d0eb5493fe",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03B01",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "didn't hope to",
+     "target_text": "とは思ってなかった",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-12T16:30:33.05704+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f",
+     "target1_audio_id": "174a44b9-3172-451e-b4ad-42529155c017",
+     "target2_audio_id": "12e9de3b-8e33-4c09-a660-3078b3826250",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": "to wa omotta nakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思って",
+       "r": "omotta",
+       "salient": true
+      },
+      {
+       "n": "なかった",
+       "r": "nakatta",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "19f963fd-fd71-4f8b-8060-bf21dc44e9d2",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03B02",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "I didn't hope to do it",
+     "target_text": "するとは思ってなかった",
+     "word_count": 12,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:25:24.65101+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "06b54247-86ef-45be-aaa1-7dfe71f5234f",
+     "target1_audio_id": "d7158f8f-1523-4ea1-b725-90856b22e4cf",
+     "target2_audio_id": "6c946d78-97fe-4675-b7e1-c1d7d46bc54b",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": "suru to wa omotte nakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "す",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "する",
+       "r": "suru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思って",
+       "r": "omotte",
+       "salient": true
+      },
+      {
+       "n": "なかった。",
+       "r": "nakatta",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03B03",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "I didn't hope to see it",
+     "target_text": "見るとは思ってなかった",
+     "word_count": 12,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:25:27.900828+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c1389257-c26b-42fd-b67c-93b90a6233c9",
+     "target1_audio_id": "9dbc3b20-57db-4c33-b66f-4bbf9625980b",
+     "target2_audio_id": "0f498575-34f1-407e-b39a-8dd3949f668c",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": "miru to wa omottenakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "見",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "見る",
+       "r": "miru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思ってなかった。",
+       "r": "omottenakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03B04",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "I didn't hope to know it",
+     "target_text": "知るとは思ってなかった",
+     "word_count": 12,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:25:27.378726+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7eb206d9-3b6d-4039-aa35-20b6ad0c8c5d",
+     "target1_audio_id": "a4811fc4-8ca3-4400-8da3-487338a335f1",
+     "target2_audio_id": "24a7199f-c5b1-4ed9-a370-5a5cf4250e43",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": "shiru to wa omotte nakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "知",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "知る",
+       "r": "shiru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思って",
+       "r": "omotte",
+       "salient": true
+      },
+      {
+       "n": "なかった。",
+       "r": "nakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03U03",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "I didn't hope to change my way of doing it",
+     "target_text": "やり方を変えるとは思ってなかった",
+     "word_count": 17,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.145Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:25:25.167732+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "531afa6b-1f78-47c0-afb0-f3cfdd157de6",
+     "target1_audio_id": "8f76332e-03f1-49e4-afa2-5a0dec4b4ea2",
+     "target2_audio_id": "45c39be5-f8f5-4175-916f-adad64fb1f94",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": "yarikata o kaeru to wa omotte nakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "what we're doing",
+       "legoId": "S0104L01",
+       "target": "やり方",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "を",
+       "isGhost": true
+      },
+      {
+       "known": "to change",
+       "legoId": "S0104L02",
+       "target": "変える",
+       "isGhost": false
+      },
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "やり方",
+       "r": "yarikata",
+       "salient": false
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": false
+      },
+      {
+       "n": "変える",
+       "r": "kaeru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思って",
+       "r": "omotte",
+       "salient": true
+      },
+      {
+       "n": "なかった。",
+       "r": "nakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03U05",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "I didn't hope to see what you were doing",
+     "target_text": "何をしてるか見るとは思ってなかった",
+     "word_count": 18,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.145Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-13T11:25:28.05739+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b1b7b2a6-aa5c-43f8-afb8-b4a500a5010c",
+     "target1_audio_id": "f6b0bc52-5588-4ea2-a23b-db085a23510e",
+     "target2_audio_id": "2e44ebaa-79ca-4849-8dff-0414f35d79b0",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 4176,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": "nani o shiteru ka miru to wa omotte nakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "what you were doing",
+       "legoId": "S0107L01",
+       "target": "何をしてるか",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "見",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "何",
+       "r": "nani",
+       "salient": false
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": false
+      },
+      {
+       "n": "してる",
+       "r": "shiteru",
+       "salient": false
+      },
+      {
+       "n": "か",
+       "r": "ka",
+       "salient": false
+      },
+      {
+       "n": "見る",
+       "r": "miru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思って",
+       "r": "omotte",
+       "salient": true
+      },
+      {
+       "n": "なかった。",
+       "r": "nakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03U06",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "I didn't hope to find the answer",
+     "target_text": "答えを見つけるとは思ってなかった",
+     "word_count": 17,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.145Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-13T11:25:27.152334+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4951a11a-1b2a-4171-8da1-0eebf60a2da9",
+     "target1_audio_id": "3b7fb519-863b-4c6e-8369-1ad363f56c62",
+     "target2_audio_id": "4c2eb075-dd94-4a37-aefc-a58a7ced3986",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 3840,
+     "lego_id": null,
+     "target_text_roman": "kotae o mitsukeru to wa omottenakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "find the answer",
+       "legoId": "S0066L02",
+       "target": "答えを見つける",
+       "isGhost": false
+      },
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "答え",
+       "r": "kotae",
+       "salient": false
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": false
+      },
+      {
+       "n": "見つける",
+       "r": "mitsukeru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思ってなかった。",
+       "r": "omottenakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03U07",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "that is why I didn't hope to feel happy",
+     "target_text": "だから楽しいと感じるとは思ってなかった",
+     "word_count": 20,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:43.145Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 25,
+     "updated_at": "2026-10-14T01:52:47.256273+00:00",
+     "created_at": "2026-02-11T15:40:43.179353+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "15d11fc4-b27d-4a27-bc82-c74f783abb17",
+     "target1_audio_id": "12117560-15c4-4702-b0ad-627d0a43ab47",
+     "target2_audio_id": "9b021dc1-3d2e-4e01-ae4e-dbe4b69a160e",
+     "qa_checked": "2026-02-11T16:32:02.684+00:00",
+     "target1_duration_ms": 4680,
+     "target2_duration_ms": 4488,
+     "lego_id": null,
+     "target_text_roman": "dakara tanoshii to kanjiru to wa omotte nakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "だ",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "enjoying",
+       "legoId": "S0101L03",
+       "target": "楽しい",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "feeling",
+       "legoId": "S0049L01",
+       "target": "感じ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "didn't hope to",
+       "legoId": "S0108L03",
+       "target": "とは思ってなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "だから",
+       "r": "dakara",
+       "salient": false
+      },
+      {
+       "n": "楽しい",
+       "r": "tanoshii",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "感じる",
+       "r": "kanjiru",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "思って",
+       "r": "omotte",
+       "salient": true
+      },
+      {
+       "n": "なかった。",
+       "r": "nakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "59924c78-d58c-4a92-a07b-a078d52d529d",
+     "frame_mask": null
+    },
+    {
+     "id": "jpn_for_eng:S0108L03U08",
+     "course_code": "jpn_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "夜中に起きるとは思ってなかった",
+     "word_count": 15,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "job": "#434",
+      "why": "P26: seed sentence played under its own last new LEGO (census #926)",
+      "format": "build_use",
+      "source": "jpn-census2-fix-2026-10-22",
+      "seed_sentence_of": 108
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 1,
+     "updated_at": "2026-10-22T18:14:59.432065+00:00",
+     "created_at": "2026-10-22T18:14:59.432065+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "9bf3eb5a-27d0-4d56-9003-3164e7c3f122",
+     "target2_audio_id": "aa26063c-6340-46ed-a981-0f5e4765cc8d",
+     "qa_checked": null,
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 3744,
+     "lego_id": "S0108L03",
+     "target_text_roman": "yonaka ni okiru to wa omotte nakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a39a52c9-6e2e-4a05-ac68-56b2389f852b",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

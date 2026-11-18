@@ -1,0 +1,1968 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "we hoped",
+    "target_text": "ελπίζαμε να",
+    "components": [
+     {
+      "known": "we hoped (1pl imperfect)",
+      "target": "ελπίζαμε"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": null,
+   "phrases": []
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "for us to wake up",
+    "target_text": "να ξυπνήσουμε",
+    "components": [
+     {
+      "known": "we wake up",
+      "target": "ξυπνήσουμε"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "el_for_eng:S0108L02C01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "we wake up",
+     "target_text": "ξυπνήσουμε",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 82,
+     "updated_at": "2026-10-13T06:35:01.041252+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2117290e-f9bc-4ea0-932d-d64ec71f2ba4",
+     "target1_audio_id": "1cd12c14-5fed-4280-bac4-aa468e4337eb",
+     "target2_audio_id": "249869ad-ed5c-480e-af8e-97d5618d8349",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": "xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ξυπνήσουμε",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8939769-471b-49c4-ab7e-41167f5fed72",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02B01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "to wake up",
+     "target_text": "να ξυπνήσουμε",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 71,
+     "updated_at": "2026-10-12T16:32:02.897064+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a10d4f59-3cf0-4071-80d7-930ac574949f",
+     "target1_audio_id": "4aabc4c0-8784-45de-860d-6cd0e65592d2",
+     "target2_audio_id": "99bd00f6-5be8-4ed0-ac8e-dce32f06815e",
+     "qa_checked": null,
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 2016,
+     "lego_id": null,
+     "target_text_roman": "na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": "να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "34ead357-ce15-4b9e-8365-affc8e252e80",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02B02",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "we need to wake up",
+     "target_text": "χρειάζεται να ξυπνήσουμε",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 67,
+     "updated_at": "2026-10-13T06:34:59.93441+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "45df679f-8e60-4efe-96a5-6d801d98e1fa",
+     "target1_audio_id": "3f963d63-34a9-4901-bbb9-a4d8990485c1",
+     "target2_audio_id": "14bb26c0-f948-473e-89a3-a7f7b2ab017b",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": "chreiazete na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "χρειάζεται",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8939769-471b-49c4-ab7e-41167f5fed72",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02B03",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "we are trying to wake up",
+     "target_text": "προσπαθούμε να ξυπνήσουμε",
+     "word_count": 25,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:14:30.25998+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b5a03be0-fdd9-42d7-9c72-91e46f229c0a",
+     "target1_audio_id": "50ad8d16-85f8-4c15-a178-edc8397a9e35",
+     "target2_audio_id": "5ff47bc6-501f-44aa-ac70-48209745e7fa",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2472,
+     "lego_id": null,
+     "target_text_roman": "prospатhouме na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "προσπαθούμε",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02B04",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "we didn't hope to wake up",
+     "target_text": "δεν ελπίζαμε να ξυπνήσουμε",
+     "word_count": 26,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 67,
+     "updated_at": "2026-10-13T06:34:56.007734+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+     "target1_audio_id": "fd599ad0-1bc0-4281-ad94-0907e8025dc3",
+     "target2_audio_id": "cbd821ad-8726-42ce-a77f-15e49010ef57",
+     "qa_checked": null,
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": "den elpizame na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "δεν",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ελπίζαμε",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8939769-471b-49c4-ab7e-41167f5fed72",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02U01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "we just need to wake up",
+     "target_text": "απλά χρειάζεται να ξυπνήσουμε",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.649Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:06:53.013352+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e1ef6d5e-381c-400e-a922-1898a9c1c3f6",
+     "target1_audio_id": "1738a26a-a7b0-41ab-a41b-33bc0117a721",
+     "target2_audio_id": "3e2aac46-64db-4701-829d-a01798a6e444",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": "apla chreiazete na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "simply",
+       "legoId": "S0106L04",
+       "target": "απλά",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " χρειάζεται",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02U02",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "that's why we are trying to wake up",
+     "target_text": "γι'αυτό προσπαθούμε να ξυπνήσουμε",
+     "word_count": 33,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.649Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:07:12.933255+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a83dcd13-ac84-4eb1-9f4a-a9e76e989c1a",
+     "target1_audio_id": "366f0ea4-0204-4e4b-8303-2f10dde936c5",
+     "target2_audio_id": "60afcf2e-9255-486a-9012-bd4f703fddba",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": "gi'afto prospатhoume na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that's why",
+       "legoId": "S0105L01",
+       "target": "γι'αυτό",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " προσπαθούμε",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02U03",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "unfortunately, we need to wake up",
+     "target_text": "δυστυχώς, χρειάζεται να ξυπνήσουμε",
+     "word_count": 34,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.649Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:09:08.870906+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4e1937c2-9f69-4b99-80e3-0f12515b2c78",
+     "target1_audio_id": "06d988c1-a9bc-4634-af4a-7ffdbb7107ea",
+     "target2_audio_id": "d838bbf9-7e99-4dd5-83d0-ef82267e1fb3",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": "dystichos, chreiazete na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "unfortunately",
+       "legoId": "S0086L03",
+       "target": "δυστυχώς",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " χρειάζεται",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02U04",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "I know we didn't hope to wake up",
+     "target_text": "ξέρω ότι δεν ελπίζαμε να ξυπνήσουμε",
+     "word_count": 35,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.649Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:13:33.085043+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a3d1c21b-5f84-4a4c-a5fe-ee4fef8e3deb",
+     "target1_audio_id": "2ab8a6f2-be75-4a22-bac9-e1202bfa6e79",
+     "target2_audio_id": "8862a2b0-76ed-4805-94a8-b0c190649101",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": "xero oti den elpidzame na xypnisoume",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I know",
+       "legoId": "S0045L02",
+       "target": "ξέρω",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ότι",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " δεν",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ελπίζαμε",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L02U05",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "I think we need to wake up now",
+     "target_text": "νομίζω ότι χρειάζεται να ξυπνήσουμε τώρα",
+     "word_count": 40,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.649Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:14:16.920412+00:00",
+     "created_at": "2026-03-15T21:25:50.690862+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "33bb54c4-15a9-44df-8163-d2e114ea6657",
+     "target1_audio_id": "3357d52c-56d2-4e6d-a861-4b8c23344ac6",
+     "target2_audio_id": "61eef4aa-910e-4031-a90f-18cbb65d9cad",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": "nomizo oti chreiazeta i na xypnisoume tora",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I think that",
+       "legoId": "S0072L01",
+       "target": "νομίζω ότι",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " χρειάζεται",
+       "isGhost": true
+      },
+      {
+       "known": "for us to wake up",
+       "legoId": "S0108L02",
+       "target": " να ξυπνήσουμε",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "now",
+       "legoId": "S0001L05",
+       "target": " τώρα",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "in the middle",
+    "target_text": "στη μέση",
+    "components": [
+     {
+      "known": "middle (feminine)",
+      "target": "μέση"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "el_for_eng:S0108L03C01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "middle",
+     "target_text": "μέση",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 82,
+     "updated_at": "2026-10-12T14:29:30.402817+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "98f98933-8c2c-43fb-93ac-f18b17031bba",
+     "target2_audio_id": "1083a903-802c-416e-8bc5-27ebe1d362b3",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": "mési",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "μέση",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "30606084-9f3f-4366-b2d6-af0c256c56ce",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03B01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "in the middle",
+     "target_text": "στη μέση",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 70,
+     "updated_at": "2026-10-12T11:24:52.527257+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9bc78274-455f-4daf-83a5-2fda27e57ebe",
+     "target1_audio_id": "87d60c9c-dd3b-46b1-b9e8-23112b7d0ffd",
+     "target2_audio_id": "de342079-2d74-4fd9-958a-c8697298b9b3",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": "sti mesi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": "στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "df0b1571-7df7-466c-a072-807c715ef6a7",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03B02",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "it's in the middle",
+     "target_text": "είναι στη μέση",
+     "word_count": 14,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 67,
+     "updated_at": "2026-10-13T08:09:10.837234+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d9c8c4d8-65f9-4b79-9ae9-fd3a6371491a",
+     "target1_audio_id": "0c88f366-78e4-40f5-bbb5-af6a8c81f0f5",
+     "target2_audio_id": "2c729027-bbfb-4b71-8ebf-80d17956d0b0",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": "einai sti mesi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": "είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8939769-471b-49c4-ab7e-41167f5fed72",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03B03",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "that's why it's in the middle",
+     "target_text": "γι'αυτό είναι στη μέση",
+     "word_count": 22,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:07:12.524444+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ad44a209-6271-4706-98ee-cd8eb48e36ab",
+     "target1_audio_id": "16358a5f-1559-4c79-9fb7-8340c9c2ee7c",
+     "target2_audio_id": "c9da0182-6de7-4608-9fee-c8fd576b75c9",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": "gi'afto einai sti mesi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that's why",
+       "legoId": "S0105L01",
+       "target": "γι'αυτό",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03U01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "I know it's in the middle",
+     "target_text": "ξέρω ότι είναι στη μέση",
+     "word_count": 23,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.860Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:13:40.881966+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9e58cba8-aa4b-441f-bf99-f16b0c30939a",
+     "target1_audio_id": "f6610737-c0dd-4c11-9673-a3bcb836f6da",
+     "target2_audio_id": "c1ee8fa3-b47f-4678-a19d-19c69fadb862",
+     "qa_checked": null,
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": "xero oti einai sti mesi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I know",
+       "legoId": "S0045L02",
+       "target": "ξέρω",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ότι",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03U02",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "I think it's in the middle",
+     "target_text": "νομίζω ότι είναι στη μέση",
+     "word_count": 25,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.860Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:13:07.737137+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2d91dfc4-2ef5-4e5c-bf74-c644a80eaa2d",
+     "target1_audio_id": "9be282c3-b9cd-4804-8245-2ea74ad690d0",
+     "target2_audio_id": "f4c5a72a-9ad5-46bb-a2be-a8475007bb9f",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": "nomizo oti einai sti mesi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I think that",
+       "legoId": "S0072L01",
+       "target": "νομίζω ότι",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03U03",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "I'm surprised it's in the middle",
+     "target_text": "εκπλήσσομαι ότι είναι στη μέση",
+     "word_count": 30,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.860Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 69,
+     "updated_at": "2026-06-04T15:10:18.59809+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "600aaec3-405a-4f33-9915-401eea5d2931",
+     "target1_audio_id": "747fbeb9-af84-4b44-a723-5a5c5b27b2e6",
+     "target2_audio_id": "4198f8c5-b8da-4e88-beae-d6fa319413c5",
+     "qa_checked": null,
+     "target1_duration_ms": 2520,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": "ekplissomai oti einai sti mesi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm surprised",
+       "legoId": "S0077L01",
+       "target": "εκπλήσσομαι",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ότι",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03U04",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "it's not in the middle, it's like that",
+     "target_text": "δεν είναι στη μέση, είναι έτσι",
+     "word_count": 30,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.860Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:08:01.77559+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b6cd69d2-d407-4f11-847c-ebc9f2b4e647",
+     "target1_audio_id": "f4f0c6a9-3cea-4f6d-95a4-531c1cf47c16",
+     "target2_audio_id": "e41e2f0e-6136-4629-a795-ecda179ffc00",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": "den einai sti mesi, einai etsi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "δεν",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "like this",
+       "legoId": "S0049L02",
+       "target": " έτσι",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L03U05",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "I'm not sure if it's in the middle",
+     "target_text": "δεν είμαι σίγουρος αν είναι στη μέση",
+     "word_count": 36,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.860Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 69,
+     "updated_at": "2026-06-04T15:08:12.530422+00:00",
+     "created_at": "2026-03-15T21:25:50.901987+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2543bfaf-5da5-43a4-a355-2b8b0d7c9e78",
+     "target1_audio_id": "1ace8c01-7ee9-4a28-ba18-5a5391d479ba",
+     "target2_audio_id": "7bc64ebc-b9ed-470b-9e65-4a959eaae91a",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": "den eimai sigouros an einai sti mesi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm not sure",
+       "legoId": "S0010L01",
+       "target": "δεν είμαι σίγουρος",
+       "isGhost": false
+      },
+      {
+       "known": "if",
+       "legoId": "S0090L01",
+       "target": " αν",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L04": {
+   "lego": {
+    "lego_index": 4,
+    "lego_id": "S0108L04",
+    "type": "M",
+    "known_text": "of the night",
+    "target_text": "της νύχτας",
+    "components": [
+     {
+      "known": "night",
+      "target": "νύχτας"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "el_for_eng:S0108L04C01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 1,
+     "known_text": "night",
+     "target_text": "νύχτας",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 80,
+     "updated_at": "2026-10-12T16:31:59.721015+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+     "target1_audio_id": "41a4e106-4148-4ecf-bf64-71d8a2aa05e9",
+     "target2_audio_id": "6f7d9352-395e-44ae-94a6-93f8f436e846",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": "nichtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "νύχτας",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "34ead357-ce15-4b9e-8365-affc8e252e80",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04B01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 2,
+     "known_text": "of the night",
+     "target_text": "της νύχτας",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 69,
+     "updated_at": "2026-10-13T07:51:38.212784+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0702421a-505b-45f5-86ff-39aefe1bf1d6",
+     "target1_audio_id": "a8d0f10e-8ea3-49d8-8c81-4a7954b5b86b",
+     "target2_audio_id": "e7d21072-c938-43d4-815f-b77aab63378a",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": "tis nichtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": "της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8939769-471b-49c4-ab7e-41167f5fed72",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04B02",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 3,
+     "known_text": "in the middle of the night",
+     "target_text": "στη μέση της νύχτας",
+     "word_count": 19,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 68,
+     "updated_at": "2026-10-12T16:57:14.616713+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "652fcffa-1d88-462f-a930-a92c006645c6",
+     "target2_audio_id": "e69db134-6694-4127-bdbc-7116b5008265",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": "sti mesi tis nichtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": "στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "67865e95-8d3a-400d-a118-a298785c816e",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04B03",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 4,
+     "known_text": "it's in the middle of the night",
+     "target_text": "είναι στη μέση της νύχτας",
+     "word_count": 25,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:09:37.984815+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1737ac63-5e92-4b80-afea-363fd084ef65",
+     "target1_audio_id": "9c8ef455-a34f-439d-b1db-5d0e0e8045cd",
+     "target2_audio_id": "b968d5a2-f482-453f-9d5e-230fc293a983",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": "einai sti mesi tis nychtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": "είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04B04",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 5,
+     "known_text": "I know it's in the middle of the night",
+     "target_text": "ξέρω ότι είναι στη μέση της νύχτας",
+     "word_count": 34,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:13:40.887636+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f7c66383-05ed-4fe1-a660-25d2727849b0",
+     "target1_audio_id": "3cb268cc-abbd-4094-9fa3-517f60d4ef02",
+     "target2_audio_id": "4c540c55-bbd1-4320-9e23-39c21b015936",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": "xero oti einai sti mesi tis nychtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I know",
+       "legoId": "S0045L02",
+       "target": "ξέρω",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ότι",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04U01",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 6,
+     "known_text": "I'm surprised it's the middle of the night",
+     "target_text": "εκπλήσσομαι ότι είναι στη μέση της νύχτας",
+     "word_count": 41,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.966Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 69,
+     "updated_at": "2026-06-04T15:10:18.597787+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "32808497-bd24-4176-9308-b9c4d3abd02a",
+     "target1_audio_id": "09bc197f-171b-453c-839e-5d2f08bdf7e2",
+     "target2_audio_id": "ed18fa4c-b7fb-4748-85c6-c515736a0caa",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": "ekplissomai oti einai sti mesi tis nychtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm surprised",
+       "legoId": "S0077L01",
+       "target": "εκπλήσσομαι",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ότι",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0047L03",
+       "target": " είναι",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04U02",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 7,
+     "known_text": "we didn't hope to wake up in the middle of the night",
+     "target_text": "δεν ελπίζαμε να ξυπνήσουμε στη μέση της νύχτας",
+     "word_count": 46,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.966Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 67,
+     "updated_at": "2026-10-13T09:45:43.276456+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+     "target1_audio_id": "dd488091-e50b-4431-bf77-8bfc7b8f1897",
+     "target2_audio_id": "1d2eb143-b774-470c-adaa-75ede0c2f7ed",
+     "qa_checked": null,
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": "den elpizame na xypnisoume sti mesi tis nychtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "δεν",
+       "isGhost": true
+      },
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": " ελπίζαμε να",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ξυπνήσουμε",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8939769-471b-49c4-ab7e-41167f5fed72",
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04U03",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 8,
+     "known_text": "that's why we need to wake up in the middle of the night",
+     "target_text": "γι'αυτό χρειάζεται να ξυπνήσουμε στη μέση της νύχτας",
+     "word_count": 52,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.966Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:07:21.233923+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "bc4c4b2f-9c09-424b-814b-20ada82f665c",
+     "target1_audio_id": "d9dab826-74ca-403f-810b-e9965cdf0ce9",
+     "target2_audio_id": "cec4cd95-b93e-45ee-817f-7f6dcb62f9ae",
+     "qa_checked": null,
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": "gi'afto chreiazete na xypnisoume sti mesi tis nychtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that's why",
+       "legoId": "S0105L01",
+       "target": "γι'αυτό",
+       "isGhost": false
+      },
+      {
+       "known": "it is necessary to",
+       "legoId": "S0106L01",
+       "target": " χρειάζεται να",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ξυπνήσουμε",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04U04",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 9,
+     "known_text": "we are trying to work hard in the middle of the night",
+     "target_text": "προσπαθούμε να δουλεύουμε σκληρά στη μέση της νύχτας",
+     "word_count": 52,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.966Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:14:24.484406+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "78c96d15-b250-47bc-aec2-9b5aac75ed86",
+     "target1_audio_id": "755228b2-21a2-48ba-9bb0-de865d0630a4",
+     "target2_audio_id": "e1288ad9-f313-42eb-a304-2ab288406c15",
+     "qa_checked": null,
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": "prospathоume na doulevоume sklira sti mesi tis nychtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we are trying",
+       "legoId": "S0102L01",
+       "target": "προσπαθούμε να",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " δουλεύουμε",
+       "isGhost": true
+      },
+      {
+       "known": "hard",
+       "legoId": "S0106L06",
+       "target": " σκληρά",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "el_for_eng:S0108L04U05",
+     "course_code": "ell_for_eng",
+     "seed_number": 108,
+     "lego_index": 4,
+     "position": 10,
+     "known_text": "unfortunately, we need to wake up in the middle of the night",
+     "target_text": "δυστυχώς, χρειάζεται να ξυπνήσουμε στη μέση της νύχτας",
+     "word_count": 54,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-03-15T21:25:50.966Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 66,
+     "updated_at": "2026-06-04T15:09:08.868655+00:00",
+     "created_at": "2026-03-15T21:25:51.00966+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d07fda06-de59-4538-b2cc-8e41a8a5a75a",
+     "target1_audio_id": "1619238b-e38b-423b-8f43-646185535434",
+     "target2_audio_id": "d26e2246-933d-40a9-b4e9-18cc6094c1a0",
+     "qa_checked": null,
+     "target1_duration_ms": 4104,
+     "target2_duration_ms": 4128,
+     "lego_id": null,
+     "target_text_roman": "dystichos, chreiazete na xypnisoume sti mesi tis nychtas",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "unfortunately",
+       "legoId": "S0086L03",
+       "target": "δυστυχώς",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "it is necessary to",
+       "legoId": "S0106L01",
+       "target": " χρειάζεται να",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ξυπνήσουμε",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " στη μέση",
+       "isGhost": false
+      },
+      {
+       "known": "of the night",
+       "legoId": "S0108L04",
+       "target": " της νύχτας",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1299 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "we didn't hope to wake in the middle of the night",
+  "target": "Vi hoppades inte på att vakna mitt i natten."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "A",
+    "known_text": "wake up",
+    "target_text": "vakna",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": null,
+   "phrases": []
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "middle of",
+    "target_text": "mitt i",
+    "components": [
+     {
+      "known": "middle",
+      "target": "mitt"
+     },
+     {
+      "known": "in",
+      "target": "i"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "swe_for_eng:S0108L02C01",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "middle",
+     "target_text": "mitt",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 104,
+     "updated_at": "2026-10-12T14:29:29.724777+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "9ca1896f-ab39-4522-b8d3-5d5b94348f32",
+     "target2_audio_id": "ab5f53f1-23c4-4592-bad4-3aa45d627d78",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "9aa58be6-3e78-45ed-8ef4-91d3d98aada8",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "mitt",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "df35f2d3-acf2-4fe4-b534-d0395f465ddc",
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02C02",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "in",
+     "target_text": "i",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 70,
+     "updated_at": "2026-10-13T16:29:59.751891+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+     "target1_audio_id": "72039d34-235e-4e24-9674-0424760d84f1",
+     "target2_audio_id": "e92b1dd8-7432-4ac6-ae2d-4f4f6f389738",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "10aecc72-d624-456f-95c5-beb287a17ff8",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in",
+       "legoId": "S0038L01",
+       "target": "i",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e49577e7-45f8-4066-ad60-1d043bd0a924",
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02B01",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "middle of",
+     "target_text": "mitt i",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 97,
+     "updated_at": "2026-06-02T23:02:05.528174+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8b5c73cd-4e22-49f0-8581-89533090d795",
+     "target1_audio_id": "758c98d1-3868-48b2-b0b6-6d821712695f",
+     "target2_audio_id": "7c6a5a7a-a789-469e-9147-8ebe7ef76697",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": "mitt i",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02B02",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "in the middle of it",
+     "target_text": "mitt i det",
+     "word_count": 10,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 99,
+     "updated_at": "2026-10-13T16:29:59.751891+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4b3579cd-6672-4b2e-a85a-a58b55d1c0f9",
+     "target1_audio_id": "e064dddd-9951-47ea-bda3-39fa4ec90daa",
+     "target2_audio_id": "b0991faa-bd3e-4535-9c7c-e61353d4eb15",
+     "qa_checked": null,
+     "target1_duration_ms": 2112,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": "mitt i",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": " det",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02B03",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "wake up in the middle",
+     "target_text": "vakna mitt i",
+     "word_count": 12,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 97,
+     "updated_at": "2026-06-02T23:02:18.152359+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f8714987-0c78-4c8f-b720-3a7c1a4b6ae3",
+     "target1_audio_id": "83621ba6-a54f-4ef5-bdc9-5e1a581f36a5",
+     "target2_audio_id": "21aff901-cf32-4bb8-9047-d64d43ba2670",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": "vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02B04",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "something in the middle",
+     "target_text": "något mitt i",
+     "word_count": 12,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 97,
+     "updated_at": "2026-06-02T23:02:09.627637+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a533f899-c025-4e14-8490-9014263bc715",
+     "target1_audio_id": "82b54dd4-d806-446e-851d-e1ed6f10f471",
+     "target2_audio_id": "7caae632-bf27-4ffb-bb3d-87a8d44f3f36",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2472,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "something",
+       "legoId": "S0004L01",
+       "target": "något",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02B05",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "do it in the middle",
+     "target_text": "göra det mitt i",
+     "word_count": 15,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 99,
+     "updated_at": "2026-10-13T16:29:59.751891+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6926cb79-6e76-4ba7-9c1c-45adb6604547",
+     "target1_audio_id": "0ca894d7-98eb-4f51-a113-0143692914e2",
+     "target2_audio_id": "d978a5f6-4ef0-4f2a-8d2f-ad9bd121842d",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to do",
+       "legoId": "S0046L02",
+       "target": "göra",
+       "isGhost": false
+      },
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": " det",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02U01",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "we didn't hope to wake in the middle",
+     "target_text": "vi hoppades inte på att vakna mitt i",
+     "word_count": 36,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:40.878Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 98,
+     "updated_at": "2026-10-13T08:09:13.407739+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ec9d66dc-2a37-481c-a780-85402f78cb23",
+     "target1_audio_id": "8b088e37-7360-43eb-a8a6-71961db6cbb7",
+     "target2_audio_id": "4b07b866-bb04-47b1-9014-5c77c185f857",
+     "qa_checked": null,
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we",
+       "legoId": "S0102L01",
+       "target": "vi",
+       "isGhost": false
+      },
+      {
+       "known": "hoped",
+       "legoId": "S0107L01",
+       "target": " hoppades",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " inte",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " att",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "148b20a1-df4b-488b-9b97-240811d5a339",
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02U02",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "she wants to wake up in the middle of it",
+     "target_text": "hon vill vakna mitt i det",
+     "word_count": 25,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:40.878Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 99,
+     "updated_at": "2026-10-13T16:29:59.751891+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0a7b63da-2122-4f10-b1a0-ecbcbc655623",
+     "target1_audio_id": "7cd63db0-c816-4cb0-b3dd-5efbb3d5fff6",
+     "target2_audio_id": "138b7e1e-05ef-4efd-b60f-a96d39667344",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "hon",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vill",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": " det",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02U03",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "he needs to do that in the middle of the day",
+     "target_text": "han behöver göra det mitt i dagen",
+     "word_count": 33,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:40.878Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 99,
+     "updated_at": "2026-10-13T16:29:59.751891+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d43b742c-e896-42ae-aa7b-eb396bceb5ac",
+     "target1_audio_id": "d1300b8d-74e3-4814-906b-2dc697e9b3d6",
+     "target2_audio_id": "ebcafb77-e81d-4455-9882-36ac216533f9",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "he",
+       "legoId": "S0105L02",
+       "target": "han",
+       "isGhost": false
+      },
+      {
+       "known": "need",
+       "legoId": "S0044L02",
+       "target": " behöver",
+       "isGhost": false
+      },
+      {
+       "known": "to do",
+       "legoId": "S0046L02",
+       "target": " göra",
+       "isGhost": false
+      },
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": " det",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "the day",
+       "legoId": "S0014L01",
+       "target": " dagen",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L02U05",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "she didn't want to wake up in the middle",
+     "target_text": "hon ville inte vakna mitt i",
+     "word_count": 27,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:40.878Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 97,
+     "updated_at": "2026-06-02T23:02:11.832861+00:00",
+     "created_at": "2026-04-11T18:12:40.952066+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2607d207-b080-42f9-bab4-fd407481b69c",
+     "target1_audio_id": "0c03d7ea-223b-4c47-9692-bea681956b06",
+     "target2_audio_id": "863b7502-bb93-44e9-804a-9d6eec60545b",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "hon",
+       "isGhost": false
+      },
+      {
+       "known": "wanted",
+       "legoId": "S0030L01",
+       "target": " ville",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " inte",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "A",
+    "known_text": "the night",
+    "target_text": "natten",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "swe_for_eng:S0108L03B01",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "the night",
+     "target_text": "natten",
+     "word_count": 6,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 100,
+     "updated_at": "2026-10-12T16:30:09.010653+00:00",
+     "created_at": "2026-04-11T18:12:41.079645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1b7a868e-9805-4571-854b-3e191760d808",
+     "target1_audio_id": "bb0ebc16-1773-4375-ae89-8e95a92f0a1f",
+     "target2_audio_id": "4c7a9773-1952-4277-9d9e-c233adbfa5cc",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "the night",
+       "legoId": "S0108L03",
+       "target": "natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e49577e7-45f8-4066-ad60-1d043bd0a924",
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L03B02",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "in the night",
+     "target_text": "i natten",
+     "word_count": 8,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 103,
+     "updated_at": "2026-10-13T16:29:59.751891+00:00",
+     "created_at": "2026-04-11T18:12:41.079645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ab3b282e-4c70-4cee-99c9-45ec755d4ed2",
+     "target1_audio_id": "1de07791-a0e2-46ef-9897-4cbe0da26492",
+     "target2_audio_id": "231282ca-f527-498a-aaf5-041e4aebe66b",
+     "qa_checked": null,
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in",
+       "legoId": "S0038L01",
+       "target": "i",
+       "isGhost": false
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L03",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "148b20a1-df4b-488b-9b97-240811d5a339",
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L03B03",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "in the middle of the night",
+     "target_text": "mitt i natten",
+     "word_count": 13,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 102,
+     "updated_at": "2026-10-12T16:57:18.170987+00:00",
+     "created_at": "2026-04-11T18:12:41.079645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "b2822b69-7fa8-4876-9cd3-5577769d7748",
+     "target2_audio_id": "064743c5-a292-43c3-8656-b541bdcdbaff",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": "mitt i",
+       "isGhost": false
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L03",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4125e921-42db-47e3-9656-a1d906ef8895",
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L03U01",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "vi hoppades inte på att vakna mitt i natten",
+     "word_count": 43,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:41.006Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 102,
+     "updated_at": "2026-10-12T16:30:10.564856+00:00",
+     "created_at": "2026-04-11T18:12:41.079645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "1ec682a5-9f82-46a4-b121-695930b05efa",
+     "target2_audio_id": "2ec70aae-882f-427f-aac7-f8c74bf059e1",
+     "qa_checked": null,
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 3816,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we",
+       "legoId": "S0102L01",
+       "target": "vi",
+       "isGhost": false
+      },
+      {
+       "known": "hoped",
+       "legoId": "S0107L01",
+       "target": " hoppades",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " inte",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " att",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L03",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e49577e7-45f8-4066-ad60-1d043bd0a924",
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L03U03",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "ask yourself why you want to wake up in the middle of the night",
+     "target_text": "fråga dig själv varför du vill vakna mitt i natten",
+     "word_count": 50,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:41.006Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 100,
+     "updated_at": "2026-06-02T23:02:06.902181+00:00",
+     "created_at": "2026-04-11T18:12:41.079645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1513927d-9332-468c-8ae6-19ee8402872e",
+     "target1_audio_id": "72b65a1a-e5e1-47d9-b0d2-c8969e8241cd",
+     "target2_audio_id": "f968330b-82e8-40c3-b42e-2db7e39972c9",
+     "qa_checked": null,
+     "target1_duration_ms": 4104,
+     "target2_duration_ms": 4488,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to ask",
+       "legoId": "S0030L02",
+       "target": "fråga",
+       "isGhost": false
+      },
+      {
+       "known": "yourself",
+       "legoId": "S0099L02",
+       "target": " dig själv",
+       "isGhost": false
+      },
+      {
+       "known": "why",
+       "legoId": "S0099L03",
+       "target": " varför",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " du",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vill",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L03",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L03U04",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "it's difficult to wake up in the middle of the night",
+     "target_text": "det är svårt att vakna mitt i natten",
+     "word_count": 36,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:41.006Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 102,
+     "updated_at": "2026-10-13T16:29:59.751891+00:00",
+     "created_at": "2026-04-11T18:12:41.079645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3b32aaf3-21f9-43fa-b871-0230b5ef3217",
+     "target1_audio_id": "fc703e6a-c33c-4121-ba73-ad4649376950",
+     "target2_audio_id": "a40f20bc-8377-44a0-b2e1-2be8c06058fe",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": "det",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " är",
+       "isGhost": true
+      },
+      {
+       "known": "difficult",
+       "legoId": "S0066L01",
+       "target": " svårt",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " att",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L03",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "swe_for_eng:S0108L03U05",
+     "course_code": "swe_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "she didn't want to wake up in the middle of the night",
+     "target_text": "hon ville inte vakna mitt i natten",
+     "word_count": 34,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-11T18:12:41.006Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 100,
+     "updated_at": "2026-06-02T23:02:04.749806+00:00",
+     "created_at": "2026-04-11T18:12:41.079645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "64e9d88e-6760-4612-974b-77ee01d779f0",
+     "target1_audio_id": "c8c01670-2e6e-4318-9982-7a05b98f84c6",
+     "target2_audio_id": "44c9410a-22e5-49bc-8205-96e9a48e3450",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "hon",
+       "isGhost": false
+      },
+      {
+       "known": "wanted",
+       "legoId": "S0030L01",
+       "target": " ville",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " inte",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "middle of",
+       "legoId": "S0108L02",
+       "target": " mitt i",
+       "isGhost": false
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L03",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

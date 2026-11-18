@@ -1,0 +1,1933 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "we didn't hope to wake in the middle of the night",
+  "target": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْل"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "we were not",
+    "target_text": "لَمْ نَكُنْ",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "ara_for_eng:S0108L01B01",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "we were not",
+     "target_text": "لَمْ نَكُنْ",
+     "word_count": 11,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:03.080319+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e64d476c-fe42-4a02-97f1-0a713a8614b5",
+     "target1_audio_id": "cd161322-1ff8-4581-8d87-fd27914461e9",
+     "target2_audio_id": "b63e4081-d8b3-428b-a515-af592eb5f49e",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": "lam nakun",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L01B02",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "we didn't hope",
+     "target_text": "لَمْ نَكُنْ نَأْمَلُ",
+     "word_count": 20,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:57.805364+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+     "target1_audio_id": "e04f9a2d-6c5e-4118-9e4d-21b3b43e8886",
+     "target2_audio_id": "b923cd63-ee4c-4ee6-b408-951a4d21f622",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2472,
+     "lego_id": null,
+     "target_text_roman": "lam nakun na'mal",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "we hope",
+       "legoId": "S0107L02",
+       "target": " نَأْمَلُ",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L01B03",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "we were not trying",
+     "target_text": "لَمْ نَكُنْ نُحاوِلُ",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:05.112414+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a3cecc6c-59da-4960-9e76-c0f1013e4374",
+     "target1_audio_id": "4c7231e0-c52a-43f5-a5b7-61501365be34",
+     "target2_audio_id": "a938b6dd-2b98-4bfa-9995-4838a219c289",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": "lam nakun nuhhaawil",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "we try",
+       "legoId": "S0102L01",
+       "target": " نُحاوِلُ",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L01U01",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "we were not trying to hear many more words",
+     "target_text": "لَمْ نَكُنْ نُحاوِلُ أَنْ نَسْمَعَ كَلِماتٍ كَثيرَةً أُخْرى",
+     "word_count": 59,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.840Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:05.558938+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "025a4450-a334-4a73-b5bd-f38eb170d6b3",
+     "target1_audio_id": "d6098ead-71c2-4128-b79d-9747cb637c57",
+     "target2_audio_id": "42156b78-00a7-4fa5-805e-9fe6b27593ff",
+     "qa_checked": null,
+     "target1_duration_ms": 5616,
+     "target2_duration_ms": 4680,
+     "lego_id": null,
+     "target_text_roman": "lamnakunnanuhhaawiluansnas'amaka limaatinkathirata'ukhrah",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "we try",
+       "legoId": "S0102L01",
+       "target": " نُحاوِلُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we hear",
+       "legoId": "S0103L01",
+       "target": " نَسْمَعَ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " كَلِماتٍ",
+       "isGhost": true
+      },
+      {
+       "known": "many",
+       "legoId": "S0103L02",
+       "target": " كَثيرَةً",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أُخْرى",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L01U02",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "I want to speak Arabic but we were not trying",
+     "target_text": "أُريدُ أَنْ أَتَكَلَّمَ العَرَبِيَّةَ لٰكِنْ لَمْ نَكُنْ نُحاوِلُ",
+     "word_count": 65,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.840Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:51.102749+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "81950af0-755a-4f1f-93f2-b32ce7d1e631",
+     "target1_audio_id": "02a523d6-51d0-4d88-aaf3-88a91c39f2e1",
+     "target2_audio_id": "863945f8-af0e-48cd-9c2b-b1c69a6cd945",
+     "qa_checked": null,
+     "target1_duration_ms": 5568,
+     "target2_duration_ms": 4704,
+     "lego_id": null,
+     "target_text_roman": "ureedu an atakallama al-'arabiyyata laakin lam nakun nuhhaawiil",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I want to speak",
+       "legoId": "S0001L01",
+       "target": "أُريدُ أَنْ أَتَكَلَّمَ",
+       "isGhost": false
+      },
+      {
+       "known": "arabic",
+       "legoId": "S0001L02",
+       "target": " العَرَبِيَّةَ",
+       "isGhost": false
+      },
+      {
+       "known": "but",
+       "legoId": "S0019L01",
+       "target": " لٰكِنْ",
+       "isGhost": false
+      },
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": " لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "we try",
+       "legoId": "S0102L01",
+       "target": " نُحاوِلُ",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L01U03",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "we were not hoping to change what we say",
+     "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نُغَيِّرَ ما نَقولُ",
+     "word_count": 45,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.840Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:02.984533+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8689c60e-847b-4d5a-979c-933faf3e9e47",
+     "target1_audio_id": "f1986f33-b586-4e4e-98a0-6e92e1504529",
+     "target2_audio_id": "6c89ea96-e184-4681-95f6-4c697053a488",
+     "qa_checked": null,
+     "target1_duration_ms": 4488,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": "lam nakun na'malu an nughayira maa naqool",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "we hope",
+       "legoId": "S0107L02",
+       "target": " نَأْمَلُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we change",
+       "legoId": "S0104L02",
+       "target": " نُغَيِّرَ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ما",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " نَقولُ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L01U04",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "we were not working hard, that is why we need to change",
+     "target_text": "لَمْ نَكُنْ نَعْمَلُ بِجِدّ، لِذٰلِكَ نَحْتاجُ أَنْ نُغَيِّرَ",
+     "word_count": 61,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.840Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:07.996624+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1438469b-190d-4e42-b0a5-bc36a4c3c5d3",
+     "target1_audio_id": "555cdfd9-3b24-40cc-b182-2fe3264c986e",
+     "target2_audio_id": "29559267-c395-4fb2-b84f-f778a68b34ad",
+     "qa_checked": null,
+     "target1_duration_ms": 6000,
+     "target2_duration_ms": 5136,
+     "lego_id": null,
+     "target_text_roman": "lam nakun na'malu bijiddin, lidhaalika nahtaaju an nughayir",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " نَعْمَلُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " بِجِدّ،",
+       "isGhost": true
+      },
+      {
+       "known": "that is why",
+       "legoId": "S0105L01",
+       "target": " لِذٰلِكَ",
+       "isGhost": false
+      },
+      {
+       "known": "we need",
+       "legoId": "S0104L01",
+       "target": " نَحْتاجُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we change",
+       "legoId": "S0104L02",
+       "target": " نُغَيِّرَ",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L01U05",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "we were not working hard before the evening",
+     "target_text": "لَمْ نَكُنْ نَعْمَلُ بِجِدٍّ قَبْلَ المَساءِ",
+     "word_count": 44,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.840Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:05.937321+00:00",
+     "created_at": "2026-02-24T21:09:47.884983+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "22b3b659-a1ac-48e0-81f8-ae1b34f6848a",
+     "target1_audio_id": "2ac5e36e-ea53-46ef-b8b1-148442532a56",
+     "target2_audio_id": "5b2c87b9-7600-4e96-99d5-13cabd98c11f",
+     "qa_checked": null,
+     "target1_duration_ms": 4560,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": "lam nakun na'malu bijiddin qabla al-masaa'i",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " نَعْمَلُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " بِجِدٍّ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " قَبْلَ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " المَساءِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "A",
+    "known_text": "we wake up",
+    "target_text": "نَسْتَيْقِظَ",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "ara_for_eng:S0108L02B01",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "we wake up",
+     "target_text": "نَسْتَيْقِظُ",
+     "word_count": 12,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-13T06:35:00.742125+00:00",
+     "created_at": "2026-02-24T21:09:48.038776+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "2117290e-f9bc-4ea0-932d-d64ec71f2ba4",
+     "target1_audio_id": "95c4c5f1-aa95-48b4-884d-b5924edcb4b1",
+     "target2_audio_id": "a5bc5a64-f2f4-4ecc-b983-673b53bb1656",
+     "qa_checked": null,
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": "nastaeeqiz",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "نَسْتَيْقِظُ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L02B02",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "we didn't hope to wake up",
+     "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ",
+     "word_count": 38,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:56.489875+00:00",
+     "created_at": "2026-02-24T21:09:48.038776+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+     "target1_audio_id": "7f1c73a6-b820-45b3-a251-cc0a4b59a219",
+     "target2_audio_id": "2e206603-6c83-4fe1-b188-0d2c1063fc77",
+     "qa_checked": null,
+     "target1_duration_ms": 3840,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": "lam nakunn na'malu an nastaeeqiza",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false
+      },
+      {
+       "known": "we hope",
+       "legoId": "S0107L02",
+       "target": " نَأْمَلُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L02B03",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "we need to wake up",
+     "target_text": "نَحْتاجُ أَنْ نَسْتَيْقِظَ",
+     "word_count": 26,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-13T06:35:00.103372+00:00",
+     "created_at": "2026-02-24T21:09:48.038776+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "45df679f-8e60-4efe-96a5-6d801d98e1fa",
+     "target1_audio_id": "0576bd0a-4257-4c83-abf8-25599ee2827a",
+     "target2_audio_id": "ada0651e-647a-4014-b7c5-71d09430ce6d",
+     "qa_checked": null,
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": "nahtaaju an nastaeeqiz",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we need",
+       "legoId": "S0104L01",
+       "target": "نَحْتاجُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L02U01",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "we hope to wake up before we need to say something",
+     "target_text": "نَأْمَلُ أَنْ نَسْتَيْقِظَ قَبْلَ أَنْ نَحْتاجَ أَنْ نَقولَ شَيْئاً",
+     "word_count": 67,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.997Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-13T06:34:58.704217+00:00",
+     "created_at": "2026-02-24T21:09:48.038776+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8eb7d59d-d2dc-483f-91b6-8fe226262853",
+     "target1_audio_id": "d24d2fee-16dc-4b0e-89b8-d620e96c3b6c",
+     "target2_audio_id": "42c215d8-9b73-48eb-bd5f-c4c367429f13",
+     "qa_checked": null,
+     "target1_duration_ms": 5712,
+     "target2_duration_ms": 4680,
+     "lego_id": null,
+     "target_text_roman": "na'malu an nastaeeqi'a qabla an nahtaaja an naqoola shay'",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we hope",
+       "legoId": "S0107L02",
+       "target": "نَأْمَلُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "before",
+       "legoId": "S0025L01",
+       "target": " قَبْلَ أَنْ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " نَحْتاجَ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we say",
+       "legoId": "S0102L02",
+       "target": " نَقولَ",
+       "isGhost": false
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L01",
+       "target": " شَيْئاً",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L02U02",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "we don't need to wake up like that",
+     "target_text": "لا نَحْتاجُ أَنْ نَسْتَيْقِظَ كَذٰلِكَ",
+     "word_count": 38,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.997Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:55.795951+00:00",
+     "created_at": "2026-02-24T21:09:48.038776+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bbdc03e8-c919-4bef-9e70-92ece352c525",
+     "target1_audio_id": "d11d711f-c54a-4f15-a39e-de91a1026d01",
+     "target2_audio_id": "620609ec-2642-4883-bab8-be23d534d9e6",
+     "qa_checked": null,
+     "target1_duration_ms": 4056,
+     "target2_duration_ms": 3600,
+     "lego_id": null,
+     "target_text_roman": "lanahhhtaajuannastaaqiiadhaalika",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "لا",
+       "isGhost": true
+      },
+      {
+       "known": "we need",
+       "legoId": "S0104L01",
+       "target": " نَحْتاجُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " كَذٰلِكَ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L02U03",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "that is why we didn't hope to wake up",
+     "target_text": "لِذٰلِكَ لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ",
+     "word_count": 47,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.997Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:54.328446+00:00",
+     "created_at": "2026-02-24T21:09:48.038776+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "da0e6da6-9ac8-4f98-97f1-abf68d42177a",
+     "target1_audio_id": "f23141e1-0634-4b64-a702-0b10a3b4bf72",
+     "target2_audio_id": "f2c660e7-603f-4d32-aff1-cf434ebc4308",
+     "qa_checked": null,
+     "target1_duration_ms": 4392,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": "lidhaalikalamnakunnanar'malu'ansanastayiqiza",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that is why",
+       "legoId": "S0105L01",
+       "target": "لِذٰلِكَ",
+       "isGhost": false
+      },
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": " لَمْ نَكُنْ",
+       "isGhost": false
+      },
+      {
+       "known": "we hope",
+       "legoId": "S0107L02",
+       "target": " نَأْمَلُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L02U05",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "we were not hoping to wake up before the evening",
+     "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ قَبْلَ المَساءِ",
+     "word_count": 54,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:47.997Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:03.426714+00:00",
+     "created_at": "2026-02-24T21:09:48.038776+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "839debc5-e1f7-4b43-95d0-11a9c4d1eedd",
+     "target1_audio_id": "7914b0d7-ad04-4776-b37d-c3016f1d0a17",
+     "target2_audio_id": "ced4ce2d-6361-4e13-8f68-1307df0a7932",
+     "qa_checked": null,
+     "target1_duration_ms": 4848,
+     "target2_duration_ms": 3840,
+     "lego_id": null,
+     "target_text_roman": "lam nakun na'malu an nastaeeqiz qabla al-masaa'i",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false
+      },
+      {
+       "known": "we hope",
+       "legoId": "S0107L02",
+       "target": " نَأْمَلُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " قَبْلَ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " المَساءِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "middle of the night",
+    "target_text": "مُنْتَصَفِ اللَّيْل",
+    "components": [
+     {
+      "known": "middle",
+      "target": "مُنْتَصَف"
+     },
+     {
+      "known": "the night",
+      "target": "اللَّيْل"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "ara_for_eng:S0108L03C01",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "middle",
+     "target_text": "مُنْتَصَف",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-12T14:29:28.9706+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "b4aa6fb2-0dd0-4f58-bc94-876c3eb72e9d",
+     "target2_audio_id": "0f193694-3a7c-43a3-a8dc-c0e17d0973b9",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": "muntasaf",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "مُنْتَصَف",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "adca2189-6930-413c-b251-b10fd4097ee3",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03C02",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "the night",
+     "target_text": "اللَّيْل",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-12T16:29:56.701259+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1b7a868e-9805-4571-854b-3e191760d808",
+     "target1_audio_id": "687a719b-acdd-4346-8859-95a4f54b6e68",
+     "target2_audio_id": "5d63520a-8316-4407-8226-e38fd8e1b1f7",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": "al-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "اللَّيْل",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "532c5448-8631-40ef-bbdc-c74aebe2634a",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03B01",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "middle of the night",
+     "target_text": "مُنْتَصَفِ اللَّيْل",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-13T06:34:53.302323+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fe52c5a8-90ee-4235-80e1-3cbf33d9efe6",
+     "target1_audio_id": "0a3310f1-ffa4-4468-a4b6-8444a7a731ae",
+     "target2_audio_id": "ea22dc68-d3f1-4932-8c88-2cb5369de1dc",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2472,
+     "lego_id": null,
+     "target_text_roman": "muntasafi l-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "middle of the night",
+       "legoId": "S0108L03",
+       "target": "مُنْتَصَفِ اللَّيْل",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03B02",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "middle of the night",
+     "target_text": "مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-13T06:34:53.170814+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fe52c5a8-90ee-4235-80e1-3cbf33d9efe6",
+     "target1_audio_id": "9a9a9b2e-6f9f-4822-acc6-a799c78e6b0c",
+     "target2_audio_id": "4367d6bc-df15-4fbb-a933-74e5a5718cdd",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2472,
+     "lego_id": null,
+     "target_text_roman": "muntasafi al-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03B03",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "in the middle of the night",
+     "target_text": "في مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 23,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T16:57:15.803461+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "ab4fadc1-6d06-409d-9b4a-01b9793d2a13",
+     "target2_audio_id": "4a5264b8-5601-41b5-b393-2cb8eace26be",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": "fee muntasafi al-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "في",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d5e853f9-e33d-4e4d-a5af-1f715a9f0290",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03B04",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "we wake up in the middle of the night",
+     "target_text": "نَسْتَيْقِظُ في مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 36,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-13T06:35:01.467448+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2aaa7688-d012-450c-a162-a89e93370f53",
+     "target1_audio_id": "27e03630-952f-4534-afad-834686ede37f",
+     "target2_audio_id": "cee19c4b-c3f6-465f-872a-aa7ab58ad1c1",
+     "qa_checked": null,
+     "target1_duration_ms": 3816,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": "nastaeeqiz fee muntasafi al-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "نَسْتَيْقِظُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " في",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03U01",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 62,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:48.144Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T16:30:05.22041+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "29a1bf72-bea5-494d-9add-f2474ea3a907",
+     "target2_audio_id": "01f7baa7-51f2-4d57-88fe-9f5ccc1faf66",
+     "qa_checked": null,
+     "target1_duration_ms": 5112,
+     "target2_duration_ms": 4320,
+     "lego_id": null,
+     "target_text_roman": "lamnakunnannaarmaluansanatastaeeqeizafeemuntasafilayl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we were not",
+       "legoId": "S0108L01",
+       "target": "لَمْ نَكُنْ",
+       "isGhost": false
+      },
+      {
+       "known": "we hope",
+       "legoId": "S0107L02",
+       "target": " نَأْمَلُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " في",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "532c5448-8631-40ef-bbdc-c74aebe2634a",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03U02",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "I want to say something in the middle of the night",
+     "target_text": "أُريدُ أَنْ أَقولَ شَيْئاً في مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 50,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:48.144Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:50.970037+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9aaaaf6a-09e1-4c11-b05d-ce98d0aa67bb",
+     "target1_audio_id": "038186d6-7f7e-454a-9163-9aa65cdc01a1",
+     "target2_audio_id": "3d232521-5b2d-4d9d-8ee4-b4169a8839f8",
+     "qa_checked": null,
+     "target1_duration_ms": 4680,
+     "target2_duration_ms": 3984,
+     "lego_id": null,
+     "target_text_roman": "ureedu an aqoola shay'un fee muntasafi al-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "أُريدُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَقولَ",
+       "isGhost": true
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L01",
+       "target": " شَيْئاً",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " في",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03U03",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "we feel happy when we don't wake in the middle of the night",
+     "target_text": "نَشْعُرُ بِالسَّعادَةِ عِنْدَما لا نَسْتَيْقِظُ في مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 71,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:48.144Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-13T06:34:55.656931+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "56ee09a2-581b-419c-ad19-bbfa90edf2bb",
+     "target1_audio_id": "327ffca9-cfbf-4f5c-ba74-cba7795ac180",
+     "target2_audio_id": "c7a9ca03-f3c8-405b-a95e-3d5ea15a761c",
+     "qa_checked": null,
+     "target1_duration_ms": 6072,
+     "target2_duration_ms": 4992,
+     "lego_id": null,
+     "target_text_roman": "nash'urubissa'aadatiindamalanastaaqizufeemuntasafilayl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "نَشْعُرُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " بِالسَّعادَةِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " عِنْدَما",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " لا",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " نَسْتَيْقِظُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " في",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03U04",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "he knows what you are doing in the middle of the night",
+     "target_text": "يَعْرِفُ ما تَفْعَلُهُ في مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 46,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:48.144Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:50.290472+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d63d9d26-11b4-40b3-8d89-5abf24c4fea6",
+     "target1_audio_id": "bb12c447-f4f1-4107-a35e-5aa6089d46c8",
+     "target2_audio_id": "84fdb2bc-a005-49aa-9794-2144300861ff",
+     "qa_checked": null,
+     "target1_duration_ms": 4680,
+     "target2_duration_ms": 3888,
+     "lego_id": null,
+     "target_text_roman": "ya'rif maa taf'aluh fee muntasafi al-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "يَعْرِفُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ما",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " تَفْعَلُهُ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " في",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    },
+    {
+     "id": "ara_for_eng:S0108L03U05",
+     "course_code": "ara_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "we just need to wake up in the middle of the night",
+     "target_text": "فَقَطْ نَحْتاجُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْلِ",
+     "word_count": 57,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-24T21:09:48.144Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-14T01:51:56.118705+00:00",
+     "created_at": "2026-02-24T21:09:48.185523+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b402b328-13f5-4c5f-96a4-ec39dd1ac071",
+     "target1_audio_id": "e35ab961-9ed4-4522-baf1-0ff4f2a99688",
+     "target2_audio_id": "6df73c9f-d3ee-482d-9837-cccd52aeee06",
+     "qa_checked": null,
+     "target1_duration_ms": 5064,
+     "target2_duration_ms": 4248,
+     "lego_id": null,
+     "target_text_roman": "faqat nahtaaju an nastaeeqiz fee muntasafi al-layl",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "just",
+       "legoId": "S0106L02",
+       "target": "فَقَطْ",
+       "isGhost": false
+      },
+      {
+       "known": "we need",
+       "legoId": "S0104L01",
+       "target": " نَحْتاجُ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " أَنْ",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L02",
+       "target": " نَسْتَيْقِظَ",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " في",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " مُنْتَصَفِ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " اللَّيْلِ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7b08148e-105e-4f9c-870a-d7e19ea4bbf9",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

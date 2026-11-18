@@ -1,0 +1,1537 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Nu am sperat să ne trezim în mijlocul nopții."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "we wake up",
+    "target_text": "ne trezim",
+    "components": [
+     {
+      "known": "ourselves",
+      "target": "ne"
+     },
+     {
+      "known": "we wake",
+      "target": "trezim"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "ron_for_eng:S0108L01C01",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "ourselves",
+     "target_text": "ne",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T23:01:35.877019+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b4ebcba5-cbc7-4aef-891e-7bb8272c7e47",
+     "target1_audio_id": "26db36ac-ee44-4fdb-9e37-d60ac7a68a9b",
+     "target2_audio_id": "c95b5a8c-73d4-4110-8e57-ce30e7edddf0",
+     "qa_checked": null,
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "86eb6457-c52e-481b-b28b-3df862128a7c",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ne",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "f2fa3786-ccc0-4062-8b6b-0a3e3be59b23",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01C02",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "we wake",
+     "target_text": "trezim",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:57:50.737348+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bc9d01df-ccaa-430e-b3de-795c9f0f1581",
+     "target1_audio_id": "02eae728-8db4-467b-980e-ab9a9aeaaa39",
+     "target2_audio_id": "5f42866d-8b09-4662-b81c-d6820f232c89",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "a9a2549b-0886-42ca-8735-3370d8ecbf08",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "trezim",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01B01",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "we wake up",
+     "target_text": "ne trezim",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:01.31217+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2117290e-f9bc-4ea0-932d-d64ec71f2ba4",
+     "target1_audio_id": "093d1fb0-f768-4b99-9548-69712f705c88",
+     "target2_audio_id": "165ad605-3f0d-468e-b07e-8b2d1464c21d",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": "ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4afad798-2b3d-4cc4-98ac-b87c28f6756d",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01B02",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "we didn't hope to wake up",
+     "target_text": "nu am sperat să ne trezim",
+     "word_count": 25,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:55.500553+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+     "target1_audio_id": "69d6d9cb-154d-4012-9f78-c312080ff092",
+     "target2_audio_id": "1857653e-bb6b-4dc5-a429-e80a23cbe61b",
+     "qa_checked": null,
+     "target1_duration_ms": 2520,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not",
+       "legoId": "S0024L01",
+       "target": "nu",
+       "isGhost": false
+      },
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": " am sperat",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4afad798-2b3d-4cc4-98ac-b87c28f6756d",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01B03",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "we need to wake up",
+     "target_text": "trebuie să ne trezim",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:59.776095+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "45df679f-8e60-4efe-96a5-6d801d98e1fa",
+     "target1_audio_id": "28302263-a01d-4426-b2bb-8d0c7d3180cc",
+     "target2_audio_id": "0044724f-697a-4465-8c4d-44f3fe866486",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I need to",
+       "legoId": "S0044L02",
+       "target": "trebuie",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4afad798-2b3d-4cc4-98ac-b87c28f6756d",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01B04",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "we should wake up",
+     "target_text": "ar trebui să ne trezim",
+     "word_count": 22,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:57:46.297494+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "61f6569f-5a18-49a7-905b-988e249cc63d",
+     "target1_audio_id": "3a44bb17-39a4-42a3-ab52-d8b11b9121b3",
+     "target2_audio_id": "305a37ce-33d3-499c-a1e1-5be57388763f",
+     "qa_checked": null,
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I should",
+       "legoId": "S0098L01",
+       "target": "ar trebui să",
+       "isGhost": false
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01U01",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "we need to wake up now",
+     "target_text": "trebuie să ne trezim acum",
+     "word_count": 25,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:26.942Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:57:38.378395+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ae0a71a8-69ab-42ca-875f-e1f1a1615708",
+     "target1_audio_id": "883f3321-d20d-4f22-bd50-196e47a293cc",
+     "target2_audio_id": "329bee5c-400b-47d8-8da4-d62054de6139",
+     "qa_checked": null,
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I need to",
+       "legoId": "S0044L02",
+       "target": "trebuie",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "now",
+       "legoId": "S0009L04",
+       "target": " acum",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01U02",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "that is why we didn't hope to wake up",
+     "target_text": "de aceea nu am sperat să ne trezim",
+     "word_count": 34,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:26.942Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:54.148208+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "da0e6da6-9ac8-4f98-97f1-abf68d42177a",
+     "target1_audio_id": "004c32fb-1f5e-4059-a1de-84c8c5c6f888",
+     "target2_audio_id": "2f14421d-a8e1-4d10-8252-5b06f7844d0e",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that is why",
+       "legoId": "S0105L01",
+       "target": "de aceea",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0024L01",
+       "target": " nu",
+       "isGhost": false
+      },
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": " am sperat",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4afad798-2b3d-4cc4-98ac-b87c28f6756d",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01U03",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "we hoped to see something, but we just need to wake up",
+     "target_text": "am sperat să vedem ceva, dar trebuie doar să ne trezim",
+     "word_count": 54,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:26.942Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-13T16:30:33.934788+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5105c5ae-89b9-4cb0-a761-0defaadc7433",
+     "target1_audio_id": "09ded69b-cdf6-4824-8fdc-48a036b11bdb",
+     "target2_audio_id": "45ebb2ad-4f86-41d4-b488-e3571e04916f",
+     "qa_checked": null,
+     "target1_duration_ms": 4200,
+     "target2_duration_ms": 4104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": "am sperat",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we see",
+       "legoId": "S0107L02",
+       "target": " vedem",
+       "isGhost": false
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L02",
+       "target": " ceva",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "but",
+       "legoId": "S0019L01",
+       "target": " dar",
+       "isGhost": false
+      },
+      {
+       "known": "I need to",
+       "legoId": "S0044L02",
+       "target": " trebuie",
+       "isGhost": false
+      },
+      {
+       "known": "only",
+       "legoId": "S0106L03",
+       "target": " doar",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01U04",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "we should wake up and work hard",
+     "target_text": "ar trebui să ne trezim și să muncim mult",
+     "word_count": 40,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:26.942Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:57:49.87958+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "680ec2bb-750f-4a70-b179-1701948686b2",
+     "target1_audio_id": "75f7145b-f281-4ae6-806b-c5455e5fb7c6",
+     "target2_audio_id": "3917a7c5-c1c4-494a-b19e-4fe5a4013fca",
+     "qa_checked": null,
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I should",
+       "legoId": "S0098L01",
+       "target": "ar trebui să",
+       "isGhost": false
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "and",
+       "legoId": "S0015L01",
+       "target": " și",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we work",
+       "legoId": "S0106L04",
+       "target": " muncim",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mult",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L01U05",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "we just need to wake up and see what we're doing",
+     "target_text": "trebuie doar să ne trezim și să vedem ce facem",
+     "word_count": 46,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:26.942Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-13T16:30:33.934788+00:00",
+     "created_at": "2026-03-14T18:16:27.016849+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ef0f7446-996b-46c8-af8c-5d3beb718cdb",
+     "target1_audio_id": "4a65a822-8cdd-4d20-8380-40c5d9e9c7fb",
+     "target2_audio_id": "90593d34-c1df-4665-9384-0cf7f1dde5ec",
+     "qa_checked": null,
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I need to",
+       "legoId": "S0044L02",
+       "target": "trebuie",
+       "isGhost": false
+      },
+      {
+       "known": "only",
+       "legoId": "S0106L03",
+       "target": " doar",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "and",
+       "legoId": "S0015L01",
+       "target": " și",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we see",
+       "legoId": "S0107L02",
+       "target": " vedem",
+       "isGhost": false
+      },
+      {
+       "known": "what",
+       "legoId": "S0012L04",
+       "target": " ce",
+       "isGhost": false
+      },
+      {
+       "known": "we do",
+       "legoId": "S0104L01",
+       "target": " facem",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "în mijlocul nopții",
+    "components": [
+     {
+      "known": "in",
+      "target": "în"
+     },
+     {
+      "known": "the middle",
+      "target": "mijlocul"
+     },
+     {
+      "known": "of the night",
+      "target": "nopții"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "ron_for_eng:S0108L02C01",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "in",
+     "target_text": "în",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-12T16:30:11.745095+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+     "target1_audio_id": "ae37db59-9810-41b9-9145-11aa07c651a6",
+     "target2_audio_id": "2d5771cf-84e7-4f8e-8ca5-6920086f66ae",
+     "qa_checked": null,
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 1368,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "d1fe8df6-e56a-4b1f-992f-79a96fdaec02",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in",
+       "legoId": "S0004L03",
+       "target": "în",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "96b5cb50-9c94-47cb-9a6c-db58ce8b4251",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02C02",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "the middle",
+     "target_text": "mijlocul",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:57:50.660436+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "513c7ab7-801c-4963-bab5-50f8f3ee33e8",
+     "target1_audio_id": "74203ee9-73a3-4c4b-b030-a2d24c0374ff",
+     "target2_audio_id": "dc11dd09-376e-4f0a-becd-432197ea4920",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "54937dcc-1816-49eb-9c75-7441e027ed7a",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "mijlocul",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02C03",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "of the night",
+     "target_text": "nopții",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-13T07:51:38.983061+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0702421a-505b-45f5-86ff-39aefe1bf1d6",
+     "target1_audio_id": "14637d3c-fac5-48a1-944d-390593c1fd04",
+     "target2_audio_id": "5c773dd4-1202-407e-80e2-0bf5806fa41d",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "e2a222d3-cb05-4790-8827-e89a785660a8",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "nopții",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4afad798-2b3d-4cc4-98ac-b87c28f6756d",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02B01",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "in the middle of the night",
+     "target_text": "în mijlocul nopții",
+     "word_count": 18,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T16:57:17.881494+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "8f371978-30a7-4ade-b570-7e2addfafa32",
+     "target2_audio_id": "f8b77d32-f4cc-4ba9-98d0-66f3dcf33c2c",
+     "qa_checked": null,
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "72c60246-baf5-469e-a27e-643015b6da92",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02B02",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "we wake up in the middle of the night",
+     "target_text": "ne trezim în mijlocul nopții",
+     "word_count": 28,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:35:01.627836+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2aaa7688-d012-450c-a162-a89e93370f53",
+     "target1_audio_id": "f0088812-fbe6-45ff-b795-ae409ece30e3",
+     "target2_audio_id": "23626b0c-e82a-4096-89ac-9f9c26dec7bc",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": "ne trezim",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4afad798-2b3d-4cc4-98ac-b87c28f6756d",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02B03",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "nu am sperat să ne trezim în mijlocul nopții",
+     "word_count": 44,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T16:30:14.005174+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "876ed169-d71c-4c2f-92cb-212f8d2e19d6",
+     "target2_audio_id": "747c1a34-a9b7-4c62-b088-f7c1f9e6d29b",
+     "qa_checked": null,
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not",
+       "legoId": "S0024L01",
+       "target": "nu",
+       "isGhost": false
+      },
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": " am sperat",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "96b5cb50-9c94-47cb-9a6c-db58ce8b4251",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02U01",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "I don't want to wake up in the middle of the night",
+     "target_text": "nu vreau să mă trezesc în mijlocul nopții",
+     "word_count": 41,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:27.064Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:57:47.80377+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7b5f7408-5c9b-4470-b1e0-6fefd8401168",
+     "target1_audio_id": "c4caf704-407f-4cb0-bd41-d8f90d985942",
+     "target2_audio_id": "545123fd-9682-4e73-bcae-3df2391a6de4",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not",
+       "legoId": "S0024L01",
+       "target": "nu",
+       "isGhost": false
+      },
+      {
+       "known": "I want to",
+       "legoId": "S0001L01",
+       "target": " vreau să",
+       "isGhost": false
+      },
+      {
+       "known": "I wake up",
+       "legoId": "S0055L01",
+       "target": " mă trezesc",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02U02",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "we should not wake up in the middle of the night",
+     "target_text": "nu ar trebui să ne trezim în mijlocul nopții",
+     "word_count": 44,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:27.064Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:57:39.862836+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "906c1b8f-9bc5-42aa-8cf0-9aea3a93b19c",
+     "target1_audio_id": "5682e749-c7ee-4d2b-b748-ee33bf44ae62",
+     "target2_audio_id": "2f375f91-380e-4180-a0cc-c07a12d77ac8",
+     "qa_checked": null,
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not",
+       "legoId": "S0024L01",
+       "target": "nu",
+       "isGhost": false
+      },
+      {
+       "known": "I should",
+       "legoId": "S0098L01",
+       "target": " ar trebui să",
+       "isGhost": false
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02U03",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "we need to work in the middle of the night",
+     "target_text": "trebuie să muncim în mijlocul nopții",
+     "word_count": 36,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:27.064Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:57:48.976579+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6a29e457-6ea6-4226-987e-5c19e4cb241b",
+     "target1_audio_id": "8f819cd1-e125-4d78-863e-716574471012",
+     "target2_audio_id": "4e72bc28-07b1-49d9-bcf7-56fadf6c1954",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I need to",
+       "legoId": "S0044L02",
+       "target": "trebuie",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we work",
+       "legoId": "S0106L04",
+       "target": " muncim",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02U04",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "I don't like to wake up in the middle of the night",
+     "target_text": "nu îmi place să mă trezesc în mijlocul nopții",
+     "word_count": 45,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:27.064Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T09:45:36.465614+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a1da48e0-326d-4ca3-aa31-7c98a47ab8db",
+     "target1_audio_id": "54e6986d-8f90-464a-a697-af4b49720353",
+     "target2_audio_id": "c9ef0bbf-bada-42c8-945b-b2a566ff595d",
+     "qa_checked": null,
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not",
+       "legoId": "S0024L01",
+       "target": "nu",
+       "isGhost": false
+      },
+      {
+       "known": "I enjoy",
+       "legoId": "S0101L01",
+       "target": " îmi place să",
+       "isGhost": false
+      },
+      {
+       "known": "I wake up",
+       "legoId": "S0055L01",
+       "target": " mă trezesc",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4afad798-2b3d-4cc4-98ac-b87c28f6756d",
+     "frame_mask": null
+    },
+    {
+     "id": "ron_for_eng:S0108L02U05",
+     "course_code": "ron_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "we didn't want to wake up in the middle of the night",
+     "target_text": "nu am vrut să ne trezim în mijlocul nopții",
+     "word_count": 42,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-14T18:16:27.064Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:57:36.418042+00:00",
+     "created_at": "2026-03-14T18:16:27.156595+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a40c6f2f-870a-4ac8-8078-aaa7cb07b87d",
+     "target1_audio_id": "4db7910b-4415-4cdc-a282-f5936d2cd514",
+     "target2_audio_id": "0993b5d7-7839-4ce4-9c7a-79978bf3a087",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not",
+       "legoId": "S0024L01",
+       "target": "nu",
+       "isGhost": false
+      },
+      {
+       "known": "we wanted",
+       "legoId": "S0054L01",
+       "target": " am vrut",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " să",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " ne trezim",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " în mijlocul nopții",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

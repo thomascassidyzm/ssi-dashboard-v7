@@ -1,0 +1,1410 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "Wir hofften nicht, mitten in der Nacht aufzuwachen.",
+  "target": "We didn't hope to wake in the middle of the night."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "wir hofften",
+    "target_text": "we hoped",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": null,
+   "phrases": []
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "hofften nicht aufzuwachen",
+    "target_text": "didn't hope to wake up",
+    "components": [
+     {
+      "known": "aufzuwachen",
+      "target": "wake up"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_deu:S0108L02C01",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "aufzuwachen",
+     "target_text": "wake up",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-12T20:10:18.583742+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e0840865-e00d-4238-9590-83956ec9606a",
+     "target1_audio_id": "62709e46-a360-425c-b7cc-1f94c4cf215c",
+     "target2_audio_id": "58f8db58-03c0-4315-a0fa-bae55c887c12",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "wake",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " up",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02B01",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "hofften nicht aufzuwachen",
+     "target_text": "didn't hope to wake up",
+     "word_count": 22,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:28.284737+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9dde6ed0-acd0-4bd0-b8b6-0c89e9cb08f9",
+     "target1_audio_id": "5df55e23-c55d-4615-8977-abb22862fb5b",
+     "target2_audio_id": "93537250-76cc-4f7a-b2bf-f35cf77902cd",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": "didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02B02",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "wir hofften nicht aufzuwachen",
+     "target_text": "we didn't hope to wake up",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T22:52:07.312682+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b3d33caa-6f85-41ec-822c-c90d76f25f7c",
+     "target1_audio_id": "8598edfc-6312-4f6b-987f-0adaf835d4e9",
+     "target2_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fd94a470-9442-4889-b448-daa4e23ecff5",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02B03",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "ich hoffte nicht aufzuwachen",
+     "target_text": "I didn't hope to wake up",
+     "word_count": 24,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:34:28.59151+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c0b8bcea-3401-42cf-bb61-13216d5d97aa",
+     "target1_audio_id": "e3f0d19d-e730-460a-b883-ba9c9c710476",
+     "target2_audio_id": "8febe92c-13a8-4485-a300-15ed4e426c4b",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02B04",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "ich denke, wir hofften nicht aufzuwachen",
+     "target_text": "I think we didn't hope to wake up",
+     "word_count": 33,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:34:34.982925+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "402d8687-8e5a-4d87-b890-55dc237bd64b",
+     "target1_audio_id": "d989c442-cfde-4bb7-9d77-2fe0c651753d",
+     "target2_audio_id": "704d8616-9aaa-432b-8b23-5e108c9d76af",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich denke",
+       "legoId": "S0047L02",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " we",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02U01",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "wir hofften nicht, aufzuwachen und hart arbeiten zu müssen",
+     "target_text": "we didn't hope to wake up and have to work hard",
+     "word_count": 47,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.584Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:34.468524+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6841b2fe-f008-4b69-8f2e-eff1ae17275a",
+     "target1_audio_id": "81d991e7-0638-4bfd-9d5c-dd5e4213f137",
+     "target2_audio_id": "eb98555a-f1cc-4aea-ab3b-54e225c01908",
+     "qa_checked": null,
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 4176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "und",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " work",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hard",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02U02",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "deshalb hoffte ich nicht aufzuwachen",
+     "target_text": "that's why I didn't hope to wake up",
+     "word_count": 35,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.584Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:34:25.048989+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "78840bd3-77a5-48ff-95b5-e0741795bac5",
+     "target1_audio_id": "135ace95-373f-4951-9102-b36a9b06ea9e",
+     "target2_audio_id": "b92f7569-cdc8-4a01-ba21-35c0b2be538d",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "deshalb",
+       "legoId": "S0105L01",
+       "target": "that's why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02U03",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "wir hofften nicht, so schnell aufzuwachen",
+     "target_text": "we didn't hope to wake up that quickly",
+     "word_count": 38,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.584Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:31.572855+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "23f07f8c-139c-4526-a8b6-62b297a89531",
+     "target1_audio_id": "227b45ad-4eaa-4978-add4-4b5e1b2815e8",
+     "target2_audio_id": "680a0231-b7d1-40fb-a6d8-76c2f2c73a34",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "schnell",
+       "legoId": "S0020L03",
+       "target": " quickly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02U04",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "ich hoffte nicht, aufzuwachen und etwas ändern zu müssen",
+     "target_text": "I didn't hope to wake up and have to change something",
+     "word_count": 53,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.584Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:34:32.556522+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3687d11b-bc30-4295-a768-e0e8817a4699",
+     "target1_audio_id": "f0d0d2ad-5057-4f2b-9e6c-1dbc1aff768a",
+     "target2_audio_id": "2ccd9fb0-8f4e-408c-991c-d5716a6d4a5f",
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 4128,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "und",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " change",
+       "isGhost": true
+      },
+      {
+       "known": "etwas",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L02U05",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "wir hofften nicht aufzuwachen, aber es ist gut",
+     "target_text": "we didn't hope to wake up but it's good",
+     "word_count": 39,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.584Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:34.992204+00:00",
+     "created_at": "2026-02-25T11:27:16.651351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "428944ea-7726-4481-988d-73bec5df529a",
+     "target1_audio_id": "dbf7f73e-50a0-4b1c-ad0b-4650948bf83e",
+     "target2_audio_id": "f4763a94-37d1-4a29-8692-9a9aaad58e16",
+     "qa_checked": null,
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "aber",
+       "legoId": "S0046L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "mitten in der Nacht",
+    "target_text": "in the middle of the night",
+    "components": [
+     {
+      "known": "mitten",
+      "target": "middle"
+     },
+     {
+      "known": "Nacht",
+      "target": "night"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_deu:S0108L03C01",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "mitten",
+     "target_text": "middle",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-12T14:29:30.516028+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e5d600cd-fb25-4508-86d7-5fb67f565aaa",
+     "target1_audio_id": "148bad59-5461-4192-b9ba-5bf0dfd2801d",
+     "target2_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "qa_checked": null,
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "middle",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e908472e-0696-4a4d-aa43-1184c1f1f72c",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03C02",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "Nacht",
+     "target_text": "night",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T21:53:31.298592+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ee237a31-d52b-4716-a1a4-af123daf38b9",
+     "target1_audio_id": "766c8598-15c5-4b69-8b77-b54510165a52",
+     "target2_audio_id": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+     "qa_checked": null,
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "night",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03B01",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "mitten in der Nacht",
+     "target_text": "in the middle of the night",
+     "word_count": 26,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T17:29:08.612783+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "87d0bd46-049e-4455-99f3-872e840d0c07",
+     "target1_audio_id": "50737070-235a-4034-99f3-5e730db6ee38",
+     "target2_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": "in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa1c9372-ad50-476b-896c-210b3f67fef2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03B02",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "wir hofften nicht, mitten in der Nacht aufzuwachen",
+     "target_text": "we didn't hope to wake up in the middle of the night",
+     "word_count": 52,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-29T02:33:59.449286+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a42d6c6b-ef3e-4e4d-8986-4fb756b4a495",
+     "target1_audio_id": "c87b5ff7-a228-4148-81f0-45cca89d8510",
+     "target2_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+     "qa_checked": null,
+     "target1_duration_ms": 3816,
+     "target2_duration_ms": 3000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "hofften nicht aufzuwachen",
+       "legoId": "S0108L02",
+       "target": " didn't hope to wake up",
+       "isGhost": false
+      },
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fd94a470-9442-4889-b448-daa4e23ecff5",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03B03",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "mitten in der Nacht aufzuwachen ist nicht gut",
+     "target_text": "waking up in the middle of the night is not good",
+     "word_count": 48,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:31.0528+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "399af7eb-6b6d-422b-93e9-a715961476c7",
+     "target1_audio_id": "c82924c2-bcb2-4a71-a26b-4f21396fb8ba",
+     "target2_audio_id": "159b6807-37bc-425b-adcc-5e61032614d8",
+     "qa_checked": null,
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 4056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "waking",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " up",
+       "isGhost": true
+      },
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03U01",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "ich genieße es nicht, mitten in der Nacht aufzuwachen",
+     "target_text": "I don't enjoy waking up in the middle of the night",
+     "word_count": 50,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.720Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:34:33.725468+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6e64c4bb-c38a-4e47-adfd-169c1981cfde",
+     "target1_audio_id": "169fb904-6483-4c73-b7a2-dd4a3a760f33",
+     "target2_audio_id": "20162ad8-97e3-4b26-8112-8f78709a87de",
+     "qa_checked": null,
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich wache nicht gerne auf",
+       "legoId": "S0055L01",
+       "target": "I don't enjoy waking up",
+       "isGhost": false
+      },
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03U02",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "du solltest dir keine Sorgen darum machen, mitten in der Nacht aufzuwachen",
+     "target_text": "you shouldn't worry about waking up in the middle of the night",
+     "word_count": 62,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.720Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:07.919076+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d4cd46a2-4e75-47d8-8c0d-0dacf5ac3a64",
+     "target1_audio_id": "08db30ab-2dfd-4688-a3cd-f436bbc4ff31",
+     "target2_audio_id": "80b33946-e2aa-44d9-845b-81f6d69c39de",
+     "qa_checked": null,
+     "target1_duration_ms": 4536,
+     "target2_duration_ms": 4320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "you",
+       "isGhost": true
+      },
+      {
+       "known": "solltest dir keine Sorgen darum machen",
+       "legoId": "S0100L02",
+       "target": " shouldn't worry about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " waking",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " up",
+       "isGhost": true
+      },
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03U03",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "es ist schwierig, mitten in der Nacht aufzuwachen",
+     "target_text": "it's difficult waking up in the middle of the night",
+     "word_count": 51,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.720Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:34:30.24783+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "88165a2c-53f9-45c1-a13a-89b8a3060965",
+     "target1_audio_id": "8a34587e-030a-42ad-8c3a-2079657accc2",
+     "target2_audio_id": "3a5b2de0-94db-4bcd-94af-6f0b3e87e5ef",
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "es ist schwierig",
+       "legoId": "S0091L01",
+       "target": "it's difficult",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " waking",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " up",
+       "isGhost": true
+      },
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03U04",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "ich möchte nicht mitten in der Nacht aufwachen",
+     "target_text": "I don't want to wake up in the middle of the night",
+     "word_count": 50,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.720Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:34:22.100844+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e53c29f6-33e7-4957-944e-615d1534ed6d",
+     "target1_audio_id": "9595a1cb-81ee-4cb1-8771-d6b62b2edd2b",
+     "target2_audio_id": "95d42939-a775-41d8-bb60-6f02b64145ad",
+     "qa_checked": null,
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich möchte nicht",
+       "legoId": "S0019L02",
+       "target": "I don't want",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wake",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " up",
+       "isGhost": true
+      },
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_deu:S0108L03U05",
+     "course_code": "eng_for_deu",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "ich denke, mitten in der Nacht aufzuwachen ist nicht gut",
+     "target_text": "I think waking up in the middle of the night is not good",
+     "word_count": 56,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T11:27:16.720Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:34:08.356835+00:00",
+     "created_at": "2026-02-25T11:27:16.748577+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d1801450-c42e-4b39-b4f1-88199854f55a",
+     "target1_audio_id": "49013f6c-fe9f-4b5e-be4b-4fe90b6337a7",
+     "target2_audio_id": "eaf5fd2b-eecc-41a9-8753-96223bd0e1c2",
+     "qa_checked": null,
+     "target1_duration_ms": 4392,
+     "target2_duration_ms": 4320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ich denke",
+       "legoId": "S0047L02",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " waking",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " up",
+       "isGhost": true
+      },
+      {
+       "known": "mitten in der Nacht",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}
