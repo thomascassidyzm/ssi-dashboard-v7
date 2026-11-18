@@ -1,0 +1,40 @@
+{
+ "seed": 322,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "اس نے کہا کہ اسے ایک کتاب پڑھنی ہے",
+     "she said that she needs to read a book",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "وہ وہی کتاب پڑھنا چاہتا ہے",
+     "he wants to read the same book",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "میرے بیٹے کو ایک کتاب پڑھنی ہے",
+     "my son needs to read a book",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0322L01B01": "پڑھنی|form of the taught پڑھنا"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

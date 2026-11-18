@@ -1,0 +1,68 @@
+{
+ "seed": 1,
+ "generated": true,
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": [
+     "ਬੋਲਣਾ ਚਾਹੁੰਦੀ ਹਾਂ",
+     "want to speak",
+     null,
+     "f"
+    ]
+   }
+  },
+  "L03": {
+   "insert": [
+    [
+     "build",
+     "ਅੰਗਰੇਜ਼ੀ ਬੋਲਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "want to speak English",
+     null,
+     "m"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "ਤੁਹਾਡੇ ਨਾਲ ਬੋਲਣਾ",
+     "to speak with you",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਤੁਹਾਡੇ ਨਾਲ ਬੋਲਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "want to speak with you",
+     null,
+     "m"
+    ]
+   ]
+  },
+  "L05": {
+   "insert": [
+    [
+     "build",
+     "ਹੁਣ ਬੋਲਣਾ",
+     "to speak now",
+     null,
+     null
+    ],
+    [
+     "build",
+     "ਮੈਂ ਹੁਣ ਬੋਲਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "I want to speak now",
+     null,
+     "m"
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0001L02B01": "ਚਾਹੁੰਦੀ|feminine form of the taught ਚਾਹੁੰਦਾ"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

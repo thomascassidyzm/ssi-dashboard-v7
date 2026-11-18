@@ -1,0 +1,37 @@
+{
+ "seed": 439,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਕੀ ਉਹ ਮਰਨਾ ਚਾਹੁੰਦੇ ਹਨ?",
+     "do they want to die?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਉਹ ਮਰਨਾ ਨਹੀਂ ਚਾਹੁਣਗੇ",
+     "they wouldn't like to die",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਉਹ ਮਰਨਾ ਨਹੀਂ ਚਾਹੁੰਦੇ",
+     "I'm sure they don't want to die",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
