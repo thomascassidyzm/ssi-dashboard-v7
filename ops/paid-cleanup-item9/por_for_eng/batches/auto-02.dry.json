@@ -1,0 +1,50 @@
+{
+ "at": "2026-11-18T14:46:57.051Z",
+ "status": 200,
+ "ms": 9719,
+ "ok": true,
+ "applied": false,
+ "ops": 47,
+ "error": null,
+ "code": null,
+ "index": null,
+ "failed_op": null,
+ "dropped": [
+  {
+   "op": {
+    "op": "phrase.delete",
+    "phrase_id": "por_for_eng:S0570L03U02",
+    "expect": {
+     "known_text": "she asked how much he was willing to pay for his ticket",
+     "target_text": "ela perguntou quanto estás disposto a pagar pelo teu bilhete"
+    }
+   },
+   "code": "NOT_FOUND",
+   "error": "op 5: phrase.delete: no row {\"course_code\":\"por_for_eng\",\"id\":\"por_for_eng:S0570L03U02\"}"
+  },
+  {
+   "op": {
+    "op": "phrase.delete",
+    "phrase_id": "por_for_eng:S0570L03U03",
+    "expect": {
+     "known_text": "he asked how much she was willing to pay for her ticket",
+     "target_text": "ele perguntou quanto estás disposto a pagar pelo teu bilhete"
+    }
+   },
+   "code": "NOT_FOUND",
+   "error": "op 5: phrase.delete: no row {\"course_code\":\"por_for_eng\",\"id\":\"por_for_eng:S0570L03U03\"}"
+  },
+  {
+   "op": {
+    "op": "phrase.delete",
+    "phrase_id": "por_for_eng:S0570L03U04",
+    "expect": {
+     "known_text": "they asked how much she was willing to pay for her ticket",
+     "target_text": "perguntaram quanto estás disposto a pagar pelo teu bilhete"
+    }
+   },
+   "code": "NOT_FOUND",
+   "error": "op 5: phrase.delete: no row {\"course_code\":\"por_for_eng\",\"id\":\"por_for_eng:S0570L03U04\"}"
+  }
+ ]
+}

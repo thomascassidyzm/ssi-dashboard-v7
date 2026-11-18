@@ -1,0 +1,427 @@
+{
+ "seed": 70,
+ "at": "2026-11-18T14:40:01.409Z",
+ "from": "live snapshot",
+ "rows": {
+  "S0070L01B01": {
+   "known": "教える",
+   "target": "tell"
+  },
+  "S0070L01B02": {
+   "known": "教えてくれない",
+   "target": "didn't tell"
+  },
+  "S0070L01B03": {
+   "known": "教えたい",
+   "target": "want to tell"
+  },
+  "S0070L01B04": {
+   "known": "教えてくれた",
+   "target": "wanted to tell"
+  },
+  "S0070L01B05": {
+   "known": "教えたくない",
+   "target": "don't want to tell"
+  },
+  "S0070L01B06": {
+   "known": "私に教えて",
+   "target": "tell me"
+  },
+  "S0070L01U01": {
+   "known": "彼女はそれがどこにあるか教えたくありませんでした",
+   "target": "She didn't want to tell me where it was"
+  },
+  "S0070L01U02": {
+   "known": "あなたは私に何かを教えたいですか？",
+   "target": "Do you want to tell me something?"
+  },
+  "S0070L01U03": {
+   "known": "彼は私にそれがどこにあるか教えたくありませんでした",
+   "target": "He didn't want to tell me where it was"
+  },
+  "S0070L01U04": {
+   "known": "なぜ彼女は私に教えたくなかったのですか？",
+   "target": "Why didn't she want to tell me?"
+  },
+  "S0070L01U05": {
+   "known": "彼女は私に何かを教えたくありませんでした",
+   "target": "She didn't want to tell me anything"
+  },
+  "S0070L01U06": {
+   "known": "あなたは私に何かを教えたいのですか？",
+   "target": "Do you want to tell me something?"
+  },
+  "S0070L01U07": {
+   "known": "彼は私に何も教えたくありませんでした",
+   "target": "He didn't want to tell me anything"
+  },
+  "S0070L01U08": {
+   "known": "私はあなたに大切なことを教えたいです",
+   "target": "I want to tell you something important"
+  },
+  "S0070L01U09": {
+   "known": "彼女は私に何も教えてくれませんでした",
+   "target": "She didn't want to tell me anything at all"
+  },
+  "S0070L01U10": {
+   "known": "あなたは私に何を教えたいのですか？",
+   "target": "what do you want to tell me?"
+  },
+  "S0070L01U11": {
+   "known": "彼は私にその答えがどこにあるかを教えたくありませんでした",
+   "target": "He didn't want to tell me where the answer was"
+  },
+  "S0070L01U12": {
+   "known": "なぜ彼女は私に教えたくなかったのでしょうか？",
+   "target": "Why didn't she want to tell me?"
+  },
+  "S0070L01U13": {
+   "known": "彼女はそれがどこにあったか私に教えたくなかったのです",
+   "target": "She didn't want to tell me where it was at all"
+  },
+  "S0070L01U14": {
+   "known": "私はあなたにこれが何か教えることができます",
+   "target": "I can tell you what the answer is"
+  },
+  "S0070L01U15": {
+   "known": "あなたはなぜ私にそれがどこにあるか教えたくなかったのですか？",
+   "target": "Why didn't you want to tell me where it was?"
+  },
+  "S0070L02B01": {
+   "known": "どこに",
+   "target": "where"
+  },
+  "S0070L02B02": {
+   "known": "どこにあるか",
+   "target": "where it is"
+  },
+  "S0070L02B03": {
+   "known": "どこにあったか",
+   "target": "where it was"
+  },
+  "S0070L02B04": {
+   "known": "どこに行くか",
+   "target": "where to go"
+  },
+  "S0070L02B05": {
+   "known": "どこにあるかを知る",
+   "target": "know where it is"
+  },
+  "S0070L02B06": {
+   "known": "どこにあるかを教えて",
+   "target": "tell me where it is"
+  },
+  "S0070L02U01": {
+   "known": "彼女はそれがどこにあるか教えたくありませんでした",
+   "target": "She didn't want to tell me where it was"
+  },
+  "S0070L02U02": {
+   "known": "私はそれがどこにあったか覚えていません",
+   "target": "I can't remember where it was"
+  },
+  "S0070L02U03": {
+   "known": "彼はそれがどこにあるか教えたくありませんでした",
+   "target": "He didn't want to tell me where it was"
+  },
+  "S0070L02U04": {
+   "known": "私はそれがどこにあるかわかりません",
+   "target": "I don't know where it is"
+  },
+  "S0070L02U05": {
+   "known": "彼女はそれがどこにあるかを私に教えてくれませんでした",
+   "target": "She didn't want to tell me where it was at all"
+  },
+  "S0070L02U06": {
+   "known": "彼はそれがどこにあるかを知っていましたが教えたくありませんでした",
+   "target": "He didn't want to tell me where it was"
+  },
+  "S0070L02U07": {
+   "known": "私はそれがどこにあったかをもう覚えていません",
+   "target": "I can't remember where it was at all"
+  },
+  "S0070L02U08": {
+   "known": "彼女はなぜそれがどこにあったかを教えたくなかったのですか？",
+   "target": "Why didn't she want to tell me where it was?"
+  },
+  "S0070L02U09": {
+   "known": "私はそれがどこにあるかを調べたいです",
+   "target": "I want to find out where it is"
+  },
+  "S0070L02U10": {
+   "known": "あなたはそれがどこにあるかを知っていますか？",
+   "target": "Do you know where it is?"
+  },
+  "S0070L02U11": {
+   "known": "彼はそれがどこにあるかを今日の午後調べるつもりです",
+   "target": "he's going to find out where it is this afternoon"
+  },
+  "S0070L02U12": {
+   "known": "私はそれがどこにあったかを今すぐ知りたいです",
+   "target": "I want to find out where it was now"
+  },
+  "S0070L02U13": {
+   "known": "彼女はそれがどこにあったかをずっと知っていましたが教えたくなかったのです",
+   "target": "She didn't want to tell me where it was all afternoon"
+  },
+  "S0070L02U14": {
+   "known": "なぜ彼女はそれがどこにあったかを私に教えたくなかったのかを知っていますか？",
+   "target": "Do you know why she didn't want to tell me where it was?"
+  },
+  "S0070L03B01": {
+   "known": "それだった",
+   "target": "it was"
+  },
+  "S0070L03B02": {
+   "known": "そこにあった",
+   "target": "it was there"
+  },
+  "S0070L03B03": {
+   "known": "それは楽しかった",
+   "target": "it was fun"
+  },
+  "S0070L03B04": {
+   "known": "それは難しかった",
+   "target": "it was difficult"
+  },
+  "S0070L03B05": {
+   "known": "それはとても良かった",
+   "target": "it was very good"
+  },
+  "S0070L03B06": {
+   "known": "それは大切だった",
+   "target": "it was important"
+  },
+  "S0070L03U01": {
+   "known": "それはとても楽しかったです",
+   "target": "It was very fun"
+  },
+  "S0070L03U02": {
+   "known": "彼女はそれがどこにあるか教えたくありませんでした",
+   "target": "She didn't want to tell me where it was"
+  },
+  "S0070L03U03": {
+   "known": "それは難しかったですが頑張りました",
+   "target": "It was difficult but interesting"
+  },
+  "S0070L03U04": {
+   "known": "それはとても大切だったと思います",
+   "target": "I think that it was very important"
+  },
+  "S0070L03U05": {
+   "known": "あなたはそれがどこにあったか知っていますか？",
+   "target": "Do you know where it was?"
+  },
+  "S0070L03U07": {
+   "known": "彼はそれがどこにあったか教えたくありませんでした",
+   "target": "He didn't want to tell me where it was"
+  },
+  "S0070L03U08": {
+   "known": "それはとても良かったです",
+   "target": "It was very fun to do"
+  },
+  "S0070L03U09": {
+   "known": "それはとても役に立ちました",
+   "target": "It's useful to know where it was"
+  },
+  "S0070L03U10": {
+   "known": "それは昨夜よりも良かったです",
+   "target": "It was better than last night"
+  },
+  "S0070L03U12": {
+   "known": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+   "target": "She didn't want to tell me where it was at all"
+  },
+  "S0070L03U13": {
+   "known": "それはとても大変でしたが楽しかったです",
+   "target": "It was difficult but it was fun"
+  },
+  "S0070L03U15": {
+   "known": "それは今日の午後やるのが楽しかったです",
+   "target": "It was fun to do this afternoon"
+  },
+  "S0070L04C01": {
+   "known": "どこに",
+   "target": "where"
+  },
+  "S0070L04C02": {
+   "known": "それだった",
+   "target": "it was"
+  },
+  "S0070L04B01": {
+   "known": "どこにあったか",
+   "target": "where it was"
+  },
+  "S0070L04B02": {
+   "known": "どこにあったか",
+   "target": "where it was"
+  },
+  "S0070L04B03": {
+   "known": "どこにあったかを知りたい",
+   "target": "want to know where it was"
+  },
+  "S0070L04B04": {
+   "known": "どこにあったかを教えて",
+   "target": "tell me where it was"
+  },
+  "S0070L04B05": {
+   "known": "どこにあったかを覚えていない",
+   "target": "can't remember where it was"
+  },
+  "S0070L04B06": {
+   "known": "どこにあったかを調べたい",
+   "target": "want to find out where it was"
+  },
+  "S0070L04B07": {
+   "known": "どこにあったかを知っている",
+   "target": "know where it was"
+  },
+  "S0070L04U01": {
+   "known": "彼女はそれがどこにあったか教えたくありませんでした",
+   "target": "She didn't want to tell me where it was"
+  },
+  "S0070L04U02": {
+   "known": "あなたはそれがどこにあったか知っていますか？",
+   "target": "Do you know where it was?"
+  },
+  "S0070L04U03": {
+   "known": "私はそれがどこにあったかを覚えていません",
+   "target": "I can't remember where it was"
+  },
+  "S0070L04U04": {
+   "known": "彼はそれがどこにあったか教えたくありませんでした",
+   "target": "He didn't want to tell me where it was"
+  },
+  "S0070L04U05": {
+   "known": "私はそれがどこにあったかを知りたいです",
+   "target": "I want to know where it was"
+  },
+  "S0070L04U06": {
+   "known": "彼女はそれがどこにあったかを私に教えてくれませんでした",
+   "target": "She didn't want to tell me where it was at all"
+  },
+  "S0070L04U07": {
+   "known": "私はそれがどこにあったかをもう覚えていません",
+   "target": "I can't remember where it was at all"
+  },
+  "S0070L04U08": {
+   "known": "彼女はなぜそれがどこにあったかを教えたくなかったのですか？",
+   "target": "Why didn't she want to tell me where it was?"
+  },
+  "S0070L04U09": {
+   "known": "私はそれがどこにあったかを今日調べるつもりです",
+   "target": "I'm going to find out where it was today"
+  },
+  "S0070L04U10": {
+   "known": "彼はそれがどこにあったかを知っていましたが教えたくありませんでした",
+   "target": "He didn't want to tell me where it was"
+  },
+  "S0070L04U13": {
+   "known": "なぜ彼女はそれがどこにあったかを私に教えたくなかったのかをずっと考えています",
+   "target": "I'm trying to remember why she didn't want to tell me where it was"
+  },
+  "S0070L04U14": {
+   "known": "それがどこにあったかを今すぐ知りたいです",
+   "target": "I want to find out where it was now"
+  },
+  "S0070L04U15": {
+   "known": "それがどこにあったかを教えてもらえるとうれしいです",
+   "target": "I want you to tell me where it was"
+  },
+  "S0070L05C01": {
+   "known": "しなかった",
+   "target": "didn't"
+  },
+  "S0070L05C02": {
+   "known": "したい",
+   "target": "want"
+  },
+  "S0070L05C03": {
+   "known": "教える",
+   "target": "to tell"
+  },
+  "S0070L05C04": {
+   "known": "私に",
+   "target": "me"
+  },
+  "S0070L05B01": {
+   "known": "教えたくなかった",
+   "target": "didn't want to tell me"
+  },
+  "S0070L05B02": {
+   "known": "教えたくなかった",
+   "target": "didn't want to tell me"
+  },
+  "S0070L05B03": {
+   "known": "私に教えたくなかった",
+   "target": "she didn't want to tell me"
+  },
+  "S0070L05B04": {
+   "known": "どこか教えたくなかった",
+   "target": "didn't want to tell me where"
+  },
+  "S0070L05B05": {
+   "known": "何も教えたくなかった",
+   "target": "didn't want to tell me anything"
+  },
+  "S0070L05B06": {
+   "known": "それがどこか教えたくなかった",
+   "target": "didn't want to tell me where it was"
+  },
+  "S0070L05B07": {
+   "known": "なぜ教えたくなかった",
+   "target": "he didn't want to tell me why it was"
+  },
+  "S0070L05U01": {
+   "known": "彼女はそれがどこにあるか教えたくありませんでした",
+   "target": "She didn't want to tell me where it was"
+  },
+  "S0070L05U02": {
+   "known": "彼は私に何も教えたくありませんでした",
+   "target": "he didn't want to tell me anything"
+  },
+  "S0070L05U03": {
+   "known": "なぜ彼女は私に教えたくなかったのですか？",
+   "target": "I don't know why she didn't want to tell me about it"
+  },
+  "S0070L05U04": {
+   "known": "彼は私にそれがどこにあるか教えたくありませんでした",
+   "target": "He didn't want to tell me where it was"
+  },
+  "S0070L05U05": {
+   "known": "彼女はなぜ私に教えたくなかったのかがわかりません",
+   "target": "I don't know why she didn't want to tell me"
+  },
+  "S0070L05U06": {
+   "known": "彼は私に大切なことを教えたくありませんでした",
+   "target": "He didn't want to tell me something important"
+  },
+  "S0070L05U07": {
+   "known": "彼女は私にそれがどこにあったかを教えたくなかったのです",
+   "target": "She didn't want to tell me where it was at all"
+  },
+  "S0070L05U08": {
+   "known": "私は彼がなぜ教えたくなかったのかが知りたいです",
+   "target": "I want to know why he didn't want to tell me"
+  },
+  "S0070L05U11": {
+   "known": "彼は私に教えたくなかったので私は自分で答えを調べようとしました",
+   "target": "He didn't want to tell me the answer so I wanted to find it"
+  },
+  "S0070L05U12": {
+   "known": "彼女はそれがどこにあるか私に教えたくなかったのに他の人に教えたがっていました",
+   "target": "She didn't want to tell me where it was but wanted to tell everyone else"
+  },
+  "S0070L05U13": {
+   "known": "あなたはなぜ私にそれがどこにあるか教えたくなかったのかを説明しようとしています",
+   "target": "you are trying to explain why you didn't want to tell me where it was"
+  },
+  "S0070L05U14": {
+   "known": "彼は私に大切なことを教えたくなかったので、私は友達に聞きました",
+   "target": "He didn't want to tell me something important so I wanted to ask my friend"
+  },
+  "S0070L05U15": {
+   "known": "彼女はそれがどこにあるか私に教えたくなかったのでとても困りました",
+   "target": "She didn't want to tell me where it was and that isn't easy"
+  }
+ }
+}

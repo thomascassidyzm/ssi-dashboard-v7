@@ -1,0 +1,4860 @@
+[
+ {
+  "seed_number": 53,
+  "phrases": {
+   "53:1": [
+    {
+     "known_text": "wanted to put",
+     "target_text": "voulait mettre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to put",
+     "target_text": "je veux mettre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to put this",
+     "target_text": "mettre ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to put this here",
+     "target_text": "je veux mettre ça ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wanted to put things here",
+     "target_text": "elle voulait mettre des choses ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's going to put this here",
+     "target_text": "il va mettre ça ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can put that here tomorrow",
+     "target_text": "tu peux mettre ça ici demain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to put this here yesterday",
+     "target_text": "je voulais mettre ça ici hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to put things here now",
+     "target_text": "elle veut mettre des choses ici maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to put this here",
+     "target_text": "j'essaie de mettre ça ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to put that here last week",
+     "target_text": "il voulait mettre ça ici la semaine dernière",
+     "phrase_role": "use"
+    }
+   ],
+   "53:2": [
+    {
+     "known_text": "her letter",
+     "target_text": "sa lettre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to put her letter",
+     "target_text": "mettre sa lettre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to read her letter",
+     "target_text": "lire sa lettre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to read her letter",
+     "target_text": "je veux lire sa lettre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wanted to write her letter",
+     "target_text": "elle voulait écrire sa lettre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's going to read her letter",
+     "target_text": "il va lire sa lettre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to show you her letter",
+     "target_text": "je voulais te montrer sa lettre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can read her letter now",
+     "target_text": "tu peux lire sa lettre maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wanted to put her letter here",
+     "target_text": "elle voulait mettre sa lettre ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to read her letter",
+     "target_text": "j'essaie de lire sa lettre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to write her letter yesterday",
+     "target_text": "il voulait écrire sa lettre hier",
+     "phrase_role": "use"
+    }
+   ],
+   "53:3": [
+    {
+     "known_text": "to put in",
+     "target_text": "mettre dans",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to put this in",
+     "target_text": "mettre ça dans",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to put her letter in",
+     "target_text": "mettre sa lettre dans",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I wanted to put something in his letter yesterday",
+     "target_text": "je voulais mettre quelque chose dans sa lettre hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to write something in a letter to his friend",
+     "target_text": "il voulait écrire quelque chose dans une lettre à son ami",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to put it in his letter",
+     "target_text": "je veux mettre ça dans sa lettre",
+     "phrase_role": "use"
+    }
+   ],
+   "53:4": [
+    {
+     "known_text": "in her bag",
+     "target_text": "dans son sac",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "his bag",
+     "target_text": "son sac",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the bag",
+     "target_text": "le sac",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to put this in the bag",
+     "target_text": "je veux mettre ça dans le sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wanted to put her letter in her bag",
+     "target_text": "elle voulait mettre sa lettre dans son sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's going to put this in his bag",
+     "target_text": "il va mettre ça dans son sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can put that in the bag",
+     "target_text": "tu peux mettre ça dans le sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the bag is here",
+     "target_text": "le sac est ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to put things in his bag",
+     "target_text": "je voulais mettre des choses dans son sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to put the letter in the bag",
+     "target_text": "j'essaie de mettre la lettre dans le sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to put interesting things in her bag",
+     "target_text": "elle veut mettre des choses intéressantes dans son sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wanted to put his letter in her bag",
+     "target_text": "elle voulait mettre sa lettre dans son sac",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 63,
+  "phrases": {
+   "63:1": [
+    {
+     "known_text": "you",
+     "target_text": "tu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "are",
+     "target_text": "es",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "are you",
+     "target_text": "tu es",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you",
+     "target_text": "tu es",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you sure",
+     "target_text": "tu es sûr",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you ready",
+     "target_text": "tu es prêt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you sure about that?",
+     "target_text": "tu es sûr de ça ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you ready to help me?",
+     "target_text": "tu es prêt à m'aider ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you sure you understand?",
+     "target_text": "tu es sûr que tu comprends ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you ready to start?",
+     "target_text": "tu es prêt à commencer ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you sure you want to try?",
+     "target_text": "tu es sûr que tu veux essayer ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you here?",
+     "target_text": "tu es ici ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you tired today?",
+     "target_text": "tu es fatigué aujourd'hui ?",
+     "phrase_role": "use"
+    }
+   ],
+   "63:2": [
+    {
+     "known_text": "mind",
+     "target_text": "dérange",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you don't mind",
+     "target_text": "ça ne te dérange pas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't mind",
+     "target_text": "ça ne me dérange pas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "are you sure you don't mind?",
+     "target_text": "tu es sûr que ça ne te dérange pas ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you mind if I speak slowly?",
+     "target_text": "ça te dérange si je parle lentement ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't mind trying again",
+     "target_text": "ça ne me dérange pas d'essayer encore",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you don't mind?",
+     "target_text": "ça ne te dérange pas ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you mind speaking French?",
+     "target_text": "ça te dérange de parler français ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't mind that",
+     "target_text": "ça ne me dérange pas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you sure you don't mind helping me?",
+     "target_text": "tu es sûr que ça ne te dérange pas de m'aider ?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 69,
+  "phrases": {
+   "69:1": [
+    {
+     "known_text": "dog",
+     "target_text": "chien",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a dog",
+     "target_text": "un chien",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the dog",
+     "target_text": "le chien",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have a dog",
+     "target_text": "j'ai un chien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is here",
+     "target_text": "le chien est ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want a dog?",
+     "target_text": "veux-tu un chien ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the dog is very important",
+     "target_text": "le chien est très important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he didn't want the dog",
+     "target_text": "il ne voulait pas le chien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can find the dog",
+     "target_text": "je peux trouver le chien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to find the dog",
+     "target_text": "je vais trouver le chien",
+     "phrase_role": "use"
+    }
+   ],
+   "69:2": [
+    {
+     "known_text": "young",
+     "target_text": "jeune",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a young dog",
+     "target_text": "un jeune chien",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the young",
+     "target_text": "le jeune",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the dog is very young",
+     "target_text": "le chien est très jeune",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to help the young dog",
+     "target_text": "je veux aider le jeune chien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you young?",
+     "target_text": "tu es jeune ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's very young",
+     "target_text": "il est très jeune",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not young",
+     "target_text": "je ne suis pas jeune",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the young dog is here",
+     "target_text": "le jeune chien est ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're too young",
+     "target_text": "tu es trop jeune",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the young dog is important",
+     "target_text": "le jeune chien est important",
+     "phrase_role": "use"
+    }
+   ],
+   "69:3": [
+    {
+     "known_text": "to look after",
+     "target_text": "s'occuper",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to look after",
+     "target_text": "s'occuper",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to look after the dog",
+     "target_text": "s'occuper du chien",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "didn't want to look after",
+     "target_text": "ne voulait pas s'occuper",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he didn't want to look after the dog",
+     "target_text": "il ne voulait pas s'occuper du chien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's going to look after the young dog",
+     "target_text": "il va s'occuper du jeune chien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he didn't want to look after the young dog all afternoon",
+     "target_text": "il ne voulait pas s'occuper du jeune chien tout l'après-midi",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 71,
+  "phrases": {
+   "71:1": [
+    {
+     "known_text": "we",
+     "target_text": "nous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we didn't want to go yesterday",
+     "target_text": "nous ne voulions pas partir hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to stop now",
+     "target_text": "nous ne voulions pas arrêter maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to say anything",
+     "target_text": "nous ne voulions rien dire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to ask too much",
+     "target_text": "nous ne voulions pas demander trop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to start before",
+     "target_text": "nous ne voulions pas commencer avant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to read today",
+     "target_text": "nous ne voulions pas lire aujourd'hui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to do that",
+     "target_text": "nous ne voulions pas faire ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to speak French",
+     "target_text": "nous ne voulions pas parler français",
+     "phrase_role": "use"
+    }
+   ],
+   "71:2": [
+    {
+     "known_text": "to let someone speak",
+     "target_text": "laisser quelqu'un parler",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to let you try",
+     "target_text": "je veux te laisser essayer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to let you finish",
+     "target_text": "je vais te laisser finir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to let you do that",
+     "target_text": "je ne veux pas te laisser faire ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not going to let you stop",
+     "target_text": "je ne vais pas te laisser arrêter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to let you learn",
+     "target_text": "j'essaie de te laisser apprendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't let you say that",
+     "target_text": "je ne peux pas te laisser dire ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "are you going to let me speak?",
+     "target_text": "tu vas me laisser parler ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't want to let you go",
+     "target_text": "je ne voulais pas te laisser partir",
+     "phrase_role": "use"
+    }
+   ],
+   "71:3": [
+    {
+     "known_text": "anyone here",
+     "target_text": "personne ici",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let anyone",
+     "target_text": "laisser personne",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "anyone else",
+     "target_text": "personne d'autre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't find anyone",
+     "target_text": "je ne peux trouver personne",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to let anyone speak",
+     "target_text": "nous ne voulions laisser personne parler",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to talk to anyone this morning",
+     "target_text": "je ne veux parler à personne ce matin",
+     "phrase_role": "use"
+    }
+   ],
+   "71:4": [
+    {
+     "known_text": "to hear something",
+     "target_text": "entendre quelque chose",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to hear",
+     "target_text": "je veux entendre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let anyone hear",
+     "target_text": "laisser personne entendre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can hear something",
+     "target_text": "je peux entendre quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to hear more",
+     "target_text": "je veux entendre davantage",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't hear anything",
+     "target_text": "je ne peux rien entendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to hear",
+     "target_text": "j'essaie d'entendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to hear more",
+     "target_text": "j'ai besoin d'entendre davantage",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to hear before",
+     "target_text": "je voulais entendre avant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to hear that",
+     "target_text": "je vais entendre ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to hear anything",
+     "target_text": "je ne veux rien entendre",
+     "phrase_role": "use"
+    }
+   ],
+   "71:5": [
+    {
+     "known_text": "the",
+     "target_text": "la",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "truth",
+     "target_text": "vérité",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the truth",
+     "target_text": "la vérité",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to hear the truth",
+     "target_text": "entendre la vérité",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to say the truth",
+     "target_text": "dire la vérité",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to know the truth",
+     "target_text": "savoir la vérité",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to know the truth",
+     "target_text": "je veux savoir la vérité",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to say the truth",
+     "target_text": "j'essaie de dire la vérité",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know the truth",
+     "target_text": "je ne sais pas la vérité",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to find the truth",
+     "target_text": "j'ai besoin de trouver la vérité",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to tell the truth",
+     "target_text": "je vais dire la vérité",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to hear the truth now",
+     "target_text": "je veux entendre la vérité maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can say the truth",
+     "target_text": "je peux dire la vérité",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to let anyone hear the truth",
+     "target_text": "nous ne voulions laisser personne entendre la vérité",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 80,
+  "phrases": {
+   "80:2": [
+    {
+     "known_text": "when",
+     "target_text": "de quand",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'll be",
+     "target_text": "je serai",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ready",
+     "target_text": "prêt",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "when I'll be ready",
+     "target_text": "de quand je serai prêt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when I'll be ready to learn",
+     "target_text": "de quand je serai prêt à apprendre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "not sure when I'll be ready",
+     "target_text": "pas sûr de quand je serai prêt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when I'll be ready here",
+     "target_text": "de quand je serai prêt ici",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure when I'll be ready",
+     "target_text": "je ne suis pas sûr de quand je serai prêt",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to know when I'll be ready",
+     "target_text": "elle veut savoir de quand je serai prêt",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 94,
+  "phrases": {
+   "94:1": [
+    {
+     "known_text": "the",
+     "target_text": "la",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "only",
+     "target_text": "seule",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the only",
+     "target_text": "la seule",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the only",
+     "target_text": "la seule",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the only way",
+     "target_text": "la seule façon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's the only",
+     "target_text": "c'est la seule",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "It's the only thing I want",
+     "target_text": "c'est la seule chose que je veux",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's the only way to do this",
+     "target_text": "c'est la seule façon de faire ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's the only thing I know",
+     "target_text": "c'est la seule chose que je sais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's the only thing I understand",
+     "target_text": "c'est la seule chose que je comprends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's the only thing to say",
+     "target_text": "c'est la seule chose à dire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's the only way to learn",
+     "target_text": "c'est la seule façon d'apprendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's the only thing to do",
+     "target_text": "c'est la seule chose à faire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's the only thing I like",
+     "target_text": "c'est la seule chose que j'aime",
+     "phrase_role": "use"
+    }
+   ],
+   "94:2": [
+    {
+     "known_text": "way",
+     "target_text": "façon",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it will",
+     "target_text": "que ça",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "way it will",
+     "target_text": "façon que ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "way it will",
+     "target_text": "façon que ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the way it will",
+     "target_text": "la façon que ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the only way it will",
+     "target_text": "la seule façon que ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't know the way it will work",
+     "target_text": "je ne sais pas la façon que ça fonctionne",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you show me the way it will work?",
+     "target_text": "tu peux me montrer la façon que ça fonctionne ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the only way it will work is to try",
+     "target_text": "la seule façon que ça fonctionne, c'est d'essayer",
+     "phrase_role": "use"
+    }
+   ],
+   "94:3": [
+    {
+     "known_text": "it will work",
+     "target_text": "ça fonctionne",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this will work",
+     "target_text": "ça fonctionne",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't know if it works well",
+     "target_text": "je ne sais pas si ça fonctionne bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "does it work?",
+     "target_text": "est-ce que ça fonctionne ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it works now",
+     "target_text": "je pense que ça fonctionne maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this is the only way it will work",
+     "target_text": "C'est la seule façon que ça fonctionne",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 108,
+  "phrases": {
+   "108:1": [
+    {
+     "known_text": "didn't hope to",
+     "target_text": "n'espérions pas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we didn't hope to",
+     "target_text": "nous n'espérions pas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we didn't hope to",
+     "target_text": "nous n'espérions pas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we didn't hope to see",
+     "target_text": "nous n'espérions pas voir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we didn't hope to hear",
+     "target_text": "nous n'espérions pas entendre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we didn't hope to understand everything",
+     "target_text": "nous n'espérions pas comprendre tout",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to change the answer",
+     "target_text": "nous n'espérions pas changer la réponse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to finish that quickly",
+     "target_text": "nous n'espérions pas finir ça rapidement",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to work hard on this",
+     "target_text": "nous n'espérions pas travailler dur à ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to see what you were doing",
+     "target_text": "nous n'espérions pas voir ce que tu faisais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to hear that it's not like that",
+     "target_text": "nous n'espérions pas entendre que ce n'est pas comme ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that is why we didn't hope to feel happy",
+     "target_text": "c'est pour cela que nous n'espérions pas nous sentir heureux",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to know that he didn't know the answer",
+     "target_text": "nous n'espérions pas savoir qu'il ne connaissait pas la réponse",
+     "phrase_role": "use"
+    }
+   ],
+   "108:2": [
+    {
+     "known_text": "to wake",
+     "target_text": "me réveiller",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "need to wake",
+     "target_text": "besoin de me réveiller",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "didn't want to wake",
+     "target_text": "ne voulais pas me réveiller",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to wake",
+     "target_text": "je ne veux pas me réveiller",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you need to wake?",
+     "target_text": "tu as besoin de te réveiller?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to wake now",
+     "target_text": "j'ai besoin de me réveiller maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we hoped to wake before tomorrow",
+     "target_text": "nous espérions nous réveiller avant demain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said she didn't want to wake",
+     "target_text": "elle a dit qu'elle ne voulait pas se réveiller",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that is why I don't want to wake now",
+     "target_text": "c'est pour cela que je ne veux pas me réveiller maintenant",
+     "phrase_role": "use"
+    }
+   ],
+   "108:3": [
+    {
+     "known_text": "in the middle of",
+     "target_text": "au milieu de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the night",
+     "target_text": "la nuit",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in the middle of the night",
+     "target_text": "au milieu de la nuit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "in the middle of the night",
+     "target_text": "au milieu de la nuit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to work in the middle of the night",
+     "target_text": "travailler au milieu de la nuit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "wake in the middle of the night",
+     "target_text": "me réveiller au milieu de la nuit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to wake in the middle of the night",
+     "target_text": "je ne veux pas me réveiller au milieu de la nuit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to work hard in the middle of the night",
+     "target_text": "nous n'espérions pas travailler dur au milieu de la nuit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to work in the middle of the night sometimes",
+     "target_text": "j'ai besoin de travailler au milieu de la nuit quelque fois",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "nous n'espérions pas nous réveiller au milieu de la nuit",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 117,
+  "phrases": {
+   "117:1": [
+    {
+     "known_text": "I'm definitely",
+     "target_text": "je fais",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "doing",
+     "target_text": "clairement",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'm definitely doing",
+     "target_text": "je fais clairement",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm definitely doing",
+     "target_text": "je fais clairement",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm definitely doing better",
+     "target_text": "je fais clairement mieux",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm definitely doing something",
+     "target_text": "je fais clairement quelque chose",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm definitely doing worse than yesterday",
+     "target_text": "je fais clairement pire qu'hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm definitely doing better now",
+     "target_text": "je fais clairement mieux maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm definitely doing something right",
+     "target_text": "je fais clairement quelque chose de bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "Why am I definitely doing it this way?",
+     "target_text": "pourquoi je fais clairement ça comme ça ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if I'm definitely doing better",
+     "target_text": "j'ai l'impression que je fais clairement mieux",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm definitely doing the best I could make",
+     "target_text": "je fais clairement le meilleur que je pouvais faire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wasn't expecting that I'm definitely doing better",
+     "target_text": "je ne m'y attendais pas que je fais clairement mieux",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm definitely doing something new when we learn",
+     "target_text": "je fais clairement quelque chose de nouveau quand nous apprenons",
+     "phrase_role": "use"
+    }
+   ],
+   "117:2": [
+    {
+     "known_text": "last",
+     "target_text": "la dernière",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "time",
+     "target_text": "fois",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "last time",
+     "target_text": "la dernière fois",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "last time",
+     "target_text": "la dernière fois",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the last time",
+     "target_text": "la dernière fois",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "than last time",
+     "target_text": "que la dernière fois",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm doing better than last time",
+     "target_text": "je fais mieux que la dernière fois",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was easier last time",
+     "target_text": "c'était plus facile la dernière fois",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "Why was it worse last time?",
+     "target_text": "pourquoi c'était pire la dernière fois ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if I'm doing worse than last time",
+     "target_text": "j'ai l'impression de faire pire que la dernière fois",
+     "phrase_role": "use"
+    }
+   ],
+   "117:3": [
+    {
+     "known_text": "we",
+     "target_text": "nous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "talked",
+     "target_text": "avons parlé",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we talked",
+     "target_text": "nous avons parlé",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we talked",
+     "target_text": "nous avons parlé",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when we talked",
+     "target_text": "quand nous avons parlé",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we talked yesterday",
+     "target_text": "nous avons parlé hier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was interesting when we talked",
+     "target_text": "c'était intéressant quand nous avons parlé",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm doing better than last time we talked",
+     "target_text": "je fais mieux que la dernière fois que nous avons parlé",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if we talked about something very important",
+     "target_text": "j'ai l'impression que nous avons parlé de quelque chose de très important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm definitely doing better than I was last time we talked to each other",
+     "target_text": "Je fais clairement mieux que la dernière fois que nous avons parlé",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 118,
+  "phrases": {
+   "118:1": [
+    {
+     "known_text": "when",
+     "target_text": "quand",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we were",
+     "target_text": "nous étions",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "when we were",
+     "target_text": "quand nous étions",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when we were",
+     "target_text": "quand nous étions",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when we were",
+     "target_text": "quand nous étions",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when we were in",
+     "target_text": "quand nous étions au",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I wasn't expecting it when we were in the house",
+     "target_text": "je ne m'y attendais pas quand nous étions dans la maison",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I couldn't speak French when we were here",
+     "target_text": "je ne pouvais pas parler français quand nous étions ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to talk to you when we were in the house",
+     "target_text": "je voulais te parler quand nous étions dans la maison",
+     "phrase_role": "use"
+    }
+   ],
+   "118:2": [
+    {
+     "known_text": "in",
+     "target_text": "au",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the pub",
+     "target_text": "pub",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in the pub",
+     "target_text": "au pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "in the pub",
+     "target_text": "au pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we were in the pub",
+     "target_text": "nous étions au pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when we were in the pub",
+     "target_text": "quand nous étions au pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we were in the pub yesterday",
+     "target_text": "nous étions au pub hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like to be in the pub with friends",
+     "target_text": "j'aime être au pub avec des amis",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when we were in the pub, we talked",
+     "target_text": "quand nous étions au pub, nous avons parlé",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was interesting in the pub last time",
+     "target_text": "c'était intéressant au pub la dernière fois",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think being in the pub was the best choice",
+     "target_text": "je pense qu'être au pub était le meilleur choix",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel better now than when we were in the pub",
+     "target_text": "je me sens mieux maintenant que quand nous étions au pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel better than I felt when we were in the pub",
+     "target_text": "Je me sens mieux que quand nous étions au pub",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 120,
+  "phrases": {
+   "120:1": [
+    {
+     "known_text": "it's interesting",
+     "target_text": "c'est intéressant",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it's interesting that",
+     "target_text": "c'est intéressant que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's interesting that",
+     "target_text": "c'est intéressant que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's interesting that you",
+     "target_text": "c'est intéressant que tu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's interesting that we",
+     "target_text": "c'est intéressant que nous",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "It's interesting that my brain changes when we learn",
+     "target_text": "c'est intéressant que mon cerveau change quand nous apprenons",
+     "phrase_role": "use"
+    }
+   ],
+   "120:2": [
+    {
+     "known_text": "you",
+     "target_text": "tu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "like",
+     "target_text": "aimes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you like",
+     "target_text": "tu aimes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you like",
+     "target_text": "tu aimes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you like to",
+     "target_text": "tu aimes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you like it",
+     "target_text": "tu aimes ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know you like it",
+     "target_text": "je sais que tu aimes ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you like French?",
+     "target_text": "est-ce que tu aimes le français ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's interesting that you like it",
+     "target_text": "c'est intéressant que tu aimes ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "Why do you like to learn slowly?",
+     "target_text": "pourquoi tu aimes apprendre lentement ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you like to have a conversation, I think",
+     "target_text": "tu aimes avoir une conversation, je pense",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if you like to talk about the brain",
+     "target_text": "j'ai l'impression que tu aimes parler du cerveau",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's interesting that you like something new",
+     "target_text": "c'est intéressant que tu aimes quelque chose de nouveau",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you like to test yourself",
+     "target_text": "tu aimes te tester",
+     "phrase_role": "use"
+    }
+   ],
+   "120:3": [
+    {
+     "known_text": "to go",
+     "target_text": "prendre",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "by bus",
+     "target_text": "le bus",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to go by bus",
+     "target_text": "prendre le bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to go by bus",
+     "target_text": "prendre le bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I like to go by bus",
+     "target_text": "j'aime prendre le bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you like to go by bus",
+     "target_text": "tu aimes prendre le bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't like to go by bus",
+     "target_text": "je n'aime pas prendre le bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to go by bus today",
+     "target_text": "je veux prendre le bus aujourd'hui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you like to go by bus?",
+     "target_text": "est-ce que tu aimes prendre le bus ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's interesting that you like to go by bus",
+     "target_text": "c'est intéressant que tu aimes prendre le bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think to go by bus is the best choice",
+     "target_text": "je pense que prendre le bus est le meilleur choix",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when we were in the pub, I wanted to go by bus",
+     "target_text": "quand nous étions au pub, je voulais prendre le bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I feel as if I have to go by bus now",
+     "target_text": "j'ai l'impression que je dois prendre le bus maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we didn't want to take the bus",
+     "target_text": "nous ne voulions pas prendre le bus",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 121,
+  "phrases": {
+   "121:1": [
+    {
+     "known_text": "it's",
+     "target_text": "c'est",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "unusual",
+     "target_text": "inhabituel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it's unusual",
+     "target_text": "c'est inhabituel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's unusual",
+     "target_text": "c'est inhabituel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's unusual for me",
+     "target_text": "c'est inhabituel pour moi",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's unusual today",
+     "target_text": "c'est inhabituel aujourd'hui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know it's unusual but I need to try",
+     "target_text": "je sais que c'est inhabituel mais j'ai besoin d'essayer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's unusual to speak like that",
+     "target_text": "c'est inhabituel de parler comme ça",
+     "phrase_role": "use"
+    }
+   ],
+   "121:2": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know that",
+     "target_text": "je sais que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that",
+     "target_text": "je pense que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think it's unusual for you",
+     "target_text": "je pense que c'est inhabituel pour toi",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you'll learn soon",
+     "target_text": "je pense que tu vas apprendre bientôt",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's unusual for you",
+     "target_text": "je pense que c'est inhabituel pour toi",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know that you're going to learn",
+     "target_text": "je sais que tu vas apprendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know that it's unusual",
+     "target_text": "je sais que c'est inhabituel",
+     "phrase_role": "use"
+    }
+   ],
+   "121:3": [
+    {
+     "known_text": "you",
+     "target_text": "tu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "don't like",
+     "target_text": "n'aimes pas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you don't like",
+     "target_text": "tu n'aimes pas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you don't like",
+     "target_text": "tu n'aimes pas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you don't like that",
+     "target_text": "tu n'aimes pas ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know you don't like",
+     "target_text": "je sais que tu n'aimes pas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you don't like that?",
+     "target_text": "tu n'aimes pas ça ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you don't like when he does that",
+     "target_text": "tu n'aimes pas quand il fait ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know you don't like learning like that",
+     "target_text": "je sais que tu n'aimes pas apprendre comme ça",
+     "phrase_role": "use"
+    }
+   ],
+   "121:4": [
+    {
+     "known_text": "to use",
+     "target_text": "utiliser",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to use",
+     "target_text": "je veux utiliser",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "Can I use that?",
+     "target_text": "je peux utiliser ça?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't want to use that",
+     "target_text": "il ne veut pas utiliser ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to use that now?",
+     "target_text": "tu veux utiliser ça maintenant ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to try to use that",
+     "target_text": "je vais essayer d'utiliser ça",
+     "phrase_role": "use"
+    }
+   ],
+   "121:5": [
+    {
+     "known_text": "your",
+     "target_text": "ta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "car",
+     "target_text": "voiture",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "your car",
+     "target_text": "ta voiture",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "your car",
+     "target_text": "ta voiture",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I like your car",
+     "target_text": "j'aime ta voiture",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "Can I use your car?",
+     "target_text": "je peux utiliser ta voiture?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know you don't like your car",
+     "target_text": "je sais que tu n'aimes pas ta voiture",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to use your car yesterday",
+     "target_text": "il voulait utiliser ta voiture hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you show me your car?",
+     "target_text": "est-ce que tu peux me montrer ta voiture ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't care about your car",
+     "target_text": "je me moque de ta voiture",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's unusual that you don't like to use your car",
+     "target_text": "C'est inhabituel que tu n'aimes pas utiliser ta voiture",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 123,
+  "phrases": {
+   "123:1": [
+    {
+     "known_text": "I",
+     "target_text": "je",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "think",
+     "target_text": "pense",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I think",
+     "target_text": "je pense",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think",
+     "target_text": "je pense",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that",
+     "target_text": "je pense que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think it's good",
+     "target_text": "je pense que c'est bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think we need to try",
+     "target_text": "je pense que nous devons essayer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's fun to speak French",
+     "target_text": "je pense que c'est amusant de parler français",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think we need to talk",
+     "target_text": "je pense que nous devons parler",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's good to speak French",
+     "target_text": "je pense que c'est bien de parler français",
+     "phrase_role": "use"
+    }
+   ],
+   "123:2": [
+    {
+     "known_text": "a good",
+     "target_text": "une bonne",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "idea",
+     "target_text": "idée",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a good idea",
+     "target_text": "une bonne idée",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a good idea",
+     "target_text": "une bonne idée",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's a good idea",
+     "target_text": "c'est une bonne idée",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that's a good idea",
+     "target_text": "c'est une bonne idée",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's a good idea",
+     "target_text": "je pense que c'est une bonne idée",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a good idea to learn French",
+     "target_text": "c'est une bonne idée d'apprendre le français",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 132,
+  "phrases": {
+   "132:1": [
+    {
+     "known_text": "less",
+     "target_text": "moins",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "than",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "less than",
+     "target_text": "moins que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "less than",
+     "target_text": "moins que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "less than this",
+     "target_text": "moins que cela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to say less than this",
+     "target_text": "je veux dire moins que cela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "this is less than what I wanted",
+     "target_text": "c'est moins que ce que je voulais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's less than what you were thinking",
+     "target_text": "c'est moins que ce que tu pensais",
+     "phrase_role": "use"
+    }
+   ],
+   "132:2": [
+    {
+     "known_text": "exciting",
+     "target_text": "passionnant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "very exciting",
+     "target_text": "très passionnant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "less exciting",
+     "target_text": "moins passionnant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "this is very exciting to me",
+     "target_text": "c'est très passionnant pour moi",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what she said was exciting",
+     "target_text": "ce qu'elle a dit était passionnant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that was exciting for me to hear",
+     "target_text": "c'était passionnant pour moi d'entendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's not as exciting as I thought",
+     "target_text": "ce n'est pas aussi passionnant que je pensais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want something more exciting to do",
+     "target_text": "je veux quelque chose de plus passionnant à faire",
+     "phrase_role": "use"
+    }
+   ],
+   "132:3": [
+    {
+     "known_text": "what she",
+     "target_text": "ce qu'elle",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "was saying",
+     "target_text": "disait",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what she was saying",
+     "target_text": "ce qu'elle disait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what she was saying",
+     "target_text": "ce qu'elle disait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what she was saying before",
+     "target_text": "ce qu'elle disait avant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I like what she was saying",
+     "target_text": "j'aime ce qu'elle disait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I was thinking about what she was saying",
+     "target_text": "je pensais à ce qu'elle disait",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to hear what she was saying",
+     "target_text": "je voulais entendre ce qu'elle disait",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what she was saying was very interesting",
+     "target_text": "ce qu'elle disait était très intéressant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like what she was saying about this",
+     "target_text": "j'aime ce qu'elle disait à propos de cela",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't understand what she was saying",
+     "target_text": "je ne peux pas comprendre ce qu'elle disait",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what she was saying was difficult to understand",
+     "target_text": "ce qu'elle disait était difficile à comprendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what she was saying is less exciting now",
+     "target_text": "ce qu'elle disait est moins passionnant maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's less exciting than what she was saying",
+     "target_text": "C'est moins passionnant que ce qu'elle disait",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 163,
+  "phrases": {
+   "163:1": [
+    {
+     "known_text": "I think that",
+     "target_text": "je pense que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it's interesting",
+     "target_text": "c'est intéressant",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I think that it's interesting",
+     "target_text": "je pense que c'est intéressant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's interesting",
+     "target_text": "je pense que c'est intéressant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's interesting to",
+     "target_text": "je pense que c'est intéressant de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's interesting and important",
+     "target_text": "je pense que c'est intéressant et important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that it's interesting, but difficult",
+     "target_text": "je pense que c'est intéressant, mais difficile",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's interesting to read that book",
+     "target_text": "je pense que c'est intéressant de lire ce livre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's interesting to talk with you",
+     "target_text": "je pense que c'est intéressant de parler avec vous",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's interesting to learn French",
+     "target_text": "je pense que c'est intéressant d'apprendre le français",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's interesting, but I'm not sure",
+     "target_text": "je pense que c'est intéressant, mais je ne suis pas sûr",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's interesting to understand how that works",
+     "target_text": "je pense que c'est intéressant de comprendre comment ça fonctionne",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that it's interesting when I learn something new",
+     "target_text": "je pense que c'est intéressant quand j'apprends quelque chose de nouveau",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 164,
+  "phrases": {
+   "164:1": [
+    {
+     "known_text": "an interesting book",
+     "target_text": "un livre intéressant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "an interesting book",
+     "target_text": "un livre intéressant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "an interesting book about",
+     "target_text": "un livre intéressant sur",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "reading an interesting book",
+     "target_text": "lire un livre intéressant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that's an interesting book",
+     "target_text": "c'est un livre intéressant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to find an interesting book",
+     "target_text": "je dois trouver un livre intéressant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to find an interesting book",
+     "target_text": "j'aimerais trouver un livre intéressant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I started reading an interesting book yesterday",
+     "target_text": "j'ai commencé à lire un livre intéressant hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I finished reading an interesting book this morning",
+     "target_text": "j'ai fini de lire un livre intéressant ce matin",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 168,
+  "phrases": {
+   "168:1": [
+    {
+     "known_text": "and",
+     "target_text": "et",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "then",
+     "target_text": "puis",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "and then",
+     "target_text": "et puis",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and then",
+     "target_text": "et puis",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and then I",
+     "target_text": "et puis je",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and then we",
+     "target_text": "et puis nous",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "and then I'll wait",
+     "target_text": "et puis je vais attendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and then I'll be happy",
+     "target_text": "et puis je serai content",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and then I'll help you",
+     "target_text": "et puis je vais vous aider",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and then I'll see you on Sunday",
+     "target_text": "et puis je vous vois dimanche",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and then I'll understand better",
+     "target_text": "et puis je vais comprendre mieux",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and then I'll go to the restaurant",
+     "target_text": "et puis je vais aller au restaurant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and then I'll know what that is",
+     "target_text": "et puis je vais savoir ce que c'est",
+     "phrase_role": "use"
+    }
+   ],
+   "168:2": [
+    {
+     "known_text": "to come",
+     "target_text": "venir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to come",
+     "target_text": "venir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "able to come",
+     "target_text": "pouvoir venir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'll be able to come and help",
+     "target_text": "je pourrai venir aider",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll be able to come tomorrow",
+     "target_text": "je pourrai venir demain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to come back later",
+     "target_text": "je dois revenir plus tard",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to come with you",
+     "target_text": "j'aimerais venir avec vous",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll be able to come later on",
+     "target_text": "je pourrai venir plus tard",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to come on Sunday morning",
+     "target_text": "je vais venir dimanche matin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "and then I'll be able to come and help later on",
+     "target_text": "et puis je pourrai venir aider plus tard",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 169,
+  "phrases": {
+   "169:1": [
+    {
+     "known_text": "what",
+     "target_text": "qu'est-ce que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "do you want",
+     "target_text": "vous voulez",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what do you want",
+     "target_text": "qu'est-ce que vous voulez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what do you want",
+     "target_text": "qu'est-ce que vous voulez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what do you want to say",
+     "target_text": "qu'est-ce que vous voulez dire",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what do you want to do",
+     "target_text": "qu'est-ce que vous voulez faire",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what do you want to say?",
+     "target_text": "qu'est-ce que vous voulez dire?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what do you want to read?",
+     "target_text": "qu'est-ce que vous voulez lire?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what do you want to do?",
+     "target_text": "qu'est-ce que vous voulez faire?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what do you want to learn?",
+     "target_text": "qu'est-ce que vous voulez apprendre?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what do you want to understand?",
+     "target_text": "qu'est-ce que vous voulez comprendre?",
+     "phrase_role": "use"
+    }
+   ],
+   "169:2": [
+    {
+     "known_text": "do",
+     "target_text": "fasse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I do",
+     "target_text": "je fasse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that I do",
+     "target_text": "que je fasse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want me to do that tomorrow?",
+     "target_text": "vous voulez que je fasse ça demain?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what do you want me to do?",
+     "target_text": "qu'est-ce que vous voulez que je fasse?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want me to do that now?",
+     "target_text": "vous voulez que je fasse ça maintenant?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you want me to do that",
+     "target_text": "je pense que vous voulez que je fasse ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know what you want me to do",
+     "target_text": "je ne sais pas ce que vous voulez que je fasse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "what exactly do you want me to do?",
+     "target_text": "qu'est-ce que vous voulez exactement que je fasse?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't understand what you want me to do",
+     "target_text": "je ne comprends pas ce que vous voulez que je fasse",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 170,
+  "phrases": {
+   "170:1": [
+    {
+     "known_text": "I'd like you to",
+     "target_text": "je voudrais que vous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "tell me",
+     "target_text": "me disiez",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'd like you to tell me",
+     "target_text": "je voudrais que vous me disiez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like you to tell me",
+     "target_text": "je voudrais que vous me disiez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like you to tell me if",
+     "target_text": "je voudrais que vous me disiez si",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like you to tell me what",
+     "target_text": "je voudrais que vous me disiez ce que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like you to tell me where that is",
+     "target_text": "je voudrais que vous me disiez où c'est",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like you to tell me if that's true",
+     "target_text": "je voudrais que vous me disiez si c'est vrai",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like you to tell me when that was",
+     "target_text": "je voudrais que vous me disiez quand c'était",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like you to tell me what you want",
+     "target_text": "je voudrais que vous me disiez ce que vous voulez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like you to tell me if that's difficult",
+     "target_text": "je voudrais que vous me disiez si c'est difficile",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like you to tell me what I need to do",
+     "target_text": "je voudrais que vous me disiez ce que je dois faire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like you to tell me what I should do",
+     "target_text": "je voudrais que vous me disiez ce que je devrais faire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to read my book for a while",
+     "target_text": "je voudrais lire mon livre pendant un moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would you like to come with us next month?",
+     "target_text": "est-ce que tu voudrais venir avec nous le mois prochain?",
+     "phrase_role": "use"
+    }
+   ],
+   "170:2": [
+    {
+     "known_text": "you",
+     "target_text": "vous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "have",
+     "target_text": "avez",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you have",
+     "target_text": "vous avez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you have",
+     "target_text": "vous avez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you have need",
+     "target_text": "vous avez besoin",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what you have",
+     "target_text": "ce que vous avez",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you have a book",
+     "target_text": "vous avez un livre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you have time to help me?",
+     "target_text": "vous avez le temps de m'aider?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you have an interesting book",
+     "target_text": "vous avez un livre intéressant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you have a lot to learn",
+     "target_text": "vous avez beaucoup à apprendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to know what you have",
+     "target_text": "j'aimerais savoir ce que vous avez",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think you have something to tell me",
+     "target_text": "je pense que vous avez quelque chose à me dire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like you to tell me what you have need of",
+     "target_text": "je voudrais que vous me disiez ce dont vous avez besoin",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 171,
+  "phrases": {
+   "171:1": [
+    {
+     "known_text": "want me to",
+     "target_text": "que je",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "do you want me to",
+     "target_text": "voulez-vous que je",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want me to",
+     "target_text": "voulez-vous que je",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want me to help",
+     "target_text": "voulez-vous que je vous aide",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want me to help you?",
+     "target_text": "voulez-vous que je vous aide ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want me to start now?",
+     "target_text": "voulez-vous que je commence maintenant ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want me to speak French with you?",
+     "target_text": "voulez-vous que je parle français avec vous ?",
+     "phrase_role": "use"
+    }
+   ],
+   "171:2": [
+    {
+     "known_text": "to look for",
+     "target_text": "chercher",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to look for",
+     "target_text": "chercher",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to look for it",
+     "target_text": "je vais chercher ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to look for my book",
+     "target_text": "je vais chercher mon livre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't want to look for it",
+     "target_text": "il ne veut pas chercher ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to look for a house",
+     "target_text": "je dois chercher une maison",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to look for her friend",
+     "target_text": "elle veut chercher son amie",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wanted to look for you yesterday",
+     "target_text": "je voulais te chercher hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to look for work?",
+     "target_text": "voulez-vous chercher du travail?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to look for you tomorrow morning",
+     "target_text": "je dois te chercher demain matin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we have to look for a restaurant",
+     "target_text": "nous devons chercher un restaurant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want me to help you look for it?",
+     "target_text": "voulez-vous que je vous aide à le chercher?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 178,
+  "phrases": {
+   "178:1": [
+    {
+     "known_text": "didn't",
+     "target_text": "n'ai pas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "have",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "didn't have",
+     "target_text": "n'ai pas eu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "didn't have",
+     "target_text": "n'ai pas eu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't have",
+     "target_text": "je n'ai pas eu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't have time",
+     "target_text": "je n'ai pas eu le temps",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't have time",
+     "target_text": "je n'ai pas eu le temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time yesterday",
+     "target_text": "je n'ai pas eu le temps hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to come",
+     "target_text": "je n'ai pas eu le temps de venir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to help you",
+     "target_text": "je n'ai pas eu le temps de t'aider",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to read it",
+     "target_text": "je n'ai pas eu le temps de le lire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to see you",
+     "target_text": "je n'ai pas eu le temps de te voir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to do it",
+     "target_text": "je n'ai pas eu le temps de faire ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to start",
+     "target_text": "je n'ai pas eu le temps de commencer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time to think",
+     "target_text": "je n'ai pas eu le temps de réfléchir",
+     "phrase_role": "use"
+    }
+   ],
+   "178:2": [
+    {
+     "known_text": "although",
+     "target_text": "bien que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although",
+     "target_text": "bien que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although I wanted",
+     "target_text": "bien que je voulais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although I wanted to",
+     "target_text": "bien que je voulais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "although you don't like it, it's good to speak French",
+     "target_text": "bien que tu n'aimes pas ça, c'est bien de parler français",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't have time, although I wanted to see you",
+     "target_text": "Je n'ai pas eu le temps, bien que je voulais vous voir",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 182,
+  "phrases": {
+   "182:1": [
+    {
+     "known_text": "have you",
+     "target_text": "avez-vous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "seen",
+     "target_text": "vu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "have you seen",
+     "target_text": "avez-vous vu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you seen",
+     "target_text": "avez-vous vu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you seen this",
+     "target_text": "avez-vous vu ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you seen that",
+     "target_text": "avez-vous vu cela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you seen my friend?",
+     "target_text": "avez-vous vu mon ami?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you seen my bag?",
+     "target_text": "avez-vous vu mon sac?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you seen my mother?",
+     "target_text": "avez-vous vu ma mère?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you seen this before?",
+     "target_text": "avez-vous vu ça avant?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you seen my dog?",
+     "target_text": "avez-vous vu mon chien?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you seen that restaurant?",
+     "target_text": "avez-vous vu ce restaurant?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you seen the new book?",
+     "target_text": "avez-vous vu le nouveau livre?",
+     "phrase_role": "use"
+    }
+   ],
+   "182:2": [
+    {
+     "known_text": "my keys",
+     "target_text": "mes clés",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the keys",
+     "target_text": "les clés",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "keys are",
+     "target_text": "clés sont",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "where are my keys?",
+     "target_text": "où sont mes clés?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find my keys",
+     "target_text": "je veux trouver mes clés",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I will find my keys",
+     "target_text": "je vais trouver mes clés",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my keys are in the bag",
+     "target_text": "mes clés sont dans le sac",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to look for my keys",
+     "target_text": "je dois chercher mes clés",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't find my keys",
+     "target_text": "je ne peux pas trouver mes clés",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I know where my keys are",
+     "target_text": "je pense que je sais où sont mes clés",
+     "phrase_role": "use"
+    }
+   ],
+   "182:3": [
+    {
+     "known_text": "anywhere",
+     "target_text": "quelque part",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "anywhere",
+     "target_text": "quelque part",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to go anywhere",
+     "target_text": "aller quelque part",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "anywhere else",
+     "target_text": "quelque part d'autre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you want to go anywhere?",
+     "target_text": "voulez-vous aller quelque part?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to stop anywhere?",
+     "target_text": "voulez-vous arrêter quelque part?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to go somewhere else",
+     "target_text": "je veux aller quelque part d'autre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I saw that somewhere",
+     "target_text": "je pense que j'ai vu ça quelque part",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we need to go somewhere soon",
+     "target_text": "nous devons aller quelque part bientôt",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you seen my keys anywhere?",
+     "target_text": "avez-vous vu mes clés quelque part?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 190,
+  "phrases": {
+   "190:1": [
+    {
+     "known_text": "I ask",
+     "target_text": "je pose",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if I ask",
+     "target_text": "si je pose",
+     "phrase_role": "build"
+    }
+   ],
+   "190:2": [
+    {
+     "known_text": "some",
+     "target_text": "quelques",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "questions",
+     "target_text": "questions",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "some questions",
+     "target_text": "quelques questions",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "some questions",
+     "target_text": "quelques questions",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have some questions",
+     "target_text": "j'ai quelques questions",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have some questions",
+     "target_text": "j'ai quelques questions",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I ask some questions",
+     "target_text": "je pose quelques questions",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you have some questions?",
+     "target_text": "avez-vous quelques questions?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I ask you some questions",
+     "target_text": "je vous pose quelques questions",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do I ask you some questions?",
+     "target_text": "je vous pose quelques questions?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if I ask you some questions",
+     "target_text": "si je vous pose quelques questions",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I have some questions",
+     "target_text": "je pense que j'ai quelques questions",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I ask you some questions",
+     "target_text": "je pense que je vous pose quelques questions",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you mind if I ask you some questions?",
+     "target_text": "ça vous dérange si je vous pose quelques questions?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 195,
+  "phrases": {
+   "195:1": [
+    {
+     "known_text": "the money",
+     "target_text": "l'argent",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I have money",
+     "target_text": "j'ai de l'argent",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do you have money?",
+     "target_text": "est-ce que tu as de l'argent?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the money helped me, thank you very much for that",
+     "target_text": "l'argent m'a aidé, merci beaucoup pour ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think the money is in my bag here",
+     "target_text": "je pense que l'argent est dans mon sac ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you have the money we talked about yesterday?",
+     "target_text": "est-ce que tu as l'argent dont on a parlé hier?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't have enough money to do that right now",
+     "target_text": "je n'ai pas assez d'argent pour faire ça maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to find the money I need for tomorrow",
+     "target_text": "j'essaie de trouver l'argent dont j'ai besoin pour demain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you need money, I can help you find work",
+     "target_text": "si tu as besoin d'argent, je peux t'aider à trouver du travail",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't understand why he needs more money for that",
+     "target_text": "je ne comprends pas pourquoi il a besoin de plus d'argent pour ça",
+     "phrase_role": "use"
+    }
+   ],
+   "195:2": [
+    {
+     "known_text": "I",
+     "target_text": "j'ai",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "left",
+     "target_text": "laissé",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I left",
+     "target_text": "j'ai laissé",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left it here",
+     "target_text": "j'ai laissé ça ici",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left my bag",
+     "target_text": "j'ai laissé mon sac",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left the money",
+     "target_text": "j'ai laissé l'argent",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left my keys at home this morning, I'm sorry",
+     "target_text": "j'ai laissé mes clés à la maison ce matin, je suis désolé",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I left my bag at your house yesterday, can I come get it?",
+     "target_text": "j'ai laissé mon sac chez toi hier, je peux venir le chercher?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sorry, I left everything at home, I need to come back",
+     "target_text": "je suis désolé, j'ai laissé tout à la maison, je dois revenir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to remember where I left that book you wanted",
+     "target_text": "j'essaie de me souvenir où j'ai laissé le livre que tu voulais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think I left my bag in the car, can you see it?",
+     "target_text": "je pense que j'ai laissé mon sac dans la voiture, peux-tu le voir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I left everything you need here before I went to work",
+     "target_text": "j'ai laissé tout ce dont tu as besoin ici avant d'aller au travail",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I left the money you need here this morning before I left",
+     "target_text": "j'ai laissé l'argent dont tu as besoin ici ce matin avant de partir",
+     "phrase_role": "use"
+    }
+   ],
+   "195:3": [
+    {
+     "known_text": "on the table",
+     "target_text": "sur la table",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "It's on the table",
+     "target_text": "c'est sur la table",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left the money on the table",
+     "target_text": "j'ai laissé l'argent sur la table",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to put my bag on the table now",
+     "target_text": "je veux mettre mon sac sur la table maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you want to work, you can use the table here",
+     "target_text": "si tu veux travailler, tu peux utiliser la table ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "Can you put that on the table so we can see it?",
+     "target_text": "peux-tu mettre ça sur la table pour qu'on puisse le voir?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I left the money on the table this morning before I left",
+     "target_text": "j'ai laissé l'argent sur la table ce matin avant de partir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the book on the table is the one I wanted to show you",
+     "target_text": "le livre sur la table est le livre que je voulais te montrer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I thought I left my keys on the table but I can't find them",
+     "target_text": "je pensais que j'ai laissé mes clés sur la table mais je ne peux pas les trouver",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to find the money I left on the table",
+     "target_text": "j'essaie de trouver l'argent que j'ai laissé sur la table",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 219,
+  "phrases": {
+   "219:1": [
+    {
+     "known_text": "it was nice to",
+     "target_text": "c'était agréable de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was nice to",
+     "target_text": "c'était agréable de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was nice to see",
+     "target_text": "c'était agréable de voir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was nice to see you",
+     "target_text": "c'était agréable de te voir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was nice to meet them",
+     "target_text": "c'était agréable de les rencontrer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was nice to talk to you",
+     "target_text": "c'était agréable de parler avec toi",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was nice to help you with this",
+     "target_text": "c'était agréable de t'aider avec ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was nice to do this together",
+     "target_text": "c'était agréable de faire ça ensemble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was nice to have a good time",
+     "target_text": "c'était agréable de passer un bon moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was nice to see my friends tonight",
+     "target_text": "c'était agréable de voir mes amis ce soir",
+     "phrase_role": "use"
+    }
+   ],
+   "219:2": [
+    {
+     "known_text": "to relax for a while",
+     "target_text": "se détendre pendant un moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to relax for a while",
+     "target_text": "se détendre pendant un moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to relax for a while",
+     "target_text": "se détendre pendant un moment",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to relax for a while at",
+     "target_text": "se détendre pendant un moment à",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it was nice to relax for a while",
+     "target_text": "c'était agréable de se détendre pendant un moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's good to relax for a while",
+     "target_text": "c'est bien de se détendre pendant un moment",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to relax for a while before leaving",
+     "target_text": "il voulait se détendre pendant un moment avant de partir",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 220,
+  "phrases": {
+   "220:1": [
+    {
+     "known_text": "a bit of",
+     "target_text": "un peu de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a bit of",
+     "target_text": "un peu de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a bit of time",
+     "target_text": "un peu de temps",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "need a bit of",
+     "target_text": "besoin de un peu de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want a bit of water",
+     "target_text": "je veux un peu d'eau",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "Can I have a bit of time?",
+     "target_text": "je peux avoir un peu de temps?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to have a bit of time with you",
+     "target_text": "j'aimerais avoir un peu de temps avec toi",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you give me a bit of time?",
+     "target_text": "tu peux me donner un peu de temps ?",
+     "phrase_role": "use"
+    }
+   ],
+   "220:2": [
+    {
+     "known_text": "watch",
+     "target_text": "regardé",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "watch a bit",
+     "target_text": "regardé un peu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did you watch",
+     "target_text": "avez-vous regardé",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did you watch this?",
+     "target_text": "avez-vous regardé ça?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I watched a bit on Sunday",
+     "target_text": "j'ai regardé un peu dimanche",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did you watch a bit yesterday?",
+     "target_text": "avez-vous regardé un peu hier?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I watched something yesterday",
+     "target_text": "j'ai regardé quelque chose hier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I watched something at home",
+     "target_text": "j'ai regardé quelque chose chez moi",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I watched something with my friends",
+     "target_text": "j'ai regardé quelque chose avec mes amis",
+     "phrase_role": "use"
+    }
+   ],
+   "220:3": [
+    {
+     "known_text": "television",
+     "target_text": "télévision",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "of television",
+     "target_text": "de télévision",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "watch television",
+     "target_text": "regardé télévision",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did you watch a bit of television?",
+     "target_text": "avez-vous regardé un peu de télévision?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I watched a bit of television on Sunday",
+     "target_text": "j'ai regardé un peu de télévision dimanche",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 225,
+  "phrases": {
+   "225:1": [
+    {
+     "known_text": "he",
+     "target_text": "il",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "vous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "would give",
+     "target_text": "donnerait",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he would give you an answer",
+     "target_text": "il vous donnerait une réponse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he would give you some time",
+     "target_text": "il vous donnerait du temps",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he would give you his name",
+     "target_text": "il vous donnerait son nom",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he would give you the keys",
+     "target_text": "il vous donnerait les clés",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he would give you the keys if I asked him",
+     "target_text": "il vous donnerait les clés si je lui demandais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if I asked him, he would give you the answer",
+     "target_text": "si je lui demandais, il vous donnerait la réponse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he would give you his name if I asked him",
+     "target_text": "il vous donnerait son nom si je lui demandais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he would give you everything if I asked him",
+     "target_text": "il vous donnerait tout si je lui demandais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if I asked him, he would give you more time",
+     "target_text": "si je lui demandais, il vous donnerait plus de temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he would give you his book if I asked him",
+     "target_text": "il vous donnerait son livre si je lui demandais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if I asked him, he would give you his letter",
+     "target_text": "si je lui demandais, il vous donnerait sa lettre",
+     "phrase_role": "use"
+    }
+   ],
+   "225:2": [
+    {
+     "known_text": "he could",
+     "target_text": "il pouvait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if he could",
+     "target_text": "s'il pouvait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he could do that",
+     "target_text": "il pouvait faire ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he couldn't speak French before",
+     "target_text": "il ne pouvait pas parler français avant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he would give you an answer if he could",
+     "target_text": "il vous donnerait une réponse s'il pouvait",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 324,
+  "phrases": {
+   "324:1": [
+    {
+     "known_text": "that",
+     "target_text": "cette",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "student",
+     "target_text": "élève",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that student",
+     "target_text": "cette élève",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that student needs to try",
+     "target_text": "cette élève doit essayer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that student needs to read the same book",
+     "target_text": "cette élève doit lire le même livre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that student needs to come",
+     "target_text": "cette élève doit venir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student could walk to school",
+     "target_text": "cette élève pourrait marcher jusqu'à l'école",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student needs to read",
+     "target_text": "cette élève doit lire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student doesn't need to walk",
+     "target_text": "cette élève n'a pas besoin de marcher",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student could try something",
+     "target_text": "cette élève pourrait essayer quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student said she needs to come",
+     "target_text": "cette élève a dit qu'elle doit venir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like that student",
+     "target_text": "j'aime cette élève",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't have done it with that student if I had known",
+     "target_text": "je ne l'aurais pas fait avec cette élève si j'avais su",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ask that student some questions",
+     "target_text": "pose quelques questions à cette élève",
+     "phrase_role": "use"
+    }
+   ],
+   "324:2": [
+    {
+     "known_text": "books",
+     "target_text": "livres",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "books",
+     "target_text": "des livres",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to read books",
+     "target_text": "lire des livres",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that student has books",
+     "target_text": "cette élève a des livres",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student needs to read books",
+     "target_text": "cette élève doit lire des livres",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to read books",
+     "target_text": "elle veut lire des livres",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have books",
+     "target_text": "j'ai des livres",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student needs to read books this year",
+     "target_text": "cette élève doit lire des livres cette année",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there are two books",
+     "target_text": "il y a deux livres",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to read more books",
+     "target_text": "je veux lire plus de livres",
+     "phrase_role": "use"
+    }
+   ],
+   "324:3": [
+    {
+     "known_text": "two",
+     "target_text": "deux",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "two things",
+     "target_text": "deux choses",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she could move two things",
+     "target_text": "elle pourrait déménager deux choses",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she could try two things",
+     "target_text": "elle pourrait essayer deux choses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student needs to read two",
+     "target_text": "cette élève doit lire deux",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said she could try two things",
+     "target_text": "elle a dit qu'elle pourrait essayer deux choses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student could read two",
+     "target_text": "cette élève pourrait lire deux",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she needs to try two things",
+     "target_text": "elle doit essayer deux choses",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student could try two things",
+     "target_text": "cette élève pourrait essayer deux choses",
+     "phrase_role": "use"
+    }
+   ],
+   "324:4": [
+    {
+     "known_text": "hands",
+     "target_text": "mains",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "both hands",
+     "target_text": "deux mains",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she needs to use both hands",
+     "target_text": "elle doit utiliser les deux mains",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she could use both hands",
+     "target_text": "elle pourrait utiliser les deux mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student needs to use both hands",
+     "target_text": "cette élève doit utiliser les deux mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said she could use both hands",
+     "target_text": "elle a dit qu'elle pourrait utiliser les deux mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student could try with both hands",
+     "target_text": "cette élève pourrait essayer avec les deux mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student said she needs to use both hands",
+     "target_text": "cette élève a dit qu'elle doit utiliser les deux mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said she needs to use both hands",
+     "target_text": "elle a dit qu'elle doit utiliser les deux mains",
+     "phrase_role": "use"
+    }
+   ],
+   "324:5": [
+    {
+     "known_text": "to raise",
+     "target_text": "lever",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she needs to raise",
+     "target_text": "elle doit lever",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that student could try to raise",
+     "target_text": "cette élève pourrait essayer de lever",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she needs to raise her hands",
+     "target_text": "elle doit lever les mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student could raise her hands",
+     "target_text": "cette élève pourrait lever les mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said she needs to raise her hands",
+     "target_text": "elle a dit qu'elle doit lever les mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student could try to raise her hands",
+     "target_text": "cette élève pourrait essayer de lever les mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student said she needs to raise her hands",
+     "target_text": "cette élève a dit qu'elle doit lever les mains",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she could raise both hands",
+     "target_text": "elle pourrait lever les deux mains",
+     "phrase_role": "use"
+    }
+   ],
+   "324:6": [
+    {
+     "known_text": "her two",
+     "target_text": "ses deux",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "hands raised",
+     "target_text": "mains levées",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "both of her hands up",
+     "target_text": "ses deux mains levées",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she didn't want to wait with both of her hands up",
+     "target_text": "elle ne voulait pas attendre avec ses deux mains levées",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that student has both of her hands up",
+     "target_text": "cette élève a ses deux mains levées",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 365,
+  "phrases": {
+   "365:1": [
+    {
+     "known_text": "what she said",
+     "target_text": "ce qu'elle a dit",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to him",
+     "target_text": "lui",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what she said to him",
+     "target_text": "ce qu'elle lui a dit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what she said to him was good",
+     "target_text": "ce qu'elle lui a dit était bien",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what she said to him was important",
+     "target_text": "ce qu'elle lui a dit était important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I heard what she said to him",
+     "target_text": "j'ai entendu ce qu'elle lui a dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told him what she said",
+     "target_text": "elle lui a dit ce qu'elle lui a dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to know what she said to him",
+     "target_text": "il voulait savoir ce qu'elle lui a dit",
+     "phrase_role": "use"
+    }
+   ],
+   "365:2": [
+    {
+     "known_text": "I",
+     "target_text": "je",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "didn't hear",
+     "target_text": "n'ai pas entendu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I didn't hear",
+     "target_text": "je n'ai pas entendu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't hear that",
+     "target_text": "je n'ai pas entendu ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't hear what she said to him",
+     "target_text": "je n'ai pas entendu ce qu'elle lui a dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't hear what he said",
+     "target_text": "je n'ai pas entendu ce qu'il a dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't hear what she wanted",
+     "target_text": "je n'ai pas entendu ce qu'elle voulait",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't hear what they said",
+     "target_text": "je n'ai pas entendu ce qu'ils ont dit",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 366,
+  "phrases": {
+   "366:1": [
+    {
+     "known_text": "to make",
+     "target_text": "faire",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "grow",
+     "target_text": "pousser",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to grow",
+     "target_text": "faire pousser",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to grow it",
+     "target_text": "faire pousser ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to grow something",
+     "target_text": "faire pousser quelque chose",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wanted to grow something",
+     "target_text": "il voulait faire pousser quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wanted to grow something",
+     "target_text": "elle voulait faire pousser quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he was going to grow something",
+     "target_text": "il allait faire pousser quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he needed to grow something",
+     "target_text": "il avait besoin de faire pousser quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she was going to grow something important",
+     "target_text": "elle allait faire pousser quelque chose d'important",
+     "phrase_role": "use"
+    }
+   ],
+   "366:2": [
+    {
+     "known_text": "what he",
+     "target_text": "ce qu'il",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "wanted to",
+     "target_text": "voulait",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what he wanted to",
+     "target_text": "ce qu'il voulait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what he wanted to do",
+     "target_text": "ce qu'il voulait faire",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what he wanted to say",
+     "target_text": "ce qu'il voulait dire",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't hear what he wanted to grow",
+     "target_text": "je n'ai pas entendu ce qu'il voulait faire pousser",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I heard what he wanted to grow",
+     "target_text": "j'ai entendu ce qu'il voulait faire pousser",
+     "phrase_role": "use"
+    }
+   ],
+   "366:3": [
+    {
+     "known_text": "did you",
+     "target_text": "as-tu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "hear",
+     "target_text": "entendu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "did you hear",
+     "target_text": "as-tu entendu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did you hear something?",
+     "target_text": "as-tu entendu quelque chose ?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did you hear what he wanted to grow?",
+     "target_text": "as-tu entendu ce qu'il voulait faire pousser ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did you hear what she said?",
+     "target_text": "as-tu entendu ce qu'elle a dit ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did you hear what he wanted to say?",
+     "target_text": "as-tu entendu ce qu'il voulait dire ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did you hear that?",
+     "target_text": "as-tu entendu ça ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did you hear what he said?",
+     "target_text": "as-tu entendu ce qu'il a dit ?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 372,
+  "phrases": {
+   "372:1": [
+    {
+     "known_text": "what she",
+     "target_text": "ce qu'elle",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "was trying to",
+     "target_text": "essayait de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what she was trying to",
+     "target_text": "ce qu'elle essayait de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what she was trying to do",
+     "target_text": "ce qu'elle essayait de faire",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what she was trying to say",
+     "target_text": "ce qu'elle essayait de dire",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I didn't hear what she was trying to say",
+     "target_text": "je n'ai pas entendu ce qu'elle essayait de dire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I heard what she was trying to say",
+     "target_text": "j'ai entendu ce qu'elle essayait de dire",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wanted to know what she was trying to do",
+     "target_text": "elle voulait savoir ce qu'elle essayait de faire",
+     "phrase_role": "use"
+    }
+   ],
+   "372:2": [
+    {
+     "known_text": "to create",
+     "target_text": "créer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to create something",
+     "target_text": "créer quelque chose",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to create something important",
+     "target_text": "créer quelque chose d'important",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she wanted to create something",
+     "target_text": "elle voulait créer quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he was going to create something",
+     "target_text": "il allait créer quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she needed to create something",
+     "target_text": "elle avait besoin de créer quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wanted to create something important",
+     "target_text": "il voulait créer quelque chose d'important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did you see what she was trying to create?",
+     "target_text": "as-tu vu ce qu'elle essayait de créer ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't see what she was trying to create",
+     "target_text": "je ne peux pas voir ce qu'elle essayait de créer",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 424,
+  "phrases": {
+   "424:1": [
+    {
+     "known_text": "they",
+     "target_text": "ils",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "make",
+     "target_text": "font",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they make",
+     "target_text": "ils font",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they do that",
+     "target_text": "ils font ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they make it work",
+     "target_text": "ils font marcher ça",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they do it now",
+     "target_text": "ils font ça maintenant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they do that well",
+     "target_text": "ils font ça bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they make something",
+     "target_text": "ils font quelque chose",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they do it again",
+     "target_text": "ils font ça encore",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they do it a lot",
+     "target_text": "ils font ça beaucoup",
+     "phrase_role": "use"
+    }
+   ],
+   "424:2": [
+    {
+     "known_text": "to waste",
+     "target_text": "perdre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to lose time",
+     "target_text": "perdre du temps",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to really waste",
+     "target_text": "vraiment perdre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they make lose",
+     "target_text": "ils font perdre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they make waste time",
+     "target_text": "ils font perdre du temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they make everyone waste time",
+     "target_text": "ils font perdre du temps à tout le monde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they make waste a lot",
+     "target_text": "ils font perdre beaucoup",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they really make waste",
+     "target_text": "ils font vraiment perdre",
+     "phrase_role": "use"
+    }
+   ],
+   "424:3": [
+    {
+     "known_text": "time",
+     "target_text": "temps",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the time",
+     "target_text": "le temps",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a lot of time",
+     "target_text": "beaucoup de temps",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they are wasting time",
+     "target_text": "ils font perdre du temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they need time",
+     "target_text": "ils ont besoin de temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they have time",
+     "target_text": "ils ont du temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they are wasting a lot of time",
+     "target_text": "ils font perdre beaucoup de temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "It's time to go now",
+     "target_text": "il est temps d'y aller maintenant",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must find time",
+     "target_text": "nous devons trouver du temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must find time before you leave",
+     "target_text": "nous devons trouver du temps avant que tu partes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "no they're wasting everybody's time",
+     "target_text": "non ils font perdre du temps à tout le monde",
+     "phrase_role": "use"
+    }
+   ],
+   "424:4": [
+    {
+     "known_text": "all",
+     "target_text": "tout",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the",
+     "target_text": "le",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "world",
+     "target_text": "monde",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "everybody",
+     "target_text": "tout le monde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "everybody here",
+     "target_text": "tout le monde là",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "everybody knows",
+     "target_text": "tout le monde sait",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "everybody can",
+     "target_text": "tout le monde peut",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no they're wasting everybody's time",
+     "target_text": "non ils font perdre du temps à tout le monde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "everybody needs time",
+     "target_text": "tout le monde a besoin de temps",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "everybody knows that",
+     "target_text": "tout le monde sait ça",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they make everybody waste time",
+     "target_text": "ils font perdre du temps à tout le monde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "everybody wants to learn",
+     "target_text": "tout le monde veut apprendre",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you should speak with everybody",
+     "target_text": "tu devrais parler avec tout le monde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must speak with everybody",
+     "target_text": "nous devons parler avec tout le monde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we hoped to see everybody",
+     "target_text": "nous espérions voir tout le monde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's talk with everybody",
+     "target_text": "parlons avec tout le monde",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 559,
+  "phrases": {
+   "559:1": [
+    {
+     "known_text": "the wood",
+     "target_text": "le bois",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the wood is here",
+     "target_text": "le bois est ici",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the wood is good",
+     "target_text": "le bois est bien",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the wood was there",
+     "target_text": "le bois était là",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the wood is nearby",
+     "target_text": "le bois est près",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the wood is big",
+     "target_text": "le bois est grand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the wood is important",
+     "target_text": "le bois est important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the wood is beautiful",
+     "target_text": "le bois est beau",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the wood I know",
+     "target_text": "le bois que je connais",
+     "phrase_role": "build"
+    }
+   ],
+   "559:2": [
+    {
+     "known_text": "through",
+     "target_text": "à travers",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the wood",
+     "target_text": "le bois",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "through the wood",
+     "target_text": "à travers le bois",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "through the wood now",
+     "target_text": "à travers le bois maintenant",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "through the wood today",
+     "target_text": "à travers le bois aujourd'hui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "through the wood together",
+     "target_text": "à travers le bois ensemble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "through the wood again",
+     "target_text": "à travers le bois encore",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "through the wood here",
+     "target_text": "à travers le bois ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "through the wood with him",
+     "target_text": "à travers le bois avec lui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "through the wood for her",
+     "target_text": "à travers le bois pour elle",
+     "phrase_role": "use"
+    }
+   ],
+   "559:3": [
+    {
+     "known_text": "the path",
+     "target_text": "le chemin",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the path is there",
+     "target_text": "le chemin est là",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to find the path",
+     "target_text": "trouver le chemin",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the path is here",
+     "target_text": "le chemin est ici",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "find the path today",
+     "target_text": "trouver le chemin aujourd'hui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the path is good",
+     "target_text": "le chemin est bien",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the path was there",
+     "target_text": "le chemin était là",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "find the path together",
+     "target_text": "trouver le chemin ensemble",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wouldn't choose the path",
+     "target_text": "il ne choisirait pas le chemin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you're going to find the path",
+     "target_text": "tu vas trouver le chemin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can't find the path",
+     "target_text": "tu ne peux pas trouver le chemin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to be able to find the path",
+     "target_text": "j'aimerais pouvoir trouver le chemin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I should find the path",
+     "target_text": "je devrais trouver le chemin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must find the path",
+     "target_text": "nous devons trouver le chemin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it might be the path",
+     "target_text": "ça pourrait être le chemin",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm not sure if I can find the path",
+     "target_text": "je ne suis pas sûr de pouvoir trouver le chemin",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find the path as quickly as possible",
+     "target_text": "je veux trouver le chemin aussi vite que possible",
+     "phrase_role": "use"
+    }
+   ],
+   "559:4": [
+    {
+     "known_text": "have you found",
+     "target_text": "as-tu trouvé",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "have you found?",
+     "target_text": "as-tu trouvé ?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "haven't you found yet?",
+     "target_text": "n'as-tu pas encore trouvé ?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you found already?",
+     "target_text": "as-tu déjà trouvé ?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "have you found the path through the wood?",
+     "target_text": "as-tu trouvé le chemin à travers le bois ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you found the path today?",
+     "target_text": "as-tu trouvé le chemin aujourd'hui ?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "haven't you found the path yet?",
+     "target_text": "n'as-tu pas encore trouvé le chemin ?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 648,
+  "phrases": {
+   "648:1": [
+    {
+     "known_text": "what",
+     "target_text": "ce que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you said",
+     "target_text": "vous avez dit",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "she knows what you said madam",
+     "target_text": "elle sait ce que vous avez dit madame",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows what you said madam",
+     "target_text": "il sait ce que vous avez dit madame",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "what you said madam",
+     "target_text": "ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that is what you said madam",
+     "target_text": "c'est ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know what you said madam",
+     "target_text": "je sais ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think about what you said madam",
+     "target_text": "je pense à ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't understand what you said madam",
+     "target_text": "je ne comprends pas ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't hear what you said madam",
+     "target_text": "je n'ai pas entendu ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've forgotten what you said madam",
+     "target_text": "j'ai oublié ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to remember what you said madam",
+     "target_text": "j'espère que je pourrai me souvenir de ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to remember what you said madam",
+     "target_text": "j'ai besoin de me souvenir de ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't have dared to say what you said madam",
+     "target_text": "je n'aurais pas osé dire ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like what you said madam",
+     "target_text": "j'aime ce que vous avez dit madame",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't like what you said madam",
+     "target_text": "je n'aime pas ce que vous avez dit madame",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 663,
+  "phrases": {
+   "663:1": [
+    {
+     "known_text": "what you said",
+     "target_text": "ce que vous avez dit",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "all",
+     "target_text": "tous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "what you all said",
+     "target_text": "ce que vous avez tous dit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he knows what you all said",
+     "target_text": "il sait ce que vous avez tous dit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she knows what you all said",
+     "target_text": "elle sait ce que vous avez tous dit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we know what you all said",
+     "target_text": "nous savons ce que vous avez tous dit",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that is what you all said",
+     "target_text": "c'est ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know what you all said",
+     "target_text": "je sais ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think about what you all said",
+     "target_text": "je pense à ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he needs to know what you all said",
+     "target_text": "il doit savoir ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I should remember what you all said",
+     "target_text": "je devrais me souvenir de ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he should know what you all said",
+     "target_text": "il devrait savoir ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't understand what you all said because I'm tired",
+     "target_text": "je ne comprends pas ce que vous avez tous dit parce que je suis fatigué",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've forgotten what you all said",
+     "target_text": "j'ai oublié ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't hear what you all said",
+     "target_text": "je n'ai pas entendu ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I've done what you all said",
+     "target_text": "j'ai fait ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I agree with what you all said",
+     "target_text": "je suis d'accord avec ce que vous avez tous dit",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like what you all said",
+     "target_text": "j'aime ce que vous avez tous dit",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

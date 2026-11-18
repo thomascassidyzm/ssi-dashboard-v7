@@ -1,0 +1,102 @@
+{
+ "course": "eng_for_ita",
+ "at": "2026-11-18T14:40:03.990Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0007L01": {
+   "lego": "provare | to try",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 30,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0007L01B03",
+     "role": "build",
+     "known": "non voglio provare",
+     "target": "I don't want to try",
+     "untaught": [
+      "don't"
+     ]
+    }
+   ]
+  },
+  "S0024L01": {
+   "lego": "non riuscirò a | I'm not going to be able to",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 37,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0024L01B02",
+     "role": "build",
+     "known": "non riuscirò a parlare",
+     "target": "I won't be able to speak",
+     "untaught": [
+      "won't"
+     ]
+    }
+   ]
+  },
+  "S0264L01": {
+   "lego": "un vecchio | an old man",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 23,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0264L01U01",
+     "role": "use",
+     "known": "un vecchio è venuto a chiedere aiuto",
+     "target": "an old man came to ask for help",
+     "untaught": [
+      "came"
+     ]
+    },
+    {
+     "row": "S0264L01U05",
+     "role": "use",
+     "known": "ho incontrato un vecchio che parlava inglese bene",
+     "target": "I met an old man who spoke English well",
+     "untaught": [
+      "spoke"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

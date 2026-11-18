@@ -1,0 +1,187 @@
+{
+ "course": "eng_for_sin",
+ "at": "2026-11-18T14:40:07.910Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0094L01": {
+   "lego": "එකම | only",
+   "before": "ok",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0094L01B02",
+     "role": "build",
+     "known": "එකම එකා",
+     "target": "the only one",
+     "untaught": [
+      "one"
+     ]
+    },
+    {
+     "row": "S0094L01U02",
+     "role": "use",
+     "known": "ඔයා එකම කෙනා මම දන්නේ",
+     "target": "you are the only one I know",
+     "untaught": [
+      "one"
+     ]
+    },
+    {
+     "row": "S0094L01U05",
+     "role": "use",
+     "known": "මම එකම එකා ඉංග්‍රීසි කතා කරන",
+     "target": "I'm the only one who speak English",
+     "untaught": [
+      "one"
+     ]
+    },
+    {
+     "row": "S0094L01U08",
+     "role": "use",
+     "known": "ඔයා එකම කෙනා ඉගෙනගන්නේ",
+     "target": "you are the only one learning",
+     "untaught": [
+      "one"
+     ]
+    }
+   ]
+  },
+  "S0117L02": {
+   "lego": "කතා කළාට | although I talked",
+   "before": "already under floor",
+   "delete": 5,
+   "counted_before": {
+    "b": 2,
+    "u": 1
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0117L02U01",
+     "role": "use",
+     "known": "මම ඒ ගැන කතා කළාට කියලා මම හිතනවා",
+     "target": "I think I talked about that, even though",
+     "untaught": [
+      "even",
+      "though"
+     ]
+    },
+    {
+     "row": "S0117L02U02",
+     "role": "use",
+     "known": "මම ඒ ගැන කතා කළාට, මම ලිහිල් වෙනවා",
+     "target": "even though I talked about that, I relax",
+     "untaught": [
+      "even",
+      "though"
+     ]
+    },
+    {
+     "row": "S0117L02U04",
+     "role": "use",
+     "known": "මම ඒ ගැන නිසැකවම කතා කළාට",
+     "target": "even though I definitely talked about that",
+     "untaught": [
+      "even",
+      "though"
+     ]
+    },
+    {
+     "row": "S0117L02U05",
+     "role": "use",
+     "known": "මම ඒ ගැන කතා කළාට, මම ලෑස්ති",
+     "target": "even though I talked about that, I'm ready",
+     "untaught": [
+      "even",
+      "though"
+     ]
+    },
+    {
+     "row": "S0117L02U08",
+     "role": "use",
+     "known": "මම ඒ ගැන කතා කළාට, මම නිසැකවම ලෑස්ති",
+     "target": "even though I talked about that, I'm definitely ready",
+     "untaught": [
+      "even",
+      "though"
+     ]
+    }
+   ]
+  },
+  "S0205L01": {
+   "lego": "අමතකවෙලා | I've forgotten",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0205L01B04",
+     "role": "build",
+     "known": "මගේ යාළුවා ගේ නම ගැන අමතකවෙලා",
+     "target": "I've forgotten my friend's name",
+     "untaught": [
+      "friend's"
+     ]
+    },
+    {
+     "row": "S0205L01U04",
+     "role": "use",
+     "known": "මගේ යාළුවා ගේ නම ගැන අමතකවෙලා",
+     "target": "I've forgotten my friend's name",
+     "untaught": [
+      "friend's"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [
+  {
+   "row": "S0371L03U03",
+   "why": "eng_for_sin seed >= 345: out of scope"
+  },
+  {
+   "row": "S0377L03U04",
+   "why": "eng_for_sin seed >= 345: out of scope"
+  },
+  {
+   "row": "S0377L03U05",
+   "why": "eng_for_sin seed >= 345: out of scope"
+  },
+  {
+   "row": "S0383L02U05",
+   "why": "eng_for_sin seed >= 345: out of scope"
+  }
+ ],
+ "errors": []
+}

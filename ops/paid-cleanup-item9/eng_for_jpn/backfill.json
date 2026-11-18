@@ -1,0 +1,6294 @@
+{
+ "course": "eng_for_jpn",
+ "at": "2026-11-18T14:40:01.679Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0004L01": {
+   "lego": "何か | something",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 29,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0004L01U04",
+     "role": "use",
+     "known": "英語で何かを試したいです",
+     "target": "I want to try something in English",
+     "untaught": [
+      "try",
+      "in"
+     ]
+    },
+    {
+     "row": "S0004L01B03",
+     "role": "build",
+     "known": "今日何かを学ぶ",
+     "target": "to learn something today",
+     "untaught": [
+      "today"
+     ]
+    },
+    {
+     "row": "S0004L01U06",
+     "role": "use",
+     "known": "今日あなたと何かを学びたいです",
+     "target": "I'd like to learn something with you today",
+     "untaught": [
+      "i'd",
+      "like",
+      "today"
+     ]
+    }
+   ]
+  },
+  "S0004L02": {
+   "lego": "言う | to say",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 9,
+   "rows": [
+    {
+     "row": "S0004L02U05",
+     "role": "use",
+     "known": "他の人と英語で何かを言いたいです",
+     "target": "I want to say something in English with someone else",
+     "untaught": [
+      "in",
+      "someone",
+      "else"
+     ]
+    }
+   ]
+  },
+  "S0004L04": {
+   "lego": "言う方法 | how to say",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 36,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0004L04U05",
+     "role": "use",
+     "known": "あなたが終わったら、何かを言う方法を学びたいです",
+     "target": "I'd like to learn how to say something after you finish",
+     "untaught": [
+      "i'd",
+      "like",
+      "after",
+      "finish"
+     ]
+    }
+   ]
+  },
+  "S0011L03": {
+   "lego": "なりたいです | I'd like",
+   "before": "ok",
+   "delete": 5,
+   "counted_before": {
+    "b": 4,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 5
+   },
+   "author_build": 3,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0011L03B01",
+     "role": "build",
+     "known": "私は教師になりたいです",
+     "target": "I'd like to be a teacher",
+     "untaught": [
+      "be",
+      "teacher"
+     ]
+    },
+    {
+     "row": "S0011L03B02",
+     "role": "build",
+     "known": "医者になりたいです",
+     "target": "I'd like to be a doctor",
+     "untaught": [
+      "be",
+      "doctor"
+     ]
+    },
+    {
+     "row": "S0011L03B04",
+     "role": "build",
+     "known": "できるだけ早く話せるようになりたいです",
+     "target": "I'd like to be able to speak as soon as I can",
+     "untaught": [
+      "be",
+      "able",
+      "soon"
+     ]
+    },
+    {
+     "row": "S0011L03B05",
+     "role": "build",
+     "known": "もっと上手に話せるようになりたいです",
+     "target": "I'd like to speak better",
+     "untaught": [
+      "better"
+     ]
+    },
+    {
+     "row": "S0011L03U07",
+     "role": "use",
+     "known": "できるだけ早く上手に話せるようになりたいです",
+     "target": "I'd like to speak better as soon as I can",
+     "untaught": [
+      "better",
+      "soon"
+     ]
+    }
+   ]
+  },
+  "S0029L01": {
+   "lego": "もっと上手に | better",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0029L01U08",
+     "role": "use",
+     "known": "あなたと話すと、もっと上手に話せるようになりたいです",
+     "target": "I'd like to be able to speak better when I talk with you",
+     "untaught": [
+      "when",
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0029L03": {
+   "lego": "できるだけ早くもっと上手に話せるようになる | speaking better as soon as I can",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 1
+   },
+   "author_build": 2,
+   "author_use": 2,
+   "avg_target_chars": 48,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0029L03B03",
+     "role": "build",
+     "known": "できるだけ早くもっと上手に話せるようになるつもりです",
+     "target": "I am going to be speaking better as soon as I can",
+     "untaught": [
+      "am"
+     ]
+    },
+    {
+     "row": "S0029L03B04",
+     "role": "build",
+     "known": "できるだけ早くもっと上手に話せるようになると思います",
+     "target": "I think I will be speaking better as soon as I can",
+     "untaught": [
+      "think",
+      "will"
+     ]
+    },
+    {
+     "row": "S0029L03U06",
+     "role": "use",
+     "known": "できるだけ早くもっと上手に話せるようになるのを楽しみにしています",
+     "target": "I am looking forward to speaking better as soon as I can",
+     "untaught": [
+      "am"
+     ]
+    },
+    {
+     "row": "S0029L03U09",
+     "role": "use",
+     "known": "できるだけ早くもっと上手に話せるようになる準備ができています",
+     "target": "I am ready to be speaking better as soon as I can",
+     "untaught": [
+      "am"
+     ]
+    }
+   ]
+  },
+  "S0031L03": {
+   "lego": "私と話したかった | you wanted to speak with me",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 41,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0031L03U07",
+     "role": "use",
+     "known": "はい、今夜あなたは私と話したかったのですね",
+     "target": "yes, you wanted to speak with me this evening",
+     "untaught": [
+      "yes"
+     ]
+    },
+    {
+     "row": "S0031L03U08",
+     "role": "use",
+     "known": "あなたが今日私と話したかったことを知っています",
+     "target": "I know you wanted to speak with me today",
+     "untaught": [
+      "know"
+     ]
+    },
+    {
+     "row": "S0031L03U09",
+     "role": "use",
+     "known": "あなたは私と何かについて話したかったのですね",
+     "target": "you wanted to speak with me about something",
+     "untaught": [
+      "about"
+     ]
+    }
+   ]
+  },
+  "S0034L02": {
+   "lego": "他の | other",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 9
+   },
+   "author_build": 2,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0034L02B02",
+     "role": "build",
+     "known": "他の言葉",
+     "target": "other words",
+     "untaught": [
+      "words"
+     ]
+    },
+    {
+     "row": "S0034L02B03",
+     "role": "build",
+     "known": "他のこと",
+     "target": "other things",
+     "untaught": [
+      "things"
+     ]
+    }
+   ]
+  },
+  "S0041L01": {
+   "lego": "大丈夫です | I feel okay",
+   "before": "ok",
+   "delete": 4,
+   "counted_before": {
+    "b": 5,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 35,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0041L01U03",
+     "role": "use",
+     "known": "今は大丈夫ですが、もう少し休みたいです",
+     "target": "I feel okay but I want to sleep a little more",
+     "untaught": [
+      "sleep"
+     ]
+    },
+    {
+     "row": "S0041L01U04",
+     "role": "use",
+     "known": "大丈夫だと思いますが、よく眠れませんでした",
+     "target": "I think I feel okay but I didn't sleep very well",
+     "untaught": [
+      "didn't",
+      "sleep"
+     ]
+    },
+    {
+     "row": "S0041L01U07",
+     "role": "use",
+     "known": "今日は大丈夫なので、できるだけ頑張ります",
+     "target": "I feel okay today so I want to try as hard as I can",
+     "untaught": [
+      "so"
+     ]
+    },
+    {
+     "row": "S0041L01U11",
+     "role": "use",
+     "known": "大丈夫ですが、全部覚えられません",
+     "target": "I feel okay but I'm not going to be able to remember everything",
+     "untaught": [
+      "everything"
+     ]
+    }
+   ]
+  },
+  "S0047L01": {
+   "lego": "だと思う | I think that",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 4,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 29,
+   "avg_known_chars": 9,
+   "rows": [
+    {
+     "row": "S0047L01U05",
+     "role": "use",
+     "known": "学ぶことは面白いと思います",
+     "target": "I think that it's interesting to learn",
+     "untaught": [
+      "interesting"
+     ]
+    },
+    {
+     "row": "S0047L01U06",
+     "role": "use",
+     "known": "毎日練習すると、もっと上手に話せるようになると思います",
+     "target": "I think that I'll be able to speak better when I practise every day",
+     "untaught": [
+      "i'll",
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0051L04": {
+   "lego": "こと | things",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 9
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 34,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0051L04B05",
+     "role": "build",
+     "known": "いろんな こと",
+     "target": "many things",
+     "untaught": [
+      "many"
+     ]
+    }
+   ]
+  },
+  "S0055L01": {
+   "lego": "楽しくありません | I don't enjoy",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0055L01U09",
+     "role": "use",
+     "known": "英語を話せないことが楽しくない",
+     "target": "I don't enjoy it when I can't remember the whole sentence",
+     "untaught": [
+      "can't"
+     ]
+    }
+   ]
+  },
+  "S0055L02": {
+   "lego": "起きる | waking up",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 4,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0055L02B04",
+     "role": "build",
+     "known": "起きるのが大変だ",
+     "target": "waking up is not easy",
+     "untaught": [
+      "easy"
+     ]
+    },
+    {
+     "row": "S0055L02U03",
+     "role": "use",
+     "known": "よく眠れなかったとき起きるのが一番つらい",
+     "target": "waking up when I didn't sleep very well is the hardest thing",
+     "untaught": [
+      "didn't",
+      "sleep",
+      "hardest"
+     ]
+    },
+    {
+     "row": "S0055L02U10",
+     "role": "use",
+     "known": "眠れなかったとき起きるのはいつも大変だ",
+     "target": "waking up when I didn't sleep is always hard",
+     "untaught": [
+      "didn't",
+      "sleep",
+      "always"
+     ]
+    }
+   ]
+  },
+  "S0055L04": {
+   "lego": "眠れなかった | I didn't sleep",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0055L04U06",
+     "role": "use",
+     "known": "よく眠れなかったとき起きるのはつらい",
+     "target": "waking up is not easy when I didn't sleep very well",
+     "untaught": [
+      "easy"
+     ]
+    }
+   ]
+  },
+  "S0058L01": {
+   "lego": "十分な言葉がわかると | when you understand enough words",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 52,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0058L01U03",
+     "role": "use",
+     "known": "十分な言葉がわかる時に自信がつきます",
+     "target": "you feel more confident when you understand enough words",
+     "untaught": [
+      "confident"
+     ]
+    }
+   ]
+  },
+  "S0058L02": {
+   "lego": "面白いです | it's interesting",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 39,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0058L02U04",
+     "role": "use",
+     "known": "新しい言葉を学ぶのは面白いです",
+     "target": "it's interesting to learn new words",
+     "untaught": [
+      "new"
+     ]
+    },
+    {
+     "row": "S0058L02U05",
+     "role": "use",
+     "known": "あなたが言ったことを理解し始めると面白いです",
+     "target": "it's interesting when I start to understand what you said",
+     "untaught": [
+      "said"
+     ]
+    }
+   ]
+  },
+  "S0059L03": {
+   "lego": "来週 | next week",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 32,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0059L03U03",
+     "role": "use",
+     "known": "来週何か違うことを試したいです",
+     "target": "I want to try something different next week",
+     "untaught": [
+      "different"
+     ]
+    }
+   ]
+  },
+  "S0062L01": {
+   "lego": "同時に | at the same time",
+   "before": "already under floor",
+   "delete": 5,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 40,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0062L01U01",
+     "role": "use",
+     "known": "同時に二つのことはできませんが、頑張ります",
+     "target": "I can't do two things at the same time, but I'll try",
+     "untaught": [
+      "two",
+      "i'll"
+     ]
+    },
+    {
+     "row": "S0062L01U04",
+     "role": "use",
+     "known": "同時にいくつかのことを話すのが難しいです",
+     "target": "it's difficult to talk about several things at the same time",
+     "untaught": [
+      "difficult",
+      "talk",
+      "several"
+     ]
+    },
+    {
+     "row": "S0062L01U06",
+     "role": "use",
+     "known": "同時に二つのことをしようとしないでください",
+     "target": "please don't try to do two things at the same time",
+     "untaught": [
+      "please",
+      "two"
+     ]
+    },
+    {
+     "row": "S0062L01U08",
+     "role": "use",
+     "known": "同時に二人に話しかけることはできません",
+     "target": "I can't talk to two people at the same time",
+     "untaught": [
+      "talk",
+      "two"
+     ]
+    },
+    {
+     "row": "S0062L01U09",
+     "role": "use",
+     "known": "同時に彼女を助けながら話すことができません",
+     "target": "I can't talk while helping her at the same time",
+     "untaught": [
+      "talk",
+      "while",
+      "helping"
+     ]
+    }
+   ]
+  },
+  "S0068L01": {
+   "lego": "何を探していますか | what are you looking for",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 8,
+   "rows": [
+    {
+     "row": "S0068L01U05",
+     "role": "use",
+     "known": "あなたは本当に何を探していますか",
+     "target": "what are you really looking for?",
+     "untaught": [
+      "really"
+     ]
+    }
+   ]
+  },
+  "S0069L05": {
+   "lego": "午後ずっと | all afternoon",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0069L05B06",
+     "role": "build",
+     "known": "午後ずっと待った",
+     "target": "waiting all afternoon",
+     "untaught": [
+      "waiting"
+     ]
+    },
+    {
+     "row": "S0069L05U11",
+     "role": "use",
+     "known": "彼は午後ずっとここで友達を待っていました",
+     "target": "He was waiting for his friend here all afternoon",
+     "untaught": [
+      "waiting"
+     ]
+    }
+   ]
+  },
+  "S0069L06": {
+   "lego": "世話をしたくなかった | didn't want to look after",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 41,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0069L06B07",
+     "role": "build",
+     "known": "世話をしたくなかったと言った",
+     "target": "said he didn't want to look after",
+     "untaught": [
+      "said"
+     ]
+    }
+   ]
+  },
+  "S0070L02": {
+   "lego": "どこに | where",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0070L02U11",
+     "role": "use",
+     "known": "彼はそれがどこにあるかを今日の午後調べるつもりです",
+     "target": "he's going to find out where it is this afternoon",
+     "untaught": [
+      "he's"
+     ]
+    }
+   ]
+  },
+  "S0071L04": {
+   "lego": "聞く | hear",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 15
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0071L04B03",
+     "role": "build",
+     "known": "聞かせる",
+     "target": "let them hear",
+     "untaught": [
+      "them"
+     ]
+    }
+   ]
+  },
+  "S0076L01": {
+   "lego": "満足しています | I'm happy with",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0076L01U04",
+     "role": "use",
+     "known": "自分の進歩に満足しています",
+     "target": "I'm happy with the progress I've made",
+     "untaught": [
+      "progress",
+      "made"
+     ]
+    },
+    {
+     "row": "S0076L01B03",
+     "role": "build",
+     "known": "今日やったことに満足しています",
+     "target": "I'm happy with what I've done today",
+     "untaught": [
+      "done"
+     ]
+    }
+   ]
+  },
+  "S0076L02": {
+   "lego": "学んだことに | how much I've learnt",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 1,
+   "author_use": 3,
+   "avg_target_chars": 42,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0076L02U02",
+     "role": "use",
+     "known": "すでにどれだけ学んだかに驚いています",
+     "target": "I'm surprised at how much I've learnt already",
+     "untaught": [
+      "surprised",
+      "already"
+     ]
+    },
+    {
+     "row": "S0076L02U03",
+     "role": "use",
+     "known": "こんなに短い時間でどれだけ学んだかが信じられません",
+     "target": "I can't believe how much I've learnt in such a short time",
+     "untaught": [
+      "believe",
+      "such",
+      "short"
+     ]
+    },
+    {
+     "row": "S0076L02B02",
+     "role": "build",
+     "known": "学んだことに驚いています",
+     "target": "I'm surprised at how much I've learnt",
+     "untaught": [
+      "surprised"
+     ]
+    },
+    {
+     "row": "S0076L02U05",
+     "role": "use",
+     "known": "こんなに早く学んだことに驚いています",
+     "target": "I'm surprised at how much I've learnt so quickly",
+     "untaught": [
+      "surprised"
+     ]
+    }
+   ]
+  },
+  "S0076L03": {
+   "lego": "もう | already",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0076L03B03",
+     "role": "build",
+     "known": "もうたくさん学びました",
+     "target": "I've already learnt a lot",
+     "untaught": [
+      "lot"
+     ]
+    }
+   ]
+  },
+  "S0077L01": {
+   "lego": "驚いています | I'm surprised at",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 39,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0077L01U02",
+     "role": "use",
+     "known": "どれほど早く上達しているかに驚いています",
+     "target": "I'm surprised at how quickly I'm improving",
+     "untaught": [
+      "improving"
+     ]
+    },
+    {
+     "row": "S0077L01B03",
+     "role": "build",
+     "known": "あなたが言ったことに驚いています",
+     "target": "I'm surprised at what you said",
+     "untaught": [
+      "said"
+     ]
+    }
+   ]
+  },
+  "S0077L02": {
+   "lego": "こんなに早く | how quickly",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 38,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0077L02U02",
+     "role": "use",
+     "known": "どれほど早く理解し始めているかがわかります",
+     "target": "I can see how quickly I'm starting to understand",
+     "untaught": [
+      "see"
+     ]
+    }
+   ]
+  },
+  "S0077L03": {
+   "lego": "わかり始めている | I'm starting to understand",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 46,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0077L03U01",
+     "role": "use",
+     "known": "毎日英語をより多く理解し始めています",
+     "target": "I'm starting to understand more English every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0077L03B03",
+     "role": "build",
+     "known": "あなたが言ったことをわかり始めている",
+     "target": "I'm starting to understand what you said",
+     "untaught": [
+      "said"
+     ]
+    }
+   ]
+  },
+  "S0078L02": {
+   "lego": "わかりません | I don't understand",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 35,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0078L02U04",
+     "role": "use",
+     "known": "わかりませんが、試し続けたいです",
+     "target": "I don't understand but I want to keep trying",
+     "untaught": [
+      "keep"
+     ]
+    },
+    {
+     "row": "S0078L02U05",
+     "role": "use",
+     "known": "あなたが言ったことがまだわかりませんが、試し続けたいです",
+     "target": "I don't understand what you said yet, but I want to keep on trying",
+     "untaught": [
+      "keep"
+     ]
+    }
+   ]
+  },
+  "S0079L01": {
+   "lego": "学び始めました | did you start to learn",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 40,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0079L01B07",
+     "role": "build",
+     "known": "友達と学び始めましたか",
+     "target": "did you start to learn with your friends?",
+     "untaught": [
+      "your"
+     ]
+    },
+    {
+     "row": "S0079L01U03",
+     "role": "use",
+     "known": "友達と一緒に学び始めましたか？",
+     "target": "did you start to learn with your friends?",
+     "untaught": [
+      "your"
+     ]
+    }
+   ]
+  },
+  "S0083L01": {
+   "lego": "同意します | agree",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 6,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 6,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0083L01U16",
+     "role": "use",
+     "known": "あなたが言ったことに同意します。一生懸命頑張ることは大切です",
+     "target": "I agree with what you said. it's important to work hard",
+     "untaught": [
+      "work"
+     ]
+    }
+   ]
+  },
+  "S0083L02": {
+   "lego": "あなたの友達について | about your friend",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0083L02U01",
+     "role": "use",
+     "known": "あなたの友達について話してください。彼は英語を話しますか？",
+     "target": "tell me about your friend. do you speak English with him?",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0085L01": {
+   "lego": "あの人たち | those people",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0085L01U07",
+     "role": "use",
+     "known": "あの人たちを知りません。あなたは知っていますか？",
+     "target": "I don't know those people. do you know them?",
+     "untaught": [
+      "them"
+     ]
+    },
+    {
+     "row": "S0085L01U15",
+     "role": "use",
+     "known": "あの人たちを知りません。でも彼が言ったことを覚えています",
+     "target": "I don't know those people, but I can remember what he said about them",
+     "untaught": [
+      "them"
+     ]
+    }
+   ]
+  },
+  "S0086L02": {
+   "lego": "できませんでした | it wasn't possible",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 9
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0086L02U03",
+     "role": "use",
+     "known": "その日に彼と会うことはできませんでした",
+     "target": "it wasn't possible to meet him on that day",
+     "untaught": [
+      "him"
+     ]
+    },
+    {
+     "row": "S0086L02U04",
+     "role": "use",
+     "known": "その質問に答えることはできませんでした、残念ながら",
+     "target": "it wasn't possible unfortunately to answer the question",
+     "untaught": [
+      "question"
+     ]
+    },
+    {
+     "row": "S0086L02U08",
+     "role": "use",
+     "known": "残念ながら彼らを助けることはできませんでした",
+     "target": "it wasn't possible unfortunately to help them",
+     "untaught": [
+      "them"
+     ]
+    },
+    {
+     "row": "S0086L02U14",
+     "role": "use",
+     "known": "今日彼に会いに行くことはできませんでした、残念ながら",
+     "target": "it wasn't possible unfortunately to go and meet him today",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0088L02": {
+   "lego": "話す準備ができていません | I'm not ready to talk",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 4,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 45,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0088L02B06",
+     "role": "build",
+     "known": "まだ彼らと話す準備ができていません",
+     "target": "I'm not ready to talk to them yet",
+     "untaught": [
+      "them"
+     ]
+    },
+    {
+     "row": "S0088L02U12",
+     "role": "use",
+     "known": "その人たちに話す準備ができていません、まだよく知らないので",
+     "target": "I'm not ready to talk to those people because I don't know them well yet",
+     "untaught": [
+      "them"
+     ]
+    },
+    {
+     "row": "S0088L02U13",
+     "role": "use",
+     "known": "まだ彼らと話す準備ができていません、残念ながら",
+     "target": "I'm not ready to talk to them yet unfortunately",
+     "untaught": [
+      "them"
+     ]
+    },
+    {
+     "row": "S0088L02U14",
+     "role": "use",
+     "known": "まだ話す準備ができていないと彼に言いたかった",
+     "target": "I wanted to tell him I'm not ready to talk yet",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0089L01": {
+   "lego": "やった | I've done",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0089L01U15",
+     "role": "use",
+     "known": "たくさんやりましたが、やることがまだあります",
+     "target": "I've done a lot but there is more to do",
+     "untaught": [
+      "lot",
+      "there"
+     ]
+    }
+   ]
+  },
+  "S0089L03": {
+   "lego": "短い時間で | in a short time",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0089L03U08",
+     "role": "use",
+     "known": "短い時間でこの質問に答えるのは簡単ではありませんでした",
+     "target": "it wasn't easy to answer this question in a short time",
+     "untaught": [
+      "question"
+     ]
+    },
+    {
+     "row": "S0089L03U10",
+     "role": "use",
+     "known": "短い時間で彼に会うことはできませんでした、残念ながら",
+     "target": "it wasn't possible unfortunately to meet him in a short time",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0091L01": {
+   "lego": "難しいです | it's difficult",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 5,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0091L01U07",
+     "role": "use",
+     "known": "質問への答えを見つけるのは難しいです",
+     "target": "it's difficult to find the answer to the question",
+     "untaught": [
+      "question"
+     ]
+    },
+    {
+     "row": "S0091L01U08",
+     "role": "use",
+     "known": "これだけの言葉を短い時間で覚えるのは難しいです",
+     "target": "it's difficult to remember so many words in a short time",
+     "untaught": [
+      "many"
+     ]
+    },
+    {
+     "row": "S0091L01U10",
+     "role": "use",
+     "known": "彼に真実を話すのは難しいです",
+     "target": "it's difficult to tell him the truth",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0092L01": {
+   "lego": "続けたいです | I'd like to keep on",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 41,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0092L01B06",
+     "role": "build",
+     "known": "毎日続けたいです",
+     "target": "I'd like to keep on every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0092L04": {
+   "lego": "しばらく | for a while",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 44,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0092L04B06",
+     "role": "build",
+     "known": "しばらくここにいる",
+     "target": "stay here for a while",
+     "untaught": [
+      "stay"
+     ]
+    }
+   ]
+  },
+  "S0095L02": {
+   "lego": "帰る | to go home",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0095L02U05",
+     "role": "use",
+     "known": "帰りたいですが、もう少し話しましょう",
+     "target": "I want to go home but let's talk a little more",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L02U15",
+     "role": "use",
+     "known": "帰る前に少し話しましょう",
+     "target": "let's talk a little before you need to go home",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0095L03": {
+   "lego": "次の | the next",
+   "before": "already under floor",
+   "delete": 7,
+   "counted_before": {
+    "b": 5,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0095L03B05",
+     "role": "build",
+     "known": "次の機会にまた話しましょう",
+     "target": "let's speak again the next time",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L03B07",
+     "role": "build",
+     "known": "次の機会に会いましょう",
+     "target": "let's meet again the next time",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L03U05",
+     "role": "use",
+     "known": "次の質問に答えることができますか？",
+     "target": "can you answer the next question?",
+     "untaught": [
+      "question"
+     ]
+    },
+    {
+     "row": "S0095L03U06",
+     "role": "use",
+     "known": "次の機会に話しましょう、また会えたら",
+     "target": "let's speak again the next time we can",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L03U09",
+     "role": "use",
+     "known": "次の機会に少し時間をとって練習しましょう",
+     "target": "let's take a little time to practise the next time",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L03U10",
+     "role": "use",
+     "known": "次の週に会いましょう",
+     "target": "let's meet again the next week",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L03U15",
+     "role": "use",
+     "known": "次の週にまた話しましょう",
+     "target": "let's speak again the next week",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0095L04": {
+   "lego": "バス | bus",
+   "before": "already under floor",
+   "delete": 6,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 32,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0095L04B05",
+     "role": "build",
+     "known": "次のバスを待っています",
+     "target": "I'm waiting for the next bus",
+     "untaught": [
+      "waiting"
+     ]
+    },
+    {
+     "row": "S0095L04U03",
+     "role": "use",
+     "known": "次のバスに乗りましょう",
+     "target": "let's take the next bus",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L04U06",
+     "role": "use",
+     "known": "次のバスまで少し英語を話しましょう",
+     "target": "let's speak a little English before the next bus",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L04U09",
+     "role": "use",
+     "known": "次のバスを待っています",
+     "target": "I'm waiting for the next bus",
+     "untaught": [
+      "waiting"
+     ]
+    },
+    {
+     "row": "S0095L04U14",
+     "role": "use",
+     "known": "次のバスまで英語を話しましょう",
+     "target": "let's speak English before the next bus",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0095L04U15",
+     "role": "use",
+     "known": "今度こそ次のバスで帰りましょう",
+     "target": "let's go on the next bus this time",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0097L02": {
+   "lego": "準備ができています | I'm ready",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0097L02U05",
+     "role": "use",
+     "known": "準備ができています。始めましょう",
+     "target": "I'm ready, let's start talking",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0098L02": {
+   "lego": "他のこと | something else",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0098L02U04",
+     "role": "use",
+     "known": "今日は別のことを話しましょう",
+     "target": "let's talk about something else today",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0099L01": {
+   "lego": "聞いた方がいいです | you should ask",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0099L01U06",
+     "role": "use",
+     "known": "どのくらい学んだか自分に聞いた方がいいです",
+     "target": "you should ask yourself how much you've learnt",
+     "untaught": [
+      "you've"
+     ]
+    }
+   ]
+  },
+  "S0099L02": {
+   "lego": "自分 | yourself",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 32,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0099L02U03",
+     "role": "use",
+     "known": "どのくらい学んだか自分に聞いてみてください",
+     "target": "ask yourself how much you've learnt",
+     "untaught": [
+      "you've"
+     ]
+    }
+   ]
+  },
+  "S0106L04": {
+   "lego": "幸せを感じる必要はありません、ただ一生懸命頑張る必要があります | we don't need to feel happy, we just need to work hard",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 70,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0106L04U04",
+     "role": "use",
+     "known": "幸せを感じる必要はなく、ただ一生懸命頑張る必要があるのは本当です",
+     "target": "it's true that we don't need to feel happy, we just need to work hard",
+     "untaught": [
+      "true"
+     ]
+    },
+    {
+     "row": "S0106L04B03",
+     "role": "build",
+     "known": "幸せを感じる必要はありません、ただ一生懸命頑張る必要があります、というのは本当だと思います",
+     "target": "I think that it's true that we don't need to feel happy, we just need to work hard",
+     "untaught": [
+      "true"
+     ]
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": "夜中に起きることを望んでいませんでした | we didn't hope to wake in the middle of the night",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 60,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0108L02U02",
+     "role": "use",
+     "known": "彼女は夜中に起きることを望んでいなかったと私に言いました",
+     "target": "she told me that we didn't hope to wake in the middle of the night",
+     "untaught": [
+      "told"
+     ]
+    }
+   ]
+  },
+  "S0114L01": {
+   "lego": "昨日より今日の方がうまくいっていないように感じます | I feel as if I'm doing worse today than yesterday",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 67,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0114L01B03",
+     "role": "build",
+     "known": "昨日より今日の方がうまくいっていないように感じますが、心配していません",
+     "target": "I feel as if I'm doing worse today than yesterday but I'm not worried about it",
+     "untaught": [
+      "worried"
+     ]
+    },
+    {
+     "row": "S0114L01U01",
+     "role": "use",
+     "known": "昨日より今日の方がうまくいっていないように感じますが、心配していません",
+     "target": "I feel as if I'm doing worse today than yesterday but I'm not worried about it",
+     "untaught": [
+      "worried"
+     ]
+    }
+   ]
+  },
+  "S0117L01": {
+   "lego": "前回お互いに話した時より確実にうまくやっています | I'm definitely doing better than I was last time we talked to each other",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 82,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0117L01U04",
+     "role": "use",
+     "known": "前回お互いに話した時より確実にうまくやっていると嬉しいです",
+     "target": "I'm glad that I'm definitely doing better than I was last time we talked to each other",
+     "untaught": [
+      "glad"
+     ]
+    }
+   ]
+  },
+  "S0118L01": {
+   "lego": "パブにいた時より気分がいいです | I feel better than I felt when we were in the pub",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 58,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0118L01U03",
+     "role": "use",
+     "known": "彼女はパブにいた時より気分がいいと思っています",
+     "target": "she thinks that I feel better than I felt when we were in the pub",
+     "untaught": [
+      "thinks"
+     ]
+    },
+    {
+     "row": "S0118L01B03",
+     "role": "build",
+     "known": "正直に言うと、パブにいた時より気分がいいです",
+     "target": "to be honest, I feel better than I felt when we were in the pub",
+     "untaught": [
+      "honest"
+     ]
+    }
+   ]
+  },
+  "S0119L01": {
+   "lego": "帰る前に何か聞いてもいいですか | can I ask you something before you leave",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 52,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0119L01U04",
+     "role": "use",
+     "known": "お願いですが、帰る前に何か聞いてもいいですか？",
+     "target": "please, can I ask you something before you leave?",
+     "untaught": [
+      "please"
+     ]
+    },
+    {
+     "row": "S0119L01B02",
+     "role": "build",
+     "known": "すみませんが、帰る前に何か聞いてもいいですか",
+     "target": "I'm sorry, but can I ask you something before you leave?",
+     "untaught": [
+      "sorry"
+     ]
+    }
+   ]
+  },
+  "S0120L01": {
+   "lego": "バスで行くのが好きなのは面白いですね | it's interesting that you like to go by bus",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 2,
+   "author_use": 2,
+   "avg_target_chars": 55,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0120L01U04",
+     "role": "use",
+     "known": "バスで行くのが好きで車ではないのは面白いですね",
+     "target": "it's interesting that you like to go by bus and not by car",
+     "untaught": [
+      "car"
+     ]
+    },
+    {
+     "row": "S0120L01B02",
+     "role": "build",
+     "known": "正直に言うと、バスで行くのが好きなのは面白いですね",
+     "target": "to be honest, it's interesting that you like to go by bus",
+     "untaught": [
+      "honest"
+     ]
+    },
+    {
+     "row": "S0120L01B03",
+     "role": "build",
+     "known": "個人的には、バスで行くのが好きなのは面白いと思います",
+     "target": "personally, I think it's interesting that you like to go by bus",
+     "untaught": [
+      "personally"
+     ]
+    },
+    {
+     "row": "S0120L01U05",
+     "role": "use",
+     "known": "あなたは車を持っていますが、バスで行くのが好きなのは面白いですね",
+     "target": "you have a car, so it's interesting that you like to go by bus",
+     "untaught": [
+      "car"
+     ]
+    }
+   ]
+  },
+  "S0121L01": {
+   "lego": "車 | car",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0121L01U03",
+     "role": "use",
+     "known": "彼女は車で仕事に行きます",
+     "target": "she goes to work by car",
+     "untaught": [
+      "goes"
+     ]
+    }
+   ]
+  },
+  "S0121L02": {
+   "lego": "使う | use",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0121L02B03",
+     "role": "build",
+     "known": "毎日使う",
+     "target": "use it every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0121L03": {
+   "lego": "珍しい | unusual",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 28,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0121L03U01",
+     "role": "use",
+     "known": "彼女が遅れるのは珍しいです",
+     "target": "it's unusual for her to be late",
+     "untaught": [
+      "late"
+     ]
+    },
+    {
+     "row": "S0121L03U02",
+     "role": "use",
+     "known": "それは珍しいですね、今まで見たことがありません",
+     "target": "that's unusual, I've never seen that before",
+     "untaught": [
+      "that's",
+      "never",
+      "seen"
+     ]
+    }
+   ]
+  },
+  "S0121L04": {
+   "lego": "車を使うのが好きじゃないのは珍しいですね | it's unusual that you don't like to use your car",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 2,
+   "author_use": 2,
+   "avg_target_chars": 57,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0121L04U02",
+     "role": "use",
+     "known": "彼女は車を使うのが好きじゃないのは珍しいと思っています",
+     "target": "she thinks it's unusual that you don't like to use your car",
+     "untaught": [
+      "thinks"
+     ]
+    },
+    {
+     "row": "S0121L04B02",
+     "role": "build",
+     "known": "正直に言うと、車を使うのが好きじゃないのは珍しいですね",
+     "target": "to be honest, it's unusual that you don't like to use your car",
+     "untaught": [
+      "honest"
+     ]
+    },
+    {
+     "row": "S0121L04B03",
+     "role": "build",
+     "known": "今、車を使うのが好きじゃないのは珍しいですね",
+     "target": "these days it's unusual that you don't like to use your car",
+     "untaught": [
+      "these",
+      "days"
+     ]
+    },
+    {
+     "row": "S0121L04U05",
+     "role": "use",
+     "known": "ここに住んでいて、車を使うのが好きじゃないのは珍しいですね",
+     "target": "living here, it's unusual that you don't like to use your car",
+     "untaught": [
+      "living"
+     ]
+    }
+   ]
+  },
+  "S0123L01": {
+   "lego": "考え | idea",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 5,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 34,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0123L01B06",
+     "role": "build",
+     "known": "面白い考え",
+     "target": "an interesting idea",
+     "untaught": [
+      "an"
+     ]
+    },
+    {
+     "row": "S0123L01U02",
+     "role": "use",
+     "known": "あなたのアイデアはとても良いと思いました",
+     "target": "I thought your idea was very good",
+     "untaught": [
+      "thought"
+     ]
+    },
+    {
+     "row": "S0123L01U05",
+     "role": "use",
+     "known": "彼の考えはとても良かったと思います",
+     "target": "I thought his idea was very good",
+     "untaught": [
+      "thought"
+     ]
+    },
+    {
+     "row": "S0123L01U13",
+     "role": "use",
+     "known": "あなたの考えについて話す前に、よく考えました",
+     "target": "I thought about that idea carefully before I said anything",
+     "untaught": [
+      "thought"
+     ]
+    }
+   ]
+  },
+  "S0123L02": {
+   "lego": "いい考えだと思います | I think that's a good idea",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 45,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0123L02B07",
+     "role": "build",
+     "known": "彼はそれはいい考えだと思いましたが、確信が持てませんでした",
+     "target": "he thought I think that's a good idea but wasn't sure",
+     "untaught": [
+      "thought"
+     ]
+    },
+    {
+     "row": "S0123L02U01",
+     "role": "use",
+     "known": "それはいい考えだと思います、始めましょう",
+     "target": "I think that's a good idea, let's start now",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0124L02": {
+   "lego": "いい考えだと思いました | I thought that was a good idea",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 8,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 6,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 46,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0124L02B04",
+     "role": "build",
+     "known": "聞いたとき、いい考えだと思いました",
+     "target": "I thought that was a good idea when I heard it",
+     "untaught": [
+      "heard"
+     ]
+    },
+    {
+     "row": "S0124L02B06",
+     "role": "build",
+     "known": "より良いことはいい考えだと思いました",
+     "target": "I thought that was a good idea for all of us",
+     "untaught": [
+      "us"
+     ]
+    },
+    {
+     "row": "S0124L02U06",
+     "role": "use",
+     "known": "始めに聞いたとき、それはいい考えだと思いました",
+     "target": "I thought that was a good idea when I heard it",
+     "untaught": [
+      "heard"
+     ]
+    },
+    {
+     "row": "S0124L02U11",
+     "role": "use",
+     "known": "あなたの友達についてそれを聞いたとき、いい考えだと思いました",
+     "target": "I thought that was a good idea when I heard about your friend",
+     "untaught": [
+      "heard"
+     ]
+    }
+   ]
+  },
+  "S0125L02": {
+   "lego": "あなたの考えはとても良かったと思います | I believe that your idea was very good",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 4,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 50,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0125L02U06",
+     "role": "use",
+     "known": "昨日聞いたとき、あなたの考えはとても良かったと思いました",
+     "target": "I believe that your idea was very good when I heard it yesterday",
+     "untaught": [
+      "heard"
+     ]
+    },
+    {
+     "row": "S0125L02U13",
+     "role": "use",
+     "known": "あなたの考えはとても良かったと思います、できるだけ早く始めましょう",
+     "target": "I believe that your idea was very good, let's do it as soon as you can",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0125L02U14",
+     "role": "use",
+     "known": "あなたの考えはとても良かったと思います、今日からやりましょう",
+     "target": "I believe that your idea was very good, let's do it today",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0126L01": {
+   "lego": "勉強 | work",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 41,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0126L01U09",
+     "role": "use",
+     "known": "毎日練習すれば、それはうまくいくと思います",
+     "target": "I think it will work if I speak English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0126L02": {
+   "lego": "脳 | brain",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 6,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 6,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 55,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0126L02U02",
+     "role": "use",
+     "known": "新しい言葉を学ぶたびに、私たちの脳が変わります",
+     "target": "every time we learn something new it changes our brain",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0126L02U11",
+     "role": "use",
+     "known": "これは私たちの脳を変えるので、毎日練習することが大切です",
+     "target": "it changes our brain and that is why we should speak English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0126L03": {
+   "lego": "形 | shape",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 54,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0126L03U14",
+     "role": "use",
+     "known": "英語を話すたびに、脳の形が変わっていると思います",
+     "target": "I think this work is changing the shape of my brain every time I speak",
+     "untaught": [
+      "changing",
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0127L03": {
+   "lego": "それはあなたに会いたかった理由ではありません | that isn't why I wanted to see you",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 45,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0127L03U05",
+     "role": "use",
+     "known": "それはあなたに会いたかった理由ではありません、何か聞きたかったのです",
+     "target": "that isn't why I wanted to see you I wanted to ask you a question",
+     "untaught": [
+      "question"
+     ]
+    }
+   ]
+  },
+  "S0131L04": {
+   "lego": "ぐるぐる回る | going around",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 49,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0131L04U03",
+     "role": "use",
+     "known": "その言葉が頭の中でぐるぐる回っています、英語でどう言うか分かりません",
+     "target": "words going around in my head and I don't know how to say them",
+     "untaught": [
+      "head",
+      "them"
+     ]
+    },
+    {
+     "row": "S0131L04U07",
+     "role": "use",
+     "known": "言いたいことがたくさん頭の中でぐるぐる回っていますが、英語で言えません",
+     "target": "there are so many things going around in my head but I can't say them in English",
+     "untaught": [
+      "head",
+      "them"
+     ]
+    },
+    {
+     "row": "S0131L04U09",
+     "role": "use",
+     "known": "そのアイデアが頭の中でぐるぐる回っています、でも声に出せません",
+     "target": "ideas going around in my head but I can't say them in English yet",
+     "untaught": [
+      "head",
+      "them"
+     ]
+    },
+    {
+     "row": "S0131L04U13",
+     "role": "use",
+     "known": "いくつかの考えが頭の中でぐるぐる回っています、あなたに話したいです",
+     "target": "there are some ideas going around in my head that I'd like to tell you about",
+     "untaught": [
+      "some",
+      "head"
+     ]
+    }
+   ]
+  },
+  "S0131L05": {
+   "lego": "私の頭の中に | in my head",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 42,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0131L05U12",
+     "role": "use",
+     "known": "英語の言葉が全部頭の中にあります、でも声に出すのに時間がかかります",
+     "target": "there are too many ideas going around in my head and I need time to say them",
+     "untaught": [
+      "them"
+     ]
+    }
+   ]
+  },
+  "S0132L01": {
+   "lego": "ほど〜ない | less than",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 27,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0132L01U01",
+     "role": "use",
+     "known": "それは思ったより少なかったです",
+     "target": "that took less than I expected",
+     "untaught": [
+      "took",
+      "expected"
+     ]
+    },
+    {
+     "row": "S0132L01U02",
+     "role": "use",
+     "known": "彼女は以前より少なく話します",
+     "target": "she speaks less than she used to",
+     "untaught": [
+      "speaks"
+     ]
+    },
+    {
+     "row": "S0132L01U03",
+     "role": "use",
+     "known": "いつもより少なく話したいです",
+     "target": "I want to speak less than I usually do",
+     "untaught": [
+      "usually"
+     ]
+    },
+    {
+     "row": "S0132L01U04",
+     "role": "use",
+     "known": "今日のほうが昨日より時間がかかりませんでした",
+     "target": "it took less than yesterday today",
+     "untaught": [
+      "took"
+     ]
+    }
+   ]
+  },
+  "S0132L02": {
+   "lego": "ワクワクする | exciting",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0132L02U03",
+     "role": "use",
+     "known": "それはワクワクするニュースですね",
+     "target": "that's exciting news",
+     "untaught": [
+      "news"
+     ]
+    }
+   ]
+  },
+  "S0132L03": {
+   "lego": "彼女が言っていたこと | what she was saying",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 34,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0132L03U02",
+     "role": "use",
+     "known": "彼女が言っていたことを覚えていませんでした",
+     "target": "I couldn't remember what she was saying",
+     "untaught": [
+      "couldn't"
+     ]
+    },
+    {
+     "row": "S0132L03U05",
+     "role": "use",
+     "known": "彼女が言っていたことがやっとわかりました",
+     "target": "I finally understood what she was saying",
+     "untaught": [
+      "finally",
+      "understood"
+     ]
+    }
+   ]
+  },
+  "S0133L01": {
+   "lego": "〜するようになる | get to",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 29,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0133L01U01",
+     "role": "use",
+     "known": "あなたのことをもっとよく知れるのは素敵です",
+     "target": "it's nice to get to know you better",
+     "untaught": [
+      "nice"
+     ]
+    },
+    {
+     "row": "S0133L01U02",
+     "role": "use",
+     "known": "毎日英語を話せるのは素敵です",
+     "target": "it's nice to get to speak English every day",
+     "untaught": [
+      "nice",
+      "every"
+     ]
+    },
+    {
+     "row": "S0133L01U05",
+     "role": "use",
+     "known": "毎日新しい人を知れるのが好きです",
+     "target": "I like that I get to know new people every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0133L02": {
+   "lego": "誰かを知る | know someone",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 30,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0133L02U01",
+     "role": "use",
+     "known": "新しい人を知るのは素敵です",
+     "target": "it's nice to get to know someone new",
+     "untaught": [
+      "nice"
+     ]
+    },
+    {
+     "row": "S0133L02U02",
+     "role": "use",
+     "known": "英語を話す人を知りたいです",
+     "target": "I want to know someone who speaks English",
+     "untaught": [
+      "speaks"
+     ]
+    },
+    {
+     "row": "S0133L02U04",
+     "role": "use",
+     "known": "ここで働いている人を知りたいです",
+     "target": "I'd like to know someone who works here",
+     "untaught": [
+      "works"
+     ]
+    }
+   ]
+  },
+  "S0133L03": {
+   "lego": "一緒に働く | work together",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0133L03U03",
+     "role": "use",
+     "known": "彼女は私たちと一緒に働きたいです",
+     "target": "she wants to work together with us",
+     "untaught": [
+      "us"
+     ]
+    }
+   ]
+  },
+  "S0134L01": {
+   "lego": "彼らと一緒に | with them",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0134L01U02",
+     "role": "use",
+     "known": "彼女は昨日彼らと一緒に行きました",
+     "target": "she went with them yesterday",
+     "untaught": [
+      "went"
+     ]
+    }
+   ]
+  },
+  "S0134L02": {
+   "lego": "難しいことに取り組んでも問題ありません | it's not a problem when you work at something difficult",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 5
+   },
+   "author_build": 2,
+   "author_use": 0,
+   "avg_target_chars": 65,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0134L02B02",
+     "role": "build",
+     "known": "今は、難しいことに取り組んでも問題ありません",
+     "target": "these days it's not a problem when you work at something difficult",
+     "untaught": [
+      "these",
+      "days"
+     ]
+    },
+    {
+     "row": "S0134L02B03",
+     "role": "build",
+     "known": "正直に言うと、難しいことに取り組んでも問題ありません",
+     "target": "to be honest, it's not a problem when you work at something difficult",
+     "untaught": [
+      "honest"
+     ]
+    }
+   ]
+  },
+  "S0135L01": {
+   "lego": "そんなに | so",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 20,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0135L01U02",
+     "role": "use",
+     "known": "彼女はとても速く話します",
+     "target": "she speaks so quickly",
+     "untaught": [
+      "speaks"
+     ]
+    },
+    {
+     "row": "S0135L01U05",
+     "role": "use",
+     "known": "あなたがそんなに上手に話すとは思いませんでした",
+     "target": "I didn't think you spoke so well",
+     "untaught": [
+      "spoke"
+     ]
+    }
+   ]
+  },
+  "S0136L01": {
+   "lego": "もちろん | of course",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 48,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0136L01U07",
+     "role": "use",
+     "known": "もちろんあなたは彼をよく知るようになれます。一緒に働けば大丈夫です",
+     "target": "of course you can get to know him very well when you work together",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0136L02": {
+   "lego": "聞いて | ask",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 20,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0136L02U02",
+     "role": "use",
+     "known": "質問してもいいですか？",
+     "target": "can I ask you a question?",
+     "untaught": [
+      "question"
+     ]
+    },
+    {
+     "row": "S0136L02U04",
+     "role": "use",
+     "known": "彼女に助けてもらえるか聞いてください",
+     "target": "please ask her if she can help",
+     "untaught": [
+      "please"
+     ]
+    }
+   ]
+  },
+  "S0136L03": {
+   "lego": "彼女は | she's",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 25,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0136L03U04",
+     "role": "use",
+     "known": "彼女は明日私たちと一緒に来ます",
+     "target": "she's going to come with us tomorrow",
+     "untaught": [
+      "us"
+     ]
+    },
+    {
+     "row": "S0136L03B03",
+     "role": "build",
+     "known": "彼女はとても辛抱強いです",
+     "target": "she's very patient",
+     "untaught": [
+      "patient"
+     ]
+    },
+    {
+     "row": "S0136L03U05",
+     "role": "use",
+     "known": "彼女はもうすぐ来ると思います",
+     "target": "I think she's coming soon",
+     "untaught": [
+      "coming"
+     ]
+    }
+   ]
+  },
+  "S0137L01": {
+   "lego": "より大切 | more important",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0137L01U08",
+     "role": "use",
+     "known": "彼にとって何がより大切か考えてみてください",
+     "target": "think about what is more important to him",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0138L01": {
+   "lego": "ここは〜場所です | this was where",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 37,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0138L01U05",
+     "role": "use",
+     "known": "私たちが毎週会っていた場所はここです",
+     "target": "I think this was where we used to meet every week",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0138L01U15",
+     "role": "use",
+     "known": "ここは私が彼に英語で話しかけた場所だと思います",
+     "target": "I think this was where I used to speak English with him",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0139L01": {
+   "lego": "すみません | I'm sorry that",
+   "before": "already under floor",
+   "delete": 8,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 32,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0139L01B05",
+     "role": "build",
+     "known": "すみません、待たせてしまった",
+     "target": "I'm sorry that you had to wait",
+     "untaught": [
+      "had"
+     ]
+    },
+    {
+     "row": "S0139L01B07",
+     "role": "build",
+     "known": "すみません、話せなかった",
+     "target": "I'm sorry that I couldn't speak to you",
+     "untaught": [
+      "couldn't"
+     ]
+    },
+    {
+     "row": "S0139L01U04",
+     "role": "use",
+     "known": "あなたに話せなかったことをすみません",
+     "target": "I'm sorry that I couldn't speak to you",
+     "untaught": [
+      "couldn't"
+     ]
+    },
+    {
+     "row": "S0139L01U05",
+     "role": "use",
+     "known": "あなたを待たせてしまったことをすみません",
+     "target": "I'm sorry that you had to wait for me",
+     "untaught": [
+      "had"
+     ]
+    },
+    {
+     "row": "S0139L01U06",
+     "role": "use",
+     "known": "あなたの友達のことを伝えられなかったことをすみません",
+     "target": "I'm sorry that I couldn't tell you about your friend",
+     "untaught": [
+      "couldn't"
+     ]
+    },
+    {
+     "row": "S0139L01U07",
+     "role": "use",
+     "known": "今日うまく説明できなかったことをすみません",
+     "target": "I'm sorry that I couldn't explain what I mean today",
+     "untaught": [
+      "couldn't"
+     ]
+    },
+    {
+     "row": "S0139L01U12",
+     "role": "use",
+     "known": "あなたに手紙が書けなかったことをすみません",
+     "target": "I'm sorry that I couldn't write to you",
+     "untaught": [
+      "couldn't"
+     ]
+    },
+    {
+     "row": "S0139L01U13",
+     "role": "use",
+     "known": "今日来られなかったことをすみません",
+     "target": "I'm sorry that I couldn't come today",
+     "untaught": [
+      "couldn't"
+     ]
+    }
+   ]
+  },
+  "S0139L02": {
+   "lego": "出る必要がある | need to leave",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 13
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0139L02U06",
+     "role": "use",
+     "known": "出る必要があることは分かっていますが、もう少し話しましょう",
+     "target": "I know I need to leave, but let's talk a little more",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0145L01": {
+   "lego": "なぜもう幸せじゃないのですか | why are you not happy any more",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 46,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0145L01U03",
+     "role": "use",
+     "known": "彼女は彼になぜもう幸せじゃないのかと聞きました",
+     "target": "she asked him, why are you not happy any more?",
+     "untaught": [
+      "asked",
+      "him"
+     ]
+    },
+    {
+     "row": "S0145L01U04",
+     "role": "use",
+     "known": "なぜもう幸せじゃないのですか？話しましょう",
+     "target": "why are you not happy any more? let's talk about it",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0145L01U05",
+     "role": "use",
+     "known": "心配しているので聞きたいです、なぜもう幸せじゃないのですか",
+     "target": "I'm worried, so I want to ask, why are you not happy any more?",
+     "untaught": [
+      "worried"
+     ]
+    }
+   ]
+  },
+  "S0146L01": {
+   "lego": "直そうとしてから | since we tried to fix it",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 38,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0146L01U01",
+     "role": "use",
+     "known": "直そうとしてから何も変わっていません",
+     "target": "nothing has changed since we tried to fix it",
+     "untaught": [
+      "nothing",
+      "has",
+      "changed"
+     ]
+    },
+    {
+     "row": "S0146L01U02",
+     "role": "use",
+     "known": "直そうとしてから心配しています",
+     "target": "I've been worried since we tried to fix it",
+     "untaught": [
+      "worried"
+     ]
+    },
+    {
+     "row": "S0146L01B02",
+     "role": "build",
+     "known": "直そうとしてからずっと",
+     "target": "ever since we tried to fix it",
+     "untaught": [
+      "ever"
+     ]
+    }
+   ]
+  },
+  "S0146L02": {
+   "lego": "何もうまくいかないようです | nothing seems to be working",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 41,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0146L02U03",
+     "role": "use",
+     "known": "何もうまくいかないようで心配です",
+     "target": "I'm worried because nothing seems to be working",
+     "untaught": [
+      "worried"
+     ]
+    },
+    {
+     "row": "S0146L02U05",
+     "role": "use",
+     "known": "何もうまくいかないようなので、少し休みたいです",
+     "target": "nothing seems to be working, so I'd like to rest for a while",
+     "untaught": [
+      "rest"
+     ]
+    }
+   ]
+  },
+  "S0147L01": {
+   "lego": "見た | saw",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0147L01U05",
+     "role": "use",
+     "known": "昨日あなたのお姉さんを見ました",
+     "target": "I saw your sister yesterday",
+     "untaught": [
+      "sister"
+     ]
+    }
+   ]
+  },
+  "S0147L02": {
+   "lego": "緊張している | feeling nervous",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 37,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0147L02U02",
+     "role": "use",
+     "known": "初めて誰かと話す時はいつも緊張しています",
+     "target": "I'm always feeling nervous when I speak to someone for the first time",
+     "untaught": [
+      "always",
+      "first"
+     ]
+    },
+    {
+     "row": "S0147L02U05",
+     "role": "use",
+     "known": "英語を話す時はいつも緊張しています",
+     "target": "I'm always feeling nervous when I speak English",
+     "untaught": [
+      "always"
+     ]
+    }
+   ]
+  },
+  "S0148L01": {
+   "lego": "辛抱強い | patient",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0148L01U03",
+     "role": "use",
+     "known": "辛抱強くあることは難しいと思います",
+     "target": "I think being patient is difficult",
+     "untaught": [
+      "being"
+     ]
+    }
+   ]
+  },
+  "S0149L01": {
+   "lego": "これはあまり難しくないので | this isn't very difficult so",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 45,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0149L01U04",
+     "role": "use",
+     "known": "これはあまり難しくないので一緒にやってみましょう",
+     "target": "this isn't very difficult so let's try together",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0149L01B03",
+     "role": "build",
+     "known": "これはあまり難しくないので、一緒にやりましょう",
+     "target": "this isn't very difficult so let's do it together",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0149L02": {
+   "lego": "すぐ終わるといいですね | I hope you'll finish soon",
+   "before": "already under floor",
+   "delete": 5,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 41,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0149L02U01",
+     "role": "use",
+     "known": "すぐ終わるといいですねと彼女に言いました",
+     "target": "I told her I hope you'll finish soon",
+     "untaught": [
+      "told"
+     ]
+    },
+    {
+     "row": "S0149L02U03",
+     "role": "use",
+     "known": "すぐ終わるといいですね、その後話しましょう",
+     "target": "I hope you'll finish soon and then we can talk",
+     "untaught": [
+      "then"
+     ]
+    },
+    {
+     "row": "S0149L02U04",
+     "role": "use",
+     "known": "すぐ終わるといいですね、待っています",
+     "target": "I hope you'll finish soon, I'll be waiting",
+     "untaught": [
+      "waiting"
+     ]
+    },
+    {
+     "row": "S0149L02B02",
+     "role": "build",
+     "known": "本当にすぐ終わるといいですね",
+     "target": "I really hope you'll finish soon",
+     "untaught": [
+      "really"
+     ]
+    },
+    {
+     "row": "S0149L02U05",
+     "role": "use",
+     "known": "忙しそうですね、すぐ終わるといいですね",
+     "target": "you look busy, I hope you'll finish soon",
+     "untaught": [
+      "busy"
+     ]
+    }
+   ]
+  },
+  "S0151L01": {
+   "lego": "それは〜ではありませんでした | that wasn't",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0151L01U01",
+     "role": "use",
+     "known": "それは期待していたものではありませんでした",
+     "target": "that wasn't what I expected",
+     "untaught": [
+      "expected"
+     ]
+    },
+    {
+     "row": "S0151L01B02",
+     "role": "build",
+     "known": "それは私のものではありませんでした",
+     "target": "that wasn't mine",
+     "untaught": [
+      "mine"
+     ]
+    }
+   ]
+  },
+  "S0151L02": {
+   "lego": "何 | what",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0151L02B03",
+     "role": "build",
+     "known": "何が起こったか",
+     "target": "what happened",
+     "untaught": [
+      "happened"
+     ]
+    }
+   ]
+  },
+  "S0151L04": {
+   "lego": "起こると | would happen",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0151L04B03",
+     "role": "build",
+     "known": "それで何が起こると",
+     "target": "what would happen then",
+     "untaught": [
+      "then"
+     ]
+    },
+    {
+     "row": "S0151L04U05",
+     "role": "use",
+     "known": "話したら何が起こるかわかりませんでした",
+     "target": "I didn't know what would happen if I spoke",
+     "untaught": [
+      "spoke"
+     ]
+    }
+   ]
+  },
+  "S0152L01": {
+   "lego": "〜したでしょう | would have done",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 47,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0152L01U07",
+     "role": "use",
+     "known": "彼はもっと良い選択をしたでしょう。私の言ったことを聞いていたら",
+     "target": "he would have done better if he had known what I was saying to him",
+     "untaught": [
+      "had",
+      "known",
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0152L02": {
+   "lego": "それを | it",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 17,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0152L02U02",
+     "role": "use",
+     "known": "彼女はそれが難しいと思いました",
+     "target": "she found it difficult",
+     "untaught": [
+      "found"
+     ]
+    }
+   ]
+  },
+  "S0152L03": {
+   "lego": "違うやり方で | differently",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 52,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0152L03B02",
+     "role": "build",
+     "known": "違うやり方でやりましょう",
+     "target": "let's do it differently",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0152L03U15",
+     "role": "use",
+     "known": "違うやり方でやってみましょう。うまくいくかもしれません",
+     "target": "let's do it differently and see what would happen",
+     "untaught": [
+      "let's"
+     ]
+    }
+   ]
+  },
+  "S0152L04": {
+   "lego": "〜たら | if I had known",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 38,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0152L04U02",
+     "role": "use",
+     "known": "知っていれば、もっと早く来ていました",
+     "target": "if I had known, I would have come sooner",
+     "untaught": [
+      "sooner"
+     ]
+    },
+    {
+     "row": "S0152L04U03",
+     "role": "use",
+     "known": "こんなに面白いと知っていれば、もっと早く始めていました",
+     "target": "if I had known it was so interesting, I would have started sooner",
+     "untaught": [
+      "sooner"
+     ]
+    },
+    {
+     "row": "S0152L04U04",
+     "role": "use",
+     "known": "知っていれば心配しなかったと彼女は言いました",
+     "target": "she said if I had known, I wouldn't have worried",
+     "untaught": [
+      "worried"
+     ]
+    }
+   ]
+  },
+  "S0157L04": {
+   "lego": "来月 | next month",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 4,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0157L04U02",
+     "role": "use",
+     "known": "来月また話しましょう",
+     "target": "let's talk again next month",
+     "untaught": [
+      "let's"
+     ]
+    },
+    {
+     "row": "S0157L04U13",
+     "role": "use",
+     "known": "来月彼と話す機会があります",
+     "target": "I'm going to talk to him next month",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0166L02": {
+   "lego": "私の名前 | my name",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 48,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0166L02U07",
+     "role": "use",
+     "known": "私の名前はなかなか覚えにくいです",
+     "target": "I think my name is not very unusual but some people find it difficult to remember",
+     "untaught": [
+      "some"
+     ]
+    }
+   ]
+  },
+  "S0168L01": {
+   "lego": "そしたら | and then",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 32,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0168L01U01",
+     "role": "use",
+     "known": "英語を話して、それから彼女も話しました",
+     "target": "I spoke English and then she spoke too",
+     "untaught": [
+      "spoke"
+     ]
+    },
+    {
+     "row": "S0168L01U03",
+     "role": "use",
+     "known": "彼女は終わって、それからとても嬉しそうでした",
+     "target": "she finished and then she was very happy",
+     "untaught": [
+      "finished"
+     ]
+    },
+    {
+     "row": "S0168L01U04",
+     "role": "use",
+     "known": "私の番が来て、それから英語で話しました",
+     "target": "my turn came and then I spoke in English",
+     "untaught": [
+      "turn",
+      "came",
+      "spoke"
+     ]
+    }
+   ]
+  },
+  "S0168L03": {
+   "lego": "来て手伝う | come and help",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 5,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 42,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0168L03U02",
+     "role": "use",
+     "known": "友達が来て手伝ってくれることを望んでいます",
+     "target": "I hope my friend's going to come and help us this afternoon",
+     "untaught": [
+      "friend's"
+     ]
+    },
+    {
+     "row": "S0168L03U03",
+     "role": "use",
+     "known": "彼に来て手伝うよう頼みましょう",
+     "target": "let's ask him to come and help us with the work today",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0168L04": {
+   "lego": "来て手伝うことができます | I'll be able to come and help",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 49,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0168L04U04",
+     "role": "use",
+     "known": "彼に後で来て手伝うことができると伝えてください",
+     "target": "I want you to tell him I'll be able to come and help later on this afternoon",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0170L04": {
+   "lego": "教えてほしいです | I'd like you to tell",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0170L04U08",
+     "role": "use",
+     "known": "あなたが学んだことについて教えてほしいです",
+     "target": "I'd like you to tell me what you've learnt",
+     "untaught": [
+      "you've"
+     ]
+    }
+   ]
+  },
+  "S0184L02": {
+   "lego": "さっき | a while ago",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 12
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0184L02B07",
+     "role": "build",
+     "known": "さっき職場に置いてきたと思います",
+     "target": "I think you left them at work a while ago",
+     "untaught": [
+      "left"
+     ]
+    },
+    {
+     "row": "S0184L02U03",
+     "role": "use",
+     "known": "さっき職場に置いてきたと思います",
+     "target": "I think you left them at work a while ago",
+     "untaught": [
+      "left"
+     ]
+    },
+    {
+     "row": "S0184L02U15",
+     "role": "use",
+     "known": "さっきオフィスに何か置いてきたと思います",
+     "target": "I think you left something in the office a while ago",
+     "untaught": [
+      "left"
+     ]
+    }
+   ]
+  },
+  "S0185L01": {
+   "lego": "職場 | work",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 18,
+   "avg_known_chars": 8,
+   "rows": [
+    {
+     "row": "S0185L01U01",
+     "role": "use",
+     "known": "毎日仕事に行きます",
+     "target": "I go to work every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0185L01U04",
+     "role": "use",
+     "known": "近くで仕事をしていますか？",
+     "target": "do you work near here?",
+     "untaught": [
+      "near"
+     ]
+    }
+   ]
+  },
+  "S0188L01": {
+   "lego": "変える | change",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0188L01U02",
+     "role": "use",
+     "known": "彼女は英語の学び方を変えたいです",
+     "target": "she wants to change how she learns English",
+     "untaught": [
+      "learns"
+     ]
+    }
+   ]
+  },
+  "S0193L01": {
+   "lego": "すみませんが、今日は忙しすぎます | I'm sorry but I'm too busy today",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 55,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0193L01U12",
+     "role": "use",
+     "known": "すみませんが、今日は忙しすぎますと言うのは残念です",
+     "target": "It's unfortunate that I have to say I'm sorry but I'm too busy today",
+     "untaught": [
+      "unfortunate"
+     ]
+    }
+   ]
+  },
+  "S0197L02": {
+   "lego": "働いています | works",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 21,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0197L02U01",
+     "role": "use",
+     "known": "彼女は近くの学校で働いています",
+     "target": "she works at a school near here",
+     "untaught": [
+      "school",
+      "near"
+     ]
+    },
+    {
+     "row": "S0197L02U03",
+     "role": "use",
+     "known": "彼女は毎日とても一生懸命働いています",
+     "target": "she works very hard every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0197L02U04",
+     "role": "use",
+     "known": "彼は市内のパブで働いています",
+     "target": "he works in a pub in the city",
+     "untaught": [
+      "city"
+     ]
+    }
+   ]
+  },
+  "S0197L03": {
+   "lego": "教師 | a teacher",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 9,
+   "rows": [
+    {
+     "row": "S0197L03U03",
+     "role": "use",
+     "known": "彼は近くの学校の教師です",
+     "target": "he's a teacher at a school near here",
+     "untaught": [
+      "school",
+      "near"
+     ]
+    }
+   ]
+  },
+  "S0198L02": {
+   "lego": "市役所 | the council",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0198L02U04",
+     "role": "use",
+     "known": "市役所は問題ないと言っています",
+     "target": "the council says it's not a problem",
+     "untaught": [
+      "says"
+     ]
+    }
+   ]
+  },
+  "S0200L01": {
+   "lego": "言っている | they say",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 0,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 26,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0200L01U02",
+     "role": "use",
+     "known": "毎日練習することが大切だと言っています",
+     "target": "they say it's important to practise every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0200L01U04",
+     "role": "use",
+     "known": "不可能なことは何もないと言っています",
+     "target": "they say nothing is impossible",
+     "untaught": [
+      "impossible"
+     ]
+    }
+   ]
+  },
+  "S0200L02": {
+   "lego": "確実にする | to make sure",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 1,
+   "author_use": 3,
+   "avg_target_chars": 33,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0200L02U02",
+     "role": "use",
+     "known": "すべて大丈夫かどうか確認するために電話しました",
+     "target": "she called to make sure everything was okay",
+     "untaught": [
+      "called"
+     ]
+    },
+    {
+     "row": "S0200L02U04",
+     "role": "use",
+     "known": "これが正しいかどうか確認するのを助けてもらえますか？",
+     "target": "can you help me to make sure this is right?",
+     "untaught": [
+      "right"
+     ]
+    },
+    {
+     "row": "S0200L02B02",
+     "role": "build",
+     "known": "確実にするために",
+     "target": "in order to make sure",
+     "untaught": [
+      "order"
+     ]
+    },
+    {
+     "row": "S0200L02U05",
+     "role": "use",
+     "known": "電話する前に確実にする必要があります",
+     "target": "I need to make sure before I call",
+     "untaught": [
+      "call"
+     ]
+    }
+   ]
+  },
+  "S0201L01": {
+   "lego": "何が起こるか知りたかったです | we wanted to know what was going to happen",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 0,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 51,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0201L01U03",
+     "role": "use",
+     "known": "何が起こるかを知りたかったと彼女は言いました",
+     "target": "she told me that we wanted to know what was going to happen",
+     "untaught": [
+      "told"
+     ]
+    },
+    {
+     "row": "S0201L01U05",
+     "role": "use",
+     "known": "私たちは何が起こるか知りたかったので待ちました",
+     "target": "we wanted to know what was going to happen so we waited",
+     "untaught": [
+      "waited"
+     ]
+    }
+   ]
+  },
+  "S0202L01": {
+   "lego": "誰も | nobody",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 21,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0202L01U01",
+     "role": "use",
+     "known": "誰も答えを知りません",
+     "target": "nobody knows the answer",
+     "untaught": [
+      "knows"
+     ]
+    },
+    {
+     "row": "S0202L01U03",
+     "role": "use",
+     "known": "誰もそれについて教えてくれませんでした",
+     "target": "nobody told me about that",
+     "untaught": [
+      "told"
+     ]
+    },
+    {
+     "row": "S0202L01B03",
+     "role": "build",
+     "known": "誰も来ませんでした",
+     "target": "nobody came",
+     "untaught": [
+      "came"
+     ]
+    }
+   ]
+  },
+  "S0203L02": {
+   "lego": "何をしますか | what would you do",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 13
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 40,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0203L02B05",
+     "role": "build",
+     "known": "何をしますか、もし来たら",
+     "target": "what would you do if he came",
+     "untaught": [
+      "came"
+     ]
+    },
+    {
+     "row": "S0203L02U10",
+     "role": "use",
+     "known": "もし誰も来なかったら、何をしますか？",
+     "target": "what would you do if nobody came to help?",
+     "untaught": [
+      "came"
+     ]
+    }
+   ]
+  },
+  "S0204L01": {
+   "lego": "準備を手伝う | to deal with the arrangements",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 36,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0204L01U14",
+     "role": "use",
+     "known": "彼女は私のために準備を手伝ってくれました",
+     "target": "she helped to deal with the arrangements for me",
+     "untaught": [
+      "helped"
+     ]
+    }
+   ]
+  },
+  "S0208L01": {
+   "lego": "どう言うか | how to say it",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 12
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 11
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 34,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0208L01U14",
+     "role": "use",
+     "known": "どう言うかを覚えるのが難しいです",
+     "target": "it's difficult to remember how to say it every time",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0209L02": {
+   "lego": "グループとして | as a group",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0209L02U02",
+     "role": "use",
+     "known": "これについて話し合うためにグループとして集まる必要があります",
+     "target": "we need to meet as a group to discuss this",
+     "untaught": [
+      "discuss"
+     ]
+    }
+   ]
+  },
+  "S0209L03": {
+   "lego": "集まって〜過ごす | spend time meeting",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0209L03U05",
+     "role": "use",
+     "known": "彼らは週末に集まって時間を過ごしたいです",
+     "target": "they want to spend time meeting at the weekend",
+     "untaught": [
+      "weekend"
+     ]
+    }
+   ]
+  },
+  "S0210L03": {
+   "lego": "話し合う | discuss",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 14
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 13
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 38,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0210L03U12",
+     "role": "use",
+     "known": "もし私たちがグループとしてこれを話し合えれば、良い解決策が見つかると思います",
+     "target": "if we can discuss this as a group, I think we'll find a good answer",
+     "untaught": [
+      "we'll"
+     ]
+    }
+   ]
+  },
+  "S0210L04": {
+   "lego": "〜と思っています | they think that",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 31,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0210L04U01",
+     "role": "use",
+     "known": "毎日英語を話すことが大切だと彼らは思っています",
+     "target": "they think that it's important to speak English every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0210L04U02",
+     "role": "use",
+     "known": "もっと頑張る必要があると彼らは思っています",
+     "target": "they think that we need to work harder",
+     "untaught": [
+      "harder"
+     ]
+    },
+    {
+     "row": "S0210L04B03",
+     "role": "build",
+     "known": "彼らはまだ〜と思っています",
+     "target": "they still think that",
+     "untaught": [
+      "still"
+     ]
+    }
+   ]
+  },
+  "S0211L01": {
+   "lego": "彼らは〜と言いました | they told us that",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 15
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 14
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 43,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0211L01U07",
+     "role": "use",
+     "known": "彼らは私たちに英語を毎日練習することが大切だと言いました",
+     "target": "they told us that it's important to practise speaking English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0211L02": {
+   "lego": "説明したくない | didn't want to explain",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 34,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0211L02U01",
+     "role": "use",
+     "known": "彼は何が起こったか説明したくなかったです",
+     "target": "he didn't want to explain what happened",
+     "untaught": [
+      "happened"
+     ]
+    },
+    {
+     "row": "S0211L02U02",
+     "role": "use",
+     "known": "彼女はなぜ遅れたか説明したくなかったです",
+     "target": "she didn't want to explain why she was late",
+     "untaught": [
+      "late"
+     ]
+    }
+   ]
+  },
+  "S0212L01": {
+   "lego": "助けを求める | ask for help",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0212L01U04",
+     "role": "use",
+     "known": "誰かに助けを求めてもらえますか？",
+     "target": "can you ask for help from someone?",
+     "untaught": [
+      "from"
+     ]
+    }
+   ]
+  },
+  "S0217L02": {
+   "lego": "一杯か二杯 | a glass or two",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 2,
+   "author_use": 2,
+   "avg_target_chars": 33,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0217L02U01",
+     "role": "use",
+     "known": "水を一杯か二杯ください",
+     "target": "I'd like a glass or two of water please",
+     "untaught": [
+      "please"
+     ]
+    },
+    {
+     "row": "S0217L02U04",
+     "role": "use",
+     "known": "彼女は一杯か二杯飲んで気分が良くなりました",
+     "target": "she drank a glass or two and felt better",
+     "untaught": [
+      "drank"
+     ]
+    },
+    {
+     "row": "S0217L02B02",
+     "role": "build",
+     "known": "一杯か二杯ください",
+     "target": "a glass or two please",
+     "untaught": [
+      "please"
+     ]
+    },
+    {
+     "row": "S0217L02B03",
+     "role": "build",
+     "known": "一杯か二杯飲みたいです",
+     "target": "I want to drink a glass or two",
+     "untaught": [
+      "drink"
+     ]
+    }
+   ]
+  },
+  "S0218L03": {
+   "lego": "日曜日はあまり何もしませんでした | I didn't do much on sunday",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 40,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0218L03U01",
+     "role": "use",
+     "known": "はい、日曜日はあまり何もしませんでした、ただリラックスしました",
+     "target": "yes, I didn't do much on sunday, just relaxed",
+     "untaught": [
+      "relaxed"
+     ]
+    },
+    {
+     "row": "S0218L03U03",
+     "role": "use",
+     "known": "日曜日はあまり何もしませんでしたが、それで良かったです",
+     "target": "I didn't do much on sunday and that was fine",
+     "untaught": [
+      "fine"
+     ]
+    }
+   ]
+  },
+  "S0219L03": {
+   "lego": "しばらくリラックスするのは良かったです | it was nice to relax for a while",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 40,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0219L03B03",
+     "role": "build",
+     "known": "本当にしばらくリラックスするのは良かったです",
+     "target": "it was really nice to relax for a while",
+     "untaught": [
+      "really"
+     ]
+    }
+   ]
+  },
+  "S0225L03": {
+   "lego": "くれるでしょう | would give you",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 32,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0225L03U02",
+     "role": "use",
+     "known": "時間があれば彼女はあなたを助けてくれるでしょう",
+     "target": "she would give you a hand if she had time",
+     "untaught": [
+      "hand"
+     ]
+    }
+   ]
+  },
+  "S0226L01": {
+   "lego": "その男性は | the man",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 27,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0226L01U01",
+     "role": "use",
+     "known": "私に話しかけた男性はとても面白かったです",
+     "target": "the man who spoke to me was very interesting",
+     "untaught": [
+      "spoke"
+     ]
+    },
+    {
+     "row": "S0226L01U02",
+     "role": "use",
+     "known": "あちらの男性を知っていますか？",
+     "target": "do you know the man over there?",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0226L01U03",
+     "role": "use",
+     "known": "私が話した男性は英語を話せませんでした",
+     "target": "the man I spoke to couldn't speak English",
+     "untaught": [
+      "spoke"
+     ]
+    },
+    {
+     "row": "S0226L01U05",
+     "role": "use",
+     "known": "私が話した男性はとても辛抱強かったです",
+     "target": "the man I spoke to was very patient",
+     "untaught": [
+      "spoke"
+     ]
+    }
+   ]
+  },
+  "S0231L01": {
+   "lego": "年配の | old",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 26,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0231L01U01",
+     "role": "use",
+     "known": "彼はかなり年配ですが、英語をとても上手く話します",
+     "target": "he's quite old but speaks English very well",
+     "untaught": [
+      "quite",
+      "speaks"
+     ]
+    },
+    {
+     "row": "S0231L01U03",
+     "role": "use",
+     "known": "彼女はあまり年配ではありませんが、上手く話します",
+     "target": "she's not very old but she speaks well",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  },
+  "S0231L02": {
+   "lego": "男性を | man who",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 4,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0231L02B04",
+     "role": "build",
+     "known": "私が会った男性を",
+     "target": "the man who I met",
+     "untaught": [
+      "met"
+     ]
+    },
+    {
+     "row": "S0231L02B07",
+     "role": "build",
+     "known": "あなたのお兄さんと一緒に働く男性を",
+     "target": "a man who works with your brother",
+     "untaught": [
+      "brother"
+     ]
+    },
+    {
+     "row": "S0231L02U02",
+     "role": "use",
+     "known": "昨夜あなたのお兄さんと働く男性に会いました",
+     "target": "I met the man who works with your brother last night",
+     "untaught": [
+      "met",
+      "brother"
+     ]
+    }
+   ]
+  },
+  "S0232L01": {
+   "lego": "女性を | woman who",
+   "before": "already under floor",
+   "delete": 7,
+   "counted_before": {
+    "b": 5,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 0
+   },
+   "author_build": 1,
+   "author_use": 4,
+   "avg_target_chars": 29,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0232L01B04",
+     "role": "build",
+     "known": "私が会った女性を",
+     "target": "the woman who I met",
+     "untaught": [
+      "met"
+     ]
+    },
+    {
+     "row": "S0232L01B06",
+     "role": "build",
+     "known": "答えを知っている女性を",
+     "target": "the woman who knows the answer",
+     "untaught": [
+      "knows"
+     ]
+    },
+    {
+     "row": "S0232L01B07",
+     "role": "build",
+     "known": "あなたのお姉さんと一緒に働く女性を",
+     "target": "a woman who works with your sister",
+     "untaught": [
+      "sister"
+     ]
+    },
+    {
+     "row": "S0232L01U02",
+     "role": "use",
+     "known": "あなたのお姉さんを知っている若い女性を知っています",
+     "target": "I know a young woman who knows your sister",
+     "untaught": [
+      "knows",
+      "sister"
+     ]
+    },
+    {
+     "row": "S0232L01U04",
+     "role": "use",
+     "known": "昨夜あなたのお姉さんと働く女性に会いました",
+     "target": "I met the woman who works with your sister last night",
+     "untaught": [
+      "met",
+      "sister"
+     ]
+    },
+    {
+     "row": "S0232L01U06",
+     "role": "use",
+     "known": "答えを知っている女性に話しましたか",
+     "target": "did you talk to the woman who knows the answer?",
+     "untaught": [
+      "knows"
+     ]
+    },
+    {
+     "row": "S0232L01U07",
+     "role": "use",
+     "known": "あなたのお姉さんを知っている女性に会いたい",
+     "target": "I'd like to meet the woman who knows your sister",
+     "untaught": [
+      "knows",
+      "sister"
+     ]
+    }
+   ]
+  },
+  "S0233L03": {
+   "lego": "若い女性 | a young woman",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 5,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0233L03B03",
+     "role": "build",
+     "known": "若い女性が来ました",
+     "target": "a young woman came",
+     "untaught": [
+      "came"
+     ]
+    },
+    {
+     "row": "S0233L03B04",
+     "role": "build",
+     "known": "若い女性に会いました",
+     "target": "I met a young woman",
+     "untaught": [
+      "met"
+     ]
+    },
+    {
+     "row": "S0233L03U02",
+     "role": "use",
+     "known": "昨夜あなたのお兄さんと働く若い女性に会いました",
+     "target": "I met a young woman last night who works with your brother",
+     "untaught": [
+      "met",
+      "brother"
+     ]
+    },
+    {
+     "row": "S0233L03U05",
+     "role": "use",
+     "known": "私の友達と一緒に来た若い女性はとても親切でした",
+     "target": "she was a young woman who came with my friend and was very kind",
+     "untaught": [
+      "came"
+     ]
+    }
+   ]
+  },
+  "S0233L04": {
+   "lego": "あなたのお姉さん | your sister",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 5,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 27,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0233L04B06",
+     "role": "build",
+     "known": "あなたのお姉さんが来ました",
+     "target": "your sister came to see me",
+     "untaught": [
+      "came"
+     ]
+    },
+    {
+     "row": "S0233L04U02",
+     "role": "use",
+     "known": "昨夜あなたのお姉さんと働く人に会いました",
+     "target": "I met someone last night who works with your sister",
+     "untaught": [
+      "met"
+     ]
+    },
+    {
+     "row": "S0233L04U05",
+     "role": "use",
+     "known": "あなたのお姉さんに会ったと言った男性を知っていますか",
+     "target": "do you know the man who said he met your sister?",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0233L05": {
+   "lego": "を知っている | who knows",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0233L05U06",
+     "role": "use",
+     "known": "何が本当かを知っている人に会いました",
+     "target": "I met someone who knows what is true",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0238L01": {
+   "lego": "教えてほしいと思っていました | wanted you to tell me",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 37,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0238L01U03",
+     "role": "use",
+     "known": "あなたの気持ちを教えてほしかったです",
+     "target": "I always wanted you to tell me how you feel",
+     "untaught": [
+      "always"
+     ]
+    },
+    {
+     "row": "S0238L01U05",
+     "role": "use",
+     "known": "何が起こったか教えてほしいと思っていました",
+     "target": "I wanted you to tell me what happened",
+     "untaught": [
+      "happened"
+     ]
+    }
+   ]
+  },
+  "S0239L01": {
+   "lego": "母は読書が好きです | my mother likes to read",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 33,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0239L01U01",
+     "role": "use",
+     "known": "はい、母は毎日読書が好きです",
+     "target": "yes, my mother likes to read every day",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0239L01B03",
+     "role": "build",
+     "known": "母は本を読むのが好きです",
+     "target": "my mother likes to read books",
+     "untaught": [
+      "books"
+     ]
+    },
+    {
+     "row": "S0239L01U05",
+     "role": "use",
+     "known": "私の母は毎日英語で読書が好きです",
+     "target": "my mother likes to read in English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0241L01": {
+   "lego": "それを彼に | it to him",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0241L01U02",
+     "role": "use",
+     "known": "それを彼に送ってもらえますか？",
+     "target": "can you send it to him?",
+     "untaught": [
+      "send"
+     ]
+    }
+   ]
+  },
+  "S0243L02": {
+   "lego": "食べ物 | thing to eat",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0243L02U04",
+     "role": "use",
+     "known": "何か食べるものを提案してもらえますか？",
+     "target": "can you suggest a thing to eat?",
+     "untaught": [
+      "suggest"
+     ]
+    }
+   ]
+  },
+  "S0243L03": {
+   "lego": "頼むつもりです | going to ask for",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 29,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0243L03B03",
+     "role": "build",
+     "known": "私は頼むつもりですか",
+     "target": "am I going to ask for",
+     "untaught": [
+      "am"
+     ]
+    }
+   ]
+  },
+  "S0244L02": {
+   "lego": "たくさん | a lot",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 29,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0244L02U02",
+     "role": "use",
+     "known": "たくさん学ぶことがありますが、面白いです",
+     "target": "there's a lot to learn but it's interesting",
+     "untaught": [
+      "there's"
+     ]
+    },
+    {
+     "row": "S0244L02U03",
+     "role": "use",
+     "known": "彼女はたくさん練習していて、上達しています",
+     "target": "she practises a lot and she's getting better",
+     "untaught": [
+      "practises",
+      "getting"
+     ]
+    }
+   ]
+  },
+  "S0245L01": {
+   "lego": "短い | short",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 24,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0245L01U02",
+     "role": "use",
+     "known": "彼女は短い答えを言いました",
+     "target": "she gave a short answer",
+     "untaught": [
+      "gave"
+     ]
+    },
+    {
+     "row": "S0245L01U03",
+     "role": "use",
+     "known": "まず少しの時間話したいです",
+     "target": "I want to speak for a short time first",
+     "untaught": [
+      "first"
+     ]
+    },
+    {
+     "row": "S0245L01U04",
+     "role": "use",
+     "known": "映画はかなり短かったです",
+     "target": "the film was quite short",
+     "untaught": [
+      "quite"
+     ]
+    },
+    {
+     "row": "S0245L01U05",
+     "role": "use",
+     "known": "短い文を覚えるのは簡単です",
+     "target": "remembering a short sentence is easy",
+     "untaught": [
+      "remembering"
+     ]
+    }
+   ]
+  },
+  "S0245L02": {
+   "lego": "短い時間 | a short time",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 32,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0245L02U04",
+     "role": "use",
+     "known": "彼女は考えるために少しの時間止まりました",
+     "target": "she stopped for a short time to think",
+     "untaught": [
+      "stopped"
+     ]
+    }
+   ]
+  },
+  "S0245L04": {
+   "lego": "たくさんできたこと | how much I've done",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 38,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0245L04U02",
+     "role": "use",
+     "known": "こんなに短い時間でどれだけできたかに驚いています",
+     "target": "I'm surprised at how much I've done in such a short time",
+     "untaught": [
+      "such"
+     ]
+    }
+   ]
+  },
+  "S0246L01": {
+   "lego": "彼女にあなたを手伝ってほしかった | I wanted her to help you",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 37,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0246L01B03",
+     "role": "build",
+     "known": "本当に彼女にあなたを手伝ってほしかった",
+     "target": "I really wanted her to help you",
+     "untaught": [
+      "really"
+     ]
+    }
+   ]
+  },
+  "S0247L01": {
+   "lego": "まあまあ | fairly",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0247L01U02",
+     "role": "use",
+     "known": "彼女はまあまあ速く話します",
+     "target": "she speaks fairly quickly",
+     "untaught": [
+      "speaks"
+     ]
+    },
+    {
+     "row": "S0247L01B02",
+     "role": "build",
+     "known": "彼はまあまあ上手に話します",
+     "target": "he speaks fairly well",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  },
+  "S0247L02": {
+   "lego": "まあまあ良かった | was fairly good",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0247L02U04",
+     "role": "use",
+     "known": "短かったけれど、会議はまあまあ良かったです",
+     "target": "the meeting was fairly good even though it was short",
+     "untaught": [
+      "even",
+      "though"
+     ]
+    }
+   ]
+  },
+  "S0248L02": {
+   "lego": "お金を返してほしいです | I want my money back",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 41,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0248L02U04",
+     "role": "use",
+     "known": "それはひどかったのでお金を返してほしいです",
+     "target": "that was terrible and I want my money back",
+     "untaught": [
+      "terrible"
+     ]
+    }
+   ]
+  },
+  "S0257L02": {
+   "lego": "青い | blue",
+   "before": "ok",
+   "delete": 10,
+   "counted_before": {
+    "b": 5,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 1,
+   "author_use": 4,
+   "avg_target_chars": 53,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0257L02B01",
+     "role": "build",
+     "known": "あそこにある青いものは何ですか？",
+     "target": "what's that blue thing over there?",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02B03",
+     "role": "build",
+     "known": "あそこにあるあの青いものを見ました",
+     "target": "I saw that blue thing over there",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02B04",
+     "role": "build",
+     "known": "あそこにある青いものは何ですか？",
+     "target": "what is that blue thing over there?",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02U01",
+     "role": "use",
+     "known": "あそこにある青いものは何なのか知っていますか？",
+     "target": "what's that blue thing over there and do you know what it is?",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02U03",
+     "role": "use",
+     "known": "彼女はあそこにある青いものが何かを私に言いたくありません",
+     "target": "she doesn't want to tell me what that blue thing over there is",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02U04",
+     "role": "use",
+     "known": "彼はあそこにある青いものが何かわからなかったので、手伝ってほしいと私に頼みました",
+     "target": "he didn't know what that blue thing over there was so he asked me to help",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02U06",
+     "role": "use",
+     "known": "あそこにある青いものを見て、今朝あなたにそれについて話したかったのです",
+     "target": "I saw that blue thing over there and I wanted to tell you about it this morning",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02U07",
+     "role": "use",
+     "known": "あそこにある青いものが何かわかりませんが、面白そうです",
+     "target": "I don't know what that blue thing over there is but it's interesting",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02U09",
+     "role": "use",
+     "known": "彼は出発前にあそこにある青いものが何かを知りたかったのです",
+     "target": "he wanted to know what that blue thing over there was before he left",
+     "untaught": [
+      "over"
+     ]
+    },
+    {
+     "row": "S0257L02U10",
+     "role": "use",
+     "known": "今夜出発前にあそこにある青いものが何か教えてくれますか？",
+     "target": "can you tell me what that blue thing over there is before you leave tonight?",
+     "untaught": [
+      "over"
+     ]
+    }
+   ]
+  },
+  "S0267L01": {
+   "lego": "連絡がありましたか | have you heard from",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 34,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0267L01U01",
+     "role": "use",
+     "known": "最近友達から連絡がありましたか？",
+     "target": "have you heard from your friend lately?",
+     "untaught": [
+      "lately"
+     ]
+    },
+    {
+     "row": "S0267L01U05",
+     "role": "use",
+     "known": "あなたのお姉さんから連絡がありましたか、心配しているからです",
+     "target": "have you heard from your sister because I'm worried",
+     "untaught": [
+      "worried"
+     ]
+    }
+   ]
+  },
+  "S0268L01": {
+   "lego": "はい、先週彼女はメールを二通送ってくれました | yes she sent me two emails last week",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 53,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0268L01U04",
+     "role": "use",
+     "known": "はい、先週彼女はメールを二通送ってくれましたが、まだ返信していません",
+     "target": "yes she sent me two emails last week but I haven't replied yet",
+     "untaught": [
+      "replied"
+     ]
+    },
+    {
+     "row": "S0268L01U05",
+     "role": "use",
+     "known": "はい、先週彼女はメールを二通送ってくれましたが、まだ答えていません",
+     "target": "yes she sent me two emails last week but I haven't answered yet",
+     "untaught": [
+      "answered"
+     ]
+    }
+   ]
+  },
+  "S0269L01": {
+   "lego": "お父さんを待つ | wait for your father",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0269L01U01",
+     "role": "use",
+     "known": "出る前にお父さんを待ってください",
+     "target": "please wait for your father before you leave",
+     "untaught": [
+      "please"
+     ]
+    }
+   ]
+  },
+  "S0270L01": {
+   "lego": "心配だから | I'm worried that",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 41,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0270L01U03",
+     "role": "use",
+     "known": "何か悪いことが起こるのではないかと心配していると彼女は言いました",
+     "target": "she said I'm worried that something bad will happen",
+     "untaught": [
+      "bad"
+     ]
+    }
+   ]
+  },
+  "S0272L02": {
+   "lego": "いい考えですね | sounds like a great idea",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 38,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0272L02U02",
+     "role": "use",
+     "known": "毎日英語を話すのは素晴らしいアイデアですね",
+     "target": "speaking English every day sounds like a great idea",
+     "untaught": [
+      "every"
+     ]
+    },
+    {
+     "row": "S0272L02U05",
+     "role": "use",
+     "known": "毎日練習するのはいい考えですね",
+     "target": "practising every day sounds like a great idea",
+     "untaught": [
+      "practising",
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0277L02": {
+   "lego": "の初めに | early",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0277L02U09",
+     "role": "use",
+     "known": "彼女は毎回の会議に早く来るのが好きです",
+     "target": "she likes to come early to every meeting",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0278L03": {
+   "lego": "終わらせなければなりませんでしたか | did you have to finish",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 37,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0278L03U08",
+     "role": "use",
+     "known": "彼女が来る前に全部終わらせなければなりませんでしたか",
+     "target": "did you have to finish everything before she came?",
+     "untaught": [
+      "came"
+     ]
+    }
+   ]
+  },
+  "S0279L01": {
+   "lego": "はい、時間があまり残っていなかったからです | yes because there wasn't much time left",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 56,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0279L01U01",
+     "role": "use",
+     "known": "はい、時間があまり残っていなかったから急ぎました",
+     "target": "yes because there wasn't much time left, I had to hurry",
+     "untaught": [
+      "hurry"
+     ]
+    }
+   ]
+  },
+  "S0280L03": {
+   "lego": "だけ | only",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 28,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0280L03U02",
+     "role": "use",
+     "known": "一つだけ言いたいことがあります",
+     "target": "there is only one thing I want to say",
+     "untaught": [
+      "one"
+     ]
+    },
+    {
+     "row": "S0280L03B03",
+     "role": "build",
+     "known": "一つだけ言いたいことがあります",
+     "target": "there is only one thing I want to say",
+     "untaught": [
+      "one"
+     ]
+    },
+    {
+     "row": "S0280L03U05",
+     "role": "use",
+     "known": "少しだけ時間があるので、急がなければなりません",
+     "target": "I have only a little time so I have to hurry",
+     "untaught": [
+      "hurry"
+     ]
+    }
+   ]
+  },
+  "S0283L01": {
+   "lego": "あなたの友達のうち誰が英語を話しますか | which of your friends speak English",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 46,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0283L01U03",
+     "role": "use",
+     "known": "あなたの友達のうち誰が英語を話すか教えてください",
+     "target": "please tell me which of your friends speak English",
+     "untaught": [
+      "please"
+     ]
+    },
+    {
+     "row": "S0283L01B03",
+     "role": "build",
+     "known": "あなたの友達のうち誰が英語を話すか教えてください",
+     "target": "please tell me which of your friends speak English",
+     "untaught": [
+      "please"
+     ]
+    }
+   ]
+  },
+  "S0285L01": {
+   "lego": "彼女は英語を話します | she speaks English",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 4,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 43,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0285L01B03",
+     "role": "build",
+     "known": "彼女は英語を話します、毎日",
+     "target": "she speaks English every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0286L01": {
+   "lego": "英語を話すのが好きな人たち | people who like speaking English",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 6,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 55,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0286L01B07",
+     "role": "build",
+     "known": "英語を話すのが好きな人たちのほとんどはテレビを見るのが好きです",
+     "target": "most people who like speaking English like watching television",
+     "untaught": [
+      "watching"
+     ]
+    },
+    {
+     "row": "S0286L01U07",
+     "role": "use",
+     "known": "英語を話すのが好きな人たちのほとんどはテレビを見るのが好きです。彼女も英語を話します",
+     "target": "most people who like speaking English like watching television. she speaks English",
+     "untaught": [
+      "watching"
+     ]
+    },
+    {
+     "row": "S0286L01U09",
+     "role": "use",
+     "known": "英語を話すのが好きな人たちのうちテレビを見るのが好きな人を何人知っていますか？",
+     "target": "how many people who like speaking English do you know who like watching television?",
+     "untaught": [
+      "watching"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

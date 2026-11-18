@@ -1,0 +1,487 @@
+{
+ "course": "eng_for_ben",
+ "at": "2026-11-18T14:40:04.414Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0004L01": {
+   "lego": "বলা | to say",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 16,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0004L01B03",
+     "role": "build",
+     "known": "কীভাবে বলতে হয়",
+     "target": "how to say it",
+     "untaught": [
+      "it"
+     ]
+    }
+   ]
+  },
+  "S0024L01": {
+   "lego": "সহজে | easily",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 30,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0024L01B03",
+     "role": "build",
+     "known": "সহজে কথা বলতে থাকতে চাই",
+     "target": "I want to keep talking easily",
+     "untaught": [
+      "keep"
+     ]
+    }
+   ]
+  },
+  "S0028L01": {
+   "lego": "উপকারী | it's useful",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0028L01B03",
+     "role": "build",
+     "known": "কথা বলতে থাকা উপকারী",
+     "target": "it's useful to keep talking",
+     "untaught": [
+      "keep"
+     ]
+    }
+   ]
+  },
+  "S0051L02": {
+   "lego": "বন্ধু | friends",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 1,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0051L02B02",
+     "role": "build",
+     "known": "আমার বন্ধু",
+     "target": "my friend",
+     "untaught": [
+      "my",
+      "friend"
+     ]
+    },
+    {
+     "row": "S0051L02U02",
+     "role": "use",
+     "known": "আমি আমার বন্ধুর সাথে কথা বলতে চাই",
+     "target": "I want to speak with my friend",
+     "untaught": [
+      "my",
+      "friend"
+     ]
+    },
+    {
+     "row": "S0051L02U03",
+     "role": "use",
+     "known": "আমি আমার বন্ধুর সাথে ভালো জিনিস করতে চাই",
+     "target": "I want to do good things with my friend",
+     "untaught": [
+      "my",
+      "friend"
+     ]
+    }
+   ]
+  },
+  "S0076L03": {
+   "lego": "শিখেছি | learnt",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0076L03U01",
+     "role": "use",
+     "known": "আমি ইতিমধ্যে অনেক কিছু শিখেছি",
+     "target": "I've already learnt a lot",
+     "untaught": [
+      "lot"
+     ]
+    }
+   ]
+  },
+  "S0095L02": {
+   "lego": "বাস | bus",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0095L02B02",
+     "role": "build",
+     "known": "বাসে যাওয়া",
+     "target": "go by bus",
+     "untaught": [
+      "by"
+     ]
+    }
+   ]
+  },
+  "S0138L01": {
+   "lego": "এখানে | here",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 16,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0138L01B03",
+     "role": "build",
+     "known": "এখানে থাকা",
+     "target": "stay here",
+     "untaught": [
+      "stay"
+     ]
+    }
+   ]
+  },
+  "S0224L01": {
+   "lego": "সবে | just",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 19,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0224L01B02",
+     "role": "build",
+     "known": "সবে শুরু করেছে",
+     "target": "has just started",
+     "untaught": [
+      "has"
+     ]
+    }
+   ]
+  },
+  "S0275L01": {
+   "lego": "আরও বেশি | longer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 17,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0275L01U05",
+     "role": "use",
+     "known": "আমি আরও বেশি এখানে থাকতে চাই।",
+     "target": "I want to stay here longer",
+     "untaught": [
+      "stay"
+     ]
+    }
+   ]
+  },
+  "S0284L01": {
+   "lego": "আমার বোনের বন্ধু | my sister's friend",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0284L01U05",
+     "role": "use",
+     "known": "আমার বোনের বন্ধু খুব ভালো ইংরেজি বলে।",
+     "target": "my sister's friend speaks English very well",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  },
+  "S0347L02": {
+   "lego": "এক সপ্তাহ আগে | a week ago",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 18,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0347L02B04",
+     "role": "build",
+     "known": "এটা এক সপ্তাহ আগে ঘটেছিল",
+     "target": "it happened a week ago",
+     "untaught": [
+      "happened"
+     ]
+    }
+   ]
+  },
+  "S0362L02": {
+   "lego": "তুমি চলে যাওয়ার পরে | after you left",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0362L02U05",
+     "role": "use",
+     "known": "তুমি চলে যাওয়ার পরে কী হয়েছিল?",
+     "target": "what happened after you left?",
+     "untaught": [
+      "happened"
+     ]
+    }
+   ]
+  },
+  "S0477L02": {
+   "lego": "ছুটির দ্বিতীয় দিন | the second day of the holidays",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 36,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0477L02U01",
+     "role": "use",
+     "known": "আমরা ছুটির দ্বিতীয় দিন থেকে অসুস্থ।",
+     "target": "we've been sick since the second day of the holidays",
+     "untaught": [
+      "we've"
+     ]
+    }
+   ]
+  },
+  "S0503L02": {
+   "lego": "ঝামেলা করতে | making trouble",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0503L02U03",
+     "role": "use",
+     "known": "আমরা জানি আমার বাবা ঝামেলা করতে ঘৃণা করেন।",
+     "target": "we know my father hates making trouble",
+     "untaught": [
+      "hates"
+     ]
+    }
+   ]
+  },
+  "S0512L03": {
+   "lego": "চাবি আনার সময় | while I fetch the keys",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 30,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0512L03U02",
+     "role": "use",
+     "known": "চাবি আনার সময় আমার বাবা এখানে ছিলেন।",
+     "target": "my father was here while I fetched the keys",
+     "untaught": [
+      "fetched"
+     ]
+    },
+    {
+     "row": "S0512L03U04",
+     "role": "use",
+     "known": "চাবি আনার সময় আমরা অপেক্ষা করছিলাম।",
+     "target": "we were waiting while I fetched the keys",
+     "untaught": [
+      "fetched"
+     ]
+    }
+   ]
+  },
+  "S0563L03": {
+   "lego": "পারতাম না | couldn't have",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0563L03U01",
+     "role": "use",
+     "known": "আমি আর বেশিক্ষণ চালিয়ে যেতে পারতাম না।",
+     "target": "I couldn't have continued any longer",
+     "untaught": [
+      "continued"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

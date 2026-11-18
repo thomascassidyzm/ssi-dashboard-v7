@@ -1,0 +1,557 @@
+{
+ "course": "eng_for_tel",
+ "at": "2026-11-18T14:40:07.418Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0051L01": {
+   "lego": "నేను ఆనందిస్తాను | I enjoy",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0051L01U04",
+     "role": "use",
+     "known": "నేను ఇంగ్లీష్ మాట్లాడే వ్యక్తులను కలవడం ఆనందిస్తాను",
+     "target": "I enjoy meeting people who speak English",
+     "untaught": [
+      "meeting"
+     ]
+    }
+   ]
+  },
+  "S0144L02": {
+   "lego": "నేను అనుకున్నదానికంటే ముందే | earlier than I wanted to",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 34,
+   "avg_known_chars": 41,
+   "rows": [
+    {
+     "row": "S0144L02U04",
+     "role": "use",
+     "known": "నేను అనుకున్నదానికంటే ముందే వెళ్ళిపోయాను",
+     "target": "I left earlier than I wanted to",
+     "untaught": [
+      "left"
+     ]
+    },
+    {
+     "row": "S0144L02U05",
+     "role": "use",
+     "known": "మేము అనుకున్నదానికంటే ముందే ముగించాం",
+     "target": "we finished earlier than I wanted to",
+     "untaught": [
+      "finished"
+     ]
+    }
+   ]
+  },
+  "S0147L02": {
+   "lego": "నేను కంగారుగా ఉండటం చూసినప్పుడు | when she saw that I was nervous",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 50,
+   "avg_known_chars": 55,
+   "rows": [
+    {
+     "row": "S0147L02U01",
+     "role": "use",
+     "known": "నేను కంగారుగా ఉండటం చూసినప్పుడు ఆమె నాకు సహాయం చేసింది",
+     "target": "she helped me when she saw that I was nervous",
+     "untaught": [
+      "helped"
+     ]
+    }
+   ]
+  },
+  "S0178L02": {
+   "lego": "నేను నిన్ను కలవాలనుకున్నప్పటికీ | although I wanted to see you",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 45,
+   "avg_known_chars": 52,
+   "rows": [
+    {
+     "row": "S0178L02U02",
+     "role": "use",
+     "known": "నేను నిన్ను కలవాలనుకున్నప్పటికీ నేను వెళ్ళిపోయాను",
+     "target": "I left although I wanted to see you",
+     "untaught": [
+      "left"
+     ]
+    },
+    {
+     "row": "S0178L02U04",
+     "role": "use",
+     "known": "నేను నిన్ను కలవాలనుకున్నప్పటికీ నేను ఇంటికి వెళ్ళిపోయాను",
+     "target": "I went home although I wanted to see you",
+     "untaught": [
+      "went"
+     ]
+    }
+   ]
+  },
+  "S0182L01": {
+   "lego": "నీకు నా తాళాలు కనిపించాయా | have you seen my keys",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0182L01U05",
+     "role": "use",
+     "known": "ఆఫీసులో నీకు నా తాళాలు కనిపించాయా?",
+     "target": "have you seen my keys in the office?",
+     "untaught": [
+      "office"
+     ]
+    }
+   ]
+  },
+  "S0184L02": {
+   "lego": "ఆఫీసులో | in the office",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0184L02U02",
+     "role": "use",
+     "known": "నేను వాటిని ఆఫీసులో వదిలేశాను",
+     "target": "I left them in the office",
+     "untaught": [
+      "left"
+     ]
+    }
+   ]
+  },
+  "S0184L03": {
+   "lego": "కొంచెంసేపటి క్రితం | a while ago",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 32,
+   "avg_known_chars": 46,
+   "rows": [
+    {
+     "row": "S0184L03U02",
+     "role": "use",
+     "known": "నేను వాటిని కొంచెంసేపటి క్రితం వదిలేశాను",
+     "target": "I left them a while ago",
+     "untaught": [
+      "left"
+     ]
+    },
+    {
+     "row": "S0184L03U04",
+     "role": "use",
+     "known": "నేను కొంచెంసేపటి క్రితం ముగించాను",
+     "target": "I finished a while ago",
+     "untaught": [
+      "finished"
+     ]
+    }
+   ]
+  },
+  "S0199L01": {
+   "lego": "ఆఫీసులో పని చేసేవాడు | used to work in an office",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 35,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0199L01B02",
+     "role": "build",
+     "known": "ఒకప్పుడు నా స్నేహితుడు ఆఫీసులో పని చేసేవాడు",
+     "target": "my friend used to work in an office once",
+     "untaught": [
+      "once"
+     ]
+    }
+   ]
+  },
+  "S0220L01": {
+   "lego": "నువ్వు చూశావా | did you watch",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 25,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0220L01U03",
+     "role": "use",
+     "known": "నువ్వు ఫుట్‌బాల్ చూశావా?",
+     "target": "did you watch the football?",
+     "untaught": [
+      "football"
+     ]
+    },
+    {
+     "row": "S0220L01U04",
+     "role": "use",
+     "known": "నువ్వు ఒక సినిమా చూశావా?",
+     "target": "did you watch a film?",
+     "untaught": [
+      "film"
+     ]
+    }
+   ]
+  },
+  "S0220L02": {
+   "lego": "కొంచెం టీవీ | a bit of television",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 38,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0220L02U01",
+     "role": "use",
+     "known": "నేను కొంచెం టీవీ చూశాను",
+     "target": "I watched a bit of television",
+     "untaught": [
+      "watched"
+     ]
+    },
+    {
+     "row": "S0220L02U05",
+     "role": "use",
+     "known": "నేను ఆదివారం కొంచెం టీవీ చూశాను",
+     "target": "I watched a bit of television on Sunday",
+     "untaught": [
+      "watched"
+     ]
+    }
+   ]
+  },
+  "S0230L02": {
+   "lego": "నీతో కలిసి పని చేయాలనుకునే | who wants to work with you",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 45,
+   "avg_known_chars": 49,
+   "rows": [
+    {
+     "row": "S0230L02U01",
+     "role": "use",
+     "known": "నీతో కలిసి పని చేయాలనుకునే ఒక ముసలాయన నాకు తెలుసు",
+     "target": "I know an old man who wants to work with you",
+     "untaught": [
+      "old"
+     ]
+    },
+    {
+     "row": "S0230L02U03",
+     "role": "use",
+     "known": "నీతో కలిసి పని చేయాలనుకునే ఒకరిని నేను కలిశాను",
+     "target": "I met someone who wants to work with you",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0231L02": {
+   "lego": "సహాయం అడగాలనుకున్న | who wanted to ask for help",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 45,
+   "avg_known_chars": 41,
+   "rows": [
+    {
+     "row": "S0231L02U03",
+     "role": "use",
+     "known": "సహాయం అడగాలనుకున్న ఒకరిని నేను కలిశాను",
+     "target": "I met someone who wanted to ask for help",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0232L02": {
+   "lego": "సమాధానం గుర్తుంచుకోగల | who can remember the answer",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 46,
+   "avg_known_chars": 45,
+   "rows": [
+    {
+     "row": "S0232L02U03",
+     "role": "use",
+     "known": "సమాధానం గుర్తుంచుకోగల ఒకరిని నేను కలిశాను",
+     "target": "I met someone who can remember the answer",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0233L02": {
+   "lego": "నీ సోదరి తెలిసిన | who knows your sister",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 40,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0233L02U03",
+     "role": "use",
+     "known": "నీ సోదరి తెలిసిన ఒకరిని నేను కలిశాను",
+     "target": "I met someone who knows your sister",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0275L01": {
+   "lego": "ఇంకా ఎక్కువ కాలం | even longer",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 23,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0275L01U01",
+     "role": "use",
+     "known": "నేను ఇంకా ఎక్కువ కాలం ఉండగలను",
+     "target": "I can stay even longer",
+     "untaught": [
+      "stay"
+     ]
+    },
+    {
+     "row": "S0275L01U02",
+     "role": "use",
+     "known": "నేను ఇంకా ఎక్కువ కాలం ఉండాలనుకుంటున్నాను",
+     "target": "I want to stay even longer",
+     "untaught": [
+      "stay"
+     ]
+    },
+    {
+     "row": "S0275L01U04",
+     "role": "use",
+     "known": "నువ్వు ఇంకా ఎక్కువ కాలం ఉండగలవా?",
+     "target": "can you stay even longer?",
+     "untaught": [
+      "stay"
+     ]
+    }
+   ]
+  },
+  "S0575L02": {
+   "lego": "అది బాధ కలిగించింది | it's been upsetting",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0575L02U04",
+     "role": "use",
+     "known": "ఇది బాధ కలిగించలేదా?",
+     "target": "hasn't it been upsetting?",
+     "untaught": [
+      "hasn't"
+     ]
+    }
+   ]
+  },
+  "S0622L01": {
+   "lego": "పిల్లలు దాన్ని విరగొట్టారు | the children had broken it",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 0
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 19,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0622L01U04",
+     "role": "use",
+     "known": "పిల్లలు దాన్ని విరగొట్టలేదు",
+     "target": "the children hadn't broken it",
+     "untaught": [
+      "hadn't"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

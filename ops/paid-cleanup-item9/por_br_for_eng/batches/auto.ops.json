@@ -1,0 +1,196 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0057L02U07",
+   "expect": {
+    "known_text": "I don't remember what I wanted to say",
+    "target_text": "não me lembro do que queria dizer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0112L01U01",
+   "expect": {
+    "known_text": "that was very interesting for me",
+    "target_text": "isso foi muito interessante para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0112L01U05",
+   "expect": {
+    "known_text": "that was very difficult for me",
+    "target_text": "isso foi muito difícil para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0116L02B02",
+   "expect": {
+    "known_text": "the best choice for me",
+    "target_text": "a melhor escolha para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0116L02B04",
+   "expect": {
+    "known_text": "this isn't the best choice for me",
+    "target_text": "esta não é a melhor escolha para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0121L03B04",
+   "expect": {
+    "known_text": "this is very unusual for me",
+    "target_text": "isso é muito incomum para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0130L01U03",
+   "expect": {
+    "known_text": "that was a surprise for me",
+    "target_text": "isso foi uma surpresa para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0132L01U02",
+   "expect": {
+    "known_text": "I think this is less difficult than that",
+    "target_text": "acho que isso é menos difícil do que aquilo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0132L02U03",
+   "expect": {
+    "known_text": "this is exciting but less than that",
+    "target_text": "isso é empolgante mas menos do que aquilo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0132L02U05",
+   "expect": {
+    "known_text": "I think this is more exciting than that",
+    "target_text": "acho que isso é mais empolgante do que aquilo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0137L01U06",
+   "expect": {
+    "known_text": "I made mistakes a few times",
+    "target_text": "cometi erros algumas vezes"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0141L01B02",
+   "expect": {
+    "known_text": "without me",
+    "target_text": "sem mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0146L01B03",
+   "expect": {
+    "known_text": "tried to fix",
+    "target_text": "tentei consertar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0151L01B06",
+   "expect": {
+    "known_text": "that wasn't very difficult for me",
+    "target_text": "não era muito difícil para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0155L02U03",
+   "expect": {
+    "known_text": "can we talk for a few minutes?",
+    "target_text": "podemos falar uns minutos?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0167L01U04",
+   "expect": {
+    "known_text": "do you need me to help you?",
+    "target_text": "você precisa de mim para ajudar?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0181L04U05",
+   "expect": {
+    "known_text": "can you take it for me?",
+    "target_text": "pode levar para mim?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0198L04B02",
+   "expect": {
+    "known_text": "for me",
+    "target_text": "para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0198L04U01",
+   "expect": {
+    "known_text": "that's good for me",
+    "target_text": "isso é bom para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0198L04U04",
+   "expect": {
+    "known_text": "she works for me",
+    "target_text": "ela trabalha para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0273L03U05",
+   "expect": {
+    "known_text": "that is way too much for me",
+    "target_text": "isso é demais para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0281L01U06",
+   "expect": {
+    "known_text": "it matters to me",
+    "target_text": "importa para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0409L02U02",
+   "expect": {
+    "known_text": "it doesn't matter to me",
+    "target_text": "não importa para mim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0409L02U03",
+   "expect": {
+    "known_text": "yes, it doesn't matter to me",
+    "target_text": "sim, não importa para mim"
+   }
+  }
+ ]
+}

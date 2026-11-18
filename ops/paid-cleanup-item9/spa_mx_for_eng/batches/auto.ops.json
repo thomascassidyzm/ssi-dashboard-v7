@@ -1,0 +1,124 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0150L01U02",
+   "expect": {
+    "known_text": "what is your name exactly?",
+    "target_text": "¿cómo te llamas tú?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0150L02B03",
+   "expect": {
+    "known_text": "what is your name exactly?",
+    "target_text": "¿cómo te llamas tú?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0177L01U05",
+   "expect": {
+    "known_text": "where can I go to look for that book?",
+    "target_text": "¿adónde puedo ir a buscar ese libro?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0178L01U05",
+   "expect": {
+    "known_text": "I had to look for that book on Sunday",
+    "target_text": "tuve que buscar ese libro el domingo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0181L05U01",
+   "expect": {
+    "known_text": "I have to look for",
+    "target_text": "tengo que buscar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0181L05U05",
+   "expect": {
+    "known_text": "I have to look for that book on Sunday",
+    "target_text": "tengo que buscar ese libro el domingo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0201L01U05",
+   "expect": {
+    "known_text": "was going to look for the money on the table",
+    "target_text": "iba a buscar el dinero en la mesa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0204L01U03",
+   "expect": {
+    "known_text": "I wanted her to help look for the money",
+    "target_text": "quería que ayudara a buscar el dinero"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0343L01U08",
+   "expect": {
+    "known_text": "I'm more worried than you",
+    "target_text": "estoy más preocupada que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0357L03U08",
+   "expect": {
+    "known_text": "I want to send a message to people who speak Spanish",
+    "target_text": "quiero mandar un mensaje a personas que hablen español"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0364L03U06",
+   "expect": {
+    "known_text": "are you going to look for a place?",
+    "target_text": "¿vas a buscar un lugar?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0364L03U07",
+   "expect": {
+    "known_text": "you should look for a place",
+    "target_text": "deberías buscar un lugar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0389L01U09",
+   "expect": {
+    "known_text": "that person over there speaks Spanish better than you",
+    "target_text": "esa persona de allí habla español mejor que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0610L01U07",
+   "expect": {
+    "known_text": "he needs to look for work more than you",
+    "target_text": "necesita buscar trabajo más que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_mx_for_eng:S0662L01B04",
+   "expect": {
+    "known_text": "they speak better than you",
+    "target_text": "hablan mejor que tú"
+   }
+  }
+ ]
+}

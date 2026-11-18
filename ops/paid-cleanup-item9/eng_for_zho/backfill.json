@@ -1,0 +1,795 @@
+{
+ "course": "eng_for_zho",
+ "at": "2026-11-18T14:40:02.293Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0004L01": {
+   "lego": "说一些东西 | To say something",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 23,
+   "avg_known_chars": 7,
+   "rows": [
+    {
+     "row": "S0004L01U03",
+     "role": "use",
+     "known": "我想试着说一些东西",
+     "target": "I want to try to say something",
+     "untaught": [
+      "try"
+     ]
+    },
+    {
+     "row": "S0004L01U04",
+     "role": "use",
+     "known": "我想今天用英语说一些东西",
+     "target": "I want to say something in English today",
+     "untaught": [
+      "in",
+      "today"
+     ]
+    }
+   ]
+  },
+  "S0004L02": {
+   "lego": "用英语 | In English",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 8,
+   "rows": [
+    {
+     "row": "S0004L02U05",
+     "role": "use",
+     "known": "我在努力练习用英语说",
+     "target": "I'm trying to practise speaking in English",
+     "untaught": [
+      "practise",
+      "speaking"
+     ]
+    }
+   ]
+  },
+  "S0005L01": {
+   "lego": "练习说 | Practise speaking",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 6,
+   "rows": [
+    {
+     "row": "S0005L01U03",
+     "role": "use",
+     "known": "我想今天和别人练习说",
+     "target": "I want to practise speaking with someone else today",
+     "untaught": [
+      "someone",
+      "else",
+      "today"
+     ]
+    }
+   ]
+  },
+  "S0006L01": {
+   "lego": "记住 | To remember",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 29,
+   "avg_known_chars": 7,
+   "rows": [
+    {
+     "row": "S0006L01U04",
+     "role": "use",
+     "known": "我想试着记住这个词",
+     "target": "I want to try to remember the word",
+     "untaught": [
+      "try",
+      "the",
+      "word"
+     ]
+    },
+    {
+     "row": "S0006L01U05",
+     "role": "use",
+     "known": "我在努力记住用英语怎么说",
+     "target": "I'm trying to remember how to say it in English",
+     "untaught": [
+      "it"
+     ]
+    }
+   ]
+  },
+  "S0011L03": {
+   "lego": "说完 | To finish",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 30,
+   "avg_known_chars": 7,
+   "rows": [
+    {
+     "row": "S0011L03B02",
+     "role": "build",
+     "known": "说完练习说",
+     "target": "To finish practising speaking",
+     "untaught": [
+      "practising"
+     ]
+    },
+    {
+     "row": "S0011L03U08",
+     "role": "use",
+     "known": "我想说完练习说英语",
+     "target": "I want to finish practising speaking English",
+     "untaught": [
+      "practising"
+     ]
+    }
+   ]
+  },
+  "S0011L04": {
+   "lego": "以后 | After",
+   "before": "already under floor",
+   "delete": 6,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 0
+   },
+   "author_build": 1,
+   "author_use": 4,
+   "avg_target_chars": 30,
+   "avg_known_chars": 8,
+   "rows": [
+    {
+     "row": "S0011L04B02",
+     "role": "build",
+     "known": "以后练习说",
+     "target": "After practising speaking",
+     "untaught": [
+      "practising"
+     ]
+    },
+    {
+     "row": "S0011L04U01",
+     "role": "use",
+     "known": "我想说完以后回家",
+     "target": "I want to go home after I finish",
+     "untaught": [
+      "go",
+      "home"
+     ]
+    },
+    {
+     "row": "S0011L04U02",
+     "role": "use",
+     "known": "你说完以后我想问你一些东西",
+     "target": "I want to ask you something after you finish",
+     "untaught": [
+      "ask"
+     ]
+    },
+    {
+     "row": "S0011L04U03",
+     "role": "use",
+     "known": "他想晚一点以后回来",
+     "target": "He wants to come back later on",
+     "untaught": [
+      "he",
+      "wants",
+      "come",
+      "back",
+      "later",
+      "on"
+     ]
+    },
+    {
+     "row": "S0011L04U04",
+     "role": "use",
+     "known": "我想练习说以后和你见面",
+     "target": "I want to practise speaking after I meet you",
+     "untaught": [
+      "meet"
+     ]
+    },
+    {
+     "row": "S0011L04U05",
+     "role": "use",
+     "known": "她想今天晚上以后和我们见面",
+     "target": "She wants to meet us after this evening",
+     "untaught": [
+      "she",
+      "wants",
+      "meet",
+      "us",
+      "this",
+      "evening"
+     ]
+    }
+   ]
+  },
+  "S0015L01": {
+   "lego": "和我 | With me",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 35,
+   "avg_known_chars": 8,
+   "rows": [
+    {
+     "row": "S0015L01U06",
+     "role": "use",
+     "known": "他想今天晚上和我练习说英语",
+     "target": "He wants to practise speaking English with me this evening",
+     "untaught": [
+      "he",
+      "wants",
+      "this",
+      "evening"
+     ]
+    },
+    {
+     "row": "S0015L01U07",
+     "role": "use",
+     "known": "你想现在和我说话吗",
+     "target": "Do you want to talk with me now?",
+     "untaught": [
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0019L03": {
+   "lego": "停止 | To stop",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 29,
+   "avg_known_chars": 7,
+   "rows": [
+    {
+     "row": "S0019L03B04",
+     "role": "build",
+     "known": "今天停止学习",
+     "target": "To stop learning today",
+     "untaught": [
+      "learning"
+     ]
+    }
+   ]
+  },
+  "S0042L01": {
+   "lego": "比 | Than",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 7,
+   "rows": [
+    {
+     "row": "S0042L01U07",
+     "role": "use",
+     "known": "他比我更累",
+     "target": "He's more tired than me",
+     "untaught": [
+      "he's"
+     ]
+    }
+   ]
+  },
+  "S0067L01": {
+   "lego": "为什么想停下来 | Why do you want to stop",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 30,
+   "avg_known_chars": 9,
+   "rows": [
+    {
+     "row": "S0067L01U04",
+     "role": "use",
+     "known": "你为什么想停下来，因为你做得很好",
+     "target": "Why do you want to stop when you're doing very well?",
+     "untaught": [
+      "when",
+      "you're"
+     ]
+    },
+    {
+     "row": "S0067L01U05",
+     "role": "use",
+     "known": "你为什么想停下来，还是想继续这样做",
+     "target": "Why do you want to stop or do you want to keep on doing this?",
+     "untaught": [
+      "keep"
+     ]
+    }
+   ]
+  },
+  "S0082L03": {
+   "lego": "为什么不 | Why not",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 8,
+   "rows": [
+    {
+     "row": "S0082L03U05",
+     "role": "use",
+     "known": "你想停下来，但是为什么不继续",
+     "target": "You want to stop but why not keep on doing this?",
+     "untaught": [
+      "keep"
+     ]
+    }
+   ]
+  },
+  "S0105L01": {
+   "lego": "那就是为什么 | That is why",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0105L01U05",
+     "role": "use",
+     "known": "这就是为什么我想花更多时间学习",
+     "target": "That is why I want to spend more time learning",
+     "untaught": [
+      "spend"
+     ]
+    }
+   ]
+  },
+  "S0111L01": {
+   "lego": "当我们学到新东西的时候，它会改变我们的大脑 | When we learn something new it changes our brain",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 37,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0111L01U06",
+     "role": "use",
+     "known": "我没想到当我们学到新东西的时候，它会改变我们的大脑",
+     "target": "I wasn't expecting that when we learn something new it changes our brain",
+     "untaught": [
+      "expecting"
+     ]
+    }
+   ]
+  },
+  "S0148L01": {
+   "lego": "他不太有耐心 | He wasn't very patient",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 40,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0148L01U04",
+     "role": "use",
+     "known": "他不太有耐心，虽然他很友好",
+     "target": "He wasn't very patient although he was very kind",
+     "untaught": [
+      "although"
+     ]
+    }
+   ]
+  },
+  "S0241L01": {
+   "lego": "给他 | I don't want to give it to him",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 43,
+   "avg_known_chars": 10,
+   "rows": [
+    {
+     "row": "S0241L01U05",
+     "role": "use",
+     "known": "我现在不想给他，因为我自己还需要它",
+     "target": "I don't want to give it to him now because I still need it myself",
+     "untaught": [
+      "still",
+      "myself"
+     ]
+    }
+   ]
+  },
+  "S0245L01": {
+   "lego": "我对自己在短时间内做了这么多很满意 | I'm happy with how much I've done in a short time",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 60,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0245L01U05",
+     "role": "use",
+     "known": "我对自己在短时间内做了这么多很满意，但我还想做更多",
+     "target": "I'm happy with how much I've done in a short time but I still want to do more",
+     "untaught": [
+      "still"
+     ]
+    }
+   ]
+  },
+  "S0246L01": {
+   "lego": "我想让她帮你，但是她太忙了 | I wanted her to help you but she was too busy",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 54,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0246L01U05",
+     "role": "use",
+     "known": "我想让她帮你，但是她太忙了，所以我打算自己来做",
+     "target": "I wanted her to help you but she was too busy so I'm going to do it myself",
+     "untaught": [
+      "myself"
+     ]
+    }
+   ]
+  },
+  "S0254L01": {
+   "lego": "我从今天早上就准备好了 | I've been ready since this morning",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 47,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0254L01U05",
+     "role": "use",
+     "known": "我从今天早上就准备好了，所以我们什么时候都可以开始",
+     "target": "I've been ready since this morning so we can start whenever you want",
+     "untaught": [
+      "whenever"
+     ]
+    }
+   ]
+  },
+  "S0255L01": {
+   "lego": "你觉得你什么时候能准备好走 | When do you think you'll be ready to leave",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 56,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0255L01U06",
+     "role": "use",
+     "known": "你觉得你什么时候能准备好走，还是你想多待一会儿",
+     "target": "When do you think you'll be ready to leave or do you want to stay a little longer?",
+     "untaught": [
+      "stay",
+      "longer"
+     ]
+    }
+   ]
+  },
+  "S0269L01": {
+   "lego": "你为什么不想等你爸爸 | Why don't you want to wait for your father",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 60,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0269L01U05",
+     "role": "use",
+     "known": "你为什么不想等你爸爸，还是你担心你要迟到了",
+     "target": "Why don't you want to wait for your father or are you worried that you're going to be late?",
+     "untaught": [
+      "worried",
+      "late"
+     ]
+    }
+   ]
+  },
+  "S0284L01": {
+   "lego": "你认识我姐姐的朋友吗 | Do you know my sister's friend",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 47,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0284L01U05",
+     "role": "use",
+     "known": "你认识我姐姐的朋友吗，因为她也会说英语",
+     "target": "Do you know my sister's friend because she speaks English too?",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  },
+  "S0288L01": {
+   "lego": "我认识的大多数人都喜欢看电视 | Most people I know like watching television",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 54,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0288L01U05",
+     "role": "use",
+     "known": "我认识的大多数人都喜欢看电视，但我更喜欢读书",
+     "target": "Most people I know like watching television but I prefer to read",
+     "untaught": [
+      "prefer"
+     ]
+    }
+   ]
+  },
+  "S0291L01": {
+   "lego": "我希望我很快能说得更好 | I hope I'll be able to speak better soon",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 54,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0291L01U05",
+     "role": "use",
+     "known": "我希望我很快能说得更好，因为我每天都在努力",
+     "target": "I hope I'll be able to speak better soon because I'm trying hard every day",
+     "untaught": [
+      "every"
+     ]
+    }
+   ]
+  },
+  "S0293L01": {
+   "lego": "他在哪里跟我见面 | I have to find out where he's going to meet me",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 47,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0293L01U05",
+     "role": "use",
+     "known": "我得找到他打算在哪里和我见面，因为他还没告诉我",
+     "target": "I have to find out where he's going to meet me because he hasn't told me yet",
+     "untaught": [
+      "hasn't"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

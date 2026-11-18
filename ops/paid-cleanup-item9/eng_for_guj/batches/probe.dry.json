@@ -1,0 +1,112 @@
+{
+ "at": "2026-11-18T13:22:01.567Z",
+ "status": 200,
+ "ms": 107508,
+ "ok": true,
+ "applied": false,
+ "event_id": null,
+ "undo_file": null,
+ "error": null,
+ "code": null,
+ "seeds": [
+  71
+ ],
+ "counts": {
+  "lego_insert": 0,
+  "lego_update": 1,
+  "insert": 1,
+  "update": 8,
+  "delete": 0
+ },
+ "audio_after": [
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "lego_id": "S0071L02"
+   },
+   "k": "301e23b4-01d8-4b0f-a9f1-ff66643e98ca",
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "id": "eng_for_guj:S0071L02B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02B01"
+   },
+   "k": "301e23b4-01d8-4b0f-a9f1-ff66643e98ca",
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02B02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02B03"
+   },
+   "k": "072235af-4f4c-4459-a175-8aa65808b7fe",
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02U01"
+   },
+   "k": "4c240882-9baa-4713-a09d-62c8b2819b78",
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02U02"
+   },
+   "k": "b26f6c7e-5b42-4863-873d-ec812967aa45",
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02U03"
+   },
+   "k": "37cc9daa-ecb7-4a10-b220-696d0467a8ac",
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02U04"
+   },
+   "k": "ebbd2313-17d9-4d9e-8005-59d18ac5574c",
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0071L02U05"
+   },
+   "k": "4fe6b6e8-5f6f-4b92-9208-fc7b7df4e8a7",
+   "t1": null,
+   "t2": null
+  }
+ ]
+}

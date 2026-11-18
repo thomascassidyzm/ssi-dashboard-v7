@@ -1,0 +1,65 @@
+{
+ "course": "eng_for_guj",
+ "at": "2026-11-18T14:40:04.873Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0040L02": {
+   "lego": "અત્યારે | at the moment",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 29,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0040L02B02",
+     "role": "build",
+     "known": "અત્યારે કેવું લાગે છે?",
+     "target": "how does it feel at the moment?",
+     "untaught": [
+      "does"
+     ]
+    }
+   ]
+  },
+  "S0138L01": {
+   "lego": "આ જ્યાં હતું | this was where",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0138L01B03",
+     "role": "build",
+     "known": "આ જ્યાં હતું હું તમને મળ્યો",
+     "target": "this was where I met you",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

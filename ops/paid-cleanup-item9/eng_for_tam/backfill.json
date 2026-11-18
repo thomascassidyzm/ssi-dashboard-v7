@@ -1,0 +1,1631 @@
+{
+ "course": "eng_for_tam",
+ "at": "2026-11-18T14:40:06.946Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0006L02": {
+   "lego": "நினைவில் கொள்ள | remember",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0006L02U02",
+     "role": "use",
+     "known": "நான் ஏதாவது நினைவில் கொள்ள விரும்புகிறேன்",
+     "target": "I'd like to remember something",
+     "untaught": [
+      "i'd",
+      "like"
+     ]
+    }
+   ]
+  },
+  "S0011L03": {
+   "lego": "முடியும் | be able to",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0011L03B03",
+     "role": "build",
+     "known": "நாளை சந்திக்க முடியும்",
+     "target": "be able to meet tomorrow",
+     "untaught": [
+      "meet",
+      "tomorrow"
+     ]
+    },
+    {
+     "row": "S0011L03U05",
+     "role": "use",
+     "known": "நான் என்னுடைய நண்பர்களை சந்திக்க முடியும்",
+     "target": "I want to be able to meet my friends",
+     "untaught": [
+      "meet",
+      "my",
+      "friends"
+     ]
+    }
+   ]
+  },
+  "S0012L03": {
+   "lego": "என்ன நடக்கும் என்று | what's going to happen",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0012L03U06",
+     "role": "use",
+     "known": "நான் நாளை என்ன நடக்கும் என்று கண்டுபிடிக்க விரும்புகிறேன்",
+     "target": "I'd like to find out what's going to happen tomorrow",
+     "untaught": [
+      "find",
+      "out"
+     ]
+    }
+   ]
+  },
+  "S0022L04": {
+   "lego": "சந்திக்க விரும்புகிறேன் | I want to meet",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0022L04U05",
+     "role": "use",
+     "known": "நான் இன்றிரவு சந்திக்க விரும்புகிறேன்",
+     "target": "I want to meet tonight",
+     "untaught": [
+      "tonight"
+     ]
+    }
+   ]
+  },
+  "S0025L04": {
+   "lego": "போக வேண்டும் | have to go",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 17,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0025L04B02",
+     "role": "build",
+     "known": "இப்போது போக வேண்டும்",
+     "target": "I need to go now",
+     "untaught": [
+      "need"
+     ]
+    }
+   ]
+  },
+  "S0033L02": {
+   "lego": "கற்றுவருகிறீர்கள் | have you been learning",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 29,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0033L02B03",
+     "role": "build",
+     "known": "இங்கே கற்றுவருகிறீர்கள்?",
+     "target": "have you been learning here?",
+     "untaught": [
+      "here"
+     ]
+    }
+   ]
+  },
+  "S0039L02": {
+   "lego": "சோர்வாக | tired",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0039L02U06",
+     "role": "use",
+     "known": "நான் இரவு கொஞ்சம் சோர்வாக இருந்தேன்",
+     "target": "I was a little tired last night",
+     "untaught": [
+      "was",
+      "night"
+     ]
+    }
+   ]
+  },
+  "S0051L03": {
+   "lego": "சுவாரஸ்யமான | interesting",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0051L03U08",
+     "role": "use",
+     "known": "நான் நினைக்கிறேன் கடிதம் சுவாரஸ்யமான",
+     "target": "I think that the letter is interesting",
+     "untaught": [
+      "letter"
+     ]
+    }
+   ]
+  },
+  "S0060L03": {
+   "lego": "என்னால் தெரியாது | I don't know",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0060L03U05",
+     "role": "use",
+     "known": "எனக்கு என்னுடைய நண்பர் பெயர் தெரியாது",
+     "target": "I don't know my friend's name",
+     "untaught": [
+      "friend's"
+     ]
+    }
+   ]
+  },
+  "S0064L01": {
+   "lego": "கற்பது | learning",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0064L01B02",
+     "role": "build",
+     "known": "கற்பது முக்கியம்",
+     "target": "learning is important",
+     "untaught": [
+      "important"
+     ]
+    }
+   ]
+  },
+  "S0078L02": {
+   "lego": "புரியவில்லை நீங்கள் சொன்னது | I don't understand what you said",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0078L02U06",
+     "role": "use",
+     "known": "மன்னிக்கவும், நீங்கள் இப்போது சொன்னது எனக்குப் புரியவில்லை",
+     "target": "sorry, I don't understand what you said now",
+     "untaught": [
+      "sorry"
+     ]
+    }
+   ]
+  },
+  "S0086L02": {
+   "lego": "சாத்தியமில்லை | possible",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0086L02U05",
+     "role": "use",
+     "known": "துரதிர்ஷ்டவசமாக, அது இன்று சாத்தியம் இல்லை",
+     "target": "unfortunately, that's not possible today",
+     "untaught": [
+      "that's"
+     ]
+    }
+   ]
+  },
+  "S0094L03": {
+   "lego": "ஒரே | only",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0094L03U06",
+     "role": "use",
+     "known": "என்னால் முடிந்த அளவு கடினமாக வேலை செய்வது ஒரே வழி",
+     "target": "working as hard as I can is the only way",
+     "untaught": [
+      "working"
+     ]
+    }
+   ]
+  },
+  "S0102L02": {
+   "lego": "நாங்கள் முயற்சிக்கிறோம் | we're trying",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0102L02U04",
+     "role": "use",
+     "known": "நாங்கள் என்ன செய்கிறோம் என்று மாற்ற முயற்சிக்கிறோம்",
+     "target": "we're trying to change what we're doing",
+     "untaught": [
+      "change"
+     ]
+    }
+   ]
+  },
+  "S0103L02": {
+   "lego": "பல | many",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0103L02U06",
+     "role": "use",
+     "known": "ஆங்கிலம் பேசும் பல மக்கள் இங்கே இருக்கிறார்கள்",
+     "target": "there are many people here who speak English",
+     "untaught": [
+      "there"
+     ]
+    }
+   ]
+  },
+  "S0104L02": {
+   "lego": "செய்வதை | doing",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0104L02U03",
+     "role": "use",
+     "known": "புதிய ஏதாவது செய்வது சுவாரஸ்யமான",
+     "target": "doing something new is interesting",
+     "untaught": [
+      "new"
+     ]
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": "விழிக்க | wake",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 29,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0108L02U02",
+     "role": "use",
+     "known": "அவள் எங்களை எழுப்ப விரும்பவில்லை",
+     "target": "she didn't want to wake us up",
+     "untaught": [
+      "us"
+     ]
+    },
+    {
+     "row": "S0108L02U04",
+     "role": "use",
+     "known": "யாரும் இரவில் விழிக்க விரும்பவில்லை",
+     "target": "nobody wanted to wake in the middle of the night",
+     "untaught": [
+      "nobody",
+      "middle",
+      "of"
+     ]
+    },
+    {
+     "row": "S0108L02U05",
+     "role": "use",
+     "known": "நான் இந்த காலையில் சீக்கிரம் விழிக்க விரும்பவில்லை",
+     "target": "I didn't want to wake early this morning",
+     "untaught": [
+      "early"
+     ]
+    }
+   ]
+  },
+  "S0111L04": {
+   "lego": "கற்றுக்கொள்ளும்போது புதிய | when learn something new",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 40,
+   "rows": [
+    {
+     "row": "S0111L04U04",
+     "role": "use",
+     "known": "புதிது கற்றுக்கொள்ளும்போது ஆச்சரியமாக இருக்கிறேன்",
+     "target": "I am surprised when learn something new",
+     "untaught": [
+      "am"
+     ]
+    }
+   ]
+  },
+  "S0112L03": {
+   "lego": "மிகவும் சுவாரஸ்யமானது எதிர்பார்க்கவில்லை | wasn't expecting it to be very interesting",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 1
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 41,
+   "avg_known_chars": 47,
+   "rows": [
+    {
+     "row": "S0112L03U05",
+     "role": "use",
+     "known": "அவன் இதை விரும்புகிறான் மிகவும் சுவாரஸ்யமானது என்று எதிர்பார்க்கவில்லை",
+     "target": "he likes it, wasn't expecting it to be very interesting",
+     "untaught": [
+      "likes"
+     ]
+    }
+   ]
+  },
+  "S0113L02": {
+   "lego": "நினைவில் வைத்துக்கொள்ள முடியவில்லை | I can't remember",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 39,
+   "rows": [
+    {
+     "row": "S0113L02U05",
+     "role": "use",
+     "known": "மன்னிக்கவும், அவளுடைய பெயரை நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+     "target": "sorry, I can't remember her name",
+     "untaught": [
+      "sorry"
+     ]
+    }
+   ]
+  },
+  "S0114L02": {
+   "lego": "உணர்கிறேன் மோசமாக செய்கிறேன் | feel as if doing worse",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0114L02U04",
+     "role": "use",
+     "known": "சில நேரங்களில் மோசமாக செய்கிறேன் என்று உணர்கிறேன்",
+     "target": "sometimes I feel as if doing worse",
+     "untaught": [
+      "sometimes"
+     ]
+    }
+   ]
+  },
+  "S0116L02": {
+   "lego": "தேர்வு | choice",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0116L02U06",
+     "role": "use",
+     "known": "பேருந்தில் செல்வது சிறந்த தேர்வு என்று நினைக்கிறேன்",
+     "target": "I think going by bus is the best choice",
+     "untaught": [
+      "by"
+     ]
+    }
+   ]
+  },
+  "S0117L01": {
+   "lego": "நிச்சயமாக | definitely",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0117L01U05",
+     "role": "use",
+     "known": "இது நிச்சயமாக ஒரு நல்ல யோசனை",
+     "target": "this is definitely a good idea",
+     "untaught": [
+      "idea"
+     ]
+    }
+   ]
+  },
+  "S0118L02": {
+   "lego": "உணர்ந்ததை விட சிறப்பாக | better than I felt",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0118L02U06",
+     "role": "use",
+     "known": "அவன் நேற்று உணர்ந்ததை விட சிறப்பாக உணர்கிறான்",
+     "target": "he feels better than I felt yesterday",
+     "untaught": [
+      "feels"
+     ]
+    }
+   ]
+  },
+  "S0120L02": {
+   "lego": "பேருந்தில் செல்ல விரும்புகிறீர்கள் | like to go by bus",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 17,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0120L02U06",
+     "role": "use",
+     "known": "அவன் பேருந்தில் செல்ல விரும்புகிறான்",
+     "target": "he likes to go by bus",
+     "untaught": [
+      "likes"
+     ]
+    }
+   ]
+  },
+  "S0121L01": {
+   "lego": "காரை | car",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 14,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0121L01U05",
+     "role": "use",
+     "known": "அவளுக்கு ஒரு காரை வேண்டும்",
+     "target": "she needs a car",
+     "untaught": [
+      "needs"
+     ]
+    },
+    {
+     "row": "S0121L01U06",
+     "role": "use",
+     "known": "அவன் இன்று காரை பார்க்கிறான்",
+     "target": "he sees a car today",
+     "untaught": [
+      "sees"
+     ]
+    }
+   ]
+  },
+  "S0123L01": {
+   "lego": "யோசனை | idea",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 17,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0123L01U07",
+     "role": "use",
+     "known": "அவளுக்கு ஒரு நல்ல யோசனை இருக்கிறது",
+     "target": "she has a good idea",
+     "untaught": [
+      "has"
+     ]
+    }
+   ]
+  },
+  "S0123L02": {
+   "lego": "நினைக்கிறேன் நல்ல யோசனை | think that's a good idea",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0123L02U06",
+     "role": "use",
+     "known": "அவன் நினைக்கிறான் நல்ல யோசனை",
+     "target": "he thinks that's a good idea",
+     "untaught": [
+      "thinks"
+     ]
+    }
+   ]
+  },
+  "S0125L02": {
+   "lego": "நம்புகிறேன் | believe",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 15,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0125L02U06",
+     "role": "use",
+     "known": "அவன் நம்புகிறான் அது உண்மையானது என்று",
+     "target": "he believes that it's true",
+     "untaught": [
+      "believes",
+      "true"
+     ]
+    }
+   ]
+  },
+  "S0125L03": {
+   "lego": "நம்புகிறேன் உங்கள் யோசனை மிகவும் நல்லது | believe that your idea very good",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0125L03U05",
+     "role": "use",
+     "known": "அவன் உங்கள் யோசனை மிகவும் நல்லது என்று நம்புகிறான்",
+     "target": "he believes that your idea very good",
+     "untaught": [
+      "believes"
+     ]
+    }
+   ]
+  },
+  "S0131L02": {
+   "lego": "தலை | head",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 17,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0131L02U05",
+     "role": "use",
+     "known": "என் தலையில் ஒரு சுவாரஸ்யமான யோசனை இருக்கிறது",
+     "target": "I have an interesting idea in my head",
+     "untaught": [
+      "an"
+     ]
+    }
+   ]
+  },
+  "S0132L03": {
+   "lego": "குறைவாக சுவாரஸ்யமாக | less exciting than",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0132L03U05",
+     "role": "use",
+     "known": "இந்த புத்தகம் அந்த கதையை விட குறைவாக சுவாரஸ்யமாக உள்ளது",
+     "target": "this book is less exciting than that story",
+     "untaught": [
+      "book"
+     ]
+    }
+   ]
+  },
+  "S0133L02": {
+   "lego": "யாரையாவது நன்றாக அறிவீர்கள் | get to know someone",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0133L02U05",
+     "role": "use",
+     "known": "அவன் யாரையாவது நன்றாக அறிவான்",
+     "target": "he gets to know someone well",
+     "untaught": [
+      "gets"
+     ]
+    }
+   ]
+  },
+  "S0134L01": {
+   "lego": "பிரச்னை | problem",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 16,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0134L01U08",
+     "role": "use",
+     "known": "அவளுக்கு என்னுடன் ஒரு பிரச்னை இருக்கிறது",
+     "target": "she has a problem with me",
+     "untaught": [
+      "has"
+     ]
+    }
+   ]
+  },
+  "S0135L02": {
+   "lego": "ஏன் நீங்கள் நினை அது மிகவும் நல்லது | why you think it's so good",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 45,
+   "rows": [
+    {
+     "row": "S0135L02U06",
+     "role": "use",
+     "known": "அவள் கேட்கிறாள் ஏன் நீங்கள் நினை அது மிகவும் நல்லது",
+     "target": "she asks why you think it's so good",
+     "untaught": [
+      "asks"
+     ]
+    }
+   ]
+  },
+  "S0138L02": {
+   "lego": "நம்மை | us",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0138L02U06",
+     "role": "use",
+     "known": "என் அப்பா நம்மை சந்திக்க விரும்பினார்",
+     "target": "my father wanted to meet us",
+     "untaught": [
+      "father"
+     ]
+    }
+   ]
+  },
+  "S0139L01": {
+   "lego": "சீக்கிரம் | early",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 15,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0139L01U06",
+     "role": "use",
+     "known": "நான் இன்று காலை சீக்கிரம் எழுந்திரித்தேன்",
+     "target": "I woke early this morning",
+     "untaught": [
+      "woke"
+     ]
+    }
+   ]
+  },
+  "S0139L02": {
+   "lego": "மன்னிக்கவும் | sorry",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 13,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0139L02U05",
+     "role": "use",
+     "known": "மிகவும் தாமதமாக வந்ததற்கு மன்னிக்கவும்",
+     "target": "I'm sorry I'm very late",
+     "untaught": [
+      "late"
+     ]
+    }
+   ]
+  },
+  "S0140L02": {
+   "lego": "மிகவும் தாமதமாக வருவேன் | going to be very late",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0140L02U02",
+     "role": "use",
+     "known": "மிகவும் தாமதமாக வருவேன் என்று கவலைப்படுகிறேன்",
+     "target": "because I'm worried that I'm going to be very late",
+     "untaught": [
+      "worried"
+     ]
+    }
+   ]
+  },
+  "S0142L01": {
+   "lego": "கருணையான | kind",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 22,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0142L01U08",
+     "role": "use",
+     "known": "என்னை கவலையாக பார்த்தபோது அவள் மிகவும் கருணையான",
+     "target": "she was very kind when she saw me feeling nervous",
+     "untaught": [
+      "saw",
+      "nervous"
+     ]
+    },
+    {
+     "row": "S0142L01U09",
+     "role": "use",
+     "known": "நான் முயற்சிக்கும்போது என் ஆசிரியர் மிகவும் கருணையான",
+     "target": "my teacher is very kind when I'm trying",
+     "untaught": [
+      "teacher"
+     ]
+    }
+   ]
+  },
+  "S0142L03": {
+   "lego": "உதவி | helping",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 16,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0142L03B03",
+     "role": "build",
+     "known": "நான் உதவுகிறேன்",
+     "target": "I am helping",
+     "untaught": [
+      "am"
+     ]
+    }
+   ]
+  },
+  "S0146L01": {
+   "lego": "சரிசெய்ய | fix",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 13,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0146L01U05",
+     "role": "use",
+     "known": "அவன் அதை சரிசெய்ய வேண்டும்",
+     "target": "he needs to fix it",
+     "untaught": [
+      "needs"
+     ]
+    }
+   ]
+  },
+  "S0146L04": {
+   "lego": "வேலை செய்கிறது நாங்கள் முயன்றதிலிருந்து சரிசெய்ய | working since we tried to fix it",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 0,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0146L04U04",
+     "role": "use",
+     "known": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து இது வேலை செய்கிறது",
+     "target": "this has been working since we tried to fix it",
+     "untaught": [
+      "has"
+     ]
+    },
+    {
+     "row": "S0146L04U05",
+     "role": "use",
+     "known": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து இது நன்றாக வேலை செய்கிறது",
+     "target": "this has been working well since we tried to fix it",
+     "untaught": [
+      "has"
+     ]
+    }
+   ]
+  },
+  "S0148L04": {
+   "lego": "போது நான் முடியாத பதில் சொல் | when I couldn't answer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0148L04U04",
+     "role": "use",
+     "known": "என்னால் பதில் சொல்ல முடியாத போது கவலைப்பட்டேன்",
+     "target": "I was worried when I couldn't answer",
+     "untaught": [
+      "worried"
+     ]
+    }
+   ]
+  },
+  "S0149L04": {
+   "lego": "நம்புகிறேன் நீங்கள் முடி விரைவில் | hope you'll finish soon",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0149L04U06",
+     "role": "use",
+     "known": "நீங்களும் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்",
+     "target": "I also hope you'll finish soon",
+     "untaught": [
+      "also"
+     ]
+    }
+   ]
+  },
+  "S0153L03": {
+   "lego": "சொன்னேன் அதை சரியாக | said it in exactly",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0153L03U04",
+     "role": "use",
+     "known": "அவர் சரியாக சொன்னார்",
+     "target": "he said it in exactly the right way",
+     "untaught": [
+      "right"
+     ]
+    }
+   ]
+  },
+  "S0163L01": {
+   "lego": "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது | I think that it's interesting",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 1
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 29,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0163L01U04",
+     "role": "use",
+     "known": "அது சுவாரஸ்யமானது என்று அவள் நினைக்கிறாள்",
+     "target": "she thinks that it's interesting",
+     "untaught": [
+      "thinks"
+     ]
+    }
+   ]
+  },
+  "S0178L02": {
+   "lego": "ஆனாலும் விரும்பினேன் பார்க்க | although wanted to see you",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 4
+   },
+   "author_build": 2,
+   "author_use": 0,
+   "avg_target_chars": 28,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0178L02B01",
+     "role": "build",
+     "known": "உங்களை பார்க்க விரும்பினேன் ஆனாலும் வந்தேன்",
+     "target": "I came although wanted to see you",
+     "untaught": [
+      "came"
+     ]
+    },
+    {
+     "row": "S0178L02B03",
+     "role": "build",
+     "known": "உங்களை பார்க்க விரும்பினேன் ஆனாலும் கிளம்பினேன்",
+     "target": "I left although wanted to see you",
+     "untaught": [
+      "left"
+     ]
+    }
+   ]
+  },
+  "S0179L01": {
+   "lego": "என்ன நீங்கள் செய்யப் போகிறீர்கள் | what are you going to do",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0179L01U05",
+     "role": "use",
+     "known": "வார இறுதியில் நீங்கள் என்ன செய்யப் போகிறீர்கள்?",
+     "target": "what are you going to do at the weekend?",
+     "untaught": [
+      "weekend"
+     ]
+    }
+   ]
+  },
+  "S0182L02": {
+   "lego": "பார்த்தீர்களா என் சாவிகளை எங்காவது | seen my keys anywhere",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0182L02U05",
+     "role": "use",
+     "known": "இல்லை, நான் என் சாவிகளை எங்காவது பார்க்கவில்லை",
+     "target": "no I haven't seen my keys anywhere",
+     "untaught": [
+      "haven't"
+     ]
+    }
+   ]
+  },
+  "S0268L02": {
+   "lego": "அனுப்பினாள் மின்னஞ்சல்கள் கடந்த வாரம் | sent me emails last week",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0268L02U05",
+     "role": "use",
+     "known": "அவள் கடந்த வாரம் சில மின்னஞ்சல்கள் அனுப்பினாள்",
+     "target": "she recently sent me emails last week",
+     "untaught": [
+      "recently"
+     ]
+    }
+   ]
+  },
+  "S0276L01": {
+   "lego": "இங்கே நிற்க நீண்டது | stay here for a little longer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 34,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0276L01U05",
+     "role": "use",
+     "known": "உங்களுடன் இன்னும் சிறிது நேரம் இங்கே இருப்பதை ஆவலுடன் எதிர்நோக்குகிறேன்",
+     "target": "I'm looking forward to staying here for a little longer with you",
+     "untaught": [
+      "staying"
+     ]
+    }
+   ]
+  },
+  "S0277L01": {
+   "lego": "முன்னதாக | early",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 12,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0277L01U02",
+     "role": "use",
+     "known": "நான் முன்னதாக வந்தேன்",
+     "target": "I came early",
+     "untaught": [
+      "came"
+     ]
+    },
+    {
+     "row": "S0277L01U03",
+     "role": "use",
+     "known": "அவர் இன்று முன்னதாக வந்தார்",
+     "target": "he came early today",
+     "untaught": [
+      "came"
+     ]
+    }
+   ]
+  },
+  "S0289L02": {
+   "lego": "மதியம் | afternoon",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0289L02U04",
+     "role": "use",
+     "known": "அவன் இந்த மதியம் வந்தான்",
+     "target": "he came this afternoon",
+     "untaught": [
+      "came"
+     ]
+    }
+   ]
+  },
+  "S0374L01": {
+   "lego": "நான் நினைத்தேன் | I thought",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 22,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0374L01U06",
+     "role": "use",
+     "known": "அவன் இப்போதுதான் கற்க ஆரம்பித்தான் என்று நினைத்தேன்",
+     "target": "I thought he'd just started to learn",
+     "untaught": [
+      "he'd"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

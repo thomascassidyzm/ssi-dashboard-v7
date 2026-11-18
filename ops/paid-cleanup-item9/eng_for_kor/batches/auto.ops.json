@@ -1,0 +1,140 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0004L01B04",
+   "expect": {
+    "known_text": "무언가를 기억하려고",
+    "target_text": "trying to remember something"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0012L01B02",
+   "expect": {
+    "known_text": "말하고 싶지 않아요",
+    "target_text": "I don't want to speak"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0012L01U01",
+   "expect": {
+    "known_text": "저는 영어로 말하고 싶지 않아요",
+    "target_text": "I don't want to speak English"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0012L01U02",
+   "expect": {
+    "known_text": "저는 지금 말하고 싶지 않아요",
+    "target_text": "I don't want to speak now"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0023L02B02",
+   "expect": {
+    "known_text": "더 많이 말하기",
+    "target_text": "talk more"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0026L03B02",
+   "expect": {
+    "known_text": "거의 피곤해요",
+    "target_text": "nearly tired"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0026L03B03",
+   "expect": {
+    "known_text": "거의 끝났어요",
+    "target_text": "nearly finished"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0032L01U06",
+   "expect": {
+    "known_text": "당신은 어제 저에게 그것을 보여주고 싶었어요?",
+    "target_text": "did you want to show me that yesterday?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0051L01U01",
+   "expect": {
+    "known_text": "저는 이것을 하는 것을 즐겨요",
+    "target_text": "I enjoy doing this a lot"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0051L02U03",
+   "expect": {
+    "known_text": "저는 흥미로운 일에 대해 이야기하고 싶어요",
+    "target_text": "I want to talk about interesting things"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0051L03U02",
+   "expect": {
+    "known_text": "저는 친구들과 이야기하고 싶어요",
+    "target_text": "I want to talk with my friends about it"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0052L02U05",
+   "expect": {
+    "known_text": "그는 친구와 이야기하고 싶었어요",
+    "target_text": "he wanted to talk with a friend about it"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0073L02B05",
+   "expect": {
+    "known_text": "향상할 것이 많아요",
+    "target_text": "I've got a lot to improve"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0073L02U03",
+   "expect": {
+    "known_text": "저는 향상할 것이 많지만 즐겨요",
+    "target_text": "I've got a lot to improve but I enjoy it"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0073L02U08",
+   "expect": {
+    "known_text": "저는 배울 것이 많지만 좋은 일이라고 생각해요",
+    "target_text": "I've got a lot to learn but I think that it's a good thing"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0076L03U02",
+   "expect": {
+    "known_text": "저는 이미 많이 배웠지만 더 배우고 싶어요",
+    "target_text": "I already know a lot but I want to learn more"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kor:S0284L01U07",
+   "expect": {
+    "known_text": "제 여동생 친구는 영어를 해요",
+    "target_text": "my sister's friend speaks English"
+   }
+  }
+ ]
+}

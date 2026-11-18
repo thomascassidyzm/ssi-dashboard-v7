@@ -1,0 +1,1012 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0061L02U09",
+   "expect": {
+    "known_text": "I think about that when I speak Spanish",
+    "target_text": "Pienso en eso cuando hablo en español"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0077L02U02",
+   "expect": {
+    "known_text": "I think about how quickly you are learning Spanish",
+    "target_text": "Pienso en lo rápido que estás aprendiendo español"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02B02",
+   "expect": {
+    "known_text": "To take the next bus",
+    "target_text": "Tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02B03",
+   "expect": {
+    "known_text": "I want to take the next bus",
+    "target_text": "Quiero tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02B04",
+   "expect": {
+    "known_text": "I can take the next bus",
+    "target_text": "Puedo tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02B05",
+   "expect": {
+    "known_text": "I need to take the next bus",
+    "target_text": "Necesito tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U01",
+   "expect": {
+    "known_text": "I want to take the next bus",
+    "target_text": "Quiero tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U02",
+   "expect": {
+    "known_text": "I need to take the next bus",
+    "target_text": "Necesito tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U03",
+   "expect": {
+    "known_text": "I need to take the next bus now",
+    "target_text": "Necesito tomar el próximo autobús ahora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U04",
+   "expect": {
+    "known_text": "I would like to take the next bus",
+    "target_text": "Me gustaría tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U05",
+   "expect": {
+    "known_text": "I can take the next bus now",
+    "target_text": "Puedo tomar el próximo autobús ahora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U06",
+   "expect": {
+    "known_text": "I want to take the next bus home",
+    "target_text": "Quiero tomar el próximo autobús para ir a casa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U07",
+   "expect": {
+    "known_text": "I need to take the next bus home tonight",
+    "target_text": "Necesito tomar el próximo autobús para ir a casa esta noche"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U08",
+   "expect": {
+    "known_text": "You can take the next bus",
+    "target_text": "Puedes tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U09",
+   "expect": {
+    "known_text": "You can take the next bus this afternoon",
+    "target_text": "Puedes tomar el próximo autobús esta tarde"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U10",
+   "expect": {
+    "known_text": "I think I can take the next bus home",
+    "target_text": "Creo que puedo tomar el próximo autobús para ir a casa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U11",
+   "expect": {
+    "known_text": "I'm going to take the next bus now",
+    "target_text": "Voy a tomar el próximo autobús ahora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U12",
+   "expect": {
+    "known_text": "I'm going to take the next bus home tonight",
+    "target_text": "Voy a tomar el próximo autobús para ir a casa esta noche"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U13",
+   "expect": {
+    "known_text": "I would like to take the next bus home this evening",
+    "target_text": "Me gustaría tomar el próximo autobús para ir a casa esta tarde"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0095L02U14",
+   "expect": {
+    "known_text": "I need to take the next bus home as soon as possible",
+    "target_text": "Necesito tomar el próximo autobús para ir a casa lo antes posible"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0098L01U08",
+   "expect": {
+    "known_text": "I think I should take the next bus",
+    "target_text": "Creo que debería tomar el próximo autobús"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0103L03U07",
+   "expect": {
+    "known_text": "I want to learn many different words so I can explain what I think",
+    "target_text": "Quiero aprender muchas palabras diferentes para poder explicar lo que pienso"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0109L01U09",
+   "expect": {
+    "known_text": "She said we have to stop worrying and just try to enjoy speaking Spanish every day",
+    "target_text": "Ella dijo que tenemos que dejar de preocuparnos y solo intentar disfrutar hablando español todos los días"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0109L02U05",
+   "expect": {
+    "known_text": "She told me she needs to keep learning new words every day if she wants to speak better",
+    "target_text": "Ella me dijo que necesita seguir aprendiendo palabras nuevas todos los días si quiere hablar mejor"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0111L01U02",
+   "expect": {
+    "known_text": "It changes the way I think about speaking Spanish",
+    "target_text": "Cambia la manera en que pienso en hablar español"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0111L04U11",
+   "expect": {
+    "known_text": "I think a lot about how our brain changes when we learn",
+    "target_text": "Pienso mucho en cómo cambia nuestro cerebro cuando aprendemos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0112L04B06",
+   "expect": {
+    "known_text": "I thought that was very interesting",
+    "target_text": "Pensé que eso fue muy interesante"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0115L01U06",
+   "expect": {
+    "known_text": "I'd like to have enough time to learn all this today",
+    "target_text": "Me gustaría tener suficiente tiempo para aprender todo esto hoy"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0117L01B05",
+   "expect": {
+    "known_text": "I'm definitely getting better",
+    "target_text": "Sin duda estoy mejorando"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0120L04B04",
+   "expect": {
+    "known_text": "It is interesting that you like to go by bus with us",
+    "target_text": "Es interesante que te guste ir en autobús con nosotros"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0120L04U08",
+   "expect": {
+    "known_text": "I think it is interesting that you like to go by bus with us",
+    "target_text": "Creo que es interesante que te guste ir en autobús con nosotros"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0121L01U01",
+   "expect": {
+    "known_text": "It is very unusual that you do not want to speak with us now",
+    "target_text": "Es muy raro que no quieras hablar con nosotros ahora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0121L01U02",
+   "expect": {
+    "known_text": "It is unusual that you do not want to start to speak with us",
+    "target_text": "Es raro que no quieras empezar a hablar con nosotros"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0121L01U05",
+   "expect": {
+    "known_text": "I think it is a bit unusual when you do not want to speak Spanish with us",
+    "target_text": "Creo que es un poco raro cuando no quieres hablar español con nosotros"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0121L02U01",
+   "expect": {
+    "known_text": "It is unusual that you do not like to speak with us about this",
+    "target_text": "Es raro que no te guste hablar con nosotros sobre esto"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0121L02U07",
+   "expect": {
+    "known_text": "I do not know why it is unusual that you do not like to speak Spanish with us",
+    "target_text": "No sé por qué es raro que no te guste hablar español con nosotros"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0121L02U15",
+   "expect": {
+    "known_text": "I think it is very unusual that you do not like to speak more with us here",
+    "target_text": "Creo que es muy raro que no te guste hablar más con nosotros aquí"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0122L01U08",
+   "expect": {
+    "known_text": "I think it is not fine when you do not want to speak with us here",
+    "target_text": "Creo que no está bien cuando no quieres hablar con nosotros aquí"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0123L02U07",
+   "expect": {
+    "known_text": "It's a good idea to practise as much as you can with your friend",
+    "target_text": "Es una buena idea practicar todo lo que puedas con tu amigo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0126L03U13",
+   "expect": {
+    "known_text": "It's changing how I learn Spanish",
+    "target_text": "Está cambiando cómo aprendo español"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0128L02B04",
+   "expect": {
+    "known_text": "Like you",
+    "target_text": "Como tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0128L02U02",
+   "expect": {
+    "known_text": "He wants to practise like you, because you are very good",
+    "target_text": "Él quiere practicar como tú, porque eres muy bueno"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0128L02U04",
+   "expect": {
+    "known_text": "I know there is no one like you for explaining this",
+    "target_text": "Sé que no hay nadie como tú para explicar esto"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0128L03B03",
+   "expect": {
+    "known_text": "Someone like you",
+    "target_text": "Alguien como tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0128L03U03",
+   "expect": {
+    "known_text": "He wants to find someone like you to practise with",
+    "target_text": "Él quiere encontrar a alguien como tú para practicar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0129L04U02",
+   "expect": {
+    "known_text": "I want you to be here with us tomorrow",
+    "target_text": "Quiero que estés aquí con nosotros mañana"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0129L04U05",
+   "expect": {
+    "known_text": "How good that you are here with us",
+    "target_text": "Qué bueno que estés aquí con nosotros"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0132L03B07",
+   "expect": {
+    "known_text": "She said it was less exciting than what she thought",
+    "target_text": "Ella dijo que fue menos emocionante de lo que pensaba"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0132L03U14",
+   "expect": {
+    "known_text": "She said it was less exciting than what she expected when she started",
+    "target_text": "Ella dijo que fue menos emocionante de lo que esperaba cuando empezó"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0132L04U01",
+   "expect": {
+    "known_text": "I did not understand what she was saying so quickly when I started to listen",
+    "target_text": "No entendí lo que ella estaba diciendo tan rápido cuando empecé a escuchar "
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0133L01B06",
+   "expect": {
+    "known_text": "She said you get to know someone when you work hard with another person",
+    "target_text": "Ella dijo que llegas a conocer a alguien cuando trabajas mucho con otra persona"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0134L01U10",
+   "expect": {
+    "known_text": "She said it is not a problem to take more time when you want to work on something new",
+    "target_text": "Ella dijo que no es un problema tomar más tiempo cuando quieres trabajar en algo nuevo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0136L02U04",
+   "expect": {
+    "known_text": "You can take some time to think about that",
+    "target_text": "Puedes tomar un poco de tiempo para pensar en eso"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0152L02U15",
+   "expect": {
+    "known_text": "I often think about doing things differently because I want to learn better",
+    "target_text": "A menudo pienso en hacer las cosas de manera diferente porque quiero aprender mejor"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0155L01U13",
+   "expect": {
+    "known_text": "I was trying to wait but I wanted to know what was happening",
+    "target_text": "Estaba intentando esperar pero quería saber lo que estaba pasando"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0161L01U05",
+   "expect": {
+    "known_text": "Can you tell me what you think about that because I want to know what you think?",
+    "target_text": "¿Puedes decirme qué piensas de eso porque quiero saber lo que piensas?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0161L05U13",
+   "expect": {
+    "known_text": "On Sunday morning I want to know what you think about that",
+    "target_text": "El domingo por la mañana quiero saber qué piensas de eso"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0170L02U14",
+   "expect": {
+    "known_text": "I think about it a lot and I'd like you to tell me what you need",
+    "target_text": "Pienso mucho en eso y me gustaría que me dijeras lo que necesitas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0181L04B06",
+   "expect": {
+    "known_text": "I always have to take my mother to the doctor",
+    "target_text": "Siempre tengo que llevar a mi madre al médico"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0188L02U09",
+   "expect": {
+    "known_text": "I know you are tired so I do not want to take too much of your time today",
+    "target_text": "Sé que estás cansado así que no quiero tomar demasiado de tu tiempo hoy"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0189L01U03",
+   "expect": {
+    "known_text": "It is a good idea to take a bit of time to think carefully before you try to answer",
+    "target_text": "Es una buena idea tomar algo de tiempo para pensar con cuidado antes de intentar contestar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0190L01U10",
+   "expect": {
+    "known_text": "I do not always do it the best way but I know I am learning",
+    "target_text": "No siempre lo hago de la mejor manera pero sé que estoy aprendiendo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0195L02B06",
+   "expect": {
+    "known_text": "I think about the money",
+    "target_text": "Pienso en el dinero"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0195L02U06",
+   "expect": {
+    "known_text": "I think about the money a lot",
+    "target_text": "Pienso mucho en el dinero"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0195L03U07",
+   "expect": {
+    "known_text": "I think about what I left on the table all day",
+    "target_text": "Pienso todo el día en lo que dejé en la mesa"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0200L03B03",
+   "expect": {
+    "known_text": "To make sure that it is going to work",
+    "target_text": "Asegurarse de que vaya a funcionar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0200L03U06",
+   "expect": {
+    "known_text": "They say we need to make sure that everything is ready before we start",
+    "target_text": "Dicen que necesitamos asegurarnos de que todo esté listo antes de empezar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0200L03U08",
+   "expect": {
+    "known_text": "they want to make sure that everything is ready",
+    "target_text": "quieren asegurarse de que todo esté listo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0203L01B03",
+   "expect": {
+    "known_text": "What would you do?",
+    "target_text": "¿Qué harías tú?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0206L02U08",
+   "expect": {
+    "known_text": "This is an important opportunity to show what you have learned so far",
+    "target_text": "Esta es una oportunidad importante de mostrar lo que has aprendido hasta ahora"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0211L02U05",
+   "expect": {
+    "known_text": "They told us that it was going to take a long time to explain everything well",
+    "target_text": "Nos dijeron que iba a tomar mucho tiempo explicar todo bien"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0213L03U05",
+   "expect": {
+    "known_text": "It doesn't seem clear to anyone what is happening here",
+    "target_text": "No parece claro para nadie lo que está pasando aquí"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0219L04U07",
+   "expect": {
+    "known_text": "I would like to read my book for a while before going to sleep",
+    "target_text": "Me gustaría leer mi libro por un rato antes de irme a dormir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0225L02U13",
+   "expect": {
+    "known_text": "I think your idea was very good but I need to know the answer first",
+    "target_text": "Creo que tu idea fue muy buena pero primero necesito saber la respuesta"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0225L03U02",
+   "expect": {
+    "known_text": "I am not sure if I can help you at the same time but I would if I could",
+    "target_text": "No estoy seguro de si puedo ayudarte al mismo tiempo pero te ayudaría si pudiera"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0225L03U15",
+   "expect": {
+    "known_text": "I would remember the way if I could but I have forgotten where it is",
+    "target_text": "Recordaría cómo ir si pudiera pero he olvidado dónde está"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0234L01U15",
+   "expect": {
+    "known_text": "I met someone who wanted to ask for help with the same thing as you",
+    "target_text": "Conocí a alguien que quería pedir ayuda con lo mismo que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0239L01U02",
+   "expect": {
+    "known_text": "My mother wanted to see you this afternoon but she couldn't",
+    "target_text": "Mi madre quería verte esta tarde pero no pudo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0243L02U01",
+   "expect": {
+    "known_text": "I want to do the same thing as you",
+    "target_text": "Quiero hacer lo mismo que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0243L02U10",
+   "expect": {
+    "known_text": "I want to learn the same thing as you",
+    "target_text": "Quiero aprender lo mismo que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0243L02U15",
+   "expect": {
+    "known_text": "I want to try the same thing and see if it works",
+    "target_text": "Quiero intentar lo mismo y ver si funciona"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0243L03U06",
+   "expect": {
+    "known_text": "I'm going to eat the same thing as you",
+    "target_text": "Voy a comer lo mismo que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0245L03U15",
+   "expect": {
+    "known_text": "I'm always pleased by how much I can learn in a short time when I speak",
+    "target_text": "Siempre estoy contento con lo mucho que puedo aprender en poco tiempo cuando hablo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0247L01U12",
+   "expect": {
+    "known_text": "It was fairly difficult at first but afterwards it became much easier",
+    "target_text": "Al principio fue bastante difícil pero después fue mucho más fácil"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0251L01U02",
+   "expect": {
+    "known_text": "I told them I don't want to find out until after we finish all the work",
+    "target_text": "Les dije que no quiero descubrirlo hasta después de que terminemos todo el trabajo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0252L02B03",
+   "expect": {
+    "known_text": "I need to know when you will be ready to start so I can organise things",
+    "target_text": "Necesito saber cuándo estarás listo para empezar para poder arreglar las cosas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0253L01B06",
+   "expect": {
+    "known_text": "Just give me a little time and I should be ready in a few minutes",
+    "target_text": "Dame un poco de tiempo y debería estar listo en unos minutos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0253L01U05",
+   "expect": {
+    "known_text": "Give me a moment and I should be ready in a few minutes to go",
+    "target_text": "Dame un momento y debería estar listo en unos minutos para irme"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0262L03U05",
+   "expect": {
+    "known_text": "The man who you were talking to yesterday was also talking to me",
+    "target_text": "Ese hombre con el que estabas hablando ayer estaba hablando conmigo también"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0272L02U14",
+   "expect": {
+    "known_text": "She told me it sounds like something that will take a lot of time",
+    "target_text": "Ella me dijo que suena como algo que va a tomar mucho tiempo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0272L03U12",
+   "expect": {
+    "known_text": "I want to start with a great idea because that is always the best way",
+    "target_text": "Quiero empezar con una gran idea porque eso siempre es lo mejor"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0273L01U04",
+   "expect": {
+    "known_text": "I always have too much work",
+    "target_text": "Siempre tengo demasiado trabajo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0277L01U03",
+   "expect": {
+    "known_text": "He said the meeting was a very good idea and everyone was happy with it",
+    "target_text": "Él dijo que la reunión fue una muy buena idea y que todos estaban contentos con eso"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0277L03U11",
+   "expect": {
+    "known_text": "I think we should try to get together at the beginning of next week if we can",
+    "target_text": "Creo que deberíamos intentar reunirnos a principios de la semana que viene, si podemos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0281L01B04",
+   "expect": {
+    "known_text": "Do you mind if I ask you something?",
+    "target_text": "¿Te importa si te pregunto algo?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0281L02U01",
+   "expect": {
+    "known_text": "Do you mind if I finish before you?",
+    "target_text": "¿Te importa si termino antes que tú?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0282L02U15",
+   "expect": {
+    "known_text": "It seems like there is a problem but I think we can find a way to fix it",
+    "target_text": "Parece que hay un problema pero creo que podemos encontrar una manera de arreglarlo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0283L02U01",
+   "expect": {
+    "known_text": "I would like to talk about your friends and what they think about learning Spanish",
+    "target_text": "Me gustaría hablar sobre tus amigos y lo que piensan sobre aprender español"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0283L02U08",
+   "expect": {
+    "known_text": "I want to talk about your friends and what they think about this",
+    "target_text": "Quiero hablar sobre tus amigos y lo que piensan sobre esto"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0283L03U02",
+   "expect": {
+    "known_text": "My friends speak Spanish a lot among themselves",
+    "target_text": "Mis amigos hablan español mucho entre ellos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L01B03",
+   "expect": {
+    "known_text": "I hope it is going to work",
+    "target_text": "Espero que vaya a funcionar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L01U06",
+   "expect": {
+    "known_text": "I hope she is going to be there this afternoon",
+    "target_text": "Espero que ella vaya a estar allí esta tarde"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L01U07",
+   "expect": {
+    "known_text": "I hope everything is going to work out",
+    "target_text": "Espero que todo vaya a funcionar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L01U15",
+   "expect": {
+    "known_text": "I hope most of my friends want to learn more",
+    "target_text": "Espero que la mayoría de mis amigos quieran aprender más"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L02U02",
+   "expect": {
+    "known_text": "I want to be able to speak better soon to talk with anyone I meet",
+    "target_text": "Quiero poder hablar mejor pronto para hablar con personas que conozca"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L02U05",
+   "expect": {
+    "known_text": "My friend told me he hopes to be able to speak better soon",
+    "target_text": "Mi amigo me dijo que espera poder hablar mejor pronto"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L02U09",
+   "expect": {
+    "known_text": "I hope to be able to speak better soon so I can talk with people I meet",
+    "target_text": "Espero poder hablar mejor pronto para hablar con personas que conozca"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0291L02U11",
+   "expect": {
+    "known_text": "I know that being able to speak better soon is something that can take time",
+    "target_text": "Sé que poder hablar mejor pronto es algo que puede tomar tiempo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0299L01U04",
+   "expect": {
+    "known_text": "She wants to pay but I want to pay too",
+    "target_text": "Ella quiere pagar pero yo también quiero pagar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0300L02U05",
+   "expect": {
+    "known_text": "I know she seems unfriendly but she is actually very kind",
+    "target_text": "Sé que parece antipática pero en realidad es muy amable"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0403L01U05",
+   "expect": {
+    "known_text": "I always thought we should do it",
+    "target_text": "siempre pensé que deberíamos hacerlo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0406L02U06",
+   "expect": {
+    "known_text": "I'm always sure it will work out very soon",
+    "target_text": "siempre estoy seguro de que estará bien muy pronto"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0410L01U04",
+   "expect": {
+    "known_text": "she told me there are always problems between them",
+    "target_text": "me dijo que siempre hay problemas entre ellos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0428L01U03",
+   "expect": {
+    "known_text": "I was sure she'd be here on Tuesday",
+    "target_text": "estaba seguro de que estaría aquí el martes"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0440L03U07",
+   "expect": {
+    "known_text": "they should do it while they're still young",
+    "target_text": "deberían hacerlo mientras todavía son jóvenes"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0462L03U05",
+   "expect": {
+    "known_text": "I want to know about what happened during the war",
+    "target_text": "quiero saber lo que pasó durante la guerra"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0491L03U06",
+   "expect": {
+    "known_text": "you always try to help",
+    "target_text": "siempre intentas ayudar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0518L02U03",
+   "expect": {
+    "known_text": "having exactly this much",
+    "target_text": "teniendo exactamente esta cantidad"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0521L01U04",
+   "expect": {
+    "known_text": "I'm afraid that it happened before",
+    "target_text": "me temo que pasó antes"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0521L01U05",
+   "expect": {
+    "known_text": "I'm afraid that it happened yesterday",
+    "target_text": "me temo que pasó ayer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0530L01B02",
+   "expect": {
+    "known_text": "we need to look so I can count them",
+    "target_text": "necesitamos mirar para que pueda contarlas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0532L01B02",
+   "expect": {
+    "known_text": "unless you say yes",
+    "target_text": "a menos que digas que sí"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0532L01B04",
+   "expect": {
+    "known_text": "unless he speaks before you",
+    "target_text": "a menos que él hable antes que tú"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0538L01U03",
+   "expect": {
+    "known_text": "I don't want to seem older than I am",
+    "target_text": "no quiero parecer mayor de lo que soy"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0545L01U02",
+   "expect": {
+    "known_text": "it's your turn before mine",
+    "target_text": "te toca a ti antes que a mí "
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0573L04U06",
+   "expect": {
+    "known_text": "my friends are very special to me",
+    "target_text": "mis amigos son muy especiales para mí"
+   }
+  }
+ ]
+}
