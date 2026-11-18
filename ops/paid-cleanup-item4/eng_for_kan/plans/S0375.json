@@ -1,0 +1,25 @@
+{
+ "seed": 375,
+ "notes": "LEGO L02 \"no what she was doing\" is malformed English (a LEGO-level defect outside item 4): its USE rows inherit it and are left for that family",
+ "legos": {
+  "L02": {
+   "update": {
+    "B02": [
+     "ಇಲ್ಲ, ಅವಳು ಮಾಡ್ತಿದ್ದದ್ದು ಮುಖ್ಯವಾಗಿತ್ತು",
+     "no, what she was doing was important"
+    ],
+    "B03": [
+     "ಇಲ್ಲ, ಅವಳು ಮಾಡ್ತಿದ್ದದ್ದು ಸುಲಭ ಆಗಿರಲಿಲ್ಲ",
+     "no, what she was doing wasn't easy"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ಇಲ್ಲ, ಅವಳು ಮಾಡ್ತಿದ್ದದ್ದು ಒಳ್ಳೆಯದಾಗಿತ್ತು",
+     "no, what she was doing was good"
+    ]
+   ]
+  }
+ }
+}

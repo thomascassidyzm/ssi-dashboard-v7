@@ -110,18 +110,18 @@ for (const s of seeds) {
     for (const p of l.basket_phrases) {
       const sfx = L.short(p.id).slice(8);
       if (del.has(sfx)) continue;
-      if (upd[sfx]) after.push({ id: p.id, role: p.phrase_role, known: upd[sfx][0], target: upd[sfx][1], fresh: true, was: p });
+      if (upd[sfx]) after.push({ id: p.id, role: p.phrase_role, known: upd[sfx][0], target: upd[sfx][1], roman: upd[sfx][2], fresh: true, was: p });
       else after.push({ id: p.id, role: p.phrase_role, known: p.known_text, target: p.target_text, fresh: false });
     }
     // New ids: next free number per role, above every id the basket has ever shown.
     const maxN = { build: 0, use: 0 };
     for (const p of l.basket_phrases) { const m = L.short(p.id).slice(8).match(/^([BU])(\d+)$/); if (m) { const r = m[1] === 'B' ? 'build' : 'use'; maxN[r] = Math.max(maxN[r], Number(m[2])); } }
     let pos = Math.max(0, ...l.basket_phrases.map(p => p.position));
-    for (const [role, known, target] of ins) {
+    for (const [role, known, target, roman] of ins) {
       if (!['build', 'use'].includes(role)) { E(l.lego_id, `insert role must be build|use, not ${role}`); continue; }
       maxN[role]++; pos++;
       const id = L.makePhraseId(course, s.seed_number, l.lego_index, role, maxN[role]);
-      after.push({ id, role, known, target, fresh: true, insert: true, position: pos });
+      after.push({ id, role, known, target, roman, fresh: true, insert: true, position: pos });
     }
     ov.phrases[`${s.seed_number}:${l.lego_index}`] = after.map(a => ({ known_text: a.known, target_text: a.target, phrase_role: a.role }));
     if (!touched) continue;
@@ -132,6 +132,7 @@ for (const s of seeds) {
       const key = zk(a.target);
       if (seenT.has(key)) (a.fresh ? E : W)(w, `duplicate of ${seenT.get(key)} in the basket: "${a.target}"`); else seenT.set(key, w);
       if (!a.fresh) continue;
+      if (L.isChinese(course) && !a.roman) E(w, 'romanised course: give target_text_roman as the 3rd field');
       if (!a.known || !a.target || /\s{2}|^\s|\s$/.test(a.known + '|' + a.target)) E(w, 'empty or badly spaced text');
       if (!L.containsLego(course, s.seed_number, l.target_text, a.target)) E(w, `does not contain the LEGO "${l.target_text}": "${a.target}"`);
       if (L.isBareLegoPhrase(a.target, l.target_text)) E(w, 'is the bare LEGO');
@@ -157,11 +158,15 @@ for (const s of seeds) {
       ops.inserts.push({ op: 'phrase.insert', row: { id: a.id, seed_number: s.seed_number, lego_index: l.lego_index, position: a.position,
         known_text: a.known, target_text: a.target, phrase_role: a.role, introduce: true, connected_lego_ids: [], status: 'draft',
         metadata: { format: 'build_use', pipeline: 'cs700-item4-backfill' }, word_count: a.target.length,
-        lego_count: (a.known.match(/\s+/g) || []).length + 1, lego_position: L.computeLegoPosition(a.target, l.target_text) } });
+        lego_count: (a.known.match(/\s+/g) || []).length + 1, lego_position: L.computeLegoPosition(a.target, l.target_text),
+        ...(a.roman ? { target_text_roman: a.roman } : {}) } });
     }
     for (const a of after.filter(a => a.fresh && !a.insert)) {
       ops.updates.push({ op: 'phrase.update', phrase_id: a.id, expect: { known_text: a.was.known_text, target_text: a.was.target_text },
-        set: { known_text: a.known, target_text: a.target, decomposition: null, word_count: a.target.length, lego_position: L.computeLegoPosition(a.target, l.target_text) } });
+        set: { known_text: a.known, target_text: a.target, decomposition: null,
+        // Romanised courses (zho, jpn): a new target carries its own reading, hand-written in the plan's 3rd field,
+        // or the stale one is cleared deliberately; the edit door refuses a target change that leaves it stale.
+        ...((a.was.target_text_roman || a.roman) ? { target_text_roman: a.roman || null } : {}), word_count: a.target.length, lego_position: L.computeLegoPosition(a.target, l.target_text) } });
     }
     for (const sfx of del) { const p = byS.get(sfx); if (p) ops.deletes.push({ op: 'phrase.delete', phrase_id: p.id, expect: { known_text: p.known_text, target_text: p.target_text } }); }
   }
