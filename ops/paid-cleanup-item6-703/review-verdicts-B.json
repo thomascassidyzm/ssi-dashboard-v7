@@ -169,5 +169,93 @@
     "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
     "source": "K32 + P17 (oggi moved to the front)",
     "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "SEED20",
+    "verdict": "AGREE",
+    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
+    "source": "seed contradicts its own known (S15 sense 2); 记住 taught at S0006L01; main course zho seed 20 says 记住",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0020L03U01",
+    "verdict": "AGREE",
+    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
+    "source": "as seed 20",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0020L03B03",
+    "verdict": "AGREE",
+    "reason": "学びたい means want to learn; replacing 学 with 记住 here would impose memorisation which this prompt does not request.",
+    "source": "Course S0020L03B03 as quoted in plan; Shogakukan, デジタル大辞泉, 学ぶ / 覚える.",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "SEED92",
+    "verdict": "AGREE",
+    "reason": "Accept brief-duration placement after 做 and before its inanimate object. Do not replace 一会儿 with 一下: the prompt specifies duration. No new surface word is introduced by this reorder.",
+    "source": "Yip and Rimmington, Chinese: A Comprehensive Grammar, 2nd edition, section 7.3 Brief duration, p.138: https://mandarinwow.wordpress.com/wp-content/uploads/2022/09/chinese-a-comprehensive-grammar-2nd-ed-pdfdrive-.pdf",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0092L03B03",
+    "verdict": "AGREE",
+    "reason": "Accept the same brief-duration ordering as seed 92; build fragments are permitted.",
+    "source": "Yip and Rimmington, Chinese: A Comprehensive Grammar, 2nd edition, section 7.3 Brief duration, p.138; canon P7 distinguishes BUILD from USE.",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "SEED283",
+    "verdict": "AGREE",
+    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
+    "source": "中文 taught S0001L03; 中国語 is the Japanese",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0283L02",
+    "verdict": "AGREE",
+    "reason": "Replace the English intrusion with the already introduced 中文, retaining not-new status. Availability at S0001L03 and absence of a new duplicate answer need live confirmation.",
+    "source": "Course S0001L03 (plan citation); canon P1, repeated-LEGO both-sides rule.",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0283L02U01",
+    "verdict": "AGREE",
+    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
+    "source": "as seed 283",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0283L02U02",
+    "verdict": "AGREE",
+    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
+    "source": "as seed 283",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0283L02U03",
+    "verdict": "AGREE",
+    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
+    "source": "as seed 283",
+    "proposed": null
+  },
+  {
+    "course": "zho_for_jpn",
+    "row": "S0283L02U04",
+    "verdict": "AGREE",
+    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
+    "source": "as seed 283",
+    "proposed": null
   }
 ]

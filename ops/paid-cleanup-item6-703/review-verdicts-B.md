@@ -8,6 +8,7 @@ Review basis: origin/cs/703-paid-cleanup-item-6-wrong-target, plan built 18 Nove
 |---|---:|---:|
 | fra_for_eng | 8 | 0 |
 | ita_for_eng | 12 | 1 |
+| zho_for_jpn | 11 | 0 |
 
 ## Disputes
 
