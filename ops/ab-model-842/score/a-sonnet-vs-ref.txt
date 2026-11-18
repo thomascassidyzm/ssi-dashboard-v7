@@ -1,0 +1,40 @@
+{
+ "phrases": {
+  "ref": 87,
+  "arm": 86,
+  "same": 86,
+  "diff": [],
+  "missing": [
+   [
+    "S0385L01U05",
+    "não, você não concordou com ela"
+   ]
+  ],
+  "extra": []
+ },
+ "legos": {
+  "ref": 6,
+  "arm": 6,
+  "same": 6,
+  "diff": [],
+  "missing": [],
+  "extra": []
+ },
+ "seeds": {
+  "ref": 6,
+  "arm": 6,
+  "same": 6,
+  "diff": [],
+  "missing": [],
+  "extra": []
+ },
+ "deletes": {
+  "ref": [],
+  "arm": [
+   {
+    "id": "S0385L01U05",
+    "reason": "no, you didn't agree with her: 'você não concordou' cannot contain LEGO 'você concordou'"
+   }
+  ]
+ }
+}
