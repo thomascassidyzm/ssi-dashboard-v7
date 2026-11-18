@@ -559,6 +559,184 @@
   {
    "op": "phrase.insert",
    "row": {
+    "id": "eng_for_urd:S0420L01B03",
+    "seed_number": 420,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "میں نے پوچھا کہ اس کی عمر کتنی ہے",
+    "target_text": "I asked how old he is",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 21,
+    "lego_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0426L01B03",
+    "seed_number": 426,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "مجھے لگتا ہے وہ ایک دوسرے سے پیار کرتے ہیں",
+    "target_text": "I think they love each other",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 28,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0447L01B04",
+    "seed_number": 447,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "تو کیا وہ ہمیں گھر چھوڑ سکیں گے؟",
+    "target_text": "so will they be able to drive us home?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 38,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0469L01B04",
+    "seed_number": 469,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "اس کا مطلب یہ نہیں کہ وہ بور ہیں",
+    "target_text": "that doesn't mean they're bored",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 31,
+    "lego_count": 9,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0479L01B04",
+    "seed_number": 479,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "مجھے یقین ہے کہ یہ کم سے کم ہے جو میں کر سکتی تھی",
+    "target_text": "I'm sure it's the least I could do",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "f"
+    },
+    "word_count": 34,
+    "lego_count": 14,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0495L01B03",
+    "seed_number": 495,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "جب یہ اہمیت رکھتا ہے تو میں تیار ہوں گی",
+    "target_text": "I'll be ready when it matters",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets",
+     "known_gender": "f"
+    },
+    "word_count": 29,
+    "lego_count": 10,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0502L01B04",
+    "seed_number": 502,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "مجھے یقین ہے کہ وہ تقریباً کھو گئی تھی",
+    "target_text": "I'm sure she almost got lost",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 28,
+    "lego_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0513L01B04",
+    "seed_number": 513,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "مجھے یقین ہے کہ سب سے زیادہ درد ہوتا ہے",
+    "target_text": "I'm sure it hurts most",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 22,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
     "id": "eng_for_urd:S0607L01B04",
     "seed_number": 607,
     "lego_index": 1,
@@ -4148,6 +4326,1551 @@
   },
   {
    "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0332L02B01",
+   "expect": {
+    "known_text": "ایک نئی زندگی",
+    "target_text": "a new life"
+   },
+   "set": {
+    "known_text": "یہ ایک نئی زندگی ہو سکتی ہے",
+    "target_text": "it might be a new life",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0332L03B01",
+   "expect": {
+    "known_text": "وہ بنا سکتا ہے",
+    "target_text": "he can build"
+   },
+   "set": {
+    "known_text": "وہ ایک نئی زندگی بنا سکتا ہے",
+    "target_text": "he can build a new life",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0333L01B01",
+   "expect": {
+    "known_text": "گروپ کے ساتھ",
+    "target_text": "with the group"
+   },
+   "set": {
+    "known_text": "میں گروپ کے ساتھ آنا چاہتی ہوں",
+    "target_text": "I want to come with the group",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0333L02B01",
+   "expect": {
+    "known_text": "زیادہ وقت نہیں گزار سکتی",
+    "target_text": "can't spend much time"
+   },
+   "set": {
+    "known_text": "اس نے کہا کہ وہ یہاں زیادہ وقت نہیں گزار سکتی",
+    "target_text": "she said that she can't spend much time here",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0334L02B01",
+   "expect": {
+    "known_text": "وہ آپ کو پکڑنے دے سکتا ہے",
+    "target_text": "he can let you hold"
+   },
+   "set": {
+    "known_text": "اس نے کہا کہ وہ آپ کو یہاں بلی کا بچہ پکڑنے دے سکتا ہے",
+    "target_text": "he said that he can let you hold the kitten here",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0335L01B01",
+   "expect": {
+    "known_text": "کچھ قیمتی خیالات",
+    "target_text": "some valuable ideas"
+   },
+   "set": {
+    "known_text": "کیا آپ مجھے کچھ قیمتی خیالات بتا سکتے ہیں؟",
+    "target_text": "can you tell me some valuable ideas?",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0335L02B01",
+   "expect": {
+    "known_text": "وہ شامل کر سکتا ہے",
+    "target_text": "he can add"
+   },
+   "set": {
+    "known_text": "وہ جلد شامل کر سکتا ہے",
+    "target_text": "he can add soon",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0336L01B01",
+   "expect": {
+    "known_text": "دروازہ",
+    "target_text": "the door"
+   },
+   "set": {
+    "known_text": "یہ دروازہ ہو سکتا ہے",
+    "target_text": "it might be the door",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0336L02B01",
+   "expect": {
+    "known_text": "وہ کھول سکتی ہے",
+    "target_text": "she can open"
+   },
+   "set": {
+    "known_text": "وہ ابھی دروازہ کھول سکتی ہے",
+    "target_text": "she can open the door now",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0337L01B01",
+   "expect": {
+    "known_text": "وہ کھیلنا جاری رکھ سکتا ہے",
+    "target_text": "he can continue to play"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے وہ کھیلنا جاری رکھ سکتا ہے",
+    "target_text": "I think he can continue to play",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0338L01B01",
+   "expect": {
+    "known_text": "بری طرح",
+    "target_text": "badly"
+   },
+   "set": {
+    "known_text": "میں بری طرح بولتی ہوں",
+    "target_text": "I speak badly",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0339L01B01",
+   "expect": {
+    "known_text": "نہیں مجھے لگتا ہے",
+    "target_text": "no I think"
+   },
+   "set": {
+    "known_text": "نہیں مجھے لگتا ہے وہ کھیلنا جاری رکھ سکتا ہے",
+    "target_text": "no I think he can continue to play",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0339L02B01",
+   "expect": {
+    "known_text": "کافی بری طرح",
+    "target_text": "quite badly"
+   },
+   "set": {
+    "known_text": "میں کافی بری طرح بولتا ہوں",
+    "target_text": "I speak quite badly",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0339L03B01",
+   "expect": {
+    "known_text": "اس نے خود کو زخمی کیا ہے",
+    "target_text": "he's hurt himself"
+   },
+   "set": {
+    "known_text": "نہیں اس نے خود کو زخمی کیا ہے",
+    "target_text": "no he's hurt himself",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0340L01B01",
+   "expect": {
+    "known_text": "ہاں مجھے یقین ہے کہ",
+    "target_text": "yes I'm sure"
+   },
+   "set": {
+    "known_text": "ہاں مجھے یقین ہے کہ یہ بہت اہم ہے",
+    "target_text": "yes I'm sure it's very important",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0340L02B01",
+   "expect": {
+    "known_text": "وہ ٹھیک ہو جائے گا",
+    "target_text": "he's going to be okay"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے وہ ٹھیک ہو جائے گا",
+    "target_text": "I think he's going to be okay",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0343L02B01",
+   "expect": {
+    "known_text": "فکرمند ہے",
+    "target_text": "she's worried"
+   },
+   "set": {
+    "known_text": "وہ آج فکرمند ہے",
+    "target_text": "she's worried today",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0344L01B01",
+   "expect": {
+    "known_text": "آپ کی مدد کرنے پر خوش ہے",
+    "target_text": "he's happy to help you"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے وہ آپ کی مدد کرنے پر خوش ہے",
+    "target_text": "I think he's happy to help you",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0345L01B01",
+   "expect": {
+    "known_text": "ابھی جانے کے لیے تیار نہیں",
+    "target_text": "he's not ready to leave yet"
+   },
+   "set": {
+    "known_text": "تو وہ ابھی جانے کے لیے تیار نہیں",
+    "target_text": "so he's not ready to leave yet",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0346L01B01",
+   "expect": {
+    "known_text": "مجھے اس کی کتاب پسند آئی",
+    "target_text": "I liked her book"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ مجھے اس کی کتاب پسند آئی",
+    "target_text": "I think that I liked her book",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0352L02B01",
+   "expect": {
+    "known_text": "چاہے وہ چاہتا بھی تو",
+    "target_text": "even if he wanted to"
+   },
+   "set": {
+    "known_text": "وہ مدد نہیں کر سکتا تھا چاہے وہ چاہتا بھی تو",
+    "target_text": "he wouldn't be able to help even if he wanted to",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0356L02B01",
+   "expect": {
+    "known_text": "کوئی اہم بات کرنی تھی",
+    "target_text": "something important to discuss"
+   },
+   "set": {
+    "known_text": "انہیں آج کوئی اہم بات کرنی تھی",
+    "target_text": "they had something important to discuss today",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0360L01B01",
+   "expect": {
+    "known_text": "کچھ اور کہا",
+    "target_text": "say anything else"
+   },
+   "set": {
+    "known_text": "تو کیا آپ کے دوست نے کچھ اور کہا؟",
+    "target_text": "so did your friend say anything else?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0366L02B01",
+   "expect": {
+    "known_text": "کیا آپ نے سنا؟",
+    "target_text": "did you hear?"
+   },
+   "set": {
+    "known_text": "اور کیا آپ نے سنا کہ اس نے کیا کہا؟",
+    "target_text": "and did you hear what he said?",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0366L03B01",
+   "expect": {
+    "known_text": "کہ وہ کیا اگانا چاہتا تھا",
+    "target_text": "what he wanted to grow"
+   },
+   "set": {
+    "known_text": "مجھے نہیں معلوم کہ وہ کیا اگانا چاہتا تھا",
+    "target_text": "I don't know what he wanted to grow",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0367L01B01",
+   "expect": {
+    "known_text": "کسی نے مجھے نہیں بتایا",
+    "target_text": "nobody told me"
+   },
+   "set": {
+    "known_text": "آج کسی نے مجھے نہیں بتایا",
+    "target_text": "nobody told me today",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0368L02B01",
+   "expect": {
+    "known_text": "وہ ٹماٹر اگانا چاہتا تھا",
+    "target_text": "he wanted to grow tomatoes"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے وہ ٹماٹر اگانا چاہتا تھا",
+    "target_text": "I think he wanted to grow tomatoes",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0370L02B01",
+   "expect": {
+    "known_text": "جسے میں جانتا ہوں",
+    "target_text": "that I knew"
+   },
+   "set": {
+    "known_text": "میں نے آج کسی کو نہیں دیکھا جسے میں جانتا ہوں",
+    "target_text": "I didn't see anyone that I knew today",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0371L02B01",
+   "expect": {
+    "known_text": "ایک فلم",
+    "target_text": "a film"
+   },
+   "set": {
+    "known_text": "میں آج ایک فلم دیکھنے گئی",
+    "target_text": "I went to see a film today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0371L03B01",
+   "expect": {
+    "known_text": "بدھ کو",
+    "target_text": "on Wednesday"
+   },
+   "set": {
+    "known_text": "میں بدھ کو تیار ہوں گا",
+    "target_text": "I'll be ready on Wednesday",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0372L02B01",
+   "expect": {
+    "known_text": "کیا آپ نے دیکھا؟",
+    "target_text": "did you see?"
+   },
+   "set": {
+    "known_text": "کیا آپ نے دیکھا کہ اس نے کیا کہا؟",
+    "target_text": "did you see what he said?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0372L03B01",
+   "expect": {
+    "known_text": "وہ کیا بنانے کی کوشش کر رہی تھی",
+    "target_text": "what she was trying to create"
+   },
+   "set": {
+    "known_text": "مجھے نہیں معلوم کہ وہ کیا بنانے کی کوشش کر رہی تھی",
+    "target_text": "I don't know what she was trying to create",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0375L01B01",
+   "expect": {
+    "known_text": "مجھے نہیں معلوم تھا",
+    "target_text": "I didn't know"
+   },
+   "set": {
+    "known_text": "مجھے نہیں معلوم تھا کہ اس نے کیا کہا",
+    "target_text": "I didn't know what he said",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0375L02B01",
+   "expect": {
+    "known_text": "وہ کیا کر رہی تھی",
+    "target_text": "what she was doing"
+   },
+   "set": {
+    "known_text": "میں نے نہیں دیکھا کہ وہ کیا کر رہی تھی",
+    "target_text": "I didn't see what she was doing",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0376L01B01",
+   "expect": {
+    "known_text": "میں کہیں نہیں گیا",
+    "target_text": "I didn't go anywhere"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے میں کہیں نہیں گیا",
+    "target_text": "I think I didn't go anywhere",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0377L01B01",
+   "expect": {
+    "known_text": "کیا آپ گئے؟",
+    "target_text": "did you go?"
+   },
+   "set": {
+    "known_text": "تو کیا آپ کہیں گئے؟",
+    "target_text": "so did you go anywhere?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0377L02B01",
+   "expect": {
+    "known_text": "دنیا میں",
+    "target_text": "in the world"
+   },
+   "set": {
+    "known_text": "تو کیا آپ دنیا میں کہیں گئے؟",
+    "target_text": "so did you go anywhere in the world?",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0377L03B01",
+   "expect": {
+    "known_text": "پچھلے سال",
+    "target_text": "last year"
+   },
+   "set": {
+    "known_text": "میں پچھلے سال کسی سے ملی",
+    "target_text": "I met someone last year",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0378L01B01",
+   "expect": {
+    "known_text": "میرے پاس نہیں تھے",
+    "target_text": "I didn't have"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے میرے پاس کافی پیسے نہیں تھے",
+    "target_text": "I think I didn't have enough money",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0378L02B01",
+   "expect": {
+    "known_text": "کافی پیسے",
+    "target_text": "enough money"
+   },
+   "set": {
+    "known_text": "میں نے کہا کہ میرے پاس کافی پیسے نہیں تھے",
+    "target_text": "I said that I didn't have enough money",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0378L03B01",
+   "expect": {
+    "known_text": "چھٹیوں کے لیے",
+    "target_text": "for holidays"
+   },
+   "set": {
+    "known_text": "میرے پاس چھٹیوں کے لیے کافی وقت نہیں ہے",
+    "target_text": "I don't have enough time for holidays",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0379L02B01",
+   "expect": {
+    "known_text": "افریقہ جانے",
+    "target_text": "to travel to Africa"
+   },
+   "set": {
+    "known_text": "میں خوش قسمت تھا کہ افریقہ جانے کا موقع ملا",
+    "target_text": "I was lucky enough to travel to Africa",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0380L03B01",
+   "expect": {
+    "known_text": "وہ کیا شامل کرنا چاہتی ہے",
+    "target_text": "what she wanted to include"
+   },
+   "set": {
+    "known_text": "مجھے نہیں معلوم کہ وہ کیا شامل کرنا چاہتی تھی",
+    "target_text": "I don't know what she wanted to include",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0381L01B01",
+   "expect": {
+    "known_text": "میں نے نہیں پوچھا",
+    "target_text": "I didn't ask"
+   },
+   "set": {
+    "known_text": "میں نے نہیں پوچھا کہ آیا وہ جانا چاہتا ہے",
+    "target_text": "I didn't ask if he wanted to go",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0381L03B01",
+   "expect": {
+    "known_text": "آیا وہ ہمارے ساتھ آنا چاہتا ہے",
+    "target_text": "if he wanted to follow us"
+   },
+   "set": {
+    "known_text": "کسی نے مجھے نہیں بتایا کہ آیا وہ ہمارے ساتھ آنا چاہتا ہے",
+    "target_text": "nobody told me if he wanted to follow us",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0382L01B01",
+   "expect": {
+    "known_text": "کیا آپ نے پوچھا؟",
+    "target_text": "did you ask?"
+   },
+   "set": {
+    "known_text": "کیا آپ نے اپنے دوست سے پوچھا؟",
+    "target_text": "did you ask your friend?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0382L02B01",
+   "expect": {
+    "known_text": "وہ اسے کہاں رکھنا چاہتا تھا",
+    "target_text": "where he wanted to put it"
+   },
+   "set": {
+    "known_text": "کیا آپ نے سنا کہ وہ اسے کہاں رکھنا چاہتا تھا؟",
+    "target_text": "did you hear where he wanted to put it?",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0384L01B01",
+   "expect": {
+    "known_text": "متفق نہیں ہو سکا",
+    "target_text": "couldn't agree"
+   },
+   "set": {
+    "known_text": "میں آج اس سے متفق نہیں ہو سکا",
+    "target_text": "I couldn't agree with him today",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0385L01B01",
+   "expect": {
+    "known_text": "کیا آپ متفق تھے؟",
+    "target_text": "did you agree?"
+   },
+   "set": {
+    "known_text": "کیا آپ یہاں اس سے متفق تھے؟",
+    "target_text": "did you agree with her here?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0386L01B01",
+   "expect": {
+    "known_text": "میں متفق تھا",
+    "target_text": "I agreed"
+   },
+   "set": {
+    "known_text": "میں یہاں اس سے متفق تھا",
+    "target_text": "I agreed with her here",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0387L02B01",
+   "expect": {
+    "known_text": "مجھے نہیں لگا",
+    "target_text": "I didn't think"
+   },
+   "set": {
+    "known_text": "مجھے نہیں لگا کہ وہ خاموش تھا",
+    "target_text": "I didn't think he was quiet",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0388L01B01",
+   "expect": {
+    "known_text": "وہ شخص",
+    "target_text": "that person"
+   },
+   "set": {
+    "known_text": "میں اس شخص کو جانتا ہوں",
+    "target_text": "I know that person",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0388L02B01",
+   "expect": {
+    "known_text": "جس کے ساتھ آپ کام کرتے ہیں",
+    "target_text": "you work with"
+   },
+   "set": {
+    "known_text": "یہ وہ شخص ہو سکتا ہے جس کے ساتھ آپ کام کرتے ہیں",
+    "target_text": "it might be that person you work with",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0389L01B01",
+   "expect": {
+    "known_text": "وہاں وہ شخص",
+    "target_text": "that person over there"
+   },
+   "set": {
+    "known_text": "میں وہاں اس شخص کو جانتی ہوں",
+    "target_text": "I know that person over there",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0390L01B01",
+   "expect": {
+    "known_text": "وہ جو کھڑا ہے",
+    "target_text": "the one who is standing"
+   },
+   "set": {
+    "known_text": "میں اسے جانتا ہوں جو وہاں کھڑا ہے",
+    "target_text": "I know the one who is standing over there",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0390L02B01",
+   "expect": {
+    "known_text": "داخلے کے پاس",
+    "target_text": "near the entrance"
+   },
+   "set": {
+    "known_text": "میں داخلے کے پاس رہ سکتی ہوں",
+    "target_text": "I can stay near the entrance",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0391L01B01",
+   "expect": {
+    "known_text": "وہ جو چل رہا ہے",
+    "target_text": "the one who is walking"
+   },
+   "set": {
+    "known_text": "وہ جو ابھی چل رہا ہے",
+    "target_text": "the one who is walking now",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0391L02B01",
+   "expect": {
+    "known_text": "بس کی طرف",
+    "target_text": "towards the bus"
+   },
+   "set": {
+    "known_text": "میں بس کی طرف جانا چاہتی ہوں",
+    "target_text": "I want to go towards the bus",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0392L02B01",
+   "expect": {
+    "known_text": "کالے بالوں والا",
+    "target_text": "with the black hair"
+   },
+   "set": {
+    "known_text": "میں اس کالے بالوں والے بچے کو جانتی ہوں",
+    "target_text": "I know that child with the black hair",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0392L03B01",
+   "expect": {
+    "known_text": "ڈاک خانے کے سامنے",
+    "target_text": "opposite the post office"
+   },
+   "set": {
+    "known_text": "میں ڈاک خانے کے سامنے رہ سکتا ہوں",
+    "target_text": "I can stay opposite the post office",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0393L02B01",
+   "expect": {
+    "known_text": "سبز قمیص والا",
+    "target_text": "with the green shirt"
+   },
+   "set": {
+    "known_text": "میں اس سبز قمیص والے لڑکے کو جانتا ہوں",
+    "target_text": "I know that boy with the green shirt",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0394L01B01",
+   "expect": {
+    "known_text": "وہ لڑکی",
+    "target_text": "that girl"
+   },
+   "set": {
+    "known_text": "یہ وہ لڑکی ہو سکتی ہے",
+    "target_text": "it might be that girl",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0394L02B01",
+   "expect": {
+    "known_text": "پیلے لباس والی",
+    "target_text": "with the yellow dress"
+   },
+   "set": {
+    "known_text": "میں اس پیلے لباس والی لڑکی کو جانتا ہوں",
+    "target_text": "I know that girl with the yellow dress",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0395L01B01",
+   "expect": {
+    "known_text": "ہمیں کرنا ہے",
+    "target_text": "we need to"
+   },
+   "set": {
+    "known_text": "ہمیں آج مڑنا ہے",
+    "target_text": "we need to turn today",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0395L02B01",
+   "expect": {
+    "known_text": "بائیں مڑنا",
+    "target_text": "turn left"
+   },
+   "set": {
+    "known_text": "ہمیں کل بائیں مڑنا ہے",
+    "target_text": "we need to turn left tomorrow",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0395L03B01",
+   "expect": {
+    "known_text": "اگلے کونے پر",
+    "target_text": "at the next corner"
+   },
+   "set": {
+    "known_text": "میں اگلے کونے پر رہ سکتا ہوں",
+    "target_text": "I can stay at the next corner",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0396L01B01",
+   "expect": {
+    "known_text": "ہمیں ضرورت نہیں",
+    "target_text": "we don't need to"
+   },
+   "set": {
+    "known_text": "ہمیں پیدل جانے کی ضرورت نہیں",
+    "target_text": "we don't need to walk",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0397L01B01",
+   "expect": {
+    "known_text": "کیا ہمیں کرنا ہے؟",
+    "target_text": "do we need to?"
+   },
+   "set": {
+    "known_text": "تو کیا ہمیں تیار ہونا ہے؟",
+    "target_text": "so do we need to get ready?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0398L02B01",
+   "expect": {
+    "known_text": "اپنے بچوں کے ساتھ",
+    "target_text": "with our children"
+   },
+   "set": {
+    "known_text": "ہم اپنے بچوں کے ساتھ آنا چاہتے ہیں",
+    "target_text": "we want to come with our children",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0399L01B01",
+   "expect": {
+    "known_text": "ہم نہیں چاہتے",
+    "target_text": "we don't want to"
+   },
+   "set": {
+    "known_text": "ہم زیادہ صبر والے نہیں بننا چاہتے",
+    "target_text": "we don't want to become more patient",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0400L01B01",
+   "expect": {
+    "known_text": "کیا ہم چاہتے ہیں؟",
+    "target_text": "do we want to?"
+   },
+   "set": {
+    "known_text": "کیا ہم ادا کرنا چاہتے ہیں؟",
+    "target_text": "do we want to pay?",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0401L01B01",
+   "expect": {
+    "known_text": "بہتر ہوگا",
+    "target_text": "it would be better"
+   },
+   "set": {
+    "known_text": "کھیلنا بہتر ہوگا",
+    "target_text": "it would be better to play",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0401L02B01",
+   "expect": {
+    "known_text": "سیدھے گھر",
+    "target_text": "straight home"
+   },
+   "set": {
+    "known_text": "میں سیدھے گھر نہیں جانا چاہتی",
+    "target_text": "I don't want to go straight home",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0402L01B01",
+   "expect": {
+    "known_text": "اچھا لگے گا",
+    "target_text": "it would be nice"
+   },
+   "set": {
+    "known_text": "کھیلنا اچھا لگے گا",
+    "target_text": "it would be nice to play",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0402L04B01",
+   "expect": {
+    "known_text": "کھانے کے لیے",
+    "target_text": "for food"
+   },
+   "set": {
+    "known_text": "میں کھانے کے لیے کہیں رکنا چاہتا ہوں",
+    "target_text": "I want to stop somewhere for food",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0403L01B01",
+   "expect": {
+    "known_text": "ہمیں چاہیے",
+    "target_text": "we should"
+   },
+   "set": {
+    "known_text": "ہمیں پوچھنا چاہیے",
+    "target_text": "we should ask",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0403L03B01",
+   "expect": {
+    "known_text": "جتنا ممکن ہو سکے اتنا",
+    "target_text": "for as long as possible"
+   },
+   "set": {
+    "known_text": "میں جتنا ممکن ہو سکے اتنا کھیلنا چاہتی ہوں",
+    "target_text": "I want to play for as long as possible",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0404L01B01",
+   "expect": {
+    "known_text": "ہمیں نہیں چاہیے",
+    "target_text": "we shouldn't"
+   },
+   "set": {
+    "known_text": "ہمیں یہاں رکنا نہیں چاہیے",
+    "target_text": "we shouldn't stop here",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0404L02B01",
+   "expect": {
+    "known_text": "امید رکھنا",
+    "target_text": "expect"
+   },
+   "set": {
+    "known_text": "ہمیں آج ختم کرنے کی امید نہیں رکھنی چاہیے",
+    "target_text": "we shouldn't expect to finish today",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0404L03B01",
+   "expect": {
+    "known_text": "جمعرات سے پہلے",
+    "target_text": "before Thursday"
+   },
+   "set": {
+    "known_text": "میں جمعرات سے پہلے تیار ہوں گی",
+    "target_text": "I'll be ready before Thursday",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0405L01B01",
+   "expect": {
+    "known_text": "کیا ہمیں چاہیے",
+    "target_text": "should we"
+   },
+   "set": {
+    "known_text": "تو کیا ہمیں پوچھنا چاہیے؟",
+    "target_text": "so should we ask?",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0405L02B01",
+   "expect": {
+    "known_text": "ہمیں کرنی ہے",
+    "target_text": "we have to"
+   },
+   "set": {
+    "known_text": "تو کیا ہمیں پوچھنا چاہیے کہ آیا ہمیں بکنگ کرنی ہے؟",
+    "target_text": "so should we ask if we have to book?",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0409L01B01",
+   "expect": {
+    "known_text": "کوئی فرق نہیں پڑتا",
+    "target_text": "it doesn't matter"
+   },
+   "set": {
+    "known_text": "مجھے یقین ہے کہ کوئی فرق نہیں پڑتا",
+    "target_text": "I'm sure it doesn't matter",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0414L01B01",
+   "expect": {
+    "known_text": "سرخ شراب",
+    "target_text": "red wine"
+   },
+   "set": {
+    "known_text": "میں سرخ شراب چاہوں گا",
+    "target_text": "I'd like red wine",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0414L03B01",
+   "expect": {
+    "known_text": "برائے مہربانی",
+    "target_text": "please"
+   },
+   "set": {
+    "known_text": "برائے مہربانی کیا میں پوچھ سکتا ہوں؟",
+    "target_text": "can I ask please?",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0429L01B03",
+   "expect": {
+    "known_text": "بالکل مناسب ہوگا",
+    "target_text": "would be perfect"
+   },
+   "set": {
+    "known_text": "ہاں یہ مناسب ہوگا",
+    "target_text": "yes that would be perfect",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0431L01B03",
+   "expect": {
+    "known_text": "تیار ہو جائیں گے",
+    "target_text": "they'll be ready"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے وہ جلد تیار ہو جائیں گے",
+    "target_text": "I think they'll be ready soon",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0433L01B01",
+   "expect": {
+    "known_text": "معلوم کرنا کہ کب",
+    "target_text": "find out when"
+   },
+   "set": {
+    "known_text": "مجھے معلوم کرنا ہے کہ فلم کب شروع ہوئی",
+    "target_text": "I have to find out when the film started",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0435L01B02",
+   "expect": {
+    "known_text": "اگر وہ چاہتے",
+    "target_text": "if they wanted to"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے وہ کر سکتے تھے اگر وہ چاہتے",
+    "target_text": "I think they could if they wanted to",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0437L03B02",
+   "expect": {
+    "known_text": "جتنا ممکن ہو",
+    "target_text": "as much as possible"
+   },
+   "set": {
+    "known_text": "جتنا ممکن ہو سیکھنا",
+    "target_text": "to learn as much as possible",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0456L01B03",
+   "expect": {
+    "known_text": "امکان ہے",
+    "target_text": "likely"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے زیادہ امکان نہیں ہے",
+    "target_text": "I think it's not very likely",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0464L01B01",
+   "expect": {
+    "known_text": "ایک بار",
+    "target_text": "once"
+   },
+   "set": {
+    "known_text": "میں ایک بار کسی سے ملی",
+    "target_text": "I met someone once",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0472L01B01",
+   "expect": {
+    "known_text": "مسئلے کا حصہ",
+    "target_text": "part of the problem"
+   },
+   "set": {
+    "known_text": "یہ مسئلے کا حصہ ہو سکتا ہے",
+    "target_text": "it might be part of the problem",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0474L01B03",
+   "expect": {
+    "known_text": "بالکل مفت",
+    "target_text": "free"
+   },
+   "set": {
+    "known_text": "میں اسے مفت پیشکش کے طور پر نہیں چاہتا",
+    "target_text": "I don't want it as a free offer",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0480L01B01",
+   "expect": {
+    "known_text": "جو بھی",
+    "target_text": "whatever"
+   },
+   "set": {
+    "known_text": "جو بھی میں چاہوں",
+    "target_text": "whatever I want",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0480L03B01",
+   "expect": {
+    "known_text": "زیادہ آگے",
+    "target_text": "far ahead"
+   },
+   "set": {
+    "known_text": "یہ اب زیادہ آگے ہے",
+    "target_text": "it's far ahead now",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0481L02B01",
+   "expect": {
+    "known_text": "بچی ہے",
+    "target_text": "have left"
+   },
+   "set": {
+    "known_text": "مجھے یقین ہے کہ یہی واحد حقیقی امید ہے جو ہمارے پاس بچی ہے",
+    "target_text": "I'm sure it's the only real hope we have left",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0485L01B01",
+   "expect": {
+    "known_text": "زیادہ خوش",
+    "target_text": "happier"
+   },
+   "set": {
+    "known_text": "مجھے یقین ہے کہ کوئی چیز مجھے اس سے زیادہ خوش نہیں کر سکتی",
+    "target_text": "I'm sure nothing would make me happier",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0517L01B01",
+   "expect": {
+    "known_text": "ایک دوسرے کے ساتھ",
+    "target_text": "with each other"
+   },
+   "set": {
+    "known_text": "وہ ایک دوسرے کے ساتھ کام کرتے ہیں",
+    "target_text": "they work with each other",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0519L01B01",
+   "expect": {
+    "known_text": "ان کا نیا بچہ",
+    "target_text": "their new baby"
+   },
+   "set": {
+    "known_text": "یہ ان کا نیا بچہ ہو سکتا ہے",
+    "target_text": "it might be their new baby",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0539L01B01",
+   "expect": {
+    "known_text": "دیر ہو رہی ہے",
+    "target_text": "getting late"
+   },
+   "set": {
+    "known_text": "مجھے یقین ہے کہ دیر ہو رہی ہے",
+    "target_text": "I'm sure it's getting late",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0601L01B01",
+   "expect": {
+    "known_text": "یہ سب شروع ہوا",
+    "target_text": "it all started"
+   },
+   "set": {
+    "known_text": "مجھے نہیں معلوم کہ یہ سب کیسے شروع ہوا",
+    "target_text": "I don't know how it all started",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0606L02B01",
+   "expect": {
+    "known_text": "اگر میں جانتا",
+    "target_text": "if I'd known"
+   },
+   "set": {
+    "known_text": "اگر میں اس وقت جانتا تو میں نے گاڑی چلائی ہوتی",
+    "target_text": "I'd have driven if I'd known then",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
    "phrase_id": "eng_for_urd:S0607L01B01",
    "expect": {
     "known_text": "چیزیں مختلف طریقے سے کیں",
@@ -4159,6 +5882,36 @@
     "decomposition": null,
     "word_count": 32,
     "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0609L01B01",
+   "expect": {
+    "known_text": "کرنے کی عقلمندانہ بات",
+    "target_text": "the sensible thing to do"
+   },
+   "set": {
+    "known_text": "کرنے کی عقلمندانہ بات مدد کرنا ہوتی",
+    "target_text": "the sensible thing to do would have been to help",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0614L01B01",
+   "expect": {
+    "known_text": "جہاں آپ کا خاندان رہتا ہے",
+    "target_text": "where your family live"
+   },
+   "set": {
+    "known_text": "ہم وہاں مل سکتے ہیں جہاں آپ کا خاندان رہتا ہے",
+    "target_text": "we can meet where your family live",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
    }
   },
   {
@@ -4193,6 +5946,21 @@
   },
   {
    "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0619L01B01",
+   "expect": {
+    "known_text": "جب سے ہم ملے",
+    "target_text": "since we saw each other"
+   },
+   "set": {
+    "known_text": "مجھے یقین ہے کہ ہمیں ملے بہت عرصہ ہو گیا ہے",
+    "target_text": "I'm sure it's a long time since we saw each other",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
    "phrase_id": "eng_for_urd:S0620L01B01",
    "expect": {
     "known_text": "ہم آخری بار ملے",
@@ -4203,6 +5971,96 @@
     "target_text": "when we last saw each other",
     "decomposition": null,
     "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0622L01B01",
+   "expect": {
+    "known_text": "مجھے معلوم تھا کہ",
+    "target_text": "I knew that"
+   },
+   "set": {
+    "known_text": "مجھے معلوم تھا کہ ہمیں مدد کی ضرورت تھی",
+    "target_text": "I knew that we needed help",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0624L01B01",
+   "expect": {
+    "known_text": "ہاں یہ بہت اچھا ہوگا",
+    "target_text": "yes that would be great"
+   },
+   "set": {
+    "known_text": "ہاں یہ ہمارے لیے بہت اچھا ہوگا",
+    "target_text": "yes that would be great for us",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0627L01B01",
+   "expect": {
+    "known_text": "کافی تیار ہے",
+    "target_text": "coffee is ready"
+   },
+   "set": {
+    "known_text": "مجھے یقین ہے کہ آپ کی کافی تیار ہے",
+    "target_text": "I'm sure your coffee is ready",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0629L01B03",
+   "expect": {
+    "known_text": "دودھ",
+    "target_text": "milk"
+   },
+   "set": {
+    "known_text": "کیا آپ کو دودھ کے ساتھ چائے پسند ہے؟",
+    "target_text": "do you like tea with milk?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0630L01B01",
+   "expect": {
+    "known_text": "کچھ پینا",
+    "target_text": "something to drink"
+   },
+   "set": {
+    "known_text": "مجھے پینے کے لیے کچھ چاہیے",
+    "target_text": "I need something to drink",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0632L01B01",
+   "expect": {
+    "known_text": "ایک گلاس پانی",
+    "target_text": "a glass of water"
+   },
+   "set": {
+    "known_text": "میں ایک گلاس پانی چاہتا ہوں",
+    "target_text": "I want a glass of water",
+    "decomposition": null,
+    "word_count": 23,
     "lego_position": "middle"
    }
   },
@@ -4219,6 +6077,51 @@
     "decomposition": null,
     "word_count": 18,
     "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0638L01B01",
+   "expect": {
+    "known_text": "سوچنے کی کوشش کر رہا ہوں",
+    "target_text": "I'm trying to think"
+   },
+   "set": {
+    "known_text": "میں کسی مختلف چیز کے بارے میں سوچنے کی کوشش کر رہا ہوں",
+    "target_text": "I'm trying to think about something different",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0643L01B01",
+   "expect": {
+    "known_text": "کیا آپ چاہتے ہیں جناب؟",
+    "target_text": "do you want sir?"
+   },
+   "set": {
+    "known_text": "تو آپ کیا چاہتے ہیں جناب؟",
+    "target_text": "so what do you want sir?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0645L01B01",
+   "expect": {
+    "known_text": "میں آپ کی مدد کر سکتا ہوں",
+    "target_text": "I can help you"
+   },
+   "set": {
+    "known_text": "میں آپ کی مدد کر سکتا ہوں جناب",
+    "target_text": "I can help you sir",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
    }
   }
  ]
