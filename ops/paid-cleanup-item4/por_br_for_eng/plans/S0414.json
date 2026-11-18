@@ -1,0 +1,91 @@
+{
+ "seed": 414,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "could we have something?",
+     "podíamos ter algo?"
+    ],
+    "B03": [
+     "could we have coffee?",
+     "podíamos ter café?"
+    ],
+    "U02": [
+     "could we have something to eat?",
+     "podíamos ter algo para comer?"
+    ],
+    "U03": [
+     "I think we could have a table",
+     "acho que podíamos ter uma mesa"
+    ],
+    "U05": [
+     "could we have the book?",
+     "podíamos ter o livro?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "could we have water?",
+     "podíamos ter água?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "a bottle of water",
+     "uma garrafa de água"
+    ],
+    "U01": [
+     "could we have a bottle of water?",
+     "podíamos ter uma garrafa de água?"
+    ],
+    "U02": [
+     "I'd like a bottle of water",
+     "gostaria de uma garrafa de água"
+    ],
+    "U03": [
+     "I left a bottle of water on the table",
+     "deixei uma garrafa de água em cima da mesa"
+    ],
+    "U04": [
+     "I need a bottle of water",
+     "preciso de uma garrafa de água"
+    ],
+    "U05": [
+     "we want a bottle of water",
+     "queremos uma garrafa de água"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "a bottle of water for me",
+     "uma garrafa de água para mim"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "U02": [
+     "I like red wine",
+     "gosto de vinho tinto"
+    ],
+    "U03": [
+     "do you want red wine?",
+     "você quer vinho tinto?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I'd like red wine",
+     "gostaria de vinho tinto"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #760·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
