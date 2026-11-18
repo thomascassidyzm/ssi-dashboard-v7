@@ -1,13 +1,13 @@
 # Item 6 independent review — shard A
 
-Checkpoint 3: all 124 Japanese plan rows reviewed. DB HOLD respected; live checks pending after 14:10Z. No course writes; no tests/build/typecheck.
+Checkpoint 4: all 124 Japanese and 121 Korean-for-Tamil rows reviewed. DB HOLD respected; live checks pending after 14:10Z. No course writes; no tests/build/typecheck.
 
 Assumption: the brief limits this review to jpn_for_eng, kor_for_tam and kor_for_hin; other courses are excluded. No course writes.
 
 | Course | AGREE | DISPUTE | Reviewed |
 | --- | ---: | ---: | ---: |
 | jpn_for_eng | 109 | 15 | 124 |
-| kor_for_tam | 0 | 0 | 0 |
+| kor_for_tam | 119 | 2 | 121 |
 | kor_for_hin | 0 | 0 | 0 |
 
 ## Disputes
@@ -27,3 +27,5 @@ Assumption: the brief limits this review to jpn_for_eng, kor_for_tam and kor_for
 - **jpn_for_eng S0215L02U07**: The claimed absolute first-person restriction is false for past -takatta: DBJG explicitly allows third-person past wishes. Do not change the person or add hearsay solely for this reason; retain the current pair. S15 does not justify rewriting SEED212. Source: Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, -tai, pp. 441–445, Note 3 (past-tense exception); S7/S15; plan current pairs SEED212, S0212L01U10 and B04. Proposed: {"known": "he wanted to go out on Saturday night", "target": "土曜の夜出かけたかった"}
 - **jpn_for_eng S0216L01U07**: The claimed absolute first-person restriction is false for past -takatta: DBJG explicitly allows third-person past wishes. Do not change the person or add hearsay solely for this reason; retain the current pair. S15 does not justify rewriting SEED212. Source: Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, -tai, pp. 441–445, Note 3 (past-tense exception); S7/S15; plan current pairs SEED212, S0212L01U10 and B04. Proposed: {"known": "they wanted to meet a few friends", "target": "何人か友だちに会いたかった"}
 - **jpn_for_eng S0113L03B02**: The proposed pair is identical to S0113L03B01 in the same basket. Re-glossing both does not fix the duplicate. Delete B02 and retain B01; the BUILD floor is only a warning. Source: Plan proposed S0113L03B01 and S0113L03B02: I don’t remember | 覚えてない; rule (c), P23. Proposed: leave out of the application batch; see reason.
+- **kor_for_tam S0227L02U05**: The revised Korean still omits Tamil அவரும் (he too/also). Changing 나에게 to 저에게 does not repair the translation. Leave out until an already-taught additive subject can preserve both the also meaning and the basket LEGO; do not invent 그도 without checking its exact taught form. Source: David McAlpin, A Core Vocabulary for Tamil, entry 166 (-உம், additive): https://dsal.uchicago.edu/dictionaries/mcalpin/McAlpin_Tamil.pdf ; these plan rows; K26/K21. Proposed: leave out of the application batch; see reason.
+- **kor_for_tam S0227L03U05**: The revised Korean still omits Tamil அவரும் (he too/also). Changing 나에게 to 저에게 does not repair the translation. Leave out until an already-taught additive subject can preserve both the also meaning and the basket LEGO; do not invent 그도 without checking its exact taught form. Source: David McAlpin, A Core Vocabulary for Tamil, entry 166 (-உம், additive): https://dsal.uchicago.edu/dictionaries/mcalpin/McAlpin_Tamil.pdf ; these plan rows; K26/K21. Proposed: leave out of the application batch; see reason.
