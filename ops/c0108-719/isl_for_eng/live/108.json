@@ -1,0 +1,645 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Við vonuðum ekki að vakna um miðja nótt."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "um miðja nótt",
+    "components": [
+     {
+      "known": "middle",
+      "target": "miðja"
+     },
+     {
+      "known": "night",
+      "target": "nótt"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "isl_for_eng:S0108L01C01",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "middle",
+     "target_text": "miðja",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-12T14:29:30.31573+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "4c566512-1b2b-4306-a5e2-5076362a26c7",
+     "target2_audio_id": "a1a4c721-ccf1-4bc4-b69a-5a4ed927c459",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "miðja",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "bc5acb82-58de-4cfc-9293-35d163e15d5e",
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01C02",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "night",
+     "target_text": "nótt",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-12T16:30:49.690896+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+     "target1_audio_id": "3eb85555-a1fe-4149-b2f1-0fde978b6dc7",
+     "target2_audio_id": "5c3efcc1-7ae4-440c-9e56-07654960a0f9",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "nótt",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2acb393d-2252-4c04-816c-0424257944a5",
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01B01",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "in the middle of the night",
+     "target_text": "um miðja nótt",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T16:57:18.616242+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "db381f9c-bb89-4fb6-ac5a-830ecade9b05",
+     "target2_audio_id": "07aaa89f-4ae8-440d-b796-de8e83063f26",
+     "qa_checked": null,
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 1896,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "um miðja nótt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2c6329ae-78a1-429e-9ad1-1703893f9526",
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01B02",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "to wake in the middle of the night",
+     "target_text": "vakna um miðja nótt",
+     "word_count": 19,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T17:27:29.940722+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+     "target1_audio_id": "f122a271-266d-4e4c-b3a9-9171dba4aa74",
+     "target2_audio_id": "38b3854e-b974-4076-996f-c5cff29b617c",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": "vakna",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " um miðja nótt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2c6329ae-78a1-429e-9ad1-1703893f9526",
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01U01",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "við vonuðum ekki að vakna um miðja nótt",
+     "word_count": 39,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-19T02:46:48.244Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T16:30:50.613244+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "d7dd246e-abbe-4a0a-8f49-beb8989497e5",
+     "target2_audio_id": "92a56fe0-5536-4908-b10f-d244f8299ee4",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "við",
+       "isGhost": true
+      },
+      {
+       "known": "we hoped",
+       "legoId": "S0107L02",
+       "target": " vonuðum",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ekki",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " að",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " um miðja nótt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2acb393d-2252-4c04-816c-0424257944a5",
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01U02",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "I don't want to wake in the middle of the night",
+     "target_text": "ég vil ekki vakna um miðja nótt",
+     "word_count": 31,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-19T02:46:48.244Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T16:57:08.426794+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+     "target1_audio_id": "2cd76b63-c79a-4661-9e33-a45d4733a883",
+     "target2_audio_id": "c618ea3c-72e6-4a9b-abd7-e43d135047d7",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I want",
+       "legoId": "S0001L01",
+       "target": "ég vil",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ekki",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " um miðja nótt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2c6329ae-78a1-429e-9ad1-1703893f9526",
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01U03",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "I'm going to try not to wake in the middle of the night",
+     "target_text": "ég ætla að reyna að vakna ekki um miðja nótt",
+     "word_count": 44,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-19T02:46:48.244Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-02T22:49:34.590378+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "bb4c9325-e019-426f-80de-943b2ea7ed1d",
+     "target1_audio_id": "678a6a81-e903-4697-8c6c-02e81012b163",
+     "target2_audio_id": "384e7c28-c7ff-4e16-9061-53fe9f33ede8",
+     "qa_checked": null,
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm going to",
+       "legoId": "S0005L01",
+       "target": "ég ætla að",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " reyna",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " að",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ekki",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " um miðja nótt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01U04",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "we hoped not to wake in the middle of the night",
+     "target_text": "við vonuðum að vakna ekki um miðja nótt",
+     "word_count": 39,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-19T02:46:48.244Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:49:26.358576+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c1b52ef1-9fa0-4773-93d1-833bc20c3700",
+     "target1_audio_id": "90e525f5-f813-4fc0-922b-f55efb5ace91",
+     "target2_audio_id": "3d013a44-0146-4eaf-b86f-8671ab7f616a",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "við",
+       "isGhost": true
+      },
+      {
+       "known": "we hoped",
+       "legoId": "S0107L02",
+       "target": " vonuðum",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " að",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " vakna",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ekki",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " um miðja nótt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "isl_for_eng:S0108L01U05",
+     "course_code": "isl_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "that is why I don't want to work in the middle of the night",
+     "target_text": "þess vegna vil ég ekki vinna um miðja nótt",
+     "word_count": 42,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-19T02:46:48.244Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:49:21.960872+00:00",
+     "created_at": "2026-03-19T02:46:48.504042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "07618600-dde8-45a2-9062-2d512dd31dfb",
+     "target1_audio_id": "37888030-3e23-425c-a85e-cf6f4e8c112d",
+     "target2_audio_id": "e2af0f46-a0fb-4ebc-b4d6-61a434fae7c3",
+     "qa_checked": null,
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that is why",
+       "legoId": "S0105L01",
+       "target": "þess vegna",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vil",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ég",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ekki",
+       "isGhost": true
+      },
+      {
+       "known": "to work",
+       "legoId": "S0106L03",
+       "target": " vinna",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " um miðja nótt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

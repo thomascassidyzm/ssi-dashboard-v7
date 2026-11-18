@@ -1,0 +1,680 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Vi håbede ikke på at vågne midt om natten."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "midt om natten",
+    "components": [
+     {
+      "known": "middle",
+      "target": "midt"
+     },
+     {
+      "known": "of",
+      "target": "om"
+     },
+     {
+      "known": "night",
+      "target": "natten"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "dan_for_eng:S0108L01C01",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "middle",
+     "target_text": "midt",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 123,
+     "updated_at": "2026-10-12T14:29:29.450507+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "c72ef848-12db-42bb-b7b0-df7da3559788",
+     "target2_audio_id": "a9ea8cd5-b933-432b-8588-3055c6a08781",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "cf98e5ab-bba1-46c5-b0f3-ae0728102bad",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "midt",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "90ec3d9d-0875-4378-8cb5-23853ff2d767",
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01C02",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "of",
+     "target_text": "om",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 82,
+     "updated_at": "2026-10-12T16:27:27.107692+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "93b307ab-84fb-4b37-8c02-bb2b003c3665",
+     "target1_audio_id": "457a2563-479d-4ee5-8251-31bfb1d09077",
+     "target2_audio_id": "c8616309-a86e-4e86-a5e8-737832a3ed34",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1296,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "5c3f785a-7060-47cf-bcea-ba198e26dd52",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "om",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3e4cbc82-d75f-4b5e-b5ff-4acf462329b5",
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01C03",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "night",
+     "target_text": "natten",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 124,
+     "updated_at": "2026-10-12T16:27:31.677491+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+     "target1_audio_id": "fa00158c-0be3-4daa-b1ff-2ac419ab4809",
+     "target2_audio_id": "c66e05b0-2e7b-4d5d-b08b-96138c7ce608",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "433b5078-db92-4125-aeb0-12a3f8f42ab7",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "natten",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3e4cbc82-d75f-4b5e-b5ff-4acf462329b5",
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01B01",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "in the middle of the night",
+     "target_text": "midt om natten",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 123,
+     "updated_at": "2026-10-12T16:57:15.510303+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "a4e4391e-1018-4703-9f5b-edb51bb3e475",
+     "target2_audio_id": "6c8bc7a6-b70a-460d-a9ad-90e585aa372e",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "midt om natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a00648be-9350-45b7-ae26-04c4e39acaff",
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01B02",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "wake in the middle of the night",
+     "target_text": "vågne midt om natten",
+     "word_count": 20,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 124,
+     "updated_at": "2026-10-12T16:27:27.107692+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+     "target1_audio_id": "bcecadde-84e5-4a62-aa8e-b06cbfb32f81",
+     "target2_audio_id": "c926bd0f-cacb-4c73-b75c-ba0bbaccdb36",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "vågne",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " midt om natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3e4cbc82-d75f-4b5e-b5ff-4acf462329b5",
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01B03",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "not hoping to wake in the middle of the night",
+     "target_text": "håbede ikke at vågne midt om natten",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 124,
+     "updated_at": "2026-08-17T22:53:01.020167+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "59a8d55a-015b-4972-b9df-015602e28170",
+     "target1_audio_id": "d7fc5403-ffee-4c84-a3d8-7fc7f78dd4e3",
+     "target2_audio_id": "58b8d087-27eb-422f-b032-124f01a96604",
+     "qa_checked": null,
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "hoped",
+       "legoId": "S0107L01",
+       "target": "håbede",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "to",
+       "legoId": "S0028L01",
+       "target": " at",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vågne",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " midt om natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01U02",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "I don't want to wake in the middle of the night",
+     "target_text": "jeg vil ikke vågne midt om natten",
+     "word_count": 33,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-22T13:44:45.080Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 122,
+     "updated_at": "2026-10-12T16:57:07.53159+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+     "target1_audio_id": "74606ca9-5530-48eb-a6c5-d949562f8ffc",
+     "target2_audio_id": "18c2265d-ee1f-4b75-af51-e06730ed404f",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "jeg",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vil",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vågne",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " midt om natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a00648be-9350-45b7-ae26-04c4e39acaff",
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01U03",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "he wanted to work in the middle of the night",
+     "target_text": "han ville gerne arbejde midt om natten",
+     "word_count": 38,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-22T13:44:45.080Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 121,
+     "updated_at": "2026-06-02T22:30:34.831739+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "92127404-9f42-49df-85c8-c37786cdc382",
+     "target1_audio_id": "ed945c1d-58c4-48fa-bb77-10902a79b67b",
+     "target2_audio_id": "bf8c64ca-fbac-4a3a-8af5-02b2cd6bd0c5",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "he wanted to",
+       "legoId": "S0052L01",
+       "target": "han ville gerne",
+       "isGhost": false
+      },
+      {
+       "known": "to work",
+       "legoId": "S0106L02",
+       "target": " arbejde",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " midt om natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01U04",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "she can't hear anything in the middle of the night",
+     "target_text": "hun kan ikke høre noget midt om natten",
+     "word_count": 38,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-22T13:44:45.080Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 121,
+     "updated_at": "2026-06-02T22:30:50.77777+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7fc46b60-2ba2-4359-8af8-554969f4351f",
+     "target1_audio_id": "5b1975c4-3173-4492-bea0-3a3bfe929e86",
+     "target2_audio_id": "57f2a2cf-63bd-4d2b-9930-e87fceb2509f",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "hun",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " kan",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "to hear",
+       "legoId": "S0071L01",
+       "target": " høre",
+       "isGhost": false
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L01",
+       "target": " noget",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " midt om natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "dan_for_eng:S0108L01U05",
+     "course_code": "dan_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "it's hard to learn in the middle of the night",
+     "target_text": "det er svært at lære midt om natten",
+     "word_count": 35,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-22T13:44:45.080Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 121,
+     "updated_at": "2026-06-02T22:30:32.542145+00:00",
+     "created_at": "2026-04-22T13:44:45.195114+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b8113b3a-7762-4e3a-87cc-cfde93afdac0",
+     "target1_audio_id": "aae5a45f-7730-4ff4-9548-d38d099af35a",
+     "target2_audio_id": "7010229a-ab15-49e7-bdd7-d0ec38043ead",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0024L01",
+       "target": "det",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " er",
+       "isGhost": true
+      },
+      {
+       "known": "difficult",
+       "legoId": "S0066L01",
+       "target": " svært",
+       "isGhost": false
+      },
+      {
+       "known": "to",
+       "legoId": "S0028L01",
+       "target": " at",
+       "isGhost": false
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " lære",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " midt om natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}
