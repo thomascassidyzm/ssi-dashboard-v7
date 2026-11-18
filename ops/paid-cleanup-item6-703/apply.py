@@ -96,10 +96,10 @@ def needs(c):
     out = []
     for e in E:
         o = live.get(e['row'])
-        if not o or re.search(r'C\d\d$', e['row']) or (c, e['row']) in SPELL_ONLY: continue
+        if not o or re.search(r'C\d\d$', e['row']): continue
         tk = {'seed': 'seed', 'lego': 'lego'}.get(e['kind'], 'phrase')
         if 'known_text' in o['set']: out.append(('known', o['set']['known_text'], tk, e['row']))
-        if 'target_text' in o['set']:
+        if 'target_text' in o['set'] and (c, e['row']) not in SPELL_ONLY:   # spelling-only target: same words, clips kept
             out.append(('target1', o['set']['target_text'], tk, e['row'])); out.append(('target2', o['set']['target_text'], tk, e['row']))
     return out
 

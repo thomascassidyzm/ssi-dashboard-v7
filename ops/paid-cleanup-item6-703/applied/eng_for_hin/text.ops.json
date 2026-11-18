@@ -1,0 +1,15 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_hin:S0001L01C02",
+   "set": {
+    "known_text": "चाहती हूँ"
+   },
+   "expect": {
+    "known_text": "चाहता हूँ",
+    "target_text": "want"
+   }
+  }
+ ]
+}
