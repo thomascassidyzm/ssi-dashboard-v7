@@ -1,5 +1,5 @@
 {
- "spent": 3292,
+ "spent": 4810,
  "rows": [
   {
    "course": "glg_for_eng",
@@ -2282,6 +2282,1223 @@
    "linked": true,
    "link_code": null,
    "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": 108,
+   "slot": "target1",
+   "text": "we didn't expect to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "61fabd56-8832-4f64-b4e8-c63e6c2148d9",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": 108,
+   "slot": "target2",
+   "text": "we didn't expect to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "a6186058-7268-43d2-9c05-de9feadb3ab9",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "S0108L02",
+   "slot": "target1",
+   "text": "wake up",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "af9615e7",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "5beea892",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "1828b91f",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "58f8db58",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "d293d509",
+     "NO_CLIP"
+    ],
+    [
+     "f99e8d6d",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "3ae1dd61",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "49765cb1",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "5c0cf452",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "62709e46",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "843777f1",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "c1b5f42e",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "c785224f",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "cab79c13",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "d2f901f0",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "ea9830d9",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "71a7ad14",
+     "NO_CLIP"
+    ]
+   ]
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "S0108L02",
+   "slot": "target2",
+   "text": "wake up",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "10790a10-2440-4bed-b3dc-08750cacc21e",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "S0108L02",
+   "slot": "presentation",
+   "text": "En inglés — 'despertar' — como en — 'no me gusta despertar en mitad de la noche' — es:",
+   "source": "relink-old-intro",
+   "audioId": "93c31252-5395-415f-8dd7-456d98bca912",
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02B01",
+   "slot": "target1",
+   "text": "wake up in the middle of the night",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "129d849a",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "1dd395de",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "278d42ef",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "27932eb5",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "c6de3002",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "71a7ad14",
+     "NO_CLIP"
+    ]
+   ]
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02B01",
+   "slot": "target2",
+   "text": "wake up in the middle of the night",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "129d849a",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "1dd395de",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "278d42ef",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "27932eb5",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "c6de3002",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "d293d509",
+     "NO_CLIP"
+    ]
+   ]
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02B02",
+   "slot": "target1",
+   "text": "I don't want to wake up",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "000dbec9",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "67765d21",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "8167e200",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "d293d509",
+     "NO_CLIP"
+    ],
+    [
+     "b88a959f",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "17634c6f",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "bfcb2134",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "ca1bfd62",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "cb8d4ae1",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "f017306f",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "71a7ad14",
+     "NO_CLIP"
+    ]
+   ]
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02B02",
+   "slot": "target2",
+   "text": "I don't want to wake up",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "2eaa7fe7-fe83-42c1-94cb-47c56547e356",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02B03",
+   "slot": "target1",
+   "text": "we hoped to wake up",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "690a80de",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "5996f4d5",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "d293d509",
+     "NO_CLIP"
+    ],
+    [
+     "6adb1894",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "71a7ad14",
+     "NO_CLIP"
+    ]
+   ]
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02B03",
+   "slot": "target2",
+   "text": "we hoped to wake up",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "8cfb02f1-76d9-4e14-a0b4-8b8ef9785367",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U01",
+   "slot": "target1",
+   "text": "I don't want to wake up this morning",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "bb3f3639-262c-4041-970b-ecf73bee345f",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U01",
+   "slot": "target2",
+   "text": "I don't want to wake up this morning",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "f164d775-e489-4264-8c67-b83d999ef46c",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U02",
+   "slot": "target1",
+   "text": "I like to wake up feeling well",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "d1381694-662d-4dc7-8003-8a1bebbed09a",
+   "charsSpent": 30,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U02",
+   "slot": "target2",
+   "text": "I like to wake up feeling well",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "21575f73-80f0-41bb-a1db-8343b53ff361",
+   "charsSpent": 30,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U03",
+   "slot": "target1",
+   "text": "we hoped to wake up soon this morning",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "b9367222-07e4-4562-a74e-296ac5670f48",
+   "charsSpent": 37,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U03",
+   "slot": "target2",
+   "text": "we hoped to wake up soon this morning",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "873262c4-f20c-4357-8953-5c7810ceb17b",
+   "charsSpent": 37,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U04",
+   "slot": "target1",
+   "text": "I don't like to wake up in the middle of the night",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "b87ec18c",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "5b127fa4",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "a1da48e0",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "d293d509",
+     "NO_CLIP"
+    ],
+    [
+     "71a7ad14",
+     "NO_CLIP"
+    ]
+   ]
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U04",
+   "slot": "target2",
+   "text": "I don't like to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "3bd44599-034d-4170-8bfe-bb4bf1954e5f",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U05",
+   "slot": "target1",
+   "text": "you should try not to wake up so soon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "9dff9f10-a716-432c-8bf6-888edb383b42",
+   "charsSpent": 37,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L02U05",
+   "slot": "target2",
+   "text": "you should try not to wake up so soon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "196ae546-4810-4c0e-add0-6ef96bc2adb9",
+   "charsSpent": 37,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "S0108L03",
+   "slot": "target1",
+   "text": "we didn't expect to",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "0574daab-df21-4397-a896-9f29869e80e0",
+   "charsSpent": 19,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "S0108L03",
+   "slot": "target2",
+   "text": "we didn't expect to",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "f8c182cb-0f5a-4058-a6cf-031678b6ab52",
+   "charsSpent": 19,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "S0108L03",
+   "slot": "presentation",
+   "text": "En inglés — 'no esperábamos' — como en — 'no esperábamos ver algo tan interesante hoy' — es:",
+   "source": "relink-old-intro",
+   "audioId": "8c15aecf-74ac-47b9-84e4-addbf5932c4b",
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B01",
+   "slot": "target1",
+   "text": "we didn't expect to",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "0574daab-df21-4397-a896-9f29869e80e0",
+   "charsSpent": 19,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B01",
+   "slot": "target2",
+   "text": "we didn't expect to",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "f8c182cb-0f5a-4058-a6cf-031678b6ab52",
+   "charsSpent": 19,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B02",
+   "slot": "target1",
+   "text": "we didn't expect to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "61fabd56-8832-4f64-b4e8-c63e6c2148d9",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B02",
+   "slot": "target2",
+   "text": "we didn't expect to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "a6186058-7268-43d2-9c05-de9feadb3ab9",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B03",
+   "slot": "target1",
+   "text": "we didn't expect to see something interesting",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "fd610898-c43b-4581-93ef-9e504cf2a405",
+   "charsSpent": 45,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B03",
+   "slot": "target2",
+   "text": "we didn't expect to see something interesting",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "39c4d926-e6b3-4669-a08d-f9cfedf846cb",
+   "charsSpent": 45,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B04",
+   "slot": "target1",
+   "text": "we didn't expect to speak English so soon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "a98a3476-7e7c-4f0c-bd81-3b81b6aacced",
+   "charsSpent": 41,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03B04",
+   "slot": "target2",
+   "text": "we didn't expect to speak English so soon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "9aa71366-8cfe-4af4-bd00-e94b051f3802",
+   "charsSpent": 41,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U01",
+   "slot": "target1",
+   "text": "we didn't expect to see something so interesting today",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "52210f75-ddaa-4a00-8960-dc85ef1903f3",
+   "charsSpent": 54,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U01",
+   "slot": "target2",
+   "text": "we didn't expect to see something so interesting today",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "28c6f56d-79fb-49b4-8103-d00c2b1b15ec",
+   "charsSpent": 54,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U02",
+   "slot": "target1",
+   "text": "we didn't expect to learn English so quickly",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "33360685-67a6-4c70-af45-7040112f3351",
+   "charsSpent": 44,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U02",
+   "slot": "target2",
+   "text": "we didn't expect to learn English so quickly",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "713f3708-78e3-421d-a16d-fd60536644ac",
+   "charsSpent": 44,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U03",
+   "slot": "target1",
+   "text": "we didn't expect to see what you were doing this afternoon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "e26288f6-5e92-4911-98ab-e6c237c55435",
+   "charsSpent": 58,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U03",
+   "slot": "target2",
+   "text": "we didn't expect to see what you were doing this afternoon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "f7327059-41e2-4d8c-a9b0-454518abb381",
+   "charsSpent": 58,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U04",
+   "slot": "target1",
+   "text": "we didn't expect to wake up so soon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "fd860838-575a-4242-bc90-88cf70376c74",
+   "charsSpent": 35,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U04",
+   "slot": "target2",
+   "text": "we didn't expect to wake up so soon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "f91ad8f5-8a2a-432e-a54a-232bb5f71012",
+   "charsSpent": 35,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U05",
+   "slot": "target1",
+   "text": "we didn't expect to speak English so soon this afternoon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "1b97d9cb-a902-4c34-bfe7-93c3a595a70e",
+   "charsSpent": 56,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_spa",
+   "id": "eng_for_spa:S0108L03U05",
+   "slot": "target2",
+   "text": "we didn't expect to speak English so soon this afternoon",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "14ecba20-1296-4655-9abc-a377342a7b2c",
+   "charsSpent": 56,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": 108,
+   "slot": "target1",
+   "text": "We didn't expect to wake up in the middle of the night.",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "2c39989a-ff17-4c9e-b1f8-d068a1a24b66",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": 108,
+   "slot": "target2",
+   "text": "We didn't expect to wake up in the middle of the night.",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "152de2fd-267f-462b-b553-7dfded8c23ad",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "S0108L02",
+   "slot": "target1",
+   "text": "we didn't expect to wake up",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "8880008c-789c-4950-a5af-7ce3dfcb8047",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "S0108L02",
+   "slot": "target2",
+   "text": "we didn't expect to wake up",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "842d8a1e-03af-43b9-9553-be6483862d12",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "S0108L02",
+   "slot": "presentation",
+   "text": "Em inglês — 'não esperávamos acordar' — como em — 'não esperávamos acordar e não sabia o que fazer' — é:",
+   "source": "relink-old-intro",
+   "audioId": "d852cb2d-e868-424a-af54-7de34c53001b",
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02C01",
+   "slot": "target1",
+   "text": "we didn't expect",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "22f898cb-c2c7-4736-81fb-c114e8588792",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02C01",
+   "slot": "target2",
+   "text": "we didn't expect",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "0ee08be5-4fd3-48bd-9070-b4cc602e30e0",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02B01",
+   "slot": "target1",
+   "text": "we didn't expect to wake up",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "8880008c-789c-4950-a5af-7ce3dfcb8047",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02B01",
+   "slot": "target2",
+   "text": "we didn't expect to wake up",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "842d8a1e-03af-43b9-9553-be6483862d12",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02B02",
+   "slot": "target1",
+   "text": "we didn't expect to wake up like that",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "4e823741",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "d293d509",
+     "NO_CLIP"
+    ],
+    [
+     "71a7ad14",
+     "NO_CLIP"
+    ]
+   ]
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02B02",
+   "slot": "target2",
+   "text": "we didn't expect to wake up like that",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "b0cfb674-2309-4205-a5ce-bb037f600397",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02B03",
+   "slot": "target1",
+   "text": "we didn't expect to wake up before",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "ab018d33-a7e6-4a89-bfd1-781e1c4b40d3",
+   "charsSpent": 34,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02B03",
+   "slot": "target2",
+   "text": "we didn't expect to wake up before",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "cc04d742-b6f5-4a26-af04-52e29f560c01",
+   "charsSpent": 34,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U01",
+   "slot": "target1",
+   "text": "we didn't expect to wake up before we go",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "32db2a58-9279-482d-97fa-ad73bcad7e7f",
+   "charsSpent": 40,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U01",
+   "slot": "target2",
+   "text": "we didn't expect to wake up before we go",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "74426b24-f190-4686-89d1-77689b30c9b4",
+   "charsSpent": 40,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U02",
+   "slot": "target1",
+   "text": "we didn't expect to wake up so quickly",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "288d47d9-0957-4d31-b55f-f1fd873e2ea7",
+   "charsSpent": 38,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U02",
+   "slot": "target2",
+   "text": "we didn't expect to wake up so quickly",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "7b0aae81-e8af-4d64-b0b5-d3295895e068",
+   "charsSpent": 38,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U03",
+   "slot": "target1",
+   "text": "I think we didn't expect to wake up",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "a0c5b1b8-3e0d-4472-9de1-2ccf740d6a9d",
+   "charsSpent": 35,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U03",
+   "slot": "target2",
+   "text": "I think we didn't expect to wake up",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "c57d4386-5ceb-4c75-a42d-0f0d434bfd3c",
+   "charsSpent": 35,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U04",
+   "slot": "target1",
+   "text": "we didn't expect to wake up and I didn't know what to do",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "6e65f413-acca-451e-ae41-0e0ffbed674b",
+   "charsSpent": 56,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U04",
+   "slot": "target2",
+   "text": "we didn't expect to wake up and I didn't know what to do",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "6f37ef70-b827-4260-ad5a-1bd13b3dd3e3",
+   "charsSpent": 56,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U05",
+   "slot": "target1",
+   "text": "we didn't expect to wake up when we're not ready",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "274fa498-defc-4973-83a4-9a8f010006dd",
+   "charsSpent": 48,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L02U05",
+   "slot": "target2",
+   "text": "we didn't expect to wake up when we're not ready",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "91faaee9-8226-4961-9a90-a6a55d7e6368",
+   "charsSpent": 48,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L03B03",
+   "slot": "target1",
+   "text": "we didn't expect to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "2c39989a-ff17-4c9e-b1f8-d068a1a24b66",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L03B03",
+   "slot": "target2",
+   "text": "we didn't expect to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "152de2fd-267f-462b-b553-7dfded8c23ad",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L03U05",
+   "slot": "target1",
+   "text": "we didn't expect for this in the middle of the night",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "38135eb2-ddce-4568-8af7-720080f4d06d",
+   "charsSpent": 52,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "eng_for_por",
+   "id": "eng_for_por:S0108L03U05",
+   "slot": "target2",
+   "text": "we didn't expect for this in the middle of the night",
+   "render_status": 200,
+   "source": "rendered",
+   "audioId": "13fff40e-84a5-4476-b465-f96992075f3d",
+   "charsSpent": 52,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "jpn_for_eng",
+   "id": 108,
+   "slot": "known",
+   "text": "we didn't expect to wake up in the middle of the night",
+   "render_status": 200,
+   "source": "library",
+   "audioId": "b19e4561-fbec-418b-ae33-0a88f1c5b7d7",
+   "charsSpent": 0,
+   "code": null,
+   "linked": true,
+   "link_code": null,
+   "link_error": ""
+  },
+  {
+   "course": "jpn_for_eng",
+   "id": "jpn_for_eng:S0108L01B03",
+   "slot": "known",
+   "text": "I can wake up",
+   "render_status": 409,
+   "source": null,
+   "audioId": null,
+   "charsSpent": null,
+   "code": "EXISTS_IN_LANGUAGE",
+   "linked": false,
+   "link_code": "NO_CLIP",
+   "tried": [
+    [
+     "11791fef",
+     "VOICE_MISMATCH"
+    ],
+    [
+     "71a7ad14",
+     "NO_CLIP"
+    ],
+    [
+     "d293d509",
+     "NO_CLIP"
+    ]
+   ]
   }
  ]
 }
