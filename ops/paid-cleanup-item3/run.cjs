@@ -143,10 +143,18 @@ async function batch(c, file, apply) {
     ? { op: 'phrase.delete', phrase_id: `${c}:${x.id}`, expect: { known_text: x.old, target_text: x.target } }
     : { op: 'phrase.update', phrase_id: `${c}:${x.id}`, expect: { known_text: x.old, target_text: x.target }, set: { known_text: x.new } });
   if (!ops.length) return console.log('nothing to send');
-  const body = { ops, apply: !!apply, note: `paid cleanup item 3 (${g.plan}): known prompt rewritten to say what the English says — Kai approved 18 Nov (cs #699·AI)` };
-  const r = signed('POST', `/api/admin/course-edit/${c}/edit-batch`, { ...body, kai_go: 'Kai 18 Nov 2026: "Yes, though I\'d do it carefully - make sure everything passes the builder validator"' });
-  const f = outFile(c, file, apply ? 'apply' : 'dry'); fs.writeFileSync(f, JSON.stringify(r, null, 1));
-  console.log(`${c} ${g.plan} ${apply ? 'APPLY' : 'dry'}: ok=${r.ok} applied=${r.applied} event=${r.event_id || r.eventId || (r.event && r.event.id) || '-'} ops=${ops.length} changed=${(r.results || []).filter((x) => x.changed).length} ${r.error || ''} ${r.code || ''} → ${path.relative(ROOT, f)}`);
+  // ≤50 ops per request with a 2 s pause (#726·AI, after the 18 Nov DB hold): one event per chunk, every answer kept.
+  const all = [];
+  for (let i = 0; i < ops.length; i += 50) {
+    if (i) execFileSync('sleep', ['2']);
+    const part = ops.slice(i, i + 50);
+    const body = { ops: part, apply: !!apply, note: `paid cleanup item 3 (${g.plan}): known prompt rewritten to say what the English says — Kai approved 18 Nov (cs #699·AI, resumed #726·AI)` };
+    const r = signed('POST', `/api/admin/course-edit/${c}/edit-batch`, { ...body, kai_go: 'Kai 18 Nov 2026: "Yes, though I\'d do it carefully - make sure everything passes the builder validator"' });
+    all.push(r);
+    console.log(`${c} ${g.plan} ${apply ? 'APPLY' : 'dry'} [${i}..${i + part.length}): ok=${r.ok} applied=${r.applied} event=${r.event_id || r.eventId || (r.event && r.event.id) || '-'} changed=${(r.results || []).filter((x) => x.changed).length} ${r.error || ''} ${r.code || ''}`);
+    if (!r.ok) break;
+  }
+  const f = outFile(c, file, apply ? 'apply' : 'dry'); fs.writeFileSync(f, JSON.stringify(all.length === 1 ? all[0] : all, null, 1));
 }
 
 async function readback(c, file) {
