@@ -482,14 +482,6 @@
   },
   {
    "op": "phrase.delete",
-   "phrase_id": "spa_for_eng:S0189L01U03",
-   "expect": {
-    "known_text": "It is a good idea to take a bit of time to think carefully before you try to answer",
-    "target_text": "Es una buena idea tomar algo de tiempo para pensar con cuidado antes de intentar contestar"
-   }
-  },
-  {
-   "op": "phrase.delete",
    "phrase_id": "spa_for_eng:S0190L01U10",
    "expect": {
     "known_text": "I do not always do it the best way but I know I am learning",

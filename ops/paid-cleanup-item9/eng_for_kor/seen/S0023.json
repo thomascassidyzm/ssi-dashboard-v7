@@ -1,127 +1,157 @@
 {
  "seed": 23,
- "at": "2026-11-18T14:40:01.847Z",
+ "at": "2026-11-18T18:40:50.261Z",
  "from": "live snapshot",
  "rows": {
   "S0023L01C01": {
    "known": "시작할",
-   "target": "start"
+   "target": "start",
+   "updated_at": "2026-10-12T08:39:19.24876+00:00"
   },
   "S0023L01C02": {
    "known": "거예요",
-   "target": "going to"
+   "target": "going to",
+   "updated_at": "2026-10-12T07:33:40.885121+00:00"
   },
   "S0023L01B01": {
    "known": "시작할 거예요",
-   "target": "start"
+   "target": "start",
+   "updated_at": "2026-10-12T08:39:19.326726+00:00"
   },
   "S0023L01B02": {
    "known": "시작할 거예요",
-   "target": "going to start"
+   "target": "going to start",
+   "updated_at": "2026-06-02T22:37:14.661691+00:00"
   },
   "S0023L01B03": {
    "known": "말하기 시작할 거예요",
-   "target": "going to start talking"
+   "target": "going to start talking",
+   "updated_at": "2026-06-02T22:37:05.656837+00:00"
   },
   "S0023L01B04": {
    "known": "저는 시작할 거예요",
-   "target": "I'm going to start"
+   "target": "I'm going to start",
+   "updated_at": "2026-06-02T22:37:00.254863+00:00"
   },
   "S0023L01U01": {
    "known": "저는 배우기 시작할 거예요",
-   "target": "I'm going to start learning"
+   "target": "I'm going to start learning",
+   "updated_at": "2026-06-02T22:37:00.485969+00:00"
   },
   "S0023L01U02": {
    "known": "저는 말하기 시작할 거예요",
-   "target": "I'm going to start talking"
+   "target": "I'm going to start talking",
+   "updated_at": "2026-10-12T08:57:01.685489+00:00"
   },
   "S0023L01U03": {
    "known": "저는 오늘 시작할 거예요",
-   "target": "I'm going to start today"
+   "target": "I'm going to start today",
+   "updated_at": "2026-06-02T22:37:03.300347+00:00"
   },
   "S0023L01U04": {
    "known": "저는 내일 영어로 말하기 시작할 거예요",
-   "target": "I'm going to start speaking English tomorrow"
+   "target": "I'm going to start speaking English tomorrow",
+   "updated_at": "2026-06-02T22:37:12.763174+00:00"
   },
   "S0023L01U05": {
    "known": "저는 나중에 시작할 거예요",
-   "target": "I'm going to start later on"
+   "target": "I'm going to start later on",
+   "updated_at": "2026-06-02T22:37:12.0652+00:00"
   },
   "S0023L02C01": {
    "known": "더",
-   "target": "more"
+   "target": "more",
+   "updated_at": "2026-10-28T21:47:24.176619+00:00"
   },
   "S0023L02C02": {
    "known": "많이",
-   "target": "a lot"
+   "target": "a lot",
+   "updated_at": "2026-10-28T21:49:45.067081+00:00"
   },
   "S0023L02B01": {
    "known": "더 많이",
-   "target": "more"
+   "target": "more",
+   "updated_at": "2026-10-28T21:47:24.176619+00:00"
   },
   "S0023L02B02": {
    "known": "더 많이 말하기",
-   "target": "talk more"
+   "target": "talk more",
+   "updated_at": "2026-10-12T13:56:26.442934+00:00"
   },
   "S0023L02B03": {
    "known": "더 많이 배우고 싶어요",
-   "target": "want to learn more"
+   "target": "want to learn more",
+   "updated_at": "2026-06-02T22:37:09.236107+00:00"
   },
   "S0023L02B04": {
    "known": "더 많이 연습하기",
-   "target": "practise more"
+   "target": "practise more",
+   "updated_at": "2026-06-02T22:37:05.495761+00:00"
   },
   "S0023L02U01": {
    "known": "저는 더 많이 영어로 말하고 싶어요",
-   "target": "I want to speak English more"
+   "target": "I want to speak English more",
+   "updated_at": "2026-06-02T22:37:07.358961+00:00"
   },
   "S0023L02U02": {
    "known": "저는 더 많이 배우려고 노력하고 있어요",
-   "target": "I'm trying to learn more"
+   "target": "I'm trying to learn more",
+   "updated_at": "2026-06-02T22:37:14.287583+00:00"
   },
   "S0023L02U03": {
    "known": "저는 더 많이 연습할 거예요",
-   "target": "I'm going to practise more"
+   "target": "I'm going to practise more",
+   "updated_at": "2026-06-02T22:37:06.810903+00:00"
   },
   "S0023L02U04": {
    "known": "그녀는 더 많이 배우고 싶어해요",
-   "target": "she wants to learn more"
+   "target": "she wants to learn more",
+   "updated_at": "2026-10-29T03:33:08.640973+00:00"
   },
   "S0023L02U05": {
    "known": "저는 더 많이 사람들을 만나고 싶어요",
-   "target": "I want to meet more people"
+   "target": "I want to meet more people",
+   "updated_at": "2026-10-29T00:14:45.452186+00:00"
   },
   "S0023L03B01": {
    "known": "곧 시작할 거예요",
-   "target": "going to start soon"
+   "target": "going to start soon",
+   "updated_at": "2026-06-02T22:37:00.762893+00:00"
   },
   "S0023L03B02": {
    "known": "곧 만나고 싶어요",
-   "target": "want to meet soon"
+   "target": "want to meet soon",
+   "updated_at": "2026-06-02T22:37:15.069902+00:00"
   },
   "S0023L03B03": {
    "known": "곧 배우기 시작할 거예요",
-   "target": "going to start learning soon"
+   "target": "going to start learning soon",
+   "updated_at": "2026-06-02T22:37:08.816491+00:00"
   },
   "S0023L03U01": {
    "known": "저는 곧 말하기 시작할 거예요",
-   "target": "I'm going to start talking soon"
+   "target": "I'm going to start talking soon",
+   "updated_at": "2026-06-02T22:37:13.342628+00:00"
   },
   "S0023L03U02": {
    "known": "저는 곧 더 많이 영어로 말할 거예요",
-   "target": "I'm going to speak English more soon"
+   "target": "I'm going to speak English more soon",
+   "updated_at": "2026-06-02T22:37:15.929623+00:00"
   },
   "S0023L03U03": {
    "known": "저는 곧 배우기 시작할 거예요",
-   "target": "I'm going to start learning soon"
+   "target": "I'm going to start learning soon",
+   "updated_at": "2026-06-02T22:37:13.635483+00:00"
   },
   "S0023L03U04": {
    "known": "저는 곧 당신과 만나고 싶어요",
-   "target": "I want to meet with you soon"
+   "target": "I want to meet with you soon",
+   "updated_at": "2026-06-02T22:37:13.931939+00:00"
   },
   "S0023L03U05": {
    "known": "저는 곧 더 많이 말하기 시작할 거예요",
-   "target": "I'm going to start talking more soon"
+   "target": "I'm going to start talking more soon",
+   "updated_at": "2026-06-02T22:37:14.527832+00:00"
   }
  }
 }

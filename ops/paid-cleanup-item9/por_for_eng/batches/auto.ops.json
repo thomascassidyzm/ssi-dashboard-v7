@@ -442,30 +442,6 @@
   },
   {
    "op": "phrase.delete",
-   "phrase_id": "por_for_eng:S0570L03U02",
-   "expect": {
-    "known_text": "she asked how much he was willing to pay for his ticket",
-    "target_text": "ela perguntou quanto estás disposto a pagar pelo teu bilhete"
-   }
-  },
-  {
-   "op": "phrase.delete",
-   "phrase_id": "por_for_eng:S0570L03U03",
-   "expect": {
-    "known_text": "he asked how much she was willing to pay for her ticket",
-    "target_text": "ele perguntou quanto estás disposto a pagar pelo teu bilhete"
-   }
-  },
-  {
-   "op": "phrase.delete",
-   "phrase_id": "por_for_eng:S0570L03U04",
-   "expect": {
-    "known_text": "they asked how much she was willing to pay for her ticket",
-    "target_text": "perguntaram quanto estás disposto a pagar pelo teu bilhete"
-   }
-  },
-  {
-   "op": "phrase.delete",
    "phrase_id": "por_for_eng:S0582L01U01",
    "expect": {
     "known_text": "she asked what it's like to grow up here",

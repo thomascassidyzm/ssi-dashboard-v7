@@ -1,6 +1,6 @@
 {
  "course": "por_for_eng",
- "at": "2026-11-18T14:40:10.467Z",
+ "at": "2026-11-18T18:40:56.994Z",
  "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
  "shortfall": {
   "S0074L01": {
@@ -1227,52 +1227,6 @@
      "target": "ela perguntou se encontraste o caminho pelo bosque",
      "untaught": [
       "perguntou"
-     ]
-    }
-   ]
-  },
-  "S0570L03": {
-   "lego": "willing to pay for | disposto a pagar pelo",
-   "before": "ok",
-   "delete": 3,
-   "counted_before": {
-    "b": 3,
-    "u": 5
-   },
-   "counted_after": {
-    "b": 3,
-    "u": 2
-   },
-   "author_build": 0,
-   "author_use": 3,
-   "avg_target_chars": 42,
-   "avg_known_chars": 40,
-   "rows": [
-    {
-     "row": "S0570L03U02",
-     "role": "use",
-     "known": "she asked how much he was willing to pay for his ticket",
-     "target": "ela perguntou quanto estás disposto a pagar pelo teu bilhete",
-     "untaught": [
-      "perguntou"
-     ]
-    },
-    {
-     "row": "S0570L03U03",
-     "role": "use",
-     "known": "he asked how much she was willing to pay for her ticket",
-     "target": "ele perguntou quanto estás disposto a pagar pelo teu bilhete",
-     "untaught": [
-      "perguntou"
-     ]
-    },
-    {
-     "row": "S0570L03U04",
-     "role": "use",
-     "known": "they asked how much she was willing to pay for her ticket",
-     "target": "perguntaram quanto estás disposto a pagar pelo teu bilhete",
-     "untaught": [
-      "perguntaram"
      ]
     }
    ]

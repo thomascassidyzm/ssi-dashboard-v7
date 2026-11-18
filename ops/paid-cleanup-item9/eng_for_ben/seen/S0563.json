@@ -1,103 +1,127 @@
 {
  "seed": 563,
- "at": "2026-11-18T14:40:04.223Z",
+ "at": "2026-11-18T18:40:46.794Z",
  "from": "live snapshot",
  "rows": {
   "S0563L01B01": {
    "known": "চালিয়ে যেতে",
-   "target": "continue"
+   "target": "continue",
+   "updated_at": "2026-10-12T08:42:40.648418+00:00"
   },
   "S0563L01B02": {
    "known": "চালিয়ে যেতে চাই",
-   "target": "want to continue"
+   "target": "want to continue",
+   "updated_at": "2026-08-01T17:07:20.666744+00:00"
   },
   "S0563L01B03": {
    "known": "এখন চালিয়ে যেতে",
-   "target": "continue now"
+   "target": "continue now",
+   "updated_at": "2026-08-01T17:07:21.230575+00:00"
   },
   "S0563L01U01": {
    "known": "আমি চালিয়ে যেতে চাই।",
-   "target": "I want to continue"
+   "target": "I want to continue",
+   "updated_at": "2026-10-29T03:33:58.898575+00:00"
   },
   "S0563L01U02": {
    "known": "আমরা চালিয়ে যেতে চাই।",
-   "target": "we want to continue"
+   "target": "we want to continue",
+   "updated_at": "2026-08-01T17:07:21.281568+00:00"
   },
   "S0563L01U03": {
    "known": "সে বলেছিল আমি চালিয়ে যেতে চাই।",
-   "target": "she said I want to continue"
+   "target": "she said I want to continue",
+   "updated_at": "2026-08-01T17:07:21.280701+00:00"
   },
   "S0563L01U04": {
    "known": "আমার বাবা চালিয়ে যেতে চান।",
-   "target": "my father wants to continue"
+   "target": "my father wants to continue",
+   "updated_at": "2026-08-01T17:07:21.399005+00:00"
   },
   "S0563L01U05": {
    "known": "আমি জানি আমরা চালিয়ে যেতে চাই।",
-   "target": "I know we want to continue"
+   "target": "I know we want to continue",
+   "updated_at": "2026-08-01T17:07:21.277959+00:00"
   },
   "S0563L01U06": {
    "known": "আমি আশা করেছিলাম চালিয়ে যেতে",
-   "target": "I hoped to continue"
+   "target": "I hoped to continue",
+   "updated_at": "2026-08-01T17:07:23.292556+00:00"
   },
   "S0563L02C01": {
    "known": "আর",
-   "target": "any"
+   "target": "any",
+   "updated_at": "2026-10-12T08:59:27.059612+00:00"
   },
   "S0563L02C02": {
    "known": "বেশিক্ষণ",
-   "target": "longer"
+   "target": "longer",
+   "updated_at": "2026-10-28T17:32:23.93474+00:00"
   },
   "S0563L02B01": {
    "known": "আর বেশিক্ষণ",
-   "target": "any longer"
+   "target": "any longer",
+   "updated_at": "2026-10-28T19:43:58.275111+00:00"
   },
   "S0563L02B02": {
    "known": "এখন আর বেশিক্ষণ",
-   "target": "any longer now"
+   "target": "any longer now",
+   "updated_at": "2026-08-01T17:07:22.7066+00:00"
   },
   "S0563L02B03": {
    "known": "আজ আর বেশিক্ষণ",
-   "target": "any longer today"
+   "target": "any longer today",
+   "updated_at": "2026-08-01T17:07:21.812899+00:00"
   },
   "S0563L02U01": {
    "known": "আমি আর বেশিক্ষণ পারতাম না।",
-   "target": "I couldn't any longer"
+   "target": "I couldn't any longer",
+   "updated_at": "2026-10-12T15:15:13.824415+00:00"
   },
   "S0563L02U02": {
    "known": "আমরা আর বেশিক্ষণ থাকতে চাই না।",
-   "target": "we don't want to stay any longer"
+   "target": "we don't want to stay any longer",
+   "updated_at": "2026-08-01T17:07:23.130169+00:00"
   },
   "S0563L03B01": {
    "known": "পারতাম না",
-   "target": "couldn't have"
+   "target": "couldn't have",
+   "updated_at": "2026-10-28T19:43:58.399384+00:00"
   },
   "S0563L03B02": {
    "known": "আমি পারতাম না",
-   "target": "I couldn't have"
+   "target": "I couldn't have",
+   "updated_at": "2026-08-01T17:07:22.763618+00:00"
   },
   "S0563L03B03": {
    "known": "আমরা পারতাম না",
-   "target": "we couldn't have"
+   "target": "we couldn't have",
+   "updated_at": "2026-08-01T17:07:22.774009+00:00"
   },
   "S0563L03U01": {
    "known": "আমি আর বেশিক্ষণ চালিয়ে যেতে পারতাম না।",
-   "target": "I couldn't have continued any longer"
+   "target": "I couldn't have continued any longer",
+   "updated_at": "2026-08-01T17:07:23.471592+00:00"
   },
   "S0563L03U02": {
    "known": "আমরা এটা করতে পারতাম না।",
-   "target": "we couldn't have done it"
+   "target": "we couldn't have done it",
+   "updated_at": "2026-08-01T17:07:23.272247+00:00"
   },
   "S0563L03U03": {
    "known": "সে বলেছিল আমি পারতাম না।",
-   "target": "she said I couldn't have"
+   "target": "she said I couldn't have",
+   "updated_at": "2026-08-01T17:07:23.302552+00:00"
   },
   "S0563L03U04": {
    "known": "আমার বাবা জানেন আমরা পারতাম না।",
-   "target": "my father knows we couldn't have"
+   "target": "my father knows we couldn't have",
+   "updated_at": "2026-08-01T17:07:23.409009+00:00"
   },
   "S0563L03U05": {
    "known": "আমি জানি আমরা পারতাম না।",
-   "target": "I know we couldn't have"
+   "target": "I know we couldn't have",
+   "updated_at": "2026-08-01T17:07:23.284013+00:00"
   }
  }
 }

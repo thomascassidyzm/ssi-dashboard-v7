@@ -1,6 +1,6 @@
 {
  "course": "por_br_for_eng",
- "at": "2026-11-18T14:40:10.986Z",
+ "at": "2026-11-18T18:40:56.376Z",
  "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
  "shortfall": {
   "S0057L02": {
@@ -490,43 +490,6 @@
      "role": "use",
      "known": "it matters to me",
      "target": "importa para mim",
-     "untaught": [
-      "mim"
-     ]
-    }
-   ]
-  },
-  "S0409L02": {
-   "lego": "it doesn't matter | não importa",
-   "before": "already under floor",
-   "delete": 2,
-   "counted_before": {
-    "b": 2,
-    "u": 6
-   },
-   "counted_after": {
-    "b": 2,
-    "u": 4
-   },
-   "author_build": 0,
-   "author_use": 1,
-   "avg_target_chars": 17,
-   "avg_known_chars": 20,
-   "rows": [
-    {
-     "row": "S0409L02U02",
-     "role": "use",
-     "known": "it doesn't matter to me",
-     "target": "não importa para mim",
-     "untaught": [
-      "mim"
-     ]
-    },
-    {
-     "row": "S0409L02U03",
-     "role": "use",
-     "known": "yes, it doesn't matter to me",
-     "target": "sim, não importa para mim",
      "untaught": [
       "mim"
      ]

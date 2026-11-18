@@ -1,263 +1,327 @@
 {
  "seed": 99,
- "at": "2026-11-18T14:40:01.414Z",
+ "at": "2026-11-18T18:40:49.104Z",
  "from": "live snapshot",
  "rows": {
   "S0099L01C01": {
    "known": "聞く",
-   "target": "ask"
+   "target": "ask",
+   "updated_at": "2026-10-12T17:13:22.326706+00:00"
   },
   "S0099L01C02": {
    "known": "た方がいい",
-   "target": "should"
+   "target": "should",
+   "updated_at": "2026-10-28T21:51:56.905423+00:00"
   },
   "S0099L01B01": {
    "known": "聞いた方がいいです",
-   "target": "you should ask"
+   "target": "you should ask",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01B02": {
    "known": "聞いた方がいいです",
-   "target": "you should ask"
+   "target": "you should ask",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01B03": {
    "known": "誰かに聞いた方がいいです",
-   "target": "you should ask someone"
+   "target": "you should ask someone",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01B04": {
    "known": "自分に聞いた方がいいです",
-   "target": "you should ask yourself"
+   "target": "you should ask yourself",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01B05": {
    "known": "なぜ聞いた方がいいですか",
-   "target": "you should ask why"
+   "target": "you should ask why",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01B06": {
    "known": "できるだけ早く聞いた方がいいです",
-   "target": "you should ask as soon as you can"
+   "target": "you should ask as soon as you can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01B07": {
    "known": "何を覚えているか聞いた方がいいです",
-   "target": "you should ask what you can remember"
+   "target": "you should ask what you can remember",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U01": {
    "known": "うまくいかなければ自分に聞いた方がいいです",
-   "target": "you should ask yourself why it's not working"
+   "target": "you should ask yourself why it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U02": {
    "known": "わからなければ誰かに聞いた方がいいです",
-   "target": "if you don't know, you should ask someone"
+   "target": "if you don't know, you should ask someone",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U03": {
    "known": "友達に聞いた方がいいかもしれません",
-   "target": "you should ask your friend"
+   "target": "you should ask your friend",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U04": {
    "known": "なぜそれが難しいのか自分に聞いた方がいいと思います",
-   "target": "I think you should ask yourself why it's difficult"
+   "target": "I think you should ask yourself why it's difficult",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U05": {
    "known": "できるだけ早く聞いた方がいいです",
-   "target": "you should ask as soon as you can"
+   "target": "you should ask as soon as you can",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U06": {
    "known": "どのくらい学んだか自分に聞いた方がいいです",
-   "target": "you should ask yourself how much you've learnt"
+   "target": "you should ask yourself how much you've learnt",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U07": {
    "known": "どうすれば上手になるか自分に聞いた方がいいです",
-   "target": "you should ask yourself how to speak better"
+   "target": "you should ask yourself how to speak better",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U08": {
    "known": "何を覚えているか自分に聞いた方がいいです",
-   "target": "you should ask yourself what you can remember"
+   "target": "you should ask yourself what you can remember",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U09": {
    "known": "なぜやめたいのかを自分に聞いた方がいいです",
-   "target": "you should ask yourself why you want to stop"
+   "target": "you should ask yourself why you want to stop",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U10": {
    "known": "誰かに聞いた方がいいですよ、うまくいかないときは",
-   "target": "you should ask someone when it's not working"
+   "target": "you should ask someone when it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U12": {
    "known": "もう準備できているかどうか自分に聞いた方がいいです",
-   "target": "you should ask yourself if you're ready yet"
+   "target": "you should ask yourself if you're ready yet",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U13": {
    "known": "準備が整ったらすぐに聞いた方がいいです",
-   "target": "you should ask as soon as you feel ready"
+   "target": "you should ask as soon as you feel ready",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U14": {
    "known": "うまくいかないときは誰かに聞いた方がいいです",
-   "target": "you should ask for help when it's not working"
+   "target": "you should ask for help when it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L01U15": {
    "known": "もっと理解できるように自分に聞いた方がいいです",
-   "target": "you should ask yourself if you understand enough"
+   "target": "you should ask yourself if you understand enough",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02B01": {
    "known": "自分",
-   "target": "yourself"
+   "target": "yourself",
+   "updated_at": "2026-10-12T22:31:45.93195+00:00"
   },
   "S0099L02B02": {
    "known": "自分に聞く",
-   "target": "ask yourself"
+   "target": "ask yourself",
+   "updated_at": "2026-10-29T00:15:06.699665+00:00"
   },
   "S0099L02B03": {
    "known": "自分をテストする",
-   "target": "test yourself"
+   "target": "test yourself",
+   "updated_at": "2026-10-28T23:18:58.089761+00:00"
   },
   "S0099L02B04": {
    "known": "自分で考える",
-   "target": "think for yourself"
+   "target": "think for yourself",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02B05": {
    "known": "自分をよく知ることが大事",
-   "target": "it is important to know yourself"
+   "target": "it is important to know yourself",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02B06": {
    "known": "自分を知る",
-   "target": "know yourself"
+   "target": "know yourself",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U01": {
    "known": "自分に聞いた方がいいです、なぜうまくいかないのかを",
-   "target": "you should ask yourself why it's not working"
+   "target": "you should ask yourself why it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U02": {
-   "known": "自分をテストすることが大事だと思います",
-   "target": "it's important to take time to test yourself"
+   "known": "自分をテストする時間を取ることは大切です。",
+   "target": "it's important to take time to test yourself",
+   "updated_at": "2026-11-18T14:27:53.530123+00:00"
   },
   "S0099L02U03": {
    "known": "どのくらい学んだか自分に聞いてみてください",
-   "target": "ask yourself how much you've learnt"
+   "target": "ask yourself how much you've learnt",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U04": {
    "known": "自分をテストする時間をとることが大切です",
-   "target": "it's important to take time to test yourself"
+   "target": "it's important to take time to test yourself",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U05": {
    "known": "準備ができているかどうか自分に聞いてみてください",
-   "target": "ask yourself if you're ready to go"
+   "target": "ask yourself if you're ready to go",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U06": {
    "known": "なぜやめたいのか自分に聞くといいです",
-   "target": "ask yourself why you want to stop"
+   "target": "ask yourself why you want to stop",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U08": {
    "known": "自分をテストすることが上達への道だと思います",
-   "target": "I think it's a good thing to test yourself"
+   "target": "I think it's a good thing to test yourself",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U09": {
    "known": "もっと上手にできるか自分に聞いてみてください",
-   "target": "ask yourself if you can do it better"
+   "target": "ask yourself if you can do it better",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U10": {
    "known": "何を覚えているか自分に聞いた方がいいです",
-   "target": "you should ask yourself what you can remember"
+   "target": "you should ask yourself what you can remember",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U11": {
    "known": "うまくいかないときは自分に聞いてみることが大事です",
-   "target": "when it's not working, ask yourself why"
+   "target": "when it's not working, ask yourself why",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L02U12": {
-   "known": "自分に聞いてみてください、本当に理解していますか？",
-   "target": "ask yourself if you understand enough"
+   "known": "十分に理解しているか、自分に聞いてみてください",
+   "target": "ask yourself if you understand enough",
+   "updated_at": "2026-11-18T14:33:22.846689+00:00"
   },
   "S0099L02U14": {
    "known": "自分に正しい答えを聞いてみることができます",
-   "target": "you can ask yourself what the answer is"
+   "target": "you can ask yourself what the answer is",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04C01": {
    "known": "うまく",
-   "target": "well"
+   "target": "well",
+   "updated_at": "2026-10-28T21:47:11.366525+00:00"
   },
   "S0099L04C02": {
    "known": "いかない",
-   "target": "not going"
+   "target": "not going",
+   "updated_at": "2026-08-06T15:07:52.312304+00:00"
   },
   "S0099L04B01": {
    "known": "うまくいかない",
-   "target": "it's not working"
+   "target": "it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04B02": {
    "known": "うまくいかない",
-   "target": "it's not working"
+   "target": "it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04B03": {
    "known": "なぜうまくいかないのか",
-   "target": "why it's not working"
+   "target": "why it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04B04": {
    "known": "うまくいかないときは",
-   "target": "when it's not working"
+   "target": "when it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04B05": {
    "known": "まだうまくいかない",
-   "target": "it's not working yet"
+   "target": "it's not working yet",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04B06": {
    "known": "うまくいかない場合",
-   "target": "if it's not working"
+   "target": "if it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04B07": {
    "known": "うまくいかないから",
-   "target": "because it's not working"
+   "target": "because it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U01": {
    "known": "うまくいかない理由を自分に聞いた方がいいです",
-   "target": "you should ask yourself why it's not working"
+   "target": "you should ask yourself why it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U02": {
    "known": "うまくいかないときは別のことをしてみてください",
-   "target": "when it's not working, you should do something else"
+   "target": "when it's not working, you should do something else",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U03": {
    "known": "うまくいかないなら誰かに聞いた方がいいです",
-   "target": "if it's not working, you should ask someone"
+   "target": "if it's not working, you should ask someone",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U04": {
    "known": "なぜうまくいかないのかを考えることが大事です",
-   "target": "it's important to consider why it's not working"
+   "target": "it's important to consider why it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U05": {
    "known": "まだうまくいかないと感じています",
-   "target": "I'm starting to feel like it's not working yet"
+   "target": "I'm starting to feel like it's not working yet",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U06": {
    "known": "うまくいかないときは別の方法を考えた方がいいです",
-   "target": "you should consider something else when it's not working"
+   "target": "you should consider something else when it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U08": {
    "known": "なぜうまくいかないのかを理解することが役に立ちます",
-   "target": "it's useful to understand why it's not working"
+   "target": "it's useful to understand why it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U09": {
    "known": "うまくいかないのは時間がかかるからだと思います",
-   "target": "I think it's not working because you need more time"
+   "target": "I think it's not working because you need more time",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U10": {
    "known": "うまくいかないと感じたときは自分に聞いてみてください",
-   "target": "ask yourself why when it's not working"
+   "target": "ask yourself why when it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U11": {
    "known": "まだうまくいかないけど、よくなっています",
-   "target": "it's not working yet but I'm starting to feel better"
+   "target": "it's not working yet but I'm starting to feel better",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U12": {
    "known": "うまくいかない場合は別のことをした方がいいです",
-   "target": "if it's not working, you should do something else"
+   "target": "if it's not working, you should do something else",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U13": {
    "known": "なぜうまくいかないのかはよくわかりません",
-   "target": "I'm not sure why it's not working"
+   "target": "I'm not sure why it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U14": {
    "known": "うまくいかなくても大丈夫です",
-   "target": "don't worry when it's not working"
+   "target": "don't worry when it's not working",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   },
   "S0099L04U15": {
    "known": "うまくいかないときは別のものをすることを考えた方がいいです",
-   "target": "when it's not working, consider playing something else"
+   "target": "when it's not working, consider playing something else",
+   "updated_at": "2026-06-19T07:57:28.47584+00:00"
   }
  }
 }

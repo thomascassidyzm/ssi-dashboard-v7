@@ -1435,8 +1435,8 @@
      "phrase_role": "build"
     },
     {
-     "known_text": "in the afternoon today",
-     "target_text": "à tarde hoje",
+     "known_text": "yesterday afternoon",
+     "target_text": "ontem à tarde",
      "phrase_role": "build"
     },
     {
@@ -1968,8 +1968,8 @@
      "phrase_role": "build"
     },
     {
-     "known_text": "just before",
-     "target_text": "só antes",
+     "known_text": "a little before",
+     "target_text": "um pouco antes",
      "phrase_role": "build"
     },
     {
@@ -2001,6 +2001,11 @@
      "known_text": "do you mind if I finish my coffee before you start?",
      "target_text": "você se importa se eu acabar o meu café antes de você começar?",
      "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to finish before",
+     "target_text": "quero acabar antes",
+     "phrase_role": "build"
     }
    ]
   }
@@ -2077,18 +2082,23 @@
      "phrase_role": "build"
     },
     {
-     "known_text": "it doesn't matter now",
-     "target_text": "não importa agora",
+     "known_text": "but it doesn't matter",
+     "target_text": "mas não importa",
      "phrase_role": "build"
     },
     {
-     "known_text": "it doesn't matter today",
-     "target_text": "não importa hoje",
+     "known_text": "it doesn't matter when",
+     "target_text": "não importa quando",
      "phrase_role": "build"
     },
     {
-     "known_text": "no, it doesn't matter",
-     "target_text": "não, não importa",
+     "known_text": "it doesn't matter what he said",
+     "target_text": "não importa o que ele disse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it doesn't matter what she wants",
+     "target_text": "não importa o que ela quer",
      "phrase_role": "use"
     },
     {
@@ -2097,14 +2107,19 @@
      "phrase_role": "use"
     },
     {
-     "known_text": "no, it doesn't matter now",
-     "target_text": "não, não importa agora",
+     "known_text": "it doesn't matter if he's not ready",
+     "target_text": "não importa se não está pronto",
      "phrase_role": "use"
     },
     {
      "known_text": "they say that it doesn't matter",
      "target_text": "eles dizem que não importa",
      "phrase_role": "use"
+    },
+    {
+     "known_text": "it doesn't matter to her",
+     "target_text": "não importa para ela",
+     "phrase_role": "build"
     }
    ],
    "409:3": [
@@ -2124,13 +2139,13 @@
      "phrase_role": "build"
     },
     {
-     "known_text": "what we do today",
-     "target_text": "o que façamos hoje",
+     "known_text": "it doesn't matter what we do",
+     "target_text": "não importa o que façamos",
      "phrase_role": "build"
     },
     {
-     "known_text": "what we do now",
-     "target_text": "o que façamos agora",
+     "known_text": "what we do with it",
+     "target_text": "o que façamos com isso",
      "phrase_role": "build"
     },
     {
@@ -2144,8 +2159,8 @@
      "phrase_role": "use"
     },
     {
-     "known_text": "yes, it doesn't matter what we do",
-     "target_text": "sim, não importa o que façamos",
+     "known_text": "it doesn't matter what we do with the money",
+     "target_text": "não importa o que façamos com o dinheiro",
      "phrase_role": "use"
     },
     {
@@ -2154,9 +2169,14 @@
      "phrase_role": "use"
     },
     {
-     "known_text": "it doesn't matter what we do now",
-     "target_text": "não importa o que façamos agora",
+     "known_text": "she said that it doesn't matter what we do",
+     "target_text": "ela disse que não importa o que façamos",
      "phrase_role": "use"
+    },
+    {
+     "known_text": "what we do tomorrow",
+     "target_text": "o que façamos amanhã",
+     "phrase_role": "build"
     }
    ]
   }

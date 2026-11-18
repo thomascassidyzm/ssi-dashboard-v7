@@ -36,7 +36,6 @@
   493,
   494,
   559,
-  570,
   582,
   583,
   584,
@@ -66,7 +65,7 @@
   "lego_update": 0,
   "insert": 0,
   "update": 0,
-  "delete": 148
+  "delete": 145
  },
  "structural": false,
  "recorded_today_by_others": [],
@@ -149,7 +148,6 @@
   "S0494L02: after the edit: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: back-fill 0 BUILD + 3 USE authored from taught chunks before these deletes apply (backfill.json))",
   "S0494L03: after the edit: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone) (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))",
   "S0559L03: after the edit: USE: need 5+, got 4 (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))",
-  "S0570L03: after the edit: USE: need 5+, got 2 (accepted: back-fill 0 BUILD + 3 USE authored from taught chunks before these deletes apply (backfill.json))",
   "S0582L01: after the edit: USE: need 5+, got 0 (accepted: back-fill 0 BUILD + 4 USE authored from taught chunks before these deletes apply (backfill.json))",
   "S0583L02: after the edit: USE: need 5+, got 0 (accepted: back-fill 0 BUILD + 4 USE authored from taught chunks before these deletes apply (backfill.json))",
   "S0584L03: after the edit: USE: need 5+, got 1 (accepted: back-fill 0 BUILD + 4 USE authored from taught chunks before these deletes apply (backfill.json))",
@@ -615,17 +613,6 @@
    "rewritten": 0,
    "inserted": 0,
    "accept_gap": "back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json)"
-  },
-  {
-   "lego": "S0570L03",
-   "is_new": true,
-   "before": "ok",
-   "after": "USE: need 5+, got 2",
-   "real_builds_after": 3,
-   "deleted": 3,
-   "rewritten": 0,
-   "inserted": 0,
-   "accept_gap": "back-fill 0 BUILD + 3 USE authored from taught chunks before these deletes apply (backfill.json)"
   },
   {
    "lego": "S0582L01",
