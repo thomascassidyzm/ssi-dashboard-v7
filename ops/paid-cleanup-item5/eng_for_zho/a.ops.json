@@ -63,8 +63,8 @@
    "op": "phrase.update",
    "phrase_id": "eng_for_zho:S0157L02B04",
    "set": {
-    "target_text": "Maybe next month",
-    "known_text": "也许下个月"
+    "target_text": "Next month, not today",
+    "known_text": "下个月，不是今天"
    },
    "expect": {
     "known_text": "很快下个月",
@@ -147,8 +147,8 @@
    "op": "phrase.update",
    "phrase_id": "eng_for_zho:S0267L01B02",
    "set": {
-    "target_text": "Have you heard from your friend recently?",
-    "known_text": "最近你有没有听到你朋友的消息"
+    "target_text": "Have you heard from your friend this morning?",
+    "known_text": "今天早上你有没有听到你朋友的消息"
    },
    "expect": {
     "known_text": "现在你有没有听到你朋友的消息",

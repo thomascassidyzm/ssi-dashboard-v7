@@ -4,7 +4,7 @@
    "op": "phrase.update",
    "phrase_id": "eng_for_kan:S0034L03B02",
    "set": {
-    "target_text": "he doesn't want to talk"
+    "target_text": "he doesn't want to speak"
    },
    "expect": {
     "known_text": "ಅವನಿಗೆ ಮಾತಾಡೋದು ಬೇಡ",
@@ -49,8 +49,8 @@
    "op": "phrase.update",
    "phrase_id": "eng_for_kan:S0081L01B03",
    "set": {
-    "target_text": "do you want to start today?",
-    "known_text": "ಇವತ್ತು ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?"
+    "target_text": "do you want to start tomorrow?",
+    "known_text": "ನಾಳೆ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?"
    },
    "expect": {
     "known_text": "ಕಳೆದ ವಾರ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?",
