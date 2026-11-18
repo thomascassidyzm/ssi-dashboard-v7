@@ -1,0 +1,347 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0089L01B04",
+    "seed_number": 89,
+    "lego_index": 1,
+    "position": 14,
+    "known_text": "I think that I've done a lot for you",
+    "target_text": "eu acho que fiz muito por você",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 9,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0178L02B04",
+    "seed_number": 178,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "although I wanted to see you yesterday",
+    "target_text": "embora quisesse te ver ontem",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0188L01U05",
+    "seed_number": 188,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I don't need to change how I speak",
+    "target_text": "não preciso mudar como falo",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 8,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0218L02B04",
+    "seed_number": 218,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "I think I didn't do much",
+    "target_text": "acho que não fiz muito",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01B02",
+   "expect": {
+    "known_text": "I think that I've done a lot today",
+    "target_text": "eu acho que fiz muito hoje"
+   },
+   "set": {
+    "known_text": "but I think that I've done a lot",
+    "target_text": "mas eu acho que fiz muito",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U01",
+   "expect": {
+    "known_text": "I think that I've done a lot to learn",
+    "target_text": "acho que fiz muito para aprender"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot to learn",
+    "target_text": "eu acho que fiz muito para aprender",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U02",
+   "expect": {
+    "known_text": "I think that I've already done a lot",
+    "target_text": "acho que já fiz muito"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot with my friends",
+    "target_text": "eu acho que fiz muito com meus amigos",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U03",
+   "expect": {
+    "known_text": "I think that I've done a lot but I'm not ready yet",
+    "target_text": "acho que fiz muito mas ainda não estou pronto"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot, but I'm not ready yet",
+    "target_text": "eu acho que fiz muito, mas ainda não estou pronto",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U04",
+   "expect": {
+    "known_text": "I think that I've done a lot this morning",
+    "target_text": "acho que fiz muito esta manhã"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot this morning",
+    "target_text": "eu acho que fiz muito esta manhã",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U05",
+   "expect": {
+    "known_text": "I don't think that I've done a lot",
+    "target_text": "não acho que fiz muito"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot because I wanted to improve",
+    "target_text": "eu acho que fiz muito porque queria melhorar",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U06",
+   "expect": {
+    "known_text": "I think that I've done a lot today",
+    "target_text": "acho que fiz muito hoje"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot today",
+    "target_text": "eu acho que fiz muito hoje",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U07",
+   "expect": {
+    "known_text": "I think that I've done a lot but I want to do more",
+    "target_text": "acho que fiz muito mas quero fazer mais"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot, but I want to do more",
+    "target_text": "eu acho que fiz muito, mas quero fazer mais",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0089L01U08",
+   "expect": {
+    "known_text": "I think that I've done a lot this week",
+    "target_text": "acho que fiz muito esta semana"
+   },
+   "set": {
+    "known_text": "I think that I've done a lot this week",
+    "target_text": "eu acho que fiz muito esta semana",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0114L01B02",
+   "expect": {
+    "known_text": "worse today",
+    "target_text": "pior hoje"
+   },
+   "set": {
+    "known_text": "I feel worse",
+    "target_text": "me sinto pior",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0119L02B03",
+   "expect": {
+    "known_text": "before you leave today",
+    "target_text": "antes de ir embora hoje"
+   },
+   "set": {
+    "known_text": "to ask you before you leave",
+    "target_text": "te perguntar antes de ir embora",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0134L03B03",
+   "expect": {
+    "known_text": "you work here",
+    "target_text": "trabalha aqui"
+   },
+   "set": {
+    "known_text": "you work with someone",
+    "target_text": "trabalha com alguém",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0167L02B03",
+   "expect": {
+    "known_text": "in the afternoon today",
+    "target_text": "à tarde hoje"
+   },
+   "set": {
+    "known_text": "yesterday afternoon",
+    "target_text": "ontem à tarde",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0178L02B02",
+   "expect": {
+    "known_text": "although I wanted to see you today",
+    "target_text": "embora quisesse te ver hoje"
+   },
+   "set": {
+    "known_text": "although I wanted to see you before you leave",
+    "target_text": "embora quisesse te ver antes de ir embora",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0178L02B03",
+   "expect": {
+    "known_text": "although I wanted to see you here",
+    "target_text": "embora quisesse te ver aqui"
+   },
+   "set": {
+    "known_text": "I couldn't, although I wanted to see you",
+    "target_text": "não consegui, embora quisesse te ver",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0188L01B03",
+   "expect": {
+    "known_text": "I don't need to change today",
+    "target_text": "não preciso mudar hoje"
+   },
+   "set": {
+    "known_text": "I don't need to change much",
+    "target_text": "não preciso mudar muito",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0218L02B03",
+   "expect": {
+    "known_text": "didn't do much today",
+    "target_text": "não fiz muito hoje"
+   },
+   "set": {
+    "known_text": "but I didn't do much",
+    "target_text": "mas não fiz muito",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}
