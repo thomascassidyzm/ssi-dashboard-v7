@@ -1,0 +1,2115 @@
+{
+ "phrases": {
+  "S0027L02C01": {
+   "id": "spa_mx_for_eng:S0027L02C01",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 1,
+   "known_text": "taking",
+   "target_text": "tomar",
+   "word_count": 5,
+   "lego_count": 1,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "buildup": "component",
+    "component_index": 0
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 148,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "component",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "09896716-abc0-42ce-8cf1-4ca3ad12da6c",
+   "target1_audio_id": "f83698a3-5c7e-4fb0-908e-d9fc4f2fcfa4",
+   "target2_audio_id": "d682d2f4-af40-4634-890e-6b5f192cffcc",
+   "qa_checked": null,
+   "target1_duration_ms": 1896,
+   "target2_duration_ms": 2016,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97",
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "tomar",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02C02": {
+   "id": "spa_mx_for_eng:S0027L02C02",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 2,
+   "known_text": "time",
+   "target_text": "tiempo",
+   "word_count": 6,
+   "lego_count": 1,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "buildup": "component",
+    "component_index": 1
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 148,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "component",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "7e4cbda4-0816-4752-a528-43701d9b8689",
+   "target1_audio_id": "44a35382-2086-464b-8243-22fb49828dae",
+   "target2_audio_id": "f81836b4-8614-47e8-9a31-3ec44cffdfee",
+   "qa_checked": null,
+   "target1_duration_ms": 1968,
+   "target2_duration_ms": 2088,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b",
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "tiempo",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02B01": {
+   "id": "spa_mx_for_eng:S0027L02B01",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 3,
+   "known_text": "taking too much time",
+   "target_text": "tomar demasiado tiempo",
+   "word_count": 22,
+   "lego_count": 1,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "buildup": "lego"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "382e8282-bd87-4d9c-8c9e-f310949a1271",
+   "target1_audio_id": "5956d78d-bcde-4c64-90af-e78d20d411db",
+   "target2_audio_id": "5d8d6d26-858f-45ff-a96f-0bd5a26e11cb",
+   "qa_checked": null,
+   "target1_duration_ms": 3168,
+   "target2_duration_ms": 3192,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": "tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02B02": {
+   "id": "spa_mx_for_eng:S0027L02B02",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 4,
+   "known_text": "are you going to take too much time today?",
+   "target_text": "¿vas a tomar demasiado tiempo hoy?",
+   "word_count": 32,
+   "lego_count": 9,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 160,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "33af347c-91aa-40db-abcf-1361afcf54ba",
+   "target1_audio_id": "9efbf24d-bfb2-432a-a7b0-c2ba6b170938",
+   "target2_audio_id": "17a4d0c3-7c72-4da6-aa2a-4fd1b60eda29",
+   "qa_checked": null,
+   "target1_duration_ms": 4056,
+   "target2_duration_ms": 3984,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "¿vas",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " a",
+     "isGhost": true
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "today",
+     "legoId": "S0007L02",
+     "target": " hoy",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02B03": {
+   "id": "spa_mx_for_eng:S0027L02B03",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 5,
+   "known_text": "I don't like taking too much time",
+   "target_text": "no me gusta tomar demasiado tiempo",
+   "word_count": 34,
+   "lego_count": 7,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "end",
+   "known_audio_id": "1d4bd5e7-0a66-4888-8305-277a9d521388",
+   "target1_audio_id": "f57a67d3-1f52-403c-8a30-a6cea2971b11",
+   "target2_audio_id": "7077c40d-c0a9-425f-bc35-30ee5f8420e6",
+   "qa_checked": null,
+   "target1_duration_ms": 3816,
+   "target2_duration_ms": 3984,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02B04": {
+   "id": "spa_mx_for_eng:S0027L02B04",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 6,
+   "known_text": "I'm not going to be able to take too much time today",
+   "target_text": "no voy a poder tomar demasiado tiempo hoy",
+   "word_count": 41,
+   "lego_count": 12,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 150,
+   "updated_at": "2026-10-12T16:29:39.393112+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "01387d8f-a339-4a6c-9242-6e60272bce83",
+   "target1_audio_id": "128364ff-1ace-4458-93ca-ccc292bdaf18",
+   "target2_audio_id": "0cfb7870-8013-4a30-b3ce-49c24c7993a8",
+   "qa_checked": null,
+   "target1_duration_ms": 4416,
+   "target2_duration_ms": 4680,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "not going to be able to",
+     "legoId": "S0024L01",
+     "target": "no voy a poder",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "today",
+     "legoId": "S0007L02",
+     "target": " hoy",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02U01": {
+   "id": "spa_mx_for_eng:S0027L02U01",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 7,
+   "known_text": "I don't like taking too much time speaking",
+   "target_text": "no me gusta tomar demasiado tiempo hablando",
+   "word_count": 43,
+   "lego_count": 8,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.748Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "6a7ebf90-9f03-44f6-a021-f63448523a87",
+   "target1_audio_id": "bdb11456-4594-4e20-a1e2-ff2824937dee",
+   "target2_audio_id": "1a8aa436-8d09-495a-9444-e9d17fa6a1b2",
+   "qa_checked": null,
+   "target1_duration_ms": 4320,
+   "target2_duration_ms": 4560,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "speaking",
+     "legoId": "S0005L03",
+     "target": " hablando",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02U02": {
+   "id": "spa_mx_for_eng:S0027L02U02",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 8,
+   "known_text": "I don't like taking too much time speaking Spanish",
+   "target_text": "no me gusta tomar demasiado tiempo hablando español",
+   "word_count": 51,
+   "lego_count": 9,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.748Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "585ee3ad-5714-4225-be5a-11e9f04a2070",
+   "target1_audio_id": "e912051f-9e48-4dd5-8ce9-1fbafcb89844",
+   "target2_audio_id": "108ab26a-68c5-4ddf-b0e7-892cbb4b91b8",
+   "qa_checked": null,
+   "target1_duration_ms": 4968,
+   "target2_duration_ms": 5040,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "speaking",
+     "legoId": "S0005L03",
+     "target": " hablando",
+     "isGhost": false
+    },
+    {
+     "known": "Spanish",
+     "legoId": "S0001L03",
+     "target": " español",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02U03": {
+   "id": "spa_mx_for_eng:S0027L02U03",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 9,
+   "known_text": "I don't like taking too much time with someone else",
+   "target_text": "no me gusta tomar demasiado tiempo con otra persona",
+   "word_count": 51,
+   "lego_count": 10,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.748Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 149,
+   "updated_at": "2026-10-12T16:29:39.393112+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "4c610b33-6d54-4b08-9081-fdc1b72af307",
+   "target1_audio_id": "272a70cb-eca8-4866-ada7-55089d8a88da",
+   "target2_audio_id": "0d9f4b31-f115-4926-b590-4499995fdb85",
+   "qa_checked": null,
+   "target1_duration_ms": 4920,
+   "target2_duration_ms": 5184,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "with someone else",
+     "legoId": "S0005L04",
+     "target": " con otra persona",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02U04": {
+   "id": "spa_mx_for_eng:S0027L02U04",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 10,
+   "known_text": "are you going to take too much time before I have to go?",
+   "target_text": "¿vas a tomar demasiado tiempo antes de que tenga que irme?",
+   "word_count": 56,
+   "lego_count": 13,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.749Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 160,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "start",
+   "known_audio_id": "42405d59-d39e-4527-8976-b4a53c28ad55",
+   "target1_audio_id": "08704d11-fb0c-4d6c-8c75-bea2269cd1d5",
+   "target2_audio_id": "c32d7702-fff5-44c1-9ada-3e76e7cba4f1",
+   "qa_checked": null,
+   "target1_duration_ms": 5352,
+   "target2_duration_ms": 5400,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "¿vas",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " a",
+     "isGhost": true
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "before I have to go",
+     "legoId": "S0025L03",
+     "target": " antes de que tenga que irme",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02U05": {
+   "id": "spa_mx_for_eng:S0027L02U05",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 11,
+   "known_text": "I don't like taking too much time speaking Spanish with you",
+   "target_text": "no me gusta tomar demasiado tiempo hablando español contigo",
+   "word_count": 59,
+   "lego_count": 11,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.749Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "0d18e81d-6f77-4275-a7dd-d7b4eec1ba90",
+   "target1_audio_id": "29034a75-2c22-47ba-a47e-37e3f160fe20",
+   "target2_audio_id": "2e06aeb5-5259-4c0e-b2a7-dede4834adba",
+   "qa_checked": null,
+   "target1_duration_ms": 5328,
+   "target2_duration_ms": 5544,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "speaking",
+     "legoId": "S0005L03",
+     "target": " hablando",
+     "isGhost": false
+    },
+    {
+     "known": "Spanish",
+     "legoId": "S0001L03",
+     "target": " español",
+     "isGhost": false
+    },
+    {
+     "known": "with you",
+     "legoId": "S0001L04",
+     "target": " contigo",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L02U06": {
+   "id": "spa_mx_for_eng:S0027L02U06",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 2,
+   "position": 12,
+   "known_text": "I don't like taking too much time speaking with someone else today",
+   "target_text": "no me gusta tomar demasiado tiempo hablando con otra persona hoy",
+   "word_count": 64,
+   "lego_count": 12,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.749Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 149,
+   "updated_at": "2026-10-12T16:29:39.393112+00:00",
+   "created_at": "2026-03-10T14:02:00.808046+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "89745bfb-dd96-4f6e-8a82-c1ba75560d6d",
+   "target1_audio_id": "e1231da3-0f82-4df6-beff-adecfee32beb",
+   "target2_audio_id": "273da1aa-b465-49da-b6e5-0513b89e32a7",
+   "qa_checked": null,
+   "target1_duration_ms": 5688,
+   "target2_duration_ms": 6000,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "speaking",
+     "legoId": "S0005L03",
+     "target": " hablando",
+     "isGhost": false
+    },
+    {
+     "known": "with someone else",
+     "legoId": "S0005L04",
+     "target": " con otra persona",
+     "isGhost": false
+    },
+    {
+     "known": "today",
+     "legoId": "S0007L02",
+     "target": " hoy",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03B01": {
+   "id": "spa_mx_for_eng:S0027L03B01",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 3,
+   "known_text": "to answer",
+   "target_text": "para contestar",
+   "word_count": 14,
+   "lego_count": 1,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "buildup": "lego"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+   "target1_audio_id": "fcdba271-4cae-47e3-9a54-e4272bde5f65",
+   "target2_audio_id": "cd77375c-38a0-4183-be28-11db55f36d82",
+   "qa_checked": null,
+   "target1_duration_ms": 2544,
+   "target2_duration_ms": 2616,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": "para contestar",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03B02": {
+   "id": "spa_mx_for_eng:S0027L03B02",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 4,
+   "known_text": "I want time to answer in Spanish",
+   "target_text": "quiero tiempo para contestar en español",
+   "word_count": 39,
+   "lego_count": 7,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "a6b83d56-4631-4926-98bc-44834c2a58df",
+   "target1_audio_id": "da7a14d2-ce9f-4bc3-9e07-8dd4095eadb8",
+   "target2_audio_id": "734e1f69-5459-4daf-924d-3d9cde9ef112",
+   "qa_checked": null,
+   "target1_duration_ms": 3984,
+   "target2_duration_ms": 4128,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "I want",
+     "legoId": "S0001L01",
+     "target": "quiero",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tiempo",
+     "isGhost": true
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "in",
+     "legoId": "S0004L03",
+     "target": " en",
+     "isGhost": false
+    },
+    {
+     "known": "Spanish",
+     "legoId": "S0001L03",
+     "target": " español",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03B03": {
+   "id": "spa_mx_for_eng:S0027L03B03",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 5,
+   "known_text": "are you going to take too much time to answer today?",
+   "target_text": "¿vas a tomar demasiado tiempo para contestar hoy?",
+   "word_count": 47,
+   "lego_count": 11,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 160,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "end",
+   "known_audio_id": "c3757acc-d488-44c0-a65c-ca281ceabf82",
+   "target1_audio_id": "cae9bb15-2be3-48da-9b57-a8ec9a387c0a",
+   "target2_audio_id": "cf802f6f-85a5-4fcb-8dcd-b52ceaefb9c0",
+   "qa_checked": null,
+   "target1_duration_ms": 4704,
+   "target2_duration_ms": 4752,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "¿vas",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " a",
+     "isGhost": true
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "today",
+     "legoId": "S0007L02",
+     "target": " hoy",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03B04": {
+   "id": "spa_mx_for_eng:S0027L03B04",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 6,
+   "known_text": "I want time to answer in Spanish today",
+   "target_text": "quiero tiempo para contestar en español hoy",
+   "word_count": 48,
+   "lego_count": 8,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 151,
+   "updated_at": "2026-10-29T03:32:53.762569+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "5215541f-af1b-4c06-b27a-7ebddbb5246d",
+   "target1_audio_id": "c2ca80dc-3299-4c3e-b5ba-84db41e2850b",
+   "target2_audio_id": "55952ccf-05be-4508-a1b2-0ebcb040fe24",
+   "qa_checked": null,
+   "target1_duration_ms": 2664,
+   "target2_duration_ms": 2592,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "I want",
+     "legoId": "S0001L01",
+     "target": "quiero",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tiempo",
+     "isGhost": true
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "what I mean",
+     "legoId": "S0008L02",
+     "target": " lo que quiero decir",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "57e9b3b4-0d87-409f-94d5-f199023be09a",
+   "frame_mask": null
+  },
+  "S0027L03U01": {
+   "id": "spa_mx_for_eng:S0027L03U01",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 7,
+   "known_text": "I don't like taking too much time to answer",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar",
+   "word_count": 49,
+   "lego_count": 9,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.887Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "end",
+   "known_audio_id": "d123260b-fa56-433c-902b-1c86d32d286d",
+   "target1_audio_id": "4dd2b1a2-60e7-410e-8de7-37dc2f113800",
+   "target2_audio_id": "f7f8d9cb-d614-4216-ba1f-93400d714623",
+   "qa_checked": null,
+   "target1_duration_ms": 4776,
+   "target2_duration_ms": 5064,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03U02": {
+   "id": "spa_mx_for_eng:S0027L03U02",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 8,
+   "known_text": "I'd like time to answer in Spanish soon",
+   "target_text": "me gustaría tiempo para contestar en español pronto",
+   "word_count": 51,
+   "lego_count": 8,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.887Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 150,
+   "updated_at": "2026-10-12T16:29:39.393112+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "1d75dbe7-a99a-4e39-afc8-2adbdea0fffb",
+   "target1_audio_id": "c2638059-b519-4b3e-8ebe-9a72f01d95ae",
+   "target2_audio_id": "0cd57c1c-d2c0-4622-bdc3-0385cc7092f3",
+   "qa_checked": null,
+   "target1_duration_ms": 4896,
+   "target2_duration_ms": 5136,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "I'd like",
+     "legoId": "S0011L01",
+     "target": "me gustaría",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tiempo",
+     "isGhost": true
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "in",
+     "legoId": "S0004L03",
+     "target": " en",
+     "isGhost": false
+    },
+    {
+     "known": "Spanish",
+     "legoId": "S0001L03",
+     "target": " español",
+     "isGhost": false
+    },
+    {
+     "known": "soon",
+     "legoId": "S0023L02",
+     "target": " pronto",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03U03": {
+   "id": "spa_mx_for_eng:S0027L03U03",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 9,
+   "known_text": "I don't like taking too much time to answer today",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar hoy",
+   "word_count": 53,
+   "lego_count": 10,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.887Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "end",
+   "known_audio_id": "fda82d10-aeaa-4da8-94ec-36011356557e",
+   "target1_audio_id": "693ca616-d088-4fd0-b966-b63aea0c5192",
+   "target2_audio_id": "4ff708b7-c98c-4644-ba81-207f6f99d522",
+   "qa_checked": null,
+   "target1_duration_ms": 4848,
+   "target2_duration_ms": 5136,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "today",
+     "legoId": "S0007L02",
+     "target": " hoy",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03U04": {
+   "id": "spa_mx_for_eng:S0027L03U04",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 10,
+   "known_text": "I don't like taking too much time to answer in Spanish",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar en español",
+   "word_count": 60,
+   "lego_count": 11,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.887Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "end",
+   "known_audio_id": "bb61e9bb-0e4d-456e-8956-773a6227af03",
+   "target1_audio_id": "1caa6f73-aa0c-46dd-bdab-ea101d5a9b0e",
+   "target2_audio_id": "1fe957b5-f7b8-4c57-bce2-815c9d1c5f57",
+   "qa_checked": null,
+   "target1_duration_ms": 5472,
+   "target2_duration_ms": 5688,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "in",
+     "legoId": "S0004L03",
+     "target": " en",
+     "isGhost": false
+    },
+    {
+     "known": "Spanish",
+     "legoId": "S0001L03",
+     "target": " español",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03U05": {
+   "id": "spa_mx_for_eng:S0027L03U05",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 11,
+   "known_text": "I don't like taking too much time to answer with someone else",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar con otra persona",
+   "word_count": 66,
+   "lego_count": 12,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.887Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 149,
+   "updated_at": "2026-10-12T16:29:39.393112+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "d7c822ce-d5fb-42e2-bc84-cbb0b5b477ee",
+   "target1_audio_id": "ab3aea86-17af-4668-8f00-8eb9d6c2390b",
+   "target2_audio_id": "b59c0139-33ac-4394-a092-66f3f9949d0d",
+   "qa_checked": null,
+   "target1_duration_ms": 5784,
+   "target2_duration_ms": 6192,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "with someone else",
+     "legoId": "S0005L04",
+     "target": " con otra persona",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03U06": {
+   "id": "spa_mx_for_eng:S0027L03U06",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 12,
+   "known_text": "I don't like taking too much time to answer in Spanish today",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar en español hoy",
+   "word_count": 69,
+   "lego_count": 12,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:00.887Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 151,
+   "updated_at": "2026-10-29T03:32:53.761984+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "1756f1f3-24af-4325-b28c-7457ef9373bd",
+   "target1_audio_id": "6c801f5d-cfb5-431d-8bca-bcd642ca8e47",
+   "target2_audio_id": "bbdb67db-d07d-4736-8d58-e8d609c8067b",
+   "qa_checked": null,
+   "target1_duration_ms": 3624,
+   "target2_duration_ms": 3720,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "I like",
+     "legoId": "S0026L01",
+     "target": " me gusta",
+     "isGhost": false
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "what I mean",
+     "legoId": "S0008L02",
+     "target": " lo que quiero decir",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "57e9b3b4-0d87-409f-94d5-f199023be09a",
+   "frame_mask": null
+  },
+  "S0028L01U06": {
+   "id": "spa_mx_for_eng:S0028L01U06",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 28,
+   "lego_index": 1,
+   "position": 9,
+   "known_text": "it's useful to not take too much time to answer",
+   "target_text": "es útil no tomar demasiado tiempo para contestar",
+   "word_count": 48,
+   "lego_count": 10,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T14:02:55.625Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 147,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:55.674251+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "start",
+   "known_audio_id": "896df167-f365-4f0b-9874-bb76305e68b0",
+   "target1_audio_id": "e2ccc4db-1d70-4ddd-8f9a-dbcc75580248",
+   "target2_audio_id": "8f2caf7c-b153-42f9-8c5b-1a871613000f",
+   "qa_checked": null,
+   "target1_duration_ms": 4752,
+   "target2_duration_ms": 5040,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "it's useful",
+     "legoId": "S0028L01",
+     "target": "es útil",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " no",
+     "isGhost": true
+    },
+    {
+     "known": "taking too much time",
+     "legoId": "S0027L02",
+     "target": " tomar demasiado tiempo",
+     "isGhost": false
+    },
+    {
+     "known": "to answer",
+     "legoId": "S0027L03",
+     "target": " para contestar",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0065L02B03": {
+   "id": "spa_mx_for_eng:S0065L02B03",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 65,
+   "lego_index": 2,
+   "position": 5,
+   "known_text": "to take time to test yourself",
+   "target_text": "tomar tiempo para ponerte a prueba",
+   "word_count": 34,
+   "lego_count": 6,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 164,
+   "updated_at": "2026-10-12T16:29:46.794267+00:00",
+   "created_at": "2026-03-10T15:16:05.960215+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "build",
+   "connected_lego_ids": [],
+   "lego_position": "end",
+   "known_audio_id": "36b884cb-7e95-4727-a58b-46e972ab5320",
+   "target1_audio_id": "a0bca3ca-a33c-43c2-b3eb-bc8e063410e2",
+   "target2_audio_id": "1fdb7d02-4d81-4b73-9916-8b6c9e351a3f",
+   "qa_checked": null,
+   "target1_duration_ms": 3888,
+   "target2_duration_ms": 3912,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "tomar",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tiempo",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " para",
+     "isGhost": true
+    },
+    {
+     "known": "to test yourself",
+     "legoId": "S0065L02",
+     "target": " ponerte a prueba",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0065L02U01": {
+   "id": "spa_mx_for_eng:S0065L02U01",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 65,
+   "lego_index": 2,
+   "position": 6,
+   "known_text": "it's important to take time to test yourself",
+   "target_text": "es importante tomar tiempo para ponerte a prueba",
+   "word_count": 48,
+   "lego_count": 8,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T15:16:05.910Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 164,
+   "updated_at": "2026-10-12T16:29:46.794267+00:00",
+   "created_at": "2026-03-10T15:16:05.960215+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "end",
+   "known_audio_id": "665dad39-0714-4fa6-bbcc-2ed724b273ef",
+   "target1_audio_id": "c075e209-f51c-4447-9c3b-549408fe3995",
+   "target2_audio_id": "e7094e2a-cfa0-4abd-8c33-8c6c9be27f79",
+   "qa_checked": null,
+   "target1_duration_ms": 4752,
+   "target2_duration_ms": 4968,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "es",
+     "isGhost": true
+    },
+    {
+     "known": "important",
+     "legoId": "S0065L01",
+     "target": " importante",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tomar",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tiempo",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " para",
+     "isGhost": true
+    },
+    {
+     "known": "to test yourself",
+     "legoId": "S0065L02",
+     "target": " ponerte a prueba",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0066L01U04": {
+   "id": "spa_mx_for_eng:S0066L01U04",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 66,
+   "lego_index": 1,
+   "position": 7,
+   "known_text": "it's not difficult to take time to improve as often as possible",
+   "target_text": "no es difícil tomar tiempo para mejorar lo más seguido posible",
+   "word_count": 62,
+   "lego_count": 12,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T15:17:23.907Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 163,
+   "updated_at": "2026-10-12T16:29:40.745619+00:00",
+   "created_at": "2026-03-10T15:17:23.954229+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "start",
+   "known_audio_id": "4ee65956-d024-4290-a172-3677f86212ec",
+   "target1_audio_id": "87a142bc-2a2e-4a88-8d6d-7f5224e700f3",
+   "target2_audio_id": "47a23998-a069-4df2-9307-682b8e0a8d0d",
+   "qa_checked": null,
+   "target1_duration_ms": 5496,
+   "target2_duration_ms": 5688,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "no",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " es",
+     "isGhost": true
+    },
+    {
+     "known": "difficult",
+     "legoId": "S0066L01",
+     "target": " difícil",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tomar",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tiempo",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " para",
+     "isGhost": true
+    },
+    {
+     "known": "to improve",
+     "legoId": "S0044L03",
+     "target": " mejorar",
+     "isGhost": false
+    },
+    {
+     "known": "as frequently as possible",
+     "legoId": "S0003L03",
+     "target": " lo más seguido posible",
+     "isGhost": false
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0094L03U05": {
+   "id": "spa_mx_for_eng:S0094L03U05",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 94,
+   "lego_index": 3,
+   "position": 16,
+   "known_text": "it's going to take time to learn well",
+   "target_text": "va a tomar tiempo para aprender bien",
+   "word_count": 36,
+   "lego_count": 8,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "format": "build_use",
+    "scored_at": "2026-03-10T16:24:29.922Z"
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 175,
+   "updated_at": "2026-10-12T16:29:42.530819+00:00",
+   "created_at": "2026-03-10T16:24:29.974644+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "use",
+   "connected_lego_ids": [],
+   "lego_position": "start",
+   "known_audio_id": "6154d968-69a6-4b83-9158-25a5e21ec56c",
+   "target1_audio_id": "5e422a66-4459-456a-afe1-ff98a7372889",
+   "target2_audio_id": "40f40944-acbd-4685-adee-c440d932cca8",
+   "qa_checked": null,
+   "target1_duration_ms": 4032,
+   "target2_duration_ms": 4128,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": null,
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "is going to",
+     "legoId": "S0094L03",
+     "target": "va a",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tomar",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tiempo",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " para",
+     "isGhost": true
+    },
+    {
+     "known": "to learn",
+     "legoId": "S0002L01",
+     "target": " aprender",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bien",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03C01": {
+   "id": "spa_mx_for_eng:S0027L03C01",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 1,
+   "known_text": "for",
+   "target_text": "para",
+   "word_count": 4,
+   "lego_count": 1,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "buildup": "component",
+    "component_index": 0
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 148,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "component",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "27205e37-7bc9-4c43-9402-294756b4f50f",
+   "target1_audio_id": "0c65134a-4b9e-43f6-b437-5483e8cba8cd",
+   "target2_audio_id": "a9c3d4a2-baf0-403e-8974-6fb695617c89",
+   "qa_checked": null,
+   "target1_duration_ms": 1872,
+   "target2_duration_ms": 2040,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": "411ed1d7-15a6-4717-90f2-132fcfa5b9b6",
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "para",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  },
+  "S0027L03C02": {
+   "id": "spa_mx_for_eng:S0027L03C02",
+   "course_code": "spa_mx_for_eng",
+   "seed_number": 27,
+   "lego_index": 3,
+   "position": 2,
+   "known_text": "to answer",
+   "target_text": "contestar",
+   "word_count": 9,
+   "lego_count": 1,
+   "difficulty": null,
+   "register": null,
+   "metadata": {
+    "buildup": "component",
+    "component_index": 1
+   },
+   "status": "draft",
+   "release_batch": null,
+   "version": 148,
+   "updated_at": "2026-10-12T16:29:45.655073+00:00",
+   "created_at": "2026-03-10T14:02:00.941081+00:00",
+   "target_syllable_count": null,
+   "phrase_role": "component",
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+   "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+   "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+   "qa_checked": null,
+   "target1_duration_ms": 2256,
+   "target2_duration_ms": 2376,
+   "lego_id": null,
+   "target_text_roman": null,
+   "target_phrase_id": null,
+   "presentation_audio_id": "8e3fe274-4283-4724-9de1-26f2c260478c",
+   "introduce": true,
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "contestar",
+     "isGhost": true
+    }
+   ],
+   "decomposition_course_version": null,
+   "display_tiling": null,
+   "display_tiling_version": null,
+   "known_gloss_segments": null,
+   "last_edit_event_id": "e0a91705-571b-4ed6-bbc5-f36cf8c15763",
+   "frame_mask": null
+  }
+ },
+ "legos": {
+  "S0027L02": {
+   "known": "taking too much time",
+   "target": "tomar demasiado tiempo"
+  },
+  "S0027L02#seed": {
+   "known": "I don't like taking too much time to answer",
+   "target": "no me gusta tomar demasiado tiempo para contestar"
+  },
+  "S0027L03": {
+   "known": "to answer",
+   "target": "para contestar"
+  },
+  "S0027L03#seed": {
+   "known": "I don't like taking too much time to answer",
+   "target": "no me gusta tomar demasiado tiempo para contestar"
+  }
+ },
+ "intros": {
+  "S0027L02": {
+   "success": true,
+   "lego_id": "S0027L02",
+   "exists": true,
+   "text": "The Spanish for: 'taking too much time', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "450629b1-991c-4270-9775-848472d4f095",
+   "duration_ms": 3973,
+   "hasAudio": true
+  },
+  "S0027L03": {
+   "success": true,
+   "lego_id": "S0027L03",
+   "exists": true,
+   "text": "The Spanish for: 'to answer', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "cdb9e402-ff1e-404d-9e7b-f86285a4318c",
+   "duration_ms": 3262,
+   "hasAudio": true
+  }
+ },
+ "seeds": {
+  "27": {
+   "known": "I don't like taking too much time to answer",
+   "target": "no me gusta tomar demasiado tiempo para contestar"
+  },
+  "65": {
+   "known": "It's important to take time to test yourself",
+   "target": "Es importante tomar tiempo para ponerte a prueba"
+  }
+ }
+}

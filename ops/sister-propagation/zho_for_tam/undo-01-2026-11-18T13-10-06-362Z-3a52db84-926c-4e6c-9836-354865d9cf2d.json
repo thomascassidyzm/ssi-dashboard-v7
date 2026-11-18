@@ -1,0 +1,101 @@
+{
+  "course_code": "zho_for_tam",
+  "event_id": "3a52db84-926c-4e6c-9836-354865d9cf2d",
+  "actor": "cs-sister-propagation",
+  "created_at": "2026-11-18T13:10:06.363Z",
+  "how_to_undo": "POST /api/production/zho_for_tam/edit-batch {\"undo_file\":\"2026-11-18T13-10-06-362Z-3a52db84-926c-4e6c-9836-354865d9cf2d.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L01U03",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L01U03",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L01U03",
+      "set": {
+        "target_text": "我要现在学习",
+        "target1_audio_id": "ff7c5bd7-5a27-430a-b285-afbd14e0426d",
+        "target2_audio_id": "797f93c6-1e05-453a-a23c-07de2a05097a"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 625,
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 625,
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 625,
+      "set": {
+        "target_text": "你想要喝点什么吗？",
+        "target1_audio_id": "b714b898-b9b1-4a91-a72d-752047a2e7d3",
+        "target2_audio_id": "077839c4-86fb-405b-9832-04bf240c5bd4"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 316,
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 316,
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 316,
+      "set": {
+        "target_text": "你觉得她能周一带她哥哥来吗？",
+        "target1_audio_id": "df1b5e8d-b370-4df0-8b46-6456064ecca3",
+        "target2_audio_id": "836e5e06-2477-4883-967b-da091f542b16"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 161,
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 161,
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 161,
+      "set": {
+        "target_text": "你能周日早上把那本书给我吗？",
+        "target1_audio_id": "1f410ae3-107f-4715-a296-3bbf3f49cc19",
+        "target2_audio_id": "e991c9b7-0dfe-411b-9ea5-6836199b1009"
+      }
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 27,
+  "expect": {
+   "known_text": "I don't like taking too much time to answer",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to answer",
+   "target_text": "no me gusta tardar demasiado en contestar"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 65,
+  "expect": {
+   "known_text": "It's important to take time to test yourself",
+   "target_text": "Es importante tomar tiempo para ponerte a prueba"
+  },
+  "set": {
+   "known_text": "It's important to test yourself",
+   "target_text": "Es importante ponerte a prueba"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0027L02",
+  "expect": {
+   "known_text": "taking too much time",
+   "target_text": "tomar demasiado tiempo"
+  },
+  "set": {
+   "known_text": "to take too long",
+   "target_text": "tardar demasiado",
+   "components": [
+    {
+     "known": "to take long",
+     "target": "tardar"
+    },
+    {
+     "known": "too much",
+     "target": "demasiado"
+    }
+   ]
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0027L03",
+  "expect": {
+   "known_text": "to answer",
+   "target_text": "para contestar"
+  },
+  "set": {
+   "target_text": "contestar",
+   "type": "A",
+   "components": []
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02C01",
+  "expect": {
+   "known_text": "taking",
+   "target_text": "tomar"
+  },
+  "set": {
+   "known_text": "to take long",
+   "target_text": "tardar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02C02",
+  "expect": {
+   "known_text": "time",
+   "target_text": "tiempo"
+  },
+  "set": {
+   "known_text": "too much",
+   "target_text": "demasiado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02B01",
+  "expect": {
+   "known_text": "taking too much time",
+   "target_text": "tomar demasiado tiempo"
+  },
+  "set": {
+   "known_text": "to take too long",
+   "target_text": "tardar demasiado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02B02",
+  "expect": {
+   "known_text": "are you going to take too much time today?",
+   "target_text": "¿vas a tomar demasiado tiempo hoy?"
+  },
+  "set": {
+   "known_text": "are you going to take too long today?",
+   "target_text": "¿vas a tardar demasiado hoy?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02B03",
+  "expect": {
+   "known_text": "I don't like taking too much time",
+   "target_text": "no me gusta tomar demasiado tiempo"
+  },
+  "set": {
+   "known_text": "I don't like taking too long",
+   "target_text": "no me gusta tardar demasiado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02B04",
+  "expect": {
+   "known_text": "I'm not going to be able to take too much time today",
+   "target_text": "no voy a poder tomar demasiado tiempo hoy"
+  },
+  "set": {
+   "known_text": "I'm not going to be able to take too long today",
+   "target_text": "no voy a poder tardar demasiado hoy"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02U01",
+  "expect": {
+   "known_text": "I don't like taking too much time speaking",
+   "target_text": "no me gusta tomar demasiado tiempo hablando"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to speak",
+   "target_text": "no me gusta tardar demasiado en hablar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02U02",
+  "expect": {
+   "known_text": "I don't like taking too much time speaking Spanish",
+   "target_text": "no me gusta tomar demasiado tiempo hablando español"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to speak Spanish",
+   "target_text": "no me gusta tardar demasiado en hablar español"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02U03",
+  "expect": {
+   "known_text": "I don't like taking too much time with someone else",
+   "target_text": "no me gusta tomar demasiado tiempo con otra persona"
+  },
+  "set": {
+   "known_text": "I don't like taking too long with someone else",
+   "target_text": "no me gusta tardar demasiado con otra persona"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02U04",
+  "expect": {
+   "known_text": "are you going to take too much time before I have to go?",
+   "target_text": "¿vas a tomar demasiado tiempo antes de que tenga que irme?"
+  },
+  "set": {
+   "known_text": "are you going to take too long before I have to go?",
+   "target_text": "¿vas a tardar demasiado antes de que tenga que irme?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02U05",
+  "expect": {
+   "known_text": "I don't like taking too much time speaking Spanish with you",
+   "target_text": "no me gusta tomar demasiado tiempo hablando español contigo"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to speak Spanish with you",
+   "target_text": "no me gusta tardar demasiado en hablar español contigo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L02U06",
+  "expect": {
+   "known_text": "I don't like taking too much time speaking with someone else today",
+   "target_text": "no me gusta tomar demasiado tiempo hablando con otra persona hoy"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to speak with someone else today",
+   "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03B01",
+  "expect": {
+   "known_text": "to answer",
+   "target_text": "para contestar"
+  },
+  "set": {
+   "target_text": "contestar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03B02",
+  "expect": {
+   "known_text": "I want time to answer in Spanish",
+   "target_text": "quiero tiempo para contestar en español"
+  },
+  "set": {
+   "known_text": "to answer in Spanish",
+   "target_text": "contestar en español"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03B03",
+  "expect": {
+   "known_text": "are you going to take too much time to answer today?",
+   "target_text": "¿vas a tomar demasiado tiempo para contestar hoy?"
+  },
+  "set": {
+   "known_text": "are you going to take too long to answer today?",
+   "target_text": "¿vas a tardar demasiado en contestar hoy?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03B04",
+  "expect": {
+   "known_text": "I want time to answer in Spanish today",
+   "target_text": "quiero tiempo para contestar en español hoy"
+  },
+  "set": {
+   "known_text": "I want to answer in Spanish today",
+   "target_text": "quiero contestar en español hoy"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03U01",
+  "expect": {
+   "known_text": "I don't like taking too much time to answer",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to answer",
+   "target_text": "no me gusta tardar demasiado en contestar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03U02",
+  "expect": {
+   "known_text": "I'd like time to answer in Spanish soon",
+   "target_text": "me gustaría tiempo para contestar en español pronto"
+  },
+  "set": {
+   "known_text": "I'd like to answer in Spanish soon",
+   "target_text": "me gustaría contestar en español pronto"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03U03",
+  "expect": {
+   "known_text": "I don't like taking too much time to answer today",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar hoy"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to answer today",
+   "target_text": "no me gusta tardar demasiado en contestar hoy"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03U04",
+  "expect": {
+   "known_text": "I don't like taking too much time to answer in Spanish",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar en español"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to answer in Spanish",
+   "target_text": "no me gusta tardar demasiado en contestar en español"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03U05",
+  "expect": {
+   "known_text": "I don't like taking too much time to answer with someone else",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar con otra persona"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to answer with someone else",
+   "target_text": "no me gusta tardar demasiado en contestar con otra persona"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0027L03U06",
+  "expect": {
+   "known_text": "I don't like taking too much time to answer in Spanish today",
+   "target_text": "no me gusta tomar demasiado tiempo para contestar en español hoy"
+  },
+  "set": {
+   "known_text": "I don't like taking too long to answer in Spanish today",
+   "target_text": "no me gusta tardar demasiado en contestar en español hoy"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0028L01U06",
+  "expect": {
+   "known_text": "it's useful to not take too much time to answer",
+   "target_text": "es útil no tomar demasiado tiempo para contestar"
+  },
+  "set": {
+   "known_text": "it's useful to not take too long to answer",
+   "target_text": "es útil no tardar demasiado en contestar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0065L02B03",
+  "expect": {
+   "known_text": "to take time to test yourself",
+   "target_text": "tomar tiempo para ponerte a prueba"
+  },
+  "set": {
+   "known_text": "to test yourself in Spanish",
+   "target_text": "ponerte a prueba en español"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0065L02U01",
+  "expect": {
+   "known_text": "it's important to take time to test yourself",
+   "target_text": "es importante tomar tiempo para ponerte a prueba"
+  },
+  "set": {
+   "known_text": "it's important to test yourself again",
+   "target_text": "es importante ponerte a prueba otra vez"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0066L01U04",
+  "expect": {
+   "known_text": "it's not difficult to take time to improve as often as possible",
+   "target_text": "no es difícil tomar tiempo para mejorar lo más seguido posible"
+  },
+  "set": {
+   "known_text": "it's not difficult to improve as often as possible",
+   "target_text": "no es difícil mejorar lo más seguido posible"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0094L03U05",
+  "expect": {
+   "known_text": "it's going to take time to learn well",
+   "target_text": "va a tomar tiempo para aprender bien"
+  },
+  "set": {
+   "target_text": "va a tomar tiempo aprender bien"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_mx_for_eng:S0027L03C01",
+  "expect": {
+   "known_text": "for",
+   "target_text": "para"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_mx_for_eng:S0027L03C02",
+  "expect": {
+   "known_text": "to answer",
+   "target_text": "contestar"
+  }
+ }
+]

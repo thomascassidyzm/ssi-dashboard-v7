@@ -14,3 +14,18 @@ in Swiss German, two pronoun-less verb LEGOs (S0425L01 `verstönd`, S0448L01 `h�
 their subordinator (S0572L06 → `wo si öis bsuecht händ`, S0538L03 → `as ob s mir egal wär`). Every one is a LEGO re-cut
 with a new intro and basket rework — structural, with Swiss voice renders ≈ 1,500–2,500 chars. Not attempted: needs
 its own pass. Rows: git show origin/cs/482-cleanup-scan-combined-fix-list-4:ops/paid-cleanup-scan-447/reports/deu.json.
+
+## APPLIED by cs #702·AI, 18 Nov 2026
+
+- Austrian polite offers keep *möchten*, and the ENGLISH is now "would you like…".
+  Changed: seeds 643 and 650, LEGO S0650L01 (+ new intro), component S0650L01C01, and 10 rows in S0643/S0650.
+  Source: Duden and ÖWB (Österreichisches Wörterbuch). *möchten* is the polite conditional of *mögen*,
+  "would like", and Austrian service register uses *Möchten Sie…?* for offers.
+  So the English "do you want" was what was wrong, not the German.
+- Events: 18251641, fbee5b6a, 6b0de3e6. The undo_ops are in apply.json. readback.json: 14/14.
+- Chars: 290 (known side + 1 spliced intro). Plus 43 chars for a target1 clip of the held item below, rendered but unused.
+- **HELD:** seed 383 + S0383L01U01, *mechat* → *wollt*.
+  The render route refused target2 with VOICE_POLICY: deu_at's male target voice has only the 2026-09-04 draft
+  casting, and Tom has not cast it in the Voice Lab.
+  Applying now would leave target2 silent or still saying *mechat*, so the text is unchanged.
+  The target1 clip for the new wording exists (audio-real.json). Once the male voice is cast, this is one render plus one edit.

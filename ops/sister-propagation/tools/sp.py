@@ -12,10 +12,22 @@ import json, sys, os, urllib.request, urllib.error, re
 API = 'http://localhost:3470'
 AGENT = 'cs-sister-propagation'
 HERE = os.path.dirname(os.path.abspath(__file__))
-LEDGER = os.path.join(HERE, '..', 'budget-rest.json')   # running charsSpent for this child's 4,500 share
-CAP = 4500
+LEDGER = os.environ.get('SP_LEDGER') or os.path.join(HERE, '..', 'budget-rest.json')   # running charsSpent ledger
+CAP = int(os.environ.get('SP_CAP') or 4500)   # cs #702·AI: SP_LEDGER/SP_CAP for its own 45,000 cap
 
 def call(method, path, body=None, timeout=180):
+    # cs #702·AI: Popty restarts on every deploy to main (twice in 10 min on 18 Nov). A refused CONNECTION is not a
+    # refusal from the route: wait for the service to come back (up to ~3 min) and ask again. HTTP answers
+    # (402/403/409/...) are returned as they are and never re-asked.
+    import time
+    for attempt in range(19):
+        r = _call_once(method, path, body, timeout)
+        if r[0] == 0 and r[1].get('code') == 'CONNECTION_LOST':
+            time.sleep(10); continue
+        return r
+    return r
+
+def _call_once(method, path, body, timeout):
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(API + path, data=data, method=method,
                                  headers={'Content-Type': 'application/json', 'x-agent-id': AGENT})
@@ -25,6 +37,11 @@ def call(method, path, body=None, timeout=180):
         raw = h.read() or b'{}'
         try: return h.code, json.loads(raw)
         except Exception: return h.code, {'raw': raw.decode()[:500]}
+    except TimeoutError as e:   # a slow render must not kill the whole run; the re-run finds it in the library
+        return 0, {'ok': False, 'code': 'CLIENT_TIMEOUT', 'error': str(e)[:200]}
+    except (urllib.error.URLError, ConnectionError, OSError) as e:
+        import http.client
+        return 0, {'ok': False, 'code': 'CONNECTION_LOST', 'error': str(e)[:200]}
 
 def lego_of(pid): return re.match(r'(S\d{4}L\d{2})', pid).group(1)
 def load(d, f): return json.load(open(os.path.join(d, f)))
@@ -52,8 +69,13 @@ def live(d):
     print('live', len(out['phrases']), 'phrases', len(out['legos']) // 2, 'legos; MISSING', miss)
 
 def intro_text(d, lid, new_known):
-    old = load(d, 'live.json')['intros'][lid]['text']
-    return re.sub(r"for: '([^']*)'", lambda m: f"for: '{new_known}'", old, count=1)
+    L = load(d, 'live.json'); old = L['intros'][lid]['text']
+    # cs #702·AI: the English may hold apostrophes ("I don't think that"), so never regex on '[^']*'.
+    # Unchanged English = the intro text verbatim (library link); changed = swap what sits between "for: '" and "', is:".
+    if new_known == (L['legos'].get(lid) or {}).get('known'): return old
+    i, j = old.find("for: '"), old.rfind("', is:")
+    if i >= 0 and j > i: return old[:i + 6] + new_known + old[j:]
+    raise SystemExit(f'intro text of {lid} has no "for: \'…\', is:" frame: {old!r}')
 
 def asks(d):
     P = load(d, 'plan.json'); A = {}
@@ -78,12 +100,25 @@ def audio(d, mode):
     A = asks(d)
     if mode == 'estimate':   # dry runs capped per hour on live (BULK_DRY_RUN_ON_LIVE): upper bound = every char rendered
         est = sum(len(t) for (r, t) in A); print('ESTIMATE <=', est, 'ledger', ledger['spent'], 'cap', CAP); return
+    prev = {}
+    if not dry and os.path.exists(os.path.join(d, 'audio-real.json')):   # cs #702·AI: a re-run only asks for what has no clip yet
+        try: prev = {(a['role'], a['text']): a for a in load(d, 'audio-real.json') if a.get('audioId')}
+        except Exception: prev = {}
     for (role, text), ids in A.items():
+        if (role, text) in prev:
+            a = prev[(role, text)]; out[f'{role}|{text}'] = {'status': 200, 'rows': ids, 'ok': True, 'source': a.get('source'), 'audioId': a['audioId'], 'charsSpent': 0}
+            continue
         if not dry and ledger['spent'] + len(text) > CAP:
             out[f'{role}|{text}'] = {'status': 0, 'rows': ids, 'ok': False, 'code': 'JOB_BUDGET', 'message': 'not rendered: 4,500-char share would be exceeded'}
             print('SKIP budget', role, text[:60]); continue
+        if not dry: __import__('time').sleep(float(os.environ.get('SP_SLEEP') or 0) / 2)
         st, res = call('POST', '/api/audio/render', {'courseCode': P['course'], 'role': role, 'text': text, 'purpose': P['purpose'], 'dryRun': dry}, timeout=300)
         out[f'{role}|{text}'] = {'status': st, 'rows': ids, **{k: res.get(k) for k in ('ok', 'source', 'audioId', 'charsSpent', 'wouldSpendChars', 'code', 'error', 'message') if k in res}}
+        if st == 409 and res.get('code') == 'EXISTS_IN_LANGUAGE' and res.get('existing'):
+            # the route's own answer: these words are already recorded in this language — link that clip (0 chars),
+            # preferring a clip of this course and this side (as #695·AI did)
+            ex = sorted(res['existing'], key=lambda e: (e.get('courseCode') != P['course'], e.get('side') != role))
+            out[f'{role}|{text}'].update({'audioId': ex[0]['audioId'], 'source': 'exists_in_language', 'voiceId': ex[0].get('voiceId')})
         if not dry and res.get('charsSpent'):
             ledger['spent'] += res['charsSpent']; ledger['calls'].append({'course': P['course'], 'role': role, 'text': text, 'chars': res['charsSpent'], 'audioId': res.get('audioId')})
             json.dump(ledger, open(LEDGER, 'w'), ensure_ascii=False, indent=1)
@@ -91,7 +126,7 @@ def audio(d, mode):
     save(d, f'audio-{mode}.json', out)
     if dry: print('WOULD SPEND', sum(v.get('wouldSpendChars') or 0 for v in out.values()))
     else:
-        save(d, 'audio-real.json', [{'role': k.split('|', 1)[0], 'text': k.split('|', 1)[1], 'audioId': v.get('audioId'), 'source': v.get('source'), 'charsSpent': v.get('charsSpent'), 'rows': v['rows']} for k, v in out.items()])
+        save(d, 'audio-real.json', [{'role': k.split('|', 1)[0], 'text': k.split('|', 1)[1], 'audioId': v.get('audioId'), 'source': v.get('source'), 'charsSpent': v.get('charsSpent'), 'rows': v['rows'], **({'voiceId': v['voiceId']} if v.get('voiceId') else {}), **({'code': v['code']} if v.get('code') else {})} for k, v in out.items()])
         print('SPENT', sum(v.get('charsSpent') or 0 for v in out.values()), 'ledger', ledger['spent'])
 
 def ops(d, text_only):
@@ -117,6 +152,7 @@ def ops(d, text_only):
         if 'known' in l: s['known_text'] = l['known']
         if 'target' in l: s['target_text'] = l['target']
         if 'roman' in l: s['target_text_roman'] = l['roman']
+        s.update(l.get('extra', {}))   # cs #702·AI: e.g. type / components for a re-cut
         O.append({'op': 'lego.update', 'lego_id': l['id'], 'expect': {'known_text': cur['known'], 'target_text': cur['target']}, 'set': s})
         if 'known' in l: O += link('lego', l['id'], 'known', 'known', l['known'])
         if 'target' in l: O += link('lego', l['id'], 'target1', 'target1', l['target']) + link('lego', l['id'], 'target2', 'target2', l['target'])
@@ -126,6 +162,7 @@ def ops(d, text_only):
         if 'known' in p: s['known_text'] = p['known']
         if 'target' in p: s['target_text'] = p['target']
         if 'roman' in p: s['target_text_roman'] = p['roman']
+        s.update(p.get('extra', {}))
         O.append({'op': 'phrase.update', 'phrase_id': f'{C}:{p["id"]}', 'expect': {'known_text': cur['known_text'], 'target_text': cur['target_text']}, 'set': s})
         if 'known' in p: O += link('phrase', p['id'], 'known', 'known', p['known'])
         if 'target' in p: O += link('phrase', p['id'], 'target1', 'target1', p['target']) + link('phrase', p['id'], 'target2', 'target2', p['target'])
@@ -153,6 +190,7 @@ def post(d, mode):
         body = {'ops': b, 'apply': mode == 'apply', 'reason': P['purpose']}
         st, r = call('POST', f'/api/production/{C}/edit-batch', body, timeout=120)
         res.append({'batch': i, 'status': st, 'n': len(b), 'result': r})
+        import time; time.sleep(float(os.environ.get('SP_SLEEP') or 0))   # cs #725·AI: pace writes on the shared DB
         print(i, st, len(b), r.get('ok'), r.get('eventId') or r.get('event_id') or '', (r.get('error') or r.get('code') or '')[:200] if isinstance(r.get('error') or r.get('code'), str) else r.get('error'), flush=True)
         if st >= 400 or r.get('ok') is False:
             if mode == 'apply': break

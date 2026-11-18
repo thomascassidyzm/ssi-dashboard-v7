@@ -1,0 +1,101 @@
+{
+  "course_code": "zho_for_tam",
+  "event_id": "559d25fb-a5b4-482c-b102-4b2d84f049fa",
+  "actor": "cs-sister-propagation",
+  "created_at": "2026-11-18T13:11:03.478Z",
+  "how_to_undo": "POST /api/production/zho_for_tam/edit-batch {\"undo_file\":\"2026-11-18T13-11-03-478Z-559d25fb-a5b4-482c-b102-4b2d84f049fa.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0415L01U03",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0415L01U03",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0415L01U03",
+      "set": {
+        "target_text": "依我看我们应该现在走",
+        "target1_audio_id": "654a50e5-8cc0-4357-962e-de866bc8e0d6",
+        "target2_audio_id": "2746517e-48df-4f04-a13d-6885e572de75"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0405L02U02",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0405L02U02",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0405L02U02",
+      "set": {
+        "target_text": "我们应该今天预订",
+        "target1_audio_id": "e6197c32-0a7c-43e0-b322-69dac7924814",
+        "target2_audio_id": "b46fed3c-af28-41a9-bfbb-f7b12afcfcba"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0349L01U05",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0349L01U05",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0349L01U05",
+      "set": {
+        "target_text": "他们需要周五去那里",
+        "target1_audio_id": "1ec18a30-1315-4361-9107-5876e5fafd39",
+        "target2_audio_id": "3cc47c77-4856-44e0-958e-9238fd1d0ca2"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0328L01U05",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0328L01U05",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0328L01U05",
+      "set": {
+        "target_text": "她应该今天做",
+        "target1_audio_id": "4622b0b3-372b-49ca-9885-428cd0e984ba",
+        "target2_audio_id": "1b6cf051-5d85-4f57-875e-bff8d4c6b313"
+      }
+    }
+  ]
+}

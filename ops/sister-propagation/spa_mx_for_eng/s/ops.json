@@ -1,0 +1,300 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 377,
+  "expect": {
+   "known_text": "did you go anywhere in the world last year?",
+   "target_text": "¿Fuiste a algún sitio en el mundo el año pasado?"
+  },
+  "set": {
+   "target_text": "¿Fuiste a algún lado en el mundo el año pasado?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 402,
+  "expect": {
+   "known_text": "yes it would be nice to stop somewhere for food",
+   "target_text": "sí, sería agradable parar en algún sitio para comer"
+  },
+  "set": {
+   "target_text": "sí, sería agradable parar en algún lado para comer"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0377L02",
+  "expect": {
+   "known_text": "somewhere",
+   "target_text": "algún sitio"
+  },
+  "set": {
+   "target_text": "algún lado",
+   "components": [
+    {
+     "known": "some",
+     "target": "algún"
+    },
+    {
+     "known": "side",
+     "target": "lado"
+    }
+   ]
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0402L01",
+  "expect": {
+   "known_text": "to stop somewhere",
+   "target_text": "parar en algún sitio"
+  },
+  "set": {
+   "target_text": "parar en algún lado",
+   "components": [
+    {
+     "known": "to stop",
+     "target": "parar"
+    },
+    {
+     "known": "somewhere",
+     "target": "algún lado"
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02C02",
+  "expect": {
+   "known_text": "place",
+   "target_text": "sitio"
+  },
+  "set": {
+   "known_text": "side",
+   "target_text": "lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02B01",
+  "expect": {
+   "known_text": "somewhere",
+   "target_text": "algún sitio"
+  },
+  "set": {
+   "target_text": "algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02B02",
+  "expect": {
+   "known_text": "did you go somewhere?",
+   "target_text": "¿fuiste a algún sitio?"
+  },
+  "set": {
+   "target_text": "¿fuiste a algún lado?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02B03",
+  "expect": {
+   "known_text": "did you see somewhere interesting?",
+   "target_text": "¿viste algún sitio interesante?"
+  },
+  "set": {
+   "known_text": "did you go somewhere last year?",
+   "target_text": "¿fuiste a algún lado el año pasado?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02U01",
+  "expect": {
+   "known_text": "did you see somewhere pretty?",
+   "target_text": "¿viste algún sitio bonito?"
+  },
+  "set": {
+   "known_text": "did you go somewhere with my friend?",
+   "target_text": "¿fuiste a algún lado con mi amigo?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02U02",
+  "expect": {
+   "known_text": "I want to go somewhere",
+   "target_text": "quiero ir a algún sitio"
+  },
+  "set": {
+   "target_text": "quiero ir a algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02U03",
+  "expect": {
+   "known_text": "my friend could go somewhere",
+   "target_text": "mi amigo podría ir a algún sitio"
+  },
+  "set": {
+   "target_text": "mi amigo podría ir a algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02U04",
+  "expect": {
+   "known_text": "she needs to go somewhere",
+   "target_text": "ella necesita ir a algún sitio"
+  },
+  "set": {
+   "target_text": "ella necesita ir a algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02U05",
+  "expect": {
+   "known_text": "I think that you went somewhere",
+   "target_text": "pienso que fuiste a algún sitio"
+  },
+  "set": {
+   "target_text": "creo que fuiste a algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L03U01",
+  "expect": {
+   "known_text": "did you go somewhere in the world last year?",
+   "target_text": "¿Fuiste a algún sitio en el mundo el año pasado?"
+  },
+  "set": {
+   "target_text": "¿Fuiste a algún lado en el mundo el año pasado?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01C02",
+  "expect": {
+   "known_text": "somewhere",
+   "target_text": "algún sitio"
+  },
+  "set": {
+   "target_text": "algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01B01",
+  "expect": {
+   "known_text": "to stop somewhere",
+   "target_text": "parar en algún sitio"
+  },
+  "set": {
+   "target_text": "parar en algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01B02",
+  "expect": {
+   "known_text": "it would be nice to stop somewhere",
+   "target_text": "sería agradable parar en algún sitio"
+  },
+  "set": {
+   "target_text": "sería agradable parar en algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01B03",
+  "expect": {
+   "known_text": "she wants to stop somewhere",
+   "target_text": "ella quiere parar en algún sitio"
+  },
+  "set": {
+   "target_text": "ella quiere parar en algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01U01",
+  "expect": {
+   "known_text": "yes it would be nice to stop somewhere for food",
+   "target_text": "sí, sería agradable parar en algún sitio para comer"
+  },
+  "set": {
+   "target_text": "sí, sería agradable parar en algún lado para comer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01U02",
+  "expect": {
+   "known_text": "she wants to stop somewhere for food",
+   "target_text": "ella quiere parar en algún sitio para comer"
+  },
+  "set": {
+   "target_text": "ella quiere parar en algún lado para comer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01U03",
+  "expect": {
+   "known_text": "it would be better to stop somewhere",
+   "target_text": "sería mejor parar en algún sitio"
+  },
+  "set": {
+   "target_text": "sería mejor parar en algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01U04",
+  "expect": {
+   "known_text": "we want to stop somewhere now",
+   "target_text": "queremos parar en algún sitio ahora"
+  },
+  "set": {
+   "target_text": "queremos parar en algún lado ahora"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01U05",
+  "expect": {
+   "known_text": "it's important to stop somewhere for food",
+   "target_text": "es importante parar en algún sitio para comer"
+  },
+  "set": {
+   "target_text": "es importante parar en algún lado para comer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0402L01U06",
+  "expect": {
+   "known_text": "I will be able to stop somewhere",
+   "target_text": "podré parar en algún sitio"
+  },
+  "set": {
+   "target_text": "podré parar en algún lado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0403L01U05",
+  "expect": {
+   "known_text": "we should stop somewhere",
+   "target_text": "deberíamos parar en algún sitio"
+  },
+  "set": {
+   "target_text": "deberíamos parar en algún lado"
+  }
+ }
+]

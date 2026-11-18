@@ -4533,6 +4533,134 @@
    "target": "concordaste com ela?"
   }
  },
- "intros": {},
- "seeds": {}
+ "intros": {
+  "S0202L03": {
+   "success": true,
+   "lego_id": "S0202L03",
+   "exists": true,
+   "text": "The Portuguese for: 'was sure', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "f54d9d37-4e9d-4549-a99d-522c1cf643e6",
+   "duration_ms": 3918,
+   "hasAudio": true
+  },
+  "S0340L01": {
+   "success": true,
+   "lego_id": "S0340L01",
+   "exists": true,
+   "text": "The Portuguese for: 'i'm sure that', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "5d13f613-7088-40a2-afa8-a935686524c7",
+   "duration_ms": 3973,
+   "hasAudio": true
+  },
+  "S0482L04": {
+   "success": true,
+   "lego_id": "S0482L04",
+   "exists": true,
+   "text": "The Portuguese for: 'serious', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "7592ed08-f8e2-487f-8a4c-50f778a07422",
+   "duration_ms": 3818,
+   "hasAudio": true
+  },
+  "S0339L01": {
+   "success": true,
+   "lego_id": "S0339L01",
+   "exists": true,
+   "text": "The Portuguese for: 'he's hurt himself', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "16b43fc1-b86d-45b2-832d-d7fbdcf001c0",
+   "duration_ms": 4074,
+   "hasAudio": true
+  },
+  "S0382L01": {
+   "success": true,
+   "lego_id": "S0382L01",
+   "exists": true,
+   "text": "The Portuguese for: 'you asked', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "7b07c85c-ae70-4adc-be4d-f21c15bde38c",
+   "duration_ms": 3813,
+   "hasAudio": true
+  },
+  "S0385L01": {
+   "success": true,
+   "lego_id": "S0385L01",
+   "exists": true,
+   "text": "The Portuguese for: 'you agreed', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "is_suggested": false,
+   "human_authored": null,
+   "authorship": {
+    "as_in": null,
+    "free_form": false,
+    "hand_authored": false,
+    "soft_mark": null
+   },
+   "audio_id": "1e396631-9d83-4ed2-b6e7-bf8711ef3c42",
+   "duration_ms": 3673,
+   "hasAudio": true
+  }
+ },
+ "seeds": {
+  "202": {
+   "known": "nobody was sure how to answer the question",
+   "target": "ninguém tinha a certeza de como responder à pergunta"
+  },
+  "340": {
+   "known": "yes I'm sure he's going to be okay",
+   "target": "sim, tenho a certeza de que ele vai ficar bem"
+  },
+  "339": {
+   "known": "no I think he's hurt himself quite badly",
+   "target": "não, eu acho que ele se magoou bastante"
+  },
+  "382": {
+   "known": "did you ask where he wanted to put it?",
+   "target": "perguntaste onde ele queria pôr isso?"
+  },
+  "385": {
+   "known": "did you agree with her?",
+   "target": "concordaste com ela?"
+  },
+  "482": {
+   "known": "the only real hope is that they're not serious",
+   "target": "a única esperança real é que eles não estejam falando a sério"
+  }
+ }
 }
