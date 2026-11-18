@@ -1,0 +1,24 @@
+ITEM 20 PLANNING SHARD (child of #740·AI). PLAN ONLY: APPLY NOTHING, RENDER NOTHING, call no Popty route, and touch no database in any way (Tom's HARD RULE 2026-10-14: no hand-written DB code, read-only included). Everything you need is local JSON already on disk.
+
+PURPOSE: Kai's paid-course cleanup item 20 back-fills THIN practice baskets in five English courses for Indic speakers (eng_for_urd/pan/ben/mar/guj; target = English, known = the Indic language). The learner app skips a build row that is just the LEGO, so a basket with <3 real builds gives almost no build practice. Your output is the TEXT PLAN that Kai will see priced before she approves any spend. Quality matters more than speed: every row is a natural sentence a learner hears.
+
+SETUP: in your worktree: git fetch origin && git merge origin/cs/740-resume-718-item20-indic-baskets- . Work in ops/paid-cleanup-item20/tools. Touch ONLY ops/paid-cleanup-item20/<your course>/ files. Scratch in $CS_SCRATCH, never /tmp.
+
+THE SHEET: ops/paid-cleanup-item20/<course>/sheet.json, "lines" array, one line per row to add. Fields: lego, seed, lego_en (LEGO English), lego_known (the course's own known text for that LEGO), slot ("update:B0x" = rewrite a bare-LEGO build row in place, or "insert"), en (English, chosen from eng_for_hin's live course, already checked: contains the LEGO, uses only taught English, not already in the course), hi (the Hindi known of that eng_for_hin row), hin_row. You fill:
+  - known: the row's known side in YOUR course's language and script, meaning exactly `en` (use `hi` as a guide; Urdu is close to Hindi but write proper Urdu in Arabic script; Punjabi in Gurmukhi; Bengali, Marathi, Gujarati in their own scripts). Use the course's OWN wording for the pieces the learner has met: `node dump.cjs <course> <seed>` shows the basket and LEGO known forms, and `node vocab.cjs <course> <seed> [regex]` lists every LEGO taught so far with its known text. The known side is a controlled language too (canon K6: different endings/conjugations/gender of a taught word are fine; genuinely new words are not).
+  - gender: 'm' or 'f' when the known sentence has a gendered first-person speaker form (copy the gender of the Hindi `hi` form: चाहता/करूँगा = m, चाहती/करूँगी = f; and match the gender the course's own LEGO known uses), else null.
+  - Lines with "author": true have no English: write BOTH en and known. The English must contain the LEGO (lego_en) whole, be more than the LEGO alone, use only English already taught (check with `node try.cjs <course> <LEGO id> "your english"`, which prints ok or UNTAUGHT words), and be natural. If no natural taught sentence exists (e.g. seed 1 LEGOs), set "hold": "<one-line reason>" instead. Holds are reported, never forced.
+  - If an `en` choice is unnatural or odd for that basket, replace it with your own (same checks) or hold it with a reason.
+  - optional known_ok: "<words>|<why>" to accept a known-side word build.cjs flags as untaught when it is only a form of a taught word.
+eng_for_urd ONLY: seeds 1,2,3,73,175,214,224,243,244,254,262,263,281,283,311,315,324,329,607,616,618,620,636 already have hand-written plans (the #718 probe); leave those seeds' lines empty (sheet2plans reports them as hand_plan). Line S0005L01 is already filled as a worked example.
+
+LOOP (per course, in chunks of ~100 lines; edit the sheet with a small JSON-editing script of your own in $CS_SCRATCH, never by hand-splicing):
+  node sheet2plans.cjs <course>
+  node dump.cjs <course> 1 700 > /dev/null        (writes seen/ snapshots from the local dump)
+  node build.cjs <course> plan 1 700              (the course-builder's own validator functions: LEGO contained, not bare, taught English, ZUT, Kai's duplicate rule, gender)
+Fix every ERROR (rewrite or hold the line) until build.cjs prints 0 errors. Clear "known side untaught" warnings by rewording with taught known words, or by known_ok when it is only a form of a taught word. Ignore "not this item (USE rows ...)" warnings.
+Commit (git add ops/paid-cleanup-item20/<course>) and push your branch after each course and at least every hour. NEVER commit anything outside your course dirs.
+
+CANON: course-methodology-canon.md at the repo root is the rulebook (385k chars: grep it, e.g. for K6, ZUT, "practice phrase", P17); do not read archive/ or other markdown.
+
+REPORT (one paragraph + landing line): per course: lines filled, authored, held (with the commonest reasons), build.cjs errors/warnings at the end, and the branch + commit. Do not publish, do not message Kai.
