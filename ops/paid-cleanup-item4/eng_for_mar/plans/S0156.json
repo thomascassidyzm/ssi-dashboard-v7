@@ -1,0 +1,66 @@
+{
+ "seed": 156,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुम्हाला यायचं का?",
+     "do you want to come?"
+    ],
+    "U03": [
+     "तुम्हाला त्यांच्याबरोबर जायचं का?",
+     "do you want to go with them?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्हाला घरी जायचं का?",
+     "do you want to go home?"
+    ],
+    [
+     "use",
+     "तुम्हाला बसने जायचं का?",
+     "do you want to go by bus?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "रेस्टॉरंटमध्ये जायचं आहे",
+     "want to go to a restaurant"
+    ],
+    "B04": [
+     "आज रात्री रेस्टॉरंटमध्ये जायचं",
+     "to go to a restaurant tonight"
+    ],
+    "U02": [
+     "मला शनिवारी रात्री रेस्टॉरंटमध्ये जायला आवडेल",
+     "I'd like to go to a restaurant on Saturday night"
+    ],
+    "U03": [
+     "आम्हाला एकत्र रेस्टॉरंटमध्ये जायचं आहे",
+     "we want to go to a restaurant together"
+    ],
+    "U04": [
+     "मला आज रात्री रेस्टॉरंटमध्ये जायचं नाही",
+     "I don't want to go to a restaurant tonight"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मित्रांबरोबर रेस्टॉरंटमध्ये जायचं",
+     "to go to a restaurant with friends"
+    ],
+    [
+     "use",
+     "रेस्टॉरंटमध्ये जाणं ही चांगली कल्पना आहे",
+     "it's a good idea to go to a restaurant"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

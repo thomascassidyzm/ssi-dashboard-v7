@@ -1,0 +1,316 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0122L01U06"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0122L01U06",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that is why it's starting to feel easier to use new words",
+    "known_audio_id": "03743ef1-3f82-4242-a285-b91a01199cc0",
+    "target_text": "por eso está empezando a sentirse más fácil usar palabras nuevas",
+    "target1_audio_id": "82eb15fd-6389-44ef-badf-fa58fe287bb9",
+    "target2_audio_id": "7c03ed81-53ce-4df3-b8ec-542bc7aa0ed5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0122L01U06",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that is why it's starting to get easier to use new words",
+    "known_audio_id": "74714336-6ff7-4649-b6d6-0c7c9a7f2c04",
+    "target_text": "por eso está empezando a ser más fácil usar palabras nuevas",
+    "target1_audio_id": "11691c23-9c72-45d2-903e-564f34d518cf",
+    "target2_audio_id": "efeec192-e5ff-44ca-9d96-295935f051a9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0122L01U07"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0122L01U07",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "it's definitely starting to feel better when we speak Spanish",
+    "known_audio_id": "acd607b5-442a-404f-ab71-8210892590ac",
+    "target_text": "definitivamente está empezando a sentirse mejor cuando hablamos español",
+    "target1_audio_id": "44e5f5c8-7644-4547-85ac-3a3480b082b1",
+    "target2_audio_id": "c6b6b1a1-ef27-4e88-9473-246d076ead70",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0122L01U07",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "it's definitely starting to get easier when we speak Spanish",
+    "known_audio_id": "aa3475be-9bd5-4ee9-a5b9-c2814f5463e4",
+    "target_text": "definitivamente está empezando a ser más fácil cuando hablamos español",
+    "target1_audio_id": "029053f2-906e-48e4-90f0-84ad88ff7dd5",
+    "target2_audio_id": "6d8cfecf-53f6-49d4-a4fe-65213f88d0b1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0122L02U07"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0122L02U07",
+    "seed_number": 122,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's starting to feel easier and I'm excited about how it's going",
+    "known_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va",
+    "target1_audio_id": "fc79773c-3664-4d25-afd8-b48a8e62e60e",
+    "target2_audio_id": "4cb443c6-5c08-4f19-ae4e-4ca2683794ac",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0122L02U07",
+    "seed_number": 122,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's starting to get easier and I'm excited about how it's going",
+    "known_audio_id": "b5a23ceb-6f37-430b-a0e0-5c23f4c6aa32",
+    "target_text": "está empezando a ser más fácil y estoy emocionado con cómo va",
+    "target1_audio_id": "977f5fcf-f6e1-465b-946e-4b86c7eec232",
+    "target2_audio_id": "461ecfb7-bae0-4158-a44d-8853c9257ec3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0123L01U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0123L01U04",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think it's starting to feel easier",
+    "known_audio_id": "6413bae8-037e-4fcd-bbfc-c4c54127ccd3",
+    "target_text": "pienso que está empezando a sentirse más fácil",
+    "target1_audio_id": "48cdab54-8380-4cd3-b5a2-deacd220ff79",
+    "target2_audio_id": "480e29e6-733d-4098-af71-ed3344639d3e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0123L01U04",
+    "seed_number": 123,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think it's starting to get easier",
+    "known_audio_id": "4717d783-f0a8-410b-9191-34cb9efa5270",
+    "target_text": "pienso que está empezando a ser más fácil",
+    "target1_audio_id": "bb045d8c-ce56-4654-bc1f-d7861dd6b1c8",
+    "target2_audio_id": "f598f861-4a17-43dc-a4b9-9bed5dbb6d93",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0123L02U06"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0123L02U06",
+    "seed_number": 123,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I reckon it's starting to feel easier now",
+    "known_audio_id": "546bf3bb-684f-4d84-a9ba-a9cf1dd16d20",
+    "target_text": "pienso que está empezando a sentirse más fácil ahora",
+    "target1_audio_id": "9d5f53c4-0dac-4ed0-a9ab-ee150c665057",
+    "target2_audio_id": "89c20053-6923-4d22-8005-2bb7e3b70dae",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0123L02U06",
+    "seed_number": 123,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I reckon it's starting to get easier now",
+    "known_audio_id": "f2376eb2-3ed9-4072-a90c-7d1a6a6372f3",
+    "target_text": "pienso que está empezando a ser más fácil ahora",
+    "target1_audio_id": "c5ef5a85-1721-42da-be1f-d00482fdccad",
+    "target2_audio_id": "fa8d6e6c-08a7-45ea-889a-313295c146f5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 122
+   },
+   "before": {
+    "id": "ca335c48-19a5-4dad-ac1e-6975b17287fb",
+    "seed_number": 122,
+    "known_text": "It's starting to feel easier and I'm excited about how it's going",
+    "known_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va",
+    "target1_audio_id": "fc79773c-3664-4d25-afd8-b48a8e62e60e",
+    "target2_audio_id": "4cb443c6-5c08-4f19-ae4e-4ca2683794ac"
+   },
+   "after": {
+    "id": "ca335c48-19a5-4dad-ac1e-6975b17287fb",
+    "seed_number": 122,
+    "known_text": "It's starting to get easier and I'm excited about how it's going",
+    "known_audio_id": "b5a23ceb-6f37-430b-a0e0-5c23f4c6aa32",
+    "target_text": "está empezando a ser más fácil y estoy emocionado con cómo va",
+    "target1_audio_id": "977f5fcf-f6e1-465b-946e-4b86c7eec232",
+    "target2_audio_id": "461ecfb7-bae0-4158-a44d-8853c9257ec3"
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "lego_id": "S0122L01"
+   },
+   "before": {
+    "id": "52c762fe-f809-4ea4-9901-3785ed97d7dc",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": "S0122L01",
+    "known_text": "to feel easier",
+    "known_audio_id": "d4a2de42-ff30-4806-8262-e26322675087",
+    "target_text": "sentirse más fácil",
+    "target1_audio_id": "b5a987a1-955e-4c45-b341-733db7bf7f04",
+    "target2_audio_id": "1ba394a5-47d2-4d79-8382-87afceb850c0",
+    "presentation_audio_id": "5220c577-11dd-450a-a0e2-ae4980449ba3"
+   },
+   "after": {
+    "id": "52c762fe-f809-4ea4-9901-3785ed97d7dc",
+    "seed_number": 122,
+    "lego_index": 1,
+    "lego_id": "S0122L01",
+    "known_text": "to get easier",
+    "known_audio_id": "e832a04c-5b46-4f1f-ba5c-a74d6f4829f9",
+    "target_text": "ser más fácil",
+    "target1_audio_id": "92a3c718-3421-4fd9-ae97-9534cdbfd55d",
+    "target2_audio_id": "792a74b7-9ed3-4005-9ce8-0da713443b1a",
+    "presentation_audio_id": "448a2e0e-b24d-4d37-a608-cab3501f2da1"
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "52c762fe-f809-4ea4-9901-3785ed97d7dc",
+   "set": {
+    "known_text": "to feel easier",
+    "target_text": "sentirse más fácil",
+    "known_audio_id": "d4a2de42-ff30-4806-8262-e26322675087",
+    "target1_audio_id": "b5a987a1-955e-4c45-b341-733db7bf7f04",
+    "target2_audio_id": "1ba394a5-47d2-4d79-8382-87afceb850c0",
+    "presentation_audio_id": "5220c577-11dd-450a-a0e2-ae4980449ba3"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 122,
+   "set": {
+    "known_text": "It's starting to feel easier and I'm excited about how it's going",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va",
+    "known_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375",
+    "target1_audio_id": "fc79773c-3664-4d25-afd8-b48a8e62e60e",
+    "target2_audio_id": "4cb443c6-5c08-4f19-ae4e-4ca2683794ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0123L02U06",
+   "set": {
+    "known_text": "I reckon it's starting to feel easier now",
+    "target_text": "pienso que está empezando a sentirse más fácil ahora",
+    "known_audio_id": "546bf3bb-684f-4d84-a9ba-a9cf1dd16d20",
+    "target1_audio_id": "9d5f53c4-0dac-4ed0-a9ab-ee150c665057",
+    "target2_audio_id": "89c20053-6923-4d22-8005-2bb7e3b70dae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0123L01U04",
+   "set": {
+    "known_text": "I think it's starting to feel easier",
+    "target_text": "pienso que está empezando a sentirse más fácil",
+    "known_audio_id": "6413bae8-037e-4fcd-bbfc-c4c54127ccd3",
+    "target1_audio_id": "48cdab54-8380-4cd3-b5a2-deacd220ff79",
+    "target2_audio_id": "480e29e6-733d-4098-af71-ed3344639d3e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L02U07",
+   "set": {
+    "known_text": "it's starting to feel easier and I'm excited about how it's going",
+    "target_text": "está empezando a sentirse más fácil y estoy emocionado con cómo va",
+    "known_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375",
+    "target1_audio_id": "fc79773c-3664-4d25-afd8-b48a8e62e60e",
+    "target2_audio_id": "4cb443c6-5c08-4f19-ae4e-4ca2683794ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U07",
+   "set": {
+    "known_text": "it's definitely starting to feel better when we speak Spanish",
+    "target_text": "definitivamente está empezando a sentirse mejor cuando hablamos español",
+    "known_audio_id": "acd607b5-442a-404f-ab71-8210892590ac",
+    "target1_audio_id": "44e5f5c8-7644-4547-85ac-3a3480b082b1",
+    "target2_audio_id": "c6b6b1a1-ef27-4e88-9473-246d076ead70"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0122L01U06",
+   "set": {
+    "known_text": "that is why it's starting to feel easier to use new words",
+    "target_text": "por eso está empezando a sentirse más fácil usar palabras nuevas",
+    "known_audio_id": "03743ef1-3f82-4242-a285-b91a01199cc0",
+    "target1_audio_id": "82eb15fd-6389-44ef-badf-fa58fe287bb9",
+    "target2_audio_id": "7c03ed81-53ce-4df3-b8ec-542bc7aa0ed5"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

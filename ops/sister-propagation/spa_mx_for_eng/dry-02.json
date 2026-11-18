@@ -1,0 +1,351 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0056L01U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0056L01U04",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "disfruto recordar unas pocas palabras con mis amigos",
+    "target1_audio_id": "0867d1e3-ec20-4422-9943-ffccc9215ff3",
+    "target2_audio_id": "a98615aa-75c4-4601-b743-b6ae517ceb63",
+    "known_text": "I enjoy remembering a few words with my friends",
+    "known_audio_id": "c10e2802-7bea-4f0f-9537-3f588ffdf2b2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0056L01U04",
+    "seed_number": 56,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "disfruto recordando unas pocas palabras con mis amigos",
+    "target1_audio_id": "e823143c-61cc-4a04-8e72-01055488d480",
+    "target2_audio_id": "b9be988a-cce4-49db-b612-e60d3ef5fb5c",
+    "known_text": "I enjoy remembering a few words with my friends",
+    "known_audio_id": "c10e2802-7bea-4f0f-9537-3f588ffdf2b2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0058L01U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0058L01U05",
+    "seed_number": 58,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "disfruto hablar cuando entiendes lo que quiero decir",
+    "target1_audio_id": "2507004c-d98d-4794-8d2d-530a80ebd192",
+    "target2_audio_id": "bd4edee8-d31a-45a8-9b5f-32a2d5f5eac6",
+    "known_text": "I enjoy speaking when you understand what I mean",
+    "known_audio_id": "b5aa5afc-fe09-44c4-a9d6-314878ed29a8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0058L01U05",
+    "seed_number": 58,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "disfruto hablando cuando entiendes lo que quiero decir",
+    "target1_audio_id": "ffbd5a5b-ddad-4c0d-a5de-9e0346db6a97",
+    "target2_audio_id": "0934d700-673d-4d1d-8ac3-06e3723e9341",
+    "known_text": "I enjoy speaking when you understand what I mean",
+    "known_audio_id": "b5aa5afc-fe09-44c4-a9d6-314878ed29a8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0058L04U06"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0058L04U06",
+    "seed_number": 58,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "I enjoy waking up when there are enough words to learn",
+    "known_audio_id": "5a571ab6-0eb8-4162-8640-41d73f2b6f16",
+    "target_text": "disfruto despertarme cuando hay suficientes palabras para aprender",
+    "target1_audio_id": "4bb9ba56-e50f-4334-90ec-747e18d3b8b4",
+    "target2_audio_id": "ad0b02bb-2156-46c3-8419-d75b61bcdc67",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0058L04U06",
+    "seed_number": 58,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "I like waking up when there are enough words to learn",
+    "known_audio_id": "707d1cb1-6250-4af9-b23e-14947a07212b",
+    "target_text": "me gusta despertarme cuando hay suficientes palabras para aprender",
+    "target1_audio_id": "fd3a7129-aaeb-4d15-9ea8-3fa7ac8e92b4",
+    "target2_audio_id": "50119e95-cfd2-4081-9c08-e1ea84f1bbae",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0059L02U06"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0059L02U06",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "no disfruto hacer lo que necesito hacer cuando no dormí bien",
+    "target1_audio_id": "b63887a8-b907-4a18-b860-435a840ded03",
+    "target2_audio_id": "3f6ae47d-e528-4093-94aa-12e234ca8312",
+    "known_text": "I don't enjoy doing what I need to do when I didn't sleep well",
+    "known_audio_id": "92bf4c00-9dbd-4d39-b011-c1fc1106ed3c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0059L02U06",
+    "seed_number": 59,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "no disfruto haciendo lo que necesito hacer cuando no dormí bien",
+    "target1_audio_id": "e192d58d-fb5b-43f2-8065-a740525c88e0",
+    "target2_audio_id": "1be28717-a1d1-4b93-a5ca-10989302747d",
+    "known_text": "I don't enjoy doing what I need to do when I didn't sleep well",
+    "known_audio_id": "92bf4c00-9dbd-4d39-b011-c1fc1106ed3c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0061L03U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0061L03U04",
+    "seed_number": 61,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "disfruto hacer cosas diferentes otra vez esta mañana",
+    "target1_audio_id": "e149a956-0ab6-44df-af33-a7815b1506fc",
+    "target2_audio_id": "8f84f82f-150a-42e0-83a2-8f21e51188dc",
+    "known_text": "I enjoy doing different things again this morning",
+    "known_audio_id": "ccb100c9-0f1d-47f4-9d3a-2ed052f0c1ce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0061L03U04",
+    "seed_number": 61,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "disfruto haciendo cosas diferentes otra vez esta mañana",
+    "target1_audio_id": "ab7e17fa-fcc6-4128-b56e-149ae003a5a5",
+    "target2_audio_id": "ad543224-5f96-4b7d-b99b-942ca4e03887",
+    "known_text": "I enjoy doing different things again this morning",
+    "known_audio_id": "ccb100c9-0f1d-47f4-9d3a-2ed052f0c1ce",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0065L02U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0065L02U04",
+    "seed_number": 65,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "disfruto ponerte a prueba con palabras diferentes otra vez",
+    "target1_audio_id": "5e9ce916-8a9b-4e80-a698-4c4c6287bb50",
+    "target2_audio_id": "ae68012f-98fd-4240-b2c1-243e45fc1169",
+    "known_text": "I enjoy testing you with different words again",
+    "known_audio_id": "7234339b-f5a2-4824-b5b4-9e5ca99ab5b1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0065L02U04",
+    "seed_number": 65,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "disfruto poniéndote a prueba con palabras diferentes otra vez",
+    "target1_audio_id": "0cb95322-edce-45bb-b119-b9a082ced927",
+    "target2_audio_id": "b082924e-df35-4a0e-b878-5bc964ae2de7",
+    "known_text": "I enjoy testing you with different words again",
+    "known_audio_id": "7234339b-f5a2-4824-b5b4-9e5ca99ab5b1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0073L01U02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0073L01U02",
+    "seed_number": 73,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "muchas gracias, disfruto hablar español",
+    "target1_audio_id": "1771ee3a-c75f-4c27-8b0d-93bc0f5ff594",
+    "target2_audio_id": "951b3ae1-8bf1-4051-9a38-98f4efd05fea",
+    "known_text": "thank you very much, I enjoy speaking Spanish",
+    "known_audio_id": "886fe59d-61c4-405a-808b-524962eae770",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0073L01U02",
+    "seed_number": 73,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "muchas gracias, disfruto hablando español",
+    "target1_audio_id": "e00f03f5-69f5-4aa5-b5de-9d70a1805368",
+    "target2_audio_id": "4008fdd9-2dff-4f80-a4c5-318399b2897d",
+    "known_text": "thank you very much, I enjoy speaking Spanish",
+    "known_audio_id": "886fe59d-61c4-405a-808b-524962eae770",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0101L01U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0101L01U04",
+    "seed_number": 101,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "estoy disfrutando hablar contigo",
+    "target1_audio_id": "d14a1f73-77a3-4a89-9516-c7735d56106e",
+    "target2_audio_id": "c5007891-44c1-46a2-a179-8c0ff6348d71",
+    "known_text": "I am enjoying speaking with you",
+    "known_audio_id": "2dbc39ea-704a-48ae-8cbe-5c5fee3ce9f2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0101L01U04",
+    "seed_number": 101,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "estoy disfrutando hablando contigo",
+    "target1_audio_id": "d6fa546c-8938-4823-a1fb-75cbd549356d",
+    "target2_audio_id": "047381de-a22a-4acb-9f47-a8ff76d8e63a",
+    "known_text": "I am enjoying speaking with you",
+    "known_audio_id": "2dbc39ea-704a-48ae-8cbe-5c5fee3ce9f2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0101L01U04",
+   "set": {
+    "target_text": "estoy disfrutando hablar contigo",
+    "target1_audio_id": "d14a1f73-77a3-4a89-9516-c7735d56106e",
+    "target2_audio_id": "c5007891-44c1-46a2-a179-8c0ff6348d71"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0073L01U02",
+   "set": {
+    "target_text": "muchas gracias, disfruto hablar español",
+    "target1_audio_id": "1771ee3a-c75f-4c27-8b0d-93bc0f5ff594",
+    "target2_audio_id": "951b3ae1-8bf1-4051-9a38-98f4efd05fea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0065L02U04",
+   "set": {
+    "target_text": "disfruto ponerte a prueba con palabras diferentes otra vez",
+    "target1_audio_id": "5e9ce916-8a9b-4e80-a698-4c4c6287bb50",
+    "target2_audio_id": "ae68012f-98fd-4240-b2c1-243e45fc1169"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0061L03U04",
+   "set": {
+    "target_text": "disfruto hacer cosas diferentes otra vez esta mañana",
+    "target1_audio_id": "e149a956-0ab6-44df-af33-a7815b1506fc",
+    "target2_audio_id": "8f84f82f-150a-42e0-83a2-8f21e51188dc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0059L02U06",
+   "set": {
+    "target_text": "no disfruto hacer lo que necesito hacer cuando no dormí bien",
+    "target1_audio_id": "b63887a8-b907-4a18-b860-435a840ded03",
+    "target2_audio_id": "3f6ae47d-e528-4093-94aa-12e234ca8312"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0058L04U06",
+   "set": {
+    "known_text": "I enjoy waking up when there are enough words to learn",
+    "target_text": "disfruto despertarme cuando hay suficientes palabras para aprender",
+    "known_audio_id": "5a571ab6-0eb8-4162-8640-41d73f2b6f16",
+    "target1_audio_id": "4bb9ba56-e50f-4334-90ec-747e18d3b8b4",
+    "target2_audio_id": "ad0b02bb-2156-46c3-8419-d75b61bcdc67"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0058L01U05",
+   "set": {
+    "target_text": "disfruto hablar cuando entiendes lo que quiero decir",
+    "target1_audio_id": "2507004c-d98d-4794-8d2d-530a80ebd192",
+    "target2_audio_id": "bd4edee8-d31a-45a8-9b5f-32a2d5f5eac6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0056L01U04",
+   "set": {
+    "target_text": "disfruto recordar unas pocas palabras con mis amigos",
+    "target1_audio_id": "0867d1e3-ec20-4422-9943-ffccc9215ff3",
+    "target2_audio_id": "a98615aa-75c4-4601-b743-b6ae517ceb63"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

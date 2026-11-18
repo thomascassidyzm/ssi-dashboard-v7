@@ -1,0 +1,4835 @@
+[
+ {
+  "batch": 0,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0033L02U01"
+     },
+     "before": {
+      "id": "deu_for_eng:S0033L02U01",
+      "seed_number": 33,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "How long have you already been learning German, and is it useful?",
+      "target_text": "Wie lange lernst du schon Deutsch, und ist es nützlich?",
+      "known_audio_id": "97c38588-fa58-472d-a3f0-c90eef5ced4c",
+      "target1_audio_id": "622b7f6e-0e5e-4331-a4cc-7075af800a34",
+      "target2_audio_id": "32aed85a-83a4-4f70-b144-c6328552b2a1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0033L02U01",
+      "seed_number": 33,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "How long have you been learning German, and is it useful?",
+      "target_text": "Wie lange lernst du schon Deutsch, und ist es nützlich?",
+      "known_audio_id": "495add49-aa9b-4669-b415-940518fe32a8",
+      "target1_audio_id": "622b7f6e-0e5e-4331-a4cc-7075af800a34",
+      "target2_audio_id": "32aed85a-83a4-4f70-b144-c6328552b2a1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0033L02U01"
+     },
+     "before": {
+      "id": "deu_for_eng:S0033L02U01",
+      "seed_number": 33,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "495add49-aa9b-4669-b415-940518fe32a8",
+      "known_text": "How long have you been learning German, and is it useful?",
+      "target_text": "Wie lange lernst du schon Deutsch, und ist es nützlich?",
+      "target1_audio_id": "622b7f6e-0e5e-4331-a4cc-7075af800a34",
+      "target2_audio_id": "32aed85a-83a4-4f70-b144-c6328552b2a1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0033L02U01",
+      "seed_number": 33,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "495add49-aa9b-4669-b415-940518fe32a8",
+      "known_text": "How long have you been learning German, and is it useful?",
+      "target_text": "Wie lange lernst du schon Deutsch, und ist es nützlich?",
+      "target1_audio_id": "622b7f6e-0e5e-4331-a4cc-7075af800a34",
+      "target2_audio_id": "32aed85a-83a4-4f70-b144-c6328552b2a1",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0141L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0141L02U05",
+      "seed_number": 141,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I wanted to know if it is in order to wait here for you",
+      "target_text": "Ich wollte wissen ob es in Ordnung ist hier auf dich zu warten",
+      "known_audio_id": "ca36be92-aa81-4051-a9a3-4483c8c1e745",
+      "target1_audio_id": "40579e5f-28cb-4d53-8a05-89b5ca06f672",
+      "target2_audio_id": "5b58167f-dc09-4fd8-86c4-a7ab75bc5db4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0141L02U05",
+      "seed_number": 141,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I wanted to know if it is okay to wait here for you",
+      "target_text": "Ich wollte wissen ob es in Ordnung ist hier auf dich zu warten",
+      "known_audio_id": "ec76ebaa-7285-4214-843c-235cdcae685c",
+      "target1_audio_id": "40579e5f-28cb-4d53-8a05-89b5ca06f672",
+      "target2_audio_id": "5b58167f-dc09-4fd8-86c4-a7ab75bc5db4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0141L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0141L02U05",
+      "seed_number": 141,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "ec76ebaa-7285-4214-843c-235cdcae685c",
+      "known_text": "I wanted to know if it is okay to wait here for you",
+      "target_text": "Ich wollte wissen ob es in Ordnung ist hier auf dich zu warten",
+      "target1_audio_id": "40579e5f-28cb-4d53-8a05-89b5ca06f672",
+      "target2_audio_id": "5b58167f-dc09-4fd8-86c4-a7ab75bc5db4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0141L02U05",
+      "seed_number": 141,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "ec76ebaa-7285-4214-843c-235cdcae685c",
+      "known_text": "I wanted to know if it is okay to wait here for you",
+      "target_text": "Ich wollte wissen ob es in Ordnung ist hier auf dich zu warten",
+      "target1_audio_id": "40579e5f-28cb-4d53-8a05-89b5ca06f672",
+      "target2_audio_id": "5b58167f-dc09-4fd8-86c4-a7ab75bc5db4",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0182L01B03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0182L01B03",
+      "seed_number": 182,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I want to look anywhere",
+      "target_text": "Ich möchte irgendwo suchen",
+      "known_audio_id": "cddd2eb6-84f4-4a42-996d-8e78e641fb01",
+      "target1_audio_id": "adf3c5f0-ff22-41ea-86e8-e91c38ddb1ce",
+      "target2_audio_id": "94ac3d11-bf04-4e24-8103-fba1a910e94d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0182L01B03",
+      "seed_number": 182,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I'd like to look anywhere",
+      "target_text": "Ich möchte irgendwo suchen",
+      "known_audio_id": "f461249e-68f2-4173-b6d6-cb69d2900b78",
+      "target1_audio_id": "adf3c5f0-ff22-41ea-86e8-e91c38ddb1ce",
+      "target2_audio_id": "94ac3d11-bf04-4e24-8103-fba1a910e94d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0182L01B03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0182L01B03",
+      "seed_number": 182,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "f461249e-68f2-4173-b6d6-cb69d2900b78",
+      "known_text": "I'd like to look anywhere",
+      "target_text": "Ich möchte irgendwo suchen",
+      "target1_audio_id": "adf3c5f0-ff22-41ea-86e8-e91c38ddb1ce",
+      "target2_audio_id": "94ac3d11-bf04-4e24-8103-fba1a910e94d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0182L01B03",
+      "seed_number": 182,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "f461249e-68f2-4173-b6d6-cb69d2900b78",
+      "known_text": "I'd like to look anywhere",
+      "target_text": "Ich möchte irgendwo suchen",
+      "target1_audio_id": "adf3c5f0-ff22-41ea-86e8-e91c38ddb1ce",
+      "target2_audio_id": "94ac3d11-bf04-4e24-8103-fba1a910e94d",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0056L02B06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0056L02B06",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I feel better myself",
+      "target_text": "Ich fühle mich besser",
+      "known_audio_id": "6843857f-858d-4554-a759-d80f8d83b9c6",
+      "target1_audio_id": "2f99dae8-57ef-47ca-a61e-43b9b968f141",
+      "target2_audio_id": "8df1a623-6df8-4d3d-8662-e1b0ffbb0b42",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0056L02B06",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I feel better",
+      "target_text": "Ich fühle mich besser",
+      "known_audio_id": "f2ae1895-d427-4611-9119-98b830f573aa",
+      "target1_audio_id": "2f99dae8-57ef-47ca-a61e-43b9b968f141",
+      "target2_audio_id": "8df1a623-6df8-4d3d-8662-e1b0ffbb0b42",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0056L02B06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0056L02B06",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "f2ae1895-d427-4611-9119-98b830f573aa",
+      "known_text": "I feel better",
+      "target_text": "Ich fühle mich besser",
+      "target1_audio_id": "2f99dae8-57ef-47ca-a61e-43b9b968f141",
+      "target2_audio_id": "8df1a623-6df8-4d3d-8662-e1b0ffbb0b42",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0056L02B06",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "f2ae1895-d427-4611-9119-98b830f573aa",
+      "known_text": "I feel better",
+      "target_text": "Ich fühle mich besser",
+      "target1_audio_id": "2f99dae8-57ef-47ca-a61e-43b9b968f141",
+      "target2_audio_id": "8df1a623-6df8-4d3d-8662-e1b0ffbb0b42",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0056L02U13"
+     },
+     "before": {
+      "id": "deu_for_eng:S0056L02U13",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I feel myself much better since I started to learn more",
+      "target_text": "Ich fühle mich viel besser seit ich angefangen habe mehr zu lernen",
+      "known_audio_id": "b16d2c37-cfb2-4f57-a1ac-f622cd6aa482",
+      "target1_audio_id": "28021264-ffb9-4180-9fc7-b427427c408a",
+      "target2_audio_id": "b34630ab-2d23-4f6f-b3db-4447057e81bb",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0056L02U13",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I feel much better since I started to learn more",
+      "target_text": "Ich fühle mich viel besser seit ich angefangen habe mehr zu lernen",
+      "known_audio_id": "0658e76f-dcf4-453f-aa40-f9c704215ab8",
+      "target1_audio_id": "28021264-ffb9-4180-9fc7-b427427c408a",
+      "target2_audio_id": "b34630ab-2d23-4f6f-b3db-4447057e81bb",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0056L02U13"
+     },
+     "before": {
+      "id": "deu_for_eng:S0056L02U13",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "0658e76f-dcf4-453f-aa40-f9c704215ab8",
+      "known_text": "I feel much better since I started to learn more",
+      "target_text": "Ich fühle mich viel besser seit ich angefangen habe mehr zu lernen",
+      "target1_audio_id": "28021264-ffb9-4180-9fc7-b427427c408a",
+      "target2_audio_id": "b34630ab-2d23-4f6f-b3db-4447057e81bb",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0056L02U13",
+      "seed_number": 56,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "0658e76f-dcf4-453f-aa40-f9c704215ab8",
+      "known_text": "I feel much better since I started to learn more",
+      "target_text": "Ich fühle mich viel besser seit ich angefangen habe mehr zu lernen",
+      "target1_audio_id": "28021264-ffb9-4180-9fc7-b427427c408a",
+      "target2_audio_id": "b34630ab-2d23-4f6f-b3db-4447057e81bb",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0064L01U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0064L01U07",
+      "seed_number": 64,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I want learning German",
+      "target_text": "Ich will Deutsch lernen",
+      "known_audio_id": "7047c5ce-4a19-4271-acc8-be42af15fc15",
+      "target1_audio_id": "f7c41e26-375a-45a0-94e7-c8859cf6bfa6",
+      "target2_audio_id": "7f9d1c8b-58c9-46f2-9b91-6432bd314c43",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0064L01U07",
+      "seed_number": 64,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I want to learn German",
+      "target_text": "Ich will Deutsch lernen",
+      "known_audio_id": "6f37bdae-d8f5-45e8-b1ee-4c2368c025d6",
+      "target1_audio_id": "f7c41e26-375a-45a0-94e7-c8859cf6bfa6",
+      "target2_audio_id": "7f9d1c8b-58c9-46f2-9b91-6432bd314c43",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0064L01U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0064L01U07",
+      "seed_number": 64,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "6f37bdae-d8f5-45e8-b1ee-4c2368c025d6",
+      "known_text": "I want to learn German",
+      "target_text": "Ich will Deutsch lernen",
+      "target1_audio_id": "f7c41e26-375a-45a0-94e7-c8859cf6bfa6",
+      "target2_audio_id": "7f9d1c8b-58c9-46f2-9b91-6432bd314c43",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0064L01U07",
+      "seed_number": 64,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "6f37bdae-d8f5-45e8-b1ee-4c2368c025d6",
+      "known_text": "I want to learn German",
+      "target_text": "Ich will Deutsch lernen",
+      "target1_audio_id": "f7c41e26-375a-45a0-94e7-c8859cf6bfa6",
+      "target2_audio_id": "7f9d1c8b-58c9-46f2-9b91-6432bd314c43",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0064L01U07",
+     "set": {
+      "known_text": "I want learning German",
+      "known_audio_id": "7047c5ce-4a19-4271-acc8-be42af15fc15"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0056L02U13",
+     "set": {
+      "known_text": "I feel myself much better since I started to learn more",
+      "known_audio_id": "b16d2c37-cfb2-4f57-a1ac-f622cd6aa482"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0056L02B06",
+     "set": {
+      "known_text": "I feel better myself",
+      "known_audio_id": "6843857f-858d-4554-a759-d80f8d83b9c6"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0182L01B03",
+     "set": {
+      "known_text": "I want to look anywhere",
+      "known_audio_id": "cddd2eb6-84f4-4a42-996d-8e78e641fb01"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0141L02U05",
+     "set": {
+      "known_text": "I wanted to know if it is in order to wait here for you",
+      "known_audio_id": "ca36be92-aa81-4051-a9a3-4483c8c1e745"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0033L02U01",
+     "set": {
+      "known_text": "How long have you already been learning German, and is it useful?",
+      "known_audio_id": "97c38588-fa58-472d-a3f0-c90eef5ced4c"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0424L03U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0424L03U03",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden müssen",
+      "known_text": "I thought we did not have to waste the time of everyone",
+      "known_audio_id": "0b2e7b82-37eb-4c4c-aef8-9996e36c2f40",
+      "target1_audio_id": "1e570658-bd8d-440d-8d64-e5d62e971ceb",
+      "target2_audio_id": "7b0dda30-df93-4995-b708-1a3b89355cd2",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0424L03U03",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_text": "I thought we did not have to waste the time of everyone",
+      "known_audio_id": "0b2e7b82-37eb-4c4c-aef8-9996e36c2f40",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0424L03U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0424L03U03",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I thought we did not have to waste the time of everyone",
+      "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "0b2e7b82-37eb-4c4c-aef8-9996e36c2f40",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0424L03U03",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "f3cf4abf-08bc-408b-afc1-065fd66f4b3c",
+      "known_text": "I thought we did not have to waste the time of everyone",
+      "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "0b2e7b82-37eb-4c4c-aef8-9996e36c2f40",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0424L03U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0424L03U03",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I thought we did not have to waste the time of everyone",
+      "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "0b2e7b82-37eb-4c4c-aef8-9996e36c2f40",
+      "target1_audio_id": "f3cf4abf-08bc-408b-afc1-065fd66f4b3c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0424L03U03",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "1b6c8b89-634d-4149-8c5b-01b0a62bde0e",
+      "known_text": "I thought we did not have to waste the time of everyone",
+      "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "0b2e7b82-37eb-4c4c-aef8-9996e36c2f40",
+      "target1_audio_id": "f3cf4abf-08bc-408b-afc1-065fd66f4b3c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0424L03U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0424L03U06",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden müssen",
+      "known_text": "I knew we did not have to waste everyone's time",
+      "known_audio_id": "29e04667-578d-41be-9b3e-801de6d39ee7",
+      "target1_audio_id": "53561c85-1f00-4d06-b54d-374b2da5b469",
+      "target2_audio_id": "24ddf12c-4998-4c0d-afcd-7aa75efeec53",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0424L03U06",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_text": "I knew we did not have to waste everyone's time",
+      "known_audio_id": "29e04667-578d-41be-9b3e-801de6d39ee7",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0424L03U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0424L03U06",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I knew we did not have to waste everyone's time",
+      "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "29e04667-578d-41be-9b3e-801de6d39ee7",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0424L03U06",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "f5a7f337-ed3f-4d82-8740-402a3e8b2fc1",
+      "known_text": "I knew we did not have to waste everyone's time",
+      "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "29e04667-578d-41be-9b3e-801de6d39ee7",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0424L03U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0424L03U06",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I knew we did not have to waste everyone's time",
+      "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "29e04667-578d-41be-9b3e-801de6d39ee7",
+      "target1_audio_id": "f5a7f337-ed3f-4d82-8740-402a3e8b2fc1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0424L03U06",
+      "seed_number": 424,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "a17802b0-acb0-4644-868c-715427e7198d",
+      "known_text": "I knew we did not have to waste everyone's time",
+      "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden mussten",
+      "known_audio_id": "29e04667-578d-41be-9b3e-801de6d39ee7",
+      "target1_audio_id": "f5a7f337-ed3f-4d82-8740-402a3e8b2fc1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0163L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0163L01U04",
+      "seed_number": 163,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I think that this way of learning is perfect for me and I want to continue",
+      "target_text": "Ich denke, dass diese Form zu lernen perfekt für mich ist und ich möchte weitermachen",
+      "known_audio_id": "65976cfb-ac28-43b0-bf88-f1c65a8444f3",
+      "target1_audio_id": "36277681-4189-41ad-b2b7-602351b269e2",
+      "target2_audio_id": "8223fd33-c1e7-4adc-9f24-f1db18e69b68",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0163L01U04",
+      "seed_number": 163,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I think that this way of learning is perfect for me and I'd like to continue",
+      "target_text": "Ich denke, dass diese Form zu lernen perfekt für mich ist und ich möchte weitermachen",
+      "known_audio_id": "71d3d3ae-a7d8-41df-992c-8d9270029a91",
+      "target1_audio_id": "36277681-4189-41ad-b2b7-602351b269e2",
+      "target2_audio_id": "8223fd33-c1e7-4adc-9f24-f1db18e69b68",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0163L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0163L01U04",
+      "seed_number": 163,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "71d3d3ae-a7d8-41df-992c-8d9270029a91",
+      "known_text": "I think that this way of learning is perfect for me and I'd like to continue",
+      "target_text": "Ich denke, dass diese Form zu lernen perfekt für mich ist und ich möchte weitermachen",
+      "target1_audio_id": "36277681-4189-41ad-b2b7-602351b269e2",
+      "target2_audio_id": "8223fd33-c1e7-4adc-9f24-f1db18e69b68",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0163L01U04",
+      "seed_number": 163,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "71d3d3ae-a7d8-41df-992c-8d9270029a91",
+      "known_text": "I think that this way of learning is perfect for me and I'd like to continue",
+      "target_text": "Ich denke, dass diese Form zu lernen perfekt für mich ist und ich möchte weitermachen",
+      "target1_audio_id": "36277681-4189-41ad-b2b7-602351b269e2",
+      "target2_audio_id": "8223fd33-c1e7-4adc-9f24-f1db18e69b68",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0202L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0202L01U04",
+      "seed_number": 202,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "Nobody wants to work in an office on Saturday evening",
+      "target_text": "Niemand möchte am Samstagabend in einem Büro arbeiten",
+      "known_audio_id": "a79e55b1-ebe7-42a0-a2a8-b85eeb3a1a26",
+      "target1_audio_id": "8d641d50-5832-4653-a1a3-70188df84a66",
+      "target2_audio_id": "67147866-2640-4c98-9856-2389dae0b5e0",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0202L01U04",
+      "seed_number": 202,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "Nobody would like to work in an office on Saturday evening",
+      "target_text": "Niemand möchte am Samstagabend in einem Büro arbeiten",
+      "known_audio_id": "ce993d65-e6a9-4262-8d3a-cfd85e1cb273",
+      "target1_audio_id": "8d641d50-5832-4653-a1a3-70188df84a66",
+      "target2_audio_id": "67147866-2640-4c98-9856-2389dae0b5e0",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0202L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0202L01U04",
+      "seed_number": 202,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "ce993d65-e6a9-4262-8d3a-cfd85e1cb273",
+      "known_text": "Nobody would like to work in an office on Saturday evening",
+      "target_text": "Niemand möchte am Samstagabend in einem Büro arbeiten",
+      "target1_audio_id": "8d641d50-5832-4653-a1a3-70188df84a66",
+      "target2_audio_id": "67147866-2640-4c98-9856-2389dae0b5e0",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0202L01U04",
+      "seed_number": 202,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "ce993d65-e6a9-4262-8d3a-cfd85e1cb273",
+      "known_text": "Nobody would like to work in an office on Saturday evening",
+      "target_text": "Niemand möchte am Samstagabend in einem Büro arbeiten",
+      "target1_audio_id": "8d641d50-5832-4653-a1a3-70188df84a66",
+      "target2_audio_id": "67147866-2640-4c98-9856-2389dae0b5e0",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0202L02U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0202L02U04",
+      "seed_number": 202,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "The son wants to make sure nobody else knows how to answer the question",
+      "target_text": "Der Sohn möchte sicherstellen, dass niemand anderes weiß, wie man die Frage beantworten sollte",
+      "known_audio_id": "280f0fdf-e0b9-4359-968a-28a8790ade78",
+      "target1_audio_id": "02dec0d0-b40d-412e-900c-375a6c57ab0f",
+      "target2_audio_id": "25c828b7-b1f4-4968-8694-366ade982d8c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0202L02U04",
+      "seed_number": 202,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "The son would like to make sure nobody else knows how to answer the question",
+      "target_text": "Der Sohn möchte sicherstellen, dass niemand anderes weiß, wie man die Frage beantworten sollte",
+      "known_audio_id": "5159317a-134d-49c4-bd55-dfa14792e052",
+      "target1_audio_id": "02dec0d0-b40d-412e-900c-375a6c57ab0f",
+      "target2_audio_id": "25c828b7-b1f4-4968-8694-366ade982d8c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0202L02U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0202L02U04",
+      "seed_number": 202,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "5159317a-134d-49c4-bd55-dfa14792e052",
+      "known_text": "The son would like to make sure nobody else knows how to answer the question",
+      "target_text": "Der Sohn möchte sicherstellen, dass niemand anderes weiß, wie man die Frage beantworten sollte",
+      "target1_audio_id": "02dec0d0-b40d-412e-900c-375a6c57ab0f",
+      "target2_audio_id": "25c828b7-b1f4-4968-8694-366ade982d8c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0202L02U04",
+      "seed_number": 202,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "5159317a-134d-49c4-bd55-dfa14792e052",
+      "known_text": "The son would like to make sure nobody else knows how to answer the question",
+      "target_text": "Der Sohn möchte sicherstellen, dass niemand anderes weiß, wie man die Frage beantworten sollte",
+      "target1_audio_id": "02dec0d0-b40d-412e-900c-375a6c57ab0f",
+      "target2_audio_id": "25c828b7-b1f4-4968-8694-366ade982d8c",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0202L02U04",
+     "set": {
+      "known_text": "The son wants to make sure nobody else knows how to answer the question",
+      "known_audio_id": "280f0fdf-e0b9-4359-968a-28a8790ade78"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0202L01U04",
+     "set": {
+      "known_text": "Nobody wants to work in an office on Saturday evening",
+      "known_audio_id": "a79e55b1-ebe7-42a0-a2a8-b85eeb3a1a26"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0163L01U04",
+     "set": {
+      "known_text": "I think that this way of learning is perfect for me and I want to continue",
+      "known_audio_id": "65976cfb-ac28-43b0-bf88-f1c65a8444f3"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0424L03U06",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0424L03U06",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0424L03U06",
+     "set": {
+      "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden müssen",
+      "target1_audio_id": "53561c85-1f00-4d06-b54d-374b2da5b469",
+      "target2_audio_id": "24ddf12c-4998-4c0d-afcd-7aa75efeec53"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0424L03U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0424L03U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0424L03U03",
+     "set": {
+      "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden müssen",
+      "target1_audio_id": "1e570658-bd8d-440d-8d64-e5d62e971ceb",
+      "target2_audio_id": "7b0dda30-df93-4995-b708-1a3b89355cd2"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0209L01U09"
+     },
+     "before": {
+      "id": "deu_for_eng:S0209L01U09",
+      "seed_number": 209,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I don't want to spend time alone",
+      "target_text": "Ich möchte nicht allein Zeit verbringen",
+      "known_audio_id": "d10b7d66-1357-4789-8e3a-dcdd4f3471fa",
+      "target1_audio_id": "8b86f025-a9f2-4bf8-b112-82682f5cc10f",
+      "target2_audio_id": "2f5d19d0-ab69-4b70-9df2-9b5ce6d06a7b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0209L01U09",
+      "seed_number": 209,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I wouldn't like to spend time alone",
+      "target_text": "Ich möchte nicht allein Zeit verbringen",
+      "known_audio_id": "e9ef9052-ce9d-4c54-81ea-fd8e4af712b2",
+      "target1_audio_id": "8b86f025-a9f2-4bf8-b112-82682f5cc10f",
+      "target2_audio_id": "2f5d19d0-ab69-4b70-9df2-9b5ce6d06a7b",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0209L01U09"
+     },
+     "before": {
+      "id": "deu_for_eng:S0209L01U09",
+      "seed_number": 209,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "e9ef9052-ce9d-4c54-81ea-fd8e4af712b2",
+      "known_text": "I wouldn't like to spend time alone",
+      "target_text": "Ich möchte nicht allein Zeit verbringen",
+      "target1_audio_id": "8b86f025-a9f2-4bf8-b112-82682f5cc10f",
+      "target2_audio_id": "2f5d19d0-ab69-4b70-9df2-9b5ce6d06a7b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0209L01U09",
+      "seed_number": 209,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "e9ef9052-ce9d-4c54-81ea-fd8e4af712b2",
+      "known_text": "I wouldn't like to spend time alone",
+      "target_text": "Ich möchte nicht allein Zeit verbringen",
+      "target1_audio_id": "8b86f025-a9f2-4bf8-b112-82682f5cc10f",
+      "target2_audio_id": "2f5d19d0-ab69-4b70-9df2-9b5ce6d06a7b",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0210L02B02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0210L02B02",
+      "seed_number": 210,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I want to discuss the problem with you",
+      "target_text": "Ich möchte das Problem mit dir besprechen",
+      "known_audio_id": "8aaef485-78de-408c-89c8-d1c07f31cdce",
+      "target1_audio_id": "b254a8b7-4ab5-4595-a8da-d4b8aeff6e1f",
+      "target2_audio_id": "8d728fb1-7519-4898-842a-316d52624ce7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0210L02B02",
+      "seed_number": 210,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I'd like to discuss the problem with you",
+      "target_text": "Ich möchte das Problem mit dir besprechen",
+      "known_audio_id": "17da6512-d506-4fe3-a737-74c6b7aaca4c",
+      "target1_audio_id": "b254a8b7-4ab5-4595-a8da-d4b8aeff6e1f",
+      "target2_audio_id": "8d728fb1-7519-4898-842a-316d52624ce7",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0210L02B02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0210L02B02",
+      "seed_number": 210,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "17da6512-d506-4fe3-a737-74c6b7aaca4c",
+      "known_text": "I'd like to discuss the problem with you",
+      "target_text": "Ich möchte das Problem mit dir besprechen",
+      "target1_audio_id": "b254a8b7-4ab5-4595-a8da-d4b8aeff6e1f",
+      "target2_audio_id": "8d728fb1-7519-4898-842a-316d52624ce7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0210L02B02",
+      "seed_number": 210,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "17da6512-d506-4fe3-a737-74c6b7aaca4c",
+      "known_text": "I'd like to discuss the problem with you",
+      "target_text": "Ich möchte das Problem mit dir besprechen",
+      "target1_audio_id": "b254a8b7-4ab5-4595-a8da-d4b8aeff6e1f",
+      "target2_audio_id": "8d728fb1-7519-4898-842a-316d52624ce7",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0214L02U08"
+     },
+     "before": {
+      "id": "deu_for_eng:S0214L02U08",
+      "seed_number": 214,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I want to practice German at the weekend",
+      "target_text": "Ich möchte am Wochenende Deutsch üben",
+      "known_audio_id": "beec447b-5d09-45ed-b709-cc60198bad81",
+      "target1_audio_id": "41cdb45a-437c-4981-bab4-55093dd51709",
+      "target2_audio_id": "f6d206cb-b49c-4dd8-927c-f24c978837c3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0214L02U08",
+      "seed_number": 214,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I'd like to practice German at the weekend",
+      "target_text": "Ich möchte am Wochenende Deutsch üben",
+      "known_audio_id": "60506c5f-d6ad-4308-8840-e82be5b74520",
+      "target1_audio_id": "41cdb45a-437c-4981-bab4-55093dd51709",
+      "target2_audio_id": "f6d206cb-b49c-4dd8-927c-f24c978837c3",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0214L02U08"
+     },
+     "before": {
+      "id": "deu_for_eng:S0214L02U08",
+      "seed_number": 214,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "60506c5f-d6ad-4308-8840-e82be5b74520",
+      "known_text": "I'd like to practice German at the weekend",
+      "target_text": "Ich möchte am Wochenende Deutsch üben",
+      "target1_audio_id": "41cdb45a-437c-4981-bab4-55093dd51709",
+      "target2_audio_id": "f6d206cb-b49c-4dd8-927c-f24c978837c3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0214L02U08",
+      "seed_number": 214,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "60506c5f-d6ad-4308-8840-e82be5b74520",
+      "known_text": "I'd like to practice German at the weekend",
+      "target_text": "Ich möchte am Wochenende Deutsch üben",
+      "target1_audio_id": "41cdb45a-437c-4981-bab4-55093dd51709",
+      "target2_audio_id": "f6d206cb-b49c-4dd8-927c-f24c978837c3",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0221L02U10"
+     },
+     "before": {
+      "id": "deu_for_eng:S0221L02U10",
+      "seed_number": 221,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I want to watch the football with my friends this evening",
+      "target_text": "Ich möchte heute Abend mit meinen Freunden Fußball schauen",
+      "known_audio_id": "50c1e7a7-e182-4972-8cd3-1e9af296c521",
+      "target1_audio_id": "f927fd06-bb37-4f38-98d8-e8feea677fb8",
+      "target2_audio_id": "e20d8ad0-98cd-45b4-a529-cc7d39ad0eaa",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0221L02U10",
+      "seed_number": 221,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I'd like to watch the football with my friends this evening",
+      "target_text": "Ich möchte heute Abend mit meinen Freunden Fußball schauen",
+      "known_audio_id": "8dab6f35-c32f-4c04-92cb-991b2ce66d56",
+      "target1_audio_id": "f927fd06-bb37-4f38-98d8-e8feea677fb8",
+      "target2_audio_id": "e20d8ad0-98cd-45b4-a529-cc7d39ad0eaa",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0221L02U10"
+     },
+     "before": {
+      "id": "deu_for_eng:S0221L02U10",
+      "seed_number": 221,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "8dab6f35-c32f-4c04-92cb-991b2ce66d56",
+      "known_text": "I'd like to watch the football with my friends this evening",
+      "target_text": "Ich möchte heute Abend mit meinen Freunden Fußball schauen",
+      "target1_audio_id": "f927fd06-bb37-4f38-98d8-e8feea677fb8",
+      "target2_audio_id": "e20d8ad0-98cd-45b4-a529-cc7d39ad0eaa",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0221L02U10",
+      "seed_number": 221,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "8dab6f35-c32f-4c04-92cb-991b2ce66d56",
+      "known_text": "I'd like to watch the football with my friends this evening",
+      "target_text": "Ich möchte heute Abend mit meinen Freunden Fußball schauen",
+      "target1_audio_id": "f927fd06-bb37-4f38-98d8-e8feea677fb8",
+      "target2_audio_id": "e20d8ad0-98cd-45b4-a529-cc7d39ad0eaa",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0221L04U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0221L04U07",
+      "seed_number": 221,
+      "lego_index": 4,
+      "lego_id": null,
+      "known_text": "I want to watch a film with you this evening",
+      "target_text": "Ich möchte heute Abend einen Film mit dir schauen",
+      "known_audio_id": "307fa928-b658-4794-8d00-1f0741839cac",
+      "target1_audio_id": "c830984f-b81f-4872-add5-d2f932d06015",
+      "target2_audio_id": "fee58a7e-bd64-4e12-ba6b-cb4e46f362aa",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0221L04U07",
+      "seed_number": 221,
+      "lego_index": 4,
+      "lego_id": null,
+      "known_text": "I'd like to watch a film with you this evening",
+      "target_text": "Ich möchte heute Abend einen Film mit dir schauen",
+      "known_audio_id": "473d26a2-7ea8-45e0-9418-bfc81eb3b5f8",
+      "target1_audio_id": "c830984f-b81f-4872-add5-d2f932d06015",
+      "target2_audio_id": "fee58a7e-bd64-4e12-ba6b-cb4e46f362aa",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0221L04U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0221L04U07",
+      "seed_number": 221,
+      "lego_index": 4,
+      "lego_id": null,
+      "known_audio_id": "473d26a2-7ea8-45e0-9418-bfc81eb3b5f8",
+      "known_text": "I'd like to watch a film with you this evening",
+      "target_text": "Ich möchte heute Abend einen Film mit dir schauen",
+      "target1_audio_id": "c830984f-b81f-4872-add5-d2f932d06015",
+      "target2_audio_id": "fee58a7e-bd64-4e12-ba6b-cb4e46f362aa",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0221L04U07",
+      "seed_number": 221,
+      "lego_index": 4,
+      "lego_id": null,
+      "known_audio_id": "473d26a2-7ea8-45e0-9418-bfc81eb3b5f8",
+      "known_text": "I'd like to watch a film with you this evening",
+      "target_text": "Ich möchte heute Abend einen Film mit dir schauen",
+      "target1_audio_id": "c830984f-b81f-4872-add5-d2f932d06015",
+      "target2_audio_id": "fee58a7e-bd64-4e12-ba6b-cb4e46f362aa",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0224L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0224L01U05",
+      "seed_number": 224,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I am just thinking about what I want to do later this evening at home",
+      "target_text": "Ich denke gerade darüber nach was ich später am Abend zu Hause machen möchte",
+      "known_audio_id": "9916a9a8-ccd2-484c-b8da-f0619f57d2d5",
+      "target1_audio_id": "6312bd5a-aea1-4bdd-8ab5-c1b0dd248c8d",
+      "target2_audio_id": "2f3c7c09-4b70-4f6a-8f47-bcf2e0a9c50d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0224L01U05",
+      "seed_number": 224,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I am just thinking about what I'd like to do later this evening at home",
+      "target_text": "Ich denke gerade darüber nach was ich später am Abend zu Hause machen möchte",
+      "known_audio_id": "7ee8d929-c28e-428b-8e5e-a67056dfd46f",
+      "target1_audio_id": "6312bd5a-aea1-4bdd-8ab5-c1b0dd248c8d",
+      "target2_audio_id": "2f3c7c09-4b70-4f6a-8f47-bcf2e0a9c50d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0224L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0224L01U05",
+      "seed_number": 224,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "7ee8d929-c28e-428b-8e5e-a67056dfd46f",
+      "known_text": "I am just thinking about what I'd like to do later this evening at home",
+      "target_text": "Ich denke gerade darüber nach was ich später am Abend zu Hause machen möchte",
+      "target1_audio_id": "6312bd5a-aea1-4bdd-8ab5-c1b0dd248c8d",
+      "target2_audio_id": "2f3c7c09-4b70-4f6a-8f47-bcf2e0a9c50d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0224L01U05",
+      "seed_number": 224,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "7ee8d929-c28e-428b-8e5e-a67056dfd46f",
+      "known_text": "I am just thinking about what I'd like to do later this evening at home",
+      "target_text": "Ich denke gerade darüber nach was ich später am Abend zu Hause machen möchte",
+      "target1_audio_id": "6312bd5a-aea1-4bdd-8ab5-c1b0dd248c8d",
+      "target2_audio_id": "2f3c7c09-4b70-4f6a-8f47-bcf2e0a9c50d",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0224L01U05",
+     "set": {
+      "known_text": "I am just thinking about what I want to do later this evening at home",
+      "known_audio_id": "9916a9a8-ccd2-484c-b8da-f0619f57d2d5"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0221L04U07",
+     "set": {
+      "known_text": "I want to watch a film with you this evening",
+      "known_audio_id": "307fa928-b658-4794-8d00-1f0741839cac"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0221L02U10",
+     "set": {
+      "known_text": "I want to watch the football with my friends this evening",
+      "known_audio_id": "50c1e7a7-e182-4972-8cd3-1e9af296c521"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0214L02U08",
+     "set": {
+      "known_text": "I want to practice German at the weekend",
+      "known_audio_id": "beec447b-5d09-45ed-b709-cc60198bad81"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0210L02B02",
+     "set": {
+      "known_text": "I want to discuss the problem with you",
+      "known_audio_id": "8aaef485-78de-408c-89c8-d1c07f31cdce"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0209L01U09",
+     "set": {
+      "known_text": "I don't want to spend time alone",
+      "known_audio_id": "d10b7d66-1357-4789-8e3a-dcdd4f3471fa"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0225L01U12"
+     },
+     "before": {
+      "id": "deu_for_eng:S0225L01U12",
+      "seed_number": 225,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "He would give what I want if it were possible",
+      "target_text": "Er würde geben was ich möchte wenn es möglich wäre",
+      "known_audio_id": "42d86db6-b2cf-4cb9-a920-8ee9a33ffb6b",
+      "target1_audio_id": "b50a90fc-e824-4c72-96e7-a3a60baebcea",
+      "target2_audio_id": "d27714ca-b383-4198-8572-a78e0583e424",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0225L01U12",
+      "seed_number": 225,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "He would give what I'd like if it were possible",
+      "target_text": "Er würde geben was ich möchte wenn es möglich wäre",
+      "known_audio_id": "1a924f2b-7692-4f1b-8471-6848d1adaa40",
+      "target1_audio_id": "b50a90fc-e824-4c72-96e7-a3a60baebcea",
+      "target2_audio_id": "d27714ca-b383-4198-8572-a78e0583e424",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0225L01U12"
+     },
+     "before": {
+      "id": "deu_for_eng:S0225L01U12",
+      "seed_number": 225,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "1a924f2b-7692-4f1b-8471-6848d1adaa40",
+      "known_text": "He would give what I'd like if it were possible",
+      "target_text": "Er würde geben was ich möchte wenn es möglich wäre",
+      "target1_audio_id": "b50a90fc-e824-4c72-96e7-a3a60baebcea",
+      "target2_audio_id": "d27714ca-b383-4198-8572-a78e0583e424",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0225L01U12",
+      "seed_number": 225,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "1a924f2b-7692-4f1b-8471-6848d1adaa40",
+      "known_text": "He would give what I'd like if it were possible",
+      "target_text": "Er würde geben was ich möchte wenn es möglich wäre",
+      "target1_audio_id": "b50a90fc-e824-4c72-96e7-a3a60baebcea",
+      "target2_audio_id": "d27714ca-b383-4198-8572-a78e0583e424",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0226L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0226L01U03",
+      "seed_number": 226,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "The man is at work today but he wants to go home early this evening",
+      "target_text": "Der Mann ist heute bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "known_audio_id": "83c3b4ef-2ad7-4526-ba2b-d5ddee32deb2",
+      "target1_audio_id": "c1772c1d-bb04-4c50-8d91-3aad3e04a90a",
+      "target2_audio_id": "fec845b5-af8f-414d-8523-5c799ed3ba90",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0226L01U03",
+      "seed_number": 226,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "The man is at work today but he'd like to go home early this evening",
+      "target_text": "Der Mann ist heute bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "known_audio_id": "4a7e28d7-77df-467f-a367-a3ab14ddae46",
+      "target1_audio_id": "c1772c1d-bb04-4c50-8d91-3aad3e04a90a",
+      "target2_audio_id": "fec845b5-af8f-414d-8523-5c799ed3ba90",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0226L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0226L01U03",
+      "seed_number": 226,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "4a7e28d7-77df-467f-a367-a3ab14ddae46",
+      "known_text": "The man is at work today but he'd like to go home early this evening",
+      "target_text": "Der Mann ist heute bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "target1_audio_id": "c1772c1d-bb04-4c50-8d91-3aad3e04a90a",
+      "target2_audio_id": "fec845b5-af8f-414d-8523-5c799ed3ba90",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0226L01U03",
+      "seed_number": 226,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "4a7e28d7-77df-467f-a367-a3ab14ddae46",
+      "known_text": "The man is at work today but he'd like to go home early this evening",
+      "target_text": "Der Mann ist heute bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "target1_audio_id": "c1772c1d-bb04-4c50-8d91-3aad3e04a90a",
+      "target2_audio_id": "fec845b5-af8f-414d-8523-5c799ed3ba90",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0227L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0227L01U03",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That man is at work now but he wants to go home early this evening",
+      "target_text": "Dieser Mann ist jetzt bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "known_audio_id": "78b36426-d66b-4b3e-a70b-c2f3ec3c3b26",
+      "target1_audio_id": "6c24ca18-4c75-41a1-916f-9f2ff941499d",
+      "target2_audio_id": "edfc2acd-68ae-412b-8811-93d65f595d6a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0227L01U03",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That man is at work now but he'd like to go home early this evening",
+      "target_text": "Dieser Mann ist jetzt bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "known_audio_id": "4952ecd1-64ad-4cc5-9355-d780ad7706af",
+      "target1_audio_id": "6c24ca18-4c75-41a1-916f-9f2ff941499d",
+      "target2_audio_id": "edfc2acd-68ae-412b-8811-93d65f595d6a",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0227L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0227L01U03",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "4952ecd1-64ad-4cc5-9355-d780ad7706af",
+      "known_text": "That man is at work now but he'd like to go home early this evening",
+      "target_text": "Dieser Mann ist jetzt bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "target1_audio_id": "6c24ca18-4c75-41a1-916f-9f2ff941499d",
+      "target2_audio_id": "edfc2acd-68ae-412b-8811-93d65f595d6a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0227L01U03",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "4952ecd1-64ad-4cc5-9355-d780ad7706af",
+      "known_text": "That man is at work now but he'd like to go home early this evening",
+      "target_text": "Dieser Mann ist jetzt bei der Arbeit aber er möchte heute Abend früh nach Hause",
+      "target1_audio_id": "6c24ca18-4c75-41a1-916f-9f2ff941499d",
+      "target2_audio_id": "edfc2acd-68ae-412b-8811-93d65f595d6a",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0227L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0227L01U06",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That man told me yesterday that he wants to learn German better than before",
+      "target_text": "Dieser Mann hat mir gestern gesagt dass er Deutsch besser lernen möchte als vorhin",
+      "known_audio_id": "6547cd48-ac57-462a-b1ce-65e7a06bbcf9",
+      "target1_audio_id": "b8d6c183-ee04-432c-aae8-8ffc20acac55",
+      "target2_audio_id": "385f878e-d0a5-4f6b-903a-1010b4c9f6a7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0227L01U06",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That man told me yesterday that he'd like to learn German better than before",
+      "target_text": "Dieser Mann hat mir gestern gesagt dass er Deutsch besser lernen möchte als vorhin",
+      "known_audio_id": "e4512bdf-054b-4133-87db-4ac97090e131",
+      "target1_audio_id": "b8d6c183-ee04-432c-aae8-8ffc20acac55",
+      "target2_audio_id": "385f878e-d0a5-4f6b-903a-1010b4c9f6a7",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0227L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0227L01U06",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "e4512bdf-054b-4133-87db-4ac97090e131",
+      "known_text": "That man told me yesterday that he'd like to learn German better than before",
+      "target_text": "Dieser Mann hat mir gestern gesagt dass er Deutsch besser lernen möchte als vorhin",
+      "target1_audio_id": "b8d6c183-ee04-432c-aae8-8ffc20acac55",
+      "target2_audio_id": "385f878e-d0a5-4f6b-903a-1010b4c9f6a7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0227L01U06",
+      "seed_number": 227,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "e4512bdf-054b-4133-87db-4ac97090e131",
+      "known_text": "That man told me yesterday that he'd like to learn German better than before",
+      "target_text": "Dieser Mann hat mir gestern gesagt dass er Deutsch besser lernen möchte als vorhin",
+      "target1_audio_id": "b8d6c183-ee04-432c-aae8-8ffc20acac55",
+      "target2_audio_id": "385f878e-d0a5-4f6b-903a-1010b4c9f6a7",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0228L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0228L01U04",
+      "seed_number": 228,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I think that man has just started to practise speaking because he wants to get better",
+      "target_text": "Ich denke, dieser Mann hat gerade angefangen, sprechen zu üben, weil er besser werden möchte",
+      "known_audio_id": "9d3d4f06-d826-4d47-984d-1efab7cbddf8",
+      "target1_audio_id": "1ddc7664-d61b-4e6d-ac33-1767f607d533",
+      "target2_audio_id": "7a0c5b8d-e8db-49a7-879b-cc8230560d1c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0228L01U04",
+      "seed_number": 228,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I think that man has just started to practise speaking because he'd like to get better",
+      "target_text": "Ich denke, dieser Mann hat gerade angefangen, sprechen zu üben, weil er besser werden möchte",
+      "known_audio_id": "3e635ea6-cbdd-4042-a330-f6bd08e424cc",
+      "target1_audio_id": "1ddc7664-d61b-4e6d-ac33-1767f607d533",
+      "target2_audio_id": "7a0c5b8d-e8db-49a7-879b-cc8230560d1c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0228L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0228L01U04",
+      "seed_number": 228,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "3e635ea6-cbdd-4042-a330-f6bd08e424cc",
+      "known_text": "I think that man has just started to practise speaking because he'd like to get better",
+      "target_text": "Ich denke, dieser Mann hat gerade angefangen, sprechen zu üben, weil er besser werden möchte",
+      "target1_audio_id": "1ddc7664-d61b-4e6d-ac33-1767f607d533",
+      "target2_audio_id": "7a0c5b8d-e8db-49a7-879b-cc8230560d1c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0228L01U04",
+      "seed_number": 228,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "3e635ea6-cbdd-4042-a330-f6bd08e424cc",
+      "known_text": "I think that man has just started to practise speaking because he'd like to get better",
+      "target_text": "Ich denke, dieser Mann hat gerade angefangen, sprechen zu üben, weil er besser werden möchte",
+      "target1_audio_id": "1ddc7664-d61b-4e6d-ac33-1767f607d533",
+      "target2_audio_id": "7a0c5b8d-e8db-49a7-879b-cc8230560d1c",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0229L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0229L01U03",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That woman is at work now but she wants to go home early this evening",
+      "target_text": "Diese Frau ist jetzt bei der Arbeit aber sie möchte heute Abend früh nach Hause",
+      "known_audio_id": "e0b306fd-f8d9-4df4-a5f1-56e7eb9da82d",
+      "target1_audio_id": "2294f160-cb9d-48e2-a954-fd8f34f84d06",
+      "target2_audio_id": "b6cb94f8-b7ff-48e4-ad0e-4cf34b35b5d0",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0229L01U03",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That woman is at work now but she'd like to go home early this evening",
+      "target_text": "Diese Frau ist jetzt bei der Arbeit aber sie möchte heute Abend früh nach Hause",
+      "known_audio_id": "fa6236f0-bf89-486a-be90-2851fb3eac60",
+      "target1_audio_id": "2294f160-cb9d-48e2-a954-fd8f34f84d06",
+      "target2_audio_id": "b6cb94f8-b7ff-48e4-ad0e-4cf34b35b5d0",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0229L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0229L01U03",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "fa6236f0-bf89-486a-be90-2851fb3eac60",
+      "known_text": "That woman is at work now but she'd like to go home early this evening",
+      "target_text": "Diese Frau ist jetzt bei der Arbeit aber sie möchte heute Abend früh nach Hause",
+      "target1_audio_id": "2294f160-cb9d-48e2-a954-fd8f34f84d06",
+      "target2_audio_id": "b6cb94f8-b7ff-48e4-ad0e-4cf34b35b5d0",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0229L01U03",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "fa6236f0-bf89-486a-be90-2851fb3eac60",
+      "known_text": "That woman is at work now but she'd like to go home early this evening",
+      "target_text": "Diese Frau ist jetzt bei der Arbeit aber sie möchte heute Abend früh nach Hause",
+      "target1_audio_id": "2294f160-cb9d-48e2-a954-fd8f34f84d06",
+      "target2_audio_id": "b6cb94f8-b7ff-48e4-ad0e-4cf34b35b5d0",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0229L01U03",
+     "set": {
+      "known_text": "That woman is at work now but she wants to go home early this evening",
+      "known_audio_id": "e0b306fd-f8d9-4df4-a5f1-56e7eb9da82d"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0228L01U04",
+     "set": {
+      "known_text": "I think that man has just started to practise speaking because he wants to get better",
+      "known_audio_id": "9d3d4f06-d826-4d47-984d-1efab7cbddf8"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0227L01U06",
+     "set": {
+      "known_text": "That man told me yesterday that he wants to learn German better than before",
+      "known_audio_id": "6547cd48-ac57-462a-b1ce-65e7a06bbcf9"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0227L01U03",
+     "set": {
+      "known_text": "That man is at work now but he wants to go home early this evening",
+      "known_audio_id": "78b36426-d66b-4b3e-a70b-c2f3ec3c3b26"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0226L01U03",
+     "set": {
+      "known_text": "The man is at work today but he wants to go home early this evening",
+      "known_audio_id": "83c3b4ef-2ad7-4526-ba2b-d5ddee32deb2"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0225L01U12",
+     "set": {
+      "known_text": "He would give what I want if it were possible",
+      "known_audio_id": "42d86db6-b2cf-4cb9-a920-8ee9a33ffb6b"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0229L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0229L01U06",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That woman told me yesterday that she wants to learn German better than before",
+      "target_text": "Diese Frau hat mir gestern gesagt dass sie Deutsch besser lernen möchte als vorhin",
+      "known_audio_id": "4c8de059-74d1-42e4-9b91-16704aa68da5",
+      "target1_audio_id": "25f42f81-f0bd-4df1-bea5-3250d5d4716f",
+      "target2_audio_id": "a107e24c-5583-4c39-ae69-c0dad783f097",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0229L01U06",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That woman told me yesterday that she'd like to learn German better than before",
+      "target_text": "Diese Frau hat mir gestern gesagt dass sie Deutsch besser lernen möchte als vorhin",
+      "known_audio_id": "765431c0-7512-46d8-944f-12bf9446973f",
+      "target1_audio_id": "25f42f81-f0bd-4df1-bea5-3250d5d4716f",
+      "target2_audio_id": "a107e24c-5583-4c39-ae69-c0dad783f097",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0229L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0229L01U06",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "765431c0-7512-46d8-944f-12bf9446973f",
+      "known_text": "That woman told me yesterday that she'd like to learn German better than before",
+      "target_text": "Diese Frau hat mir gestern gesagt dass sie Deutsch besser lernen möchte als vorhin",
+      "target1_audio_id": "25f42f81-f0bd-4df1-bea5-3250d5d4716f",
+      "target2_audio_id": "a107e24c-5583-4c39-ae69-c0dad783f097",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0229L01U06",
+      "seed_number": 229,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "765431c0-7512-46d8-944f-12bf9446973f",
+      "known_text": "That woman told me yesterday that she'd like to learn German better than before",
+      "target_text": "Diese Frau hat mir gestern gesagt dass sie Deutsch besser lernen möchte als vorhin",
+      "target1_audio_id": "25f42f81-f0bd-4df1-bea5-3250d5d4716f",
+      "target2_audio_id": "a107e24c-5583-4c39-ae69-c0dad783f097",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0233L01U08"
+     },
+     "before": {
+      "id": "deu_for_eng:S0233L01U08",
+      "seed_number": 233,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I know a young woman who wants to help you",
+      "target_text": "Ich kenne eine junge Frau die dir helfen möchte",
+      "known_audio_id": "afc8184d-b873-4f9c-a36a-04ec4a4254a9",
+      "target1_audio_id": "7f42490d-5e4f-4c5e-a8b5-98fe989ea79e",
+      "target2_audio_id": "ecabea23-b57c-45f9-a043-f7c2c90ca213",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0233L01U08",
+      "seed_number": 233,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I know a young woman who would like to help you",
+      "target_text": "Ich kenne eine junge Frau die dir helfen möchte",
+      "known_audio_id": "01b213e0-8917-4431-aba5-9cb7ea7b3673",
+      "target1_audio_id": "7f42490d-5e4f-4c5e-a8b5-98fe989ea79e",
+      "target2_audio_id": "ecabea23-b57c-45f9-a043-f7c2c90ca213",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0233L01U08"
+     },
+     "before": {
+      "id": "deu_for_eng:S0233L01U08",
+      "seed_number": 233,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "01b213e0-8917-4431-aba5-9cb7ea7b3673",
+      "known_text": "I know a young woman who would like to help you",
+      "target_text": "Ich kenne eine junge Frau die dir helfen möchte",
+      "target1_audio_id": "7f42490d-5e4f-4c5e-a8b5-98fe989ea79e",
+      "target2_audio_id": "ecabea23-b57c-45f9-a043-f7c2c90ca213",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0233L01U08",
+      "seed_number": 233,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "01b213e0-8917-4431-aba5-9cb7ea7b3673",
+      "known_text": "I know a young woman who would like to help you",
+      "target_text": "Ich kenne eine junge Frau die dir helfen möchte",
+      "target1_audio_id": "7f42490d-5e4f-4c5e-a8b5-98fe989ea79e",
+      "target2_audio_id": "ecabea23-b57c-45f9-a043-f7c2c90ca213",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0243L02U10"
+     },
+     "before": {
+      "id": "deu_for_eng:S0243L02U10",
+      "seed_number": 243,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "She wants the same thing to eat as yesterday",
+      "target_text": "Sie möchte das Gleiche zum Essen wie gestern",
+      "known_audio_id": "1d3309eb-806a-4b7f-9952-727c7b039f66",
+      "target1_audio_id": "f8d4516f-0480-42c4-a23a-98caa24c5f31",
+      "target2_audio_id": "3801d20c-62f7-4c2b-a612-0e63cd8ee44e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0243L02U10",
+      "seed_number": 243,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "She'd like the same thing to eat as yesterday",
+      "target_text": "Sie möchte das Gleiche zum Essen wie gestern",
+      "known_audio_id": "e5af7bd5-a7b5-4738-8caa-0d059555fff6",
+      "target1_audio_id": "f8d4516f-0480-42c4-a23a-98caa24c5f31",
+      "target2_audio_id": "3801d20c-62f7-4c2b-a612-0e63cd8ee44e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0243L02U10"
+     },
+     "before": {
+      "id": "deu_for_eng:S0243L02U10",
+      "seed_number": 243,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "e5af7bd5-a7b5-4738-8caa-0d059555fff6",
+      "known_text": "She'd like the same thing to eat as yesterday",
+      "target_text": "Sie möchte das Gleiche zum Essen wie gestern",
+      "target1_audio_id": "f8d4516f-0480-42c4-a23a-98caa24c5f31",
+      "target2_audio_id": "3801d20c-62f7-4c2b-a612-0e63cd8ee44e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0243L02U10",
+      "seed_number": 243,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "e5af7bd5-a7b5-4738-8caa-0d059555fff6",
+      "known_text": "She'd like the same thing to eat as yesterday",
+      "target_text": "Sie möchte das Gleiche zum Essen wie gestern",
+      "target1_audio_id": "f8d4516f-0480-42c4-a23a-98caa24c5f31",
+      "target2_audio_id": "3801d20c-62f7-4c2b-a612-0e63cd8ee44e",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0244L01U02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0244L01U02",
+      "seed_number": 244,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "There is a lot I want to tell you",
+      "target_text": "Es gibt viel, was ich dir sagen möchte",
+      "known_audio_id": "8d21b265-96ed-4719-b607-93a1082db860",
+      "target1_audio_id": "3841204e-39f6-4334-89a3-9cafb71d2954",
+      "target2_audio_id": "e2973363-d027-467b-932a-80c8d772c277",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0244L01U02",
+      "seed_number": 244,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "There is a lot I'd like to tell you",
+      "target_text": "Es gibt viel, was ich dir sagen möchte",
+      "known_audio_id": "3f92129b-7505-4c6d-8b67-9d49063a2f72",
+      "target1_audio_id": "3841204e-39f6-4334-89a3-9cafb71d2954",
+      "target2_audio_id": "e2973363-d027-467b-932a-80c8d772c277",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0244L01U02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0244L01U02",
+      "seed_number": 244,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "3f92129b-7505-4c6d-8b67-9d49063a2f72",
+      "known_text": "There is a lot I'd like to tell you",
+      "target_text": "Es gibt viel, was ich dir sagen möchte",
+      "target1_audio_id": "3841204e-39f6-4334-89a3-9cafb71d2954",
+      "target2_audio_id": "e2973363-d027-467b-932a-80c8d772c277",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0244L01U02",
+      "seed_number": 244,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "3f92129b-7505-4c6d-8b67-9d49063a2f72",
+      "known_text": "There is a lot I'd like to tell you",
+      "target_text": "Es gibt viel, was ich dir sagen möchte",
+      "target1_audio_id": "3841204e-39f6-4334-89a3-9cafb71d2954",
+      "target2_audio_id": "e2973363-d027-467b-932a-80c8d772c277",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0250L03U08"
+     },
+     "before": {
+      "id": "deu_for_eng:S0250L03U08",
+      "seed_number": 250,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I want to understand the question before I answer",
+      "target_text": "Ich möchte die Frage verstehen bevor ich antworte",
+      "known_audio_id": "e600b76d-4393-4f16-ab03-374eec489ef0",
+      "target1_audio_id": "8495f1e4-0392-4082-8208-0a6743a6037c",
+      "target2_audio_id": "f978d002-dfa5-4c61-9406-8af701aeb38f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0250L03U08",
+      "seed_number": 250,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I'd like to understand the question before I answer",
+      "target_text": "Ich möchte die Frage verstehen bevor ich antworte",
+      "known_audio_id": "aefb32ac-017c-4f70-9f48-6d0099eb7a07",
+      "target1_audio_id": "8495f1e4-0392-4082-8208-0a6743a6037c",
+      "target2_audio_id": "f978d002-dfa5-4c61-9406-8af701aeb38f",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0250L03U08"
+     },
+     "before": {
+      "id": "deu_for_eng:S0250L03U08",
+      "seed_number": 250,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "aefb32ac-017c-4f70-9f48-6d0099eb7a07",
+      "known_text": "I'd like to understand the question before I answer",
+      "target_text": "Ich möchte die Frage verstehen bevor ich antworte",
+      "target1_audio_id": "8495f1e4-0392-4082-8208-0a6743a6037c",
+      "target2_audio_id": "f978d002-dfa5-4c61-9406-8af701aeb38f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0250L03U08",
+      "seed_number": 250,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "aefb32ac-017c-4f70-9f48-6d0099eb7a07",
+      "known_text": "I'd like to understand the question before I answer",
+      "target_text": "Ich möchte die Frage verstehen bevor ich antworte",
+      "target1_audio_id": "8495f1e4-0392-4082-8208-0a6743a6037c",
+      "target2_audio_id": "f978d002-dfa5-4c61-9406-8af701aeb38f",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0251L02U09"
+     },
+     "before": {
+      "id": "deu_for_eng:S0251L02U09",
+      "seed_number": 251,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I want to wait until after we finish to explain everything to you",
+      "target_text": "Ich möchte warten, bis wir fertig sind, um dir alles zu erklären",
+      "known_audio_id": "18eb07d8-c8cf-4f2d-b8f5-fc5394551de3",
+      "target1_audio_id": "4a415086-cdd1-4bf4-ba79-d4dc75a69c0e",
+      "target2_audio_id": "7af591e4-a479-4c64-955c-721a9451c00d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0251L02U09",
+      "seed_number": 251,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I'd like to wait until after we finish to explain everything to you",
+      "target_text": "Ich möchte warten, bis wir fertig sind, um dir alles zu erklären",
+      "known_audio_id": "929975ef-01c0-418e-ba77-cc1fb3730439",
+      "target1_audio_id": "4a415086-cdd1-4bf4-ba79-d4dc75a69c0e",
+      "target2_audio_id": "7af591e4-a479-4c64-955c-721a9451c00d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0251L02U09"
+     },
+     "before": {
+      "id": "deu_for_eng:S0251L02U09",
+      "seed_number": 251,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "929975ef-01c0-418e-ba77-cc1fb3730439",
+      "known_text": "I'd like to wait until after we finish to explain everything to you",
+      "target_text": "Ich möchte warten, bis wir fertig sind, um dir alles zu erklären",
+      "target1_audio_id": "4a415086-cdd1-4bf4-ba79-d4dc75a69c0e",
+      "target2_audio_id": "7af591e4-a479-4c64-955c-721a9451c00d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0251L02U09",
+      "seed_number": 251,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "929975ef-01c0-418e-ba77-cc1fb3730439",
+      "known_text": "I'd like to wait until after we finish to explain everything to you",
+      "target_text": "Ich möchte warten, bis wir fertig sind, um dir alles zu erklären",
+      "target1_audio_id": "4a415086-cdd1-4bf4-ba79-d4dc75a69c0e",
+      "target2_audio_id": "7af591e4-a479-4c64-955c-721a9451c00d",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0251L02U09",
+     "set": {
+      "known_text": "I want to wait until after we finish to explain everything to you",
+      "known_audio_id": "18eb07d8-c8cf-4f2d-b8f5-fc5394551de3"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0250L03U08",
+     "set": {
+      "known_text": "I want to understand the question before I answer",
+      "known_audio_id": "e600b76d-4393-4f16-ab03-374eec489ef0"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0244L01U02",
+     "set": {
+      "known_text": "There is a lot I want to tell you",
+      "known_audio_id": "8d21b265-96ed-4719-b607-93a1082db860"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0243L02U10",
+     "set": {
+      "known_text": "She wants the same thing to eat as yesterday",
+      "known_audio_id": "1d3309eb-806a-4b7f-9952-727c7b039f66"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0233L01U08",
+     "set": {
+      "known_text": "I know a young woman who wants to help you",
+      "known_audio_id": "afc8184d-b873-4f9c-a36a-04ec4a4254a9"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0229L01U06",
+     "set": {
+      "known_text": "That woman told me yesterday that she wants to learn German better than before",
+      "known_audio_id": "4c8de059-74d1-42e4-9b91-16704aa68da5"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0272L01U10"
+     },
+     "before": {
+      "id": "deu_for_eng:S0272L01U10",
+      "seed_number": 272,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That sounds like something I want to try",
+      "target_text": "Das klingt nach etwas das ich versuchen möchte",
+      "known_audio_id": "69195405-1ec9-41fa-a257-5248d1f77153",
+      "target1_audio_id": "d2528093-3ae9-4386-a2b0-347bba3ea77d",
+      "target2_audio_id": "aa4a4985-68e6-45d5-a120-19a05793cff1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0272L01U10",
+      "seed_number": 272,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "That sounds like something I'd like to try",
+      "target_text": "Das klingt nach etwas das ich versuchen möchte",
+      "known_audio_id": "63b3d4c6-2aaa-4bc9-aea3-c4e7bc771224",
+      "target1_audio_id": "d2528093-3ae9-4386-a2b0-347bba3ea77d",
+      "target2_audio_id": "aa4a4985-68e6-45d5-a120-19a05793cff1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0272L01U10"
+     },
+     "before": {
+      "id": "deu_for_eng:S0272L01U10",
+      "seed_number": 272,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "63b3d4c6-2aaa-4bc9-aea3-c4e7bc771224",
+      "known_text": "That sounds like something I'd like to try",
+      "target_text": "Das klingt nach etwas das ich versuchen möchte",
+      "target1_audio_id": "d2528093-3ae9-4386-a2b0-347bba3ea77d",
+      "target2_audio_id": "aa4a4985-68e6-45d5-a120-19a05793cff1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0272L01U10",
+      "seed_number": 272,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "63b3d4c6-2aaa-4bc9-aea3-c4e7bc771224",
+      "known_text": "That sounds like something I'd like to try",
+      "target_text": "Das klingt nach etwas das ich versuchen möchte",
+      "target1_audio_id": "d2528093-3ae9-4386-a2b0-347bba3ea77d",
+      "target2_audio_id": "aa4a4985-68e6-45d5-a120-19a05793cff1",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0275L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0275L01U06",
+      "seed_number": 275,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I want to practice German longer today",
+      "target_text": "Ich möchte heute länger Deutsch üben",
+      "known_audio_id": "c7aa0afd-d59c-4fa1-8c60-073cfdfb3fe4",
+      "target1_audio_id": "b89198a2-01f5-4a08-aec1-a4c9682d0102",
+      "target2_audio_id": "5825200e-be59-4b97-b722-7d09745fefe6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0275L01U06",
+      "seed_number": 275,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "I'd like to practice German longer today",
+      "target_text": "Ich möchte heute länger Deutsch üben",
+      "known_audio_id": "81b2d914-0b41-4b3c-8916-0d85daab155c",
+      "target1_audio_id": "b89198a2-01f5-4a08-aec1-a4c9682d0102",
+      "target2_audio_id": "5825200e-be59-4b97-b722-7d09745fefe6",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0275L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0275L01U06",
+      "seed_number": 275,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "81b2d914-0b41-4b3c-8916-0d85daab155c",
+      "known_text": "I'd like to practice German longer today",
+      "target_text": "Ich möchte heute länger Deutsch üben",
+      "target1_audio_id": "b89198a2-01f5-4a08-aec1-a4c9682d0102",
+      "target2_audio_id": "5825200e-be59-4b97-b722-7d09745fefe6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0275L01U06",
+      "seed_number": 275,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "81b2d914-0b41-4b3c-8916-0d85daab155c",
+      "known_text": "I'd like to practice German longer today",
+      "target_text": "Ich möchte heute länger Deutsch üben",
+      "target1_audio_id": "b89198a2-01f5-4a08-aec1-a4c9682d0102",
+      "target2_audio_id": "5825200e-be59-4b97-b722-7d09745fefe6",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0281L03U02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0281L03U02",
+      "seed_number": 281,
+      "lego_index": 3,
+      "lego_id": "S0281L03",
+      "known_text": "When I finish I want to go",
+      "target_text": "Wenn ich fertig trinke, möchte ich gehen",
+      "known_audio_id": "8beaa29b-bb01-4982-a6e0-0f3ff4f70d8c",
+      "target1_audio_id": "782832f5-6448-45a8-b884-31025ce46098",
+      "target2_audio_id": "74296838-0f22-4cc4-a2b4-25eed5409cbd",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0281L03U02",
+      "seed_number": 281,
+      "lego_index": 3,
+      "lego_id": "S0281L03",
+      "known_text": "When I finish I'd like to go",
+      "target_text": "Wenn ich fertig trinke, möchte ich gehen",
+      "known_audio_id": "d4950953-013d-41d5-a271-ca6bf828b7b7",
+      "target1_audio_id": "782832f5-6448-45a8-b884-31025ce46098",
+      "target2_audio_id": "74296838-0f22-4cc4-a2b4-25eed5409cbd",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0281L03U02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0281L03U02",
+      "seed_number": 281,
+      "lego_index": 3,
+      "lego_id": "S0281L03",
+      "known_audio_id": "d4950953-013d-41d5-a271-ca6bf828b7b7",
+      "known_text": "When I finish I'd like to go",
+      "target_text": "Wenn ich fertig trinke, möchte ich gehen",
+      "target1_audio_id": "782832f5-6448-45a8-b884-31025ce46098",
+      "target2_audio_id": "74296838-0f22-4cc4-a2b4-25eed5409cbd",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0281L03U02",
+      "seed_number": 281,
+      "lego_index": 3,
+      "lego_id": "S0281L03",
+      "known_audio_id": "d4950953-013d-41d5-a271-ca6bf828b7b7",
+      "known_text": "When I finish I'd like to go",
+      "target_text": "Wenn ich fertig trinke, möchte ich gehen",
+      "target1_audio_id": "782832f5-6448-45a8-b884-31025ce46098",
+      "target2_audio_id": "74296838-0f22-4cc4-a2b4-25eed5409cbd",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0285L01U12"
+     },
+     "before": {
+      "id": "deu_for_eng:S0285L01U12",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "She speaks German because she wants to learn it",
+      "target_text": "Sie spricht Deutsch weil sie es lernen möchte",
+      "known_audio_id": "69278a6c-99cc-413e-9693-f15684501a8e",
+      "target1_audio_id": "2d2345cb-c289-4a55-a2a3-41e7bb1be27c",
+      "target2_audio_id": "002c7794-1d72-4403-95d5-a8d69c706f75",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0285L01U12",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "She speaks German because she'd like to learn it",
+      "target_text": "Sie spricht Deutsch weil sie es lernen möchte",
+      "known_audio_id": "256671c6-57b8-4df9-afda-5d6c5f14d11b",
+      "target1_audio_id": "2d2345cb-c289-4a55-a2a3-41e7bb1be27c",
+      "target2_audio_id": "002c7794-1d72-4403-95d5-a8d69c706f75",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0285L01U12"
+     },
+     "before": {
+      "id": "deu_for_eng:S0285L01U12",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "256671c6-57b8-4df9-afda-5d6c5f14d11b",
+      "known_text": "She speaks German because she'd like to learn it",
+      "target_text": "Sie spricht Deutsch weil sie es lernen möchte",
+      "target1_audio_id": "2d2345cb-c289-4a55-a2a3-41e7bb1be27c",
+      "target2_audio_id": "002c7794-1d72-4403-95d5-a8d69c706f75",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0285L01U12",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "256671c6-57b8-4df9-afda-5d6c5f14d11b",
+      "known_text": "She speaks German because she'd like to learn it",
+      "target_text": "Sie spricht Deutsch weil sie es lernen möchte",
+      "target1_audio_id": "2d2345cb-c289-4a55-a2a3-41e7bb1be27c",
+      "target2_audio_id": "002c7794-1d72-4403-95d5-a8d69c706f75",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0285L01U13"
+     },
+     "before": {
+      "id": "deu_for_eng:S0285L01U13",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "She speaks German and she wants to help you",
+      "target_text": "Sie spricht Deutsch und sie möchte dir helfen",
+      "known_audio_id": "b3665d00-a874-4a5a-82e9-e33b0b1eb3d0",
+      "target1_audio_id": "6cd91aa7-b24b-49a5-aa82-bbe3b338994d",
+      "target2_audio_id": "2a2d9819-f404-4da1-953a-9dafc76fac51",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0285L01U13",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "She speaks German and she'd like to help you",
+      "target_text": "Sie spricht Deutsch und sie möchte dir helfen",
+      "known_audio_id": "7e3342b5-d6d0-4ab1-b027-5aa739bb72a3",
+      "target1_audio_id": "6cd91aa7-b24b-49a5-aa82-bbe3b338994d",
+      "target2_audio_id": "2a2d9819-f404-4da1-953a-9dafc76fac51",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0285L01U13"
+     },
+     "before": {
+      "id": "deu_for_eng:S0285L01U13",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "7e3342b5-d6d0-4ab1-b027-5aa739bb72a3",
+      "known_text": "She speaks German and she'd like to help you",
+      "target_text": "Sie spricht Deutsch und sie möchte dir helfen",
+      "target1_audio_id": "6cd91aa7-b24b-49a5-aa82-bbe3b338994d",
+      "target2_audio_id": "2a2d9819-f404-4da1-953a-9dafc76fac51",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0285L01U13",
+      "seed_number": 285,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "7e3342b5-d6d0-4ab1-b027-5aa739bb72a3",
+      "known_text": "She speaks German and she'd like to help you",
+      "target_text": "Sie spricht Deutsch und sie möchte dir helfen",
+      "target1_audio_id": "6cd91aa7-b24b-49a5-aa82-bbe3b338994d",
+      "target2_audio_id": "2a2d9819-f404-4da1-953a-9dafc76fac51",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0297L01U02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0297L01U02",
+      "seed_number": 297,
+      "lego_index": 1,
+      "lego_id": "S0297L01",
+      "known_text": "I do not know her but I want to meet her",
+      "target_text": "Ich kenne sie nicht, aber ich möchte sie treffen",
+      "known_audio_id": "60698bbb-d7b0-46f2-84a2-d8093782a99b",
+      "target1_audio_id": "49e8d8a2-f96a-4e1b-bfa0-80b3164c502e",
+      "target2_audio_id": "85a79667-438f-4bfd-beb9-71b5312e7fd9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0297L01U02",
+      "seed_number": 297,
+      "lego_index": 1,
+      "lego_id": "S0297L01",
+      "known_text": "I do not know her but I'd like to meet her",
+      "target_text": "Ich kenne sie nicht, aber ich möchte sie treffen",
+      "known_audio_id": "d9c438c4-ffa9-427d-acee-18fec74f614e",
+      "target1_audio_id": "49e8d8a2-f96a-4e1b-bfa0-80b3164c502e",
+      "target2_audio_id": "85a79667-438f-4bfd-beb9-71b5312e7fd9",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0297L01U02"
+     },
+     "before": {
+      "id": "deu_for_eng:S0297L01U02",
+      "seed_number": 297,
+      "lego_index": 1,
+      "lego_id": "S0297L01",
+      "known_audio_id": "d9c438c4-ffa9-427d-acee-18fec74f614e",
+      "known_text": "I do not know her but I'd like to meet her",
+      "target_text": "Ich kenne sie nicht, aber ich möchte sie treffen",
+      "target1_audio_id": "49e8d8a2-f96a-4e1b-bfa0-80b3164c502e",
+      "target2_audio_id": "85a79667-438f-4bfd-beb9-71b5312e7fd9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0297L01U02",
+      "seed_number": 297,
+      "lego_index": 1,
+      "lego_id": "S0297L01",
+      "known_audio_id": "d9c438c4-ffa9-427d-acee-18fec74f614e",
+      "known_text": "I do not know her but I'd like to meet her",
+      "target_text": "Ich kenne sie nicht, aber ich möchte sie treffen",
+      "target1_audio_id": "49e8d8a2-f96a-4e1b-bfa0-80b3164c502e",
+      "target2_audio_id": "85a79667-438f-4bfd-beb9-71b5312e7fd9",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0297L01U02",
+     "set": {
+      "known_text": "I do not know her but I want to meet her",
+      "known_audio_id": "60698bbb-d7b0-46f2-84a2-d8093782a99b"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0285L01U13",
+     "set": {
+      "known_text": "She speaks German and she wants to help you",
+      "known_audio_id": "b3665d00-a874-4a5a-82e9-e33b0b1eb3d0"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0285L01U12",
+     "set": {
+      "known_text": "She speaks German because she wants to learn it",
+      "known_audio_id": "69278a6c-99cc-413e-9693-f15684501a8e"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0281L03U02",
+     "set": {
+      "known_text": "When I finish I want to go",
+      "known_audio_id": "8beaa29b-bb01-4982-a6e0-0f3ff4f70d8c"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0275L01U06",
+     "set": {
+      "known_text": "I want to practice German longer today",
+      "known_audio_id": "c7aa0afd-d59c-4fa1-8c60-073cfdfb3fe4"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0272L01U10",
+     "set": {
+      "known_text": "That sounds like something I want to try",
+      "known_audio_id": "69195405-1ec9-41fa-a257-5248d1f77153"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 6,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0300L02U12"
+     },
+     "before": {
+      "id": "deu_for_eng:S0300L02U12",
+      "seed_number": 300,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "He doesn't want to seem difficult",
+      "target_text": "Er möchte nicht schwierig wirken",
+      "known_audio_id": "f716c132-caae-4ffb-ae2b-e33a4c3ca357",
+      "target1_audio_id": "bee9f8eb-91ad-4518-9de1-d59fb97c9f97",
+      "target2_audio_id": "8ecc84bd-9398-4ed0-a2c9-1f194ab7e1eb",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0300L02U12",
+      "seed_number": 300,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "He wouldn't like to seem difficult",
+      "target_text": "Er möchte nicht schwierig wirken",
+      "known_audio_id": "6eaaa085-a7b4-44e7-8602-d7848e27e1c4",
+      "target1_audio_id": "bee9f8eb-91ad-4518-9de1-d59fb97c9f97",
+      "target2_audio_id": "8ecc84bd-9398-4ed0-a2c9-1f194ab7e1eb",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0300L02U12"
+     },
+     "before": {
+      "id": "deu_for_eng:S0300L02U12",
+      "seed_number": 300,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "6eaaa085-a7b4-44e7-8602-d7848e27e1c4",
+      "known_text": "He wouldn't like to seem difficult",
+      "target_text": "Er möchte nicht schwierig wirken",
+      "target1_audio_id": "bee9f8eb-91ad-4518-9de1-d59fb97c9f97",
+      "target2_audio_id": "8ecc84bd-9398-4ed0-a2c9-1f194ab7e1eb",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0300L02U12",
+      "seed_number": 300,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "6eaaa085-a7b4-44e7-8602-d7848e27e1c4",
+      "known_text": "He wouldn't like to seem difficult",
+      "target_text": "Er möchte nicht schwierig wirken",
+      "target1_audio_id": "bee9f8eb-91ad-4518-9de1-d59fb97c9f97",
+      "target2_audio_id": "8ecc84bd-9398-4ed0-a2c9-1f194ab7e1eb",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0582L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0582L01U05",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she wants to know what it was like to grow up here",
+      "target_text": "sie möchte wissen, wie es war, hier aufzuwachsen",
+      "known_audio_id": "f35c4b35-0be0-4fb7-bb28-f0609c010cb7",
+      "target1_audio_id": "a01eb462-6077-4c43-9a7c-412eeadf5269",
+      "target2_audio_id": "543e4131-7b51-44d8-b0e2-652354e0d880",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0582L01U05",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she'd like to know what it was like to grow up here",
+      "target_text": "sie möchte wissen, wie es war, hier aufzuwachsen",
+      "known_audio_id": "fdef4ba9-bf58-4470-a0b9-b302bdc95a69",
+      "target1_audio_id": "a01eb462-6077-4c43-9a7c-412eeadf5269",
+      "target2_audio_id": "543e4131-7b51-44d8-b0e2-652354e0d880",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0582L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0582L01U05",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "fdef4ba9-bf58-4470-a0b9-b302bdc95a69",
+      "known_text": "she'd like to know what it was like to grow up here",
+      "target_text": "sie möchte wissen, wie es war, hier aufzuwachsen",
+      "target1_audio_id": "a01eb462-6077-4c43-9a7c-412eeadf5269",
+      "target2_audio_id": "543e4131-7b51-44d8-b0e2-652354e0d880",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0582L01U05",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "fdef4ba9-bf58-4470-a0b9-b302bdc95a69",
+      "known_text": "she'd like to know what it was like to grow up here",
+      "target_text": "sie möchte wissen, wie es war, hier aufzuwachsen",
+      "target1_audio_id": "a01eb462-6077-4c43-9a7c-412eeadf5269",
+      "target2_audio_id": "543e4131-7b51-44d8-b0e2-652354e0d880",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0582L01U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0582L01U07",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she wants to know what it is like to grow up here",
+      "target_text": "sie möchte wissen, wie es ist, hier aufzuwachsen",
+      "known_audio_id": "0097b8bb-ec21-46f1-98f6-885c19c2bbf1",
+      "target1_audio_id": "d4086e0e-fff1-4f4e-a5dc-1ea62ac4c294",
+      "target2_audio_id": "8d3c4f8e-28d7-4794-a68c-874d2799183c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0582L01U07",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she'd like to know what it is like to grow up here",
+      "target_text": "sie möchte wissen, wie es ist, hier aufzuwachsen",
+      "known_audio_id": "d7e17f21-d3a9-4885-8f96-1f070e57b6a9",
+      "target1_audio_id": "d4086e0e-fff1-4f4e-a5dc-1ea62ac4c294",
+      "target2_audio_id": "8d3c4f8e-28d7-4794-a68c-874d2799183c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0582L01U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0582L01U07",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "d7e17f21-d3a9-4885-8f96-1f070e57b6a9",
+      "known_text": "she'd like to know what it is like to grow up here",
+      "target_text": "sie möchte wissen, wie es ist, hier aufzuwachsen",
+      "target1_audio_id": "d4086e0e-fff1-4f4e-a5dc-1ea62ac4c294",
+      "target2_audio_id": "8d3c4f8e-28d7-4794-a68c-874d2799183c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0582L01U07",
+      "seed_number": 582,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "d7e17f21-d3a9-4885-8f96-1f070e57b6a9",
+      "known_text": "she'd like to know what it is like to grow up here",
+      "target_text": "sie möchte wissen, wie es ist, hier aufzuwachsen",
+      "target1_audio_id": "d4086e0e-fff1-4f4e-a5dc-1ea62ac4c294",
+      "target2_audio_id": "8d3c4f8e-28d7-4794-a68c-874d2799183c",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0586L03U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0586L03U05",
+      "seed_number": 586,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she wants to try boiled eggs",
+      "target_text": "sie möchte gekochte Eier versuchen",
+      "known_audio_id": "b2ca46da-3879-41ee-aea9-b121e4a233c3",
+      "target1_audio_id": "0b06a2f1-7338-4e6a-af78-a8d35fc698c9",
+      "target2_audio_id": "b30c97f8-b71f-48ca-bad1-871d4ce0ef4c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0586L03U05",
+      "seed_number": 586,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she'd like to try boiled eggs",
+      "target_text": "sie möchte gekochte Eier versuchen",
+      "known_audio_id": "e918f656-4e7b-4d3d-b572-020f45912f0a",
+      "target1_audio_id": "0b06a2f1-7338-4e6a-af78-a8d35fc698c9",
+      "target2_audio_id": "b30c97f8-b71f-48ca-bad1-871d4ce0ef4c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0586L03U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0586L03U05",
+      "seed_number": 586,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "e918f656-4e7b-4d3d-b572-020f45912f0a",
+      "known_text": "she'd like to try boiled eggs",
+      "target_text": "sie möchte gekochte Eier versuchen",
+      "target1_audio_id": "0b06a2f1-7338-4e6a-af78-a8d35fc698c9",
+      "target2_audio_id": "b30c97f8-b71f-48ca-bad1-871d4ce0ef4c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0586L03U05",
+      "seed_number": 586,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "e918f656-4e7b-4d3d-b572-020f45912f0a",
+      "known_text": "she'd like to try boiled eggs",
+      "target_text": "sie möchte gekochte Eier versuchen",
+      "target1_audio_id": "0b06a2f1-7338-4e6a-af78-a8d35fc698c9",
+      "target2_audio_id": "b30c97f8-b71f-48ca-bad1-871d4ce0ef4c",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0594L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0594L01U05",
+      "seed_number": 594,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she wants to see my toys",
+      "target_text": "sie möchte meine Spielzeuge sehen",
+      "known_audio_id": "766a0905-d516-4b11-9a1a-b803bcc25ac7",
+      "target1_audio_id": "11eef1eb-c5b8-45df-a148-d8f9f8c7bdc1",
+      "target2_audio_id": "b3859d17-a583-460d-9f48-a8a2c3020ede",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0594L01U05",
+      "seed_number": 594,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she'd like to see my toys",
+      "target_text": "sie möchte meine Spielzeuge sehen",
+      "known_audio_id": "5e13b12e-b9fb-4b12-a852-36b75f96c0cd",
+      "target1_audio_id": "11eef1eb-c5b8-45df-a148-d8f9f8c7bdc1",
+      "target2_audio_id": "b3859d17-a583-460d-9f48-a8a2c3020ede",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0594L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0594L01U05",
+      "seed_number": 594,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "5e13b12e-b9fb-4b12-a852-36b75f96c0cd",
+      "known_text": "she'd like to see my toys",
+      "target_text": "sie möchte meine Spielzeuge sehen",
+      "target1_audio_id": "11eef1eb-c5b8-45df-a148-d8f9f8c7bdc1",
+      "target2_audio_id": "b3859d17-a583-460d-9f48-a8a2c3020ede",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0594L01U05",
+      "seed_number": 594,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "5e13b12e-b9fb-4b12-a852-36b75f96c0cd",
+      "known_text": "she'd like to see my toys",
+      "target_text": "sie möchte meine Spielzeuge sehen",
+      "target1_audio_id": "11eef1eb-c5b8-45df-a148-d8f9f8c7bdc1",
+      "target2_audio_id": "b3859d17-a583-460d-9f48-a8a2c3020ede",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0594L02U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0594L02U07",
+      "seed_number": 594,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "she wants to see the toys",
+      "target_text": "sie möchte die Spielzeuge sehen",
+      "known_audio_id": "9a5c5eca-80e0-4077-88da-efbb104e39ba",
+      "target1_audio_id": "3064c2f8-02ea-4f04-8371-a8e8765d55c9",
+      "target2_audio_id": "1177f891-b19b-499d-ad21-e9d22bb36b75",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0594L02U07",
+      "seed_number": 594,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "she'd like to see the toys",
+      "target_text": "sie möchte die Spielzeuge sehen",
+      "known_audio_id": "fa284b56-ea58-479c-95f9-3d2ec5c7d490",
+      "target1_audio_id": "3064c2f8-02ea-4f04-8371-a8e8765d55c9",
+      "target2_audio_id": "1177f891-b19b-499d-ad21-e9d22bb36b75",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0594L02U07"
+     },
+     "before": {
+      "id": "deu_for_eng:S0594L02U07",
+      "seed_number": 594,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "fa284b56-ea58-479c-95f9-3d2ec5c7d490",
+      "known_text": "she'd like to see the toys",
+      "target_text": "sie möchte die Spielzeuge sehen",
+      "target1_audio_id": "3064c2f8-02ea-4f04-8371-a8e8765d55c9",
+      "target2_audio_id": "1177f891-b19b-499d-ad21-e9d22bb36b75",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0594L02U07",
+      "seed_number": 594,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "fa284b56-ea58-479c-95f9-3d2ec5c7d490",
+      "known_text": "she'd like to see the toys",
+      "target_text": "sie möchte die Spielzeuge sehen",
+      "target1_audio_id": "3064c2f8-02ea-4f04-8371-a8e8765d55c9",
+      "target2_audio_id": "1177f891-b19b-499d-ad21-e9d22bb36b75",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0594L02U07",
+     "set": {
+      "known_text": "she wants to see the toys",
+      "known_audio_id": "9a5c5eca-80e0-4077-88da-efbb104e39ba"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0594L01U05",
+     "set": {
+      "known_text": "she wants to see my toys",
+      "known_audio_id": "766a0905-d516-4b11-9a1a-b803bcc25ac7"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0586L03U05",
+     "set": {
+      "known_text": "she wants to try boiled eggs",
+      "known_audio_id": "b2ca46da-3879-41ee-aea9-b121e4a233c3"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0582L01U07",
+     "set": {
+      "known_text": "she wants to know what it is like to grow up here",
+      "known_audio_id": "0097b8bb-ec21-46f1-98f6-885c19c2bbf1"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0582L01U05",
+     "set": {
+      "known_text": "she wants to know what it was like to grow up here",
+      "known_audio_id": "f35c4b35-0be0-4fb7-bb28-f0609c010cb7"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0300L02U12",
+     "set": {
+      "known_text": "He doesn't want to seem difficult",
+      "known_audio_id": "f716c132-caae-4ffb-ae2b-e33a4c3ca357"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 7,
+  "status": 200,
+  "n": 11,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0595L03U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0595L03U03",
+      "seed_number": 595,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she wants to lie down",
+      "target_text": "sie möchte sich hinlegen",
+      "known_audio_id": "9481dc0a-ddac-4bd0-ad11-00f5173be9c2",
+      "target1_audio_id": "ba91bdf0-ed41-4be0-a608-5c4cca97d85c",
+      "target2_audio_id": "bf4c9852-0e64-40bf-b158-b6864213948b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0595L03U03",
+      "seed_number": 595,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she'd like to lie down",
+      "target_text": "sie möchte sich hinlegen",
+      "known_audio_id": "0ce0d117-a440-4bda-bc00-95b8c29c3ce0",
+      "target1_audio_id": "ba91bdf0-ed41-4be0-a608-5c4cca97d85c",
+      "target2_audio_id": "bf4c9852-0e64-40bf-b158-b6864213948b",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0595L03U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0595L03U03",
+      "seed_number": 595,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "0ce0d117-a440-4bda-bc00-95b8c29c3ce0",
+      "known_text": "she'd like to lie down",
+      "target_text": "sie möchte sich hinlegen",
+      "target1_audio_id": "ba91bdf0-ed41-4be0-a608-5c4cca97d85c",
+      "target2_audio_id": "bf4c9852-0e64-40bf-b158-b6864213948b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0595L03U03",
+      "seed_number": 595,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "0ce0d117-a440-4bda-bc00-95b8c29c3ce0",
+      "known_text": "she'd like to lie down",
+      "target_text": "sie möchte sich hinlegen",
+      "target1_audio_id": "ba91bdf0-ed41-4be0-a608-5c4cca97d85c",
+      "target2_audio_id": "bf4c9852-0e64-40bf-b158-b6864213948b",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0596L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0596L01U04",
+      "seed_number": 596,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she wants to see with my eyes",
+      "target_text": "sie möchte mit meinen Augen sehen",
+      "known_audio_id": "62bc44e9-5786-415e-9952-a890a4afdffa",
+      "target1_audio_id": "ff208ff3-be20-49f6-8bb2-4e600ce7c31e",
+      "target2_audio_id": "db02ba61-13f4-41d5-a7ad-ca39279beda5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0596L01U04",
+      "seed_number": 596,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "she'd like to see with my eyes",
+      "target_text": "sie möchte mit meinen Augen sehen",
+      "known_audio_id": "63dd452c-ab16-40da-9d9f-bcc59cf944d5",
+      "target1_audio_id": "ff208ff3-be20-49f6-8bb2-4e600ce7c31e",
+      "target2_audio_id": "db02ba61-13f4-41d5-a7ad-ca39279beda5",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0596L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0596L01U04",
+      "seed_number": 596,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "63dd452c-ab16-40da-9d9f-bcc59cf944d5",
+      "known_text": "she'd like to see with my eyes",
+      "target_text": "sie möchte mit meinen Augen sehen",
+      "target1_audio_id": "ff208ff3-be20-49f6-8bb2-4e600ce7c31e",
+      "target2_audio_id": "db02ba61-13f4-41d5-a7ad-ca39279beda5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0596L01U04",
+      "seed_number": 596,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "63dd452c-ab16-40da-9d9f-bcc59cf944d5",
+      "known_text": "she'd like to see with my eyes",
+      "target_text": "sie möchte mit meinen Augen sehen",
+      "target1_audio_id": "ff208ff3-be20-49f6-8bb2-4e600ce7c31e",
+      "target2_audio_id": "db02ba61-13f4-41d5-a7ad-ca39279beda5",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0634L03U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0634L03U03",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she wants one of those",
+      "target_text": "sie möchte eines von denen",
+      "known_audio_id": "aaf80ae7-82f1-4909-9249-a2f226d6bc00",
+      "target1_audio_id": "23020e3f-7557-4503-b4e3-7ce80d01d5f1",
+      "target2_audio_id": "f634c9e4-d2d5-4ade-ab20-bf4c73bd3cda",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0634L03U03",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she'd like one of those",
+      "target_text": "sie möchte eines von denen",
+      "known_audio_id": "fde0cf1f-65e3-4707-80e7-f859d6c114ed",
+      "target1_audio_id": "23020e3f-7557-4503-b4e3-7ce80d01d5f1",
+      "target2_audio_id": "f634c9e4-d2d5-4ade-ab20-bf4c73bd3cda",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0634L03U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0634L03U03",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "fde0cf1f-65e3-4707-80e7-f859d6c114ed",
+      "known_text": "she'd like one of those",
+      "target_text": "sie möchte eines von denen",
+      "target1_audio_id": "23020e3f-7557-4503-b4e3-7ce80d01d5f1",
+      "target2_audio_id": "f634c9e4-d2d5-4ade-ab20-bf4c73bd3cda",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0634L03U03",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "fde0cf1f-65e3-4707-80e7-f859d6c114ed",
+      "known_text": "she'd like one of those",
+      "target_text": "sie möchte eines von denen",
+      "target1_audio_id": "23020e3f-7557-4503-b4e3-7ce80d01d5f1",
+      "target2_audio_id": "f634c9e4-d2d5-4ade-ab20-bf4c73bd3cda",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0634L03U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0634L03U06",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she also wants one of those",
+      "target_text": "sie möchte auch eines von denen",
+      "known_audio_id": "b76b302f-2261-40dd-ba1f-1dfd0f9c3e3a",
+      "target1_audio_id": "e38eb6ef-141d-45e3-89af-1ea311a6fcbe",
+      "target2_audio_id": "86a9edd8-eaca-44db-9c88-65b284ffa7ab",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0634L03U06",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "she would also like one of those",
+      "target_text": "sie möchte auch eines von denen",
+      "known_audio_id": "190439c5-75d7-447f-9b71-c596a70d06fe",
+      "target1_audio_id": "e38eb6ef-141d-45e3-89af-1ea311a6fcbe",
+      "target2_audio_id": "86a9edd8-eaca-44db-9c88-65b284ffa7ab",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0634L03U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0634L03U06",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "190439c5-75d7-447f-9b71-c596a70d06fe",
+      "known_text": "she would also like one of those",
+      "target_text": "sie möchte auch eines von denen",
+      "target1_audio_id": "e38eb6ef-141d-45e3-89af-1ea311a6fcbe",
+      "target2_audio_id": "86a9edd8-eaca-44db-9c88-65b284ffa7ab",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0634L03U06",
+      "seed_number": 634,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "190439c5-75d7-447f-9b71-c596a70d06fe",
+      "known_text": "she would also like one of those",
+      "target_text": "sie möchte auch eines von denen",
+      "target1_audio_id": "e38eb6ef-141d-45e3-89af-1ea311a6fcbe",
+      "target2_audio_id": "86a9edd8-eaca-44db-9c88-65b284ffa7ab",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0378L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0378L02U05",
+      "seed_number": 378,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "sie fand, dass es nicht genug Geld war",
+      "known_text": "she thought it was not enough money",
+      "known_audio_id": "52751b90-20fc-4407-83b4-9b566ab4e2b6",
+      "target1_audio_id": "4d9b98cb-b807-45bd-b7c2-a9aa2fdf1a2a",
+      "target2_audio_id": "2afbd80b-4d47-4f86-a2d8-a039a194dcc8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0378L02U05",
+      "seed_number": 378,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "sie dachte, dass es nicht genug Geld war",
+      "known_text": "she thought it was not enough money",
+      "known_audio_id": "52751b90-20fc-4407-83b4-9b566ab4e2b6",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0378L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0378L02U05",
+      "seed_number": 378,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "she thought it was not enough money",
+      "target_text": "sie dachte, dass es nicht genug Geld war",
+      "known_audio_id": "52751b90-20fc-4407-83b4-9b566ab4e2b6",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0378L02U05",
+      "seed_number": 378,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "c9d82b6f-8318-4347-a3da-350a7f4d2c95",
+      "known_text": "she thought it was not enough money",
+      "target_text": "sie dachte, dass es nicht genug Geld war",
+      "known_audio_id": "52751b90-20fc-4407-83b4-9b566ab4e2b6",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0378L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0378L02U05",
+      "seed_number": 378,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "she thought it was not enough money",
+      "target_text": "sie dachte, dass es nicht genug Geld war",
+      "known_audio_id": "52751b90-20fc-4407-83b4-9b566ab4e2b6",
+      "target1_audio_id": "c9d82b6f-8318-4347-a3da-350a7f4d2c95",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0378L02U05",
+      "seed_number": 378,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "e29746ba-c1f0-4f4f-bf8d-1a10d56b8f11",
+      "known_text": "she thought it was not enough money",
+      "target_text": "sie dachte, dass es nicht genug Geld war",
+      "known_audio_id": "52751b90-20fc-4407-83b4-9b566ab4e2b6",
+      "target1_audio_id": "c9d82b6f-8318-4347-a3da-350a7f4d2c95",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0378L02U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0378L02U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0378L02U05",
+     "set": {
+      "target_text": "sie fand, dass es nicht genug Geld war",
+      "target1_audio_id": "4d9b98cb-b807-45bd-b7c2-a9aa2fdf1a2a",
+      "target2_audio_id": "2afbd80b-4d47-4f86-a2d8-a039a194dcc8"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0634L03U06",
+     "set": {
+      "known_text": "she also wants one of those",
+      "known_audio_id": "b76b302f-2261-40dd-ba1f-1dfd0f9c3e3a"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0634L03U03",
+     "set": {
+      "known_text": "she wants one of those",
+      "known_audio_id": "aaf80ae7-82f1-4909-9249-a2f226d6bc00"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0596L01U04",
+     "set": {
+      "known_text": "she wants to see with my eyes",
+      "known_audio_id": "62bc44e9-5786-415e-9952-a890a4afdffa"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0595L03U03",
+     "set": {
+      "known_text": "she wants to lie down",
+      "known_audio_id": "9481dc0a-ddac-4bd0-ad11-00f5173be9c2"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 8,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0379L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0379L01U04",
+      "seed_number": 379,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich fand, dass es Glück war, dass sie dort war",
+      "known_text": "I thought it was luck that she was there",
+      "known_audio_id": "9a016abf-fa18-4f44-b31b-ffdb93a4e97e",
+      "target1_audio_id": "b8a8561d-8955-48c7-9d2f-5477cac59efb",
+      "target2_audio_id": "29f79571-5ac2-4bae-8895-f5a3e109302b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0379L01U04",
+      "seed_number": 379,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich dachte, dass es Glück war, dass sie dort war",
+      "known_text": "I thought it was luck that she was there",
+      "known_audio_id": "9a016abf-fa18-4f44-b31b-ffdb93a4e97e",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0379L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0379L01U04",
+      "seed_number": 379,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I thought it was luck that she was there",
+      "target_text": "ich dachte, dass es Glück war, dass sie dort war",
+      "known_audio_id": "9a016abf-fa18-4f44-b31b-ffdb93a4e97e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0379L01U04",
+      "seed_number": 379,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "17a01c2a-c22c-4789-b260-6b2f414479f5",
+      "known_text": "I thought it was luck that she was there",
+      "target_text": "ich dachte, dass es Glück war, dass sie dort war",
+      "known_audio_id": "9a016abf-fa18-4f44-b31b-ffdb93a4e97e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0379L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0379L01U04",
+      "seed_number": 379,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I thought it was luck that she was there",
+      "target_text": "ich dachte, dass es Glück war, dass sie dort war",
+      "known_audio_id": "9a016abf-fa18-4f44-b31b-ffdb93a4e97e",
+      "target1_audio_id": "17a01c2a-c22c-4789-b260-6b2f414479f5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0379L01U04",
+      "seed_number": 379,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "e0f07118-e79f-4855-a910-51ee59a09721",
+      "known_text": "I thought it was luck that she was there",
+      "target_text": "ich dachte, dass es Glück war, dass sie dort war",
+      "known_audio_id": "9a016abf-fa18-4f44-b31b-ffdb93a4e97e",
+      "target1_audio_id": "17a01c2a-c22c-4789-b260-6b2f414479f5",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0380L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0380L01U05",
+      "seed_number": 380,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich fand, dass sie nicht genug gefragt hatte",
+      "known_text": "I thought she had not asked enough",
+      "known_audio_id": "73251da7-62b8-451d-85e5-30fc7906985a",
+      "target1_audio_id": "1c188bbb-e437-4fb7-b5d7-95b73c219394",
+      "target2_audio_id": "2dbd63a2-0241-4c5f-abbb-6fa5ec17ff30",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0380L01U05",
+      "seed_number": 380,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich dachte, dass sie nicht genug gefragt hatte",
+      "known_text": "I thought she had not asked enough",
+      "known_audio_id": "73251da7-62b8-451d-85e5-30fc7906985a",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0380L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0380L01U05",
+      "seed_number": 380,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I thought she had not asked enough",
+      "target_text": "ich dachte, dass sie nicht genug gefragt hatte",
+      "known_audio_id": "73251da7-62b8-451d-85e5-30fc7906985a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0380L01U05",
+      "seed_number": 380,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "91101b5a-230e-4164-b4bd-3755fda66b39",
+      "known_text": "I thought she had not asked enough",
+      "target_text": "ich dachte, dass sie nicht genug gefragt hatte",
+      "known_audio_id": "73251da7-62b8-451d-85e5-30fc7906985a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0380L01U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0380L01U05",
+      "seed_number": 380,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I thought she had not asked enough",
+      "target_text": "ich dachte, dass sie nicht genug gefragt hatte",
+      "known_audio_id": "73251da7-62b8-451d-85e5-30fc7906985a",
+      "target1_audio_id": "91101b5a-230e-4164-b4bd-3755fda66b39",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0380L01U05",
+      "seed_number": 380,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "386333a5-ec70-47a5-bdc6-747dfe643c65",
+      "known_text": "I thought she had not asked enough",
+      "target_text": "ich dachte, dass sie nicht genug gefragt hatte",
+      "known_audio_id": "73251da7-62b8-451d-85e5-30fc7906985a",
+      "target1_audio_id": "91101b5a-230e-4164-b4bd-3755fda66b39",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0381L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0381L02U05",
+      "seed_number": 381,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "sie fand, dass es wichtig war zu folgen",
+      "known_text": "she thought it was important to follow",
+      "known_audio_id": "78b2a935-64d6-4a0e-aae8-cc8bc8bf631a",
+      "target1_audio_id": "40393538-6662-4a9b-a580-98296c07cc03",
+      "target2_audio_id": "fa023ef0-7da5-4cc0-91e0-52b1bff51d15",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0381L02U05",
+      "seed_number": 381,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "sie dachte, dass es wichtig war zu folgen",
+      "known_text": "she thought it was important to follow",
+      "known_audio_id": "78b2a935-64d6-4a0e-aae8-cc8bc8bf631a",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0381L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0381L02U05",
+      "seed_number": 381,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "she thought it was important to follow",
+      "target_text": "sie dachte, dass es wichtig war zu folgen",
+      "known_audio_id": "78b2a935-64d6-4a0e-aae8-cc8bc8bf631a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0381L02U05",
+      "seed_number": 381,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "001c971b-61b1-460c-b729-e24017d6f89c",
+      "known_text": "she thought it was important to follow",
+      "target_text": "sie dachte, dass es wichtig war zu folgen",
+      "known_audio_id": "78b2a935-64d6-4a0e-aae8-cc8bc8bf631a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0381L02U05"
+     },
+     "before": {
+      "id": "deu_for_eng:S0381L02U05",
+      "seed_number": 381,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "she thought it was important to follow",
+      "target_text": "sie dachte, dass es wichtig war zu folgen",
+      "known_audio_id": "78b2a935-64d6-4a0e-aae8-cc8bc8bf631a",
+      "target1_audio_id": "001c971b-61b1-460c-b729-e24017d6f89c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0381L02U05",
+      "seed_number": 381,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "cceb9d44-bdd1-4225-b468-af970e1d1663",
+      "known_text": "she thought it was important to follow",
+      "target_text": "sie dachte, dass es wichtig war zu folgen",
+      "known_audio_id": "78b2a935-64d6-4a0e-aae8-cc8bc8bf631a",
+      "target1_audio_id": "001c971b-61b1-460c-b729-e24017d6f89c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0383L02U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0383L02U06",
+      "seed_number": 383,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "sie fand, dass es wichtig war, es in den Garten zu stellen",
+      "known_text": "she thought it was important to put it in the garden",
+      "known_audio_id": "c788b9c8-4c87-478e-b137-0c9f93954f15",
+      "target1_audio_id": "58e32f22-cfce-4c2e-823e-96a72fbacad4",
+      "target2_audio_id": "ccab45cb-637d-4094-b902-f38b64e106e4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0383L02U06",
+      "seed_number": 383,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "sie dachte, dass es wichtig war, es in den Garten zu stellen",
+      "known_text": "she thought it was important to put it in the garden",
+      "known_audio_id": "c788b9c8-4c87-478e-b137-0c9f93954f15",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0383L02U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0383L02U06",
+      "seed_number": 383,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "she thought it was important to put it in the garden",
+      "target_text": "sie dachte, dass es wichtig war, es in den Garten zu stellen",
+      "known_audio_id": "c788b9c8-4c87-478e-b137-0c9f93954f15",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0383L02U06",
+      "seed_number": 383,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "262c27de-a610-4735-bdb5-1811ba8730b9",
+      "known_text": "she thought it was important to put it in the garden",
+      "target_text": "sie dachte, dass es wichtig war, es in den Garten zu stellen",
+      "known_audio_id": "c788b9c8-4c87-478e-b137-0c9f93954f15",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0383L02U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0383L02U06",
+      "seed_number": 383,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "she thought it was important to put it in the garden",
+      "target_text": "sie dachte, dass es wichtig war, es in den Garten zu stellen",
+      "known_audio_id": "c788b9c8-4c87-478e-b137-0c9f93954f15",
+      "target1_audio_id": "262c27de-a610-4735-bdb5-1811ba8730b9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0383L02U06",
+      "seed_number": 383,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "e1347c60-0264-4f60-bb2d-94828b922f0b",
+      "known_text": "she thought it was important to put it in the garden",
+      "target_text": "sie dachte, dass es wichtig war, es in den Garten zu stellen",
+      "known_audio_id": "c788b9c8-4c87-478e-b137-0c9f93954f15",
+      "target1_audio_id": "262c27de-a610-4735-bdb5-1811ba8730b9",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0383L02U06",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0383L02U06",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0383L02U06",
+     "set": {
+      "target_text": "sie fand, dass es wichtig war, es in den Garten zu stellen",
+      "target1_audio_id": "58e32f22-cfce-4c2e-823e-96a72fbacad4",
+      "target2_audio_id": "ccab45cb-637d-4094-b902-f38b64e106e4"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0381L02U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0381L02U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0381L02U05",
+     "set": {
+      "target_text": "sie fand, dass es wichtig war zu folgen",
+      "target1_audio_id": "40393538-6662-4a9b-a580-98296c07cc03",
+      "target2_audio_id": "fa023ef0-7da5-4cc0-91e0-52b1bff51d15"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0380L01U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0380L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0380L01U05",
+     "set": {
+      "target_text": "ich fand, dass sie nicht genug gefragt hatte",
+      "target1_audio_id": "1c188bbb-e437-4fb7-b5d7-95b73c219394",
+      "target2_audio_id": "2dbd63a2-0241-4c5f-abbb-6fa5ec17ff30"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0379L01U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0379L01U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0379L01U04",
+     "set": {
+      "target_text": "ich fand, dass es Glück war, dass sie dort war",
+      "target1_audio_id": "b8a8561d-8955-48c7-9d2f-5477cac59efb",
+      "target2_audio_id": "29f79571-5ac2-4bae-8895-f5a3e109302b"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 9,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0384L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0384L01U04",
+      "seed_number": 384,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich fand, was sie vor einem Moment gesagt hatte, war wichtig",
+      "known_text": "I thought what she had said a moment ago was important",
+      "known_audio_id": "199b29b8-fb45-4a2f-ad94-15bbfe822015",
+      "target1_audio_id": "87d659bf-fd81-4e4f-9fe3-dcc9bc43cdee",
+      "target2_audio_id": "778e43a6-084a-465c-b5a1-1f710e60801b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0384L01U04",
+      "seed_number": 384,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich dachte, was sie vor einem Moment gesagt hatte, war wichtig",
+      "known_text": "I thought what she had said a moment ago was important",
+      "known_audio_id": "199b29b8-fb45-4a2f-ad94-15bbfe822015",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0384L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0384L01U04",
+      "seed_number": 384,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I thought what she had said a moment ago was important",
+      "target_text": "ich dachte, was sie vor einem Moment gesagt hatte, war wichtig",
+      "known_audio_id": "199b29b8-fb45-4a2f-ad94-15bbfe822015",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0384L01U04",
+      "seed_number": 384,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "d131ab45-8ef2-46ea-be59-a6added653aa",
+      "known_text": "I thought what she had said a moment ago was important",
+      "target_text": "ich dachte, was sie vor einem Moment gesagt hatte, war wichtig",
+      "known_audio_id": "199b29b8-fb45-4a2f-ad94-15bbfe822015",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0384L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0384L01U04",
+      "seed_number": 384,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I thought what she had said a moment ago was important",
+      "target_text": "ich dachte, was sie vor einem Moment gesagt hatte, war wichtig",
+      "known_audio_id": "199b29b8-fb45-4a2f-ad94-15bbfe822015",
+      "target1_audio_id": "d131ab45-8ef2-46ea-be59-a6added653aa",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0384L01U04",
+      "seed_number": 384,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "e9c249b3-2091-4803-b260-f7af63b7e731",
+      "known_text": "I thought what she had said a moment ago was important",
+      "target_text": "ich dachte, was sie vor einem Moment gesagt hatte, war wichtig",
+      "known_audio_id": "199b29b8-fb45-4a2f-ad94-15bbfe822015",
+      "target1_audio_id": "d131ab45-8ef2-46ea-be59-a6added653aa",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U03",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich dachte, dass die Leute sie mögen wollten",
+      "known_text": "I thought the people would like them",
+      "known_audio_id": "0455960d-4593-429c-9263-31bc49fd124d",
+      "target1_audio_id": "bec710e1-da3d-4756-9877-ac2be1377848",
+      "target2_audio_id": "e5c5d350-4599-4343-98a7-0078abdc8c35",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U03",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich dachte, dass die Leute sie mögen würden",
+      "known_text": "I thought the people would like them",
+      "known_audio_id": "0455960d-4593-429c-9263-31bc49fd124d",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U03",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I thought the people would like them",
+      "target_text": "ich dachte, dass die Leute sie mögen würden",
+      "known_audio_id": "0455960d-4593-429c-9263-31bc49fd124d",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U03",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "63f4249b-0c4b-4971-8c82-5c8c955b5900",
+      "known_text": "I thought the people would like them",
+      "target_text": "ich dachte, dass die Leute sie mögen würden",
+      "known_audio_id": "0455960d-4593-429c-9263-31bc49fd124d",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U03"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U03",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I thought the people would like them",
+      "target_text": "ich dachte, dass die Leute sie mögen würden",
+      "known_audio_id": "0455960d-4593-429c-9263-31bc49fd124d",
+      "target1_audio_id": "63f4249b-0c4b-4971-8c82-5c8c955b5900",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U03",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "1b0e03d6-8c61-415f-88a8-1d81b5c77de0",
+      "known_text": "I thought the people would like them",
+      "target_text": "ich dachte, dass die Leute sie mögen würden",
+      "known_audio_id": "0455960d-4593-429c-9263-31bc49fd124d",
+      "target1_audio_id": "63f4249b-0c4b-4971-8c82-5c8c955b5900",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U04",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sie hat mir gesagt, dass die Leute sie mögen wollten",
+      "known_text": "she told me the people would like them",
+      "known_audio_id": "c640d84f-5814-4d31-8dae-dba633d56874",
+      "target1_audio_id": "74bd0c2c-8f3e-4dd2-8bca-befffc30b31d",
+      "target2_audio_id": "70caa4c9-f543-47ca-a9af-32c798845424",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U04",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sie hat mir gesagt, dass die Leute sie mögen würden",
+      "known_text": "she told me the people would like them",
+      "known_audio_id": "c640d84f-5814-4d31-8dae-dba633d56874",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U04",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "she told me the people would like them",
+      "target_text": "sie hat mir gesagt, dass die Leute sie mögen würden",
+      "known_audio_id": "c640d84f-5814-4d31-8dae-dba633d56874",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U04",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "42aadcba-8980-415c-83a7-fb951de92286",
+      "known_text": "she told me the people would like them",
+      "target_text": "sie hat mir gesagt, dass die Leute sie mögen würden",
+      "known_audio_id": "c640d84f-5814-4d31-8dae-dba633d56874",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U04"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U04",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "she told me the people would like them",
+      "target_text": "sie hat mir gesagt, dass die Leute sie mögen würden",
+      "known_audio_id": "c640d84f-5814-4d31-8dae-dba633d56874",
+      "target1_audio_id": "42aadcba-8980-415c-83a7-fb951de92286",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U04",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "561f111a-8612-410d-a556-a16d97ea36b2",
+      "known_text": "she told me the people would like them",
+      "target_text": "sie hat mir gesagt, dass die Leute sie mögen würden",
+      "known_audio_id": "c640d84f-5814-4d31-8dae-dba633d56874",
+      "target1_audio_id": "42aadcba-8980-415c-83a7-fb951de92286",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U06",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich wusste, dass die Leute sie mögen wollten",
+      "known_text": "I knew the people would like them",
+      "known_audio_id": "51a23f7d-081b-47e2-a7db-0418cb7214b8",
+      "target1_audio_id": "1cd65e77-01b5-4bb8-934d-4dfa6442498c",
+      "target2_audio_id": "17013d71-93cc-4ecc-92dc-1f2a28334d2b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U06",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ich wusste, dass die Leute sie mögen würden",
+      "known_text": "I knew the people would like them",
+      "known_audio_id": "51a23f7d-081b-47e2-a7db-0418cb7214b8",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U06",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I knew the people would like them",
+      "target_text": "ich wusste, dass die Leute sie mögen würden",
+      "known_audio_id": "51a23f7d-081b-47e2-a7db-0418cb7214b8",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U06",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "e32e7e18-3216-4690-a516-f82da373323a",
+      "known_text": "I knew the people would like them",
+      "target_text": "ich wusste, dass die Leute sie mögen würden",
+      "known_audio_id": "51a23f7d-081b-47e2-a7db-0418cb7214b8",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0419L01U06"
+     },
+     "before": {
+      "id": "deu_for_eng:S0419L01U06",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I knew the people would like them",
+      "target_text": "ich wusste, dass die Leute sie mögen würden",
+      "known_audio_id": "51a23f7d-081b-47e2-a7db-0418cb7214b8",
+      "target1_audio_id": "e32e7e18-3216-4690-a516-f82da373323a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0419L01U06",
+      "seed_number": 419,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "0d86091d-1b47-4e00-be3e-26618913fcfe",
+      "known_text": "I knew the people would like them",
+      "target_text": "ich wusste, dass die Leute sie mögen würden",
+      "known_audio_id": "51a23f7d-081b-47e2-a7db-0418cb7214b8",
+      "target1_audio_id": "e32e7e18-3216-4690-a516-f82da373323a",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U06",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U06",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U06",
+     "set": {
+      "target_text": "ich wusste, dass die Leute sie mögen wollten",
+      "target1_audio_id": "1cd65e77-01b5-4bb8-934d-4dfa6442498c",
+      "target2_audio_id": "17013d71-93cc-4ecc-92dc-1f2a28334d2b"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U04",
+     "set": {
+      "target_text": "sie hat mir gesagt, dass die Leute sie mögen wollten",
+      "target1_audio_id": "74bd0c2c-8f3e-4dd2-8bca-befffc30b31d",
+      "target2_audio_id": "70caa4c9-f543-47ca-a9af-32c798845424"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0419L01U03",
+     "set": {
+      "target_text": "ich dachte, dass die Leute sie mögen wollten",
+      "target1_audio_id": "bec710e1-da3d-4756-9877-ac2be1377848",
+      "target2_audio_id": "e5c5d350-4599-4343-98a7-0078abdc8c35"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0384L01U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0384L01U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0384L01U04",
+     "set": {
+      "target_text": "ich fand, was sie vor einem Moment gesagt hatte, war wichtig",
+      "target1_audio_id": "87d659bf-fd81-4e4f-9fe3-dcc9bc43cdee",
+      "target2_audio_id": "778e43a6-084a-465c-b5a1-1f710e60801b"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 10,
+  "status": 200,
+  "n": 3,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0513L03B01"
+     },
+     "before": {
+      "id": "deu_for_eng:S0513L03B01",
+      "seed_number": 513,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "ich bewege",
+      "known_text": "I move",
+      "known_audio_id": "5a879815-13a5-4795-b7e2-a955c9a7d289",
+      "target1_audio_id": "e235778c-d0e0-4906-a531-2588717fad6f",
+      "target2_audio_id": "568d7db0-807f-4aea-b044-a1ab78f9171e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0513L03B01",
+      "seed_number": 513,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "ich bewege mich",
+      "known_text": "I move",
+      "known_audio_id": "5a879815-13a5-4795-b7e2-a955c9a7d289",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0513L03B01"
+     },
+     "before": {
+      "id": "deu_for_eng:S0513L03B01",
+      "seed_number": 513,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I move",
+      "target_text": "ich bewege mich",
+      "known_audio_id": "5a879815-13a5-4795-b7e2-a955c9a7d289",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0513L03B01",
+      "seed_number": 513,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "8ece9ebf-5b57-41aa-9b6b-d8cb0d1c4cad",
+      "known_text": "I move",
+      "target_text": "ich bewege mich",
+      "known_audio_id": "5a879815-13a5-4795-b7e2-a955c9a7d289",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "deu_for_eng",
+      "id": "deu_for_eng:S0513L03B01"
+     },
+     "before": {
+      "id": "deu_for_eng:S0513L03B01",
+      "seed_number": 513,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I move",
+      "target_text": "ich bewege mich",
+      "known_audio_id": "5a879815-13a5-4795-b7e2-a955c9a7d289",
+      "target1_audio_id": "8ece9ebf-5b57-41aa-9b6b-d8cb0d1c4cad",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "deu_for_eng:S0513L03B01",
+      "seed_number": 513,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "cfc7ff8e-b689-4f0b-83d9-86bf4be8c949",
+      "known_text": "I move",
+      "target_text": "ich bewege mich",
+      "known_audio_id": "5a879815-13a5-4795-b7e2-a955c9a7d289",
+      "target1_audio_id": "8ece9ebf-5b57-41aa-9b6b-d8cb0d1c4cad",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0513L03B01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0513L03B01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "deu_for_eng:S0513L03B01",
+     "set": {
+      "target_text": "ich bewege",
+      "target1_audio_id": "e235778c-d0e0-4906-a531-2588717fad6f",
+      "target2_audio_id": "568d7db0-807f-4aea-b044-a1ab78f9171e"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ }
+]

@@ -1,0 +1,73 @@
+{
+ "seed": 107,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुम्ही काय करत होतात ते मला माहित आहे",
+     "I know what you were doing"
+    ],
+    "B03": [
+     "तुम्ही काल काय करत होतात",
+     "what you were doing yesterday"
+    ],
+    "B04": [
+     "तुम्ही काल रात्री काय करत होतात",
+     "what you were doing last night"
+    ],
+    "U01": [
+     "तुम्ही काय करत होतात ते मला माहित नाही",
+     "I don't know what you were doing"
+    ],
+    "U02": [
+     "तुम्ही काय करत होतात ते मला विचारायचं होतं",
+     "I wanted to ask what you were doing"
+    ],
+    "U03": [
+     "तुम्ही काय करत होतात ते मला समजत नाही",
+     "I don't understand what you were doing"
+    ],
+    "U04": [
+     "तुम्ही काय करत होतात ते मला आठवत नाही",
+     "I can't remember what you were doing"
+    ],
+    "U05": [
+     "तुम्ही काय करत होतात ते मला जाणून घ्यायला आवडेल",
+     "I'd like to know what you were doing"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "तुमच्या मित्रांना बघायची आम्हाला आशा होती",
+     "we hoped to see your friends"
+    ],
+    "U02": [
+     "काल तुम्हाला बघायची आम्हाला आशा होती",
+     "we hoped to see you yesterday"
+    ],
+    "U03": [
+     "सहा वाजता तुम्हाला बघायची आम्हाला आशा होती",
+     "we hoped to see you at six o'clock"
+    ],
+    "U04": [
+     "काहीतरी रंजक बघायची आम्हाला आशा होती",
+     "we hoped to see something interesting"
+    ],
+    "U05": [
+     "लहान कुत्र्याला बघायची आम्हाला आशा होती",
+     "we hoped to see the young dog"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ते बघायची आम्हाला आशा होती",
+     "we hoped to see it"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

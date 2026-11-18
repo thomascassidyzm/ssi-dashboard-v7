@@ -1,0 +1,549 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0053L01B04",
+    "seed_number": 53,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "त्याचं पत्र ठेवायला",
+    "target_text": "to put his letter",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0053L02B04",
+    "seed_number": 53,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "ते तिच्या बॅगेत ठेवायला",
+    "target_text": "to put it in her bag",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0054L01B04",
+    "seed_number": 54,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "तुम्हाला काहीतरी द्यायला",
+    "target_text": "to give you something",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0056L01B04",
+    "seed_number": 56,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "म्हणजे मला उत्तर आठवेल",
+    "target_text": "so I can remember the answer",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0056L02B04",
+    "seed_number": 56,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "काही शब्द म्हणणे",
+    "target_text": "to say a few words",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L01B02",
+   "expect": {
+    "known_text": "इंग्रजीत ठेवायला",
+    "target_text": "to put in English"
+   },
+   "set": {
+    "known_text": "काहीतरी ठेवायला",
+    "target_text": "to put something",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L01U02",
+   "expect": {
+    "known_text": "काहीतरी इंग्रजीत ठेवायला",
+    "target_text": "to put something in English"
+   },
+   "set": {
+    "known_text": "तिला इथे काहीतरी ठेवायचं होतं",
+    "target_text": "she wanted to put something here",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L01U04",
+   "expect": {
+    "known_text": "त्याचं पत्र इथे ठेवायला",
+    "target_text": "to put his letter here"
+   },
+   "set": {
+    "known_text": "आम्हाला ते इथे ठेवायचं होतं",
+    "target_text": "we wanted to put it here",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L01U05",
+   "expect": {
+    "known_text": "काहीतरी आत्ता ठेवायला",
+    "target_text": "to put something now"
+   },
+   "set": {
+    "known_text": "मला त्याचं पत्र इथे ठेवायचं होतं",
+    "target_text": "I wanted to put his letter here",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L02B02",
+   "expect": {
+    "known_text": "आज तिच्या बॅगेत",
+    "target_text": "in her bag today"
+   },
+   "set": {
+    "known_text": "तिच्या बॅगेत काहीतरी",
+    "target_text": "something in her bag",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L02B03",
+   "expect": {
+    "known_text": "आत्ता तिच्या बॅगेत",
+    "target_text": "in her bag now"
+   },
+   "set": {
+    "known_text": "तिच्या बॅगेत त्याचं पत्र",
+    "target_text": "his letter in her bag",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L02U02",
+   "expect": {
+    "known_text": "काहीतरी तिच्या बॅगेत ठेवायला",
+    "target_text": "to put something in her bag"
+   },
+   "set": {
+    "known_text": "मला तिच्या बॅगेत काहीतरी ठेवायचं होतं",
+    "target_text": "I wanted to put something in her bag",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L02U03",
+   "expect": {
+    "known_text": "तिच्या बॅगेत इंग्रजीत",
+    "target_text": "in her bag in English"
+   },
+   "set": {
+    "known_text": "त्याला त्याचं पत्र तिच्या बॅगेत ठेवायचं होतं",
+    "target_text": "he wanted to put his letter in her bag",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0053L02U04",
+   "expect": {
+    "known_text": "तिच्या बॅगेत इथे",
+    "target_text": "in her bag here"
+   },
+   "set": {
+    "known_text": "तिला ते तिच्या बॅगेत ठेवायचं होतं",
+    "target_text": "she wanted to put it in her bag",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L01U02",
+   "expect": {
+    "known_text": "तिला काहीतरी द्यायचं होतं",
+    "target_text": "she wanted to give something"
+   },
+   "set": {
+    "known_text": "तिला मला काहीतरी द्यायचं होतं",
+    "target_text": "she wanted to give me something",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L01U03",
+   "expect": {
+    "known_text": "काहीतरी इंग्रजीत द्यायला",
+    "target_text": "to give something in English"
+   },
+   "set": {
+    "known_text": "त्याला तुम्हाला काहीतरी द्यायचं होतं",
+    "target_text": "he wanted to give you something",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L01U04",
+   "expect": {
+    "known_text": "त्याला काहीतरी द्यायचं होतं",
+    "target_text": "he wanted to give something"
+   },
+   "set": {
+    "known_text": "मला तिला एक पत्र द्यायचं होतं",
+    "target_text": "I wanted to give her a letter",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L01U05",
+   "expect": {
+    "known_text": "मला काहीतरी द्यायचं होतं",
+    "target_text": "I wanted to give something"
+   },
+   "set": {
+    "known_text": "मला तुम्हाला त्याचं पत्र द्यायचं होतं",
+    "target_text": "I wanted to give you his letter",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L02B02",
+   "expect": {
+    "known_text": "वेळ आत्ता",
+    "target_text": "time now"
+   },
+   "set": {
+    "known_text": "अजून वेळ",
+    "target_text": "more time",
+    "decomposition": null,
+    "word_count": 9,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L02B03",
+   "expect": {
+    "known_text": "वेळ इथे",
+    "target_text": "time here"
+   },
+   "set": {
+    "known_text": "बोलायला वेळ",
+    "target_text": "time to speak",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L02U02",
+   "expect": {
+    "known_text": "तुम्हाला अजून वेळ द्यायला",
+    "target_text": "to give you more time"
+   },
+   "set": {
+    "known_text": "मला अजून वेळ हवा आहे",
+    "target_text": "I need more time",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L02U03",
+   "expect": {
+    "known_text": "वेळ इंग्रजीत",
+    "target_text": "time in English"
+   },
+   "set": {
+    "known_text": "मला वेळ नाही",
+    "target_text": "I don't have time",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L02U04",
+   "expect": {
+    "known_text": "अजून वेळ आत्ता",
+    "target_text": "more time now"
+   },
+   "set": {
+    "known_text": "मला खूप वेळ घ्यायला आवडत नाही",
+    "target_text": "I don't like taking too much time",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0054L02U05",
+   "expect": {
+    "known_text": "वेळ बोलायला इंग्रजीत",
+    "target_text": "time to speak in English"
+   },
+   "set": {
+    "known_text": "तुमच्याकडे माझ्याशी बोलायला वेळ आहे का?",
+    "target_text": "do you have time to speak with me?",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L01B02",
+   "expect": {
+    "known_text": "म्हणजे मला इथे आठवेल",
+    "target_text": "so I can remember here"
+   },
+   "set": {
+    "known_text": "म्हणजे मला एक शब्द आठवेल",
+    "target_text": "so I can remember a word",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L01B03",
+   "expect": {
+    "known_text": "म्हणजे मला अधिक आठवेल",
+    "target_text": "so I can remember more"
+   },
+   "set": {
+    "known_text": "म्हणजे मला त्याचं नाव आठवेल",
+    "target_text": "so I can remember his name",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L01U02",
+   "expect": {
+    "known_text": "म्हणजे मला इंग्रजीत आठवेल",
+    "target_text": "so I can remember in English"
+   },
+   "set": {
+    "known_text": "मी सराव करणार आहे, म्हणजे मला पूर्ण वाक्य आठवेल",
+    "target_text": "I'm going to practise, so I can remember the whole sentence",
+    "decomposition": null,
+    "word_count": 59,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L01U03",
+   "expect": {
+    "known_text": "म्हणजे मला आज आठवेल",
+    "target_text": "so I can remember today"
+   },
+   "set": {
+    "known_text": "मी ते लिहिणार आहे, म्हणजे मला आठवेल",
+    "target_text": "I'm going to write it, so I can remember",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L01U04",
+   "expect": {
+    "known_text": "म्हणजे मला आत्ता आठवेल",
+    "target_text": "so I can remember now"
+   },
+   "set": {
+    "known_text": "मला जास्त सराव करायचा आहे, म्हणजे मला तिचं नाव आठवेल",
+    "target_text": "I want to practise more, so I can remember her name",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L01U05",
+   "expect": {
+    "known_text": "म्हणजे मला काहीतरी आठवेल",
+    "target_text": "so I can remember something"
+   },
+   "set": {
+    "known_text": "मी ते शक्य तितक्या वेळा म्हणणार आहे, म्हणजे मला आठवेल",
+    "target_text": "I'm going to say it as often as possible, so I can remember",
+    "decomposition": null,
+    "word_count": 59,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L02B03",
+   "expect": {
+    "known_text": "इथे काही शब्द",
+    "target_text": "a few words here"
+   },
+   "set": {
+    "known_text": "काही शब्द आठवणे",
+    "target_text": "to remember a few words",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L02U02",
+   "expect": {
+    "known_text": "काही शब्द कसे म्हणायचे",
+    "target_text": "to say a few words"
+   },
+   "set": {
+    "known_text": "मला काही शब्द शिकायचे आहेत",
+    "target_text": "I want to learn a few words",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L02U03",
+   "expect": {
+    "known_text": "आज काही शब्द",
+    "target_text": "a few words today"
+   },
+   "set": {
+    "known_text": "मला इंग्रजीत काही शब्द म्हणता येतात",
+    "target_text": "I can say a few words in English",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0056L02U04",
+   "expect": {
+    "known_text": "आत्ता काही शब्द",
+    "target_text": "a few words now"
+   },
+   "set": {
+    "known_text": "तिला काही शब्द लिहायचे होते",
+    "target_text": "she wanted to write a few words",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

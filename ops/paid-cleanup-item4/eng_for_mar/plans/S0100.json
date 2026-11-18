@@ -1,0 +1,68 @@
+{
+ "seed": 100,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "त्याबद्दल काळजी करायला नको",
+     "shouldn't worry about it"
+    ],
+    "B03": [
+     "इतकी काळजी करायला नको",
+     "shouldn't worry so much"
+    ],
+    "U02": [
+     "तुम्ही चुका करण्याची काळजी करायला नको",
+     "you shouldn't worry about making mistakes"
+    ],
+    "U03": [
+     "तुम्ही काळजी करायला नको, ते चालेल",
+     "you shouldn't worry, it will work"
+    ],
+    "U05": [
+     "मला वाटतं तुम्ही इतकी काळजी करायला नको",
+     "I think you shouldn't worry so much"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "चुकांबद्दल काळजी करायला नको",
+     "shouldn't worry about mistakes"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "तशीच गोष्ट",
+     "a similar story"
+    ],
+    "U02": [
+     "मला तसंच काहीतरी करायचं आहे",
+     "I want to do something similar"
+    ],
+    "U03": [
+     "मी तसंच काहीतरी केलंय",
+     "I've done something similar"
+    ],
+    "U04": [
+     "मला तसंच काहीतरी म्हणायचं होतं",
+     "I wanted to say something similar"
+    ],
+    "U05": [
+     "माझा मित्र तसंच काहीतरी म्हणाला",
+     "my friend said something similar"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तसाच मार्ग",
+     "a similar way"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

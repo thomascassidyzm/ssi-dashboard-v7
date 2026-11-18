@@ -1,0 +1,734 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L04U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L04U04",
+    "seed_number": 414,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "could we have a bottle of red wine?",
+    "target_text": "¿podríamos tener una botella de vino tinto?",
+    "known_audio_id": "7736ad77-abe6-4d80-957c-f3eefb673e25",
+    "target1_audio_id": "507be0aa-a344-44d7-a74d-a44cf04de15b",
+    "target2_audio_id": "c1f1f8d5-c427-40e9-b0fb-ada244291cca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L04U04",
+    "seed_number": 414,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "could we ask for a bottle of red wine?",
+    "target_text": "¿podríamos pedir una botella de vino tinto?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L05U01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L05U01",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿podríamos tener una botella de vino tinto, por favor?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "b6c825d0-fcec-480d-a74d-785893e0492b",
+    "target2_audio_id": "ef037846-4e84-47f3-b116-9107d5b8dbd8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L05U01",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we ask for a bottle of red wine please?",
+    "target_text": "¿podríamos pedir una botella de vino tinto, por favor?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L05U02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L05U02",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we have a table please?",
+    "target_text": "¿podríamos tener una mesa, por favor?",
+    "known_audio_id": "73dca6e7-4bea-4ffb-bbf5-46ca93081d99",
+    "target1_audio_id": "e86fcbcb-f94b-48cb-a56b-d204d4c49842",
+    "target2_audio_id": "f49531a4-5dac-4793-9224-9579a12d6f1f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L05U02",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we ask for a table please?",
+    "target_text": "¿podríamos pedir una mesa, por favor?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L05U03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L05U03",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we have water please?",
+    "target_text": "¿podríamos tener agua, por favor?",
+    "known_audio_id": "21d934d0-94d2-45cc-a3c4-d50ab23685bb",
+    "target1_audio_id": "6e07fe5c-d37b-4f7c-a7c0-e3916b59e347",
+    "target2_audio_id": "d4e82cec-6fba-4c78-8c36-b46e0a8d79c9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L05U03",
+    "seed_number": 414,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_text": "could we ask for water please?",
+    "target_text": "¿podríamos pedir agua, por favor?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0414L03U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0414L03U05",
+    "seed_number": 414,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it's important to have red wine",
+    "target_text": "es importante tener vino tinto",
+    "known_audio_id": "0421dd35-fb0d-42d6-8b1a-87d02bf2df58",
+    "target1_audio_id": "c060edd3-d334-4a86-bfa8-dbca40f30c2f",
+    "target2_audio_id": "cb325d65-872c-451d-856d-75d7b398fe5e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0414L03U05",
+    "seed_number": 414,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it's important to ask for red wine",
+    "target_text": "es importante pedir vino tinto",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 55
+   },
+   "before": {
+    "id": "1a5ac68f-567e-4c74-bad9-64b14dcc515b",
+    "seed_number": 55,
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "no disfruto despertarme cuando no dormí muy bien",
+    "known_audio_id": "0dbeb505-4b9a-4838-820d-5a632f007676",
+    "target1_audio_id": "9fd25c70-8f22-45a5-aa46-32c98ce93495",
+    "target2_audio_id": "5b81f993-1f92-453d-bd56-b4a26ce20fbf"
+   },
+   "after": {
+    "id": "1a5ac68f-567e-4c74-bad9-64b14dcc515b",
+    "seed_number": 55,
+    "known_text": "I don't like waking up when I didn't sleep very well",
+    "target_text": "no me gusta despertarme cuando no dormí muy bien",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 414
+   },
+   "before": {
+    "id": "0bd3508f-2347-4a03-a64a-e0f083b88ba4",
+    "seed_number": 414,
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿Podríamos tener una botella de vino tinto, por favor?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "b6c825d0-fcec-480d-a74d-785893e0492b",
+    "target2_audio_id": "ef037846-4e84-47f3-b116-9107d5b8dbd8"
+   },
+   "after": {
+    "id": "0bd3508f-2347-4a03-a64a-e0f083b88ba4",
+    "seed_number": 414,
+    "known_text": "could we ask for a bottle of red wine please?",
+    "target_text": "¿Podríamos pedir una botella de vino tinto, por favor?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 416
+   },
+   "before": {
+    "id": "ff27e1c3-46dd-4d46-85b5-ecb6f8ad59e3",
+    "seed_number": 416,
+    "known_text": "they want to lead the way next year",
+    "target_text": "quieren liderar el camino el año que viene",
+    "known_audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512",
+    "target1_audio_id": "2169c8a6-1b53-4503-88b1-3b452d154e77",
+    "target2_audio_id": "9ec11f34-ded3-4759-8cf1-d7dd79c72cd8"
+   },
+   "after": {
+    "id": "ff27e1c3-46dd-4d46-85b5-ecb6f8ad59e3",
+    "seed_number": 416,
+    "known_text": "they want to lead the project next year",
+    "target_text": "quieren liderar el proyecto el año que viene",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 437
+   },
+   "before": {
+    "id": "1283cc77-a55e-4dc8-a4b2-762b96a65b4c",
+    "seed_number": 437,
+    "target_text": "querían recaudar lo máximo posible para caridad",
+    "known_text": "they wanted to raise as much as possible for charity",
+    "known_audio_id": "360521e5-bb26-42c4-b73c-6e6fcf96c45f",
+    "target1_audio_id": "2a144404-83c8-49a6-b726-2a6f097c383f",
+    "target2_audio_id": "f65df45d-b1df-4991-a08e-9b1416039b00"
+   },
+   "after": {
+    "id": "1283cc77-a55e-4dc8-a4b2-762b96a65b4c",
+    "seed_number": 437,
+    "target_text": "querían recaudar lo máximo posible para una causa benéfica",
+    "known_text": "they wanted to raise as much as possible for charity",
+    "known_audio_id": "360521e5-bb26-42c4-b73c-6e6fcf96c45f",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 567
+   },
+   "before": {
+    "id": "0aca9487-0e6e-4f7b-9c88-2c8d75d5db78",
+    "seed_number": 567,
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar",
+    "known_text": "It's been lovely spending time outdoors watching the children play",
+    "known_audio_id": "563ada35-ba83-4ce4-80c8-d2b682b199d6",
+    "target1_audio_id": "3f398972-6382-4c54-8598-4aad12d19a38",
+    "target2_audio_id": "3785496d-1088-4c4a-9223-d4554ae8c8b0"
+   },
+   "after": {
+    "id": "0aca9487-0e6e-4f7b-9c88-2c8d75d5db78",
+    "seed_number": 567,
+    "target_text": "ha sido lindo pasar tiempo al aire libre viendo a los niños jugar",
+    "known_text": "It's been lovely spending time outdoors watching the children play",
+    "known_audio_id": "563ada35-ba83-4ce4-80c8-d2b682b199d6",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 115
+   },
+   "before": {
+    "id": "675ea5e1-8096-4433-ac85-f41f926865a9",
+    "seed_number": 115,
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "no siento como si estuviera listo para tener una conversación",
+    "known_audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d",
+    "target1_audio_id": "d49031f0-8eaa-4bdc-952c-fe3b23a7a048",
+    "target2_audio_id": "40981d4f-dae9-4e57-8d38-3039f21a24fc"
+   },
+   "after": {
+    "id": "675ea5e1-8096-4433-ac85-f41f926865a9",
+    "seed_number": 115,
+    "known_text": "I don't feel ready to have a conversation",
+    "target_text": "no me siento listo para tener una conversación",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 139
+   },
+   "before": {
+    "id": "ebd7a879-6cc7-4991-b0f2-23bfb42084a9",
+    "seed_number": 139,
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "lo siento que necesito irme tan temprano",
+    "known_audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+    "target1_audio_id": "19752878-2f2b-4556-8578-b10a9cb5ac0c",
+    "target2_audio_id": "238ef2ea-e917-480b-b4df-b64453716f27"
+   },
+   "after": {
+    "id": "ebd7a879-6cc7-4991-b0f2-23bfb42084a9",
+    "seed_number": 139,
+    "known_text": "I'm sorry, but I need to leave so early",
+    "target_text": "lo siento, pero necesito irme tan temprano",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 140
+   },
+   "before": {
+    "id": "e535a89e-b5ef-4e37-b365-0564866e0f5b",
+    "seed_number": 140,
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "target_text": "lo siento que no puedo ver lo que intentas mostrarme",
+    "known_audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922",
+    "target1_audio_id": "3e8460be-5beb-491b-afa1-1c367f556951",
+    "target2_audio_id": "973e0e2c-3172-4c0c-80b4-39726e763022"
+   },
+   "after": {
+    "id": "e535a89e-b5ef-4e37-b365-0564866e0f5b",
+    "seed_number": 140,
+    "known_text": "I'm sorry, but I can't see what you're trying to show me",
+    "target_text": "lo siento, pero no puedo ver lo que intentas mostrarme",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 138
+   },
+   "before": {
+    "id": "df7fc2e0-0808-4606-b2dd-2242fe1316dc",
+    "seed_number": 138,
+    "known_text": "this was where my friend wanted to meet us",
+    "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
+    "known_audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5",
+    "target1_audio_id": "f3e22ad6-2236-45f0-924e-ea91bc4101c1",
+    "target2_audio_id": "c743acc1-607a-4269-b081-5b36476b083f"
+   },
+   "after": {
+    "id": "df7fc2e0-0808-4606-b2dd-2242fe1316dc",
+    "seed_number": 138,
+    "known_text": "this is where my friend wanted to meet us",
+    "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
+    "known_audio_id": null,
+    "target1_audio_id": "f3e22ad6-2236-45f0-924e-ea91bc4101c1",
+    "target2_audio_id": "c743acc1-607a-4269-b081-5b36476b083f"
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "seed.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "seed_number": 419
+   },
+   "before": {
+    "id": "aa74c4c1-3619-4c04-9b23-0fe97332d7e3",
+    "seed_number": 419,
+    "known_text": "if they want people to like them",
+    "target_text": "si quieren que la gente les aprecie",
+    "known_audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3",
+    "target1_audio_id": "b4a63143-4609-4747-b09b-50d6d0bc8abf",
+    "target2_audio_id": "dc333165-dbf0-45ac-85cb-049be9745211"
+   },
+   "after": {
+    "id": "aa74c4c1-3619-4c04-9b23-0fe97332d7e3",
+    "seed_number": 419,
+    "known_text": "if they want people to appreciate them",
+    "target_text": "si quieren que la gente les aprecie",
+    "known_audio_id": null,
+    "target1_audio_id": "b4a63143-4609-4747-b09b-50d6d0bc8abf",
+    "target2_audio_id": "dc333165-dbf0-45ac-85cb-049be9745211"
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "lego_id": "S0416L02"
+   },
+   "before": {
+    "id": "d8b467d4-1208-4098-b67c-3015b3f3844b",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": "S0416L02",
+    "known_text": "the way",
+    "target_text": "el camino",
+    "known_audio_id": "648d5601-b65f-42b3-96c8-1757f3fc0001",
+    "target1_audio_id": "3c75fbed-f80a-4d55-a472-687f0ff623b9",
+    "target2_audio_id": "292e4661-13f5-4b8d-b904-7efa01b4b401",
+    "presentation_audio_id": "37979f19-ddeb-4d6e-b35d-d7277dd6483b"
+   },
+   "after": {
+    "id": "d8b467d4-1208-4098-b67c-3015b3f3844b",
+    "seed_number": 416,
+    "lego_index": 2,
+    "lego_id": "S0416L02",
+    "known_text": "the project",
+    "target_text": "el proyecto",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "lego_id": "S0437L03"
+   },
+   "before": {
+    "id": "797a2554-59d5-4093-b806-c075f7a615a2",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": "S0437L03",
+    "target_text": "caridad",
+    "known_text": "charity",
+    "known_audio_id": "78b8b25d-e9e1-4cdc-b444-2518fd606f94",
+    "target1_audio_id": "4b379560-abbd-40ee-a0b9-dd228487c47b",
+    "target2_audio_id": "aa00c296-a637-421d-89d0-81a204ad7359",
+    "presentation_audio_id": "f33446c9-ae52-4d46-a07f-8b75bb9c9fdb"
+   },
+   "after": {
+    "id": "797a2554-59d5-4093-b806-c075f7a615a2",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": "S0437L03",
+    "target_text": "una causa benéfica",
+    "known_text": "charity",
+    "known_audio_id": "78b8b25d-e9e1-4cdc-b444-2518fd606f94",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "lego.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "lego_id": "S0567L02"
+   },
+   "before": {
+    "id": "000242d3-b446-4c64-80ed-bdc893e9653f",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": "S0567L02",
+    "target_text": "encantador",
+    "known_text": "lovely",
+    "known_audio_id": "fde1b72f-fed1-4c37-8dc3-f434d722bd31",
+    "target1_audio_id": "dee6de54-973a-4cf1-811f-a3e9e8de69ca",
+    "target2_audio_id": "a921c77e-fba2-4b6c-ba94-552d5e00ce0e",
+    "presentation_audio_id": "cd03e38b-6dff-4e48-95de-b15ffbff6e1a"
+   },
+   "after": {
+    "id": "000242d3-b446-4c64-80ed-bdc893e9653f",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": "S0567L02",
+    "target_text": "lindo",
+    "known_text": "lovely",
+    "known_audio_id": "fde1b72f-fed1-4c37-8dc3-f434d722bd31",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "000242d3-b446-4c64-80ed-bdc893e9653f",
+   "set": {
+    "target_text": "encantador",
+    "target1_audio_id": "dee6de54-973a-4cf1-811f-a3e9e8de69ca",
+    "target2_audio_id": "a921c77e-fba2-4b6c-ba94-552d5e00ce0e",
+    "presentation_audio_id": "cd03e38b-6dff-4e48-95de-b15ffbff6e1a"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "797a2554-59d5-4093-b806-c075f7a615a2",
+   "set": {
+    "target_text": "caridad",
+    "target1_audio_id": "4b379560-abbd-40ee-a0b9-dd228487c47b",
+    "target2_audio_id": "aa00c296-a637-421d-89d0-81a204ad7359",
+    "presentation_audio_id": "f33446c9-ae52-4d46-a07f-8b75bb9c9fdb"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "d8b467d4-1208-4098-b67c-3015b3f3844b",
+   "set": {
+    "known_text": "the way",
+    "target_text": "el camino",
+    "known_audio_id": "648d5601-b65f-42b3-96c8-1757f3fc0001",
+    "target1_audio_id": "3c75fbed-f80a-4d55-a472-687f0ff623b9",
+    "target2_audio_id": "292e4661-13f5-4b8d-b904-7efa01b4b401",
+    "presentation_audio_id": "37979f19-ddeb-4d6e-b35d-d7277dd6483b"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 419,
+   "set": {
+    "known_text": "if they want people to like them",
+    "known_audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 138,
+   "set": {
+    "known_text": "this was where my friend wanted to meet us",
+    "known_audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 140,
+   "set": {
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "target_text": "lo siento que no puedo ver lo que intentas mostrarme",
+    "known_audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922",
+    "target1_audio_id": "3e8460be-5beb-491b-afa1-1c367f556951",
+    "target2_audio_id": "973e0e2c-3172-4c0c-80b4-39726e763022"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 139,
+   "set": {
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "lo siento que necesito irme tan temprano",
+    "known_audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+    "target1_audio_id": "19752878-2f2b-4556-8578-b10a9cb5ac0c",
+    "target2_audio_id": "238ef2ea-e917-480b-b4df-b64453716f27"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 115,
+   "set": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "no siento como si estuviera listo para tener una conversación",
+    "known_audio_id": "53a3ff6b-0167-47a1-96d4-01122434605d",
+    "target1_audio_id": "d49031f0-8eaa-4bdc-952c-fe3b23a7a048",
+    "target2_audio_id": "40981d4f-dae9-4e57-8d38-3039f21a24fc"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 567,
+   "set": {
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar",
+    "target1_audio_id": "3f398972-6382-4c54-8598-4aad12d19a38",
+    "target2_audio_id": "3785496d-1088-4c4a-9223-d4554ae8c8b0"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 437,
+   "set": {
+    "target_text": "querían recaudar lo máximo posible para caridad",
+    "target1_audio_id": "2a144404-83c8-49a6-b726-2a6f097c383f",
+    "target2_audio_id": "f65df45d-b1df-4991-a08e-9b1416039b00"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 416,
+   "set": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "quieren liderar el camino el año que viene",
+    "known_audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512",
+    "target1_audio_id": "2169c8a6-1b53-4503-88b1-3b452d154e77",
+    "target2_audio_id": "9ec11f34-ded3-4759-8cf1-d7dd79c72cd8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 414,
+   "set": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿Podríamos tener una botella de vino tinto, por favor?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "b6c825d0-fcec-480d-a74d-785893e0492b",
+    "target2_audio_id": "ef037846-4e84-47f3-b116-9107d5b8dbd8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 55,
+   "set": {
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "no disfruto despertarme cuando no dormí muy bien",
+    "known_audio_id": "0dbeb505-4b9a-4838-820d-5a632f007676",
+    "target1_audio_id": "9fd25c70-8f22-45a5-aa46-32c98ce93495",
+    "target2_audio_id": "5b81f993-1f92-453d-bd56-b4a26ce20fbf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L03U05",
+   "set": {
+    "known_text": "it's important to have red wine",
+    "target_text": "es importante tener vino tinto",
+    "known_audio_id": "0421dd35-fb0d-42d6-8b1a-87d02bf2df58",
+    "target1_audio_id": "c060edd3-d334-4a86-bfa8-dbca40f30c2f",
+    "target2_audio_id": "cb325d65-872c-451d-856d-75d7b398fe5e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U03",
+   "set": {
+    "known_text": "could we have water please?",
+    "target_text": "¿podríamos tener agua, por favor?",
+    "known_audio_id": "21d934d0-94d2-45cc-a3c4-d50ab23685bb",
+    "target1_audio_id": "6e07fe5c-d37b-4f7c-a7c0-e3916b59e347",
+    "target2_audio_id": "d4e82cec-6fba-4c78-8c36-b46e0a8d79c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U02",
+   "set": {
+    "known_text": "could we have a table please?",
+    "target_text": "¿podríamos tener una mesa, por favor?",
+    "known_audio_id": "73dca6e7-4bea-4ffb-bbf5-46ca93081d99",
+    "target1_audio_id": "e86fcbcb-f94b-48cb-a56b-d204d4c49842",
+    "target2_audio_id": "f49531a4-5dac-4793-9224-9579a12d6f1f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U01",
+   "set": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿podríamos tener una botella de vino tinto, por favor?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "b6c825d0-fcec-480d-a74d-785893e0492b",
+    "target2_audio_id": "ef037846-4e84-47f3-b116-9107d5b8dbd8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L04U04",
+   "set": {
+    "known_text": "could we have a bottle of red wine?",
+    "target_text": "¿podríamos tener una botella de vino tinto?",
+    "known_audio_id": "7736ad77-abe6-4d80-957c-f3eefb673e25",
+    "target1_audio_id": "507be0aa-a344-44d7-a74d-a44cf04de15b",
+    "target2_audio_id": "c1f1f8d5-c427-40e9-b0fb-ada244291cca"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

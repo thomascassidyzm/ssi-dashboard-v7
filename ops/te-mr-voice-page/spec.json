@@ -1,0 +1,62 @@
+{
+ "title": "Telugu and Marathi voices: which to use for the 856 silent prompts",
+ "intro": "**The short answer: you may not need to cast at all.** In both courses every Telugu and Marathi prompt so far is in **one Azure voice**: **Shruti** (female) in English for Telugu Speakers, with 15,243 clips, and **Manohar** (male) in English for Marathi Speakers, with 14,759 clips. Popty's voice gate lets a course keep recording new lines in the Azure voice it already uses. I ran a free dry run today (18 Nov) on a real missing prompt in each course. **Shruti and Manohar both came back \"would render\".** The 18 Nov fill was refused only because Popty, left to choose, picked the never-chosen 4 Sept draft Cartesia voices (Shanti for Telugu, Anika for Marathi). Name Shruti and Manohar on the fill and the 856 prompts can be recorded now. Azure Mohan (male, Telugu) is refused, because the course has never used him for a prompt.\n\n**Recommendation, Telugu:** keep **Shruti** (Azure, female). She is native te-IN, clear, and already the voice of the whole course, so the new prompts will match the old ones. The course uses one known-side voice, not a pair. If you would rather move Telugu to Cartesia, cast **Shanti** (female, Telangana). She is the only Cartesia Telugu woman you can hear below. Casting her means new prompts sound different from the 15,000 old ones.\n\n**Recommendation, Marathi:** keep **Manohar** (Azure, male), for the same reasons. He is native mr-IN, clear, and the course's only Marathi voice. If you want Cartesia, the only male you can hear is **Suresh** (draft pick). Watch out: Cartesia tags every one of its Marathi voices with a **\"Konkani\" accent** (locale mr-IN). Konkani is a separate language, so check by ear that they sound Marathi before casting one.\n\n**Cost once decided:** recording the 856 silent prompts (452 Marathi, 404 Telugu) is **32,454 characters**, in either voice route. That is about 3% of the 1,000,000-character daily budget. This page spent nothing: every clip below was already in Popty's library.\n\n### Telugu: every voice Popty can use\n\n| Provider | Voice | Voice id | Sex | Accent | Native | Gate lets it record now? | 4 Sept draft | Preview |\n|---|---|---|---|---|---|---|---|---|\n| Azure | **Shruti** | te-IN-ShrutiNeural | f | te-IN | yes | **YES** (course voice) | no | 1 library clip |\n| Azure | Mohan | te-IN-MohanNeural | m | te-IN | yes | no (refused in dry run) | no | no free preview |\n| Cartesia | Shanti | 4418bb06-8329-49a1-bb11-53bb64ca0547 | f | Telangana | yes | only once you cast it | **draft, f primary** | 3 library clips |\n| Cartesia | Charan | 82c2afc8-ebbc-4802-8ccf-036dc0fa1e3b | m | Telangana | yes | only once you cast it | **draft, m primary** | 3 library clips |\n| Cartesia | Vidya | 3a8e6fea-81e5-4d4d-8755-86093146cdb8 | f | Telangana | yes | only once you cast it | **draft, f backup** | no free preview |\n| Cartesia | Pavan | ebecd063-10f4-422e-a8ff-556ce5c4d4e4 | m | Telangana | yes | only once you cast it | **draft, m backup** | no free preview |\n| Cartesia | Bhavani | 76961778-5ce4-4aa9-9cdf-66a029d61a8f | f | Telangana | yes | only once you cast it | no | no free preview |\n| Cartesia | Ramya | cf061d8b-a752-4865-81a2-57570a6e0565 | f | Telangana | yes | only once you cast it | no | no free preview |\n| Cartesia | Sindhu | 07bc462a-c644-49f1-baf7-82d5599131be | f | Telangana | yes | only once you cast it | no | no free preview |\n| Cartesia | Deepthi | 062c17da-6ab6-4ecc-9f8a-d2a3dace8003 | f | Telangana | yes | only once you cast it | no | no free preview |\n| Cartesia | Divya | 292708e4-1200-4214-a3b7-f522a88c7284 | f | Telangana | yes | only once you cast it | no | no free preview |\n| Cartesia | Sarika | 330c4fa0-1da3-4c55-8e97-951bfd724e20 | f | Telangana | yes | only once you cast it | no | no free preview |\n| Cartesia | Vikram | 38bded0a-3ab4-42d1-8e47-2e0b6b10ced9 | m | Telangana | yes | only once you cast it | no | no free preview |\n\n### Marathi: every voice Popty can use\n\n| Provider | Voice | Voice id | Sex | Accent | Native | Gate lets it record now? | 4 Sept draft | Preview |\n|---|---|---|---|---|---|---|---|---|\n| Azure | **Manohar** | mr-IN-ManoharNeural | m | mr-IN | yes | **YES** (course voice) | no | 1 library clip |\n| Azure | Aarohi | mr-IN-AarohiNeural | f | mr-IN | yes | no (never used in this course) | no | no free preview |\n| Cartesia | Suresh | f227bc18-3704-47fe-b759-8c78a450fdfa | m | \"Konkani\", mr-IN | mr-IN voice, check by ear | only once you cast it | **draft, m primary** | 3 library clips |\n| Cartesia | Anika | 5c32dce6-936a-4892-b131-bafe474afe5f | f | none shown | was used in the Marathi course | **no**: not in Cartesia's catalogue today | **draft, f primary, no longer exists** | 3 library clips (old) |\n| Cartesia | Sayali | fc0401bc-6eb0-4468-946c-fea5594522b4 | f | \"Konkani\", mr-IN | check by ear | only once you cast it | no | no free preview |\n| Cartesia | Asha | 78f23aa7-9bee-4b55-aa29-5bdc598acb54 | f | \"Konkani\", mr-IN | check by ear | only once you cast it | no | no free preview |\n| Cartesia | Yash | e3ca7d7c-d6b2-4dd9-a858-3ea17744a736 | m | \"Konkani\", mr-IN | check by ear | only once you cast it | no | no free preview |\n| Cartesia | Mandar | c2ead8bf-408d-4e02-ab92-45c0d3846d4b | m | \"Konkani\", mr-IN | check by ear | only once you cast it | no | no free preview |\n| Cartesia | Prasad | 31670ac9-21a4-4c9e-963b-66288548471b | m | \"Konkani\", mr-IN | check by ear | only once you cast it | no | no free preview |\n| Cartesia | Chinmay | 5fead402-189f-4649-bfce-0e8d937d86a2 | m | \"Konkani\", mr-IN | check by ear | only once you cast it | no | no free preview |\n| Cartesia | Kedar | 77e8c11f-3b73-48c9-8f37-214f6f7a646e | m | \"Konkani\", mr-IN | check by ear | only once you cast it | no | no free preview |\n\n**Not listed:** ElevenLabs and Google. Popty has no voice-listing route for either: ElevenLabs is cast by hand only, and the voice gate would not let either record these courses anyway. xAI is banned.\n\n**About Anika:** Popty's live Cartesia catalogue no longer has her id, which is how Croatian's Petra looked before her calls failed. Her old clips below still play.\n\n**To hear a Cartesia voice that has no clip:** a trial line of about 60 characters costs about 60 characters per voice, so about 840 for all 14. Nothing like that was made for this page. Say if you want it.\n\nEvery clip below was already in Popty's library (mastered S3 key in brackets). They play in this order: Telugu first, then Marathi.",
+ "clips": [
+  {
+   "label": "Telugu · Shruti (Azure, female) · COURSE VOICE, recommended · [65C4B702]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/65C4B702-FB7F-4EDC-858E-D86D00FB725E.mp3"
+  },
+  {
+   "label": "Telugu · Shanti (Cartesia, female, 4 Sept draft) · 1 of 3 · [9F89356F]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/9F89356F-E5E8-48B8-BFA0-AA09404F7F8A.mp3"
+  },
+  {
+   "label": "Telugu · Shanti (Cartesia, female, 4 Sept draft) · 2 of 3 · [46844975]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/46844975-D160-43F5-A51E-79C2F61EC871.mp3"
+  },
+  {
+   "label": "Telugu · Shanti (Cartesia, female, 4 Sept draft) · 3 of 3 · [0FD80235]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/0FD80235-8B1A-4F72-9B1E-2117E9BA97DE.mp3"
+  },
+  {
+   "label": "Telugu · Charan (Cartesia, male, 4 Sept draft) · 1 of 3 · [C1C33A6E]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/C1C33A6E-0374-4BE5-BD31-9A642121714A.mp3"
+  },
+  {
+   "label": "Telugu · Charan (Cartesia, male, 4 Sept draft) · 2 of 3 · [BA6F0D85]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/BA6F0D85-735B-47B7-9E80-A66D9BD22B9E.mp3"
+  },
+  {
+   "label": "Telugu · Charan (Cartesia, male, 4 Sept draft) · 3 of 3 · [BF5081BE]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/BF5081BE-132B-4F31-8665-A0EB4CA54916.mp3"
+  },
+  {
+   "label": "Marathi · Manohar (Azure, male) · COURSE VOICE, recommended · [06C32A7E]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/06C32A7E-78F5-46D7-80AB-9E2806E78B1C.mp3"
+  },
+  {
+   "label": "Marathi · Suresh (Cartesia, male, 4 Sept draft) · 1 of 3 · [8030E79B]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/8030E79B-3DF5-4854-A551-40F05C3E2451.mp3"
+  },
+  {
+   "label": "Marathi · Suresh (Cartesia, male, 4 Sept draft) · 2 of 3 · [C8899F55]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/C8899F55-6B45-418D-A65B-E2D62E98F737.mp3"
+  },
+  {
+   "label": "Marathi · Suresh (Cartesia, male, 4 Sept draft) · 3 of 3 · [E63BCA18]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/E63BCA18-CCFF-48D6-AB88-C05406580A85.mp3"
+  },
+  {
+   "label": "Marathi · Anika (Cartesia, female, 4 Sept draft, NO LONGER EXISTS) · 1 of 3 · [B883055A]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/B883055A-8547-4CC2-AA29-5C1038306375.mp3"
+  },
+  {
+   "label": "Marathi · Anika (Cartesia, female, 4 Sept draft, NO LONGER EXISTS) · 2 of 3 · [A22041B0]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/A22041B0-DA73-4B02-8405-DA25C0E2E380.mp3"
+  },
+  {
+   "label": "Marathi · Anika (Cartesia, female, 4 Sept draft, NO LONGER EXISTS) · 3 of 3 · [7A5BA5B8]",
+   "file": "/home/tomcassidy/.cs-scratch/cs-e21a608f-04ea-4212-9d58-32b857cdf2ee/dl/7A5BA5B8-6228-499F-8471-D79E11DFC88E.mp3"
+  }
+ ]
+}

@@ -1,0 +1,399 @@
+[
+ {
+  "seed_number": 506,
+  "phrases": {
+   "506:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "used to",
+     "target_text": "costumava",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "live",
+     "target_text": "morar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I used to live",
+     "target_text": "eu costumava morar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I used to live here",
+     "target_text": "eu costumava morar aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I used to live in Italy",
+     "target_text": "eu costumava morar na Itália",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "when I was a child, I used to live in Italy",
+     "target_text": "quando eu era criança, eu costumava morar na Itália",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to live with someone else",
+     "target_text": "eu costumava morar com outra pessoa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to live near the hotel with my friends",
+     "target_text": "eu costumava morar perto do hotel com meus amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to live in a city with my friends",
+     "target_text": "eu costumava morar numa cidade com meus amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to live with them in a city in Italy",
+     "target_text": "eu costumava morar com eles numa cidade na Itália",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to live with them",
+     "target_text": "eu costumava morar com eles",
+     "phrase_role": "build"
+    }
+   ],
+   "506:2": [
+    {
+     "known_text": "around",
+     "target_text": "por",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "here",
+     "target_text": "aqui",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "around here",
+     "target_text": "por aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I used to live around here",
+     "target_text": "eu costumava morar por aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my friends are around here",
+     "target_text": "meus amigos estão por aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to live around here",
+     "target_text": "não quero morar por aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to have friends around here",
+     "target_text": "eu costumava ter amigos por aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have it around here",
+     "target_text": "tenho isso por aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, I used to live around here",
+     "target_text": "sim, eu costumava morar por aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I met a friend around here last year",
+     "target_text": "conheci um amigo por aqui no ano passado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to live around here",
+     "target_text": "espero conseguir morar por aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be around here",
+     "target_text": "ele pode estar por aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we hoped to see your friends around here",
+     "target_text": "nós esperávamos ver seus amigos por aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to live around here?",
+     "target_text": "por que você não quer morar por aqui?",
+     "phrase_role": "use"
+    }
+   ],
+   "506:3": [
+    {
+     "known_text": "there were",
+     "target_text": "há",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "many",
+     "target_text": "muitos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "years",
+     "target_text": "anos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "years ago",
+     "target_text": "há muitos anos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I used to live around here years ago",
+     "target_text": "eu costumava morar por aqui há muitos anos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I met a friend years ago",
+     "target_text": "conheci um amigo há muitos anos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I started to learn Portuguese years ago",
+     "target_text": "comecei a aprender português há muitos anos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that was years ago",
+     "target_text": "isso foi há muitos anos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I used to live in Italy years ago",
+     "target_text": "eu costumava morar na Itália há muitos anos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, I used to live around here years ago",
+     "target_text": "sim, eu costumava morar por aqui há muitos anos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I met my friends in Italy years ago",
+     "target_text": "conheci meus amigos na Itália há muitos anos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "years ago in Italy",
+     "target_text": "há muitos anos na Itália",
+     "phrase_role": "build"
+    }
+   ],
+   "506:4": [
+    {
+     "known_text": "before",
+     "target_text": "antes de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we moved",
+     "target_text": "nos mudarmos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "before we moved",
+     "target_text": "antes de nos mudarmos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "years ago before we moved",
+     "target_text": "há muitos anos antes de nos mudarmos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I used to live here before we moved",
+     "target_text": "eu costumava morar aqui antes de nos mudarmos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I used to live around here years ago before we moved",
+     "target_text": "eu costumava morar por aqui há muitos anos antes de nos mudarmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I met my friends before we moved",
+     "target_text": "conheci meus amigos antes de nos mudarmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I started to learn Portuguese before we moved",
+     "target_text": "comecei a aprender português antes de nos mudarmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, I used to live around here years ago before we moved",
+     "target_text": "sim, eu costumava morar por aqui há muitos anos antes de nos mudarmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that was years ago, before we moved",
+     "target_text": "isso foi há muitos anos, antes de nos mudarmos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "in Italy before we moved",
+     "target_text": "na Itália antes de nos mudarmos",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 507,
+  "phrases": {
+   "507:1": [
+    {
+     "known_text": "we",
+     "target_text": "nos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "moved",
+     "target_text": "mudamos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "we then moved",
+     "target_text": "nos mudamos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we moved last year",
+     "target_text": "nos mudamos no ano passado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we moved years ago",
+     "target_text": "nos mudamos há muitos anos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we moved when I was a child",
+     "target_text": "nos mudamos quando eu era criança",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we moved with them",
+     "target_text": "nos mudamos com eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's why we moved",
+     "target_text": "foi por isso que nos mudamos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we moved on Sunday morning",
+     "target_text": "nos mudamos no domingo de manhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when we moved, I started to learn Portuguese",
+     "target_text": "quando nos mudamos, comecei a aprender português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we moved last month",
+     "target_text": "nos mudamos no mês passado",
+     "phrase_role": "build"
+    }
+   ],
+   "507:2": [
+    {
+     "known_text": "to",
+     "target_text": "para",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the city",
+     "target_text": "a cidade",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to the city",
+     "target_text": "para a cidade",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to go to the city",
+     "target_text": "ir para a cidade",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to go to the city",
+     "target_text": "quero ir para a cidade",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we then moved to the city",
+     "target_text": "nos mudamos para a cidade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to go to the city next week",
+     "target_text": "quero ir para a cidade na próxima semana",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when I was a child, we moved to the city",
+     "target_text": "quando eu era criança, nos mudamos para a cidade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, we moved to the city",
+     "target_text": "sim, nos mudamos para a cidade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we moved to the city years ago",
+     "target_text": "nos mudamos para a cidade há muitos anos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to go to the city",
+     "target_text": "nós tivemos que ir para a cidade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should go to the city",
+     "target_text": "talvez devêssemos ir para a cidade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we must go to the city",
+     "target_text": "nós temos de ir para a cidade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when do you want to go to the city?",
+     "target_text": "quando você quer ir para a cidade?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to the city with my friends",
+     "target_text": "para a cidade com meus amigos",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,108 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03B03",
+   "expect": {
+    "known_text": "they wanted to raise as much as possible for charity",
+    "target_text": "querían recaudar lo máximo posible para caridad"
+   },
+   "set": {
+    "target_text": "querían recaudar lo máximo posible para una causa benéfica",
+    "target1_audio_id": "0bdf4f81-5dd5-4bc0-87f5-d1ceb1b6bb63",
+    "target2_audio_id": "44733167-6158-40d6-9c0c-a2f6d07c45f8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U01",
+   "expect": {
+    "known_text": "we want to raise something for charity",
+    "target_text": "queremos recaudar algo para caridad"
+   },
+   "set": {
+    "target_text": "queremos recaudar algo para una causa benéfica",
+    "target1_audio_id": "cbddebd6-6294-4ef4-9a72-99d45e95f3db",
+    "target2_audio_id": "b21aabeb-8374-490a-8826-bc90392901e1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U02",
+   "expect": {
+    "known_text": "it's important to help charity",
+    "target_text": "es importante ayudar a la caridad"
+   },
+   "set": {
+    "target_text": "es importante ayudar a una causa benéfica",
+    "target1_audio_id": "1d8b6461-1197-4200-a084-22955147b8f1",
+    "target2_audio_id": "ca7063d5-48cc-4389-b672-c433c0551c3f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U03",
+   "expect": {
+    "known_text": "we need to raise more for charity",
+    "target_text": "necesitamos recaudar más para caridad"
+   },
+   "set": {
+    "target_text": "necesitamos recaudar más para una causa benéfica",
+    "target1_audio_id": "f3fde1ec-0345-47be-bb17-421ed3b0d514",
+    "target2_audio_id": "bc7b5bc3-2cad-43d2-a262-085010293dbd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U04",
+   "expect": {
+    "known_text": "they could raise as much as possible for charity",
+    "target_text": "podrían recaudar lo máximo posible para caridad"
+   },
+   "set": {
+    "target_text": "podrían recaudar lo máximo posible para una causa benéfica",
+    "target1_audio_id": "d36eea91-675f-4847-8457-128186ded9c9",
+    "target2_audio_id": "07cf9ccb-7b55-4cdf-8fff-457d1202b1b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U05",
+   "expect": {
+    "known_text": "they wanted to raise more for charity",
+    "target_text": "querían recaudar más para caridad"
+   },
+   "set": {
+    "target_text": "querían recaudar más para una causa benéfica",
+    "target1_audio_id": "043f6c79-426d-4869-b519-55c31d4cf486",
+    "target2_audio_id": "dae182d3-1364-4d19-afef-8b8852301f9d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02B01",
+   "expect": {
+    "known_text": "lovely",
+    "target_text": "encantador"
+   },
+   "set": {
+    "target_text": "lindo",
+    "target1_audio_id": "d8895f8a-6fa7-45bb-ad71-fb64a8056553",
+    "target2_audio_id": "db91dec4-7e4d-4f26-ba09-4f8927b535ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02B02",
+   "expect": {
+    "known_text": "it's been lovely",
+    "target_text": "ha sido encantador"
+   },
+   "set": {
+    "target_text": "ha sido lindo",
+    "target1_audio_id": "6ec75cee-f535-4d2d-9589-80e7cd0d021c",
+    "target2_audio_id": "c4c24b63-696d-4d31-8b6d-58d73d2299aa"
+   }
+  }
+ ]
+}

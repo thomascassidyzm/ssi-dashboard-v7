@@ -1,0 +1,115 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_tel:S0617L01B04",
+    "seed_number": 617,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "అది ముఖ్యం అని నువ్వు అనుకున్నావు",
+    "target_text": "you thought it was important",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_tel:S0617L01U05",
+    "seed_number": 617,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "అది మంచిది అని నువ్వు అనుకున్నావని నాకు తెలుసు",
+    "target_text": "I know you thought it was good",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_tel:S0617L01U06",
+    "seed_number": 617,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "నువ్వు దాని గురించి చాలా అనుకున్నావు",
+    "target_text": "you thought about it a lot",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0617L01B02",
+   "expect": {
+    "known_text": "నువ్వు ఇవాళ అనుకున్నావు",
+    "target_text": "you thought today"
+   },
+   "set": {
+    "known_text": "అది మంచిది అని నువ్వు అనుకున్నావు",
+    "target_text": "you thought it was good",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0617L01B03",
+   "expect": {
+    "known_text": "నువ్వు ముందు అనుకున్నావు",
+    "target_text": "you thought before"
+   },
+   "set": {
+    "known_text": "నువ్వు ముందు దాని గురించి అనుకున్నావు",
+    "target_text": "you thought about it before",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tel:S0617L01U02",
+   "expect": {
+    "known_text": "నువ్వు ఏమనుకున్నావు?",
+    "target_text": "what did you think?"
+   },
+   "set": {
+    "known_text": "నువ్వు నిన్న దాని గురించి అనుకున్నావు",
+    "target_text": "you thought about it yesterday",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

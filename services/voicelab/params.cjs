@@ -67,6 +67,32 @@ const LANGUAGES = [
   { code: 'hin', name: 'Hindi', steer: 'hi', catalogue: 'hi', azureLocale: 'hi-IN' },
   { code: 'vie', name: 'Vietnamese', steer: 'vi', catalogue: 'vi', azureLocale: 'vi-VN' },
   { code: 'eng', name: 'English', steer: 'en', catalogue: 'en', azureLocale: 'en-GB' },
+  // Every other language Cartesia offers native voices in AND a Popty course
+  // teaches or is taught from (cs #716·AI, 18 Nov 2026). Without a row here
+  // samples.renderPlan answered "the lab has no Cartesia steer" and Kai could not
+  // hear one native Cartesia voice for these languages — most of them the 4 Sept
+  // draft-only casts Popty refuses VOICE_NOT_CAST. `locale` is the bare ISO 639-1
+  // tag, the form proven on Arabic above: a region tag Cartesia does not list is
+  // refused outright, a bare language tag is not.
+  { code: 'bul', name: 'Bulgarian', steer: 'bg', catalogue: 'bg', azureLocale: 'bg-BG', locale: 'bg' },
+  { code: 'ces', name: 'Czech', steer: 'cs', catalogue: 'cs', azureLocale: 'cs-CZ', locale: 'cs' },
+  { code: 'dan', name: 'Danish', steer: 'da', catalogue: 'da', azureLocale: 'da-DK', locale: 'da' },
+  { code: 'ell', name: 'Greek', steer: 'el', catalogue: 'el', azureLocale: 'el-GR', locale: 'el' },
+  { code: 'heb', name: 'Hebrew', steer: 'he', catalogue: 'he', azureLocale: 'he-IL', locale: 'he' },
+  { code: 'hun', name: 'Hungarian', steer: 'hu', catalogue: 'hu', azureLocale: 'hu-HU', locale: 'hu' },
+  { code: 'ind', name: 'Indonesian', steer: 'id', catalogue: 'id', azureLocale: 'id-ID', locale: 'id' },
+  { code: 'nor', name: 'Norwegian', steer: 'no', catalogue: 'no', azureLocale: 'nb-NO', locale: 'no', aliases: ['nob'] },
+  { code: 'ron', name: 'Romanian', steer: 'ro', catalogue: 'ro', azureLocale: 'ro-RO', locale: 'ro' },
+  { code: 'swe', name: 'Swedish', steer: 'sv', catalogue: 'sv', azureLocale: 'sv-SE', locale: 'sv' },
+  { code: 'tha', name: 'Thai', steer: 'th', catalogue: 'th', azureLocale: 'th-TH', locale: 'th' },
+  { code: 'ukr', name: 'Ukrainian', steer: 'uk', catalogue: 'uk', azureLocale: 'uk-UA', locale: 'uk' },
+  { code: 'ben', name: 'Bengali', steer: 'bn', catalogue: 'bn', azureLocale: 'bn-IN', locale: 'bn' },
+  { code: 'guj', name: 'Gujarati', steer: 'gu', catalogue: 'gu', azureLocale: 'gu-IN', locale: 'gu' },
+  { code: 'kan', name: 'Kannada', steer: 'kn', catalogue: 'kn', azureLocale: 'kn-IN', locale: 'kn' },
+  { code: 'mar', name: 'Marathi', steer: 'mr', catalogue: 'mr', azureLocale: 'mr-IN', locale: 'mr' },
+  { code: 'pan', name: 'Punjabi', steer: 'pa', catalogue: 'pa', azureLocale: 'pa-IN', locale: 'pa' },
+  { code: 'tam', name: 'Tamil', steer: 'ta', catalogue: 'ta', azureLocale: 'ta-IN', locale: 'ta' },
+  { code: 'tel', name: 'Telugu', steer: 'te', catalogue: 'te', azureLocale: 'te-IN', locale: 'te' },
 ]
 
 /**

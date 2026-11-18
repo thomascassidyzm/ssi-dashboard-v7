@@ -1,0 +1,217 @@
+{
+ "event_id": "e7622de5-5315-4f20-9feb-67e89bf92a4b",
+ "undo_file": "2026-11-18T13-06-46-702Z-e7622de5-5315-4f20-9feb-67e89bf92a4b.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0444L03B03",
+   "set": {
+    "known_text": "ಇವತ್ತು ಅವರು ಅಂದುಕೊಂಡ್ರು",
+    "target_text": "they thought today",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "464cd9c7-d715-4e1a-883b-bf6f2dc76140",
+    "target1_audio_id": "dba67500-b099-45f4-8dfd-36072605be63",
+    "target2_audio_id": "51323fc2-2d57-414c-b339-5d61cf726f86",
+    "decomposition": [
+     {
+      "known": "ಅವರು ಅಂದುಕೊಂಡ್ರು",
+      "legoId": "S0444L03",
+      "target": "they thought",
+      "isGhost": false
+     },
+     {
+      "known": "ಇವತ್ತು",
+      "legoId": "S0007L01",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0375L02B03",
+   "set": {
+    "known_text": "ಇಲ್ಲ ಅವಳು ನಿನ್ನೆ ಏನು ಮಾಡ್ತಿದ್ದಳು",
+    "target_text": "no what she was doing yesterday",
+    "word_count": 31,
+    "lego_position": "middle",
+    "known_audio_id": "101293dc-84c0-4185-983a-592c25fff854",
+    "target1_audio_id": "ed6a64fe-43f9-463c-9702-a4edcc0485e2",
+    "target2_audio_id": "930144b6-8d74-498e-a93e-30fa7d11b9c9",
+    "decomposition": [
+     {
+      "known": "ಇಲ್ಲ ಅವಳು ಏನು ಮಾಡ್ತಿದ್ದಳು",
+      "legoId": "S0375L02",
+      "target": "no what she was doing",
+      "isGhost": false
+     },
+     {
+      "known": "ನಿನ್ನೆ",
+      "legoId": "S0030L01",
+      "target": " yesterday",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0375L02B02",
+   "set": {
+    "known_text": "ಇಲ್ಲ ಅವಳು ಇವತ್ತು ಏನು ಮಾಡ್ತಿದ್ದಳು",
+    "target_text": "no what she was doing today",
+    "word_count": 27,
+    "lego_position": "middle",
+    "known_audio_id": "91798c49-2166-4562-bac9-1579f75e504a",
+    "target1_audio_id": "419a400c-e726-49a7-952e-75f42ac8967d",
+    "target2_audio_id": "9a0c6665-42ab-4ba6-bfa6-16b57666672a",
+    "decomposition": [
+     {
+      "known": "ಇಲ್ಲ ಅವಳು ಏನು ಮಾಡ್ತಿದ್ದಳು",
+      "legoId": "S0375L02",
+      "target": "no what she was doing",
+      "isGhost": false
+     },
+     {
+      "known": "ಇವತ್ತು",
+      "legoId": "S0007L01",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0374L02B03",
+   "set": {
+    "known_text": "ಮತ್ತೊಮ್ಮೆ ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+    "target_text": "I thought again",
+    "word_count": 15,
+    "known_audio_id": "ffc667f0-80ad-48ae-a419-48444f3d706d",
+    "target1_audio_id": "56d6bb52-ec06-40c1-bca0-960a9ed0de76",
+    "target2_audio_id": "ee684815-4fe4-4f1f-8b10-0160a9111534",
+    "decomposition": [
+     {
+      "known": "ಅಂತ ನಾನು ಅಂದುಕೊಂಡೆ",
+      "legoId": "S0247L03",
+      "target": "I thought",
+      "isGhost": false
+     },
+     {
+      "known": "ಮತ್ತೊಮ್ಮೆ",
+      "legoId": "S0061L03",
+      "target": " again",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0374L02B02",
+   "set": {
+    "known_text": "ಇವತ್ತು ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+    "target_text": "I thought today",
+    "word_count": 15,
+    "known_audio_id": "f9301611-a01a-4b4d-8091-896d4544a6c0",
+    "target1_audio_id": "7d34e5d2-8d95-47e6-a067-2c8410fda0b1",
+    "target2_audio_id": "cced5dad-485b-4f5f-a3a3-6dd902438323",
+    "decomposition": [
+     {
+      "known": "ಅಂತ ನಾನು ಅಂದುಕೊಂಡೆ",
+      "legoId": "S0247L03",
+      "target": "I thought",
+      "isGhost": false
+     },
+     {
+      "known": "ಇವತ್ತು",
+      "legoId": "S0007L01",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0361L02B03",
+   "set": {
+    "known_text": "ಅಲ್ಲಿ ಸುಮ್ಮನಿದ್ದ?",
+    "target_text": "was quiet there?",
+    "word_count": 15,
+    "lego_position": "start",
+    "known_audio_id": "ee362415-d7b7-4966-9fab-4bc8402e2c86",
+    "target1_audio_id": "4797fa17-a6e2-4596-92bb-4e17afdd518e",
+    "target2_audio_id": "1dbccb7e-6117-4cc3-949b-80e7acc7b8e7",
+    "decomposition": [
+     {
+      "known": "ಸುಮ್ಮನಿದ್ದ",
+      "legoId": "S0361L02",
+      "target": "was quiet",
+      "isGhost": false
+     },
+     {
+      "known": "ಅಲ್ಲಿ",
+      "legoId": "S0157L02",
+      "target": " there",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0361L02B02",
+   "set": {
+    "known_text": "ಇವತ್ತು ಸುಮ್ಮನಿದ್ದ?",
+    "target_text": "was quiet today?",
+    "word_count": 15,
+    "lego_position": "start",
+    "known_audio_id": "17a631ee-c174-405f-89ed-a60d6eabc674",
+    "target1_audio_id": "a7e5fce8-198c-49bf-8dc3-563ed3c43927",
+    "target2_audio_id": "aa15359a-44f5-4d30-8b74-456103f269f6",
+    "decomposition": [
+     {
+      "known": "ಸುಮ್ಮನಿದ್ದ",
+      "legoId": "S0361L02",
+      "target": "was quiet",
+      "isGhost": false
+     },
+     {
+      "known": "ಇವತ್ತು",
+      "legoId": "S0007L01",
+      "target": " today",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0444L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0375L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0374L02B04"
+  }
+ ]
+}

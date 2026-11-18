@@ -1,0 +1,349 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03B03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03B03",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "querían recaudar lo máximo posible para caridad",
+    "target1_audio_id": "2a144404-83c8-49a6-b726-2a6f097c383f",
+    "target2_audio_id": "f65df45d-b1df-4991-a08e-9b1416039b00",
+    "known_text": "they wanted to raise as much as possible for charity",
+    "known_audio_id": "360521e5-bb26-42c4-b73c-6e6fcf96c45f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03B03",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "querían recaudar lo máximo posible para una causa benéfica",
+    "target1_audio_id": "0bdf4f81-5dd5-4bc0-87f5-d1ceb1b6bb63",
+    "target2_audio_id": "44733167-6158-40d6-9c0c-a2f6d07c45f8",
+    "known_text": "they wanted to raise as much as possible for charity",
+    "known_audio_id": "360521e5-bb26-42c4-b73c-6e6fcf96c45f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03U01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03U01",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "queremos recaudar algo para caridad",
+    "target1_audio_id": "c958793a-cf30-4c5f-8805-c7850bc67358",
+    "target2_audio_id": "9d6dfbaf-d5fd-4565-a05e-426ed83ed7f3",
+    "known_text": "we want to raise something for charity",
+    "known_audio_id": "5a1389b2-f41b-47a9-aaa5-a4235ddb1a80",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03U01",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "queremos recaudar algo para una causa benéfica",
+    "target1_audio_id": "cbddebd6-6294-4ef4-9a72-99d45e95f3db",
+    "target2_audio_id": "b21aabeb-8374-490a-8826-bc90392901e1",
+    "known_text": "we want to raise something for charity",
+    "known_audio_id": "5a1389b2-f41b-47a9-aaa5-a4235ddb1a80",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03U02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03U02",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "es importante ayudar a la caridad",
+    "target1_audio_id": "eced96fd-8036-482c-87f6-bd5f66a5d278",
+    "target2_audio_id": "ba3408d8-8470-4cc6-b2e1-1e532deb1a4a",
+    "known_text": "it's important to help charity",
+    "known_audio_id": "b8670071-af73-41b0-b52c-bcc8ea6cd7f1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03U02",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "es importante ayudar a una causa benéfica",
+    "target1_audio_id": "1d8b6461-1197-4200-a084-22955147b8f1",
+    "target2_audio_id": "ca7063d5-48cc-4389-b672-c433c0551c3f",
+    "known_text": "it's important to help charity",
+    "known_audio_id": "b8670071-af73-41b0-b52c-bcc8ea6cd7f1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03U03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03U03",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "necesitamos recaudar más para caridad",
+    "target1_audio_id": "886a1fb3-e93e-4576-b34f-ada90e8a227c",
+    "target2_audio_id": "4f36d08b-7e07-407c-8094-c4e24f98612a",
+    "known_text": "we need to raise more for charity",
+    "known_audio_id": "2bf7179b-43e3-47bf-a563-0143d1bb0d58",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03U03",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "necesitamos recaudar más para una causa benéfica",
+    "target1_audio_id": "f3fde1ec-0345-47be-bb17-421ed3b0d514",
+    "target2_audio_id": "bc7b5bc3-2cad-43d2-a262-085010293dbd",
+    "known_text": "we need to raise more for charity",
+    "known_audio_id": "2bf7179b-43e3-47bf-a563-0143d1bb0d58",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03U04",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "podrían recaudar lo máximo posible para caridad",
+    "target1_audio_id": "812e514e-0936-438d-aee4-3180d7d3cdac",
+    "target2_audio_id": "8ed1fd79-85b7-4d05-adc2-40878171f227",
+    "known_text": "they could raise as much as possible for charity",
+    "known_audio_id": "74ba7116-6a7e-47d6-8f70-a3fce6ed5271",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03U04",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "podrían recaudar lo máximo posible para una causa benéfica",
+    "target1_audio_id": "d36eea91-675f-4847-8457-128186ded9c9",
+    "target2_audio_id": "07cf9ccb-7b55-4cdf-8fff-457d1202b1b5",
+    "known_text": "they could raise as much as possible for charity",
+    "known_audio_id": "74ba7116-6a7e-47d6-8f70-a3fce6ed5271",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0437L03U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0437L03U05",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "querían recaudar más para caridad",
+    "target1_audio_id": "fe65874f-92e2-4360-8065-34233bb8f1a4",
+    "target2_audio_id": "228c9491-c9c2-4ce1-a01d-c0350ffa36eb",
+    "known_text": "they wanted to raise more for charity",
+    "known_audio_id": "644db3df-a17c-427e-a6dc-3b86132fefe2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0437L03U05",
+    "seed_number": 437,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "querían recaudar más para una causa benéfica",
+    "target1_audio_id": "043f6c79-426d-4869-b519-55c31d4cf486",
+    "target2_audio_id": "dae182d3-1364-4d19-afef-8b8852301f9d",
+    "known_text": "they wanted to raise more for charity",
+    "known_audio_id": "644db3df-a17c-427e-a6dc-3b86132fefe2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02B01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02B01",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "encantador",
+    "target1_audio_id": "dee6de54-973a-4cf1-811f-a3e9e8de69ca",
+    "target2_audio_id": "a921c77e-fba2-4b6c-ba94-552d5e00ce0e",
+    "known_text": "lovely",
+    "known_audio_id": "fde1b72f-fed1-4c37-8dc3-f434d722bd31",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02B01",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "lindo",
+    "target1_audio_id": "d8895f8a-6fa7-45bb-ad71-fb64a8056553",
+    "target2_audio_id": "db91dec4-7e4d-4f26-ba09-4f8927b535ba",
+    "known_text": "lovely",
+    "known_audio_id": "fde1b72f-fed1-4c37-8dc3-f434d722bd31",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02B02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02B02",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ha sido encantador",
+    "target1_audio_id": "b437fc8d-a4d3-4712-bc79-1cdb9ee6ee56",
+    "target2_audio_id": "f6b813ea-4226-4c63-b8bb-33f1559604c5",
+    "known_text": "it's been lovely",
+    "known_audio_id": "a78e5d5c-eece-45be-be2c-41baa0b2332b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02B02",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ha sido lindo",
+    "target1_audio_id": "6ec75cee-f535-4d2d-9589-80e7cd0d021c",
+    "target2_audio_id": "c4c24b63-696d-4d31-8b6d-58d73d2299aa",
+    "known_text": "it's been lovely",
+    "known_audio_id": "a78e5d5c-eece-45be-be2c-41baa0b2332b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02B02",
+   "set": {
+    "target_text": "ha sido encantador",
+    "target1_audio_id": "b437fc8d-a4d3-4712-bc79-1cdb9ee6ee56",
+    "target2_audio_id": "f6b813ea-4226-4c63-b8bb-33f1559604c5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02B01",
+   "set": {
+    "target_text": "encantador",
+    "target1_audio_id": "dee6de54-973a-4cf1-811f-a3e9e8de69ca",
+    "target2_audio_id": "a921c77e-fba2-4b6c-ba94-552d5e00ce0e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U05",
+   "set": {
+    "target_text": "querían recaudar más para caridad",
+    "target1_audio_id": "fe65874f-92e2-4360-8065-34233bb8f1a4",
+    "target2_audio_id": "228c9491-c9c2-4ce1-a01d-c0350ffa36eb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U04",
+   "set": {
+    "target_text": "podrían recaudar lo máximo posible para caridad",
+    "target1_audio_id": "812e514e-0936-438d-aee4-3180d7d3cdac",
+    "target2_audio_id": "8ed1fd79-85b7-4d05-adc2-40878171f227"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U03",
+   "set": {
+    "target_text": "necesitamos recaudar más para caridad",
+    "target1_audio_id": "886a1fb3-e93e-4576-b34f-ada90e8a227c",
+    "target2_audio_id": "4f36d08b-7e07-407c-8094-c4e24f98612a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U02",
+   "set": {
+    "target_text": "es importante ayudar a la caridad",
+    "target1_audio_id": "eced96fd-8036-482c-87f6-bd5f66a5d278",
+    "target2_audio_id": "ba3408d8-8470-4cc6-b2e1-1e532deb1a4a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03U01",
+   "set": {
+    "target_text": "queremos recaudar algo para caridad",
+    "target1_audio_id": "c958793a-cf30-4c5f-8805-c7850bc67358",
+    "target2_audio_id": "9d6dfbaf-d5fd-4565-a05e-426ed83ed7f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0437L03B03",
+   "set": {
+    "target_text": "querían recaudar lo máximo posible para caridad",
+    "target1_audio_id": "2a144404-83c8-49a6-b726-2a6f097c383f",
+    "target2_audio_id": "f65df45d-b1df-4991-a08e-9b1416039b00"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

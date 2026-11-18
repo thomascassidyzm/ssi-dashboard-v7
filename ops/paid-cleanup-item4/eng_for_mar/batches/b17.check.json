@@ -1,0 +1,118 @@
+{
+ "course": "eng_for_mar",
+ "batch": "b17",
+ "seeds": [
+  151,
+  152,
+  153
+ ],
+ "counts": {
+  "insert": 1,
+  "update": 68,
+  "delete": 0
+ },
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [],
+ "checks": [
+  {
+   "lego": "S0151L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 8,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0151L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 6,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0152L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 8,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0152L02",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 8,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0152L03",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 8,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0152L04",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0153L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 8,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0153L02",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 8,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0153L03",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 0,
+   "accept_gap": null
+  }
+ ]
+}

@@ -1,0 +1,214 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L04U04",
+   "expect": {
+    "known_text": "could we have a bottle of red wine?",
+    "target_text": "¿podríamos tener una botella de vino tinto?"
+   },
+   "set": {
+    "known_text": "could we ask for a bottle of red wine?",
+    "target_text": "¿podríamos pedir una botella de vino tinto?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U01",
+   "expect": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿podríamos tener una botella de vino tinto, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for a bottle of red wine please?",
+    "target_text": "¿podríamos pedir una botella de vino tinto, por favor?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U02",
+   "expect": {
+    "known_text": "could we have a table please?",
+    "target_text": "¿podríamos tener una mesa, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for a table please?",
+    "target_text": "¿podríamos pedir una mesa, por favor?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U03",
+   "expect": {
+    "known_text": "could we have water please?",
+    "target_text": "¿podríamos tener agua, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for water please?",
+    "target_text": "¿podríamos pedir agua, por favor?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L03U05",
+   "expect": {
+    "known_text": "it's important to have red wine",
+    "target_text": "es importante tener vino tinto"
+   },
+   "set": {
+    "known_text": "it's important to ask for red wine",
+    "target_text": "es importante pedir vino tinto"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 55,
+   "expect": {
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "no disfruto despertarme cuando no dormí muy bien"
+   },
+   "set": {
+    "known_text": "I don't like waking up when I didn't sleep very well",
+    "target_text": "no me gusta despertarme cuando no dormí muy bien"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 414,
+   "expect": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿Podríamos tener una botella de vino tinto, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for a bottle of red wine please?",
+    "target_text": "¿Podríamos pedir una botella de vino tinto, por favor?"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 416,
+   "expect": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "quieren liderar el camino el año que viene"
+   },
+   "set": {
+    "known_text": "they want to lead the project next year",
+    "target_text": "quieren liderar el proyecto el año que viene"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 437,
+   "expect": {
+    "known_text": "they wanted to raise as much as possible for charity",
+    "target_text": "querían recaudar lo máximo posible para caridad"
+   },
+   "set": {
+    "target_text": "querían recaudar lo máximo posible para una causa benéfica"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 567,
+   "expect": {
+    "known_text": "It's been lovely spending time outdoors watching the children play",
+    "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar"
+   },
+   "set": {
+    "target_text": "ha sido lindo pasar tiempo al aire libre viendo a los niños jugar"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 115,
+   "expect": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "no siento como si estuviera listo para tener una conversación"
+   },
+   "set": {
+    "known_text": "I don't feel ready to have a conversation",
+    "target_text": "no me siento listo para tener una conversación"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 139,
+   "expect": {
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "lo siento que necesito irme tan temprano"
+   },
+   "set": {
+    "known_text": "I'm sorry, but I need to leave so early",
+    "target_text": "lo siento, pero necesito irme tan temprano"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 140,
+   "expect": {
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "target_text": "lo siento que no puedo ver lo que intentas mostrarme"
+   },
+   "set": {
+    "known_text": "I'm sorry, but I can't see what you're trying to show me",
+    "target_text": "lo siento, pero no puedo ver lo que intentas mostrarme"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 138,
+   "expect": {
+    "known_text": "this was where my friend wanted to meet us",
+    "target_text": "aquí es donde mi amigo quería reunirse con nosotros"
+   },
+   "set": {
+    "known_text": "this is where my friend wanted to meet us"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 419,
+   "expect": {
+    "known_text": "if they want people to like them",
+    "target_text": "si quieren que la gente les aprecie"
+   },
+   "set": {
+    "known_text": "if they want people to appreciate them"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0416L02",
+   "expect": {
+    "known_text": "the way",
+    "target_text": "el camino"
+   },
+   "set": {
+    "known_text": "the project",
+    "target_text": "el proyecto"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0437L03",
+   "expect": {
+    "known_text": "charity",
+    "target_text": "caridad"
+   },
+   "set": {
+    "target_text": "una causa benéfica"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0567L02",
+   "expect": {
+    "known_text": "lovely",
+    "target_text": "encantador"
+   },
+   "set": {
+    "target_text": "lindo"
+   }
+  }
+ ]
+}

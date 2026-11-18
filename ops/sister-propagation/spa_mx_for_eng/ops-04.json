@@ -1,0 +1,124 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U01",
+   "expect": {
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "¿podríamos tener una botella de vino tinto, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for a bottle of red wine please?",
+    "known_audio_id": "01080d35-d14b-4d31-8a3b-86ed0260916b",
+    "target_text": "¿podríamos pedir una botella de vino tinto, por favor?",
+    "target1_audio_id": "d375e29a-72c1-4364-8c6f-d026b98280f8",
+    "target2_audio_id": "75b45c76-41e4-4b37-9b0e-e9925c89fb6c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U02",
+   "expect": {
+    "known_text": "could we have a table please?",
+    "target_text": "¿podríamos tener una mesa, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for a table please?",
+    "known_audio_id": "06722532-16b1-4b59-918a-aa10a213f1c4",
+    "target_text": "¿podríamos pedir una mesa, por favor?",
+    "target1_audio_id": "8a2187cc-518b-4cf6-b330-be1f52768288",
+    "target2_audio_id": "86859417-e0d6-42c3-b102-7e917f7e3851"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L05U03",
+   "expect": {
+    "known_text": "could we have water please?",
+    "target_text": "¿podríamos tener agua, por favor?"
+   },
+   "set": {
+    "known_text": "could we ask for water please?",
+    "known_audio_id": "1e2e8c3e-0dd4-4c05-bbd6-e7711d8c87dd",
+    "target_text": "¿podríamos pedir agua, por favor?",
+    "target1_audio_id": "d6d841a6-7d70-4dbe-9adb-89601059be02",
+    "target2_audio_id": "74345bbb-e91a-4af6-aeeb-e9a7e83a6a7c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0414L03U05",
+   "expect": {
+    "known_text": "it's important to have red wine",
+    "target_text": "es importante tener vino tinto"
+   },
+   "set": {
+    "known_text": "it's important to ask for red wine",
+    "known_audio_id": "c55d94a3-7924-48c2-a3dd-8c7eb8d177bf",
+    "target_text": "es importante pedir vino tinto",
+    "target1_audio_id": "51e240c2-d579-4c87-8023-b39d62272482",
+    "target2_audio_id": "77de2c31-6e34-41bb-9597-09d639f945ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02B01",
+   "expect": {
+    "known_text": "the way",
+    "target_text": "el camino"
+   },
+   "set": {
+    "known_text": "the project",
+    "known_audio_id": "50b6afce-94e6-4f50-8c69-619463da8be6",
+    "target_text": "el proyecto",
+    "target1_audio_id": "23d70a1e-fbe9-4649-b35d-a5f55f3aee42",
+    "target2_audio_id": "2e13f198-c1d1-4069-84a9-8fb0473a0427"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02B02",
+   "expect": {
+    "known_text": "to lead the way",
+    "target_text": "liderar el camino"
+   },
+   "set": {
+    "known_text": "to lead the project",
+    "known_audio_id": "aba0b483-b7c2-4054-bf93-6cb25f7f5b64",
+    "target_text": "liderar el proyecto",
+    "target1_audio_id": "9a47170d-4532-49ee-8f73-7c68f9220836",
+    "target2_audio_id": "8019883e-4ed1-444f-962d-5552bf368635"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02B03",
+   "expect": {
+    "known_text": "they want to lead the way",
+    "target_text": "quieren liderar el camino"
+   },
+   "set": {
+    "known_text": "they want to lead the project",
+    "known_audio_id": "4dc726c3-4a69-4f8a-82c2-b858a4624f60",
+    "target_text": "quieren liderar el proyecto",
+    "target1_audio_id": "e6969296-c078-4099-b94a-1de34e144c20",
+    "target2_audio_id": "6512c17d-08ca-4a4f-9c35-8e9a3931e19c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0416L02U01",
+   "expect": {
+    "known_text": "she wants to lead the way",
+    "target_text": "ella quiere liderar el camino"
+   },
+   "set": {
+    "known_text": "she wants to lead the project",
+    "known_audio_id": "63b4297b-4608-4a9e-8eaf-f9e8a26eebb3",
+    "target_text": "ella quiere liderar el proyecto",
+    "target1_audio_id": "1df3be8f-7de8-4a57-b3e6-e6d61b52de1c",
+    "target2_audio_id": "aac2b8b7-d1b8-4909-891f-0594ae72d3a9"
+   }
+  }
+ ]
+}

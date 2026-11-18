@@ -1,0 +1,349 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02B03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02B03",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "era encantador",
+    "target1_audio_id": "23ad33cc-6c12-4858-be00-3ce34cc8507e",
+    "target2_audio_id": "905c2362-80cc-4c56-8880-e8440928660b",
+    "known_text": "it was lovely",
+    "known_audio_id": "e8cdda22-9331-41cf-a347-c2e93e2655b4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02B03",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "era lindo",
+    "target1_audio_id": "f15c5e07-6bd0-40bf-9093-34affb77bdd8",
+    "target2_audio_id": "ab5af0a6-db6a-4cc9-89a3-3b15d2d84228",
+    "known_text": "it was lovely",
+    "known_audio_id": "e8cdda22-9331-41cf-a347-c2e93e2655b4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02U01"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02U01",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "creo que ha sido encantador",
+    "target1_audio_id": "803a13f0-4ca1-4720-9d86-c13d55ae43e7",
+    "target2_audio_id": "7fe43ab8-e2e1-4936-aa22-89458eb55426",
+    "known_text": "I believe it's been lovely",
+    "known_audio_id": "c491d10c-7cb8-4c75-8b22-dd1b0f7a53aa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02U01",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "creo que ha sido lindo",
+    "target1_audio_id": "c93e17ad-6853-43cf-9af0-e5b3c01ce63a",
+    "target2_audio_id": "b9051694-caef-4577-8f6a-68a257c4a787",
+    "known_text": "I believe it's been lovely",
+    "known_audio_id": "c491d10c-7cb8-4c75-8b22-dd1b0f7a53aa",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02U02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02U02",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sí, ha sido encantador",
+    "target1_audio_id": "6a0401be-f8d4-4482-af58-ee690e361837",
+    "target2_audio_id": "7dcf45b2-5f4f-4507-b054-f16d879e52b4",
+    "known_text": "yes, it's been lovely",
+    "known_audio_id": "6cf36a02-a9de-4713-9baa-81e0a29fcffb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02U02",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sí, ha sido lindo",
+    "target1_audio_id": "9b17b9cb-8949-419a-b89a-203e7a73b312",
+    "target2_audio_id": "4a5ba1a1-3176-4b35-9f68-c8b9d4332fed",
+    "known_text": "yes, it's been lovely",
+    "known_audio_id": "6cf36a02-a9de-4713-9baa-81e0a29fcffb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02U03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02U03",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "no ha sido encantador",
+    "target1_audio_id": "8485cd72-1c03-4538-94f1-a202f4973dae",
+    "target2_audio_id": "11acb902-2161-4795-934b-b65a0df18d93",
+    "known_text": "it hasn't been lovely",
+    "known_audio_id": "1dc07149-7fc2-45bd-bd76-37f5aeba7dbc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02U03",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "no ha sido lindo",
+    "target1_audio_id": "a715d32f-c599-46d7-b3c2-e03dfcffd7f3",
+    "target2_audio_id": "ff017415-c702-46e7-925a-6fe48b72e2d8",
+    "known_text": "it hasn't been lovely",
+    "known_audio_id": "1dc07149-7fc2-45bd-bd76-37f5aeba7dbc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02U04"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02U04",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sí, era encantador",
+    "target1_audio_id": "281a10e1-ae03-4680-a79e-53b189963a3f",
+    "target2_audio_id": "39650714-43c3-4947-89bb-dae10e61d2a1",
+    "known_text": "yes, it was lovely",
+    "known_audio_id": "90e3cdfe-74f3-49aa-a5e0-befcc5fa02f9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02U04",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sí, era lindo",
+    "target1_audio_id": "d7645fb0-150a-4be7-b0ab-858272988f57",
+    "target2_audio_id": "fe528c61-adf8-4157-be73-169ff5fbb8df",
+    "known_text": "yes, it was lovely",
+    "known_audio_id": "90e3cdfe-74f3-49aa-a5e0-befcc5fa02f9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L02U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L02U05",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "es encantador",
+    "target1_audio_id": "1a8adf24-46cb-469b-a5a8-0101d1df75da",
+    "target2_audio_id": "6341610c-c318-42ec-807c-d7e888d230ab",
+    "known_text": "it's lovely",
+    "known_audio_id": "85db4fa4-2aa4-45cc-a82b-d4639b9375f5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L02U05",
+    "seed_number": 567,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "es lindo",
+    "target1_audio_id": "8297ab73-9e5b-4a86-b49c-149414c7f293",
+    "target2_audio_id": "31b7b0a9-c1a0-412d-ad0a-21fd946a25c5",
+    "known_text": "it's lovely",
+    "known_audio_id": "85db4fa4-2aa4-45cc-a82b-d4639b9375f5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L03B03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L03B03",
+    "seed_number": 567,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ha sido encantador pasar tiempo",
+    "target1_audio_id": "2e5cb31d-b75f-457f-b448-d86379d0a18c",
+    "target2_audio_id": "79f2350b-ac58-4cfa-91a8-c8653bfff937",
+    "known_text": "it's been lovely spending time",
+    "known_audio_id": "4fd1eb92-4cff-4b42-84b9-8ff12da97be3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L03B03",
+    "seed_number": 567,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ha sido lindo pasar tiempo",
+    "target1_audio_id": "abb63975-6b34-4a00-909d-c63b7b1ea879",
+    "target2_audio_id": "6c79e025-af73-496d-a886-cf3055bbf796",
+    "known_text": "it's been lovely spending time",
+    "known_audio_id": "4fd1eb92-4cff-4b42-84b9-8ff12da97be3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0567L04B03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0567L04B03",
+    "seed_number": 567,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "ha sido encantador pasar tiempo al aire libre",
+    "target1_audio_id": "eafc17c9-8190-402a-bd6b-1a0b8c051e85",
+    "target2_audio_id": "b44e58d7-7681-4851-acbf-b9b1ef11302b",
+    "known_text": "it's been lovely spending time outdoors",
+    "known_audio_id": "9d5965a6-9af3-4557-9b51-be62f7816e83",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0567L04B03",
+    "seed_number": 567,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "ha sido lindo pasar tiempo al aire libre",
+    "target1_audio_id": "79055522-5936-4d58-876a-18ef816fc9cd",
+    "target2_audio_id": "62ffb623-b82b-415d-a58f-ac6283b426fc",
+    "known_text": "it's been lovely spending time outdoors",
+    "known_audio_id": "9d5965a6-9af3-4557-9b51-be62f7816e83",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L04B03",
+   "set": {
+    "target_text": "ha sido encantador pasar tiempo al aire libre",
+    "target1_audio_id": "eafc17c9-8190-402a-bd6b-1a0b8c051e85",
+    "target2_audio_id": "b44e58d7-7681-4851-acbf-b9b1ef11302b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L03B03",
+   "set": {
+    "target_text": "ha sido encantador pasar tiempo",
+    "target1_audio_id": "2e5cb31d-b75f-457f-b448-d86379d0a18c",
+    "target2_audio_id": "79f2350b-ac58-4cfa-91a8-c8653bfff937"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02U05",
+   "set": {
+    "target_text": "es encantador",
+    "target1_audio_id": "1a8adf24-46cb-469b-a5a8-0101d1df75da",
+    "target2_audio_id": "6341610c-c318-42ec-807c-d7e888d230ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02U04",
+   "set": {
+    "target_text": "sí, era encantador",
+    "target1_audio_id": "281a10e1-ae03-4680-a79e-53b189963a3f",
+    "target2_audio_id": "39650714-43c3-4947-89bb-dae10e61d2a1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02U03",
+   "set": {
+    "target_text": "no ha sido encantador",
+    "target1_audio_id": "8485cd72-1c03-4538-94f1-a202f4973dae",
+    "target2_audio_id": "11acb902-2161-4795-934b-b65a0df18d93"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02U02",
+   "set": {
+    "target_text": "sí, ha sido encantador",
+    "target1_audio_id": "6a0401be-f8d4-4482-af58-ee690e361837",
+    "target2_audio_id": "7dcf45b2-5f4f-4507-b054-f16d879e52b4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02U01",
+   "set": {
+    "target_text": "creo que ha sido encantador",
+    "target1_audio_id": "803a13f0-4ca1-4720-9d86-c13d55ae43e7",
+    "target2_audio_id": "7fe43ab8-e2e1-4936-aa22-89458eb55426"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0567L02B03",
+   "set": {
+    "target_text": "era encantador",
+    "target1_audio_id": "23ad33cc-6c12-4858-be00-3ce34cc8507e",
+    "target2_audio_id": "905c2362-80cc-4c56-8880-e8440928660b"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

@@ -1,0 +1,108 @@
+{
+ "course": "eng_for_mar",
+ "batch": "b01b",
+ "seeds": [
+  41,
+  42,
+  43,
+  44
+ ],
+ "counts": {
+  "insert": 2,
+  "update": 38,
+  "delete": 0
+ },
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [],
+ "checks": [
+  {
+   "lego": "S0041L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 1,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0042L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0042L02",
+   "is_new": true,
+   "before": "USE: need 5+, got 4",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0042L03",
+   "is_new": true,
+   "before": "USE: need 5+, got 4",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 3,
+   "inserted": 1,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0043L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 5,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0044L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0044L02",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 3,
+   "inserted": 0,
+   "accept_gap": null
+  },
+  {
+   "lego": "S0044L03",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 7,
+   "inserted": 0,
+   "accept_gap": null
+  }
+ ]
+}

@@ -1,0 +1,202 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0010L02U04",
+  "expect": {
+   "known_text": "今日話す練習ができるかどうかわかりません",
+   "target_text": "我不确定我能不能今天练习说话"
+  },
+  "set": {
+   "target_text": "我不确定我今天能不能练习说话"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0010L02U04",
+  "slot": "target1",
+  "audio_id": "e4d9d7d9-1336-4c94-810d-1cea377bac24"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0010L02U04",
+  "slot": "target2",
+  "audio_id": "c8855d50-159c-49f0-b43c-1375b7c6118d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0015L01B03",
+  "expect": {
+   "known_text": "そして明日練習するつもりです",
+   "target_text": "而且我要明天练习"
+  },
+  "set": {
+   "target_text": "而且我明天要练习"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0015L01B03",
+  "slot": "target1",
+  "audio_id": "5f2e89e4-951f-40cd-8669-c518af126df6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0015L01B03",
+  "slot": "target2",
+  "audio_id": "a6b37ad4-d6fe-426d-8ef5-2eee9ecdd29b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0016L03U04",
+  "expect": {
+   "known_text": "明日戻れますか",
+   "target_text": "你能明天回来吗"
+  },
+  "set": {
+   "target_text": "你明天能回来吗"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0016L03U04",
+  "slot": "target1",
+  "audio_id": "8a76efaa-4af2-4d3c-a8e4-17eb25e7f8a2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0016L03U04",
+  "slot": "target2",
+  "audio_id": "319f6b0e-eb6c-4938-b160-bcb3197b0a33"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0018L03U02",
+  "expect": {
+   "known_text": "今晩6時に戻れますか",
+   "target_text": "你能今天晚上六点回来吗"
+  },
+  "set": {
+   "target_text": "你今天晚上六点能回来吗"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0018L03U02",
+  "slot": "target1",
+  "audio_id": "45da936b-60d4-416c-ab68-4edc9725f0d2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0018L03U02",
+  "slot": "target2",
+  "audio_id": "b95bfb18-9030-43d2-8358-6e44945799fa"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0018L04U03",
+  "expect": {
+   "known_text": "今晩6時に会えますか",
+   "target_text": "你能今天晚上六点和我见面吗"
+  },
+  "set": {
+   "target_text": "你今天晚上六点能和我见面吗"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0018L04U03",
+  "slot": "target1",
+  "audio_id": "07bb585a-a1d6-42e9-a790-69dae83bf975"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0018L04U03",
+  "slot": "target2",
+  "audio_id": "1899eeaf-26fb-4031-8afe-db0c1171115f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0044L03U04",
+  "expect": {
+   "known_text": "彼は今日彼女の名前を見つけ出す必要がある",
+   "target_text": "他需要今天找出她的名字"
+  },
+  "set": {
+   "target_text": "他今天需要找出她的名字"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0044L03U04",
+  "slot": "target1",
+  "audio_id": "64baeed2-4e5e-4857-b6de-d65ff733b8c8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0044L03U04",
+  "slot": "target2",
+  "audio_id": "a35115c5-bb12-4bfe-9569-83ed24d2dd49"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0050L01U03",
+  "expect": {
+   "known_text": "彼は今日終わらせる必要がある",
+   "target_text": "他需要今天完成"
+  },
+  "set": {
+   "target_text": "他今天需要完成"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0050L01U03",
+  "slot": "target1",
+  "audio_id": "dd906b7b-e69c-4190-8bb4-28558d9d3dc6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0050L01U03",
+  "slot": "target2",
+  "audio_id": "401261d1-0fb5-4f7f-a411-95e5d8e36cc2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "zho_for_jpn:S0154L01U03",
+  "expect": {
+   "known_text": "もちろん土曜日の夜に会えます",
+   "target_text": "当然我能星期六晚上见面"
+  },
+  "set": {
+   "target_text": "当然我星期六晚上能见面"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0154L01U03",
+  "slot": "target1",
+  "audio_id": "9c6db40b-70fc-42a7-afaa-3020897af2f3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "zho_for_jpn:S0154L01U03",
+  "slot": "target2",
+  "audio_id": "72525ad0-350c-4672-9c7e-018fe950f142"
+ }
+]

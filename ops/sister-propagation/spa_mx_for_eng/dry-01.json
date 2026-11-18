@@ -1,0 +1,365 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L01B02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L01B02",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I enjoy waking up",
+    "known_audio_id": "ef44b5bf-bf9b-4635-b5f4-e3e293f054ea",
+    "target_text": "disfruto despertarme",
+    "target1_audio_id": "7fd4bd9f-60c4-431b-a079-3f60a8fcbe22",
+    "target2_audio_id": "773e0544-fd23-42cd-95cb-fdac5d6b2756",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L01B02",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I like waking up",
+    "known_audio_id": "9de54fca-d0df-4128-98d0-5ce0dc437769",
+    "target_text": "me gusta despertarme",
+    "target1_audio_id": "0ec85a51-8f8f-4c42-a9ae-fcaa9dc984b3",
+    "target2_audio_id": "bd939dc5-fc92-4dbd-99fc-d2c6cbace894",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L01B03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up",
+    "known_audio_id": "13b9d177-ac65-4f1d-bb02-91368248acff",
+    "target_text": "no disfruto despertarme",
+    "target1_audio_id": "adc9dc43-bcc7-4ab2-8785-0189ce808db7",
+    "target2_audio_id": "85f0ec82-5c95-4403-97fa-db213e2d06f3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up",
+    "known_audio_id": "5581c56a-6c9d-4776-9dc7-c7fbfbfdfb4f",
+    "target_text": "no me gusta despertarme",
+    "target1_audio_id": "b3eeb487-7fd5-424b-86b8-b78535ab63d3",
+    "target2_audio_id": "00fdcc34-a401-4741-b9e5-525cfdc35055",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L01U02"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L01U02",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up this morning",
+    "known_audio_id": "d0fea193-8ac7-401a-b725-b66808f55011",
+    "target_text": "no disfruto despertarme esta mañana",
+    "target1_audio_id": "128a6830-bd4b-4b90-9830-d0771d669cd0",
+    "target2_audio_id": "e5b440b1-2b4a-48ea-8e15-62cef81e7388",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L01U02",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up this morning",
+    "known_audio_id": "38a80170-f7b1-4f58-af35-de66a26ab876",
+    "target_text": "no me gusta despertarme esta mañana",
+    "target1_audio_id": "2ff7fd83-4aa5-41be-af92-d75f96dc22b5",
+    "target2_audio_id": "06b3db90-371e-45b9-9973-247326cd2832",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L01U05"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L01U05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up when I don't feel well",
+    "known_audio_id": "c91f2511-253f-4ca4-8b82-d25569855f37",
+    "target_text": "no disfruto despertarme cuando no me siento bien",
+    "target1_audio_id": "d7220479-8818-4c84-a2c5-f54066868e88",
+    "target2_audio_id": "708caad0-2a1a-4bd0-a8f4-9767631419d1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L01U05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up when I don't feel well",
+    "known_audio_id": "2e263efb-d488-4dba-b5fb-150f5a32a337",
+    "target_text": "no me gusta despertarme cuando no me siento bien",
+    "target1_audio_id": "b6750dd1-1cac-43c8-b114-0c94bad77d47",
+    "target2_audio_id": "dbe8b506-ddb5-4770-ad34-3522b20c441e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L01U06"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L01U06",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up when I'm a little tired",
+    "known_audio_id": "c484969f-df35-4435-8f0b-637614b43760",
+    "target_text": "no disfruto despertarme cuando estoy un poco cansado",
+    "target1_audio_id": "eb721cfb-6d16-4072-84c5-80688cb53262",
+    "target2_audio_id": "51c78f80-7840-40f0-a2c4-8feb13bdab11",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L01U06",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up when I'm a little tired",
+    "known_audio_id": "c35f37f6-72b0-4415-b067-0f4480a12565",
+    "target_text": "no me gusta despertarme cuando estoy un poco cansado",
+    "target1_audio_id": "9dd91e93-c7ff-4f5d-a3c7-8b2c3cefd58c",
+    "target2_audio_id": "3c90e16a-c78b-4e7f-a1d4-1d0de29c169f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L01U07"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L01U07",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up when there are other people here",
+    "known_audio_id": "aecdbad2-ef85-4b97-a31e-c55bc2e90af2",
+    "target_text": "no disfruto despertarme cuando hay otras personas aquí",
+    "target1_audio_id": "8e0ac44a-d7b6-49fc-94e1-ceedc1edd4d1",
+    "target2_audio_id": "e118512a-4b4e-4bf8-9d7a-aca4f1caa290",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L01U07",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up when there are other people here",
+    "known_audio_id": "a10e1a7d-2a58-4a2e-b283-868dad558bcc",
+    "target_text": "no me gusta despertarme cuando hay otras personas aquí",
+    "target1_audio_id": "e8b6c151-e2a6-47e9-b61e-3ea4909813da",
+    "target2_audio_id": "65756f8b-03a5-4590-84f1-67fb14f7ba84",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L01U08"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L01U08",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I enjoy waking up and speaking Spanish as often as possible",
+    "known_audio_id": "c8ad62cc-aa5c-4e3a-a5e1-ab38f60a246c",
+    "target_text": "disfruto despertarme y hablar español lo más seguido posible",
+    "target1_audio_id": "ec41248f-7dc0-45c2-8ff8-ce9310cbd494",
+    "target2_audio_id": "f4f5fc2f-377c-433e-9553-cc7b6a0c39c6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L01U08",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I like waking up and speaking Spanish as often as possible",
+    "known_audio_id": "62a04d1f-52b1-4aba-9c7c-3461b4bc7562",
+    "target_text": "me gusta despertarme y hablar español lo más seguido posible",
+    "target1_audio_id": "f2e0af1f-e544-418c-b02e-0f556d835c8c",
+    "target2_audio_id": "c398de2f-f33c-457c-bcc5-8e3000159565",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_mx_for_eng",
+    "id": "spa_mx_for_eng:S0055L02U03"
+   },
+   "before": {
+    "id": "spa_mx_for_eng:S0055L02U03",
+    "seed_number": 55,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "known_audio_id": "0dbeb505-4b9a-4838-820d-5a632f007676",
+    "target_text": "no disfruto despertarme cuando no dormí muy bien",
+    "target1_audio_id": "9fd25c70-8f22-45a5-aa46-32c98ce93495",
+    "target2_audio_id": "5b81f993-1f92-453d-bd56-b4a26ce20fbf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_mx_for_eng:S0055L02U03",
+    "seed_number": 55,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't like waking up when I didn't sleep very well",
+    "known_audio_id": "5720d4ef-4a1c-47dd-97ae-b942a50a9361",
+    "target_text": "no me gusta despertarme cuando no dormí muy bien",
+    "target1_audio_id": "89c546dc-7370-467b-a15b-9dd45026c852",
+    "target2_audio_id": "7ec04325-5761-4906-9a33-586cca58d516",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L02U03",
+   "set": {
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "no disfruto despertarme cuando no dormí muy bien",
+    "known_audio_id": "0dbeb505-4b9a-4838-820d-5a632f007676",
+    "target1_audio_id": "9fd25c70-8f22-45a5-aa46-32c98ce93495",
+    "target2_audio_id": "5b81f993-1f92-453d-bd56-b4a26ce20fbf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L01U08",
+   "set": {
+    "known_text": "I enjoy waking up and speaking Spanish as often as possible",
+    "target_text": "disfruto despertarme y hablar español lo más seguido posible",
+    "known_audio_id": "c8ad62cc-aa5c-4e3a-a5e1-ab38f60a246c",
+    "target1_audio_id": "ec41248f-7dc0-45c2-8ff8-ce9310cbd494",
+    "target2_audio_id": "f4f5fc2f-377c-433e-9553-cc7b6a0c39c6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L01U07",
+   "set": {
+    "known_text": "I don't enjoy waking up when there are other people here",
+    "target_text": "no disfruto despertarme cuando hay otras personas aquí",
+    "known_audio_id": "aecdbad2-ef85-4b97-a31e-c55bc2e90af2",
+    "target1_audio_id": "8e0ac44a-d7b6-49fc-94e1-ceedc1edd4d1",
+    "target2_audio_id": "e118512a-4b4e-4bf8-9d7a-aca4f1caa290"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L01U06",
+   "set": {
+    "known_text": "I don't enjoy waking up when I'm a little tired",
+    "target_text": "no disfruto despertarme cuando estoy un poco cansado",
+    "known_audio_id": "c484969f-df35-4435-8f0b-637614b43760",
+    "target1_audio_id": "eb721cfb-6d16-4072-84c5-80688cb53262",
+    "target2_audio_id": "51c78f80-7840-40f0-a2c4-8feb13bdab11"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L01U05",
+   "set": {
+    "known_text": "I don't enjoy waking up when I don't feel well",
+    "target_text": "no disfruto despertarme cuando no me siento bien",
+    "known_audio_id": "c91f2511-253f-4ca4-8b82-d25569855f37",
+    "target1_audio_id": "d7220479-8818-4c84-a2c5-f54066868e88",
+    "target2_audio_id": "708caad0-2a1a-4bd0-a8f4-9767631419d1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L01U02",
+   "set": {
+    "known_text": "I don't enjoy waking up this morning",
+    "target_text": "no disfruto despertarme esta mañana",
+    "known_audio_id": "d0fea193-8ac7-401a-b725-b66808f55011",
+    "target1_audio_id": "128a6830-bd4b-4b90-9830-d0771d669cd0",
+    "target2_audio_id": "e5b440b1-2b4a-48ea-8e15-62cef81e7388"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L01B03",
+   "set": {
+    "known_text": "I don't enjoy waking up",
+    "target_text": "no disfruto despertarme",
+    "known_audio_id": "13b9d177-ac65-4f1d-bb02-91368248acff",
+    "target1_audio_id": "adc9dc43-bcc7-4ab2-8785-0189ce808db7",
+    "target2_audio_id": "85f0ec82-5c95-4403-97fa-db213e2d06f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0055L01B02",
+   "set": {
+    "known_text": "I enjoy waking up",
+    "target_text": "disfruto despertarme",
+    "known_audio_id": "ef44b5bf-bf9b-4635-b5f4-e3e293f054ea",
+    "target1_audio_id": "7fd4bd9f-60c4-431b-a079-3f60a8fcbe22",
+    "target2_audio_id": "773e0544-fd23-42cd-95cb-fdac5d6b2756"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

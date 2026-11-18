@@ -1,0 +1,64 @@
+{
+ "seed": 58,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "काही शब्द समजणे",
+     "understand a few words"
+    ],
+    "U01": [
+     "तुम्हाला समजतं का?",
+     "do you understand?"
+    ],
+    "U03": [
+     "मला काही शब्द समजतात",
+     "I understand a few words"
+    ],
+    "U04": [
+     "मला थोडं इंग्रजी समजतं",
+     "I understand a little English"
+    ],
+    "U05": [
+     "मला सगळं समजत नाही",
+     "I don't understand everything"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "इंग्रजी समजणे",
+     "understand English"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "पुरेसे शब्द",
+     "enough words"
+    ],
+    "B03": [
+     "पुरेसा वेळ",
+     "enough time"
+    ],
+    "U04": [
+     "माझ्याकडे पुरेसा वेळ नाही",
+     "I don't have enough time"
+    ],
+    "U05": [
+     "मला पुरेसं इंग्रजी समजतं",
+     "I understand enough English"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "पुरेसं इंग्रजी",
+     "enough English"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
