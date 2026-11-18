@@ -73,15 +73,11 @@
   "delete": 0
  },
  "recorded_today_by_others": [],
- "errors": [
-  "S0064L01B01: duplicate: \"મને અંગ્રેજી શીખવું ગમે છે | I like learning English\" already exists at S0064L01U01 (Kai's rule)",
-  "S0064L01: after the edit: 1 duplicate phrase(s) within this LEGO: \"I like learning English\""
- ],
+ "errors": [],
  "warnings": [
   "S0001L03B02: known side untaught: બોલવું in \"અંગ્રેજી બોલવું\" (or list them in plan.known_ok[\"S0001L03B02\"] = \"words|why\")",
   "S0001L05B02: known side untaught: બોલવું in \"હવે બોલવું\" (or list them in plan.known_ok[\"S0001L05B02\"] = \"words|why\")",
   "S0042L02: not this item (USE rows are not touched by item 20): USE: need 5+, got 4",
-  "S0064L01U01: duplicate of S0064L01B01 in the basket: \"I like learning English\"",
   "S0068L02: not this item (USE rows are not touched by item 20): USE: need 5+, got 4"
  ],
  "checks": [
@@ -1860,7 +1856,7 @@
    "lego": "S0064L01",
    "is_new": true,
    "before": "BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
-   "after": "1 duplicate phrase(s) within this LEGO: \"I like learning English\"",
+   "after": "ok",
    "real_builds_after": 3,
    "deleted": 0,
    "rewritten": 1,
