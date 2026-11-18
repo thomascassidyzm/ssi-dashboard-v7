@@ -206,7 +206,10 @@ def main():
         # --- checks on the LEGO itself
         chk = {}
         sk_after = d.get('seed_known') or seed_known_after.get(s['n']) or s['known']
-        if SPACELESS.search(norm(nk)):  # Japanese known: the gloss must be the seed's own chunk (inflection tolerated)
+        kin = (lambda ph: has(ph, d['kmatch'])) if d.get('kmatch') else (lambda ph: words_in(ph, nk))  # kmatch: the known-side key a row must carry (Japanese stand-in frames: つもり, たい)
+        if d.get('kmatch'):
+            miss = [] if kin(sk_after) else [nk]
+        elif SPACELESS.search(norm(nk)):  # Japanese known: the gloss must be the seed's own chunk (inflection tolerated)
             miss = [] if words_in(sk_after, nk) else [nk]
         else:
             miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
@@ -232,11 +235,11 @@ def main():
             if p['type'] == 'component':
                 act = act or 'component'
             if act is None:
-                if has(p['target'], nt) and words_in(p['known'], nk):
+                if has(p['target'], nt) and kin(p['known']):
                     act = 'keep'
                 elif has(p['target'], nt) and l['known'] != nk and words_in(p['known'], l['known']):
                     newk = re.sub(r'(?i)\b' + re.escape(l['known']) + r'\b', nk, p['known'], count=1)
-                    if newk != p['known'] and words_in(newk, nk):
+                    if newk != p['known'] and kin(newk):
                         act = [newk, p['target']]
                         autos.append(f'{lid} {sid}: {p["known"]} -> {newk}')
                     else:
@@ -252,7 +255,7 @@ def main():
                 if act[1] != p['target']: setp['target_text'] = act[1]
                 if setp:
                     ops.append({'op': 'phrase.update', 'phrase_id': p['id'], 'set': setp, 'expect': {'known_text': p['known'], 'target_text': p['target']}})
-                if not (has(act[1], nt) and words_in(act[0], nk)):
+                if p['type'] != 'component' and not (has(act[1], nt) and kin(act[0])):
                     problems.append(f'{lid} {sid} rebuilt row does not contain the LEGO: {act}')
                 kept[p['type']] += 1
             elif act == 'del':
@@ -279,7 +282,7 @@ def main():
             ops.append({'op': 'phrase.insert', 'row': row})
             adds.append(row)
             kept['build' if R == 'B' else 'use'] += 1
-            if not (has(t, nt) and words_in(k, nk)):
+            if not (has(t, nt) and kin(k)):
                 problems.append(f'{lid} add {pid} does not contain the LEGO: {k} | {t}')
         rec['basket'] = bas
         rec['_rows_after'] = [(p['role'], p['action'][0] if isinstance(p['action'], list) else p['before'][0],
