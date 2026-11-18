@@ -1,0 +1,851 @@
+{
+ "event_id": "6232fb29-df7a-40a7-b7c9-158b2ee35c6c",
+ "undo_file": "2026-11-18T15-29-25-072Z-6232fb29-df7a-40a7-b7c9-158b2ee35c6c.json",
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0524L01U05",
+    "seed_number": 524,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I'll still call you back",
+    "target_text": "eu ainda te ligo de volta",
+    "word_count": 25,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:49.370Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:49.410Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": null,
+    "known_audio_id": "caf0dea7-d34d-415c-b6d7-942c37ac6b16",
+    "target1_audio_id": "dc951002-b3c1-42d1-9f35-dc077ef2c6a1",
+    "target2_audio_id": "5cdb8d0e-38b7-49f1-8781-4749d9c15067",
+    "qa_checked": null,
+    "target1_duration_ms": 3120,
+    "target2_duration_ms": 3336,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0524L01U04",
+    "seed_number": 524,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "yes, that's true, I'll call you back",
+    "target_text": "sim, isso é verdade, eu te ligo de volta",
+    "word_count": 40,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 12,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:49.370Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:49.410Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "6b0f9c7c-5aea-4e05-88f2-85575d3914f5",
+    "target1_audio_id": "6499b5e2-f588-4f19-a97c-2e9b031c0274",
+    "target2_audio_id": "84cb48e5-8cfa-4162-b147-61438bc85ab4",
+    "qa_checked": null,
+    "target1_duration_ms": 4848,
+    "target2_duration_ms": 4968,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0524L01U03",
+    "seed_number": 524,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I'm sure I'll call you back",
+    "target_text": "tenho certeza, eu te ligo de volta",
+    "word_count": 34,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 9,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:49.370Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:49.410Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "669a4ec3-e19e-48d8-aff0-9c30a0c33216",
+    "target1_audio_id": "b4843ac1-ceb6-41a7-834b-4dfe0b89733e",
+    "target2_audio_id": "17890731-a6f7-4182-a7d4-ccd933ce8ecc",
+    "qa_checked": null,
+    "target1_duration_ms": 4032,
+    "target2_duration_ms": 4176,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0523L02U05",
+    "seed_number": 523,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "I'm sure, an excuse",
+    "target_text": "tenho certeza, uma desculpa",
+    "word_count": 27,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:31.211Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:31.248Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "00fbdda8-758a-46ac-8b29-5bd3c73e7761",
+    "target1_audio_id": "c634ba0d-26f6-4c10-9645-98923809abae",
+    "target2_audio_id": "3c65d944-8b9d-4b15-9f8b-1f912478e6b6",
+    "qa_checked": null,
+    "target1_duration_ms": 3696,
+    "target2_duration_ms": 3624,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0523L02U04",
+    "seed_number": 523,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "yes, instead of giving an excuse",
+    "target_text": "sim, em vez de dar uma desculpa",
+    "word_count": 31,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 9,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:31.211Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:31.248Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "6b31f98f-f8f0-48b3-98d9-a884205d7a00",
+    "target1_audio_id": "0bff1657-8009-4fa7-bdeb-8d308f9e64ee",
+    "target2_audio_id": "72366355-f117-4b05-aa9b-cc2410bec31c",
+    "qa_checked": null,
+    "target1_duration_ms": 3840,
+    "target2_duration_ms": 3912,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0522L03U05",
+    "seed_number": 522,
+    "lego_index": 3,
+    "position": 10,
+    "known_text": "I'm sure, to tell the truth",
+    "target_text": "tenho certeza, dizer a verdade",
+    "word_count": 30,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:01.139Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:01.181Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "d4c321a0-bf35-4339-b510-ebd1b7a30e1f",
+    "target1_audio_id": "cb867549-2caa-4d5d-b6bb-8f2be7ad72f8",
+    "target2_audio_id": "9da2b406-1337-43fc-934c-c74d88fab969",
+    "qa_checked": null,
+    "target1_duration_ms": 3840,
+    "target2_duration_ms": 3984,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0522L03U04",
+    "seed_number": 522,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "yes, let's agree that it was stupid to tell the truth",
+    "target_text": "sim, vamos concordar que foi estúpido dizer a verdade",
+    "word_count": 53,
+    "lego_count": 11,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 14,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:01.139Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:01.181Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "b04f9cf0-83ba-4f8b-ae7d-c9758fbf2687",
+    "target1_audio_id": "c73adcca-af99-464d-b588-2a55ab155bae",
+    "target2_audio_id": "fbc44851-c286-422e-a659-80ee160bbf1c",
+    "qa_checked": null,
+    "target1_duration_ms": 5208,
+    "target2_duration_ms": 5424,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0522L03U03",
+    "seed_number": 522,
+    "lego_index": 3,
+    "position": 8,
+    "known_text": "that's true, to tell the truth",
+    "target_text": "isso é verdade, dizer a verdade",
+    "word_count": 31,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 9,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:01.139Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:01.181Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "8b259bf7-9d55-4cf3-94e7-1e01850449d7",
+    "target1_audio_id": "be33d0db-dc0f-4d71-a49e-38745882242e",
+    "target2_audio_id": "ae4547c2-d785-47fc-a327-d767ca39b659",
+    "qa_checked": null,
+    "target1_duration_ms": 3840,
+    "target2_duration_ms": 4104,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0522L03U02",
+    "seed_number": 522,
+    "lego_index": 3,
+    "position": 7,
+    "known_text": "no, to tell the truth",
+    "target_text": "não, dizer a verdade",
+    "word_count": 20,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:14:01.139Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:14:01.181Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "2aab9415-b4b3-4b58-a17b-7d87e9f7db3a",
+    "target1_audio_id": "d99be80c-c9c0-45c1-a9c3-c2f1e451915c",
+    "target2_audio_id": "43cf484a-2dc3-40b7-9c69-ca8937d8680f",
+    "qa_checked": null,
+    "target1_duration_ms": 3312,
+    "target2_duration_ms": 3312,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L02U05",
+   "set": {
+    "known_text": "I'm sure, in three or four minutes",
+    "target_text": "tenho certeza, em três ou quatro minutos",
+    "word_count": 40,
+    "known_audio_id": "26f4d3b9-0ba7-4ed6-869c-10684fd9e400",
+    "target1_audio_id": "fd00d341-387c-499a-a2c5-cdf2cd414388",
+    "target2_audio_id": "ab20ae17-4cce-4e67-923d-c1ccffdc511d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L02U04",
+   "set": {
+    "known_text": "yes, I'll call you back in three or four minutes",
+    "target_text": "sim, eu te ligo de volta em três ou quatro minutos",
+    "word_count": 50,
+    "known_audio_id": "bfdb7d8c-ae5c-4d92-8489-72f62c4ed103",
+    "target1_audio_id": "783d0694-f058-4ad7-ba30-e2f9c20a810a",
+    "target2_audio_id": "9ccfed94-3785-4e5a-a7c6-7f1d0dbbf806"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L02U03",
+   "set": {
+    "known_text": "that's true, in three or four minutes",
+    "target_text": "isso é verdade, em três ou quatro minutos",
+    "word_count": 41,
+    "known_audio_id": "ec6462ee-c3dc-42b3-9df7-2796f8357f19",
+    "target1_audio_id": "3febf93a-a23c-4ce8-926a-343862b15969",
+    "target2_audio_id": "ea4b6df4-a3bc-4250-9055-c55cde54a998"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L02U02",
+   "set": {
+    "known_text": "no, in three or four minutes",
+    "target_text": "não, em três ou quatro minutos",
+    "word_count": 30,
+    "lego_position": "middle",
+    "known_audio_id": "01c51751-043d-49fc-bde6-403a3acb6f7f",
+    "target1_audio_id": "91addd41-c4cf-4c67-8124-865968c5adf6",
+    "target2_audio_id": "fc24f10c-cb47-4a30-8066-e53e2f692b69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L02B03",
+   "set": {
+    "known_text": "yes, in three or four minutes",
+    "target_text": "sim, em três ou quatro minutos",
+    "word_count": 30,
+    "known_audio_id": "34a2061c-733a-4eeb-bfd4-4aeeb323b945",
+    "target1_audio_id": "0c12ab64-8aae-47df-9212-d88fd646fae0",
+    "target2_audio_id": "c84873aa-e7bc-4f1b-b74f-62ca155bd526"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L02B02",
+   "set": {
+    "known_text": "I'll call you back in three or four minutes now",
+    "target_text": "eu te ligo de volta em três ou quatro minutos agora",
+    "word_count": 51,
+    "known_audio_id": "def4c0ce-e8a4-4bbc-9a5a-7884cefe0b4b",
+    "target1_audio_id": "e0149dff-be60-490a-a9df-5ae4c6133cdf",
+    "target2_audio_id": "1d1a9bd7-81a5-40cf-9cee-071054a3768e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L01U02",
+   "set": {
+    "known_text": "that's true, I'll call you back",
+    "target_text": "isso é verdade, eu te ligo de volta",
+    "word_count": 35,
+    "lego_position": "end",
+    "known_audio_id": "872ad2cf-e196-47cd-8f33-3310e0c7cd51",
+    "target1_audio_id": "a0c17249-5e15-47af-b116-1d2a15c41ff3",
+    "target2_audio_id": "1cc35856-b226-4a3e-b10a-e5a85e9b3b7d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L01U01",
+   "set": {
+    "known_text": "no, I'll call you back",
+    "target_text": "não, eu te ligo de volta",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "4cc9e2c3-8f67-41c7-8de0-8abb775ac0cc",
+    "target1_audio_id": "70216e87-9af2-451d-9b68-9ed1c2f9bf80",
+    "target2_audio_id": "4a772a21-e24a-4e80-8c7c-197c0a218590"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L01B03",
+   "set": {
+    "known_text": "yes, I'll call you back",
+    "target_text": "sim, eu te ligo de volta",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "74bb8925-9616-44f8-805e-f7e462583bc1",
+    "target1_audio_id": "34a56005-3213-437d-b575-2baa6f4cf65a",
+    "target2_audio_id": "18e2a67d-dca2-40ac-9b50-fa1259decd89"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0524L01B02",
+   "set": {
+    "known_text": "I'll call you back now",
+    "target_text": "eu te ligo de volta agora",
+    "word_count": 25,
+    "known_audio_id": "fed58810-7d29-40bf-8f73-de42dcd30e9d",
+    "target1_audio_id": "a7fdfa28-b9bf-4b26-bb6e-7dc2b4aa81f4",
+    "target2_audio_id": "04b4f2bc-02f2-4f8f-8213-4843d7d1fb59"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L02U03",
+   "set": {
+    "known_text": "that's true, an excuse",
+    "target_text": "isso é verdade, uma desculpa",
+    "word_count": 28,
+    "known_audio_id": "e6d279b6-40f3-4a70-a59f-fbf2fed283a7",
+    "target1_audio_id": "7a902aee-c95b-4215-aa67-4ef33e1a2a97",
+    "target2_audio_id": "f1e09925-6edb-458a-b913-dcad58b41975"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L02U02",
+   "set": {
+    "known_text": "no, an excuse",
+    "target_text": "não, uma desculpa",
+    "word_count": 17,
+    "known_audio_id": "a691d35e-af6f-4c81-a7fd-1fb7a937fa89",
+    "target1_audio_id": "73b79184-ec55-473e-bfe5-27da1973f069",
+    "target2_audio_id": "4f3d7fbe-2840-48da-8f36-600b5205ae46"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L02B03",
+   "set": {
+    "known_text": "yes, an excuse",
+    "target_text": "sim, uma desculpa",
+    "word_count": 17,
+    "known_audio_id": "574a9efc-5d7f-408e-a263-5cfb0a9a67c0",
+    "target1_audio_id": "337cd0f1-544c-42dd-9dee-b4b024831ae7",
+    "target2_audio_id": "e5e048a4-f02e-498b-b795-5b3fa648fe30"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L02B02",
+   "set": {
+    "known_text": "instead of still giving an excuse",
+    "target_text": "em vez de ainda dar uma desculpa",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "2a5a7ce7-a68c-42d1-b2bd-7a4d777a79aa",
+    "target1_audio_id": "7f950416-8ccd-4660-b2d8-f5b28d233745",
+    "target2_audio_id": "3bcadef9-09ee-4f2d-b897-a76a5603e87d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L01U05",
+   "set": {
+    "known_text": "instead of still giving",
+    "target_text": "em vez de ainda dar",
+    "word_count": 19,
+    "lego_position": null,
+    "known_audio_id": "03affbd4-d0f4-495b-90da-37d3bbc2b6c6",
+    "target1_audio_id": "a1747964-5478-48a0-ac75-4d839572bb62",
+    "target2_audio_id": "47fbb8d9-1804-4685-93ab-ddbc0bd838aa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L01U04",
+   "set": {
+    "known_text": "yes, that's true, instead of giving",
+    "target_text": "sim, isso é verdade, em vez de dar",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "0eaad85f-54fc-41aa-90e4-be7e5adb5ca1",
+    "target1_audio_id": "88872afb-ed50-4f7b-ac66-15bb6f9566cc",
+    "target2_audio_id": "6d6aaab8-06cb-45dc-9367-8a22fb61852f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L01U03",
+   "set": {
+    "known_text": "I'm sure, instead of giving",
+    "target_text": "tenho certeza, em vez de dar",
+    "word_count": 28,
+    "lego_position": "end",
+    "known_audio_id": "8cafd26a-cd14-4f1c-9f00-878af300ef7d",
+    "target1_audio_id": "b6b821f6-7741-4cb8-bfd6-9473e8f16bc7",
+    "target2_audio_id": "5402c90e-4908-4cb0-8fc7-aa595052db24"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L01U02",
+   "set": {
+    "known_text": "that's true, instead of giving",
+    "target_text": "isso é verdade, em vez de dar",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "8febf738-2bc0-451d-91a1-639db4046984",
+    "target1_audio_id": "d9fb1e04-ce01-4bf1-b378-9a5339d49e5a",
+    "target2_audio_id": "adeb7c59-5b61-4097-8ec2-e697c94b4076"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L01U01",
+   "set": {
+    "known_text": "no, instead of giving",
+    "target_text": "não, em vez de dar",
+    "word_count": 18,
+    "known_audio_id": "4c4e1a9e-7615-4399-9758-23b6a1c2d22d",
+    "target1_audio_id": "82456c66-a5d3-4f1c-b6e7-312ce1865ea6",
+    "target2_audio_id": "f504c55d-c675-47e6-895f-a71f95f499d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0523L01B03",
+   "set": {
+    "known_text": "yes, instead of giving",
+    "target_text": "sim, em vez de dar",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "3a2b33e2-6013-434e-8e10-7ebedd5b2185",
+    "target1_audio_id": "e3c7493b-d3c4-4893-932a-062c8c9f7bc4",
+    "target2_audio_id": "00b7b9e3-fe2d-4101-839b-f1a94a24ce40"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L03B03",
+   "set": {
+    "known_text": "yes, to tell the truth",
+    "target_text": "sim, dizer a verdade",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "674dba41-6f41-4f81-960d-fda6241e1620",
+    "target1_audio_id": "bb944c1a-53ed-4eca-ad95-9f554173b5dd",
+    "target2_audio_id": "d309f068-4717-44f3-8f1a-4b4c935562d0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L02U05",
+   "set": {
+    "known_text": "I think, that it was stupid",
+    "target_text": "acho que, que foi estúpido",
+    "word_count": 26,
+    "known_audio_id": "8f320678-2183-4cf5-9bdc-184cd5cab7e0",
+    "target1_audio_id": "671fb66b-3570-4eb9-a01f-b288db92e599",
+    "target2_audio_id": "48779ba2-3771-477d-ac40-abbd96d27e40"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L02U04",
+   "set": {
+    "known_text": "yes, let's agree that it was stupid",
+    "target_text": "sim, vamos concordar que foi estúpido",
+    "word_count": 37,
+    "known_audio_id": "ef55e563-e96f-4513-ba51-266ff0d80eb9",
+    "target1_audio_id": "8bcda65c-6b2d-475b-b05d-bf9da5da079a",
+    "target2_audio_id": "8ab8bec2-5315-4158-8328-1653ac84c7c0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L02U03",
+   "set": {
+    "known_text": "I'm sure, that it was stupid",
+    "target_text": "tenho certeza, que foi estúpido",
+    "word_count": 31,
+    "known_audio_id": "778c6206-4961-44e1-952b-12a42e19452f",
+    "target1_audio_id": "e0f54363-a8b5-47d4-9e5a-c2ea0d8a7408",
+    "target2_audio_id": "77e10465-c7df-4341-8521-7ea646137869"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L02U02",
+   "set": {
+    "known_text": "that's true, that it was stupid",
+    "target_text": "isso é verdade, que foi estúpido",
+    "known_audio_id": "b76d2951-9004-49ee-a4eb-0ce5abfde711",
+    "target1_audio_id": "7edb6ed4-8d5e-450a-aa34-e16a55c6e1ee",
+    "target2_audio_id": "6fd0d3f8-df73-4d53-a2f5-ab4e87a240d8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L02U01",
+   "set": {
+    "known_text": "no, that it was stupid",
+    "target_text": "não, que foi estúpido",
+    "word_count": 21,
+    "known_audio_id": "61f8c33a-222c-4259-89d4-3db460dacbbb",
+    "target1_audio_id": "df4704da-15a5-4bb0-87e0-59a658d0b808",
+    "target2_audio_id": "5720be63-415b-42ab-8a00-ed2c1cb18aa7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L02B03",
+   "set": {
+    "known_text": "yes, that it was stupid",
+    "target_text": "sim, que foi estúpido",
+    "word_count": 21,
+    "known_audio_id": "44d8a145-08f1-497a-9011-3e37360471fa",
+    "target1_audio_id": "4c32f0b6-d035-4ff1-a53c-cf7284caf954",
+    "target2_audio_id": "0083bb72-40d6-432f-8e8f-3acce2aee4de"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L01U05",
+   "set": {
+    "known_text": "let's still agree",
+    "target_text": "vamos ainda concordar",
+    "word_count": 21,
+    "lego_position": null,
+    "known_audio_id": "dc0c1f2b-6c62-476a-b1cc-1f3320ae1e7f",
+    "target1_audio_id": "726aa27f-4f46-42ce-8c91-9ce89512cb5d",
+    "target2_audio_id": "25ce8d7f-459f-4319-89b0-cc224501fb8f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L01U04",
+   "set": {
+    "known_text": "yes, that's true, let's agree",
+    "target_text": "sim, isso é verdade, vamos concordar",
+    "word_count": 36,
+    "lego_position": "end",
+    "known_audio_id": "c8296ccd-7be3-440b-98fc-e065436383d1",
+    "target1_audio_id": "95cec294-c21c-4ed4-9a13-36ec91dde227",
+    "target2_audio_id": "e244034c-378a-48c8-be64-33d71769641b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L01U03",
+   "set": {
+    "known_text": "I'm sure, let's agree",
+    "target_text": "tenho certeza, vamos concordar",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "4103e40a-a7f3-4382-a58f-923a5599169b",
+    "target1_audio_id": "2260eaf6-9534-4638-9aac-108347dab296",
+    "target2_audio_id": "5f8acae2-f1cf-46dc-908f-17703427bd9b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L01U02",
+   "set": {
+    "known_text": "that's true, let's agree",
+    "target_text": "isso é verdade, vamos concordar",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "ae954309-cb9d-49a6-8762-6ca0e74e6d83",
+    "target1_audio_id": "f71966db-c7c9-4875-89e0-9112235c7a73",
+    "target2_audio_id": "c528a7e9-7c19-42dd-ac5a-ee641bd5c6c7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L01U01",
+   "set": {
+    "known_text": "no, let's agree",
+    "target_text": "não, vamos concordar",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "6fdd6c04-8606-40ce-bbf5-eda81f663a37",
+    "target1_audio_id": "2d46d8fe-bc66-4211-8f7c-94723633dae1",
+    "target2_audio_id": "877f1ce5-0541-45db-9b6f-5f60dcdee6ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L01B03",
+   "set": {
+    "known_text": "yes, let's agree",
+    "target_text": "sim, vamos concordar",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "d143b6c0-fb0a-40bf-ba5d-39e6f68870ec",
+    "target1_audio_id": "9a0cad94-9d4c-4b2b-a627-033536b61169",
+    "target2_audio_id": "3e3e6d75-dc1f-4e94-87ad-bcc49cba1159"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0522L01B02",
+   "set": {
+    "known_text": "let's agree now",
+    "target_text": "vamos concordar agora",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "890673dd-ad7a-4a72-ad24-dc2c7062a626",
+    "target1_audio_id": "30e67772-761e-48c6-ba6e-7012961b6c05",
+    "target2_audio_id": "900f8b93-1025-42d6-bfe8-c21119c50b76"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0524L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0524L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0523L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0522L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0522L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0522L01B04"
+  }
+ ]
+}
