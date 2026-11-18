@@ -1,0 +1,48 @@
+{
+ "seed": 1,
+ "legos": {
+  "L01": {
+   "accept_gap": "seed 1 LEGO 1: nothing is taught before it (phraseFloor: none)"
+  },
+  "L02": {
+   "accept_gap": "seed 1: only 'I want' is taught; every sentence it allows is already in the basket"
+  },
+  "L03": {
+   "accept_gap": "seed 1: 'to speak English' is already a build; nothing else natural is taught"
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "آپ کے ساتھ بولنا",
+     "to speak with you"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "آپ کے ساتھ بولنا چاہتا ہوں",
+     "want to speak with you",
+     null,
+     "m"
+    ]
+   ]
+  },
+  "L05": {
+   "insert": [
+    [
+     "build",
+     "ابھی انگریزی بولنا",
+     "to speak English now"
+    ],
+    [
+     "build",
+     "ابھی بولنا چاہتا ہوں",
+     "want to speak now",
+     null,
+     "m"
+    ]
+   ]
+  }
+ },
+ "notes": "item 20 probe (cs #718·AI): worst urd baskets (0-1 real builds)"
+}

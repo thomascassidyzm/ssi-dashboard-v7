@@ -1,0 +1,43 @@
+{
+ "seed": 315,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "جو گاڑی وہ چاہتا تھا وہ کہاں ہے؟",
+     "where is the car that he wanted?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "یہ وہ گاڑی نہیں جو وہ چاہتا تھا",
+     "it's not the car that he wanted"
+    ],
+    [
+     "build",
+     "میں وہ گاڑی جانتا ہوں جو وہ چاہتا تھا",
+     "I know the car that he wanted",
+     null,
+     "m"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "یہ اس کی استطاعت سے باہر تھا",
+     "he couldn't afford it"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "گاڑی اس کی استطاعت سے باہر تھی",
+     "he couldn't afford the car"
+    ]
+   ]
+  }
+ },
+ "notes": "item 20 probe (cs #718·AI): worst urd baskets (0-1 real builds)"
+}
