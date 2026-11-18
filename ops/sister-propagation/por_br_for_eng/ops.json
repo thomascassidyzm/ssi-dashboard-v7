@@ -1,0 +1,1025 @@
+[
+ {
+  "op": "lego.update",
+  "lego_id": "S0202L03",
+  "expect": {
+   "known_text": "was sure",
+   "target_text": "tinha a certeza"
+  },
+  "set": {
+   "target_text": "tinha certeza"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0340L01",
+  "expect": {
+   "known_text": "I'm sure that",
+   "target_text": "tenho a certeza de que"
+  },
+  "set": {
+   "target_text": "tenho certeza de que"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0482L04",
+  "expect": {
+   "known_text": "serious",
+   "target_text": "falando a sério"
+  },
+  "set": {
+   "target_text": "falando sério"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0339L01",
+  "expect": {
+   "known_text": "he's hurt himself",
+   "target_text": "ele se magoou"
+  },
+  "set": {
+   "target_text": "ele se machucou"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0382L01",
+  "expect": {
+   "known_text": "you asked",
+   "target_text": "perguntaste"
+  },
+  "set": {
+   "target_text": "você perguntou"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0385L01",
+  "expect": {
+   "known_text": "you agreed",
+   "target_text": "concordaste"
+  },
+  "set": {
+   "target_text": "você concordou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0202L03B01",
+  "expect": {
+   "known_text": "was sure",
+   "target_text": "tinha a certeza"
+  },
+  "set": {
+   "target_text": "tinha certeza"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0202L03U01",
+  "expect": {
+   "known_text": "I was sure that I knew what to do",
+   "target_text": "tinha a certeza de que sabia o que fazer"
+  },
+  "set": {
+   "target_text": "tinha certeza de que sabia o que fazer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0202L03U02",
+  "expect": {
+   "known_text": "she was sure it was a good idea",
+   "target_text": "ela tinha a certeza de que era uma boa ideia"
+  },
+  "set": {
+   "target_text": "ela tinha certeza de que era uma boa ideia"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0202L03U03",
+  "expect": {
+   "known_text": "I was sure that I could do it",
+   "target_text": "tinha a certeza de que conseguia fazer isso"
+  },
+  "set": {
+   "target_text": "tinha certeza de que conseguia fazer isso"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0202L03U04",
+  "expect": {
+   "known_text": "he was sure he knew the answer",
+   "target_text": "ele tinha a certeza de que sabia a resposta"
+  },
+  "set": {
+   "target_text": "ele tinha certeza de que sabia a resposta"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0202L04U01",
+  "expect": {
+   "known_text": "nobody was sure how to answer",
+   "target_text": "ninguém tinha a certeza de como responder"
+  },
+  "set": {
+   "target_text": "ninguém tinha certeza de como responder"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0202L05U01",
+  "expect": {
+   "known_text": "nobody was sure how to answer the question",
+   "target_text": "ninguém tinha a certeza de como responder à pergunta"
+  },
+  "set": {
+   "target_text": "ninguém tinha certeza de como responder à pergunta"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0204L02U03",
+  "expect": {
+   "known_text": "nobody was sure about the arrangements",
+   "target_text": "ninguém tinha a certeza dos preparativos"
+  },
+  "set": {
+   "target_text": "ninguém tinha certeza dos preparativos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0204L02U05",
+  "expect": {
+   "known_text": "she was sure about the arrangements",
+   "target_text": "ela tinha a certeza dos preparativos"
+  },
+  "set": {
+   "target_text": "ela tinha certeza dos preparativos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0205L02U03",
+  "expect": {
+   "known_text": "nobody was sure of the idea",
+   "target_text": "ninguém tinha a certeza da ideia"
+  },
+  "set": {
+   "target_text": "ninguém tinha certeza da ideia"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0205L02U05",
+  "expect": {
+   "known_text": "she was sure of the question",
+   "target_text": "ela tinha a certeza da pergunta"
+  },
+  "set": {
+   "target_text": "ela tinha certeza da pergunta"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01B01",
+  "expect": {
+   "known_text": "I'm sure that",
+   "target_text": "tenho a certeza de que"
+  },
+  "set": {
+   "target_text": "tenho certeza de que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01B02",
+  "expect": {
+   "known_text": "I'm sure that he's going to be okay",
+   "target_text": "tenho a certeza de que ele vai ficar bem"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ele vai ficar bem"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01B03",
+  "expect": {
+   "known_text": "I'm sure that she's going to be okay",
+   "target_text": "tenho a certeza de que ela vai ficar bem"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ela vai ficar bem"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01U01",
+  "expect": {
+   "known_text": "yes I'm sure he's going to be okay",
+   "target_text": "sim, tenho a certeza de que ele vai ficar bem"
+  },
+  "set": {
+   "target_text": "sim, tenho certeza de que ele vai ficar bem"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01U02",
+  "expect": {
+   "known_text": "I'm sure that he can open the door",
+   "target_text": "tenho a certeza de que ele consegue abrir a porta"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ele consegue abrir a porta"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01U03",
+  "expect": {
+   "known_text": "I'm sure that she can continue to play",
+   "target_text": "tenho a certeza de que ela consegue continuar a jogar"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ela consegue continuar a jogar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01U04",
+  "expect": {
+   "known_text": "I'm sure that it's very important",
+   "target_text": "tenho a certeza de que é muito importante"
+  },
+  "set": {
+   "target_text": "tenho certeza de que é muito importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0340L01U05",
+  "expect": {
+   "known_text": "I'm sure that he's hurt himself",
+   "target_text": "tenho a certeza de que ele se magoou"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ele se machucou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0341L01U02",
+  "expect": {
+   "known_text": "I'm sure that he's hurt himself a few days ago",
+   "target_text": "tenho a certeza de que ele se magoou há uns dias"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ele se machucou há uns dias"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0341L01U05",
+  "expect": {
+   "known_text": "I'm sure I met someone a few days ago",
+   "target_text": "tenho a certeza de que conheci alguém há uns dias"
+  },
+  "set": {
+   "target_text": "tenho certeza de que conheci alguém há uns dias"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0342L01U03",
+  "expect": {
+   "known_text": "I'm sure I met someone who said something",
+   "target_text": "tenho a certeza de que conheci alguém que disse algo"
+  },
+  "set": {
+   "target_text": "tenho certeza de que conheci alguém que disse algo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0343L01B03",
+  "expect": {
+   "known_text": "I'm sure that she's concerned",
+   "target_text": "tenho a certeza de que está preocupada"
+  },
+  "set": {
+   "target_text": "tenho certeza de que está preocupada"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0343L02U05",
+  "expect": {
+   "known_text": "I'm sure that she's concerned about the economy",
+   "target_text": "tenho a certeza de que está preocupada com a economia"
+  },
+  "set": {
+   "target_text": "tenho certeza de que está preocupada com a economia"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0344L01U03",
+  "expect": {
+   "known_text": "I'm sure that he's happy to help you",
+   "target_text": "tenho a certeza de que tem todo o gosto em te ajudar"
+  },
+  "set": {
+   "target_text": "tenho certeza de que tem todo o gosto em te ajudar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0345L01U03",
+  "expect": {
+   "known_text": "I'm sure that he's not ready",
+   "target_text": "tenho a certeza de que não está pronto"
+  },
+  "set": {
+   "target_text": "tenho certeza de que não está pronto"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0346L01U03",
+  "expect": {
+   "known_text": "I'm sure I wanted her to know",
+   "target_text": "tenho a certeza de que queria que ela soubesse"
+  },
+  "set": {
+   "target_text": "tenho certeza de que queria que ela soubesse"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0346L02U05",
+  "expect": {
+   "known_text": "I'm sure I liked her book",
+   "target_text": "tenho a certeza de que gostei do livro dela"
+  },
+  "set": {
+   "target_text": "tenho certeza de que gostei do livro dela"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0347L01U03",
+  "expect": {
+   "known_text": "I'm sure I know what was happening",
+   "target_text": "tenho a certeza de que sei o que estava acontecendo"
+  },
+  "set": {
+   "target_text": "tenho certeza de que sei o que estava acontecendo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0348L01U03",
+  "expect": {
+   "known_text": "I'm sure I know what was going to happen",
+   "target_text": "tenho a certeza de que sei o que ia acontecer"
+  },
+  "set": {
+   "target_text": "tenho certeza de que sei o que ia acontecer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0349L01U03",
+  "expect": {
+   "known_text": "I'm sure he wanted to go out on Friday",
+   "target_text": "tenho a certeza de que queria sair na sexta-feira"
+  },
+  "set": {
+   "target_text": "tenho certeza de que queria sair na sexta-feira"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0350L01U03",
+  "expect": {
+   "known_text": "I'm sure he wanted to see some old friends",
+   "target_text": "tenho a certeza de que queria ver alguns velhos amigos"
+  },
+  "set": {
+   "target_text": "tenho certeza de que queria ver alguns velhos amigos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0351L02U03",
+  "expect": {
+   "known_text": "I'm sure he didn't want to leave me alone",
+   "target_text": "tenho a certeza de que não queria me deixar sozinho"
+  },
+  "set": {
+   "target_text": "tenho certeza de que não queria me deixar sozinho"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0353L01U04",
+  "expect": {
+   "known_text": "I'm sure she needed to run",
+   "target_text": "tenho a certeza de que precisava correr"
+  },
+  "set": {
+   "target_text": "tenho certeza de que precisava correr"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0353L02U03",
+  "expect": {
+   "known_text": "I'm sure she needed to run around the field",
+   "target_text": "tenho a certeza de que precisava correr à volta do campo"
+  },
+  "set": {
+   "target_text": "tenho certeza de que precisava correr à volta do campo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0354L01U03",
+  "expect": {
+   "known_text": "I'm sure that he is angry",
+   "target_text": "tenho a certeza de que está zangado"
+  },
+  "set": {
+   "target_text": "tenho certeza de que está zangado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0360L01U05",
+  "expect": {
+   "known_text": "I'm sure she said something else",
+   "target_text": "tenho a certeza de que disse mais alguma coisa"
+  },
+  "set": {
+   "target_text": "tenho certeza de que disse mais alguma coisa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0364L03U06",
+  "expect": {
+   "known_text": "I'm sure that he liked that place",
+   "target_text": "tenho a certeza de que ele gostava daquele lugar"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ele gostava daquele lugar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01U06",
+  "expect": {
+   "known_text": "I'm sure that you agreed with her",
+   "target_text": "tenho a certeza de que concordaste com ela"
+  },
+  "set": {
+   "target_text": "tenho certeza de que você concordou com ela"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0400L01U08",
+  "expect": {
+   "known_text": "I'm sure that she wants to eat something",
+   "target_text": "tenho a certeza de que ela quer comer algo"
+  },
+  "set": {
+   "target_text": "tenho certeza de que ela quer comer algo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04B01",
+  "expect": {
+   "known_text": "serious",
+   "target_text": "falando a sério"
+  },
+  "set": {
+   "target_text": "falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04B02",
+  "expect": {
+   "known_text": "real hope is that they're not serious",
+   "target_text": "esperança real é que eles não estejam falando a sério"
+  },
+  "set": {
+   "target_text": "esperança real é que eles não estejam falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04B03",
+  "expect": {
+   "known_text": "yes, serious",
+   "target_text": "sim, falando a sério"
+  },
+  "set": {
+   "target_text": "sim, falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04U01",
+  "expect": {
+   "known_text": "the only real hope is that they're not serious",
+   "target_text": "a única esperança real é que eles não estejam falando a sério"
+  },
+  "set": {
+   "target_text": "a única esperança real é que eles não estejam falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04U02",
+  "expect": {
+   "known_text": "no, serious",
+   "target_text": "não, falando a sério"
+  },
+  "set": {
+   "target_text": "não, falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04U03",
+  "expect": {
+   "known_text": "that's true, serious",
+   "target_text": "isso é verdade, falando a sério"
+  },
+  "set": {
+   "target_text": "isso é verdade, falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04U04",
+  "expect": {
+   "known_text": "yes, the only real hope is that they're not serious",
+   "target_text": "sim, a única esperança real é que eles não estejam falando a sério"
+  },
+  "set": {
+   "target_text": "sim, a única esperança real é que eles não estejam falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0482L04U05",
+  "expect": {
+   "known_text": "I'm sure, the only real hope is that they're not serious",
+   "target_text": "tenho certeza, a única esperança real é que eles não estejam falando a sério"
+  },
+  "set": {
+   "target_text": "tenho certeza, a única esperança real é que eles não estejam falando sério"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01B01",
+  "expect": {
+   "known_text": "he's hurt himself",
+   "target_text": "ele se magoou"
+  },
+  "set": {
+   "target_text": "ele se machucou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01B02",
+  "expect": {
+   "known_text": "I don't think he's hurt himself",
+   "target_text": "eu não acho que ele se magoou"
+  },
+  "set": {
+   "target_text": "eu não acho que ele se machucou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01B03",
+  "expect": {
+   "known_text": "he's hurt himself today",
+   "target_text": "ele se magoou hoje"
+  },
+  "set": {
+   "target_text": "ele se machucou hoje"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01U01",
+  "expect": {
+   "known_text": "yes, he's hurt himself",
+   "target_text": "sim, ele se magoou"
+  },
+  "set": {
+   "target_text": "sim, ele se machucou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01U02",
+  "expect": {
+   "known_text": "he's hurt himself this year",
+   "target_text": "ele se magoou este ano"
+  },
+  "set": {
+   "target_text": "ele se machucou este ano"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01U03",
+  "expect": {
+   "known_text": "he's hurt himself on Monday",
+   "target_text": "ele se magoou na segunda-feira"
+  },
+  "set": {
+   "target_text": "ele se machucou na segunda-feira"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01U04",
+  "expect": {
+   "known_text": "I think he's hurt himself",
+   "target_text": "eu acho que ele se magoou"
+  },
+  "set": {
+   "target_text": "eu acho que ele se machucou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L01U05",
+  "expect": {
+   "known_text": "no, he's hurt himself",
+   "target_text": "não, ele se magoou"
+  },
+  "set": {
+   "target_text": "não, ele se machucou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L02B03",
+  "expect": {
+   "known_text": "he's hurt himself quite a lot",
+   "target_text": "ele se magoou bastante"
+  },
+  "set": {
+   "target_text": "ele se machucou bastante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L02U01",
+  "expect": {
+   "known_text": "no I think he's hurt himself quite badly",
+   "target_text": "não, eu acho que ele se magoou bastante"
+  },
+  "set": {
+   "target_text": "não, eu acho que ele se machucou bastante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L02U02",
+  "expect": {
+   "known_text": "that man has hurt himself quite a lot",
+   "target_text": "aquele homem se magoou bastante"
+  },
+  "set": {
+   "target_text": "aquele homem se machucou bastante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0339L02U05",
+  "expect": {
+   "known_text": "she's hurt herself quite a lot",
+   "target_text": "ela se magoou bastante"
+  },
+  "set": {
+   "target_text": "ela se machucou bastante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0341L01B03",
+  "expect": {
+   "known_text": "he's hurt himself a few days ago",
+   "target_text": "ele se magoou há uns dias"
+  },
+  "set": {
+   "target_text": "ele se machucou há uns dias"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0341L01U01",
+  "expect": {
+   "known_text": "that man hurt himself a few days ago",
+   "target_text": "aquele homem se magoou há uns dias"
+  },
+  "set": {
+   "target_text": "aquele homem se machucou há uns dias"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0341L01U03",
+  "expect": {
+   "known_text": "that student hurt herself a few days ago",
+   "target_text": "aquela estudante se magoou há uns dias"
+  },
+  "set": {
+   "target_text": "aquela estudante se machucou há uns dias"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01B01",
+  "expect": {
+   "known_text": "you asked",
+   "target_text": "perguntaste"
+  },
+  "set": {
+   "target_text": "você perguntou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01B02",
+  "expect": {
+   "known_text": "you asked where",
+   "target_text": "perguntaste onde"
+  },
+  "set": {
+   "target_text": "você perguntou onde"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01B03",
+  "expect": {
+   "known_text": "you asked what happened",
+   "target_text": "perguntaste o que estava acontecendo"
+  },
+  "set": {
+   "target_text": "você perguntou o que estava acontecendo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01U01",
+  "expect": {
+   "known_text": "did you ask where he wanted to put it?",
+   "target_text": "perguntaste onde ele queria pôr isso?"
+  },
+  "set": {
+   "target_text": "você perguntou onde ele queria pôr isso?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01U02",
+  "expect": {
+   "known_text": "did you ask if she wanted to follow us?",
+   "target_text": "perguntaste se ela queria nos seguir?"
+  },
+  "set": {
+   "target_text": "você perguntou se ela queria nos seguir?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01U03",
+  "expect": {
+   "known_text": "did you ask if she was concerned?",
+   "target_text": "perguntaste se estava preocupada?"
+  },
+  "set": {
+   "target_text": "você perguntou se estava preocupada?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01U04",
+  "expect": {
+   "known_text": "did you ask what she said?",
+   "target_text": "perguntaste o que ela disse?"
+  },
+  "set": {
+   "target_text": "você perguntou o que ela disse?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01U05",
+  "expect": {
+   "known_text": "yes, you asked where he wanted to put it",
+   "target_text": "sim, perguntaste onde ele queria pôr isso"
+  },
+  "set": {
+   "target_text": "sim, você perguntou onde ele queria pôr isso"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0382L01B04",
+  "expect": {
+   "known_text": "we know what you asked",
+   "target_text": "sabemos o que perguntaste"
+  },
+  "set": {
+   "target_text": "sabemos o que você perguntou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01B01",
+  "expect": {
+   "known_text": "you agreed",
+   "target_text": "concordaste"
+  },
+  "set": {
+   "target_text": "você concordou"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01B02",
+  "expect": {
+   "known_text": "you agreed with him",
+   "target_text": "concordaste com ele"
+  },
+  "set": {
+   "target_text": "você concordou com ele"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01B03",
+  "expect": {
+   "known_text": "did you agree with that man?",
+   "target_text": "concordaste com aquele homem?"
+  },
+  "set": {
+   "target_text": "você concordou com aquele homem?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01U01",
+  "expect": {
+   "known_text": "did you agree with her?",
+   "target_text": "concordaste com ela?"
+  },
+  "set": {
+   "target_text": "você concordou com ela?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01U02",
+  "expect": {
+   "known_text": "did you agree with that woman?",
+   "target_text": "concordaste com aquela mulher?"
+  },
+  "set": {
+   "target_text": "você concordou com aquela mulher?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01U03",
+  "expect": {
+   "known_text": "yes, you agreed with her",
+   "target_text": "sim, concordaste com ela"
+  },
+  "set": {
+   "target_text": "sim, você concordou com ela"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01U04",
+  "expect": {
+   "known_text": "did you agree with him a moment ago?",
+   "target_text": "concordaste com ele há pouco?"
+  },
+  "set": {
+   "target_text": "você concordou com ele há pouco?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0385L01U05",
+  "expect": {
+   "known_text": "no, you didn't agree with her",
+   "target_text": "não, não concordaste com ela"
+  },
+  "set": {
+   "target_text": "não, você não concordou com ela"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0098L02U02",
+  "expect": {
+   "known_text": "you should consider waiting a little more",
+   "target_text": "você devia pensar em esperar um pouco mais"
+  },
+  "set": {
+   "target_text": "você devia considerar esperar um pouco mais"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0098L02U03",
+  "expect": {
+   "known_text": "I should consider doing different things",
+   "target_text": "devia pensar em fazer coisas diferentes"
+  },
+  "set": {
+   "target_text": "devia considerar fazer coisas diferentes"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0098L03B02",
+  "expect": {
+   "known_text": "consider playing something else",
+   "target_text": "pensar em jogar outra coisa"
+  },
+  "set": {
+   "target_text": "considerar jogar outra coisa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0098L03U03",
+  "expect": {
+   "known_text": "you should consider playing something else",
+   "target_text": "você devia pensar em jogar outra coisa"
+  },
+  "set": {
+   "target_text": "você devia considerar jogar outra coisa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0098L03U04",
+  "expect": {
+   "known_text": "it's important to consider playing something else",
+   "target_text": "é importante pensar em jogar outra coisa"
+  },
+  "set": {
+   "target_text": "é importante considerar jogar outra coisa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0100L02U02",
+  "expect": {
+   "known_text": "I should consider doing something similar",
+   "target_text": "devia pensar em fazer algo parecido"
+  },
+  "set": {
+   "target_text": "devia considerar fazer algo parecido"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "por_br_for_eng:S0100L02U04",
+  "expect": {
+   "known_text": "you should consider playing something similar",
+   "target_text": "você devia pensar em jogar algo parecido"
+  },
+  "set": {
+   "target_text": "você devia considerar jogar algo parecido"
+  }
+ }
+]

@@ -1,0 +1,971 @@
+[
+ {
+  "status": 200,
+  "res": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0073L02B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0073L02B01",
+      "seed_number": 73,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "مجھے ابھی اور سیکھنا ہے",
+      "target_text": "I've got more to learn",
+      "known_audio_id": "a1f2afa1-924a-4db3-80bd-b0fe28208a4e",
+      "target1_audio_id": "5bef5f48-7b8b-4970-a85c-fcfc87824bee",
+      "target2_audio_id": "f6bbe0f3-6876-4960-99fa-03bdbf447a0e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0073L02B01",
+      "seed_number": 73,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "لیکن مجھے ابھی اور سیکھنا ہے",
+      "target_text": "but I've got more to learn",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0175L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0175L01B01",
+      "seed_number": 175,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "آپ کیا کرنا چاہتے ہیں؟",
+      "target_text": "what do you want to do?",
+      "known_audio_id": "5820f5b6-e402-4a39-8235-ba8f3d7b13dc",
+      "target1_audio_id": "52a9043c-f8cf-48e0-8c6f-c75dc7d87846",
+      "target2_audio_id": "790104b1-92c1-455f-9ece-bd801e6fcc65",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0175L01B01",
+      "seed_number": 175,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "آپ کل صبح کیا کرنا چاہتے ہیں؟",
+      "target_text": "what do you want to do tomorrow morning?",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0214L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0214L01B01",
+      "seed_number": 214,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "ویک اینڈ پر",
+      "target_text": "at the weekend",
+      "known_audio_id": "1578a7d2-dc87-4de5-8dc5-7163ae73c394",
+      "target1_audio_id": "55ee5dd8-6094-4871-9228-e3ce2ea62d4a",
+      "target2_audio_id": "339e4285-ff68-4f23-afc0-3ef3a00801a9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0214L01B01",
+      "seed_number": 214,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "کیا آپ ویک اینڈ پر آرام کرنا چاہتے ہیں؟",
+      "target_text": "do you want to relax at the weekend?",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0224L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0224L01B01",
+      "seed_number": 224,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "ابھی شروع کیا ہے",
+      "target_text": "he's just started",
+      "known_audio_id": "670534bd-2010-4bf0-a62a-e328356a0578",
+      "target1_audio_id": "8e46b791-e0e1-4d4c-b4fb-2eeebcfcf0a2",
+      "target2_audio_id": "efee0251-8c40-4755-b8d1-909daa0c67d6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0224L01B01",
+      "seed_number": 224,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "اس نے ابھی بولنا شروع کیا ہے",
+      "target_text": "he's just started to speak",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0243L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0243L01B01",
+      "seed_number": 243,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "کھانا",
+      "target_text": "eat",
+      "known_audio_id": "336aca4d-fd5f-4837-9e9e-219f98b8852f",
+      "target1_audio_id": "a3455a42-5c07-41bd-a36d-da9f6f6b4846",
+      "target2_audio_id": "cc007065-1979-4595-bd63-00de367ebfe6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0243L01B01",
+      "seed_number": 243,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "وہ کھانا چاہتی ہے",
+      "target_text": "she wants to eat",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0244L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0244L01B01",
+      "seed_number": 244,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "پہلے سے بہت کچھ",
+      "target_text": "a lot already",
+      "known_audio_id": "c66b49f4-7a41-45d9-beca-da1435191228",
+      "target1_audio_id": "afb7a0fc-40ca-4329-a6e2-7f461e6f12e2",
+      "target2_audio_id": "d4dfb29d-00dd-4a5e-9996-b5bb2bd70053",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0244L01B01",
+      "seed_number": 244,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "ہم نے پہلے سے بہت کچھ کر لیا ہے",
+      "target_text": "we've done a lot already",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0254L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0254L01B01",
+      "seed_number": 254,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "آج صبح سے",
+      "target_text": "since this morning",
+      "known_audio_id": "15390aa8-e18b-4fa5-a0a0-7c4ce4f87a35",
+      "target1_audio_id": "333e07c7-2b6d-4135-aaa0-fc48251fe44f",
+      "target2_audio_id": "0a661b30-a39e-44ec-97f6-14616d5c3d19",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0254L01B01",
+      "seed_number": 254,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "وہ آج صبح سے یہاں ہے",
+      "target_text": "she's been here since this morning",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0262L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0262L01B01",
+      "seed_number": 262,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "آپ کل بات کر رہے تھے",
+      "target_text": "you were talking to yesterday",
+      "known_audio_id": "25e558ed-cb63-4646-ad38-836597245e7c",
+      "target1_audio_id": "16ecc524-1c13-4e6a-ade4-600a489c2c2d",
+      "target2_audio_id": "cb539eb4-83f0-4d48-b3cf-06f9b609658f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0262L01B01",
+      "seed_number": 262,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "کیا یہ وہ آدمی ہے جس سے آپ کل بات کر رہے تھے؟",
+      "target_text": "is that the man you were talking to yesterday?",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0263L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0263L01B01",
+      "seed_number": 263,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "آپ کا مطلب کون سے",
+      "target_text": "who you mean",
+      "known_audio_id": "f5a18dc0-5827-4f23-8568-6829eec2f07d",
+      "target1_audio_id": "b2812d01-4136-4fbb-8843-b65241c9b385",
+      "target2_audio_id": "49f509ed-a207-4f1e-8f35-a1d7946dd199",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0263L01B01",
+      "seed_number": 263,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "مجھے معلوم ہے آپ کا مطلب کون سے ہے",
+      "target_text": "I know who you mean",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0281L02B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0281L02B01",
+      "seed_number": 281,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "شروع کرنے سے پہلے",
+      "target_text": "before you start",
+      "known_audio_id": "3f52917a-b1c8-4ae7-a16e-aa12d6e099bd",
+      "target1_audio_id": "5c114962-4a90-4d64-a862-3cb48b475cd6",
+      "target2_audio_id": "7eedf0a5-6563-4ac9-84f9-821e1eef6d7b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0281L02B01",
+      "seed_number": 281,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "ہمیں شروع کرنے سے پہلے کافی چاہیے",
+      "target_text": "we need coffee before you start",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0281L02B01",
+     "set": {
+      "known_text": "شروع کرنے سے پہلے",
+      "target_text": "before you start",
+      "known_audio_id": "3f52917a-b1c8-4ae7-a16e-aa12d6e099bd",
+      "target1_audio_id": "5c114962-4a90-4d64-a862-3cb48b475cd6",
+      "target2_audio_id": "7eedf0a5-6563-4ac9-84f9-821e1eef6d7b"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0263L01B01",
+     "set": {
+      "known_text": "آپ کا مطلب کون سے",
+      "target_text": "who you mean",
+      "known_audio_id": "f5a18dc0-5827-4f23-8568-6829eec2f07d",
+      "target1_audio_id": "b2812d01-4136-4fbb-8843-b65241c9b385",
+      "target2_audio_id": "49f509ed-a207-4f1e-8f35-a1d7946dd199"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0262L01B01",
+     "set": {
+      "known_text": "آپ کل بات کر رہے تھے",
+      "target_text": "you were talking to yesterday",
+      "known_audio_id": "25e558ed-cb63-4646-ad38-836597245e7c",
+      "target1_audio_id": "16ecc524-1c13-4e6a-ade4-600a489c2c2d",
+      "target2_audio_id": "cb539eb4-83f0-4d48-b3cf-06f9b609658f"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0254L01B01",
+     "set": {
+      "known_text": "آج صبح سے",
+      "target_text": "since this morning",
+      "known_audio_id": "15390aa8-e18b-4fa5-a0a0-7c4ce4f87a35",
+      "target1_audio_id": "333e07c7-2b6d-4135-aaa0-fc48251fe44f",
+      "target2_audio_id": "0a661b30-a39e-44ec-97f6-14616d5c3d19"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0244L01B01",
+     "set": {
+      "known_text": "پہلے سے بہت کچھ",
+      "target_text": "a lot already",
+      "known_audio_id": "c66b49f4-7a41-45d9-beca-da1435191228",
+      "target1_audio_id": "afb7a0fc-40ca-4329-a6e2-7f461e6f12e2",
+      "target2_audio_id": "d4dfb29d-00dd-4a5e-9996-b5bb2bd70053"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0243L01B01",
+     "set": {
+      "known_text": "کھانا",
+      "target_text": "eat",
+      "known_audio_id": "336aca4d-fd5f-4837-9e9e-219f98b8852f",
+      "target1_audio_id": "a3455a42-5c07-41bd-a36d-da9f6f6b4846",
+      "target2_audio_id": "cc007065-1979-4595-bd63-00de367ebfe6"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0224L01B01",
+     "set": {
+      "known_text": "ابھی شروع کیا ہے",
+      "target_text": "he's just started",
+      "known_audio_id": "670534bd-2010-4bf0-a62a-e328356a0578",
+      "target1_audio_id": "8e46b791-e0e1-4d4c-b4fb-2eeebcfcf0a2",
+      "target2_audio_id": "efee0251-8c40-4755-b8d1-909daa0c67d6"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0214L01B01",
+     "set": {
+      "known_text": "ویک اینڈ پر",
+      "target_text": "at the weekend",
+      "known_audio_id": "1578a7d2-dc87-4de5-8dc5-7163ae73c394",
+      "target1_audio_id": "55ee5dd8-6094-4871-9228-e3ce2ea62d4a",
+      "target2_audio_id": "339e4285-ff68-4f23-afc0-3ef3a00801a9"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0175L01B01",
+     "set": {
+      "known_text": "آپ کیا کرنا چاہتے ہیں؟",
+      "target_text": "what do you want to do?",
+      "known_audio_id": "5820f5b6-e402-4a39-8235-ba8f3d7b13dc",
+      "target1_audio_id": "52a9043c-f8cf-48e0-8c6f-c75dc7d87846",
+      "target2_audio_id": "790104b1-92c1-455f-9ece-bd801e6fcc65"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0073L02B01",
+     "set": {
+      "known_text": "مجھے ابھی اور سیکھنا ہے",
+      "target_text": "I've got more to learn",
+      "known_audio_id": "a1f2afa1-924a-4db3-80bd-b0fe28208a4e",
+      "target1_audio_id": "5bef5f48-7b8b-4970-a85c-fcfc87824bee",
+      "target2_audio_id": "f6bbe0f3-6876-4960-99fa-03bdbf447a0e"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "status": 200,
+  "res": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0283L02B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0283L02B01",
+      "seed_number": 283,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "آپ کے دوستوں میں سے",
+      "target_text": "of your friends",
+      "known_audio_id": "d073f984-0e3a-4373-a18d-4afa21935c14",
+      "target1_audio_id": "36c98ec7-4dbb-458f-a846-a1da5bc6b2ef",
+      "target2_audio_id": "4def9d96-acc2-420d-b0cd-e795bec21250",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0283L02B01",
+      "seed_number": 283,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "آپ کے دوستوں میں سے کتنے یہاں ہیں؟",
+      "target_text": "how many of your friends are here?",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0311L03B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0311L03B01",
+      "seed_number": 311,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "یقین نہیں کر سکتا تھا",
+      "target_text": "he couldn't believe",
+      "known_audio_id": "14edf1af-2361-4319-a932-0502e319ee4a",
+      "target1_audio_id": "a0e7e1a7-05a9-485b-acd0-99d3f3489084",
+      "target2_audio_id": "9bd36eaf-083e-4adb-b5d9-4b8bb8e56727",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0311L03B01",
+      "seed_number": 311,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "وہ اس پر یقین نہیں کر سکتا تھا",
+      "target_text": "he couldn't believe it",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0315L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0315L01B01",
+      "seed_number": 315,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "جو گاڑی چاہتا تھا",
+      "target_text": "the car that he wanted",
+      "known_audio_id": "d3772cbe-ebd8-46d3-acfb-5f1d087009a2",
+      "target1_audio_id": "b9c2fe0f-0405-41ea-af66-7739a9374e1f",
+      "target2_audio_id": "c9bcb170-606d-4e49-af3c-b3a22788f28e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0315L01B01",
+      "seed_number": 315,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "وہ گاڑی کہاں ہے جو وہ چاہتا تھا؟",
+      "target_text": "where is the car that he wanted?",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0315L02B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0315L02B01",
+      "seed_number": 315,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "استطاعت سے باہر تھا",
+      "target_text": "he couldn't afford",
+      "known_audio_id": "5d034aa4-9b45-484a-bd46-67a7c325e442",
+      "target1_audio_id": "e2af2560-543a-4dc8-8476-ecab3f99e507",
+      "target2_audio_id": "79d352c6-8445-4a29-a3b9-61c8c74bc63f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0315L02B01",
+      "seed_number": 315,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "گاڑی خریدنا اس کی استطاعت سے باہر تھا",
+      "target_text": "he couldn't afford the car",
+      "known_audio_id": null,
+      "target1_audio_id": "221cb40d-69b4-4305-8e02-229fa7e3cdd1",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0324L02B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0324L02B01",
+      "seed_number": 324,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "کے دونوں ہاتھ اوپر ہیں",
+      "target_text": "has both of her hands up",
+      "known_audio_id": "5eb2ccfd-8158-49d7-83ec-21e403d53e60",
+      "target1_audio_id": "74e76b81-61ed-4af7-9717-8962b4a7666f",
+      "target2_audio_id": "9dc8c4da-b5b9-4224-a0c4-072c4fd96997",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0324L02B01",
+      "seed_number": 324,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "اس کے دونوں ہاتھ اوپر ہیں",
+      "target_text": "she has both of her hands up",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0329L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0329L01B01",
+      "seed_number": 329,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "یہ اہم ہے",
+      "target_text": "it's important",
+      "known_audio_id": "190ee47a-8963-4788-a016-a9ebec59e75e",
+      "target1_audio_id": "a4071a5d-8b07-4e26-8d5a-0571587f1756",
+      "target2_audio_id": "247dcc1e-ba9c-466a-b889-d22440667637",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0329L01B01",
+      "seed_number": 329,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "یہ بہت اہم ہے",
+      "target_text": "it's very important",
+      "known_audio_id": "c66b8752-e577-4986-967c-705b63b936ed",
+      "target1_audio_id": "690d058e-2470-4c77-b2b7-81bd57701de4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0607L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0607L01B01",
+      "seed_number": 607,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "چیزیں مختلف طریقے سے کیں",
+      "target_text": "done things differently",
+      "known_audio_id": "86f75633-1db4-48cd-b04e-a0cc698285af",
+      "target1_audio_id": "54c02702-9a76-4ee1-947f-c07931101458",
+      "target2_audio_id": "a2cd45cc-1fd5-4127-977c-80d88510a665",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0607L01B01",
+      "seed_number": 607,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "ہم نے چیزیں مختلف طریقے سے کیں",
+      "target_text": "we've done things differently",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0616L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0616L01B01",
+      "seed_number": 616,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "آپ نے یہ سوچا",
+      "target_text": "you thought that",
+      "known_audio_id": "b3c55a3b-3f03-4087-b618-01ff0a475d6d",
+      "target1_audio_id": "19e82c3e-e27f-4781-bf59-309ea87d1ffa",
+      "target2_audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0616L01B01",
+      "seed_number": 616,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "مجھے یقین نہیں کہ آپ نے یہ سوچا",
+      "target_text": "I'm not sure you thought that",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0618L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0618L01B01",
+      "seed_number": 618,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "زیادہ عرصہ لگتا",
+      "target_text": "feel like a long time",
+      "known_audio_id": "0d7d9e34-b3e9-4b57-8d86-1947c50446eb",
+      "target1_audio_id": "d5b0a0d4-faff-4be4-a57f-9c69f4d793a0",
+      "target2_audio_id": "cbada33e-08ea-47d4-8442-222012dfe360",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0618L01B01",
+      "seed_number": 618,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "کیا یہ زیادہ عرصہ لگتا ہے؟",
+      "target_text": "does it feel like a long time?",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0620L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0620L01B01",
+      "seed_number": 620,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "ہم آخری بار ملے",
+      "target_text": "we last saw each other",
+      "known_audio_id": "3134fdfb-08e5-4b57-80ac-2b9b2fba1f20",
+      "target1_audio_id": "da9d74bc-bdb1-4268-be2d-baf7ceceb712",
+      "target2_audio_id": "562a7d92-bb85-4188-892c-04d468f21495",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0620L01B01",
+      "seed_number": 620,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "جہاں ہم آخری بار ملے",
+      "target_text": "where we last saw each other",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0620L01B01",
+     "set": {
+      "known_text": "ہم آخری بار ملے",
+      "target_text": "we last saw each other",
+      "known_audio_id": "3134fdfb-08e5-4b57-80ac-2b9b2fba1f20",
+      "target1_audio_id": "da9d74bc-bdb1-4268-be2d-baf7ceceb712",
+      "target2_audio_id": "562a7d92-bb85-4188-892c-04d468f21495"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0618L01B01",
+     "set": {
+      "known_text": "زیادہ عرصہ لگتا",
+      "target_text": "feel like a long time",
+      "known_audio_id": "0d7d9e34-b3e9-4b57-8d86-1947c50446eb",
+      "target1_audio_id": "d5b0a0d4-faff-4be4-a57f-9c69f4d793a0",
+      "target2_audio_id": "cbada33e-08ea-47d4-8442-222012dfe360"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0616L01B01",
+     "set": {
+      "known_text": "آپ نے یہ سوچا",
+      "target_text": "you thought that",
+      "known_audio_id": "b3c55a3b-3f03-4087-b618-01ff0a475d6d",
+      "target1_audio_id": "19e82c3e-e27f-4781-bf59-309ea87d1ffa",
+      "target2_audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0607L01B01",
+     "set": {
+      "known_text": "چیزیں مختلف طریقے سے کیں",
+      "target_text": "done things differently",
+      "known_audio_id": "86f75633-1db4-48cd-b04e-a0cc698285af",
+      "target1_audio_id": "54c02702-9a76-4ee1-947f-c07931101458",
+      "target2_audio_id": "a2cd45cc-1fd5-4127-977c-80d88510a665"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0329L01B01",
+     "set": {
+      "known_text": "یہ اہم ہے",
+      "target_text": "it's important",
+      "known_audio_id": "190ee47a-8963-4788-a016-a9ebec59e75e",
+      "target1_audio_id": "a4071a5d-8b07-4e26-8d5a-0571587f1756",
+      "target2_audio_id": "247dcc1e-ba9c-466a-b889-d22440667637"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0324L02B01",
+     "set": {
+      "known_text": "کے دونوں ہاتھ اوپر ہیں",
+      "target_text": "has both of her hands up",
+      "known_audio_id": "5eb2ccfd-8158-49d7-83ec-21e403d53e60",
+      "target1_audio_id": "74e76b81-61ed-4af7-9717-8962b4a7666f",
+      "target2_audio_id": "9dc8c4da-b5b9-4224-a0c4-072c4fd96997"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0315L02B01",
+     "set": {
+      "known_text": "استطاعت سے باہر تھا",
+      "target_text": "he couldn't afford",
+      "known_audio_id": "5d034aa4-9b45-484a-bd46-67a7c325e442",
+      "target1_audio_id": "e2af2560-543a-4dc8-8476-ecab3f99e507",
+      "target2_audio_id": "79d352c6-8445-4a29-a3b9-61c8c74bc63f"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0315L01B01",
+     "set": {
+      "known_text": "جو گاڑی چاہتا تھا",
+      "target_text": "the car that he wanted",
+      "known_audio_id": "d3772cbe-ebd8-46d3-acfb-5f1d087009a2",
+      "target1_audio_id": "b9c2fe0f-0405-41ea-af66-7739a9374e1f",
+      "target2_audio_id": "c9bcb170-606d-4e49-af3c-b3a22788f28e"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0311L03B01",
+     "set": {
+      "known_text": "یقین نہیں کر سکتا تھا",
+      "target_text": "he couldn't believe",
+      "known_audio_id": "14edf1af-2361-4319-a932-0502e319ee4a",
+      "target1_audio_id": "a0e7e1a7-05a9-485b-acd0-99d3f3489084",
+      "target2_audio_id": "9bd36eaf-083e-4adb-b5d9-4b8bb8e56727"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0283L02B01",
+     "set": {
+      "known_text": "آپ کے دوستوں میں سے",
+      "target_text": "of your friends",
+      "known_audio_id": "d073f984-0e3a-4373-a18d-4afa21935c14",
+      "target1_audio_id": "36c98ec7-4dbb-458f-a846-a1da5bc6b2ef",
+      "target2_audio_id": "4def9d96-acc2-420d-b0cd-e795bec21250"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "status": 200,
+  "res": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "eng_for_urd",
+      "id": "eng_for_urd:S0636L01B01"
+     },
+     "before": {
+      "id": "eng_for_urd:S0636L01B01",
+      "seed_number": 636,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "جین کا بیگ",
+      "target_text": "jane's bag",
+      "known_audio_id": "cfcf0f09-4c24-47ee-9dc1-267e92674ef1",
+      "target1_audio_id": "c17c7b06-0745-4aad-8441-3f3a3444ec2c",
+      "target2_audio_id": "6944968e-4c8b-44a1-a3b1-4060a9dacb6b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eng_for_urd:S0636L01B01",
+      "seed_number": 636,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "جین کا بیگ یہاں ہے",
+      "target_text": "Jane's bag is here",
+      "known_audio_id": null,
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "eng_for_urd:S0636L01B01",
+     "set": {
+      "known_text": "جین کا بیگ",
+      "target_text": "jane's bag",
+      "known_audio_id": "cfcf0f09-4c24-47ee-9dc1-267e92674ef1",
+      "target1_audio_id": "c17c7b06-0745-4aad-8441-3f3a3444ec2c",
+      "target2_audio_id": "6944968e-4c8b-44a1-a3b1-4060a9dacb6b"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ }
+]

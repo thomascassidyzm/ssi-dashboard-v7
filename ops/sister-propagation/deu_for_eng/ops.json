@@ -1,0 +1,1076 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0033L02U01",
+  "expect": {
+   "known_text": "How long have you already been learning German, and is it useful?",
+   "target_text": "Wie lange lernst du schon Deutsch, und ist es nützlich?"
+  },
+  "set": {
+   "known_text": "How long have you been learning German, and is it useful?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0033L02U01",
+  "slot": "known",
+  "audio_id": "495add49-aa9b-4669-b415-940518fe32a8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0141L02U05",
+  "expect": {
+   "known_text": "I wanted to know if it is in order to wait here for you",
+   "target_text": "Ich wollte wissen ob es in Ordnung ist hier auf dich zu warten"
+  },
+  "set": {
+   "known_text": "I wanted to know if it is okay to wait here for you"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0141L02U05",
+  "slot": "known",
+  "audio_id": "ec76ebaa-7285-4214-843c-235cdcae685c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0182L01B03",
+  "expect": {
+   "known_text": "I want to look anywhere",
+   "target_text": "Ich möchte irgendwo suchen"
+  },
+  "set": {
+   "known_text": "I'd like to look anywhere"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0182L01B03",
+  "slot": "known",
+  "audio_id": "f461249e-68f2-4173-b6d6-cb69d2900b78"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0056L02B06",
+  "expect": {
+   "known_text": "I feel better myself",
+   "target_text": "Ich fühle mich besser"
+  },
+  "set": {
+   "known_text": "I feel better"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0056L02B06",
+  "slot": "known",
+  "audio_id": "f2ae1895-d427-4611-9119-98b830f573aa"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0056L02U13",
+  "expect": {
+   "known_text": "I feel myself much better since I started to learn more",
+   "target_text": "Ich fühle mich viel besser seit ich angefangen habe mehr zu lernen"
+  },
+  "set": {
+   "known_text": "I feel much better since I started to learn more"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0056L02U13",
+  "slot": "known",
+  "audio_id": "0658e76f-dcf4-453f-aa40-f9c704215ab8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0064L01U07",
+  "expect": {
+   "known_text": "I want learning German",
+   "target_text": "Ich will Deutsch lernen"
+  },
+  "set": {
+   "known_text": "I want to learn German"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0064L01U07",
+  "slot": "known",
+  "audio_id": "6f37bdae-d8f5-45e8-b1ee-4c2368c025d6"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0424L03U03",
+  "expect": {
+   "known_text": "I thought we did not have to waste the time of everyone",
+   "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden müssen"
+  },
+  "set": {
+   "target_text": "ich dachte, dass wir die Zeit von allen nicht verschwenden mussten"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0424L03U03",
+  "slot": "target1",
+  "audio_id": "f3cf4abf-08bc-408b-afc1-065fd66f4b3c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0424L03U03",
+  "slot": "target2",
+  "audio_id": "1b6c8b89-634d-4149-8c5b-01b0a62bde0e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0424L03U06",
+  "expect": {
+   "known_text": "I knew we did not have to waste everyone's time",
+   "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden müssen"
+  },
+  "set": {
+   "target_text": "ich wusste, dass wir die Zeit von allen nicht verschwenden mussten"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0424L03U06",
+  "slot": "target1",
+  "audio_id": "f5a7f337-ed3f-4d82-8740-402a3e8b2fc1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0424L03U06",
+  "slot": "target2",
+  "audio_id": "a17802b0-acb0-4644-868c-715427e7198d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0163L01U04",
+  "expect": {
+   "known_text": "I think that this way of learning is perfect for me and I want to continue",
+   "target_text": "Ich denke, dass diese Form zu lernen perfekt für mich ist und ich möchte weitermachen"
+  },
+  "set": {
+   "known_text": "I think that this way of learning is perfect for me and I'd like to continue"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0163L01U04",
+  "slot": "known",
+  "audio_id": "71d3d3ae-a7d8-41df-992c-8d9270029a91"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0202L01U04",
+  "expect": {
+   "known_text": "Nobody wants to work in an office on Saturday evening",
+   "target_text": "Niemand möchte am Samstagabend in einem Büro arbeiten"
+  },
+  "set": {
+   "known_text": "Nobody would like to work in an office on Saturday evening"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0202L01U04",
+  "slot": "known",
+  "audio_id": "ce993d65-e6a9-4262-8d3a-cfd85e1cb273"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0202L02U04",
+  "expect": {
+   "known_text": "The son wants to make sure nobody else knows how to answer the question",
+   "target_text": "Der Sohn möchte sicherstellen, dass niemand anderes weiß, wie man die Frage beantworten sollte"
+  },
+  "set": {
+   "known_text": "The son would like to make sure nobody else knows how to answer the question"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0202L02U04",
+  "slot": "known",
+  "audio_id": "5159317a-134d-49c4-bd55-dfa14792e052"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0209L01U09",
+  "expect": {
+   "known_text": "I don't want to spend time alone",
+   "target_text": "Ich möchte nicht allein Zeit verbringen"
+  },
+  "set": {
+   "known_text": "I wouldn't like to spend time alone"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0209L01U09",
+  "slot": "known",
+  "audio_id": "e9ef9052-ce9d-4c54-81ea-fd8e4af712b2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0210L02B02",
+  "expect": {
+   "known_text": "I want to discuss the problem with you",
+   "target_text": "Ich möchte das Problem mit dir besprechen"
+  },
+  "set": {
+   "known_text": "I'd like to discuss the problem with you"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0210L02B02",
+  "slot": "known",
+  "audio_id": "17da6512-d506-4fe3-a737-74c6b7aaca4c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0214L02U08",
+  "expect": {
+   "known_text": "I want to practice German at the weekend",
+   "target_text": "Ich möchte am Wochenende Deutsch üben"
+  },
+  "set": {
+   "known_text": "I'd like to practice German at the weekend"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0214L02U08",
+  "slot": "known",
+  "audio_id": "60506c5f-d6ad-4308-8840-e82be5b74520"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0221L02U10",
+  "expect": {
+   "known_text": "I want to watch the football with my friends this evening",
+   "target_text": "Ich möchte heute Abend mit meinen Freunden Fußball schauen"
+  },
+  "set": {
+   "known_text": "I'd like to watch the football with my friends this evening"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0221L02U10",
+  "slot": "known",
+  "audio_id": "8dab6f35-c32f-4c04-92cb-991b2ce66d56"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0221L04U07",
+  "expect": {
+   "known_text": "I want to watch a film with you this evening",
+   "target_text": "Ich möchte heute Abend einen Film mit dir schauen"
+  },
+  "set": {
+   "known_text": "I'd like to watch a film with you this evening"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0221L04U07",
+  "slot": "known",
+  "audio_id": "473d26a2-7ea8-45e0-9418-bfc81eb3b5f8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0224L01U05",
+  "expect": {
+   "known_text": "I am just thinking about what I want to do later this evening at home",
+   "target_text": "Ich denke gerade darüber nach was ich später am Abend zu Hause machen möchte"
+  },
+  "set": {
+   "known_text": "I am just thinking about what I'd like to do later this evening at home"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0224L01U05",
+  "slot": "known",
+  "audio_id": "7ee8d929-c28e-428b-8e5e-a67056dfd46f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0225L01U12",
+  "expect": {
+   "known_text": "He would give what I want if it were possible",
+   "target_text": "Er würde geben was ich möchte wenn es möglich wäre"
+  },
+  "set": {
+   "known_text": "He would give what I'd like if it were possible"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0225L01U12",
+  "slot": "known",
+  "audio_id": "1a924f2b-7692-4f1b-8471-6848d1adaa40"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0226L01U03",
+  "expect": {
+   "known_text": "The man is at work today but he wants to go home early this evening",
+   "target_text": "Der Mann ist heute bei der Arbeit aber er möchte heute Abend früh nach Hause"
+  },
+  "set": {
+   "known_text": "The man is at work today but he'd like to go home early this evening"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0226L01U03",
+  "slot": "known",
+  "audio_id": "4a7e28d7-77df-467f-a367-a3ab14ddae46"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0227L01U03",
+  "expect": {
+   "known_text": "That man is at work now but he wants to go home early this evening",
+   "target_text": "Dieser Mann ist jetzt bei der Arbeit aber er möchte heute Abend früh nach Hause"
+  },
+  "set": {
+   "known_text": "That man is at work now but he'd like to go home early this evening"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0227L01U03",
+  "slot": "known",
+  "audio_id": "4952ecd1-64ad-4cc5-9355-d780ad7706af"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0227L01U06",
+  "expect": {
+   "known_text": "That man told me yesterday that he wants to learn German better than before",
+   "target_text": "Dieser Mann hat mir gestern gesagt dass er Deutsch besser lernen möchte als vorhin"
+  },
+  "set": {
+   "known_text": "That man told me yesterday that he'd like to learn German better than before"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0227L01U06",
+  "slot": "known",
+  "audio_id": "e4512bdf-054b-4133-87db-4ac97090e131"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0228L01U04",
+  "expect": {
+   "known_text": "I think that man has just started to practise speaking because he wants to get better",
+   "target_text": "Ich denke, dieser Mann hat gerade angefangen, sprechen zu üben, weil er besser werden möchte"
+  },
+  "set": {
+   "known_text": "I think that man has just started to practise speaking because he'd like to get better"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0228L01U04",
+  "slot": "known",
+  "audio_id": "3e635ea6-cbdd-4042-a330-f6bd08e424cc"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0229L01U03",
+  "expect": {
+   "known_text": "That woman is at work now but she wants to go home early this evening",
+   "target_text": "Diese Frau ist jetzt bei der Arbeit aber sie möchte heute Abend früh nach Hause"
+  },
+  "set": {
+   "known_text": "That woman is at work now but she'd like to go home early this evening"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0229L01U03",
+  "slot": "known",
+  "audio_id": "fa6236f0-bf89-486a-be90-2851fb3eac60"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0229L01U06",
+  "expect": {
+   "known_text": "That woman told me yesterday that she wants to learn German better than before",
+   "target_text": "Diese Frau hat mir gestern gesagt dass sie Deutsch besser lernen möchte als vorhin"
+  },
+  "set": {
+   "known_text": "That woman told me yesterday that she'd like to learn German better than before"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0229L01U06",
+  "slot": "known",
+  "audio_id": "765431c0-7512-46d8-944f-12bf9446973f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0233L01U08",
+  "expect": {
+   "known_text": "I know a young woman who wants to help you",
+   "target_text": "Ich kenne eine junge Frau die dir helfen möchte"
+  },
+  "set": {
+   "known_text": "I know a young woman who would like to help you"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0233L01U08",
+  "slot": "known",
+  "audio_id": "01b213e0-8917-4431-aba5-9cb7ea7b3673"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0243L02U10",
+  "expect": {
+   "known_text": "She wants the same thing to eat as yesterday",
+   "target_text": "Sie möchte das Gleiche zum Essen wie gestern"
+  },
+  "set": {
+   "known_text": "She'd like the same thing to eat as yesterday"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0243L02U10",
+  "slot": "known",
+  "audio_id": "e5af7bd5-a7b5-4738-8caa-0d059555fff6"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0244L01U02",
+  "expect": {
+   "known_text": "There is a lot I want to tell you",
+   "target_text": "Es gibt viel, was ich dir sagen möchte"
+  },
+  "set": {
+   "known_text": "There is a lot I'd like to tell you"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0244L01U02",
+  "slot": "known",
+  "audio_id": "3f92129b-7505-4c6d-8b67-9d49063a2f72"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0250L03U08",
+  "expect": {
+   "known_text": "I want to understand the question before I answer",
+   "target_text": "Ich möchte die Frage verstehen bevor ich antworte"
+  },
+  "set": {
+   "known_text": "I'd like to understand the question before I answer"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0250L03U08",
+  "slot": "known",
+  "audio_id": "aefb32ac-017c-4f70-9f48-6d0099eb7a07"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0251L02U09",
+  "expect": {
+   "known_text": "I want to wait until after we finish to explain everything to you",
+   "target_text": "Ich möchte warten, bis wir fertig sind, um dir alles zu erklären"
+  },
+  "set": {
+   "known_text": "I'd like to wait until after we finish to explain everything to you"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0251L02U09",
+  "slot": "known",
+  "audio_id": "929975ef-01c0-418e-ba77-cc1fb3730439"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0272L01U10",
+  "expect": {
+   "known_text": "That sounds like something I want to try",
+   "target_text": "Das klingt nach etwas das ich versuchen möchte"
+  },
+  "set": {
+   "known_text": "That sounds like something I'd like to try"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0272L01U10",
+  "slot": "known",
+  "audio_id": "63b3d4c6-2aaa-4bc9-aea3-c4e7bc771224"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0275L01U06",
+  "expect": {
+   "known_text": "I want to practice German longer today",
+   "target_text": "Ich möchte heute länger Deutsch üben"
+  },
+  "set": {
+   "known_text": "I'd like to practice German longer today"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0275L01U06",
+  "slot": "known",
+  "audio_id": "81b2d914-0b41-4b3c-8916-0d85daab155c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0281L03U02",
+  "expect": {
+   "known_text": "When I finish I want to go",
+   "target_text": "Wenn ich fertig trinke, möchte ich gehen"
+  },
+  "set": {
+   "known_text": "When I finish I'd like to go"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0281L03U02",
+  "slot": "known",
+  "audio_id": "d4950953-013d-41d5-a271-ca6bf828b7b7"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0285L01U12",
+  "expect": {
+   "known_text": "She speaks German because she wants to learn it",
+   "target_text": "Sie spricht Deutsch weil sie es lernen möchte"
+  },
+  "set": {
+   "known_text": "She speaks German because she'd like to learn it"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0285L01U12",
+  "slot": "known",
+  "audio_id": "256671c6-57b8-4df9-afda-5d6c5f14d11b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0285L01U13",
+  "expect": {
+   "known_text": "She speaks German and she wants to help you",
+   "target_text": "Sie spricht Deutsch und sie möchte dir helfen"
+  },
+  "set": {
+   "known_text": "She speaks German and she'd like to help you"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0285L01U13",
+  "slot": "known",
+  "audio_id": "7e3342b5-d6d0-4ab1-b027-5aa739bb72a3"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0297L01U02",
+  "expect": {
+   "known_text": "I do not know her but I want to meet her",
+   "target_text": "Ich kenne sie nicht, aber ich möchte sie treffen"
+  },
+  "set": {
+   "known_text": "I do not know her but I'd like to meet her"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0297L01U02",
+  "slot": "known",
+  "audio_id": "d9c438c4-ffa9-427d-acee-18fec74f614e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0300L02U12",
+  "expect": {
+   "known_text": "He doesn't want to seem difficult",
+   "target_text": "Er möchte nicht schwierig wirken"
+  },
+  "set": {
+   "known_text": "He wouldn't like to seem difficult"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0300L02U12",
+  "slot": "known",
+  "audio_id": "6eaaa085-a7b4-44e7-8602-d7848e27e1c4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0582L01U05",
+  "expect": {
+   "known_text": "she wants to know what it was like to grow up here",
+   "target_text": "sie möchte wissen, wie es war, hier aufzuwachsen"
+  },
+  "set": {
+   "known_text": "she'd like to know what it was like to grow up here"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0582L01U05",
+  "slot": "known",
+  "audio_id": "fdef4ba9-bf58-4470-a0b9-b302bdc95a69"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0582L01U07",
+  "expect": {
+   "known_text": "she wants to know what it is like to grow up here",
+   "target_text": "sie möchte wissen, wie es ist, hier aufzuwachsen"
+  },
+  "set": {
+   "known_text": "she'd like to know what it is like to grow up here"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0582L01U07",
+  "slot": "known",
+  "audio_id": "d7e17f21-d3a9-4885-8f96-1f070e57b6a9"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0586L03U05",
+  "expect": {
+   "known_text": "she wants to try boiled eggs",
+   "target_text": "sie möchte gekochte Eier versuchen"
+  },
+  "set": {
+   "known_text": "she'd like to try boiled eggs"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0586L03U05",
+  "slot": "known",
+  "audio_id": "e918f656-4e7b-4d3d-b572-020f45912f0a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0594L01U05",
+  "expect": {
+   "known_text": "she wants to see my toys",
+   "target_text": "sie möchte meine Spielzeuge sehen"
+  },
+  "set": {
+   "known_text": "she'd like to see my toys"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0594L01U05",
+  "slot": "known",
+  "audio_id": "5e13b12e-b9fb-4b12-a852-36b75f96c0cd"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0594L02U07",
+  "expect": {
+   "known_text": "she wants to see the toys",
+   "target_text": "sie möchte die Spielzeuge sehen"
+  },
+  "set": {
+   "known_text": "she'd like to see the toys"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0594L02U07",
+  "slot": "known",
+  "audio_id": "fa284b56-ea58-479c-95f9-3d2ec5c7d490"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0595L03U03",
+  "expect": {
+   "known_text": "she wants to lie down",
+   "target_text": "sie möchte sich hinlegen"
+  },
+  "set": {
+   "known_text": "she'd like to lie down"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0595L03U03",
+  "slot": "known",
+  "audio_id": "0ce0d117-a440-4bda-bc00-95b8c29c3ce0"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0596L01U04",
+  "expect": {
+   "known_text": "she wants to see with my eyes",
+   "target_text": "sie möchte mit meinen Augen sehen"
+  },
+  "set": {
+   "known_text": "she'd like to see with my eyes"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0596L01U04",
+  "slot": "known",
+  "audio_id": "63dd452c-ab16-40da-9d9f-bcc59cf944d5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0634L03U03",
+  "expect": {
+   "known_text": "she wants one of those",
+   "target_text": "sie möchte eines von denen"
+  },
+  "set": {
+   "known_text": "she'd like one of those"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0634L03U03",
+  "slot": "known",
+  "audio_id": "fde0cf1f-65e3-4707-80e7-f859d6c114ed"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0634L03U06",
+  "expect": {
+   "known_text": "she also wants one of those",
+   "target_text": "sie möchte auch eines von denen"
+  },
+  "set": {
+   "known_text": "she would also like one of those"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0634L03U06",
+  "slot": "known",
+  "audio_id": "190439c5-75d7-447f-9b71-c596a70d06fe"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0378L02U05",
+  "expect": {
+   "known_text": "she thought it was not enough money",
+   "target_text": "sie fand, dass es nicht genug Geld war"
+  },
+  "set": {
+   "target_text": "sie dachte, dass es nicht genug Geld war"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0378L02U05",
+  "slot": "target1",
+  "audio_id": "c9d82b6f-8318-4347-a3da-350a7f4d2c95"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0378L02U05",
+  "slot": "target2",
+  "audio_id": "e29746ba-c1f0-4f4f-bf8d-1a10d56b8f11"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0379L01U04",
+  "expect": {
+   "known_text": "I thought it was luck that she was there",
+   "target_text": "ich fand, dass es Glück war, dass sie dort war"
+  },
+  "set": {
+   "target_text": "ich dachte, dass es Glück war, dass sie dort war"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0379L01U04",
+  "slot": "target1",
+  "audio_id": "17a01c2a-c22c-4789-b260-6b2f414479f5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0379L01U04",
+  "slot": "target2",
+  "audio_id": "e0f07118-e79f-4855-a910-51ee59a09721"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0380L01U05",
+  "expect": {
+   "known_text": "I thought she had not asked enough",
+   "target_text": "ich fand, dass sie nicht genug gefragt hatte"
+  },
+  "set": {
+   "target_text": "ich dachte, dass sie nicht genug gefragt hatte"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0380L01U05",
+  "slot": "target1",
+  "audio_id": "91101b5a-230e-4164-b4bd-3755fda66b39"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0380L01U05",
+  "slot": "target2",
+  "audio_id": "386333a5-ec70-47a5-bdc6-747dfe643c65"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0381L02U05",
+  "expect": {
+   "known_text": "she thought it was important to follow",
+   "target_text": "sie fand, dass es wichtig war zu folgen"
+  },
+  "set": {
+   "target_text": "sie dachte, dass es wichtig war zu folgen"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0381L02U05",
+  "slot": "target1",
+  "audio_id": "001c971b-61b1-460c-b729-e24017d6f89c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0381L02U05",
+  "slot": "target2",
+  "audio_id": "cceb9d44-bdd1-4225-b468-af970e1d1663"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0383L02U06",
+  "expect": {
+   "known_text": "she thought it was important to put it in the garden",
+   "target_text": "sie fand, dass es wichtig war, es in den Garten zu stellen"
+  },
+  "set": {
+   "target_text": "sie dachte, dass es wichtig war, es in den Garten zu stellen"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0383L02U06",
+  "slot": "target1",
+  "audio_id": "262c27de-a610-4735-bdb5-1811ba8730b9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0383L02U06",
+  "slot": "target2",
+  "audio_id": "e1347c60-0264-4f60-bb2d-94828b922f0b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0384L01U04",
+  "expect": {
+   "known_text": "I thought what she had said a moment ago was important",
+   "target_text": "ich fand, was sie vor einem Moment gesagt hatte, war wichtig"
+  },
+  "set": {
+   "target_text": "ich dachte, was sie vor einem Moment gesagt hatte, war wichtig"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0384L01U04",
+  "slot": "target1",
+  "audio_id": "d131ab45-8ef2-46ea-be59-a6added653aa"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0384L01U04",
+  "slot": "target2",
+  "audio_id": "e9c249b3-2091-4803-b260-f7af63b7e731"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0419L01U03",
+  "expect": {
+   "known_text": "I thought the people would like them",
+   "target_text": "ich dachte, dass die Leute sie mögen wollten"
+  },
+  "set": {
+   "target_text": "ich dachte, dass die Leute sie mögen würden"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0419L01U03",
+  "slot": "target1",
+  "audio_id": "63f4249b-0c4b-4971-8c82-5c8c955b5900"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0419L01U03",
+  "slot": "target2",
+  "audio_id": "1b0e03d6-8c61-415f-88a8-1d81b5c77de0"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0419L01U04",
+  "expect": {
+   "known_text": "she told me the people would like them",
+   "target_text": "sie hat mir gesagt, dass die Leute sie mögen wollten"
+  },
+  "set": {
+   "target_text": "sie hat mir gesagt, dass die Leute sie mögen würden"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0419L01U04",
+  "slot": "target1",
+  "audio_id": "42aadcba-8980-415c-83a7-fb951de92286"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0419L01U04",
+  "slot": "target2",
+  "audio_id": "561f111a-8612-410d-a556-a16d97ea36b2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0419L01U06",
+  "expect": {
+   "known_text": "I knew the people would like them",
+   "target_text": "ich wusste, dass die Leute sie mögen wollten"
+  },
+  "set": {
+   "target_text": "ich wusste, dass die Leute sie mögen würden"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0419L01U06",
+  "slot": "target1",
+  "audio_id": "e32e7e18-3216-4690-a516-f82da373323a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0419L01U06",
+  "slot": "target2",
+  "audio_id": "0d86091d-1b47-4e00-be3e-26618913fcfe"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0513L03B01",
+  "expect": {
+   "known_text": "I move",
+   "target_text": "ich bewege"
+  },
+  "set": {
+   "target_text": "ich bewege mich"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0513L03B01",
+  "slot": "target1",
+  "audio_id": "8ece9ebf-5b57-41aa-9b6b-d8cb0d1c4cad"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0513L03B01",
+  "slot": "target2",
+  "audio_id": "cfc7ff8e-b689-4f0b-83d9-86bf4be8c949"
+ }
+]

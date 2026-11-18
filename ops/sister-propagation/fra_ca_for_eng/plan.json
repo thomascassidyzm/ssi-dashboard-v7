@@ -1,0 +1,68 @@
+{
+ "course": "fra_ca_for_eng",
+ "purpose": "fra_ca_for_eng sister-course propagation: se voir single-subject rows + need help (cs #698·AI, Kai approved 18 Nov)",
+ "phrases": [
+  {
+   "id": "S0018L02U01",
+   "known": "we want to meet tomorrow",
+   "target": "on veut se voir demain"
+  },
+  {
+   "id": "S0018L02U02",
+   "known": "we want to meet with everyone",
+   "target": "on veut se voir avec tout le monde"
+  },
+  {
+   "id": "S0018L02U04",
+   "known": "we want to meet later on",
+   "target": "on veut se voir tantôt"
+  },
+  {
+   "id": "S0018L03U02",
+   "known": "we want to meet at six o'clock tomorrow",
+   "target": "on veut se voir à six heures demain"
+  },
+  {
+   "id": "S0039L03U03",
+   "known": "we want to meet this morning",
+   "target": "on veut se voir à matin"
+  },
+  {
+   "id": "S0605L02B01",
+   "known": "I need help"
+  },
+  {
+   "id": "S0605L02B02",
+   "known": "she needs help"
+  },
+  {
+   "id": "S0605L02U02",
+   "known": "I need help right now"
+  },
+  {
+   "id": "S0605L02U03",
+   "known": "maybe she needs help"
+  },
+  {
+   "id": "S0605L02U04",
+   "known": "I heard that she needs help"
+  },
+  {
+   "id": "S0605L02U05",
+   "known": "I need help again"
+  }
+ ],
+ "deletes": [
+  "S0018L02B02",
+  "S0018L02B03",
+  "S0018L03B03",
+  "S0040L02U04"
+ ],
+ "legos": [
+  {
+   "id": "S0605L02",
+   "known": "need help",
+   "intro": true
+  }
+ ]
+}
