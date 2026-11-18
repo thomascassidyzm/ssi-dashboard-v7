@@ -1,0 +1,732 @@
+[
+ {
+  "seed_number": 114,
+  "phrases": {
+   "114:1": [
+    {
+     "known_text": "आज त्यापेक्षा",
+     "target_text": "today than yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कालपेक्षा आज बरं",
+     "target_text": "better today than yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कालपेक्षा आज वाईट",
+     "target_text": "worse today than yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "कालपेक्षा आज जास्त",
+     "target_text": "more today than yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला वाटतं की मी आज कालपेक्षा वाईट करतोय",
+     "target_text": "I think I'm doing worse today than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कालपेक्षा आज बरं वाटतंय",
+     "target_text": "I feel better today than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी कालपेक्षा आज जास्त शिकलोय",
+     "target_text": "I've learnt more today than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला कालपेक्षा आज जास्त समजतं",
+     "target_text": "I understand more today than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी कालपेक्षा आज जास्त थकलोय",
+     "target_text": "I'm more tired today than yesterday",
+     "phrase_role": "use"
+    }
+   ],
+   "114:2": [
+    {
+     "known_text": "वाईट करत होतो",
+     "target_text": "feel as if I'm doing worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला असं वाटतंय की मी वाईट करतोय",
+     "target_text": "I feel as if I'm doing worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आज मी वाईट करतोय असं वाटतंय",
+     "target_text": "feel as if I'm doing worse today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पुन्हा वाईट करतोय असं वाटतंय",
+     "target_text": "feel as if I'm doing worse again",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला असं वाटतंय की मी काल आज करतोय त्यापेक्षा वाईट करत होतो",
+     "target_text": "I feel as if I'm doing worse today than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला असं वाटतंय की मी वाईट करतोय, पण मी शिकतोय",
+     "target_text": "I feel as if I'm doing worse, but I'm learning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला असं वाटतंय की मी माझ्या मित्रांपेक्षा वाईट करतोय",
+     "target_text": "I feel as if I'm doing worse than my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला खात्री नाही, पण मला असं वाटतंय की मी वाईट करतोय",
+     "target_text": "I'm not sure, but I feel as if I'm doing worse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी वाईट करतोय असं मला का वाटतंय ते मला माहित नाही",
+     "target_text": "I don't know why I feel as if I'm doing worse",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 115,
+  "phrases": {
+   "115:1": [
+    {
+     "known_text": "तयार",
+     "target_text": "ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "शिकायला तयार",
+     "target_text": "ready to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तयार नाही",
+     "target_text": "not ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आता तयार",
+     "target_text": "ready now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी तयार आहे",
+     "target_text": "I'm ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी उत्तर द्यायला तयार आहे",
+     "target_text": "I'm ready to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी तयार आहे याची मला खात्री नाही",
+     "target_text": "I'm not sure I'm ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की मी तयार आहे",
+     "target_text": "I think that I'm ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्ही घरी जायला तयार आहात का?",
+     "target_text": "are you ready to go home?",
+     "phrase_role": "use"
+    }
+   ],
+   "115:2": [
+    {
+     "known_text": "संभाषण करायला",
+     "target_text": "to have a conversation",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "संभाषण करायला तयार",
+     "target_text": "ready to have a conversation",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "संभाषण करायला इंग्रजीत",
+     "target_text": "to have a conversation in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तुमच्याशी संभाषण करायला",
+     "target_text": "to have a conversation with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी संभाषण करायला तयार आहे",
+     "target_text": "I'm ready to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी इंग्रजीत संभाषण करायला तयार आहे",
+     "target_text": "I'm ready to have a conversation in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी संभाषण करायला तयार आहे याची मला खात्री नाही",
+     "target_text": "I'm not sure I'm ready to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की मी संभाषण करायला तयार आहे",
+     "target_text": "I think that I'm ready to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तुमच्या मित्राशी संभाषण करायला आवडेल",
+     "target_text": "I'd like to have a conversation with your friend",
+     "phrase_role": "use"
+    }
+   ],
+   "115:3": [
+    {
+     "known_text": "वाटत नाहीये",
+     "target_text": "don't feel as if I'm",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला संभाषण करायला तयार असल्यासारखं वाटत नाहीये अजून",
+     "target_text": "I don't feel as if I'm ready to have a conversation yet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "तयार असल्यासारखं वाटत नाहीये",
+     "target_text": "don't feel as if I'm ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "थकल्यासारखं वाटत नाहीये",
+     "target_text": "don't feel as if I'm tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला संभाषण करायला तयार असल्यासारखं वाटत नाहीये",
+     "target_text": "I don't feel as if I'm ready to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला तयार असल्यासारखं वाटत नाहीये",
+     "target_text": "I don't feel as if I'm ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी शिकतोय असं मला वाटत नाहीये",
+     "target_text": "I don't feel as if I'm learning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी चांगलं करतोय असं मला वाटत नाहीये",
+     "target_text": "I don't feel as if I'm doing better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला घरी जायला तयार असल्यासारखं वाटत नाहीये",
+     "target_text": "I don't feel as if I'm ready to go home",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 116,
+  "phrases": {
+   "116:1": [
+    {
+     "known_text": "चांगला",
+     "target_text": "best",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सर्वात चांगला मार्ग",
+     "target_text": "the best way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "माझा सर्वात चांगला मित्र",
+     "target_text": "my best friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हे सर्वोत्कृष्ट नाही",
+     "target_text": "this isn't the best",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "शिकण्याचा हा सर्वात चांगला मार्ग आहे",
+     "target_text": "this is the best way to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुमचा मित्र सर्वात चांगला आहे",
+     "target_text": "your friend is the best",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माहित असलेली ही सर्वात चांगली गोष्ट आहे",
+     "target_text": "this is the best story I know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं की हा सर्वात चांगला मार्ग आहे",
+     "target_text": "I think that this is the best way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "सर्वात चांगली गोष्ट",
+     "target_text": "the best story",
+     "phrase_role": "build"
+    }
+   ],
+   "116:2": [
+    {
+     "known_text": "पर्याय",
+     "target_text": "choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "सर्वात चांगला पर्याय",
+     "target_text": "best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चांगला पर्याय",
+     "target_text": "a good choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "हा सर्वात चांगला पर्याय आहे",
+     "target_text": "this is the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो चांगला पर्याय होता",
+     "target_text": "it was a good choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला वाटतं तो सर्वात चांगला पर्याय नाही",
+     "target_text": "I think it isn't the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "हा सर्वात चांगला पर्याय नाही",
+     "target_text": "this isn't the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो सर्वात चांगला पर्याय आहे याची मला खात्री नाही",
+     "target_text": "I'm not sure it's the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "वेगळा पर्याय",
+     "target_text": "a different choice",
+     "phrase_role": "build"
+    }
+   ],
+   "116:3": [
+    {
+     "known_text": "करणे",
+     "target_text": "make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "काहीतरी करणे",
+     "target_text": "make something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पर्याय निवडणे",
+     "target_text": "make a choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी करू शकेन असा हा सर्वात चांगला पर्याय नाही",
+     "target_text": "this isn't the best choice I could make",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला सर्वात चांगला पर्याय निवडायचा आहे",
+     "target_text": "I want to make the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी सर्वात चांगला पर्याय निवडू शकेन",
+     "target_text": "I could make the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पर्याय निवडणं सोपं नाही",
+     "target_text": "it isn't easy to make a choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला आज पर्याय निवडायची गरज आहे",
+     "target_text": "I need to make a choice today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "चांगला पर्याय निवडणे",
+     "target_text": "make a good choice",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 117,
+  "phrases": {
+   "117:1": [
+    {
+     "known_text": "नक्कीच",
+     "target_text": "definitely",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "नक्कीच चांगलं",
+     "target_text": "definitely better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "नक्कीच नाही",
+     "target_text": "definitely not",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी नक्कीच तयार आहे",
+     "target_text": "I'm definitely ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला नक्कीच परत यायचं आहे",
+     "target_text": "I definitely want to come back",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते नक्कीच चालेल",
+     "target_text": "it will definitely work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी नक्कीच चांगलं करतोय",
+     "target_text": "I'm definitely doing better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तो नक्कीच सर्वात चांगला पर्याय होता",
+     "target_text": "that was definitely the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "नक्कीच तयार",
+     "target_text": "definitely ready",
+     "phrase_role": "build"
+    }
+   ],
+   "117:2": [
+    {
+     "known_text": "त्यापेक्षा",
+     "target_text": "than",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चांगलं त्यापेक्षा",
+     "target_text": "better than",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "त्यापेक्षा जास्त",
+     "target_text": "more than",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मी कालपेक्षा नक्कीच चांगलं करतोय",
+     "target_text": "I'm definitely doing better than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी आधी होतो त्यापेक्षा चांगलं करतोय",
+     "target_text": "I'm doing better than I was",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला अपेक्षा होती त्यापेक्षा हे जास्त अवघड आहे",
+     "target_text": "this is more difficult than I was expecting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला माझ्या मित्रापेक्षा जास्त शब्द माहित आहेत",
+     "target_text": "I know more words than my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ती माझ्यापेक्षा चांगलं बोलू शकते",
+     "target_text": "she can speak better than me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "कालपेक्षा चांगलं",
+     "target_text": "better than yesterday",
+     "phrase_role": "build"
+    }
+   ],
+   "117:3": [
+    {
+     "known_text": "मागच्या",
+     "target_text": "last",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मागच्या वेळी",
+     "target_text": "last time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मागच्या वेळी मी इथे होतो",
+     "target_text": "last time I was here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मागच्या वेळी मी थकलो होतो",
+     "target_text": "I was tired last time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मागच्या वेळी ते सोपं नव्हतं",
+     "target_text": "last time it wasn't easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मागच्या वेळी तुम्ही काय म्हणालात?",
+     "target_text": "what did you say last time?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी मागच्या वेळेपेक्षा चांगलं करतोय",
+     "target_text": "I'm doing better than I was last time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते मागच्या वेळेपेक्षा नक्कीच चांगलं होतं",
+     "target_text": "it was definitely better than last time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मागच्या वेळेपेक्षा चांगलं",
+     "target_text": "better than last time",
+     "phrase_role": "build"
+    }
+   ],
+   "117:4": [
+    {
+     "known_text": "एकमेकांशी बोललो",
+     "target_text": "talked to each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही काल एकमेकांशी बोललो",
+     "target_text": "we talked to each other yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मागच्या वेळी आम्ही एकमेकांशी बोललो",
+     "target_text": "last time we talked to each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही मागच्या वेळी एकमेकांशी बोललो त्यापेक्षा मी नक्कीच चांगलं करतोय",
+     "target_text": "I'm definitely doing better than I was last time we talked to each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही एकमेकांशी बोललो",
+     "target_text": "we talked to each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही मध्यरात्री एकमेकांशी बोललो",
+     "target_text": "we talked to each other in the middle of the night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही मागच्या आठवड्यात एकमेकांशी बोललो",
+     "target_text": "we talked to each other last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही दुपारभर एकमेकांशी बोललो",
+     "target_text": "we talked to each other all afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "थोडा वेळ एकमेकांशी बोललो",
+     "target_text": "talked to each other for a while",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 118,
+  "phrases": {
+   "118:1": [
+    {
+     "known_text": "वाटत",
+     "target_text": "felt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "चांगलं वाटलं",
+     "target_text": "felt better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ठीक वाटलं",
+     "target_text": "felt okay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "मला काल खूश वाटलं",
+     "target_text": "I felt happy yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "त्यानंतर मला बरं वाटलं",
+     "target_text": "I felt better after that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला बरं वाटलं",
+     "target_text": "I felt better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला काल रात्री थोडं थकल्यासारखं वाटलं",
+     "target_text": "I felt a little tired last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही एकमेकांशी बोललो तेव्हा मला खूप खूश वाटलं",
+     "target_text": "I felt very happy when we talked to each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "थकल्यासारखं वाटलं",
+     "target_text": "felt tired",
+     "phrase_role": "build"
+    }
+   ],
+   "118:2": [
+    {
+     "known_text": "पबमध्ये होतो",
+     "target_text": "were in",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही पबमध्ये होतो",
+     "target_text": "we were in",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही काल पबमध्ये होतो",
+     "target_text": "we were in the pub yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही एका संभाषणाच्या मध्ये होतो",
+     "target_text": "we were in the middle of a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ते शब्द पत्रात होते",
+     "target_text": "the words were in the letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही पबमध्ये होतो तेव्हा मला बरं वाटत होतं",
+     "target_text": "I felt better when we were in the pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही गेल्या आठवड्यात पबमध्ये होतो",
+     "target_text": "we were in the pub last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "पत्रात होते",
+     "target_text": "were in the letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही गोष्टीच्या मध्ये होतो",
+     "target_text": "we were in the middle of the story",
+     "phrase_role": "use"
+    }
+   ],
+   "118:3": [
+    {
+     "known_text": "पब",
+     "target_text": "pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पबमध्ये",
+     "target_text": "in the pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "पबमध्ये जायला",
+     "target_text": "to go to the pub",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "आम्ही पबमध्ये होतो तेव्हा वाटत होतं त्यापेक्षा मला बरं वाटतंय",
+     "target_text": "I feel better than I felt when we were in the pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मला पबमध्ये जायला आवडेल",
+     "target_text": "I'd like to go to the pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "तुम्हाला आज रात्री पबमध्ये जायचं आहे का?",
+     "target_text": "do you want to go to the pub tonight?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "मी पबमध्ये तुमची वाट पाहणार आहे",
+     "target_text": "I'm going to wait for you in the pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आम्ही पबमध्ये एकमेकांशी बोललो",
+     "target_text": "we talked to each other in the pub",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "आज रात्री पब",
+     "target_text": "the pub tonight",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]
