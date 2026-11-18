@@ -1,0 +1,167 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0071L02",
+   "expect": {
+    "known_text": "કે કોઈ",
+    "target_text": "anyone to"
+   },
+   "set": {
+    "target_text": "let anyone",
+    "components": [
+     {
+      "known": "કે",
+      "target": "let"
+     },
+     {
+      "known": "કોઈ",
+      "target": "anyone"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0071L02B04",
+    "seed_number": 71,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "કે કોઈ જાણે",
+    "target_text": "let anyone know",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs713-item9"
+    },
+    "word_count": 15,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02B01",
+   "expect": {
+    "known_text": "કે કોઈ",
+    "target_text": "anyone to"
+   },
+   "set": {
+    "known_text": "કે કોઈ",
+    "target_text": "let anyone",
+    "decomposition": null,
+    "word_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02B02",
+   "expect": {
+    "known_text": "અમે ન ઈચ્છતા હતા કે કોઈ આવે",
+    "target_text": "we didn't want anyone to come"
+   },
+   "set": {
+    "known_text": "તે ન ઈચ્છતો હતો કે કોઈ આવે",
+    "target_text": "he didn't want to let anyone come",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02B03",
+   "expect": {
+    "known_text": "કે કોઈ આવે",
+    "target_text": "anyone to come"
+   },
+   "set": {
+    "known_text": "કે કોઈ આવે",
+    "target_text": "let anyone come",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02U01",
+   "expect": {
+    "known_text": "અમે ન ઈચ્છતા હતા કે કોઈ આવે",
+    "target_text": "we didn't want anyone to come"
+   },
+   "set": {
+    "known_text": "અમે ન ઈચ્છતા હતા કે કોઈ આવે",
+    "target_text": "we didn't want to let anyone come",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02U02",
+   "expect": {
+    "known_text": "તે ન ઈચ્છતો હતો કે કોઈ જાણે",
+    "target_text": "he didn't want anyone to know"
+   },
+   "set": {
+    "known_text": "તે ન ઈચ્છતો હતો કે કોઈ જાણે",
+    "target_text": "he didn't want to let anyone know",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02U03",
+   "expect": {
+    "known_text": "અમે ન ઈચ્છતા હતા કે કોઈ વાર્તા વાંચે",
+    "target_text": "we didn't want anyone to read the story"
+   },
+   "set": {
+    "known_text": "અમે ન ઈચ્છતા હતા કે કોઈ વાર્તા વાંચે",
+    "target_text": "we didn't want to let anyone read the story",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02U04",
+   "expect": {
+    "known_text": "તેણી ન ઈચ્છતી હતી કે કોઈ તેણીનું નામ જાણે",
+    "target_text": "she didn't want anyone to know her name"
+   },
+   "set": {
+    "known_text": "તેણી ન ઈચ્છતી હતી કે કોઈ તેણીનું નામ જાણે",
+    "target_text": "she didn't want to let anyone know her name",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0071L02U05",
+   "expect": {
+    "known_text": "તે ન ઈચ્છતો હતો કે કોઈ વાર્તા વાંચે",
+    "target_text": "he didn't want anyone to read the story"
+   },
+   "set": {
+    "known_text": "તે ન ઈચ્છતો હતો કે કોઈ વાર્તા વાંચે",
+    "target_text": "he didn't want to let anyone read the story",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}
