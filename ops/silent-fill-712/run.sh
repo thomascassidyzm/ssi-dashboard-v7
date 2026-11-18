@@ -7,7 +7,7 @@ P='cs #712·AI: fill a silent known prompt in the course own Azure voice (paid-c
 C="--dir ops/silent-fill-712 --roles known --who cs-712-tel-mar-fill --job #712·AI"
 fill() { for a in 1 2 3 4 5; do
   node ops/silent-fill-694/fill.cjs run "$1" $C --voice "$2" --purpose "$P" && return 0
-  echo "RESUME $1 attempt $a after crash"; for i in $(seq 1 40); do curl -sf -m5 http://localhost:3470/api/audio/voices >/dev/null && break; sleep 15; done
+  echo "RESUME $1 attempt $a after crash"; for i in $(seq 1 40); do curl -s -m5 -o /dev/null http://localhost:3470/ && break; sleep 15; done
 done; echo "GAVE UP $1"; }
 fill eng_for_tel azure_te-IN-ShrutiNeural
 fill eng_for_mar azure_mr-IN-ManoharNeural
