@@ -1,12 +1,12 @@
 # Item 6 independent review — shard A
 
-Checkpoint 1: first 40 Japanese rows reviewed. DB HOLD respected; live checks pending after 14:10Z. Read-only review: no tests/build/typecheck.
+Checkpoint 2: Japanese rows 1–80 reviewed. DB HOLD respected; live checks pending after 14:10Z. No course writes; no tests/build/typecheck.
 
 Assumption: the brief limits this review to jpn_for_eng, kor_for_tam and kor_for_hin; other courses are excluded. No course writes.
 
 | Course | AGREE | DISPUTE | Reviewed |
 | --- | ---: | ---: | ---: |
-| jpn_for_eng | 26 | 14 | 40 |
+| jpn_for_eng | 66 | 14 | 80 |
 | kor_for_tam | 0 | 0 | 0 |
 | kor_for_hin | 0 | 0 | 0 |
 
