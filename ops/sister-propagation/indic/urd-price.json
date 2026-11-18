@@ -1,0 +1,612 @@
+{
+ "total_chars": 888,
+ "calls": [
+  {
+   "row": "S0073L02B01",
+   "role": "known",
+   "text": "لیکن مجھے ابھی اور سیکھنا ہے",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 28,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0073L02B01",
+   "role": "target1",
+   "text": "but I've got more to learn",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "1f641b6c-f000-44f9-9466-110456df5bf9",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0073L02B01",
+   "role": "target2",
+   "text": "but I've got more to learn",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "b58e9147-a4ef-4ba8-9cba-f82d7f27db4b",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0175L01B01",
+   "role": "known",
+   "text": "آپ کل صبح کیا کرنا چاہتے ہیں؟",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 29,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0175L01B01",
+   "role": "target1",
+   "text": "what do you want to do tomorrow morning?",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "50e34b7f-12a7-4f93-b314-f02206a6276f",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0175L01B01",
+   "role": "target2",
+   "text": "what do you want to do tomorrow morning?",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"what do you want to do tomorrow morning?\" is already recorded in eng — 9 clip(s): a812b396-20c7-418e-b7d9-fb57b620a8bc (voice azure_en-GB-RyanNeural, eng_for_por target2); 04797cc0-1a0f-40d6-badf-d509720076b1 (voice azure_en-GB-SoniaNeural, afr_for_eng known); 50e34b7f-12a7-4f93-b314-f02206a6276f (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, eng_for_hin target1); 2369b61d-9d92-448d-a19e-76e856704762 (voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2, eng_for_hin target2); 0e17fa3d-dc6a-43b3-9a85-5a195c719fe1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, eng_for_deu target1); 3c023dff-bd1a-4a4b-b6f7-ce3688cf53ef (voice azure_en-GB-SoniaNeural, isl_for_eng known); 4fd300a8-2698-49bf-9825-0a64ac79fa83 (voice azure_en-GB-SoniaNeural, eng_for_por target1); 96e69581-acbb-44c2-8e6e-5743b2917557 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, eng_for_ita target1); bd093630-ceb5-406a-98a4-dc43c81661b0 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, eng_for_fra target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_urd target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0214L01B01",
+   "role": "known",
+   "text": "کیا آپ ویک اینڈ پر آرام کرنا چاہتے ہیں؟",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 39,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0214L01B01",
+   "role": "target1",
+   "text": "do you want to relax at the weekend?",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 36,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0214L01B01",
+   "role": "target2",
+   "text": "do you want to relax at the weekend?",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 36,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0224L01B01",
+   "role": "known",
+   "text": "اس نے ابھی بولنا شروع کیا ہے",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 28,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0224L01B01",
+   "role": "target1",
+   "text": "he's just started to speak",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"he's just started to speak\" is already recorded in eng — 16 clip(s): 022d566f-4e5f-4d54-a0f8-72249bfb72d7 (voice azure_en-GB-OliverNeural, eng_for_sin target2); dd711446-02dc-4a83-8794-72425fe6c61d (voice azure_en-GB-RyanNeural, eng_for_guj target2); 20586cd6-618c-48af-acab-9d54d21b7c26 (voice azure_en-GB-SoniaNeural, cat_for_eng known); 574cee70-32a8-4a7d-ba68-5c1477e29604 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fin_for_eng known); 66e294ce-c238-467b-a603-85972d179916 (voice bedd6226, eng_for_sin target1); 08a2eb2c-ab35-4251-87cf-961659a66f06 (voice xai_gfzdpspr5fdp, eng_for_guj target2); 3c6902c3-e4a5-4535-8d9b-f3d22db21cfc (voice azure_en-GB-SoniaNeural, eng_for_guj target1); 4e510c40-ee2a-4f70-b9a6-62abc9fca69a (voice azure_en-GB-OliverNeural, fin_for_eng known); 60b41285-3e66-4bbc-b021-55dc3e76dc3b (voice azure_en-GB-SoniaNeural, isl_for_eng known); 95ee3853-cec9-4c21-9bba-d70f90b917c3 (voice azure_en-GB-SoniaNeural, eng_for_sin target1); 9e5b7b76-2104-4a0c-84db-123a345d7ddb (voice azure_en-GB-SoniaNeural, glg_for_eng known); b41246a4-227d-4e81-a4b4-2380a62ff0bf (voice bedd6226, eng_for_guj target1); cc0a4e51-2206-42d5-96f9-acb852aa53e2 (voice gfzdpspr5fdp, eng_for_sin target2); d8f7298a-98d6-4ab1-8c62-bb04a9260d08 (voice azure_en-GB-SoniaNeural, heb_for_eng known); dff16bbe-0e22-43d0-8fe3-ae76d3974aa8 (voice legacy_import, cym_n_for_eng known); fa6ed58d-c9db-4c1e-a9d8-0349da5c567c (voice gfzdpspr5fdp, fra_ca_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_urd target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0224L01B01",
+   "role": "target2",
+   "text": "he's just started to speak",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "574cee70-32a8-4a7d-ba68-5c1477e29604",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0243L01B01",
+   "role": "known",
+   "text": "وہ کھانا چاہتی ہے",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 17,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0243L01B01",
+   "role": "target1",
+   "text": "she wants to eat",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"she wants to eat\" is already recorded in eng — 5 clip(s): 0d0d98ea-50ce-4ad2-a9a2-c72f186498f8 (voice azure_en-GB-RyanNeural, eng_for_pan target2); 8772aca9-e422-4daa-bb9c-d225ba81d8f3 (voice azure_en-GB-SoniaNeural, afr_for_eng known); 6e311725-c67f-476f-942c-5f2066c9f32f (voice bedd6226, eng_for_pan target1); 800719a5-21f0-4a2d-8b41-defd820d72b1 (voice gfzdpspr5fdp, eng_for_pan target2); fb4daca0-8a54-43a3-b74f-d2691d720a09 (voice azure_en-GB-SoniaNeural, eng_for_pan target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_urd target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0243L01B01",
+   "role": "target2",
+   "text": "she wants to eat",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"she wants to eat\" is already recorded in eng — 5 clip(s): 0d0d98ea-50ce-4ad2-a9a2-c72f186498f8 (voice azure_en-GB-RyanNeural, eng_for_pan target2); 8772aca9-e422-4daa-bb9c-d225ba81d8f3 (voice azure_en-GB-SoniaNeural, afr_for_eng known); 6e311725-c67f-476f-942c-5f2066c9f32f (voice bedd6226, eng_for_pan target1); 800719a5-21f0-4a2d-8b41-defd820d72b1 (voice gfzdpspr5fdp, eng_for_pan target2); fb4daca0-8a54-43a3-b74f-d2691d720a09 (voice azure_en-GB-SoniaNeural, eng_for_pan target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_urd target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0244L01B01",
+   "role": "known",
+   "text": "ہم نے پہلے سے بہت کچھ کر لیا ہے",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 31,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0244L01B01",
+   "role": "target1",
+   "text": "we've done a lot already",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 24,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0244L01B01",
+   "role": "target2",
+   "text": "we've done a lot already",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 24,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0254L01B01",
+   "role": "known",
+   "text": "وہ آج صبح سے یہاں ہے",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 20,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0254L01B01",
+   "role": "target1",
+   "text": "she's been here since this morning",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"she's been here since this morning\" is already recorded in eng — 2 clip(s): 92674834-f835-4435-a3c1-3661290c5939 (voice azure_en-GB-SoniaNeural, srp_for_eng known); cf6655ae-9e3a-43ef-8a60-bd519277cc4f (voice azure_en-GB-SoniaNeural, isl_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_urd target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0254L01B01",
+   "role": "target2",
+   "text": "she's been here since this morning",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"she's been here since this morning\" is already recorded in eng — 2 clip(s): 92674834-f835-4435-a3c1-3661290c5939 (voice azure_en-GB-SoniaNeural, srp_for_eng known); cf6655ae-9e3a-43ef-8a60-bd519277cc4f (voice azure_en-GB-SoniaNeural, isl_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_urd target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0262L01B01",
+   "role": "known",
+   "text": "کیا یہ وہ آدمی ہے جس سے آپ کل بات کر رہے تھے؟",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 45,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0262L01B01",
+   "role": "target1",
+   "text": "is that the man you were talking to yesterday?",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 46,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0262L01B01",
+   "role": "target2",
+   "text": "is that the man you were talking to yesterday?",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 46,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0263L01B01",
+   "role": "known",
+   "text": "مجھے معلوم ہے آپ کا مطلب کون سے ہے",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 34,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0263L01B01",
+   "role": "target1",
+   "text": "I know who you mean",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"I know who you mean\" is already recorded in eng — 26 clip(s): 9547e8fd-bc1a-4376-b531-212e842e04c4 (voice azure_en-GB-BellaNeural, por_br_for_eng known); 2e208efd-65e3-4df0-8793-b82b609db6a5 (voice azure_en-GB-OliverNeural, eng_for_sin target2); 1a3cbcec-46e3-43e3-a435-543202dc59ec (voice azure_en-GB-RyanNeural, eng_for_spa target2); 025b2a9b-f74c-434c-a519-29d8665a461c (voice azure_en-GB-SoniaNeural, nor_for_eng known); 8170b032-6659-463f-b363-7136d215881b (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fra_for_eng known); 32b1046f-1937-4e94-82ca-ca27938b7541 (voice bedd6226, eng_for_sin target1); 7e481f26-678a-42e1-94f1-978f47086724 (voice xai_eve, fra_for_eng known); 30e037d0-5f38-4a36-b2dc-330c052663a4 (voice gfzdpspr5fdp, eng_for_sin target2); 02e748df-8731-4199-a91e-271749240d23 (voice azure_en-GB-SoniaNeural, por_for_eng known); 2db2c374-cae5-4f6b-bc0d-ceae28a4c403 (voice azure_en-GB-SoniaNeural, eng_for_sin target1); 31ce435a-5ae7-4035-a1f3-df5be26faa87 (voice azure_en-GB-SoniaNeural, ces_for_eng known); 51dce139-9b5d-4b1c-bf33-61148be2d2b0 (voice gfzdpspr5fdp, mlt_for_eng known); 520c1ba4-d688-4797-b8a2-bb8d9f2c58a7 (voice azure_en-GB-SoniaNeural, rus_for_eng known); 5274d252-a76b-4aa5-81e6-03bba2ef7adc (voice azure_en-GB-SoniaNeural, afr_for_eng known); 5e5d56df-dc98-417c-ac00-64bf5fabfa5d (voice azure_en-GB-SoniaNeural, hun_for_eng known); 60967738-c546-40d3-8be5-2a13b4fbb156 (voice azure_en-GB-RyanNeural, eng_for_fra target2); 76f601bc-4147-4059-a93a-4aaf92e2e1b4 (voice azure_en-GB-SoniaNeural, swa_for_eng known); 7b96e561-0200-4958-89f2-7d9da66fa360 (voice azure_en-GB-SoniaNeural, eng_for_spa target1); 89dfca90-536b-4c32-9159-85b5691e8d29 (voice azure_en-GB-SoniaNeural, ara_eg_for_eng known); 929291c2-fc7d-48f3-ad84-b0e5ea227dd0 (voice azure_en-GB-SoniaNeural, fra_ca_for_eng known) …. Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_urd target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0263L01B01",
+   "role": "target2",
+   "text": "I know who you mean",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "8170b032-6659-463f-b363-7136d215881b",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0281L02B01",
+   "role": "known",
+   "text": "ہمیں شروع کرنے سے پہلے کافی چاہیے",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 33,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0281L02B01",
+   "role": "target1",
+   "text": "we need coffee before you start",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 31,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0281L02B01",
+   "role": "target2",
+   "text": "we need coffee before you start",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 31,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0283L02B01",
+   "role": "known",
+   "text": "آپ کے دوستوں میں سے کتنے یہاں ہیں؟",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 34,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0283L02B01",
+   "role": "target1",
+   "text": "how many of your friends are here?",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"how many of your friends are here?\" is already recorded in eng — 1 clip(s): d9827658-582c-42d2-b57b-c6c3fb0b28e1 (voice azure_en-GB-SoniaNeural, nep_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_urd target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0283L02B01",
+   "role": "target2",
+   "text": "how many of your friends are here?",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"how many of your friends are here?\" is already recorded in eng — 1 clip(s): d9827658-582c-42d2-b57b-c6c3fb0b28e1 (voice azure_en-GB-SoniaNeural, nep_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_urd target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0311L03B01",
+   "role": "known",
+   "text": "وہ اس پر یقین نہیں کر سکتا تھا",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 30,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0311L03B01",
+   "role": "target1",
+   "text": "he couldn't believe it",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"he couldn't believe it\" is already recorded in eng — 17 clip(s): f72844c2-3bed-40ea-a699-deff8b98ab24 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fra_for_eng known); 2721e338-fbf2-4d00-8282-681b8bfe98bb (voice xai_bedd6226, eng_for_pan target1); 50eae3f1-0fdb-4e0d-8207-fb82a080c24b (voice xai_eve, fra_for_eng known); 57650a7c-5bd9-47a1-9d10-be3daf27c378 (voice xai_gfzdpspr5fdp, eng_for_kan target2); 64bb9cc2-d7ab-4d99-bf54-5008ae161f39 (voice xai_bedd6226, eng_for_tam target1); 752bd63a-2296-47c8-9da3-998c919b90db (voice xai_gfzdpspr5fdp, eng_for_guj target2); 7af5effa-4990-41e6-a83e-eab15c3efb97 (voice xai_gfzdpspr5fdp, eng_for_sin target2); 916c5626-0a66-4824-b03a-92a04cd0be58 (voice xai_gfzdpspr5fdp, eng_for_tam target2); 97b00116-51c3-4409-88ba-a674394eb2b6 (voice xai_gfzdpspr5fdp, fra_for_eng known); aa913806-479b-4fea-b485-50125a28ae97 (voice xai_bedd6226, eng_for_kan target1); accff200-055d-4d51-8fe8-3e592517d45d (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fin_for_eng known); bb688a45-a779-46c7-9e83-55218e0e02cd (voice xai_gfzdpspr5fdp, eng_for_pan target2); c96f0467-64f7-47d6-9f73-8f1b970cce02 (voice xai_bedd6226, eng_for_sin target1); d35ed46f-dff1-4bc8-b701-fb1c8d8262d3 (voice xai_bedd6226, eng_for_mar target1); d906ef05-b4c4-4d28-bc3b-a2cbb5aa9c08 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, deu_ch_for_eng known); ea38ecf5-ed48-4652-a579-bbead4ffb60e (voice xai_gfzdpspr5fdp, eng_for_mar target2); fa6458f5-6e57-4268-9d6c-c9d03694a6bf (voice xai_bedd6226, eng_for_guj target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_urd target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0311L03B01",
+   "role": "target2",
+   "text": "he couldn't believe it",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "f72844c2-3bed-40ea-a699-deff8b98ab24",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0315L01B01",
+   "role": "known",
+   "text": "وہ گاڑی کہاں ہے جو وہ چاہتا تھا؟",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 32,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0315L01B01",
+   "role": "target1",
+   "text": "where is the car that he wanted?",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 32,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0315L01B01",
+   "role": "target2",
+   "text": "where is the car that he wanted?",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 32,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0315L02B01",
+   "role": "known",
+   "text": "گاڑی خریدنا اس کی استطاعت سے باہر تھا",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 37,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0315L02B01",
+   "role": "target1",
+   "text": "he couldn't afford the car",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "af9619d2-e475-4f3f-9559-e691f75ef962",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0315L02B01",
+   "role": "target2",
+   "text": "he couldn't afford the car",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "cff70556-d3f1-4475-9bf3-b5cfa42ca0f8",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0324L02B01",
+   "role": "known",
+   "text": "اس کے دونوں ہاتھ اوپر ہیں",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 25,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0324L02B01",
+   "role": "target1",
+   "text": "she has both of her hands up",
+   "status": 409,
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"she has both of her hands up\" is already recorded in eng — 15 clip(s): 5ffb7309-7149-4a90-af3f-ec9e6f717541 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fin_for_eng known); 5b93ab55-b23a-473a-a157-f605af6625ad (voice xai_bedd6226, eng_for_mar target1); 0da33a03-af56-4390-b5fe-8fe451801471 (voice xai_gfzdpspr5fdp, eng_for_tam target2); 41e59bd7-a63c-421d-9e76-093aafbbcc8f (voice xai_gfzdpspr5fdp, eng_for_tel target2); 6d5f4ca1-edce-4c99-a7cf-e0d22e3921cd (voice xai_bedd6226, eng_for_tam target1); 6de835ef-529c-44c4-9505-c6fe3c0d9568 (voice xai_bedd6226, eng_for_sin target1); 7ab62d92-86c4-4a75-baa8-d24fda4043a2 (voice xai_bedd6226, eng_for_kan target1); 8821b3ca-9d75-44f8-882e-7c7d959b4e84 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fry_for_eng known); a3772591-da38-4b4f-ab30-12423eefa508 (voice xai_bedd6226, eng_for_pan target1); a3874515-d0e4-404c-9d69-bef221b60b4b (voice xai_gfzdpspr5fdp, fin_for_eng known); b247ac23-1857-4b6f-b9e8-e3cf6a1b9d42 (voice xai_gfzdpspr5fdp, eng_for_sin target2); cd06188e-1a51-4ecb-bf54-086933fecc87 (voice xai_gfzdpspr5fdp, eng_for_mar target2); e996055b-d611-45fd-8bb1-3c3245b145e8 (voice xai_gfzdpspr5fdp, eng_for_pan target2); ef1a1645-97bf-48f5-9724-330a5d8303db (voice xai_bedd6226, eng_for_tel target1); f18606d8-868a-4bc3-a076-33174b28c88c (voice xai_gfzdpspr5fdp, eng_for_kan target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_urd/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_urd target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this."
+  },
+  {
+   "row": "S0324L02B01",
+   "role": "target2",
+   "text": "she has both of her hands up",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "5ffb7309-7149-4a90-af3f-ec9e6f717541",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0329L01B01",
+   "role": "known",
+   "text": "یہ بہت اہم ہے",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "c66b8752-e577-4986-967c-705b63b936ed",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0329L01B01",
+   "role": "target1",
+   "text": "it's very important",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "c5dcc8af-23d1-4ec0-be6c-441db0dac91b",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0329L01B01",
+   "role": "target2",
+   "text": "it's very important",
+   "status": 200,
+   "ok": true,
+   "source": "library",
+   "audioId": "48f89a7b-dc40-4699-b581-f69f10a1b9f5",
+   "charsSpent": 0
+  },
+  {
+   "row": "S0607L01B01",
+   "role": "known",
+   "text": "ہم نے چیزیں مختلف طریقے سے کیں",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 30,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0607L01B01",
+   "role": "target1",
+   "text": "we've done things differently",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 29,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0607L01B01",
+   "role": "target2",
+   "text": "we've done things differently",
+   "status": 200,
+   "ok": true,
+   "source": "would-render",
+   "wouldSpendChars": 29,
+   "charsSpent": 0
+  },
+  {
+   "row": "S0616L01B01",
+   "role": "known",
+   "text": "مجھے یقین نہیں کہ آپ نے یہ سوچا",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0616L01B01",
+   "role": "target1",
+   "text": "I'm not sure you thought that",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0616L01B01",
+   "role": "target2",
+   "text": "I'm not sure you thought that",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0618L01B01",
+   "role": "known",
+   "text": "کیا یہ زیادہ عرصہ لگتا ہے؟",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0618L01B01",
+   "role": "target1",
+   "text": "does it feel like a long time?",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0618L01B01",
+   "role": "target2",
+   "text": "does it feel like a long time?",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0620L01B01",
+   "role": "known",
+   "text": "جہاں ہم آخری بار ملے",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0620L01B01",
+   "role": "target1",
+   "text": "where we last saw each other",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0620L01B01",
+   "role": "target2",
+   "text": "where we last saw each other",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0636L01B01",
+   "role": "known",
+   "text": "جین کا بیگ یہاں ہے",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0636L01B01",
+   "role": "target1",
+   "text": "Jane's bag is here",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  },
+  {
+   "row": "S0636L01B01",
+   "role": "target2",
+   "text": "Jane's bag is here",
+   "status": 429,
+   "ok": false,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "cs-sister-propagation: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ ]
+}
