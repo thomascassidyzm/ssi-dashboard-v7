@@ -1,0 +1,28 @@
+{
+ "course": "eng_for_pan",
+ "batch": "small-1",
+ "seeds": [
+  86
+ ],
+ "counts": {
+  "insert": 0,
+  "update": 1,
+  "delete": 0
+ },
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [],
+ "checks": [
+  {
+   "lego": "S0086L02",
+   "is_new": true,
+   "before": "ok",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 1,
+   "inserted": 0,
+   "accept_gap": null
+  }
+ ]
+}

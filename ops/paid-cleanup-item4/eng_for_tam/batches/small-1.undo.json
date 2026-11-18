@@ -1,0 +1,342 @@
+{
+ "event_id": "01bacdfd-5266-4961-ac99-2fa4bc04e67a",
+ "undo_file": "2026-11-18T13-13-16-024Z-01bacdfd-5266-4961-ac99-2fa4bc04e67a.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U05",
+   "set": {
+    "known_text": "\u0ba8\u0bbf\u0b9a\u0bcd\u0b9a\u0baf\u0bae\u0bbe\u0b95 \u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+    "target_text": "definitely I'd have thought",
+    "word_count": 27,
+    "lego_position": null,
+    "known_audio_id": "f4df51c9-9a9e-4c57-9ab6-b01eada5a848",
+    "target1_audio_id": "d4ef3e9b-1bd9-460b-8d01-3aa76aa5e780",
+    "target2_audio_id": "c7380adc-dbe5-4d66-85db-d753ed0dc1c0",
+    "decomposition": [
+     {
+      "known": "\u0ba8\u0bbf\u0b9a\u0bcd\u0b9a\u0baf\u0bae\u0bbe\u0b95",
+      "legoId": "S0117L01",
+      "target": "definitely",
+      "isGhost": false
+     },
+     {
+      "known": "\u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0565L02",
+      "target": " I'd have thought",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U04",
+   "set": {
+    "known_text": "\u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+    "target_text": "I'd have thought again",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "c9eb2095-9902-4e60-8dd9-8c44d8252ad3",
+    "target1_audio_id": "906e8814-28d9-4327-8aeb-672b337a47da",
+    "target2_audio_id": "d844b2ff-fa4e-4959-8525-eb6af1ce729e",
+    "decomposition": [
+     {
+      "known": "\u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0565L02",
+      "target": "I'd have thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd",
+      "legoId": "S0061L01",
+      "target": " again",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U03",
+   "set": {
+    "known_text": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1 \u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+    "target_text": "I'd have thought today",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "2f8216af-1da4-42bb-abce-b673eb9320b4",
+    "target1_audio_id": "77194fcd-9222-4574-a547-177b74f35c71",
+    "target2_audio_id": "69ee00e8-d35a-4a82-a9bb-d44b1ded3f70",
+    "decomposition": [
+     {
+      "known": "\u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0565L02",
+      "target": "I'd have thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1",
+      "legoId": "S0007L02",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02U02",
+   "set": {
+    "known_text": "\u0b85\u0ba4\u0ba9\u0bbe\u0bb2\u0bcd \u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+    "target_text": "so I'd have thought",
+    "word_count": 19,
+    "lego_position": null,
+    "known_audio_id": "40e05aa0-ed22-42ef-ab59-dbe103d66402",
+    "target1_audio_id": "dbcc9fdf-fd0f-44f4-b518-2e93c149defd",
+    "target2_audio_id": "d93e19ba-f6bb-41a5-816a-b73c3604d626",
+    "decomposition": [
+     {
+      "known": "\u0b85\u0ba4\u0ba9\u0bbe\u0bb2\u0bcd",
+      "legoId": "S0056L01",
+      "target": "so",
+      "isGhost": false
+     },
+     {
+      "known": "\u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0565L02",
+      "target": " I'd have thought",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0565L02B03",
+   "set": {
+    "known_text": "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+    "target_text": "I'd have thought now",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "400f3ce0-a0d6-4c7e-9fca-f82089c9012a",
+    "target1_audio_id": "7b2294fc-d236-4ba1-ae42-737cd436bac5",
+    "target2_audio_id": "99505aca-854a-4314-9fd3-33b546c8e09c",
+    "decomposition": [
+     {
+      "known": "\u0baf\u0bcb\u0b9a\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0565L02",
+      "target": "I'd have thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1",
+      "legoId": "S0001L05",
+      "target": " now",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0449L02B03",
+   "set": {
+    "known_text": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1 \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0ba4\u0bbe\u0b95",
+    "target_text": "they were today",
+    "known_audio_id": "0a85571c-6f38-414d-9e7c-94c237b71ed0",
+    "target1_audio_id": "71bb7fbf-784e-43cc-bb7e-04a6304838dd",
+    "target2_audio_id": "1eab534d-1fef-4f02-bbe1-b5c880c10717",
+    "decomposition": [
+     {
+      "known": "\u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0ba4\u0bbe\u0b95",
+      "legoId": "S0449L02",
+      "target": "they were",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1",
+      "legoId": "S0007L02",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0444L01B02",
+   "set": {
+    "known_text": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1 \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd",
+    "target_text": "they thought today",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "624f6c14-1abb-4229-91e4-419f0c9c44ea",
+    "target1_audio_id": "75cce050-1167-473d-addb-b083981eee24",
+    "target2_audio_id": "27856359-447b-4b68-91a1-2b417c7e0760",
+    "decomposition": [
+     {
+      "known": "\u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd\u0b95\u0bb3\u0bcd",
+      "legoId": "S0444L01",
+      "target": "they thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1",
+      "legoId": "S0007L02",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01U05",
+   "set": {
+    "known_text": "\u0ba8\u0bbe\u0ba9\u0bcd \u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc7\u0ba9\u0bcd",
+    "target_text": "I thought about it now",
+    "word_count": 22,
+    "lego_position": "start",
+    "known_audio_id": "8fe1c577-2a8e-4942-9b63-b056c9afeef4",
+    "target1_audio_id": "411186e3-5bc4-4812-ae42-f00681d0c5df",
+    "target2_audio_id": "a19bdaf2-15d9-46cb-9db2-276b840ef19b",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "I",
+      "isGhost": true
+     },
+     {
+      "known": "\u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0124L01",
+      "target": " thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b85\u0ba4\u0bc8\u0baa\u0bcd \u0baa\u0bb1\u0bcd\u0bb1\u0bbf",
+      "legoId": "S0037L03",
+      "target": " about it",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b87\u0baa\u0bcd\u0baa\u0bcb\u0ba4\u0bc1",
+      "legoId": "S0001L05",
+      "target": " now",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01U03",
+   "set": {
+    "known_text": "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe",
+    "target_text": "you thought today?",
+    "word_count": 17,
+    "known_audio_id": "46cd6a5a-9f3c-48d5-9ec3-32ae0b1a3790",
+    "target1_audio_id": "c45554d4-6268-43ea-99a3-f85349e3b07a",
+    "target2_audio_id": "f95059ba-d152-40b2-8b43-5b9225d97d47",
+    "decomposition": [
+     {
+      "known": "\u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
+      "legoId": "S0020L01",
+      "target": "you",
+      "isGhost": false
+     },
+     {
+      "known": "\u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0124L01",
+      "target": " thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1",
+      "legoId": "S0007L02",
+      "target": " today",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01U02",
+   "set": {
+    "known_text": "\u0ba8\u0bbe\u0ba9\u0bcd \u0ba8\u0bc7\u0bb1\u0bcd\u0bb1\u0bc1 \u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc7\u0ba9\u0bcd",
+    "target_text": "I thought yesterday",
+    "word_count": 19,
+    "known_audio_id": "44f447d6-14c9-47ce-b474-fde2f4971f02",
+    "target1_audio_id": "983bf8cc-5e0d-4486-87f0-1fa5787700f4",
+    "target2_audio_id": "c98b144d-8209-4749-810f-9cbba23228d7",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "I",
+      "isGhost": true
+     },
+     {
+      "known": "\u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0124L01",
+      "target": " thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0ba8\u0bc7\u0bb1\u0bcd\u0bb1\u0bc1",
+      "legoId": "S0030L01",
+      "target": " yesterday",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0124L01B03",
+   "set": {
+    "known_text": "\u0ba8\u0bbe\u0ba9\u0bcd \u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc7\u0ba9\u0bcd \u0b87\u0ba9\u0bcd\u0bb1\u0bc1",
+    "target_text": "I thought today",
+    "word_count": 15,
+    "known_audio_id": "aec1b129-859b-48a1-8f91-489083c29d33",
+    "target1_audio_id": "f2afabcd-87fd-485b-a57f-26b4c463437b",
+    "target2_audio_id": "10d6459e-fd8b-460d-8625-bb6673f8c45f",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "I",
+      "isGhost": true
+     },
+     {
+      "known": "\u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc7\u0ba9\u0bcd",
+      "legoId": "S0124L01",
+      "target": " thought",
+      "isGhost": false
+     },
+     {
+      "known": "\u0b87\u0ba9\u0bcd\u0bb1\u0bc1",
+      "legoId": "S0007L02",
+      "target": " today",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tam:S0565L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tam:S0124L01B04"
+  }
+ ]
+}

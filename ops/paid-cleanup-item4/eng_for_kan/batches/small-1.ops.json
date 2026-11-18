@@ -1,0 +1,175 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_kan:S0374L02B04",
+    "seed_number": 374,
+    "lego_index": 2,
+    "position": 14,
+    "known_text": "ಹಾಗೆ ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+    "target_text": "I thought so",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 12,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_kan:S0375L02B04",
+    "seed_number": 375,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "ಇಲ್ಲ, ಅವಳು ಮಾಡ್ತಿದ್ದದ್ದು ಒಳ್ಳೆಯದಾಗಿತ್ತು",
+    "target_text": "no, what she was doing was good",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 4,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_kan:S0444L03B04",
+    "seed_number": 444,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "ಹಾಗೆ ಅಂತ ಅವರು ಅಂದುಕೊಂಡ್ರು",
+    "target_text": "they thought so",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0361L02B02",
+   "expect": {
+    "known_text": "ಇವತ್ತು ಸುಮ್ಮನಿದ್ದ?",
+    "target_text": "was quiet today?"
+   },
+   "set": {
+    "known_text": "ನಾನು ಸುಮ್ಮನಿದ್ದೆ",
+    "target_text": "I was quiet",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0361L02B03",
+   "expect": {
+    "known_text": "ಅಲ್ಲಿ ಸುಮ್ಮನಿದ್ದ?",
+    "target_text": "was quiet there?"
+   },
+   "set": {
+    "known_text": "ಅವಳು ಸುಮ್ಮನಿದ್ದಳು",
+    "target_text": "she was quiet",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0374L02B02",
+   "expect": {
+    "known_text": "ಇವತ್ತು ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+    "target_text": "I thought today"
+   },
+   "set": {
+    "known_text": "ಅದು ಒಳ್ಳೆಯದು ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+    "target_text": "I thought it was good",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0374L02B03",
+   "expect": {
+    "known_text": "ಮತ್ತೊಮ್ಮೆ ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+    "target_text": "I thought again"
+   },
+   "set": {
+    "known_text": "ಅವಳು ಸುಮ್ಮನಿದ್ದಳು ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+    "target_text": "I thought she was quiet",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0375L02B02",
+   "expect": {
+    "known_text": "ಇಲ್ಲ ಅವಳು ಇವತ್ತು ಏನು ಮಾಡ್ತಿದ್ದಳು",
+    "target_text": "no what she was doing today"
+   },
+   "set": {
+    "known_text": "ಇಲ್ಲ, ಅವಳು ಮಾಡ್ತಿದ್ದದ್ದು ಮುಖ್ಯವಾಗಿತ್ತು",
+    "target_text": "no, what she was doing was important",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0375L02B03",
+   "expect": {
+    "known_text": "ಇಲ್ಲ ಅವಳು ನಿನ್ನೆ ಏನು ಮಾಡ್ತಿದ್ದಳು",
+    "target_text": "no what she was doing yesterday"
+   },
+   "set": {
+    "known_text": "ಇಲ್ಲ, ಅವಳು ಮಾಡ್ತಿದ್ದದ್ದು ಸುಲಭ ಆಗಿರಲಿಲ್ಲ",
+    "target_text": "no, what she was doing wasn't easy",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0444L03B03",
+   "expect": {
+    "known_text": "ಇವತ್ತು ಅವರು ಅಂದುಕೊಂಡ್ರು",
+    "target_text": "they thought today"
+   },
+   "set": {
+    "known_text": "ಅದು ಮುಖ್ಯ ಅಂತ ಅವರು ಅಂದುಕೊಂಡ್ರು",
+    "target_text": "they thought it was important",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

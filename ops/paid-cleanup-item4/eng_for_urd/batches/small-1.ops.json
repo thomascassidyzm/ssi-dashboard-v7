@@ -1,0 +1,124 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0064L02B03",
+   "expect": {
+    "known_text": "ابھی تک نہیں ہے",
+    "target_text": "isn't yet"
+   },
+   "set": {
+    "known_text": "انگریزی آسان نہیں ہے",
+    "target_text": "English isn't easy",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0089L01B01",
+   "expect": {
+    "known_text": "بہت کچھ پہلے سے",
+    "target_text": "a lot already"
+   },
+   "set": {
+    "known_text": "بہت کچھ کرنا",
+    "target_text": "to do a lot",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0089L01B02",
+   "expect": {
+    "known_text": "بہت کچھ ابھی تک",
+    "target_text": "a lot yet"
+   },
+   "set": {
+    "known_text": "بہت کچھ کہنا",
+    "target_text": "to say a lot",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0089L01U05",
+   "expect": {
+    "known_text": "آپ بہت کچھ بولنا جانتے ہیں",
+    "target_text": "you know a lot to speak"
+   },
+   "set": {
+    "known_text": "میں بہت کچھ کہنا چاہتا ہوں",
+    "target_text": "I want to say a lot",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0093L01B04",
+   "expect": {
+    "known_text": "جانے کا وقت ہے ابھی تک",
+    "target_text": "it's time to go yet"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے جانے کا وقت ہے",
+    "target_text": "I think it's time to go",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0102L02B02",
+   "expect": {
+    "known_text": "ایسا نہیں ہے ابھی تک",
+    "target_text": "not like that yet"
+   },
+   "set": {
+    "known_text": "یہ ایسا نہیں تھا",
+    "target_text": "it was not like that",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0102L02B03",
+   "expect": {
+    "known_text": "ایسا نہیں کہنا",
+    "target_text": "say not like that"
+   },
+   "set": {
+    "known_text": "انگریزی ایسی نہیں ہے",
+    "target_text": "English is not like that",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0102L02B04",
+   "expect": {
+    "known_text": "ایسا نہیں ہے لیکن ممکن ہے",
+    "target_text": "not like that but possible"
+   },
+   "set": {
+    "known_text": "یہاں ایسا نہیں ہے",
+    "target_text": "it's not like that here",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}
