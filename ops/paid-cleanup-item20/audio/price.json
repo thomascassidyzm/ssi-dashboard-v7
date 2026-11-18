@@ -1,0 +1,28 @@
+{
+ "at": "2026-11-18T14:47:10.638Z",
+ "per_course": {
+  "eng_for_urd": {
+   "lines": 165,
+   "library": 19,
+   "would_render": 41,
+   "refused": {
+    "EXISTS_IN_LANGUAGE": 37,
+    "BULK_DRY_RUN_ON_LIVE": 68
+   },
+   "chars": {
+    "cartesia": 256,
+    "azure": 856
+   },
+   "refused_chars": {
+    "cartesia": 2074,
+    "azure": 577
+   }
+  }
+ },
+ "total": {
+  "cartesia": 256,
+  "azure": 856,
+  "refused_cartesia": 2074,
+  "refused_azure": 577
+ }
+}

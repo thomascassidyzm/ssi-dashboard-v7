@@ -1,0 +1,88 @@
+{
+ "at": "2026-11-18T14:48:24.950Z",
+ "qa_copy": "ssi_copy_20261118t033000z",
+ "per_course": {
+  "eng_for_urd": {
+   "rows": 55,
+   "en_free": 42,
+   "en_new": 13,
+   "known_free": 0,
+   "known_new": 55,
+   "cartesia": 700,
+   "azure": 1430
+  },
+  "eng_for_pan": {
+   "rows": 0,
+   "en_free": 0,
+   "en_new": 0,
+   "known_free": 0,
+   "known_new": 0,
+   "cartesia": 0,
+   "azure": 0
+  },
+  "eng_for_ben": {
+   "rows": 0,
+   "en_free": 0,
+   "en_new": 0,
+   "known_free": 0,
+   "known_new": 0,
+   "cartesia": 0,
+   "azure": 0
+  },
+  "eng_for_mar": {
+   "rows": 0,
+   "en_free": 0,
+   "en_new": 0,
+   "known_free": 0,
+   "known_new": 0,
+   "cartesia": 0,
+   "azure": 0
+  },
+  "eng_for_guj": {
+   "rows": 0,
+   "en_free": 0,
+   "en_new": 0,
+   "known_free": 0,
+   "known_new": 0,
+   "cartesia": 0,
+   "azure": 0
+  }
+ },
+ "total": {
+  "cartesia": 700,
+  "azure": 1430
+ },
+ "self_check": {
+  "checked": 97,
+  "disagree": [
+   {
+    "c": "eng_for_urd",
+    "role": "target1",
+    "t": "want to speak with you",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   },
+   {
+    "c": "eng_for_urd",
+    "role": "target2",
+    "t": "want to speak with you",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   },
+   {
+    "c": "eng_for_urd",
+    "role": "target1",
+    "t": "want to speak now",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   },
+   {
+    "c": "eng_for_urd",
+    "role": "target2",
+    "t": "want to speak now",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   }
+  ]
+ }
+}
