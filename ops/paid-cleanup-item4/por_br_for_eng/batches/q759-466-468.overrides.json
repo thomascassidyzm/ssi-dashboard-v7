@@ -1,0 +1,441 @@
+[
+ {
+  "seed_number": 466,
+  "phrases": {
+   "466:1": [
+    {
+     "known_text": "me",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "let",
+     "target_text": "deixa",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "let me",
+     "target_text": "me deixa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let me help",
+     "target_text": "me deixa ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let me see",
+     "target_text": "me deixa ver",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let me help you",
+     "target_text": "me deixa te ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let me think about it",
+     "target_text": "me deixa pensar nisso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let me try",
+     "target_text": "me deixa tentar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let me explain",
+     "target_text": "me deixa explicar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let me pay",
+     "target_text": "me deixa pagar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let me go",
+     "target_text": "me deixa ir",
+     "phrase_role": "build"
+    }
+   ],
+   "466:2": [
+    {
+     "known_text": "to throw",
+     "target_text": "jogar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it",
+     "target_text": "ele",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to throw it",
+     "target_text": "jogar ele",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let me throw it",
+     "target_text": "me deixa jogar ele",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you can throw it",
+     "target_text": "você pode jogar ele",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she wants to throw it",
+     "target_text": "ela quer jogar ele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to throw it",
+     "target_text": "vou jogar ele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to throw it",
+     "target_text": "quero jogar ele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I throw it?",
+     "target_text": "posso jogar ele?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't want to throw it",
+     "target_text": "não quero jogar ele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to throw it to me",
+     "target_text": "jogar ele para mim",
+     "phrase_role": "build"
+    }
+   ],
+   "466:3": [
+    {
+     "known_text": "over",
+     "target_text": "por cima",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of the",
+     "target_text": "do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "wall",
+     "target_text": "muro",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "over the wall",
+     "target_text": "por cima do muro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to throw it over the wall",
+     "target_text": "jogar ele por cima do muro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "over the garden wall",
+     "target_text": "por cima do muro do jardim",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "let me throw it over the wall",
+     "target_text": "me deixa jogar ele por cima do muro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to throw it over the wall",
+     "target_text": "ela quer jogar ele por cima do muro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you throw it over the wall?",
+     "target_text": "você pode jogar ele por cima do muro?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't throw it over the wall",
+     "target_text": "não consigo jogar ele por cima do muro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's easy to throw it over the wall",
+     "target_text": "é fácil jogar ele por cima do muro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to throw it over the wall",
+     "target_text": "vou jogar ele por cima do muro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope you'll be able to throw it over the wall",
+     "target_text": "espero que você consiga jogar ele por cima do muro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to throw everything over the wall",
+     "target_text": "jogar tudo por cima do muro",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 467,
+  "phrases": {
+   "467:1": [
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "next to",
+     "target_text": "ao lado",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it's next to",
+     "target_text": "é ao lado",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's next to the hotel",
+     "target_text": "é ao lado do hotel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's next to the school",
+     "target_text": "é ao lado da escola",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the café is next to the hotel",
+     "target_text": "o café é ao lado do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my office is next to the restaurant",
+     "target_text": "o meu escritório é ao lado do restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's next to the post office",
+     "target_text": "é ao lado dos correios",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's next to the hotel",
+     "target_text": "acho que é ao lado do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the restaurant is next to the shop",
+     "target_text": "o restaurante é ao lado da loja",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's next to the shop",
+     "target_text": "é ao lado da loja",
+     "phrase_role": "build"
+    }
+   ],
+   "467:2": [
+    {
+     "known_text": "of the",
+     "target_text": "do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "car park",
+     "target_text": "estacionamento",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the car park",
+     "target_text": "do estacionamento",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "next to the car park",
+     "target_text": "ao lado do estacionamento",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "near the car park",
+     "target_text": "perto do estacionamento",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's next to the car park",
+     "target_text": "é ao lado do estacionamento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll wait for you near the car park",
+     "target_text": "vou te esperar perto do estacionamento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the hotel is next to the car park",
+     "target_text": "o hotel é ao lado do estacionamento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the bus is in front of the car park",
+     "target_text": "o ônibus está em frente do estacionamento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's still next to the car park",
+     "target_text": "ainda é ao lado do estacionamento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he might be next to the car park",
+     "target_text": "ele pode estar ao lado do estacionamento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there is a shop next to the car park",
+     "target_text": "há uma loja ao lado do estacionamento",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "in front of the car park",
+     "target_text": "em frente do estacionamento",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 468,
+  "phrases": {
+   "468:1": [
+    {
+     "known_text": "is",
+     "target_text": "é",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a",
+     "target_text": "um",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it's a",
+     "target_text": "é um",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's a problem",
+     "target_text": "é um problema",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's a good book",
+     "target_text": "é um bom livro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's a problem for me",
+     "target_text": "é um problema para mim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a good restaurant",
+     "target_text": "é um bom restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a beautiful garden",
+     "target_text": "é um jardim bonito",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's an interesting book",
+     "target_text": "é um livro interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's still a problem",
+     "target_text": "ainda é um problema",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a friend",
+     "target_text": "é um amigo",
+     "phrase_role": "build"
+    }
+   ],
+   "468:2": [
+    {
+     "known_text": "world",
+     "target_text": "mundo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "big",
+     "target_text": "grande",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "big world",
+     "target_text": "mundo grande",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a big world",
+     "target_text": "um mundo grande",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "in a big world",
+     "target_text": "num mundo grande",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's a big world",
+     "target_text": "é um mundo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know it's a big world",
+     "target_text": "sei que é um mundo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's a big world",
+     "target_text": "acho que é um mundo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it was a big world",
+     "target_text": "era um mundo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's still a big world",
+     "target_text": "ainda é um mundo grande",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "in this big world",
+     "target_text": "neste mundo grande",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,510 @@
+{
+ "event_id": "c5feb60f-39af-41ae-b18f-aae5ff13b242",
+ "undo_file": "2026-11-18T18-48-21-853Z-c5feb60f-39af-41ae-b18f-aae5ff13b242.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02U04",
+   "set": {
+    "known_text": "yes, it's a big world",
+    "target_text": "sim, é um mundo grande",
+    "word_count": 22,
+    "known_audio_id": "cd57d996-7197-4b85-9b85-35e2e790494c",
+    "target1_audio_id": "44004161-6d0e-47b3-a903-533aef5050b6",
+    "target2_audio_id": "208fafe1-d31d-48cd-b0e6-ea70e97bacb5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02U03",
+   "set": {
+    "known_text": "that's true, big world",
+    "target_text": "isso é verdade, mundo grande",
+    "word_count": 28,
+    "known_audio_id": "777116f1-1f0c-46d5-9a94-245378e21339",
+    "target1_audio_id": "80bd31cc-e0cd-416b-a081-fea34aa2787f",
+    "target2_audio_id": "6756169f-d5c7-4c77-b044-dfe583303a97"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02U02",
+   "set": {
+    "known_text": "no, big world",
+    "target_text": "não, mundo grande",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "c695ffca-b1b4-4c02-8db5-28dfbc03d0cd",
+    "target1_audio_id": "4bd0dffb-5586-42cd-907a-34f1df47522a",
+    "target2_audio_id": "f6a96029-6fc0-4145-b08e-3ab24350058b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02B03",
+   "set": {
+    "known_text": "yes, big world",
+    "target_text": "sim, mundo grande",
+    "word_count": 17,
+    "known_audio_id": "565f1602-51ef-49d3-b292-0d83593e2a68",
+    "target1_audio_id": "cdadbec4-f590-48ee-b08a-dee8dc1d20fa",
+    "target2_audio_id": "bd88f144-b537-436f-8cc0-7504c8bd62ae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L02B02",
+   "set": {
+    "known_text": "it's still a big world now",
+    "target_text": "ainda é um mundo grande agora",
+    "word_count": 29,
+    "known_audio_id": "0033c5a8-1571-43dc-8f34-67f5cf7e9f60",
+    "target1_audio_id": "68e70e60-e342-4b2f-9baa-8dce4b6feb4c",
+    "target2_audio_id": "a353d431-46a3-424a-8c3d-6c991806b8a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U04",
+   "set": {
+    "known_text": "yes, it's a problem",
+    "target_text": "sim, é um problema",
+    "word_count": 18,
+    "lego_position": null,
+    "known_audio_id": "95869e08-d858-46fa-837a-9642bc1d1163",
+    "target1_audio_id": "df313d5c-ec0b-4357-acf7-121d30853ea9",
+    "target2_audio_id": "7ef1c066-6ba6-4fb4-bbec-a22f6f1e83a1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U03",
+   "set": {
+    "known_text": "I want to know, it's a",
+    "target_text": "quero saber, é um",
+    "word_count": 17,
+    "lego_position": null,
+    "known_audio_id": "ca74cb85-e662-45a3-9f13-0e11ace204e0",
+    "target1_audio_id": "a15f7ff5-b271-411a-91b4-cdcbd30d24cf",
+    "target2_audio_id": "2a11f762-0564-4aea-8e85-260a8f9268f8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U02",
+   "set": {
+    "known_text": "I'm sure, it's a",
+    "target_text": "tenho certeza, é um",
+    "word_count": 19,
+    "lego_position": null,
+    "known_audio_id": "2e52c49f-6b0d-4edd-b852-ab1197223893",
+    "target1_audio_id": "f9527360-4ee4-41f3-8127-a544c26ef51b",
+    "target2_audio_id": "94ab090a-7c6c-4db6-a798-9012f3000a37"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01U01",
+   "set": {
+    "known_text": "no, it's a",
+    "target_text": "não, é um",
+    "word_count": 9,
+    "lego_position": null,
+    "known_audio_id": "c177d89d-f9b0-4758-a42c-5edb2bf4ed99",
+    "target1_audio_id": "741ff9a9-770f-4532-bc2f-3e0e3ae66eb5",
+    "target2_audio_id": "e5bcc8cc-d611-4d28-a1d3-cbd4f9dc3777"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0468L01B03",
+   "set": {
+    "known_text": "yes, it's a",
+    "target_text": "sim, é um",
+    "word_count": 9,
+    "lego_position": null,
+    "known_audio_id": "4df13c5a-cab0-4cd7-a0d0-b03c9cc63c94",
+    "target1_audio_id": "dfdaf200-b598-4592-83aa-44e41937a363",
+    "target2_audio_id": "00f35bca-3565-449a-919c-035b8b42e936"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02U04",
+   "set": {
+    "known_text": "yes, it's next to the car park",
+    "target_text": "sim, é ao lado do estacionamento",
+    "word_count": 32,
+    "known_audio_id": "0fe1f9dc-3e93-4a4e-ac90-59d262fa1ff6",
+    "target1_audio_id": "38815b6e-0473-4d6c-9e93-d8973b80305c",
+    "target2_audio_id": "fec79392-0455-413c-ba5a-f4d67321520c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02U03",
+   "set": {
+    "known_text": "that's true, the car park",
+    "target_text": "isso é verdade, do estacionamento",
+    "word_count": 33,
+    "known_audio_id": "7c66a9ed-7e44-458a-b153-febda434abfb",
+    "target1_audio_id": "2d046fb3-239e-4dff-b5b4-6469c98c99de",
+    "target2_audio_id": "0cc54090-a536-4edf-8e83-c90496f61bf3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02U02",
+   "set": {
+    "known_text": "no, the car park",
+    "target_text": "não, do estacionamento",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "b99af363-a1a1-4a98-adb6-78a4290e4156",
+    "target1_audio_id": "ad37160e-6c2c-49d0-8fa4-404873edc900",
+    "target2_audio_id": "82dc5974-42a6-4597-a002-96ff60d656fe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L02B03",
+   "set": {
+    "known_text": "yes, the car park",
+    "target_text": "sim, do estacionamento",
+    "word_count": 22,
+    "known_audio_id": "e74974ac-a741-4b69-b35f-baf6e17b59e0",
+    "target1_audio_id": "52778f64-12fc-4836-9d5e-441fbb818b2e",
+    "target2_audio_id": "9dc577f1-be4e-49f9-a1a9-fe56323de4f0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U05",
+   "set": {
+    "known_text": "it's still next to",
+    "target_text": "ainda é ao lado",
+    "word_count": 15,
+    "lego_position": null,
+    "known_audio_id": "5f1f602d-d589-43cd-b7ab-2b49ea2390cb",
+    "target1_audio_id": "09839f1d-f50f-410b-b41c-eab4130f2954",
+    "target2_audio_id": "dfcb3349-0077-44bd-a05b-13eba72eedf5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U04",
+   "set": {
+    "known_text": "yes, it's next to the hotel",
+    "target_text": "sim, é ao lado do hotel",
+    "word_count": 23,
+    "lego_position": null,
+    "known_audio_id": "9cd28afa-b8dc-41c6-a4aa-0ff7e4b70481",
+    "target1_audio_id": "4e589b5c-f106-4e12-894e-4dcfa6dad107",
+    "target2_audio_id": "08fc9156-7157-4859-af33-c94089d68c93"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U03",
+   "set": {
+    "known_text": "I want to know, it's next to",
+    "target_text": "quero saber, é ao lado",
+    "lego_position": null,
+    "known_audio_id": "e0ade827-e748-42f9-a537-b85afa44c175",
+    "target1_audio_id": "c6a3cc6a-67bf-46d7-b9fe-f55e3209c60a",
+    "target2_audio_id": "33218b09-9fff-4624-b750-fbc5afccc9ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U02",
+   "set": {
+    "known_text": "I'm sure, it's next to",
+    "target_text": "tenho certeza, é ao lado",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "ebfbdb89-fa21-4afd-ab7c-3033fc8f0408",
+    "target1_audio_id": "0ca44c5f-1062-4ee2-9f3b-11f5b8352713",
+    "target2_audio_id": "41ab4ea1-4757-4b3d-a182-b228aad94966"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01U01",
+   "set": {
+    "known_text": "no, it's next to",
+    "target_text": "não, é ao lado",
+    "word_count": 14,
+    "lego_position": null,
+    "known_audio_id": "00aefcfc-9596-40a4-87fd-fa7c8a088797",
+    "target1_audio_id": "8eb2e380-652f-4739-b122-f9a3bd7a108d",
+    "target2_audio_id": "ba06f9d1-3ced-4de0-91fc-6af4ab703ecc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01B03",
+   "set": {
+    "known_text": "yes, it's next to",
+    "target_text": "sim, é ao lado",
+    "word_count": 14,
+    "lego_position": null,
+    "known_audio_id": "748311e4-488c-4a83-8b1e-c3b47e8358ac",
+    "target1_audio_id": "37413272-40b7-4b48-b00c-ea7ceda29206",
+    "target2_audio_id": "fd88ade5-5d47-4497-a217-fefd262c1bee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0467L01B02",
+   "set": {
+    "known_text": "it's next to now",
+    "target_text": "é ao lado agora",
+    "word_count": 15,
+    "known_audio_id": "b8348bbf-27fb-4e48-a657-d52d737a3346",
+    "target1_audio_id": "bb6a2e59-3d3f-4c6d-ad10-dc62ff7a7709",
+    "target2_audio_id": "1a23950a-9b10-4389-a4b7-92bcf6b5ef8b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U05",
+   "set": {
+    "known_text": "let me still throw it over the wall",
+    "target_text": "me deixa ainda jogar ele por cima do muro",
+    "word_count": 41,
+    "known_audio_id": "75ac98aa-4015-4333-8d8a-32bdaf121dbb",
+    "target1_audio_id": "f8cf8cce-c85d-46ad-98f8-80b3da3162ca",
+    "target2_audio_id": "24b3569d-0dff-4b1d-ad82-23d84c316f04"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U04",
+   "set": {
+    "known_text": "yes, let me throw it over the wall",
+    "target_text": "sim, me deixa jogar ele por cima do muro",
+    "word_count": 40,
+    "known_audio_id": "a5a963d6-0bac-4958-877f-65e80027dddb",
+    "target1_audio_id": "a7aa8f30-8d18-435b-819e-3f8870d97b13",
+    "target2_audio_id": "e31db52d-5558-4690-9de5-4c79c9ef4fd1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U03",
+   "set": {
+    "known_text": "that's true, over the wall",
+    "target_text": "isso é verdade, por cima do muro",
+    "word_count": 32,
+    "known_audio_id": "fccbb1a3-37cb-45de-a93c-6d9633d3b84f",
+    "target1_audio_id": "26f4ebe6-30c3-4a17-9a24-ce24451697db",
+    "target2_audio_id": "ffc03512-d84e-46ca-a89b-3fd940e89e7d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03U02",
+   "set": {
+    "known_text": "no, over the wall",
+    "target_text": "não, por cima do muro",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "a8ef2feb-dd23-46e6-b7ea-fbf556c4f3d2",
+    "target1_audio_id": "25b7a75e-855a-4e88-ba2c-b6582d8e4bbd",
+    "target2_audio_id": "c30a6a95-82a8-436f-9e7c-7240e549bfd5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L03B03",
+   "set": {
+    "known_text": "yes, over the wall",
+    "target_text": "sim, por cima do muro",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "a829d3f0-294a-422b-9c58-20134cf61b64",
+    "target1_audio_id": "6c8f85e5-a7a7-4c99-a9c8-c2a5399ea6f9",
+    "target2_audio_id": "658edb5f-f400-4966-9e19-16416b2bf07d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U05",
+   "set": {
+    "known_text": "let me still throw it",
+    "target_text": "me deixa ainda jogar ele",
+    "word_count": 24,
+    "known_audio_id": "32d2b7b0-d030-4b0f-bc8b-64e584bedae1",
+    "target1_audio_id": "eda7e6ba-b472-4204-a116-afbc452347ad",
+    "target2_audio_id": "0bc28069-1b59-48f0-a7c9-d79682a6bdab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U04",
+   "set": {
+    "known_text": "yes, let me throw it",
+    "target_text": "sim, me deixa jogar ele",
+    "word_count": 23,
+    "lego_position": "end",
+    "known_audio_id": "20d2f0f3-a344-486e-97be-03c1ceb4b882",
+    "target1_audio_id": "9b07f8b4-47fe-4efe-9530-61360f40b95c",
+    "target2_audio_id": "e6d04fbe-2b1c-4e0a-8356-f08a46289b87"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U02",
+   "set": {
+    "known_text": "that's true, throw it",
+    "target_text": "isso é verdade, jogar ele",
+    "word_count": 25,
+    "lego_position": "end",
+    "known_audio_id": "c0f4ac42-104c-4c14-ba97-8115b1499016",
+    "target1_audio_id": "1272d357-6c59-43a4-a5dd-884329040261",
+    "target2_audio_id": "7da4e15e-8c4c-4423-ab75-ad25338636a0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02U01",
+   "set": {
+    "known_text": "no, throw it",
+    "target_text": "não, jogar ele",
+    "word_count": 14,
+    "known_audio_id": "079a6a02-3f0d-4ec3-ab9e-071eac06e679",
+    "target1_audio_id": "0e50710c-d1c8-4027-b44c-178a3ac84fbd",
+    "target2_audio_id": "92af5027-e8a2-4e0f-b1e4-22426ff9a8ed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L02B03",
+   "set": {
+    "known_text": "yes, to throw it",
+    "target_text": "sim, jogar ele",
+    "word_count": 14,
+    "known_audio_id": "4e031a5c-e28e-42bf-8eab-fbb458bc2992",
+    "target1_audio_id": "72767255-2117-45a6-892d-73e2ece95315",
+    "target2_audio_id": "29abaae8-5272-410e-b69a-6c59af765083"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U05",
+   "set": {
+    "known_text": "let me still",
+    "target_text": "me deixa ainda",
+    "known_audio_id": "5ce9d67a-bc75-496a-96c7-007b75602de7",
+    "target1_audio_id": "23bef2dd-846b-464f-8023-d8cca1ec4b36",
+    "target2_audio_id": "9ced63b2-1cb9-43c5-bcf3-b936aeb04cb3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U04",
+   "set": {
+    "known_text": "yes, let me serve",
+    "target_text": "sim, me deixa servir",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "2854fc6e-e5d1-4401-84e1-47d1e91eb61f",
+    "target1_audio_id": "19187263-b67f-4f54-856c-200798858284",
+    "target2_audio_id": "e62093dd-1ce0-41c0-af80-f0afb8f80521"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U03",
+   "set": {
+    "known_text": "I'm sure, let me",
+    "target_text": "tenho certeza, me deixa",
+    "word_count": 23,
+    "lego_position": "end",
+    "known_audio_id": "4fc137ef-42c2-4dc2-b55e-0720aee6bb55",
+    "target1_audio_id": "ccd0a09e-c17c-4bfc-afac-8b6742e3a0db",
+    "target2_audio_id": "388486bb-c1d6-459d-88a5-8a14428607ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U02",
+   "set": {
+    "known_text": "that's true, let me",
+    "target_text": "isso é verdade, me deixa",
+    "word_count": 24,
+    "lego_position": "end",
+    "known_audio_id": "176445fd-ad35-4a75-b3ee-152c98f3dee6",
+    "target1_audio_id": "49a92189-35c9-4fa0-8d9c-1809e41f80ed",
+    "target2_audio_id": "39baf945-4e3c-4d6a-b2f8-f2a4e6f08db0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01U01",
+   "set": {
+    "known_text": "no, let me",
+    "target_text": "não, me deixa",
+    "word_count": 13,
+    "lego_position": "end",
+    "known_audio_id": "c4ff1548-f242-47c7-96b2-2d8a1d65a605",
+    "target1_audio_id": "495a81fb-8064-4a55-9332-d455016475fc",
+    "target2_audio_id": "839e1339-edaf-460d-a4f5-d86efd42f324"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01B03",
+   "set": {
+    "known_text": "yes, let me",
+    "target_text": "sim, me deixa",
+    "word_count": 13,
+    "lego_position": "end",
+    "known_audio_id": "63e12b3e-d799-418f-8f84-b1aca5949b3d",
+    "target1_audio_id": "d0e20bca-d58a-4149-b2e4-596e31b18618",
+    "target2_audio_id": "7b3a3237-c744-4973-ae54-700c2c28f821"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0466L01B02",
+   "set": {
+    "known_text": "let me now",
+    "target_text": "me deixa agora",
+    "word_count": 14,
+    "known_audio_id": "392683ac-1a53-43fd-b0ca-be8f75aed67a",
+    "target1_audio_id": "a290cec0-cdd7-4bc8-9d10-7af0c636fbb2",
+    "target2_audio_id": "e2d83d9d-9c32-4050-9781-f7d40a162959"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0468L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0468L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0467L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0467L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0466L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0466L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0466L01B04"
+  }
+ ]
+}
