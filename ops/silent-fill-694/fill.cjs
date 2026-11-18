@@ -17,6 +17,10 @@ const arg = (k, d) => { const i = rest.indexOf(k); return i >= 0 ? rest[i + 1] :
 const slots = JSON.parse(fs.readFileSync(path.join(DIR, 'live/slots.json'), 'utf8')).filter(s => s.course === course)
 const ARA = fs.existsSync(path.join(DIR, 'live/ara-candidates.json')) && ['ara_eg_for_eng', 'ara_lb_for_eng'].includes(course)
   ? JSON.parse(fs.readFileSync(path.join(DIR, 'live/ara-candidates.json'), 'utf8')) : {}
+// A lego_debut row whose id is a bare uuid is script-view's stand-in for the LEGO itself: its slot is course_legos (link by legoId).
+const slotRef = s => /^[0-9a-f-]{36}$/i.test(s.phraseId) ? { legoId: s.lego } : { phraseId: s.phraseId }
+// --roles target1,target2: send only these roles (tel/mar known: one probe answered VOICE_NOT_CAST for the whole language).
+const ROLES = arg('--roles', null) ? arg('--roles').split(',') : null
 const key = s => `${s.phraseId}|${s.role}`
 const readLog = f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)) : []
 const spentSoFar = () => fs.readdirSync(RES).filter(f => f.endsWith('.jsonl')).flatMap(f => readLog(path.join(RES, f)))
@@ -48,6 +52,7 @@ const purpose = 'cs #694·AI: fill a silent played-row slot (paid-course cleanup
   let spent = spentSoFar(); const max = Number(arg('--max', 1e9)); let sent = 0
   const tally = { linked_library: 0, linked_rendered: 0, refused: {}, link_failed: {}, held: 0, skipped_done: 0, stopped_cap: 0 }
   for (const s of slots) {
+    if (ROLES && !ROLES.includes(s.role)) continue
     if (held(s)) { tally.held++; continue }
     if (done.has(key(s))) { tally.skipped_done++; continue }
     if (sent >= max) break
@@ -61,7 +66,7 @@ const purpose = 'cs #694·AI: fill a silent played-row slot (paid-course cleanup
       sent++
       const rec = { at: new Date().toISOString(), key: key(s), phraseId: s.phraseId, row: s.row, lego: s.lego, role: s.role, text: s.text, tries: [] }
       for (const audioId of cands.slice(0, 4)) {
-        const l = await post(`/api/production/${course}/link-clip`, { links: [{ phraseId: s.phraseId, role: s.role, audioId }] })
+        const l = await post(`/api/production/${course}/link-clip`, { links: [{ ...slotRef(s), role: s.role, audioId }] })
         const one = (l.results && l.results[0]) || l
         const ok = !!(l.ok && one.ok !== false)
         rec.tries.push({ audioId, status: l.status, ok, code: one.code || l.code, error: (one.error || l.error) && String(one.error || l.error).slice(0, 200) })
@@ -78,7 +83,7 @@ const purpose = 'cs #694·AI: fill a silent played-row slot (paid-course cleanup
     const rec = { at: new Date().toISOString(), key: key(s), phraseId: s.phraseId, row: s.row, lego: s.lego, role: s.role, text: s.text,
       render: { status: r.status, ok: r.ok, code: r.code, source: r.source, audioId: r.audioId, charsSpent: r.charsSpent, voiceId: r.voiceId, error: r.error && String(r.error).slice(0, 300), existing: r.existing } }
     if (r.ok && r.audioId) {
-      const l = await post(`/api/production/${course}/link-clip`, { links: [{ phraseId: s.phraseId, role: s.role, audioId: r.audioId }] })
+      const l = await post(`/api/production/${course}/link-clip`, { links: [{ ...slotRef(s), role: s.role, audioId: r.audioId }] })
       const one = (l.results && l.results[0]) || l
       rec.link = { status: l.status, ok: !!(l.ok && one.ok !== false), code: one.code || l.code, error: (one.error || l.error) && String(one.error || l.error).slice(0, 300), eventId: l.eventId || l.event_id }
       if (rec.link.ok) tally[r.source === 'library' ? 'linked_library' : 'linked_rendered']++
