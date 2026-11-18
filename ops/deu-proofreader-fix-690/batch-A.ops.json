@@ -1,0 +1,246 @@
+[
+ {
+  "op": "lego.update",
+  "lego_id": "S0654L01",
+  "expect": {
+   "known_text": "I'm not sure if I can help you, sir",
+   "target_text": "Ich bin mir nicht sicher, ob ich Ihnen helfen kann, mein Herr"
+  },
+  "set": {
+   "known_text": "I can help you, sir",
+   "target_text": "ich Ihnen helfen kann, mein Herr",
+   "type": "M",
+   "components": [
+    {
+     "known": "I",
+     "target": "ich"
+    },
+    {
+     "known": "you",
+     "target": "Ihnen"
+    },
+    {
+     "known": "help",
+     "target": "helfen"
+    },
+    {
+     "known": "can",
+     "target": "kann"
+    },
+    {
+     "known": "sir",
+     "target": "mein Herr"
+    }
+   ]
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0654L02",
+  "expect": {
+   "known_text": "sure",
+   "target_text": "sicher",
+   "is_new": false
+  },
+  "set": {
+   "known_text": "I'm not sure if",
+   "target_text": "ich bin mir nicht sicher, ob",
+   "type": "M",
+   "components": [
+    {
+     "known": "I'm not sure,",
+     "target": "ich bin mir nicht sicher,"
+    },
+    {
+     "known": "if",
+     "target": "ob"
+    }
+   ]
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0654L02",
+  "slot": "known",
+  "audio_id": "c4c663ea-a0a5-480b-8433-797f33e9e121"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0654L02",
+  "slot": "target1",
+  "audio_id": "5df924e5-480b-4884-956b-14a46bce40ea"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0654L02",
+  "slot": "target2",
+  "audio_id": "127734fb-2530-434e-aa23-e3156e2fa76f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0654L01B01",
+  "expect": {
+   "known_text": "me",
+   "target_text": "mir"
+  },
+  "set": {
+   "known_text": "if I can help you, sir",
+   "target_text": "ob ich Ihnen helfen kann, mein Herr"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0654L01B02",
+  "expect": {
+   "known_text": "he also told me that",
+   "target_text": "er hat mir auch das gesagt"
+  },
+  "set": {
+   "known_text": "that I can help you, sir",
+   "target_text": "dass ich Ihnen helfen kann, mein Herr"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0654L01B03",
+  "expect": {
+   "known_text": "I also told myself that",
+   "target_text": "ich habe mir auch das gesagt"
+  },
+  "set": {
+   "known_text": "because I can help you, sir",
+   "target_text": "weil ich Ihnen helfen kann, mein Herr"
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0654L01U09",
+   "course_code": "deu_for_eng",
+   "seed_number": 654,
+   "lego_index": 1,
+   "position": 12,
+   "known_text": "I don't know if I can help you, sir",
+   "target_text": "ich weiß nicht, ob ich Ihnen helfen kann, mein Herr",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "end",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #690·AI, deu proofreader items passed by Kai 18 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 10,
+   "lego_count": 2
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0654L01U10",
+   "course_code": "deu_for_eng",
+   "seed_number": 654,
+   "lego_index": 1,
+   "position": 13,
+   "known_text": "I hope that I can help you, sir",
+   "target_text": "ich hoffe, dass ich Ihnen helfen kann, mein Herr",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "end",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #690·AI, deu proofreader items passed by Kai 18 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 9,
+   "lego_count": 2
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0654L01U11",
+   "course_code": "deu_for_eng",
+   "seed_number": 654,
+   "lego_index": 1,
+   "position": 14,
+   "known_text": "I think that I can help you, sir",
+   "target_text": "ich denke, dass ich Ihnen helfen kann, mein Herr",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "end",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #690·AI, deu proofreader items passed by Kai 18 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 9,
+   "lego_count": 2
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0654L01U12",
+   "course_code": "deu_for_eng",
+   "seed_number": 654,
+   "lego_index": 1,
+   "position": 15,
+   "known_text": "I know that I can help you, sir",
+   "target_text": "ich weiß, dass ich Ihnen helfen kann, mein Herr",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "end",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #690·AI, deu proofreader items passed by Kai 18 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 9,
+   "lego_count": 2
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02B01"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02B02"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02B03"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02U02"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02U03"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02U04"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02U05"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02U06"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0654L02U07"
+ }
+]

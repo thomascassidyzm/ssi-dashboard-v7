@@ -1,0 +1,38 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0660L01B01",
+  "expect": {
+   "known_text": "to help",
+   "target_text": "helfen"
+  },
+  "set": {
+   "known_text": "yes, I can help you all",
+   "target_text": "ja, ich kann euch allen helfen"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0660L01B02",
+  "expect": {
+   "known_text": "he also wants to help",
+   "target_text": "er will auch helfen"
+  },
+  "set": {
+   "known_text": "I think I can help you all",
+   "target_text": "ich denke, ich kann euch allen helfen"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0660L01B03",
+  "expect": {
+   "known_text": "I also tried to help",
+   "target_text": "ich habe auch versucht zu helfen"
+  },
+  "set": {
+   "known_text": "I hope I can help you all",
+   "target_text": "ich hoffe, ich kann euch allen helfen"
+  }
+ }
+]

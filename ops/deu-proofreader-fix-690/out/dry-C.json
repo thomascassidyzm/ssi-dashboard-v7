@@ -1,0 +1,145 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "to help",
+    "target_text": "helfen",
+    "known_audio_id": "fd7ad2df-2fce-497e-a615-614082ac4bd7",
+    "target1_audio_id": "f74e83be-6c72-49ce-afe2-4db16bbb8108",
+    "target2_audio_id": "0b3ebf3b-e7ef-44f3-8e99-65feee9ae21f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B01",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "yes, I can help you all",
+    "target_text": "ja, ich kann euch allen helfen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "he also wants to help",
+    "target_text": "er will auch helfen",
+    "known_audio_id": "d7cb9f07-4764-4076-af9b-4078e8e7547a",
+    "target1_audio_id": "47ce3967-1e0e-4205-9e62-613b53860140",
+    "target2_audio_id": "69b17a5c-5a1c-4c0f-afe9-a8efb3e9b458",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B02",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think I can help you all",
+    "target_text": "ich denke, ich kann euch allen helfen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0660L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I also tried to help",
+    "target_text": "ich habe auch versucht zu helfen",
+    "known_audio_id": "8b3d2f00-254d-4280-a234-facfeff7d76d",
+    "target1_audio_id": "57f6c8a1-5d75-4f33-9382-475e908579ba",
+    "target2_audio_id": "ecae8725-4fbe-4fd4-912c-a7e40d2b418c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0660L01B03",
+    "seed_number": 660,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I hope I can help you all",
+    "target_text": "ich hoffe, ich kann euch allen helfen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0660L01B03",
+   "set": {
+    "known_text": "I also tried to help",
+    "target_text": "ich habe auch versucht zu helfen",
+    "known_audio_id": "8b3d2f00-254d-4280-a234-facfeff7d76d",
+    "target1_audio_id": "57f6c8a1-5d75-4f33-9382-475e908579ba",
+    "target2_audio_id": "ecae8725-4fbe-4fd4-912c-a7e40d2b418c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0660L01B02",
+   "set": {
+    "known_text": "he also wants to help",
+    "target_text": "er will auch helfen",
+    "known_audio_id": "d7cb9f07-4764-4076-af9b-4078e8e7547a",
+    "target1_audio_id": "47ce3967-1e0e-4205-9e62-613b53860140",
+    "target2_audio_id": "69b17a5c-5a1c-4c0f-afe9-a8efb3e9b458"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0660L01B01",
+   "set": {
+    "known_text": "to help",
+    "target_text": "helfen",
+    "known_audio_id": "fd7ad2df-2fce-497e-a615-614082ac4bd7",
+    "target1_audio_id": "f74e83be-6c72-49ce-afe2-4db16bbb8108",
+    "target2_audio_id": "0b3ebf3b-e7ef-44f3-8e99-65feee9ae21f"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
