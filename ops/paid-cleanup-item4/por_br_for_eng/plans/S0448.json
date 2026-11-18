@@ -1,9 +1,76 @@
-{"seed":448,"notes":"cs #761·AI; L03 U05 had the same comma artefact (tenho certeza, …) and is rewritten","legos":{
-"L02":{"update":{"B02":["they'll be happy to see you","eles vão ficar felizes em te ver"],"B03":["they'll be happy with that","eles vão ficar felizes com isso"],
- "U01":["I think they'll be happy","acho que eles vão ficar felizes"],"U03":["they'll be happy with the news","eles vão ficar felizes com as notícias"],
- "U04":["they'll be happy to come","eles vão ficar felizes em vir"],"U05":["I'm sure they'll be happy","tenho certeza de que eles vão ficar felizes"]},
- "insert":[["build","they'll be happy to know","eles vão ficar felizes em saber"]]},
-"L03":{"update":{"B02":["happy to help","felizes em ajudar"],"B03":["she'll be happy to help","ela vai ficar feliz em ajudar"],
- "U02":["I'll be happy to help","vou ficar feliz em ajudar"],"U03":["we'll be happy to help","nós vamos ficar felizes em ajudar"],
- "U05":["I'm sure they'll be happy to help","tenho certeza de que eles vão ficar felizes em ajudar"]},
- "insert":[["build","he'll be happy to help","ele vai ficar feliz em ajudar"]]}}}
+{
+ "seed": 448,
+ "notes": "cs #761·AI; L03 U05 had the same comma artefact (tenho certeza, …) and is rewritten | cs #759·AI: rows that split the LEGO with still/really rewritten (validator containment)",
+ "legos": {
+  "L02": {
+   "update": {
+    "B02": [
+     "they'll be happy to see you",
+     "eles vão ficar felizes em te ver"
+    ],
+    "B03": [
+     "they'll be happy with that",
+     "eles vão ficar felizes com isso"
+    ],
+    "U01": [
+     "I think they'll be happy",
+     "acho que eles vão ficar felizes"
+    ],
+    "U03": [
+     "they'll be happy with the news",
+     "eles vão ficar felizes com as notícias"
+    ],
+    "U04": [
+     "they'll be happy to come",
+     "eles vão ficar felizes em vir"
+    ],
+    "U05": [
+     "I'm sure they'll be happy",
+     "tenho certeza de que eles vão ficar felizes"
+    ],
+    "U02": [
+     "they'll be happy here",
+     "eles vão ficar felizes aqui"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "they'll be happy to know",
+     "eles vão ficar felizes em saber"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "happy to help",
+     "felizes em ajudar"
+    ],
+    "B03": [
+     "she'll be happy to help",
+     "ela vai ficar feliz em ajudar"
+    ],
+    "U02": [
+     "I'll be happy to help",
+     "vou ficar feliz em ajudar"
+    ],
+    "U03": [
+     "we'll be happy to help",
+     "nós vamos ficar felizes em ajudar"
+    ],
+    "U05": [
+     "I'm sure they'll be happy to help",
+     "tenho certeza de que eles vão ficar felizes em ajudar"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "he'll be happy to help",
+     "ele vai ficar feliz em ajudar"
+    ]
+   ]
+  }
+ }
+}

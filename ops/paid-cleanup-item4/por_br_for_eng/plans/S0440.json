@@ -1,11 +1,80 @@
-{"seed":440,"notes":"cs #761·AI","legos":{
-"L01":{"update":{"B02":["they want to travel to Africa","eles querem viajar para a África"],"B03":["they want to travel next year","eles querem viajar no próximo ano"],
- "U01":["they want to travel with us","eles querem viajar conosco"],"U03":["they want to travel during the holidays","eles querem viajar durante as férias"],
- "U04":["I know they want to travel","sei que eles querem viajar"],"U05":["they want to travel around the world","eles querem viajar pelo mundo"]},
- "insert":[["build","they want to travel more","eles querem viajar mais"]]},
-"L02":{"update":{"B03":["they want to learn while they're still young","eles querem aprender enquanto ainda são jovens"],
- "U01":["they need to travel while they're still young","eles precisam viajar enquanto ainda são jovens"],"U02":["it's important to learn while they're still young","é importante aprender enquanto ainda são jovens"],
- "U03":["they want to live in the city while they're still young","eles querem viver na cidade enquanto ainda são jovens"],
- "U04":["our children want to learn Portuguese while they're still young","nossos filhos querem aprender português enquanto ainda são jovens"],
- "U05":["they want to do everything while they're still young","eles querem fazer tudo enquanto ainda são jovens"]},
- "insert":[["build","to learn while they're still young","aprender enquanto ainda são jovens"]]}}}
+{
+ "seed": 440,
+ "notes": "cs #761·AI | cs #759·AI: rows that split the LEGO with still/really rewritten (validator containment)",
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "they want to travel to Africa",
+     "eles querem viajar para a África"
+    ],
+    "B03": [
+     "they want to travel next year",
+     "eles querem viajar no próximo ano"
+    ],
+    "U01": [
+     "they want to travel with us",
+     "eles querem viajar conosco"
+    ],
+    "U03": [
+     "they want to travel during the holidays",
+     "eles querem viajar durante as férias"
+    ],
+    "U04": [
+     "I know they want to travel",
+     "sei que eles querem viajar"
+    ],
+    "U05": [
+     "they want to travel around the world",
+     "eles querem viajar pelo mundo"
+    ],
+    "U02": [
+     "I think they want to travel",
+     "acho que eles querem viajar"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "they want to travel more",
+     "eles querem viajar mais"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "they want to learn while they're still young",
+     "eles querem aprender enquanto ainda são jovens"
+    ],
+    "U01": [
+     "they need to travel while they're still young",
+     "eles precisam viajar enquanto ainda são jovens"
+    ],
+    "U02": [
+     "it's important to learn while they're still young",
+     "é importante aprender enquanto ainda são jovens"
+    ],
+    "U03": [
+     "they want to live in the city while they're still young",
+     "eles querem viver na cidade enquanto ainda são jovens"
+    ],
+    "U04": [
+     "our children want to learn Portuguese while they're still young",
+     "nossos filhos querem aprender português enquanto ainda são jovens"
+    ],
+    "U05": [
+     "they want to do everything while they're still young",
+     "eles querem fazer tudo enquanto ainda são jovens"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "to learn while they're still young",
+     "aprender enquanto ainda são jovens"
+    ]
+   ]
+  }
+ }
+}

@@ -1,1 +1,134 @@
-{"seed": 572, "notes": "cs #762·AI; L02-L04 'você sabe do que aconteceu' rows were ungrammatical (saber takes o que); kept L01 U04 U05, L02 B02 U01 U06-U08, L03 B02 U01 U06, L04 B02 U01", "legos": {"L01": {"update": {"B02": ["have you forgotten my name?", "você se esqueceu do meu nome?"], "B03": ["have you forgotten the answer?", "você se esqueceu da resposta?"], "U01": ["have you forgotten me?", "você se esqueceu de mim?"], "U02": ["have you forgotten the word?", "você se esqueceu da palavra?"], "U03": ["have you forgotten your bag?", "você se esqueceu da sua bolsa?"]}, "insert": [["build", "have you forgotten your ticket?", "você se esqueceu do seu bilhete?"]]}, "L02": {"update": {"B03": ["I need to remember what happened", "preciso me lembrar do que aconteceu"], "U02": ["I want to remember what happened", "quero me lembrar do que aconteceu"], "U03": ["she forgot what happened", "ela se esqueceu do que aconteceu"], "U04": ["I'm trying to remember what happened", "estou tentando me lembrar do que aconteceu"], "U05": ["he doesn't want to remember what happened", "ele não quer se lembrar do que aconteceu"]}, "insert": [["build", "I'd like to remember what happened", "gostaria de me lembrar do que aconteceu"]]}, "L03": {"update": {"B03": ["better than the last time", "melhor do que da última vez"], "U02": ["it was easier the last time", "foi mais fácil da última vez"], "U03": ["I'm feeling better than the last time", "estou me sentindo melhor do que da última vez"], "U04": ["she was here the last time", "ela esteve aqui da última vez"], "U05": ["I couldn't sleep the last time", "eu não consegui dormir da última vez"]}, "insert": [["build", "like the last time", "como da última vez"]]}, "L04": {"update": {"B03": ["it was lovely the last time they visited us", "foi muito bom da última vez que eles nos visitaram"], "U02": ["the dog was very happy the last time they visited us", "o cachorro estava muito contente da última vez que eles nos visitaram"], "U03": ["I can't remember what happened the last time they visited us", "não consigo me lembrar do que aconteceu da última vez que eles nos visitaram"], "U04": ["it was a surprise the last time they visited us", "foi uma surpresa da última vez que eles nos visitaram"], "U05": ["I was tired the last time they visited us", "eu estava cansado da última vez que eles nos visitaram"]}, "insert": [["build", "it was difficult the last time they visited us", "foi difícil da última vez que eles nos visitaram"]]}}}
+{
+ "seed": 572,
+ "notes": "cs #762·AI; L02-L04 'você sabe do que aconteceu' rows were ungrammatical (saber takes o que); kept L01 U04 U05, L02 B02 U01 U06-U08, L03 B02 U01 U06, L04 B02 U01 | cs #759·AI: rows that split the LEGO with still/really rewritten (validator containment)",
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "have you forgotten my name?",
+     "você se esqueceu do meu nome?"
+    ],
+    "B03": [
+     "have you forgotten the answer?",
+     "você se esqueceu da resposta?"
+    ],
+    "U01": [
+     "have you forgotten me?",
+     "você se esqueceu de mim?"
+    ],
+    "U02": [
+     "have you forgotten the word?",
+     "você se esqueceu da palavra?"
+    ],
+    "U03": [
+     "have you forgotten your bag?",
+     "você se esqueceu da sua bolsa?"
+    ],
+    "U05": [
+     "have you forgotten her name?",
+     "você se esqueceu do nome dela?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "have you forgotten your ticket?",
+     "você se esqueceu do seu bilhete?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "I need to remember what happened",
+     "preciso me lembrar do que aconteceu"
+    ],
+    "U02": [
+     "I want to remember what happened",
+     "quero me lembrar do que aconteceu"
+    ],
+    "U03": [
+     "she forgot what happened",
+     "ela se esqueceu do que aconteceu"
+    ],
+    "U04": [
+     "I'm trying to remember what happened",
+     "estou tentando me lembrar do que aconteceu"
+    ],
+    "U05": [
+     "he doesn't want to remember what happened",
+     "ele não quer se lembrar do que aconteceu"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I'd like to remember what happened",
+     "gostaria de me lembrar do que aconteceu"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "better than the last time",
+     "melhor do que da última vez"
+    ],
+    "U02": [
+     "it was easier the last time",
+     "foi mais fácil da última vez"
+    ],
+    "U03": [
+     "I'm feeling better than the last time",
+     "estou me sentindo melhor do que da última vez"
+    ],
+    "U04": [
+     "she was here the last time",
+     "ela esteve aqui da última vez"
+    ],
+    "U05": [
+     "I couldn't sleep the last time",
+     "eu não consegui dormir da última vez"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "like the last time",
+     "como da última vez"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B03": [
+     "it was lovely the last time they visited us",
+     "foi muito bom da última vez que eles nos visitaram"
+    ],
+    "U02": [
+     "the dog was very happy the last time they visited us",
+     "o cachorro estava muito contente da última vez que eles nos visitaram"
+    ],
+    "U03": [
+     "I can't remember what happened the last time they visited us",
+     "não consigo me lembrar do que aconteceu da última vez que eles nos visitaram"
+    ],
+    "U04": [
+     "it was a surprise the last time they visited us",
+     "foi uma surpresa da última vez que eles nos visitaram"
+    ],
+    "U05": [
+     "I was tired the last time they visited us",
+     "eu estava cansado da última vez que eles nos visitaram"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "it was difficult the last time they visited us",
+     "foi difícil da última vez que eles nos visitaram"
+    ]
+   ]
+  }
+ }
+}

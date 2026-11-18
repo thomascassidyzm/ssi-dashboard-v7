@@ -1,0 +1,512 @@
+{
+ "event_id": "a5be8658-9a29-4a9e-9bb4-04d5277a62d2",
+ "undo_file": "2026-11-18T18-41-45-870Z-a5be8658-9a29-4a9e-9bb4-04d5277a62d2.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L02U05",
+   "set": {
+    "known_text": "they still said what they wanted",
+    "target_text": "eles ainda disseram o que queriam",
+    "word_count": 33,
+    "known_audio_id": "a478fc4c-0cd9-43d7-9475-a2453597231e",
+    "target1_audio_id": "b08b6579-186c-4469-a122-cbfb6cf1612f",
+    "target2_audio_id": "9ba9c31c-9476-4591-880d-862d7287eb88"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L02U04",
+   "set": {
+    "known_text": "yes, they said what they wanted",
+    "target_text": "sim, eles disseram o que queriam",
+    "word_count": 32,
+    "known_audio_id": "22c1942e-df6d-475f-9148-d62859ec67b5",
+    "target1_audio_id": "f8b9d116-ea0a-4df7-b1ac-3acb441bce64",
+    "target2_audio_id": "afa4cef3-10a6-46d9-95be-fb4272a585f4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L02U02",
+   "set": {
+    "known_text": "that's true, what they wanted",
+    "target_text": "isso é verdade, o que queriam",
+    "word_count": 29,
+    "known_audio_id": "ba59eb16-ea0a-4912-9174-779b096c0c0b",
+    "target1_audio_id": "1e416d07-43ea-4e14-81fc-890bbdccbb03",
+    "target2_audio_id": "20ab0dce-f858-4d13-a9af-8dab6406c00b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L02U01",
+   "set": {
+    "known_text": "no, what they wanted",
+    "target_text": "não, o que queriam",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "5dc87ae4-a106-4427-9517-0263ec649987",
+    "target1_audio_id": "2c8c372c-a156-4995-99d7-97f504473d4d",
+    "target2_audio_id": "3662df2c-c905-42bf-9532-0fabfb88377b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L02B03",
+   "set": {
+    "known_text": "yes, what they wanted",
+    "target_text": "sim, o que queriam",
+    "word_count": 18,
+    "known_audio_id": "5ff7ac64-2252-4810-9763-68e6b8c37447",
+    "target1_audio_id": "09866f7a-12ec-42a5-b5ac-1c26bb295270",
+    "target2_audio_id": "4c6b5834-f372-4ac2-a336-77ce1958debd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L01U05",
+   "set": {
+    "known_text": "I'm sure they said",
+    "target_text": "tenho certeza, eles disseram",
+    "word_count": 28,
+    "known_audio_id": "6f12b263-a3a0-4dd2-a79b-1d397d7a8419",
+    "target1_audio_id": "82051973-c116-490a-a91a-708ce8786af6",
+    "target2_audio_id": "02ecd2cc-4b77-46b6-a961-35e484afe518"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L01U04",
+   "set": {
+    "known_text": "yes, they still said",
+    "target_text": "sim, eles ainda disseram",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "00739ad7-7c00-4295-9f17-17d316dbc2c5",
+    "target1_audio_id": "be9ea823-5273-43c7-9b68-2752dde429b1",
+    "target2_audio_id": "ab610ac6-fbc9-4ac2-91b7-ed067660a2ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L01U03",
+   "set": {
+    "known_text": "that's true, they said",
+    "target_text": "isso é verdade, eles disseram",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "657e95ca-a96b-4eb2-895a-7673ed883788",
+    "target1_audio_id": "fceae102-2ff6-4406-b89a-e89aa574e1d2",
+    "target2_audio_id": "48aa5877-b176-4924-8c48-164d34dd6019"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L01U02",
+   "set": {
+    "known_text": "they still said",
+    "target_text": "eles ainda disseram",
+    "word_count": 19,
+    "lego_position": null,
+    "known_audio_id": "e0caec0e-ba92-499d-895a-5c401c5a74dd",
+    "target1_audio_id": "fd7dc08c-acf9-49b0-8a4e-0dab8bc85084",
+    "target2_audio_id": "bb83d435-4686-4bec-888e-b64538b8e535"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L01U01",
+   "set": {
+    "known_text": "no, they said",
+    "target_text": "não, eles disseram",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "b397d6ef-aea2-46ab-8572-941aa1467a59",
+    "target1_audio_id": "d01d2816-2a11-422d-9bda-548edf037464",
+    "target2_audio_id": "e2dfc3cc-3738-4523-9896-8a9db640a763"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0451L01B03",
+   "set": {
+    "known_text": "yes, they said",
+    "target_text": "sim, eles disseram",
+    "known_audio_id": "e938e3d7-1193-44bf-8050-63a9cc853d86",
+    "target1_audio_id": "cf485713-5805-4574-9878-2c75f2ca45d9",
+    "target2_audio_id": "e0e28340-4282-493d-b4f2-1d52dad10d54"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L04U04",
+   "set": {
+    "known_text": "yes, they have to catch the train",
+    "target_text": "sim, eles têm que pegar o trem",
+    "word_count": 30,
+    "known_audio_id": "5422b2c5-71fc-4516-bebc-1e97752a3cb2",
+    "target1_audio_id": "fe3d854a-a840-4c6e-8c2e-951f3bbaef59",
+    "target2_audio_id": "31beb229-7b92-42b2-b802-bfc26f439935"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L04U03",
+   "set": {
+    "known_text": "I have the train",
+    "target_text": "tenho o trem",
+    "word_count": 12,
+    "known_audio_id": "aaf6e4b6-ad42-4686-94c9-be1912518849",
+    "target1_audio_id": "cd7dc2e6-acd9-4401-a429-fa30571f61dd",
+    "target2_audio_id": "878f4256-8281-42d9-a96b-2164ff2b0923"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L04U02",
+   "set": {
+    "known_text": "no, the train",
+    "target_text": "não, o trem",
+    "word_count": 11,
+    "lego_position": "end",
+    "known_audio_id": "25e12dc0-2334-4ed7-a704-da4cd4d2caf2",
+    "target1_audio_id": "ae2740a2-3654-4650-b9d7-2712de1c8b24",
+    "target2_audio_id": "5b795d94-f8d1-4303-9666-2c8d62277c75"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L04B03",
+   "set": {
+    "known_text": "yes, the train",
+    "target_text": "sim, o trem",
+    "word_count": 11,
+    "known_audio_id": "e94a260b-5aa9-4ec9-acb3-a69b5508029b",
+    "target1_audio_id": "23d077e1-c284-464c-bb1b-24e457425e99",
+    "target2_audio_id": "a91dceb9-e376-4010-84ec-f334225c0cc3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L03U04",
+   "set": {
+    "known_text": "yes, they have to catch",
+    "target_text": "sim, eles têm que pegar",
+    "lego_position": "end",
+    "known_audio_id": "5f1aed8b-2472-42f1-948a-a8e8e843e2cc",
+    "target1_audio_id": "b3ae88c1-83ba-4369-b5d0-5b08d157514e",
+    "target2_audio_id": "af315006-d048-4115-a41e-d35854765ecc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L03U03",
+   "set": {
+    "known_text": "that's true, catch",
+    "target_text": "isso é verdade, pegar",
+    "word_count": 21,
+    "lego_position": "end",
+    "known_audio_id": "c45ccf2f-f578-42ce-9d20-c61af058b733",
+    "target1_audio_id": "bfa1b850-c137-49f8-9026-035c3d92ab8f",
+    "target2_audio_id": "90f8197f-23e2-4ff0-bd86-3d05ed57a7ea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L03U01",
+   "set": {
+    "known_text": "no, catch",
+    "target_text": "não, pegar",
+    "word_count": 10,
+    "lego_position": "end",
+    "known_audio_id": "d25dbf86-2d12-412c-a95c-27991f037bdb",
+    "target1_audio_id": "4c3d60ac-ecfb-4c47-9941-fbaf43c2634f",
+    "target2_audio_id": "642c2ac5-c21b-438c-b551-0e1ca5306427"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L03B03",
+   "set": {
+    "known_text": "yes, to catch",
+    "target_text": "sim, pegar",
+    "word_count": 10,
+    "lego_position": "end",
+    "known_audio_id": "faa05f8f-3f78-4913-966d-423fe0663ce5",
+    "target1_audio_id": "b82d9eb3-4f98-472c-8087-433a81356350",
+    "target2_audio_id": "12269e4a-88b4-464e-9fad-89842633c4a1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L02U05",
+   "set": {
+    "known_text": "I'm sure they have to",
+    "target_text": "tenho certeza, eles têm que",
+    "lego_position": "end",
+    "known_audio_id": "b1eb3652-372b-4fae-b836-2552a3c1188f",
+    "target1_audio_id": "fc4a9ba2-51a0-4f19-a7f2-c59ff1319b43",
+    "target2_audio_id": "3aaf4f32-cce2-467e-ad83-53b546aa7db0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L02U04",
+   "set": {
+    "known_text": "yes, they still have to",
+    "target_text": "sim, eles ainda têm que",
+    "word_count": 23,
+    "lego_position": null,
+    "known_audio_id": "532b57c5-cd92-4ede-8e8d-4a013e8394c5",
+    "target1_audio_id": "dc67b4d8-0433-4c3c-96a4-08203708b7e2",
+    "target2_audio_id": "5e1423c2-c7c8-45ea-8ace-400b7f196a9f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L02U03",
+   "set": {
+    "known_text": "that's true, they have to",
+    "target_text": "isso é verdade, eles têm que",
+    "word_count": 28,
+    "lego_position": "end",
+    "known_audio_id": "02ffc5ad-1c11-40f7-860e-894e4d597221",
+    "target1_audio_id": "4e2892b4-2eb0-4502-995c-089163db6a70",
+    "target2_audio_id": "b8c658a1-0057-4772-b811-882b5f22d836"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L02U02",
+   "set": {
+    "known_text": "they still have to",
+    "target_text": "eles ainda têm que",
+    "word_count": 18,
+    "lego_position": null,
+    "known_audio_id": "cd1ca32b-c575-4054-aaac-41b080fa1fb8",
+    "target1_audio_id": "7bbf9b36-7f80-484e-846f-b02d0e3d584f",
+    "target2_audio_id": "a39cf765-54a0-4a84-96f8-08d312f08ca1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L02U01",
+   "set": {
+    "known_text": "no, they have to",
+    "target_text": "não, eles têm que",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "3eba71c3-2561-43b2-bfce-f6d8dc1a06ce",
+    "target1_audio_id": "55b20725-2b80-4b42-b3e2-3d126a41daf7",
+    "target2_audio_id": "8f909eb3-c3dc-46e3-aec8-d2b50ff31a32"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0450L02B03",
+   "set": {
+    "known_text": "yes, they have to",
+    "target_text": "sim, eles têm que",
+    "word_count": 17,
+    "known_audio_id": "110c5d55-af39-4d63-84f4-22444cc85da3",
+    "target1_audio_id": "12510611-b3b5-4a44-99ca-a396d82ef48f",
+    "target2_audio_id": "b25a428d-c9e1-42b1-855c-a23e0e70a90d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L02U05",
+   "set": {
+    "known_text": "I'm sure they were almost",
+    "target_text": "tenho certeza, estavam quase",
+    "word_count": 28,
+    "lego_position": "end",
+    "known_audio_id": "d397ae76-a7b0-4e0f-8c74-b05e2bdc4148",
+    "target1_audio_id": "345bdb6b-f87f-43d9-9e9a-f34c89958751",
+    "target2_audio_id": "99798855-4551-459e-b8a5-c495334ac4c2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L02U04",
+   "set": {
+    "known_text": "yes, they said that they were almost",
+    "target_text": "sim, eles disseram que estavam quase",
+    "word_count": 36,
+    "known_audio_id": "4d895ce9-8e5c-44f9-9a8d-eb58d5716120",
+    "target1_audio_id": "de6e6bdd-75a2-490a-bf3a-b45344b6e9f0",
+    "target2_audio_id": "fb3fb71a-1682-42ac-8c56-f0dd29a5f5fb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L02U03",
+   "set": {
+    "known_text": "they still were almost there",
+    "target_text": "eles ainda estavam quase lá",
+    "word_count": 27,
+    "known_audio_id": "2366f077-857b-4465-bf81-fb8d4266f4ea",
+    "target1_audio_id": "3c2de4d3-aeb3-486e-bd76-bc0eae0e6749",
+    "target2_audio_id": "46ce0be4-1faa-46c0-8e60-edd490b02844"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L02U02",
+   "set": {
+    "known_text": "that's true, they were almost",
+    "target_text": "isso é verdade, estavam quase",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "6810b530-fa17-4f4e-ae92-54035b97a7a2",
+    "target1_audio_id": "90f8a226-7c9b-41e0-b756-e74c9c70742a",
+    "target2_audio_id": "2720cd4f-898e-4f04-b15e-3c3d332aed12"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L02U01",
+   "set": {
+    "known_text": "no, they were almost",
+    "target_text": "não, estavam quase",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "eb415b6a-ffb4-461b-8dfd-1d002dffbefe",
+    "target1_audio_id": "12a73153-1de0-4287-915b-00cb4d565497",
+    "target2_audio_id": "448fc061-24eb-468c-befe-38b2ca35222b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L02B03",
+   "set": {
+    "known_text": "yes, they were almost",
+    "target_text": "sim, estavam quase",
+    "word_count": 18,
+    "known_audio_id": "a09c8466-7fe6-4a81-a781-37b8b7fa87a7",
+    "target1_audio_id": "fe74d5b7-a7aa-4291-8668-c024951e61d5",
+    "target2_audio_id": "783ef1a2-9790-4546-995a-2ed7dd8c24b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L01U05",
+   "set": {
+    "known_text": "I'm sure they said that",
+    "target_text": "tenho certeza, eles disseram que",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "b3eb091e-58b8-4a50-a1fe-6b4736d8180c",
+    "target1_audio_id": "fa8ad92b-ca19-403e-85a1-e1709abd2767",
+    "target2_audio_id": "1c3ff984-7602-4e5b-875e-8081ef881a34"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L01U04",
+   "set": {
+    "known_text": "yes, they still said that",
+    "target_text": "sim, eles ainda disseram que",
+    "word_count": 28,
+    "lego_position": null,
+    "known_audio_id": "0935ac9e-35b2-4633-939c-d3a10845fbd7",
+    "target1_audio_id": "b66f3579-39a4-4b91-ba89-9cd26b8477dc",
+    "target2_audio_id": "2d945bee-7497-46ea-89ac-ef9845bc94ae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L01U03",
+   "set": {
+    "known_text": "that's true, they said that",
+    "target_text": "isso é verdade, eles disseram que",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "a9de5819-45c3-4eff-a8f6-b03d49f1f86b",
+    "target1_audio_id": "4abed3c1-3bf3-42e6-b0b6-c6d5bc57b0fa",
+    "target2_audio_id": "af09b73b-55d3-44aa-bfa1-5475403243ce"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L01U02",
+   "set": {
+    "known_text": "they still said that",
+    "target_text": "eles ainda disseram que",
+    "word_count": 23,
+    "lego_position": null,
+    "known_audio_id": "b0b5934f-cb92-43ad-a331-75e962cd6fd6",
+    "target1_audio_id": "6e8fac17-c47c-48c5-a85c-1a11bdcf0d3d",
+    "target2_audio_id": "1cdb1594-2443-4eba-871f-83a96c6ffff7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L01U01",
+   "set": {
+    "known_text": "no, they said that",
+    "target_text": "não, eles disseram que",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "2882816e-eaa7-4362-89b1-56d08a3aa6ac",
+    "target1_audio_id": "4e8764fd-ff1e-4285-9c6e-66c515fc08db",
+    "target2_audio_id": "c0de35b8-1b35-4d0e-9300-beae6415c27d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L01B03",
+   "set": {
+    "known_text": "yes, they said that",
+    "target_text": "sim, eles disseram que",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "9a84a80c-a96d-4d16-a8fb-31095e37eade",
+    "target1_audio_id": "2d83d432-03f7-4fc5-93c3-a6f7ad67cd0d",
+    "target2_audio_id": "7ff1281e-521e-42ef-b079-93e0334f9f3d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0449L01B02",
+   "set": {
+    "known_text": "they said that now",
+    "target_text": "eles disseram que agora",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "96aeac85-5db2-4479-9d3a-9f1913551b16",
+    "target1_audio_id": "c09b5fa4-ed38-4824-b65e-bafa68a60536",
+    "target2_audio_id": "b1b209ca-6c60-4301-a961-903f9443c3c9"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0451L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0451L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0450L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0450L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0450L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0449L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0449L01B04"
+  }
+ ]
+}
