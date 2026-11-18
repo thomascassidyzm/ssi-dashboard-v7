@@ -1,0 +1,41 @@
+{
+ "seed": 311,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला वाटतं त्या गोष्टीवर त्याचा विश्वास बसत नव्हता",
+     "I think he couldn't believe the story",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला तथ्यं माहित नाहीत",
+     "I don't know the facts",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "तुम्ही मला तीन सगळ्यात महत्त्वाची तथ्यं सांगाल का?",
+     "can you tell me the three most important facts?",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0311L02B01": "तथ्यं|reviewed by the planner: a form of a taught word or the seed's own wording (K6)",
+  "S0311L03B01": "तथ्यं|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

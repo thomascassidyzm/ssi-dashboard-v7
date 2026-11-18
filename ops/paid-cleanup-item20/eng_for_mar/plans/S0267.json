@@ -1,0 +1,55 @@
+{
+ "seed": 267,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "म्हणजे तुमच्या मित्राकडून तुम्हाला काही कळलं का?",
+     "so have you heard from your friend?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आणि तुमच्या मित्राकडून तुम्हाला काही कळलं का?",
+     "and have you heard from your friend?",
+     null,
+     null
+    ],
+    [
+     "build",
+     "तुमच्या मित्राकडून तुम्हाला आज काही कळलं का?",
+     "have you heard from your friend today?",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "म्हणजे तुम्हाला काही कळलं का?",
+     "so have you heard?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आणि तुम्हाला काही कळलं का?",
+     "and have you heard?",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0267L01B01": "कळलं|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

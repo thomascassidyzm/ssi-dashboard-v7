@@ -1,0 +1,44 @@
+{
+ "seed": 270,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मी विसरलोय याची मला काळजी आहे",
+     "I'm worried that I've forgotten",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ती खूप व्यस्त होती याची मला काळजी आहे",
+     "I'm worried that she was too busy",
+     null,
+     null
+    ],
+    [
+     "build",
+     "ते शक्य नव्हतं याची मला काळजी आहे",
+     "I'm worried that it wasn't possible",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला आज उशीर होईल",
+     "I'm going to be late today",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

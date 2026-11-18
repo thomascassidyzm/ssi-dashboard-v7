@@ -1,0 +1,40 @@
+{
+ "seed": 343,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "हो, तिला काळजी आहे",
+     "yes she's worried",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ते अर्थव्यवस्थेबद्दल आहे",
+     "it's about the economy",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "मी कोणालातरी ओळखतो जिने सांगितलं की तिला काळजी आहे",
+     "I know someone who said that she's worried",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0343L02B01": "अर्थव्यवस्थेबद्दल|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

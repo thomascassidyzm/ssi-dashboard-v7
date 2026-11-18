@@ -1,0 +1,40 @@
+{
+ "seed": 306,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तुम्ही त्या तरुण बाईला ओळखता का?",
+     "do you know that young woman?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ती कदाचित तुमच्या मित्राशी बोलणारी ती तरुण बाई असेल",
+     "it might be that young woman who's talking to your friend",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "तुमच्या मित्राशी बोलणाऱ्या त्या तरुण बाईला तुम्ही ओळखता का?",
+     "do you know that young woman who's talking to your friend?",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0306L02B01": "मित्राशी बोलणारी|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
