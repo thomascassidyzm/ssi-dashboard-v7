@@ -24,6 +24,14 @@ const ORDER = ['ben', 'kan', 'mar', 'tel', 'bul', 'ces', 'dan', 'nld', 'heb', 'n
   'tam', 'guj', 'pan', 'ara_eg', 'ara_lb', 'ell', 'ara_sy', 'deu_ch']
 const langs = [...ORDER.filter((l) => want[l]), ...Object.keys(want).filter((l) => !ORDER.includes(l))]
 const POD_LANES = new Set(['ara_sy'])
+// Kai, 18 Nov: languages with no course line at all get ONE authored everyday line each
+// (best effort, written by #716·AI; the route ignores it wherever a course line exists).
+const AUTHORED = {
+  ces: 'Dneska odpoledne půjdu s kamarádem na kávu.',
+  hun: 'Ma délután egy barátommal megyünk kávézni.',
+  rus: 'Сегодня днём я пойду с другом выпить кофе.',
+  ind: 'Sore ini saya mau minum kopi dengan teman.',
+}
 
 function call (method, p, body) {
   try {
@@ -41,7 +49,8 @@ const log = []
 for (const lang of langs) {
   const ids = want[lang].voiceIds
   const lane = POD_LANES.has(lang) ? 'pod-voices' : 'languages'
-  const before = call('GET', `/api/voicelab/${lane}/${lang}/samples?voices=${ids.join(',')}`)
+  const lq = AUTHORED[lang] ? `&line=${encodeURIComponent(AUTHORED[lang])}` : ''
+  const before = call('GET', `/api/voicelab/${lane}/${lang}/samples?voices=${ids.join(',')}${lq}`)
   if (!before.line) { log.push({ lang, skipped: 'no line', error: before.error || null }); console.log(`${lang}: no line — ${before.error || ''}`); continue }
   const per = before.line.text.length
   let missing = before.missing || []
@@ -52,7 +61,7 @@ for (const lang of langs) {
     const room = Math.floor((CAP - spent) / per)
     if (room <= 0) { row.stopped = `over the ${CAP}-char cap`; break }
     if (take.length > room) take = take.slice(0, room)
-    const r = call('POST', `/api/voicelab/${lane}/${lang}/samples/prepare`, { voiceIds: take, max: take.length })
+    const r = call('POST', `/api/voicelab/${lane}/${lang}/samples/prepare`, { voiceIds: take, max: take.length, ...(AUTHORED[lang] ? { line: AUTHORED[lang] } : {}) })
     if (r.httpError || !r.ok) { row.stopped = `refused: ${r.error || JSON.stringify(r).slice(0, 300)}`; break }
     spent += r.chars || 0
     row.chars += r.chars || 0
