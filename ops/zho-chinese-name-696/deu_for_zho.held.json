@@ -1,0 +1,68 @@
+{
+ "held_target_side": [],
+ "held_zut": [
+  {
+   "kind": "phrase",
+   "key": "deu_for_zho:S0001L03U01",
+   "known_new": "我想说德语。",
+   "target": "ich will Deutsch sprechen",
+   "clashes_with": [
+    [
+     "deu_for_zho:S0092L02U02",
+     "ichmöchtedeutschsprechen",
+     "我想说德语"
+    ]
+   ]
+  },
+  {
+   "kind": "phrase",
+   "key": "deu_for_zho:S0004L02B03",
+   "known_new": "用德语说",
+   "target": "auf Deutsch sprechen",
+   "clashes_with": [
+    [
+     "deu_for_zho:S0160L03B03",
+     "aufdeutschsagen",
+     "用德语说"
+    ]
+   ]
+  },
+  {
+   "kind": "phrase",
+   "key": "deu_for_zho:S0026L01U01",
+   "known_new": "我喜欢说德语。",
+   "target": "ich mag Deutsch sprechen",
+   "clashes_with": [
+    [
+     "deu_for_zho:S0206L02U02",
+     "ichgenießeessehrdeutschzusprechen",
+     "我喜欢说德语"
+    ]
+   ]
+  }
+ ],
+ "preexisting_zut_applied": [
+  {
+   "key": "deu_for_zho:S0011L02U06",
+   "known_new": "我想能尽量多说德语。",
+   "target": "ich würde gern so oft wie möglich Deutsch sprechen",
+   "clashes_with": [
+    [
+     "deu_for_zho:S0011L04U05",
+     "ichwillsooftwiemöglichdeutschsprechenkönnen"
+    ]
+   ]
+  },
+  {
+   "key": "deu_for_zho:S0011L04U05",
+   "known_new": "我想能尽量多说德语。",
+   "target": "ich will so oft wie möglich Deutsch sprechen können",
+   "clashes_with": [
+    [
+     "deu_for_zho:S0011L02U06",
+     "ichwürdegernsooftwiemöglichdeutschsprechen"
+    ]
+   ]
+  }
+ ]
+}

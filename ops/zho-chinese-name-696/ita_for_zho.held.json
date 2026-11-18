@@ -1,0 +1,138 @@
+{
+ "held_target_side": [
+  {
+   "kind": "phrase",
+   "key": "ita_for_zho:S0011L02U02",
+   "known": "我在试着说完以后说中文",
+   "target": "sto cercando di parlare dopo che hai finito",
+   "why": "target does not say italiano: a target-side defect, not this family"
+  }
+ ],
+ "held_zut": [
+  {
+   "kind": "lego",
+   "key": "S0001L03",
+   "known_new": "意大利语",
+   "target": "italiano",
+   "clashes_with": [
+    [
+     "S0033L02",
+     "l'italiano",
+     "意大利语"
+    ]
+   ]
+  }
+ ],
+ "preexisting_zut_applied": [
+  {
+   "key": "ita_for_zho:S0001L04U02",
+   "known_new": "我想和你说意大利语",
+   "target": "voglio parlare italiano con te",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0011L01U01",
+     "mipiacerebbeparlareitalianoconte"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0003L02U02",
+   "known_new": "我在试着多说意大利语。",
+   "target": "sto cercando di parlare italiano spesso",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0003L03U01",
+     "stocercandodiparlareitalianoilpiùspessopossibile"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0003L03U01",
+   "known_new": "我在试着多说意大利语。",
+   "target": "sto cercando di parlare italiano il più spesso possibile",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0003L02U02",
+     "stocercandodiparlareitalianospesso"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0009L02U04",
+   "known_new": "我想和你说一点意大利语。",
+   "target": "voglio parlare un po’ italiano con te",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0009L03U03",
+     "voglioparlareunpo'l'italianoconte"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0009L02U01",
+   "known_new": "我想说一点意大利语。",
+   "target": "voglio parlare un po’ italiano",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0009L03B03",
+     "voglioparlareunpo'l'italiano"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0009L03B03",
+   "known_new": "我想说一点意大利语",
+   "target": "voglio parlare un po’ l’italiano",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0009L02U01",
+     "voglioparlareunpo'italiano"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0009L03U03",
+   "known_new": "我想和你说一点意大利语。",
+   "target": "voglio parlare un po’ l’italiano con te",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0009L02U04",
+     "voglioparlareunpo'italianoconte"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0010L02U01",
+   "known_new": "我想能说意大利语",
+   "target": "voglio riuscire a parlare italiano",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0011L01U03",
+     "mipiacerebberiuscireaparlareitaliano"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0011L01U03",
+   "known_new": "我想能说意大利语",
+   "target": "mi piacerebbe riuscire a parlare italiano",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0010L02U01",
+     "voglioriuscireaparlareitaliano"
+    ]
+   ]
+  },
+  {
+   "key": "ita_for_zho:S0011L01U01",
+   "known_new": "我想和你说意大利语",
+   "target": "mi piacerebbe parlare italiano con te",
+   "clashes_with": [
+    [
+     "ita_for_zho:S0001L04U02",
+     "voglioparlareitalianoconte"
+    ]
+   ]
+  }
+ ]
+}
