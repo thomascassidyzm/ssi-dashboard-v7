@@ -1,0 +1,748 @@
+{
+ "seed": 271,
+ "seed_pair": {
+  "known": "你想下个月和我们一起去吗？",
+  "target": "Would you like to come with us next month?"
+ },
+ "legos": {
+  "S0271L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0271L01",
+    "type": "M",
+    "known_text": "你想下个月和我们一起去吗",
+    "target_text": "Would you like to come with us next month",
+    "components": [
+     {
+      "known": "一起去",
+      "target": "to come with us"
+     }
+    ],
+    "seed_number": 271
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_zho:S0271L01C01",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "一起去",
+     "target_text": "To come with us",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T18:41:22.317484+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8e9ea3e2-6370-4224-ba10-d4770324a097",
+     "target1_audio_id": "a0c30903-7b08-4488-8a29-139c95e3c086",
+     "target2_audio_id": "51bf9f16-de09-4565-8911-d6917c97334d",
+     "qa_checked": null,
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "f02eece6-014e-454d-b316-d3718f630905",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "To",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " come",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " us",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8d1a36b1-5b10-4755-b372-529d51b96042",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01B01",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "你想下个月和我们一起去吗",
+     "target_text": "Would you like to come with us next month?",
+     "word_count": 41,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-12T17:10:22.93909+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d06e22ae-d31e-4b7b-a605-7b7ac934e60f",
+     "target1_audio_id": "64dda23b-c1cb-4d74-b493-52de81f3eafc",
+     "target2_audio_id": "b743b32d-0379-4233-b471-f95c4c2ae432",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": "Would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e72ce891-3b15-4e66-a8a8-d3f910e174a1",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01B02",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "现在你想不想下个月和我们一起来",
+     "target_text": "Would you like to come with us next month now?",
+     "word_count": 45,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b77d5eca-29eb-4bcc-923a-6e9cc5919064",
+     "target1_audio_id": "cd658fd6-0ebf-480d-aa4b-40aef3d697de",
+     "target2_audio_id": "a8a5d757-033e-4731-9d2c-147aa320b847",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": "Would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "现在",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01B03",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "很快你想不想下个月和我们一起来",
+     "target_text": "Would you like to come with us next month soon?",
+     "word_count": 46,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ebef0cd2-367d-4b65-af74-a3a12ab7d135",
+     "target1_audio_id": "eb082cc9-c26a-44ca-8339-24fe5852a1d3",
+     "target2_audio_id": "45fd9f4b-38f1-4342-8483-ae8d9d694f53",
+     "qa_checked": null,
+     "target1_duration_ms": 2856,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": "Would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "很快",
+       "legoId": "S0023L03",
+       "target": " soon",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01B04",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "在这里你想不想下个月和我们一起来",
+     "target_text": "Would you like to come with us next month here?",
+     "word_count": 46,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9319b46c-9338-41b3-8dca-d8f441b39ed2",
+     "target1_audio_id": "2d576029-7cdc-4997-8803-c1569e56ca21",
+     "target2_audio_id": "cb234498-b6cf-4da6-967e-83ff2bb444f6",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": "Would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "在这里",
+       "legoId": "S0034L04",
+       "target": " here",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01U01",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "你想不想下个月和我们一起来，因为我们有一个主意",
+     "target_text": "Would you like to come with us next month because we have an idea?",
+     "word_count": 65,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:10:31.800Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c7fa812d-9d64-441d-9a8b-0b0d70e8608e",
+     "target1_audio_id": "fffcf22c-90a1-4c03-9ea1-b8215e541614",
+     "target2_audio_id": "2c694d51-f470-4908-8fad-700570529c5c",
+     "qa_checked": null,
+     "target1_duration_ms": 3792,
+     "target2_duration_ms": 3504,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": "Would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "因为",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "我们",
+       "legoId": "S0018L01",
+       "target": " we",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "一个想法",
+       "legoId": "S0259L01",
+       "target": " an idea",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01U02",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "你想不想下个月和我们一起来，虽然我知道你很忙",
+     "target_text": "Would you like to come with us next month although I know you're busy?",
+     "word_count": 69,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:10:31.800Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "39118681-5a7c-49af-81de-e85129505095",
+     "target1_audio_id": "8ebab86a-0393-49e1-a19c-558380e09ddd",
+     "target2_audio_id": "d5f42629-fa5f-4482-858e-3ad43a409cec",
+     "qa_checked": null,
+     "target1_duration_ms": 3576,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": "Would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "虽然",
+       "legoId": "S0178L01",
+       "target": " although",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "明白",
+       "legoId": "S0049L02",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you're",
+       "isGhost": true
+      },
+      {
+       "known": "忙",
+       "legoId": "S0192L01",
+       "target": " busy",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01U03",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "你想不想下个月和我们一起来，还是你想等",
+     "target_text": "Would you like to come with us next month or do you want to wait?",
+     "word_count": 64,
+     "lego_count": 15,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:10:31.800Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "bb97214f-1ce7-4245-8ca6-0a424928130a",
+     "target1_audio_id": "03e51400-a5c2-4588-818b-5907eaf4ea50",
+     "target2_audio_id": "b3a3a3d5-6cc8-440c-8010-ade39b3d4fe3",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": "Would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "或者",
+       "legoId": "S0044L01",
+       "target": " or",
+       "isGhost": false
+      },
+      {
+       "known": "吗",
+       "legoId": "S0014L01",
+       "target": " do",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "等",
+       "legoId": "S0082L01",
+       "target": " wait",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01U04",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "我问他你想不想下个月和我们一起来，他说想",
+     "target_text": "I asked him would you like to come with us next month and he said yes",
+     "word_count": 69,
+     "lego_count": 16,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-20T07:10:31.800Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T06:14:21.133165+00:00",
+     "created_at": "2026-02-20T07:10:31.871197+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7c47b53b-5b92-4bfa-ae06-92fbd272051f",
+     "target1_audio_id": "9971536b-1721-470d-ad16-2640d934de70",
+     "target2_audio_id": "739ea2a9-9fd9-4d35-a1ca-01747783031f",
+     "qa_checked": null,
+     "target1_duration_ms": 4464,
+     "target2_duration_ms": 4464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " asked",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " him",
+       "isGhost": true
+      },
+      {
+       "known": "你想下个月和我们一起去吗",
+       "legoId": "S0271L01",
+       "target": " would you like to come with us next month",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "而且",
+       "legoId": "S0015L02",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " he",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " said",
+       "isGhost": true
+      },
+      {
+       "known": "好",
+       "legoId": "S0097L01",
+       "target": " yes",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_zho:S0271L01U05",
+     "course_code": "eng_for_zho",
+     "seed_number": 271,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "你想下个月和我们一起去吗，因为我觉得那会很有意思",
+     "target_text": "Would you like to come with us next month because I think that would be interesting?",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-07-11T05:30:34.142988+00:00",
+     "created_at": "2026-06-16T17:18:58.195504+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3642430c-05df-4ba3-9681-699c8a0e5705",
+     "target1_audio_id": "2243b5af-8a7f-4437-a51c-0471f0412ba6",
+     "target2_audio_id": "c95ab6b0-ff1c-427b-944c-2362d5fba01b",
+     "qa_checked": null,
+     "target1_duration_ms": 4344,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,1965 @@
+{
+ "seed": 61,
+ "seed_pair": {
+  "known": "조금 더 천천히 다시 말해줄 수 있어요?",
+  "target": "Could you say that again a little more slowly?"
+ },
+ "legos": {
+  "S0061L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0061L01",
+    "type": "A",
+    "known_text": "다시",
+    "target_text": "again",
+    "components": [],
+    "seed_number": 61
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kor:S0061L01B01",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "다시",
+     "target_text": "again",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T21:48:05.792779+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bfaf4e7e-28cb-4cbd-b772-fd9d585ae1d5",
+     "target1_audio_id": "23742413-d0dd-4776-811d-ec19484030a5",
+     "target2_audio_id": "f537d176-6831-4b43-9b17-2338c3514922",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": "again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L01B02",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "다시 말해줘요",
+     "target_text": "say it again",
+     "word_count": 12,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-10-12T18:35:56.15705+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0a22462e-6d6c-44a1-b907-78c4cc2fb2e9",
+     "target1_audio_id": "2a0c1439-5f1d-4aab-a169-ada44336b5bb",
+     "target2_audio_id": "63b96446-a0a5-4f22-ba83-baad9f97bbae",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L01B03",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "다시 시도하고 싶어요",
+     "target_text": "I want to try again",
+     "word_count": 19,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T22:51:56.597405+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "950d2ea9-a240-45c5-9095-18fbee241f29",
+     "target1_audio_id": "e8ccdfdc-5aaa-4b3a-930f-efc2bdbe000c",
+     "target2_audio_id": "d2275275-9b3d-44dd-8398-b62e3e744a82",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "노력하다",
+       "legoId": "S0007L01",
+       "target": " try",
+       "isGhost": false
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "31e4c242-e316-4085-a733-42bce01cb727",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L01U01",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "저는 다시 시도하고 싶어요 그래서 개선할 수 있어요",
+     "target_text": "I want to try again so I can improve",
+     "word_count": 36,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.656Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:18.378815+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2a56bb52-a418-4c13-8d33-8e7663e448ec",
+     "target1_audio_id": "f5b3e0bc-406f-47d4-a6b7-071cdcd274d7",
+     "target2_audio_id": "fe144a3a-cbf4-4702-b2ef-ac4fdfbce4f4",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 3888,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "노력하다",
+       "legoId": "S0007L01",
+       "target": " try",
+       "isGhost": false
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "그래서",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " can",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " improve",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L01U02",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "그것을 다시 설명해줄 수 있어요?",
+     "target_text": "can you explain that again?",
+     "word_count": 26,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.656Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:37:02.001625+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "19fe19d2-6e37-4b8f-8c21-92d0008ad340",
+     "target1_audio_id": "b03f24fb-4154-4dd7-bb3e-a453310026d0",
+     "target2_audio_id": "04fb4135-5aed-4ce3-b3aa-0951b6ae3afa",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "can",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " explain",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L01U03",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "저는 그것을 다시 더 신중하게 말하고 싶어요",
+     "target_text": "I want to say that again more carefully",
+     "word_count": 39,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.656Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:06.088212+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fae83ddb-67b1-4410-926a-0bee2c1b273f",
+     "target1_audio_id": "fe2048d8-0255-40e7-8e68-9087dca3f120",
+     "target2_audio_id": "6218f7b9-dc28-46db-9338-00852d984aa1",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "신중하게",
+       "legoId": "S0037L04",
+       "target": " carefully",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L01U04",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "저는 다시 연습하고 싶어요",
+     "target_text": "I want to practise that again",
+     "word_count": 29,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.656Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:17.160655+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "abe0d728-e3ac-4a5e-a7be-e004495faa56",
+     "target1_audio_id": "bb597166-dab3-4a89-91f8-00f8b9795ba1",
+     "target2_audio_id": "10105386-3dd7-4629-936f-fa41331aad4d",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "연습을",
+       "legoId": "S0005L02",
+       "target": " practise",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L01U05",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "그것을 어떻게 말하는지 다시 보여줄 수 있어요?",
+     "target_text": "can you show me again how to say that?",
+     "word_count": 37,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.656Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-02T22:37:03.229577+00:00",
+     "created_at": "2026-02-25T01:44:27.737885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8e7cb29f-6ba6-439b-ac0d-ba5784581701",
+     "target1_audio_id": "29697063-8536-47c4-9d85-85c09000c9e1",
+     "target2_audio_id": "2bf10a55-a22d-41cc-9a41-fc37aa2a51f4",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 3600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "can",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " show",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "말하는 법",
+       "legoId": "S0004L02",
+       "target": " how to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0061L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0061L02",
+    "type": "A",
+    "known_text": "다시",
+    "target_text": "again",
+    "components": [],
+    "seed_number": 61
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kor:S0061L02B01",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "줄 수 있어요",
+     "target_text": "could you",
+     "word_count": 9,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-10-13T17:03:13.376908+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c3c1f9a4-d4fb-4b3e-9bf7-eaaf69b9070e",
+     "target1_audio_id": "7b379dd4-546a-4b9b-9360-93a3d1c6d53d",
+     "target2_audio_id": "6cf9936c-afe6-4a8a-8e0d-9e84793c5356",
+     "qa_checked": null,
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 1752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L02B02",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "다시 말해줄 수 있어요?",
+     "target_text": "could you say it again?",
+     "word_count": 13,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-11-18T13:19:41.103817+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "64befb42-ccac-4621-b81b-922d7c24a089",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L02B03",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "다시 설명해줄 수 있어요?",
+     "target_text": "could you explain again?",
+     "word_count": 17,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-11-18T13:19:41.103817+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " explain?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "64befb42-ccac-4621-b81b-922d7c24a089",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L02U01",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "그것을 다시 설명해줄 수 있어요?",
+     "target_text": "could you explain that again?",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.838Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-13T16:58:59.552639+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "19fe19d2-6e37-4b8f-8c21-92d0008ad340",
+     "target1_audio_id": "1e02713e-3683-4bd6-8e43-fb822533cc5b",
+     "target2_audio_id": "572f72ab-3fe2-4001-82d4-2991136ffdea",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " explain",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L02U02",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "저에게 다시 보여줄 수 있어요?",
+     "target_text": "could you show me that again?",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.838Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:37:12.409096+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b7ea1fd5-a230-462d-812f-559d0e6dde38",
+     "target1_audio_id": "b8215a6e-5b0d-419e-b225-9e15a9efd92d",
+     "target2_audio_id": "5c11668f-23e2-4cc3-b2c8-dc53310a688d",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " show",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L02U03",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "그것을 다시 설명해줄 수 있어요 더 신중하게?",
+     "target_text": "could you explain that again more carefully?",
+     "word_count": 43,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.838Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:37:09.653912+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "adb9f151-5226-4a81-b409-e062ff7abe12",
+     "target1_audio_id": "d38621e7-33a5-4ada-9397-0bf00c39ee46",
+     "target2_audio_id": "fa2e6eee-3b69-467b-aff0-b6dc25415abf",
+     "qa_checked": null,
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 3600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " explain",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "신중하게",
+       "legoId": "S0037L04",
+       "target": " carefully",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L02U04",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "저에게 어떻게 말하는지 보여줄 수 있어요?",
+     "target_text": "could you show me how to say that?",
+     "word_count": 33,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.838Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:37:18.258114+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8b2885cf-e0b7-4e85-a5a5-50999987c259",
+     "target1_audio_id": "9d37d78c-7d85-4ca8-8aa7-64d00f5fa025",
+     "target2_audio_id": "b3b39a08-c5b3-42ae-8703-9075c5348168",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " show",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "말하는 법",
+       "legoId": "S0004L02",
+       "target": " how to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L02U05",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "그것을 다시 말해줄 수 있어요?",
+     "target_text": "could you say that again?",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.838Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T16:55:14.695244+00:00",
+     "created_at": "2026-02-25T01:44:27.91677+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "194a9a9c-9042-4237-92fa-27462d9931c2",
+     "target1_audio_id": "6d0dfa4f-7236-49a6-8464-9849403257e4",
+     "target2_audio_id": "cc716e7c-d875-49a3-9d66-3443f2726811",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0061L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0061L03",
+    "type": "A",
+    "known_text": "천천히",
+    "target_text": "slowly",
+    "components": [],
+    "seed_number": 61
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kor:S0061L03B01",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "천천히",
+     "target_text": "slowly",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T21:48:06.070743+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0da69d05-a402-49b9-92b2-1163150aaf75",
+     "target1_audio_id": "666f695a-eed3-4aef-8378-5ba2250bae10",
+     "target2_audio_id": "1b68b6eb-3de4-4044-9824-d862e0eb08fd",
+     "qa_checked": null,
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": "slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e7bace48-a666-4e4a-bc5a-791057bceed4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L03B02",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "조금 더 천천히",
+     "target_text": "a little more slowly",
+     "word_count": 20,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:04.780679+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f0ce9406-c5fc-4c69-8c63-526b8426d1b9",
+     "target1_audio_id": "23263c39-d2bb-433c-8cfe-978f8559cade",
+     "target2_audio_id": "59d91af6-d054-4629-9db7-51de8482d59b",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "조금",
+       "legoId": "S0009L02",
+       "target": "a little",
+       "isGhost": false
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L03B03",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "더 천천히 말해줘요",
+     "target_text": "speak more slowly",
+     "word_count": 17,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-29T03:33:08.640665+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4824aaca-2ebf-40b6-a8ac-d9cf660ee8f5",
+     "target1_audio_id": "48d4b639-6f05-4f98-9b5c-102326c8e0c5",
+     "target2_audio_id": "2a85a6f8-f861-4ec9-8d68-095b90fc4054",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "해요",
+       "legoId": "S0009L01",
+       "target": "speak",
+       "isGhost": false
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "16d89003-c2fb-4790-ad07-b7eb91ec3fc6",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L03U01",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "조금 더 천천히 다시 말해줄 수 있어요?",
+     "target_text": "could you say that again a little more slowly?",
+     "word_count": 45,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.944Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-02T22:37:10.910114+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e3b4a181-ba93-4ac3-8e87-9c6b5ac65fc9",
+     "target1_audio_id": "fe64819c-126b-46c1-a181-e874ed79811a",
+     "target2_audio_id": "f68c40a0-e372-463f-9b4d-5fc20881a909",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 3605,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "다시",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "조금",
+       "legoId": "S0009L02",
+       "target": " a little",
+       "isGhost": false
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L03U02",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "조금 더 천천히 말해줄 수 있어요 그래서 이해할 수 있어요?",
+     "target_text": "could you speak a little more slowly so I can understand?",
+     "word_count": 56,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.944Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:37:17.270568+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a0818c59-c4f7-4011-8036-3d13f3222bc0",
+     "target1_audio_id": "5b96f959-6e36-49d5-9e82-a7eb152a5096",
+     "target2_audio_id": "3d029a25-d247-4f88-a80b-5e0d1a85df87",
+     "qa_checked": null,
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 4632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "해요",
+       "legoId": "S0009L01",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "조금",
+       "legoId": "S0009L02",
+       "target": " a little",
+       "isGhost": false
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "그래서",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " can",
+       "isGhost": true
+      },
+      {
+       "known": "이해하다",
+       "legoId": "S0058L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L03U03",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "그것을 더 천천히 설명해줄 수 있어요?",
+     "target_text": "could you explain that more slowly?",
+     "word_count": 34,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.944Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-02T22:37:03.948271+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9b42afa7-b5d4-48ce-be09-f25d6e74d60f",
+     "target1_audio_id": "10564455-82be-4770-92a1-e40b536718bb",
+     "target2_audio_id": "593ca6b7-19a2-405b-ae09-d99dc8efffc7",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "다시",
+       "legoId": "S0061L02",
+       "target": "could",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " explain",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L03U04",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "저는 더 천천히 그리고 신중하게 말하고 싶어요",
+     "target_text": "I want to speak more slowly and carefully",
+     "word_count": 41,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.944Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:01.848523+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "533ce069-1484-4cb2-a5f9-6c3ba9236837",
+     "target1_audio_id": "782eb1da-69fb-4022-aeca-9a8be3417e4d",
+     "target2_audio_id": "9140a0cc-472b-4ceb-bdaf-925022af4972",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "말하고 싶어요",
+       "legoId": "S0001L01",
+       "target": "I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "그리고",
+       "legoId": "S0015L03",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "신중하게",
+       "legoId": "S0037L04",
+       "target": " carefully",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kor:S0061L03U05",
+     "course_code": "eng_for_kor",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "저는 말하기 전에 더 천천히 생각하고 싶어요",
+     "target_text": "I want to think more slowly before I speak",
+     "word_count": 42,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:44:27.944Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:19.111189+00:00",
+     "created_at": "2026-02-25T01:44:28.028423+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "01b5bc91-1e9f-4a79-b23d-6ca4bb158c0c",
+     "target1_audio_id": "c0854cc7-22f7-4de1-b0d2-4d90faf4bcc8",
+     "target2_audio_id": "1dd30e44-e37f-42f1-a4cc-00a8f9769bf5",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "생각하기",
+       "legoId": "S0037L02",
+       "target": " think",
+       "isGhost": false
+      },
+      {
+       "known": "더 많이",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "천천히",
+       "legoId": "S0061L03",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " before",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "해요",
+       "legoId": "S0009L01",
+       "target": " speak",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

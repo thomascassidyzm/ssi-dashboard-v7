@@ -1,0 +1,195 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B01",
+   "set": {
+    "target_text": "What your name is"
+   },
+   "expect": {
+    "known_text": "你叫什么名字",
+    "target_text": "What your name is?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B02",
+   "set": {
+    "target_text": "I know what your name is now",
+    "known_text": "我现在知道你叫什么名字了"
+   },
+   "expect": {
+    "known_text": "你现在叫什么名字？",
+    "target_text": "What your name is now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B03",
+   "set": {
+    "target_text": "Tell me what your name is",
+    "known_text": "告诉我你叫什么名字"
+   },
+   "expect": {
+    "known_text": "你在这里叫什么名字？",
+    "target_text": "What your name is here?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0150L02B04",
+   "set": {
+    "target_text": "Tell me again what your name is",
+    "known_text": "再告诉我一遍你叫什么名字"
+   },
+   "expect": {
+    "known_text": "你的名字是什么再说一遍",
+    "target_text": "What your name is again?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0157L02B02",
+   "set": {
+    "target_text": "Next month, not now",
+    "known_text": "下个月，不是现在"
+   },
+   "expect": {
+    "known_text": "现在下个月",
+    "target_text": "Next month now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0157L02B04",
+   "set": {
+    "target_text": "Next month, not today",
+    "known_text": "下个月，不是今天"
+   },
+   "expect": {
+    "known_text": "很快下个月",
+    "target_text": "Next month soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0182L01B02",
+   "set": {
+    "target_text": "Have you seen my keys?",
+    "known_text": "你看到过我的钥匙吗？"
+   },
+   "expect": {
+    "known_text": "现在你有没有看到",
+    "target_text": "Have you seen now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0182L01B03",
+   "set": {
+    "target_text": "Have you seen him?",
+    "known_text": "你看到过他吗？"
+   },
+   "expect": {
+    "known_text": "在这里你有没有看到",
+    "target_text": "Have you seen here?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0182L01B04",
+   "set": {
+    "target_text": "Have you seen her today?",
+    "known_text": "你今天看到过她吗？"
+   },
+   "expect": {
+    "known_text": "今天你有没有看到",
+    "target_text": "Have you seen today?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0196L01B02",
+   "set": {
+    "target_text": "Have you heard about it?",
+    "known_text": "你听说过这件事吗？"
+   },
+   "expect": {
+    "known_text": "现在你有没有听说",
+    "target_text": "Have you heard now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0196L01B03",
+   "set": {
+    "target_text": "Have you heard what he said?",
+    "known_text": "你听到他说的话了吗？"
+   },
+   "expect": {
+    "known_text": "今天你有没有听说",
+    "target_text": "Have you heard today?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0196L01B04",
+   "set": {
+    "target_text": "Have you heard about him?",
+    "known_text": "你听说过他吗？"
+   },
+   "expect": {
+    "known_text": "你还有没有听说",
+    "target_text": "Have you heard yet?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0267L01B02",
+   "set": {
+    "target_text": "Have you heard from your friend this morning?",
+    "known_text": "今天早上你有没有听到你朋友的消息"
+   },
+   "expect": {
+    "known_text": "现在你有没有听到你朋友的消息",
+    "target_text": "Have you heard from your friend now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0271L01B02",
+   "set": {
+    "target_text": "Would you like to come with us next month or not?",
+    "known_text": "你想不想下个月和我们一起来？"
+   },
+   "expect": {
+    "known_text": "现在你想不想下个月和我们一起来",
+    "target_text": "Would you like to come with us next month now?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0271L01B03",
+   "set": {
+    "target_text": "Would you like to come with us next month too?",
+    "known_text": "你也想下个月和我们一起来吗？"
+   },
+   "expect": {
+    "known_text": "很快你想不想下个月和我们一起来",
+    "target_text": "Would you like to come with us next month soon?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_zho:S0271L01B04",
+   "set": {
+    "target_text": "Tell me, would you like to come with us next month?",
+    "known_text": "告诉我，你想不想下个月和我们一起来？"
+   },
+   "expect": {
+    "known_text": "在这里你想不想下个月和我们一起来",
+    "target_text": "Would you like to come with us next month here?"
+   }
+  }
+ ]
+}

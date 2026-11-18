@@ -1,0 +1,3504 @@
+{
+ "seed": 16,
+ "seed_pair": {
+  "known": "பிறகு மற்றவர்களுடன் திரும்பி வர அவர் விரும்புகிறார்.",
+  "target": "He wants to come back with everyone else later on."
+ },
+ "legos": {
+  "S0016L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0016L01",
+    "type": "A",
+    "known_text": "அவர்",
+    "target_text": "he",
+    "components": [],
+    "seed_number": 16
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tam:S0016L01U01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "அவர் ஆங்கிலம் பேச விரும்புகிறார்",
+     "target_text": "he wants to speak English",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-03-31T15:28:34.487Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:07:59.471664+00:00",
+     "created_at": "2026-03-31T15:28:34.529871+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c095bedf-b2a7-40b7-8c76-1cfe4ed492ff",
+     "target1_audio_id": "c46a5fd6-e8af-4db5-bde1-c9ce2c26a75e",
+     "target2_audio_id": "2b6a25cc-5f5a-4cf6-a61e-3bd9fa286a8f",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "ஆங்கிலம்",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L01U02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "அவர் என்னுடன் கற்க விரும்புகிறார்",
+     "target_text": "he wants to learn with me",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-03-31T15:28:34.487Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:07:59.516748+00:00",
+     "created_at": "2026-03-31T15:28:34.529871+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0db6a5df-b18a-43b7-af75-56f4134d59ed",
+     "target1_audio_id": "9fd2eb62-0848-4d28-a5f8-703c4cf65251",
+     "target2_audio_id": "fdfc84d8-8c93-4c30-9baf-afdc7e0abfc8",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "என்னுடன்",
+       "legoId": "S0015L01",
+       "target": " me",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L01U03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "அவர் அடிக்கடி பயிற்சி செய்ய விரும்புகிறார்",
+     "target_text": "he wants to practise as often as possible",
+     "word_count": 41,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-03-31T15:28:34.487Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:07:59.582363+00:00",
+     "created_at": "2026-03-31T15:28:34.529871+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a14b2fe4-ce60-429a-9041-0a55886d257d",
+     "target1_audio_id": "c7b9a0a5-51cd-4ace-80ed-7789ad5fb18e",
+     "target2_audio_id": "d127af43-6d82-45d6-9af8-54dd211a0c20",
+     "qa_checked": null,
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2496,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பயிற்சி",
+       "legoId": "S0005L03",
+       "target": " practise",
+       "isGhost": false
+      },
+      {
+       "known": "எவ்வளவு அடிக்கடி முடியுமோ அவ்வளவு",
+       "legoId": "S0003L02",
+       "target": " as often as possible",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L01U04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "அவர் ஆங்கிலம் மிகவும் நன்றாக கற்க விரும்புகிறார்",
+     "target_text": "he wants to learn English very well",
+     "word_count": 35,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-03-31T15:28:34.487Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:07:59.641034+00:00",
+     "created_at": "2026-03-31T15:28:34.529871+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8891df69-2855-449a-a394-1dfa687d4b7a",
+     "target1_audio_id": "ab787e3f-fb11-48d4-930f-c85a5b16aa2c",
+     "target2_audio_id": "b2d530d8-0a71-4089-97a7-94369045e885",
+     "qa_checked": null,
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "ஆங்கிலம்",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "மிகவும்",
+       "legoId": "S0013L01",
+       "target": " very",
+       "isGhost": false
+      },
+      {
+       "known": "நன்றாக",
+       "legoId": "S0013L02",
+       "target": " well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L01B01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "அவர் இங்கே கற்க விரும்புகிறார்",
+     "target_text": "he wants to learn here",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-11-18T12:50:39.513893+00:00",
+     "created_at": "2026-06-16T17:17:52.304909+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " here",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "25333502-88dd-458d-aeed-c5a24f9e480b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L01B02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "அவர் நாளை பேச விரும்புகிறார்",
+     "target_text": "he wants to speak tomorrow",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-11-18T12:50:39.513893+00:00",
+     "created_at": "2026-06-16T17:17:52.304909+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1368,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "நாளை",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "25333502-88dd-458d-aeed-c5a24f9e480b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L01B03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "அவர் என்னுடன் சந்திக்க விரும்புகிறார்",
+     "target_text": "he wants to meet with me",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-11-18T12:50:39.513893+00:00",
+     "created_at": "2026-06-16T17:17:52.304909+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " meet",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "என்னுடன்",
+       "legoId": "S0015L01",
+       "target": " me",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "25333502-88dd-458d-aeed-c5a24f9e480b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L01U05",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "அவர் இன்று ஆங்கிலம் பயிற்சி செய்ய விரும்புகிறார்",
+     "target_text": "he wants to practise English today",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-07-31T02:07:59.696417+00:00",
+     "created_at": "2026-06-16T17:17:52.304909+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "84cf6fec-002e-45ed-9750-7b746d0a7bdf",
+     "target1_audio_id": "2958821e-139e-481e-89b5-3da430b34b5e",
+     "target2_audio_id": "b48dbc17-ac13-4be9-bc49-0ba199c1a320",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பயிற்சி",
+       "legoId": "S0005L03",
+       "target": " practise",
+       "isGhost": false
+      },
+      {
+       "known": "ஆங்கிலம்",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0016L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0016L02",
+    "type": "M",
+    "known_text": "விரும்புகிறார்",
+    "target_text": "wants to",
+    "components": [
+     {
+      "known": "விரும்பு",
+      "target": "want"
+     }
+    ],
+    "seed_number": 16
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tam:S0016L02C01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "விரும்பு",
+     "target_text": "want",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T21:54:25.554136+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2e2b9373-7431-42cf-a7a8-be8b07650781",
+     "target1_audio_id": "5587cc9f-ac7d-454d-ad5f-971b89104285",
+     "target2_audio_id": "e201a0af-34b0-49cd-9b80-99c589d48037",
+     "qa_checked": null,
+     "target1_duration_ms": 624,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "want",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7ba84cfd-8679-470b-9cf4-b4e98e205cec",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02B01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "விரும்புகிறார்",
+     "target_text": "wants to",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-10-28T19:42:53.049464+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4fcb9da0-7dbe-4d3d-9551-052ab2c5d728",
+     "target1_audio_id": "d9b71865-e901-4e35-b4ca-021f37234b3c",
+     "target2_audio_id": "abd8b054-f81b-42bc-90c9-281061eb8916",
+     "qa_checked": null,
+     "target1_duration_ms": 864,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": "wants to",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "ab61e862-488e-4848-ad58-caebd484f5e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02B02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "அவர் ஆங்கிலம் கற்க விரும்புகிறார்",
+     "target_text": "he wants to learn English",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:07:59.797171+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "045e215c-49b9-415d-838b-351a88256c65",
+     "target1_audio_id": "9bf2ab3f-10f6-4bfc-9b4c-dd0b016cf952",
+     "target2_audio_id": "9d72c502-23bd-4e2b-91f3-fd4ae664619a",
+     "qa_checked": null,
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "ஆங்கிலம்",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02B03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "அவர் பேச விரும்புகிறார்",
+     "target_text": "he wants to speak now",
+     "word_count": 21,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:07:59.842982+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dbef5aa4-cc7a-4886-941c-f708cb101793",
+     "target1_audio_id": "ba542798-ec9c-4448-b9aa-8331dbdf5dff",
+     "target2_audio_id": "bce2d455-f28f-4980-a637-28601532264e",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "இப்போது",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02B04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "அவர் இன்று பயிற்சி செய்ய விரும்புகிறார்",
+     "target_text": "he wants to practise today",
+     "word_count": 26,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:07:59.952552+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "bbbc7567-743f-4cc3-aec1-606b3bce5344",
+     "target1_audio_id": "66504e51-d1c1-440c-9dc4-b83a74ad8ec1",
+     "target2_audio_id": "beef482d-8b07-4f67-b82e-a0eb6e58d9d0",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பயிற்சி",
+       "legoId": "S0005L03",
+       "target": " practise",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02U01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "அவர் ஆங்கிலம் பேச விரும்புகிறார்",
+     "target_text": "he wants to speak English",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.548Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.061878+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c095bedf-b2a7-40b7-8c76-1cfe4ed492ff",
+     "target1_audio_id": "c46a5fd6-e8af-4db5-bde1-c9ce2c26a75e",
+     "target2_audio_id": "2b6a25cc-5f5a-4cf6-a61e-3bd9fa286a8f",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "ஆங்கிலம்",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02U02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "அவர் என்னுடன் பேச விரும்புகிறார்",
+     "target_text": "he wants to speak with me today",
+     "word_count": 31,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.548Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.117761+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "33b68380-9719-411d-ab07-f58c35793910",
+     "target1_audio_id": "65a97792-41e1-4f81-9c60-a34af937979c",
+     "target2_audio_id": "e100f3c1-c91f-4d1c-aefd-b318c82e35f0",
+     "qa_checked": null,
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "என்னுடன்",
+       "legoId": "S0015L01",
+       "target": " me",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02U03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "அவர் நாள் முழுவதும் கற்க விரும்புகிறார்",
+     "target_text": "he wants to learn all day",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.548Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.178523+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2037c643-40f3-4862-b8fe-c7e68f484307",
+     "target1_audio_id": "f63e7fc9-ac43-4b1c-bd36-a7bad0222308",
+     "target2_audio_id": "12d714e3-6d44-49ad-acdf-ed6f781ad386",
+     "qa_checked": null,
+     "target1_duration_ms": 1992,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "நாள் முழுவதும்",
+       "legoId": "S0014L01",
+       "target": " all day",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02U04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "அவர் மிகவும் நன்றாக கற்க விரும்புகிறார்",
+     "target_text": "he wants to learn very well",
+     "word_count": 27,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.548Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.243822+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "95dd33f6-3c53-4e07-a917-ca2a383585ae",
+     "target1_audio_id": "7388f256-5b7e-4dd7-aeaf-69b7758e62f8",
+     "target2_audio_id": "cd654caf-ac06-42bc-9c6c-534337a7f4fc",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "மிகவும்",
+       "legoId": "S0013L01",
+       "target": " very",
+       "isGhost": false
+      },
+      {
+       "known": "நன்றாக",
+       "legoId": "S0013L02",
+       "target": " well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L02U05",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "அவர் நாளை பயிற்சி செய்ய விரும்புகிறார்",
+     "target_text": "he wants to practise tomorrow",
+     "word_count": 29,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.548Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.307995+00:00",
+     "created_at": "2026-03-30T15:59:35.599606+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ef6e2485-ff83-4984-b657-2804f05e8f61",
+     "target1_audio_id": "8b812e1f-56e9-423e-99b7-d3ead4326a9b",
+     "target2_audio_id": "bc529655-dc7e-4be0-80f6-2669586b4931",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "பயிற்சி",
+       "legoId": "S0005L03",
+       "target": " practise",
+       "isGhost": false
+      },
+      {
+       "known": "நாளை",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0016L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0016L03",
+    "type": "M",
+    "known_text": "திரும்பி வர",
+    "target_text": "come back",
+    "components": [
+     {
+      "known": "திரும்பி",
+      "target": "back"
+     },
+     {
+      "known": "வர",
+      "target": "come"
+     }
+    ],
+    "seed_number": 16
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tam:S0016L03C01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "திரும்பி",
+     "target_text": "back",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-13T08:33:28.858937+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f694ef6d-42b9-436b-8ef0-0e081adea610",
+     "target1_audio_id": "b68f03b3-46ed-4b18-bc79-a3727c894938",
+     "target2_audio_id": "7171cde8-7a30-4337-9a04-fdd7cb37dd42",
+     "qa_checked": null,
+     "target1_duration_ms": 552,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "back",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c8a6b688-123d-4fb9-9207-233be92a07c0",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03C02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "வர",
+     "target_text": "come",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-12T17:53:51.872853+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c7f4a3c1-a5ae-4409-abf2-1cd715d7500a",
+     "target1_audio_id": "adebdf53-98da-4edd-8b9e-4a10989ce61c",
+     "target2_audio_id": "3affea1a-86f1-4c7d-b684-740ad5523eca",
+     "qa_checked": null,
+     "target1_duration_ms": 648,
+     "target2_duration_ms": 800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "come",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7ba84cfd-8679-470b-9cf4-b4e98e205cec",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03B01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "திரும்பி வர",
+     "target_text": "come back",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.362007+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1624252c-457f-4ca7-8605-e64bba257bce",
+     "target1_audio_id": "8fb32fc9-c64c-4b68-9e36-4eedd30011ad",
+     "target2_audio_id": "35a937f8-a887-472b-a46e-7a9addbdb4dc",
+     "qa_checked": null,
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": "come back",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03B02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "திரும்பி வர விரும்புகிறேன்",
+     "target_text": "I want to come back",
+     "word_count": 19,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.491873+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "af1ca05b-cc21-4a3a-822e-2c98d73c44c7",
+     "target1_audio_id": "542c790e-1dbf-4ab9-9e1e-96154f3c38b4",
+     "target2_audio_id": "98e826e8-1b30-4296-97f3-3b491dc8ee44",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "நான் விரும்புகிறேன்",
+       "legoId": "S0001L01",
+       "target": "I want to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03B03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "நாளை திரும்பி வரப் போகிறேன்",
+     "target_text": "I'm going to come back tomorrow",
+     "word_count": 31,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-07-31T02:08:00.547343+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5609ccfd-06da-4c57-a7df-89549de741c6",
+     "target1_audio_id": "ea8f8802-5d9d-47c2-92e0-38390af5be9b",
+     "target2_audio_id": "a8ae5a39-72dd-4804-968e-44f70a20fb89",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "போகிறேன்",
+       "legoId": "S0005L04",
+       "target": "I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "நாளை",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03B04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "அவர் திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back now",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.619261+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "00106170-839f-4558-829f-5dcd07f09d53",
+     "target1_audio_id": "6451b353-9962-41a1-83e7-1b2b64f98860",
+     "target2_audio_id": "7c590b91-4f9f-4a95-ba76-17cca019ca99",
+     "qa_checked": null,
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "இப்போது",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03U01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "அவர் நாளை திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back tomorrow",
+     "word_count": 30,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.669Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-10-28T19:42:08.398405+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9239a57e-5596-46c9-b4dd-91995ee35302",
+     "target1_audio_id": "bc3804ac-b726-4996-9b9a-0aab139085f1",
+     "target2_audio_id": "f5e5f221-67a5-488d-9438-b54bc6cc4ebe",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "நாளை",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "ab61e862-488e-4848-ad58-caebd484f5e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03U02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "நான் இன்று திரும்பி வரப் போகிறேன்",
+     "target_text": "I'm going to come back today",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.669Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-07-31T02:08:00.829302+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fb65cb14-be65-44ff-a124-22881e2a2714",
+     "target1_audio_id": "edfb0ce6-a0d8-4fc8-b120-8616547b8a4b",
+     "target2_audio_id": "4c2692e8-e52e-42b8-9f90-d7e7aa83599f",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "போகிறேன்",
+       "legoId": "S0005L04",
+       "target": "I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03U03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "நான் ஆங்கிலம் கற்ற பிறகு திரும்பி வர விரும்புகிறேன்",
+     "target_text": "I want to come back after English",
+     "word_count": 33,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.669Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:00.873911+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ba228c4f-6cc6-4a80-9db8-0474a71c6ccb",
+     "target1_audio_id": "5a221098-7f42-43f3-9616-6c00c5b35aeb",
+     "target2_audio_id": "50c5cad1-b5ce-4064-9308-441452364ba7",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "நான் விரும்புகிறேன்",
+       "legoId": "S0001L01",
+       "target": "I want to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "பிறகு",
+       "legoId": "S0011L02",
+       "target": " after",
+       "isGhost": false
+      },
+      {
+       "known": "ஆங்கிலம்",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03U04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "நான் திரும்பி வர முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to come back today",
+     "word_count": 29,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.669Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-07-31T02:08:01.000375+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bfd3db84-65e6-431d-93c9-34dccc931acf",
+     "target1_audio_id": "12bda7cd-2cf1-4fb9-a155-7271404fa350",
+     "target2_audio_id": "668689d9-41ad-453e-a0ac-9fdb05d2b44b",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "முயற்சிக்கிறேன்",
+       "legoId": "S0002L02",
+       "target": "I'm trying to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L03U05",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "அவர் என்னுடன் திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back with me",
+     "word_count": 29,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.669Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-10-28T19:42:08.5461+00:00",
+     "created_at": "2026-03-30T15:59:35.719406+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0b4978d8-4ab5-47e9-a68a-7b564bced67d",
+     "target1_audio_id": "9d681fc5-7009-4138-906d-62fa39997a6f",
+     "target2_audio_id": "e7bdd3a3-b5bb-4bca-9009-a967b6474f00",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "என்னுடன்",
+       "legoId": "S0015L01",
+       "target": " me",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "ab61e862-488e-4848-ad58-caebd484f5e9",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0016L04": {
+   "lego": {
+    "lego_index": 4,
+    "lego_id": "S0016L04",
+    "type": "M",
+    "known_text": "மற்றவர்களுடன்",
+    "target_text": "everyone else",
+    "components": [
+     {
+      "known": "மற்றவர்கள்",
+      "target": "everyone"
+     },
+     {
+      "known": "உடன்",
+      "target": "else"
+     }
+    ],
+    "seed_number": 16
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tam:S0016L04C01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 1,
+     "known_text": "மற்றவர்கள்",
+     "target_text": "everyone",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-10-28T21:51:48.888615+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "91346086-5935-4320-a93f-07039cd639eb",
+     "target1_audio_id": "bf500c6d-d440-481f-a8ed-1ae7c32e0cd3",
+     "target2_audio_id": "d7d1116b-8b63-4123-936b-21ef0c4bb059",
+     "qa_checked": null,
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "everyone",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7ba84cfd-8679-470b-9cf4-b4e98e205cec",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04C02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 2,
+     "known_text": "உடன்",
+     "target_text": "else",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-10-28T21:50:54.173189+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4ef58760-94a3-4472-9793-baba94273121",
+     "target1_audio_id": "43003897-a033-461b-bfd8-47216a89fbe6",
+     "target2_audio_id": "35bb37db-0d3c-4993-b29f-ba8ba429a234",
+     "qa_checked": null,
+     "target1_duration_ms": 696,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "else",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7ba84cfd-8679-470b-9cf4-b4e98e205cec",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04B01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 3,
+     "known_text": "மற்றவர்களுடன்",
+     "target_text": "everyone else",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-07-31T02:08:01.099062+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a75abbba-43ac-43d9-b0f0-cb136bb7883a",
+     "target1_audio_id": "fb470e5b-47ae-44a4-a182-cc6aeddb7324",
+     "target2_audio_id": "7525dfdb-a8bf-4e23-834b-b51a7987207c",
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1008,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": "everyone else",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04B02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 4,
+     "known_text": "மற்றவர்களுடன் பேச விரும்புகிறேன்",
+     "target_text": "I want to speak with everyone else today",
+     "word_count": 40,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 29,
+     "updated_at": "2026-07-31T02:08:01.146655+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ea004bb5-85c3-4e1f-b634-ae4cb820b806",
+     "target1_audio_id": "0a686f3e-5fc6-47c5-84ae-04e742b7b0c5",
+     "target2_audio_id": "ea0c9a09-50f3-41cf-a696-c3050279d345",
+     "qa_checked": null,
+     "target1_duration_ms": 2712,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "நான் விரும்புகிறேன்",
+       "legoId": "S0001L01",
+       "target": "I want to",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04B03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 5,
+     "known_text": "அவர் இன்று மற்றவர்களுடன் திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back with everyone else today",
+     "word_count": 46,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:01.198195+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "92ed28be-c833-413b-afe3-6478773373a0",
+     "target1_audio_id": "e3ffdbcf-179c-4c83-8990-eae4a7ea4b47",
+     "target2_audio_id": "14aaf046-e70e-4cf4-8954-44c5bdceef17",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 3000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04B04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 6,
+     "known_text": "மற்றவர்களுடன் கற்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to learn with everyone else",
+     "word_count": 47,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 39,
+     "updated_at": "2026-09-28T19:19:56.485355+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "89c5fb05-2a0b-4b3c-9fef-908a3a1cf2a3",
+     "target1_audio_id": "4396d559-c3f2-4a7d-a6b7-aa3c9207483c",
+     "target2_audio_id": "b28a3795-2aab-46b3-970d-dd1b0070356f",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "முயற்சிக்கிறேன்",
+       "legoId": "S0002L02",
+       "target": "I'm trying to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      },
+      {
+       "known": "நாளை",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04U01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 7,
+     "known_text": "நான் மற்றவர்களுடன் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak with everyone else",
+     "word_count": 37,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.880Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 38,
+     "updated_at": "2026-10-28T20:46:04.833585+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3226ff51-2bc4-489f-8482-fcf6c1c49c7e",
+     "target1_audio_id": "6095ba54-7c62-43f7-96f9-93649deaafb5",
+     "target2_audio_id": "7eba0b39-e5f9-4621-888f-0ebba1ec00e9",
+     "qa_checked": null,
+     "target1_duration_ms": 2280,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "போகிறேன்",
+       "legoId": "S0005L04",
+       "target": "I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "02206372-cbff-49a8-92be-e2bb156473d2",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04U02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 8,
+     "known_text": "அவர் மற்றவர்களுடன் திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back with everyone else",
+     "word_count": 40,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.880Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:01.517011+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8e6f252c-4c02-4af6-b34d-33c708977227",
+     "target1_audio_id": "59167cb4-f307-4a81-af96-00232ff602ce",
+     "target2_audio_id": "e6777c48-5d5a-4c5f-ac9d-57ea7f6efe25",
+     "qa_checked": null,
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04U03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 9,
+     "known_text": "நான் மற்றவர்களுடன் கற்க முயற்சிக்கிறேன்",
+     "target_text": "I'm trying to learn with everyone else today",
+     "word_count": 44,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.880Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-07-31T02:08:01.564312+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e212adce-2e17-41b6-a7d1-35fe17f8f4a4",
+     "target1_audio_id": "937d4046-628d-486b-aaa5-a67a6f7cd7be",
+     "target2_audio_id": "803ea1c0-c6b9-4250-a175-4f3eef5f646b",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "முயற்சிக்கிறேன்",
+       "legoId": "S0002L02",
+       "target": "I'm trying to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      },
+      {
+       "known": "இன்று",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04U04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 10,
+     "known_text": "நான் மற்றவர்களுடன் பயிற்சி செய்யப் போகிறேன்",
+     "target_text": "I'm going to practise with everyone else",
+     "word_count": 40,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.880Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-07-31T02:08:01.613843+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "99a73305-b2cc-4f3e-95a5-015d25fded4f",
+     "target1_audio_id": "6aab1bbc-b453-465f-9e4b-59400b6c699f",
+     "target2_audio_id": "e1da01b8-101b-4d56-870e-b00193f8d211",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "போகிறேன்",
+       "legoId": "S0005L04",
+       "target": "I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "பயிற்சி",
+       "legoId": "S0005L03",
+       "target": " practise",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L04U05",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 4,
+     "position": 11,
+     "known_text": "அவர் நாளை மற்றவர்களுடன் திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back with everyone else tomorrow",
+     "word_count": 49,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.880Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-28T19:42:08.40146+00:00",
+     "created_at": "2026-03-30T15:59:35.926435+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "aa596265-d260-4b16-a530-d01fa4d6c480",
+     "target1_audio_id": "6fad80b6-11ee-4ddf-b718-b35098d1dcf6",
+     "target2_audio_id": "8108922f-5faf-41da-9f52-02d76207eaf0",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      },
+      {
+       "known": "நாளை",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "ab61e862-488e-4848-ad58-caebd484f5e9",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0016L05": {
+   "lego": {
+    "lego_index": 5,
+    "lego_id": "S0016L05",
+    "type": "M",
+    "known_text": "சற்று நேரம் கழித்து",
+    "target_text": "later on",
+    "components": [
+     {
+      "known": "நேரம்",
+      "target": "time"
+     },
+     {
+      "known": "கழித்து",
+      "target": "later on"
+     }
+    ],
+    "seed_number": 16
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_tam:S0016L05C01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 1,
+     "known_text": "நேரம்",
+     "target_text": "time",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 38,
+     "updated_at": "2026-10-28T21:47:30.962454+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "27c1b087-306e-40a7-b238-699dc8a338b8",
+     "target1_audio_id": "520009ba-f5bf-4e81-9326-15b8dd7f1951",
+     "target2_audio_id": "7e4cbda4-0816-4752-a528-43701d9b8689",
+     "qa_checked": null,
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "time",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7ba84cfd-8679-470b-9cf4-b4e98e205cec",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05C02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 2,
+     "known_text": "கழித்து",
+     "target_text": "later on",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 38,
+     "updated_at": "2026-10-28T21:47:14.048394+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c95726f4-343d-47e0-a4da-4d378444c68f",
+     "target1_audio_id": "b75d691b-2069-4501-83ed-d69bdf4c71de",
+     "target2_audio_id": "fe85b752-9d82-4c8b-99c9-a383c07532f3",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": "later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7ba84cfd-8679-470b-9cf4-b4e98e205cec",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05B01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 3,
+     "known_text": "சற்று நேரம் கழித்து",
+     "target_text": "later on",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 33,
+     "updated_at": "2026-10-28T21:47:14.048394+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "eb38da34-3b64-40ce-9ddc-f6a515cee340",
+     "target1_audio_id": "b75d691b-2069-4501-83ed-d69bdf4c71de",
+     "target2_audio_id": "fe85b752-9d82-4c8b-99c9-a383c07532f3",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": "later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "7ba84cfd-8679-470b-9cf4-b4e98e205cec",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05B02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 4,
+     "known_text": "சற்று நேரம் கழித்து திரும்பி வர விரும்புகிறேன்",
+     "target_text": "I want to come back later on",
+     "word_count": 28,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:01.776315+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a19fd83c-e3f9-4b1e-8c44-df5e35f91da7",
+     "target1_audio_id": "1af5b58b-840a-46e0-a06c-92f4599baea6",
+     "target2_audio_id": "87cf7429-0a74-4fd6-8c4c-9f1dc99416ed",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "நான் விரும்புகிறேன்",
+       "legoId": "S0001L01",
+       "target": "I want to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05B03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 5,
+     "known_text": "சற்று நேரம் கழித்து மற்றவர்களுடன் பேசுகிறேன்",
+     "target_text": "I speak with everyone else later on",
+     "word_count": 35,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:01.823214+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "410ebc2d-469a-4cfb-921f-26b25bc52ec8",
+     "target1_audio_id": "6c9c813d-1921-4029-be67-db336c2d9ae3",
+     "target2_audio_id": "1e3a492e-f96f-40eb-9eb9-d65810a13a54",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05B04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 6,
+     "known_text": "சற்று நேரம் கழித்து அவர் திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back later on now",
+     "word_count": 34,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:01.876393+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5c8c67a3-6fab-4240-9ad4-6d0759c069e4",
+     "target1_audio_id": "7b490cf2-0263-4a87-a2a6-94cb8394cca4",
+     "target2_audio_id": "3549b3de-ad7f-4d13-a0d5-073a760a9ca8",
+     "qa_checked": null,
+     "target1_duration_ms": 2112,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      },
+      {
+       "known": "இப்போது",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05U01",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 7,
+     "known_text": "அவர் சற்று நேரம் கழித்து மற்றவர்களுடன் திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back with everyone else later on",
+     "word_count": 49,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.993Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:02.100676+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c9a488e6-ecd2-4549-be39-355d3693f629",
+     "target1_audio_id": "3a3f7164-5f2e-4519-9124-456ffed8c7ae",
+     "target2_audio_id": "2c182b95-a27c-41c9-a8cf-f08375a76b47",
+     "qa_checked": null,
+     "target1_duration_ms": 3072,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "மற்றவர்களுடன்",
+       "legoId": "S0016L04",
+       "target": " everyone else",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05U02",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 8,
+     "known_text": "நான் சற்று நேரம் கழித்து ஆங்கிலம் பேசப் போகிறேன்",
+     "target_text": "I'm going to speak English later on",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.993Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-07-31T02:08:02.151238+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7e0b41f2-631e-470b-afec-79c3e6d453db",
+     "target1_audio_id": "17d133f0-c31a-4489-8d67-653579080fe0",
+     "target2_audio_id": "768231fd-a0b7-413a-bf10-9eca2520e8af",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "போகிறேன்",
+       "legoId": "S0005L04",
+       "target": "I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "பேச",
+       "legoId": "S0001L02",
+       "target": " speak",
+       "isGhost": false
+      },
+      {
+       "known": "ஆங்கிலம்",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05U03",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 9,
+     "known_text": "நான் சற்று நேரம் கழித்து கற்க விரும்புகிறேன்",
+     "target_text": "I want to learn later on",
+     "word_count": 24,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.993Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:02.199052+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c55ca93c-0973-4785-91a9-502d7810cd61",
+     "target1_audio_id": "bec76288-9d04-4f55-96cd-0e5a50c813d2",
+     "target2_audio_id": "789b683a-a0d1-484b-882f-3e9a2b971247",
+     "qa_checked": null,
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 1896,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "நான் விரும்புகிறேன்",
+       "legoId": "S0001L01",
+       "target": "I want to",
+       "isGhost": false
+      },
+      {
+       "known": "கற்க",
+       "legoId": "S0002L01",
+       "target": " learn",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05U04",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 10,
+     "known_text": "நான் சற்று நேரம் கழித்து திரும்பி வரப் போகிறேன்",
+     "target_text": "I'm going to come back later on",
+     "word_count": 31,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.993Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-07-31T02:08:02.24869+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c4686114-49d5-4451-8f70-33ce9b3999f6",
+     "target1_audio_id": "c4cf894f-0dd6-4e07-963f-21b521a61a31",
+     "target2_audio_id": "f3545a37-d974-4e8a-aaf7-0024746437ae",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "போகிறேன்",
+       "legoId": "S0005L04",
+       "target": "I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_tam:S0016L05U05",
+     "course_code": "eng_for_tam",
+     "seed_number": 16,
+     "lego_index": 5,
+     "position": 11,
+     "known_text": "அவர் சற்று நேரம் கழித்து திரும்பி வர விரும்புகிறார்",
+     "target_text": "he wants to come back later on",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-30T15:59:35.993Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T02:08:02.300619+00:00",
+     "created_at": "2026-03-30T15:59:36.039984+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "be8556f5-ee94-41c3-af40-1843499010c7",
+     "target1_audio_id": "f4e88e4c-9a63-4d3c-971e-935bcffaf93f",
+     "target2_audio_id": "a2ab5cc1-43d1-4082-b25e-796c11ba47c6",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "அவர்",
+       "legoId": "S0016L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "விரும்புகிறார்",
+       "legoId": "S0016L02",
+       "target": " wants to",
+       "isGhost": false
+      },
+      {
+       "known": "திரும்பி வர",
+       "legoId": "S0016L03",
+       "target": " come back",
+       "isGhost": false
+      },
+      {
+       "known": "சற்று நேரம் கழித்து",
+       "legoId": "S0016L05",
+       "target": " later on",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 825,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

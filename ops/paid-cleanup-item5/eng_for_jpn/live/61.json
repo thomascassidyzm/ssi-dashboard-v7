@@ -1,0 +1,7091 @@
+{
+ "seed": 61,
+ "seed_pair": {
+  "known": "もう少しゆっくりもう一度言っていただけますか？",
+  "target": "could you say that again a little more slowly?"
+ },
+ "legos": {
+  "S0061L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0061L01",
+    "type": "A",
+    "known_text": "もう一度",
+    "target_text": "again",
+    "components": null,
+    "seed_number": 61
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0061L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "もう一度",
+     "target_text": "again",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T21:48:05.792779+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7704d94b-372d-44c0-b539-dc808e704741",
+     "target1_audio_id": "a1cbc101-7974-4490-bd5b-6fff89a6b65e",
+     "target2_audio_id": "f537d176-6831-4b43-9b17-2338c3514922",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1848,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": "again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "もう一度言ってください",
+     "target_text": "say that again",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T10:30:02.19871+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5d7c9942-3a7c-41d5-ae14-5c66b2a4cf0e",
+     "target1_audio_id": "dbfb8004-a73d-4b01-85f6-be651e12efef",
+     "target2_audio_id": "999e3689-86ec-429e-8b7e-958718f47194",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "もう一度話してください",
+     "target_text": "speak again",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d46e6465-6763-4e6b-8232-b20edf199a6e",
+     "target1_audio_id": "f2eaad9f-21ff-4ca8-af7e-d4d55f3633db",
+     "target2_audio_id": "da463391-9590-472c-a9d2-ae581b5781c2",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "speak",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "もう一度 - それを",
+     "target_text": "that again",
+     "word_count": 10,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "9cb29f95-e12e-4b7c-961e-0747e0a9771d",
+     "target1_audio_id": "67762294-08a0-408e-a9d7-5db6e3ff7233",
+     "target2_audio_id": "462a535e-36eb-4cf9-99af-d85b69d5f381",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "もう一度 - ゆっくり",
+     "target_text": "again slowly",
+     "word_count": 12,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "dd192200-60c9-4655-bb6f-181ffb8f791b",
+     "target1_audio_id": "fe08cf01-4f10-429d-90a1-3e0eaecd27e1",
+     "target2_audio_id": "3ad4d925-9246-4f53-8c44-c25247c114de",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": "again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "もう一度言っていただけますか",
+     "target_text": "can you say that again?",
+     "word_count": 24,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "477760bb-6713-4db1-b73a-9842765c4328",
+     "target1_audio_id": "86d02abb-e184-4278-bd1a-49d30228daad",
+     "target2_audio_id": "81a65cce-7e95-4b13-ae7c-978b8cce4b2f",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "もう一度言っていただけますか、ゆっくりと",
+     "target_text": "could you say that again slowly?",
+     "word_count": 31,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T22:51:56.79941+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6831ec45-28c1-455d-87e1-13b1d2bcd4d4",
+     "target1_audio_id": "b2b4bcd9-1b73-43c8-ae8a-7e24699f66e4",
+     "target2_audio_id": "97dc0025-fe26-47dd-9c36-48adcce1e7f2",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c7871040-55d5-4076-896c-1c6c7bc8f85b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "もう一度やってみます、できる限り頑張ります",
+     "target_text": "I want to try as hard as I can again",
+     "word_count": 36,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f2099e6d-4ae0-40ee-8580-68197d15c8af",
+     "target1_audio_id": "a434b36c-f671-4e04-8744-014a3111d15a",
+     "target2_audio_id": "81863535-5695-48cc-a533-bbfad2962896",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "できるだけ頑張る",
+       "legoId": "S0007L03",
+       "target": " to try as hard as I can",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "もう一度言っていただけますか、少しゆっくりと",
+     "target_text": "could you say that again a little more slowly?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d30a39e8-cbf5-4313-8bbb-a99b994517c2",
+     "target1_audio_id": "ef0ea2d0-18f1-4bfb-a1f6-f853eb68ef1d",
+     "target2_audio_id": "9a22ce78-ee78-4546-8104-25181dfedd6c",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "もう一度話してみましょう、うまくなりたいので",
+     "target_text": "I want to speak again as soon as I can",
+     "word_count": 38,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fa51498b-967a-40ac-8eca-db03fca46abd",
+     "target1_audio_id": "2d74cca7-41e1-473f-aec4-b4d4414dfbdb",
+     "target2_audio_id": "116a0a69-b575-44f4-9374-05da7787e5a3",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": "I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "もうすぐ",
+       "legoId": "S0023L02",
+       "target": " soon",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "もう一度覚えようとしています",
+     "target_text": "I'm trying to remember that again",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "505f6f35-ceee-487e-90bb-6ffd7e3e3f42",
+     "target1_audio_id": "496fc530-fce1-48cb-bf4c-33bf11cf3aaf",
+     "target2_audio_id": "72d3c5b6-cb90-4c01-9f32-fee217223b23",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "思い出そうとしている",
+       "legoId": "S0006L03",
+       "target": "I'm trying to remember",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "もう一度言っていただけますか、言いたかったことが思い出せません",
+     "target_text": "could you say that again, I can't remember what I wanted to say?",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d164087c-aaca-42d0-9b3f-10c90d6d8f76",
+     "target1_audio_id": "262d142d-6d6f-41f2-9bf9-f4638557e197",
+     "target2_audio_id": "c9597470-9f29-4257-9e04-cf41be3308cb",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3864,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "言いたかったこと",
+       "legoId": "S0057L02",
+       "target": " what I wanted to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "もう一度話してください、よく聞こえませんでした",
+     "target_text": "could you say something again, I don't know what I mean?",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "81f5d01b-9eec-4d6b-8116-c24e41e2e3d0",
+     "target1_audio_id": "9650c539-404a-4bb5-ba73-e220ac764d03",
+     "target2_audio_id": "fa818358-05e2-42d1-927f-d15b0418750a",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "言いたいこと",
+       "legoId": "S0008L02",
+       "target": " what I mean",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "もう一度試みましょう、まだ諦めたくありません",
+     "target_text": "I want to go again, I don't want to stop talking",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a74bda5f-d497-4b04-8dc6-7d444d82fa8b",
+     "target1_audio_id": "b62e59ef-4ee1-4996-999c-09b69e955265",
+     "target2_audio_id": "d515d68e-2b78-4c44-a2bb-2514cdc03de6",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "行く",
+       "legoId": "S0025L01",
+       "target": " to go",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "私は〜したくない",
+       "legoId": "S0019L02",
+       "target": " I don't want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " stop",
+       "isGhost": true
+      },
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": " talking",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "もう一度言っていただけますか、文全体を覚えられていません",
+     "target_text": "could you say that again, I'm not sure if I can remember the whole sentence?",
+     "word_count": 75,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "5484342a-68b8-417b-8939-019213ae7896",
+     "target1_audio_id": "91a64af7-dc60-4d0b-ba93-fa90f797fef7",
+     "target2_audio_id": "b5889cf4-2650-434a-b05d-ea9a40367324",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "わからない",
+       "legoId": "S0010L04",
+       "target": " I'm not sure if",
+       "isGhost": false
+      },
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": " I can remember",
+       "isGhost": false
+      },
+      {
+       "known": "文全体",
+       "legoId": "S0010L02",
+       "target": " the whole sentence",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "もう一度英語で話してみます",
+     "target_text": "I want to speak in English again",
+     "word_count": 32,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "85a9abda-1e29-4ab3-b3e0-fd875202f799",
+     "target1_audio_id": "cf08fb81-67a6-4fca-9339-738935e134c6",
+     "target2_audio_id": "dd860721-9530-49ce-a14b-d1b49a781363",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": "I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "英語で",
+       "legoId": "S0004L03",
+       "target": " in English",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "もう一度言っていただけますか、なるべく早く覚えたいです",
+     "target_text": "could you say that again as soon as you can?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "074245fa-328f-4200-a0f7-23c51650a885",
+     "target1_audio_id": "ada1518f-23b7-47e6-936b-05e8da5b242d",
+     "target2_audio_id": "6cf4ed69-9130-4ff8-9aa0-8e54e7b4654b",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "できるだけ早く",
+       "legoId": "S0028L02",
+       "target": " as soon as you can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "もう一度話してみます、今度はうまくいくと思います",
+     "target_text": "I want to say it again, I think I can remember",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "076978b0-4a57-45a9-be9b-b5aec1d33bc5",
+     "target1_audio_id": "d79300fd-0792-4523-80ae-5fa7348bae2a",
+     "target2_audio_id": "d2604f30-1449-4008-bf0c-0d68d060608f",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "言う",
+       "legoId": "S0004L02",
+       "target": " to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": " I can remember",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "もう一度練習しましょう",
+     "target_text": "I want to practise speaking again",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ee37bbb4-d17a-4e35-aea6-e635bf5861a3",
+     "target1_audio_id": "f2ea90f6-5998-4c3e-af0f-ce1031d105f0",
+     "target2_audio_id": "23c33574-e776-46d9-904a-dd4bdc1cbf47",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 1896,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "話す練習をする",
+       "legoId": "S0005L03",
+       "target": " to practise speaking",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 20,
+     "known_text": "もう一度言っていただけますか、ゆっくりと話していただけると助かります",
+     "target_text": "could you say that again a little more slowly, I need to remember?",
+     "word_count": 65,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7f2fbbf9-1202-480a-ab96-e421caf0e486",
+     "target1_audio_id": "2bb36b99-d729-44b7-a3ad-1cbc724f2cb4",
+     "target2_audio_id": "ff267529-547a-4e81-87fd-b37e56e238ec",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3576,
+     "target2_duration_ms": 3720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": " I need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " remember?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L01U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 1,
+     "position": 21,
+     "known_text": "もう一度言っていただけますか、まだ覚えていません",
+     "target_text": "could you say that again, I can't remember yet?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.216Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.331645+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "31cc746e-bbc4-4711-a85b-ec5ba215cb67",
+     "target1_audio_id": "6fa014b0-bc05-49e9-bc84-f0ad37e05c0f",
+     "target2_audio_id": "fca5e4db-d0d7-4213-ab60-a7d195209f73",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0061L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0061L02",
+    "type": "A",
+    "known_text": "ゆっくり",
+    "target_text": "slowly",
+    "components": null,
+    "seed_number": 61
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0061L02B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "ゆっくり",
+     "target_text": "slowly",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T21:48:06.070743+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0656de02-0f85-4191-bf7b-b76cf821bea1",
+     "target1_audio_id": "df76075b-bdf8-4cba-88c3-d18c941da755",
+     "target2_audio_id": "1b68b6eb-3de4-4044-9824-d862e0eb08fd",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 816,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": "slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "ゆっくり話してください",
+     "target_text": "speak slowly",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T23:18:56.294178+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "90845a76-3271-4781-98eb-660058d19f05",
+     "target1_audio_id": "24037d6e-f545-49f1-9b5f-e0e2fbf6cc4b",
+     "target2_audio_id": "64436ee7-ada8-428b-a144-b7500b86b806",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "speak",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "beb88e58-2e34-4278-b8e8-d91dcbf12246",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "もっとゆっくり",
+     "target_text": "more slowly",
+     "word_count": 20,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2a41c42c-9866-4492-8c18-5e7002dd65b5",
+     "target1_audio_id": "fe60cb68-fc93-4e4a-8298-d5d7bcd6b686",
+     "target2_audio_id": "27ad1363-b7bf-4d8b-bc61-0879f70e02ad",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1128,
+     "target2_duration_ms": 1104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": "a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "ゆっくりと言ってください",
+     "target_text": "say that slowly",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "adab3c8a-3892-4a41-bd40-e8c71ac3468b",
+     "target1_audio_id": "6655cc7a-ad36-4c05-87e4-9066c45ffd59",
+     "target2_audio_id": "4d31fd20-c3cc-4fb9-89f4-3393a73f0f78",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "ゆっくりもう一度",
+     "target_text": "slowly again",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f204650a-227f-4652-9843-8dd1449434de",
+     "target1_audio_id": "126a9a22-11a5-4e08-b729-a4582b76e147",
+     "target2_audio_id": "625dfc1b-0f6c-460f-a518-d26f084e7081",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": "slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "ゆっくりと - もう一度 - 言っていただけますか",
+     "target_text": "could you say that again a little more slowly?",
+     "word_count": 45,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c2ef9dc8-5366-41ff-bdac-0f74b04f3287",
+     "target1_audio_id": "ef0ea2d0-18f1-4bfb-a1f6-f853eb68ef1d",
+     "target2_audio_id": "9a22ce78-ee78-4546-8104-25181dfedd6c",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "ゆっくり話していただけますか、まだよくわかりません",
+     "target_text": "could you say that again a little more slowly?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "84775587-2e6b-4667-a56e-9290790a2e81",
+     "target1_audio_id": "ef0ea2d0-18f1-4bfb-a1f6-f853eb68ef1d",
+     "target2_audio_id": "9a22ce78-ee78-4546-8104-25181dfedd6c",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "ゆっくりやってみると、もっとうまくできると思います",
+     "target_text": "I think I can speak better when I speak slowly",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b960081b-02fa-41e2-b633-e5c44dffe5f4",
+     "target1_audio_id": "44f871b3-2516-498e-851b-8431622e6922",
+     "target2_audio_id": "cdaa0606-bc3a-4915-8d00-2cea9476714e",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2928,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "もっと上手に",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "時に",
+       "legoId": "S0055L03",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "ゆっくり英語で話してみます、まだ練習中です",
+     "target_text": "I want to speak English slowly because I'm trying to learn",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "29c68901-5968-4d11-a908-120854fc07ba",
+     "target1_audio_id": "77c97279-af9a-48ce-a65a-23f7dfd7ab91",
+     "target2_audio_id": "caf549d1-3af8-4a9d-a5ae-afbf7db25ba3",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": "I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "学ぼうとしている",
+       "legoId": "S0002L02",
+       "target": " I'm trying to learn",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "もっとゆっくり言っていただけますか",
+     "target_text": "could you say that a little more slowly?",
+     "word_count": 39,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-29T03:33:01.851538+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6075e4c1-04e5-40c9-a029-07c8b695cea7",
+     "target1_audio_id": "f1ee1b09-8153-41ec-a49a-557062935e4d",
+     "target2_audio_id": "7e298623-3c23-47c7-915c-6329fb820023",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "beb88e58-2e34-4278-b8e8-d91dcbf12246",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "ゆっくり話すと、ミスをあまりしないと思います",
+     "target_text": "I think I don't make mistakes when I speak slowly",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "14cab96b-09a6-443c-8180-822062515b59",
+     "target1_audio_id": "1e420ca2-448b-4dbf-ac53-d17b9f7a9183",
+     "target2_audio_id": "bf306306-8509-4239-a3da-ae986fa6747c",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3504,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " make",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mistakes",
+       "isGhost": true
+      },
+      {
+       "known": "時に",
+       "legoId": "S0055L03",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "ゆっくり話すと言葉を覚えやすいです",
+     "target_text": "I can remember words more easily when I speak slowly",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "feecabe6-eecb-4408-836c-eee7852e92d7",
+     "target1_audio_id": "276d2d3e-e819-4fa1-bd61-9ed349dc5693",
+     "target2_audio_id": "5dcdabc3-e2e3-4a51-9bd0-1f6924ca261d",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3504,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": "I can remember",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      },
+      {
+       "known": "もっと",
+       "legoId": "S0023L01",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "簡単には",
+       "legoId": "S0024L01",
+       "target": " easily",
+       "isGhost": false
+      },
+      {
+       "known": "時に",
+       "legoId": "S0055L03",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 13,
+     "known_text": "ゆっくり話してみます、できる限り頑張ります",
+     "target_text": "I want to speak slowly as hard as I can today",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7a845e73-0040-4749-a731-ed417ec9a0aa",
+     "target1_audio_id": "6c2d80b4-6e30-4208-9dd9-a2d36edfa212",
+     "target2_audio_id": "6820a0b4-172f-4927-a2d3-54cea65e3af4",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3480,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": "I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hard",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " as",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 14,
+     "known_text": "ゆっくりもう一度言っていただけますか",
+     "target_text": "could you say that slowly again?",
+     "word_count": 31,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-28T22:51:56.802138+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6a1e484b-518f-49e0-9394-878588bdbc35",
+     "target1_audio_id": "b3be8222-271a-4ec3-a73e-ccfac8040bdc",
+     "target2_audio_id": "b338812c-a40f-4dd3-8cd4-d85f78f73c3a",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c7871040-55d5-4076-896c-1c6c7bc8f85b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 15,
+     "known_text": "ゆっくり話すと文全体を覚えやすいです",
+     "target_text": "I can remember the whole sentence more easily when I speak slowly",
+     "word_count": 65,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "21d89b85-e924-4a57-a4f1-8c86bdd7a64d",
+     "target1_audio_id": "34f5342c-f30f-4211-95ea-69d961a695f0",
+     "target2_audio_id": "0afffa73-9fa3-4cfd-89c6-7fa72dd9f868",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 4344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": "I can remember",
+       "isGhost": false
+      },
+      {
+       "known": "文全体",
+       "legoId": "S0010L02",
+       "target": " the whole sentence",
+       "isGhost": false
+      },
+      {
+       "known": "もっと",
+       "legoId": "S0023L01",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "簡単には",
+       "legoId": "S0024L01",
+       "target": " easily",
+       "isGhost": false
+      },
+      {
+       "known": "時に",
+       "legoId": "S0055L03",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 16,
+     "known_text": "ゆっくりやってみてください、言いたかったことが思い出せません",
+     "target_text": "could you say that again slowly, I can't remember what I wanted to say?",
+     "word_count": 70,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1a8ca7ab-8ab0-48cc-b63b-defaa95ce002",
+     "target1_audio_id": "abee32b1-d7ef-4fda-b29c-46d808d6421a",
+     "target2_audio_id": "92107c1f-368e-4802-9eb1-611053bdd790",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 4584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "言いたかったこと",
+       "legoId": "S0057L02",
+       "target": " what I wanted to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 17,
+     "known_text": "ゆっくり英語を話す練習をしています",
+     "target_text": "I'm trying to practise speaking English slowly",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3e56818f-74f2-4a39-bc87-e653be5aea71",
+     "target1_audio_id": "8c66c59d-e229-4537-ac4c-0d08113bd065",
+     "target2_audio_id": "473eaadc-65b9-459f-bf81-bcb2aca381a1",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " trying",
+       "isGhost": true
+      },
+      {
+       "known": "話す練習をする",
+       "legoId": "S0005L03",
+       "target": " to practise speaking",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 18,
+     "known_text": "もっとゆっくり話していただけますか、まだ覚えていません",
+     "target_text": "could you speak a little more slowly, I can't remember yet?",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "82540a81-0a08-4115-816c-ea552e5e75e9",
+     "target1_audio_id": "5c075348-0ae7-42cd-9a0f-8f524ae7ec38",
+     "target2_audio_id": "16a8a3f9-6081-4dbd-b120-547a1eaa4d95",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3792,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "could",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは話します",
+       "legoId": "S0013L01",
+       "target": " you speak",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 19,
+     "known_text": "ゆっくり言うと覚えやすいです",
+     "target_text": "It's useful to say it slowly so I can remember",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d9583d10-7ad4-40dd-b980-59a2395cea4c",
+     "target1_audio_id": "d578309c-c52d-4285-8175-65372e2dc2d0",
+     "target2_audio_id": "cd516408-917b-4c89-a29e-19fdbf9ded35",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "役に立ちます",
+       "legoId": "S0028L01",
+       "target": "It's useful",
+       "isGhost": false
+      },
+      {
+       "known": "言う",
+       "legoId": "S0004L02",
+       "target": " to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": " I can remember",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 20,
+     "known_text": "ゆっくり話してくれると、全部覚えられます",
+     "target_text": "I can remember everything when you speak slowly",
+     "word_count": 47,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e969a8c1-44f9-42a4-8df8-2fa0bfa1d699",
+     "target1_audio_id": "9f7c499f-4c97-4139-8bd3-66b69653a0e7",
+     "target2_audio_id": "654d2fef-bce7-4606-aa97-41ff59fd359b",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": "I can remember",
+       "isGhost": false
+      },
+      {
+       "known": "すべて",
+       "legoId": "S0045L02",
+       "target": " everything",
+       "isGhost": false
+      },
+      {
+       "known": "時に",
+       "legoId": "S0055L03",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "あなたは話します",
+       "legoId": "S0013L01",
+       "target": " you speak",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L02U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 2,
+     "position": 21,
+     "known_text": "ゆっくり話してみます、うまくなりたいので",
+     "target_text": "I want to speak slowly because I want to speak better",
+     "word_count": 53,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.468Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.567721+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b01d79f4-ee46-48c5-b042-b2ed981a6bab",
+     "target1_audio_id": "d318434a-3a68-44f9-a1ce-91fdcfc0f3be",
+     "target2_audio_id": "d5374064-95f2-416c-8001-9434d337f6cd",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": "I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": " I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "もっと上手に",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0061L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0061L03",
+    "type": "M",
+    "known_text": "言っていただけますか",
+    "target_text": "could you say",
+    "components": [
+     {
+      "known": "言って",
+      "target": "say"
+     },
+     {
+      "known": "いただけますか",
+      "target": "could you"
+     }
+    ],
+    "seed_number": 61
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0061L03C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "言って",
+     "target_text": "say",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-12T16:54:27.193047+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1705e492-ed6e-4931-b25d-d4ad16693a32",
+     "target1_audio_id": "96279c8a-4e08-43f2-af58-cefe962a8b66",
+     "target2_audio_id": "e41c27c6-d2f4-4494-b9c9-956bd3fd253b",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 720,
+     "target2_duration_ms": 800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "say",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "いただけますか",
+     "target_text": "could you",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fb8ea0e6-21c4-4e74-8e17-72a82175f57c",
+     "target1_audio_id": "c64bceee-f354-45ae-bad5-74383a494750",
+     "target2_audio_id": "7ffe768e-076d-45f4-85a3-ba88b2098947",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "could you",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "言っていただけますか",
+     "target_text": "could you say",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ffa770ac-5ca4-495a-af9d-2b5f46030525",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 864,
+     "target2_duration_ms": 1128,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "言っていただけますか",
+     "target_text": "could you say",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ffa770ac-5ca4-495a-af9d-2b5f46030525",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 864,
+     "target2_duration_ms": 1128,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "言っていただけますか - それを",
+     "target_text": "could you say that?",
+     "word_count": 18,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:48:05.637179+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "19d30d25-6565-425e-819d-ab987299ad77",
+     "target1_audio_id": "6eb97a0f-80e3-49db-9390-3eaf31eff399",
+     "target2_audio_id": "6e249032-353c-45c8-a81b-7f86eac3f71a",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "言っていただけますか - もう一度",
+     "target_text": "could you say that again?",
+     "word_count": 24,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4c8aadd5-70da-4bde-bf90-94c53c3a9e66",
+     "target1_audio_id": "8b6bf040-ef8d-4248-8617-da4e5847ff79",
+     "target2_audio_id": "3cc39693-2114-4d38-a4aa-6684592b982c",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "言っていただけますか - ゆっくり",
+     "target_text": "could you say that again slowly?",
+     "word_count": 31,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T22:51:56.79941+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d95ce040-fda5-49b0-a40b-ce113516ef1b",
+     "target1_audio_id": "b2b4bcd9-1b73-43c8-ae8a-7e24699f66e4",
+     "target2_audio_id": "97dc0025-fe26-47dd-9c36-48adcce1e7f2",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c7871040-55d5-4076-896c-1c6c7bc8f85b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "言っていただけますか - もう少しゆっくり",
+     "target_text": "could you say that again a little more slowly?",
+     "word_count": 45,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "27ab7617-1d18-49b1-ac9c-7a71535c4155",
+     "target1_audio_id": "ef0ea2d0-18f1-4bfb-a1f6-f853eb68ef1d",
+     "target2_audio_id": "9a22ce78-ee78-4546-8104-25181dfedd6c",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "言っていただけますか - 何か",
+     "target_text": "could you say something?",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "94ab8a54-1d60-4f1d-a689-265737a2eec5",
+     "target1_audio_id": "9362bd77-276c-4177-b329-edaee4ebf192",
+     "target2_audio_id": "292eb340-f153-45d1-ab7a-90adb598d7ab",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "もう一度言っていただけますか、少しゆっくりと",
+     "target_text": "could you say that again a little more slowly?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "d30a39e8-cbf5-4313-8bbb-a99b994517c2",
+     "target1_audio_id": "ef0ea2d0-18f1-4bfb-a1f6-f853eb68ef1d",
+     "target2_audio_id": "9a22ce78-ee78-4546-8104-25181dfedd6c",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "言っていただけますか、言いたいことが思い出せません",
+     "target_text": "could you say that again, I can't remember what I wanted to say?",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "ac02f75e-8663-4d7f-adb8-c40c5552b1a0",
+     "target1_audio_id": "262d142d-6d6f-41f2-9bf9-f4638557e197",
+     "target2_audio_id": "c9597470-9f29-4257-9e04-cf41be3308cb",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3864,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "言いたかったこと",
+       "legoId": "S0057L02",
+       "target": " what I wanted to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "言っていただけますか、文全体を覚えられていません",
+     "target_text": "could you say that again, I'm not sure if I can remember the whole sentence?",
+     "word_count": 75,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "47b192a6-f914-48a5-8134-3c1b201d16b8",
+     "target1_audio_id": "91a64af7-dc60-4d0b-ba93-fa90f797fef7",
+     "target2_audio_id": "b5889cf4-2650-434a-b05d-ea9a40367324",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "わからない",
+       "legoId": "S0010L04",
+       "target": " I'm not sure if",
+       "isGhost": false
+      },
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": " I can remember",
+       "isGhost": false
+      },
+      {
+       "known": "文全体",
+       "legoId": "S0010L02",
+       "target": " the whole sentence",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "言っていただけますか、ゆっくりと",
+     "target_text": "could you say that slowly?",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "f56ea590-8462-40a4-a211-cbd5e9c897b0",
+     "target1_audio_id": "eb6e68f0-cd69-4b71-b278-708debd65e27",
+     "target2_audio_id": "0404c81b-e996-414c-b03f-ee46a4ecd816",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "言っていただけますか、もう少しゆっくりと話していただけると助かります",
+     "target_text": "could you say something in English again a little more slowly?",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "037ed679-2279-436f-b9c5-2ba48e02c0be",
+     "target1_audio_id": "4f5038b5-d5c0-4ad2-a6c5-2320d1b8f28b",
+     "target2_audio_id": "cd5f4cc3-6c1a-48f7-8f22-1c9aaffea89a",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "英語で",
+       "legoId": "S0004L03",
+       "target": " in English",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 15,
+     "known_text": "言っていただけますか、まだよくわかりません",
+     "target_text": "could you say that again, I don't know yet?",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "19c3f5b2-df2b-4345-aed6-56150aa92a49",
+     "target1_audio_id": "3a75489e-bfb3-4b63-8cfd-ca60fdfb2c82",
+     "target2_audio_id": "472493eb-1f03-405e-ae64-e63476b992c6",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2568,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 16,
+     "known_text": "言っていただけますか、覚えようとしています",
+     "target_text": "could you say that again, I'm trying to remember?",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "42f42db7-017c-4233-b852-3eb837c4100a",
+     "target1_audio_id": "3409a256-317a-4144-afb9-ace422e15d62",
+     "target2_audio_id": "5b43a453-135e-4ede-8b1a-38d576167ec5",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出そうとしている",
+       "legoId": "S0006L03",
+       "target": " I'm trying to remember",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 17,
+     "known_text": "言っていただけますか、なるべく早く覚えたいです",
+     "target_text": "could you say that again as soon as you can?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "b52fa5c4-65e0-44dd-a19a-766f6cbf96eb",
+     "target1_audio_id": "ada1518f-23b7-47e6-936b-05e8da5b242d",
+     "target2_audio_id": "6cf4ed69-9130-4ff8-9aa0-8e54e7b4654b",
+     "qa_checked": "2026-02-17T12:24:14.441+00:00",
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "できるだけ早く",
+       "legoId": "S0028L02",
+       "target": " as soon as you can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 18,
+     "known_text": "言っていただけますか、言いたかったことが違います",
+     "target_text": "could you say that again, I don't know what I wanted to say?",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "e57028bd-1bec-4c91-9075-bb30b21774ac",
+     "target1_audio_id": "8f135720-375d-4830-9aca-f523312708eb",
+     "target2_audio_id": "cac0b073-0537-42fd-b56b-82c9021bbcb3",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "言いたかったこと",
+       "legoId": "S0057L02",
+       "target": " what I wanted to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 19,
+     "known_text": "もう一度言っていただけますか、まだ覚えていません",
+     "target_text": "could you say that again, I can't remember yet?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "31cc746e-bbc4-4711-a85b-ec5ba215cb67",
+     "target1_audio_id": "6fa014b0-bc05-49e9-bc84-f0ad37e05c0f",
+     "target2_audio_id": "fca5e4db-d0d7-4213-ab60-a7d195209f73",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 20,
+     "known_text": "言っていただけますか、少し違う言葉で",
+     "target_text": "could you say that again with different words?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "2a572332-8f7e-4fb1-b175-7d131a2955ce",
+     "target1_audio_id": "7cb6b7d6-90af-44b7-9105-a9071166c953",
+     "target2_audio_id": "7ca657d0-f1a0-48b2-8976-63f118662d90",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "違う",
+       "legoId": "S0060L02",
+       "target": " different",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 21,
+     "known_text": "言っていただけますか、何を言っているのか知りません",
+     "target_text": "could you say that again, I don't know what you want to say?",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "5bb20953-e045-4387-90bb-6f409e43f710",
+     "target1_audio_id": "e182d172-748a-482b-87c1-33778bd3a085",
+     "target2_audio_id": "e7a1c803-e0a7-415a-8cda-c8e51adffddf",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3216,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 22,
+     "known_text": "言っていただけますか、名前を覚えられていません",
+     "target_text": "could you say that again, I can't remember her name?",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "0ef0525b-9622-4a97-bc28-c8168f1d445e",
+     "target1_audio_id": "a1ea5801-8e9b-4034-bc52-1bf72c0e6d68",
+     "target2_audio_id": "f6a496e3-dd4d-42af-8936-56554c34e0b5",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "彼女の",
+       "legoId": "S0021L02",
+       "target": " her",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " name?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 23,
+     "known_text": "言っていただけますか、まだ十分な言葉を知りません",
+     "target_text": "could you say that again, I don't know enough words yet?",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "969d173a-0458-48f3-9c0b-f9d15129e09c",
+     "target1_audio_id": "0baa31a2-c9e1-4acb-9ae9-feabaa2dcb4c",
+     "target2_audio_id": "e359eb89-75fc-40d4-9029-38301ba3cd59",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3072,
+     "target2_duration_ms": 3648,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " enough",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L03U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 3,
+     "position": 24,
+     "known_text": "言っていただけますか、ゆっくりともう一度話していただけると助かります",
+     "target_text": "could you say that again slowly, I need to remember a word?",
+     "word_count": 58,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:50.687Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:50.854011+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "932ba350-06a5-4f21-805d-1db622f41975",
+     "target1_audio_id": "ebe45bd9-5823-4b0b-889e-4dd348b793c7",
+     "target2_audio_id": "4f1863ba-dc0b-4236-b8b2-8d102124a0f5",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": " I need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " remember",
+       "isGhost": true
+      },
+      {
+       "known": "言葉",
+       "legoId": "S0006L01",
+       "target": " a word",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0061L04": {
+   "lego": {
+    "lego_index": 4,
+    "lego_id": "S0061L04",
+    "type": "M",
+    "known_text": "それをもう一度",
+    "target_text": "that again",
+    "components": [
+     {
+      "known": "それ",
+      "target": "that"
+     },
+     {
+      "known": "もう一度",
+      "target": "again"
+     }
+    ],
+    "seed_number": 61
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0061L04C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 1,
+     "known_text": "それ",
+     "target_text": "that",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:47:51.707695+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "19951dc2-92bb-48cd-ac87-f4c8b035774a",
+     "target1_audio_id": "b8372ccc-4a7a-4676-af41-907947aa10c4",
+     "target2_audio_id": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "that",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 2,
+     "known_text": "もう一度",
+     "target_text": "again",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T21:48:05.792779+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7704d94b-372d-44c0-b539-dc808e704741",
+     "target1_audio_id": "a1cbc101-7974-4490-bd5b-6fff89a6b65e",
+     "target2_audio_id": "f537d176-6831-4b43-9b17-2338c3514922",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1848,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": "again",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 3,
+     "known_text": "それをもう一度",
+     "target_text": "that again",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3db8e2a1-b87e-4ca1-b627-a60a05bac789",
+     "target1_audio_id": "67762294-08a0-408e-a9d7-5db6e3ff7233",
+     "target2_audio_id": "462a535e-36eb-4cf9-99af-d85b69d5f381",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": "that again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 4,
+     "known_text": "それをもう一度",
+     "target_text": "that again",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3db8e2a1-b87e-4ca1-b627-a60a05bac789",
+     "target1_audio_id": "67762294-08a0-408e-a9d7-5db6e3ff7233",
+     "target2_audio_id": "462a535e-36eb-4cf9-99af-d85b69d5f381",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": "that again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 5,
+     "known_text": "それをもう一度言ってください",
+     "target_text": "say that again",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T10:30:02.289751+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6d9d4739-cc97-46be-9646-153751e889f8",
+     "target1_audio_id": "dbfb8004-a73d-4b01-85f6-be651e12efef",
+     "target2_audio_id": "999e3689-86ec-429e-8b7e-958718f47194",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "say",
+       "isGhost": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 6,
+     "known_text": "それをもう一度覚えます",
+     "target_text": "remember that again",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "63e1d10a-1cd5-404e-b316-b387743c8c04",
+     "target1_audio_id": "62f8f22d-4767-4a86-93f2-8763be017f3f",
+     "target2_audio_id": "f7679ea6-b48d-4e68-88a6-f75629a46e83",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "remember",
+       "isGhost": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 7,
+     "known_text": "それをもう一度ゆっくり",
+     "target_text": "that again slowly",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b1a23dcc-a0da-4a95-809b-719818f26a2a",
+     "target1_audio_id": "8858bb5c-324c-45d2-ad39-8b6814aeaa34",
+     "target2_audio_id": "d898cc72-58c6-4e83-b1a7-fc370ec2a36e",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": "that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 8,
+     "known_text": "それをもう一度言っていただけますか",
+     "target_text": "could you say that again?",
+     "word_count": 24,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e8534017-f20a-49f0-befe-caac8ae2437e",
+     "target1_audio_id": "8b6bf040-ef8d-4248-8617-da4e5847ff79",
+     "target2_audio_id": "3cc39693-2114-4d38-a4aa-6684592b982c",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 9,
+     "known_text": "それをもう一度 - もう少しゆっくり",
+     "target_text": "that again a little more slowly",
+     "word_count": 31,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0d173650-d8d8-455f-9355-6ae4ea293a3c",
+     "target1_audio_id": "20d2cb24-9d78-4e51-9d4a-989f21579d8a",
+     "target2_audio_id": "90784b5d-63a2-4285-8fa1-d0b48c02a4b9",
+     "qa_checked": "2026-02-17T12:25:45.943+00:00",
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": "that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 10,
+     "known_text": "それをもう一度言っていただけますか、ゆっくりと",
+     "target_text": "could you say that again a little more slowly?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "256278d4-a2b6-4360-825c-9e4b4b07c2bd",
+     "target1_audio_id": "ef0ea2d0-18f1-4bfb-a1f6-f853eb68ef1d",
+     "target2_audio_id": "9a22ce78-ee78-4546-8104-25181dfedd6c",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0054L04",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 11,
+     "known_text": "それをもう一度覚えようとしています",
+     "target_text": "I'm trying to remember that again",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5a931290-5f81-4554-801c-db4557c1f9c4",
+     "target1_audio_id": "496fc530-fce1-48cb-bf4c-33bf11cf3aaf",
+     "target2_audio_id": "72d3c5b6-cb90-4c01-9f32-fee217223b23",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "思い出そうとしている",
+       "legoId": "S0006L03",
+       "target": "I'm trying to remember",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 12,
+     "known_text": "それをもう一度言っていただけますか、文全体が覚えられません",
+     "target_text": "could you say that again, I can't remember the whole sentence?",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "dcdcd86b-8c4d-4391-a0df-ff25d42e9db4",
+     "target1_audio_id": "5c437666-98a1-4d2e-a66c-cbdc1a5e35f4",
+     "target2_audio_id": "fc9b10df-50cd-4396-8948-2a30535a3aa4",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3360,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": " I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "文全体",
+       "legoId": "S0010L02",
+       "target": " the whole sentence",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 13,
+     "known_text": "それをもう一度聞かせてください、言いたかったことが思い出せません",
+     "target_text": "could you say that again, I don't know what I wanted to say?",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fe7b6005-49fd-4865-ac56-0e7aaf232eee",
+     "target1_audio_id": "8f135720-375d-4830-9aca-f523312708eb",
+     "target2_audio_id": "cac0b073-0537-42fd-b56b-82c9021bbcb3",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "言いたかったこと",
+       "legoId": "S0057L02",
+       "target": " what I wanted to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 14,
+     "known_text": "それをもう一度話してみます",
+     "target_text": "I want to say that again",
+     "word_count": 24,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c40cd623-8880-4779-b766-00d7fa653d35",
+     "target1_audio_id": "6955641c-f182-419f-802a-5baac9ada246",
+     "target2_audio_id": "4ea15d10-094c-4da3-834a-2d79d1d6a575",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "言う",
+       "legoId": "S0004L02",
+       "target": " to say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 15,
+     "known_text": "それをもう一度言っていただけますか、まだよくわかりません",
+     "target_text": "could you say that again, I don't know yet?",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "73b53546-f166-4e7d-914d-f63469f2f48f",
+     "target1_audio_id": "3a75489e-bfb3-4b63-8cfd-ca60fdfb2c82",
+     "target2_audio_id": "472493eb-1f03-405e-ae64-e63476b992c6",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2568,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 16,
+     "known_text": "それをもう一度練習します",
+     "target_text": "I want to practise that again",
+     "word_count": 29,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "289b5c1f-20b1-4098-aa97-80f954329402",
+     "target1_audio_id": "8278114d-351d-47a0-b7b0-4a5143e737b7",
+     "target2_audio_id": "196af7f2-cf13-439d-8da2-a5132b6781b3",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "練習をする",
+       "legoId": "S0005L02",
+       "target": " to practise",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 17,
+     "known_text": "それをもう一度言っていただけますか、ゆっくりと話していただけると覚えやすいです",
+     "target_text": "could you say that again slowly, I can remember more easily?",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3110e661-472f-42ca-a05d-7427d1565baf",
+     "target1_audio_id": "b3f8d054-123f-42a1-bdef-0b2fa4446f0c",
+     "target2_audio_id": "c682da60-b438-4e9b-b745-6574a7e7ebb6",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ゆっくり",
+       "legoId": "S0061L02",
+       "target": " slowly",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": " I can remember",
+       "isGhost": false
+      },
+      {
+       "known": "もっと",
+       "legoId": "S0023L01",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "簡単には",
+       "legoId": "S0024L01",
+       "target": " easily",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 18,
+     "known_text": "それをもう一度言っていただけますか、少し違う言葉で",
+     "target_text": "could you say that again with different words?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "25e84a5d-22ba-4314-b02a-fe1377ff69ef",
+     "target1_audio_id": "7cb6b7d6-90af-44b7-9105-a9071166c953",
+     "target2_audio_id": "7ca657d0-f1a0-48b2-8976-63f118662d90",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2568,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "違う",
+       "legoId": "S0060L02",
+       "target": " different",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 19,
+     "known_text": "それをもう一度覚えたいですが、まだうまくできません",
+     "target_text": "I want to remember that again but I can't yet",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "940a980b-ed12-4346-b91c-cc53d406ca5d",
+     "target1_audio_id": "53724556-042d-41a6-ac88-e08ba41b4e80",
+     "target2_audio_id": "1da27740-eb4e-46a6-ba63-d490e3d03db8",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2712,
+     "target2_duration_ms": 3504,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "思い出す",
+       "legoId": "S0006L02",
+       "target": " to remember",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "'t",
+       "isGhost": true
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 20,
+     "known_text": "それをもう一度言っていただけますか、まだ十分な言葉を知りません",
+     "target_text": "could you say that again, I don't know enough words yet?",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6644e686-ca8e-4e9e-b30a-65147b59cfe0",
+     "target1_audio_id": "0baa31a2-c9e1-4acb-9ae9-feabaa2dcb4c",
+     "target2_audio_id": "e359eb89-75fc-40d4-9029-38301ba3cd59",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3072,
+     "target2_duration_ms": 3648,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "知りません",
+       "legoId": "S0060L01",
+       "target": " I don't know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " enough",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      },
+      {
+       "known": "まだ",
+       "legoId": "S0060L03",
+       "target": " yet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 21,
+     "known_text": "それをもう一度試みてみます、うまくなりたいので",
+     "target_text": "I want to do that again because I want to speak better",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3dff760b-d59f-402d-a436-723e922ae0d7",
+     "target1_audio_id": "d6f65dd1-46cc-40bc-be85-df5aa210dd81",
+     "target2_audio_id": "03a5a90b-12dd-4c51-a5c4-0deb7abf9cd9",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 2928,
+     "target2_duration_ms": 2928,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": " I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "もっと上手に",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 22,
+     "known_text": "それをもう一度言っていただけますか、覚えようとしています",
+     "target_text": "could you say that again, I'm trying to remember a word?",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "cf187ff7-5b72-4c97-a195-3ea866366f8a",
+     "target1_audio_id": "2e40977d-727c-43c3-a6b3-900f861eb990",
+     "target2_audio_id": "1eeea492-a2bb-41c7-acfb-d91819640bbe",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "思い出そうとしている",
+       "legoId": "S0006L03",
+       "target": " I'm trying to remember",
+       "isGhost": false
+      },
+      {
+       "known": "言葉",
+       "legoId": "S0006L01",
+       "target": " a word",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 23,
+     "known_text": "それをもう一度言ってみてください、英語でもう一度話したいです",
+     "target_text": "could you say that again, I want to speak English again?",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8d9148dd-c9be-426e-9303-1abc485f6dec",
+     "target1_audio_id": "ae1652bc-2b97-4eaa-90b2-e3cf077a5ad9",
+     "target2_audio_id": "31a44150-6852-4093-99e0-f1f7efa4532d",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3000,
+     "target2_duration_ms": 2928,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": " I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "もう一度",
+       "legoId": "S0061L01",
+       "target": " again",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0061L04U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 61,
+     "lego_index": 4,
+     "position": 24,
+     "known_text": "それをもう一度言っていただけますか、なるべく早く覚えたいです",
+     "target_text": "could you say that again as soon as you can, I need to remember?",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:28:51.082Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:28:51.198346+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "108670d3-f959-435a-9ea4-e92892ba5be2",
+     "target1_audio_id": "0213dc99-db6e-4cd5-8d1d-4ae8632e5798",
+     "target2_audio_id": "49b33f2a-e05b-44fa-b025-808a2c359d74",
+     "qa_checked": "2026-02-17T12:24:31.212+00:00",
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 3888,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "言っていただけますか",
+       "legoId": "S0061L03",
+       "target": "could you say",
+       "isGhost": false
+      },
+      {
+       "known": "それをもう一度",
+       "legoId": "S0061L04",
+       "target": " that again",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "できるだけ早く",
+       "legoId": "S0028L02",
+       "target": " as soon as you can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": " I need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " remember?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

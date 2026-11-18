@@ -1,0 +1,1291 @@
+{
+ "seed": 81,
+ "seed_pair": {
+  "known": "いつ始めたいですか？",
+  "target": "when do you want to start?"
+ },
+ "legos": {
+  "S0081L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0081L01",
+    "type": "A",
+    "known_text": "いつ",
+    "target_text": "when",
+    "components": null,
+    "seed_number": 81
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0081L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "いつ",
+     "target_text": "when",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-14T10:54:32.747149+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7ad63339-7f38-463a-857b-6fdc277cb83c",
+     "target1_audio_id": "701c0d07-d1a9-400e-bd9c-1a364332c507",
+     "target2_audio_id": "835f5176-e53c-487a-8d2f-0b9f614055dd",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "ebd54d29-ea26-4780-aecf-c65a55fd55f4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "いつ始めましたか",
+     "target_text": "when did you start to learn?",
+     "word_count": 27,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9c06c447-7493-4f21-93b2-e1f776c6b0ef",
+     "target1_audio_id": "a9c89b9d-1ab1-4c5d-92e2-b6d799bc6af0",
+     "target2_audio_id": "75f87e51-96b0-42aa-9d08-3b32503f39b4",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1704,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "学び始めました",
+       "legoId": "S0079L01",
+       "target": " did you start to learn",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "いつ始めたいですか",
+     "target_text": "when do you want to start?",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-13T15:06:46.419992+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e76aef5e-17d9-4a82-9396-5c16a667c1a8",
+     "target1_audio_id": "d4bf2bbb-2c0c-4d1c-93a8-73d417c1518a",
+     "target2_audio_id": "0d6324c4-c43a-4936-a42d-9e4a20b962fd",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " start?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "いつ理解できますか",
+     "target_text": "when you understand?",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "70a57ce4-6565-489a-ab18-01ce99410f0b",
+     "target1_audio_id": "8d1b37d6-bd18-4b79-945d-070615a1b3d7",
+     "target2_audio_id": "18f46022-8c78-4bba-9dcb-b60193a319c5",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "理解する",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "いつ準備ができるかわかりません",
+     "target_text": "when I'm not sure when I'll be ready",
+     "word_count": 36,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4bf793f3-d444-4c0a-b737-93cd0ebe8eb3",
+     "target1_audio_id": "98cf7a6d-4e58-4765-b4a0-c1c308282daf",
+     "target2_audio_id": "0bc37aff-b373-42ec-b68e-e24f9cd9f83d",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "いつ準備ができるかわかりません",
+       "legoId": "S0080L01",
+       "target": " I'm not sure when I'll be ready",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "十分わかるとき",
+     "target_text": "when you understand enough words",
+     "word_count": 32,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "cb3738ab-77b5-4763-9ea3-c73bc89c7c77",
+     "target1_audio_id": "dc5b5a0c-7ec9-4748-b87c-cac417f038f3",
+     "target2_audio_id": "f880603f-5316-4a33-b695-d20dbf5b8cf4",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2568,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "理解する",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " enough",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "いつ英語を学び始めましたか？",
+     "target_text": "when did you start to learn English?",
+     "word_count": 36,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "06b13c1f-b784-49f0-9924-5dcf5264eb46",
+     "target1_audio_id": "a2a76c31-e0a3-42ae-b911-9dfba414c57f",
+     "target2_audio_id": "9837a549-fe67-4236-8ab4-cef1e14b5a46",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "学び始めました",
+       "legoId": "S0079L01",
+       "target": " did you start to learn",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "いつ話し始めたいですか？",
+     "target_text": "when do you want to start talking?",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T23:19:07.917957+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c665ba0c-07cb-4b76-a5bf-405ef3c99abf",
+     "target1_audio_id": "4b196864-657c-4996-aa87-5002fc0591f9",
+     "target2_audio_id": "9807cbf8-5a81-4164-9e8e-56dd3a631b19",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "話し始める",
+       "legoId": "S0023L03",
+       "target": " start talking",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "beb88e58-2e34-4278-b8e8-d91dcbf12246",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "言葉が十分わかるとき、もっと面白くなります",
+     "target_text": "when you understand enough words, it's interesting",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "68c53063-e4e9-46e9-9071-bd08a4c7bfac",
+     "target1_audio_id": "17f5a954-09b5-4330-80ed-00e8c9e238ce",
+     "target2_audio_id": "15e69376-409f-42e9-9cb9-2b916688e6d5",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 4104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "理解する",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " enough",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words,",
+       "isGhost": true
+      },
+      {
+       "known": "面白いです",
+       "legoId": "S0058L02",
+       "target": " it's interesting",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "いつ準備ができるかわかりません",
+     "target_text": "I'm not sure when I'll be ready",
+     "word_count": 32,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "36a4aab8-c32a-467d-8eca-82f13e487104",
+     "target1_audio_id": "e36f5f53-eb6a-43a5-bc1c-7d8450246ce4",
+     "target2_audio_id": "03521a35-fe35-4321-acbd-9e6a8b4babff",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "確信している",
+       "legoId": "S0063L01",
+       "target": " sure",
+       "isGhost": false
+      },
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": " when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'll",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "準備ができている",
+       "legoId": "S0026L03",
+       "target": " ready",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "十分な言葉がわかるとき、それは面白いです",
+     "target_text": "when you understand enough words, it's interesting",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "64b2fc24-b364-4feb-82a3-1ac0cf123740",
+     "target1_audio_id": "17f5a954-09b5-4330-80ed-00e8c9e238ce",
+     "target2_audio_id": "15e69376-409f-42e9-9cb9-2b916688e6d5",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 4104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "理解する",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " enough",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words,",
+       "isGhost": true
+      },
+      {
+       "known": "面白いです",
+       "legoId": "S0058L02",
+       "target": " it's interesting",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "いつ私と話したいですか？",
+     "target_text": "when do you want to speak with me?",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T07:58:07.827096+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9de5451c-62ad-43c5-b3d8-8884f5ea1b7f",
+     "target1_audio_id": "16da4a38-d310-4ae9-8ee9-9d162e9e6caa",
+     "target2_audio_id": "3f1ef8f8-4a2a-4e63-9074-ad372685c7ba",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "私と",
+       "legoId": "S0015L02",
+       "target": " with me",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "beb88e58-2e34-4278-b8e8-d91dcbf12246",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "いつ英語を話す人に会いたいですか？",
+     "target_text": "when do you want to meet people who speak English?",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "dab4dca2-3d62-4853-9e17-76821470fcc5",
+     "target1_audio_id": "717b3b34-0604-41b3-9a1a-8d5b298371aa",
+     "target2_audio_id": "2acab441-ddfd-4450-b020-3823e953c764",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " meet",
+       "isGhost": true
+      },
+      {
+       "known": "英語を話す人",
+       "legoId": "S0022L03",
+       "target": " people who speak English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "いつ答えを知ることができますか？",
+     "target_text": "when can you find the answer?",
+     "word_count": 29,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "10af4709-0a3b-498e-beeb-d9876b47c303",
+     "target1_audio_id": "a30d047c-3709-428b-a8d1-260328b600c5",
+     "target2_audio_id": "be6d5025-83dd-4051-805b-07708813849a",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1896,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " find",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " answer?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "言葉が十分わかるとき、止まりたくなくなります",
+     "target_text": "when you understand enough words, I don't want to stop talking",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2e320175-39da-41c8-a9a9-de821e668145",
+     "target1_audio_id": "d7415838-a244-459a-a94a-da0ccf030e9e",
+     "target2_audio_id": "c2ad8db9-23fa-4ec1-a7f4-2e9f883a5dcc",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 3864,
+     "target2_duration_ms": 3648,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "理解する",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " enough",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words,",
+       "isGhost": true
+      },
+      {
+       "known": "私は〜したくない",
+       "legoId": "S0019L02",
+       "target": " I don't want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " stop",
+       "isGhost": true
+      },
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": " talking",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0081L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "いつ文全体を覚えられるかわかりません",
+     "target_text": "I'm not sure when I'll be ready to remember the whole sentence",
+     "word_count": 63,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:45.461Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:45.870003+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "429bc030-56d3-404b-ad93-2e459fa2a4aa",
+     "target1_audio_id": "4fde0adf-b703-45e1-9569-845bcde178c0",
+     "target2_audio_id": "d512f11c-b571-4f3a-926f-acfe5f1eef90",
+     "qa_checked": "2026-02-17T12:24:43.539+00:00",
+     "target1_duration_ms": 3840,
+     "target2_duration_ms": 3480,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "確信している",
+       "legoId": "S0063L01",
+       "target": " sure",
+       "isGhost": false
+      },
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": " when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'll",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "準備ができている",
+       "legoId": "S0026L03",
+       "target": " ready",
+       "isGhost": false
+      },
+      {
+       "known": "思い出す",
+       "legoId": "S0006L02",
+       "target": " to remember",
+       "isGhost": false
+      },
+      {
+       "known": "文全体",
+       "legoId": "S0010L02",
+       "target": " the whole sentence",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

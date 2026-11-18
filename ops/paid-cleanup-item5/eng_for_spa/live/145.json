@@ -1,0 +1,1322 @@
+{
+ "seed": 145,
+ "seed_pair": {
+  "known": "¿Por qué ya no estás contento?",
+  "target": "Why are you not happy any more?"
+ },
+ "legos": {
+  "S0145L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0145L01",
+    "type": "M",
+    "known_text": "ya no",
+    "target_text": "any more",
+    "components": [],
+    "seed_number": 145
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_spa:S0145L01B01",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "ya no",
+     "target_text": "any more",
+     "word_count": 8,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T21:48:49.390991+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4c8fe57c-7739-4537-98b6-f701cf071797",
+     "target1_audio_id": "f0385d50-af54-4b54-8ac4-ad4a58c881b8",
+     "target2_audio_id": "75d23620-7e26-4570-b265-74a5aa450c5e",
+     "qa_checked": null,
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": "any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8823b3c-bab6-440d-8fb5-b47e3d2ac878",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L01B02",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "ya no es un problema",
+     "target_text": "it's not a problem any more",
+     "word_count": 27,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:38:49.823435+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "57e65abe-feaa-44aa-972a-609e36068702",
+     "target1_audio_id": "ef6dc5dc-9699-475b-9436-9f22ce1d7a8c",
+     "target2_audio_id": "55472b2a-ee10-4f96-94f3-deb6c68153ab",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "un problema",
+       "legoId": "S0134L01",
+       "target": " a problem",
+       "isGhost": false
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L01B03",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "ya no quiero",
+     "target_text": "I don't want any more",
+     "word_count": 21,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:38:51.014382+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f9767074-3c4e-4aef-ad7d-eaa18d73d46b",
+     "target1_audio_id": "2c778cf0-10f2-4d05-ac18-d7804b1b122c",
+     "target2_audio_id": "77006cfc-8c73-45cb-a56a-5812359536ce",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L01U01",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ya no es un problema hablar inglés",
+     "target_text": "speaking English isn't a problem any more",
+     "word_count": 42,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.026Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:38:46.388215+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "413a696b-1ea1-4df6-aa16-75b16115d1b9",
+     "target1_audio_id": "65e6cd0b-7bea-4d52-9e99-c2122e8b5638",
+     "target2_audio_id": "a674ba6b-0dcc-425b-ac10-8d7ea5a13309",
+     "qa_checked": null,
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "speaking",
+       "isGhost": true
+      },
+      {
+       "known": "inglés",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " isn't",
+       "isGhost": true
+      },
+      {
+       "known": "un problema",
+       "legoId": "S0134L01",
+       "target": " a problem",
+       "isGhost": false
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L01U02",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "ya no quiero irme tan pronto",
+     "target_text": "I don't want to leave so early any more",
+     "word_count": 40,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.026Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:38:41.179696+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "89d76c12-d682-4ccf-8f9a-27ded02b4d8c",
+     "target1_audio_id": "6c5f62a4-bee9-49d6-acbb-d3b7c5c3523f",
+     "target2_audio_id": "e35ae939-e896-4dab-a63f-92baaf2b9adf",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "vayas",
+       "legoId": "S0119L01",
+       "target": " leave",
+       "isGhost": false
+      },
+      {
+       "known": "tan pronto",
+       "legoId": "S0139L01",
+       "target": " so early",
+       "isGhost": false
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L01U03",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "mi amigo ya no quiere quedar con nosotros",
+     "target_text": "my friend doesn't want to meet with us any more",
+     "word_count": 48,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.026Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:38:46.299166+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4905cbf2-5952-4232-a22f-bd3067a59e0e",
+     "target1_audio_id": "205d85e7-0d2b-4348-a928-f00053a67cc4",
+     "target2_audio_id": "fe246689-1312-4201-807e-2bcfddb1fad6",
+     "qa_checked": null,
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "mi amigo",
+       "legoId": "S0084L02",
+       "target": "my friend",
+       "isGhost": false
+      },
+      {
+       "known": "no quiere",
+       "legoId": "S0034L01",
+       "target": " doesn't want",
+       "isGhost": false
+      },
+      {
+       "known": "encontrarnos",
+       "legoId": "S0018L03",
+       "target": " to meet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " us",
+       "isGhost": true
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L01U04",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "todo está bien y ya no es lo mismo",
+     "target_text": "Everything is okay and it's not the same any more",
+     "word_count": 50,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.026Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-02T22:38:32.253848+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f146fd93-a084-4b99-aeb4-70ae18a22aa3",
+     "target1_audio_id": "c88767ad-a0ac-478b-82f7-a6341d0290ca",
+     "target2_audio_id": "06228a74-9a82-4c9d-b8be-f834a4241334",
+     "qa_checked": null,
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "todo",
+       "legoId": "S0045L02",
+       "target": "Everything",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "bien",
+       "legoId": "S0041L01",
+       "target": " okay",
+       "isGhost": false
+      },
+      {
+       "known": "y",
+       "legoId": "S0015L03",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "mismo",
+       "legoId": "S0143L01",
+       "target": " same",
+       "isGhost": false
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L01U05",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "me desperté esta mañana y ya no estoy contenta",
+     "target_text": "I woke up this morning and I'm not happy any more",
+     "word_count": 50,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.026Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-06-02T22:38:31.839207+00:00",
+     "created_at": "2026-02-23T05:50:17.107427+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "17488af3-382e-4104-a9b1-e2ddaf0df9b8",
+     "target1_audio_id": "275d9d74-24c6-474a-9a4d-edfed11f8f70",
+     "target2_audio_id": "21c70179-8d27-4417-a9fa-c5142b6c7431",
+     "qa_checked": null,
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "me desperté",
+       "legoId": "S0144L02",
+       "target": "I woke up",
+       "isGhost": false
+      },
+      {
+       "known": "esta mañana",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      },
+      {
+       "known": "y",
+       "legoId": "S0015L03",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "contento",
+       "legoId": "S0076L01",
+       "target": " happy",
+       "isGhost": false
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0145L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0145L02",
+    "type": "M",
+    "known_text": "por qué no estás contento",
+    "target_text": "why are you not happy",
+    "components": [
+     {
+      "known": "por qué",
+      "target": "why"
+     },
+     {
+      "known": "no estás contento",
+      "target": "are you not happy"
+     }
+    ],
+    "seed_number": 145
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_spa:S0145L02B01",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "¿por qué no estás contento?",
+     "target_text": "why are you not happy?",
+     "word_count": 21,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T21:48:49.175192+00:00",
+     "created_at": "2026-02-23T05:50:17.235759+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "707cbedd-c534-477e-b6fc-5c73ebd4699e",
+     "target1_audio_id": "1d22ef83-b2e9-4b24-af8e-ae250cb7052d",
+     "target2_audio_id": "407dae66-e203-42c3-abee-32f5ddb2b7df",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "por qué no estás contento",
+       "legoId": "S0145L02",
+       "target": "why are you not happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "41486710-8cb3-41d2-b5db-1dca24e492e8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02B02",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "¿por qué no estás contento hoy?",
+     "target_text": "why are you not happy today?",
+     "word_count": 27,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T21:48:49.1702+00:00",
+     "created_at": "2026-02-23T05:50:17.235759+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "adc2b5bb-04d5-4337-aa2b-67b28de87c36",
+     "target1_audio_id": "f32095c5-b90f-42a5-a7d9-5b28720f0319",
+     "target2_audio_id": "cef77047-59ca-494f-95b5-c25748b986b2",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "por qué no estás contento",
+       "legoId": "S0145L02",
+       "target": "why are you not happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "hoy",
+       "legoId": "S0007L01",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "41486710-8cb3-41d2-b5db-1dca24e492e8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02B03",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "¿por qué no estás contento ya no?",
+     "target_text": "why are you not happy any more?",
+     "word_count": 31,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:29:47.938553+00:00",
+     "created_at": "2026-02-23T05:50:17.235759+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a961b335-4de1-4674-9ed3-a808fbcf370b",
+     "target1_audio_id": "d0ffb275-b9de-4944-a514-afd1915c6c9b",
+     "target2_audio_id": "32755c4d-ad2c-478a-a29d-14939d9cd81d",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "por qué no estás contento",
+       "legoId": "S0145L02",
+       "target": "why are you not happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ya no",
+       "legoId": "S0145L01",
+       "target": " any more",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8823b3c-bab6-440d-8fb5-b47e3d2ac878",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02U01",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "claro que sé por qué no estás contento",
+     "target_text": "of course I know why are you not happy",
+     "word_count": 39,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.155Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:38:42.50167+00:00",
+     "created_at": "2026-02-23T05:50:17.235759+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "047b9a09-bf4f-4457-bea2-ffd0a0353bb6",
+     "target1_audio_id": "203329e3-1fcb-41f8-af25-38e27f8ca054",
+     "target2_audio_id": "55212f84-90ff-475a-8f3a-2a06f0ccc035",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "claro",
+       "legoId": "S0136L01",
+       "target": "of course",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "saber",
+       "legoId": "S0045L01",
+       "target": " know",
+       "isGhost": false
+      },
+      {
+       "known": "por qué no estás contento",
+       "legoId": "S0145L02",
+       "target": " why are you not happy",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02U02",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "¿por qué no estás contento con esto?",
+     "target_text": "Why are you not happy with this?",
+     "word_count": 32,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.155Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:38:32.889269+00:00",
+     "created_at": "2026-02-23T05:50:17.235759+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "b8866dfd-17f0-4526-9d9f-aa441b9856d0",
+     "target1_audio_id": "9a6972ee-71af-4ec2-bffc-1dc320d9b55b",
+     "target2_audio_id": "4e020373-8033-4b21-a167-fc555dff97f2",
+     "qa_checked": null,
+     "target1_duration_ms": 2520,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "por qué no estás contento",
+       "legoId": "S0145L02",
+       "target": "Why are you not happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " this?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02U04",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "lo siento que no entiendo por qué no estás contento",
+     "target_text": "I'm sorry that I don't understand why are you not happy",
+     "word_count": 56,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.155Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-02T22:38:32.43387+00:00",
+     "created_at": "2026-02-23T05:50:17.235759+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "015f33c4-c738-4463-9ecc-e2caa0dfa354",
+     "target1_audio_id": "d1b1b960-9385-4c39-ad7d-cc03f59cf110",
+     "target2_audio_id": "3418abc5-d7fa-45c4-853c-403b8ae6ef77",
+     "qa_checked": null,
+     "target1_duration_ms": 4104,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "lo siento que",
+       "legoId": "S0139L03",
+       "target": "I'm sorry that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " don't",
+       "isGhost": true
+      },
+      {
+       "known": "entender",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "por qué no estás contento",
+       "legoId": "S0145L02",
+       "target": " why are you not happy",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02U05",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "¿por qué no estás contento cuando aprendes inglés?",
+     "target_text": "Why are you not happy when you learn English?",
+     "word_count": 45,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-23T05:50:17.155Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:38:32.965801+00:00",
+     "created_at": "2026-02-23T05:50:17.235759+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "9409354e-eab2-4e4a-8589-853df1c92fce",
+     "target1_audio_id": "7e9e9de5-65f0-4a5a-9014-ee3ef5460ad3",
+     "target2_audio_id": "4b63faeb-de5a-42fb-ad97-79947a1a758f",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "por qué no estás contento",
+       "legoId": "S0145L02",
+       "target": "Why are you not happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "cuando",
+       "legoId": "S0055L01",
+       "target": " when",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " learn",
+       "isGhost": true
+      },
+      {
+       "known": "inglés",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02C01",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 900,
+     "known_text": "por qué",
+     "target_text": "why",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-28T21:47:21.286381+00:00",
+     "created_at": "2026-03-10T00:11:49.46463+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "4a24e696-7336-4d99-8f99-c2f9f8aa54ec",
+     "target1_audio_id": "5a64bc38-19f4-4260-88f9-acf45e4383d7",
+     "target2_audio_id": "9ff1ea37-64ce-4784-87ee-814e5b7724e9",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "por qué",
+       "legoId": "S0021L01",
+       "target": "why",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b8823b3c-bab6-440d-8fb5-b47e3d2ac878",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02C02",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 901,
+     "known_text": "¿no estás contento?",
+     "target_text": "are you not happy?",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-12T11:49:02.359386+00:00",
+     "created_at": "2026-03-10T00:11:49.46463+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "13050e81-a0f5-4333-8c9f-7d2a2a1dc797",
+     "target1_audio_id": "93069278-4079-4f17-9844-d721bd2334cb",
+     "target2_audio_id": "0ed5cf1f-831a-4441-92e2-43d096d47eda",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "are",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "contento",
+       "legoId": "S0076L01",
+       "target": " happy",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "41486710-8cb3-41d2-b5db-1dca24e492e8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_spa:S0145L02U06",
+     "course_code": "eng_for_spa",
+     "seed_number": 145,
+     "lego_index": 2,
+     "position": 902,
+     "known_text": "¿por qué no estás contento desde esta mañana?",
+     "target_text": "why are you not happy since this morning?",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-07-15T10:28:34.425817+00:00",
+     "created_at": "2026-06-16T17:12:04.681083+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "607179f4-b13c-4a64-9690-5e036d02d4b5",
+     "target1_audio_id": "73580120-ccd0-46a8-8cfb-d88fb49bf3ff",
+     "target2_audio_id": "fdc42c10-069e-42cb-a4cc-059ab1fe7114",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

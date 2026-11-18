@@ -1,0 +1,39 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0061L02B02",
+   "set": {
+    "target_text": "could you say it again?",
+    "known_text": "다시 말해줄 수 있어요?"
+   },
+   "expect": {
+    "known_text": "말해줄 수 있어요",
+    "target_text": "could you say?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0061L02B03",
+   "set": {
+    "target_text": "could you explain again?",
+    "known_text": "다시 설명해줄 수 있어요?"
+   },
+   "expect": {
+    "known_text": "설명해줄 수 있어요",
+    "target_text": "could you explain?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0150L02B01",
+   "set": {
+    "target_text": "what your name is"
+   },
+   "expect": {
+    "known_text": "이름이 뭔지",
+    "target_text": "what your name is?"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1144 @@
+{
+ "seed": 183,
+ "seed_pair": {
+  "known": "いいえ、残念ながら見ていません。",
+  "target": "no I'm afraid I haven't seen them"
+ },
+ "legos": {
+  "S0183L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0183L01",
+    "type": "M",
+    "known_text": "いいえ、残念ながら見ていません",
+    "target_text": "no I'm afraid I haven't seen them",
+    "components": [
+     {
+      "known": "いいえ",
+      "target": "no"
+     },
+     {
+      "known": "残念ながら",
+      "target": "I'm afraid"
+     },
+     {
+      "known": "見ていません",
+      "target": "I haven't seen them"
+     }
+    ],
+    "seed_number": 183
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0183L01C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "いいえ",
+     "target_text": "no",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T21:48:22.182489+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8030b06f-d1ec-4f2f-83f9-2dd809153830",
+     "target1_audio_id": "2186c967-7003-4d8d-8355-9ccd587a97c9",
+     "target2_audio_id": "1193ebf8-74ec-40c4-b526-d5f9a4b808a6",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 1368,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いいえ",
+       "legoId": "S0096L01",
+       "target": "no",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "残念ながら",
+     "target_text": "I'm afraid",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T23:20:10.720789+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7c7d792a-9ded-4845-9f74-d143ee737cbf",
+     "target1_audio_id": "d2e6d0b5-0642-48af-867b-268bc8fd77d3",
+     "target2_audio_id": "1d562060-4b83-4a74-b085-234a19d87e51",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " afraid",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01C03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "見ていません",
+     "target_text": "I haven't seen them",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:30:23.72598+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a3d26596-c12c-4c54-9dca-24999a65087c",
+     "target1_audio_id": "87a531e7-fbd1-45e1-b467-a1c7a9f45841",
+     "target2_audio_id": "335ca94b-1053-458b-8c5f-6d073e3397dc",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " haven't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "いいえ、残念ながら見ていません",
+     "target_text": "no I'm afraid I haven't seen them",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T17:30:23.373233+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c87695ce-1d07-4c14-be97-17e7fd85053e",
+     "target1_audio_id": "1647c586-1c2e-463b-bb8c-9dc024df57c0",
+     "target2_audio_id": "9157e133-8b49-4bc0-a6e4-57b0991d160c",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": "no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "いいえ、残念ながら見ていません",
+     "target_text": "no I'm afraid I haven't seen them",
+     "word_count": 33,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T17:30:23.373233+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c87695ce-1d07-4c14-be97-17e7fd85053e",
+     "target1_audio_id": "1647c586-1c2e-463b-bb8c-9dc024df57c0",
+     "target2_audio_id": "9157e133-8b49-4bc0-a6e4-57b0991d160c",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": "no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "鍵は？いいえ、残念ながら見ていません",
+     "target_text": "the keys? no, I'm afraid I haven't seen them",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e2fdfb9f-a9fb-4588-bbc2-03a7ad578903",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3216,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " keys",
+       "isGhost": true
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "今日も、いいえ、残念ながら見ていません",
+     "target_text": "today? no, I'm afraid I haven't seen them",
+     "word_count": 39,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b16ac096-fd68-476a-b83c-b85ba85fb05b",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": "today",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "見ましたか？いいえ、残念ながら見ていません",
+     "target_text": "have you seen them? no, I'm afraid I haven't seen them",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b68c87f8-5d1e-45ee-be05-1860c0a43169",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3504,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "見ましたか",
+       "legoId": "S0182L02",
+       "target": "have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "どこかで？いいえ、残念ながら見ていません",
+     "target_text": "anywhere? no, I'm afraid I haven't seen them",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ee973894-3456-4a26-90d2-d3a7ad89559f",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 3288,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "どこかで",
+       "legoId": "S0182L03",
+       "target": "anywhere",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "鍵をどこかで見ましたか？いいえ、残念ながら見ていません",
+     "target_text": "have you seen my keys anywhere? no, I'm afraid I haven't seen them",
+     "word_count": 64,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:41:47.501Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "77833151-f64c-407d-b58a-a84a41443582",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 4200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "見ましたか",
+       "legoId": "S0182L02",
+       "target": "have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "私の鍵",
+       "legoId": "S0182L01",
+       "target": " my keys",
+       "isGhost": false
+      },
+      {
+       "known": "どこかで",
+       "legoId": "S0182L03",
+       "target": " anywhere",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "友達をどこかで見ましたか？いいえ、残念ながら見ていません",
+     "target_text": "have you seen my friend anywhere? no, I'm afraid I haven't seen them",
+     "word_count": 66,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:41:47.501Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "090b74a4-a3eb-4cc3-b5ed-fe0fd8485d6c",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 4824,
+     "target2_duration_ms": 4176,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "見ましたか",
+       "legoId": "S0182L02",
+       "target": "have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "私の",
+       "legoId": "S0166L01",
+       "target": " my",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "どこかで",
+       "legoId": "S0182L03",
+       "target": " anywhere",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "誰かを見ましたか？いいえ、残念ながら見ていません",
+     "target_text": "have you seen anyone? no, I'm afraid I haven't seen them",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:41:47.501Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7062892b-a5b6-4e26-bb29-f22255f438e8",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 4464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "見ましたか",
+       "legoId": "S0182L02",
+       "target": "have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "誰にも",
+       "legoId": "S0071L03",
+       "target": " anyone",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "昨日から見ていませんか？いいえ、残念ながら見ていません",
+     "target_text": "have you seen them since yesterday? no, I'm afraid I haven't seen them",
+     "word_count": 68,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:41:47.501Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "277c1171-2a83-4af8-9cf7-b85a938d2bca",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 4296,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "見ましたか",
+       "legoId": "S0182L02",
+       "target": "have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " since",
+       "isGhost": true
+      },
+      {
+       "known": "昨日",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 22,
+     "known_text": "どこかで見ましたか？いいえ、残念ながら見ていません",
+     "target_text": "have you seen them anywhere? no, I'm afraid I haven't seen them",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:41:47.501Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "cc046b69-a05d-49ab-bd3a-c8a4f79faab1",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 4032,
+     "target2_duration_ms": 3864,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "見ましたか",
+       "legoId": "S0182L02",
+       "target": "have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      },
+      {
+       "known": "どこかで",
+       "legoId": "S0182L03",
+       "target": " anywhere",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 23,
+     "known_text": "今朝見ましたか？いいえ、残念ながら見ていません",
+     "target_text": "have you seen them this morning? no, I'm afraid I haven't seen them",
+     "word_count": 65,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:41:47.501Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5f164bda-18fe-44c3-a4d0-937a750e7873",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3792,
+     "target2_duration_ms": 4008,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "見ましたか",
+       "legoId": "S0182L02",
+       "target": "have you seen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      },
+      {
+       "known": "今朝",
+       "legoId": "S0039L03",
+       "target": " this morning",
+       "isGhost": false
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0183L01U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 183,
+     "lego_index": 1,
+     "position": 25,
+     "known_text": "あなたも見ていないということですね。いいえ、残念ながら見ていません",
+     "target_text": "so you haven't seen them? no, I'm afraid I haven't seen them",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:41:47.501Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:41:00.601887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "509e3ce9-bd03-46a3-8ac4-cc0a9fe49e62",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": "so",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " them",
+       "isGhost": true
+      },
+      {
+       "known": "いいえ、残念ながら見ていません",
+       "legoId": "S0183L01",
+       "target": " no I'm afraid I haven't seen them",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

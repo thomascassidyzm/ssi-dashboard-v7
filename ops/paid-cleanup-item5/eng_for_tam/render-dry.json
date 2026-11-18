@@ -1,0 +1,1358 @@
+{
+ "known|அவர் இங்கே கற்க விரும்புகிறார்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|he wants to learn here": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 22,
+  "status": 200
+ },
+ "target2|he wants to learn here": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 22,
+  "status": 200
+ },
+ "known|அவர் நாளை பேச விரும்புகிறார்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|he wants to speak tomorrow": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"he wants to speak tomorrow\" is already recorded in eng — 1 clip(s): 2a13e3ca-4c79-4c42-8123-052303ac63a5 (voice xai_gfzdpspr5fdp, fra_ca_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "2a13e3ca-4c79-4c42-8123-052303ac63a5",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "2a13e3ca-4c79-4c42-8123-052303ac63a5"
+  ]
+ },
+ "target2|he wants to speak tomorrow": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"he wants to speak tomorrow\" is already recorded in eng — 1 clip(s): 2a13e3ca-4c79-4c42-8123-052303ac63a5 (voice xai_gfzdpspr5fdp, fra_ca_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "2a13e3ca-4c79-4c42-8123-052303ac63a5",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "2a13e3ca-4c79-4c42-8123-052303ac63a5"
+  ]
+ },
+ "known|அவர் என்னுடன் சந்திக்க விரும்புகிறார்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|he wants to meet with me": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"he wants to meet with me\" is already recorded in eng — 1 clip(s): dbeaecd4-1e5b-454f-9ddd-5fd20143e237 (voice azure_en-GB-SoniaNeural, isl_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "dbeaecd4-1e5b-454f-9ddd-5fd20143e237",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "dbeaecd4-1e5b-454f-9ddd-5fd20143e237"
+  ]
+ },
+ "target2|he wants to meet with me": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"he wants to meet with me\" is already recorded in eng — 1 clip(s): dbeaecd4-1e5b-454f-9ddd-5fd20143e237 (voice azure_en-GB-SoniaNeural, isl_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "dbeaecd4-1e5b-454f-9ddd-5fd20143e237",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "dbeaecd4-1e5b-454f-9ddd-5fd20143e237"
+  ]
+ },
+ "known|அவள் இன்று பேச விரும்புகிறாள்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|she wants to speak today": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 24,
+  "status": 200
+ },
+ "target2|she wants to speak today": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 24,
+  "status": 200
+ },
+ "known|அவள் என்னுடன் சந்திக்க விரும்புகிறாள்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|she wants to meet with me": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"she wants to meet with me\" is already recorded in eng — 6 clip(s): fd5e2344-e5f5-4afe-b546-ada2fef9212f (voice azure_en-GB-RyanNeural, eng_for_guj target2); 4af97d72-342e-48a8-bd53-8fef5c3d9162 (voice azure_en-GB-SoniaNeural, dan_for_eng known); 61e83d73-ca03-40f0-b40e-63161a644d59 (voice bedd6226, eng_for_guj target1); 5ed040bc-d7c4-4b98-825c-1fcccd885f7a (voice gfzdpspr5fdp, eng_for_guj target2); cf49f88b-5c18-4116-84f4-8f74f170f14b (voice azure_en-GB-SoniaNeural, ben_for_eng known); df36639f-75d6-43c5-9d50-2b9db89a1c5c (voice azure_en-GB-SoniaNeural, eng_for_guj target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "fd5e2344-e5f5-4afe-b546-ada2fef9212f",
+   "4af97d72-342e-48a8-bd53-8fef5c3d9162",
+   "61e83d73-ca03-40f0-b40e-63161a644d59",
+   "5ed040bc-d7c4-4b98-825c-1fcccd885f7a",
+   "cf49f88b-5c18-4116-84f4-8f74f170f14b",
+   "df36639f-75d6-43c5-9d50-2b9db89a1c5c",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fd5e2344-e5f5-4afe-b546-ada2fef9212f",
+   "4af97d72-342e-48a8-bd53-8fef5c3d9162",
+   "61e83d73-ca03-40f0-b40e-63161a644d59",
+   "5ed040bc-d7c4-4b98-825c-1fcccd885f7a",
+   "cf49f88b-5c18-4116-84f4-8f74f170f14b",
+   "df36639f-75d6-43c5-9d50-2b9db89a1c5c"
+  ]
+ },
+ "target2|she wants to meet with me": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"she wants to meet with me\" is already recorded in eng — 6 clip(s): fd5e2344-e5f5-4afe-b546-ada2fef9212f (voice azure_en-GB-RyanNeural, eng_for_guj target2); 4af97d72-342e-48a8-bd53-8fef5c3d9162 (voice azure_en-GB-SoniaNeural, dan_for_eng known); 61e83d73-ca03-40f0-b40e-63161a644d59 (voice bedd6226, eng_for_guj target1); 5ed040bc-d7c4-4b98-825c-1fcccd885f7a (voice gfzdpspr5fdp, eng_for_guj target2); cf49f88b-5c18-4116-84f4-8f74f170f14b (voice azure_en-GB-SoniaNeural, ben_for_eng known); df36639f-75d6-43c5-9d50-2b9db89a1c5c (voice azure_en-GB-SoniaNeural, eng_for_guj target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "fd5e2344-e5f5-4afe-b546-ada2fef9212f",
+   "4af97d72-342e-48a8-bd53-8fef5c3d9162",
+   "61e83d73-ca03-40f0-b40e-63161a644d59",
+   "5ed040bc-d7c4-4b98-825c-1fcccd885f7a",
+   "cf49f88b-5c18-4116-84f4-8f74f170f14b",
+   "df36639f-75d6-43c5-9d50-2b9db89a1c5c",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "fd5e2344-e5f5-4afe-b546-ada2fef9212f",
+   "4af97d72-342e-48a8-bd53-8fef5c3d9162",
+   "61e83d73-ca03-40f0-b40e-63161a644d59",
+   "5ed040bc-d7c4-4b98-825c-1fcccd885f7a",
+   "cf49f88b-5c18-4116-84f4-8f74f170f14b",
+   "df36639f-75d6-43c5-9d50-2b9db89a1c5c"
+  ]
+ },
+ "known|நான் கடந்த மாதம் கற்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to learn last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 28,
+  "status": 200
+ },
+ "target2|I wanted to learn last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 28,
+  "status": 200
+ },
+ "known|நீங்கள் கடந்த மாதம் பேச விரும்பினீர்கள்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|you wanted to speak last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 30,
+  "status": 200
+ },
+ "target2|you wanted to speak last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 30,
+  "status": 200
+ },
+ "known|நான் கடந்த மாதம் மக்களைச் சந்திக்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to meet people last month": {
+  "ok": true,
+  "source": "library",
+  "audioId": "4ef20e4c-e401-4bd2-8528-3ecd7980eede",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|I wanted to meet people last month": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to meet people last month\" is already recorded in eng — 4 clip(s): b61ef237-d52c-451e-90cf-cc53e3de44c0 (voice azure_en-GB-SoniaNeural, ces_for_eng known); 4ef20e4c-e401-4bd2-8528-3ecd7980eede (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, eng_for_hin target1); 4a6a1676-ddc4-4a23-8069-1f67d06825ca (voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2, eng_for_hin target2); 3042b315-f0e4-44ad-af2e-cf799e0dcdb1 (voice xai_eve, deu_at_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "b61ef237-d52c-451e-90cf-cc53e3de44c0",
+   "4ef20e4c-e401-4bd2-8528-3ecd7980eede",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "4a6a1676-ddc4-4a23-8069-1f67d06825ca",
+   "8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+   "3042b315-f0e4-44ad-af2e-cf799e0dcdb1",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "b61ef237-d52c-451e-90cf-cc53e3de44c0",
+   "4ef20e4c-e401-4bd2-8528-3ecd7980eede",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "4a6a1676-ddc4-4a23-8069-1f67d06825ca",
+   "8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+   "3042b315-f0e4-44ad-af2e-cf799e0dcdb1"
+  ]
+ },
+ "known|நான் கடந்த மாதம் ஆங்கிலம் கற்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to learn English last month": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to learn English last month\" is already recorded in eng — 2 clip(s): 4330bb1a-0f59-4499-9b73-facde7230119 (voice azure_en-GB-RyanNeural, eng_for_spa target2); d77f0a6a-3f3d-4ddf-842c-33b05abb1e66 (voice azure_en-GB-SoniaNeural, eng_for_spa target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "4330bb1a-0f59-4499-9b73-facde7230119",
+   "d77f0a6a-3f3d-4ddf-842c-33b05abb1e66",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "4330bb1a-0f59-4499-9b73-facde7230119",
+   "d77f0a6a-3f3d-4ddf-842c-33b05abb1e66"
+  ]
+ },
+ "target2|I wanted to learn English last month": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to learn English last month\" is already recorded in eng — 2 clip(s): 4330bb1a-0f59-4499-9b73-facde7230119 (voice azure_en-GB-RyanNeural, eng_for_spa target2); d77f0a6a-3f3d-4ddf-842c-33b05abb1e66 (voice azure_en-GB-SoniaNeural, eng_for_spa target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "4330bb1a-0f59-4499-9b73-facde7230119",
+   "d77f0a6a-3f3d-4ddf-842c-33b05abb1e66",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "4330bb1a-0f59-4499-9b73-facde7230119",
+   "d77f0a6a-3f3d-4ddf-842c-33b05abb1e66"
+  ]
+ },
+ "known|நான் கடந்த மாதம் அதிகமாக பயிற்சி செய்ய விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to practise more last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 36,
+  "status": 200
+ },
+ "target2|I wanted to practise more last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 36,
+  "status": 200
+ },
+ "known|நான் கடந்த மாதம் கவனமாக கற்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to learn carefully last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 38,
+  "status": 200
+ },
+ "target2|I wanted to learn carefully last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 38,
+  "status": 200
+ },
+ "known|நான் கடந்த மாதம் உங்களிடம் ஏதாவது கேட்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to ask you something last month": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to ask you something last month\" is already recorded in eng — 16 clip(s): bc106e39-452e-41c2-a368-0dddb5da03b5 (voice azure_en-GB-RyanNeural, eng_for_kor target2); 1b5bd829-4348-4e39-9947-a33686369827 (voice azure_en-GB-SoniaNeural, ukr_for_eng known); b2407d96-44aa-49f4-b69d-5dad9fbf2ed6 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, deu_for_eng known); 05fc8d90-2523-4be0-ac3a-85f4ea3f9e0d (voice xai_bedd6226, eng_for_kan target1); b368a3e5-2faf-4bbd-bf1d-342b80618e93 (voice xai_eve, fra_for_eng known); 418f9f25-93a9-4974-b4cd-8a7fc2c3bd2c (voice xai_gfzdpspr5fdp, eng_for_tel target2); 21ecd4be-badf-4895-b1f3-646b2283c475 (voice azure_en-GB-SoniaNeural, glg_for_eng known); 4ec7ba32-238e-4be5-b0e2-7961de971750 (voice en-GB-SoniaNeural, eng_for_kor target1); 60b0c7a1-70aa-49af-a189-71a53436e416 (voice azure_en-GB-SoniaNeural, hye_for_eng known); 78e463fc-618c-41eb-8b77-ad06514e2bcd (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fin_for_eng known); 9bde240f-b65f-417f-9984-c8938dd8c8cc (voice xai_gfzdpspr5fdp, eng_for_kan target2); ac391f07-5001-4956-b346-509a7c0dba95 (voice xai_gfzdpspr5fdp, fra_for_eng known); ad2658ad-3293-45e9-8405-8ae56b830a52 (voice azure_en-GB-SoniaNeural, fra_ca_for_eng known); c7576d7e-d969-4077-9794-2ac1e2a5b4ef (voice azure_en-GB-SoniaNeural, eng_for_fra target1); e0617bd4-2ff6-4120-b4d4-1f04905e6848 (voice xai_bedd6226, eng_for_tel target1); f79d465c-c5f5-4106-af5e-3ceb9e1c1330 (voice azure_en-GB-RyanNeural, eng_for_fra target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "bc106e39-452e-41c2-a368-0dddb5da03b5",
+   "1b5bd829-4348-4e39-9947-a33686369827",
+   "b2407d96-44aa-49f4-b69d-5dad9fbf2ed6",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "05fc8d90-2523-4be0-ac3a-85f4ea3f9e0d",
+   "b368a3e5-2faf-4bbd-bf1d-342b80618e93",
+   "418f9f25-93a9-4974-b4cd-8a7fc2c3bd2c",
+   "21ecd4be-badf-4895-b1f3-646b2283c475",
+   "4ec7ba32-238e-4be5-b0e2-7961de971750",
+   "60b0c7a1-70aa-49af-a189-71a53436e416",
+   "78e463fc-618c-41eb-8b77-ad06514e2bcd",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "9bde240f-b65f-417f-9984-c8938dd8c8cc",
+   "ac391f07-5001-4956-b346-509a7c0dba95",
+   "ad2658ad-3293-45e9-8405-8ae56b830a52",
+   "c7576d7e-d969-4077-9794-2ac1e2a5b4ef",
+   "e0617bd4-2ff6-4120-b4d4-1f04905e6848",
+   "f79d465c-c5f5-4106-af5e-3ceb9e1c1330",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "bc106e39-452e-41c2-a368-0dddb5da03b5",
+   "1b5bd829-4348-4e39-9947-a33686369827",
+   "b2407d96-44aa-49f4-b69d-5dad9fbf2ed6",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "05fc8d90-2523-4be0-ac3a-85f4ea3f9e0d",
+   "b368a3e5-2faf-4bbd-bf1d-342b80618e93",
+   "418f9f25-93a9-4974-b4cd-8a7fc2c3bd2c",
+   "21ecd4be-badf-4895-b1f3-646b2283c475",
+   "4ec7ba32-238e-4be5-b0e2-7961de971750",
+   "60b0c7a1-70aa-49af-a189-71a53436e416",
+   "78e463fc-618c-41eb-8b77-ad06514e2bcd",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "9bde240f-b65f-417f-9984-c8938dd8c8cc",
+   "ac391f07-5001-4956-b346-509a7c0dba95",
+   "ad2658ad-3293-45e9-8405-8ae56b830a52",
+   "c7576d7e-d969-4077-9794-2ac1e2a5b4ef",
+   "e0617bd4-2ff6-4120-b4d4-1f04905e6848",
+   "f79d465c-c5f5-4106-af5e-3ceb9e1c1330"
+  ]
+ },
+ "target2|I wanted to ask you something last month": {
+  "ok": true,
+  "source": "library",
+  "audioId": "b2407d96-44aa-49f4-b69d-5dad9fbf2ed6",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|நீங்கள் கடந்த மாதம் ஆங்கிலம் பேச விரும்பினீர்கள்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|you wanted to speak English last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 38,
+  "status": 200
+ },
+ "target2|you wanted to speak English last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 38,
+  "status": 200
+ },
+ "known|நான் அதைப் பற்றி ஏதாவது சொல்ல விரும்புகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I want to say something about it": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 32,
+  "status": 200
+ },
+ "target2|I want to say something about it": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 32,
+  "status": 200
+ },
+ "known|நான் கடந்த மாதம் அதைப் பற்றி கற்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to learn about it last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 37,
+  "status": 200
+ },
+ "target2|I wanted to learn about it last month": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 37,
+  "status": 200
+ },
+ "known|இப்போது சுமாரக ஒரு வாரமாக": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|for about a week now": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"for about a week now\" is already recorded in eng — 2 clip(s): aed70233-6178-498b-8ff3-109ba6f24bb1 (voice cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cym_sv2_for_eng known); ed03b623-2ea7-4602-b723-3fe927e22e41 (voice xai_eve, deu_at_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "aed70233-6178-498b-8ff3-109ba6f24bb1",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "ed03b623-2ea7-4602-b723-3fe927e22e41",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "aed70233-6178-498b-8ff3-109ba6f24bb1",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "ed03b623-2ea7-4602-b723-3fe927e22e41"
+  ]
+ },
+ "target2|for about a week now": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"for about a week now\" is already recorded in eng — 2 clip(s): aed70233-6178-498b-8ff3-109ba6f24bb1 (voice cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cym_sv2_for_eng known); ed03b623-2ea7-4602-b723-3fe927e22e41 (voice xai_eve, deu_at_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "aed70233-6178-498b-8ff3-109ba6f24bb1",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "ed03b623-2ea7-4602-b723-3fe927e22e41",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "aed70233-6178-498b-8ff3-109ba6f24bb1",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "ed03b623-2ea7-4602-b723-3fe927e22e41"
+  ]
+ },
+ "known|நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் கற்றுவருகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "known|நான் சுமாரக ஒரு வாரமாக உங்களுடன் கற்றுவருகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "known|நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் பேசக் கற்றுவருகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I've been learning to speak English for about a week": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 52,
+  "status": 200
+ },
+ "target2|I've been learning to speak English for about a week": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 52,
+  "status": 200
+ },
+ "known|நான் சுமாரக ஒரு வாரமாக கொஞ்சம் ஆங்கிலம் கற்றுவருகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I've been learning a little English for about a week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I've been learning a little English for about a week\" is already recorded in eng — 6 clip(s): 49cbf9e7-5730-450e-8eb4-cb2a059bffaa (voice azure_en-GB-RyanNeural, eng_for_guj target2); e8e4b58a-50dc-4d0b-bf6f-58380dc7c642 (voice azure_en-GB-SoniaNeural, eng_for_guj target1); b2843dfa-f640-4d31-815d-6c8c4f012fae (voice bedd6226, eng_for_kan target1); 53f71ebc-bd04-46ad-9f15-7a548c32b47a (voice gfzdpspr5fdp, eng_for_kan target2); c50108ba-0b39-43dd-beb1-8a96b3bd7217 (voice bedd6226, eng_for_guj target1); ff1cff1c-4abb-440d-89f1-4a3248402611 (voice gfzdpspr5fdp, eng_for_guj target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "49cbf9e7-5730-450e-8eb4-cb2a059bffaa",
+   "e8e4b58a-50dc-4d0b-bf6f-58380dc7c642",
+   "b2843dfa-f640-4d31-815d-6c8c4f012fae",
+   "53f71ebc-bd04-46ad-9f15-7a548c32b47a",
+   "c50108ba-0b39-43dd-beb1-8a96b3bd7217",
+   "ff1cff1c-4abb-440d-89f1-4a3248402611",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "49cbf9e7-5730-450e-8eb4-cb2a059bffaa",
+   "e8e4b58a-50dc-4d0b-bf6f-58380dc7c642",
+   "b2843dfa-f640-4d31-815d-6c8c4f012fae",
+   "53f71ebc-bd04-46ad-9f15-7a548c32b47a",
+   "c50108ba-0b39-43dd-beb1-8a96b3bd7217",
+   "ff1cff1c-4abb-440d-89f1-4a3248402611"
+  ]
+ },
+ "target2|I've been learning a little English for about a week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I've been learning a little English for about a week\" is already recorded in eng — 6 clip(s): 49cbf9e7-5730-450e-8eb4-cb2a059bffaa (voice azure_en-GB-RyanNeural, eng_for_guj target2); e8e4b58a-50dc-4d0b-bf6f-58380dc7c642 (voice azure_en-GB-SoniaNeural, eng_for_guj target1); b2843dfa-f640-4d31-815d-6c8c4f012fae (voice bedd6226, eng_for_kan target1); 53f71ebc-bd04-46ad-9f15-7a548c32b47a (voice gfzdpspr5fdp, eng_for_kan target2); c50108ba-0b39-43dd-beb1-8a96b3bd7217 (voice bedd6226, eng_for_guj target1); ff1cff1c-4abb-440d-89f1-4a3248402611 (voice gfzdpspr5fdp, eng_for_guj target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "49cbf9e7-5730-450e-8eb4-cb2a059bffaa",
+   "e8e4b58a-50dc-4d0b-bf6f-58380dc7c642",
+   "b2843dfa-f640-4d31-815d-6c8c4f012fae",
+   "53f71ebc-bd04-46ad-9f15-7a548c32b47a",
+   "c50108ba-0b39-43dd-beb1-8a96b3bd7217",
+   "ff1cff1c-4abb-440d-89f1-4a3248402611",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "49cbf9e7-5730-450e-8eb4-cb2a059bffaa",
+   "e8e4b58a-50dc-4d0b-bf6f-58380dc7c642",
+   "b2843dfa-f640-4d31-815d-6c8c4f012fae",
+   "53f71ebc-bd04-46ad-9f15-7a548c32b47a",
+   "c50108ba-0b39-43dd-beb1-8a96b3bd7217",
+   "ff1cff1c-4abb-440d-89f1-4a3248402611"
+  ]
+ },
+ "known|நான் சுமாரக ஒரு வாரமாக ஆங்கிலம் எப்படி பேசுவது என்று கற்றுவருகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I've been learning how to speak English for about a week": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 56,
+  "status": 200
+ },
+ "target2|I've been learning how to speak English for about a week": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 56,
+  "status": 200
+ },
+ "known|கொஞ்சம் கற்றுவருகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I've been learning a little": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I've been learning a little\" is already recorded in eng — 2 clip(s): 169432f2-de31-4524-aa05-fd7e41aab7f5 (voice xai_bedd6226, eng_for_mar target1); 886cadba-3ad4-453e-9cf4-a46627ee6303 (voice xai_gfzdpspr5fdp, eng_for_mar target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "169432f2-de31-4524-aa05-fd7e41aab7f5",
+   "886cadba-3ad4-453e-9cf4-a46627ee6303",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "169432f2-de31-4524-aa05-fd7e41aab7f5",
+   "886cadba-3ad4-453e-9cf4-a46627ee6303"
+  ]
+ },
+ "target2|I've been learning a little": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I've been learning a little\" is already recorded in eng — 2 clip(s): 169432f2-de31-4524-aa05-fd7e41aab7f5 (voice xai_bedd6226, eng_for_mar target1); 886cadba-3ad4-453e-9cf4-a46627ee6303 (voice xai_gfzdpspr5fdp, eng_for_mar target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "169432f2-de31-4524-aa05-fd7e41aab7f5",
+   "886cadba-3ad4-453e-9cf4-a46627ee6303",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "169432f2-de31-4524-aa05-fd7e41aab7f5",
+   "886cadba-3ad4-453e-9cf4-a46627ee6303"
+  ]
+ },
+ "known|நான் கவனமாக ஆங்கிலம் கற்றுவருகிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I've been learning English carefully": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I've been learning English carefully\" is already recorded in eng — 12 clip(s): 2faf6493-90e2-49be-858d-f091f47a1c4d (voice azure_en-GB-RyanNeural, eng_for_spa target2); 374434ad-9aae-43d2-ae72-905f9c718612 (voice azure_en-GB-SoniaNeural, eng_for_guj target1); a7134079-16fd-41b6-838f-57fd64c44b90 (voice bedd6226, eng_for_zho target1); 5e011b55-d535-4057-b2ee-0004d1e6e307 (voice gfzdpspr5fdp, eng_for_guj target2); 843be112-a74d-41cc-a824-70962e88c7c7 (voice gfzdpspr5fdp, eng_for_zho target2); 8a29204e-9f4b-4beb-a524-057ccb9b349d (voice azure_en-GB-SoniaNeural, eng_for_spa target1); ba3f5fd1-9cea-4887-818c-e80010c2b16e (voice azure_en-GB-RyanNeural, eng_for_guj target2); d2f4bbdd-7686-402b-8683-c82eb7861a00 (voice gfzdpspr5fdp, eng_for_mar target2); d3d2e0ac-651e-4049-928b-b8b1a86233d5 (voice azure_en-GB-SoniaNeural, eng_for_zho target1); e03cf06f-788c-435e-a699-d9f109bbc8d2 (voice bedd6226, eng_for_mar target1); e1db87ef-85d0-454b-9cf4-d5172be8203a (voice bedd6226, eng_for_guj target1); f640228f-1e36-4385-9f5d-3621d7e2c3e5 (voice azure_en-GB-RyanNeural, eng_for_zho target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "2faf6493-90e2-49be-858d-f091f47a1c4d",
+   "374434ad-9aae-43d2-ae72-905f9c718612",
+   "a7134079-16fd-41b6-838f-57fd64c44b90",
+   "5e011b55-d535-4057-b2ee-0004d1e6e307",
+   "843be112-a74d-41cc-a824-70962e88c7c7",
+   "8a29204e-9f4b-4beb-a524-057ccb9b349d",
+   "ba3f5fd1-9cea-4887-818c-e80010c2b16e",
+   "d2f4bbdd-7686-402b-8683-c82eb7861a00",
+   "d3d2e0ac-651e-4049-928b-b8b1a86233d5",
+   "e03cf06f-788c-435e-a699-d9f109bbc8d2",
+   "e1db87ef-85d0-454b-9cf4-d5172be8203a",
+   "f640228f-1e36-4385-9f5d-3621d7e2c3e5",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "2faf6493-90e2-49be-858d-f091f47a1c4d",
+   "374434ad-9aae-43d2-ae72-905f9c718612",
+   "a7134079-16fd-41b6-838f-57fd64c44b90",
+   "5e011b55-d535-4057-b2ee-0004d1e6e307",
+   "843be112-a74d-41cc-a824-70962e88c7c7",
+   "8a29204e-9f4b-4beb-a524-057ccb9b349d",
+   "ba3f5fd1-9cea-4887-818c-e80010c2b16e",
+   "d2f4bbdd-7686-402b-8683-c82eb7861a00",
+   "d3d2e0ac-651e-4049-928b-b8b1a86233d5",
+   "e03cf06f-788c-435e-a699-d9f109bbc8d2",
+   "e1db87ef-85d0-454b-9cf4-d5172be8203a",
+   "f640228f-1e36-4385-9f5d-3621d7e2c3e5"
+  ]
+ },
+ "target2|I've been learning English carefully": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I've been learning English carefully\" is already recorded in eng — 12 clip(s): 2faf6493-90e2-49be-858d-f091f47a1c4d (voice azure_en-GB-RyanNeural, eng_for_spa target2); 374434ad-9aae-43d2-ae72-905f9c718612 (voice azure_en-GB-SoniaNeural, eng_for_guj target1); a7134079-16fd-41b6-838f-57fd64c44b90 (voice bedd6226, eng_for_zho target1); 5e011b55-d535-4057-b2ee-0004d1e6e307 (voice gfzdpspr5fdp, eng_for_guj target2); 843be112-a74d-41cc-a824-70962e88c7c7 (voice gfzdpspr5fdp, eng_for_zho target2); 8a29204e-9f4b-4beb-a524-057ccb9b349d (voice azure_en-GB-SoniaNeural, eng_for_spa target1); ba3f5fd1-9cea-4887-818c-e80010c2b16e (voice azure_en-GB-RyanNeural, eng_for_guj target2); d2f4bbdd-7686-402b-8683-c82eb7861a00 (voice gfzdpspr5fdp, eng_for_mar target2); d3d2e0ac-651e-4049-928b-b8b1a86233d5 (voice azure_en-GB-SoniaNeural, eng_for_zho target1); e03cf06f-788c-435e-a699-d9f109bbc8d2 (voice bedd6226, eng_for_mar target1); e1db87ef-85d0-454b-9cf4-d5172be8203a (voice bedd6226, eng_for_guj target1); f640228f-1e36-4385-9f5d-3621d7e2c3e5 (voice azure_en-GB-RyanNeural, eng_for_zho target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "2faf6493-90e2-49be-858d-f091f47a1c4d",
+   "374434ad-9aae-43d2-ae72-905f9c718612",
+   "a7134079-16fd-41b6-838f-57fd64c44b90",
+   "5e011b55-d535-4057-b2ee-0004d1e6e307",
+   "843be112-a74d-41cc-a824-70962e88c7c7",
+   "8a29204e-9f4b-4beb-a524-057ccb9b349d",
+   "ba3f5fd1-9cea-4887-818c-e80010c2b16e",
+   "d2f4bbdd-7686-402b-8683-c82eb7861a00",
+   "d3d2e0ac-651e-4049-928b-b8b1a86233d5",
+   "e03cf06f-788c-435e-a699-d9f109bbc8d2",
+   "e1db87ef-85d0-454b-9cf4-d5172be8203a",
+   "f640228f-1e36-4385-9f5d-3621d7e2c3e5",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "2faf6493-90e2-49be-858d-f091f47a1c4d",
+   "374434ad-9aae-43d2-ae72-905f9c718612",
+   "a7134079-16fd-41b6-838f-57fd64c44b90",
+   "5e011b55-d535-4057-b2ee-0004d1e6e307",
+   "843be112-a74d-41cc-a824-70962e88c7c7",
+   "8a29204e-9f4b-4beb-a524-057ccb9b349d",
+   "ba3f5fd1-9cea-4887-818c-e80010c2b16e",
+   "d2f4bbdd-7686-402b-8683-c82eb7861a00",
+   "d3d2e0ac-651e-4049-928b-b8b1a86233d5",
+   "e03cf06f-788c-435e-a699-d9f109bbc8d2",
+   "e1db87ef-85d0-454b-9cf4-d5172be8203a",
+   "f640228f-1e36-4385-9f5d-3621d7e2c3e5"
+  ]
+ },
+ "known|அதைப் பற்றி நீங்கள் எப்படி உணர்கிறீர்கள்?": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|how do you feel about it?": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"how do you feel about it?\" is already recorded in eng — 11 clip(s): f1e6cf51-1417-4f6c-b6bf-cd07c558cdda (voice azure_en-GB-RyanNeural, eng_for_deu target2); 29c0f164-e49c-4e0b-9f5f-5f2f38f34148 (voice azure_en-GB-SoniaNeural, ben_for_eng known); 28ceb0fa-a771-46fb-877a-66ef48dcabea (voice cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cym_sv2_for_eng known); 952740f0-9675-4059-82bd-101b6f9e38e9 (voice xai_bedd6226, eng_for_mar target1); 3540e8b0-5000-4299-9572-22e6fdc9e81d (voice xai_gfzdpspr5fdp, eng_for_kan target2); 3a502f0f-d576-4ef2-8991-bd1876bcaa6e (voice xai_gfzdpspr5fdp, eng_for_mar target2); 55899f7e-8530-4c3f-8a15-29ebf203a215 (voice gfzdpspr5fdp, eng_for_sin target2); cb74b521-af13-4bfb-b24e-7d608e015f6a (voice azure_en-GB-SoniaNeural, srp_for_eng known); cfb51532-27c2-4c71-acca-358deee861ea (voice azure_en-GB-SoniaNeural, eng_for_deu target1); e58441f9-a2bb-4cef-a8fb-d335d8b9148e (voice bedd6226, eng_for_sin target1); f3b9a1dc-2cac-4c66-9071-5affd2e4acfa (voice xai_bedd6226, eng_for_kan target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "f1e6cf51-1417-4f6c-b6bf-cd07c558cdda",
+   "29c0f164-e49c-4e0b-9f5f-5f2f38f34148",
+   "28ceb0fa-a771-46fb-877a-66ef48dcabea",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "952740f0-9675-4059-82bd-101b6f9e38e9",
+   "3540e8b0-5000-4299-9572-22e6fdc9e81d",
+   "3a502f0f-d576-4ef2-8991-bd1876bcaa6e",
+   "55899f7e-8530-4c3f-8a15-29ebf203a215",
+   "cb74b521-af13-4bfb-b24e-7d608e015f6a",
+   "cfb51532-27c2-4c71-acca-358deee861ea",
+   "e58441f9-a2bb-4cef-a8fb-d335d8b9148e",
+   "f3b9a1dc-2cac-4c66-9071-5affd2e4acfa",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "f1e6cf51-1417-4f6c-b6bf-cd07c558cdda",
+   "29c0f164-e49c-4e0b-9f5f-5f2f38f34148",
+   "28ceb0fa-a771-46fb-877a-66ef48dcabea",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "952740f0-9675-4059-82bd-101b6f9e38e9",
+   "3540e8b0-5000-4299-9572-22e6fdc9e81d",
+   "3a502f0f-d576-4ef2-8991-bd1876bcaa6e",
+   "55899f7e-8530-4c3f-8a15-29ebf203a215",
+   "cb74b521-af13-4bfb-b24e-7d608e015f6a",
+   "cfb51532-27c2-4c71-acca-358deee861ea",
+   "e58441f9-a2bb-4cef-a8fb-d335d8b9148e",
+   "f3b9a1dc-2cac-4c66-9071-5affd2e4acfa"
+  ]
+ },
+ "target2|how do you feel about it?": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"how do you feel about it?\" is already recorded in eng — 11 clip(s): f1e6cf51-1417-4f6c-b6bf-cd07c558cdda (voice azure_en-GB-RyanNeural, eng_for_deu target2); 29c0f164-e49c-4e0b-9f5f-5f2f38f34148 (voice azure_en-GB-SoniaNeural, ben_for_eng known); 28ceb0fa-a771-46fb-877a-66ef48dcabea (voice cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cym_sv2_for_eng known); 952740f0-9675-4059-82bd-101b6f9e38e9 (voice xai_bedd6226, eng_for_mar target1); 3540e8b0-5000-4299-9572-22e6fdc9e81d (voice xai_gfzdpspr5fdp, eng_for_kan target2); 3a502f0f-d576-4ef2-8991-bd1876bcaa6e (voice xai_gfzdpspr5fdp, eng_for_mar target2); 55899f7e-8530-4c3f-8a15-29ebf203a215 (voice gfzdpspr5fdp, eng_for_sin target2); cb74b521-af13-4bfb-b24e-7d608e015f6a (voice azure_en-GB-SoniaNeural, srp_for_eng known); cfb51532-27c2-4c71-acca-358deee861ea (voice azure_en-GB-SoniaNeural, eng_for_deu target1); e58441f9-a2bb-4cef-a8fb-d335d8b9148e (voice bedd6226, eng_for_sin target1); f3b9a1dc-2cac-4c66-9071-5affd2e4acfa (voice xai_bedd6226, eng_for_kan target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "f1e6cf51-1417-4f6c-b6bf-cd07c558cdda",
+   "29c0f164-e49c-4e0b-9f5f-5f2f38f34148",
+   "28ceb0fa-a771-46fb-877a-66ef48dcabea",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "952740f0-9675-4059-82bd-101b6f9e38e9",
+   "3540e8b0-5000-4299-9572-22e6fdc9e81d",
+   "3a502f0f-d576-4ef2-8991-bd1876bcaa6e",
+   "55899f7e-8530-4c3f-8a15-29ebf203a215",
+   "cb74b521-af13-4bfb-b24e-7d608e015f6a",
+   "cfb51532-27c2-4c71-acca-358deee861ea",
+   "e58441f9-a2bb-4cef-a8fb-d335d8b9148e",
+   "f3b9a1dc-2cac-4c66-9071-5affd2e4acfa",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "f1e6cf51-1417-4f6c-b6bf-cd07c558cdda",
+   "29c0f164-e49c-4e0b-9f5f-5f2f38f34148",
+   "28ceb0fa-a771-46fb-877a-66ef48dcabea",
+   "5b7a17f4-3850-4dee-ab54-2967a9c042ef",
+   "952740f0-9675-4059-82bd-101b6f9e38e9",
+   "3540e8b0-5000-4299-9572-22e6fdc9e81d",
+   "3a502f0f-d576-4ef2-8991-bd1876bcaa6e",
+   "55899f7e-8530-4c3f-8a15-29ebf203a215",
+   "cb74b521-af13-4bfb-b24e-7d608e015f6a",
+   "cfb51532-27c2-4c71-acca-358deee861ea",
+   "e58441f9-a2bb-4cef-a8fb-d335d8b9148e",
+   "f3b9a1dc-2cac-4c66-9071-5affd2e4acfa"
+  ]
+ },
+ "known|நான் கற்பதை ரசிக்கிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I enjoy learning": {
+  "ok": true,
+  "source": "library",
+  "audioId": "2390080e-2c01-4bdc-a1d4-fab579a6cd31",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|I enjoy learning": {
+  "ok": true,
+  "source": "library",
+  "audioId": "e4bce7cd-a7de-47bb-8877-66afa9c9b57f",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|நான் பேசுவதை ரசிக்கிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I enjoy speaking": {
+  "ok": true,
+  "source": "library",
+  "audioId": "1ceffce0-f80e-4e7f-be95-9b179ee31e5c",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|I enjoy speaking": {
+  "ok": true,
+  "source": "library",
+  "audioId": "a7542e0c-719b-4d89-a9be-b8dec49fbf1b",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|நான் பேசிக்கொண்டிருப்பதை ரசிக்கிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I enjoy talking": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I enjoy talking\" is already recorded in eng — 10 clip(s): 553c56b0-27cc-4518-aa3c-67ce0508dd2a (voice azure_en-GB-RyanNeural, eng_for_ara target2); 4097b696-b298-4445-b10e-9efafd890682 (voice azure_en-GB-SoniaNeural, hye_for_eng known); 457c367e-5f27-4535-a271-244debd01577 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, fry_for_eng known); 766d7f0f-2bc4-43de-8424-0836b69e713e (voice bedd6226, eng_for_ara target1); 7bda019f-387a-4484-a0da-17e8475bbc3f (voice gfzdpspr5fdp, eng_for_ara target2); 5942c559-25b5-43ac-bcb1-e8dde0616563 (voice azure_en-GB-SoniaNeural, srp_for_eng known); a953abb9-d1b5-44cc-8cfb-615713eaf3fd (voice azure_en-GB-SoniaNeural, eng_for_ara target1); ad131a56-8c22-4365-8c7f-86f7a9d422a7 (voice azure_en-GB-SoniaNeural, deu_at_for_eng known); c6e98d5c-4293-45bb-9b04-19b75acec1bc (voice azure_en-GB-SoniaNeural, swe_for_eng known); d52a793b-b326-4f09-b66b-06660616fd97 (voice azure_en-GB-SoniaNeural, gle_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "553c56b0-27cc-4518-aa3c-67ce0508dd2a",
+   "4097b696-b298-4445-b10e-9efafd890682",
+   "457c367e-5f27-4535-a271-244debd01577",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "766d7f0f-2bc4-43de-8424-0836b69e713e",
+   "7bda019f-387a-4484-a0da-17e8475bbc3f",
+   "5942c559-25b5-43ac-bcb1-e8dde0616563",
+   "a953abb9-d1b5-44cc-8cfb-615713eaf3fd",
+   "ad131a56-8c22-4365-8c7f-86f7a9d422a7",
+   "c6e98d5c-4293-45bb-9b04-19b75acec1bc",
+   "d52a793b-b326-4f09-b66b-06660616fd97",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "553c56b0-27cc-4518-aa3c-67ce0508dd2a",
+   "4097b696-b298-4445-b10e-9efafd890682",
+   "457c367e-5f27-4535-a271-244debd01577",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "766d7f0f-2bc4-43de-8424-0836b69e713e",
+   "7bda019f-387a-4484-a0da-17e8475bbc3f",
+   "5942c559-25b5-43ac-bcb1-e8dde0616563",
+   "a953abb9-d1b5-44cc-8cfb-615713eaf3fd",
+   "ad131a56-8c22-4365-8c7f-86f7a9d422a7",
+   "c6e98d5c-4293-45bb-9b04-19b75acec1bc",
+   "d52a793b-b326-4f09-b66b-06660616fd97"
+  ]
+ },
+ "target2|I enjoy talking": {
+  "ok": true,
+  "source": "library",
+  "audioId": "457c367e-5f27-4535-a271-244debd01577",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|நான் சுவாரஸ்யமான மக்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I enjoy speaking English with interesting people": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 48,
+  "status": 200
+ },
+ "target2|I enjoy speaking English with interesting people": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 48,
+  "status": 200
+ },
+ "target1|I enjoy learning English": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I enjoy learning English\" is already recorded in eng — 20 clip(s): 28006401-663c-4167-9751-b4049a383c59 (voice azure_en-GB-OliverNeural, eng_for_sin target2); f439754c-2800-40b3-8a5c-28b0bed8e6ff (voice azure_en-GB-RyanNeural, eng_for_hin target2); 7409ecd9-bbe4-4ef3-98ba-04bb08c56c13 (voice azure_en-GB-SoniaNeural, eng_for_hin target1); fc9a53e6-7785-4618-a6f4-72e15a2aa686 (voice bedd6226, eng_for_hin target1); 1eec811a-e5d3-4a9e-841d-f85837763fd2 (voice gfzdpspr5fdp, eng_for_hin target2); 0128cb64-9862-43f6-8b29-b91ac991b5bf (voice xai_bedd6226, eng_for_sin target1); 0986c7a9-5aa3-4113-b8e4-db0688bcd167 (voice xai_gfzdpspr5fdp, eng_for_tel target2); 0be7ddb9-d6e1-4af3-97a5-66ea0212383d (voice xai_gfzdpspr5fdp, eng_for_ara target2); 34e1e823-98a8-45e5-aa15-d80aa1c1c8f2 (voice bedd6226, eng_for_tel target1); 36174ddc-ff89-431e-9bc1-4903e468d4ae (voice azure_en-GB-SoniaNeural, eng_for_ara target1); 3e3bb829-f870-445b-b5e5-0692329f2bbc (voice azure_en-GB-RyanNeural, eng_for_pan target2); 52334faf-6751-475d-a6ba-5d46f1254f9c (voice azure_en-GB-SoniaNeural, eng_for_pan target1); 972d0ad8-fa97-4b43-81a6-8880dab5a166 (voice azure_en-GB-RyanNeural, eng_for_deu target2); a5fdd667-4c4e-449d-8036-6992483f7295 (voice azure_en-GB-SoniaNeural, eng_for_deu target1); a930a72d-8c55-4609-a5d4-a62dfaba3396 (voice bedd6226, eng_for_pan target1); b1ff7f8f-8e00-4795-8f62-f03186048dd5 (voice gfzdpspr5fdp, eng_for_pan target2); d138fadf-32cf-4a41-ba20-83ce407d702a (voice bedd6226, eng_for_ara target1); ec66484d-f611-4df9-8076-8dea04a3e152 (voice gfzdpspr5fdp, eng_for_sin target2); f477d5a7-2d6c-4af3-a649-2d0629cf81a3 (voice azure_en-GB-RyanNeural, eng_for_ara target2); f752106f-bac3-40ac-948e-2a94e90270dc (voice azure_en-GB-SoniaNeural, eng_for_sin target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "28006401-663c-4167-9751-b4049a383c59",
+   "f439754c-2800-40b3-8a5c-28b0bed8e6ff",
+   "7409ecd9-bbe4-4ef3-98ba-04bb08c56c13",
+   "fc9a53e6-7785-4618-a6f4-72e15a2aa686",
+   "1eec811a-e5d3-4a9e-841d-f85837763fd2",
+   "0128cb64-9862-43f6-8b29-b91ac991b5bf",
+   "0986c7a9-5aa3-4113-b8e4-db0688bcd167",
+   "0be7ddb9-d6e1-4af3-97a5-66ea0212383d",
+   "34e1e823-98a8-45e5-aa15-d80aa1c1c8f2",
+   "36174ddc-ff89-431e-9bc1-4903e468d4ae",
+   "3e3bb829-f870-445b-b5e5-0692329f2bbc",
+   "52334faf-6751-475d-a6ba-5d46f1254f9c",
+   "972d0ad8-fa97-4b43-81a6-8880dab5a166",
+   "a5fdd667-4c4e-449d-8036-6992483f7295",
+   "a930a72d-8c55-4609-a5d4-a62dfaba3396",
+   "b1ff7f8f-8e00-4795-8f62-f03186048dd5",
+   "d138fadf-32cf-4a41-ba20-83ce407d702a",
+   "ec66484d-f611-4df9-8076-8dea04a3e152",
+   "f477d5a7-2d6c-4af3-a649-2d0629cf81a3",
+   "f752106f-bac3-40ac-948e-2a94e90270dc",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "28006401-663c-4167-9751-b4049a383c59",
+   "f439754c-2800-40b3-8a5c-28b0bed8e6ff",
+   "7409ecd9-bbe4-4ef3-98ba-04bb08c56c13",
+   "fc9a53e6-7785-4618-a6f4-72e15a2aa686",
+   "1eec811a-e5d3-4a9e-841d-f85837763fd2",
+   "0128cb64-9862-43f6-8b29-b91ac991b5bf",
+   "0986c7a9-5aa3-4113-b8e4-db0688bcd167",
+   "0be7ddb9-d6e1-4af3-97a5-66ea0212383d",
+   "34e1e823-98a8-45e5-aa15-d80aa1c1c8f2",
+   "36174ddc-ff89-431e-9bc1-4903e468d4ae",
+   "3e3bb829-f870-445b-b5e5-0692329f2bbc",
+   "52334faf-6751-475d-a6ba-5d46f1254f9c",
+   "972d0ad8-fa97-4b43-81a6-8880dab5a166",
+   "a5fdd667-4c4e-449d-8036-6992483f7295",
+   "a930a72d-8c55-4609-a5d4-a62dfaba3396",
+   "b1ff7f8f-8e00-4795-8f62-f03186048dd5",
+   "d138fadf-32cf-4a41-ba20-83ce407d702a",
+   "ec66484d-f611-4df9-8076-8dea04a3e152",
+   "f477d5a7-2d6c-4af3-a649-2d0629cf81a3",
+   "f752106f-bac3-40ac-948e-2a94e90270dc"
+  ]
+ },
+ "target2|I enjoy learning English": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I enjoy learning English\" is already recorded in eng — 20 clip(s): 28006401-663c-4167-9751-b4049a383c59 (voice azure_en-GB-OliverNeural, eng_for_sin target2); f439754c-2800-40b3-8a5c-28b0bed8e6ff (voice azure_en-GB-RyanNeural, eng_for_hin target2); 7409ecd9-bbe4-4ef3-98ba-04bb08c56c13 (voice azure_en-GB-SoniaNeural, eng_for_hin target1); fc9a53e6-7785-4618-a6f4-72e15a2aa686 (voice bedd6226, eng_for_hin target1); 1eec811a-e5d3-4a9e-841d-f85837763fd2 (voice gfzdpspr5fdp, eng_for_hin target2); 0128cb64-9862-43f6-8b29-b91ac991b5bf (voice xai_bedd6226, eng_for_sin target1); 0986c7a9-5aa3-4113-b8e4-db0688bcd167 (voice xai_gfzdpspr5fdp, eng_for_tel target2); 0be7ddb9-d6e1-4af3-97a5-66ea0212383d (voice xai_gfzdpspr5fdp, eng_for_ara target2); 34e1e823-98a8-45e5-aa15-d80aa1c1c8f2 (voice bedd6226, eng_for_tel target1); 36174ddc-ff89-431e-9bc1-4903e468d4ae (voice azure_en-GB-SoniaNeural, eng_for_ara target1); 3e3bb829-f870-445b-b5e5-0692329f2bbc (voice azure_en-GB-RyanNeural, eng_for_pan target2); 52334faf-6751-475d-a6ba-5d46f1254f9c (voice azure_en-GB-SoniaNeural, eng_for_pan target1); 972d0ad8-fa97-4b43-81a6-8880dab5a166 (voice azure_en-GB-RyanNeural, eng_for_deu target2); a5fdd667-4c4e-449d-8036-6992483f7295 (voice azure_en-GB-SoniaNeural, eng_for_deu target1); a930a72d-8c55-4609-a5d4-a62dfaba3396 (voice bedd6226, eng_for_pan target1); b1ff7f8f-8e00-4795-8f62-f03186048dd5 (voice gfzdpspr5fdp, eng_for_pan target2); d138fadf-32cf-4a41-ba20-83ce407d702a (voice bedd6226, eng_for_ara target1); ec66484d-f611-4df9-8076-8dea04a3e152 (voice gfzdpspr5fdp, eng_for_sin target2); f477d5a7-2d6c-4af3-a649-2d0629cf81a3 (voice azure_en-GB-RyanNeural, eng_for_ara target2); f752106f-bac3-40ac-948e-2a94e90270dc (voice azure_en-GB-SoniaNeural, eng_for_sin target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "28006401-663c-4167-9751-b4049a383c59",
+   "f439754c-2800-40b3-8a5c-28b0bed8e6ff",
+   "7409ecd9-bbe4-4ef3-98ba-04bb08c56c13",
+   "fc9a53e6-7785-4618-a6f4-72e15a2aa686",
+   "1eec811a-e5d3-4a9e-841d-f85837763fd2",
+   "0128cb64-9862-43f6-8b29-b91ac991b5bf",
+   "0986c7a9-5aa3-4113-b8e4-db0688bcd167",
+   "0be7ddb9-d6e1-4af3-97a5-66ea0212383d",
+   "34e1e823-98a8-45e5-aa15-d80aa1c1c8f2",
+   "36174ddc-ff89-431e-9bc1-4903e468d4ae",
+   "3e3bb829-f870-445b-b5e5-0692329f2bbc",
+   "52334faf-6751-475d-a6ba-5d46f1254f9c",
+   "972d0ad8-fa97-4b43-81a6-8880dab5a166",
+   "a5fdd667-4c4e-449d-8036-6992483f7295",
+   "a930a72d-8c55-4609-a5d4-a62dfaba3396",
+   "b1ff7f8f-8e00-4795-8f62-f03186048dd5",
+   "d138fadf-32cf-4a41-ba20-83ce407d702a",
+   "ec66484d-f611-4df9-8076-8dea04a3e152",
+   "f477d5a7-2d6c-4af3-a649-2d0629cf81a3",
+   "f752106f-bac3-40ac-948e-2a94e90270dc",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "28006401-663c-4167-9751-b4049a383c59",
+   "f439754c-2800-40b3-8a5c-28b0bed8e6ff",
+   "7409ecd9-bbe4-4ef3-98ba-04bb08c56c13",
+   "fc9a53e6-7785-4618-a6f4-72e15a2aa686",
+   "1eec811a-e5d3-4a9e-841d-f85837763fd2",
+   "0128cb64-9862-43f6-8b29-b91ac991b5bf",
+   "0986c7a9-5aa3-4113-b8e4-db0688bcd167",
+   "0be7ddb9-d6e1-4af3-97a5-66ea0212383d",
+   "34e1e823-98a8-45e5-aa15-d80aa1c1c8f2",
+   "36174ddc-ff89-431e-9bc1-4903e468d4ae",
+   "3e3bb829-f870-445b-b5e5-0692329f2bbc",
+   "52334faf-6751-475d-a6ba-5d46f1254f9c",
+   "972d0ad8-fa97-4b43-81a6-8880dab5a166",
+   "a5fdd667-4c4e-449d-8036-6992483f7295",
+   "a930a72d-8c55-4609-a5d4-a62dfaba3396",
+   "b1ff7f8f-8e00-4795-8f62-f03186048dd5",
+   "d138fadf-32cf-4a41-ba20-83ce407d702a",
+   "ec66484d-f611-4df9-8076-8dea04a3e152",
+   "f477d5a7-2d6c-4af3-a649-2d0629cf81a3",
+   "f752106f-bac3-40ac-948e-2a94e90270dc"
+  ]
+ },
+ "known|நான் உங்களுடன் ஆங்கிலம் பேசுவதை ரசிக்கிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I enjoy speaking English with you": {
+  "ok": true,
+  "source": "library",
+  "audioId": "0d05a2a2-1d0e-4820-97c0-f6d53069d5f1",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|I enjoy speaking English with you": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I enjoy speaking English with you\" is already recorded in eng — 10 clip(s): 14860ba3-1ad3-471a-b26b-aea8e4852336 (voice azure_en-GB-RyanNeural, eng_for_hin target2); 5662382d-0b9f-4ca6-9ce0-f80933b15458 (voice azure_en-GB-SoniaNeural, eng_for_hin target1); 0d05a2a2-1d0e-4820-97c0-f6d53069d5f1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, eng_for_hin target1); ab7e96a5-6408-4522-8573-8b3857592ecb (voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2, eng_for_hin target2); 095c24e9-6cd0-4712-9bdf-2ff68b4d8572 (voice xai_bedd6226, eng_for_hin target1); 63adabd6-64ee-4955-a5d7-0d8dd0ace82c (voice gfzdpspr5fdp, eng_for_hin target2); 5580dcd2-a890-40f5-8411-cd7e266418a3 (voice gfzdpspr5fdp, eng_for_pan target2); 6d857d22-2887-4035-8716-1ac0bbb86050 (voice bedd6226, eng_for_pan target1); 9198c710-f053-48c9-bef0-ffbae73e17bf (voice azure_en-GB-RyanNeural, eng_for_pan target2); 91bf5cdf-76f6-4111-b1e1-527989c30359 (voice azure_en-GB-SoniaNeural, eng_for_pan target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "14860ba3-1ad3-471a-b26b-aea8e4852336",
+   "5662382d-0b9f-4ca6-9ce0-f80933b15458",
+   "0d05a2a2-1d0e-4820-97c0-f6d53069d5f1",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "ab7e96a5-6408-4522-8573-8b3857592ecb",
+   "8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+   "095c24e9-6cd0-4712-9bdf-2ff68b4d8572",
+   "63adabd6-64ee-4955-a5d7-0d8dd0ace82c",
+   "5580dcd2-a890-40f5-8411-cd7e266418a3",
+   "6d857d22-2887-4035-8716-1ac0bbb86050",
+   "9198c710-f053-48c9-bef0-ffbae73e17bf",
+   "91bf5cdf-76f6-4111-b1e1-527989c30359",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "14860ba3-1ad3-471a-b26b-aea8e4852336",
+   "5662382d-0b9f-4ca6-9ce0-f80933b15458",
+   "0d05a2a2-1d0e-4820-97c0-f6d53069d5f1",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "ab7e96a5-6408-4522-8573-8b3857592ecb",
+   "8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+   "095c24e9-6cd0-4712-9bdf-2ff68b4d8572",
+   "63adabd6-64ee-4955-a5d7-0d8dd0ace82c",
+   "5580dcd2-a890-40f5-8411-cd7e266418a3",
+   "6d857d22-2887-4035-8716-1ac0bbb86050",
+   "9198c710-f053-48c9-bef0-ffbae73e17bf",
+   "91bf5cdf-76f6-4111-b1e1-527989c30359"
+  ]
+ },
+ "known|நான் என்னுடைய நண்பர்களுடன் கற்பதை ரசிக்கிறேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I enjoy learning with my friends": {
+  "ok": true,
+  "source": "library",
+  "audioId": "7b739c2a-5c7b-4f88-b0c7-0dd53eda1c71",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|I enjoy learning with my friends": {
+  "ok": true,
+  "source": "library",
+  "audioId": "24bff0c1-a149-4707-8db3-c5faaf2a2d3d",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|நான் கடந்த வாரம் கற்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to learn last week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to learn last week\" is already recorded in eng — 1 clip(s): 3032d8c8-d57d-46c7-9a8b-aff4fe0c4068 (voice azure_en-GB-SoniaNeural, hye_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "3032d8c8-d57d-46c7-9a8b-aff4fe0c4068",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "3032d8c8-d57d-46c7-9a8b-aff4fe0c4068"
+  ]
+ },
+ "target2|I wanted to learn last week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to learn last week\" is already recorded in eng — 1 clip(s): 3032d8c8-d57d-46c7-9a8b-aff4fe0c4068 (voice azure_en-GB-SoniaNeural, hye_for_eng known). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "3032d8c8-d57d-46c7-9a8b-aff4fe0c4068",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "3032d8c8-d57d-46c7-9a8b-aff4fe0c4068"
+  ]
+ },
+ "known|நீங்கள் கடந்த வாரம் பேச விரும்பினீர்கள்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|you wanted to speak last week": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 29,
+  "status": 200
+ },
+ "target2|you wanted to speak last week": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 29,
+  "status": 200
+ },
+ "known|நான் கடந்த வாரம் என்னுடைய நண்பர்களைச் சந்திக்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to meet my friends last week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to meet my friends last week\" is already recorded in eng — 9 clip(s): 5bcc55ce-9541-439b-9746-43498fdd90e6 (voice azure_en-GB-RyanNeural, eng_for_pan target2); 18f81e98-73ba-44e7-8344-35012e715bb2 (voice azure_en-GB-SoniaNeural, eng_for_ara target1); 277314ff-da78-4258-87f4-2d52c9753d56 (voice bedd6226, eng_for_ara target1); c922f058-83f1-4ab9-bcda-8560d4573758 (voice gfzdpspr5fdp, eng_for_pan target2); 46b49073-f53f-4e80-8d2c-5f879171a033 (voice azure_en-GB-SoniaNeural, heb_for_eng known); 726229e8-bfae-4f76-a6a2-ae475849bd6a (voice azure_en-GB-SoniaNeural, eng_for_pan target1); 727566e4-5246-4405-ba90-c8f538a071d0 (voice azure_en-GB-RyanNeural, eng_for_ara target2); e169b48b-b534-48ae-905d-5456e8ee9ad0 (voice bedd6226, eng_for_pan target1); ffb5988b-9a6a-45af-bac3-433ce8d456e0 (voice gfzdpspr5fdp, eng_for_ara target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "5bcc55ce-9541-439b-9746-43498fdd90e6",
+   "18f81e98-73ba-44e7-8344-35012e715bb2",
+   "277314ff-da78-4258-87f4-2d52c9753d56",
+   "c922f058-83f1-4ab9-bcda-8560d4573758",
+   "46b49073-f53f-4e80-8d2c-5f879171a033",
+   "726229e8-bfae-4f76-a6a2-ae475849bd6a",
+   "727566e4-5246-4405-ba90-c8f538a071d0",
+   "e169b48b-b534-48ae-905d-5456e8ee9ad0",
+   "ffb5988b-9a6a-45af-bac3-433ce8d456e0",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "5bcc55ce-9541-439b-9746-43498fdd90e6",
+   "18f81e98-73ba-44e7-8344-35012e715bb2",
+   "277314ff-da78-4258-87f4-2d52c9753d56",
+   "c922f058-83f1-4ab9-bcda-8560d4573758",
+   "46b49073-f53f-4e80-8d2c-5f879171a033",
+   "726229e8-bfae-4f76-a6a2-ae475849bd6a",
+   "727566e4-5246-4405-ba90-c8f538a071d0",
+   "e169b48b-b534-48ae-905d-5456e8ee9ad0",
+   "ffb5988b-9a6a-45af-bac3-433ce8d456e0"
+  ]
+ },
+ "target2|I wanted to meet my friends last week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to meet my friends last week\" is already recorded in eng — 9 clip(s): 5bcc55ce-9541-439b-9746-43498fdd90e6 (voice azure_en-GB-RyanNeural, eng_for_pan target2); 18f81e98-73ba-44e7-8344-35012e715bb2 (voice azure_en-GB-SoniaNeural, eng_for_ara target1); 277314ff-da78-4258-87f4-2d52c9753d56 (voice bedd6226, eng_for_ara target1); c922f058-83f1-4ab9-bcda-8560d4573758 (voice gfzdpspr5fdp, eng_for_pan target2); 46b49073-f53f-4e80-8d2c-5f879171a033 (voice azure_en-GB-SoniaNeural, heb_for_eng known); 726229e8-bfae-4f76-a6a2-ae475849bd6a (voice azure_en-GB-SoniaNeural, eng_for_pan target1); 727566e4-5246-4405-ba90-c8f538a071d0 (voice azure_en-GB-RyanNeural, eng_for_ara target2); e169b48b-b534-48ae-905d-5456e8ee9ad0 (voice bedd6226, eng_for_pan target1); ffb5988b-9a6a-45af-bac3-433ce8d456e0 (voice gfzdpspr5fdp, eng_for_ara target2). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "5bcc55ce-9541-439b-9746-43498fdd90e6",
+   "18f81e98-73ba-44e7-8344-35012e715bb2",
+   "277314ff-da78-4258-87f4-2d52c9753d56",
+   "c922f058-83f1-4ab9-bcda-8560d4573758",
+   "46b49073-f53f-4e80-8d2c-5f879171a033",
+   "726229e8-bfae-4f76-a6a2-ae475849bd6a",
+   "727566e4-5246-4405-ba90-c8f538a071d0",
+   "e169b48b-b534-48ae-905d-5456e8ee9ad0",
+   "ffb5988b-9a6a-45af-bac3-433ce8d456e0",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "5bcc55ce-9541-439b-9746-43498fdd90e6",
+   "18f81e98-73ba-44e7-8344-35012e715bb2",
+   "277314ff-da78-4258-87f4-2d52c9753d56",
+   "c922f058-83f1-4ab9-bcda-8560d4573758",
+   "46b49073-f53f-4e80-8d2c-5f879171a033",
+   "726229e8-bfae-4f76-a6a2-ae475849bd6a",
+   "727566e4-5246-4405-ba90-c8f538a071d0",
+   "e169b48b-b534-48ae-905d-5456e8ee9ad0",
+   "ffb5988b-9a6a-45af-bac3-433ce8d456e0"
+  ]
+ },
+ "known|நான் கடந்த வாரம் ஆங்கிலம் கற்க விரும்பினேன்": {
+  "ok": false,
+  "code": "VOICE_NOT_CAST",
+  "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "status": 500
+ },
+ "target1|I wanted to learn English last week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to learn English last week\" is already recorded in eng — 8 clip(s): 55046eff-bf04-4671-ba6c-d12f04f1fc4c (voice azure_en-GB-RyanNeural, eng_for_hin target2); 998383b4-07c9-4a21-a5fd-867682635685 (voice azure_en-GB-SoniaNeural, eng_for_hin target1); a2312006-2cb1-46fd-9290-46b18c1cd816 (voice bedd6226, eng_for_hin target1); 88aa0fb8-a230-4044-9d9d-a65ed6c48865 (voice gfzdpspr5fdp, eng_for_hin target2); 020a89dd-bcec-41a6-85be-f88242dbeb36 (voice azure_en-GB-SoniaNeural, eng_for_guj target1); 3f8fc021-cc6a-44cb-a508-4aa342eac69a (voice gfzdpspr5fdp, eng_for_guj target2); 78b5f243-522c-46d2-b9f7-ea1bbe30e199 (voice azure_en-GB-RyanNeural, eng_for_guj target2); eab85354-ba61-4345-9aa1-54e9e19e89d0 (voice bedd6226, eng_for_guj target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_71a7ad14-091c-4e8e-a314-022ece01c121 needs a re-record grant for eng_for_tam target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "55046eff-bf04-4671-ba6c-d12f04f1fc4c",
+   "998383b4-07c9-4a21-a5fd-867682635685",
+   "a2312006-2cb1-46fd-9290-46b18c1cd816",
+   "88aa0fb8-a230-4044-9d9d-a65ed6c48865",
+   "020a89dd-bcec-41a6-85be-f88242dbeb36",
+   "3f8fc021-cc6a-44cb-a508-4aa342eac69a",
+   "78b5f243-522c-46d2-b9f7-ea1bbe30e199",
+   "eab85354-ba61-4345-9aa1-54e9e19e89d0",
+   "71a7ad14-091c-4e8e-a314-022ece01c121",
+   "55046eff-bf04-4671-ba6c-d12f04f1fc4c",
+   "998383b4-07c9-4a21-a5fd-867682635685",
+   "a2312006-2cb1-46fd-9290-46b18c1cd816",
+   "88aa0fb8-a230-4044-9d9d-a65ed6c48865",
+   "020a89dd-bcec-41a6-85be-f88242dbeb36",
+   "3f8fc021-cc6a-44cb-a508-4aa342eac69a",
+   "78b5f243-522c-46d2-b9f7-ea1bbe30e199",
+   "eab85354-ba61-4345-9aa1-54e9e19e89d0"
+  ]
+ },
+ "target2|I wanted to learn English last week": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I wanted to learn English last week\" is already recorded in eng — 8 clip(s): 55046eff-bf04-4671-ba6c-d12f04f1fc4c (voice azure_en-GB-RyanNeural, eng_for_hin target2); 998383b4-07c9-4a21-a5fd-867682635685 (voice azure_en-GB-SoniaNeural, eng_for_hin target1); a2312006-2cb1-46fd-9290-46b18c1cd816 (voice bedd6226, eng_for_hin target1); 88aa0fb8-a230-4044-9d9d-a65ed6c48865 (voice gfzdpspr5fdp, eng_for_hin target2); 020a89dd-bcec-41a6-85be-f88242dbeb36 (voice azure_en-GB-SoniaNeural, eng_for_guj target1); 3f8fc021-cc6a-44cb-a508-4aa342eac69a (voice gfzdpspr5fdp, eng_for_guj target2); 78b5f243-522c-46d2-b9f7-ea1bbe30e199 (voice azure_en-GB-RyanNeural, eng_for_guj target2); eab85354-ba61-4345-9aa1-54e9e19e89d0 (voice bedd6226, eng_for_guj target1). Recordings are per language: link an existing clip (POST /api/production/eng_for_tam/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for eng_for_tam target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "55046eff-bf04-4671-ba6c-d12f04f1fc4c",
+   "998383b4-07c9-4a21-a5fd-867682635685",
+   "a2312006-2cb1-46fd-9290-46b18c1cd816",
+   "88aa0fb8-a230-4044-9d9d-a65ed6c48865",
+   "020a89dd-bcec-41a6-85be-f88242dbeb36",
+   "3f8fc021-cc6a-44cb-a508-4aa342eac69a",
+   "78b5f243-522c-46d2-b9f7-ea1bbe30e199",
+   "eab85354-ba61-4345-9aa1-54e9e19e89d0",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "55046eff-bf04-4671-ba6c-d12f04f1fc4c",
+   "998383b4-07c9-4a21-a5fd-867682635685",
+   "a2312006-2cb1-46fd-9290-46b18c1cd816",
+   "88aa0fb8-a230-4044-9d9d-a65ed6c48865",
+   "020a89dd-bcec-41a6-85be-f88242dbeb36",
+   "3f8fc021-cc6a-44cb-a508-4aa342eac69a",
+   "78b5f243-522c-46d2-b9f7-ea1bbe30e199",
+   "eab85354-ba61-4345-9aa1-54e9e19e89d0"
+  ]
+ },
+ "known|நான் கடந்த வாரம் என்னுடைய நண்பர்களுடன் பேச விரும்பினேன்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|I wanted to speak with my friends last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|I wanted to speak with my friends last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|நான் கடந்த வாரம் பயிற்சி செய்யத் தொடங்கினேன்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|I started to practise last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|I started to practise last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|கடந்த வாரம் நான் நன்றாக உணரத் தொடங்கினேன்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|I was starting to feel better last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|I was starting to feel better last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|நான் கடந்த வாரம் ஆங்கிலம் கற்கத் தொடங்கினேன்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|I started to learn English last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|I started to learn English last week": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|நான் முன்பு அறிந்த யாரோ கொஞ்சம் போல": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|a little like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|a little like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|நான் முன்பு அறிந்த யாரோ கொஞ்சம் போல நீங்கள் இருக்கிறீர்கள்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|you're a little like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|you're a little like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|ஏனென்றால் நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|because you're like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|because you're like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள் என்று நான் நினைக்கிறேன்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|I think you're like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|I think you're like someone I used to know": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|நான் முன்பு நன்றாக அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|you're like someone I used to know very well": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|you're like someone I used to know very well": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|that's very kind of you and I'm": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|that's very kind of you and I'm": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|நான் நினைக்கிறேன் இது மிகவும் கருணையானது நீங்கள் மற்றும் நான் நன்றியுள்ளவன்": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|I think that's very kind of you and I'm grateful": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|I think that's very kind of you and I'm grateful": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|today that's very kind of you and I'm grateful": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|today that's very kind of you and I'm grateful": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-item5-broken-english: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ }
+}

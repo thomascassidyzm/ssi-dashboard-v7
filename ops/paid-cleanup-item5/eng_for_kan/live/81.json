@@ -1,0 +1,649 @@
+{
+ "seed": 81,
+ "seed_pair": {
+  "known": "ನಿಮಗೆ ಯಾವಾಗ ಶುರು ಮಾಡಬೇಕು?",
+  "target": "When do you want to start?"
+ },
+ "legos": {
+  "S0081L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0081L01",
+    "type": "M",
+    "known_text": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+    "target_text": "do you want to start",
+    "components": [
+     {
+      "known": "ನಿಮಗೆ",
+      "target": "you"
+     },
+     {
+      "known": "ಶುರು ಮಾಡಬೇಕು",
+      "target": "do you want to start"
+     }
+    ],
+    "seed_number": 81
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kan:S0081L01C01",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "ನಿಮಗೆ",
+     "target_text": "you",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T21:53:02.572441+00:00",
+     "created_at": "2026-07-01T11:22:57.757371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6c42e29f-d360-424b-a8b0-400616767884",
+     "target1_audio_id": "d02f92d5-5c4a-42bd-8aba-aa341ae0c14e",
+     "target2_audio_id": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+     "qa_checked": null,
+     "target1_duration_ms": 504,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "91c1444a-7e9b-4db8-b97e-8d6c846bff9a",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮ್ಮನ್ನ",
+       "legoId": "S0030L02",
+       "target": "you",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "6bbfcdaa-60ab-4748-948e-a31ed0e1c0ff",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01B01",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?",
+     "target_text": "do you want to start?",
+     "word_count": 20,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-10-28T23:20:34.17997+00:00",
+     "created_at": "2026-07-01T11:22:57.757371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "55244b84-4399-44dd-b995-ffc3fc258c23",
+     "target1_audio_id": "3681d20f-8648-4d07-8d7d-b80278becc9a",
+     "target2_audio_id": "03aec574-fa6f-42de-a76a-cc75610446d1",
+     "qa_checked": null,
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": "do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "eaaccf41-e0ca-4247-8e8f-7f8a29676df4",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01B02",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?",
+     "target_text": "do you want to start in English?",
+     "word_count": 31,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 165,
+     "updated_at": "2026-08-02T21:58:21.000223+00:00",
+     "created_at": "2026-07-01T11:22:57.757371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8b19ddd8-c6b6-4738-a4e3-df689bb43870",
+     "target1_audio_id": "487f1bac-8baa-45ab-a7a3-56da2632990b",
+     "target2_audio_id": "e2003fa6-c1a4-4ca1-9cb4-b55e71affcb0",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": "do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ",
+       "legoId": "S0004L03",
+       "target": " in English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01B03",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ಕಳೆದ ವಾರ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು?",
+     "target_text": "do you want to start last week?",
+     "word_count": 30,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 166,
+     "updated_at": "2026-08-02T21:58:21.000223+00:00",
+     "created_at": "2026-07-01T11:22:57.757371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "459b0460-dab5-4d88-acb5-891982709c94",
+     "target1_audio_id": "486b6a1b-5292-4e0b-94e4-6819c3b0a69a",
+     "target2_audio_id": "a8c21225-a9d5-44ac-bfa2-be7b08fab80e",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": "do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "ಕಳೆದ ವಾರ",
+       "legoId": "S0052L01",
+       "target": " last week",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01B04",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "ಆದರೆ ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+     "target_text": "but do you want to start",
+     "word_count": 24,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 137,
+     "updated_at": "2026-07-31T03:29:23.072646+00:00",
+     "created_at": "2026-07-01T11:22:57.757371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a03dd6a8-9375-4a66-b831-ae99eb0d3749",
+     "target1_audio_id": "e72ba29e-1ef4-45d5-a16b-2292ec36ea48",
+     "target2_audio_id": "e89ab199-cafd-4bdb-8799-2df11536e7f5",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಆದರೆ",
+       "legoId": "S0019L01",
+       "target": "but",
+       "isGhost": false
+      },
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": " do you want to start",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01U01",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ನಿಮಗೆ ಈಗ ಶುರು ಮಾಡಬೇಕಾ?",
+     "target_text": "do you want to start now?",
+     "word_count": 24,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T14:21:55.755Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 138,
+     "updated_at": "2026-07-31T03:29:23.159986+00:00",
+     "created_at": "2026-07-03T14:21:55.794193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1e908dd5-f573-4476-9666-e8f6a5fbcd54",
+     "target1_audio_id": "26c752bc-6897-44a2-a707-8bb4b0aac4cf",
+     "target2_audio_id": "ab0f41c9-1c6d-4592-a40e-80d0ca8c1a2a",
+     "qa_checked": null,
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": "do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "ಈಗ",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01U02",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "ನಿಮಗೆ ಇವತ್ತು ಶುರು ಮಾಡಬೇಕಾ?",
+     "target_text": "do you want to start today?",
+     "word_count": 26,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T14:21:55.755Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 138,
+     "updated_at": "2026-07-31T03:29:23.203202+00:00",
+     "created_at": "2026-07-03T14:21:55.794193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f004e11c-40ba-49c0-8b83-b712cd8d4994",
+     "target1_audio_id": "6b350e3b-1943-43c6-b143-8e2d1514bdf2",
+     "target2_audio_id": "a6475691-53ff-48c2-9262-7537a2a48536",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": "do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "ಇವತ್ತು",
+       "legoId": "S0007L01",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01U03",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "ನಿಮಗೆ ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋಕೆ ಶುರು ಮಾಡಬೇಕಾ?",
+     "target_text": "do you want to start learning English?",
+     "word_count": 37,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T14:21:55.755Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 139,
+     "updated_at": "2026-07-31T03:29:23.307789+00:00",
+     "created_at": "2026-07-03T14:21:55.794193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "b056feac-fb13-4311-b405-de91db005340",
+     "target1_audio_id": "087a072b-1a24-4826-9e22-346c587e1670",
+     "target2_audio_id": "c94c5cc6-8181-43db-a379-745d7472e856",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 2136,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": "do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋದು",
+       "legoId": "S0064L01",
+       "target": " learning English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01U04",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕಾ ಇಲ್ವಾ?",
+     "target_text": "do you want to start or not?",
+     "word_count": 27,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T14:21:55.755Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 138,
+     "updated_at": "2026-07-31T03:29:23.385516+00:00",
+     "created_at": "2026-07-03T14:21:55.794193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3dedeae6-251d-44e0-bd28-a46eab31f780",
+     "target1_audio_id": "854f0bad-ebab-452e-9532-d8a99a1137c3",
+     "target2_audio_id": "4d8063a0-f805-41f9-8fa3-81e8146f897a",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1896,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": "do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "ಅಥವಾ",
+       "legoId": "S0044L01",
+       "target": " or",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0081L01U05",
+     "course_code": "eng_for_kan",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "ನಿಮಗೆ ಯಾವಾಗ ಶುರು ಮಾಡಬೇಕು?",
+     "target_text": "when do you want to start?",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-03T14:21:55.755Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 139,
+     "updated_at": "2026-07-31T03:29:23.522263+00:00",
+     "created_at": "2026-07-03T14:21:55.794193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1c12bf13-0a31-4de2-85e0-2973ac0f7f78",
+     "target1_audio_id": "ea63648f-4770-4f00-aba2-c811e69c4a41",
+     "target2_audio_id": "a4ed2cdc-53cd-4c86-824f-46cdeb9cd37f",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1416,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಯಾವಾಗ",
+       "legoId": "S0079L01",
+       "target": "when",
+       "isGhost": false
+      },
+      {
+       "known": "ನಿಮಗೆ ಶುರು ಮಾಡಬೇಕು",
+       "legoId": "S0081L01",
+       "target": " do you want to start",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

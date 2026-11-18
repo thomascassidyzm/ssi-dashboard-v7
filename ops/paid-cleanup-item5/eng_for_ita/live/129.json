@@ -1,0 +1,1410 @@
+{
+ "seed": 129,
+ "seed_pair": {
+  "known": "Sono così contento che tu stia andando così bene.",
+  "target": "I'm so happy that you're doing so well."
+ },
+ "legos": {
+  "S0129L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0129L01",
+    "type": "M",
+    "known_text": "sono così contento",
+    "target_text": "I'm so happy",
+    "components": [
+     {
+      "known": "sono",
+      "target": "I'm"
+     },
+     {
+      "known": "così contento",
+      "target": "so happy"
+     }
+    ],
+    "seed_number": 129
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_ita:S0129L01C01",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "sono",
+     "target_text": "I'm",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-12T21:56:42.061377+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "89042508-78d2-48bb-abd0-a19861e63c45",
+     "target1_audio_id": "cff55704-7d8d-47ee-885c-0b28988bcff4",
+     "target2_audio_id": "ebc84298-a90f-4b49-9b52-db32ca20bbec",
+     "qa_checked": null,
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "15768751-077e-4f19-8479-fbb20ccdad8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01C02",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "così contento",
+     "target_text": "so happy",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-28T17:29:27.127458+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "074710fc-c9c3-446c-9852-af304ff1694a",
+     "target1_audio_id": "238f4d1b-de7b-4f92-8015-c98d078160e8",
+     "target2_audio_id": "da6edd1c-dfdf-410b-8f25-53271a5c0f71",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "quindi",
+       "legoId": "S0056L01",
+       "target": "so",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " happy",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a1e3ec0b-4f30-41ac-8f12-e3159dee565d",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01B01",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "sono così contento",
+     "target_text": "I'm so happy",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T17:29:26.945194+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7511dde1-24b5-49b7-a86e-8eb0b3db6e0d",
+     "target1_audio_id": "8f5cb908-fa89-4e29-8166-9016c8f34eeb",
+     "target2_audio_id": "f8b61a1b-8b8b-4b3b-9669-ec0253b4adbf",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a1e3ec0b-4f30-41ac-8f12-e3159dee565d",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01B02",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "sono così contento che sia una buona idea",
+     "target_text": "I'm so happy that's a good idea",
+     "word_count": 31,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:37:01.343893+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2f24944c-38fe-44b3-a2fc-fb4fcb035c04",
+     "target1_audio_id": "9c004949-5920-4b2d-a1df-5abca5771b0e",
+     "target2_audio_id": "b4d70d93-156c-4293-9039-5bf6d47819bb",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "che sia una buona idea",
+       "legoId": "S0123L01",
+       "target": " that's a good idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01B03",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "sono così contento della tua idea",
+     "target_text": "I'm so happy about your idea",
+     "word_count": 28,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:39:18.525089+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "dbd9d0cf-9cc2-40ed-8322-9785f3a7751b",
+     "target1_audio_id": "78a22c74-8cb7-4a1b-9be9-4ff240821e75",
+     "target2_audio_id": "91db70ee-b069-4b35-8a13-25b21418ecfd",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " about",
+       "isGhost": true
+      },
+      {
+       "known": "la tua idea",
+       "legoId": "S0125L02",
+       "target": " your idea",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01U01",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ecco perché sono così contento di come sta andando",
+     "target_text": "that is why I'm so happy about how it's going",
+     "word_count": 45,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.468Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:41:25.123003+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "4eb6ad3d-fc67-40ec-b054-fe36cc0ba61a",
+     "target1_audio_id": "fe232424-9e77-41f6-98de-b668b592ba9e",
+     "target2_audio_id": "d59ad318-dca8-41cc-93d8-28d14c4ad7f9",
+     "qa_checked": null,
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ecco perché",
+       "legoId": "S0105L01",
+       "target": "that is why",
+       "isGhost": false
+      },
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": " I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "di come sta andando",
+       "legoId": "S0122L04",
+       "target": " about how it's going",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01U02",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "sono così contento che tu sia come qualcuno che conoscevo una volta",
+     "target_text": "I'm so happy that you're like someone I used to know",
+     "word_count": 52,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.468Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:40:27.043046+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "5f57ff59-0fcb-43fc-a90c-ce0d1772e4dc",
+     "target1_audio_id": "05af9a11-ed77-4bef-ba96-0dd7ea07d396",
+     "target2_audio_id": "47662595-89a3-448a-8e09-b639010b4cc6",
+     "qa_checked": null,
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "sei come qualcuno",
+       "legoId": "S0128L01",
+       "target": " you're like someone",
+       "isGhost": false
+      },
+      {
+       "known": "conoscevo una volta",
+       "legoId": "S0128L02",
+       "target": " I used to know",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01U03",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "sono così contento perché questo lavoro sta cambiando la forma del mio cervello",
+     "target_text": "I'm so happy because this work is changing the shape of my brain",
+     "word_count": 64,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.468Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:36:43.342782+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "880cc10e-0c28-4276-99d0-ddf012b5874f",
+     "target1_audio_id": "c8f9b6a0-f16d-4c6d-b9ca-c02659880a81",
+     "target2_audio_id": "8c8166cf-ca9d-482c-a2b8-6ba63ae8d1b0",
+     "qa_checked": null,
+     "target1_duration_ms": 4776,
+     "target2_duration_ms": 4824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " because",
+       "isGhost": true
+      },
+      {
+       "known": "questo lavoro",
+       "legoId": "S0126L01",
+       "target": " this work",
+       "isGhost": false
+      },
+      {
+       "known": "sta cambiando",
+       "legoId": "S0126L02",
+       "target": " is changing",
+       "isGhost": false
+      },
+      {
+       "known": "la forma del mio cervello",
+       "legoId": "S0126L03",
+       "target": " the shape of my brain",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01U04",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "sono così contento che stia iniziando a sembrare più facile",
+     "target_text": "I'm so happy that it's starting to feel easier",
+     "word_count": 46,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.468Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:39:51.217835+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "78d6d761-5185-4627-9de1-a874fdfd1bb8",
+     "target1_audio_id": "5f936950-906a-4caf-bc35-30a0266c026e",
+     "target2_audio_id": "ff9dac82-3b82-45da-97d6-1a1398c1648e",
+     "qa_checked": null,
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "sta iniziando a sembrare",
+       "legoId": "S0122L01",
+       "target": " it's starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "più facile",
+       "legoId": "S0122L02",
+       "target": " easier",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L01U05",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "sono così contento che stiamo facendo meglio di ieri",
+     "target_text": "I'm so happy we're doing better than yesterday",
+     "word_count": 46,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.468Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:39:04.724551+00:00",
+     "created_at": "2026-02-25T01:36:03.549193+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9139396c-296b-4334-9555-99016411453f",
+     "target1_audio_id": "47d3e2ff-f6ea-437a-915c-405e3de6591f",
+     "target2_audio_id": "23dc741f-f03f-444e-bf99-cc35e9128b73",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " we're",
+       "isGhost": true
+      },
+      {
+       "known": "andando meglio",
+       "legoId": "S0117L02",
+       "target": " doing better",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " than",
+       "isGhost": true
+      },
+      {
+       "known": "ieri",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0129L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0129L02",
+    "type": "M",
+    "known_text": "che tu stia andando così bene",
+    "target_text": "that you're doing so well",
+    "components": [
+     {
+      "known": "che tu stia andando",
+      "target": "that you're doing"
+     },
+     {
+      "known": "così bene",
+      "target": "so well"
+     }
+    ],
+    "seed_number": 129
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_ita:S0129L02C01",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "che tu stia andando",
+     "target_text": "that you're doing",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-12T10:11:45.994895+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9126bca2-8e2a-4c89-b8b6-26b4e744678a",
+     "target1_audio_id": "048d7b4e-6f67-4c4b-8ee1-f0424cd13d6c",
+     "target2_audio_id": "e60940ba-d802-4f3e-80d6-bb3de53712a5",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you're",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " doing",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a1e3ec0b-4f30-41ac-8f12-e3159dee565d",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02C02",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "così bene",
+     "target_text": "so well",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-12T17:01:41.854707+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9a171170-f50b-4301-a175-5931fcbd023e",
+     "target1_audio_id": "d07cfbe7-c3c1-4730-aec0-c3762460a860",
+     "target2_audio_id": "5d6f870c-3784-4612-8a7c-96087e060c3d",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "quindi",
+       "legoId": "S0056L01",
+       "target": "so",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " well",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "15768751-077e-4f19-8479-fbb20ccdad8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02B01",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "che tu stia andando così bene",
+     "target_text": "that you're doing so well",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:48.047257+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5af6eb64-58e2-4a27-aa86-09267ad8e215",
+     "target1_audio_id": "60b2a526-9c67-49b1-8705-bb50828be487",
+     "target2_audio_id": "b8edea82-59eb-4edb-a409-21cf89351a53",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": "that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02B02",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "sono così contento che tu stia andando così bene",
+     "target_text": "I'm so happy that you're doing so well",
+     "word_count": 38,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T17:29:26.938731+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7fad59a9-a303-4c9c-97c2-e7846889f2c2",
+     "target1_audio_id": "f3f2a0aa-b5a8-426a-a59a-ec1ec0002f34",
+     "target2_audio_id": "02ed50f9-bf9a-4946-8e8f-905ce4f6b4a9",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "15768751-077e-4f19-8479-fbb20ccdad8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02B03",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "pensavo che tu stessi andando così bene",
+     "target_text": "I thought that you're doing so well",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:52.284483+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c95748af-4532-4bef-8ba0-53fd74245a02",
+     "target1_audio_id": "ebcbab6c-dfdc-447f-b428-f77eb80ca9d9",
+     "target2_audio_id": "4f1412a6-a9b1-4797-a9f0-840b70cbe303",
+     "qa_checked": null,
+     "target1_duration_ms": 2688,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "pensavo",
+       "legoId": "S0124L01",
+       "target": "I thought",
+       "isGhost": false
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02B04",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "credo che tu stia andando così bene",
+     "target_text": "I believe that you're doing so well",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:36:14.213303+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "655aed70-ec77-44bd-9ff0-e14364073238",
+     "target1_audio_id": "5061e53c-e791-46f6-b6dc-7f426801da89",
+     "target2_audio_id": "35a40799-ed68-43c2-9f4e-9f4222311766",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "credo",
+       "legoId": "S0125L01",
+       "target": "I believe",
+       "isGhost": false
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02U01",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "ecco perché sono entusiasta che tu stia andando così bene",
+     "target_text": "that is why I'm excited that you're doing so well",
+     "word_count": 49,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.586Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:41:36.15097+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c4a27de5-9612-4c91-bb20-1f4cd499bbba",
+     "target1_audio_id": "b7820ac5-4649-45a3-8eb0-8bc9bd9e481b",
+     "target2_audio_id": "210bf818-f05c-42d1-94fc-d75a1dfe06ef",
+     "qa_checked": null,
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ecco perché",
+       "legoId": "S0105L01",
+       "target": "that is why",
+       "isGhost": false
+      },
+      {
+       "known": "sono entusiasta",
+       "legoId": "S0122L03",
+       "target": " I'm excited",
+       "isGhost": false
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02U02",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "pensavo che tu stessi andando così bene l'ultima volta che abbiamo parlato",
+     "target_text": "I thought that you're doing so well last time we talked to each other",
+     "word_count": 69,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.586Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:40:10.479916+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1ceae6e3-344e-4055-855b-7dceccd8a38e",
+     "target1_audio_id": "c3f9cad8-1cf9-4b81-a1f7-d059f34d8250",
+     "target2_audio_id": "03c151b9-bbe7-4a18-b55e-58c4e67b0ecf",
+     "qa_checked": null,
+     "target1_duration_ms": 4464,
+     "target2_duration_ms": 4416,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "pensavo",
+       "legoId": "S0124L01",
+       "target": "I thought",
+       "isGhost": false
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "l'ultima volta",
+       "legoId": "S0117L03",
+       "target": " last time",
+       "isGhost": false
+      },
+      {
+       "known": "abbiamo parlato",
+       "legoId": "S0117L04",
+       "target": " we talked to each other",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02U03",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "posso chiederti qualcosa perché penso che tu stia andando così bene?",
+     "target_text": "can I ask you something because I think that you're doing so well?",
+     "word_count": 65,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.586Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:36:04.728788+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1e556fc4-5775-489b-859e-ad4d7f2256ff",
+     "target1_audio_id": "59d1226b-3a92-4a1c-9d8b-5cf3614e4911",
+     "target2_audio_id": "3a7c43c1-5645-4370-bd08-2b5aaf2fb89d",
+     "qa_checked": null,
+     "target1_duration_ms": 4464,
+     "target2_duration_ms": 4320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "posso chiederti",
+       "legoId": "S0119L01",
+       "target": "can I ask you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " something",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " because",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02U04",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "sono così contento che tu stia andando così bene prima che tu vada",
+     "target_text": "I'm so happy that you're doing so well before you leave",
+     "word_count": 55,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.586Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-02T22:41:34.758674+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b4a11f83-78df-4a57-b7a3-87fef019b5f9",
+     "target1_audio_id": "6175f7d0-72a5-4b20-aa28-3f67cadd8558",
+     "target2_audio_id": "8c90303d-9543-4cd7-bc42-a6f6db797024",
+     "qa_checked": null,
+     "target1_duration_ms": 4200,
+     "target2_duration_ms": 4248,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "sono così contento",
+       "legoId": "S0129L01",
+       "target": "I'm so happy",
+       "isGhost": false
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "prima che tu vada",
+       "legoId": "S0119L02",
+       "target": " before you leave",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ita:S0129L02U05",
+     "course_code": "eng_for_ita",
+     "seed_number": 129,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "non sono sicura del perché ma penso che tu stia andando così bene",
+     "target_text": "I'm not sure why but I think that you're doing so well",
+     "word_count": 54,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T01:36:03.586Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-02T22:35:55.36246+00:00",
+     "created_at": "2026-02-25T01:36:03.670357+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "eca2d3e1-42d2-4fce-a6f9-cc59d206700e",
+     "target1_audio_id": "d0205e2a-8d06-4871-895a-d15040d54761",
+     "target2_audio_id": "1000b8fe-465f-4a11-9155-5dfd44b2f41a",
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "non sono sicura",
+       "legoId": "S0010L01",
+       "target": "I'm not sure",
+       "isGhost": false
+      },
+      {
+       "known": "perché",
+       "legoId": "S0021L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "ma",
+       "legoId": "S0019L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "che tu stia andando così bene",
+       "legoId": "S0129L02",
+       "target": " that you're doing so well",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

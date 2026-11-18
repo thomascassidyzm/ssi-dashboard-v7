@@ -1,0 +1,315 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0005L01B03",
+   "set": {
+    "target_text": "speaking with you",
+    "known_text": "ඔයා එක්ක කතා කිරීම"
+   },
+   "expect": {
+    "known_text": "කතා කිරීම ඕනේ",
+    "target_text": "want speaking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0027L02U03",
+   "set": {
+    "target_text": "I don't like taking too much time to speak",
+    "known_text": "මට කැමති නෑ ගොඩක් වෙලාව ගන්න කතා කරන්න"
+   },
+   "expect": {
+    "known_text": "මට ගොඩක් වෙලාව ගන්න ඕනේ නෑ",
+    "target_text": "I don't want taking too much time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01B03",
+   "set": {
+    "target_text": "I'm looking forward to speaking better",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා හොඳට කතා කිරීම"
+   },
+   "expect": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉගෙනගන්න",
+    "target_text": "I'm looking forward to to learn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01B04",
+   "set": {
+    "target_text": "I'm looking forward to speaking today",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා අද කතා කිරීම"
+   },
+   "expect": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා පුහුණු වෙන්න",
+    "target_text": "I'm looking forward to to practise"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01U03",
+   "set": {
+    "target_text": "I'm looking forward to speaking English with you",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඔයා එක්ක ඉංග්‍රීසි කතා කිරීම"
+   },
+   "expect": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉංග්‍රීසි ඉගෙනගන්න",
+    "target_text": "I'm looking forward to to learn English"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01U04",
+   "set": {
+    "target_text": "I'm looking forward to speaking with you tomorrow",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා හෙට ඔයා එක්ක කතා කිරීම"
+   },
+   "expect": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා හෙට හම්බවෙන්න",
+    "target_text": "I'm looking forward to to meet tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0029L01U05",
+   "set": {
+    "target_text": "I'm looking forward to speaking with someone else",
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා වෙන කෙනෙක් එක්ක කතා කිරීම"
+   },
+   "expect": {
+    "known_text": "ඉදිරිය ගැන ආශාවෙනවා ඉංග්‍රීසි කතා කරන අය හම්බවෙන්න",
+    "target_text": "I'm looking forward to to meet people who speak English"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0042L03U04",
+   "set": {
+    "target_text": "I was tired last night",
+    "known_text": "මම ඊයේ රෑ වෙහෙසෙන් හිටියා"
+   },
+   "expect": {
+    "known_text": "මට වෙහෙස දැනෙනවා ඊයේ රෑ",
+    "target_text": "I feel tired last night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0042L03U06",
+   "set": {
+    "target_text": "I feel better today than last night",
+    "known_text": "අද මට ඊයේ රෑට වඩා හොඳයි දැනෙනවා"
+   },
+   "expect": {
+    "known_text": "මට හොඳයි දැනෙනවා ඊයේ රෑ වඩා",
+    "target_text": "I feel okay better than last night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0055L01U04",
+   "set": {
+    "target_text": "I don't enjoy waking up quickly",
+    "known_text": "මම ඉක්මනට අවදි වෙන්න ආසාවෙන්නේ නෑ"
+   },
+   "expect": {
+    "known_text": "මට අවදි වෙන්න ඕනේ නෑ දැන්",
+    "target_text": "I don't want waking up now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0089L01U06",
+   "set": {
+    "target_text": "I've done it today",
+    "known_text": "මම අද ඒක කළා"
+   },
+   "expect": {
+    "known_text": "මම කළා ඒක පසුගිය සතියේ",
+    "target_text": "I've done it last week"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0098L03U05",
+   "set": {
+    "target_text": "do you like playing something else?",
+    "known_text": "ඔයා වෙන මොකක්හරි ක්‍රීඩා කරන්න කැමතිද?"
+   },
+   "expect": {
+    "known_text": "ඔයාට ඕනේද ක්‍රීඩා කරන මොකක්හරි වෙනස්",
+    "target_text": "do you want playing something else?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0123L01U04",
+   "set": {
+    "target_text": "that idea is easier",
+    "known_text": "ඒ අදහස පහසුයි"
+   },
+   "expect": {
+    "known_text": "ඒක පහසු අදහසක්",
+    "target_text": "that is a easier idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0123L01U05",
+   "set": {
+    "target_text": "that idea is unusual",
+    "known_text": "ඒ අදහස අසාමාන්‍යයි"
+   },
+   "expect": {
+    "known_text": "ඒක අසාමාන්‍ය අදහසක්",
+    "target_text": "that is a unusual idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0123L01U07",
+   "set": {
+    "target_text": "I have a good idea",
+    "known_text": "මට හොඳ අදහසක් තියෙනවා"
+   },
+   "expect": {
+    "known_text": "අදහසක් ඕනේ",
+    "target_text": "I want a idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0130L01U06",
+   "set": {
+    "target_text": "that surprise was unusual",
+    "known_text": "ඒ පුදුම දෙය අසාමාන්‍ය වුණා"
+   },
+   "expect": {
+    "known_text": "ඒක අසාමාන්‍ය පුදුම දෙයක්",
+    "target_text": "that is a unusual surprise"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0130L01U07",
+   "set": {
+    "target_text": "that surprise was interesting",
+    "known_text": "ඒ පුදුම දෙය රසවත් වුණා"
+   },
+   "expect": {
+    "known_text": "ඒක රසවත් පුදුම දෙයක්",
+    "target_text": "that is a interesting surprise"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0132L02U05",
+   "set": {
+    "target_text": "that surprise is exciting",
+    "known_text": "ඒ පුදුම දෙය ආකර්ශනීයයි"
+   },
+   "expect": {
+    "known_text": "ඒක ආකර්ශනීය පුදුම දෙයක්",
+    "target_text": "that's a exciting surprise"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0132L02U08",
+   "set": {
+    "target_text": "that idea is exciting",
+    "known_text": "ඒ අදහස ආකර්ශනීයයි"
+   },
+   "expect": {
+    "known_text": "ඒක ආකර්ශනීය අදහසක්",
+    "target_text": "that's a exciting idea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0138L01U09",
+   "set": {
+    "target_text": "can you help us to learn?"
+   },
+   "expect": {
+    "known_text": "ඔයාට අපිට ඉගෙන්වන්න පුළුවන්ද",
+    "target_text": "can you to help us to learn?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U01",
+   "set": {
+    "target_text": "I woke early yesterday",
+    "known_text": "මම ඊයේ කලින් අවදි වුණා"
+   },
+   "expect": {
+    "known_text": "මම අවදි වුණා ඊයේ උදේ",
+    "target_text": "I woke this morning yesterday"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U02",
+   "set": {
+    "target_text": "she woke early",
+    "known_text": "ඇය කලින් අවදි වුණා"
+   },
+   "expect": {
+    "known_text": "ඔයා අවදි වුණාද කලින්",
+    "target_text": "did you woke early?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U04",
+   "set": {
+    "target_text": "I woke last night",
+    "known_text": "මම ඊයේ රෑ අවදි වුණා"
+   },
+   "expect": {
+    "known_text": "ඔයා කවදා අවදි වුණේ?",
+    "target_text": "when did you woke?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0144L01U07",
+   "set": {
+    "target_text": "we woke early this morning",
+    "known_text": "අපි අද උදේ කලින් අවදි වුණා"
+   },
+   "expect": {
+    "known_text": "ඔයා අවදි වුණාද ඊයේ රාත්‍රියේ?",
+    "target_text": "did you woke last night?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0147L01U01",
+   "set": {
+    "target_text": "you saw it yesterday",
+    "known_text": "ඔයා ඊයේ ඒක දිටුවා"
+   },
+   "expect": {
+    "known_text": "ඔයා ඒක දිටුවාද",
+    "target_text": "did you saw that?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0147L01U06",
+   "set": {
+    "target_text": "he saw me",
+    "known_text": "ඔහු මාව දිටුවා"
+   },
+   "expect": {
+    "known_text": "ඔයා මොනවද දිටුවේ?",
+    "target_text": "what did you saw?"
+   }
+  }
+ ]
+}

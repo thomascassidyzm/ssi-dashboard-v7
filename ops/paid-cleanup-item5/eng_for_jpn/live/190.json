@@ -1,0 +1,5197 @@
+{
+ "seed": 190,
+ "seed_pair": {
+  "known": "いくつか質問してもいいですか？",
+  "target": "Do you mind if I ask you some questions?"
+ },
+ "legos": {
+  "S0190L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0190L01",
+    "type": "A",
+    "known_text": "いくつか",
+    "target_text": "some",
+    "components": null,
+    "seed_number": 190
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0190L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "いくつか",
+     "target_text": "some",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T21:52:43.756602+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "89089a25-e2eb-4288-8d4b-917e5c8f6f1b",
+     "target1_audio_id": "f470483e-012d-4f7d-991c-17c015b5a6a5",
+     "target2_audio_id": "3a264d5c-62cd-49c9-972d-94dc34a07533",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 696,
+     "target2_duration_ms": 800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": "some",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "いくつかの新しい言葉",
+     "target_text": "some new words",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0b864944-d1cf-4de8-9180-9dcac0d146e5",
+     "target1_audio_id": "21489727-5d2d-4b21-aa60-0c39667597bf",
+     "target2_audio_id": "07d878f7-ccad-4116-963b-35f26bec7239",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 1368,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": "some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "いくつかの質問",
+     "target_text": "some questions",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T17:30:31.112392+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c45ba4ba-ae3b-4b94-8232-da1f34ac440d",
+     "target1_audio_id": "4d61f336-60b8-4b2e-9e46-cd0ed7c475df",
+     "target2_audio_id": "ec1549be-5863-4686-aace-46c5a382290f",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": "some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "いくつかの新しい言葉を学びたいです",
+     "target_text": "I'd like to learn some new words",
+     "word_count": 32,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dbae0c4e-4a83-4fc8-a493-b8336ebb373b",
+     "target1_audio_id": "32a20edc-0bac-4ba2-ba3c-2605c7209d90",
+     "target2_audio_id": "42b6a30c-8005-442f-b766-c720c6551ecf",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なりたいです",
+       "legoId": "S0011L03",
+       "target": "I'd like",
+       "isGhost": false
+      },
+      {
+       "known": "学ぶ",
+       "legoId": "S0002L01",
+       "target": " to learn",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask some questions?",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-28T18:40:59.079035+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "67664ad3-8317-4333-95b8-430c2013486b",
+     "target1_audio_id": "6a891718-41bd-490d-a8fd-f8e2925ee290",
+     "target2_audio_id": "e4a26bec-4f36-4a6f-9693-84ff358f7277",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "いくつかの新しい言葉を学ぶことを楽しんでいます",
+     "target_text": "I enjoy finding out some new words",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "44e5af96-0f06-433d-83c9-6b830f61b93a",
+     "target1_audio_id": "65fa01ab-86b2-4ced-92b6-2f8a2b184890",
+     "target2_audio_id": "28a4df89-771a-4faa-9298-d3c0d7083305",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "楽しんでいます",
+       "legoId": "S0051L01",
+       "target": "I enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " finding",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " out",
+       "isGhost": true
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "いくつかの新しい言葉を学びたいです",
+     "target_text": "I'd like to learn some new words",
+     "word_count": 32,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dbae0c4e-4a83-4fc8-a493-b8336ebb373b",
+     "target1_audio_id": "32a20edc-0bac-4ba2-ba3c-2605c7209d90",
+     "target2_audio_id": "42b6a30c-8005-442f-b766-c720c6551ecf",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なりたいです",
+       "legoId": "S0011L03",
+       "target": "I'd like",
+       "isGhost": false
+      },
+      {
+       "known": "学ぶ",
+       "legoId": "S0002L01",
+       "target": " to learn",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "いくつかの新しい言葉を学ぶ必要がありますか",
+     "target_text": "do you need to learn some new words?",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 6,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b512c2d5-f961-4e49-ad7a-58d09b40bee4",
+     "target1_audio_id": "469f80c3-84e7-4e23-bccf-9f9b83cecb65",
+     "target2_audio_id": "57d2b4bd-2524-46ec-83de-51e5aa858458",
+     "qa_checked": "2026-02-17T12:28:42.135+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "do",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "必要",
+       "legoId": "S0170L01",
+       "target": " need",
+       "isGhost": false
+      },
+      {
+       "known": "学ぶ",
+       "legoId": "S0002L01",
+       "target": " to learn",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "いくつかの新しい言葉があります",
+     "target_text": "there are some new words I need to learn",
+     "word_count": 40,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0e7310e2-c91d-4272-bc6b-f4ba51830c8f",
+     "target1_audio_id": "317e5ef0-68fa-40db-b50d-1c9cd5f58541",
+     "target2_audio_id": "3c871f71-2339-4430-a7ef-8e9720f97abf",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ある",
+       "legoId": "S0131L01",
+       "target": "there are",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      },
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": " I need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " learn",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "いくつかの新しい言葉はありますか",
+     "target_text": "have you got some new words to learn?",
+     "word_count": 36,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 6,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4e74b63a-8b43-4440-8d76-11046689b674",
+     "target1_audio_id": "e5c5f82f-53d5-4548-9a47-2b3acd5752d1",
+     "target2_audio_id": "50dea62b-723d-4d94-a9d5-ad795063047a",
+     "qa_checked": "2026-02-17T12:28:42.135+00:00",
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ことがありますか",
+       "legoId": "S0075L01",
+       "target": "have you got",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      },
+      {
+       "known": "学ぶ",
+       "legoId": "S0002L01",
+       "target": " to learn",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask some questions?",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-28T18:40:59.079035+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "67664ad3-8317-4333-95b8-430c2013486b",
+     "target1_audio_id": "6a891718-41bd-490d-a8fd-f8e2925ee290",
+     "target2_audio_id": "e4a26bec-4f36-4a6f-9693-84ff358f7277",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "仕事でいくつかの新しい言葉を見つけたいです",
+     "target_text": "I'd like to find out some new words at work",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "08d0f318-351f-4976-ad71-a127c5fa5ce4",
+     "target1_audio_id": "9139f8b2-443a-4dbe-8a36-fa80ffa48dd7",
+     "target2_audio_id": "ceceda40-b338-4079-8c6b-813aeee31fe1",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2712,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "なりたいです",
+       "legoId": "S0011L03",
+       "target": "I'd like",
+       "isGhost": false
+      },
+      {
+       "known": "知る",
+       "legoId": "S0017L02",
+       "target": " to find out",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " at",
+       "isGhost": true
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "仕事のことでいくつか質問してもいいですか",
+     "target_text": "do you mind if I ask you some questions about work?",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "42c5b37f-cfa7-4c52-8431-562ca209e330",
+     "target1_audio_id": "67acc048-d15e-4c76-993c-34dc7906939d",
+     "target2_audio_id": "8105525c-1d62-4e85-98c9-65755844dc9d",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "変化についていくつか質問があります",
+     "target_text": "I've got some questions about the change",
+     "word_count": 40,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 6,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c22b2f72-8e34-4ba2-9d6c-24753d165469",
+     "target1_audio_id": "8b25a3e1-8585-4c1c-9a41-a7742cdf1d8c",
+     "target2_audio_id": "d9409df5-29c9-46c2-8ac1-ca8ad91155c7",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " got",
+       "isGhost": true
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "変える",
+       "legoId": "S0188L01",
+       "target": " change",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "もっといくつかの新しい言葉を学ぶ必要があると思います",
+     "target_text": "I think I need to learn some more new words",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f58179bb-e89e-4693-bcc7-5459478b90c5",
+     "target1_audio_id": "f1607ac6-a2cf-4cad-b5d4-9128fff54f34",
+     "target2_audio_id": "60b4680b-2816-4e7a-ba84-6a41bba0d137",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2568,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": " I need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " learn",
+       "isGhost": true
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もっと",
+       "legoId": "S0023L01",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "来週のことでいくつか話しましょうか",
+     "target_text": "do you want to talk about some of this next week?",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "78c26d65-1157-4da3-8b5d-9b7df4b0ec7b",
+     "target1_audio_id": "24b11852-30c5-4fdb-80db-67ff7e69b982",
+     "target2_audio_id": "71715495-88a2-437c-8f29-d5d508c88f26",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "do",
+       "isGhost": true
+      },
+      {
+       "known": "あなたは〜したい",
+       "legoId": "S0020L01",
+       "target": " you want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " of",
+       "isGhost": true
+      },
+      {
+       "known": "これ",
+       "legoId": "S0094L01",
+       "target": " this",
+       "isGhost": false
+      },
+      {
+       "known": "来週",
+       "legoId": "S0186L01",
+       "target": " next week",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "今のところ大丈夫ですが、いくつか質問があります",
+     "target_text": "I'm happy so far but I'd like to ask some questions",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a8adb785-8a3b-4f30-aaf9-32b8aee95007",
+     "target1_audio_id": "7a1d21b2-df96-4f49-805f-b8cc9d342fe8",
+     "target2_audio_id": "7d6f84c0-1344-46d6-aa7c-dd01e9bd0b2b",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "今のところ満足しています",
+       "legoId": "S0187L01",
+       "target": "I'm happy so far",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "なりたいです",
+       "legoId": "S0011L03",
+       "target": " I'd like",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L01U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 1,
+     "position": 21,
+     "known_text": "いくつかの新しい言葉を覚えようとしています",
+     "target_text": "I'm trying to remember some new words",
+     "word_count": 37,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:50:59.950Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.075887+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "94eb5cec-1af0-4406-80e8-fbd6451b4881",
+     "target1_audio_id": "8713b199-dd1d-47cd-91a4-d0d00495d073",
+     "target2_audio_id": "bfef1c7a-3992-43eb-bb60-7bf7190417f1",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2568,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "思い出そうとしている",
+       "legoId": "S0006L03",
+       "target": "I'm trying to remember",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "新しい",
+       "legoId": "S0109L02",
+       "target": " new",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0190L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0190L02",
+    "type": "A",
+    "known_text": "質問",
+    "target_text": "questions",
+    "components": null,
+    "seed_number": 190
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0190L02B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "質問",
+     "target_text": "questions",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-12T17:13:34.893349+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fc52283e-e6c0-4f4e-8a78-d5c2a25d6b30",
+     "target1_audio_id": "b9eb8e0e-e1c0-43a7-8b89-35e21b2458c8",
+     "target2_audio_id": "2aa15ea7-199e-4467-a98a-1911c6616dab",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 1280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": "questions",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask some questions?",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-28T18:40:59.079035+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "67664ad3-8317-4333-95b8-430c2013486b",
+     "target1_audio_id": "6a891718-41bd-490d-a8fd-f8e2925ee290",
+     "target2_audio_id": "e4a26bec-4f36-4a6f-9693-84ff358f7277",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "いくつか質問を聞いてもいいですか",
+     "target_text": "do you mind if I ask you some questions?",
+     "word_count": 39,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T17:30:30.925846+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5e3bedff-da2a-474a-a31a-119aaa9c4a7c",
+     "target1_audio_id": "90c18651-2f70-4f66-bccb-2b700fd03ad4",
+     "target2_audio_id": "f21f7605-4c01-414f-b008-99876c6dfb9f",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "離れる前にいくつか質問してもいいですか",
+     "target_text": "can I ask you some questions before you leave?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f7f71c5d-0f2e-4031-aa1d-29cc2006e881",
+     "target1_audio_id": "d86144c2-2101-4715-a39e-63e7ed7d6bb2",
+     "target2_audio_id": "03c54347-b2f0-456c-91ec-25e2fdb03086",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " before",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "今いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask you some questions now?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-29T02:34:06.498149+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3e1deaa9-1497-4d8a-aca3-340921334369",
+     "target1_audio_id": "93d74f96-52a3-4149-9b78-0b634c336139",
+     "target2_audio_id": "47436d45-3ad9-4209-9be9-32035d63f110",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask some questions?",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-28T18:40:59.079035+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "67664ad3-8317-4333-95b8-430c2013486b",
+     "target1_audio_id": "6a891718-41bd-490d-a8fd-f8e2925ee290",
+     "target2_audio_id": "e4a26bec-4f36-4a6f-9693-84ff358f7277",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "今やっていることについていくつか質問してもいいですか",
+     "target_text": "do you mind if I ask you some questions about what we're doing?",
+     "word_count": 62,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "25ec2c78-c3f9-4256-a010-304237abb360",
+     "target1_audio_id": "448eb6bc-8a3e-4c9e-88dd-cff463d51a54",
+     "target2_audio_id": "f502dd1e-6291-4051-891c-49745b151c47",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "私たちは",
+       "legoId": "S0110L01",
+       "target": " we're",
+       "isGhost": false
+      },
+      {
+       "known": "する",
+       "legoId": "S0051L02",
+       "target": " doing",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "変化についていくつか質問してもいいですか",
+     "target_text": "do you mind if I ask you some questions about the change?",
+     "word_count": 56,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "237f6517-f93f-4aec-94da-9cc69d5100f2",
+     "target1_audio_id": "39126667-1a2a-46da-b159-5301ae4980b6",
+     "target2_audio_id": "24024d49-e051-484a-a3f3-21e9d99cee25",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "変える",
+       "legoId": "S0188L01",
+       "target": " change",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "仕事のことでいくつか質問してもいいですか",
+     "target_text": "do you mind if I ask you some questions about work?",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "42c5b37f-cfa7-4c52-8431-562ca209e330",
+     "target1_audio_id": "67acc048-d15e-4c76-993c-34dc7906939d",
+     "target2_audio_id": "8105525c-1d62-4e85-98c9-65755844dc9d",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "離れる前にいくつか質問してもいいですか",
+     "target_text": "can I ask you some questions before you leave?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f7f71c5d-0f2e-4031-aa1d-29cc2006e881",
+     "target1_audio_id": "d86144c2-2101-4715-a39e-63e7ed7d6bb2",
+     "target2_audio_id": "03c54347-b2f0-456c-91ec-25e2fdb03086",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " before",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "今いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask you some questions now?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-29T02:34:06.498149+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3e1deaa9-1497-4d8a-aca3-340921334369",
+     "target1_audio_id": "93d74f96-52a3-4149-9b78-0b634c336139",
+     "target2_audio_id": "47436d45-3ad9-4209-9be9-32035d63f110",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 14,
+     "known_text": "今のところ満足していますが、いくつか質問があります",
+     "target_text": "I'm happy so far but I'd like to ask some questions",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2cbb5224-af48-4286-a1a0-2757aa7d617e",
+     "target1_audio_id": "7a1d21b2-df96-4f49-805f-b8cc9d342fe8",
+     "target2_audio_id": "7d6f84c0-1344-46d6-aa7c-dd01e9bd0b2b",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "今のところ満足しています",
+       "legoId": "S0187L01",
+       "target": "I'm happy so far",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "なりたいです",
+       "legoId": "S0011L03",
+       "target": " I'd like",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 15,
+     "known_text": "英語についていくつか質問があります",
+     "target_text": "I need to ask you some questions about English",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 6,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "78b36bc5-092b-4bb9-87a1-ea70a179916a",
+     "target1_audio_id": "943ac53b-6aec-42e6-aea1-46d18b4eda4f",
+     "target2_audio_id": "2848cb09-f808-40b6-938c-6ed297c852d3",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": "I need to",
+       "isGhost": false
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 16,
+     "known_text": "オフィスのことでいくつか質問があります",
+     "target_text": "I need to ask you some questions about the office",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 6,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7020fdf1-a015-4ffc-a438-fb7f8b06d253",
+     "target1_audio_id": "a54f5149-ec73-4187-be8b-40ca9ee7e1d3",
+     "target2_audio_id": "3ecb91ff-ae6d-4a07-9d01-27b339fe36c5",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": "I need to",
+       "isGhost": false
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "オフィス",
+       "legoId": "S0184L01",
+       "target": " office",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 17,
+     "known_text": "今日違うことについていくつか質問があります",
+     "target_text": "can I ask you some questions about something different today?",
+     "word_count": 60,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "840749c0-f5c7-4e99-b1f9-bb0898b66f57",
+     "target1_audio_id": "ac51eb64-0168-4a75-9807-227fa35515c3",
+     "target2_audio_id": "b69e1af3-429b-4124-a16f-2db9a6ebf27f",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 3288,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "違うこと",
+       "legoId": "S0186L02",
+       "target": " something different",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 20,
+     "known_text": "今のところうまくいっていますが、いくつか質問があります",
+     "target_text": "I'm happy so far with how it's going but I need to ask some questions",
+     "word_count": 69,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b5308390-9d9f-49df-97de-6222f10d6ed0",
+     "target1_audio_id": "599d15f5-be84-4b37-8816-dc145e78f654",
+     "target2_audio_id": "ad3cecbf-4533-427e-91c1-ed52883c5814",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 4152,
+     "target2_duration_ms": 4416,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "今のところ満足しています",
+       "legoId": "S0187L01",
+       "target": "I'm happy so far",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "どう進んでいるか",
+       "legoId": "S0122L02",
+       "target": " how it's going",
+       "isGhost": false
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "必要があります",
+       "legoId": "S0044L04",
+       "target": " I need to",
+       "isGhost": false
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L02U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 2,
+     "position": 21,
+     "known_text": "いくつか質問があって、離れる前に聞いてもいいですか",
+     "target_text": "can I ask you some questions about that before you leave?",
+     "word_count": 56,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.178Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.297171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6477cbd3-3d8a-4412-9b10-15c2a5167244",
+     "target1_audio_id": "b2e30831-916b-45d6-826a-3fb0103a66fe",
+     "target2_audio_id": "d34d0d04-2f1a-421e-95c1-2c10680e524a",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": "can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それについて",
+       "legoId": "S0162L02",
+       "target": " about that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " before",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0190L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0190L03",
+    "type": "M",
+    "known_text": "してもいい",
+    "target_text": "do you mind if",
+    "components": [
+     {
+      "known": "しても",
+      "target": "do"
+     },
+     {
+      "known": "いい",
+      "target": "okay"
+     }
+    ],
+    "seed_number": 190
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0190L03C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "しても",
+     "target_text": "do",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T23:24:19.99694+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "61d7da53-0569-43bc-99d8-85b8dbf68112",
+     "target1_audio_id": "2955712a-b85a-48cf-8360-4d3fa1afbd3a",
+     "target2_audio_id": "3012d4e3-39b6-43f6-bbe0-1141032fa0a1",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 600,
+     "target2_duration_ms": 672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "do",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fedd5fb7-b2b1-4b94-87b0-a01ed813328b",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "いい",
+     "target_text": "okay",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T21:47:45.563076+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4bf0d71f-860f-4ad4-8943-9477e3dcd68c",
+     "target1_audio_id": "12165649-fe52-4473-808a-d9bcca50376f",
+     "target2_audio_id": "893a47c0-23dc-4150-ac2d-51ed8946353c",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "okay",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "してもいい",
+     "target_text": "do you mind if",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "22523921-e9c2-43f8-b73b-0289d3416a27",
+     "target1_audio_id": null,
+     "target2_audio_id": "5993bcc7-52d2-416a-8041-da870ff84a29",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "してもいい",
+     "target_text": "do you mind if",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "22523921-e9c2-43f8-b73b-0289d3416a27",
+     "target1_audio_id": null,
+     "target2_audio_id": "5993bcc7-52d2-416a-8041-da870ff84a29",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "何か聞いてもいいですか",
+     "target_text": "do you mind if I ask you something?",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T21:49:57.925028+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2a149596-258c-4c11-a6d5-a13badb46171",
+     "target1_audio_id": "ef6a4825-5c00-4f33-b4c7-eac61530b37b",
+     "target2_audio_id": "371ff99b-810b-4355-a992-77f689cc5345",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03B04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask some questions?",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-28T18:40:59.079035+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "67664ad3-8317-4333-95b8-430c2013486b",
+     "target1_audio_id": "6a891718-41bd-490d-a8fd-f8e2925ee290",
+     "target2_audio_id": "e4a26bec-4f36-4a6f-9693-84ff358f7277",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "離れる前に何か聞いてもいいですか",
+     "target_text": "do you mind if I ask you something before you leave?",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d74dd4ca-e1e6-48ab-9f28-db83370926a2",
+     "target1_audio_id": "6a84a82f-3bba-4231-9391-0f1ee05eefcb",
+     "target2_audio_id": "46780f8b-c8a4-406c-a06a-774591cfc6b3",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " before",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03B06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "今英語で話してもいいですか",
+     "target_text": "do you mind if I speak English now?",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "49747be6-0f98-45ac-ae8c-14694e583f4d",
+     "target1_audio_id": "e462abf6-6696-4b0e-811c-9f9d8ec0498f",
+     "target2_audio_id": "79db19ee-8408-4d88-82f9-853bb289106e",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2088,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "今日少し早めに出発してもいいですか",
+     "target_text": "do you mind if I leave a little earlier today?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "db550b78-93c3-4824-9789-fcf7521aa4d8",
+     "target1_audio_id": "ffe38ed1-66e8-4668-bd99-18eaabdb420d",
+     "target2_audio_id": "22ee0ac3-88bb-441b-bbc5-7556acdaa673",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave",
+       "isGhost": true
+      },
+      {
+       "known": "少し",
+       "legoId": "S0009L01",
+       "target": " a little",
+       "isGhost": false
+      },
+      {
+       "known": "前に",
+       "legoId": "S0143L03",
+       "target": " earlier",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "離れる前に何か聞いてもいいですか",
+     "target_text": "do you mind if I ask you something before you leave?",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d74dd4ca-e1e6-48ab-9f28-db83370926a2",
+     "target1_audio_id": "6a84a82f-3bba-4231-9391-0f1ee05eefcb",
+     "target2_audio_id": "46780f8b-c8a4-406c-a06a-774591cfc6b3",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " before",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "今やっていることについて何か聞いてもいいですか",
+     "target_text": "do you mind if I ask you something about how it's going?",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "c66becf8-a9fb-4886-8d96-093cf38ae685",
+     "target1_audio_id": "8439ce35-4935-4e76-8905-5425bbaa22e6",
+     "target2_audio_id": "2fc755e3-2b6b-4ea2-a453-5068149cd323",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3288,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "どう進んでいるか",
+       "legoId": "S0122L02",
+       "target": " how it's going",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "今英語で話してもいいですか",
+     "target_text": "do you mind if I speak English now?",
+     "word_count": 34,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "49747be6-0f98-45ac-ae8c-14694e583f4d",
+     "target1_audio_id": "e462abf6-6696-4b0e-811c-9f9d8ec0498f",
+     "target2_audio_id": "79db19ee-8408-4d88-82f9-853bb289106e",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2088,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "仕事について何か聞いてもいいですか",
+     "target_text": "do you mind if I ask you something about work?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "82d9ad36-e94b-4eab-9043-51c467ab1012",
+     "target1_audio_id": "942e2c19-d65a-4178-9420-c38f483c0ef8",
+     "target2_audio_id": "b4ec6ff2-033d-40d1-abbc-b5a29c81df85",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "どのくらい進んでいるか聞いてもいいですか",
+     "target_text": "do you mind if I ask you how it's going so far?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "70d0e4ea-c025-4e34-aa74-becfc026fc3d",
+     "target1_audio_id": "7ad8cb3a-252c-4f49-a6c0-67bbd1b8b2e0",
+     "target2_audio_id": "d4423bf2-d9bd-4ce1-bd9e-60a06ce8dffc",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2712,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "どう進んでいるか",
+       "legoId": "S0122L02",
+       "target": " how it's going",
+       "isGhost": false
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " far?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 15,
+     "known_text": "変化について何か聞いてもいいですか",
+     "target_text": "do you mind if I ask you something about the change?",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e828592e-23ce-4185-a0d7-bd538306e007",
+     "target1_audio_id": "add22752-fab0-48d6-bdce-f810aa2dc18d",
+     "target2_audio_id": "ba51fbde-2a56-4591-9b91-ce07da20c6c4",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "変える",
+       "legoId": "S0188L01",
+       "target": " change",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 16,
+     "known_text": "違うことについていくつか質問してもいいですか",
+     "target_text": "do you mind if I ask some questions about something different?",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f006c1c1-296b-4bed-bd2b-de1f13f97acf",
+     "target1_audio_id": "fd5cd056-6c3c-4f80-80a9-bf40423d9a43",
+     "target2_audio_id": "2536e2a6-f645-4a06-b7d3-d59be14e6bff",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 3504,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "違うこと",
+       "legoId": "S0186L02",
+       "target": " something different",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 17,
+     "known_text": "少し時間をかけてもいいですか",
+     "target_text": "do you mind if I take a little more time to answer?",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "35799134-9c53-46db-b6b1-8d5e1342c052",
+     "target1_audio_id": "5ff8807c-2e14-4294-bf81-11df18a9178c",
+     "target2_audio_id": "1c12e279-9d28-4917-ab95-e42135c676fd",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2784,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "連れて行く",
+       "legoId": "S0181L03",
+       "target": " take",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し",
+       "legoId": "S0096L05",
+       "target": " a little more",
+       "isGhost": false
+      },
+      {
+       "known": "時間",
+       "legoId": "S0096L06",
+       "target": " time",
+       "isGhost": false
+      },
+      {
+       "known": "答える",
+       "legoId": "S0043L01",
+       "target": " to answer",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 18,
+     "known_text": "今日少し早めに出発してもいいですか",
+     "target_text": "do you mind if I leave a little earlier today?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "db550b78-93c3-4824-9789-fcf7521aa4d8",
+     "target1_audio_id": "ffe38ed1-66e8-4668-bd99-18eaabdb420d",
+     "target2_audio_id": "22ee0ac3-88bb-441b-bbc5-7556acdaa673",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2640,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave",
+       "isGhost": true
+      },
+      {
+       "known": "少し",
+       "legoId": "S0009L01",
+       "target": " a little",
+       "isGhost": false
+      },
+      {
+       "known": "前に",
+       "legoId": "S0143L03",
+       "target": " earlier",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 20,
+     "known_text": "少し時間をとってもいいですか",
+     "target_text": "do you mind if I take a little time to think?",
+     "word_count": 44,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f8f2887a-96c9-4f7e-bdf3-727e3be0ec53",
+     "target1_audio_id": "31e33b41-d025-4779-bd14-87030e4d184c",
+     "target2_audio_id": "660d5aa8-e757-40fe-a8ca-0c6399d1fc2f",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "連れて行く",
+       "legoId": "S0181L03",
+       "target": " take",
+       "isGhost": false
+      },
+      {
+       "known": "少し",
+       "legoId": "S0009L01",
+       "target": " a little",
+       "isGhost": false
+      },
+      {
+       "known": "時間",
+       "legoId": "S0096L06",
+       "target": " time",
+       "isGhost": false
+      },
+      {
+       "known": "考える",
+       "legoId": "S0091L02",
+       "target": " to think",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 21,
+     "known_text": "仕事のことでいくつか質問してもいいですか",
+     "target_text": "do you mind if I ask you some questions about work?",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "42c5b37f-cfa7-4c52-8431-562ca209e330",
+     "target1_audio_id": "67acc048-d15e-4c76-993c-34dc7906939d",
+     "target2_audio_id": "8105525c-1d62-4e85-98c9-65755844dc9d",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 22,
+     "known_text": "今のところどのくらいうまくいっているか聞いてもいいですか",
+     "target_text": "do you mind if I ask you how it's going so far?",
+     "word_count": 46,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "eca1387e-0ba4-4f11-a9c1-701ff7b5ac71",
+     "target1_audio_id": "7ad8cb3a-252c-4f49-a6c0-67bbd1b8b2e0",
+     "target2_audio_id": "d4423bf2-d9bd-4ce1-bd9e-60a06ce8dffc",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2712,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "どう進んでいるか",
+       "legoId": "S0122L02",
+       "target": " how it's going",
+       "isGhost": false
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " far?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 23,
+     "known_text": "英語と仕事について何か聞いてもいいですか",
+     "target_text": "do you mind if I ask you something about work and English?",
+     "word_count": 57,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4c7996b6-b23e-44bd-bbc1-8c7417efeead",
+     "target1_audio_id": "67f48998-d32f-465d-89fa-a18a954e83ce",
+     "target2_audio_id": "945152be-49e2-4f19-8616-543fe6116313",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "勉強",
+       "legoId": "S0126L01",
+       "target": " work",
+       "isGhost": false
+      },
+      {
+       "known": "そして",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0190L03U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 190,
+     "lego_index": 3,
+     "position": 24,
+     "known_text": "いくつか質問してもいいですか",
+     "target_text": "do you mind if I ask some questions?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:00.371Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T18:40:59.079035+00:00",
+     "created_at": "2026-02-17T11:51:00.480778+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "67664ad3-8317-4333-95b8-430c2013486b",
+     "target1_audio_id": "6a891718-41bd-490d-a8fd-f8e2925ee290",
+     "target2_audio_id": "e4a26bec-4f36-4a6f-9693-84ff358f7277",
+     "qa_checked": "2026-02-17T12:28:46.173+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してもいい",
+       "legoId": "S0190L03",
+       "target": "do you mind if",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "いくつか",
+       "legoId": "S0190L01",
+       "target": " some",
+       "isGhost": false
+      },
+      {
+       "known": "質問",
+       "legoId": "S0190L02",
+       "target": " questions",
+       "isGhost": false
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

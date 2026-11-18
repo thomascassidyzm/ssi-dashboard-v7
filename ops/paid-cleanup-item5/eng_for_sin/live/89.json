@@ -1,0 +1,2415 @@
+{
+ "seed": 89,
+ "seed_pair": {
+  "known": "මම හිතනවා මම කළා බොහෝ කෙටි කාලයකින්.",
+  "target": "I think that I've done a lot in a short time."
+ },
+ "legos": {
+  "S0089L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0089L01",
+    "type": "A",
+    "known_text": "කළා",
+    "target_text": "done",
+    "components": [],
+    "seed_number": 89
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0089L01B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "මම කළා",
+     "target_text": "I've done",
+     "word_count": 9,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-13T01:32:11.623354+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "215f35e9-11d5-4274-90d0-665488c8609d",
+     "target1_audio_id": "13bc3bf8-474a-417f-be56-a728a374c3a9",
+     "target2_audio_id": "817253cf-fb52-4a94-8d67-030977665646",
+     "qa_checked": null,
+     "target1_duration_ms": 816,
+     "target2_duration_ms": 800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa7afa33-1ff6-4522-ae81-becfbbb0a372",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "කළා ඒක",
+     "target_text": "done it",
+     "word_count": 7,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:05.741437+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3c555b4c-c14f-466a-9c05-3118842dd975",
+     "target1_audio_id": "30c84723-3089-4662-a1ad-5aea97e767b3",
+     "target2_audio_id": "7f06177c-e931-4a00-a5f7-e40f1c132656",
+     "qa_checked": null,
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": "done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "කළා හොඳට",
+     "target_text": "done well",
+     "word_count": 9,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:05.786804+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8125bb43-c616-4df5-a9a3-7bb8932fa147",
+     "target1_audio_id": "d2933b14-5a1f-4827-a7dc-d7a0de5c343e",
+     "target2_audio_id": "455ac72c-1683-46d3-8bcc-6b5dce80cd10",
+     "qa_checked": null,
+     "target1_duration_ms": 1128,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": "done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " well",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "මම කළා ඒක දැනටමත්",
+     "target_text": "I've done it already",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:05.836269+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "de4e6e9c-e54c-4676-98b8-873ce651e3be",
+     "target1_audio_id": "0bdd292b-673f-4545-850e-ce86774ef825",
+     "target2_audio_id": "fac903c3-7949-42cf-95a3-245295e8bb19",
+     "qa_checked": null,
+     "target1_duration_ms": 1512,
+     "target2_duration_ms": 1272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "දැනටමත්",
+       "legoId": "S0076L03",
+       "target": " already",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "මම හිතනවා මම කළා ඉතා හොඳට",
+     "target_text": "I think that I've done very well",
+     "word_count": 32,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:05.936846+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "38512a32-1f6f-4a74-9321-61d8a6a1ed46",
+     "target1_audio_id": "774150e1-814c-4596-8562-4a2e7d85af5d",
+     "target2_audio_id": "018aa7a6-1cfa-4638-90bf-97036c610177",
+     "qa_checked": null,
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 1920,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම හිතනවා",
+       "legoId": "S0047L01",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "ගොඩක් හොඳට",
+       "legoId": "S0013L01",
+       "target": " very well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "මම කළා මට සිදු කරන්න ඕනේ වුණු දේ",
+     "target_text": "I've done what I need to do",
+     "word_count": 27,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:05.983897+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "db9ccbe8-bb33-4fbe-8bf7-a850253b0ccb",
+     "target1_audio_id": "d83f0455-ecb0-4137-9807-73804a4042fc",
+     "target2_audio_id": "f67d0ac5-fd70-47a2-a46b-95b969165e6b",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "මට අවශ්‍යයි",
+       "legoId": "S0044L02",
+       "target": " I need",
+       "isGhost": false
+      },
+      {
+       "known": "සිදු කරන්නෙ",
+       "legoId": "S0059L02",
+       "target": " to do",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "මම සතුටුයි මම කළා ඒක",
+     "target_text": "I'm happy that I've done it",
+     "word_count": 27,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.034149+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "95e2d91c-b609-41d7-96fb-d359ef2a80cd",
+     "target1_audio_id": "4cb28d29-97b7-460e-b157-6097a7ecad75",
+     "target2_audio_id": "617784fb-8e78-40e0-800f-1606244a0481",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "සතුටු",
+       "legoId": "S0076L01",
+       "target": " happy",
+       "isGhost": false
+      },
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "මම කළා ඒක ඉක්මනට",
+     "target_text": "I've done it quickly",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.084277+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2f8ba89b-65c9-4ad9-a2d8-b520e3dae96b",
+     "target1_audio_id": "0f47a5da-de45-4e4a-b899-976091896ed3",
+     "target2_audio_id": "5ca5e0b5-ce13-4b9c-aee7-90692a4975f8",
+     "qa_checked": null,
+     "target1_duration_ms": 1344,
+     "target2_duration_ms": 1248,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "ඉක්මනට",
+       "legoId": "S0020L03",
+       "target": " quickly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "මම අද ඒක කළා",
+     "target_text": "I've done it today",
+     "word_count": 22,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-11-18T13:01:05.679551+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " last",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " week",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "62f3dae2-f70d-4362-92b0-a609685fa703",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "මම කළා ඒක ඔයාට",
+     "target_text": "I've done it for you",
+     "word_count": 20,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.176706+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5204b435-559e-4c7a-a289-febca3e4f2c7",
+     "target1_audio_id": "ced2c1ea-9927-4729-819c-34accad3983f",
+     "target2_audio_id": "65ce4f1a-2719-443b-9b58-3f24ac852b40",
+     "qa_checked": null,
+     "target1_duration_ms": 1224,
+     "target2_duration_ms": 1272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L01U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "මම කළා ඒක ඉතා හොඳට",
+     "target_text": "I've done it very well",
+     "word_count": 22,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.799Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.225282+00:00",
+     "created_at": "2026-03-20T13:31:20.874925+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1467a13c-5ca9-405f-9b65-9706639e8022",
+     "target1_audio_id": "4b3895ea-2153-46ea-88ab-6de99be614cf",
+     "target2_audio_id": "0b2072c9-5244-4fbe-b89c-7ab5d5e1af3e",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "ගොඩක් හොඳට",
+       "legoId": "S0013L01",
+       "target": " very well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0089L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0089L02",
+    "type": "A",
+    "known_text": "බොහෝ",
+    "target_text": "a lot",
+    "components": [],
+    "seed_number": 89
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0089L02B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "බොහෝ ඉගෙනගත්තා",
+     "target_text": "learnt a lot",
+     "word_count": 12,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-10-13T08:33:00.412062+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "822f5423-5ff1-4a8a-b222-5d5ccf39cb27",
+     "target1_audio_id": "31b3b652-77dd-4b59-b400-bfc54d61d3b7",
+     "target2_audio_id": "e803ed05-0dd3-465f-9fd6-7e6cf090c005",
+     "qa_checked": null,
+     "target1_duration_ms": 1032,
+     "target2_duration_ms": 1200,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඉගෙනගත්ත",
+       "legoId": "S0076L02",
+       "target": "learnt",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa7afa33-1ff6-4522-ae81-becfbbb0a372",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "බොහෝ කළා",
+     "target_text": "done a lot",
+     "word_count": 10,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 29,
+     "updated_at": "2026-10-28T23:19:13.229478+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d74e7c17-0171-453a-abfc-0f9b916587d0",
+     "target1_audio_id": "9789a1ef-087f-4cde-8783-0d7cd16b2e48",
+     "target2_audio_id": "e905504e-3f93-4de3-9606-4edf2efd4809",
+     "qa_checked": null,
+     "target1_duration_ms": 816,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": "done",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "8c75afa5-c886-4082-a2bd-032fe7648ec0",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "බොහෝ සිදු කරන්න",
+     "target_text": "a lot to do",
+     "word_count": 11,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:06.368175+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ff3fef84-8209-4f1f-8f68-01ba27f132b3",
+     "target1_audio_id": "d7030f3f-7150-4dd1-8543-714e1a15dd29",
+     "target2_audio_id": "a090e77c-5715-420d-a9cb-2d7dabbcbbbb",
+     "qa_checked": null,
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": "a lot",
+       "isGhost": false
+      },
+      {
+       "known": "සිදු කරන්නෙ",
+       "legoId": "S0059L02",
+       "target": " to do",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "මම හිතනවා මම කළා බොහෝ",
+     "target_text": "I think that I've done a lot",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-28T20:47:06.247388+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f0ee8572-f2fa-4583-9393-84f31a96c785",
+     "target1_audio_id": "ef05001c-3c2a-48fe-8de9-fd3c2b8b827b",
+     "target2_audio_id": "c0bad6f4-766c-4123-8d9c-77fa5be33390",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම හිතනවා",
+       "legoId": "S0047L01",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "මම ඉගෙනගත්තා බොහෝ දැනටමත්",
+     "target_text": "I've already learnt a lot",
+     "word_count": 25,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-29T02:33:44.346573+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8cc2d90a-93e2-4148-9fb3-72d6bc4e2c53",
+     "target1_audio_id": "a555d577-5cd6-4bbc-85ac-c474d05476bd",
+     "target2_audio_id": "5e815dee-6240-4aa1-a9e6-2bcc1b6498dc",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "දැනටමත්",
+       "legoId": "S0076L03",
+       "target": " already",
+       "isGhost": false
+      },
+      {
+       "known": "ඉගෙනගත්ත",
+       "legoId": "S0076L02",
+       "target": " learnt",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "ඒ අය කළා බොහෝ ඊයේ",
+     "target_text": "they did a lot yesterday",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:06.550342+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "68586950-d142-4c82-9f85-f2498c697332",
+     "target1_audio_id": "c9b42ad9-2292-4272-8534-7933552848e0",
+     "target2_audio_id": "868454cd-92de-4ab7-a727-30cec6193b8b",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒ අය",
+       "legoId": "S0087L01",
+       "target": "they",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " did",
+       "isGhost": true
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "මම කළා බොහෝ පසුගිය සතියේ",
+     "target_text": "I did a lot last week",
+     "word_count": 21,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.597876+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "abdac72d-2da2-4d44-8927-4f32951d942c",
+     "target1_audio_id": "394eba87-9c28-4f36-8487-1160d1aaf369",
+     "target2_audio_id": "004d30e9-4d48-4581-b0d0-66b1d0a89f09",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " did",
+       "isGhost": true
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " last",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " week",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "මට ඕනේ සිදු කරන්න බොහෝ හෙට",
+     "target_text": "I want to do a lot tomorrow",
+     "word_count": 27,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.644542+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "240e3387-f72c-4a8a-95c0-18b4ddc08fd6",
+     "target1_audio_id": "caa1daa3-2e43-44e2-92ac-4e94b82dd24c",
+     "target2_audio_id": "25091233-da99-484e-8dea-c845e769bdc4",
+     "qa_checked": null,
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මට ඕනේ",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "සිදු කරන්නෙ",
+       "legoId": "S0059L02",
+       "target": " to do",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "හෙට",
+       "legoId": "S0012L04",
+       "target": " tomorrow",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "මම කළා බොහෝ අද",
+     "target_text": "I've done a lot today",
+     "word_count": 21,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.701148+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "93a97ecc-d6fb-48df-8b9e-a902b6633d90",
+     "target1_audio_id": "a7a018dd-bbd8-4a24-81eb-e9793f59302b",
+     "target2_audio_id": "5061c1bc-c5f3-4c9b-92e5-c9357a580e87",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "අද",
+       "legoId": "S0007L03",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "ඒ අය ඉගෙනගත්තා බොහෝ",
+     "target_text": "they learnt a lot",
+     "word_count": 17,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 5,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:06.747332+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "377ea48e-20ca-474c-917d-5969ea4bc69a",
+     "target1_audio_id": "eac188eb-8a73-4239-8d68-3a3ff41216fc",
+     "target2_audio_id": "d45a521e-7cd5-43a9-b3da-7385c08bdcbd",
+     "qa_checked": null,
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඒ අය",
+       "legoId": "S0087L01",
+       "target": "they",
+       "isGhost": false
+      },
+      {
+       "known": "ඉගෙනගත්ත",
+       "legoId": "S0076L02",
+       "target": " learnt",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L02U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "මම කළා බොහෝ ඉතා හොඳට",
+     "target_text": "I've done a lot very well",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:20.982Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:06.802916+00:00",
+     "created_at": "2026-03-20T13:31:21.058712+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dd4b1c72-5c89-4caf-8e74-87ad5769006a",
+     "target1_audio_id": "dbccef2f-8715-4d03-89ef-869485771409",
+     "target2_audio_id": "387ff3ce-2c23-4290-b1e0-ecaed3743edc",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "ගොඩක් හොඳට",
+       "legoId": "S0013L01",
+       "target": " very well",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0089L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0089L03",
+    "type": "A",
+    "known_text": "කෙටි",
+    "target_text": "short",
+    "components": [],
+    "seed_number": 89
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0089L03B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "කෙටි කාලයක්",
+     "target_text": "a short time",
+     "word_count": 12,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-10-12T09:52:21.026206+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "100f3c07-f6ff-4093-9747-cb97cc805247",
+     "target1_audio_id": "e7235937-b8c1-4a47-beed-1ef588ff274e",
+     "target2_audio_id": "1cb4d466-165e-479e-89a9-e4f5309d69dc",
+     "qa_checked": null,
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " time",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "කෙටි වචන",
+     "target_text": "short words",
+     "word_count": 11,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:06.981637+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "51992308-12f1-4599-bfa1-b09bd8708f13",
+     "target1_audio_id": "c2e5da71-cd36-4df7-96e1-389ef0570a01",
+     "target2_audio_id": "cf4dca00-4b48-48d2-a590-bed5e6e79fc1",
+     "qa_checked": null,
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1104,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": "short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "කෙටි කතාවක්",
+     "target_text": "a short story",
+     "word_count": 13,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:07.027806+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5961b7a0-d44a-4cf8-bd74-4e1cb4331edb",
+     "target1_audio_id": "2fa91eb3-a050-4256-9e38-c8d460981558",
+     "target2_audio_id": "fda28bdd-3ca5-4780-8ed4-be47d87759bf",
+     "qa_checked": null,
+     "target1_duration_ms": 1200,
+     "target2_duration_ms": 1032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " story",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "මම හිතනවා මම කළා බොහෝ කෙටි කාලයකින්",
+     "target_text": "I think that I've done a lot in a short time",
+     "word_count": 44,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 13,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:07.073917+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "595ebfb4-e4b0-41f4-84f8-556259731638",
+     "target1_audio_id": "f421595d-3dbc-466b-94e7-f4f561ae55e0",
+     "target2_audio_id": "85d095f6-785b-45ec-b48a-d484bd5b10d9",
+     "qa_checked": null,
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම හිතනවා",
+       "legoId": "S0047L01",
+       "target": "I think",
+       "isGhost": false
+      },
+      {
+       "known": "කියලා",
+       "legoId": "S0047L02",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " time",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "ඒක කෙටි කතාවක්",
+     "target_text": "it is a short story",
+     "word_count": 19,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 5,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:07.118347+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0267fcfc-50c9-437c-ab7a-ffa38865f807",
+     "target1_audio_id": "d906577f-24f5-49e3-8cc9-a1e9c74cf9db",
+     "target2_audio_id": "63833c10-6991-4af0-9a00-555c27de5c23",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1368,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " story",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "මම ඉගෙනගත්තා බොහෝ කෙටි කාලයකින්",
+     "target_text": "I've learnt a lot in a short time",
+     "word_count": 33,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-28T18:41:17.045547+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e01d346b-1560-4119-a436-1c32b9de22fd",
+     "target1_audio_id": "73c42324-f33f-43b3-9d2c-ad21a562e904",
+     "target2_audio_id": "65da6bdd-11cf-4e12-b2ef-b38b184a68e6",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2352,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "ඉගෙනගත්ත",
+       "legoId": "S0076L02",
+       "target": " learnt",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " time",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "aa7afa33-1ff6-4522-ae81-becfbbb0a372",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "කෙටි වචන මතක තියාගන්න පහසුයි",
+     "target_text": "short words are easy to remember",
+     "word_count": 32,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:07.215269+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0daebf0e-cb18-4585-99a7-2e2c272eeeb5",
+     "target1_audio_id": "4db044c9-e8a5-4751-b8d2-c1711e6e8f05",
+     "target2_audio_id": "32abafeb-7067-421e-af22-e71feda6596b",
+     "qa_checked": null,
+     "target1_duration_ms": 2136,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": "short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " words",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " are",
+       "isGhost": true
+      },
+      {
+       "known": "ලේසි",
+       "legoId": "S0064L01",
+       "target": " easy",
+       "isGhost": false
+      },
+      {
+       "known": "මතක් කරගන්න",
+       "legoId": "S0006L01",
+       "target": " to remember",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "ඒක ඉතා කෙටි කාලයක්",
+     "target_text": "it is a very short time",
+     "word_count": 23,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:07:07.264707+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1b154518-0569-4fa5-8510-33b8f2f464aa",
+     "target1_audio_id": "005dc49f-31b8-4940-9e82-ed55afc4b0e7",
+     "target2_audio_id": "9e5dc0a7-0a7c-4db3-923a-91dc1e30daf0",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " very",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " time",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "මම කළා බොහෝ ඉතා කෙටි කාලයකින්",
+     "target_text": "I've done a lot in a very short time",
+     "word_count": 36,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 10,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:07.311591+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "fb676aab-3e33-44d1-bf77-137229eb2608",
+     "target1_audio_id": "5002999a-fabd-466e-86de-67d66ffb1897",
+     "target2_audio_id": "48be9ee0-7960-49a4-99f8-68f4503dc196",
+     "qa_checked": null,
+     "target1_duration_ms": 2208,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I've",
+       "isGhost": true
+      },
+      {
+       "known": "කළා",
+       "legoId": "S0089L01",
+       "target": " done",
+       "isGhost": false
+      },
+      {
+       "known": "බොහෝ",
+       "legoId": "S0089L02",
+       "target": " a lot",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " very",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " time",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "මම පුදුම වුණා ඒක කොච්චර කෙටිද කියලා",
+     "target_text": "I'm surprised at how short it is",
+     "word_count": 32,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:07:07.358378+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "cc9458fb-4950-46ba-9947-33ae28f5195b",
+     "target1_audio_id": "de375456-d33e-4859-8a0c-46bc801ee61a",
+     "target2_audio_id": "7b692695-57c8-4a7e-a7d5-96b52b1e8846",
+     "qa_checked": null,
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "පුදුමයි",
+       "legoId": "S0077L01",
+       "target": " surprised",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " at",
+       "isGhost": true
+      },
+      {
+       "known": "කොහොමද",
+       "legoId": "S0003L01",
+       "target": " how",
+       "isGhost": false
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " is",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0089L03U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 89,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "කෙටි වාක්‍යයක් කියන්න පුළුවන්ද?",
+     "target_text": "can you say a short sentence?",
+     "word_count": 28,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T13:31:21.226Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-07-31T09:07:07.418864+00:00",
+     "created_at": "2026-03-20T13:31:21.3007+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "417eafc5-6e28-48d3-a907-984145418790",
+     "target1_audio_id": "0187f1e6-1ba4-4206-9a25-4bc2c042f957",
+     "target2_audio_id": "4f8085a0-8a4c-403c-9839-b1140db68d8c",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "can",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "කෙටි",
+       "legoId": "S0089L03",
+       "target": " short",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " sentence?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

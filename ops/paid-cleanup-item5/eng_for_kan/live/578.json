@@ -1,0 +1,1593 @@
+{
+ "seed": 578,
+ "seed_pair": {
+  "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ.",
+  "target": "Somewhere warmer."
+ },
+ "legos": {
+  "S0578L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0578L01",
+    "type": "A",
+    "known_text": "ಬೆಚ್ಚಗಿರೋ",
+    "target_text": "that is warm",
+    "components": [],
+    "seed_number": 578
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kan:S0578L01B01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "ಬೆಚ್ಚಗಿರೋ",
+     "target_text": "that is warm",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 170,
+     "updated_at": "2026-07-31T03:39:10.776295+00:00",
+     "created_at": "2026-07-24T03:27:21.859937+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4fefd6bf-9b17-4310-b79b-25b7944fae0a",
+     "target1_audio_id": "ec909282-962a-4cd7-a163-f10034135234",
+     "target2_audio_id": "01376770-65d1-4ccc-97b6-15e606e2d5fd",
+     "qa_checked": null,
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 1056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": "that is warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L01B02",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್",
+     "target_text": "the church that is warm",
+     "word_count": 23,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 179,
+     "updated_at": "2026-08-02T21:50:47.378016+00:00",
+     "created_at": "2026-07-24T03:27:21.859937+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8784c75e-26dc-4d78-85de-571c4d91c47f",
+     "target1_audio_id": "f0dd84bd-1475-4f30-a77a-fc426fc38338",
+     "target2_audio_id": "41eed51d-a90b-42aa-b603-666dda709b52",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": "the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": " that is warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L01B03",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "ಒಂದು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್",
+     "target_text": "a church that is warm",
+     "word_count": 18,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 207,
+     "updated_at": "2026-08-02T22:00:46.116778+00:00",
+     "created_at": "2026-07-24T03:27:21.859937+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d62ddbe0-5806-41f0-b773-d0405d1c1713",
+     "target1_audio_id": "d6e168df-aa04-4dec-8c75-7fd03df83b0b",
+     "target2_audio_id": "f38ff44a-5876-4669-bc9f-d63671f80661",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " church",
+       "isGhost": true
+      },
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": " that is warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L01U01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಇಲ್ಲಿ ಇದೆ",
+     "target_text": "the church that is warm is here",
+     "word_count": 31,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.837Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 207,
+     "updated_at": "2026-08-02T22:00:45.496047+00:00",
+     "created_at": "2026-07-24T03:27:21.859937+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e251143e-5534-4b05-a776-cc71a953d067",
+     "target1_audio_id": "f13a71e1-32ac-4d61-a292-fa401a9a7c18",
+     "target2_audio_id": "44dff9ee-120f-4f7f-a015-ab73a2f6d10e",
+     "qa_checked": null,
+     "target1_duration_ms": 1992,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": "the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": " that is warm",
+       "isGhost": false
+      },
+      {
+       "known": "ಇದೆ",
+       "legoId": "S0487L02",
+       "target": " is",
+       "isGhost": false
+      },
+      {
+       "known": "ಇಲ್ಲಿ",
+       "legoId": "S0276L02",
+       "target": " here",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L01U03",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "ನನಗೆ ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಗೊತ್ತು",
+     "target_text": "I know the church that is warm",
+     "word_count": 29,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.837Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 206,
+     "updated_at": "2026-08-02T22:00:44.982744+00:00",
+     "created_at": "2026-07-24T03:27:21.859937+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5380599b-b319-46a1-9821-4eccbdc29bd2",
+     "target1_audio_id": "48339bf6-de2b-4d0c-9bf5-bc43f8d56ab7",
+     "target2_audio_id": "bf639623-cf02-4336-a8e1-e2931f3c98e7",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನನಗೆ ಗೊತ್ತು",
+       "legoId": "S0059L03",
+       "target": "I know",
+       "isGhost": false
+      },
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": " the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": " that is warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L01U04",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "ನನಗೆ ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಇಷ್ಟ",
+     "target_text": "I like the church that is warm",
+     "word_count": 29,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.837Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 207,
+     "updated_at": "2026-08-02T22:00:43.08837+00:00",
+     "created_at": "2026-07-24T03:27:21.859937+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5619faca-865b-4353-a4d2-05c240b660c3",
+     "target1_audio_id": "03434f43-7948-408f-bcac-2d605003c2db",
+     "target2_audio_id": "af3c4f64-d19a-43e6-b0eb-fa8d049c8c7b",
+     "qa_checked": null,
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನನಗೆ ಇಷ್ಟ",
+       "legoId": "S0026L03",
+       "target": "I like",
+       "isGhost": false
+      },
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": " the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": " that is warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L01U05",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಆ ಕಡೆ ಇದೆ",
+     "target_text": "the church that is warm is on the other side",
+     "word_count": 33,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.837Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 206,
+     "updated_at": "2026-08-02T22:00:50.549126+00:00",
+     "created_at": "2026-07-24T03:27:21.859937+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b3fc7553-8c45-476e-97cd-ec8f3beb6c16",
+     "target1_audio_id": "7fcab181-22ce-454d-92a1-a1268ced5927",
+     "target2_audio_id": "e0579828-e22d-4dba-afcc-392df4da38f3",
+     "qa_checked": null,
+     "target1_duration_ms": 2496,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": "the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": " that is warm",
+       "isGhost": false
+      },
+      {
+       "known": "ಇದೆ",
+       "legoId": "S0487L02",
+       "target": " is",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " on",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " other",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " side",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0578L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0578L02",
+    "type": "M",
+    "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+    "target_text": "that is more warm",
+    "components": [
+     {
+      "known": "ಹೆಚ್ಚು",
+      "target": "more"
+     },
+     {
+      "known": "ಬೆಚ್ಚಗಿರೋ",
+      "target": "that is warm"
+     }
+    ],
+    "seed_number": 578
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kan:S0578L02C01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "ಹೆಚ್ಚು",
+     "target_text": "more",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T21:47:24.176619+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4f7d9a60-b3ce-4491-b97b-2984b5006cc2",
+     "target1_audio_id": "f790db27-bc70-4b69-a167-4c1a1985e21d",
+     "target2_audio_id": "25cb11f6-1613-4abb-8d89-4358e0bf1d78",
+     "qa_checked": null,
+     "target1_duration_ms": 528,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "c73a2035-0d99-42cb-87ff-f2bc0cffafad",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಇನ್ನಷ್ಟು",
+       "legoId": "S0023L01",
+       "target": "more",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d8182813-4306-44b3-bbdd-e479782fb575",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02C02",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "ಬೆಚ್ಚಗಿರೋ",
+     "target_text": "that is warm",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 171,
+     "updated_at": "2026-07-31T03:39:11.361524+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4fefd6bf-9b17-4310-b79b-25b7944fae0a",
+     "target1_audio_id": "ec909282-962a-4cd7-a163-f10034135234",
+     "target2_audio_id": "01376770-65d1-4ccc-97b6-15e606e2d5fd",
+     "qa_checked": null,
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 1056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "6df9779f-5b72-41c7-809e-be1913aa64a7",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L01",
+       "target": "that is warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02B01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+     "target_text": "that is more warm",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 170,
+     "updated_at": "2026-07-31T03:39:11.097682+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "40ca7d4e-ca9a-4c93-ade0-98b2080ec984",
+     "target1_audio_id": "bee81d07-64bc-4625-a962-77dbc8521644",
+     "target2_audio_id": "b7e5e721-1486-4ea4-a5d7-e18307d5ac7d",
+     "qa_checked": null,
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": "that is more warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02B02",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್",
+     "target_text": "the church that is more warm",
+     "word_count": 28,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 179,
+     "updated_at": "2026-08-02T21:50:47.341283+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b77a9cab-a5e8-4190-b95e-c5b4a8adb443",
+     "target1_audio_id": "0281186c-d9bb-45bd-82af-41c20ad78743",
+     "target2_audio_id": "79c85d3b-a498-4986-bac9-379d1584e3bb",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": "the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": " that is more warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02B03",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "ಅವಳಿಗೆ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಬೇಕು",
+     "target_text": "she wants the church that is more warm",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 208,
+     "updated_at": "2026-08-02T22:00:48.670623+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1ebd98ca-c9e7-4ddf-84cc-fe6a05151ec1",
+     "target1_audio_id": "5eb6ab32-fe0c-475f-a7ac-fc6be6e1c9ff",
+     "target2_audio_id": "4cd546df-bf5e-41a6-9a62-d2f19e0c94c6",
+     "qa_checked": null,
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಅವಳಿಗೆ ಬೇಕು",
+       "legoId": "S0017L01",
+       "target": "she wants",
+       "isGhost": false
+      },
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": " the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": " that is more warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02U01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಇಲ್ಲಿ ಇದೆ",
+     "target_text": "the church that is more warm is here",
+     "word_count": 36,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.916Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 207,
+     "updated_at": "2026-08-02T22:00:48.85199+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ce47a9f6-16a9-45a7-94bb-338beae82828",
+     "target1_audio_id": "6a854ae9-6818-466a-b79a-31fb3c260617",
+     "target2_audio_id": "c23b9d3e-c590-4fb5-bb49-9120ed117bed",
+     "qa_checked": null,
+     "target1_duration_ms": 2136,
+     "target2_duration_ms": 2472,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": "the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": " that is more warm",
+       "isGhost": false
+      },
+      {
+       "known": "ಇದೆ",
+       "legoId": "S0487L02",
+       "target": " is",
+       "isGhost": false
+      },
+      {
+       "known": "ಇಲ್ಲಿ",
+       "legoId": "S0276L02",
+       "target": " here",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02U02",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "ನನಗೆ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಇಷ್ಟ",
+     "target_text": "I like the church that is more warm",
+     "word_count": 33,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.916Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 207,
+     "updated_at": "2026-08-02T22:00:50.320411+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "cc96674c-d206-47a3-b8ea-f5a07d173a99",
+     "target1_audio_id": "7943f9b7-a92b-4b65-9994-849eeceeb254",
+     "target2_audio_id": "e5831b4f-676e-4992-adcf-1b032dfe0160",
+     "qa_checked": null,
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನನಗೆ ಇಷ್ಟ",
+       "legoId": "S0026L03",
+       "target": "I like",
+       "isGhost": false
+      },
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": " the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": " that is more warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02U03",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "ನನಗೆ ಒಂದು ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಬೇಕು",
+     "target_text": "I want a church that is more warm",
+     "word_count": 34,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.916Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 206,
+     "updated_at": "2026-08-02T22:00:48.090783+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3f7adb56-43ba-4aba-9463-6a1acbbbddab",
+     "target1_audio_id": "da6d1737-2f7d-4f8d-bcce-8d8b0f2b456e",
+     "target2_audio_id": "628375d8-333b-4460-bad9-0072185c9a3f",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನನಗೆ ಬೇಕು",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " church",
+       "isGhost": true
+      },
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": " that is more warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L02U04",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಚರ್ಚ್ ಎಲ್ಲಿ ಇದೆ?",
+     "target_text": "where is the church that is more warm?",
+     "word_count": 34,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:21.916Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 207,
+     "updated_at": "2026-08-02T22:00:50.885653+00:00",
+     "created_at": "2026-07-24T03:27:21.979319+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ff19cddd-6ea4-443a-add5-8661add62d46",
+     "target1_audio_id": "74ac8070-b209-45e2-8a95-27978d5a772d",
+     "target2_audio_id": "18ac222f-7a50-45dc-9665-03b764aef131",
+     "qa_checked": null,
+     "target1_duration_ms": 2136,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಜಾಗ",
+       "legoId": "S0138L03",
+       "target": "where",
+       "isGhost": false
+      },
+      {
+       "known": "ಇದೆ",
+       "legoId": "S0487L02",
+       "target": " is",
+       "isGhost": false
+      },
+      {
+       "known": "ಚರ್ಚ್",
+       "legoId": "S0551L01",
+       "target": " the church",
+       "isGhost": false
+      },
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": " that is more warm",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0578L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0578L03",
+    "type": "M",
+    "known_text": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+    "target_text": "somewhere warmer",
+    "components": [
+     {
+      "known": "ಎಲ್ಲಾದರೂ",
+      "target": "somewhere"
+     },
+     {
+      "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+      "target": "that is more warm"
+     }
+    ],
+    "seed_number": 578
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_kan:S0578L03C01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "ಎಲ್ಲಾದರೂ",
+     "target_text": "somewhere",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 59,
+     "updated_at": "2026-10-28T21:51:08.028244+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "82205a95-fbc7-4214-9201-81f1a12a1cf2",
+     "target1_audio_id": "eb51ee0e-ebc3-45a4-9e70-788caaa51d87",
+     "target2_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+     "qa_checked": null,
+     "target1_duration_ms": 768,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "f1e20f40-447b-4735-bc2a-28555dd744a8",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "somewhere",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d8182813-4306-44b3-bbdd-e479782fb575",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03C02",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+     "target_text": "that is more warm",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 171,
+     "updated_at": "2026-07-31T03:39:11.876514+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "40ca7d4e-ca9a-4c93-ade0-98b2080ec984",
+     "target1_audio_id": "bee81d07-64bc-4625-a962-77dbc8521644",
+     "target2_audio_id": "b7e5e721-1486-4ea4-a5d7-e18307d5ac7d",
+     "qa_checked": null,
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "f264c7b4-9e93-4dee-a981-67e0c9f2d007",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ",
+       "legoId": "S0578L02",
+       "target": "that is more warm",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03B01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+     "target_text": "somewhere warmer",
+     "word_count": 16,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-28T23:43:45.729446+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ff3c757d-ce87-4ff3-9de2-a58f41797ba4",
+     "target1_audio_id": "9c23a462-8f6a-43fb-96f8-4ee37b98a7a7",
+     "target2_audio_id": "216645f5-45ee-444c-a98f-93bdf702c275",
+     "qa_checked": null,
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+       "legoId": "S0578L03",
+       "target": "somewhere warmer",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d8182813-4306-44b3-bbdd-e479782fb575",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03B02",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "ನನಗೆ ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ ಬೇಕು",
+     "target_text": "I want somewhere warmer",
+     "word_count": 24,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 206,
+     "updated_at": "2026-08-02T22:00:46.38823+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "801d6be3-80fe-4662-ae83-806b715a49fe",
+     "target1_audio_id": "ba9a431e-fd8d-4bcb-9140-f91685bf4f6c",
+     "target2_audio_id": "c96e8f04-4097-4517-baf4-421f4ea589c4",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನನಗೆ ಬೇಕು",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+       "legoId": "S0578L03",
+       "target": " somewhere warmer",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03B03",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "ನಾನು ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ ನೋಡಿದೆ",
+     "target_text": "I saw somewhere warmer",
+     "word_count": 22,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 179,
+     "updated_at": "2026-08-02T21:50:46.982549+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f63ba39b-5584-46f3-88f0-fde073b20fe0",
+     "target1_audio_id": "4907a420-496f-4874-a8e7-3fa5ef50509c",
+     "target2_audio_id": "f937d72d-37bb-4027-b5dc-b0554526bbd1",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಾನು",
+       "legoId": "S0386L02",
+       "target": "I",
+       "isGhost": false
+      },
+      {
+       "known": "ನೋಡಿದೆ",
+       "legoId": "S0216L02",
+       "target": " saw",
+       "isGhost": false
+      },
+      {
+       "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+       "legoId": "S0578L03",
+       "target": " somewhere warmer",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03U01",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "ನನಗೆ ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ ಬೇಕು।",
+     "target_text": "I want somewhere warmer",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:22.074Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 286,
+     "updated_at": "2026-08-02T22:00:46.38823+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e389559b-4a1e-46e4-bf26-d1cbc1143461",
+     "target1_audio_id": "ba9a431e-fd8d-4bcb-9140-f91685bf4f6c",
+     "target2_audio_id": "c96e8f04-4097-4517-baf4-421f4ea589c4",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1272,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನನಗೆ ಬೇಕು",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+       "legoId": "S0578L03",
+       "target": " somewhere warmer",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03U02",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "ನಿಮಗೆ ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ ಗೊತ್ತಾ?",
+     "target_text": "do you know somewhere warmer?",
+     "word_count": 22,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:22.074Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 206,
+     "updated_at": "2026-08-02T22:00:50.885653+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "35a7a847-f175-4e57-9003-ae9de269f415",
+     "target1_audio_id": "14249584-209b-48d6-b12c-e6e82440bca1",
+     "target2_audio_id": "bf904eb0-291d-4475-9bd5-b54c049c1059",
+     "qa_checked": null,
+     "target1_duration_ms": 1392,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನಿಮಗೆ ಗೊತ್ತು",
+       "legoId": "S0287L04",
+       "target": "do you know",
+       "isGhost": false
+      },
+      {
+       "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+       "legoId": "S0578L03",
+       "target": " somewhere warmer",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03U03",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "ನನಗೆ ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ ಸಿಕ್ತು",
+     "target_text": "I found somewhere warmer",
+     "word_count": 28,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:22.074Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 207,
+     "updated_at": "2026-08-02T22:00:48.20192+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8bbf902e-8783-4c5b-8ba2-de8e578504fb",
+     "target1_audio_id": "a3d41ba0-7c6e-4aac-9df6-8dea4d9f6db2",
+     "target2_audio_id": "bdad6350-14db-4f44-8599-456ac3706477",
+     "qa_checked": null,
+     "target1_duration_ms": 1416,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ನನಗೆ ಸಿಕ್ತು",
+       "legoId": "S0514L03",
+       "target": "I found",
+       "isGhost": false
+      },
+      {
+       "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+       "legoId": "S0578L03",
+       "target": " somewhere warmer",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_kan:S0578L03U04",
+     "course_code": "eng_for_kan",
+     "seed_number": 578,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "ಇದು ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ ಅಂತ ನಿಮಗೆ ಅನಿಸುತ್ತಾ?",
+     "target_text": "do you think this is somewhere warmer?",
+     "word_count": 34,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-07-24T03:27:22.074Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 206,
+     "updated_at": "2026-08-02T22:00:50.885653+00:00",
+     "created_at": "2026-07-24T03:27:22.127644+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fcc9e717-2db4-479c-9d54-2e2696baa0c6",
+     "target1_audio_id": "6c572c02-f82b-40ac-b6b8-ad234bbf58f3",
+     "target2_audio_id": "a9155d09-0a0e-4256-a75f-99a99d628d81",
+     "qa_checked": null,
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ಅಂತ ನಿಮಗೆ ಅನಿಸುತ್ತೆ",
+       "legoId": "S0492L05",
+       "target": "do you think",
+       "isGhost": false
+      },
+      {
+       "known": "ಇದು",
+       "legoId": "S0094L01",
+       "target": " this is",
+       "isGhost": false
+      },
+      {
+       "known": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+       "legoId": "S0578L03",
+       "target": " somewhere warmer",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1631,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

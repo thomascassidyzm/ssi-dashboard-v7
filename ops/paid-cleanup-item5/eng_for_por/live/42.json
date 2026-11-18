@@ -1,0 +1,1769 @@
+{
+ "seed": 42,
+ "seed_pair": {
+  "known": "Estava a começar a sentir-me melhor do que ontem à noite.",
+  "target": "I was starting to feel better than last night."
+ },
+ "legos": {
+  "S0042L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0042L01",
+    "type": "M",
+    "known_text": "estava a começar a sentir-me",
+    "target_text": "I was starting to feel",
+    "components": [
+     {
+      "known": "estava",
+      "target": "I was"
+     },
+     {
+      "known": "a começar a sentir-me",
+      "target": "starting to feel"
+     }
+    ],
+    "seed_number": 42
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0042L01C01",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "estava",
+     "target_text": "I was",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-12T21:33:35.289623+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "15809dd4-afd9-448e-bd20-b48681a90fd7",
+     "target1_audio_id": "fa15e75b-8ece-4436-983f-5d2931da712b",
+     "target2_audio_id": "f266fa49-4d11-4c8c-9a7a-68684e0c8142",
+     "qa_checked": null,
+     "target1_duration_ms": 1320,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01C02",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "a começar a sentir-me",
+     "target_text": "starting to feel",
+     "word_count": 16,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-28T20:46:23.15812+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fa5397c4-17f1-40bc-8abe-39a399ada6ad",
+     "target1_audio_id": "74a22b0f-d54a-4406-b753-bec1b50b0560",
+     "target2_audio_id": "4918a4b9-cd08-4647-adbe-65d6e87a58a2",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "starting",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0ae2c20b-7580-4b90-9704-a0a386906879",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01B01",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "estava a começar a sentir-me",
+     "target_text": "I was starting to feel",
+     "word_count": 22,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T20:46:23.47644+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "27beb564-99c3-4dea-9665-cab1233e562c",
+     "target1_audio_id": "7be65725-e2e2-438d-a1ac-b77a2a4d62f5",
+     "target2_audio_id": "f2eb9852-3b12-4b18-b04c-c5df45219a35",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0ae2c20b-7580-4b90-9704-a0a386906879",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01B02",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "estava a começar a sentir-me cansado",
+     "target_text": "I was starting to feel tired",
+     "word_count": 28,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:46.244229+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e23d39fa-20bd-459c-868c-3abb38068567",
+     "target1_audio_id": "1596f32c-8269-4125-aa81-8e6567cb628a",
+     "target2_audio_id": "d378c298-7ed8-407e-a975-cc4b6fd6171c",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "cansado",
+       "legoId": "S0039L01",
+       "target": " tired",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01B03",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "estava a começar a sentir-me melhor",
+     "target_text": "I was starting to feel better",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:49.181533+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "289d0f7d-ae10-49da-a0bd-9307aee06f70",
+     "target1_audio_id": "35f317e2-76ae-4eea-bd48-1a0ba8a72a99",
+     "target2_audio_id": "265c4b6b-de80-4c45-bc0f-79285f29f93a",
+     "qa_checked": null,
+     "target1_duration_ms": 2688,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01U02",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "estava a começar a sentir-me melhor esta manhã",
+     "target_text": "I was starting to feel better this morning",
+     "word_count": 42,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.573Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:45.970653+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e186c1b4-c396-4f30-9eba-826c1c5a845a",
+     "target1_audio_id": "42e87e9f-72f1-42c9-b131-a8158693485c",
+     "target2_audio_id": "412be4b7-b4d8-4aa4-bdab-f2680cb4c6e4",
+     "qa_checked": null,
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "esta manhã",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01U03",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "estava a começar a sentir-me cansado esta tarde",
+     "target_text": "I was starting to feel tired this afternoon",
+     "word_count": 43,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.573Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-29T02:33:09.914179+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1015ab5e-39e1-417e-8a9c-4660fec9af56",
+     "target1_audio_id": "b1a804eb-1d09-423e-ab1a-39f57a9f4345",
+     "target2_audio_id": "8f6b9482-c7ca-439a-9fb9-f425d8a0f79b",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3144,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "cansado",
+       "legoId": "S0039L01",
+       "target": " tired",
+       "isGhost": false
+      },
+      {
+       "known": "esta tarde",
+       "legoId": "S0035L03",
+       "target": " this afternoon",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "658f4cac-0e75-4058-8a04-b91f003e1599",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01U04",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "estava a começar a sentir-me quase pronto para falar inglês",
+     "target_text": "I was starting to feel nearly ready to speak English",
+     "word_count": 52,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.573Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:03.326592+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a127fd0d-b306-498f-b183-6db0554a7c53",
+     "target1_audio_id": "753067c9-c551-4f2c-8192-00690efcb768",
+     "target2_audio_id": "f6595312-f65a-47b0-9e62-ce7c24f995f8",
+     "qa_checked": null,
+     "target1_duration_ms": 4248,
+     "target2_duration_ms": 4536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "quase pronto",
+       "legoId": "S0026L01",
+       "target": " nearly ready",
+       "isGhost": false
+      },
+      {
+       "known": "falar",
+       "legoId": "S0001L02",
+       "target": " to speak",
+       "isGhost": false
+      },
+      {
+       "known": "inglês",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01U05",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "estava a começar a sentir-me melhor depois de falar inglês",
+     "target_text": "I was starting to feel better after speaking English",
+     "word_count": 52,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.573Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:44.198966+00:00",
+     "created_at": "2026-02-25T02:02:50.664798+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "73a74068-3e34-45d7-ab16-ef697c593f60",
+     "target1_audio_id": "f1d6dce4-1357-489b-8e5c-4f6e3e178798",
+     "target2_audio_id": "e6928379-044a-4cfd-8cef-4a765e97ba5b",
+     "qa_checked": null,
+     "target1_duration_ms": 4344,
+     "target2_duration_ms": 4536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " after",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speaking",
+       "isGhost": true
+      },
+      {
+       "known": "inglês",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L01U06",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "estava a começar a sentir-me cansado ontem à noite",
+     "target_text": "I was starting to feel tired last night",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "floorgap": true
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 4,
+     "updated_at": "2026-07-04T22:43:45.206871+00:00",
+     "created_at": "2026-06-16T17:12:12.990143+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bc552876-9d48-4aa5-90f5-510ba1f90b15",
+     "target1_audio_id": "9c35adc1-9ea9-4824-a7e3-24160b01f99e",
+     "target2_audio_id": "3a35e0bd-f7fb-443e-98ac-15fadbbb3ed7",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0042L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0042L02",
+    "type": "A",
+    "known_text": "do que",
+    "target_text": "than",
+    "components": null,
+    "seed_number": 42
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0042L02B01",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "melhor do que",
+     "target_text": "better than",
+     "word_count": 11,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:50.66702+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "58d41ec5-1588-4397-bbf7-1434c17c6a18",
+     "target1_audio_id": "a6b8ea3c-8eb5-47f1-904c-124fa616e9ea",
+     "target2_audio_id": "966fbd81-2762-4548-a8ba-0a60a9a2c211",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": "better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L02B02",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "sentir-me melhor do que",
+     "target_text": "to feel better than",
+     "word_count": 19,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-29T03:32:57.379775+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "659f97a6-703c-4c13-82dc-51ce3b7b502a",
+     "target1_audio_id": "ac4ef6e2-835a-4cf3-aa0c-5e2833bd5c9f",
+     "target2_audio_id": "79ebde98-62ec-410e-972b-97b64df69e1d",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d5d6e09c-bffe-484c-80f7-88a57d0ca066",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L02B03",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "melhor do que ontem",
+     "target_text": "better than yesterday",
+     "word_count": 21,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T21:47:46.694798+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ac1fdf71-7d5c-4cf3-928e-64e3bc0fbb91",
+     "target1_audio_id": "be862a1a-8dca-4a44-b5e6-331cfee05746",
+     "target2_audio_id": "5a159bba-e424-4ee2-9e48-585ad907d67c",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 1560,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": "better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ontem",
+       "legoId": "S0030L01",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L02U01",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "quero responder melhor do que ontem",
+     "target_text": "I want to answer better than yesterday",
+     "word_count": 38,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.674Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:48.84379+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d318a087-64f9-438b-b72a-49390f3e18f0",
+     "target1_audio_id": "68e9ea11-8ae1-46a6-9c5e-fd3d618f4094",
+     "target2_audio_id": "edd33604-d1d9-480d-a0a6-1111dce5562f",
+     "qa_checked": null,
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "eu quero",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "para responder",
+       "legoId": "S0027L01",
+       "target": " to answer",
+       "isGhost": false
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ontem",
+       "legoId": "S0030L01",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L02U02",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "estou a começar a sentir-me melhor do que ontem",
+     "target_text": "I'm starting to feel better than yesterday",
+     "word_count": 42,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.674Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:38:04.792208+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "83c2f617-64fe-426f-bdad-a029b187b82c",
+     "target1_audio_id": "b7965094-e0f9-41e4-8c8d-2a9908f612b6",
+     "target2_audio_id": "a5e1c81b-9d85-4f08-b6a4-5018f61677dd",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3816,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estou a começar a sentir-me",
+       "legoId": "S0041L02",
+       "target": "I'm starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ontem",
+       "legoId": "S0030L01",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L02U03",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "quero falar inglês melhor do que no mês passado",
+     "target_text": "I want to speak English better than last month",
+     "word_count": 46,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.674Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:59.693392+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "217667cf-9341-4d21-8d0f-3f49c6f92f94",
+     "target1_audio_id": "e94a81c4-fbcd-4959-98e8-16720ee205f0",
+     "target2_audio_id": "0ddac032-aa47-487d-8095-d2ef0e72dab6",
+     "qa_checked": null,
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 4056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "eu quero",
+       "legoId": "S0001L01",
+       "target": "I want",
+       "isGhost": false
+      },
+      {
+       "known": "falar",
+       "legoId": "S0001L02",
+       "target": " to speak",
+       "isGhost": false
+      },
+      {
+       "known": "inglês",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "no mês passado",
+       "legoId": "S0037L04",
+       "target": " last month",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L02U04",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "estava a começar a sentir-me melhor do que esta manhã",
+     "target_text": "I was starting to feel better than this morning",
+     "word_count": 47,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.674Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:02.944243+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e2ccb4c7-70e1-4fd5-a634-9642e4d95d77",
+     "target1_audio_id": "3ee544f4-ba40-4d7c-85d3-92f1333408ad",
+     "target2_audio_id": "3dec5185-78a3-4e6a-8410-471c8ba91d0f",
+     "qa_checked": null,
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "esta manhã",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L02U05",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "estou a aprender inglês melhor do que no mês passado",
+     "target_text": "I've been learning English better than last month",
+     "word_count": 49,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.674Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:55.744561+00:00",
+     "created_at": "2026-02-25T02:02:50.764042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3da7f520-75d8-4180-b1a9-bebf696200db",
+     "target1_audio_id": "4983932e-e58e-4065-90b6-8b78cb556e6f",
+     "target2_audio_id": "fc4669f3-d344-43a9-9ea2-a60bef7bb2e6",
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estou a aprender",
+       "legoId": "S0038L01",
+       "target": "I've been learning",
+       "isGhost": false
+      },
+      {
+       "known": "inglês",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "no mês passado",
+       "legoId": "S0037L04",
+       "target": " last month",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0042L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0042L03",
+    "type": "M",
+    "known_text": "ontem à noite",
+    "target_text": "last night",
+    "components": [
+     {
+      "known": "ontem à noite",
+      "target": "last night"
+     }
+    ],
+    "seed_number": 42
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0042L03B01",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "ontem à noite",
+     "target_text": "last night",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T21:47:47.398529+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b0fa9e87-5d1e-412f-b5dd-8ebf9863dc23",
+     "target1_audio_id": "38c13650-4980-48a0-a25c-e4ea8994b9a1",
+     "target2_audio_id": "b3e9635b-d44e-4102-aeeb-b3a91b8e39ae",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": "last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L03B02",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "melhor do que ontem à noite",
+     "target_text": "better than last night",
+     "word_count": 22,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:51.090708+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "db037efb-db01-44f8-852e-45d5cb977196",
+     "target1_audio_id": "9ceb7577-c593-4ac7-ac04-05b060ee3bbd",
+     "target2_audio_id": "6f3b2264-82c5-418c-b090-55794003730d",
+     "qa_checked": null,
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": "better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L03B03",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "sentir-me melhor do que ontem à noite",
+     "target_text": "to feel better than last night",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:51.497744+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7eaf3db8-0b31-4738-bb48-7eebd7b7a0fa",
+     "target1_audio_id": "f5b0aa92-f626-4802-9900-8a10510ce038",
+     "target2_audio_id": "c66aafbd-f2ca-4647-9f74-66d5b31ff703",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L03U01",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "queria ler a história ontem à noite",
+     "target_text": "I wanted to read the story last night",
+     "word_count": 37,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.851Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:53.761814+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b9c649e7-987e-4adb-a982-83deb006c936",
+     "target1_audio_id": "40b73ccd-2bf3-47fc-b3c2-b155d4ad2540",
+     "target2_audio_id": "83c9c7f6-f820-41f3-a01b-c8ee17ecd856",
+     "qa_checked": null,
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "queria",
+       "legoId": "S0030L03",
+       "target": "I wanted",
+       "isGhost": false
+      },
+      {
+       "known": "ler",
+       "legoId": "S0035L01",
+       "target": " to read",
+       "isGhost": false
+      },
+      {
+       "known": "a história",
+       "legoId": "S0036L02",
+       "target": " the story",
+       "isGhost": false
+      },
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L03U02",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "ela começou a falar inglês ontem à noite",
+     "target_text": "she started to speak English last night",
+     "word_count": 39,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.851Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:58.072745+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1a493e0e-2b3a-4bb5-aeac-e971749bad0e",
+     "target1_audio_id": "b3dbc1c9-51f6-42f1-9f68-2ab5d9a46f62",
+     "target2_audio_id": "f41e6116-3a94-41df-8e11-1b6dad41a0d2",
+     "qa_checked": null,
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "she",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " started",
+       "isGhost": true
+      },
+      {
+       "known": "falar",
+       "legoId": "S0001L02",
+       "target": " to speak",
+       "isGhost": false
+      },
+      {
+       "known": "inglês",
+       "legoId": "S0001L03",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L03U03",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "estava a começar a sentir-me cansado ontem à noite",
+     "target_text": "I was starting to feel tired last night",
+     "word_count": 39,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.851Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:03.525573+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "bc552876-9d48-4aa5-90f5-510ba1f90b15",
+     "target1_audio_id": "9c35adc1-9ea9-4824-a7e3-24160b01f99e",
+     "target2_audio_id": "3a35e0bd-f7fb-443e-98ac-15fadbbb3ed7",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "cansado",
+       "legoId": "S0039L01",
+       "target": " tired",
+       "isGhost": false
+      },
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L03U04",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "estava a começar a sentir-me melhor do que ontem à noite",
+     "target_text": "I was starting to feel better than last night",
+     "word_count": 45,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.851Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-02T22:37:47.533809+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "3e931775-af06-4302-b4c4-443783661547",
+     "target1_audio_id": "efbf4722-651d-43cb-9a18-9a4a06da0299",
+     "target2_audio_id": "5b7c6d25-9c2c-45c1-9e4f-23dab976f6fa",
+     "qa_checked": null,
+     "target1_duration_ms": 3552,
+     "target2_duration_ms": 4032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "estava a começar a sentir-me",
+       "legoId": "S0042L01",
+       "target": "I was starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "melhor",
+       "legoId": "S0029L01",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "do que",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0042L03U05",
+     "course_code": "eng_for_por",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "comecei a pensar nisso com cuidado ontem à noite",
+     "target_text": "I started to think about it carefully last night",
+     "word_count": 48,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-02-25T02:02:50.851Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-29T02:33:10.748142+00:00",
+     "created_at": "2026-02-25T02:02:50.941493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "77230efa-7761-4f5a-a45b-1b7b01e13558",
+     "target1_audio_id": "a496866b-427e-47d6-8316-852feba9bd64",
+     "target2_audio_id": "37550efa-1661-4c65-abc3-7e48e718a3b0",
+     "qa_checked": null,
+     "target1_duration_ms": 4056,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "comecei",
+       "legoId": "S0037L01",
+       "target": "I started",
+       "isGhost": false
+      },
+      {
+       "known": "pensar nisso",
+       "legoId": "S0037L02",
+       "target": " to think about it",
+       "isGhost": false
+      },
+      {
+       "known": "com cuidado",
+       "legoId": "S0037L03",
+       "target": " carefully",
+       "isGhost": false
+      },
+      {
+       "known": "ontem à noite",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "658f4cac-0e75-4058-8a04-b91f003e1599",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

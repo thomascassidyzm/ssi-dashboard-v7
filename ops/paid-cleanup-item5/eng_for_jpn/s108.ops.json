@@ -1,0 +1,104 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02B01",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U01",
+   "set": {
+    "target_text": "I know that we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "I know that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U02",
+   "set": {
+    "target_text": "she told me that we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "she told me that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U03",
+   "set": {
+    "target_text": "I remember that we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "I remember that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U04",
+   "set": {
+    "target_text": "I think that we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "I think that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02B02",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02B03",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night but we did"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night but we did"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U05",
+   "set": {
+    "target_text": "we didn't hope to wake up in the middle of the night so we're very tired"
+   },
+   "expect": {
+    "target_text": "we didn't hope to wake in the middle of the night so we're very tired"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2251 @@
+{
+ "seed": 42,
+ "seed_pair": {
+  "known": "ඊයේ රෑට වඩා හොඳ දැනෙන්න ගත්තා.",
+  "target": "I was starting to feel better than last night."
+ },
+ "legos": {
+  "S0042L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0042L01",
+    "type": "M",
+    "known_text": "මම ගත්තා",
+    "target_text": "I was",
+    "components": [
+     {
+      "known": "මම",
+      "target": "i"
+     },
+     {
+      "known": "ගත්තා",
+      "target": "was"
+     }
+    ],
+    "seed_number": 42
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0042L01C01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "මම",
+     "target_text": "I",
+     "word_count": 1,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 34,
+     "updated_at": "2026-10-12T17:31:05.605702+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d3ce2adb-6df3-4d24-b223-57cddaee7be8",
+     "target1_audio_id": "a66e8107-4990-4a16-8aaa-3831b7ca0514",
+     "target2_audio_id": "33185df6-d563-41af-853f-a55201fea3ab",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 720,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "b145769d-954c-4384-bb64-c93bc1af04d2",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01C02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "ගත්තා",
+     "target_text": "was",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-12T16:48:51.115517+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c91ee34c-b21f-4fa3-8d91-aad74100fc2e",
+     "target1_audio_id": "3679c387-384e-4075-9f64-18efe35f94c6",
+     "target2_audio_id": "b2cad77e-e499-43ef-8d95-9567a7b52000",
+     "qa_checked": null,
+     "target1_duration_ms": 672,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "3ac9a93f-2a42-4b73-a0a2-f9af9abebf8f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "was",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "මම ගත්තා",
+     "target_text": "I was",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-12T21:33:35.733794+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f85ea7f9-f743-4f43-a194-cc7f5bf09424",
+     "target1_audio_id": "9e57ee5f-e934-4b74-aee2-3e5b6a820f77",
+     "target2_audio_id": "f266fa49-4d11-4c8c-9a7a-68684e0c8142",
+     "qa_checked": null,
+     "target1_duration_ms": 864,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "මම වෙහෙස දැනෙන්න ගත්තා",
+     "target_text": "I was starting to feel tired",
+     "word_count": 28,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:08.426388+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "bb5490dd-a1f2-42ee-aa7e-61edbc1d000b",
+     "target1_audio_id": "d6290484-c479-4076-b9d5-d3c954a373b7",
+     "target2_audio_id": "7394df59-41df-428f-ac20-04fafb831e0e",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1992,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "මම හොඳට දැනෙන්න ගත්තා",
+     "target_text": "I was starting to feel well",
+     "word_count": 27,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-12T09:18:49.324638+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0c027f0a-3e31-492a-8d70-dd57b3ceed96",
+     "target1_audio_id": "4375853e-3adb-43ef-b9d4-db03f068e203",
+     "target2_audio_id": "b4c2013e-03ac-40b7-a233-b0bd3c9313d5",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1920,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " well",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "f8b25639-a63f-4bd9-94bb-538f8bd54958",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01B04",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "මම හොඳයි දැනෙන්න ගත්තා",
+     "target_text": "I was starting to feel okay",
+     "word_count": 27,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:08.524377+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "de140d2e-e852-4c6d-b196-ecd49a405831",
+     "target1_audio_id": "82033076-67da-4c4f-ba34-3ba880c6ddd2",
+     "target2_audio_id": "d306f177-d1c9-484d-9143-674eee025698",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2016,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳයි",
+       "legoId": "S0041L01",
+       "target": " okay",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "මම වෙහෙස දැනෙන්න ගත්තා අද උදේ",
+     "target_text": "I was starting to feel tired this morning",
+     "word_count": 41,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.470Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-28T20:46:23.929624+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "44d67c41-d349-4f8e-bea5-a6ceb378195f",
+     "target1_audio_id": "919e6c06-4941-473a-83b2-4a8570ffc877",
+     "target2_audio_id": "e38d7790-a874-45c9-b631-8aac7858ef15",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 3000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      },
+      {
+       "known": "අද උදේ",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "මම හොඳට දැනෙන්න ගත්තා ඊයේ",
+     "target_text": "I was starting to feel well yesterday",
+     "word_count": 37,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.470Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:08.795086+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "25bbb4c6-2f4d-4cd5-8a5d-5425c5801c21",
+     "target1_audio_id": "c4cb2fb0-ecbb-4705-af75-c4ee36b005b3",
+     "target2_audio_id": "77806f4f-5036-4a0e-beeb-b2dbf0fc3f69",
+     "qa_checked": null,
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " well",
+       "isGhost": true
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "මම හොඳයි දැනෙන්න ගත්තා ඒත් දැන් වෙහෙස දැනෙනවා",
+     "target_text": "I was starting to feel okay but now I feel tired",
+     "word_count": 48,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.470Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:08.848073+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "61f67b74-1f40-4524-88ef-d9fb0b54af03",
+     "target1_audio_id": "755448f4-eff8-4d52-912a-cc81567d6db0",
+     "target2_audio_id": "154fd63f-e79d-4ab8-820a-5dc36c28f473",
+     "qa_checked": null,
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3792,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳයි",
+       "legoId": "S0041L01",
+       "target": " okay",
+       "isGhost": false
+      },
+      {
+       "known": "ඒත්",
+       "legoId": "S0019L04",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "දැන්",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "මම වෙහෙස දැනෙන්න ගත්තා ඒත් දැන් හොඳයි",
+     "target_text": "I was starting to feel tired but now okay",
+     "word_count": 41,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.470Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:08.899287+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "567d7d59-ce28-4cad-a7c4-223c011d2713",
+     "target1_audio_id": "4cea1c68-d750-4cc6-975a-037f369684c0",
+     "target2_audio_id": "d8969f0f-af9f-425c-8aa7-c92b9bc9a2de",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      },
+      {
+       "known": "ඒත්",
+       "legoId": "S0019L04",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "දැන්",
+       "legoId": "S0001L05",
+       "target": " now",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳයි",
+       "legoId": "S0041L01",
+       "target": " okay",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L01U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "මම හොඳට දැනෙන්න ගත්තා දැන් මේ මොහොතේ",
+     "target_text": "I was starting to feel well at the moment",
+     "word_count": 41,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.470Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-12T09:40:30.254735+00:00",
+     "created_at": "2026-03-20T12:23:07.576768+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "40ecd768-524d-41c8-a5e1-128f5a14dda6",
+     "target1_audio_id": "a4f3c374-268c-4998-8563-0d2666c925df",
+     "target2_audio_id": "ec907218-2de6-45a5-b0ff-c63fd38e3a6f",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " well",
+       "isGhost": true
+      },
+      {
+       "known": "දැන් මේ මොහොතේ",
+       "legoId": "S0040L02",
+       "target": " at the moment",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0042L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0042L02",
+    "type": "A",
+    "known_text": "වඩා",
+    "target_text": "than",
+    "components": [],
+    "seed_number": 42
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0042L02B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "හොඳ වඩා",
+     "target_text": "better than",
+     "word_count": 11,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:09.000913+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8b053d24-9dfd-4756-b069-4658980330e9",
+     "target1_audio_id": "89e51a36-2e39-4e11-a4a1-27e69fd919d0",
+     "target2_audio_id": "c558c392-d6f6-4ed6-a8e3-e507bfcd6472",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 816,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": "better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L02B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "වෙහෙස වඩා",
+     "target_text": "more tired than",
+     "word_count": 15,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:09.058796+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "740ddad9-7d1f-4cd9-aa61-7a1053cb1498",
+     "target1_audio_id": "970a5d45-9f6f-46ff-9238-104a6a967e31",
+     "target2_audio_id": "24fec459-2106-4f90-8711-503e1f0d27e6",
+     "qa_checked": null,
+     "target1_duration_ms": 1272,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "වැඩිය",
+       "legoId": "S0023L02",
+       "target": "more",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L02B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "ඊයේ වඩා",
+     "target_text": "than yesterday",
+     "word_count": 14,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 29,
+     "updated_at": "2026-10-28T17:29:13.916598+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "38423238-2d82-4807-9c81-2a2ea2433047",
+     "target1_audio_id": "5fae102e-54cb-4771-a413-af7d8841b922",
+     "target2_audio_id": "80728572-fea9-440d-a0af-8b38ee51bcaf",
+     "qa_checked": null,
+     "target1_duration_ms": 1104,
+     "target2_duration_ms": 1152,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": "than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L02U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "මට හොඳ වඩා ඊයේ දැනෙනවා",
+     "target_text": "I feel better than yesterday",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.648Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:09.16009+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2615d9f6-6f59-486a-8d68-e3b5f26ebc5f",
+     "target1_audio_id": "63429722-175d-466b-a80c-39917719090a",
+     "target2_audio_id": "8c7dac5c-8493-45ab-83a8-cba7dd2e6b9e",
+     "qa_checked": null,
+     "target1_duration_ms": 1632,
+     "target2_duration_ms": 1848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L02U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "මම හොඳ වඩා ඊයේ දැනෙන්න ගන්නවා",
+     "target_text": "I'm starting to feel better than yesterday",
+     "word_count": 42,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.648Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:09.210785+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "72f55878-0466-411c-bada-93b74c9e2c8f",
+     "target1_audio_id": "837f7f3d-15bd-4028-97e8-f9503fccbff4",
+     "target2_audio_id": "5698da7a-6baa-4ab3-a5e2-3d04dfca0b96",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'm",
+       "isGhost": true
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L02U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "මම හොඳ වඩා ඊයේ දැනෙන්න ගත්තා",
+     "target_text": "I was starting to feel better than yesterday",
+     "word_count": 44,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.648Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-29T02:33:10.363906+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ae1521ad-f33d-47d7-a4c6-51693a65806c",
+     "target1_audio_id": "6fae52b8-2565-44ab-aa6f-c8967d59c9a2",
+     "target2_audio_id": "83bcfc1c-899b-48ad-b2bf-bc4b8ed8c8c0",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L02U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "මට වෙහෙස වඩා ඊයේ දැනෙනවා",
+     "target_text": "I feel more tired than yesterday",
+     "word_count": 32,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.648Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:09.371998+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4e0fd0da-e2f1-4c76-b9bc-320ce23b976c",
+     "target1_audio_id": "569d1393-cd19-4715-9960-7c700c06ebaf",
+     "target2_audio_id": "b3f67f6e-123f-486a-bba5-ea17d85e3935",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "වැඩිය",
+       "legoId": "S0023L02",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": " yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L02U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "මට හොඳ වඩා අද උදේ දැනෙනවා",
+     "target_text": "I feel better than this morning",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.648Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-29T03:32:57.347718+00:00",
+     "created_at": "2026-03-20T12:23:07.752046+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "91f81fc4-7ac5-4c2e-83d7-57dc059e721f",
+     "target1_audio_id": "b5069236-8b15-445b-a683-8bae593a303f",
+     "target2_audio_id": "4bbbddbd-c664-4296-a946-4398b1c1655c",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "අද උදේ",
+       "legoId": "S0039L02",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4feb4243-9523-48b5-beb9-33c5bd5cb519",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0042L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0042L03",
+    "type": "M",
+    "known_text": "ඊයේ රෑ",
+    "target_text": "last night",
+    "components": [
+     {
+      "known": "ඊයේ",
+      "target": "yesterday"
+     },
+     {
+      "known": "රෑ",
+      "target": "night"
+     }
+    ],
+    "seed_number": 42
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_sin:S0042L03C01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "ඊයේ",
+     "target_text": "yesterday",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-28T21:47:34.817856+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ac7e83fc-508b-463c-bc11-a5c7974a1ad0",
+     "target1_audio_id": "5176831b-174e-4ee6-830a-2b9189c18695",
+     "target2_audio_id": "c522333b-41ed-4d08-9536-2ef6e3b39909",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "147d4730-ff02-41c6-90a9-11cd50d88d20",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඊයේ",
+       "legoId": "S0030L03",
+       "target": "yesterday",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03C02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "රෑ",
+     "target_text": "night",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-28T21:53:31.298592+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "08ca429d-ecd0-40ab-a513-d5dbe2b71c62",
+     "target1_audio_id": "c036c74a-65e0-4e79-bdb3-d5e74100d4d7",
+     "target2_audio_id": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+     "qa_checked": null,
+     "target1_duration_ms": 864,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "6e0c879c-28d9-428a-9143-1f7e74b221b9",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "night",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03B01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "ඊයේ රෑ",
+     "target_text": "last night",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 29,
+     "updated_at": "2026-10-28T21:47:47.398529+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5aece20a-94ea-4ae2-a314-2069d27995c5",
+     "target1_audio_id": "246f3c73-b511-4f86-8615-b5c790e5d94a",
+     "target2_audio_id": "b3e9635b-d44e-4102-aeeb-b3a91b8e39ae",
+     "qa_checked": null,
+     "target1_duration_ms": 912,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": "last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03B02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "ඊයේ රෑට වඩා",
+     "target_text": "than last night",
+     "word_count": 15,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 29,
+     "updated_at": "2026-10-28T19:42:14.087307+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "606ac929-422c-4a98-b1f4-c2ff8409f828",
+     "target1_audio_id": "9621e5c2-68ff-4214-bb2d-12b2ccb4beb8",
+     "target2_audio_id": "5075b33b-0dd8-4d8e-9ba0-178bb2559670",
+     "qa_checked": null,
+     "target1_duration_ms": 984,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": "than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6ab69da-e402-45f0-9970-f28b2adf86e9",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03B03",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "ඊයේ රෑ වෙහෙස",
+     "target_text": "tired last night",
+     "word_count": 16,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:09.573137+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e15e5e23-2d4c-492c-80a0-1fa2640464f4",
+     "target1_audio_id": "62afd4ab-33c7-40a8-a0be-a99bbf8e5049",
+     "target2_audio_id": "70f8d2e8-1fb2-40fe-a985-67769b560404",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "tired",
+       "isGhost": true
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03B04",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "ඊයේ රෑ හොඳයි",
+     "target_text": "okay last night",
+     "word_count": 15,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 27,
+     "updated_at": "2026-07-31T09:06:09.626078+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ecace162-e568-4dda-b91b-1ef189190e6e",
+     "target1_audio_id": "9ef60b0e-ae64-4e4c-8f54-93d9eb67612f",
+     "target2_audio_id": "866eea06-efbb-44bf-9a3c-54ae3f8cba96",
+     "qa_checked": null,
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "හොඳයි",
+       "legoId": "S0041L01",
+       "target": "okay",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U01",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "මට හොඳ වඩා ඊයේ රෑ දැනෙනවා",
+     "target_text": "I feel better than last night",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-29T03:32:57.366366+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b2c1a033-14e8-4828-99d2-878f856cfc59",
+     "target1_audio_id": "f660dc01-25b5-4ac7-9123-093e15a6dab4",
+     "target2_audio_id": "5a44f4f0-2f84-49e8-9b23-ddc4668428dc",
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4feb4243-9523-48b5-beb9-33c5bd5cb519",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U02",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "මම හොඳ වඩා ඊයේ රෑ දැනෙන්න ගත්තා",
+     "target_text": "I was starting to feel better than last night",
+     "word_count": 45,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:09.912781+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1e6a776c-a181-40d0-a327-db266536bca4",
+     "target1_audio_id": "536f1a73-117d-4333-bf94-e5069c403823",
+     "target2_audio_id": "e9fa1a90-399c-4fe9-94d1-9bc8582a1ec7",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U03",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "මම වෙහෙස දැනෙන්න ගත්තා ඊයේ රෑ",
+     "target_text": "I was starting to feel tired last night",
+     "word_count": 39,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:09.965131+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "46179d67-0750-4dcb-bace-b2c54f769a28",
+     "target1_audio_id": "1f87c853-65c4-4bc9-8e4c-f6cad261aaa4",
+     "target2_audio_id": "345cb80d-7b9e-47f8-b387-6dc5aa59c7f5",
+     "qa_checked": null,
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U04",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "මම ඊයේ රෑ වෙහෙසෙන් හිටියා",
+     "target_text": "I was tired last night",
+     "word_count": 23,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-11-18T13:01:05.679551+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 1824,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tired",
+       "isGhost": true
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "62f3dae2-f70d-4362-92b0-a609685fa703",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U05",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "මම හොඳට දැනෙන්න ගත්තා ඊයේ රෑ",
+     "target_text": "I was starting to feel well last night",
+     "word_count": 38,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 32,
+     "updated_at": "2026-10-29T02:33:10.753775+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b8671701-865f-49ca-8cab-8b50f391ac4e",
+     "target1_audio_id": "213f5c29-476e-40d7-bf5b-9d772f578c7c",
+     "target2_audio_id": "00e6766b-cdab-400b-8078-cced0a9e343b",
+     "qa_checked": null,
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": "I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " well",
+       "isGhost": true
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9d31d354-27ec-4b91-935d-8f19a9982c5a",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U06",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "අද මට ඊයේ රෑට වඩා හොඳයි දැනෙනවා",
+     "target_text": "I feel better today than last night",
+     "word_count": 34,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-11-18T13:01:05.679551+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": null,
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "හොඳයි",
+       "legoId": "S0041L01",
+       "target": " okay",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳට",
+       "legoId": "S0029L02",
+       "target": " better",
+       "isGhost": false
+      },
+      {
+       "known": "වඩා",
+       "legoId": "S0042L02",
+       "target": " than",
+       "isGhost": false
+      },
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "62f3dae2-f70d-4362-92b0-a609685fa703",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U07",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "ඊයේ රෑ මට කතා කරන්න ඕනේ හිතුනා",
+     "target_text": "last night I wanted to speak",
+     "word_count": 28,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:10.228015+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "79dafdfc-06ac-4cc2-84d5-b6e946573953",
+     "target1_audio_id": "43f4a6e4-0e68-4ab0-bb1c-92914b9406fc",
+     "target2_audio_id": "ba768b8a-498e-426f-8ce3-b5a35ff71098",
+     "qa_checked": null,
+     "target1_duration_ms": 1992,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": "last night",
+       "isGhost": false
+      },
+      {
+       "known": "මට ඕනේ හිතුනා",
+       "legoId": "S0030L01",
+       "target": " I wanted",
+       "isGhost": false
+      },
+      {
+       "known": "කතා කරන්න",
+       "legoId": "S0001L03",
+       "target": " to speak",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_sin:S0042L03U08",
+     "course_code": "eng_for_sin",
+     "seed_number": 42,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "ඊයේ රෑ මම හොඳයි දැනෙන්න ගත්තා",
+     "target_text": "last night I was starting to feel okay",
+     "word_count": 38,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T12:23:07.866Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 30,
+     "updated_at": "2026-07-31T09:06:10.386144+00:00",
+     "created_at": "2026-03-20T12:23:07.97563+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a069be49-1a2b-4b00-b966-c2f4b1cec0bd",
+     "target1_audio_id": "fd666ab8-ac52-4d56-9750-0d4c001f675e",
+     "target2_audio_id": "56583e11-5331-4430-82ab-8889ca0a5c81",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "ඊයේ රෑ",
+       "legoId": "S0042L03",
+       "target": "last night",
+       "isGhost": false
+      },
+      {
+       "known": "මම ගත්තා",
+       "legoId": "S0042L01",
+       "target": " I was",
+       "isGhost": false
+      },
+      {
+       "known": "දැනෙන්නේ ගන්නවා",
+       "legoId": "S0041L02",
+       "target": " starting to feel",
+       "isGhost": false
+      },
+      {
+       "known": "හොඳයි",
+       "legoId": "S0041L01",
+       "target": " okay",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1147,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

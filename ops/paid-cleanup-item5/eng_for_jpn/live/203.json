@@ -1,0 +1,3258 @@
+{
+ "seed": 203,
+ "seed_pair": {
+  "known": "手伝ってと頼んだら何をしますか？",
+  "target": "what would you do if I asked you to help me?"
+ },
+ "legos": {
+  "S0203L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0203L01",
+    "type": "M",
+    "known_text": "手伝ってと頼んだら",
+    "target_text": "if I asked you to help me",
+    "components": [
+     {
+      "known": "頼む",
+      "target": "asked"
+     },
+     {
+      "known": "〜たら",
+      "target": "if"
+     }
+    ],
+    "seed_number": 203
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0203L01C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "頼む",
+     "target_text": "asked",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-28T17:30:50.270403+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c58fe3ac-6a3d-4987-a367-b594df1d51eb",
+     "target1_audio_id": "9717b551-adb7-485f-8c67-c60cd4c2df49",
+     "target2_audio_id": "1baa1e09-0b39-40b8-9f46-dd3edd447113",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "asked",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "手伝ってと頼んだら",
+     "target_text": "if I asked you to help me",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-28T17:30:50.704181+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3386b3f4-9a42-4a59-9cce-b42dbd8eb26f",
+     "target1_audio_id": "c5ee6b9c-8e8f-48f1-a545-a56757d2b464",
+     "target2_audio_id": "277c0495-a269-4262-8db0-77a059643e83",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "もし頼んだら",
+     "target_text": "if I asked you to help me",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T17:30:50.704181+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "87262d61-2203-4c2c-880c-75a81434d3d3",
+     "target1_audio_id": "c5ee6b9c-8e8f-48f1-a545-a56757d2b464",
+     "target2_audio_id": "277c0495-a269-4262-8db0-77a059643e83",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1632,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "もし頼んだら、どうする？",
+     "target_text": "what would you do if I asked you to help me?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-11-18T13:07:42.449894+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "e31b54fa-eadf-4169-984b-e73ba5db64e2",
+     "target1_audio_id": null,
+     "target2_audio_id": "f8b2c6fa-d7c2-4205-aa18-99e57cdbfd2a",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false
+      },
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": " if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "もし私があなたに手伝ってと頼んだら、来られますか？",
+     "target_text": "if I asked you to help me, would you be able to come?",
+     "word_count": 53,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "820f35a0-4f47-48b0-8550-644b37bd2a00",
+     "target1_audio_id": "eb4effa4-78d2-4114-ad5b-fa6581dc0393",
+     "target2_audio_id": "c05b4017-94a0-4bdd-9afb-c378533b1319",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "〜られる",
+       "legoId": "S0024L03",
+       "target": " be able to",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "もし頼んだら、明日手伝ってもらえますか？",
+     "target_text": "if I asked you to help me tomorrow, would you be able to?",
+     "word_count": 57,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "547ca887-529e-43cb-990c-b795ec01496a",
+     "target1_audio_id": "88efeabe-c9c5-4e55-98df-e392f48d6e21",
+     "target2_audio_id": "c93d781a-6648-465c-a034-4a7c9f606e4a",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3816,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "明日",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "〜られる",
+       "legoId": "S0024L03",
+       "target": " be able to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "もし頼んだら、何でも手伝ってくれますか？",
+     "target_text": "if I asked you to help me with anything, would you come?",
+     "word_count": 56,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "3302d5b4-6c33-4352-b235-555515d08e23",
+     "target1_audio_id": "d8dfdcc4-876f-40c1-8c1c-e4ba2503cd96",
+     "target2_audio_id": "c91a398b-a7d1-4c11-87b2-4a4f0be1e4a7",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "何も",
+       "legoId": "S0035L03",
+       "target": " anything",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "もし頼んだら、来週でも大丈夫ですか？",
+     "target_text": "if I asked you to help me next week, would that be okay?",
+     "word_count": 56,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "13a1b67c-f7af-4588-b1ab-7e2ea1f0f3f5",
+     "target1_audio_id": "6032d17b-cdc0-44ab-a34f-490fc5e50502",
+     "target2_audio_id": "e9c713c9-acc1-4b9a-9b69-a410fe558dd7",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "来週",
+       "legoId": "S0186L01",
+       "target": " next week",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "大丈夫",
+       "legoId": "S0141L02",
+       "target": " okay",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "もし頼んだら、仕事の前に来てもらえますか？",
+     "target_text": "if I asked you to help me before you leave, would you come?",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "f55eedc4-0e2e-42d8-8c13-6336b642205f",
+     "target1_audio_id": "f70f9cca-9814-4c30-9842-747f21b1631c",
+     "target2_audio_id": "6f83eec0-3967-4025-9aa0-42f335e1e16e",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " before",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " leave,",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "もし頼んだら、夜でも大丈夫ですか？",
+     "target_text": "if I asked you to help me tonight, would you mind?",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "1abb9a1e-1433-4ba3-8ec2-3b97bed58d06",
+     "target1_audio_id": "bcf2b9da-da08-477f-8bfc-9efe289a1e1b",
+     "target2_audio_id": "0ae7db14-04e7-442b-967c-5eb2671c7880",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 2784,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今夜",
+       "legoId": "S0031L01",
+       "target": " tonight",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "気にする",
+       "legoId": "S0063L02",
+       "target": " mind",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "もし頼んだら、来てもらえると思いますか？",
+     "target_text": "do you think you can help if I asked you to help me?",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "cd9f6543-c4b4-493e-b411-ca679289366e",
+     "target1_audio_id": "0637fea3-5ed8-424c-a057-0ac216774c6c",
+     "target2_audio_id": "38ffe5c0-f6b0-4433-ace8-b8df118e175c",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 2856,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "do",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " help",
+       "isGhost": true
+      },
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": " if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "もし頼んだら、断りますか？",
+     "target_text": "would you say no if I asked you to help me?",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "59d9a19a-8ad9-411b-9207-d66a682374a7",
+     "target1_audio_id": "f2c47912-4e10-419f-af42-325985e80988",
+     "target2_audio_id": "016e5e6d-dc01-4aeb-bb3c-fde128a641b6",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3000,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " say",
+       "isGhost": true
+      },
+      {
+       "known": "いいえ",
+       "legoId": "S0096L01",
+       "target": " no",
+       "isGhost": false
+      },
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": " if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "明日手伝ってと頼んだら、来られますか？",
+     "target_text": "if I asked you to help me tomorrow morning, could you come?",
+     "word_count": 59,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "6ff441f6-f18d-4b07-8fac-a76f6f097fef",
+     "target1_audio_id": "ca68abfd-ba09-4e9b-83ae-a72ed857c072",
+     "target2_audio_id": "18f74abf-f47b-4d8e-8fec-f375b5c14743",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "明日の朝",
+       "legoId": "S0155L04",
+       "target": " tomorrow morning",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " could",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "もし何か頼んだら、来てくれますか？",
+     "target_text": "if I asked you to help me with something, would you come?",
+     "word_count": 57,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "16480be2-c90c-48a8-b62d-552c196cc6cb",
+     "target1_audio_id": "ed4ad9e6-c77b-41c9-8f44-4cce2bd00d11",
+     "target2_audio_id": "4841fdff-712e-4a73-8b15-4ffca354db9e",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3144,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 20,
+     "known_text": "もし頼んだら、すぐに来てもらえますか？",
+     "target_text": "if I asked you to help me, would you come as soon as you can?",
+     "word_count": 61,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "0ae4e326-cbc5-486f-a843-0f9829a4c7bc",
+     "target1_audio_id": "1e3d3a51-6273-490e-9211-9f0a2831898b",
+     "target2_audio_id": "280796af-0029-4449-bd2a-c74e31f09f0e",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3432,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "できるだけ早く",
+       "legoId": "S0028L02",
+       "target": " as soon as you can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 22,
+     "known_text": "もし頼んだら、来週来てもらえますか？",
+     "target_text": "if I asked you to help me next week, would you be able to be there?",
+     "word_count": 67,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "3bf04ff0-3d34-4115-8e4a-319f570bc2a4",
+     "target1_audio_id": "428bf0e4-56cf-4047-a760-f170d6e00e6c",
+     "target2_audio_id": "87b0b85c-48f2-4f69-bbca-c8754abd28b4",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 4200,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "来週",
+       "legoId": "S0186L01",
+       "target": " next week",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "〜られる",
+       "legoId": "S0024L03",
+       "target": " be able to",
+       "isGhost": false
+      },
+      {
+       "known": "いること",
+       "legoId": "S0157L03",
+       "target": " be there",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 23,
+     "known_text": "もし手伝ってと頼んだら、どうしますか？",
+     "target_text": "what would you do if I asked you to help me?",
+     "word_count": 44,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-28T23:20:19.666059+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "7d0a2486-d51a-4787-b581-b6c340cb1199",
+     "target1_audio_id": "cef6d3d8-1f19-4d1d-bebb-500f71eeb347",
+     "target2_audio_id": "f8b2c6fa-d7c2-4205-aa18-99e57cdbfd2a",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false
+      },
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": " if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L01U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 1,
+     "position": 24,
+     "known_text": "もし頼んだら、待ってもらえますか？",
+     "target_text": "if I asked you to help me, would you wait for a few minutes?",
+     "word_count": 60,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.375Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:44:42.976583+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "aa0add41-2d17-460f-990d-14233d403e9c",
+     "target1_audio_id": "e2085365-0610-422d-b8e0-766f08c90529",
+     "target2_audio_id": "9d8b1d52-6d7f-48a8-a5c9-a642a269655f",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3432,
+     "target2_duration_ms": 3144,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": "if I asked you to help me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "待つ",
+       "legoId": "S0082L01",
+       "target": " wait",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "数分",
+       "legoId": "S0155L03",
+       "target": " a few minutes",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0203L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0203L02",
+    "type": "M",
+    "known_text": "何をしますか",
+    "target_text": "what would you do",
+    "components": [
+     {
+      "known": "何を",
+      "target": "what"
+     },
+     {
+      "known": "しますか",
+      "target": "would you do"
+     }
+    ],
+    "seed_number": 203
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_jpn:S0203L02C01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "何を",
+     "target_text": "what",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-28T21:48:01.874216+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "881e40ef-3d47-4481-8954-a8c323db7ea0",
+     "target1_audio_id": "27d08149-9e54-4b2d-b571-22efe1869ee4",
+     "target2_audio_id": "d76e7774-22b6-478a-9dbc-2e0d0187ae2e",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 696,
+     "target2_duration_ms": 744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": "what",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02C02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "しますか",
+     "target_text": "would you do?",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-28T17:30:49.784469+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "29b67ec9-6ca0-48cf-bba8-c59577c163e4",
+     "target1_audio_id": "e1466677-0c8f-4b98-aad6-ef95c312143f",
+     "target2_audio_id": "aced9d6c-a593-4b26-a286-be41ec46a5ae",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 1056,
+     "target2_duration_ms": 912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "would",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2bbcafff-749f-49b0-982d-5b6fb7b80d8f",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02B01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "何をしますか",
+     "target_text": "what would you do?",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T17:30:49.805872+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b47d6f47-f028-4ea0-9216-04472d5d2892",
+     "target1_audio_id": "5366524a-8e98-4149-85d0-3a7799bfaabe",
+     "target2_audio_id": "6e55772d-43bc-4a34-8edc-29bc12f48934",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02B02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "何をしますか",
+     "target_text": "what would you do?",
+     "word_count": 17,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T17:30:49.805872+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b47d6f47-f028-4ea0-9216-04472d5d2892",
+     "target1_audio_id": "5366524a-8e98-4149-85d0-3a7799bfaabe",
+     "target2_audio_id": "6e55772d-43bc-4a34-8edc-29bc12f48934",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02B03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "何をしますか、もし聞いたら",
+     "target_text": "what would you do if I asked you to help me",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T23:20:19.666059+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ebf93b8c-56ab-45cd-9c13-f37c32124e14",
+     "target1_audio_id": "b3c34352-b427-425f-ad77-038dc114e46b",
+     "target2_audio_id": "f8b2c6fa-d7c2-4205-aa18-99e57cdbfd2a",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": " if I asked you to help me",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "46402d15-e13d-493e-8202-da808f3d4b91",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02B05",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "何をしますか、もし来たら",
+     "target_text": "what would you do if he came",
+     "word_count": 28,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "251becaf-db57-4cca-bc46-42833dea9938",
+     "target1_audio_id": "e224bb94-6284-4470-8928-d6260d1ed4de",
+     "target2_audio_id": "46f8eaf0-430b-42a3-a448-0bb90368e769",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 1992,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " came",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02B07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "次に何をしますか",
+     "target_text": "what would you do next?",
+     "word_count": 22,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "aef36ee3-0844-4ebb-bd0e-ec9de7b69649",
+     "target1_audio_id": "297753b7-8782-4f3b-ac06-9e1079423fc7",
+     "target2_audio_id": "d35f4daf-d97a-466b-b049-51b2d0b5d757",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 1248,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " next?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U01",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "もし私が手伝ってと頼んだら、何をしますか？",
+     "target_text": "what would you do if I asked you to help me with this?",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-10-28T18:41:03.370403+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "5aee099f-9ad2-439c-b072-8a9cb3e1b22d",
+     "target1_audio_id": "bc85b9ad-f2fe-4525-8178-77c6f05d523c",
+     "target2_audio_id": "2853be3f-44a0-452a-bc57-cf2169367219",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": " if I asked you to help me",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "これ",
+       "legoId": "S0094L01",
+       "target": " this",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b6edafa2-b29f-47b6-9115-e7b9acb05f4e",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U02",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "もし明日来られなかったら、何をしますか？",
+     "target_text": "what would you do if you couldn't come tomorrow?",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "23ba17b7-0fb8-4e9b-9f90-ac7afcd5d44b",
+     "target1_audio_id": "abe5480b-5511-483f-a5a4-abd992633ab5",
+     "target2_audio_id": "020e3eef-04f0-4e85-8930-a1471cd9755c",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できなかった",
+       "legoId": "S0148L02",
+       "target": " couldn't",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "明日",
+       "legoId": "S0012L01",
+       "target": " tomorrow",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U03",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "もし彼が来なかったら、何をしますか？",
+     "target_text": "what would you do if he didn't come to help?",
+     "word_count": 44,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "02def9fe-a0d7-40c7-b839-cee5cbc88c64",
+     "target1_audio_id": "7e2bd583-88ab-4f75-89c4-2681670aa524",
+     "target2_audio_id": "6552d19e-d59a-4e31-819f-3da5f71453d9",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2352,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didn't",
+       "isGhost": true
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " help?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U04",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 13,
+     "known_text": "今日何もできなかったら、何をしますか？",
+     "target_text": "what would you do if you couldn't do anything today?",
+     "word_count": 52,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "86b2e6e2-f8c1-43cd-95f7-6d35d0df9c23",
+     "target1_audio_id": "e70fa02d-3e72-4307-978b-f0b8a3fb5be6",
+     "target2_audio_id": "bb623092-6e11-4c30-bb7e-ca271f37bd43",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 3120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できなかった",
+       "legoId": "S0148L02",
+       "target": " couldn't",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "何も",
+       "legoId": "S0035L03",
+       "target": " anything",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U06",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 15,
+     "known_text": "もし彼女が来なかったら、何をしますか？",
+     "target_text": "what would you do if she didn't want to come?",
+     "word_count": 45,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9472b522-db09-4be9-966a-10588e37e12e",
+     "target1_audio_id": "6d109545-78d2-497b-81c5-e62cfd71fd09",
+     "target2_audio_id": "154e171d-35c0-4731-b51b-b22d8bafff89",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "彼女",
+       "legoId": "S0053L01",
+       "target": " she",
+       "isGhost": false
+      },
+      {
+       "known": "したくありませんでした",
+       "legoId": "S0071L01",
+       "target": " didn't want to",
+       "isGhost": false
+      },
+      {
+       "known": "来て",
+       "legoId": "S0168L02",
+       "target": " come",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U07",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 16,
+     "known_text": "もし答えが分からなかったら、何をしますか？",
+     "target_text": "what would you do if you didn't know the answer?",
+     "word_count": 48,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "63a29149-e7b6-453f-a637-b51a1e3c504c",
+     "target1_audio_id": "e27ae063-d714-4899-be43-1326e8f838be",
+     "target2_audio_id": "55cd0536-9a61-4f23-be0c-4a0975e1a768",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "知りませんでした",
+       "legoId": "S0105L02",
+       "target": " didn't know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " answer?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U08",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 17,
+     "known_text": "もし私が聞いたら、何をしますか？",
+     "target_text": "what would you do if I asked you something important?",
+     "word_count": 53,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7a59cf69-e99d-46a8-be9a-bd1b07ed1b01",
+     "target1_audio_id": "56cb8628-8687-483d-ac35-8e13eb06036c",
+     "target2_audio_id": "eccdf0aa-4883-4a90-8e9a-5c5de4a2b152",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3216,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " asked",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "何か",
+       "legoId": "S0004L01",
+       "target": " something",
+       "isGhost": false
+      },
+      {
+       "known": "重要な",
+       "legoId": "S0065L01",
+       "target": " important",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U09",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 18,
+     "known_text": "もし問題があったら、何をしますか？",
+     "target_text": "what would you do if there was a problem with it?",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f2f90891-6ccf-47b9-9b64-2efbaf2b29f1",
+     "target1_audio_id": "487bb912-0ebc-4a58-a7be-283bc33fe96d",
+     "target2_audio_id": "67285d8d-0e55-4af6-b884-d89d435f071f",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2424,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "そこに",
+       "legoId": "S0157L02",
+       "target": " there",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "問題",
+       "legoId": "S0141L01",
+       "target": " problem",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": " it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U10",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 19,
+     "known_text": "もし誰も来なかったら、何をしますか？",
+     "target_text": "what would you do if nobody came to help?",
+     "word_count": 41,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "5f36db1f-6341-4ccd-a13f-a7cc09bb7e4d",
+     "target1_audio_id": "f5ebe3c6-ac8a-4e2f-b732-78d308125728",
+     "target2_audio_id": "ade58889-b2df-428a-be72-50c24bf94d53",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "誰も",
+       "legoId": "S0202L01",
+       "target": " nobody",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " came",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " help?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U11",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 20,
+     "known_text": "もし時間がなかったら、何をしますか？",
+     "target_text": "what would you do if you didn't have enough time?",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d6f040ad-2444-458e-ae55-881089b9c807",
+     "target1_audio_id": "3af05147-ec32-4341-8529-47b051863ad3",
+     "target2_audio_id": "badc39e5-6732-4f9a-ba9d-71b32f23007b",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didn't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " have",
+       "isGhost": true
+      },
+      {
+       "known": "ほど",
+       "legoId": "S0091L04",
+       "target": " enough",
+       "isGhost": false
+      },
+      {
+       "known": "時間",
+       "legoId": "S0096L06",
+       "target": " time",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U12",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 21,
+     "known_text": "もし分からなかったら、何をしますか？",
+     "target_text": "what would you do if you didn't know what to say?",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "516c9062-0119-4f0f-bae7-7787b01b7d32",
+     "target1_audio_id": "8c654d32-2fb3-4149-be2c-54f471075233",
+     "target2_audio_id": "99e99d05-8505-4d3a-b43a-0c82fe3cfade",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "知りませんでした",
+       "legoId": "S0105L02",
+       "target": " didn't know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "言う",
+       "legoId": "S0004L02",
+       "target": " to say",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U13",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 22,
+     "known_text": "もし仕事が終わらなかったら、何をしますか？",
+     "target_text": "what would you do if you couldn't finish in time?",
+     "word_count": 49,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6c22b2cd-1dce-46f9-b2fa-3f17f7e85eb5",
+     "target1_audio_id": "ee291e2c-37f2-40b1-9c5d-df12ec9b8cfa",
+     "target2_audio_id": "cd104fbe-2995-4cb2-8aea-86ddaf2a6253",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できなかった",
+       "legoId": "S0148L02",
+       "target": " couldn't",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " finish",
+       "isGhost": true
+      },
+      {
+       "known": "間に合うように",
+       "legoId": "S0091L06",
+       "target": " in time",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U14",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 23,
+     "known_text": "もし彼女が話さなかったら、何をしますか？",
+     "target_text": "what would you do if she didn't want to talk about it?",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0d4271e7-3625-4a6e-b2bb-e467b4c6fad2",
+     "target1_audio_id": "754a8c42-cbca-4a55-b2a4-c844b98d500f",
+     "target2_audio_id": "50a065e1-319d-4718-95cf-8a16e2237e04",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 2928,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": " if",
+       "isGhost": false
+      },
+      {
+       "known": "彼女",
+       "legoId": "S0053L01",
+       "target": " she",
+       "isGhost": false
+      },
+      {
+       "known": "したくありませんでした",
+       "legoId": "S0071L01",
+       "target": " didn't want to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " talk",
+       "isGhost": true
+      },
+      {
+       "known": "について",
+       "legoId": "S0043L02",
+       "target": " about",
+       "isGhost": false
+      },
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": " it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_jpn:S0203L02U15",
+     "course_code": "eng_for_jpn",
+     "seed_number": 203,
+     "lego_index": 2,
+     "position": 24,
+     "known_text": "もし手伝ってと頼んだら、何をしますか？",
+     "target_text": "what would you do if I asked you to help me next week?",
+     "word_count": 54,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:01.653Z",
+      "known_score": 8,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-19T07:57:28.47584+00:00",
+     "created_at": "2026-02-17T11:43:53.138825+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ed7ef83e-f458-402c-bd8f-b6672116f3ef",
+     "target1_audio_id": "6585ff0d-383b-4a75-8bd0-c0f47d373101",
+     "target2_audio_id": "c7269eeb-6091-4b66-9ae6-a353c3a7ddaa",
+     "qa_checked": "2026-02-17T12:28:33.495+00:00",
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 3144,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "何をしますか",
+       "legoId": "S0203L02",
+       "target": "what would you do",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "手伝ってと頼んだら",
+       "legoId": "S0203L01",
+       "target": " if I asked you to help me",
+       "isGhost": false
+      },
+      {
+       "known": "来週",
+       "legoId": "S0186L01",
+       "target": " next week",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,721 @@
+{
+  "course_code": "eng_for_jpn",
+  "event_id": "af5f3a24-fc31-43d9-8771-c6e996718073",
+  "actor": "cs-item5-broken-english",
+  "created_at": "2026-11-18T13:13:15.314Z",
+  "how_to_undo": "POST /api/production/eng_for_jpn/edit-batch {\"undo_file\":\"2026-11-18T13-13-15-314Z-af5f3a24-fc31-43d9-8771-c6e996718073.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "eng_for_jpn:S0262L01B07",
+        "seed_number": 262,
+        "lego_index": 1,
+        "position": 11,
+        "known_text": "昨日話していたあの男の人はわかりますか",
+        "target_text": "do you know who was that man you were talking to yesterday?",
+        "word_count": 58,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-17T11:40:20.670Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "85f8ae6a-634d-4437-b7a3-1da1dd321f8e",
+        "target1_audio_id": "45486864-5976-4247-a8ee-3681d889b867",
+        "target2_audio_id": "f6bcaf91-d123-431b-bc33-6cb365e075ee",
+        "qa_checked": "2026-02-17T12:29:31.867Z",
+        "target1_duration_ms": 2736,
+        "target2_duration_ms": 3648,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "do",
+            "isGhost": true
+          },
+          {
+            "known": "わかる",
+            "legoId": "S0049L02",
+            "target": " you know",
+            "isGhost": false
+          },
+          {
+            "known": "昨日話していたあの男の人は誰ですか",
+            "legoId": "S0262L01",
+            "target": " who was that man you were talking to yesterday",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": "?",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0262L01B05",
+      "set": {
+        "target_text": "can I ask who was that man you were talking to yesterday?",
+        "target1_audio_id": "d1f30e2c-5b61-442b-9ed2-118408e965ba",
+        "target2_audio_id": "8c73016b-2c21-483a-99d9-6bdb62ed59f5"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0262L01B04",
+      "set": {
+        "target_text": "can you tell me who was that man you were talking to yesterday?",
+        "target1_audio_id": "8c7672b7-8944-487a-9c46-e7054194fb44",
+        "target2_audio_id": "8f75f840-7556-4117-9e7b-e30ad0fcbfb8"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0257L03U01",
+      "set": {
+        "target_text": "what's that blue thing over there because I want to know what it is?",
+        "target1_audio_id": "34bf6d98-75e6-4dc0-9fa6-40bb3f39ec9b",
+        "target2_audio_id": "1e51282d-1ec2-4fad-85db-c31813a0be57"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U10",
+      "set": {
+        "target_text": "at the moment we dont know what theyre trying to achieve at all",
+        "target1_audio_id": "e4fbef16-c990-47ea-9b93-a3d3568789e7",
+        "target2_audio_id": "07808423-2ebe-4489-9ae9-ff95dde64d11"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U09",
+      "set": {
+        "target_text": "unfortunately at the moment we dont know what theyre trying to achieve",
+        "target1_audio_id": "d3f20258-c23c-42ae-b746-7ef39a94b869",
+        "target2_audio_id": "7ba78cb4-e931-4324-a2c6-29a877c80d6d"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U08",
+      "set": {
+        "target_text": "we dont know what theyre trying to achieve at all yet",
+        "target1_audio_id": "132ea94a-9b4f-4aec-912e-7001235e08c9",
+        "target2_audio_id": "6b80033d-785a-487a-818d-c7b65ef35002"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U07",
+      "set": {
+        "target_text": "unfortunately we dont know what theyre trying to achieve at all",
+        "target1_audio_id": "cec6f9b5-c93b-4253-999d-e1c4c2b3dec6",
+        "target2_audio_id": "8af84bc7-6d3d-4beb-b682-8d41f0302d07"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U06",
+      "set": {
+        "target_text": "at the moment we dont know what theyre trying to achieve yet",
+        "target1_audio_id": "d6107a2e-a086-4306-87bf-afb4ba887349",
+        "target2_audio_id": "faabba7c-184b-4d85-83b4-ba6b14335a27"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U05",
+      "set": {
+        "target_text": "we dont know what theyre trying to achieve at all",
+        "target1_audio_id": "1ba17c78-e3e6-422c-83e2-0f1d3333bb99",
+        "target2_audio_id": "f177c99e-216a-4aef-88cf-8c595e692d9a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U04",
+      "set": {
+        "target_text": "we dont know what theyre trying to achieve yet",
+        "target1_audio_id": "5c573af3-5b4f-42e5-a175-c1019089a0ac",
+        "target2_audio_id": "c094937b-bec5-4a93-8fc4-b099eadff2aa"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U03",
+      "set": {
+        "target_text": "unfortunately we dont know what theyre trying to achieve",
+        "target1_audio_id": "e41e218d-b33b-4f05-ae6e-713b07b7533a",
+        "target2_audio_id": "59a90266-0370-4174-8d55-b32e4501f8f2"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U02",
+      "set": {
+        "target_text": "at the moment we dont know what theyre trying to achieve",
+        "target1_audio_id": "4ece0b9e-3ea7-4f84-9942-c7c79d820ed4",
+        "target2_audio_id": "73f02278-6ac1-48bb-9d13-7e3d8688ba55"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L02U01",
+      "set": {
+        "target_text": "we dont know what theyre trying to achieve",
+        "target1_audio_id": "8fd51be4-13d3-41e6-b6ac-528576e43793",
+        "target2_audio_id": "0d8b4a7c-c889-4a21-978f-63f1e8c99f41"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L01U03",
+      "set": {
+        "target_text": "we dont know what they are trying to achieve",
+        "target1_audio_id": "1a094bfe-214d-4ff8-8ba3-8e9e0b6fbdde",
+        "target2_audio_id": "22cfdab2-f5ab-48a7-94ef-0e4496f16d94"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0213L01B05",
+      "set": {
+        "target_text": "I didnt achieve that",
+        "target1_audio_id": "34cb9a56-3ba7-4350-bb52-2109eb422c56",
+        "target2_audio_id": "41644505-c81e-4b51-8e41-8d585d775c3c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0203L01B03",
+      "set": {
+        "target_text": "what would you do if I asked you to help me",
+        "target1_audio_id": "b3c34352-b427-425f-ad77-038dc114e46b"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0199L01U08",
+      "set": {
+        "target_text": "you used to work in a different office didn't you",
+        "target1_audio_id": "bcf71d8c-0d65-4347-90b0-55eeade398b7",
+        "target2_audio_id": "7130bf04-b045-49f7-8875-8dbcacb87df7"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0190L03B02",
+      "set": {
+        "target_text": "do you mind if?",
+        "target1_audio_id": "13cfbe91-d5c1-45a2-bca9-1877d623772e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0190L03B01",
+      "set": {
+        "target_text": "do you mind if?",
+        "target1_audio_id": "13cfbe91-d5c1-45a2-bca9-1877d623772e"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01U15",
+      "set": {
+        "target_text": "so you have not seen them no I'm afraid I haven't seen them",
+        "target1_audio_id": "43eee6ef-b4fc-4ebe-8b66-d21be2268645",
+        "target2_audio_id": "27d54551-41d6-4f9f-8f39-dd74244e3543"
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "eng_for_jpn:S0183L01U14",
+        "seed_number": 183,
+        "lego_index": 1,
+        "position": 24,
+        "known_text": "私の鍵を見ましたか？残念ながら見ていません。本当に残念です",
+        "target_text": "have you seen my keys no I'm afraid I haven't seen them unfortunately?",
+        "word_count": 69,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 9,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-17T11:41:47.501Z",
+          "known_score": 8,
+          "target_score": 9
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-17T11:41:00.601Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "7197b1ff-a6e3-4efa-bd53-6fa76523f518",
+        "target1_audio_id": "02524830-afb8-491a-b819-2aa38c2316ac",
+        "target2_audio_id": "393bab4f-c5dc-4399-b49f-a6c9e56fee6a",
+        "qa_checked": "2026-02-17T12:28:46.173Z",
+        "target1_duration_ms": 4392,
+        "target2_duration_ms": 4152,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "見ましたか",
+            "legoId": "S0182L02",
+            "target": "have you seen",
+            "isGhost": false
+          },
+          {
+            "known": "私の鍵",
+            "legoId": "S0182L01",
+            "target": " my keys",
+            "isGhost": false
+          },
+          {
+            "known": "いいえ、残念ながら見ていません",
+            "legoId": "S0183L01",
+            "target": " no I'm afraid I haven't seen them",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "残念ながら",
+            "legoId": "S0086L01",
+            "target": " unfortunately",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": "?",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01U13",
+      "set": {
+        "target_text": "have you seen them this morning no I'm afraid I haven't seen them?",
+        "target1_audio_id": "805d424a-7ea7-4a12-bf15-00452a04d202",
+        "target2_audio_id": "caa5ba22-2500-4c5c-b85d-cc0e39f92ae8"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01U12",
+      "set": {
+        "target_text": "have you seen them anywhere no I'm afraid I haven't seen them?",
+        "target1_audio_id": "da9b5864-1daf-4419-971a-720da6768418",
+        "target2_audio_id": "43b3cb8f-9ade-45cb-9ddc-ecfa99a11a0a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01U08",
+      "set": {
+        "target_text": "have you seen them since yesterday no I'm afraid I haven't seen them?",
+        "target1_audio_id": "c355e4fb-3261-43b2-aad4-22ccefa935c6",
+        "target2_audio_id": "d322382d-95bb-4ba0-8274-34337fab46a5"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01U06",
+      "set": {
+        "target_text": "have you seen anyone no I'm afraid I haven't seen them?",
+        "target1_audio_id": "653d6cd8-8d9c-4d34-8c98-2d6c3a492184",
+        "target2_audio_id": "f283f956-0748-4ffa-b65b-fdbcc42203eb"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01U03",
+      "set": {
+        "target_text": "have you seen my friend anywhere no I'm afraid I haven't seen them?",
+        "target1_audio_id": "fcb509fe-ae3f-42df-b3cd-56a8c6953cbe",
+        "target2_audio_id": "62eff0f4-80e7-48c3-b3f9-f89af4b0cc23"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01U01",
+      "set": {
+        "target_text": "have you seen my keys anywhere no I'm afraid I haven't seen them?",
+        "target1_audio_id": "972fb0dd-0d46-429c-8cd7-ffa18751dd8e",
+        "target2_audio_id": "88f91065-fca2-4127-a8bd-b1bd3017d65b"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01B07",
+      "set": {
+        "target_text": "anywhere no I'm afraid I haven't seen them",
+        "target1_audio_id": "faca4b3a-1a18-4e77-86d7-1f1401230ed3",
+        "target2_audio_id": "22ad06d8-4f55-44dd-9e9e-11c7119bf5ee"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01B06",
+      "set": {
+        "target_text": "have you seen them no I'm afraid I haven't seen them?",
+        "target1_audio_id": "850700d0-1bf4-4709-ad7f-b2532f6d2891",
+        "target2_audio_id": "06f9627d-3804-4fe7-aa4f-8aa1f1e98d7e"
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "eng_for_jpn:S0183L01B05",
+        "seed_number": 183,
+        "lego_index": 1,
+        "position": 8,
+        "known_text": "残念ですが、いいえ、残念ながら見ていません",
+        "target_text": "unfortunately no I'm afraid I haven't seen them",
+        "word_count": 47,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-17T11:41:00.601Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "7d88aa4d-9650-4ed4-a80a-d687a58508c2",
+        "target1_audio_id": "27051dad-ae08-4524-8333-dd1d8270abb9",
+        "target2_audio_id": "397d88a2-89da-41f2-81dd-42f4902a8fe6",
+        "qa_checked": "2026-02-17T12:28:46.173Z",
+        "target1_duration_ms": 3168,
+        "target2_duration_ms": 3432,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "残念ながら",
+            "legoId": "S0086L01",
+            "target": "unfortunately",
+            "isGhost": false
+          },
+          {
+            "known": "いいえ、残念ながら見ていません",
+            "legoId": "S0183L01",
+            "target": " no I'm afraid I haven't seen them",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01B04",
+      "set": {
+        "target_text": "today no I'm afraid I haven't seen them",
+        "target1_audio_id": "92abb34e-b9b1-4547-b9f8-943aa7e15d16",
+        "target2_audio_id": "77d502c7-85f6-4929-a259-887a98aaf2df"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0183L01B03",
+      "set": {
+        "target_text": "the keys no I'm afraid I haven't seen them",
+        "target1_audio_id": "b117d341-e33e-49c9-a735-c41e0f0802cd",
+        "target2_audio_id": "4d2c5f0b-c3da-43f1-9b28-81a3b1e89fb5"
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "eng_for_jpn:S0182L02B03",
+        "seed_number": 182,
+        "lego_index": 2,
+        "position": 5,
+        "known_text": "...を見ましたか",
+        "target_text": "have you seen .?",
+        "word_count": 17,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-17T11:39:59.506Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": "d7780e97-86bc-47e8-9f6a-130dae354158",
+        "target1_audio_id": "df8029be-f726-48a5-a247-d77712e06ce7",
+        "target2_audio_id": "dde47383-b537-438a-8997-0d6349987d65",
+        "qa_checked": "2026-02-17T12:28:46.173Z",
+        "target1_duration_ms": 1104,
+        "target2_duration_ms": 1224,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "見ましたか",
+            "legoId": "S0182L02",
+            "target": "have you seen",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " .?",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0182L02B02",
+      "set": {
+        "target_text": "have you seen?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0182L02B01",
+      "set": {
+        "target_text": "have you seen?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0137L01U14",
+      "set": {
+        "target_text": "what is more important to me is to enjoy it?",
+        "target1_audio_id": "20349453-4466-4fc0-b6dc-034d012ff3c8",
+        "target2_audio_id": "9729b3b9-22e7-4483-bd5a-3c72d55c539c"
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "eng_for_jpn:S0113L01U10",
+        "seed_number": 113,
+        "lego_index": 1,
+        "position": 20,
+        "known_text": "なぜあなたが言ったことを思い出せないのか、よく分かりません",
+        "target_text": "why can't I remember what you said I just don't know?",
+        "word_count": 52,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 7,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-17T11:48:31.523Z",
+          "known_score": 7,
+          "target_score": 7
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-17T11:48:31.624Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "4b98bca1-4d4b-4a83-8586-037cc9441dc2",
+        "target1_audio_id": "42f7d73a-1f7b-433f-b717-e3ba12e04ac9",
+        "target2_audio_id": "0c2d97e7-31a8-49e0-a3f2-2a3b325348b5",
+        "qa_checked": "2026-02-17T12:23:36.309Z",
+        "target1_duration_ms": 3408,
+        "target2_duration_ms": 3504,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "なぜあなたが言ったことを思い出せないのですか",
+            "legoId": "S0113L01",
+            "target": "why can't I remember what you said",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " I",
+            "isGhost": true
+          },
+          {
+            "known": "ただ",
+            "legoId": "S0106L02",
+            "target": " just",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " don't",
+            "isGhost": true
+          },
+          {
+            "known": "知っている",
+            "legoId": "S0059L01",
+            "target": " know",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": "?",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "eng_for_jpn:S0081L01B05",
+        "seed_number": 81,
+        "lego_index": 1,
+        "position": 5,
+        "known_text": "いつ準備ができるかわかりません",
+        "target_text": "when I'm not sure when I'll be ready",
+        "word_count": 36,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-02-17T11:43:45.870Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": "4bf793f3-d444-4c0a-b737-93cd0ebe8eb3",
+        "target1_audio_id": "98cf7a6d-4e58-4765-b4a0-c1c308282daf",
+        "target2_audio_id": "0bc37aff-b373-42ec-b68e-e24f9cd9f83d",
+        "qa_checked": "2026-02-17T12:24:43.539Z",
+        "target1_duration_ms": 2064,
+        "target2_duration_ms": 2400,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "いつ",
+            "legoId": "S0081L01",
+            "target": "when",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "いつ準備ができるかわかりません",
+            "legoId": "S0080L01",
+            "target": " I'm not sure when I'll be ready",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null,
+        "frame_mask": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0061L03B02",
+      "set": {
+        "target_text": "could you say?",
+        "target1_audio_id": "90f0a5ec-51fd-497e-b4ce-4cee41234e6f",
+        "target2_audio_id": "9b7fa60f-91bb-4438-b543-25ff7800fb76"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "eng_for_jpn:S0061L03B01",
+      "set": {
+        "target_text": "could you say?",
+        "target1_audio_id": "90f0a5ec-51fd-497e-b4ce-4cee41234e6f",
+        "target2_audio_id": "9b7fa60f-91bb-4438-b543-25ff7800fb76"
+      }
+    }
+  ]
+}
