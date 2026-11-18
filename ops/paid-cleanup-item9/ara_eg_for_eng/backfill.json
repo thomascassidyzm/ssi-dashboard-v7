@@ -1,0 +1,951 @@
+{
+ "course": "ara_eg_for_eng",
+ "at": "2026-11-18T14:40:00.057Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0016L01": {
+   "lego": "he | هو",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 11,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0016L01U01",
+     "role": "use",
+     "known": "he wants to speak Arabic",
+     "target": "هو عايز يتكلم عربي",
+     "untaught": [
+      "يتكلم"
+     ]
+    },
+    {
+     "row": "S0016L01U03",
+     "role": "use",
+     "known": "and he wants to try",
+     "target": "و هو عايز يحاول",
+     "untaught": [
+      "يحاول"
+     ]
+    },
+    {
+     "row": "S0016L01U04",
+     "role": "use",
+     "known": "he wants to guess something",
+     "target": "هو عايز يخمن حاجة",
+     "untaught": [
+      "يخمن"
+     ]
+    },
+    {
+     "row": "S0016L01U05",
+     "role": "use",
+     "known": "he'd like to explain",
+     "target": "هو حابب يشرح",
+     "untaught": [
+      "يشرح"
+     ]
+    }
+   ]
+  },
+  "S0018L01": {
+   "lego": "we want | إحنا عايزين",
+   "before": "already under floor",
+   "delete": 6,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 0
+   },
+   "author_build": 1,
+   "author_use": 5,
+   "avg_target_chars": 18,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0018L01B03",
+     "role": "build",
+     "known": "we want to come back",
+     "target": "إحنا عايزين نرجع",
+     "untaught": [
+      "نرجع"
+     ]
+    },
+    {
+     "row": "S0018L01U01",
+     "role": "use",
+     "known": "we want to come back later on",
+     "target": "إحنا عايزين نرجع بعدين",
+     "untaught": [
+      "نرجع"
+     ]
+    },
+    {
+     "row": "S0018L01U02",
+     "role": "use",
+     "known": "we want to come back tomorrow",
+     "target": "إحنا عايزين نرجع بكرة",
+     "untaught": [
+      "نرجع"
+     ]
+    },
+    {
+     "row": "S0018L01U03",
+     "role": "use",
+     "known": "we want to come back with everyone else",
+     "target": "إحنا عايزين نرجع مع كل الناس التانية",
+     "untaught": [
+      "نرجع"
+     ]
+    },
+    {
+     "row": "S0018L01U04",
+     "role": "use",
+     "known": "and we want to find out the answer",
+     "target": "و إحنا عايزين نعرف الإجابة",
+     "untaught": [
+      "نعرف"
+     ]
+    },
+    {
+     "row": "S0018L01U05",
+     "role": "use",
+     "known": "we want to come back with you",
+     "target": "إحنا عايزين نرجع معاك",
+     "untaught": [
+      "نرجع"
+     ]
+    }
+   ]
+  },
+  "S0018L04": {
+   "lego": "this evening | الليلة",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0018L04U02",
+     "role": "use",
+     "known": "we want to come back this evening",
+     "target": "إحنا عايزين نرجع الليلة",
+     "untaught": [
+      "نرجع"
+     ]
+    }
+   ]
+  },
+  "S0027L03": {
+   "lego": "a lot | كتير",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0027L03U05",
+     "role": "use",
+     "known": "why do I need to take so much time?",
+     "target": "ليه لازم آخد وقت كتير؟",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0027L04": {
+   "lego": "to answer | أرد",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0027L04B03",
+     "role": "build",
+     "known": "I need to answer quickly",
+     "target": "لازم أرد بسرعة",
+     "untaught": [
+      "لازم"
+     ]
+    },
+    {
+     "row": "S0027L04U03",
+     "role": "use",
+     "known": "I need to answer before I go",
+     "target": "لازم أرد قبل ما أمشي",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0028L01": {
+   "lego": "useful | مفيد",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 14,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0028L01U05",
+     "role": "use",
+     "known": "it's useful to start soon",
+     "target": "مفيد نبدأ قريب",
+     "untaught": [
+      "نبدأ"
+     ]
+    }
+   ]
+  },
+  "S0030L02": {
+   "lego": "ask you | أسألك",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0030L02U04",
+     "role": "use",
+     "known": "I need to ask you something",
+     "target": "أنا لازم أسألك حاجة",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0032L01": {
+   "lego": "show me | توريني",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0032L01B03",
+     "role": "build",
+     "known": "you need to show me",
+     "target": "لازم توريني",
+     "untaught": [
+      "لازم"
+     ]
+    },
+    {
+     "row": "S0032L01U02",
+     "role": "use",
+     "known": "you need to show me tonight",
+     "target": "لازم توريني الليلة",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0034L01": {
+   "lego": "other | تانية",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0034L01U05",
+     "role": "use",
+     "known": "I need to speak with other people",
+     "target": "أنا لازم أتكلم مع ناس تانية",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0035L01": {
+   "lego": "read | تقرا",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0035L01U03",
+     "role": "use",
+     "known": "she needs to read here",
+     "target": "هي لازم تقرا هنا",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0036L02": {
+   "lego": "story | القصة",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 18,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0036L02U04",
+     "role": "use",
+     "known": "she needs to read the story",
+     "target": "هي لازم تقرا القصة",
+     "untaught": [
+      "لازم"
+     ]
+    },
+    {
+     "row": "S0036L02U05",
+     "role": "use",
+     "known": "she doesn't want to read any of the story",
+     "target": "هي مش عايزة تقرا أي حاجة من القصة",
+     "untaught": [
+      "من"
+     ]
+    }
+   ]
+  },
+  "S0047L01": {
+   "lego": "that | إن",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 20,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0047L01U03",
+     "role": "use",
+     "known": "I think that I need to speak arabic",
+     "target": "بفكر إني لازم أتكلم عربي",
+     "untaught": [
+      "لازم"
+     ]
+    },
+    {
+     "row": "S0047L01U05",
+     "role": "use",
+     "known": "I think that I need to try to improve",
+     "target": "بفكر إني لازم أحاول أتحسن",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0047L04": {
+   "lego": "you make | تعمل",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0047L04U04",
+     "role": "use",
+     "known": "it's a good thing that you do this",
+     "target": "دي حاجة كويسة إنك تعمل كده",
+     "untaught": [
+      "كده"
+     ]
+    }
+   ]
+  },
+  "S0054L01": {
+   "lego": "we were | كنا",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0054L01U02",
+     "role": "use",
+     "known": "we were not wanting to stop",
+     "target": "إحنا كنا مش عايزين نبطل",
+     "untaught": [
+      "نبطل"
+     ]
+    }
+   ]
+  },
+  "S0058L01": {
+   "lego": "fun | ممتع",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 17,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0058L01U03",
+     "role": "use",
+     "known": "making mistakes is fun",
+     "target": "إن الواحد يعمل غلطات ممتع",
+     "untaught": [
+      "الواحد",
+      "يعمل"
+     ]
+    },
+    {
+     "row": "S0058L01U04",
+     "role": "use",
+     "known": "when I speak Arabic it's fun",
+     "target": "لما أتكلم عربي بيبقى ممتع",
+     "untaught": [
+      "بيبقى"
+     ]
+    },
+    {
+     "row": "S0058L01U05",
+     "role": "use",
+     "known": "trying is fun",
+     "target": "إن الواحد يحاول ممتع",
+     "untaught": [
+      "الواحد",
+      "يحاول"
+     ]
+    }
+   ]
+  },
+  "S0062L02": {
+   "lego": "the time | الوقت",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 18,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0062L02B03",
+     "role": "build",
+     "known": "help you at the time",
+     "target": "أساعدك في الوقت المناسب",
+     "untaught": [
+      "المناسب"
+     ]
+    }
+   ]
+  },
+  "S0062L03": {
+   "lego": "same | نفس",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0062L03U03",
+     "role": "use",
+     "known": "we can do it at the same time",
+     "target": "إحنا نقدر نعمله في نفس الوقت",
+     "untaught": [
+      "نقدر",
+      "نعمله"
+     ]
+    }
+   ]
+  },
+  "S0065L03": {
+   "lego": "test | تختبر",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 14,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0065L03U05",
+     "role": "use",
+     "known": "testing is useful",
+     "target": "الاختبار مفيد",
+     "untaught": [
+      "الاختبار"
+     ]
+    },
+    {
+     "row": "S0065L03U06",
+     "role": "use",
+     "known": "testing Arabic is fun",
+     "target": "اختبار العربي ممتع",
+     "untaught": [
+      "اختبار"
+     ]
+    }
+   ]
+  },
+  "S0091L02": {
+   "lego": "you answer | ترد",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 14,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0091L02U04",
+     "role": "use",
+     "known": "you need to answer",
+     "target": "لازم ترد",
+     "untaught": [
+      "لازم"
+     ]
+    }
+   ]
+  },
+  "S0093L01": {
+   "lego": "we go | نمشي",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 12,
+   "avg_known_chars": 13,
+   "rows": [
+    {
+     "row": "S0093L01U01",
+     "role": "use",
+     "known": "it's time to go now",
+     "target": "بقى وقت نمشي دلوقتي",
+     "untaught": [
+      "بقى"
+     ]
+    },
+    {
+     "row": "S0093L01U04",
+     "role": "use",
+     "known": "it's time to go",
+     "target": "بقى وقت نمشي",
+     "untaught": [
+      "بقى"
+     ]
+    }
+   ]
+  },
+  "S0101L01": {
+   "lego": "the language | اللغة",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 17,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0101L01U02",
+     "role": "use",
+     "known": "I know more about this language",
+     "target": "أعرف أكتر عن اللغة دي",
+     "untaught": [
+      "عن"
+     ]
+    },
+    {
+     "row": "S0101L01U05",
+     "role": "use",
+     "known": "I'm enjoying finding out more about this language",
+     "target": "أنا بستمتع إني بعرف أكتر عن اللغة دي",
+     "untaught": [
+      "بعرف",
+      "عن"
+     ]
+    }
+   ]
+  },
+  "S0110L01": {
+   "lego": "friends | أصحاب",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 12,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0110L01U04",
+     "role": "use",
+     "known": "we're friends a lot",
+     "target": "إحنا أصحاب قوي",
+     "untaught": [
+      "قوي"
+     ]
+    }
+   ]
+  },
+  "S0110L03": {
+   "lego": "we relax | نرتاح",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 11,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0110L03U03",
+     "role": "use",
+     "known": "I'd like to relax",
+     "target": "حابب أرتاح",
+     "untaught": [
+      "أرتاح"
+     ]
+    }
+   ]
+  },
+  "S0119L04": {
+   "lego": "before you leave | قبل ما تمشي",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 17,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0119L04U03",
+     "role": "use",
+     "known": "can we talk before you leave",
+     "target": "نقدر نتكلم قبل ما تمشي",
+     "untaught": [
+      "نقدر",
+      "نتكلم"
+     ]
+    }
+   ]
+  },
+  "S0121L04": {
+   "lego": "your car | عربيتك",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 14,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0121L04U03",
+     "role": "use",
+     "known": "don't use your car",
+     "target": "ماتستخدمش عربيتك",
+     "untaught": [
+      "ماتستخدمش"
+     ]
+    }
+   ]
+  },
+  "S0140L01": {
+   "lego": "I can't | ما أقدرش",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 12,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0140L01U05",
+     "role": "use",
+     "known": "I can't go",
+     "target": "ما أقدرش أروح",
+     "untaught": [
+      "أروح"
+     ]
+    }
+   ]
+  },
+  "S0143L01": {
+   "lego": "same | نفس",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 10,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0143L01U04",
+     "role": "use",
+     "known": "same person",
+     "target": "نفس الشخص",
+     "untaught": [
+      "الشخص"
+     ]
+    }
+   ]
+  },
+  "S0518L01": {
+   "lego": "I imagine | أتخيل",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 31
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 30
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 15,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0518L01U26",
+     "role": "use",
+     "known": "I imagine it changes",
+     "target": "أتخيل إنه بيتغير",
+     "untaught": [
+      "بيتغير"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

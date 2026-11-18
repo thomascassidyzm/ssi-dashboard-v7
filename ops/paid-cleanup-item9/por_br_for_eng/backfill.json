@@ -1,0 +1,539 @@
+{
+ "course": "por_br_for_eng",
+ "at": "2026-11-18T14:40:10.986Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0057L02": {
+   "lego": "what I wanted to say | o que queria dizer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0057L02U07",
+     "role": "use",
+     "known": "I don't remember what I wanted to say",
+     "target": "não me lembro do que queria dizer",
+     "untaught": [
+      "lembro"
+     ]
+    }
+   ]
+  },
+  "S0112L01": {
+   "lego": "that was | isso foi",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 22,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0112L01U01",
+     "role": "use",
+     "known": "that was very interesting for me",
+     "target": "isso foi muito interessante para mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0112L01U05",
+     "role": "use",
+     "known": "that was very difficult for me",
+     "target": "isso foi muito difícil para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0116L02": {
+   "lego": "the best choice | a melhor escolha",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 6
+   },
+   "author_build": 2,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0116L02B02",
+     "role": "build",
+     "known": "the best choice for me",
+     "target": "a melhor escolha para mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0116L02B04",
+     "role": "build",
+     "known": "this isn't the best choice for me",
+     "target": "esta não é a melhor escolha para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0121L03": {
+   "lego": "unusual | incomum",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0121L03B04",
+     "role": "build",
+     "known": "this is very unusual for me",
+     "target": "isso é muito incomum para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0130L01": {
+   "lego": "surprise | surpresa",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0130L01U03",
+     "role": "use",
+     "known": "that was a surprise for me",
+     "target": "isso foi uma surpresa para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0132L02": {
+   "lego": "exciting | empolgante",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0132L02U03",
+     "role": "use",
+     "known": "this is exciting but less than that",
+     "target": "isso é empolgante mas menos do que aquilo",
+     "untaught": [
+      "aquilo"
+     ]
+    },
+    {
+     "row": "S0132L02U05",
+     "role": "use",
+     "known": "I think this is more exciting than that",
+     "target": "acho que isso é mais empolgante do que aquilo",
+     "untaught": [
+      "aquilo"
+     ]
+    }
+   ]
+  },
+  "S0137L01": {
+   "lego": "times | vezes",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 5,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 5,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0137L01U06",
+     "role": "use",
+     "known": "I made mistakes a few times",
+     "target": "cometi erros algumas vezes",
+     "untaught": [
+      "cometi"
+     ]
+    }
+   ]
+  },
+  "S0141L01": {
+   "lego": "without | sem",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 18,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0141L01B02",
+     "role": "build",
+     "known": "without me",
+     "target": "sem mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0146L01": {
+   "lego": "to fix | consertar",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0146L01B03",
+     "role": "build",
+     "known": "tried to fix",
+     "target": "tentei consertar",
+     "untaught": [
+      "tentei"
+     ]
+    }
+   ]
+  },
+  "S0151L01": {
+   "lego": "that wasn't | não era",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 4,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0151L01B06",
+     "role": "build",
+     "known": "that wasn't very difficult for me",
+     "target": "não era muito difícil para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0155L02": {
+   "lego": "waiting a few minutes | esperar uns minutos",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 1
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0155L02U03",
+     "role": "use",
+     "known": "can we talk for a few minutes?",
+     "target": "podemos falar uns minutos?",
+     "untaught": [
+      "podemos"
+     ]
+    }
+   ]
+  },
+  "S0167L01": {
+   "lego": "you need | você precisa",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0167L01U04",
+     "role": "use",
+     "known": "do you need me to help you?",
+     "target": "você precisa de mim para ajudar?",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0181L04": {
+   "lego": "to take | levar",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0181L04U05",
+     "role": "use",
+     "known": "can you take it for me?",
+     "target": "pode levar para mim?",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0198L04": {
+   "lego": "to | para",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 2,
+   "avg_target_chars": 16,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0198L04B02",
+     "role": "build",
+     "known": "for me",
+     "target": "para mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0198L04U01",
+     "role": "use",
+     "known": "that's good for me",
+     "target": "isso é bom para mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0198L04U04",
+     "role": "use",
+     "known": "she works for me",
+     "target": "ela trabalha para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0273L03": {
+   "lego": "too much | demais",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0273L03U05",
+     "role": "use",
+     "known": "that is way too much for me",
+     "target": "isso é demais para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0281L01": {
+   "lego": "minds | importa",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 14,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0281L01U06",
+     "role": "use",
+     "known": "it matters to me",
+     "target": "importa para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0409L02": {
+   "lego": "it doesn't matter | não importa",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 17,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0409L02U02",
+     "role": "use",
+     "known": "it doesn't matter to me",
+     "target": "não importa para mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0409L02U03",
+     "role": "use",
+     "known": "yes, it doesn't matter to me",
+     "target": "sim, não importa para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

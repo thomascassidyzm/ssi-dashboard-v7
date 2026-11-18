@@ -1,0 +1,364 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0016L01U01",
+   "expect": {
+    "known_text": "he wants to speak Arabic",
+    "target_text": "هو عايز يتكلم عربي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0016L01U03",
+   "expect": {
+    "known_text": "and he wants to try",
+    "target_text": "و هو عايز يحاول"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0016L01U04",
+   "expect": {
+    "known_text": "he wants to guess something",
+    "target_text": "هو عايز يخمن حاجة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0016L01U05",
+   "expect": {
+    "known_text": "he'd like to explain",
+    "target_text": "هو حابب يشرح"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0018L01B03",
+   "expect": {
+    "known_text": "we want to come back",
+    "target_text": "إحنا عايزين نرجع"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0018L01U01",
+   "expect": {
+    "known_text": "we want to come back later on",
+    "target_text": "إحنا عايزين نرجع بعدين"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0018L01U02",
+   "expect": {
+    "known_text": "we want to come back tomorrow",
+    "target_text": "إحنا عايزين نرجع بكرة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0018L01U03",
+   "expect": {
+    "known_text": "we want to come back with everyone else",
+    "target_text": "إحنا عايزين نرجع مع كل الناس التانية"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0018L01U04",
+   "expect": {
+    "known_text": "and we want to find out the answer",
+    "target_text": "و إحنا عايزين نعرف الإجابة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0018L01U05",
+   "expect": {
+    "known_text": "we want to come back with you",
+    "target_text": "إحنا عايزين نرجع معاك"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0018L04U02",
+   "expect": {
+    "known_text": "we want to come back this evening",
+    "target_text": "إحنا عايزين نرجع الليلة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0027L03U05",
+   "expect": {
+    "known_text": "why do I need to take so much time?",
+    "target_text": "ليه لازم آخد وقت كتير؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0027L04B03",
+   "expect": {
+    "known_text": "I need to answer quickly",
+    "target_text": "لازم أرد بسرعة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0027L04U03",
+   "expect": {
+    "known_text": "I need to answer before I go",
+    "target_text": "لازم أرد قبل ما أمشي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0028L01U05",
+   "expect": {
+    "known_text": "it's useful to start soon",
+    "target_text": "مفيد نبدأ قريب"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0030L02U04",
+   "expect": {
+    "known_text": "I need to ask you something",
+    "target_text": "أنا لازم أسألك حاجة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0032L01B03",
+   "expect": {
+    "known_text": "you need to show me",
+    "target_text": "لازم توريني"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0032L01U02",
+   "expect": {
+    "known_text": "you need to show me tonight",
+    "target_text": "لازم توريني الليلة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0034L01U05",
+   "expect": {
+    "known_text": "I need to speak with other people",
+    "target_text": "أنا لازم أتكلم مع ناس تانية"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0035L01U03",
+   "expect": {
+    "known_text": "she needs to read here",
+    "target_text": "هي لازم تقرا هنا"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0036L02U04",
+   "expect": {
+    "known_text": "she needs to read the story",
+    "target_text": "هي لازم تقرا القصة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0036L02U05",
+   "expect": {
+    "known_text": "she doesn't want to read any of the story",
+    "target_text": "هي مش عايزة تقرا أي حاجة من القصة"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0047L01U03",
+   "expect": {
+    "known_text": "I think that I need to speak arabic",
+    "target_text": "بفكر إني لازم أتكلم عربي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0047L01U05",
+   "expect": {
+    "known_text": "I think that I need to try to improve",
+    "target_text": "بفكر إني لازم أحاول أتحسن"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0047L04U04",
+   "expect": {
+    "known_text": "it's a good thing that you do this",
+    "target_text": "دي حاجة كويسة إنك تعمل كده"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0054L01U02",
+   "expect": {
+    "known_text": "we were not wanting to stop",
+    "target_text": "إحنا كنا مش عايزين نبطل"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0058L01U03",
+   "expect": {
+    "known_text": "making mistakes is fun",
+    "target_text": "إن الواحد يعمل غلطات ممتع"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0058L01U04",
+   "expect": {
+    "known_text": "when I speak Arabic it's fun",
+    "target_text": "لما أتكلم عربي بيبقى ممتع"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0058L01U05",
+   "expect": {
+    "known_text": "trying is fun",
+    "target_text": "إن الواحد يحاول ممتع"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0062L02B03",
+   "expect": {
+    "known_text": "help you at the time",
+    "target_text": "أساعدك في الوقت المناسب"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0062L03U03",
+   "expect": {
+    "known_text": "we can do it at the same time",
+    "target_text": "إحنا نقدر نعمله في نفس الوقت"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0065L03U05",
+   "expect": {
+    "known_text": "testing is useful",
+    "target_text": "الاختبار مفيد"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0065L03U06",
+   "expect": {
+    "known_text": "testing Arabic is fun",
+    "target_text": "اختبار العربي ممتع"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0091L02U04",
+   "expect": {
+    "known_text": "you need to answer",
+    "target_text": "لازم ترد"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0093L01U01",
+   "expect": {
+    "known_text": "it's time to go now",
+    "target_text": "بقى وقت نمشي دلوقتي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0093L01U04",
+   "expect": {
+    "known_text": "it's time to go",
+    "target_text": "بقى وقت نمشي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0101L01U02",
+   "expect": {
+    "known_text": "I know more about this language",
+    "target_text": "أعرف أكتر عن اللغة دي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0101L01U05",
+   "expect": {
+    "known_text": "I'm enjoying finding out more about this language",
+    "target_text": "أنا بستمتع إني بعرف أكتر عن اللغة دي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0110L01U04",
+   "expect": {
+    "known_text": "we're friends a lot",
+    "target_text": "إحنا أصحاب قوي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0110L03U03",
+   "expect": {
+    "known_text": "I'd like to relax",
+    "target_text": "حابب أرتاح"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0119L04U03",
+   "expect": {
+    "known_text": "can we talk before you leave",
+    "target_text": "نقدر نتكلم قبل ما تمشي"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0121L04U03",
+   "expect": {
+    "known_text": "don't use your car",
+    "target_text": "ماتستخدمش عربيتك"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0140L01U05",
+   "expect": {
+    "known_text": "I can't go",
+    "target_text": "ما أقدرش أروح"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0143L01U04",
+   "expect": {
+    "known_text": "same person",
+    "target_text": "نفس الشخص"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0518L01U26",
+   "expect": {
+    "known_text": "I imagine it changes",
+    "target_text": "أتخيل إنه بيتغير"
+   }
+  }
+ ]
+}

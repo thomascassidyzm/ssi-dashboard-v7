@@ -1,0 +1,6516 @@
+[
+ {
+  "seed_number": 26,
+  "phrases": {
+   "26:1": [
+    {
+     "known_text": "ಬಹುತೇಕ",
+     "target_text": "nearly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೋಗೋಕೆ",
+     "target_text": "to go",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸಿದ್ಧ",
+     "target_text": "ready",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ",
+     "target_text": "nearly ready to go",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆರು ಗಂಟೆಗೆ ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ",
+     "target_text": "nearly ready to go at six o'clock",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಬೇಗ ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ",
+     "target_text": "nearly ready to go quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಈಗ ಹೋಗಲು ಬಹುತೇಕ ಸಿದ್ಧವಾಗಿದ್ದೇನೆ",
+     "target_text": "I'm nearly ready to go now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you nearly ready to go?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಹೋಗಲು ಬಹುತೇಕ ಸಿದ್ಧರಿದ್ದೀರಾ?",
+     "target_text": "are you nearly ready to go?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ ಆದರೆ ನನಗೆ ಇನ್ನಷ್ಟು ಮಾತಾಡಬೇಕು",
+     "target_text": "I'm nearly ready to go but I want to speak more",
+     "phrase_role": "use"
+    }
+   ],
+   "26:2": [
+    {
+     "known_text": "ಅನ್ನೋ ಹಾಗೆ",
+     "target_text": "as if",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅನಿಸೋದು",
+     "target_text": "feeling",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು",
+     "target_text": "feeling as if",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು",
+     "target_text": "feeling as if nearly ready to go",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆರು ಗಂಟೆಗೆ ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು",
+     "target_text": "feeling as if at six o'clock",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್ ತುಂಬಾ ಚೆನ್ನಾಗಿ ಮಾತಾಡ್ತೀನಿ ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು ಇಷ್ಟ",
+     "target_text": "I like feeling as if I speak English very well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇವತ್ತು ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು ಇಷ್ಟ",
+     "target_text": "I like feeling as if I'm nearly ready to go today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಈಗ ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು ಇಷ್ಟ",
+     "target_text": "I like feeling as if I'm nearly ready to go now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಸ್ವಲ್ಪ ಇಂಗ್ಲಿಷ್ ಮಾತಾಡ್ತೀನಿ ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು ಇಷ್ಟ",
+     "target_text": "I like feeling as if I speak a little English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್ ಚೆನ್ನಾಗಿ ಮಾತಾಡ್ತೀನಿ ಅನ್ನೋ ಹಾಗೆ ಅನಿಸೋದು ಇಷ್ಟ",
+     "target_text": "I like feeling as if I speak English well",
+     "phrase_role": "use"
+    }
+   ],
+   "26:3": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇಷ್ಟ",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಷ್ಟ",
+     "target_text": "I like",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್ ಮಾತಾಡೋದು ಇಷ್ಟ",
+     "target_text": "I like talking English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಅನಿಸೋದು ಇಷ್ಟ",
+     "target_text": "I like feeling",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಉಳಿದವರೆಲ್ಲರ ಜೊತೆ ಮಾತಾಡೋದು ಇಷ್ಟ",
+     "target_text": "I like talking with everyone else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಮಾತಾಡೋದು ಇಷ್ಟ",
+     "target_text": "I like talking in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ನಿಮ್ಮ ಜೊತೆ ಮಾತಾಡೋದು ಇಷ್ಟ",
+     "target_text": "I like talking with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಡೀ ದಿನ ಇಂಗ್ಲಿಷ್ ಮಾತಾಡೋದು ಇಷ್ಟ",
+     "target_text": "I like talking English all day",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಬೇರೆ ಯಾರ ಜೊತೆಯಾದರೂ ಮಾತಾಡೋದು ಇಷ್ಟ",
+     "target_text": "I like talking with someone else",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 52,
+  "phrases": {
+   "52:1": [
+    {
+     "known_text": "ಕಳೆದ",
+     "target_text": "last",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ವಾರ",
+     "target_text": "week",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ",
+     "target_text": "last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಇಂಗ್ಲಿಷ್",
+     "target_text": "last week English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಜೊತೆ ಕಳೆದ ವಾರ",
+     "target_text": "with you last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಮಾತಾಡಲು",
+     "target_text": "to speak last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ನಾನು ಇಂಗ್ಲಿಷ್ ಮಾತಾಡಬೇಕಿತ್ತು",
+     "target_text": "I wanted to speak English last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ನಾನು ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋಕೆ ಶುರು ಮಾಡಿದೆ",
+     "target_text": "I started to learn English last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಮಾತಾಡೋಕೆ ಶುರುವಾಗ್ತಿತ್ತು",
+     "target_text": "I was starting to speak last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ನಿಮ್ಮನ್ನ ಏನೋ ಕೇಳಬೇಕಿತ್ತು",
+     "target_text": "I wanted to ask you something last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ನೀವು ಇಂಗ್ಲಿಷ್ ಮಾತಾಡಿದ್ರಾ?",
+     "target_text": "did you speak English last week?",
+     "phrase_role": "use"
+    }
+   ],
+   "52:2": [
+    {
+     "known_text": "ಅವನಿಗೆ ಇಂಗ್ಲಿಷ್ ಮಾತಾಡೋ ಜನರನ್ನ ಬೇಕು",
+     "target_text": "he wants people who speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನಿಗೆ ಬೇಡ ನಿಮ್ಮ ಜೊತೆ ಇಂಗ್ಲಿಷ್ ಮಾತಾಡೋದು",
+     "target_text": "he doesn't want to speak English with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅವನು",
+     "target_text": "but he",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ಇಂಗ್ಲಿಷ್ ಮಾತಾಡಬೇಕು",
+     "target_text": "he wants to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈಗ ಅವನಿಗೆ ಮಾತಾಡೋದು ಬೇಡ",
+     "target_text": "he doesn't want to speak now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ವಾಪಸ್ ಬರಬೇಕು",
+     "target_text": "he wants to come back",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಅವನು ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write a letter last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಇಂಗ್ಲಿಷ್ ಕಲಿಯಬೇಕು",
+     "target_text": "he wants to learn English",
+     "phrase_role": "use"
+    }
+   ],
+   "52:3": [
+    {
+     "known_text": "ತನ್ನ",
+     "target_text": "his",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸ್ನೇಹಿತನಿಗೆ",
+     "target_text": "to friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ",
+     "target_text": "to his friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ",
+     "target_text": "to his friend now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ",
+     "target_text": "to his friend last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ",
+     "target_text": "to his friend in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write a letter to his friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಏನೋ ಹೇಳಬೇಕಿತ್ತು",
+     "target_text": "he wanted to say something to his friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಮಾತಾಡಬೇಕು",
+     "target_text": "he wants to speak to his friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write a letter to his friend last week",
+     "phrase_role": "use"
+    }
+   ],
+   "52:4": [
+    {
+     "known_text": "ಒಂದು",
+     "target_text": "a",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಪತ್ರ",
+     "target_text": "letter",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಒಂದು ಪತ್ರ",
+     "target_text": "a letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಒಂದು ಪತ್ರ",
+     "target_text": "a letter now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಒಂದು ಪತ್ರ",
+     "target_text": "a letter in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಒಂದು ಪತ್ರ",
+     "target_text": "a letter to his friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write a letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕು",
+     "target_text": "I want to write a letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಾ?",
+     "target_text": "do you want to write a letter?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ನಾನು ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "I wanted to write a letter last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write a letter in English",
+     "phrase_role": "use"
+    }
+   ],
+   "52:5": [
+    {
+     "known_text": "ಈಗ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "wanted to write now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "wanted to write in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "wanted to write a letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "I wanted to write a letter to his friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಏನೋ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "I wanted to write in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write to his friend last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "she wanted to write a letter",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 53,
+  "phrases": {
+   "53:1": [
+    {
+     "known_text": "ಅವಳಿಗೆ ಇವತ್ತು ಸಂಜೆ ಆರು ಗಂಟೆಗೆ ಭೇಟಿಯಾಗಲು ಬೇಕು",
+     "target_text": "she wants to meet at six o'clock this evening",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳಿಗೆ ಇಂಗ್ಲಿಷ್ ಮಾತಾಡೋ ಜನರನ್ನ ಭೇಟಿಯಾಗೋಕೆ ಬೇಕು",
+     "target_text": "she wants to meet people who speak English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅವಳಿಗೆ",
+     "target_text": "but she",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳು ಇಂಗ್ಲಿಷ್ ಮಾತಾಡಬೇಕು",
+     "target_text": "she wants to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈಗ ಅವಳಿಗೆ ಮಾತಾಡೋದು ಬೇಡ",
+     "target_text": "she doesn't want to speak now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಅವಳು ಒಂದು ಪತ್ರ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "she wanted to write a letter last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಇಂಗ್ಲಿಷ್ ಕಲಿಯಬೇಕು",
+     "target_text": "she wants to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳಿಗೆ ಒಂದು ಪತ್ರ ಬರೆಯೋದು ಬೇಡ",
+     "target_text": "she doesn't want to write a letter",
+     "phrase_role": "use"
+    }
+   ],
+   "53:2": [
+    {
+     "known_text": "ತನ್ನ",
+     "target_text": "her",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಚೀಲ",
+     "target_text": "bag",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ದಲ್ಲಿ",
+     "target_text": "in",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತನ್ನ ಚೀಲದಲ್ಲಿ",
+     "target_text": "in her bag",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ತನ್ನ ಚೀಲದಲ್ಲಿ",
+     "target_text": "in her bag now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ತನ್ನ ಚೀಲದಲ್ಲಿ",
+     "target_text": "in her bag last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳಿಗೆ ತನ್ನ ಚೀಲದಲ್ಲಿ",
+     "target_text": "she, in her bag",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳು ಅವನ ಪತ್ರವನ್ನ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "she wanted to put his letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಒಂದು ಪತ್ರ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "she wanted to put a letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಅದನ್ನ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "she wanted to put it in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಅವಳು ಅವನ ಪತ್ರವನ್ನ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "she wanted to put his letter in her bag last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಏನೋ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "she wanted to put something in her bag",
+     "phrase_role": "use"
+    }
+   ],
+   "53:3": [
+    {
+     "known_text": "ಅವನ ಪತ್ರವನ್ನ",
+     "target_text": "his letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಪತ್ರವನ್ನ",
+     "target_text": "letter now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಪತ್ರವನ್ನ",
+     "target_text": "letter in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ಅವನ ಪತ್ರವನ್ನ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to write his letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ ಪತ್ರವನ್ನ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "I wanted to write his letter",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವನ ಪತ್ರವನ್ನ ಬರೆಯಬೇಕಿತ್ತು",
+     "target_text": "she wanted to write his letter in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ ಪತ್ರವನ್ನ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "I wanted to put his letter in her bag",
+     "phrase_role": "use"
+    }
+   ],
+   "53:4": [
+    {
+     "known_text": "ಅವನ ಪತ್ರವನ್ನ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "wanted to put his letter",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "wanted to put now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "wanted to put in her bag",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಒಂದು ಪತ್ರ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "I wanted to put a letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಅವನ ಪತ್ರವನ್ನ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "he wanted to put his letter in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅದನ್ನ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "I wanted to put it in her bag",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ನಾನು ಅವನ ಪತ್ರವನ್ನ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "I wanted to put his letter in her bag last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಒಂದು ಪತ್ರ ತನ್ನ ಚೀಲದಲ್ಲಿ ಇಡಬೇಕಿತ್ತು",
+     "target_text": "he wanted to put a letter in her bag",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 71,
+  "phrases": {
+   "71:1": [
+    {
+     "known_text": "ಈಗ ಯಾರಿಗೂ",
+     "target_text": "anyone now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಯಾರಿಗೂ",
+     "target_text": "anyone in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಯಾರಿಗೂ",
+     "target_text": "but anyone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಯಾರಿಗೂ ಹೇಳಲಿಲ್ಲ",
+     "target_text": "I didn't tell anyone",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳಿಗೆ ಯಾರಿಗೂ ಸಹಾಯ ಮಾಡೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "she didn't want to help anyone",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಯಾರಿಗೂ ಮಾತಾಡೋದು ಬೇಡ",
+     "target_text": "I don't want to speak to anyone",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಯಾರಿಗೂ ಏನೂ ಹೇಳಲಿಲ್ಲ",
+     "target_text": "he didn't say anything to anyone",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮಗೆ ಯಾರಿಗೂ ಹೇಳೋದು ಬೇಡ",
+     "target_text": "we don't want to tell anyone",
+     "phrase_role": "use"
+    }
+   ],
+   "71:2": [
+    {
+     "known_text": "ಈಗ ಸತ್ಯ",
+     "target_text": "the truth now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಸತ್ಯ",
+     "target_text": "the truth in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಯಾರಿಗೂ ಸತ್ಯ",
+     "target_text": "anyone the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಸತ್ಯ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನನಗೆ ಸತ್ಯ ಹೇಳಲಿಲ್ಲ",
+     "target_text": "she didn't tell me the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಸತ್ಯ ಗೊತ್ತಾ?",
+     "target_text": "do you know the truth?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನಿಗೆ ಸತ್ಯ ತಿಳಿಯಬೇಕಿತ್ತು",
+     "target_text": "he wanted to know the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮಗೆ ಸತ್ಯ ಗೊತ್ತಿರಲಿಲ್ಲ",
+     "target_text": "we didn't know the truth",
+     "phrase_role": "use"
+    }
+   ],
+   "71:3": [
+    {
+     "known_text": "ಯಾರಿಗೂ",
+     "target_text": "anyone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸತ್ಯ",
+     "target_text": "the truth",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೇಳಿಸೋದು",
+     "target_text": "to let hear",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು",
+     "target_text": "to let anyone hear the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು",
+     "target_text": "to let anyone hear the truth now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು",
+     "target_text": "to let anyone hear the truth in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು",
+     "target_text": "but to let anyone hear the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳಿಗೆ ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "she didn't want to let anyone hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸಲ್ಲ",
+     "target_text": "I'm not going to let anyone hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು ಬೇಕಾ?",
+     "target_text": "do you want to let anyone hear the truth?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನಿಗೆ ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "he didn't want to let anyone hear the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮಗೆ ಯಾರಿಗೂ ಸತ್ಯ ಕೇಳಿಸೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want to let anyone hear the truth",
+     "phrase_role": "use"
+    }
+   ],
+   "71:4": [
+    {
+     "known_text": "ನಮಗೆ",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "didn't want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಮಗೆ ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನಮಗೆ ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಮಗೆ ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಮಗೆ ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "but we didn't want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಮಗೆ ನಿಲ್ಲಿಸೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮಗೆ ಇಂಗ್ಲಿಷ್ ಮಾತಾಡೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮಗೆ ಉತ್ತರ ಕೊಡೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮಗೆ ಹೋಗೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "we didn't want to go",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 72,
+  "phrases": {
+   "72:1": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "'re doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "you're doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "you're doing now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "you're doing in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನೀವು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "but you're doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನನಗೆ ಗೊತ್ತು",
+     "target_text": "I know what you're doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರೋ ಅದು ನಿಮಗೆ ಇಷ್ಟಾನಾ?",
+     "target_text": "do you like what you're doing?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know what you're doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know what you're doing",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 73,
+  "phrases": {
+   "73:1": [
+    {
+     "known_text": "ತುಂಬಾ",
+     "target_text": "very",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you very much",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you very much now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you very much in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "but thank you very much",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you very much",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಎಲ್ಲದಕ್ಕೂ ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you very much for everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ತುಂಬಾ ಧನ್ಯವಾದಗಳು ಹೇಳಬೇಕು",
+     "target_text": "I want to say thank you very much",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಪತ್ರಕ್ಕೆ ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you very much for the letter",
+     "phrase_role": "use"
+    }
+   ],
+   "73:2": [
+    {
+     "known_text": "ನಾನು",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇನ್ನೂ",
+     "target_text": "more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕಲಿಯೋದು",
+     "target_text": "to learn",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇದೆ",
+     "target_text": "'ve got",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "I've got more to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "I've got more to learn now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "I've got more to learn in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "but I've got more to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "I've got more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ ಅಂತ ಅಂದುಕೊಳ್ತೀನಿ",
+     "target_text": "I think I've got more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತು ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "I know I've got more to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್ ಬಗ್ಗೆ ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "I've got more to learn about English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ ಆದರೆ ಅದು ಮಜಾ",
+     "target_text": "I've got more to learn but it is fun",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 76,
+  "phrases": {
+   "76:1": [
+    {
+     "known_text": "ಈಗಾಗಲೇ ಕಲಿಯೋಕೆ",
+     "target_text": "to learn already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಈಗಾಗಲೇ",
+     "target_text": "but already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ ಮುಂದಿನ ವಾರ",
+     "target_text": "already next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಈಗಾಗಲೇ ಗೊತ್ತು",
+     "target_text": "I already know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಈಗಾಗಲೇ ಗೊತ್ತಾ?",
+     "target_text": "do you already know?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಈಗಾಗಲೇ ಅದನ್ನ ಮಾಡಿದೆ",
+     "target_text": "I already did it",
+     "phrase_role": "use"
+    }
+   ],
+   "76:2": [
+    {
+     "known_text": "ಎಷ್ಟು",
+     "target_text": "how much",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕಲಿತಿದ್ದೇನೆ",
+     "target_text": "I've learnt",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ",
+     "target_text": "how much I've learnt",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ",
+     "target_text": "how much I've learnt now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ",
+     "target_text": "how much I've learnt in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ",
+     "target_text": "how much I've learnt already",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ ಅಂತ ನನಗೆ ಗೊತ್ತು",
+     "target_text": "I know how much I've learnt",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ ಅಂತ ನಿಮಗೆ ಗೊತ್ತಾ?",
+     "target_text": "do you know how much I've learnt?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ ಅಂತ ನನಗೆ ನೆನಪಿಲ್ಲ",
+     "target_text": "I can't remember how much I've learnt",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ ಅಂತ ನಿಮಗೆ ಹೇಳಬೇಕು",
+     "target_text": "I want to tell you how much I've learnt",
+     "phrase_role": "use"
+    }
+   ],
+   "76:3": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತುಂಬಾ",
+     "target_text": "very",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸಂತೋಷ",
+     "target_text": "happy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "but I'm very happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇವತ್ತು ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡೋಕೆ ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಮಜಾ ಆದ್ದರಿಂದ ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy because it is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಸಂತೋಷ ಆದರೆ ಸ್ವಲ್ಪ ಸುಸ್ತಾಗಿದೆ",
+     "target_text": "I'm very happy but I'm a little tired",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 77,
+  "phrases": {
+   "77:1": [
+    {
+     "known_text": "ಎಷ್ಟು",
+     "target_text": "how",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೇಗ",
+     "target_text": "quickly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಎಷ್ಟು ಬೇಗ",
+     "target_text": "how quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಎಷ್ಟು ಬೇಗ ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋಕೆ",
+     "target_text": "how quickly to learn English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಎಷ್ಟು ಬೇಗ",
+     "target_text": "how quickly now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಎಷ್ಟು ಬೇಗ",
+     "target_text": "but how quickly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಎಷ್ಟು ಬೇಗ ಕಲಿಯಬಹುದು ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know how quickly I can learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಎಷ್ಟು ಬೇಗ ಅದನ್ನ ಮಾಡಬಹುದು ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know how quickly you can do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಎಷ್ಟು ಬೇಗ ಕಲಿಯುತ್ತೀನಿ ಅನ್ನೋದು ಆಸಕ್ತಿಕರ",
+     "target_text": "it's interesting how quickly I learn",
+     "phrase_role": "use"
+    }
+   ],
+   "77:2": [
+    {
+     "known_text": "ಶುರು",
+     "target_text": "start",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳೋಕೆ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting to understand",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಇಂಗ್ಲಿಷ್ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳೋಕೆ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting to understand English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಕಲಿಯೋಕೆ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think I'm starting to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಸುಸ್ತಾಗೋಕೆ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting to feel tired",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಈಗ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಚೆನ್ನಾಗಿ ಮಾತಾಡೋಕೆ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm starting to speak better",
+     "phrase_role": "use"
+    }
+   ],
+   "77:3": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಶ್ಚರ್ಯ",
+     "target_text": "surprised",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "but I'm surprised",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇಲ್ಲಿ ಇದ್ದೀರಿ ಅಂತ ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised you're here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನಿಗೆ ಗೊತ್ತಿರಲಿಲ್ಲ ಅಂತ ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised he didn't know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಎಷ್ಟು ಬೇಗ ಕಲಿಯುತ್ತೀನಿ ಅಂತ ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised how quickly I learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಆಶ್ಚರ್ಯ ಆದರೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm surprised but I'm very happy",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 83,
+  "phrases": {
+   "83:1": [
+    {
+     "known_text": "ನಿಮ್ಮ",
+     "target_text": "your",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸ್ನೇಹಿತನ",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬಗ್ಗೆ",
+     "target_text": "about",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "about your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "about your friend now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "about your friend in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "but about your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know about your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ನನಗೆ ಏನೂ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know anything about your friend",
+     "phrase_role": "use"
+    }
+   ],
+   "83:2": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what you said now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what you said in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ನೀವು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what you said about your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಹೇಳಿದ್ದು ನನಗೆ ಅರ್ಥ ಆಯ್ತು",
+     "target_text": "I understand what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಹೇಳಿದ್ದು ನನಗೆ ಅರ್ಥ ಆಗ್ತಿಲ್ಲ",
+     "target_text": "I don't understand what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಹೇಳಿದ್ದು ನನಗೆ ನೆನಪಿಲ್ಲ",
+     "target_text": "I can't remember what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಹೇಳಿದ್ದು ನಿಮಗೆ ನೆನಪಿದೆಯಾ?",
+     "target_text": "do you remember what you said?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಹೇಳಿದ್ರಿ ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know what you said",
+     "phrase_role": "use"
+    }
+   ],
+   "83:3": [
+    {
+     "known_text": "ಈಗ ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "agree with now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "agree with in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "but agree with",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮ ಜೊತೆ ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "I agree with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಹೇಳಿದ್ದಕ್ಕೆ ನಾನು ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "I agree with what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನನ್ನ ಜೊತೆ ಒಪ್ಪುತ್ತೀರಾ?",
+     "target_text": "do you agree with me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಜೊತೆ ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "I agree with your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಎಲ್ಲರ ಜೊತೆ ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "I agree with everyone",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 84,
+  "phrases": {
+   "84:1": [
+    {
+     "known_text": "ನನ್ನ",
+     "target_text": "my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸ್ನೇಹಿತನ",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬಗ್ಗೆ",
+     "target_text": "about",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "about my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "about my friend now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "about my friend in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ",
+     "target_text": "but about my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ತಿಳಿಯಬೇಕಾ?",
+     "target_text": "do you want to know about my friend?",
+     "phrase_role": "use"
+    }
+   ],
+   "84:2": [
+    {
+     "known_text": "ಅವನು",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅವನು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what he said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಅವನು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what he said now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವನು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what he said in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಅವನು ಹೇಳಿದ್ದಕ್ಕೆ",
+     "target_text": "what he said about my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ಹೇಳಿದ್ದು ನನಗೆ ಅರ್ಥ ಆಯ್ತು",
+     "target_text": "I understand what he said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಹೇಳಿದ್ದು ನನಗೆ ಅರ್ಥ ಆಗ್ತಿಲ್ಲ",
+     "target_text": "I don't understand what he said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಹೇಳಿದ್ದು ನಿಮಗೆ ನೆನಪಿದೆಯಾ?",
+     "target_text": "do you remember what he said?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಹೇಳಿದ್ದು ನನಗೆ ನೆನಪಿಲ್ಲ",
+     "target_text": "I can't remember what he said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಹೇಳಿದ್ದಕ್ಕೆ ನಾನು ಒಪ್ಪುತ್ತೇನೆ",
+     "target_text": "I agree with what he said",
+     "phrase_role": "use"
+    }
+   ],
+   "84:3": [
+    {
+     "known_text": "ಈಗ ಒಪ್ಪಲ್ಲ",
+     "target_text": "don't agree with now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಒಪ್ಪಲ್ಲ",
+     "target_text": "don't agree with in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಒಪ್ಪಲ್ಲ",
+     "target_text": "but don't agree with",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮ ಜೊತೆ ಒಪ್ಪಲ್ಲ",
+     "target_text": "I don't agree with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಹೇಳಿದ್ದಕ್ಕೆ ನಾನು ಒಪ್ಪಲ್ಲ",
+     "target_text": "I don't agree with what he said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಜೊತೆ ಒಪ್ಪಲ್ಲ",
+     "target_text": "I don't agree with your friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಅದಕ್ಕೆ ಒಪ್ಪಲ್ಲ",
+     "target_text": "we don't agree with that",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 85,
+  "phrases": {
+   "85:1": [
+    {
+     "known_text": "ಆ",
+     "target_text": "those",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಜನರನ್ನ",
+     "target_text": "people",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆ ಜನರನ್ನ",
+     "target_text": "those people",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಆ ಜನರನ್ನ",
+     "target_text": "those people now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಆ ಜನರನ್ನ",
+     "target_text": "those people in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಆ ಜನರನ್ನ",
+     "target_text": "but those people",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಆ ಜನರನ್ನ ಭೇಟಿಯಾಗಬೇಕು",
+     "target_text": "I want to meet those people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಆ ಜನರು ಗೊತ್ತಾ?",
+     "target_text": "do you know those people?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಆ ಜನರನ್ನ ಭೇಟಿಯಾಗೋದು ಬೇಡ",
+     "target_text": "I don't want to meet those people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಆ ಜನರಿಗೆ ಸಹಾಯ ಮಾಡಬೇಕು",
+     "target_text": "I want to help those people",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 87,
+  "phrases": {
+   "87:1": [
+    {
+     "known_text": "ಈಗ ಅವರು",
+     "target_text": "they are now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವರು",
+     "target_text": "they are in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅವರು",
+     "target_text": "but they are",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವರು ನನ್ನ ಸ್ನೇಹಿತರು",
+     "target_text": "they are my friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವರು ಇಲ್ಲಿ ಇದ್ದಾರೆ",
+     "target_text": "they are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವರು ಸಿದ್ಧ ಇದ್ದಾರೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think they are ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವರು ಇಂಗ್ಲಿಷ್ ಕಲಿಯುತ್ತಿದ್ದಾರೆ",
+     "target_text": "they are learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವರು ಇಲ್ಲಿ ಇದ್ದಾರಾ ಅಂತ ನಿಮಗೆ ಗೊತ್ತಾ?",
+     "target_text": "do you know if they are here?",
+     "phrase_role": "use"
+    }
+   ],
+   "87:2": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಗೊತ್ತಿಲ್ಲದ",
+     "target_text": "don't know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿಲ್ಲದ",
+     "target_text": "I don't know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನಗೆ ಗೊತ್ತಿಲ್ಲದ",
+     "target_text": "I don't know now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಗೊತ್ತಿಲ್ಲದ",
+     "target_text": "I don't know in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನಗೆ ಗೊತ್ತಿಲ್ಲದ",
+     "target_text": "but I don't know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಆ ಜನ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know those people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವರು ಇಲ್ಲಿ ಇದ್ದಾರಾ ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know if they are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಹೇಳಿದ್ರಿ ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know what you said",
+     "phrase_role": "use"
+    }
+   ],
+   "87:3": [
+    {
+     "known_text": "ಈಗ ಜನ",
+     "target_text": "people now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಜನ",
+     "target_text": "people in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿಲ್ಲದ ಜನ",
+     "target_text": "people I don't know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಜನರನ್ನ ಭೇಟಿಯಾಗಬೇಕು",
+     "target_text": "I want to meet people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವರು ಒಳ್ಳೆ ಜನ",
+     "target_text": "they are good people",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಜನ ಇಲ್ಲಿ ಇದ್ದಾರೆ",
+     "target_text": "people are here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಜನರಿಗೆ ಸಹಾಯ ಮಾಡಬೇಕು",
+     "target_text": "I want to help people",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 90,
+  "phrases": {
+   "90:1": [
+    {
+     "known_text": "ಇನ್ನೂ",
+     "target_text": "more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಿಧಾನವಾಗಿ",
+     "target_text": "slowly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇನ್ನೂ ನಿಧಾನವಾಗಿ",
+     "target_text": "more slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಇನ್ನೂ ನಿಧಾನವಾಗಿ",
+     "target_text": "more slowly now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇನ್ನೂ ನಿಧಾನವಾಗಿ",
+     "target_text": "more slowly in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡಲು",
+     "target_text": "to speak more slowly",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡಬಹುದಾ?",
+     "target_text": "can you speak more slowly?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡಬೇಕು ಅಂತ ನನಗೆ ಬೇಕು",
+     "target_text": "I want you to speak more slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಅದನ್ನ ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಹೇಳಬಹುದಾ?",
+     "target_text": "could you say that more slowly?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡಬೇಕು",
+     "target_text": "I want to speak more slowly",
+     "phrase_role": "use"
+    }
+   ],
+   "90:2": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "if can speak",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "if you can speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "if you can speak now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "if you can speak in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನೀವು ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "but if you can speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "if you can speak more slowly",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇಂಗ್ಲಿಷ್ ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "if you can speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಈಗ ಮಾತಾಡಿದ್ರೆ",
+     "target_text": "if you can speak now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಮಾತಾಡಿದ್ರೆ ನನಗೆ ಅರ್ಥ ಆಗುತ್ತೆ",
+     "target_text": "if you can speak I can understand",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇನ್ನೂ ಮಾತಾಡಿದ್ರೆ ಒಳ್ಳೆದು",
+     "target_text": "if you can speak more it's better",
+     "phrase_role": "use"
+    }
+   ],
+   "90:3": [
+    {
+     "known_text": "ಅದು",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತುಂಬಾ",
+     "target_text": "very",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "would be great",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "that would be great",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "that would be great now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "that would be great in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "but that would be great",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "that would be great",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think that would be great",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನನಗೆ ಸಹಾಯ ಮಾಡಿದ್ರೆ ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "if you can help me that would be great",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಬಂದ್ರೆ ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "if you can come that would be great",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ, ಧನ್ಯವಾದ",
+     "target_text": "that would be great thank you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 91,
+  "phrases": {
+   "91:1": [
+    {
+     "known_text": "ಸಮಯಕ್ಕೆ",
+     "target_text": "to time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸರಿಯಾಗಿ",
+     "target_text": "correctly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ",
+     "target_text": "in time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ",
+     "target_text": "in time now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ",
+     "target_text": "in time in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ",
+     "target_text": "but in time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಮುಗಿಸಬೇಕು",
+     "target_text": "I want to finish in time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಬರಬಹುದಾ?",
+     "target_text": "can you come in time?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಮುಗಿಸೋಕೆ ಆಗಲ್ಲ",
+     "target_text": "I can't finish in time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಬರಲಿಲ್ಲ",
+     "target_text": "she didn't come in time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಸಿದ್ಧ ಆಗಬೇಕು",
+     "target_text": "I want to be ready in time",
+     "phrase_role": "use"
+    }
+   ],
+   "91:2": [
+    {
+     "known_text": "ಉತ್ತರ ಕೊಡೋವಷ್ಟು",
+     "target_text": "enough to answer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೇಗ",
+     "target_text": "quickly",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ",
+     "target_text": "quickly enough to answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ",
+     "target_text": "quickly enough to answer now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ",
+     "target_text": "quickly enough to answer in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ",
+     "target_text": "but quickly enough to answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ ಮಾತಾಡೋಕೆ ಆಗಲ್ಲ",
+     "target_text": "I can't speak quickly enough to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ ಯೋಚಿಸಬೇಕು",
+     "target_text": "I want to think quickly enough to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ ಯೋಚಿಸಬಹುದಾ?",
+     "target_text": "can you think quickly enough to answer?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ ಯೋಚಿಸೋಕೆ ಆಗುತ್ತೋ ಇಲ್ವೋ ಖಚಿತವಿಲ್ಲ",
+     "target_text": "I'm not sure I can think quickly enough to answer",
+     "phrase_role": "use"
+    }
+   ],
+   "91:3": [
+    {
+     "known_text": "ಈಗ ಯೋಚಿಸೋದು",
+     "target_text": "to think now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ ಯೋಚಿಸೋದು",
+     "target_text": "to think quickly enough to answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಯೋಚಿಸೋದು",
+     "target_text": "to think in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಅದರ ಬಗ್ಗೆ ಯೋಚಿಸಬೇಕು",
+     "target_text": "I want to think about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಯೋಚಿಸಬೇಕು",
+     "target_text": "I need to think",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಅದರ ಬಗ್ಗೆ ಯೋಚಿಸಬೇಕಾ?",
+     "target_text": "do you want to think about it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಯೋಚಿಸೋದು ಕಷ್ಟ",
+     "target_text": "it's difficult to think in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಈಗ ಅದರ ಬಗ್ಗೆ ಯೋಚಿಸೋದು ಬೇಡ",
+     "target_text": "I don't want to think about it now",
+     "phrase_role": "use"
+    }
+   ],
+   "91:4": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಕಷ್ಟ",
+     "target_text": "it's difficult in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಕಷ್ಟ",
+     "target_text": "it's difficult in time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅದೇ ಸಮಯದಲ್ಲಿ ಕಷ್ಟ",
+     "target_text": "it's difficult at the same time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅದು ಕಷ್ಟ",
+     "target_text": "it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಉತ್ತರ ಕೊಡೋದು ಕಷ್ಟ",
+     "target_text": "it's difficult to answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಕಷ್ಟ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಕಷ್ಟ ಆದರೆ ಮಜಾ",
+     "target_text": "it's difficult but it is fun",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಬೇಗ ಮಾತಾಡೋದು ಕಷ್ಟ",
+     "target_text": "it's difficult to speak quickly",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 95,
+  "phrases": {
+   "95:1": [
+    {
+     "known_text": "ಮುಂದಿನ",
+     "target_text": "next",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬಸ್ಸಲ್ಲಿ",
+     "target_text": "on bus",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ",
+     "target_text": "on the next bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ",
+     "target_text": "on the next bus now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ",
+     "target_text": "on the next bus in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ",
+     "target_text": "but on the next bus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ ಹೋಗಬೇಕು",
+     "target_text": "I want to go on the next bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ ಹೋಗಬಹುದಾ?",
+     "target_text": "can we go on the next bus?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ ಇರ್ತೀನಿ",
+     "target_text": "I'll be on the next bus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ ಹೋಗಬೇಕಾ?",
+     "target_text": "do you want to go on the next bus?",
+     "phrase_role": "use"
+    }
+   ],
+   "95:2": [
+    {
+     "known_text": "ಮನೆಗೆ",
+     "target_text": "home",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೋಗೋಕೆ",
+     "target_text": "to go",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮನೆಗೆ ಹೋಗೋಕೆ",
+     "target_text": "to go home",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಮನೆಗೆ ಹೋಗೋಕೆ",
+     "target_text": "to go home now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಮನೆಗೆ ಹೋಗೋಕೆ",
+     "target_text": "to go home in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಮನೆಗೆ ಹೋಗೋಕೆ",
+     "target_text": "but to go home",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಮನೆಗೆ ಹೋಗಬೇಕು",
+     "target_text": "I want to go home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಮನೆಗೆ ಹೋಗೋ ಸಮಯ ಆಯ್ತು",
+     "target_text": "it's time to go home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಮನೆಗೆ ಹೋಗಬೇಕಾ?",
+     "target_text": "do you want to go home?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಮನೆಗೆ ಹೋಗೋದು ಬೇಡ",
+     "target_text": "I don't want to go home",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಈಗ ಮನೆಗೆ ಹೋಗಬೇಕು",
+     "target_text": "I need to go home now",
+     "phrase_role": "use"
+    }
+   ],
+   "95:3": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸಿದ್ಧ",
+     "target_text": "ready",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇದ್ದೀರಾ",
+     "target_text": "are",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready in English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮನೆಗೆ ಹೋಗೋಕೆ ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready to go home?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಈಗ ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready now?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಹೋಗೋಕೆ ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready to go?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಶುರು ಮಾಡೋಕೆ ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+     "target_text": "are you ready to start?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ ಇಲ್ವಾ?",
+     "target_text": "are you ready or not?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 98,
+  "phrases": {
+   "98:1": [
+    {
+     "known_text": "ಬೇರೆ ಏನಾದರೂ",
+     "target_text": "something else",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಡೋ",
+     "target_text": "playing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ",
+     "target_text": "playing something else",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ",
+     "target_text": "playing something else now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ",
+     "target_text": "playing something else in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ",
+     "target_text": "but playing something else",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm thinking about playing something else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕಾ?",
+     "target_text": "do you want to talk about playing something else?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ ನನಗೆ ಖಚಿತವಿಲ್ಲ",
+     "target_text": "I'm not sure about playing something else",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ ಏನಂತೀರಾ?",
+     "target_text": "what about playing something else?",
+     "phrase_role": "use"
+    }
+   ],
+   "98:2": [
+    {
+     "known_text": "ಈಗ ಯೋಚಿಸಬೇಕು?",
+     "target_text": "should consider now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಯೋಚಿಸಬೇಕು?",
+     "target_text": "should consider in English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ ಯೋಚಿಸಬೇಕು?",
+     "target_text": "should consider playing something else?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಅದನ್ನ ಯೋಚಿಸಬೇಕು ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think you should consider it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇದನ್ನ ಯೋಚಿಸಬೇಕು",
+     "target_text": "you should consider this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಅದನ್ನ ಯೋಚಿಸಬೇಕು",
+     "target_text": "we should consider it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅದನ್ನ ಯೋಚಿಸಬೇಕು",
+     "target_text": "I should consider it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಅದನ್ನ ಜಾಗ್ರತೆಯಾಗಿ ಯೋಚಿಸಬೇಕು",
+     "target_text": "you should consider it carefully",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 99,
+  "phrases": {
+   "99:1": [
+    {
+     "known_text": "ಅದು",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಯಾಕೆ",
+     "target_text": "why",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೆಲಸ",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡ್ತಿಲ್ಲ",
+     "target_text": "isn't doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ",
+     "target_text": "why it's not working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ",
+     "target_text": "why it's not working now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ",
+     "target_text": "why it's not working in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ",
+     "target_text": "but why it's not working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know why it's not working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ ಅಂತ ನಿಮಗೆ ಗೊತ್ತಾ?",
+     "target_text": "do you know why it's not working?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know why it's not working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ ಅಂತ ನನಗೆ ಖಚಿತವಿಲ್ಲ",
+     "target_text": "I'm not sure why it's not working",
+     "phrase_role": "use"
+    }
+   ],
+   "99:2": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಿಮ್ಮನ್ನೇ",
+     "target_text": "yourself",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "should ask",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನೀವು ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "but you should ask yourself",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಯಾಕೆ ಅಂತ ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself why",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think you should ask yourself",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇದನ್ನ ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಈಗ ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕು ಅಂತ ನೀವು ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself what you want",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಸಾಧ್ಯವಾದಷ್ಟು ಬೇಗ ನೀವು ನಿಮ್ಮನ್ನೇ ಕೇಳಿಕೊಳ್ಳಬೇಕು",
+     "target_text": "you should ask yourself as soon as you can",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 100,
+  "phrases": {
+   "100:1": [
+    {
+     "known_text": "ಇದೇ ತರಹದ್ದನ್ನ",
+     "target_text": "something similar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡೋ",
+     "target_text": "doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬಗ್ಗೆ",
+     "target_text": "about",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ",
+     "target_text": "about doing something similar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ",
+     "target_text": "about doing something similar now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ",
+     "target_text": "about doing something similar in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ",
+     "target_text": "but about doing something similar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm thinking about doing something similar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕಾ?",
+     "target_text": "do you want to talk about doing something similar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ ಏನಂತೀರಾ?",
+     "target_text": "what about doing something similar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ ನನಗೆ ಖಚಿತವಿಲ್ಲ",
+     "target_text": "I'm not sure about doing something similar",
+     "phrase_role": "use"
+    }
+   ],
+   "100:2": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಚಿಂತಿಸಬಾರದು",
+     "target_text": "shouldn't worry",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನೀವು ಚಿಂತಿಸಬಾರದು",
+     "target_text": "but you shouldn't worry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಚಿಂತಿಸಬಾರದು ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think you shouldn't worry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಅದರ ಬಗ್ಗೆ ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ತಪ್ಪು ಮಾಡೋ ಬಗ್ಗೆ ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry about making mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಈಗ ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 101,
+  "phrases": {
+   "101:1": [
+    {
+     "known_text": "ಈ",
+     "target_text": "this",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಭಾಷೆಯ",
+     "target_text": "language",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬಗ್ಗೆ",
+     "target_text": "about",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಈ ಭಾಷೆಯ ಬಗ್ಗೆ",
+     "target_text": "about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಈ ಭಾಷೆಯ ಬಗ್ಗೆ",
+     "target_text": "about this language now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಈ ಭಾಷೆಯ ಬಗ್ಗೆ",
+     "target_text": "about this language in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಈ ಭಾಷೆಯ ಬಗ್ಗೆ",
+     "target_text": "but about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈ ಭಾಷೆಯ ಬಗ್ಗೆ ಕಲಿಯಬೇಕು",
+     "target_text": "I want to learn about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈ ಭಾಷೆಯ ಬಗ್ಗೆ ಹೆಚ್ಚು ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know more about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಈ ಭಾಷೆಯ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕಾ?",
+     "target_text": "do you want to talk about this language?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಈ ಭಾಷೆಯ ಬಗ್ಗೆ ಕಲಿಯೋದು ಇಷ್ಟ",
+     "target_text": "I like learning about this language",
+     "phrase_role": "use"
+    }
+   ],
+   "101:2": [
+    {
+     "known_text": "ಹೆಚ್ಚು",
+     "target_text": "more",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತಿಳಿದುಕೊಳ್ಳೋದು",
+     "target_text": "finding out",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು",
+     "target_text": "finding out more",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು",
+     "target_text": "finding out more now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು",
+     "target_text": "finding out more in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈ ಭಾಷೆಯ ಬಗ್ಗೆ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು",
+     "target_text": "finding out more about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು ಖುಷಿ",
+     "target_text": "I enjoy finding out more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು ಆಸಕ್ತಿಕರ",
+     "target_text": "finding out more is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು ಇಷ್ಟಾನಾ?",
+     "target_text": "do you like finding out more?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋದು ಕಷ್ಟ",
+     "target_text": "finding out more is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳೋ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm thinking about finding out more",
+     "phrase_role": "use"
+    }
+   ],
+   "101:3": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಖುಷಿ",
+     "target_text": "joy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೊಡ್ತಿದೆ",
+     "target_text": "'m giving",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನಗೆ ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನಗೆ ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "but I'm enjoying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಇದು ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋದು ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇದು ತುಂಬಾ ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying it very much",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ನಿಮ್ಮ ಜೊತೆ ಮಾತಾಡೋದು ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying talking to you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಈ ಭಾಷೆ ಖುಷಿ ಕೊಡ್ತಿದೆ",
+     "target_text": "I'm enjoying this language",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 107,
+  "phrases": {
+   "107:1": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಏನು",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "were doing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "what you were doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "what you were doing now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "what you were doing in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "but what you were doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನನಗೆ ಗೊತ್ತು",
+     "target_text": "I know what you were doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನಿಮಗೆ ನೆನಪಿದೆಯಾ?",
+     "target_text": "do you remember what you were doing?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know what you were doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know what you were doing",
+     "phrase_role": "use"
+    }
+   ],
+   "107:2": [
+    {
+     "known_text": "ಈಗ ನೋಡೋಕೆ",
+     "target_text": "to see now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ನೋಡೋಕೆ",
+     "target_text": "to see what you were doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೋಡೋಕೆ",
+     "target_text": "to see in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಅದನ್ನ ನೋಡಬೇಕು",
+     "target_text": "I want to see it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರೋ ಅದನ್ನ ನೋಡಬೇಕು",
+     "target_text": "I want to see what you're doing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಇದನ್ನ ನೋಡಬೇಕಾ?",
+     "target_text": "do you want to see this?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇನ್ನೂ ಹೆಚ್ಚು ನೋಡಬೇಕು ಅಂತ ಬಯಸ್ತೇನೆ",
+     "target_text": "I'd like to see more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೋಡೋದು ಕಷ್ಟ",
+     "target_text": "it's difficult to see",
+     "phrase_role": "use"
+    }
+   ],
+   "107:3": [
+    {
+     "known_text": "ನೋಡೋಕೆ ಆಶಿಸಿದ್ದೆವು",
+     "target_text": "hoped to see",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಆಶಿಸಿದ್ದೆವು",
+     "target_text": "hoped in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಆಶಿಸಿದ್ದೆವು",
+     "target_text": "hoped last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾವು ಹಾಗೆ ಆಶಿಸಿದ್ದೆವು",
+     "target_text": "we hoped so",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮನ್ನ ನೋಡೋದನ್ನ ಆಶಿಸಿದ್ದೆ",
+     "target_text": "I hoped to see you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ತುಂಬಾ ಕಲಿಯೋದನ್ನ ಆಶಿಸಿದ್ದೆವು",
+     "target_text": "we hoped to learn a lot",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಸಹಾಯ ಮಾಡೋದನ್ನ ಆಶಿಸಿದ್ದಳು",
+     "target_text": "she hoped to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಮುಗಿಸೋದನ್ನ ಆಶಿಸಿದ್ದೆವು",
+     "target_text": "we hoped to finish in time",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 111,
+  "phrases": {
+   "111:1": [
+    {
+     "known_text": "ನಾವು",
+     "target_text": "we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಏನಾದರೂ",
+     "target_text": "something",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೊಸದು",
+     "target_text": "new",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕಲಿತಾಗ",
+     "target_text": "when learn",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ",
+     "target_text": "when we learn something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ",
+     "target_text": "when we learn something new now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ",
+     "target_text": "when we learn something new in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ",
+     "target_text": "but when we learn something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ ಒಳ್ಳೆದು",
+     "target_text": "when we learn something new it's good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ ನನಗೆ ಸಂತೋಷ",
+     "target_text": "when we learn something new I'm happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ ಆಸಕ್ತಿಕರ",
+     "target_text": "when we learn something new it's interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ ಮಜಾ",
+     "target_text": "it's fun when we learn something new",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಏನಾದರೂ ಹೊಸದು ಕಲಿತಾಗ ನಮಗೆ ಚೆನ್ನಾಗಿ ಅನಿಸುತ್ತೆ",
+     "target_text": "when we learn something new we feel better",
+     "phrase_role": "use"
+    }
+   ],
+   "111:2": [
+    {
+     "known_text": "ನಮ್ಮ",
+     "target_text": "our",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮೆದುಳನ್ನ",
+     "target_text": "brain",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಮ್ಮ ಮೆದುಳನ್ನ",
+     "target_text": "our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನಮ್ಮ ಮೆದುಳನ್ನ",
+     "target_text": "our brain now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಮ್ಮ ಮೆದುಳನ್ನ",
+     "target_text": "our brain in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಮ್ಮ ಮೆದುಳನ್ನ",
+     "target_text": "but our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಮ್ಮ ಮೆದುಳು ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "our brain changes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮ್ಮ ಮೆದುಳು ಆಸಕ್ತಿಕರ",
+     "target_text": "our brain is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಮ್ಮ ಮೆದುಳು ಮುಖ್ಯ",
+     "target_text": "our brain is important",
+     "phrase_role": "use"
+    }
+   ],
+   "111:3": [
+    {
+     "known_text": "ಈಗ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "changes now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಮ್ಮ ಮೆದುಳನ್ನ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "changes our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "changes in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಮ್ಮ ಮೆದುಳು ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "our brain changes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಎಲ್ಲವೂ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "everything changes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "it changes a lot",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಎಲ್ಲವನ್ನೂ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "this changes everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಕಲಿತಾಗ ನಮ್ಮ ಮೆದುಳು ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "when we learn our brain changes",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 116,
+  "phrases": {
+   "116:1": [
+    {
+     "known_text": "ನಾನು",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡಬಹುದಾದ",
+     "target_text": "could make",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾನು ಮಾಡಬಹುದಾದ",
+     "target_text": "I could make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನಾನು ಮಾಡಬಹುದಾದ",
+     "target_text": "I could make now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾನು ಮಾಡಬಹುದಾದ",
+     "target_text": "I could make in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಾನು ಮಾಡಬಹುದಾದ",
+     "target_text": "but I could make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದು ನಾನು ಮಾಡಬಹುದಾದ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ",
+     "target_text": "this is the best choice I could make",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅದನ್ನ ಇನ್ನೂ ಚೆನ್ನಾಗಿ ಮಾಡಬಹುದು",
+     "target_text": "I could make it better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಒಂದು ಒಳ್ಳೆ ಆಯ್ಕೆ ಮಾಡಬಹುದು",
+     "target_text": "I could make a good choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅದನ್ನ ಮಾಡಬಹುದು ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think I could make it",
+     "phrase_role": "use"
+    }
+   ],
+   "116:2": [
+    {
+     "known_text": "ಅತ್ಯುತ್ತಮ",
+     "target_text": "best",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಯ್ಕೆ",
+     "target_text": "choice",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ",
+     "target_text": "the best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ",
+     "target_text": "the best choice now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ",
+     "target_text": "the best choice in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಮಾಡಬಹುದಾದ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ",
+     "target_text": "the best choice I could make",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದೇ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ",
+     "target_text": "this is the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think it's the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದೇ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆನಾ?",
+     "target_text": "is this the best choice?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ ಅಲ್ಲ",
+     "target_text": "it's not the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ ಮಾಡಬೇಕು",
+     "target_text": "I want to make the best choice",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 122,
+  "phrases": {
+   "122:1": [
+    {
+     "known_text": "ಸುಲಭ",
+     "target_text": "easier",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅನಿಸೋಕೆ",
+     "target_text": "to feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸುಲಭ ಅನಿಸೋಕೆ",
+     "target_text": "to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಸುಲಭ ಅನಿಸೋಕೆ",
+     "target_text": "to feel easier now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಸುಲಭ ಅನಿಸೋಕೆ",
+     "target_text": "to feel easier in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಸುಲಭ ಅನಿಸೋಕೆ",
+     "target_text": "but to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್ ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "English is starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇದು ಸುಲಭ ಅನಿಸಬೇಕು",
+     "target_text": "I want it to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈಗ ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "now it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್ ಸುಲಭ ಅನಿಸಬೇಕು",
+     "target_text": "I want English to feel easier",
+     "phrase_role": "use"
+    }
+   ],
+   "122:2": [
+    {
+     "known_text": "ಶುರು",
+     "target_text": "start",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಗ್ತಿದೆ",
+     "target_text": "it's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಶುರು ಆಗ್ತಿದೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think it's starting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಕೆಲಸ ಮಾಡೋಕೆ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting to work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಬದಲಾಗೋಕೆ ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting to change",
+     "phrase_role": "use"
+    }
+   ],
+   "122:3": [
+    {
+     "known_text": "ಇದು",
+     "target_text": "it's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಗೆ",
+     "target_text": "how",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸಾಗ್ತಿದೆ",
+     "target_text": "going",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ",
+     "target_text": "how it's going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ",
+     "target_text": "how it's going now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ",
+     "target_text": "how it's going in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ",
+     "target_text": "but how it's going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know how it's going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅಂತ ನಿಮಗೆ ಗೊತ್ತಾ?",
+     "target_text": "do you know how it's going?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮಗೆ ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅಂತ ಹೇಳ್ತೀನಿ",
+     "target_text": "I'll tell you how it's going",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅಂತ ನನಗೆ ಖಚಿತವಿಲ್ಲ",
+     "target_text": "I'm not sure how it's going",
+     "phrase_role": "use"
+    }
+   ],
+   "122:4": [
+    {
+     "known_text": "ಅನ್ನೋ",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅನ್ನೋ ಬಗ್ಗೆ",
+     "target_text": "about",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಅನ್ನೋ ಬಗ್ಗೆ",
+     "target_text": "about now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅನ್ನೋ ಬಗ್ಗೆ",
+     "target_text": "about in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅನ್ನೋ ಬಗ್ಗೆ",
+     "target_text": "about how it's going",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಅದರ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕು",
+     "target_text": "I want to talk about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಇಂಗ್ಲಿಷ್ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm thinking about English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಇದರ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕಾ?",
+     "target_text": "do you want to talk about this?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಅದರ ಬಗ್ಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದರ ಬಗ್ಗೆ ನನಗೆ ಖಚಿತವಿಲ್ಲ",
+     "target_text": "I'm not sure about it",
+     "phrase_role": "use"
+    }
+   ],
+   "122:5": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಉತ್ಸಾಹ",
+     "target_text": "excited",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇದೆ",
+     "target_text": "'m",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನಗೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನಗೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "but I'm excited",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇದರ ಬಗ್ಗೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited about this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇಂಗ್ಲಿಷ್ ಕಲಿಯೋಕೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇವತ್ತು ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಶುರು ಮಾಡೋಕೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited to start",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 126,
+  "phrases": {
+   "126:1": [
+    {
+     "known_text": "ಈ",
+     "target_text": "this",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೆಲಸ",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಈ ಕೆಲಸ",
+     "target_text": "this work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಈ ಕೆಲಸ",
+     "target_text": "this work now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಈ ಕೆಲಸ",
+     "target_text": "this work in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಈ ಕೆಲಸ",
+     "target_text": "but this work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಈ ಕೆಲಸ ಇಷ್ಟ",
+     "target_text": "I like this work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈ ಕೆಲಸ ಕಷ್ಟ",
+     "target_text": "this work is difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಈ ಕೆಲಸ ಮುಗಿಸಬೇಕು",
+     "target_text": "I want to finish this work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈ ಕೆಲಸ ಆಸಕ್ತಿಕರ",
+     "target_text": "this work is interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಈ ಕೆಲಸ ಮಾಡಲೇಬೇಕು",
+     "target_text": "I must do this work",
+     "phrase_role": "use"
+    }
+   ],
+   "126:2": [
+    {
+     "known_text": "ನನ್ನ",
+     "target_text": "my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮೆದುಳಿನ",
+     "target_text": "brain",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಕಾರವನ್ನ",
+     "target_text": "the shape of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ",
+     "target_text": "the shape of my brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ",
+     "target_text": "the shape of my brain now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ",
+     "target_text": "the shape of my brain in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ",
+     "target_text": "but the shape of my brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈ ಕೆಲಸ ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "this work changes the shape of my brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕಲಿಯೋದು ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "learning changes the shape of my brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "it changes the shape of my brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್ ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ ಬದಲಾಯಿಸುತ್ತೆ",
+     "target_text": "English changes the shape of my brain",
+     "phrase_role": "use"
+    }
+   ],
+   "126:3": [
+    {
+     "known_text": "ಈಗ ಬದಲಾಯಿಸ್ತಿದೆ?",
+     "target_text": "is changing now?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈ ಕೆಲಸ ಬದಲಾಯಿಸ್ತಿದೆ",
+     "target_text": "this work is changing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬದಲಾಯಿಸ್ತಿದೆ?",
+     "target_text": "is changing in English?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಎಲ್ಲವೂ ಬದಲಾಗ್ತಿದೆ",
+     "target_text": "everything is changing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನ್ನ ಮೆದುಳು ಬದಲಾಗ್ತಿದೆ",
+     "target_text": "my brain is changing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನ್ನ ಮೆದುಳಿನ ಆಕಾರ ಬದಲಾಗ್ತಿದೆ",
+     "target_text": "the shape of my brain is changing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಏನೋ ಬದಲಾಗ್ತಿದೆ",
+     "target_text": "something is changing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಎಲ್ಲವೂ ಬದಲಾಗ್ತಿದೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think everything is changing",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 128,
+  "phrases": {
+   "128:1": [
+    {
+     "known_text": "ನಾನು",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹಿಂದೆ",
+     "target_text": "used to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಗೊತ್ತಿದ್ದ",
+     "target_text": "know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ",
+     "target_text": "I used to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ",
+     "target_text": "I used to know now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ",
+     "target_text": "I used to know in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ",
+     "target_text": "but I used to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಇದು ಹಿಂದೆ ಗೊತ್ತಿತ್ತು",
+     "target_text": "I used to know this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಹಿಂದೆ ಗೊತ್ತಿತ್ತು",
+     "target_text": "I used to know the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಅವನ ಹೆಸರು ಹಿಂದೆ ಗೊತ್ತಿತ್ತು",
+     "target_text": "I used to know his name",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಹಿಂದೆ ತುಂಬಾ ಪದಗಳು ಗೊತ್ತಿತ್ತು",
+     "target_text": "I used to know a lot of words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಅದನ್ನ ಹೇಗೆ ಹೇಳೋದು ಅಂತ ಹಿಂದೆ ಗೊತ್ತಿತ್ತು",
+     "target_text": "I used to know how to say it",
+     "phrase_role": "use"
+    }
+   ],
+   "128:2": [
+    {
+     "known_text": "ಯಾರೋ ಒಬ್ಬರ",
+     "target_text": "someone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹಾಗೆ",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ",
+     "target_text": "like someone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ",
+     "target_text": "like someone now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ",
+     "target_text": "like someone in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ",
+     "target_text": "like someone I used to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ ಇದ್ದೀರಿ",
+     "target_text": "you're like someone I used to know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನನಗೆ ಗೊತ್ತಿರೋ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ ಮಾತಾಡ್ತೀರಿ",
+     "target_text": "you talk like someone I know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ ಇದ್ದೀರಿ",
+     "target_text": "you're like someone",
+     "phrase_role": "use"
+    }
+   ],
+   "128:3": [
+    {
+     "known_text": "ನೀವು",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇದ್ದೀರಿ",
+     "target_text": "'re",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೀವು ಇದ್ದೀರಿ",
+     "target_text": "you're",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನೀವು ಇದ್ದೀರಿ",
+     "target_text": "you're now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ಇದ್ದೀರಿ",
+     "target_text": "you're in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನೀವು ಇದ್ದೀರಿ",
+     "target_text": "but you're",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "you're my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇಲ್ಲಿ ಇದ್ದೀರಿ",
+     "target_text": "you're here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಿ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think you're ready",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಇಂಗ್ಲಿಷ್ ಕಲಿಯುತ್ತಿದ್ದೀರಿ",
+     "target_text": "you're learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಚೆನ್ನಾಗಿ ಮಾಡ್ತಿದ್ದೀರಿ",
+     "target_text": "you're doing better",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 130,
+  "phrases": {
+   "130:1": [
+    {
+     "known_text": "ಅದು",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಶ್ಚರ್ಯ",
+     "target_text": "surprise",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಗಿತ್ತು",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು",
+     "target_text": "that was a surprise",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು",
+     "target_text": "that was a surprise in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು",
+     "target_text": "but that was a surprise",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು",
+     "target_text": "that was a surprise last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು",
+     "target_text": "that was a surprise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think that was a surprise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು, ಧನ್ಯವಾದ",
+     "target_text": "that was a surprise thank you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು ಆದರೆ ನನಗೆ ಸಂತೋಷ",
+     "target_text": "that was a surprise but I'm happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಹೌದು ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು",
+     "target_text": "yes that was a surprise",
+     "phrase_role": "use"
+    }
+   ],
+   "130:2": [
+    {
+     "known_text": "ಅವನು",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನ್ನ",
+     "target_text": "my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸ್ನೇಹಿತ",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅವನು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "he's my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಅವನು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "he's my friend now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವನು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "he's my friend in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಯಾಕಂದ್ರೆ ಅವನು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "because he's my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "he's my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನನ್ನ ಸ್ನೇಹಿತ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think he's my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಈಗ ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "he's my friend now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಹೌದು ಅವನು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "yes he's my friend",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 132,
+  "phrases": {
+   "132:1": [
+    {
+     "known_text": "ಅವಳು",
+     "target_text": "she",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಏನು",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಳ್ತಿದ್ದಳೋ",
+     "target_text": "was saying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ",
+     "target_text": "what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ",
+     "target_text": "what she was saying in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ",
+     "target_text": "but what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ",
+     "target_text": "what she was saying last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದು ನನಗೆ ಅರ್ಥ ಆಗಲಿಲ್ಲ",
+     "target_text": "I didn't understand what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದು ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದು ನಿಮಗೆ ಗೊತ್ತಾ?",
+     "target_text": "do you know what she was saying?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದು ನನಗೆ ನೆನಪಿಲ್ಲ",
+     "target_text": "I can't remember what she was saying",
+     "phrase_role": "use"
+    }
+   ],
+   "132:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅದಕ್ಕಿಂತ",
+     "target_text": "than in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಅದಕ್ಕಿಂತ",
+     "target_text": "but than",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದಕ್ಕಿಂತ",
+     "target_text": "than what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದಕ್ಕಿಂತ ಒಳ್ಳೆದು",
+     "target_text": "it's better than this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು ಕಷ್ಟ",
+     "target_text": "it's more difficult than that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮಗಿಂತ ಹೆಚ್ಚು ಮಾಡಿದೆ",
+     "target_text": "I did more than you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ಗಿಂತ ಸುಲಭ",
+     "target_text": "it's easier than English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದಕ್ಕಿಂತ ಇದು ಒಳ್ಳೆದು",
+     "target_text": "this is better than that",
+     "phrase_role": "use"
+    }
+   ],
+   "132:3": [
+    {
+     "known_text": "ಇದು",
+     "target_text": "that's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕಡಿಮೆ",
+     "target_text": "less",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಉತ್ಸಾಹಕರ",
+     "target_text": "exciting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "that's less exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "that's less exciting now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "that's less exciting in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "but that's less exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "that's less exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think that's less exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದಕ್ಕಿಂತ ಅದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "that's less exciting than this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ ಆದರೆ ಆಸಕ್ತಿಕರ",
+     "target_text": "that's less exciting but interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಈಗ ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "that's less exciting now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 138,
+  "phrases": {
+   "138:1": [
+    {
+     "known_text": "ನನ್ನ",
+     "target_text": "my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸ್ನೇಹಿತ",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗ ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "my friend now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "my friend in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "but my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತ ಇಲ್ಲಿ ಇದ್ದಾನೆ",
+     "target_text": "my friend is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ನನ್ನ ಸ್ನೇಹಿತನ್ನ ನೋಡಬೇಕು",
+     "target_text": "I want to see my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತ ಇಂಗ್ಲಿಷ್ ಕಲಿಯುತ್ತಿದ್ದಾನೆ",
+     "target_text": "my friend is learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತ ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ನನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಸಹಾಯ ಮಾಡಬೇಕು",
+     "target_text": "I want to help my friend",
+     "phrase_role": "use"
+    }
+   ],
+   "138:2": [
+    {
+     "known_text": "ನಮ್ಮನ್ನ",
+     "target_text": "us",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "wanted to meet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "wanted to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "wanted to meet us in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "but wanted to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಕಳೆದ ವಾರ ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "wanted to meet us last week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತ ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿತ್ತು",
+     "target_text": "she wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ",
+     "target_text": "he wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವರು ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿತ್ತು",
+     "target_text": "they wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನಮ್ಮನ್ನ ಭೇಟಿಯಾಗಬೇಕಿದ್ದ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think he wanted to meet us",
+     "phrase_role": "use"
+    }
+   ],
+   "138:3": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಜಾಗ",
+     "target_text": "where in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತ ಜಾಗ",
+     "target_text": "my friend where",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಜಾಗ",
+     "target_text": "but where",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಎಲ್ಲಿ ಹೋಗಬೇಕು?",
+     "target_text": "where do you want to go?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಎಲ್ಲಿ ಅಂತ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know where",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನ್ನ ಸ್ನೇಹಿತ ಎಲ್ಲಿ ಇದ್ದಾನೆ?",
+     "target_text": "where is my friend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಎಲ್ಲಿ ಅಂತ ಗೊತ್ತಾ?",
+     "target_text": "do you know where?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಎಲ್ಲಿ ಭೇಟಿಯಾಗಬೇಕು?",
+     "target_text": "where do you want to meet?",
+     "phrase_role": "use"
+    }
+   ],
+   "138:4": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇದೇ",
+     "target_text": "this was in English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಜಾಗ ಇದೇ",
+     "target_text": "this was where",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಆದರೆ ಇದೇ",
+     "target_text": "but this was",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದೇ ಒಳ್ಳೆ ಆಲೋಚನೆ ಆಗಿತ್ತು",
+     "target_text": "this was a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಕಷ್ಟವಾಗಿತ್ತು",
+     "target_text": "this was difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಆಸಕ್ತಿಕರವಾಗಿತ್ತು",
+     "target_text": "this was interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ತುಂಬಾ ಚೆನ್ನಾಗಿತ್ತು",
+     "target_text": "this was very good",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 146,
+  "phrases": {
+   "146:1": [
+    {
+     "known_text": "ಅದನ್ನ",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸರಿಮಾಡೋಕೆ",
+     "target_text": "to fix",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅದನ್ನ ಸರಿಮಾಡೋಕೆ",
+     "target_text": "to fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅದನ್ನ ಸರಿಮಾಡೋಕೆ",
+     "target_text": "in English, to fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಅದನ್ನ ಸರಿಮಾಡೋಕೆ",
+     "target_text": "already, to fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಅದನ್ನ ಸರಿಮಾಡೋಕೆ",
+     "target_text": "for helping, to fix it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಅದನ್ನ ಸರಿಮಾಡಬೇಕು",
+     "target_text": "I want to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅದನ್ನ ಸರಿಮಾಡೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದೇನೆ",
+     "target_text": "I'm trying to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಅದನ್ನ ಸರಿಮಾಡಬೇಕಾ?",
+     "target_text": "do you want to fix it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದನ್ನ ಸರಿಮಾಡೋದು ಕಷ್ಟ",
+     "target_text": "it's difficult to fix it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದನ್ನ ಹೇಗೆ ಸರಿಮಾಡೋದು ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know how to fix it",
+     "phrase_role": "use"
+    }
+   ],
+   "146:2": [
+    {
+     "known_text": "ಪ್ರಯತ್ನಿಸಿದ",
+     "target_text": "tried",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮೇಲಿಂದ",
+     "target_text": "since we",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ",
+     "target_text": "since we tried",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ",
+     "target_text": "in English, since we tried",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ",
+     "target_text": "already, since we tried",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ",
+     "target_text": "for helping, since we tried",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾವು ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "since we tried nothing seems to be working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ಒಳ್ಳೆದು",
+     "target_text": "since we tried it's better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ನನಗೆ ಚೆನ್ನಾಗಿ ಅನಿಸ್ತಿದೆ",
+     "target_text": "since we tried I feel better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ಸುಲಭ",
+     "target_text": "since we tried it's easier",
+     "phrase_role": "use"
+    }
+   ],
+   "146:3": [
+    {
+     "known_text": "ಏನೂ",
+     "target_text": "nothing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೆಲಸ",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡ್ತಿರೋ",
+     "target_text": "is being",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹಾಗೆ",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "doesn't seem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "nothing seems to be working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "in English, nothing seems to be working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "already, nothing seems to be working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "for helping, nothing seems to be working",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "nothing seems to be working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think nothing seems to be working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇವತ್ತು ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "nothing seems to be working today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "since we tried nothing seems to be working",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈಗ ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "nothing seems to be working now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 147,
+  "phrases": {
+   "147:1": [
+    {
+     "known_text": "ಅವಳು",
+     "target_text": "she",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತುಂಬಾ",
+     "target_text": "very",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ದಯೆ",
+     "target_text": "kind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತೋರಿಸಿದಳು",
+     "target_text": "was...showed",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "she was very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "in English, she was very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "already, she was very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "for helping, she was very kind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "she was very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think she was very kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನನಗೆ ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "she was very kind to me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಸಹಾಯ ಮಾಡೋಕೆ ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "she was very kind to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನನ್ನನ್ನ ನೋಡಿದಾಗ ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "she was very kind when she saw me",
+     "phrase_role": "use"
+    }
+   ],
+   "147:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೋಡಿದಾಗ",
+     "target_text": "in English, when she saw",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನೋಡಿದಾಗ",
+     "target_text": "already, when she saw",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನೋಡಿದಾಗ",
+     "target_text": "for helping, when she saw",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳು ನನ್ನನ್ನ ನೋಡಿದಾಗ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "when she saw me she was kind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನನ್ನನ್ನ ನೋಡಿದಾಗ ಸಂತೋಷಪಟ್ಟಳು",
+     "target_text": "when she saw me she was happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನನ್ನನ್ನ ನೋಡಿದಾಗ ಆಶ್ಚರ್ಯಪಟ್ಟಳು",
+     "target_text": "when she saw me she was surprised",
+     "phrase_role": "use"
+    }
+   ],
+   "147:3": [
+    {
+     "known_text": "ನಾನು",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆತಂಕದಲ್ಲಿ",
+     "target_text": "nervous",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇರೋದನ್ನ",
+     "target_text": "feeling",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ",
+     "target_text": "me feeling nervous",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ",
+     "target_text": "in English, me feeling nervous",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ",
+     "target_text": "already, me feeling nervous",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ",
+     "target_text": "for helping, me feeling nervous",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವಳು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದಳು",
+     "target_text": "she saw me feeling nervous",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದ",
+     "target_text": "he saw me feeling nervous",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದ್ರಿ",
+     "target_text": "you saw me feeling nervous",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "she saw me feeling nervous and she was kind",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 148,
+  "phrases": {
+   "148:1": [
+    {
+     "known_text": "ಅವನು",
+     "target_text": "he",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತುಂಬಾ",
+     "target_text": "very",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ತಾಳ್ಮೆಯಿಂದ",
+     "target_text": "patient",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಇರಲಿಲ್ಲ",
+     "target_text": "wasn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "he wasn't very patient",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "in English, he wasn't very patient",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "already, he wasn't very patient",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "for helping, he wasn't very patient",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "he wasn't very patient",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think he wasn't very patient",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನನ್ನ ಜೊತೆ ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "he wasn't very patient with me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಇವತ್ತು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "he wasn't very patient today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "he wasn't very patient when I couldn't answer",
+     "phrase_role": "use"
+    }
+   ],
+   "148:2": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಉತ್ತರ ಕೊಡೋಕೆ",
+     "target_text": "answer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಗದಿದ್ದಾಗ",
+     "target_text": "when...couldn't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ",
+     "target_text": "when I couldn't answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ",
+     "target_text": "in English, when I couldn't answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ",
+     "target_text": "already, when I couldn't answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ",
+     "target_text": "for helping, when I couldn't answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ಅವನು ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "when I couldn't answer he wasn't patient",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ನನಗೆ ಆತಂಕ ಆಯ್ತು",
+     "target_text": "when I couldn't answer I felt nervous",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ಕಷ್ಟವಾಗಿತ್ತು",
+     "target_text": "when I couldn't answer it was difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ನನಗೆ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಬೇಕಿತ್ತು",
+     "target_text": "when I couldn't answer I wanted to try again",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 150,
+  "phrases": {
+   "150:1": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಳ್ತೀರಾ",
+     "target_text": "can you tell",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಹೇಳ್ತೀರಾ?",
+     "target_text": "can you tell me?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಹೇಳ್ತೀರಾ",
+     "target_text": "in English, can you tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನನಗೆ ಹೇಳ್ತೀರಾ",
+     "target_text": "already, can you tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನನಗೆ ಹೇಳ್ತೀರಾ",
+     "target_text": "for helping, can you tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ನನಗೆ ಹೇಳ್ತೀರಾ?",
+     "target_text": "can you tell me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನನಗೆ ಉತ್ತರ ಹೇಳ್ತೀರಾ?",
+     "target_text": "can you tell me the answer?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಹೆಸರು ಏನು ಅಂತ ನನಗೆ ಹೇಳ್ತೀರಾ?",
+     "target_text": "can you tell me what your name is?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನನಗೆ ಯಾಕೆ ಅಂತ ಹೇಳ್ತೀರಾ?",
+     "target_text": "can you tell me why?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನನಗೆ ಏನಾದರೂ ಹೇಳ್ತೀರಾ?",
+     "target_text": "can you tell me something?",
+     "phrase_role": "use"
+    }
+   ],
+   "150:2": [
+    {
+     "known_text": "ನಿಮ್ಮ",
+     "target_text": "your",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೆಸರು",
+     "target_text": "name",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಏನು",
+     "target_text": "what...is",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಹೆಸರು ಏನು",
+     "target_text": "what your name is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಹೆಸರು ಏನು",
+     "target_text": "in English, what your name is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನಿಮ್ಮ ಹೆಸರು ಏನು",
+     "target_text": "already, what your name is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನಿಮ್ಮ ಹೆಸರು ಏನು",
+     "target_text": "for helping, what your name is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಹೆಸರು ಏನು ಅಂತ ನನಗೆ ಹೇಳ್ತೀರಾ?",
+     "target_text": "can you tell me what your name is?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಹೆಸರು ಏನು ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know what your name is",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಹೆಸರು ಏನು ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I don't know what your name is",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಹೆಸರು ಏನು ಅಂತ ನನಗೆ ಹೇಳಿ",
+     "target_text": "tell me what your name is",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 152,
+  "phrases": {
+   "152:1": [
+    {
+     "known_text": "ನಿಮಗೆ",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಏನು",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೇಕು",
+     "target_text": "wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕು",
+     "target_text": "what you wanted",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಿಮಗೆ ಏನು ಬೇಕು",
+     "target_text": "in English, what you wanted",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನಿಮಗೆ ಏನು ಬೇಕು",
+     "target_text": "already, what you wanted",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನಿಮಗೆ ಏನು ಬೇಕು",
+     "target_text": "for helping, what you wanted",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕಿತ್ತು ಅಂತ ನನಗೆ ಗೊತ್ತು",
+     "target_text": "I know what you wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕಿತ್ತು ಅಂತ ನನಗೆ ಗೊತ್ತಿರಲಿಲ್ಲ",
+     "target_text": "I didn't know what you wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕಿತ್ತು ಅಂತ ನನಗೆ ಹೇಳಿ",
+     "target_text": "tell me what you wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕಿತ್ತು ಅಂತ ನನಗೆ ತಿಳಿಯಬೇಕು",
+     "target_text": "I want to know what you wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕಿತ್ತು ಅಂತ ನನಗೆ ಅರ್ಥ ಆಗುತ್ತೆ",
+     "target_text": "I understand what you wanted",
+     "phrase_role": "use"
+    }
+   ],
+   "152:2": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಗೊತ್ತಿದ್ದಿದ್ರೆ",
+     "target_text": "if...had known",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ",
+     "target_text": "if I had known",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ",
+     "target_text": "in English, if I had known",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ",
+     "target_text": "already, if I had known",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ",
+     "target_text": "for helping, if I had known",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ ನಾನು ಬರ್ತಿದ್ದೆ",
+     "target_text": "if I had known I would have come",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ ಸುಲಭವಾಗ್ತಿತ್ತು",
+     "target_text": "if I had known it would have been easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಬೇಕಿತ್ತು ಅಂತ ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ",
+     "target_text": "if I had known what you wanted",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ ನಾನು ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ",
+     "target_text": "if I had known I would have done it differently",
+     "phrase_role": "use"
+    }
+   ],
+   "152:3": [
+    {
+     "known_text": "ಅದನ್ನ",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೇರೆ ತರಹ",
+     "target_text": "differently",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮಾಡ್ತಿದ್ದೆ",
+     "target_text": "would have done",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ?",
+     "target_text": "would have done it differently?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ",
+     "target_text": "in English, would have done it differently",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ",
+     "target_text": "already, would have done it differently",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ",
+     "target_text": "for helping, would have done it differently",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ",
+     "target_text": "I would have done it differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ ನಾನು ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ",
+     "target_text": "if I had known I would have done it differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think I would have done it differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದಳು",
+     "target_text": "she would have done it differently",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಅದನ್ನ ಬೇರೆ ತರಹ ಮಾಡ್ತಿದ್ದ",
+     "target_text": "he would have done it differently",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 155,
+  "phrases": {
+   "155:1": [
+    {
+     "known_text": "ನಾಳೆ",
+     "target_text": "tomorrow",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೆಳಿಗ್ಗೆ",
+     "target_text": "morning",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾಳೆ ಬೆಳಿಗ್ಗೆ",
+     "target_text": "tomorrow morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾಳೆ ಬೆಳಿಗ್ಗೆ",
+     "target_text": "in English, tomorrow morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನಾಳೆ ಬೆಳಿಗ್ಗೆ",
+     "target_text": "already, tomorrow morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನಾಳೆ ಬೆಳಿಗ್ಗೆ",
+     "target_text": "for helping, tomorrow morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಭೇಟಿಯಾಗಬೇಕು",
+     "target_text": "I want to meet tomorrow morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಬರಬಹುದಾ?",
+     "target_text": "can you come tomorrow morning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಸಿದ್ಧ ಆಗ್ತೀನಿ",
+     "target_text": "I'll be ready tomorrow morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಹೊರಡಬೇಕು",
+     "target_text": "I have to leave tomorrow morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಶುರು ಮಾಡಬೇಕು",
+     "target_text": "I want to start tomorrow morning",
+     "phrase_role": "use"
+    }
+   ],
+   "155:2": [
+    {
+     "known_text": "ಕೆಲವು",
+     "target_text": "a few",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಿಮಿಷ",
+     "target_text": "minutes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೆಲವು ನಿಮಿಷ",
+     "target_text": "a few minutes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಕೆಲವು ನಿಮಿಷ",
+     "target_text": "in English, a few minutes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಕೆಲವು ನಿಮಿಷ",
+     "target_text": "already, a few minutes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಕೆಲವು ನಿಮಿಷ",
+     "target_text": "for helping, a few minutes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಕೆಲವು ನಿಮಿಷ ಬೇಕು",
+     "target_text": "I need a few minutes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಕೆಲವು ನಿಮಿಷ ಕಾಯಿ",
+     "target_text": "wait a few minutes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಕೆಲವು ನಿಮಿಷ ಕಾಯಬಹುದು",
+     "target_text": "I can wait a few minutes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಕೆಲವು ನಿಮಿಷ ಕೊಡಿ",
+     "target_text": "give me a few minutes",
+     "phrase_role": "use"
+    }
+   ],
+   "155:3": [
+    {
+     "known_text": "ನನಗೆ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "don't mind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನನಗೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "in English, I don't mind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ನನಗೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "already, I don't mind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನನಗೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "for helping, I don't mind",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಕಾಯೋದಕ್ಕೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind waiting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಬೇಸರ ಇಲ್ಲ, ಸರಿ ಇದೆ",
+     "target_text": "I don't mind it's okay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಸಹಾಯ ಮಾಡೋದಕ್ಕೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind helping",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಕೆಲವು ನಿಮಿಷ ಕಾಯೋದಕ್ಕೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind waiting a few minutes",
+     "phrase_role": "use"
+    }
+   ],
+   "155:4": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಕಾಯೋದಕ್ಕೆ",
+     "target_text": "in English, waiting for",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಈಗಾಗಲೇ, ಕಾಯೋದಕ್ಕೆ",
+     "target_text": "already, waiting for",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ಕಾಯೋದಕ್ಕೆ",
+     "target_text": "for helping, waiting for",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ನಿಮಗೋಸ್ಕರ ಕಾಯೋದಕ್ಕೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind waiting for you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮಗೋಸ್ಕರ ಕಾಯ್ತಿದ್ದೀನಿ",
+     "target_text": "I'm waiting for you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಕೆಲವು ನಿಮಿಷ ಕಾಯೋದಕ್ಕೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind waiting for a few minutes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನನ್ನ ಸ್ನೇಹಿತನಿಗೋಸ್ಕರ ಕಾಯ್ತಿದ್ದೀನಿ",
+     "target_text": "I'm waiting for my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಬಸ್ಸಿಗೋಸ್ಕರ ಕಾಯೋದಕ್ಕೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind waiting for the bus",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 160,
+  "phrases": {
+   "160:1": [
+    {
+     "known_text": "ಈ",
+     "target_text": "this",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಪದವನ್ನ",
+     "target_text": "word",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಈ ಪದವನ್ನ",
+     "target_text": "this word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಈ ಪದವನ್ನ",
+     "target_text": "in English, this word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಈ ಪದವನ್ನ",
+     "target_text": "tomorrow morning, this word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಶನಿವಾರ ರಾತ್ರಿ ಈ ಪದವನ್ನ",
+     "target_text": "on Saturday night, this word",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಈ ಪದ ಅರ್ಥ ಆಗ್ತಿಲ್ಲ",
+     "target_text": "I don't understand this word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಈ ಪದ ಕಲಿಯಬೇಕು",
+     "target_text": "I want to learn this word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈ ಪದ ಹೇಗೆ ಹೇಳ್ತೀರಿ?",
+     "target_text": "how do you say this word?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಈ ಪದ ನೆನಪಿಲ್ಲ",
+     "target_text": "I can't remember this word",
+     "phrase_role": "use"
+    }
+   ],
+   "160:2": [
+    {
+     "known_text": "ಹೇಗೆ",
+     "target_text": "how",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಳ್ತೀರಿ",
+     "target_text": "do you say",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಗೆ ಹೇಳ್ತೀರಿ?",
+     "target_text": "how do you say?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೇಗೆ ಹೇಳ್ತೀರಿ",
+     "target_text": "in English, how do you say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಹೇಗೆ ಹೇಳ್ತೀರಿ",
+     "target_text": "tomorrow morning, how do you say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಶನಿವಾರ ರಾತ್ರಿ ಹೇಗೆ ಹೇಳ್ತೀರಿ",
+     "target_text": "on Saturday night, how do you say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇದನ್ನ ಹೇಗೆ ಹೇಳ್ತೀರಿ?",
+     "target_text": "how do you say this?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಈ ಪದ ಹೇಗೆ ಹೇಳ್ತೀರಿ?",
+     "target_text": "how do you say this word?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದನ್ನ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೇಗೆ ಹೇಳ್ತೀರಿ?",
+     "target_text": "how do you say it in English?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಹೆಸರು ಹೇಗೆ ಹೇಳ್ತೀರಿ?",
+     "target_text": "how do you say your name?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದನ್ನ ಹೇಗೆ ಹೇಳ್ತೀರಿ?",
+     "target_text": "how do you say that?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 164,
+  "phrases": {
+   "164:1": [
+    {
+     "known_text": "ಒಂದು",
+     "target_text": "an",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಸಕ್ತಿಕರ",
+     "target_text": "interesting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಪುಸ್ತಕ",
+     "target_text": "book",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ",
+     "target_text": "an interesting book",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ",
+     "target_text": "in English, an interesting book",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ತಿಂಗಳು ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ",
+     "target_text": "next month, an interesting book",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ",
+     "target_text": "on Sunday morning, an interesting book",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ ಓದಬೇಕು",
+     "target_text": "I want to read an interesting book",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ",
+     "target_text": "it's an interesting book",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ",
+     "target_text": "this is an interesting book",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ ಬೇಕು",
+     "target_text": "I want an interesting book",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 184,
+  "phrases": {
+   "184:1": [
+    {
+     "known_text": "ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ",
+     "target_text": "a while",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮುಂಚೆ",
+     "target_text": "ago",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ",
+     "target_text": "a while ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ",
+     "target_text": "in English, a while ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವರ್ಷ ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ",
+     "target_text": "next year, a while ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ",
+     "target_text": "on Sunday morning, a while ago",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ನೋಡಿದೆ",
+     "target_text": "I saw them a while ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ಇಲ್ಲಿ ಇದ್ದ",
+     "target_text": "he was here a while ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ಶುರು ಮಾಡಿದೆ",
+     "target_text": "I started a while ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮ ಸ್ನೇಹಿತನ್ನ ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ನೋಡಿದೆ",
+     "target_text": "I saw your friend a while ago",
+     "phrase_role": "use"
+    }
+   ],
+   "184:2": [
+    {
+     "known_text": "ನಾನು",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅವನ್ನ",
+     "target_text": "them",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಆಫೀಸಲ್ಲಿ",
+     "target_text": "in the office",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನೋಡಿದೆ",
+     "target_text": "saw",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "I saw them in the office",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "in English, I saw them in the office",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವರ್ಷ ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "next year, I saw them in the office",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "on Sunday morning, I saw them in the office",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "I saw them in the office",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ನೋಡಿದೆ",
+     "target_text": "I saw them in the office a while ago",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think I saw them in the office",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ಇವತ್ತು ನೋಡಿದೆ",
+     "target_text": "I saw them in the office today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಹೌದು ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "yes I saw them in the office",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 205,
+  "phrases": {
+   "205:1": [
+    {
+     "known_text": "ನಾನು",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೇಳೋಕೆ",
+     "target_text": "to say",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ",
+     "target_text": "was...trying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಪದವನ್ನ",
+     "target_text": "the word",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ",
+     "target_text": "the word I was trying to say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ",
+     "target_text": "in English, the word I was trying to say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ",
+     "target_text": "next week, the word I was trying to say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ",
+     "target_text": "on Sunday morning, the word I was trying to say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "I've forgotten the word I was trying to say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ ನನಗೆ ನೆನಪಿಲ್ಲ",
+     "target_text": "I can't remember the word I was trying to say",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದ ನಿಮಗೆ ಗೊತ್ತಾ?",
+     "target_text": "do you know the word I was trying to say?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದ ಇದೇ",
+     "target_text": "this is the word I was trying to say",
+     "phrase_role": "use"
+    }
+   ],
+   "205:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "in English, I've forgotten",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "next week, I've forgotten",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "on Sunday morning, I've forgotten",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "I've forgotten",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಪದವನ್ನ ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "I've forgotten the word",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ ಹೆಸರು ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "I've forgotten his name",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಉತ್ತರ ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "I've forgotten the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಹೇಳಿದ್ದನ್ನ ನಾನು ಮರೆತುಬಿಟ್ಟಿದ್ದೇನೆ",
+     "target_text": "I've forgotten what you said",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 216,
+  "phrases": {
+   "216:1": [
+    {
+     "known_text": "ಕೆಲವು",
+     "target_text": "a few",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸ್ನೇಹಿತರನ್ನ",
+     "target_text": "friends",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ",
+     "target_text": "a few friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ",
+     "target_text": "in English, a few friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ",
+     "target_text": "next week, a few friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ",
+     "target_text": "on Sunday morning, a few friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ ನೋಡಿದೆ",
+     "target_text": "I saw a few friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ ನೋಡಬೇಕು",
+     "target_text": "I want to see a few friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಕೆಲವು ಸ್ನೇಹಿತರ ಜೊತೆ ಹೊರಗೆ ಹೋಗಿದ್ದೆ",
+     "target_text": "I went out with a few friends",
+     "phrase_role": "use"
+    }
+   ],
+   "216:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "in English, saw",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ನೋಡಿದೆ",
+     "target_text": "next week, saw",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ನೋಡಿದೆ",
+     "target_text": "on Sunday morning, saw",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ ನೋಡಿದೆ",
+     "target_text": "I saw a few friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಕೆಲಸದ ಜಾಗದಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "I saw them at work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿನ್ನೆ ನನ್ನ ಸ್ನೇಹಿತನ್ನ ನೋಡಿದೆ",
+     "target_text": "I saw my friend yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮ ಕಾರ್ ನೋಡಿದೆ",
+     "target_text": "I saw your car",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "I saw them in the office",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 220,
+  "phrases": {
+   "220:1": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಸ್ವಲ್ಪ ಟಿವಿ",
+     "target_text": "in English, a bit of television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಸ್ವಲ್ಪ ಟಿವಿ",
+     "target_text": "next week, a bit of television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಶನಿವಾರ ರಾತ್ರಿ ಸ್ವಲ್ಪ ಟಿವಿ",
+     "target_text": "on Saturday night, a bit of television",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದ್ರಾ?",
+     "target_text": "did you watch a bit of television?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಬೇಕು",
+     "target_text": "I want to watch a bit of television",
+     "phrase_role": "use"
+    }
+   ],
+   "220:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೀವು ನೋಡಿದ್ರಾ",
+     "target_text": "in English, did you watch",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ನೀವು ನೋಡಿದ್ರಾ",
+     "target_text": "next week, did you watch",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಶನಿವಾರ ರಾತ್ರಿ ನೀವು ನೋಡಿದ್ರಾ",
+     "target_text": "on Saturday night, did you watch",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನೀವು ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದ್ರಾ?",
+     "target_text": "did you watch a bit of television?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಅದನ್ನ ನೋಡಿದ್ರಾ?",
+     "target_text": "did you watch it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ನಿನ್ನೆ ಟಿವಿ ನೋಡಿದ್ರಾ?",
+     "target_text": "did you watch television yesterday?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಏನು ನೋಡಿದ್ರಿ?",
+     "target_text": "what did you watch?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ವಾರಾಂತ್ಯದಲ್ಲಿ ಅದನ್ನ ನೋಡಿದ್ರಾ?",
+     "target_text": "did you watch it at the weekend?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 233,
+  "phrases": {
+   "233:1": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಒಬ್ಬ ಯುವತಿ",
+     "target_text": "in English, a young woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಒಬ್ಬ ಯುವತಿ",
+     "target_text": "next week, a young woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಒಬ್ಬ ಯುವತಿ",
+     "target_text": "on Sunday, a young woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಾನು ಒಬ್ಬ ಯುವತಿಯನ್ನ ನೋಡಿದೆ",
+     "target_text": "I saw a young woman",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಒಬ್ಬ ಯುವತಿ ಇಲ್ಲಿ ಇದ್ದಾಳೆ",
+     "target_text": "a young woman is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ಒಬ್ಬ ಯುವತಿ",
+     "target_text": "she's a young woman",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ ಒಬ್ಬ ಯುವತಿ",
+     "target_text": "a young woman who knows your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಒಬ್ಬ ಯುವತಿ ನನ್ನ ಸ್ನೇಹಿತೆ",
+     "target_text": "a young woman is my friend",
+     "phrase_role": "use"
+    }
+   ],
+   "233:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ",
+     "target_text": "in English, who knows your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ",
+     "target_text": "next week, who knows your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ",
+     "target_text": "on Sunday, who knows your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ ಒಬ್ಬ ಯುವತಿ",
+     "target_text": "a young woman who knows your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ ಒಬ್ಬರು ನನಗೆ ಗೊತ್ತು",
+     "target_text": "I know someone who knows your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ ಒಬ್ಬಳು",
+     "target_text": "she's someone who knows your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ ಒಬ್ಬ",
+     "target_text": "he's someone who knows your sister",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 266,
+  "phrases": {
+   "266:1": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅವನು ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target_text": "in English, he was an old friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಅವನು ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target_text": "next week, he was an old friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಅವನು ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target_text": "on Sunday, he was an old friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target_text": "he was an old friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನನ್ನ ಅಪ್ಪನ ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target_text": "he was an old friend of my father",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ಹಳೆಯ ಸ್ನೇಹಿತ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think he was an old friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಹೌದು ಅವನು ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target_text": "yes he was an old friend",
+     "phrase_role": "use"
+    }
+   ],
+   "266:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನ್ನ ಅಪ್ಪನ",
+     "target_text": "in English, of my father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ನನ್ನ ಅಪ್ಪನ",
+     "target_text": "next week, of my father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ನನ್ನ ಅಪ್ಪನ",
+     "target_text": "on Sunday, of my father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅವನು ನನ್ನ ಅಪ್ಪನ ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target_text": "he was an old friend of my father",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವನು ನನ್ನ ಅಪ್ಪನ ಸ್ನೇಹಿತ",
+     "target_text": "he's a friend of my father",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅವಳು ನನ್ನ ಅಪ್ಪನ ಸ್ನೇಹಿತೆ",
+     "target_text": "she's a friend of my father",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 273,
+  "phrases": {
+   "273:1": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ",
+     "target_text": "in English, no unfortunately I've got",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ",
+     "target_text": "next week, no unfortunately I've got",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ",
+     "target_text": "on Sunday, no unfortunately I've got",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "no unfortunately I've got too much work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ ಹೋಗಬೇಕು",
+     "target_text": "no unfortunately I've got to go",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ ಸಮಯ ಇಲ್ಲ",
+     "target_text": "no unfortunately I've got no time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ ಕೆಲಸ ಇದೆ",
+     "target_text": "no unfortunately I've got work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ ಹೊರಡಬೇಕು",
+     "target_text": "no unfortunately I've got to leave",
+     "phrase_role": "use"
+    }
+   ],
+   "273:2": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "in English, too much work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "next week, too much work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "on Sunday, too much work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "I've got too much work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ದುರದೃಷ್ಟವಶಾತ್ ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "no unfortunately I've got too much work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಬರೋಕೆ ಆಗಲ್ಲ, ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "I can't come I've got too much work",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 277,
+  "phrases": {
+   "277:1": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ",
+     "target_text": "in English, early next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ",
+     "target_text": "next week, early next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ",
+     "target_text": "on Sunday, early next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ ನನಗೆ ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+     "target_text": "I've got an important meeting early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾನು ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ ಸಿದ್ಧ ಆಗ್ತೀನಿ",
+     "target_text": "I'll be ready early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನೀವು ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ ಬರಬಹುದಾ?",
+     "target_text": "can you come early next week?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಾವು ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ ಭೇಟಿಯಾಗಬಹುದು",
+     "target_text": "we can meet early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ ಶುರು ಮಾಡಬೇಕು",
+     "target_text": "I want to start early next week",
+     "phrase_role": "use"
+    }
+   ],
+   "277:2": [
+    {
+     "known_text": "ಒಂದು",
+     "target_text": "an",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಮುಖ್ಯ",
+     "target_text": "important",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಸಭೆ",
+     "target_text": "meeting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಒಂದು ಮುಖ್ಯ ಸಭೆ",
+     "target_text": "an important meeting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಒಂದು ಮುಖ್ಯ ಸಭೆ",
+     "target_text": "in English, an important meeting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಒಂದು ಮುಖ್ಯ ಸಭೆ",
+     "target_text": "next week, an important meeting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಒಂದು ಮುಖ್ಯ ಸಭೆ",
+     "target_text": "on Sunday, an important meeting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+     "target_text": "I've got an important meeting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರದ ಆರಂಭದಲ್ಲಿ ನನಗೆ ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+     "target_text": "I've got an important meeting early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಇವತ್ತು ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+     "target_text": "I have an important meeting today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ನಾಳೆ ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+     "target_text": "I've got an important meeting tomorrow",
+     "phrase_role": "use"
+    }
+   ],
+   "277:3": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನನಗೆ ಇದೆ",
+     "target_text": "in English, I've got",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ನನಗೆ ಇದೆ",
+     "target_text": "next week, I've got",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ನನಗೆ ಇದೆ",
+     "target_text": "on Sunday, I've got",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ನನಗೆ ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+     "target_text": "I've got an important meeting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "I've got too much work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಒಂದು ಆಲೋಚನೆ ಇದೆ",
+     "target_text": "I've got an idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ಒಂದು ಒಳ್ಳೆ ಆಲೋಚನೆ ಇದೆ",
+     "target_text": "I've got a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಮಾಡೋದು ಇದೆ",
+     "target_text": "I've got a lot to do",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 279,
+  "phrases": {
+   "279:1": [
+    {
+     "known_text": "ಹೆಚ್ಚು ಸಮಯ",
+     "target_text": "much time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "there wasn't...left",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "there wasn't much time left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "in English, there wasn't much time left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "next week, there wasn't much time left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "on Sunday, there wasn't much time left",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "there wasn't much time left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think there wasn't much time left",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಮುಗಿಸೋಕೆ ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "there wasn't much time left to finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ನಿನ್ನೆ ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "there wasn't much time left yesterday",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 280,
+  "phrases": {
+   "280:1": [
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "in English, no I only had to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "next week, no I only had to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "on Sunday, no I only had to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "no I only had to do the most important job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಸ್ವಲ್ಪ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "no I only had to do a little",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಅದನ್ನ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "no I only had to do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ನನ್ನ ಕೆಲಸ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "no I only had to do my work",
+     "phrase_role": "use"
+    }
+   ],
+   "280:2": [
+    {
+     "known_text": "ಅತ್ಯಂತ ಮುಖ್ಯವಾದ",
+     "target_text": "most important",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಕೆಲಸ",
+     "target_text": "job",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ",
+     "target_text": "the most important job",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ",
+     "target_text": "in English, the most important job",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಮುಂದಿನ ವಾರ ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ",
+     "target_text": "next week, the most important job",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಭಾನುವಾರ ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ",
+     "target_text": "on Sunday, the most important job",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ಅದು ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ",
+     "target_text": "it's the most important job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇದು ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ",
+     "target_text": "this is the most important job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅದು ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ ಅಂತ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think it's the most important job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ ಮಾಡಬೇಕಿತ್ತು",
+     "target_text": "no I only had to do the most important job",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ ಕಷ್ಟ",
+     "target_text": "the most important job is difficult",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

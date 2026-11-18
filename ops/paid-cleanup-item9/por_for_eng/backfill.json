@@ -1,0 +1,2549 @@
+{
+ "course": "por_for_eng",
+ "at": "2026-11-18T14:40:10.467Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0074L01": {
+   "lego": "for | por",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 1,
+   "author_use": 1,
+   "avg_target_chars": 17,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0074L01B01",
+     "role": "build",
+     "known": "for me",
+     "target": "por mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0074L01U02",
+     "role": "use",
+     "known": "I want to learn for me",
+     "target": "quero aprender por mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0074L01U07",
+     "role": "use",
+     "known": "I'm learning for me",
+     "target": "estou a aprender por mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0077L02": {
+   "lego": "how quickly | a rapidez com que",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0077L02U02",
+     "role": "use",
+     "known": "I'm surprised by how quickly you learn",
+     "target": "estou surpreendido com a rapidez com que aprendes",
+     "untaught": [
+      "aprendes"
+     ]
+    }
+   ]
+  },
+  "S0086L01": {
+   "lego": "it wasn't possible | não era possível",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 19,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0086L01U06",
+     "role": "use",
+     "known": "it wasn't possible for me",
+     "target": "não era possível para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0090L03": {
+   "lego": "that would be great | seria ótimo",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0090L03U07",
+     "role": "use",
+     "known": "that would be great for me",
+     "target": "seria ótimo para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0112L01": {
+   "lego": "that was | isso foi",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 22,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0112L01U05",
+     "role": "use",
+     "known": "that was something new for me",
+     "target": "isso foi algo novo para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0116L02": {
+   "lego": "the best choice | a melhor escolha",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 7
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0116L02B04",
+     "role": "build",
+     "known": "the best choice for me",
+     "target": "a melhor escolha para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0121L03": {
+   "lego": "unusual | invulgar",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0121L03U03",
+     "role": "use",
+     "known": "this is very unusual for me",
+     "target": "isto é muito invulgar para mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0121L03U04",
+     "role": "use",
+     "known": "that's very unusual to me",
+     "target": "isso é muito invulgar para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0130L01": {
+   "lego": "surprise | surpresa",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0130L01U06",
+     "role": "use",
+     "known": "that was a surprise for me",
+     "target": "isso foi uma surpresa para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0141L01": {
+   "lego": "without | sem",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 36,
+   "rows": [
+    {
+     "row": "S0141L01B01",
+     "role": "build",
+     "known": "without me",
+     "target": "sem mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0141L01U01",
+     "role": "use",
+     "known": "can you finish this without me?",
+     "target": "podes acabar isto sem mim?",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0142L03": {
+   "lego": "of you | da tua parte",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 9
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 34,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0142L03U07",
+     "role": "use",
+     "known": "it was very kind of you to wait for me",
+     "target": "foi muito simpático da tua parte esperar por mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0143L02": {
+   "lego": "the same thing as | a mesma coisa de que",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 26,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0143L02U03",
+     "role": "use",
+     "known": "it's the same thing you think",
+     "target": "é a mesma coisa de que pensas",
+     "untaught": [
+      "pensas"
+     ]
+    },
+    {
+     "row": "S0143L02U04",
+     "role": "use",
+     "known": "it's the same thing I talked about",
+     "target": "é a mesma coisa de que eu falei",
+     "untaught": [
+      "falei"
+     ]
+    }
+   ]
+  },
+  "S0147L03": {
+   "lego": "she was very kind | ela foi muito simpática",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0147L03U08",
+     "role": "use",
+     "known": "I think she was very kind to me",
+     "target": "acho que ela foi muito simpática para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0151L01": {
+   "lego": "that wasn't | não era",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 10
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 9
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0151L01U05",
+     "role": "use",
+     "known": "that wasn't very difficult for me",
+     "target": "não era muito difícil para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0162L01": {
+   "lego": "about that | disso",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 13,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0162L01U03",
+     "role": "use",
+     "known": "I don't remember that",
+     "target": "não me lembro disso",
+     "untaught": [
+      "lembro"
+     ]
+    },
+    {
+     "row": "S0162L01U04",
+     "role": "use",
+     "known": "what do you know about that?",
+     "target": "o que é que sabes disso?",
+     "untaught": [
+      "sabes"
+     ]
+    }
+   ]
+  },
+  "S0172L01": {
+   "lego": "that would be | isso seria",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 20,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0172L01U05",
+     "role": "use",
+     "known": "that would be difficult for me",
+     "target": "isso seria difícil para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0189L01": {
+   "lego": "that's a good idea | é uma boa ideia",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 19,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0189L01U03",
+     "role": "use",
+     "known": "that's a good idea for me",
+     "target": "é uma boa ideia para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0202L02": {
+   "lego": "question | pergunta",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0202L02U05",
+     "role": "use",
+     "known": "the question was difficult for me",
+     "target": "a pergunta era difícil para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0203L02": {
+   "lego": "if I asked you | se eu te pedisse",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0203L02U05",
+     "role": "use",
+     "known": "if I asked you to wait for me",
+     "target": "se eu te pedisse para esperar por mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0204L01": {
+   "lego": "of the | dos",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 13,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0204L01U02",
+     "role": "use",
+     "known": "I don't remember the names",
+     "target": "não me lembro dos nomes",
+     "untaught": [
+      "lembro",
+      "nomes"
+     ]
+    }
+   ]
+  },
+  "S0241L01": {
+   "lego": "give it to him | dar-lho",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 21,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0241L01U02",
+     "role": "use",
+     "known": "can you give it to him for me?",
+     "target": "podes dar-lho por mim?",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0242L01": {
+   "lego": "to give her | dar-lhe",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0242L01U02",
+     "role": "use",
+     "known": "can you give her this for me?",
+     "target": "podes dar-lhe isto por mim?",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0243L01": {
+   "lego": "to eat | comer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 32,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0243L01U04",
+     "role": "use",
+     "known": "can you find something to eat for me?",
+     "target": "podes arranjar algo para comer por mim?",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0264L01": {
+   "lego": "an old man | um senhor idoso",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 23,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0264L01U09",
+     "role": "use",
+     "known": "an old man was waiting for me yesterday",
+     "target": "um senhor idoso estava à espera de mim ontem",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0265L01": {
+   "lego": "a friend | um amigo",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 18,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0265L01U09",
+     "role": "use",
+     "known": "a friend was waiting for me",
+     "target": "um amigo estava à espera de mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0272L02": {
+   "lego": "a great idea | uma ótima ideia",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 8
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0272L02U04",
+     "role": "use",
+     "known": "that sounds like a great idea to me",
+     "target": "isso parece uma ótima ideia para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0273L02": {
+   "lego": "too much | demasiado",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 7
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 6
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0273L02U01",
+     "role": "use",
+     "known": "that's too much for me",
+     "target": "isso é demasiado para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0280L02": {
+   "lego": "the most important | o mais importante",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 8
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0280L02U01",
+     "role": "use",
+     "known": "that's the most important thing for me",
+     "target": "isso é o mais importante para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0282L01": {
+   "lego": "that's not a problem | isso não é problema",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 9
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 7
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0282L01U01",
+     "role": "use",
+     "known": "that's not a problem for me",
+     "target": "isso não é problema para mim",
+     "untaught": [
+      "mim"
+     ]
+    },
+    {
+     "row": "S0282L01U04",
+     "role": "use",
+     "known": "that's not a problem for me",
+     "target": "isso não é problema para mim",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0409L01": {
+   "lego": "it doesn't matter | não importa",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 16,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0409L01B03",
+     "role": "build",
+     "known": "for me it doesn't matter",
+     "target": "para mim não importa",
+     "untaught": [
+      "mim"
+     ]
+    }
+   ]
+  },
+  "S0485L01": {
+   "lego": "nothing | nada",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0485L01U05",
+     "role": "use",
+     "known": "he said nothing could help",
+     "target": "ele disse que nada ajudaria",
+     "untaught": [
+      "ajudaria"
+     ]
+    }
+   ]
+  },
+  "S0492L01": {
+   "lego": "which of those | qual desses",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 28,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0492L01U03",
+     "role": "use",
+     "known": "they asked which of those is best",
+     "target": "perguntaram qual desses é o melhor",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0492L01U04",
+     "role": "use",
+     "known": "she asked which of those is important",
+     "target": "ela perguntou qual desses é importante",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0492L01U05",
+     "role": "use",
+     "known": "he asked which of those is good",
+     "target": "ele perguntou qual desses é bom",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0492L02": {
+   "lego": "of those places | desses lugares",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 29,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0492L02U03",
+     "role": "use",
+     "known": "they asked which of those places is best",
+     "target": "perguntaram qual desses lugares é o melhor",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0492L02U04",
+     "role": "use",
+     "known": "she asked which of those places is interesting",
+     "target": "ela perguntou qual desses lugares é interessante",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0492L02U05",
+     "role": "use",
+     "known": "he asked which of those places is good",
+     "target": "ele perguntou qual desses lugares é bom",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0492L03": {
+   "lego": "do you think | achas que é",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 6
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 32,
+   "avg_known_chars": 35,
+   "rows": [
+    {
+     "row": "S0492L03U04",
+     "role": "use",
+     "known": "she asked which of those places you think is good",
+     "target": "ela perguntou qual desses lugares achas que é bom hoje",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0492L04": {
+   "lego": "the most interesting | o mais interessante",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 44,
+   "avg_known_chars": 46,
+   "rows": [
+    {
+     "row": "S0492L04U04",
+     "role": "use",
+     "known": "they asked which of those places do you think is the most interesting",
+     "target": "perguntaram qual desses lugares achas que é o mais interessante",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0492L04U05",
+     "role": "use",
+     "known": "she asked which of those places you think is the most interesting",
+     "target": "ela perguntou qual desses lugares achas que é o mais interessante hoje",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0493L01": {
+   "lego": "what is it that comes | o que é que vem",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 21,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0493L01U03",
+     "role": "use",
+     "known": "they asked what is it that comes",
+     "target": "perguntaram o que é que vem",
+     "untaught": [
+      "perguntaram"
+     ]
+    }
+   ]
+  },
+  "S0493L02": {
+   "lego": "next | a seguir",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 26,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0493L02U04",
+     "role": "use",
+     "known": "they asked what's going to come next",
+     "target": "perguntaram o que é que vem a seguir",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0493L02U05",
+     "role": "use",
+     "known": "she asked what's going to come next in the story",
+     "target": "ela perguntou o que é que vem a seguir na história",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0494L02": {
+   "lego": "what happens | o que acontece",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 28,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0494L02U03",
+     "role": "use",
+     "known": "they asked what happens",
+     "target": "perguntaram o que acontece",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0494L02U04",
+     "role": "use",
+     "known": "she asked what happens after",
+     "target": "ela perguntou o que acontece depois",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0494L02U05",
+     "role": "use",
+     "known": "he asked what happens after the show",
+     "target": "ele perguntou o que acontece depois do espetáculo",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0494L03": {
+   "lego": "after the first part | depois da primeira parte",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 44,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0494L03U01",
+     "role": "use",
+     "known": "she asked what happens after the first part of the show?",
+     "target": "ela perguntou o que acontece depois da primeira parte do espetáculo?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0559L03": {
+   "lego": "have you found the path | encontraste o caminho",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 36,
+   "rows": [
+    {
+     "row": "S0559L03U05",
+     "role": "use",
+     "known": "she asked if you found the path through the wood",
+     "target": "ela perguntou se encontraste o caminho pelo bosque",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0570L03": {
+   "lego": "willing to pay for | disposto a pagar pelo",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 42,
+   "avg_known_chars": 40,
+   "rows": [
+    {
+     "row": "S0570L03U02",
+     "role": "use",
+     "known": "she asked how much he was willing to pay for his ticket",
+     "target": "ela perguntou quanto estás disposto a pagar pelo teu bilhete",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0570L03U03",
+     "role": "use",
+     "known": "he asked how much she was willing to pay for her ticket",
+     "target": "ele perguntou quanto estás disposto a pagar pelo teu bilhete",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0570L03U04",
+     "role": "use",
+     "known": "they asked how much she was willing to pay for her ticket",
+     "target": "perguntaram quanto estás disposto a pagar pelo teu bilhete",
+     "untaught": [
+      "perguntaram"
+     ]
+    }
+   ]
+  },
+  "S0582L01": {
+   "lego": "what's it like to grow up here? | como é crescer aqui?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 22,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0582L01U01",
+     "role": "use",
+     "known": "she asked what it's like to grow up here",
+     "target": "ela perguntou como é crescer aqui",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0582L01U02",
+     "role": "use",
+     "known": "he asked what it's like to grow up here",
+     "target": "ele perguntou como é crescer aqui",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0582L01U03",
+     "role": "use",
+     "known": "they asked what it's like to grow up here",
+     "target": "perguntaram como é crescer aqui",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0582L01U04",
+     "role": "use",
+     "known": "she asked what it's like to grow up here today",
+     "target": "ela perguntou como é crescer aqui hoje",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0583L02": {
+   "lego": "what's it like in this part of the world? | como é nesta parte do mundo?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 32,
+   "avg_known_chars": 42,
+   "rows": [
+    {
+     "row": "S0583L02U01",
+     "role": "use",
+     "known": "she asked what it's like in this part of the world",
+     "target": "ela perguntou como é nesta parte do mundo",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0583L02U02",
+     "role": "use",
+     "known": "he asked what it's like in this part of the world",
+     "target": "ele perguntou como é nesta parte do mundo",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0583L02U03",
+     "role": "use",
+     "known": "they asked what it's like in this part of the world",
+     "target": "perguntaram como é nesta parte do mundo",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0583L02U04",
+     "role": "use",
+     "known": "she asked what it's like in this part of the world today",
+     "target": "ela perguntou como é nesta parte do mundo hoje",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0584L03": {
+   "lego": "what's it like to wake up | como é acordar",
+   "before": "ok",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 43,
+   "avg_known_chars": 52,
+   "rows": [
+    {
+     "row": "S0584L03U02",
+     "role": "use",
+     "known": "she asked what it's like to wake up every morning and see the mountains",
+     "target": "ela perguntou como é acordar todas as manhãs e ver as montanhas",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0584L03U03",
+     "role": "use",
+     "known": "he asked what it's like to wake up every morning and see the mountains",
+     "target": "ele perguntou como é acordar todas as manhãs e ver as montanhas",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0584L03U04",
+     "role": "use",
+     "known": "they asked what it's like to wake up every morning and see the mountains",
+     "target": "perguntaram como é acordar todas as manhãs e ver as montanhas",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0584L03U05",
+     "role": "use",
+     "known": "she asked what it's like to wake up every morning and see the mountains today",
+     "target": "ela perguntou como é acordar todas as manhãs e ver as montanhas hoje",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0628L02": {
+   "lego": "do you like tea? | gostas de chá?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 21,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0628L02U01",
+     "role": "use",
+     "known": "she asked do you like tea?",
+     "target": "ela perguntou se gostas de chá?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0628L02U02",
+     "role": "use",
+     "known": "he asked do you like tea?",
+     "target": "ele perguntou se gostas de chá?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0628L02U03",
+     "role": "use",
+     "known": "they asked do you like tea?",
+     "target": "perguntaram se gostas de chá?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0628L02U04",
+     "role": "use",
+     "known": "she asked do you like tea here?",
+     "target": "ela perguntou se gostas de chá aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0630L01": {
+   "lego": "can I have something to drink please? | posso beber algo, por favor?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 28,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0630L01U01",
+     "role": "use",
+     "known": "she asked can I have something to drink please?",
+     "target": "ela perguntou se posso beber algo, por favor?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0630L01U02",
+     "role": "use",
+     "known": "he asked can I have something to drink please?",
+     "target": "ele perguntou se posso beber algo, por favor?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0630L01U03",
+     "role": "use",
+     "known": "they asked can I have something to drink please?",
+     "target": "perguntaram se posso beber algo, por favor?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0630L01U04",
+     "role": "use",
+     "known": "she asked can I have something to drink please here?",
+     "target": "ela perguntou se posso beber algo, por favor aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0631L01": {
+   "lego": "what would you like? | o que gostavas?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 21,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0631L01U01",
+     "role": "use",
+     "known": "she asked what would you like?",
+     "target": "ela perguntou o que gostavas?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0631L01U02",
+     "role": "use",
+     "known": "he asked what would you like?",
+     "target": "ele perguntou o que gostavas?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0631L01U03",
+     "role": "use",
+     "known": "they asked what would you like?",
+     "target": "perguntaram o que gostavas?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0631L01U04",
+     "role": "use",
+     "known": "she asked what would you like here?",
+     "target": "ela perguntou o que gostavas aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0635L02": {
+   "lego": "jane | jane",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0635L02U05",
+     "role": "use",
+     "known": "she asked if that is Jane's",
+     "target": "ela perguntou se aquele é da Jane",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0637L01": {
+   "lego": "where is her bag? | onde está o saco dela?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 27,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0637L01U01",
+     "role": "use",
+     "known": "she asked where is her bag?",
+     "target": "ela perguntou onde está o saco dela?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0637L01U02",
+     "role": "use",
+     "known": "he asked where is her bag?",
+     "target": "ele perguntou onde está o saco dela?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0637L01U03",
+     "role": "use",
+     "known": "they asked where is her bag?",
+     "target": "perguntaram onde está o saco dela?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0637L01U04",
+     "role": "use",
+     "known": "she asked where is her bag here?",
+     "target": "ela perguntou onde está o saco dela aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0642L02": {
+   "lego": "how do you feel madam? | como é que se sente, senhora?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 33,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0642L02U01",
+     "role": "use",
+     "known": "she asked how do you feel madam?",
+     "target": "ela perguntou como é que se sente, senhora?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0642L02U02",
+     "role": "use",
+     "known": "he asked how do you feel madam?",
+     "target": "ele perguntou como é que se sente, senhora?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0642L02U03",
+     "role": "use",
+     "known": "they asked how do you feel madam?",
+     "target": "perguntaram como é que se sente, senhora?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0642L02U04",
+     "role": "use",
+     "known": "she asked how do you feel madam here?",
+     "target": "ela perguntou como é que se sente, senhora aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0643L01": {
+   "lego": "do you want sir | o senhor quer?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 21,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0643L01U01",
+     "role": "use",
+     "known": "she asked do you want sir?",
+     "target": "ela perguntou se o senhor quer?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0643L01U02",
+     "role": "use",
+     "known": "he asked do you want sir?",
+     "target": "ele perguntou se o senhor quer?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0643L01U03",
+     "role": "use",
+     "known": "they asked do you want sir?",
+     "target": "perguntaram se o senhor quer?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0643L01U04",
+     "role": "use",
+     "known": "she asked do you want sir here?",
+     "target": "ela perguntou se o senhor quer aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0644L01": {
+   "lego": "could you say that sir? | o senhor podia dizer isso?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 32,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0644L01U01",
+     "role": "use",
+     "known": "she asked could you say that sir?",
+     "target": "ela perguntou se o senhor podia dizer isso?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0644L01U02",
+     "role": "use",
+     "known": "he asked could you say that sir?",
+     "target": "ele perguntou se o senhor podia dizer isso?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0644L01U03",
+     "role": "use",
+     "known": "they asked could you say that sir?",
+     "target": "perguntaram se o senhor podia dizer isso?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0644L01U04",
+     "role": "use",
+     "known": "she asked could you say that sir here?",
+     "target": "ela perguntou se o senhor podia dizer isso aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0649L01": {
+   "lego": "are you ready sir? | o senhor está pronto?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 27,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0649L01U01",
+     "role": "use",
+     "known": "she asked are you ready sir?",
+     "target": "ela perguntou se o senhor está pronto?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0649L01U02",
+     "role": "use",
+     "known": "he asked are you ready sir?",
+     "target": "ele perguntou se o senhor está pronto?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0649L01U03",
+     "role": "use",
+     "known": "they asked are you ready sir?",
+     "target": "perguntaram se o senhor está pronto?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0649L01U04",
+     "role": "use",
+     "known": "she asked are you ready sir here?",
+     "target": "ela perguntou se o senhor está pronto aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0650L01": {
+   "lego": "do you want to go madam? | a senhora quer ir?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 25,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0650L01U01",
+     "role": "use",
+     "known": "she asked do you want to go madam?",
+     "target": "ela perguntou se a senhora quer ir?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0650L01U02",
+     "role": "use",
+     "known": "he asked do you want to go madam?",
+     "target": "ele perguntou se a senhora quer ir?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0650L01U03",
+     "role": "use",
+     "known": "they asked do you want to go madam?",
+     "target": "perguntaram se a senhora quer ir?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0650L01U04",
+     "role": "use",
+     "known": "she asked do you want to go madam here?",
+     "target": "ela perguntou se a senhora quer ir aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0651L01": {
+   "lego": "what do you think madam? | o que é que a senhora acha?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 31,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0651L01U01",
+     "role": "use",
+     "known": "she asked what do you think madam?",
+     "target": "ela perguntou o que é que a senhora acha?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0651L01U02",
+     "role": "use",
+     "known": "he asked what do you think madam?",
+     "target": "ele perguntou o que é que a senhora acha?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0651L01U03",
+     "role": "use",
+     "known": "they asked what do you think madam?",
+     "target": "perguntaram o que é que a senhora acha?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0651L01U04",
+     "role": "use",
+     "known": "she asked what do you think madam here?",
+     "target": "ela perguntou o que é que a senhora acha aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0652L01": {
+   "lego": "what do you need sir? | o que é que o senhor precisa?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 33,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0652L01U01",
+     "role": "use",
+     "known": "she asked what do you need sir?",
+     "target": "ela perguntou o que é que o senhor precisa?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0652L01U02",
+     "role": "use",
+     "known": "he asked what do you need sir?",
+     "target": "ele perguntou o que é que o senhor precisa?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0652L01U03",
+     "role": "use",
+     "known": "they asked what do you need sir?",
+     "target": "perguntaram o que é que o senhor precisa?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0652L01U04",
+     "role": "use",
+     "known": "she asked what do you need sir here?",
+     "target": "ela perguntou o que é que o senhor precisa aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0653L01": {
+   "lego": "do you mind | importa-se",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0653L01U05",
+     "role": "use",
+     "known": "she asked do you mind madam here?",
+     "target": "ela perguntou se a senhora se importa aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0653L02": {
+   "lego": "do you mind madam? | a senhora importa-se?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 0
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0653L02U01",
+     "role": "use",
+     "known": "she asked do you mind madam?",
+     "target": "ela perguntou se a senhora se importa?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0653L02U02",
+     "role": "use",
+     "known": "he asked do you mind madam?",
+     "target": "ele perguntou se a senhora se importa?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0653L02U03",
+     "role": "use",
+     "known": "they asked do you mind madam?",
+     "target": "perguntaram se a senhora se importa?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0653L02U04",
+     "role": "use",
+     "known": "she asked do you mind madam here?",
+     "target": "ela perguntou se a senhora se importa aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0657L02": {
+   "lego": "how do you all feel? | como é que vocês se sentem?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 31,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0657L02U01",
+     "role": "use",
+     "known": "she asked how do you all feel?",
+     "target": "ela perguntou como é que vocês se sentem?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0657L02U02",
+     "role": "use",
+     "known": "he asked how do you all feel?",
+     "target": "ele perguntou como é que vocês se sentem?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0657L02U03",
+     "role": "use",
+     "known": "they asked how do you all feel?",
+     "target": "perguntaram como é que vocês se sentem?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0657L02U04",
+     "role": "use",
+     "known": "she asked how do you all feel here?",
+     "target": "ela perguntou como é que vocês se sentem aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0658L01": {
+   "lego": "do you all want? | vocês querem?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 20,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0658L01U01",
+     "role": "use",
+     "known": "she asked do you all want?",
+     "target": "ela perguntou se vocês querem?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0658L01U02",
+     "role": "use",
+     "known": "he asked do you all want?",
+     "target": "ele perguntou se vocês querem?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0658L01U03",
+     "role": "use",
+     "known": "they asked do you all want?",
+     "target": "perguntaram se vocês querem?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0658L01U04",
+     "role": "use",
+     "known": "she asked do you all want here?",
+     "target": "ela perguntou se vocês querem aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0659L01": {
+   "lego": "could you all say that | vocês podiam dizer isso?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 30,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0659L01U01",
+     "role": "use",
+     "known": "she asked could you all say that?",
+     "target": "ela perguntou se vocês podiam dizer isso?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0659L01U02",
+     "role": "use",
+     "known": "he asked could you all say that?",
+     "target": "ele perguntou se vocês podiam dizer isso?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0659L01U03",
+     "role": "use",
+     "known": "they asked could you all say that?",
+     "target": "perguntaram se vocês podiam dizer isso?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0659L01U04",
+     "role": "use",
+     "known": "she asked could you all say that here?",
+     "target": "ela perguntou se vocês podiam dizer isso aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0664L01": {
+   "lego": "are you all ready? | vocês estão prontos?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 26,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0664L01U01",
+     "role": "use",
+     "known": "she asked are you all ready?",
+     "target": "ela perguntou se vocês estão prontos?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0664L01U02",
+     "role": "use",
+     "known": "he asked are you all ready?",
+     "target": "ele perguntou se vocês estão prontos?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0664L01U03",
+     "role": "use",
+     "known": "they asked are you all ready?",
+     "target": "perguntaram se vocês estão prontos?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0664L01U04",
+     "role": "use",
+     "known": "she asked are you all ready here?",
+     "target": "ela perguntou se vocês estão prontos aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0665L01": {
+   "lego": "do you all want to go? | vocês querem ir?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 23,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0665L01U01",
+     "role": "use",
+     "known": "she asked do you all want to go?",
+     "target": "ela perguntou se vocês querem ir?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0665L01U02",
+     "role": "use",
+     "known": "he asked do you all want to go?",
+     "target": "ele perguntou se vocês querem ir?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0665L01U03",
+     "role": "use",
+     "known": "they asked do you all want to go?",
+     "target": "perguntaram se vocês querem ir?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0665L01U04",
+     "role": "use",
+     "known": "she asked do you all want to go here?",
+     "target": "ela perguntou se vocês querem ir aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0666L01": {
+   "lego": "what do you all think? | o que é que vocês acham?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 29,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0666L01U01",
+     "role": "use",
+     "known": "she asked what do you all think?",
+     "target": "ela perguntou o que é que vocês acham?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0666L01U02",
+     "role": "use",
+     "known": "he asked what do you all think?",
+     "target": "ele perguntou o que é que vocês acham?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0666L01U03",
+     "role": "use",
+     "known": "they asked what do you all think?",
+     "target": "perguntaram o que é que vocês acham?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0666L01U04",
+     "role": "use",
+     "known": "she asked what do you all think here?",
+     "target": "ela perguntou o que é que vocês acham aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  },
+  "S0667L01": {
+   "lego": "do you all mind? | vocês importam-se?",
+   "before": "already under floor",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 0
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0667L01U01",
+     "role": "use",
+     "known": "she asked do you all mind?",
+     "target": "ela perguntou se vocês se importam?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0667L01U02",
+     "role": "use",
+     "known": "he asked do you all mind?",
+     "target": "ele perguntou se vocês se importam?",
+     "untaught": [
+      "perguntou"
+     ]
+    },
+    {
+     "row": "S0667L01U03",
+     "role": "use",
+     "known": "they asked do you all mind?",
+     "target": "perguntaram se vocês se importam?",
+     "untaught": [
+      "perguntaram"
+     ]
+    },
+    {
+     "row": "S0667L01U04",
+     "role": "use",
+     "known": "she asked do you all mind here?",
+     "target": "ela perguntou se vocês se importam aqui?",
+     "untaught": [
+      "perguntou"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

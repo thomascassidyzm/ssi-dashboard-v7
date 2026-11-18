@@ -1,0 +1,270 @@
+{
+ "course": "eng_for_pan",
+ "at": "2026-11-18T14:40:05.401Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0033L01": {
+   "lego": "ਕਿੰਨੇ ਸਮੇਂ ਤੋਂ | how long",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0033L01U06",
+     "role": "use",
+     "known": "ਕਿੰਨੇ ਸਮੇਂ ਤੋਂ ਉਹ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖਣਾ ਚਾਹੁੰਦਾ ਹੈ?",
+     "target": "how long does he want to learn English?",
+     "untaught": [
+      "does"
+     ]
+    }
+   ]
+  },
+  "S0053L02": {
+   "lego": "ਬੈਗ | bag",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0053L02U07",
+     "role": "use",
+     "known": "ਕੀ ਤੁਸੀਂ ਆਪਣੇ ਬੈਗ ਵਿੱਚ ਕੁਝ ਪਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+     "target": "do you want to put something in your bag?",
+     "untaught": [
+      "your"
+     ]
+    }
+   ]
+  },
+  "S0128L02": {
+   "lego": "ਤੁਸੀਂ ਵਰਗੇ ਹੋ | you're like",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0128L02U05",
+     "role": "use",
+     "known": "ਤੁਸੀਂ ਮੇਰੇ ਦੋਸਤ ਵਰਗੇ ਹੋ ਜੋ ਅੰਗਰੇਜ਼ੀ ਬੋਲਦਾ ਹੈ",
+     "target": "you're like my friend who speaks English",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  },
+  "S0133L02": {
+   "lego": "ਜਾਣ ਲੈਂਦੇ ਹੋ | you get to know",
+   "before": "already under floor",
+   "delete": 2,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 26,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0133L02U01",
+     "role": "use",
+     "known": "ਤੁਸੀਂ ਕਿਸੇ ਨੂੰ ਜਾਣ ਲੈਂਦੇ ਹੋ",
+     "target": "you get to know a person",
+     "untaught": [
+      "person"
+     ]
+    },
+    {
+     "row": "S0133L02U03",
+     "role": "use",
+     "known": "ਕੀ ਤੁਸੀਂ ਉਸ ਵਿਅਕਤੀ ਨੂੰ ਜਾਣ ਲੈਂਦੇ ਹੋ?",
+     "target": "do you get to know that person?",
+     "untaught": [
+      "person"
+     ]
+    }
+   ]
+  },
+  "S0169L01": {
+   "lego": "ਤੁਸੀਂ ਮੈਨੂੰ ਕੀ ਕਰਨ ਲਈ ਕਹਿੰਦੇ ਹੋ | what do you want me to do",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 26,
+   "avg_known_chars": 31,
+   "rows": [
+    {
+     "row": "S0169L01B03",
+     "role": "build",
+     "known": "ਤੁਸੀਂ ਮੈਨੂੰ ਕੀ ਕਰਨ ਲਈ ਕਹਿੰਦੇ ਹੋ ਪਹਿਲਾਂ?",
+     "target": "what do you want me to do first?",
+     "untaught": [
+      "first"
+     ]
+    }
+   ]
+  },
+  "S0181L03": {
+   "lego": "ਮੈਨੂੰ ਲੈ ਜਾਣਾ ਹੈ | I have to take",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 3
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 22,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0181L03B03",
+     "role": "build",
+     "known": "ਮੈਨੂੰ ਅੱਜ ਆਪਣੀ ਧੀ ਨੂੰ ਲੈ ਜਾਣਾ ਹੈ",
+     "target": "I have to take my daughter today",
+     "untaught": [
+      "daughter"
+     ]
+    }
+   ]
+  },
+  "S0206L02": {
+   "lego": "ਮੈਂ ਪਸੰਦ ਕਰਦਾ ਹਾਂ | I enjoy",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0206L02U05",
+     "role": "use",
+     "known": "ਮੈਂ ਪਸੰਦ ਕਰਦਾ ਹਾਂ ਅੰਗਰੇਜ਼ੀ ਪ੍ਰੈਕਟਿਸ ਕਰਨਾ",
+     "target": "I enjoy practising English",
+     "untaught": [
+      "practising"
+     ]
+    }
+   ]
+  },
+  "S0220L01": {
+   "lego": "ਟੀਵੀ | television",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0220L01U05",
+     "role": "use",
+     "known": "ਮੈਨੂੰ ਸ਼ਾਮ ਨੂੰ ਟੀਵੀ ਦੇਖਣਾ ਚੰਗਾ ਲੱਗਦਾ ਹੈ",
+     "target": "I like watching television in the evening",
+     "untaught": [
+      "watching"
+     ]
+    }
+   ]
+  },
+  "S0220L02": {
+   "lego": "ਥੋੜਾ ਟੀਵੀ ਦੇਖਿਆ | watch a bit of television",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 3
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 33,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0220L02U06",
+     "role": "use",
+     "known": "ਮੈਂ ਆਪਣੀ ਧੀ ਨਾਲ ਥੋੜਾ ਟੀਵੀ ਦੇਖਿਆ",
+     "target": "I watched a bit of television with my daughter",
+     "untaught": [
+      "watched"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

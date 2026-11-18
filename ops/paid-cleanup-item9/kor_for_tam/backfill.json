@@ -1,0 +1,162 @@
+{
+ "course": "kor_for_tam",
+ "at": "2026-11-18T14:40:09.923Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0040L01": {
+   "lego": "மனநிலை | 기분이",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 9,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0040L01U04",
+     "role": "use",
+     "known": "நாளை மனநிலை நன்றாக இருக்கும்",
+     "target": "내일 기분이 좋을 거예요",
+     "untaught": [
+      "좋을"
+     ]
+    }
+   ]
+  },
+  "S0041L01": {
+   "lego": "சரியாக உணர்கிறேன் | 괜찮은데",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 15,
+   "avg_known_chars": 53,
+   "rows": [
+    {
+     "row": "S0041L01U04",
+     "role": "use",
+     "known": "சரியாக உணர்கிறேன், ஆனால் அதைப் பற்றி கவலைப்படுவதில்லை",
+     "target": "괜찮은데, 그것에 대해 걱정하지 않아요",
+     "untaught": [
+      "걱정하지"
+     ]
+    },
+    {
+     "row": "S0041L01U05",
+     "role": "use",
+     "known": "சரியாக உணர்கிறேன், ஆனால் இன்னும் நன்றாக உணரத் தொடங்கியிருந்தேன்",
+     "target": "괜찮은데, 더 나아지기 시작하고 있었어요",
+     "untaught": [
+      "나아지기",
+      "시작하고",
+      "있었어요"
+     ]
+    }
+   ]
+  },
+  "S0042L01": {
+   "lego": "இரவை விட | 저녁보다",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 10,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0042L01U05",
+     "role": "use",
+     "known": "நாளை இரவை விட நன்றாக இருக்கும்",
+     "target": "내일 저녁보다 좋을 거예요",
+     "untaught": [
+      "좋을"
+     ]
+    }
+   ]
+  },
+  "S0074L01": {
+   "lego": "புரிந்துகொள்ள | 이해하는 데",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 13,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0074L01U03",
+     "role": "use",
+     "known": "புரிந்துகொள்ள உதவுகிறது",
+     "target": "이해하는 데 도움이 돼요",
+     "untaught": [
+      "도움이",
+      "돼요"
+     ]
+    }
+   ]
+  },
+  "S0076L01": {
+   "lego": "ஏற்கனவே | 이미",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 10,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0076L01U03",
+     "role": "use",
+     "known": "ஏற்கனவே உதவுகிறது",
+     "target": "이미 도움이 돼요",
+     "untaught": [
+      "도움이",
+      "돼요"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

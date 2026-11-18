@@ -1,0 +1,65 @@
+{
+ "course": "ara_for_eng",
+ "at": "2026-11-18T14:39:59.623Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0395L06": {
+   "lego": "we need to | نَحْنُ بِحاجَةٍ إِلى",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 2
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 2
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 44,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0395L06B03",
+     "role": "build",
+     "known": "we need to think about that",
+     "target": "نَحْنُ بِحاجَةٍ إِلى التَّفْكيرِ في ذَلِكَ",
+     "untaught": [
+      "التفكير"
+     ]
+    }
+   ]
+  },
+  "S0413L04": {
+   "lego": "if we go too close to the edge | إِذا اقْتَرَبْنا كَثيراً مِنَ الحافَّةِ",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 56,
+   "avg_known_chars": 42,
+   "rows": [
+    {
+     "row": "S0413L04U05",
+     "role": "use",
+     "known": "I know going too close to the edge is not good",
+     "target": "أَعْرِفُ أَنَّ الاقْتِرابَ كَثيراً مِنَ الحافَّةِ لَيْسَ جَيِّداً",
+     "untaught": [
+      "الاقتراب"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

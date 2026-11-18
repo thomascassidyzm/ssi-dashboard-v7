@@ -1,0 +1,500 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0026L01U05",
+   "expect": {
+    "known_text": "ನಾವು ಬೇಗ ಮುಗಿಸಬೇಕಾಗಿರುವುದರಿಂದ ನಾನು ಹೋಗಲು ಬಹುತೇಕ ಸಿದ್ಧವಾಗಿದ್ದೇನೆ",
+    "target_text": "I'm nearly ready to go because we should finish soon"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0052L03U05",
+   "expect": {
+    "known_text": "ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಒಂದು ಪತ್ರ ಕೊಡಬೇಕು",
+    "target_text": "he wants to give a letter to his friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0053L03U03",
+   "expect": {
+    "known_text": "ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಅವನ ಪತ್ರವನ್ನ ಕೊಡಬೇಕಿತ್ತು",
+    "target_text": "he wanted to give his letter to his friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0071L04U02",
+   "expect": {
+    "known_text": "ನಮಗೆ ಅವನಿಗೆ ಸಹಾಯ ಮಾಡೋದು ಬೇಕಿರಲಿಲ್ಲ",
+    "target_text": "we didn't want to help him"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0072L01U05",
+   "expect": {
+    "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+    "target_text": "she asked what you're doing"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0073L01U02",
+   "expect": {
+    "known_text": "ನಿಮ್ಮ ಸಹಾಯಕ್ಕೆ ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+    "target_text": "thank you very much for your help"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0076L01U02",
+   "expect": {
+    "known_text": "ಅವಳು ನನಗೆ ಈಗಾಗಲೇ ಹೇಳಿದಳು",
+    "target_text": "she already told me"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0076L01U05",
+   "expect": {
+    "known_text": "ಅವನಿಗೆ ಈಗಾಗಲೇ ಉತ್ತರ ಗೊತ್ತು",
+    "target_text": "he already knows the answer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0076L02U05",
+   "expect": {
+    "known_text": "ನಾನು ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+    "target_text": "she asked how much I've learnt"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0077L01U02",
+   "expect": {
+    "known_text": "ಅವನು ಎಷ್ಟು ಬೇಗ ಮಾತಾಡ್ತಾನೆ ಅಂತ ನಿಮಗೆ ಗೊತ್ತಾ?",
+    "target_text": "do you know how quickly he speaks?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0077L01U04",
+   "expect": {
+    "known_text": "ನಾನು ಎಷ್ಟು ಬೇಗ ಕಲಿಯುತ್ತೀನಿ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+    "target_text": "she asked how quickly I learn"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0083L01U02",
+   "expect": {
+    "known_text": "ನಿಮಗೆ ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕಾ?",
+    "target_text": "do you want to talk about your friend?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0083L01U03",
+   "expect": {
+    "known_text": "ಅವಳು ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಕೇಳಿದಳು",
+    "target_text": "she asked about your friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0083L01U05",
+   "expect": {
+    "known_text": "ಅವನು ನನಗೆ ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಹೇಳಿದ",
+    "target_text": "he told me about your friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0084L01U01",
+   "expect": {
+    "known_text": "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕು",
+    "target_text": "I want to talk about my friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0084L01U03",
+   "expect": {
+    "known_text": "ನಾನು ನಿಮಗೆ ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಹೇಳಿದೆ",
+    "target_text": "I told you about my friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0084L01U04",
+   "expect": {
+    "known_text": "ಅವಳು ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಕೇಳಿದಳು",
+    "target_text": "she asked me about my friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0084L01U05",
+   "expect": {
+    "known_text": "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಮಾತಾಡೋದು ಬೇಡ",
+    "target_text": "I don't want to talk about my friend"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0084L03U03",
+   "expect": {
+    "known_text": "ನಾನು ಅವನ ಜೊತೆ ಒಪ್ಪಲ್ಲ",
+    "target_text": "I don't agree with him"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0085L01U04",
+   "expect": {
+    "known_text": "ಅವಳಿಗೆ ಆ ಜನರು ಗೊತ್ತು",
+    "target_text": "she knows those people"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0087L03U02",
+   "expect": {
+    "known_text": "ನನಗೆ ಜನರ ಜೊತೆ ಮಾತಾಡೋದು ಇಷ್ಟ",
+    "target_text": "I like to talk to people"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0090L01U05",
+   "expect": {
+    "known_text": "ಅವಳು ನಿಮಗಿಂತ ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡ್ತಾಳೆ",
+    "target_text": "she speaks more slowly than you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0091L02U05",
+   "expect": {
+    "known_text": "ಅವಳು ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ ಮಾತಾಡ್ತಾಳೆ",
+    "target_text": "she speaks quickly enough to answer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0095L01U03",
+   "expect": {
+    "known_text": "ಅವಳು ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ ಇದ್ದಾಳೆ",
+    "target_text": "she's on the next bus"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0098L01U04",
+   "expect": {
+    "known_text": "ಅವಳು ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದಾಳೆ",
+    "target_text": "she's thinking about playing something else"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0099L01U05",
+   "expect": {
+    "known_text": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+    "target_text": "she asked why it's not working"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0100L01U04",
+   "expect": {
+    "known_text": "ಅವಳು ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದಾಳೆ",
+    "target_text": "she's thinking about doing something similar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0101L01U05",
+   "expect": {
+    "known_text": "ಅವಳು ಈ ಭಾಷೆಯ ಬಗ್ಗೆ ಕೇಳಿದಳು",
+    "target_text": "she asked about this language"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0107L01U05",
+   "expect": {
+    "known_text": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+    "target_text": "she asked what you were doing"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0111L02U04",
+   "expect": {
+    "known_text": "ನಮ್ಮ ಮೆದುಳು ಕಷ್ಟಪಟ್ಟು ಕೆಲಸ ಮಾಡುತ್ತೆ",
+    "target_text": "our brain works hard"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0111L02U05",
+   "expect": {
+    "known_text": "ನಮ್ಮ ಮೆದುಳು ತುಂಬಾ ಕಲಿಯುತ್ತೆ",
+    "target_text": "our brain learns a lot"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0116L01U01",
+   "expect": {
+    "known_text": "ನಾನು ಒಂದು ತಪ್ಪು ಮಾಡಬಹುದು",
+    "target_text": "I could make a mistake"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0122L03U04",
+   "expect": {
+    "known_text": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+    "target_text": "she asked how it's going"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0126L02U05",
+   "expect": {
+    "known_text": "ಇದು ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ ಬದಲಾಯಿಸುತ್ತಾ?",
+    "target_text": "does this change the shape of my brain?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0128L02U02",
+   "expect": {
+    "known_text": "ಅವನು ನನಗೆ ಗೊತ್ತಿರೋ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ ಇದ್ದಾನೆ",
+    "target_text": "he's like someone I know"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0128L02U03",
+   "expect": {
+    "known_text": "ಅವಳು ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ ಇದ್ದಾಳೆ",
+    "target_text": "she's like someone I used to know"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0130L02U04",
+   "expect": {
+    "known_text": "ಅವನು ನನ್ನ ಸ್ನೇಹಿತ ಮತ್ತು ನನಗೆ ಅವನು ಇಷ್ಟ",
+    "target_text": "he's my friend and I like him"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0132L01U04",
+   "expect": {
+    "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದು ನನಗೆ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳೋಕೆ ಆಗಲಿಲ್ಲ",
+    "target_text": "I couldn't understand what she was saying"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0138L04U05",
+   "expect": {
+    "known_text": "ನಾವು ಭೇಟಿಯಾದ ಜಾಗ ಇದೇ",
+    "target_text": "this was where we met"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0146L02U05",
+   "expect": {
+    "known_text": "ನಾವು ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ತುಂಬಾ ಬದಲಾಗಿದೆ",
+    "target_text": "since we tried a lot has changed"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0147L02U02",
+   "expect": {
+    "known_text": "ಅವಳು ನನ್ನನ್ನ ನೋಡಿದಾಗ ಸಹಾಯ ಮಾಡಿದಳು",
+    "target_text": "when she saw me she helped"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0147L02U05",
+   "expect": {
+    "known_text": "ಅವಳು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದಾಗ ಸಹಾಯ ಮಾಡಿದಳು",
+    "target_text": "when she saw me feeling nervous she helped"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0147L03U02",
+   "expect": {
+    "known_text": "ಅವಳು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದಾಗ ಸಹಾಯ ಮಾಡಿದಳು",
+    "target_text": "when she saw me feeling nervous she helped"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0148L02U03",
+   "expect": {
+    "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ಅವಳು ಸಹಾಯ ಮಾಡಿದಳು",
+    "target_text": "when I couldn't answer she helped me"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0150L02U05",
+   "expect": {
+    "known_text": "ನಿಮ್ಮ ಹೆಸರು ಏನು ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+    "target_text": "she asked what your name is"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0152L02U01",
+   "expect": {
+    "known_text": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ ನಾನು ಸಹಾಯ ಮಾಡ್ತಿದ್ದೆ",
+    "target_text": "if I had known I would have helped"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0155L02U05",
+   "expect": {
+    "known_text": "ಅದಕ್ಕೆ ಕೆಲವು ನಿಮಿಷ ಬೇಕು",
+    "target_text": "it takes a few minutes"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0160L01U05",
+   "expect": {
+    "known_text": "ಈ ಪದ ಏನು ಅರ್ಥ?",
+    "target_text": "what does this word mean?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0164L01U05",
+   "expect": {
+    "known_text": "ನಾನು ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ ಓದ್ತಿದ್ದೇನೆ",
+    "target_text": "I'm reading an interesting book"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0184L01U04",
+   "expect": {
+    "known_text": "ನಾವು ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ಭೇಟಿಯಾದೆವು",
+    "target_text": "we met a while ago"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0205L01U03",
+   "expect": {
+    "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ ನನಗೆ ಸಿಕ್ತು",
+    "target_text": "I found the word I was trying to say"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0216L01U02",
+   "expect": {
+    "known_text": "ನಾನು ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ ಭೇಟಿಯಾದೆ",
+    "target_text": "I met a few friends"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0216L01U05",
+   "expect": {
+    "known_text": "ಕೆಲವು ಸ್ನೇಹಿತರು ಬಂದ್ರು",
+    "target_text": "a few friends came"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0220L01U01",
+   "expect": {
+    "known_text": "ನಾನು ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದೆ",
+    "target_text": "I watched a bit of television"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0220L01U04",
+   "expect": {
+    "known_text": "ನಾನು ನಿನ್ನೆ ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದೆ",
+    "target_text": "I watched a bit of television yesterday"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0220L01U05",
+   "expect": {
+    "known_text": "ನಾವು ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದೆವು",
+    "target_text": "we watched a bit of television"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0233L02U05",
+   "expect": {
+    "known_text": "ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ ಒಬ್ಬ ಹೆಂಗಸನ್ನ ನಾನು ಭೇಟಿಯಾದೆ",
+    "target_text": "I met a woman who knows your sister"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0266L01U05",
+   "expect": {
+    "known_text": "ಅವನು ಕೆಲಸದ ಹಳೆಯ ಸ್ನೇಹಿತ",
+    "target_text": "he was an old friend from work"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0273L02U04",
+   "expect": {
+    "known_text": "ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+    "target_text": "there's too much work"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0277L02U05",
+   "expect": {
+    "known_text": "ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+    "target_text": "there's an important meeting"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0279L01U05",
+   "expect": {
+    "known_text": "ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ, ಹಾಗಾಗಿ ನಾವು ಮುಗಿಸಿದೆವು",
+    "target_text": "there wasn't much time left so we finished"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_kan:S0280L01U01",
+   "expect": {
+    "known_text": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಒಂದು ಕೆಲಸ ಮಾಡಬೇಕಿತ್ತು",
+    "target_text": "no I only had to do one thing"
+   }
+  }
+ ]
+}

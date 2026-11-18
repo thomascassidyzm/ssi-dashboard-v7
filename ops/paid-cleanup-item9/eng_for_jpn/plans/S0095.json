@@ -1,0 +1,36 @@
+{
+ "seed": 95,
+ "legos": {
+  "L02": {
+   "delete": [
+    "U05",
+    "U15"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (3 duplicate phrase(s) within this LEGO: \"I'd like to go home soon\", \"are you going to go home after you finish?\", \"are you ready to go home on the next bus?\"); deletes do not lower its counted rows"
+  },
+  "L03": {
+   "delete": [
+    "B05",
+    "B07",
+    "U05",
+    "U06",
+    "U09",
+    "U10",
+    "U15"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (2 duplicate phrase(s) within this LEGO: \"the next\", \"I'd like to practise more the next time\"); deletes do not lower its counted rows"
+  },
+  "L04": {
+   "delete": [
+    "B05",
+    "U03",
+    "U06",
+    "U09",
+    "U14",
+    "U15"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (4 duplicate phrase(s) within this LEGO: \"are you ready to go home on the next bus?\", \"I'm going to go home on the next bus\", \"when is the next bus?\"); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

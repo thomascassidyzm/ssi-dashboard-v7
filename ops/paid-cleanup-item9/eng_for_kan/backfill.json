@@ -1,0 +1,1501 @@
+{
+ "course": "eng_for_kan",
+ "at": "2026-11-18T14:40:06.419Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0026L01": {
+   "lego": "ಬಹುತೇಕ ಹೋಗೋಕೆ ಸಿದ್ಧ | nearly ready to go",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0026L01U05",
+     "role": "use",
+     "known": "ನಾವು ಬೇಗ ಮುಗಿಸಬೇಕಾಗಿರುವುದರಿಂದ ನಾನು ಹೋಗಲು ಬಹುತೇಕ ಸಿದ್ಧವಾಗಿದ್ದೇನೆ",
+     "target": "I'm nearly ready to go because we should finish soon",
+     "untaught": [
+      "should"
+     ]
+    }
+   ]
+  },
+  "S0052L03": {
+   "lego": "ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ | to his friend",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0052L03U05",
+     "role": "use",
+     "known": "ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಒಂದು ಪತ್ರ ಕೊಡಬೇಕು",
+     "target": "he wants to give a letter to his friend",
+     "untaught": [
+      "give",
+      "letter"
+     ]
+    }
+   ]
+  },
+  "S0053L03": {
+   "lego": "ಪತ್ರವನ್ನ | letter",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0053L03U03",
+     "role": "use",
+     "known": "ಅವನು ತನ್ನ ಸ್ನೇಹಿತನಿಗೆ ಅವನ ಪತ್ರವನ್ನ ಕೊಡಬೇಕಿತ್ತು",
+     "target": "he wanted to give his letter to his friend",
+     "untaught": [
+      "give"
+     ]
+    }
+   ]
+  },
+  "S0071L04": {
+   "lego": "ನಮಗೆ ಬೇಕಿರಲಿಲ್ಲ | we didn't want",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0071L04U02",
+     "role": "use",
+     "known": "ನಮಗೆ ಅವನಿಗೆ ಸಹಾಯ ಮಾಡೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target": "we didn't want to help him",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0072L01": {
+   "lego": "ನೀವು ಮಾಡ್ತಿದ್ದೀರಿ | you're doing",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0072L01U05",
+     "role": "use",
+     "known": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+     "target": "she asked what you're doing",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0073L01": {
+   "lego": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು | thank you very much",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0073L01U02",
+     "role": "use",
+     "known": "ನಿಮ್ಮ ಸಹಾಯಕ್ಕೆ ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target": "thank you very much for your help",
+     "untaught": [
+      "your"
+     ]
+    }
+   ]
+  },
+  "S0076L01": {
+   "lego": "ಈಗಾಗಲೇ | already",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 18,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0076L01U02",
+     "role": "use",
+     "known": "ಅವಳು ನನಗೆ ಈಗಾಗಲೇ ಹೇಳಿದಳು",
+     "target": "she already told me",
+     "untaught": [
+      "told"
+     ]
+    },
+    {
+     "row": "S0076L01U05",
+     "role": "use",
+     "known": "ಅವನಿಗೆ ಈಗಾಗಲೇ ಉತ್ತರ ಗೊತ್ತು",
+     "target": "he already knows the answer",
+     "untaught": [
+      "knows"
+     ]
+    }
+   ]
+  },
+  "S0076L02": {
+   "lego": "ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ | how much I've learnt",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0076L02U05",
+     "role": "use",
+     "known": "ನಾನು ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+     "target": "she asked how much I've learnt",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0077L01": {
+   "lego": "ಎಷ್ಟು ಬೇಗ | how quickly",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 23,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0077L01U02",
+     "role": "use",
+     "known": "ಅವನು ಎಷ್ಟು ಬೇಗ ಮಾತಾಡ್ತಾನೆ ಅಂತ ನಿಮಗೆ ಗೊತ್ತಾ?",
+     "target": "do you know how quickly he speaks?",
+     "untaught": [
+      "speaks"
+     ]
+    },
+    {
+     "row": "S0077L01U04",
+     "role": "use",
+     "known": "ನಾನು ಎಷ್ಟು ಬೇಗ ಕಲಿಯುತ್ತೀನಿ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+     "target": "she asked how quickly I learn",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0083L01": {
+   "lego": "ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ | about your friend",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 22,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0083L01U02",
+     "role": "use",
+     "known": "ನಿಮಗೆ ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕಾ?",
+     "target": "do you want to talk about your friend?",
+     "untaught": [
+      "talk"
+     ]
+    },
+    {
+     "row": "S0083L01U03",
+     "role": "use",
+     "known": "ಅವಳು ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಕೇಳಿದಳು",
+     "target": "she asked about your friend",
+     "untaught": [
+      "asked"
+     ]
+    },
+    {
+     "row": "S0083L01U05",
+     "role": "use",
+     "known": "ಅವನು ನನಗೆ ನಿಮ್ಮ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಹೇಳಿದ",
+     "target": "he told me about your friend",
+     "untaught": [
+      "told"
+     ]
+    }
+   ]
+  },
+  "S0084L01": {
+   "lego": "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ | about my friend",
+   "before": "ok",
+   "delete": 4,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 4,
+   "avg_target_chars": 21,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0084L01U01",
+     "role": "use",
+     "known": "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಮಾತಾಡಬೇಕು",
+     "target": "I want to talk about my friend",
+     "untaught": [
+      "talk"
+     ]
+    },
+    {
+     "row": "S0084L01U03",
+     "role": "use",
+     "known": "ನಾನು ನಿಮಗೆ ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಹೇಳಿದೆ",
+     "target": "I told you about my friend",
+     "untaught": [
+      "told"
+     ]
+    },
+    {
+     "row": "S0084L01U04",
+     "role": "use",
+     "known": "ಅವಳು ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಕೇಳಿದಳು",
+     "target": "she asked me about my friend",
+     "untaught": [
+      "asked"
+     ]
+    },
+    {
+     "row": "S0084L01U05",
+     "role": "use",
+     "known": "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ಮಾತಾಡೋದು ಬೇಡ",
+     "target": "I don't want to talk about my friend",
+     "untaught": [
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0084L03": {
+   "lego": "ಒಪ್ಪಲ್ಲ | don't agree with",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0084L03U03",
+     "role": "use",
+     "known": "ನಾನು ಅವನ ಜೊತೆ ಒಪ್ಪಲ್ಲ",
+     "target": "I don't agree with him",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0085L01": {
+   "lego": "ಆ ಜನರನ್ನ | those people",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0085L01U04",
+     "role": "use",
+     "known": "ಅವಳಿಗೆ ಆ ಜನರು ಗೊತ್ತು",
+     "target": "she knows those people",
+     "untaught": [
+      "knows"
+     ]
+    }
+   ]
+  },
+  "S0087L03": {
+   "lego": "ಜನ | people",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0087L03U02",
+     "role": "use",
+     "known": "ನನಗೆ ಜನರ ಜೊತೆ ಮಾತಾಡೋದು ಇಷ್ಟ",
+     "target": "I like to talk to people",
+     "untaught": [
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0090L01": {
+   "lego": "ಇನ್ನೂ ನಿಧಾನವಾಗಿ | more slowly",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0090L01U05",
+     "role": "use",
+     "known": "ಅವಳು ನಿಮಗಿಂತ ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡ್ತಾಳೆ",
+     "target": "she speaks more slowly than you",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  },
+  "S0091L02": {
+   "lego": "ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ | quickly enough to answer",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0091L02U05",
+     "role": "use",
+     "known": "ಅವಳು ಉತ್ತರ ಕೊಡೋವಷ್ಟು ಬೇಗ ಮಾತಾಡ್ತಾಳೆ",
+     "target": "she speaks quickly enough to answer",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  },
+  "S0095L01": {
+   "lego": "ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ | on the next bus",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0095L01U03",
+     "role": "use",
+     "known": "ಅವಳು ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ ಇದ್ದಾಳೆ",
+     "target": "she's on the next bus",
+     "untaught": [
+      "she's"
+     ]
+    }
+   ]
+  },
+  "S0098L01": {
+   "lego": "ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ | playing something else",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0098L01U04",
+     "role": "use",
+     "known": "ಅವಳು ಬೇರೆ ಏನಾದರೂ ಆಡೋ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದಾಳೆ",
+     "target": "she's thinking about playing something else",
+     "untaught": [
+      "she's"
+     ]
+    }
+   ]
+  },
+  "S0099L01": {
+   "lego": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ | why it's not working",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0099L01U05",
+     "role": "use",
+     "known": "ಅದು ಯಾಕೆ ಕೆಲಸ ಮಾಡ್ತಿಲ್ಲ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+     "target": "she asked why it's not working",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0100L01": {
+   "lego": "ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ | about doing something similar",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0100L01U04",
+     "role": "use",
+     "known": "ಅವಳು ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ ಯೋಚಿಸ್ತಿದ್ದಾಳೆ",
+     "target": "she's thinking about doing something similar",
+     "untaught": [
+      "she's"
+     ]
+    }
+   ]
+  },
+  "S0101L01": {
+   "lego": "ಈ ಭಾಷೆಯ ಬಗ್ಗೆ | about this language",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0101L01U05",
+     "role": "use",
+     "known": "ಅವಳು ಈ ಭಾಷೆಯ ಬಗ್ಗೆ ಕೇಳಿದಳು",
+     "target": "she asked about this language",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0107L01": {
+   "lego": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ | what you were doing",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0107L01U05",
+     "role": "use",
+     "known": "ನೀವು ಏನು ಮಾಡ್ತಿದ್ದೀರಿ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+     "target": "she asked what you were doing",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0111L02": {
+   "lego": "ನಮ್ಮ ಮೆದುಳನ್ನ | our brain",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 15,
+   "avg_known_chars": 19,
+   "rows": [
+    {
+     "row": "S0111L02U04",
+     "role": "use",
+     "known": "ನಮ್ಮ ಮೆದುಳು ಕಷ್ಟಪಟ್ಟು ಕೆಲಸ ಮಾಡುತ್ತೆ",
+     "target": "our brain works hard",
+     "untaught": [
+      "works"
+     ]
+    },
+    {
+     "row": "S0111L02U05",
+     "role": "use",
+     "known": "ನಮ್ಮ ಮೆದುಳು ತುಂಬಾ ಕಲಿಯುತ್ತೆ",
+     "target": "our brain learns a lot",
+     "untaught": [
+      "learns"
+     ]
+    }
+   ]
+  },
+  "S0116L01": {
+   "lego": "ನಾನು ಮಾಡಬಹುದಾದ | I could make",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 22,
+   "rows": [
+    {
+     "row": "S0116L01U01",
+     "role": "use",
+     "known": "ನಾನು ಒಂದು ತಪ್ಪು ಮಾಡಬಹುದು",
+     "target": "I could make a mistake",
+     "untaught": [
+      "mistake"
+     ]
+    }
+   ]
+  },
+  "S0122L03": {
+   "lego": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ | how it's going",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0122L03U04",
+     "role": "use",
+     "known": "ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+     "target": "she asked how it's going",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0126L02": {
+   "lego": "ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ | the shape of my brain",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0126L02U05",
+     "role": "use",
+     "known": "ಇದು ನನ್ನ ಮೆದುಳಿನ ಆಕಾರವನ್ನ ಬದಲಾಯಿಸುತ್ತಾ?",
+     "target": "does this change the shape of my brain?",
+     "untaught": [
+      "does"
+     ]
+    }
+   ]
+  },
+  "S0128L02": {
+   "lego": "ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ | like someone",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 21,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0128L02U02",
+     "role": "use",
+     "known": "ಅವನು ನನಗೆ ಗೊತ್ತಿರೋ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ ಇದ್ದಾನೆ",
+     "target": "he's like someone I know",
+     "untaught": [
+      "he's"
+     ]
+    },
+    {
+     "row": "S0128L02U03",
+     "role": "use",
+     "known": "ಅವಳು ನಾನು ಹಿಂದೆ ಗೊತ್ತಿದ್ದ ಯಾರೋ ಒಬ್ಬರ ಹಾಗೆ ಇದ್ದಾಳೆ",
+     "target": "she's like someone I used to know",
+     "untaught": [
+      "she's"
+     ]
+    }
+   ]
+  },
+  "S0130L02": {
+   "lego": "ಅವನು ನನ್ನ ಸ್ನೇಹಿತ | he's my friend",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 16,
+   "avg_known_chars": 20,
+   "rows": [
+    {
+     "row": "S0130L02U04",
+     "role": "use",
+     "known": "ಅವನು ನನ್ನ ಸ್ನೇಹಿತ ಮತ್ತು ನನಗೆ ಅವನು ಇಷ್ಟ",
+     "target": "he's my friend and I like him",
+     "untaught": [
+      "him"
+     ]
+    }
+   ]
+  },
+  "S0132L01": {
+   "lego": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ | what she was saying",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0132L01U04",
+     "role": "use",
+     "known": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದು ನನಗೆ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳೋಕೆ ಆಗಲಿಲ್ಲ",
+     "target": "I couldn't understand what she was saying",
+     "untaught": [
+      "couldn't"
+     ]
+    }
+   ]
+  },
+  "S0138L04": {
+   "lego": "ಇದೇ | this was",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0138L04U05",
+     "role": "use",
+     "known": "ನಾವು ಭೇಟಿಯಾದ ಜಾಗ ಇದೇ",
+     "target": "this was where we met",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0146L02": {
+   "lego": "ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ | since we tried",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0146L02U05",
+     "role": "use",
+     "known": "ನಾವು ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ತುಂಬಾ ಬದಲಾಗಿದೆ",
+     "target": "since we tried a lot has changed",
+     "untaught": [
+      "has",
+      "changed"
+     ]
+    }
+   ]
+  },
+  "S0147L02": {
+   "lego": "ನೋಡಿದಾಗ | when she saw",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 29,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0147L02U02",
+     "role": "use",
+     "known": "ಅವಳು ನನ್ನನ್ನ ನೋಡಿದಾಗ ಸಹಾಯ ಮಾಡಿದಳು",
+     "target": "when she saw me she helped",
+     "untaught": [
+      "helped"
+     ]
+    },
+    {
+     "row": "S0147L02U05",
+     "role": "use",
+     "known": "ಅವಳು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದಾಗ ಸಹಾಯ ಮಾಡಿದಳು",
+     "target": "when she saw me feeling nervous she helped",
+     "untaught": [
+      "nervous",
+      "helped"
+     ]
+    }
+   ]
+  },
+  "S0147L03": {
+   "lego": "ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ | me feeling nervous",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0147L03U02",
+     "role": "use",
+     "known": "ಅವಳು ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದಾಗ ಸಹಾಯ ಮಾಡಿದಳು",
+     "target": "when she saw me feeling nervous she helped",
+     "untaught": [
+      "helped"
+     ]
+    }
+   ]
+  },
+  "S0148L02": {
+   "lego": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ | when I couldn't answer",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0148L02U03",
+     "role": "use",
+     "known": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ಅವಳು ಸಹಾಯ ಮಾಡಿದಳು",
+     "target": "when I couldn't answer she helped me",
+     "untaught": [
+      "helped"
+     ]
+    }
+   ]
+  },
+  "S0150L02": {
+   "lego": "ನಿಮ್ಮ ಹೆಸರು ಏನು | what your name is",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 22,
+   "avg_known_chars": 23,
+   "rows": [
+    {
+     "row": "S0150L02U05",
+     "role": "use",
+     "known": "ನಿಮ್ಮ ಹೆಸರು ಏನು ಅಂತ ಅವಳು ಕೇಳಿದಳು",
+     "target": "she asked what your name is",
+     "untaught": [
+      "asked"
+     ]
+    }
+   ]
+  },
+  "S0152L02": {
+   "lego": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ | if I had known",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0152L02U01",
+     "role": "use",
+     "known": "ನನಗೆ ಗೊತ್ತಿದ್ದಿದ್ರೆ ನಾನು ಸಹಾಯ ಮಾಡ್ತಿದ್ದೆ",
+     "target": "if I had known I would have helped",
+     "untaught": [
+      "helped"
+     ]
+    }
+   ]
+  },
+  "S0155L02": {
+   "lego": "ಕೆಲವು ನಿಮಿಷ | a few minutes",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 18,
+   "avg_known_chars": 18,
+   "rows": [
+    {
+     "row": "S0155L02U05",
+     "role": "use",
+     "known": "ಅದಕ್ಕೆ ಕೆಲವು ನಿಮಿಷ ಬೇಕು",
+     "target": "it takes a few minutes",
+     "untaught": [
+      "takes"
+     ]
+    }
+   ]
+  },
+  "S0160L01": {
+   "lego": "ಈ ಪದವನ್ನ | this word",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 16,
+   "rows": [
+    {
+     "row": "S0160L01U05",
+     "role": "use",
+     "known": "ಈ ಪದ ಏನು ಅರ್ಥ?",
+     "target": "what does this word mean?",
+     "untaught": [
+      "does"
+     ]
+    }
+   ]
+  },
+  "S0164L01": {
+   "lego": "ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ | an interesting book",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 23,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0164L01U05",
+     "role": "use",
+     "known": "ನಾನು ಒಂದು ಆಸಕ್ತಿಕರ ಪುಸ್ತಕ ಓದ್ತಿದ್ದೇನೆ",
+     "target": "I'm reading an interesting book",
+     "untaught": [
+      "reading"
+     ]
+    }
+   ]
+  },
+  "S0184L01": {
+   "lego": "ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ | a while ago",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 19,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0184L01U04",
+     "role": "use",
+     "known": "ನಾವು ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ಭೇಟಿಯಾದೆವು",
+     "target": "we met a while ago",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0205L01": {
+   "lego": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ | the word I was trying to say",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 33,
+   "rows": [
+    {
+     "row": "S0205L01U03",
+     "role": "use",
+     "known": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ ಪದವನ್ನ ನನಗೆ ಸಿಕ್ತು",
+     "target": "I found the word I was trying to say",
+     "untaught": [
+      "found"
+     ]
+    }
+   ]
+  },
+  "S0216L01": {
+   "lego": "ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ | a few friends",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 20,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0216L01U02",
+     "role": "use",
+     "known": "ನಾನು ಕೆಲವು ಸ್ನೇಹಿತರನ್ನ ಭೇಟಿಯಾದೆ",
+     "target": "I met a few friends",
+     "untaught": [
+      "met"
+     ]
+    },
+    {
+     "row": "S0216L01U05",
+     "role": "use",
+     "known": "ಕೆಲವು ಸ್ನೇಹಿತರು ಬಂದ್ರು",
+     "target": "a few friends came",
+     "untaught": [
+      "came"
+     ]
+    }
+   ]
+  },
+  "S0220L01": {
+   "lego": "ಸ್ವಲ್ಪ ಟಿವಿ | a bit of television",
+   "before": "ok",
+   "delete": 3,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 2
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 33,
+   "avg_known_chars": 25,
+   "rows": [
+    {
+     "row": "S0220L01U01",
+     "role": "use",
+     "known": "ನಾನು ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದೆ",
+     "target": "I watched a bit of television",
+     "untaught": [
+      "watched"
+     ]
+    },
+    {
+     "row": "S0220L01U04",
+     "role": "use",
+     "known": "ನಾನು ನಿನ್ನೆ ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದೆ",
+     "target": "I watched a bit of television yesterday",
+     "untaught": [
+      "watched"
+     ]
+    },
+    {
+     "row": "S0220L01U05",
+     "role": "use",
+     "known": "ನಾವು ಸ್ವಲ್ಪ ಟಿವಿ ನೋಡಿದೆವು",
+     "target": "we watched a bit of television",
+     "untaught": [
+      "watched"
+     ]
+    }
+   ]
+  },
+  "S0233L02": {
+   "lego": "ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ | who knows your sister",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 34,
+   "avg_known_chars": 39,
+   "rows": [
+    {
+     "row": "S0233L02U05",
+     "role": "use",
+     "known": "ನಿಮ್ಮ ಸಹೋದರಿಯನ್ನ ಗೊತ್ತಿರೋ ಒಬ್ಬ ಹೆಂಗಸನ್ನ ನಾನು ಭೇಟಿಯಾದೆ",
+     "target": "I met a woman who knows your sister",
+     "untaught": [
+      "met"
+     ]
+    }
+   ]
+  },
+  "S0266L01": {
+   "lego": "ಅವನು ಹಳೆಯ ಸ್ನೇಹಿತ | he was an old friend",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0266L01U05",
+     "role": "use",
+     "known": "ಅವನು ಕೆಲಸದ ಹಳೆಯ ಸ್ನೇಹಿತ",
+     "target": "he was an old friend from work",
+     "untaught": [
+      "from"
+     ]
+    }
+   ]
+  },
+  "S0273L02": {
+   "lego": "ತುಂಬಾ ಕೆಲಸ ಇದೆ | too much work",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 26,
+   "rows": [
+    {
+     "row": "S0273L02U04",
+     "role": "use",
+     "known": "ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target": "there's too much work",
+     "untaught": [
+      "there's"
+     ]
+    }
+   ]
+  },
+  "S0277L02": {
+   "lego": "ಒಂದು ಮುಖ್ಯ ಸಭೆ | an important meeting",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0277L02U05",
+     "role": "use",
+     "known": "ಒಂದು ಮುಖ್ಯ ಸಭೆ ಇದೆ",
+     "target": "there's an important meeting",
+     "untaught": [
+      "there's"
+     ]
+    }
+   ]
+  },
+  "S0279L01": {
+   "lego": "ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ | there wasn't much time left",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 32,
+   "avg_known_chars": 28,
+   "rows": [
+    {
+     "row": "S0279L01U05",
+     "role": "use",
+     "known": "ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ, ಹಾಗಾಗಿ ನಾವು ಮುಗಿಸಿದೆವು",
+     "target": "there wasn't much time left so we finished",
+     "untaught": [
+      "finished"
+     ]
+    }
+   ]
+  },
+  "S0280L01": {
+   "lego": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಮಾಡಬೇಕಿತ್ತು | no I only had to do",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0280L01U01",
+     "role": "use",
+     "known": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಒಂದು ಕೆಲಸ ಮಾಡಬೇಕಿತ್ತು",
+     "target": "no I only had to do one thing",
+     "untaught": [
+      "one"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}
