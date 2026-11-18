@@ -41,7 +41,7 @@ noline = {}
 for row in summary['log']:
     if row.get('skipped'): noline[row['lang']] = row.get('error') or 'no course, instruction or pod line in this language'
     for f in row.get('failed', []):
-        failed[(row['lang'], f['voiceId'])] = 'Cartesia says the voice no longer exists (voice_not_found)' if 'voice_not_found' in f['error'] else f['error'][:120]
+        failed[(row['lang'], f['voiceId'])] = 'GONE — Cartesia has withdrawn this voice (voice_not_found), it cannot be cast' if 'voice_not_found' in f['error'] else f['error'][:120]
     if row.get('stopped') and row.get('missingAfter'): noline.setdefault(row['lang'] + ':stopped', row['stopped'])
 
 final = {}
@@ -78,7 +78,7 @@ def player(code, name, g):
         return f'estate clip [▶]({url})'
     why = failed.get((code, vid)) or noline.get(code) or noline.get(code + ':stopped') or 'not sampled'
     stats['unheard'].append((code, name, why))
-    return f'UNHEARD — {why}'
+    return why if why.startswith('GONE') else f'UNHEARD — {why}'
 
 # ── HTML → markdown, section by section ────────────────────────────────────────
 body = open(os.path.join(work, 'p711.body.html')).read()
