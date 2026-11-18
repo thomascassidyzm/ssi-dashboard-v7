@@ -222,7 +222,7 @@
     "course": "zho_for_jpn",
     "row": "S0283L02",
     "verdict": "AGREE",
-    "reason": "Replace the English intrusion with the already introduced 中文, retaining not-new status. Availability at S0001L03 and absence of a new duplicate answer need live confirmation.",
+    "reason": "Replace the English intrusion with 中文, confirmed live as already taught at S0001L03; set is_new false. The separate ambiguous USE-row dispute is S0283L02U04.",
     "source": "Course S0001L03 (plan citation); canon P1, repeated-LEGO both-sides rule.",
     "proposed": null
   },
@@ -262,15 +262,15 @@
     "course": "deu_for_eng",
     "row": "S0513L03B01",
     "verdict": "AGREE",
-    "reason": "The quoted current row already has reflexive mich, so no new edit is justified. AGREE is textual acceptance of already-fixed, not a claim that I have independently re-read production.",
-    "source": "Duden, sich bewegen: https://www.duden.de/rechtschreibung/bewegen_bewegt ; plan S0513L03B01 quoted current text.",
+    "reason": "The unchanged merged dump tool confirms the live row already has reflexive mich. No new edit is justified.",
+    "source": "Duden, sich bewegen: https://www.duden.de/rechtschreibung/bewegen_bewegt ; independent live Popty S0513L03B01 after 14:10Z.",
     "proposed": null
   },
   {
     "course": "deu_ch_for_eng",
     "row": "S0642L01U03",
     "verdict": "AGREE",
-    "reason": "The original nominative/accusative Sie cannot be the object of help. Making Sie the formal subject and mir the dative object retains the LEGO; madam marks register and the question is a full sentence. Exact taught forms chönd/mir remain a live-evidence gap.",
+    "reason": "Making Sie the formal subject and mir the dative object repairs helfen while retaining its LEGO. Madam marks register; sequential live-dump inspection confirms the replacement uses taught target forms, including chönd (S0445L01).",
     "source": "Duden, helfen, examples with mir/dir and dative objects: https://www.duden.de/rechtschreibung/helfen ; canon K10/P17; course S0512 contrasts informal chasch (plan citation).",
     "proposed": null
   },
@@ -606,7 +606,7 @@
     "course": "por_for_eng",
     "row": "S0572L03U03",
     "verdict": "AGREE",
-    "reason": "Same natural indirect question and proclisis; subject ele agrees with he. Availability of quer saber is documentary until live checked.",
+    "reason": "Natural indirect question and proclisis; ele agrees with he. Independent sequential live-dump inspection confirms target availability and finds no edited-prompt clash.",
     "source": "Cunha and Cintra, Nova Gramática do Português Contemporâneo, colocação dos pronomes átonos; course S0453L02U03 (plan citation).",
     "proposed": null
   },
@@ -1124,7 +1124,7 @@
     "course": "spa_for_eng",
     "row": "S0055L01U01",
     "verdict": "AGREE",
-    "reason": "Me gusta plus infinitive is natural and keeps despertarme. Adding muy avoids the basket’s stated duplicate; it must already be taught at this round, to be checked live. Gender of cansado in each spoken voice remains unverified.",
+    "reason": "Me gusta plus infinitive is natural and keeps despertarme. Adding muy avoids the stated duplicate and is available from live S0013L01 Muy bien. Gender agreement in each spoken voice remains unverified.",
     "source": "RAE, DPD, gustar; course S0055L01B06 (plan citation); canon P1/P16/P17.",
     "proposed": null
   },
@@ -1149,7 +1149,7 @@
     "row": "S0216L04U14",
     "verdict": "DISPUTE",
     "reason": "The rewrite correctly uses me gusta with an infinitive but retains mucho, which no LEGO/component has taught by seed 216. The earlier muy does not license mucho (K21). Leave out, or drop really/mucho on both sides after a collision check.",
-    "source": "Independent live Popty spa_for_eng dump after 14:10Z; S0013L01 teaches Muy bien; S0216L04U14 retains mucho; no earlier teaching LEGO/component for mucho. Canon P1/K21/K14.",
+    "source": "Independent live Popty spa_for_eng dump after 14:10Z; S0013L01 teaches Muy bien; S0216L04U14 retains mucho; no earlier teaching LEGO/component for mucho. Canon P1/K21/K14. First teaching of mucho is S0218L03, two seeds too late.",
     "proposed": null
   },
   {
@@ -1164,7 +1164,7 @@
     "course": "spa_for_eng",
     "row": "S0586L01U01",
     "verdict": "AGREE",
-    "reason": "Pedir is a natural request for food, and could I have functions as an ordering request in English. It does not require an invented tener construction. Exact prior teaching of pedir remains to be checked live.",
+    "reason": "Pedir is a natural request for food; could I have functions as an ordering request in English. Pedir is confirmed live at S0212L02 and adds no untaught target form.",
     "source": "RAE, DLE, pedir: https://dle.rae.es/pedir ; canon K16/P1; course S0586L01U01.",
     "proposed": null
   },
