@@ -1,0 +1,47 @@
+{
+ "seed": 521,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "મને બીક છે કે આપણને હકીકતો ખબર નથી",
+     "I'm afraid that we don't know the facts",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "હું જાણતો નથી કે શા માટે આપણને અહીં રહેવું પડ્યું",
+     "I don't know why we needed to stay here",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "મને બીક છે કે તમે મારું નામ ભૂલી જશો",
+     "I'm afraid that you'll forget my name",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "મને બીક છે કે તમે ચાવી ભૂલી જશો",
+     "I'm afraid that you'll forget the keys",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

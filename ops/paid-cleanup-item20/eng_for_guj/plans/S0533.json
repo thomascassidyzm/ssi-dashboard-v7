@@ -1,0 +1,49 @@
+{
+ "seed": 533,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "એ સાચું નથી કે તેણી લગભગ ખોવાઈ ગઈ",
+     "it isn't true that she almost got lost",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "તેણી મદદ કરવા માગતી હતી",
+     "she wanted to help",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "તમે જે દરેક શબ્દ કહો તે હું સમજું છું",
+     "I understand every word you say",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "તેણી મને સાંભળશે નહીં",
+     "she won't listen to me",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0533L02B01": "સમજું|first-person form of taught સમજો/સમજે"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

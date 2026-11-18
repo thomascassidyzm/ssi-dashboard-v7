@@ -1,0 +1,71 @@
+{
+ "seed": 511,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "શું તમે સમાચાર સાંભળ્યા?",
+     "have you heard the news?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "હું ઓફિસ માં એક મિત્રની રાહ જોઈ રહ્યો છું",
+     "I'm waiting for a friend in the office",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "હું ઓફિસ માં બધાને ઓળખું છું",
+     "I know everyone in the office",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "બધા થાકી ગયા હતા",
+     "everyone was tired",
+     null,
+     null
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "અમારે ટોચ સુધી પહોંચવા માટે વધારે સમય જોઈએ",
+     "we need more time to reach the top",
+     null,
+     null
+    ]
+   }
+  },
+  "L05": {
+   "update": {
+    "B01": [
+     "મને ખાતરી છે કે સમાચાર ઘણા કલાક લાગ્યા",
+     "I'm sure the news took several hours",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0511L01B01": "સાંભળ્યા|plural agreement of taught સાંભળ્યું with સમાચાર",
+  "S0511L02B01": "મિત્રની|genitive of taught મિત્ર",
+  "S0511L03B01": "બધાને|object form of the LEGO's બધા"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

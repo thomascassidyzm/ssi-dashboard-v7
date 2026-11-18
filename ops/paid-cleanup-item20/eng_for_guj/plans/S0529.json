@@ -1,0 +1,44 @@
+{
+ "seed": 529,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "શું તમે બધા આવતા અઠવાડિયે હાથ ઉઠાવી શકો?",
+     "can you all put your hands up next week?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "શું તમે બધા છ વાગ્યે હાથ ઉઠાવી શકો?",
+     "can you all put your hands up at six o'clock?",
+     null,
+     null
+    ],
+    [
+     "build",
+     "શું તમે બધા સપ્તાહ-અંતે હાથ ઉઠાવી શકો?",
+     "can you all put your hands up at the weekend?",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "શું તમે બધા હવે હાથ ઉઠાવી શકો?",
+     "can you all put your hands up now?",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,47 @@
+{
+ "seed": 528,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "હું કદાચ ઘણો વ્યસ્ત છું",
+     "I'm probably too busy",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "હું કદાચ તૈયાર નથી",
+     "I'm probably not ready",
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "તે બીજા ઓરડામાં બેઠો છે",
+     "he's sitting in another room",
+     null,
+     null
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "મારે ચાવી રાખવી જોઈએ",
+     "I'm supposed to keep the keys",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
