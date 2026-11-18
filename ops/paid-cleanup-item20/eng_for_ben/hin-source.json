@@ -1,0 +1,12338 @@
+{
+"course": "eng_for_ben",
+"hin_snapshot": "2026-11-18T13:23:41.239Z",
+"baskets": [
+{
+"lego": "S0001L01",
+"seed": 1,
+"known": "আমি চাই",
+"target": "I want",
+"type": "M",
+"real_builds": 0,
+"uses": 0,
+"playable": 0,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": []
+},
+{
+"lego": "S0001L02",
+"seed": 1,
+"known": "কথা বলতে",
+"target": "to speak",
+"type": "M",
+"real_builds": 0,
+"uses": 1,
+"playable": 1,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [
+{
+"hin_id": "S0001L02B01",
+"hi": "बात करना चाहती हूँ",
+"en": "want to speak",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0474L02",
+"seed": 474,
+"known": "হিসেবেও",
+"target": "even",
+"type": "A",
+"real_builds": 0,
+"uses": 1,
+"playable": 1,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "hin LEGO is 'as a free offer'"
+},
+{
+"lego": "S0002L01",
+"seed": 2,
+"known": "শেখা",
+"target": "to learn",
+"type": "A",
+"real_builds": 0,
+"uses": 2,
+"playable": 2,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": []
+},
+{
+"lego": "S0003L01",
+"seed": 3,
+"known": "কীভাবে",
+"target": "how",
+"type": "A",
+"real_builds": 0,
+"uses": 2,
+"playable": 2,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "hin LEGO is 'how to speak'"
+},
+{
+"lego": "S0470L03",
+"seed": 470,
+"known": "থামার আগে",
+"target": "before we stop",
+"type": "M",
+"real_builds": 0,
+"uses": 4,
+"playable": 4,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0002L02",
+"seed": 2,
+"known": "চেষ্টা করছি",
+"target": "I'm trying to",
+"type": "M",
+"real_builds": 0,
+"uses": 5,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "hin LEGO is 'I'm trying'"
+},
+{
+"lego": "S0003L02",
+"seed": 3,
+"known": "যতটা সম্ভব ঘন ঘন",
+"target": "as often as possible",
+"type": "M",
+"real_builds": 0,
+"uses": 5,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": []
+},
+{
+"lego": "S0498L02",
+"seed": 498,
+"known": "প্রবেশদ্বার",
+"target": "the entrance",
+"type": "A",
+"real_builds": 0,
+"uses": 5,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "hin LEGO is 'inside the entrance'"
+},
+{
+"lego": "S0551L01",
+"seed": 551,
+"known": "গির্জাটা",
+"target": "the church",
+"type": "A",
+"real_builds": 0,
+"uses": 5,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [
+{
+"hin_id": "S0551L01B01",
+"hi": "यह चर्च हो सकता है।",
+"en": "it might be the church",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0551L01B02",
+"hi": "यह चर्च लगता है।",
+"en": "that sounds like the church",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0551L01B03",
+"hi": "मैं चर्च का इंतज़ार कर रही हूँ।",
+"en": "I'm waiting for the church",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0577L01",
+"seed": 577,
+"known": "হাসপাতাল",
+"target": "the hospital",
+"type": "A",
+"real_builds": 0,
+"uses": 5,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "hin LEGO is 'we've been waiting for'"
+},
+{
+"lego": "S0590L01",
+"seed": 590,
+"known": "স্টেশন",
+"target": "the station",
+"type": "A",
+"real_builds": 0,
+"uses": 5,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "hin LEGO is 'I saw'"
+},
+{
+"lego": "S0559L01",
+"seed": 559,
+"known": "পথটা",
+"target": "the path",
+"type": "A",
+"real_builds": 0,
+"uses": 9,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 3,
+"src": [],
+"why": "hin LEGO is 'have you found'"
+},
+{
+"lego": "S0001L03",
+"seed": 1,
+"known": "ইংরেজি",
+"target": "English",
+"type": "A",
+"real_builds": 1,
+"uses": 2,
+"playable": 3,
+"bare": [],
+"need": 2,
+"src": []
+},
+{
+"lego": "S0001L04",
+"seed": 1,
+"known": "তোমার সাথে",
+"target": "with you",
+"type": "M",
+"real_builds": 1,
+"uses": 3,
+"playable": 4,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": []
+},
+{
+"lego": "S0001L05",
+"seed": 1,
+"known": "এখন",
+"target": "now",
+"type": "A",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [],
+"need": 2,
+"src": [
+{
+"hin_id": "S0001L05B02",
+"hi": "अब आपके साथ",
+"en": "with you now",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0092L01",
+"seed": 92,
+"known": "একটু সময়ের জন্য",
+"target": "for a while",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01",
+"B02"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'to keep on doing this'"
+},
+{
+"lego": "S0203L01",
+"seed": 203,
+"known": "যদি বলতাম",
+"target": "if I asked",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'what would you do'"
+},
+{
+"lego": "S0214L02",
+"seed": 214,
+"known": "ভালো সময় কাটানো",
+"target": "have a good time",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'at the weekend'"
+},
+{
+"lego": "S0224L02",
+"seed": 224,
+"known": "শেখা শুরু করেছে",
+"target": "started to learn",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [
+{
+"hin_id": "S0224L02B01",
+"hi": "अंग्रेज़ी सीखना शुरू किया है",
+"en": "started to learn English",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0224L02B02",
+"hi": "अब सीखना शुरू किया है",
+"en": "started to learn now",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0224L02B03",
+"hi": "बोलना सीखना शुरू किया है",
+"en": "started to learn to speak",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0247L01",
+"seed": 247,
+"known": "মনে করতাম",
+"target": "I thought",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": []
+},
+{
+"lego": "S0251L02",
+"seed": 251,
+"known": "যতক্ষণ না আমরা শেষ করি",
+"target": "until after we finish",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [
+{
+"hin_id": "S0251L02B01",
+"hi": "हमारे पूरा करने तक मैं आपका इंतज़ार नहीं करूँगी।",
+"en": "I'm not going to wait for you until after we finish",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0251L02B02",
+"hi": "हमारे पूरा करने तक मैं अपने पैसे वापस नहीं लेना चाहता।",
+"en": "I don't want my money back until after we finish",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0251L02B03",
+"hi": "हमारे पूरा करने तक मैं जवाब नहीं जानना चाहती।",
+"en": "I don't want to find out the answer until after we finish",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0260L01",
+"seed": 260,
+"known": "সামান্যতম ধারণাও",
+"target": "faintest idea",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'I don't have the faintest idea'"
+},
+{
+"lego": "S0262L01",
+"seed": 262,
+"known": "যে লোকের সাথে কথা বলছিলে",
+"target": "that man you were talking to",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'who was that man'"
+},
+{
+"lego": "S0270L01",
+"seed": 270,
+"known": "চিন্তা করছি",
+"target": "I'm worried",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'because'"
+},
+{
+"lego": "S0270L02",
+"seed": 270,
+"known": "দেরি হয়ে যাবে",
+"target": "going to be late",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'I'm worried that'"
+},
+{
+"lego": "S0300L01",
+"seed": 300,
+"known": "অবন্ধুত্বপূর্ণ মনে হতে চায় না",
+"target": "doesn't want to seem unfriendly",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'she doesn't want'"
+},
+{
+"lego": "S0383L01",
+"seed": 383,
+"known": "বাগান",
+"target": "the garden",
+"type": "A",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'yes'"
+},
+{
+"lego": "S0387L02",
+"seed": 387,
+"known": "আমি মনে করিনি",
+"target": "I didn't think",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [
+{
+"hin_id": "S0387L02B01",
+"hi": "मुझे नहीं लगा कि यह अहम है।",
+"en": "I didn't think it's important",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0387L02B02",
+"hi": "मुझे नहीं लगा कि वह चुप था।",
+"en": "I didn't think he was quiet",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0387L02B03",
+"hi": "मुझे नहीं लगा कि वह वहाँ होगी।",
+"en": "I didn't think she's going to be there",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0424L02",
+"seed": 424,
+"known": "সবার সময়",
+"target": "everybody's time",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'they're wasting'"
+},
+{
+"lego": "S0489L01",
+"seed": 489,
+"known": "কড়া",
+"target": "strong",
+"type": "A",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'a strong cup of coffee'"
+},
+{
+"lego": "S0569L01",
+"seed": 569,
+"known": "ঠিক করেছ",
+"target": "have you decided",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [
+{
+"hin_id": "S0569L01B01",
+"hi": "क्या आपने फ़ैसला कर लिया है कि क्या होता है?",
+"en": "have you decided what happens?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0569L01B02",
+"hi": "क्या आपने फ़ैसला कर लिया है कि आगे क्या होने वाला है?",
+"en": "have you decided what's going to come next?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0569L01B03",
+"hi": "क्या आपने फ़ैसला कर लिया है कि आप भुगतान कैसे करेंगे?",
+"en": "have you decided how you're going to pay?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0584L01",
+"seed": 584,
+"known": "পাহাড়",
+"target": "the mountains",
+"type": "A",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'to wake up every morning'"
+},
+{
+"lego": "S0589L01",
+"seed": 589,
+"known": "বাসটা",
+"target": "the bus",
+"type": "A",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'she told me'"
+},
+{
+"lego": "S0606L03",
+"seed": 606,
+"known": "এখন যা জানি",
+"target": "what I know now",
+"type": "M",
+"real_builds": 1,
+"uses": 5,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'I'd have waited'"
+},
+{
+"lego": "S0470L01",
+"seed": 470,
+"known": "উঠতে চাও",
+"target": "want to climb",
+"type": "M",
+"real_builds": 1,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'how high do you want to climb'"
+},
+{
+"lego": "S0560L01",
+"seed": 560,
+"known": "সৈকত",
+"target": "the beach",
+"type": "A",
+"real_builds": 1,
+"uses": 9,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 2,
+"src": [],
+"why": "hin LEGO is 'it goes down to the beach'"
+},
+{
+"lego": "S0639L01",
+"seed": 639,
+"known": "আপনার সাথে স্যার",
+"target": "with you sir",
+"type": "M",
+"real_builds": 2,
+"uses": 0,
+"playable": 2,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'with you'"
+},
+{
+"lego": "S0664L01",
+"seed": 664,
+"known": "তোমরা কি সবাই তৈরি",
+"target": "are you all ready",
+"type": "M",
+"real_builds": 2,
+"uses": 0,
+"playable": 2,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0664L01B01",
+"hi": "अभी क्या आप सब तैयार हैं?",
+"en": "are you all ready at the moment?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0664L01B02",
+"hi": "कुछ मिनटों में क्या आप सब तैयार हैं?",
+"en": "are you all ready in a few minutes?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0664L01B03",
+"hi": "आज सुबह क्या आप सब तैयार हैं?",
+"en": "are you all ready this morning?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0666L01",
+"seed": 666,
+"known": "তোমরা সবাই কী মনে কর",
+"target": "what do you all think",
+"type": "M",
+"real_builds": 2,
+"uses": 0,
+"playable": 2,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0666L01B01",
+"hi": "अभी आप सब क्या सोचते हैं?",
+"en": "what do you all think at the moment?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0666L01B02",
+"hi": "आज शाम आप सब क्या सोचते हैं?",
+"en": "what do you all think this evening?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0666L01B03",
+"hi": "सप्ताहांत में आप सब क्या सोचते हैं?",
+"en": "what do you all think at the weekend?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0667L01",
+"seed": 667,
+"known": "তোমাদের কি সবার আপত্তি আছে",
+"target": "do you all mind",
+"type": "M",
+"real_builds": 2,
+"uses": 0,
+"playable": 2,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0667L01B01",
+"hi": "अभी आप सबको आपत्ति तो नहीं है?",
+"en": "do you all mind at the moment?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0667L01B02",
+"hi": "आज शाम आप सबको आपत्ति तो नहीं है?",
+"en": "do you all mind this evening?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0667L01B03",
+"hi": "सप्ताहांत में आप सबको आपत्ति तो नहीं है?",
+"en": "do you all mind at the weekend?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0590L02",
+"seed": 590,
+"known": "স্টেশন ছেড়ে যেতে দেখেছিলাম",
+"target": "saw leaving the station",
+"type": "M",
+"real_builds": 2,
+"uses": 1,
+"playable": 3,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the last bus'"
+},
+{
+"lego": "S0621L02",
+"seed": 621,
+"known": "তাকে বলতে সাহস করতাম না",
+"target": "wouldn't have dared to tell her",
+"type": "M",
+"real_builds": 2,
+"uses": 1,
+"playable": 3,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to tell'"
+},
+{
+"lego": "S0624L02",
+"seed": 624,
+"known": "দারুণ হবে, দয়া করে",
+"target": "that would be great please",
+"type": "M",
+"real_builds": 2,
+"uses": 1,
+"playable": 3,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0630L02",
+"seed": 630,
+"known": "দয়া করে কিছু পান করতে",
+"target": "something to drink please",
+"type": "M",
+"real_builds": 2,
+"uses": 1,
+"playable": 3,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0644L01",
+"seed": 644,
+"known": "আপনি কি এটা বলতে পারবেন",
+"target": "could you say that",
+"type": "M",
+"real_builds": 2,
+"uses": 1,
+"playable": 3,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0644L01B02",
+"hi": "क्या आप वह कह सकती हैं, मैडम?",
+"en": "could you say that madam?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0644L01B03",
+"hi": "अभी क्या आप वह कह सकते हैं?",
+"en": "could you say that at the moment?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0649L01",
+"seed": 649,
+"known": "আপনি কি তৈরি",
+"target": "are you ready",
+"type": "M",
+"real_builds": 2,
+"uses": 1,
+"playable": 3,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": []
+},
+{
+"lego": "S0652L01",
+"seed": 652,
+"known": "আপনার কী দরকার",
+"target": "what do you need",
+"type": "M",
+"real_builds": 2,
+"uses": 1,
+"playable": 3,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what do you need sir'"
+},
+{
+"lego": "S0530L01",
+"seed": 530,
+"known": "যাতে আমি গুনতে পারি",
+"target": "so I can count them",
+"type": "M",
+"real_builds": 2,
+"uses": 2,
+"playable": 4,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0530L01B01",
+"hi": "क्या आप सब अपने हाथ उठा सकते हैं ताकि मैं उन्हें गिन सकूँ?",
+"en": "can you all put your hands up so I can count them?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0530L01B02",
+"hi": "मैं छह बजे दौड़ूँगी ताकि मैं उन्हें गिन सकूँ।",
+"en": "I'm going to run at six o'clock so I can count them",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0530L01B03",
+"hi": "मैं घास पर दौड़ूँगा ताकि मैं उन्हें गिन सकूँ।",
+"en": "I'm going to run across the grass so I can count them",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0538L02",
+"seed": 538,
+"known": "এমন মনে হোক চাই না",
+"target": "don't want to seem as though",
+"type": "M",
+"real_builds": 2,
+"uses": 2,
+"playable": 4,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to seem as though'"
+},
+{
+"lego": "S0563L02",
+"seed": 563,
+"known": "আর বেশিক্ষণ",
+"target": "any longer",
+"type": "M",
+"real_builds": 2,
+"uses": 2,
+"playable": 4,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to keep going'"
+},
+{
+"lego": "S0246L01",
+"seed": 246,
+"known": "চেয়েছিলাম সে তোমাকে সাহায্য করুক",
+"target": "wanted her to help you",
+"type": "M",
+"real_builds": 2,
+"uses": 3,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wanted her to'"
+},
+{
+"lego": "S0505L01",
+"seed": 505,
+"known": "যাতে আমাকে পিছিয়ে না পড়তে হয়",
+"target": "so that I don't get left behind",
+"type": "M",
+"real_builds": 2,
+"uses": 3,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'so that'"
+},
+{
+"lego": "S0527L01",
+"seed": 527,
+"known": "অনুমান করো কে",
+"target": "guess who",
+"type": "M",
+"real_builds": 2,
+"uses": 3,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'guess'"
+},
+{
+"lego": "S0594L01",
+"seed": 594,
+"known": "খেলনা",
+"target": "toys",
+"type": "A",
+"real_builds": 2,
+"uses": 3,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I had to share'"
+},
+{
+"lego": "S0596L02",
+"seed": 596,
+"known": "চোখ বন্ধ করতে হবে",
+"target": "need to close my eyes",
+"type": "M",
+"real_builds": 2,
+"uses": 3,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0609L02",
+"seed": 609,
+"known": "কাজ হত",
+"target": "would have been",
+"type": "M",
+"real_builds": 2,
+"uses": 3,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0651L01",
+"seed": 651,
+"known": "আপনি কী মনে করেন",
+"target": "what do you think",
+"type": "M",
+"real_builds": 2,
+"uses": 3,
+"playable": 5,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0651L01B01",
+"hi": "इस बारे में आपका क्या ख़्याल है, मैडम?",
+"en": "what do you think about it madam?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0651L01B02",
+"hi": "उस जगह के बारे में आपका क्या ख़्याल है?",
+"en": "what do you think about that place?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0651L01B03",
+"hi": "फ़िल्म के बारे में आपका क्या ख़्याल है?",
+"en": "what do you think about the film?",
+"elsewhere_in_course": true
+}
+]
+},
+{
+"lego": "S0036L01",
+"seed": 36,
+"known": "বাধা দেওয়া",
+"target": "to interrupt",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we don't want'"
+},
+{
+"lego": "S0064L01",
+"seed": 64,
+"known": "সহজ",
+"target": "easy",
+"type": "A",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'isn't easy'"
+},
+{
+"lego": "S0199L01",
+"seed": 199,
+"known": "আগে কাজ করত",
+"target": "used to work",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'my friend'"
+},
+{
+"lego": "S0201L01",
+"seed": 201,
+"known": "জানতে চেয়েছিলাম",
+"target": "wanted to know",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we wanted to know'"
+},
+{
+"lego": "S0207L02",
+"seed": 207,
+"known": "যা করা দরকার ছিল",
+"target": "what you needed to do",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0207L02B02",
+"hi": "मैं वही भूल गई जो आपको करना था।",
+"en": "I've forgotten what you needed to do",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0207L02B03",
+"hi": "आपने आज वही किया जो आपको करना था।",
+"en": "you've done what you needed to do today",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0225L02",
+"seed": 225,
+"known": "পারলে",
+"target": "if he could",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0225L02B02",
+"hi": "वह आज आपको जवाब दे देता अगर वह दे सकता।",
+"en": "he would give you an answer today if he could",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0225L02B03",
+"hi": "मुझे लगता है कि वह आपको जवाब दे देता अगर वह दे सकता।",
+"en": "I think that he would give you an answer if he could",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0229L02",
+"seed": 229,
+"known": "পারলে সাহায্য করত",
+"target": "would help if she could",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'if she could'"
+},
+{
+"lego": "S0230L02",
+"seed": 230,
+"known": "চিনি যে কাজ করতে চায়",
+"target": "know who wants to work",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'a young man'"
+},
+{
+"lego": "S0231L02",
+"seed": 231,
+"known": "চিনি যে সাহায্য চাইতে চেয়েছিল",
+"target": "know who wanted to ask for help",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'who wanted'"
+},
+{
+"lego": "S0237L02",
+"seed": 237,
+"known": "চেয়েছিল আমি তোমাকে বলি",
+"target": "wanted me to tell you",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'before the weekend'"
+},
+{
+"lego": "S0238L01",
+"seed": 238,
+"known": "চেয়েছিল তুমি আমাকে বলো",
+"target": "wanted you to tell me",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you to tell me'"
+},
+{
+"lego": "S0239L02",
+"seed": 239,
+"known": "পড়তে পছন্দ করা",
+"target": "likes to read",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'likes'"
+},
+{
+"lego": "S0248L04",
+"seed": 248,
+"known": "আমার টাকা ফেরত",
+"target": "my money back",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I want'"
+},
+{
+"lego": "S0263L01",
+"seed": 263,
+"known": "তুমি কাকে বলছ",
+"target": "who you mean",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't know'"
+},
+{
+"lego": "S0272L01",
+"seed": 272,
+"known": "দারুণ ধারণা মনে হচ্ছে",
+"target": "sounds like a great idea",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'yes'"
+},
+{
+"lego": "S0282L01",
+"seed": 282,
+"known": "সমস্যা নয়",
+"target": "not a problem",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'no that's not a problem'"
+},
+{
+"lego": "S0296L02",
+"seed": 296,
+"known": "আরও একটু সময় দরকার",
+"target": "needed a little more time",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I need a little more time'"
+},
+{
+"lego": "S0308L02",
+"seed": 308,
+"known": "আমার মায়ের একজন বন্ধু",
+"target": "a friend of my mother",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she's a friend'"
+},
+{
+"lego": "S0374L02",
+"seed": 374,
+"known": "আমি মনে করেছিলাম",
+"target": "I thought",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0374L02B02",
+"hi": "मेरे ख़्याल से वह चुप था।",
+"en": "I thought he was quiet",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0374L02B03",
+"hi": "मेरे ख़्याल से यह अहम है।",
+"en": "I thought it's important",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0379L03",
+"seed": 379,
+"known": "ভ্রমণ করতে",
+"target": "to travel to",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to travel to Africa'"
+},
+{
+"lego": "S0481L02",
+"seed": 481,
+"known": "আমাদের কাছে বাকি আছে",
+"target": "we have left",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0525L02",
+"seed": 525,
+"known": "দেখতে যে",
+"target": "to check if",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you were able to finish'"
+},
+{
+"lego": "S0528L01",
+"seed": 528,
+"known": "মনে হয়",
+"target": "probably",
+"type": "A",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm probably supposed to keep'"
+},
+{
+"lego": "S0557L01",
+"seed": 557,
+"known": "জোরে",
+"target": "loud",
+"type": "A",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wish they wouldn't play such loud music'"
+},
+{
+"lego": "S0566L02",
+"seed": 566,
+"known": "আমার পছন্দ হলে",
+"target": "if it had been my choice",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0566L02B01",
+"hi": "अगर यह मेरी पसंद होती तो मैंने और सोचा होता।",
+"en": "I'd have thought more if it had been my choice",
+"elsewhere_in_course": true
+},
+{
+"hin_id": "S0566L02B02",
+"hi": "अगर यह मेरी पसंद होती तो मैंने इसके बारे में सोचा होता।",
+"en": "I'd have thought about it if it had been my choice",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0566L02B03",
+"hi": "अगर यह मेरी पसंद होती तो मैंने और ध्यान से सोचा होता।",
+"en": "I'd have thought more carefully if it had been my choice",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0572L02",
+"seed": 572,
+"known": "কী হয়েছিল",
+"target": "what happened",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0572L02B01",
+"hi": "क्या आप भूल गए कि क्या हुआ था?",
+"en": "have you forgotten what happened?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0572L02B02",
+"hi": "मुझे नहीं पता कि क्या हुआ था।",
+"en": "I don't know what happened",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0572L02B03",
+"hi": "मुझे यक़ीन नहीं है कि क्या हुआ था।",
+"en": "I'm not sure what happened",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0595L02",
+"seed": 595,
+"known": "শুয়ে পড়তে হবে",
+"target": "need to lie down",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0600L03",
+"seed": 600,
+"known": "তুমি যদি আমাকে বলতে",
+"target": "if you'd told me",
+"type": "M",
+"real_builds": 2,
+"uses": 4,
+"playable": 6,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0005L01",
+"seed": 5,
+"known": "যাচ্ছি",
+"target": "I'm going to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'with someone else'"
+},
+{
+"lego": "S0005L02",
+"seed": 5,
+"known": "অভ্যাস করা",
+"target": "to practise",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to practise speaking'"
+},
+{
+"lego": "S0006L01",
+"seed": 6,
+"known": "মনে করা",
+"target": "to remember",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0006L01B01",
+"hi": "अब याद करना",
+"en": "to remember now",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0006L01B02",
+"hi": "कुछ याद करना",
+"en": "to remember something",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0006L01B03",
+"hi": "अंग्रेज़ी में कुछ याद करना",
+"en": "to remember something in English",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0006L02",
+"seed": 6,
+"known": "একটা শব্দ",
+"target": "a word",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0006L02B01",
+"hi": "एक शब्द सीखना",
+"en": "to learn a word",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0006L02B02",
+"hi": "एक शब्द याद करना",
+"en": "to remember a word",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0006L02B03",
+"hi": "अंग्रेज़ी में एक शब्द कहना",
+"en": "to say a word in English",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0007L01",
+"seed": 7,
+"known": "চেষ্টা করা",
+"target": "to try",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'today'"
+},
+{
+"lego": "S0007L02",
+"seed": 7,
+"known": "যতটা পারি",
+"target": "as hard as I can",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to try as hard as I can'"
+},
+{
+"lego": "S0007L03",
+"seed": 7,
+"known": "আজ",
+"target": "today",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to try'"
+},
+{
+"lego": "S0008L01",
+"seed": 8,
+"known": "বোঝানো",
+"target": "to explain",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0008L01B01",
+"hi": "अंग्रेज़ी में समझाना",
+"en": "to explain in English",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0008L01B02",
+"hi": "आज समझाना",
+"en": "to explain today",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0008L02",
+"seed": 8,
+"known": "আমার মানে",
+"target": "what I mean",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0008L02B01",
+"hi": "समझाना कि मेरा मतलब क्या है",
+"en": "to explain what I mean",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0008L02B02",
+"hi": "कहना कि मेरा मतलब क्या है",
+"en": "to say what I mean",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0008L02B03",
+"hi": "अंग्रेज़ी में समझाना कि मेरा मतलब क्या है",
+"en": "to explain what I mean in English",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0009L01",
+"seed": 9,
+"known": "একটু",
+"target": "a little",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0009L01B02",
+"hi": "थोड़ी अंग्रेज़ी सीखना",
+"en": "to learn a little English",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0009L01B03",
+"hi": "आज थोड़ी अंग्रेज़ी बोलना",
+"en": "to speak a little English today",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0009L02",
+"seed": 9,
+"known": "বলতে পারি",
+"target": "I speak",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0009L02B01",
+"hi": "मैं अंग्रेज़ी बोलता हूँ",
+"en": "I speak English",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0010L01",
+"seed": 10,
+"known": "নিশ্চিত না",
+"target": "not sure",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the whole sentence'"
+},
+{
+"lego": "S0010L02",
+"seed": 10,
+"known": "পারব কিনা",
+"target": "if I can",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I can remember'"
+},
+{
+"lego": "S0010L04",
+"seed": 10,
+"known": "পুরো বাক্যটা",
+"target": "the whole sentence",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0011L01",
+"seed": 11,
+"known": "পছন্দ করতাম",
+"target": "I'd like to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'after you finish'"
+},
+{
+"lego": "S0011L03",
+"seed": 11,
+"known": "তুমি শেষ করার পরে",
+"target": "after you finish",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'd like'"
+},
+{
+"lego": "S0012L02",
+"seed": 12,
+"known": "চাইতাম না",
+"target": "I wouldn't like to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wouldn't like'"
+},
+{
+"lego": "S0012L03",
+"seed": 12,
+"known": "অনুমান করা",
+"target": "to guess",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what's going to happen tomorrow'"
+},
+{
+"lego": "S0013L02",
+"seed": 13,
+"known": "তুমি বলো",
+"target": "you speak",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0013L02B03",
+"hi": "आप थोड़ी अंग्रेज़ी बोलते हैं",
+"en": "you speak a little English",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0014L02",
+"seed": 14,
+"known": "তুমি কি বলো",
+"target": "do you speak",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0014L02B01",
+"hi": "क्या आप अंग्रेज़ी बोलते हैं?",
+"en": "do you speak English?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0014L02B03",
+"hi": "क्या आप थोड़ी अंग्रेज़ी बोलते हैं?",
+"en": "do you speak a little English?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0015L02",
+"seed": 15,
+"known": "আমার সাথে",
+"target": "with me",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'and I want'"
+},
+{
+"lego": "S0015L03",
+"seed": 15,
+"known": "তুমি বলতে",
+"target": "you to speak",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'tomorrow'"
+},
+{
+"lego": "S0016L01",
+"seed": 16,
+"known": "সে চায়",
+"target": "he wants",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to come back'"
+},
+{
+"lego": "S0016L02",
+"seed": 16,
+"known": "ফিরে আসা",
+"target": "to come back",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'later on'"
+},
+{
+"lego": "S0016L03",
+"seed": 16,
+"known": "সবার সাথে",
+"target": "with everyone else",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0016L03B02",
+"hi": "सबके साथ अंग्रेज़ी बोलना",
+"en": "to speak English with everyone else",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0016L03B03",
+"hi": "बाद में सबके साथ वापस आना",
+"en": "to come back with everyone else later on",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0017L01",
+"seed": 17,
+"known": "সে জানতে চায়",
+"target": "she wants to find out",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to find out'"
+},
+{
+"lego": "S0018L01",
+"seed": 18,
+"known": "আমরা চাই",
+"target": "we want",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to meet'"
+},
+{
+"lego": "S0018L02",
+"seed": 18,
+"known": "দেখা করা",
+"target": "to meet",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'at six o'clock'"
+},
+{
+"lego": "S0018L03",
+"seed": 18,
+"known": "এই সন্ধ্যায়",
+"target": "this evening",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0018L03B02",
+"hi": "आज शाम छह बजे मिलना",
+"en": "to meet at six o'clock this evening",
+"elsewhere_in_course": true
+},
+{
+"hin_id": "S0018L03B03",
+"hi": "आज शाम बात करना",
+"en": "to speak this evening",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0018L04",
+"seed": 18,
+"known": "ছয়টায়",
+"target": "at six o'clock",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we want'"
+},
+{
+"lego": "S0019L02",
+"seed": 19,
+"known": "চাই না",
+"target": "don't want",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to stop talking'"
+},
+{
+"lego": "S0019L03",
+"seed": 19,
+"known": "থামানো",
+"target": "to stop",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't want'"
+},
+{
+"lego": "S0019L04",
+"seed": 19,
+"known": "কথা বলতে থাকা",
+"target": "talking",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0020L01",
+"seed": 20,
+"known": "তুমি চাও",
+"target": "you want",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'his name'"
+},
+{
+"lego": "S0020L02",
+"seed": 20,
+"known": "তার নাম",
+"target": "his name",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'quickly'"
+},
+{
+"lego": "S0021L03",
+"seed": 21,
+"known": "ওর নাম",
+"target": "her name",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0021L03B02",
+"hi": "उसका नाम और जवाब",
+"en": "her name and the answer",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0021L03B03",
+"hi": "उसका नाम जल्दी सीखना",
+"en": "to learn her name quickly",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0021L03B04",
+"hi": "बाद में उसका नाम याद करना",
+"en": "to remember her name later on",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0022L02",
+"seed": 22,
+"known": "যারা ইংরেজিতে কথা বলে",
+"target": "people who speak English",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to meet people'"
+},
+{
+"lego": "S0023L03",
+"seed": 23,
+"known": "শুরু করা",
+"target": "to start",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0025L01",
+"seed": 25,
+"known": "সাহায্য করা",
+"target": "to help",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'are you going to help me'"
+},
+{
+"lego": "S0025L02",
+"seed": 25,
+"known": "যাওয়ার আগে",
+"target": "before I have to go",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0025L02B01",
+"hi": "मेरे जाने से पहले अंग्रेज़ी बोलना",
+"en": "to speak English before I have to go",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0025L02B02",
+"hi": "मेरे जाने से पहले वापस आना",
+"en": "to come back before I have to go",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0025L03",
+"seed": 25,
+"known": "তুমি কি যাবে",
+"target": "are you going to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0026L01",
+"seed": 26,
+"known": "ভালো লাগে",
+"target": "I like",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I like feeling as if'"
+},
+{
+"lego": "S0026L02",
+"seed": 26,
+"known": "অনুভূতি",
+"target": "feeling",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm nearly ready to go'"
+},
+{
+"lego": "S0026L03",
+"seed": 26,
+"known": "প্রায় যাওয়ার জন্য তৈরি",
+"target": "nearly ready to go",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0027L01",
+"seed": 27,
+"known": "ভালো লাগে না",
+"target": "I don't like",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0027L01B01",
+"hi": "मुझे जवाब पसंद नहीं है",
+"en": "I don't like the answer",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0027L01B02",
+"hi": "मुझे समझाना पसंद नहीं है",
+"en": "I don't like to explain",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0027L02",
+"seed": 27,
+"known": "অনেক বেশি সময় নেওয়া",
+"target": "taking too much time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0027L02B01",
+"hi": "आज बहुत समय लगाना",
+"en": "taking too much time today",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0027L02B02",
+"hi": "सीखने में बहुत समय लगाना",
+"en": "taking too much time to learn",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0027L03",
+"seed": 27,
+"known": "উত্তর দেওয়া",
+"target": "to answer",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0027L03B01",
+"hi": "जल्दी से जवाब देना",
+"en": "to answer quickly",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0027L03B02",
+"hi": "आसानी से जवाब देना",
+"en": "to answer easily",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0027L03B03",
+"hi": "अंग्रेज़ी में जवाब देना",
+"en": "to answer in English",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0028L02",
+"seed": 28,
+"known": "যত তাড়াতাড়ি সম্ভব",
+"target": "as soon as you can",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0028L02B01",
+"hi": "जितनी जल्दी हो सके बोलना",
+"en": "to speak as soon as you can",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0028L02B02",
+"hi": "जितनी जल्दी हो सके जवाब देना",
+"en": "to answer as soon as you can",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0028L02B03",
+"hi": "जितनी जल्दी हो सके वापस आना",
+"en": "to come back as soon as you can",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0029L01",
+"seed": 29,
+"known": "অপেক্ষায় আছি",
+"target": "I'm looking forward to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm'"
+},
+{
+"lego": "S0029L03",
+"seed": 29,
+"known": "যত তাড়াতাড়ি পারি",
+"target": "as soon as I can",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'better'"
+},
+{
+"lego": "S0030L01",
+"seed": 30,
+"known": "চেয়েছিলাম",
+"target": "I wanted to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to ask you'"
+},
+{
+"lego": "S0030L03",
+"seed": 30,
+"known": "জিজ্ঞেস করা",
+"target": "to ask",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'yesterday'"
+},
+{
+"lego": "S0031L02",
+"seed": 31,
+"known": "তুমি চেয়েছিলে",
+"target": "you wanted to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you wanted'"
+},
+{
+"lego": "S0032L01",
+"seed": 32,
+"known": "দেখানো",
+"target": "to show",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to show me'"
+},
+{
+"lego": "S0032L02",
+"seed": 32,
+"known": "তুমি কি চেয়েছিলে",
+"target": "did you want to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'did you want'"
+},
+{
+"lego": "S0033L01",
+"seed": 33,
+"known": "কতদিন ধরে",
+"target": "how long",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how long have you been learning'"
+},
+{
+"lego": "S0034L01",
+"seed": 34,
+"known": "সে চায় না",
+"target": "he doesn't want",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0034L01B01",
+"hi": "वह बोलना नहीं चाहता",
+"en": "he doesn't want to speak",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0034L01B02",
+"hi": "वह लोगों से मिलना नहीं चाहता",
+"en": "he doesn't want to meet people",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0034L01B03",
+"hi": "वह वापस आना नहीं चाहता",
+"en": "he doesn't want to come back",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0034L02",
+"seed": 34,
+"known": "চুপ থাকা",
+"target": "to be quiet",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0034L02B01",
+"hi": "आज चुप रहना",
+"en": "to be quiet today",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0034L02B02",
+"hi": "अब चुप रहना",
+"en": "to be quiet now",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0034L02B03",
+"hi": "आज रात चुप रहना",
+"en": "to be quiet tonight",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0034L03",
+"seed": 34,
+"known": "অন্য মানুষ থাকলে",
+"target": "when other people are here",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when'"
+},
+{
+"lego": "S0035L01",
+"seed": 35,
+"known": "মেয়েটি চায় না",
+"target": "she doesn't want",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0035L01B01",
+"hi": "वह बोलना नहीं चाहती",
+"en": "she doesn't want to speak",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0035L01B02",
+"hi": "वह लोगों से मिलना नहीं चाहती",
+"en": "she doesn't want to meet people",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0035L01B03",
+"hi": "वह वापस आना नहीं चाहती",
+"en": "she doesn't want to come back",
+"elsewhere_in_course": true
+}
+]
+},
+{
+"lego": "S0035L02",
+"seed": 35,
+"known": "পড়া",
+"target": "to read",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0035L02B01",
+"hi": "अंग्रेज़ी पढ़ना",
+"en": "to read English",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0035L02B02",
+"hi": "आज पढ़ना",
+"en": "to read today",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0035L02B03",
+"hi": "यहाँ पढ़ना",
+"en": "to read here",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0035L04",
+"seed": 35,
+"known": "আজ বিকেলে",
+"target": "this afternoon",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0035L04B01",
+"hi": "आज दोपहर बाद बोलना",
+"en": "to speak this afternoon",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0035L04B02",
+"hi": "आज दोपहर बाद मिलना",
+"en": "to meet this afternoon",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0035L04B03",
+"hi": "आज दोपहर बाद पढ़ना",
+"en": "to read this afternoon",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0036L02",
+"seed": 36,
+"known": "গল্পটা",
+"target": "the story",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0036L02B01",
+"hi": "कहानी पढ़ना",
+"en": "to read the story",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0036L02B02",
+"hi": "कहानी समझाना",
+"en": "to explain the story",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0036L02B03",
+"hi": "कहानी याद रखना",
+"en": "to remember the story",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0037L01",
+"seed": 37,
+"known": "শুরু করেছিলাম",
+"target": "I started to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to think'"
+},
+{
+"lego": "S0037L02",
+"seed": 37,
+"known": "ভাবা",
+"target": "to think",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'about it'"
+},
+{
+"lego": "S0037L03",
+"seed": 37,
+"known": "ব্যাপারটা সাবধানে",
+"target": "about it carefully",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'carefully'"
+},
+{
+"lego": "S0037L04",
+"seed": 37,
+"known": "গত মাসে",
+"target": "last month",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I started'"
+},
+{
+"lego": "S0038L01",
+"seed": 38,
+"known": "আমি শিখছি",
+"target": "I've been learning",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0038L01B02",
+"hi": "मैं यहाँ सीख रहा हूँ",
+"en": "I've been learning here",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0038L01B03",
+"hi": "मैं आसानी से सीख रही हूँ",
+"en": "I've been learning easily",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0038L02",
+"seed": 38,
+"known": "প্রায় এক সপ্তাহ ধরে",
+"target": "for about a week",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0038L02B02",
+"hi": "लगभग एक हफ़्ते से यहाँ",
+"en": "here for about a week",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0039L01",
+"seed": 39,
+"known": "ক্লান্ত",
+"target": "tired",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm a little tired'"
+},
+{
+"lego": "S0039L02",
+"seed": 39,
+"known": "আজ সকালে",
+"target": "this morning",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0039L02B01",
+"hi": "आज सुबह बोलना",
+"en": "to speak this morning",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0039L02B02",
+"hi": "आज सुबह पढ़ना",
+"en": "to read this morning",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0039L02B03",
+"hi": "आज सुबह मिलना",
+"en": "to meet this morning",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0039L02B04",
+"hi": "मैं आज सुबह अभ्यास करूँगी",
+"en": "I'm going to practise this morning",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0039L02B05",
+"hi": "मैं आज सुबह बात नहीं कर पाऊँगी",
+"en": "I'm not going to be able to speak this morning",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0040L01",
+"seed": 40,
+"known": "কেমন অনুভব করছ",
+"target": "how do you feel",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0040L01B01",
+"hi": "आप आज कैसा महसूस कर रहे हैं",
+"en": "how do you feel today",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0040L01B02",
+"hi": "आप अभी कैसा महसूस कर रहे हैं",
+"en": "how do you feel at the moment",
+"elsewhere_in_course": true
+}
+]
+},
+{
+"lego": "S0040L02",
+"seed": 40,
+"known": "এই মুহূর্তে",
+"target": "at the moment",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0040L02B01",
+"hi": "अभी बोलना",
+"en": "to speak at the moment",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0040L02B02",
+"hi": "अभी पढ़ना",
+"en": "to read at the moment",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0040L02B03",
+"hi": "अभी यहाँ",
+"en": "here at the moment",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0041L03",
+"seed": 41,
+"known": "শুরু করছি",
+"target": "I'm starting to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm starting to feel tired'"
+},
+{
+"lego": "S0042L01",
+"seed": 42,
+"known": "গতকাল রাত",
+"target": "last night",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I was starting to feel better'"
+},
+{
+"lego": "S0042L03",
+"seed": 42,
+"known": "শুরু করছিলাম",
+"target": "I was starting to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'than last night'"
+},
+{
+"lego": "S0043L02",
+"seed": 43,
+"known": "ভাবছিলাম না",
+"target": "wasn't thinking about",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how to answer'"
+},
+{
+"lego": "S0044L01",
+"seed": 44,
+"known": "উন্নতি করা",
+"target": "improve",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'or'"
+},
+{
+"lego": "S0044L02",
+"seed": 44,
+"known": "করতে হবে",
+"target": "need to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I need'"
+},
+{
+"lego": "S0044L03",
+"seed": 44,
+"known": "বা",
+"target": "or",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to improve'"
+},
+{
+"lego": "S0045L01",
+"seed": 45,
+"known": "জানা",
+"target": "know",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't need'"
+},
+{
+"lego": "S0045L02",
+"seed": 45,
+"known": "সব কিছু",
+"target": "everything",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to know everything'"
+},
+{
+"lego": "S0045L03",
+"seed": 45,
+"known": "দরকার নেই",
+"target": "don't need to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0046L01",
+"seed": 46,
+"known": "ভুল করা",
+"target": "making mistakes",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0046L01B01",
+"hi": "आज ग़लतियाँ करना",
+"en": "making mistakes today",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0046L01B02",
+"hi": "यहाँ ग़लतियाँ करना",
+"en": "making mistakes here",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0046L01B03",
+"hi": "अंग्रेज़ी में ग़लतियाँ करना",
+"en": "making mistakes in English",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0046L02",
+"seed": 46,
+"known": "চিন্তা করা",
+"target": "worry about",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't worry about'"
+},
+{
+"lego": "S0047L02",
+"seed": 47,
+"known": "ভালো",
+"target": "good",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's a good thing to make mistakes'"
+},
+{
+"lego": "S0047L03",
+"seed": 47,
+"known": "করতে",
+"target": "make",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0047L04",
+"seed": 47,
+"known": "একটা ভালো জিনিস",
+"target": "a good thing",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0047L05",
+"seed": 47,
+"known": "মনে করি যে",
+"target": "think that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0048L01",
+"seed": 48,
+"known": "পরোয়া করা",
+"target": "care about",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't care about'"
+},
+{
+"lego": "S0049L01",
+"seed": 49,
+"known": "এরকম",
+"target": "like this",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's like this'"
+},
+{
+"lego": "S0050L01",
+"seed": 50,
+"known": "শেষ করা",
+"target": "finish",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm not trying'"
+},
+{
+"lego": "S0050L02",
+"seed": 50,
+"known": "যত দ্রুত সম্ভব",
+"target": "as quickly as possible",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to finish'"
+},
+{
+"lego": "S0053L01",
+"seed": 53,
+"known": "রাখা",
+"target": "put",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she wanted'"
+},
+{
+"lego": "S0054L01",
+"seed": 54,
+"known": "দেওয়া",
+"target": "give",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we wanted to give you'"
+},
+{
+"lego": "S0055L01",
+"seed": 55,
+"known": "ঘুমানো",
+"target": "sleep",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't enjoy'"
+},
+{
+"lego": "S0055L02",
+"seed": 55,
+"known": "ঘুমাইনি",
+"target": "didn't sleep",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I didn't sleep'"
+},
+{
+"lego": "S0055L03",
+"seed": 55,
+"known": "ঘুম থেকে উঠা",
+"target": "waking up",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't enjoy waking up'"
+},
+{
+"lego": "S0055L04",
+"seed": 55,
+"known": "যখন",
+"target": "when",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0056L01",
+"seed": 56,
+"known": "শব্দগুলো",
+"target": "words",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'so'"
+},
+{
+"lego": "S0056L02",
+"seed": 56,
+"known": "তাই",
+"target": "so",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to say a few words'"
+},
+{
+"lego": "S0056L03",
+"seed": 56,
+"known": "কয়েকটা",
+"target": "a few",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0057L01",
+"seed": 57,
+"known": "পারি না",
+"target": "can't",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I can't remember'"
+},
+{
+"lego": "S0058L01",
+"seed": 58,
+"known": "বোঝা",
+"target": "understand",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it becomes interesting'"
+},
+{
+"lego": "S0059L01",
+"seed": 59,
+"known": "করা",
+"target": "do",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I know'"
+},
+{
+"lego": "S0059L02",
+"seed": 59,
+"known": "আগামী সপ্তাহ",
+"target": "next week",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0059L02B01",
+"hi": "अगले हफ़्ते यहाँ",
+"en": "here next week",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0059L02B02",
+"hi": "अगले हफ़्ते बोलना",
+"en": "to speak next week",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0059L02B03",
+"hi": "अगले हफ़्ते मिलना",
+"en": "to meet next week",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0060L01",
+"seed": 60,
+"known": "আলাদা",
+"target": "different",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't know how'"
+},
+{
+"lego": "S0060L02",
+"seed": 60,
+"known": "এখনো",
+"target": "yet",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'enough different words'"
+},
+{
+"lego": "S0061L01",
+"seed": 61,
+"known": "আস্তে",
+"target": "slowly",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'could you say'"
+},
+{
+"lego": "S0061L02",
+"seed": 61,
+"known": "আবার",
+"target": "again",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'that again'"
+},
+{
+"lego": "S0061L03",
+"seed": 61,
+"known": "বলতে পারবে",
+"target": "could you say",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'a little more slowly'"
+},
+{
+"lego": "S0062L01",
+"seed": 62,
+"known": "একই",
+"target": "same",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I can help you'"
+},
+{
+"lego": "S0063L01",
+"seed": 63,
+"known": "সাহায্য করে",
+"target": "helping",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'are you sure you don't mind'"
+},
+{
+"lego": "S0063L02",
+"seed": 63,
+"known": "কিছু মনে করা না",
+"target": "don't mind",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'helping me'"
+},
+{
+"lego": "S0064L02",
+"seed": 64,
+"known": "মজার",
+"target": "fun",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it is fun'"
+},
+{
+"lego": "S0065L01",
+"seed": 65,
+"known": "নেওয়া",
+"target": "take",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's important'"
+},
+{
+"lego": "S0065L02",
+"seed": 65,
+"known": "নিজে",
+"target": "yourself",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to take time'"
+},
+{
+"lego": "S0065L03",
+"seed": 65,
+"known": "পরীক্ষা",
+"target": "test",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to test yourself'"
+},
+{
+"lego": "S0065L04",
+"seed": 65,
+"known": "গুরুত্বপূর্ণ",
+"target": "important",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0066L01",
+"seed": 66,
+"known": "খোঁজা",
+"target": "find",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's not difficult'"
+},
+{
+"lego": "S0066L02",
+"seed": 66,
+"known": "কঠিন",
+"target": "difficult",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to find'"
+},
+{
+"lego": "S0067L01",
+"seed": 67,
+"known": "কেন তুমি",
+"target": "why do you",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to stop'"
+},
+{
+"lego": "S0068L01",
+"seed": 68,
+"known": "খুঁজছি",
+"target": "looking for",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what are you looking for'"
+},
+{
+"lego": "S0069L02",
+"seed": 69,
+"known": "কুকুর",
+"target": "dog",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to look after'"
+},
+{
+"lego": "S0069L03",
+"seed": 69,
+"known": "দেখাশোনা করা",
+"target": "look after",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the young dog'"
+},
+{
+"lego": "S0070L01",
+"seed": 70,
+"known": "ছিল",
+"target": "was",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she didn't want'"
+},
+{
+"lego": "S0070L03",
+"seed": 70,
+"known": "জানানো",
+"target": "tell",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'where it was'"
+},
+{
+"lego": "S0071L01",
+"seed": 71,
+"known": "সত্য",
+"target": "truth",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we didn't want to let anyone hear'"
+},
+{
+"lego": "S0071L02",
+"seed": 71,
+"known": "শোনা",
+"target": "hear",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the truth'"
+},
+{
+"lego": "S0071L03",
+"seed": 71,
+"known": "কেউ",
+"target": "anyone",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0071L04",
+"seed": 71,
+"known": "দিতে",
+"target": "let",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0072L01",
+"seed": 72,
+"known": "তুমি করছো",
+"target": "you're doing",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you're doing very well'"
+},
+{
+"lego": "S0073L02",
+"seed": 73,
+"known": "আমার আছে",
+"target": "I've got",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I've got more to learn'"
+},
+{
+"lego": "S0074L01",
+"seed": 74,
+"known": "বুঝতে সাহায্য",
+"target": "helping to understand",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'for helping me to understand'"
+},
+{
+"lego": "S0076L01",
+"seed": 76,
+"known": "খুশি",
+"target": "happy",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm very happy'"
+},
+{
+"lego": "S0076L02",
+"seed": 76,
+"known": "ইতিমধ্যে",
+"target": "already",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'with how much I've learnt already'"
+},
+{
+"lego": "S0076L04",
+"seed": 76,
+"known": "কতটুকু শিখেছি",
+"target": "how much I've learnt",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0077L01",
+"seed": 77,
+"known": "অবাক হচ্ছি",
+"target": "I'm surprised",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0077L01B01",
+"hi": "मुझे आज हैरानी है",
+"en": "I'm surprised today",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0077L01B02",
+"hi": "मुझे यहाँ हैरानी है",
+"en": "I'm surprised here",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0077L01B03",
+"hi": "लेकिन मुझे हैरानी है",
+"en": "but I'm surprised",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0078L01",
+"seed": 78,
+"known": "বললে",
+"target": "said",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what you said'"
+},
+{
+"lego": "S0079L01",
+"seed": 79,
+"known": "কখন তুমি",
+"target": "when did you",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when did you start'"
+},
+{
+"lego": "S0080L01",
+"seed": 80,
+"known": "হবো",
+"target": "I'll be",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when I'll be ready'"
+},
+{
+"lego": "S0081L01",
+"seed": 81,
+"known": "কখন তুমি চাও",
+"target": "when do you want to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when do you want'"
+},
+{
+"lego": "S0082L01",
+"seed": 82,
+"known": "অপেক্ষা",
+"target": "wait",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm not going to wait for you'"
+},
+{
+"lego": "S0083L01",
+"seed": 83,
+"known": "তোমার",
+"target": "your",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I agree with'"
+},
+{
+"lego": "S0083L02",
+"seed": 83,
+"known": "একমত হওয়া",
+"target": "agree with",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'about your friend'"
+},
+{
+"lego": "S0085L01",
+"seed": 85,
+"known": "মানুষ",
+"target": "people",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't know'"
+},
+{
+"lego": "S0085L02",
+"seed": 85,
+"known": "ওই",
+"target": "those",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'those people'"
+},
+{
+"lego": "S0086L01",
+"seed": 86,
+"known": "সম্ভব",
+"target": "possible",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it wasn't possible'"
+},
+{
+"lego": "S0087L01",
+"seed": 87,
+"known": "তারা",
+"target": "they",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'they are people'"
+},
+{
+"lego": "S0088L01",
+"seed": 88,
+"known": "কারো সাথে কথা বলা",
+"target": "talk to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm not ready'"
+},
+{
+"lego": "S0089L01",
+"seed": 89,
+"known": "করেছি",
+"target": "done",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I've done a lot'"
+},
+{
+"lego": "S0089L02",
+"seed": 89,
+"known": "অনেক",
+"target": "a lot",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'in a short time'"
+},
+{
+"lego": "S0089L03",
+"seed": 89,
+"known": "কম",
+"target": "short",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0090L01",
+"seed": 90,
+"known": "দারুণ",
+"target": "great",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you can speak more slowly'"
+},
+{
+"lego": "S0090L02",
+"seed": 90,
+"known": "তাহলে ভালো হয়",
+"target": "that would be",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'that would be great'"
+},
+{
+"lego": "S0091L01",
+"seed": 91,
+"known": "সময়মতো",
+"target": "in time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's difficult'"
+},
+{
+"lego": "S0092L02",
+"seed": 92,
+"known": "চালিয়ে যাওয়া",
+"target": "keep on",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'for a while'"
+},
+{
+"lego": "S0093L01",
+"seed": 93,
+"known": "যাওয়ার সময়",
+"target": "time to go",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's time to go'"
+},
+{
+"lego": "S0094L01",
+"seed": 94,
+"known": "শুধুমাত্র",
+"target": "only",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'this is the only way'"
+},
+{
+"lego": "S0094L02",
+"seed": 94,
+"known": "উপায়",
+"target": "way",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it will work'"
+},
+{
+"lego": "S0094L03",
+"seed": 94,
+"known": "করবে",
+"target": "will",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0094L04",
+"seed": 94,
+"known": "কাজ করা",
+"target": "work",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0095L01",
+"seed": 95,
+"known": "বাড়ি",
+"target": "home",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'are you ready'"
+},
+{
+"lego": "S0095L03",
+"seed": 95,
+"known": "পরের",
+"target": "next",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'on the next bus'"
+},
+{
+"lego": "S0096L01",
+"seed": 96,
+"known": "না",
+"target": "no",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0096L01B03",
+"hi": "नहीं, मैं कोशिश नहीं कर रही",
+"en": "no I'm not trying",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0096L02",
+"seed": 96,
+"known": "দরকার",
+"target": "need",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0098L01",
+"seed": 98,
+"known": "উচিত",
+"target": "should",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'something else'"
+},
+{
+"lego": "S0098L02",
+"seed": 98,
+"known": "বিবেচনা করা",
+"target": "consider",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I should consider playing'"
+},
+{
+"lego": "S0098L03",
+"seed": 98,
+"known": "খেলা",
+"target": "playing",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0100L01",
+"seed": 100,
+"known": "একই রকম",
+"target": "similar",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you shouldn't worry about'"
+},
+{
+"lego": "S0100L02",
+"seed": 100,
+"known": "উচিত নয়",
+"target": "shouldn't",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'doing something similar'"
+},
+{
+"lego": "S0101L01",
+"seed": 101,
+"known": "ভাষা",
+"target": "language",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm enjoying'"
+},
+{
+"lego": "S0101L02",
+"seed": 101,
+"known": "খুঁজে বের করছি",
+"target": "finding out",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'finding out more'"
+},
+{
+"lego": "S0101L03",
+"seed": 101,
+"known": "উপভোগ করছি",
+"target": "I'm enjoying",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'about this language'"
+},
+{
+"lego": "S0109L03",
+"seed": 109,
+"known": "অবশ্যই কঠিন পরিশ্রম",
+"target": "must work hard",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0110L02",
+"seed": 110,
+"known": "আমরা বন্ধুরা",
+"target": "we're friends",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'after we finish'"
+},
+{
+"lego": "S0111L03",
+"seed": 111,
+"known": "যখন আমরা শিখি",
+"target": "when we learn",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it brings about changes'"
+},
+{
+"lego": "S0113L01",
+"seed": 113,
+"known": "বলেছিলে",
+"target": "you said",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B02"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'why can't I remember'"
+},
+{
+"lego": "S0113L02",
+"seed": 113,
+"known": "মনে রাখতে পারি না",
+"target": "can't remember",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0114L01",
+"seed": 114,
+"known": "খারাপ",
+"target": "worse",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B02"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I feel as if'"
+},
+{
+"lego": "S0115L01",
+"seed": 115,
+"known": "কথোপকথন করতে",
+"target": "to have a conversation",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't feel as if'"
+},
+{
+"lego": "S0116L03",
+"seed": 116,
+"known": "পারতাম",
+"target": "I could",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0117L03",
+"seed": 117,
+"known": "কথা বলেছিলাম",
+"target": "we talked",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'than I was'"
+},
+{
+"lego": "S0117L04",
+"seed": 117,
+"known": "শেষবার",
+"target": "last time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we talked to each other'"
+},
+{
+"lego": "S0122L02",
+"seed": 122,
+"known": "সহজ হতে শুরু করছে",
+"target": "starting to feel easier",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how it's going'"
+},
+{
+"lego": "S0124L01",
+"seed": 124,
+"known": "মনে করেছিলাম",
+"target": "I thought",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0124L01B01",
+"hi": "मुझे लगा वह बहुत दिलचस्प था",
+"en": "I thought that was very interesting",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0124L01B02",
+"hi": "मुझे लगा उसे जवाब नहीं पता था",
+"en": "I thought he didn't know the answer",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0124L01B03",
+"hi": "मुझे लगा वह वापस आना चाहता था",
+"en": "I thought he wanted to come back",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0125L01",
+"seed": 125,
+"known": "বিশ্বাস করা",
+"target": "believe",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B03"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I believe that'"
+},
+{
+"lego": "S0126L02",
+"seed": 126,
+"known": "আমার মস্তিষ্কের আকৃতি",
+"target": "the shape of my brain",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'is changing'"
+},
+{
+"lego": "S0128L02",
+"seed": 128,
+"known": "তুমি এমন কারো মতো",
+"target": "you're like someone",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0128L02B01",
+"hi": "आप एक ऐसे व्यक्ति की तरह हैं जिसे मैं जानती हूँ",
+"en": "you're like someone I know",
+"elsewhere_in_course": true
+},
+{
+"hin_id": "S0128L02B02",
+"hi": "आप एक ऐसे व्यक्ति की तरह हैं जिससे मैं मिलना चाहता हूँ",
+"en": "you're like someone I want to meet",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0128L02B03",
+"hi": "आप एक ऐसे व्यक्ति की तरह हैं जिससे मैं मिलना चाहूँगी",
+"en": "you're like someone I'd like to meet",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0129L02",
+"seed": 129,
+"known": "আমি খুব খুশি যে",
+"target": "I'm so happy that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you're doing so well'"
+},
+{
+"lego": "S0130L02",
+"seed": 130,
+"known": "সে আমার বন্ধু",
+"target": "he's my friend",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0130L02B01",
+"hi": "मुझे लगता है वह मेरा दोस्त है",
+"en": "I think he's my friend",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0130L02B02",
+"hi": "मेरा मानना है कि वह मेरा दोस्त है",
+"en": "I believe that he's my friend",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0130L02B03",
+"hi": "क्योंकि वह मेरा दोस्त है",
+"en": "because he's my friend",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0131L02",
+"seed": 131,
+"known": "ধারণা ঘুরছে",
+"target": "ideas going around",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'in my head'"
+},
+{
+"lego": "S0131L04",
+"seed": 131,
+"known": "সেখানে আছে",
+"target": "there are",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0132L02",
+"seed": 132,
+"known": "বলছিল",
+"target": "she was saying",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'than what she was saying'"
+},
+{
+"lego": "S0134L03",
+"seed": 134,
+"known": "তাদের সাথে",
+"target": "with them",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when you work at'"
+},
+{
+"lego": "S0135L01",
+"seed": 135,
+"known": "জানি না কেন",
+"target": "don't know why",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you think that'"
+},
+{
+"lego": "S0135L02",
+"seed": 135,
+"known": "তুমি মনে কর",
+"target": "you think",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's so good'"
+},
+{
+"lego": "S0136L01",
+"seed": 136,
+"known": "অবশ্যই তুমি পারবে",
+"target": "of course you can",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'of course'"
+},
+{
+"lego": "S0136L02",
+"seed": 136,
+"known": "সে আমার বান্ধবী",
+"target": "she's my friend",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you can ask'"
+},
+{
+"lego": "S0137L03",
+"seed": 137,
+"known": "কথা বলতে হয়",
+"target": "to talk",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to be perfect'"
+},
+{
+"lego": "S0138L03",
+"seed": 138,
+"known": "দেখা করতে চেয়েছিল",
+"target": "wanted to meet",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to meet us'"
+},
+{
+"lego": "S0139L03",
+"seed": 139,
+"known": "আমি দুঃখিত যে",
+"target": "I'm sorry that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'so early'"
+},
+{
+"lego": "S0140L01",
+"seed": 140,
+"known": "দেখাতে চেষ্টা করছ",
+"target": "trying to show",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I can't see'"
+},
+{
+"lego": "S0141L01",
+"seed": 141,
+"known": "কোনো সমস্যা নেই",
+"target": "no problem",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0141L01B01",
+"hi": "कोई बात नहीं, मैं आपकी मदद कर सकता हूँ",
+"en": "no problem I can help you",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0141L01B02",
+"hi": "कोई बात नहीं, हम दोस्त हैं",
+"en": "no problem we're friends",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0141L01B03",
+"hi": "कोई बात नहीं, मुझे बेहतर लग रहा है",
+"en": "no problem I feel better",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0141L02",
+"seed": 141,
+"known": "সব ঠিক আছে",
+"target": "everything is okay",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0141L02B02",
+"hi": "मेरा मानना है कि सब ठीक है",
+"en": "I believe that everything is okay",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0141L02B03",
+"hi": "आप समझ रहे हैं सब ठीक है",
+"en": "you know everything is okay",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0142L02",
+"seed": 142,
+"known": "তোমার কাছ থেকে খুব ভালো",
+"target": "very kind of you",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm grateful to you'"
+},
+{
+"lego": "S0143L01",
+"seed": 143,
+"known": "আগে",
+"target": "earlier",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's the same thing as'"
+},
+{
+"lego": "S0143L02",
+"seed": 143,
+"known": "কথা বলছিলাম",
+"target": "were talking about",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we were talking about'"
+},
+{
+"lego": "S0144L02",
+"seed": 144,
+"known": "জেগেছিলাম",
+"target": "I woke",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'than I wanted to'"
+},
+{
+"lego": "S0145L01",
+"seed": 145,
+"known": "আর না",
+"target": "any more",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'why are you not happy any more'"
+},
+{
+"lego": "S0145L02",
+"seed": 145,
+"known": "কেন তুমি না",
+"target": "why are you not",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0146L02",
+"seed": 146,
+"known": "চেষ্টা করার পর থেকে",
+"target": "since we tried to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we tried to fix it'"
+},
+{
+"lego": "S0146L03",
+"seed": 146,
+"known": "কিছুই মনে হচ্ছে না",
+"target": "nothing seems to be",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'since'"
+},
+{
+"lego": "S0147L02",
+"seed": 147,
+"known": "সে আমাকে দেখেছিল",
+"target": "she saw me",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when she saw me'"
+},
+{
+"lego": "S0148L02",
+"seed": 148,
+"known": "উত্তর দিতে পারিনি",
+"target": "couldn't answer",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when I couldn't answer'"
+},
+{
+"lego": "S0149L01",
+"seed": 149,
+"known": "আশা করি তুমি",
+"target": "I hope you'll",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'this isn't very difficult'"
+},
+{
+"lego": "S0150L01",
+"seed": 150,
+"known": "তুমি কি আমাকে বলতে পারবে",
+"target": "can you tell me",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0150L01B01",
+"hi": "क्या आप मुझे जवाब बता सकते हैं?",
+"en": "can you tell me the answer?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0150L01B02",
+"hi": "क्या आप मुझे कहानी बता सकते हैं?",
+"en": "can you tell me the story?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0150L01B03",
+"hi": "क्या आप मुझे सच बता सकते हैं?",
+"en": "can you tell me the truth?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0151L01",
+"seed": 151,
+"known": "আশা করেছিলাম যে হবে",
+"target": "hoping would happen",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'that wasn't'"
+},
+{
+"lego": "S0152L01",
+"seed": 152,
+"known": "অন্যভাবে",
+"target": "differently",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B03"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I would have done it differently'"
+},
+{
+"lego": "S0152L02",
+"seed": 152,
+"known": "জানলে আমি করতাম",
+"target": "I would have done if I had known",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'if I had known'"
+},
+{
+"lego": "S0153L01",
+"seed": 153,
+"known": "ঠিক",
+"target": "exactly",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B03"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wouldn't have said it'"
+},
+{
+"lego": "S0154L02",
+"seed": 154,
+"known": "কোথায় দেখা করতে চাও",
+"target": "where do you want to meet",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'on Saturday night'"
+},
+{
+"lego": "S0155L02",
+"seed": 155,
+"known": "অপেক্ষা করা",
+"target": "waiting",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0155L02B01",
+"hi": "कुछ मिनट इंतज़ार करने में",
+"en": "waiting for a few minutes",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0155L02B02",
+"hi": "आज इंतज़ार करने में",
+"en": "waiting today",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0155L02B03",
+"hi": "पब में इंतज़ार करने में",
+"en": "waiting in the pub",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0157L02",
+"seed": 157,
+"known": "আগামী মাস",
+"target": "next month",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'there'"
+},
+{
+"lego": "S0157L03",
+"seed": 157,
+"known": "থাকতে পারব না",
+"target": "won't be able to be",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'next month'"
+},
+{
+"lego": "S0158L01",
+"seed": 158,
+"known": "আসুন কথা বলি",
+"target": "let's talk",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'let's talk about'"
+},
+{
+"lego": "S0159L01",
+"seed": 159,
+"known": "সেটা নয়",
+"target": "that isn't",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'that isn't what I'm trying to say'"
+},
+{
+"lego": "S0169L01",
+"seed": 169,
+"known": "তুমি কি চাও আমি কী করি",
+"target": "what do you want me to do",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0169L01B03",
+"hi": "आप मुझसे अगले हफ़्ते क्या करवाना चाहते हैं?",
+"en": "what do you want me to do next week?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0174L01",
+"seed": 174,
+"known": "বুঝতে পারছ",
+"target": "can you understand",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0174L01B01",
+"hi": "क्या आप कहानी समझ सकते हैं?",
+"en": "can you understand the story?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0174L01B02",
+"hi": "क्या आप जवाब समझ सकते हैं?",
+"en": "can you understand the answer?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0174L01B03",
+"hi": "क्या आप आज समझ सकते हैं?",
+"en": "can you understand today?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0190L01",
+"seed": 190,
+"known": "তুমি কি মনে কর",
+"target": "do you mind if",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'do you mind'"
+},
+{
+"lego": "S0190L02",
+"seed": 190,
+"known": "কিছু প্রশ্ন",
+"target": "some questions",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'if I ask you'"
+},
+{
+"lego": "S0192L02",
+"seed": 192,
+"known": "আগামীকাল রাতে",
+"target": "tomorrow night",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0192L02B01",
+"hi": "मुझे कल रात मिलना है",
+"en": "I need to meet tomorrow night",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0192L02B02",
+"hi": "मैं कल रात आराम करना चाहती हूँ",
+"en": "I want to relax tomorrow night",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0193L02",
+"seed": 193,
+"known": "অনেক বেশি ব্যস্ত",
+"target": "too busy",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm too busy'"
+},
+{
+"lego": "S0194L01",
+"seed": 194,
+"known": "খুঁজছ",
+"target": "looking for",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what are you looking for'"
+},
+{
+"lego": "S0196L02",
+"seed": 196,
+"known": "সর্বশেষ ধারণা",
+"target": "latest idea",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the latest idea'"
+},
+{
+"lego": "S0200L03",
+"seed": 200,
+"known": "সময়মতো শেষ করা",
+"target": "finish in time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to make sure that'"
+},
+{
+"lego": "S0201L02",
+"seed": 201,
+"known": "কী হতে চলেছে",
+"target": "what was going to happen",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what is going to happen'"
+},
+{
+"lego": "S0202L01",
+"seed": 202,
+"known": "কেউ না",
+"target": "nobody",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'nobody was sure'"
+},
+{
+"lego": "S0202L03",
+"seed": 202,
+"known": "কীভাবে উত্তর দিতে হবে",
+"target": "how to answer",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0203L02",
+"seed": 203,
+"known": "তুমি কী করতে",
+"target": "what would you do",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'if I asked you'"
+},
+{
+"lego": "S0204L02",
+"seed": 204,
+"known": "সামলাতে সাহায্য করা",
+"target": "help to deal with",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to help you'"
+},
+{
+"lego": "S0205L01",
+"seed": 205,
+"known": "ভুলে গেছি",
+"target": "I've forgotten",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0205L01B02",
+"hi": "मैं सच भूल गई।",
+"en": "I've forgotten the truth",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0205L01B03",
+"hi": "मैं आज जवाब भूल गई।",
+"en": "I've forgotten the answer today",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0205L03",
+"seed": 205,
+"known": "বলার চেষ্টা করছিলাম",
+"target": "I was trying to say",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0205L03B03",
+"hi": "मुझे वह शब्द याद नहीं आ रहा जो मैं कहने की कोशिश कर रही थी।",
+"en": "I can't remember the word I was trying to say",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0206L02",
+"seed": 206,
+"known": "কথা বলার অনুশীলন",
+"target": "to practise speaking",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the chance'"
+},
+{
+"lego": "S0208L01",
+"seed": 208,
+"known": "জিজ্ঞেস করতে চাইনি",
+"target": "didn't want to ask",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I didn't want'"
+},
+{
+"lego": "S0208L02",
+"seed": 208,
+"known": "কীভাবে বলতে হয়",
+"target": "how to say it",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0208L02B03",
+"hi": "क्या आप मुझे बता सकते हैं कि इसे कैसे कहेंगे?",
+"en": "can you tell me how to say it?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0209L02",
+"seed": 209,
+"known": "মিলিত হওয়া",
+"target": "meeting",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0209L02B01",
+"hi": "वे मिलने में ज़्यादा समय बिताना चाहते हैं।",
+"en": "they want to spend more time meeting",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0209L02B02",
+"hi": "मैं मिलने में ज़्यादा समय बिताना चाहता हूँ।",
+"en": "I want to spend more time meeting",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0209L02B03",
+"hi": "वे आज मिलने में ज़्यादा समय बिताना चाहते हैं।",
+"en": "they want to spend more time meeting today",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0209L03",
+"seed": 209,
+"known": "আরও সময় কাটানো",
+"target": "spend more time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'as a group'"
+},
+{
+"lego": "S0210L01",
+"seed": 210,
+"known": "আলোচনা করা",
+"target": "discuss",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'they think that'"
+},
+{
+"lego": "S0210L02",
+"seed": 210,
+"known": "সমস্যাটা নিয়ে আলোচনা করা দরকার",
+"target": "need to discuss the problem",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we need to discuss'"
+},
+{
+"lego": "S0211L01",
+"seed": 211,
+"known": "আমাদের বলেছিল",
+"target": "told us",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'they told us that'"
+},
+{
+"lego": "S0212L01",
+"seed": 212,
+"known": "সাহায্য চাওয়া",
+"target": "ask for help",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'they wanted'"
+},
+{
+"lego": "S0213L02",
+"seed": 213,
+"known": "তারা কী অর্জন করার চেষ্টা করছে",
+"target": "what they're trying to achieve",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what they're trying'"
+},
+{
+"lego": "S0214L01",
+"seed": 214,
+"known": "সপ্তাহান্তে",
+"target": "at the weekend",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'did you have a good time'"
+},
+{
+"lego": "S0215L02",
+"seed": 215,
+"known": "বাইরে যাওয়া",
+"target": "went out",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0218L01",
+"seed": 218,
+"known": "রবিবার",
+"target": "Sunday",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I didn't do'"
+},
+{
+"lego": "S0218L02",
+"seed": 218,
+"known": "বেশি কিছু করিনি",
+"target": "didn't do much",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'much'"
+},
+{
+"lego": "S0219L02",
+"seed": 219,
+"known": "কিছুক্ষণের জন্য",
+"target": "for a while",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0219L02B03",
+"hi": "वे थोड़ा आराम करना चाहते थे।",
+"en": "they wanted to relax for a while",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0220L02",
+"seed": 220,
+"known": "কিছুটা",
+"target": "bit",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'a bit of television'"
+},
+{
+"lego": "S0220L03",
+"seed": 220,
+"known": "টেলিভিশন দেখা",
+"target": "watch television",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0221L04",
+"seed": 221,
+"known": "এবং তারপর",
+"target": "and then",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0222L01",
+"seed": 222,
+"known": "বলার চেষ্টা করছে",
+"target": "trying to tell",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he's trying'"
+},
+{
+"lego": "S0222L02",
+"seed": 222,
+"known": "সে কী চায়",
+"target": "what he wants",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [],
+"need": 1,
+"src": [
+{
+"hin_id": "S0222L02B03",
+"hi": "क्या आप मुझे बता सकते हैं कि वह क्या चाहता है?",
+"en": "can you tell me what he wants?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0223L01",
+"seed": 223,
+"known": "জিজ্ঞেস করবে",
+"target": "going to ask",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he's going to ask you'"
+},
+{
+"lego": "S0226L02",
+"seed": 226,
+"known": "সাহায্য করার চেষ্টা করছে",
+"target": "is trying to help",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'is trying'"
+},
+{
+"lego": "S0228L02",
+"seed": 228,
+"known": "কথা বলার অনুশীলন শুরু করেছে",
+"target": "started to practise speaking",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0233L02",
+"seed": 233,
+"known": "চিনি যে বোনকে চেনে",
+"target": "know who knows your sister",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'who knows'"
+},
+{
+"lego": "S0234L02",
+"seed": 234,
+"known": "গত রাতে দেখা করেছিলাম",
+"target": "I met last night",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I met someone last night'"
+},
+{
+"lego": "S0235L01",
+"seed": 235,
+"known": "বলেছিল",
+"target": "said that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'who said that'"
+},
+{
+"lego": "S0235L02",
+"seed": 235,
+"known": "দেখা করেছিলাম যে বলেছিল",
+"target": "met someone who said",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he wanted'"
+},
+{
+"lego": "S0236L01",
+"seed": 236,
+"known": "চিনি যে বলেছিল",
+"target": "know someone who said",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'someone'"
+},
+{
+"lego": "S0237L01",
+"seed": 237,
+"known": "সপ্তাহান্তের আগে",
+"target": "before the weekend",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'me to tell you'"
+},
+{
+"lego": "S0240L02",
+"seed": 240,
+"known": "কথা বলা থামাতে পছন্দ করেন না",
+"target": "doesn't like to stop talking",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to stop talking'"
+},
+{
+"lego": "S0241L01",
+"seed": 241,
+"known": "দিতে চাই না",
+"target": "don't want to give",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to give'"
+},
+{
+"lego": "S0242L01",
+"seed": 242,
+"known": "আরও সময় দেওয়া",
+"target": "give more time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'more time'"
+},
+{
+"lego": "S0244L02",
+"seed": 244,
+"known": "অনেক কিছু শিখেছি",
+"target": "I've learnt a lot",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'already'"
+},
+{
+"lego": "S0245L01",
+"seed": 245,
+"known": "অল্প সময়ে",
+"target": "in a short time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm happy with how much I've done'"
+},
+{
+"lego": "S0245L02",
+"seed": 245,
+"known": "কতটুকু করেছি তা নিয়ে খুশি",
+"target": "happy with how much I've done",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0248L01",
+"seed": 248,
+"known": "সম্পূর্ণ বাজে",
+"target": "complete rubbish",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I thought'"
+},
+{
+"lego": "S0248L03",
+"seed": 248,
+"known": "এবং",
+"target": "and",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'was complete rubbish'"
+},
+{
+"lego": "S0249L01",
+"seed": 249,
+"known": "তুমি যাওয়ার আগে",
+"target": "before you go",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I want you to'"
+},
+{
+"lego": "S0249L02",
+"seed": 249,
+"known": "আমাকে সাহায্য করো",
+"target": "help me",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0249L02B01",
+"hi": "मैं चाहता हूँ कि आप सप्ताहांत से पहले मेरी मदद करें।",
+"en": "I want you to help me before the weekend",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0249L02B02",
+"hi": "मैं चाहती हूँ कि आप जल्द ही मेरी मदद करें।",
+"en": "I want you to help me soon",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0249L02B03",
+"hi": "मैं चाहता हूँ कि आप कल दोपहर मेरी मदद करें।",
+"en": "I want you to help me tomorrow afternoon",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0250L01",
+"seed": 250,
+"known": "আমি উত্তর দেওয়ার আগে",
+"target": "before I answer",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'can you tell me'"
+},
+{
+"lego": "S0250L02",
+"seed": 250,
+"known": "আরও কিছু বলো",
+"target": "tell me something else",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'something else'"
+},
+{
+"lego": "S0251L01",
+"seed": 251,
+"known": "জানতে চাই না",
+"target": "don't want to find out",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't want to find out'"
+},
+{
+"lego": "S0252L01",
+"seed": 252,
+"known": "তৈরি হওয়া",
+"target": "be ready",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when will you be ready'"
+},
+{
+"lego": "S0252L02",
+"seed": 252,
+"known": "শুরু করতে তৈরি",
+"target": "ready to start",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to start'"
+},
+{
+"lego": "S0253L01",
+"seed": 253,
+"known": "কয়েক মিনিটের মধ্যে",
+"target": "in a few minutes",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'll be ready'"
+},
+{
+"lego": "S0253L02",
+"seed": 253,
+"known": "তৈরি হয়ে যাব",
+"target": "I should be ready",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'in a few minutes'"
+},
+{
+"lego": "S0254L01",
+"seed": 254,
+"known": "এই সকাল থেকে",
+"target": "since this morning",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I've been ready'"
+},
+{
+"lego": "S0254L02",
+"seed": 254,
+"known": "তৈরি আছি",
+"target": "I've been ready",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'since this morning'"
+},
+{
+"lego": "S0255L01",
+"seed": 255,
+"known": "যেতে তৈরি",
+"target": "ready to leave",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when do you think'"
+},
+{
+"lego": "S0255L02",
+"seed": 255,
+"known": "কখন বলে মনে করো",
+"target": "when do you think",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you'll be ready to leave'"
+},
+{
+"lego": "S0256L01",
+"seed": 256,
+"known": "এক ঘণ্টার কম",
+"target": "less than an hour",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I think'"
+},
+{
+"lego": "S0257L01",
+"seed": 257,
+"known": "ঐ নীল জিনিসটা",
+"target": "that blue thing",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0257L01B01",
+"hi": "मुझे वह नीली चीज़ पसंद नहीं है।",
+"en": "I don't like that blue thing",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0257L01B02",
+"hi": "मैं वह नीली चीज़ चाहता हूँ।",
+"en": "I want that blue thing",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0257L01B03",
+"hi": "मैं वह नीली चीज़ नहीं चाहती।",
+"en": "I don't want that blue thing",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0258L01",
+"seed": 258,
+"known": "ওখানে",
+"target": "over there",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what's that blue thing'"
+},
+{
+"lego": "S0261L01",
+"seed": 261,
+"known": "হয়তো",
+"target": "it might be",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I think'"
+},
+{
+"lego": "S0264L01",
+"seed": 264,
+"known": "বয়স্ক লোক",
+"target": "old man",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'an old man'"
+},
+{
+"lego": "S0265L01",
+"seed": 265,
+"known": "একজন বন্ধু",
+"target": "a friend",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0265L01B01",
+"hi": "यह एक दोस्त हो सकता है।",
+"en": "it might be a friend",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0265L01B02",
+"hi": "मुझे लगता है यह एक दोस्त हो सकता है।",
+"en": "I think it might be a friend",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0265L01B03",
+"hi": "मैं एक दोस्त चाहती हूँ।",
+"en": "I want a friend",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0266L01",
+"seed": 266,
+"known": "আমার বাবার পুরনো বন্ধু",
+"target": "old friend of my father",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he was'"
+},
+{
+"lego": "S0267L01",
+"seed": 267,
+"known": "কাছ থেকে খবর পেয়েছ",
+"target": "have you heard from",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'have you heard'"
+},
+{
+"lego": "S0268L01",
+"seed": 268,
+"known": "দুটো ইমেইল পাঠিয়েছে",
+"target": "sent me two emails",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'sent'"
+},
+{
+"lego": "S0269L01",
+"seed": 269,
+"known": "বাবার জন্য অপেক্ষা",
+"target": "wait for your father",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'why don't you want'"
+},
+{
+"lego": "S0271L01",
+"seed": 271,
+"known": "আসতে চাও",
+"target": "would you like",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0271L01B01",
+"hi": "क्या आप शुरू करना चाहेंगे?",
+"en": "would you like to start?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0271L01B02",
+"hi": "क्या आप जाना चाहेंगे?",
+"en": "would you like to go?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0271L01B03",
+"hi": "क्या आप सीखना चाहेंगे?",
+"en": "would you like to learn?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0271L02",
+"seed": 271,
+"known": "আমাদের সাথে আসা",
+"target": "come with us",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to come'"
+},
+{
+"lego": "S0271L03",
+"seed": 271,
+"known": "আগামী মাসে",
+"target": "next month",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'with us'"
+},
+{
+"lego": "S0273L02",
+"seed": 273,
+"known": "অনেক বেশি কাজ",
+"target": "too much work",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'unfortunately'"
+},
+{
+"lego": "S0274L01",
+"seed": 274,
+"known": "চলে যেতে হবে",
+"target": "have to leave",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'do you have to leave'"
+},
+{
+"lego": "S0274L02",
+"seed": 274,
+"known": "কয়েক দিনের মধ্যে",
+"target": "in a few days",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0274L02B01",
+"hi": "मैं कुछ दिनों में शुरू करना चाहता हूँ।",
+"en": "I want to start in a few days",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0274L02B02",
+"hi": "मैं कुछ दिनों में तैयार हो जाऊँगी।",
+"en": "I'll be ready in a few days",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0274L02B03",
+"hi": "क्या आप कुछ दिनों में हमारे साथ चलना चाहेंगे?",
+"en": "would you like to come with us in a few days?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0276L01",
+"seed": 276,
+"known": "এখানে থাকা",
+"target": "stay here",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'no'"
+},
+{
+"lego": "S0276L02",
+"seed": 276,
+"known": "আরও একটু বেশি সময়",
+"target": "for a little longer",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I can stay'"
+},
+{
+"lego": "S0277L01",
+"seed": 277,
+"known": "আগামী সপ্তাহের শুরুতে",
+"target": "early next week",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'yes'"
+},
+{
+"lego": "S0277L02",
+"seed": 277,
+"known": "গুরুত্বপূর্ণ মিটিং",
+"target": "important meeting",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I've got an important meeting'"
+},
+{
+"lego": "S0279L01",
+"seed": 279,
+"known": "বেশি সময় বাকি ছিল না",
+"target": "there wasn't much time left",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'yes'"
+},
+{
+"lego": "S0280L01",
+"seed": 280,
+"known": "সবচেয়ে গুরুত্বপূর্ণ কাজটা",
+"target": "the most important job",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'no'"
+},
+{
+"lego": "S0281L01",
+"seed": 281,
+"known": "কফি",
+"target": "coffee",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'before you start'"
+},
+{
+"lego": "S0281L02",
+"seed": 281,
+"known": "তোমার আপত্তি আছে কি",
+"target": "do you mind if",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I finish my coffee'"
+},
+{
+"lego": "S0283L01",
+"seed": 283,
+"known": "তোমার কোন বন্ধুরা",
+"target": "which of your friends",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'which of your friends speak'"
+},
+{
+"lego": "S0285L01",
+"seed": 285,
+"known": "ইংরেজি বলে",
+"target": "speaks English",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she speaks'"
+},
+{
+"lego": "S0286L01",
+"seed": 286,
+"known": "যে মানুষরা পছন্দ করে",
+"target": "people who like",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'people'"
+},
+{
+"lego": "S0287L02",
+"seed": 287,
+"known": "টেলিভিশন দেখতে",
+"target": "watching television",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'television'"
+},
+{
+"lego": "S0288L01",
+"seed": 288,
+"known": "আমি যাদের চিনি তাদের বেশিরভাগ",
+"target": "most people I know",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'like watching'"
+},
+{
+"lego": "S0289L01",
+"seed": 289,
+"known": "আমি ভাবছি",
+"target": "I wonder",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wonder if'"
+},
+{
+"lego": "S0290L01",
+"seed": 290,
+"known": "উত্তরটা জানে",
+"target": "knows the answer",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he knows the answer'"
+},
+{
+"lego": "S0291L01",
+"seed": 291,
+"known": "আমি আশা করি",
+"target": "I hope",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": []
+},
+{
+"lego": "S0291L02",
+"seed": 291,
+"known": "আরও ভালোভাবে কথা বলতে পারব",
+"target": "I'll be able to speak better",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'll be able to speak'"
+},
+{
+"lego": "S0292L01",
+"seed": 292,
+"known": "পার্টি",
+"target": "the party",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I hope'"
+},
+{
+"lego": "S0293L01",
+"seed": 293,
+"known": "দেখা করবে",
+"target": "going to meet",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I have to find out'"
+},
+{
+"lego": "S0293L02",
+"seed": 293,
+"known": "জানতে হবে",
+"target": "I have to find out",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'where he's going to meet me'"
+},
+{
+"lego": "S0294L01",
+"seed": 294,
+"known": "ফোন করা",
+"target": "call",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't have enough time'"
+},
+{
+"lego": "S0294L02",
+"seed": 294,
+"known": "যথেষ্ট সময় নেই",
+"target": "don't have enough time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to call you'"
+},
+{
+"lego": "S0295L01",
+"seed": 295,
+"known": "আমি এটা বলিনি",
+"target": "I didn't say that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0295L01B01",
+"hi": "मैंने यह नहीं कहा था कि मैं ख़त्म करना चाहती थी।",
+"en": "I didn't say that I wanted to finish",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0295L01B02",
+"hi": "मैंने यह नहीं कहा था कि मुझे देर हो जाएगी।",
+"en": "I didn't say that I'm going to be late",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0295L01B03",
+"hi": "मैंने यह नहीं कहा था कि मेरे पास बहुत काम है।",
+"en": "I didn't say that I've got too much work",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0295L02",
+"seed": 295,
+"known": "একদিনে শেষ করতে",
+"target": "finish in a day",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wanted'"
+},
+{
+"lego": "S0296L01",
+"seed": 296,
+"known": "আমি বলেছিলাম",
+"target": "I said that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0296L01B01",
+"hi": "मैंने कहा था कि मुझे देर हो जाएगी।",
+"en": "I said that I'm going to be late",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0296L01B02",
+"hi": "मैंने कहा था कि मेरे पास बहुत काम है।",
+"en": "I said that I've got too much work",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0296L01B03",
+"hi": "मैंने कहा था कि मैं ख़त्म करना चाहता हूँ।",
+"en": "I said that I want to finish",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0297L01",
+"seed": 297,
+"known": "বেশি মানুষকে চিনি না যারা",
+"target": "don't know many people who",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't know many people'"
+},
+{
+"lego": "S0298L01",
+"seed": 298,
+"known": "আর কিছু বলার নেই",
+"target": "nothing left to say",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I've got nothing left'"
+},
+{
+"lego": "S0299L01",
+"seed": 299,
+"known": "অর্ধেক দেওয়া",
+"target": "pay half",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he wants'"
+},
+{
+"lego": "S0301L03",
+"seed": 301,
+"known": "তোমাকে কিছু দেখাতে",
+"target": "to show you something",
+"type": "M",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'something'"
+},
+{
+"lego": "S0306L03",
+"seed": 306,
+"known": "যে কথা বলছে",
+"target": "who's talking",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'who's talking to your friend'"
+},
+{
+"lego": "S0315L02",
+"seed": 315,
+"known": "যে গাড়িটা সে চেয়েছিল",
+"target": "the car that he wanted",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he couldn't afford'"
+},
+{
+"lego": "S0318L02",
+"seed": 318,
+"known": "সে এবার পারবে",
+"target": "she could this time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't think'"
+},
+{
+"lego": "S0383L02",
+"seed": 383,
+"known": "বাগানে",
+"target": "in the garden",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he said he wanted'"
+},
+{
+"lego": "S0384L02",
+"seed": 384,
+"known": "সে যা বলেছিল",
+"target": "what he said",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what he said a moment ago'"
+},
+{
+"lego": "S0462L01",
+"seed": 462,
+"known": "ইতালিতে",
+"target": "in Italy",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'my grandfather fought'"
+},
+{
+"lego": "S0462L02",
+"seed": 462,
+"known": "আমার দাদা",
+"target": "my grandfather",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'in Italy'"
+},
+{
+"lego": "S0462L04",
+"seed": 462,
+"known": "যুদ্ধের সময়",
+"target": "during the war",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0463L01",
+"seed": 463,
+"known": "রুম নম্বর",
+"target": "room number",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'my room number'"
+},
+{
+"lego": "S0464L01",
+"seed": 464,
+"known": "একবার",
+"target": "once",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I told her'"
+},
+{
+"lego": "S0465L01",
+"seed": 465,
+"known": "পরের বার",
+"target": "next time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0465L01B01",
+"hi": "अगली बार पूछना",
+"en": "to ask next time",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0465L01B02",
+"hi": "अगली बार आना",
+"en": "to come next time",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0465L01B03",
+"hi": "अगली बार मुझे बताना",
+"en": "to tell me next time",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0465L02",
+"seed": 465,
+"known": "তাকে জিজ্ঞেস করব",
+"target": "will ask her",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I will ask'"
+},
+{
+"lego": "S0465L03",
+"seed": 465,
+"known": "তার নাম কী",
+"target": "what her name is",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0466L01",
+"seed": 466,
+"known": "ছুঁড়ে দিতে",
+"target": "throw",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'let me throw it'"
+},
+{
+"lego": "S0466L02",
+"seed": 466,
+"known": "দেওয়াল ছাড়িয়ে",
+"target": "over the wall",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0466L02B03",
+"hi": "जो दीवार के पार खड़ा है",
+"en": "the one who is standing over the wall",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0467L01",
+"seed": 467,
+"known": "পার্ক",
+"target": "park",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the car park'"
+},
+{
+"lego": "S0467L02",
+"seed": 467,
+"known": "কার পার্কের পাশে",
+"target": "next to the car park",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's next to'"
+},
+{
+"lego": "S0468L01",
+"seed": 468,
+"known": "বড়",
+"target": "big",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's a big world'"
+},
+{
+"lego": "S0469L01",
+"seed": 469,
+"known": "এর মানে এই নয়",
+"target": "that doesn't mean",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'but'"
+},
+{
+"lego": "S0469L02",
+"seed": 469,
+"known": "আমরা এটা পরিবর্তন করতে পারি না",
+"target": "we can't change it",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'that doesn't mean'"
+},
+{
+"lego": "S0470L02",
+"seed": 470,
+"known": "কতটা উঁচুতে",
+"target": "how high",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'before we stop'"
+},
+{
+"lego": "S0472L01",
+"seed": 472,
+"known": "সমস্যার একটি অংশ হল",
+"target": "part of the problem is that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'part of the problem is'"
+},
+{
+"lego": "S0472L02",
+"seed": 472,
+"known": "আমরা তথ্যগুলো জানি না",
+"target": "we don't know the facts",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'that we don't know the facts'"
+},
+{
+"lego": "S0473L01",
+"seed": 473,
+"known": "আমি এটা চাই না",
+"target": "I don't want it",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0473L01B01",
+"hi": "मुझे लगता है मुझे यह नहीं चाहिए।",
+"en": "I think I don't want it",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0473L01B02",
+"hi": "मुझे यक़ीन नहीं है कि मुझे यह नहीं चाहिए।",
+"en": "I'm not sure if I don't want it",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0474L01",
+"seed": 474,
+"known": "বিনামূল্যে",
+"target": "free",
+"type": "A",
+"real_builds": 2,
+"uses": 11,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't even want it'"
+},
+{
+"lego": "S0475L01",
+"seed": 475,
+"known": "অনেক কারণ",
+"target": "many reasons",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'there are many reasons'"
+},
+{
+"lego": "S0476L01",
+"seed": 476,
+"known": "দ্বিতীয়ার্ধ",
+"target": "second half",
+"type": "M",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm waiting for'"
+},
+{
+"lego": "S0476L02",
+"seed": 476,
+"known": "শেষের জন্য",
+"target": "for the end",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the end of the second half'"
+},
+{
+"lego": "S0477L01",
+"seed": 477,
+"known": "অসুস্থ",
+"target": "sick",
+"type": "A",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the holidays'"
+},
+{
+"lego": "S0478L01",
+"seed": 478,
+"known": "দয়ালু",
+"target": "kind",
+"type": "A",
+"real_builds": 2,
+"uses": 10,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she has such a kind heart'"
+},
+{
+"lego": "S0478L02",
+"seed": 478,
+"known": "হৃদয়",
+"target": "heart",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0479L01",
+"seed": 479,
+"known": "সবচেয়ে কম",
+"target": "the least",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's the least I could do'"
+},
+{
+"lego": "S0480L01",
+"seed": 480,
+"known": "সে যাই বলুক",
+"target": "whatever he says",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'whatever'"
+},
+{
+"lego": "S0480L02",
+"seed": 480,
+"known": "এখন আর বেশি দূরে নয়",
+"target": "it's not far ahead now",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'far ahead'"
+},
+{
+"lego": "S0481L01",
+"seed": 481,
+"known": "একমাত্র আশা",
+"target": "the only real hope",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's the only real hope we have left'"
+},
+{
+"lego": "S0482L01",
+"seed": 482,
+"known": "গুরুতর নয়",
+"target": "not serious",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the only real hope is that'"
+},
+{
+"lego": "S0483L01",
+"seed": 483,
+"known": "সহজ হওয়ার কথা নয়",
+"target": "not meant to be easy",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'life isn't easy'"
+},
+{
+"lego": "S0484L01",
+"seed": 484,
+"known": "একটা চ্যালেঞ্জ হওয়ার কথা",
+"target": "meant to be a challenge",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's meant to be'"
+},
+{
+"lego": "S0485L01",
+"seed": 485,
+"known": "বেশি খুশি",
+"target": "happier",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'nothing would make me happier'"
+},
+{
+"lego": "S0485L02",
+"seed": 485,
+"known": "চলে যেতে",
+"target": "to get away",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'than to get away from here'"
+},
+{
+"lego": "S0486L01",
+"seed": 486,
+"known": "তোমার চোখ",
+"target": "your eyes",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I think that'"
+},
+{
+"lego": "S0487L01",
+"seed": 487,
+"known": "সেতুর নিচে",
+"target": "under the bridge",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's under the bridge'"
+},
+{
+"lego": "S0488L01",
+"seed": 488,
+"known": "লাইন",
+"target": "line",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's on the other side of that yellow line'"
+},
+{
+"lego": "S0488L02",
+"seed": 488,
+"known": "অন্য পাশে",
+"target": "on the other side of",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0489L02",
+"seed": 489,
+"known": "এক কাপ",
+"target": "a cup",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'right now'"
+},
+{
+"lego": "S0491L01",
+"seed": 491,
+"known": "আমি ভালোবাসি",
+"target": "I love",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0491L01B01",
+"hi": "मुझे एक दिलचस्प किताब बहुत पसंद है।",
+"en": "I love an interesting book",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0491L01B02",
+"hi": "मुझे एक कहानी बहुत पसंद है।",
+"en": "I love a story",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0491L01B03",
+"hi": "मुझे एक बढ़िया विचार बहुत पसंद है।",
+"en": "I love a great idea",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0491L02",
+"seed": 491,
+"known": "সাহায্য করার চেষ্টা করার ভঙ্গিটা",
+"target": "the way you try to help",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0491L02B01",
+"hi": "मुझे यह बहुत पसंद है कि आप किस तरह मदद करने की कोशिश करते हैं।",
+"en": "I love the way you try to help",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0491L02B02",
+"hi": "मुझे लगता है कि मुझे यह बहुत पसंद है कि आप किस तरह मदद करने की कोशिश करते हैं।",
+"en": "I think that I love the way you try to help",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0491L02B03",
+"hi": "यह सच है कि मुझे यह बहुत पसंद है कि आप किस तरह मदद करने की कोशिश करते हैं।",
+"en": "it's true I love the way you try to help",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0492L01",
+"seed": 492,
+"known": "কোন জায়গাটাকে",
+"target": "which of those places",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0492L01B01",
+"hi": "उनमें से कौन सी जगह आपको पसंद है",
+"en": "which of those places you like",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0492L01B02",
+"hi": "क्या आप मुझे बता सकते हैं कि उनमें से कौन सी जगह",
+"en": "can you tell me which of those places",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0492L01B03",
+"hi": "उनमें से कौन सी जगह आप देखना चाहते हैं",
+"en": "which of those places do you want to see",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0492L02",
+"seed": 492,
+"known": "সবচেয়ে মজার",
+"target": "most interesting",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the most interesting'"
+},
+{
+"lego": "S0494L01",
+"seed": 494,
+"known": "কী হয়",
+"target": "what happens",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0494L01B02",
+"hi": "क्या आप मुझे बता सकते हैं कि क्या होता है?",
+"en": "can you tell me what happens?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0494L01B03",
+"hi": "मुझे यक़ीन नहीं है कि क्या होता है।",
+"en": "I'm not sure what happens",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0494L02",
+"seed": 494,
+"known": "প্রথম",
+"target": "first",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'after the first part of the show'"
+},
+{
+"lego": "S0495L01",
+"seed": 495,
+"known": "গুরুত্ব দেয়",
+"target": "it matters",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when it matters'"
+},
+{
+"lego": "S0496L01",
+"seed": 496,
+"known": "সত্যিই",
+"target": "really",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm not planning'"
+},
+{
+"lego": "S0496L02",
+"seed": 496,
+"known": "হারানোর",
+"target": "to lose",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0496L02B01",
+"hi": "मैं हारना नहीं चाहती।",
+"en": "I don't want to lose",
+"elsewhere_in_course": true
+},
+{
+"hin_id": "S0496L02B02",
+"hi": "मैं हारना चाहती हूँ।",
+"en": "I want to lose",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0496L02B03",
+"hi": "मेरा हारने का कोई इरादा नहीं है।",
+"en": "I'm not planning to lose",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0496L03",
+"seed": 496,
+"known": "পরিকল্পনা করছি না",
+"target": "not planning to",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when it really matters'"
+},
+{
+"lego": "S0497L01",
+"seed": 497,
+"known": "এটা শুনতে মনে হচ্ছে",
+"target": "that sounds as though",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0497L01B01",
+"hi": "लगता है जैसे वह ख़ुश है।",
+"en": "that sounds as though he's happy",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0497L01B02",
+"hi": "लगता है जैसे ज़िंदगी आसान नहीं है।",
+"en": "that sounds as though life isn't easy",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0497L01B03",
+"hi": "लगता है जैसे मुझे देर हो जाएगी।",
+"en": "that sounds as though I'm going to be late",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0498L01",
+"seed": 498,
+"known": "একা",
+"target": "alone",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he's standing alone over there'"
+},
+{
+"lego": "S0498L03",
+"seed": 498,
+"known": "ভেতরে",
+"target": "inside",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0499L01",
+"seed": 499,
+"known": "হয়তো আমাদের",
+"target": "maybe we",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'maybe we should open'"
+},
+{
+"lego": "S0499L02",
+"seed": 499,
+"known": "দরজা খুলে",
+"target": "open the door",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'close the window'"
+},
+{
+"lego": "S0499L03",
+"seed": 499,
+"known": "জানালা বন্ধ করা উচিত",
+"target": "should close the window",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0500L01",
+"seed": 500,
+"known": "বসতে",
+"target": "sit",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'why don't you want'"
+},
+{
+"lego": "S0500L02",
+"seed": 500,
+"known": "দুই মেয়ের মাঝে",
+"target": "between the two girls",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to sit between the two girls'"
+},
+{
+"lego": "S0501L02",
+"seed": 501,
+"known": "ঝগড়া না করে",
+"target": "without arguing",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to play together'"
+},
+{
+"lego": "S0501L03",
+"seed": 501,
+"known": "পারতে",
+"target": "only could",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'without arguing'"
+},
+{
+"lego": "S0502L02",
+"seed": 502,
+"known": "হারিয়ে গিয়েছিল",
+"target": "got lost",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she turned left'"
+},
+{
+"lego": "S0502L03",
+"seed": 502,
+"known": "ডানের বদলে বাঁয়ে",
+"target": "left instead of right",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'instead of right'"
+},
+{
+"lego": "S0502L04",
+"seed": 502,
+"known": "মোড় নেওয়ায়",
+"target": "turned",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0503L01",
+"seed": 503,
+"known": "ঘৃণা করি",
+"target": "hate",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I hate making trouble'"
+},
+{
+"lego": "S0503L03",
+"seed": 503,
+"known": "ওটা আমার",
+"target": "that one's mine",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0504L01",
+"seed": 504,
+"known": "দৌড়াতে",
+"target": "run",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm going to run'"
+},
+{
+"lego": "S0504L02",
+"seed": 504,
+"known": "ঘাসের উপর দিয়ে",
+"target": "across the grass",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0504L02B02",
+"hi": "घास पर छह बजे।",
+"en": "across the grass at six o'clock",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0504L02B03",
+"hi": "मैं अगले हफ़्ते घास पर दौड़ूँगा।",
+"en": "I'm going to run across the grass next week",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0506L01",
+"seed": 506,
+"known": "থাকতাম",
+"target": "used to live",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I used to live around here'"
+},
+{
+"lego": "S0506L02",
+"seed": 506,
+"known": "বছর আগে",
+"target": "years ago",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0506L02B01",
+"hi": "बरसों पहले मैं यहीं आसपास रहती थी।",
+"en": "I used to live around here years ago",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0506L02B02",
+"hi": "बरसों पहले वह लगभग खो ही गई थी।",
+"en": "she almost got lost years ago",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0506L02B03",
+"hi": "बरसों पहले वह बाईं तरफ़ मुड़ गई थी।",
+"en": "she turned left years ago",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0506L03",
+"seed": 506,
+"known": "আমরা চলে আসার আগে",
+"target": "before we moved",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0506L03B01",
+"hi": "हमारे जाने से पहले मैं यहीं आसपास रहती थी।",
+"en": "I used to live around here before we moved",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0506L03B03",
+"hi": "हमारे जाने से पहले वह लगभग खो ही गई थी।",
+"en": "she almost got lost before we moved",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0507L01",
+"seed": 507,
+"known": "শহরে চলে এসেছিলাম",
+"target": "moved to the city",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we moved to the city'"
+},
+{
+"lego": "S0508L02",
+"seed": 508,
+"known": "চিন্তা করার কোনো মানে নেই",
+"target": "there's no point worrying",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how you're going to pay'"
+},
+{
+"lego": "S0509L01",
+"seed": 509,
+"known": "শুনেছি",
+"target": "heard",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you're going to pay for'"
+},
+{
+"lego": "S0509L02",
+"seed": 509,
+"known": "নতুন বিছানার",
+"target": "a new bed",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0509L02B01",
+"hi": "मैं एक नए बेड का इंतज़ार कर रही हूँ।",
+"en": "I'm waiting for a new bed",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0509L02B02",
+"hi": "मैं एक नया बेड चाहता हूँ।",
+"en": "I want a new bed",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0509L02B03",
+"hi": "यह एक नया बेड हो सकता है।",
+"en": "it might be a new bed",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0510L01",
+"seed": 510,
+"known": "গেছে",
+"target": "gone",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she's gone to look for'"
+},
+{
+"lego": "S0510L03",
+"seed": 510,
+"known": "কোথাও নিরাপদ জায়গা",
+"target": "somewhere safe",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to park the car'"
+},
+{
+"lego": "S0510L04",
+"seed": 510,
+"known": "গাড়ি রাখার জন্য",
+"target": "to park the car",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0511L01",
+"seed": 511,
+"known": "খবর",
+"target": "news",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the news took several hours'"
+},
+{
+"lego": "S0511L02",
+"seed": 511,
+"known": "কয়েক ঘণ্টা লেগেছিল",
+"target": "took several hours",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to reach everyone'"
+},
+{
+"lego": "S0511L03",
+"seed": 511,
+"known": "পৌঁছাতে",
+"target": "reach",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0511L04",
+"seed": 511,
+"known": "অফিসের সবার কাছে",
+"target": "everyone in the office",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0512L02",
+"seed": 512,
+"known": "দরজা খোলা ধরে রাখতে",
+"target": "hold the door open",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'while I fetch the keys'"
+},
+{
+"lego": "S0513L01",
+"seed": 513,
+"known": "ব্যথা করে",
+"target": "hurts",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it hurts most'"
+},
+{
+"lego": "S0513L02",
+"seed": 513,
+"known": "মাথা উপর-নিচ করলে",
+"target": "when I move my head up and down",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when I move my head'"
+},
+{
+"lego": "S0514L02",
+"seed": 514,
+"known": "নিখুঁত বাড়িটা",
+"target": "the perfect house",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'on the first day'"
+},
+{
+"lego": "S0516L01",
+"seed": 516,
+"known": "দুজনেই নিজে নিজে এসেছিল",
+"target": "both came on their own",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'they both came'"
+},
+{
+"lego": "S0517L01",
+"seed": 517,
+"known": "একে অপরের সাথে",
+"target": "with each other",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'they left'"
+},
+{
+"lego": "S0519L01",
+"seed": 519,
+"known": "এখনও দেখিনি",
+"target": "haven't seen yet",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I haven't seen'"
+},
+{
+"lego": "S0519L02",
+"seed": 519,
+"known": "তাদের নতুন শিশুকে",
+"target": "their new baby",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0519L02B01",
+"hi": "मैंने उनके नए बच्चे को नहीं देखा है।",
+"en": "I haven't seen their new baby",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0519L02B02",
+"hi": "मैं उनके नए बच्चे का इंतज़ार कर रही हूँ।",
+"en": "I'm waiting for their new baby",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0519L02B03",
+"hi": "यह उनका नया बच्चा हो सकता है।",
+"en": "it might be their new baby",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0520L01",
+"seed": 520,
+"known": "হয়ে থাকতে পারে",
+"target": "might have happened",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it might have happened'"
+},
+{
+"lego": "S0520L02",
+"seed": 520,
+"known": "পুরো পরিবারের সাথে",
+"target": "to the whole family",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0520L02B02",
+"hi": "मुझे लगता है कि यह पूरे परिवार के साथ हो सकता था।",
+"en": "I think that it might have happened to the whole family",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0520L02B03",
+"hi": "मैंने सुना कि यह पूरे परिवार के साथ हो सकता था।",
+"en": "I heard that it might have happened to the whole family",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0521L02",
+"seed": 521,
+"known": "এখানে থাকতে হয়েছিল",
+"target": "needed to stay here",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'why we needed to stay here'"
+},
+{
+"lego": "S0522L02",
+"seed": 522,
+"known": "সত্য বলাটা বোকামি ছিল",
+"target": "it was stupid to tell the truth",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it was stupid'"
+},
+{
+"lego": "S0523L01",
+"seed": 523,
+"known": "অজুহাত দেওয়ার",
+"target": "giving an excuse",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'instead of'"
+},
+{
+"lego": "S0525L01",
+"seed": 525,
+"known": "শেষ করতে",
+"target": "finish",
+"type": "A",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to check if'"
+},
+{
+"lego": "S0525L03",
+"seed": 525,
+"known": "সব শেষ করতে পেরেছ কিনা",
+"target": "you've been able to finish",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0526L01",
+"seed": 526,
+"known": "অনুমান করতে",
+"target": "guess",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm finding it hard to believe'"
+},
+{
+"lego": "S0526L02",
+"seed": 526,
+"known": "বিশ্বাস করতে কঠিন হচ্ছে",
+"target": "finding it hard to believe",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'you can't guess'"
+},
+{
+"lego": "S0527L02",
+"seed": 527,
+"known": "মজার গল্পটা",
+"target": "that funny story",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'who told me'"
+},
+{
+"lego": "S0528L02",
+"seed": 528,
+"known": "অন্য ঘরে",
+"target": "in another room",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'those things'"
+},
+{
+"lego": "S0528L03",
+"seed": 528,
+"known": "ওই জিনিসগুলো রাখার কথা",
+"target": "supposed to keep those things",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'in another room'"
+},
+{
+"lego": "S0529L01",
+"seed": 529,
+"known": "হাত তুলতে",
+"target": "put your hands up",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'can you all put your hands up'"
+},
+{
+"lego": "S0531L01",
+"seed": 531,
+"known": "সত্য নয়",
+"target": "isn't true",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it isn't true that'"
+},
+{
+"lego": "S0531L02",
+"seed": 531,
+"known": "খেলায় জিততে পারে",
+"target": "can win the game",
+"type": "M",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'anyone can win the game'"
+},
+{
+"lego": "S0532L01",
+"seed": 532,
+"known": "যদি না তারা ভাগ্যক্রমে জেতে",
+"target": "unless they're lucky",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0532L01B01",
+"hi": "गेम कोई भी जीत सकता है जब तक कि वे भाग्यशाली न हों।",
+"en": "anyone can win the game unless they're lucky",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0532L01B02",
+"hi": "मुझे देर हो जाएगी जब तक कि वे भाग्यशाली न हों।",
+"en": "I'm going to be late unless they're lucky",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0532L01B03",
+"hi": "मैं तैयार हो जाऊँगी जब तक कि वे भाग्यशाली न हों।",
+"en": "I'll be ready unless they're lucky",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0533L01",
+"seed": 533,
+"known": "শুনবে না",
+"target": "won't listen",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she won't listen to'"
+},
+{
+"lego": "S0533L02",
+"seed": 533,
+"known": "তুমি যা বলো তার প্রতিটা কথা",
+"target": "every word you say",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0533L02B02",
+"hi": "मुझे आपकी हर बात चाहिए।",
+"en": "I need every word you say",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0533L02B03",
+"hi": "मैं आपकी हर बात चाहती हूँ।",
+"en": "I want every word you say",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0534L01",
+"seed": 534,
+"known": "ভয়ঙ্কর আবহাওয়ায়",
+"target": "dreadful weather",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'let's not go outside'"
+},
+{
+"lego": "S0535L01",
+"seed": 535,
+"known": "প্রতিশ্রুতি দিয়েছিল",
+"target": "made a promise",
+"type": "M",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he made a promise that he wouldn't choose'"
+},
+{
+"lego": "S0535L02",
+"seed": 535,
+"known": "ভুল কাজ বেছে নেবে না",
+"target": "wouldn't choose the wrong job",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the wrong job'"
+},
+{
+"lego": "S0536L01",
+"seed": 536,
+"known": "পাগল হওয়াটা খারাপ",
+"target": "being crazy was bad",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I used to think that'"
+},
+{
+"lego": "S0536L02",
+"seed": 536,
+"known": "আগে মনে করতাম",
+"target": "used to think",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'being crazy was bad'"
+},
+{
+"lego": "S0537L01",
+"seed": 537,
+"known": "আমি ভুল ছিলাম",
+"target": "I was wrong",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0537L01B01",
+"hi": "मुझे लगता है कि मैं ग़लत थी।",
+"en": "I think that I was wrong",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0537L01B02",
+"hi": "यह सच है कि मैं ग़लत था।",
+"en": "it's true I was wrong",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0537L01B03",
+"hi": "मैंने कहा था कि मैं ग़लत था।",
+"en": "I said that I was wrong",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0538L01",
+"seed": 538,
+"known": "পরোয়া করি না",
+"target": "don't care",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I don't care'"
+},
+{
+"lego": "S0540L02",
+"seed": 540,
+"known": "আমার আপত্তি নেই",
+"target": "I don't mind",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'without the car'"
+},
+{
+"lego": "S0541L01",
+"seed": 541,
+"known": "শ্বাস নেওয়ার",
+"target": "to breathe",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's a good idea'"
+},
+{
+"lego": "S0542L01",
+"seed": 542,
+"known": "যখনই তোমার রাগ লাগে",
+"target": "whenever you feel angry",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'whenever'"
+},
+{
+"lego": "S0543L01",
+"seed": 543,
+"known": "সে ঠিক ছিল",
+"target": "she was right",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": []
+},
+{
+"lego": "S0544L01",
+"seed": 544,
+"known": "যে বলেছিল এটা",
+"target": "whoever said it",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'whoever said'"
+},
+{
+"lego": "S0544L02",
+"seed": 544,
+"known": "এটা কঠিন হবে",
+"target": "it would be difficult",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0544L02B01",
+"hi": "जिसने भी कहा कि यह मुश्किल होगा।",
+"en": "whoever said it would be difficult",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0544L02B02",
+"hi": "मुझे लगता है कि यह मुश्किल होगा।",
+"en": "I think that it would be difficult",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0544L02B03",
+"hi": "मुझे डर है कि यह मुश्किल होगा।",
+"en": "I'm afraid it would be difficult",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0544L03",
+"seed": 544,
+"known": "একদম",
+"target": "absolutely",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'was absolutely right'"
+},
+{
+"lego": "S0545L01",
+"seed": 545,
+"known": "পরিষ্কার কাপড়",
+"target": "the clean clothes",
+"type": "M",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's your turn'"
+},
+{
+"lego": "S0545L02",
+"seed": 545,
+"known": "উপরে নিয়ে যাওয়া",
+"target": "to take upstairs",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to take the clean clothes'"
+},
+{
+"lego": "S0546L01",
+"seed": 546,
+"known": "কুকুরটা",
+"target": "the dog",
+"type": "A",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the dog is dirty'"
+},
+{
+"lego": "S0546L02",
+"seed": 546,
+"known": "নোংরা এবং ভেজা",
+"target": "dirty and wet",
+"type": "M",
+"real_builds": 2,
+"uses": 9,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'wet'"
+},
+{
+"lego": "S0547L01",
+"seed": 547,
+"known": "কাদায়",
+"target": "in the mud",
+"type": "A",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he has been playing'"
+},
+{
+"lego": "S0548L01",
+"seed": 548,
+"known": "মন খারাপ অনুভব করছি",
+"target": "am feeling sad",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I am feeling sad'"
+},
+{
+"lego": "S0550L01",
+"seed": 550,
+"known": "গ্রাম",
+"target": "village",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the end of the village'"
+},
+{
+"lego": "S0550L02",
+"seed": 550,
+"known": "গ্রামের শেষ প্রান্ত",
+"target": "the end of the village",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0551L02",
+"seed": 551,
+"known": "কুৎসিত",
+"target": "ugly",
+"type": "A",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'is ugly'"
+},
+{
+"lego": "S0553L01",
+"seed": 553,
+"known": "ছোট গির্জাটা",
+"target": "the small church",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0553L01B01",
+"hi": "छोटा चर्च भद्दा है।",
+"en": "the small church is ugly",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0553L01B02",
+"hi": "यह छोटा चर्च हो सकता है।",
+"en": "it might be the small church",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0553L01B03",
+"hi": "वह छोटा चर्च ढूँढ़ने गई है।",
+"en": "she's gone to look for the small church",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0554L02",
+"seed": 554,
+"known": "শুকনো নয়",
+"target": "isn't dry",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0554L02B01",
+"hi": "चर्च सूखा नहीं है।",
+"en": "the church isn't dry",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0554L02B02",
+"hi": "छोटा चर्च सूखा नहीं है।",
+"en": "the small church isn't dry",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0554L02B03",
+"hi": "यह तौलिया सूखा नहीं है।",
+"en": "this towel isn't dry",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0555L02",
+"seed": 555,
+"known": "আনতে যাওয়ার মতো অনেক ক্লান্ত",
+"target": "too tired to fetch",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to fetch a new one'"
+},
+{
+"lego": "S0556L01",
+"seed": 556,
+"known": "সংগীত বাজায়",
+"target": "play music",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'they play music'"
+},
+{
+"lego": "S0556L02",
+"seed": 556,
+"known": "রাতে দেরিতে",
+"target": "late at night",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0556L02B02",
+"hi": "देर रात को चलो बाहर न जाएँ।",
+"en": "let's not go outside late at night",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0556L02B03",
+"hi": "देर रात को मैं तैयार हो जाऊँगी।",
+"en": "I'll be ready late at night",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0558L01",
+"seed": 558,
+"known": "এত রাত হয়ে গেছে",
+"target": "it's so late at night",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's too late at night'"
+},
+{
+"lego": "S0559L02",
+"seed": 559,
+"known": "বনের মধ্য দিয়ে",
+"target": "through the wood",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the path through the wood'"
+},
+{
+"lego": "S0560L02",
+"seed": 560,
+"known": "সৈকতের দিকে নামে",
+"target": "goes down to the beach",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0561L01",
+"seed": 561,
+"known": "দ্রুত গাড়ি",
+"target": "a fast car",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'i don't care if'"
+},
+{
+"lego": "S0561L02",
+"seed": 561,
+"known": "এটা দ্রুত গাড়ি কিনা",
+"target": "if it's a fast car",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's a fast car'"
+},
+{
+"lego": "S0562L01",
+"seed": 562,
+"known": "নিরাপদে",
+"target": "safely",
+"type": "A",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I just want'"
+},
+{
+"lego": "S0564L01",
+"seed": 564,
+"known": "তোমার সাহায্য ছাড়া",
+"target": "without your help",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wouldn't have been able to'"
+},
+{
+"lego": "S0565L01",
+"seed": 565,
+"known": "আরও সাবধানে ভাবতাম",
+"target": "I'd have thought more carefully",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'd have thought'"
+},
+{
+"lego": "S0566L03",
+"seed": 566,
+"known": "আমি আরও ভাবতাম",
+"target": "I'd have thought more",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0567L01",
+"seed": 567,
+"known": "বাইরে সন্তানদের",
+"target": "the children outdoors",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's been lovely'"
+},
+{
+"lego": "S0567L03",
+"seed": 567,
+"known": "সময় কাটানো খুব ভালো লেগেছে",
+"target": "it's been lovely spending time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'outdoors'"
+},
+{
+"lego": "S0568L02",
+"seed": 568,
+"known": "উন্নতি",
+"target": "an improvement",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0568L02B01",
+"hi": "मुझे सुधार देखने की उम्मीद है।",
+"en": "I'm expecting to see an improvement",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0568L02B02",
+"hi": "मैं सुधार चाहती हूँ।",
+"en": "I want an improvement",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0568L02B03",
+"hi": "यह सुधार हो सकता है।",
+"en": "it might be an improvement",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0568L03",
+"seed": 568,
+"known": "দেখার আশা করছি",
+"target": "I'm expecting to see",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'when we meet'"
+},
+{
+"lego": "S0569L02",
+"seed": 569,
+"known": "কতটুকু দিতে রাজি আছ",
+"target": "how much you are willing to pay",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0569L02B02",
+"hi": "मुझे नहीं पता कि आप कितना देने को तैयार हैं।",
+"en": "I don't know how much you are willing to pay",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0569L02B03",
+"hi": "मुझे यक़ीन नहीं है कि आप कितना देने को तैयार हैं।",
+"en": "I'm not sure how much you are willing to pay",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0570L01",
+"seed": 570,
+"known": "তোমার টিকেটের জন্য",
+"target": "for your ticket",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how much are you willing to pay for your ticket'"
+},
+{
+"lego": "S0571L02",
+"seed": 571,
+"known": "নিশ্চিত নই",
+"target": "not convinced",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it would be a very good idea'"
+},
+{
+"lego": "S0572L01",
+"seed": 572,
+"known": "তুমি কি ভুলে গেছ",
+"target": "have you forgotten",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0572L01B01",
+"hi": "क्या आप भूल गए कि क्या होता है?",
+"en": "have you forgotten what happens?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0572L01B02",
+"hi": "क्या आप भूल गए कि आगे क्या होने वाला है?",
+"en": "have you forgotten what's going to come next?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0572L01B03",
+"hi": "क्या आप भूल गए कि मुझे किसने सुनाई?",
+"en": "have you forgotten who told me?",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0572L03",
+"seed": 572,
+"known": "গত বার তারা আমাদের কাছে এলে",
+"target": "the last time they visited us",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0572L03B02",
+"hi": "मुझे नहीं पता कि पिछली बार जब वे हमसे मिलने आए थे तब क्या हुआ था।",
+"en": "I don't know what happened the last time they visited us",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0572L03B03",
+"hi": "मुझे यक़ीन नहीं है कि पिछली बार जब वे हमसे मिलने आए थे तब क्या हुआ था।",
+"en": "I'm not sure what happened the last time they visited us",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0574L01",
+"seed": 574,
+"known": "সবার জন্য",
+"target": "for everyone",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the holidays are very special'"
+},
+{
+"lego": "S0575L01",
+"seed": 575,
+"known": "কষ্টের হয়েছে",
+"target": "been upsetting",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's been upsetting'"
+},
+{
+"lego": "S0576L02",
+"seed": 576,
+"known": "খুব কষ্টের হয়েছে",
+"target": "has been very upsetting",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0577L03",
+"seed": 577,
+"known": "হাসপাতাল থেকে",
+"target": "from the hospital",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0578L01",
+"seed": 578,
+"known": "একটু বেশি গরম",
+"target": "warmer",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'somewhere warmer'"
+},
+{
+"lego": "S0579L02",
+"seed": 579,
+"known": "চেষ্টা করেছি",
+"target": "we've tried",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0580L01",
+"seed": 580,
+"known": "নিয়ে যেতে চেয়েছি",
+"target": "we've wanted to take",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we've often wanted'"
+},
+{
+"lego": "S0581L01",
+"seed": 581,
+"known": "এটা কেমন",
+"target": "what it's like",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he'd like to know a little more'"
+},
+{
+"lego": "S0581L02",
+"seed": 581,
+"known": "সম্পর্কে আরেকটু বেশি",
+"target": "a little more about",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'about what it's like'"
+},
+{
+"lego": "S0581L03",
+"seed": 581,
+"known": "সে আরেকটু জানতে চায়",
+"target": "he'd like to know",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0582L01",
+"seed": 582,
+"known": "বড় হওয়া",
+"target": "to grow up",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what's it like'"
+},
+{
+"lego": "S0583L01",
+"seed": 583,
+"known": "পৃথিবীর এই অংশে",
+"target": "in this part of the world",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0583L01B01",
+"hi": "दुनिया के इस हिस्से में कैसा लगता है?",
+"en": "what's it like in this part of the world?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0583L01B02",
+"hi": "दुनिया के इस हिस्से में मुझे देर हो जाएगी।",
+"en": "I'm going to be late in this part of the world",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0583L01B03",
+"hi": "दुनिया के इस हिस्से में मैं तैयार हो जाऊँगी।",
+"en": "I'll be ready in this part of the world",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0584L02",
+"seed": 584,
+"known": "জেগে উঠে",
+"target": "to wake up",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'and see the mountains'"
+},
+{
+"lego": "S0584L03",
+"seed": 584,
+"known": "প্রতিদিন সকালে",
+"target": "every morning",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0585L01",
+"seed": 585,
+"known": "শোবার ঘর",
+"target": "bedroom",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I can see'"
+},
+{
+"lego": "S0585L02",
+"seed": 585,
+"known": "দেখতে পাই",
+"target": "I can see",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'the mountains'"
+},
+{
+"lego": "S0585L03",
+"seed": 585,
+"known": "জানালা দিয়ে",
+"target": "out of the window",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'out of my bedroom window'"
+},
+{
+"lego": "S0586L01",
+"seed": 586,
+"known": "ডিম",
+"target": "eggs",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'twenty boiled eggs'"
+},
+{
+"lego": "S0586L02",
+"seed": 586,
+"known": "কুড়িটি সেদ্ধ",
+"target": "twenty boiled",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0587L01",
+"seed": 587,
+"known": "রাতের খাবারে",
+"target": "for supper",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she used to insist that'"
+},
+{
+"lego": "S0587L02",
+"seed": 587,
+"known": "জোর দিত",
+"target": "used to insist",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we had eggs'"
+},
+{
+"lego": "S0588L01",
+"seed": 588,
+"known": "বাড়ি ছেড়ে যেতে",
+"target": "to leave home",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I wanted'"
+},
+{
+"lego": "S0588L02",
+"seed": 588,
+"known": "তাই আমি বড় হয়ে",
+"target": "so I wanted to grow up",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to grow up'"
+},
+{
+"lego": "S0591L01",
+"seed": 591,
+"known": "অনুসরণ করল",
+"target": "followed me",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'she followed me'"
+},
+{
+"lego": "S0591L02",
+"seed": 591,
+"known": "দোকানের দিকে",
+"target": "down to the shops",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0591L02B03",
+"hi": "मैं दुकानों तक दौड़ूँगा।",
+"en": "I'm going to run down to the shops",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0592L01",
+"seed": 592,
+"known": "প্রধান রাস্তা ধরে",
+"target": "along the main road",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0592L01B02",
+"hi": "वह मुख्य सड़क के साथ-साथ मेरे पीछे आई।",
+"en": "she followed me along the main road",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0592L01B03",
+"hi": "मैं मुख्य सड़क के साथ-साथ दौड़ूँगा।",
+"en": "I'm going to run along the main road",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0593L01",
+"seed": 593,
+"known": "ভাগ করে নিতে",
+"target": "to share",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'however much I argued'"
+},
+{
+"lego": "S0593L02",
+"seed": 593,
+"known": "যত ঝগড়াই করি না কেন",
+"target": "however much I argued",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I still had to share'"
+},
+{
+"lego": "S0594L02",
+"seed": 594,
+"known": "বোনের",
+"target": "sister",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'my toys'"
+},
+{
+"lego": "S0596L01",
+"seed": 596,
+"known": "চোখ",
+"target": "eyes",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I need to close my eyes'"
+},
+{
+"lego": "S0597L01",
+"seed": 597,
+"known": "সন্দেহ",
+"target": "suspect",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I think'"
+},
+{
+"lego": "S0597L02",
+"seed": 597,
+"known": "শতটা গল্প",
+"target": "a hundred stories",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'he's heard'"
+},
+{
+"lego": "S0598L01",
+"seed": 598,
+"known": "হাজারটা গল্প",
+"target": "a thousand stories",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0598L01B01",
+"hi": "अर्थव्यवस्था के बारे में हज़ारों कहानियाँ",
+"en": "a thousand stories about the economy",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0598L01B03",
+"hi": "हज़ारों कहानियाँ यहाँ",
+"en": "a thousand stories here",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0598L01B04",
+"hi": "इसके बारे में हज़ारों कहानियाँ",
+"en": "a thousand stories about it",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0598L02",
+"seed": 598,
+"known": "তারা কী করছিল",
+"target": "what they were doing",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'about what they were doing'"
+},
+{
+"lego": "S0599L01",
+"seed": 599,
+"known": "গাড়ি চালাতাম",
+"target": "to drive",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'd have been happy'"
+},
+{
+"lego": "S0599L03",
+"seed": 599,
+"known": "তুমি আমাকে বললে",
+"target": "if you'd told me",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0599L03B02",
+"hi": "अगर आपने मुझे बताया होता, तो मुझे मदद करने में ख़ुशी होती।",
+"en": "I'd have been happy to help if you'd told me",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0599L03B03",
+"hi": "अगर आपने मुझे बताया होता, तो मैंने और सोचा होता।",
+"en": "I'd have thought more if you'd told me",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0600L01",
+"seed": 600,
+"known": "তুমি কতটা ক্লান্ত ছিলে",
+"target": "how tired you were",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'd have driven'"
+},
+{
+"lego": "S0600L02",
+"seed": 600,
+"known": "আমি গাড়ি চালাতাম",
+"target": "I'd have driven",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how tired'"
+},
+{
+"lego": "S0601L02",
+"seed": 601,
+"known": "কীভাবে সব শুরু হয়েছিল",
+"target": "how it all started",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0601L02B02",
+"hi": "मुझे नहीं पता कि यह सब कैसे शुरू हुआ।",
+"en": "I don't know how it all started",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0601L02B03",
+"hi": "मुझे यक़ीन नहीं है कि यह सब कैसे शुरू हुआ।",
+"en": "I'm not sure how it all started",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0602L01",
+"seed": 602,
+"known": "প্রথম থেকে",
+"target": "in the first place",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how it started in the first place'"
+},
+{
+"lego": "S0603L01",
+"seed": 603,
+"known": "থাকার কোনো জায়গা ছিল না",
+"target": "didn't have anywhere to live",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we didn't have anywhere'"
+},
+{
+"lego": "S0603L02",
+"seed": 603,
+"known": "সেই সময়ে",
+"target": "at the time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0603L02B02",
+"hi": "उस समय मुझे देर हो जाएगी।",
+"en": "I'm going to be late at the time",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0603L02B03",
+"hi": "उस समय मैं तैयार हो जाऊँगी।",
+"en": "I'll be ready at the time",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0604L01",
+"seed": 604,
+"known": "থাকতে",
+"target": "to stay",
+"type": "A",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'offered to let us stay'"
+},
+{
+"lego": "S0604L02",
+"seed": 604,
+"known": "থাকতে দিতে রাজি হয়েছিল",
+"target": "offered to let us stay",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0605L01",
+"seed": 605,
+"known": "আমাদের সাহায্য দরকার ছিল",
+"target": "we needed help",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0605L01B02",
+"hi": "मुझे लगता है कि हमें मदद की ज़रूरत थी।",
+"en": "I think that we needed help",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0605L01B03",
+"hi": "यह सच है कि हमें मदद की ज़रूरत थी।",
+"en": "it's true we needed help",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0606L01",
+"seed": 606,
+"known": "আমি অপেক্ষা করতাম",
+"target": "I'd have waited",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'if I'd known then'"
+},
+{
+"lego": "S0606L02",
+"seed": 606,
+"known": "আমি তখন জানতাম",
+"target": "if I'd known then",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'what I know now'"
+},
+{
+"lego": "S0607L01",
+"seed": 607,
+"known": "যদি আমি জানতাম",
+"target": "if I'd known",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'if I had known'"
+},
+{
+"lego": "S0607L02",
+"seed": 607,
+"known": "জিনিসগুলো অন্যভাবে করতাম",
+"target": "I'd have done things differently",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0607L02B01",
+"hi": "मुझे लगता है कि अगर मुझे पता होता, तो मैंने चीज़ें अलग ढंग से की होतीं।",
+"en": "I think that if I had known I'd have done things differently",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0607L02B02",
+"hi": "यह सच है कि अगर मुझे पता होता, तो मैंने चीज़ें अलग ढंग से की होतीं।",
+"en": "it's true if I had known I'd have done things differently",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0607L02B03",
+"hi": "मेरा मानना है कि अगर मुझे पता होता, तो मैंने चीज़ें अलग ढंग से की होतीं।",
+"en": "I believe that if I had known I'd have done things differently",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0608L01",
+"seed": 608,
+"known": "করার",
+"target": "to do",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it would have been the sensible thing to do'"
+},
+{
+"lego": "S0608L02",
+"seed": 608,
+"known": "বুদ্ধিমানের কাজ",
+"target": "the sensible thing",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0610L01",
+"seed": 610,
+"known": "কাজ খোঁজা দরকার",
+"target": "needs to look for work",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to look for work'"
+},
+{
+"lego": "S0611L02",
+"seed": 611,
+"known": "খুঁজতে তৈরি থাকতাম",
+"target": "I would have been ready to look",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'to look'"
+},
+{
+"lego": "S0612L01",
+"seed": 612,
+"known": "আমরা কিছু কিনতাম",
+"target": "we would have bought something",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0612L01B01",
+"hi": "मुझे लगता है कि हम कुछ ख़रीद लेते।",
+"en": "I think that we would have bought something",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0612L01B02",
+"hi": "यह सच है कि हम कुछ ख़रीद लेते।",
+"en": "it's true we would have bought something",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0612L01B03",
+"hi": "अगर मुझे तब पता होता, तो हम कुछ ख़रीद लेते।",
+"en": "we would have bought something if I'd known then",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0613L01",
+"seed": 613,
+"known": "একটা বাড়ি",
+"target": "a house",
+"type": "M",
+"real_builds": 2,
+"uses": 15,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we probably would have bought'"
+},
+{
+"lego": "S0613L02",
+"seed": 613,
+"known": "সম্ভবত সেখানে",
+"target": "probably there",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'a house there'"
+},
+{
+"lego": "S0616L02",
+"seed": 616,
+"known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
+"target": "you were very brave to say",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0617L02",
+"seed": 617,
+"known": "তুমি মনে করেছিলে যে",
+"target": "you thought that",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0618L01",
+"seed": 618,
+"known": "দীর্ঘ",
+"target": "long",
+"type": "A",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it doesn't feel like a long time'"
+},
+{
+"lego": "S0618L02",
+"seed": 618,
+"known": "দীর্ঘ সময় মনে হয় না",
+"target": "doesn't feel like a long time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0619L01",
+"seed": 619,
+"known": "একে অপরকে দেখার পর থেকে",
+"target": "since we saw each other",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's a long time'"
+},
+{
+"lego": "S0619L02",
+"seed": 619,
+"known": "অনেক সময় হয়ে গেছে",
+"target": "it's a long time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'we saw each other'"
+},
+{
+"lego": "S0620L02",
+"seed": 620,
+"known": "অনেক দীর্ঘ সময় হয়ে গেছে",
+"target": "it's a very long time",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'since we last saw each other'"
+},
+{
+"lego": "S0621L01",
+"seed": 621,
+"known": "ভেঙে গেছে",
+"target": "it was broken",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0621L01B01",
+"hi": "मुझे लगता है यह टूट गया था",
+"en": "I think it was broken",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0621L01B03",
+"hi": "लेकिन यह टूट गया था",
+"en": "but it was broken",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0622L01",
+"seed": 622,
+"known": "আমি জানতাম",
+"target": "I knew",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I knew that'"
+},
+{
+"lego": "S0622L02",
+"seed": 622,
+"known": "সন্তানরা এটা ভেঙেছে",
+"target": "the children had broken it",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0622L02B02",
+"hi": "मुझे लगता है कि इसे बच्चों ने तोड़ दिया था।",
+"en": "I think that the children had broken it",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0622L02B03",
+"hi": "यह सच है कि इसे बच्चों ने तोड़ दिया था।",
+"en": "it's true the children had broken it",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0623L02",
+"seed": 623,
+"known": "কফি না চা",
+"target": "coffee or tea",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'a cup of tea or coffee'"
+},
+{
+"lego": "S0625L01",
+"seed": 625,
+"known": "পান করতে",
+"target": "to drink",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'something to drink'"
+},
+{
+"lego": "S0625L02",
+"seed": 625,
+"known": "কিছু পান করতে চাও",
+"target": "want something to drink",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "no hin LEGO"
+},
+{
+"lego": "S0626L01",
+"seed": 626,
+"known": "তৃষ্ণা নেই",
+"target": "not thirsty",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm not thirsty'"
+},
+{
+"lego": "S0627L01",
+"seed": 627,
+"known": "তোমার কফি তৈরি",
+"target": "your coffee is ready",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0627L01B01",
+"hi": "मुझे लगता है कि आपकी कॉफ़ी तैयार है।",
+"en": "I think that your coffee is ready",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0627L01B02",
+"hi": "यह सच है कि आपकी कॉफ़ी तैयार है।",
+"en": "it's true your coffee is ready",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0627L01B03",
+"hi": "मेरा मानना है कि आपकी कॉफ़ी तैयार है।",
+"en": "I believe that your coffee is ready",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0628L01",
+"seed": 628,
+"known": "চা পছন্দ কর",
+"target": "like tea",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'do you like tea'"
+},
+{
+"lego": "S0632L01",
+"seed": 632,
+"known": "এক গ্লাস পানি",
+"target": "a glass of water",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0632L01B02",
+"hi": "यह एक गिलास पानी हो सकता है।",
+"en": "it might be a glass of water",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0632L01B03",
+"hi": "मुझे एक गिलास पानी चाहिए।",
+"en": "I need a glass of water",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0633L02",
+"seed": 633,
+"known": "এক বড় গ্লাস পানি",
+"target": "a large glass of water",
+"type": "M",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'would be fine'"
+},
+{
+"lego": "S0636L01",
+"seed": 636,
+"known": "আমি মনে করি",
+"target": "I think",
+"type": "M",
+"real_builds": 2,
+"uses": 7,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I think that'"
+},
+{
+"lego": "S0640L01",
+"seed": 640,
+"known": "লাল রঙেরটা",
+"target": "the red one",
+"type": "M",
+"real_builds": 2,
+"uses": 17,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'it's the red one'"
+},
+{
+"lego": "S0641L01",
+"seed": 641,
+"known": "চেয়ার",
+"target": "chair",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'on that chair'"
+},
+{
+"lego": "S0642L01",
+"seed": 642,
+"known": "ম্যাডাম",
+"target": "madam",
+"type": "A",
+"real_builds": 2,
+"uses": 5,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'how do you feel'"
+},
+{
+"lego": "S0645L01",
+"seed": 645,
+"known": "আপনাকে সাহায্য করতে পারি",
+"target": "I can help you",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": []
+},
+{
+"lego": "S0648L01",
+"seed": 648,
+"known": "আপনি যা বলেছিলেন",
+"target": "what you said",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": []
+},
+{
+"lego": "S0654L01",
+"seed": 654,
+"known": "আপনাকে সাহায্য করতে পারব",
+"target": "I can help you",
+"type": "M",
+"real_builds": 2,
+"uses": 6,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [],
+"why": "hin LEGO is 'I'm not sure if'"
+},
+{
+"lego": "S0660L01",
+"seed": 660,
+"known": "তোমাদের সবাইকে সাহায্য করতে পারি",
+"target": "I can help you all",
+"type": "M",
+"real_builds": 2,
+"uses": 8,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0660L01B01",
+"hi": "मुझे लगता है कि मैं आप सबकी मदद कर सकता हूँ।",
+"en": "I think that I can help you all",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0660L01B02",
+"hi": "यह सच है कि मैं आप सबकी मदद कर सकता हूँ।",
+"en": "it's true I can help you all",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0660L01B03",
+"hi": "अभी मैं आप सबकी मदद कर सकती हूँ।",
+"en": "I can help you all at the moment",
+"elsewhere_in_course": false
+}
+]
+},
+{
+"lego": "S0663L01",
+"seed": 663,
+"known": "তোমরা সবাই যা বলেছিলে",
+"target": "what you all said",
+"type": "M",
+"real_builds": 2,
+"uses": 9,
+"playable": 7,
+"bare": [
+"B01"
+],
+"need": 1,
+"src": [
+{
+"hin_id": "S0663L01B01",
+"hi": "मुझे वह नहीं पता जो आप सबने कहा।",
+"en": "I don't know what you all said",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0663L01B02",
+"hi": "मुझे यक़ीन नहीं है कि आप सबने क्या कहा।",
+"en": "I'm not sure what you all said",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0663L01B03",
+"hi": "क्या आप मुझे वह बता सकते हैं जो आप सबने कहा?",
+"en": "can you tell me what you all said?",
+"elsewhere_in_course": false
+},
+{
+"hin_id": "S0663L01B04",
+"hi": "उसने सुना है जो आप सबने कहा",
+"en": "he's heard what you all said",
+"elsewhere_in_course": false
+}
+]
+}
+]
+}
