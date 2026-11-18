@@ -1,0 +1,6 @@
+test (b) single work turn each
+sonnet #851·AI: 141 s, in 72,435 out 18,654, cache-read 936,567; 35 seeds, 71 rewrite / 32 insert / 2 delete; build 0 err 0 warn
+opus   #852·AI: 284 s, in 87,957 out 30,109, cache-read 1,463,181; 30 seeds, 163 rewrite / 28 insert / 49 delete; build 0 err 0 warn
+ref    #759·AI (opus, production plans, cost not separable): 33 seeds, 230 rewrite / 31 insert / 0 delete
+all three address 50/50 scan-flagged rows; scan covers 30 seeds
+blind read: 555 rows shuffled (seed 842), astra #854·AI
