@@ -44,8 +44,10 @@ const collide = new Set(fs.existsSync(path.join(cdir, 'collide.json')) ? JSON.pa
 const ourEvents = new Set(fs.readdirSync(cdir).filter(f => /^events.*\.json$/.test(f)).flatMap(f => JSON.parse(fs.readFileSync(path.join(cdir, f), 'utf8')).map(e => e.event_id)));
 
 const plans = [];
-for (const f of fs.readdirSync(path.join(cdir, 'plans')).filter(f => /^S\d{4}\.json$/.test(f)).sort()) {
-  const p = JSON.parse(fs.readFileSync(path.join(cdir, 'plans', f), 'utf8'));
+// ITEM9_PLANS=merged (cs #778): build from <course>/merged/ (auto deletes + authored back-fill, made by merge-authored.cjs).
+const PLANS = process.env.ITEM9_PLANS || 'plans';
+for (const f of fs.readdirSync(path.join(cdir, PLANS)).filter(f => /^S\d{4}\.json$/.test(f)).sort()) {
+  const p = JSON.parse(fs.readFileSync(path.join(cdir, PLANS, f), 'utf8'));
   if (p.seed >= lo && p.seed <= hi) plans.push(p);
 }
 const planBySeed = new Map(plans.map(p => [p.seed, p]));

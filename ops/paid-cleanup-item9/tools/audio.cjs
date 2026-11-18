@@ -19,13 +19,13 @@ const L = require('./lib.cjs');
 const [course, batch, ...rest] = process.argv.slice(2);
 const DRY = rest.includes('--dry');
 const only = rest.includes('--only') ? new Set(rest[rest.indexOf('--only') + 1].split(',')) : null;
-const CAP = 70000;
+const CAP = Number(process.env.ITEM9_CAP || 130000); // cs #778: Kai's brief, 18 Nov: hard cap 130,000 Cartesia chars for the apply job
 const cdir = path.join(L.ITEM_DIR, course);
 const bdir = path.join(cdir, 'batches');
 const adir = path.join(cdir, 'audio'); fs.mkdirSync(adir, { recursive: true });
 const rd = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
-const APPROVAL = 'kai:2026-11-18:paid-cleanup item 9 untaught-word fixes, Kai approved 18 Nov; fill now, voice mismatch OK (cs #713·AI)';
-const PURPOSE = 'cs #713·AI paid cleanup item 9 (word used before taught): re-said / new row, Kai approved 18 Nov';
+const APPROVAL = 'kai:2026-11-18:paid-cleanup item 9 untaught-word fixes, Kai approved apply incl. audio 18 Nov 15:41Z (cs #778)';
+const PURPOSE = 'cs #778 paid cleanup item 9 (word used before taught): back-fill / re-said row, Kai approved 18 Nov 15:41Z';
 const apply = rd(path.join(bdir, `${batch}.apply.json`));
 const ops = rd(path.join(bdir, `${batch}.ops.json`)).ops;
 const textOf = new Map();
@@ -53,14 +53,14 @@ const readLog = (f) => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n')
 const allLogs = () => fs.readdirSync(L.ITEM_DIR).filter(c => fs.existsSync(path.join(L.ITEM_DIR, c, 'audio')))
   .flatMap(c => fs.readdirSync(path.join(L.ITEM_DIR, c, 'audio')).filter(f => f.endsWith('.jsonl')).flatMap(f => readLog(path.join(L.ITEM_DIR, c, 'audio', f))));
 const isCartesia = (v) => v && !/^azure|^eleven|^google|^human|^xai/i.test(String(v));
-let cartesia = allLogs().filter(r => !r.dry && isCartesia(r.voiceId)).reduce((s, r) => s + (Number(r.charsSpent) || 0), 0);
+let cartesia = allLogs().filter(r => !r.dry && (isCartesia(r.voiceId) || !r.voiceId)).reduce((s, r) => s + (Number(r.charsSpent) || 0), 0);
 const upAgain = async () => { for (let i = 0; i < 120; i++) { try { const r = await fetch('http://localhost:3470/api/production/' + course + '/edit-ops'); if (r.ok) return; } catch {} await new Promise(r => setTimeout(r, 5000)); } };
 const log = path.join(adir, `${batch}${DRY ? '.dry' : ''}.jsonl`);
 const done = new Set(readLog(log).map(r => r.key));
 const linkClip = async (s, audioId) => {
   await upAgain();
   const lr = await fetch(`http://localhost:3470/api/production/${course}/link-clip`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-agent-id': 'cs-713-item9' },
+    headers: { 'Content-Type': 'application/json', 'x-agent-id': 'cs-778-item9' },
     body: JSON.stringify({ links: [{ ...(s.phraseId ? { phraseId: s.phraseId } : { legoId: s.legoId }), role: s.role, audioId }] }) });
   const l = await lr.json().catch(() => ({}));
   const one = (l.results && l.results[0]) || l;
@@ -79,8 +79,8 @@ if (rest.includes('--fix')) (async () => {
     } else if (r.code === 'RENDER_FAILED' && /(mastered\/[0-9A-F-]{36}\.mp3) is in S3/i.test(r.error || '')) {
       const key = r.error.match(/(mastered\/[0-9A-F-]{36}\.mp3)/i)[1];
       await upAgain();
-      const body = { courseCode: course, role: s.role, text: s.text, purpose: PURPOSE, job: '#713·AI', approval: APPROVAL, adoptS3Key: key };
-      const res = await fetch('http://localhost:3470/api/audio/render', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'cs-713-item9',
+      const body = { courseCode: course, role: s.role, text: s.text, purpose: PURPOSE, job: '#778', approval: APPROVAL, adoptS3Key: key };
+      const res = await fetch('http://localhost:3470/api/audio/render', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'cs-778-item9',
         ...require(path.join(L.ROOT, 'services/shared/approval-origin.cjs')).approvalHeaders(body) }, body: JSON.stringify(body) });
       const a = await res.json().catch(() => ({}));
       const rec = { ...r, at: new Date().toISOString(), ok: !!a.ok, source: a.source, code: a.code, audioId: a.audioId, charsSpent: a.charsSpent || 0, error: a.error && String(a.error).slice(0, 300), fixed: 'adopt ' + key };
@@ -95,7 +95,7 @@ if (rest.includes('--fix')) (async () => {
     if (done.has(s.key)) { tally.skipped_done = (tally.skipped_done || 0) + 1; continue; }
     if (!DRY && cartesia + s.text.length > CAP) { tally.stopped_cap = (tally.stopped_cap || 0) + 1; continue; }
     const args = [path.join(L.ROOT, 'tools/audio/render.cjs'), '--course', course, '--role', s.role, '--text', s.text,
-      '--purpose', PURPOSE, '--job', '#713·AI', '--approval', APPROVAL];
+      '--purpose', PURPOSE, '--job', '#778', '--approval', APPROVAL];
     if (female[s.key]) args.push('--spoken', female[s.key]);
     if (DRY) args.push('--dry-run');
     // Popty restarts every few minutes while other jobs merge to main (auto-deploy). No answer at all is not a refusal:
@@ -103,7 +103,7 @@ if (rest.includes('--fix')) (async () => {
     let r;
     for (let attempt = 0; attempt < 4; attempt++) {
       await upAgain();
-      let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: 'cs-713-item9' } }); } catch (e) { out = String(e.stdout || ''); }
+      let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: 'cs-778-item9' } }); } catch (e) { out = String(e.stdout || ''); }
       try { r = JSON.parse(out); } catch { r = null; }
       if (r && (r.ok || r.code)) break;
       r = r || { ok: false, code: 'NO_ANSWER', error: 'Popty did not answer (restart)' };
@@ -112,15 +112,18 @@ if (rest.includes('--fix')) (async () => {
     const rec = { at: new Date().toISOString(), key: s.key, id: s.id, role: s.role, text: s.text, dry: DRY, ok: !!r.ok, source: r.source, code: r.code,
       audioId: r.audioId, voiceId: r.voiceId || r.voice, charsSpent: r.charsSpent || 0, wouldSpend: r.wouldSpendChars, error: r.error && String(r.error).slice(0, 300) };
     if (!DRY && r.ok && r.audioId) {
-      if (isCartesia(rec.voiceId)) cartesia += Number(r.charsSpent) || 0;
       await upAgain();
       const lr = await fetch(`http://localhost:3470/api/production/${course}/link-clip`, { method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-agent-id': 'cs-713-item9' },
+        headers: { 'Content-Type': 'application/json', 'x-agent-id': 'cs-778-item9' },
         body: JSON.stringify({ links: [{ ...(s.phraseId ? { phraseId: s.phraseId } : { legoId: s.legoId }), role: s.role, audioId: r.audioId }] }) });
       const l = await lr.json().catch(() => ({}));
       const one = (l.results && l.results[0]) || l;
       rec.link = { status: lr.status, ok: !!(l.ok && one.ok !== false), code: one.code || l.code, error: (one.error || l.error) && String(one.error || l.error).slice(0, 300) };
+      // cs #778: the render answer carries no voice id; link-clip's does. Without it the Cartesia cap never counted.
+      rec.voiceId = rec.voiceId || one.voiceId || null;
     }
+    // A paid render whose voice we could not learn counts against the cap (never under-count).
+    if (!DRY && r.ok && (isCartesia(rec.voiceId) || !rec.voiceId)) cartesia += Number(r.charsSpent) || 0;
     const k = DRY ? (r.ok ? `dry_${r.source}` : `refused_${r.code}`) : (r.ok ? (rec.link && rec.link.ok ? `linked_${r.source}` : `link_failed_${rec.link && rec.link.code}`) : `refused_${r.code}`);
     tally[k] = (tally[k] || 0) + 1;
     fs.appendFileSync(log, JSON.stringify(rec) + '\n');

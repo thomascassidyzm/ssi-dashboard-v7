@@ -14,7 +14,7 @@ const L = require('./lib.cjs');
 const [mode, course, batch] = process.argv.slice(2);
 const cdir = path.join(L.ITEM_DIR, course);
 const bdir = path.join(cdir, 'batches');
-const H = { 'Content-Type': 'application/json', 'x-agent-id': 'cs-713-item9', 'x-agent-role': 'paid-cleanup-item9' };
+const H = { 'Content-Type': 'application/json', 'x-agent-id': 'cs-778-item9', 'x-agent-role': 'paid-cleanup-item9' };
 const post = async (url, body) => {
   const r = await fetch(url, { method: 'POST', headers: H, body: JSON.stringify(body) });
   const t = await r.text(); let j; try { j = JSON.parse(t); } catch { j = { raw: t.slice(0, 2000) }; }
