@@ -1,0 +1,210 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nie spodziewaliśmy się obudzić się w środku nocy."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nie mieliśmy nadziei obudzić się w środku nocy."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "nie spodziewaliśmy się",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "not",
+      "target": "nie"
+     },
+     {
+      "known": "we expected",
+      "target": "spodziewaliśmy"
+     },
+     {
+      "known": "oneself",
+      "target": "się"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nie mieliśmy nadziei"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01C02",
+   "set": {
+    "target_text": "spodziewaliśmy",
+    "known_text": "we expected"
+   },
+   "expect": {
+    "known_text": "we had",
+    "target_text": "mieliśmy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01C03",
+   "set": {
+    "target_text": "się",
+    "known_text": "oneself"
+   },
+   "expect": {
+    "known_text": "hope",
+    "target_text": "nadziei"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "nie spodziewaliśmy się",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nie mieliśmy nadziei"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "nie spodziewaliśmy się zobaczyć",
+    "known_text": "we didn't expect to see"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see",
+    "target_text": "nie mieliśmy nadziei zobaczyć"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "nie spodziewaliśmy się iść",
+    "known_text": "we didn't expect to go"
+   },
+   "expect": {
+    "known_text": "we didn't hope to go",
+    "target_text": "nie mieliśmy nadziei iść"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B04",
+   "set": {
+    "target_text": "nie spodziewaliśmy się czuć się szczęśliwi",
+    "known_text": "we didn't expect to feel happy"
+   },
+   "expect": {
+    "known_text": "we didn't hope to feel happy",
+    "target_text": "nie mieliśmy nadziei czuć się szczęśliwi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "nie spodziewaliśmy się zmienić to co robimy",
+    "known_text": "we didn't expect to change what we're doing"
+   },
+   "expect": {
+    "known_text": "we didn't hope to change what we're doing",
+    "target_text": "nie mieliśmy nadziei zmienić to co robimy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "nie spodziewaliśmy się dowiadywać się o tym",
+    "known_text": "we didn't expect to find out about it"
+   },
+   "expect": {
+    "known_text": "we didn't hope to find out about it",
+    "target_text": "nie mieliśmy nadziei dowiadywać się o tym"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "nie spodziewaliśmy się pojechać do domu tak szybko",
+    "known_text": "we didn't expect to go home so soon"
+   },
+   "expect": {
+    "known_text": "we didn't hope to go home so soon",
+    "target_text": "nie mieliśmy nadziei pojechać do domu tak szybko"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "nie spodziewaliśmy się ciężko pracować dziś",
+    "known_text": "we didn't expect to work hard today"
+   },
+   "expect": {
+    "known_text": "we didn't hope to work hard today",
+    "target_text": "nie mieliśmy nadziei ciężko pracować dziś"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U05",
+   "set": {
+    "target_text": "nie spodziewaliśmy się zobaczyć czegoś podobnego",
+    "known_text": "we didn't expect to see something similar"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see something similar",
+    "target_text": "nie mieliśmy nadziei zobaczyć czegoś podobnego"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L02B02",
+   "set": {
+    "target_text": "nie spodziewaliśmy się obudzić się",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nie mieliśmy nadziei obudzić się"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L02U05",
+   "set": {
+    "target_text": "nie spodziewaliśmy się obudzić się tak szybko",
+    "known_text": "we didn't expect to wake up so quickly"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up so quickly",
+    "target_text": "nie mieliśmy nadziei obudzić się tak szybko"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "nie spodziewaliśmy się obudzić się w środku nocy",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "nie mieliśmy nadziei obudzić się w środku nocy"
+   }
+  }
+ ]
+}

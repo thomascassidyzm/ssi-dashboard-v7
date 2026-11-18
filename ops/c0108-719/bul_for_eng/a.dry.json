@@ -1,0 +1,289 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "bul_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "ffaa2b7b-9d36-49c9-84eb-364ab1c12528",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Не се надявахме да се събудим посред нощ.",
+    "target_text_roman": "ne se nadyavahme da se sabudim posred nosht.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "863ce382-4c0a-4896-8ee0-027fbee310a1",
+    "target2_audio_id": "89c4c3d6-e9b1-4559-b627-09d20a6540c5"
+   },
+   "after": {
+    "id": "ffaa2b7b-9d36-49c9-84eb-364ab1c12528",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Не очаквахме да се събудим посред нощ.",
+    "target_text_roman": "Ne ochakvahme da se sabudim posred nosht.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "bul_for_eng",
+    "id": "bul_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "bul_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "не се надявахме да се събудим",
+    "target_text_roman": "ne se nadyavahme da se sabudim",
+    "known_text": "we didn't hope to wake up",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "a0f5a8a4-faef-415d-b99c-09d0d5e394df",
+    "target2_audio_id": "e46c7858-0c6e-4c8a-89a1-0e1ee23c0f07",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "bul_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "не очаквахме да се събудим",
+    "target_text_roman": "ne ochakvahme da se sabudim",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "bul_for_eng",
+    "id": "bul_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "bul_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Надявахме се да не се събудим",
+    "target_text_roman": "nadyavahme se da ne se sabudim",
+    "known_text": "we hoped not to wake up",
+    "known_audio_id": "6ea0753c-bace-4e51-b69b-db46c6994a31",
+    "target1_audio_id": "30636a31-3e05-4bd8-9d87-859f102737c4",
+    "target2_audio_id": "d6f02062-872c-43f3-b526-4258f4443114",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "bul_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Очаквахме да се събудим",
+    "target_text_roman": "ochakvahme da se sabudim",
+    "known_text": "we expected to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "bul_for_eng",
+    "id": "bul_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "bul_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "не се надявахме посред нощ",
+    "target_text_roman": "ne se nadyavahme posred nosht",
+    "known_text": "wake up at midnight",
+    "known_audio_id": "88b60607-3125-4f46-9228-efad0ad8d4ff",
+    "target1_audio_id": "a4429c87-5530-4346-b460-fd5a4fc79b26",
+    "target2_audio_id": "c581096d-0dca-4467-89da-c00897fa006a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "bul_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "да се събудим посред нощ",
+    "target_text_roman": "da se sabudim posred nosht",
+    "known_text": "to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": "187e9725-d68d-4bb6-919e-dc6b19309f50",
+    "target2_audio_id": "c8b408e9-95ef-45e7-b5ea-76fae32e93b7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "bul_for_eng",
+    "id": "bul_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "bul_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Не се надявахме да се събудим посред нощ",
+    "target_text_roman": "ne se nadyavahme da se sabudim posred nosht",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "863ce382-4c0a-4896-8ee0-027fbee310a1",
+    "target2_audio_id": "89c4c3d6-e9b1-4559-b627-09d20a6540c5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "bul_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Не очаквахме да се събудим посред нощ",
+    "target_text_roman": "ne ochakvahme da se sabudim posred nosht",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "bul_for_eng",
+    "id": "bul_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "bul_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Надявахме се да не се събудим посред нощ",
+    "target_text_roman": "nadyavahme se da ne se sabudim posred nosht",
+    "known_text": "we hoped not to wake up at midnight",
+    "known_audio_id": "69d28d98-9f03-40d4-800b-a44317ad89fa",
+    "target1_audio_id": "8e63c4ef-2532-4cd1-a2b9-840bff19d1c1",
+    "target2_audio_id": "a8223f04-765e-44cc-9cc4-32c44058cbe3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "bul_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "Очаквахме да се събудим посред нощ",
+    "target_text_roman": "ochakvahme da se sabudim posred nosht",
+    "known_text": "we expected to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "we hoped not to wake up at midnight",
+    "target_text": "Надявахме се да не се събудим посред нощ",
+    "known_audio_id": "69d28d98-9f03-40d4-800b-a44317ad89fa",
+    "target1_audio_id": "8e63c4ef-2532-4cd1-a2b9-840bff19d1c1",
+    "target2_audio_id": "a8223f04-765e-44cc-9cc4-32c44058cbe3",
+    "target_text_roman": "nadyavahme se da ne se sabudim posred nosht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Не се надявахме да се събудим посред нощ",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "863ce382-4c0a-4896-8ee0-027fbee310a1",
+    "target2_audio_id": "89c4c3d6-e9b1-4559-b627-09d20a6540c5",
+    "target_text_roman": "ne se nadyavahme da se sabudim posred nosht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake up at midnight",
+    "target_text": "не се надявахме посред нощ",
+    "known_audio_id": "88b60607-3125-4f46-9228-efad0ad8d4ff",
+    "target1_audio_id": "a4429c87-5530-4346-b460-fd5a4fc79b26",
+    "target2_audio_id": "c581096d-0dca-4467-89da-c00897fa006a",
+    "target_text_roman": "ne se nadyavahme posred nosht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we hoped not to wake up",
+    "target_text": "Надявахме се да не се събудим",
+    "known_audio_id": "6ea0753c-bace-4e51-b69b-db46c6994a31",
+    "target1_audio_id": "30636a31-3e05-4bd8-9d87-859f102737c4",
+    "target2_audio_id": "d6f02062-872c-43f3-b526-4258f4443114",
+    "target_text_roman": "nadyavahme se da ne se sabudim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "не се надявахме да се събудим",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "a0f5a8a4-faef-415d-b99c-09d0d5e394df",
+    "target2_audio_id": "e46c7858-0c6e-4c8a-89a1-0e1ee23c0f07",
+    "target_text_roman": "ne se nadyavahme da se sabudim"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Не се надявахме да се събудим посред нощ.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "863ce382-4c0a-4896-8ee0-027fbee310a1",
+    "target2_audio_id": "89c4c3d6-e9b1-4559-b627-09d20a6540c5",
+    "target_text_roman": "ne se nadyavahme da se sabudim posred nosht."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
