@@ -1,7 +1,7 @@
 {
  "course": "eng_for_jpn",
  "plan": "s226-230.tsv",
- "at": "2026-11-18T12:45:42.605Z",
+ "at": "2026-11-18T12:47:37.687Z",
  "rows": [
   {
    "id": "S0226L02B02",
@@ -413,12 +413,9 @@
    "role": "build",
    "target": "young woman",
    "old": "女性",
-   "new": "若い女性",
-   "del": false,
-   "verdict": "FAIL",
-   "why": [
-    "ZUT whole course: \"若い女性\" is \"a young woman\" at seed 233"
-   ]
+   "new": null,
+   "del": true,
+   "verdict": "PASS"
   },
   {
    "id": "S0229L01B04",

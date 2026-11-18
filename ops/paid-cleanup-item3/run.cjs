@@ -29,8 +29,11 @@ function signed(method, url, body) {
   const args = [path.join(ROOT, 'tools/agent-admin/call.cjs'), '--key', 'kai', '--agent', KAI_AGENT, method, url];
   let tmp;
   if (body !== undefined) { tmp = path.join(SCR, `body-${process.pid}-${Date.now()}.json`); fs.writeFileSync(tmp, JSON.stringify(body)); args.push('--body-file', tmp); }
-  const out = execFileSync('node', args, { encoding: 'utf8', maxBuffer: 1 << 30, timeout: 600000 });
+  // stdout to a FILE: call.cjs's console.log of a large answer is cut short when its stdout is a pipe and it exits.
+  const of = path.join(SCR, `out-${process.pid}-${Date.now()}.json`); const fd = fs.openSync(of, 'w');
+  try { execFileSync('node', args, { stdio: ['ignore', fd, 'inherit'], timeout: 600000 }); } finally { fs.closeSync(fd); }
   if (tmp) fs.unlinkSync(tmp);
+  const out = fs.readFileSync(of, 'utf8'); fs.unlinkSync(of);
   return JSON.parse(out);
 }
 async function post(url, body, extra = {}) {
