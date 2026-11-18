@@ -1,0 +1,336 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0514L01B04",
+    "seed_number": 514,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I found a good job",
+    "target_text": "eu encontrei um bom trabalho",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0515L02B04",
+    "seed_number": 515,
+    "lego_index": 2,
+    "position": 14,
+    "known_text": "the first day of the new year",
+    "target_text": "o primeiro dia do ano novo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01B03",
+   "expect": {
+    "known_text": "yes, I found",
+    "target_text": "sim, eu encontrei"
+   },
+   "set": {
+    "known_text": "I found the keys",
+    "target_text": "eu encontrei as chaves",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U01",
+   "expect": {
+    "known_text": "no, I found",
+    "target_text": "não, eu encontrei"
+   },
+   "set": {
+    "known_text": "I found my keys under the table",
+    "target_text": "eu encontrei minhas chaves debaixo da mesa",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U02",
+   "expect": {
+    "known_text": "that's true, I found",
+    "target_text": "isso é verdade, eu encontrei"
+   },
+   "set": {
+    "known_text": "I found a place to park",
+    "target_text": "eu encontrei um lugar para estacionar",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U03",
+   "expect": {
+    "known_text": "I'm sure I found",
+    "target_text": "tenho certeza, eu encontrei"
+   },
+   "set": {
+    "known_text": "I found the book you wanted",
+    "target_text": "eu encontrei o livro que você queria",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U04",
+   "expect": {
+    "known_text": "yes, that's true, I found",
+    "target_text": "sim, isso é verdade, eu encontrei"
+   },
+   "set": {
+    "known_text": "I found a good café near the hotel",
+    "target_text": "eu encontrei um bom café perto do hotel",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U05",
+   "expect": {
+    "known_text": "I still found",
+    "target_text": "eu ainda encontrei"
+   },
+   "set": {
+    "known_text": "I found something interesting",
+    "target_text": "eu encontrei algo interessante",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02B03",
+   "expect": {
+    "known_text": "yes, the perfect house",
+    "target_text": "sim, a casa perfeita"
+   },
+   "set": {
+    "known_text": "the perfect house for us",
+    "target_text": "a casa perfeita para nós",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U01",
+   "expect": {
+    "known_text": "no, the perfect house",
+    "target_text": "não, a casa perfeita"
+   },
+   "set": {
+    "known_text": "this is the perfect house for my family",
+    "target_text": "esta é a casa perfeita para a minha família",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U02",
+   "expect": {
+    "known_text": "that's true, the perfect house",
+    "target_text": "isso é verdade, a casa perfeita"
+   },
+   "set": {
+    "known_text": "I think it's the perfect house",
+    "target_text": "eu acho que é a casa perfeita",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U04",
+   "expect": {
+    "known_text": "yes, I found the perfect house",
+    "target_text": "sim, eu encontrei a casa perfeita"
+   },
+   "set": {
+    "known_text": "she wants the perfect house",
+    "target_text": "ela quer a casa perfeita",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U05",
+   "expect": {
+    "known_text": "I still found the perfect house",
+    "target_text": "eu ainda encontrei a casa perfeita"
+   },
+   "set": {
+    "known_text": "the perfect house is on the other side of the city",
+    "target_text": "a casa perfeita é do outro lado da cidade",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L03B03",
+   "expect": {
+    "known_text": "yes, on the first day",
+    "target_text": "sim, no primeiro dia"
+   },
+   "set": {
+    "known_text": "on the first day at school",
+    "target_text": "no primeiro dia na escola",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02B02",
+   "expect": {
+    "known_text": "on the first day of the new year now",
+    "target_text": "no primeiro dia do ano novo agora"
+   },
+   "set": {
+    "known_text": "the first week of the new year",
+    "target_text": "a primeira semana do ano novo",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02B03",
+   "expect": {
+    "known_text": "yes, of the new year",
+    "target_text": "sim, do ano novo"
+   },
+   "set": {
+    "known_text": "the first month of the new year",
+    "target_text": "o primeiro mês do ano novo",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02U02",
+   "expect": {
+    "known_text": "no, of the new year",
+    "target_text": "não, do ano novo"
+   },
+   "set": {
+    "known_text": "we're going to travel in the first week of the new year",
+    "target_text": "vamos viajar na primeira semana do ano novo",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02U03",
+   "expect": {
+    "known_text": "that's true, of the new year",
+    "target_text": "isso é verdade, do ano novo"
+   },
+   "set": {
+    "known_text": "the first month of the new year is very difficult",
+    "target_text": "o primeiro mês do ano novo é muito difícil",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0514L03U02",
+   "expect": {
+    "known_text": "no, on the first day",
+    "target_text": "não, no primeiro dia"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0514L03U03",
+   "expect": {
+    "known_text": "that's true, on the first day",
+    "target_text": "isso é verdade, no primeiro dia"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0514L03U04",
+   "expect": {
+    "known_text": "yes, I found the perfect house on the first day",
+    "target_text": "sim, eu encontrei a casa perfeita no primeiro dia"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0514L03U05",
+   "expect": {
+    "known_text": "I'm sure, on the first day",
+    "target_text": "tenho certeza, no primeiro dia"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0515L02U04",
+   "expect": {
+    "known_text": "yes, on the first day of the new year",
+    "target_text": "sim, no primeiro dia do ano novo"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0515L02U05",
+   "expect": {
+    "known_text": "I'm sure, of the new year",
+    "target_text": "tenho certeza, do ano novo"
+   }
+  }
+ ]
+}

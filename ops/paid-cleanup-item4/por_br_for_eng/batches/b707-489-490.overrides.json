@@ -1,0 +1,449 @@
+[
+ {
+  "seed_number": 489,
+  "phrases": {
+   "489:1": [
+    {
+     "known_text": "if",
+     "target_text": "se",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "me",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "make",
+     "target_text": "fizer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "if you don't make me",
+     "target_text": "se você não me fizer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if you don't make me a coffee",
+     "target_text": "se você não me fizer um café",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if you don't make me happy",
+     "target_text": "se você não me fizer feliz",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if you don't make me a coffee, I'll make it myself",
+     "target_text": "se você não me fizer um café, eu mesmo faço",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you don't make me a coffee, I won't be able to work",
+     "target_text": "se você não me fizer um café, não vou conseguir trabalhar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you don't make me something to eat, I'll go to the café",
+     "target_text": "se você não me fizer algo para comer, vou ao café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you don't make me a coffee, I'll ask your brother",
+     "target_text": "se você não me fizer um café, vou pedir ao seu irmão",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you don't make me happy, I don't want to stay",
+     "target_text": "se você não me fizer feliz, não quero ficar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you don't make me anything",
+     "target_text": "se você não me fizer nada",
+     "phrase_role": "build"
+    }
+   ],
+   "489:2": [
+    {
+     "known_text": "a",
+     "target_text": "uma",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "cup",
+     "target_text": "xícara",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of",
+     "target_text": "de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "coffee",
+     "target_text": "café",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a cup of coffee",
+     "target_text": "uma xícara de café",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if you don't make me a cup of coffee",
+     "target_text": "se você não me fizer uma xícara de café",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a cup of coffee for me",
+     "target_text": "uma xícara de café para mim",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'd like a cup of coffee",
+     "target_text": "eu gostaria de uma xícara de café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's have a cup of coffee",
+     "target_text": "vamos tomar uma xícara de café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I drank a cup of coffee",
+     "target_text": "bebi uma xícara de café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you don't make me a cup of coffee, I'm going to the café",
+     "target_text": "se você não me fizer uma xícara de café, vou ao café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she made me a cup of coffee",
+     "target_text": "ela me fez uma xícara de café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to make a cup of coffee",
+     "target_text": "vou fazer uma xícara de café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm waiting for a cup of coffee",
+     "target_text": "estou esperando uma xícara de café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you make me a cup of coffee?",
+     "target_text": "você podia me fazer uma xícara de café?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need a cup of coffee",
+     "target_text": "preciso de uma xícara de café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want a cup of coffee before we stop?",
+     "target_text": "você quer uma xícara de café antes de pararmos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there is a cup of coffee on the table",
+     "target_text": "há uma xícara de café em cima da mesa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want a cup of coffee?",
+     "target_text": "você quer uma xícara de café?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a cup of coffee in the morning",
+     "target_text": "uma xícara de café de manhã",
+     "phrase_role": "build"
+    }
+   ],
+   "489:3": [
+    {
+     "known_text": "strong",
+     "target_text": "forte",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a strong cup of coffee",
+     "target_text": "uma xícara de café forte",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "very strong",
+     "target_text": "muito forte",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the coffee here is very strong",
+     "target_text": "o café aqui é muito forte",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he's very strong",
+     "target_text": "ele é muito forte",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need a strong coffee",
+     "target_text": "preciso de um café forte",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like my coffee strong",
+     "target_text": "gosto do meu café forte",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you make me a strong cup of coffee?",
+     "target_text": "você podia me fazer uma xícara de café forte?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a strong coffee",
+     "target_text": "um café forte",
+     "phrase_role": "build"
+    }
+   ],
+   "489:4": [
+    {
+     "known_text": "now",
+     "target_text": "agora",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "exactly",
+     "target_text": "mesmo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "right now",
+     "target_text": "agora mesmo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a strong cup of coffee right now",
+     "target_text": "uma xícara de café forte agora mesmo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I need it right now",
+     "target_text": "preciso disso agora mesmo",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if you don't make me a strong cup of coffee right now",
+     "target_text": "se você não me fizer uma xícara de café forte agora mesmo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't help you right now",
+     "target_text": "não posso te ajudar agora mesmo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't talk right now",
+     "target_text": "não posso falar agora mesmo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we need to leave right now",
+     "target_text": "precisamos ir embora agora mesmo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll ask him right now",
+     "target_text": "vou perguntar para ele agora mesmo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do you want to get away right now?",
+     "target_text": "você quer ir embora agora mesmo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he is doing that right now",
+     "target_text": "ele está fazendo isso agora mesmo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't get away right now",
+     "target_text": "não consigo ir embora agora mesmo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why do you want a cup of coffee right now?",
+     "target_text": "por que você quer uma xícara de café agora mesmo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want it right now",
+     "target_text": "eu quero isso agora mesmo",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 490,
+  "phrases": {
+   "490:1": [
+    {
+     "known_text": "then",
+     "target_text": "então",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "never again",
+     "target_text": "nunca mais",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I will",
+     "target_text": "vou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "then I will never",
+     "target_text": "então nunca mais vou",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "then I'll never do it again",
+     "target_text": "então nunca mais vou fazer isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "then I'll never ask again",
+     "target_text": "então nunca mais vou perguntar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if that's true, then I'll never go there again",
+     "target_text": "se isso é verdade, então nunca mais vou lá",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "then I'll never ask you for help again",
+     "target_text": "então nunca mais vou te pedir ajuda",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "then I'll never eat there again",
+     "target_text": "então nunca mais vou comer lá",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "then I'll never speak to him again",
+     "target_text": "então nunca mais vou falar com ele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you don't help me, then I'll never help you again",
+     "target_text": "se você não me ajudar, então nunca mais vou te ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "then I'll never help him again",
+     "target_text": "então nunca mais vou ajudar ele",
+     "phrase_role": "build"
+    }
+   ],
+   "490:2": [
+    {
+     "known_text": "to trust",
+     "target_text": "confiar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in",
+     "target_text": "em",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "anyone",
+     "target_text": "ninguém",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to trust anyone",
+     "target_text": "confiar em ninguém",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to trust anyone",
+     "target_text": "não quero confiar em ninguém",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's not easy to trust anyone",
+     "target_text": "não é fácil confiar em ninguém",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "then I will never trust anyone ever again",
+     "target_text": "então nunca mais vou confiar em ninguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "after that, I couldn't trust anyone",
+     "target_text": "depois disso, eu não conseguia confiar em ninguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can't trust anyone here",
+     "target_text": "você não pode confiar em ninguém aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not going to trust anyone",
+     "target_text": "não vou confiar em ninguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure I'll never trust anyone again",
+     "target_text": "tenho certeza de que nunca mais vou confiar em ninguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he doesn't want to trust anyone",
+     "target_text": "ele não quer confiar em ninguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't trust anyone",
+     "target_text": "não consigo confiar em ninguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they won't be able to trust anyone",
+     "target_text": "eles não vão conseguir confiar em ninguém",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we don't need to trust anyone",
+     "target_text": "não precisamos confiar em ninguém",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]
