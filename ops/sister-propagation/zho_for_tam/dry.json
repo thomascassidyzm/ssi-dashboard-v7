@@ -38,6 +38,60 @@
     },
     {
      "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "seed_number": 161
+     },
+     "before": {
+      "id": "863ae388-b11b-41e1-b211-2c1db7a2cb9a",
+      "seed_number": 161,
+      "target1_audio_id": null,
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target2_audio_id": null
+     },
+     "after": {
+      "id": "863ae388-b11b-41e1-b211-2c1db7a2cb9a",
+      "seed_number": 161,
+      "target1_audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7",
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "seed_number": 161
+     },
+     "before": {
+      "id": "863ae388-b11b-41e1-b211-2c1db7a2cb9a",
+      "seed_number": 161,
+      "target2_audio_id": null,
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target1_audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7"
+     },
+     "after": {
+      "id": "863ae388-b11b-41e1-b211-2c1db7a2cb9a",
+      "seed_number": 161,
+      "target2_audio_id": "c8f98fe0-b1d1-4b80-9e3b-4560d0032092",
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target1_audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7"
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "seed.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -64,7 +118,61 @@
      "changed": true
     },
     {
-     "index": 2,
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "seed_number": 316
+     },
+     "before": {
+      "id": "32da9749-7117-4e5b-8ba9-3a33baf20949",
+      "seed_number": 316,
+      "target1_audio_id": null,
+      "known_text": "அவள் தன் அண்ணனைத் திங்கட்கிழமை கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "f9bf5214-848b-4e1d-b323-088cc76b9eb8",
+      "target2_audio_id": null
+     },
+     "after": {
+      "id": "32da9749-7117-4e5b-8ba9-3a33baf20949",
+      "seed_number": 316,
+      "target1_audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc",
+      "known_text": "அவள் தன் அண்ணனைத் திங்கட்கிழமை கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "f9bf5214-848b-4e1d-b323-088cc76b9eb8",
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "seed_number": 316
+     },
+     "before": {
+      "id": "32da9749-7117-4e5b-8ba9-3a33baf20949",
+      "seed_number": 316,
+      "target2_audio_id": null,
+      "known_text": "அவள் தன் அண்ணனைத் திங்கட்கிழமை கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "f9bf5214-848b-4e1d-b323-088cc76b9eb8",
+      "target1_audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc"
+     },
+     "after": {
+      "id": "32da9749-7117-4e5b-8ba9-3a33baf20949",
+      "seed_number": 316,
+      "target2_audio_id": "dcedb5c5-4489-4865-8add-9770b0918d90",
+      "known_text": "அவள் தன் அண்ணனைத் திங்கட்கிழமை கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "f9bf5214-848b-4e1d-b323-088cc76b9eb8",
+      "target1_audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc"
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
      "op": "seed.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -91,7 +199,61 @@
      "changed": true
     },
     {
-     "index": 3,
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "seed_number": 625
+     },
+     "before": {
+      "id": "b7fb5b5a-1db3-4938-85c2-4831642eeb1a",
+      "seed_number": 625,
+      "target1_audio_id": null,
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target2_audio_id": null
+     },
+     "after": {
+      "id": "b7fb5b5a-1db3-4938-85c2-4831642eeb1a",
+      "seed_number": 625,
+      "target1_audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae",
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "seed_number": 625
+     },
+     "before": {
+      "id": "b7fb5b5a-1db3-4938-85c2-4831642eeb1a",
+      "seed_number": 625,
+      "target2_audio_id": null,
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target1_audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae"
+     },
+     "after": {
+      "id": "b7fb5b5a-1db3-4938-85c2-4831642eeb1a",
+      "seed_number": 625,
+      "target2_audio_id": "db6ceea9-42aa-465a-9121-f4337014b792",
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target1_audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae"
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -124,7 +286,182 @@
      "changed": true
     },
     {
-     "index": 4,
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0005L01U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0005L01U03",
+      "seed_number": 5,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இப்போது கற்றுக்கொள்ளப் போகிறேன்",
+      "target_text": "我现在要学习",
+      "known_audio_id": "2035159f-51dc-4542-990a-42f4e543cdab",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0005L01U03",
+      "seed_number": 5,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "638412ed-1382-45f2-9610-ee5185f9f354",
+      "known_text": "நான் இப்போது கற்றுக்கொள்ளப் போகிறேன்",
+      "target_text": "我现在要学习",
+      "known_audio_id": "2035159f-51dc-4542-990a-42f4e543cdab",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0005L01U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0005L01U03",
+      "seed_number": 5,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இப்போது கற்றுக்கொள்ளப் போகிறேன்",
+      "target_text": "我现在要学习",
+      "known_audio_id": "2035159f-51dc-4542-990a-42f4e543cdab",
+      "target1_audio_id": "638412ed-1382-45f2-9610-ee5185f9f354",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0005L01U03",
+      "seed_number": 5,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "442cdc69-6213-444b-b48d-9df65e83c54b",
+      "known_text": "நான் இப்போது கற்றுக்கொள்ளப் போகிறேன்",
+      "target_text": "我现在要学习",
+      "known_audio_id": "2035159f-51dc-4542-990a-42f4e543cdab",
+      "target1_audio_id": "638412ed-1382-45f2-9610-ee5185f9f354",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L01U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L01U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L01U03",
+     "set": {
+      "target_text": "我要现在学习",
+      "target1_audio_id": "ff7c5bd7-5a27-430a-b285-afbd14e0426d",
+      "target2_audio_id": "797f93c6-1e05-453a-a23c-07de2a05097a"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 625,
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 625,
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 625,
+     "set": {
+      "target_text": "你想要喝点什么吗？",
+      "target1_audio_id": "b714b898-b9b1-4a91-a72d-752047a2e7d3",
+      "target2_audio_id": "077839c4-86fb-405b-9832-04bf240c5bd4"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 316,
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 316,
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 316,
+     "set": {
+      "target_text": "你觉得她能周一带她哥哥来吗？",
+      "target1_audio_id": "df1b5e8d-b370-4df0-8b46-6456064ecca3",
+      "target2_audio_id": "836e5e06-2477-4883-967b-da091f542b16"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 161,
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 161,
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 161,
+     "set": {
+      "target_text": "你能周日早上把那本书给我吗？",
+      "target1_audio_id": "1f410ae3-107f-4715-a296-3bbf3f49cc19",
+      "target2_audio_id": "e991c9b7-0dfe-411b-9ea5-6836199b1009"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -157,7 +494,73 @@
      "changed": true
     },
     {
-     "index": 5,
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0005L02U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0005L02U04",
+      "seed_number": 5,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இப்போது சீன மொழி பயிற்சி செய்யப் போகிறேன்",
+      "target_text": "我现在要练习中文",
+      "known_audio_id": "8819af90-e3f3-4c76-ac8d-e47ebd597a8e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0005L02U04",
+      "seed_number": 5,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "ebfbf016-110b-42e7-b70b-be84edfb7076",
+      "known_text": "நான் இப்போது சீன மொழி பயிற்சி செய்யப் போகிறேன்",
+      "target_text": "我现在要练习中文",
+      "known_audio_id": "8819af90-e3f3-4c76-ac8d-e47ebd597a8e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0005L02U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0005L02U04",
+      "seed_number": 5,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இப்போது சீன மொழி பயிற்சி செய்யப் போகிறேன்",
+      "target_text": "我现在要练习中文",
+      "known_audio_id": "8819af90-e3f3-4c76-ac8d-e47ebd597a8e",
+      "target1_audio_id": "ebfbf016-110b-42e7-b70b-be84edfb7076",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0005L02U04",
+      "seed_number": 5,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "aca85bf7-7e58-45f0-a174-257f1a08d1da",
+      "known_text": "நான் இப்போது சீன மொழி பயிற்சி செய்யப் போகிறேன்",
+      "target_text": "我现在要练习中文",
+      "known_audio_id": "8819af90-e3f3-4c76-ac8d-e47ebd597a8e",
+      "target1_audio_id": "ebfbf016-110b-42e7-b70b-be84edfb7076",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -185,6 +588,72 @@
       "known_audio_id": "57ac55b5-268d-4d9a-81ad-edcf29e90b02",
       "target1_audio_id": null,
       "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0005L03U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0005L03U03",
+      "seed_number": 5,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இப்போது வேறு ஒருவருடன் பேசப் போகிறேன்",
+      "target_text": "我现在要和别人说",
+      "known_audio_id": "57ac55b5-268d-4d9a-81ad-edcf29e90b02",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0005L03U03",
+      "seed_number": 5,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "d5abb7e9-4126-4101-b0b1-5d9172145d60",
+      "known_text": "நான் இப்போது வேறு ஒருவருடன் பேசப் போகிறேன்",
+      "target_text": "我现在要和别人说",
+      "known_audio_id": "57ac55b5-268d-4d9a-81ad-edcf29e90b02",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0005L03U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0005L03U03",
+      "seed_number": 5,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இப்போது வேறு ஒருவருடன் பேசப் போகிறேன்",
+      "target_text": "我现在要和别人说",
+      "known_audio_id": "57ac55b5-268d-4d9a-81ad-edcf29e90b02",
+      "target1_audio_id": "d5abb7e9-4126-4101-b0b1-5d9172145d60",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0005L03U03",
+      "seed_number": 5,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "e0387dac-e47f-426a-8349-879eb24c8192",
+      "known_text": "நான் இப்போது வேறு ஒருவருடன் பேசப் போகிறேன்",
+      "target_text": "我现在要和别人说",
+      "known_audio_id": "57ac55b5-268d-4d9a-81ad-edcf29e90b02",
+      "target1_audio_id": "d5abb7e9-4126-4101-b0b1-5d9172145d60",
       "presentation_audio_id": null
      },
      "changed": true
@@ -224,6 +693,72 @@
     },
     {
      "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0011L01U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0011L01U04",
+      "seed_number": 11,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் இப்போது பேசி முடிக்க முடியுமா இல்லையா?",
+      "target_text": "你现在能不能说完？",
+      "known_audio_id": "4d279b67-309d-40fb-b3fa-1592c154e64f",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0011L01U04",
+      "seed_number": 11,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "251244ee-5305-4a72-9473-478e56679c06",
+      "known_text": "நீங்கள் இப்போது பேசி முடிக்க முடியுமா இல்லையா?",
+      "target_text": "你现在能不能说完？",
+      "known_audio_id": "4d279b67-309d-40fb-b3fa-1592c154e64f",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0011L01U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0011L01U04",
+      "seed_number": 11,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் இப்போது பேசி முடிக்க முடியுமா இல்லையா?",
+      "target_text": "你现在能不能说完？",
+      "known_audio_id": "4d279b67-309d-40fb-b3fa-1592c154e64f",
+      "target1_audio_id": "251244ee-5305-4a72-9473-478e56679c06",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0011L01U04",
+      "seed_number": 11,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "b471378d-2160-4a3c-9516-5d50909107e3",
+      "known_text": "நீங்கள் இப்போது பேசி முடிக்க முடியுமா இல்லையா?",
+      "target_text": "你现在能不能说完？",
+      "known_audio_id": "4d279b67-309d-40fb-b3fa-1592c154e64f",
+      "target1_audio_id": "251244ee-5305-4a72-9473-478e56679c06",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -256,7 +791,182 @@
      "changed": true
     },
     {
-     "index": 8,
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0012L02U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0012L02U05",
+      "seed_number": 12,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் நாளை பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能说？",
+      "known_audio_id": "7a8c4f7f-6249-4efd-8433-22ee730e1705",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0012L02U05",
+      "seed_number": 12,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "d59d4cb7-97cb-4935-87b9-230c663d427c",
+      "known_text": "நீங்கள் நாளை பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能说？",
+      "known_audio_id": "7a8c4f7f-6249-4efd-8433-22ee730e1705",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0012L02U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0012L02U05",
+      "seed_number": 12,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் நாளை பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能说？",
+      "known_audio_id": "7a8c4f7f-6249-4efd-8433-22ee730e1705",
+      "target1_audio_id": "d59d4cb7-97cb-4935-87b9-230c663d427c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0012L02U05",
+      "seed_number": 12,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "1b5ecd27-0e6a-4ffc-a9e5-e356a1ba4256",
+      "known_text": "நீங்கள் நாளை பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能说？",
+      "known_audio_id": "7a8c4f7f-6249-4efd-8433-22ee730e1705",
+      "target1_audio_id": "d59d4cb7-97cb-4935-87b9-230c663d427c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0012L02U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0012L02U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0012L02U05",
+     "set": {
+      "target_text": "你能不能明天说？",
+      "target1_audio_id": "905e7e64-a8da-439e-a433-f59b468004fd",
+      "target2_audio_id": "bdba556b-13fb-4624-821e-362d9dfb9c6a"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0011L01U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0011L01U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0011L01U04",
+     "set": {
+      "target_text": "你能不能现在说完？",
+      "target1_audio_id": "b9554935-c061-4537-84b5-d6b0146100bf",
+      "target2_audio_id": "d242dff6-2317-4a9f-b9ca-077a66138f44"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L03U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L03U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L03U03",
+     "set": {
+      "target_text": "我要现在和别人说",
+      "target1_audio_id": "ce72cd55-bb85-4598-8616-75c8d3322ccb",
+      "target2_audio_id": "800b3413-eb2e-43cb-b514-f63c4dd1bbdd"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L02U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L02U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0005L02U04",
+     "set": {
+      "target_text": "我要现在练习中文",
+      "target1_audio_id": "83e89688-d2b1-4261-a8d4-255ecc996e08",
+      "target2_audio_id": "fa304152-0850-454a-a830-9a055a6e363f"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -289,7 +999,73 @@
      "changed": true
     },
     {
-     "index": 9,
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0015L02U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0015L02U04",
+      "seed_number": 15,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் நாளை என்னோடு பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能跟我说？",
+      "known_audio_id": "8e1b9167-c6c9-4e63-8c2b-e0eac58e8207",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0015L02U04",
+      "seed_number": 15,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "d1ad4816-1482-4c57-b17c-6159ea2fbde8",
+      "known_text": "நீங்கள் நாளை என்னோடு பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能跟我说？",
+      "known_audio_id": "8e1b9167-c6c9-4e63-8c2b-e0eac58e8207",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0015L02U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0015L02U04",
+      "seed_number": 15,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் நாளை என்னோடு பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能跟我说？",
+      "known_audio_id": "8e1b9167-c6c9-4e63-8c2b-e0eac58e8207",
+      "target1_audio_id": "d1ad4816-1482-4c57-b17c-6159ea2fbde8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0015L02U04",
+      "seed_number": 15,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "dd3816dd-f472-4852-8480-fb8aa88ac8a4",
+      "known_text": "நீங்கள் நாளை என்னோடு பேச முடியுமா இல்லையா?",
+      "target_text": "你明天能不能跟我说？",
+      "known_audio_id": "8e1b9167-c6c9-4e63-8c2b-e0eac58e8207",
+      "target1_audio_id": "d1ad4816-1482-4c57-b17c-6159ea2fbde8",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -322,7 +1098,73 @@
      "changed": true
     },
     {
-     "index": 10,
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0023L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0023L01U05",
+      "seed_number": 23,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இப்போது பேச ஆரம்பிக்க முடியுமா இல்லையா என்று நிச்சயமாகத் தெரியவில்லை",
+      "target_text": "我不确定我现在能不能开始说话",
+      "known_audio_id": "330143ee-7d43-4962-a639-0b745d257898",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0023L01U05",
+      "seed_number": 23,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "325a7d86-5ba8-4bf2-939e-62af1b29a158",
+      "known_text": "நான் இப்போது பேச ஆரம்பிக்க முடியுமா இல்லையா என்று நிச்சயமாகத் தெரியவில்லை",
+      "target_text": "我不确定我现在能不能开始说话",
+      "known_audio_id": "330143ee-7d43-4962-a639-0b745d257898",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0023L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0023L01U05",
+      "seed_number": 23,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இப்போது பேச ஆரம்பிக்க முடியுமா இல்லையா என்று நிச்சயமாகத் தெரியவில்லை",
+      "target_text": "我不确定我现在能不能开始说话",
+      "known_audio_id": "330143ee-7d43-4962-a639-0b745d257898",
+      "target1_audio_id": "325a7d86-5ba8-4bf2-939e-62af1b29a158",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0023L01U05",
+      "seed_number": 23,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "291b2f30-9fbf-4f75-9a62-5af42fc88c21",
+      "known_text": "நான் இப்போது பேச ஆரம்பிக்க முடியுமா இல்லையா என்று நிச்சயமாகத் தெரியவில்லை",
+      "target_text": "我不确定我现在能不能开始说话",
+      "known_audio_id": "330143ee-7d43-4962-a639-0b745d257898",
+      "target1_audio_id": "325a7d86-5ba8-4bf2-939e-62af1b29a158",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -355,7 +1197,73 @@
      "changed": true
     },
     {
-     "index": 11,
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0098L01U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0098L01U01",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இப்போது போக வேண்டும்",
+      "target_text": "我现在应该走",
+      "known_audio_id": "76b48874-48bc-4372-ae76-a96546753b74",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0098L01U01",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "3f6b1a51-2031-4fa9-8ca9-9d62b183e958",
+      "known_text": "நான் இப்போது போக வேண்டும்",
+      "target_text": "我现在应该走",
+      "known_audio_id": "76b48874-48bc-4372-ae76-a96546753b74",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0098L01U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0098L01U01",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இப்போது போக வேண்டும்",
+      "target_text": "我现在应该走",
+      "known_audio_id": "76b48874-48bc-4372-ae76-a96546753b74",
+      "target1_audio_id": "3f6b1a51-2031-4fa9-8ca9-9d62b183e958",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0098L01U01",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "2612ca3f-c9b4-4ca7-93f2-36b3ec72a513",
+      "known_text": "நான் இப்போது போக வேண்டும்",
+      "target_text": "我现在应该走",
+      "known_audio_id": "76b48874-48bc-4372-ae76-a96546753b74",
+      "target1_audio_id": "3f6b1a51-2031-4fa9-8ca9-9d62b183e958",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -386,6 +1294,72 @@
       "presentation_audio_id": null
      },
      "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0098L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0098L01U05",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இன்று கடினமாக உழைக்க வேண்டும்",
+      "target_text": "我今天应该努力",
+      "known_audio_id": "4a28ea48-f62f-4d77-8442-82d0cd3ef58f",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0098L01U05",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "13df891d-2a5b-4140-ab20-7d55bce93717",
+      "known_text": "நான் இன்று கடினமாக உழைக்க வேண்டும்",
+      "target_text": "我今天应该努力",
+      "known_audio_id": "4a28ea48-f62f-4d77-8442-82d0cd3ef58f",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0098L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0098L01U05",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இன்று கடினமாக உழைக்க வேண்டும்",
+      "target_text": "我今天应该努力",
+      "known_audio_id": "4a28ea48-f62f-4d77-8442-82d0cd3ef58f",
+      "target1_audio_id": "13df891d-2a5b-4140-ab20-7d55bce93717",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0098L01U05",
+      "seed_number": 98,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "9b2293e5-c882-4b21-b3f3-16398c503706",
+      "known_text": "நான் இன்று கடினமாக உழைக்க வேண்டும்",
+      "target_text": "我今天应该努力",
+      "known_audio_id": "4a28ea48-f62f-4d77-8442-82d0cd3ef58f",
+      "target1_audio_id": "13df891d-2a5b-4140-ab20-7d55bce93717",
+      "presentation_audio_id": null
+     },
+     "changed": true
     }
    ],
    "undo_ops": [
@@ -393,9 +1367,37 @@
      "op": "phrase.update",
      "phrase_id": "zho_for_tam:S0098L01U05",
      "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0098L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0098L01U05",
+     "set": {
       "target_text": "我应该今天努力",
       "target1_audio_id": "f159664d-01ac-474f-8db5-a9b827c168b9",
       "target2_audio_id": "6758be00-f90f-4f8c-81c0-1abec30c2416"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0098L01U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0098L01U01",
+     "set": {
+      "target1_audio_id": null
      }
     },
     {
@@ -411,9 +1413,37 @@
      "op": "phrase.update",
      "phrase_id": "zho_for_tam:S0023L01U05",
      "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0023L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0023L01U05",
+     "set": {
       "target_text": "我不确定我能不能现在开始说话",
       "target1_audio_id": "dec43235-26aa-4354-83ae-59400e395860",
       "target2_audio_id": "6de524d1-d80d-44e1-8520-aba15f9fbd29"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0015L02U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0015L02U04",
+     "set": {
+      "target1_audio_id": null
      }
     },
     {
@@ -424,78 +1454,6 @@
       "target1_audio_id": "0960e750-d1ff-4f31-97e0-49955556360e",
       "target2_audio_id": "2214c03f-60f6-4ea0-81b6-0a1e8b82c4f2"
      }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0012L02U05",
-     "set": {
-      "target_text": "你能不能明天说？",
-      "target1_audio_id": "905e7e64-a8da-439e-a433-f59b468004fd",
-      "target2_audio_id": "bdba556b-13fb-4624-821e-362d9dfb9c6a"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0011L01U04",
-     "set": {
-      "target_text": "你能不能现在说完？",
-      "target1_audio_id": "b9554935-c061-4537-84b5-d6b0146100bf",
-      "target2_audio_id": "d242dff6-2317-4a9f-b9ca-077a66138f44"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0005L03U03",
-     "set": {
-      "target_text": "我要现在和别人说",
-      "target1_audio_id": "ce72cd55-bb85-4598-8616-75c8d3322ccb",
-      "target2_audio_id": "800b3413-eb2e-43cb-b514-f63c4dd1bbdd"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0005L02U04",
-     "set": {
-      "target_text": "我要现在练习中文",
-      "target1_audio_id": "83e89688-d2b1-4261-a8d4-255ecc996e08",
-      "target2_audio_id": "fa304152-0850-454a-a830-9a055a6e363f"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0005L01U03",
-     "set": {
-      "target_text": "我要现在学习",
-      "target1_audio_id": "ff7c5bd7-5a27-430a-b285-afbd14e0426d",
-      "target2_audio_id": "797f93c6-1e05-453a-a23c-07de2a05097a"
-     }
-    },
-    {
-     "op": "seed.update",
-     "seed_number": 625,
-     "set": {
-      "target_text": "你想要喝点什么吗？",
-      "target1_audio_id": "b714b898-b9b1-4a91-a72d-752047a2e7d3",
-      "target2_audio_id": "077839c4-86fb-405b-9832-04bf240c5bd4"
-     }
-    },
-    {
-     "op": "seed.update",
-     "seed_number": 316,
-     "set": {
-      "target_text": "你觉得她能周一带她哥哥来吗？",
-      "target1_audio_id": "df1b5e8d-b370-4df0-8b46-6456064ecca3",
-      "target2_audio_id": "836e5e06-2477-4883-967b-da091f542b16"
-     }
-    },
-    {
-     "op": "seed.update",
-     "seed_number": 161,
-     "set": {
-      "target_text": "你能周日早上把那本书给我吗？",
-      "target1_audio_id": "1f410ae3-107f-4715-a296-3bbf3f49cc19",
-      "target2_audio_id": "e991c9b7-0dfe-411b-9ea5-6836199b1009"
-     }
     }
    ],
    "undo_file": null,
@@ -503,7 +1461,7 @@
   }
  },
  {
-  "batch": 1,
+  "batch": 3,
   "status": 200,
   "n": 12,
   "result": {
@@ -547,6 +1505,72 @@
     },
     {
      "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0139L02U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0139L02U01",
+      "seed_number": 139,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இப்போது கிளம்ப வேண்டும்",
+      "target_text": "我现在需要离开",
+      "known_audio_id": "063bf09a-1a67-42be-8725-eb4bd0c442fc",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0139L02U01",
+      "seed_number": 139,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "0ad77732-30a4-44c9-9039-23e2ae9f5000",
+      "known_text": "நான் இப்போது கிளம்ப வேண்டும்",
+      "target_text": "我现在需要离开",
+      "known_audio_id": "063bf09a-1a67-42be-8725-eb4bd0c442fc",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0139L02U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0139L02U01",
+      "seed_number": 139,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இப்போது கிளம்ப வேண்டும்",
+      "target_text": "我现在需要离开",
+      "known_audio_id": "063bf09a-1a67-42be-8725-eb4bd0c442fc",
+      "target1_audio_id": "0ad77732-30a4-44c9-9039-23e2ae9f5000",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0139L02U01",
+      "seed_number": 139,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "c940a488-0c7c-4113-8790-cb6d9a57da14",
+      "known_text": "நான் இப்போது கிளம்ப வேண்டும்",
+      "target_text": "我现在需要离开",
+      "known_audio_id": "063bf09a-1a67-42be-8725-eb4bd0c442fc",
+      "target1_audio_id": "0ad77732-30a4-44c9-9039-23e2ae9f5000",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -579,7 +1603,73 @@
      "changed": true
     },
     {
-     "index": 2,
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0156L01U02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0156L01U02",
+      "seed_number": 156,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நான் இப்போது செல்ல வேண்டும்",
+      "target_text": "我现在需要去",
+      "known_audio_id": "ef7fa81d-495f-4983-91a4-a6dc3f23a6b4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0156L01U02",
+      "seed_number": 156,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "e25b4c87-2d1a-4577-8925-1a2234898215",
+      "known_text": "நான் இப்போது செல்ல வேண்டும்",
+      "target_text": "我现在需要去",
+      "known_audio_id": "ef7fa81d-495f-4983-91a4-a6dc3f23a6b4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0156L01U02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0156L01U02",
+      "seed_number": 156,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நான் இப்போது செல்ல வேண்டும்",
+      "target_text": "我现在需要去",
+      "known_audio_id": "ef7fa81d-495f-4983-91a4-a6dc3f23a6b4",
+      "target1_audio_id": "e25b4c87-2d1a-4577-8925-1a2234898215",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0156L01U02",
+      "seed_number": 156,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "5fec32f7-2beb-4a04-9e62-9b45fe3c1186",
+      "known_text": "நான் இப்போது செல்ல வேண்டும்",
+      "target_text": "我现在需要去",
+      "known_audio_id": "ef7fa81d-495f-4983-91a4-a6dc3f23a6b4",
+      "target1_audio_id": "e25b4c87-2d1a-4577-8925-1a2234898215",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -612,7 +1702,73 @@
      "changed": true
     },
     {
-     "index": 3,
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0161L03U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0161L03U01",
+      "seed_number": 161,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0161L03U01",
+      "seed_number": 161,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7",
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0161L03U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0161L03U01",
+      "seed_number": 161,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target1_audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0161L03U01",
+      "seed_number": 161,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "c8f98fe0-b1d1-4b80-9e3b-4560d0032092",
+      "known_text": "ஞாயிற்றுக்கிழமை காலையில் அந்தப் புத்தகத்தை எனக்குக் கொடுக்க முடியுமா?",
+      "target_text": "你周日早上能把那本书给我吗？",
+      "known_audio_id": "b44780c5-9d47-43d2-8099-5961082d8b3a",
+      "target1_audio_id": "370a746f-eb83-4175-a4fa-a60d47b793d7",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -645,7 +1801,182 @@
      "changed": true
     },
     {
-     "index": 4,
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0316L02U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0316L02U01",
+      "seed_number": 316,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "அவள் தன் அண்ணனைத் திங்கள் கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "05826479-2d12-4ea9-8ec9-5c18082c91f4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0316L02U01",
+      "seed_number": 316,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc",
+      "known_text": "அவள் தன் அண்ணனைத் திங்கள் கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "05826479-2d12-4ea9-8ec9-5c18082c91f4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0316L02U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0316L02U01",
+      "seed_number": 316,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "அவள் தன் அண்ணனைத் திங்கள் கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "05826479-2d12-4ea9-8ec9-5c18082c91f4",
+      "target1_audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0316L02U01",
+      "seed_number": 316,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "dcedb5c5-4489-4865-8add-9770b0918d90",
+      "known_text": "அவள் தன் அண்ணனைத் திங்கள் கூட்டிட்டு வர முடியுமா என்று நினைக்கிறீர்களா?",
+      "target_text": "你觉得她周一能带她哥哥来吗？",
+      "known_audio_id": "05826479-2d12-4ea9-8ec9-5c18082c91f4",
+      "target1_audio_id": "695b473c-b41e-4e3d-aa4a-2807035a79dc",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0316L02U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0316L02U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0316L02U01",
+     "set": {
+      "target_text": "你觉得她能周一带她哥哥来吗？",
+      "target1_audio_id": "df1b5e8d-b370-4df0-8b46-6456064ecca3",
+      "target2_audio_id": "836e5e06-2477-4883-967b-da091f542b16"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0161L03U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0161L03U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0161L03U01",
+     "set": {
+      "target_text": "你能周日早上把那本书给我吗？",
+      "target1_audio_id": "1f410ae3-107f-4715-a296-3bbf3f49cc19",
+      "target2_audio_id": "e991c9b7-0dfe-411b-9ea5-6836199b1009"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0156L01U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0156L01U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0156L01U02",
+     "set": {
+      "target_text": "我需要现在去",
+      "target1_audio_id": "4763dbaa-da17-4a7f-b2e5-eab6f094bd6d",
+      "target2_audio_id": "e35d2c53-6d7f-47aa-9de4-a12497d51493"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0139L02U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0139L02U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0139L02U01",
+     "set": {
+      "target_text": "我需要现在离开",
+      "target1_audio_id": "c35644fa-4579-4da8-87dc-4e2ed84f6292",
+      "target2_audio_id": "6b082337-3c17-4855-9b5b-60cf7abb655b"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -678,7 +2009,73 @@
      "changed": true
     },
     {
-     "index": 5,
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0328L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0328L01U05",
+      "seed_number": 328,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "அவள் இன்று அதைச் செய்ய வேண்டும்",
+      "target_text": "她今天应该做",
+      "known_audio_id": "695479c7-aab2-489c-ada2-4f5cf2b6c95e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0328L01U05",
+      "seed_number": 328,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "0e92bca1-78e8-47da-80d4-2a4becd3373e",
+      "known_text": "அவள் இன்று அதைச் செய்ய வேண்டும்",
+      "target_text": "她今天应该做",
+      "known_audio_id": "695479c7-aab2-489c-ada2-4f5cf2b6c95e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0328L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0328L01U05",
+      "seed_number": 328,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "அவள் இன்று அதைச் செய்ய வேண்டும்",
+      "target_text": "她今天应该做",
+      "known_audio_id": "695479c7-aab2-489c-ada2-4f5cf2b6c95e",
+      "target1_audio_id": "0e92bca1-78e8-47da-80d4-2a4becd3373e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0328L01U05",
+      "seed_number": 328,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "7f1a11bf-9c2d-4be4-a07d-6cff7e4354c2",
+      "known_text": "அவள் இன்று அதைச் செய்ய வேண்டும்",
+      "target_text": "她今天应该做",
+      "known_audio_id": "695479c7-aab2-489c-ada2-4f5cf2b6c95e",
+      "target1_audio_id": "0e92bca1-78e8-47da-80d4-2a4becd3373e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -706,6 +2103,72 @@
       "known_audio_id": "619708aa-fb6e-4fb3-b952-e7fb03d18f33",
       "target1_audio_id": null,
       "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0349L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0349L01U05",
+      "seed_number": 349,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "அவர்கள் வெள்ளிக்கிழமை அங்கே போக வேண்டும்",
+      "target_text": "他们周五需要去那里",
+      "known_audio_id": "619708aa-fb6e-4fb3-b952-e7fb03d18f33",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0349L01U05",
+      "seed_number": 349,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "380803f1-4f93-48c0-9aba-9aceb1da742d",
+      "known_text": "அவர்கள் வெள்ளிக்கிழமை அங்கே போக வேண்டும்",
+      "target_text": "他们周五需要去那里",
+      "known_audio_id": "619708aa-fb6e-4fb3-b952-e7fb03d18f33",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0349L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0349L01U05",
+      "seed_number": 349,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "அவர்கள் வெள்ளிக்கிழமை அங்கே போக வேண்டும்",
+      "target_text": "他们周五需要去那里",
+      "known_audio_id": "619708aa-fb6e-4fb3-b952-e7fb03d18f33",
+      "target1_audio_id": "380803f1-4f93-48c0-9aba-9aceb1da742d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0349L01U05",
+      "seed_number": 349,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "2ef89b83-1607-4cea-9d5d-9b9bcf160011",
+      "known_text": "அவர்கள் வெள்ளிக்கிழமை அங்கே போக வேண்டும்",
+      "target_text": "他们周五需要去那里",
+      "known_audio_id": "619708aa-fb6e-4fb3-b952-e7fb03d18f33",
+      "target1_audio_id": "380803f1-4f93-48c0-9aba-9aceb1da742d",
       "presentation_audio_id": null
      },
      "changed": true
@@ -745,6 +2208,72 @@
     },
     {
      "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0405L02U02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0405L02U02",
+      "seed_number": 405,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நாம் இன்று முன்பதிவு செய்ய வேண்டும்",
+      "target_text": "我们今天应该预订",
+      "known_audio_id": "f61745c9-bb76-4f78-9e9c-fde1e69219b9",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0405L02U02",
+      "seed_number": 405,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "bee734ab-7b3e-4d66-941a-13be4c6038a3",
+      "known_text": "நாம் இன்று முன்பதிவு செய்ய வேண்டும்",
+      "target_text": "我们今天应该预订",
+      "known_audio_id": "f61745c9-bb76-4f78-9e9c-fde1e69219b9",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0405L02U02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0405L02U02",
+      "seed_number": 405,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நாம் இன்று முன்பதிவு செய்ய வேண்டும்",
+      "target_text": "我们今天应该预订",
+      "known_audio_id": "f61745c9-bb76-4f78-9e9c-fde1e69219b9",
+      "target1_audio_id": "bee734ab-7b3e-4d66-941a-13be4c6038a3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0405L02U02",
+      "seed_number": 405,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "b8a02f14-6211-4319-b728-0ddfe6dd39d8",
+      "known_text": "நாம் இன்று முன்பதிவு செய்ய வேண்டும்",
+      "target_text": "我们今天应该预订",
+      "known_audio_id": "f61745c9-bb76-4f78-9e9c-fde1e69219b9",
+      "target1_audio_id": "bee734ab-7b3e-4d66-941a-13be4c6038a3",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -777,7 +2306,182 @@
      "changed": true
     },
     {
-     "index": 8,
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0415L01U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0415L01U03",
+      "seed_number": 415,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "என்னைக் கேட்டால் நாம் இப்போது போக வேண்டும்",
+      "target_text": "依我看我们现在应该走",
+      "known_audio_id": "cf7f6b8b-c9b5-4c11-8cc2-2e7590b2a71b",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0415L01U03",
+      "seed_number": 415,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "f0630340-6dc3-463b-a5a1-33fd85815850",
+      "known_text": "என்னைக் கேட்டால் நாம் இப்போது போக வேண்டும்",
+      "target_text": "依我看我们现在应该走",
+      "known_audio_id": "cf7f6b8b-c9b5-4c11-8cc2-2e7590b2a71b",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0415L01U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0415L01U03",
+      "seed_number": 415,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "என்னைக் கேட்டால் நாம் இப்போது போக வேண்டும்",
+      "target_text": "依我看我们现在应该走",
+      "known_audio_id": "cf7f6b8b-c9b5-4c11-8cc2-2e7590b2a71b",
+      "target1_audio_id": "f0630340-6dc3-463b-a5a1-33fd85815850",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0415L01U03",
+      "seed_number": 415,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "46da0e6c-633d-4607-a663-f6356ee37c37",
+      "known_text": "என்னைக் கேட்டால் நாம் இப்போது போக வேண்டும்",
+      "target_text": "依我看我们现在应该走",
+      "known_audio_id": "cf7f6b8b-c9b5-4c11-8cc2-2e7590b2a71b",
+      "target1_audio_id": "f0630340-6dc3-463b-a5a1-33fd85815850",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0415L01U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0415L01U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0415L01U03",
+     "set": {
+      "target_text": "依我看我们应该现在走",
+      "target1_audio_id": "654a50e5-8cc0-4357-962e-de866bc8e0d6",
+      "target2_audio_id": "2746517e-48df-4f04-a13d-6885e572de75"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0405L02U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0405L02U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0405L02U02",
+     "set": {
+      "target_text": "我们应该今天预订",
+      "target1_audio_id": "e6197c32-0a7c-43e0-b322-69dac7924814",
+      "target2_audio_id": "b46fed3c-af28-41a9-bfbb-f7b12afcfcba"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0349L01U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0349L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0349L01U05",
+     "set": {
+      "target_text": "他们需要周五去那里",
+      "target1_audio_id": "1ec18a30-1315-4361-9107-5876e5fafd39",
+      "target2_audio_id": "3cc47c77-4856-44e0-958e-9238fd1d0ca2"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0328L01U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0328L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0328L01U05",
+     "set": {
+      "target_text": "她应该今天做",
+      "target1_audio_id": "4622b0b3-372b-49ca-9885-428cd0e984ba",
+      "target2_audio_id": "1b6cf051-5d85-4f57-875e-bff8d4c6b313"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -810,7 +2514,73 @@
      "changed": true
     },
     {
-     "index": 9,
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0438L01U02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0438L01U02",
+      "seed_number": 438,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நாம் இப்போது முடிவு செய்ய வேண்டும்",
+      "target_text": "我们现在应该决定",
+      "known_audio_id": "85bbf15d-a97e-4a39-bd5a-4272740424dd",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0438L01U02",
+      "seed_number": 438,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "0a77de02-9341-4b7b-a903-4711765c2ac9",
+      "known_text": "நாம் இப்போது முடிவு செய்ய வேண்டும்",
+      "target_text": "我们现在应该决定",
+      "known_audio_id": "85bbf15d-a97e-4a39-bd5a-4272740424dd",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0438L01U02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0438L01U02",
+      "seed_number": 438,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நாம் இப்போது முடிவு செய்ய வேண்டும்",
+      "target_text": "我们现在应该决定",
+      "known_audio_id": "85bbf15d-a97e-4a39-bd5a-4272740424dd",
+      "target1_audio_id": "0a77de02-9341-4b7b-a903-4711765c2ac9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0438L01U02",
+      "seed_number": 438,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "e8b4867b-2d42-4412-9428-1cdb417c21a3",
+      "known_text": "நாம் இப்போது முடிவு செய்ய வேண்டும்",
+      "target_text": "我们现在应该决定",
+      "known_audio_id": "85bbf15d-a97e-4a39-bd5a-4272740424dd",
+      "target1_audio_id": "0a77de02-9341-4b7b-a903-4711765c2ac9",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -843,7 +2613,73 @@
      "changed": true
     },
     {
-     "index": 10,
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0248L03B03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0248L03B03",
+      "seed_number": 248,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "9ceef3d9-b055-4d79-95f4-dc7d9a630f1b",
+      "known_text": "பணம் திரும்பக் கேட்க",
+      "target_text": "想退钱",
+      "known_audio_id": "117e3dd3-f93a-47ed-86a5-c193b86b050b",
+      "target2_audio_id": "0809b751-0860-4c32-8848-deacf760a866",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0248L03B03",
+      "seed_number": 248,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "9ceef3d9-b055-4d79-95f4-dc7d9a630f1b",
+      "known_text": "பணம் திரும்பக் கேட்க",
+      "target_text": "想退钱",
+      "known_audio_id": "117e3dd3-f93a-47ed-86a5-c193b86b050b",
+      "target2_audio_id": "0809b751-0860-4c32-8848-deacf760a866",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0248L03B03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0248L03B03",
+      "seed_number": 248,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "0809b751-0860-4c32-8848-deacf760a866",
+      "known_text": "பணம் திரும்பக் கேட்க",
+      "target_text": "想退钱",
+      "known_audio_id": "117e3dd3-f93a-47ed-86a5-c193b86b050b",
+      "target1_audio_id": "9ceef3d9-b055-4d79-95f4-dc7d9a630f1b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0248L03B03",
+      "seed_number": 248,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "0809b751-0860-4c32-8848-deacf760a866",
+      "known_text": "பணம் திரும்பக் கேட்க",
+      "target_text": "想退钱",
+      "known_audio_id": "117e3dd3-f93a-47ed-86a5-c193b86b050b",
+      "target1_audio_id": "9ceef3d9-b055-4d79-95f4-dc7d9a630f1b",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -876,7 +2712,73 @@
      "changed": true
     },
     {
-     "index": 11,
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0625L01U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0625L01U01",
+      "seed_number": 625,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0625L01U01",
+      "seed_number": 625,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae",
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0625L01U01"
+     },
+     "before": {
+      "id": "zho_for_tam:S0625L01U01",
+      "seed_number": 625,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target1_audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0625L01U01",
+      "seed_number": 625,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "db6ceea9-42aa-465a-9121-f4337014b792",
+      "known_text": "உங்களுக்கு ஏதாவது குடிக்க வேண்டுமா?",
+      "target_text": "你想喝点什么吗？",
+      "known_audio_id": "94a836e1-0eb1-4ee0-8289-5f80d7cf1cbd",
+      "target1_audio_id": "d6286520-50da-40b8-8f81-b50b2c17b0ae",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -907,6 +2809,72 @@
       "presentation_audio_id": null
      },
      "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0643L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0643L01U05",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "தாங்கள் இப்போது தேநீர் குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "您现在想喝茶吗？",
+      "known_audio_id": "671feb7c-91c5-4abd-907d-315d4cb42e8c",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0643L01U05",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "d68833e2-290d-4ef7-9990-851a5c4ad606",
+      "known_text": "தாங்கள் இப்போது தேநீர் குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "您现在想喝茶吗？",
+      "known_audio_id": "671feb7c-91c5-4abd-907d-315d4cb42e8c",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0643L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0643L01U05",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "தாங்கள் இப்போது தேநீர் குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "您现在想喝茶吗？",
+      "known_audio_id": "671feb7c-91c5-4abd-907d-315d4cb42e8c",
+      "target1_audio_id": "d68833e2-290d-4ef7-9990-851a5c4ad606",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0643L01U05",
+      "seed_number": 643,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "b7a1f3a4-ff1f-42b7-a5c2-dee26a4cb44b",
+      "known_text": "தாங்கள் இப்போது தேநீர் குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "您现在想喝茶吗？",
+      "known_audio_id": "671feb7c-91c5-4abd-907d-315d4cb42e8c",
+      "target1_audio_id": "d68833e2-290d-4ef7-9990-851a5c4ad606",
+      "presentation_audio_id": null
+     },
+     "changed": true
     }
    ],
    "undo_ops": [
@@ -914,9 +2882,37 @@
      "op": "phrase.update",
      "phrase_id": "zho_for_tam:S0643L01U05",
      "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0643L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0643L01U05",
+     "set": {
       "target_text": "您想要现在喝茶吗？",
       "target1_audio_id": "47266c1e-b782-4c07-b75c-038863510941",
       "target2_audio_id": "3fb856fb-20a9-47e3-b38f-80fe961e37f9"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0625L01U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0625L01U01",
+     "set": {
+      "target1_audio_id": null
      }
     },
     {
@@ -941,81 +2937,23 @@
      "op": "phrase.update",
      "phrase_id": "zho_for_tam:S0438L01U02",
      "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0438L01U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0438L01U02",
+     "set": {
       "target_text": "我们应该现在决定",
       "target1_audio_id": "72ad3400-78de-4f32-95a4-c2e27b042ba6",
       "target2_audio_id": "9a373930-1de3-4218-a82d-00804dd89e55"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0415L01U03",
-     "set": {
-      "target_text": "依我看我们应该现在走",
-      "target1_audio_id": "654a50e5-8cc0-4357-962e-de866bc8e0d6",
-      "target2_audio_id": "2746517e-48df-4f04-a13d-6885e572de75"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0405L02U02",
-     "set": {
-      "target_text": "我们应该今天预订",
-      "target1_audio_id": "e6197c32-0a7c-43e0-b322-69dac7924814",
-      "target2_audio_id": "b46fed3c-af28-41a9-bfbb-f7b12afcfcba"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0349L01U05",
-     "set": {
-      "target_text": "他们需要周五去那里",
-      "target1_audio_id": "1ec18a30-1315-4361-9107-5876e5fafd39",
-      "target2_audio_id": "3cc47c77-4856-44e0-958e-9238fd1d0ca2"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0328L01U05",
-     "set": {
-      "target_text": "她应该今天做",
-      "target1_audio_id": "4622b0b3-372b-49ca-9885-428cd0e984ba",
-      "target2_audio_id": "1b6cf051-5d85-4f57-875e-bff8d4c6b313"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0316L02U01",
-     "set": {
-      "target_text": "你觉得她能周一带她哥哥来吗？",
-      "target1_audio_id": "df1b5e8d-b370-4df0-8b46-6456064ecca3",
-      "target2_audio_id": "836e5e06-2477-4883-967b-da091f542b16"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0161L03U01",
-     "set": {
-      "target_text": "你能周日早上把那本书给我吗？",
-      "target1_audio_id": "1f410ae3-107f-4715-a296-3bbf3f49cc19",
-      "target2_audio_id": "e991c9b7-0dfe-411b-9ea5-6836199b1009"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0156L01U02",
-     "set": {
-      "target_text": "我需要现在去",
-      "target1_audio_id": "4763dbaa-da17-4a7f-b2e5-eab6f094bd6d",
-      "target2_audio_id": "e35d2c53-6d7f-47aa-9de4-a12497d51493"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0139L02U01",
-     "set": {
-      "target_text": "我需要现在离开",
-      "target1_audio_id": "c35644fa-4579-4da8-87dc-4e2ed84f6292",
-      "target2_audio_id": "6b082337-3c17-4855-9b5b-60cf7abb655b"
      }
     }
    ],
@@ -1024,9 +2962,9 @@
   }
  },
  {
-  "batch": 2,
+  "batch": 6,
   "status": 200,
-  "n": 8,
+  "n": 12,
   "result": {
    "ok": true,
    "dryRun": true,
@@ -1068,6 +3006,72 @@
     },
     {
      "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0658L01U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0658L01U04",
+      "seed_number": 658,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் ஏதாவது குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "你们想喝点什么吗？",
+      "known_audio_id": "6cf4ac8a-c493-4920-8434-45dad7e283a9",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0658L01U04",
+      "seed_number": 658,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "84e8df87-a148-4ff6-be10-7b59800fb2ba",
+      "known_text": "நீங்கள் எல்லோரும் ஏதாவது குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "你们想喝点什么吗？",
+      "known_audio_id": "6cf4ac8a-c493-4920-8434-45dad7e283a9",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0658L01U04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0658L01U04",
+      "seed_number": 658,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் ஏதாவது குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "你们想喝点什么吗？",
+      "known_audio_id": "6cf4ac8a-c493-4920-8434-45dad7e283a9",
+      "target1_audio_id": "84e8df87-a148-4ff6-be10-7b59800fb2ba",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0658L01U04",
+      "seed_number": 658,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "0bc19490-7313-415f-9991-bb51df61478c",
+      "known_text": "நீங்கள் எல்லோரும் ஏதாவது குடிக்க விரும்புகிறீர்களா?",
+      "target_text": "你们想喝点什么吗？",
+      "known_audio_id": "6cf4ac8a-c493-4920-8434-45dad7e283a9",
+      "target1_audio_id": "84e8df87-a148-4ff6-be10-7b59800fb2ba",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -1100,7 +3104,73 @@
      "changed": true
     },
     {
-     "index": 2,
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0476L01U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0476L01U03",
+      "seed_number": 476,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "அது முடிந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得它结束了",
+      "known_audio_id": "f918511d-70ed-410d-908f-49e0db3c3c13",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0476L01U03",
+      "seed_number": 476,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "055681af-acee-4488-ae34-f5bc2c917003",
+      "known_text": "அது முடிந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得它结束了",
+      "known_audio_id": "f918511d-70ed-410d-908f-49e0db3c3c13",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0476L01U03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0476L01U03",
+      "seed_number": 476,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "அது முடிந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得它结束了",
+      "known_audio_id": "f918511d-70ed-410d-908f-49e0db3c3c13",
+      "target1_audio_id": "055681af-acee-4488-ae34-f5bc2c917003",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0476L01U03",
+      "seed_number": 476,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "d4ce9d50-b4cb-4a6c-ad27-dc0e12f35cd6",
+      "known_text": "அது முடிந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得它结束了",
+      "known_audio_id": "f918511d-70ed-410d-908f-49e0db3c3c13",
+      "target1_audio_id": "055681af-acee-4488-ae34-f5bc2c917003",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -1133,7 +3203,73 @@
      "changed": true
     },
     {
-     "index": 3,
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0478L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0478L01U05",
+      "seed_number": 478,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "அவள் ரொம்ப கருணையானவள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得她很善良",
+      "known_audio_id": "0c7c3d56-ee7d-4435-945e-4a1383674b75",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0478L01U05",
+      "seed_number": 478,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "b156185d-b676-4761-b0fa-aafeda190486",
+      "known_text": "அவள் ரொம்ப கருணையானவள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得她很善良",
+      "known_audio_id": "0c7c3d56-ee7d-4435-945e-4a1383674b75",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0478L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0478L01U05",
+      "seed_number": 478,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "அவள் ரொம்ப கருணையானவள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得她很善良",
+      "known_audio_id": "0c7c3d56-ee7d-4435-945e-4a1383674b75",
+      "target1_audio_id": "b156185d-b676-4761-b0fa-aafeda190486",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0478L01U05",
+      "seed_number": 478,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "30cd30af-e7da-49c5-8817-ced4d40e558b",
+      "known_text": "அவள் ரொம்ப கருணையானவள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得她很善良",
+      "known_audio_id": "0c7c3d56-ee7d-4435-945e-4a1383674b75",
+      "target1_audio_id": "b156185d-b676-4761-b0fa-aafeda190486",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -1166,7 +3302,182 @@
      "changed": true
     },
     {
-     "index": 4,
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0479L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0479L01U05",
+      "seed_number": 479,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "இது மிகக் குறைந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得这是最少的了",
+      "known_audio_id": "093f4173-714b-4608-9cff-f1baa216dcc4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0479L01U05",
+      "seed_number": 479,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "3bb4b536-d4bf-43e6-b7e3-9c3bed7ff7de",
+      "known_text": "இது மிகக் குறைந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得这是最少的了",
+      "known_audio_id": "093f4173-714b-4608-9cff-f1baa216dcc4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0479L01U05"
+     },
+     "before": {
+      "id": "zho_for_tam:S0479L01U05",
+      "seed_number": 479,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "இது மிகக் குறைந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得这是最少的了",
+      "known_audio_id": "093f4173-714b-4608-9cff-f1baa216dcc4",
+      "target1_audio_id": "3bb4b536-d4bf-43e6-b7e3-9c3bed7ff7de",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0479L01U05",
+      "seed_number": 479,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "3c9c615c-8a22-47ab-8d23-2b13b66eaf28",
+      "known_text": "இது மிகக் குறைந்தது என்று நினைக்கிறேன்",
+      "target_text": "我觉得这是最少的了",
+      "known_audio_id": "093f4173-714b-4608-9cff-f1baa216dcc4",
+      "target1_audio_id": "3bb4b536-d4bf-43e6-b7e3-9c3bed7ff7de",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0479L01U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0479L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0479L01U05",
+     "set": {
+      "target_text": "我想这是最少的了",
+      "target1_audio_id": "b3c8d89e-2f70-435e-9bf1-f1f57b899a98",
+      "target2_audio_id": "ddc3e73e-4816-42a3-b951-c6bca111b151"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0478L01U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0478L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0478L01U05",
+     "set": {
+      "target_text": "我想她很善良",
+      "target1_audio_id": "c2279147-ce7f-470c-80d8-fb94ba2cf873",
+      "target2_audio_id": "10aec0dd-4ca8-4ffb-aaad-0c9516a57be2"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0476L01U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0476L01U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0476L01U03",
+     "set": {
+      "target_text": "我想它结束了",
+      "target1_audio_id": "6cb52104-1287-48e2-8860-d519dd85a4b3",
+      "target2_audio_id": "d952e237-cd14-4887-a23d-4bdc33e067de"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0658L01U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0658L01U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0658L01U04",
+     "set": {
+      "target_text": "你们想要喝点什么吗？",
+      "target1_audio_id": "706e1781-f629-4e14-880b-e9e7678a5f06",
+      "target2_audio_id": "b605a1e6-d4e6-43d1-bc8b-c7d852c979c8"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 7,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -1199,7 +3510,73 @@
      "changed": true
     },
     {
-     "index": 5,
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0659L01B03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0659L01B03",
+      "seed_number": 659,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் கொஞ்சம் சொல்ல முடியும் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们能说一下",
+      "known_audio_id": "fcc6e996-036a-436b-a2f5-901cc1a48bc4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0659L01B03",
+      "seed_number": 659,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "7d93e49d-8bb1-432f-9356-9bf949cc38f7",
+      "known_text": "நீங்கள் எல்லோரும் கொஞ்சம் சொல்ல முடியும் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们能说一下",
+      "known_audio_id": "fcc6e996-036a-436b-a2f5-901cc1a48bc4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0659L01B03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0659L01B03",
+      "seed_number": 659,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் கொஞ்சம் சொல்ல முடியும் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们能说一下",
+      "known_audio_id": "fcc6e996-036a-436b-a2f5-901cc1a48bc4",
+      "target1_audio_id": "7d93e49d-8bb1-432f-9356-9bf949cc38f7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0659L01B03",
+      "seed_number": 659,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "0d8f433e-5f66-4f81-b9f7-89810b6f5a0d",
+      "known_text": "நீங்கள் எல்லோரும் கொஞ்சம் சொல்ல முடியும் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们能说一下",
+      "known_audio_id": "fcc6e996-036a-436b-a2f5-901cc1a48bc4",
+      "target1_audio_id": "7d93e49d-8bb1-432f-9356-9bf949cc38f7",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -1227,6 +3604,72 @@
       "known_audio_id": "7571dc33-da40-4dc9-ac6f-ce4b7ea241ef",
       "target1_audio_id": null,
       "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0662L01B02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0662L01B02",
+      "seed_number": 662,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் சீன மொழி பேசுகிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们说中文",
+      "known_audio_id": "7571dc33-da40-4dc9-ac6f-ce4b7ea241ef",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0662L01B02",
+      "seed_number": 662,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "dcdadf70-9d14-4e6e-958a-0210bd4145ea",
+      "known_text": "நீங்கள் எல்லோரும் சீன மொழி பேசுகிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们说中文",
+      "known_audio_id": "7571dc33-da40-4dc9-ac6f-ce4b7ea241ef",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0662L01B02"
+     },
+     "before": {
+      "id": "zho_for_tam:S0662L01B02",
+      "seed_number": 662,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் சீன மொழி பேசுகிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们说中文",
+      "known_audio_id": "7571dc33-da40-4dc9-ac6f-ce4b7ea241ef",
+      "target1_audio_id": "dcdadf70-9d14-4e6e-958a-0210bd4145ea",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0662L01B02",
+      "seed_number": 662,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "4f5c7db2-0713-4f49-935e-410e8733bd06",
+      "known_text": "நீங்கள் எல்லோரும் சீன மொழி பேசுகிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们说中文",
+      "known_audio_id": "7571dc33-da40-4dc9-ac6f-ce4b7ea241ef",
+      "target1_audio_id": "dcdadf70-9d14-4e6e-958a-0210bd4145ea",
       "presentation_audio_id": null
      },
      "changed": true
@@ -1266,6 +3709,72 @@
     },
     {
      "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0664L01B03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0664L01B03",
+      "seed_number": 664,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் தயாராக இருக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们都准备好了",
+      "known_audio_id": "c433b452-a287-4064-bd70-beffd7b05ef8",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0664L01B03",
+      "seed_number": 664,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "0153bb76-77c8-435c-bb0b-c54d2577f790",
+      "known_text": "நீங்கள் எல்லோரும் தயாராக இருக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们都准备好了",
+      "known_audio_id": "c433b452-a287-4064-bd70-beffd7b05ef8",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0664L01B03"
+     },
+     "before": {
+      "id": "zho_for_tam:S0664L01B03",
+      "seed_number": 664,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் தயாராக இருக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们都准备好了",
+      "known_audio_id": "c433b452-a287-4064-bd70-beffd7b05ef8",
+      "target1_audio_id": "0153bb76-77c8-435c-bb0b-c54d2577f790",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0664L01B03",
+      "seed_number": 664,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "b393b98b-996b-4377-9f11-28a9baf51bf5",
+      "known_text": "நீங்கள் எல்லோரும் தயாராக இருக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们都准备好了",
+      "known_audio_id": "c433b452-a287-4064-bd70-beffd7b05ef8",
+      "target1_audio_id": "0153bb76-77c8-435c-bb0b-c54d2577f790",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
      "op": "phrase.update",
      "key": {
       "course_code": "zho_for_tam",
@@ -1296,6 +3805,72 @@
       "presentation_audio_id": null
      },
      "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0667L01B04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0667L01B04",
+      "seed_number": 667,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் ஆட்சேபிக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们介意",
+      "known_audio_id": "518f6a72-5e40-417d-80de-f44a549cf5d7",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0667L01B04",
+      "seed_number": 667,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "559a20c2-1fe9-439e-be76-acf37ab19390",
+      "known_text": "நீங்கள் எல்லோரும் ஆட்சேபிக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们介意",
+      "known_audio_id": "518f6a72-5e40-417d-80de-f44a549cf5d7",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "zho_for_tam",
+      "id": "zho_for_tam:S0667L01B04"
+     },
+     "before": {
+      "id": "zho_for_tam:S0667L01B04",
+      "seed_number": 667,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "நீங்கள் எல்லோரும் ஆட்சேபிக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们介意",
+      "known_audio_id": "518f6a72-5e40-417d-80de-f44a549cf5d7",
+      "target1_audio_id": "559a20c2-1fe9-439e-be76-acf37ab19390",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "zho_for_tam:S0667L01B04",
+      "seed_number": 667,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "2abad24b-295c-4cb4-bc91-3f0dc99e7a7e",
+      "known_text": "நீங்கள் எல்லோரும் ஆட்சேபிக்கிறீர்கள் என்று நினைக்கிறேன்",
+      "target_text": "我觉得你们介意",
+      "known_audio_id": "518f6a72-5e40-417d-80de-f44a549cf5d7",
+      "target1_audio_id": "559a20c2-1fe9-439e-be76-acf37ab19390",
+      "presentation_audio_id": null
+     },
+     "changed": true
     }
    ],
    "undo_ops": [
@@ -1303,9 +3878,37 @@
      "op": "phrase.update",
      "phrase_id": "zho_for_tam:S0667L01B04",
      "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0667L01B04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0667L01B04",
+     "set": {
       "target_text": "我想你们介意",
       "target1_audio_id": "089346c4-d888-4dac-979f-00aba93e36c9",
       "target2_audio_id": "55012512-01b3-411f-b3f3-639b6a0e8672"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0664L01B03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0664L01B03",
+     "set": {
+      "target1_audio_id": null
      }
     },
     {
@@ -1321,6 +3924,20 @@
      "op": "phrase.update",
      "phrase_id": "zho_for_tam:S0662L01B02",
      "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0662L01B02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0662L01B02",
+     "set": {
       "target_text": "我想你们说中文",
       "target1_audio_id": "283620a0-b66a-48f4-88ed-b2dd484f3774",
       "target2_audio_id": "77f2514b-5c6a-43ef-ab64-29ab4874c242"
@@ -1330,45 +3947,23 @@
      "op": "phrase.update",
      "phrase_id": "zho_for_tam:S0659L01B03",
      "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0659L01B03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "zho_for_tam:S0659L01B03",
+     "set": {
       "target_text": "我想你们能说一下",
       "target1_audio_id": "c7813db7-ddfd-4ca6-8ca0-063757ca1b06",
       "target2_audio_id": "4bd6ede3-69b1-40cd-96ad-e6428d44c0ab"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0479L01U05",
-     "set": {
-      "target_text": "我想这是最少的了",
-      "target1_audio_id": "b3c8d89e-2f70-435e-9bf1-f1f57b899a98",
-      "target2_audio_id": "ddc3e73e-4816-42a3-b951-c6bca111b151"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0478L01U05",
-     "set": {
-      "target_text": "我想她很善良",
-      "target1_audio_id": "c2279147-ce7f-470c-80d8-fb94ba2cf873",
-      "target2_audio_id": "10aec0dd-4ca8-4ffb-aaad-0c9516a57be2"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0476L01U03",
-     "set": {
-      "target_text": "我想它结束了",
-      "target1_audio_id": "6cb52104-1287-48e2-8860-d519dd85a4b3",
-      "target2_audio_id": "d952e237-cd14-4887-a23d-4bdc33e067de"
-     }
-    },
-    {
-     "op": "phrase.update",
-     "phrase_id": "zho_for_tam:S0658L01U04",
-     "set": {
-      "target_text": "你们想要喝点什么吗？",
-      "target1_audio_id": "706e1781-f629-4e14-880b-e9e7678a5f06",
-      "target2_audio_id": "b605a1e6-d4e6-43d1-bc8b-c7d852c979c8"
      }
     }
    ],

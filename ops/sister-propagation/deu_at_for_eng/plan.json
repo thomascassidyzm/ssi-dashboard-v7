@@ -1,0 +1,73 @@
+{
+ "course": "deu_at_for_eng",
+ "purpose": "cs #702·AI deu_at_for_eng: möchten Sie = \"would you like\" (Austrian polite offer), seed 383 wollt (Kai approved 18 Nov)",
+ "seeds": [
+  {
+   "n": 643,
+   "known": "would you like, sir?"
+  },
+  {
+   "n": 650,
+   "known": "would you like to go, madam?"
+  }
+ ],
+ "legos": [
+  {
+   "id": "S0650L01",
+   "known": "would you like to go",
+   "intro": true
+  }
+ ],
+ "phrases": [
+  {
+   "id": "S0643L01U01",
+   "known": "would you like, sir?"
+  },
+  {
+   "id": "S0650L01C01",
+   "known": "would you like to"
+  },
+  {
+   "id": "S0650L01B01",
+   "known": "would you like to go"
+  },
+  {
+   "id": "S0650L01B02",
+   "known": "so would you like to go home"
+  },
+  {
+   "id": "S0650L01B03",
+   "known": "so would you like to go"
+  },
+  {
+   "id": "S0650L01B04",
+   "known": "would you like to go now"
+  },
+  {
+   "id": "S0650L01U01",
+   "known": "would you like to go madam"
+  },
+  {
+   "id": "S0650L01U02",
+   "known": "would you like to go today"
+  },
+  {
+   "id": "S0650L01U03",
+   "known": "would you like to go now sir"
+  },
+  {
+   "id": "S0650L01U04",
+   "known": "so would you like to go then madam"
+  },
+  {
+   "id": "S0650L01U05",
+   "known": "would you like to go this evening"
+  }
+ ],
+ "held": [
+  {
+   "what": "seed 383 + S0383L01U01 mechat -> wollt",
+   "why": "render refused VOICE_POLICY: deu_at target2 (m) uncast (draft casting only; Tom casts in the Voice Lab). Applying would leave target2 silent or on the old mechat clip. target1 clip rendered (43 chars) and unused: see audio-real.json"
+  }
+ ]
+}

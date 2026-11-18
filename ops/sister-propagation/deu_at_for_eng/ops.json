@@ -1,0 +1,261 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 643,
+  "expect": {
+   "known_text": "do you want sir?",
+   "target_text": "Möchten Sie, der Herr"
+  },
+  "set": {
+   "known_text": "would you like, sir?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 643,
+  "slot": "known",
+  "audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 650,
+  "expect": {
+   "known_text": "do you want to go madam?",
+   "target_text": "Möchten Sie gehen, gnädige Frau?"
+  },
+  "set": {
+   "known_text": "would you like to go, madam?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 650,
+  "slot": "known",
+  "audio_id": "0b0b4f2f-e05e-475f-a8a6-a1692a3d9d13"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0650L01",
+  "expect": {
+   "known_text": "do you want to go",
+   "target_text": "möchten Sie gehen"
+  },
+  "set": {
+   "known_text": "would you like to go"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0650L01",
+  "slot": "known",
+  "audio_id": "5ee39f60-76e8-41a4-a63a-cceb75eef3c0"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0650L01",
+  "slot": "presentation",
+  "audio_id": "2a261a9b-dd1b-474e-8f5f-672a6b8789f9"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0643L01U01",
+  "expect": {
+   "known_text": "do you want sir?",
+   "target_text": "möchten Sie, der Herr"
+  },
+  "set": {
+   "known_text": "would you like, sir?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0643L01U01",
+  "slot": "known",
+  "audio_id": "a8a615e7-8392-4f67-8ed7-9bf61c2af8c1"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01C01",
+  "expect": {
+   "known_text": "do you want to",
+   "target_text": "Möchten Sie"
+  },
+  "set": {
+   "known_text": "would you like to"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01C01",
+  "slot": "known",
+  "audio_id": "5a30a1e6-3e12-49bc-b16d-eb071636326a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01B01",
+  "expect": {
+   "known_text": "do you want to go",
+   "target_text": "möchten Sie gehen"
+  },
+  "set": {
+   "known_text": "would you like to go"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01B01",
+  "slot": "known",
+  "audio_id": "5ee39f60-76e8-41a4-a63a-cceb75eef3c0"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01B02",
+  "expect": {
+   "known_text": "so do you want to go home",
+   "target_text": "und möchten Sie hoam gehen"
+  },
+  "set": {
+   "known_text": "so would you like to go home"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01B02",
+  "slot": "known",
+  "audio_id": "a20585b6-f421-4c74-8678-615b1c8149b7"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01B03",
+  "expect": {
+   "known_text": "so do you want to go",
+   "target_text": "und Möchten Sie gehen"
+  },
+  "set": {
+   "known_text": "so would you like to go"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01B03",
+  "slot": "known",
+  "audio_id": "66f00478-d170-4c92-a685-efdb23aeb7cd"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01B04",
+  "expect": {
+   "known_text": "do you want to go now",
+   "target_text": "möchten Sie iatz gehen"
+  },
+  "set": {
+   "known_text": "would you like to go now"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01B04",
+  "slot": "known",
+  "audio_id": "1ac9990b-ba49-4c18-990b-27233a4d116e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01U01",
+  "expect": {
+   "known_text": "do you want to go madam",
+   "target_text": "möchten Sie gehen, gnädige Frau"
+  },
+  "set": {
+   "known_text": "would you like to go madam"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01U01",
+  "slot": "known",
+  "audio_id": "57df7586-db50-41b7-8955-ac68384699ea"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01U02",
+  "expect": {
+   "known_text": "do you want to go today",
+   "target_text": "möchten Sie heit gehen"
+  },
+  "set": {
+   "known_text": "would you like to go today"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01U02",
+  "slot": "known",
+  "audio_id": "07649bd2-79e2-47e9-9925-ed0a3b4448e3"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01U03",
+  "expect": {
+   "known_text": "do you want to go now sir",
+   "target_text": "möchten Sie gehen iatz, der Herr"
+  },
+  "set": {
+   "known_text": "would you like to go now sir"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01U03",
+  "slot": "known",
+  "audio_id": "f570f378-799a-41d8-9a9a-54506e6fc36d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01U04",
+  "expect": {
+   "known_text": "so do you want to go then madam",
+   "target_text": "und Möchten Sie gehen, gnädige Frau"
+  },
+  "set": {
+   "known_text": "so would you like to go then madam"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01U04",
+  "slot": "known",
+  "audio_id": "b9b173c1-9d3c-4e38-9e4b-ddafb528e99e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_at_for_eng:S0650L01U05",
+  "expect": {
+   "known_text": "do you want to go this evening",
+   "target_text": "möchten Sie heit auf d'Nocht gehen"
+  },
+  "set": {
+   "known_text": "would you like to go this evening"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_at_for_eng:S0650L01U05",
+  "slot": "known",
+  "audio_id": "62286564-3ed0-4d64-8939-d4ebfd70c110"
+ }
+]

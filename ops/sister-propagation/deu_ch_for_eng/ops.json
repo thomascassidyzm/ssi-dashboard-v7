@@ -1,0 +1,830 @@
+[
+ {
+  "op": "lego.update",
+  "lego_id": "S0639L01",
+  "expect": {
+   "known_text": "you sir",
+   "target_text": "ihne"
+  },
+  "set": {
+   "known_text": "you, sir",
+   "target_text": "Ihne"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0642L01",
+  "expect": {
+   "known_text": "you madam",
+   "target_text": "sie"
+  },
+  "set": {
+   "known_text": "you, madam",
+   "target_text": "Sie"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0642L02",
+  "expect": {
+   "known_text": "feel madam",
+   "target_text": "fühled"
+  },
+  "set": {
+   "known_text": "do you feel, madam",
+   "target_text": "fühled Sie sich"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0643L01",
+  "expect": {
+   "known_text": "do you want, sir",
+   "target_text": "wänd"
+  },
+  "set": {
+   "known_text": "do you want, sir",
+   "target_text": "wänd Sie"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0644L01",
+  "expect": {
+   "known_text": "could you sir",
+   "target_text": "chönted"
+  },
+  "set": {
+   "known_text": "could you, sir",
+   "target_text": "chönted Sie"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0646L01",
+  "expect": {
+   "known_text": "you're doing sir",
+   "target_text": "mached"
+  },
+  "set": {
+   "known_text": "you're doing, sir",
+   "target_text": "Sie mached"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0647L01",
+  "expect": {
+   "known_text": "you speak madam",
+   "target_text": "reded"
+  },
+  "set": {
+   "known_text": "you speak, madam",
+   "target_text": "Sie reded"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0651L01",
+  "expect": {
+   "known_text": "you think madam",
+   "target_text": "dänked"
+  },
+  "set": {
+   "known_text": "do you think, madam",
+   "target_text": "dänked Sie"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0652L01",
+  "expect": {
+   "known_text": "you need sir",
+   "target_text": "bruuched"
+  },
+  "set": {
+   "known_text": "do you need, sir",
+   "target_text": "bruuched Sie"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0425L01",
+  "expect": {
+   "known_text": "they understand",
+   "target_text": "verstönd"
+  },
+  "set": {
+   "known_text": "they understand",
+   "target_text": "si verstönd"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0448L01",
+  "expect": {
+   "known_text": "they help",
+   "target_text": "hälfed"
+  },
+  "set": {
+   "known_text": "they help",
+   "target_text": "si hälfed"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0572L06",
+  "expect": {
+   "known_text": "they visited us",
+   "target_text": "si öis bsuecht händ"
+  },
+  "set": {
+   "known_text": "when they visited us",
+   "target_text": "wo si öis bsuecht händ"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0538L03",
+  "expect": {
+   "known_text": "i don't care",
+   "target_text": "s mir egal wär"
+  },
+  "set": {
+   "known_text": "as though I don't care",
+   "target_text": "as ob s mir egal wär"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01B01",
+  "expect": {
+   "known_text": "you yourself, madam",
+   "target_text": "sie sich"
+  },
+  "set": {
+   "known_text": "you yourself, madam",
+   "target_text": "Sie sich"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01B02",
+  "expect": {
+   "known_text": "sie mit Ihne",
+   "target_text": "sie mit Ihne"
+  },
+  "set": {
+   "known_text": "are you ready, madam?",
+   "target_text": "sind Sie parat?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01B03",
+  "expect": {
+   "known_text": "you have, madam",
+   "target_text": "sie händ"
+  },
+  "set": {
+   "target_text": "Sie händ"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01U01",
+  "expect": {
+   "known_text": "are you ready?",
+   "target_text": "sind Sie parat?"
+  },
+  "set": {
+   "known_text": "do you have a bag, madam?",
+   "target_text": "händ Sie e Tasche?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01U02",
+  "expect": {
+   "known_text": "you have a bag",
+   "target_text": "sie händ e Tasche"
+  },
+  "set": {
+   "known_text": "you have a bag, madam",
+   "target_text": "Sie händ e Tasche"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01U03",
+  "expect": {
+   "known_text": "I can help you",
+   "target_text": "ich cha Sie hälfe"
+  },
+  "set": {
+   "known_text": "I think you have a bag, madam",
+   "target_text": "ich dänke, Sie händ e Tasche"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01U04",
+  "expect": {
+   "known_text": "you need water",
+   "target_text": "sie müend Wasser ha"
+  },
+  "set": {
+   "known_text": "you have to have water, madam",
+   "target_text": "Sie müend Wasser ha"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L01U05",
+  "expect": {
+   "known_text": "probably you like coffee",
+   "target_text": "wahrschiinli händ Sie Kafi gern"
+  },
+  "set": {
+   "known_text": "probably you like coffee, madam"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L02B02",
+  "expect": {
+   "known_text": "wie fühled Sie",
+   "target_text": "wie fühled Sie"
+  },
+  "set": {
+   "known_text": "how do you feel now, madam?",
+   "target_text": "wie fühled Sie sich jetz?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L02U03",
+  "expect": {
+   "known_text": "I think you feel good",
+   "target_text": "ich dänke, Sie fühled sich guet"
+  },
+  "set": {
+   "known_text": "do you feel better, madam?",
+   "target_text": "fühled Sie sich besser?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0642L02U05",
+  "expect": {
+   "known_text": "I hope you feel better",
+   "target_text": "ich hoff, Sie fühled sich besser"
+  },
+  "set": {
+   "known_text": "do you feel well today, madam?",
+   "target_text": "fühled Sie sich hüt guet?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0643L01B03",
+  "expect": {
+   "known_text": "would you like coffee, sir",
+   "target_text": "wänd Sie gern Kafi"
+  },
+  "set": {
+   "known_text": "do you want water, sir?",
+   "target_text": "wänd Sie Wasser?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0646L01B01",
+  "expect": {
+   "known_text": "now you're doing something, sir",
+   "target_text": "jetz mached Sie öppis"
+  },
+  "set": {
+   "known_text": "you're doing that now, sir",
+   "target_text": "Sie mached das jetz"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0646L01B02",
+  "expect": {
+   "known_text": "you're doing that, sir",
+   "target_text": "sie mached das"
+  },
+  "set": {
+   "target_text": "Sie mached das"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0646L01B03",
+  "expect": {
+   "known_text": "what are you doing now, sir",
+   "target_text": "was mached Sie jetz"
+  },
+  "set": {
+   "known_text": "you're doing something now, sir",
+   "target_text": "Sie mached jetz öppis"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0646L01U01",
+  "expect": {
+   "known_text": "you're doing something, sir",
+   "target_text": "sie mached öppis"
+  },
+  "set": {
+   "target_text": "Sie mached öppis"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0646L01U02",
+  "expect": {
+   "known_text": "what are you doing, sir?",
+   "target_text": "was mached Sie?"
+  },
+  "set": {
+   "known_text": "I think you're doing something, sir",
+   "target_text": "ich dänke, Sie mached öppis"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0646L01U04",
+  "expect": {
+   "known_text": "you're doing very well, sir",
+   "target_text": "sie mached das sehr guet"
+  },
+  "set": {
+   "target_text": "Sie mached das sehr guet"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0646L01U05",
+  "expect": {
+   "known_text": "probably you're doing something now, sir",
+   "target_text": "wahrschiinli mached Sie jetz öppis"
+  },
+  "set": {
+   "known_text": "you're doing something good, sir",
+   "target_text": "Sie mached öppis Guets"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0647L01B01",
+  "expect": {
+   "known_text": "now you speak it, madam",
+   "target_text": "jetz reded Sie s"
+  },
+  "set": {
+   "known_text": "you speak it now, madam",
+   "target_text": "Sie reded s jetz"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0647L01B02",
+  "expect": {
+   "known_text": "you speak well, madam",
+   "target_text": "sie reded guet"
+  },
+  "set": {
+   "target_text": "Sie reded guet"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0647L01B03",
+  "expect": {
+   "known_text": "do you speak, madam",
+   "target_text": "reded Sie"
+  },
+  "set": {
+   "known_text": "you speak it well, madam",
+   "target_text": "Sie reded s guet"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0647L01U01",
+  "expect": {
+   "known_text": "you speak it, madam",
+   "target_text": "sie reded s"
+  },
+  "set": {
+   "target_text": "Sie reded s"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0647L01U02",
+  "expect": {
+   "known_text": "do you speak it, madam?",
+   "target_text": "reded Sie s?"
+  },
+  "set": {
+   "known_text": "you speak very well now, madam",
+   "target_text": "Sie reded jetz sehr guet"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0647L01U03",
+  "expect": {
+   "known_text": "you speak very well, madam",
+   "target_text": "sie reded sehr guet"
+  },
+  "set": {
+   "target_text": "Sie reded sehr guet"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0647L01U05",
+  "expect": {
+   "known_text": "probably you speak it now, madam",
+   "target_text": "wahrschiinli reded Sie s jetz"
+  },
+  "set": {
+   "known_text": "I think you speak very well, madam",
+   "target_text": "ich dänke, Sie reded sehr guet"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0649L01U04",
+  "expect": {
+   "known_text": "I think you are ready, sir",
+   "target_text": "ich dänke, Sind Sie parat"
+  },
+  "set": {
+   "known_text": "are you ready to go, sir?",
+   "target_text": "sind Sie parat zum gaa?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0649L01U05",
+  "expect": {
+   "known_text": "probably you are ready now, sir",
+   "target_text": "wahrschiinli Sind Sie jetz parat"
+  },
+  "set": {
+   "target_text": "wahrschiinli sind Sie jetz parat"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0651L01B02",
+  "expect": {
+   "known_text": "you think something, madam",
+   "target_text": "sie dänked öppis"
+  },
+  "set": {
+   "known_text": "what do you think about it, madam",
+   "target_text": "was dänked Sie drüber"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0651L01U02",
+  "expect": {
+   "known_text": "do you think that's sensible, madam?",
+   "target_text": "dänked Sie, das isch guet?"
+  },
+  "set": {
+   "known_text": "do you think that's good, madam?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0651L01U04",
+  "expect": {
+   "known_text": "I know what you think, madam",
+   "target_text": "ich weiss, was Sie dänked"
+  },
+  "set": {
+   "known_text": "what do you think of that now, madam?",
+   "target_text": "was dänked Sie jetz vo dem?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0652L01B02",
+  "expect": {
+   "known_text": "you need water, sir",
+   "target_text": "sie bruuched Wasser"
+  },
+  "set": {
+   "known_text": "do you need water now, sir?",
+   "target_text": "bruuched Sie jetz Wasser?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0652L01B03",
+  "expect": {
+   "known_text": "would you like something, sir",
+   "target_text": "bruuched Sie gern öppis"
+  },
+  "set": {
+   "known_text": "do you need tea, sir?",
+   "target_text": "bruuched Sie Tee?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0652L01U04",
+  "expect": {
+   "known_text": "I know what you need, sir",
+   "target_text": "ich weiss, was Sie bruuched"
+  },
+  "set": {
+   "known_text": "what do you need today, sir?",
+   "target_text": "was bruuched Sie hüt?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0425L01B01",
+  "expect": {
+   "known_text": "they understand",
+   "target_text": "verstönd"
+  },
+  "set": {
+   "target_text": "si verstönd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0425L01B02",
+  "expect": {
+   "known_text": "they don't understand",
+   "target_text": "verstönd nöd"
+  },
+  "set": {
+   "target_text": "si verstönd nöd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0425L01B03",
+  "expect": {
+   "known_text": "they still understand",
+   "target_text": "verstönd immer no"
+  },
+  "set": {
+   "target_text": "si verstönd immer no"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0425L01U01",
+  "expect": {
+   "known_text": "they understand",
+   "target_text": "si verstönd"
+  },
+  "set": {
+   "known_text": "yes, they understand",
+   "target_text": "ja, si verstönd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0425L01U02",
+  "expect": {
+   "known_text": "they don't understand",
+   "target_text": "si verstönd nöd"
+  },
+  "set": {
+   "known_text": "no, they don't understand",
+   "target_text": "nei, si verstönd nöd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0425L01U03",
+  "expect": {
+   "known_text": "do they understand?",
+   "target_text": "verstönd si?"
+  },
+  "set": {
+   "known_text": "I think they don't understand",
+   "target_text": "ich dänke, si verstönd nöd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0448L01B01",
+  "expect": {
+   "known_text": "they help",
+   "target_text": "hälfed"
+  },
+  "set": {
+   "target_text": "si hälfed"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0448L01B02",
+  "expect": {
+   "known_text": "they help gladly",
+   "target_text": "hälfed gern"
+  },
+  "set": {
+   "target_text": "si hälfed gern"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0448L01B03",
+  "expect": {
+   "known_text": "they don't help",
+   "target_text": "hälfed nöd"
+  },
+  "set": {
+   "target_text": "si hälfed nöd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0448L01U01",
+  "expect": {
+   "known_text": "they help",
+   "target_text": "si hälfed"
+  },
+  "set": {
+   "known_text": "yes, they help",
+   "target_text": "ja, si hälfed"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0448L01U04",
+  "expect": {
+   "known_text": "we gladly help",
+   "target_text": "mir hälfed gern"
+  },
+  "set": {
+   "known_text": "I think they gladly help",
+   "target_text": "ich dänke, si hälfed gern"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0448L01U05",
+  "expect": {
+   "known_text": "why do they gladly help?",
+   "target_text": "wieso hälfed si gern?"
+  },
+  "set": {
+   "known_text": "they don't gladly help",
+   "target_text": "si hälfed nöd gern"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0572L06B01",
+  "expect": {
+   "known_text": "they visited us",
+   "target_text": "si öis bsuecht händ"
+  },
+  "set": {
+   "known_text": "when they visited us",
+   "target_text": "wo si öis bsuecht händ"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0572L06B02",
+  "expect": {
+   "known_text": "when they visited us",
+   "target_text": "wo si öis bsuecht händ"
+  },
+  "set": {
+   "known_text": "the last time they visited us",
+   "target_text": "s letscht Mal, wo si öis bsuecht händ"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0572L06B03",
+  "expect": {
+   "known_text": "that they visited us",
+   "target_text": "dass si öis bsuecht händ"
+  },
+  "set": {
+   "known_text": "what happened when they visited us",
+   "target_text": "was passiert isch, wo si öis bsuecht händ"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0572L06U03",
+  "expect": {
+   "known_text": "it's good that they visited us",
+   "target_text": "es isch guet, dass si öis bsuecht händ"
+  },
+  "set": {
+   "known_text": "I've forgotten what happened when they visited us",
+   "target_text": "ich ha vergässe, was passiert isch, wo si öis bsuecht händ"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0572L06U05",
+  "expect": {
+   "known_text": "we visited them, and they visited us",
+   "target_text": "mir händ si bsuecht, und si händ öis bsuecht"
+  },
+  "set": {
+   "known_text": "have you forgotten when they visited us?",
+   "target_text": "hesch vergässe, wo si öis bsuecht händ?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0538L03B01",
+  "expect": {
+   "known_text": "I don't care",
+   "target_text": "s mir egal wär"
+  },
+  "set": {
+   "known_text": "as though I don't care",
+   "target_text": "as ob s mir egal wär"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0538L03B02",
+  "expect": {
+   "known_text": "as though I don't care",
+   "target_text": "as ob s mir egal wär"
+  },
+  "set": {
+   "known_text": "to seem as though I don't care",
+   "target_text": "schiine, as ob s mir egal wär"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0538L03B03",
+  "expect": {
+   "known_text": "I wouldn't care now",
+   "target_text": "jetz wär s mir egal"
+  },
+  "set": {
+   "known_text": "I want to seem as though I don't care",
+   "target_text": "ich wott schiine, as ob s mir egal wär"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0538L03U02",
+  "expect": {
+   "known_text": "I wouldn't care whether he's sick",
+   "target_text": "s wär mir egal, öb er chrank isch"
+  },
+  "set": {
+   "known_text": "now I don't want to seem as though I don't care",
+   "target_text": "jetz wott ich nöd schiine, as ob s mir egal wär"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_ch_for_eng:S0538L03U05",
+  "expect": {
+   "known_text": "she knows that I wouldn't care",
+   "target_text": "si weiss, dass s mir egal wär"
+  },
+  "set": {
+   "known_text": "she knows I don't want to seem as though I don't care",
+   "target_text": "si weiss, dass ich nöd schiine wott, as ob s mir egal wär"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_ch_for_eng:S0538L03U03",
+  "expect": {
+   "known_text": "now I wouldn't care whether that's bad",
+   "target_text": "jetz wär s mir egal, öb das schlächt isch"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_ch_for_eng:S0538L03U04",
+  "expect": {
+   "known_text": "I wouldn't care that he chooses the wrong job",
+   "target_text": "s wär mir egal, dass er de falsch Job wählt"
+  }
+ }
+]

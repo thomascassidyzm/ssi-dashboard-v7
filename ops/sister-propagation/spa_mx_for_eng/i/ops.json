@@ -1,0 +1,214 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 147,
+  "expect": {
+   "known_text": "She was very kind when she saw me feeling nervous",
+   "target_text": "ella fue muy amable cuando me vio sintiéndome nervioso"
+  },
+  "set": {
+   "target_text": "ella fue muy amable cuando me vio nervioso"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0147L02",
+  "expect": {
+   "known_text": "feeling",
+   "target_text": "sintiéndome"
+  },
+  "set": {
+   "known_text": "she saw me",
+   "target_text": "me vio"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02B01",
+  "expect": {
+   "known_text": "feeling",
+   "target_text": "sintiéndome"
+  },
+  "set": {
+   "known_text": "she saw me",
+   "target_text": "me vio"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02B02",
+  "expect": {
+   "known_text": "feeling like that",
+   "target_text": "sintiéndome así"
+  },
+  "set": {
+   "known_text": "when she saw me",
+   "target_text": "cuando me vio"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02B03",
+  "expect": {
+   "known_text": "feeling good",
+   "target_text": "sintiéndome bien"
+  },
+  "set": {
+   "known_text": "she saw me here",
+   "target_text": "me vio aquí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U01",
+  "expect": {
+   "known_text": "feeling ready",
+   "target_text": "sintiéndome listo"
+  },
+  "set": {
+   "known_text": "I think she saw me",
+   "target_text": "creo que me vio"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U02",
+  "expect": {
+   "known_text": "feeling better",
+   "target_text": "sintiéndome mejor"
+  },
+  "set": {
+   "known_text": "she saw me when I was speaking Spanish",
+   "target_text": "me vio cuando estaba hablando español"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U03",
+  "expect": {
+   "known_text": "she saw me feeling",
+   "target_text": "me vio sintiéndome"
+  },
+  "set": {
+   "known_text": "she saw me with my friend",
+   "target_text": "me vio con mi amigo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U04",
+  "expect": {
+   "known_text": "when she saw me feeling",
+   "target_text": "cuando me vio sintiéndome"
+  },
+  "set": {
+   "known_text": "when she saw me she was kind",
+   "target_text": "cuando me vio fue amable"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U05",
+  "expect": {
+   "known_text": "she saw me feeling different",
+   "target_text": "me vio sintiéndome diferente"
+  },
+  "set": {
+   "known_text": "she saw me speaking Spanish",
+   "target_text": "me vio hablando español"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U06",
+  "expect": {
+   "known_text": "when she saw me feeling like that she was kind",
+   "target_text": "cuando me vio sintiéndome así fue amable"
+  },
+  "set": {
+   "known_text": "she saw me and wanted to talk",
+   "target_text": "me vio y quería hablar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U07",
+  "expect": {
+   "known_text": "she saw me feeling better than the last time",
+   "target_text": "me vio sintiéndome mejor que la última vez"
+  },
+  "set": {
+   "known_text": "she saw me when I was learning",
+   "target_text": "me vio cuando estaba aprendiendo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U08",
+  "expect": {
+   "known_text": "he saw me feeling ready to have a conversation",
+   "target_text": "me vio sintiéndome listo para tener una conversación"
+  },
+  "set": {
+   "known_text": "she saw me practising",
+   "target_text": "me vio practicando"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L02U09",
+  "expect": {
+   "known_text": "I think she saw me feeling better after practicing",
+   "target_text": "creo que me vio sintiéndome mejor después de practicar"
+  },
+  "set": {
+   "known_text": "I think she saw me after practising",
+   "target_text": "creo que me vio después de practicar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L03U02",
+  "expect": {
+   "known_text": "feeling nervous",
+   "target_text": "sintiéndome nervioso"
+  },
+  "set": {
+   "known_text": "I'm nervous today",
+   "target_text": "estoy nervioso hoy"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L03U04",
+  "expect": {
+   "known_text": "she saw me feeling nervous",
+   "target_text": "me vio sintiéndome nervioso"
+  },
+  "set": {
+   "target_text": "me vio nervioso"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L03U06",
+  "expect": {
+   "known_text": "when she saw me feeling nervous",
+   "target_text": "cuando me vio sintiéndome nervioso"
+  },
+  "set": {
+   "target_text": "cuando me vio nervioso"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0147L03U10",
+  "expect": {
+   "known_text": "she was very kind when she saw me feeling nervous",
+   "target_text": "ella fue muy amable cuando me vio sintiéndome nervioso"
+  },
+  "set": {
+   "target_text": "ella fue muy amable cuando me vio nervioso"
+  }
+ }
+]

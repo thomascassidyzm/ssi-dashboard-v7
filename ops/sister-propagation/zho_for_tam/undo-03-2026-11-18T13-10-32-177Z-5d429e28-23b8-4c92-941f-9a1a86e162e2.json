@@ -1,0 +1,101 @@
+{
+  "course_code": "zho_for_tam",
+  "event_id": "5d429e28-23b8-4c92-941f-9a1a86e162e2",
+  "actor": "cs-sister-propagation",
+  "created_at": "2026-11-18T13:10:32.177Z",
+  "how_to_undo": "POST /api/production/zho_for_tam/edit-batch {\"undo_file\":\"2026-11-18T13-10-32-177Z-5d429e28-23b8-4c92-941f-9a1a86e162e2.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0098L01U05",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0098L01U05",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0098L01U05",
+      "set": {
+        "target_text": "我应该今天努力",
+        "target1_audio_id": "f159664d-01ac-474f-8db5-a9b827c168b9",
+        "target2_audio_id": "6758be00-f90f-4f8c-81c0-1abec30c2416"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0098L01U01",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0098L01U01",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0098L01U01",
+      "set": {
+        "target_text": "我应该现在走",
+        "target1_audio_id": "dfc1e18a-6c0f-4729-8c26-b4c78daf4b94",
+        "target2_audio_id": "73958d3e-0e5b-4aa2-ae1e-dbc868de3b95"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0023L01U05",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0023L01U05",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0023L01U05",
+      "set": {
+        "target_text": "我不确定我能不能现在开始说话",
+        "target1_audio_id": "dec43235-26aa-4354-83ae-59400e395860",
+        "target2_audio_id": "6de524d1-d80d-44e1-8520-aba15f9fbd29"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0015L02U04",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0015L02U04",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0015L02U04",
+      "set": {
+        "target_text": "你能不能明天跟我说？",
+        "target1_audio_id": "0960e750-d1ff-4f31-97e0-49955556360e",
+        "target2_audio_id": "2214c03f-60f6-4ea0-81b6-0a1e8b82c4f2"
+      }
+    }
+  ]
+}

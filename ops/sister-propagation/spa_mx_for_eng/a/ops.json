@@ -1,0 +1,3200 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 123,
+  "expect": {
+   "known_text": "I think that's a good idea",
+   "target_text": "pienso que es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 163,
+  "expect": {
+   "known_text": "I think that it's interesting",
+   "target_text": "pienso que es interesante"
+  },
+  "set": {
+   "target_text": "creo que es interesante"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 185,
+  "expect": {
+   "known_text": "I think you left them at work",
+   "target_text": "pienso que las dejaste en el trabajo"
+  },
+  "set": {
+   "target_text": "creo que las dejaste en el trabajo"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 210,
+  "expect": {
+   "known_text": "they think that we need to discuss the problem",
+   "target_text": "piensan que necesitamos discutir el problema"
+  },
+  "set": {
+   "target_text": "creen que necesitamos discutir el problema"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 255,
+  "expect": {
+   "known_text": "when do you think you'll be ready to leave?",
+   "target_text": "¿Cuándo piensas que estarás listo para irte?"
+  },
+  "set": {
+   "target_text": "¿Cuándo crees que estarás listo para irte?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 256,
+  "expect": {
+   "known_text": "I think I'll be ready in less than an hour",
+   "target_text": "pienso que estaré listo en menos de una hora"
+  },
+  "set": {
+   "target_text": "creo que estaré listo en menos de una hora"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 261,
+  "expect": {
+   "known_text": "I think it might be something important",
+   "target_text": "pienso que podría ser algo importante"
+  },
+  "set": {
+   "target_text": "creo que podría ser algo importante"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 303,
+  "expect": {
+   "known_text": "I think that he wants to sit down",
+   "target_text": "pienso que él quiere sentarse"
+  },
+  "set": {
+   "target_text": "creo que él quiere sentarse"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 304,
+  "expect": {
+   "known_text": "I think that she doesn't want to work from home",
+   "target_text": "pienso que ella no quiere trabajar desde casa"
+  },
+  "set": {
+   "target_text": "creo que ella no quiere trabajar desde casa"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 314,
+  "expect": {
+   "known_text": "I think that she could put it on the table",
+   "target_text": "pienso que ella podría ponerlo en la mesa"
+  },
+  "set": {
+   "target_text": "creo que ella podría ponerlo en la mesa"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 315,
+  "expect": {
+   "known_text": "I think that he couldn't afford the car that he wanted",
+   "target_text": "pienso que él no podía permitirse el carro que quería"
+  },
+  "set": {
+   "target_text": "creo que él no podía permitirse el carro que quería"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 316,
+  "expect": {
+   "known_text": "Do you think that she could bring her brother on Monday?",
+   "target_text": "¿Piensas que ella podría traer a su hermano el lunes?"
+  },
+  "set": {
+   "target_text": "¿Crees que ella podría traer a su hermano el lunes?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 317,
+  "expect": {
+   "known_text": "yes I think she could if she wanted to",
+   "target_text": "sí, pienso que podría si quisiera"
+  },
+  "set": {
+   "target_text": "sí, creo que podría si quisiera"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 318,
+  "expect": {
+   "known_text": "no I don't think she could this time",
+   "target_text": "no, no pienso que pueda esta vez"
+  },
+  "set": {
+   "target_text": "no, no creo que pueda esta vez"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 325,
+  "expect": {
+   "known_text": "I think that he needs to consider ten possible problems",
+   "target_text": "pienso que él necesita considerar diez posibles problemas"
+  },
+  "set": {
+   "target_text": "creo que él necesita considerar diez posibles problemas"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 326,
+  "expect": {
+   "known_text": "I don't think that she needs to sell the company",
+   "target_text": "no pienso que ella necesite vender la empresa"
+  },
+  "set": {
+   "target_text": "no creo que ella necesite vender la empresa"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 327,
+  "expect": {
+   "known_text": "Do you think that she needs to offer another way?",
+   "target_text": "¿Piensas que ella necesita ofrecer otra manera?"
+  },
+  "set": {
+   "target_text": "¿Crees que ella necesita ofrecer otra manera?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 328,
+  "expect": {
+   "known_text": "yes I think she ought to",
+   "target_text": "sí, pienso que debería"
+  },
+  "set": {
+   "target_text": "sí, creo que debería"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 330,
+  "expect": {
+   "known_text": "no I don't think it's very important",
+   "target_text": "no, no pienso que sea muy importante"
+  },
+  "set": {
+   "target_text": "no, no creo que sea muy importante"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 335,
+  "expect": {
+   "known_text": "I think that he can add some valuable ideas",
+   "target_text": "pienso que él puede añadir algunas ideas valiosas"
+  },
+  "set": {
+   "target_text": "creo que él puede añadir algunas ideas valiosas"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 336,
+  "expect": {
+   "known_text": "I don't think that she can open the door",
+   "target_text": "no pienso que ella pueda abrir la puerta"
+  },
+  "set": {
+   "target_text": "no creo que ella pueda abrir la puerta"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 337,
+  "expect": {
+   "known_text": "Do you think that he can continue to play?",
+   "target_text": "¿Piensas que él puede seguir jugando?"
+  },
+  "set": {
+   "target_text": "¿Crees que él puede seguir jugando?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 339,
+  "expect": {
+   "known_text": "no I think he's hurt himself quite badly",
+   "target_text": "no, pienso que se ha hecho bastante daño"
+  },
+  "set": {
+   "target_text": "no, creo que se ha hecho bastante daño"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 486,
+  "expect": {
+   "known_text": "I think your eyes are beautiful",
+   "target_text": "pienso que tus ojos son hermosos"
+  },
+  "set": {
+   "target_text": "creo que tus ojos son hermosos"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 492,
+  "expect": {
+   "known_text": "which of those places do you think is the most interesting?",
+   "target_text": "¿Cuál de esos lugares piensas que es el más interesante?"
+  },
+  "set": {
+   "target_text": "¿Cuál de esos lugares crees que es el más interesante?"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 553,
+  "expect": {
+   "known_text": "I think the small church is very ugly",
+   "target_text": "pienso que la iglesia pequeña es muy fea"
+  },
+  "set": {
+   "target_text": "creo que la iglesia pequeña es muy fea"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0123L01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0123L02",
+  "expect": {
+   "known_text": "I reckon that",
+   "target_text": "pienso que"
+  },
+  "set": {
+   "target_text": "creo que"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0135L01",
+  "expect": {
+   "known_text": "you think",
+   "target_text": "piensas"
+  },
+  "set": {
+   "target_text": "crees"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0163L01",
+  "expect": {
+   "known_text": "I think that it's",
+   "target_text": "pienso que es"
+  },
+  "set": {
+   "target_text": "creo que es"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0210L01",
+  "expect": {
+   "known_text": "they think",
+   "target_text": "piensan"
+  },
+  "set": {
+   "target_text": "creen"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0318L01",
+  "expect": {
+   "known_text": "I don't think that",
+   "target_text": "no pienso que"
+  },
+  "set": {
+   "target_text": "no creo que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01B01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01B02",
+  "expect": {
+   "known_text": "I think that",
+   "target_text": "pienso que"
+  },
+  "set": {
+   "target_text": "creo que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01B03",
+  "expect": {
+   "known_text": "I think so",
+   "target_text": "pienso que sí"
+  },
+  "set": {
+   "target_text": "creo que sí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U01",
+  "expect": {
+   "known_text": "I don't think so",
+   "target_text": "pienso que no"
+  },
+  "set": {
+   "target_text": "creo que no"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U03",
+  "expect": {
+   "known_text": "I think I'm excited about how it's going",
+   "target_text": "pienso que estoy emocionado con cómo va"
+  },
+  "set": {
+   "target_text": "creo que estoy emocionado con cómo va"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U04",
+  "expect": {
+   "known_text": "I think it's starting to get easier",
+   "target_text": "pienso que está empezando a ser más fácil"
+  },
+  "set": {
+   "target_text": "creo que está empezando a ser más fácil"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U05",
+  "expect": {
+   "known_text": "I think it's the best decision I could make",
+   "target_text": "pienso que es la mejor decisión que podría tomar"
+  },
+  "set": {
+   "target_text": "creo que es la mejor decisión que podría tomar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U07",
+  "expect": {
+   "known_text": "I think it's definitely difficult to learn many new words",
+   "target_text": "pienso que definitivamente es difícil aprender muchas palabras nuevas"
+  },
+  "set": {
+   "target_text": "creo que definitivamente es difícil aprender muchas palabras nuevas"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02C01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02B01",
+  "expect": {
+   "known_text": "I reckon that",
+   "target_text": "pienso que"
+  },
+  "set": {
+   "target_text": "creo que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02B02",
+  "expect": {
+   "known_text": "I reckon it is",
+   "target_text": "pienso que es"
+  },
+  "set": {
+   "target_text": "creo que es"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02B03",
+  "expect": {
+   "known_text": "I reckon it's strange",
+   "target_text": "pienso que es raro"
+  },
+  "set": {
+   "target_text": "creo que es raro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U01",
+  "expect": {
+   "known_text": "I reckon we have to",
+   "target_text": "pienso que tenemos que"
+  },
+  "set": {
+   "target_text": "creo que tenemos que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U02",
+  "expect": {
+   "known_text": "I reckon it's interesting",
+   "target_text": "pienso que es interesante"
+  },
+  "set": {
+   "target_text": "creo que es interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U03",
+  "expect": {
+   "known_text": "I reckon it's strange that you don't like to use your car",
+   "target_text": "pienso que es raro que no te guste usar tu carro"
+  },
+  "set": {
+   "target_text": "creo que es raro que no te guste usar tu carro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U04",
+  "expect": {
+   "known_text": "I reckon it's the best decision I could make",
+   "target_text": "pienso que es la mejor decisión que podría tomar"
+  },
+  "set": {
+   "target_text": "creo que es la mejor decisión que podría tomar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U06",
+  "expect": {
+   "known_text": "I reckon it's starting to get easier now",
+   "target_text": "pienso que está empezando a ser más fácil ahora"
+  },
+  "set": {
+   "target_text": "creo que está empezando a ser más fácil ahora"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U07",
+  "expect": {
+   "known_text": "I reckon it's definitely better than the last time",
+   "target_text": "pienso que definitivamente es mejor que la última vez"
+  },
+  "set": {
+   "target_text": "creo que definitivamente es mejor que la última vez"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L03U02",
+  "expect": {
+   "known_text": "I reckon it's a good decision",
+   "target_text": "pienso que es una buena decisión"
+  },
+  "set": {
+   "target_text": "creo que es una buena decisión"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L03U05",
+  "expect": {
+   "known_text": "I reckon a good conversation changes how I feel",
+   "target_text": "pienso que una buena conversación cambia cómo me siento"
+  },
+  "set": {
+   "target_text": "creo que una buena conversación cambia cómo me siento"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L03U07",
+  "expect": {
+   "known_text": "I reckon it's a good decision to work hard to learn",
+   "target_text": "pienso que es una buena decisión trabajar duro para aprender"
+  },
+  "set": {
+   "target_text": "creo que es una buena decisión trabajar duro para aprender"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L04U02",
+  "expect": {
+   "known_text": "I reckon it's a good idea",
+   "target_text": "pienso que es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L04U03",
+  "expect": {
+   "known_text": "I reckon that's a good idea",
+   "target_text": "pienso que eso es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que eso es una buena idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L04U06",
+  "expect": {
+   "known_text": "I definitely reckon it's a good idea to work hard",
+   "target_text": "definitivamente pienso que es una buena idea trabajar duro"
+  },
+  "set": {
+   "target_text": "definitivamente creo que es una buena idea trabajar duro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0126L01U04",
+  "expect": {
+   "known_text": "I reckon our work is very interesting",
+   "target_text": "pienso que nuestro trabajo es muy interesante"
+  },
+  "set": {
+   "target_text": "creo que nuestro trabajo es muy interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L01U01",
+  "expect": {
+   "known_text": "I reckon you are",
+   "target_text": "pienso que eres"
+  },
+  "set": {
+   "target_text": "creo que eres"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L01U07",
+  "expect": {
+   "known_text": "I reckon you are very interesting when you speak like that",
+   "target_text": "pienso que eres muy interesante cuando hablas así"
+  },
+  "set": {
+   "target_text": "creo que eres muy interesante cuando hablas así"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L02U05",
+  "expect": {
+   "known_text": "I reckon it's like when we were in the bar",
+   "target_text": "pienso que es como cuando estábamos en el bar"
+  },
+  "set": {
+   "target_text": "creo que es como cuando estábamos en el bar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L03U06",
+  "expect": {
+   "known_text": "I reckon someone who wants to work hard could do this",
+   "target_text": "pienso que alguien que quiere trabajar duro podría hacer esto"
+  },
+  "set": {
+   "target_text": "creo que alguien que quiere trabajar duro podría hacer esto"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L04U05",
+  "expect": {
+   "known_text": "I reckon you're like someone I used to know",
+   "target_text": "pienso que eres como alguien que conocía"
+  },
+  "set": {
+   "target_text": "creo que eres como alguien que conocía"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L05U04",
+  "expect": {
+   "known_text": "I reckon before I wasn't ready to speak like that",
+   "target_text": "pienso que antes no estaba listo para hablar así"
+  },
+  "set": {
+   "target_text": "creo que antes no estaba listo para hablar así"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0132L02U04",
+  "expect": {
+   "known_text": "that's why I think it's more exciting",
+   "target_text": "por eso pienso que es más emocionante"
+  },
+  "set": {
+   "target_text": "por eso creo que es más emocionante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0134L01U11",
+  "expect": {
+   "known_text": "I definitely think the problem is that we need to practice more",
+   "target_text": "definitivamente pienso que el problema es que tenemos que practicar más"
+  },
+  "set": {
+   "target_text": "definitivamente creo que el problema es que tenemos que practicar más"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01B01",
+  "expect": {
+   "known_text": "you think",
+   "target_text": "piensas"
+  },
+  "set": {
+   "target_text": "crees"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01B02",
+  "expect": {
+   "known_text": "you think that",
+   "target_text": "piensas que"
+  },
+  "set": {
+   "target_text": "crees que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U02",
+  "expect": {
+   "known_text": "you think it's good",
+   "target_text": "piensas que es bueno"
+  },
+  "set": {
+   "target_text": "crees que es bueno"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U04",
+  "expect": {
+   "known_text": "do you think it's difficult?",
+   "target_text": "¿piensas que es difícil?"
+  },
+  "set": {
+   "target_text": "¿crees que es difícil?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U05",
+  "expect": {
+   "known_text": "you think it's so good",
+   "target_text": "piensas que es tan bueno"
+  },
+  "set": {
+   "target_text": "crees que es tan bueno"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U11",
+  "expect": {
+   "known_text": "do you think it's better when you work hard?",
+   "target_text": "¿piensas que es mejor cuando trabajas duro?"
+  },
+  "set": {
+   "target_text": "¿crees que es mejor cuando trabajas duro?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0136L01U03",
+  "expect": {
+   "known_text": "of course I think so",
+   "target_text": "claro que pienso que sí"
+  },
+  "set": {
+   "target_text": "claro que creo que sí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0136L02U01",
+  "expect": {
+   "known_text": "of course I think so",
+   "target_text": "claro que pienso que sí"
+  },
+  "set": {
+   "target_text": "claro que creo que sí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0137L03U05",
+  "expect": {
+   "known_text": "that's why I think you can be better",
+   "target_text": "por eso pienso que puedes ser mejor"
+  },
+  "set": {
+   "target_text": "por eso creo que puedes ser mejor"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0141L02U07",
+  "expect": {
+   "known_text": "that's why I think everything is okay, no problem",
+   "target_text": "por eso pienso que todo está bien, no hay problema"
+  },
+  "set": {
+   "target_text": "por eso creo que todo está bien, no hay problema"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0141L02U09",
+  "expect": {
+   "known_text": "I definitely think everything that we learn changes our brain",
+   "target_text": "definitivamente pienso que todo lo que aprendemos cambia nuestro cerebro"
+  },
+  "set": {
+   "target_text": "definitivamente creo que todo lo que aprendemos cambia nuestro cerebro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0142L01U07",
+  "expect": {
+   "known_text": "that's why I think you're very kind",
+   "target_text": "por eso pienso que eres muy amable"
+  },
+  "set": {
+   "target_text": "por eso creo que eres muy amable"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0142L01U09",
+  "expect": {
+   "known_text": "I definitely think he was very kind the last time",
+   "target_text": "definitivamente pienso que fue muy amable la última vez"
+  },
+  "set": {
+   "target_text": "definitivamente creo que fue muy amable la última vez"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0143L01U09",
+  "expect": {
+   "known_text": "I definitely think it's the same thing that changes our brain",
+   "target_text": "definitivamente pienso que es lo mismo que cambia nuestro cerebro"
+  },
+  "set": {
+   "target_text": "definitivamente creo que es lo mismo que cambia nuestro cerebro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0145L01U11",
+  "expect": {
+   "known_text": "that's why I think it's no longer difficult to do",
+   "target_text": "por eso pienso que ya no es difícil de hacer"
+  },
+  "set": {
+   "target_text": "por eso creo que ya no es difícil de hacer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L01U12",
+  "expect": {
+   "known_text": "I definitely think it seems to be better now",
+   "target_text": "definitivamente pienso que parece estar mejor"
+  },
+  "set": {
+   "target_text": "definitivamente creo que parece estar mejor"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L02U07",
+  "expect": {
+   "known_text": "I definitely think it's no longer the same since yesterday",
+   "target_text": "definitivamente pienso que ya no es lo mismo desde ayer"
+  },
+  "set": {
+   "target_text": "definitivamente creo que ya no es lo mismo desde ayer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L04U11",
+  "expect": {
+   "known_text": "I definitely think since we tried it's better",
+   "target_text": "definitivamente pienso que desde que intentamos es mejor"
+  },
+  "set": {
+   "target_text": "definitivamente creo que desde que intentamos es mejor"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L05U09",
+  "expect": {
+   "known_text": "I definitely think we tried to fix it but nothing seems to work",
+   "target_text": "definitivamente pienso que intentamos arreglarlo pero nada parece funcionar"
+  },
+  "set": {
+   "target_text": "definitivamente creo que intentamos arreglarlo pero nada parece funcionar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0148L01U09",
+  "expect": {
+   "known_text": "I definitely think he was more patient the last time",
+   "target_text": "definitivamente pienso que fue más paciente la última vez"
+  },
+  "set": {
+   "target_text": "definitivamente creo que fue más paciente la última vez"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0162L03U05",
+  "expect": {
+   "known_text": "do you think it's easy to talk about that?",
+   "target_text": "¿piensas que es fácil hablar de eso?"
+  },
+  "set": {
+   "target_text": "¿crees que es fácil hablar de eso?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01C01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B01",
+  "expect": {
+   "known_text": "I think that it's",
+   "target_text": "pienso que es"
+  },
+  "set": {
+   "target_text": "creo que es"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B02",
+  "expect": {
+   "known_text": "I think that it's important",
+   "target_text": "pienso que es importante"
+  },
+  "set": {
+   "target_text": "creo que es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B03",
+  "expect": {
+   "known_text": "I think that it's difficult",
+   "target_text": "pienso que es difícil"
+  },
+  "set": {
+   "target_text": "creo que es difícil"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B04",
+  "expect": {
+   "known_text": "I think that it's easy",
+   "target_text": "pienso que es fácil"
+  },
+  "set": {
+   "target_text": "creo que es fácil"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B05",
+  "expect": {
+   "known_text": "I think that it's good",
+   "target_text": "pienso que es bueno"
+  },
+  "set": {
+   "target_text": "creo que es bueno"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U01",
+  "expect": {
+   "known_text": "I think that it's a good idea to practise",
+   "target_text": "pienso que es una buena idea practicar"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea practicar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U02",
+  "expect": {
+   "known_text": "I think that it's important to speak Spanish",
+   "target_text": "pienso que es importante hablar español"
+  },
+  "set": {
+   "target_text": "creo que es importante hablar español"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U03",
+  "expect": {
+   "known_text": "I think that it's difficult to remember",
+   "target_text": "pienso que es difícil recordar"
+  },
+  "set": {
+   "target_text": "creo que es difícil recordar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U04",
+  "expect": {
+   "known_text": "I think that it's interesting to learn more",
+   "target_text": "pienso que es interesante aprender más"
+  },
+  "set": {
+   "target_text": "creo que es interesante aprender más"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U05",
+  "expect": {
+   "known_text": "I think that it's better to start now",
+   "target_text": "pienso que es mejor empezar ahora"
+  },
+  "set": {
+   "target_text": "creo que es mejor empezar ahora"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U06",
+  "expect": {
+   "known_text": "I think that it's easy to understand",
+   "target_text": "pienso que es fácil entender"
+  },
+  "set": {
+   "target_text": "creo que es fácil entender"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U07",
+  "expect": {
+   "known_text": "I think that it's very interesting to speak with you",
+   "target_text": "pienso que es muy interesante hablar contigo"
+  },
+  "set": {
+   "target_text": "creo que es muy interesante hablar contigo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L02U03",
+  "expect": {
+   "known_text": "I think that it's interesting to speak with someone else",
+   "target_text": "pienso que es interesante hablar con otra persona"
+  },
+  "set": {
+   "target_text": "creo que es interesante hablar con otra persona"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0164L01U03",
+  "expect": {
+   "known_text": "I think that it's an interesting book",
+   "target_text": "pienso que es un libro interesante"
+  },
+  "set": {
+   "target_text": "creo que es un libro interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0165L01U06",
+  "expect": {
+   "known_text": "do you really think it is interesting?",
+   "target_text": "¿de verdad piensas que es interesante?"
+  },
+  "set": {
+   "target_text": "¿de verdad crees que es interesante?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0168L01U03",
+  "expect": {
+   "known_text": "do you think I will be able to do it?",
+   "target_text": "¿piensas que podré hacer eso?"
+  },
+  "set": {
+   "target_text": "¿crees que podré hacer eso?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0174L01U04",
+  "expect": {
+   "known_text": "I think you understand what I'm saying",
+   "target_text": "pienso que entiendes lo que estoy diciendo"
+  },
+  "set": {
+   "target_text": "creo que entiendes lo que estoy diciendo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0175L01U07",
+  "expect": {
+   "known_text": "I think I know what you want to do",
+   "target_text": "pienso que sé lo que quieres hacer"
+  },
+  "set": {
+   "target_text": "creo que sé lo que quieres hacer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0176L03U04",
+  "expect": {
+   "known_text": "do you think he will be able to come on Sunday?",
+   "target_text": "¿piensas que podrá venir el domingo?"
+  },
+  "set": {
+   "target_text": "¿crees que podrá venir el domingo?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0178L02U05",
+  "expect": {
+   "known_text": "although you think not, I think yes",
+   "target_text": "aunque piensas que no, pienso que sí"
+  },
+  "set": {
+   "target_text": "aunque crees que no, creo que sí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0185L01U04",
+  "expect": {
+   "known_text": "I think you left it here",
+   "target_text": "pienso que lo dejaste aquí"
+  },
+  "set": {
+   "target_text": "creo que lo dejaste aquí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0185L01U05",
+  "expect": {
+   "known_text": "I think you left it at work",
+   "target_text": "pienso que lo dejaste en el trabajo"
+  },
+  "set": {
+   "target_text": "creo que lo dejaste en el trabajo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0186L02U01",
+  "expect": {
+   "known_text": "I think it is the coming week",
+   "target_text": "pienso que es la semana que viene"
+  },
+  "set": {
+   "target_text": "creo que es la semana que viene"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0188L01U02",
+  "expect": {
+   "known_text": "I think I need to change",
+   "target_text": "pienso que necesito cambiar"
+  },
+  "set": {
+   "target_text": "creo que necesito cambiar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0188L01U04",
+  "expect": {
+   "known_text": "do you think I need to change?",
+   "target_text": "¿piensas que necesito cambiar?"
+  },
+  "set": {
+   "target_text": "¿crees que necesito cambiar?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0189L01U02",
+  "expect": {
+   "known_text": "I think it is good",
+   "target_text": "pienso que es bueno"
+  },
+  "set": {
+   "target_text": "creo que es bueno"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0189L02U03",
+  "expect": {
+   "known_text": "I think it is a good idea",
+   "target_text": "pienso que es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0190L02U04",
+  "expect": {
+   "known_text": "I think it does not matter",
+   "target_text": "pienso que no importa"
+  },
+  "set": {
+   "target_text": "creo que no importa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0193L01U03",
+  "expect": {
+   "known_text": "I think I'm too busy",
+   "target_text": "pienso que estoy demasiado ocupado"
+  },
+  "set": {
+   "target_text": "creo que estoy demasiado ocupado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0193L01U06",
+  "expect": {
+   "known_text": "do you think you're too busy?",
+   "target_text": "¿piensas que estás demasiado ocupado?"
+  },
+  "set": {
+   "target_text": "¿crees que estás demasiado ocupado?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L01B01",
+  "expect": {
+   "known_text": "they think that",
+   "target_text": "piensan que"
+  },
+  "set": {
+   "target_text": "creen que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L01B02",
+  "expect": {
+   "known_text": "they think yes",
+   "target_text": "piensan que sí"
+  },
+  "set": {
+   "target_text": "creen que sí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L01B03",
+  "expect": {
+   "known_text": "they think it is true",
+   "target_text": "piensan que es verdad"
+  },
+  "set": {
+   "target_text": "creen que es verdad"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L01U01",
+  "expect": {
+   "known_text": "they think it is not a good idea",
+   "target_text": "piensan que no es una buena idea"
+  },
+  "set": {
+   "target_text": "creen que no es una buena idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L01U02",
+  "expect": {
+   "known_text": "they think we need more time",
+   "target_text": "piensan que necesitamos más tiempo"
+  },
+  "set": {
+   "target_text": "creen que necesitamos más tiempo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L01U03",
+  "expect": {
+   "known_text": "they think it is interesting what you said",
+   "target_text": "piensan que es interesante lo que dijiste"
+  },
+  "set": {
+   "target_text": "creen que es interesante lo que dijiste"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L02U04",
+  "expect": {
+   "known_text": "they think we need to discuss the problem",
+   "target_text": "piensan que necesitamos discutir el problema"
+  },
+  "set": {
+   "target_text": "creen que necesitamos discutir el problema"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0219L01U08",
+  "expect": {
+   "known_text": "I think that it's nice",
+   "target_text": "pienso que es agradable"
+  },
+  "set": {
+   "target_text": "creo que es agradable"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0222L01U03",
+  "expect": {
+   "known_text": "I think he's trying to speak with you",
+   "target_text": "pienso que está intentando hablar contigo"
+  },
+  "set": {
+   "target_text": "creo que está intentando hablar contigo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0222L02U03",
+  "expect": {
+   "known_text": "I think I know what he wants",
+   "target_text": "pienso que sé lo que quiere"
+  },
+  "set": {
+   "target_text": "creo que sé lo que quiere"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0223L01U02",
+  "expect": {
+   "known_text": "I think he's going to ask you",
+   "target_text": "pienso que te va a preguntar"
+  },
+  "set": {
+   "target_text": "creo que te va a preguntar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0227L01U02",
+  "expect": {
+   "known_text": "I think that man wants to speak with you",
+   "target_text": "pienso que ese hombre quiere hablar contigo"
+  },
+  "set": {
+   "target_text": "creo que ese hombre quiere hablar contigo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0227L01U06",
+  "expect": {
+   "known_text": "I think that man is interesting",
+   "target_text": "pienso que ese hombre es interesante"
+  },
+  "set": {
+   "target_text": "creo que ese hombre es interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0227L02U02",
+  "expect": {
+   "known_text": "I think he's going to tell me something interesting",
+   "target_text": "pienso que va a decirme algo interesante"
+  },
+  "set": {
+   "target_text": "creo que va a decirme algo interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0228L01U03",
+  "expect": {
+   "known_text": "I think it's a good idea to start to practise",
+   "target_text": "pienso que es una buena idea empezar a practicar"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea empezar a practicar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0230L02U03",
+  "expect": {
+   "known_text": "I think it's interesting to work with you",
+   "target_text": "pienso que es interesante trabajar contigo"
+  },
+  "set": {
+   "target_text": "creo que es interesante trabajar contigo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0230L02U07",
+  "expect": {
+   "known_text": "do you think he's going to work with you?",
+   "target_text": "¿piensas que va a trabajar contigo?"
+  },
+  "set": {
+   "target_text": "¿crees que va a trabajar contigo?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0236L01U06",
+  "expect": {
+   "known_text": "I think I know someone who wants to work with you",
+   "target_text": "pienso que conozco a alguien que quiere trabajar contigo"
+  },
+  "set": {
+   "target_text": "creo que conozco a alguien que quiere trabajar contigo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0238L01U04",
+  "expect": {
+   "known_text": "I think he wanted you to tell me something interesting",
+   "target_text": "pienso que él quería que me dijeras algo interesante"
+  },
+  "set": {
+   "target_text": "creo que él quería que me dijeras algo interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0242L01U07",
+  "expect": {
+   "known_text": "I think I should give her more time",
+   "target_text": "pienso que debería darle más tiempo"
+  },
+  "set": {
+   "target_text": "creo que debería darle más tiempo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0245L01U06",
+  "expect": {
+   "known_text": "I think you should see how much I've done",
+   "target_text": "pienso que deberías ver lo mucho que hice"
+  },
+  "set": {
+   "target_text": "creo que deberías ver lo mucho que hice"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0253L01U03",
+  "expect": {
+   "known_text": "I think I should be ready soon",
+   "target_text": "pienso que debería estar listo pronto"
+  },
+  "set": {
+   "target_text": "creo que debería estar listo pronto"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0253L01U05",
+  "expect": {
+   "known_text": "do you think I should be ready?",
+   "target_text": "¿piensas que debería estar listo?"
+  },
+  "set": {
+   "target_text": "¿crees que debería estar listo?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0253L02U02",
+  "expect": {
+   "known_text": "I think I can do it in a few minutes",
+   "target_text": "pienso que puedo hacerlo en unos minutos"
+  },
+  "set": {
+   "target_text": "creo que puedo hacerlo en unos minutos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0254L01U03",
+  "expect": {
+   "known_text": "I think I've been ready since this morning",
+   "target_text": "pienso que estoy listo desde esta mañana"
+  },
+  "set": {
+   "target_text": "creo que estoy listo desde esta mañana"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0255L01U05",
+  "expect": {
+   "known_text": "I think you should leave now",
+   "target_text": "pienso que deberías irte ahora"
+  },
+  "set": {
+   "target_text": "creo que deberías irte ahora"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0255L01U06",
+  "expect": {
+   "known_text": "when do you think you can leave?",
+   "target_text": "¿cuándo piensas que puedes irte?"
+  },
+  "set": {
+   "target_text": "¿cuándo crees que puedes irte?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0256L01U01",
+  "expect": {
+   "known_text": "I think I'll be ready in less than an hour",
+   "target_text": "pienso que estaré listo en menos de una hora"
+  },
+  "set": {
+   "target_text": "creo que estaré listo en menos de una hora"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0256L01U03",
+  "expect": {
+   "known_text": "I think I can learn this in less than an hour",
+   "target_text": "pienso que puedo aprender esto en menos de una hora"
+  },
+  "set": {
+   "target_text": "creo que puedo aprender esto en menos de una hora"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0257L01U06",
+  "expect": {
+   "known_text": "I think the blue one is better",
+   "target_text": "pienso que la azul es mejor"
+  },
+  "set": {
+   "target_text": "creo que la azul es mejor"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0258L01U05",
+  "expect": {
+   "known_text": "do you think it's over there?",
+   "target_text": "¿piensas que es de allá?"
+  },
+  "set": {
+   "target_text": "¿crees que es de allá?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0259L01U01",
+  "expect": {
+   "known_text": "I think it's a good idea",
+   "target_text": "pienso que es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0259L01U06",
+  "expect": {
+   "known_text": "do you think it's a good idea to practise?",
+   "target_text": "¿piensas que es una buena idea practicar?"
+  },
+  "set": {
+   "target_text": "¿crees que es una buena idea practicar?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0260L01U05",
+  "expect": {
+   "known_text": "I think I have what you need",
+   "target_text": "pienso que tengo lo que necesitas"
+  },
+  "set": {
+   "target_text": "creo que tengo lo que necesitas"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0261L01B02",
+  "expect": {
+   "known_text": "I think it might be",
+   "target_text": "pienso que podría ser"
+  },
+  "set": {
+   "target_text": "creo que podría ser"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0261L01U01",
+  "expect": {
+   "known_text": "I think it might be something important",
+   "target_text": "pienso que podría ser algo importante"
+  },
+  "set": {
+   "target_text": "creo que podría ser algo importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0261L01U02",
+  "expect": {
+   "known_text": "I think it might be a good idea",
+   "target_text": "pienso que podría ser una buena idea"
+  },
+  "set": {
+   "target_text": "creo que podría ser una buena idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0261L01U04",
+  "expect": {
+   "known_text": "I think it might be too difficult",
+   "target_text": "pienso que podría ser demasiado difícil"
+  },
+  "set": {
+   "target_text": "creo que podría ser demasiado difícil"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0261L02B03",
+  "expect": {
+   "known_text": "I think it's something important",
+   "target_text": "pienso que es algo importante"
+  },
+  "set": {
+   "target_text": "creo que es algo importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0261L02U02",
+  "expect": {
+   "known_text": "do you think it's something important?",
+   "target_text": "¿piensas que es algo importante?"
+  },
+  "set": {
+   "target_text": "¿crees que es algo importante?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0261L02U06",
+  "expect": {
+   "known_text": "I think he wanted to tell me something important",
+   "target_text": "pienso que quería decirme algo importante"
+  },
+  "set": {
+   "target_text": "creo que quería decirme algo importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0262L02U04",
+  "expect": {
+   "known_text": "who do you think it was?",
+   "target_text": "¿quién piensas que era?"
+  },
+  "set": {
+   "target_text": "¿quién crees que era?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0263L01U04",
+  "expect": {
+   "known_text": "I think I know who you mean",
+   "target_text": "pienso que sé a quién te refieres"
+  },
+  "set": {
+   "target_text": "creo que sé a quién te refieres"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0263L01U06",
+  "expect": {
+   "known_text": "I don't know who you mean but I think it's important",
+   "target_text": "no sé a quién te refieres pero pienso que es importante"
+  },
+  "set": {
+   "target_text": "no sé a quién te refieres pero creo que es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0264L01U04",
+  "expect": {
+   "known_text": "I think an old man wants to tell me something important",
+   "target_text": "pienso que un hombre mayor quiere decirme algo importante"
+  },
+  "set": {
+   "target_text": "creo que un hombre mayor quiere decirme algo importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0265L01U03",
+  "expect": {
+   "known_text": "I think I have a friend who can help",
+   "target_text": "pienso que tengo un amigo que puede ayudar"
+  },
+  "set": {
+   "target_text": "creo que tengo un amigo que puede ayudar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0266L01U04",
+  "expect": {
+   "known_text": "I think it's too old",
+   "target_text": "pienso que es demasiado viejo"
+  },
+  "set": {
+   "target_text": "creo que es demasiado viejo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0267L01U05",
+  "expect": {
+   "known_text": "I think I've had too much work",
+   "target_text": "pienso que he tenido demasiado trabajo"
+  },
+  "set": {
+   "target_text": "creo que he tenido demasiado trabajo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0269L01U03",
+  "expect": {
+   "known_text": "I think your father is going to ask you something",
+   "target_text": "pienso que tu padre te va a preguntar algo"
+  },
+  "set": {
+   "target_text": "creo que tu padre te va a preguntar algo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0270L01B03",
+  "expect": {
+   "known_text": "I think it's late",
+   "target_text": "pienso que es tarde"
+  },
+  "set": {
+   "target_text": "creo que es tarde"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0270L01U05",
+  "expect": {
+   "known_text": "do you think it's too late?",
+   "target_text": "¿piensas que es demasiado tarde?"
+  },
+  "set": {
+   "target_text": "¿crees que es demasiado tarde?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0270L02U03",
+  "expect": {
+   "known_text": "I think I'm going to arrive late",
+   "target_text": "pienso que voy a llegar tarde"
+  },
+  "set": {
+   "target_text": "creo que voy a llegar tarde"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0270L02U04",
+  "expect": {
+   "known_text": "do you think you can arrive before?",
+   "target_text": "¿piensas que puedes llegar antes?"
+  },
+  "set": {
+   "target_text": "¿crees que puedes llegar antes?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0271L03U04",
+  "expect": {
+   "known_text": "I think he comes here next week",
+   "target_text": "pienso que viene aquí la semana que viene"
+  },
+  "set": {
+   "target_text": "creo que viene aquí la semana que viene"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0272L01U06",
+  "expect": {
+   "known_text": "I think it's a great idea to go with them",
+   "target_text": "pienso que es una gran idea ir con ellos"
+  },
+  "set": {
+   "target_text": "creo que es una gran idea ir con ellos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0272L02U01",
+  "expect": {
+   "known_text": "do you think it sounds good?",
+   "target_text": "¿piensas que suena bien?"
+  },
+  "set": {
+   "target_text": "¿crees que suena bien?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0272L02U06",
+  "expect": {
+   "known_text": "I think that sounds like a great idea",
+   "target_text": "pienso que eso suena como una gran idea"
+  },
+  "set": {
+   "target_text": "creo que eso suena como una gran idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0273L01U03",
+  "expect": {
+   "known_text": "I think I've got too much work",
+   "target_text": "pienso que tengo demasiado trabajo"
+  },
+  "set": {
+   "target_text": "creo que tengo demasiado trabajo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0275L01U03",
+  "expect": {
+   "known_text": "I think I need longer",
+   "target_text": "pienso que necesito más tiempo"
+  },
+  "set": {
+   "target_text": "creo que necesito más tiempo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0276L01U04",
+  "expect": {
+   "known_text": "do you think I should stay?",
+   "target_text": "¿piensas que debería quedarme?"
+  },
+  "set": {
+   "target_text": "¿crees que debería quedarme?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0279L01U04",
+  "expect": {
+   "known_text": "I think there was more time left",
+   "target_text": "pienso que quedaba más tiempo"
+  },
+  "set": {
+   "target_text": "creo que quedaba más tiempo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0280L01U03",
+  "expect": {
+   "known_text": "I think I only had to do one thing",
+   "target_text": "pienso que solo tuve que hacer una cosa"
+  },
+  "set": {
+   "target_text": "creo que solo tuve que hacer una cosa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0280L01U08",
+  "expect": {
+   "known_text": "I think I had to do too much work",
+   "target_text": "pienso que tuve que hacer demasiado trabajo"
+  },
+  "set": {
+   "target_text": "creo que tuve que hacer demasiado trabajo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0281L01U05",
+  "expect": {
+   "known_text": "I think I finish this month",
+   "target_text": "pienso que termino este mes"
+  },
+  "set": {
+   "target_text": "creo que termino este mes"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0282L01U02",
+  "expect": {
+   "known_text": "I think that's not a problem",
+   "target_text": "pienso que eso no es un problema"
+  },
+  "set": {
+   "target_text": "creo que eso no es un problema"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0284L01U05",
+  "expect": {
+   "known_text": "I think you know that old man",
+   "target_text": "pienso que conoces a ese hombre viejo"
+  },
+  "set": {
+   "target_text": "creo que conoces a ese hombre viejo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0288L01U06",
+  "expect": {
+   "known_text": "I think most people would like to come",
+   "target_text": "pienso que a la mayoría de las personas les gustaría venir"
+  },
+  "set": {
+   "target_text": "creo que a la mayoría de las personas les gustaría venir"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0290L02U02",
+  "expect": {
+   "known_text": "do you think he knows?",
+   "target_text": "¿piensas que él sabe?"
+  },
+  "set": {
+   "target_text": "¿crees que él sabe?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0293L01U03",
+  "expect": {
+   "known_text": "I think I have to find out more",
+   "target_text": "pienso que tengo que descubrir más"
+  },
+  "set": {
+   "target_text": "creo que tengo que descubrir más"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0293L02U02",
+  "expect": {
+   "known_text": "I think he's going to meet me this morning",
+   "target_text": "pienso que va a reunirse conmigo esta mañana"
+  },
+  "set": {
+   "target_text": "creo que va a reunirse conmigo esta mañana"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0294L01U03",
+  "expect": {
+   "known_text": "do you think that's enough?",
+   "target_text": "¿piensas que es suficiente?"
+  },
+  "set": {
+   "target_text": "¿crees que es suficiente?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0299L02U05",
+  "expect": {
+   "known_text": "I think half is enough",
+   "target_text": "pienso que la mitad es suficiente"
+  },
+  "set": {
+   "target_text": "creo que la mitad es suficiente"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0300L01U04",
+  "expect": {
+   "known_text": "I think it might seem important",
+   "target_text": "pienso que puede parecer importante"
+  },
+  "set": {
+   "target_text": "creo que puede parecer importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0302L02U05",
+  "expect": {
+   "known_text": "I think that he wants to live in a city",
+   "target_text": "pienso que él quiere vivir en una ciudad"
+  },
+  "set": {
+   "target_text": "creo que él quiere vivir en una ciudad"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0303L01B04",
+  "expect": {
+   "known_text": "I think that he wants to sit down",
+   "target_text": "pienso que él quiere sentarse"
+  },
+  "set": {
+   "target_text": "creo que él quiere sentarse"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0304L01B04",
+  "expect": {
+   "known_text": "I think that she doesn't want to work from home",
+   "target_text": "pienso que ella no quiere trabajar desde casa"
+  },
+  "set": {
+   "target_text": "creo que ella no quiere trabajar desde casa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0311L02U04",
+  "expect": {
+   "known_text": "I think that he couldn't believe",
+   "target_text": "pienso que él no podía creer"
+  },
+  "set": {
+   "target_text": "creo que él no podía creer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0314L01U01",
+  "expect": {
+   "known_text": "I think that she could put it on the table",
+   "target_text": "pienso que ella podría ponerlo en la mesa"
+  },
+  "set": {
+   "target_text": "creo que ella podría ponerlo en la mesa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0314L01U04",
+  "expect": {
+   "known_text": "I don't think that she could put it here",
+   "target_text": "no pienso que ella podría ponerlo aquí"
+  },
+  "set": {
+   "target_text": "no creo que ella podría ponerlo aquí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0315L01B03",
+  "expect": {
+   "known_text": "I think that he couldn't afford",
+   "target_text": "pienso que él no podía permitirse"
+  },
+  "set": {
+   "target_text": "creo que él no podía permitirse"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0315L01U03",
+  "expect": {
+   "known_text": "I think that he couldn't afford the car that he wanted",
+   "target_text": "pienso que él no podía permitirse el carro que quería"
+  },
+  "set": {
+   "target_text": "creo que él no podía permitirse el carro que quería"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0316L01U03",
+  "expect": {
+   "known_text": "do you think that she could bring her brother?",
+   "target_text": "¿piensas que ella podría traer a su hermano?"
+  },
+  "set": {
+   "target_text": "¿crees que ella podría traer a su hermano?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0316L02U05",
+  "expect": {
+   "known_text": "do you think that she could bring her brother on Monday?",
+   "target_text": "¿piensas que ella podría traer a su hermano el lunes?"
+  },
+  "set": {
+   "target_text": "¿crees que ella podría traer a su hermano el lunes?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0317L01U01",
+  "expect": {
+   "known_text": "yes, I think she could if she wanted to",
+   "target_text": "sí, pienso que podría si quisiera"
+  },
+  "set": {
+   "target_text": "sí, creo que podría si quisiera"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01C02",
+  "expect": {
+   "known_text": "I think that",
+   "target_text": "pienso que"
+  },
+  "set": {
+   "target_text": "creo que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01B01",
+  "expect": {
+   "known_text": "I don't think that",
+   "target_text": "no pienso que"
+  },
+  "set": {
+   "target_text": "no creo que"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01B02",
+  "expect": {
+   "known_text": "I don't think that she could write",
+   "target_text": "no pienso que pueda escribir"
+  },
+  "set": {
+   "target_text": "no creo que pueda escribir"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01B03",
+  "expect": {
+   "known_text": "I don't think that he could sit down",
+   "target_text": "no pienso que él pueda sentarse"
+  },
+  "set": {
+   "target_text": "no creo que él pueda sentarse"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U01",
+  "expect": {
+   "known_text": "I don't think that she can help you",
+   "target_text": "no pienso que pueda ayudarte"
+  },
+  "set": {
+   "target_text": "no creo que pueda ayudarte"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U02",
+  "expect": {
+   "known_text": "I don't think that she can write that",
+   "target_text": "no pienso que pueda escribir eso"
+  },
+  "set": {
+   "target_text": "no creo que pueda escribir eso"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U03",
+  "expect": {
+   "known_text": "I don't think that she can live here",
+   "target_text": "no pienso que pueda vivir aquí"
+  },
+  "set": {
+   "target_text": "no creo que pueda vivir aquí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U04",
+  "expect": {
+   "known_text": "I don't think that he can work",
+   "target_text": "no pienso que él pueda trabajar"
+  },
+  "set": {
+   "target_text": "no creo que él pueda trabajar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U05",
+  "expect": {
+   "known_text": "I don't think that she can sit over there",
+   "target_text": "no pienso que pueda sentarse allí"
+  },
+  "set": {
+   "target_text": "no creo que pueda sentarse allí"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L02U01",
+  "expect": {
+   "known_text": "no, I don't think that she could this time",
+   "target_text": "no, no pienso que pueda esta vez"
+  },
+  "set": {
+   "target_text": "no, no creo que pueda esta vez"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0325L02U01",
+  "expect": {
+   "known_text": "I think that he needs to consider ten possible problems",
+   "target_text": "pienso que él necesita considerar diez posibles problemas"
+  },
+  "set": {
+   "target_text": "creo que él necesita considerar diez posibles problemas"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01B02",
+  "expect": {
+   "known_text": "I don't think that she needs to write",
+   "target_text": "no pienso que necesite escribir"
+  },
+  "set": {
+   "target_text": "no creo que necesite escribir"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01B03",
+  "expect": {
+   "known_text": "I don't think that he needs to work",
+   "target_text": "no pienso que necesite trabajar"
+  },
+  "set": {
+   "target_text": "no creo que necesite trabajar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U01",
+  "expect": {
+   "known_text": "I don't think that she needs to buy a car",
+   "target_text": "no pienso que necesite comprar un carro"
+  },
+  "set": {
+   "target_text": "no creo que necesite comprar un carro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U02",
+  "expect": {
+   "known_text": "I don't think that he needs to move",
+   "target_text": "no pienso que necesite mudarse"
+  },
+  "set": {
+   "target_text": "no creo que necesite mudarse"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U03",
+  "expect": {
+   "known_text": "I don't think that she needs that book",
+   "target_text": "no pienso que necesite ese libro"
+  },
+  "set": {
+   "target_text": "no creo que necesite ese libro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U04",
+  "expect": {
+   "known_text": "I don't think that he needs help",
+   "target_text": "no pienso que necesite ayuda"
+  },
+  "set": {
+   "target_text": "no creo que necesite ayuda"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U05",
+  "expect": {
+   "known_text": "I don't think that she needs to go to school",
+   "target_text": "no pienso que necesite ir a la escuela"
+  },
+  "set": {
+   "target_text": "no creo que necesite ir a la escuela"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L02U04",
+  "expect": {
+   "known_text": "I don't think that she needs to sell that book",
+   "target_text": "no pienso que necesite vender ese libro"
+  },
+  "set": {
+   "target_text": "no creo que necesite vender ese libro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L03U01",
+  "expect": {
+   "known_text": "I don't think that she needs to sell the company",
+   "target_text": "no pienso que ella necesite vender la empresa"
+  },
+  "set": {
+   "target_text": "no creo que ella necesite vender la empresa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0327L02U01",
+  "expect": {
+   "known_text": "do you think that she needs to offer another way?",
+   "target_text": "¿piensas que ella necesita ofrecer otra manera?"
+  },
+  "set": {
+   "target_text": "¿crees que ella necesita ofrecer otra manera?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0327L02U03",
+  "expect": {
+   "known_text": "I don't think that she needs another way",
+   "target_text": "no pienso que necesite otra manera"
+  },
+  "set": {
+   "target_text": "no creo que necesite otra manera"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01B02",
+  "expect": {
+   "known_text": "I think she ought to write",
+   "target_text": "pienso que debería escribir"
+  },
+  "set": {
+   "target_text": "creo que debería escribir"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01B03",
+  "expect": {
+   "known_text": "I think he ought to work",
+   "target_text": "pienso que debería trabajar"
+  },
+  "set": {
+   "target_text": "creo que debería trabajar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U01",
+  "expect": {
+   "known_text": "yes, I think she ought to",
+   "target_text": "sí, pienso que debería"
+  },
+  "set": {
+   "target_text": "sí, creo que debería"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U02",
+  "expect": {
+   "known_text": "I think he ought to sell the car",
+   "target_text": "pienso que debería vender el carro"
+  },
+  "set": {
+   "target_text": "creo que debería vender el carro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U03",
+  "expect": {
+   "known_text": "I think she ought to go to school",
+   "target_text": "pienso que debería ir a la escuela"
+  },
+  "set": {
+   "target_text": "creo que debería ir a la escuela"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U05",
+  "expect": {
+   "known_text": "I think that she ought to buy another house",
+   "target_text": "pienso que debería comprar otra casa"
+  },
+  "set": {
+   "target_text": "creo que debería comprar otra casa"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0329L01U01",
+  "expect": {
+   "known_text": "I think that it's important",
+   "target_text": "pienso que es importante"
+  },
+  "set": {
+   "target_text": "creo que es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02B02",
+  "expect": {
+   "known_text": "I don't think that it may be important",
+   "target_text": "no pienso que sea importante"
+  },
+  "set": {
+   "target_text": "no creo que sea importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02B03",
+  "expect": {
+   "known_text": "I don't think that it may be very important",
+   "target_text": "no pienso que sea muy importante"
+  },
+  "set": {
+   "target_text": "no creo que sea muy importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U01",
+  "expect": {
+   "known_text": "no, I don't think it's very important",
+   "target_text": "no, no pienso que sea muy importante"
+  },
+  "set": {
+   "target_text": "no, no creo que sea muy importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U02",
+  "expect": {
+   "known_text": "I don't think that it's a problem",
+   "target_text": "no pienso que sea un problema"
+  },
+  "set": {
+   "target_text": "no creo que sea un problema"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U03",
+  "expect": {
+   "known_text": "I don't think that it's the answer",
+   "target_text": "no pienso que sea la respuesta"
+  },
+  "set": {
+   "target_text": "no creo que sea la respuesta"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U04",
+  "expect": {
+   "known_text": "I don't think that it's possible",
+   "target_text": "no pienso que sea posible"
+  },
+  "set": {
+   "target_text": "no creo que sea posible"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U05",
+  "expect": {
+   "known_text": "I don't think that it's the same book",
+   "target_text": "no pienso que sea el mismo libro"
+  },
+  "set": {
+   "target_text": "no creo que sea el mismo libro"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0331L03U03",
+  "expect": {
+   "known_text": "I don't think that she needs all the answers",
+   "target_text": "no pienso que necesite todas las respuestas"
+  },
+  "set": {
+   "target_text": "no creo que necesite todas las respuestas"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0332L03U05",
+  "expect": {
+   "known_text": "I think that she needs a new life",
+   "target_text": "pienso que ella necesita una nueva vida"
+  },
+  "set": {
+   "target_text": "creo que ella necesita una nueva vida"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0335L02U01",
+  "expect": {
+   "known_text": "I think that he can add some valuable ideas",
+   "target_text": "pienso que él puede añadir algunas ideas valiosas"
+  },
+  "set": {
+   "target_text": "creo que él puede añadir algunas ideas valiosas"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0335L02U05",
+  "expect": {
+   "known_text": "I don't think that she needs some valuable ideas",
+   "target_text": "no pienso que necesite algunas ideas valiosas"
+  },
+  "set": {
+   "target_text": "no creo que necesite algunas ideas valiosas"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0336L01U02",
+  "expect": {
+   "known_text": "I don't think that she can open that",
+   "target_text": "no pienso que pueda abrir eso"
+  },
+  "set": {
+   "target_text": "no creo que pueda abrir eso"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0336L02U01",
+  "expect": {
+   "known_text": "I don't think that she can open the door",
+   "target_text": "no pienso que ella pueda abrir la puerta"
+  },
+  "set": {
+   "target_text": "no creo que ella pueda abrir la puerta"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0337L02U01",
+  "expect": {
+   "known_text": "do you think that he can continue to play?",
+   "target_text": "¿piensas que él puede seguir jugando?"
+  },
+  "set": {
+   "target_text": "¿crees que él puede seguir jugando?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0338L01U05",
+  "expect": {
+   "known_text": "I think that he works badly",
+   "target_text": "pienso que trabaja mal"
+  },
+  "set": {
+   "target_text": "creo que trabaja mal"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01B02",
+  "expect": {
+   "known_text": "I think that he's hurt himself",
+   "target_text": "pienso que se ha hecho daño"
+  },
+  "set": {
+   "target_text": "creo que se ha hecho daño"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01U01",
+  "expect": {
+   "known_text": "no, I think he's hurt himself",
+   "target_text": "no, pienso que se ha hecho daño"
+  },
+  "set": {
+   "target_text": "no, creo que se ha hecho daño"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01U03",
+  "expect": {
+   "known_text": "I think that my friend has hurt himself",
+   "target_text": "pienso que mi amigo se ha hecho daño"
+  },
+  "set": {
+   "target_text": "creo que mi amigo se ha hecho daño"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01U05",
+  "expect": {
+   "known_text": "I think that he has hurt himself",
+   "target_text": "pienso que él se ha hecho daño"
+  },
+  "set": {
+   "target_text": "creo que él se ha hecho daño"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0343L01U05",
+  "expect": {
+   "known_text": "I think that she's worried",
+   "target_text": "pienso que está preocupada"
+  },
+  "set": {
+   "target_text": "creo que está preocupada"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0343L02U03",
+  "expect": {
+   "known_text": "I think that the economy is important",
+   "target_text": "pienso que la economía es importante"
+  },
+  "set": {
+   "target_text": "creo que la economía es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0345L01U05",
+  "expect": {
+   "known_text": "I think that he's not ready to leave",
+   "target_text": "pienso que no está listo para irse"
+  },
+  "set": {
+   "target_text": "creo que no está listo para irse"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0354L01U05",
+  "expect": {
+   "known_text": "I think that he's angry",
+   "target_text": "pienso que está enojado"
+  },
+  "set": {
+   "target_text": "creo que está enojado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0358L02U05",
+  "expect": {
+   "known_text": "I think that he could reach the top",
+   "target_text": "pienso que él podría llegar a la cima"
+  },
+  "set": {
+   "target_text": "creo que él podría llegar a la cima"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0361L01B02",
+  "expect": {
+   "known_text": "I think he was quiet",
+   "target_text": "pienso que estaba callado"
+  },
+  "set": {
+   "target_text": "creo que estaba callado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0363L01U05",
+  "expect": {
+   "known_text": "I think that he felt like helping",
+   "target_text": "pienso que tenía ganas de ayudar"
+  },
+  "set": {
+   "target_text": "creo que tenía ganas de ayudar"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0364L02U05",
+  "expect": {
+   "known_text": "I think that he didn't like the idea",
+   "target_text": "pienso que a él no le gustaba la idea"
+  },
+  "set": {
+   "target_text": "creo que a él no le gustaba la idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0373L01U02",
+  "expect": {
+   "known_text": "I think that it was beautiful",
+   "target_text": "pienso que era precioso"
+  },
+  "set": {
+   "target_text": "creo que era precioso"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0374L02U03",
+  "expect": {
+   "known_text": "I think that it's very pretty",
+   "target_text": "pienso que es muy bonito"
+  },
+  "set": {
+   "target_text": "creo que es muy bonito"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0375L01U05",
+  "expect": {
+   "known_text": "I think that he was doing something",
+   "target_text": "pienso que estaba haciendo algo"
+  },
+  "set": {
+   "target_text": "creo que estaba haciendo algo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02U05",
+  "expect": {
+   "known_text": "I think that you went somewhere",
+   "target_text": "pienso que fuiste a algún sitio"
+  },
+  "set": {
+   "target_text": "creo que fuiste a algún sitio"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0378L02U05",
+  "expect": {
+   "known_text": "I think that he needs money for holidays",
+   "target_text": "pienso que necesita dinero para vacaciones"
+  },
+  "set": {
+   "target_text": "creo que necesita dinero para vacaciones"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0381L01U05",
+  "expect": {
+   "known_text": "I think that he wants to follow us",
+   "target_text": "pienso que quiere seguirnos"
+  },
+  "set": {
+   "target_text": "creo que quiere seguirnos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0382L02U05",
+  "expect": {
+   "known_text": "I think that she wants to put it in the room",
+   "target_text": "pienso que quiere ponerlo en la habitación"
+  },
+  "set": {
+   "target_text": "creo que quiere ponerlo en la habitación"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0383L01U05",
+  "expect": {
+   "known_text": "I think that he needs to work in the garden",
+   "target_text": "pienso que necesita trabajar en el jardín"
+  },
+  "set": {
+   "target_text": "creo que necesita trabajar en el jardín"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0388L01U05",
+  "expect": {
+   "known_text": "I think that person you work with is important",
+   "target_text": "pienso que esa persona con la que trabajas es importante"
+  },
+  "set": {
+   "target_text": "creo que esa persona con la que trabajas es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0389L01U05",
+  "expect": {
+   "known_text": "I think that person over there is important",
+   "target_text": "pienso que esa persona de allí es importante"
+  },
+  "set": {
+   "target_text": "creo que esa persona de allí es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0390L01U04",
+  "expect": {
+   "known_text": "I think that the one who is standing is important",
+   "target_text": "pienso que la que está de pie es importante"
+  },
+  "set": {
+   "target_text": "creo que la que está de pie es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0391L01U05",
+  "expect": {
+   "known_text": "I think that the one who is walking is important",
+   "target_text": "pienso que la que está caminando es importante"
+  },
+  "set": {
+   "target_text": "creo que la que está caminando es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0392L01U05",
+  "expect": {
+   "known_text": "I think that child is important",
+   "target_text": "pienso que ese niño es importante"
+  },
+  "set": {
+   "target_text": "creo que ese niño es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0392L05U05",
+  "expect": {
+   "known_text": "I think that the post office is important",
+   "target_text": "pienso que la oficina de correos es importante"
+  },
+  "set": {
+   "target_text": "creo que la oficina de correos es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0393L01U04",
+  "expect": {
+   "known_text": "I think that boy is important",
+   "target_text": "pienso que ese chico es importante"
+  },
+  "set": {
+   "target_text": "creo que ese chico es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0393L03U05",
+  "expect": {
+   "known_text": "I think that green car is pretty",
+   "target_text": "pienso que ese carro verde es bonito"
+  },
+  "set": {
+   "target_text": "creo que ese carro verde es bonito"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0394L01U04",
+  "expect": {
+   "known_text": "I think that girl is important",
+   "target_text": "pienso que esa chica es importante"
+  },
+  "set": {
+   "target_text": "creo que esa chica es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0394L03U05",
+  "expect": {
+   "known_text": "I think that yellow car is pretty",
+   "target_text": "pienso que ese carro amarillo es bonito"
+  },
+  "set": {
+   "target_text": "creo que ese carro amarillo es bonito"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0395L01U05",
+  "expect": {
+   "known_text": "I think that corner is important",
+   "target_text": "pienso que esa esquina es importante"
+  },
+  "set": {
+   "target_text": "creo que esa esquina es importante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0396L01U03",
+  "expect": {
+   "known_text": "I think we need to stand up",
+   "target_text": "pienso que necesitamos levantarnos"
+  },
+  "set": {
+   "target_text": "creo que necesitamos levantarnos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0397L01U05",
+  "expect": {
+   "known_text": "I think we need to get ready soon",
+   "target_text": "pienso que necesitamos prepararnos pronto"
+  },
+  "set": {
+   "target_text": "creo que necesitamos prepararnos pronto"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0398L01U03",
+  "expect": {
+   "known_text": "I think we need to become more patient",
+   "target_text": "pienso que necesitamos ser más pacientes"
+  },
+  "set": {
+   "target_text": "creo que necesitamos ser más pacientes"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0398L03U04",
+  "expect": {
+   "known_text": "I think we need to become more patient with our children",
+   "target_text": "pienso que necesitamos ser más pacientes con nuestros hijos"
+  },
+  "set": {
+   "target_text": "creo que necesitamos ser más pacientes con nuestros hijos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0480L01B02",
+  "expect": {
+   "known_text": "whatever he says, I don't think it's a great idea",
+   "target_text": "diga lo que diga, no pienso que sea una gran idea"
+  },
+  "set": {
+   "target_text": "diga lo que diga, no creo que sea una gran idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0486L02U05",
+  "expect": {
+   "known_text": "I think your eyes are beautiful",
+   "target_text": "pienso que tus ojos son hermosos"
+  },
+  "set": {
+   "target_text": "creo que tus ojos son hermosos"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0492L03B03",
+  "expect": {
+   "known_text": "which of those places do you think is the most interesting",
+   "target_text": "cuál de esos lugares piensas que es el más interesante"
+  },
+  "set": {
+   "target_text": "cuál de esos lugares crees que es el más interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0492L03U04",
+  "expect": {
+   "known_text": "I think it's the most interesting",
+   "target_text": "pienso que es el más interesante"
+  },
+  "set": {
+   "target_text": "creo que es el más interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0492L03U05",
+  "expect": {
+   "known_text": "you think it's the most interesting",
+   "target_text": "piensas que es el más interesante"
+  },
+  "set": {
+   "target_text": "crees que es el más interesante"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0503L03U05",
+  "expect": {
+   "known_text": "I think it's mine",
+   "target_text": "pienso que es mío"
+  },
+  "set": {
+   "target_text": "creo que es mío"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0537L01U10",
+  "expect": {
+   "known_text": "there are people who think that I was wrong",
+   "target_text": "hay personas que piensan que estaba equivocado"
+  },
+  "set": {
+   "target_text": "hay personas que creen que estaba equivocado"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0553L01U01",
+  "expect": {
+   "known_text": "I think the small church is very ugly",
+   "target_text": "pienso que la iglesia pequeña es muy fea"
+  },
+  "set": {
+   "target_text": "creo que la iglesia pequeña es muy fea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0617L02U11",
+  "expect": {
+   "known_text": "there are people who think that it's a mistake",
+   "target_text": "hay personas que piensan que es un error"
+  },
+  "set": {
+   "target_text": "hay personas que creen que es un error"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0617L02U12",
+  "expect": {
+   "known_text": "do you think that it's a mistake?",
+   "target_text": "¿piensas que es un error?"
+  },
+  "set": {
+   "target_text": "¿crees que es un error?"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_mx_for_eng:S0135L01U09",
+  "expect": {
+   "known_text": "I think you think it's not a problem",
+   "target_text": "creo que piensas que no es un problema"
+  }
+ }
+]

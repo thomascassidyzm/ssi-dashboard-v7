@@ -1,0 +1,101 @@
+{
+  "course_code": "zho_for_tam",
+  "event_id": "db62009b-f92f-427b-ae5c-a7bdedad6380",
+  "actor": "cs-sister-propagation",
+  "created_at": "2026-11-18T13:10:15.648Z",
+  "how_to_undo": "POST /api/production/zho_for_tam/edit-batch {\"undo_file\":\"2026-11-18T13-10-15-648Z-db62009b-f92f-427b-ae5c-a7bdedad6380.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0012L02U05",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0012L02U05",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0012L02U05",
+      "set": {
+        "target_text": "你能不能明天说？",
+        "target1_audio_id": "905e7e64-a8da-439e-a433-f59b468004fd",
+        "target2_audio_id": "bdba556b-13fb-4624-821e-362d9dfb9c6a"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0011L01U04",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0011L01U04",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0011L01U04",
+      "set": {
+        "target_text": "你能不能现在说完？",
+        "target1_audio_id": "b9554935-c061-4537-84b5-d6b0146100bf",
+        "target2_audio_id": "d242dff6-2317-4a9f-b9ca-077a66138f44"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L03U03",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L03U03",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L03U03",
+      "set": {
+        "target_text": "我要现在和别人说",
+        "target1_audio_id": "ce72cd55-bb85-4598-8616-75c8d3322ccb",
+        "target2_audio_id": "800b3413-eb2e-43cb-b514-f63c4dd1bbdd"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L02U04",
+      "set": {
+        "target2_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L02U04",
+      "set": {
+        "target1_audio_id": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "zho_for_tam:S0005L02U04",
+      "set": {
+        "target_text": "我要现在练习中文",
+        "target1_audio_id": "83e89688-d2b1-4261-a8d4-255ecc996e08",
+        "target2_audio_id": "fa304152-0850-454a-a830-9a055a6e363f"
+      }
+    }
+  ]
+}
