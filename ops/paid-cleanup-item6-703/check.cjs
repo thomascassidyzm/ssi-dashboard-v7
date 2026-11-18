@@ -109,6 +109,7 @@ function zutMap(seeds) {
   return m;
 }
 const bi = seedIssues(before), ai = seedIssues(after);
+if (process.env.CHECK_DEBUG) for (const n of touched) process.stderr.write(`seed ${n}\n BEFORE ${JSON.stringify(bi[n])}\n AFTER ${JSON.stringify(ai[n])}\n`);
 const newIssues = [], fixedIssues = [];
 for (const n of touched) {
   const b = new Set(bi[n] || []), a = new Set(ai[n] || []);
