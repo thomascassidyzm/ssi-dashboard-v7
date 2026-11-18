@@ -1,0 +1,1234 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "81f0b722-7077-4f8e-9a19-702ecfa9b79d",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "nyns esa govenek dhyn dhe dhifuna yn kres an nos",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "81f0b722-7077-4f8e-9a19-702ecfa9b79d",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "nyns esen ni ow kwaytya difuna yn kres an nos",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "5e18613d-bdf5-47eb-9724-b63d99f2867d",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nyns esa govenek dhyn",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "there was not",
+      "target": "nyns esa"
+     },
+     {
+      "known": "hope",
+      "target": "govenek",
+      "introduce": false
+     },
+     {
+      "known": "to us",
+      "target": "dhyn",
+      "introduce": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "5e18613d-bdf5-47eb-9724-b63d99f2867d",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nyns esen ni ow kwaytya",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we were not",
+      "target": "nyns esen ni"
+     },
+     {
+      "known": "expecting",
+      "target": "ow kwaytya"
+     },
+     {
+      "known": "to expect",
+      "target": "gwaytya"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01C01"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01C01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa",
+    "known_text": "there was not",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01C01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni",
+    "known_text": "we were not",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "govenek",
+    "known_text": "hope",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ow kwaytya",
+    "known_text": "expecting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01C03"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01C03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dhyn",
+    "known_text": "to us",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01C03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "gwaytya",
+    "known_text": "to expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe worfenna",
+    "known_text": "we didn't hope to finish",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya kewsel",
+    "known_text": "we didn't expect to speak",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe weles an ki yowynk",
+    "known_text": "we didn't hope to see the young dog",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya klewes an ki yowynk",
+    "known_text": "we didn't expect to hear the young dog",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe vos tre",
+    "known_text": "we didn't hope to go home",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya mos tre",
+    "known_text": "we didn't expect to go home",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe glewes an gwir",
+    "known_text": "we didn't hope to hear the truth",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya klewes an gwir",
+    "known_text": "we didn't expect to hear the truth",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe gewsel gans tus na aswonnav",
+    "known_text": "we didn't hope to speak with people I don't know",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya kewsel gans tus na aswonnav",
+    "known_text": "we didn't expect to speak with people I don't know",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe gonvedhes puptra",
+    "known_text": "we didn't hope to understand everything",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya konvedhes puptra",
+    "known_text": "we didn't expect to understand everything",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe weles an pyth eses ta orth y wul",
+    "known_text": "we didn't hope to see what you were doing",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya konvedhes an pyth eses ta orth y wul",
+    "known_text": "we didn't expect to understand what you were doing",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe worfenna yn berr spys",
+    "known_text": "we didn't hope to finish in a short time",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya konvedhes yn berr spys",
+    "known_text": "we didn't expect to understand in a short time",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "4579c9cc-28a6-4aa7-a119-45b35997ac98",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "dhe dhifuna",
+    "known_text": "to wake",
+    "type": "M",
+    "components": [
+     {
+      "known": "to",
+      "target": "dhe",
+      "introduce": false
+     },
+     {
+      "known": "waking",
+      "target": "dhifuna"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "4579c9cc-28a6-4aa7-a119-45b35997ac98",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "difuna",
+    "known_text": "to wake up",
+    "type": "A",
+    "components": null,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02C01"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to",
+    "target_text": "dhe",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02C02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "waking",
+    "target_text": "dhifuna",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe dhifuna",
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya difuna",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "yth esa govenek dhyn dhe dhifuna",
+    "known_text": "we hoped to wake",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ny vynnav vy difuna",
+    "known_text": "I don't want to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns ov vy parys dhe dhifuna",
+    "known_text": "I'm not ready to wake",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns yw es difuna",
+    "known_text": "it isn't easy to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns ov vy parys dhe dhifuna an myttin ma",
+    "known_text": "I'm not ready to wake this morning",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ny vynnav vy difuna an myttin ma",
+    "known_text": "I don't want to wake up this morning",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe dhifuna dhe hwegh eur",
+    "known_text": "we didn't hope to wake at six o'clock",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya difuna dhe hwegh eur",
+    "known_text": "we didn't expect to wake up at six o'clock",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns ov vy parys dhe dhifuna hwath",
+    "known_text": "I'm not ready to wake yet",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns yw da genev vy difuna dhe hwegh eur",
+    "known_text": "I don't like to wake up at six o'clock",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe dhifuna haneth",
+    "known_text": "we didn't hope to wake tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya difuna haneth",
+    "known_text": "we didn't expect to wake up tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "yth esa govenek dhyn dhe dhifuna an myttin ma",
+    "known_text": "we hoped to wake this morning",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "prag y fyn'ta difuna an myttin ma?",
+    "known_text": "why do you want to wake up this morning",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe dhifuna yn kres an nos",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya difuna yn kres an nos",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dhe dhifuna yn kres an nos",
+    "known_text": "to wake in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "difuna yn kres an nos",
+    "known_text": "to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cor_for_eng",
+    "id": "cor_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "cor_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nyns esa govenek dhyn dhe gewsel yn kres an nos",
+    "known_text": "we didn't hope to speak in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cor_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nyns esen ni ow kwaytya kewsel yn kres an nos",
+    "known_text": "we didn't expect to speak in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we didn't hope to speak in the middle of the night",
+    "target_text": "nyns esa govenek dhyn dhe gewsel yn kres an nos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "dhe dhifuna yn kres an nos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nyns esa govenek dhyn dhe dhifuna yn kres an nos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we hoped to wake this morning",
+    "target_text": "yth esa govenek dhyn dhe dhifuna an myttin ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we didn't hope to wake tonight",
+    "target_text": "nyns esa govenek dhyn dhe dhifuna haneth"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I'm not ready to wake yet",
+    "target_text": "nyns ov vy parys dhe dhifuna hwath"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "we didn't hope to wake at six o'clock",
+    "target_text": "nyns esa govenek dhyn dhe dhifuna dhe hwegh eur"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I'm not ready to wake this morning",
+    "target_text": "nyns ov vy parys dhe dhifuna an myttin ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "I'm not ready to wake",
+    "target_text": "nyns ov vy parys dhe dhifuna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we hoped to wake",
+    "target_text": "yth esa govenek dhyn dhe dhifuna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "nyns esa govenek dhyn dhe dhifuna"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "cor_for_eng:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "waking",
+    "target_text": "dhifuna",
+    "word_count": 7,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 1
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-09-17T14:52:36.698Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "cor_for_eng:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "to",
+    "target_text": "dhe",
+    "word_count": 3,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 0
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-09-17T14:52:36.698Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": false,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4579c9cc-28a6-4aa7-a119-45b35997ac98",
+   "set": {
+    "type": "M",
+    "known_text": "to wake",
+    "target_text": "dhe dhifuna",
+    "components": [
+     {
+      "known": "to",
+      "target": "dhe",
+      "introduce": false
+     },
+     {
+      "known": "waking",
+      "target": "dhifuna"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't hope to finish in a short time",
+    "target_text": "nyns esa govenek dhyn dhe worfenna yn berr spys"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope to see what you were doing",
+    "target_text": "nyns esa govenek dhyn dhe weles an pyth eses ta orth y wul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to understand everything",
+    "target_text": "nyns esa govenek dhyn dhe gonvedhes puptra"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to speak with people I don't know",
+    "target_text": "nyns esa govenek dhyn dhe gewsel gans tus na aswonnav"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to hear the truth",
+    "target_text": "nyns esa govenek dhyn dhe glewes an gwir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to go home",
+    "target_text": "nyns esa govenek dhyn dhe vos tre"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to see the young dog",
+    "target_text": "nyns esa govenek dhyn dhe weles an ki yowynk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope to finish",
+    "target_text": "nyns esa govenek dhyn dhe worfenna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01C03",
+   "set": {
+    "known_text": "to us",
+    "target_text": "dhyn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "hope",
+    "target_text": "govenek"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cor_for_eng:S0108L01C01",
+   "set": {
+    "known_text": "there was not",
+    "target_text": "nyns esa"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "5e18613d-bdf5-47eb-9724-b63d99f2867d",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "nyns esa govenek dhyn",
+    "components": [
+     {
+      "known": "there was not",
+      "target": "nyns esa"
+     },
+     {
+      "known": "hope",
+      "target": "govenek",
+      "introduce": false
+     },
+     {
+      "known": "to us",
+      "target": "dhyn",
+      "introduce": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "nyns esa govenek dhyn dhe dhifuna yn kres an nos"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

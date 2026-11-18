@@ -1,0 +1,16 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Ons het nie verwag om in die middel van die nag wakker te word nie."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ons het nie gehoop om in die middel van die nag wakker te word nie."
+   }
+  }
+ ]
+}

@@ -1,0 +1,259 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "isl_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "befa8dd4-5b6c-4db1-9608-5c3df47b8e33",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Við vonuðum ekki að vakna um miðja nótt.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d7dd246e-abbe-4a0a-8f49-beb8989497e5",
+    "target2_audio_id": "92a56fe0-5536-4908-b10f-d244f8299ee4"
+   },
+   "after": {
+    "id": "befa8dd4-5b6c-4db1-9608-5c3df47b8e33",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Við bjuggumst ekki við að vakna um miðja nótt.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "isl_for_eng",
+    "id": "isl_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "isl_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "vakna um miðja nótt",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "target1_audio_id": "f122a271-266d-4e4c-b3a9-9171dba4aa74",
+    "target2_audio_id": "38b3854e-b974-4076-996f-c5cff29b617c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "isl_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "vakna um miðja nótt",
+    "known_audio_id": null,
+    "target1_audio_id": "f122a271-266d-4e4c-b3a9-9171dba4aa74",
+    "target2_audio_id": "38b3854e-b974-4076-996f-c5cff29b617c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "isl_for_eng",
+    "id": "isl_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "isl_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "við vonuðum ekki að vakna um miðja nótt",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d7dd246e-abbe-4a0a-8f49-beb8989497e5",
+    "target2_audio_id": "92a56fe0-5536-4908-b10f-d244f8299ee4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "isl_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "við bjuggumst ekki við að vakna um miðja nótt",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "isl_for_eng",
+    "id": "isl_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "isl_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "ég vil ekki vakna um miðja nótt",
+    "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+    "target1_audio_id": "2cd76b63-c79a-4661-9e33-a45d4733a883",
+    "target2_audio_id": "c618ea3c-72e6-4a9b-abd7-e43d135047d7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "isl_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the middle of the night",
+    "target_text": "ég vil ekki vakna um miðja nótt",
+    "known_audio_id": null,
+    "target1_audio_id": "2cd76b63-c79a-4661-9e33-a45d4733a883",
+    "target2_audio_id": "c618ea3c-72e6-4a9b-abd7-e43d135047d7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "isl_for_eng",
+    "id": "isl_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "isl_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I'm going to try not to wake in the middle of the night",
+    "target_text": "ég ætla að reyna að vakna ekki um miðja nótt",
+    "known_audio_id": "bb4c9325-e019-426f-80de-943b2ea7ed1d",
+    "target1_audio_id": "678a6a81-e903-4697-8c6c-02e81012b163",
+    "target2_audio_id": "384e7c28-c7ff-4e16-9061-53fe9f33ede8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "isl_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I'm going to try not to wake up in the middle of the night",
+    "target_text": "ég ætla að reyna að vakna ekki um miðja nótt",
+    "known_audio_id": null,
+    "target1_audio_id": "678a6a81-e903-4697-8c6c-02e81012b163",
+    "target2_audio_id": "384e7c28-c7ff-4e16-9061-53fe9f33ede8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "isl_for_eng",
+    "id": "isl_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "isl_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we hoped not to wake in the middle of the night",
+    "target_text": "við vonuðum að vakna ekki um miðja nótt",
+    "known_audio_id": "c1b52ef1-9fa0-4773-93d1-833bc20c3700",
+    "target1_audio_id": "90e525f5-f813-4fc0-922b-f55efb5ace91",
+    "target2_audio_id": "3d013a44-0146-4eaf-b86f-8671ab7f616a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "isl_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we hoped not to wake up in the middle of the night",
+    "target_text": "við vonuðum að vakna ekki um miðja nótt",
+    "known_audio_id": null,
+    "target1_audio_id": "90e525f5-f813-4fc0-922b-f55efb5ace91",
+    "target2_audio_id": "3d013a44-0146-4eaf-b86f-8671ab7f616a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we hoped not to wake in the middle of the night",
+    "known_audio_id": "c1b52ef1-9fa0-4773-93d1-833bc20c3700"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I'm going to try not to wake in the middle of the night",
+    "known_audio_id": "bb4c9325-e019-426f-80de-943b2ea7ed1d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "við vonuðum ekki að vakna um miðja nótt",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d7dd246e-abbe-4a0a-8f49-beb8989497e5",
+    "target2_audio_id": "92a56fe0-5536-4908-b10f-d244f8299ee4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Við vonuðum ekki að vakna um miðja nótt.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d7dd246e-abbe-4a0a-8f49-beb8989497e5",
+    "target2_audio_id": "92a56fe0-5536-4908-b10f-d244f8299ee4"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

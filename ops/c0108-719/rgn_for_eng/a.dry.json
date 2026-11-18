@@ -1,0 +1,48 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "rgn_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "58c7777b-dfc6-448a-aaf2-95bb08039151",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "a n sperémi ad dasdês int e' mèẓ dla nòt",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "58c7777b-dfc6-448a-aaf2-95bb08039151",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "a n s'aspitémi ad dasdês int e' mèẓ dla nòt",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "a n sperémi ad dasdês int e' mèẓ dla nòt"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

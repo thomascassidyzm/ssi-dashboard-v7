@@ -1,0 +1,148 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "Wir erwarteten nicht, mitten in der Nacht aufzuwachen.",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "Wir hofften nicht, mitten in der Nacht aufzuwachen.",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "didn't expect to wake up",
+    "known_text": "erwarteten nicht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "hofften nicht aufzuwachen",
+    "target_text": "didn't hope to wake up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02B01",
+   "set": {
+    "target_text": "didn't expect to wake up",
+    "known_text": "erwarteten nicht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "hofften nicht aufzuwachen",
+    "target_text": "didn't hope to wake up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02B02",
+   "set": {
+    "target_text": "we didn't expect to wake up",
+    "known_text": "wir erwarteten nicht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "wir hofften nicht aufzuwachen",
+    "target_text": "we didn't hope to wake up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02B03",
+   "set": {
+    "target_text": "I didn't expect to wake up",
+    "known_text": "ich erwartete nicht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "ich hoffte nicht aufzuwachen",
+    "target_text": "I didn't hope to wake up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02B04",
+   "set": {
+    "target_text": "I think we didn't expect to wake up",
+    "known_text": "ich denke, wir erwarteten nicht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "ich denke, wir hofften nicht aufzuwachen",
+    "target_text": "I think we didn't hope to wake up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02U01",
+   "set": {
+    "target_text": "we didn't expect to wake up and have to work hard",
+    "known_text": "wir erwarteten nicht, aufzuwachen und hart arbeiten zu müssen"
+   },
+   "expect": {
+    "known_text": "wir hofften nicht, aufzuwachen und hart arbeiten zu müssen",
+    "target_text": "we didn't hope to wake up and have to work hard"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02U02",
+   "set": {
+    "target_text": "that's why I didn't expect to wake up",
+    "known_text": "deshalb erwartete ich nicht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "deshalb hoffte ich nicht aufzuwachen",
+    "target_text": "that's why I didn't hope to wake up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02U03",
+   "set": {
+    "target_text": "we didn't expect to wake up that quickly",
+    "known_text": "wir erwarteten nicht, so schnell aufzuwachen"
+   },
+   "expect": {
+    "known_text": "wir hofften nicht, so schnell aufzuwachen",
+    "target_text": "we didn't hope to wake up that quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02U04",
+   "set": {
+    "target_text": "I didn't expect to wake up and have to change something",
+    "known_text": "ich erwartete nicht, aufzuwachen und etwas ändern zu müssen"
+   },
+   "expect": {
+    "known_text": "ich hoffte nicht, aufzuwachen und etwas ändern zu müssen",
+    "target_text": "I didn't hope to wake up and have to change something"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L02U05",
+   "set": {
+    "target_text": "we didn't expect to wake up but it's good",
+    "known_text": "wir erwarteten nicht aufzuwachen, aber es ist gut"
+   },
+   "expect": {
+    "known_text": "wir hofften nicht aufzuwachen, aber es ist gut",
+    "target_text": "we didn't hope to wake up but it's good"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_deu:S0108L03B02",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "wir erwarteten nicht, mitten in der Nacht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "wir hofften nicht, mitten in der Nacht aufzuwachen",
+    "target_text": "we didn't hope to wake up in the middle of the night"
+   }
+  }
+ ]
+}

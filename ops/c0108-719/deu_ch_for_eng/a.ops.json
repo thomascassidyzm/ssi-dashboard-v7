@@ -1,0 +1,83 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Mir händ nöd erwartet, mitts i de Nacht ufzwache."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Mir händ nöd ghofft, mitts i de Nacht ufzwache."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "mitts i de Nacht ufzwache"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "mir händ nöd erwartet, mitts i de Nacht ufzwache",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "mir händ nöd ghofft, mitts i de Nacht ufzwache"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I don't enjoy waking up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't enjoy waking in the middle of the night",
+    "target_text": "ich gnüsse s nöd, mitts i de Nacht ufzwache"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "she hoped not to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "she hoped not to wake in the middle of the night",
+    "target_text": "si hät ghofft, nöd mitts i de Nacht ufzwache"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I need to try not to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I need to try not to wake in the middle of the night",
+    "target_text": "ich mues versueche, nöd mitts i de Nacht ufzwache"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "you shouldn't wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "you shouldn't wake in the middle of the night",
+    "target_text": "du sottsch nöd mitts i de Nacht ufzwache"
+   }
+  }
+ ]
+}

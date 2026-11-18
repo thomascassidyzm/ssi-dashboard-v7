@@ -1,0 +1,21 @@
+{
+ "108": {
+  "before": [
+   "L1: BUILD: need 3+, got 2",
+   "L2: BUILD: need 3+, got 2",
+   "L2: vocab violations in 2 phrase(s)",
+   "L3: BUILD: need 3+, got 0"
+  ],
+  "after": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [verwachtten]",
+   "L1: BUILD: need 3+, got 2",
+   "L2: BUILD: need 3+, got 2",
+   "L2: vocab violations in 3 phrase(s)",
+   "L3: BUILD: need 3+, got 0"
+  ],
+  "new_issues": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [verwachtten]",
+   "L2: vocab violations in 3 phrase(s)"
+  ]
+ }
+}

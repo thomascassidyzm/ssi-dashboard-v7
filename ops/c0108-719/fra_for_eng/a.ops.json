@@ -1,0 +1,350 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "nous ne nous attendions pas à nous réveiller au milieu de la nuit"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nous n'espérions pas nous réveiller au milieu de la nuit"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "nous ne nous attendions pas à",
+    "known_text": "we didn't expect to",
+    "components": [
+     {
+      "known": "didn't expect to",
+      "target": "ne nous attendions pas à"
+     },
+     {
+      "known": "we didn't expect to",
+      "target": "nous ne nous attendions pas à"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope to",
+    "target_text": "nous n'espérions pas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01C01",
+   "set": {
+    "target_text": "ne nous attendions pas à",
+    "known_text": "didn't expect to"
+   },
+   "expect": {
+    "known_text": "didn't hope to",
+    "target_text": "n'espérions pas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "nous ne nous attendions pas à",
+    "known_text": "we didn't expect to"
+   },
+   "expect": {
+    "known_text": "we didn't hope to",
+    "target_text": "nous n'espérions pas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "nous ne nous attendions pas à",
+    "known_text": "we didn't expect to"
+   },
+   "expect": {
+    "known_text": "we didn't hope to",
+    "target_text": "nous n'espérions pas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "nous ne nous attendions pas à voir",
+    "known_text": "we didn't expect to see"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see",
+    "target_text": "nous n'espérions pas voir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01B04",
+   "set": {
+    "target_text": "nous ne nous attendions pas à entendre",
+    "known_text": "we didn't expect to hear"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear",
+    "target_text": "nous n'espérions pas entendre"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "nous ne nous attendions pas à comprendre tout",
+    "known_text": "we didn't expect to understand everything"
+   },
+   "expect": {
+    "known_text": "we didn't hope to understand everything",
+    "target_text": "nous n'espérions pas comprendre tout"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "nous ne nous attendions pas à changer la réponse",
+    "known_text": "we didn't expect to change the answer"
+   },
+   "expect": {
+    "known_text": "we didn't hope to change the answer",
+    "target_text": "nous n'espérions pas changer la réponse"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "nous ne nous attendions pas à finir ça rapidement",
+    "known_text": "we didn't expect to finish that quickly"
+   },
+   "expect": {
+    "known_text": "we didn't hope to finish that quickly",
+    "target_text": "nous n'espérions pas finir ça rapidement"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "nous ne nous attendions pas à travailler dur à ça",
+    "known_text": "we didn't expect to work hard on this"
+   },
+   "expect": {
+    "known_text": "we didn't hope to work hard on this",
+    "target_text": "nous n'espérions pas travailler dur à ça"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U05",
+   "set": {
+    "target_text": "nous ne nous attendions pas à voir ce que tu faisais",
+    "known_text": "we didn't expect to see what you were doing"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see what you were doing",
+    "target_text": "nous n'espérions pas voir ce que tu faisais"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U06",
+   "set": {
+    "target_text": "nous ne nous attendions pas à entendre que ce n'est pas comme ça",
+    "known_text": "we didn't expect to hear that it's not like that"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear that it's not like that",
+    "target_text": "nous n'espérions pas entendre que ce n'est pas comme ça"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U07",
+   "set": {
+    "target_text": "c'est pour cela que nous ne nous attendions pas à nous sentir heureux",
+    "known_text": "that is why we didn't expect to feel happy"
+   },
+   "expect": {
+    "known_text": "that is why we didn't hope to feel happy",
+    "target_text": "c'est pour cela que nous n'espérions pas nous sentir heureux"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L01U08",
+   "set": {
+    "target_text": "nous ne nous attendions pas à savoir qu'il ne connaissait pas la réponse",
+    "known_text": "we didn't expect to know that he didn't know the answer"
+   },
+   "expect": {
+    "known_text": "we didn't hope to know that he didn't know the answer",
+    "target_text": "nous n'espérions pas savoir qu'il ne connaissait pas la réponse"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "réveiller"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "me réveiller"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "need to wake up"
+   },
+   "expect": {
+    "known_text": "need to wake",
+    "target_text": "besoin de me réveiller"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "didn't want to wake up"
+   },
+   "expect": {
+    "known_text": "didn't want to wake",
+    "target_text": "ne voulais pas me réveiller"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "I don't want to wake",
+    "target_text": "je ne veux pas me réveiller"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "do you need to wake up?"
+   },
+   "expect": {
+    "known_text": "do you need to wake?",
+    "target_text": "tu as besoin de te réveiller?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I need to wake up now"
+   },
+   "expect": {
+    "known_text": "I need to wake now",
+    "target_text": "j'ai besoin de me réveiller maintenant"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we hoped to wake up before tomorrow"
+   },
+   "expect": {
+    "known_text": "we hoped to wake before tomorrow",
+    "target_text": "nous espérions nous réveiller avant demain"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "she said she didn't want to wake up"
+   },
+   "expect": {
+    "known_text": "she said she didn't want to wake",
+    "target_text": "elle a dit qu'elle ne voulait pas se réveiller"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L02U08",
+   "set": {
+    "known_text": "that is why I don't want to wake up now"
+   },
+   "expect": {
+    "known_text": "that is why I don't want to wake now",
+    "target_text": "c'est pour cela que je ne veux pas me réveiller maintenant"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L03B04",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "me réveiller au milieu de la nuit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "je ne veux pas me réveiller au milieu de la nuit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L03U05",
+   "set": {
+    "target_text": "nous ne nous attendions pas à travailler dur au milieu de la nuit",
+    "known_text": "we didn't expect to work hard in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to work hard in the middle of the night",
+    "target_text": "nous n'espérions pas travailler dur au milieu de la nuit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0108L03U08",
+   "set": {
+    "target_text": "nous ne nous attendions pas à nous réveiller au milieu de la nuit",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nous n'espérions pas nous réveiller au milieu de la nuit"
+   }
+  }
+ ]
+}

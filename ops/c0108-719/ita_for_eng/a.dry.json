@@ -1,0 +1,768 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "eb5a1474-dee7-4cb7-bf5a-64e175d08e5e",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "non speravamo di svegliarci nel mezzo della notte",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "7c02a80b-8e7f-4489-9e92-7efa5d63066f",
+    "target2_audio_id": "d8f6d910-3a1f-41a3-bfcb-95e6a6b7fa21"
+   },
+   "after": {
+    "id": "eb5a1474-dee7-4cb7-bf5a-64e175d08e5e",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "non ci aspettavamo di svegliarci nel mezzo della notte",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "3cf32473-ed75-41ea-b14c-b4e3bfc076a6",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "non speravamo di svegliarci",
+    "known_text": "we didn't hope to wake",
+    "components": [
+     {
+      "known": "we didn't hope to wake",
+      "target": "non speravamo di svegliarci"
+     }
+    ],
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "4871c0b9-a0f7-4ead-bb3f-49e4543036f7",
+    "target2_audio_id": "9bb87e68-28b0-41b6-92a3-e5fb7966a538",
+    "presentation_audio_id": "522adacd-62e1-41b3-b8e5-4141e3752747"
+   },
+   "after": {
+    "id": "3cf32473-ed75-41ea-b14c-b4e3bfc076a6",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "non ci aspettavamo di svegliarci",
+    "known_text": "we didn't expect to wake up",
+    "components": [
+     {
+      "known": "we didn't expect to wake up",
+      "target": "non ci aspettavamo di svegliarci"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci",
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "4871c0b9-a0f7-4ead-bb3f-49e4543036f7",
+    "target2_audio_id": "9bb87e68-28b0-41b6-92a3-e5fb7966a538",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci",
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "4871c0b9-a0f7-4ead-bb3f-49e4543036f7",
+    "target2_audio_id": "9bb87e68-28b0-41b6-92a3-e5fb7966a538",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci adesso",
+    "known_text": "we didn't hope to wake now",
+    "known_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69",
+    "target1_audio_id": "d881cc07-39b6-411c-bcd5-ccf3852afb03",
+    "target2_audio_id": "0ed7f745-8645-4b14-aff9-9cdbfa85694b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci adesso",
+    "known_text": "we didn't expect to wake up now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01B04"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci oggi",
+    "known_text": "we didn't hope to wake today",
+    "known_audio_id": "cba42798-7785-4db4-ae04-435912cb3763",
+    "target1_audio_id": "d2502dbf-00d7-4479-bdf5-3d450a7d7fc1",
+    "target2_audio_id": "6d84813f-a52d-438a-b436-4fdb7c00e642",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci oggi",
+    "known_text": "we didn't expect to wake up today",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci così presto",
+    "known_text": "we didn't hope to wake so early",
+    "known_audio_id": "189182fd-0c39-4d18-9233-6e89d314dc27",
+    "target1_audio_id": "fe4f8e22-5588-4b0e-ae39-31bb0be93993",
+    "target2_audio_id": "bed18698-789c-4abb-be08-875211b4a2f2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci così presto",
+    "known_text": "we didn't expect to wake up so early",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci dopo",
+    "known_text": "we didn't hope to wake then",
+    "known_audio_id": "0569b84a-c80b-423d-aa86-4dba9e6058d2",
+    "target1_audio_id": "77ce0ac5-abc0-4241-a4a5-0b1011c1e727",
+    "target2_audio_id": "f504f521-1ee5-43b2-8689-46806cc4201d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci dopo",
+    "known_text": "we didn't expect to wake up then",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci così",
+    "known_text": "we didn't hope to wake like this",
+    "known_audio_id": "0b98487d-f64a-4b48-aa49-1ad4db315ad8",
+    "target1_audio_id": "390e5622-0cde-4473-a907-b366d6d76d62",
+    "target2_audio_id": "74bd2413-3df4-4b85-a540-8b34643c6083",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci così",
+    "known_text": "we didn't expect to wake up like this",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ecco perché non speravamo di svegliarci",
+    "known_text": "that is why we didn't hope to wake",
+    "known_audio_id": "691b61c5-33d8-453f-bc2a-08d55bd3dbcc",
+    "target1_audio_id": "155a3742-b2df-443c-9d15-9e722c7335d8",
+    "target2_audio_id": "ca5a2037-0e51-4cce-b3e8-6af01f8797e9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ecco perché non ci aspettavamo di svegliarci",
+    "known_text": "that is why we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci per niente",
+    "known_text": "we didn't hope to wake at all",
+    "known_audio_id": "f8906e22-d9e1-4b0c-ab28-85804473a7af",
+    "target1_audio_id": "fda9e8f9-5b1c-4274-931a-c0b864c688cb",
+    "target2_audio_id": "9ec3b295-7d57-45e3-ab52-29cbd11655d0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci per niente",
+    "known_text": "we didn't expect to wake up at all",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U06"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci e sentirci bene",
+    "known_text": "we didn't hope to wake and feel good",
+    "known_audio_id": "51151e3a-af67-43f1-9a1b-2ca84a8d5475",
+    "target1_audio_id": "01f253c7-f0c3-4a18-ad06-527f80debe69",
+    "target2_audio_id": "2113bbec-5412-447f-886f-a10f12269989",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci e sentirci bene",
+    "known_text": "we didn't expect to wake up and feel good",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U07"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci e lavorare",
+    "known_text": "we didn't hope to wake and work",
+    "known_audio_id": "17783583-4831-4ed9-875a-fbd422a1437c",
+    "target1_audio_id": "e9a4fd79-2f17-41ce-9384-7e92b62865dc",
+    "target2_audio_id": "1233f331-aa00-49f0-a246-528312da96ed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci e lavorare",
+    "known_text": "we didn't expect to wake up and work",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L01U08"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci stamattina",
+    "known_text": "we didn't hope to wake this morning",
+    "known_audio_id": "1e131c74-f75d-4730-928a-e5e60bc6000f",
+    "target1_audio_id": "e41b823a-43cb-438a-924c-3c809f44d1d8",
+    "target2_audio_id": "d2debdc1-a3b4-4dc0-80e9-8df0ba849343",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L01U08",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci stamattina",
+    "known_text": "we didn't expect to wake up this morning",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "non voglio svegliarmi nel mezzo della notte",
+    "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+    "target1_audio_id": "f3a0981d-5b0d-4a42-8891-d07fa258247b",
+    "target2_audio_id": "567fc2e5-c33a-4053-96ca-1af6aa44bc4d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the middle of the night",
+    "target_text": "non voglio svegliarmi nel mezzo della notte",
+    "known_audio_id": null,
+    "target1_audio_id": "f3a0981d-5b0d-4a42-8891-d07fa258247b",
+    "target2_audio_id": "567fc2e5-c33a-4053-96ca-1af6aa44bc4d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "non speravamo di svegliarci nel mezzo della notte",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "7c02a80b-8e7f-4489-9e92-7efa5d63066f",
+    "target2_audio_id": "d8f6d910-3a1f-41a3-bfcb-95e6a6b7fa21",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "non ci aspettavamo di svegliarci nel mezzo della notte",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ita_for_eng",
+    "id": "ita_for_eng:S0108L02U08"
+   },
+   "before": {
+    "id": "ita_for_eng:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't like waking in the middle of the night",
+    "target_text": "non mi piace svegliarmi nel mezzo della notte",
+    "known_audio_id": "ce6f2c30-6c41-4d0d-8b15-95a06345543c",
+    "target1_audio_id": "801980a9-abf3-4e74-a0e7-a88f8e971090",
+    "target2_audio_id": "014aa582-8d25-40f8-9e4a-45e989617759",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ita_for_eng:S0108L02U08",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't like waking up in the middle of the night",
+    "target_text": "non mi piace svegliarmi nel mezzo della notte",
+    "known_audio_id": null,
+    "target1_audio_id": "801980a9-abf3-4e74-a0e7-a88f8e971090",
+    "target2_audio_id": "014aa582-8d25-40f8-9e4a-45e989617759",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L02U08",
+   "set": {
+    "known_text": "I don't like waking in the middle of the night",
+    "known_audio_id": "ce6f2c30-6c41-4d0d-8b15-95a06345543c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "non speravamo di svegliarci nel mezzo della notte",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "7c02a80b-8e7f-4489-9e92-7efa5d63066f",
+    "target2_audio_id": "d8f6d910-3a1f-41a3-bfcb-95e6a6b7fa21"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U08",
+   "set": {
+    "known_text": "we didn't hope to wake this morning",
+    "target_text": "non speravamo di svegliarci stamattina",
+    "known_audio_id": "1e131c74-f75d-4730-928a-e5e60bc6000f",
+    "target1_audio_id": "e41b823a-43cb-438a-924c-3c809f44d1d8",
+    "target2_audio_id": "d2debdc1-a3b4-4dc0-80e9-8df0ba849343"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U07",
+   "set": {
+    "known_text": "we didn't hope to wake and work",
+    "target_text": "non speravamo di svegliarci e lavorare",
+    "known_audio_id": "17783583-4831-4ed9-875a-fbd422a1437c",
+    "target1_audio_id": "e9a4fd79-2f17-41ce-9384-7e92b62865dc",
+    "target2_audio_id": "1233f331-aa00-49f0-a246-528312da96ed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "we didn't hope to wake and feel good",
+    "target_text": "non speravamo di svegliarci e sentirci bene",
+    "known_audio_id": "51151e3a-af67-43f1-9a1b-2ca84a8d5475",
+    "target1_audio_id": "01f253c7-f0c3-4a18-ad06-527f80debe69",
+    "target2_audio_id": "2113bbec-5412-447f-886f-a10f12269989"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't hope to wake at all",
+    "target_text": "non speravamo di svegliarci per niente",
+    "known_audio_id": "f8906e22-d9e1-4b0c-ab28-85804473a7af",
+    "target1_audio_id": "fda9e8f9-5b1c-4274-931a-c0b864c688cb",
+    "target2_audio_id": "9ec3b295-7d57-45e3-ab52-29cbd11655d0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "that is why we didn't hope to wake",
+    "target_text": "ecco perché non speravamo di svegliarci",
+    "known_audio_id": "691b61c5-33d8-453f-bc2a-08d55bd3dbcc",
+    "target1_audio_id": "155a3742-b2df-443c-9d15-9e722c7335d8",
+    "target2_audio_id": "ca5a2037-0e51-4cce-b3e8-6af01f8797e9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to wake like this",
+    "target_text": "non speravamo di svegliarci così",
+    "known_audio_id": "0b98487d-f64a-4b48-aa49-1ad4db315ad8",
+    "target1_audio_id": "390e5622-0cde-4473-a907-b366d6d76d62",
+    "target2_audio_id": "74bd2413-3df4-4b85-a540-8b34643c6083"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to wake then",
+    "target_text": "non speravamo di svegliarci dopo",
+    "known_audio_id": "0569b84a-c80b-423d-aa86-4dba9e6058d2",
+    "target1_audio_id": "77ce0ac5-abc0-4241-a4a5-0b1011c1e727",
+    "target2_audio_id": "f504f521-1ee5-43b2-8689-46806cc4201d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to wake so early",
+    "target_text": "non speravamo di svegliarci così presto",
+    "known_audio_id": "189182fd-0c39-4d18-9233-6e89d314dc27",
+    "target1_audio_id": "fe4f8e22-5588-4b0e-ae39-31bb0be93993",
+    "target2_audio_id": "bed18698-789c-4abb-be08-875211b4a2f2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "we didn't hope to wake today",
+    "target_text": "non speravamo di svegliarci oggi",
+    "known_audio_id": "cba42798-7785-4db4-ae04-435912cb3763",
+    "target1_audio_id": "d2502dbf-00d7-4479-bdf5-3d450a7d7fc1",
+    "target2_audio_id": "6d84813f-a52d-438a-b436-4fdb7c00e642"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to wake now",
+    "target_text": "non speravamo di svegliarci adesso",
+    "known_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69",
+    "target1_audio_id": "d881cc07-39b6-411c-bcd5-ccf3852afb03",
+    "target2_audio_id": "0ed7f745-8645-4b14-aff9-9cdbfa85694b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "non speravamo di svegliarci",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "4871c0b9-a0f7-4ead-bb3f-49e4543036f7",
+    "target2_audio_id": "9bb87e68-28b0-41b6-92a3-e5fb7966a538"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "non speravamo di svegliarci",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "4871c0b9-a0f7-4ead-bb3f-49e4543036f7",
+    "target2_audio_id": "9bb87e68-28b0-41b6-92a3-e5fb7966a538"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "3cf32473-ed75-41ea-b14c-b4e3bfc076a6",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "non speravamo di svegliarci",
+    "components": [
+     {
+      "known": "we didn't hope to wake",
+      "target": "non speravamo di svegliarci"
+     }
+    ],
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "4871c0b9-a0f7-4ead-bb3f-49e4543036f7",
+    "target2_audio_id": "9bb87e68-28b0-41b6-92a3-e5fb7966a538",
+    "presentation_audio_id": "522adacd-62e1-41b3-b8e5-4141e3752747"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "non speravamo di svegliarci nel mezzo della notte",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "7c02a80b-8e7f-4489-9e92-7efa5d63066f",
+    "target2_audio_id": "d8f6d910-3a1f-41a3-bfcb-95e6a6b7fa21"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
