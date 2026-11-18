@@ -15694,7 +15694,7 @@
      "phrase_role": "use"
     },
     {
-     "known_text": "ਮੈਨੂੰ ਮੌਕਾ ਪਸੰਦ ਹੈ",
+     "known_text": "ਮੈਂ ਮੌਕਾ ਪਸੰਦ ਕਰਦਾ ਹਾਂ",
      "target_text": "I enjoy the chance",
      "phrase_role": "build"
     }
@@ -15753,8 +15753,8 @@
      "phrase_role": "component"
     },
     {
-     "known_text": "ਮੌਕਾ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਦਾ",
-     "target_text": "the chance to practise speaking",
+     "known_text": "ਮੈਂ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣ ਦੀ ਪ੍ਰੈਕਟਿਸ ਕਰਨ ਦਾ ਮੌਕਾ ਪਸੰਦ ਕਰਦਾ ਹਾਂ",
+     "target_text": "I enjoy the chance to practise speaking English",
      "phrase_role": "build"
     },
     {
@@ -15790,6 +15790,4668 @@
     {
      "known_text": "ਮੈਂ ਪਸੰਦ ਕਰਦਾ ਹਾਂ ਮੌਕਾ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਦਾ ਹੁਣ",
      "target_text": "I enjoy the chance to practise speaking now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 207,
+  "phrases": {
+   "207:1": [
+    {
+     "known_text": "ਤੁਸੀਂ",
+     "target_text": "you've",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕਰ ਲਿਆ",
+     "target_text": "done",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕੁਝ ਨਵਾਂ ਕਰ ਲਿਆ",
+     "target_text": "you've done something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਇੱਥੇ",
+     "target_text": "you've done it here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਬਹੁਤ ਵਧੀਆ",
+     "target_text": "you've done it well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਅੱਜ ਇੱਥੇ",
+     "target_text": "you've done it today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਕੁਝ",
+     "target_text": "you've done something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਸਭ ਕੁਝ",
+     "target_text": "you've done everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਕੁਝ ਮਹੱਤਵਪੂਰਨ",
+     "target_text": "you've done something important",
+     "phrase_role": "use"
+    }
+   ],
+   "207:2": [
+    {
+     "known_text": "ਜੋ ਕਰਨਾ",
+     "target_text": "what to do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਜ਼ਰੂਰੀ ਸੀ",
+     "target_text": "you needed",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਭੁੱਲ ਗਈ ਜੋ ਤੁਹਾਨੂੰ ਕਰਨਾ ਜ਼ਰੂਰੀ ਸੀ",
+     "target_text": "I've forgotten what you needed to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਜਾਣਦੇ ਹੋ ਜੋ ਕਰਨਾ ਜ਼ਰੂਰੀ ਸੀ",
+     "target_text": "know what you needed to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਜੋ ਕਰਨਾ ਜ਼ਰੂਰੀ ਸੀ",
+     "target_text": "I know what you needed to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਜੋ ਕਰਨਾ ਜ਼ਰੂਰੀ ਸੀ",
+     "target_text": "they say what you needed to do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਰ ਲਿਆ ਜੋ ਕਰਨਾ ਜ਼ਰੂਰੀ ਸੀ",
+     "target_text": "you've done what you needed to do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਜੋ ਕਰਨਾ ਜ਼ਰੂਰੀ ਸੀ?",
+     "target_text": "do you know what you needed to do?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਜੋ ਕਰਨਾ ਜ਼ਰੂਰੀ ਸੀ ਇੱਥੇ",
+     "target_text": "I know what you needed to do here",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 208,
+  "phrases": {
+   "208:1": [
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I didn't want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਪੁੱਛਣਾ",
+     "target_text": "to ask",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਤੁਹਾਨੂੰ ਪੁੱਛਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I didn't want to ask you yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਤੁਹਾਨੂੰ",
+     "target_text": "I didn't want to ask you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਹੁਣ",
+     "target_text": "I didn't want to ask now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਅੱਜ",
+     "target_text": "I didn't want to ask today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਹੁਣ ਤੁਹਾਨੂੰ",
+     "target_text": "I didn't want to ask you now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਤੁਹਾਨੂੰ ਕਿਵੇਂ",
+     "target_text": "I didn't want to ask you how",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਤੁਹਾਨੂੰ ਇੱਥੇ",
+     "target_text": "I didn't want to ask you here",
+     "phrase_role": "use"
+    }
+   ],
+   "208:2": [
+    {
+     "known_text": "ਕਿਵੇਂ ਕਹਿਣਾ",
+     "target_text": "how to say",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇਹ",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਇਹ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ",
+     "target_text": "I don't know how to say it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ",
+     "target_text": "I know how to say it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ ਤੁਹਾਡੇ ਨਾਲ",
+     "target_text": "how to say it with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਨਹੀਂ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ",
+     "target_text": "I'm not sure how to say it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਦੱਸ ਸਕਦੇ ਹੋ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ?",
+     "target_text": "can you tell me how to say it?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਭੁੱਲ ਗਿਆ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ",
+     "target_text": "I have forgotten how to say it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ",
+     "target_text": "I didn't want to ask how to say it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਤੁਹਾਨੂੰ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ",
+     "target_text": "I didn't want to ask you how to say it",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 209,
+  "phrases": {
+   "209:1": [
+    {
+     "known_text": "ਬਿਤਾਉਣਾ",
+     "target_text": "spend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਹੋਰ ਸਮਾਂ",
+     "target_text": "more time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to spend more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਇੱਥੇ",
+     "target_text": "spend more time here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they want to spend more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+     "target_text": "do you want to spend more time?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦਾ ਹਾਂ ਅੱਜ",
+     "target_text": "I want to spend more time today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਇੱਥੇ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they want to spend more time here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to spend more time with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਇੱਕ ਦੂਜੇ ਨਾਲ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਾਂ",
+     "target_text": "we want to spend more time together",
+     "phrase_role": "use"
+    }
+   ],
+   "209:2": [
+    {
+     "known_text": "ਮਿਲਣ ਵਿੱਚ",
+     "target_text": "meeting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਗਰੁੱਪ ਵਜੋਂ",
+     "target_text": "as a group",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਅੱਜ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they want to spend more time meeting as a group today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ",
+     "target_text": "spend more time meeting as a group",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦਾ ਹਾਂ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ",
+     "target_text": "I want to spend more time meeting as a group",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ",
+     "target_text": "they want to spend more time meeting as a group",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਉਹ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they say they want to spend more time meeting as a group",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ ਪਸੰਦ ਕਰਦੇ ਹਾਂ",
+     "target_text": "we enjoy meeting as a group",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 210,
+  "phrases": {
+   "210:1": [
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ",
+     "target_text": "they think",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਜ਼ਰੂਰਤ ਹੈ",
+     "target_text": "that we need",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਬਦਲਣ ਦੀ ਲੋੜ ਹੈ",
+     "target_text": "they think that we need to change",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਹੋਰ ਜ਼ਰੂਰਤ ਹੈ",
+     "target_text": "they think that we need more",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਹੋਰ ਸਮਾਂ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "they think that we need more time",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਹੋਰ ਕੋਸ਼ਿਸ਼ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ",
+     "target_text": "they think that we need to try more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਕੁਝ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "they think that we need to do something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਸਮੇਂ ਸਿਰ ਖਤਮ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "they think that we need to finish in time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "they think that we need to spend more time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਸਭ ਕੁਝ ਮੁਕੰਮਲ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "they think that we need to finish everything",
+     "phrase_role": "use"
+    }
+   ],
+   "210:2": [
+    {
+     "known_text": "ਗੱਲ ਕਰਨੀ",
+     "target_text": "discuss",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸਮੱਸਿਆ ਬਾਰੇ",
+     "target_text": "the problem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਅੱਜ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ",
+     "target_text": "we need to discuss the problem today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ",
+     "target_text": "we need to discuss the problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨੀ ਚਾਹੁੰਦੇ ਹਾਂ",
+     "target_text": "we want to discuss the problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨੀ ਚਾਹੁੰਦੇ ਹੋ?",
+     "target_text": "do you want to discuss the problem?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨ ਦਾ ਮੌਕਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want a chance to discuss the problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ",
+     "target_text": "they say we need to discuss the problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਾਨੂੰ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ",
+     "target_text": "they think that we need to discuss the problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦੇ ਸੀ ਕਿ ਅਸੀਂ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰੀਏ",
+     "target_text": "they wanted us to discuss the problem",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 211,
+  "phrases": {
+   "211:1": [
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਦੱਸਿਆ",
+     "target_text": "they told",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਕਿ",
+     "target_text": "us that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਇਹ ਸੱਚ ਹੈ",
+     "target_text": "they told us that it's true",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they told us that they want",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਸੋਚਦੇ ਹਨ",
+     "target_text": "they told us that they think",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਰੁਕਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they told us that they want to stop",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਇੱਥੇ ਆਉਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they told us that they want to come here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਸਮੇਂ ਸਿਰ ਖਤਮ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they told us that they want to finish in time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they told us that they want to spend more time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "they told us that they want to discuss the problem",
+     "phrase_role": "use"
+    }
+   ],
+   "211:2": [
+    {
+     "known_text": "ਉਹ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "they didn't want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸਮਝਾਉਣਾ",
+     "target_text": "to explain",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮਾਫ਼ ਕਰਨਾ ਕਿ ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "I'm sorry that they didn't want to explain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ ਹੁਣ",
+     "target_text": "they didn't want to explain now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ ਇੱਥੇ",
+     "target_text": "they didn't want to explain here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "I think they didn't want to explain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ ਕੁਝ ਵੀ",
+     "target_text": "they didn't want to explain anything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਕਿ ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ?",
+     "target_text": "do you know they didn't want to explain?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ ਇਸ ਸਮੇਂ",
+     "target_text": "they didn't want to explain at the time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "they told us that they didn't want to explain",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 212,
+  "phrases": {
+   "212:1": [
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "they wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੰਗਣੀ",
+     "target_text": "to ask for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਉਹ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "I think that they wanted to ask for help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "they wanted to ask for help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦੇ ਸੀ ਇੱਥੇ",
+     "target_text": "they wanted to ask for help here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦੇ ਸੀ ਅੱਜ",
+     "target_text": "they wanted to ask for help today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਕਿ ਉਹ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "I know they wanted to ask for help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕੁਝ ਮੰਗਣੀ ਚਾਹੁੰਦੇ ਸੀ ਇੱਥੇ",
+     "target_text": "they wanted to ask for something here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "they told us that they wanted to ask for help",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 213,
+  "phrases": {
+   "213:1": [
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ",
+     "target_text": "we don't know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕਿ ਕੀ",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਜਵਾਬ ਕੀ ਹੈ",
+     "target_text": "we don't know what the answer is",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਕੀ ਕਰਨਾ ਹੈ",
+     "target_text": "we don't know what to do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਕੀ ਕਹਿਣਾ ਹੈ",
+     "target_text": "we don't know what to say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਕੀ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "we don't know what they want",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਕੀ ਸੋਚਦੇ ਹਨ",
+     "target_text": "we don't know what they think",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਕੀ ਕਰਨਾ ਹੈ ਇੱਥੇ",
+     "target_text": "we don't know what to do here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਕੀ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "we don't know what they want to do",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਕੀ ਕਹਿਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "we don't know what they want to say",
+     "phrase_role": "use"
+    }
+   ],
+   "213:2": [
+    {
+     "known_text": "ਉਹ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਨ",
+     "target_text": "they're trying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਹਾਸਲ ਕਰਨਾ",
+     "target_text": "to achieve",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕੀ ਹਾਸਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਨ",
+     "target_text": "they're trying to achieve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਉਹ ਕੀ ਹਾਸਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਨ",
+     "target_text": "I know what they're trying to achieve",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਉਹ ਕੀ ਹਾਸਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਨ",
+     "target_text": "do you know what they're trying to achieve?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਕੀ ਹਾਸਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਨ",
+     "target_text": "they told us what they're trying to achieve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਕੀ ਹਾਸਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਨ",
+     "target_text": "we don't know what they're trying to achieve",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਨਹੀਂ ਜਾਣਦੇ ਉਹ ਕੀ ਹਾਸਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਨ ਇੱਥੇ",
+     "target_text": "we don't know what they're trying to achieve here",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 214,
+  "phrases": {
+   "214:1": [
+    {
+     "known_text": "ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "at weekend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇਸ ਵੀਕਐਂਡ",
+     "target_text": "this weekend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਅਗਲੇ ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "next weekend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਵੀਕਐਂਡ ਤੇ ਇੱਥੇ ਸੀ",
+     "target_text": "I was here at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਵੀਕਐਂਡ ਤੇ ਉੱਥੇ ਸੀ?",
+     "target_text": "were you there at weekend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਵੀਕਐਂਡ ਤੇ ਆਉਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to come at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਵੀਕਐਂਡ ਤੇ ਖੁਸ਼ ਸੀ?",
+     "target_text": "were you happy at weekend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਅਗਲੇ ਵੀਕਐਂਡ ਆਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+     "target_text": "do you want to come next weekend?",
+     "phrase_role": "use"
+    }
+   ],
+   "214:2": [
+    {
+     "known_text": "ਚੰਗਾ ਸਮਾਂ",
+     "target_text": "a good time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਬਿਤਾਇਆ",
+     "target_text": "have",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਸਾਰਾ ਦਿਨ ਚੰਗਾ ਸਮਾਂ ਬਿਤਾਇਆ?",
+     "target_text": "did you have a good time all day?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਚੰਗਾ ਸਮਾਂ ਬਿਤਾਇਆ?",
+     "target_text": "did you have a good time?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਸਮਾਂ ਬਿਤਾਇਆ ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "have a good time at weekend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਅੱਜ ਚੰਗਾ ਸਮਾਂ ਬਿਤਾਇਆ?",
+     "target_text": "did you have a good time today?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉੱਥੇ ਚੰਗਾ ਸਮਾਂ ਬਿਤਾਇਆ?",
+     "target_text": "did you have a good time there?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਵੀਕਐਂਡ ਤੇ ਚੰਗਾ ਸਮਾਂ ਬਿਤਾਇਆ?",
+     "target_text": "did you have a good time at weekend?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 215,
+  "phrases": {
+   "215:1": [
+    {
+     "known_text": "ਬਾਹਰ",
+     "target_text": "out",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਗਿਆ",
+     "target_text": "went",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਬਾਹਰ ਗਿਆ",
+     "target_text": "I went out yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਬਾਹਰ ਗਿਆ",
+     "target_text": "I went out",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਾਹਰ ਗਿਆ ਰਾਤ",
+     "target_text": "went out at night",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਰਾਤ ਬਾਹਰ ਗਿਆ",
+     "target_text": "I went out last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੋਸਤਾਂ ਨਾਲ ਬਾਹਰ ਗਿਆ",
+     "target_text": "I went out with friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸ਼ਨੀਵਾਰ ਰਾਤ ਬਾਹਰ ਗਿਆ",
+     "target_text": "I went out on Saturday night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦੋਸਤਾਂ ਨਾਲ ਬਾਹਰ ਗਿਆ ਅੱਜ ਸ਼ਾਮ",
+     "target_text": "I went out with a few friends this evening",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 216,
+  "phrases": {
+   "216:1": [
+    {
+     "known_text": "ਮਿਲਿਆ",
+     "target_text": "saw",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੁਝ ਦੋਸਤਾਂ",
+     "target_text": "a few friends",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਿਆ",
+     "target_text": "I saw a few friends yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਿਆ",
+     "target_text": "I saw a few friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਿਆ ਇੱਥੇ",
+     "target_text": "I saw a few friends here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਿਆ ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "saw a few friends at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਿਆ ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "I saw a few friends at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਿਆ ਕੱਲ੍ਹ ਰਾਤ",
+     "target_text": "I saw a few friends last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਿਆ ਅਤੇ ਬਾਹਰ ਗਿਆ",
+     "target_text": "I saw a few friends and went out",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 217,
+  "phrases": {
+   "217:1": [
+    {
+     "known_text": "ਪਾਣੀ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "need water",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਪਾਣੀ ਇੱਥੇ",
+     "target_text": "water here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਸਿਰਫ਼ ਪਾਣੀ",
+     "target_text": "only water",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਪਾਣੀ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "I need water",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਪਾਣੀ ਚਾਹੁੰਦੇ ਹੋ?",
+     "target_text": "do you want water?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸਿਰਫ਼ ਪਾਣੀ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I only want water",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਪਾਣੀ ਚਾਹੁੰਦੇ ਸਨ",
+     "target_text": "they wanted water",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਇੱਥੇ ਪਾਣੀ ਹੈ?",
+     "target_text": "is there water here?",
+     "phrase_role": "use"
+    }
+   ],
+   "217:2": [
+    {
+     "known_text": "ਗਲਾਸ",
+     "target_text": "glass",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇੱਕ-ਦੋ",
+     "target_text": "or two",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ-ਦੋ ਗਲਾਸ ਚਾਹੁੰਦੀ ਹਾਂ",
+     "target_text": "I want a glass or two",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਸਿਰਫ਼ ਇੱਕ-ਦੋ ਗਲਾਸ ਪਾਣੀ ਚਾਹੁੰਦੇ ਸਨ",
+     "target_text": "they wanted only a glass or two water",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਅੱਜ ਇੱਕ-ਦੋ ਗਲਾਸ ਚਾਹੁੰਦਾ",
+     "target_text": "I'd like a glass or two today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ-ਦੋ ਗਲਾਸ ਪਾਣੀ ਪੀਤਾ",
+     "target_text": "I had a glass or two of water",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 218,
+  "phrases": {
+   "218:1": [
+    {
+     "known_text": "ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ",
+     "target_text": "much",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੀਤਾ",
+     "target_text": "didn't do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਪਿਛਲੇ ਮਹੀਨੇ ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ",
+     "target_text": "I didn't do much last month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ",
+     "target_text": "I didn't do much",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ ਅੱਜ",
+     "target_text": "didn't do much today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਅੱਜ ਮੈਂ ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ",
+     "target_text": "today I didn't do much",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਐਤਵਾਰ ਨੂੰ ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ",
+     "target_text": "I didn't do much on Sunday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ",
+     "target_text": "I didn't do much yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਵੀਕਐਂਡ ਤੇ ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ",
+     "target_text": "I didn't do much at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਅੱਜ ਸਵੇਰੇ ਜ਼ਿਆਦਾ ਕੁਝ ਨਹੀਂ ਕੀਤਾ",
+     "target_text": "I didn't do much this morning",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 219,
+  "phrases": {
+   "219:1": [
+    {
+     "known_text": "ਚੰਗਾ",
+     "target_text": "nice",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਲੱਗਿਆ",
+     "target_text": "it was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਲੋਕਾਂ ਨੂੰ ਮਿਲਣਾ ਚੰਗਾ ਲੱਗਿਆ",
+     "target_text": "it was nice to meet people",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਲੱਗਿਆ ਇੱਥੇ",
+     "target_text": "it was nice here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਲੱਗਿਆ ਆਰਾਮ ਕਰਨਾ",
+     "target_text": "it was nice to relax",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਲੱਗਿਆ ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "it was nice at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਲੱਗਿਆ ਤੁਹਾਡੇ ਨਾਲ ਆਰਾਮ ਕਰਨਾ",
+     "target_text": "it was nice to relax with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਲੱਗਿਆ ਆਰਾਮ ਕਰਨਾ ਕੁਝ ਸਮੇਂ ਲਈ",
+     "target_text": "it was nice to relax for a while",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਲੱਗਿਆ ਆਰਾਮ ਕਰਨਾ ਕੁਝ ਸਮੇਂ ਲਈ ਇੱਥੇ",
+     "target_text": "it was nice to relax for a while here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੁਝ ਦੋਸਤਾਂ ਨੂੰ ਮਿਲਣਾ ਚੰਗਾ ਲੱਗਿਆ",
+     "target_text": "it was nice to see a few friends",
+     "phrase_role": "use"
+    }
+   ],
+   "219:2": [
+    {
+     "known_text": "ਆਰਾਮ ਕਰਨਾ",
+     "target_text": "to relax",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੁਝ ਸਮੇਂ ਲਈ",
+     "target_text": "for a while",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ ਚਾਹੁੰਦੇ ਸੀ",
+     "target_text": "they wanted to relax for a while",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ ਇੱਥੇ",
+     "target_text": "relax for a while here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to relax for a while",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਾਂ",
+     "target_text": "we want to relax for a while",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਚੰਗਾ ਲੱਗਿਆ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ",
+     "target_text": "it was nice to relax for a while",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
+     "target_text": "do you want to relax for a while?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਖਤਮ ਕਰਨ ਤੋਂ ਬਾਅਦ ਮੈਂ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ ਚਾਹਾਂਗਾ",
+     "target_text": "I'd like to relax for a while after we finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਮੀਦ ਕਰਦਾ ਹਾਂ ਕਿ ਅਸੀਂ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰ ਸਕੀਏ",
+     "target_text": "I hope we can relax for a while",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 221,
+  "phrases": {
+   "221:1": [
+    {
+     "known_text": "ਮੈਂ",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਦੇਖੀ",
+     "target_text": "watched",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦੇਖਿਆ",
+     "target_text": "I watched something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਅਤੇ ਫਿਰ",
+     "target_text": "I watched and then",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "I watched at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਦੋਸਤਾਂ ਨਾਲ",
+     "target_text": "I watched with friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਕੱਲ੍ਹ ਰਾਤ",
+     "target_text": "I watched it last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਸ਼ਨੀਵਾਰ ਰਾਤ",
+     "target_text": "I watched Saturday night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਅਤੇ ਫਿਰ ਮੈਂ ਦੇਖੀ",
+     "target_text": "I watched and then I watched",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਅੱਜ ਸ਼ਾਮ",
+     "target_text": "I watched this evening",
+     "phrase_role": "build"
+    }
+   ],
+   "221:2": [
+    {
+     "known_text": "ਮੈਂ ਫੁੱਟਬਾਲ ਦੇਖੀ",
+     "target_text": "I watched football",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਫੁੱਟਬਾਲ ਦੋਸਤਾਂ ਨਾਲ",
+     "target_text": "football with friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਫੁੱਟਬਾਲ ਦੇਖੀ ਵੀਕਐਂਡ ਤੇ",
+     "target_text": "I watched football at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਫੁੱਟਬਾਲ ਦੇਖੀ ਕੱਲ੍ਹ ਰਾਤ",
+     "target_text": "I watched football last night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਫੁੱਟਬਾਲ ਦੇਖੀ ਦੋਸਤਾਂ ਨਾਲ",
+     "target_text": "I watched football with friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਫੁੱਟਬਾਲ ਦੇਖੀ ਅਤੇ ਫਿਰ ਮੈਂ ਦੇਖੀ",
+     "target_text": "I watched football and then I watched",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਫੁੱਟਬਾਲ ਪਸੰਦ ਕਰਦਾ ਹਾਂ",
+     "target_text": "I enjoy the football",
+     "phrase_role": "build"
+    }
+   ],
+   "221:3": [
+    {
+     "known_text": "ਇੱਕ ਫ਼ਿਲਮ",
+     "target_text": "a film",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਫ਼ਿਲਮ ਅਤੇ ਫਿਰ",
+     "target_text": "film and then",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਦੇਖੀ ਇੱਕ ਫ਼ਿਲਮ",
+     "target_text": "I watched a film",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਇੱਕ ਫ਼ਿਲਮ ਦੇਖਣੀ ਚਾਹੁੰਦੇ ਸਨ",
+     "target_text": "they wanted to see a film",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਵੀਕਐਂਡ ਤੇ ਇੱਕ ਫ਼ਿਲਮ ਦੇਖੀ",
+     "target_text": "I watched a film at weekend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਫ਼ਿਲਮ ਦੇਖੀ ਦੋਸਤਾਂ ਨਾਲ",
+     "target_text": "I watched a film with friends",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਫੁੱਟਬਾਲ ਦੇਖੀ ਅਤੇ ਫਿਰ ਇੱਕ ਫ਼ਿਲਮ ਦੇਖੀ",
+     "target_text": "I watched football and then I watched a film",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 222,
+  "phrases": {
+   "222:1": [
+    {
+     "known_text": "ਉਹ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "he's trying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਦੱਸਣਾ",
+     "target_text": "to tell me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਉਹ ਮੈਨੂੰ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "I think that he's trying to tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਹੁਣ",
+     "target_text": "he's trying to tell me now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਕੀ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ?",
+     "target_text": "he's trying to tell me what?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਕੁਝ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "he's trying to tell me something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਕੁਝ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਇੱਥੇ",
+     "target_text": "he's trying to tell me something here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਅਤੇ ਫਿਰ ਜਾਵੇਗਾ",
+     "target_text": "he's trying to tell me and then leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਕੁਝ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਅੱਜ",
+     "target_text": "he's trying to tell me something today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਯਕੀਨ ਨਹੀਂ ਉਹ ਮੈਨੂੰ ਕੀ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "I'm not sure what he's trying to tell me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਜਵਾਬ ਕੀ ਹੈ",
+     "target_text": "he's trying to tell me what the answer is",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਕਿਸੇ ਹੋਰ ਗੱਲ ਬਾਰੇ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "he's trying to tell me about something else",
+     "phrase_role": "use"
+    }
+   ],
+   "222:2": [
+    {
+     "known_text": "ਕੀ",
+     "target_text": "what",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "he wants",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਪਤਾ ਹੈ ਕਿ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "I know what he wants",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ ਇੱਥੇ",
+     "target_text": "I know what he wants here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ?",
+     "target_text": "do you know what he wants?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਨ੍ਹਾਂ ਨੇ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "they told us what he wants",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "we don't know what he wants",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "I think I know what he wants",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਦੱਸ ਸਕਦੇ ਹੋ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ?",
+     "target_text": "can you tell me what he wants?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਮੈਨੂੰ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਕਿ ਉਹ ਕੀ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "he's trying to tell me what he wants",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 223,
+  "phrases": {
+   "223:1": [
+    {
+     "known_text": "ਉਹ ਜਾਣ ਵਾਲਾ ਹੈ",
+     "target_text": "he's going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਪੁੱਛੇਗਾ",
+     "target_text": "ask",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਅੱਜ ਤੁਹਾਨੂੰ ਪੁੱਛੇਗਾ",
+     "target_text": "he's going to ask you today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਪੁੱਛੇਗਾ",
+     "target_text": "he's going to ask you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਪੁੱਛੇਗਾ ਇੱਥੇ",
+     "target_text": "he's going to ask you here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਕੁਝ ਪੁੱਛੇਗਾ",
+     "target_text": "he's going to ask something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕੱਲ੍ਹ ਤੁਹਾਨੂੰ ਪੁੱਛੇਗਾ",
+     "target_text": "he's going to ask you tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਪੁੱਛੇਗਾ",
+     "target_text": "he's going to ask you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਹਾਨੂੰ ਪਤਾ ਉਹ ਕੀ ਪੁੱਛੇਗਾ?",
+     "target_text": "do you know what he's going to ask?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਪੁੱਛੇਗਾ ਕੱਲ੍ਹ ਰਾਤ",
+     "target_text": "he's going to ask you tomorrow night",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਸਵਾਲ ਪੁੱਛੇਗਾ",
+     "target_text": "he's going to ask questions",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 224,
+  "phrases": {
+   "224:1": [
+    {
+     "known_text": "ਹੁਣੇ",
+     "target_text": "just",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸ਼ੁਰੂ ਕੀਤਾ",
+     "target_text": "started",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਹੁਣੇ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖਣਾ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ",
+     "target_text": "I've just started to learn English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ",
+     "target_text": "he just started",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਇੱਥੇ",
+     "target_text": "he just started here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਸਿੱਖਣਾ",
+     "target_text": "just started to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਉਸਨੇ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ",
+     "target_text": "they say he just started",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਸਿੱਖਣਾ",
+     "target_text": "I've just started to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਸਿੱਖਣਾ ਅੱਜ",
+     "target_text": "he just started to learn today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 225,
+  "phrases": {
+   "225:1": [
+    {
+     "known_text": "ਉਹ ਦੇ ਦਿੰਦਾ",
+     "target_text": "he would give",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਹਾਨੂੰ ਜਵਾਬ",
+     "target_text": "you an answer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ",
+     "target_text": "they say he would give you an answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਹੁਣ",
+     "target_text": "he would give you an answer now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਇੱਥੇ",
+     "target_text": "he would give you an answer here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਅੱਜ",
+     "target_text": "he would give you an answer today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਕੱਲ੍ਹ",
+     "target_text": "he would give you an answer tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਜੇ ਉਹ ਕਰ ਸਕਦਾ",
+     "target_text": "he would give you an answer if he could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਹਾਡੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ",
+     "target_text": "he would give you an answer before you leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਮੀਦ ਹੈ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ",
+     "target_text": "I hope he would give you an answer",
+     "phrase_role": "use"
+    }
+   ],
+   "225:2": [
+    {
+     "known_text": "ਜੇ",
+     "target_text": "if",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕਰ ਸਕਦਾ",
+     "target_text": "he could",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਮੀਦ ਹੈ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਜੇ ਉਹ ਕਰ ਸਕਦਾ",
+     "target_text": "I hope he would give you an answer if he could",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮਦਦ ਕਰਦਾ ਜੇ ਉਹ ਕਰ ਸਕਦਾ",
+     "target_text": "help you if he could",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਜੇ ਉਹ ਕਰ ਸਕਦਾ",
+     "target_text": "he would give you an answer if he could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਅੱਜ ਜੇ ਉਹ ਕਰ ਸਕਦਾ",
+     "target_text": "he would give you an answer today if he could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਜੇ ਉਹ ਕਰ ਸਕਦਾ",
+     "target_text": "they say he would give you an answer if he could",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 226,
+  "phrases": {
+   "226:1": [
+    {
+     "known_text": "ਉਹ ਬੰਦਾ",
+     "target_text": "that man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ",
+     "target_text": "man is trying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਇੱਥੇ ਹੈ ਹੁਣ",
+     "target_text": "man is here now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਸ ਬੰਦੇ ਨੂੰ ਜਾਣਦੇ ਹੋ?",
+     "target_text": "do you know that man?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਮੈਨੂੰ ਦੱਸਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "man is trying to tell me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਤੁਹਾਡੀ ਮਦਦ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "that man wants to help you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "that man wants to tell something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਅੱਜ ਬੰਦੇ ਨੂੰ ਮਿਲੀ",
+     "target_text": "I saw the man today",
+     "phrase_role": "build"
+    }
+   ],
+   "226:2": [
+    {
+     "known_text": "ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "is trying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਮਦਦ ਕਰਨ",
+     "target_text": "to help me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਹੁਣ ਮੇਰੀ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "the man is trying to help me now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਮੇਰੀ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "man is trying to help me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੇਰੀ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "that man is trying to help me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਮੇਰੀ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਇੱਥੇ",
+     "target_text": "man is trying to help me here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੇਰੀ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ ਅੱਜ",
+     "target_text": "that man is trying to help me today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਕਿ ਉਹ ਬੰਦਾ ਮੇਰੀ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹੈ",
+     "target_text": "I know that man is trying to help me",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 227,
+  "phrases": {
+   "227:1": [
+    {
+     "known_text": "ਨਵਾਂ ਵਿਚਾਰ",
+     "target_text": "a new idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੁਝ ਨਵਾਂ",
+     "target_text": "something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਨਵਾਂ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੁਝ ਨਵਾਂ ਚੰਗਾ ਹੈ",
+     "target_text": "something new is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੁਝ ਨਵਾਂ ਸਿੱਖਣਾ",
+     "target_text": "something new to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਨਵਾਂ ਸਿੱਖਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to learn something new",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਕੁਝ ਨਵਾਂ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "that man wants to tell me something new",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਕੁਝ ਨਵਾਂ ਦੱਸੇਗਾ",
+     "target_text": "that man is going to tell me something new",
+     "phrase_role": "use"
+    }
+   ],
+   "227:2": [
+    {
+     "known_text": "ਜਾਣ ਵਾਲਾ ਹੈ",
+     "target_text": "is going to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਦੱਸੇਗਾ",
+     "target_text": "tell me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਕੁਝ ਦੱਸੇਗਾ",
+     "target_text": "that man is going to tell me something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਦੱਸੇਗਾ",
+     "target_text": "that man is going to tell me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਦੱਸੇਗਾ ਕੁਝ ਨਵਾਂ",
+     "target_text": "is going to tell me something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਦੱਸੇਗਾ ਕੱਲ੍ਹ",
+     "target_text": "that man is going to tell me tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਦੱਸੇਗਾ ਸਭ ਕੁਝ",
+     "target_text": "that man is going to tell me everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਕੁਝ ਨਵਾਂ ਦੱਸੇਗਾ",
+     "target_text": "that man is going to tell me something new",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਕੀ ਦੱਸੇਗਾ?",
+     "target_text": "do you know what that man is going to tell me?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਮੈਨੂੰ ਦੱਸੇਗਾ ਕੀ ਹੋਣ ਵਾਲਾ ਸੀ",
+     "target_text": "that man is going to tell me what was going to happen",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਦੱਸੇਗਾ ਕਿਵੇਂ ਕਹਿਣਾ ਹੈ",
+     "target_text": "is going to tell me how to say it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਕਿਸੇ ਵੱਖਰੀ ਗੱਲ ਬਾਰੇ ਦੱਸੇਗਾ",
+     "target_text": "is going to tell me about something different",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 228,
+  "phrases": {
+   "228:1": [
+    {
+     "known_text": "ਉਹ ਬੰਦਾ",
+     "target_text": "that man",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ",
+     "target_text": "has just started",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਸ ਬੰਦੇ ਨੇ ਹੁਣੇ ਬੋਲਣਾ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ",
+     "target_text": "that man has just started to speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ ਇੱਥੇ",
+     "target_text": "that man has just started here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ ਅੱਜ",
+     "target_text": "that man has just started today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ ਸਿੱਖਣਾ",
+     "target_text": "that man has just started to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ ਦੱਸਣਾ",
+     "target_text": "that man has just started to explain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਕਿ ਉਹ ਬੰਦਾ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ?",
+     "target_text": "do you know that man has just started?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸ ਬੰਦੇ ਨੇ ਹੁਣੇ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣਾ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ",
+     "target_text": "that man has just started to speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿ ਉਹ ਬੰਦਾ ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ ਹੈ",
+     "target_text": "I'm happy that man has just started",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 229,
+  "phrases": {
+   "229:1": [
+    {
+     "known_text": "ਉਹ ਔਰਤ",
+     "target_text": "that woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਔਰਤ ਇੱਥੇ",
+     "target_text": "woman here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਔਰਤ ਮਦਦ ਕਰ ਸਕਦੀ ਹੈ",
+     "target_text": "woman could help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਇੱਥੇ ਹੈ",
+     "target_text": "that woman is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਮਦਦ ਕਰ ਸਕਦੀ ਹੈ",
+     "target_text": "that woman could help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਸ ਔਰਤ ਨੂੰ ਜਾਣਦੇ ਹੋ?",
+     "target_text": "do you know that woman?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਨਾ ਚਾਹੁੰਦੀ ਹੈ",
+     "target_text": "that woman wants to help you",
+     "phrase_role": "use"
+    }
+   ],
+   "229:2": [
+    {
+     "known_text": "ਉਹ ਔਰਤ",
+     "target_text": "that woman",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ",
+     "target_text": "would help you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਮੀਦ ਹੈ ਕਿ ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ",
+     "target_text": "I hope that woman would help you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ",
+     "target_text": "that woman would help you if",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਹੁਣ",
+     "target_text": "that woman would help you now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਇੱਥੇ",
+     "target_text": "that woman would help you here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਅੱਜ",
+     "target_text": "that woman would help you today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਕੱਲ੍ਹ",
+     "target_text": "that woman would help you tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ",
+     "target_text": "that woman would help you if she could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ",
+     "target_text": "I think that woman would help you",
+     "phrase_role": "use"
+    }
+   ],
+   "229:3": [
+    {
+     "known_text": "ਜੇ",
+     "target_text": "if",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕਰ ਸਕਦੀ",
+     "target_text": "she could",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਮੀਦ ਹੈ ਕਿ ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ",
+     "target_text": "I hope that woman would help you if she could",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ",
+     "target_text": "help you if she could",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ",
+     "target_text": "that woman would help you if she could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ ਇੱਥੇ",
+     "target_text": "that woman would help you if she could here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਅੱਜ ਜੇ ਉਹ ਕਰ ਸਕਦੀ",
+     "target_text": "that woman would help you today if she could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ ਅੱਜ",
+     "target_text": "that woman would help you if she could today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ",
+     "target_text": "they say that woman would help you if she could",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 230,
+  "phrases": {
+   "230:1": [
+    {
+     "known_text": "ਨੌਜਵਾਨ ਬੰਦਾ",
+     "target_text": "young man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨੌਜਵਾਨ ਔਰਤ",
+     "target_text": "young woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨੌਜਵਾਨ ਦੋਸਤ",
+     "target_text": "young friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਨੌਜਵਾਨ ਹੈ",
+     "target_text": "that man is young",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਨੌਜਵਾਨ ਬੰਦੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know a young man",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਵੀ ਨੌਜਵਾਨ ਹੈ",
+     "target_text": "that woman is young",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਨੌਜਵਾਨ ਦੋਸਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know a young friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਨੌਜਵਾਨ ਹੈ ਅਤੇ ਸਿੱਖਣਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "young and wants to learn",
+     "phrase_role": "use"
+    }
+   ],
+   "230:2": [
+    {
+     "known_text": "ਜੋ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "who wants",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ",
+     "target_text": "to work with you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਮੈਂ ਉਸ ਬੰਦੇ ਨੂੰ ਜਾਣਦੀ ਹਾਂ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "they say I know the man who wants to work with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "man who wants to work with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨੌਜਵਾਨ ਬੰਦਾ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "young man who wants to work with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦੀ ਹੈ",
+     "target_text": "that woman who wants to work with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ ਇੱਥੇ ਹੈ",
+     "target_text": "man who wants to work with you is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਦੋਸਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "I know a friend who wants to work with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਨੌਜਵਾਨ ਬੰਦੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "I know a young man who wants to work with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦੇ ਹੋ ਜੋ ਤੁਹਾਡੇ ਨਾਲ ਕੰਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹੈ?",
+     "target_text": "do you know anyone who wants to work with you?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 231,
+  "phrases": {
+   "231:1": [
+    {
+     "known_text": "ਬਜ਼ੁਰਗ ਬੰਦਾ",
+     "target_text": "old man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਜ਼ੁਰਗ ਔਰਤ",
+     "target_text": "old woman",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਜ਼ੁਰਗ ਦੋਸਤ",
+     "target_text": "old friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨੌਜਵਾਨ ਅਤੇ ਬਜ਼ੁਰਗ",
+     "target_text": "young and old",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਬਜ਼ੁਰਗ ਹੈ",
+     "target_text": "that man is old",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਬਜ਼ੁਰਗ ਬੰਦੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know an old man",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਬਜ਼ੁਰਗ ਹੈ",
+     "target_text": "that woman is old",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਬਜ਼ੁਰਗ ਦੋਸਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know an old friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਸਾਨੂੰ ਉਸ ਬਜ਼ੁਰਗ ਬੰਦੇ ਦੀ ਮਦਦ ਕਰਨ ਦੀ ਲੋੜ ਹੈ",
+     "target_text": "we need to help that old man",
+     "phrase_role": "use"
+    }
+   ],
+   "231:2": [
+    {
+     "known_text": "ਜੋ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "who wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮਦਦ ਮੰਗਣੀ",
+     "target_text": "to ask for help",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਮੈਂ ਇੱਕ ਬਜ਼ੁਰਗ ਬੰਦੇ ਨੂੰ ਜਾਣਦੀ ਹਾਂ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I think that I know an old man who wanted to ask for help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੰਦਾ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "man who wanted to ask for help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਜ਼ੁਰਗ ਬੰਦਾ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "old man who wanted to ask for help",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦੀ ਸੀ",
+     "target_text": "that woman who wanted to ask for help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬੰਦਾ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ ਇੱਥੇ ਹੈ",
+     "target_text": "man who wanted to ask for help is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਦੋਸਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I know a friend who wanted to ask for help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਬਜ਼ੁਰਗ ਬੰਦੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I know an old man who wanted to ask for help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦੇ ਹੋ ਜੋ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ?",
+     "target_text": "do you know anyone who wanted to ask for help?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 232,
+  "phrases": {
+   "232:1": [
+    {
+     "known_text": "ਜੋ ਯਾਦ ਕਰ ਸਕਦੀ",
+     "target_text": "who can remember",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਜਵਾਬ",
+     "target_text": "the answer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇੱਕ ਬਜ਼ੁਰਗ ਔਰਤ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ",
+     "target_text": "an old woman who can remember the answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ",
+     "target_text": "I know who can remember the answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਜ਼ੁਰਗ ਔਰਤ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ",
+     "target_text": "old woman who can remember the answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਬਜ਼ੁਰਗ ਬੰਦਾ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ",
+     "target_text": "that old man who can remember the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਦੋਸਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ",
+     "target_text": "I know a friend who can remember the answer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬਜ਼ੁਰਗ ਔਰਤ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ ਇੱਥੇ ਹੈ",
+     "target_text": "old woman who can remember the answer is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦੇ ਹੋ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ?",
+     "target_text": "do you know anyone who can remember the answer?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਬਜ਼ੁਰਗ ਔਰਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੂੰ ਜਵਾਬ ਯਾਦ ਹੈ",
+     "target_text": "I know an old woman who can remember the answer",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 233,
+  "phrases": {
+   "233:1": [
+    {
+     "known_text": "ਮੇਰੀ ਭੈਣ",
+     "target_text": "my sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਤੁਹਾਡੀ ਭੈਣ",
+     "target_text": "your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਭੈਣ ਇੱਥੇ ਹੈ",
+     "target_text": "my sister is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਹਾਡੀ ਭੈਣ ਇੱਥੇ ਹੈ?",
+     "target_text": "is your sister here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਮੇਰੀ ਭੈਣ ਨੂੰ ਜਾਣਦੇ ਹੋ?",
+     "target_text": "do you know my sister?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਮੇਰੀ ਭੈਣ ਹੈ",
+     "target_text": "that woman is my sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਹਾਨੂੰ ਆਪਣੀ ਭੈਣ ਬਾਰੇ ਚਿੰਤਾ ਨਹੀਂ ਕਰਨੀ ਚਾਹੀਦੀ",
+     "target_text": "you shouldn't worry about your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਮੀਦ ਹੈ ਕਿ ਤੁਹਾਡੀ ਭੈਣ ਠੀਕ ਹੈ",
+     "target_text": "I hope that your sister is okay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਹਾਡੀ ਭੈਣ ਦੀ ਮਦਦ ਕਰਨਾ ਜ਼ਰੂਰੀ ਹੈ",
+     "target_text": "it's important to help your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਭੈਣ ਕਿੱਥੇ ਹੈ?",
+     "target_text": "where is my sister?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਆਓ ਤੁਹਾਡੀ ਭੈਣ ਨਾਲ ਗੱਲ ਕਰੀਏ",
+     "target_text": "let's talk with your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਮੇਰੀ ਭੈਣ ਵਰਗੇ ਹੋ",
+     "target_text": "you're like my sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਆਪਣੀ ਭੈਣ ਵਰਗੇ ਹੋ",
+     "target_text": "you're like your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਮੇਰੀ ਭੈਣ ਨੂੰ ਕਿਤੇ ਦੇਖਿਆ ਹੈ?",
+     "target_text": "have you seen my sister anywhere?",
+     "phrase_role": "use"
+    }
+   ],
+   "233:2": [
+    {
+     "known_text": "ਜੋ ਜਾਣਦੀ ਹੈ",
+     "target_text": "who knows",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਹਾਡੀ ਭੈਣ",
+     "target_text": "your sister",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਮੈਂ ਇੱਕ ਨੌਜਵਾਨ ਔਰਤ ਨੂੰ ਜਾਣਦੀ ਹਾਂ ਜੋ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦੀ ਹੈ",
+     "target_text": "they say I know a young woman who knows your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨੌਜਵਾਨ ਔਰਤ ਜੋ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦੀ ਹੈ",
+     "target_text": "young woman who knows your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦੀ ਹੈ",
+     "target_text": "I know someone who knows your sister",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਦੋਸਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦੀ ਹੈ",
+     "target_text": "I know a friend who knows your sister",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਜੋ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦੀ ਹੈ ਇੱਥੇ ਹੈ",
+     "target_text": "that woman who knows your sister is here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦੀ ਹੈ ਇੱਥੇ",
+     "target_text": "I know someone who knows your sister here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਨੌਜਵਾਨ ਔਰਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਤੁਹਾਡੀ ਭੈਣ ਨੂੰ ਜਾਣਦੀ ਹੈ",
+     "target_text": "I know a young woman who knows your sister",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 235,
+  "phrases": {
+   "235:1": [
+    {
+     "known_text": "ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ",
+     "target_text": "I met someone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਜਿਸਨੇ ਕਿਹਾ",
+     "target_text": "who said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਇਹ ਸੱਚ ਹੈ",
+     "target_text": "I met someone who said that it's true",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕੁਝ",
+     "target_text": "I met someone who said something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I met someone who said that he wanted",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I met someone who said that he wanted to tell",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਜਾਣਨਾ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I met someone who said that he wanted to know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਇੱਥੇ ਆਉਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I met someone who said that he wanted to come here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਮਦਦ ਮੰਗਣੀ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I met someone who said that he wanted to ask for help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਸਮਝਾਉਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I met someone who said that he didn't want to explain",
+     "phrase_role": "use"
+    }
+   ],
+   "235:2": [
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "he wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ",
+     "target_text": "to tell you something",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਕਹਿੰਦੇ ਹਨ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਨਵਾਂ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "they say he wanted to tell you something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ ਹੁਣ",
+     "target_text": "he wanted to tell you something now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ ਪਰ ਨਹੀਂ",
+     "target_text": "he wanted to tell you something but not",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ ਕੱਲ੍ਹ",
+     "target_text": "he wanted to tell you something yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ?",
+     "target_text": "do you know that he wanted to tell you something?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕਿਸੇ ਨੇ ਕਿਹਾ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "someone said that he wanted to tell you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਕੱਲ੍ਹ ਰਾਤ ਮਿਲਿਆ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਣਾ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I met someone who said that he wanted to tell you something last night",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 236,
+  "phrases": {
+   "236:1": [
+    {
+     "known_text": "ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know someone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਜਿਸਨੇ ਕਿਹਾ",
+     "target_text": "who said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਇਹ ਸੱਚ ਹੈ",
+     "target_text": "I know someone who said that it's true",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕੁਝ",
+     "target_text": "I know someone who said something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਚਾਹੁੰਦੀ ਸੀ",
+     "target_text": "I know someone who said that she wanted",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਆਉਣਾ ਚਾਹੁੰਦੀ ਸੀ",
+     "target_text": "I know someone who said that she wanted to come",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਦੱਸਣਾ ਚਾਹੁੰਦੀ ਸੀ",
+     "target_text": "I know someone who said that she wanted to explain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਮਦਦ ਕਰੇਗੀ",
+     "target_text": "I know someone who said that she was going to try to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਸਮੱਸਿਆ ਬਾਰੇ ਗੱਲ ਕਰਨਾ ਚਾਹੁੰਦੀ ਸੀ",
+     "target_text": "I know someone who said that she wanted to discuss the problem",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 237,
+  "phrases": {
+   "237:1": [
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "he wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕਿ ਮੈਂ ਦੱਸਾਂ",
+     "target_text": "me to tell you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਮੈਂ ਤੁਹਾਨੂੰ ਸੱਚ ਦੱਸਾਂ",
+     "target_text": "he wanted me to tell you the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਮੈਂ ਦੱਸਾਂ ਹੁਣ",
+     "target_text": "he wanted me to tell you now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਮੈਂ ਤੁਹਾਨੂੰ ਦੱਸਾਂ ਇੱਥੇ",
+     "target_text": "he wanted me to tell you here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਮੈਂ ਤੁਹਾਨੂੰ ਦੱਸਾਂ ਕੱਲ੍ਹ",
+     "target_text": "he wanted me to tell you tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਮੈਂ ਤੁਹਾਨੂੰ ਕੁਝ ਦੱਸਾਂ",
+     "target_text": "he wanted me to tell you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਮੈਂ ਤੁਹਾਨੂੰ ਸਭ ਕੁਝ ਦੱਸਾਂ",
+     "target_text": "he wanted me to tell you everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਮੈਂ ਤੁਹਾਨੂੰ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਦੱਸਾਂ",
+     "target_text": "he wanted me to tell you before you leave",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 238,
+  "phrases": {
+   "238:1": [
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "he wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਮੈਨੂੰ ਦੱਸਦੇ",
+     "target_text": "you to tell me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਮੈਨੂੰ ਸੱਚ ਦੱਸਦੇ",
+     "target_text": "he wanted you to tell me the truth",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਮੈਨੂੰ ਦੱਸਦੇ ਹੁਣ",
+     "target_text": "he wanted you to tell me now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਮੈਨੂੰ ਦੱਸਦੇ ਇੱਥੇ",
+     "target_text": "he wanted you to tell me here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਮੈਨੂੰ ਦੱਸਦੇ ਅੱਜ",
+     "target_text": "he wanted you to tell me today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਕੱਲ੍ਹ ਮੈਨੂੰ ਦੱਸਦੇ",
+     "target_text": "he wanted you to tell me yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਮੈਨੂੰ ਕੁਝ ਦੱਸਦੇ",
+     "target_text": "he wanted you to tell me something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਮੈਨੂੰ ਸਭ ਕੁਝ ਦੱਸਦੇ",
+     "target_text": "he wanted you to tell me everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਤੁਸੀਂ ਮੈਨੂੰ ਦੱਸਦੇ ਸਭ ਕੁਝ ਅੱਜ",
+     "target_text": "he wanted you to tell me everything today",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 239,
+  "phrases": {
+   "239:2": [
+    {
+     "known_text": "ਪਸੰਦ ਹੈ",
+     "target_text": "likes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਪੜ੍ਹਨਾ",
+     "target_text": "to read",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਮੇਰੀ ਮਾਂ ਨੂੰ ਪੜ੍ਹਨਾ ਪਸੰਦ ਹੈ",
+     "target_text": "I think that my mother likes to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਦੋਸਤ ਪੜ੍ਹਨਾ ਪਸੰਦ ਹੈ",
+     "target_text": "friend likes to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਮਾਂ ਪੜ੍ਹਨਾ ਪਸੰਦ ਕਰਦੀ ਹੈ",
+     "target_text": "my mother likes to read",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੇਰਾ ਦੋਸਤ ਪੜ੍ਹਨਾ ਪਸੰਦ ਕਰਦਾ ਹੈ",
+     "target_text": "my friend likes to read",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਭੈਣ ਪੜ੍ਹਨਾ ਪਸੰਦ ਕਰਦੀ ਹੈ",
+     "target_text": "my sister likes to read",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਔਰਤ ਪੜ੍ਹਨਾ ਪਸੰਦ ਕਰਦੀ ਹੈ",
+     "target_text": "that woman likes to read",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਹਾਡੀ ਮਾਂ ਪੜ੍ਹਨਾ ਪਸੰਦ ਹੈ",
+     "target_text": "your mother likes to read",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਪੜ੍ਹਨਾ ਪਸੰਦ ਹੈ",
+     "target_text": "he likes to read",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਮਾਂ ਨੂੰ ਪੜ੍ਹਨਾ ਪਸੰਦ ਹੈ ਕਿਉਂਕਿ ਇਹ ਦਿਲਚਸਪ ਹੈ",
+     "target_text": "my mother likes to read because it's interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਭੈਣ ਨੂੰ ਮੇਰੇ ਭਰਾ ਨਾਲੋਂ ਜ਼ਿਆਦਾ ਪੜ੍ਹਨਾ ਪਸੰਦ ਹੈ",
+     "target_text": "my sister likes to read more than my brother",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 241,
+  "phrases": {
+   "241:1": [
+    {
+     "known_text": "ਨਹੀਂ ਚਾਹੁੰਦਾ",
+     "target_text": "don't want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਦੇਣਾ ਉਸਨੂੰ",
+     "target_text": "to give it to him",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਉਸਨੂੰ ਇਹ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ",
+     "target_text": "we don't want to give it to him",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਸਨੂੰ ਇਹ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+     "target_text": "I don't want to give it to him",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਸਨੂੰ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਹੁਣ",
+     "target_text": "don't want to give it to him now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਸਨੂੰ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦੇ?",
+     "target_text": "don't you want to give it to him?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਸਨੂੰ ਹੁਣ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+     "target_text": "I don't want to give it to him yet",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਸਨੂੰ ਕੁਝ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਅੱਜ",
+     "target_text": "I don't want to give it to him today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਸਨੂੰ ਇਹ ਦੇਣਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਇੱਥੇ",
+     "target_text": "I don't want to give it to him here",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 243,
+  "phrases": {
+   "243:1": [
+    {
+     "known_text": "ਖਾਣ ਲਈ",
+     "target_text": "to eat",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਖਾਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+     "target_text": "do you want to eat?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਖਾਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to eat something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੁਝ ਖਾਣ ਲਈ ਮੰਗਣਾ",
+     "target_text": "ask for something to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕੁਝ ਖਾਣਾ ਚਾਹੁੰਦਾ ਹੈ",
+     "target_text": "he wants to eat something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਖਾਣਾ ਚਾਹੁੰਦਾ ਹਾਂ ਅੱਜ",
+     "target_text": "I want to eat something today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਖਾਣ ਲਈ ਕੁਝ ਮੰਗਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to ask for something to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਖਾਣਾ ਚਾਹੁੰਦੀ ਹੈ",
+     "target_text": "she wants to eat",
+     "phrase_role": "build"
+    }
+   ],
+   "243:2": [
+    {
+     "known_text": "ਮੰਗਣ ਵਾਲਾ ਹਾਂ",
+     "target_text": "going to ask for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹੀ ਚੀਜ਼",
+     "target_text": "the same thing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੱਲ੍ਹ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲਾ ਹਾਂ",
+     "target_text": "I'm going to ask for the same thing tomorrow",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲਾ ਹਾਂ ਇੱਥੇ",
+     "target_text": "going to ask for the same thing here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲਾ ਹਾਂ ਅੱਜ",
+     "target_text": "going to ask for the same thing today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲਾ ਹਾਂ ਕੱਲ੍ਹ",
+     "target_text": "going to ask for the same thing tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਖਾਣ ਲਈ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲਾ ਹਾਂ",
+     "target_text": "I'm going to ask for the same thing to eat",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲਾ ਹਾਂ ਅੱਜ ਸ਼ਾਮ",
+     "target_text": "going to ask for the same thing this evening",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਮੈਂ ਉਹੀ ਚੀਜ਼ ਮੰਗਣ ਵਾਲਾ ਹਾਂ",
+     "target_text": "I think that I'm going to ask for the same thing",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 244,
+  "phrases": {
+   "244:1": [
+    {
+     "known_text": "ਸਿੱਖ ਲਿਆ ਹੈ",
+     "target_text": "learnt already",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਬਹੁਤ ਕੁਝ",
+     "target_text": "a lot",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਅੱਜ ਪਹਿਲਾਂ ਤੋਂ ਬਹੁਤ ਕੁਝ ਸਿੱਖ ਲਿਆ ਹੈ",
+     "target_text": "I've learnt a lot already today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਹੁਤ ਕੁਝ ਸਿੱਖ ਲਿਆ ਹੈ ਹੁਣ",
+     "target_text": "learnt a lot already now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਹੁਤ ਕੁਝ ਸਿੱਖ ਲਿਆ ਹੈ ਇੱਥੇ",
+     "target_text": "learnt a lot already here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਪਹਿਲਾਂ ਤੋਂ ਬਹੁਤ ਕੁਝ ਸਿੱਖ ਲਿਆ ਹੈ",
+     "target_text": "I've learnt a lot already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਬਹੁਤ ਕੁਝ ਸਿੱਖ ਲਿਆ ਹੈ",
+     "target_text": "you've learnt a lot already",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਬਹੁਤ ਕੁਝ ਸਿੱਖ ਲਿਆ ਹੈ?",
+     "target_text": "have you learnt a lot already?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਮੈਂ ਪਹਿਲਾਂ ਤੋਂ ਬਹੁਤ ਕੁਝ ਸਿੱਖ ਲਿਆ ਹੈ",
+     "target_text": "I think that I've learnt a lot already",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 245,
+  "phrases": {
+   "245:1": [
+    {
+     "known_text": "ਖੁਸ਼ ਹਾਂ",
+     "target_text": "happy with",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਹੈ",
+     "target_text": "how much I've done",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿ ਮੈਂ ਅੱਜ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਹੈ",
+     "target_text": "I'm happy with how much I've done today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿ ਮੈਂ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਹੈ",
+     "target_text": "I'm happy with how much I've done",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਖੁਸ਼ ਹਾਂ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਅੱਜ",
+     "target_text": "happy with how much I've done today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਖੁਸ਼ ਹਾਂ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਹੁਣ ਤੱਕ",
+     "target_text": "happy with how much I've done so far",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੇਰੀ ਮਾਂ ਖੁਸ਼ ਹੈ ਕਿ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ",
+     "target_text": "my mother is happy with how much I've done",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਇੱਕ ਛੋਟੇ ਸਮੇਂ ਵਿੱਚ",
+     "target_text": "I'm happy with how much I've done in a short time",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 246,
+  "phrases": {
+   "246:1": [
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ",
+     "target_text": "I wanted",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ",
+     "target_text": "her to help you but",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ ਉਹ ਨਹੀਂ ਚਾਹੁੰਦੀ ਸੀ",
+     "target_text": "I wanted her to help you but she didn't want to",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ ਉਹ ਰੁੱਝੀ",
+     "target_text": "I wanted her to help you but she was busy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ ਉਹ ਨਹੀਂ ਕਰ ਸਕੀ",
+     "target_text": "I wanted her to help you but she could not",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ ਉਹ ਬਹੁਤ ਰੁੱਝੀ ਹੋਈ ਸੀ",
+     "target_text": "I wanted her to help you but she was too busy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ ਉਹ ਇੱਥੇ ਨਹੀਂ ਸੀ",
+     "target_text": "I wanted her to help you but she was not here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ ਅੱਜ",
+     "target_text": "I wanted her to help you but today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਕਿ ਉਹ ਤੁਹਾਡੀ ਮਦਦ ਕਰੇ ਪਰ ਉਹ ਥੱਕੀ ਹੋਈ ਸੀ",
+     "target_text": "I wanted her to help you but she was tired",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 247,
+  "phrases": {
+   "247:1": [
+    {
+     "known_text": "ਕਾਫ਼ੀ ਚੰਗੀ",
+     "target_text": "fairly good",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸੀ",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਿਆ ਕਿ ਕਹਾਣੀ ਕਾਫ਼ੀ ਚੰਗੀ ਸੀ",
+     "target_text": "I thought the story was fairly good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇਹ ਕਾਫ਼ੀ ਚੰਗੀ ਸੀ",
+     "target_text": "it was fairly good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਇਹ ਕਾਫ਼ੀ ਚੰਗੀ ਸੀ?",
+     "target_text": "was it fairly good?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਵੀਕਐਂਡ ਕਾਫ਼ੀ ਚੰਗਾ ਸੀ",
+     "target_text": "weekend was fairly good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕਿਤਾਬ ਕਾਫ਼ੀ ਚੰਗੀ ਸੀ",
+     "target_text": "that book was fairly good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਫ਼ਿਲਮ ਕਾਫ਼ੀ ਚੰਗੀ ਸੀ",
+     "target_text": "that film was fairly good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਹ ਫ਼ਿਲਮ ਕਾਫ਼ੀ ਚੰਗੀ ਸੀ",
+     "target_text": "I think that film was fairly good",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 248,
+  "phrases": {
+   "248:1": [
+    {
+     "known_text": "ਬਿਲਕੁਲ ਬੇਕਾਰ",
+     "target_text": "complete rubbish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸੀ",
+     "target_text": "was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਿਆ ਕਿ ਕਹਾਣੀ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ",
+     "target_text": "I thought the story was complete rubbish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇਹ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ",
+     "target_text": "it was complete rubbish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਇਹ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ?",
+     "target_text": "was it complete rubbish?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਫ਼ਿਲਮ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ",
+     "target_text": "that film was complete rubbish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਕਿਤਾਬ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ",
+     "target_text": "that book was complete rubbish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਕਿਤਾਬ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ",
+     "target_text": "he said that book was complete rubbish",
+     "phrase_role": "use"
+    }
+   ],
+   "248:2": [
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ",
+     "target_text": "my money back",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I think I want my money back",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਚਾਹੁੰਦਾ ਹਾਂ ਹੁਣ",
+     "target_text": "I want my money back now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਚਾਹੁੰਦਾ ਹਾਂ ਇੱਥੇ",
+     "target_text": "I want my money back here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਚਾਹੁੰਦਾ ਹਾਂ ਅੱਜ",
+     "target_text": "I want my money back today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਚਾਹੁੰਦਾ ਹਾਂ ਕੱਲ੍ਹ",
+     "target_text": "I want my money back tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਜੇ ਫ਼ਿਲਮ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ ਤਾਂ ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want my money back if the film was complete rubbish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਜੇ ਫ਼ਿਲਮ ਬਿਲਕੁਲ ਬੇਕਾਰ ਸੀ ਤਾਂ ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਚਾਹੁੰਦਾ ਹਾਂ ਹੁਣ",
+     "target_text": "if the film was complete rubbish I want my money back now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 249,
+  "phrases": {
+   "249:1": [
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਮਦਦ ਕਰੋ",
+     "target_text": "you to help me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਛੇਤੀ ਮੇਰੀ ਮਦਦ ਕਰੋ",
+     "target_text": "I want you to help me soon",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਮਦਦ ਕਰੋ ਹੁਣ",
+     "target_text": "I want you to help me now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਮਦਦ ਕਰੋ ਇੱਥੇ",
+     "target_text": "I want you to help me here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਮੇਰੀ ਮਦਦ ਕਰੋ ਸਮੇਂ ਸਿਰ",
+     "target_text": "I want you to help me in time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਮੇਰੀ ਮਦਦ ਕਰੋ ਕੱਲ੍ਹ",
+     "target_text": "I want you to help me tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਮੇਰੀ ਮਦਦ ਕਰੋ ਅੱਜ ਸ਼ਾਮ",
+     "target_text": "I want you to help me this afternoon",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਮੇਰੀ ਮਦਦ ਕਰੋ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ",
+     "target_text": "I want you to help me before you leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਮੇਰੀ ਮਦਦ ਕਰੋ ਜਵਾਬ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ",
+     "target_text": "I want you to help me before I answer",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 251,
+  "phrases": {
+   "251:1": [
+    {
+     "known_text": "ਨਹੀਂ ਚਾਹੁੰਦਾ",
+     "target_text": "don't want",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਜਾਣਨਾ",
+     "target_text": "to find out",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਅੱਜ ਰਾਤ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+     "target_text": "I don't want to find out tonight",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+     "target_text": "I don't want to find out",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦੇ?",
+     "target_text": "don't you want to find out?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਹੁਣ",
+     "target_text": "I don't want to find out now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਇੱਥੇ",
+     "target_text": "I don't want to find out here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਅੱਜ",
+     "target_text": "I don't want to find out today",
+     "phrase_role": "use"
+    }
+   ],
+   "251:2": [
+    {
+     "known_text": "ਜਦੋਂ ਤੱਕ",
+     "target_text": "until after",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "we finish",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਆਪਣੇ ਪੈਸੇ ਵਾਪਸ ਨਹੀਂ ਚਾਹੁੰਦਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "I don't want my money back until after we finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਰੁਕਾਂਗਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "wait until after we finish",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਡੀਕ ਕਰੋਗੇ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ?",
+     "target_text": "can you wait until after we finish?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਉਡੀਕ ਕਰੇਗਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "he will wait until after we finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਡੀਕ ਕਰਾਂਗਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "I'll wait until after we finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "don't want to find out until after we finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "I don't want to find out until after we finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਨਾ ਨਹੀਂ ਚਾਹੁੰਦਾ ਜਦੋਂ ਤੱਕ ਅਸੀਂ ਸਭ ਖਤਮ ਨਹੀਂ ਕਰਦੇ",
+     "target_text": "I don't want to find out until after we finish everything",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 252,
+  "phrases": {
+   "252:2": [
+    {
+     "known_text": "ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ?",
+     "target_text": "when will you be ready?",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸ਼ੁਰੂ ਕਰਨ ਲਈ",
+     "target_text": "to start",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਗੱਲਾਂ ਕਰਨੀਆਂ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ?",
+     "target_text": "when will you be ready to start talking?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਥੇ?",
+     "target_text": "when will you be ready to start here?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕੱਲ੍ਹ?",
+     "target_text": "when will you be ready to start tomorrow?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਅੱਜ ਰਾਤ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ?",
+     "target_text": "when will you be ready to start tonight?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਸਿੱਖਣਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ?",
+     "target_text": "when will you be ready to start learning?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕੰਮ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕਦੋਂ ਤਿਆਰ ਹੋਵੋਗੇ?",
+     "target_text": "when will you be ready to start work?",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 255,
+  "phrases": {
+   "255:1": [
+    {
+     "known_text": "ਤਿਆਰ",
+     "target_text": "ready",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਜਾਣ ਲਈ",
+     "target_text": "to leave",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਤੁਸੀਂ ਜਾਣ ਲਈ ਤਿਆਰ ਹੋਵੋਗੇ",
+     "target_text": "I think you'll be ready to leave",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਜਾਣ ਲਈ ਤਿਆਰ ਹੋਵੋਗੇ ਅੱਜ",
+     "target_text": "be ready to leave today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਕਦੋਂ ਜਾਣ ਲਈ ਤਿਆਰ ਹੋਵੋਗੇ?",
+     "target_text": "when will you be ready to leave?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਜਾਣ ਲਈ ਤਿਆਰ ਹੋਵੇਗਾ ਕੱਲ੍ਹ",
+     "target_text": "he will be ready to leave tomorrow",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕਦੋਂ ਜਾਣ ਲਈ ਤਿਆਰ ਹੋਵੋਗੇ",
+     "target_text": "tell me when you'll be ready to leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਜਾਣ ਲਈ ਤਿਆਰ ਹੋਵੋਗੇ ਜਦੋਂ ਤੁਸੀਂ ਖਤਮ ਕਰਦੇ ਹੋ",
+     "target_text": "be ready to leave after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਤੁਸੀਂ ਛੇਤੀ ਜਾਣ ਲਈ ਤਿਆਰ ਹੋਵੋਗੇ",
+     "target_text": "I think you'll be ready to leave soon",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 256,
+  "phrases": {
+   "256:1": [
+    {
+     "known_text": "ਇੱਕ ਘੰਟਾ",
+     "target_text": "an hour",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਘੰਟੇ ਦੀ ਉਡੀਕ",
+     "target_text": "wait an hour",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਕ ਘੰਟੇ ਤੋਂ ਵੱਧ",
+     "target_text": "more than an hour",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਇੱਕ ਘੰਟੇ ਉਡੀਕ ਕਰ ਸਕਦੇ ਹੋ?",
+     "target_text": "can you wait for an hour?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਇੱਕ ਘੰਟੇ ਤੋਂ ਵੱਧ ਸਮਾਂ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "I need more than an hour",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਮੈਨੂੰ ਇੱਕ ਘੰਟਾ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "I think that I need an hour",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਇਹ ਇੱਕ ਘੰਟੇ ਤੋਂ ਵੱਧ ਸਮਾਂ ਲਵੇਗਾ?",
+     "target_text": "is it going to take more than an hour?",
+     "phrase_role": "use"
+    }
+   ],
+   "256:2": [
+    {
+     "known_text": "ਘੱਟ",
+     "target_text": "less",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਘੰਟੇ ਤੋਂ ਘੱਟ",
+     "target_text": "less than an hour",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੀ ਮੈਂ ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਪੁੱਛ ਸਕਦੀ ਹਾਂ?",
+     "target_text": "can I ask in less than an hour?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਖਤਮ",
+     "target_text": "finish in less than an hour",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਜਾਣਾ",
+     "target_text": "leave in less than an hour",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਖਤਮ ਕਰਨਾ ਹੈ",
+     "target_text": "I need to finish in less than an hour",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਜਾਣਾ ਹੈ",
+     "target_text": "I need to leave in less than an hour",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਖਤਮ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to finish in less than an hour",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਮੈਨੂੰ ਇੱਕ ਘੰਟੇ ਤੋਂ ਘੱਟ ਵਿੱਚ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ",
+     "target_text": "I think that I need to leave in less than an hour",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 257,
+  "phrases": {
+   "257:1": [
+    {
+     "known_text": "ਨੀਲੀ ਚੀਜ਼",
+     "target_text": "blue thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨੀਲੀ ਕਿਤਾਬ",
+     "target_text": "blue book",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਨੀਲਾ",
+     "target_text": "that blue",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਹ ਨੀਲੀ ਚੀਜ਼ ਪਸੰਦ ਹੈ",
+     "target_text": "I like that blue thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਬਹੁਤ ਦਿਲਚਸਪ ਨੀਲੀ ਕਿਤਾਬ ਹੈ",
+     "target_text": "it's an interesting blue book",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਨੀਲੀ ਕਿਤਾਬ ਕੀ ਹੈ?",
+     "target_text": "what is that blue book?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਹ ਨੀਲੀ ਕਿਤਾਬ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want that blue book",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਹ ਨੀਲੀ ਚੀਜ਼ ਬਾਰੇ ਜਾਣਦੇ ਹੋ?",
+     "target_text": "do you know about that blue thing?",
+     "phrase_role": "use"
+    }
+   ],
+   "257:2": [
+    {
+     "known_text": "ਉਹ",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਨੀਲੀ ਚੀਜ਼",
+     "target_text": "blue thing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਹ ਨੀਲੀ ਚੀਜ਼ ਪਸੰਦ ਨਹੀਂ",
+     "target_text": "I don't like that blue thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਨੀਲੀ ਚੀਜ਼ ਦਿਲਚਸਪ ਹੈ",
+     "target_text": "that blue thing is interesting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਨੀਲੀ ਚੀਜ਼ ਮੈਨੂੰ ਪਸੰਦ ਹੈ",
+     "target_text": "I like that blue thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਨੀਲੀ ਚੀਜ਼ ਬਹੁਤ ਦਿਲਚਸਪ ਹੈ",
+     "target_text": "that blue thing is very interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਹ ਨੀਲੀ ਚੀਜ਼ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want that blue thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਹ ਨੀਲੀ ਚੀਜ਼ ਕਾਫ਼ੀ ਵਧੀਆ ਹੈ",
+     "target_text": "I think that blue thing is fairly good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਹ ਨੀਲੀ ਚੀਜ਼ ਬਾਰੇ ਜਾਣਦੇ ਹੋ?",
+     "target_text": "do you know about that blue thing?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 259,
+  "phrases": {
+   "259:1": [
+    {
+     "known_text": "ਵਿਚਾਰ",
+     "target_text": "idea",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇੱਕ",
+     "target_text": "an",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਵਿਚਾਰ ਚਾਹੁੰਦੀ ਹਾਂ",
+     "target_text": "I want an idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੱਸ ਇੱਕ ਵਿਚਾਰ",
+     "target_text": "just an idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਕ ਦਿਲਚਸਪ ਵਿਚਾਰ",
+     "target_text": "an interesting idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੇਰੇ ਕੋਲ ਇੱਕ ਵਿਚਾਰ ਹੈ",
+     "target_text": "I've got an idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਬੱਸ ਇੱਕ ਵਿਚਾਰ ਹੈ",
+     "target_text": "that's just an idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਹਾਡੇ ਕੋਲ ਇੱਕ ਵਿਚਾਰ ਹੈ?",
+     "target_text": "do you have an idea?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਅਜੇ ਕੋਈ ਵਿਚਾਰ ਨਹੀਂ",
+     "target_text": "I don't have an idea yet",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 260,
+  "phrases": {
+   "260:1": [
+    {
+     "known_text": "ਬਿਲਕੁਲ",
+     "target_text": "faintest",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਅੰਦਾਜ਼ਾ",
+     "target_text": "idea",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਅੱਜ ਬਿਲਕੁਲ ਅੰਦਾਜ਼ਾ ਨਹੀਂ",
+     "target_text": "I don't have the faintest idea today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੋਈ ਅੰਦਾਜ਼ਾ ਨਹੀਂ",
+     "target_text": "not the faintest idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੋਈ ਵੀ ਅੰਦਾਜ਼ਾ ਨਹੀਂ",
+     "target_text": "the faintest idea at all",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਬਿਲਕੁਲ ਵੀ ਅੰਦਾਜ਼ਾ ਨਹੀਂ",
+     "target_text": "I don't have the faintest idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੂੰ ਬਿਲਕੁਲ ਵੀ ਅੰਦਾਜ਼ਾ ਨਹੀਂ",
+     "target_text": "he doesn't have the faintest idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਹਾਨੂੰ ਬਿਲਕੁਲ ਵੀ ਅੰਦਾਜ਼ਾ ਨਹੀਂ?",
+     "target_text": "do you have the faintest idea?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਮਾਫ਼ ਕਰਨਾ ਪਰ ਮੈਨੂੰ ਬਿਲਕੁਲ ਨਹੀਂ ਪਤਾ",
+     "target_text": "sorry I don't have the faintest idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੂੰ ਬਿਲਕੁਲ ਕੋਈ ਅੰਦਾਜ਼ਾ ਨਹੀਂ ਹੈ",
+     "target_text": "she doesn't have the faintest idea",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 261,
+  "phrases": {
+   "261:1": [
+    {
+     "known_text": "ਹੋ ਸਕਦਾ",
+     "target_text": "might",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਹੈ",
+     "target_text": "be",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇਹ ਇੱਕ ਵਿਚਾਰ ਹੋ ਸਕਦਾ ਹੈ",
+     "target_text": "it might be an idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇਹ ਹੋ ਸਕਦਾ ਹੈ",
+     "target_text": "it might be",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੁਝ ਹੋ ਸਕਦਾ ਹੈ",
+     "target_text": "might be something",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇਹ ਕੋਈ ਜ਼ਰੂਰੀ ਚੀਜ਼ ਹੋ ਸਕਦੀ ਹੈ",
+     "target_text": "it might be something important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਚੰਗਾ ਹੋ ਸਕਦਾ ਹੈ",
+     "target_text": "it might be good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਸੱਚ ਹੋ ਸਕਦਾ ਹੈ",
+     "target_text": "it might be true",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਦਿਲਚਸਪ ਹੋ ਸਕਦਾ ਹੈ",
+     "target_text": "it might be interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਇਹ ਕੋਈ ਚੰਗੀ ਚੀਜ਼ ਹੋ ਸਕਦੀ ਹੈ",
+     "target_text": "I think it might be something good",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 263,
+  "phrases": {
+   "263:1": [
+    {
+     "known_text": "ਤੁਸੀਂ ਮਤਲਬ ਕਰਦੇ ਹੋ",
+     "target_text": "you mean",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਿਸ ਦਾ ਮਤਲਬ",
+     "target_text": "who you mean",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਤੁਸੀਂ ਕਿਸ ਦੀ ਗੱਲ ਕਰਦੇ ਹੋ",
+     "target_text": "I don't know who you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਪਤਾ ਹੈ ਤੁਸੀਂ ਕੀ ਮਤਲਬ ਕਰਦੇ ਹੋ",
+     "target_text": "I know what you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਮੈਨੂੰ ਦੱਸ ਸਕਦੇ ਹੋ ਤੁਸੀਂ ਕਿਸ ਦਾ ਮਤਲਬ ਕਰਦੇ ਹੋ?",
+     "target_text": "can you tell me who you mean?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਨਹੀਂ ਜਾਣਦਾ ਤੁਸੀਂ ਕੀ ਮਤਲਬ ਕਰਦੇ ਹੋ",
+     "target_text": "I don't know what you mean",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਮੈਂ ਕਿਸ ਦਾ ਮਤਲਬ ਕਰਦਾ ਹਾਂ?",
+     "target_text": "do you know who I mean?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਪਤਾ ਕਰਨਾ ਚਾਹੁੰਦੀ ਹਾਂ ਕਿ ਤੁਹਾਡਾ ਮਤਲਬ ਕੌਣ ਹੈ",
+     "target_text": "I want to find out who you mean",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 264,
+  "phrases": {
+   "264:1": [
+    {
+     "known_text": "ਬੁੱਢਾ",
+     "target_text": "old",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਬੰਦਾ",
+     "target_text": "man",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇਹ ਇੱਕ ਬੁੱਢਾ ਬੰਦਾ ਹੋ ਸਕਦਾ ਹੈ",
+     "target_text": "it might be an old man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਕ ਬੁੱਢੇ ਬੰਦੇ ਨੂੰ ਜਾਣਨਾ",
+     "target_text": "know an old man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਕ ਬੁੱਢਾ ਬੰਦਾ ਸੀ",
+     "target_text": "was an old man",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਬੁੱਢੇ ਬੰਦੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know an old man",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਇੱਕ ਬੁੱਢਾ ਬੰਦਾ ਸੀ",
+     "target_text": "he was an old man",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਬੁੱਢੇ ਬੰਦੇ ਨਾਲ ਗੱਲ ਕਰ ਰਿਹਾ ਸੀ",
+     "target_text": "I was talking to an old man",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਇੱਕ ਬੁੱਢੇ ਬੰਦੇ ਨੂੰ ਜਾਣਦੇ ਹੋ?",
+     "target_text": "do you know an old man?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਹ ਇੱਕ ਬੁੱਢਾ ਬੰਦਾ ਸੀ",
+     "target_text": "I think he was an old man",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 265,
+  "phrases": {
+   "265:1": [
+    {
+     "known_text": "ਦੋਸਤ",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇੱਕ",
+     "target_text": "a",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਕ ਦੋਸਤ ਚਾਹੁੰਦੀ ਹਾਂ",
+     "target_text": "I want a friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਕ ਚੰਗਾ ਦੋਸਤ",
+     "target_text": "a good friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬੱਸ ਇੱਕ ਦੋਸਤ",
+     "target_text": "just a friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੇਰੇ ਕੋਲ ਇੱਕ ਦੋਸਤ ਹੈ",
+     "target_text": "I've got a friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਇੱਕ ਦੋਸਤ ਹੈ",
+     "target_text": "she's a friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਮੇਰੇ ਇੱਕ ਦੋਸਤ ਬਾਰੇ ਹੈ",
+     "target_text": "this is about a friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਹ ਇੱਕ ਚੰਗਾ ਦੋਸਤ ਹੈ",
+     "target_text": "I think he is a good friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਸ ਬੁੱਢੇ ਬੰਦੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜੋ ਇੱਕ ਦੋਸਤ ਸੀ",
+     "target_text": "I know that old man who was a friend",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 266,
+  "phrases": {
+   "266:1": [
+    {
+     "known_text": "ਮੇਰੇ ਪਿਤਾ ਜੀ",
+     "target_text": "my father",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਦੋਸਤ",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਉਹ ਮੇਰੇ ਪਿਤਾ ਜੀ ਦਾ ਇੱਕ ਦੋਸਤ ਸੀ",
+     "target_text": "he was a friend of my father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੇਰੇ ਪਿਤਾ ਜੀ ਦਾ ਇੱਕ ਦੋਸਤ",
+     "target_text": "a friend of my father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੇਰੇ ਪਿਤਾ ਜੀ ਦਾ ਚੰਗਾ ਦੋਸਤ",
+     "target_text": "good friend of my father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਹ ਮੇਰੇ ਪਿਤਾ ਜੀ ਦਾ ਪੁਰਾਣਾ ਦੋਸਤ ਸੀ",
+     "target_text": "he was an old friend of my father",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਮੇਰੇ ਪਿਤਾ ਜੀ ਦੇ ਦੋਸਤ ਨੂੰ ਜਾਣਦੇ ਹੋ?",
+     "target_text": "do you know a friend of my father?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਮੇਰੇ ਪਿਤਾ ਜੀ ਦਾ ਇੱਕ ਚੰਗਾ ਦੋਸਤ ਸੀ",
+     "target_text": "he was a good friend of my father",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਮੇਰੇ ਪਿਤਾ ਜੀ ਦੇ ਦੋਸਤ ਨੂੰ ਜਾਣਦਾ ਹਾਂ",
+     "target_text": "I know a friend of my father",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਆਦਮੀ ਮੇਰੇ ਪਿਤਾ ਜੀ ਦਾ ਦੋਸਤ ਸੀ",
+     "target_text": "that man was a friend of my father",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 267,
+  "phrases": {
+   "267:1": [
+    {
+     "known_text": "ਖ਼ਬਰ",
+     "target_text": "heard",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮਿਲਣਾ",
+     "target_text": "from",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤਾਂ ਕੀ ਤੁਹਾਨੂੰ ਆਪਣੇ ਦੋਸਤ ਦੀ ਖ਼ਬਰ ਮਿਲੀ?",
+     "target_text": "so have you heard from your friend?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਦੋਸਤ ਤੋਂ ਖ਼ਬਰ ਮਿਲੀ",
+     "target_text": "heard from your friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਿਸੇ ਤੋਂ ਖ਼ਬਰ ਮਿਲੀ",
+     "target_text": "heard from someone",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਹਾਡੇ ਦੋਸਤ ਵੱਲੋਂ ਕੋਈ ਖ਼ਬਰ ਆਈ ਹੈ?",
+     "target_text": "have you heard from your friend?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਸ ਬੁੱਢੇ ਬੰਦੇ ਤੋਂ ਖ਼ਬਰ ਸੁਣੀ ਹੈ?",
+     "target_text": "have you heard from that old man?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਉਸ ਤੋਂ ਖ਼ਬਰ ਸੁਣੀ ਹੈ?",
+     "target_text": "have you heard from her?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਉਸ ਤੋਂ ਕੋਈ ਖ਼ਬਰ ਨਹੀਂ ਸੁਣੀ",
+     "target_text": "I haven't heard from her",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਤੁਹਾਡੇ ਦੋਸਤ ਤੋਂ ਕੋਈ ਖ਼ਬਰ ਨਹੀਂ ਸੁਣੀ",
+     "target_text": "I haven't heard from your friend",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 268,
+  "phrases": {
+   "268:1": [
+    {
+     "known_text": "ਉਸਨੇ ਭੇਜਿਆ",
+     "target_text": "she sent",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਭੇਜਿਆ",
+     "target_text": "she sent me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੱਲ੍ਹ ਭੇਜਿਆ",
+     "target_text": "sent yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਕੱਲ੍ਹ ਕੁਝ ਭੇਜਿਆ",
+     "target_text": "she sent me something yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਪਿਛਲੇ ਹਫ਼ਤੇ ਕੁਝ ਭੇਜਿਆ",
+     "target_text": "she sent me something last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਕਿ ਉਸਨੇ ਇਹ ਭੇਜਿਆ",
+     "target_text": "I know she sent it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਕੁਝ ਭੇਜਿਆ ਜੋ ਮੇਰੇ ਲਈ ਸੀ",
+     "target_text": "she sent us something last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਉਸਨੇ ਮੈਨੂੰ ਪਿਛਲੇ ਮਹੀਨੇ ਕੁਝ ਭੇਜਿਆ",
+     "target_text": "I think that she sent me something last month",
+     "phrase_role": "use"
+    }
+   ],
+   "268:2": [
+    {
+     "known_text": "ਇੱਕ ਈਮੇਲ",
+     "target_text": "an email",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਈਮੇਲ ਭੇਜੀ",
+     "target_text": "she sent an email",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੋਈ ਈਮੇਲ ਨਹੀਂ",
+     "target_text": "not an email",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਇੱਕ ਈਮੇਲ ਭੇਜੀ",
+     "target_text": "she sent me an email",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਪਿਛਲੇ ਹਫ਼ਤੇ ਇੱਕ ਈਮੇਲ ਭੇਜੀ",
+     "target_text": "she sent me an email last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਸਾਨੂੰ ਵੀ ਇੱਕ ਈਮੇਲ ਭੇਜੀ",
+     "target_text": "she sent us an email as well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਅੱਜ ਸਵੇਰੇ ਉਸਨੂੰ ਇੱਕ ਈਮੇਲ ਭੇਜੀ",
+     "target_text": "I sent her an email this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਅੱਜ ਸਵੇਰੇ ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ",
+     "target_text": "she sent me two emails this morning",
+     "phrase_role": "use"
+    }
+   ],
+   "268:3": [
+    {
+     "known_text": "ਦੋ",
+     "target_text": "two",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਈਮੇਲਾਂ",
+     "target_text": "emails",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਦੋ ਈਮੇਲਾਂ ਲਿਖਣਾ",
+     "target_text": "to write two emails",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ",
+     "target_text": "sent two emails",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ",
+     "target_text": "she sent me two emails",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਹਾਂ ਉਸਨੇ ਮੈਨੂੰ ਪਿਛਲੇ ਹਫ਼ਤੇ ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ",
+     "target_text": "yes she sent me two emails last week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਮੈਨੂੰ ਕੱਲ੍ਹ ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ",
+     "target_text": "she sent me two emails yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਸਾਨੂੰ ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ",
+     "target_text": "she sent us two emails",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਸਨੇ ਮੈਨੂੰ ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ",
+     "target_text": "I think she sent me two emails",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਕਿ ਉਸਨੇ ਮੈਨੂੰ ਦੋ ਈਮੇਲਾਂ ਭੇਜੀਆਂ?",
+     "target_text": "do you know she sent me two emails?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 269,
+  "phrases": {
+   "269:1": [
+    {
+     "known_text": "ਉਡੀਕ ਕਰਨਾ",
+     "target_text": "wait for",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਪਿਤਾ ਜੀ",
+     "target_text": "father",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਅੱਜ ਆਪਣੇ ਪਿਤਾ ਜੀ ਦੀ ਉਡੀਕ ਕਿਉਂ ਨਹੀਂ ਕਰਨਾ ਚਾਹੁੰਦੇ?",
+     "target_text": "why don't you want to wait for your father today?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਪਿਤਾ ਜੀ ਦੀ ਉਡੀਕ ਕਰਨਾ ਚਾਹੁੰਦਾ",
+     "target_text": "want to wait for your father",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਪਿਤਾ ਜੀ ਦੀ ਉਡੀਕ ਕਿਉਂ?",
+     "target_text": "why wait for your father?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਆਪਣੇ ਪਿਤਾ ਜੀ ਦੀ ਉਡੀਕ ਕਿਉਂ ਨਹੀਂ ਕਰਨਾ ਚਾਹੁੰਦੇ?",
+     "target_text": "why don't you want to wait for your father?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਆਪਣੇ ਪਿਤਾ ਜੀ ਦੀ ਉਡੀਕ ਕਰ ਸਕਦੇ ਹੋ?",
+     "target_text": "can you wait for your father?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਆਪਣੇ ਪਿਤਾ ਜੀ ਦੀ ਉਡੀਕ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to wait for your father",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ ਕਿਉਂ ਤੁਸੀਂ ਪਿਤਾ ਜੀ ਦੀ ਉਡੀਕ ਨਹੀਂ ਕਰਨਾ ਚਾਹੁੰਦੇ?",
+     "target_text": "do you know why you don't want to wait for your father?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 270,
+  "phrases": {
+   "270:1": [
+    {
+     "known_text": "ਮੈਨੂੰ ਚਿੰਤਾ ਹੈ",
+     "target_text": "I'm worried",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਹੁਤ ਚਿੰਤਾ",
+     "target_text": "very worried",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਂ ਬਹੁਤ ਚਿੰਤਾ ਵਿੱਚ ਹਾਂ",
+     "target_text": "I'm very worried",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਚਿੰਤਾ ਵਿੱਚ ਹੋ?",
+     "target_text": "are you worried?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇਸ ਬਾਰੇ ਚਿੰਤਤ ਹਾਂ",
+     "target_text": "I'm worried about it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਹ ਬਹੁਤ ਚਿੰਤਾ ਵਿੱਚ ਦਿੱਖ ਰਹੀ ਹੈ",
+     "target_text": "I think she is very worried",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਚਿੰਤਾ ਹੈ ਕਿ ਮੈਂ ਭੁੱਲ ਗਈ",
+     "target_text": "I'm worried that I've forgotten",
+     "phrase_role": "build"
+    }
+   ],
+   "270:2": [
+    {
+     "known_text": "ਦੇਰ",
+     "target_text": "late",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਹੋ ਜਾਵੇਗੀ",
+     "target_text": "going to be",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਅੱਜ ਦੇਰ ਹੋ ਜਾਵੇਗੀ",
+     "target_text": "I'm going to be late today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਦੇਰ ਹੋ ਜਾਵੇਗੀ",
+     "target_text": "I'm going to be late",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕਿਉਂਕਿ ਮੈਨੂੰ ਚਿੰਤਾ ਹੈ ਕਿ ਮੈਨੂੰ ਦੇਰ ਹੋ ਜਾਵੇਗੀ",
+     "target_text": "because I'm worried that I'm going to be late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਮੈਂ ਦੇਰ ਨਾਲ ਆਵਾਂਗਾ",
+     "target_text": "I think I'm going to be late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਸੋਚਦੇ ਹੋ ਕਿ ਉਹ ਦੇਰ ਨਾਲ ਆਵੇਗੀ?",
+     "target_text": "do you think she is going to be late?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਚਿੰਤਾ ਹੈ ਕਿ ਮੈਨੂੰ ਦੇਰ ਹੋ ਜਾਵੇਗੀ",
+     "target_text": "I'm worried that I'm going to be late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਉਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਦੇਰ ਨਾਲ ਆਵੇਗਾ",
+     "target_text": "he said he is going to be late",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਵੀਕਐਂਡ ਤੇ ਦੇਰ ਹੋ ਜਾਵੇਗੀ",
+     "target_text": "I'm going to be late at the weekend",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 271,
+  "phrases": {
+   "271:1": [
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ",
+     "target_text": "would you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਚਾਹੋਗੇ",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਜਾਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to go?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਚਾਹੋਗੇ?",
+     "target_text": "would you like something?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਇਹ ਦੇਖਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to see this?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਇਸ ਬਾਰੇ ਗੱਲ ਕਰਨਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to talk about that?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਹੋਰ ਜਾਣਨਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to know something else?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਦੇਖਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to see something interesting?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਖਾਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like something to eat?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਮੇਰੇ ਇੱਕ ਦੋਸਤ ਨੂੰ ਮਿਲਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to meet a friend?",
+     "phrase_role": "use"
+    }
+   ],
+   "271:2": [
+    {
+     "known_text": "ਆਉਣਾ",
+     "target_text": "come",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਸਾਡੇ ਨਾਲ",
+     "target_text": "with us",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਤੁਸੀਂ ਸਾਡੇ ਨਾਲ ਆਉਣਾ ਕਿਉਂ ਨਹੀਂ ਚਾਹੁੰਦੇ?",
+     "target_text": "why don't you want to come with us?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਸਾਡੇ ਨਾਲ ਆਉਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to come with us?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਅਗਲੇ ਮਹੀਨੇ ਸਾਡੇ ਨਾਲ ਆਉਣਾ",
+     "target_text": "come with us next month",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਅਗਲੇ ਮਹੀਨੇ ਸਾਡੇ ਨਾਲ ਆਉਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to come with us next month?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਕੱਲ੍ਹ ਸਾਡੇ ਨਾਲ ਆਉਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to come with us tomorrow?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੇਰੇ ਦੋਸਤ ਵੀ ਸਾਡੇ ਨਾਲ ਆਉਣਾ ਚਾਹੁੰਦੇ ਹਨ",
+     "target_text": "my friends want to come with us as well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਸਾਡੇ ਨਾਲ ਅਗਲੇ ਹਫ਼ਤੇ ਆਉਣਾ ਚਾਹੋਗੇ?",
+     "target_text": "would you like to come with us next week?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਤੁਹਾਨੂੰ ਸਾਡੇ ਨਾਲ ਆਉਣ ਲਈ ਕਹਿਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want you to come with us",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 272,
+  "phrases": {
+   "272:1": [
+    {
+     "known_text": "ਲੱਗਦਾ ਹੈ",
+     "target_text": "sounds",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਵਧੀਆ",
+     "target_text": "great",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇਹ ਇੱਕ ਵਿਚਾਰ ਲੱਗਦਾ ਹੈ",
+     "target_text": "that sounds like an idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇਹ ਵਧੀਆ ਲੱਗਦਾ ਹੈ",
+     "target_text": "that sounds like",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਹਾਂ ਇਹ ਬਹੁਤ ਵਧੀਆ ਵਿਚਾਰ ਲੱਗਦਾ ਹੈ",
+     "target_text": "yes that sounds like a great idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਬਹੁਤ ਵਧੀਆ ਲੱਗਦਾ ਹੈ",
+     "target_text": "that sounds like a great idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਦਿਲਚਸਪ ਲੱਗਦਾ ਹੈ",
+     "target_text": "that sounds like something interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਇਹ ਚੰਗਾ ਲੱਗਦਾ ਹੈ",
+     "target_text": "that sounds like a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਸੋਚਦੇ ਹੋ ਕਿ ਇਹ ਵਧੀਆ ਲੱਗਦਾ ਹੈ?",
+     "target_text": "do you think that sounds like a good idea?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਹਾਂ, ਇਹ ਇੱਕ ਵਿਚਾਰ ਲੱਗਦਾ ਹੈ",
+     "target_text": "yes that sounds like an idea",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 273,
+  "phrases": {
+   "273:1": [
+    {
+     "known_text": "ਬਹੁਤ ਜ਼ਿਆਦਾ",
+     "target_text": "too much",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੰਮ",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ ਮੈਨੂੰ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+     "target_text": "I think I've got too much work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+     "target_text": "I've got too much work",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨਹੀਂ ਬਦਕਿਸਮਤੀ ਨਾਲ ਮੇਰੇ ਕੋਲ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+     "target_text": "no unfortunately I've got too much work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੇਰੇ ਕੋਲ ਅੱਜ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+     "target_text": "I've got too much work today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਬਦਕਿਸਮਤੀ ਨਾਲ ਮੇਰੇ ਕੋਲ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+     "target_text": "unfortunately I've got too much work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮਾਫ਼ ਕਰਨਾ ਪਰ ਮੇਰੇ ਕੋਲ ਅੱਜ ਰਾਤ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+     "target_text": "I'm sorry but I've got too much work tonight",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਵੀਕਐਂਡ ਤੇ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+     "target_text": "I've got too much work at the weekend",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 274,
+  "phrases": {
+   "274:1": [
+    {
+     "known_text": "ਦਿਨ",
+     "target_text": "days",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਕੁਝ",
+     "target_text": "a few",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਤਿਆਰ ਹੋਵਾਂਗੀ",
+     "target_text": "I'll be ready in a few days",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਜਾਣਾ",
+     "target_text": "leave in a few days",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਤਿਆਰ",
+     "target_text": "ready in a few days",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਹਾਨੂੰ ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਜਾਣਾ ਪਵੇਗਾ?",
+     "target_text": "do you need to leave in a few days?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਤਿਆਰ ਹੋ ਜਾਵਾਂਗਾ",
+     "target_text": "I should be ready in a few days",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਜਾਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to leave in a few days",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਨੂੰ ਉਮੀਦ ਹੈ ਕਿ ਮੈਂ ਕੁਝ ਦਿਨਾਂ ਵਿੱਚ ਤਿਆਰ ਹੋ ਸਕਦਾ ਹਾਂ",
+     "target_text": "I hope I'll be ready in a few days",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 276,
+  "phrases": {
+   "276:1": [
+    {
+     "known_text": "ਰਹਿਣਾ",
+     "target_text": "stay",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਇੱਥੇ",
+     "target_text": "here",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਥੇ ਰਹਿ ਸਕਦੀ ਹਾਂ",
+     "target_text": "I can stay here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਥੇ ਥੋੜਾ ਹੋਰ ਰਹਿਣਾ",
+     "target_text": "stay here a little longer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਇੱਥੇ ਰਹਿਣਾ ਚਾਹੁੰਦਾ",
+     "target_text": "want to stay here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਨਹੀਂ ਮੈਂ ਇੱਥੇ ਥੋੜਾ ਹੋਰ ਰਹਿ ਸਕਦਾ ਹਾਂ",
+     "target_text": "no I can stay here a little longer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਇੱਥੇ ਰਹਿਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to stay here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਸੋਚਦੇ ਹੋ ਕਿ ਮੈਂ ਇੱਥੇ ਥੋੜਾ ਹੋਰ ਰਹਿ ਸਕਦਾ ਹਾਂ?",
+     "target_text": "do you think I can stay here a little longer?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 277,
+  "phrases": {
+   "277:1": [
+    {
+     "known_text": "ਸ਼ੁਰੂ",
+     "target_text": "early",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਅਗਲੇ ਹਫ਼ਤੇ",
+     "target_text": "next week",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ਅਗਲੇ ਹਫ਼ਤੇ ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਮੇਰੀ ਮਦਦ ਕਰੋ",
+     "target_text": "help me early next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਅਗਲੇ ਹਫ਼ਤੇ ਜਲਦੀ",
+     "target_text": "early next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਅਗਲੇ ਹਫ਼ਤੇ ਸ਼ੁਰੂ ਵਿੱਚ ਮੀਟਿੰਗ",
+     "target_text": "an important meeting early next week",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ਹਾਂ ਅਗਲੇ ਹਫ਼ਤੇ ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਮੇਰੀ ਇੱਕ ਜ਼ਰੂਰੀ ਮੀਟਿੰਗ ਹੈ",
+     "target_text": "yes I've got an important meeting early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਮੈਂ ਅਗਲੇ ਹਫ਼ਤੇ ਸ਼ੁਰੂ ਵਿੱਚ ਤੁਹਾਡੇ ਨਾਲ ਮਿਲਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "target_text": "I want to meet you early next week",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਸੀਂ ਅਗਲੇ ਹਫ਼ਤੇ ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਤਿਆਰ ਹੋਵੋਗੇ?",
+     "target_text": "will you be ready early next week?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ਕੀ ਤੁਹਾਡੇ ਕੋਲ ਅਗਲੇ ਹਫ਼ਤੇ ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਕੋਈ ਮੀਟਿੰਗ ਹੈ?",
+     "target_text": "have you got a meeting early next week?",
      "phrase_role": "use"
     }
    ]
